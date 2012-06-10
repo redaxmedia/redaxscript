@@ -1,0 +1,17 @@
+.dialog
+{
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	z-index: 1100;
+}
+
+.dialog_overlay
+{
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}

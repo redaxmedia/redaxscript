@@ -1,0 +1,34 @@
+/* typography */
+
+.msie7 legend.title_accordion_admin
+{
+	margin-left: -19px;
+}
+
+/* background */
+
+.msie7 .box_dock_admin, .msie7 .box_panel_admin
+{
+	background: url('templates/admin/images/carbon.png') #303030;
+}
+
+/* float admin elements */
+
+.msie7 .link_dock_admin, .msie7 .list_panel_admin
+{
+	float: left;
+}
+
+/* admin panel link */
+
+.msie7 .box_panel_admin .link_logout 
+{
+	padding-left: 0.75em;
+}
+
+/* button */
+
+.msie7 button.field_button_admin, .msie7 button.field_button_large_admin
+{
+	overflow: visible;
+}

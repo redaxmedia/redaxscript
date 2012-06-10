@@ -1,0 +1,17 @@
+.js .hide_if_js, .hidden_legend legend
+{
+	display: none;
+}
+
+.clear_fix
+{
+	clear: both;
+}
+
+.clear_fix:after 
+{
+	content: '';
+	display: block;
+	height: 0;
+	clear: both
+}

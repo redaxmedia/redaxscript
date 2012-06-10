@@ -1,0 +1,166 @@
+body
+{
+	background: url('templates/default/images/noise.png') #e2e2e2;
+	margin: auto;
+}
+
+/* bottom */
+
+.bottom
+{
+	font-size: 1em;
+	text-align: center;
+	text-shadow: 0 1px #fff;
+}
+
+.bottom, .bottom a
+{
+	color: #999;
+}
+
+.bottom a:hover
+{
+	text-decoration: underline;
+}
+
+.bottom .wrapper
+{
+	padding: 2em 0;
+}
+
+/* content */
+
+.content
+{
+	margin-top: 3em;
+	min-height: 600px;
+}
+
+/* footer */
+
+.footer
+{
+	-moz-box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
+	-webkit-box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
+	background: #cfcfcf;
+	background: linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
+	border: solid #b9b9b9;
+	border-width: 1px 0;
+	box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
+	margin-top: 5em;
+	padding: 2.5em 0;
+}
+
+/* header */
+
+.header
+{
+	-moz-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
+	-webkit-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
+	background: url('templates/default/images/noise.png') #aaa;
+	background: url('templates/default/images/noise.png'), linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), -ms-linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), -o-linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), -webkit-linear-gradient(top, #ccc, #8e8e8e);
+	border-bottom: 1px solid #919191;
+	box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
+}
+
+.header .wrapper
+{
+	padding: 1.25em 0;
+}
+
+.header .wrapper_metadata
+{
+	float: left;
+}
+
+/* navibar */
+
+.navibar
+{
+	float: right;
+}
+
+/* sidebar */
+
+.sidebar
+{
+	float: right;
+	margin-bottom: 5em;
+	margin-top: 3em;
+	min-height: 500px;
+}
+
+.sidebar h3
+{
+	margin-top: 1.5em;
+}
+
+/* website logo */
+
+.logo_website, .logo_website_effect
+{
+	background: url('templates/default/images/sprite.png');
+	float: left;
+	height: 67px;
+	width: 66px;
+}
+
+.logo_website
+{
+	background-position: -66px 0;
+	position: relative;
+	z-index: 200;
+}
+
+.logo_website_effect
+{
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 100;
+}
+
+/* grid elements */
+
+.line_space
+{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul
+{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* wrapper */
+
+.wrapper
+{
+	margin: auto;
+	width: 980px;
+}
+
+.wrapper_body
+{
+	min-width: 980px;
+}
+
+.wrapper_table_default
+{
+	overflow: hidden;
+}
+
+.wrapper_table_default > table
+{
+	width: 100%;
+}

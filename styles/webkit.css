@@ -1,0 +1,6 @@
+/* search field reset */
+
+.field_search, .field_search::-webkit-search-cancel-button
+{
+	-webkit-appearance: none;
+}

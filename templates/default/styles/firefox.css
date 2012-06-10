@@ -1,0 +1,9 @@
+.firefox3 body
+{
+	overflow-x: hidden;
+}
+
+a.field_button span span
+{
+	padding: 0 1em;
+}

@@ -1,0 +1,24 @@
+/* screen */
+
+@media screen and (min-width: 1000px)
+{
+	.box_media
+	{
+		max-width: none;
+	}
+
+	.box_player
+	{
+		height: 720px;
+		width: 960px;
+	}
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px)
+{
+	.box_player
+	{
+		height: 600px;
+		width: 800px;
+	}
+}

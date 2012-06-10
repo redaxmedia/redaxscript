@@ -1,0 +1,24 @@
+<!--[if lt IE 9]><div id="navibar" class="navibar grid_space s2o7"><![endif]-->
+<nav id="navibar" class="navibar grid_space s2o7">
+	<div class="box_navibar">
+		<?php if (LOGGED_IN == TOKEN): ?>
+			<a class="field_button field_button_heart" href="http://redaxscript.com/donate" rel="nofollow">
+				<span>
+					<span>Donate</span>
+				</span>
+			</a>
+		<?php elseif (DB_CONNECTED == 1): ?>
+			<a class="field_button" href="<?php echo REWRITE_STRING; ?>login" rel="nofollow">
+				<span>
+					<span><?php echo l('login'); ?></span>
+				</span>
+			</a>
+		<?php endif; ?>
+		<a class="field_button field_button_question" href="http://redaxscript.com/support" rel="nofollow">
+			<span>
+				<span>Support</span>
+			</span>
+		</a>
+	</div>
+</nav>
+<!--[if lt IE 9]></div><![endif]-->

@@ -1,0 +1,174 @@
+/* padding */
+
+.pn
+{
+	padding: 0;
+}
+
+/* padding small */
+
+.ps
+{
+	padding: 0.5em;
+}
+
+.pts, .pvs
+{
+	padding-top: 0.5em;
+}
+
+.pbs, .pvs
+{
+	padding-bottom: 0.5em;
+}
+
+.pls, .phs
+{
+	padding-left: 0.5em;
+}
+
+.prs, .phs
+{
+	padding-right: 0.5em;
+}
+
+/* padding middle */
+
+.pm
+{
+	padding: 1em;
+}
+.ptm, .pvm
+{
+	padding-top: 1em;
+}
+
+.pbm, .pvm
+{
+	padding-bottom: 1em;
+}
+
+.plm, .phm
+{
+	padding-left: 1em;
+}
+
+.prm, .phm
+{
+	padding-right: 1em;
+}
+
+/* padding large */
+
+.pl
+{
+	padding: 1.5em;
+}
+
+.ptl, .pvl
+{
+	padding-top: 1.5em;
+}
+
+.pbl, .pvl
+{
+	padding-bottom: 1.5em;
+}
+
+.pll, .phl
+{
+	padding-left: 1.5em;
+}
+
+.prl, .phl
+{
+	padding-right: 1.5em;
+}
+
+/* margin */
+
+.mn
+{
+	margin: 0;
+}
+
+/* margin small */
+
+.ms
+{
+	margin: 0.5em;
+}
+
+.mts, .mvs
+{
+	margin-top: 0.5em;
+}
+
+.mbs, .mvs
+{
+	margin-bottom: 0.5em;
+}
+
+.mls, .mhs
+{
+	margin-left: 0.5em;
+}
+
+.mrs, .mhs
+{
+	margin-right: 0.5em;
+}
+
+/* margin middle */
+
+.mm
+{
+	margin: 1em;
+}
+
+.mtm, .mvm
+{
+	margin-top: 1em;
+}
+
+.mbm, .mvm
+{
+	margin-bottom: 1em;
+}
+
+.mlm, .mhm
+{
+	margin-left: 1em;
+}
+
+.mrm, .mhm
+{
+	margin-right: 1em;
+}
+
+/* margin large */
+
+.ml
+{
+	margin: 1.5em;
+}
+
+.mtl, .mvl
+{
+	margin-top: 1.5em;
+}
+
+.mbl, .mvl
+{
+	margin-bottom: 1.5em;
+}
+
+.mll, .mhl
+{
+	margin-left: 1.5em;
+}
+
+.mrl, .mhl
+{
+	margin-right: 1.5em;
+}

@@ -1,0 +1,34 @@
+/* haslayout */
+
+.msie7 .box_infoline, .msie7 .list_breadcrumbs, .msie7 .list_breadcrumbs li, .msie7 .list_pagination li, .msie7 .title_comment
+{
+	display: inline;
+}
+
+/* typography */
+
+.msie7 legend.title_accordion_default
+{
+	margin-left: -19px;
+}
+
+/* background */
+
+.msie7 .header, .msie7 .box_navibar
+{
+	background: url('templates/default/images/noise.png') #aaa;
+}
+
+/* search field */
+
+.msie7 .field_search
+{
+	float: left;
+}
+
+/* button */
+
+.msie7 button.field_button, .msie7 button.field_button_large
+{
+	overflow: visible;
+}

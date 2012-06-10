@@ -1,0 +1,6 @@
+/* breadcrumbs and pagination */
+
+.list_breadcrumbs li, .list_pagination li
+{
+	display: inline-block;
+}

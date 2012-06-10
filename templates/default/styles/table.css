@@ -1,0 +1,47 @@
+/* default table */
+
+.table_default td, .table_default th
+{
+	padding: 0.75em;
+}
+
+/* default table body */
+
+.table_default tbody
+{
+	background: #e2e2e2;
+	border: solid #ebebeb;
+	border-width: 0 1px;
+}
+
+.table_default tbody tr
+{
+	border-bottom: 1px solid #ebebeb;
+}
+
+.table_default tbody tr:hover
+{
+	background: #ddd;
+}
+
+.table_default tbody tr:last-child
+{
+	border-bottom: 0;
+}
+
+/* default table head and foot */
+
+.table_default tfoot, .table_default thead
+{
+	background: #c1c1c1;
+	background: linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	background: -moz-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	background: -ms-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	background: -o-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	background: -webkit-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	border: 1px solid #9e9e9e;
+	color: #fff;
+	font: bold 1em arial;
+	text-shadow: 0 1px #777;
+	text-transform: uppercase;
+}

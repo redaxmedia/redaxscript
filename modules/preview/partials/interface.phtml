@@ -1,0 +1,151 @@
+<h2 class="title_content">Interface</h2>
+
+
+<h3 class="title_content_sub">.list_default</h3>
+
+<ul class="list_default">
+	<li><?php echo l('1'); ?></li>
+	<li><?php echo l('2'); ?></li>
+	<li><?php echo l('3'); ?></li>
+</ul>
+
+
+<h3 class="title_content_sub">.list_breadcrumbs</h3>
+
+<ul class="list_breadcrumbs">
+	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
+	<li><?php echo s('divider'); ?></li>
+	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
+	<li><?php echo s('divider'); ?></li>
+	<li><?php echo l('preview_preview'); ?></li>
+</ul>
+
+
+<h3 class="title_content_sub">.list_pagination</h3>
+
+<?php echo pagination(5, 10, 'preview'); ?>
+
+
+<h3 class="title_content_sub">.list_tab_menue ~ .box_tab_menue</h3>
+
+<ul class="js_list_tab_menue list_tab_menue list_tab_menue_default">
+	<li class="js_item_active item_active item_first">
+		<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-1" title="<?php echo l('1'); ?>"><?php echo l('1'); ?></a>
+	</li>
+	<li class="item_second">
+		<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-2" title="<?php echo l('1'); ?>"><?php echo l('2'); ?></a>
+	</li>
+	<li class="item_last">
+		<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-3" title="<?php echo l('1'); ?>"><?php echo l('3'); ?></a>
+	</li>
+</ul>
+
+<div class="js_box_tab_menue box_tab_menue box_tab_menue_default">
+	<div id="tab-1" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+		<?php echo l('1'); ?>
+	</div>
+	<div id="tab-2" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+		<?php echo l('2'); ?>
+	</div>
+	<div id="tab-3" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+		<?php echo l('3'); ?>
+	</div>
+</div>
+
+
+<?php if (LOGGED_IN == TOKEN): ?>
+	<h3 class="title_content_sub">.list_tab_menue_admin ~ .box_tab_menue_admin</h3>
+
+	<ul class="js_list_tab_menue list_tab_menue list_tab_menue_admin">
+		<li class="js_item_active item_active item_first">
+			<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-4" title="<?php echo l('4'); ?>"><?php echo l('4'); ?></a>
+		</li>
+		<li class="item_second">
+			<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-5" title="<?php echo l('5'); ?>"><?php echo l('5'); ?></a>
+		</li>
+		<li class="item_last">
+			<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-6" title="<?php echo l('6'); ?>"><?php echo l('6'); ?></a>
+		</li>
+	</ul>
+
+	<div class="js_box_tab_menue box_tab_menue box_tab_menue_admin">
+		<div id="tab-4" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+			<?php echo l('4'); ?>
+		</div>
+		<div id="tab-5" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+			<?php echo l('5'); ?>
+		</div>
+		<div id="tab-6" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+			<?php echo l('6'); ?>
+		</div>
+	</div>
+<?php endif; ?>
+
+	
+<h3 class="title_content_sub">.accordion + .accordion_default</h3>
+
+<div class="js_accordion accordion accordion_default">
+	<div class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">
+		<h3 class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">
+			<?php echo l('1'); ?>
+		</h3>
+		<div class="js_box_accordion box_accordion box_accordion_default">
+			<?php echo l('1'); ?>
+		</div>
+	</div>
+	<div class="js_set_accordion set_accordion set_accordion_default">
+		<h3 class="js_title_accordion title_accordion title_accordion_default">
+			<?php echo l('2'); ?>
+		</h3>
+		<div class="js_box_accordion box_accordion box_accordion_default">
+			<?php echo l('2'); ?>
+		</div>
+	</div>
+	<div class="js_set_accordion set_accordion set_accordion_default set_accordion_last">
+		<h3 class="js_title_accordion title_accordion title_accordion_default">
+			<?php echo l('3'); ?>
+		</h3>
+		<div class="js_box_accordion box_accordion box_accordion_default">
+			<?php echo l('3'); ?>
+		</div>
+	</div>
+</div>
+
+
+<?php if (LOGGED_IN == TOKEN): ?>
+	<h3 class="title_content_sub">.accordion + .accordion_admin</h3>
+
+	<form class="js_accordion accordion accordion_admin">
+		<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_admin set_active">
+			<legend class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">
+				<?php echo l('1'); ?>
+			</legend>
+			<div class="js_box_accordion box_accordion box_accordion_admin">
+				<?php echo l('1'); ?>
+			</div>
+		</fieldset>
+		<fieldset class="js_set_accordion set_accordion set_accordion_admin">
+			<legend class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('2'); ?>
+			</legend>
+			<div class="js_box_accordion box_accordion box_accordion_admin">
+				<?php echo l('2'); ?>
+			</div>
+		</fieldset>
+		<fieldset class="js_set_accordion set_accordion set_accordion_admin set_accordion_last">
+			<legend class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('3'); ?>
+			</legend>
+			<div class="js_box_accordion box_accordion box_accordion_admin">
+				<?php echo l('3'); ?>
+			</div>
+		</fieldset>
+	</form>
+<?php endif; ?>
+
+
+<h3 class="title_content_sub">.has_tooltip > .tooltip + .tooltip_default</h3>
+
+<div class="has_tooltip box_preview">.has_tooltip
+	<span class="tooltip tooltip_default">.tooltip + .tooltip_default</span>
+</div>

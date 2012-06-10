@@ -1,0 +1,21 @@
+/* seo tube */
+
+.box_seo_tube
+{
+	background: #dadada;
+	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	border: 1px solid #ebebeb;
+	margin-bottom: 2em;
+	margin-top: 1em;
+	padding: 0.5em 1em;
+}
+
+.description_seo_tube
+{
+	margin-bottom: 2em;
+	margin-top: 2em;
+}

@@ -1,0 +1,51 @@
+<h2 class="title_content">Notes</h2>
+
+
+<h3 class="title_content_sub">.box_note</h3>
+
+<div class="box_note note_error">.note_error <a href="#">link</a></div>
+<div class="box_note note_warning">.note_warning <a href="#">link</a></div>
+<div class="box_note note_info">.note_info <a href="#">link</a></div>
+<div class="box_note note_success">.note_success <a href="#">link</a></div>
+
+
+<h3 class="title_content_sub">.field_note</h3>
+
+<?php echo form_element('form'); ?>
+	<?php echo form_element('fieldset'); ?>
+		<ul>
+			<li><?php echo form_element('text', '', 'field_text field_note note_error', '', '.note_error'); ?></li>
+			<li><?php echo form_element('text', '', 'field_text field_note note_warning', '', '.note_warning'); ?></li>
+			<li><?php echo form_element('text', '', 'field_text field_note note_info', '', '.note_info'); ?></li>
+			<li><?php echo form_element('text', '', 'field_text field_note note_success', '', '.note_success'); ?></li>
+		</ul>
+	</fieldset>
+	<?php echo form_element('fieldset'); ?>
+		<ul>
+			<li><?php echo select_element('', 'field_select field_note note_error', '', array(
+				l('select') => 'select',
+				l('1') => 1,
+				l('2') => 2,
+				l('3') => 3
+			)); ?></li>
+			<li><?php echo select_element('', 'field_select field_note note_warning', '', array(
+				l('select') => 'select',
+				l('1') => 1,
+				l('2') => 2,
+				l('3') => 3
+			)); ?></li>
+			<li><?php echo select_element('', 'field_select field_note note_info', '', array(
+				l('select') => 'select',
+				l('1') => 1,
+				l('2') => 2,
+				l('3') => 3
+			)); ?></li>
+			<li><?php echo select_element('', 'field_select field_note note_success', '', array(
+				l('select') => 'select',
+				l('1') => 1,
+				l('2') => 2,
+				l('3') => 3
+			)); ?></li>
+		</ul>
+	</fieldset>
+</form>

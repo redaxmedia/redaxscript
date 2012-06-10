@@ -1,0 +1,198 @@
+/* print */
+
+@media print
+{
+	body
+	{
+		color: #000;
+		font-size: 1em;
+	}
+
+	.bottom, .header, .footer, .navibar, .sidebar
+	{
+		display: none;
+	}
+}
+
+/* screen */
+
+@media screen and (max-width: 1100px)
+{
+	.box_comment:before
+	{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 640px)
+{
+	.content
+	{
+		min-height: 200px;
+	}
+
+	.content, .sidebar, .navibar
+	{
+		float: none;
+	}
+
+	.content, .header .box_first, .sidebar, .navibar, .wrapper
+	{
+		width: 100%;
+	}
+
+	.header .box_last, .footer .box_fourth, .footer .box_last, .list_pagination .item_first, .list_pagination .item_last
+	{
+		display: none;
+	}
+
+	.footer .box_first, .footer .box_second, .footer .box_third
+	{
+		width: 33.33%;
+	}
+
+	.sidebar .box_extra, .sidebar .box_search, .sidebar .title_extra
+	{
+		-moz-border-radius: 0;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+	}
+
+	.box_player
+	{
+		height: 400px;
+		width: 600px;
+	}
+
+	.wrapper_body
+	{
+		min-width: 0;
+	}
+}
+
+@media screen and (max-width: 480px)
+{
+	.dialog_default
+	{
+		margin: -50px 0 0 -40%;
+		width: 80%;
+	}
+
+	.footer .box_first, .footer .box_second
+	{
+		width: 50%;
+	}
+
+	.footer .box_third, .list_pagination .item_previous, .list_pagination .item_next, .list_tab_menue .item_last
+	{
+		display: none;
+	}
+
+	.box_player
+	{
+		height: 300px;
+		width: 400px;
+	}
+
+	.title_content
+	{
+		font-size: 2.25em;
+	}
+
+	.title_website
+	{
+		font-size: 3.5em;
+	}
+}
+
+@media screen and (max-width: 320px)
+{
+	.content, .sidebar, .navibar, .wrapper
+	{
+		width: 300px;
+	}
+
+	.list_breadcrumbs, .list_tab_menue .item_second
+	{
+		display: none;
+	}
+
+	.box_player
+	{
+		height: 180px;
+		width: 240px;
+	}
+
+	.description_website
+	{
+		font-size: 1.125em;
+	}
+
+	.title_content
+	{
+		font-size: 2em;
+	}
+
+	.title_website
+	{
+		font-size: 3.25em;
+	}
+
+	.wrapper_body
+	{
+		min-width: 300px;
+	}
+}
+
+@media screen and (max-width: 240px)
+{
+	.content, .sidebar, .navibar, .wrapper
+	{
+		width: 220px;
+	}
+
+	.dialog_default
+	{
+		margin: -50px 0 0 -100px;
+		width: 200px;
+	}
+
+	.footer .box_first
+	{
+		width: auto;
+	}
+
+	.footer .box_second, .logo_website
+	{
+		display: none;
+	}
+
+	.box_player
+	{
+		height: 140px;
+		width: 180px;
+	}
+
+	.wrapper_body
+	{
+		min-width: 220px;
+	}
+}
+
+/* speed dail */
+
+@media screen and (view-mode: minimized)
+{
+	.bottom, .content, .footer, .sidebar .box_search, .navibar
+	{
+		display: none;
+	}
+}
+
+/* rtl direction */
+
+.rtl
+{
+	direction: rtl;
+	text-align: right;
+}

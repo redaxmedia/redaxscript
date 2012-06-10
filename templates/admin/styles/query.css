@@ -1,0 +1,87 @@
+/* screen */
+
+@media screen and (min-width: 1100px)
+{
+	.content .box_dock_admin, .footer .box_dock_admin
+	{
+		left: -5em;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.content .link_dock_admin, .footer .link_dock_admin
+	{
+		display: block;
+	}
+
+	.content .box_comment + .placeholder_dock_admin .link_dock_admin.link_unpublish
+	{
+		display: none;
+	}
+
+	.content .placeholder_dock_admin, .footer .placeholder_dock_admin
+	{
+		position: relative;
+	}
+}
+
+@media screen and (max-width: 640px)
+{
+	.content .box_dock_admin, .content .description_dock_admin, .footer .box_dock_admin, .footer .description_dock_admin
+	{
+		display: block;
+	}
+
+	.wrapper_panel_menue_admin
+	{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 480px)
+{
+	.dialog_admin
+	{
+		margin: -50px 0 0 -40%;
+		width: 80%;
+	}
+
+	.form_admin .field_button_first, .list_control_admin .item_future_posting, .list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .list_panel_admin .item_system, .table_admin .column_last
+	{
+		display: none;
+	}
+	
+	.form_admin .field_button_second
+	{
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 320px)
+{
+	.list_panel_admin .item_access, .table_admin .column_second
+	{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 240px)
+{
+	.dialog_admin
+	{
+		margin: -50px 0 0 -100px;
+		width: 200px;
+	}
+}
+
+/* rtl direction */
+
+.rtl .description_dock_admin, .rtl .wrapper_panel_menue_admin
+{
+	float: left;
+}
+
+.rtl .table_admin .column_move
+{
+	text-align: right;
+}

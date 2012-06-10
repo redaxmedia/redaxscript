@@ -1,0 +1,35 @@
+[template]
+1 = styles/reset.css
+2 = styles/box.css
+3 = styles/dialog.css
+4 = styles/general.css
+5 = styles/grid.css
+6 = styles/interface.css
+7 = styles/table.css
+8 = templates/scratch/styles/form.css
+9 = templates/scratch/styles/general.css
+10 = templates/scratch/styles/interface.css
+11 = templates/scratch/styles/typography.css
+12 = templates/scratch/styles/query.css
+
+[msie]
+1 = styles/msie.css
+2 = templates/scratch/styles/msie.css
+
+[admin]
+1 = templates/admin/styles/box.css
+2 = templates/admin/styles/dialog.css
+3 = templates/admin/styles/form.css
+4 = templates/admin/styles/general.css
+5 = templates/admin/styles/interface.css
+6 = templates/admin/styles/table.css
+7 = templates/admin/styles/typography.css
+8 = templates/admin/styles/query.css
+
+[admin_msie]
+1 = templates/admin/styles/msie.css
+
+[settings]
+deploy = inline
+rewrite = false
+minify = false

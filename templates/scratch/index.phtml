@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<?php include_once('helper.phtml'); ?>
+<html lang="<?php echo LANGUAGE; ?>" class="<?php helper_class(); ?>">
+	<head>
+		<?php head(); ?>
+		<?php scripts('startup'); ?>
+		<?php styles(); ?>
+	</head>
+	<body class="wrapper_body">
+		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
+			<?php include_once('templates/admin/panel.phtml'); ?>
+		<?php endif; ?>
+		<?php include_once('header.phtml'); ?>
+		<div class="wrapper clear_fix">
+			<?php include_once('content.phtml'); ?>
+			<?php include_once('sidebar.phtml'); ?>
+		</div>
+		<?php include_once('footer.phtml'); ?>
+		<?php scripts(); ?>
+	</body>
+</html>

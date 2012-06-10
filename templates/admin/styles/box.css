@@ -1,0 +1,108 @@
+/* admin box accordion and admin box dialog */
+
+.box_accordion_admin
+{
+	-moz-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
+	-webkit-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
+	box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
+}
+
+.box_accordion_admin, .box_dialog_admin
+{
+	background: #e2e2e2;
+	background: linear-gradient(top, #e2e2e2, #dadada);
+	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
+	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
+	background: -o-linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
+	padding: 1em;
+}
+
+.set_accordion_admin.set_accordion_last .box_accordion_admin, .box_dialog_admin
+{
+	-moz-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
+	-webkit-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
+	box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
+}
+
+/* admin box dock */
+
+.box_dock_admin
+{
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
+	background: url('templates/admin/images/carbon.png') #303030;
+	background: url('templates/admin/images/carbon.png'), linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -moz-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -ms-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -o-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -webkit-linear-gradient(top, #1b1b1b, #303030);
+	border-radius: 0.25em;
+	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
+	margin-top: 1em;
+	padding: 0.25em 0.25em 0.5em;
+}
+
+.content .box_dock_admin, .footer .box_dock_admin
+{
+	display: inline-block;
+}
+
+.description_dock_admin
+{
+	font: 1em/3em arial;
+	float: right;
+	color: #474747;
+	margin: 0 1em;
+	text-shadow: 0 1px #1b1b1b;
+}
+
+/* hide elements */
+
+.content .description_dock_admin, .footer .description_dock_admin, .box_dock_admin .divider
+{
+	display: none;
+}
+
+/* grid fix */
+
+.footer .box_dock_admin
+{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* admin box panel */
+
+.box_panel_admin
+{
+	background: url('templates/admin/images/carbon.png') #303030;
+	background: url('templates/admin/images/carbon.png'), linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -moz-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -ms-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -o-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png'), -webkit-linear-gradient(top, #1b1b1b, #303030);
+	padding: 1.25em 0;
+}
+
+/* admin tab menue */
+
+.box_tab_menue_admin
+{
+	background: #e2e2e2;
+	background: linear-gradient(top, #e2e2e2, #dadada);
+	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
+	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
+	background: -o-linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
+	border: 1px solid #b9b9b9;
+}
+
+/* javascript enabled */
+
+.js .box_tab_menue_admin
+{
+	height: 450px;
+}

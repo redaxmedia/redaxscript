@@ -1,0 +1,25 @@
+/* accordion */
+
+.js .box_accordion
+{
+	display: none;
+}
+
+/* word break */
+
+.box_comment, .box_content, .box_extra
+{
+	word-wrap: break-word;
+}
+
+/* tab menue */
+
+.box_tab_menue
+{
+	overflow: hidden;
+}
+
+.set_tab_menue
+{
+	height: 100%;
+}

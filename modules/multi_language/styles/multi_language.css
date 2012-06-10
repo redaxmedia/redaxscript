@@ -1,0 +1,140 @@
+/* extend icon flag */
+
+.icon_flag.language_ar,
+.icon_flag.language_cs,
+.icon_flag.language_de,
+.icon_flag.language_en,
+.icon_flag.language_es,
+.icon_flag.language_et,
+.icon_flag.language_hu,
+.icon_flag.language_id,
+.icon_flag.language_it,
+.icon_flag.language_lv,
+.icon_flag.language_ms,
+.icon_flag.language_nl,
+.icon_flag.language_no,
+.icon_flag.language_pl,
+.icon_flag.language_pt,
+.icon_flag.language_ro,
+.icon_flag.language_ru,
+.icon_flag.language_sk,
+.icon_flag.language_sv,
+.icon_flag.language_tr,
+.icon_flag.language_vi,
+.icon_flag.language_zh
+{
+	background: url('modules/multi_language/images/icons.png');
+	text-indent: -999em;
+}
+
+/* setup icon flag positions */
+
+.icon_flag.language_ar
+{
+	background-position: -4px -7px;
+}
+
+.icon_flag.language_cs
+{
+	background-position: -4px -37px;
+}
+
+.icon_flag.language_de
+{
+	background-position: -4px -67px;
+}
+
+.icon_flag.language_en
+{
+	background-position: -4px -97px;
+}
+
+.icon_flag.language_es
+{
+	background-position: -4px -127px;
+}
+
+.icon_flag.language_et
+{
+	background-position: -4px -157px;
+}
+
+.icon_flag.language_hu
+{
+	background-position: -4px -187px;
+}
+
+.icon_flag.language_id
+{
+	background-position: -4px -217px;
+}
+
+.icon_flag.language_it
+{
+	background-position: -4px -247px;
+}
+
+.icon_flag.language_lv
+{
+	background-position: -4px -277px;
+}
+
+.icon_flag.language_ms
+{
+	background-position: -4px -307px;
+}
+
+.icon_flag.language_nl
+{
+	background-position: -4px -337px;
+}
+
+.icon_flag.language_no
+{
+	background-position: -4px -367px;
+}
+
+.icon_flag.language_pl
+{
+	background-position: -4px -397px;
+}
+
+.icon_flag.language_pt
+{
+	background-position: -4px -427px;
+}
+
+.icon_flag.language_ro
+{
+	background-position: -4px -457px;
+}
+
+.icon_flag.language_ru
+{
+	background-position: -4px -487px;
+}
+
+.icon_flag.language_sk
+{
+	background-position: -4px -517px;
+}
+
+.icon_flag.language_sv
+{
+	background-position: -4px -547px;
+}
+
+.icon_flag.language_tr
+{
+	background-position: -4px -577px;
+}
+
+.icon_flag.language_vi
+{
+	background-position: -4px -607px;
+}
+
+.icon_flag.language_zh
+{
+	background-position: -4px -637px;
+}

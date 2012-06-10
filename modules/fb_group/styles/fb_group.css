@@ -1,0 +1,104 @@
+/* fb group */
+
+.link_fb_group_user_image
+{
+	-moz-box-shadow: 0 0 6px #c6c6c6;;
+	-webkit-box-shadow: 0 0 6px #c6c6c6;;
+	border: 1px solid #bdbdbd;
+	box-shadow: 0 0 6px #c6c6c6;
+	display: inline-block;
+}
+
+.link_fb_group_user_image img
+{
+	border: 1px solid #e1e1e1;
+	float: left;
+	height: 50px;
+	width: 50px;
+}
+
+/* fb group message */
+
+.box_fb_group_message + .box_fb_group_message, .box_fb_group_comment + .box_fb_group_message
+{
+	margin-top: 2em;
+}
+
+.box_fb_group_message_sub
+{
+	-moz-box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
+	-webkit-box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
+	box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
+	line-height: 1.5em;
+	margin: 1em 0 2em;
+	padding: 0.25em 0 0.25em 1.5em;
+}
+
+.wrapper_fb_group_message_sub
+{
+	position: relative;
+}
+
+.title_fb_group_message_sub
+{
+	font-size: 1em;
+	left: 5.5em;
+	position: absolute;
+	top: -4.25em;
+	text-decoration: underline;
+}
+
+.title_fb_group_message_sub, .title_fb_group_message_sub a
+{
+	color: #474747;
+}
+
+/* fb group comment */
+
+.box_fb_group_comment
+{
+	background: #e2e2e2;
+	border: 1px solid #cdcdcd;
+	color: #474747;
+	padding: 1em;
+}
+
+.box_fb_group_comment + .box_fb_group_comment
+{
+	border-top-width: 0px;
+}
+
+.box_fb_group_comment .link_fb_group_user_image
+{
+	float: left;
+	margin-right: 1em;
+}
+
+.box_fb_group_comment .link_fb_group_user_image img
+{
+	height: 35px;
+	width: 35px;
+}
+
+.box_fb_group_comment_infoline
+{
+	-moz-border-radius: 0.25em 0.25em 0 0;
+	-webkit-border-radius: 0.25em 0.25em 0 0;
+	background: #dadada;
+	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	border: 1px solid #cdcdcd;
+	border-bottom: 0;
+	border-radius: 0.25em 0.25em 0 0;
+	font: bold 1em/2.25em arial;
+	padding: 0 1em;
+	text-shadow: 0 1px #f1f1f1;
+}
+
+.title_fb_group_comment_sub
+{
+	font-size: 1em;
+}

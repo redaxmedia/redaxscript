@@ -1,0 +1,14 @@
+/* file manager */
+
+.form_file_manager
+{
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+/* hide default elements */
+
+.js .form_file_manager .field_file, .js .form_file_manager .field_upload
+{
+	display: none;
+}

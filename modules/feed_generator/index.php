@@ -1,0 +1,147 @@
+<?php
+
+/* feed list */
+
+function feed_list()
+{
+	$articles_total = query_total('articles', 'access', 0);
+	$comments_total = query_total('comments', 'access', 0);
+
+	/* collect output */
+
+	if ($articles_total > 0)
+	{
+		$output = '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_articles'), 'feed/articles', '', 'nofollow') . '</li>';
+	}
+	if ($comments_total > 0)
+	{
+		$output .= '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_comments'), 'feed/comments', '', 'nofollow') . '</li>';
+	}
+	if ($articles_total > 0 || $comments_total > 0)
+	{
+		$output = '<ul class="list_feed">' . $output . '</ul>';
+	}
+	echo $output;
+}
+
+/* feed generator render start */
+
+function feed_generator_render_start()
+{
+	if (FIRST_PARAMETER == 'feed' && (SECOND_PARAMETER == 'articles' || SECOND_PARAMETER == 'comments'))
+	{
+		define('RENDER_BREAK', 1);
+		header('content-type: application/atom+xml');
+		feed_generator(SECOND_PARAMETER);
+	}
+}
+
+/* feed generator */
+
+function feed_generator($table = '')
+{
+	if ($_GET['l'])
+	{
+		$language = LANGUAGE;
+		$language_string = LANGUAGE_STRING;
+	}
+
+	/* query table contents */
+
+	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . $language . '\' || language = \'all\') && status = 1 && access = 0 ORDER BY rank ' . s('order') . ' LIMIT ' . s('limit');
+	$result = mysql_query($query);
+	if ($result)
+	{
+		/* define variables */
+
+		$title = s('title');
+		$description = s('description');
+		$author = s('author');
+		$email = s('email');
+		$copyright = s('copyright');
+		$string = ROOT . '/' . REWRITE_STRING . FULL_STRING . $language_string . $language;
+
+		/* collect feed header output */
+
+		$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>' . PHP_EOL;
+		$output .= '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL;
+		$output .= '<id>' . $string . '</id>' . PHP_EOL;
+		if ($title)
+		{
+			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
+		}
+		if ($description)
+		{
+			$output .= '<subtitle type="text">' . $description . '</subtitle>' . PHP_EOL;
+		}
+		$output .= '<link type="application/atom+xml" href="' . $string . '" rel="self" />' . PHP_EOL;
+		$output .= '<updated>' . date('c', strtotime(NOW)) . '</updated>' . PHP_EOL;
+		if ($author || $email)
+		{
+			$output .= '<author>' . PHP_EOL;
+			if ($author)
+			{
+				$output .= '<name>' . $author . '</name>' . PHP_EOL;
+			}
+			if ($email)
+			{
+				$output .= '<email>' . $email . '</email>' . PHP_EOL;
+			}
+			$output .= '</author>' . PHP_EOL;
+		}
+		if ($copyright)
+		{
+			$output .= '<rights>' . $copyright . '</rights>' . PHP_EOL;
+		}
+		$output .= '<generator>' . l('redaxscript') . ' ' . l('redaxscript_version') . '</generator>' . PHP_EOL . PHP_EOL;
+
+		/* collect feed body output */
+
+		while ($r = mysql_fetch_assoc($result))
+		{
+			if ($r)
+			{
+				foreach ($r as $key => $value)
+				{
+					$$key = stripslashes($value);
+				}
+			}
+
+			/* define variables */
+
+			$date = date('c', strtotime($date));
+			$text = htmlspecialchars(strip_tags($text));
+			$string = ROOT . '/' . REWRITE_STRING;
+			if ($table == 'articles' && $category == 0)
+			{
+				$string .= $alias;
+			}
+			else
+			{
+				$string .= build_string($table, $id);
+			}
+			$string .= $language_string;
+			if ($table == 'comments')
+			{
+				$title = $author;
+			}
+
+			/* collect entry output */
+
+			$output .= '<entry>' . PHP_EOL;
+			$output .= '<id>' . $string . '</id>' . PHP_EOL;
+			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
+			$output .= '<link href="' . $string . '" />' . PHP_EOL;
+			$output .= '<updated>' . $date . '</updated>' . PHP_EOL;
+			if ($description)
+			{
+				$output .= '<summary type="text">' . $description . '</summary>' . PHP_EOL;
+			}
+			$output .= '<content type="html">' . $text . '</content>' . PHP_EOL;
+			$output .= '</entry>' . PHP_EOL;
+		}
+		$output .= '</feed>';
+	}
+	echo $output;
+}
+?>

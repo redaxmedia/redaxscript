@@ -1,0 +1,10 @@
+.dialog_admin
+{
+	margin: -50px 0 0 -200px;
+	width: 400px;
+}
+
+.dialog_overlay_admin
+{
+	background: #000;
+}

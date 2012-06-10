@@ -1,0 +1,18 @@
+<!--[if lt IE 9]><div id="panel_admin" class="js_panel_admin panel_admin"><![endif]-->
+<nav id="panel_admin" class="js_panel_admin panel_admin">
+	<div class="js_box_panel_admin box_panel_admin clear_fix">
+		<!--[if lt IE 9]><div class="wrapper"><![endif]-->
+		<section class="wrapper">
+			<?php admin_panel_list(); ?>
+			<div class="wrapper_panel_menue_admin">
+				<?php if (MY_USER && MY_ID): ?>
+					<?php echo anchor_element('internal', '', 'link_panel_admin link_salutation', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID); ?>
+				<?php endif; ?>
+				<?php echo anchor_element('internal', '', 'link_panel_admin link_logout', l('logout'), 'logout'); ?>
+			</div>
+		</section>
+		<!--[if lt IE 9]></div><![endif]-->
+	</div>
+	<div class="js_panel_bar_admin panel_bar_admin"></div>
+</nav>
+<!--[if lt IE 9]></div><![endif]-->

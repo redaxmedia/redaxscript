@@ -1,0 +1,15 @@
+/* print */
+
+@media print
+{
+	body
+	{
+		color: #000;
+		font-size: 1em;
+	}
+
+	.bottom, .header, .footer, .sidebar
+	{
+		display: none;
+	}
+}

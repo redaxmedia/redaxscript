@@ -1,0 +1,32 @@
+<ifmodule mod_deflate.c>
+	<filesmatch \.(css|html|js|php|xml)$>
+		setoutputfilter deflate
+	</filesmatch>
+</ifmodule>
+<ifmodule mod_security.c>
+	secfilterengine off
+	secfilterscanpost off
+</ifmodule>
+<ifmodule mod_rewrite.c>
+	rewriteengine on
+	rewritecond %{request_filename} -f
+	rewriterule ^(.*) $1 [l]
+	rewritecond %{request_filename} !-d
+	rewriterule ^([^.]*)$ ?p=$1 [l]
+	rewritecond %{request_filename} !-d
+	rewriterule ^([^.]*).([\w]{2})$ ?p=$1&l=$2 [l]
+	rewritecond %{request_filename} !-d
+	rewriterule ^([^.]*).([\w]{3,})$ ?p=$1&t=$2 [l]
+</ifmodule>
+<ifmodule mod_headers.c>
+	<filesmatch \.(gif|ico|jpg|png)$>
+		header set cache-control max-age=2419200
+	</filesmatch>
+	<filesmatch \.(css|js|swf)$>
+		header set cache-control max-age=604800
+	</filesmatch>
+	<filesmatch \.(html|xml)$>
+		header set cache-control max-age=600
+	</filesmatch>
+</ifmodule>
+fileetag none

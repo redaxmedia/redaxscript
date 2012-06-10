@@ -1,0 +1,34 @@
+*
+{
+	zoom: 1;
+}
+
+.msie7 button
+{
+	word-wrap: normal;
+}
+
+.msie7 legend
+{
+	margin-left: -7px;
+}
+
+.msie7 .clear_fix
+{
+	display: inline-block;
+}
+
+.msie7 .grid_space:first-child
+{
+	margin-right: -1px;
+}
+
+.msie7 .list_dropdown li, .msie7 .list_tab_menue li
+{
+	display: inline;
+}
+
+.msie7 .list_dropdown a
+{
+	min-width: 100%;
+}

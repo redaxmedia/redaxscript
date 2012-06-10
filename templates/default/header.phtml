@@ -1,0 +1,39 @@
+<!--[if lt IE 9]><div id="header" class="header"><![endif]-->
+<header id="header" class="header">
+	<!--[if lt IE 9]><div class="wrapper clear_fix"><![endif]-->
+	<section class="wrapper clear_fix">
+		<?php if (DB_CONNECTED == 1): ?>
+			<div class="grid_space s3o7 box_first">
+				<div class="js_logo_website logo_website">
+					<div class="js_logo_website_effect logo_website_effect"></div>
+				</div>
+				<div class="wrapper_metadata">
+					<?php if (s('title')): ?>
+						<h1 class="js_logo_effect_trigger title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
+					<?php endif; ?>
+					<?php if (s('description')): ?>
+						<p class="description_website"><?php echo s('description'); ?></p>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class="grid_space s4o7 box_last">
+				<ul class="js_dropdown list_dropdown list_header">
+					<li>
+						<?php echo l('categories'); ?>
+						<?php navigation_list('categories', array(
+							'limit' => 5
+						)); ?>
+					</li>
+					<li>
+						<?php echo l('articles'); ?>
+						<?php navigation_list('articles', array(
+							'limit' => 5
+						)); ?>
+					</li>
+				</ul>
+			</div>
+		<?php endif; ?>
+	</section>
+	<!--[if lt IE 9]></div><![endif]-->
+</header>
+<!--[if lt IE 9]></div><![endif]-->

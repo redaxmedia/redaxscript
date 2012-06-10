@@ -1,0 +1,7 @@
+/* button */
+
+.field_button span span, .field_button_large span span
+{
+	padding: 0 1em;
+	line-height: 2.875em;
+}

@@ -1,0 +1,12 @@
+/* debugger */
+
+.box_debugger del
+{
+	color: #999;
+}
+
+.box_debugger span
+{
+	display: inline-block;
+	margin-left: 0.25em;
+}
