@@ -10,8 +10,15 @@ function feed_reader_loader_start()
 
 /* feed reader */
 
-function feed_reader($url = '', $limit = '')
+function feed_reader($url = '', $filter = '', $limit = '')
 {
+	/* define variables */
+
+	if (is_numeric($filter))
+	{
+		$limit = $filter;
+	}
+
 	/* get contents */
 
 	$contents = file_get_contents($url);
@@ -59,34 +66,49 @@ function feed_reader($url = '', $limit = '')
 				$text = entity(truncate($value->description, 1000, '...'));
 			}
 
-			/* collect title output */
+			/* if filter is invalid */
 
-			if ($title)
+			if (is_numeric($filter) || $filter == '')
 			{
-				$output .= '<h3 class="title_feed_reader clear_fix">';
-				if ($string)
-				{
-					$output .= anchor_element('external', '', 'title_first', $title, $string, '', 'nofollow');
-				}
-				else
-				{
-					$output .= '<span class="title_first">' . $title . '</span>';
-				}
-
-				/* collect date output */
-
-				if ($time && $date)
-				{
-					$output .= '<span class="title_second">' . $date . ' ' . l('at') . ' ' . $time . '</span>';
-				}
-				$output .= '</h3>';
+				$filter_no = 1;
 			}
-
-			/* collect text output */
-
-			if ($text)
+			else
 			{
-				$output .= '<div class="box_feed_reader">' . $text . '</div>';
+				$position_title = strpos($title, $filter);
+				$position_text = strpos($text, $filter);
+				$filter_no = 0;
+			}
+			if ($position_title || $position_text || $filter_no)
+			{
+				/* collect title output */
+
+				if ($title)
+				{
+					$output .= '<h3 class="title_feed_reader clear_fix">';
+					if ($string)
+					{
+						$output .= anchor_element('external', '', 'title_first', $title, $string, '', 'nofollow');
+					}
+					else
+					{
+						$output .= '<span class="title_first">' . $title . '</span>';
+					}
+
+					/* collect date output */
+
+					if ($time && $date)
+					{
+						$output .= '<span class="title_second">' . $date . ' ' . l('at') . ' ' . $time . '</span>';
+					}
+					$output .= '</h3>';
+				}
+
+				/* collect text output */
+
+				if ($text)
+				{
+					$output .= '<div class="box_feed_reader">' . $text . '</div>';
+				}
 			}
 		}
 	}
