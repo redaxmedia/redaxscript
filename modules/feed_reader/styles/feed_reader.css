@@ -9,9 +9,9 @@
 	padding: 1em;
 }
 
-.box_feed_reader, .box_feed_reader *
+.box_feed_reader a
 {
-	font-weight: normal;
+	text-decoration: underline;
 }
 
 .title_feed_reader

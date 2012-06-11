@@ -51,6 +51,9 @@ function feed_reader($url = '', $filter = '', $limit = '')
 			/* define variables */
 
 			$title = entity(truncate($value->title, 80, '...'));
+
+			/* if atom feed */
+
 			if ($type == 'atom')
 			{
 				$string = $value->link['href'];
@@ -58,6 +61,9 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$date = date(s('date'), strtotime($value->updated));
 				$text = entity(truncate($value->content, 1000, '...'));
 			}
+
+			/* else if rss feed */
+
 			else if ($type == 'rss')
 			{
 				$string = $value->link;
@@ -78,7 +84,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$position_text = strpos($text, $filter);
 				$filter_no = 0;
 			}
-			if ($position_title || $position_text || $filter_no)
+			if ($filter_no || $position_title || $position_text)
 			{
 				/* collect title output */
 
