@@ -5,13 +5,6 @@
 	margin-left: -19px;
 }
 
-/* background */
-
-.msie7 .box_dock_admin, .msie7 .box_panel_admin
-{
-	background: url('templates/admin/images/carbon.png') #303030;
-}
-
 /* float admin elements */
 
 .msie7 .link_dock_admin, .msie7 .list_panel_admin

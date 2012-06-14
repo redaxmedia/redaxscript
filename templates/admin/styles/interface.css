@@ -6,12 +6,7 @@
 	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	background: url('templates/admin/images/sprite.png') #3b3b3b;
-	background: url('templates/admin/images/sprite.png'), linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png'), -moz-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png'), -ms-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png'), -o-linear-gradient(top, #3b3b3b #303030);
-	background: url('templates/admin/images/sprite.png'), -webkit-linear-gradient(top, #3b3b3b, #303030);
+	background: url('templates/admin/images/sprite.png') #333;
 	border: 1px solid #151515;
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
@@ -24,29 +19,24 @@
 
 .link_dock_admin:hover
 {
-	background: url('templates/admin/images/sprite.png') #474747;
-	background: url('templates/admin/images/sprite.png'), linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png'), -moz-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png'), -ms-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png'), -o-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png'), -webkit-linear-gradient(top, #474747, #3b3b3b);
+	background-color: #3b3b3b;
 }
 
 /* admin dock icons */
 
 .link_dock_admin.link_unpublish
 {
-	background-position: -3px -453px, 0 0;
+	background-position: -3px -453px;
 }
 
 .link_dock_admin.link_edit
 {
-	background-position: -3px -483px, 0 0;
+	background-position: -3px -483px;
 }
 
 .link_dock_admin.link_delete
 {
-	background-position: -3px -513px, 0 0;
+	background-position: -3px -513px;
 }
 
 /* admin panel link */
@@ -57,12 +47,7 @@
 	-moz-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	-webkit-border-radius: 0.25em;
-	background: #3b3b3b;
-	background: linear-gradient(top, #3b3b3b, #303030);
-	background: -moz-linear-gradient(top, #3b3b3b, #303030);
-	background: -ms-linear-gradient(top, #3b3b3b, #303030);
-	background: -o-linear-gradient(top, #3b3b3b, #303030);
-	background: -webkit-linear-gradient(top, #3b3b3b, #303030);
+	background: #333;
 	border: 1px solid #151515;
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
@@ -81,41 +66,18 @@
 
 .link_panel_admin:hover
 {
-	background: #474747;
-}
-
-/* admin panel profile */
-
-.link_panel_admin.link_profile
-{
-	background: url('templates/admin/images/sprite.png') -2px -694px #3b3b3b;
-	background: url('templates/admin/images/sprite.png') -2px -694px, linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -moz-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -ms-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -o-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -webkit-linear-gradient(top, #3b3b3b, #303030);
-	padding-left: 2.25em;
-}
-
-.link_panel_admin.link_profile:hover
-{
-	background: url('templates/admin/images/sprite.png') -2px -694px #474747;
-	background: url('templates/admin/images/sprite.png') -2px -694px, linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -moz-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -ms-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -o-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -2px -694px, -webkit-linear-gradient(top, #474747, #3b3b3b);
+	background: #3b3b3b;
 }
 
 /* admin panel logout */
 
-.box_panel_admin .link_logout 
+.link_panel_admin.link_logout 
 {
 	padding-left: 2.5em;
 	position: relative;
 }
 
-.box_panel_admin .link_logout:before 
+.link_panel_admin.link_logout:before 
 {
 	background: url('templates/admin/images/sprite.png') -158px 0;
 	content: '';
@@ -128,7 +90,7 @@
 	width: 14px;
 }
 
-.box_panel_admin .link_logout:hover.link_logout:before
+.link_panel_admin.link_logout:hover.link_logout:before
 {
 	-moz-box-shadow: 0 0 3px #b90000;
 	-webkit-box-shadow: 0 0 3px #b90000;
@@ -224,12 +186,7 @@
 	-moz-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	-webkit-border-radius: 0.25em;
-	background: url('templates/admin/images/sprite.png') -18px -49px #3b3b3b;
-	background: url('templates/admin/images/sprite.png') -18px -49px, linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -moz-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -ms-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -o-linear-gradient(top, #3b3b3b, #303030);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -webkit-linear-gradient(top, #3b3b3b, #303030);
+	background: url('templates/admin/images/sprite.png') -18px -49px #333;
 	border: 1px solid #151515;
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
@@ -240,12 +197,7 @@
 
 .list_panel_admin > li:hover, .list_panel_admin > li.item_touch
 {
-	background: url('templates/admin/images/sprite.png') -18px -49px #474747;
-	background: url('templates/admin/images/sprite.png') -18px -49px, linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -moz-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -ms-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -o-linear-gradient(top, #474747, #3b3b3b);
-	background: url('templates/admin/images/sprite.png') -18px -49px, -webkit-linear-gradient(top, #474747, #3b3b3b);
+	background: url('templates/admin/images/sprite.png') -18px -49px #3b3b3b;
 }
 
 /* admin panel list hover spaces */
@@ -308,12 +260,7 @@
 	-moz-border-radius-topleft: 0.25em;
 	-webkit-border-top-right-radius: 0.25em;
 	-webkit-border-top-left-radius: 0.25em;
-	background: url('templates/admin/images/carbon.png') #303030;
-	background: url('templates/admin/images/carbon.png'), linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -moz-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -ms-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -o-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -webkit-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png') #232323;
 	border-top-right-radius: 0.25em;
 	border-top-left-radius: 0.25em;
 	margin-right: 1px;

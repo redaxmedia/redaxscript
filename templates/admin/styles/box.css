@@ -33,12 +33,7 @@
 	-moz-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
-	background: url('templates/admin/images/carbon.png') #303030;
-	background: url('templates/admin/images/carbon.png'), linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -moz-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -ms-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -o-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -webkit-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png') #232323;
 	border-radius: 0.25em;
 	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	margin-top: 1em;
@@ -78,12 +73,7 @@
 
 .box_panel_admin
 {
-	background: url('templates/admin/images/carbon.png') #303030;
-	background: url('templates/admin/images/carbon.png'), linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -moz-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -ms-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -o-linear-gradient(top, #1b1b1b, #303030);
-	background: url('templates/admin/images/carbon.png'), -webkit-linear-gradient(top, #1b1b1b, #303030);
+	background: url('templates/admin/images/carbon.png') #232323;
 	padding: 1.25em 0;
 }
 
