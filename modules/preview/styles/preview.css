@@ -16,6 +16,11 @@
 	display: inline-block;
 }
 
+.msie7 .preview .box_preview.has_tooltip
+{
+	display: inline;
+}
+
 /* grid */
 
 .preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover

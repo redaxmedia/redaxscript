@@ -43,6 +43,11 @@
 	width: 24px;
 }
 
+.msie7 .editor_control
+{
+	display: inline;
+}
+
 .editor_control:hover
 {
 	background: url('modules/editor/images/icons.png') #474747;
