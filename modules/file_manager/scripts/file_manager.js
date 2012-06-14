@@ -11,9 +11,9 @@
 			fieldUpload = form.find('button.js_upload'),
 			fieldBrowse;
 
-		/* append fake browse */
+		/* insert fake browse */
 
-		fieldBrowse = $('<button type="submit" class="js_browse field_button_admin"><span><span>' + l.file_manager_browse + '</span></span></button').prependTo(form);
+		fieldBrowse = $('<button type="submit" class="js_browse field_button_admin"><span><span>' + l.file_manager_browse + '</span></span></button').insertBefore(fieldUpload);
 
 		/* browse drive on click */
 
