@@ -21,6 +21,8 @@
 			return false;
 		}
 
+		/* build editor elements */
+
 		this.textarea.hide();
 		this.editor = $('<div class="js_editor editor"></div>').insertBefore(this.textarea);
 		this.toolbar = $('<div class="js_toolbar editor_toolbar" unselectable="on"></div>').appendTo(this.editor);

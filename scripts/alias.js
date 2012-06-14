@@ -11,6 +11,8 @@
 			options = $.extend({}, r.plugin.generateAlias.options, options || {});
 		}
 
+		/* listen for input */
+
 		$(this).on('change input keyup', function ()
 		{
 			var field = $(this),

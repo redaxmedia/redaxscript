@@ -12,7 +12,7 @@
 			checkDialog = dialog.length || dialogOverlay.length,
 			output;
 
-		/* manage suffix */
+		/* handle suffix */
 
 		if (r.constant.FIRST_PARAMETER == 'admin')
 		{

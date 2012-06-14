@@ -20,7 +20,7 @@
 
 		$(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
 
-		/* click on accordion title */
+		/* listen for click */
 
 		$(this).click(function ()
 		{

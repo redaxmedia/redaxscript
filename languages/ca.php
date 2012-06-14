@@ -157,7 +157,7 @@ $l['filter'] = 'Filtra';
 $l['status'] = 'Estat';
 $l['rank'] = 'Posició';
 $l['headline'] = 'Titular';
-$l['infoline'] = 'Infoline'; // not sure how to translate
+$l['infoline'] = 'Infoline';
 
 /* input */
 

@@ -153,6 +153,9 @@ if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAM
 else
 {
 	hook('render_start');
+
+	/* undefine */
+
 	undefine(array(
 		'REFRESH_STRING',
 		'DESCRIPTION',

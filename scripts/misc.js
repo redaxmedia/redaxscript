@@ -11,6 +11,8 @@
 			options = $.extend({}, r.plugin.keyShortcut.options, options || {});
 		}
 
+		/* listen for keydown */
+
 		$(this).on('keydown', function (event)
 		{
 			var adminDock = $(options.element.adminDock),

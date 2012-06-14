@@ -11,6 +11,8 @@
 			options = $.extend({}, r.plugin.checkRequired.options, options || {});
 		}
 
+		/* setup forms */
+
 		$(this).each(function ()
 		{
 			var form = $(this),
@@ -111,6 +113,8 @@
 			options = $.extend({}, r.plugin.checkSearch.options, options || {});
 		}
 
+		/* listen for submit */
+
 		$(this).submit(function ()
 		{
 			var field = $(this).find(options.required)[0],
@@ -194,7 +198,9 @@
 			options = $.extend({}, r.plugin.autoResize.options, options || {});
 		}
 
-		$(this).css('overflow', options.overflow).on('ready input', function (event)
+		/* listen for input */
+
+		$(this).on('ready input', function (event)
 		{
 			var textarea = this;
 
@@ -213,7 +219,7 @@
 			{
 				textarea.rows += 1;
 			}
-		}).trigger('ready');
+		}).css('overflow', options.overflow).trigger('ready');
 	};
 })(jQuery);
 
