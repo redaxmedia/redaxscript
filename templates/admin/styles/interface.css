@@ -169,13 +169,13 @@
 
 .list_panel_admin li
 {
-	background: #3b3b3b;
+	background-color: #333;
 	padding: 0.25em 0.75em;
 }
 
 .list_panel_admin li:hover, .list_panel_admin li.item_touch
 {
-	background: #474747;
+	background-color: #3b3b3b;
 }
 
 /* admin panel list dropdown area */
@@ -197,7 +197,7 @@
 
 .list_panel_admin > li:hover, .list_panel_admin > li.item_touch
 {
-	background: url('templates/admin/images/sprite.png') -18px -49px #3b3b3b;
+	background-color: #3b3b3b;
 }
 
 /* admin panel list hover spaces */
