@@ -1,11 +1,11 @@
 /* table */
 
-.table td:last-child, .table th:last-child
-{
-	text-align: right;
-}
-
-.table, .table td:first-child, .table th:first-child
+.table td, .table th
 {
 	text-align: left;
+}
+
+.table .column_last
+{
+	text-align: right;
 }

@@ -31,6 +31,11 @@
 
 /* default table head and foot */
 
+.table_default tfoot, .table_default thead
+{
+	border: 1px solid #9e9e9e;
+}
+
 .table_default tfoot tr, .table_default thead tr
 {
 	background: #c1c1c1;
@@ -43,9 +48,4 @@
 	font: bold 1em arial;
 	text-shadow: 0 1px #777;
 	text-transform: uppercase;
-}
-
-.table_default tfoot, .table_default thead
-{
-	border: 1px solid #9e9e9e;
 }

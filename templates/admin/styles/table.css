@@ -1,13 +1,5 @@
 /* admin table */
 
-.table_admin
-{
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
-	border-radius: 0.25em;
-	overflow: hidden;
-}
-
 .table_admin td, .table_admin th
 {
 	padding: 0.75em;
@@ -15,10 +7,16 @@
 
 /* admin table body */
 
+.table_admin tbody
+{
+	border: solid #b9b9b9;
+	border-width: 0 1px;
+}
+
 .table_admin tbody tr
 {
-	-moz-box-shadow: 0 1px #fff, inset 1px 0 0 #b9b9b9, inset -1px 0 0 #b9b9b9;
-	-webkit-box-shadow: 0 1px #fff, inset 1px 0 0 #b9b9b9, inset -1px 0 0 #b9b9b9;
+	-moz-box-shadow: 0 1px #fff;
+	-webkit-box-shadow: 0 1px #fff;
 	background: #e2e2e2;
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
@@ -26,7 +24,7 @@
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	border-bottom: 1px solid #b9b9b9;
-	box-shadow: 0 1px #fff, inset 1px 0 0 #b9b9b9, inset -1px 0 0 #b9b9b9;
+	box-shadow: 0 1px #fff;
 }
 
 .table_admin tbody tr:hover
@@ -42,6 +40,7 @@
 .table_admin tbody tr:last-child
 {
 	border-bottom: 0;
+	box-shadow: none;
 }
 
 /* link view */
@@ -63,12 +62,16 @@
 
 /* admin table head and foot */
 
+.table_admin tfoot, .table_admin thead
+{
+	border: 1px solid #222;
+}
+
 .table_admin tfoot tr, .table_admin thead tr, .table_admin tbody .row_group, .table_admin tbody .row_group:hover
 {
 	background: url('templates/admin/images/carbon.png') #232323;
 	color: #ccc;
 	font: bold 1em arial;
-	position: relative;
 	text-transform: uppercase;
 }
 
