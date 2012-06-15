@@ -12,9 +12,15 @@
 11 = templates/scratch/styles/typography.css
 12 = templates/scratch/styles/query.css
 
+[firefox]
+1 = styles/firefox.css
+
 [msie]
 1 = styles/msie.css
 2 = templates/scratch/styles/msie.css
+
+[webkit]
+1 = styles/webkit.css
 
 [admin]
 1 = templates/admin/styles/box.css
@@ -30,6 +36,6 @@
 1 = templates/admin/styles/msie.css
 
 [settings]
-deploy = inline
+deploy = external
 rewrite = false
 minify = false

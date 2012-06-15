@@ -1,6 +1,6 @@
-/* search and select field reset */
+/* input and select field reset */
 
-.field_search, .field_search::-webkit-search-cancel-button, .field_select
+input, input::-webkit-search-cancel-button, select
 {
 	-webkit-appearance: none;
 }

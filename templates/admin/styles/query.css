@@ -74,6 +74,14 @@
 	}
 }
 
+
+/* mobile */
+
+.mobile .field_select_admin, .mobile .field_text_admin, .mobile .field_textarea_small_admin
+{
+	width: 50%;
+}
+
 /* rtl direction */
 
 .rtl .description_dock_admin, .rtl .wrapper_panel_menue_admin

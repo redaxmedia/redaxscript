@@ -189,6 +189,13 @@
 	}
 }
 
+/* mobile */
+
+.mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
+{
+	width: 50%;
+}
+
 /* rtl direction */
 
 .rtl
