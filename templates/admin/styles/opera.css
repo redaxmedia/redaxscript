@@ -1,0 +1,6 @@
+/* admin select field */
+
+.field_select_admin, .field_select_admin.field_disabled, .field_select_admin.field_readonly, form .field_select_admin.field_note
+{
+	background-color: rgba(0, 0, 0, 0);
+}

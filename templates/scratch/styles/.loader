@@ -35,6 +35,9 @@
 [admin_msie]
 1 = templates/admin/styles/msie.css
 
+[admin_opera]
+1 = templates/admin/styles/opera.css
+
 [settings]
 deploy = external
 rewrite = false

@@ -25,6 +25,9 @@
 1 = styles/msie.css
 2 = templates/default/styles/msie.css
 
+[opera]
+1 = templates/default/styles/opera.css
+
 [webkit]
 1 = styles/webkit.css
 2 = templates/default/styles/webkit.css
@@ -41,6 +44,9 @@
 
 [admin_msie]
 1 = templates/admin/styles/msie.css
+
+[admin_opera]
+1 = templates/admin/styles/opera.css
 
 [settings]
 deploy = inline
