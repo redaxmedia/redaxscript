@@ -43,21 +43,26 @@
 	box-shadow: none;
 }
 
-/* link view */
-
-.table_admin tbody .link_view
-{
-	color: #474747;
-	font-weight: bold;
-	text-decoration: underline;
-}
-
 /* admin table row disabled */
 
 .table_admin tbody .row_disabled
 {
 	background: #ddd;
 	color: #b9b9b9;
+}
+
+/* admin table row group */
+
+.table_admin tbody .row_group
+{
+	border-top: 1px solid #b9b9b9;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.table_admin tbody .row_group, .table_admin tbody .row_group:hover
+{
+	background: url('templates/admin/images/carbon.png') #eee;
 }
 
 /* admin table head and foot */
@@ -67,19 +72,12 @@
 	border: 1px solid #222;
 }
 
-.table_admin tfoot tr, .table_admin thead tr, .table_admin tbody .row_group, .table_admin tbody .row_group:hover
+.table_admin tfoot tr, .table_admin thead tr
 {
 	background: url('templates/admin/images/carbon.png') #232323;
 	color: #ccc;
 	font: bold 1em arial;
 	text-transform: uppercase;
-}
-
-.table_admin tbody .row_group 
-{
-	-moz-box-shadow: 0 1px #fff, inset 1px 0 0 #232323, inset -1px 0 0 #232323;
-	-webkit-box-shadow: 0 1px #fff, inset 1px 0 0 #232323, inset -1px 0 0 #232323;
-	box-shadow: 0 1px #fff, inset 1px 0 0 #232323, inset -1px 0 0 #232323;
 }
 
 /* admin table move column icons */
@@ -88,6 +86,15 @@
 {
 	background: url('templates/admin/images/sprite.png') -116px 2px;
 	width: 20px;
+}
+
+/* link view */
+
+.table_admin tbody .link_view
+{
+	color: #474747;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 /* admin control */
@@ -112,7 +119,7 @@
 
 /* hide column move text */
 
-.table_admin th.column_move, .table_admin td.column_move
+.table_admin .column_move
 {
 	text-indent: -999em;
 	text-align: left;
