@@ -15,8 +15,6 @@
 
 .table_admin tbody tr
 {
-	-moz-box-shadow: 0 1px #fff;
-	-webkit-box-shadow: 0 1px #fff;
 	background: #e2e2e2;
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
@@ -24,7 +22,6 @@
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	border-bottom: 1px solid #b9b9b9;
-	box-shadow: 0 1px #fff;
 }
 
 .table_admin tbody tr:hover
@@ -69,7 +66,7 @@
 
 .table_admin tfoot, .table_admin thead
 {
-	border: 1px solid #222;
+	border: 1px solid #232323;
 }
 
 .table_admin tfoot tr, .table_admin thead tr

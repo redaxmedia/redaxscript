@@ -1,12 +1,16 @@
-/* default box accordion */
+/* serveral boxes */
 
-.box_accordion_default
+.box_accordion_default, .box_dialog_default, .sidebar .box_extra
 {
 	background: #e2e2e2;
+	background: linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
+	background: -moz-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
+	background: -ms-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
+	background: -o-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
+	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	border: 1px solid #ebebeb;
 	border-top: 0;
-	margin-right: -2px;
-	padding: 1em;
+	padding: 1em 1.5em;
 }
 
 /* box code */
@@ -60,19 +64,6 @@
 	border-radius: 0 0 0.25em 0.25em;
 }
 
-.box_dialog_default, .sidebar .box_extra
-{
-	background: #e2e2e2;
-	background: linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	background: -moz-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	background: -ms-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	background: -o-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	border: 1px solid #ebebeb;
-	border-top-color: #ddd;
-	padding: 1em 1.5em;
-}
-
 .box_dialog_default, .box_dialog_default a, .sidebar .box_extra, .sidebar .box_extra a
 {
 	color: #474747;
@@ -82,11 +73,11 @@
 
 .sidebar .box_extra
 {
-	-moz-border-radius-bottomright: 0.25em;
+	-moz-border-radius: 0 0 0.25em 0;
 	-moz-box-shadow: 0 0 3px #c6c6c6;
-	-webkit-border-bottom-right-radius: 0.25em;
+	-webkit-border-radius: 0 0 0.25em 0;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	border-bottom-right-radius: 0.25em;
+	border-radius: 0 0 0.25em 0;
 	box-shadow: 0 0 3px #c6c6c6;
 }
 

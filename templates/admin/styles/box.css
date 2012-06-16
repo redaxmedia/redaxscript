@@ -1,11 +1,4 @@
-/* admin box accordion and admin box dialog */
-
-.box_accordion_admin
-{
-	-moz-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
-	-webkit-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
-	box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #fff;
-}
+/* serveral boxes */
 
 .box_accordion_admin, .box_dialog_admin
 {
@@ -15,14 +8,19 @@
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
-	padding: 1em;
+	border: 1px solid #b9b9b9;
+	border-top: 0;
+	padding: 1em 1.25em;
 }
 
-.set_accordion_admin.set_accordion_last .box_accordion_admin, .box_dialog_admin
+.box_accordion_admin
 {
-	-moz-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
-	-webkit-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
-	box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 -1px #b9b9b9, inset 0 1px #fff;
+	border-bottom-width: 0;
+}
+
+.set_accordion_last .box_accordion_admin
+{
+	border-bottom-width: 1px;
 }
 
 /* admin box dock */

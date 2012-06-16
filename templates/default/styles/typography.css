@@ -75,6 +75,8 @@ pre
 
 .title_accordion_default
 {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	background: #dcdcdc;
 	background: linear-gradient(top, #ebebeb, #ddd 50%, #d4d4d4);
 	background: -moz-linear-gradient(top, #ebebeb, #ddd 50%, #d4d4d4);
@@ -82,6 +84,7 @@ pre
 	background: -o-linear-gradient(top, #ebebeb, #ddd 50%, #d4d4d4);
 	background: -webkit-linear-gradient(top, #ebebeb, #ddd 50%, #d4d4d4);
 	border: 1px solid #c1c1c1;
+	box-sizing: border-box;
 	font: 1.5em/2em cuprum, 'trebuchet ms', arial;
 	text-indent: 1em;
 	text-transform: uppercase;
@@ -101,16 +104,16 @@ pre
 	cursor: pointer;
 }
 
+.js .title_accordion_default.title_active
+{
+	cursor: default;
+}
+
 /* last title accordion */
 
 .js .set_accordion_last .title_accordion_default
 {
 	border-bottom-width: 1px;
-}
-
-.js .title_accordion_default.title_active
-{
-	cursor: default;
 }
 
 /* serveral titles */
@@ -210,11 +213,11 @@ pre
 
 .sidebar .title_extra
 {
+	-moz-border-radius: 0 0.25em 0 0;
 	-moz-box-shadow: 0 0 3px #c6c6c6;
-	-moz-border-radius-topright: 0.25em;
+	-webkit-border-radius: 0 0.25em 0 0;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	-webkit-border-top-right-radius: 0.25em;
-	border-top-right-radius: 0.25em;
+	border-radius: 0 0.25em 0 0;
 	box-shadow: 0 0 3px #c6c6c6;
 	font: 1.5em/1.5em cuprum, 'trebuchet ms', arial;
 	padding: 0 1em;

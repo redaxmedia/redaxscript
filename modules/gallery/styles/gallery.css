@@ -81,23 +81,17 @@
 
 .gallery_next div
 {
-	-moz-border-radius-topleft: 1.5em;
-	-moz-border-radius-bottomleft: 1.5em;
-	-webkit-border-top-left-radius: 1.5em;
-	-webkit-border-bottom-left-radius: 1.5em;
-	border-top-left-radius: 1.5em;
-	border-bottom-left-radius: 1.5em;
+	-moz-box-radius: 1.5em 0 0 1.5em;
+	-webkit-box-radius: 1.5em 0 0 1.5em;
+	box-radius: 1.5em 0 0 1.5em;
 	float: right;
 }
 
 .gallery_previous div
 {
-	-moz-border-radius-topright: 1.5em;
-	-moz-border-radius-bottomright: 1.5em;
-	-webkit-border-top-right-radius: 1.5em;
-	-webkit-border-bottom-right-radius: 1.5em;
-	border-top-right-radius: 1.5em;
-	border-bottom-right-radius: 1.5em;
+	-moz-box-radius: 0 1.5em 1.5em 0;
+	-webkit-box-radius: 0 1.5em 1.5em 0;
+	box-radius: 0 1.5em 1.5em 0;
 	float: left;
 }
 

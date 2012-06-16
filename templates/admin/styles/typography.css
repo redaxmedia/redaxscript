@@ -2,15 +2,16 @@
 
 .title_accordion_admin
 {
-	-moz-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #b9b9b9, inset 0 2px #e0e0e0;
-	-webkit-box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #b9b9b9, inset 0 2px #e0e0e0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	background: #d4d4d4;
 	background: linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -moz-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -ms-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -o-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -webkit-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
-	box-shadow: inset -1px 0 #b9b9b9, inset 1px 0 #b9b9b9, inset 0 1px #b9b9b9, inset 0 2px #e0e0e0;
+	border: 1px solid #b9b9b9;
+	box-sizing: border-box;
 	font: bold 1.125em/2.5em arial;
 	text-indent: 1em;
 	text-transform: uppercase;
@@ -26,21 +27,20 @@
 
 .js .title_accordion_admin
 {
+	border-bottom-width: 0;
 	cursor: pointer;
 }
 
 .js .title_accordion_admin.title_active
 {
-		cursor: default;
+	cursor: default;
 }
 
 /* last title accordion */
 
 .js .set_accordion_admin.set_accordion_last .title_accordion_admin
 {
-	-moz-box-shadow: inset 0 0 0 1px #b9b9b9, inset 0 2px #e0e0e0;
-	-webkit-box-shadow: inset 0 0 0 1px #b9b9b9, inset 0 2px #e0e0e0;
-	box-shadow: inset 0 0 0 1px #b9b9b9, inset 0 2px #e0e0e0;
+	border-bottom-width: 1px;
 }
 
 /* serveral titles */
@@ -48,7 +48,7 @@
 .js .set_accordion_admin .title_accordion_admin.title_active, .title_dialog_admin
 {
 	background: url('templates/admin/images/carbon.png') #232323;
-	box-shadow: none;
+	border: 1px solid #232323;
 }
 
 .js .title_accordion_admin.title_active, .js .title_accordion_admin.title_active a, .title_dialog_admin, .title_dialog_admin a

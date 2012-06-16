@@ -42,15 +42,6 @@
 	margin-left: 1em;
 }
 
-/* default accordion */
-
-.set_accordion_default
-{
-	-moz-box-shadow: 0 0 3px #c6c6c6;
-	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	box-shadow: 0 0 3px #c6c6c6;
-}
-
 /* breadcrumbs list */
 
 .list_breadcrumbs
@@ -308,10 +299,8 @@
 
 .list_tab_menue_default li
 {
-	-moz-border-radius-topright: 0.25em;
-	-moz-border-radius-topleft: 0.25em;
-	-webkit-border-top-right-radius: 0.25em;
-	-webkit-border-top-left-radius: 0.25em;
+	-moz-border-radius: 0.25em 0.25em 0 0;
+	-webkit-border-radius: 0.25em 0.25em 0 0;
 	background: #dadada;
 	background: linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
 	background: -moz-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
@@ -319,8 +308,7 @@
 	background: -o-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
 	border: 1px solid #ebebeb;
-	border-top-right-radius: 0.25em;
-	border-top-left-radius: 0.25em;
+	border-radius: 0.25em 0.25em 0 0;
 	margin-right: 1px;
 	vertical-align: bottom;
 }
