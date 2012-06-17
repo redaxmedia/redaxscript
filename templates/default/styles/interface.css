@@ -388,7 +388,7 @@
 	left: 100%;
 	margin-left: 1em;
 	text-shadow: 0 1px #f1f1f1;
-	top: -0.5em;
-	padding: 0.5em;
-	white-space: nowrap;
+	top: 0;
+	padding: 0.75em;
+	width: 200px;
 }
