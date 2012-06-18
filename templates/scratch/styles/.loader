@@ -39,6 +39,6 @@
 1 = templates/admin/styles/opera.css
 
 [settings]
-deploy = external
+deploy = inline
 rewrite = false
-minify = false
+minify = true

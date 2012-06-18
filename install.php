@@ -43,7 +43,7 @@ define('ROBOTS', 'none');
 
 if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
 {
-	echo loader(SECOND_PARAMETER, 'external');
+	echo loader(SECOND_PARAMETER, 'outline');
 }
 else
 {

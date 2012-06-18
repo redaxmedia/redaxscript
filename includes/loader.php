@@ -6,7 +6,7 @@ function loader($type = '', $mode = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	if ($mode == 'inline' || $mode == 'external')
+	if ($mode == 'inline' || $mode == 'outline')
 	{
 		/* get module scripts */
 
@@ -14,7 +14,7 @@ function loader($type = '', $mode = '')
 		{
 			global $loader_modules_scripts;
 			$loader_modules = $loader_modules_scripts;
-			if ($mode == 'external')
+			if ($mode == 'outline')
 			{
 				header('content-type: text/javascript');
 			}
@@ -26,12 +26,12 @@ function loader($type = '', $mode = '')
 		{
 			global $loader_modules_styles;
 			$loader_modules = $loader_modules_styles;
-			if ($mode == 'external')
+			if ($mode == 'outline')
 			{
 				header('content-type: text/css');
 			}
 		}
-		if ($mode == 'external')
+		if ($mode == 'outline')
 		{
 			header('expires: ' . GMDATE_PLUS_WEEK);
 		}
@@ -65,7 +65,6 @@ function loader($type = '', $mode = '')
 			$loader_admin_browser = $loader_ini['admin_' . MY_BROWSER];
 			$loader_admin_engine = $loader_ini['admin_' . MY_ENGINE];
 		}
-		$loader_deploy = $loader_ini['settings']['deploy'];
 		$loader_rewrite = $loader_ini['settings']['rewrite'];
 	}
 	$loader_minify = $loader_ini['settings']['minify'];
@@ -113,7 +112,7 @@ function loader($type = '', $mode = '')
 	/* collect transport start */
 
 	ob_start();
-	if ($mode == 'inline' || $mode == 'external')
+	if ($mode == 'inline' || $mode == 'outline')
 	{
 		hook(__FUNCTION__ . '_' . $type . '_transport_start');
 	}
@@ -131,7 +130,7 @@ function loader($type = '', $mode = '')
 
 	/* collect transport end */
 
-	if ($mode == 'inline' || $mode == 'external')
+	if ($mode == 'inline' || $mode == 'outline')
 	{
 		hook(__FUNCTION__ . '_' . $type . '_transport_end');
 	}
@@ -139,7 +138,7 @@ function loader($type = '', $mode = '')
 
 	/* rewrite path */
 
-	if ($loader_rewrite == 'absolute')
+	if ($loader_rewrite)
 	{
 		$output = preg_replace('/templates\/'. TEMPLATE . '/', ROOT . '/templates/' . TEMPLATE, $output);
 		if (LOGGED_IN == TOKEN)
@@ -203,7 +202,7 @@ function styles()
 	{
 		$output .= '<style type="text/css" media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
 	}
-	else
+	else if ($loader_deploy == 'outline')
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_STRING . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
@@ -272,7 +271,7 @@ function scripts($mode = '')
 		{
 			 $output .= loader('scripts', 'inline') . ' /* ]]> */ </script>' . PHP_EOL;
 		}
-		else
+		else if ($loader_deploy == 'outline')
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
 			$output .= '<script type="text/javascript" src="' . REWRITE_STRING . 'loader/scripts"></script>' . PHP_EOL;
