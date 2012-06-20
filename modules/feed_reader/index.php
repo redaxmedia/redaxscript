@@ -51,6 +51,10 @@ function feed_reader($url = '', $filter = '', $limit = '')
 			/* define variables */
 
 			$title = entity(truncate($value->title, 80, '...'));
+			if ($title)
+			{
+				$title = strip_tags($title);
+			}
 
 			/* if atom feed */
 
@@ -70,6 +74,10 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$time = date(s('time'), strtotime($value->pubDate));
 				$date = date(s('date'), strtotime($value->pubDate));
 				$text = entity(truncate($value->description, 1000, '...'));
+			}
+			if ($text)
+			{
+				$text = strip_tags($text, '<a>');
 			}
 
 			/* if filter is invalid */
