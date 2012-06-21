@@ -37,7 +37,6 @@
 .table_admin tbody tr:last-child
 {
 	border-bottom: 0;
-	box-shadow: none;
 }
 
 /* admin table row disabled */
