@@ -53,6 +53,20 @@
 	color: #474747;
 }
 
+/* fb group like */
+
+.box_fb_group_like_infoline
+{
+	font: italic 0.875em arial;
+	margin: 1em 2em 2em;
+}
+
+.box_fb_group_like_infoline a
+{
+	color: #474747;
+	text-decoration: underline;
+}
+
 /* fb group comment */
 
 .box_fb_group_comment

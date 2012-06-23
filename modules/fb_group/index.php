@@ -50,7 +50,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 		{
 			/* break if limit reached */
 
-			if (++$counter_message > $limit_first && $limit_first)
+			if (++$message_counter > $limit_first && $limit_first)
 			{
 				break;
 			}
@@ -67,11 +67,46 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			$output .= '<div class="box_fb_group_message_sub">' . htmlspecialchars($value->message) . '</div>';
 			$output .= '</div></div>';
 
+			/* collect likes output */
+			
+			$likes = $value->likes->data;
+			$likes_total = $value->likes->count;
+			$likes_limit = 2;
+			$likes_counter = 0;
+			if ($likes)
+			{
+				$output .= '<div class="box_fb_group_like_infoline">';
+				foreach ($likes as $like_value)
+				{
+					$output .= fb_group_user_link($like_value->id, $like_value->name);
+
+					/* break if limit reached */
+
+					if (++$likes_counter > $likes_limit && $likes_limit)
+					{
+						break;
+					}
+					else if ($likes_total > 1)
+					{
+						$output .= ', ';
+					}
+				}
+				if ($likes_counter > $likes_limit)
+				{
+					$output .= ' ' . l('fb_group_and') . ' ' . ($likes_total - $likes_limit) . ' ' . l('fb_group_other_like_this');
+				}
+				else
+				{
+					$output .= ' ' . l('fb_group_likes_this');
+				}
+				$output .= l('point') . '</div>';
+			}
+
 			/* collect comments output */
 
 			$comments = $value->comments->data;
 			$comments_total = $value->comments->count;
-			$counter_comment = 0;
+			$comment_counter = 0;
 			if ($comments)
 			{
 				$output .= '<div class="box_fb_group_comment_infoline">' . $comments_total . ' ';
@@ -84,14 +119,14 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 					$output .= l('comments');
 				}
 				$output .= '</div>';
-				foreach ($comments as $value)
+				foreach ($comments as $comment_value)
 				{
-					if ($counter_comment++ < $limit_second && $limit_second)
+					if ($comment_counter++ < $limit_second && $limit_second)
 					{
-						$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($value->from->id, $value->from->name, 'square', 1);
+						$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
 						$output .= '<div class="wrapper_fb_group_comment_sub">';
-						$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($value->from->id, $value->from->name) . '</h4>';
-						$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($value->message) . '</div>';
+						$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($comment_value->from->id, $comment_value->from->name) . '</h4>';
+						$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($comment_value->message) . '</div>';
 						$output .= '</div></div>';
 					}
 				}
