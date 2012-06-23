@@ -4,6 +4,7 @@
 
 define(FB_GROUP_FACEBOOK_URL, 'http://facebook.com');
 define(FB_GROUP_GRAPH_URL, 'https://graph.facebook.com');
+define(FB_GROUP_GROUP_URL, '');
 define(FB_GROUP_APP_ID, '');
 define(FB_GROUP_APP_SECRET, '');
 define(FB_GROUP_GROUP_ID, '');

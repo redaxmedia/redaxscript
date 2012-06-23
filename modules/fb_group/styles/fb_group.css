@@ -19,7 +19,7 @@
 
 /* fb group message */
 
-.box_fb_group_message + .box_fb_group_message, .box_fb_group_comment + .box_fb_group_message
+.box_fb_group_message + .box_fb_group_message, .box_fb_group_comment + .box_fb_group_message, .box_fb_group_comment_read_more + .box_fb_group_message
 {
 	margin-top: 2em;
 }
@@ -69,7 +69,7 @@
 
 /* fb group comment */
 
-.box_fb_group_comment
+.box_fb_group_comment, .box_fb_group_comment_read_more
 {
 	background: #e2e2e2;
 	border: 1px solid #cdcdcd;
@@ -77,7 +77,7 @@
 	padding: 1em;
 }
 
-.box_fb_group_comment + .box_fb_group_comment
+.box_fb_group_comment + .box_fb_group_comment, .box_fb_group_comment_read_more
 {
 	border-top-width: 0px;
 }
@@ -115,4 +115,9 @@
 .title_fb_group_comment_sub
 {
 	font-size: 1em;
+}
+
+.link_fb_group_comment_read_more
+{
+	text-decoration: underline;
 }

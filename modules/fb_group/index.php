@@ -73,6 +73,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			$likes_total = $value->likes->count;
 			$likes_limit = 2;
 			$likes_counter = 0;
+			$likes_rest = 0;
 			if ($likes)
 			{
 				$output .= '<div class="box_fb_group_like_infoline">';
@@ -86,14 +87,22 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 					{
 						break;
 					}
-					else if ($likes_total > 1)
+					else if ($likes_counter == $likes_total - 1)
+					{
+						$output .= ' ' . l('fb_group_and') . ' ';
+					}
+					else if ($likes_total > 1 && $likes_counter < $likes_total - 1)
 					{
 						$output .= ', ';
 					}
 				}
-				if ($likes_counter > $likes_limit)
+				$likes_rest = $likes_total - $likes_counter;
+
+				/* collect likes wording output */
+
+				if ($likes_rest)
 				{
-					$output .= ' ' . l('fb_group_and') . ' ' . ($likes_total - $likes_limit) . ' ' . l('fb_group_other_like_this');
+					$output .= ' ' . l('fb_group_and') . ' ' . $likes_rest . ' ' . l('fb_group_other_like_this');
 				}
 				else
 				{
@@ -129,6 +138,10 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 						$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($comment_value->message) . '</div>';
 						$output .= '</div></div>';
 					}
+				}
+				if ($comment_counter > $limit_second && $limit_second)
+				{
+					$output .= '<div class="box_fb_group_comment_read_more clear_fix">' . anchor_element('external', '', 'js_confirm link_fb_group_comment_read_more', l('read_more'), FB_GROUP_GROUP_URL) . '</div>';
 				}
 			}
 		}
