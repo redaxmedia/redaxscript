@@ -10,6 +10,8 @@ function recent_view($limit = '')
 		$output = '<ul class="list_recent_view">';
 		foreach ($recent_view_log as $value)
 		{
+			/* break if limit reached */
+
 			if (++$counter > $limit && $limit)
 			{
 				break;

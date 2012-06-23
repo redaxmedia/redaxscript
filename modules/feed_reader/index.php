@@ -43,11 +43,6 @@ function feed_reader($url = '', $filter = '', $limit = '')
 
 		foreach ($feed_object as $value)
 		{
-			if (++$counter > $limit && $limit)
-			{
-				break;
-			}
-
 			/* define variables */
 
 			$title = entity(truncate($value->title, 80, '...'));
@@ -94,6 +89,13 @@ function feed_reader($url = '', $filter = '', $limit = '')
 			}
 			if ($filter_no || $position_title || $position_text)
 			{
+				/* break if limit reached */
+
+				if (++$counter > $limit && $limit)
+				{
+					break;
+				}
+
 				/* collect title output */
 
 				if ($title)

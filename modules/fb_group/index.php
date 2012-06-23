@@ -31,6 +31,8 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 		$output = '<ul class="list_fb_group_members">';
 		foreach ($data as $value)
 		{
+			/* break if limit reached */
+
 			if (++$counter > $limit_first && $limit_first)
 			{
 				break;
@@ -46,6 +48,8 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 	{
 		foreach ($data as $value)
 		{
+			/* break if limit reached */
+
 			if (++$counter_message > $limit_first && $limit_first)
 			{
 				break;

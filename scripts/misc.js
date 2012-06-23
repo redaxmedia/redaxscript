@@ -36,7 +36,7 @@
 					adminDock.toggle();
 				}
 
-				/* click logout link */
+				/* click ok button */
 
 				else if (event.which == 79)
 				{
