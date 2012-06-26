@@ -100,13 +100,18 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 
 				/* collect likes wording output */
 
-				if ($likes_rest)
+				$output .= ' ';
+				if ($likes_total == 1)
 				{
-					$output .= ' ' . l('fb_group_and') . ' ' . $likes_rest . ' ' . l('fb_group_other_like_this');
+					$output .= l('fb_group_likes_this');
+				}
+				else if ($likes_rest)
+				{
+					$output .= l('fb_group_and') . ' ' . $likes_rest . ' ' . l('fb_group_other') . ' ' . l('fb_group_like_this');
 				}
 				else
 				{
-					$output .= ' ' . l('fb_group_likes_this');
+					$output .= l('fb_group_like_this');
 				}
 				$output .= l('point') . '</div>';
 			}
