@@ -239,7 +239,7 @@ function install_form()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
 	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
-	$output .= form_element('form', 'form_install', 'js_check_required js_note_required js_accordion accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post"');
+	$output .= form_element('form', 'form_install', 'js_check_required js_note_required js_accordion form_default accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post"');
 
 	/* collect database set */
 

@@ -42,7 +42,7 @@ function contact_form()
 
 	/* collect output */
 
-	$output = form_element('form', 'form_contact', 'js_check_required box_contact', '', '', '', 'method="post"');
+	$output = form_element('form', 'form_contact', 'js_check_required form_default form_contact', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', '', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_readonly, 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
