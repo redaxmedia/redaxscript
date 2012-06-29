@@ -178,9 +178,9 @@
 .box_navibar
 {
 	-moz-border-radius: 0 0 0.25em 0.25em;
-	-moz-box-shadow: inset -3px 0 #e1e1e1, inset 0 -3px #e1e1e1, inset 3px 0 #e1e1e1;
+	-moz-box-shadow: inset -1px 0 #e1e1e1, inset 0 -1px #e1e1e1, inset 1px 0 #e1e1e1;
 	-webkit-border-radius: 0 0 0.25em 0.25em;
-	-webkit-box-shadow: inset -3px 0 #e1e1e1, inset 0 -3px #e1e1e1, inset 3px 0 #e1e1e1;
+	-webkit-box-shadow: inset -1px 0 #e1e1e1, inset 0 -1px #e1e1e1, inset 1px 0 #e1e1e1;
 	background: url('templates/default/images/noise.png') #aaa;
 	background: url('templates/default/images/noise.png'), linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #8e8e8e, #ccc);
@@ -190,7 +190,7 @@
 	border: 1px solid #9e9e9e;
 	border-radius: 0 0 0.25em 0.25em;
 	border-top: 0;
-	box-shadow: inset -3px 0 #e1e1e1, inset 0 -3px #e1e1e1, inset 3px 0 #e1e1e1, 0 0 3px #c6c6c6;
+	box-shadow: inset -1px 0 #e1e1e1, inset 0 -1px #e1e1e1, inset 1px 0 #e1e1e1, 0 0 3px #c6c6c6;
 	padding: 0.75em 0 1em;
 	text-align: center;
 }
@@ -245,9 +245,9 @@
 .box_search
 {
 	-moz-border-radius: 0 0.25em 0.25em 0;
-	-moz-box-shadow: inset 0 0 0 3px #f9f9f9;
+	-moz-box-shadow: inset 0 0 0 1px #f9f9f9;
 	-webkit-border-radius: 0 0.25em 0.25em 0;
-	-webkit-box-shadow: inset 0 0 0 3px #f9f9f9;
+	-webkit-box-shadow: inset 0 0 0 1px #f9f9f9;
 	background: #e4e4e4;
 	background: linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: -moz-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
@@ -256,7 +256,7 @@
 	background: -webkit-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	border: 1px solid #9e9e9e;
 	border-radius: 0 0.25em 0.25em 0;
-	box-shadow: inset 0 0 0 3px #f9f9f9;
+	box-shadow: inset 0 0 0 1px #f9f9f9;
 	padding: 0.5em 1em;
 }
 

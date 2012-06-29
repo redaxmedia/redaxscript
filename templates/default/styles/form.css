@@ -25,9 +25,9 @@ textarea
 .field_button, .field_button_large
 {
 	-moz-border-radius: 0.5em;
-	-moz-box-shadow: inset 0 0 0 2px #e2e2e2, 0 0 4px #c6c6c6;
+	-moz-box-shadow: inset 0 0 0 1px #e2e2e2, 0 0 4px #c6c6c6;
 	-webkit-border-radius: 0.5em;
-	-webkit-box-shadow: inset 0 0 0 2px #e2e2e2, 0 0 4px #c6c6c6;
+	-webkit-box-shadow: inset 0 0 0 1px #e2e2e2, 0 0 4px #c6c6c6;
 	background: #cacaca;
 	background: linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
@@ -36,14 +36,14 @@ textarea
 	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
 	border: 1px solid #adadad;
 	border-radius: 0.5em;
-	box-shadow: inset 0 0 0 2px #e2e2e2, 0 0 4px #c6c6c6;
+	box-shadow: inset 0 0 0 1px #e2e2e2, 0 0 4px #c6c6c6;
 	display: inline-block;
 }
 
 .field_button:hover, .field_button_large:hover
 {
-	-moz-box-shadow: inset 0 0 0 2px #97d4f6, 0 0 4px #bdbdbd;
-	-webkit-box-shadow: inset 0 0 0 2px #97d4f6, 0 0 4px #bdbdbd;
+	-moz-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
+	-webkit-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
 	background: #33acee;
 	background: linear-gradient(top, #0090db, #62c5ff);
 	background: -moz-linear-gradient(top, #0090db, #62c5ff);
@@ -51,7 +51,7 @@ textarea
 	background: -o-linear-gradient(top, #0090db, #62c5ff);
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	border-color: #005da2;
-	box-shadow: inset 0 0 0 2px #97d4f6, 0 0 4px #bdbdbd;
+	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
 }
 
 .field_button span, .field_button_large span
@@ -120,13 +120,13 @@ textarea
 .field_select, .field_text, .field_textarea, .field_textarea_small
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 3px #efefef;
+	-moz-box-shadow: inset 0 0 0 1px #efefef;
 	-moz-box-sizing: border-box;
 	-moz-transition: background 0.5s ease;
 	-ms-transition: background 0.5s ease;
 	-o-transition: background 0.5s ease;
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 3px #efefef;
+	-webkit-box-shadow: inset 0 0 0 1px #efefef;
 	-webkit-box-sizing: border-box;
 	-webkit-transition: background 0.5s ease;
 	background: #f1f1f1;
@@ -137,7 +137,7 @@ textarea
 	background: -webkit-linear-gradient(top, #e2e2e2, #f1f1f1);
 	border: 1px solid #b0b0b0;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 3px #efefef;
+	box-shadow: inset 0 0 0 1px #efefef;
 	box-sizing: border-box;
 	color: #6a6a6a;
 	font: italic 1em arial;
@@ -150,26 +150,26 @@ textarea
 
 .field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover
 {
-	-moz-box-shadow: inset 0 0 0 3px #d8d8d8;
-	-webkit-box-shadow: inset 0 0 0 3px #d8d8d8;
+	-moz-box-shadow: inset 0 0 0 1px #d8d8d8;
+	-webkit-box-shadow: inset 0 0 0 1px #d8d8d8;
 	background: #ebebeb;
 	background: linear-gradient(top, #ddd, #ebebeb);
 	background: -moz-linear-gradient(top, #ddd, #ebebeb);
 	background: -ms-linear-gradient(top, #ddd, #ebebeb);
 	background: -o-linear-gradient(top, #ddd, #ebebeb);
 	background: -webkit-linear-gradient(top, #ddd, #ebebeb);
-	box-shadow: inset 0 0 0 3px #d8d8d8;
+	box-shadow: inset 0 0 0 1px #d8d8d8;
 }
 
 /* default fields focus */
 
 .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
 {
-	-moz-box-shadow: 0 0 3px #4abdff;
-	-webkit-box-shadow: 0 0 3px #4abdff;
+	-moz-box-shadow: 0 0 1px #4abdff;
+	-webkit-box-shadow: 0 0 1px #4abdff;
 	background: #f8f8f8;
 	border-color: #78b2d1;
-	box-shadow: 0 0 3px #4abdff;
+	box-shadow: 0 0 1px #4abdff;
 }
 
 /* uniform option font */
@@ -222,15 +222,15 @@ textarea
 
 .field_button.field_disabled, .field_button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {
-	-moz-box-shadow: inset 0 0 0 3px #ddd;
-	-webkit-box-shadow: inset 0 0 0 3px #ddd;
+	-moz-box-shadow: inset 0 0 0 1px #ddd;
+	-webkit-box-shadow: inset 0 0 0 1px #ddd;
 	background: #e2e2e2;
 	background: linear-gradient(top, #dadada, #e8e8e8);
 	background: -moz-linear-gradient(top, #dadada, #e8e8e8);
 	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
 	background: -o-linear-gradient(top, #dadada, #e8e8e8);
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
-	box-shadow: inset 0 0 0 3px #ddd;
+	box-shadow: inset 0 0 0 1px #ddd;
 	border-color: #ababab;
 	color: #ababab;
 	cursor: default;

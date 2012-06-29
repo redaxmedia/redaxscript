@@ -242,7 +242,7 @@ pre
 .title_website
 {
 	font: 4em cuprum, 'trebuchet ms', arial;
-	text-shadow: -1px 0 #303030, 0 -1px #303030, 1px 0 #303030, 0 0 1px #303030, 0 2px #e8e8e8, 1px 1px #e8e8e8, -1px 1px #e8e8e8;
+	text-shadow: -1px 0 #303030, 0 -1px #303030, 1px 0 #303030, 0 0 1px #303030, 0 2px #eee;
 }
 
 .title_website, .title_website a

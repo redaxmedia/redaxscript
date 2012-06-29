@@ -26,9 +26,9 @@
 
 form .note_error.field_note
 {
-	-moz-box-shadow: inset 0 0 0 3px #ff9696;
-	-webkit-box-shadow: inset 0 0 0 3px #ff9696;
-	box-shadow: inset 0 0 0 3px #ff9696;
+	-moz-box-shadow: inset 0 0 0 1px #ff9696;
+	-webkit-box-shadow: inset 0 0 0 1px #ff9696;
+	box-shadow: inset 0 0 0 1px #ff9696;
 	text-shadow: 0 1px #ffc9c9;
 }
 
@@ -41,9 +41,9 @@ form .note_error.field_note option
 
 .note_info.box_note
 {
-	-moz-box-shadow: inset 0 0 3px #82d2ed;
-	-webkit-box-shadow: inset 0 0 3px #82d2ed;
-	box-shadow: inset 0 0 3px #82d2ed;
+	-moz-box-shadow: inset 0 0 1px #82d2ed;
+	-webkit-box-shadow: inset 0 0 1px #82d2ed;
+	box-shadow: inset 0 0 1px #82d2ed;
 }
 
 .note_info.box_note a
@@ -65,9 +65,9 @@ form .note_error.field_note option
 
 form .note_info.field_note
 {
-	-moz-box-shadow: inset 0 0 0 3px #7fd0ff;
-	-webkit-box-shadow: inset 0 0 0 3px #7fd0ff;
-	box-shadow: inset 0 0 0 3px #7fd0ff;
+	-moz-box-shadow: inset 0 0 0 1px #7fd0ff;
+	-webkit-box-shadow: inset 0 0 0 1px #7fd0ff;
+	box-shadow: inset 0 0 0 1px #7fd0ff;
 	text-shadow: 0 1px #bfe8ff;
 }
 
@@ -80,9 +80,9 @@ form .note_info.field_note option
 
 .note_success.box_note
 {
-	-moz-box-shadow: inset 0 0 3px #8dd186;
-	-webkit-box-shadow: inset 0 0 3px #8dd186;
-	box-shadow: inset 0 0 3px #8dd186;
+	-moz-box-shadow: inset 0 0 1px #8dd186;
+	-webkit-box-shadow: inset 0 0 1px #8dd186;
+	box-shadow: inset 0 0 1px #8dd186;
 }
 
 .note_success.box_note a
@@ -104,9 +104,9 @@ form .note_info.field_note option
 
 form .note_success.field_note
 {
-	-moz-box-shadow: inset 0 0 0 3px #6af06d;
-	-webkit-box-shadow: inset 0 0 0 3px #6af06d;
-	box-shadow: inset 0 0 0 3px #6af06d;
+	-moz-box-shadow: inset 0 0 0 1px #6af06d;
+	-webkit-box-shadow: inset 0 0 0 1px #6af06d;
+	box-shadow: inset 0 0 0 1px #6af06d;
 	text-shadow: 0 1px #aeffae;
 }
 
@@ -119,9 +119,9 @@ form .note_success.field_note option
 
 .note_warning.box_note
 {
-	-moz-box-shadow: inset 0 0 3px #d5c648;
-	-webkit-box-shadow: inset 0 0 3px #d5c648;
-	box-shadow: inset 0 0 3px #d5c648;
+	-moz-box-shadow: inset 0 0 1px #d5c648;
+	-webkit-box-shadow: inset 0 0 1px #d5c648;
+	box-shadow: inset 0 0 1px #d5c648;
 }
 
 .note_warning.box_note a
@@ -143,9 +143,9 @@ form .note_success.field_note option
 
 form .note_warning.field_note
 {
-	-moz-box-shadow: inset 0 0 0 3px #e4e40b;
-	-webkit-box-shadow: inset 0 0 0 3px #e4e40b;
-	box-shadow: inset 0 0 0 3px #e4e40b;
+	-moz-box-shadow: inset 0 0 0 1px #e4e40b;
+	-webkit-box-shadow: inset 0 0 0 1px #e4e40b;
+	box-shadow: inset 0 0 0 1px #e4e40b;
 	text-shadow: 0 1px #f5f5a0;
 }
 
