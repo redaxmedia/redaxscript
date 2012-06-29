@@ -84,18 +84,6 @@ textarea
 	text-shadow: 0 1px #005da2;
 }
 
-/* float buttons */
-
-.form_admin .field_button_backward, .form_admin .field_button_second
-{
-	float: left;
-}
-
-.form_admin .field_button_forward
-{
-	float: right;
-}
-
 /* custom buttons */
 
 .field_button_admin.field_button_plus span span
@@ -258,7 +246,17 @@ textarea
 	text-shadow: 0 1px #efefef;
 }
 
-/* admin label */
+/* admin form */
+
+.form_admin .field_button_backward, .form_admin .field_button_second
+{
+	float: left;
+}
+
+.form_admin .field_button_forward
+{
+	float: right;
+}
 
 .form_admin .label
 {
@@ -267,12 +265,12 @@ textarea
 	display: block;
 }
 
-/* space between elements */
-
 .form_admin li
 {
 	margin: 0.5em 0;
 }
+
+/* space between elements */
 
 div ~ .field_button_admin, fieldset ~ .field_button_admin, p ~ .field_button_admin, div ~ .field_button_large_admin, fieldset ~ .field_button_large_admin, p ~ .field_button_large_admin, .field_button_admin ~ div, .field_button_admin ~ fieldset, .field_button_admin ~ p, .field_button_large_admin ~ div, .field_button_large ~ fieldset, .field_button_large_admin ~ p
 {
