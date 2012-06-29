@@ -1,6 +1,6 @@
 /* haslayout */
 
-.msie7 .list_breadcrumbs, .msie7 .list_breadcrumbs li, .msie7 .list_pagination li
+.msie7 .list_breadcrumbs li, .msie7 .list_pagination li
 {
 	display: inline;
 }
