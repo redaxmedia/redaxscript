@@ -245,20 +245,40 @@ textarea
 	text-shadow: 0 1px #fff;
 }
 
-/* label */
+/* default form */
 
-.label
+.form_default .label
 {
 	font-size: 0.875em;
 	display: block;
 }
 
-/* space between elements */
-
-fieldset li
+.form_default li
 {
 	margin: 0.5em 0;
 }
+
+/* search form */
+
+.form_search
+{
+	-moz-border-radius: 0 0.25em 0.25em 0;
+	-moz-box-shadow: inset 0 0 0 1px #f9f9f9;
+	-webkit-border-radius: 0 0.25em 0.25em 0;
+	-webkit-box-shadow: inset 0 0 0 1px #f9f9f9;
+	background: #e4e4e4;
+	background: linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	background: -moz-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	background: -ms-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	background: -o-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	background: -webkit-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	border: 1px solid #9e9e9e;
+	border-radius: 0 0.25em 0.25em 0;
+	box-shadow: inset 0 0 0 1px #f9f9f9;
+	padding: 0.5em 1em;
+}
+
+/* space between elements */
 
 div ~ .field_button, fieldset ~ .field_button, p ~ .field_button, div ~ .field_button_large, fieldset ~ .field_button_large, p ~ .field_button_large, .field_button ~ div, .field_button ~ fieldset, .field_button ~ p, .field_button_large ~ div, .field_button_large ~ fieldset, .field_button_large ~ p
 {

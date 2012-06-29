@@ -17,7 +17,7 @@ function reminder_form()
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('reminder') . '</h2>';
-	$output .= form_element('form', 'form_reminder', 'js_check_required box_reminder', '', '', '', 'action="' . REWRITE_STRING . 'reminder" method="post"');
+	$output .= form_element('form', 'form_reminder', 'js_check_required form_default form_reminder', '', '', '', 'action="' . REWRITE_STRING . 'reminder" method="post"');
 	$output .= form_element('fieldset', '', '', '', '', l('reminder_request') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_disabled, 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 

@@ -8,7 +8,7 @@
 
 <h3 class="title_content_sub">.field_{type}</h3>
 
-<?php echo form_element('form'); ?>
+<?php echo form_element('form', '', 'form_default'); ?>
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo form_element('text', 'field_text', 'field_text', '', '', '.field_text'); ?></li>
@@ -34,7 +34,7 @@
 
 <h3 class="title_content_sub">.field_disabled</h3>
 
-<?php echo form_element('form'); ?>
+<?php echo form_element('form', '', 'form_default'); ?>
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo form_element('text', 'field_text_disabled', 'field_text field_disabled', '', '', '.field_text', 'disabled="disabled"'); ?></li>
@@ -60,7 +60,7 @@
 
 <h3 class="title_content_sub">.field_readonly</h3>
 
-<?php echo form_element('form'); ?>
+<?php echo form_element('form', '', 'form_default'); ?>
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo form_element('text', 'field_text_readonly', 'field_text field_readonly', '', '', '.field_text', 'readonly="readonly"'); ?></li>
@@ -74,7 +74,7 @@
 <?php if (LOGGED_IN == TOKEN): ?>
 	<h3 class="title_content_sub">.field_{type}_admin</h3>
 
-	<?php echo form_element('form'); ?>
+	<?php echo form_element('form', '', 'form_admin'); ?>
 		<?php echo form_element('fieldset'); ?>
 			<ul>
 				<li><?php echo form_element('text', 'field_text_admin', 'field_text_admin', '', '', '.field_text_admin'); ?></li>
@@ -99,7 +99,7 @@
 	
 	<h3 class="title_content_sub">.field_disabled</h3>
 
-	<?php echo form_element('form'); ?>
+	<?php echo form_element('form', '', 'form_admin'); ?>
 		<?php echo form_element('fieldset'); ?>
 			<ul>
 				<li><?php echo form_element('text', 'field_text_admin_disabled', 'field_text_admin field_disabled', '', '', '.field_text_admin', 'disabled="disabled"'); ?></li>
@@ -125,7 +125,7 @@
 
 	<h3 class="title_content_sub">.field_readonly</h3>
 
-	<?php echo form_element('form'); ?>
+	<?php echo form_element('form', '', 'form_admin'); ?>
 		<?php echo form_element('fieldset'); ?>
 			<ul>
 				<li><?php echo form_element('text', 'field_text_admin_readonly', 'field_text_admin field_readonly', '', '', '.field_text_admin', 'readonly="readonly"'); ?></li>

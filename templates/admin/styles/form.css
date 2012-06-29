@@ -86,12 +86,12 @@ textarea
 
 /* float buttons */
 
-.form_admin .field_button_large_admin
+.form_admin .field_button_backward, .form_admin .field_button_second
 {
 	float: left;
 }
 
-.form_admin .field_button_large_admin.field_button_forward
+.form_admin .field_button_forward
 {
 	float: right;
 }
@@ -269,7 +269,7 @@ textarea
 
 /* space between elements */
 
-.form_admin fieldset li
+.form_admin li
 {
 	margin: 0.5em 0;
 }
