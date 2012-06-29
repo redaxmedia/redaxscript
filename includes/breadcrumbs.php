@@ -6,7 +6,7 @@ function breadcrumbs_list()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* join administration */
+	/* administration */
 
 	if (FIRST_PARAMETER == 'admin')
 	{
@@ -52,7 +52,7 @@ function breadcrumbs_list()
 		}
 	}
 
-	/* join default alias */
+	/* overwrite if default alias */
 
 	else if (check_alias(FIRST_PARAMETER, 1) == 1)
 	{
@@ -136,7 +136,7 @@ function breadcrumbs_list()
 		}
 	}
 
-	/* empty full string */
+	/* overwrite if home */
 
 	else if (FULL_STRING == '')
 	{
