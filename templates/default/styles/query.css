@@ -8,7 +8,7 @@
 		font-size: 1em;
 	}
 
-	.bottom, .header, .footer, .navibar, .sidebar
+	.bottom, .footer, .header, .navibar, .sidebar
 	{
 		display: none;
 	}
@@ -28,7 +28,7 @@
 
 	.content .link_dock_admin, .footer .link_dock_admin
 	{
-		display:block
+		display: block
 	}
 
 	.content .box_comment + .placeholder_dock_admin .link_dock_admin.link_unpublish, .content .description_dock_admin, .footer .description_dock_admin

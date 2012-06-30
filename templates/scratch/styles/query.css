@@ -8,7 +8,7 @@
 		font-size: 1em;
 	}
 
-	.bottom, .header, .footer, .sidebar
+	.bottom, .footer, .header, .sidebar
 	{
 		display: none;
 	}
