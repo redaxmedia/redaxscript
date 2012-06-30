@@ -59,21 +59,21 @@ function head()
 		$keywords = s('keywords');
 	}
 
-	/* join administration */
+	/* administration */
 
 	if (FIRST_PARAMETER == 'admin')
 	{
 		if (l(ADMIN_PARAMETER))
 		{
 			$breadcrumbs = l(ADMIN_PARAMETER);
-		}
-		if (l(TABLE_PARAMETER))
-		{
-			$breadcrumbs .= ' - ' . l(TABLE_PARAMETER);
+			if (l(TABLE_PARAMETER))
+			{
+				$breadcrumbs .= ' - ' . l(TABLE_PARAMETER);
+			}
 		}
 	}
 
-	/* join default alias */
+	/* overwrite if default alias */
 
 	else if (check_alias(FIRST_PARAMETER, 1) == 1)
 	{
@@ -91,7 +91,7 @@ function head()
 		$breadcrumbs = TITLE;
 	}
 
-	/* query title */
+	/* query title from content */
 
 	else if (FIRST_TABLE)
 	{
@@ -115,7 +115,7 @@ function head()
 		}
 	}
 
-	/* empty full string */
+	/* overwrite if home */
 
 	else if (FULL_STRING == '')
 	{
