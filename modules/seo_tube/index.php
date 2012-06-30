@@ -150,7 +150,7 @@ function seo_tube_form()
 	{
 		$url = l('seo_tube_enter_youtube_video');
 	}
-	$output .= form_element('form', '', 'box_seo_tube', '', '', '', 'method="post"');
+	$output .= form_element('form', '', 'form_seo_tube', '', '', '', 'method="post"');
 	$output .= form_element('text', 'url', 'js_clear_focus field_search', 'url', $url, '', 'maxlength="50"');
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button_search', 'seo_tube_post', l('seo_tube_load'));

@@ -1,6 +1,6 @@
 /* seo tube */
 
-.box_seo_tube
+.form_seo_tube
 {
 	background: #dadada;
 	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
@@ -8,7 +8,7 @@
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #ebebeb;
+	border: 1px solid #b9b9b9;
 	margin-bottom: 2em;
 	margin-top: 1em;
 	padding: 0.5em 1em;
