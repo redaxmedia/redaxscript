@@ -16,6 +16,32 @@
 
 /* screen */
 
+@media screen and (min-width: 1100px)
+{
+	.content .box_dock_admin, .footer .box_dock_admin
+	{
+		bottom: 0;
+		display: inline-block;
+		left: -5em;
+		position: absolute;
+	}
+
+	.content .link_dock_admin, .footer .link_dock_admin
+	{
+		display:block
+	}
+
+	.content .box_comment + .placeholder_dock_admin .link_dock_admin.link_unpublish, .content .description_dock_admin, .footer .description_dock_admin
+	{
+		display: none;
+	}
+
+	.content .placeholder_dock_admin, .footer .placeholder_dock_admin
+	{
+		position: relative;
+	}
+}
+
 @media screen and (max-width: 1100px)
 {
 	.box_comment:before

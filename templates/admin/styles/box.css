@@ -38,9 +38,9 @@
 	padding: 0.25em 0.25em 0.5em;
 }
 
-.content .box_dock_admin, .footer .box_dock_admin
+.box_dock_admin .divider
 {
-	display: inline-block;
+	display: none;
 }
 
 .description_dock_admin
@@ -50,13 +50,6 @@
 	color: #474747;
 	margin: 0 1em;
 	text-shadow: 0 1px #1b1b1b;
-}
-
-/* hide elements */
-
-.content .description_dock_admin, .footer .description_dock_admin, .box_dock_admin .divider
-{
-	display: none;
 }
 
 /* grid fix */
