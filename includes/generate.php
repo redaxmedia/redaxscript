@@ -24,8 +24,7 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 		{
 			case 'external':
 				$value = clean_url($value);
-				$position_http = strpos($value, 'http://');
-				if ($position_http < -1)
+				if (check_protocol($value) == '')
 				{
 					$value_string .= 'http://';
 				}

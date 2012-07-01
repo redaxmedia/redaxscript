@@ -108,7 +108,7 @@
 		$(this).on('click', function ()
 		{
 			var string = $(this)[0].href,
-				checkDialogPosition, checkProtocol, dialog, dialogOverlay;
+				checkDialogPosition, dialog, dialogOverlay;
 
 			if (string)
 			{
@@ -122,8 +122,7 @@
 					{
 						/* check for internal link */
 
-						checkProtocol = string.indexOf('http://');
-						if (checkProtocol == -1)
+						if (string.substr(0, 7) != 'http://' && string.substr(0, 8) != 'https://')
 						{
 							string = r.baseURL + string;
 						}

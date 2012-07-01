@@ -77,6 +77,21 @@ function check_url($input = '')
 	return $output;
 }
 
+/* check protocol */
+
+function check_protocol($input = '')
+{
+	if (substr($input, 0, 7) == 'http://')
+	{
+		$output = 'http';
+	}
+	else if (substr($input, 0, 8) == 'https://')
+	{
+		$output = 'https';
+	}
+	return $output;
+}
+
 /* check dns */
 
 function check_dns($input = '')

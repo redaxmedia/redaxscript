@@ -405,8 +405,7 @@ function notification($title = '', $text = '', $action = '', $string = '')
 	}
 	if ($action && $string)
 	{
-		$position_http = strpos($string, 'http://');
-		if ($position_http < -1)
+		if (check_protocol($string) == '')
 		{
 			$string = REWRITE_STRING . $string;
 		}
