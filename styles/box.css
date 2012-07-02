@@ -5,6 +5,13 @@
 	display: none;
 }
 
+/* box code */
+
+.box_code
+{
+	white-space: pre-wrap;
+}
+
 /* several boxes */
 
 .box_comment, .box_content, .box_extra
