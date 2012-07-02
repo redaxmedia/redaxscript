@@ -37,7 +37,6 @@ function parser($input = '')
 		{
 			$output[$i] = trim($output[$i]);
 			$output[$i] = htmlspecialchars($output[$i]);
-			$output[$i] = break_up($output[$i]);
 			$output[$i] = '<code class="box_code">' . $output[$i] . '</code>';
 		}
 		$output = implode($output);

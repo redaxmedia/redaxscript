@@ -1,0 +1,24 @@
+<h2 class="title_content">Box</h2>
+
+
+<h3 class="title_content_sub">.box_code</h3>
+
+<?php echo parser('<code>
+<?php
+
+/* check preview */
+
+function check_preview()
+{
+	if (FIRST_PARAMETER == \'preview\')
+	{
+		$output = 1;
+	}
+	else
+	{
+		$output = 0;
+	}
+	return $output;
+}
+?>
+</code>');

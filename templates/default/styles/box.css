@@ -34,6 +34,7 @@
 	font: 1.25em/1.5em monospace;
 	padding: 1em 1.25em;
 	text-shadow: 0 1px #f5f5f5;
+	white-space: pre-wrap;
 }
 
 /* box comment */
