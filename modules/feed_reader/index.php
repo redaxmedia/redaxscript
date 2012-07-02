@@ -58,7 +58,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$string = $value->link['href'];
 				$time = date(s('time'), strtotime($value->updated));
 				$date = date(s('date'), strtotime($value->updated));
-				$text = entity(truncate($value->content, 1000, '...'));
+				$text = entity(truncate(trim($value->content), 1000, '...'));
 			}
 
 			/* else if rss feed */
@@ -68,7 +68,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$string = $value->link;
 				$time = date(s('time'), strtotime($value->pubDate));
 				$date = date(s('date'), strtotime($value->pubDate));
-				$text = entity(truncate($value->description, 1000, '...'));
+				$text = entity(truncate(trim($value->description), 1000, '...'));
 			}
 			if ($text)
 			{
