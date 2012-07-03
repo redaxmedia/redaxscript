@@ -257,7 +257,7 @@
 
 /* space between elements */
 
-div + .box_note, fieldset + .box_note, input + .box_note, .box_note + .box_note
+.box_note + .box_note
 {
-	margin-top: 0.5em;
+	margin-top: 1em;
 }

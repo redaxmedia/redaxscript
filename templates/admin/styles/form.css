@@ -272,7 +272,7 @@ textarea
 
 /* space between elements */
 
-div ~ .field_button_admin, fieldset ~ .field_button_admin, p ~ .field_button_admin, div ~ .field_button_large_admin, fieldset ~ .field_button_large_admin, p ~ .field_button_large_admin, .field_button_admin ~ div, .field_button_admin ~ fieldset, .field_button_admin ~ p, .field_button_large_admin ~ div, .field_button_large ~ fieldset, .field_button_large_admin ~ p
+.box_dialog_admin .field_button_admin, .field_button_admin + .wrapper_table_admin, .field_button_large_admin + .wrapper_table_admin, .form_admin .field_button_admin, .form_admin .field_button_large_admin
 {
 	margin-top: 1em;
 }

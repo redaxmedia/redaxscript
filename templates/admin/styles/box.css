@@ -87,3 +87,10 @@
 {
 	height: 450px;
 }
+
+/* space between elements */
+
+.form_admin .box_note
+{
+	margin-top: 1em;
+}
