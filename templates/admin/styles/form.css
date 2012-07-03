@@ -279,7 +279,7 @@ textarea
 
 .field_button_plus
 {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 }
 
 .field_button_admin + .field_button_admin, .field_button_large_admin + .field_button_large_admin, .field_text_admin + .field_button_admin

@@ -1,7 +1,6 @@
 /* file manager */
 
-.form_file_manager
+.form_file_manager .field_button_admin
 {
-	margin-bottom: 1em;
-	margin-top: 1em;
+	margin-bottom: 1.5em;
 }
