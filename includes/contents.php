@@ -392,13 +392,20 @@ function notification($title = '', $text = '', $action = '', $string = '')
 {
 	hook(__FUNCTION__ . '_start');
 
+	/* handle suffix */
+
+	if (FIRST_PARAMETER == 'admin')
+	{
+		$suffix = '_admin';
+	}
+
 	/* collect output */
 
 	if ($title)
 	{
 		$output = '<h2 class="title_content">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_content box_notification">';
+	$output .= '<div class="box_notification' . $suffix . '">';
 	if ($text)
 	{
 		$output .= '<p>' . $text . l('point') . '</p>';
@@ -409,7 +416,7 @@ function notification($title = '', $text = '', $action = '', $string = '')
 		{
 			$string = REWRITE_STRING . $string;
 		}
-		$output .= '<a class="js_forward_notification field_button" href="' . $string . '"><span><span>' . $action . '</span></span></a>';
+		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $string . '"><span><span>' . $action . '</span></span></a>';
 	}
 	$output .= '</div>';
 	echo $output;

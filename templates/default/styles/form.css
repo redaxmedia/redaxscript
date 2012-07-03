@@ -280,7 +280,7 @@ textarea
 
 /* space between elements */
 
-.box_dialog_default .field_button, .box_notification .field_button, .field_button + .wrapper_table_default, .field_button_large + .wrapper_table_default, .form_default .field_button, .form_default .field_button_large
+.box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
 {
 	margin-top: 1em;
 }
