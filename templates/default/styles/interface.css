@@ -95,7 +95,6 @@
 .list_default
 {
 	color: #666;
-	font-size: 1.125em;
 	text-shadow: 0 1px #ebebeb;
 }
 
@@ -106,7 +105,7 @@
 
 .list_default li
 {
-	margin: 1em 0 1em 1.5em;
+	margin: 1em 1.5em;
 	list-style: inherit;
 }
 
@@ -343,7 +342,7 @@
 
 .set_tab_menue_default
 {
-	padding: 2em 1.5em;
+	padding: 1em 1.5em;
 }
 
 /* search list */

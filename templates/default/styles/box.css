@@ -32,7 +32,7 @@
 	box-shadow: 0 0 3px #c6c6c6;
 	display: block;
 	font: 1.25em/1.5em monospace;
-	padding: 1em 1.25em;
+	padding: 1em 1.5em;
 	text-shadow: 0 1px #f5f5f5;
 }
 
@@ -53,6 +53,15 @@
 	position: absolute;
 	text-shadow: 0 -1px #1f53a6, 0 1px #fff;
 	top: -0.75em;
+}
+
+/* box default */
+
+.box_default
+{
+	background: #e2e2e2;
+	border: 1px solid #ebebeb;
+	padding: 1em 1.5em;
 }
 
 /* default box dialog */
