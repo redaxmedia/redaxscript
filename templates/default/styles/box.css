@@ -55,9 +55,9 @@
 	top: -0.75em;
 }
 
-/* box default */
+/* default box and tab menue box */
 
-.box_default
+.box_default, .box_tab_menue_default
 {
 	background: #e2e2e2;
 	border: 1px solid #ebebeb;
@@ -247,14 +247,6 @@
 	position: absolute;
 	text-shadow: 0 -1px #b9b9b9;
 	top: -0.75em;
-}
-
-/* default tab menue */
-
-.box_tab_menue_default
-{
-	background: #e2e2e2;
-	border: 1px solid #ebebeb;
 }
 
 /* javascript enabled */

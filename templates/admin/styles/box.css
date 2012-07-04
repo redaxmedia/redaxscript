@@ -10,7 +10,7 @@
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
-	padding: 1em 1.25em;
+	padding: 1em 1.5em;
 }
 
 .box_accordion_admin
@@ -79,6 +79,7 @@
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
+	padding: 1em 1.5em;
 }
 
 /* javascript enabled */
