@@ -1,6 +1,6 @@
 /* call home */
 
-if (typeof _gat == 'object' && r.constant.FIRST_PARAMETER == 'admin' && r.constant.ADMIN_PARAMETER == '')
+if (typeof _gat === 'object' && r.constant.FIRST_PARAMETER === 'admin' && r.constant.ADMIN_PARAMETER === '')
 {
 	var tracker = _gat._createTracker('UA-16122280-10'),
 		checkBacklink = $('a.js_backlink').length;
@@ -15,7 +15,7 @@ if (typeof _gat == 'object' && r.constant.FIRST_PARAMETER == 'admin' && r.consta
 
 	/* missing backlink */
 
-	if (checkBacklink == 0)
+	if (checkBacklink === 0)
 	{
 		tracker._trackEvent('missing-backlink', r.version, r.baseURL);
 	}

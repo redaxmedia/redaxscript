@@ -6,7 +6,7 @@
 	{
 		var text;
 
-		if (typeof seoTube == 'object')
+		if (typeof seoTube === 'object')
 		{
 			/* fill article fields */
 
@@ -43,7 +43,7 @@ $(function ()
 {
 	/* startup */
 
-	if (r.constant.TABLE_PARAMETER == 'articles' && (r.constant.ADMIN_PARAMETER == 'new' || r.constant.ADMIN_PARAMETER == 'edit'))
+	if (r.constant.TABLE_PARAMETER === 'articles' && (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit'))
 	{
 		$.fn.seoTube();
 	}

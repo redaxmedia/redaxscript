@@ -43,7 +43,7 @@ function seo_tube_scripts_end()
 
 		/* add constants */
 
-		$output .= 'if (typeof seoTube == \'object\')' . PHP_EOL;
+		$output .= 'if (typeof seoTube === \'object\')' . PHP_EOL;
 		$output .= '{' . PHP_EOL;
 		$output .= 'seoTube.constant = {};' . PHP_EOL;
 		$output .= 'seoTube.constant.SEO_TUBE_DESCRIPTION_PARAGRAPH = \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\';' . PHP_EOL;

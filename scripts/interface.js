@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.accordion.options != options)
+		if (r.plugin.accordion.options !== options)
 		{
 			options = $.extend({}, r.plugin.accordion.options, options || {});
 		}
@@ -55,7 +55,7 @@
 
 		accordionBox.children(':last-child').on('keydown', function (event)
 		{
-			if (event.which == 9)
+			if (event.which === 9)
 			{
 				return false;
 			}
@@ -84,11 +84,11 @@
 			{
 				var dropDownRelated = $(this).children();
 
-				if (event.type == 'touchstart')
+				if (event.type === 'touchstart')
 				{
 					dropDownRelated.addClass('item_touch');
 				}
-				else if (event.type == 'touchend')
+				else if (event.type === 'touchend')
 				{
 					dropDownRelated.removeClass('item_touch');
 				}
@@ -102,7 +102,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.tabMenue.options != options)
+		if (r.plugin.tabMenue.options !== options)
 		{
 			options = $.extend({}, r.plugin.tabMenue.options, options || {});
 		}
@@ -155,7 +155,7 @@
 
 		tabMenueSet.children().children(':last-child').on('keydown', function (event)
 		{
-			if (event.which == 9)
+			if (event.which === 9)
 			{
 				return false;
 			}

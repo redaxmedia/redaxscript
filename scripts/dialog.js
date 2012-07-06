@@ -14,7 +14,7 @@
 
 		/* handle suffix */
 
-		if (r.constant.FIRST_PARAMETER == 'admin')
+		if (r.constant.FIRST_PARAMETER === 'admin')
 		{
 			suffix = '_admin';
 		}
@@ -23,7 +23,7 @@
 
 		/* prematurely terminate dialog */
 
-		if (r.constant.MY_BROWSER == 'msie' && r.constant.MY_BROWSER_VERSION < 7 || checkDialog)
+		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || checkDialog)
 		{
 			return false;
 		}
@@ -38,14 +38,14 @@
 
 		/* manage suffix */
 
-		if (r.constant.FIRST_PARAMETER != 'admin')
+		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
 			suffix = '';
 		}
 
 		/* prompt */
 
-		if (options.type == 'prompt')
+		if (options.type === 'prompt')
 		{
 			output += '<input type="text" class="js_prompt field_text' + suffix + '" value="';
 			if (options.value)
@@ -61,7 +61,7 @@
 
 		/* cancel button if confirm or prompt */
 
-		if (options.type == 'confirm' || options.type == 'prompt')
+		if (options.type === 'confirm' || options.type === 'prompt')
 		{
 			output += '<a class="js_cancel field_button' + suffix + '"><span><span>' + l.cancel + '</span></span></a>';
 		}
@@ -86,7 +86,7 @@
 		{
 			dialog.find('a.js_ok').click(function ()
 			{
-				if (options.type == 'prompt')
+				if (options.type === 'prompt')
 				{
 					var value = dialog.find('input.js_prompt')[0].value;
 
@@ -122,7 +122,7 @@
 					{
 						/* check for internal link */
 
-						if (string.substr(0, 7) != 'http://' && string.substr(0, 8) != 'https://')
+						if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
 						{
 							string = r.baseURL + string;
 						}
@@ -144,7 +144,7 @@
 
 				/* prevent link forward */
 
-				if (checkDialogPosition == 'fixed')
+				if (checkDialogPosition === 'fixed')
 				{
 					return false;
 				}
@@ -165,12 +165,12 @@
 	{
 		/* extend options */
 
-		if (r.plugin.preventUnload.options != options)
+		if (r.plugin.preventUnload.options !== options)
 		{
 			options = $.extend({}, r.plugin.preventUnload.options, options || {});
 		}
 
-		if (r.constant.ADMIN_PARAMETER == 'new' || r.constant.ADMIN_PARAMETER == 'edit')
+		if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
 		{
 			$(this).one('change', function ()
 			{

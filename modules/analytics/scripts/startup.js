@@ -1,6 +1,6 @@
 /* analytics */
 
-if (typeof _gat == 'object')
+if (typeof _gat === 'object')
 {
 	var tracker = _gat._createTracker('UA-00000000-0');
 

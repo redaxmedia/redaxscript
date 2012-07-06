@@ -295,7 +295,7 @@ function languages_transport($language = '')
 	define('LANGUAGES_TRANSPORT', 1);
 	foreach ($language as $value)
 	{
-		$output .= 'l[\'' . $value . '\'] = \'' . l($value) . '\';' . PHP_EOL;
+		$output .= 'l.' . $value . ' = \'' . l($value) . '\';' . PHP_EOL;
 	}
 	return $output;
 }
@@ -327,7 +327,7 @@ function scripts_transport($minify = '')
 
 	/* collect output */
 
-	$output .= 'if (typeof r == \'object\')' . PHP_EOL;
+	$output .= 'if (typeof r === \'object\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
 	
 	/* add constants */

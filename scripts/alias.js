@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.generateAlias.options != options)
+		if (r.plugin.generateAlias.options !== options)
 		{
 			options = $.extend({}, r.plugin.generateAlias.options, options || {});
 		}

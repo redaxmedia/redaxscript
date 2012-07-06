@@ -6,7 +6,7 @@
 	{
 		/* prematurely terminate gallery */
 
-		if (r.constant.MY_BROWSER == 'msie' && r.constant.MY_BROWSER_VERSION < 7)
+		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7)
 		{
 			return false;
 		}
@@ -45,7 +45,7 @@
 
 			/* build box elements */
 
-			if (checkGalleryOverlay == 0)
+			if (checkGalleryOverlay === 0)
 			{
 				$('body').append('<div class="js_gallery_overlay gallery_overlay"></div>');
 				galleryOverlay = $('div.js_gallery_overlay').css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
@@ -67,7 +67,7 @@
 
 			/* fix transparent next and previous area for msie */
 
-			if (r.constant.MY_BROWSER == 'msie')
+			if (r.constant.MY_BROWSER === 'msie')
 			{
 				$('div.js_gallery_next, div.js_gallery_previous').css('background-image', 'url(\'fix\')');
 			}
@@ -155,7 +155,7 @@
 				{
 					galleryLoading = $('img.js_gallery_loading');
 					checkGalleryLoading = galleryLoading.length;
-					if (checkGalleryLoading == 0)
+					if (checkGalleryLoading === 0)
 					{
 						$(galleryBox).add(galleryOverlay).remove();
 					}

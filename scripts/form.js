@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.checkRequired.options != options)
+		if (r.plugin.checkRequired.options !== options)
 		{
 			options = $.extend({}, r.plugin.checkRequired.options, options || {});
 		}
@@ -37,7 +37,7 @@
 
 					/* check for tag */
 
-					if (fieldRequiredTag == 'DIV')
+					if (fieldRequiredTag === 'DIV')
 					{
 						fieldRequiredValue = $.trim(fieldRequired.text());
 						noteErrorClasses += ' box_note';
@@ -49,7 +49,7 @@
 
 					/* check for value */
 
-					if (fieldRequiredValue == '')
+					if (fieldRequiredValue === '')
 					{
 						fieldRequired.addClass(noteErrorClasses);
 					}
@@ -74,7 +74,7 @@
 
 				/* check for tag */
 
-				if (fieldRequiredTag == 'DIV')
+				if (fieldRequiredTag === 'DIV')
 				{
 					fieldRequiredValue = $.trim(fieldRequired.text());
 					noteErrorClasses += ' box_note';
@@ -94,7 +94,7 @@
 
 				/* trigger success event */
 
-				if (form.find(options.required).hasClass('js_note_error') == 0)
+				if (form.find(options.required).hasClass('js_note_error') === 0)
 				{
 					form.trigger('success');
 				}
@@ -108,7 +108,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.checkSearch.options != options)
+		if (r.plugin.checkSearch.options !== options)
 		{
 			options = $.extend({}, r.plugin.checkSearch.options, options || {});
 		}
@@ -124,7 +124,7 @@
 
 			/* prematurely terminate search */
 
-			if (fieldValue == '' || fieldValue == fieldDefaultValue || fieldValue == inputIncorrect)
+			if (fieldValue === '' || fieldValue === fieldDefaultValue || fieldValue === inputIncorrect)
 			{
 				field.value = inputIncorrect;
 				setTimeout(function ()
@@ -142,7 +142,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.noteRequired.options != options)
+		if (r.plugin.noteRequired.options !== options)
 		{
 			options = $.extend({}, r.plugin.noteRequired.options, options || {});
 		}
@@ -176,11 +176,11 @@
 				fieldValue = $.trim(field.value),
 				fieldValueDefault = field.defaultValue;
 
-			if (event.type == 'focusin' && fieldValue == fieldValueDefault)
+			if (event.type === 'focusin' && fieldValue === fieldValueDefault)
 			{
 				field.value = '';
 			}
-			else if (fieldValue == '')
+			else if (fieldValue === '')
 			{
 				field.value = fieldValueDefault;
 			}
@@ -193,7 +193,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.autoResize.options != options)
+		if (r.plugin.autoResize.options !== options)
 		{
 			options = $.extend({}, r.plugin.autoResize.options, options || {});
 		}
@@ -204,14 +204,14 @@
 		{
 			var textarea = this;
 
-			if (event.type == 'ready')
+			if (event.type === 'ready')
 			{
 				while (textarea.clientHeight < textarea.scrollHeight)
 				{
 					textarea.rows += options.summand++;
 				}
 			}
-			while (textarea.clientHeight == textarea.scrollHeight && textarea.rows > 1)
+			while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
 			{
 				textarea.rows -= 1;
 			}

@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.logoEffect.options != options)
+		if (r.plugin.logoEffect.options !== options)
 		{
 			options = $.extend({}, r.plugin.logoEffect.options, options || {});
 		}
@@ -29,7 +29,7 @@ $(function ()
 {
 	/* disable logo effect */
 
-	if ((r.constant.MY_BROWSER == 'msie' && r.constant.MY_BROWSER_VERSION < 9) || r.constant.MY_MOBILE)
+	if ((r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 9) || r.constant.MY_MOBILE)
 	{
 		r.plugin.logoEffect.startup = 0;
 	}

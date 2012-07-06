@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.keyShortcut.options != options)
+		if (r.plugin.keyShortcut.options !== options)
 		{
 			options = $.extend({}, r.plugin.keyShortcut.options, options || {});
 		}
@@ -24,28 +24,28 @@
 			{
 				/* click cancel button */
 
-				if (event.which == 67)
+				if (event.which === 67)
 				{
 					buttonCancel.click();
 				}
 
 				/* toggle admin docks */
 
-				else if (event.which == 68)
+				else if (event.which === 68)
 				{
 					adminDock.toggle();
 				}
 
 				/* click ok button */
 
-				else if (event.which == 79)
+				else if (event.which === 79)
 				{
 					buttonOk.click();
 				}
 
 				/* click submit button */
 
-				else if (event.which == 83)
+				else if (event.which === 83)
 				{
 					buttonSubmit.click();
 				}
@@ -70,7 +70,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.forwardNotification.options != options)
+		if (r.plugin.forwardNotification.options !== options)
 		{
 			options = $.extend({}, r.plugin.forwardNotification.options, options || {});
 		}
@@ -88,7 +88,7 @@ $(function ()
 {
 	/* startup */
 
-	if (r.plugin.keyShortcut.startup && r.constant.LOGGED_IN == r.constant.TOKEN)
+	if (r.plugin.keyShortcut.startup && r.constant.LOGGED_IN === r.constant.TOKEN)
 	{
 		$(r.plugin.keyShortcut.selector).keyShortcut(r.plugin.keyShortcut.options);
 	}

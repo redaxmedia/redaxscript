@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.module.editor.options != options)
+		if (r.module.editor.options !== options)
 		{
 			options = $.extend({}, r.module.editor.options, options || {});
 		}
@@ -40,19 +40,19 @@
 				
 				/* append divider */
 				
-				if (name == 'divider')
+				if (name === 'divider')
 				{
 					$('<div class="js_editor_divider editor_divider"></div>').appendTo(editor.toolbar);
 				}
 
-				else if (name == 'newline')
+				else if (name === 'newline')
 				{
 					$('<div class="js_editor_newline editor_newline"></div>').appendTo(editor.toolbar);
 				}
 
 				/* append toggler */
 
-				else if (name == 'toggle')
+				else if (name === 'toggle')
 				{
 					editor.toggler = control = $('<div class="js_editor_control editor_control editor_control_source_code" title="' + data.title + '"></div>').appendTo(editor.toolbar);
 				}
@@ -93,7 +93,7 @@
 
 					/* fix mozilla styles from preview */
 
-					if (r.constant.MY_BROWSER == 'firefox')
+					if (r.constant.MY_BROWSER === 'firefox')
 					{
 						this.preview.removeAttr('style');
 					}
@@ -116,7 +116,7 @@
 
 		this.insert = function (command, message, value)
 		{
-			if (command == 'createLink' && this.checkSelection() == '')
+			if (command === 'createLink' && this.checkSelection() === '')
 			{
 				return false;
 			}
@@ -130,7 +130,7 @@
 				value: value,
 				callback: function (input)
 				{
-					if (command == 'insertFunction')
+					if (command === 'insertFunction')
 					{
 						editor.insertHTML('&lt;function&gt;' + input + '&lt;/function&gt;')();
 					}
@@ -149,7 +149,7 @@
 		this.insertHTML = function (text)
 		{
 			this.preview.focus();
-			if (r.constant.MY_BROWSER == 'msie')
+			if (r.constant.MY_BROWSER === 'msie')
 			{
 				document.selection.createRange().pasteHTML(text);
 			}
@@ -190,7 +190,7 @@
 
 		this.select = function ()
 		{
-			if (r.constant.MY_BROWSER == 'msie')
+			if (r.constant.MY_BROWSER === 'msie')
 			{
 				var output = document.selection.createRange().text;
 			}
@@ -309,18 +309,18 @@
 
 		this.preview.on('keydown', function (event)
 		{
-			if (event.which == 13)
+			if (event.which === 13)
 			{
 				var output = '<br />';
-				if (r.constant.MY_BROWSER == 'firefox')
+				if (r.constant.MY_BROWSER === 'firefox')
 				{
 					output += '<div></div>';
 				}
-				if (r.constant.MY_BROWSER == 'msie')
+				if (r.constant.MY_BROWSER === 'msie')
 				{
 					houtputtml += '<span></span>';
 				}
-				if (r.constant.MY_ENGINE == 'webkit')
+				if (r.constant.MY_ENGINE === 'webkit')
 				{
 					output += '<br />';
 				}
@@ -366,9 +366,9 @@
 
 (function ()
 {
-	if (r.constant.LAST_TABLE == 'articles' || (r.constant.ADMIN_PARAMETER == 'new' || r.constant.ADMIN_PARAMETER == 'edit') && (r.constant.TABLE_PARAMETER == 'articles' || r.constant.TABLE_PARAMETER == 'extras' || r.constant.TABLE_PARAMETER == 'comments'))
+	if (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments'))
 	{
-		if (r.constant.FIRST_PARAMETER != 'admin')
+		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
 			r.module.editor.options.control = ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat'];
 			r.module.editor.options.newline = false;

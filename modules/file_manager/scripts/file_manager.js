@@ -37,7 +37,7 @@ $(function ()
 {
 	/* startup */
 
-	if (r.constant.ADMIN_PARAMETER == 'file-manager')
+	if (r.constant.ADMIN_PARAMETER === 'file-manager')
 	{
 		$('form.js_form_file_manager').fileManager();
 	}

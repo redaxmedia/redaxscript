@@ -6,7 +6,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.adminDock.options != options)
+		if (r.plugin.adminDock.options !== options)
 		{
 			options = $.extend({}, r.plugin.adminDock.options, options || {});
 		}
@@ -44,7 +44,7 @@
 	{
 		/* extend options */
 
-		if (r.plugin.adminPanel.options != options)
+		if (r.plugin.adminPanel.options !== options)
 		{
 			options = $.extend({}, r.plugin.adminPanel.options, options || {});
 		}
@@ -58,7 +58,7 @@
 
 		/* opened on admin */
 
-		if (r.constant.FIRST_PARAMETER == 'admin')
+		if (r.constant.FIRST_PARAMETER === 'admin')
 		{
 			panelRelated.css('margin-top', panelHeight);
 		}
