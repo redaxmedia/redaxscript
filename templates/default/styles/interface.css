@@ -92,17 +92,6 @@
 
 /* default list */
 
-.list_default
-{
-	color: #666;
-	text-shadow: 0 1px #ebebeb;
-}
-
-.list_default a
-{
-	text-decoration: underline;
-}
-
 .list_default li
 {
 	margin: 1em 1.5em;

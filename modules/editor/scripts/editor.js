@@ -37,9 +37,9 @@
 			{
 				name = options.control[i];
 				data = r.module.editor.controls[name];
-				
+
 				/* append divider */
-				
+
 				if (name === 'divider')
 				{
 					$('<div class="js_editor_divider editor_divider"></div>').appendTo(editor.toolbar);
@@ -58,28 +58,32 @@
 				}
 
 				/* append serveral controls */
-	
+
 				else if (data)
 				{
 					control = $('<div class="js_editor_control editor_control editor_control_' + name + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
 				}
 
-				/* setup control events */
+				/* store control events */
 
 				if (data)
 				{
-					control.data('data', data).mousedown(function ()
-					{
-						data = $(this).data('data');
-
-						/* call methode */
-
-						editor[data.methode](data.command, data.message, data.value);
-						editor.post();
-					});
+					control.data('data', data);
 				}
 			}
 		}();
+
+		/* setup control events */
+
+		this.toolbar.find('div.js_editor_control').mousedown(function ()
+		{
+			var data = $(this).data('data');
+
+			/* call methode */
+
+			editor[data.methode](data.command, data.message, data.value);
+			editor.post();
+		});
 
 		/* general action call */
 
@@ -190,13 +194,15 @@
 
 		this.select = function ()
 		{
+			var output = '';
+
 			if (r.constant.MY_BROWSER === 'msie')
 			{
-				var output = document.selection.createRange().text;
+				output = document.selection.createRange().text;
 			}
 			else
 			{
-				var output = window.getSelection().toString();
+				output = window.getSelection().toString();
 			}
 			return output;
 		};
@@ -312,19 +318,19 @@
 			if (event.which === 13)
 			{
 				var output = '<br />';
+
 				if (r.constant.MY_BROWSER === 'firefox')
 				{
 					output += '<div></div>';
 				}
-				if (r.constant.MY_BROWSER === 'msie')
+				else if (r.constant.MY_BROWSER === 'msie')
 				{
-					houtputtml += '<span></span>';
+					output += '<span></span>';
 				}
-				if (r.constant.MY_ENGINE === 'webkit')
+				else if (r.constant.MY_ENGINE === 'webkit')
 				{
 					output += '<br />';
 				}
-
 				editor.insertHTML(output);
 				event.preventDefault();
 			}
@@ -360,22 +366,19 @@
 	};
 })(jQuery);
 
-
-
-/* detect needed mode */
-
 (function ()
 {
+	/* startup */
+
 	if (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments'))
 	{
+		/* detect needed mode */
+
 		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
 			r.module.editor.options.control = ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat'];
 			r.module.editor.options.newline = false;
 		}
-
-		/* startup */
-
 		$(r.module.editor.selector).editor(r.module.editor.options);
 	}
 })();
