@@ -230,8 +230,8 @@ textarea
 	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
 	background: -o-linear-gradient(top, #dadada, #e8e8e8);
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
-	box-shadow: inset 0 0 0 1px #ddd;
 	border-color: #ababab;
+	box-shadow: inset 0 0 0 1px #ddd;
 	color: #ababab;
 	cursor: default;
 	text-shadow: 0 1px #fff;
