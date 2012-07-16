@@ -185,7 +185,7 @@ function admin_users_form()
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_STRING . $string . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_STRING . $string . '" method="post" autocomplete="off"');
 	$output .= '<div class="js_box_tab_menue box_tab_menue box_tab_menue_admin">';
 
 	/* collect user set */
@@ -196,8 +196,8 @@ function admin_users_form()
 	{
 		$output .= '<li>' . form_element('text', 'user', 'js_required field_text_admin field_note', 'user', $user, l('user'), 'maxlength="10" required="required"') . '</li>';
 	}
-	$output .= '<li>' . form_element('text', 'password', 'field_text_admin' . $class_required, 'password', '', l('password'), 'maxlength="10"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('text', 'password_confirm', 'field_text_admin' . $class_required, 'password_confirm', '', l('password_confirm'), 'maxlength="10"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'field_text_admin js_unmask_password' . $class_required, 'password', '', l('password'), 'maxlength="10"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password_confirm', 'field_text_admin js_unmask_password' . $class_required, 'password_confirm', '', l('password_confirm'), 'maxlength="10"' . $code_required) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';

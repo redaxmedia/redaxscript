@@ -187,6 +187,25 @@
 		});
 	};
 
+	/* unmask password on focus */
+
+	$.fn.unmaskPassword = function ()
+	{
+		$(this).on('focusin focusout', function (event)
+		{
+			var field = this;
+
+			if (event.type === 'focusin')
+			{
+				field.type = 'text';
+			}
+			else
+			{
+				field.type = 'password';
+			}
+		});
+	};
+
 	/* autoresize textarea rows */
 
 	$.fn.autoResize = function (options)
@@ -242,6 +261,10 @@ $(function ()
 	if (r.plugin.clearFocus.startup)
 	{
 		$(r.plugin.clearFocus.selector).clearFocus();
+	}
+	if (r.plugin.unmaskPassword.startup)
+	{
+		$(r.plugin.unmaskPassword.selector).unmaskPassword();
 	}
 	if (r.plugin.autoResize.startup)
 	{

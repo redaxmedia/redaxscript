@@ -148,6 +148,11 @@ var r =
 						tabMenueSet: 'div.js_set_tab_menue, fieldset.js_set_tab_menue'
 					}
 				}
+			},
+			unmaskPassword:
+			{
+				startup: 1,
+				selector: 'form input.js_unmask_password'
 			}
 		},
 		module: {},
