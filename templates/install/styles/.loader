@@ -21,10 +21,6 @@
 1 = styles/firefox.css
 2 = templates/default/styles/firefox.css
 
-[msie]
-1 = styles/msie.css
-2 = templates/default/styles/msie.css
-
 [webkit]
 1 = styles/webkit.css
 2 = templates/default/styles/webkit.css

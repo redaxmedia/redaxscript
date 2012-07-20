@@ -23,11 +23,6 @@
 	z-index: 1300;
 }
 
-.msie7 #gallery_loading, #msie8 .gallery_loading
-{
-	border: 1px solid #d0d0d0;
-}
-
 .gallery_overlay
 {
 	background: #000;
@@ -110,9 +105,4 @@
 .list_gallery a, .list_gallery img
 {
 	float: left;
-}
-
-.msie7 .list_gallery li
-{
-	display: inline;
 }

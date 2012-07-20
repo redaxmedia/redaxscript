@@ -15,10 +15,6 @@
 [firefox]
 1 = styles/firefox.css
 
-[msie]
-1 = styles/msie.css
-2 = templates/scratch/styles/msie.css
-
 [webkit]
 1 = styles/webkit.css
 
@@ -31,9 +27,6 @@
 6 = templates/admin/styles/table.css
 7 = templates/admin/styles/typography.css
 8 = templates/admin/styles/query.css
-
-[admin_msie]
-1 = templates/admin/styles/msie.css
 
 [admin_opera]
 1 = templates/admin/styles/opera.css

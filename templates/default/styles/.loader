@@ -21,10 +21,6 @@
 1 = styles/firefox.css
 2 = templates/default/styles/firefox.css
 
-[msie]
-1 = styles/msie.css
-2 = templates/default/styles/msie.css
-
 [opera]
 1 = templates/default/styles/opera.css
 
@@ -41,9 +37,6 @@
 6 = templates/admin/styles/table.css
 7 = templates/admin/styles/typography.css
 8 = templates/admin/styles/query.css
-
-[admin_msie]
-1 = templates/admin/styles/msie.css
 
 [admin_opera]
 1 = templates/admin/styles/opera.css

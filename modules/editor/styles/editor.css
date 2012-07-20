@@ -33,11 +33,6 @@
 	width: 24px;
 }
 
-.msie7 .editor_control
-{
-	display: inline;
-}
-
 .editor_control:hover
 {
 	background-color: #3b3b3b;
@@ -225,13 +220,6 @@
 .editor_divider
 {
 	display: none;
-}
-
-/* editor newline */
-
-.msie7 .editor_newline
-{
-	font-size: 0;
 }
 
 /* editor preview */
