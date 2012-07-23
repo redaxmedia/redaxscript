@@ -27,3 +27,11 @@ pre
 {
 	font: italic 1em/1.5em arial;
 }
+
+/* titles */
+
+.title_content, .title_content_sub, .title_extra
+{
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
