@@ -29,3 +29,33 @@
 	color: #999;
 	margin: 0 0.5em;
 }
+
+/* sidebar general list */
+
+.sidebar li
+{
+	line-height: 2em;
+}
+
+.sidebar li a
+{
+	display: block;
+	padding: 0 1em;
+	text-decoration: none;
+}
+
+.sidebar li a:hover
+{
+	background: #eee;
+}
+
+.sidebar li.item_active > a
+{
+	background: #0088cc;
+	color: #fff;
+}
+
+.sidebar .list_children a
+{
+	padding-left: 1.5em;
+}

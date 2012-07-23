@@ -32,29 +32,39 @@ pre
 
 .description_website
 {
-	color: #111;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.05);
+	display: none;
 }
 
 /* serveral titles */
 
-.title_content, .title_content_sub, .title_extra
+.title_content, .title_content_sub
 {
 	margin-bottom: 1em;
 	margin-top: 1em;
+}
+
+/* title extra */
+
+.sidebar .title_extra
+{
+	color: #999;
+	font-size: 0.875em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+	padding: 0 1em;
+	text-transform: uppercase;
 }
 
 /* title website */
 
 .title_website
 {
-	font: bold 2em arial;
+	font: 1.75em arial;
 	display: inline-block;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .title_website, .title_website a
 {
-	color: #000;
+	color: #999;
 	text-decoration: none;
 }
