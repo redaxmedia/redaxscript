@@ -1,0 +1,14 @@
+/* box note */
+
+.box_note
+{
+	border: 1px solid;
+	padding: 1em;
+}
+
+/* space between elements */
+
+.box_note + .box_note
+{
+	margin-top: 1em;
+}

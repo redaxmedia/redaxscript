@@ -6,11 +6,13 @@
 5 = styles/grid.css
 6 = styles/interface.css
 7 = styles/table.css
-8 = templates/twitter/styles/form.css
-9 = templates/twitter/styles/general.css
-10 = templates/twitter/styles/interface.css
-11 = templates/twitter/styles/typography.css
-12 = templates/twitter/styles/query.css
+8 = templates/twitter/styles/box.css
+9 = templates/twitter/styles/form.css
+10 = templates/twitter/styles/general.css
+11 = templates/twitter/styles/interface.css
+12 = templates/twitter/styles/note.css
+13 = templates/twitter/styles/typography.css
+14 = templates/twitter/styles/query.css
 
 [firefox]
 1 = styles/firefox.css
