@@ -134,14 +134,13 @@ function login_post()
 			$num_rows = mysql_num_rows($groups_result);
 			while ($r = mysql_fetch_assoc($groups_result))
 			{
-				$counter++;
 				if ($r)
 				{
 					foreach ($r as $key => $value)
 					{
 						$key = 'groups_' . $key;
 						$$key .= stripslashes($value);
-						if ($counter != $num_rows)
+						if (++$counter < $num_rows)
 						{
 							$$key .= ', ';
 						}

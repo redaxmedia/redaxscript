@@ -140,8 +140,7 @@ function db_backup_get_definitions($table = '')
 		{
 			$output .= ' ' . $extra;
 		}
-		$counter++;
-		if ($counter < $num_rows)
+		if (++$counter < $num_rows)
 		{
 			$output .= ', ';
 		}
@@ -243,8 +242,7 @@ function db_backup_get_contents($table = '')
 			}
 		}
 		$output .= ')';
-		$counter++;
-		if ($counter < $num_rows)
+		if (++$counter < $num_rows)
 		{
 			$output .= ', ';
 		}
