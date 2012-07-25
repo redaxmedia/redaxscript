@@ -2,7 +2,8 @@
 
 .footer, .header
 {
-	margin-top: 4em;
+	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 /* grid elements */
@@ -23,7 +24,8 @@
 
 .wrapper
 {
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: 980px;
 }
 
