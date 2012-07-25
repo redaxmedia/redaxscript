@@ -59,5 +59,9 @@ pre
 .title_website, .title_website a
 {
 	color: #999;
+}
+
+.title_website a:hover
+{
 	text-decoration: none;
 }

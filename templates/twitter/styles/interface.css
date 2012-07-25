@@ -1,3 +1,33 @@
+/* sidebar general list */
+
+.sidebar li
+{
+	line-height: 2em;
+}
+
+.sidebar li a
+{
+	display: block;
+	padding: 0 1em;
+	text-decoration: none;
+}
+
+.sidebar li a:hover
+{
+	background: #eee;
+}
+
+.sidebar li.item_active > a
+{
+	background: #0088cc;
+	color: #fff;
+}
+
+.sidebar .list_children a
+{
+	padding-left: 1.5em;
+}
+
 /* breadcrumbs list */
 
 .list_breadcrumbs
@@ -30,32 +60,48 @@
 	margin: 0 0.5em;
 }
 
-/* sidebar general list */
+/* pagination list */
 
-.sidebar li
+.list_pagination
 {
-	line-height: 2em;
+	margin: 2em 0;
+	text-align: center;
 }
 
-.sidebar li a
+.list_pagination li
 {
-	display: block;
-	padding: 0 1em;
+	display: inline-block;
+}
+
+.list_pagination li:first-child a
+{
+	border-radius: 0.25em 0 0 0.25em;
+	border-left-width: 1px;
+}
+
+.list_pagination li:last-child a
+{
+	border-radius: 0 0.25em 0.25em 0;
+}
+
+.list_pagination a, .list_pagination span
+{
+	border: 1px solid #ddd;
+	border-left-width: 0;
+	padding: 0.75em 1em;
+}
+
+.list_pagination a:hover
+{
 	text-decoration: none;
 }
 
-.sidebar li a:hover
+.list_pagination a:hover, .list_pagination span
 {
-	background: #eee;
+	background: #f5f5f5;
 }
 
-.sidebar li.item_active > a
+.list_pagination span
 {
-	background: #0088cc;
-	color: #fff;
-}
-
-.sidebar .list_children a
-{
-	padding-left: 1.5em;
+	color: #999;
 }
