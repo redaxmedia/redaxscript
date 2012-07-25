@@ -21,4 +21,4 @@
 [settings]
 deploy = inline
 rewrite = false
-minify = false
+minify = true
