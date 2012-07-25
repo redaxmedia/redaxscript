@@ -2,8 +2,10 @@
 <header id="header" class="header">
 	<!--[if lt IE 9]><div class="wrapper clear_fix"><![endif]-->
 	<section class="wrapper clear_fix">
-		<?php if (DB_CONNECTED == 1 && s('title')): ?>
-			<h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
+		<?php if (DB_CONNECTED == 1): ?>
+			<?php if (s('title')): ?>
+				<h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
+			<?php endif; ?>
 		<?php endif; ?>
 	</section>
 	<!--[if lt IE 9]></div><![endif]-->
