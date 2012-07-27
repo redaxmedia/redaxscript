@@ -11,8 +11,9 @@
 10 = templates/twitter/styles/general.css
 11 = templates/twitter/styles/interface.css
 12 = templates/twitter/styles/note.css
-13 = templates/twitter/styles/typography.css
-14 = templates/twitter/styles/query.css
+13 = templates/twitter/styles/table.css
+14 = templates/twitter/styles/typography.css
+15 = templates/twitter/styles/query.css
 
 [firefox]
 1 = styles/firefox.css

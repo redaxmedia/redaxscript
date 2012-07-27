@@ -1,0 +1,41 @@
+/* default table */
+
+.table_default td, .table_default th
+{
+	border-left: 1px solid #ddd;
+	padding: 0.75em;
+}
+
+.table_default td:first-child, .table_default th:first-child
+{
+	border-left: 0;
+}
+
+/* default table body */
+
+.table_default tbody tr, .table_default thead th
+{
+	border-bottom: 1px solid #ddd;
+}
+
+.table_default tbody tr:hover
+{
+	background: #f5f5f5;
+}
+
+.table_default tbody tr:last-child
+{
+	border-bottom: 0;
+}
+
+/* default table head and foot */
+
+.table_default tfoot tr
+{
+	border-top: 1px solid #ddd;
+}
+
+.table_default tfoot tr, .table_default thead tr
+{
+	font: bold 1em arial;
+}
