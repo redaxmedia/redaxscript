@@ -73,13 +73,13 @@
 	display: inline-block;
 }
 
-.list_pagination li:first-child a
+.list_pagination li:first-child a, .list_pagination li:first-child span
 {
 	border-radius: 0.25em 0 0 0.25em;
 	border-left-width: 1px;
 }
 
-.list_pagination li:last-child a
+.list_pagination li:last-child a, .list_pagination li:last-child span
 {
 	border-radius: 0 0.25em 0.25em 0;
 }
