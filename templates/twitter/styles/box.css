@@ -43,3 +43,12 @@
 {
 	margin-top: 1em;
 }
+
+/* tab menue box */
+
+.box_tab_menue_default
+{
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+	padding: 1em 1.5em;
+}

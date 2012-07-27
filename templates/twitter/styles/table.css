@@ -1,5 +1,10 @@
 /* default table */
 
+.table_default
+{
+	background: #fff;
+}
+
 .table_default td, .table_default th
 {
 	border-left: 1px solid #ddd;
