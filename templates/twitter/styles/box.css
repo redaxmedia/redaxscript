@@ -1,3 +1,11 @@
+/* default box accordion */
+
+.box_accordion_default
+{
+	border-top: 1px solid #e5e5e5;
+	padding: 0.75em 1.25em;
+}
+
 /* box code */
 
 .box_code

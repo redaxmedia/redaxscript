@@ -28,6 +28,43 @@ pre
 	font: italic 1em/1.5em arial;
 }
 
+/* default title accordion */
+
+.title_accordion_default
+{
+	font: 1em/3em arial;
+	padding: 0 1.25em;
+}
+
+/* javascript enabled */
+
+.js .title_accordion_default:hover
+{
+	background: #f5f5f5;
+	color: #005580;
+}
+
+.js .title_accordion_default, .js .title_accordion_default a
+{
+	color: #0088cc;
+}
+
+.js .title_accordion_default
+{
+	cursor: pointer;
+}
+
+.js .title_accordion_default.title_active
+{
+	color: #555;
+	cursor: default;
+}
+
+.js .title_accordion_default.title_active:hover
+{
+	background: #fff;
+}
+
 /* serveral titles */
 
 .title_comment, .title_content, .title_content_sub

@@ -2,7 +2,7 @@
 
 .sidebar li
 {
-	line-height: 2em;
+	line-height: 2.25em;
 }
 
 .sidebar li a
@@ -148,4 +148,54 @@
 .js .list_tab_menue_default .item_active
 {
 	border-color: #ddd #ddd #fff;
+}
+
+.js .list_tab_menue_default .item_active:hover
+{
+	background: #fff;
+}
+
+.js .list_tab_menue_default .item_active a
+{
+	cursor: default;
+	color: #555;
+}
+
+/* default set accordion */
+
+.set_accordion_default
+{
+	-moz-border-radius: 0.25em 0.25em;
+	-webkit-border-radius: 0.25em 0.25em;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 0.25em 0.25em
+}
+
+/* space between elements */
+
+.set_accordion_default + .set_accordion_default
+{
+	margin-top: 0.25em;
+}
+
+/* default tooltip */
+
+.tooltip_default
+{
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	background: #fff;
+	border: 1px solid #999;
+	border-color: rgba(0, 0, 0, 0.3);
+	border-radius: 0.25em;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	color: #555;
+	left: 100%;
+	margin-left: 1em;
+	top: -0.625em;
+	padding: 1em;
+	width: 200px;
 }
