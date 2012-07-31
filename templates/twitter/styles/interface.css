@@ -61,6 +61,14 @@
 	margin: 0 0.5em;
 }
 
+/* default list */
+
+.list_default li
+{
+	margin: 0.5em 1.5em;
+	list-style: inherit;
+}
+
 /* pagination list */
 
 .list_pagination
@@ -159,6 +167,30 @@
 {
 	cursor: default;
 	color: #555;
+}
+
+/* search list */
+
+.list_search_result
+{
+	font-size: 1.125em;
+}
+
+.list_search_result .date_search_result
+{
+	font-size: 0.875em;
+}
+
+.list_search_result .item_search_result
+{
+	list-style: decimal-leading-zero;
+	margin: 1em 0 1em 2em;
+}
+
+.list_search_result .link_search_result
+{
+	display: block;
+	text-decoration: underline;
 }
 
 /* default set accordion */
