@@ -1,13 +1,13 @@
 [template]
-01 = styles/reset.css
-02 = styles/box.css
-03 = styles/dialog.css
-04 = styles/general.css
-05 = styles/grid.css
-06 = styles/interface.css
-07 = styles/table.css
-08 = templates/default/styles/box.css
-09 = templates/default/styles/dialog.css
+1 = styles/reset.css
+2 = styles/box.css
+3 = styles/dialog.css
+4 = styles/general.css
+5 = styles/grid.css
+6 = styles/interface.css
+7 = styles/table.css
+8 = templates/default/styles/box.css
+9 = templates/default/styles/dialog.css
 10 = templates/default/styles/form.css
 11 = templates/default/styles/general.css
 12 = templates/default/styles/icon.css
@@ -18,12 +18,12 @@
 17 = templates/default/styles/query.css
 
 [firefox]
-01 = styles/firefox.css
-02 = templates/default/styles/firefox.css
+1 = styles/firefox.css
+2 = templates/default/styles/firefox.css
 
 [webkit]
-01 = styles/webkit.css
-02 = templates/default/styles/webkit.css
+1 = styles/webkit.css
+2 = templates/default/styles/webkit.css
 
 [settings]
 deploy = inline

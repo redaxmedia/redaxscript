@@ -1,36 +1,36 @@
 [template]
-01 = styles/reset.css
-02 = styles/box.css
-03 = styles/dialog.css
-04 = styles/general.css
-05 = styles/grid.css
-06 = styles/interface.css
-07 = styles/table.css
-08 = templates/scratch/styles/dialog.css
-09 = templates/scratch/styles/form.css
+1 = styles/reset.css
+2 = styles/box.css
+3 = styles/dialog.css
+4 = styles/general.css
+5 = styles/grid.css
+6 = styles/interface.css
+7 = styles/table.css
+8 = templates/scratch/styles/dialog.css
+9 = templates/scratch/styles/form.css
 10 = templates/scratch/styles/general.css
 11 = templates/scratch/styles/interface.css
 12 = templates/scratch/styles/typography.css
 13 = templates/scratch/styles/query.css
 
 [firefox]
-01 = styles/firefox.css
+1 = styles/firefox.css
 
 [webkit]
-01 = styles/webkit.css
+1 = styles/webkit.css
 
 [admin]
-01 = templates/admin/styles/box.css
-02 = templates/admin/styles/dialog.css
-03 = templates/admin/styles/form.css
-04 = templates/admin/styles/general.css
-05 = templates/admin/styles/interface.css
-06 = templates/admin/styles/table.css
-07 = templates/admin/styles/typography.css
-08 = templates/admin/styles/query.css
+1 = templates/admin/styles/box.css
+2 = templates/admin/styles/dialog.css
+3 = templates/admin/styles/form.css
+4 = templates/admin/styles/general.css
+5 = templates/admin/styles/interface.css
+6 = templates/admin/styles/table.css
+7 = templates/admin/styles/typography.css
+8 = templates/admin/styles/query.css
 
 [admin_opera]
-01 = templates/admin/styles/opera.css
+1 = templates/admin/styles/opera.css
 
 [settings]
 deploy = inline

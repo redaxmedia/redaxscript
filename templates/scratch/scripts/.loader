@@ -1,22 +1,22 @@
 [single]
-01 = http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+1 = http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 
 [template_startup]
-01 = scripts/startup.js
-02 = templates/scratch/scripts/startup.js
+1 = scripts/startup.js
+2 = templates/scratch/scripts/startup.js
 
 [template]
-01 = scripts/dialog.js
-02 = scripts/form.js
-03 = scripts/interface.js
-04 = scripts/misc.js
+1 = scripts/dialog.js
+2 = scripts/form.js
+3 = scripts/interface.js
+4 = scripts/misc.js
 
 [admin_startup]
-01 = templates/admin/scripts/startup.js
+1 = templates/admin/scripts/startup.js
 
 [admin]
-01 = scripts/alias.js
-02 = templates/admin/scripts/interface.js
+1 = scripts/alias.js
+2 = templates/admin/scripts/interface.js
 
 [settings]
 deploy = inline
