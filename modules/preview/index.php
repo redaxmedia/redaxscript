@@ -34,8 +34,10 @@ function preview_center_start()
 		$output = '<div class="preview clear_fix">' . PHP_EOL;
 		ob_start();
 		include_once('modules/preview/partials/grid.phtml');
+		include_once('modules/preview/partials/typography.phtml');
 		include_once('modules/preview/partials/box.phtml');
 		include_once('modules/preview/partials/form.phtml');
+		include_once('modules/preview/partials/media.phtml');
 		include_once('modules/preview/partials/interface.phtml');
 		include_once('modules/preview/partials/table.phtml');
 		include_once('modules/preview/partials/dialog.phtml');
