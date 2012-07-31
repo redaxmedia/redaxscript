@@ -47,7 +47,7 @@ pre
 	text-transform: lowercase;
 }
 
-/* links */
+/* several links */
 
 .link_default
 {
@@ -116,7 +116,7 @@ pre
 	border-bottom-width: 1px;
 }
 
-/* serveral titles */
+/* several titles */
 
 .js .title_accordion_default.title_active, .title_dialog_default, .sidebar .title_extra
 {
