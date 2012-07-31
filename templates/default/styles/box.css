@@ -1,4 +1,4 @@
-/* serveral boxes */
+/* several boxes */
 
 .box_accordion_default, .box_dialog_default, .sidebar .box_extra
 {
@@ -147,28 +147,6 @@
 	margin: 3em auto;
 }
 
-/* box media */
-
-.box_media
-{
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px #c6c6c6;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #fff;
-	border-radius: 0.25em;
-	box-shadow: 0 0 3px #c6c6c6;
-	max-width: 90%;
-	padding: 0.5em;
-}
-
-.box_media:hover
-{
-	-moz-box-shadow: 0 0 3px #999;
-	-webkit-box-shadow: 0 0 3px #999;
-	box-shadow: 0 0 3px #999;
-}
-
 /* box navibar */
 
 .box_navibar
@@ -204,14 +182,6 @@
 	text-decoration: underline;
 }
 
-/* box player */
-
-.box_player
-{
-	height: 480px;
-	width: 640px;
-}
-
 /* box quote */
 
 .box_quote
@@ -219,6 +189,7 @@
 	color: #474747;
 	font: italic 1.125em/1.5em arial;
 	margin: 1em 0;
+	min-height: 4em;
 	padding: 0 6em;
 	position: relative;
 	text-shadow: 0 1px #fff;

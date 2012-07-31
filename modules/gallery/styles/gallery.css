@@ -2,7 +2,7 @@
 
 .gallery_box
 {
-	border: 1px solid #d0d0d0;
+	border: 1px solid #ebebeb;
 	left: 50%;
 	position: fixed;
 	top: 50%;
@@ -76,33 +76,46 @@
 
 .gallery_next div
 {
-	-moz-box-radius: 1.5em 0 0 1.5em;
-	-webkit-box-radius: 1.5em 0 0 1.5em;
-	box-radius: 1.5em 0 0 1.5em;
+	-moz-border-radius: 1.5em 0 0 1.5em;
+	-webkit-border-radius: 1.5em 0 0 1.5em;
+	border-radius: 1.5em 0 0 1.5em;
 	float: right;
 }
 
 .gallery_previous div
 {
-	-moz-box-radius: 0 1.5em 1.5em 0;
-	-webkit-box-radius: 0 1.5em 1.5em 0;
-	box-radius: 0 1.5em 1.5em 0;
+	-moz-border-radius: 0 1.5em 1.5em 0;
+	-webkit-border-radius: 0 1.5em 1.5em 0;
+	border-radius: 0 1.5em 1.5em 0;
 	float: left;
 }
 
-/* gallery list */
+/* gallery elements */
 
-.list_gallery
+.image_gallery
 {
-	overflow: hidden;
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
+	border-radius: 0.25em;
+	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
 }
 
-.list_gallery a
+.image_gallery:hover
+{
+	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
+	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
+	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
+}
+
+.link_gallery
 {
 	margin: 0 0.5em 0.5em 0;
+
 }
 
-.list_gallery a, .list_gallery img
+.link_gallery, .image_gallery
 {
 	float: left;
 }

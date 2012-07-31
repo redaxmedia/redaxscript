@@ -133,7 +133,7 @@ function seo_tube_clean_data($input = '')
 
 function seo_tube_player($video_id = '')
 {
-	$output = object_element('application/x-shockwave-flash', '', 'box_media box_player', '', $video_id, 'http://www.youtube.com/v/' . $video_id);
+	$output = object_element('application/x-shockwave-flash', '', 'player player_default', '', $video_id, 'http://www.youtube.com/v/' . $video_id);
 	return $output;
 }
 

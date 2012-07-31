@@ -1,0 +1,49 @@
+/* image */
+
+.image
+{
+	font-size: 0;
+	max-width: 100%;
+}
+
+/* default image */
+
+.image_default
+{
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
+	border-radius: 0.25em;
+	box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
+}
+
+/* player */
+
+.player
+{
+	height: 480px;
+	max-width: 100%;	
+	width: 640px;
+}
+
+/* default player */
+
+.player_default
+{
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 3px #c6c6c6;
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 3px #c6c6c6;
+	background: #ebebeb;
+	border-radius: 0.25em;
+	box-shadow: 0 0 3px #c6c6c6;
+	padding: 0.5em;	
+}
+
+.player_default:hover
+{
+	-moz-box-shadow: 0 0 3px #999;
+	-webkit-box-shadow: 0 0 3px #999;
+	box-shadow: 0 0 3px #999;
+}

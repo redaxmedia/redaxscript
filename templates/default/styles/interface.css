@@ -1,17 +1,3 @@
-/* default image */
-
-.image_default
-{
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
-	border-radius: 0.25em;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
-	font-size: 0;
-	max-width: 100%;
-}
-
 /* footer general list */
 
 .footer li

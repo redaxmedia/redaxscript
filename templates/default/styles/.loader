@@ -12,10 +12,11 @@
 11 = templates/default/styles/general.css
 12 = templates/default/styles/icon.css
 13 = templates/default/styles/interface.css
-14 = templates/default/styles/note.css
-15 = templates/default/styles/table.css
-16 = templates/default/styles/typography.css
-17 = templates/default/styles/query.css
+14 = templates/default/styles/media.css
+15 = templates/default/styles/note.css
+16 = templates/default/styles/table.css
+17 = templates/default/styles/typography.css
+18 = templates/default/styles/query.css
 
 [firefox]
 1 = styles/firefox.css

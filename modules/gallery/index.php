@@ -83,13 +83,13 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 				}
 				if (file_exists($thumb_string))
 				{
-					$output .= '<li>' . anchor_element('', '', 'box_media', '<img src="' . $thumb_string . '" alt="' . $value . '" />', $string, $value, 'nofollow') . '</li>';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $value . '" />', $string, $value, 'nofollow') . '</li>';
 				}
 			}
 			if ($output)
 			{
 				$id = str_replace('/', '_', $directory);
-				$output = '<ul id="' . $id . '" class="js_gallery list_gallery">' . $output . '</ul>';
+				$output = '<ul id="' . $id . '" class="js_gallery list_gallery clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}
