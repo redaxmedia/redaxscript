@@ -30,10 +30,19 @@ pre
 
 /* serveral titles */
 
-.title_content, .title_content_sub
+.title_comment, .title_content, .title_content_sub
 {
 	margin-bottom: 1em;
 	margin-top: 1em;
+}
+
+/* default title dialog */
+
+.title_dialog_default
+{
+	border-bottom: 1px solid #eee;
+	font: bold 1.375em/2em arial;
+	padding: 0 0.75em;
 }
 
 /* title extra */
