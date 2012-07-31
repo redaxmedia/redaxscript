@@ -216,12 +216,12 @@
 
 .list_header ul li:last-child
 {
-	-moz-border-radius-bottomright: 0.125em;
 	-moz-border-radius-bottomleft: 0.125em;
-	-webkit-border-bottom-right-radius: 0.125em;
+	-moz-border-radius-bottomright: 0.125em;
 	-webkit-border-bottom-left-radius: 0.125em;
-	border-bottom-right-radius: 0.125em;
+	-webkit-border-bottom-right-radius: 0.125em;
 	border-bottom-left-radius: 0.125em;
+	border-bottom-right-radius: 0.125em;
 }
 
 /* overwrite last elements */
@@ -339,6 +339,7 @@
 .js .list_tab_menue_default .item_active a
 {
 	color: #4e4e4e;
+	cursor: default;
 	line-height: 1.5em;
 	text-shadow: none;
 }
