@@ -16,11 +16,19 @@
 	display: inline-block;
 }
 
-/* grid */
+/* grid preview */
 
 .preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover
 {
 	-moz-box-shadow: inset 5px 0 0 #3197df;
 	-webkit-box-shadow: inset 5px 0 0 #3197df;
 	box-shadow: inset 5px 0 0 #3197df;
+}
+
+/* dialog preview */
+
+.preview .dialog
+{
+	margin: 0;
+	position: static;
 }
