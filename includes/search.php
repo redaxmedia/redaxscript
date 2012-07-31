@@ -106,7 +106,7 @@ function search_post()
 					{
 						$string = build_string('articles', $id);
 					}
-					$output .= '<li>' . anchor_element('internal', '', 'link_search_result', $title, $string, $description) . '<br /><span class="date_search_result">' . $date . '</span></li>';
+					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $string, $description) . '<span class="date_search_result">' . $date . '</span></li>';
 				}
 				else
 				{
