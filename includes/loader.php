@@ -191,7 +191,6 @@ function styles()
 		$loader_inherit_ini = parse_ini_file('templates/' . $template . '/styles/.loader', 1);
 		$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
 	}
-
 	$loader_single = $loader_ini['single'];
 	if (LOGGED_IN == TOKEN)
 	{
@@ -239,7 +238,7 @@ function styles()
 
 function scripts($mode = '')
 {
-	if ($mode != 'startup')
+	if ($mode == 'inline' || $mode == 'outline')
 	{
 		hook(__FUNCTION__ . '_start');
 	}
@@ -313,7 +312,7 @@ function scripts($mode = '')
 		}
 	}
 	echo $output;
-	if ($mode != 'startup')
+	if ($mode == 'inline' || $mode == 'outline')
 	{
 		hook(__FUNCTION__ . '_end');
 	}
