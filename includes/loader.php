@@ -41,6 +41,20 @@ function loader($type = '', $mode = '')
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/' . $type . '/.loader', 1);
 
+	/* inerhit from another template */
+
+	$loader_inerhit = $loader_ini['inerhit'];
+	if ($loader_inerhit)
+	{
+		$template = $loader_inerhit[1];
+		$loader_inerhit_ini = parse_ini_file('templates/' . $template . '/' . $type . '/.loader', 1);
+		$loader_ini = array_merge_recursive($loader_inerhit_ini, $loader_ini);
+	}
+	else
+	{
+		$template = TEMPLATE;
+	}
+
 	/* startup mode */
 
 	if ($mode == 'startup')
@@ -140,7 +154,7 @@ function loader($type = '', $mode = '')
 
 	if ($loader_rewrite)
 	{
-		$output = preg_replace('/templates\/'. TEMPLATE . '/', ROOT . '/templates/' . TEMPLATE, $output);
+		$output = preg_replace('/templates\/'. $template . '/', ROOT . '/templates/' . $template, $output);
 		if (LOGGED_IN == TOKEN)
 		{
 			$output = preg_replace('/templates\/admin/', ROOT . '/templates/admin', $output);
@@ -167,6 +181,17 @@ function styles()
 	/* parse loader ini */
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/styles/.loader', 1);
+
+	/* inerhit from another template */
+
+	$loader_inerhit = $loader_ini['inerhit'];
+	if ($loader_inerhit)
+	{
+		$template = $loader_inerhit[1];
+		$loader_inerhit_ini = parse_ini_file('templates/' . $template . '/styles/.loader', 1);
+		$loader_ini = array_merge_recursive($loader_inerhit_ini, $loader_ini);
+	}
+
 	$loader_single = $loader_ini['single'];
 	if (LOGGED_IN == TOKEN)
 	{
@@ -202,7 +227,7 @@ function styles()
 	{
 		$output .= '<style type="text/css" media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
 	}
-	else if ($loader_deploy == 'outline')
+	else
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_STRING . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
@@ -222,6 +247,16 @@ function scripts($mode = '')
 	/* parse loader ini */
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/scripts/.loader', 1);
+
+	/* inerhit from another template */
+
+	$loader_inerhit = $loader_ini['inerhit'];
+	if ($loader_inerhit)
+	{
+		$template = $loader_inerhit[1];
+		$loader_inerhit_ini = parse_ini_file('templates/' . $template . '/scripts/.loader', 1);
+		$loader_ini = array_merge_recursive($loader_inerhit_ini, $loader_ini);
+	}
 	$loader_minify = $loader_ini['settings']['minify'];
 
 	/* startup mode */
@@ -271,7 +306,7 @@ function scripts($mode = '')
 		{
 			 $output .= loader('scripts', 'inline') . ' /* ]]> */ </script>' . PHP_EOL;
 		}
-		else if ($loader_deploy == 'outline')
+		else
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
 			$output .= '<script type="text/javascript" src="' . REWRITE_STRING . 'loader/scripts"></script>' . PHP_EOL;

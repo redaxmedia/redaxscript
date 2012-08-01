@@ -1,48 +1,5 @@
+[inerhit]
+1 = default
+
 [template]
-1 = styles/reset.css
-2 = styles/box.css
-3 = styles/dialog.css
-4 = styles/general.css
-5 = styles/grid.css
-6 = styles/interface.css
-7 = styles/table.css
-8 = templates/default/styles/box.css
-9 = templates/default/styles/dialog.css
-10 = templates/default/styles/form.css
-11 = templates/default/styles/general.css
-12 = templates/default/styles/icon.css
-13 = templates/default/styles/interface.css
-14 = templates/default/styles/note.css
-15 = templates/default/styles/table.css
-16 = templates/default/styles/typography.css
-17 = templates/default/styles/query.css
-18 = templates/wide/styles/query.css
-
-[firefox]
-1 = styles/firefox.css
-2 = templates/default/styles/firefox.css
-
-[opera]
-1 = templates/default/styles/opera.css
-
-[webkit]
-1 = styles/webkit.css
-2 = templates/default/styles/webkit.css
-
-[admin]
-1 = templates/admin/styles/box.css
-2 = templates/admin/styles/dialog.css
-3 = templates/admin/styles/form.css
-4 = templates/admin/styles/general.css
-5 = templates/admin/styles/interface.css
-6 = templates/admin/styles/table.css
-7 = templates/admin/styles/typography.css
-8 = templates/admin/styles/query.css
-
-[admin_opera]
-1 = templates/admin/styles/opera.css
-
-[settings]
-deploy = inline
-rewrite = false
-minify = true
+1 = templates/wide/styles/query.css
