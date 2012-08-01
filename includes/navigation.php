@@ -139,7 +139,7 @@ function navigation_list($table = '', $options = '')
 				/* collect children output */
 
 				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $string, $description);
-				if ($table == 'categories')
+				if ($table == 'categories' && $option_children == 1)
 				{
 					$parent_string = $alias . '/';
 					$output .= children_list('categories', $id, $parent_string, 2);
