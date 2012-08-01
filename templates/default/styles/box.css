@@ -144,7 +144,8 @@
 	border-bottom: 1px solid #fcfcfc;
 	border-top: 1px solid #bdbdbd;
 	height: 2px;
-	margin: 3em auto;
+	margin-bottom: 3em;
+	margin-top: 3em;
 }
 
 /* box navibar */

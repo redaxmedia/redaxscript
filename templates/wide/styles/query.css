@@ -4,7 +4,7 @@
 {
 	.content, .wrapper
 	{
-		width: auto;
+		width: 100%;
 	}
 
 	.wrapper_body

@@ -45,9 +45,9 @@
 
 .description_dock_admin
 {
-	font: 1em/3em arial;
-	float: right;
 	color: #474747;
+	float: right;
+	font: 1em/3em arial;
 	margin: 0 1em;
 	text-shadow: 0 1px #1b1b1b;
 }

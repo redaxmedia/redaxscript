@@ -33,16 +33,6 @@
 		width: 100%;
 	}
 
-	.list_pagination .item_number
-	{
-		display: none;
-	}
-
-	.list_pagination .item_active
-	{
-		display: inline-block;
-	}
-
 	.player
 	{
 		height: 400px;
@@ -63,9 +53,14 @@
 		width: 80%;
 	}
 
-	.list_header
+	.list_header, .list_pagination .item_number
 	{
 		display: none;
+	}
+
+	.list_pagination .item_active
+	{
+		display: inline-block;
 	}
 
 	.player
