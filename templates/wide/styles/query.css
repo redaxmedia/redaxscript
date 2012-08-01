@@ -1,0 +1,32 @@
+/* screen */
+
+@media screen and (max-width: 1000px)
+{
+	.content, .wrapper
+	{
+		width: auto;
+	}
+
+	.wrapper_body
+	{
+		min-width: 0;
+	}
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px)
+{
+	.player
+	{
+		height: 600px;
+		width: 800px;
+	}
+}
+
+@media screen and (min-width: 1000px)
+{
+	.player
+	{
+		height: 720px;
+		width: 960px;
+	}
+}
