@@ -1,7 +1,7 @@
 <h2 class="title_content">Form elements</h2>
 
 
-<h3 class="title_content_sub">.box_search > .field_search ~ .field_button_search</h3>
+<h3 class="title_content_sub">.form_search > .field_search ~ .field_button_search</h3>
 
 <?php search(); ?>
 
@@ -70,7 +70,6 @@
 	</fieldset>
 </form>
 
-
 <?php if (LOGGED_IN == TOKEN): ?>
 	<h3 class="title_content_sub">.field_{type}_admin</h3>
 
@@ -96,7 +95,8 @@
 		<?php echo form_element('button', '', 'field_button_large_admin', '', l('submit')); ?>
 		<?php echo form_element('button', '', 'field_button_admin', '', l('submit')); ?>
 	</form>
-	
+
+
 	<h3 class="title_content_sub">.field_disabled</h3>
 
 	<?php echo form_element('form', '', 'form_admin'); ?>
