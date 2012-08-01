@@ -4,6 +4,7 @@
 {
 	-moz-border-radius: 0 0 0.25em 0.25em;
 	-webkit-border-radius: 0 0 0.25em 0.25em;
+	background: #fff;
 	border: 1px solid #e5e5e5;
 	border-top: 0;
 	border-radius: 0 0 0.25em 0.25em;
@@ -32,6 +33,17 @@
 	padding: 1em;
 }
 
+/* box default */
+
+.box_default
+{
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	background: #eee;
+	border-radius: 0.25em;
+	padding: 1em 1.5em;
+}
+
 /* box sidebar */
 
 .box_sidebar
@@ -46,6 +58,14 @@
 	border-radius: 0.25em;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	margin-top: 2em;
+}
+
+/* box line */
+
+.box_line
+{
+	border-bottom: 1px solid #ddd;
+	margin: 3em auto;
 }
 
 /* box note */

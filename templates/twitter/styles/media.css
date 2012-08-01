@@ -1,0 +1,16 @@
+/* image */
+
+.image
+{
+	font-size: 0;
+	max-width: 100%;
+}
+
+/* player */
+
+.player
+{
+	height: 480px;
+	max-width: 100%;	
+	width: 640px;
+}
