@@ -110,8 +110,9 @@ pre
 
 .title_website
 {
-	font: 1.75em arial;
+	font: 1.75em/2em arial;
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .title_website, .title_website a

@@ -6,6 +6,10 @@
 			<?php if (s('title')): ?>
 				<h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
 			<?php endif; ?>
+			<?php navigation_list('categories', array(
+				'class' => 'list_header',
+				'limit' => 10
+			)); ?>
 		<?php endif; ?>
 	</section>
 	<!--[if lt IE 9]></div><![endif]-->
