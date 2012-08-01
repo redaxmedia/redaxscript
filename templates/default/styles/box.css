@@ -215,7 +215,7 @@
 
 /* space between elements */
 
-.box_note + .box_note
+.box_note + .box_note, .form_default .box_note
 {
 	margin-top: 1em;
 }

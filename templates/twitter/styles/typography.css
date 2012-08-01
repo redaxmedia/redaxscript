@@ -32,11 +32,25 @@ pre
 
 .title_accordion_default
 {
+	-moz-border-radius: 0.25em 0.25em;
+	-moz-box-sizing: border-box;
+	-webkit-border-radius: 0.25em 0.25em;
+	-webkit-box-sizing: border-box;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 0.25em 0.25em;
+	box-sizing: border-box;
 	font: 1em/3em arial;
-	padding: 0 1.25em;
+	text-indent: 1em;
+	width: 100%
 }
 
 /* javascript enabled */
+
+.js .title_accordion_default
+{
+	cursor: pointer;
+}
 
 .js .title_accordion_default:hover
 {
@@ -49,13 +63,11 @@ pre
 	color: #0088cc;
 }
 
-.js .title_accordion_default
-{
-	cursor: pointer;
-}
-
 .js .title_accordion_default.title_active
 {
+	-moz-border-radius: 0.25em 0.25em 0 0;
+	-webkit-border-radius: 0.25em 0.25em 0 0;
+	border-radius: 0.25em 0.25em 0 0;
 	color: #555;
 	cursor: default;
 }

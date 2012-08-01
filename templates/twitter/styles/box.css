@@ -2,7 +2,11 @@
 
 .box_accordion_default
 {
-	border-top: 1px solid #e5e5e5;
+	-moz-border-radius: 0 0 0.25em 0.25em;
+	-webkit-border-radius: 0 0 0.25em 0.25em;
+	border: 1px solid #e5e5e5;
+	border-top: 0;
+	border-radius: 0 0 0.25em 0.25em;
 	padding: 0.75em 1.25em;
 }
 
@@ -52,13 +56,6 @@
 	padding: 1em;
 }
 
-/* space between elements */
-
-.box_note + .box_note
-{
-	margin-top: 1em;
-}
-
 /* tab menue box */
 
 .box_tab_menue_default
@@ -66,4 +63,11 @@
 	background: #fff;
 	border-bottom: 1px solid #ddd;
 	padding: 1em 1.5em;
+}
+
+/* space between elements */
+
+.box_note + .box_note, .form_default .box_note
+{
+	margin-top: 1em;
 }
