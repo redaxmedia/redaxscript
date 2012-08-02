@@ -1,0 +1,6 @@
+/* select field */
+
+.field_select, .field_select.field_disabled, .field_select.field_readonly, form .field_select.field_note
+{
+	background-color: rgba(0, 0, 0, 0);
+}
