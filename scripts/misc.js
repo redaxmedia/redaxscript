@@ -22,7 +22,7 @@
 
 			if (event.ctrlKey && event.altKey)
 			{
-				/* click cancel button */
+				/* trigger cancle action */
 
 				if (event.which === 67)
 				{
@@ -36,14 +36,14 @@
 					adminDock.toggle();
 				}
 
-				/* click ok button */
+				/* trigger ok action */
 
 				else if (event.which === 79)
 				{
 					buttonOk.click();
 				}
 
-				/* click submit button */
+				/* trigger submit action */
 
 				else if (event.which === 83)
 				{
