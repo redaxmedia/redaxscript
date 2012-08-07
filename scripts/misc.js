@@ -22,7 +22,7 @@
 
 			if (event.ctrlKey && event.altKey)
 			{
-				/* trigger cancle action */
+				/* trigger cancel action */
 
 				if (event.which === 67)
 				{

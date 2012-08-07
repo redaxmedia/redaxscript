@@ -2,7 +2,7 @@
 
 /* breadcrumb list */
 
-function breadcrumb_list()
+function breadcrumb()
 {
 	hook(__FUNCTION__ . '_start');
 
