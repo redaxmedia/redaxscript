@@ -1,8 +1,8 @@
 <?php
 
-/* breadcrumbs list */
+/* breadcrumb list */
 
-function breadcrumbs_list()
+function breadcrumb_list()
 {
 	hook(__FUNCTION__ . '_start');
 
@@ -23,31 +23,31 @@ function breadcrumbs_list()
 
 		if ($title_admin)
 		{
-			$breadcrumbs = '<li>';
+			$breadcrumb = '<li>';
 			if (ADMIN_PARAMETER && LAST_PARAMETER == '')
 			{
-				$breadcrumbs .= $title_admin;
+				$breadcrumb .= $title_admin;
 			}
 			else
 			{
-				$breadcrumbs .= anchor_element('internal', '', '', $title_admin, FULL_STRING);
+				$breadcrumb .= anchor_element('internal', '', '', $title_admin, FULL_STRING);
 			}
-			$breadcrumbs .= '</li>';
+			$breadcrumb .= '</li>';
 
 			/* join table title */
 
 			if ($title_table)
 			{
-				$breadcrumbs .= '<li class="divider">' . s('divider') . '</li><li>';
+				$breadcrumb .= '<li class="divider">' . s('divider') . '</li><li>';
 				if (TABLE_PARAMETER == LAST_PARAMETER || TABLE_PARAMETER == THIRD_PARAMETER && TOKEN_PARAMETER == LAST_PARAMETER)
 				{
-					$breadcrumbs .= $title_table;
+					$breadcrumb .= $title_table;
 				}
 				else
 				{
-					$breadcrumbs .= anchor_element('internal', '', '', $title_table, FULL_STRING);
+					$breadcrumb .= anchor_element('internal', '', '', $title_table, FULL_STRING);
 				}
-				$breadcrumbs .= '</li>';
+				$breadcrumb .= '</li>';
 			}
 		}
 	}
@@ -65,16 +65,16 @@ function breadcrumbs_list()
 
 		if ($default_title)
 		{
-			$breadcrumbs = '<li>';
+			$breadcrumb = '<li>';
 			if (FIRST_PARAMETER == LAST_PARAMETER)
 			{
-				$breadcrumbs .= $default_title;
+				$breadcrumb .= $default_title;
 			}
 			else
 			{
-				$breadcrumbs .= anchor_element('internal', '', '', $default_title, FIRST_PARAMETER);
+				$breadcrumb .= anchor_element('internal', '', '', $default_title, FIRST_PARAMETER);
 			}
-			$breadcrumbs .= '</li>';
+			$breadcrumb .= '</li>';
 		}
 	}
 
@@ -82,7 +82,7 @@ function breadcrumbs_list()
 
 	if (TITLE)
 	{
-		$breadcrumbs = '<li>' . TITLE . '</li>';
+		$breadcrumb = '<li>' . TITLE . '</li>';
 	}
 
 	/* query title from content */
@@ -92,46 +92,46 @@ function breadcrumbs_list()
 		/* join first title */
 
 		$first_title = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
-		$breadcrumbs = '<li>';
+		$breadcrumb = '<li>';
 		if (FIRST_PARAMETER == LAST_PARAMETER)
 		{
-			$breadcrumbs .= $first_title;
+			$breadcrumb .= $first_title;
 		}
 		else
 		{
-			$breadcrumbs .= anchor_element('internal', '', '', $first_title, FIRST_PARAMETER);
+			$breadcrumb .= anchor_element('internal', '', '', $first_title, FIRST_PARAMETER);
 		}
-		$breadcrumbs .= '</li>';
+		$breadcrumb .= '</li>';
 		if (SECOND_TABLE)
 		{
 			/* join second title */
 
 			$second_title = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
-			$breadcrumbs .= '<li class="divider">' . s('divider') . '</li><li>';
+			$breadcrumb .= '<li class="divider">' . s('divider') . '</li><li>';
 			if (SECOND_PARAMETER == LAST_PARAMETER)
 			{
-				$breadcrumbs .= $second_title;	
+				$breadcrumb .= $second_title;	
 			}
 			else
 			{
-				$breadcrumbs .= anchor_element('internal', '', '', $second_title, FIRST_PARAMETER . '/' . SECOND_PARAMETER);
+				$breadcrumb .= anchor_element('internal', '', '', $second_title, FIRST_PARAMETER . '/' . SECOND_PARAMETER);
 			}
-			$breadcrumbs .= '</li>';
+			$breadcrumb .= '</li>';
 			if (THIRD_TABLE)
 			{
 				/* join third title */
 
 				$third_title = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
-				$breadcrumbs .= '<li class="divider">' . s('divider') . '</li><li>';
+				$breadcrumb .= '<li class="divider">' . s('divider') . '</li><li>';
 				if (THIRD_PARAMETER == LAST_PARAMETER)
 				{
-					$breadcrumbs .= $third_title;	
+					$breadcrumb .= $third_title;	
 				}
 				else
 				{
-					$breadcrumbs .= anchor_element('internal', '', '', $third_title, FIRST_PARAMETER . '/' . SECOND_PARAMETER . '/' . THIRD_PARAMETER);
+					$breadcrumb .= anchor_element('internal', '', '', $third_title, FIRST_PARAMETER . '/' . SECOND_PARAMETER . '/' . THIRD_PARAMETER);
 				}
-				$breadcrumbs .= '</li>';
+				$breadcrumb .= '</li>';
 			}
 		}
 	}
@@ -140,39 +140,39 @@ function breadcrumbs_list()
 
 	else if (FULL_STRING == '')
 	{
-		$breadcrumbs = '<li>' . l('home') . '</li>';
+		$breadcrumb = '<li>' . l('home') . '</li>';
 	}
 
 	/* logged in */
 
 	if (LOGGED_IN == TOKEN)
 	{
-		$breadcrumbs_admin = '<li>';
+		$breadcrumb_admin = '<li>';
 		if (FIRST_PARAMETER == 'admin' && SECOND_TABLE == '' && SECOND_PARAMETER == '')
 		{
-			$breadcrumbs_admin .= l('administration');
+			$breadcrumb_admin .= l('administration');
 		}
 		else
 		{
-			$breadcrumbs_admin .= anchor_element('internal', '', '', l('administration'), 'admin');
+			$breadcrumb_admin .= anchor_element('internal', '', '', l('administration'), 'admin');
 		}
-		$breadcrumbs_admin .= '</li>';
-		if ($breadcrumbs)
+		$breadcrumb_admin .= '</li>';
+		if ($breadcrumb)
 		{
-			$breadcrumbs_admin .= '<li class="divider">' . s('divider') . '</li>';
+			$breadcrumb_admin .= '<li class="divider">' . s('divider') . '</li>';
 		}
 	}
 
 	/* handle error */
 
-	else if ($breadcrumbs == '')
+	else if ($breadcrumb == '')
 	{
-		$breadcrumbs = '<li>' . l('error') . '</li>';
+		$breadcrumb = '<li>' . l('error') . '</li>';
 	}
 
 	/* collect output */
 
-	$output = '<ul class="list_breadcrumbs">' . $breadcrumbs_admin . $breadcrumbs . '</ul>';
+	$output = '<ul class="list_breadcrumb">' . $breadcrumb_admin . $breadcrumb . '</ul>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }

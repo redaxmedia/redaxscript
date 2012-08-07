@@ -81,6 +81,7 @@
 .table_admin tfoot .column_move, .table_admin thead .column_move
 {
 	background: url('templates/admin/images/sprite.png') -116px 2px;
+	display: block;
 	width: 20px;
 }
 

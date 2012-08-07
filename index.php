@@ -4,7 +4,7 @@ error_reporting(0);
 /* include core files */
 
 include_once('config.php');
-include_once('includes/breadcrumbs.php');
+include_once('includes/breadcrumb.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');

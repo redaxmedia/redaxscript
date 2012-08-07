@@ -55,9 +55,9 @@
 	top: -0.75em;
 }
 
-/* default box and tab menue box */
+/* default box and tab box */
 
-.box_default, .box_tab_menue_default
+.box_default, .box_tab_default
 {
 	background: #e2e2e2;
 	border: 1px solid #ebebeb;
@@ -209,7 +209,7 @@
 
 /* javascript enabled */
 
-.js .box_tab_menue_default
+.js .box_tab_default
 {
 	height: 450px;
 }

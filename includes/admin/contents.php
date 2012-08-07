@@ -343,9 +343,9 @@ function admin_contents_form()
 
 	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
 
-	/* collect tab menue output */
+	/* collect tab output */
 
-	$output .= '<ul class="js_list_tab_menue list_tab_menue list_tab_menue_admin">';
+	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
 	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($single), FULL_STRING . '#tab-1') . '</li>';
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_STRING . '#tab-2') . '</li>';
 	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
@@ -357,11 +357,11 @@ function admin_contents_form()
 	/* collect tab box output */
 
 	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_STRING . $string . '" method="post"');
-	$output .= '<div class="js_box_tab_menue box_tab_menue box_tab_menue_admin">';
+	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect content set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab_menue set_tab_menue set_tab_menue_admin', '', '', l($single)) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l($single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= '<li>' . form_element('text', 'author', 'js_required field_text_admin field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
@@ -386,7 +386,7 @@ function admin_contents_form()
 
 	/* collect customize set */
 
-	$output .= form_element('fieldset', 'tab-2', 'js_set_tab_menue set_tab_menue set_tab_menue_admin', '', '', l('customize')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
 
 	/* build languages select */
 
@@ -524,7 +524,7 @@ function admin_contents_form()
 
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
-		$output .= form_element('fieldset', 'tab-3', 'js_set_tab_menue set_tab_menue set_tab_menue_admin', '', '', l('date')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-3', 'js_set_tab set_tab set_tab_admin', '', '', l('date')) . '<ul>';
 		$output .= '<li>' . select_date('day', 'field_select_admin', 'day', $date, 'd', 1, 32, l('day')) . '</li>';
 		$output .= '<li>' . select_date('month', 'field_select_admin', 'month', $date, 'M', 1, 13, l('month')) . '</li>';
 		$output .= '<li>' . select_date('year', 'field_select_admin', 'year', $date, 'Y', 2000, 2016, l('year')) . '</li>';

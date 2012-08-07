@@ -32,9 +32,9 @@
 	top: 0;
 }
 
-/* list tab menue */
+/* list tab */
 
-.list_tab_menue li
+.list_tab li
 {
 	display: inline-block;
 }

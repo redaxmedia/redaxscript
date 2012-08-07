@@ -49,7 +49,7 @@ var r =
 					summand: 10
 				}
 			},
-			dropDown:
+			dropdown:
 			{
 				startup: 1,
 				selector: 'ul.js_dropdown'
@@ -129,23 +129,23 @@ var r =
 			preventUnload:
 			{
 				startup: 1,
-				selector: 'ul.js_box_accordion, div.js_box_tab_menue',
+				selector: 'ul.js_box_accordion, div.js_box_tab',
 				options:
 				{
-					excluded: 'ul.js_list_tab_menue a'
+					excluded: 'ul.js_list_tab a'
 				}
 			},
-			tabMenue:
+			tab:
 			{
 				startup: 1,
-				selector: 'ul.js_list_tab_menue li',
+				selector: 'ul.js_list_tab li',
 				options:
 				{
 					element:
 					{
-						tabMenueBox: 'div.js_box_tab_menue',
-						tabMenueList: 'ul.js_list_tab_menue',
-						tabMenueSet: 'div.js_set_tab_menue, fieldset.js_set_tab_menue'
+						tabBox: 'div.js_box_tab',
+						tabList: 'ul.js_list_tab',
+						tabSet: 'div.js_set_tab, fieldset.js_set_tab'
 					}
 				}
 			},

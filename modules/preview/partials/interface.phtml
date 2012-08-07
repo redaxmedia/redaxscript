@@ -33,9 +33,9 @@
 </ol>
 
 
-<h3 class="title_content_sub">.list_breadcrumbs</h3>
+<h3 class="title_content_sub">.list_breadcrumb</h3>
 
-<ul class="list_breadcrumbs">
+<ul class="list_breadcrumb">
 	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
 	<li><?php echo s('divider'); ?></li>
 	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
@@ -53,9 +53,9 @@
 <?php echo pagination(10, 10, 'preview'); ?>
 
 
-<h3 class="title_content_sub">.list_tab_menue ~ .box_tab_menue</h3>
+<h3 class="title_content_sub">.list_tab ~ .box_tab</h3>
 
-<ul class="js_list_tab_menue list_tab_menue list_tab_menue_default">
+<ul class="js_list_tab list_tab list_tab_default">
 	<li class="js_item_active item_active item_first">
 		<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-1" title="<?php echo l('1'); ?>"><?php echo l('1'); ?></a>
 	</li>
@@ -67,23 +67,23 @@
 	</li>
 </ul>
 
-<div class="js_box_tab_menue box_tab_menue box_tab_menue_default">
-	<div id="tab-1" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+<div class="js_box_tab box_tab box_tab_default">
+	<div id="tab-1" class="js_set_tab set_tab set_tab_default">
 		<?php echo l('1'); ?>
 	</div>
-	<div id="tab-2" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+	<div id="tab-2" class="js_set_tab set_tab set_tab_default">
 		<?php echo l('2'); ?>
 	</div>
-	<div id="tab-3" class="js_set_tab_menue set_tab_menue set_tab_menue_default">
+	<div id="tab-3" class="js_set_tab set_tab set_tab_default">
 		<?php echo l('3'); ?>
 	</div>
 </div>
 
 
 <?php if (LOGGED_IN == TOKEN): ?>
-	<h3 class="title_content_sub">.list_tab_menue_admin ~ .box_tab_menue_admin</h3>
+	<h3 class="title_content_sub">.list_tab_admin ~ .box_tab_admin</h3>
 
-	<ul class="js_list_tab_menue list_tab_menue list_tab_menue_admin">
+	<ul class="js_list_tab list_tab list_tab_admin">
 		<li class="js_item_active item_active item_first">
 			<a href="<?php echo REWRITE_STRING . FULL_STRING; ?>#tab-4" title="<?php echo l('4'); ?>"><?php echo l('4'); ?></a>
 		</li>
@@ -95,14 +95,14 @@
 		</li>
 	</ul>
 
-	<div class="js_box_tab_menue box_tab_menue box_tab_menue_admin">
-		<div id="tab-4" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+	<div class="js_box_tab box_tab box_tab_admin">
+		<div id="tab-4" class="js_set_tab set_tab set_tab_admin">
 			<?php echo l('4'); ?>
 		</div>
-		<div id="tab-5" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+		<div id="tab-5" class="js_set_tab set_tab set_tab_admin">
 			<?php echo l('5'); ?>
 		</div>
-		<div id="tab-6" class="js_set_tab_menue set_tab_menue set_tab_menue_admin">
+		<div id="tab-6" class="js_set_tab set_tab set_tab_admin">
 			<?php echo l('6'); ?>
 		</div>
 	</div>

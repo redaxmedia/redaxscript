@@ -68,9 +68,9 @@
 	padding: 1.25em 0;
 }
 
-/* admin tab menue */
+/* admin tab */
 
-.box_tab_menue_admin
+.box_tab_admin
 {
 	background: #e2e2e2;
 	background: linear-gradient(top, #e2e2e2, #dadada);
@@ -84,7 +84,7 @@
 
 /* javascript enabled */
 
-.js .box_tab_menue_admin
+.js .box_tab_admin
 {
 	height: 450px;
 }

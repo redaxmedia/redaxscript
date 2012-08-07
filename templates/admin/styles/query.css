@@ -2,7 +2,7 @@
 
 @media screen and (max-width: 640px)
 {
-	.wrapper_panel_menue_admin
+	.wrapper_panel_menu_admin
 	{
 		display: none;
 	}
@@ -53,7 +53,7 @@
 
 /* rtl direction */
 
-.rtl .description_dock_admin, .rtl .wrapper_panel_menue_admin
+.rtl .description_dock_admin, .rtl .wrapper_panel_menu_admin
 {
 	float: left;
 }

@@ -65,10 +65,10 @@ function head()
 	{
 		if (l(ADMIN_PARAMETER))
 		{
-			$breadcrumbs = l(ADMIN_PARAMETER);
+			$breadcrumb = l(ADMIN_PARAMETER);
 			if (l(TABLE_PARAMETER))
 			{
-				$breadcrumbs .= ' - ' . l(TABLE_PARAMETER);
+				$breadcrumb .= ' - ' . l(TABLE_PARAMETER);
 			}
 		}
 	}
@@ -81,14 +81,14 @@ function head()
 		{
 			$default_title = l(FIRST_PARAMETER);
 		}
-		$breadcrumbs = $default_title;
+		$breadcrumb = $default_title;
 	}
 
 	/* overwrite if title constant */
 
 	if (TITLE)
 	{
-		$breadcrumbs = TITLE;
+		$breadcrumb = TITLE;
 	}
 
 	/* query title from content */
@@ -98,19 +98,19 @@ function head()
 		/* join first title */
 
 		$first_title = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
-		$breadcrumbs = $first_title;
+		$breadcrumb = $first_title;
 		if (SECOND_TABLE)
 		{
 			/* join second title */
 
 			$second_title = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
-			$breadcrumbs .= ' - ' . $second_title;
+			$breadcrumb .= ' - ' . $second_title;
 			if (THIRD_TABLE)
 			{
 				/* join third title */
 
 				$third_title = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
-				$breadcrumbs .= ' - ' . $third_title;
+				$breadcrumb .= ' - ' . $third_title;
 			}
 		}
 	}
@@ -119,25 +119,25 @@ function head()
 
 	else if (FULL_STRING == '')
 	{
-		$breadcrumbs = l('home');
+		$breadcrumb = l('home');
 	}
 
 	/* logged in */
 
 	if (LOGGED_IN == TOKEN)
 	{
-		$breadcrumbs_admin = l('administration');
-		if ($breadcrumbs)
+		$breadcrumb_admin = l('administration');
+		if ($breadcrumb)
 		{
-			$breadcrumbs_admin .= ' - ';
+			$breadcrumb_admin .= ' - ';
 		}
 	}
 
 	/* handle error */
 
-	else if ($breadcrumbs == '')
+	else if ($breadcrumb == '')
 	{
-		$breadcrumbs = l('error');
+		$breadcrumb = l('error');
 	}
 
 	/* overwrite robots */
@@ -158,7 +158,7 @@ function head()
 	/* collect output */
 
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
-	$output .= '<title>' . $title . $title_divider . $breadcrumbs_admin . $breadcrumbs . $description_divider . $description . '</title>' . PHP_EOL;
+	$output .= '<title>' . $title . $title_divider . $breadcrumb_admin . $breadcrumb . $description_divider . $description . '</title>' . PHP_EOL;
 	$output .= '<meta http-equiv="content-type" content="text/html; charset=' . s('charset') . '" />' . PHP_EOL;
 
 	/* refresh string */

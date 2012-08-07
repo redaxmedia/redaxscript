@@ -1,6 +1,6 @@
-/* breadcrumbs and pagination */
+/* breadcrumb and pagination */
 
-.list_breadcrumbs li, .list_pagination li
+.list_breadcrumb li, .list_pagination li
 {
 	display: inline-block;
 }

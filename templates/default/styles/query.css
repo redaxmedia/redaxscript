@@ -109,7 +109,7 @@
 		width: 50%;
 	}
 
-	.footer .box_third, .list_pagination .item_previous, .list_pagination .item_next, .list_tab_menue .item_last
+	.footer .box_third, .list_pagination .item_previous, .list_pagination .item_next, .list_tab .item_last
 	{
 		display: none;
 	}
@@ -138,7 +138,7 @@
 		width: 300px;
 	}
 
-	.list_breadcrumbs, .list_tab_menue .item_second
+	.list_breadcrumb, .list_tab .item_second
 	{
 		display: none;
 	}

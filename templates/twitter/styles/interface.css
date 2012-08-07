@@ -28,9 +28,9 @@
 	padding-left: 1.5em;
 }
 
-/* breadcrumbs list */
+/* breadcrumb list */
 
-.list_breadcrumbs
+.list_breadcrumb
 {
 	-moz-border-radius: 0.125em;
 	-moz-box-shadow: inset 0 1px #fff;
@@ -50,12 +50,12 @@
 	text-shadow: 0 1px #fff;
 }
 
-.list_breadcrumbs li
+.list_breadcrumb li
 {
 	display: inline-block;
 }
 
-.list_breadcrumbs .divider
+.list_breadcrumb .divider
 {
 	color: #999;
 	margin: 0 0.5em;
@@ -148,14 +148,14 @@
 	color: #999;
 }
 
-/* default tab menue */
+/* default tab */
 
-.list_tab_menue_default
+.list_tab_default
 {
 	border-bottom: 1px solid #ddd;
 }
 
-.list_tab_menue_default li
+.list_tab_default li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
@@ -167,35 +167,35 @@
 	margin-right: 1px;
 }
 
-.list_tab_menue_default li:hover
+.list_tab_default li:hover
 {
 	background: #f5f5f5;
 }
 
-.list_tab_menue_default a
+.list_tab_default a
 {
 	font: 1em/2.75em arial;
 	padding: 0 1em;
 }
 
-.list_tab_menue_default a:hover
+.list_tab_default a:hover
 {
 	text-decoration: none;
 }
 
 /* javascript enabled */
 
-.js .list_tab_menue_default .item_active
+.js .list_tab_default .item_active
 {
 	border-color: #ddd #ddd #fff;
 }
 
-.js .list_tab_menue_default .item_active:hover
+.js .list_tab_default .item_active:hover
 {
 	background: #fff;
 }
 
-.js .list_tab_menue_default .item_active a
+.js .list_tab_default .item_active a
 {
 	cursor: default;
 	color: #555;

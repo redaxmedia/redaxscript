@@ -19,14 +19,14 @@
 	word-wrap: break-word;
 }
 
-/* tab menue */
+/* tab */
 
-.box_tab_menue
+.box_tab
 {
 	overflow: hidden;
 }
 
-.set_tab_menue
+.set_tab
 {
 	height: 100%;
 }

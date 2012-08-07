@@ -248,14 +248,14 @@
 	border-bottom-right-radius: 0.25em;
 }
 
-/* admin tab menue */
+/* admin tab */
 
-.list_tab_menue_admin
+.list_tab_admin
 {
 	margin-bottom: -1px;
 }
 
-.list_tab_menue_admin li
+.list_tab_admin li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
@@ -266,7 +266,7 @@
 	vertical-align: bottom;
 }
 
-.list_tab_menue_admin a
+.list_tab_admin a
 {
 	color: #ccc;
 	font: bold 1.125em/2em arial;
@@ -274,14 +274,14 @@
 	text-transform: uppercase;
 }
 
-.list_tab_menue_admin a:hover
+.list_tab_admin a:hover
 {
 	text-decoration: none;
 }
 
 /* javascript enabled */
 
-.js .list_tab_menue_admin .item_active
+.js .list_tab_admin .item_active
 {
 	-moz-box-shadow: inset 0 1px #fff;
 	-webkit-box-shadow: inset 0 1px #fff;
@@ -296,7 +296,7 @@
 	box-shadow: inset 0 1px #fff;
 }
 
-.js .list_tab_menue_admin .item_active a
+.js .list_tab_admin .item_active a
 {
 	color: #474747;
 	cursor: default;
