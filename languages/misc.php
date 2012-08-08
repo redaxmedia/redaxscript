@@ -32,7 +32,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = '1.0 Beta';
+$l['redaxscript_version'] = '1.0';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /* shortcut */
