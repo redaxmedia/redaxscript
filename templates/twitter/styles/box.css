@@ -26,13 +26,6 @@
 	padding: 1em;
 }
 
-/* default box dialog */
-
-.box_dialog_default
-{
-	padding: 1em;
-}
-
 /* box default */
 
 .box_default
@@ -42,6 +35,13 @@
 	background: #eee;
 	border-radius: 0.25em;
 	padding: 1em 1.5em;
+}
+
+/* default box dialog */
+
+.box_dialog_default
+{
+	padding: 1em;
 }
 
 /* box line */
@@ -83,8 +83,16 @@
 .box_tab_default
 {
 	background: #fff;
-	border-bottom: 1px solid #ddd;
+	border: 1px solid #ddd;
+	border-top: 0;
 	padding: 1em 1.5em;
+}
+
+/* javascript enabled */
+
+.js .box_tab_default
+{
+	height: 450px;
 }
 
 /* space between elements */

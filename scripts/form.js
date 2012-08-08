@@ -238,7 +238,7 @@
 			{
 				textarea.rows += 1;
 			}
-		}).css('overflow', options.overflow).trigger('ready');
+		}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
 	};
 })(jQuery);
 

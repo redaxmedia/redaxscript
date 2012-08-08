@@ -17,7 +17,7 @@
 	background: #eee;
 }
 
-.sidebar li.item_active > a
+.sidebar .item_active > a, .sidebar .item_active > a:hover
 {
 	background: #0088cc;
 	color: #fff;
@@ -225,13 +225,6 @@
 	text-decoration: underline;
 }
 
-/* space between elements */
-
-.set_accordion_default + .set_accordion_default
-{
-	margin-top: 0.25em;
-}
-
 /* default tooltip */
 
 .tooltip_default
@@ -251,4 +244,11 @@
 	top: -0.625em;
 	padding: 1em;
 	width: 200px;
+}
+
+/* space between elements */
+
+.set_accordion_default + .set_accordion_default
+{
+	margin-top: 0.25em;
 }
