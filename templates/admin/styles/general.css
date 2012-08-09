@@ -22,6 +22,14 @@
 	height: 5px;
 }
 
+/* grid fix */
+
+.list_panel_admin, .wrapper_panel_menu_admin
+{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
 /* wrapper */
 
 .wrapper_panel_menu_admin
