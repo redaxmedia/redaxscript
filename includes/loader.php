@@ -238,7 +238,7 @@ function styles()
 
 function scripts($mode = '')
 {
-	if ($mode == 'inline' || $mode == 'outline')
+	if ($mode == '')
 	{
 		hook(__FUNCTION__ . '_start');
 	}
@@ -312,7 +312,7 @@ function scripts($mode = '')
 		}
 	}
 	echo $output;
-	if ($mode == 'inline' || $mode == 'outline')
+	if ($mode == '')
 	{
 		hook(__FUNCTION__ . '_end');
 	}
