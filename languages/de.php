@@ -217,7 +217,7 @@ $l['account_create'] = 'Erstellen Sie Ihr Konto';
 $l['reminder'] = 'Erinnerung';
 $l['reminder_question'] = 'Haben Sie Ihren Benutzer oder Passwort vergessen';
 $l['reminder_request'] = 'Geben Sie Ihre E-mail an um entsprechende Kontoinformationen zu erhalten';
-$l['reminder_sent'] = 'Ihre Konto Informationen wurden erfolgreich verschickt';
+$l['reminder_sent'] = 'Ihre Kontoinformationen wurden erfolgreich verschickt';
 
 /* login */
 
