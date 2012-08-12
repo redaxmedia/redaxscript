@@ -18,7 +18,7 @@ $l['content_not_found'] = 'Inhalt konnte nicht gefunden werden';
 $l['category'] = 'Kategorie';
 $l['categories'] = 'Kategorien';
 $l['category_new'] = 'Neue Kategorie';
-$l['category_no'] = 'Kein Kategorie vorhanden';
+$l['category_no'] = 'Keine Kategorie vorhanden';
 $l['category_parent'] = 'Hauptkategorie';
 $l['uncategorized'] = 'Unkategorisiert';
 
@@ -34,7 +34,7 @@ $l['article_no'] = 'Kein Artikel vorhanden';
 $l['extra'] = 'Extra';
 $l['extras'] = 'Extras';
 $l['extra_new'] = 'Neues Extra';
-$l['extra_no'] = 'Keine Extra vorhanden';
+$l['extra_no'] = 'Kein Extra vorhanden';
 
 /* comments */
 
@@ -50,7 +50,7 @@ $l['comment_moderation'] = 'Ihr Kommentar wird vom Moderator überprüft';
 
 $l['search'] = 'Suchen';
 $l['search_terms'] = 'Suchbegriffe';
-$l['search_no'] = 'Kein Ergebniss für Ihre Suchanfrage';
+$l['search_no'] = 'Kein Ergebnis für Ihre Suchanfrage';
 
 /* time */
 
@@ -208,15 +208,15 @@ $l['database_failed'] = 'Verbindung zur Datenbank fehlgeschlagen';
 /* registration */
 
 $l['registration'] = 'Registrierung';
-$l['registration_sent'] = 'Ihre Registration Informationen wurden erfolgreich verschickt';
-$l['registration_verification'] = 'Ihre Registration wird vom Administrator überprüft';
+$l['registration_sent'] = 'Ihre Registrierunginformationen wurden erfolgreich verschickt';
+$l['registration_verification'] = 'Ihre Registrierung wird vom Administrator überprüft';
 $l['account_create'] = 'Erstellen Sie Ihr Konto';
 
 /* reminder */
 
 $l['reminder'] = 'Erinnerung';
 $l['reminder_question'] = 'Haben Sie Ihren Benutzer oder Passwort vergessen';
-$l['reminder_request'] = 'Geben Sie Ihre E-mail an um entsprechende Konto Informationen zu erhalten';
+$l['reminder_request'] = 'Geben Sie Ihre E-mail an um entsprechende Kontoinformationen zu erhalten';
 $l['reminder_sent'] = 'Ihre Konto Informationen wurden erfolgreich verschickt';
 
 /* login */
