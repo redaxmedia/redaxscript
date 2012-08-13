@@ -294,7 +294,7 @@ function languages_list($options = '')
 			$class_string .= ' item_active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_STRING . LANGUAGE_STRING . $value, '', 'nofollow') . '</li>';
+		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_STRING . LANGUAGE_STRING . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
 	/* setup id option */
@@ -353,7 +353,7 @@ function templates_list($options = '')
 			$class_string .= ' item_active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_STRING . TEMPLATE_STRING . $value, '', 'nofollow') . '</li>';
+		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_STRING . TEMPLATE_STRING . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
 	/* setup id option */
@@ -390,19 +390,19 @@ function login_list()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
 	{
-		$output = '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'nofollow') . '</li>';
-		$output .= '<li class="item_administration">' . anchor_element('internal', '', '', l('administration'), 'admin', '', 'nofollow') . '</li>';
+		$output = '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li class="item_administration">' . anchor_element('internal', '', '', l('administration'), 'admin', '', 'rel="nofollow"') . '</li>';
 	}
 	else
 	{
-		$output = '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'nofollow') . '</li>';
+		$output = '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'rel="nofollow"') . '</li>';
 		if (s('reminder') == 1)
 		{
-			$output .= '<li class="item_reminder">' . anchor_element('internal', '', '', l('reminder'), 'reminder', '', 'nofollow') . '</li>';
+			$output .= '<li class="item_reminder">' . anchor_element('internal', '', '', l('reminder'), 'reminder', '', 'rel="nofollow"') . '</li>';
 		}
 		if (s('registration') == 1)
 		{
-			$output .= '<li class="item_registration">' . anchor_element('internal', '', '', l('registration'), 'registration', '', 'nofollow') . '</li>';
+			$output .= '<li class="item_registration">' . anchor_element('internal', '', '', l('registration'), 'registration', '', 'rel="nofollow"') . '</li>';
 		}
 	}
 	$output = '<ul class="list_login">' . $output . '</ul>';

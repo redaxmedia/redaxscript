@@ -83,7 +83,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 				}
 				if (file_exists($thumb_string))
 				{
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $value . '" />', $string, $value, 'nofollow') . '</li>';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $value . '" />', $string, $value, 'rel="nofollow"') . '</li>';
 				}
 			}
 			if ($output)

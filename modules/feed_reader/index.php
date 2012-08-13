@@ -103,7 +103,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 					$output .= '<h3 class="title_feed_reader clear_fix">';
 					if ($string)
 					{
-						$output .= anchor_element('external', '', 'title_first', $title, $string, '', 'nofollow');
+						$output .= anchor_element('external', '', 'title_first', $title, $string, '', 'rel="nofollow"');
 					}
 					else
 					{

@@ -158,7 +158,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 
 function fb_group_user_link($id = '', $name = '')
 {
-	$output = anchor_element('external', '', 'link_fb_group_user', $name, FB_GROUP_FACEBOOK_URL . '/profile.php?id=' . $id, '', 'nofollow');
+	$output = anchor_element('external', '', 'link_fb_group_user', $name, FB_GROUP_FACEBOOK_URL . '/profile.php?id=' . $id, '', 'rel="nofollow"');
 	return $output;
 }
 

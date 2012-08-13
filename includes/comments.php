@@ -62,7 +62,7 @@ function comments($article = '', $string = '')
 				$output .= hook('comment_start') . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
-					$output .= anchor_element('external', '', '', $author, $url, '', 'nofollow');
+					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
 				}
 				else
 				{

@@ -11,11 +11,11 @@ function feed_list()
 
 	if ($articles_total > 0)
 	{
-		$output = '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_articles'), 'feed/articles', '', 'nofollow') . '</li>';
+		$output = '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_articles'), 'feed/articles', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($comments_total > 0)
 	{
-		$output .= '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_comments'), 'feed/comments', '', 'nofollow') . '</li>';
+		$output .= '<li>' . anchor_element('internal', '', '', l('feed_generator_feed_comments'), 'feed/comments', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($articles_total > 0 || $comments_total > 0)
 	{

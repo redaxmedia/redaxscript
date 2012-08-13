@@ -2,7 +2,7 @@
 
 /* anchor element */
 
-function anchor_element($type = '', $id = '', $class = '', $name = '', $value = '', $title = '', $rel = '')
+function anchor_element($type = '', $id = '', $class = '', $name = '', $value = '', $title = '', $code = '')
 {
 	/* build attribute strings */
 
@@ -35,7 +35,6 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 			case 'email':
 				$value = clean_email($value);
 				$value_string .= 'mailto:';
-				$rel = 'nofollow';
 				break;
 		}
 		$value_string .= $value . '"';
@@ -49,14 +48,14 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 		$title = $name;
 	}
 	$title_string = ' title="' . $title . '"';
-	if ($rel)
+	if ($code)
 	{
-		$rel_string = ' rel="' . $rel . '"';
+		$code_string = ' ' . $code;
 	}
 
 	/* collect output */
 
-	$output = '<a' . $selector_string . $value_string . $title_string . $rel_string . '>' . $name . '</a>';
+	$output = '<a' . $selector_string . $value_string . $title_string . $code_string . '>' . $name . '</a>';
 	return $output;
 }
 

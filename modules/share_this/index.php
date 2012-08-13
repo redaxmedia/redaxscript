@@ -27,9 +27,9 @@ function share_this($string = '')
 	if ($string)
 	{
 		$output = '<div class="wrapper_share_this clear_fix"><ul class="list_share_this">';
-		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_facebook', 'Facebook', 'http://facebook.com/sharer.php?u=' . $string, '', 'nofollow') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_twitter', 'Twitter', 'http://twitter.com/share?url=' . $string, '', 'nofollow') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_google', 'Google', 'http://plusone.google.com/_/+1/confirm?url=' . $string, '', 'nofollow') . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_facebook', 'Facebook', 'http://facebook.com/sharer.php?u=' . $string, '', 'rel="nofollow" target="_blank"') . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_twitter', 'Twitter', 'http://twitter.com/share?url=' . $string, '', 'rel="nofollow" target="_blank"') . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'link_share_this link_google', 'Google', 'http://plusone.google.com/_/+1/confirm?url=' . $string, '', 'rel="nofollow" target="_blank"') . '</li>';
 		$output .= '</ul></div>';
 		return $output;
 	}
