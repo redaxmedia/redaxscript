@@ -12,11 +12,9 @@ include_once('includes/get.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
-include_once('includes/navigation.php');
 include_once('includes/password.php');
 include_once('includes/query.php');
 include_once('includes/replace.php');
-include_once('includes/service.php');
 include_once('includes/startup.php');
 
 /* write database config */
