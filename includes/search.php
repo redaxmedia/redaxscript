@@ -55,18 +55,26 @@ function search_post()
 
 	else
 	{
-		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 &&';
+		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
 		$search = explode(' ', $search_terms);
 		$last = end(array_keys($search));
-		foreach ($search as $key => $value)
+
+		/* query search terms */
+
+		if ($search)
 		{
-			$query .= ' title LIKE \'%' . $value . '%\' || description LIKE \'%' . $value . '%\' || keywords LIKE \'%' . $value . '%\' || text LIKE \'%' . $value . '%\'';
-			if ($last != $key)
+			$query .= ' && (';
+			foreach ($search as $key => $value)
 			{
-				$query .= ' ||';
+				$query .= ' title LIKE \'%' . $value . '%\' || description LIKE \'%' . $value . '%\' || keywords LIKE \'%' . $value . '%\' || text LIKE \'%' . $value . '%\'';
+				if ($last != $key)
+				{
+					$query .= ' ||';
+				}
 			}
+			$query .= ')';
 		}
-		$query .= ' ORDER BY date DESC LIMIT 20';
+		$query .= ' ORDER BY date DESC LIMIT 50';
 		$result = mysql_query($query);
 		$num_rows = mysql_num_rows($result);
 		if ($result == '' || $num_rows == '')
