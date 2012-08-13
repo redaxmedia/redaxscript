@@ -17,9 +17,12 @@ include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 
-/* write database config */
+/* install post */
 
 install_post();
+
+/* write database config */
+
 write_config();
 include_once('config.php');
 
