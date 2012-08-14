@@ -1,7 +1,16 @@
 Redaxscript
 ===========
 
-Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
+> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
+
+
+Online demo
+-----------
+
+> Unfortunately, no one can be told what Redaxscript is.
+You have to see it for yourself.
+
+You are going to experience limited permissions and XSS filters: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
 
 
 Feature list
@@ -24,6 +33,22 @@ Feature list
 * Multiple language and template support
 * Available in over 25 languages
 * Extensive setting options
+
+
+Getting started
+---------------
+The following requirements are necessary to get Redaxscript running.
+
+### Requirements
+
+* Apache, Nginx or Microsoft IIS
+* MySQL 5.0 database
+* PHP version 4.3.0 or above
+
+### Optional
+
+* Apache modules mod_rewrite and mod_deflate
+* Permission to .htaccess
 
 
 Installation guide
