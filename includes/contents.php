@@ -21,8 +21,16 @@ function contents()
 		else
 		{
 			$table = 'categories';
-			$rank_desc = query_plumb('rank', 'categories', 'min');
-			$id = $category = retrieve('id', 'categories', 'rank', $rank_desc);
+			if (s('order') == 'asc')
+			{
+				$function = 'min';
+			}
+			else if (s('order') == 'desc')
+			{
+				$function = 'max';
+			}
+			$rank = query_plumb('rank', 'categories', $function);
+			$id = $category = retrieve('id', 'categories', 'rank', $rank);
 		}
 	}
 
