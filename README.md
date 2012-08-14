@@ -35,29 +35,11 @@ Feature list
 * Extensive setting options
 
 
-Getting started
----------------
-The following requirements are necessary to get Redaxscript running.
+Related links
+-------------
 
-### Requirements
-
-* Apache, Nginx or Microsoft IIS
-* MySQL 5.0 database
-* PHP version 4.3.0 or above
-
-### Optional
-
-* Apache modules mod_rewrite and mod_deflate
-* Permission to .htaccess
-
-
-Installation guide
-------------------
-
-1. Download and unpack the latest Redaxscript package
-2. Upload all files to your webspace
-3. Grant write permission on config.php by setting chmod to 666
-4. Execute install.php and follow the instructions
-5. Revoke write permissions on config.php by setting chmod to 444
-6. Delete install.php from your webspace
-7. Done
+* [Website](http://redaxscript.com)
+* [Download](http://redaxscript.com/download)
+* [Support](http://redaxscript.com/support)
+* [Documentation](http://redaxscript.com/develop/documentation)
+* [Community](http://redaxscript.com/community)
