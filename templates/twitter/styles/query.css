@@ -26,10 +26,6 @@
 	.content, .sidebar
 	{
 		float: none;
-	}
-
-	.content, .sidebar, .wrapper
-	{
 		width: 100%;
 	}
 
@@ -37,11 +33,6 @@
 	{
 		height: 400px;
 		width: 600px;
-	}
-
-	.wrapper_body
-	{
-		min-width: 0;
 	}
 }
 
@@ -72,7 +63,7 @@
 
 @media screen and (max-width: 320px)
 {
-	.content, .sidebar, .wrapper
+	.content, .sidebar
 	{
 		width: 300px;
 	}
@@ -82,16 +73,11 @@
 		height: 180px;
 		width: 240px;
 	}
-
-	.wrapper_body
-	{
-		min-width: 300px;
-	}
 }
 
 @media screen and (max-width: 240px)
 {
-	.content, .sidebar, .wrapper
+	.content, .sidebar
 	{
 		width: 220px;
 	}
@@ -106,11 +92,6 @@
 	{
 		height: 140px;
 		width: 180px;
-	}
-
-	.wrapper_body
-	{
-		min-width: 220px;
 	}
 }
 

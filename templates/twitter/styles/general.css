@@ -11,6 +11,7 @@ body
 {
 	border-top: 1px solid #e5e5e5;
 	padding: 2em 0;
+	margin-bottom: 2em;
 	margin-top: 4em;
 }
 
@@ -27,15 +28,15 @@ body
 	background: -o-linear-gradient(top, #333, #222);
 	background: -webkit-linear-gradient(top, #333, #222);
 	box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.25);
-	margin-bottom: 4em;
+	margin-bottom: 2em;
 }
 
 /* grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .line, .line_space
@@ -48,14 +49,8 @@ body
 
 .wrapper
 {
-	margin-left: auto;
-	margin-right: auto;
-	width: 980px;
-}
-
-.wrapper_body
-{
-	min-width: 980px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .wrapper_table_default
