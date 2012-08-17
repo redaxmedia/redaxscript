@@ -63,11 +63,6 @@
 
 @media screen and (max-width: 320px)
 {
-	.content, .sidebar
-	{
-		width: 300px;
-	}
-
 	.player
 	{
 		height: 180px;
@@ -77,11 +72,6 @@
 
 @media screen and (max-width: 240px)
 {
-	.content, .sidebar
-	{
-		width: 220px;
-	}
-
 	.dialog_default
 	{
 		margin: -50px 0 0 -100px;
