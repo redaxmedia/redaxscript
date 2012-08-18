@@ -124,6 +124,9 @@ function startup()
 		define('LANGUAGE_STRING', '.');
 		define('TEMPLATE_STRING', '.');
 	}
+
+	/* redirect to install */
+
 	if (DB_CONNECTED == 0 && file_exists('install.php'))
 	{
 		define('REFRESH_STRING', ROOT . '/install.php');

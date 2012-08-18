@@ -165,7 +165,7 @@ function head()
 
 	if (REFRESH_STRING)
 	{
-		$output .= '<meta http-equiv="refresh" content="2; url=' . REWRITE_STRING . REFRESH_STRING . '" />' . PHP_EOL;
+		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_STRING . '" />' . PHP_EOL;
 	}
 	if (s('author'))
 	{
