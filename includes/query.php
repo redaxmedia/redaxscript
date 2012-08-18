@@ -59,7 +59,7 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 {
 	static $retrieve;
 
-	/* retrieve cached */
+	/* cached retrieve  */
 
 	if ($retrieve[$column . $table . $field . $value])
 	{
@@ -138,46 +138,67 @@ function query_total($table = '', $field = '', $value = '')
 
 function build_string($table = '', $id = '')
 {
-	$query = 'SELECT p.alias, c.alias';
-	if ($table != 'categories')
-	{
-		$query .= ', a.alias';
-	}
-	$query .= ' FROM ' . PREFIX . $table . ' AS';
+	static $string;
 
-	/* switch table */
+	/* cached string  */
 
-	switch ($table)
+	if ($string[$table . $id])
 	{
-		case 'categories':
-			$query .= ' c LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE c.id = ' . $id;
-			break;
-		case 'articles':
-			$query .= ' a LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE a.id = ' . $id;
-			break;
-		case 'comments':
-			$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
-			break;
-	}
-	$result = mysql_query($query);
-
-	/* collect output */
-
-	if ($result)
-	{
-		$output = mysql_fetch_row($result);
-	}
-	if (is_array($output))
-	{
-		$output = array_filter($output);
-		$output = implode('/', $output);
+		$output = $string[$table . $id];
 	}
 
-	/* comment id */
+	/* else query */
 
-	if ($table == 'comments' && $output)
+	else if ($table && $id)
 	{
-		$output .= '#comment-' . $id;
+		$query = 'SELECT p.alias, c.alias';
+		if ($table != 'categories')
+		{
+			$query .= ', a.alias';
+		}
+		$query .= ' FROM ' . PREFIX . $table . ' AS';
+
+		/* switch table */
+
+		switch ($table)
+		{
+			case 'categories':
+				$query .= ' c LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE c.id = ' . $id;
+				break;
+			case 'articles':
+				$query .= ' a LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE a.id = ' . $id;
+				break;
+			case 'comments':
+				$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
+				break;
+		}
+		$result = mysql_query($query);
+
+		/* collect output */
+
+		if ($result)
+		{
+			$output = mysql_fetch_row($result);
+		}
+		if (is_array($output))
+		{
+			$output = array_filter($output);
+			$output = implode('/', $output);
+		}
+
+		/* comment id */
+
+		if ($table == 'comments' && $output)
+		{
+			$output .= '#comment-' . $id;
+		}
+
+		/* store string */
+
+		if ($output)
+		{
+			$string[$table . $id] = $output;
+		}
 	}
 	return $output;
 }
