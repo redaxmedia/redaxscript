@@ -57,14 +57,25 @@ function s($name = '')
 
 function retrieve($column = '', $table = '', $field = '', $value = '')
 {
-	if ($column && $table && $field && $value)
+	static $retrieve;
+
+	/* retrieve cached */
+
+	if ($retrieve[$column . $table . $field . $value])
+	{
+		$output = $retrieve[$column . $table . $field . $value];
+	}
+
+	/* else query */
+
+	else if ($column && $table && $field && $value)
 	{
 		$query = 'SELECT ' . $column . ' FROM ' . PREFIX . $table . ' WHERE ' . $field . ' = \'' . $value . '\'';
 		$result = mysql_query($query);
 		if ($result)
 		{
 			$r = mysql_fetch_assoc($result);
-			$output = $r[$column];
+			$output = $retrieve[$column . $table . $field . $value] = $r[$column];
 		}
 	}
 	return $output;
