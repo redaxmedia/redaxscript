@@ -33,6 +33,7 @@ function s($name = '')
 		$result = mysql_query($query);
 		if ($result)
 		{
+			$settings = array();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$settings[$r['name']] = $r['value'];

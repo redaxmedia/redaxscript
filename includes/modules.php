@@ -49,10 +49,17 @@ function modules_include()
 function hook($input = '')
 {
 	global $hook;
+	static $modules_include;
+
+	/* get modules include */
+
+	if ($modules_include == '')
+	{
+		$modules_include = modules_include();
+	}
 
 	/* call hook functions */
-	
-	$modules_include = modules_include();
+
 	foreach ($modules_include as $value)
 	{
 		$function = $value . '_' . $input;
