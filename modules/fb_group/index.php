@@ -184,6 +184,8 @@ function fb_group_get_access_token()
 {
 	static $output;
 
+	/* get token */
+
 	if ($output == '')
 	{
 		/* get contents */

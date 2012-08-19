@@ -6,7 +6,7 @@ function modules_include()
 {
 	static $modules_installed, $modules_directory;
 
-	/* query modules */
+	/* query installed modules */
 
 	if ($modules_installed == '')
 	{

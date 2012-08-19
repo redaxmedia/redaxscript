@@ -5,12 +5,18 @@
 function get_parameter($input = '')
 {
 	static $parameter;
+
+	/* get parameter */
+
 	if ($parameter == '')
 	{
 		$parameter = explode('/', $_GET['p']);
 		$parameter = array_map('clean_alias', $parameter);
 		$parameter = array_map('clean_mysql', $parameter);
 	}
+
+	/* if admin parameter */
+
 	if ($parameter[0] == 'admin')
 	{
 		$admin = 1;

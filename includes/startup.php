@@ -30,7 +30,7 @@ function startup()
 
 	/* database connect */
 
-	database_connect();
+	database_connect(d('host'), d('name'), d('user'), d('password'));
 
 	/* define session */
 

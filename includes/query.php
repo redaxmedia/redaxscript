@@ -2,10 +2,10 @@
 
 /* database connect */
 
-function database_connect()
+function database_connect($host = '', $name = '', $user = '', $password = '')
 {
-	$database_connect = mysql_connect(d('host'), d('user'), d('password'));
-	$database_select = mysql_select_db(d('name'));
+	$database_connect = mysql_connect($host, $user, $password);
+	$database_select = mysql_select_db($name);
 	if ($database_connect && $database_select)
 	{
 		$query = 'SET NAMES \'utf8\'';
@@ -31,18 +31,15 @@ function s($name = '')
 	{
 		$query = 'SELECT name, value FROM ' . PREFIX . 'settings';
 		$result = mysql_query($query);
-		while ($r = mysql_fetch_assoc($result))
+		if ($result)
 		{
-			$settings[$r['name']] = $r['value'];
+			while ($r = mysql_fetch_assoc($result))
+			{
+				$settings[$r['name']] = $r['value'];
+			}
 		}
 	}
-
-	/* collect output */
-
-	if (array_key_exists($name, $settings))
-	{
-		$output = $settings[$name];
-	}
+	$output = $settings[$name];
 
 	/* charset fallback */
 
@@ -59,7 +56,7 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 {
 	static $retrieve;
 
-	/* cached retrieve  */
+	/* fetch from cache */
 
 	if ($retrieve[$column . $table . $field . $value])
 	{
@@ -85,17 +82,31 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 
 function query_table($input = '')
 {
-	$category = retrieve('id', 'categories', 'alias', $input);
-	if ($category)
+	static $table;
+
+	/* fetch from cache */
+
+	if ($table[$input])
 	{
-		$output = 'categories';
+		$output = $cache[$input];
 	}
+
+	/* else query */
+
 	else
 	{
-		$article = retrieve('id', 'articles', 'alias', $input);
-		if ($article)
+		$category = retrieve('id', 'categories', 'alias', $input);
+		if ($category)
 		{
-			$output = 'articles';
+			$output = $table[$input] = 'categories';
+		}
+		else
+		{
+			$article = retrieve('id', 'articles', 'alias', $input);
+			if ($article)
+			{
+				$output = $table[$input] = 'articles';
+			}
 		}
 	}
 	return $output;
@@ -140,7 +151,7 @@ function build_string($table = '', $id = '')
 {
 	static $string;
 
-	/* cached string  */
+	/* fetch from cache */
 
 	if ($string[$table . $id])
 	{
@@ -193,7 +204,7 @@ function build_string($table = '', $id = '')
 			$output .= '#comment-' . $id;
 		}
 
-		/* store string */
+		/* store in cache */
 
 		if ($output)
 		{
