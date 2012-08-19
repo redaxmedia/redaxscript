@@ -88,7 +88,7 @@ function query_table($input = '')
 
 	if ($table[$input])
 	{
-		$output = $cache[$input];
+		$output = $table[$input];
 	}
 
 	/* else query */
