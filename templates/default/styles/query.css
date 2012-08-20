@@ -77,7 +77,7 @@
 		width: 33.33%;
 	}
 
-	.sidebar .box_extra, .sidebar .box_search, .sidebar .title_extra
+	.sidebar .box_extra, .sidebar .form_search, .sidebar .title_extra
 	{
 		-moz-border-radius: 0;
 		-webkit-border-radius: 0;
@@ -209,7 +209,7 @@
 
 @media screen and (view-mode: minimized)
 {
-	.bottom, .content, .footer, .sidebar .box_search, .navibar
+	.bottom, .content, .footer, .sidebar
 	{
 		display: none;
 	}
