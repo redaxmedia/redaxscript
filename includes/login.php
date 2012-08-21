@@ -101,7 +101,7 @@ function login_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if ($my_id == '' || md5($post_password) != $my_password)
+	else if ($my_id == '' || (md5($post_password) != $my_password && sha1($post_password) != $my_password))
 	{
 		$error = l('login_incorrect');
 	}

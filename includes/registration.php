@@ -57,7 +57,7 @@ function registration_post()
 		$user = $r['user'] = clean($_POST['user'], 0);
 		$email = $r['email'] = clean($_POST['email'], 3);
 		$password = password_generator();
-		$r['password'] = md5($password);
+		$r['password'] = sha1($password);
 		$r['description'] = '';
 		$r['language'] = LANGUAGE;
 		$r['first'] = $r['last'] = NOW;

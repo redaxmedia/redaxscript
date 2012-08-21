@@ -192,7 +192,7 @@ function get_token()
 	$b = $_SERVER['REMOTE_ADDR'];
 	$c = $_SERVER['HTTP_USER_AGENT'];
 	$d = $_SERVER['HTTP_HOST'];
-	$output = md5($a . $b . $c . $d);
+	$output = sha1($a . $b . $c . $d);
 	return $output;
 }
 ?>

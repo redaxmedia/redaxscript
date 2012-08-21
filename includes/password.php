@@ -5,7 +5,7 @@
 function password_generator()
 {
 	$a = mt_rand(1, 1000000);
-	$b = md5($a);
+	$b = sha1($a);
 	$output = substr($b, 0, 10);
 	return $output;
 }
@@ -76,7 +76,7 @@ function password_reset_post()
 	{
 		$error = l('input_incorrect');
 	}
-	else if (md5($task) != $solution)
+	else if (sha1($task) != $solution)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -99,7 +99,7 @@ function password_reset_post()
 
 		/* update password */
 
-		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . md5($password) . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
+		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . sha1($password) . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
 		mysql_query($query);
 	}
 

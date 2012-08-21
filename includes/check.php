@@ -153,7 +153,7 @@ function check_alias($input = '', $mode = '')
 
 function check_captcha($task = '', $solution = '')
 {
-	if (LOGGED_IN == TOKEN || $mode == 0 && s('captcha') == 0 || md5($task) == $solution)
+	if (LOGGED_IN == TOKEN || $mode == 0 && s('captcha') == 0 || sha1($task) == $solution)
 	{
 		$output = 1;
 	}

@@ -33,11 +33,11 @@ function captcha($mode = '')
 		switch ($c)
 		{
 			case 1:
-				$_SESSION[ROOT . '/captcha'] = md5($a + $b);
+				$_SESSION[ROOT . '/captcha'] = sha1($a + $b);
 				$operator = 'plus';
 				break;
 			case 2:
-				$_SESSION[ROOT . '/captcha'] = md5($a - $b);
+				$_SESSION[ROOT . '/captcha'] = sha1($a - $b);
 				$operator = 'minus';
 				break;
 		}
