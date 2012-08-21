@@ -30,8 +30,8 @@ function login_form()
 	$output = '<h2 class="title_content">' . l('login') . '</h2>';
 	$output .= form_element('form', 'form_login', 'js_check_required form_default form_login', '', '', '', 'action="' . REWRITE_STRING . 'login" method="post"');
 	$output .= form_element('fieldset', '', '', '', '', $legend) . '<ul>';
-	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note' . $class_disabled, 'user', '', l('user'), 'maxlength="10" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note' . $class_disabled, 'password', '', l('password'), 'maxlength="10" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note' . $class_disabled, 'user', '', l('user'), 'maxlength="20" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note' . $class_disabled, 'password', '', l('password'), 'maxlength="20" required="required"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
 

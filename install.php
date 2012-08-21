@@ -260,8 +260,8 @@ function install_form()
 	$output .= '<legend class="js_title_accordion title_accordion title_accordion_default">' . l('account_create') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_default">';
 	$output .= '<li>' . form_element('text', 'name', 'js_required field_text field_note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note', 'user', $user, '* ' . l('user'), 'maxlength="10" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="10" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note', 'user', $user, '* ' . l('user'), 'maxlength="20" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="20" required="required"') . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
 	$output .= form_element('hidden', '', '', 'token', TOKEN);

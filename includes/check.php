@@ -4,7 +4,7 @@
 
 function check_login($input = '')
 {
-	if (ctype_alnum($input) && strlen($input) > 4 && strlen($input) < 11)
+	if (ctype_alnum($input) && strlen($input) > 4 && strlen($input) < 21)
 	{
 		$output = 1;
 	}

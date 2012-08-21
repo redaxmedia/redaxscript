@@ -194,10 +194,10 @@ function admin_users_form()
 	$output .= '<li>' . form_element('text', 'name', 'js_required field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	if ($id == '')
 	{
-		$output .= '<li>' . form_element('text', 'user', 'js_required field_text_admin field_note', 'user', $user, l('user'), 'maxlength="10" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'user', 'js_required field_text_admin field_note', 'user', $user, l('user'), 'maxlength="20" required="required"') . '</li>';
 	}
-	$output .= '<li>' . form_element('password', 'password', 'field_text_admin js_unmask_password' . $class_required, 'password', '', l('password'), 'maxlength="10"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('password', 'password_confirm', 'field_text_admin js_unmask_password' . $class_required, 'password_confirm', '', l('password_confirm'), 'maxlength="10"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'field_text_admin js_unmask_password' . $class_required, 'password', '', l('password'), 'maxlength="20"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password_confirm', 'field_text_admin js_unmask_password' . $class_required, 'password_confirm', '', l('password_confirm'), 'maxlength="20"' . $code_required) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
