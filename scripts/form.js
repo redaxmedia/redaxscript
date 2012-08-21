@@ -187,15 +187,15 @@
 		});
 	};
 
-	/* unmask password on focus */
+	/* unmask password on keydown */
 
 	$.fn.unmaskPassword = function ()
 	{
-		$(this).on('focusin focusout', function (event)
+		$(this).on('keydown focusout', function (event)
 		{
 			var field = this;
 
-			if (event.type === 'focusin')
+			if (event.ctrlKey && event.altKey)
 			{
 				field.type = 'text';
 			}
