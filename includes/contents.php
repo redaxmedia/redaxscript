@@ -6,9 +6,8 @@ function contents()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* query contents */
+	/* if empty full string */
 
-	$query = 'SELECT id, title, author, text, language, date, headline, infoline, comments, access FROM ' . PREFIX . 'articles WHERE status = 1';
 	if (FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
 	{
 		/* check for homepage settings */
@@ -21,6 +20,10 @@ function contents()
 		else
 		{
 			$table = 'categories';
+			$id = $category = 0;
+
+			/* check order settings */
+
 			if (s('order') == 'asc')
 			{
 				$function = 'min';
@@ -30,20 +33,16 @@ function contents()
 				$function = 'max';
 			}
 			$rank = query_plumb('rank', 'categories', $function);
-			$status = query_plumb('status', 'categories', $function);
-			
-			/* if category rank and status */
 
-			if ($rank && $status == 1)
+			/* if category is published */
+
+			if ($rank)
 			{
-				$id = $category = retrieve('id', 'categories', 'rank', $rank);
-			}
-
-			/* else no category published */
-
-			else
-			{
-				$id = $category = 0;
+				$status = retrieve('status', 'categories', 'rank', $rank);
+				if ($status == 1)
+				{
+					$id = $category = retrieve('id', 'categories', 'rank', $rank);
+				}
 			}
 		}
 	}
@@ -64,8 +63,9 @@ function contents()
 		}
 	}
 
-	/* build query related to type */
+	/* query related to type */
 
+	$query = 'SELECT id, title, author, text, language, date, headline, infoline, comments, access FROM ' . PREFIX . 'articles WHERE status = 1';
 	if ($article)
 	{
 		$query .= ' && id = ' . $article;
