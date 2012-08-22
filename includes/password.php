@@ -1,12 +1,12 @@
 <?php
 
-/* password generator */
+/* hash generator */
 
-function password_generator()
+function hash_generator($length = '')
 {
 	$a = mt_rand(1, 1000000);
 	$b = sha1($a);
-	$output = substr($b, 0, 10);
+	$output = substr($b, 0, $length);
 	return $output;
 }
 
@@ -49,7 +49,7 @@ function password_reset_post()
 	{
 		$post_id = clean($_POST['id'], 0);
 		$post_password = clean($_POST['password'], 0);
-		$password = password_generator();
+		$password = hash_generator(10);
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
 	}
@@ -99,7 +99,7 @@ function password_reset_post()
 
 		/* update password */
 
-		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . sha1($password) . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
+		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . sha1($password) . SALT . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
 		mysql_query($query);
 	}
 

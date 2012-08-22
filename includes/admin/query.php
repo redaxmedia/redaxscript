@@ -175,7 +175,7 @@ function admin_process()
 		$password = clean($_POST['password'], 0);
 		if ($password_check == 1 && $password_confirm == 1)
 		{
-			$r['password'] = sha1($password);
+			$r['password'] = sha1($password) . SALT;
 		}
 		if ($_POST['new'])
 		{

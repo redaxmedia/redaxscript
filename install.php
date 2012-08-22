@@ -55,7 +55,7 @@ else
 
 function install()
 {
-	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 	$r['create_database'] = 'CREATE DATABASE IF NOT EXISTS ' . $d_name;
 	$r['grant_privileges'] = 'GRANT ALL PRIVILEGES ON ' . $d_name . '.* TO \'' . $d_user . '\'@\'' . $d_host . '\' IDENTIFIED BY \'' . $d_password . '\'';
 	$r['flush_privileges'] = 'FLUSH PRIVILEGES';
@@ -213,7 +213,7 @@ function install()
 	{
 		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Call home module\', \'1.0\', 1, 0)';
 	}
-	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
+	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . $d_salt . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
 
 	/* install database */
 
@@ -264,6 +264,7 @@ function install_form()
 	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
+	$output .= form_element('hidden', '', '', 'd_salt', hash_generator(40));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button_large', 'install_post', l('install'));
 	$output .= '</form>';
@@ -274,7 +275,7 @@ function install_form()
 
 function install_post()
 {
-	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
 	/* clean post */
 
@@ -283,6 +284,7 @@ function install_post()
 	$d_user = clean($_POST['d_user'], 5);
 	$d_password = clean($_POST['d_password'], 5);
 	$d_prefix = clean($_POST['d_prefix'], 5);
+	$d_salt = clean($_POST['d_salt'], 5);
 	$name = clean($_POST['name'], 0);
 	$user = clean($_POST['user'], 0);
 	$password = clean($_POST['password'], 0);
@@ -300,7 +302,7 @@ function install_post()
 	}
 	if ($password == '')
 	{
-		$password = password_generator();
+		$password = hash_generator(10);
 	}
 }
 
@@ -390,7 +392,7 @@ function write_config()
 {
 	if ($_POST['install_post'])
 	{
-		global $d_host, $d_name, $d_user, $d_password, $d_prefix;
+		global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
 		$file = fopen('config.php', 'w+');
 		$contents =
 '<?php
@@ -404,6 +406,7 @@ function d($name = \'\')
 	$d[\'user\'] = \'' . $d_user . '\';
 	$d[\'password\'] = \'' . $d_password . '\';
 	$d[\'prefix\'] = \'' . $d_prefix . '\';
+	$d[\'salt\'] = \'' . $d_salt . '\';
 	$output = $d[$name];
 	return $output;
 }

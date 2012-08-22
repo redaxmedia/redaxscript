@@ -9,6 +9,7 @@ function d($name = '')
 	$d['user'] = '';
 	$d['password'] = '';
 	$d['prefix'] = '';
+	$d['salt'] = '';
 	$output = $d[$name];
 	return $output;
 }

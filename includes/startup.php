@@ -27,6 +27,7 @@ function startup()
 	define('ROOT', get_root());
 	define('TOKEN', get_token());
 	define('PREFIX', d('prefix'));
+	define('SALT', d('salt'));
 
 	/* database connect */
 
