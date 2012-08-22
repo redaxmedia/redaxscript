@@ -30,11 +30,25 @@ function contents()
 				$function = 'max';
 			}
 			$rank = query_plumb('rank', 'categories', $function);
-			$id = $category = retrieve('id', 'categories', 'rank', $rank);
+			$status = query_plumb('status', 'categories', $function);
+			
+			/* if category rank and status */
+
+			if ($rank && $status == 1)
+			{
+				$id = $category = retrieve('id', 'categories', 'rank', $rank);
+			}
+
+			/* else no category published */
+
+			else
+			{
+				$id = $category = 0;
+			}
 		}
 	}
 
-	/* check if category or article */
+	/* check if last table */
 
 	else if (LAST_TABLE)
 	{
@@ -49,11 +63,14 @@ function contents()
 			$article = $id;
 		}
 	}
+
+	/* build query related to type */
+
 	if ($article)
 	{
 		$query .= ' && id = ' . $article;
 	}
-	else if ($category)
+	else if ($category > -1)
 	{
 		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . $category . ' ORDER BY rank ' . s('order');
 		$result = mysql_query($query);
@@ -90,7 +107,7 @@ function contents()
 	{
 		$error = l('database_failed');
 	}
-	else if ($category && $num_rows == '')
+	else if ($category > -1 && $num_rows == '')
 	{
 		$error = l('article_no');
 	}
