@@ -9,6 +9,12 @@
 </ifmodule>
 <ifmodule mod_rewrite.c>
 	rewriteengine on
+	rewritecond %{https} off
+	rewritecond %{http_host} ^www\.(.*)$ [nc]
+	rewriterule ^(.*)$ http://%1/$1 [r=301,l]
+	rewritecond %{https} on
+	rewritecond %{http_host} ^www\.(.*)$ [nc]
+	rewriterule ^(.*)$ https://%1/$1 [r=301,l]
 	rewritecond %{request_filename} -f
 	rewriterule ^(.*) $1 [l]
 	rewritecond %{request_filename} !-d
