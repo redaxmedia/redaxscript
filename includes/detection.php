@@ -8,7 +8,7 @@ function language_detection()
 
 	if ($_GET['l'])
 	{
-		$language = clean($_GET['l'], 0);
+		$language = clean($_GET['l'], 1);
 		if (file_exists('languages/' . $language . '.php'))
 		{
 			$_SESSION[ROOT . '/language_selected'] = 1;
@@ -55,7 +55,7 @@ function template_detection()
 
 	if ($_GET['t'])
 	{
-		$template = clean($_GET['t'], 0);
+		$template = clean($_GET['t'], 1);
 		if (file_exists('templates/' . $template . '/index.phtml'))
 		{
 			$_SESSION[ROOT . '/template_selected'] = 1;
