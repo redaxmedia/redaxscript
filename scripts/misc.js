@@ -52,7 +52,7 @@
 
 				/* alert dialog if input incorrect */
 
-				else if (event.which > 65 && event.which < 91)
+				else if (event.which > 65 && event.which < 91 && event.which !== 69 && event.which !== 77 && event.which !== 81)
 				{
 					$.fn.dialog(
 					{
