@@ -20,7 +20,10 @@ function modules_include()
 				$alias = $r['alias'];
 				$access = $r['access'];
 				$check_access = check_access($access, MY_GROUPS);
-				if ($check_access > 0)
+
+				/* if access granted */
+
+				if ($check_access == 1)
 				{
 					$modules_installed[] = $alias;
 				}

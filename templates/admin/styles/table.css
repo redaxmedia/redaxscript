@@ -85,6 +85,14 @@
 	width: 20px;
 }
 
+/* link groups */
+
+.table_admin tbody .link_parent
+{
+	color: #666;
+	text-decoration: underline;
+}
+
 /* link view */
 
 .table_admin tbody .link_view

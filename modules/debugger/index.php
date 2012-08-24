@@ -67,7 +67,7 @@ function debugger_extras_end()
 
 	foreach ($debug as $key => $value)
 	{
-		if (count($value) > 0)
+		if (count($value))
 		{
 			$output .= '<h3 class="title_extra">Debug: ' . $key . '</h3><div class="js_box_debugger box_debugger box_extra"><ul class="list_debugger">';
 			foreach ($value as $key_sub => $value_sub)

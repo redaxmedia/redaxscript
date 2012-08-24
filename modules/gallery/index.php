@@ -66,17 +66,20 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 		remove_directory($directory . '/thumbs', 1);
 	}
 
-	/* else build gallery thumbs */
+	/* else show gallery thumbs */
 
 	else
 	{
 		$gallery_directory = read_directory($directory, 'thumbs');
-		if (count($gallery_directory) > 0)
+		if (count($gallery_directory))
 		{
 			foreach ($gallery_directory as $value)
 			{
 				$string = $directory . '/' . $value;
 				$thumb_string = $directory . '/thumbs/' . $value;
+
+				/* build gallery thumb */
+
 				if (file_exists($thumb_string) == '' || $command == 'build')
 				{
 					gallery_build_thumb($value, $directory, $string, $quality, $scaling, $max_height);
@@ -108,6 +111,9 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 function gallery_build_thumb($input = '', $directory = '', $string = '', $quality = '', $scaling = '', $max_height = '')
 {
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
+
+	/* switch extension */
+
 	switch ($extension)
 	{
 		case 'gif':
@@ -119,6 +125,9 @@ function gallery_build_thumb($input = '', $directory = '', $string = '', $qualit
 			$image = imagecreatefrompng($string);
 			break;
 	}
+
+	/* calculate image dimensions */
+
 	$original_size = getimagesize($string);
 	if ($max_height)
 	{
@@ -126,11 +135,17 @@ function gallery_build_thumb($input = '', $directory = '', $string = '', $qualit
 	}
 	$height = round($scaling / 100 * $original_size[1]);
 	$width = round($scaling / 100 * $original_size[0]);
+
+	/* create thumbs directory */
+
 	$thumbs_directory = $directory . '/thumbs';
 	if (is_dir($thumbs_directory) == '')
 	{
 		mkdir($thumbs_directory, 0755);
 	}
+
+	/* create thumbs */
+
 	$output = $thumbs_directory . '/' . $input;
 	$process = imagecreatetruecolor($width, $height);
 	imagecopyresampled($process, $image, 0, 0, 0, 0, $width, $height, $original_size[0], $original_size[1]);

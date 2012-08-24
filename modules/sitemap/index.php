@@ -23,6 +23,9 @@ function sitemap()
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -46,6 +49,9 @@ function sitemap()
 				$categories_counter++;
 			}
 		}
+
+		/* handle access */
+
 		if ($categories_num_rows == $categories_counter)
 		{
 			$categories_error = l('access_no') . l('point');
@@ -79,6 +85,9 @@ function sitemap()
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -99,6 +108,9 @@ function sitemap()
 				$articles_counter++;
 			}
 		}
+
+		/* handle access */
+
 		if ($articles_num_rows == $articles_counter)
 		{
 			$articles_error = l('access_no') . l('point');

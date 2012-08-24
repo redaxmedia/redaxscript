@@ -17,6 +17,9 @@ function contents()
 			$table = 'articles';
 			$id = $article = s('homepage');
 		}
+
+		/* else check for category */
+
 		else
 		{
 			$table = 'categories';
@@ -124,6 +127,9 @@ function contents()
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -276,6 +282,9 @@ function extras($filter = '')
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)

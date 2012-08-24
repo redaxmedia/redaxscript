@@ -35,6 +35,9 @@ function reminder_form()
 	{
 		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
 	}
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button' . $class_disabled, 'reminder_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
@@ -92,7 +95,7 @@ function reminder_post()
 					}
 				}
 
-				/* email reminder information */
+				/* send reminder information */
 
 				$password_reset_string = ROOT . '/' . REWRITE_STRING . 'password_reset/' . $id . '/' . $password;
 				$password_reset_link = anchor_element('', '', '', $password_reset_string, $password_reset_string);

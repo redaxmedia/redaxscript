@@ -96,12 +96,14 @@ function minify($type = '', $input = '')
 
 function entity($input = '')
 {
+	/* if mb convert econding */
+
 	if (function_exists('mb_convert_encoding'))
 	{
 		$output = mb_convert_encoding($input, s('charset'), 'utf-8, latin1');
 	}
 
-	/* encoding fallback */
+	/* else fallback */
 
 	else
 	{

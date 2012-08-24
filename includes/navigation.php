@@ -102,6 +102,9 @@ function navigation_list($table = '', $options = '')
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -185,7 +188,7 @@ function navigation_list($table = '', $options = '')
 		$output = '<ul' .$id_string . $class_string . '><li>' . $error . '</li></ul>';
 	}
 
-	/* else collect premature output */
+	/* else collect list output */
 
 	else if ($output)
 	{
@@ -221,6 +224,9 @@ function children_list($table = '', $parent = '', $string = '', $mode = '')
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -315,7 +321,7 @@ function languages_list($options = '')
 		$class_string = ' class="list_languages"';
 	}
 
-	/* collect premature output */
+	/* collect list output */
 
 	if ($output)
 	{
@@ -374,7 +380,7 @@ function templates_list($options = '')
 		$class_string = ' class="list_templates"';
 	}
 
-	/* collect premature output */
+	/* collect list output */
 
 	if ($output)
 	{

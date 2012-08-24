@@ -47,6 +47,9 @@ function comments($article = '', $string = '')
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -154,6 +157,9 @@ function comment_form($article = '', $language = '', $access = '')
 		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
+
+	/* collect hidden output */
+
 	$output .= form_element('hidden', '', '', 'language', $language);
 	$output .= form_element('hidden', '', '', 'date', NOW);
 	$output .= form_element('hidden', '', '', 'article', $article);
@@ -165,6 +171,9 @@ function comment_form($article = '', $language = '', $access = '')
 	{
 		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
 	}
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button' . $class_disabled, 'comment_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
@@ -239,7 +248,7 @@ function comment_post()
 			$success = l('comment_sent');
 		}
 
-		/* email comment notification */
+		/* send comment notification */
 
 		if (s('notification') == 1)
 		{

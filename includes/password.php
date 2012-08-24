@@ -29,6 +29,9 @@ function password_reset_form()
 	$output .= form_element('fieldset', '', '', '', '', l('fields_request') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
 	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
 	$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
@@ -86,7 +89,7 @@ function password_reset_post()
 	}
 	else
 	{
-		/* email new password */
+		/* send new password */
 
 		$login_string = ROOT . '/' . REWRITE_STRING . 'login';
 		$login_link = anchor_element('', '', '', $login_string, $login_string);

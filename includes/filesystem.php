@@ -9,6 +9,9 @@ function read_directory($input = '', $ignore = '')
 	{
 		$output[] = $value;
 	}
+
+	/* prepare output */
+
 	if ($output)
 	{
 		if (is_array($ignore) == '')
@@ -30,6 +33,9 @@ function read_directory($input = '', $ignore = '')
 function remove_directory($input = '', $mode = '')
 {
 	$input_directory = read_directory($input);
+
+	/* delete file and directory */
+
 	if (is_array($input_directory))
 	{
 		foreach ($input_directory as $value)
@@ -45,6 +51,9 @@ function remove_directory($input = '', $mode = '')
 			}
 		}
 	}
+
+	/* delete directory itself */
+
 	if ($mode == 1)
 	{
 		rmdir($input);

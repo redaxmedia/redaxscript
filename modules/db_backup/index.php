@@ -16,7 +16,7 @@ function db_backup_render_start()
 			db_backup(0);
 		}
 
-		/* email database backup */
+		/* send database backup */
 
 		if (THIRD_PARAMETER == 'send')
 		{

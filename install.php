@@ -264,6 +264,9 @@ function install_form()
 	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'd_salt', hash_generator(40));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button_large', 'install_post', l('install'));

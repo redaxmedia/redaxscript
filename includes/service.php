@@ -53,6 +53,9 @@ function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subjec
 	/* collect header */
 
 	$header = 'mime-version: 1.0' . PHP_EOL;
+	
+	/* if email attachment */
+
 	if (is_array($attachment_array))
 	{
 		foreach ($attachment_array as $file_name => $file_contents)
@@ -82,6 +85,9 @@ function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subjec
 	}
 	$header .= 'from: ' . $from_string . PHP_EOL;
 	$header .= 'reply-to: ' . $from_string . PHP_EOL;
+
+	/* send email */
+
 	if (function_exists('mail'))
 	{
 		mail($to_string, $subject_string, $body, $header);
@@ -96,6 +102,9 @@ function curl_contents($url = '', $referer = '', $cookies = '')
 	{
 		$handle = curl_init();
 		curl_setopt($handle, CURLOPT_URL, $url);
+
+		/* handle referer */
+
 		if ($referer)
 		{
 			curl_setopt($handle, CURLOPT_REFERER, $referer);

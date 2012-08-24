@@ -47,6 +47,9 @@ function login_form()
 	{
 		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
 	}
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button' . $class_disabled, 'login_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';

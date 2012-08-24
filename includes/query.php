@@ -133,15 +133,18 @@ function query_plumb($column = '', $table = '', $function = '')
 
 function query_total($table = '', $field = '', $value = '')
 {
-	$query = 'SELECT id FROM ' . PREFIX . $table;
-	if ($field)
+	if ($table)
 	{
-		$query .= ' WHERE ' . $field . ' = \'' . $value . '\'';
-	}
-	$result = mysql_query($query);
-	if ($result)
-	{
-		$output = mysql_num_rows($result);
+		$query = 'SELECT id FROM ' . PREFIX . $table;
+		if ($field && $value)
+		{
+			$query .= ' WHERE ' . $field . ' = \'' . $value . '\'';
+		}
+		$result = mysql_query($query);
+		if ($result)
+		{
+			$output = mysql_num_rows($result);
+		}
 	}
 	return $output;
 }

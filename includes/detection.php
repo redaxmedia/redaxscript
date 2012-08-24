@@ -4,7 +4,7 @@
 
 function language_detection()
 {
-	/* get language else use language from session */
+	/* get language */
 
 	if ($_GET['l'])
 	{
@@ -14,10 +14,16 @@ function language_detection()
 			$_SESSION[ROOT . '/language_selected'] = 1;
 		}
 	}
+
+	/* else use language from session */
+
 	else
 	{
 		$language = $_SESSION[ROOT . '/language'];
 	}
+
+	/* if language not selected */
+
 	if ($_SESSION[ROOT . '/language_selected'] == '')
 	{
 		/* query site language */
@@ -51,7 +57,7 @@ function language_detection()
 
 function template_detection()
 {
-	/* get template else use template from session */
+	/* get template */
 
 	if ($_GET['t'])
 	{
@@ -61,10 +67,16 @@ function template_detection()
 			$_SESSION[ROOT . '/template_selected'] = 1;
 		}
 	}
+
+	/* else use template from session */
+
 	else
 	{
 		$template = $_SESSION[ROOT . '/template'];
 	}
+
+	/* if template not selected */
+
 	if ($_SESSION[ROOT . '/template_selected'] == '')
 	{
 		/* query site template */

@@ -17,6 +17,9 @@ function head()
 			{
 				$access = $r['access'];
 				$check_access = check_access($access, MY_GROUPS);
+
+				/* if access granted */
+
 				if ($check_access == 1)
 				{
 					if ($r)

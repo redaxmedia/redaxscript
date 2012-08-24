@@ -21,6 +21,9 @@ function archive()
 
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -63,6 +66,9 @@ function archive()
 				$counter++;
 			}
 		}
+
+		/* handle access */
+
 		if ($num_rows == $counter)
 		{
 			$error = l('access_no') . l('point');

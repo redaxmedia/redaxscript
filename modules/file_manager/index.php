@@ -89,13 +89,13 @@ function file_manager($directory = '')
 {
 	if (is_dir($directory) == '')
 	{
-		mkdir($directory, 0755);
+		mkdir($directory, 0777);
 	}
 	if (is_dir($directory) == '')
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_create') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
-	else if (chmod($directory, 0755) == '')
+	else if (chmod($directory, 0777))
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
@@ -117,7 +117,7 @@ function file_manager($directory = '')
 	/* read file manager directory */
 
 	$file_manager_directory = read_directory($directory);
-	if (count($file_manager_directory) > 0)
+	if (count($file_manager_directory))
 	{
 		$output .= '<tbody>';
 		foreach ($file_manager_directory as $key => $value)
@@ -137,7 +137,7 @@ function file_manager($directory = '')
 
 			$output .= '<ul class="list_control_admin"><li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/file-manager/delete/' . $key . '/' . TOKEN) . '</li></ul>';
 
-			/* collect premature output */
+			/* collect filetime output */
 
 			$output .= '</td><td class="column_last">' . date(s('date'), filectime($string)) . '</td></tr>';
 		}
@@ -186,6 +186,9 @@ function file_manager_upload($directory = '')
 			$error = l('file_manager_file_type_limit') . l('point');
 		}
 	}
+
+	/* if filesize limit */
+
 	if ($file_size > 1048576)
 	{
 		$error = l('file_manager_file_size_limit') . l('point');
@@ -209,7 +212,10 @@ function file_manager_upload($directory = '')
 function file_manager_delete($directory = '')
 {
 	$file_manager_directory = read_directory($directory);
-	if (count($file_manager_directory) > 0)
+
+	/* delete file and directory */
+
+	if (count($file_manager_directory))
 	{
 		$file_name = $file_manager_directory[THIRD_SUB_PARAMETER];
 		$string = $directory . '/' . $file_name;

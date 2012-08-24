@@ -37,6 +37,9 @@ function registration_form()
 	{
 		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
 	}
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button' . $class_disabled, 'registration_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
@@ -113,7 +116,7 @@ function registration_post()
 			$success = l('registration_sent');
 		}
 
-		/* email login information */
+		/* send login information */
 
 		$login_string = ROOT . '/' . REWRITE_STRING . 'login';
 		$login_link = anchor_element('', '', '', $login_string, $login_string);
@@ -126,7 +129,7 @@ function registration_post()
 		);
 		send_mail($email, $name, s('email'), s('author'), l('registration'), $body_array);
 
-		/* email user notification */
+		/* send user notification */
 
 		if (s('notification') == 1)
 		{

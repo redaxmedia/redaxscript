@@ -152,6 +152,9 @@ function seo_tube_form()
 	}
 	$output .= form_element('form', '', 'form_seo_tube', '', '', '', 'method="post"');
 	$output .= form_element('text', 'url', 'js_clear_focus field_search', 'url', $url, '', 'maxlength="50"');
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button_search', 'seo_tube_post', l('seo_tube_load'));
 	$output .= '</form>';

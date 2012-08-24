@@ -25,6 +25,9 @@ function search_form()
 
 	$output = form_element('form', '', 'js_check_search form_search', '', '', '', 'method="post"');
 	$output .= form_element('search', '', 'js_field_search js_required js_clear_focus field_search' . $class_disabled, 'search_terms', l('search_terms'), '', 'maxlength="50" tabindex="1"' . $code_disabled);
+
+	/* collect hidden and button output */
+
 	$output .= form_element('hidden', '', '', 'search_post');
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button_search' . $class_disabled, 'search_post', l('search'), '', $code_disabled);
@@ -92,6 +95,9 @@ function search_post()
 			{
 				$access = $r['access'];
 				$check_access = check_access($access, MY_GROUPS);
+
+				/* if access granted */
+
 				if ($check_access == 1)
 				{
 					if ($r)
