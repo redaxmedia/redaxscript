@@ -20,7 +20,10 @@ function admin_groups_list()
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/groups"><span><span>' . l('group_new') . '</span></span></a>';
 	}
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
-	$output .= '<thead><tr><th class="s2o3 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('filter') . '</th></tr></thead>';
+
+	/* collect thead and tfoot */
+
+	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('filter') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('filter') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
@@ -86,7 +89,7 @@ function admin_groups_list()
 				$output .= '</ul>';
 			}
 
-			/* collect premature output */
+			/* collect alias and filter output */
 
 			$output .= '</td><td class="column_second">' . $alias . '</td><td class="column_last">' . $filter . '</td></tr>';
 		}
@@ -220,7 +223,7 @@ function admin_groups_form()
 	}
 	$output .= '</div>';
 
-	/* collect premature output */
+	/* collect hidden output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 

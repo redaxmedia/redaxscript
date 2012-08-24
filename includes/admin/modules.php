@@ -16,7 +16,10 @@ function admin_modules_list()
 
 	$output = '<h2 class="title_content">' . l('modules') . '</h2>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
-	$output .= '<thead><tr><th class="s2o3 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('version') . '</th></tr></thead>';
+
+	/* collect thead and tfoot */
+
+	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('version') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
@@ -30,6 +33,9 @@ function admin_modules_list()
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -86,7 +92,7 @@ function admin_modules_list()
 					$output .= '</ul>';
 				}
 
-				/* collect premature output */
+				/* collect alias and version output */
 
 				$output .= '</td><td class="column_second">' . $alias . '</td><td class="column_last">' . $version . '</td></tr>';
 			}
@@ -238,7 +244,7 @@ function admin_modules_form()
 	}
 	$output .= '</ul></fieldset></div>';
 
-	/* collect premature output */
+	/* collect hidden output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 

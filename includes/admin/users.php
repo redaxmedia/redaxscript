@@ -8,7 +8,7 @@ function admin_users_list()
 
 	/* query users */
 
-	$query = 'SELECT id, name, user, language, first, last, status FROM ' . PREFIX . 'users ORDER BY last DESC';
+	$query = 'SELECT id, name, user, language, first, last, status, groups FROM ' . PREFIX . 'users ORDER BY last DESC';
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 
@@ -20,8 +20,11 @@ function admin_users_list()
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/users"><span><span>' . l('user_new') . '</span></span></a>';
 	}
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
-	$output .= '<thead><tr><th class="s2o3 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('user') . '</th><th class="s1o6 column_last">' . l('session') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('user') . '</td><td class="column_last">' . l('session') . '</td></tr></tfoot>';
+
+	/* collect thead and tfoot */
+
+	$output .= '<thead><tr><th class="s3o5 column_first">' . l('name') . '</th><th class="s1o5 column_second">' . l('user') . '</th><td class="column_third">' . l('groups') . '</td><th class="s1o5 column_last">' . l('session') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('user') . '</td><td class="column_third">' . l('groups') . '</td><td class="column_last">' . l('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('user_no') . l('point');
@@ -91,9 +94,31 @@ function admin_users_list()
 				$output .= '</ul>';
 			}
 
-			/* collect premature output */
+			/* collect user and parent output */
 
-			$output .= '</td><td class="column_second">' . $user . '</td><td class="column_last">';
+			$output .= '</td><td class="column_second">' . $user . '</td><td class="column_third">';
+			if ($groups)
+			{
+				$groups_array = explode(', ', $groups);
+				$groups_array_last = end(array_keys($groups_array));
+				foreach ($groups_array as $key => $value)
+				{
+					$group_alias = retrieve('alias', 'groups', 'id', $value);
+					if ($group_alias)
+					{
+						$output .= anchor_element('internal', '', 'link_parent', retrieve('alias', 'groups', 'id', $value), 'admin/edit/groups/' . $value);
+						if ($groups_array_last != $key)
+						{
+							$output .= ', ';
+						}
+					}
+				}
+			}
+			else
+			{
+				$output .= l('none');
+			}
+			$output .= '</td><td class="column_last">';
 			if ($first == $last)
 			{
 				$output .= l('none');
@@ -241,7 +266,7 @@ function admin_users_form()
 	}
 	$output .= '</ul></fieldset></div>';
 
-	/* collect premature output */
+	/* collect hidden output */
 
 	if ($id)
 	{
@@ -249,7 +274,7 @@ function admin_users_form()
 	}
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 
-	/* cancel button */
+	/* collect button output */
 
 	if (USERS_EDIT == 1 || USERS_DELETE == 1)
 	{

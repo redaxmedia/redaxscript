@@ -27,15 +27,18 @@ function admin_contents_list()
 	{
 		case 'categories':
 			$single = 'category';
+			$parent = 'category_parent';
 			break;
 		case 'articles':
 			$single = 'article';
+			$parent = 'category';
 			break;
 		case 'extras':
 			$single = 'extra';
 			break;
 		case 'comments':
 			$single = 'comment';
+			$parent = 'article';
 			break;
 	}
 
@@ -53,7 +56,19 @@ function admin_contents_list()
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($single . '_new') . '</span></span></a>';
 	}
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
-	$output .= '<thead><tr><th class="s3o4 column_first">' . l('title') . '</th><th class="s1o4 column_second">';
+
+	/* collect thead */
+
+	$output .= '<thead><tr><th class="s3o5 column_first">' . l('title') . '</th><th class="';
+	if (TABLE_PARAMETER != 'extras')
+	{
+		$output .= 's1o5';
+	}
+	else
+	{
+		$output .= 's2o5';
+	}
+	$output .= ' column_second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= l('identifier');
@@ -62,7 +77,15 @@ function admin_contents_list()
 	{
 		$output .= l('alias');
 	}
-	$output .= '</th><th class="column_move column_last">' . l('rank') . '</th></tr></thead>';
+	$output .= '</th>';
+	if (TABLE_PARAMETER != 'extras')
+	{
+		$output .= '<th class="s1o5 column_third">' . l($parent) . '</th>';
+	}
+	$output .= '<th class="column_move column_last">' . l('rank') . '</th></tr></thead>';
+
+	/* collect tfoot */
+
 	$output .= '<tfoot><tr><td class="column_first">' . l('title') . '</td><td class="column_second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
@@ -72,7 +95,12 @@ function admin_contents_list()
 	{
 		$output .= l('alias');
 	}
-	$output .= '</td><td class="column_move column_last">' . l('rank') . '</td></tr></tfoot>';
+	$output .= '</td>';
+	if (TABLE_PARAMETER != 'extras')
+	{
+		$output .= '<td class="column_third">' . l($parent) . '</td>';
+	}
+	$output .= '<td class="column_move column_last">' . l('rank') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l($single . '_no') . l('point');
@@ -84,6 +112,9 @@ function admin_contents_list()
 		{
 			$access = $r['access'];
 			$check_access = check_access($access, MY_GROUPS);
+
+			/* if access granted */
+
 			if ($check_access == 1)
 			{
 				if ($r)
@@ -180,7 +211,7 @@ function admin_contents_list()
 					$output .= '</ul>';
 				}
 
-				/* collect premature output */
+				/* collect alias and id output */
 
 				$output .= '</td><td class="column_second">';
 				if (TABLE_PARAMETER == 'comments')
@@ -191,7 +222,49 @@ function admin_contents_list()
 				{
 					$output .= $alias;
 				}
-				$output .= '</td><td class="column_move column_last">';
+				$output .= '</td>';
+
+				/* collect parent output */
+
+				if (TABLE_PARAMETER != 'extras')
+				{
+					$output .= '<td class="column_third">';
+					if (TABLE_PARAMETER == 'categories')
+					{
+						if ($parent)
+						{
+							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $parent), 'admin/edit/categories/' . $parent);
+						}
+						else
+						{
+							$output .= l('none');
+						}
+					}
+					if (TABLE_PARAMETER == 'articles')
+					{
+						if ($category)
+						{
+							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $category), 'admin/edit/categories/' . $category);
+						}
+						else
+						{
+							$output .= l('uncategorized');
+						}
+					}
+					if (TABLE_PARAMETER == 'comments')
+					{
+						if ($article)
+						{
+							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $article), 'admin/edit/categories/' . $article);
+						}
+						else
+						{
+							$output .= l('none');
+						}
+					}
+					$output .= '</td>';
+				}
+				$output .= '<td class="column_move column_last">';
 
 				/* collect control output */
 
@@ -534,7 +607,7 @@ function admin_contents_form()
 	}
 	$output .= '</div>';
 
-	/* collect premature output */
+	/* collect hidden output */
 
 	if (TABLE_PARAMETER != 'comments')
 	{

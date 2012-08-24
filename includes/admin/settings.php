@@ -155,16 +155,10 @@ function admin_settings_form()
 	), s('blocker'), l('blocker')) . '</li>';
 	$output .= '</ul></fieldset>';
 
-	/* collect premature output */
+	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-
-	/* cancel button */
-
 	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_STRING . 'admin"><span><span>' . l('cancel') . '</span></span></a>';
-
-	/* submit button */
-
 	$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;
