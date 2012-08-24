@@ -234,9 +234,9 @@ function contents()
 		}
 	}
 
-	/* call paginator as needed */
+	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && s('paginator') == 1)
+	if ($sub_maximum > 1 && s('pagination') == 1)
 	{
 		pagination($sub_active, $sub_maximum, $active_string);
 	}

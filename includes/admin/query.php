@@ -630,7 +630,7 @@ function admin_update()
 		$r['homepage'] = clean($_POST['homepage'], 0);
 		$r['limit'] = clean($_POST['limit'], 0) == '' ? 5 : clean($_POST['limit'], 0);
 		$r['order'] = clean($_POST['order'], 0);
-		$r['paginator'] = clean($_POST['paginator'], 0);
+		$r['pagination'] = clean($_POST['pagination'], 0);
 		$r['moderation'] = clean($_POST['moderation'], 0);
 		$r['registration'] = clean($_POST['registration'], 0);
 		$r['verification'] = clean($_POST['verification'], 0);

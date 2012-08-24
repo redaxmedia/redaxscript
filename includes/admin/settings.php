@@ -102,10 +102,10 @@ function admin_settings_form()
 		l('ascending') => 'asc',
 		l('descending') => 'desc'
 	), s('order'), l('order')) . '</li>';
-	$output .= '<li>' . select_element('paginator', 'field_select_admin', 'paginator', array(
+	$output .= '<li>' . select_element('pagination', 'field_select_admin', 'pagination', array(
 		l('enable') => 1,
 		l('disable') => 0
-	), s('paginator'), l('paginator')) . '</li>';
+	), s('pagination'), l('pagination')) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect comments set */
