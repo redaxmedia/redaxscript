@@ -100,17 +100,17 @@ function file_manager($directory = '')
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 
-	/* collect form output */
+	/* collect listing output */
 
 	$output .= '<h2 class="title_content">' . l('file_manager_file_manager') . '</h2>';
 	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_STRING . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
 	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('file_manager_browse'));
 	$output .= '<button type="submit" class="js_upload field_upload field_button_admin hide_if_js"><span><span>' . l('file_manager_upload') . '</span></span></button>';
 	$output .= '</form>';
-
-	/* collect listing output */
-
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
+
+	/* collect thead and tfoot */
+
 	$output .= '<thead><tr><th class="s2o3 column_first">' . l('name') . '</th><th class="s1o3 column_last">' . l('date') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 

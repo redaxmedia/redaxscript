@@ -23,7 +23,7 @@ function admin_users_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s3o5 column_first">' . l('name') . '</th><th class="s1o5 column_second">' . l('user') . '</th><td class="column_third">' . l('groups') . '</td><th class="s1o5 column_last">' . l('session') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="s3o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('user') . '</th><td class="s1o6 column_third">' . l('groups') . '</td><th class="s1o6 column_last">' . l('session') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('user') . '</td><td class="column_third">' . l('groups') . '</td><td class="column_last">' . l('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
@@ -106,7 +106,7 @@ function admin_users_list()
 					$group_alias = retrieve('alias', 'groups', 'id', $value);
 					if ($group_alias)
 					{
-						$output .= anchor_element('internal', '', 'link_parent', retrieve('alias', 'groups', 'id', $value), 'admin/edit/groups/' . $value);
+						$output .= anchor_element('internal', '', 'link_parent', retrieve('name', 'groups', 'id', $value), 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{
 							$output .= ', ';

@@ -59,14 +59,14 @@ function admin_contents_list()
 
 	/* collect thead */
 
-	$output .= '<thead><tr><th class="s3o5 column_first">' . l('title') . '</th><th class="';
+	$output .= '<thead><tr><th class="s3o6 column_first">' . l('title') . '</th><th class="';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= 's1o5';
+		$output .= 's1o6';
 	}
 	else
 	{
-		$output .= 's2o5';
+		$output .= 's2o6';
 	}
 	$output .= ' column_second">';
 	if (TABLE_PARAMETER == 'comments')
@@ -80,7 +80,7 @@ function admin_contents_list()
 	$output .= '</th>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<th class="s1o5 column_third">' . l($parent) . '</th>';
+		$output .= '<th class="s2o6 column_third">' . l($parent) . '</th>';
 	}
 	$output .= '<th class="column_move column_last">' . l('rank') . '</th></tr></thead>';
 
