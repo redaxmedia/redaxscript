@@ -111,8 +111,8 @@ function file_manager($directory = '')
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s2o3 column_first">' . l('name') . '</th><th class="s1o3 column_last">' . l('date') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_manager_file_size') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><th class="column_second">' . l('file_manager_file_size') . '</th><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 
 	/* read file manager directory */
 
@@ -137,9 +137,9 @@ function file_manager($directory = '')
 
 			$output .= '<ul class="list_control_admin"><li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/file-manager/delete/' . $key . '/' . TOKEN) . '</li></ul>';
 
-			/* collect filetime output */
+			/* collect filesize and filetime output */
 
-			$output .= '</td><td class="column_last">' . date(s('date'), filectime($string)) . '</td></tr>';
+			$output .= '</td><td class="column_second">' . ceil(filesize($string) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($string)) . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
