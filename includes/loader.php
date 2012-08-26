@@ -66,13 +66,16 @@ function loader($type = '', $mode = '')
 		}
 	}
 
-	/* else general modes */
+	/* else general mode */
 
 	else
 	{
 		$loader_template = $loader_ini['template'];
 		$loader_browser = $loader_ini[MY_BROWSER];
 		$loader_engine = $loader_ini[MY_ENGINE];
+
+		/* logged in */
+
 		if (LOGGED_IN == TOKEN)
 		{
 			$loader_admin = $loader_ini['admin'];
@@ -131,7 +134,7 @@ function loader($type = '', $mode = '')
 		hook(__FUNCTION__ . '_' . $type . '_transport_start');
 	}
 
-	/* collect output */
+	/* collect include output */
 
 	if ($loader_include)
 	{
@@ -192,6 +195,9 @@ function styles()
 		$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
 	}
 	$loader_single = $loader_ini['single'];
+
+	/* logged in */
+
 	if (LOGGED_IN == TOKEN)
 	{
 		$loader_admin_single = $loader_ini['admin_single'];
@@ -265,11 +271,14 @@ function scripts($mode = '')
 		$output = '<script type="text/javascript"> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
 	}
 
-	/* else general modes */
+	/* else general mode */
 
 	else
 	{
 		$loader_single = $loader_ini['single'];
+
+		/* logged in */
+
 		if (LOGGED_IN == TOKEN)
 		{
 			$loader_admin_single = $loader_ini['admin_single'];

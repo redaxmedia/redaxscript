@@ -5,10 +5,11 @@
 function clean($input = '', $mode = '')
 {
 	$output = $input;
+
+	/* if untrusted user */
+
 	if (FILTER == 1)
 	{
-		/* filter untrusted users */
-
 		if ($mode == 0)
 		{
 			$output = clean_special($output);
@@ -19,6 +20,9 @@ function clean($input = '', $mode = '')
 			$output = clean_html($output);
 		}
 	}
+
+	/* type related clean */
+
 	if ($mode == 2)
 	{
 		$output = clean_alias($output);
@@ -31,6 +35,9 @@ function clean($input = '', $mode = '')
 	{
 		$output = clean_url($output);
 	}
+
+	/* mysql clean */
+
 	$output = clean_mysql($output);
 	return $output;
 }
@@ -77,8 +84,7 @@ function clean_html($input = '')
 
 function clean_alias($input = '')
 {
-	$output = trim($input);
-	$output = strtolower($output);
+	$output = trim(strtolower($input));
 	$output = preg_replace('/[^a-z0-9_]/i', ' ', $output);
 	$output = preg_replace('/\s+/i', '-', $output);
 	return $output;
@@ -88,8 +94,7 @@ function clean_alias($input = '')
 
 function clean_email($input = '')
 {
-	$output = trim($input);
-	$output = strtolower($output);
+	$output = trim(strtolower($input));
 	$output = preg_replace('/[^@a-z0-9._-]/i', '', $input);
 	return $output;
 }
@@ -98,8 +103,7 @@ function clean_email($input = '')
 
 function clean_url($input = '')
 {
-	$output = trim($input);
-	$output = strtolower($output);
+	$output = trim(strtolower($input));
 	$output = preg_replace('/www.(.*?)/i', '', $output);
 	return $output;
 }

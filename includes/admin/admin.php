@@ -119,7 +119,7 @@ function admin_panel_list()
 		$output .= '</ul></li>';
 	}
 
-	/* collect dropdown output */
+	/* collect list output */
 
 	if ($output)
 	{

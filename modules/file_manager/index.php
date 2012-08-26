@@ -162,8 +162,7 @@ function file_manager($directory = '')
 
 function file_manager_clean_file_name($input = '')
 {
-	$output = trim($input);
-	$output = strtolower($output);
+	$output = trim(strtolower($input));
 	$output = preg_replace('/[-|\s+]/i', '_', $output);
 	$output = preg_replace('/[^a-z0-9._]/i', '', $output);
 	return $output;

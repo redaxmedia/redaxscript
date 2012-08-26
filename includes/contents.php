@@ -171,7 +171,7 @@ function contents()
 				}
 				$output .= '</div>' . hook('article_end');
 
-				/* admin dock */
+				/* prepend admin dock */
 
 				if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
 				{
@@ -307,7 +307,7 @@ function extras($filter = '')
 
 					$output .= '<div class="box_extra">' . parser($text) . '</div>';
 
-					/* admin dock */
+					/* prepend admin dock */
 
 					if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
 					{
@@ -372,7 +372,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 	hook(__FUNCTION__ . '_start');
 	$output .= '<ul class="list_pagination">';
 
-	/* first and previous */
+	/* collect first and previous output */
 
 	if ($sub_active > 1)
 	{
@@ -382,7 +382,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_string) . '</li>';
 	}
 
-	/* center */
+	/* collect center output */
 
 	$j = 2;
 	if ($sub_active == 2 || $sub_active == $sub_maximum - 1)	
@@ -406,7 +406,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 		}
 	}
 
-	/* next and last */
+	/* collect next and last output */
 
 	if ($sub_active < $sub_maximum)
 	{
@@ -446,6 +446,8 @@ function notification($title = '', $text = '', $action = '', $string = '')
 	}
 	if ($action && $string)
 	{
+		/* handle protocol */
+
 		if (check_protocol($string) == '')
 		{
 			$string = REWRITE_STRING . $string;

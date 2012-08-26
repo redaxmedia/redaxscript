@@ -4,11 +4,13 @@
 
 function parser($input = '')
 {
+	/* check position */
+
 	$position_break = strpos($input, '<break>');
 	$position_code = strpos($input, '<code>');
 	$position_function = strpos($input, '<function>');
 
-	/* document break */
+	/* if document break */
 
 	if ($position_break > -1)
 	{
@@ -18,12 +20,15 @@ function parser($input = '')
 			$output = substr($output, 0, $position_break);
 		}
 	}
+
+	/* else fallback */
+
 	else
 	{
 		$output = $input;
 	}
 
-	/* code quote */
+	/* if code quote */
 
 	if ($position_code > -1)
 	{
@@ -41,7 +46,7 @@ function parser($input = '')
 		$output = implode($output);
 	}
 
-	/* function call */
+	/* if function call */
 
 	if ($position_function > -1)
 	{
@@ -104,6 +109,9 @@ function parser($input = '')
 						}
 					}
 				}
+
+				/* call function */
+
 				$result = call_user_func_array($function[0], $parameter);
 				$output[$i] = ob_get_clean();
 				if ($output[$i] == '')

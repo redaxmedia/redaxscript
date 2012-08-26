@@ -145,6 +145,9 @@ function admin_modules_list()
 				{
 					$class_file_install = 'row_disabled';
 				}
+
+				/* collect table row */
+
 				$output .= '<tr';
 				if ($class_file_install)
 				{
