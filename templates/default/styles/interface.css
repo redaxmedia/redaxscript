@@ -28,7 +28,8 @@
 
 .sidebar li a
 {
-	background: url('templates/default/images/sprite.png') -25px -479px no-repeat;
+	background: url('templates/default/images/sprite.png') -25px -476px no-repeat;
+	display: block;
 	padding-left: 1.25em;
 }
 

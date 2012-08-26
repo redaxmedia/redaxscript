@@ -66,7 +66,7 @@ function admin_contents_list()
 	}
 	else
 	{
-		$output .= 's2o6';
+		$output .= 's3o6';
 	}
 	$output .= ' column_second">';
 	if (TABLE_PARAMETER == 'comments')
@@ -126,7 +126,7 @@ function admin_contents_list()
 				}
 				if (TABLE_PARAMETER == 'comments')
 				{
-					$name = $author;
+					$name = truncate($author . l('colon') . ' ' . $text, 80, '...');
 				}
 				else
 				{
