@@ -127,7 +127,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 				$output .= l('point') . '</div>';
 			}
 
-			/* collect comments output */
+			/* collect related output */
 
 			$comments = $value->comments->data;
 			$comments_total = $value->comments->count;
