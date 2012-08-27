@@ -146,14 +146,20 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 				$output .= '</div>';
 				foreach ($comments as $comment_value)
 				{
-					if ($comment_counter++ < $limit_second && $limit_second)
+					/* break if limit reached */
+
+					if (++$comment_counter > $limit_second && $limit_second)
 					{
-						$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
-						$output .= '<div class="wrapper_fb_group_comment_sub">';
-						$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($comment_value->from->id, $comment_value->from->name) . '</h4>';
-						$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($comment_value->message) . '</div>';
-						$output .= '</div></div>';
+						break;
 					}
+
+					/* collect comment output */
+
+					$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
+					$output .= '<div class="wrapper_fb_group_comment_sub">';
+					$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($comment_value->from->id, $comment_value->from->name) . '</h4>';
+					$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($comment_value->message) . '</div>';
+					$output .= '</div></div>';
 				}
 				if ($comment_counter > $limit_second && $limit_second)
 				{
