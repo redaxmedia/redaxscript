@@ -8,6 +8,17 @@ function fb_group_loader_start()
 	$loader_modules_styles[] = 'modules/fb_group/styles/fb_group.css';
 }
 
+/* fb group render start */
+
+function fb_group_render_start()
+{
+	if (FIRST_PARAMETER == 'fb-group' && SECOND_PARAMETER == 'get-contents' && (THIRD_PARAMETER == 'members' || THIRD_PARAMETER == 'feed'))
+	{
+		define('RENDER_BREAK', 1);
+		fb_group_get_contents(THIRD_PARAMETER);
+	}
+}
+
 /* fb group */
 
 function fb_group($type = '', $limit_first = '', $limit_second = '')

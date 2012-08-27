@@ -6,7 +6,7 @@ function demo_center_start()
 {
 	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo')
 	{
-		define(CENTER_BREAK, 1);
+		define('CENTER_BREAK', 1);
 		demo_login();
 	}
 }
