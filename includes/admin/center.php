@@ -15,18 +15,19 @@ function admin_routing()
 
 	switch (true)
 	{
-		case ADMIN_PARAMETER && ADMIN_PARAMETER != 'new' && ADMIN_PARAMETER != 'view' && ADMIN_PARAMETER != 'edit' && ADMIN_PARAMETER != 'up' && ADMIN_PARAMETER != 'down' && ADMIN_PARAMETER != 'publish' && ADMIN_PARAMETER != 'enable' && ADMIN_PARAMETER != 'unpublish' && ADMIN_PARAMETER != 'disable' && ADMIN_PARAMETER != 'install' && ADMIN_PARAMETER != 'uninstall' && ADMIN_PARAMETER != 'delete' && ADMIN_PARAMETER != 'process' && ADMIN_PARAMETER != 'update':
+		case ADMIN_PARAMETER && in_array(ADMIN_PARAMETER, array('new', 'view', 'edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')) == '':
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] == '' && $_POST['edit'] == '':
 		case ADMIN_PARAMETER == 'update' && $_POST['update'] == '';
-		case TABLE_PARAMETER && TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'articles' && TABLE_PARAMETER != 'extras' && TABLE_PARAMETER != 'comments' && TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && TABLE_PARAMETER != 'modules' && TABLE_PARAMETER != 'settings':
-		case ID_PARAMETER == '' && (ADMIN_PARAMETER == 'edit' || ADMIN_PARAMETER == 'up' || ADMIN_PARAMETER == 'down' || ADMIN_PARAMETER == 'publish' || ADMIN_PARAMETER == 'enable' || ADMIN_PARAMETER == 'unpublish' || ADMIN_PARAMETER == 'disable'):
+		case TABLE_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
+		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
+		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
 		case is_numeric(ID_PARAMETER) && retrieve('id', TABLE_PARAMETER, 'id', ID_PARAMETER) == '':
-			notification(l('something_wrong'), '', l('continue'), 'admin');
+			notification(l('something_wrong'), '', l('back'), 'admin');
 			return;
 			break;
 	}
 
-	/* setup permission variables */
+	/* define access variables */
 
 	if (ADMIN_PARAMETER && TABLE_PARAMETER)
 	{
@@ -35,7 +36,7 @@ function admin_routing()
 			$install = MODULES_INSTALL;
 			$uninstall = MODULES_UNINSTALL;
 		}
-		else if (TABLE_PARAMETER != 'modules' && TABLE_PARAMETER != 'settings')
+		else if (TABLE_PARAMETER != 'settings')
 		{
 			$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
 			if (TABLE_PARAMETER == 'comments')
@@ -62,21 +63,17 @@ function admin_routing()
 	switch (true)
 	{
 		case ADMIN_PARAMETER == 'new' && $new == 0:
-		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER != 'modules' && $edit == 0 && $delete == 0:
+		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $edit == 0 && $delete == 0:
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
+		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'settings' && $edit == 0:
 		case ADMIN_PARAMETER == 'edit' && $edit == 0 && USERS_EXCEPTION == 0:
-		case ADMIN_PARAMETER == 'up' && $edit == 0:
-		case ADMIN_PARAMETER == 'down' && $edit == 0:
-		case ADMIN_PARAMETER == 'publish' && $edit == 0:
-		case ADMIN_PARAMETER == 'enable' && $edit == 0:
-		case ADMIN_PARAMETER == 'unpublish' && $edit == 0:
-		case ADMIN_PARAMETER == 'disable' && $edit == 0:
+		case in_array(ADMIN_PARAMETER, array('up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
 		case ADMIN_PARAMETER == 'install' && $install == 0:
 		case ADMIN_PARAMETER == 'uninstall' && $uninstall == 0:
 		case ADMIN_PARAMETER == 'delete' && $delete == 0 && USERS_EXCEPTION == 0:
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] && $new == 0:
 		case ADMIN_PARAMETER == 'process' && $_POST['edit'] && $edit == 0 && USERS_EXCEPTION == 0:
-		case ADMIN_PARAMETER == 'update' && SETTINGS_EDIT == 0;
+		case ADMIN_PARAMETER == 'update' && $edit == 0;
 		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
 		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:
 			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
@@ -86,23 +83,14 @@ function admin_routing()
 
 	/* check token */
 
-	switch (true)
+	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
 	{
-		case ADMIN_PARAMETER == 'up' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'down' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'publish' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'enable' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'unpublish' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'disable' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'install' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'uninstall' && TOKEN_PARAMETER == '':
-		case ADMIN_PARAMETER == 'delete' && TOKEN_PARAMETER == '':
-			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
-			return;
-			break;
+		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
+		return;
+		break;
 	}
 
-	/* general routing */
+	/* admin routing */
 
 	if (FIRST_PARAMETER == 'admin' && ADMIN_PARAMETER == '')
 	{
@@ -112,33 +100,33 @@ function admin_routing()
 	switch (ADMIN_PARAMETER)
 	{
 		case 'new':
-			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
+			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();
 			}
-			if (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users')
+			if (in_array(TABLE_PARAMETER, array('groups', 'users')))
 			{
 				call_user_func('admin_' . TABLE_PARAMETER . '_form');
 			}
 			return;
 			break;
 		case 'view':
-			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
+			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_list();
 			}
-			if (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users' || TABLE_PARAMETER == 'modules')
+			if (in_array(TABLE_PARAMETER, array('groups', 'users', 'modules')))
 			{
 				call_user_func('admin_' . TABLE_PARAMETER . '_list');
 			}
 			return;
 			break;
 		case 'edit':
-			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
+			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();
 			}
-			if (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users' || TABLE_PARAMETER == 'modules' || TABLE_PARAMETER == 'settings')
+			if (in_array(TABLE_PARAMETER, array('groups', 'users', 'modules', 'settings')))
 			{
 				call_user_func('admin_' . TABLE_PARAMETER . '_form');
 			}
