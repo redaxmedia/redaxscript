@@ -379,7 +379,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 		$first_string = $string;
 		$previous_string = $string . '/' . ($sub_active - 1);
 		$output .= '<li class="item_first">' . anchor_element('internal', '', '', l('first'), $first_string) . '</li>';
-		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_string) . '</li>';
+		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_string, '', 'rel="previous"') . '</li>';
 	}
 
 	/* collect center output */
@@ -412,7 +412,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 	{
 		$next_string = $string . '/' . ($sub_active + 1);
 		$last_string = $string . '/' . $sub_maximum;
-		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_string) . '</li>';
+		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_string, '', 'rel="next"') . '</li>';
 		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_string) . '</li>';
 	}
 	$output .= '</ul>';
