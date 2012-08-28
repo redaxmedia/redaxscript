@@ -19,6 +19,7 @@ function admin_routing()
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] == '' && $_POST['edit'] == '':
 		case ADMIN_PARAMETER == 'update' && $_POST['update'] == '';
 		case TABLE_PARAMETER && TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'articles' && TABLE_PARAMETER != 'extras' && TABLE_PARAMETER != 'comments' && TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && TABLE_PARAMETER != 'modules' && TABLE_PARAMETER != 'settings':
+		case ID_PARAMETER == '' && (ADMIN_PARAMETER == 'edit' || ADMIN_PARAMETER == 'up' || ADMIN_PARAMETER == 'down' || ADMIN_PARAMETER == 'publish' || ADMIN_PARAMETER == 'enable' || ADMIN_PARAMETER == 'unpublish' || ADMIN_PARAMETER == 'disable'):
 		case is_numeric(ID_PARAMETER) && retrieve('id', TABLE_PARAMETER, 'id', ID_PARAMETER) == '':
 			notification(l('something_wrong'), '', l('continue'), 'admin');
 			return;
