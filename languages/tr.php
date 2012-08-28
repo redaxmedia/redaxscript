@@ -98,6 +98,7 @@ $l['continue'] = 'Devam';
 $l['back'] = 'Geri';
 $l['up'] = 'Yukari';
 $l['down'] = 'Asagi';
+$l['sort'] = 'Sort';
 $l['new'] = 'Yeni';
 $l['view'] = 'Görünüm';
 $l['read_more'] = 'Devami';

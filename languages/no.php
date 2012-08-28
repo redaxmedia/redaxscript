@@ -98,6 +98,7 @@ $l['continue'] = 'Fortsett';
 $l['back'] = 'Tilbake';
 $l['up'] = 'Opp';
 $l['down'] = 'Ned';
+$l['sort'] = 'Sort';
 $l['new'] = 'Ny';
 $l['view'] = 'Se';
 $l['read_more'] = 'Les mere';

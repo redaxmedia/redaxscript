@@ -6,7 +6,7 @@ function admin_contents_list()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup permission variables */
+	/* define access variables */
 
 	$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
 	if (TABLE_PARAMETER == 'comments')
@@ -51,11 +51,16 @@ function admin_contents_list()
 	/* collect listing output */
 
 	$output = '<h2 class="title_content">' . l(TABLE_PARAMETER) . '</h2>';
+	$output .= '<div class="wrapper_button_admin">';
 	if ($new == 1)
 	{
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($single . '_new') . '</span></span></a>';
 	}
-	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
+	if ($edit == 1)
+	{
+		$output .= '<a class="field_button_admin field_button_sort" href="' . REWRITE_STRING . 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN . '"><span><span>' . l('sort') . '</span></span></a>';
+	}
+	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead */
 
@@ -323,7 +328,7 @@ function admin_contents_form()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup permission variables */
+	/* define access variables */
 
 	$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
 	$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');

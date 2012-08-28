@@ -98,6 +98,7 @@ $l['continue'] = 'Lanjutkan';
 $l['back'] = 'Kembali';
 $l['up'] = 'Atas';
 $l['down'] = 'Bawah';
+$l['sort'] = 'Sort';
 $l['new'] = 'Baru';
 $l['view'] = 'Lihat';
 $l['read_more'] = 'Baca lebih lanjut';

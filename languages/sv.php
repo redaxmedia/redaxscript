@@ -98,6 +98,7 @@ $l['continue'] = 'Fortsätt';
 $l['back'] = 'Tillbaka';
 $l['up'] = 'Upp';
 $l['down'] = 'Ner';
+$l['sort'] = 'Sort';
 $l['new'] = 'Ny';
 $l['view'] = 'Visa';
 $l['read_more'] = 'Läs mer';

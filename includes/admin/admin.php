@@ -6,7 +6,7 @@ function admin_panel_list()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup access variables */
+	/* define access variables */
 
 	switch (true)
 	{
@@ -135,7 +135,7 @@ function admin_dock($table = '', $id = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup access variables */
+	/* define access variables */
 
 	$edit = constant(strtoupper($table) . '_EDIT');
 	$delete = constant(strtoupper($table) . '_DELETE');

@@ -98,6 +98,7 @@ $l['continue'] = 'Continue';
 $l['back'] = 'Back';
 $l['up'] = 'Up';
 $l['down'] = 'Down';
+$l['sort'] = 'Sort';
 $l['new'] = 'New';
 $l['view'] = 'View';
 $l['read_more'] = 'Read more';

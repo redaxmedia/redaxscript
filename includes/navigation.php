@@ -6,7 +6,7 @@ function navigation_list($table = '', $options = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup option variables */
+	/* define option variables */
 
 	if ($options)
 	{
@@ -277,7 +277,7 @@ function languages_list($options = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup option variables */
+	/* define option variables */
 
 	if ($options)
 	{
@@ -337,7 +337,7 @@ function templates_list($options = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* setup option variables */
+	/* define option variables */
 
 	if ($options)
 	{

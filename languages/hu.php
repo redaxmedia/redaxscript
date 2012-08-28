@@ -98,6 +98,7 @@ $l['continue'] = 'Folytatás';
 $l['back'] = 'Vissza';
 $l['up'] = 'Fel';
 $l['down'] = 'Le';
+$l['sort'] = 'Sort';
 $l['new'] = 'Új';
 $l['view'] = 'Megtekintés';
 $l['read_more'] = 'Bővebben';

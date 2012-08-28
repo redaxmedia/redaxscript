@@ -98,6 +98,7 @@ $l['continue'] = 'Tiếp tục';
 $l['back'] = 'Quay lại';
 $l['up'] = 'Lên';
 $l['down'] = 'Xuống';
+$l['sort'] = 'Sort';
 $l['new'] = 'Mới';
 $l['view'] = 'Xem';
 $l['read_more'] = 'Xem thêm';

@@ -98,6 +98,7 @@ $l['continue'] = 'Ga verder';
 $l['back'] = 'Terug';
 $l['up'] = 'Omhoog';
 $l['down'] = 'Omlaag';
+$l['sort'] = 'Sort';
 $l['new'] = 'Nieuw';
 $l['view'] = 'Bekijk';
 $l['read_more'] = 'Meer lezen';

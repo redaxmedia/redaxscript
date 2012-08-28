@@ -32,6 +32,11 @@
 
 /* wrapper */
 
+.wrapper_button_admin
+{
+	margin-bottom: 1em;
+}
+
 .wrapper_panel_menu_admin
 {
 	float: right;

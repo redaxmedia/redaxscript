@@ -98,6 +98,7 @@ $l['continue'] = 'Pokračova';
 $l['back'] = 'Späť';
 $l['up'] = 'Nahor';
 $l['down'] = 'Dole';
+$l['sort'] = 'Sort';
 $l['new'] = 'Nový';
 $l['view'] = 'Zobrazit';
 $l['read_more'] = 'Číta ďalej';

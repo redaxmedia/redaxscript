@@ -98,6 +98,7 @@ $l['continue'] = 'Edasi';
 $l['back'] = 'Tagasi';
 $l['up'] = 'Üles';
 $l['down'] = 'Alla';
+$l['sort'] = 'Sort';
 $l['new'] = 'Uus';
 $l['view'] = 'Vaata';
 $l['read_more'] = 'Roe edasi';

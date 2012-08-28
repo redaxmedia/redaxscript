@@ -98,6 +98,7 @@ $l['continue'] = '继续';
 $l['back'] = '返回';
 $l['up'] = '向上';
 $l['down'] = '向下';
+$l['sort'] = 'Sort';
 $l['new'] = '新建';
 $l['view'] = '查看';
 $l['read_more'] = '详细';

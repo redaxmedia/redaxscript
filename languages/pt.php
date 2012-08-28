@@ -98,6 +98,7 @@ $l['continue'] = 'Continuar';
 $l['back'] = 'Voltar';
 $l['up'] = 'Para cima';
 $l['down'] = 'Para baixo';
+$l['sort'] = 'Sort';
 $l['new'] = 'Novo';
 $l['view'] = 'Visualizar';
 $l['read_more'] = 'Ler mais';

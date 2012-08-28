@@ -15,11 +15,12 @@ function admin_groups_list()
 	/* collect listing output */
 
 	$output = '<h2 class="title_content">' . l('groups') . '</h2>';
+	$output .= '<div class="wrapper_button_admin">';
 	if (GROUPS_NEW == 1)
 	{
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/groups"><span><span>' . l('group_new') . '</span></span></a>';
 	}
-	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead and tfoot */
 

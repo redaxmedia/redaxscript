@@ -98,6 +98,7 @@ $l['continue'] = 'Nastavi';
 $l['back'] = 'Nazad';
 $l['up'] = 'Gore';
 $l['down'] = 'Dole';
+$l['sort'] = 'Sort';
 $l['new'] = 'Novi';
 $l['view'] = 'pogledaj';
 $l['read_more'] = 'Proèitaj više';

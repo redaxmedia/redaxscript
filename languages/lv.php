@@ -98,6 +98,7 @@ $l['continue'] = 'Turpinājums';
 $l['back'] = 'Atpakaļ';
 $l['up'] = 'Uz augšu';
 $l['down'] = 'Uz leju';
+$l['sort'] = 'Sort';
 $l['new'] = 'Jauns';
 $l['view'] = 'Skatīt';
 $l['read_more'] = 'Lasīt tālāk';
