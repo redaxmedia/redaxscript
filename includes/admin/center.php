@@ -18,7 +18,7 @@ function admin_routing()
 		case ADMIN_PARAMETER && in_array(ADMIN_PARAMETER, array('new', 'view', 'edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')) == '':
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] == '' && $_POST['edit'] == '':
 		case ADMIN_PARAMETER == 'update' && $_POST['update'] == '';
-		case TABLE_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
+		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
 		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
 		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
 		case is_numeric(ID_PARAMETER) && retrieve('id', TABLE_PARAMETER, 'id', ID_PARAMETER) == '':
@@ -63,9 +63,8 @@ function admin_routing()
 	switch (true)
 	{
 		case ADMIN_PARAMETER == 'new' && $new == 0:
-		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $edit == 0 && $delete == 0:
+		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
-		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'settings' && $edit == 0:
 		case ADMIN_PARAMETER == 'edit' && $edit == 0 && USERS_EXCEPTION == 0:
 		case in_array(ADMIN_PARAMETER, array('up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
 		case ADMIN_PARAMETER == 'install' && $install == 0:
