@@ -16,7 +16,7 @@ function comments($article = '', $string = '')
 		$sub_maximum = ceil($num_rows / s('limit'));
 		$sub_active = LAST_SUB_PARAMETER;
 
-		/* check sub parameter */
+		/* if sub parameter */
 
 		if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
 		{

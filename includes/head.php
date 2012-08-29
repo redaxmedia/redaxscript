@@ -191,10 +191,45 @@ function head()
 
 	/* canonical url */
 
-	if (LOGGED_IN != TOKEN)
+	$canonical_url = ROOT . '/' . REWRITE_STRING;
+
+	/* if article in category */
+
+	if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles')
 	{
-		$output .= '<link href="' . ROOT . '/' . REWRITE_STRING . FULL_STRING . '" rel="canonical" />' . PHP_EOL;
+		if (SECOND_TABLE == 'categories')
+		{
+			$category = retrieve('id', SECOND_TABLE, 'alias', SECOND_PARAMETER);
+		}
+		else
+		{
+			$category = retrieve('id', FIRST_TABLE, 'alias', FIRST_PARAMETER);
+		}
+
+		/* total articles of category */
+
+		$articles_total = query_total('articles', 'category', $category);
+		if ($articles_total == 1)
+		{
+			$canonical_string = FIRST_PARAMETER;
+			if (SECOND_TABLE == 'categories')
+			{
+				$canonical_string .= '/' . SECOND_PARAMETER;
+			}
+		}
 	}
+
+	/* extend with canonical string */
+
+	if ($canonical_string)
+	{
+		$canonical_url .= $canonical_string;
+	}
+	else
+	{
+		$canonical_url .= FULL_STRING;
+	}
+	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }

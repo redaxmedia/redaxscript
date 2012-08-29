@@ -10,7 +10,7 @@ function contents()
 
 	if (FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
 	{
-		/* check for homepage settings */
+		/* check for homepage */
 
 		if (s('homepage') > 0)
 		{
@@ -50,7 +50,7 @@ function contents()
 		}
 	}
 
-	/* check if last table */
+	/* if last table */
 
 	else if (LAST_TABLE)
 	{
@@ -83,7 +83,7 @@ function contents()
 			$sub_maximum = ceil($num_rows / s('limit'));
 			$sub_active = LAST_SUB_PARAMETER;
 
-			/* check sub parameter */
+			/* if sub parameter */
 
 			if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
 			{
