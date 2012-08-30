@@ -16,14 +16,19 @@
 		width: 80%;
 	}
 
-	.form_admin .field_button_first, .list_control_admin .item_future_posting, .list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .list_panel_admin .item_system, .table_admin .column_last
+	.form_admin .field_button_first, .list_control_admin .item_future_posting, .list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .list_panel_admin .item_system, .table_admin .column_third
 	{
 		display: none;
 	}
-	
+
 	.form_admin .field_button_second
 	{
 		margin-left: 0;
+	}
+
+	.table_admin .column_first
+	{
+		width: auto;
 	}
 }
 
