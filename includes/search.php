@@ -58,21 +58,22 @@ function search_post()
 
 	else
 	{
-		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
-		$search = explode(' ', $search_terms);
+		$search = array_filter(explode(' ', $search_terms));
 		$last = end(array_keys($search));
 
-		/* query search terms */
+		/* query search */
 
+		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
 		if ($search)
 		{
 			$query .= ' && (';
 			foreach ($search as $key => $value)
 			{
-				$query .= ' title LIKE \'%' . $value . '%\' || description LIKE \'%' . $value . '%\' || keywords LIKE \'%' . $value . '%\' || text LIKE \'%' . $value . '%\'';
+
+				$query .= 'title LIKE \'%' . $value . '%\' || description LIKE \'%' . $value . '%\' || keywords LIKE \'%' . $value . '%\' || text LIKE \'%' . $value . '%\'';
 				if ($last != $key)
 				{
-					$query .= ' ||';
+					$query .= ' || ';
 				}
 			}
 			$query .= ')';
