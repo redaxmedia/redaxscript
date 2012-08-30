@@ -149,6 +149,11 @@ pre
 	color: #585858;
 }
 
+.title_content a:hover
+{
+	text-decoration: underline;
+}
+
 /* title content sub */
 
 .title_content_sub
@@ -241,7 +246,7 @@ pre
 .title_website
 {
 	font: 4em cuprum, 'trebuchet ms', arial;
-	text-shadow: -1px 0 #303030, 0 -1px #303030, 1px 0 #303030, 0 0 1px #303030, 0 2px #eee;
+	text-shadow: -1px 0 #303030, 0 -1px #303030, 1px 0 #303030, 0 1px #eee;
 }
 
 .title_website, .title_website a
