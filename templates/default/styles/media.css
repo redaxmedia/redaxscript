@@ -22,7 +22,7 @@
 .player
 {
 	height: 480px;
-	max-width: 100%;	
+	max-width: 100%;
 	width: 640px;
 }
 
@@ -37,7 +37,7 @@
 	background: #ebebeb;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #c6c6c6;
-	padding: 0.5em;	
+	padding: 0.5em;
 }
 
 .player_default:hover

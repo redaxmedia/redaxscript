@@ -597,7 +597,8 @@ function admin_delete()
 
 	else
 	{
-		$string = 'admin';		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
+		$string = 'admin';
+		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
 		$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
 		if ($edit == 1 || $delete == 1)
 		{
