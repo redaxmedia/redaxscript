@@ -469,6 +469,13 @@ function admin_move($input = '')
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
+/* admin sort */
+
+function admin_sort()
+{
+	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
+}
+
 /* admin status */
 
 function admin_status($input = '')

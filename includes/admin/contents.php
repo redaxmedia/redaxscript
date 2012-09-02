@@ -56,7 +56,7 @@ function admin_contents_list()
 	{
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($single . '_new') . '</span></span></a>';
 	}
-	if ($edit == 1)
+	if ($edit == 1 && $num_rows)
 	{
 		$output .= '<a class="field_button_admin field_button_sort" href="' . REWRITE_STRING . 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN . '"><span><span>' . l('sort') . '</span></span></a>';
 	}
@@ -85,7 +85,7 @@ function admin_contents_list()
 	$output .= '</th>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<th class="s2o6 column_third">' . l($parent) . '</th>';
+		$output .= '<th class="column_third">' . l($parent) . '</th>';
 	}
 	$output .= '<th class="column_move column_last">' . l('rank') . '</th></tr></thead>';
 
@@ -315,7 +315,7 @@ function admin_contents_list()
 
 	if ($error)
 	{
-		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
+		$output .= '<tbody><tr><td colspan="4">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
 	echo $output;

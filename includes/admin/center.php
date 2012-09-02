@@ -15,7 +15,7 @@ function admin_routing()
 
 	switch (true)
 	{
-		case ADMIN_PARAMETER && in_array(ADMIN_PARAMETER, array('new', 'view', 'edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')) == '':
+		case ADMIN_PARAMETER && in_array(ADMIN_PARAMETER, array('new', 'view', 'edit', 'up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')) == '':
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] == '' && $_POST['edit'] == '':
 		case ADMIN_PARAMETER == 'update' && $_POST['update'] == '';
 		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
@@ -66,7 +66,7 @@ function admin_routing()
 		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
 		case ADMIN_PARAMETER == 'edit' && $edit == 0 && USERS_EXCEPTION == 0:
-		case in_array(ADMIN_PARAMETER, array('up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
+		case in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
 		case ADMIN_PARAMETER == 'install' && $install == 0:
 		case ADMIN_PARAMETER == 'uninstall' && $uninstall == 0:
 		case ADMIN_PARAMETER == 'delete' && $delete == 0 && USERS_EXCEPTION == 0:
@@ -82,7 +82,7 @@ function admin_routing()
 
 	/* check token */
 
-	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
+	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
 	{
 		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 		return;
@@ -134,6 +134,10 @@ function admin_routing()
 		case 'up':
 		case 'down':
 			admin_move(ADMIN_PARAMETER);
+			return;
+			break;
+		case 'sort':
+			admin_sort();
 			return;
 			break;
 		case 'publish':
