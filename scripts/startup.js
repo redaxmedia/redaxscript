@@ -34,7 +34,7 @@ var r =
 						accordionBox: 'div.js_box_accordion, ul.js_box_accordion',
 						accordionSet: 'div.js_set_accordion, fieldset.js_set_accordion',
 						accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion'
-						
+
 					},
 					duration: 'normal'
 				}

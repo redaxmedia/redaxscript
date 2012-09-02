@@ -8,7 +8,7 @@
 	clear: both;
 }
 
-.clear_fix:after 
+.clear_fix:after
 {
 	content: '';
 	display: block;

@@ -96,7 +96,7 @@
 				{
 					options.callback.call($(this));
 				}
-				
+
 			});
 		}
 	};
@@ -158,7 +158,7 @@
 			}
 		});
 	};
-	
+
 	/* prevent unload on admin */
 
 	$.fn.preventUnload = function (options)

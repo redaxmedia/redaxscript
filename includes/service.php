@@ -53,7 +53,7 @@ function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subjec
 	/* collect header */
 
 	$header = 'mime-version: 1.0' . PHP_EOL;
-	
+
 	/* if email attachment */
 
 	if (is_array($attachment_array))

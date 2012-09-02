@@ -198,7 +198,7 @@ function admin_modules_form()
 		$string = 'admin/process/modules/' . $id;
 	}
 	$file_install = file_exists('modules/' . $alias . '/install.php');
-	
+
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';

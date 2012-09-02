@@ -37,7 +37,7 @@ function comments($article = '', $string = '')
 	{
 		$error = l('comment_no');
 	}
-	
+
 	/* collect output */
 
 	else if ($result)

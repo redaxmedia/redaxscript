@@ -385,7 +385,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 	/* collect center output */
 
 	$j = 2;
-	if ($sub_active == 2 || $sub_active == $sub_maximum - 1)	
+	if ($sub_active == 2 || $sub_active == $sub_maximum - 1)
 	{
 		$j++;
 	}

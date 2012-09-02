@@ -140,7 +140,7 @@ function admin_dock($table = '', $id = '')
 	$edit = constant(strtoupper($table) . '_EDIT');
 	$delete = constant(strtoupper($table) . '_DELETE');
 
-	/* collect output */	
+	/* collect output */
 
 	if ($edit == 1 || $delete == 1)
 	{

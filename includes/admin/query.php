@@ -446,6 +446,9 @@ function admin_move($input = '')
 	$rank_asc = query_plumb('rank', TABLE_PARAMETER, 'min');
 	$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
 	$rank_old = retrieve('rank', TABLE_PARAMETER, 'id', ID_PARAMETER);
+
+	/* calculate new rank */
+
 	$rank_new = 1;
 	if ($rank_old > $rank_asc && $input == 'up')
 	{
@@ -582,16 +585,16 @@ function admin_delete()
 	{
 		mysql_query($comments_delete_query);
 	}
-	
+
 	/* handle exception */
-	
+
 	if (USERS_EXCEPTION == 1)
 	{
 		logout();
 	}
-	
+
 	/* handle success */
-	
+
 	else
 	{
 		$string = 'admin';		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');

@@ -110,7 +110,7 @@ function breadcrumb()
 			$breadcrumb .= '<li class="divider">' . s('divider') . '</li><li>';
 			if (SECOND_PARAMETER == LAST_PARAMETER)
 			{
-				$breadcrumb .= $second_title;	
+				$breadcrumb .= $second_title;
 			}
 			else
 			{
@@ -125,7 +125,7 @@ function breadcrumb()
 				$breadcrumb .= '<li class="divider">' . s('divider') . '</li><li>';
 				if (THIRD_PARAMETER == LAST_PARAMETER)
 				{
-					$breadcrumb .= $third_title;	
+					$breadcrumb .= $third_title;
 				}
 				else
 				{

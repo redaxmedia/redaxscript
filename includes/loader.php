@@ -372,7 +372,7 @@ function scripts_transport($minify = '')
 
 	$output .= 'if (typeof r === \'object\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
-	
+
 	/* add constants */
 
 	$output .= 'r.constant = {};';

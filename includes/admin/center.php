@@ -94,7 +94,7 @@ function admin_routing()
 	if (FIRST_PARAMETER == 'admin' && ADMIN_PARAMETER == '')
 	{
 		admin_notification();
-		contents();	
+		contents();
 	}
 	switch (ADMIN_PARAMETER)
 	{
