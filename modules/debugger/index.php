@@ -20,7 +20,7 @@ function debugger_extras_end()
 	if (function_exists('memory_get_usage'))
 	{
 		$memory_usage = memory_get_usage();
-		$debug['general']['memory_usage'] = round($memory_usage / 1024) . ' kilobytes';
+		$debug['general']['memory_usage'] = round($memory_usage / 1024) . ' Kb';
 	}
 	$debug['general']['server_software'] = $_SERVER['SERVER_SOFTWARE'];
 	if (function_exists('phpversion'))
@@ -32,6 +32,13 @@ function debugger_extras_end()
 	{
 		$mysql_version = mysql_get_server_info();
 		$debug['general']['mysql_version'] = substr($mysql_version, 0, strpos($mysql_version, '-'));
+	}
+
+	/* debug error */
+
+	if (function_exists('error_get_last'))
+	{
+		$debug['error'] = error_get_last();
 	}
 
 	/* debug session */
@@ -75,7 +82,7 @@ function debugger_extras_end()
 				$output .= '<li>';
 				if ($value_sub)
 				{
-					$output .= $key_sub . ':<span>' . $value_sub . '</span>';
+					$output .= $key_sub . ': <span>' . $value_sub . '</span>';
 				}
 				else
 				{
