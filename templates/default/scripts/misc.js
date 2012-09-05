@@ -31,7 +31,7 @@ $(function ()
 
 	if ((r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 9) || r.constant.MY_MOBILE)
 	{
-		r.plugin.logoEffect.startup = 0;
+		r.plugin.logoEffect.startup = false;
 	}
 
 	/* startup */
