@@ -2,7 +2,7 @@
 
 r.module.editor =
 	{
-		startup: 1,
+		startup: true,
 		selector: 'textarea.js_editor',
 		options:
 		{

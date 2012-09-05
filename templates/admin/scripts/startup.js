@@ -2,7 +2,7 @@
 
 r.plugin.adminDock =
 	{
-		startup: 1,
+		startup: true,
 		selector: 'div.js_dock_admin',
 		options:
 		{
@@ -19,7 +19,7 @@ r.plugin.adminDock =
 
 r.plugin.adminPanel =
 	{
-		startup: 1,
+		startup: true,
 		selector: '#panel_admin',
 		options:
 		{

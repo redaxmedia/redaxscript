@@ -24,7 +24,7 @@ var r =
 		{
 			accordion:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'div.js_accordion h3.js_title_accordion, form.js_accordion legend.js_title_accordion',
 				options:
 				{
@@ -41,7 +41,7 @@ var r =
 			},
 			autoResize:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form textarea.js_auto_resize',
 				options:
 				{
@@ -51,12 +51,12 @@ var r =
 			},
 			dropdown:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'ul.js_dropdown'
 			},
 			checkRequired:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form.js_check_required',
 				options:
 				{
@@ -65,7 +65,7 @@ var r =
 			},
 			checkSearch:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form.js_check_search',
 				options:
 				{
@@ -75,17 +75,17 @@ var r =
 			},
 			clearFocus:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form input.js_clear_focus, form textarea.js_clear_focus'
 			},
 			confirmLink:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'a.js_confirm'
 			},
 			forwardNotification:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'a.js_forward_notification span span',
 				options:
 				{
@@ -94,7 +94,7 @@ var r =
 			},
 			generateAlias:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form input.js_generate_alias_input, form input.js_generate_alias_output',
 				options:
 				{
@@ -103,7 +103,7 @@ var r =
 			},
 			keyShortcut :
 			{
-				startup: 1,
+				startup: true,
 				selector: window,
 				options:
 				{
@@ -118,7 +118,7 @@ var r =
 			},
 			noteRequired:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form.js_note_required',
 				options:
 				{
@@ -128,7 +128,7 @@ var r =
 			},
 			preventUnload:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'ul.js_box_accordion, div.js_box_tab',
 				options:
 				{
@@ -137,7 +137,7 @@ var r =
 			},
 			tab:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'ul.js_list_tab li',
 				options:
 				{
@@ -151,18 +151,34 @@ var r =
 			},
 			unmaskPassword:
 			{
-				startup: 1,
+				startup: true,
 				selector: 'form input.js_unmask_password'
 			}
 		},
 		module: {},
-		baseURL: document.getElementsByTagName('base')[0].href,
-		startup: function ()
+		baseURL: function (loc)
 		{
-			if (document.documentElement.className)
+			var base = document.getElementsByTagName('base'),
+				checkBase = base.length,
+				output;
+
+			if (checkBase)
 			{
-				document.documentElement.className += ' ';
+				output = base[0].href;
 			}
-			document.documentElement.className += 'js';
-		}
+			else
+			{
+				output = loc.protocol + '//' + loc.host + '/';
+			}
+			return output;
+		}(window.location),
+		startup: function (html)
+		{
+			if (html.className)
+			{
+				html.className += ' ';
+			}
+			html.className += 'js';
+			return true;
+		}(document.documentElement)
 	};

@@ -2,7 +2,7 @@
 
 r.plugin.logoEffect =
 	{
-		startup: 1,
+		startup: true,
 		selector: 'h1.js_logo_effect_trigger',
 		options:
 		{
@@ -10,7 +10,3 @@ r.plugin.logoEffect =
 			duration: 500
 		}
 	};
-
-/* startup */
-
-r.startup();
