@@ -96,7 +96,6 @@
 				{
 					options.callback.call($(this));
 				}
-
 			});
 		}
 	};

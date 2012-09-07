@@ -382,6 +382,13 @@ function scripts_transport($minify = '')
 	}
 	$output .= 'r.constant.EOL = \'' . b('constant_eol') . '\';' . PHP_EOL;
 
+	/* baseURL fallback */
+
+	$output .= 'if (r.baseURL === \'\')' . PHP_EOL;
+	$output .= '{' . PHP_EOL;
+	$output .= 'r.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
+	$output .= '}' . PHP_EOL;
+
 	/* add version */
 
 	$output .= 'r.version = \'' . l('redaxscript_version') . '\';' . PHP_EOL;

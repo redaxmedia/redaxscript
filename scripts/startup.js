@@ -156,7 +156,7 @@ var r =
 			}
 		},
 		module: {},
-		baseURL: function (loc)
+		baseURL: function ()
 		{
 			var base = document.getElementsByTagName('base'),
 				checkBase = base.length,
@@ -168,10 +168,10 @@ var r =
 			}
 			else
 			{
-				output = loc.protocol + '//' + loc.host + '/';
+				output = '';
 			}
 			return output;
-		}(window.location),
+		}(),
 		startup: function (html)
 		{
 			if (html.className)
