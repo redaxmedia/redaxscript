@@ -56,6 +56,11 @@
 	width: 50%;
 }
 
+.mobile .table_admin tbody .list_control_admin
+{
+	visibility: visible;
+}
+
 /* rtl direction */
 
 .rtl .description_dock_admin, .rtl .wrapper_panel_menu_admin
