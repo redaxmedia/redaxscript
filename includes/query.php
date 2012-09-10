@@ -6,15 +6,23 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
 {
 	$database_connect = mysql_connect($host, $user, $password);
 	$database_select = mysql_select_db($name);
+
+	/* if established database connection */
+
 	if ($database_connect && $database_select)
 	{
 		$query = 'SET NAMES \'utf8\'';
 		mysql_query($query);
 		$_SESSION[ROOT . '/db_connected'] = 1;
+		$_SESSION[ROOT . '/db_error'] = '';
 	}
+
+	/* else handle error */
+
 	else
 	{
 		$_SESSION[ROOT . '/db_connected'] = 0;
+		$_SESSION[ROOT . '/db_error'] = mysql_error();
 		$_SESSION[ROOT . '/logged_in'] = '';
 	}
 }

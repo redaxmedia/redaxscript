@@ -321,6 +321,10 @@ function install_notification()
 	else if (DB_CONNECTED == 0)
 	{
 		$error = l('database_failed');
+		if (DB_ERROR)
+		{
+			$error .= l('colon') . ' ' . DB_ERROR;
+		}
 	}
 
 	/* validate post */

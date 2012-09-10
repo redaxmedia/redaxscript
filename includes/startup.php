@@ -36,6 +36,7 @@ function startup()
 	/* define session */
 
 	define('DB_CONNECTED', $_SESSION[ROOT . '/db_connected']);
+	define('DB_ERROR', $_SESSION[ROOT . '/db_error']);
 	define('LOGGED_IN', $_SESSION[ROOT . '/logged_in']);
 	define('ATTACK_BLOCKED', $_SESSION[ROOT . '/attack_blocked']);
 
