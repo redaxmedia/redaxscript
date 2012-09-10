@@ -312,7 +312,7 @@ function scripts($mode = '')
 		$output .= '<script type="text/javascript"> /* <![cdata[ */ ' . scripts_transport($loader_minify);
 		if ($loader_deploy == 'inline')
 		{
-			 $output .= loader('scripts', 'inline') . ' /* ]]> */ </script>' . PHP_EOL;
+			$output .= loader('scripts', 'inline') . ' /* ]]> */ </script>' . PHP_EOL;
 		}
 		else
 		{
