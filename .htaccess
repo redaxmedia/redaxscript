@@ -1,5 +1,5 @@
 <ifmodule mod_deflate.c>
-	<filesmatch \.(css|html|js|php|xml)$>
+	<filesmatch \.(css|js|php|phtml|xml)$>
 		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>
@@ -35,7 +35,7 @@
 	<filesmatch \.(css|js|swf)$>
 		header set cache-control max-age=604800
 	</filesmatch>
-	<filesmatch \.(html|xml)$>
+	<filesmatch \.(phtml|xml)$>
 		header set cache-control max-age=600
 	</filesmatch>
 </ifmodule>
