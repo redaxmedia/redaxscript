@@ -439,7 +439,7 @@ function admin_process()
 
 /* admin move */
 
-function admin_move($input = '')
+function admin_move()
 {
 	/* retrieve rank */
 
@@ -450,11 +450,11 @@ function admin_move($input = '')
 	/* calculate new rank */
 
 	$rank_new = 1;
-	if ($rank_old > $rank_asc && $input == 'up')
+	if (ADMIN_PARAMETER == 'up' && $rank_old > $rank_asc)
 	{
 		$rank_new = $rank_old - 1;
 	}
-	if ($rank_old < $rank_desc && $input == 'down')
+	if (ADMIN_PARAMETER == 'down' && $rank_old < $rank_desc)
 	{
 		$rank_new = $rank_old + 1;
 	}
@@ -579,7 +579,7 @@ function admin_status($input = '')
 
 /* admin install */
 
-function admin_install($input = '')
+function admin_install()
 {
 	if (TABLE_PARAMETER == 'modules')
 	{
@@ -588,10 +588,10 @@ function admin_install($input = '')
 		if (file_exists('modules/' . ALIAS_PARAMETER . '/install.php'))
 		{
 			$module = retrieve('id', 'modules', 'alias', ALIAS_PARAMETER);
-			if (($input == 'install' && $module == '') || ($input == 'uninstall' && $module))
+			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
 			{
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
-				call_user_func(ALIAS_PARAMETER . '_' . $input);
+				call_user_func(ALIAS_PARAMETER . '_' . ADMIN_PARAMETER);
 			}
 		}
 	}

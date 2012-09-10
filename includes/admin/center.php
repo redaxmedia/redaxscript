@@ -133,7 +133,7 @@ function admin_routing()
 			break;
 		case 'up':
 		case 'down':
-			admin_move(ADMIN_PARAMETER);
+			admin_move();
 			return;
 			break;
 		case 'sort':
@@ -152,7 +152,7 @@ function admin_routing()
 			break;
 		case 'install':
 		case 'uninstall':
-			admin_install(ADMIN_PARAMETER);
+			admin_install();
 			return;
 			break;
 		case 'delete':
