@@ -473,6 +473,69 @@ function admin_move($input = '')
 
 function admin_sort()
 {
+	$general_select_query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
+
+	/* query general select */
+
+	$result = mysql_query($general_select_query);
+
+	/* build select array */
+
+	if ($result)
+	{
+		while ($r = mysql_fetch_assoc($result))
+		{
+			if ($r)
+			{
+				foreach ($r as $key => $value)
+				{
+					$$key = stripslashes($value);
+				}
+			}
+			if (TABLE_PARAMETER == 'articles')
+			{
+				$parent = $category;
+			}
+			if (TABLE_PARAMETER == 'comments')
+			{
+				$parent = $article;
+			}
+			if ($parent)
+			{
+				$select_array[$parent][$id] = '';
+			}
+			else
+			{
+				$select_array[$id] = '';
+			}
+		}
+	}
+
+	/* build update array */
+
+	$update_array[] = 0;
+	foreach ($select_array as $key => $value)
+	{
+		if (is_array($value))
+		{
+			foreach ($value as $key_sub => $value_sub)
+			{
+				$update_array[] = $key_sub;
+			}
+		}
+		else
+		{
+			$update_array[] = $key;
+		}
+	}
+
+	/* general update query */
+
+	foreach ($update_array as $key => $value)
+	{
+		$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = \'' . $key . '\' WHERE id = \'' . $value . '\' LIMIT 1';
+		mysql_query($general_update_query);
+	}
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
