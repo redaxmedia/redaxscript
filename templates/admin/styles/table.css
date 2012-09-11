@@ -63,7 +63,7 @@
 
 .table_admin tbody .row_group, .table_admin tbody .row_group:hover
 {
-	background: url('templates/admin/images/carbon.png') #eee;
+	background: url('templates/admin/images/carbon.png') #f2f2f2;
 }
 
 /* admin table head and foot */
