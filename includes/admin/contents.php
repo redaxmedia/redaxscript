@@ -26,19 +26,19 @@ function admin_contents_list()
 	switch (TABLE_PARAMETER)
 	{
 		case 'categories':
-			$single = 'category';
-			$parent = 'category_parent';
+			$wording_single = 'category';
+			$wording_parent = 'category_parent';
 			break;
 		case 'articles':
-			$single = 'article';
-			$parent = 'category';
+			$wording_single = 'article';
+			$wording_parent = 'category';
 			break;
 		case 'extras':
-			$single = 'extra';
+			$wording_single = 'extra';
 			break;
 		case 'comments':
-			$single = 'comment';
-			$parent = 'article';
+			$wording_single = 'comment';
+			$wording_parent = 'article';
 			break;
 	}
 
@@ -54,7 +54,7 @@ function admin_contents_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if ($new == 1)
 	{
-		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($single . '_new') . '</span></span></a>';
+		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($wording_single . '_new') . '</span></span></a>';
 	}
 	if ($edit == 1 && $num_rows)
 	{
@@ -85,7 +85,7 @@ function admin_contents_list()
 	$output .= '</th>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<th class="column_third">' . l($parent) . '</th>';
+		$output .= '<th class="column_third">' . l($wording_parent) . '</th>';
 	}
 	$output .= '<th class="column_move column_last">' . l('rank') . '</th></tr></thead>';
 
@@ -103,16 +103,15 @@ function admin_contents_list()
 	$output .= '</td>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<td class="column_third">' . l($parent) . '</td>';
+		$output .= '<td class="column_third">' . l($wording_parent) . '</td>';
 	}
 	$output .= '<td class="column_move column_last">' . l('rank') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l($single . '_no') . l('point');
+		$error = l($wording_single . '_no') . l('point');
 	}
 	else if ($result)
 	{
-		$output .= '<tbody>';
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
@@ -162,6 +161,60 @@ function admin_contents_list()
 				else
 				{
 					$string = '';
+				}
+
+				/* collect tbody output */
+
+				if (TABLE_PARAMETER == 'categories')
+				{
+					if ($before != $parent)
+					{
+						$output .= '<tbody><tr class="row_group"><td colspan="4">';
+						if ($parent)
+						{
+							$output .= retrieve('title', 'categories', 'id', $parent);
+						}
+						else
+						{
+							$output .= l('none');
+						}
+						$output .= '</td></tr>';
+					}
+					$before = $parent;
+				}
+				if (TABLE_PARAMETER == 'articles')
+				{
+					if ($before != $category)
+					{
+						$output .= '<tbody><tr class="row_group"><td colspan="4">';
+						if ($category)
+						{
+							$output .= retrieve('title', 'categories', 'id', $category);
+						}
+						else
+						{
+							$output .= l('uncategorized');
+						}
+						$output .= '</td></tr>';
+					}
+					$before = $category;
+				}
+				if (TABLE_PARAMETER == 'comments')
+				{
+					if ($before != $article)
+					{
+						$output .= '<tbody><tr class="row_group"><td colspan="4">';
+						if ($article)
+						{
+							$output .= retrieve('title', 'articles', 'id', $article);
+						}
+						else
+						{
+							$output .= l('none');
+						}
+						$output .= '</td></tr>';
+					}
+					$before = $article;
 				}
 
 				/* collect table row */
@@ -260,7 +313,7 @@ function admin_contents_list()
 					{
 						if ($article)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $article), 'admin/edit/categories/' . $article);
+							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'articles', 'id', $article), 'admin/edit/categories/' . $article);
 						}
 						else
 						{
@@ -295,13 +348,36 @@ function admin_contents_list()
 					$output .= '</td>';
 				}
 				$output .= '</tr>';
+
+				/* collect tbody output */
+
+				if (TABLE_PARAMETER == 'categories')
+				{
+					if ($before != $parent)
+					{
+						$output .= '</tbody>';
+					}
+				}
+				if (TABLE_PARAMETER == 'articles')
+				{
+					if ($before != $category)
+					{
+						$output .= '</tbody>';
+					}
+				}
+				if (TABLE_PARAMETER == 'comments')
+				{
+					if ($before != $article)
+					{
+						$output .= '</tbody>';
+					}
+				}
 			}
 			else
 			{
 				$counter++;
 			}
 		}
-		$output .= '</tbody>';
 
 		/* handle access */
 
@@ -339,16 +415,16 @@ function admin_contents_form()
 	switch (TABLE_PARAMETER)
 	{
 		case 'categories':
-			$single = 'category';
+			$wording_single = 'category';
 			break;
 		case 'articles':
-			$single = 'article';
+			$wording_single = 'article';
 			break;
 		case 'extras':
-			$single = 'extra';
+			$wording_single = 'extra';
 			break;
 		case 'comments':
-			$single = 'comment';
+			$wording_single = 'comment';
 			break;
 	}
 
@@ -412,7 +488,7 @@ function admin_contents_form()
 		$status = 1;
 		$rank = query_plumb('rank', TABLE_PARAMETER, 'max') + 1;
 		$access = 0;
-		$wording_headline = l($single . '_new');
+		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');
 		$string = 'admin/process/' . TABLE_PARAMETER;
 	}
@@ -424,7 +500,7 @@ function admin_contents_form()
 	/* collect tab output */
 
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($single), FULL_STRING . '#tab-1') . '</li>';
+	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($wording_single), FULL_STRING . '#tab-1') . '</li>';
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_STRING . '#tab-2') . '</li>';
 	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
 	{
@@ -439,7 +515,7 @@ function admin_contents_form()
 
 	/* collect content set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l($single)) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l($wording_single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= '<li>' . form_element('text', 'author', 'js_required field_text_admin field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';

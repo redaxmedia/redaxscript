@@ -34,7 +34,7 @@
 	background: -webkit-linear-gradient(top, #ebebeb, #e2e2e2);
 }
 
-.table_admin tbody tr:last-child
+.table_admin tbody:last-child tr:last-child
 {
 	border-bottom: 0;
 }
@@ -54,6 +54,11 @@
 	border-top: 1px solid #b9b9b9;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.table_admin tfoot + tbody .row_group
+{
+	border-top: 0;
 }
 
 .table_admin tbody .row_group, .table_admin tbody .row_group:hover

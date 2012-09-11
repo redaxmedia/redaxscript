@@ -144,7 +144,7 @@ function query_total($table = '', $field = '', $value = '')
 	if ($table)
 	{
 		$query = 'SELECT id FROM ' . PREFIX . $table;
-		if ($field && $value)
+		if ($field)
 		{
 			$query .= ' WHERE ' . $field . ' = \'' . $value . '\'';
 		}
