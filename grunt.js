@@ -86,8 +86,5 @@ module.exports = function(grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('csslint', 'csslint');
-	grunt.registerTask('htmllint', 'htmllint');
-	grunt.registerTask('smushit', 'smushit');
 	grunt.registerTask('default', 'lint');
 };
