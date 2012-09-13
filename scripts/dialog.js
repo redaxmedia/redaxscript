@@ -104,10 +104,9 @@
 
 	$.fn.confirmLink = function ()
 	{
-		$(this).on('click', function ()
+		$(this).on('click', function (event)
 		{
-			var string = $(this)[0].href,
-				checkDialogPosition, dialog, dialogOverlay;
+			var string = $(this)[0].href;
 
 			if (string)
 			{
@@ -134,26 +133,7 @@
 						}, 0);
 					}
 				});
-
-				/* check dialog position */
-
-				dialog = $('div.js_dialog'),
-				dialogOverlay = $('div.js_dialog_overlay'),
-				checkDialogPosition = dialog.css('position');
-
-				/* prevent link forward */
-
-				if (checkDialogPosition === 'fixed')
-				{
-					return false;
-				}
-
-				/* else remove dialog */
-
-				else
-				{
-					dialog.add(dialogOverlay).remove();
-				}
+				event.preventDefault();
 			}
 		});
 	};
