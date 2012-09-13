@@ -366,7 +366,7 @@
 	};
 })(jQuery);
 
-(function ()
+jQuery(function ($)
 {
 	/* startup */
 
@@ -381,4 +381,4 @@
 		}
 		$(r.module.editor.selector).editor(r.module.editor.options);
 	}
-})();
+});

@@ -172,7 +172,7 @@
 	};
 })(jQuery);
 
-$(function ()
+jQuery(function ($)
 {
 	/* startup */
 

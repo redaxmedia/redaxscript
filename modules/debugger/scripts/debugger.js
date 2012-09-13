@@ -1,4 +1,4 @@
-$(function ()
+jQuery(function ($)
 {
 	/* toggle del tags */
 

@@ -61,7 +61,6 @@ module.exports = function(grunt)
 			globals:
 			{
 				_gat: true,
-				$: true,
 				jQuery: true,
 				l: true,
 				r: true

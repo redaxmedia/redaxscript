@@ -16,7 +16,7 @@
 		$(this).each(function ()
 		{
 			var counter = 0,
-				gallery = $(this),
+				gallery = $('ul.js_gallery'),
 				galleryName = gallery.attr('id');
 
 			gallery.find('a').each(function ()
@@ -167,9 +167,9 @@
 	};
 })(jQuery);
 
-$(function ()
+jQuery(function ($)
 {
 	/* startup */
 
-	$('ul.js_gallery').gallery();
+	$.fn.gallery();
 });
