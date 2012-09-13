@@ -107,7 +107,7 @@
 			options = $.extend({}, r.plugin.tab.options, options || {});
 		}
 
-		var string = location.href.replace(r.baseURL, ''),
+		var string = window.location.href.replace(r.baseURL, ''),
 			tabList = $(options.element.tabList),
 			tabBox = $(options.element.tabBox),
 			tabSet = tabBox.find(options.element.tabSet),

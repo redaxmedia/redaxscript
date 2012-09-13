@@ -75,9 +75,9 @@
 
 		/* close dialog */
 
-		$(dialog).find('a.js_cancel, a.js_ok').add(dialogOverlay).click(function ()
+		dialog.find('a.js_cancel, a.js_ok').add(dialogOverlay).click(function ()
 		{
-			$(dialog).add(dialogOverlay).remove();
+			dialog.add(dialogOverlay).remove();
 		});
 
 		/* callback if ok */
@@ -152,7 +152,7 @@
 
 				else
 				{
-					$(dialog).add(dialogOverlay).remove();
+					dialog.add(dialogOverlay).remove();
 				}
 			}
 		});

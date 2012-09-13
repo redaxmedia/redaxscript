@@ -53,7 +53,7 @@
 			$('body').append('<img class="js_gallery_loading gallery_loading" src="modules/gallery/images/loading.gif" alt="loading" /><div class="js_gallery_box gallery_box"><img src="' + linkString + '" alt="' + linkAlt + '" /></div>');
 			galleryBox = $('div.js_gallery_box').css('opacity', 0);
 			galleryLoading = $('img.js_gallery_loading').css('opacity', 0).delay(500).fadeTo(r.lightbox.loading.duration, r.lightbox.loading.opacity);
-			
+
 			/* build previous and next links */
 
 			if (linkCounter > 1)
@@ -151,16 +151,16 @@
 
 				/* close gallery box */
 
-				$(galleryBox).add(galleryOverlay).click(function ()
+				galleryBox.add(galleryOverlay).click(function ()
 				{
 					galleryLoading = $('img.js_gallery_loading');
 					checkGalleryLoading = galleryLoading.length;
 					if (checkGalleryLoading === 0)
 					{
-						$(galleryBox).add(galleryOverlay).remove();
+						galleryBox.add(galleryOverlay).remove();
 					}
 				});
-				
+
 			});
 			return false;
 		});
