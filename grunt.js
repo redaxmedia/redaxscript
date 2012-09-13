@@ -4,7 +4,9 @@ module.exports = function(grunt)
 
 	grunt.cssRules =
 	{
-		'adjoining-classes': false
+		'adjoining-classes': false,
+		'box-sizing': false,
+		'outline-none': false
 	};
 
 	/* config grunt */
