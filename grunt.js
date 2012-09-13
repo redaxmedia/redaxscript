@@ -1,5 +1,14 @@
 module.exports = function(grunt)
 {
+	/* define css rules */
+
+	grunt.cssRules =
+	{
+		'adjoining-classes': false
+	};
+
+	/* config grunt */
+
 	grunt.initConfig({
 		lint:
 		{
@@ -13,13 +22,27 @@ module.exports = function(grunt)
 			scripts:
 			{
 				files: '<config:lint.all>',
-				tasks: 'lint test'
+				tasks: 'lint'
+			}
+		},
+		csslint:
+		{
+			base:
+			{
+				src: 'styles/*.css',
+				rules: grunt.cssRules
+			},
+			templates:
+			{
+				src: 'templates/*/styles/*.css',
+				rules: grunt.cssRules
 			}
 		},
 		jshint:
 		{
 			options:
 			{
+				browser: true,
 				curly: true,
 				eqeqeq: true,
 				immed: false,
@@ -37,12 +60,34 @@ module.exports = function(grunt)
 			{
 				_gat: true,
 				$: true,
-
 				jQuery: true,
 				l: true,
 				r: true
 			}
+		},
+		htmllint:
+		{
+			all: ['templates/*/*.phtml']
+		},
+		smushit:
+		{
+			path:
+			{
+				src: 'templates/*/images'
+			}
 		}
 	});
-	grunt.registerTask('default', 'lint:all');
+
+	/* load tasks */
+
+	grunt.loadNpmTasks('grunt-css');
+	grunt.loadNpmTasks('grunt-html');
+	grunt.loadNpmTasks('grunt-smushit');
+
+	/* register tasks */
+
+	grunt.registerTask('csslint', 'csslint');
+	grunt.registerTask('htmllint', 'htmllint');
+	grunt.registerTask('smushit', 'smushit');
+	grunt.registerTask('default', 'lint');
 };
