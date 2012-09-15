@@ -5,7 +5,14 @@ module.exports = function(grunt)
 	grunt.cssRules =
 	{
 		'adjoining-classes': false,
+		'box-model': false,
 		'box-sizing': false,
+		'compatible-vendor-prefixes': false,
+		'duplicate-background-images': false,
+		'gradients': false,
+		'fallback-colors': false,
+		'text-indent': false,
+		'unique-headings': false,
 		'outline-none': false,
 		'qualified-headings': false
 	};
@@ -45,22 +52,23 @@ module.exports = function(grunt)
 		{
 			options:
 			{
+				boss: true,
 				browser: true,
 				curly: true,
 				eqeqeq: true,
+				eqnull: true,
+				es5: true,
 				immed: false,
 				latedef: true,
 				newcap: true,
 				noarg: true,
-				sub: true,
-				undef: true,
-				boss: true,
-				eqnull: true,
 				node: true,
-				es5: true
+				sub: true,
+				undef: true
 			},
 			globals:
 			{
+				_gaq: true,
 				_gat: true,
 				jQuery: true,
 				l: true,
