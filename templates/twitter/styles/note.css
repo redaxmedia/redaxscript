@@ -3,11 +3,11 @@
 .note_error.box_note, form .note_error.field_note
 {
 	background: #da4f49;
-	background: linear-gradient(top, #ee5f5b, #bd362f);
 	background: -moz-linear-gradient(top, #ee5f5b, #bd362f);
 	background: -ms-linear-gradient(top, #ee5f5b, #bd362f);
 	background: -o-linear-gradient(top, #ee5f5b, #bd362f);
 	background: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+	background: linear-gradient(top, #ee5f5b, #bd362f);
 	border-color: #bd362f #bd362f #802420;
 }
 
@@ -21,11 +21,11 @@ form .note_error.field_note option
 .note_info.box_note, form .note_info.field_note
 {
 	background: #49afcd;
-	background: linear-gradient(top, #5bc0de, #2f96b4);
 	background: -moz-linear-gradient(top, #5bc0de, #2f96b4);
 	background: -ms-linear-gradient(top, #5bc0de, #2f96b4);
 	background: -o-linear-gradient(top, #5bc0de, #2f96b4);
 	background: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+	background: linear-gradient(top, #5bc0de, #2f96b4);
 	border-color: #2f96b4 #2f96b4 #1f6377;
 }
 
@@ -39,11 +39,11 @@ form .note_info.field_note option
 .note_success.box_note, form .note_success.field_note
 {
 	background: #5bb75b;
-	background: linear-gradient(top, #62c462, #51a351);
 	background: -moz-linear-gradient(top, #62c462, #51a351);
 	background: -ms-linear-gradient(top, #62c462, #51a351);
 	background: -o-linear-gradient(top, #62c462, #51a351);
 	background: -webkit-linear-gradient(top, #62c462, #51a351);
+	background: linear-gradient(top, #62c462, #51a351);
 	border-color: #51a351 #51a351 #387038;
 }
 
@@ -57,11 +57,11 @@ form .note_success.field_note option
 .note_warning.box_note, form .note_warning.field_note
 {
 	background: #faa732;
-	background: linear-gradient(top, #fbb450, #f89406);
 	background: -moz-linear-gradient(top, #fbb450, #f89406);
 	background: -ms-linear-gradient(top, #fbb450, #f89406);
 	background: -o-linear-gradient(top, #fbb450, #f89406);
 	background: -webkit-linear-gradient(top, #fbb450, #f89406);
+	background: linear-gradient(top, #fbb450, #f89406);
 	border-color: #f89406 #f89406 #ad6704;
 }
 

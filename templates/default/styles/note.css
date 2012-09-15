@@ -15,11 +15,11 @@
 .note_error.box_note, form .note_error.field_note
 {
 	background: #ffa3a3;
-	background: linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -moz-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -ms-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -o-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -webkit-linear-gradient(top, #ffc9c9, #ffa3a3);
+	background: linear-gradient(top, #ffc9c9, #ffa3a3);
 	border-color: #bf0000;
 	color: #bf0000;
 }
@@ -54,11 +54,11 @@ form .note_error.field_note option
 .note_info.box_note, form .note_info.field_note
 {
 	background: #8cd5ff;
-	background: linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -moz-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -ms-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -o-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -webkit-linear-gradient(top, #bfe8ff, #8cd5ff);
+	background: linear-gradient(top, #bfe8ff, #8cd5ff);
 	border-color: #005da2;
 	color: #005da2;
 }
@@ -93,11 +93,11 @@ form .note_info.field_note option
 .note_success.box_note, form .note_success.field_note
 {
 	background: #6eff6e;
-	background: linear-gradient(top, #aeffae, #6eff6e);
 	background: -moz-linear-gradient(top, #aeffae, #6eff6e);
 	background: -ms-linear-gradient(top, #aeffae, #6eff6e);
 	background: -o-linear-gradient(top, #aeffae, #6eff6e);
 	background: -webkit-linear-gradient(top, #aeffae, #6eff6e);
+	background: linear-gradient(top, #aeffae, #6eff6e);
 	border-color: #008f0a;
 	color: #008f0a;
 }
@@ -132,11 +132,11 @@ form .note_success.field_note option
 .note_warning.box_note, form .note_warning.field_note
 {
 	background: #f5f562;
-	background: linear-gradient(top, #f5f5a0, #f5f562);
 	background: -moz-linear-gradient(top, #f5f5a0, #f5f562);
 	background: -ms-linear-gradient(top, #f5f5a0, #f5f562);
 	background: -o-linear-gradient(top, #f5f5a0, #f5f562);
 	background: -webkit-linear-gradient(top, #f5f5a0, #f5f562);
+	background: linear-gradient(top, #f5f5a0, #f5f562);
 	border-color: #9a7800;
 	color: #9a7800;
 }

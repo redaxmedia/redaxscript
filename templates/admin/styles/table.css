@@ -16,22 +16,22 @@
 .table_admin tbody tr
 {
 	background: #e2e2e2;
-	background: linear-gradient(top, #e2e2e2, #dadada);
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
+	background: linear-gradient(top, #e2e2e2, #dadada);
 	border-bottom: 1px solid #b9b9b9;
 }
 
 .table_admin tbody tr:hover
 {
 	background: #e2e2e2;
-	background: linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -moz-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -ms-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -o-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -webkit-linear-gradient(top, #ebebeb, #e2e2e2);
+	background: linear-gradient(top, #ebebeb, #e2e2e2);
 }
 
 .table_admin tbody:last-child tr:last-child

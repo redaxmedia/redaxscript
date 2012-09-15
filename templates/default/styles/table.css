@@ -39,11 +39,11 @@
 .table_default tfoot tr, .table_default thead tr
 {
 	background: #c1c1c1;
-	background: linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -moz-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -ms-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -o-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -webkit-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
+	background: linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	color: #fff;
 	font: bold 1em arial;
 	text-shadow: 0 1px #777;

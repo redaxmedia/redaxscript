@@ -13,7 +13,7 @@
 	white-space: nowrap;
 }
 
-.list_dropdown li:hover > ul, .list_dropdown li.item_touch > ul
+.list_dropdown li:hover > ul, .list_dropdown .item_touch > ul
 {
 	display: block;
 }

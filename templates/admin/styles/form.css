@@ -24,11 +24,11 @@ textarea
 	-webkit-box-shadow: inset 0 0 0 1px #585858;
 	-webkit-border-radius: 0.25em;
 	background: #3b3b3b;
-	background: linear-gradient(top, #3b3b3b, #303030);
 	background: -moz-linear-gradient(top, #3b3b3b, #303030);
 	background: -ms-linear-gradient(top, #3b3b3b, #303030);
 	background: -o-linear-gradient(top, #3b3b3b, #303030);
 	background: -webkit-linear-gradient(top, #3b3b3b, #303030);
+	background: linear-gradient(top, #3b3b3b, #303030);
 	border: 1px solid #151515;
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858;
@@ -39,11 +39,11 @@ textarea
 .field_button_admin:hover, .field_button_large_admin:hover
 {
 	background: #474747;
-	background: linear-gradient(top, #474747, #3b3b3b);
 	background: -moz-linear-gradient(top, #474747, #3b3b3b);
 	background: -ms-linear-gradient(top, #474747, #3b3b3b);
 	background: -o-linear-gradient(top, #474747, #3b3b3b);
 	background: -webkit-linear-gradient(top, #474747, #3b3b3b);
+	background: linear-gradient(top, #474747, #3b3b3b);
 }
 
 .field_button_admin:active, .field_button_admin:focus, .field_button_large_admin:active, .field_button_large_admin:focus
@@ -51,11 +51,11 @@ textarea
 	-moz-box-shadow: inset 0 0 0 1px #47c8db;
 	-webkit-box-shadow: inset 0 0 0 1px #47c8db;
 	background: #4cb4ff;
-	background: linear-gradient(top, #4cb4ff, #0090db);
 	background: -moz-linear-gradient(top, #4cb4ff, #0090db);
 	background: -ms-linear-gradient(top, #4cb4ff, #0090db);
 	background: -o-linear-gradient(top, #4cb4ff, #0090db);
 	background: -webkit-linear-gradient(top, #4cb4ff, #0090db);
+	background: linear-gradient(top, #4cb4ff, #0090db);
 	border-color: #005da2;
 	box-shadow: inset 0 0 0 1px #47c8db;
 }
@@ -146,11 +146,11 @@ textarea
 	-webkit-box-sizing: border-box;
 	-webkit-transition: background 0.5s ease;
 	background: #f1f1f1;
-	background: linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -moz-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -ms-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -o-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -webkit-linear-gradient(top, #e2e2e2, #f1f1f1);
+	background: linear-gradient(top, #e2e2e2, #f1f1f1);
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
 	box-shadow: inset 0 1px #fcfcfc;
@@ -176,11 +176,11 @@ textarea
 	-moz-box-shadow: 0 0 3px #fff;
 	-webkit-box-shadow: 0 0 3px #fff;
 	background: #e2e2e2;
-	background: linear-gradient(top, #f1f1f1, #e2e2e2);
 	background: -moz-linear-gradient(top, #f1f1f1, #e2e2e2);
 	background: -ms-linear-gradient(top, #f1f1f1, #e2e2e2);
 	background: -o-linear-gradient(top, #f1f1f1, #e2e2e2);
 	background: -webkit-linear-gradient(top, #f1f1f1, #e2e2e2);
+	background: linear-gradient(top, #f1f1f1, #e2e2e2);
 	border-color: #ababab;
 	box-shadow: 0 0 3px #fff;
 }
@@ -231,11 +231,11 @@ textarea
 	-moz-box-shadow: inset 0 1px #efefef;
 	-webkit-box-shadow: inset 0 1px #efefef;
 	background: #d4d4d4;
-	background: linear-gradient(top, #d4d4d4, #e2e2e2);
 	background: -moz-linear-gradient(top, #d4d4d4, #e2e2e2);
 	background: -ms-linear-gradient(top, #d4d4d4, #e2e2e2);
 	background: -o-linear-gradient(top, #d4d4d4, #e2e2e2);
 	background: -webkit-linear-gradient(top, #d4d4d4, #e2e2e2);
+	background: linear-gradient(top, #d4d4d4, #e2e2e2);
 	border-color: #d5d5d5;
 	box-shadow: inset 0 1px #efefef;
 	color: #a4a4a4;

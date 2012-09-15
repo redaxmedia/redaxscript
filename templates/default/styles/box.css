@@ -3,11 +3,11 @@
 .box_accordion_default, .box_dialog_default, .sidebar .box_extra
 {
 	background: #e2e2e2;
-	background: linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
+	background: linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	border: 1px solid #ebebeb;
 	border-top: 0;
 	padding: 1em 1.5em;
@@ -22,11 +22,11 @@
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
 	background: #e5e5e5;
-	background: linear-gradient(top, #e5e5e5, #d5d5d5);
 	background: -moz-linear-gradient(top, #e5e5e5, #d5d5d5);
 	background: -ms-linear-gradient(top, #e5e5e5, #d5d5d5);
 	background: -o-linear-gradient(top, #e5e5e5, #d5d5d5);
 	background: -webkit-linear-gradient(top, #e5e5e5, #d5d5d5);
+	background: linear-gradient(top, #e5e5e5, #d5d5d5);
 	border: 1px solid #f1f1f1;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #c6c6c6;
@@ -104,11 +104,11 @@
 	-webkit-border-radius: 0.5em;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
 	background: #e2e2e2;
-	background: linear-gradient(top, #e2e2e2, #dadada);
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
+	background: linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #f1f1f1;
 	border-radius: 0.5em;
 	box-shadow: 0 0 3px #c6c6c6;
@@ -157,11 +157,11 @@
 	-webkit-border-radius: 0 0 0.25em 0.25em;
 	-webkit-box-shadow: inset -1px 0 #e1e1e1, inset 0 -1px #e1e1e1, inset 1px 0 #e1e1e1;
 	background: url('templates/default/images/noise.png') #aaa;
-	background: url('templates/default/images/noise.png'), linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -ms-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -o-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -webkit-linear-gradient(top, #8e8e8e, #ccc);
+	background: url('templates/default/images/noise.png'), linear-gradient(top, #8e8e8e, #ccc);
 	border: 1px solid #9e9e9e;
 	border-radius: 0 0 0.25em 0.25em;
 	border-top: 0;

@@ -22,11 +22,11 @@ body
 	-moz-box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.25);
 	-webkit-box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.25);
 	background: #2c2c2c;
-	background: linear-gradient(top, #333, #222);
 	background: -moz-linear-gradient(top, #333, #222);
 	background: -ms-linear-gradient(top, #333, #222);
 	background: -o-linear-gradient(top, #333, #222);
 	background: -webkit-linear-gradient(top, #333, #222);
+	background: linear-gradient(top, #333, #222);
 	box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.25);
 	margin-bottom: 2em;
 }
