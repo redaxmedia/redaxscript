@@ -11,70 +11,60 @@
 			options = $.extend({}, r.plugin.checkRequired.options, options || {});
 		}
 
-		/* handle each form */
+		/* validate required fields */
 
-		$(this).each(function ()
+		$(this).on('submit change input', function (event)
 		{
 			var form = $(this),
-				noteErrorClasses = 'js_note_error note_error';
+				fieldRequired = form.find(options.required);
 
-			/* remove required attribute */
-
-			$(options.required).each(function ()
+			fieldRequired.each(function ()
 			{
-				$(this).removeAttr('required');
-			});
+				var field = $(this),
+					fieldTag = field.context.tagName,
+					noteErrorClasses = 'js_note_error note_error',
+					fieldValue;
 
-			/* validate required fields on submit */
+				/* check for tag */
 
-			form.on('submit change input', function (event)
-			{
-				form.find(options.required).each(function ()
+				if (fieldTag === 'DIV')
 				{
-					var fieldRequired = $(this),
-						fieldRequiredTag = fieldRequired.context.tagName,
-						fieldRequiredValue;
-
-					/* check for tag */
-
-					if (fieldRequiredTag === 'DIV')
-					{
-						fieldRequiredValue = $.trim(fieldRequired.text());
-						noteErrorClasses += ' box_note';
-					}
-					else
-					{
-						fieldRequiredValue = $.trim(fieldRequired[0].value);
-					}
-
-					/* check for value */
-
-					if (fieldRequiredValue)
-					{
-						fieldRequired.removeClass(noteErrorClasses);
-					}
-					else
-					{
-						fieldRequired.addClass(noteErrorClasses);
-					}
-				});
-
-				/* trigger error and prevent submit */
-
-				if (form.find(options.required).hasClass('js_note_error'))
-				{
-					form.trigger('error');
-					event.preventDefault();
+					fieldValue = $.trim(field.text());
+					noteErrorClasses += ' box_note';
 				}
-
-				/* else trigger success */
-
 				else
 				{
-					form.trigger('success');
+					fieldValue = $.trim(field[0].value);
+					noteErrorClasses += ' field_note';
+				}
+
+				/* check for value */
+
+				if (fieldValue)
+				{
+					field.removeClass(noteErrorClasses);
+				}
+				else
+				{
+					field.addClass(noteErrorClasses);
 				}
 			});
-		});
+
+			/* trigger error and prevent submit */
+
+			if (fieldRequired.hasClass('js_note_error'))
+			{
+				form.trigger('error');
+				event.preventDefault();
+			}
+
+			/* else trigger success */
+
+			else
+			{
+				form.trigger('success');
+			}
+		}).attr('novalidate', 'novalidate');
 	};
 
 	/* check search */
