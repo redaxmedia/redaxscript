@@ -71,13 +71,13 @@
 
 /* admin panel logout */
 
-.link_panel_admin.link_logout 
+.link_panel_admin.link_logout
 {
 	padding-left: 2.5em;
 	position: relative;
 }
 
-.link_panel_admin.link_logout:before 
+.link_panel_admin.link_logout:before
 {
 	background: url('templates/admin/images/sprite.png') -158px 0;
 	content: '';
@@ -175,7 +175,7 @@
 	padding: 0.25em 0.75em;
 }
 
-.list_panel_admin li:hover, .list_panel_admin li.item_touch
+.list_panel_admin li:hover, .list_panel_admin > .item_touch
 {
 	background-color: #3b3b3b;
 }

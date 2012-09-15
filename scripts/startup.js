@@ -52,7 +52,12 @@ var r =
 			dropdown:
 			{
 				startup: true,
-				selector: 'ul.js_dropdown'
+				selector: 'ul.js_dropdown',
+				options:
+				{
+					related: 'li',
+					duration: 1000
+				}
 			},
 			checkRequired:
 			{

@@ -71,26 +71,36 @@
 
 	/* dropdown */
 
-	$.fn.dropdown = function ()
+	$.fn.dropdown = function (options)
 	{
-		$(this).each(function ()
+		/* extend options */
+
+		if (r.plugin.accordion.options !== options)
 		{
-			var dropdown = $(this),
-				dropdownChildren = dropdown.children();
+			options = $.extend({}, r.plugin.dropdown.options, options || {});
+		}
 
-			/* handle touch events */
+		var dropdown = $(this),
+			dropdownRelated = dropdown.find(options.related);
 
-			dropdownChildren.on('touchstart touchend', function (event)
+		/* handle touch events */
+
+		dropdown.each(function ()
+		{
+			dropdownRelated.on('touchstart touchend', function (event)
 			{
-				var dropdownRelated = $(this).children();
+				var dropdownItem = $(this);
 
 				if (event.type === 'touchstart')
 				{
-					dropdownRelated.addClass('item_touch');
+					dropdownItem.addClass('item_touch');
 				}
 				else if (event.type === 'touchend')
 				{
-					dropdownRelated.removeClass('item_touch');
+					setTimeout(function ()
+					{
+						dropdownItem.removeClass('item_touch');
+					}, options.duration);
 				}
 			});
 		});

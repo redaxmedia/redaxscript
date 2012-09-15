@@ -6,7 +6,8 @@ module.exports = function(grunt)
 	{
 		'adjoining-classes': false,
 		'box-sizing': false,
-		'outline-none': false
+		'outline-none': false,
+		'qualified-headings': false
 	};
 
 	/* config grunt */

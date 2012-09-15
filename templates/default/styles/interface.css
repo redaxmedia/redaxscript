@@ -149,7 +149,7 @@
 	padding-left: 1em;
 }
 
-.list_header > li:hover, .list_header > li.item_touch
+.list_header > li:hover, .list_header > .item_touch
 {
 	-moz-box-shadow: 0 0 4px #999;
 	-webkit-box-shadow: 0 0 4px #999;
