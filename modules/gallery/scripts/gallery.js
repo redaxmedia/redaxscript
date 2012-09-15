@@ -28,7 +28,7 @@
 
 		/* open gallery box */
 
-		$(this).find('a').click(function ()
+		$(this).find('a').click(function (event)
 		{
 			/* define variables */
 
@@ -123,7 +123,7 @@
 
 				/* handle next and previous links */
 
-				galleryBox.find('div.js_gallery_next, div.js_gallery_previous').click(function ()
+				galleryBox.find('div.js_gallery_next, div.js_gallery_previous').click(function (event)
 				{
 					var link = $(this),
 						image = galleryBox.find('img'),
@@ -146,7 +146,7 @@
 						galleryBox.remove();
 						$('a.js_' + imageGallery + '_' + imageCounter).click();
 					}
-					return false;
+					event.preventDefault();
 				});
 
 				/* close gallery box */
@@ -162,7 +162,7 @@
 				});
 
 			});
-			return false;
+			event.preventDefault();
 		});
 	};
 })(jQuery);

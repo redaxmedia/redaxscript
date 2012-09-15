@@ -17,11 +17,11 @@
 
 		/* browse drive on click */
 
-		fieldBrowse.click(function ()
+		fieldBrowse.click(function (event)
 		{
 			fieldFile.click();
 			fieldUpload.hide();
-			return false;
+			event.preventDefault();
 		});
 
 		/* show upload on change */

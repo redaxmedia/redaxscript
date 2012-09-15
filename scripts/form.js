@@ -11,7 +11,7 @@
 			options = $.extend({}, r.plugin.checkRequired.options, options || {});
 		}
 
-		/* setup forms */
+		/* handle each form */
 
 		$(this).each(function ()
 		{
@@ -27,7 +27,7 @@
 
 			/* validate required fields on submit */
 
-			form.submit(function ()
+			form.on('submit change input', function (event)
 			{
 				form.find(options.required).each(function ()
 				{
@@ -49,52 +49,27 @@
 
 					/* check for value */
 
-					if (fieldRequiredValue === '')
+					if (fieldRequiredValue)
+					{
+						fieldRequired.removeClass(noteErrorClasses);
+					}
+					else
 					{
 						fieldRequired.addClass(noteErrorClasses);
 					}
 				});
 
-				/* trigger error event */
+				/* trigger error and prevent submit */
 
 				if (form.find(options.required).hasClass('js_note_error'))
 				{
 					form.trigger('error');
-					return false;
+					event.preventDefault();
 				}
-			});
 
-			/* validate required fields on change, input and keyup */
+				/* else trigger success */
 
-			form.find(options.required).on('change input keyup', function ()
-			{
-				var fieldRequired = $(this),
-					fieldRequiredTag = fieldRequired.context.tagName,
-					fieldRequiredValue;
-
-				/* check for tag */
-
-				if (fieldRequiredTag === 'DIV')
-				{
-					fieldRequiredValue = $.trim(fieldRequired.text());
-					noteErrorClasses += ' box_note';
-
-				}
 				else
-				{
-					fieldRequiredValue = $.trim(fieldRequired[0].value);
-				}
-
-				/* check for value */
-
-				if (fieldRequiredValue)
-				{
-					fieldRequired.removeClass(noteErrorClasses);
-				}
-
-				/* trigger success event */
-
-				if (form.find(options.required).hasClass('js_note_error') === 0)
 				{
 					form.trigger('success');
 				}
@@ -115,7 +90,7 @@
 
 		/* listen for submit */
 
-		$(this).submit(function ()
+		$(this).submit(function (event)
 		{
 			var field = $(this).find(options.required)[0],
 				fieldValue = $.trim(field.value),
@@ -131,7 +106,7 @@
 				{
 					field.value = fieldDefaultValue;
 				}, options.duration);
-				return false;
+				event.preventDefault();
 			}
 		});
 	};

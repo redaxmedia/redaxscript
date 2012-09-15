@@ -57,7 +57,7 @@
 		{
 			if (event.which === 9)
 			{
-				return false;
+				event.preventDefault();
 			}
 		});
 
@@ -80,13 +80,15 @@
 			options = $.extend({}, r.plugin.dropdown.options, options || {});
 		}
 
-		var dropdown = $(this),
-			dropdownRelated = dropdown.find(options.related);
+		/* handle each dropdown */
 
-		/* handle touch events */
-
-		dropdown.each(function ()
+		$(this).each(function ()
 		{
+			var dropdown = $(this),
+				dropdownRelated = dropdown.find(options.related);
+
+			/* handle touch events */
+
 			dropdownRelated.on('touchstart touchend', function (event)
 			{
 				var dropdownItem = $(this);
@@ -133,7 +135,7 @@
 
 		/* click on tab */
 
-		$(this).click(function ()
+		$(this).click(function (event)
 		{
 			var tabItem = $(this),
 				tabList = tabItem.closest(options.element.tabList),
@@ -154,7 +156,7 @@
 				tabItem.addClass('js_item_active item_active');
 				tabSetRelated.addClass('js_set_active set_active').show();
 			}
-			return false;
+			event.preventDefault();
 		});
 
 		/* click tab depending on location href */
@@ -167,7 +169,7 @@
 		{
 			if (event.which === 9)
 			{
-				return false;
+				event.preventDefault();
 			}
 		});
 
