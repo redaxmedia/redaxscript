@@ -11,25 +11,25 @@
 			options = $.extend({}, r.module.editor.options, options || {});
 		}
 
-		window.editor = this;
-		this.textarea = $(this);
+		var editor = this;
+		editor.textarea = $(this);
 
 		/* prematurely terminate editor */
 
-		if (this.textarea.length < 1)
+		if (editor.textarea.length < 1)
 		{
 			return false;
 		}
 
 		/* build editor elements */
 
-		this.textarea.hide();
-		this.editor = $('<div class="js_editor editor"></div>').insertBefore(this.textarea);
-		this.toolbar = $('<div class="js_toolbar editor_toolbar" unselectable="on"></div>').appendTo(this.editor);
+		editor.textarea.hide();
+		editor.container = $('<div class="js_editor editor"></div>').insertBefore(editor.textarea);
+		editor.toolbar = $('<div class="js_toolbar editor_toolbar" unselectable="on"></div>').appendTo(editor.container);
 
 		/* create toolbar */
 
-		this.createToolbar = function ()
+		editor.createToolbar = function ()
 		{
 			var name, data, control, i;
 
@@ -75,7 +75,7 @@
 
 		/* setup control events */
 
-		this.toolbar.find('div.js_editor_control').mousedown(function ()
+		editor.toolbar.find('div.js_editor_control').mousedown(function ()
 		{
 			var data = $(this).data('data');
 
@@ -87,9 +87,9 @@
 
 		/* general action call */
 
-		this.action = function (command)
+		editor.action = function (command)
 		{
-			if (this.checkSelection())
+			if (editor.checkSelection())
 			{
 				try
 				{
@@ -99,7 +99,7 @@
 
 					if (r.constant.MY_BROWSER === 'firefox')
 					{
-						this.preview.removeAttr('style');
+						editor.preview.removeAttr('style');
 					}
 				}
 
@@ -118,9 +118,11 @@
 
 		/* general insert */
 
-		this.insert = function (command, message, value)
+		editor.insert = function (command, message, value)
 		{
-			if (command === 'createLink' && this.checkSelection() === '')
+			/* prematurely terminate create link */
+
+			if (command === 'createLink' && editor.checkSelection() === '')
 			{
 				return false;
 			}
@@ -150,9 +152,9 @@
 
 		/* insert html */
 
-		this.insertHTML = function (text)
+		editor.insertHTML = function (text)
 		{
-			this.preview.focus();
+			editor.preview.focus();
 			if (r.constant.MY_BROWSER === 'msie')
 			{
 				document.selection.createRange().pasteHTML(text);
@@ -165,34 +167,34 @@
 
 		/* insert code quote */
 
-		this.insertCode = function ()
+		editor.insertCode = function ()
 		{
-			if (this.checkSelection())
+			if (editor.checkSelection())
 			{
-				this.insertHTML('&lt;code&gt;' + this.select() + '&lt;/code&gt;');
+				editor.insertHTML('&lt;code&gt;' + editor.select() + '&lt;/code&gt;');
 			}
 		};
 
 		/* insert document break */
 
-		this.insertBreak = function ()
+		editor.insertBreak = function ()
 		{
-			this.insertHTML('&lt;break&gt;');
+			editor.insertHTML('&lt;break&gt;');
 		};
 
 		/* alternate format */
 
-		this.format = function (tag)
+		editor.format = function (tag)
 		{
-			if (tag && this.checkSelection())
+			if (tag && editor.checkSelection())
 			{
-				this.insertHTML('<' + tag + '>' + this.select() + '</' + tag + '>');
+				editor.insertHTML('<' + tag + '>' + editor.select() + '</' + tag + '>');
 			}
 		};
 
 		/* get selection */
 
-		this.select = function ()
+		editor.select = function ()
 		{
 			var output = '';
 
@@ -209,9 +211,9 @@
 
 		/* check for selected text */
 
-		this.checkSelection = function ()
+		editor.checkSelection = function ()
 		{
-			if (this.select())
+			if (editor.select())
 			{
 				return true;
 			}
@@ -230,29 +232,29 @@
 
 		/* toggle between source code and wysiwyg */
 
-		this.toggle = function ()
+		editor.toggle = function ()
 		{
-			if (this.mode)
+			if (editor.mode)
 			{
-				this.mode = 0;
-				this.preview.html(this.convertToEntity()).focus();
+				editor.mode = 0;
+				editor.preview.html(editor.convertToEntity()).focus();
 				editor.toggler.attr('title', l.editor_source_code);
 			}
 			else
 			{
-				this.mode = 1;
-				this.textarea.val(this.convertToHTML()).focus();
+				editor.mode = 1;
+				editor.textarea.val(editor.convertToHTML()).focus();
 				editor.toggler.attr('title', l.editor_wysiwyg);
 			}
 			editor.toggler.toggleClass('editor_control_source_code editor_control_wysiwyg').nextAll('div.editor_control, div.editor_divider').toggle();
-			this.textarea.add(this.preview).toggle();
+			editor.textarea.add(editor.preview).toggle();
 		};
 
 		/* convert to html */
 
-		this.convertToHTML = function ()
+		editor.convertToHTML = function ()
 		{
-			var output = this.preview.html();
+			var output = editor.preview.html();
 
 			/* pseudo tags */
 
@@ -290,9 +292,9 @@
 
 		/* convert to entity */
 
-		this.convertToEntity = function ()
+		editor.convertToEntity = function ()
 		{
-			var output = this.textarea.val();
+			var output = editor.textarea.val();
 
 			output = output.replace(/->/gi, '-&gt;');
 			output = output.replace(/<(break|code|function)>/gi, '&lt;$1&gt;');
@@ -302,18 +304,18 @@
 
 		/* post html to textarea */
 
-		this.post = function ()
+		editor.post = function ()
 		{
-			this.textarea.val(this.convertToHTML()).change();
+			editor.textarea.val(editor.convertToHTML()).change();
 		};
 
 		/* append preview */
 
-		this.preview = $('<div class="js_required js_editor_preview editor_preview" contenteditable="true">' + this.convertToEntity() + '</div>').appendTo(this.editor);
+		editor.preview = $('<div class="js_required js_editor_preview editor_preview" contenteditable="true">' + editor.convertToEntity() + '</div>').appendTo(editor.container);
 
 		/* insert break on enter */
 
-		this.preview.on('keydown', function (event)
+		editor.preview.on('keydown', function (event)
 		{
 			if (event.which === 13)
 			{
@@ -338,7 +340,7 @@
 
 		/* post on keyup */
 
-		this.preview.on('keyup', function ()
+		editor.preview.on('keyup', function ()
 		{
 			editor.post();
 		});
