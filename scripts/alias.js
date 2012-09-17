@@ -13,7 +13,7 @@
 
 		/* listen for input */
 
-		$(this).on('change input keyup', function ()
+		$(this).on('change input', function ()
 		{
 			var field = $(this),
 				form = field.closest('form'),
@@ -28,7 +28,7 @@
 				aliasValue = $.fn.cleanAlias(fiedValue);
 				if (aliasValue)
 				{
-					related.val(aliasValue).removeClass('js_note_error note_error');
+					related.val(aliasValue).trigger('check')
 				}
 			}
 

@@ -13,10 +13,20 @@
 
 		/* validate required fields */
 
-		$(this).on('submit change input', function (event)
+		$(this).on('submit change input check', function (event)
 		{
 			var form = $(this),
-				fieldRequired = form.find(options.required);
+				fieldRequired = form.find(options.required),
+				fieldRequiredAll = fieldRequired;
+
+			/* check active elements only */
+
+			if (event.type === 'change' ||  event.type === 'input')
+			{
+				 fieldRequired = fieldRequired.filter(':active');
+			}
+
+			/* check required fields */
 
 			fieldRequired.each(function ()
 			{
@@ -42,17 +52,17 @@
 
 				if (fieldValue)
 				{
-					field.removeClass(noteErrorClasses);
+					field.removeClass(noteErrorClasses).trigger('valid');
 				}
 				else
 				{
-					field.addClass(noteErrorClasses);
+					field.addClass(noteErrorClasses).trigger('invalid');
 				}
 			});
 
 			/* trigger error and prevent submit */
 
-			if (fieldRequired.hasClass('js_note_error'))
+			if (fieldRequiredAll.hasClass('js_note_error'))
 			{
 				form.trigger('error');
 				event.preventDefault();

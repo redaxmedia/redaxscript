@@ -306,7 +306,12 @@
 
 		editor.post = function ()
 		{
-			editor.textarea.val(editor.convertToHTML()).change();
+			var html = editor.convertToHTML();
+
+			if (html)
+			{
+				editor.textarea.val(html).trigger('check');
+			}
 		};
 
 		/* append preview */
