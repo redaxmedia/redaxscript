@@ -34,9 +34,25 @@ function truncate($input = '', $length = '', $end = '')
 
 function minify($type = '', $input = '')
 {
-	$output = preg_replace('/\/\*\s+.*?\s+\*\//', '', $input);
-	$output = preg_replace('/\/\/\s+.*?\n/', '', $output);
-	$output = preg_replace('/\\s+/', ' ', $output);
+	/* replace comments */
+
+	$output = preg_replace('/\/\*\.*.*?\.*\*\//', '', $input);
+
+	/* replace newlines */
+
+	if ($type == 'styles')
+	{
+		$output = preg_replace('/\s+/', ' ', $output);
+	}
+	else if ($type == 'scripts')
+	{
+		$output = preg_replace('/\t+/', '', $output);
+		$output = preg_replace('/\r+/', PHP_EOL, $output);
+		$output = preg_replace('/\n+/', PHP_EOL, $output);
+	}
+
+	/* general minify */
+
 	$output = str_replace(array(
 		' {',
 		'{ '
