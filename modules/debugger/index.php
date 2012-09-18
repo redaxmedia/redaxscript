@@ -6,6 +6,7 @@ function debugger_loader_start()
 {
 	global $loader_modules_styles, $loader_modules_scripts;
 	$loader_modules_styles[] = 'modules/debugger/styles/debugger.css';
+	$loader_modules_scripts[] = 'modules/debugger/scripts/startup.js';
 	$loader_modules_scripts[] = 'modules/debugger/scripts/debugger.js';
 }
 

@@ -1,9 +1,33 @@
+/* debugger */
+
+(function ($)
+{
+	/* editor */
+
+	$.fn.debugger = function (options)
+	{
+		/* extend options */
+
+		if (r.module.debugger.options !== options)
+		{
+			options = $.extend({}, r.module.debugger.options, options || {});
+		}
+
+		/* toggle related */
+
+		$(this).on('click', function ()
+		{
+			$(this).find(options.related).toggle();
+		});
+	};
+})(jQuery);
+
 jQuery(function ($)
 {
-	/* toggle del tags */
+	/* startup */
 
-	$('div.js_box_debugger').on('click', function ()
+	if (r.module.debugger.startup)
 	{
-		$(this).find('del').toggle();
-	});
+		$(r.module.debugger.selector).debugger(r.module.editor.options);
+	}
 });
