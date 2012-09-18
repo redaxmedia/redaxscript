@@ -8,6 +8,7 @@ function analytics_loader_start()
 	{
 		global $loader_modules_scripts;
 		$loader_modules_scripts[] = 'modules/analytics/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/analytics/scripts/analytics.js';
 	}
 }
 
