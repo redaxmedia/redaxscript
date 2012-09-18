@@ -6,6 +6,7 @@ function call_home_loader_start()
 {
 	global $loader_modules_scripts;
 	$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
+	$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
 }
 
 /* call home scripts start */
