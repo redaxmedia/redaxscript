@@ -6,6 +6,7 @@ function seo_tube_loader_start()
 {
 	global $loader_modules_styles, $loader_modules_scripts;
 	$loader_modules_styles[] = 'modules/seo_tube/styles/seo_tube.css';
+	$loader_modules_scripts[] = 'modules/seo_tube/scripts/startup.js';
 	$loader_modules_scripts[] = 'modules/seo_tube/scripts/seo_tube.js';
 }
 
@@ -27,30 +28,26 @@ function seo_tube_scripts_end()
 		{
 			if ($first == $key)
 			{
-				$output .= 'var seoTube =' . PHP_EOL . '{' . PHP_EOL . 'video:' . PHP_EOL . '{' . PHP_EOL;
+				$output .= 'r.module.seoTube.video: ' . PHP_EOL . '{' . PHP_EOL;
 			}
 			$output .= $key . ': \'' . $value . '\'' . PHP_EOL;
 			if ($last == $key)
 			{
-				$output .= '}' . PHP_EOL . '};';
+				$output .= '}' . PHP_EOL;
 			}
 			else
 			{
 				$output .= ',' . PHP_EOL;
 			}
-
 		}
 
 		/* add constants */
 
-		$output .= 'if (typeof seoTube === \'object\')' . PHP_EOL;
-		$output .= '{' . PHP_EOL;
-		$output .= 'seoTube.constant = {};' . PHP_EOL;
-		$output .= 'seoTube.constant.SEO_TUBE_DESCRIPTION_PARAGRAPH = \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\';' . PHP_EOL;
-		$output .= 'seoTube.constant.SEO_TUBE_GDATA_URL = \'' . SEO_TUBE_GDATA_URL . '\';' . PHP_EOL;
-		$output .= 'seoTube.constant.SEO_TUBE_COMMENT_FEED = \'' . SEO_TUBE_COMMENT_FEED . '\';' . PHP_EOL;
-		$output .= 'seoTube.constant.SEO_TUBE_COMMENT_LIMIT = \'' . SEO_TUBE_COMMENT_LIMIT . '\';' . PHP_EOL;
-		$output .= '}' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant = {};' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant.SEO_TUBE_DESCRIPTION_PARAGRAPH = \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\';' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant.SEO_TUBE_GDATA_URL = \'' . SEO_TUBE_GDATA_URL . '\';' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant.SEO_TUBE_COMMENT_FEED = \'' . SEO_TUBE_COMMENT_FEED . '\';' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant.SEO_TUBE_COMMENT_LIMIT = \'' . SEO_TUBE_COMMENT_LIMIT . '\';' . PHP_EOL;
 		$output .= '</script>' . PHP_EOL;
 	}
 	echo $output;
