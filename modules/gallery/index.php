@@ -6,6 +6,7 @@ function gallery_loader_start()
 {
 	global $loader_modules_styles, $loader_modules_scripts;
 	$loader_modules_styles[] = 'modules/gallery/styles/gallery.css';
+	$loader_modules_scripts[] = 'modules/gallery/scripts/startup.js';
 	$loader_modules_scripts[] = 'modules/gallery/scripts/gallery.js';
 }
 
@@ -98,7 +99,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 		}
 
 		/* delete gallery thumbs directory */
- 
+
 		else
 		{
 			remove_directory($directory . '/thumbs', 1);

@@ -16,7 +16,7 @@
 		$(this).each(function ()
 		{
 			var counter = 0,
-				gallery = $('ul.js_gallery'),
+				gallery = $(this),
 				galleryName = gallery.attr('id');
 
 			gallery.find('a').each(function ()
@@ -171,5 +171,8 @@ jQuery(function ($)
 {
 	/* startup */
 
-	$.fn.gallery();
+	if (r.module.gallery.startup)
+	{
+		$(r.module.gallery.selector).gallery();
+	}
 });
