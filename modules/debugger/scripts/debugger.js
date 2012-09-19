@@ -1,8 +1,6 @@
-/* debugger */
-
 (function ($)
 {
-	/* editor */
+	/* debugger */
 
 	$.fn.debugger = function (options)
 	{
