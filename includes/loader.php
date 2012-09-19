@@ -333,7 +333,7 @@ function languages_transport($language = '')
 {
 	if (LANGUAGES_TRANSPORT == 0)
 	{
-		$output = 'var l = {};' . PHP_EOL;
+		$output = 'var l = l || {};' . PHP_EOL;
 	}
 	define('LANGUAGES_TRANSPORT', 1);
 	foreach ($language as $value)
