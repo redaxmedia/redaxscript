@@ -77,7 +77,7 @@ function debugger_extras_end()
 	{
 		if (count($value))
 		{
-			$output .= '<h3 class="title_extra">Debug: ' . $key . '</h3><div class="js_box_debugger box_debugger box_extra"><ul class="list_debugger">';
+			$output .= '<h3 class="title_extra title_debugger">Debug: ' . $key . '</h3><div class="box_extra box_debugger "><ul class="js_list_debugger list_debugger">';
 			foreach ($value as $key_sub => $value_sub)
 			{
 				$output .= '<li>';

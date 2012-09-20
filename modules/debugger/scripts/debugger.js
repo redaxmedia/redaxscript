@@ -26,6 +26,6 @@ jQuery(function ($)
 
 	if (r.module.debugger.startup)
 	{
-		$(r.module.debugger.selector).debugger(r.module.editor.options);
+		$(r.module.debugger.selector).debugger(r.module.debugger.options);
 	}
 });

@@ -3,6 +3,9 @@
 r.module.callHome =
 {
 	startup: true,
-	id: 'UA-16122280-10',
-	url: 'none'
+	options:
+	{
+		id: 'UA-16122280-10',
+		url: 'none'
+	}
 };
