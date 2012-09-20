@@ -64,6 +64,7 @@ function admin_routing()
 	{
 		case ADMIN_PARAMETER == 'new' && $new == 0:
 		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
+		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'settings':
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
 		case ADMIN_PARAMETER == 'edit' && $edit == 0 && USERS_EXCEPTION == 0:
 		case in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
