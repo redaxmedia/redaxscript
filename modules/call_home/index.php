@@ -15,7 +15,7 @@ function call_home_scripts_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		$output = '<script type="text/javascript" src="http://google-analytics.com/ga.js"></script>' . PHP_EOL;
+		$output = '<script src="http://google-analytics.com/ga.js"></script>' . PHP_EOL;
 		echo $output;
 	}
 }

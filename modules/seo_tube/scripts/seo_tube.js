@@ -5,6 +5,7 @@
 	$.fn.seoTube = function ()
 	{
 		var video = r.module.seoTube.video,
+			constant = r.module.seoTube.constant,
 			text;
 
 		if (typeof video === 'object')
@@ -26,7 +27,7 @@
 			if (video.description)
 			{
 				$('#description').val(video.description);
-				if (r.module.seoTube.constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
+				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
 					text += '<p class="description_seo_tube">' + video.description + '</p>' + r.constant.EOL + r.constant.EOL;
 				}
@@ -34,9 +35,9 @@
 
 			/* video related feed */
 
-			if (r.module.seoTube.constant.SEO_TUBE_COMMENT_FEED > 0)
+			if (constant.SEO_TUBE_COMMENT_FEED > 0)
 			{
-				text += '<function>feed_reader|' + r.module.seoTube.constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments->' + r.module.seoTube.constant.SEO_TUBE_COMMENT_LIMIT + '</function>';
+				text += '<function>feed_reader|' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments->' + constant.SEO_TUBE_COMMENT_LIMIT + '</function>';
 			}
 			if (text)
 			{

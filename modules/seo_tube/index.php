@@ -17,38 +17,21 @@ function seo_tube_scripts_end()
 	global $video_content;
 	if ($video_content)
 	{
-		$video_content_keys = array_keys($video_content);
-		$first = reset($video_content_keys);
-		$last = end($video_content_keys);
+		$last = end(array_keys($video_content));
 
-		/* build seo tube object */
+		/* add seo tube object */
 
-		$output = '<script type="text/javascript">' . PHP_EOL;
-		foreach ($video_content as $key => $value)
-		{
-			if ($first == $key)
-			{
-				$output .= 'r.module.seoTube.video: ' . PHP_EOL . '{' . PHP_EOL;
-			}
-			$output .= $key . ': \'' . $value . '\'' . PHP_EOL;
-			if ($last == $key)
-			{
-				$output .= '}' . PHP_EOL;
-			}
-			else
-			{
-				$output .= ',' . PHP_EOL;
-			}
-		}
+		$output = '<script>' . PHP_EOL;
+		$output .= 'r.module.seoTube.video = ' . json_encode($video_content) . ';';
 
-		/* add constants */
+		/* add constant object */
 
-		$output .= 'r.module.seoTube.constant = {};' . PHP_EOL;
-		$output .= 'r.module.seoTube.constant.SEO_TUBE_DESCRIPTION_PARAGRAPH = \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\';' . PHP_EOL;
-		$output .= 'r.module.seoTube.constant.SEO_TUBE_GDATA_URL = \'' . SEO_TUBE_GDATA_URL . '\';' . PHP_EOL;
-		$output .= 'r.module.seoTube.constant.SEO_TUBE_COMMENT_FEED = \'' . SEO_TUBE_COMMENT_FEED . '\';' . PHP_EOL;
-		$output .= 'r.module.seoTube.constant.SEO_TUBE_COMMENT_LIMIT = \'' . SEO_TUBE_COMMENT_LIMIT . '\';' . PHP_EOL;
-		$output .= '</script>' . PHP_EOL;
+		$output .= 'r.module.seoTube.constant = ' . PHP_EOL . '{' . PHP_EOL;
+		$output .= 'SEO_TUBE_DESCRIPTION_PARAGRAPH: \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\',' . PHP_EOL;
+		$output .= 'SEO_TUBE_GDATA_URL: \'' . SEO_TUBE_GDATA_URL . '\',' . PHP_EOL;
+		$output .= 'SEO_TUBE_COMMENT_FEED: \'' . SEO_TUBE_COMMENT_FEED . '\',' . PHP_EOL;
+		$output .= 'SEO_TUBE_COMMENT_LIMIT: ' . SEO_TUBE_COMMENT_LIMIT . PHP_EOL;
+		$output .= '};' . PHP_EOL . '</script>' . PHP_EOL;
 	}
 	echo $output;
 }
@@ -94,7 +77,7 @@ function seo_tube_get_id($video_url = '')
 
 function seo_tube_parser($video_id = '')
 {
-	$video_url = 'http://gdata.youtube.com/feeds/api/videos/' . $video_id;
+	$video_url = SEO_TUBE_GDATA_URL . '/'. $video_id;
 	$video_data = simplexml_load_file($video_url);
 
 	/* collect output */
@@ -103,9 +86,9 @@ function seo_tube_parser($video_id = '')
 	{
 		$output = array(
 			'id' => $video_id,
-			'title' => seo_tube_clean_data($video_data->title),
-			'description' => seo_tube_clean_data($video_data->content),
-			'date' => $video_data->published,
+			'title' => (string)$video_data->title,
+			'description' => (string)$video_data->content,
+			'date' => (string)$video_data->published,
 			'status' => 200
 		);
 	}
@@ -115,14 +98,6 @@ function seo_tube_parser($video_id = '')
 			'status' => 400
 		);
 	}
-	return $output;
-}
-
-/* seo tube clean data */
-
-function seo_tube_clean_data($input = '')
-{
-	$output = preg_replace('/[^a-z0-9_-\s+]/i', '', $input);
 	return $output;
 }
 
