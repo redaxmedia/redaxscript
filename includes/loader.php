@@ -230,7 +230,7 @@ function styles()
 
 	if ($loader_deploy == 'inline')
 	{
-		$output .= '<style type="text/css" media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
+		$output .= '<style media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
 	}
 	else
 	{
@@ -268,7 +268,7 @@ function scripts($mode = '')
 
 	if ($mode == 'startup')
 	{
-		$output = '<script type="text/javascript"> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
+		$output = '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
 	}
 
 	/* else general mode */
@@ -303,13 +303,13 @@ function scripts($mode = '')
 		{
 			foreach ($loader_include as $value)
 			{
-				$output .= '<script type="text/javascript" src="' . $value . '"></script>' . PHP_EOL;
+				$output .= '<script src="' . $value . '"></script>' . PHP_EOL;
 			}
 		}
 
 		/* type of deployment */
 
-		$output .= '<script type="text/javascript"> /* <![cdata[ */ ' . scripts_transport($loader_minify);
+		$output .= '<script> /* <![cdata[ */ ' . scripts_transport($loader_minify);
 		if ($loader_deploy == 'inline')
 		{
 			$output .= loader('scripts', 'inline') . ' /* ]]> */ </script>' . PHP_EOL;
@@ -317,7 +317,7 @@ function scripts($mode = '')
 		else
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
-			$output .= '<script type="text/javascript" src="' . REWRITE_STRING . 'loader/scripts"></script>' . PHP_EOL;
+			$output .= '<script src="' . REWRITE_STRING . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
 	echo $output;

@@ -161,8 +161,8 @@ function head()
 	/* collect output */
 
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
+	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
 	$output .= '<title>' . $title . $title_divider . $breadcrumb_admin . $breadcrumb . $description_divider . $description . '</title>' . PHP_EOL;
-	$output .= '<meta http-equiv="content-type" content="text/html; charset=' . s('charset') . '" />' . PHP_EOL;
 
 	/* refresh string */
 
