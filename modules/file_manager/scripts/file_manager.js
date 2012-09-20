@@ -2,25 +2,30 @@
 {
 	/* file manager */
 
-	$.fn.fileManager = function ()
+	$.fn.fileManager = function (options)
 	{
-		/* define variables */
+		/* extend options */
+
+		if (r.module.fileManager.options !== options)
+		{
+			options = $.extend({}, r.module.fileManager.options, options || {});
+		}
 
 		var form = $(this),
-			fieldFile = form.find('input.js_file'),
-			fieldUpload = form.find('button.js_upload'),
-			fieldBrowse;
+			fieldFile = form.find(options.element.fieldFile),
+			buttonUpload = form.find(options.element.buttonUpload),
+			buttonBrowse;
 
 		/* insert fake browse */
 
-		fieldBrowse = $('<button type="submit" class="js_browse field_button_admin"><span><span>' + l.file_manager_browse + '</span></span></button').insertBefore(fieldUpload);
+		buttonBrowse = $('<button type="submit" class="js_browse field_button_admin"><span><span>' + l.file_manager_browse + '</span></span></button').insertBefore(buttonUpload);
 
 		/* browse drive on click */
 
-		fieldBrowse.click(function (event)
+		buttonBrowse.on('click', function (event)
 		{
 			fieldFile.click();
-			fieldUpload.hide();
+			buttonUpload.hide();
 			event.preventDefault();
 		});
 
@@ -28,7 +33,7 @@
 
 		fieldFile.change(function ()
 		{
-			fieldUpload.show();
+			buttonUpload.show();
 		});
 	};
 })(jQuery);
@@ -39,6 +44,6 @@ jQuery(function ($)
 
 	if (r.module.fileManager.startup && r.constant.ADMIN_PARAMETER === 'file-manager')
 	{
-		$(r.module.fileManager.selector).fileManager();
+		$(r.module.fileManager.selector).fileManager(r.module.fileManager.options);
 	}
 });

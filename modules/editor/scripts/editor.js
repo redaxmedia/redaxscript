@@ -33,9 +33,9 @@
 		{
 			var name, data, control, i;
 
-			for (i = 0; i < options.control.length; i++)
+			for (i = 0; i < options.toolbar.length; i++)
 			{
-				name = options.control[i];
+				name = options.toolbar[i];
 				data = r.module.editor.controls[name];
 
 				/* append divider */
@@ -45,12 +45,14 @@
 					$('<div class="js_editor_divider editor_divider"></div>').appendTo(editor.toolbar);
 				}
 
+				/* append newline */
+
 				else if (name === 'newline')
 				{
 					$('<div class="js_editor_newline editor_newline"></div>').appendTo(editor.toolbar);
 				}
 
-				/* append toggler */
+				/* append toggle */
 
 				else if (name === 'toggle')
 				{
@@ -64,7 +66,7 @@
 					control = $('<div class="js_editor_control editor_control editor_control_' + name + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
 				}
 
-				/* store control events */
+				/* store control data */
 
 				if (data)
 				{
@@ -383,7 +385,7 @@ jQuery(function ($)
 
 		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
-			r.module.editor.options.control = ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat'];
+			r.module.editor.options.toolbar = ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat'];
 			r.module.editor.options.newline = false;
 		}
 		$(r.module.editor.selector).editor(r.module.editor.options);

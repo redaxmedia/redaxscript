@@ -3,10 +3,10 @@
 r.module.editor =
 {
 	startup: true,
-	selector: 'textarea.js_editor',
+	selector: 'form textarea.js_editor',
 	options:
 	{
-		control: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'insert_image', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
+		toolbar: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'insert_image', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
 		xhtml: true,
 		newline: true
 	},
