@@ -15,12 +15,15 @@
 
 		if (r.constant.FIRST_PARAMETER === 'admin')
 		{
-			options.toolbar = options.toolbar.full;
+			options.toolbar = options.toolbar.backend;
+			options.xhtml = options.newline.backend;
+			options.newline = options.newline.backend;
 		}
 		else
 		{
-			options.toolbar = options.toolbar.lite;
-			options.newline = false;
+			options.toolbar = options.toolbar.frontend;
+			options.xhtml = options.toolbar.frontend;
+			options.newline = options.newline.frontend;
 		}
 
 		var editor = this;
