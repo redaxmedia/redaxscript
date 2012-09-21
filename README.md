@@ -1,13 +1,14 @@
 Redaxscript
 ===========
 
-> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
+> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects.  
+Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
 
 Online demo
 -----------
 
-> Unfortunately, no one can be told what Redaxscript is.
+> Unfortunately, no one can be told what Redaxscript is.  
 You have to see it for yourself.
 
 You are going to experience limited permissions and XSS filters: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
@@ -33,6 +34,19 @@ Feature list
 * Multiple language and template support
 * Available in over 25 languages
 * Extensive setting options
+
+
+Search engine friendly
+----------------------
+
+* Canonical URL management to prevent duplicate content
+* Robots management to prevent indexing of non-content pages
+* **Search engine friendly URL** structure
+* Unique meta description and meta keywords on each page
+* Redirect www to non-www and remove trailing slashes
+* [Sitemap XML](http://redaxscript.com/download/modules/sitemap-xml-module) module for search engines
+* Unobtrusive Javascript
+* Valid and sematic HTML markup
 
 
 Related links
