@@ -75,10 +75,6 @@ module.exports = function(grunt)
 				r: true
 			}
 		},
-		htmllint:
-		{
-			all: ['templates/*/*.phtml']
-		},
 		smushit:
 		{
 			path:
@@ -91,7 +87,6 @@ module.exports = function(grunt)
 	/* load tasks */
 
 	grunt.loadNpmTasks('grunt-css');
-	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
