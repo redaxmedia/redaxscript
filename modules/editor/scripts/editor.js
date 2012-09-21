@@ -11,6 +11,18 @@
 			options = $.extend({}, r.module.editor.options, options || {});
 		}
 
+		/* detect needed mode */
+
+		if (r.constant.FIRST_PARAMETER === 'admin')
+		{
+			options.toolbar = options.toolbar.full;
+		}
+		else
+		{
+			options.toolbar = options.toolbar.lite;
+			options.newline = false;
+		}
+
 		var editor = this;
 		editor.textarea = $(this);
 
@@ -381,13 +393,6 @@ jQuery(function ($)
 
 	if (r.module.editor.startup && (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments')))
 	{
-		/* detect needed mode */
-
-		if (r.constant.FIRST_PARAMETER !== 'admin')
-		{
-			r.module.editor.options.toolbar = ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat'];
-			r.module.editor.options.newline = false;
-		}
 		$(r.module.editor.selector).editor(r.module.editor.options);
 	}
 });
