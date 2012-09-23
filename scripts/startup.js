@@ -111,7 +111,7 @@ r.plugin =
 			related: 'input.js_generate_alias_output'
 		}
 	},
-	keyShortcut :
+	keyShortcut:
 	{
 		startup: true,
 		selector: window,

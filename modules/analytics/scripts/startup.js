@@ -6,6 +6,7 @@ r.module.analytics =
 	options:
 	{
 		id: 'UA-00000000-0',
-		url: 'domain.com'
+		url: 'domain.com',
+		trigger: 'a.js_track_event'
 	}
 };
