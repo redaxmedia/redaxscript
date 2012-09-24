@@ -44,7 +44,7 @@
 		width: 80%;
 	}
 
-	.list_header, .list_pagination .item_number
+	.list_pagination .item_number
 	{
 		display: none;
 	}

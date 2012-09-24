@@ -74,6 +74,7 @@
 .list_header
 {
 	display: inline-block;
+	white-space: nowrap;
 }
 
 .list_header a
@@ -93,7 +94,7 @@
 .list_header li
 {
 	display: inline-block;
-	margin-left: 0.5em;
+	margin-left: 1em;
 }
 
 .list_header .item_active

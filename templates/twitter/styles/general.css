@@ -53,7 +53,12 @@ body
 	margin-right: 20px;
 }
 
-.wrapper_table_default
+.wrapper_header
+{
+	white-space: nowrap;
+}
+
+.wrapper_header, .wrapper_table_default
 {
 	overflow: hidden;
 }
