@@ -22,35 +22,21 @@ module.exports = function(grunt)
 	grunt.initConfig({
 		lint:
 		{
-			all: ['grunt.js', 'scripts/*.js', 'templates/*/scripts/*.js', 'modules/*/scripts/*.js'],
 			base: ['scripts/*.js'],
-			templates: ['templates/*/scripts/*.js'],
-			modules: ['modules/*/scripts/*.js']
+			modules: ['modules/*/scripts/*.js'],
+			templates: ['templates/*/scripts/*.js']
 		},
 		watch:
 		{
 			scripts:
 			{
-				files: '<config:lint.all>',
+				files: ['scripts/*.js', 'modules/*/scripts/*.js', 'templates/*/scripts/*.js'],
 				tasks: 'lint'
-			}
-		},
-		csslint:
-		{
-			base:
-			{
-				src: 'styles/*.css',
-				rules: grunt.cssRules
 			},
-			templates:
+			styles:
 			{
-				src: 'templates/*/styles/*.css',
-				rules: grunt.cssRules
-			},
-			modules:
-			{
-				src: 'modules/*/styles/*.css',
-				rules: grunt.cssRules
+				files: ['styles/*.css', 'modules/*/styles/*.css', 'templates/*/styles/*.css'],
+				tasks: 'csslint'
 			}
 		},
 		jshint:
@@ -80,11 +66,52 @@ module.exports = function(grunt)
 				r: true
 			}
 		},
+		csslint:
+		{
+			base:
+			{
+				src: ['styles/*.css'],
+				rules: grunt.cssRules
+			},
+			modules:
+			{
+				src: ['modules/*/styles/*.css'],
+				rules: grunt.cssRules
+			},
+			templates:
+			{
+				src: ['templates/*/styles/*.css'],
+				rules: grunt.cssRules
+			}
+		},
+		bom:
+		{
+			base:
+			{
+				src: ['*.php', 'includes/*.php', 'includes/admin/*.php', 'styles/*.css', 'scripts/*.js']
+			},
+			languages:
+			{
+				src: ['languages/*.php']
+			},
+			modules:
+			{
+				src: ['modules/*/*.php', 'modules/*/styles/*.css', 'modules/*/scripts/*.js']
+			},
+			templates:
+			{
+				src: ['templates/*/*.phtml', 'templates/*/styles/*.css', 'templates/*/scripts/*.js']
+			}
+		},
 		smushit:
 		{
-			path:
+			modules:
 			{
-				src: 'templates/*/images'
+				src: ['modules/*/images']
+			},
+			templates:
+			{
+				src: ['templates/*/images']
 			}
 		}
 	});
@@ -92,6 +119,7 @@ module.exports = function(grunt)
 	/* load tasks */
 
 	grunt.loadNpmTasks('grunt-css');
+	grunt.loadNpmTasks('grunt-bom');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
