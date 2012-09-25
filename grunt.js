@@ -46,6 +46,11 @@ module.exports = function(grunt)
 			{
 				src: 'templates/*/styles/*.css',
 				rules: grunt.cssRules
+			},
+			modules:
+			{
+				src: 'modules/*/styles/*.css',
+				rules: grunt.cssRules
 			}
 		},
 		jshint:

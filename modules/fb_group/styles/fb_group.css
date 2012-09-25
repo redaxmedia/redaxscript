@@ -74,7 +74,7 @@
 
 .box_fb_group_comment + .box_fb_group_comment, .link_fb_group_comment_read_more
 {
-	border-top-width: 0px;
+	border-top-width: 0;
 }
 
 .box_fb_group_comment .link_fb_group_user_image
