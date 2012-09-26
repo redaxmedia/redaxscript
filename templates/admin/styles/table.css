@@ -19,6 +19,7 @@
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	border-bottom: 1px solid #b9b9b9;
@@ -30,6 +31,7 @@
 	background: -moz-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -ms-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: -o-linear-gradient(top, #ebebeb, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #ebebeb, #e2e2e2);
 	background: linear-gradient(top, #ebebeb, #e2e2e2);
 }
