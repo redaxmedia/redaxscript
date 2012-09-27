@@ -29,12 +29,12 @@ module.exports = function(grunt)
 		{
 			scripts:
 			{
-				files: ['scripts/*.js', 'modules/*/scripts/*.js', 'templates/*/scripts/*.js'],
+				files: ['<config:lint.base>', '<config:lint.modules>', '<config:lint.templates>'],
 				tasks: 'lint'
 			},
 			styles:
 			{
-				files: ['styles/*.css', 'modules/*/styles/*.css', 'templates/*/styles/*.css'],
+				files: ['<config:csslint.base.src>', '<config:csslint.modules.src>', '<config:csslint.templates.src>'],
 				tasks: 'csslint'
 			}
 		},
@@ -102,7 +102,7 @@ module.exports = function(grunt)
 				src: ['templates/*/*.phtml', 'templates/*/styles/*.css', 'templates/*/scripts/*.js']
 			}
 		},
-		smushit:
+		img:
 		{
 			modules:
 			{
@@ -112,6 +112,21 @@ module.exports = function(grunt)
 			{
 				src: ['templates/*/images']
 			}
+		},
+		smushit:
+		{
+			all:
+			{
+				src: ['<config:img.modules.src>', '<config:img.templates.src>']
+			},
+			modules:
+			{
+				src: ['<config:img.modules.src>']
+			},
+			templates:
+			{
+				src: ['<config:img.templates.src>']
+			}
 		}
 	});
 
@@ -119,9 +134,11 @@ module.exports = function(grunt)
 
 	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-bom');
+	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
 
 	grunt.registerTask('default', 'lint');
+	grunt.registerTask('optimize', 'bom img smushit');
 };
