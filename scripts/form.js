@@ -13,15 +13,19 @@
 
 		/* validate required fields */
 
-		$(this).on('submit change input check', function (event)
+		$(this).on('submit change input related', function (event)
 		{
 			var form = $(this),
 				fieldRequired = form.find(options.required),
 				fieldRequiredAll = fieldRequired;
 
-			/* check active elements only */
+			/* check needed elements only */
 
-			if (event.type === 'change' ||  event.type === 'input')
+			if (event.type === 'related')
+			{
+				fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
+			}
+			else if (event.type === 'change' ||  event.type === 'input')
 			{
 				fieldRequired = fieldRequired.filter(':active');
 			}

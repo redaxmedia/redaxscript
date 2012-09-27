@@ -264,7 +264,7 @@
 				editor.toggler.attr('title', l.editor_wysiwyg);
 			}
 			editor.toggler.toggleClass('editor_control_source_code editor_control_wysiwyg').nextAll('div.editor_control, div.editor_divider').toggle();
-			editor.textarea.add(editor.preview).toggle();
+			editor.textarea.add(editor.preview).toggle().attr('data-related', 'editor').trigger('related');
 		};
 
 		/* convert to html */
@@ -327,7 +327,7 @@
 
 			if (html)
 			{
-				editor.textarea.val(html).trigger('check');
+				editor.textarea.val(html).add(editor.preview).attr('data-related', 'editor').trigger('related');
 			}
 		};
 

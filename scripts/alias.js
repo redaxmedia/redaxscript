@@ -28,7 +28,7 @@
 				aliasValue = $.fn.cleanAlias(fiedValue);
 				if (aliasValue)
 				{
-					related.val(aliasValue).trigger('check');
+					related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
 				}
 			}
 
