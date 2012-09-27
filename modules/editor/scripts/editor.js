@@ -264,7 +264,8 @@
 				editor.toggler.attr('title', l.editor_wysiwyg);
 			}
 			editor.toggler.toggleClass('editor_control_source_code editor_control_wysiwyg').nextAll('div.editor_control, div.editor_divider').toggle();
-			editor.textarea.add(editor.preview).toggle().attr('data-related', 'editor').trigger('related');
+			editor.textarea.add(editor.preview).toggle();
+			editor.validate();
 		};
 
 		/* convert to html */
@@ -327,8 +328,15 @@
 
 			if (html)
 			{
-				editor.textarea.val(html).add(editor.preview).attr('data-related', 'editor').trigger('related');
+				editor.textarea.val(html);
 			}
+		};
+
+		/* validate textarea and preview */
+
+		editor.validate = function ()
+		{
+			editor.textarea.add(editor.preview).attr('data-related', 'editor').trigger('related');
 		};
 
 		/* append preview */
@@ -360,11 +368,12 @@
 			}
 		});
 
-		/* post on keyup */
+		/* post and validate on keyup */
 
 		editor.preview.on('keyup', function ()
 		{
 			editor.post();
+			editor.validate();
 		});
 
 		/* force xhtml */
