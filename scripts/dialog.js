@@ -4,33 +4,38 @@
 
 	$.fn.dialog = function (options)
 	{
-		var suffix = '_default',
-			dialog = $('div.js_dialog'),
-			dialogOverlay = $('div.js_dialog_overlay'),
-			dialogClasses = 'js_dialog dialog',
-			dialogOverlayClasses = 'js_dialog_overlay dialog_overlay',
-			checkDialog = dialog.length || dialogOverlay.length,
-			output;
+		/* extend options */
 
-		/* handle suffix */
+		if (r.plugin.dialog.options !== options)
+		{
+			options = $.extend({}, r.plugin.dialog.options, options || {});
+		}
+
+		/* detect needed mode */
 
 		if (r.constant.FIRST_PARAMETER === 'admin')
 		{
-			suffix = '_admin';
+			options.suffix = options.suffix.backend;
 		}
-		dialogClasses += ' dialog' + suffix;
-		dialogOverlayClasses += ' dialog_overlay' + suffix;
+		else
+		{
+			options.suffix = options.suffix.frontend;
+		}
+
+		var dialog = $(options.element.dialog),
+			dialogOverlay = $(options.element.dialogOverlay),
+			output;
 
 		/* prematurely terminate dialog */
 
-		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || checkDialog)
+		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
 		{
 			return false;
 		}
 
 		/* build dialog elements */
 
-		output = '<div class="' + dialogOverlayClasses + '"></div><div class="js_dialog ' + dialogClasses + '"><h3 class="title_dialog' + suffix + '">' + l[options.type] + '</h3><div class="box_dialog' + suffix + '">';
+		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div><div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
 		if (options.message)
 		{
 			output += '<p>' + options.message + '</p>';
@@ -40,38 +45,36 @@
 
 		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
-			suffix = '';
+			options.suffix = '';
 		}
 
 		/* prompt */
 
 		if (options.type === 'prompt')
 		{
-			output += '<input type="text" class="js_prompt field_text' + suffix + '" value="';
-			if (options.value)
-			{
-				output += options.value;
-			}
-			output += '" />';
+			output += '<input type="text" class="js_prompt field_text' + options.suffix + '" value="' + options.value + '" />';
 		}
 
 		/* ok button */
 
-		output += '<a class="js_ok field_button' + suffix + '"><span><span>' + l.ok + '</span></span></a>';
+		output += '<a class="js_ok field_button' + options.suffix + '"><span><span>' + l.ok + '</span></span></a>';
 
 		/* cancel button if confirm or prompt */
 
 		if (options.type === 'confirm' || options.type === 'prompt')
 		{
-			output += '<a class="js_cancel field_button' + suffix + '"><span><span>' + l.cancel + '</span></span></a>';
+			output += '<a class="js_cancel field_button' + options.suffix + '"><span><span>' + l.cancel + '</span></span></a>';
 		}
 		output += '</div></div>';
+
+		/* append to body */
+
 		$('body').append(output);
 
 		/* fade in overlay and dialog */
 
-		dialogOverlay = $('div.js_dialog_overlay').css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-		dialog = $('div.js_dialog').css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		dialogOverlay = $(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+		dialog = $(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
 
 		/* close dialog */
 

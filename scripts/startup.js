@@ -36,10 +36,9 @@ r.plugin =
 			element:
 			{
 				accordion: 'div.js_accordion, form.js_accordion',
-				accordionBox: 'div.js_box_accordion, ul.js_box_accordion',
 				accordionSet: 'div.js_set_accordion, fieldset.js_set_accordion',
-				accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion'
-
+				accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion',
+				accordionBox: 'div.js_box_accordion, ul.js_box_accordion'
 			},
 			duration: 'normal'
 		}
@@ -58,6 +57,23 @@ r.plugin =
 	{
 		options:
 		{
+			element:
+			{
+				dialog: 'div.js_dialog',
+				dialogOverlay: 'div.js_dialog_overlay'
+			},
+			classString:
+			{
+				dialog: 'js_dialog dialog dialog',
+				dialogTitle: 'js_title_dialog title_dialog title_dialog',
+				dialogBox: 'js_box_dialog box_dialog box_dialog',
+				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay'
+			},
+			suffix:
+			{
+				backend: '_admin',
+				frontend: '_default'
+			},
 			type: 'alert',
 			message: '',
 			callback: ''

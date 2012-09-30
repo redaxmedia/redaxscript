@@ -26,9 +26,9 @@
 		{
 			var accordionTitleActive = $(this),
 				accordion = accordionTitleActive.closest(options.element.accordion),
-				accordionTitle = accordion.find(options.element.accordionTitle),
 				accordionSet = accordion.find(options.element.accordionSet),
 				accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
+				accordionTitle = accordion.find(options.element.accordionTitle),
 				accordionBox = accordion.find(options.element.accordionBox),
 				accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
 
