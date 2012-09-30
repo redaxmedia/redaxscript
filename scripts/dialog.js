@@ -25,9 +25,7 @@
 		var body = $('body'),
 			dialog = $(options.element.dialog),
 			dialogOverlay = $(options.element.dialogOverlay),
-			buttonOk = $(options.element.buttonOk),
-			buttonCancel = $(options.element.buttonCancel),
-			output;
+			buttonOk, buttonCancel, output;
 
 		/* prematurely terminate dialog */
 
@@ -36,9 +34,13 @@
 			return false;
 		}
 
+		/* collect overlay */
+
+		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div>';
+
 		/* collect dialog elements */
 
-		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div><div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
+		output = '<div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
 		if (options.message)
 		{
 			output += '<p>' + options.message + '</p>';
