@@ -239,7 +239,6 @@
 
 				$.fn.dialog(
 				{
-					type: 'alert',
 					message: l.editor_select_text_first + l.point
 				});
 				return false;
