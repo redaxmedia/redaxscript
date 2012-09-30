@@ -126,7 +126,6 @@
 				{
 					$.fn.dialog(
 					{
-						type: 'alert',
 						message: l.editor_browser_support_no + l.point
 					});
 				}
