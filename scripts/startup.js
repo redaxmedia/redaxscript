@@ -61,8 +61,8 @@ r.plugin =
 			{
 				dialog: 'div.js_dialog',
 				dialogOverlay: 'div.js_dialog_overlay',
+				buttonOk: 'a.js_ok',
 				buttonCancel: 'a.js_cancel',
-				buttonOk: 'a.js_ok'
 			},
 			classString:
 			{
@@ -147,9 +147,9 @@ r.plugin =
 			element:
 			{
 				adminDock: 'div.js_dock_admin',
-				buttonCancel: 'div a.js_cancel span span, form button.js_cancel',
+				buttonSubmit: 'form button.js_submit',
 				buttonOk: 'div a.js_ok span span, form button.js_ok',
-				buttonSubmit: 'form button.js_submit'
+				buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
 			}
 		}
 	},

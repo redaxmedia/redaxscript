@@ -16,9 +16,9 @@
 		$(this).on('keydown', function (event)
 		{
 			var adminDock = $(options.element.adminDock),
-				buttonCancel = $(options.element.buttonCancel),
+				buttonSubmit = $(options.element.buttonSubmit),
 				buttonOk = $(options.element.buttonOk),
-				buttonSubmit = $(options.element.buttonSubmit);
+				buttonCancel = $(options.element.buttonCancel);
 
 			if (event.ctrlKey && event.altKey)
 			{

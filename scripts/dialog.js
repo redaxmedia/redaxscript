@@ -25,6 +25,8 @@
 		var body = $('body'),
 			dialog = $(options.element.dialog),
 			dialogOverlay = $(options.element.dialogOverlay),
+			buttonOk = $(options.element.buttonOk),
+			buttonCancel = $(options.element.buttonCancel),
 			output;
 
 		/* prematurely terminate dialog */
@@ -68,7 +70,7 @@
 		}
 		output += '</div></div>';
 
-		/* append to body */
+		/* append output to body */
 
 		body.append(output);
 
@@ -76,10 +78,12 @@
 
 		dialogOverlay = $(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
 		dialog = $(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		buttonOk = dialog.find(options.element.buttonOk);
+		buttonCancel = dialog.find(options.element.buttonCancel);
 
-		/* close dialog */
+		/* close dialog on click */
 
-		dialog.find(options.element.buttonCancel + ', ' + options.element.buttonOk).add(dialogOverlay).click(function ()
+		buttonOk.add(buttonCancel).add(dialogOverlay).click(function ()
 		{
 			dialog.add(dialogOverlay).remove();
 		});
@@ -88,7 +92,7 @@
 
 		if (options.callback)
 		{
-			dialog.find(options.element.buttonOk).click(function ()
+			buttonOk.click(function ()
 			{
 				if (options.type === 'prompt')
 				{
