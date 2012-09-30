@@ -94,9 +94,9 @@
 				clearTimeout(timeoutLoader);
 				clearTimeout(timeoutImage);
 
-				/* append image */
+				/* append image and remove loader */
 
-				galleryLoader.css('opacity', 0);
+				galleryLoader.remove();
 				image.appendTo(gallery).trigger('fit');
 			});
 
