@@ -54,6 +54,15 @@ r.plugin =
 			summand: 10
 		}
 	},
+	dialog:
+	{
+		options:
+		{
+			type: 'alert',
+			message: '',
+			callback: ''
+		}
+	},
 	dropdown:
 	{
 		startup: true,
@@ -132,6 +141,7 @@ r.plugin =
 		selector: 'form.js_note_required',
 		options:
 		{
+			markup: '<div class="js_note_required note_required box_note"></div>',
 			related: 'a, button',
 			duration: 1000
 		}

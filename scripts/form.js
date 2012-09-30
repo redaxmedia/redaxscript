@@ -127,21 +127,27 @@
 		}
 
 		var form = $(this),
-			formRelatedFirst = form.find(options.related).first();
+			formRelatedFirst = form.find(options.related).first(),
+			noteRequired = $(options.markup).insertBefore(formRelatedFirst).hide(),
+			timeout;
 
 		/* form validate events */
 
-		form.on('error', function ()
+		form.on('error success', function (event)
 		{
-			form.find('div.js_note_required').remove();
-			formRelatedFirst.before('<div class="js_note_required js_note_required_error box_note note_error">' + l.input_empty + l.point + '</div>');
-		}).on('success', function ()
-		{
-			form.find('div.js_note_required_error').replaceWith('<div class="js_note_required js_note_required_success box_note note_success">' + l.ok + l.point + '</div>');
-			setTimeout(function ()
+			clearTimeout(timeout);
+			if (event.type === 'error')
 			{
-				form.find('div.js_note_required_success').remove();
-			}, options.duration);
+				noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').show();
+			}
+			else
+			{
+				noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
+				timeout = setTimeout(function ()
+				{
+					noteRequired.hide();
+				}, options.duration);
+			}
 		});
 	};
 
