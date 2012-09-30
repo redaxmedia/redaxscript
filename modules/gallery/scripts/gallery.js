@@ -23,12 +23,10 @@
 			return false;
 		}
 
-		/* open gallery */
+		/* open gallery on click */
 
 		$(this).click(function (event)
 		{
-			/* define variables */
-
 			var link = $(this),
 				string = link.attr('href'),
 				thumb = link.find('img'),
@@ -91,7 +89,7 @@
 
 			image.load(function ()
 			{
-				/* clear timeout */
+				/* clear loader and image timeout */
 
 				clearTimeout(timeoutLoader);
 				clearTimeout(timeoutImage);
@@ -133,7 +131,7 @@
 					'width': imageWidth
 				});
 
-				/* setup margin */
+				/* setup gallery margin */
 
 				gallery.css(
 				{
