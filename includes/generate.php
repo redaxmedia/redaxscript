@@ -43,10 +43,6 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 	{
 		$value_string = '';
 	}
-	if ($title == '')
-	{
-		$title = $name;
-	}
 	$title_string = ' title="' . $title . '"';
 	if ($code)
 	{

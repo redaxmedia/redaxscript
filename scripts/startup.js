@@ -60,7 +60,9 @@ r.plugin =
 			element:
 			{
 				dialog: 'div.js_dialog',
-				dialogOverlay: 'div.js_dialog_overlay'
+				dialogOverlay: 'div.js_dialog_overlay',
+				buttonCancel: 'a.js_cancel',
+				buttonOk: 'a.js_ok'
 			},
 			classString:
 			{

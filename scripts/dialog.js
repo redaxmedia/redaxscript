@@ -22,7 +22,8 @@
 			options.suffix = options.suffix.frontend;
 		}
 
-		var dialog = $(options.element.dialog),
+		var body = $('body'),
+			dialog = $(options.element.dialog),
 			dialogOverlay = $(options.element.dialogOverlay),
 			output;
 
@@ -33,7 +34,7 @@
 			return false;
 		}
 
-		/* build dialog elements */
+		/* collect dialog elements */
 
 		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div><div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
 		if (options.message)
@@ -69,7 +70,7 @@
 
 		/* append to body */
 
-		$('body').append(output);
+		body.append(output);
 
 		/* fade in overlay and dialog */
 
@@ -78,7 +79,7 @@
 
 		/* close dialog */
 
-		dialog.find('a.js_cancel, a.js_ok').add(dialogOverlay).click(function ()
+		dialog.find(options.element.buttonCancel + ', ' + options.element.buttonOk).add(dialogOverlay).click(function ()
 		{
 			dialog.add(dialogOverlay).remove();
 		});
@@ -87,7 +88,7 @@
 
 		if (options.callback)
 		{
-			dialog.find('a.js_ok').click(function ()
+			dialog.find(options.element.buttonOk).click(function ()
 			{
 				if (options.type === 'prompt')
 				{

@@ -263,6 +263,9 @@ function children_list($table = '', $parent = '', $string = '', $mode = '')
 				$counter++;
 			}
 		}
+
+		/* collect list output */
+
 		if ($num_rows > $counter)
 		{
 			$output = '<ul class="list_children">' . $output . '</ul>';
