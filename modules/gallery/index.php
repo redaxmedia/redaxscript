@@ -72,7 +72,8 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 	else
 	{
 		$gallery_directory = read_directory($directory, 'thumbs');
-		if (count($gallery_directory))
+		$gallery_total = count($gallery_directory);
+		if ($gallery_total)
 		{
 			foreach ($gallery_directory as $value)
 			{
@@ -87,13 +88,53 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 				}
 				if (file_exists($thumb_string))
 				{
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $value . '" />', $string, $value, 'rel="nofollow"') . '</li>';
+					/* read exif data */
+
+					$image_data = exif_read_data($string);
+					if ($image_data)
+					{
+						$image_artist = $image_data['Artist'];
+						$image_datetime = $image_data['DateTime'];
+						if ($image_datetime)
+						{
+							$image_date = date(s('date'), strtotime($image_datetime));
+						}
+						else
+						{
+							$image_date = '';
+						}
+						$image_description = $image_data['ImageDescription'];
+					}
+
+					/* build data string */
+
+					$data_string = 'data-counter="' . ++$counter . '" data-total="' . $gallery_total . '"';
+					if ($image_artist)
+					{
+						$data_string .= 'data-artist="' . $image_artist . '"';
+					}
+					if ($image_date)
+					{
+						$data_string .= 'data-date="' . $image_date . '"';
+					}
+					if ($image_description)
+					{
+						$data_string .= 'data-description="' . $image_description . '"';
+					}
+
+					/* collect image output */
+
+					$image = '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $image_description . '" ' . $data_string . ' />';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $string, $image_description, 'rel="nofollow"') . '</li>';
 				}
 			}
+
+			/* collect list output */
+
 			if ($output)
 			{
 				$id = str_replace('/', '_', $directory);
-				$output = '<ul id="' . $id . '" class="js_gallery list_gallery clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $id . '" class="js_list_gallery list_gallery clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}

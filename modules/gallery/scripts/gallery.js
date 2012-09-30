@@ -2,8 +2,20 @@
 {
 	/* gallery */
 
-	$.fn.gallery = function ()
+	$.fn.gallery = function (options)
 	{
+		/* extend options */
+
+		if (r.module.gallery.options !== options)
+		{
+			options = $.extend({}, r.module.gallery.options, options || {});
+		}
+
+		var win = $(window),
+			body = $('body'),
+			gallery = $(options.element.gallery),
+			galleryOverlay = $(options.element.galleryOverlay);
+
 		/* prematurely terminate gallery */
 
 		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7)
@@ -11,156 +23,130 @@
 			return false;
 		}
 
-		/* setup counter fields */
+		/* open gallery */
 
-		$(this).each(function ()
-		{
-			var counter = 0,
-				gallery = $(this),
-				galleryName = gallery.attr('id');
-
-			gallery.find('a').each(function ()
-			{
-				$(this).data('counter', ++counter).addClass('js_' + galleryName + '_' + counter);
-			});
-			gallery.data('total', counter);
-		});
-
-		/* open gallery box */
-
-		$(this).find('a').click(function (event)
+		$(this).click(function (event)
 		{
 			/* define variables */
 
 			var link = $(this),
-				linkString = link.attr('href'),
-				linkAlt = link.attr('title'),
-				linkCounter = link.data('counter'),
-				gallery = link.closest('ul.js_gallery'),
-				galleryName = gallery.attr('id'),
-				galleryTotal = gallery.data('total'),
-				galleryOverlay = $('div.js_gallery_overlay'),
-				checkGalleryOverlay = galleryOverlay.length,
-				checkGalleryLoading, galleryBox, galleryLoading;
+				string = link.attr('href'),
+				thumb = link.find('img'),
+				image = $('<img src="' + string + '" />'),
+				imageCounter = thumb.data('counter'),
+				imageTotal = thumb.data('total'),
+				imageArtist = thumb.data('artist'),
+				imageDate = thumb.data('date'),
+				imageDescription = thumb.data('description'),
+				gallery = $(options.element.gallery),
+				galleryLoader = $('<img src="' + options.loader + '" />'),
+				galleryOverlay = $(options.element.galleryOverlay),
+				timeoutLoader, timeoutImage, output;
 
-			/* build box elements */
+			/* prematurely terminate gallery */
 
-			if (checkGalleryOverlay === 0)
+			if (gallery.length || galleryOverlay.length)
 			{
-				$('body').append('<div class="js_gallery_overlay gallery_overlay"></div>');
-				galleryOverlay = $('div.js_gallery_overlay').css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-			}
-			$('body').append('<img class="js_gallery_loading gallery_loading" src="modules/gallery/images/loading.gif" alt="loading" /><div class="js_gallery_box gallery_box"><img src="' + linkString + '" alt="' + linkAlt + '" /></div>');
-			galleryBox = $('div.js_gallery_box').css('opacity', 0);
-			galleryLoading = $('img.js_gallery_loading').css('opacity', 0).delay(500).fadeTo(r.lightbox.loading.duration, r.lightbox.loading.opacity);
-
-			/* build previous and next links */
-
-			if (linkCounter > 1)
-			{
-				galleryBox.append('<div class="js_gallery_previous gallery_previous"><div>' + l.gallery_image_previous + '</div></div>');
-			}
-			if (linkCounter < galleryTotal)
-			{
-				galleryBox.append('<div class="js_gallery_next gallery_next"><div>' + l.gallery_image_next + '</div></div>');
+				return false;
 			}
 
-			/* fix transparent next and previous area for msie */
+			/* collect overlay */
 
-			if (r.constant.MY_BROWSER === 'msie')
+			output = '<div class="' + options.classString.galleryOverlay + '"></div>';
+
+			/* collect gallery elements */
+
+			output += '<div class="' + options.classString.gallery + '">';
+			if (options.loader)
 			{
-				$('div.js_gallery_next, div.js_gallery_previous').css('background-image', 'url(\'fix\')');
+				output += '<img class="' + options.classString.galleryLoader + '" src="' + options.loader + '" />';
 			}
+			output += '</div>';
 
-			/* port data to image */
+			/* append output to body */
 
-			galleryBox.find('img').data(
+			body.append(output);
+
+			/* fade in overlay and loader */
+
+			galleryOverlay = $(options.element.galleryOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+			gallery = $(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+			galleryLoader = $(options.element.galleryLoader).css('opacity', 0);
+
+			/* fade in loader on timeout */
+
+			timeoutLoader = setTimeout(function ()
 			{
-				'gallery': galleryName,
-				'counter': linkCounter,
-				'total': galleryTotal
+				galleryLoader.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+			}, options.timeout.loader);
+
+			/* close gallery on timout */
+
+			timeoutImage = setTimeout(function ()
+			{
+				galleryOverlay.click();
+			}, options.timeout.image);
+
+			/* full image loaded */
+
+			image.load(function ()
+			{
+				/* clear timeout */
+
+				clearTimeout(timeoutLoader);
+				clearTimeout(timeoutImage);
+
+				/* append image */
+
+				galleryLoader.css('opacity', 0);
+				image.appendTo(gallery).trigger('fit');
 			});
 
-			/* align box once image is loaded */
+			/* fit image to viewport */
 
-			galleryBox.find('img').load(function ()
+			image.on('fit', function ()
 			{
 				var image = $(this),
-					windowHeight = $(window).height(),
-					windowWidth = $(window).width(),
 					imageHeight = image.height(),
-					imageWidth = image.width();
-
-				galleryLoading.remove();
+					imageWidth = image.width(),
+					winHeight = win.height(),
+					winWidth = win.width();
 
 				/* calculate image dimensions */
 
-				if (imageHeight > windowHeight)
+				if (imageHeight > winHeight)
 				{
-					imageWidth = imageWidth * windowHeight * 0.9 / imageHeight;
-					imageHeight = windowHeight * 0.9;
+					imageWidth = imageWidth * winHeight * options.scaling / imageHeight;
+					imageHeight = winHeight * options.scaling;
 				}
-				if (imageWidth > windowWidth)
+				if (imageWidth > winWidth)
 				{
-					imageHeight = imageHeight * windowWidth * 0.9 / imageWidth;
-					imageWidth = windowWidth * 0.9;
+					imageHeight = imageHeight * winWidth * options.scaling / imageWidth;
+					imageWidth = winWidth * options.scaling;
 				}
 
-				/* fit image to screen */
+				/* setup height and width */
 
-				image.css(
+				image.add(gallery).css(
 				{
 					'height': imageHeight,
 					'width': imageWidth
 				});
-				galleryBox.css(
+
+				/* setup margin */
+
+				gallery.css(
 				{
-					'height': imageHeight,
-					'width': imageWidth,
-					'margin-top': -(imageHeight / 2) - 1,
-					'margin-left': -(imageWidth / 2) - 1
-				}).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-
-				/* handle next and previous links */
-
-				galleryBox.find('div.js_gallery_next, div.js_gallery_previous').click(function (event)
-				{
-					var link = $(this),
-						image = galleryBox.find('img'),
-						imageGallery = image.data('gallery'),
-						imageCounter = image.data('counter'),
-						imageTotal = image.data('total'),
-						checkGalleryNext = link.hasClass('js_gallery_next'),
-						checkGalleryPrevious = link.hasClass('js_gallery_previous');
-
-					if (checkGalleryNext)
-					{
-						imageCounter++;
-					}
-					else if (checkGalleryPrevious)
-					{
-						imageCounter--;
-					}
-					if (imageCounter > 1 || imageCounter < imageTotal)
-					{
-						galleryBox.remove();
-						$('a.js_' + imageGallery + '_' + imageCounter).click();
-					}
-					event.preventDefault();
+					'margin-top': -imageHeight / 2,
+					'margin-left': -imageWidth / 2
 				});
+			});
 
-				/* close gallery box */
+			/* close gallery on click */
 
-				galleryBox.add(galleryOverlay).click(function ()
-				{
-					galleryLoading = $('img.js_gallery_loading');
-					checkGalleryLoading = galleryLoading.length;
-					if (checkGalleryLoading === 0)
-					{
-						galleryBox.add(galleryOverlay).remove();
-					}
-				});
-
+			galleryOverlay.click(function ()
+			{
+				gallery.add(galleryOverlay).remove();
 			});
 			event.preventDefault();
 		});
@@ -173,6 +159,6 @@ jQuery(function ($)
 
 	if (r.module.gallery.startup)
 	{
-		$(r.module.gallery.selector).gallery();
+		$(r.module.gallery.selector).gallery(r.module.gallery.options);
 	}
 });
