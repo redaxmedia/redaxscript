@@ -157,7 +157,7 @@ r.plugin =
 		selector: 'form.js_note_required',
 		options:
 		{
-			markup: '<div class="js_note_required note_required box_note"></div>',
+			classString: 'js_note_required note_required box_note',
 			related: 'a, button',
 			duration: 1000
 		}

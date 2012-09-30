@@ -128,7 +128,7 @@
 
 		var form = $(this),
 			formRelatedFirst = form.find(options.related).first(),
-			noteRequired = $(options.markup).insertBefore(formRelatedFirst).hide(),
+			noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelatedFirst).hide(),
 			timeout;
 
 		/* form validate events */

@@ -56,7 +56,6 @@
 				{
 					$.fn.dialog(
 					{
-						type: 'alert',
 						message: l.input_incorrect + l.point
 					});
 				}
@@ -75,11 +74,11 @@
 			options = $.extend({}, r.plugin.forwardNotification.options, options || {});
 		}
 
-		var link = $(this);
+		/* trigger click */
 
-		link.delay(options.duration).queue(function ()
+		$(this).delay(options.duration).queue(function ()
 		{
-			link.click();
+			$(this).click();
 		});
 	};
 })(jQuery);
