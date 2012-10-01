@@ -114,6 +114,13 @@
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
 }
 
+.image_gallery_lazy_load
+{
+	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
+	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
+	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
+}
+
 .link_gallery
 {
 	margin: 0 0.5em 0.5em 0;

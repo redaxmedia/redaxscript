@@ -109,7 +109,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 
 					/* build data string */
 
-					$data_string = 'data-counter="' . ++$counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
+					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
 					if ($image_artist)
 					{
 						$data_string .= 'data-artist="' . $image_artist . '"';

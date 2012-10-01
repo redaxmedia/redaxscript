@@ -30,6 +30,11 @@ r.module.gallery =
 		interval: 500,
 		loader: 'modules/gallery/images/loader.gif',
 		scaling: 0.9,
-		preload: true
+		lazyLoad:
+		{
+			startup: true,
+			opacity: 0.6,
+			duration: 'slow'
+		}
 	}
 };

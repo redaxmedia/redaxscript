@@ -23,13 +23,42 @@
 			return false;
 		}
 
+		/* lazyload */
+
+		if (options.lazyLoad.startup)
+		{
+			$(this).each(function ()
+			{
+				var link = $(this),
+					string = link.attr('href'),
+					thumb = link.children(),
+					related = thumb.attr('src'),
+					image = $('<img src="' + string + '" />');
+
+				/* setup opacity and add class */
+
+				thumb.css('opacity', options.lazyLoad.opacity).addClass('image_gallery_lazy_load');
+
+				/* full image loaded */
+
+				image.data('related', related).load(function ()
+				{
+					var thumbRelated = $(this).data('related');
+
+					/* fade in related thumb and remove class */
+
+					link.find('img[src="' + thumbRelated + '"]').fadeTo(options.lazyLoad.duration, 1).removeClass('image_gallery_lazy_load');
+				});
+			});
+		}
+
 		/* open gallery on click */
 
 		$(this).click(function (event)
 		{
 			var link = $(this),
 				string = link.attr('href'),
-				thumb = link.find('img'),
+				thumb = link.children(),
 				image = $('<img src="' + string + '" />'),
 				imageCounter = thumb.data('counter'),
 				imageTotal = thumb.data('total'),
