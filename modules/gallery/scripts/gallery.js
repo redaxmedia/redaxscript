@@ -23,9 +23,9 @@
 			return false;
 		}
 
-		/* lazyload */
+		/* preload images */
 
-		if (options.lazyLoad.startup)
+		if (options.preload.startup)
 		{
 			$(this).each(function ()
 			{
@@ -37,7 +37,7 @@
 
 				/* setup opacity and add class */
 
-				thumb.css('opacity', options.lazyLoad.opacity).addClass('image_gallery_lazy_load');
+				thumb.css('opacity', options.preload.opacity).addClass('image_gallery_preload');
 
 				/* full image loaded */
 
@@ -47,7 +47,7 @@
 
 					/* fade in related thumb and remove class */
 
-					link.find('img[src="' + thumbRelated + '"]').fadeTo(options.lazyLoad.duration, 1).removeClass('image_gallery_lazy_load');
+					link.find('img[src="' + thumbRelated + '"]').fadeTo(options.preload.duration, 1).removeClass('image_gallery_preload');
 				});
 			});
 		}

@@ -114,7 +114,7 @@
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
 }
 
-.image_gallery_lazy_load
+.image_gallery_preload
 {
 	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;

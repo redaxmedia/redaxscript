@@ -30,7 +30,7 @@ r.module.gallery =
 		interval: 500,
 		loader: 'modules/gallery/images/loader.gif',
 		scaling: 0.9,
-		lazyLoad:
+		preload:
 		{
 			startup: true,
 			opacity: 0.6,
