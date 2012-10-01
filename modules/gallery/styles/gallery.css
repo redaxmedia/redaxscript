@@ -2,6 +2,10 @@
 
 .gallery
 {
+	-moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+	background: #fff;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 	left: 50%;
 	position: fixed;
 	top: 50%;
@@ -61,12 +65,12 @@
 	cursor: pointer;
 }
 
-.gallery_next:hover div, .gallery_previous:hover div
+.gallery_next:hover span, .gallery_previous:hover span
 {
 	display: block;
 }
 
-.gallery_next div, .gallery_previous div
+.gallery_next span, .gallery_previous span
 {
 	background: #fff;
 	display: none;
@@ -75,7 +79,7 @@
 	padding: 1em;
 }
 
-.gallery_next div
+.gallery_next span
 {
 	-moz-border-radius: 1.5em 0 0 1.5em;
 	-webkit-border-radius: 1.5em 0 0 1.5em;
@@ -83,7 +87,7 @@
 	float: right;
 }
 
-.gallery_previous div
+.gallery_previous span
 {
 	-moz-border-radius: 0 1.5em 1.5em 0;
 	-webkit-border-radius: 0 1.5em 1.5em 0;

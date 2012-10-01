@@ -73,6 +73,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 	{
 		$gallery_directory = read_directory($directory, 'thumbs');
 		$gallery_total = count($gallery_directory);
+		$gallery_name = str_replace('/', '_', $directory);
 		if ($gallery_total)
 		{
 			foreach ($gallery_directory as $value)
@@ -108,7 +109,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 
 					/* build data string */
 
-					$data_string = 'data-counter="' . ++$counter . '" data-total="' . $gallery_total . '"';
+					$data_string = 'data-counter="' . ++$counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
 					if ($image_artist)
 					{
 						$data_string .= 'data-artist="' . $image_artist . '"';
@@ -133,8 +134,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 
 			if ($output)
 			{
-				$id = str_replace('/', '_', $directory);
-				$output = '<ul id="' . $id . '" class="js_list_gallery list_gallery clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_name . '" class="js_list_gallery list_gallery clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}

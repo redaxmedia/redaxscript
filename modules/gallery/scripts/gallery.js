@@ -37,20 +37,26 @@
 				imageDate = thumb.data('date'),
 				imageDescription = thumb.data('description'),
 				gallery = $(options.element.gallery),
-				galleryLoader = $('<img src="' + options.loader + '" />'),
 				galleryOverlay = $(options.element.galleryOverlay),
-				timeoutLoader, timeoutImage, output;
+				galleryName = thumb.data('gallery-name'),
+				galleryLoader = $('<img src="' + options.loader + '" />'),
+				checkGallery = gallery.length,
+				checkGalleryOverlay = galleryOverlay.length,
+				timeoutLoader, timeoutImage, intervalVisible, output;
 
 			/* prematurely terminate gallery */
 
-			if (gallery.length || galleryOverlay.length)
+			if (checkGallery)
 			{
 				return false;
 			}
 
 			/* collect overlay */
 
-			output = '<div class="' + options.classString.galleryOverlay + '"></div>';
+			if (checkGalleryOverlay === 0)
+			{
+				output = '<div class="' + options.classString.galleryOverlay + '"></div>';
+			}
 
 			/* collect gallery elements */
 
@@ -67,7 +73,11 @@
 
 			/* fade in overlay and loader */
 
-			galleryOverlay = $(options.element.galleryOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+			galleryOverlay = $(options.element.galleryOverlay);
+			if (checkGalleryOverlay === 0)
+			{
+				galleryOverlay.css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+			}
 			gallery = $(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
 			galleryLoader = $(options.element.galleryLoader).css('opacity', 0);
 
@@ -97,7 +107,56 @@
 				/* append image and remove loader */
 
 				galleryLoader.remove();
+				gallery.css('opacity', 0);
 				image.appendTo(gallery).trigger('fit');
+
+				/* check visible interval */
+
+				intervalVisible = setInterval(function ()
+				{
+					if (image.is(':visible'))
+					{
+						gallery.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+						clearInterval(intervalVisible);
+					}
+				}, options.interval);
+
+				/* append previous and next */
+
+				if (imageCounter > 1)
+				{
+					gallery.append('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>');
+				}
+				if (imageCounter < imageTotal)
+				{
+					gallery.append('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>');
+				}
+
+				/* next and previous on click */
+
+				gallery.find(options.element.buttonPrevious + ', ' + options.element.buttonNext).click(function (event)
+				{
+					var link = $(this),
+						checkButtonPrev = link.hasClass('js_gallery_previous'),
+						checkButtonNext = link.hasClass('js_gallery_next');
+
+					/* calculate image counter */
+
+					if (checkButtonPrev)
+					{
+						imageCounter--;
+					}
+					else if (checkButtonNext)
+					{
+						imageCounter++;
+					}
+					if (imageCounter > 1 || imageCounter < imageTotal)
+					{
+						gallery.remove();
+						$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
+					}
+					event.preventDefault();
+				});
 			});
 
 			/* fit image to viewport */
@@ -140,7 +199,7 @@
 				});
 			});
 
-			/* close gallery on click */
+			/* remove gallery and overlay on click */
 
 			galleryOverlay.click(function ()
 			{
