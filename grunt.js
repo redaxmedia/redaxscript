@@ -106,19 +106,15 @@ module.exports = function(grunt)
 		{
 			modules:
 			{
-				src: ['modules/*/images']
+				src: ['modules/*/images/*']
 			},
 			templates:
 			{
-				src: ['templates/*/images']
+				src: ['templates/*/images/*']
 			}
 		},
 		smushit:
 		{
-			all:
-			{
-				src: ['<config:img.modules.src>', '<config:img.templates.src>']
-			},
 			modules:
 			{
 				src: ['<config:img.modules.src>']
