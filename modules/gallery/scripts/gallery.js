@@ -71,7 +71,7 @@
 				galleryLoader = $('<img src="' + options.loader + '" />'),
 				checkGallery = gallery.length,
 				checkGalleryOverlay = galleryOverlay.length,
-				timeoutLoader, timeoutImage, intervalVisible, output;
+				timeoutLoader, timeoutImage, intervalVisible, output = '';
 
 			/* prematurely terminate gallery */
 
