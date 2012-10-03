@@ -13,8 +13,8 @@
 
 		var win = $(window),
 			body = $('body'),
-			gallery = $(options.element.gallery),
-			galleryOverlay = $(options.element.galleryOverlay);
+			gallery = body.find(options.element.gallery),
+			galleryOverlay = body.find(options.element.galleryOverlay);
 
 		/* prematurely terminate gallery */
 
@@ -65,11 +65,13 @@
 				imageArtist = thumb.data('artist'),
 				imageDate = thumb.data('date'),
 				imageDescription = thumb.data('description'),
-				gallery = $(options.element.gallery),
+				gallery = body.find(options.element.gallery),
 				galleryLoader = $('<img src="' + options.loader + '" />'),
-				galleryMeta = $(options.element.galleryMeta),
-				galleryOverlay = $(options.element.galleryOverlay),
+				galleryMeta = gallery.find(options.element.galleryMeta),
+				galleryOverlay = body.find(options.element.galleryOverlay),
 				galleryName = thumb.data('gallery-name'),
+				buttonPrevious = gallery.find(options.element.buttonPrevious),
+				buttonNext = gallery.find(options.element.buttonNext),
 				checkGallery = gallery.length,
 				checkGalleryOverlay = galleryOverlay.length,
 				timeoutLoader, timeoutImage, intervalVisible, output = '';
@@ -103,13 +105,13 @@
 
 			/* fade in overlay and loader */
 
-			galleryOverlay = $(options.element.galleryOverlay);
+			galleryOverlay = body.find(options.element.galleryOverlay);
 			if (checkGalleryOverlay === 0)
 			{
 				galleryOverlay.css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
 			}
-			gallery = $(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-			galleryLoader = $(options.element.galleryLoader).css('opacity', 0);
+			gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+			galleryLoader = gallery.find(options.element.galleryLoader).css('opacity', 0);
 
 			/* fade in loader on timeout */
 
@@ -173,24 +175,24 @@
 
 				if (imageCounter > 1)
 				{
-					gallery.append('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>');
+					buttonPrevious = $('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>').appendTo(gallery);
 				}
 				if (imageCounter < imageTotal)
 				{
-					gallery.append('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>');
+					buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
 				}
 
 				/* next and previous on click */
 
-				gallery.find(options.element.buttonPrevious + ', ' + options.element.buttonNext).click(function (event)
+				buttonPrevious.add(buttonNext).click(function (event)
 				{
 					var link = $(this),
-						checkButtonPrev = link.hasClass('js_gallery_previous'),
+						checkButtonPrevious = link.hasClass('js_gallery_previous'),
 						checkButtonNext = link.hasClass('js_gallery_next');
 
 					/* calculate image counter */
 
-					if (checkButtonPrev)
+					if (checkButtonPrevious)
 					{
 						imageCounter--;
 					}
@@ -204,6 +206,32 @@
 						$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
 					}
 					event.preventDefault();
+				});
+
+				/* listen for keydown */
+
+				win.on('keydown', function (event)
+				{
+					/* trigger close action */
+
+					if (event.which === 27)
+					{
+						galleryOverlay.click();
+					}
+
+					/* trigger previous action */
+
+					if (event.which === 37)
+					{
+						buttonPrevious.click();
+					}
+
+					/* trigger next action */
+
+					if (event.which === 39)
+					{
+						buttonNext.click();
+					}
 				});
 			});
 
