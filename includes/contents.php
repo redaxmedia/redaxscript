@@ -437,12 +437,12 @@ function notification($title = '', $text = '', $action = '', $string = '')
 
 	if ($title)
 	{
-		$output = '<h2 class="title_content">' . $title . '</h2>';
+		$output = '<h2 class="title_content title_notification">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_notification' . $suffix . '">';
+	$output .= '<div class="box_content box_notification' . $suffix . '">';
 	if ($text)
 	{
-		$output .= '<p>' . $text . l('point') . '</p>';
+		$output .= $text . l('point');
 	}
 	if ($action && $string)
 	{
