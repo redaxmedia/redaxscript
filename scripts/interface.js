@@ -18,7 +18,7 @@
 
 		/* show active accordion box */
 
-		$(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
+		accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
 
 		/* listen for click */
 

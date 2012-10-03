@@ -23,8 +23,8 @@
 		}
 
 		var body = $('body'),
-			dialog = $(options.element.dialog),
-			dialogOverlay = $(options.element.dialogOverlay),
+			dialog = body.find(options.element.dialog),
+			dialogOverlay = body.find(options.element.dialogOverlay),
 			buttonOk, buttonCancel, output = '';
 
 		/* prematurely terminate dialog */
@@ -78,8 +78,8 @@
 
 		/* fade in overlay and dialog */
 
-		dialogOverlay = $(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-		dialog = $(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
 		buttonOk = dialog.find(options.element.buttonOk);
 		buttonCancel = dialog.find(options.element.buttonCancel);
 
