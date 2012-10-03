@@ -36,7 +36,50 @@
 	padding: 1em;
 	position: fixed;
 	top: 50%;
-	z-index: 1300;
+	z-index: 1400;
+}
+
+/* gallery meta */
+
+.gallery_meta
+{
+	background: #fff;
+	bottom: 0;
+	display: none;
+	font: 1em georgia, arial;
+	left: 0;
+	padding: 1em 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 1200;
+}
+
+.gallery:hover .gallery_meta
+{
+	display: block;
+}
+
+.gallery_artist
+{
+	float: right;
+	margin-right: 1em;
+}
+
+.gallery_description
+{
+	float: left;
+	margin-left: 1em;
+}
+
+.gallery_artist, .gallery_description, .gallery_label
+{
+	display: inline-block;
+}
+
+.gallery_label
+{
+	margin-right: 0.5em;
 }
 
 /* previous and next links */
@@ -47,7 +90,7 @@
 	position: absolute;
 	top: 0;
 	width: 40%;
-	z-index: 1200;
+	z-index: 1300;
 }
 
 .gallery_next

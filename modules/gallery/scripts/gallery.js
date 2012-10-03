@@ -66,9 +66,10 @@
 				imageDate = thumb.data('date'),
 				imageDescription = thumb.data('description'),
 				gallery = $(options.element.gallery),
+				galleryLoader = $('<img src="' + options.loader + '" />'),
+				galleryMeta = $(options.element.galleryMeta),
 				galleryOverlay = $(options.element.galleryOverlay),
 				galleryName = thumb.data('gallery-name'),
-				galleryLoader = $('<img src="' + options.loader + '" />'),
 				checkGallery = gallery.length,
 				checkGalleryOverlay = galleryOverlay.length,
 				timeoutLoader, timeoutImage, intervalVisible, output = '';
@@ -149,6 +150,24 @@
 						clearInterval(intervalVisible);
 					}
 				}, options.interval);
+
+				/* append meta information */
+
+				galleryMeta = $('<div class="' + options.classString.galleryMeta + '"><span class="' + options.classString.galleryPagination + '">' + imageCounter + '<span class="' + options.classString.galleryDivider + '">' + l.gallery_divider + '</span>' + imageTotal + '</span></div>').appendTo(gallery);
+
+				/* append image artist */
+
+				if (imageArtist)
+				{
+					galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</div>');
+				}
+
+				/* append image description */
+
+				if (imageDescription)
+				{
+					galleryMeta.append('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</div>');
+				}
 
 				/* append previous and next */
 

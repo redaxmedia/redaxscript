@@ -15,8 +15,11 @@ function gallery_loader_start()
 function gallery_loader_scripts_transport_start()
 {
 	$output = languages_transport(array(
+		'gallery_image_artist',
+		'gallery_image_description',
 		'gallery_image_next',
-		'gallery_image_previous'
+		'gallery_image_previous',
+	     'gallery_divider'
 	));
 	echo $output;
 }
