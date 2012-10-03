@@ -232,6 +232,13 @@
 					{
 						buttonNext.click();
 					}
+
+					/* disable up and down */
+
+					if (event.which === 38 || event.which === 40)
+					{
+						event.preventDefault();
+					}
 				});
 			});
 
@@ -280,6 +287,7 @@
 			galleryOverlay.click(function ()
 			{
 				gallery.add(galleryOverlay).remove();
+				win.off();
 			});
 			event.preventDefault();
 		});
