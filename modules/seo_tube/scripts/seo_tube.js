@@ -29,7 +29,7 @@
 				$('#description').val(video.description);
 				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
-					text += '<p class="description_seo_tube">' + video.description + '</p>' + r.constant.EOL + r.constant.EOL;
+					text += '<p class="text_seo_tube">' + video.description + '</p>' + r.constant.EOL + r.constant.EOL;
 				}
 			}
 

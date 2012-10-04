@@ -41,7 +41,7 @@
 
 				/* full image loaded */
 
-				image.data('related', related).load(function ()
+				image.data('related', related).on('load', function ()
 				{
 					var thumbRelated = $(this).data('related');
 
@@ -129,7 +129,7 @@
 
 			/* full image loaded */
 
-			image.load(function ()
+			image.on('load', function ()
 			{
 				/* clear loader and image timeout */
 
@@ -203,6 +203,7 @@
 					if (imageCounter > 1 || imageCounter < imageTotal)
 					{
 						gallery.remove();
+						win.off();
 						$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
 					}
 					event.preventDefault();

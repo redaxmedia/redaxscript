@@ -19,7 +19,7 @@ function gallery_loader_scripts_transport_start()
 		'gallery_image_description',
 		'gallery_image_next',
 		'gallery_image_previous',
-	     'gallery_divider'
+		'gallery_divider'
 	));
 	echo $output;
 }
