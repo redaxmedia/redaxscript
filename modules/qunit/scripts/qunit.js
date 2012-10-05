@@ -11,14 +11,14 @@
 			options = $.extend({}, r.module.qunit.options, options || {});
 		}
 
-		var win = window,
-			qunit = $(this);
+		var win = window;
 
 		/* done callback */
 
 		win.QUnit.done = function ()
 		{
-			var qunitHeader = qunit.find(options.element.qunitHeader),
+			var qunit = $(options.element.qunit),
+				qunitHeader = qunit.find(options.element.qunitHeader),
 				qunitBanner = qunit.find(options.element.qunitBanner),
 				qunitToolbar = qunit.find(options.element.qunitToolbar),
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
