@@ -18,7 +18,8 @@ module.exports = function(grunt)
 
 	/* config grunt */
 
-	grunt.initConfig({
+	grunt.initConfig(
+	{
 		lint:
 		{
 			base: ['scripts/*.js'],
