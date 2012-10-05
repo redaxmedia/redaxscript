@@ -40,177 +40,177 @@
 
 /* editor control icons */
 
-.editor_control.editor_control_source_code
+.editor_control.source_code
 {
 	background-position: -3px -3px;
 }
 
-.editor_control.editor_control_wysiwyg
+.editor_control.wysiwyg
 {
 	background-position: -3px -33px;
 }
 
-.editor_control.editor_control_bold
+.editor_control.bold
 {
 	background-position: -3px -63px;
 }
 
-.editor_control.editor_control_italic
+.editor_control.italic
 {
 	background-position: -3px -93px;
 }
 
-.editor_control.editor_control_underline
+.editor_control.underline
 {
 	background-position: -3px -123px;
 }
 
-.editor_control.editor_control_strike
+.editor_control.strike
 {
 	background-position: -3px -153px;
 }
 
-.editor_control.editor_control_superscript
+.editor_control.superscript
 {
 	background-position: -3px -183px;
 }
 
-.editor_control.editor_control_subscript
+.editor_control.subscript
 {
 	background-position: -3px -213px;
 }
 
-.editor_control.editor_control_paragraph
+.editor_control.paragraph
 {
 	background-position: -3px -243px;
 }
 
-.editor_control.editor_control_h1
+.editor_control.h1
 {
 	background-position: -3px -273px;
 }
 
-.editor_control.editor_control_h2
+.editor_control.h2
 {
 	background-position: -3px -303px;
 }
 
-.editor_control.editor_control_h3
+.editor_control.h3
 {
 	background-position: -3px -333px;
 }
 
-.editor_control.editor_control_h4
+.editor_control.h4
 {
 	background-position: -3px -363px;
 }
 
-.editor_control.editor_control_h5
+.editor_control.h5
 {
 	background-position: -3px -393px;
 }
 
-.editor_control.editor_control_h6
+.editor_control.h6
 {
 	background-position: -3px -423px;
 }
 
-.editor_control.editor_control_ordered_list
+.editor_control.ordered_list
 {
 	background-position: -3px -453px;
 }
 
-.editor_control.editor_control_unordered_list
+.editor_control.unordered_list
 {
 	background-position: -3px -483px;
 }
 
-.editor_control.editor_control_outdent
+.editor_control.outdent
 {
 	background-position: -3px -513px;
 }
 
-.editor_control.editor_control_indent
+.editor_control.indent
 {
 	background-position: -3px -543px;
 }
 
-.editor_control.editor_control_align_left
+.editor_control.align_left
 {
 	background-position: -3px -573px;
 }
 
-.editor_control.editor_control_align_center
+.editor_control.align_center
 {
 	background-position: -3px -603px;
 }
 
-.editor_control.editor_control_align_right
+.editor_control.align_right
 {
 	background-position: -3px -633px;
 }
 
-.editor_control.editor_control_align_justify
+.editor_control.align_justify
 {
 	background-position: -3px -663px;
 }
 
-.editor_control.editor_control_undo
+.editor_control.undo
 {
 	background-position: -3px -693px;
 }
 
-.editor_control.editor_control_redo
+.editor_control.redo
 {
 	background-position: -3px -723px;
 }
 
-.editor_control.editor_control_insert_image
+.editor_control.insert_image
 {
 	background-position: -3px -753px;
 }
 
-.editor_control.editor_control_insert_link
+.editor_control.insert_link
 {
 	background-position: -3px -783px;
 }
 
-.editor_control.editor_control_unlink
+.editor_control.unlink
 {
 	background-position: -3px -813px;
 }
 
-.editor_control.editor_control_cut
+.editor_control.cut
 {
 	background-position: -3px -843px;
 }
 
-.editor_control.editor_control_copy
+.editor_control.copy
 {
 	background-position: -3px -873px;
 }
 
-.editor_control.editor_control_paste
+.editor_control.paste
 {
 	background-position: -3px -903px;
 }
 
-.editor_control.editor_control_insert_break
+.editor_control.insert_break
 {
 	background-position: -3px -933px;
 }
 
-.editor_control.editor_control_insert_code
+.editor_control.insert_code
 {
 	background-position: -3px -963px;
 }
 
-.editor_control.editor_control_insert_function
+.editor_control.insert_function
 {
 	background-position: -3px -993px;
 }
 
-.editor_control.editor_control_unformat
+.editor_control.unformat
 {
 	background-position: -3px -1023px;
 }

@@ -39,8 +39,8 @@
 		/* build editor elements */
 
 		editor.textarea.hide();
-		editor.container = $('<div class="js_editor editor"></div>').insertBefore(editor.textarea);
-		editor.toolbar = $('<div class="js_toolbar editor_toolbar" unselectable="on"></div>').appendTo(editor.container);
+		editor.container = $('<div class="' + options.classString.editor + '"></div>').insertBefore(editor.textarea);
+		editor.toolbar = $('<div class="' + options.classString.editorToolbar + '" unselectable="on"></div>').appendTo(editor.container);
 
 		/* create toolbar */
 
@@ -57,28 +57,28 @@
 
 				if (name === 'divider')
 				{
-					$('<div class="js_editor_divider editor_divider"></div>').appendTo(editor.toolbar);
+					$('<div class="' + options.classString.editorDivider + '"></div>').appendTo(editor.toolbar);
 				}
 
 				/* append newline */
 
 				else if (name === 'newline')
 				{
-					$('<div class="js_editor_newline editor_newline"></div>').appendTo(editor.toolbar);
+					$('<div class="' + options.classString.editorNewline + '"></div>').appendTo(editor.toolbar);
 				}
 
 				/* append toggle */
 
 				else if (name === 'toggle')
 				{
-					editor.toggler = control = $('<div class="js_editor_control editor_control editor_control_source_code" title="' + data.title + '"></div>').appendTo(editor.toolbar);
+					editor.toggler = control = $('<div class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
 				}
 
 				/* append serveral controls */
 
 				else if (data)
 				{
-					control = $('<div class="js_editor_control editor_control editor_control_' + name + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
+					control = $('<div class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
 				}
 
 				/* store control data */
@@ -261,7 +261,7 @@
 				editor.textarea.val(editor.convertToHTML()).focus();
 				editor.toggler.attr('title', l.editor_wysiwyg);
 			}
-			editor.toggler.toggleClass('editor_control_source_code editor_control_wysiwyg').nextAll('div.editor_control, div.editor_divider').toggle();
+			editor.toggler.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl + ', ' + options.element.editorDivider).toggle();
 			editor.textarea.add(editor.preview).toggle();
 			editor.validate();
 		};
@@ -339,7 +339,7 @@
 
 		/* append preview */
 
-		editor.preview = $('<div class="js_required js_editor_preview editor_preview" contenteditable="true">' + editor.convertToEntity() + '</div>').appendTo(editor.container);
+		editor.preview = $('<div class="' + options.classString.editorPreview + '" contenteditable="true">' + editor.convertToEntity() + '</div>').appendTo(editor.container);
 
 		/* insert break on enter */
 
