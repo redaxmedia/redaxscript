@@ -22,7 +22,8 @@ r.module.qunit =
 			qunitToolbar: '#qunit-testrunner-toolbar',
 			qunitUserAgent: '#qunit-userAgent',
 			qunitResult: '#qunit-testresult',
-			qunitTest: '#qunit-tests'
+			qunitTest: '#qunit-tests',
+			qunitFixture: '#qunit-fixture'
 		}
 	}
 };

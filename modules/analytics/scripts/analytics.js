@@ -22,7 +22,7 @@
 
 			/* track event on click */
 
-			$(options.trigger).one('click', function ()
+			$(this).one('click', function ()
 			{
 				var trigger = $(this),
 					category = trigger.data('category'),
@@ -56,6 +56,6 @@ jQuery(function ($)
 
 	if (r.module.analytics.startup && r.constant.LOGGED_IN !== r.constant.TOKEN && typeof _gat === 'object')
 	{
-		$.fn.analytics(r.module.analytics.options);
+		$(r.module.analytics.selector).analytics(r.module.analytics.options);
 	}
 });

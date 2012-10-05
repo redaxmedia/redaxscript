@@ -23,7 +23,8 @@
 				qunitToolbar = qunit.find(options.element.qunitToolbar),
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
 				qunitResult = qunit.find(options.element.qunitResult),
-				qunitTest = qunit.find(options.element.qunitTest);
+				qunitTest = qunit.find(options.element.qunitTest),
+				qunitFixture = qunit.find(options.element.qunitFixture);
 
 			/* add several classes */
 

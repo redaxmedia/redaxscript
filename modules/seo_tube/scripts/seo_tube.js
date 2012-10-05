@@ -2,9 +2,20 @@
 {
 	/* seo tube */
 
-	$.fn.seoTube = function ()
+	$.fn.seoTube = function (options)
 	{
-		var video = r.module.seoTube.video,
+		/* extend options */
+
+		if (r.module.seoTube.options !== options)
+		{
+			options = $.extend({}, r.module.seoTube.options, options || {});
+		}
+
+		var relatedTitle = $(options.related.title),
+			relatedAlias = $(options.related.alias),
+			relatedDescription = $(options.related.description),
+			relatedText = $(options.related.text),
+			video = r.module.seoTube.video,
 			constant = r.module.seoTube.constant,
 			text;
 
@@ -14,8 +25,8 @@
 
 			if (video.title)
 			{
-				$('#title').val(video.title);
-				$('#alias').val($.fn.cleanAlias(video.title));
+				relatedTitle.val(video.title);
+				relatedAlias.val($.fn.cleanAlias(video.title));
 			}
 			if (video.id)
 			{
@@ -26,7 +37,7 @@
 
 			if (video.description)
 			{
-				$('#description').val(video.description);
+				relatedDescription.val(video.description);
 				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
 					text += '<p class="text_seo_tube">' + video.description + '</p>' + r.constant.EOL + r.constant.EOL;
@@ -41,7 +52,7 @@
 			}
 			if (text)
 			{
-				$('#text').val(text);
+				relatedText.val(text);
 			}
 		}
 	};
