@@ -62,7 +62,7 @@ function qunit_center_start()
 
 		/* collect output */
 
-		$output = '<div id="qunit" class="wrapper_qunit"></div>';
+		$output = '<div id="qunit" class="wrapper_qunit"></div><div id="qunit-fixture"></div>';
 		echo $output;
 	}
 }

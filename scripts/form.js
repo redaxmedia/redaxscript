@@ -155,7 +155,7 @@
 
 	$.fn.clearFocus = function ()
 	{
-		$(this).on('focusin focusout', function (event)
+		return $(this).on('focusin focusout', function (event)
 		{
 			var field = this,
 				fieldValue = $.trim(field.value),

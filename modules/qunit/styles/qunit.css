@@ -18,17 +18,17 @@
 	padding: 0 1em;
 }
 
-.toolbar_qunit input
+.toolbar_qunit input, .toolbar_qunit select
 {
 	margin-right: 0.5em;
 }
 
-.toolbar_qunit input + label
+.toolbar_qunit input + label, .toolbar_qunit select + label
 {
 	margin-right: 1.5em;
 }
 
-.toolbar_qunit input, .toolbar_qunit input + label
+.toolbar_qunit input, .toolbar_qunit label, .toolbar_qunit select
 {
 	vertical-align: middle;
 }
