@@ -10,6 +10,7 @@ function qunit_loader_start()
 		$loader_modules_styles[] = 'modules/qunit/styles/qunit.css';
 		$loader_modules_scripts[] = 'modules/qunit/scripts/startup.js';
 		$loader_modules_scripts[] = 'modules/qunit/scripts/qunit.js';
+		$loader_modules_scripts[] = 'modules/qunit/scripts/test.js';
 	}
 }
 
