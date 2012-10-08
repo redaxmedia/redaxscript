@@ -18,12 +18,12 @@ r.module.qunit =
 		},
 		classString:
 		{
-			qunitHeader: 'js_title_qunit title_qunit',
-			qunitBanner: 'js_banner_qunit box_note banner_qunit',
-			qunitToolbar: 'js_toolbar_qunit box_qunit toolbar_qunit',
-			qunitUserAgent: 'js_user_agent_qunit box_qunit user_agent_qunit',
-			qunitResult: 'js_result_qunit title_qunit result_qunit',
-			qunitTest: 'js_test_qunit box_qunit test_qunit'
+			qunitHeader: 'title_qunit',
+			qunitBanner: 'box_note banner_qunit',
+			qunitToolbar: 'box_qunit toolbar_qunit',
+			qunitUserAgent: 'box_qunit user_agent_qunit',
+			qunitResult: 'title_qunit',
+			qunitTest: 'list_qunit'
 		}
 	}
 };

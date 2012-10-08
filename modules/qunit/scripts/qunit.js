@@ -35,7 +35,7 @@
 			qunitResult.addClass(options.classString.qunitResult);
 			qunitTest.addClass(options.classString.qunitTest);
 
-			/* extend banner */
+			/* detach and extend banner */
 
 			if (qunitBanner.hasClass('qunit-pass'))
 			{
@@ -45,6 +45,11 @@
 			{
 				qunitBanner.addClass('note_error').text(l.qunit_test_failed + l.point);
 			}
+			qunitBanner.detach().insertBefore(qunitHeader);
+
+			/* replace break in result */
+
+			qunitResult.find('br').replaceWith(' ');
 		};
 	};
 })(jQuery);

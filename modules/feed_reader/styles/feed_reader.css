@@ -34,6 +34,11 @@
 	text-shadow: 0 1px #f1f1f1;
 }
 
+.title_feed_reader, .title_feed_reader a
+{
+	color: #474747;
+}
+
 .title_feed_reader a:hover
 {
 	text-decoration: underline;
@@ -46,7 +51,7 @@
 
 /* space between elements */
 
-.title_feed_reader + .box_feed_reader
+.box_feed_reader + .title_feed_reader
 {
-	margin-bottom: 2em;
+	margin-top: 2em;
 }
