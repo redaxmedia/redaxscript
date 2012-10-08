@@ -13,7 +13,9 @@
 	border-width: 0 1px;
 }
 
-.table_admin tbody tr
+/* odd */
+
+.table_admin tbody:nth-child(odd) tr
 {
 	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
@@ -22,18 +24,24 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
-	border-bottom: 1px solid #b9b9b9;
 }
 
-.table_admin tbody tr:hover
+/* even */
+
+.table_admin tbody:nth-child(even) tr
 {
-	background: #e5e5e5;
-	background: -moz-linear-gradient(top, #e5e5e5, #e2e2e2);
-	background: -ms-linear-gradient(top, #e5e5e5, #e2e2e2);
-	background: -o-linear-gradient(top, #e5e5e5, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#e2e2e2));
-	background: -webkit-linear-gradient(top, #e5e5e5, #e2e2e2);
-	background: linear-gradient(top, #e5e5e5, #e2e2e2);
+	background: #ebebeb;
+	background: -moz-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -ms-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -o-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#e8e8e8));
+	background: -webkit-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: linear-gradient(top, #ebebeb, #e8e8e8);
+}
+
+.table_admin tbody tr
+{
+	border-bottom: 1px solid #b9b9b9;
 }
 
 .table_admin tbody:last-child tr:last-child
@@ -61,11 +69,6 @@
 .table_admin tfoot + tbody .row_group
 {
 	border-top: 0;
-}
-
-.table_admin tbody .row_group, .table_admin tbody .row_group:hover
-{
-	background: url('templates/admin/images/carbon.png') #f2f2f2;
 }
 
 /* admin table head and foot */
