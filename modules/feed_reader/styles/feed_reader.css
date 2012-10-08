@@ -1,11 +1,10 @@
-/* feed reader */
+/* feed reader box */
 
 .box_feed_reader
 {
 	background: #e2e2e2;
 	border: 1px solid #cdcdcd;
 	color: #474747;
-	margin-bottom: 2em;
 	padding: 1em;
 }
 
@@ -13,6 +12,8 @@
 {
 	text-decoration: underline;
 }
+
+/* feed reader title */
 
 .title_feed_reader
 {
@@ -41,4 +42,11 @@
 .title_feed_reader .title_second
 {
 	float: right;
+}
+
+/* space between elements */
+
+.title_feed_reader + .box_feed_reader
+{
+	margin-bottom: 2em;
 }
