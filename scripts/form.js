@@ -155,20 +155,23 @@
 
 	$.fn.clearFocus = function ()
 	{
-		return $(this).on('focusin focusout', function (event)
+		return this.each(function ()
 		{
-			var field = this,
-				fieldValue = $.trim(field.value),
-				fieldValueDefault = field.defaultValue;
+			$(this).on('focusin focusout', function (event)
+			{
+				var field = this,
+					fieldValue = $.trim(field.value),
+					fieldValueDefault = field.defaultValue;
 
-			if (event.type === 'focusin' && fieldValue === fieldValueDefault)
-			{
-				field.value = '';
-			}
-			else if (fieldValue === '')
-			{
-				field.value = fieldValueDefault;
-			}
+				if (event.type === 'focusin' && fieldValue === fieldValueDefault)
+				{
+					field.value = '';
+				}
+				else if (fieldValue === '')
+				{
+					field.value = fieldValueDefault;
+				}
+			});
 		});
 	};
 
@@ -176,18 +179,21 @@
 
 	$.fn.unmaskPassword = function ()
 	{
-		$(this).on('keydown focusout', function (event)
+		return this.each(function ()
 		{
-			var field = this;
+			$(this).on('keydown focusout', function (event)
+			{
+				var field = this;
 
-			if (event.ctrlKey && event.altKey)
-			{
-				field.type = 'text';
-			}
-			else
-			{
-				field.type = 'password';
-			}
+				if (event.ctrlKey && event.altKey)
+				{
+					field.type = 'text';
+				}
+				else
+				{
+					field.type = 'password';
+				}
+			});
 		});
 	};
 
