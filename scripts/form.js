@@ -155,6 +155,8 @@
 
 	$.fn.clearFocus = function ()
 	{
+		/* return this */
+
 		return this.each(function ()
 		{
 			$(this).on('focusin focusout', function (event)
@@ -179,6 +181,8 @@
 
 	$.fn.unmaskPassword = function ()
 	{
+		/* return this */
+
 		return this.each(function ()
 		{
 			$(this).on('keydown focusout', function (event)

@@ -11,33 +11,38 @@
 			options = $.extend({}, r.plugin.generateAlias.options, options || {});
 		}
 
-		/* listen for input */
+		/* return this */
 
-		$(this).on('change input', function ()
+		return this.each(function ()
 		{
-			var field = $(this),
-				form = field.closest('form'),
-				fiedValue = field[0].value,
-				related = form.find(options.related),
-				aliasValue;
+			/* listen for input */
 
-			/* clean alias if value */
-
-			if (fiedValue)
+			$(this).on('change input', function ()
 			{
-				aliasValue = $.fn.cleanAlias(fiedValue);
-				if (aliasValue)
+				var field = $(this),
+					form = field.closest('form'),
+					fiedValue = field[0].value,
+					related = form.find(options.related),
+					aliasValue;
+
+				/* clean alias if value */
+
+				if (fiedValue)
 				{
-					related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
+					aliasValue = $.fn.cleanAlias(fiedValue);
+					if (aliasValue)
+					{
+						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
+					}
 				}
-			}
 
-			/* else clear value */
+				/* else clear value */
 
-			else
-			{
-				related[0].value = '';
-			}
+				else
+				{
+					related[0].value = '';
+				}
+			});
 		});
 	};
 
