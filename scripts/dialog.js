@@ -155,7 +155,7 @@
 		});
 	};
 
-	/* prevent unload on admin */
+	/* prevent unload */
 
 	$.fn.preventUnload = function (options)
 	{

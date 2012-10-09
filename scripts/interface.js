@@ -11,61 +11,66 @@
 			options = $.extend({}, r.plugin.accordion.options, options || {});
 		}
 
-		var accordionTitle = $(this),
-			accordion = accordionTitle.closest(options.element.accordion),
-			accordionBox = accordion.find(options.element.accordionBox),
-			accordionForm = accordion.closest('form');
+		/* return this */
 
-		/* show active accordion box */
-
-		accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
-
-		/* listen for click */
-
-		$(this).click(function ()
+		return this.each(function ()
 		{
-			var accordionTitleActive = $(this),
-				accordion = accordionTitleActive.closest(options.element.accordion),
-				accordionSet = accordion.find(options.element.accordionSet),
-				accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
-				accordionTitle = accordion.find(options.element.accordionTitle),
+			var accordionTitle = $(this),
+				accordion = accordionTitle.closest(options.element.accordion),
 				accordionBox = accordion.find(options.element.accordionBox),
-				accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
+				accordionForm = accordion.closest('form');
 
-			/* remove active classes */
+			/* show active accordion box */
 
-			accordionTitle.not(accordionTitleActive).removeClass('js_title_active title_active');
-			accordionSet.not(accordionSetActive).removeClass('js_set_active set_active');
+			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
 
-			/* slide accordion box */
+			/* listen for click */
 
-			accordionBox.not(accordionBoxActive).stop(1).slideUp(options.duration);
-			if (accordionBoxActive.is(':hidden'))
+			$(this).click(function ()
 			{
-				accordionBoxActive.stop(1).slideDown(options.duration);
+				var accordionTitleActive = $(this),
+					accordion = accordionTitleActive.closest(options.element.accordion),
+					accordionSet = accordion.find(options.element.accordionSet),
+					accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
+					accordionTitle = accordion.find(options.element.accordionTitle),
+					accordionBox = accordion.find(options.element.accordionBox),
+					accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
 
-				/* add active classes */
+				/* remove active classes */
 
-				accordionTitleActive.addClass('js_title_active title_active');
-				accordionSetActive.addClass('js_set_active set_active');
-			}
-		});
+				accordionTitle.not(accordionTitleActive).removeClass('js_title_active title_active');
+				accordionSet.not(accordionSetActive).removeClass('js_set_active set_active');
 
-		/* prevent next tab for last children */
+				/* slide accordion box */
 
-		accordionBox.children(':last-child').on('keydown', function (event)
-		{
-			if (event.which === 9)
+				accordionBox.not(accordionBoxActive).stop(1).slideUp(options.duration);
+				if (accordionBoxActive.is(':hidden'))
+				{
+					accordionBoxActive.stop(1).slideDown(options.duration);
+
+					/* add active classes */
+
+					accordionTitleActive.addClass('js_title_active title_active');
+					accordionSetActive.addClass('js_set_active set_active');
+				}
+			});
+
+			/* prevent next tab for last children */
+
+			accordionBox.children(':last-child').on('keydown', function (event)
 			{
-				event.preventDefault();
-			}
-		});
+				if (event.which === 9)
+				{
+					event.preventDefault();
+				}
+			});
 
-		/* show related set on validation error */
+			/* show related set on validation error */
 
-		accordionForm.on('error', function ()
-		{
-			$(this).find(options.element.accordionSet).has('.js_note_error').first().children(options.element.accordionTitle).click();
+			accordionForm.on('error', function ()
+			{
+				$(this).find(options.element.accordionSet).has('.js_note_error').first().children(options.element.accordionTitle).click();
+			});
 		});
 	};
 
@@ -80,14 +85,14 @@
 			options = $.extend({}, r.plugin.dropdown.options, options || {});
 		}
 
-		/* handle each dropdown */
+		/* return this */
 
-		$(this).each(function ()
+		return this.each(function ()
 		{
 			var dropdown = $(this),
 				dropdownRelated = dropdown.find(options.related);
 
-			/* handle touch events */
+			/* listen for touchstart and touchend */
 
 			dropdownRelated.on('touchstart touchend', function (event)
 			{
@@ -119,67 +124,72 @@
 			options = $.extend({}, r.plugin.tab.options, options || {});
 		}
 
-		var string = window.location.href.replace(r.baseURL, ''),
-			tabList = $(options.element.tabList),
-			tabBox = $(options.element.tabBox),
-			tabSet = tabBox.find(options.element.tabSet),
-			tabForm = tabBox.closest('form');
+		/* return this */
 
-		/* show first tab set */
-
-		tabSet.hide();
-		tabBox.height('auto').each(function ()
+		return this.each(function ()
 		{
-			$(this).find(options.element.tabSet).first().addClass('js_set_active set_active').show();
-		});
+			var string = window.location.href.replace(r.baseURL, ''),
+				tabList = $(options.element.tabList),
+				tabBox = $(options.element.tabBox),
+				tabSet = tabBox.find(options.element.tabSet),
+				tabForm = tabBox.closest('form');
 
-		/* click on tab */
+			/* show first tab set */
 
-		$(this).click(function (event)
-		{
-			var tabItem = $(this),
-				tabList = tabItem.closest(options.element.tabList),
-				tabListChildren = tabList.children(),
-				tabNameRelated = tabItem.children('a').attr('href').split('#')[1],
-				tabSetRelated = $('#' + tabNameRelated),
-				tabSetSiblings = tabSetRelated.siblings(options.element.tabSet);
-
-			if (tabNameRelated)
+			tabSet.hide();
+			tabBox.height('auto').each(function ()
 			{
-				/* remove active classes */
+				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active').show();
+			});
 
-				tabListChildren.removeClass('js_item_active item_active');
-				tabSetSiblings.removeClass('js_set_active set_active').hide();
+			/* listen for click */
 
-				/* add active classes */
-
-				tabItem.addClass('js_item_active item_active');
-				tabSetRelated.addClass('js_set_active set_active').show();
-			}
-			event.preventDefault();
-		});
-
-		/* click tab depending on location href */
-
-		tabList.find('a[href="' + string + '"]').click();
-
-		/* prevent next tab for last children */
-
-		tabSet.children().children(':last-child').on('keydown', function (event)
-		{
-			if (event.which === 9)
+			$(this).click(function (event)
 			{
+				var tabItem = $(this),
+					tabList = tabItem.closest(options.element.tabList),
+					tabListChildren = tabList.children(),
+					tabNameRelated = tabItem.children('a').attr('href').split('#')[1],
+					tabSetRelated = $('#' + tabNameRelated),
+					tabSetSiblings = tabSetRelated.siblings(options.element.tabSet);
+
+				if (tabNameRelated)
+				{
+					/* remove active classes */
+
+					tabListChildren.removeClass('js_item_active item_active');
+					tabSetSiblings.removeClass('js_set_active set_active').hide();
+
+					/* add active classes */
+
+					tabItem.addClass('js_item_active item_active');
+					tabSetRelated.addClass('js_set_active set_active').show();
+				}
 				event.preventDefault();
-			}
-		});
+			});
 
-		/* show related tab on validation error */
+			/* click tab depending on location href */
 
-		tabForm.on('error', function ()
-		{
-			var id = $(this).find(options.element.tabSet).has('.js_note_error').first().attr('id');
+			tabList.find('a[href="' + string + '"]').click();
 
-			tabList.find('a[href*="' + r.constant.FULL_STRING + '#' + id + '"]').click();
+			/* prevent next tab for last children */
+
+			tabSet.children().children(':last-child').on('keydown', function (event)
+			{
+				if (event.which === 9)
+				{
+					event.preventDefault();
+				}
+			});
+
+			/* show related tab on validation error */
+
+			tabForm.on('error', function ()
+			{
+				var id = $(this).find(options.element.tabSet).has('.js_note_error').first().attr('id');
+
+				tabList.find('a[href*="' + r.constant.FULL_STRING + '#' + id + '"]').click();
+			});
 		});
 	};
 })(jQuery);

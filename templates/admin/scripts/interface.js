@@ -11,29 +11,34 @@
 			options = $.extend({}, r.plugin.adminDock.options, options || {});
 		}
 
-		var dock = $(this),
-			dockLink = dock.find(options.element.dockLink);
+		/* return this */
 
-		/* append description to docks */
-
-		dock.append(options.element.dockDescriptionHTML);
-
-		/* setup dock links */
-
-		dockLink.each(function ()
+		return this.each(function ()
 		{
-			var dockElement = $(this),
-				dockElementText = dockElement.text(),
-				dockDescription = dockElement.siblings(options.element.dockDescription);
+			var dock = $(this),
+				dockLink = dock.find(options.element.dockLink);
 
-			/* change on hover */
+			/* append description to docks */
 
-			dockElement.hover(function ()
+			dock.append(options.element.dockDescriptionHTML);
+
+			/* setup dock links */
+
+			dockLink.each(function ()
 			{
-				dockDescription.text(dockElementText);
-			}, function ()
-			{
-				dockDescription.text('');
+				var dockElement = $(this),
+					dockElementText = dockElement.text(),
+					dockDescription = dockElement.siblings(options.element.dockDescription);
+
+				/* listen for hover */
+
+				dockElement.hover(function ()
+				{
+					dockDescription.text(dockElementText);
+				}, function ()
+				{
+					dockDescription.text('');
+				});
 			});
 		});
 	};
@@ -49,41 +54,46 @@
 			options = $.extend({}, r.plugin.adminPanel.options, options || {});
 		}
 
-		var panel = $(this),
-			panelHeight = panel.height(),
-			panelBox = panel.find(options.element.panelBox),
-			panelBar = panel.find(options.element.panelBar),
-			panelBarHeight = panelBar.height(),
-			panelRelated = $(options.related);
+		/* return this */
 
-		/* opened on admin */
-
-		if (r.constant.FIRST_PARAMETER === 'admin')
+		return this.each(function ()
 		{
-			panelRelated.css('margin-top', panelHeight);
-		}
+			var panel = $(this),
+				panelHeight = panel.height(),
+				panelBox = panel.find(options.element.panelBox),
+				panelBar = panel.find(options.element.panelBar),
+				panelBarHeight = panelBar.height(),
+				panelRelated = $(options.related);
 
-		/* else closed */
+			/* open on admin */
 
-		else
-		{
-			panel.height(panelHeight / 2);
-			panelBox.hide();
-			panelRelated.css('margin-top', panelBarHeight);
-
-			/* show on hover */
-
-			panel.hover(function ()
+			if (r.constant.FIRST_PARAMETER === 'admin')
 			{
-				panelBox.stop(1).show();
-			}, function ()
+				panelRelated.css('margin-top', panelHeight);
+			}
+
+			/* else close */
+
+			else
 			{
-				panelBox.delay(options.duration).queue(function ()
+				panel.height(panelHeight / 2);
+				panelBox.hide();
+				panelRelated.css('margin-top', panelBarHeight);
+
+				/* listen for hover */
+
+				panel.hover(function ()
 				{
-					$(this).hide();
+					panelBox.stop(1).show();
+				}, function ()
+				{
+					panelBox.delay(options.duration).queue(function ()
+					{
+						$(this).hide();
+					});
 				});
-			});
-		}
+			}
+		});
 	};
 })(jQuery);
 

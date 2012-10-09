@@ -11,74 +11,79 @@
 			options = $.extend({}, r.plugin.checkRequired.options, options || {});
 		}
 
-		/* validate required fields */
+		/* return this */
 
-		$(this).on('submit change input related', function (event)
+		return this.each(function ()
 		{
-			var form = $(this),
-				fieldRequired = form.find(options.required),
-				fieldRequiredAll = fieldRequired;
+			/* validate form */
 
-			/* check needed elements only */
-
-			if (event.type === 'related')
+			$(this).on('submit change input related', function (event)
 			{
-				fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
-			}
-			else if (event.type === 'change' ||  event.type === 'input')
-			{
-				fieldRequired = fieldRequired.filter(':active');
-			}
+				var form = $(this),
+					fieldRequired = form.find(options.required),
+					fieldRequiredAll = fieldRequired;
 
-			/* check required fields */
+				/* check needed elements only */
 
-			fieldRequired.each(function ()
-			{
-				var field = $(this),
-					fieldTag = field.context.tagName,
-					noteErrorClasses = 'js_note_error note_error',
-					fieldValue;
-
-				/* check for tag */
-
-				if (fieldTag === 'DIV')
+				if (event.type === 'related')
 				{
-					fieldValue = $.trim(field.text());
-					noteErrorClasses += ' box_note';
+					fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
 				}
+				else if (event.type === 'change' ||  event.type === 'input')
+				{
+					fieldRequired = fieldRequired.filter(':active');
+				}
+
+				/* check required fields */
+
+				fieldRequired.each(function ()
+				{
+					var field = $(this),
+						fieldTag = field.context.tagName,
+						noteErrorClasses = 'js_note_error note_error',
+						fieldValue;
+
+					/* check for tag */
+
+					if (fieldTag === 'DIV')
+					{
+						fieldValue = $.trim(field.text());
+						noteErrorClasses += ' box_note';
+					}
+					else
+					{
+						fieldValue = $.trim(field[0].value);
+						noteErrorClasses += ' field_note';
+					}
+
+					/* check for value */
+
+					if (fieldValue)
+					{
+						field.removeClass(noteErrorClasses).trigger('valid');
+					}
+					else
+					{
+						field.addClass(noteErrorClasses).trigger('invalid');
+					}
+				});
+
+				/* trigger error and prevent submit */
+
+				if (fieldRequiredAll.hasClass('js_note_error'))
+				{
+					form.trigger('error');
+					event.preventDefault();
+				}
+
+				/* else trigger success */
+
 				else
 				{
-					fieldValue = $.trim(field[0].value);
-					noteErrorClasses += ' field_note';
+					form.trigger('success');
 				}
-
-				/* check for value */
-
-				if (fieldValue)
-				{
-					field.removeClass(noteErrorClasses).trigger('valid');
-				}
-				else
-				{
-					field.addClass(noteErrorClasses).trigger('invalid');
-				}
-			});
-
-			/* trigger error and prevent submit */
-
-			if (fieldRequiredAll.hasClass('js_note_error'))
-			{
-				form.trigger('error');
-				event.preventDefault();
-			}
-
-			/* else trigger success */
-
-			else
-			{
-				form.trigger('success');
-			}
-		}).attr('novalidate', 'novalidate');
+			}).attr('novalidate', 'novalidate');
+		});
 	};
 
 	/* check search */
@@ -92,26 +97,31 @@
 			options = $.extend({}, r.plugin.checkSearch.options, options || {});
 		}
 
-		/* listen for submit */
+		/* return this */
 
-		$(this).submit(function (event)
+		return this.each(function ()
 		{
-			var field = $(this).find(options.required)[0],
-				fieldValue = $.trim(field.value),
-				fieldDefaultValue = field.defaultValue,
-				inputIncorrect = l.input_incorrect + l.exclamation_mark;
+			/* listen for submit */
 
-			/* prematurely terminate search */
-
-			if (fieldValue === '' || fieldValue === fieldDefaultValue || fieldValue === inputIncorrect)
+			$(this).submit(function (event)
 			{
-				field.value = inputIncorrect;
-				setTimeout(function ()
+				var field = $(this).find(options.required)[0],
+					fieldValue = $.trim(field.value),
+					fieldDefaultValue = field.defaultValue,
+					inputIncorrect = l.input_incorrect + l.exclamation_mark;
+
+				/* prematurely terminate search */
+
+				if (fieldValue === '' || fieldValue === fieldDefaultValue || fieldValue === inputIncorrect)
 				{
-					field.value = fieldDefaultValue;
-				}, options.duration);
-				event.preventDefault();
-			}
+					field.value = inputIncorrect;
+					setTimeout(function ()
+					{
+						field.value = fieldDefaultValue;
+					}, options.duration);
+					event.preventDefault();
+				}
+			});
 		});
 	};
 
@@ -126,32 +136,37 @@
 			options = $.extend({}, r.plugin.noteRequired.options, options || {});
 		}
 
-		var form = $(this),
-			formRelatedFirst = form.find(options.related).first(),
-			noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelatedFirst).hide(),
-			timeout;
+		/* return this */
 
-		/* form validate events */
-
-		form.on('error success', function (event)
+		return this.each(function ()
 		{
-			clearTimeout(timeout);
-			if (event.type === 'error')
+			var form = $(this),
+				formRelatedFirst = form.find(options.related).first(),
+				noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelatedFirst).hide(),
+				timeout;
+
+			/* listen for error and success */
+
+			form.on('error success', function (event)
 			{
-				noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').show();
-			}
-			else
-			{
-				noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
-				timeout = setTimeout(function ()
+				clearTimeout(timeout);
+				if (event.type === 'error')
 				{
-					noteRequired.hide();
-				}, options.duration);
-			}
+					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').show();
+				}
+				else
+				{
+					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
+					timeout = setTimeout(function ()
+					{
+						noteRequired.hide();
+					}, options.duration);
+				}
+			});
 		});
 	};
 
-	/* clear fields on focus */
+	/* clear fields */
 
 	$.fn.clearFocus = function ()
 	{
@@ -159,6 +174,8 @@
 
 		return this.each(function ()
 		{
+			/* listen for focusin and focusout */
+
 			$(this).on('focusin focusout', function (event)
 			{
 				var field = this,
@@ -177,7 +194,7 @@
 		});
 	};
 
-	/* unmask password on keydown */
+	/* unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -185,6 +202,8 @@
 
 		return this.each(function ()
 		{
+			/* listen for keydown and focusout */
+
 			$(this).on('keydown focusout', function (event)
 			{
 				var field = this;
@@ -201,7 +220,7 @@
 		});
 	};
 
-	/* autoresize textarea rows */
+	/* auto resize */
 
 	$.fn.autoResize = function (options)
 	{
