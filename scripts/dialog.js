@@ -140,13 +140,7 @@
 							{
 								string = r.baseURL + string;
 							}
-
-							/* timeout to fix opera */
-
-							setTimeout(function ()
-							{
-								window.location = string;
-							}, 0);
+							window.location = string;
 						}
 					});
 					event.preventDefault();

@@ -43,6 +43,13 @@
 
 					thumb.css('opacity', options.preload.opacity).addClass('image_gallery_preload');
 
+					/* opera load fix */
+
+					if (r.constant.MY_BROWSER === 'opera')
+					{
+						image.appendTo(body).remove();
+					}
+
 					/* full image loaded */
 
 					image.data('related', related).on('load', function ()
@@ -130,6 +137,13 @@
 				{
 					galleryOverlay.click();
 				}, options.timeout.image);
+
+				/* opera load fix */
+
+				if (r.constant.MY_BROWSER === 'opera')
+				{
+					image.appendTo(body).remove();
+				}
 
 				/* full image loaded */
 
