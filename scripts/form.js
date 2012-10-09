@@ -212,28 +212,33 @@
 			options = $.extend({}, r.plugin.autoResize.options, options || {});
 		}
 
-		/* listen for input */
+		/* return this */
 
-		$(this).on('ready input', function (event)
+		return this.each(function ()
 		{
-			var textarea = this;
+			/* listen for input */
 
-			if (event.type === 'ready')
+			$(this).on('ready input', function (event)
 			{
+				var textarea = this;
+
+				if (event.type === 'ready')
+				{
+					while (textarea.clientHeight < textarea.scrollHeight)
+					{
+						textarea.rows += options.summand++;
+					}
+				}
+				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+				{
+					textarea.rows -= 1;
+				}
 				while (textarea.clientHeight < textarea.scrollHeight)
 				{
-					textarea.rows += options.summand++;
+					textarea.rows += 1;
 				}
-			}
-			while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-			{
-				textarea.rows -= 1;
-			}
-			while (textarea.clientHeight < textarea.scrollHeight)
-			{
-				textarea.rows += 1;
-			}
-		}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
+			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
+		});
 	};
 })(jQuery);
 

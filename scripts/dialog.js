@@ -114,37 +114,44 @@
 
 	$.fn.confirmLink = function ()
 	{
-		$(this).on('click', function (event)
+		/* return this */
+
+		return this.each(function ()
 		{
-			var string = $(this)[0].href;
+			/* listen for click */
 
-			if (string)
+			$(this).on('click', function (event)
 			{
-				/* confirm dialog to continue */
+				var string = $(this)[0].href;
 
-				$.fn.dialog(
+				if (string)
 				{
-					type: 'confirm',
-					message: l.dialog_question + l.question_mark,
-					callback: function ()
+					/* confirm dialog to continue */
+
+					$.fn.dialog(
 					{
-						/* check for internal link */
-
-						if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
+						type: 'confirm',
+						message: l.dialog_question + l.question_mark,
+						callback: function ()
 						{
-							string = r.baseURL + string;
+							/* check for internal link */
+
+							if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
+							{
+								string = r.baseURL + string;
+							}
+
+							/* timeout to fix opera */
+
+							setTimeout(function ()
+							{
+								window.location = string;
+							}, 0);
 						}
-
-						/* timeout to fix opera */
-
-						setTimeout(function ()
-						{
-							window.location = string;
-						}, 0);
-					}
-				});
-				event.preventDefault();
-			}
+					});
+					event.preventDefault();
+				}
+			});
 		});
 	};
 
@@ -159,13 +166,20 @@
 			options = $.extend({}, r.plugin.preventUnload.options, options || {});
 		}
 
-		if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
+		/* return this */
+
+		return this.each(function ()
 		{
-			$(this).one('change', function ()
+			if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
 			{
-				$('a').not(options.excluded).confirmLink();
-			});
-		}
+				/* listen for change */
+
+				$(this).one('change', function ()
+				{
+					$('a').not(options.excluded).confirmLink();
+				});
+			}
+		});
 	};
 })(jQuery);
 

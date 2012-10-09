@@ -15,7 +15,7 @@
 
 		return this.each(function ()
 		{
-			/* listen for input */
+			/* listen for change and input */
 
 			$(this).on('change input', function ()
 			{

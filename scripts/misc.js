@@ -83,7 +83,7 @@
 
 		return this.each(function ()
 		{
-			/* trigger click */
+			/* trigger click after delay */
 
 			$(this).delay(options.duration).queue(function ()
 			{
