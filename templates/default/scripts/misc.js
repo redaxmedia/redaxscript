@@ -11,16 +11,21 @@
 			options = $.extend({}, r.plugin.logoEffect.options, options || {});
 		}
 
-		var related = $(options.related);
+		/* return this */
 
-		/* website logo effect on hover */
+		return this.each(function ()
+		{
+			var related = $(options.related);
 
-		$(this).hover(function ()
-		{
-			related.stop(1).fadeTo(options.duration, 0);
-		}, function ()
-		{
-			related.delay(options.duration).fadeTo(options.duration * 2, 1);
+			/* listen for hover */
+
+			$(this).hover(function ()
+			{
+				related.stop(1).fadeTo(options.duration, 0);
+			}, function ()
+			{
+				related.delay(options.duration).fadeTo(options.duration * 2, 1);
+			});
 		});
 	};
 })(jQuery);

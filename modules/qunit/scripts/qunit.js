@@ -71,6 +71,6 @@ jQuery(function ($)
 
 	if (r.constant.FIRST_PARAMETER === 'qunit')
 	{
-		$(r.module.qunit.selector).qunit(r.module.qunit.options);
+		$.fn.qunit(r.module.qunit.options);
 	}
 });

@@ -11,11 +11,16 @@
 			options = $.extend({}, r.module.debugger.options, options || {});
 		}
 
-		/* toggle related */
+		/* return this */
 
-		$(this).on('click', function ()
+		return this.each(function ()
 		{
-			$(this).find(options.related).toggle();
+			/* listen for click */
+
+			$(this).on('click', function ()
+			{
+				$(this).find(options.related).toggle();
+			});
 		});
 	};
 })(jQuery);
