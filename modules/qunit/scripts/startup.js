@@ -24,6 +24,7 @@ r.module.qunit =
 			qunitUserAgent: 'box_qunit user_agent_qunit',
 			qunitResult: 'title_qunit',
 			qunitTest: 'list_qunit'
-		}
+		},
+		duration: 500
 	}
 };

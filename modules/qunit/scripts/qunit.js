@@ -11,14 +11,21 @@
 			options = $.extend({}, r.module.qunit.options, options || {});
 		}
 
-		var win = window;
+		var win = window,
+			qunit = $(options.element.qunit);
+
+		/* begin callback */
+
+		win.QUnit.begin = function ()
+		{
+			qunit.hide();
+		};
 
 		/* done callback */
 
 		win.QUnit.done = function ()
 		{
-			var qunit = $(options.element.qunit),
-				qunitHeader = qunit.find(options.element.qunitHeader),
+			var qunitHeader = qunit.find(options.element.qunitHeader),
 				qunitBanner = qunit.find(options.element.qunitBanner),
 				qunitToolbar = qunit.find(options.element.qunitToolbar),
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
@@ -45,11 +52,15 @@
 			{
 				qunitBanner.addClass('note_error').text(l.qunit_test_failed + l.point);
 			}
-			qunitBanner.detach().insertBefore(qunitHeader);
+			qunitBanner.detach().insertAfter(qunitUserAgent);
 
 			/* replace break in result */
 
 			qunitResult.find('br').replaceWith(' ');
+
+			/* fade in qunit */
+
+			qunit.fadeIn(options.duration);
 		};
 	};
 })(jQuery);

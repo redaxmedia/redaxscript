@@ -5,9 +5,9 @@ jQuery(function ($)
 	var win = window,
 		fixture = $(r.module.qunit.options.element.qunitFixture);
 
-	/* test redaxscript */
+	/* test global objects */
 
-	win.test('global', function()
+	win.test('globalObjects', function()
 	{
 		var expect = 'object',
 			result = typeof r && typeof l;
@@ -23,7 +23,6 @@ jQuery(function ($)
 			result = typeof r.baseURL;
 
 		win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
-
 	});
 
 	/* test clean alias */
@@ -51,15 +50,13 @@ jQuery(function ($)
 
 			/* trigger focusin */
 
-			input.trigger('focusin');
-			result = input.val();
+			result = input.trigger('focusin').val();
 			win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 
 			/* trigger focusout */
 
-			input.trigger('focusout');
 			expect = 'Hello world';
-			result = input.val();
+			result = input.trigger('focusout').val();
 			win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 		});
 	}
