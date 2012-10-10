@@ -115,15 +115,15 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
 					if ($image_artist)
 					{
-						$data_string .= 'data-artist="' . $image_artist . '"';
+						$data_string .= ' data-artist="' . $image_artist . '"';
 					}
 					if ($image_date)
 					{
-						$data_string .= 'data-date="' . $image_date . '"';
+						$data_string .= ' data-date="' . $image_date . '"';
 					}
 					if ($image_description)
 					{
-						$data_string .= 'data-description="' . $image_description . '"';
+						$data_string .= ' data-description="' . $image_description . '"';
 					}
 
 					/* collect image output */

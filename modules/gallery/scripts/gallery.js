@@ -179,14 +179,14 @@
 
 					if (imageArtist)
 					{
-						galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</div>');
+						galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</span>');
 					}
 
 					/* append image description */
 
 					if (imageDescription)
 					{
-						galleryMeta.append('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</div>');
+						galleryMeta.prepend('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</span>');
 					}
 
 					/* append previous and next */

@@ -72,11 +72,6 @@
 	margin-left: 1em;
 }
 
-.gallery_artist, .gallery_description, .gallery_label
-{
-	display: inline-block;
-}
-
 .gallery_label
 {
 	margin-right: 0.5em;
@@ -91,6 +86,13 @@
 	top: 0;
 	width: 40%;
 	z-index: 1300;
+}
+
+/* trident hover fix */
+
+.trident .gallery_next, .trident .gallery_previous
+{
+	background: url('modules/gallery/images/transparent.png');
 }
 
 .gallery_next
