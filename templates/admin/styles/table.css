@@ -100,7 +100,7 @@
 	background: url('templates/admin/images/sprite.png') -116px 2px;
 }
 
-/* link parent */
+/* parent link */
 
 .table_admin tbody .link_parent
 {
@@ -113,7 +113,7 @@
 	color: #474747;
 }
 
-/* link view */
+/* view link */
 
 .table_admin tbody .link_view
 {

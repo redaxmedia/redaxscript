@@ -77,7 +77,7 @@
 	margin-right: 0.5em;
 }
 
-/* previous and next links */
+/* previous and next link */
 
 .gallery_next, .gallery_previous
 {
@@ -140,7 +140,7 @@
 	float: left;
 }
 
-/* gallery list elements */
+/* gallery image */
 
 .image_gallery
 {
@@ -165,6 +165,8 @@
 	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 }
+
+/* gallery link */
 
 .link_gallery
 {
