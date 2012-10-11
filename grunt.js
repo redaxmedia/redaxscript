@@ -41,7 +41,7 @@ module.exports = function(grunt)
 		},
 		qunit:
 		{
-			files: ['http://develop.redaxscript.com/qunit']
+			src: ['http://develop.redaxscript.com/qunit']
 		},
 		jshint:
 		{
@@ -92,7 +92,7 @@ module.exports = function(grunt)
 		{
 			base:
 			{
-				src: ['*.php', 'includes/*.php', 'includes/admin/*.php', 'styles/*.css', 'scripts/*.js']
+				src: ['*.php', 'includes/**/*.php', 'styles/*.css', 'scripts/*.js']
 			},
 			languages:
 			{
@@ -100,11 +100,11 @@ module.exports = function(grunt)
 			},
 			modules:
 			{
-				src: ['modules/*/*.php', 'modules/*/styles/*.css', 'modules/*/scripts/*.js']
+				src: ['modules/**/*.php', 'modules/**/*.css', 'modules/**/*.js']
 			},
 			templates:
 			{
-				src: ['templates/*/*.phtml', 'templates/*/styles/*.css', 'templates/*/scripts/*.js']
+				src: ['templates/**/*.phtml', 'templates/**/*.css', 'templates/**/*.js']
 			}
 		},
 		img:
