@@ -31,13 +31,17 @@ module.exports = function(grunt)
 			scripts:
 			{
 				files: ['<config:lint.base>', '<config:lint.modules>', '<config:lint.templates>'],
-				tasks: 'lint'
+				tasks: 'lint qunit'
 			},
 			styles:
 			{
 				files: ['<config:csslint.base.src>', '<config:csslint.modules.src>', '<config:csslint.templates.src>'],
 				tasks: 'csslint'
 			}
+		},
+		qunit:
+		{
+			files: ['http://develop.redaxscript.com/qunit']
 		},
 		jshint:
 		{
