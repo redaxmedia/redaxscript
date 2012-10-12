@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* seo tube */
 
 	$.fn.seoTube = function (options)

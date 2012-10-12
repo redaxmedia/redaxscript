@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* admin dock */
 
 	$.fn.adminDock = function (options)

@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* qunit */
 
 	$.fn.qunit = function (options)

@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* gallery */
 
 	$.fn.gallery = function (options)

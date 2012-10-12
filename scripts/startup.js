@@ -202,6 +202,8 @@ r.module = {};
 
 r.baseURL = function ()
 {
+	'use strict';
+
 	var base = document.getElementsByTagName('base'),
 		checkBase = base.length,
 		output;
@@ -221,6 +223,8 @@ r.baseURL = function ()
 
 r.startup = function (html)
 {
+	'use strict';
+
 	if (html.className)
 	{
 		html.className += ' ';

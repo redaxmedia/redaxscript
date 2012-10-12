@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* check required */
 
 	$.fn.checkRequired = function (options)

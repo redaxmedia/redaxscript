@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* key shortcut */
 
 	$.fn.keyShortcut = function (options)

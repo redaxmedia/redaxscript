@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* accordion */
 
 	$.fn.accordion = function (options)

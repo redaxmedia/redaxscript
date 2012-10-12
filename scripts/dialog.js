@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* dialog */
 
 	$.fn.dialog = function (options)

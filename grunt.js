@@ -53,12 +53,14 @@ module.exports = function(grunt)
 				eqeqeq: true,
 				eqnull: true,
 				es5: true,
-				immed: false,
 				latedef: true,
 				newcap: true,
 				noarg: true,
+				noempty: true,
 				node: true,
+				strict: true,
 				sub: true,
+				trailing: true,
 				undef: true
 			},
 			globals:

@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* analytics */
 
 	$.fn.analytics = function (options)

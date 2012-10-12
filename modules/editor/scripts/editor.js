@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* editor */
 
 	$.fn.editor = function (options)

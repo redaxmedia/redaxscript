@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* call home */
 
 	$.fn.callHome = function (options)

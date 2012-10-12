@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* logo effect */
 
 	$.fn.logoEffect = function (options)

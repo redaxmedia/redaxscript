@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* debugger */
 
 	$.fn.debugger = function (options)

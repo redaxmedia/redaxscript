@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* file manager */
 
 	$.fn.fileManager = function (options)

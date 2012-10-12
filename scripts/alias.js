@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* generate alias */
 
 	$.fn.generateAlias = function (options)
