@@ -56,14 +56,14 @@
 			}
 		}
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.seoTube.startup && r.constant.TABLE_PARAMETER === 'articles' && (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit'))
+	$(function ()
 	{
-		$.fn.seoTube();
-	}
-});
+		if (r.module.seoTube.startup && r.constant.TABLE_PARAMETER === 'articles' && (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit'))
+		{
+			$.fn.seoTube();
+		}
+	});
+})(jQuery);

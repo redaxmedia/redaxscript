@@ -53,14 +53,14 @@
 			}
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.analytics.startup && r.constant.LOGGED_IN !== r.constant.TOKEN && typeof _gat === 'object')
+	$(function ()
 	{
-		$(r.module.analytics.selector).analytics(r.module.analytics.options);
-	}
-});
+		if (r.module.analytics.startup && r.constant.LOGGED_IN !== r.constant.TOKEN && typeof _gat === 'object')
+		{
+			$(r.module.analytics.selector).analytics(r.module.analytics.options);
+		}
+	});
+})(jQuery);

@@ -312,14 +312,14 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.gallery.startup)
+	$(function ()
 	{
-		$(r.module.gallery.selector).gallery(r.module.gallery.options);
-	}
-});
+		if (r.module.gallery.startup)
+		{
+			$(r.module.gallery.selector).gallery(r.module.gallery.options);
+		}
+	});
+})(jQuery);

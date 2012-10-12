@@ -30,14 +30,14 @@
 			}
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.callHome.startup && r.constant.LOGGED_IN === r.constant.TOKEN && r.constant.FIRST_PARAMETER === 'admin' && r.constant.ADMIN_PARAMETER === '' && typeof _gat === 'object')
+	$(function ()
 	{
-		$.fn.callHome(r.module.callHome.options);
-	}
-});
+		if (r.module.callHome.startup && r.constant.LOGGED_IN === r.constant.TOKEN && r.constant.FIRST_PARAMETER === 'admin' && r.constant.ADMIN_PARAMETER === '' && typeof _gat === 'object')
+		{
+			$.fn.callHome(r.module.callHome.options);
+		}
+	});
+})(jQuery);

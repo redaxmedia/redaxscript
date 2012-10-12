@@ -63,14 +63,14 @@
 			qunit.fadeIn(options.duration);
 		};
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.constant.FIRST_PARAMETER === 'qunit')
+	$(function ()
 	{
-		$.fn.qunit(r.module.qunit.options);
-	}
-});
+		if (r.constant.FIRST_PARAMETER === 'qunit')
+		{
+			$.fn.qunit(r.module.qunit.options);
+		}
+	});
+})(jQuery);

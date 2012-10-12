@@ -259,34 +259,34 @@
 			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.checkRequired.startup)
+	$(function ()
 	{
-		$(r.plugin.checkRequired.selector).checkRequired(r.plugin.checkRequired.options);
-	}
-	if (r.plugin.checkSearch.startup)
-	{
-		$(r.plugin.checkSearch.selector).checkSearch(r.plugin.checkSearch.options);
-	}
-	if (r.plugin.noteRequired.startup)
-	{
-		$(r.plugin.noteRequired.selector).noteRequired(r.plugin.noteRequired.options);
-	}
-	if (r.plugin.clearFocus.startup)
-	{
-		$(r.plugin.clearFocus.selector).clearFocus();
-	}
-	if (r.plugin.unmaskPassword.startup)
-	{
-		$(r.plugin.unmaskPassword.selector).unmaskPassword();
-	}
-	if (r.plugin.autoResize.startup)
-	{
-		$(r.plugin.autoResize.selector).autoResize(r.plugin.autoResize.options);
-	}
-});
+		if (r.plugin.checkRequired.startup)
+		{
+			$(r.plugin.checkRequired.selector).checkRequired(r.plugin.checkRequired.options);
+		}
+		if (r.plugin.checkSearch.startup)
+		{
+			$(r.plugin.checkSearch.selector).checkSearch(r.plugin.checkSearch.options);
+		}
+		if (r.plugin.noteRequired.startup)
+		{
+			$(r.plugin.noteRequired.selector).noteRequired(r.plugin.noteRequired.options);
+		}
+		if (r.plugin.clearFocus.startup)
+		{
+			$(r.plugin.clearFocus.selector).clearFocus();
+		}
+		if (r.plugin.unmaskPassword.startup)
+		{
+			$(r.plugin.unmaskPassword.selector).unmaskPassword();
+		}
+		if (r.plugin.autoResize.startup)
+		{
+			$(r.plugin.autoResize.selector).autoResize(r.plugin.autoResize.options);
+		}
+	});
+})(jQuery);

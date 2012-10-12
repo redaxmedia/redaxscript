@@ -41,14 +41,14 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.fileManager.startup && r.constant.ADMIN_PARAMETER === 'file-manager')
+	$(function ()
 	{
-		$(r.module.fileManager.selector).fileManager(r.module.fileManager.options);
-	}
-});
+		if (r.module.fileManager.startup && r.constant.ADMIN_PARAMETER === 'file-manager')
+		{
+			$(r.module.fileManager.selector).fileManager(r.module.fileManager.options);
+		}
+	});
+})(jQuery);

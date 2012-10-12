@@ -28,14 +28,14 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.logoEffect.startup)
+	$(function ()
 	{
-		$(r.plugin.logoEffect.selector).logoEffect(r.plugin.logoEffect.options);
-	}
-});
+		if (r.plugin.logoEffect.startup)
+		{
+			$(r.plugin.logoEffect.selector).logoEffect(r.plugin.logoEffect.options);
+		}
+	});
+})(jQuery);

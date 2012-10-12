@@ -400,14 +400,14 @@
 			}
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.editor.startup && (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments')))
+	$(function ()
 	{
-		$(r.module.editor.selector).editor(r.module.editor.options);
-	}
-});
+		if (r.module.editor.startup && (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments')))
+		{
+			$(r.module.editor.selector).editor(r.module.editor.options);
+		}
+	});
+})(jQuery);

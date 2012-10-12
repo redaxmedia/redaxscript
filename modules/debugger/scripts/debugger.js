@@ -23,14 +23,14 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.debugger.startup)
+	$(function ()
 	{
-		$(r.module.debugger.selector).debugger(r.module.debugger.options);
-	}
-});
+		if (r.module.debugger.startup)
+		{
+			$(r.module.debugger.selector).debugger(r.module.debugger.options);
+		}
+	});
+})(jQuery);

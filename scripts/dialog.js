@@ -175,21 +175,21 @@
 			}
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.confirmLink.startup)
+	$(function ()
 	{
-		$(r.plugin.confirmLink.selector).confirmLink();
-
-		/* depending startup */
-
-		if (r.plugin.preventUnload.startup)
+		if (r.plugin.confirmLink.startup)
 		{
-			$(r.plugin.preventUnload.selector).preventUnload(r.plugin.preventUnload.options);
+			$(r.plugin.confirmLink.selector).confirmLink();
+
+			/* depending startup */
+
+			if (r.plugin.preventUnload.startup)
+			{
+				$(r.plugin.preventUnload.selector).preventUnload(r.plugin.preventUnload.options);
+			}
 		}
-	}
-});
+	});
+})(jQuery);

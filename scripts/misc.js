@@ -91,18 +91,18 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.keyShortcut.startup && r.constant.LOGGED_IN === r.constant.TOKEN)
+	$(function ()
 	{
-		$(r.plugin.keyShortcut.selector).keyShortcut(r.plugin.keyShortcut.options);
-	}
-	if (r.plugin.forwardNotification.startup)
-	{
-		$(r.plugin.forwardNotification.selector).forwardNotification(r.plugin.forwardNotification.options);
-	}
-});
+		if (r.plugin.keyShortcut.startup && r.constant.LOGGED_IN === r.constant.TOKEN)
+		{
+			$(r.plugin.keyShortcut.selector).keyShortcut(r.plugin.keyShortcut.options);
+		}
+		if (r.plugin.forwardNotification.startup)
+		{
+			$(r.plugin.forwardNotification.selector).forwardNotification(r.plugin.forwardNotification.options);
+		}
+	});
+})(jQuery);

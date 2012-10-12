@@ -192,22 +192,22 @@
 			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.accordion.startup)
+	$(function ()
 	{
-		$(r.plugin.accordion.selector).accordion(r.plugin.accordion.options);
-	}
-	if (r.plugin.dropdown.startup && r.constant.MY_MOBILE)
-	{
-		$(r.plugin.dropdown.selector).dropdown();
-	}
-	if (r.plugin.tab.startup)
-	{
-		$(r.plugin.tab.selector).tab(r.plugin.tab.options);
-	}
-});
+		if (r.plugin.accordion.startup)
+		{
+			$(r.plugin.accordion.selector).accordion(r.plugin.accordion.options);
+		}
+		if (r.plugin.dropdown.startup && r.constant.MY_MOBILE)
+		{
+			$(r.plugin.dropdown.selector).dropdown();
+		}
+		if (r.plugin.tab.startup)
+		{
+			$(r.plugin.tab.selector).tab(r.plugin.tab.options);
+		}
+	});
+})(jQuery);

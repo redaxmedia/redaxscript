@@ -193,14 +193,14 @@
 		output = output.replace(/\s+/g, '-');
 		return output;
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.generateAlias.startup)
+	$(function ()
 	{
-		$(r.plugin.generateAlias.selector).generateAlias(r.plugin.generateAlias.options);
-	}
-});
+		if (r.plugin.generateAlias.startup)
+		{
+			$(r.plugin.generateAlias.selector).generateAlias(r.plugin.generateAlias.options);
+		}
+	});
+})(jQuery);

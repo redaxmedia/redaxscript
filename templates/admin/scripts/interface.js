@@ -95,18 +95,18 @@
 			}
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.adminDock.startup)
+	$(function ()
 	{
-		$(r.plugin.adminDock.selector).adminDock(r.plugin.adminDock.options);
-	}
-	if (r.plugin.adminPanel.startup)
-	{
-		$(r.plugin.adminPanel.selector).adminPanel(r.plugin.adminPanel.options);
-	}
-});
+		if (r.plugin.adminDock.startup)
+		{
+			$(r.plugin.adminDock.selector).adminDock(r.plugin.adminDock.options);
+		}
+		if (r.plugin.adminPanel.startup)
+		{
+			$(r.plugin.adminPanel.selector).adminPanel(r.plugin.adminPanel.options);
+		}
+	});
+})(jQuery);
