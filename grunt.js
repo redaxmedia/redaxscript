@@ -11,7 +11,6 @@ module.exports = function(grunt)
 		'duplicate-background-images': false,
 		'fallback-colors': false,
 		'text-indent': false,
-		'unique-headings': false,
 		'outline-none': false,
 		'qualified-headings': false
 	};
