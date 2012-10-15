@@ -41,12 +41,8 @@ function navigation_list($table = '', $options = '')
 
 	/* setup parent */
 
-	if ($query_parent)
+	if ($query_parent && $option_parent)
 	{
-		if ($table == 'categories' && $option_parent == '')
-		{
-			$option_parent = 0;
-		}
 		$query .= ' && ' . $query_parent . ' = ' . $option_parent;
 	}
 
