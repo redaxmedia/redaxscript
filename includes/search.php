@@ -113,6 +113,9 @@ function search_post()
 						$description = $title;
 					}
 					$date = date(s('date'), strtotime($date));
+
+					/* build string */
+
 					if ($category == 0)
 					{
 						$string = $alias;
@@ -121,6 +124,9 @@ function search_post()
 					{
 						$string = build_string('articles', $id);
 					}
+
+					/* collect item output */
+
 					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $string, $description) . '<span class="date_search_result">' . $date . '</span></li>';
 				}
 				else

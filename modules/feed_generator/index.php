@@ -111,6 +111,13 @@ function feed_generator($table = '')
 
 			$date = date('c', strtotime($date));
 			$text = htmlspecialchars(strip_tags($text));
+			if ($table == 'comments')
+			{
+				$title = $author;
+			}
+
+			/* build string */
+
 			$string = ROOT . '/' . REWRITE_STRING;
 			if ($table == 'articles' && $category == 0)
 			{
@@ -121,10 +128,6 @@ function feed_generator($table = '')
 				$string .= build_string($table, $id);
 			}
 			$string .= $language_string;
-			if ($table == 'comments')
-			{
-				$title = $author;
-			}
 
 			/* collect entry output */
 
