@@ -41,9 +41,17 @@ function navigation_list($table = '', $options = '')
 
 	/* setup parent */
 
-	if ($query_parent && $option_parent)
+	if ($query_parent)
 	{
-		$query .= ' && ' . $query_parent . ' = ' . $option_parent;
+		$query .= ' && ' . $query_parent . ' = ';
+		if ($option_parent)
+		{
+			$query .= $option_parent;
+		}
+		else if ($table == 'categories')
+		{
+			$query .= '0';
+		}
 	}
 
 	/* setup query filter */
@@ -157,7 +165,7 @@ function navigation_list($table = '', $options = '')
 
 				/* collect children list output */
 
-				if ($option_children == 1)
+				if ($table == 'categories' && $option_children == 1)
 				{
 					ob_start();
 					navigation_list($table, array(
