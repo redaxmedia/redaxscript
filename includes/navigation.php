@@ -22,13 +22,16 @@ function navigation_list($table = '', $options = '')
 	switch ($table)
 	{
 		case 'categories':
-			$single = 'category';
+			$wording_single = 'category';
+			$query_parent = 'parent';
 			break;
 		case 'articles':
-			$single = 'article';
+			$wording_single = 'article';
+			$query_parent = 'category';
 			break;
 		case 'comments':
-			$single = 'comment';
+			$wording_single = 'comment';
+			$query_parent = 'article';
 			break;
 	}
 
@@ -38,20 +41,13 @@ function navigation_list($table = '', $options = '')
 
 	/* setup parent */
 
-	if ($option_parent)
+	if ($query_parent)
 	{
-		if ($table == 'categories')
+		if ($table == 'categories' && $option_parent == '')
 		{
-			$query .= ' && parent = ' . $option_parent;
+			$option_parent = 0;
 		}
-		else if ($table == 'articles')
-		{
-			$query .= ' && category = ' . $option_parent;
-		}
-	}
-	else if ($table == 'categories')
-	{
-		$query .= ' && parent = 0';
+		$query .= ' && ' . $query_parent . ' = ' . $option_parent;
 	}
 
 	/* setup query filter */
@@ -103,7 +99,7 @@ function navigation_list($table = '', $options = '')
 	$num_rows = mysql_num_rows($result);
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l($single . '_no') . l('point');
+		$error = l($wording_single . '_no') . l('point');
 	}
 	else if ($result)
 	{
@@ -161,10 +157,12 @@ function navigation_list($table = '', $options = '')
 
 				if ($option_children == 1)
 				{
-					$output .= navigation_list($table, array(
+					ob_start();
+					navigation_list($table, array(
 						'parent' => $id,
 						'class' => 'list_children'
 					));
+					$output .= ob_get_clean();
 				}
 				$output .= '</li>';
 			}
@@ -213,7 +211,7 @@ function navigation_list($table = '', $options = '')
 	{
 		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
 	}
-	return $output;
+	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
 

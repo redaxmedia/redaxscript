@@ -46,14 +46,16 @@ function sitemap()
 
 				/* collect children list output */
 
-				$output .= navigation_list('categories', array(
+				ob_start();
+				navigation_list('categories', array(
 				    'parent' => $id,
 				    'class' => 'list_children'
 				));
-				$output .= navigation_list('articles', array(
+				navigation_list('articles', array(
 				    'parent' => $id,
 				    'class' => 'list_children'
 				));
+				$output .= ob_get_clean();
 				$output .= '</li>';
 			}
 			else
