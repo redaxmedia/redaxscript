@@ -36,9 +36,20 @@ function navigation_list($table = '', $options = '')
 
 	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
 
-	/* parent categories only */
+	/* setup parent */
 
-	if ($table == 'categories')
+	if ($option_parent)
+	{
+		if ($table == 'categories')
+		{
+			$query .= ' && parent = ' . $option_parent;
+		}
+		else if ($table == 'articles')
+		{
+			$query .= ' && category = ' . $option_parent;
+		}
+	}
+	else if ($table == 'categories')
 	{
 		$query .= ' && parent = 0';
 	}
@@ -139,13 +150,19 @@ function navigation_list($table = '', $options = '')
 					$string = build_string($table, $id);
 				}
 
-				/* collect children output */
+				/* collect item output */
 
 				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $string, $description);
-				if ($table == 'categories' && $option_children == 1)
+
+				/* collect children list output */
+
+				if ($option_children == 1)
 				{
 					$parent_string = $alias . '/';
-					$output .= children_list('categories', $id, $parent_string, 2);
+					$output .= navigation_list($table, array(
+						'parent' => $id,
+						'class' => 'list_children'
+					));
 				}
 				$output .= '</li>';
 			}
