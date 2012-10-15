@@ -128,6 +128,9 @@ function admin_contents_list()
 						$$key = stripslashes($value);
 					}
 				}
+
+				/* prepare name */
+
 				if (TABLE_PARAMETER == 'comments')
 				{
 					$name = truncate($author . l('colon') . ' ' . $text, 80, '...');
@@ -136,6 +139,9 @@ function admin_contents_list()
 				{
 					$name = $title;
 				}
+
+				/* build class string */
+
 				if ($status == 1)
 				{
 					$class_status = '';
