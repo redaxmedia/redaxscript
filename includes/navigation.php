@@ -141,6 +141,9 @@ function navigation_list($table = '', $options = '')
 				{
 					$description = $title;
 				}
+
+				/* build string */
+
 				if ($table == 'categories' || $table == 'articles' && $category == 0)
 				{
 					$string = $alias;
@@ -158,7 +161,6 @@ function navigation_list($table = '', $options = '')
 
 				if ($option_children == 1)
 				{
-					$parent_string = $alias . '/';
 					$output .= navigation_list($table, array(
 						'parent' => $id,
 						'class' => 'list_children'
@@ -200,7 +202,7 @@ function navigation_list($table = '', $options = '')
 
 	/* handle error */
 
-	if ($error)
+	if ($error && $option_parent == '')
 	{
 		$output = '<ul' .$id_string . $class_string . '><li>' . $error . '</li></ul>';
 	}
@@ -211,84 +213,8 @@ function navigation_list($table = '', $options = '')
 	{
 		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
 	}
-	echo $output;
-	hook(__FUNCTION__ . '_end');
-}
-
-/* children list */
-
-function children_list($table = '', $parent = '', $string = '', $mode = '')
-{
-	/* query contents */
-
-	$query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . $table . ' WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
-	if ($table == 'categories')
-	{
-		$query .= ' && parent = ' . $parent;
-	}
-	else if ($table == 'articles')
-	{
-		$query .= ' && category = ' . $parent;
-	}
-	$query .= ' ORDER BY rank ASC';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
-	if ($result)
-	{
-		/* collect output */
-
-		while ($r = mysql_fetch_assoc($result))
-		{
-			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
-
-			/* if access granted */
-
-			if ($check_access == 1)
-			{
-				if ($r)
-				{
-					foreach ($r as $key => $value)
-					{
-						$$key = stripslashes($value);
-					}
-				}
-				if (LAST_PARAMETER == $alias && $mode == 2)
-				{
-					$class_string = ' class="item_active"';
-				}
-				else
-				{
-					$class_string = '';
-				}
-				if ($description == '')
-				{
-					$description = $title;
-				}
-
-				/* collect children output */
-
-				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $string . $alias, $description);
-				if ($table == 'categories' && $mode == 1)
-				{
-					$output .= children_list('articles', $id, $string . $alias . '/', $mode);
-				}
-				$output .= '</li>';
-			}
-			else
-			{
-				$counter++;
-			}
-		}
-
-		/* collect list output */
-
-		if ($num_rows > $counter)
-		{
-			$output = '<ul class="list_children">' . $output . '</ul>';
-		}
-	}
 	return $output;
+	hook(__FUNCTION__ . '_end');
 }
 
 /* languages list */

@@ -12,7 +12,7 @@ function sitemap()
 
 	/* collect output */
 
-	$output = form_element('fieldset', '', 'box_sitemap', '', '', '<span class="title_content_sub">' . l('categories') . '</span>') . '<ul class="list_default">';
+	$output = form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap">' . l('categories') . '</span>') . '<ul class="list_default list_sitemap">';
 	if ($categories_result == '' || $categories_num_rows == '')
 	{
 		$categories_error = l('category_no') . l('point');
@@ -39,9 +39,21 @@ function sitemap()
 				{
 					$description = $title;
 				}
+
+				/* collect item output */
+
 				$output .= '<li>' . anchor_element('internal', '', '', $title, $alias, $description);
-				$output .= children_list('categories', $id, $alias . '/', 1);
-				$output .= children_list('articles', $id, $alias . '/', 1);
+
+				/* collect children list output */
+
+				$output .= navigation_list('categories', array(
+				    'parent' => $id,
+				    'class' => 'list_children'
+				));
+				$output .= navigation_list('articles', array(
+				    'parent' => $id,
+				    'class' => 'list_children'
+				));
 				$output .= '</li>';
 			}
 			else
@@ -74,7 +86,7 @@ function sitemap()
 
 	/* collect output */
 
-	$output .= form_element('fieldset', '', 'box_sitemap', '', '', '<span class="title_content_sub">' . l('uncategorized') . '</span>') . '<ul class="list_default">';
+	$output .= form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap">' . l('uncategorized') . '</span>') . '<ul class="list_default list_sitemap">';
 	if ($articles_result == '' || $articles_num_rows == '')
 	{
 		$articles_error = l('article_no') . l('point');
@@ -101,6 +113,9 @@ function sitemap()
 				{
 					$description = $title;
 				}
+
+				/* collect item output */
+
 				$output .= '<li>' . anchor_element('internal', '', '', $title, $alias, $description) . '</li>';
 			}
 			else
