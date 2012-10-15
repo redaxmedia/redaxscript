@@ -71,6 +71,9 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			$output .= '<div class="box_fb_group_message clear_fix">' . fb_group_user_image($value->from->id, $value->from->name, 'square', 1);
 			$output .= '<div class="wrapper_fb_group_message_sub">';
 			$output .= '<h3 class="title_fb_group_message_sub">' . fb_group_user_link($value->from->id, $value->from->name) . '</h3>';
+
+			/* message fallback */
+
 			if ($value->message == '')
 			{
 				$value->message = $value->application->name;
@@ -79,7 +82,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			$output .= '</div></div>';
 
 			/* collect likes output */
-			
+
 			$likes = $value->likes->data;
 			$likes_total = $value->likes->count;
 			$likes_limit = 2;

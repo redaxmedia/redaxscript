@@ -73,6 +73,9 @@ function sitemap_xml()
 					$$key = stripslashes($value);
 				}
 			}
+
+			/* build string */
+
 			if ($category == 0)
 			{
 				$string = $alias;

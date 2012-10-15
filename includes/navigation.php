@@ -117,6 +117,9 @@ function navigation_list($table = '', $options = '')
 						$$key = stripslashes($value);
 					}
 				}
+
+				/* build class string */
+
 				if (LAST_PARAMETER == $alias && $table != 'comments')
 				{
 					$class_string = ' class="item_active"';
@@ -125,6 +128,9 @@ function navigation_list($table = '', $options = '')
 				{
 					$class_string = '';
 				}
+
+				/* prepare metadata */
+
 				if ($table == 'comments')
 				{
 					$description = $title = truncate($author . l('colon') . ' ' . $text, 80, '...');

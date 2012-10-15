@@ -59,7 +59,7 @@ function archive()
 					{
 						$output .= '</ul></fieldset>';
 					}
-					$output .= form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive">' . $month_names[$month] . ' ' . $year . '</span>') . '<ul class="list_default list_archive">';
+					$output .= form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive_sub">' . $month_names[$month] . ' ' . $year . '</span>') . '<ul class="list_default list_archive">';
 				}
 				$output .= '<li>' . anchor_element('internal', '', '', $title, $string, $description) . '</li>';
 				$last = $month + $year;
@@ -82,7 +82,7 @@ function archive()
 
 	if ($error)
 	{
-		$output = form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive">' . l('error') . '</span>') . '<ul class="list_default list_archive">';
+		$output = form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive_sub">' . l('error') . '</span>') . '<ul class="list_default list_archive">';
 		$output .= '<li>' . $error . '</li>';
 	}
 	$output .= '</ul></fieldset>';

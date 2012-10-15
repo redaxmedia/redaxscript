@@ -26,7 +26,7 @@ function password_reset_form()
 
 	$output = '<h2 class="title_content">' . l('password_reset') . '</h2>';
 	$output .= form_element('form', 'form_reset', 'js_check_required form_default form_reset', '', '', '', 'action="' . REWRITE_STRING . 'password_reset" method="post"');
-	$output .= form_element('fieldset', '', '', '', '', l('fields_request') . l('point')) . '<ul>';
+	$output .= form_element('fieldset', '', 'set_reset', '', '', l('fields_request') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
 

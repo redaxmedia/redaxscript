@@ -144,7 +144,7 @@ function comment_form($article = '', $language = '', $access = '')
 
 	$output = '<h2 class="title_content">' . l('comment_new') . '</h2>';
 	$output .= form_element('form', 'form_comment', 'js_check_required form_default form_comment', '', '', '', 'method="post"');
-	$output .= form_element('fieldset', '', '', '', '', l('fields_required') . l('point')) . '<ul>';
+	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_readonly, 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('url', 'url', 'field_text' . $class_disabled, 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';

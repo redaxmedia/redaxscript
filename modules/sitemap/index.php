@@ -12,7 +12,7 @@ function sitemap()
 
 	/* collect output */
 
-	$output = form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap">' . l('categories') . '</span>') . '<ul class="list_default list_sitemap">';
+	$output = form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap_sub">' . l('categories') . '</span>') . '<ul class="list_default list_sitemap">';
 	if ($categories_result == '' || $categories_num_rows == '')
 	{
 		$categories_error = l('category_no') . l('point');
@@ -88,7 +88,7 @@ function sitemap()
 
 	/* collect output */
 
-	$output .= form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap">' . l('uncategorized') . '</span>') . '<ul class="list_default list_sitemap">';
+	$output .= form_element('fieldset', '', 'set_sitemap', '', '', '<span class="title_content_sub title_sitemap_sub">' . l('uncategorized') . '</span>') . '<ul class="list_default list_sitemap">';
 	if ($articles_result == '' || $articles_num_rows == '')
 	{
 		$articles_error = l('article_no') . l('point');
