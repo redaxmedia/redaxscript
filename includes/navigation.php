@@ -43,14 +43,13 @@ function navigation_list($table = '', $options = '')
 
 	if ($query_parent)
 	{
-		$query .= ' && ' . $query_parent . ' = ';
 		if ($option_parent)
 		{
-			$query .= $option_parent;
+			$query .= ' && ' . $query_parent . ' = ' . $option_parent;
 		}
 		else if ($table == 'categories')
 		{
-			$query .= '0';
+			$query .= ' && ' . $query_parent . ' = 0';
 		}
 	}
 
@@ -150,7 +149,7 @@ function navigation_list($table = '', $options = '')
 
 				/* build string */
 
-				if ($table == 'categories' || $table == 'articles' && $category == 0)
+				if ($table == 'categories' && $parent == 0 || $table == 'articles' && $category == 0)
 				{
 					$string = $alias;
 				}
