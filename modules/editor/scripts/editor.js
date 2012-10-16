@@ -142,13 +142,6 @@
 
 			editor.insert = function (command, message, value)
 			{
-				/* prematurely terminate create link */
-
-				if (command === 'createLink' && editor.checkSelection() === '')
-				{
-					return false;
-				}
-
 				/* prompt dialog */
 
 				$.fn.dialog(
@@ -158,10 +151,22 @@
 					value: value,
 					callback: function (input)
 					{
-						if (command === 'insertFunction')
+						/* create link without selection */
+
+						if (command === 'createLink')
 						{
-							editor.insertHTML('&lt;function&gt;' + input + '&lt;/function&gt;')();
+							editor.insertHTML('<a href="' + input + '">' + input +  '</a>');
 						}
+
+						/* insert function */
+
+						else if (command === 'insertFunction')
+						{
+							editor.insertHTML('&lt;function&gt;' + input + '&lt;/function&gt;');
+						}
+
+						/* else default behavior */
+
 						else
 						{
 							editor.preview.focus();
