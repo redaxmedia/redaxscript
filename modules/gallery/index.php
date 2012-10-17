@@ -6,6 +6,7 @@ function gallery_loader_start()
 {
 	global $loader_modules_styles, $loader_modules_scripts;
 	$loader_modules_styles[] = 'modules/gallery/styles/gallery.css';
+	$loader_modules_styles[] = 'modules/gallery/styles/query.css';
 	$loader_modules_scripts[] = 'modules/gallery/scripts/startup.js';
 	$loader_modules_scripts[] = 'modules/gallery/scripts/gallery.js';
 }
@@ -26,7 +27,7 @@ function gallery_loader_scripts_transport_start()
 
 /* gallery */
 
-function gallery($directory = '', $quality = '', $scaling = '', $max_height = '', $command = '')
+function gallery($directory = '', $quality = '', $scaling = '', $height = '', $command = '')
 {
 	/* define variables */
 
@@ -54,12 +55,12 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 	{
 		$scaling = 100;
 	}
-	if (is_numeric($max_height) == '')
+	if (is_numeric($height) == '')
 	{
-		$max_height = 0;
+		$height = 0;
 		if ($command == '')
 		{
-			$command = $max_height;
+			$command = $height;
 		}
 	}
 
@@ -88,7 +89,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 
 				if (file_exists($thumb_string) == '' || $command == 'build')
 				{
-					gallery_build_thumb($value, $directory, $string, $quality, $scaling, $max_height);
+					gallery_build_thumb($value, $directory, $string, $quality, $scaling, $height);
 				}
 				if (file_exists($thumb_string))
 				{
@@ -153,7 +154,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $max_height = ''
 
 /* gallery build thumb */
 
-function gallery_build_thumb($input = '', $directory = '', $string = '', $quality = '', $scaling = '', $max_height = '')
+function gallery_build_thumb($input = '', $directory = '', $string = '', $quality = '', $scaling = '', $height = '')
 {
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
 
@@ -174,11 +175,14 @@ function gallery_build_thumb($input = '', $directory = '', $string = '', $qualit
 	/* calculate image dimensions */
 
 	$original_size = getimagesize($string);
-	if ($max_height)
+	if ($height)
 	{
-		$scaling = $max_height / $original_size[1] * 100;
+		$scaling = $height / $original_size[1] * 100;
 	}
-	$height = round($scaling / 100 * $original_size[1]);
+	else
+	{
+		$height = round($scaling / 100 * $original_size[1]);
+	}
 	$width = round($scaling / 100 * $original_size[0]);
 
 	/* create thumbs directory */

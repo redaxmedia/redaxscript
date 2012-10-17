@@ -122,6 +122,7 @@
 	font: 1.25em georgia, arial;
 	margin-top: 3em;
 	padding: 1em;
+	white-space: nowrap;
 }
 
 .gallery_next span

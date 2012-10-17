@@ -261,6 +261,15 @@
 							event.preventDefault();
 						}
 					});
+
+					/* auto resize */
+
+					if (options.autoResize)
+					{
+						win.on('resize', function () {
+							image.trigger('fit');
+						});
+					}
 				});
 
 				/* fit image to viewport */
@@ -270,20 +279,47 @@
 					var image = $(this),
 						imageHeight = image.height(),
 						imageWidth = image.width(),
+						originalHeight = image.data('height'),
+						originalWidth = image.data('width'),
 						winHeight = win.height(),
-						winWidth = win.width();
+						winWidth = win.width(),
+						minWidth = options.minWidth,
+						scaling = options.scaling;
+
+					/* store image dimensions */
+
+					if (typeof originalHeight === 'undefined')
+					{
+						image.data('height', imageHeight);
+						originalHeight = imageHeight;
+					}
+					if (typeof originalWidth === 'undefined')
+					{
+						image.data('width', imageWidth);
+						originalWidth = imageWidth;
+					}
+
+					/* restore image dimensions */
+
+					imageHeight = originalHeight;
+					imageWidth = originalWidth;
 
 					/* calculate image dimensions */
 
 					if (imageHeight > winHeight)
 					{
-						imageWidth = imageWidth * winHeight * options.scaling / imageHeight;
-						imageHeight = winHeight * options.scaling;
+						imageWidth = imageWidth * winHeight * scaling / imageHeight;
+						imageHeight = winHeight * scaling;
 					}
 					if (imageWidth > winWidth)
 					{
-						imageHeight = imageHeight * winWidth * options.scaling / imageWidth;
-						imageWidth = winWidth * options.scaling;
+						imageHeight = imageHeight * winWidth * scaling / imageWidth;
+						imageWidth = winWidth * scaling;
+					}
+					if (imageWidth < minWidth)
+					{
+						imageHeight = imageHeight * minWidth * scaling / imageWidth;
+						imageWidth = minWidth * scaling;
 					}
 
 					/* setup height and width */

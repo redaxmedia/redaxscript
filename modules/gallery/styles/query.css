@@ -1,0 +1,25 @@
+/* screen */
+
+@media screen and (max-width: 640px)
+{
+	.gallery:hover .gallery_meta
+	{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 480px)
+{
+	.gallery_next span, .gallery_previous span
+	{
+		font-size: 1em;
+	}
+}
+
+@media screen and (max-width: 320px)
+{
+	.gallery_next span, .gallery_previous span
+	{
+		font-size: 0.75em;
+	}
+}
