@@ -277,10 +277,8 @@
 				image.on('fit', function ()
 				{
 					var image = $(this),
-						imageHeight = image.height(),
-						imageWidth = image.width(),
-						originalHeight = image.data('height'),
-						originalWidth = image.data('width'),
+						imageHeight = image.data('height') || image.height(),
+						imageWidth = image.data('width') || image.width(),
 						winHeight = win.height(),
 						winWidth = win.width(),
 						minWidth = options.minWidth,
@@ -288,21 +286,10 @@
 
 					/* store image dimensions */
 
-					if (typeof originalHeight === 'undefined')
-					{
-						image.data('height', imageHeight);
-						originalHeight = imageHeight;
-					}
-					if (typeof originalWidth === 'undefined')
-					{
-						image.data('width', imageWidth);
-						originalWidth = imageWidth;
-					}
-
-					/* restore image dimensions */
-
-					imageHeight = originalHeight;
-					imageWidth = originalWidth;
+					image.data({
+						'height': imageHeight,
+						'width': imageWidth
+					});
 
 					/* calculate image dimensions */
 
