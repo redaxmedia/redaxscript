@@ -10,7 +10,7 @@ function read_directory($input = '', $ignore = '')
 		$output[] = $value;
 	}
 
-	/* prepare output */
+	/* collect output */
 
 	if ($output)
 	{
