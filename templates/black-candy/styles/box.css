@@ -1,0 +1,186 @@
+/* box default */
+
+.box_default
+{
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #2c2c2c;
+	border-radius: 0.25em;
+    padding: 1em;
+}
+
+/* box extra */
+
+.box_extra
+{
+    -moz-border-radius: 2px 2px 4px 4px;
+    -webkit-border-radius: 2px 2px 4px 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 2px 2px 4px 4px;
+    color: #fff;
+    font: 1.125em/1.75em "Marmelad", Georgia, Times, serif;
+    margin-bottom: 3em;
+    padding: 1em;
+}
+
+.box_extra a
+{
+   color: #9e9032;
+}
+
+/* box media */
+
+.box_media
+{
+    -moz-border-radius: 4px;
+    -moz-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    background: #0C080D;
+    border: 4px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1) inset;
+}
+
+.box_media:hover
+{
+    -moz-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3) inset;
+    border-color: #fff;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3) inset;
+}
+
+/* box_code */
+
+.box_code
+{
+    -moz-border: 2px solid #2c2c2c;
+    -moz-border-radius: 4px;
+    -webkit-border: 2px solid #2c2c2c;
+    -webkit-border-radius: 4px;
+	background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #2c2c2c;
+    border-radius: 4px;
+    display: block;
+    padding: 1em;
+}
+
+/* box quote */
+
+.box_quote
+{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: transparent;
+    background: -moz-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    background: -ms-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    background: -o-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    background: -webkit-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    background: linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+    font: italic 1.25em/1.75em Georgia,Times,serif;
+    margin: 1.5em 0 3.5em 3em;
+    padding: 0.5em 1em;
+    position: relative;
+}
+
+.box_quote:before
+{
+    color: rgba(255, 230, 0, 0.2);
+    content: "\201C";
+    font-size: 8em;
+    left: -0.5em;
+    position: absolute;
+    top: 50px;
+}
+
+.box_quote:after
+{
+    -moz-box-shadow: 0 -1px #000;
+    -webkit-box-shadow: 0 -1px #000;
+    background: rgba(255, 230, 0, 0.2);
+    bottom: -1em;
+    box-shadow: 0 -1px #000;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+/* box_emphasized */
+
+.box_emphasized
+{
+    font-size: 0.9em;
+    display: block;
+    text-align: center;
+}
+
+/* box line */
+
+.box_line
+{
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	background: #2c2c2c;
+	border-radius: 2px;
+	height: 4px;
+}
+
+/* box tab */
+
+.box_tab_default
+{
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	background: #000;
+    border: 1px solid #2c2c2c;
+	border-radius: 0.25em;
+    padding: 1em;
+}
+
+/* box accordion */
+
+.accordion_default
+{
+	color: #585858;
+}
+
+.box_accordion_default
+{
+    background: #e2e2e2;
+    padding: 1em;
+}
+
+.title_accordion_default + .box_accordion_default
+{
+	border: 1px solid #B8B8B8;
+	border-width: 1px 0;
+}
+
+/* box dialog */
+
+.box_dialog_default
+{
+    -moz-border: 2px solid #2c2c2c;
+    -moz-border-radius: 0 0 4px 4px;
+    -webkit-border: 2px solid #2c2c2c;
+    -webkit-border-radius: 0 0 4px 4px;
+	background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #2c2c2c;
+    border-radius: 0 0 4px 4px;
+	border-width: 0 2px 2px 2px;
+    display: block;
+    padding: 1em;
+}
+
+.box_dialog_default .field_button
+{
+	display: inline-block;
+	margin-right: 1em;
+}

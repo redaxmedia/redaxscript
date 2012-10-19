@@ -1,0 +1,163 @@
+/* default form */
+
+.form_default .label
+{
+	display: block;
+}
+
+.form_default .legend
+{
+	margin-bottom: 20px;
+}
+
+.form_default li
+{
+    margin-top: 1.5em;
+}
+
+.form_default a
+{
+	text-decoration: underline;
+}
+
+.field_select, .field_text, .field_textarea, .field_textarea_small, .field_search
+{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: 0 -1px #262626 inset;
+    -webkit-box-shadow: 0 -1px #262626 inset;
+    background: #1F1F1F;
+    background: -moz-linear-gradient(top, #282828, #1F1F1F);
+    background: -ms-linear-gradient(top, #282828, #1F1F1F);
+    background: -o-linear-gradient(top, #282828, #1F1F1F);
+    background: -webkit-linear-gradient(top, #282828, #1F1F1F);
+    background: linear-gradient(top, #282828, #1F1F1F);
+    border: 1px solid #262626;
+    border-radius: 4px;
+    box-shadow: 0 -1px #262626 inset;
+    color: #c6c6c6;
+    font-family: "Marmelad", Georgia, Times, serif;
+    padding: 0.5em;
+}
+
+.field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover, .field_search:hover
+{
+    -moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
+    -webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+.field_select:active, .field_text:active, .field_textarea:active, .field_textarea_small:active, .field_search:active,
+.field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus, .field_search:focus
+{
+    -moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05), 0 0 10px rgba(255, 255, 255, 0.25);
+    -webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05), 0 0 10px rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05), 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.field_button, .field_button_large, .field_button_search
+{
+    -moz-border-radius: 4px;
+    -moz-box-shadow: 0 1px 1px #000, 0 1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px #000, 0 1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    background: #303030;
+    background: -moz-linear-gradient(top, #474747, #303030);
+    background: -ms-linear-gradient(top, #474747, #303030);
+    background: -o-linear-gradient(top, #474747, #303030);
+    background: -webkit-linear-gradient(top, #474747, #303030);
+    background: linear-gradient(top, #474747, #303030);
+    border-radius: 4px;
+    box-shadow: 0 1px 1px #000, 0 1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    color: #c6c6c6;
+    cursor: pointer;
+    font:1.125em "Marmelad", Georgia, Times, serif;
+    margin: 1em 2px;
+    padding: 0.375em 0.75em;
+    text-shadow: 0 1px #000;
+    text-transform: uppercase;
+}
+
+.field_button:hover, .field_button_large:hover, .field_button_search:hover
+{
+    -moz-box-shadow: 0 1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    -webkit-box-shadow: 0 1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    background: #3b3b3b;
+    background: -moz-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -ms-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -o-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
+    background: linear-gradient(bottom, #3b3b3b, #303030);
+    box-shadow: 0 1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+.field_button:active, .field_button_large:active, .field_button_search:active, .field_button:focus, .field_button_large:focus, .field_button_search:focus
+{
+    -moz-box-shadow: 0 -1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    -webkit-box-shadow: 0 -1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    background: #474747;
+    background: -moz-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -ms-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -o-linear-gradient(bottom, #3b3b3b, #303030);
+    background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
+    background: linear-gradient(bottom, #3b3b3b, #303030);
+    box-shadow: 0 -1px 1px #000, 0 -1px #5e5e5e inset, 0 0 0 4px rgba(255, 255, 255, 0.05);
+    position: relative;
+    top: 1px;
+}
+
+/* search */
+
+.field_button_search
+{
+    margin-left: 5%;
+    width: 20%;
+}
+.field_search
+{
+    font-size: 1.25em;
+    width: 70%;
+}
+
+/* contact */
+
+.form_contact
+{
+    position: relative;
+}
+
+.form_contact .legend
+{
+    bottom: 15px;
+    color: #555;
+    font: italic 0.875em georgia;
+    position: absolute;
+    right: 10px;
+}
+
+.form_contact .label, .form_contact .field_text
+{
+    display: inline-block;
+    min-width: 16%;
+    vertical-align: middle;
+}
+
+.form_contact label[for=text]
+{
+    margin-top: 5px;
+    vertical-align: top;
+}
+
+.form_contact textarea
+{
+    display: inline-block;
+    min-height: 150px;
+    vertical-align: middle;
+    width: 80%;
+}
+
+.form_contact .field_button
+{
+    margin-left: 16%;
+}

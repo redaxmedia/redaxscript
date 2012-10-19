@@ -1,0 +1,256 @@
+@font-face {
+  font-family: 'Marmelad';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marmelad'), local('Marmelad-Regular'), url(http://themes.googleusercontent.com/static/fonts/marmelad/v3/HM9p0JaHv5-HhbhN_csF8vesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Italianno';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Italianno'), local('Italianno-Regular'), url(http://themes.googleusercontent.com/static/fonts/italianno/v3/RzzA8gdr3WCK_nxdg53KGj8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+/* tag styling */
+
+a
+{
+	color: #c8c8c8;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #fff;
+	text-decoration: underline;
+}
+
+body
+{
+	color: #ababab;
+	font: 0.75em "Marmelad", Georgia, Times, serif;
+}
+
+p
+{
+	font: 1em/1.75em "Marmelad", Georgia, Times, serif;
+}
+
+pre
+{
+	font: italic 1em/1.5em "Marmelad", Georgia, Times, serif;
+}
+
+/* content */
+
+.content
+{
+    font-size: 1.125em;
+    line-height: 1.675em;
+}
+
+.box_content a
+{
+    text-decoration: underline
+}
+
+.title_content, .box_content h2
+{
+    color: #92901b;
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.title_content a
+{
+    color: #92901b;
+    text-decoration: none;
+}
+
+.title_content_sub
+{
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+.box_content p
+{
+    margin: 1em 0;
+}
+
+.box_content strong
+{
+    font-size: 1.125em;
+}
+
+.box_content h2
+{
+    margin-top: 80px;
+    position: relative;
+}
+
+.box_content h2:first-child
+{
+    margin-top: 10px;
+}
+
+.box_content h2:before
+{
+    background: url('../images/sprite.png') 0 -108px;
+    content: "";
+    display: block;
+    height: 25px;
+    left: 50%;
+    margin-left: -159px;
+    position: absolute;
+    top: -60px;
+    width: 318px;
+}
+
+.box_content h2:first-child:before
+{
+    display: none;
+}
+
+.box_content h3
+{
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    background: #000;
+    border-bottom: 2px solid #262626;
+    border-radius: 8px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1em;
+    margin: 1.5em 0 0.5em;
+    padding: 0.5em;
+    text-transform: uppercase;
+}
+
+.box_content h4
+{
+    font-size: 1.5em;
+    margin: 1.5em 0 0.5em;
+}
+
+.box_content h2 + h3
+{
+    margin-top: 0.5em;
+}
+
+/* footer */
+
+.footer .smallprint
+{
+   color: #464646;
+   line-height: 30px;
+}
+
+.footer .smallprint a
+{
+    background-image: url("../images/sprite.png");
+    background-repeat: no-repeat;
+    color: #464646;
+    display: inline-block;
+	padding-right: 25px;
+}
+
+.footer .info_powered
+{
+    margin-right: 2em;
+}
+.footer .info_powered a
+{
+    background-position: right 0;
+}
+
+.footer .info_author a
+{
+    background-position: right -62px;
+}
+
+/* title extra */
+
+.title_extra
+{
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: #474747;
+    font-size: 1.375em;
+    padding: 0.375em 0.5em;
+    text-transform: uppercase;
+}
+
+/* title website */
+
+.title_website a
+{
+    background: url('../images/sprite.png');
+    display: block;
+	height: 41px;
+    margin-left: 10px;
+    opacity: 0.8;
+    text-indent: -999em;
+    width: 264px;
+}
+
+.title_website a:hover
+{
+    opacity: 1;
+}
+
+.description_website
+{
+	display:none
+}
+
+/* default title accordion */
+
+.title_accordion_default
+{
+	line-height: 2.5em;
+	text-indent: 1em;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+/* default title accordion - javascript enabled */
+
+.js .title_accordion_default
+{
+	border-bottom-width: 0;
+	cursor: pointer;
+}
+
+.js .title_accordion_default.title_active
+{
+	cursor: default;
+}
+
+/* default title accordion - last title accordion */
+
+.js .set_accordion_last .title_accordion_default
+{
+	border-bottom-width: 1px;
+}
+
+/* default dialog */
+
+.title_dialog_default
+{
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    padding: 0.5em;
+}
+
+/* title custom */
+
+.box_content .title_custom
+{
+    font:3.5em Italianno, Georgia, Times, serif;
+    margin-bottom: 0;
+    max-height: 60px;
+}
