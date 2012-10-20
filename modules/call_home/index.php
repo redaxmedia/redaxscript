@@ -35,6 +35,9 @@ function call_home_admin_notification_start()
 	{
 		$output = $contents;
 	}
+
+	/* else collect error output */
+
 	else
 	{
 		$output = '<div class="box_note note_error">' . l('call_home_server_not_found') . '</div>';

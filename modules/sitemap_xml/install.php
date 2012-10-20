@@ -4,7 +4,7 @@
 
 function sitemap_xml_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Sitemap XML\', \'sitemap_xml\', \'Redaxmedia\', \'Generates a sitemap XML\', \'1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Sitemap XML\', \'sitemap_xml\', \'Redaxmedia\', \'Generates a sitemap XML\', \'1.1\', 1, 0)';
 	mysql_query($query);
 }
 

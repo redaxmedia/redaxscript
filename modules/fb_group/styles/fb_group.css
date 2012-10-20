@@ -1,4 +1,4 @@
-/* fb group */
+/* fb group link */
 
 .link_fb_group_user_image
 {
@@ -94,11 +94,12 @@
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
 	background: #dadada;
-	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#dadada, 40%), to(#d1d1d1));
 	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	border: 1px solid #cdcdcd;
 	border-bottom: 0;
 	border-radius: 0.25em 0.25em 0 0;

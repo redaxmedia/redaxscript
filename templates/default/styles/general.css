@@ -43,6 +43,7 @@ body
 	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -webkit-gradient(linear, left top, left bottom, from(#cfcfcf), to(#b9b9b9));
 	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: linear-gradient(top, #cfcfcf, #b9b9b9);
 	border: solid #b9b9b9;
@@ -59,11 +60,12 @@ body
 	-moz-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
 	-webkit-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
 	background: url('templates/default/images/noise.png') #aaa;
-	background: url('templates/default/images/noise.png'), linear-gradient(top, #ccc, #8e8e8e);
 	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #ccc, #8e8e8e);
 	background: url('templates/default/images/noise.png'), -ms-linear-gradient(top, #ccc, #8e8e8e);
 	background: url('templates/default/images/noise.png'), -o-linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#8e8e8e));
 	background: url('templates/default/images/noise.png'), -webkit-linear-gradient(top, #ccc, #8e8e8e);
+	background: url('templates/default/images/noise.png'), linear-gradient(top, #ccc, #8e8e8e);
 	border-bottom: 1px solid #919191;
 	box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
 	padding: 1.25em 0;
@@ -84,11 +86,6 @@ body
 	margin-bottom: 5em;
 	margin-top: 3em;
 	min-height: 500px;
-}
-
-.sidebar h3
-{
-	margin-top: 1.5em;
 }
 
 /* website logo */

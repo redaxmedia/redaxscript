@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* logo effect */
 
 	$.fn.logoEffect = function (options)
@@ -11,26 +13,31 @@
 			options = $.extend({}, r.plugin.logoEffect.options, options || {});
 		}
 
-		var related = $(options.related);
+		/* return this */
 
-		/* website logo effect on hover */
+		return this.each(function ()
+		{
+			var related = $(options.related);
 
-		$(this).hover(function ()
-		{
-			related.stop(1).fadeTo(options.duration, 0);
-		}, function ()
-		{
-			related.delay(options.duration).fadeTo(options.duration * 2, 1);
+			/* listen for hover */
+
+			$(this).hover(function ()
+			{
+				related.stop(1).fadeTo(options.duration, 0);
+			}, function ()
+			{
+				related.delay(options.duration).fadeTo(options.duration * 2, 1);
+			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.logoEffect.startup)
+	$(function ()
 	{
-		$(r.plugin.logoEffect.selector).logoEffect(r.plugin.logoEffect.options);
-	}
-});
+		if (r.plugin.logoEffect.startup)
+		{
+			$(r.plugin.logoEffect.selector).logoEffect(r.plugin.logoEffect.options);
+		}
+	});
+})(jQuery);

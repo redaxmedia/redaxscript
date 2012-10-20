@@ -1,178 +1,350 @@
 (function ($)
 {
+	'use strict';
+
 	/* gallery */
 
-	$.fn.gallery = function ()
+	$.fn.gallery = function (options)
 	{
-		/* prematurely terminate gallery */
+		/* extend options */
 
-		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7)
+		if (r.module.gallery.options !== options)
 		{
-			return false;
+			options = $.extend({}, r.module.gallery.options, options || {});
 		}
 
-		/* setup counter fields */
+		/* return this */
 
-		$(this).each(function ()
+		return this.each(function ()
 		{
-			var counter = 0,
-				gallery = $(this),
-				galleryName = gallery.attr('id');
+			var win = $(window),
+				body = $('body'),
+				gallery = body.find(options.element.gallery),
+				galleryOverlay = body.find(options.element.galleryOverlay);
 
-			gallery.find('a').each(function ()
+			/* prematurely terminate gallery */
+
+			if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7)
 			{
-				$(this).data('counter', ++counter).addClass('js_' + galleryName + '_' + counter);
-			});
-			gallery.data('total', counter);
-		});
-
-		/* open gallery box */
-
-		$(this).find('a').click(function (event)
-		{
-			/* define variables */
-
-			var link = $(this),
-				linkString = link.attr('href'),
-				linkAlt = link.attr('title'),
-				linkCounter = link.data('counter'),
-				gallery = link.closest('ul.js_gallery'),
-				galleryName = gallery.attr('id'),
-				galleryTotal = gallery.data('total'),
-				galleryOverlay = $('div.js_gallery_overlay'),
-				checkGalleryOverlay = galleryOverlay.length,
-				checkGalleryLoading, galleryBox, galleryLoading;
-
-			/* build box elements */
-
-			if (checkGalleryOverlay === 0)
-			{
-				$('body').append('<div class="js_gallery_overlay gallery_overlay"></div>');
-				galleryOverlay = $('div.js_gallery_overlay').css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-			}
-			$('body').append('<img class="js_gallery_loading gallery_loading" src="modules/gallery/images/loading.gif" alt="loading" /><div class="js_gallery_box gallery_box"><img src="' + linkString + '" alt="' + linkAlt + '" /></div>');
-			galleryBox = $('div.js_gallery_box').css('opacity', 0);
-			galleryLoading = $('img.js_gallery_loading').css('opacity', 0).delay(500).fadeTo(r.lightbox.loading.duration, r.lightbox.loading.opacity);
-
-			/* build previous and next links */
-
-			if (linkCounter > 1)
-			{
-				galleryBox.append('<div class="js_gallery_previous gallery_previous"><div>' + l.gallery_image_previous + '</div></div>');
-			}
-			if (linkCounter < galleryTotal)
-			{
-				galleryBox.append('<div class="js_gallery_next gallery_next"><div>' + l.gallery_image_next + '</div></div>');
+				return false;
 			}
 
-			/* fix transparent next and previous area for msie */
+			/* preload images */
 
-			if (r.constant.MY_BROWSER === 'msie')
+			if (options.preload.startup)
 			{
-				$('div.js_gallery_next, div.js_gallery_previous').css('background-image', 'url(\'fix\')');
-			}
-
-			/* port data to image */
-
-			galleryBox.find('img').data(
-			{
-				'gallery': galleryName,
-				'counter': linkCounter,
-				'total': galleryTotal
-			});
-
-			/* align box once image is loaded */
-
-			galleryBox.find('img').load(function ()
-			{
-				var image = $(this),
-					windowHeight = $(window).height(),
-					windowWidth = $(window).width(),
-					imageHeight = image.height(),
-					imageWidth = image.width();
-
-				galleryLoading.remove();
-
-				/* calculate image dimensions */
-
-				if (imageHeight > windowHeight)
-				{
-					imageWidth = imageWidth * windowHeight * 0.9 / imageHeight;
-					imageHeight = windowHeight * 0.9;
-				}
-				if (imageWidth > windowWidth)
-				{
-					imageHeight = imageHeight * windowWidth * 0.9 / imageWidth;
-					imageWidth = windowWidth * 0.9;
-				}
-
-				/* fit image to screen */
-
-				image.css(
-				{
-					'height': imageHeight,
-					'width': imageWidth
-				});
-				galleryBox.css(
-				{
-					'height': imageHeight,
-					'width': imageWidth,
-					'margin-top': -(imageHeight / 2) - 1,
-					'margin-left': -(imageWidth / 2) - 1
-				}).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-
-				/* handle next and previous links */
-
-				galleryBox.find('div.js_gallery_next, div.js_gallery_previous').click(function (event)
+				$(this).each(function ()
 				{
 					var link = $(this),
-						image = galleryBox.find('img'),
-						imageGallery = image.data('gallery'),
-						imageCounter = image.data('counter'),
-						imageTotal = image.data('total'),
-						checkGalleryNext = link.hasClass('js_gallery_next'),
-						checkGalleryPrevious = link.hasClass('js_gallery_previous');
+						string = link.attr('href'),
+						thumb = link.children(),
+						related = thumb.attr('src'),
+						image = $('<img src="' + string + '" />');
 
-					if (checkGalleryNext)
+					/* setup opacity and add class */
+
+					thumb.css('opacity', options.preload.opacity).addClass('image_gallery_preload');
+
+					/* opera load fix */
+
+					if (r.constant.MY_BROWSER === 'opera')
 					{
-						imageCounter++;
+						image.appendTo(body).remove();
 					}
-					else if (checkGalleryPrevious)
+
+					/* full image loaded */
+
+					image.data('related', related).on('load', function ()
 					{
-						imageCounter--;
-					}
-					if (imageCounter > 1 || imageCounter < imageTotal)
-					{
-						galleryBox.remove();
-						$('a.js_' + imageGallery + '_' + imageCounter).click();
-					}
-					event.preventDefault();
+						var thumbRelated = $(this).data('related');
+
+						/* fade in related thumb and remove class */
+
+						link.find('img[src="' + thumbRelated + '"]').fadeTo(options.preload.duration, 1).removeClass('image_gallery_preload');
+					});
 				});
+			}
 
-				/* close gallery box */
+			/* open gallery on click */
 
-				galleryBox.add(galleryOverlay).click(function ()
+			$(this).click(function (event)
+			{
+				var link = $(this),
+					string = link.attr('href'),
+					thumb = link.children(),
+					image = $('<img src="' + string + '" />'),
+					imageCounter = thumb.data('counter'),
+					imageTotal = thumb.data('total'),
+					imageArtist = thumb.data('artist'),
+					imageDate = thumb.data('date'),
+					imageDescription = thumb.data('description'),
+					gallery = body.find(options.element.gallery),
+					galleryLoader = $('<img src="' + options.loader + '" />'),
+					galleryMeta = gallery.find(options.element.galleryMeta),
+					galleryOverlay = body.find(options.element.galleryOverlay),
+					galleryName = thumb.data('gallery-name'),
+					buttonPrevious = gallery.find(options.element.buttonPrevious),
+					buttonNext = gallery.find(options.element.buttonNext),
+					checkGallery = gallery.length,
+					checkGalleryOverlay = galleryOverlay.length,
+					timeoutLoader, timeoutImage, intervalVisible, output = '';
+
+				/* prematurely terminate gallery */
+
+				if (checkGallery)
 				{
-					galleryLoading = $('img.js_gallery_loading');
-					checkGalleryLoading = galleryLoading.length;
-					if (checkGalleryLoading === 0)
+					return false;
+				}
+
+				/* collect overlay */
+
+				if (checkGalleryOverlay === 0)
+				{
+					output = '<div class="' + options.classString.galleryOverlay + '"></div>';
+				}
+
+				/* collect gallery elements */
+
+				output += '<div class="' + options.classString.gallery + '">';
+				if (options.loader)
+				{
+					output += '<img class="' + options.classString.galleryLoader + '" src="' + options.loader + '" />';
+				}
+				output += '</div>';
+
+				/* append output to body */
+
+				body.append(output);
+
+				/* fade in overlay and loader */
+
+				galleryOverlay = body.find(options.element.galleryOverlay);
+				if (checkGalleryOverlay === 0)
+				{
+					galleryOverlay.css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+				}
+				gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+				galleryLoader = gallery.find(options.element.galleryLoader).css('opacity', 0);
+
+				/* fade in loader on timeout */
+
+				timeoutLoader = setTimeout(function ()
+				{
+					galleryLoader.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+				}, options.timeout.loader);
+
+				/* close gallery on timout */
+
+				timeoutImage = setTimeout(function ()
+				{
+					galleryOverlay.click();
+				}, options.timeout.image);
+
+				/* opera load fix */
+
+				if (r.constant.MY_BROWSER === 'opera')
+				{
+					image.appendTo(body).remove();
+				}
+
+				/* full image loaded */
+
+				image.on('load', function ()
+				{
+					/* clear loader and image timeout */
+
+					clearTimeout(timeoutLoader);
+					clearTimeout(timeoutImage);
+
+					/* append image and remove loader */
+
+					galleryLoader.remove();
+					gallery.css('opacity', 0);
+					image.appendTo(gallery).trigger('fit');
+
+					/* check visible interval */
+
+					intervalVisible = setInterval(function ()
 					{
-						galleryBox.add(galleryOverlay).remove();
+						if (image.is(':visible'))
+						{
+							gallery.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+							clearInterval(intervalVisible);
+						}
+					}, options.interval);
+
+					/* append meta information */
+
+					galleryMeta = $('<div class="' + options.classString.galleryMeta + '"><span class="' + options.classString.galleryPagination + '">' + imageCounter + '<span class="' + options.classString.galleryDivider + '">' + l.gallery_divider + '</span>' + imageTotal + '</span></div>').appendTo(gallery);
+
+					/* append image artist */
+
+					if (imageArtist)
+					{
+						galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</span>');
+					}
+
+					/* append image description */
+
+					if (imageDescription)
+					{
+						galleryMeta.prepend('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</span>');
+					}
+
+					/* append previous and next */
+
+					if (imageCounter > 1)
+					{
+						buttonPrevious = $('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>').appendTo(gallery);
+					}
+					if (imageCounter < imageTotal)
+					{
+						buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
+					}
+
+					/* next and previous on click */
+
+					buttonPrevious.add(buttonNext).click(function (event)
+					{
+						var link = $(this),
+							checkButtonPrevious = link.hasClass('js_gallery_previous'),
+							checkButtonNext = link.hasClass('js_gallery_next');
+
+						/* calculate image counter */
+
+						if (checkButtonPrevious)
+						{
+							imageCounter--;
+						}
+						else if (checkButtonNext)
+						{
+							imageCounter++;
+						}
+						if (imageCounter > 1 || imageCounter < imageTotal)
+						{
+							gallery.remove();
+							win.off();
+							$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
+						}
+						event.preventDefault();
+					});
+
+					/* listen for keydown */
+
+					win.on('keydown', function (event)
+					{
+						/* trigger close action */
+
+						if (event.which === 27)
+						{
+							galleryOverlay.click();
+						}
+
+						/* trigger previous action */
+
+						if (event.which === 37)
+						{
+							buttonPrevious.click();
+						}
+
+						/* trigger next action */
+
+						if (event.which === 39)
+						{
+							buttonNext.click();
+						}
+
+						/* disable up and down */
+
+						if (event.which === 38 || event.which === 40)
+						{
+							event.preventDefault();
+						}
+					});
+
+					/* auto resize */
+
+					if (options.autoResize)
+					{
+						win.on('resize', function () {
+							image.trigger('fit');
+						});
 					}
 				});
 
+				/* fit image to viewport */
+
+				image.on('fit', function ()
+				{
+					var image = $(this),
+						imageHeight = image.data('height') || image.height(),
+						imageWidth = image.data('width') || image.width(),
+						winHeight = win.height(),
+						winWidth = win.width(),
+						minWidth = options.minWidth,
+						scaling = options.scaling;
+
+					/* store image dimensions */
+
+					image.data({
+						'height': imageHeight,
+						'width': imageWidth
+					});
+
+					/* calculate image dimensions */
+
+					if (imageHeight > winHeight)
+					{
+						imageWidth = imageWidth * winHeight * scaling / imageHeight;
+						imageHeight = winHeight * scaling;
+					}
+					if (imageWidth > winWidth)
+					{
+						imageHeight = imageHeight * winWidth * scaling / imageWidth;
+						imageWidth = winWidth * scaling;
+					}
+					if (imageWidth < minWidth)
+					{
+						imageHeight = imageHeight * minWidth * scaling / imageWidth;
+						imageWidth = minWidth * scaling;
+					}
+
+					/* setup height and width */
+
+					image.add(gallery).css(
+					{
+						'height': imageHeight,
+						'width': imageWidth
+					});
+
+					/* setup gallery margin */
+
+					gallery.css(
+					{
+						'margin-top': -imageHeight / 2,
+						'margin-left': -imageWidth / 2
+					});
+				});
+
+				/* remove gallery and overlay on click */
+
+				galleryOverlay.click(function ()
+				{
+					gallery.add(galleryOverlay).remove();
+					win.off();
+				});
+				event.preventDefault();
 			});
-			event.preventDefault();
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.gallery.startup)
+	$(function ()
 	{
-		$(r.module.gallery.selector).gallery();
-	}
-});
+		if (r.module.gallery.startup)
+		{
+			$(r.module.gallery.selector).gallery(r.module.gallery.options);
+		}
+	});
+})(jQuery);

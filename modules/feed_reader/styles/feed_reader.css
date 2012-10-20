@@ -1,11 +1,10 @@
-/* feed reader */
+/* feed reader box */
 
 .box_feed_reader
 {
 	background: #e2e2e2;
 	border: 1px solid #cdcdcd;
 	color: #474747;
-	margin-bottom: 2em;
 	padding: 1em;
 }
 
@@ -14,22 +13,30 @@
 	text-decoration: underline;
 }
 
+/* feed reader title */
+
 .title_feed_reader
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
 	background: #dadada;
-	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#dadada, 40%), to(#d1d1d1));
 	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	border: 1px solid #cdcdcd;
 	border-bottom: 0;
 	border-radius: 0.25em 0.25em 0 0;
 	font: bold 1em/2.25em arial;
 	padding: 0 1em;
 	text-shadow: 0 1px #f1f1f1;
+}
+
+.title_feed_reader, .title_feed_reader a
+{
+	color: #474747;
 }
 
 .title_feed_reader a:hover
@@ -40,4 +47,11 @@
 .title_feed_reader .title_second
 {
 	float: right;
+}
+
+/* space between elements */
+
+.box_feed_reader + .title_feed_reader
+{
+	margin-top: 2em;
 }

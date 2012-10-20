@@ -42,6 +42,9 @@ function admin_users_list()
 					$$key = stripslashes($value);
 				}
 			}
+
+			/* build class string */
+
 			if ($status == 1)
 			{
 				$class_status = '';

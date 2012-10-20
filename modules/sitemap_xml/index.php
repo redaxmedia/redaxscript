@@ -37,6 +37,9 @@ function sitemap_xml()
 					$$key = stripslashes($value);
 				}
 			}
+
+			/* build string */
+
 			if ($parent == 0)
 			{
 				$string = $alias;
@@ -45,6 +48,9 @@ function sitemap_xml()
 			{
 				$string = build_string('categories', $id);
 			}
+
+			/* collect output */
+
 			$output .= '<url><loc>' . ROOT . '/' . REWRITE_STRING . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}
 	}
@@ -67,6 +73,9 @@ function sitemap_xml()
 					$$key = stripslashes($value);
 				}
 			}
+
+			/* build string */
+
 			if ($category == 0)
 			{
 				$string = $alias;

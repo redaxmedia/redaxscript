@@ -4,7 +4,7 @@
 
 function db_backup_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'DB backup\', \'db_backup\', \'Redaxmedia\', \'Backup a database\', \'1.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'DB backup\', \'db_backup\', \'Redaxmedia\', \'Backup a database\', \'1.1\', 1, 1)';
 	mysql_query($query);
 }
 

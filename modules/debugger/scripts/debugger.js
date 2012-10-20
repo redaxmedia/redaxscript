@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* debugger */
 
 	$.fn.debugger = function (options)
@@ -11,21 +13,26 @@
 			options = $.extend({}, r.module.debugger.options, options || {});
 		}
 
-		/* toggle related */
+		/* return this */
 
-		$(this).on('click', function ()
+		return this.each(function ()
 		{
-			$(this).find(options.related).toggle();
+			/* listen for click */
+
+			$(this).on('click', function ()
+			{
+				$(this).find(options.related).toggle();
+			});
 		});
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.module.debugger.startup)
+	$(function ()
 	{
-		$(r.module.debugger.selector).debugger(r.module.debugger.options);
-	}
-});
+		if (r.module.debugger.startup)
+		{
+			$(r.module.debugger.selector).debugger(r.module.debugger.options);
+		}
+	});
+})(jQuery);

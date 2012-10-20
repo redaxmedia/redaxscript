@@ -4,7 +4,7 @@
 
 function analytics_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Goggle analytics web tracking\', \'1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Goggle analytics web tracking\', \'1.1\', 1, 0)';
 	mysql_query($query);
 }
 

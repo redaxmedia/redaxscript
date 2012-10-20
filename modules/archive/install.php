@@ -4,7 +4,7 @@
 
 function archive_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Archive\', \'archive\', \'Redaxmedia\', \'Displays a tree list of the past months\', \'1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Archive\', \'archive\', \'Redaxmedia\', \'Displays a tree list of the past months\', \'1.1\', 1, 0)';
 	mysql_query($query);
 }
 

@@ -1,36 +1,48 @@
 (function ($)
 {
+	'use strict';
+
 	/* dialog */
 
 	$.fn.dialog = function (options)
 	{
-		var suffix = '_default',
-			dialog = $('div.js_dialog'),
-			dialogOverlay = $('div.js_dialog_overlay'),
-			dialogClasses = 'js_dialog dialog',
-			dialogOverlayClasses = 'js_dialog_overlay dialog_overlay',
-			checkDialog = dialog.length || dialogOverlay.length,
-			output;
+		/* extend options */
 
-		/* handle suffix */
+		if (r.plugin.dialog.options !== options)
+		{
+			options = $.extend({}, r.plugin.dialog.options, options || {});
+		}
+
+		/* detect needed mode */
 
 		if (r.constant.FIRST_PARAMETER === 'admin')
 		{
-			suffix = '_admin';
+			options.suffix = options.suffix.backend;
 		}
-		dialogClasses += ' dialog' + suffix;
-		dialogOverlayClasses += ' dialog_overlay' + suffix;
+		else
+		{
+			options.suffix = options.suffix.frontend;
+		}
+
+		var body = $('body'),
+			dialog = body.find(options.element.dialog),
+			dialogOverlay = body.find(options.element.dialogOverlay),
+			buttonOk, buttonCancel, output = '';
 
 		/* prematurely terminate dialog */
 
-		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || checkDialog)
+		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
 		{
 			return false;
 		}
 
-		/* build dialog elements */
+		/* collect overlay */
 
-		output = '<div class="' + dialogOverlayClasses + '"></div><div class="js_dialog ' + dialogClasses + '"><h3 class="title_dialog' + suffix + '">' + l[options.type] + '</h3><div class="box_dialog' + suffix + '">';
+		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div>';
+
+		/* collect dialog elements */
+
+		output += '<div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
 		if (options.message)
 		{
 			output += '<p>' + options.message + '</p>';
@@ -40,42 +52,42 @@
 
 		if (r.constant.FIRST_PARAMETER !== 'admin')
 		{
-			suffix = '';
+			options.suffix = '';
 		}
 
 		/* prompt */
 
 		if (options.type === 'prompt')
 		{
-			output += '<input type="text" class="js_prompt field_text' + suffix + '" value="';
-			if (options.value)
-			{
-				output += options.value;
-			}
-			output += '" />';
+			output += '<input type="text" class="js_prompt field_text' + options.suffix + '" value="' + options.value + '" />';
 		}
 
 		/* ok button */
 
-		output += '<a class="js_ok field_button' + suffix + '"><span><span>' + l.ok + '</span></span></a>';
+		output += '<a class="js_ok field_button' + options.suffix + '"><span><span>' + l.ok + '</span></span></a>';
 
 		/* cancel button if confirm or prompt */
 
 		if (options.type === 'confirm' || options.type === 'prompt')
 		{
-			output += '<a class="js_cancel field_button' + suffix + '"><span><span>' + l.cancel + '</span></span></a>';
+			output += '<a class="js_cancel field_button' + options.suffix + '"><span><span>' + l.cancel + '</span></span></a>';
 		}
 		output += '</div></div>';
-		$('body').append(output);
+
+		/* append output to body */
+
+		body.append(output);
 
 		/* fade in overlay and dialog */
 
-		dialogOverlay = $('div.js_dialog_overlay').css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-		dialog = $('div.js_dialog').css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		buttonOk = dialog.find(options.element.buttonOk);
+		buttonCancel = dialog.find(options.element.buttonCancel);
 
-		/* close dialog */
+		/* close dialog on click */
 
-		dialog.find('a.js_cancel, a.js_ok').add(dialogOverlay).click(function ()
+		buttonOk.add(buttonCancel).add(dialogOverlay).click(function ()
 		{
 			dialog.add(dialogOverlay).remove();
 		});
@@ -84,7 +96,7 @@
 
 		if (options.callback)
 		{
-			dialog.find('a.js_ok').click(function ()
+			buttonOk.click(function ()
 			{
 				if (options.type === 'prompt')
 				{
@@ -104,41 +116,42 @@
 
 	$.fn.confirmLink = function ()
 	{
-		$(this).on('click', function (event)
+		/* return this */
+
+		return this.each(function ()
 		{
-			var string = $(this)[0].href;
+			/* listen for click */
 
-			if (string)
+			$(this).on('click', function (event)
 			{
-				/* confirm dialog to continue */
+				var string = $(this)[0].href;
 
-				$.fn.dialog(
+				if (string)
 				{
-					type: 'confirm',
-					message: l.dialog_question + l.question_mark,
-					callback: function ()
+					/* confirm dialog to continue */
+
+					$.fn.dialog(
 					{
-						/* check for internal link */
-
-						if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
+						type: 'confirm',
+						message: l.dialog_question + l.question_mark,
+						callback: function ()
 						{
-							string = r.baseURL + string;
-						}
+							/* check for internal link */
 
-						/* timeout to fix opera */
-
-						setTimeout(function ()
-						{
+							if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
+							{
+								string = r.baseURL + string;
+							}
 							window.location = string;
-						}, 0);
-					}
-				});
-				event.preventDefault();
-			}
+						}
+					});
+					event.preventDefault();
+				}
+			});
 		});
 	};
 
-	/* prevent unload on admin */
+	/* prevent unload */
 
 	$.fn.preventUnload = function (options)
 	{
@@ -149,29 +162,36 @@
 			options = $.extend({}, r.plugin.preventUnload.options, options || {});
 		}
 
-		if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
-		{
-			$(this).one('change', function ()
-			{
-				$('a').not(options.excluded).confirmLink();
-			});
-		}
-	};
-})(jQuery);
+		/* return this */
 
-jQuery(function ($)
-{
+		return this.each(function ()
+		{
+			if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
+			{
+				/* listen for change */
+
+				$(this).one('change', function ()
+				{
+					$('a').not(options.excluded).confirmLink();
+				});
+			}
+		});
+	};
+
 	/* startup */
 
-	if (r.plugin.confirmLink.startup)
+	$(function ()
 	{
-		$(r.plugin.confirmLink.selector).confirmLink();
-
-		/* depending startup */
-
-		if (r.plugin.preventUnload.startup)
+		if (r.plugin.confirmLink.startup)
 		{
-			$(r.plugin.preventUnload.selector).preventUnload(r.plugin.preventUnload.options);
+			$(r.plugin.confirmLink.selector).confirmLink();
+
+			/* depending startup */
+
+			if (r.plugin.preventUnload.startup)
+			{
+				$(r.plugin.preventUnload.selector).preventUnload(r.plugin.preventUnload.options);
+			}
 		}
-	}
-});
+	});
+})(jQuery);

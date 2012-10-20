@@ -13,6 +13,9 @@ function center()
 		return;
 		break;
 	}
+
+	/* else routing */
+
 	else
 	{
 		routing();

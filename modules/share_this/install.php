@@ -4,7 +4,7 @@
 
 function share_this_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrate social network buttons\', \'1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrate social network buttons\', \'1.1\', 1, 0)';
 	mysql_query($query);
 }
 

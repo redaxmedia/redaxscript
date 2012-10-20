@@ -339,14 +339,23 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 	/* collect output */
 
 	$output = '<div class="box_infoline box_infoline_' . $table . '">';
+
+	/* collect author output */
+
 	if ($table == 'articles')
 	{
 		$output .= '<span class="infoline_posted_by">' . l('posted_by') . ' ' . $author . '</span>';
 		$output .= '<span class="infoline_on"> ' . l('on') . ' </span>';
 	}
+
+	/* collect date and time output */
+
 	$output .= '<span class="infoline_date">' . $date . '</span>';
 	$output .= '<span class="infoline_at"> ' . l('at') . ' </span>';
 	$output .= '<span class="infoline_time">' . $time . '</span>';
+
+	/* collect comment output */
+
 	if ($comments_total)
 	{
 		$output .= '<span class="divider">' . s('divider') . '</span>' . '<span class="infoline_total">' . $comments_total . ' ';
@@ -437,13 +446,19 @@ function notification($title = '', $text = '', $action = '', $string = '')
 
 	if ($title)
 	{
-		$output = '<h2 class="title_content">' . $title . '</h2>';
+		$output = '<h2 class="title_content title_notification">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_notification' . $suffix . '">';
+	$output .= '<div class="box_content box_notification' . $suffix . '">';
+
+	/* collect text output */
+
 	if ($text)
 	{
-		$output .= '<p>' . $text . l('point') . '</p>';
+		$output .= '<p class="text_notification">' . $text . l('point') . '</p>';
 	}
+
+	/* collect button output */
+
 	if ($action && $string)
 	{
 		/* handle protocol */

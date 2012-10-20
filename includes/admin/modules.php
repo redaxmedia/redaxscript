@@ -47,6 +47,9 @@ function admin_modules_list()
 				}
 				$modules_installed[] = $alias;
 				$file_install = file_exists('modules/' . $alias . '/install.php');
+
+				/* build class string */
+
 				if ($status == 1)
 				{
 					$class_status = '';

@@ -7,6 +7,7 @@
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#e2e2e2, 40%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	margin-bottom: 2em;
@@ -14,7 +15,7 @@
 	padding: 0.5em 1em;
 }
 
-.description_seo_tube
+.text_seo_tube
 {
 	margin-bottom: 2em;
 	margin-top: 2em;

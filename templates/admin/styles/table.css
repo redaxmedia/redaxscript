@@ -13,25 +13,35 @@
 	border-width: 0 1px;
 }
 
-.table_admin tbody tr
+/* odd */
+
+.table_admin tbody:nth-child(odd) tr
 {
 	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
-	border-bottom: 1px solid #b9b9b9;
 }
 
-.table_admin tbody tr:hover
+/* even */
+
+.table_admin tbody:nth-child(even) tr
 {
-	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #ebebeb, #e2e2e2);
-	background: -ms-linear-gradient(top, #ebebeb, #e2e2e2);
-	background: -o-linear-gradient(top, #ebebeb, #e2e2e2);
-	background: -webkit-linear-gradient(top, #ebebeb, #e2e2e2);
-	background: linear-gradient(top, #ebebeb, #e2e2e2);
+	background: #ebebeb;
+	background: -moz-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -ms-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -o-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#e8e8e8));
+	background: -webkit-linear-gradient(top, #ebebeb, #e8e8e8);
+	background: linear-gradient(top, #ebebeb, #e8e8e8);
+}
+
+.table_admin tbody tr
+{
+	border-bottom: 1px solid #b9b9b9;
 }
 
 .table_admin tbody:last-child tr:last-child
@@ -51,7 +61,9 @@
 
 .table_admin tbody .row_group
 {
-	border-top: 1px solid #b9b9b9;
+	-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -61,9 +73,9 @@
 	border-top: 0;
 }
 
-.table_admin tbody .row_group, .table_admin tbody .row_group:hover
+.table_admin tbody .row_group td
 {
-	background: url('templates/admin/images/carbon.png') #f2f2f2;
+	padding: 1.25em 0.75em;
 }
 
 /* admin table head and foot */
@@ -88,7 +100,7 @@
 	background: url('templates/admin/images/sprite.png') -116px 2px;
 }
 
-/* link groups */
+/* parent link */
 
 .table_admin tbody .link_parent
 {
@@ -96,7 +108,12 @@
 	text-decoration: underline;
 }
 
-/* link view */
+.table_admin tbody .link_parent:hover
+{
+	color: #474747;
+}
+
+/* view link */
 
 .table_admin tbody .link_view
 {

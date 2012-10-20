@@ -1,5 +1,7 @@
 (function ($)
 {
+	'use strict';
+
 	/* generate alias */
 
 	$.fn.generateAlias = function (options)
@@ -11,33 +13,38 @@
 			options = $.extend({}, r.plugin.generateAlias.options, options || {});
 		}
 
-		/* listen for input */
+		/* return this */
 
-		$(this).on('change input', function ()
+		return this.each(function ()
 		{
-			var field = $(this),
-				form = field.closest('form'),
-				fiedValue = field[0].value,
-				related = form.find(options.related),
-				aliasValue;
+			/* listen for change and input */
 
-			/* clean alias if value */
-
-			if (fiedValue)
+			$(this).on('change input', function ()
 			{
-				aliasValue = $.fn.cleanAlias(fiedValue);
-				if (aliasValue)
+				var field = $(this),
+					form = field.closest('form'),
+					fiedValue = field[0].value,
+					related = form.find(options.related),
+					aliasValue;
+
+				/* clean alias if value */
+
+				if (fiedValue)
 				{
-					related.val(aliasValue).trigger('check');
+					aliasValue = $.fn.cleanAlias(fiedValue);
+					if (aliasValue)
+					{
+						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
+					}
 				}
-			}
 
-			/* else clear value */
+				/* else clear value */
 
-			else
-			{
-				related[0].value = '';
-			}
+				else
+				{
+					related[0].value = '';
+				}
+			});
 		});
 	};
 
@@ -188,14 +195,14 @@
 		output = output.replace(/\s+/g, '-');
 		return output;
 	};
-})(jQuery);
 
-jQuery(function ($)
-{
 	/* startup */
 
-	if (r.plugin.generateAlias.startup)
+	$(function ()
 	{
-		$(r.plugin.generateAlias.selector).generateAlias(r.plugin.generateAlias.options);
-	}
-});
+		if (r.plugin.generateAlias.startup)
+		{
+			$(r.plugin.generateAlias.selector).generateAlias(r.plugin.generateAlias.options);
+		}
+	});
+})(jQuery);

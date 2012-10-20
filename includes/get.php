@@ -21,6 +21,9 @@ function get_parameter($input = '')
 	{
 		$admin = 1;
 	}
+
+	/* switch parameter */
+
 	switch (true)
 	{
 		case $input == 'first' && is_numeric($parameter[0]) == '':
@@ -60,6 +63,8 @@ function get_parameter($input = '')
 
 function get_string($mode = '')
 {
+	/* switch admin parmaeter */
+
 	switch (ADMIN_PARAMETER)
 	{
 		case 'up':
@@ -81,6 +86,9 @@ function get_string($mode = '')
 			$parameter = explode('/', $_GET['p']);
 			$parameter = array_map('clean_alias', $parameter);
 			$parameter = array_map('clean_mysql', $parameter);
+
+			/* mode one */
+
 			if ($mode == 1)
 			{
 				$last_value = end($parameter);

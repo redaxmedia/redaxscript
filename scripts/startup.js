@@ -36,10 +36,9 @@ r.plugin =
 			element:
 			{
 				accordion: 'div.js_accordion, form.js_accordion',
-				accordionBox: 'div.js_box_accordion, ul.js_box_accordion',
 				accordionSet: 'div.js_set_accordion, fieldset.js_set_accordion',
-				accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion'
-
+				accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion',
+				accordionBox: 'div.js_box_accordion, ul.js_box_accordion'
 			},
 			duration: 'normal'
 		}
@@ -52,6 +51,34 @@ r.plugin =
 		{
 			overflow: 'hidden',
 			summand: 10
+		}
+	},
+	dialog:
+	{
+		options:
+		{
+			element:
+			{
+				dialog: 'div.js_dialog',
+				dialogOverlay: 'div.js_dialog_overlay',
+				buttonOk: 'a.js_ok',
+				buttonCancel: 'a.js_cancel'
+			},
+			classString:
+			{
+				dialog: 'js_dialog dialog dialog',
+				dialogTitle: 'js_title_dialog title_dialog title_dialog',
+				dialogBox: 'js_box_dialog box_dialog box_dialog',
+				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay'
+			},
+			suffix:
+			{
+				backend: '_admin',
+				frontend: '_default'
+			},
+			type: 'alert',
+			message: '',
+			callback: ''
 		}
 	},
 	dropdown:
@@ -120,9 +147,9 @@ r.plugin =
 			element:
 			{
 				adminDock: 'div.js_dock_admin',
-				buttonCancel: 'div a.js_cancel span span, form button.js_cancel',
+				buttonSubmit: 'form button.js_submit',
 				buttonOk: 'div a.js_ok span span, form button.js_ok',
-				buttonSubmit: 'form button.js_submit'
+				buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
 			}
 		}
 	},
@@ -132,6 +159,7 @@ r.plugin =
 		selector: 'form.js_note_required',
 		options:
 		{
+			classString: 'js_note_required note_required box_note',
 			related: 'a, button',
 			duration: 1000
 		}
@@ -174,6 +202,8 @@ r.module = {};
 
 r.baseURL = function ()
 {
+	'use strict';
+
 	var base = document.getElementsByTagName('base'),
 		checkBase = base.length,
 		output;
@@ -193,6 +223,8 @@ r.baseURL = function ()
 
 r.startup = function (html)
 {
+	'use strict';
+
 	if (html.className)
 	{
 		html.className += ' ';

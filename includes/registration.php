@@ -18,7 +18,7 @@ function registration_form()
 
 	$output = '<h2 class="title_content">' . l('account_create') . '</h2>';
 	$output .= form_element('form', 'form_registration', 'js_check_required form_default form_registration', '', '', '', 'action="' . REWRITE_STRING . 'registration" method="post"');
-	$output .= form_element('fieldset', '', '', '', '', l('fields_required') . l('point')) . '<ul>';
+	$output .= form_element('fieldset', '', 'set_registration', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'js_required field_text field_note' . $class_disabled, 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note' . $class_disabled, 'user', '', '* ' . l('user'), 'maxlength="50" required="required"' . $code_disabled) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_disabled, 'email', '', '* ' . l('email'), 'maxlength="50" required="required"' . $code_disabled) . '</li>';

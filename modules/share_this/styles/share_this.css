@@ -1,15 +1,16 @@
-/* share this */
+/* share this list */
 
 .list_share_this
 {
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	background: #dadada;
-	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#dadada, 40%), to(#d1d1d1));
 	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	border: 1px solid #cdcdcd;
 	border-radius: 0.25em;
 	display: inline-block;
@@ -41,7 +42,7 @@
 	opacity: 1;
 }
 
-/* share this links */
+/* share this link */
 
 .list_share_this .link_facebook
 {

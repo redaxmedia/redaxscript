@@ -90,8 +90,8 @@ function search_post()
 
 		else if ($result)
 		{
-			$output = '<h2 class="title_content">' . l('search') . '</h2>';
-			$output .= form_element('fieldset', '', 'box_search_result', '', '', '<span class="title_content_sub title_search_result">' . l('articles') . '</span>') . '<ol class="list_search_result">';
+			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
+			$output .= form_element('fieldset', '', 'set_search_result', '', '', '<span class="title_content_sub title_search_result_sub">' . l('articles') . '</span>') . '<ol class="list_search_result">';
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];
@@ -108,11 +108,17 @@ function search_post()
 							$$key = stripslashes($value);
 						}
 					}
+
+					/* prepare metadata */
+
 					if ($description == '')
 					{
 						$description = $title;
 					}
 					$date = date(s('date'), strtotime($date));
+
+					/* build string */
+
 					if ($category == 0)
 					{
 						$string = $alias;
@@ -121,6 +127,9 @@ function search_post()
 					{
 						$string = build_string('articles', $id);
 					}
+
+					/* collect item output */
+
 					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $string, $description) . '<span class="date_search_result">' . $date . '</span></li>';
 				}
 				else

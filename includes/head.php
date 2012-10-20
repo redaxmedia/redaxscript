@@ -34,7 +34,7 @@ function head()
 		}
 	}
 
-	/* build meta strings */
+	/* build metadata strings */
 
 	$title = s('title');
 	if ($title)
@@ -164,12 +164,15 @@ function head()
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
 	$output .= '<title>' . $title . $title_divider . $breadcrumb_admin . $breadcrumb . $description_divider . $description . '</title>' . PHP_EOL;
 
-	/* refresh string */
+	/* collect refresh string */
 
 	if (REFRESH_STRING)
 	{
 		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_STRING . '" />' . PHP_EOL;
 	}
+
+	/* collect author and copyright as needed */
+
 	if (s('author'))
 	{
 		$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
@@ -178,6 +181,9 @@ function head()
 	{
 		$output .= '<meta name="copyright" content="' . s('copyright') . '" />' . PHP_EOL;
 	}
+
+	/* collect metadata */
+
 	$output .= '<meta name="generator" content="' . l('redaxscript') . ' ' . l('redaxscript_version') . '" />' . PHP_EOL;
 	if ($description)
 	{
@@ -189,7 +195,7 @@ function head()
 	}
 	$output .= '<meta name="robots" content="' . $robots . '" />' . PHP_EOL;
 
-	/* canonical url */
+	/* build canonical url */
 
 	$canonical_url = ROOT . '/' . REWRITE_STRING;
 

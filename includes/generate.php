@@ -43,10 +43,6 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 	{
 		$value_string = '';
 	}
-	if ($title == '')
-	{
-		$title = $name;
-	}
 	$title_string = ' title="' . $title . '"';
 	if ($code)
 	{
@@ -90,12 +86,10 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 		$code_string = ' ' . $code;
 	}
 
-	/* collect output */
+	/* switch type */
 
 	switch ($type)
 	{
-		/* switch type */
-
 		case 'form':
 			$output = '<form' . $selector_string . $code_string . '>';
 			break;
@@ -158,6 +152,9 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
 		$code_string = ' ' . $code;
 		$position_multiple = strpos($code, 'multiple="multiple"');
 	}
+
+	/* handle multiple select */
+
 	if ($position_multiple > -1)
 	{
 		if ($name)
