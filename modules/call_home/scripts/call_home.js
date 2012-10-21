@@ -13,24 +13,19 @@
 			options = $.extend({}, r.module.callHome.options, options || {});
 		}
 
-		/* return this */
+		/* create tracker */
 
-		return this.each(function ()
+		if (options.id && options.url)
 		{
-			/* create tracker */
+			r.module.callHome.tracker = _gat._createTracker(options.id);
+			r.module.callHome.tracker._setDomainName(options.url);
+			r.module.callHome.tracker._initData();
+			r.module.callHome.tracker._trackPageview();
 
-			if (options.id && options.url)
-			{
-				r.module.callHome.tracker = _gat._createTracker(options.id);
-				r.module.callHome.tracker._setDomainName(options.url);
-				r.module.callHome.tracker._initData();
-				r.module.callHome.tracker._trackPageview();
+			/* call event */
 
-				/* call event */
-
-				r.module.callHome.tracker._trackEvent('call-home', r.version, r.baseURL);
-			}
-		});
+			r.module.callHome.tracker._trackEvent('call-home', r.version, r.baseURL);
+		}
 	};
 
 	/* startup */
