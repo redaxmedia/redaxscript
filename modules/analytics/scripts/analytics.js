@@ -13,46 +13,46 @@
 			options = $.extend({}, r.module.analytics.options, options || {});
 		}
 
+		/* create tracker */
+
+		if (options.id && options.url)
+		{
+			r.module.analytics.tracker = _gat._createTracker(options.id);
+			r.module.analytics.tracker._setDomainName(options.url);
+			r.module.analytics.tracker._initData();
+			r.module.analytics.tracker._trackPageview();
+		}
+
 		/* return this */
 
 		return this.each(function ()
 		{
-			/* create tracker */
+			/* listen for click */
 
-			if (options.id && options.url)
+			$(this).one('click', function ()
 			{
-				r.module.analytics.tracker = _gat._createTracker(options.id);
-				r.module.analytics.tracker._setDomainName(options.url);
-				r.module.analytics.tracker._initData();
-				r.module.analytics.tracker._trackPageview();
+				var trigger = $(this),
+					category = trigger.data('category'),
+					action = trigger.data('action'),
+					label = trigger.data('label'),
+					value = trigger.data('value'),
+					string = category + ', ' + action;
 
-				/* listen for click */
-
-				$(this).one('click', function ()
+				if (category && action)
 				{
-					var trigger = $(this),
-						category = trigger.data('category'),
-						action = trigger.data('action'),
-						label = trigger.data('label'),
-						value = trigger.data('value'),
-						string = category + ', ' + action;
+					/* extend string */
 
-					if (category && action)
+					if (label)
 					{
-						/* extend string */
-
-						if (label)
-						{
-							string += ', ' + label;
-						}
-						if (value)
-						{
-							string += ', ' + value;
-						}
-						r.module.analytics.tracker._trackEvent(string);
+						string += ', ' + label;
 					}
-				});
-			}
+					if (value)
+					{
+						string += ', ' + value;
+					}
+					r.module.analytics.tracker._trackEvent(string);
+				}
+			});
 		});
 	};
 
