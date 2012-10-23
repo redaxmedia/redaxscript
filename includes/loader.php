@@ -389,9 +389,10 @@ function scripts_transport($minify = '')
 	$output .= 'r.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
-	/* add generator */
+	/* generator and version */
 
 	$output .= 'r.generator = \'' . l('redaxscript') . ' ' . l('redaxscript_version') . '\';' . PHP_EOL;
+	$output .= 'r.version = ' . l('redaxscript_version') . ';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify output */

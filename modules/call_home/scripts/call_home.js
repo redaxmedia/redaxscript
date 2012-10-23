@@ -22,9 +22,9 @@
 			r.module.callHome.tracker._initData();
 			r.module.callHome.tracker._trackPageview();
 
-			/* call event */
+			/* track event */
 
-			r.module.callHome.tracker._trackEvent('call-home', r.version, r.baseURL);
+			r.module.callHome.tracker._trackEvent('call-home', String(r.version), String(r.baseURL));
 		}
 	};
 

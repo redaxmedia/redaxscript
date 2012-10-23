@@ -35,22 +35,13 @@
 					category = trigger.data('category'),
 					action = trigger.data('action'),
 					label = trigger.data('label'),
-					value = trigger.data('value'),
-					string = category + ', ' + action;
+					value = trigger.data('value');
+
+				/* track event */
 
 				if (category && action)
 				{
-					/* extend string */
-
-					if (label)
-					{
-						string += ', ' + label;
-					}
-					if (value)
-					{
-						string += ', ' + value;
-					}
-					r.module.analytics.tracker._trackEvent(string);
+					r.module.analytics.tracker._trackEvent(String(category), String(action), String(label), Number(value));
 				}
 			});
 		});
