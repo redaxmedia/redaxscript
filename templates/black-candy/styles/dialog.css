@@ -1,0 +1,10 @@
+.dialog_default
+{
+	margin: -50px 0 0 -200px;
+	width: 400px;
+}
+
+.dialog_overlay_default
+{
+	background: #000;
+}

@@ -1,0 +1,18 @@
+<?php
+
+/* helper class */
+
+function helper_class()
+{
+	$output = MY_BROWSER . MY_BROWSER_VERSION;
+	if (MY_ENGINE)
+	{
+		if ($output)
+		{
+			$output .= ' ';
+		}
+		$output .= MY_ENGINE;
+	}
+	echo $output;
+}
+?>

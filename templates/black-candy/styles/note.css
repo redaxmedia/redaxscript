@@ -1,0 +1,169 @@
+.box_note
+{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 1em 0;
+    padding: 1em;
+}
+
+/* error note */
+
+.note_error.box_note
+{
+	-moz-box-shadow: inset 0 0 3px #daa4a4;
+	-webkit-box-shadow: inset 0 0 3px #daa4a4;
+	box-shadow: inset 0 0 3px #daa4a4;
+}
+
+.note_error.box_note a
+{
+	color: #bf0000;
+}
+
+.note_error.box_note, form .note_error.field_note
+{
+	background: #ffa3a3;
+	background: -moz-linear-gradient(top, #ffc9c9, #ffa3a3);
+	background: -ms-linear-gradient(top, #ffc9c9, #ffa3a3);
+	background: -o-linear-gradient(top, #ffc9c9, #ffa3a3);
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffc9c9), to(#ffa3a3));
+	background: -webkit-linear-gradient(top, #ffc9c9, #ffa3a3);
+	background: linear-gradient(top, #ffc9c9, #ffa3a3);
+	border-color: #bf0000;
+	color: #bf0000;
+}
+
+form .note_error.field_note
+{
+	-moz-box-shadow: inset 0 0 0 1px #ff9696;
+	-webkit-box-shadow: inset 0 0 0 1px #ff9696;
+	box-shadow: inset 0 0 0 1px #ff9696;
+	text-shadow: 0 1px #ffc9c9;
+}
+
+form .note_error.field_note option
+{
+	background: #ffa3a3;
+}
+
+/* info note */
+
+.note_info.box_note
+{
+	-moz-box-shadow: inset 0 0 1px #82d2ed;
+	-webkit-box-shadow: inset 0 0 1px #82d2ed;
+	box-shadow: inset 0 0 1px #82d2ed;
+}
+
+.note_info.box_note a
+{
+	color: #005da2;
+}
+
+.note_info.box_note, form .note_info.field_note
+{
+	background: #8cd5ff;
+	background: -moz-linear-gradient(top, #bfe8ff, #8cd5ff);
+	background: -ms-linear-gradient(top, #bfe8ff, #8cd5ff);
+	background: -o-linear-gradient(top, #bfe8ff, #8cd5ff);
+    background: -webkit-gradient(linear, left top, left bottom, from(#bfe8ff), to(#8cd5ff));
+	background: -webkit-linear-gradient(top, #bfe8ff, #8cd5ff);
+	background: linear-gradient(top, #bfe8ff, #8cd5ff);
+	border-color: #005da2;
+	color: #005da2;
+}
+
+form .note_info.field_note
+{
+	-moz-box-shadow: inset 0 0 0 1px #7fd0ff;
+	-webkit-box-shadow: inset 0 0 0 1px #7fd0ff;
+	box-shadow: inset 0 0 0 1px #7fd0ff;
+	text-shadow: 0 1px #bfe8ff;
+}
+
+form .note_info.field_note option
+{
+	background: #8cd5ff;
+}
+
+/* success note */
+
+.note_success.box_note
+{
+	-moz-box-shadow: inset 0 0 1px #8dd186;
+	-webkit-box-shadow: inset 0 0 1px #8dd186;
+	box-shadow: inset 0 0 1px #8dd186;
+}
+
+.note_success.box_note a
+{
+	color: #008f0a;
+}
+
+.note_success.box_note, form .note_success.field_note
+{
+	background: #6eff6e;
+	background: -moz-linear-gradient(top, #aeffae, #6eff6e);
+	background: -ms-linear-gradient(top, #aeffae, #6eff6e);
+	background: -o-linear-gradient(top, #aeffae, #6eff6e);
+    background: -webkit-gradient(linear, left top, left bottom, from(#aeffae), to(#6eff6e));
+	background: -webkit-linear-gradient(top, #aeffae, #6eff6e);
+	background: linear-gradient(top, #aeffae, #6eff6e);
+	border-color: #008f0a;
+	color: #008f0a;
+}
+
+form .note_success.field_note
+{
+	-moz-box-shadow: inset 0 0 0 1px #6af06d;
+	-webkit-box-shadow: inset 0 0 0 1px #6af06d;
+	box-shadow: inset 0 0 0 1px #6af06d;
+	text-shadow: 0 1px #aeffae;
+}
+
+form .note_success.field_note option
+{
+	background: #6eff6e;
+}
+
+/* warning note */
+
+.note_warning.box_note
+{
+	-moz-box-shadow: inset 0 0 1px #d5c648;
+	-webkit-box-shadow: inset 0 0 1px #d5c648;
+	box-shadow: inset 0 0 1px #d5c648;
+}
+
+.note_warning.box_note a
+{
+	color: #9a7800;
+}
+
+.note_warning.box_note, form .note_warning.field_note
+{
+	background: #f5f562;
+	background: -moz-linear-gradient(top, #f5f5a0, #f5f562);
+	background: -ms-linear-gradient(top, #f5f5a0, #f5f562);
+	background: -o-linear-gradient(top, #f5f5a0, #f5f562);
+    background: -webkit-gradient(linear, left top, left bottom, from(#f5f5a0), to(#f5f562));
+	background: -webkit-linear-gradient(top, #f5f5a0, #f5f562);
+	background: linear-gradient(top, #f5f5a0, #f5f562);
+	border-color: #9a7800;
+	color: #9a7800;
+}
+
+form .note_warning.field_note
+{
+	-moz-box-shadow: inset 0 0 0 1px #e4e40b;
+	-webkit-box-shadow: inset 0 0 0 1px #e4e40b;
+	box-shadow: inset 0 0 0 1px #e4e40b;
+	text-shadow: 0 1px #f5f5a0;
+}
+
+form .note_warning.field_note option
+{
+	background: #f5f562;
+}
