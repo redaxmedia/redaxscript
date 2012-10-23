@@ -99,7 +99,7 @@ pre
 
 .box_content h2:before
 {
-    background: url('templates/black-candy/images/sprite.png') 0 -108px;
+    background: url('templates/black_candy/images/sprite.png') 0 -108px;
     content: "";
     display: block;
     height: 25px;
@@ -151,7 +151,7 @@ pre
 
 .footer .info_author a
 {
-    background: url("templates/black-candy/images/sprite.png") no-repeat right -2px;
+    background: url("templates/black_candy/images/sprite.png") no-repeat right -2px;
     color: #464646;
     display: inline-block;
 	padding-right: 25px;
@@ -179,7 +179,7 @@ pre
 
 .title_website a
 {
-    background: url('templates/black-candy/images/sprite.png');
+    background: url('templates/black_candy/images/sprite.png');
     display: block;
 	height: 41px;
     margin-left: 10px;

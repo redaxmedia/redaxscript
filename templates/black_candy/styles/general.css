@@ -2,7 +2,7 @@
 
 body
 {
-	background: url('templates/black-candy/images/bg.jpg') #000;
+	background: url('templates/black_candy/images/bg.jpg') #000;
 }
 
 /* header */
@@ -12,12 +12,12 @@ body
 	-moz-box-shadow: 0 1px #000;
 	-webkit-box-shadow: 0 1px #000;
 	background: #1f1f1f;
-	background: url('templates/black-candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/black-candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/black-candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
-    background: url('templates/black-candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
-	background: url('templates/black-candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/black-candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/black_candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/black_candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/black_candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
+	background: url('templates/black_candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/black_candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
 	border-bottom: 1px solid #1f1f1f;
 	box-shadow: 0 1px #000;
 	margin-bottom: 2em;
@@ -39,7 +39,7 @@ body
 
 .footer
 {
-    background: url('templates/black-candy/images/noise.png') #000;
+    background: url('templates/black_candy/images/noise.png') #000;
     border-top: 10px solid #000;
     margin-top: 2em;
     padding: 70px 0 30px;

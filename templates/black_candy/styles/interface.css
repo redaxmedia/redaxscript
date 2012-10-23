@@ -96,12 +96,12 @@
     -webkit-border-radius: 6px;
     -webkit-box-shadow: 0 2px 5px 2px #000;
     background: #1f1f1f;
-    background: url('templates/black-candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('templates/black-candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('templates/black-candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('templates/black-candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
-    background: url('templates/black-candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('templates/black-candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
+    background: url('templates/black_candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black_candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
     border-radius: 6px;
     box-shadow: 0 2px 5px 2px #000;
     font-size: 0.875em;

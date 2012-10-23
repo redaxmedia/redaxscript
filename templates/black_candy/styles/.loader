@@ -6,16 +6,16 @@
 5 = styles/grid.css
 6 = styles/interface.css
 7 = styles/table.css
-8 = templates/black-candy/styles/box.css
-9 = templates/black-candy/styles/dialog.css
-10 = templates/black-candy/styles/form.css
-11 = templates/black-candy/styles/general.css
-12 = templates/black-candy/styles/interface.css
-13 = templates/black-candy/styles/media.css
-14 = templates/black-candy/styles/note.css
-15 = templates/black-candy/styles/table.css
-16 = templates/black-candy/styles/typography.css
-17 = templates/black-candy/styles/query.css
+8 = templates/black_candy/styles/box.css
+9 = templates/black_candy/styles/dialog.css
+10 = templates/black_candy/styles/form.css
+11 = templates/black_candy/styles/general.css
+12 = templates/black_candy/styles/interface.css
+13 = templates/black_candy/styles/media.css
+14 = templates/black_candy/styles/note.css
+15 = templates/black_candy/styles/table.css
+16 = templates/black_candy/styles/typography.css
+17 = templates/black_candy/styles/query.css
 
 [firefox]
 1 = styles/firefox.css

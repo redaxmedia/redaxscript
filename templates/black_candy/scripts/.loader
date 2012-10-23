@@ -3,7 +3,7 @@
 
 [template_startup]
 1 = scripts/startup.js
-2 = templates/black-candy/scripts/startup.js
+2 = templates/black_candy/scripts/startup.js
 
 [template]
 1 = scripts/dialog.js
