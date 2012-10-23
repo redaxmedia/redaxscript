@@ -34,14 +34,13 @@
 				var trigger = $(this),
 					category = trigger.data('category'),
 					action = trigger.data('action'),
-					label = trigger.data('label'),
-					value = trigger.data('value');
+					label = trigger.data('label');
 
 				/* track event */
 
 				if (category && action)
 				{
-					r.module.analytics.tracker._trackEvent(String(category), String(action), String(label), Number(value));
+					r.module.analytics.tracker._trackEvent(String(category), String(action), String(label));
 				}
 			});
 		});
