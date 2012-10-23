@@ -9,7 +9,6 @@ module.exports = function(grunt)
 		'box-sizing': false,
 		'compatible-vendor-prefixes': false,
 		'duplicate-background-images': false,
-		'fallback-colors': false,
 		'text-indent': false,
 		'outline-none': false,
 		'qualified-headings': false
