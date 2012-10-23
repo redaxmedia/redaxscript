@@ -6,6 +6,7 @@
     background: -moz-linear-gradient(top, #fff, #e2e2e2);
     background: -ms-linear-gradient(top, #fff, #e2e2e2);
     background: -o-linear-gradient(top, #fff, #e2e2e2);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
     background: -webkit-linear-gradient(top, #fff, #e2e2e2);
     background: linear-gradient(top, #fff, #e2e2e2);
     text-shadow: 0 1px #fff;
@@ -55,6 +56,7 @@
     background: -moz-linear-gradient(top, #fff, #e2e2e2);
     background: -ms-linear-gradient(top, #fff, #e2e2e2);
     background: -o-linear-gradient(top, #fff, #e2e2e2);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
     background: -webkit-linear-gradient(top, #fff, #e2e2e2);
     background: linear-gradient(top, #fff, #e2e2e2);
     border-radius: 2px;
@@ -94,11 +96,12 @@
     -webkit-border-radius: 6px;
     -webkit-box-shadow: 0 2px 5px 2px #000;
     background: #1f1f1f;
-    background: url('../images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('../images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('../images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('../images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
-    background: url('../images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black-candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black-candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black-candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black-candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
+    background: url('templates/black-candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
+    background: url('templates/black-candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
     border-radius: 6px;
     box-shadow: 0 2px 5px 2px #000;
     font-size: 0.875em;
@@ -254,17 +257,6 @@ ol.list_default li > ul li
 }
 
 /* ##### CUSTOM ##### */
-
-/* slider */
-
-.slider
-{
-    background: url(../images/slider_01.jpg), url(../images/loader.png) no-repeat center center;
-    width: 972px;
-    height: 400px;
-    text-indent: -999em;
-    margin: 0 auto 20px;
-}
 
 /* gallery */
 

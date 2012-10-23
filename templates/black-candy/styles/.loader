@@ -1,4 +1,4 @@
-[single]
+[template]
 1 = styles/reset.css
 2 = styles/box.css
 3 = styles/dialog.css

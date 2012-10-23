@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
+		<link href="templates/black-candy/images/favicon.ico" rel="shortcut icon" />
 	</head>
 	<body class="wrapper_body<?php if (FIRST_PARAMETER): ?> layout_<?php echo FIRST_PARAMETER; ?><?php endif; ?>">
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
@@ -13,7 +14,6 @@
 		<?php endif; ?>
 		<?php include_once('header.phtml'); ?>
 		<div class="wrapper clear_fix">
-			<?php include_once('slider.phtml'); ?>
 			<?php include_once('content.phtml'); ?>
 			<?php include_once('sidebar.phtml'); ?>
 		</div>

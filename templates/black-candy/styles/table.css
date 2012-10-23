@@ -16,6 +16,7 @@
     background: -moz-linear-gradient(top, #D6D548, #92901B);
     background: -ms-linear-gradient(top, #D6D548, #92901B);
     background: -o-linear-gradient(top, #D6D548, #92901B);
+    background: -webkit-gradient(linear, left top, left bottom, from(#D6D548), to(#92901B));
     background: -webkit-linear-gradient(top, #D6D548, #92901B);
     background: linear-gradient(top, #D6D548, #92901B);
     border: 2px solid #000;
@@ -38,6 +39,7 @@
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075));
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075));
     background: -o-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075));
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), to(rgba(255, 255, 255, 0.075)));
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075));
     background: linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075));
     border: 2px solid #000;

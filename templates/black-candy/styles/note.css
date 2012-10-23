@@ -28,6 +28,7 @@
 	background: -moz-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -ms-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: -o-linear-gradient(top, #ffc9c9, #ffa3a3);
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffc9c9), to(#ffa3a3));
 	background: -webkit-linear-gradient(top, #ffc9c9, #ffa3a3);
 	background: linear-gradient(top, #ffc9c9, #ffa3a3);
 	border-color: #bf0000;
@@ -67,6 +68,7 @@ form .note_error.field_note option
 	background: -moz-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -ms-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: -o-linear-gradient(top, #bfe8ff, #8cd5ff);
+    background: -webkit-gradient(linear, left top, left bottom, from(#bfe8ff), to(#8cd5ff));
 	background: -webkit-linear-gradient(top, #bfe8ff, #8cd5ff);
 	background: linear-gradient(top, #bfe8ff, #8cd5ff);
 	border-color: #005da2;
@@ -106,6 +108,7 @@ form .note_info.field_note option
 	background: -moz-linear-gradient(top, #aeffae, #6eff6e);
 	background: -ms-linear-gradient(top, #aeffae, #6eff6e);
 	background: -o-linear-gradient(top, #aeffae, #6eff6e);
+    background: -webkit-gradient(linear, left top, left bottom, from(#aeffae), to(#6eff6e));
 	background: -webkit-linear-gradient(top, #aeffae, #6eff6e);
 	background: linear-gradient(top, #aeffae, #6eff6e);
 	border-color: #008f0a;
@@ -145,6 +148,7 @@ form .note_success.field_note option
 	background: -moz-linear-gradient(top, #f5f5a0, #f5f562);
 	background: -ms-linear-gradient(top, #f5f5a0, #f5f562);
 	background: -o-linear-gradient(top, #f5f5a0, #f5f562);
+    background: -webkit-gradient(linear, left top, left bottom, from(#f5f5a0), to(#f5f562));
 	background: -webkit-linear-gradient(top, #f5f5a0, #f5f562);
 	background: linear-gradient(top, #f5f5a0, #f5f562);
 	border-color: #9a7800;

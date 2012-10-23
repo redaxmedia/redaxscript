@@ -76,6 +76,7 @@
     background: -moz-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
     background: -ms-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
     background: -o-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.05)));
     background: -webkit-linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
     background: linear-gradient(top, transparent, rgba(255, 255, 255, 0.05));
     border-radius: 10px;
@@ -125,11 +126,10 @@
 
 .box_line
 {
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	background: #2c2c2c;
-	border-radius: 2px;
-	height: 4px;
+	background: url('templates/black-candy/images/sprite.png') no-repeat 0 -58px;
+	height: 25px;
+	margin: 10px auto;
+	width: 318px;
 }
 
 /* box tab */
@@ -167,10 +167,10 @@
 
 .box_dialog_default
 {
-    -moz-border: 2px solid #2c2c2c;
-    -moz-border-radius: 0 0 4px 4px;
-    -webkit-border: 2px solid #2c2c2c;
-    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border: 2px solid #2c2c2c;
+	-moz-border-radius: 0 0 4px 4px;
+	-webkit-border: 2px solid #2c2c2c;
+	-webkit-border-radius: 0 0 4px 4px;
 	background: rgba(0, 0, 0, 0.9);
     border: 2px solid #2c2c2c;
     border-radius: 0 0 4px 4px;
