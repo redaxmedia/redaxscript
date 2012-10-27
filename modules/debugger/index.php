@@ -23,6 +23,7 @@ function debugger_extras_end()
 		$memory_usage = memory_get_usage();
 		$debug['general']['memory_usage'] = round($memory_usage / 1024) . ' Kb';
 	}
+	$debug['general']['operating_system'] = php_uname('s');
 	$debug['general']['server_software'] = $_SERVER['SERVER_SOFTWARE'];
 	if (function_exists('phpversion'))
 	{
