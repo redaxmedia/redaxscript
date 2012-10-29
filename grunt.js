@@ -116,12 +116,12 @@ module.exports = function(grunt)
 			},
 			tocModules:
 			{
-				command: 'php ../tocgen/tocgen.php modules',
+				command: 'php ../tocgen/tocgen.php modules --recursive',
 				stdout: true
 			},
 			tocTemplates:
 			{
-				command: 'php ../tocgen/tocgen.php templates',
+				command: 'php ../tocgen/tocgen.php templates --recursive',
 				stdout: true
 			}
 		},
