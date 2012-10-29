@@ -107,6 +107,24 @@ module.exports = function(grunt)
 				src: ['templates/**/*.phtml', 'templates/**/*.css', 'templates/**/*.js']
 			}
 		},
+		shell:
+		{
+			tocBase:
+			{
+				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles',
+				stdout: true
+			},
+			tocModules:
+			{
+				command: 'php ../tocgen/tocgen.php modules',
+				stdout: true
+			},
+			tocTemplates:
+			{
+				command: 'php ../tocgen/tocgen.php templates',
+				stdout: true
+			}
+		},
 		img:
 		{
 			modules:
@@ -135,11 +153,13 @@ module.exports = function(grunt)
 
 	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-bom');
+	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
 
 	grunt.registerTask('default', 'lint');
+	grunt.registerTask('toc', 'shell:tocBase shell:tocModules shell:tocTemplates');
 	grunt.registerTask('optimize', 'bom img smushit');
 };
