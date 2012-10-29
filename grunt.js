@@ -92,7 +92,7 @@ module.exports = function(grunt)
 		{
 			base:
 			{
-				src: ['*.php', 'includes/**/*.php', 'styles/*.css', 'scripts/*.js']
+				src: ['*.php', 'includes/**/*.php', 'scripts/*.js', 'styles/*.css']
 			},
 			languages:
 			{
