@@ -15,7 +15,7 @@ body
 	background: url('templates/black_candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/black_candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/black_candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
-    background: url('templates/black_candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
+	background: url('templates/black_candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
 	background: url('templates/black_candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/black_candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
 	border-bottom: 1px solid #1f1f1f;
@@ -26,24 +26,24 @@ body
 
 .header .title_website
 {
-    float: left;
+	float: left;
 }
 
 .header .navigation
 {
-    float: right;
-    margin-top: 5px;
+	float: right;
+	margin-top: 5px;
 }
 
 /* footer */
 
 .footer
 {
-    background: url('templates/black_candy/images/noise.png') #000;
-    border-top: 10px solid #000;
-    margin-top: 2em;
-    padding: 70px 0 30px;
-    text-align: center;
+	background: url('templates/black_candy/images/noise.png') #000;
+	border-top: 10px solid #000;
+	margin-top: 2em;
+	padding: 70px 0 30px;
+	text-align: center;
 }
 
 .footer .list_dropdown
@@ -84,5 +84,5 @@ body
 
 .content
 {
-    min-height: 430px;
+	min-height: 430px;
 }

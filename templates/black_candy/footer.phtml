@@ -1,20 +1,20 @@
 <!--[if lt IE 9]><div id="footer" class="footer clear_fix"><![endif]-->
 <footer id="footer" class="footer clear_fix">
-    <div class="wrapper">
+	<div class="wrapper">
 	<!--[if lt IE 9]><div class="navigation navigation_custom"><![endif]-->
 	<nav class="navigation navigation_custom">
-	    <?php navigation_list('categories', array(
+		<?php navigation_list('categories', array(
 		'class' => 'list_dropdown list_categories'
-	    )); ?>
-	    <?php if (DB_CONNECTED == 1): ?>
+		)); ?>
+		<?php if (DB_CONNECTED == 1): ?>
 		<ul class="list_dropdown"><li><a href="<?php echo REWRITE_STRING; ?>login" rel="nofollow"><?php echo l('login'); ?></a></li></ul>
-	    <?php endif; ?>
+		<?php endif; ?>
 	</nav>
 	<!--[if lt IE 9]></div><![endif]-->
 	<div class="smallprint">
 		<?php echo l('powered_by') . ' ' . anchor_element('external', '', 'js_backlink backlink_rxs', l('redaxscript'), l('redaxscript_website')) . ' ' . l('redaxscript_version'); ?>
 		<span class="info_author"><?php echo l('design_and_realization'); ?> <a target="_blank" class="js_backlink backlink_jst" title="Jörg Steinhauer - Digital Media Designer" href="http://www.joergsteinhauer.net">Jörg Steinhauer</a></span>
 	</div>
-    </div>
+	</div>
 </footer>
 <!--[if lt IE 9]></div><![endif]-->

@@ -1,23 +1,23 @@
 <!--[if lt IE 9]><div id="header" class="header clear_fix"><![endif]-->
 <header id="header" class="header clear_fix">
 	<div class="wrapper">
-	    <?php if (DB_CONNECTED == 1): ?>
-		    <?php if (s('title')): ?>
-			    <h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
-		    <?php endif; ?>
-		    <?php if (s('description')): ?>
-			    <p class="description_website"><?php echo s('description'); ?></p>
-		    <?php endif; ?>
+		<?php if (DB_CONNECTED == 1): ?>
+			<?php if (s('title')): ?>
+				<h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
+			<?php endif; ?>
+			<?php if (s('description')): ?>
+				<p class="description_website"><?php echo s('description'); ?></p>
+			<?php endif; ?>
 
-		    <!--[if lt IE 9]><div class="navigation navigation_custom"><![endif]-->
-		    <nav class="navigation navigation_custom">
+			<!--[if lt IE 9]><div class="navigation navigation_custom"><![endif]-->
+			<nav class="navigation navigation_custom">
 			<?php navigation_list('categories', array(
-			    'class' => 'list_dropdown list_categories',
-			    'children' => 1
+				'class' => 'list_dropdown list_categories',
+				'children' => 1
 			)); ?>
-		    </nav>
-		    <!--[if lt IE 9]></div><![endif]-->
-	    <?php endif; ?>
+			</nav>
+			<!--[if lt IE 9]></div><![endif]-->
+		<?php endif; ?>
 	</div>
 </header>
 <!--[if lt IE 9]></div><![endif]-->
