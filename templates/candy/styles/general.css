@@ -1,0 +1,64 @@
+/* tag styling */
+
+body
+{
+	background: url('templates/candy/images/bg.jpg') #000;
+}
+
+/* header */
+
+.header
+{
+	-moz-box-shadow: 0 1px #000;
+	-webkit-box-shadow: 0 1px #000;
+	background: #1f1f1f;
+	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
+	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
+	border-bottom: 1px solid #1f1f1f;
+	box-shadow: 0 1px #000;
+	margin-bottom: 2em;
+	padding: 2em 0;
+}
+
+/* footer */
+
+.footer
+{
+	background: url('templates/candy/images/noise.png') #000;
+	border-top: 10px solid #000;
+	margin-top: 2em;
+	padding: 6em 0 2.5em;
+	text-align: center;
+}
+
+/* grid elements */
+
+.grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
+{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.line, .line_space
+{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+/* wrapper */
+
+.wrapper
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 980px;
+}
+
+.wrapper_body
+{
+	min-width: 980px;
+}

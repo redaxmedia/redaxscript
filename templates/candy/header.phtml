@@ -1,0 +1,17 @@
+<!--[if lt IE 9]><div id="header" class="header"><![endif]-->
+<header id="header" class="header">
+	<!--[if lt IE 9]><div class="wrapper clear_fix"><![endif]-->
+	<section class="wrapper clear_fix">
+		<?php if (DB_CONNECTED == 1): ?>
+			<?php if (s('title')): ?>
+				<h1 class="js_logo_effect_trigger title_website"><?php echo anchor_element('', '', '', truncate(s('title'), 15), ROOT); ?></h1>
+			<?php endif; ?>
+			<?php navigation_list('categories', array(
+				'class' => 'list_header',
+				'limit' => 5
+			)); ?>
+		<?php endif; ?>
+	</section>
+	<!--[if lt IE 9]></div><![endif]-->
+</header>
+<!--[if lt IE 9]></div><![endif]-->

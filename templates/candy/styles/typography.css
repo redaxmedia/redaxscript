@@ -1,0 +1,28 @@
+/* tag styling */
+
+a
+{
+	color: #888;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #333;
+}
+
+body
+{
+	color: #666;
+	font: 0.75em arial;
+}
+
+p
+{
+	font: 1em/1.5em arial;
+}
+
+pre
+{
+	font: italic 1em/1.5em arial;
+}

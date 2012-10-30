@@ -1,0 +1,7 @@
+/* default form */
+
+.form_default .label
+{
+	font-size: 0.875em;
+	display: block;
+}

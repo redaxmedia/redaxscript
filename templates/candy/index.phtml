@@ -6,9 +6,8 @@
 		<meta name="viewport" content="width=device-width" />
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
-		<link href="templates/black_candy/images/favicon.ico" rel="shortcut icon" />
 	</head>
-	<body class="wrapper_body<?php if (FIRST_PARAMETER): ?> layout_<?php echo FIRST_PARAMETER; ?><?php endif; ?>">
+	<body class="wrapper_body">
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
 			<?php include_once('templates/admin/panel.phtml'); ?>
 		<?php endif; ?>

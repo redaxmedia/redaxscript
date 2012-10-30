@@ -1,0 +1,17 @@
+<!--[if lt IE 9]><div id="footer" class="footer clear_fix"><![endif]-->
+<footer id="footer" class="footer clear_fix">
+	<!--[if lt IE 9]><div class="wrapper"><![endif]-->
+	<section class="wrapper">
+		<?php if (DB_CONNECTED == 1): ?>
+			<?php navigation_list('categories', array(
+				'class' => 'list_footer',
+				'limit' => 5
+			)); ?>
+		<?php endif; ?>
+		<?php echo l('powered_by') . ' ' . anchor_element('external', '', 'js_backlink', l('redaxscript'), l('redaxscript_website')) . ' ' . l('redaxscript_version'); ?>
+		<span class="divider"><?php echo s('divider'); ?></span>
+		Design by <?php echo anchor_element('external', '', 'js_backlink', 'Jörg Steinhauer', 'joergsteinhauer.net'); ?>
+	</section>
+	<!--[if lt IE 9]></div><![endif]-->
+</footer>
+<!--[if lt IE 9]></div><![endif]-->
