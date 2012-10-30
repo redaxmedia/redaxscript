@@ -1,12 +1,3 @@
-/* font face */
-
-@font-face
-{
-	font-family: cuprum;
-	src: url('http://themes.googleusercontent.com/static/fonts/cuprum/v3/Z4Swj-i0VcKrK9BDFoMS5w.eot');
-	src: url('http://themes.googleusercontent.com/static/fonts/cuprum/v3/wHBEZCjwNI3HN2fD1RQJgw.woff') format('woff'), url('http://themes.googleusercontent.com/static/fonts/cuprum/v3/GB8Dk-C1ACJO8x0iLEheRevvDin1pK8aKteLpeZ5c0A.ttf') format('truetype');
-}
-
 /* tag styling */
 
 a
