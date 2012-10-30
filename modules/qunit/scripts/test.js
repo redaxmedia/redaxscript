@@ -11,7 +11,7 @@
 
 		/* globals */
 
-		win.test('globals', function()
+		win.test('globals', function ()
 		{
 			var expect = 'object',
 				result = typeof r && typeof l;
@@ -21,7 +21,7 @@
 
 		/* base url */
 
-		win.test('baseURL', function()
+		win.test('baseURL', function ()
 		{
 			var expect = 'string',
 				result = typeof r.baseURL;
@@ -33,7 +33,7 @@
 
 		if (typeof $.fn.cleanAlias === 'function')
 		{
-			win.test('cleanAlias', function()
+			win.test('cleanAlias', function ()
 			{
 				var expect = 'hello-world',
 					result = $.fn.cleanAlias('Hello world');
@@ -46,7 +46,7 @@
 
 		if (typeof $.fn.clearFocus === 'function')
 		{
-			win.test('clearFocus', function()
+			win.test('clearFocus', function ()
 			{
 				var input = $('<input value="Hello world" />').clearFocus().appendTo(fixture),
 					expect = '',
