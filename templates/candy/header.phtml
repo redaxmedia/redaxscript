@@ -7,7 +7,8 @@
 				<h1 class="js_logo_effect_trigger title_website"><?php echo anchor_element('', '', '', truncate(s('title'), 15), ROOT); ?></h1>
 			<?php endif; ?>
 			<?php navigation_list('categories', array(
-				'class' => 'list_header',
+				'children' => 1,
+				'class' => 'js_dropdown list_dropdown list_header',
 				'limit' => 5
 			)); ?>
 		<?php endif; ?>

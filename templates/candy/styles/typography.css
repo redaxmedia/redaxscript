@@ -55,6 +55,7 @@ pre
 	font: bold 1.75em marmelad, serif;
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
+	text-shadow: 0 2px #000;
 }
 
 .title_content, .title_content a
@@ -108,4 +109,9 @@ pre
 .title_website, .title_website a
 {
 	color: #92901b;
+}
+
+.title_website a:hover
+{
+	text-decoration: none;
 }

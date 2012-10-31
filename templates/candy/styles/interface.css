@@ -1,6 +1,119 @@
+/* sidebar list */
+
+.sidebar li
+{
+	line-height: 2em;
+}
+
+.sidebar li a
+{
+	color: #9e9032;
+}
+
+.sidebar li a:hover
+{
+	color: #fff;
+}
+
+.sidebar .list_children
+{
+	margin-left: 1em;
+}
+
 /* breadcrumb and pagination list */
 
 .list_breadcrumb li, .list_pagination li
 {
 	display: inline-block;
+}
+
+/* default list */
+
+.list_default li
+{
+	margin: 1em 1.5em;
+	list-style: inherit;
+}
+
+/* header list */
+
+.list_header a, .list_header a:hover
+{
+	color: #c6c6c6;
+	text-shadow: 0 1px #000;
+}
+
+.list_header a:hover
+{
+	text-decoration: none;
+}
+
+/* header list dropdown area */
+
+.list_header > li
+{
+	float: left;
+	font-size: 1.375em;
+	margin-top: 0.75em;
+	margin-right: 1em;
+	text-transform: uppercase;
+}
+
+/* header children list */
+
+.list_header > li > .list_children
+{
+	-moz-border-radius: 0.5em;
+	-moz-box-shadow: 0 2px 5px 2px #000;
+	-webkit-border-radius: 0.5em;
+	-webkit-box-shadow: 0 2px 5px 2px #000;
+	background: #1f1f1f;
+	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
+	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
+	border-radius: 0.5em;
+	box-shadow: 0 2px 5px 2px #000;
+	font-size: 0.875em;
+	padding: 0.5em 1em;
+}
+
+/* pagination list */
+
+.list_pagination
+{
+	margin: 2em 0;
+	text-align: center;
+}
+
+.list_pagination li
+{
+	display: inline-block;
+	margin: 0 0.5em;
+}
+
+.list_pagination a, .list_pagination span
+{
+	-moz-border-radius: 0.125em;
+	-webkit-border-radius: 0.125em;
+	background: #fff;
+	background: -moz-linear-gradient(top , #fff, #e2e2e2);
+	background: -ms-linear-gradient(top, #fff, #e2e2e2);
+	background: -o-linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
+	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
+	background: linear-gradient(top, #fff, #e2e2e2);
+	border-radius: 0.125em;
+	color: #474747;
+	font-size: 1.125em;
+	margin-top: 1.5em;
+	padding: 0.375em 0.75em;
+	text-shadow: 0 1px #fff;
+}
+
+.list_pagination a:hover
+{
+	color: #9609ac;
 }
