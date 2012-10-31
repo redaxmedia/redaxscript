@@ -49,7 +49,7 @@
 
 					if (fieldTag === 'DIV')
 					{
-						fieldValue = $.trim(field.text());
+						fieldValue = $.trim(field.html());
 						noteErrorClasses += ' box_note';
 					}
 					else
