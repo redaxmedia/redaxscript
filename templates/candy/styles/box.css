@@ -24,3 +24,23 @@
 	font: 1.125em/1.75em marmelad, serif;
 	padding: 1em;
 }
+
+/* box note */
+
+.box_note
+{
+	border: 1px solid;
+	padding: 1em;
+}
+
+.box_note a
+{
+	text-decoration: underline;
+}
+
+/* space between elements */
+
+.box_note + .box_note, .form_default .box_note
+{
+	margin-top: 1em;
+}

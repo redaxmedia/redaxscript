@@ -60,10 +60,11 @@ textarea
 .field_button span span, .field_button_large span span
 {
 	color: #5e5e5e;
-	text-shadow: 0 1px #d4d4d4;
-	text-transform: uppercase;
 	line-height: 2.75em;
 	padding: 0 0.75em;
+	text-shadow: 0 1px #d4d4d4;
+	text-transform: uppercase;
+
 }
 
 .field_button:hover span span, .field_button_large:hover span span
@@ -248,15 +249,15 @@ textarea
 
 /* default form */
 
+.form_default li
+{
+	margin: 0.5em 0;
+}
+
 .form_default .label
 {
 	font-size: 0.875em;
 	display: block;
-}
-
-.form_default li
-{
-	margin: 0.5em 0;
 }
 
 /* search form */

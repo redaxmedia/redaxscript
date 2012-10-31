@@ -11,11 +11,16 @@
 10 = templates/candy/styles/form.css
 11 = templates/candy/styles/general.css
 12 = templates/candy/styles/interface.css
-13 = templates/candy/styles/typography.css
-14 = templates/candy/styles/query.css
+13 = templates/candy/styles/media.css
+14 = templates/candy/styles/note.css
+15 = templates/candy/styles/typography.css
+16 = templates/candy/styles/query.css
 
 [firefox]
 1 = styles/firefox.css
+
+[opera]
+1 = templates/candy/styles/opera.css
 
 [webkit]
 1 = styles/webkit.css
