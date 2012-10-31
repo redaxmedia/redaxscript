@@ -25,6 +25,22 @@
 	padding: 1em;
 }
 
+/* box line */
+
+.box_line
+{
+	background: url('templates/candy/images/sprite.png') no-repeat;
+	height: 25px;
+	margin: 1em auto;
+	opacity: 0.8;
+	width: 318px;
+}
+
+.box_line:hover
+{
+	opacity: 1;
+}
+
 /* box note */
 
 .box_note
