@@ -48,12 +48,12 @@ function sitemap()
 
 				ob_start();
 				navigation_list('categories', array(
-				    'parent' => $id,
-				    'class' => 'list_children'
+					'parent' => $id,
+					'class' => 'list_children'
 				));
 				navigation_list('articles', array(
-				    'parent' => $id,
-				    'class' => 'list_children'
+					'parent' => $id,
+					'class' => 'list_children'
 				));
 				$output .= ob_get_clean();
 				$output .= '</li>';

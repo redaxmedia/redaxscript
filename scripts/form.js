@@ -31,7 +31,7 @@
 				{
 					fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
 				}
-				else if (event.type === 'change' ||  event.type === 'input')
+				else if (event.type === 'change' || event.type === 'input')
 				{
 					fieldRequired = fieldRequired.filter(':active');
 				}

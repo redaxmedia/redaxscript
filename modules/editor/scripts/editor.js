@@ -155,7 +155,7 @@
 
 						if (command === 'createLink')
 						{
-							editor.insertHTML('<a href="' + input + '">' + input +  '</a>');
+							editor.insertHTML('<a href="' + input + '">' + input + '</a>');
 						}
 
 						/* insert function */
