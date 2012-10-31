@@ -52,11 +52,11 @@
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	display: inline-block;
-	font: bold 0.875em arial;
+	font: bold 0.875em/2.125em arial;
 	text-shadow: 0 1px #1b1b1b;
 	text-transform: uppercase;
 	margin-right: 1em;
-	padding: 0.375em 0.75em;
+	padding: 0 0.75em;
 }
 
 .link_panel_admin, .link_panel_admin:hover
