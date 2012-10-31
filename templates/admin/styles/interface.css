@@ -177,7 +177,7 @@
 	padding: 0.25em 0.75em;
 }
 
-.list_panel_admin li:hover, .list_panel_admin > .item_touch
+.list_panel_admin li:hover, .list_panel_admin .item_touch
 {
 	background-color: #3b3b3b;
 }
@@ -199,30 +199,20 @@
 	padding-left: 1.75em;
 }
 
-.list_panel_admin > li:hover, .list_panel_admin > li.item_touch
+.list_panel_admin > li:hover, .list_panel_admin > .item_touch
 {
 	background-color: #3b3b3b;
 }
 
-/* admin panel list hover spaces */
+/* panel children list */
 
-.list_panel_admin > li > ul
+.list_panel_admin > li > .list_children
 {
-	border-top: 4px solid transparent;
+	border-top: 5px solid transparent;
+	left: -1px;
 }
 
-.list_panel_admin > li ul ul
-{
-	border-left: 4px solid transparent;
-}
-
-.list_panel_admin ul
-{
-	margin-top: -1px;
-	margin-left: -1px;
-}
-
-.list_panel_admin ul > li
+.list_panel_admin .list_children li
 {
 	border: 1px solid #585858;
 	border-top-width: 0;
@@ -249,6 +239,14 @@
 	-webkit-border-bottom-right-radius: 0.25em;
 	border-bottom-left-radius: 0.25em;
 	border-bottom-right-radius: 0.25em;
+}
+
+/* children left space */
+
+.list_panel_admin .list_children ul
+{
+	border-left: 5px solid transparent;
+	top: -1px;
 }
 
 /* admin tab */

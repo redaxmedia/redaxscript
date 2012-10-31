@@ -21,12 +21,15 @@
 					<li>
 						<?php echo l('categories'); ?>
 						<?php navigation_list('categories', array(
+							'children' => 1,
+							'class' => 'list_children',
 							'limit' => 5
 						)); ?>
 					</li>
 					<li>
 						<?php echo l('articles'); ?>
 						<?php navigation_list('articles', array(
+							'class' => 'list_children',
 							'limit' => 5
 						)); ?>
 					</li>

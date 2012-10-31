@@ -132,9 +132,9 @@ pre
 .title_content
 {
 	font: 2.5em cuprum, 'trebuchet ms', arial;
-	text-shadow: 0 -1px #222, 0 1px #eee, 0 -1px 1px #999;
 	margin-bottom: 1em;
 	margin-top: 1em;
+	text-shadow: 0 -1px #222, 0 1px #eee, 0 -1px 1px #999;
 }
 
 .title_content, .title_content a
@@ -152,9 +152,9 @@ pre
 .title_content_sub
 {
 	font: 1.75em cuprum, 'trebuchet ms', arial;
-	text-shadow: 0 -1px #1f53a6, 0 1px #fff;
 	margin-bottom: 1em;
 	margin-top: 1em;
+	text-shadow: 0 -1px #1f53a6, 0 1px #fff;
 }
 
 .title_content_sub, .title_content_sub a
@@ -227,8 +227,8 @@ pre
 .title_footer
 {
 	font: 1.75em cuprum, 'trebuchet ms', arial;
-	text-shadow: 0 -1px #222, 0 1px #eee, 0 -1px 1px #999;
 	margin-bottom: 1em;
+	text-shadow: 0 -1px #222, 0 1px #eee, 0 -1px 1px #999;
 }
 
 .title_footer, .title_footer a
