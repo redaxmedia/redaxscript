@@ -2,16 +2,19 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. buttons
- *    2.1 default
- *    2.2 custom
- * 3. fields
- *    3.1 default
- * 4. search elements
- * 5. disabled and readonly
- * 6. form default
- * 7. form search
- * 8. space between elements
+ * 2. default buttons
+ *    2.1 hover effect
+ *    2.2 children elements
+ * 3. custom buttons
+ * 4. default fields
+ *    4.1 hover effect
+ *    4.2 focus effect
+ * 5. textarea dimensions
+ * 6. search elements
+ * 7. disabled and readonly
+ * 8. form default
+ * 9. form search
+ * 10. space between elements
  */
 
 /* @section 1. tag styling */
@@ -21,7 +24,7 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. buttons */
+/* @section 2. default buttons */
 
 .field_button
 {
@@ -32,8 +35,6 @@ textarea
 {
 	font: bold 1em arial;
 }
-
-/* @section 2.1 default */
 
 .field_button, .field_button_large
 {
@@ -55,7 +56,7 @@ textarea
 	display: inline-block;
 }
 
-/* default hover */
+/* @section 2.1 hover effect */
 
 .field_button:hover, .field_button_large:hover
 {
@@ -72,7 +73,7 @@ textarea
 	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
 }
 
-/* children elements */
+/* @section 2.2 children elements */
 
 .field_button span, .field_button_large span
 {
@@ -95,7 +96,7 @@ textarea
 	text-shadow: 0 1px #005da2;
 }
 
-/* @section 2.2 custom */
+/* @section 3. custom buttons */
 
 .field_button.field_button_heart span span, .field_button.field_button_question span span
 {
@@ -126,7 +127,7 @@ textarea
 	background-position: 0 -909px;
 }
 
-/* @section 3. fields */
+/* @section 4. default fields */
 
 .field_select, .field_text, .field_textarea_small
 {
@@ -137,8 +138,6 @@ textarea
 {
 	width: 100%;
 }
-
-/* @section 3.1 default */
 
 .field_select, .field_text, .field_textarea, .field_textarea_small
 {
@@ -170,7 +169,7 @@ textarea
 	padding: 0.5em;
 }
 
-/* default hover */
+/* @section 4.1 hover effect */
 
 .field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover
 {
@@ -186,7 +185,7 @@ textarea
 	box-shadow: inset 0 0 0 1px #d8d8d8;
 }
 
-/* default focus */
+/* @section 4.2 focus effect */
 
 .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
 {
@@ -205,7 +204,7 @@ textarea
 	text-shadow: none;
 }
 
-/* textareas */
+/* @section 5. textarea dimensions */
 
 .field_textarea
 {
@@ -218,7 +217,7 @@ textarea
 	min-height: 50px;
 }
 
-/* @section 4. search elements */
+/* @section 6. search elements */
 
 .field_button_search
 {
@@ -245,7 +244,7 @@ textarea
 	width: 80%;
 }
 
-/* @section 5. disabled and readonly */
+/* @section 7. disabled and readonly */
 
 .field_button.field_disabled, .field_button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {
@@ -273,7 +272,7 @@ textarea
 	text-shadow: 0 1px #fff;
 }
 
-/* @section 6. form default */
+/* @section 8. form default */
 
 .form_default li
 {
@@ -286,7 +285,7 @@ textarea
 	display: block;
 }
 
-/* @section 7. form search */
+/* @section 9. form search */
 
 .form_search
 {
@@ -307,7 +306,7 @@ textarea
 	padding: 0.5em 1em;
 }
 
-/* @section 8. space between elements */
+/* @section 10. space between elements */
 
 .box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
 {

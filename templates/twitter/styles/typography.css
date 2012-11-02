@@ -1,4 +1,16 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. title accordion default
+ *    2.1 javascript enabled
+ * 3. several titles
+ * 4. title dialog default
+ * 5. title extra
+ * 6. title website
+ */
+
+/* @section 1. tag styling */
 
 a
 {
@@ -28,7 +40,7 @@ pre
 	font: italic 1em/1.5em arial;
 }
 
-/* default title accordion */
+/* @section 2. title accordion default */
 
 .title_accordion_default
 {
@@ -45,7 +57,7 @@ pre
 	width: 100%
 }
 
-/* javascript enabled */
+/* @section 2.1 javascript enabled */
 
 .js .title_accordion_default
 {
@@ -77,7 +89,7 @@ pre
 	background: #fff;
 }
 
-/* several titles */
+/* @section 3. several titles */
 
 .title_comment, .title_content, .title_content_sub
 {
@@ -85,7 +97,7 @@ pre
 	margin-top: 1em;
 }
 
-/* default title dialog */
+/* @section 4. title dialog default */
 
 .title_dialog_default
 {
@@ -94,7 +106,7 @@ pre
 	padding: 0 0.75em;
 }
 
-/* title extra */
+/* @section 5. title extra */
 
 .sidebar .title_extra
 {
@@ -106,7 +118,7 @@ pre
 	text-transform: uppercase;
 }
 
-/* title website */
+/* @section 6. title website */
 
 .title_website
 {

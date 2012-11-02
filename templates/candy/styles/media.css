@@ -1,11 +1,20 @@
-/* image */
+/**
+ * @tableofcontents
+ *
+ * 1. image
+ *    1.1 image default
+ * 2. player
+ *    2.1 player default
+ */
+
+/* @section 1. image */
 
 .image
 {
 	max-width: 100%;
 }
 
-/* default image */
+/* @section 1.1 image default */
 
 .image_default
 {
@@ -17,7 +26,7 @@
 	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
-/* player */
+/* @section 2. player */
 
 .player
 {
@@ -26,7 +35,7 @@
 	width: 640px;
 }
 
-/* default player */
+/* @section 2.1 player default */
 
 .player_default
 {

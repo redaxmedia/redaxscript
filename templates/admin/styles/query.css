@@ -1,15 +1,15 @@
 /**
  * @tableofcontents
  *
- * 1. screen and max width 640px
- * 2. screen and max width 480px
- * 3. screen and max width 320px
- * 4. screen and max width 240px
+ * 1. screen max 640
+ * 2. screen max 480
+ * 3. screen max 320
+ * 4. screen max 240
  * 5. mobile
  * 6. rtl direction
  */
 
-/* @section 1. screen and max width 640px */
+/* @section 1. screen max 640 */
 
 @media screen and (max-width: 640px)
 {
@@ -19,7 +19,7 @@
 	}
 }
 
-/* @section 2. screen and max width 480px */
+/* @section 2. screen max 480 */
 
 @media screen and (max-width: 480px)
 {
@@ -45,7 +45,7 @@
 	}
 }
 
-/* @section 3. screen and max width 320px */
+/* @section 3. screen max 320 */
 
 @media screen and (max-width: 320px)
 {
@@ -55,7 +55,7 @@
 	}
 }
 
-/* @section 4. screen and max width 240px */
+/* @section 4. screen max 240 */
 
 @media screen and (max-width: 240px)
 {

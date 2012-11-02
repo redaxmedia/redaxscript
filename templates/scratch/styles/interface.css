@@ -1,4 +1,10 @@
-/* breadcrumb and pagination list */
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb and list pagination
+ */
+
+/* @section 1. list breadcrumb and list pagination */
 
 .list_breadcrumb li, .list_pagination li
 {

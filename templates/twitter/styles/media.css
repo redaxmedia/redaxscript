@@ -1,11 +1,18 @@
-/* image */
+/**
+ * @tableofcontents
+ *
+ * 1. image
+ * 2. player
+ */
+
+/* @section 1. image */
 
 .image
 {
 	max-width: 100%;
 }
 
-/* player */
+/* @section 2. player */
 
 .player
 {

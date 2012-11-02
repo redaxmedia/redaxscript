@@ -1,10 +1,19 @@
-/* dialog */
+/**
+ * @tableofcontents
+ *
+ * 1. dialog default
+ * 2. dialog overlay default
+ */
+
+/* @section 1. dialog default */
 
 .dialog_default
 {
 	margin: -50px 0 0 -200px;
 	width: 400px;
 }
+
+/* @section 2. dialog overlay default */
 
 .dialog_overlay_default
 {

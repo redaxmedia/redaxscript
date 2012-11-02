@@ -1,11 +1,20 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. header and footer
+ * 3. grid elements
+ * 4. wrapper
+ */
+
+/* @section 1. tag styling */
 
 body
 {
 	background: #fff;
 }
 
-/* header and footer */
+/* @section 2. header and footer */
 
 .footer, .header
 {
@@ -13,7 +22,7 @@ body
 	margin-top: 2em;
 }
 
-/* grid elements */
+/* @section 3. grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
@@ -27,7 +36,7 @@ body
 	margin-top: 20px;
 }
 
-/* wrapper */
+/* @section 4. wrapper */
 
 .wrapper
 {

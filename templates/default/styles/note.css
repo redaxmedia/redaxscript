@@ -1,13 +1,13 @@
 /**
  * @tableofcontents
  *
- * 1. error note
- * 2. info note
- * 3. success note
- * 4. warning note
+ * 1. note error
+ * 2. note info
+ * 3. note success
+ * 4. note warning
  */
 
-/* @section 1. error note */
+/* @section 1. note error */
 
 .note_error.box_note
 {
@@ -47,7 +47,7 @@ form .note_error.field_note option
 	background: #ffa3a3;
 }
 
-/* @section 2. info note */
+/* @section 2. note info */
 
 .note_info.box_note
 {
@@ -87,7 +87,7 @@ form .note_info.field_note option
 	background: #8cd5ff;
 }
 
-/* @section 3. success note */
+/* @section 3. note success */
 
 .note_success.box_note
 {
@@ -127,7 +127,7 @@ form .note_success.field_note option
 	background: #6eff6e;
 }
 
-/* @section 4. warning note */
+/* @section 4. note warning */
 
 .note_warning.box_note
 {

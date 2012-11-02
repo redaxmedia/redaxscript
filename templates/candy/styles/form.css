@@ -1,11 +1,26 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. default buttons
+ *    2.1 active effect
+ *    2.2 children elements
+ * 3. default fields
+ *    3.1 hover effect
+ *    3.2 focus effect
+ * 4. textarea dimensions
+ * 5. form default
+ * 6. space between elements
+ */
+
+/* @section 1. tag styling */
 
 textarea
 {
 	resize: vertical;
 }
 
-/* button */
+/* @section 2. default buttons */
 
 .field_button, .field_button_search
 {
@@ -36,6 +51,8 @@ textarea
 	display: inline-block;
 }
 
+/* @section 2.1 active effect */
+
 .field_button:active, .field_button_large:active, .field_button_search:active
 {
 	-moz-box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -53,6 +70,8 @@ textarea
 	top: 1px;
 }
 
+/* @section 2.2 children elements */
+
 .field_button span, .field_button_large span, .field_button_search span
 {
 	display: inline-block;
@@ -67,7 +86,7 @@ textarea
 	padding: 0 0.75em;
 }
 
-/* default fields */
+/* @section 3. default fields */
 
 .field_select, .field_text, .field_textarea_small
 {
@@ -103,12 +122,16 @@ textarea
 	padding: 0.5em;
 }
 
+/* @section 3.1 hover effect */
+
 .field_search:hover, .field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover
 {
 	-moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 	-webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 	box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
+
+/* @section 3.2 focus effect */
 
 .field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
 {
@@ -117,12 +140,14 @@ textarea
 	box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* uniform option font */
+/* uniform option */
 
 .field_select option
 {
 	font: 1em marmelad, serif;
 }
+
+/* @section 4. textarea dimensions */
 
 .field_textarea
 {
@@ -135,7 +160,7 @@ textarea
 	min-height: 50px;
 }
 
-/* default form */
+/* @section 5. form default */
 
 .form_default li
 {
@@ -148,7 +173,7 @@ textarea
 	font-size: 1.125em;
 }
 
-/* space between elements */
+/* @section 6. space between elements */
 
 .box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
 {

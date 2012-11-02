@@ -1,4 +1,19 @@
-/* default box accordion */
+/**
+ * @tableofcontents
+ *
+ * 1. box accordion default
+ * 2. box code
+ * 3. box default
+ * 4. box dialog default
+ * 5. box line
+ * 6. box note
+ * 7. box sidebar
+ * 8. box tab default
+ *    8.1 javascript enabled
+ * 9. space between elements
+ */
+
+/* @section 1. box accordion default */
 
 .box_accordion_default
 {
@@ -11,7 +26,7 @@
 	padding: 0.75em 1.25em;
 }
 
-/* box code */
+/* @section 2. box code */
 
 .box_code
 {
@@ -26,7 +41,7 @@
 	padding: 1em;
 }
 
-/* box default */
+/* @section 3. box default */
 
 .box_default
 {
@@ -37,14 +52,14 @@
 	padding: 1em 1.5em;
 }
 
-/* default box dialog */
+/* @section 4. box dialog default */
 
 .box_dialog_default
 {
 	padding: 1em;
 }
 
-/* box line */
+/* @section 5. box line */
 
 .box_line
 {
@@ -53,7 +68,7 @@
 	margin-top: 3em;
 }
 
-/* box note */
+/* @section 6. box note */
 
 .box_note
 {
@@ -61,7 +76,7 @@
 	padding: 1em;
 }
 
-/* box sidebar */
+/* @section 7. box sidebar */
 
 .box_sidebar
 {
@@ -78,7 +93,7 @@
 	margin-top: 2em;
 }
 
-/* tab box */
+/* @section 8. box tab default */
 
 .box_tab_default
 {
@@ -88,14 +103,14 @@
 	padding: 1em 1.5em;
 }
 
-/* javascript enabled */
+/* @section 8.1 javascript enabled */
 
 .js .box_tab_default
 {
 	height: 450px;
 }
 
-/* space between elements */
+/* @section 9. space between elements */
 
 .box_note + .box_note, .form_default .box_note
 {

@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. several admin boxes
+ *    1.1 last element
  * 2. box dock admin
  *    2.1 description dock admin
  *    2.2 footer grid fix
@@ -31,6 +32,8 @@
 {
 	border-bottom-width: 0;
 }
+
+/* @section 1.1 last element */
 
 .set_accordion_last .box_accordion_admin
 {

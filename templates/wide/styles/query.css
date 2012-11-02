@@ -1,12 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. screen and max width 1000px
- * 2. screen and min width 800px and max width 1000px
- * 3. screen and min width 1000px
+ * 1. screen max 1000
+ * 2. screen min 800 and max 1000
+ * 3. screen min 1000
  */
 
-/* @section 1. screen and max width 1000px */
+/* @section 1. screen max 1000 */
 
 @media screen and (max-width: 1000px)
 {
@@ -21,7 +21,7 @@
 	}
 }
 
-/* @section 2. screen and min width 800px and max width 1000px */
+/* @section 2. screen min 800 and max 1000 */
 
 @media screen and (min-width: 800px) and (max-width: 1000px)
 {
@@ -32,7 +32,7 @@
 	}
 }
 
-/* @section 3. screen and min width 1000px */
+/* @section 3. screen min 1000 */
 
 @media screen and (min-width: 1000px)
 {

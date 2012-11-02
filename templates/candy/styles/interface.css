@@ -1,4 +1,17 @@
-/* sidebar list */
+/**
+ * @tableofcontents
+ *
+ * 1. general sidebar list
+ * 2. list breadcrumb
+ * 3. list default
+ * 4. list header
+ *    4.1 dropdown area
+ *    4.2 list children
+ * 5. list pagination
+ * 6. list search result
+ */
+
+/* @section 1. general sidebar list */
 
 .sidebar li
 {
@@ -20,14 +33,14 @@
 	margin-left: 1em;
 }
 
-/* breadcrumb and pagination list */
+/* @section 2. list breadcrumb */
 
-.list_breadcrumb li, .list_pagination li
+.list_breadcrumb li
 {
 	display: inline-block;
 }
 
-/* default list */
+/* @section 3. list default */
 
 .list_default li
 {
@@ -35,7 +48,7 @@
 	list-style: inherit;
 }
 
-/* header list */
+/* @section 4. list header */
 
 .list_header a, .list_header a:hover
 {
@@ -48,7 +61,7 @@
 	text-decoration: none;
 }
 
-/* header list dropdown area */
+/* @section 4.1 dropdown area */
 
 .list_header > li
 {
@@ -59,7 +72,7 @@
 	text-transform: uppercase;
 }
 
-/* header children list */
+/* @section 4.2 list children */
 
 .list_header > li > .list_children
 {
@@ -80,7 +93,7 @@
 	padding: 0.5em 1em;
 }
 
-/* pagination list */
+/* @section 5. list pagination */
 
 .list_pagination
 {
@@ -118,7 +131,7 @@
 	color: #9609ac;
 }
 
-/* search list */
+/* @section 6. list search result */
 
 .list_search_result
 {

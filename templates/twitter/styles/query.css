@@ -1,4 +1,17 @@
-/* print */
+/**
+ * @tableofcontents
+ *
+ * 1. print
+ * 2. screen max 800
+ * 3. screen max 640
+ * 4. screen max 480
+ * 5. screen max 320
+ * 6. screen max 240
+ * 7. mobile
+ * 8. rtl direction
+ */
+
+/* @section 1. print */
 
 @media print
 {
@@ -14,7 +27,7 @@
 	}
 }
 
-/* screen */
+/* @section 2. screen max 800 */
 
 @media screen and (max-width: 800px)
 {
@@ -30,6 +43,8 @@
 	}
 }
 
+/* @section 3. screen max 640 */
+
 @media screen and (max-width: 640px)
 {
 	.player
@@ -38,6 +53,8 @@
 		width: 600px;
 	}
 }
+
+/* @section 4. screen max 480 */
 
 @media screen and (max-width: 480px)
 {
@@ -64,6 +81,8 @@
 	}
 }
 
+/* @section 5. screen max 320 */
+
 @media screen and (max-width: 320px)
 {
 	.player
@@ -72,6 +91,8 @@
 		width: 240px;
 	}
 }
+
+/* @section 6. screen max 240 */
 
 @media screen and (max-width: 240px)
 {
@@ -88,14 +109,14 @@
 	}
 }
 
-/* mobile */
+/* @section 7. mobile */
 
 .mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
 {
 	width: 50%;
 }
 
-/* rtl direction */
+/* @section 8. rtl direction */
 
 .rtl
 {

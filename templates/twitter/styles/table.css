@@ -1,4 +1,12 @@
-/* default table */
+/**
+ * @tableofcontents
+ *
+ * 1. table default
+ *    1.1 body
+ *    1.2 head and foot
+ */
+
+/* @section 1. table default */
 
 .table_default
 {
@@ -16,7 +24,7 @@
 	border-left: 0;
 }
 
-/* default table body */
+/* @section 1.1 body */
 
 .table_default tbody tr, .table_default thead th
 {
@@ -33,7 +41,7 @@
 	border-bottom: 0;
 }
 
-/* default table head and foot */
+/* @section 1.2 head and foot */
 
 .table_default tfoot tr
 {

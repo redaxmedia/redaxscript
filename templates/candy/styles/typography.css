@@ -1,4 +1,15 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. several links
+ * 3. title content
+ * 4. title content sub
+ * 5. several titles
+ * 6. title website
+ */
+
+/* @section 1. tag styling */
 
 a
 {
@@ -28,7 +39,7 @@ pre
 	font: italic 1em/1.5em marmelad, serif;
 }
 
-/* several links */
+/* @section 2. several links */
 
 .link_default
 {
@@ -48,7 +59,7 @@ pre
 	content: '...';
 }
 
-/* title content */
+/* @section 3. title content */
 
 .title_content
 {
@@ -68,7 +79,7 @@ pre
 	text-decoration: underline;
 }
 
-/* title content sub */
+/* @section 4. title content sub */
 
 .title_content_sub
 {
@@ -76,7 +87,7 @@ pre
 	margin-top: 1em;
 }
 
-/* several titles */
+/* @section 5. several titles */
 
 .title_dialog_default, .sidebar .title_extra
 {
@@ -98,7 +109,7 @@ pre
 	text-transform: uppercase;
 }
 
-/* title website */
+/* @section 6. title website */
 
 .title_website
 {

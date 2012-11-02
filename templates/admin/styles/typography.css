@@ -3,7 +3,7 @@
  *
  * 1. title accordion admin
  *    1.1 javascript enabled
- *    1.2 last title accordion admin
+ *    1.2 last element
  * 2. several admin titles
  * 3. title dialog admin
  */
@@ -47,7 +47,7 @@
 	cursor: default;
 }
 
-/* @section 1.2 last title accordion admin */
+/* @section 1.2 last element*/
 
 .js .set_accordion_admin.set_accordion_last .title_accordion_admin
 {
