@@ -74,7 +74,7 @@ body
 	overflow: hidden;
 }
 
-.wrapper_table_default > table
+.wrapper_table_default > .table
 {
 	width: 100%;
 }

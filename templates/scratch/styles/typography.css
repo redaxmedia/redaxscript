@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
+ * 2. link default
  */
 
 /* @section 1. tag styling */
@@ -31,4 +32,11 @@ p
 pre
 {
 	font: italic 1em/1.5em arial;
+}
+
+/* @section 2. link default */
+
+.link_default
+{
+	text-decoration: underline;
 }

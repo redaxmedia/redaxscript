@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. list breadcrumb and list pagination
+ * 2. list default
  */
 
 /* @section 1. list breadcrumb and list pagination */
@@ -9,4 +10,11 @@
 .list_breadcrumb li, .list_pagination li
 {
 	display: inline-block;
+}
+
+/* @section 2. list default */
+
+.list_default li
+{
+	list-style: inherit;
 }

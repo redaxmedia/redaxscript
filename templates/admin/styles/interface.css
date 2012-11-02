@@ -9,7 +9,7 @@
  * 4. list panel admin
  *    4.1 menu area
  *    4.2 dropdown area
- *    4.3 list children
+ *    4.3 children elements
  *    4.4 rounded items
  *    4.5 left space
  * 5. list tab admin
@@ -222,7 +222,7 @@
 	background-color: #3b3b3b;
 }
 
-/* @section 4.3 list children */
+/* @section 4.3 children elements */
 
 .list_panel_admin > li > .list_children
 {

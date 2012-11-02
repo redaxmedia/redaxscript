@@ -1,12 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. screen < 640
- * 2. screen < 480
- * 3. screen < 320
+ * 1. screen max 640
+ * 2. screen max 480
+ * 3. screen max 320
  */
 
-/* @section 1. screen < 640 */
+/* @section 1. screen max 640 */
 
 @media screen and (max-width: 640px)
 {
@@ -16,7 +16,7 @@
 	}
 }
 
-/* @section 2. screen < 480 */
+/* @section 2. screen max 480 */
 
 @media screen and (max-width: 480px)
 {
@@ -26,7 +26,7 @@
 	}
 }
 
-/* @section 3. screen < 320 */
+/* @section 3. screen max 320 */
 
 @media screen and (max-width: 320px)
 {

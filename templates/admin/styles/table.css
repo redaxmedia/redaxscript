@@ -23,7 +23,7 @@
 	border-width: 0 1px;
 }
 
-/* odd */
+/* odd look */
 
 .table_admin tbody:nth-child(odd) tr
 {
@@ -36,7 +36,7 @@
 	background: linear-gradient(top, #e2e2e2, #dadada);
 }
 
-/* even */
+/* even look */
 
 .table_admin tbody:nth-child(even) tr
 {

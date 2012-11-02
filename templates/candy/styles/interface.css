@@ -6,7 +6,7 @@
  * 3. list default
  * 4. list header
  *    4.1 dropdown area
- *    4.2 list children
+ *    4.2 children elements
  * 5. list pagination
  * 6. list search result
  */
@@ -72,7 +72,7 @@
 	text-transform: uppercase;
 }
 
-/* @section 4.2 list children */
+/* @section 4.2 children elements */
 
 .list_header > li > .list_children
 {

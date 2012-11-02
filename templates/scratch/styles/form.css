@@ -1,10 +1,23 @@
 /**
  * @tableofcontents
  *
- * 1. form default
+ * 1. tag styling
+ * 2. form default
  */
 
-/* @section 1. form default */
+/* @section 1. tag styling */
+
+textarea
+{
+	resize: vertical;
+}
+
+/* @section 2. form default */
+
+.form_default li
+{
+	margin: 0.5em 0;
+}
 
 .form_default .label
 {

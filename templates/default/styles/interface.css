@@ -8,7 +8,7 @@
  * 5. list header
  *    5.1 menu area
  *    5.2 dropdown area
- *    5.3 list children
+ *    5.3 children elements
  *    5.4 rounded items
  *    5.5 left space
  *    5.6 last children
@@ -187,7 +187,7 @@
 	box-shadow: 0 0 4px #999;
 }
 
-/* @section 5.3 list children */
+/* @section 5.3 children elements */
 
 .list_header > li > .list_children
 {

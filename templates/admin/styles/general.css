@@ -55,7 +55,7 @@
 	overflow: hidden;
 }
 
-.wrapper_table_admin > table
+.wrapper_table_admin > .table_admin
 {
 	width: 100%;
 }

@@ -19,6 +19,8 @@
 	text-shadow: 0 1px #1b1b1b;
 }
 
+/* has tooltip */
+
 .preview .box_preview.has_tooltip
 {
 	display: inline-block;

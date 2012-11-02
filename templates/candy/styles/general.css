@@ -72,3 +72,13 @@ body
 {
 	min-width: 980px;
 }
+
+.wrapper_table_default
+{
+	overflow: hidden;
+}
+
+.wrapper_table_default > .table
+{
+	width: 100%;
+}

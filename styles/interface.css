@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. list dropdown
- *    1.1 children list
+ *    1.1 children elements
  * 2. list tab
  * 3. tooltip
  */
@@ -27,7 +27,7 @@
 	display: block;
 }
 
-/* @section 1.1 children list */
+/* @section 1.1 children elements */
 
 .list_dropdown ul
 {
