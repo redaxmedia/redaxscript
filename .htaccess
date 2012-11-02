@@ -1,3 +1,6 @@
+<filesmatch \.(phtml)$>
+	deny from all
+</filesmatch>
 <ifmodule mod_deflate.c>
 	<filesmatch \.(css|js|php|phtml|xml)$>
 		setoutputfilter deflate
