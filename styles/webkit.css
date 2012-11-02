@@ -1,4 +1,10 @@
-/* input and select field reset */
+/**
+ * @tableofcontents
+ *
+ * 1. input and select reset
+ */
+
+/* @section 1. input and select reset */
 
 input, input::-webkit-search-cancel-button, select
 {

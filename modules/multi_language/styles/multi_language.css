@@ -1,4 +1,11 @@
-/* extend icon flags */
+/**
+ * @tableofcontents
+ *
+ * 1. icon flags
+ *    1.1 background positions
+ */
+
+/* @section 1. icon flags */
 
 .icon_flag.language_ar,
 .icon_flag.language_cs,
@@ -27,7 +34,7 @@
 	text-indent: -999em;
 }
 
-/* setup icon flag positions */
+/* @section 1.1 background positions */
 
 .icon_flag.language_ar
 {

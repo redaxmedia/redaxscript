@@ -1,8 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. accordion
+ * 2. dropdown
+ * 3. tab
+ * 4. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* accordion */
+	/* @section 1. accordion */
 
 	$.fn.accordion = function (options)
 	{
@@ -76,7 +85,7 @@
 		});
 	};
 
-	/* dropdown */
+	/* @section 2. dropdown */
 
 	$.fn.dropdown = function (options)
 	{
@@ -115,7 +124,7 @@
 		});
 	};
 
-	/* tab */
+	/* @section 3. tab */
 
 	$.fn.tab = function (options)
 	{
@@ -195,7 +204,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 4. startup */
 
 	$(function ()
 	{

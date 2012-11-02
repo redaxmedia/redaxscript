@@ -1,4 +1,10 @@
-/* admin select field */
+/**
+ * @tableofcontents
+ *
+ * 1. select field reset
+ */
+
+/* @section 1. select field reset */
 
 .field_select_admin, .field_select_admin.field_disabled, .field_select_admin.field_readonly, form .field_select_admin.field_note
 {

@@ -1,25 +1,34 @@
-/* accordion */
+/**
+ * @tableofcontents
+ *
+ * 1. box accordion
+ * 2. box code
+ * 3. several boxes
+ * 4. box tab
+ */
+
+/* @section 1. box accordion */
 
 .js .box_accordion
 {
 	display: none;
 }
 
-/* box code */
+/* @section 2. box code */
 
 .box_code
 {
 	white-space: pre-wrap;
 }
 
-/* several boxes */
+/* @section 3. several boxes */
 
 .box_comment, .box_content, .box_extra
 {
 	word-wrap: break-word;
 }
 
-/* tab */
+/* @section 4. box tab */
 
 .box_tab
 {

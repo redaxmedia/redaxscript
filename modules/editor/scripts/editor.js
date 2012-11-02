@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. editor
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* editor */
+	/* @section 1. editor */
 
 	$.fn.editor = function (options)
 	{
@@ -408,7 +415,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

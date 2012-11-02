@@ -1,4 +1,10 @@
-/* debugger */
+/**
+ * @tableofcontents
+ *
+ * 1. debugger
+ */
+
+/* @section 1. debugger */
 
 r.module.debugger =
 {

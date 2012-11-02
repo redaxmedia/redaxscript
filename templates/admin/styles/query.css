@@ -1,4 +1,15 @@
-/* screen */
+/**
+ * @tableofcontents
+ *
+ * 1. screen and max width 640px
+ * 2. screen and max width 480px
+ * 3. screen and max width 320px
+ * 4. screen and max width 240px
+ * 5. mobile
+ * 6. rtl direction
+ */
+
+/* @section 1. screen and max width 640px */
 
 @media screen and (max-width: 640px)
 {
@@ -7,6 +18,8 @@
 		display: none;
 	}
 }
+
+/* @section 2. screen and max width 480px */
 
 @media screen and (max-width: 480px)
 {
@@ -32,6 +45,8 @@
 	}
 }
 
+/* @section 3. screen and max width 320px */
+
 @media screen and (max-width: 320px)
 {
 	.list_panel_admin .item_access, .table_admin .column_second
@@ -39,6 +54,8 @@
 		display: none;
 	}
 }
+
+/* @section 4. screen and max width 240px */
 
 @media screen and (max-width: 240px)
 {
@@ -49,7 +66,7 @@
 	}
 }
 
-/* mobile */
+/* @section 5. mobile */
 
 .mobile .field_select_admin, .mobile .field_text_admin, .mobile .field_textarea_small_admin
 {
@@ -61,7 +78,7 @@
 	visibility: visible;
 }
 
-/* rtl direction */
+/* @section 6. rtl direction */
 
 .rtl .description_dock_admin, .rtl .wrapper_panel_menu_admin
 {

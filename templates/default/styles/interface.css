@@ -1,4 +1,25 @@
-/* footer list */
+/**
+ * @tableofcontents
+ *
+ * 1. general footer list
+ * 2. general sidebar list
+ * 3. list breadcrumb
+ * 4. list default
+ * 5. list header
+ *    5.1 menu area
+ *    5.2 dropdown area
+ *    5.3 list children
+ *    5.4 rounded items
+ *    5.5 left space
+ *    5.6 last children
+ * 6. list pagination
+ * 7. list tab default
+ *    7.1 javascript enabled
+ * 8. list search result
+ * 9. tooltip default
+ */
+
+/* @section 1. general footer list */
 
 .footer li
 {
@@ -19,7 +40,7 @@
 	text-decoration: underline;
 }
 
-/* sidebar list */
+/* @section 2. general sidebar list */
 
 .sidebar li
 {
@@ -43,7 +64,7 @@
 	margin-left: 1em;
 }
 
-/* breadcrumb list */
+/* @section 3. list breadcrumb */
 
 .list_breadcrumb
 {
@@ -92,7 +113,7 @@
 	width: 18px;
 }
 
-/* default list */
+/* @section 4. list default */
 
 .list_default li
 {
@@ -100,7 +121,7 @@
 	list-style: inherit;
 }
 
-/* header list */
+/* @section 5. list header */
 
 .list_header
 {
@@ -118,7 +139,7 @@
 	text-shadow: 0 1px #1b1b1b;
 }
 
-/* header list menu area */
+/* @section 5.1 menu area */
 
 .list_header li
 {
@@ -137,7 +158,7 @@
 	background: linear-gradient(top, #777, #636363);
 }
 
-/* header list dropdown area */
+/* @section 5.2 dropdown area */
 
 .list_header > li
 {
@@ -166,7 +187,7 @@
 	box-shadow: 0 0 4px #999;
 }
 
-/* header children list */
+/* @section 5.3 list children */
 
 .list_header > li > .list_children
 {
@@ -181,7 +202,7 @@
 	border-top-width: 0;
 }
 
-/* first and last children rounded */
+/* @section 5.4 rounded items */
 
 .list_header .list_children li:first-child
 {
@@ -204,7 +225,7 @@
 	border-bottom-right-radius: 0.125em;
 }
 
-/* children left space */
+/* @section 5.5 left space */
 
 .list_header .list_children ul
 {
@@ -212,7 +233,7 @@
 	top: -1px;
 }
 
-/* last children list */
+/* @section 5.6 last children */
 
 .list_header > li:last-child .list_children
 {
@@ -220,7 +241,7 @@
 	right: -1px;
 }
 
-/* pagination list */
+/* @section 6. list pagination */
 
 .list_pagination
 {
@@ -273,7 +294,7 @@
 	text-shadow: 0 1px #005da2;
 }
 
-/* default tab */
+/* @section 7. list tab default */
 
 .list_tab_default
 {
@@ -305,7 +326,7 @@
 	text-transform: uppercase;
 }
 
-/* javascript enabled */
+/* @section 7.1 javascript enabled */
 
 .js .list_tab_default .item_active
 {
@@ -327,7 +348,7 @@
 	text-shadow: none;
 }
 
-/* search list */
+/* @section 8. list search result */
 
 .list_search_result
 {
@@ -353,7 +374,7 @@
 	text-decoration: underline;
 }
 
-/* default tooltip */
+/* @section 9. tooltip default */
 
 .tooltip_default
 {

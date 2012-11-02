@@ -1,4 +1,16 @@
-/* gallery */
+/**
+ * @tableofcontents
+ *
+ * 1. gallery
+ * 2. gallery overlay
+ * 3. gallery loader
+ * 4. gallery meta
+ * 5. previous and next links
+ * 6. image gallery
+ * 7. link gallery
+ */
+
+/* @section 1. gallery */
 
 .gallery
 {
@@ -12,6 +24,8 @@
 	z-index: 1100;
 }
 
+/* @section 2. gallery overlay */
+
 .gallery_overlay
 {
 	background: #000;
@@ -23,7 +37,7 @@
 	z-index: 1000;
 }
 
-/* gallery loader */
+/* @section 3. gallery loader */
 
 .gallery_loader
 {
@@ -39,7 +53,7 @@
 	z-index: 1400;
 }
 
-/* gallery meta */
+/* @section 4. gallery meta */
 
 .gallery_meta
 {
@@ -77,7 +91,7 @@
 	margin-right: 0.5em;
 }
 
-/* previous and next link */
+/* @section 5. previous and next links */
 
 .gallery_next, .gallery_previous
 {
@@ -141,7 +155,7 @@
 	float: left;
 }
 
-/* gallery image */
+/* @section 6. image gallery */
 
 .image_gallery
 {
@@ -167,7 +181,7 @@
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 }
 
-/* gallery link */
+/* @section 7. link gallery */
 
 .link_gallery
 {

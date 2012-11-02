@@ -1,4 +1,19 @@
-/* grid */
+/**
+ * @tableofcontents
+ *
+ * 1. grid
+ *    1.1 whole
+ *    1.2 halve
+ *    1.2 third
+ *    1.3 quarter
+ *    1.4 fifth
+ *    1.5 sixth
+ *    1.7 seventh
+ *    1.8 eighth
+ *    1.9 golden ratio
+ */
+
+/* @section 1. grid */
 
 .grid, .grid_space
 {
@@ -10,21 +25,21 @@
 	float: right;
 }
 
-/* whole */
+/* @section 1.1 whole */
 
 .s1o1
 {
 	width: 100%;
 }
 
-/* halve */
+/* @section 1.2 halve */
 
 .s1o2, .s2o4, .s3o6, .s4o8
 {
 	width: 50%;
 }
 
-/* third */
+/* @section 1.2 third */
 
 .s1o3, .s2o6
 {
@@ -36,7 +51,7 @@
 	width: 66.66%;
 }
 
-/* quarter */
+/* @section 1.3 quarter */
 
 .s1o4, .s2o8
 {
@@ -48,7 +63,7 @@
 	width: 75%;
 }
 
-/* fifth */
+/* @section 1.4 fifth */
 
 .s1o5
 {
@@ -70,7 +85,7 @@
 	width: 80%;
 }
 
-/* sixth */
+/* @section 1.5 sixth */
 
 .s1o6
 {
@@ -82,7 +97,7 @@
 	width: 83.33%;
 }
 
-/* seventh */
+/* @section 1.7 seventh */
 
 .s1o7
 {
@@ -114,7 +129,7 @@
 	width: 85.72%;
 }
 
-/* eighth */
+/* @section 1.8 eighth */
 
 .s1o8
 {
@@ -136,7 +151,7 @@
 	width: 87.5%;
 }
 
-/* golden ratio */
+/* @section 1.9 golden ratio */
 
 .gr1
 {

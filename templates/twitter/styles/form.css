@@ -144,7 +144,7 @@ textarea
 	min-height: 50px;
 }
 
-/* disabled and readonly */
+/* disabled and readonly fields */
 
 .field_button.field_disabled, .field_button_large.field_disabled, .field_button_search.field_disabled, .field_search.field_disabled, .field_search.field_readonly, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {

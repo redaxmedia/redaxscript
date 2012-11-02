@@ -1,9 +1,18 @@
-/* general */
+/**
+ * @tableofcontents
+ *
+ * 1. hide
+ * 2. clear fix
+ */
+
+/* @section 1. hide */
 
 .js .hide_if_js, .hidden_legend legend
 {
 	display: none;
 }
+
+/* @section 2. clear fix */
 
 .clear_fix
 {

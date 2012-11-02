@@ -1,11 +1,19 @@
-/* default table */
+/**
+ * @tableofcontents
+ *
+ * 1. table default
+ *    1.1 body
+ *    1.2 head and foot
+ */
+
+/* @section 1. table default */
 
 .table_default td, .table_default th
 {
 	padding: 0.75em;
 }
 
-/* default table body */
+/* @section 1.1 body */
 
 .table_default tbody
 {
@@ -29,7 +37,7 @@
 	border-bottom: 0;
 }
 
-/* default table head and foot */
+/* @section 1.2 head and foot */
 
 .table_default tfoot, .table_default thead
 {

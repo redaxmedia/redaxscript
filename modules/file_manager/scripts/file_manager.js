@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. file manager
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* file manager */
+	/* @section 1. file manager */
 
 	$.fn.fileManager = function (options)
 	{
@@ -44,7 +51,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

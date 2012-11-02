@@ -1,4 +1,11 @@
-/* admin dock */
+/**
+ * @tableofcontents
+ *
+ * 1. admin dock
+ * 2. admin panel
+ */
+
+/* @section 1. admin dock */
 
 r.plugin.adminDock =
 {
@@ -15,7 +22,7 @@ r.plugin.adminDock =
 	}
 };
 
-/* admin panel */
+/* @section 2. admin panel */
 
 r.plugin.adminPanel =
 {

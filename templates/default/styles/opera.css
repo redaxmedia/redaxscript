@@ -1,4 +1,10 @@
-/* select field reset */
+/**
+ * @tableofcontents
+ *
+ * 1. select field reset
+ */
+
+/* @section 1. select field reset */
 
 .field_select, .field_select.field_disabled, .field_select.field_readonly, form .field_select.field_note
 {

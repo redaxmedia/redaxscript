@@ -1,4 +1,10 @@
-/* logo effect */
+/**
+ * @tableofcontents
+ *
+ * 1. logo effect
+ */
+
+/* @section 1. logo effect */
 
 r.plugin.logoEffect =
 {

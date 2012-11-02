@@ -1,4 +1,13 @@
-/* dropdown list */
+/**
+ * @tableofcontents
+ *
+ * 1. list dropdown
+ *    1.1 children list
+ * 2. list tab
+ * 3. tooltip
+ */
+
+/* @section 1. list dropdown */
 
 .list_dropdown, .list_dropdown li
 {
@@ -18,6 +27,8 @@
 	display: block;
 }
 
+/* @section 1.1 children list */
+
 .list_dropdown ul
 {
 	display: none;
@@ -32,14 +43,14 @@
 	top: 0;
 }
 
-/* tab list */
+/* @section 2. list tab */
 
 .list_tab li
 {
 	display: inline-block;
 }
 
-/* tooltip */
+/* @section 3. tooltip */
 
 .has_tooltip
 {

@@ -1,4 +1,10 @@
-/* editor */
+/**
+ * @tableofcontents
+ *
+ * 1. editor
+ */
+
+/* @section 1. editor */
 
 r.module.editor =
 {

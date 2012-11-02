@@ -1,4 +1,14 @@
-/* fb group link */
+/**
+ * @tableofcontents
+ *
+ * 1. link fb group user image
+ * 2. box fb group message sub
+ * 3. box fb group like infoline
+ * 4. fb group comment elements
+ * 5. space between elements
+ */
+
+/* @section 1. link fb group user image */
 
 .link_fb_group_user_image
 {
@@ -17,7 +27,7 @@
 	width: 50px;
 }
 
-/* fb group message */
+/* @section 2. box fb group message sub */
 
 .box_fb_group_message_sub
 {
@@ -48,7 +58,7 @@
 	position: relative;
 }
 
-/* fb group like */
+/* @section 3. box fb group like infoline */
 
 .box_fb_group_like_infoline
 {
@@ -62,7 +72,7 @@
 	text-decoration: underline;
 }
 
-/* fb group comment */
+/* @section 4. fb group comment elements */
 
 .box_fb_group_comment, .link_fb_group_comment_read_more
 {
@@ -132,7 +142,7 @@
 	background: #e8e8e8;
 }
 
-/* space between elements */
+/* @section 5. space between elements */
 
 .box_fb_group_message + .box_fb_group_message, .box_fb_group_comment + .box_fb_group_message, .box_fb_group_comment_read_more + .box_fb_group_message
 {

@@ -1,8 +1,16 @@
+/**
+ * @tableofcontents
+ *
+ * 1. key shortcut
+ * 2. forward notification
+ * 3. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* key shortcut */
+	/* @section 1. key shortcut */
 
 	$.fn.keyShortcut = function (options)
 	{
@@ -70,7 +78,7 @@
 		});
 	};
 
-	/* forward notification */
+	/* @section 2. forward notification */
 
 	$.fn.forwardNotification = function (options)
 	{
@@ -94,7 +102,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 3. startup */
 
 	$(function ()
 	{

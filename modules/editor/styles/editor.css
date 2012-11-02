@@ -1,4 +1,14 @@
-/* editor toolbar */
+/**
+ * @tableofcontents
+ *
+ * 1. editor toolbar
+ * 2. editor control
+ * 3. editor icons
+ * 4. editor divider
+ * 5. editor preview
+ */
+
+/* @section 1. editor toolbar */
 
 .editor_toolbar
 {
@@ -14,7 +24,7 @@
 	padding: 0.25em 0.25em 0.5em;
 }
 
-/* editor control */
+/* @section 2. editor control */
 
 .editor_control
 {
@@ -38,7 +48,7 @@
 	background-color: #3b3b3b;
 }
 
-/* editor control icons */
+/* @section 3. editor icons */
 
 .editor_control.source_code
 {
@@ -215,14 +225,14 @@
 	background-position: -3px -1023px;
 }
 
-/* editor divider */
+/* @section 4. editor divider */
 
 .editor_divider
 {
 	display: none;
 }
 
-/* editor preview */
+/* @section 5. editor preview */
 
 .editor_preview
 {

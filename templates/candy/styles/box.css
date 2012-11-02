@@ -1,4 +1,14 @@
-/* default box */
+/**
+ * @tableofcontents
+ *
+ * 1. box default
+ * 2. several boxes
+ * 3. box line
+ * 4. box note
+ * 5. space between elements
+ */
+
+/* @section 1. box default */
 
 .box_default
 {
@@ -11,7 +21,7 @@
 	padding: 1em;
 }
 
-/* several boxes */
+/* @section 2. several boxes */
 
 .box_dialog_default, .sidebar .box_extra
 {
@@ -25,7 +35,7 @@
 	padding: 1em;
 }
 
-/* box line */
+/* @section 3. box line */
 
 .box_line
 {
@@ -41,7 +51,7 @@
 	opacity: 1;
 }
 
-/* box note */
+/* @section 4. box note */
 
 .box_note
 {
@@ -54,7 +64,7 @@
 	text-decoration: underline;
 }
 
-/* space between elements */
+/* @section 5. space between elements */
 
 .box_note + .box_note, .form_default .box_note
 {

@@ -1,8 +1,16 @@
+/**
+ * @tableofcontents
+ *
+ * 1. admin dock
+ * 2. admin panel
+ * 3. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* admin dock */
+	/* @section 1. admin dock */
 
 	$.fn.adminDock = function (options)
 	{
@@ -45,7 +53,7 @@
 		});
 	};
 
-	/* admin panel */
+	/* @section 2. admin panel */
 
 	$.fn.adminPanel = function (options)
 	{
@@ -98,7 +106,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 3. startup */
 
 	$(function ()
 	{

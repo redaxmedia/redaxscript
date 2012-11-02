@@ -1,4 +1,12 @@
-/* box preview */
+/**
+ * @tableofcontents
+ *
+ * 1. box preview
+ * 2. grid preview
+ * 3. dialog preview
+ */
+
+/* @section 1. box preview */
 
 .preview .box_preview
 {
@@ -16,7 +24,7 @@
 	display: inline-block;
 }
 
-/* grid preview */
+/* @section 2. grid preview */
 
 .preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover
 {
@@ -25,7 +33,7 @@
 	box-shadow: inset 5px 0 0 #3197df;
 }
 
-/* dialog preview */
+/* @section 3. dialog preview */
 
 .preview .dialog
 {

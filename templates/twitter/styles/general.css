@@ -1,11 +1,21 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. footer
+ * 3. header
+ * 4. grid elements
+ * 5. wrapper
+ */
+
+/* @section 1. tag styling */
 
 body
 {
 	background: #fff;
 }
 
-/* footer */
+/* @section 2. footer */
 
 .footer
 {
@@ -15,7 +25,7 @@ body
 	margin-top: 4em;
 }
 
-/* header */
+/* @section 3. header */
 
 .header
 {
@@ -32,7 +42,7 @@ body
 	margin-bottom: 2em;
 }
 
-/* grid elements */
+/* @section 4. grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
@@ -46,7 +56,7 @@ body
 	margin-top: 20px;
 }
 
-/* wrapper */
+/* @section 5. wrapper */
 
 .wrapper
 {

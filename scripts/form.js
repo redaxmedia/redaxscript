@@ -1,8 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. check required
+ * 2. check search
+ * 3. note required
+ * 4. clear fields
+ * 5. unmask password
+ * 6. auto resize
+ * 7. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* check required */
+	/* @section 1. check required */
 
 	$.fn.checkRequired = function (options)
 	{
@@ -88,7 +100,7 @@
 		});
 	};
 
-	/* check search */
+	/* @section 2. check search */
 
 	$.fn.checkSearch = function (options)
 	{
@@ -127,7 +139,7 @@
 		});
 	};
 
-	/* note required */
+	/* @section 3. note required */
 
 	$.fn.noteRequired = function (options)
 	{
@@ -168,7 +180,7 @@
 		});
 	};
 
-	/* clear fields */
+	/* @section 4. clear fields */
 
 	$.fn.clearFocus = function ()
 	{
@@ -196,7 +208,7 @@
 		});
 	};
 
-	/* unmask password */
+	/* @section 5. unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -222,7 +234,7 @@
 		});
 	};
 
-	/* auto resize */
+	/* @section 6. auto resize */
 
 	$.fn.autoResize = function (options)
 	{
@@ -262,7 +274,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 7. startup */
 
 	$(function ()
 	{

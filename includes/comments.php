@@ -103,7 +103,7 @@ function comments($article = '', $string = '')
 
 	if ($error)
 	{
-		$output = '<div class="box_content">' . $error . l('point') . '</div>';
+		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
 	}
 	echo $output;
 

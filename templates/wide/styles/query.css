@@ -1,4 +1,12 @@
-/* screen */
+/**
+ * @tableofcontents
+ *
+ * 1. screen and max width 1000px
+ * 2. screen and min width 800px and max width 1000px
+ * 3. screen and min width 1000px
+ */
+
+/* @section 1. screen and max width 1000px */
 
 @media screen and (max-width: 1000px)
 {
@@ -13,6 +21,8 @@
 	}
 }
 
+/* @section 2. screen and min width 800px and max width 1000px */
+
 @media screen and (min-width: 800px) and (max-width: 1000px)
 {
 	.player
@@ -21,6 +31,8 @@
 		width: 800px;
 	}
 }
+
+/* @section 3. screen and min width 1000px */
 
 @media screen and (min-width: 1000px)
 {

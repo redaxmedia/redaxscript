@@ -1,4 +1,10 @@
-/* remove inner focus */
+/**
+ * @tableofcontents
+ *
+ * 1. remove inner focus
+ */
+
+/* @section 1. remove inner focus */
 
 button::-moz-focus-inner, input::-moz-focus-inner
 {

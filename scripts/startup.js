@@ -1,8 +1,19 @@
-/* redaxscript object */
+/**
+ * @tableofcontents
+ *
+ * 1. redaxscript object
+ *    1.1 lightbox
+ *    1.2 plugin
+ *    1.3 module
+ *    1.4 base url
+ *    1.5 startup
+ */
+
+/* @section 1. redaxscript object */
 
 var r = r || {};
 
-/* define lightbox */
+/* @section 1.1 lightbox */
 
 r.lightbox =
 {
@@ -23,7 +34,7 @@ r.lightbox =
 	}
 };
 
-/* define plugin */
+/* @section 1.2 plugin */
 
 r.plugin =
 {
@@ -194,11 +205,11 @@ r.plugin =
 	}
 };
 
-/* define module */
+/* @section 1.3 module */
 
 r.module = {};
 
-/* define base url */
+/* @section 1.4 base url */
 
 r.baseURL = function ()
 {
@@ -206,20 +217,16 @@ r.baseURL = function ()
 
 	var base = document.getElementsByTagName('base'),
 		checkBase = base.length,
-		output;
+		output = '';
 
 	if (checkBase)
 	{
 		output = base[0].href;
 	}
-	else
-	{
-		output = '';
-	}
 	return output;
 }();
 
-/* startup */
+/* @section 1.5 startup */
 
 r.startup = function (html)
 {

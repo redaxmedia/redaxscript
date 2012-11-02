@@ -1,4 +1,14 @@
-/* admin title accordion */
+/**
+ * @tableofcontents
+ *
+ * 1. title accordion admin
+ *    1.1 javascript enabled
+ *    1.2 last title accordion admin
+ * 2. several admin titles
+ * 3. title dialog admin
+ */
+
+/* @section 1. title accordion admin */
 
 .title_accordion_admin
 {
@@ -24,7 +34,7 @@
 	color: #474747;
 }
 
-/* javascript enabled */
+/* @section 1.1 javascript enabled */
 
 .js .title_accordion_admin
 {
@@ -37,14 +47,14 @@
 	cursor: default;
 }
 
-/* last title accordion */
+/* @section 1.2 last title accordion admin */
 
 .js .set_accordion_admin.set_accordion_last .title_accordion_admin
 {
 	border-bottom-width: 1px;
 }
 
-/* several titles */
+/* @section 2. several admin titles */
 
 .js .set_accordion_admin .title_accordion_admin.title_active, .title_dialog_admin
 {
@@ -57,7 +67,7 @@
 	color: #ccc;
 }
 
-/* admin title dialog */
+/* @section 3. title dialog admin */
 
 .title_dialog_admin
 {

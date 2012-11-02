@@ -1,4 +1,17 @@
-/* several boxes */
+/**
+ * @tableofcontents
+ *
+ * 1. several admin boxes
+ * 2. box dock admin
+ *    2.1 description dock admin
+ *    2.2 footer grid fix
+ * 3. box panel admin
+ * 4. box tab admin
+ *    4.1 javascript enabled
+ * 5. space between elements
+ */
+
+/* @section 1. several admin boxes */
 
 .box_accordion_admin, .box_dialog_admin
 {
@@ -24,7 +37,7 @@
 	border-bottom-width: 1px;
 }
 
-/* admin box dock */
+/* @section 2. box dock admin */
 
 .box_dock_admin
 {
@@ -45,6 +58,8 @@
 	display: none;
 }
 
+/* @section 2.1 description dock admin */
+
 .description_dock_admin
 {
 	color: #474747;
@@ -54,7 +69,7 @@
 	text-shadow: 0 1px #1b1b1b;
 }
 
-/* grid fix */
+/* @section 2.2 footer grid fix */
 
 .footer .box_dock_admin
 {
@@ -62,7 +77,7 @@
 	margin-right: 10px;
 }
 
-/* admin box panel */
+/* @section 3. box panel admin */
 
 .box_panel_admin
 {
@@ -70,7 +85,7 @@
 	padding: 1.25em 0;
 }
 
-/* admin tab */
+/* @section 4. box tab admin */
 
 .box_tab_admin
 {
@@ -85,14 +100,14 @@
 	padding: 1em 1.5em;
 }
 
-/* javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .box_tab_admin
 {
 	height: 450px;
 }
 
-/* space between elements */
+/* @section 5. space between elements */
 
 .form_admin .box_note
 {

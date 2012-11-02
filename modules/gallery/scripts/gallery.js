@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. gallery
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* gallery */
+	/* @section 1. gallery */
 
 	$.fn.gallery = function (options)
 	{
@@ -338,7 +345,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

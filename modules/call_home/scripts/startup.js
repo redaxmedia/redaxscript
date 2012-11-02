@@ -1,4 +1,10 @@
-/* call home */
+/**
+ * @tableofcontents
+ *
+ * 1. call home
+ */
+
+/* @section 1. call home */
 
 r.module.callHome =
 {

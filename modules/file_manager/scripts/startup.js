@@ -1,4 +1,10 @@
-/* file manager */
+/**
+ * @tableofcontents
+ *
+ * 1. file manager
+ */
+
+/* @section 1. file manager */
 
 r.module.fileManager =
 {

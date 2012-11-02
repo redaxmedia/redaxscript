@@ -1,4 +1,10 @@
-/* gallery */
+/**
+ * @tableofcontents
+ *
+ * 1. gallery
+ */
+
+/* @section 1. gallery */
 
 r.module.gallery =
 {

@@ -1,4 +1,10 @@
-/* seo tube */
+/**
+ * @tableofcontents
+ *
+ * 1. seo tube
+ */
+
+/* @section 1. seo tube */
 
 r.module.seoTube =
 {

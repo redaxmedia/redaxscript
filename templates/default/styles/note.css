@@ -1,4 +1,13 @@
-/* error note */
+/**
+ * @tableofcontents
+ *
+ * 1. error note
+ * 2. info note
+ * 3. success note
+ * 4. warning note
+ */
+
+/* @section 1. error note */
 
 .note_error.box_note
 {
@@ -38,7 +47,7 @@ form .note_error.field_note option
 	background: #ffa3a3;
 }
 
-/* info note */
+/* @section 2. info note */
 
 .note_info.box_note
 {
@@ -78,7 +87,7 @@ form .note_info.field_note option
 	background: #8cd5ff;
 }
 
-/* success note */
+/* @section 3. success note */
 
 .note_success.box_note
 {
@@ -118,7 +127,7 @@ form .note_success.field_note option
 	background: #6eff6e;
 }
 
-/* warning note */
+/* @section 4. warning note */
 
 .note_warning.box_note
 {

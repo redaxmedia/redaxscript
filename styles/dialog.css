@@ -1,4 +1,11 @@
-/* dialog */
+/**
+ * @tableofcontents
+ *
+ * 1. dialog
+ * 2. dialog overlay
+ */
+
+/* @section 1. dialog */
 
 .dialog
 {
@@ -7,6 +14,8 @@
 	top: 50%;
 	z-index: 1100;
 }
+
+/* @section 2. dialog overlay */
 
 .dialog_overlay
 {

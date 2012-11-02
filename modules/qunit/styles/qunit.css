@@ -1,4 +1,15 @@
-/* qunit banner */
+/**
+ * @tableofcontents
+ *
+ * 1. banner qunit
+ * 2. box qunit
+ * 3. title qunit
+ * 4. toolbar qunit
+ * 5. list qunit
+ * 6. space between elements
+ */
+
+/* @section 1. banner qunit */
 
 .banner_qunit
 {
@@ -10,7 +21,7 @@
 	font-size: 0.875em;
 }
 
-/* qunit box */
+/* @section 2. box qunit */
 
 .box_qunit
 {
@@ -25,7 +36,7 @@
 	border-top: 0;
 }
 
-/* qunit title */
+/* @section 3. title qunit */
 
 .title_qunit
 {
@@ -57,7 +68,7 @@
 	text-decoration: underline;
 }
 
-/* qunit toolbar */
+/* @section 4. toolbar qunit */
 
 .toolbar_qunit input, .toolbar_qunit select
 {
@@ -74,7 +85,7 @@
 	vertical-align: middle;
 }
 
-/* qunit list */
+/* @section 5. list qunit */
 
 .list_qunit
 {
@@ -105,7 +116,7 @@
 	border-bottom: 0;
 }
 
-/* children list */
+/* children elements */
 
 .list_qunit ol
 {
@@ -117,7 +128,7 @@
 	list-style: lower-alpha inside;
 }
 
-/* space between elements */
+/* @section 6. space between elements */
 
 .box_qunit + .title_qunit
 {

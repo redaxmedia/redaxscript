@@ -1,4 +1,12 @@
-/* screen */
+/**
+ * @tableofcontents
+ *
+ * 1. screen < 640
+ * 2. screen < 480
+ * 3. screen < 320
+ */
+
+/* @section 1. screen < 640 */
 
 @media screen and (max-width: 640px)
 {
@@ -8,6 +16,8 @@
 	}
 }
 
+/* @section 2. screen < 480 */
+
 @media screen and (max-width: 480px)
 {
 	.gallery_next span, .gallery_previous span
@@ -15,6 +25,8 @@
 		font-size: 1em;
 	}
 }
+
+/* @section 3. screen < 320 */
 
 @media screen and (max-width: 320px)
 {

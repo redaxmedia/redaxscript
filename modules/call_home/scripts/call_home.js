@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. call home
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* call home */
+	/* @section 1. call home */
 
 	$.fn.callHome = function (options)
 	{
@@ -28,7 +35,7 @@
 		}
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

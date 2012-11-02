@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. seo tube
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* seo tube */
+	/* @section 1. seo tube */
 
 	$.fn.seoTube = function (options)
 	{
@@ -59,7 +66,7 @@
 		}
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

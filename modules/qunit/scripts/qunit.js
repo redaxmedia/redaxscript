@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. qunit
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* qunit */
+	/* @section 1. qunit */
 
 	$.fn.qunit = function (options)
 	{
@@ -66,7 +73,7 @@
 		};
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

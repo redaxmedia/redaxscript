@@ -1,8 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dialog
+ * 2. confirm link
+ * 3. prevent unload
+ * 4. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* dialog */
+	/* @section 1. dialog */
 
 	$.fn.dialog = function (options)
 	{
@@ -112,7 +121,7 @@
 		}
 	};
 
-	/* confirm link */
+	/* @section 2. confirm link */
 
 	$.fn.confirmLink = function ()
 	{
@@ -151,7 +160,7 @@
 		});
 	};
 
-	/* prevent unload */
+	/* @section 3. prevent unload */
 
 	$.fn.preventUnload = function (options)
 	{
@@ -178,7 +187,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 4. startup */
 
 	$(function ()
 	{

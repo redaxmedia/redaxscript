@@ -1,4 +1,12 @@
-/* admin panel */
+/**
+ * @tableofcontents
+ *
+ * 1. panel admin
+ *    1.1 children grid fix
+ * 2. wrapper
+ */
+
+/* @section 1. panel admin */
 
 .panel_admin
 {
@@ -22,7 +30,7 @@
 	height: 5px;
 }
 
-/* grid fix */
+/* @section 1.1 children grid fix */
 
 .list_panel_admin, .wrapper_panel_menu_admin
 {
@@ -30,7 +38,7 @@
 	margin-right: 10px;
 }
 
-/* wrapper */
+/* @section 2. wrapper */
 
 .wrapper_button_admin
 {

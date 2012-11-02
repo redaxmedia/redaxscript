@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. logo effect
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* logo effect */
+	/* @section 1. logo effect */
 
 	$.fn.logoEffect = function (options)
 	{
@@ -31,7 +38,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

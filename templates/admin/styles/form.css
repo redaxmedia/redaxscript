@@ -1,11 +1,25 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. admin buttons
+ *    2.1 default
+ *    2.2 custom
+ * 3. admin fields
+ *    3.1 default
+ * 4. disabled and readonly
+ * 5. admin form
+ * 6. space between elements
+ */
+
+/* @section 1. tag styling */
 
 textarea
 {
 	resize: none;
 }
 
-/* admin button */
+/* @section 2. admin buttons */
 
 .field_button_admin
 {
@@ -16,6 +30,8 @@ textarea
 {
 	font: bold 1em arial;
 }
+
+/* @section 2.1 default */
 
 .field_button_admin, .field_button_large_admin
 {
@@ -37,6 +53,8 @@ textarea
 	display: inline-block;
 }
 
+/* default hover */
+
 .field_button_admin:hover, .field_button_large_admin:hover
 {
 	background: #474747;
@@ -48,7 +66,9 @@ textarea
 	background: linear-gradient(top, #474747, #3b3b3b);
 }
 
-.field_button_admin:active, .field_button_admin:focus, .field_button_large_admin:active, .field_button_large_admin:focus
+/* default active */
+
+.field_button_admin:active, .field_button_large_admin:active
 {
 	-moz-box-shadow: inset 0 0 0 1px #47c8db;
 	-webkit-box-shadow: inset 0 0 0 1px #47c8db;
@@ -62,6 +82,8 @@ textarea
 	border-color: #005da2;
 	box-shadow: inset 0 0 0 1px #47c8db;
 }
+
+/* children elements */
 
 .field_button_admin span, .field_button_large_admin span
 {
@@ -77,13 +99,13 @@ textarea
 	padding: 0 0.75em;
 }
 
-.field_button_admin:active span span, .field_button_admin:focus span span, .field_button_large_admin:active span span, .field_button_large_admin:focus span span
+.field_button_admin:active span span, .field_button_large_admin:active span span
 {
 	color: #f1f1f1;
 	text-shadow: 0 1px #005da2;
 }
 
-/* custom buttons */
+/* @section 2.2 custom */
 
 .field_button_admin.field_button_plus span span
 {
@@ -124,7 +146,7 @@ textarea
 	background-position: -19px -343px;
 }
 
-/* admin fields */
+/* @section 3. admin fields */
 
 .field_select_admin, .field_text_admin, .field_textarea_small_admin
 {
@@ -135,6 +157,8 @@ textarea
 {
 	width: 100%;
 }
+
+/* @section 3.1 default */
 
 .field_select_admin, .field_text_admin, .field_textarea_admin, .field_textarea_small_admin
 {
@@ -166,14 +190,14 @@ textarea
 	padding: 0.5em;
 }
 
-/* admin fields hover */
+/* default hover */
 
 .field_select_admin:hover, .field_text_admin:hover, .field_textarea_admin:hover, .field_textarea_small_admin:hover
 {
 	border-color: #ababab;
 }
 
-/* admin fields focus */
+/* default focus */
 
 .field_select_admin:focus, .field_text_admin:focus, .field_textarea_admin:focus, .field_textarea_small_admin:focus
 {
@@ -190,13 +214,15 @@ textarea
 	box-shadow: 0 0 3px #fff;
 }
 
-/* uniform option font */
+/* uniform option */
 
 .field_select_admin option
 {
 	font: 1em arial;
 	text-shadow: none;
 }
+
+/* textareas */
 
 .field_textarea_admin
 {
@@ -209,7 +235,7 @@ textarea
 	min-height: 50px;
 }
 
-/* disabled and readonly */
+/* @section 4. disabled and readonly */
 
 .field_button_admin.field_disabled, .field_button_large_admin.field_disabled
 {
@@ -248,7 +274,7 @@ textarea
 	text-shadow: 0 1px #efefef;
 }
 
-/* admin form */
+/* @section 5. admin form */
 
 .form_admin .field_button_backward, .form_admin .field_button_second
 {
@@ -272,7 +298,7 @@ textarea
 	margin: 0.5em 0;
 }
 
-/* space between elements */
+/* @section 6. space between elements */
 
 .box_dialog_admin .field_button_admin, .box_notification_admin .field_button_admin, .form_admin .field_button_admin, .form_admin .field_button_large_admin
 {

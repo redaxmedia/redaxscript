@@ -1,11 +1,21 @@
-/* admin table */
+/**
+ * @tableofcontents
+ *
+ * 1. admin table
+ *    1.1 body
+ *    1.2 head and foot
+ *    1.3 custom elements
+ *    1.4 move control
+ */
+
+/* @section 1. admin table */
 
 .table_admin td, .table_admin th
 {
 	padding: 0.75em;
 }
 
-/* admin table body */
+/* @section 1.1 body */
 
 .table_admin tbody
 {
@@ -49,7 +59,7 @@
 	border-bottom: 0;
 }
 
-/* admin table row disabled */
+/* row disabled */
 
 .table_admin tbody .row_disabled
 {
@@ -57,7 +67,7 @@
 	color: #b9b9b9;
 }
 
-/* admin table row group */
+/* row group */
 
 .table_admin tbody .row_group
 {
@@ -78,7 +88,7 @@
 	padding: 1.25em 0.75em;
 }
 
-/* admin table head and foot */
+/* @section 1.2 head and foot */
 
 .table_admin tfoot, .table_admin thead
 {
@@ -93,7 +103,7 @@
 	text-transform: uppercase;
 }
 
-/* admin table move column icons */
+/*  @section 1.3 custom elements */
 
 .table_admin tfoot .column_move, .table_admin thead .column_move
 {
@@ -122,7 +132,7 @@
 	text-decoration: underline;
 }
 
-/* admin control */
+/* list control admin  */
 
 .table_admin tbody .list_control_admin
 {
@@ -135,7 +145,7 @@
 	visibility: visible;
 }
 
-/* admin table icon flag */
+/* icon flag */
 
 .table_admin tbody .icon_flag
 {
@@ -151,7 +161,7 @@
 	width: 20px;
 }
 
-/* admin table move control */
+/* @section 1.4 move control */
 
 .table_admin .move_up, .table_admin .move_down
 {

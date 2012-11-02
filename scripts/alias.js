@@ -1,8 +1,16 @@
+/**
+ * @tableofcontents
+ *
+ * 1. generate alias
+ * 2. clean alias
+ * 3. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* generate alias */
+	/* @section 1. generate alias */
 
 	$.fn.generateAlias = function (options)
 	{
@@ -48,7 +56,7 @@
 		});
 	};
 
-	/* clean alias */
+	/* @section 2. clean alias */
 
 	$.fn.cleanAlias = function (input)
 	{
@@ -196,7 +204,7 @@
 		return output;
 	};
 
-	/* startup */
+	/* @section 3. startup */
 
 	$(function ()
 	{

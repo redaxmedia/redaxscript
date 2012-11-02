@@ -1,4 +1,19 @@
-/* sidebar list */
+/**
+ * @tableofcontents
+ *
+ * 1. general sidebar list
+ * 2. list breadcrumb
+ * 3. list default
+ * 4. list header
+ * 5. list pagination
+ * 6. list tab default
+ *    6.1 javascript enabled
+ * 7. list search result
+ * 8. tooltip default
+ * 9. space between elements
+ */
+
+/* @section 1. general sidebar list */
 
 .sidebar li
 {
@@ -28,7 +43,7 @@
 	padding-left: 1.5em;
 }
 
-/* breadcrumb list */
+/* @section 2. list breadcrumb */
 
 .list_breadcrumb
 {
@@ -62,7 +77,7 @@
 	margin: 0 0.5em;
 }
 
-/* default list */
+/* @section 3. list default */
 
 .list_default li
 {
@@ -70,7 +85,7 @@
 	list-style: inherit;
 }
 
-/* header list */
+/* @section 4. list header */
 
 .list_header
 {
@@ -103,7 +118,7 @@
 	background: #222;
 }
 
-/* pagination list */
+/* @section 5. list pagination */
 
 .list_pagination
 {
@@ -150,7 +165,7 @@
 	color: #999;
 }
 
-/* default tab */
+/* @section 6. list tab default */
 
 .list_tab_default
 {
@@ -185,7 +200,7 @@
 	text-decoration: none;
 }
 
-/* javascript enabled */
+/* @section 6.1 javascript enabled */
 
 .js .list_tab_default .item_active
 {
@@ -203,7 +218,7 @@
 	color: #555;
 }
 
-/* search list */
+/* @section 7. list search result */
 
 .list_search_result
 {
@@ -227,7 +242,7 @@
 	text-decoration: underline;
 }
 
-/* default tooltip */
+/* @section 8. tooltip default */
 
 .tooltip_default
 {
@@ -248,7 +263,7 @@
 	width: 200px;
 }
 
-/* space between elements */
+/* @section 9. space between elements */
 
 .set_accordion_default + .set_accordion_default
 {

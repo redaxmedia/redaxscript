@@ -1,11 +1,26 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. bottom
+ * 3. content
+ * 4. footer
+ * 5. header
+ * 6. navibar
+ * 7. sidebar
+ * 8. website logo
+ * 9. grid elements
+ * 10. wrapper
+ */
+
+/* @section 1. tag styling */
 
 body
 {
 	background: url('templates/default/images/noise.png') #e2e2e2;
 }
 
-/* bottom */
+/* @section 2. bottom */
 
 .bottom
 {
@@ -25,7 +40,7 @@ body
 	text-decoration: underline;
 }
 
-/* content */
+/* @section 3. content */
 
 .content
 {
@@ -33,7 +48,7 @@ body
 	min-height: 500px;
 }
 
-/* footer */
+/* @section 4. footer */
 
 .footer
 {
@@ -53,7 +68,7 @@ body
 	padding: 2.5em 0;
 }
 
-/* header */
+/* @section 5. header */
 
 .header
 {
@@ -71,14 +86,14 @@ body
 	padding: 1.25em 0;
 }
 
-/* navibar */
+/* @section 6. navibar */
 
 .navibar
 {
 	float: right;
 }
 
-/* sidebar */
+/* @section 7. sidebar */
 
 .sidebar
 {
@@ -88,7 +103,7 @@ body
 	min-height: 500px;
 }
 
-/* website logo */
+/* @section 8. website logo */
 
 .logo_website, .logo_website_effect
 {
@@ -113,7 +128,7 @@ body
 	z-index: 100;
 }
 
-/* grid elements */
+/* @section 9. grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
@@ -127,7 +142,7 @@ body
 	margin-top: 20px;
 }
 
-/* wrapper */
+/* @section 10. wrapper */
 
 .wrapper
 {

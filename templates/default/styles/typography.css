@@ -1,4 +1,23 @@
-/* tag styling */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. descriptions
+ * 3. several links
+ * 4. title accordion default
+ *    4.1 javascript enabled
+ *    4.2 last title accordion
+ * 5. several titles
+ * 6. title content
+ * 7. title content sub
+ * 8. title comment
+ * 9. title dialog default
+ * 10. title extra
+ * 11. title footer
+ * 12. title website
+ */
+
+/* @section 1. tag styling */
 
 a
 {
@@ -27,7 +46,7 @@ pre
 	font: italic 1em/1.5em arial;
 }
 
-/* descriptions */
+/* @section 2. descriptions */
 
 .description_website
 {
@@ -37,7 +56,7 @@ pre
 	text-transform: lowercase;
 }
 
-/* several links */
+/* @section 3. several links */
 
 .link_default
 {
@@ -61,7 +80,7 @@ pre
 	content: '...';
 }
 
-/* default title accordion */
+/* @section 4. title accordion default */
 
 .title_accordion_default
 {
@@ -87,7 +106,7 @@ pre
 	color: #585858;
 }
 
-/* javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .title_accordion_default
 {
@@ -100,14 +119,14 @@ pre
 	cursor: default;
 }
 
-/* last title accordion */
+/* @section 4.2 last title accordion */
 
 .js .set_accordion_last .title_accordion_default
 {
 	border-bottom-width: 1px;
 }
 
-/* several titles */
+/* @section 5. several titles */
 
 .js .title_accordion_default.title_active, .title_dialog_default, .sidebar .title_extra
 {
@@ -127,7 +146,7 @@ pre
 	color: #333;
 }
 
-/* title content */
+/* @section 6. title content */
 
 .title_content
 {
@@ -147,7 +166,7 @@ pre
 	text-decoration: underline;
 }
 
-/* title content sub */
+/* @section 7. title content sub */
 
 .title_content_sub
 {
@@ -162,7 +181,7 @@ pre
 	color: #3197df;
 }
 
-/* title comment */
+/* @section 8. title comment */
 
 .title_comment
 {
@@ -196,7 +215,7 @@ pre
 	color: #888;
 }
 
-/* default title dialog */
+/* @section 9. title dialog default */
 
 .title_dialog_default
 {
@@ -207,7 +226,7 @@ pre
 	padding: 0 1em;
 }
 
-/* title extra */
+/* @section 10. title extra */
 
 .sidebar .title_extra
 {
@@ -222,7 +241,7 @@ pre
 	padding: 0 1em;
 }
 
-/* title footer */
+/* @section 11. title footer */
 
 .title_footer
 {
@@ -236,7 +255,7 @@ pre
 	color: #474747;
 }
 
-/* title website */
+/* @section 12. title website */
 
 .title_website
 {

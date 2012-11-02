@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. analytics
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* analytics */
+	/* @section 1. analytics */
 
 	$.fn.analytics = function (options)
 	{
@@ -46,7 +53,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

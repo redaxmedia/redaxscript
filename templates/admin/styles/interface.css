@@ -1,4 +1,22 @@
-/* admin dock link */
+/**
+ * @tableofcontents
+ *
+ * 1. link dock admin
+ *    1.1 icons
+ * 2. link panel admin
+ *    2.1 logout
+ * 3. list control admin
+ * 4. list panel admin
+ *    4.1 menu area
+ *    4.2 dropdown area
+ *    4.3 list children
+ *    4.4 rounded items
+ *    4.5 left space
+ * 5. list tab admin
+ *    5.1 javascript enabled
+ */
+
+/* @section 1. link dock admin */
 
 .link_dock_admin
 {
@@ -22,7 +40,7 @@
 	background-color: #3b3b3b;
 }
 
-/* admin dock icons */
+/* @section 1.1 icons */
 
 .link_dock_admin.link_unpublish
 {
@@ -39,7 +57,7 @@
 	background-position: -3px -513px;
 }
 
-/* admin panel link */
+/* @section 2. link panel admin */
 
 .link_panel_admin
 {
@@ -69,7 +87,7 @@
 	background: #3b3b3b;
 }
 
-/* admin panel logout */
+/* @section 2.1 logout */
 
 .link_panel_admin.link_logout
 {
@@ -97,7 +115,7 @@
 	box-shadow: 0 0 3px #b90000;
 }
 
-/* admin control list */
+/* @section 3. list control admin */
 
 .list_control_admin li
 {
@@ -154,7 +172,7 @@
 	color: #999;
 }
 
-/* admin panel list */
+/* @section 4. list panel admin */
 
 .list_panel_admin
 {
@@ -169,7 +187,7 @@
 	color: #ccc;
 }
 
-/* admin panel list menu area */
+/* @section 4.1 menu area */
 
 .list_panel_admin li
 {
@@ -182,7 +200,7 @@
 	background-color: #3b3b3b;
 }
 
-/* admin panel list dropdown area */
+/* @section 4.2 dropdown area */
 
 .list_panel_admin > li
 {
@@ -204,7 +222,7 @@
 	background-color: #3b3b3b;
 }
 
-/* panel children list */
+/* @section 4.3 list children */
 
 .list_panel_admin > li > .list_children
 {
@@ -218,7 +236,7 @@
 	border-top-width: 0;
 }
 
-/* first and last children rounded */
+/* @section 4.4 rounded items */
 
 .list_panel_admin ul li:first-child
 {
@@ -241,7 +259,7 @@
 	border-bottom-right-radius: 0.25em;
 }
 
-/* children left space */
+/* @section 4.5 left space */
 
 .list_panel_admin .list_children ul
 {
@@ -249,7 +267,7 @@
 	top: -1px;
 }
 
-/* admin tab */
+/* @section 5. list tab admin */
 
 .list_tab_admin
 {
@@ -280,7 +298,7 @@
 	text-decoration: none;
 }
 
-/* javascript enabled */
+/* @section 5.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {

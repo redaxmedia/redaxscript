@@ -1,4 +1,10 @@
-/* qunit */
+/**
+ * @tableofcontents
+ *
+ * 1. qunit
+ */
+
+/* @section 1. qunit */
 
 r.module.qunit =
 {

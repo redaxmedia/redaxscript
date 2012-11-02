@@ -1,4 +1,10 @@
-/* analytics */
+/**
+ * @tableofcontents
+ *
+ * 1. analytics
+ */
+
+/* @section 1. analytics */
 
 r.module.analytics =
 {

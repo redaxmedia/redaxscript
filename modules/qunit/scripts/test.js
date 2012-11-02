@@ -1,8 +1,14 @@
+/**
+ * @tableofcontents
+ *
+ * 1. test
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* startup */
+	/* @section 1. test */
 
 	$(function ()
 	{

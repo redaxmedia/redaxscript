@@ -1,8 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. debugger
+ * 2. startup
+ */
+
 (function ($)
 {
 	'use strict';
 
-	/* debugger */
+	/* @section 1. debugger */
 
 	$.fn.debugger = function (options)
 	{
@@ -26,7 +33,7 @@
 		});
 	};
 
-	/* startup */
+	/* @section 2. startup */
 
 	$(function ()
 	{

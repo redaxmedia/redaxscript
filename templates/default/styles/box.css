@@ -1,4 +1,22 @@
-/* several boxes */
+/**
+ * @tableofcontents
+ *
+ * 1. box accordion default, box dialog default and box extra
+ * 2. box code
+ * 3. box comment
+ * 4. box default and box tab default
+ *    4.1 javascript enabled
+ * 5. box dialog default
+ * 6. box extra
+ * 7. box infoline
+ * 8. box line
+ * 9. box navibar
+ * 10. box note
+ * 11. box quote
+ * 12. space between elements
+ */
+
+/* @section 1. box accordion default, box dialog default and box extra */
 
 .box_accordion_default, .box_dialog_default, .sidebar .box_extra
 {
@@ -14,7 +32,7 @@
 	padding: 1em 1.5em;
 }
 
-/* box code */
+/* @section 2. box code */
 
 .box_code
 {
@@ -38,7 +56,7 @@
 	text-shadow: 0 1px #f5f5f5;
 }
 
-/* box comment */
+/* @section 3. box comment */
 
 .box_comment
 {
@@ -57,7 +75,7 @@
 	top: -0.75em;
 }
 
-/* default box and tab box */
+/* @section 4. box default and box tab default */
 
 .box_default, .box_tab_default
 {
@@ -66,7 +84,14 @@
 	padding: 1em 1.5em;
 }
 
-/* default box dialog */
+/* @section 4.1 javascript enabled */
+
+.js .box_tab_default
+{
+	height: 450px;
+}
+
+/* @section 5. box dialog default */
 
 .box_dialog_default
 {
@@ -80,7 +105,7 @@
 	color: #474747;
 }
 
-/* box extra */
+/* @section 6. box extra */
 
 .sidebar .box_extra
 {
@@ -97,7 +122,7 @@
 	text-decoration: underline;
 }
 
-/* box infoline */
+/* @section 7. box infoline */
 
 .box_infoline
 {
@@ -139,7 +164,7 @@
 	color: #5e5e5e;
 }
 
-/* box line */
+/* @section 8. box line */
 
 .box_line
 {
@@ -151,7 +176,7 @@
 	margin-top: 3em;
 }
 
-/* box navibar */
+/* @section 9. box navibar */
 
 .box_navibar
 {
@@ -174,7 +199,7 @@
 	text-align: center;
 }
 
-/* box note */
+/* @section 10. box note */
 
 .box_note
 {
@@ -187,7 +212,7 @@
 	text-decoration: underline;
 }
 
-/* box quote */
+/* @section 11. box quote */
 
 .box_quote
 {
@@ -211,16 +236,9 @@
 	top: -0.75em;
 }
 
-/* javascript enabled */
+/* @section 12. space between elements */
 
-.js .box_tab_default
-{
-	height: 450px;
-}
-
-/* space between elements */
-
-.box_note + .box_note, .form_default .box_note
+.box_comment_error, .box_note + .box_note, .form_default .box_note
 {
 	margin-top: 1em;
 }
