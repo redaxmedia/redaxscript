@@ -7,8 +7,9 @@
  * 4. list header
  *    4.1 dropdown area
  *    4.2 children elements
- * 5. list pagination
- * 6. list search result
+ * 5. list footer
+ * 6. list pagination
+ * 7. list search result
  */
 
 /* @section 1. general sidebar list */
@@ -65,11 +66,26 @@
 
 .list_header > li
 {
-	float: left;
+	display: inline-block;
 	font-size: 1.375em;
 	margin-top: 0.75em;
 	margin-right: 1em;
 	text-transform: uppercase;
+}
+
+.list_header > li > a:hover:after
+{
+	-moz-border-radius: 0.125em;
+	-webkit-border-radius: 0.125em;
+	background: #e2e2e2;
+	border-radius: 0.125em;
+	bottom: -0.5em;
+	content: '';
+	display: block;
+	height: 3px;
+	left: 5%;
+	position: absolute;
+	width: 90%;
 }
 
 /* @section 4.2 children elements */
@@ -90,10 +106,36 @@
 	border-radius: 0.5em;
 	box-shadow: 0 2px 5px 2px #000;
 	font-size: 0.875em;
-	padding: 0.5em 1em;
+	min-width: 80%;
+	padding: 0.5em 10%;
 }
 
-/* @section 5. list pagination */
+/* @section 5. list footer */
+
+.list_footer
+{
+	margin-bottom: 4em;
+}
+
+.list_footer, .list_footer a
+{
+	color: #777;
+}
+
+.list_footer a:hover
+{
+	color: #666;
+}
+
+.list_footer li
+{
+	display: inline-block;
+	font-size: 1.375em;
+	margin-left: 1em;
+	text-transform: uppercase;
+}
+
+/* @section 6. list pagination */
 
 .list_pagination
 {
@@ -131,7 +173,7 @@
 	color: #9609ac;
 }
 
-/* @section 6. list search result */
+/* @section 7. list search result */
 
 .list_search_result
 {

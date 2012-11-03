@@ -119,7 +119,7 @@
 
 .list_control_admin li
 {
-	float: left;
+	display: inline-block;
 	font-size: 0.75em;
 	margin-bottom: 0.5em;
 	margin-right: 0.5em;
