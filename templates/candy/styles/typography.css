@@ -6,8 +6,9 @@
  * 3. text footer
  * 4. title content
  * 5. title content sub
- * 6. several titles
- * 7. title website
+ * 6. title comment
+ * 7. several titles
+ * 8. title website
  */
 
 /* @section 1. tag styling */
@@ -102,7 +103,16 @@ pre
 	margin-top: 1em;
 }
 
-/* @section 6. several titles */
+/* @section 6. title comment */
+
+.title_comment
+{
+	font-size: 1.375em;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+/* @section 7. several titles */
 
 .title_dialog_default, .sidebar .title_extra
 {
@@ -124,7 +134,7 @@ pre
 	text-transform: uppercase;
 }
 
-/* @section 7. title website */
+/* @section 8. title website */
 
 .title_website
 {
