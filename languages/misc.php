@@ -10,6 +10,7 @@ $l['de'] = 'Deutsch';
 $l['en'] = 'English';
 $l['es'] = 'Español';
 $l['et'] = 'Eesti';
+$l['fa'] = 'فارسی';
 $l['fr'] = 'Français';
 $l['he'] = 'עברית';
 $l['hu'] = 'Magyar';
@@ -32,7 +33,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = '1.1';
+$l['redaxscript_version'] = 'Nightly build';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /* shortcut */

@@ -86,25 +86,14 @@ function template_detection()
 			$template = s('template');
 		}
 
-		/* retrieve template from content */
+		/* retrieve template from last content */
 
 		if (LAST_ID)
 		{
-			$last_template = retrieve('template', LAST_TABLE, 'id', LAST_ID);
-			if ($last_template)
+			$retrieve_template = retrieve('template', LAST_TABLE, 'id', LAST_ID);
+			if ($retrieve_template)
 			{
-				$template = $last_template;
-			}
-		}
-
-		/* else use homepage template */
-
-		else if (FULL_STRING == '' || (LOGGED_IN == TOKEN && FULL_STRING == 'admin') && s('homepage') > 0)
-		{
-			$homepage_template = retrieve('template', 'articles', 'id', s('homepage'));
-			if ($homepage_template)
-			{
-				$template = $homepage_template;
+				$template = $retrieve_template;
 			}
 		}
 	}
