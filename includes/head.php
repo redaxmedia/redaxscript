@@ -5,11 +5,11 @@
 function head()
 {
 	hook(__FUNCTION__ . '_start');
-	if (LAST_TABLE)
+	if (LAST_ID)
 	{
 		/* query contents */
 
-		$query = 'SELECT description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
+		$query = 'SELECT description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE id = \'' . LAST_ID . '\' && status = 1';
 		$result = mysql_query($query);
 		if ($result)
 		{

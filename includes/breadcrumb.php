@@ -138,7 +138,7 @@ function breadcrumb()
 
 	/* overwrite if home */
 
-	else if (FULL_STRING == '')
+	if (FULL_STRING == '')
 	{
 		$breadcrumb = '<li>' . l('home') . '</li>';
 	}

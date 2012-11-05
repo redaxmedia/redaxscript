@@ -88,9 +88,9 @@ function template_detection()
 
 		/* retrieve template from content */
 
-		if (LAST_TABLE)
+		if (LAST_ID)
 		{
-			$last_template = retrieve('template', LAST_TABLE, 'alias', LAST_PARAMETER);
+			$last_template = retrieve('template', LAST_TABLE, 'id', LAST_ID);
 			if ($last_template)
 			{
 				$template = $last_template;

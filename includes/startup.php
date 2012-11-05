@@ -75,41 +75,6 @@ function startup()
 	define('LAST_SUB_PARAMETER', get_parameter('last_sub'));
 	define('TOKEN_PARAMETER', get_parameter('token'));
 
-	/* define tables */
-
-	if (FIRST_PARAMETER)
-	{
-		define('FIRST_TABLE', query_table(FIRST_PARAMETER));
-	}
-	else
-	{
-		define('FIRST_TABLE', '');
-	}
-	if (FIRST_TABLE)
-	{
-		define('SECOND_TABLE', query_table(SECOND_PARAMETER));
-	}
-	else
-	{
-		define('SECOND_TABLE', '');
-	}
-	if (SECOND_TABLE)
-	{
-		define('THIRD_TABLE', query_table(THIRD_PARAMETER));
-	}
-	else
-	{
-		define('THIRD_TABLE', '');
-	}
-	if (LAST_PARAMETER)
-	{
-		define('LAST_TABLE', query_table(LAST_PARAMETER));
-	}
-	else
-	{
-		define('LAST_TABLE', '');
-	}
-
 	/* define strings */
 
 	define('FULL_STRING', get_string(0));
@@ -132,6 +97,114 @@ function startup()
 	if (DB_CONNECTED == 0 && file_exists('install.php'))
 	{
 		define('REFRESH_STRING', ROOT . '/install.php');
+	}
+
+	/* define tables */
+
+	if (FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+	{
+		/* check for homepage */
+
+		if (s('homepage') > 0)
+		{
+			$table = 'articles';
+			$id = s('homepage');
+		}
+
+		/* else fallback */
+
+		else
+		{
+			$table = 'categories';
+			$id =  0;
+
+			/* check order */
+
+			if (s('order') == 'asc')
+			{
+				$function = 'min';
+			}
+			else if (s('order') == 'desc')
+			{
+				$function = 'max';
+			}
+			$rank = query_plumb('rank', $table, $function);
+
+			/* if category is published */
+
+			if ($rank)
+			{
+				$status = retrieve('status', $table, 'rank', $rank);
+				if ($status == 1)
+				{
+					$id = retrieve('id', $table, 'rank', $rank);
+				}
+			}
+		}
+		define('FIRST_TABLE', $table);
+		define('SECOND_TABLE', '');
+		define('THIRD_TABLE', '');
+		define('LAST_TABLE', $table);
+	}
+	else
+	{
+		if (FIRST_PARAMETER)
+		{
+			define('FIRST_TABLE', query_table(FIRST_PARAMETER));
+		}
+		else
+		{
+			define('FIRST_TABLE', '');
+		}
+		if (FIRST_TABLE)
+		{
+			define('SECOND_TABLE', query_table(SECOND_PARAMETER));
+		}
+		else
+		{
+			define('SECOND_TABLE', '');
+		}
+		if (SECOND_TABLE)
+		{
+			define('THIRD_TABLE', query_table(THIRD_PARAMETER));
+		}
+		else
+		{
+			define('THIRD_TABLE', '');
+		}
+		if (LAST_PARAMETER)
+		{
+			define('LAST_TABLE', query_table(LAST_PARAMETER));
+		}
+		else
+		{
+			define('LAST_TABLE', '');
+		}
+		if (LAST_TABLE)
+		{
+			$id = retrieve('id', LAST_TABLE, 'alias', LAST_PARAMETER);
+		}
+	}
+
+	/* define ids */
+
+	if (LAST_TABLE == 'categories')
+	{
+		define('CATEGORY', $id);
+		define('ARTICLE', '');
+		define('LAST_ID', $id);
+	}
+	else if (LAST_TABLE == 'articles')
+	{
+		define('CATEGORY', '');
+		define('ARTICLE', $id);
+		define('LAST_ID', $id);
+	}
+	else
+	{
+		define('CATEGORY', '');
+		define('ARTICLE', '');
+		define('LAST_ID', '');
 	}
 
 	/* define user */

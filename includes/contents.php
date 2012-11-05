@@ -6,67 +6,18 @@ function contents()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* if empty full string */
+	/* define variables */
 
-	if (FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+	if (ARTICLE)
 	{
-		/* check for homepage */
-
-		if (s('homepage') > 0)
-		{
-			$table = 'articles';
-			$id = $article = s('homepage');
-		}
-
-		/* else check for category */
-
-		else
-		{
-			$table = 'categories';
-			$id = $category = 0;
-
-			/* check order settings */
-
-			if (s('order') == 'asc')
-			{
-				$function = 'min';
-			}
-			else if (s('order') == 'desc')
-			{
-				$function = 'max';
-			}
-			$rank = query_plumb('rank', 'categories', $function);
-
-			/* if category is published */
-
-			if ($rank)
-			{
-				$status = retrieve('status', 'categories', 'rank', $rank);
-				if ($status == 1)
-				{
-					$id = $category = retrieve('id', 'categories', 'rank', $rank);
-				}
-			}
-		}
+		$article = $id = ARTICLE;
+	}
+	if (CATEGORY)
+	{
+		$category = $id = CATEGORY;
 	}
 
-	/* if last table */
-
-	else if (LAST_TABLE)
-	{
-		$table = LAST_TABLE;
-		$id = retrieve('id', LAST_TABLE, 'alias', LAST_PARAMETER);
-		if (LAST_TABLE == 'categories')
-		{
-			$category = $id;
-		}
-		else if (LAST_TABLE == 'articles')
-		{
-			$article = $id;
-		}
-	}
-
-	/* query related to type */
+	/* query contents */
 
 	$query = 'SELECT id, title, author, text, language, date, headline, infoline, comments, access FROM ' . PREFIX . 'articles WHERE status = 1';
 	if ($article)
@@ -102,7 +53,6 @@ function contents()
 	}
 	$result = mysql_query($query);
 	$num_rows_active = mysql_num_rows($result);
-	$active_string = build_string($table, $id);
 
 	/* handle error */
 
@@ -114,7 +64,7 @@ function contents()
 	{
 		$error = l('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || FULL_STRING && $active_string != FULL_TOP_STRING && check_alias(FULL_STRING, 1) == 0)
+	else if ($result == '' || $num_rows_active == '' || CATEGORY == '' && ARTICLE == '' && check_alias(FULL_STRING, 1) == 0)
 	{
 		$error = l('content_not_found');
 	}
@@ -222,7 +172,8 @@ function contents()
 		{
 			if ($comments > 0)
 			{
-				comments($article, $active_string);
+				$string = build_string('articles', $id);
+				comments($article, $string);
 			}
 
 			/* comment form */
@@ -274,10 +225,6 @@ function extras($filter = '')
 
 	if ($result)
 	{
-		if (LAST_TABLE)
-		{
-			$active = retrieve('id', LAST_TABLE, 'alias', LAST_PARAMETER);
-		}
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
@@ -294,7 +241,10 @@ function extras($filter = '')
 						$$key = stripslashes($value);
 					}
 				}
-				if ($category == $active || $article == $active || ($category == 0 && $article == 0))
+
+				/* show if cagegory or article matched */
+
+				if ($category == CATEGORY || $article == ARTICLE || ($category == 0 && $article == 0))
 				{
 					/* collect headline output */
 
