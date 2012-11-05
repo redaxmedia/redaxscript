@@ -6,27 +6,16 @@ function contents()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* define variables */
-
-	if (ARTICLE)
-	{
-		$article = $id = ARTICLE;
-	}
-	if (CATEGORY)
-	{
-		$category = $id = CATEGORY;
-	}
-
 	/* query contents */
 
 	$query = 'SELECT id, title, author, text, language, date, headline, infoline, comments, access FROM ' . PREFIX . 'articles WHERE status = 1';
-	if ($article)
+	if (ARTICLE)
 	{
-		$query .= ' && id = ' . $article;
+		$query .= ' && id = ' . ARTICLE;
 	}
-	else if ($category > -1)
+	else if (CATEGORY)
 	{
-		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . $category . ' ORDER BY rank ' . s('order');
+		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
 		$result = mysql_query($query);
 		if ($result)
 		{
@@ -60,7 +49,7 @@ function contents()
 	{
 		$error = l('database_failed');
 	}
-	else if ($category > -1 && $num_rows == '')
+	else if (CATEGORY && $num_rows == '')
 	{
 		$error = l('article_no');
 	}
@@ -168,19 +157,19 @@ function contents()
 
 		/* call comments as needed */
 
-		if ($article)
+		if (ARTICLE)
 		{
 			if ($comments > 0)
 			{
-				$string = build_string('articles', $id);
-				comments($article, $string);
+				$string = build_string('articles', ARTICLE);
+				comments(ARTICLE, $string);
 			}
 
 			/* comment form */
 
 			if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
 			{
-				comment_form($article, $language, $access);
+				comment_form(ARTICLE, $language, $access);
 			}
 		}
 	}
@@ -189,7 +178,8 @@ function contents()
 
 	if ($sub_maximum > 1 && s('pagination') == 1)
 	{
-		pagination($sub_active, $sub_maximum, $active_string);
+		$string = build_string('categories', CATEGORY);
+		pagination($sub_active, $sub_maximum, $string);
 	}
 	hook(__FUNCTION__ . '_end');
 }
