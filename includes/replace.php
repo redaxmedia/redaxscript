@@ -36,20 +36,13 @@ function minify($type = '', $input = '')
 {
 	/* replace comments */
 
-	$output = preg_replace('/\/\*\.*.*?\.*\*\//', '', $input);
+	$output = preg_replace('/\/\*([\s\S]*?)\*\//', '', $input);
 
-	/* replace newlines */
+	/* replace tabs and newlines */
 
-	if ($type == 'styles')
-	{
-		$output = preg_replace('/\s+/', ' ', $output);
-	}
-	else if ($type == 'scripts')
-	{
-		$output = preg_replace('/\t+/', '', $output);
-		$output = preg_replace('/\r+/', PHP_EOL, $output);
-		$output = preg_replace('/\n+/', PHP_EOL, $output);
-	}
+	$output = preg_replace('/\t+/', '', $output);
+	$output = preg_replace('/\r+/', PHP_EOL, $output);
+	$output = preg_replace('/\n+/', PHP_EOL, $output);
 
 	/* general minify */
 
@@ -75,7 +68,7 @@ function minify($type = '', $input = '')
 		', '
 	), ',', $output);
 
-	/* additional minify for scripts */
+	/* additional minify if scripts */
 
 	if ($type == 'scripts')
 	{
