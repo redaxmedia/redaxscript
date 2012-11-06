@@ -51,15 +51,14 @@
 
 /* @section 4. list header */
 
-.list_header a, .list_header a:hover
+.list_header, .list_header a
 {
 	color: #c6c6c6;
-	text-shadow: 0 1px #000;
 }
 
 .list_header a:hover
 {
-	text-decoration: none;
+	color: #d6d6d6;
 }
 
 /* @section 4.1 dropdown area */
@@ -67,25 +66,38 @@
 .list_header > li
 {
 	display: inline-block;
-	font-size: 1.375em;
+	font: 1.375em/1.75em marmelad, serif;
 	margin-top: 0.75em;
-	margin-right: 1em;
+	margin-right: 0.5em;
 	text-transform: uppercase;
+	text-shadow: 0 1px #000;
 }
 
-.list_header > li > a:hover:after
+.list_header > li > a
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
+	padding: 0 0.5em;
+	text-decoration: none;
+}
+
+.list_header > .item_active > a
+{
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
 	background: #e2e2e2;
-	border-radius: 0.125em;
-	bottom: -0.5em;
-	content: '';
-	display: block;
-	height: 3px;
-	left: 5%;
-	position: absolute;
-	width: 90%;
+	background: -moz-linear-gradient(top, #fff, #e2e2e2);
+	background: -ms-linear-gradient(top, #fff, #e2e2e2);
+	background: -o-linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
+	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
+	background: linear-gradient(top, #fff, #e2e2e2);
+	border-radius: 0.25em;
+	color: #474747;
+	text-shadow: 0 1px #fff;
+}
+
+.list_header > .item_active > a:hover
+{
+	color: #9609ac;
 }
 
 /* @section 4.2 children elements */
@@ -107,7 +119,12 @@
 	box-shadow: 0 2px 5px 2px #000;
 	font-size: 0.875em;
 	min-width: 80%;
-	padding: 0.5em 10%;
+	padding: 0 10%;
+}
+
+.list_header > li > .list_children li
+{
+	margin: 0.125em 0;
 }
 
 /* @section 5. list footer */

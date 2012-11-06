@@ -86,7 +86,7 @@ function template_detection()
 			$template = s('template');
 		}
 
-		/* retrieve template from last content */
+		/* retrieve template from content */
 
 		if (LAST_ID)
 		{
