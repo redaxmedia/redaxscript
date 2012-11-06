@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. box accordion default, box dialog default and box extra
+ * 1. several boxes
  * 2. box code
  * 3. box comment
  * 4. box default and box tab default
@@ -16,7 +16,7 @@
  * 12. space between elements
  */
 
-/* @section 1. box accordion default, box dialog default and box extra */
+/* @section 1. several boxes */
 
 .box_accordion_default, .box_dialog_default, .sidebar .box_extra
 {
