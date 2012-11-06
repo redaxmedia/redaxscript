@@ -5,11 +5,11 @@
 function head()
 {
 	hook(__FUNCTION__ . '_start');
-	if (LAST_ID)
+	if (LAST_PARAMETER)
 	{
 		/* query contents */
 
-		$query = 'SELECT description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE id = \'' . LAST_ID . '\' && status = 1';
+		$query = 'SELECT description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
 		$result = mysql_query($query);
 		if ($result)
 		{
@@ -62,9 +62,16 @@ function head()
 		$keywords = s('keywords');
 	}
 
-	/* administration */
+	/* if title constant */
 
-	if (FIRST_PARAMETER == 'admin')
+	if (TITLE)
+	{
+		$breadcrumb = TITLE;
+	}
+
+	/* else if administration */
+
+	else if (FIRST_PARAMETER == 'admin')
 	{
 		if (l(ADMIN_PARAMETER))
 		{
@@ -76,7 +83,7 @@ function head()
 		}
 	}
 
-	/* overwrite if default alias */
+	/* else if default alias */
 
 	else if (check_alias(FIRST_PARAMETER, 1) == 1)
 	{
@@ -85,13 +92,6 @@ function head()
 			$default_title = l(FIRST_PARAMETER);
 		}
 		$breadcrumb = $default_title;
-	}
-
-	/* overwrite if title constant */
-
-	if (TITLE)
-	{
-		$breadcrumb = TITLE;
 	}
 
 	/* query title from content */
@@ -118,9 +118,9 @@ function head()
 		}
 	}
 
-	/* overwrite if home */
+	/* if empty full string */
 
-	else if (FULL_STRING == '')
+	if (FULL_STRING == '')
 	{
 		$breadcrumb = l('home');
 	}

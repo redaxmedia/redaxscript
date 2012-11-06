@@ -6,9 +6,16 @@ function breadcrumb()
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* administration */
+	/* if title constant */
 
-	if (FIRST_PARAMETER == 'admin')
+	if (TITLE)
+	{
+		$breadcrumb = '<li>' . TITLE . '</li>';
+	}
+
+	/* else if administration */
+
+	else if (FIRST_PARAMETER == 'admin')
 	{
 		if (l(ADMIN_PARAMETER))
 		{
@@ -52,7 +59,7 @@ function breadcrumb()
 		}
 	}
 
-	/* overwrite if default alias */
+	/* else if default alias */
 
 	else if (check_alias(FIRST_PARAMETER, 1) == 1)
 	{
@@ -76,13 +83,6 @@ function breadcrumb()
 			}
 			$breadcrumb .= '</li>';
 		}
-	}
-
-	/* overwrite if title constant */
-
-	if (TITLE)
-	{
-		$breadcrumb = '<li>' . TITLE . '</li>';
 	}
 
 	/* query title from content */
@@ -136,7 +136,7 @@ function breadcrumb()
 		}
 	}
 
-	/* overwrite if home */
+	/* if empty full string */
 
 	if (FULL_STRING == '')
 	{
