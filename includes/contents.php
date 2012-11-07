@@ -53,7 +53,7 @@ function contents()
 	{
 		$error = l('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || CATEGORY == '' && ARTICLE == '' && check_alias(FULL_STRING, 1) == 0)
+	else if ($result == '' || $num_rows_active == '' || LAST_ID == '' && check_alias(FULL_STRING, 1) == 0)
 	{
 		$error = l('content_not_found');
 	}
