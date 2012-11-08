@@ -77,7 +77,7 @@ function build_breadcrumb()
 			$breadcrumb[$key]['title'] = l('administration');
 			if (ADMIN_PARAMETER)
 			{
-				$breadcrumb[$key]['string'] = 'admin'; 
+				$breadcrumb[$key]['string'] = 'admin';
 			}
 
 			/* join admin title */
@@ -100,6 +100,7 @@ function build_breadcrumb()
 				}
 			}
 		}
+
 		/* else if default alias */
 
 		else if (check_alias(FIRST_PARAMETER, 1) == 1)

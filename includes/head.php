@@ -93,9 +93,9 @@ function head()
 
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
-	
+
 	/* collect title output */
-	
+
 	if ($title || $description)
 	{
 		$output .= '<title>' . truncate($title . $title_divider . $description, 70) . '</title>' . PHP_EOL;
