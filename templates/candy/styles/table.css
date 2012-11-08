@@ -1,0 +1,12 @@
+/**
+ * @tableofcontents
+ *
+ * 1. table default
+ */
+
+/* @section 1. table default */
+
+.table_default td, .table_default th
+{
+	padding: 0.75em;
+}

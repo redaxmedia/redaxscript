@@ -1,0 +1,22 @@
+/**
+ * @tableofcontents
+ *
+ * 1. image
+ * 2. player
+ */
+
+/* @section 1. image */
+
+.image
+{
+	max-width: 100%;
+}
+
+/* @section 2. player */
+
+.player
+{
+	height: 480px;
+	max-width: 100%;
+	width: 640px;
+}
