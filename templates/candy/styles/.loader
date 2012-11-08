@@ -13,8 +13,9 @@
 12 = templates/candy/styles/interface.css
 13 = templates/candy/styles/media.css
 14 = templates/candy/styles/note.css
-15 = templates/candy/styles/typography.css
-16 = templates/candy/styles/query.css
+15 = templates/candy/styles/table.css
+16 = templates/candy/styles/typography.css
+17 = templates/candy/styles/query.css
 
 [firefox]
 1 = styles/firefox.css
