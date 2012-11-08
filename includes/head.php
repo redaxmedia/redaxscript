@@ -9,7 +9,7 @@ function head()
 	{
 		/* query contents */
 
-		$query = 'SELECT description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
+		$query = 'SELECT title, description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
 		$result = mysql_query($query);
 		if ($result)
 		{
@@ -34,13 +34,19 @@ function head()
 		}
 	}
 
-	/* build metadata strings */
+	/* prepare title */
 
-	$title = s('title');
-	if ($title)
+	if (TITLE)
 	{
-		$title_divider = ' - ';
+		$title = TITLE;
 	}
+	else if ($title == '')
+	{
+		$title = s('title');
+	}
+
+	/* prepare description */
+
 	if (DESCRIPTION)
 	{
 		$description = DESCRIPTION;
@@ -49,10 +55,16 @@ function head()
 	{
 		$description = s('description');
 	}
-	if ($description)
+
+	/* description divider */
+
+	if ($title && $description)
 	{
 		$description_divider = ' - ';
 	}
+
+	/* prepare keywords */
+
 	if (KEYWORDS)
 	{
 		$keywords = KEYWORDS;
@@ -62,94 +74,13 @@ function head()
 		$keywords = s('keywords');
 	}
 
-	/* if title constant */
-
-	if (TITLE)
-	{
-		$breadcrumb = TITLE;
-	}
-
-	/* else if administration */
-
-	else if (FIRST_PARAMETER == 'admin')
-	{
-		if (l(ADMIN_PARAMETER))
-		{
-			$breadcrumb = l(ADMIN_PARAMETER);
-			if (l(TABLE_PARAMETER))
-			{
-				$breadcrumb .= ' - ' . l(TABLE_PARAMETER);
-			}
-		}
-	}
-
-	/* else if default alias */
-
-	else if (check_alias(FIRST_PARAMETER, 1) == 1)
-	{
-		if (l(FIRST_PARAMETER))
-		{
-			$default_title = l(FIRST_PARAMETER);
-		}
-		$breadcrumb = $default_title;
-	}
-
-	/* query title from content */
-
-	else if (FIRST_TABLE)
-	{
-		/* join first title */
-
-		$first_title = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
-		$breadcrumb = $first_title;
-		if (SECOND_TABLE)
-		{
-			/* join second title */
-
-			$second_title = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
-			$breadcrumb .= ' - ' . $second_title;
-			if (THIRD_TABLE)
-			{
-				/* join third title */
-
-				$third_title = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
-				$breadcrumb .= ' - ' . $third_title;
-			}
-		}
-	}
-
-	/* if empty full string */
-
-	if (FULL_STRING == '')
-	{
-		$breadcrumb = l('home');
-	}
-
-	/* logged in */
-
-	if (LOGGED_IN == TOKEN)
-	{
-		$breadcrumb_admin = l('administration');
-		if ($breadcrumb)
-		{
-			$breadcrumb_admin .= ' - ';
-		}
-	}
-
-	/* handle error */
-
-	else if ($breadcrumb == '')
-	{
-		$breadcrumb = l('error');
-	}
-
-	/* overwrite robots */
+	/* prepare robots */
 
 	if (ROBOTS)
 	{
 		$robots = ROBOTS;
 	}
-	else if (DB_CONNECTED == 0 || FIRST_PARAMETER && FIRST_TABLE == '' || SECOND_PARAMETER && SECOND_TABLE == '' || THIRD_PARAMETER && THIRD_TABLE == '' || LAST_TABLE && $check_access == 0)
+	else if (LAST_ID == '' || LAST_ID && $check_access == 0)
 	{
 		$robots = 'none';
 	}
@@ -158,11 +89,14 @@ function head()
 		$robots = s('robots');
 	}
 
-	/* collect output */
+	/* collect meta output */
 
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
-	$output .= '<title>' . $title . $title_divider . $breadcrumb_admin . $breadcrumb . $description_divider . $description . '</title>' . PHP_EOL;
+	if ($title || $description)
+	{
+		$output .= '<title>' . truncate($title . $description_divider . $description, 70) . '</title>' . PHP_EOL;
+	}
 
 	/* collect refresh string */
 

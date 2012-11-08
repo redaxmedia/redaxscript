@@ -104,9 +104,9 @@
 
 .list_header > li > .list_children
 {
-	-moz-border-radius: 0.5em;
+	-moz-border-radius: 0.375em;
 	-moz-box-shadow: 0 2px 5px 2px #000;
-	-webkit-border-radius: 0.5em;
+	-webkit-border-radius: 0.375em;
 	-webkit-box-shadow: 0 2px 5px 2px #000;
 	background: #1f1f1f;
 	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
@@ -115,7 +115,7 @@
 	background: url('templates/candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
 	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
-	border-radius: 0.5em;
+	border-radius: 0.375em;
 	box-shadow: 0 2px 5px 2px #000;
 	font-size: 0.875em;
 	min-width: 80%;
