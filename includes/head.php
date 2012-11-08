@@ -60,7 +60,7 @@ function head()
 
 	if ($title && $description)
 	{
-		$description_divider = ' - ';
+		$title_divider = ' - ';
 	}
 
 	/* prepare keywords */
@@ -93,9 +93,12 @@ function head()
 
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
+	
+	/* collect title output */
+	
 	if ($title || $description)
 	{
-		$output .= '<title>' . truncate($title . $description_divider . $description, 70) . '</title>' . PHP_EOL;
+		$output .= '<title>' . truncate($title . $title_divider . $description, 70) . '</title>' . PHP_EOL;
 	}
 
 	/* collect refresh string */
