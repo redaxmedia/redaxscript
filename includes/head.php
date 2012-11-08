@@ -60,7 +60,7 @@ function head()
 
 	if ($title && $description)
 	{
-		$title_divider = ' - ';
+		$divider = s('divider');
 	}
 
 	/* prepare keywords */
@@ -98,7 +98,7 @@ function head()
 
 	if ($title || $description)
 	{
-		$output .= '<title>' . truncate($title . $title_divider . $description, 70) . '</title>' . PHP_EOL;
+		$output .= '<title>' . truncate($title . $divider . $description, 70) . '</title>' . PHP_EOL;
 	}
 
 	/* collect refresh string */
