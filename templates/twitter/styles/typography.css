@@ -37,7 +37,8 @@ p
 
 pre
 {
-	font: italic 1em/1.5em arial;
+	font: 1em/1.5em monospace, arial;
+	white-space: pre-wrap;
 }
 
 /* @section 2. title accordion default */
