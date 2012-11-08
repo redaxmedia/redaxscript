@@ -178,9 +178,9 @@ function breadcrumb()
 	
 	/* debug */
 
-	echo '<pre>';
-	var_dump(build_breadcrumb());
-	echo '</pre>';
+	//echo '<pre>';
+	//var_dump(build_breadcrumb());
+	//echo '</pre>';
 }
 
 /* build breadcrumb */
