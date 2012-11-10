@@ -118,8 +118,8 @@ function registration_post()
 
 		/* send login information */
 
-		$login_string = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$login_link = anchor_element('', '', '', $login_string, $login_string);
+		$login_route = ROOT . '/' . REWRITE_ROUTE . 'login';
+		$login_link = anchor_element('', '', '', $login_route, $login_route);
 		$body_array = array(
 			l('name') => $name . ' (' . MY_IP . ')',
 			l('user') => $user,

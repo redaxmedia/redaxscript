@@ -151,16 +151,16 @@ function navigation_list($table = '', $options = '')
 
 				if ($table == 'categories' && $parent == 0 || $table == 'articles' && $category == 0)
 				{
-					$string = $alias;
+					$route = $alias;
 				}
 				else
 				{
-					$string = build_route($table, $id);
+					$route = build_route($table, $id);
 				}
 
 				/* collect item output */
 
-				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $string, $description);
+				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $route, $description);
 
 				/* collect children list output */
 

@@ -43,7 +43,7 @@ function feed_generator($table = '')
 	if ($_GET['l'])
 	{
 		$language = LANGUAGE;
-		$language_string = LANGUAGE_ROUTE;
+		$language_route = LANGUAGE_ROUTE;
 	}
 
 	/* query table contents */
@@ -59,13 +59,13 @@ function feed_generator($table = '')
 		$author = s('author');
 		$email = s('email');
 		$copyright = s('copyright');
-		$string = ROOT . '/' . REWRITE_ROUTE . FULL_ROUTE . $language_string . $language;
+		$route = ROOT . '/' . REWRITE_ROUTE . FULL_ROUTE . $language_route . $language;
 
 		/* collect feed header output */
 
 		$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>' . PHP_EOL;
 		$output .= '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL;
-		$output .= '<id>' . $string . '</id>' . PHP_EOL;
+		$output .= '<id>' . $route . '</id>' . PHP_EOL;
 		if ($title)
 		{
 			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
@@ -74,7 +74,7 @@ function feed_generator($table = '')
 		{
 			$output .= '<subtitle type="text">' . $description . '</subtitle>' . PHP_EOL;
 		}
-		$output .= '<link type="application/atom+xml" href="' . $string . '" rel="self" />' . PHP_EOL;
+		$output .= '<link type="application/atom+xml" href="' . $route . '" rel="self" />' . PHP_EOL;
 		$output .= '<updated>' . date('c', strtotime(NOW)) . '</updated>' . PHP_EOL;
 		if ($author || $email)
 		{
@@ -118,23 +118,23 @@ function feed_generator($table = '')
 
 			/* build route */
 
-			$string = ROOT . '/' . REWRITE_ROUTE;
+			$route = ROOT . '/' . REWRITE_ROUTE;
 			if ($table == 'articles' && $category == 0)
 			{
-				$string .= $alias;
+				$route .= $alias;
 			}
 			else
 			{
-				$string .= build_route($table, $id);
+				$route .= build_route($table, $id);
 			}
-			$string .= $language_string;
+			$route .= $language_route;
 
 			/* collect entry output */
 
 			$output .= '<entry>' . PHP_EOL;
-			$output .= '<id>' . $string . '</id>' . PHP_EOL;
+			$output .= '<id>' . $route . '</id>' . PHP_EOL;
 			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
-			$output .= '<link href="' . $string . '" />' . PHP_EOL;
+			$output .= '<link href="' . $route . '" />' . PHP_EOL;
 			$output .= '<updated>' . $date . '</updated>' . PHP_EOL;
 			if ($description)
 			{

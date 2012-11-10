@@ -91,8 +91,8 @@ function password_reset_post()
 	{
 		/* send new password */
 
-		$login_string = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$login_link = anchor_element('', '', '', $login_string, $login_string);
+		$login_route = ROOT . '/' . REWRITE_ROUTE . 'login';
+		$login_link = anchor_element('', '', '', $login_route, $login_route);
 		$body_array = array(
 			l('password_new') => $password,
 			code1 => '<br />',
@@ -116,13 +116,13 @@ function password_reset_post()
 		}
 		if ($post_id && $post_password)
 		{
-			$back_string = 'password_reset/' . $post_id . '/' . $post_password;
+			$back_route = 'password_reset/' . $post_id . '/' . $post_password;
 		}
 		else
 		{
-			$back_string = 'reminder';
+			$back_route = 'reminder';
 		}
-		notification(l('error_occurred'), $error, l('back'), $back_string);
+		notification(l('error_occurred'), $error, l('back'), $back_route);
 	}
 
 	/* handle success */

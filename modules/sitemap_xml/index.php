@@ -42,16 +42,16 @@ function sitemap_xml()
 
 			if ($parent == 0)
 			{
-				$string = $alias;
+				$route = $alias;
 			}
 			else
 			{
-				$string = build_route('categories', $id);
+				$route = build_route('categories', $id);
 			}
 
 			/* collect output */
 
-			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
+			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $route . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}
 	}
 
@@ -78,13 +78,13 @@ function sitemap_xml()
 
 			if ($category == 0)
 			{
-				$string = $alias;
+				$route = $alias;
 			}
 			else
 			{
-				$string = build_route('articles', $id);
+				$route = build_route('articles', $id);
 			}
-			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
+			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $route . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}
 	}
 	$output .= '</urlset>';

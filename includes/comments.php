@@ -2,7 +2,7 @@
 
 /* comments */
 
-function comments($article = '', $string = '')
+function comments($article = '', $route = '')
 {
 	hook(__FUNCTION__ . '_start');
 
@@ -111,7 +111,7 @@ function comments($article = '', $string = '')
 
 	if ($sub_maximum > 1 && s('pagination') == 1)
 	{
-		pagination($sub_active, $sub_maximum, $string);
+		pagination($sub_active, $sub_maximum, $route);
 	}
 	hook(__FUNCTION__ . '_end');
 }
@@ -206,7 +206,7 @@ function comment_post()
 		}
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
-		$string = build_route('articles', $article);
+		$route = build_route('articles', $article);
 	}
 
 	/* validate post */
@@ -257,8 +257,8 @@ function comment_post()
 			{
 				$url_link = anchor_element('external', '', '', $url, $url);
 			}
-			$view_string = ROOT . '/' . REWRITE_ROUTE . $string;
-			$view_link = anchor_element('', '', '', $view_string, $view_string);
+			$view_route = ROOT . '/' . REWRITE_ROUTE . $route;
+			$view_link = anchor_element('', '', '', $view_route, $view_route);
 			$body_array = array(
 				l('author') => $author . ' (' . MY_IP . ')',
 				l('email') => $email_link,
@@ -299,14 +299,14 @@ function comment_post()
 		{
 			$_SESSION[ROOT . '/attack_blocked']++;
 		}
-		notification(l('error_occurred'), $error, l('back'), $string);
+		notification(l('error_occurred'), $error, l('back'), $route);
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('operation_completed'), $success, l('continue'), $string);
+		notification(l('operation_completed'), $success, l('continue'), $route);
 	}
 	$_SESSION[ROOT . '/comment'] = '';
 }

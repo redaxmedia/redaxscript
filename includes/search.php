@@ -121,16 +121,16 @@ function search_post()
 
 					if ($category == 0)
 					{
-						$string = $alias;
+						$route = $alias;
 					}
 					else
 					{
-						$string = build_route('articles', $id);
+						$route = build_route('articles', $id);
 					}
 
 					/* collect item output */
 
-					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $string, $description) . '<span class="date_search_result">' . $date . '</span></li>';
+					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $route, $description) . '<span class="date_search_result">' . $date . '</span></li>';
 				}
 				else
 				{

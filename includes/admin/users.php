@@ -186,7 +186,7 @@ function admin_users_form()
 		}
 		$wording_headline = $name;
 		$wording_submit = l('save');
-		$string = 'admin/process/users/' . $id;
+		$route = 'admin/process/users/' . $id;
 	}
 
 	/* else define fields for new user */
@@ -197,7 +197,7 @@ function admin_users_form()
 		$groups = 0;
 		$wording_headline = l('user_new');
 		$wording_submit = l('create');
-		$string = 'admin/process/users';
+		$route = 'admin/process/users';
 		$class_required = ' js_required field_note';
 		$code_required = ' required="required"';
 	}
@@ -214,7 +214,7 @@ function admin_users_form()
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $string . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect user set */
@@ -282,13 +282,13 @@ function admin_users_form()
 
 	if (USERS_EDIT == 1 || USERS_DELETE == 1)
 	{
-		$cancel_string = 'admin/view/users';
+		$cancel_route = 'admin/view/users';
 	}
 	else
 	{
-		$cancel_string = 'admin';
+		$cancel_route = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '"><span><span>' . l('cancel') . '</span></span></a>';
 
 	/* delete button */
 

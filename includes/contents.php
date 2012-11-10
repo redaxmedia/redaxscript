@@ -80,7 +80,7 @@ function contents()
 				}
 				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 				{
-					$string = build_route('articles', $id);
+					$route = build_route('articles', $id);
 					$position_break = strpos($text, '<break>');
 				}
 
@@ -92,7 +92,7 @@ function contents()
 					$output .= '<h2 class="title_content">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 					{
-						$output .= anchor_element('internal', '', '', $title, $string);
+						$output .= anchor_element('internal', '', '', $title, $route);
 					}
 					else
 					{
@@ -106,7 +106,7 @@ function contents()
 				$output .= '<div class="box_content">' . parser($text);
 				if ($position_break > -1)
 				{
-					$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $string);
+					$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $route);
 				}
 				$output .= '</div>' . hook('article_end');
 
@@ -161,8 +161,8 @@ function contents()
 		{
 			if ($comments > 0)
 			{
-				$string = build_route('articles', ARTICLE);
-				comments(ARTICLE, $string);
+				$route = build_route('articles', ARTICLE);
+				comments(ARTICLE, $route);
 			}
 
 			/* comment form */
@@ -178,8 +178,8 @@ function contents()
 
 	if ($sub_maximum > 1 && s('pagination') == 1)
 	{
-		$string = build_route('categories', CATEGORY);
-		pagination($sub_active, $sub_maximum, $string);
+		$route = build_route('categories', CATEGORY);
+		pagination($sub_active, $sub_maximum, $route);
 	}
 	hook(__FUNCTION__ . '_end');
 }
@@ -316,7 +316,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 /* pagination */
 
-function pagination($sub_active = '', $sub_maximum = '', $string = '')
+function pagination($sub_active = '', $sub_maximum = '', $route = '')
 {
 	hook(__FUNCTION__ . '_start');
 	$output .= '<ul class="list_pagination">';
@@ -325,10 +325,10 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 
 	if ($sub_active > 1)
 	{
-		$first_string = $string;
-		$previous_string = $string . '/' . ($sub_active - 1);
-		$output .= '<li class="item_first">' . anchor_element('internal', '', '', l('first'), $first_string) . '</li>';
-		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_string, '', 'rel="previous"') . '</li>';
+		$first_route = $route;
+		$previous_route = $route . '/' . ($sub_active - 1);
+		$output .= '<li class="item_first">' . anchor_element('internal', '', '', l('first'), $first_route) . '</li>';
+		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_route, '', 'rel="previous"') . '</li>';
 	}
 
 	/* collect center output */
@@ -351,7 +351,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 		}
 		else if ($i > 0 && $i < $sub_maximum + 1)
 		{
-			$output .= '<li class="item_number">' . anchor_element('internal', '', '', $i, $string . '/' . $i) . '</li>';
+			$output .= '<li class="item_number">' . anchor_element('internal', '', '', $i, $route . '/' . $i) . '</li>';
 		}
 	}
 
@@ -359,10 +359,10 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 
 	if ($sub_active < $sub_maximum)
 	{
-		$next_string = $string . '/' . ($sub_active + 1);
-		$last_string = $string . '/' . $sub_maximum;
-		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_string, '', 'rel="next"') . '</li>';
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_string) . '</li>';
+		$next_route = $route . '/' . ($sub_active + 1);
+		$last_route = $route . '/' . $sub_maximum;
+		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_route, '', 'rel="next"') . '</li>';
+		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
 	}
 	$output .= '</ul>';
 	echo $output;
@@ -371,7 +371,7 @@ function pagination($sub_active = '', $sub_maximum = '', $string = '')
 
 /* notification */
 
-function notification($title = '', $text = '', $action = '', $string = '')
+function notification($title = '', $text = '', $action = '', $route = '')
 {
 	hook(__FUNCTION__ . '_start');
 
@@ -399,15 +399,15 @@ function notification($title = '', $text = '', $action = '', $string = '')
 
 	/* collect button output */
 
-	if ($action && $string)
+	if ($action && $route)
 	{
 		/* handle protocol */
 
-		if (check_protocol($string) == '')
+		if (check_protocol($route) == '')
 		{
-			$string = REWRITE_ROUTE . $string;
+			$route = REWRITE_ROUTE . $route;
 		}
-		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $string . '"><span><span>' . $action . '</span></span></a>';
+		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $route . '"><span><span>' . $action . '</span></span></a>';
 	}
 	$output .= '</div>';
 	echo $output;

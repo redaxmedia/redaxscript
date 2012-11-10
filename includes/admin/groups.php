@@ -135,7 +135,7 @@ function admin_groups_form()
 		}
 		$wording_headline = $name;
 		$wording_submit = l('save');
-		$string = 'admin/process/groups/' . $id;
+		$route = 'admin/process/groups/' . $id;
 	}
 
 	/* else define fields for new group */
@@ -154,7 +154,7 @@ function admin_groups_form()
 		$status = 1;
 		$wording_headline = l('group_new');
 		$wording_submit = l('create');
-		$string = 'admin/process/groups';
+		$route = 'admin/process/groups';
 	}
 	$access_array = array(
 		l('create') => 1,
@@ -184,7 +184,7 @@ function admin_groups_form()
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $string . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect group set */
@@ -235,13 +235,13 @@ function admin_groups_form()
 
 	if (GROUPS_EDIT == 1 || GROUPS_DELETE == 1)
 	{
-		$cancel_string = 'admin/view/groups';
+		$cancel_route = 'admin/view/groups';
 	}
 	else
 	{
-		$cancel_string = 'admin';
+		$cancel_route = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '"><span><span>' . l('cancel') . '</span></span></a>';
 
 	/* delete button */
 

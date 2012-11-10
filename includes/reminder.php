@@ -97,8 +97,8 @@ function reminder_post()
 
 				/* send reminder information */
 
-				$password_reset_string = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
-				$password_reset_link = anchor_element('', '', '', $password_reset_string, $password_reset_string);
+				$password_reset_route = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
+				$password_reset_link = anchor_element('', '', '', $password_reset_route, $password_reset_route);
 				$body_array = array(
 					l('user') => $user,
 					code1 => '<br />',

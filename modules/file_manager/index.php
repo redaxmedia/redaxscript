@@ -124,10 +124,10 @@ function file_manager($directory = '')
 		foreach ($file_manager_directory as $key => $value)
 		{
 			$output .= '<tr><td class="column_first">';
-			$string = $directory . '/' . $value;
-			if (function_exists('exif_imagetype') && exif_imagetype($string))
+			$route = $directory . '/' . $value;
+			if (function_exists('exif_imagetype') && exif_imagetype($route))
 			{
-				$output .= anchor_element('external', '', '', $value, ROOT . '/' . $string);
+				$output .= anchor_element('external', '', '', $value, ROOT . '/' . $route);
 			}
 			else
 			{
@@ -140,7 +140,7 @@ function file_manager($directory = '')
 
 			/* collect filesize and filetime output */
 
-			$output .= '</td><td class="column_second">' . ceil(filesize($string) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($string)) . '</td></tr>';
+			$output .= '</td><td class="column_second">' . ceil(filesize($route) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($route)) . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
@@ -218,14 +218,14 @@ function file_manager_delete($directory = '')
 	if (count($file_manager_directory))
 	{
 		$file_name = $file_manager_directory[THIRD_SUB_PARAMETER];
-		$string = $directory . '/' . $file_name;
-		if (is_dir($string))
+		$route = $directory . '/' . $file_name;
+		if (is_dir($route))
 		{
-			remove_directory($string, 1);
+			remove_directory($route, 1);
 		}
 		else
 		{
-			unlink($string);
+			unlink($route);
 		}
 	}
 }

@@ -161,13 +161,13 @@ function query_total($table = '', $field = '', $value = '')
 
 function build_route($table = '', $id = '')
 {
-	static $string;
+	static $route;
 
 	/* fetch from cache */
 
-	if ($string[$table . $id])
+	if ($route[$table . $id])
 	{
-		$output = $string[$table . $id];
+		$output = $route[$table . $id];
 	}
 
 	/* else query */
@@ -220,7 +220,7 @@ function build_route($table = '', $id = '')
 
 		if ($output)
 		{
-			$string[$table . $id] = $output;
+			$route[$table . $id] = $output;
 		}
 	}
 	return $output;

@@ -44,11 +44,11 @@ function archive()
 
 				if ($category == 0)
 				{
-					$string = $alias;
+					$route = $alias;
 				}
 				else
 				{
-					$string = build_route('articles', $id);
+					$route = build_route('articles', $id);
 				}
 
 				/* collect output */
@@ -61,7 +61,7 @@ function archive()
 					}
 					$output .= form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive_sub">' . $month_names[$month] . ' ' . $year . '</span>') . '<ul class="list_default list_archive">';
 				}
-				$output .= '<li>' . anchor_element('internal', '', '', $title, $string, $description) . '</li>';
+				$output .= '<li>' . anchor_element('internal', '', '', $title, $route, $description) . '</li>';
 				$last = $month + $year;
 			}
 			else

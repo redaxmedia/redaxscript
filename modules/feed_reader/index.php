@@ -55,7 +55,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 
 			if ($type == 'atom')
 			{
-				$string = $value->link['href'];
+				$route = $value->link['href'];
 				$time = date(s('time'), strtotime($value->updated));
 				$date = date(s('date'), strtotime($value->updated));
 				$text = entity(truncate(trim($value->content), 1000, '...'));
@@ -65,7 +65,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 
 			else if ($type == 'rss')
 			{
-				$string = $value->link;
+				$route = $value->link;
 				$time = date(s('time'), strtotime($value->pubDate));
 				$date = date(s('date'), strtotime($value->pubDate));
 				$text = entity(truncate(trim($value->description), 1000, '...'));
@@ -101,9 +101,9 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				if ($title)
 				{
 					$output .= '<h3 class="title_feed_reader clear_fix">';
-					if ($string)
+					if ($route)
 					{
-						$output .= anchor_element('external', '', 'title_first', $title, $string, '', 'rel="nofollow"');
+						$output .= anchor_element('external', '', 'title_first', $title, $route, '', 'rel="nofollow"');
 					}
 					else
 					{

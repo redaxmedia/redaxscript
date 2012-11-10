@@ -323,7 +323,7 @@ function admin_process()
 				$error = l('email_incorrect');
 			}
 	}
-	$string = 'admin';
+	$route = 'admin';
 
 	/* handle error */
 
@@ -331,13 +331,13 @@ function admin_process()
 	{
 		if (ID_PARAMETER == '')
 		{
-			$string .= '/new/' . TABLE_PARAMETER;
+			$route .= '/new/' . TABLE_PARAMETER;
 		}
 		else
 		{
-			$string .= '/edit/' . TABLE_PARAMETER . '/' . ID_PARAMETER;
+			$route .= '/edit/' . TABLE_PARAMETER . '/' . ID_PARAMETER;
 		}
-		notification(l('error_occurred'), $error, l('back'), $string);
+		notification(l('error_occurred'), $error, l('back'), $route);
 		return;
 		break;
 	}
@@ -350,7 +350,7 @@ function admin_process()
 		$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
 		if ($edit == 1 || $delete == 1)
 		{
-			$string .= '/view/' . TABLE_PARAMETER;
+			$route .= '/view/' . TABLE_PARAMETER;
 		}
 	}
 
@@ -373,7 +373,7 @@ function admin_process()
 			}
 			$general_insert_query = 'INSERT INTO ' . PREFIX . TABLE_PARAMETER . ' (' . $key_string . ') VALUES (' . $value_string . ')';
 			mysql_query($general_insert_query);
-			notification(l('operation_completed'), '', l('continue'), $string);
+			notification(l('operation_completed'), '', l('continue'), $route);
 			return;
 			break;
 
@@ -431,7 +431,7 @@ function admin_process()
 					$_SESSION[ROOT . '/language_selected'] = 1;
 				}
 			}
-			notification(l('operation_completed'), '', l('continue'), $string);
+			notification(l('operation_completed'), '', l('continue'), $route);
 			return;
 			break;
 	}
@@ -669,14 +669,14 @@ function admin_delete()
 
 	else
 	{
-		$string = 'admin';
+		$route = 'admin';
 		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
 		$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
 		if ($edit == 1 || $delete == 1)
 		{
-			$string .= '/view/' . TABLE_PARAMETER;
+			$route .= '/view/' . TABLE_PARAMETER;
 		}
-		notification(l('operation_completed'), '', l('continue'), $string);
+		notification(l('operation_completed'), '', l('continue'), $route);
 	}
 }
 

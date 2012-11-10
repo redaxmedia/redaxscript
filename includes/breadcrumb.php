@@ -16,13 +16,13 @@ function breadcrumb()
 	foreach ($breadcrumb_array as $key => $value)
 	{
 		$title = $value['title'];
-		$string = $value['string'];
+		$route = $value['route'];
 		if ($title)
 		{
 			$output .= '<li>';
-			if ($string)
+			if ($route)
 			{
-				$output .= anchor_element('internal', '', '', $title, $string);
+				$output .= anchor_element('internal', '', '', $title, $route);
 			}
 			else
 			{
@@ -77,7 +77,7 @@ function build_breadcrumb()
 			$breadcrumb[$key]['title'] = l('administration');
 			if (ADMIN_PARAMETER)
 			{
-				$breadcrumb[$key]['string'] = 'admin';
+				$breadcrumb[$key]['route'] = 'admin';
 			}
 
 			/* join admin title */
@@ -88,7 +88,7 @@ function build_breadcrumb()
 				$breadcrumb[$key]['title'] = l(ADMIN_PARAMETER);
 				if (ADMIN_PARAMETER != LAST_PARAMETER)
 				{
-					$breadcrumb[$key]['string'] = FULL_ROUTE;
+					$breadcrumb[$key]['route'] = FULL_ROUTE;
 				}
 
 				/* join table title */
@@ -129,7 +129,7 @@ function build_breadcrumb()
 			$breadcrumb[$key]['title'] = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
 			if (FIRST_PARAMETER != LAST_PARAMETER)
 			{
-				$breadcrumb[$key]['string'] = FIRST_PARAMETER;
+				$breadcrumb[$key]['route'] = FIRST_PARAMETER;
 			}
 
 			/* join second title */
@@ -140,7 +140,7 @@ function build_breadcrumb()
 				$breadcrumb[$key]['title'] = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
 				if (SECOND_PARAMETER != LAST_PARAMETER)
 				{
-					$breadcrumb[$key]['string'] = FIRST_PARAMETER . '/' . SECOND_PARAMETER;
+					$breadcrumb[$key]['route'] = FIRST_PARAMETER . '/' . SECOND_PARAMETER;
 				}
 
 				/* join third title */

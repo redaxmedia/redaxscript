@@ -40,14 +40,14 @@ function remove_directory($input = '', $mode = '')
 	{
 		foreach ($input_directory as $value)
 		{
-			$string = $input . '/' . $value;
-			if (is_dir($string))
+			$route = $input . '/' . $value;
+			if (is_dir($route))
 			{
-				remove_directory($string, 1);
+				remove_directory($route, 1);
 			}
 			else
 			{
-				unlink($string);
+				unlink($route);
 			}
 		}
 	}

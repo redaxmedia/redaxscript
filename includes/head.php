@@ -98,7 +98,7 @@ function head()
 		$output .= '<title>' . truncate($title . $divider . $description, 70) . '</title>' . PHP_EOL;
 	}
 
-	/* collect refresh string */
+	/* collect refresh route */
 
 	if (REFRESH_ROUTE)
 	{
@@ -151,19 +151,19 @@ function head()
 		$articles_total = query_total('articles', 'category', $category);
 		if ($articles_total == 1)
 		{
-			$canonical_string = FIRST_PARAMETER;
+			$canonical_route = FIRST_PARAMETER;
 			if (SECOND_TABLE == 'categories')
 			{
-				$canonical_string .= '/' . SECOND_PARAMETER;
+				$canonical_route .= '/' . SECOND_PARAMETER;
 			}
 		}
 	}
 
-	/* extend with canonical string */
+	/* extend with canonical route */
 
-	if ($canonical_string)
+	if ($canonical_route)
 	{
-		$canonical_url .= $canonical_string;
+		$canonical_url .= $canonical_route;
 	}
 	else
 	{

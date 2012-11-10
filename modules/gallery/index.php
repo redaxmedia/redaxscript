@@ -82,20 +82,20 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 		{
 			foreach ($gallery_directory as $value)
 			{
-				$string = $directory . '/' . $value;
-				$thumb_string = $directory . '/thumbs/' . $value;
+				$route = $directory . '/' . $value;
+				$thumb_route = $directory . '/thumbs/' . $value;
 
 				/* build gallery thumb */
 
-				if (file_exists($thumb_string) == '' || $command == 'build')
+				if (file_exists($thumb_route) == '' || $command == 'build')
 				{
-					gallery_build_thumb($value, $directory, $string, $quality, $scaling, $height);
+					gallery_build_thumb($value, $directory, $route, $quality, $scaling, $height);
 				}
-				if (file_exists($thumb_string))
+				if (file_exists($thumb_route))
 				{
 					/* read exif data */
 
-					$image_data = exif_read_data($string);
+					$image_data = exif_read_data($route);
 					if ($image_data)
 					{
 						$image_artist = $image_data['Artist'];
@@ -129,8 +129,8 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 					/* collect image output */
 
-					$image = '<img src="' . $thumb_string . '" class="image image_gallery" alt="' . $image_description . '" ' . $data_string . ' />';
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $string, $image_description, 'rel="nofollow"') . '</li>';
+					$image = '<img src="' . $thumb_route . '" class="image image_gallery" alt="' . $image_description . '" ' . $data_string . ' />';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, 'rel="nofollow"') . '</li>';
 				}
 			}
 
@@ -154,7 +154,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 /* gallery build thumb */
 
-function gallery_build_thumb($input = '', $directory = '', $string = '', $quality = '', $scaling = '', $height = '')
+function gallery_build_thumb($input = '', $directory = '', $route = '', $quality = '', $scaling = '', $height = '')
 {
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
 
@@ -163,18 +163,18 @@ function gallery_build_thumb($input = '', $directory = '', $string = '', $qualit
 	switch ($extension)
 	{
 		case 'gif':
-			$image = imagecreatefromgif($string);
+			$image = imagecreatefromgif($route);
 		case 'jpg':
-			$image = imagecreatefromjpeg($string);
+			$image = imagecreatefromjpeg($route);
 			break;
 		case 'png':
-			$image = imagecreatefrompng($string);
+			$image = imagecreatefrompng($route);
 			break;
 	}
 
 	/* calculate image dimensions */
 
-	$original_size = getimagesize($string);
+	$original_size = getimagesize($route);
 	if ($height)
 	{
 		$scaling = $height / $original_size[1] * 100;

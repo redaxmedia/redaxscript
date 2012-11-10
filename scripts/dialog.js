@@ -133,9 +133,9 @@
 
 			$(this).on('click', function (event)
 			{
-				var string = $(this)[0].href;
+				var route = $(this)[0].href;
 
-				if (string)
+				if (route)
 				{
 					/* confirm dialog to continue */
 
@@ -147,11 +147,11 @@
 						{
 							/* check for internal link */
 
-							if (string.substr(0, 7) !== 'http://' && string.substr(0, 8) !== 'https://')
+							if (route.substr(0, 7) !== 'http://' && route.substr(0, 8) !== 'https://')
 							{
-								string = r.baseURL + string;
+								route = r.baseURL + route;
 							}
-							window.location = string;
+							window.location = route;
 						}
 					});
 					event.preventDefault();
