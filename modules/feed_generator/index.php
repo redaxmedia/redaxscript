@@ -116,7 +116,7 @@ function feed_generator($table = '')
 				$title = $author;
 			}
 
-			/* build string */
+			/* build route */
 
 			$string = ROOT . '/' . REWRITE_ROUTE;
 			if ($table == 'articles' && $category == 0)
@@ -125,7 +125,7 @@ function feed_generator($table = '')
 			}
 			else
 			{
-				$string .= build_string($table, $id);
+				$string .= build_route($table, $id);
 			}
 			$string .= $language_string;
 

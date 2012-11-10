@@ -40,7 +40,7 @@ function archive()
 				$year = substr($date, 0, 4);
 				$month = substr($date, 5, 2) - 1;
 
-				/* build string */
+				/* build route */
 
 				if ($category == 0)
 				{
@@ -48,7 +48,7 @@ function archive()
 				}
 				else
 				{
-					$string = build_string('articles', $id);
+					$string = build_route('articles', $id);
 				}
 
 				/* collect output */

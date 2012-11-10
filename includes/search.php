@@ -117,7 +117,7 @@ function search_post()
 					}
 					$date = date(s('date'), strtotime($date));
 
-					/* build string */
+					/* build route */
 
 					if ($category == 0)
 					{
@@ -125,7 +125,7 @@ function search_post()
 					}
 					else
 					{
-						$string = build_string('articles', $id);
+						$string = build_route('articles', $id);
 					}
 
 					/* collect item output */

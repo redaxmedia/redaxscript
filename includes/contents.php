@@ -80,7 +80,7 @@ function contents()
 				}
 				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 				{
-					$string = build_string('articles', $id);
+					$string = build_route('articles', $id);
 					$position_break = strpos($text, '<break>');
 				}
 
@@ -161,7 +161,7 @@ function contents()
 		{
 			if ($comments > 0)
 			{
-				$string = build_string('articles', ARTICLE);
+				$string = build_route('articles', ARTICLE);
 				comments(ARTICLE, $string);
 			}
 
@@ -178,7 +178,7 @@ function contents()
 
 	if ($sub_maximum > 1 && s('pagination') == 1)
 	{
-		$string = build_string('categories', CATEGORY);
+		$string = build_route('categories', CATEGORY);
 		pagination($sub_active, $sub_maximum, $string);
 	}
 	hook(__FUNCTION__ . '_end');

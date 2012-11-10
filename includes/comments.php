@@ -206,7 +206,7 @@ function comment_post()
 		}
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
-		$string = build_string('articles', $article);
+		$string = build_route('articles', $article);
 	}
 
 	/* validate post */

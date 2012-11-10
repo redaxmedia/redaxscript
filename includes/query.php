@@ -157,9 +157,9 @@ function query_total($table = '', $field = '', $value = '')
 	return $output;
 }
 
-/* build string */
+/* build route */
 
-function build_string($table = '', $id = '')
+function build_route($table = '', $id = '')
 {
 	static $string;
 

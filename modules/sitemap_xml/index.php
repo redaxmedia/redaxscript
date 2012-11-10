@@ -38,7 +38,7 @@ function sitemap_xml()
 				}
 			}
 
-			/* build string */
+			/* build route */
 
 			if ($parent == 0)
 			{
@@ -46,7 +46,7 @@ function sitemap_xml()
 			}
 			else
 			{
-				$string = build_string('categories', $id);
+				$string = build_route('categories', $id);
 			}
 
 			/* collect output */
@@ -74,7 +74,7 @@ function sitemap_xml()
 				}
 			}
 
-			/* build string */
+			/* build route */
 
 			if ($category == 0)
 			{
@@ -82,7 +82,7 @@ function sitemap_xml()
 			}
 			else
 			{
-				$string = build_string('articles', $id);
+				$string = build_route('articles', $id);
 			}
 			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}

@@ -147,7 +147,7 @@ function navigation_list($table = '', $options = '')
 					$description = $title;
 				}
 
-				/* build string */
+				/* build route */
 
 				if ($table == 'categories' && $parent == 0 || $table == 'articles' && $category == 0)
 				{
@@ -155,7 +155,7 @@ function navigation_list($table = '', $options = '')
 				}
 				else
 				{
-					$string = build_string($table, $id);
+					$string = build_route($table, $id);
 				}
 
 				/* collect item output */

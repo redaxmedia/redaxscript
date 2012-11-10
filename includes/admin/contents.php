@@ -151,7 +151,7 @@ function admin_contents_list()
 					$class_status = 'row_disabled';
 				}
 
-				/* build string */
+				/* build route */
 
 				if (TABLE_PARAMETER != 'extras' && $status == 1)
 				{
@@ -161,7 +161,7 @@ function admin_contents_list()
 					}
 					else
 					{
-						$string = build_string(TABLE_PARAMETER, $id);
+						$string = build_route(TABLE_PARAMETER, $id);
 					}
 				}
 				else
