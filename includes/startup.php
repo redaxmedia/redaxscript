@@ -202,9 +202,11 @@ function startup()
 	}
 	else
 	{
-		define('CATEGORY', '');
-		define('ARTICLE', '');
-		define('LAST_ID', '');
+		undefine(array(
+			'CATEGORY',
+			'ARTICLE',
+			'LAST_ID'
+		));
 	}
 
 	/* define user */
@@ -292,9 +294,12 @@ function startup()
 
 function undefine($input = '')
 {
-	foreach ($input as $value)
+	if ($input)
 	{
-		define($value, '');
+		foreach ($input as $value)
+		{
+			define($value, '');
+		}
 	}
 }
 ?>
