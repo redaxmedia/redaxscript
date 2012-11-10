@@ -11,6 +11,9 @@ function get_parameter($input = '')
 	if ($parameter == '')
 	{
 		$parameter = explode('/', $_GET['p']);
+
+		/* clean parameter */
+
 		$parameter = array_map('clean_alias', $parameter);
 		$parameter = array_map('clean_mysql', $parameter);
 	}
@@ -59,11 +62,11 @@ function get_parameter($input = '')
 	return $output;
 }
 
-/* get string */
+/* get route */
 
-function get_string($mode = '')
+function get_route($mode = '')
 {
-	/* switch admin parmaeter */
+	/* switch admin parameter */
 
 	switch (ADMIN_PARAMETER)
 	{
@@ -84,6 +87,9 @@ function get_string($mode = '')
 			break;
 		default:
 			$parameter = explode('/', $_GET['p']);
+
+			/* clean parameter */
+
 			$parameter = array_map('clean_alias', $parameter);
 			$parameter = array_map('clean_mysql', $parameter);
 

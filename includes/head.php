@@ -100,9 +100,9 @@ function head()
 
 	/* collect refresh string */
 
-	if (REFRESH_STRING)
+	if (REFRESH_ROUTE)
 	{
-		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_STRING . '" />' . PHP_EOL;
+		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
 	}
 
 	/* collect author and copyright as needed */
@@ -131,7 +131,7 @@ function head()
 
 	/* build canonical url */
 
-	$canonical_url = ROOT . '/' . REWRITE_STRING;
+	$canonical_url = ROOT . '/' . REWRITE_ROUTE;
 
 	/* if article in category */
 
@@ -167,7 +167,7 @@ function head()
 	}
 	else
 	{
-		$canonical_url .= FULL_STRING;
+		$canonical_url .= FULL_ROUTE;
 	}
 	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	echo $output;

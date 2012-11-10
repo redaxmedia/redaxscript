@@ -253,7 +253,7 @@ function languages_list($options = '')
 			$class_string .= ' item_active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_STRING . LANGUAGE_STRING . $value, '', 'rel="nofollow"') . '</li>';
+		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
 	/* setup id option */
@@ -312,7 +312,7 @@ function templates_list($options = '')
 			$class_string .= ' item_active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_STRING . TEMPLATE_STRING . $value, '', 'rel="nofollow"') . '</li>';
+		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_ROUTE . TEMPLATE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
 	/* setup id option */

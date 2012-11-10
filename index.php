@@ -157,7 +157,7 @@ else
 	/* undefine */
 
 	undefine(array(
-		'REFRESH_STRING',
+		'REFRESH_ROUTE',
 		'DESCRIPTION',
 		'KEYWORDS',
 		'ROBOTS',

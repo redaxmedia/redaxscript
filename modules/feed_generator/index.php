@@ -43,7 +43,7 @@ function feed_generator($table = '')
 	if ($_GET['l'])
 	{
 		$language = LANGUAGE;
-		$language_string = LANGUAGE_STRING;
+		$language_string = LANGUAGE_ROUTE;
 	}
 
 	/* query table contents */
@@ -59,7 +59,7 @@ function feed_generator($table = '')
 		$author = s('author');
 		$email = s('email');
 		$copyright = s('copyright');
-		$string = ROOT . '/' . REWRITE_STRING . FULL_STRING . $language_string . $language;
+		$string = ROOT . '/' . REWRITE_ROUTE . FULL_ROUTE . $language_string . $language;
 
 		/* collect feed header output */
 
@@ -118,7 +118,7 @@ function feed_generator($table = '')
 
 			/* build string */
 
-			$string = ROOT . '/' . REWRITE_STRING;
+			$string = ROOT . '/' . REWRITE_ROUTE;
 			if ($table == 'articles' && $category == 0)
 			{
 				$string .= $alias;

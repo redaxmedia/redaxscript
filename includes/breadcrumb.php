@@ -65,7 +65,7 @@ function build_breadcrumb()
 
 		/* else if home */
 
-		else if (FULL_STRING == '')
+		else if (FULL_ROUTE == '')
 		{
 			$breadcrumb[$key]['title'] = l('home');
 		}
@@ -88,7 +88,7 @@ function build_breadcrumb()
 				$breadcrumb[$key]['title'] = l(ADMIN_PARAMETER);
 				if (ADMIN_PARAMETER != LAST_PARAMETER)
 				{
-					$breadcrumb[$key]['string'] = FULL_STRING;
+					$breadcrumb[$key]['string'] = FULL_ROUTE;
 				}
 
 				/* join table title */

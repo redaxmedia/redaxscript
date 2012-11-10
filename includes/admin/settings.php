@@ -6,7 +6,7 @@ function admin_settings_form()
 {
 	hook(__FUNCTION__ . '_start');
 	$output = '<h2 class="title_content">' . l('settings') . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required js_accordion form_admin accordion accordion_admin', '', '', '', 'action="' . REWRITE_STRING . 'admin/update/settings" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required js_accordion form_admin accordion accordion_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
 
@@ -158,7 +158,7 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_STRING . 'admin"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . 'admin"><span><span>' . l('cancel') . '</span></span></a>';
 	$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;

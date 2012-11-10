@@ -15,7 +15,7 @@ function parser($input = '')
 	if ($position_break > -1)
 	{
 		$output = str_replace('<break>', '', $input);
-		if (LAST_TABLE == 'categories' || FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+		if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 		{
 			$output = substr($output, 0, $position_break);
 		}

@@ -27,11 +27,11 @@ function recent_view($limit = '')
 
 function recent_view_logger()
 {
-	if (FULL_STRING)
+	if (FULL_ROUTE)
 	{
-		if (end($_SESSION[ROOT . '/recent_view']) != FULL_STRING)
+		if (end($_SESSION[ROOT . '/recent_view']) != FULL_ROUTE)
 		{
-			$_SESSION[ROOT . '/recent_view'][] = FULL_STRING;
+			$_SESSION[ROOT . '/recent_view'][] = FULL_ROUTE;
 		}
 	}
 	$output = array_reverse($_SESSION[ROOT . '/recent_view']);

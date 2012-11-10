@@ -234,7 +234,7 @@ function styles()
 	}
 	else
 	{
-		$output .= '<link type="text/css" href="' . REWRITE_STRING . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
+		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');
@@ -317,7 +317,7 @@ function scripts($mode = '')
 		else
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
-			$output .= '<script src="' . REWRITE_STRING . 'loader/scripts"></script>' . PHP_EOL;
+			$output .= '<script src="' . REWRITE_ROUTE . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
 	echo $output;

@@ -14,7 +14,7 @@ function share_this_article_end()
 {
 	if (LAST_TABLE == 'articles')
 	{
-		$string = ROOT . '/' . REWRITE_STRING . FULL_STRING;
+		$string = ROOT . '/' . REWRITE_ROUTE . FULL_ROUTE;
 		$output = share_this($string);
 		return $output;
 	}

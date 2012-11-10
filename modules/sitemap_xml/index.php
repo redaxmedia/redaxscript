@@ -51,7 +51,7 @@ function sitemap_xml()
 
 			/* collect output */
 
-			$output .= '<url><loc>' . ROOT . '/' . REWRITE_STRING . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
+			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}
 	}
 
@@ -84,7 +84,7 @@ function sitemap_xml()
 			{
 				$string = build_string('articles', $id);
 			}
-			$output .= '<url><loc>' . ROOT . '/' . REWRITE_STRING . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
+			$output .= '<url><loc>' . ROOT . '/' . REWRITE_ROUTE . $string . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>' . PHP_EOL;
 		}
 	}
 	$output .= '</urlset>';

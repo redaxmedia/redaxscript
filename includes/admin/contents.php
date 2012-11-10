@@ -54,11 +54,11 @@ function admin_contents_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if ($new == 1)
 	{
-		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($wording_single . '_new') . '</span></span></a>';
+		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_ROUTE . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($wording_single . '_new') . '</span></span></a>';
 	}
 	if ($edit == 1 && $num_rows)
 	{
-		$output .= '<a class="field_button_admin field_button_sort" href="' . REWRITE_STRING . 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN . '"><span><span>' . l('sort') . '</span></span></a>';
+		$output .= '<a class="field_button_admin field_button_sort" href="' . REWRITE_ROUTE . 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN . '"><span><span>' . l('sort') . '</span></span></a>';
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -506,17 +506,17 @@ function admin_contents_form()
 	/* collect tab output */
 
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($wording_single), FULL_STRING . '#tab-1') . '</li>';
-	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_STRING . '#tab-2') . '</li>';
+	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
 	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
 	{
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('date'), FULL_STRING . '#tab-3') . '</li>';
+		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('date'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
 	$output .= '</ul>';
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_STRING . $string . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $string . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect content set */
@@ -717,13 +717,13 @@ function admin_contents_form()
 	{
 		$cancel_string = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward field_button_first" href="' . REWRITE_STRING . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward field_button_first" href="' . REWRITE_ROUTE . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
 
 	/* delete button */
 
 	if ($delete == 1 && $id)
 	{
-		$output .= '<a class="js_delete js_confirm field_button_large_admin field_button_second" href="' . REWRITE_STRING . 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
+		$output .= '<a class="js_delete js_confirm field_button_large_admin field_button_second" href="' . REWRITE_ROUTE . 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
 	}
 
 	/* submit button */

@@ -30,7 +30,7 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 				}
 				break;
 			case 'internal':
-				$value_string .= REWRITE_STRING;
+				$value_string .= REWRITE_ROUTE;
 				break;
 			case 'email':
 				$value = clean_email($value);

@@ -257,7 +257,7 @@ function comment_post()
 			{
 				$url_link = anchor_element('external', '', '', $url, $url);
 			}
-			$view_string = ROOT . '/' . REWRITE_STRING . $string;
+			$view_string = ROOT . '/' . REWRITE_ROUTE . $string;
 			$view_link = anchor_element('', '', '', $view_string, $view_string);
 			$body_array = array(
 				l('author') => $author . ' (' . MY_IP . ')',

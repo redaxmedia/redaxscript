@@ -53,7 +53,7 @@ function contents()
 	{
 		$error = l('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || LAST_ID == '' && check_alias(FULL_STRING, 1) == 0)
+	else if ($result == '' || $num_rows_active == '' || LAST_ID == '' && check_alias(FULL_ROUTE, 1) == 0)
 	{
 		$error = l('content_not_found');
 	}
@@ -78,7 +78,7 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 				{
 					$string = build_string('articles', $id);
 					$position_break = strpos($text, '<break>');
@@ -90,7 +90,7 @@ function contents()
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content">';
-					if (LAST_TABLE == 'categories' || FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 					{
 						$output .= anchor_element('internal', '', '', $title, $string);
 					}
@@ -405,7 +405,7 @@ function notification($title = '', $text = '', $action = '', $string = '')
 
 		if (check_protocol($string) == '')
 		{
-			$string = REWRITE_STRING . $string;
+			$string = REWRITE_ROUTE . $string;
 		}
 		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $string . '"><span><span>' . $action . '</span></span></a>';
 	}

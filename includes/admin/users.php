@@ -18,7 +18,7 @@ function admin_users_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if (USERS_NEW == 1)
 	{
-		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_STRING . 'admin/new/users"><span><span>' . l('user_new') . '</span></span></a>';
+		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_ROUTE . 'admin/new/users"><span><span>' . l('user_new') . '</span></span></a>';
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -209,12 +209,12 @@ function admin_users_form()
 	/* collect tab output */
 
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l('user'), FULL_STRING . '#tab-1') . '</li>';
-	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_STRING . '#tab-2') . '</li></ul>';
+	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l('user'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_STRING . $string . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $string . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect user set */
@@ -288,13 +288,13 @@ function admin_users_form()
 	{
 		$cancel_string = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_STRING . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_string . '"><span><span>' . l('cancel') . '</span></span></a>';
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_STRING . 'admin/delete/users/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
+		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_ROUTE . 'admin/delete/users/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
 	}
 
 	/* submit button */

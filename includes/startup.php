@@ -75,33 +75,33 @@ function startup()
 	define('LAST_SUB_PARAMETER', get_parameter('last_sub'));
 	define('TOKEN_PARAMETER', get_parameter('token'));
 
-	/* define strings */
+	/* define routes */
 
-	define('FULL_STRING', get_string(0));
-	define('FULL_TOP_STRING', get_string(1));
+	define('FULL_ROUTE', get_route(0));
+	define('FULL_TOP_ROUTE', get_route(1));
 	if (function_exists('apache_get_modules') && in_array('mod_rewrite', apache_get_modules()) == '' || file_exists('.htaccess') == '' || FILE == 'install.php')
 	{
-		define('REWRITE_STRING', '?p=');
-		define('LANGUAGE_STRING', '&amp;l=');
-		define('TEMPLATE_STRING', '&amp;t=');
+		define('REWRITE_ROUTE', '?p=');
+		define('LANGUAGE_ROUTE', '&amp;l=');
+		define('TEMPLATE_ROUTE', '&amp;t=');
 	}
 	else
 	{
-		define('REWRITE_STRING', '');
-		define('LANGUAGE_STRING', '.');
-		define('TEMPLATE_STRING', '.');
+		define('REWRITE_ROUTE', '');
+		define('LANGUAGE_ROUTE', '.');
+		define('TEMPLATE_ROUTE', '.');
 	}
 
 	/* redirect to install */
 
 	if (DB_CONNECTED == 0 && file_exists('install.php'))
 	{
-		define('REFRESH_STRING', ROOT . '/install.php');
+		define('REFRESH_ROUTE', ROOT . '/install.php');
 	}
 
 	/* define tables */
 
-	if (FULL_STRING == '' || check_alias(FULL_STRING, 1) == 1)
+	if (FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
 	{
 		/* check for homepage */
 
@@ -116,7 +116,7 @@ function startup()
 		else
 		{
 			$table = 'categories';
-			$id =  0;
+			$id = 0;
 
 			/* check order */
 
