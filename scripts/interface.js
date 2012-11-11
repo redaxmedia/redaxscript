@@ -139,7 +139,7 @@
 
 		return this.each(function ()
 		{
-			var route = window.location.href.replace(r.baseURL, ''),
+			var url = window.location.href.replace(r.baseURL, ''),
 				tabList = $(options.element.tabList),
 				tabBox = $(options.element.tabBox),
 				tabSet = tabBox.find(options.element.tabSet),
@@ -181,7 +181,7 @@
 
 			/* click tab depending on location href */
 
-			tabList.find('a[href="' + route + '"]').click();
+			tabList.find('a[href="' + url + '"]').click();
 
 			/* prevent next tab for last children */
 

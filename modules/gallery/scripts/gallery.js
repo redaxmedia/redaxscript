@@ -43,10 +43,10 @@
 				$(this).each(function ()
 				{
 					var link = $(this),
-						route = link.attr('href'),
+						url = link.attr('href'),
 						thumb = link.children(),
 						related = thumb.attr('src'),
-						image = $('<img src="' + route + '" />');
+						image = $('<img src="' + url + '" />');
 
 					/* setup opacity and add class */
 
@@ -77,9 +77,9 @@
 			$(this).click(function (event)
 			{
 				var link = $(this),
-					route = link.attr('href'),
+					url = link.attr('href'),
 					thumb = link.children(),
-					image = $('<img src="' + route + '" />'),
+					image = $('<img src="' + url + '" />'),
 					imageCounter = thumb.data('counter'),
 					imageTotal = thumb.data('total'),
 					imageArtist = thumb.data('artist'),
