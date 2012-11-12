@@ -1,6 +1,11 @@
 <?php
 
-/* comments */
+/**
+ * comments
+ * 
+ * @param integer $article
+ * @param string $route
+ */
 
 function comments($article = '', $route = '')
 {
@@ -116,7 +121,13 @@ function comments($article = '', $route = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* comment form */
+/**
+ * comment form
+ * 
+ * @param integer $article
+ * @param string $language
+ * @param string $access
+ */
 
 function comment_form($article = '', $language = '', $access = '')
 {
@@ -182,7 +193,9 @@ function comment_form($article = '', $language = '', $access = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* comment post */
+/**
+ * comment post
+ */
 
 function comment_post()
 {

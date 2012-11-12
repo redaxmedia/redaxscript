@@ -1,6 +1,8 @@
 <?php
 
-/* breadcrumb */
+/**
+ * breadcrumb 
+ */
 
 function breadcrumb()
 {
@@ -46,11 +48,17 @@ function breadcrumb()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* build breadcrumb */
+/**
+ * build breadcrumb
+ * 
+ * @return array
+ */
 
 function build_breadcrumb()
 {
 	static $breadcrumb;
+
+	/* build breadcrumb */
 
 	if ($breadcrumb == '')
 	{

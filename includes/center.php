@@ -1,6 +1,8 @@
 <?php
 
-/* center */
+/**
+ * center
+ */
 
 function center()
 {
@@ -23,7 +25,9 @@ function center()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* routing */
+/**
+ * routing
+ */
 
 function routing()
 {

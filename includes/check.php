@@ -1,6 +1,11 @@
 <?php
 
-/* check login */
+/**
+ * check login
+ * 
+ * @param string $input
+ * @return integer
+ */
 
 function check_login($input = '')
 {
@@ -15,7 +20,13 @@ function check_login($input = '')
 	return $output;
 }
 
-/* check access */
+/**
+ * check access
+ * 
+ * @param array $access
+ * @param array $groups
+ * @return integer
+ */
 
 function check_access($access = '', $groups = '')
 {
@@ -35,7 +46,12 @@ function check_access($access = '', $groups = '')
 	return $output;
 }
 
-/* check email */
+/**
+ * check email
+ * 
+ * @param string $input
+ * @return integer
+ */
 
 function check_email($input = '')
 {
@@ -54,7 +70,12 @@ function check_email($input = '')
 	return $output;
 }
 
-/* check url */
+/**
+ * check url
+ *
+ * @param string $input
+ * @return integer
+ */
 
 function check_url($input = '')
 {
@@ -77,7 +98,12 @@ function check_url($input = '')
 	return $output;
 }
 
-/* check protocol */
+/**
+ * check protocol
+ *
+ * @param string $input
+ * @return integer
+ */
 
 function check_protocol($input = '')
 {
@@ -92,7 +118,12 @@ function check_protocol($input = '')
 	return $output;
 }
 
-/* check dns */
+/**
+ * check dns
+ *
+ * @param string $input
+ * @return integer
+ */
 
 function check_dns($input = '')
 {
@@ -114,7 +145,13 @@ function check_dns($input = '')
 	return $output;
 }
 
-/* check alias */
+/**
+ * check alias
+ *
+ * @param string $input
+ * @param integer $mode
+ * @return integer
+ */
 
 function check_alias($input = '', $mode = '')
 {
@@ -149,11 +186,17 @@ function check_alias($input = '', $mode = '')
 	return $output;
 }
 
-/* check captcha */
+/**
+ * check captcha
+ *
+ * @param string $task
+ * @param integer $solution
+ * @return integer
+ */
 
 function check_captcha($task = '', $solution = '')
 {
-	if (LOGGED_IN == TOKEN || $mode == 0 && s('captcha') == 0 || sha1($task) == $solution)
+	if (LOGGED_IN == TOKEN || s('captcha') == 0 || sha1($task) == $solution)
 	{
 		$output = 1;
 	}

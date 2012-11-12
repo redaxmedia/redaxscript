@@ -1,6 +1,8 @@
 <?php
 
-/* language detection */
+/**
+ * language detection
+ */
 
 function language_detection()
 {
@@ -53,7 +55,9 @@ function language_detection()
 	}
 }
 
-/* template detection */
+/**
+ * template detection
+ */
 
 function template_detection()
 {

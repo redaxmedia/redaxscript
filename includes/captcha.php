@@ -1,6 +1,11 @@
 <?php
 
-/* captcha */
+/**
+ * captcha
+ * 
+ * @param integer $mode
+ * @return string
+ */
 
 function captcha($mode = '')
 {

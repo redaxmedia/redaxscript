@@ -51,7 +51,9 @@ else
 	include_once('templates/install/install.phtml');
 }
 
-/* install */
+/**
+ * install
+ */
 
 function install()
 {
@@ -234,11 +236,16 @@ function install()
 	send_mail($email, $name, s('email'), s('author'), l('installation'), $body_array);
 }
 
-/* install form */
+/*
+ * install form
+ */
 
 function install_form()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+
+	/* collect output */
+
 	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
 	$output .= form_element('form', 'form_install', 'js_check_required js_note_required js_accordion form_default accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
 
@@ -274,7 +281,9 @@ function install_form()
 	echo $output;
 }
 
-/* install post */
+/**
+ * install post
+ */
 
 function install_post()
 {
@@ -309,7 +318,9 @@ function install_post()
 	}
 }
 
-/* install status */
+/*
+ * install status
+ */
 
 function install_notification()
 {
@@ -377,7 +388,11 @@ function install_notification()
 	echo $output;
 }
 
-/* check install */
+/*
+ * check install
+ * 
+ * @return integer
+ */
 
 function check_install()
 {
@@ -393,7 +408,9 @@ function check_install()
 	return $output;
 }
 
-/* write config */
+/**
+ * write config
+ */
 
 function write_config()
 {
@@ -423,7 +440,9 @@ function d($name = \'\')
 	}
 }
 
-/* head */
+/**
+ * head
+ */
 
 function head()
 {
@@ -439,7 +458,9 @@ function head()
 	echo $output;
 }
 
-/* center */
+/**
+ * center
+ */
 
 function center()
 {

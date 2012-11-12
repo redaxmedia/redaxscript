@@ -1,6 +1,12 @@
 <?php
 
-/* clean */
+/**
+ * clean
+ * 
+ * @param string $input
+ * @param integer $mode
+ * @return string
+ */
 
 function clean($input = '', $mode = '')
 {
@@ -42,7 +48,12 @@ function clean($input = '', $mode = '')
 	return $output;
 }
 
-/* clean special */
+/**
+ * clean special
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_special($input = '')
 {
@@ -50,7 +61,12 @@ function clean_special($input = '')
 	return $output;
 }
 
-/* clean script */
+/**
+ * clean script
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_script($input = '')
 {
@@ -66,7 +82,12 @@ function clean_script($input = '')
 	return $output;
 }
 
-/* clean html */
+/**
+ * clean html
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_html($input = '')
 {
@@ -80,7 +101,12 @@ function clean_html($input = '')
 	return $output;
 }
 
-/* clean alias */
+/**
+ * clean alias
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_alias($input = '')
 {
@@ -90,7 +116,12 @@ function clean_alias($input = '')
 	return $output;
 }
 
-/* clean email */
+/**
+ * clean email
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_email($input = '')
 {
@@ -99,7 +130,12 @@ function clean_email($input = '')
 	return $output;
 }
 
-/* clean url */
+/**
+ * clean url
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_url($input = '')
 {
@@ -108,7 +144,12 @@ function clean_url($input = '')
 	return $output;
 }
 
-/* clean mysql */
+/**
+ * clean mysql
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function clean_mysql($input = '')
 {

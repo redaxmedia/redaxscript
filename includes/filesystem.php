@@ -1,6 +1,11 @@
 <?php
 
-/* read directory */
+/**
+ * read directory
+ * 
+ * @param string $input
+ * @param string|array $ignore
+ */
 
 function read_directory($input = '', $ignore = '')
 {
@@ -28,7 +33,12 @@ function read_directory($input = '', $ignore = '')
 	return $output;
 }
 
-/* remove directory */
+/**
+ * remove directory
+ * 
+ * @param string $input
+ * @param integer $mode
+ */
 
 function remove_directory($input = '', $mode = '')
 {

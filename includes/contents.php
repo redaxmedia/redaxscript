@@ -1,6 +1,8 @@
 <?php
 
-/* contents */
+/**
+ * contents
+ */
 
 function contents()
 {
@@ -184,7 +186,11 @@ function contents()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* extras */
+/**
+ * extras
+ * 
+ * @param integer|string $filter
+ */
 
 function extras($filter = '')
 {
@@ -264,7 +270,14 @@ function extras($filter = '')
 	}
 }
 
-/* infoline */
+/**
+ * infoline
+ * 
+ * @param string $table
+ * @param integer $id
+ * @param string $author
+ * @param string $date
+ */
 
 function infoline($table = '', $id = '', $author = '', $date = '')
 {
@@ -314,7 +327,13 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* pagination */
+/**
+ * pagination
+ * 
+ * @param integer $sub_active
+ * @param integer $sub_maximum
+ * @param string $route
+ */
 
 function pagination($sub_active = '', $sub_maximum = '', $route = '')
 {
@@ -369,7 +388,14 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* notification */
+/**
+ * notification
+ * 
+ * @param string $title
+ * @param string $text
+ * @param string $action
+ * @param string $route
+ */
 
 function notification($title = '', $text = '', $action = '', $route = '')
 {
