@@ -14,7 +14,6 @@ function modules_include()
 		$result = mysql_query($query);
 		if ($result)
 		{
-			$modules_installed = array();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$alias = $r['alias'];

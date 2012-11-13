@@ -2,7 +2,7 @@
 
 /**
  * read directory
- * 
+ *
  * @param string $input
  * @param string|array $ignore
  */
@@ -35,7 +35,7 @@ function read_directory($input = '', $ignore = '')
 
 /**
  * remove directory
- * 
+ *
  * @param string $input
  * @param integer $mode
  */

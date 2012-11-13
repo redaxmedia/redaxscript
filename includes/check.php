@@ -2,7 +2,7 @@
 
 /**
  * check login
- * 
+ *
  * @param string $input
  * @return integer
  */
@@ -22,7 +22,7 @@ function check_login($input = '')
 
 /**
  * check access
- * 
+ *
  * @param array $access
  * @param array $groups
  * @return integer
@@ -48,7 +48,7 @@ function check_access($access = '', $groups = '')
 
 /**
  * check email
- * 
+ *
  * @param string $input
  * @return integer
  */

@@ -2,7 +2,7 @@
 
 /**
  * captcha
- * 
+ *
  * @param integer $mode
  * @return string
  */

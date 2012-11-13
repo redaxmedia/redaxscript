@@ -1,7 +1,7 @@
 <?php
 
 /**
- * breadcrumb 
+ * breadcrumb
  */
 
 function breadcrumb()
@@ -50,7 +50,7 @@ function breadcrumb()
 
 /**
  * build breadcrumb
- * 
+ *
  * @return array
  */
 

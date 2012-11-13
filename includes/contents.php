@@ -188,7 +188,7 @@ function contents()
 
 /**
  * extras
- * 
+ *
  * @param integer|string $filter
  */
 
@@ -272,7 +272,7 @@ function extras($filter = '')
 
 /**
  * infoline
- * 
+ *
  * @param string $table
  * @param integer $id
  * @param string $author
@@ -329,7 +329,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 /**
  * pagination
- * 
+ *
  * @param integer $sub_active
  * @param integer $sub_maximum
  * @param string $route
@@ -390,7 +390,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 
 /**
  * notification
- * 
+ *
  * @param string $title
  * @param string $text
  * @param string $action

@@ -2,7 +2,7 @@
 
 /**
  * clean
- * 
+ *
  * @param string $input
  * @param integer $mode
  * @return string
@@ -50,7 +50,7 @@ function clean($input = '', $mode = '')
 
 /**
  * clean special
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -63,7 +63,7 @@ function clean_special($input = '')
 
 /**
  * clean script
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -84,7 +84,7 @@ function clean_script($input = '')
 
 /**
  * clean html
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -103,7 +103,7 @@ function clean_html($input = '')
 
 /**
  * clean alias
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -118,7 +118,7 @@ function clean_alias($input = '')
 
 /**
  * clean email
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -132,7 +132,7 @@ function clean_email($input = '')
 
 /**
  * clean url
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -146,7 +146,7 @@ function clean_url($input = '')
 
 /**
  * clean mysql
- * 
+ *
  * @param string $input
  * @return string
  */

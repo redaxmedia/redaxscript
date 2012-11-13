@@ -85,7 +85,6 @@ function parser($input = '')
 						$position_array = strpos($value, 'array');
 						if ($position_array > -1)
 						{
-							$array = array();
 							$array_string = substr($value, 6, -1);
 							$array_parts = explode(', ', $array_string);
 

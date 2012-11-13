@@ -28,7 +28,6 @@ function admin_modules_list()
 	else if ($result)
 	{
 		$output .= '<tbody>';
-		$modules_installed = array();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

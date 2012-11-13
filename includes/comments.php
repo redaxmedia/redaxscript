@@ -2,7 +2,7 @@
 
 /**
  * comments
- * 
+ *
  * @param integer $article
  * @param string $route
  */
@@ -123,7 +123,7 @@ function comments($article = '', $route = '')
 
 /**
  * comment form
- * 
+ *
  * @param integer $article
  * @param string $language
  * @param string $access

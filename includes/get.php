@@ -1,6 +1,11 @@
 <?php
 
-/* get parameter */
+/**
+ * get parameter
+ * 
+ * @param string $input
+ * @return string
+ */
 
 function get_parameter($input = '')
 {
@@ -62,7 +67,12 @@ function get_parameter($input = '')
 	return $output;
 }
 
-/* get route */
+/**
+ * get route
+ * 
+ * @param integer $mode
+ * @return string
+ */
 
 function get_route($mode = '')
 {
@@ -117,7 +127,11 @@ function get_route($mode = '')
 	return $output;
 }
 
-/* get file */
+/**
+ * get file
+ * 
+ * @return string
+ */
 
 function get_file()
 {
@@ -125,7 +139,11 @@ function get_file()
 	return $output;
 }
 
-/* get root */
+/**
+ * get root
+ * 
+ * @return string
+ */
 
 function get_root()
 {
@@ -135,7 +153,11 @@ function get_root()
 	return $output;
 }
 
-/* get user ip */
+/**
+ * get user ip
+ * 
+ * @return string
+ */
 
 function get_user_ip()
 {
@@ -143,7 +165,12 @@ function get_user_ip()
 	return $output;
 }
 
-/* get user agent */
+/**
+ * get user agent
+ * 
+ * @param integer $mode
+ * @return string
+ */
 
 function get_user_agent($mode = '')
 {
@@ -198,7 +225,11 @@ function get_user_agent($mode = '')
 	}
 }
 
-/* get token */
+/**
+ * get token
+ * 
+ * @return string
+ */
 
 function get_token()
 {

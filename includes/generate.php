@@ -1,6 +1,17 @@
 <?php
 
-/* anchor element */
+/**
+ * anchor element
+ *
+ * @param string $type
+ * @param string $id
+ * @param string $class
+ * @param string $name
+ * @param string $value
+ * @param string $title
+ * @param string $code
+ * @return string
+ */
 
 function anchor_element($type = '', $id = '', $class = '', $name = '', $value = '', $title = '', $code = '')
 {
@@ -55,7 +66,18 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 	return $output;
 }
 
-/* form element */
+/**
+ * form element
+ *
+ * @param string $type
+ * @param string $id
+ * @param string $class
+ * @param string $name
+ * @param string $value
+ * @param string $label
+ * @param string $code
+ * @return string
+ */
 
 function form_element($type = '', $id = '', $class = '', $name = '', $value = '', $label = '', $code = '')
 {
@@ -129,7 +151,18 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 	return $output;
 }
 
-/* select element */
+/**
+ * select element
+ *
+ * @param string $id
+ * @param string $class
+ * @param string $name
+ * @param array $options
+ * @param string $select
+ * @param string $label
+ * @param string $code
+ * @return string
+ */
 
 function select_element($id = '', $class = '', $name = '', $options = '', $select = '', $label = '', $code = '')
 {
@@ -197,52 +230,52 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
 	return $output;
 }
 
-/* select date */
+/**
+ * select date
+ *
+ * @param string $id
+ * @param string $class
+ * @param string $name
+ * @param string $date
+ * @param string $format
+ * @param integer $start
+ * @param integer $end
+ * @param string $label
+ * @param string $code
+ * @return string
+ */
 
 function select_date($id = '', $class = '', $name = '', $date = '', $format = '', $start = '', $end = '', $label = '', $code = '')
 {
-	/* build attribute strings */
+	/* build select */
 
-	if ($id)
+	$select = $date ? date($format, strtotime($date)) : date($format);
+
+	/* build options */
+
+	for ($i = $start; $i < $end; $i++)
 	{
-		$selector_string = ' id="' . $id . '"';
-	}
-	if ($class)
-	{
-		$selector_string .= ' class="' . $class . '"';
-	}
-	if ($name)
-	{
-		$name_string = ' name="' . $name . '"';
-	}
-	if ($id && $label)
-	{
-		$label_string = '<label class="label" for="' . $id . '">' . $label . l('colon') . '</label>';
-	}
-	if ($code)
-	{
-		$code_string = ' ' . $code;
+		$options[] = sprintf('%02d', $i);
 	}
 
 	/* collect output */
 
-	$output = $label_string . '<select' . $selector_string . $name_string . $code_string . '>';
-	$select = $date ? date($format, strtotime($date)) : date($format);
-	for ($i = $start; $i < $end; $i++)
-	{
-		$value = sprintf('%02d', $i);
-		$output .= '<option value="' . $value . '"';
-		if ($i == $select)
-		{
-			$output .= ' selected="selected"';
-		}
-		$output .= '>' . $value . '</option>';
-	}
-	$output .= '</select>';
+	$output = select_element($id, $class, $name, $options, $select, $label, $code);
 	return $output;
 }
 
-/* object element */
+/**
+ * object element
+ *
+ * @param string $type
+ * @param string $id
+ * @param string $class
+ * @param string $name
+ * @param string $value
+ * @param string $data
+ * @param string $code
+ * @return string
+ */
 
 function object_element($type = '', $id = '', $class = '', $name = '', $value = '', $data = '', $code = '')
 {
