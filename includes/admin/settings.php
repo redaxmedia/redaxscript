@@ -1,6 +1,8 @@
 <?php
 
-/* admin settings form */
+/**
+ * admin settings form
+ */
 
 function admin_settings_form()
 {

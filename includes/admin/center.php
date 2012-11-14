@@ -1,6 +1,8 @@
 <?php
 
-/* admin routing */
+/**
+ * admin routing
+ */
 
 function admin_routing()
 {

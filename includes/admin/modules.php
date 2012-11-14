@@ -1,6 +1,8 @@
 <?php
 
-/* admin modules list */
+/**
+ * admin modules list
+ */
 
 function admin_modules_list()
 {
@@ -173,7 +175,9 @@ function admin_modules_list()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin modules form */
+/**
+ * admin modules form
+ */
 
 function admin_modules_form()
 {

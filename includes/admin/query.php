@@ -1,6 +1,8 @@
 <?php
 
-/* admin process */
+/**
+ * admin process
+ */
 
 function admin_process()
 {
@@ -437,7 +439,9 @@ function admin_process()
 	}
 }
 
-/* admin move */
+/**
+ * admin move
+ */
 
 function admin_move()
 {
@@ -469,7 +473,9 @@ function admin_move()
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
-/* admin sort */
+/**
+ * admin sort
+ */
 
 function admin_sort()
 {
@@ -541,7 +547,11 @@ function admin_sort()
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
-/* admin status */
+/**
+ * admin status
+ *
+ * @param string $input
+ */
 
 function admin_status($input = '')
 {
@@ -577,7 +587,9 @@ function admin_status($input = '')
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
-/* admin install */
+/**
+ * admin install
+ */
 
 function admin_install()
 {
@@ -598,7 +610,9 @@ function admin_install()
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
-/* admin delete */
+/**
+ * admin delete
+ */
 
 function admin_delete()
 {
@@ -680,7 +694,9 @@ function admin_delete()
 	}
 }
 
-/* admin update */
+/**
+ * admin update
+ */
 
 function admin_update()
 {
@@ -725,7 +741,13 @@ function admin_update()
 	}
 }
 
-/* admin children */
+/**
+ * admin children
+ *
+ * @param string $table
+ * @param integer $id
+ * @param integer $mode
+ */
 
 function admin_children($table = '', $id = '', $mode = '')
 {
@@ -790,7 +812,9 @@ function admin_children($table = '', $id = '', $mode = '')
 	}
 }
 
-/* admin last update */
+/**
+ * admin last update
+ */
 
 function admin_last_update()
 {

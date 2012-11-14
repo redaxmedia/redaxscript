@@ -1,6 +1,8 @@
 <?php
 
-/* admin groups list */
+/**
+ * admin groups list
+ */
 
 function admin_groups_list()
 {
@@ -111,7 +113,9 @@ function admin_groups_list()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin groups form */
+/**
+ * admin groups form
+ */
 
 function admin_groups_form()
 {

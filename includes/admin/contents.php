@@ -1,6 +1,8 @@
 <?php
 
-/* admin contents list */
+/**
+ * admin contents list
+ */
 
 function admin_contents_list()
 {
@@ -404,7 +406,9 @@ function admin_contents_list()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin contents form */
+/**
+ * admin contents form
+ */
 
 function admin_contents_form()
 {

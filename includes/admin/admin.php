@@ -1,6 +1,8 @@
 <?php
 
-/* admin panel list */
+/**
+ * admin panel list
+ */
 
 function admin_panel_list()
 {
@@ -129,7 +131,13 @@ function admin_panel_list()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin dock */
+/**
+ * admin dock
+ *
+ * @param string $table
+ * @param integer $id
+ * @return string
+ */
 
 function admin_dock($table = '', $id = '')
 {
@@ -165,7 +173,9 @@ function admin_dock($table = '', $id = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin notification */
+/**
+ * admin notification
+ */
 
 function admin_notification()
 {

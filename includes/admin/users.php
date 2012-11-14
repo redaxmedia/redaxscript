@@ -1,6 +1,8 @@
 <?php
 
-/* admin users list */
+/**
+ * admin users list
+ */
 
 function admin_users_list()
 {
@@ -162,7 +164,9 @@ function admin_users_list()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* admin users form */
+/**
+ * admin users form
+ */
 
 function admin_users_form()
 {
