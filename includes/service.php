@@ -32,7 +32,7 @@ function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subjec
 	$default_subject = s('subject');
 	if ($default_subject)
 	{
-		$subject_string = $default_subject . ' - ' . $subject;
+		$subject_string = $default_subject . s('divider') . $subject;
 	}
 	else
 	{
@@ -104,7 +104,14 @@ function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subjec
 	}
 }
 
-/* curl contents */
+/**
+ * curl contents
+ *
+ * @param string $url
+ * @param string $referer
+ * @param string $cookies
+ * @return string
+ */
 
 function curl_contents($url = '', $referer = '', $cookies = '')
 {

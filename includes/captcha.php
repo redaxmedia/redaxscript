@@ -3,8 +3,8 @@
 /**
  * captcha
  *
- * @param integer $mode
- * @return string
+ * @param string $mode
+ * @return integer|string
  */
 
 function captcha($mode = '')

@@ -102,7 +102,7 @@ function check_url($input = '')
  * check protocol
  *
  * @param string $input
- * @return integer
+ * @return string
  */
 
 function check_protocol($input = '')

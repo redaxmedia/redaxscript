@@ -1,21 +1,6 @@
 <?php
 
 /**
- * hash generator
- *
- * @param string $length
- * @return string
- */
-
-function hash_generator($length = '')
-{
-	$a = mt_rand(1, 1000000);
-	$b = sha1($a);
-	$output = substr($b, 0, $length);
-	return $output;
-}
-
-/**
  * password reset form
  */
 
@@ -141,5 +126,20 @@ function password_reset_post()
 		notification(l('operation_completed'), l('password_sent'), l('login'), 'login');
 	}
 	$_SESSION[ROOT . '/password_reset'] = '';
+}
+
+/**
+ * hash generator
+ *
+ * @param string $length
+ * @return string
+ */
+
+function hash_generator($length = '')
+{
+	$a = mt_rand(1, 1000000);
+	$b = sha1($a);
+	$output = substr($b, 0, $length);
+	return $output;
 }
 ?>
