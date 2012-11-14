@@ -1,6 +1,8 @@
 <?php
 
-/* multi language loader start */
+/**
+ * multi language loader start
+ */
 
 function multi_language_loader_start()
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* seo tube install */
+/**
+ * seo tube install
+ */
 
 function seo_tube_install()
 {
@@ -8,7 +10,9 @@ function seo_tube_install()
 	mysql_query($query);
 }
 
-/* seo tube uninstall */
+/**
+ * seo tube uninstall
+ */
 
 function seo_tube_uninstall()
 {

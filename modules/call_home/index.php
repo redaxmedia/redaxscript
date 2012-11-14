@@ -1,6 +1,8 @@
 <?php
 
-/* call home loader start */
+/**
+ * call home loader start
+ */
 
 function call_home_loader_start()
 {
@@ -9,7 +11,9 @@ function call_home_loader_start()
 	$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
 }
 
-/* call home scripts start */
+/**
+ * call home scripts start
+ */
 
 function call_home_scripts_start()
 {
@@ -20,7 +24,9 @@ function call_home_scripts_start()
 	}
 }
 
-/* call home admin notification start */
+/**
+ * call home admin notification start
+ */
 
 function call_home_admin_notification_start()
 {
@@ -45,7 +51,9 @@ function call_home_admin_notification_start()
 	echo $output;
 }
 
-/* call home admin notification end */
+/**
+ * call home admin notification end
+ */
 
 function call_home_admin_notification_end()
 {

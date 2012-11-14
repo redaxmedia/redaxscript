@@ -1,6 +1,8 @@
 <?php
 
-/* share this loader start */
+/**
+ * share this loader start
+ */
 
 function share_this_loader_start()
 {
@@ -8,7 +10,11 @@ function share_this_loader_start()
 	$loader_modules_styles[] = 'modules/share_this/styles/share_this.css';
 }
 
-/* share this article end */
+/**
+ * share this article end
+ *
+ * @return string
+ */
 
 function share_this_article_end()
 {
@@ -20,7 +26,11 @@ function share_this_article_end()
 	}
 }
 
-/* share this */
+/**
+ * share this
+ *
+ * @return string
+ */
 
 function share_this($route = '')
 {

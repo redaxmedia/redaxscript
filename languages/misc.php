@@ -36,7 +36,12 @@ $l['redaxscript'] = 'Redaxscript';
 $l['redaxscript_version'] = 'Nightly build';
 $l['redaxscript_website'] = 'redaxscript.com';
 
-/* shortcut */
+/**
+ * shortcut
+ * 
+ * @param string $name
+ * @return string
+ */
 
 function l($name = '')
 {

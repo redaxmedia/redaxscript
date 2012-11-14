@@ -1,6 +1,8 @@
 <?php
 
-/* archive install */
+/**
+ * archive install
+ */
 
 function archive_install()
 {
@@ -8,7 +10,9 @@ function archive_install()
 	mysql_query($query);
 }
 
-/* archive uninstall */
+/**
+ * archive uninstall
+ */
 
 function archive_uninstall()
 {

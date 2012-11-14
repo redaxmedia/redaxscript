@@ -1,6 +1,8 @@
 <?php
 
-/* editor_install */
+/**
+ * editor install
+ */
 
 function editor_install()
 {
@@ -8,7 +10,9 @@ function editor_install()
 	mysql_query($query);
 }
 
-/* editor_uninstall */
+/**
+ * editor uninstall
+ */
 
 function editor_uninstall()
 {

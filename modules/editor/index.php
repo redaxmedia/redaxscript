@@ -1,6 +1,8 @@
 <?php
 
-/* editor loader start */
+/**
+ * editor loader start
+ */
 
 function editor_loader_start()
 {
@@ -10,7 +12,9 @@ function editor_loader_start()
 	$loader_modules_scripts[] = 'modules/editor/scripts/editor.js';
 }
 
-/* editor loader scripts transport start */
+/**
+ * editor loader scripts transport start
+ */
 
 function editor_loader_scripts_transport_start()
 {

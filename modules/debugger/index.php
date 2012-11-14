@@ -1,6 +1,8 @@
 <?php
 
-/* debugger loader start */
+/**
+ * debugger loader start
+ */
 
 function debugger_loader_start()
 {
@@ -10,7 +12,9 @@ function debugger_loader_start()
 	$loader_modules_scripts[] = 'modules/debugger/scripts/debugger.js';
 }
 
-/* debugger extras end */
+/**
+ * debugger extras end
+ */
 
 function debugger_extras_end()
 {

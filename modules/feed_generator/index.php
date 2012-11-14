@@ -1,6 +1,8 @@
 <?php
 
-/* feed list */
+/**
+ * feed list
+ */
 
 function feed_list()
 {
@@ -24,7 +26,9 @@ function feed_list()
 	echo $output;
 }
 
-/* feed generator render start */
+/**
+ * feed generator render start
+ */
 
 function feed_generator_render_start()
 {
@@ -36,7 +40,11 @@ function feed_generator_render_start()
 	}
 }
 
-/* feed generator */
+/**
+ * feed generator
+ *
+ * param string $table
+ */
 
 function feed_generator($table = '')
 {

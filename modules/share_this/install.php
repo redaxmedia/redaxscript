@@ -1,6 +1,8 @@
 <?php
 
-/* share this install */
+/**
+ * share this install
+ */
 
 function share_this_install()
 {
@@ -8,7 +10,9 @@ function share_this_install()
 	mysql_query($query);
 }
 
-/* share this uninstall */
+/**
+ * share this uninstall
+ */
 
 function share_this_uninstall()
 {

@@ -1,6 +1,10 @@
 <?php
 
-/* recent view */
+/**
+ * recent view
+ *
+ * @param integer $limit
+ */
 
 function recent_view($limit = '')
 {
@@ -23,7 +27,9 @@ function recent_view($limit = '')
 	return $output;
 }
 
-/* recent view logger */
+/**
+ * recent view logger
+ */
 
 function recent_view_logger()
 {

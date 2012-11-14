@@ -1,6 +1,8 @@
 <?php
 
-/* file manager install */
+/**
+ * file manager install
+ */
 
 function file_manager_install()
 {
@@ -8,7 +10,9 @@ function file_manager_install()
 	mysql_query($query);
 }
 
-/* file manager uninstall */
+/**
+ * file manager uninstall
+ */
 
 function file_manager_uninstall()
 {

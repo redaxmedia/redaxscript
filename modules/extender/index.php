@@ -1,6 +1,8 @@
 <?php
 
-/* extender loader start */
+/**
+ * extender loader start
+ */
 
 function extender_loader_start()
 {

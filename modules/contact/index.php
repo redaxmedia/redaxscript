@@ -1,6 +1,8 @@
 <?php
 
-/* contact center start */
+/**
+ * contact center start
+ */
 
 function contact_center_start()
 {
@@ -11,14 +13,18 @@ function contact_center_start()
 	}
 }
 
-/* contact */
+/**
+ * contact
+ */
 
 function contact()
 {
 	contact_form();
 }
 
-/* contact form */
+/**
+ * contact form
+ */
 
 function contact_form()
 {
@@ -73,7 +79,9 @@ function contact_form()
 	echo $output;
 }
 
-/* contact post */
+/**
+ * contact post
+ */
 
 function contact_post()
 {

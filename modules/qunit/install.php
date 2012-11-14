@@ -1,6 +1,8 @@
 <?php
 
-/* qunit install */
+/**
+ * qunit install
+ */
 
 function qunit_install()
 {
@@ -8,7 +10,9 @@ function qunit_install()
 	mysql_query($query);
 }
 
-/* qunit uninstall */
+/**
+ * qunit uninstall
+ */
 
 function qunit_uninstall()
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* db backup render start */
+/**
+ * db backup render start
+ */
 
 function db_backup_render_start()
 {
@@ -36,7 +38,9 @@ function db_backup_render_start()
 	}
 }
 
-/* db backup center */
+/**
+ * db backup center
+ */
 
 function db_backup_center_start()
 {
@@ -47,7 +51,11 @@ function db_backup_center_start()
 	}
 }
 
-/* db backup panel modules */
+/**
+ * db backup panel modules
+ *
+ * @return string
+ */
 
 function db_backup_admin_panel_list_modules()
 {
@@ -58,7 +66,11 @@ function db_backup_admin_panel_list_modules()
 	return $output;
 }
 
-/* db backup */
+/**
+ * db backup
+ *
+ * @param integer $mode
+ */
 
 function db_backup($mode = '')
 {
@@ -75,7 +87,12 @@ function db_backup($mode = '')
 	}
 }
 
-/* db backup clean date */
+/**
+ * db backup clean date
+ *
+ * @param string $input
+ * @return string
+ */
 
 function db_backup_clean_date($input = '')
 {
@@ -84,7 +101,11 @@ function db_backup_clean_date($input = '')
 	return $output;
 }
 
-/* db backup process */
+/**
+ * db backup process
+ *
+ * @return string
+ */
 
 function db_backup_process()
 {
@@ -100,7 +121,12 @@ function db_backup_process()
 	return $output;
 }
 
-/* db backup get definitions */
+/**
+ * db backup get definitions
+ *
+ * @param string $table
+ * @return string
+ */
 
 function db_backup_get_definitions($table = '')
 {
@@ -109,9 +135,9 @@ function db_backup_get_definitions($table = '')
 	$query = 'SHOW FULL COLUMNS FROM ' . $table;
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
-	
+
 	/* collect output */
-	
+
 	$output = 'CREATE TABLE IF NOT EXISTS ' . $table . ' (';
 	while ($a = mysql_fetch_assoc($result))
 	{
@@ -145,9 +171,9 @@ function db_backup_get_definitions($table = '')
 			$output .= ', ';
 		}
 	}
-	
+
 	/* query table keys */
-	
+
 	$query = 'SHOW KEYS FROM ' . $table;
 	$result = mysql_query($query);
 	while ($b = mysql_fetch_assoc($result))
@@ -162,9 +188,9 @@ function db_backup_get_definitions($table = '')
 		}
 		$r[$key_name][] = $column_name;
 	}
-	
+
 	/* collect output */
-	
+
 	foreach ($r as $key => $value)
 	{
 		if ($key == 'PRIMARY')
@@ -174,9 +200,9 @@ function db_backup_get_definitions($table = '')
 		}
 	}
 	$output .= ')';
-	
+
 	/* query table status */
-	
+
 	$query = 'SHOW TABLE STATUS LIKE \'' . $table . '\'';
 	$result = mysql_query($query);
 
@@ -209,7 +235,12 @@ function db_backup_get_definitions($table = '')
 	return $output;
 }
 
-/* db backup get contents */
+/*
+ * db backup get contents
+ *
+ * @param string $table
+ * @return string
+ */
 
 function db_backup_get_contents($table = '')
 {
@@ -219,9 +250,9 @@ function db_backup_get_contents($table = '')
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 	$num_fields = mysql_num_fields($result);
-	
+
 	/* collect output */
-	
+
 	$output = 'INSERT INTO ' . $table . ' VALUES ';
 	while ($r = mysql_fetch_row($result))
 	{

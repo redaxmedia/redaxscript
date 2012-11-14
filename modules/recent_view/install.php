@@ -1,6 +1,8 @@
 <?php
 
-/* recent view install */
+/**
+ * recent view install
+ */
 
 function recent_view_install()
 {
@@ -8,7 +10,9 @@ function recent_view_install()
 	mysql_query($query);
 }
 
-/* recent view uninstall */
+/**
+ * recent view uninstall
+ */
 
 function recent_view_uninstall()
 {

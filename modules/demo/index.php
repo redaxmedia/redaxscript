@@ -1,6 +1,8 @@
 <?php
 
-/* demo center start */
+/**
+ * demo center start
+ */
 
 function demo_center_start()
 {
@@ -11,7 +13,9 @@ function demo_center_start()
 	}
 }
 
-/* demo login */
+/**
+ * demo login
+ */
 
 function demo_login()
 {

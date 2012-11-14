@@ -1,6 +1,8 @@
 <?php
 
-/* gallery install */
+/**
+ * gallery install
+ */
 
 function gallery_install()
 {
@@ -8,7 +10,9 @@ function gallery_install()
 	mysql_query($query);
 }
 
-/* gallery uninstall */
+/**
+ * gallery uninstall
+ */
 
 function gallery_uninstall()
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* feed reader loader start */
+/**
+ * feed reader loader start
+ */
 
 function feed_reader_loader_start()
 {
@@ -8,7 +10,13 @@ function feed_reader_loader_start()
 	$loader_modules_styles[] = 'modules/feed_reader/styles/feed_reader.css';
 }
 
-/* feed reader */
+/**
+ * feed reader
+ *
+ * @param string $url
+ * @param integer|string $filter
+ * @param integer $filter
+ */
 
 function feed_reader($url = '', $filter = '', $limit = '')
 {

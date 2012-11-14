@@ -1,6 +1,10 @@
 <?php
 
-/* sitemap */
+/**
+ * sitemap
+ *
+ * @return string
+ */
 
 function sitemap()
 {

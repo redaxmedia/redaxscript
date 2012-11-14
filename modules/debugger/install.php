@@ -1,6 +1,8 @@
 <?php
 
-/* debugger install */
+/**
+ * debugger install
+ */
 
 function debugger_install()
 {
@@ -8,7 +10,9 @@ function debugger_install()
 	mysql_query($query);
 }
 
-/* debugger uninstall */
+/**
+ * debugger uninstall
+ */
 
 function debugger_uninstall()
 {

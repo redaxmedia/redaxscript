@@ -1,6 +1,11 @@
 <?php
 
-/* get file size */
+/**
+ * get file size
+ *
+ * @param string $file_name
+ * @param string $unit
+ */
 
 function get_file_size($file_name = '', $unit = '')
 {
@@ -20,7 +25,11 @@ function get_file_size($file_name = '', $unit = '')
 	echo $output;
 }
 
-/* get file date */
+/**
+ * get file date
+ *
+ * @param string $file_name
+ */
 
 function get_file_date($file_name = '')
 {

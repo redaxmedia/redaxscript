@@ -1,6 +1,10 @@
 <?php
 
-/* archive */
+/**
+ * archive
+ * 
+ * @return string
+ */
 
 function archive()
 {

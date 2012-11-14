@@ -1,6 +1,8 @@
 <?php
 
-/* get file install */
+/**
+ * get file install
+ */
 
 function get_file_install()
 {
@@ -8,7 +10,9 @@ function get_file_install()
 	mysql_query($query);
 }
 
-/* get file uninstall */
+/**
+ * get file uninstall
+ */
 
 function get_file_uninstall()
 {

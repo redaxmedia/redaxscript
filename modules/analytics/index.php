@@ -1,6 +1,8 @@
 <?php
 
-/* analytics loader start */
+/**
+ * analytics loader start
+ */
 
 function analytics_loader_start()
 {
@@ -12,7 +14,9 @@ function analytics_loader_start()
 	}
 }
 
-/* analytics scripts start */
+/**
+ * analytics scripts start
+ */
 
 function analytics_scripts_start()
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* analytics install */
+/**
+ * analytics install
+ */
 
 function analytics_install()
 {
@@ -8,7 +10,9 @@ function analytics_install()
 	mysql_query($query);
 }
 
-/* analytics uninstall */
+/**
+ * analytics uninstall
+ */
 
 function analytics_uninstall()
 {

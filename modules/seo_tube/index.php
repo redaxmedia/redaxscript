@@ -1,6 +1,8 @@
 <?php
 
-/* seo tube loader start */
+/**
+ * seo tube loader start
+ */
 
 function seo_tube_loader_start()
 {
@@ -10,7 +12,9 @@ function seo_tube_loader_start()
 	$loader_modules_scripts[] = 'modules/seo_tube/scripts/seo_tube.js';
 }
 
-/* seo tube scripts end */
+/**
+ * seo tube scripts end
+ */
 
 function seo_tube_scripts_end()
 {
@@ -36,7 +40,9 @@ function seo_tube_scripts_end()
 	echo $output;
 }
 
-/* seo tube center start */
+/**
+ * seo tube center start
+ */
 
 function seo_tube_center_start()
 {
@@ -46,7 +52,9 @@ function seo_tube_center_start()
 	}
 }
 
-/* seo tube admin contents form start */
+/**
+ * seo tube admin contents form start
+ */
 
 function seo_tube_admin_contents_form_start()
 {
@@ -56,7 +64,12 @@ function seo_tube_admin_contents_form_start()
 	}
 }
 
-/* seo tube get id */
+/**
+ * seo tube get id
+ *
+ * @param string $video_url
+ * @return string
+ */
 
 function seo_tube_get_id($video_url = '')
 {
@@ -73,7 +86,12 @@ function seo_tube_get_id($video_url = '')
 	return $output;
 }
 
-/* seo tube parser */
+/**
+ * seo tube parser
+ *
+ * @param string $video_id
+ * @return string
+ */
 
 function seo_tube_parser($video_id = '')
 {
@@ -101,7 +119,11 @@ function seo_tube_parser($video_id = '')
 	return $output;
 }
 
-/* seo tube player */
+/* seo tube player
+ *
+ * @param string $video_id
+ * @return string
+ */
 
 function seo_tube_player($video_id = '')
 {
@@ -109,7 +131,9 @@ function seo_tube_player($video_id = '')
 	return $output;
 }
 
-/* seo tube form */
+/**
+ * seo tube form
+ */
 
 function seo_tube_form()
 {
@@ -133,7 +157,9 @@ function seo_tube_form()
 	echo $output;
 }
 
-/* seo tube post */
+/**
+ * seo tube post
+ */
 
 function seo_tube_post()
 {

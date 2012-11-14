@@ -1,6 +1,8 @@
 <?php
 
-/* qunit loader start */
+/**
+ * qunit loader start
+ */
 
 function qunit_loader_start()
 {
@@ -14,7 +16,9 @@ function qunit_loader_start()
 	}
 }
 
-/* qunit loader scripts transport start */
+/**
+ * qunit loader scripts transport start
+ */
 
 function qunit_loader_scripts_transport_start()
 {
@@ -32,7 +36,9 @@ function qunit_loader_scripts_transport_start()
 	}
 }
 
-/* qunit scripts start */
+/**
+ * qunit scripts start
+ */
 
 function qunit_scripts_start()
 {
@@ -43,7 +49,9 @@ function qunit_scripts_start()
 	}
 }
 
-/* qunit render start */
+/**
+ * qunit render start
+ */
 
 function qunit_render_start()
 {
@@ -54,7 +62,9 @@ function qunit_render_start()
 	}
 }
 
-/* qunit center start */
+/**
+ * qunit center start
+ */
 
 function qunit_center_start()
 {

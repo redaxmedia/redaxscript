@@ -1,6 +1,8 @@
 <?php
 
-/* feed reader install */
+/**
+ * feed reader install
+ */
 
 function feed_reader_install()
 {
@@ -8,7 +10,9 @@ function feed_reader_install()
 	mysql_query($query);
 }
 
-/* feed reader uninstall */
+/**
+ * feed reader uninstall
+ */
 
 function feed_reader_uninstall()
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* feed generator install */
+/**
+ * feed generator install
+ */
 
 function feed_generator_install()
 {
@@ -8,7 +10,9 @@ function feed_generator_install()
 	mysql_query($query);
 }
 
-/* feed generator uninstall */
+/**
+ * feed generator uninstall
+ */
 
 function feed_generator_uninstall()
 {

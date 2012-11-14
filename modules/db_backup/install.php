@@ -1,6 +1,8 @@
 <?php
 
-/* db backup install */
+/**
+ * db backup install
+ */
 
 function db_backup_install()
 {
@@ -8,7 +10,9 @@ function db_backup_install()
 	mysql_query($query);
 }
 
-/* db backup uninstall */
+/**
+ * db backup uninstall
+ */
 
 function db_backup_uninstall()
 {

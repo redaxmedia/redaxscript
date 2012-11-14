@@ -1,6 +1,8 @@
 <?php
 
-/* file manager render start */
+/**
+ * file manager render start
+ */
 
 function file_manager_render_start()
 {
@@ -10,7 +12,9 @@ function file_manager_render_start()
 	}
 }
 
-/* file manager loader start */
+/**
+ * file manager loader start
+ */
 
 function file_manager_loader_start()
 {
@@ -23,7 +27,9 @@ function file_manager_loader_start()
 	}
 }
 
-/* file manager loader scripts transport start */
+/**
+ * file manager loader scripts transport start
+ */
 
 function file_manager_loader_scripts_transport_start()
 {
@@ -37,7 +43,9 @@ function file_manager_loader_scripts_transport_start()
 	}
 }
 
-/* file manager center start */
+/**
+ * file manager center start
+ */
 
 function file_manager_center_start()
 {
@@ -76,7 +84,11 @@ function file_manager_center_start()
 	}
 }
 
-/* file manager panel modules */
+/**
+ * file manager panel modules
+ *
+ * @return string
+ */
 
 function file_manager_admin_panel_list_modules()
 {
@@ -84,7 +96,11 @@ function file_manager_admin_panel_list_modules()
 	return $output;
 }
 
-/* file manager */
+/**
+ * file manager
+ *
+ * @param string $directory
+ */
 
 function file_manager($directory = '')
 {
@@ -159,7 +175,12 @@ function file_manager($directory = '')
 	echo $output;
 }
 
-/* file manager clean file name */
+/**
+ * file manager clean file name
+ *
+ * @param string $input
+ * @return string
+ */
 
 function file_manager_clean_file_name($input = '')
 {
@@ -169,7 +190,11 @@ function file_manager_clean_file_name($input = '')
 	return $output;
 }
 
-/* file manager upload */
+/**
+ * file manager upload
+ *
+ * @param string $diretory
+ */
 
 function file_manager_upload($directory = '')
 {
@@ -207,7 +232,11 @@ function file_manager_upload($directory = '')
 	}
 }
 
-/* file manager delete */
+/**
+ * file manager delete
+ * 
+ * @param string $diretory
+ */
 
 function file_manager_delete($directory = '')
 {

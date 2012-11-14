@@ -1,6 +1,8 @@
 <?php
 
-/* sitemap xml render start */
+/**
+ * sitemap xml render start
+ */
 
 function sitemap_xml_render_start()
 {
@@ -12,7 +14,9 @@ function sitemap_xml_render_start()
 	}
 }
 
-/* sitemap xml */
+/**
+ * sitemap xml
+ */
 
 function sitemap_xml()
 {

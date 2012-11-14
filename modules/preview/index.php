@@ -1,6 +1,8 @@
 <?php
 
-/* preview loader start */
+/**
+ * preview loader start
+ */
 
 function preview_loader_start()
 {
@@ -11,7 +13,9 @@ function preview_loader_start()
 	}
 }
 
-/* preview render start */
+/**
+ * preview render start
+ */
 
 function preview_render_start()
 {
@@ -21,7 +25,9 @@ function preview_render_start()
 	}
 }
 
-/* preview center start */
+/**
+ * preview center start
+ */
 
 function preview_center_start()
 {

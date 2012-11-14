@@ -1,6 +1,8 @@
 <?php
 
-/* fb group install */
+/**
+ * fb group install
+ */
 
 function fb_group_install()
 {
@@ -8,7 +10,9 @@ function fb_group_install()
 	mysql_query($query);
 }
 
-/* fb group uninstall */
+/**
+ * fb group uninstall
+ */
 
 function fb_group_uninstall()
 {

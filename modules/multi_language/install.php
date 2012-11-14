@@ -1,6 +1,8 @@
 <?php
 
-/* multi language install */
+/**
+ * multi language install
+ */
 
 function multi_language_install()
 {
@@ -8,7 +10,9 @@ function multi_language_install()
 	mysql_query($query);
 }
 
-/* multi language uninstall */
+/**
+ * multi language uninstall
+ */
 
 function multi_language_uninstall()
 {

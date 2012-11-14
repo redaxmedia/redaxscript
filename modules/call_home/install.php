@@ -1,6 +1,8 @@
 <?php
 
-/* call home install */
+/**
+ * call home install
+ */
 
 function call_home_install()
 {
@@ -8,7 +10,9 @@ function call_home_install()
 	mysql_query($query);
 }
 
-/* call home uninstall */
+/**
+ * call home uninstall
+ */
 
 function call_home_uninstall()
 {

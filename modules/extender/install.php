@@ -1,6 +1,8 @@
 <?php
 
-/* extender install */
+/**
+ * extender install
+ */
 
 function extender_install()
 {
@@ -8,7 +10,9 @@ function extender_install()
 	mysql_query($query);
 }
 
-/* extender uninstall */
+/**
+ * extender uninstall
+ */
 
 function extender_uninstall()
 {

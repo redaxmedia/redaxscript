@@ -1,6 +1,8 @@
 <?php
 
-/* sitemap xml install */
+/**
+ * sitemap xml install
+ */
 
 function sitemap_xml_install()
 {
@@ -8,7 +10,9 @@ function sitemap_xml_install()
 	mysql_query($query);
 }
 
-/* sitemap xml uninstall */
+/**
+ * sitemap xml uninstall
+ */
 
 function sitemap_xml_uninstall()
 {

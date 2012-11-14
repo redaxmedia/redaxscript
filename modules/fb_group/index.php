@@ -1,6 +1,8 @@
 <?php
 
-/* fb group loader start */
+/**
+ * fb group loader start
+ */
 
 function fb_group_loader_start()
 {
@@ -8,7 +10,9 @@ function fb_group_loader_start()
 	$loader_modules_styles[] = 'modules/fb_group/styles/fb_group.css';
 }
 
-/* fb group render start */
+/**
+ * fb group render start
+ */
 
 function fb_group_render_start()
 {
@@ -19,7 +23,13 @@ function fb_group_render_start()
 	}
 }
 
-/* fb group */
+/**
+ * fb group
+ *
+ * @param string $type
+ * @param integer $limit_first
+ * @param integer $limit_second
+ */
 
 function fb_group($type = '', $limit_first = '', $limit_second = '')
 {
@@ -174,7 +184,13 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 	echo $output;
 }
 
-/* fb group user link */
+/**
+ * fb group user link
+ *
+ * @param integer $id
+ * @param string $name
+ * @return string
+ */
 
 function fb_group_user_link($id = '', $name = '')
 {
@@ -182,7 +198,15 @@ function fb_group_user_link($id = '', $name = '')
 	return $output;
 }
 
-/* fb group user image */
+/**
+ * fb group user image
+ *
+ * @param integer $id
+ * @param string $name
+ * @param string $type
+ * @param integer $mode
+ * @return string
+ */
 
 function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
 {
@@ -198,7 +222,11 @@ function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
 	return $output;
 }
 
-/* fb group get access token*/
+/**
+ * fb group get access token
+ *
+ * @return string
+ */
 
 function fb_group_get_access_token()
 {
@@ -223,7 +251,12 @@ function fb_group_get_access_token()
 	return $output;
 }
 
-/* fb group get contents */
+/**
+ * fb group get contents
+ *
+ * @param string $type
+ * @return string
+ */
 
 function fb_group_get_contents($type = '')
 {

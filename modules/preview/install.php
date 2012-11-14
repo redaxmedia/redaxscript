@@ -1,6 +1,8 @@
 <?php
 
-/* preview install */
+/**
+ * preview install
+ */
 
 function preview_install()
 {
@@ -8,7 +10,9 @@ function preview_install()
 	mysql_query($query);
 }
 
-/* preview uninstall */
+/**
+ * preview uninstall
+ */
 
 function preview_uninstall()
 {

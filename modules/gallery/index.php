@@ -1,6 +1,8 @@
 <?php
 
-/* gallery loader start */
+/**
+ * gallery loader start
+ */
 
 function gallery_loader_start()
 {
@@ -11,7 +13,9 @@ function gallery_loader_start()
 	$loader_modules_scripts[] = 'modules/gallery/scripts/gallery.js';
 }
 
-/* gallery loader scripts transport start */
+/**
+ * gallery loader scripts transport start
+ */
 
 function gallery_loader_scripts_transport_start()
 {
@@ -25,7 +29,15 @@ function gallery_loader_scripts_transport_start()
 	echo $output;
 }
 
-/* gallery */
+/**
+ * gallery
+ *
+ * @param string $directory
+ * @param integer $quality
+ * @param integer $scaling
+ * @param integer $height
+ * @param string $command
+ */
 
 function gallery($directory = '', $quality = '', $scaling = '', $height = '', $command = '')
 {
@@ -152,7 +164,16 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 	}
 }
 
-/* gallery build thumb */
+/**
+ * gallery build thumb
+ *
+ * @param string $input
+ * @param string $directory
+ * @param string $route
+ * @param integer $quality
+ * @param integer $scaling
+ * @param integer $height
+ */
 
 function gallery_build_thumb($input = '', $directory = '', $route = '', $quality = '', $scaling = '', $height = '')
 {
