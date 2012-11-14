@@ -5,6 +5,7 @@
  *
  * @param string $input
  * @param string|array $ignore
+ * @return array
  */
 
 function read_directory($input = '', $ignore = '')

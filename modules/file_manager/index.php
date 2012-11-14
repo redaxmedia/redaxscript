@@ -64,7 +64,7 @@ function file_manager_center_start()
 			}
 			else
 			{
-				file_manager_delete(FILE_MANAGER_DIRECTORY);
+				remove_directory(FILE_MANAGER_DIRECTORY, 1);
 			}
 		}
 
@@ -229,33 +229,6 @@ function file_manager_upload($directory = '')
 	else
 	{
 		move_uploaded_file($file, $directory . '/' . $file_name);
-	}
-}
-
-/**
- * file manager delete
- * 
- * @param string $diretory
- */
-
-function file_manager_delete($directory = '')
-{
-	$file_manager_directory = read_directory($directory);
-
-	/* delete file and directory */
-
-	if (count($file_manager_directory))
-	{
-		$file_name = $file_manager_directory[THIRD_SUB_PARAMETER];
-		$route = $directory . '/' . $file_name;
-		if (is_dir($route))
-		{
-			remove_directory($route, 1);
-		}
-		else
-		{
-			unlink($route);
-		}
 	}
 }
 ?>
