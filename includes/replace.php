@@ -1,6 +1,11 @@
 <?php
 
-/* break up */
+/**
+ * break up
+ *
+ * @param string $input
+ * @return string
+ */
 
 function break_up($input = '')
 {
@@ -14,7 +19,14 @@ function break_up($input = '')
 	return $output;
 }
 
-/* truncate */
+/**
+ * truncate
+ *
+ * @param string $input
+ * @param string $length
+ * @param string $end
+ * @return string
+ */
 
 function truncate($input = '', $length = '', $end = '')
 {
@@ -30,7 +42,13 @@ function truncate($input = '', $length = '', $end = '')
 	return $output;
 }
 
-/* minify */
+/**
+ * minify
+ *
+ * @param string $type
+ * @param string $input
+ * @return string
+ */
 
 function minify($type = '', $input = '')
 {
@@ -101,7 +119,12 @@ function minify($type = '', $input = '')
 	return $output;
 }
 
-/* entity */
+/**
+ * entity
+ *
+ * @param string $input
+ * @return string
+ */
 
 function entity($input = '')
 {

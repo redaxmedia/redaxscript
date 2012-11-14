@@ -1,6 +1,8 @@
 <?php
 
-/* startup */
+/**
+ * startup
+ */
 
 function startup()
 {
@@ -290,7 +292,11 @@ function startup()
 	define('TEMPLATE', $_SESSION[ROOT . '/template']);
 }
 
-/* undefine */
+/**
+ * undefine
+ *
+ * @param string $input
+ */
 
 function undefine($input = '')
 {

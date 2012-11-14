@@ -1,6 +1,16 @@
 <?php
 
-/* send mail */
+/**
+ * send mail
+ *
+ * @param string $to
+ * @param string $to_name
+ * @param string $from
+ * @param string $from_name
+ * @param string $subject
+ * @param string $body_array
+ * @param string $attachment_array
+ */
 
 function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subject = '', $body_array = '', $attachment_array = '')
 {

@@ -1,6 +1,8 @@
 <?php
 
-/* registration form */
+/**
+ * registration form
+ */
 
 function registration_form()
 {
@@ -48,7 +50,9 @@ function registration_form()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* registration post */
+/**
+ * registration post
+ */
 
 function registration_post()
 {

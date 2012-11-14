@@ -1,6 +1,8 @@
 <?php
 
-/* reminder form */
+/**
+ * reminder form
+ */
 
 function reminder_form()
 {
@@ -46,7 +48,9 @@ function reminder_form()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* reminder post */
+/**
+ * reminder post
+ */
 
 function reminder_post()
 {

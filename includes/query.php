@@ -1,6 +1,13 @@
 <?php
 
-/* database connect */
+/**
+ * database connect
+ *
+ * @param string $host
+ * @param string $name
+ * @param string $user
+ * @param string $password
+ */
 
 function database_connect($host = '', $name = '', $user = '', $password = '')
 {
@@ -27,7 +34,12 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
 	}
 }
 
-/* shortcut */
+/**
+ * shortcut
+ *
+ * @param string $name
+ * @return string
+ */
 
 function s($name = '')
 {
@@ -58,7 +70,15 @@ function s($name = '')
 	return $output;
 }
 
-/* retrieve */
+/**
+ * retrieve
+ *
+ * @param string $column
+ * @param string $table
+ * @param string $field
+ * @param string $value
+ * @return string
+ */
 
 function retrieve($column = '', $table = '', $field = '', $value = '')
 {
@@ -86,7 +106,12 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 	return $output;
 }
 
-/* query table */
+/**
+ * query table
+ *
+ * @param string $input
+ * @return string
+ */
 
 function query_table($input = '')
 {
@@ -120,7 +145,14 @@ function query_table($input = '')
 	return $output;
 }
 
-/* query plumb */
+/**
+ * query plumb
+ *
+ * @param string $column
+ * @param string $table
+ * @param string $function
+ * @return string
+ */
 
 function query_plumb($column = '', $table = '', $function = '')
 {
@@ -136,7 +168,14 @@ function query_plumb($column = '', $table = '', $function = '')
 	return $output;
 }
 
-/* query total */
+/**
+ * query total
+ *
+ * @param string $table
+ * @param string $field
+ * @param string $value
+ * @return string
+ */
 
 function query_total($table = '', $field = '', $value = '')
 {
@@ -156,7 +195,13 @@ function query_total($table = '', $field = '', $value = '')
 	return $output;
 }
 
-/* build route */
+/**
+ * build route
+ *
+ * @param string $table
+ * @param integer $id
+ * @return string
+ */
 
 function build_route($table = '', $id = '')
 {
@@ -225,7 +270,11 @@ function build_route($table = '', $id = '')
 	return $output;
 }
 
-/* future update */
+/**
+ * future update
+ *
+ * @param string $table
+ */
 
 function future_update($table = '')
 {

@@ -1,13 +1,17 @@
 <?php
 
-/* search */
+/**
+ * search
+ */
 
 function search()
 {
 	search_form();
 }
 
-/* search form */
+/**
+ * search form
+ */
 
 function search_form()
 {
@@ -36,7 +40,9 @@ function search_form()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* search post */
+/**
+ * search post
+ */
 
 function search_post()
 {
