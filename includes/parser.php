@@ -1,6 +1,11 @@
 <?php
 
-/* parser */
+/**
+ * parser
+ *
+ * @param string $input
+ * @return string
+ */
 
 function parser($input = '')
 {

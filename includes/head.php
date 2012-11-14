@@ -1,6 +1,8 @@
 <?php
 
-/* head */
+/**
+ * head
+ */
 
 function head()
 {
@@ -159,7 +161,7 @@ function head()
 		}
 	}
 
-	/* extend with canonical route */
+	/* extend canonical url */
 
 	if ($canonical_route)
 	{

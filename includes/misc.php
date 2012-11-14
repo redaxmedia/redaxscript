@@ -1,6 +1,11 @@
 <?php
 
-/* shortcut */
+/**
+ * shortcut
+ *
+ * @param string $name
+ * @return string
+ */
 
 function b($name = '')
 {

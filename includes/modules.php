@@ -1,6 +1,10 @@
 <?php
 
-/* modules include */
+/**
+ * modules include
+ *
+ * @return array
+ */
 
 function modules_include()
 {
@@ -46,7 +50,12 @@ function modules_include()
 	return $output;
 }
 
-/* hook */
+/**
+ * hook
+ *
+ * @param string $input
+ * @return string
+ */
 
 function hook($input = '')
 {

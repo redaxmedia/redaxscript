@@ -1,6 +1,12 @@
 <?php
 
-/* loader */
+/**
+ * loader
+ *
+ * @param string $type
+ * @param string $mode
+ * @return string
+ */
 
 function loader($type = '', $mode = '')
 {
@@ -175,7 +181,9 @@ function loader($type = '', $mode = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* styles */
+/**
+ * styles
+ */
 
 function styles()
 {
@@ -240,7 +248,11 @@ function styles()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* scripts */
+/**
+ * scripts
+ *
+ * @param string $mode
+ */
 
 function scripts($mode = '')
 {
@@ -327,7 +339,12 @@ function scripts($mode = '')
 	}
 }
 
-/* languages transport */
+/**
+ * languages transport
+ *
+ * @param array $language
+ * @return string
+ */
 
 function languages_transport($language = '')
 {
@@ -343,7 +360,12 @@ function languages_transport($language = '')
 	return $output;
 }
 
-/* scripts transport */
+/**
+ * scripts transport
+ *
+ * @param boolean $minify
+ * @return string
+ */
 
 function scripts_transport($minify = '')
 {

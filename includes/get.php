@@ -2,7 +2,7 @@
 
 /**
  * get parameter
- * 
+ *
  * @param string $input
  * @return string
  */
@@ -69,7 +69,7 @@ function get_parameter($input = '')
 
 /**
  * get route
- * 
+ *
  * @param integer $mode
  * @return string
  */
@@ -129,7 +129,7 @@ function get_route($mode = '')
 
 /**
  * get file
- * 
+ *
  * @return string
  */
 
@@ -141,7 +141,7 @@ function get_file()
 
 /**
  * get root
- * 
+ *
  * @return string
  */
 
@@ -155,7 +155,7 @@ function get_root()
 
 /**
  * get user ip
- * 
+ *
  * @return string
  */
 
@@ -167,7 +167,7 @@ function get_user_ip()
 
 /**
  * get user agent
- * 
+ *
  * @param integer $mode
  * @return string
  */
@@ -227,7 +227,7 @@ function get_user_agent($mode = '')
 
 /**
  * get token
- * 
+ *
  * @return string
  */
 

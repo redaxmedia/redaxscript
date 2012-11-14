@@ -1,6 +1,11 @@
 <?php
 
-/* hash generator */
+/**
+ * hash generator
+ *
+ * @param string $length
+ * @return string
+ */
 
 function hash_generator($length = '')
 {
@@ -10,7 +15,9 @@ function hash_generator($length = '')
 	return $output;
 }
 
-/* password reset form */
+/**
+ * password reset form
+ */
 
 function password_reset_form()
 {
@@ -42,7 +49,9 @@ function password_reset_form()
 	echo $output;
 }
 
-/* password reset post */
+/**
+ * password reset post
+ */
 
 function password_reset_post()
 {

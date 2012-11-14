@@ -1,6 +1,11 @@
 <?php
 
-/* navigation list */
+/**
+ * navigation list
+ *
+ * @param string $table
+ * @param array $options
+ */
 
 function navigation_list($table = '', $options = '')
 {
@@ -224,7 +229,11 @@ function navigation_list($table = '', $options = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* languages list */
+/**
+ * languages list
+ *
+ * @param array $options
+ */
 
 function languages_list($options = '')
 {
@@ -284,7 +293,11 @@ function languages_list($options = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* templates list */
+/**
+ * templates list
+ *
+ * @param array $options
+ */
 
 function templates_list($options = '')
 {
@@ -343,7 +356,9 @@ function templates_list($options = '')
 	hook(__FUNCTION__ . '_end');
 }
 
-/* login list */
+/**
+ * login list
+ */
 
 function login_list()
 {

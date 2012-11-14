@@ -1,6 +1,8 @@
 <?php
 
-/* login form */
+/**
+ * login form
+ */
 
 function login_form()
 {
@@ -58,7 +60,9 @@ function login_form()
 	hook(__FUNCTION__ . '_end');
 }
 
-/* login post */
+/**
+ * login post
+ */
 
 function login_post()
 {
@@ -232,7 +236,9 @@ function login_post()
 	$_SESSION[ROOT . '/login'] = '';
 }
 
-/* logout */
+/**
+ * logout
+ */
 
 function logout()
 {
