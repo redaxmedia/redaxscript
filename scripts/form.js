@@ -4,7 +4,7 @@
  * 1. check required
  * 2. check search
  * 3. note required
- * 4. clear fields
+ * 4. clear focus
  * 5. unmask password
  * 6. auto resize
  * 7. startup
@@ -180,7 +180,7 @@
 		});
 	};
 
-	/* @section 4. clear fields */
+	/* @section 4. clear focus */
 
 	$.fn.clearFocus = function ()
 	{
