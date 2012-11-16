@@ -4,7 +4,8 @@
  * 1. tag styling
  * 2. default buttons
  *    2.1 active effect
- *    2.2 children elements
+ *    2.2 hover effect
+ *    2.3 children elements
  * 3. default fields
  *    3.1 hover effect
  *    3.2 focus effect
@@ -61,7 +62,7 @@ textarea
 	background: -moz-linear-gradient(bottom, #3b3b3b, #303030);
 	background: -ms-linear-gradient(bottom, #3b3b3b, #303030);
 	background: -o-linear-gradient(bottom, #3b3b3b, #303030);
-	background: -webkit-gradient(linear, left top, left bottom, from(#3b3b3b), to(#303030));
+	background: -webkit-gradient(linear, left bottom, left top, from(#3b3b3b), to(#303030));
 	background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
 	background: linear-gradient(bottom, #3b3b3b, #303030);
 	box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -70,7 +71,20 @@ textarea
 	top: 1px;
 }
 
-/* @section 2.2 children elements */
+/* @section 2.2 hover effect */
+
+.field_button:hover, .field_button_large:hover, .field_button_search:hover
+{
+	background: #5b5b5b;
+	background: -moz-linear-gradient(top, #5b5b5b, #303030);
+	background: -ms-linear-gradient(top, #5b5b5b, #303030);
+	background: -o-linear-gradient(top, #5b5b5b, #303030);
+	background: -webkit-gradient(linear, left top, left bottom, from(#5b5b5b), to(#303030));
+	background: -webkit-linear-gradient(top, #5b5b5b, #303030);
+	background: linear-gradient(top, #5b5b5b, #303030);
+}
+
+/* @section 2.3 children elements */
 
 .field_button span, .field_button_large span, .field_button_search span
 {
