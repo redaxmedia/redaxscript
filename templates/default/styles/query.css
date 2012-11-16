@@ -8,10 +8,9 @@
  * 5. screen max 640
  * 6. screen max 480
  * 7. screen max 320
- * 8. screen max 240
- * 9. speed dail
- * 10. mobile
- * 11. rtl direction
+ * 8. speed dail
+ * 9. mobile
+ * 10. rtl direction
  */
 
 /* @section 1. print */
@@ -209,44 +208,7 @@
 	}
 }
 
-/* @section 8. screen max 240 */
-
-@media screen and (max-width: 240px)
-{
-	.content, .sidebar, .navibar, .wrapper
-	{
-		width: 220px;
-	}
-
-	.dialog_default
-	{
-		margin: -50px 0 0 -100px;
-		width: 200px;
-	}
-
-	.footer .box_first
-	{
-		width: auto;
-	}
-
-	.footer .box_second, .logo_website
-	{
-		display: none;
-	}
-
-	.player
-	{
-		height: 140px;
-		width: 180px;
-	}
-
-	.wrapper_body
-	{
-		min-width: 220px;
-	}
-}
-
-/* @section 9. speed dail */
+/* @section 8. speed dail */
 
 @media screen and (view-mode: minimized)
 {
@@ -256,14 +218,14 @@
 	}
 }
 
-/* @section 10. mobile */
+/* @section 9. mobile */
 
 .mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
 {
 	width: 50%;
 }
 
-/* @section 11. rtl direction */
+/* @section 10. rtl direction */
 
 .rtl
 {

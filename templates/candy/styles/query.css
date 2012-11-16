@@ -2,6 +2,10 @@
  * @tableofcontents
  *
  * 1. print
+ * 2. screen max 800
+ * 3. screen max 640
+ * 4. screen max 480
+ * 5. screen max 320
  */
 
 /* @section 1. print */
@@ -17,5 +21,114 @@
 	.footer, .header, .sidebar
 	{
 		display: none;
+	}
+}
+
+/* @section 2. screen max 800 */
+
+@media screen and (max-width: 800px)
+{
+	.content
+	{
+		min-height: 200px;
+	}
+
+	.content, .sidebar
+	{
+		float: none;
+	}
+
+	.content, .sidebar, .wrapper
+	{
+		width: 100%;
+	}
+
+	.wrapper_body
+	{
+		min-width: 0;
+	}
+}
+
+/* @section 3. screen max 640 */
+
+@media screen and (max-width: 640px)
+{
+	.list_pagination .item_first, .list_pagination .item_last
+	{
+		display: none;
+	}
+
+	.player
+	{
+		height: 400px;
+		width: 600px;
+	}
+}
+
+/* @section 4. screen max 480 */
+
+@media screen and (max-width: 480px)
+{
+	.dialog_default
+	{
+		margin: -50px 0 0 -40%;
+		width: 80%;
+	}
+
+	.list_footer, .list_header
+	{
+		font-size: 0.85em;
+	}
+
+	.list_pagination .item_previous, .list_pagination .item_next
+	{
+		display: none;
+	}
+
+	.player
+	{
+		height: 300px;
+		width: 400px;
+	}
+
+	.title_content
+	{
+		font-size: 1.25em;
+	}
+
+	.title_website
+	{
+		font-size: 2.75em;
+	}
+}
+
+/* @section 5. screen max 320 */
+
+@media screen and (max-width: 320px)
+{
+	.content, .sidebar, .wrapper
+	{
+		width: 300px;
+	}
+
+	.player
+	{
+		height: 180px;
+		width: 240px;
+	}
+
+	.title_content
+	{
+		font-size: 1em;
+	}
+
+	.title_website
+	{
+		font-size: 2em;
+	}
+
+	.wrapper_body
+	{
+		min-width: 300px;
 	}
 }

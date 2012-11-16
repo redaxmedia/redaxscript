@@ -6,9 +6,8 @@
  * 3. screen max 640
  * 4. screen max 480
  * 5. screen max 320
- * 6. screen max 240
- * 7. mobile
- * 8. rtl direction
+ * 6. mobile
+ * 7. rtl direction
  */
 
 /* @section 1. print */
@@ -64,14 +63,9 @@
 		width: 80%;
 	}
 
-	.list_pagination .item_number
+	.list_pagination .item_previous, .list_pagination .item_next
 	{
 		display: none;
-	}
-
-	.list_pagination .item_active
-	{
-		display: inline-block;
 	}
 
 	.player
@@ -85,38 +79,36 @@
 
 @media screen and (max-width: 320px)
 {
+	.content, .sidebar, .wrapper
+	{
+		width: 300px;
+	}
+
+	.list_pagination
+	{
+		display: none;
+	}
+
 	.player
 	{
 		height: 180px;
 		width: 240px;
 	}
-}
 
-/* @section 6. screen max 240 */
-
-@media screen and (max-width: 240px)
-{
-	.dialog_default
+	.wrapper_body
 	{
-		margin: -50px 0 0 -100px;
-		width: 200px;
-	}
-
-	.player
-	{
-		height: 140px;
-		width: 180px;
+		min-width: 300px;
 	}
 }
 
-/* @section 7. mobile */
+/* @section 6. mobile */
 
 .mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
 {
 	width: 50%;
 }
 
-/* @section 8. rtl direction */
+/* @section 7. rtl direction */
 
 .rtl
 {
