@@ -185,6 +185,19 @@
 	text-shadow: 0 1px #fff;
 }
 
+.list_pagination .item_active span
+{
+	background: #92901b;
+	background: -moz-linear-gradient(top, #d0cf20, #92901b);
+	background: -ms-linear-gradient(top, #d0cf20, #92901b);
+	background: -o-linear-gradient(top, #d0cf20, #92901b);
+	background: -webkit-gradient(linear, left top, left bottom, from(#d0cf20), to(#92901b));
+	background: -webkit-linear-gradient(top, #d0cf20, #92901b);
+	background: linear-gradient(top, #d0cf20, #92901b);
+	color: #000;
+	text-shadow: 0 1px #d3d25f;
+}
+
 .list_pagination a:hover
 {
 	color: #9609ac;
