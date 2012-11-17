@@ -61,13 +61,7 @@
 {
 	background: url('templates/candy/images/sprite.png') no-repeat;
 	height: 25px;
-	opacity: 0.8;
 	width: 318px;
-}
-
-.box_line:hover
-{
-	opacity: 1;
 }
 
 .content .box_line
