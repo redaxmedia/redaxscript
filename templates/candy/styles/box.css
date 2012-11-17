@@ -7,7 +7,8 @@
  * 4. several boxes
  * 5. box line
  * 6. box note
- * 7. space between elements
+ * 7. box quote
+ * 8. space between elements
  */
 
 /* @section 1. box code */
@@ -82,7 +83,31 @@
 	text-decoration: underline;
 }
 
-/* @section 7. space between elements */
+/* @section 7. box quote */
+
+.box_quote
+{
+	color: #eee;
+	font: italic 1.5em/2em georgia;
+	margin: 1em 0;
+	min-height: 4em;
+	padding: 0 5em;
+	position: relative;
+	text-shadow: 0 2px #000, 0 0 50px #ddd;
+}
+
+.box_quote:before
+{
+	color: #92901b;
+	content: '\201e';
+	font: 10em/1em georgia;
+	left: 0;
+	position: absolute;
+	text-shadow: 0 2px #000;
+	top: -0.75em;
+}
+
+/* @section 8. space between elements */
 
 .box_note + .box_note, .form_default .box_note
 {
