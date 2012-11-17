@@ -50,18 +50,18 @@ pre
 	text-decoration: underline;
 }
 
-.link_read_more
-{
-	display: inline-block;
-	font-weight: bold;
-	margin-top: 1em;
-}
-
 .link_made_by
 {
 	background: url('templates/candy/images/sprite.png') right -2px;
 	display: inline-block;
 	padding-right: 2em;
+}
+
+.link_read_more
+{
+	display: inline-block;
+	font-weight: bold;
+	margin-top: 1em;
 }
 
 .link_read_more:after

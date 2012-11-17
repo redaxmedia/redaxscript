@@ -2,11 +2,34 @@
  * @tableofcontents
  *
  * 1. table default
+ *    1.1 head and foot
  */
 
 /* @section 1. table default */
 
+.table_default
+{
+	background: #222;
+	background: rgba(255, 255, 255, 0.05);
+}
+
 .table_default td, .table_default th
 {
-	padding: 0.75em;
+	padding: 1em;
+}
+
+/* @section 1.1 head and foot */
+
+.table_default tfoot tr, .table_default thead tr
+{
+	background: #e2e2e2;
+	background: -moz-linear-gradient(top, #fff, #e2e2e2);
+	background: -ms-linear-gradient(top, #fff, #e2e2e2);
+	background: -o-linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
+	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
+	background: linear-gradient(top, #fff, #e2e2e2);
+	color: #474747;
+	font-weight: bold;
+	text-shadow: 0 1px #fff;
 }
