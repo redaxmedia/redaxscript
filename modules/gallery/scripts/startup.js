@@ -58,3 +58,10 @@ r.module.gallery =
 		}
 	}
 };
+
+/* disable preload */
+
+if (r.constant.MY_MOBILE)
+{
+	r.module.gallery.options.preload.startup = false;
+}
