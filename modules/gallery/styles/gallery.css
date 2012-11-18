@@ -59,6 +59,7 @@
 {
 	background: #fff;
 	bottom: 0;
+	color: #666;
 	display: none;
 	font: 1em georgia, arial;
 	left: 0;
@@ -132,6 +133,7 @@
 .gallery_next span, .gallery_previous span
 {
 	background: #fff;
+	color: #666;
 	display: none;
 	font: 1.25em georgia, arial;
 	margin-top: 3em;
