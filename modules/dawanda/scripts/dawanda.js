@@ -25,7 +25,7 @@
 
 		/* get url */
 
-		dawanda.buildURL = function (call, id)
+		dawanda.getURL = function (call, id)
 		{
 			var route = r.module.dawanda.routes[call],
 				output = '';
@@ -45,12 +45,12 @@
 			return output;
 		};
 
-		/* request api */
+		/* get data */
 
-		dawanda.requestAPI = function (id, call, page)
+		dawanda.getData = function (call, id, page)
 		{
 			$.ajax({
-				url: dawanda.buildURL(call, id),
+				url: dawanda.getURL(call, id),
 				dataType: 'jsonp',
 				data:
 				{
@@ -66,8 +66,8 @@
 
 		/* debug */
 
-		dawanda.requestAPI('landhausromantik', 'getShopDetails', 1);
-		dawanda.requestAPI('landhausromantik', 'getProductsForShop', 1);
+		dawanda.getData('getShopDetails', 'landhausromantik', 1);
+		dawanda.getData('getProductsForShop', 'landhausromantik', 1);
 	};
 
 	/* @section 2. startup */
