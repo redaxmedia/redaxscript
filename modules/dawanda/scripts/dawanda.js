@@ -66,8 +66,8 @@
 
 		/* debug */
 
-		dawanda.getData('getShopDetails', 'landhausromantik', 1);
-		dawanda.getData('getProductsForShop', 'landhausromantik', 1);
+		dawanda.getData('getShopDetails', '', 1);
+		dawanda.getData('getProductsForShop', '', 1);
 	};
 
 	/* @section 2. startup */
