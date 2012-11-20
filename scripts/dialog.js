@@ -103,7 +103,7 @@
 
 		/* callback if ok */
 
-		if (options.callback)
+		if (typeof options.callback === 'function')
 		{
 			buttonOk.click(function ()
 			{
@@ -111,11 +111,14 @@
 				{
 					var value = dialog.find('input.js_prompt')[0].value;
 
-					options.callback.call($(this), value);
+					if (value)
+					{
+						options.callback.call(this, value);
+					}
 				}
 				else
 				{
-					options.callback.call($(this));
+					options.callback.call(this);
 				}
 			});
 		}

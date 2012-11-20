@@ -20,12 +20,13 @@
 			options = $.extend({}, r.module.dawanda.options, options || {});
 		}
 
-		var dawanda = this;
+		/* build data object */
+
 		r.module.dawanda.data = {};
 
 		/* get url */
 
-		dawanda.getURL = function (call, id)
+		r.module.dawanda.getURL = function (call, id)
 		{
 			var route = r.module.dawanda.routes[call],
 				output = '';
@@ -47,12 +48,12 @@
 
 		/* get data */
 
-		dawanda.getData = function (call, id, type, page)
+		r.module.dawanda.getData = function (call, id, page, callback)
 		{
 			/* api request */
 
 			$.ajax({
-				url: dawanda.getURL(call, id),
+				url: r.module.dawanda.getURL(call, id),
 				dataType: 'jsonp',
 				data:
 				{
@@ -61,18 +62,22 @@
 				},
 				success: function (data)
 				{
+					/* store data */
+
 					if (typeof data.response === 'object')
 					{
 						r.module.dawanda.data[id] = $.extend({}, r.module.dawanda.data[id], data.response.result || {});
+
+						/* callback if data */
+
+						if (typeof callback === 'function')
+						{
+							callback.call(this);
+						}
 					}
 				}
 			});
 		};
-
-		/* collect data */
-
-		dawanda.getData('getShopDetails', '');
-		dawanda.getData('getProductsForShop', '');
 	};
 
 	/* @section 2. startup */
