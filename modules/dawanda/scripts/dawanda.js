@@ -20,13 +20,12 @@
 			options = $.extend({}, r.module.dawanda.options, options || {});
 		}
 
-		/* build data object */
-
+		var dawanda = this;
 		r.module.dawanda.data = {};
 
 		/* get url */
 
-		r.module.dawanda.getURL = function (call, id)
+		dawanda.getURL = function (call, id)
 		{
 			var route = r.module.dawanda.routes[call],
 				output = '';
@@ -48,7 +47,7 @@
 
 		/* get data */
 
-		r.module.dawanda.getData = function (call, id, page, callback)
+		dawanda.getData = function (call, id, page, callback)
 		{
 			/* fetch from cache */
 
@@ -67,9 +66,8 @@
 			else
 			{
 				$.ajax({
-					url: r.module.dawanda.getURL(call, id),
+					url: dawanda.getURL(call, id),
 					dataType: 'jsonp',
-					cache: true,
 					data:
 					{
 						api_key: options.key,
@@ -99,6 +97,32 @@
 				});
 			}
 		};
+
+		/* create shortcut */
+
+		dawanda.createShortcut = function (i)
+		{
+			r.module.dawanda[i] = function (id, page, callback)
+			{
+				dawanda.getData(i, id, page, callback);
+			};
+		};
+
+		/* register shortcut */
+
+		dawanda.registerShortcut = function ()
+		{
+			var i = '';
+
+			for (i in r.module.dawanda.routes)
+			{
+				if (r.module.dawanda.routes.hasOwnProperty(i))
+				{
+					dawanda.createShortcut(i);
+				}
+			}
+		};
+		dawanda.registerShortcut();
 	};
 
 	/* @section 2. startup */
