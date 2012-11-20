@@ -21,7 +21,7 @@
 		}
 
 		var dawanda = this;
-		dawanda.data = dawanda.data || {};
+		r.module.dawanda.data = {};
 
 		/* get url */
 
@@ -47,33 +47,41 @@
 
 		/* get data */
 
-		dawanda.getData = function (call, id, page)
+		dawanda.getData = function (call, id, type, page)
 		{
+			/* api request */
+
 			$.ajax({
 				url: dawanda.getURL(call, id),
 				dataType: 'jsonp',
 				data:
 				{
 					api_key: options.key,
-					page: page
+					page: page || 1
 				},
 				success: function (data)
 				{
-					r.module.dawanda.data = data.response;
+					if (typeof data.response === 'object')
+					{
+						r.module.dawanda.data[id] = $.extend({}, r.module.dawanda.data[id], data.response.result || {});
+					}
 				}
 			});
 		};
 
-		/* debug */
+		/* collect data */
 
-		dawanda.getData('getShopDetails', '', 1);
-		dawanda.getData('getProductsForShop', '', 1);
+		dawanda.getData('getShopDetails', '');
+		dawanda.getData('getProductsForShop', '');
 	};
 
 	/* @section 2. startup */
 
 	$(function ()
 	{
-		$.fn.dawanda(r.module.dawanda.options);
+		if (r.module.dawanda.startup)
+		{
+			$.fn.dawanda(r.module.dawanda.options);
+		}
 	});
 })(jQuery);
