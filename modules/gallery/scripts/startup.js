@@ -63,5 +63,6 @@ r.module.gallery =
 
 if (r.constant.MY_MOBILE)
 {
+	r.module.gallery.options.scaling = 0.8;
 	r.module.gallery.options.preload.startup = false;
 }

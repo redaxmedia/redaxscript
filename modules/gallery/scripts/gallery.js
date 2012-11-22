@@ -72,7 +72,7 @@
 				});
 			}
 
-			/* open gallery on click */
+			/* open gallery */
 
 			$(this).on('click touchmove', function (event)
 			{
