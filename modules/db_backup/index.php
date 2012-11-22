@@ -109,15 +109,23 @@ function db_backup_clean_date($input = '')
 
 function db_backup_process()
 {
+	/* query tables */
+
 	$query = 'SHOW TABLES FROM ' . d('name');
 	$result = mysql_query($query);
-	while ($r = mysql_fetch_row($result))
+
+	/* collect backup output */
+
+	if ($result)
 	{
-		$table = $r[0];
-		$definitions .= db_backup_get_definitions($table) . PHP_EOL . PHP_EOL;
-		$contents .= db_backup_get_contents($table) . PHP_EOL . PHP_EOL;
+		while ($r = mysql_fetch_row($result))
+		{
+			$table = $r[0];
+			$definitions .= db_backup_get_definitions($table) . PHP_EOL . PHP_EOL;
+			$contents .= db_backup_get_contents($table) . PHP_EOL . PHP_EOL;
+		}
+		$output = $definitions . $contents;
 	}
-	$output = $definitions . $contents;
 	return $output;
 }
 
@@ -136,102 +144,111 @@ function db_backup_get_definitions($table = '')
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 
-	/* collect output */
+	/* collect columns output */
 
-	$output = 'CREATE TABLE IF NOT EXISTS ' . $table . ' (';
-	while ($a = mysql_fetch_assoc($result))
+	if ($result && $num_rows)
 	{
-		if ($a)
+		$output = 'CREATE TABLE IF NOT EXISTS ' . $table . ' (';
+		while ($a = mysql_fetch_assoc($result))
 		{
-			foreach ($a as $key => $value)
+			if ($a)
 			{
-				$key = strtolower($key);
-				$$key = stripslashes($value);
+				foreach ($a as $key => $value)
+				{
+					$key = strtolower($key);
+					$$key = stripslashes($value);
+				}
 			}
-		}
-		$output .= $field . ' ' . $type;
-		if ($null == 'NO')
-		{
-			$output .= ' NOT NULL';
-		}
-		if ($collation != '')
-		{
-			$output .= ' COLLATE ' . $collation;
-		}
-		if ($default)
-		{
-			$output .= ' DEFAULT ' . $default;
-		}
-		if ($extra)
-		{
-			$output .= ' ' . $extra;
-		}
-		if (++$counter < $num_rows)
-		{
-			$output .= ', ';
+			$output .= $field . ' ' . $type;
+			if ($null == 'NO')
+			{
+				$output .= ' NOT NULL';
+			}
+			if ($collation != '')
+			{
+				$output .= ' COLLATE ' . $collation;
+			}
+			if ($default)
+			{
+				$output .= ' DEFAULT ' . $default;
+			}
+			if ($extra)
+			{
+				$output .= ' ' . $extra;
+			}
+			if (++$counter < $num_rows)
+			{
+				$output .= ', ';
+			}
 		}
 	}
 
-	/* query table keys */
+	/* query keys */
 
 	$query = 'SHOW KEYS FROM ' . $table;
 	$result = mysql_query($query);
-	while ($b = mysql_fetch_assoc($result))
+
+	/* collect keys output */
+
+	if ($result)
 	{
-		if ($b)
+		while ($b = mysql_fetch_assoc($result))
 		{
-			foreach ($b as $key => $value)
+			if ($b)
 			{
-				$key = strtolower($key);
-				$$key = stripslashes($value);
+				foreach ($b as $key => $value)
+				{
+					$key = strtolower($key);
+					$$key = stripslashes($value);
+				}
+			}
+			$r[$key_name][] = $column_name;
+		}
+		foreach ($r as $key => $value)
+		{
+			if ($key == 'PRIMARY')
+			{
+				$value_string = implode($value, ', ');
+				$output .= ', PRIMARY KEY (' . $value_string . ')';
 			}
 		}
-		$r[$key_name][] = $column_name;
+		$output .= ')';
 	}
 
-	/* collect output */
-
-	foreach ($r as $key => $value)
-	{
-		if ($key == 'PRIMARY')
-		{
-			$value_string = implode($value, ', ');
-			$output .= ', PRIMARY KEY (' . $value_string . ')';
-		}
-	}
-	$output .= ')';
-
-	/* query table status */
+	/* query status */
 
 	$query = 'SHOW TABLE STATUS LIKE \'' . $table . '\'';
 	$result = mysql_query($query);
 
-	/* collect output */
+	/* collect status output */
 
-	while ($c = mysql_fetch_assoc($result))
+	if ($result)
 	{
-		if ($c)
+		while ($c = mysql_fetch_assoc($result))
 		{
-			foreach ($c as $key => $value)
+			if ($c)
 			{
-				$key = strtolower($key);
-				$$key = stripslashes($value);
+				foreach ($c as $key => $value)
+				{
+					$key = strtolower($key);
+					$$key = stripslashes($value);
+				}
+			}
+			if ($engine)
+			{
+				$output .= ' ENGINE = ' . $engine;
+			}
+			if ($collation != '')
+			{
+				$output .= ' COLLATE = ' . $collation;
+			}
+			if ($auto_increment)
+			{
+				$output .= ' AUTO_INCREMENT = ' . $auto_increment;
 			}
 		}
-		if ($engine)
-		{
-			$output .= ' ENGINE = ' . $engine;
-		}
-		if ($collation != '')
-		{
-			$output .= ' COLLATE = ' . $collation;
-		}
-		if ($auto_increment)
-		{
-			$output .= ' AUTO_INCREMENT = ' . $auto_increment;
-		}
+		$output .= ';';
 	}
-	$output .= ';';
 	return $output;
 }
 
@@ -244,41 +261,44 @@ function db_backup_get_definitions($table = '')
 
 function db_backup_get_contents($table = '')
 {
-	/* query table contents */
+	/* query contents */
 
 	$query = 'SELECT * FROM ' . $table;
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 	$num_fields = mysql_num_fields($result);
 
-	/* collect output */
+	/* collect contents output */
 
-	$output = 'INSERT INTO ' . $table . ' VALUES ';
-	while ($r = mysql_fetch_row($result))
+	if ($result && $num_rows)
 	{
-		$output .= '(';
-		for ($i = 0; $i < $num_fields; $i++)
+		$output = 'INSERT INTO ' . $table . ' VALUES ';
+		while ($r = mysql_fetch_row($result))
 		{
-			if ($r[$i])
+			$output .= '(';
+			for ($i = 0; $i < $num_fields; $i++)
 			{
-				$output .= '\'' . addslashes($r[$i]) . '\'';
+				if ($r[$i])
+				{
+					$output .= '\'' . addslashes($r[$i]) . '\'';
+				}
+				else
+				{
+					$output .= '\'\'';
+				}
+				if ($i < $num_fields - 1)
+				{
+					$output .= ', ';
+				}
 			}
-			else
-			{
-				$output .= '\'\'';
-			}
-			if ($i < $num_fields - 1)
+			$output .= ')';
+			if (++$counter < $num_rows)
 			{
 				$output .= ', ';
 			}
 		}
-		$output .= ')';
-		if (++$counter < $num_rows)
-		{
-			$output .= ', ';
-		}
+		$output .= ';';
 	}
-	$output .= ';';
 	return $output;
 }
 ?>
