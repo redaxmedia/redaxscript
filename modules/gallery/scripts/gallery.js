@@ -74,7 +74,7 @@
 
 			/* open gallery on click */
 
-			$(this).click(function (event)
+			$(this).on('click touchmove', function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),
@@ -140,7 +140,7 @@
 					galleryLoader.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
 				}, options.timeout.loader);
 
-				/* close gallery on timout */
+				/* close gallery on timeout */
 
 				timeoutImage = setTimeout(function ()
 				{
@@ -209,9 +209,9 @@
 						buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
 					}
 
-					/* next and previous on click */
+					/* next and previous */
 
-					buttonPrevious.add(buttonNext).click(function (event)
+					buttonPrevious.add(buttonNext).on('click touchmove', function (event)
 					{
 						var link = $(this),
 							checkButtonPrevious = link.hasClass('js_gallery_previous'),
@@ -333,9 +333,9 @@
 					});
 				});
 
-				/* remove gallery and overlay on click */
+				/* remove gallery and overlay */
 
-				galleryOverlay.click(function ()
+				galleryOverlay.on('click touchmove', function ()
 				{
 					gallery.add(galleryOverlay).remove();
 					win.off();
