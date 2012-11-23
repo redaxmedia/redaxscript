@@ -106,11 +106,6 @@
 
 @media screen and (max-width: 320px)
 {
-	.content, .sidebar, .wrapper
-	{
-		width: 300px;
-	}
-
 	.player
 	{
 		height: 180px;

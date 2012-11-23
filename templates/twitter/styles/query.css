@@ -35,10 +35,14 @@
 		min-height: 200px;
 	}
 
-	.content, .sidebar
+	.content, .sidebar, .wrapper
 	{
-		float: none;
 		width: 100%;
+	}
+
+	.wrapper_body
+	{
+		min-width: 0;
 	}
 }
 
@@ -79,11 +83,6 @@
 
 @media screen and (max-width: 320px)
 {
-	.content, .sidebar, .wrapper
-	{
-		width: 300px;
-	}
-
 	.list_pagination
 	{
 		display: none;

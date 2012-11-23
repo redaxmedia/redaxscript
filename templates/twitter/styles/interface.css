@@ -87,17 +87,11 @@
 
 /* @section 4. list header */
 
-.list_header
-{
-	display: inline-block;
-	white-space: nowrap;
-}
-
 .list_header a
 {
 	color: #999;
 	line-height: 3.5em;
-	padding: 0 0.75em;
+	padding: 0 0.5em;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
 }
 
@@ -110,7 +104,12 @@
 .list_header li
 {
 	display: inline-block;
-	margin-left: 1em;
+	margin-right: 0.5em;
+}
+
+.list_header li:last-child
+{
+	margin-right: 0;
 }
 
 .list_header .item_active

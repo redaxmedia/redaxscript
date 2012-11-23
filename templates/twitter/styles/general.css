@@ -20,9 +20,10 @@ body
 .footer
 {
 	border-top: 1px solid #e5e5e5;
-	padding: 2em 0;
 	margin-bottom: 2em;
 	margin-top: 4em;
+	padding: 2em 0;
+	text-align: center;
 }
 
 /* @section 3. header */
@@ -40,6 +41,7 @@ body
 	background: linear-gradient(top, #333, #222);
 	box-shadow: inset 0 -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.25);
 	margin-bottom: 2em;
+	text-align: center;
 }
 
 /* @section 4. grid elements */
@@ -60,16 +62,18 @@ body
 
 .wrapper
 {
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 300px;
+	width: 980px;
 }
 
-.wrapper_header
+.wrapper_body
 {
-	white-space: nowrap;
+	min-width: 980px;
 }
-
-.wrapper_header, .wrapper_table_default
+	
+.wrapper_table_default
 {
 	overflow: hidden;
 }

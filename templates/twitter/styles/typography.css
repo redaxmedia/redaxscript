@@ -7,7 +7,6 @@
  * 3. several titles
  * 4. title dialog default
  * 5. title extra
- * 6. title website
  */
 
 /* @section 1. tag styling */
@@ -117,23 +116,4 @@ pre
 	margin-top: 1em;
 	padding: 0 1em;
 	text-transform: uppercase;
-}
-
-/* @section 6. title website */
-
-.title_website
-{
-	font: 1.75em/2em arial;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.title_website, .title_website a
-{
-	color: #999;
-}
-
-.title_website a:hover
-{
-	text-decoration: none;
 }

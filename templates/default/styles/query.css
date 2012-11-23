@@ -96,13 +96,6 @@
 		width: 25%;
 	}
 
-	.sidebar .box_extra, .sidebar .form_search, .sidebar .title_extra
-	{
-		-moz-border-radius: 0;
-		-webkit-border-radius: 0;
-		border-radius: 0;
-	}
-
 	.wrapper_body
 	{
 		min-width: 0;
@@ -171,11 +164,6 @@
 
 @media screen and (max-width: 320px)
 {
-	.content, .sidebar, .navibar, .wrapper
-	{
-		width: 300px;
-	}
-
 	.list_breadcrumb, .list_tab .item_second
 	{
 		display: none;
