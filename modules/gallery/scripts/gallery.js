@@ -74,7 +74,7 @@
 
 			/* open gallery */
 
-			$(this).on('click touchmove', function (event)
+			$(this).click(function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),
