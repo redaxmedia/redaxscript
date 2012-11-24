@@ -14,6 +14,7 @@
 	border: 1px solid #cdcdcd;
 	color: #474747;
 	padding: 1em;
+	white-space: pre-line;
 }
 
 .box_feed_reader a
