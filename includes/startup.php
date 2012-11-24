@@ -264,15 +264,16 @@ function startup()
 
 	/* define time */
 
+	define('GMDATE', gmdate('D, d M Y H:i:s') . ' GMT');
 	define('GMDATE_PLUS_WEEK', gmdate('D, d M Y H:i:s', strtotime('+1 week')) . ' GMT');
 	define('GMDATE_PLUS_YEAR', gmdate('D, d M Y H:i:s', strtotime('+1 year')) . ' GMT');
 	define('NOW', date('Y-m-d H:i:s'));
-	define('TODAY', date('Y-m-d'));
 	define('DELAY', date('Y-m-d H:i:s', strtotime('+1 minute')));
+	define('TODAY', date('Y-m-d'));
+
+	/* future update */
+
 	define('UPDATE', $_SESSION[ROOT . '/update']);
-
-	/* handle future update */
-
 	if (UPDATE == '')
 	{
 		future_update('articles');

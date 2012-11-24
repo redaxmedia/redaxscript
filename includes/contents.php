@@ -244,6 +244,7 @@ function extras($filter = '')
 				{
 					/* collect headline output */
 
+					$output .= hook('extra_start');
 					if ($headline == 1)
 					{
 						$output .= '<h3 class="title_extra">' . $title . '</h3>';
@@ -251,7 +252,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . parser($text) . '</div>';
+					$output .= '<div class="box_extra">' . parser($text) . '</div>' . hook('extra_end');
 
 					/* prepend admin dock */
 
