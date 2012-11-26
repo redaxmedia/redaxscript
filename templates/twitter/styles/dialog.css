@@ -10,14 +10,14 @@
 .dialog_default
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	background: #fff;
-	border: 1px solid #999;
-	border-color: rgba(0, 0, 0, 0.3);
+	border: 1px solid #d5d5d5;
+	border-color: rgba(0, 0, 0, 0.15);
 	border-radius: 0.25em;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	margin: -50px 0 0 -200px;
 	width: 400px;
 }

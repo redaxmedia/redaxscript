@@ -15,7 +15,8 @@
 
 .table_default td, .table_default th
 {
-	border-left: 1px solid #ddd;
+	border-left: 1px solid #d5d5d5;
+	border-left-color: rgba(0, 0, 0, 0.15);
 	padding: 0.75em;
 }
 
@@ -28,7 +29,8 @@
 
 .table_default tbody tr, .table_default thead th
 {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #d5d5d5;
+	border-bottom-color: rgba(0, 0, 0, 0.15);
 }
 
 .table_default tbody tr:hover
@@ -45,7 +47,8 @@
 
 .table_default tfoot tr
 {
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #d5d5d5;
+	border-top-color: rgba(0, 0, 0, 0.15);
 }
 
 .table_default tfoot tr, .table_default thead tr
