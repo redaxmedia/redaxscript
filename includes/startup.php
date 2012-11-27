@@ -103,7 +103,7 @@ function startup()
 
 	/* define tables */
 
-	if (FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
+	if (FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
 	{
 		/* check for homepage */
 
@@ -291,6 +291,17 @@ function startup()
 	template_detection();
 	define('LANGUAGE', $_SESSION[ROOT . '/language']);
 	define('TEMPLATE', $_SESSION[ROOT . '/template']);
+
+	/* error detection */
+
+	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
+	{
+		define('CONTENT_ERROR', 1);
+	}
+	else
+	{
+		define('CONTENT_ERROR', 0);
+	}
 }
 
 /**

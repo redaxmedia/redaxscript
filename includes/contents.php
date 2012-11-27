@@ -55,7 +55,7 @@ function contents()
 	{
 		$error = l('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || LAST_ID == '' && check_alias(FULL_ROUTE, 1) == 0)
+	else if ($result == '' || $num_rows_active == '' || CONTENT_ERROR)
 	{
 		$error = l('content_not_found');
 	}
@@ -80,7 +80,7 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
+				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
 				{
 					$route = build_route('articles', $id);
 					$position_break = strpos($text, '<break>');
@@ -92,7 +92,7 @@ function contents()
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content">';
-					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FULL_ROUTE, 1) == 1)
+					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
 					{
 						$output .= anchor_element('internal', '', '', $title, $route);
 					}
