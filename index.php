@@ -144,6 +144,13 @@ if ($modules_include)
 	}
 }
 
+/* handle error */
+
+if (CONTENT_ERROR)
+{
+	header('http/1.0 404 not found');
+}
+
 /* call loader else render template */
 
 if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
