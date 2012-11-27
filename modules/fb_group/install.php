@@ -6,7 +6,7 @@
 
 function fb_group_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Facebook group\', \'fb_group\', \'Redaxmedia\', \'Integrate a facebook group\', \'1.1\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Facebook group\', \'fb_group\', \'Redaxmedia\', \'Integrate a facebook group\', \'1.2\', 1, 0)';
 	mysql_query($query);
 }
 
