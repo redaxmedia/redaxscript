@@ -6,7 +6,9 @@
 		<meta name="viewport" content="width=device-width" />
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
-		<link type="text/css" href="http://fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic" rel="stylesheet" />
+		<?php if (MY_MOBILE == ''): ?>
+			<link type="text/css" href="http://fonts.googleapis.com/css?family=Cuprum&amp;subset=latin,cyrillic" rel="stylesheet" />
+		<?php endif; ?>
 		<link href="<?php echo ROOT; ?>/templates/default/images/touchicon.png" rel="apple-touch-icon-precomposed" />
 		<link href="templates/default/images/favicon.ico" rel="shortcut icon" />
 	</head>
@@ -16,7 +18,11 @@
 		<?php endif; ?>
 		<?php include_once('templates/default/header.phtml'); ?>
 		<div class="wrapper clear_fix">
-			<?php include_once('content.phtml'); ?>
+			<?php if (CONTENT_ERROR): ?>
+				<?php include_once('templates/default/error.phtml'); ?>
+			<?php else: ?>
+				<?php include_once('content.phtml'); ?>
+			<?php endif; ?>
 		</div>
 		<?php include_once('templates/default/footer.phtml'); ?>
 		<?php scripts(); ?>
