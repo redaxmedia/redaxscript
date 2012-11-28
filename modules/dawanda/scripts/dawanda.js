@@ -121,8 +121,7 @@
 					dawanda.createShortcut(i);
 				}
 			}
-		};
-		dawanda.registerShortcut();
+		}();
 	};
 
 	/* @section 2. startup */
