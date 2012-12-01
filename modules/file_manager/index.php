@@ -1,19 +1,6 @@
 <?php
 
 /**
- * file manager render start
- */
-
-function file_manager_render_start()
-{
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
-	{
-		define('CENTER_BREAK', 1);
-		define('TITLE', l('file_manager_file_manager'));
-	}
-}
-
-/**
  * file manager loader start
  */
 
@@ -41,6 +28,19 @@ function file_manager_loader_scripts_transport_start()
 			'file_manager_upload'
 		));
 		echo $output;
+	}
+}
+
+/**
+ * file manager render start
+ */
+
+function file_manager_render_start()
+{
+	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
+	{
+		define('CENTER_BREAK', 1);
+		define('TITLE', l('file_manager_file_manager'));
 	}
 }
 
