@@ -26,13 +26,13 @@ function demo_login()
 	$_SESSION[ROOT . '/my_email'] = 'anonymous@anonymous.com';
 	$_SESSION[ROOT . '/categories_new'] = 1;
 	$_SESSION[ROOT . '/categories_edit'] = 1;
-	$_SESSION[ROOT . '/categories_delete'] = 1;
+	$_SESSION[ROOT . '/categories_delete'] = 0;
 	$_SESSION[ROOT . '/articles_new'] = 1;
 	$_SESSION[ROOT . '/articles_edit'] = 1;
-	$_SESSION[ROOT . '/articles_delete'] = 1;
+	$_SESSION[ROOT . '/articles_delete'] = 0;
 	$_SESSION[ROOT . '/comments_new'] = 1;
 	$_SESSION[ROOT . '/comments_edit'] = 1;
-	$_SESSION[ROOT . '/comments_delete'] = 1;
+	$_SESSION[ROOT . '/comments_delete'] = 0;
 	$_SESSION[ROOT . '/settings_edit'] = 1;
 	$_SESSION[ROOT . '/filter'] = 1;
 	notification(l('welcome'), l('logged_in'), l('continue'), 'admin');

@@ -16,7 +16,7 @@
 		<?php endif; ?>
 		<?php include_once('header.phtml'); ?>
 		<div class="wrapper clear_fix">
-			<?php if (DB_CONNECTED && CONTENT_ERROR): ?>
+			<?php if (DB_CONNECTED && CONTENT_ERROR && CENTER_BREAK == ''): ?>
 				<?php include_once('error.phtml'); ?>
 			<?php else: ?>
 				<?php include_once('navibar.phtml'); ?>

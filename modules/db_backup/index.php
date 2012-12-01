@@ -22,6 +22,7 @@ function db_backup_render_start()
 
 		if (THIRD_PARAMETER == 'send')
 		{
+			define('CENTER_BREAK', 1);
 			$url_link = anchor_element('', '', '', ROOT, ROOT);
 			$file_name = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
 			$body_array = array(
@@ -44,9 +45,8 @@ function db_backup_render_start()
 
 function db_backup_center_start()
 {
-	if (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'db-backup' && THIRD_PARAMETER == 'send')
+	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'db-backup' && THIRD_PARAMETER == 'send')
 	{
-		define('CENTER_BREAK', 1);
 		notification(l('operation_completed'), '', l('continue'), 'admin');
 	}
 }

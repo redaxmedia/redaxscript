@@ -8,6 +8,7 @@ function file_manager_render_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
 	{
+		define('CENTER_BREAK', 1);
 		define('TITLE', l('file_manager_file_manager'));
 	}
 }
@@ -51,7 +52,6 @@ function file_manager_center_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
 	{
-		define('CENTER_BREAK', 1);
 		if (THIRD_PARAMETER == 'upload')
 		{
 			file_manager_upload(FILE_MANAGER_DIRECTORY);

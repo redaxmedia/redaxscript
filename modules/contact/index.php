@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * contact render start
+ */
+
+function contact_render_start()
+{
+	if ($_POST['contact_post'])
+	{
+		define('CENTER_BREAK', 1);
+	}
+}
+
+/**
  * contact center start
  */
 
@@ -8,7 +20,6 @@ function contact_center_start()
 {
 	if ($_POST['contact_post'])
 	{
-		define('CENTER_BREAK', 1);
 		contact_post();
 	}
 }

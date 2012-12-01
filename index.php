@@ -144,13 +144,6 @@ if ($modules_include)
 	}
 }
 
-/* handle error */
-
-if (CONTENT_ERROR)
-{
-	header('http/1.0 404 not found');
-}
-
 /* call loader else render template */
 
 if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
@@ -164,6 +157,8 @@ else
 	/* undefine */
 
 	undefine(array(
+		'RENDER_BREAK',
+		'CENTER_BREAK',
 		'REFRESH_ROUTE',
 		'DESCRIPTION',
 		'KEYWORDS',
@@ -180,6 +175,12 @@ else
 	}
 	else
 	{
+		/* handle error */
+
+		if (CONTENT_ERROR && CENTER_BREAK == '')
+		{
+			header('http/1.0 404 not found');
+		}
 		include_once('templates/' . TEMPLATE . '/index.phtml');
 	}
 	hook('render_end');

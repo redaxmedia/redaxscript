@@ -21,6 +21,7 @@ function preview_render_start()
 {
 	if (FIRST_PARAMETER == 'preview')
 	{
+		define('CENTER_BREAK', 1);
 		define('TITLE', l('preview_preview'));
 	}
 }
@@ -33,9 +34,7 @@ function preview_center_start()
 {
 	if (FIRST_PARAMETER == 'preview')
 	{
-		define('CENTER_BREAK', 1);
-
-		/* collect output */
+		/* collect partial output */
 
 		$output = '<div class="preview clear_fix">' . PHP_EOL;
 		ob_start();

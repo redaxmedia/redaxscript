@@ -57,6 +57,7 @@ function qunit_render_start()
 {
 	if (FIRST_PARAMETER == 'qunit')
 	{
+		define('CENTER_BREAK', 1);
 		define('TITLE', l('qunit_title'));
 		define('DESCRIPTION', l('qunit_description'));
 	}
@@ -70,8 +71,6 @@ function qunit_center_start()
 {
 	if (FIRST_PARAMETER == 'qunit')
 	{
-		define('CENTER_BREAK', 1);
-
 		/* collect output */
 
 		$output = '<div id="qunit" class="wrapper_qunit"></div><div id="qunit-fixture"></div>';
