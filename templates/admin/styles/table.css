@@ -10,6 +10,11 @@
 
 /* @section 1. admin table */
 
+.table_admin
+{
+	color: #474747;
+}
+
 .table_admin td, .table_admin th
 {
 	padding: 0.75em;
