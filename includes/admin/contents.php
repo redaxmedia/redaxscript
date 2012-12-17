@@ -321,7 +321,7 @@ function admin_contents_list()
 					{
 						if ($article)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'articles', 'id', $article), 'admin/edit/categories/' . $article);
+							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'articles', 'id', $article), 'admin/edit/articles/' . $article);
 						}
 						else
 						{
