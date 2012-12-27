@@ -18,12 +18,6 @@ module.exports = function(grunt)
 
 	grunt.initConfig(
 	{
-		lint:
-		{
-			base: ['scripts/*.js'],
-			modules: ['modules/*/scripts/*.js'],
-			templates: ['templates/*/scripts/*.js']
-		},
 		watch:
 		{
 			scripts:
@@ -37,9 +31,11 @@ module.exports = function(grunt)
 				tasks: 'csslint'
 			}
 		},
-		qunit:
+		lint:
 		{
-			src: ['http://develop.redaxscript.com/qunit']
+			base: ['scripts/*.js'],
+			modules: ['modules/*/scripts/*.js'],
+			templates: ['templates/*/scripts/*.js']
 		},
 		jshint:
 		{
@@ -70,6 +66,10 @@ module.exports = function(grunt)
 				l: true,
 				r: true
 			}
+		},
+		qunit:
+		{
+			src: ['http://develop.redaxscript.com/qunit']
 		},
 		csslint:
 		{
