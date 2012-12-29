@@ -103,6 +103,10 @@ function loader($type = '', $mode = '')
 	{
 		$loader_include = array_merge($loader_include, $loader_admin_startup);
 	}
+	if ($loader_modules)
+	{
+		$loader_include = array_merge($loader_include, $loader_modules);
+	}
 	if ($loader_template)
 	{
 		$loader_include = array_merge($loader_include, $loader_template);
@@ -126,10 +130,6 @@ function loader($type = '', $mode = '')
 	if ($loader_admin_engine)
 	{
 		$loader_include = array_merge($loader_include, $loader_admin_engine);
-	}
-	if ($loader_modules)
-	{
-		$loader_include = array_merge($loader_include, $loader_modules);
 	}
 
 	/* collect transport start */
