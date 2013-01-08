@@ -22,6 +22,7 @@
 
 		var dawanda = this;
 		r.module.dawanda.data = {};
+		r.module.dawanda.storage = {};
 
 		/* get url */
 
@@ -49,7 +50,23 @@
 
 		dawanda.getData = function (call, id, page, callback)
 		{
-			/* fetch from cache */
+			var keyStorage = 'dawandaData' + id.charAt(0).toUpperCase() + id.slice(1);
+
+			/* fetch from storage */
+
+			if (typeof window.sessionStorage === 'object' && typeof JSON.parse === 'function')
+			{
+				r.module.dawanda.storage[id] = window.sessionStorage.getItem(keyStorage) || false;
+
+				/* restore data from storage */
+
+				if (typeof r.module.dawanda.storage[id] === 'string')
+				{
+					r.module.dawanda.data[id] = JSON.parse(r.module.dawanda.storage[id]);
+				}
+			}
+
+			/* fetch from data */
 
 			if (typeof r.module.dawanda.data[id] === 'object' && r.module.dawanda.data[id]['calls'][call])
 			{
@@ -75,7 +92,7 @@
 					},
 					success: function (data)
 					{
-						/* store data */
+						/* handle data */
 
 						if (typeof data.response === 'object' && typeof data.response.result === 'object')
 						{
@@ -85,6 +102,13 @@
 
 							r.module.dawanda.data[id]['calls'] = r.module.dawanda.data[id]['calls'] || {};
 							r.module.dawanda.data[id]['calls'][call] = true;
+
+							/* set related storage */
+
+							if (typeof window.sessionStorage === 'object' && typeof JSON.stringify === 'function')
+							{
+								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.module.dawanda.data[id]));
+							}
 
 							/* callback if data */
 
