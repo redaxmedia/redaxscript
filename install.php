@@ -213,7 +213,7 @@ function install()
 	$r['insert_settings'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'settings (id, name, value) VALUES (1, \'language\', \'detect\'), (2, \'template\', \'default\'), (3, \'title\', \'Redaxscript\'), (4, \'author\', \'\'), (5, \'copyright\', \'\'), (6, \'description\', \'Ultra lightweight website engine\'), (7, \'keywords\', \'\'), (8, \'robots\', \'all\'), (9, \'email\', \'' . $email . '\'), (10, \'subject\', \'Redaxscript\'), (11, \'notification\', \'0\'), (12, \'charset\', \'utf-8\'), (13, \'divider\', \'&#8201;&#8226;&#8201;\'), (14, \'time\', \'H:i\'), (15, \'date\', \'d.m.Y\'), (16, \'homepage\', \'0\'), (17, \'limit\', \'5\'), (18, \'order\', \'asc\'), (19, \'pagination\', \'1\'), (20, \'moderation\', \'0\'), (21, \'registration\', \'1\'), (22, \'verification\', \'0\'), (23, \'reminder\', \'1\'), (24, \'captcha\', \'0\'), (25, \'blocker\', \'1\')';
 	if (file_exists('modules/call_home/install.php'))
 	{
-		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Call home module\', \'1.2\', 1, 0)';
+		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Call home module\', \'1.2.1\', 1, 0)';
 	}
 	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . $d_salt . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
 

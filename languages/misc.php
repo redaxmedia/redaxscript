@@ -33,7 +33,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = 'Nightly build';
+$l['redaxscript_version'] = '1.2.1';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /**
