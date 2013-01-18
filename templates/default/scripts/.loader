@@ -1,5 +1,5 @@
 [single]
-1 = http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+1 = http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 
 [template_startup]
 1 = scripts/startup.js
