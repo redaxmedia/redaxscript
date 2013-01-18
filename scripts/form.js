@@ -45,7 +45,7 @@
 				}
 				else if (event.type === 'change' || event.type === 'input')
 				{
-					fieldRequired = fieldRequired.filter(':active');
+					fieldRequired = fieldRequired.filter(':focus');
 				}
 
 				/* check required fields */
