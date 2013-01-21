@@ -162,5 +162,5 @@ module.exports = function(grunt)
 
 	grunt.registerTask('default', 'lint');
 	grunt.registerTask('toc', 'shell:tocBase shell:tocModules shell:tocTemplates');
-	grunt.registerTask('optimize', 'bom img smushit');
+	grunt.registerTask('optimize', 'bom toc img smushit');
 };

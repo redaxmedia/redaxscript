@@ -175,7 +175,7 @@
 					{
 						if (image.is(':visible'))
 						{
-							gallery.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+							gallery.addClass(options.classString.galleryReady).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
 							clearInterval(intervalVisible);
 						}
 					}, options.interval);

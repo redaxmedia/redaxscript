@@ -29,6 +29,7 @@ r.module.gallery =
 		classString:
 		{
 			gallery: 'js_gallery gallery',
+			galleryReady: 'js_gallery_ready gallery_ready',
 			galleryLoader: 'js_gallery_loader gallery_loader',
 			galleryMeta: 'js_gallery_meta gallery_meta',
 			galleryPagination: 'js_gallery_pagination gallery_pagination',
