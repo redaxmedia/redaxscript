@@ -35,6 +35,16 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
+		/* version */
+
+		win.test('version', function ()
+		{
+			var expect = 'number',
+				result = typeof r.version;
+
+			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+		});
+
 		/* clean alias */
 
 		if (typeof $.fn.cleanAlias === 'function')

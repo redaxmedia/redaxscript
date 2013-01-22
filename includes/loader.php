@@ -414,10 +414,7 @@ function scripts_transport($minify = '')
 	/* generator and version */
 
 	$output .= 'r.generator = \'' . l('redaxscript') . ' ' . l('redaxscript_version') . '\';' . PHP_EOL;
-	if (is_numeric(l('redaxscript_version')))
-	{
-		$output .= 'r.version = ' . l('redaxscript_version') . ';' . PHP_EOL;
-	}
+	$output .= 'r.version = ' . floatval(l('redaxscript_version')) . ';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify output */
