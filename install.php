@@ -276,7 +276,7 @@ function install_form()
 
 	$output .= form_element('hidden', '', '', 'd_salt', hash_generator(40));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button_large', 'install_post', l('install'));
+	$output .= form_element('button', '', 'js_submit field_button_large', 'install_post', l('install'));
 	$output .= '</form>';
 	echo $output;
 }
