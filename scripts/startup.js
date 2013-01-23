@@ -171,7 +171,7 @@ r.plugin =
 		options:
 		{
 			classString: 'js_note_required note_required box_note',
-			related: 'input[type="hidden"]',
+			related: 'a.js_cancel, a.js_delete, button.js_submit',
 			duration: 1000
 		}
 	},

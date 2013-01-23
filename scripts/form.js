@@ -155,8 +155,8 @@
 		return this.each(function ()
 		{
 			var form = $(this),
-				formRelated = form.find(options.related).last(),
-				noteRequired = $('<div class="' + options.classString + '">').insertAfter(formRelated).hide(),
+				formRelated = form.children(options.related).first(),
+				noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelated).hide(),
 				timeout;
 
 			/* listen for error and success */
