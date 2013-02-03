@@ -21,6 +21,9 @@
 		}
 
 		var dawanda = this;
+
+		/* data and storage object */
+
 		r.module.dawanda.data = {};
 		r.module.dawanda.storage = {};
 
@@ -82,7 +85,8 @@
 
 			else
 			{
-				$.ajax({
+				$.ajax(
+				{
 					url: dawanda.getURL(call, id),
 					dataType: 'jsonp',
 					data:
