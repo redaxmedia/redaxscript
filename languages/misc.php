@@ -3,8 +3,8 @@
 /* languages */
 
 $l['ar'] = 'العربية';
-$l['bs'] = 'Bosanski';
 $l['bg'] = 'Български';
+$l['bs'] = 'Bosanski';
 $l['ca'] = 'Català';
 $l['cs'] = 'Čeština';
 $l['de'] = 'Deutsch';
