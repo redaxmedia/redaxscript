@@ -1,9 +1,10 @@
-<?php
+﻿<?php
 
 /* languages */
 
 $l['ar'] = 'العربية';
 $l['bs'] = 'Bosanski';
+$l['bg'] = 'Български';
 $l['ca'] = 'Català';
 $l['cs'] = 'Čeština';
 $l['de'] = 'Deutsch';
