@@ -8,8 +8,8 @@
  * @param string $from
  * @param string $from_name
  * @param string $subject
- * @param string $body_array
- * @param string $attachment_array
+ * @param array $body_array
+ * @param array $attachment_array
  */
 
 function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subject = '', $body_array = '', $attachment_array = '')

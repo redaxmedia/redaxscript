@@ -23,7 +23,7 @@ function break_up($input = '')
  * truncate
  *
  * @param string $input
- * @param string $length
+ * @param integer $length
  * @param string $end
  * @return string
  */
@@ -33,8 +33,11 @@ function truncate($input = '', $length = '', $end = '')
 	$length -= mb_strlen($end);
 	if (mb_strlen($input) > $length)
 	{
-		$output = mb_substr($input, 0, $length) . $end;
+		$output = trim(mb_substr($input, 0, $length)) . $end;
 	}
+
+	/* else fallback */
+
 	else
 	{
 		$output = $input;
