@@ -179,6 +179,7 @@
 
 .table_admin span.move_up, .table_admin span.move_down
 {
+	filter: alpha(opacity=50);
 	opacity: 0.5;
 }
 

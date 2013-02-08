@@ -221,6 +221,7 @@ textarea
 .field_button_search
 {
 	background: url('templates/default/images/sprite.png') 0 -67px no-repeat;
+	filter: alpha(opacity=80);
 	float: right;
 	height: 30px;
 	opacity: 0.8;
@@ -230,6 +231,7 @@ textarea
 
 .field_button_search:hover
 {
+	filter: alpha(opacity=100);
 	opacity: 1;
 }
 
