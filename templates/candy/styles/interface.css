@@ -45,8 +45,8 @@
 
 .list_default li
 {
-	margin: 1em 1.5em;
 	list-style: inherit;
+	margin: 1em 1.5em;
 }
 
 /* @section 4. list header */
