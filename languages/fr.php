@@ -11,7 +11,7 @@ $l['error'] = 'Erreur';
 
 $l['content'] = 'Contenu';
 $l['contents'] = 'Contenus';
-$l['content_not_found'] = 'Contenu pas trouvé';
+$l['content_not_found'] = 'Contenu non trouvé';
 
 /* categories */
 
@@ -65,7 +65,7 @@ $l['month_names'] = 'Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Août, 
 $l['today'] = 'Aujourd\'hui';
 $l['yesterday'] = 'Hier';
 $l['on'] = 'le';
-$l['at'] = 'à';
+$l['at'] = 'à ';
 
 /* numbers */
 
@@ -98,7 +98,7 @@ $l['continue'] = 'Continuer';
 $l['back'] = 'Retour';
 $l['up'] = 'Haut';
 $l['down'] = 'Bas';
-$l['sort'] = 'Sort';
+$l['sort'] = 'Classer';
 $l['new'] = 'Nouveau';
 $l['view'] = 'Voir';
 $l['read_more'] = 'Lire plus';
@@ -130,17 +130,17 @@ $l['install'] = 'Installer';
 $l['uninstall'] = 'Désinstaller';
 $l['restore'] = 'Restaurer';
 $l['process'] = 'Traiter';
-$l['update'] = 'Mettre à jour';
+$l['update'] = 'Mettre à jour';
 $l['select'] = 'Sélectionner';
 
 /* form */
 
 $l['title'] = 'Titre';
-$l['title_exists'] = 'Titre déjà existant';
+$l['title_exists'] = 'Le titre existe déjà';
 $l['title_incorrect'] = 'Titre incorrect';
 $l['title_empty'] = 'Titre vide';
 $l['alias'] = 'Alias';
-$l['alias_exists'] = 'Alias déjà existant';
+$l['alias_exists'] = 'L\'alias existe déjà';
 $l['alias_incorrect'] = 'Alias incorrect';
 $l['alias_empty'] = 'Alias vide';
 $l['name'] = 'Nom';
@@ -175,8 +175,8 @@ $l['all'] = 'Tous';
 /* legend */
 
 $l['fields_request'] = 'Entrez les informations dans les champs correspondants';
-$l['fields_required'] = 'Champs requis sont marqués par un astérisque';
-$l['fields_limited'] = 'Champs suivants sont limités à 5-10 caractères';
+$l['fields_required'] = 'Les champs marqués par un astérisque sont requis';
+$l['fields_limited'] = 'Les champs suivants sont limités à 5-10 caractères';
 
 /* email */
 
@@ -204,7 +204,7 @@ $l['host'] = 'Hôte';
 $l['prefix'] = 'Préfixe';
 $l['database'] = 'Base de données';
 $l['database_setup'] = 'Configurer votre base de données';
-$l['database_failed'] = 'Echec de la connexion à la base de données';
+$l['database_failed'] = 'Echec de la connexion à la base de données';
 
 /* registration */
 
@@ -257,7 +257,7 @@ $l['user'] = 'Utilisateur';
 $l['users'] = 'Utilisateurs';
 $l['user_new'] = 'Nouvel utilisateur';
 $l['user_no'] = 'Pas d\'utilisateur présent';
-$l['user_exists'] = 'Utilisateur déjà existant';
+$l['user_exists'] = 'L\'utilisateur existe déjà';
 $l['user_incorrect'] = 'Utilisateur incorrect';
 $l['user_empty'] = 'Utilisateur vide';
 $l['session'] = 'Session';
@@ -323,7 +323,7 @@ $l['something_wrong'] = 'Quelque chose s\'est mal passé';
 
 /* dialog */
 
-$l['dialog'] = 'Fenêtre';
+$l['dialog'] = 'Boîte de dialogue';
 $l['dialog_question'] = 'Voulez-vous continuer';
 $l['alert'] = 'Alerte';
 $l['confirm'] = 'Confirmer';
