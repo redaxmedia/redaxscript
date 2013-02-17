@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. gallery
+ *    1.1 preload images
+ *    1.2 open gallery
  * 2. startup
  */
 
@@ -36,7 +38,7 @@
 				return false;
 			}
 
-			/* preload images */
+			/* @section 1.1 preload images */
 
 			if (options.preload.startup)
 			{
@@ -72,7 +74,7 @@
 				});
 			}
 
-			/* open gallery */
+			/* @section 1.2 open gallery */
 
 			$(this).click(function (event)
 			{
@@ -289,7 +291,8 @@
 						winHeight = win.height(),
 						winWidth = win.width(),
 						minWidth = options.minWidth,
-						scaling = options.scaling;
+						scaling = options.scaling,
+						galleryHeight, galleryWidth;
 
 					/* store image dimensions */
 
@@ -318,18 +321,23 @@
 
 					/* setup height and width */
 
-					image.add(gallery).css(
+					image.css(
 					{
 						'height': imageHeight,
 						'width': imageWidth
 					});
 
+					/* gallery outer dimensions */
+
+					galleryHeight = gallery.outerHeight();
+					galleryWidth = gallery.outerWidth();
+
 					/* setup gallery margin */
 
 					gallery.css(
 					{
-						'margin-top': -imageHeight / 2,
-						'margin-left': -imageWidth / 2
+						'margin-top': -galleryHeight / 2,
+						'margin-left': -galleryWidth / 2
 					});
 				});
 
