@@ -5,9 +5,11 @@
  * 2. gallery overlay
  * 3. gallery loader
  * 4. gallery meta
+ *    4.1 children elements
  * 5. previous and next links
- * 6. image gallery
- * 7. link gallery
+ *    5.1 children elements
+ * 6. item gallery
+ * 7. image gallery
  */
 
 /* @section 1. gallery */
@@ -75,6 +77,8 @@
 	display: block;
 }
 
+/* @section 4.1 children elements */
+
 .gallery_artist
 {
 	float: right;
@@ -130,6 +134,8 @@
 	display: block;
 }
 
+/* @section 5.1 children elements */
+
 .gallery_next span, .gallery_previous span
 {
 	background: #fff;
@@ -157,7 +163,20 @@
 	float: left;
 }
 
-/* @section 6. image gallery */
+/* @section 6. item gallery */
+
+.item_gallery
+{
+	margin: 0 0.5em 0.5em 0;
+
+}
+
+.item_gallery, .image_gallery
+{
+	float: left;
+}
+
+/* @section 7. image gallery */
 
 .image_gallery
 {
@@ -181,17 +200,4 @@
 	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
-}
-
-/* @section 7. link gallery */
-
-.link_gallery
-{
-	margin: 0 0.5em 0.5em 0;
-
-}
-
-.link_gallery, .image_gallery
-{
-	float: left;
 }
