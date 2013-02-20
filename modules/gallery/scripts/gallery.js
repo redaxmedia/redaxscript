@@ -213,7 +213,7 @@
 
 					/* fit image after render */
 
-					image.trigger('fit')
+					image.trigger('fit');
 
 					/* next and previous */
 
