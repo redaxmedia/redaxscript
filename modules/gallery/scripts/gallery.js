@@ -169,7 +169,7 @@
 
 					galleryLoader.remove();
 					gallery.css('opacity', 0);
-					image.appendTo(gallery).trigger('fit');
+					image.appendTo(gallery);
 
 					/* check visible interval */
 
@@ -210,6 +210,10 @@
 					{
 						buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
 					}
+
+					/* fit image after render */
+
+					image.trigger('fit')
 
 					/* next and previous */
 

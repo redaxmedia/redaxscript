@@ -26,6 +26,11 @@
 	z-index: 1100;
 }
 
+.gallery img
+{
+	float: left;
+}
+
 /* @section 2. gallery overlay */
 
 .gallery_overlay
