@@ -80,5 +80,32 @@
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
+
+		/* unmask password  */
+
+		if (typeof $.fn.unmaskPassword === 'function')
+		{
+			win.test('unmaskPassword', function ()
+			{
+				var input = $('<input type="password" value="Password" />').unmaskPassword().appendTo(fixture),
+					expect = 'text',
+					result = input.attr('type'),
+					keydown = $.Event('keydown');
+
+				keydown.ctrlKey = true;
+				keydown.altKey = true;
+
+				/* trigger keydown */
+
+				result = input.trigger(keydown).attr('type');
+				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+
+				/* trigger focusout */
+
+				expect = 'password';
+				result = input.trigger('focusout').attr('type');
+				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			});
+		}
 	});
 })(jQuery);
