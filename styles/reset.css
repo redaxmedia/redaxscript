@@ -16,7 +16,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 	white-space: normal;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary
 {
 	display: block;
 }
