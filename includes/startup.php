@@ -262,6 +262,14 @@ function startup()
 		define('FILTER', 1);
 	}
 
+	/* define table access */
+
+	define('TABLE_NEW', constant(strtoupper(TABLE_PARAMETER) . '_NEW'));
+	define('TABLE_INSTALL', constant(strtoupper(TABLE_PARAMETER) . '_INSTALL'));
+	define('TABLE_EDIT', constant(strtoupper(TABLE_PARAMETER) . '_EDIT'));
+	define('TABLE_DELETE', constant(strtoupper(TABLE_PARAMETER) . '_DELETE'));
+	define('TABLE_UNINSTALL', constant(strtoupper(TABLE_PARAMETER) . '_UNINSTALL'));
+
 	/* define time */
 
 	define('GMDATE', gmdate('D, d M Y H:i:s') . ' GMT');

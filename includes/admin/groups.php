@@ -67,33 +67,7 @@ function admin_groups_list()
 
 			/* collect control output */
 
-			if (GROUPS_EDIT == 1 || (GROUPS_DELETE == 1 && $id > 1))
-			{
-				$output .= '<ul class="list_control_admin">';
-			}
-			if (GROUPS_EDIT == 1)
-			{
-				if ($id > 1)
-				{
-					if ($status == 1)
-					{
-						$output .= '<li class="item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/groups/' . $id . '/' . TOKEN) . '</li>';
-					}
-					else if ($status == 0)
-					{
-						$output .= '<li class="item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/groups/' . $id . '/' . TOKEN) . '</li>';
-					}
-				}
-				$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/groups/' . $id) . '</li>';
-			}
-			if (GROUPS_DELETE == 1 && $id > 1)
-			{
-				$output .= '<li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN) . '</li>';
-			}
-			if (GROUPS_EDIT == 1 || (GROUPS_DELETE == 1 && $id > 1))
-			{
-				$output .= '</ul>';
-			}
+			$output .= admin_control('access', 'groups', $id, $alias, $status, GROUPS_NEW, GROUPS_EDIT, GROUPS_DELETE);
 
 			/* collect alias and filter output */
 

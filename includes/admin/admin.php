@@ -197,4 +197,104 @@ function admin_notification()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
+
+
+/**
+ * admin control
+ *
+ * @param string $type
+ * @param string $table
+ * @param integer $id
+ * @param string $alias
+ * @param integer $status
+ * @param string $new
+ * @param string $edit
+ * @param string $delete
+ * @return string
+ */
+
+function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
+{
+	hook(__FUNCTION__ . '_start');
+
+	/* define access variables */
+
+	if ($type == 'access' && $id == 1)
+	{
+		$delete = 0;
+	}
+	if ($type == 'modules_not_installed')
+	{
+		$edit = $delete = 0;
+	}
+
+	/* collect modules output */
+
+	if ($new == 1 && $type == 'modules_not_installed')
+	{
+		$output .= '<li class="item_install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+	}
+
+	/* collect contents output */
+
+	if ($type == 'contents')
+	{
+		if ($status == 2)
+		{
+			$output .= '<li class="item_future_posting"><span class="future_posting">' . l('future_posting') . '</span></li>';
+		}
+		if ($edit == 1)
+		{
+			if ($status == 1)
+			{
+				$output .= '<li class="item_unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			}
+			else if ($status == 0)
+			{
+				$output .= '<li class="item_publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			}
+		}
+	}
+
+	/* collect access and system output */
+
+	if ($edit == 1 && ($type == 'access' && $id > 1 || $type == 'modules_installed'))
+	{
+		if ($status == 1)
+		{
+			$output .= '<li class="item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+		}
+		else if ($status == 0)
+		{
+			$output .= '<li class="item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+		}
+	}
+
+	/* collect general edit and delete output */
+
+	if ($edit == 1)
+	{
+		$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table  . '/' . $id) . '</li>';
+	}
+	if ($delete == 1)
+	{
+		if ($type == 'modules_installed')
+		{
+			$output .= '<li class="item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table  . '/' . $alias . '/' . TOKEN) . '</li>';
+		}
+		else
+		{
+			$output .= '<li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table  . '/' . $id . '/' . TOKEN) . '</li>';
+		}
+	}
+
+	/* collect list output */
+
+	if ($output)
+	{
+		$output = '<ul class="list_control_admin">' . $output . '</ul>';
+	}
+	return $output;
+	hook(__FUNCTION__ . '_end');
+}
 ?>

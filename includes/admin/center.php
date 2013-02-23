@@ -40,7 +40,7 @@ function admin_routing()
 		}
 		else if (TABLE_PARAMETER != 'settings')
 		{
-			$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
+			$new = TABLE_NEW;
 			if (TABLE_PARAMETER == 'comments')
 			{
 				$articles_total = query_total('articles');
@@ -50,9 +50,9 @@ function admin_routing()
 					$new = 0;
 				}
 			}
-			$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
+			$delete = TABLE_DELETE;
 		}
-		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
+		$edit = TABLE_EDIT;
 	}
 	if ($edit == 1 || $delete == 1)
 	{

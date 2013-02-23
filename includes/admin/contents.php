@@ -10,18 +10,16 @@ function admin_contents_list()
 
 	/* define access variables */
 
-	$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
+	$table_new = TABLE_NEW;
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$articles_total = query_total('articles');
 		$articles_comments_disable = query_total('articles', 'comments', 0);
 		if ($articles_total == $articles_comments_disable)
 		{
-			$new = 0;
+			$table_new = 0;
 		}
 	}
-	$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
-	$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
 
 	/* switch table */
 
@@ -54,11 +52,11 @@ function admin_contents_list()
 
 	$output = '<h2 class="title_content">' . l(TABLE_PARAMETER) . '</h2>';
 	$output .= '<div class="wrapper_button_admin">';
-	if ($new == 1)
+	if ($table_new == 1)
 	{
 		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_ROUTE . 'admin/new/' . TABLE_PARAMETER . '"><span><span>' . l($wording_single . '_new') . '</span></span></a>';
 	}
-	if ($edit == 1 && $num_rows)
+	if (TABLE_EDIT == 1 && $num_rows)
 	{
 		$output .= '<a class="field_button_admin field_button_sort" href="' . REWRITE_ROUTE . 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN . '"><span><span>' . l('sort') . '</span></span></a>';
 	}
@@ -248,34 +246,7 @@ function admin_contents_list()
 
 				/* collect control output */
 
-				if ($edit == 1 || $delete == 1)
-				{
-					$output .= '<ul class="list_control_admin">';
-				}
-				if ($status == 2)
-				{
-					$output .= '<li class="item_future_posting"><span class="future_posting">' . l('future_posting') . '</span></li>';
-				}
-				if ($edit == 1)
-				{
-					if ($status == 1)
-					{
-						$output .= '<li class="item_unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN) . '</li>';
-					}
-					else if ($status == 0 || $date < NOW)
-					{
-						$output .= '<li class="item_publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN) . '</li>';
-					}
-					$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . TABLE_PARAMETER . '/' . $id) . '</li>';
-				}
-				if ($delete == 1)
-				{
-					$output .= '<li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN) . '</li>';
-				}
-				if ($edit == 1 || $delete == 1)
-				{
-					$output .= '</ul>';
-				}
+				$output .= admin_control('contents', TABLE_PARAMETER, $id, $alias, $status, TABLE_NEW, TABLE_EDIT, TABLE_DELETE);
 
 				/* collect alias and id output */
 
@@ -334,7 +305,7 @@ function admin_contents_list()
 
 				/* collect control output */
 
-				if ($edit == 1)
+				if (TABLE_EDIT == 1)
 				{
 					$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
 					if ($rank > 1)
@@ -413,12 +384,6 @@ function admin_contents_list()
 function admin_contents_form()
 {
 	hook(__FUNCTION__ . '_start');
-
-	/* define access variables */
-
-	$new = constant(strtoupper(TABLE_PARAMETER) . '_NEW');
-	$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
-	$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
 
 	/* switch table */
 
@@ -713,7 +678,7 @@ function admin_contents_form()
 
 	/* cancel button */
 
-	if ($edit == 1 || $delete == 1)
+	if (TABLE_EDIT == 1 || TABLE_DELETE == 1)
 	{
 		$cancel_route = 'admin/view/' . TABLE_PARAMETER;
 	}
@@ -725,14 +690,14 @@ function admin_contents_form()
 
 	/* delete button */
 
-	if ($delete == 1 && $id)
+	if (TABLE_DELETE == 1 && $id)
 	{
 		$output .= '<a class="js_delete js_confirm field_button_large_admin field_button_second" href="' . REWRITE_ROUTE . 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
 	}
 
 	/* submit button */
 
-	if ($new == 1 || $edit == 1)
+	if (TABLE_NEW == 1 || TABLE_EDIT == 1)
 	{
 		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward field_button_last', ADMIN_PARAMETER, $wording_submit);
 	}

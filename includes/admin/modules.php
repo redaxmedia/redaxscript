@@ -71,29 +71,9 @@ function admin_modules_list()
 
 				/* collect control output */
 
-				if (MODULES_EDIT == 1 || MODULES_UNINSTALL == 1)
+				if ($file_install)
 				{
-					$output .= '<ul class="list_control_admin">';
-				}
-				if (MODULES_EDIT == 1)
-				{
-					if ($status == 1)
-					{
-						$output .= '<li class="item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/modules/' . $id . '/' . TOKEN) . '</li>';
-					}
-					else if ($status == 0)
-					{
-						$output .= '<li class="item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/modules/' . $id . '/' . TOKEN) . '</li>';
-					}
-					$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/modules/' . $id) . '</li>';
-				}
-				if (MODULES_UNINSTALL == 1 && $file_install)
-				{
-					$output .= '<li class="item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN) . '</li>';
-				}
-				if (MODULES_EDIT == 1 || MODULES_UNINSTALL == 1)
-				{
-					$output .= '</ul>';
+					$output .= admin_control('modules_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
 				}
 
 				/* collect alias and version output */
@@ -138,9 +118,9 @@ function admin_modules_list()
 		if ($modules_not_installed)
 		{
 			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
-			foreach ($modules_not_installed as $value)
+			foreach ($modules_not_installed as $alias)
 			{
-				$file_install = file_exists('modules/' . $value . '/install.php');
+				$file_install = file_exists('modules/' . $alias . '/install.php');
 				if ($file_install)
 				{
 					$class_file_install = '';
@@ -157,13 +137,13 @@ function admin_modules_list()
 				{
 					$output .= ' class="' . $class_file_install . '"';
 				}
-				$output .= '><td colspan="3">' . $value;
+				$output .= '><td colspan="3">' . $alias;
 
 				/* collect control output */
 
 				if ($file_install)
 				{
-					$output .= '<ul class="list_control_admin"><li class="item_install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/modules/' . $value . '/' . TOKEN) . '</li></ul>';
+					$output .= admin_control('modules_not_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
 				}
 				$output .= '</td></tr>';
 			}

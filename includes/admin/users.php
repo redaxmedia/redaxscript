@@ -72,33 +72,7 @@ function admin_users_list()
 
 			/* collect control output */
 
-			if (USERS_EDIT == 1 || (USERS_DELETE == 1 && $id > 1))
-			{
-				$output .= '<ul class="list_control_admin">';
-			}
-			if (USERS_EDIT == 1)
-			{
-				if ($id > 1)
-				{
-					if ($status == 1)
-					{
-						$output .= '<li class="item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/users/' . $id . '/' . TOKEN) . '</li>';
-					}
-					else if ($status == 0)
-					{
-						$output .= '<li class="item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/users/' . $id . '/' . TOKEN) . '</li>';
-					}
-				}
-				$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/users/' . $id) . '</li>';
-			}
-			if (USERS_DELETE == 1 && $id > 1)
-			{
-				$output .= '<li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN) . '</li>';
-			}
-			if (USERS_EDIT == 1 || (USERS_DELETE == 1 && $id > 1))
-			{
-				$output .= '</ul>';
-			}
+			$output .= admin_control('access', 'users', $id, $alias, $status, USERS_NEW, USERS_EDIT, USERS_DELETE);
 
 			/* collect user and parent output */
 

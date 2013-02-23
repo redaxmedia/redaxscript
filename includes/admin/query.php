@@ -348,9 +348,7 @@ function admin_process()
 
 	else
 	{
-		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
-		$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
-		if ($edit == 1 || $delete == 1)
+		if (TABLE_EDIT == 1 || TABLE_DELETE == 1)
 		{
 			$route .= '/view/' . TABLE_PARAMETER;
 		}
@@ -684,9 +682,7 @@ function admin_delete()
 	else
 	{
 		$route = 'admin';
-		$edit = constant(strtoupper(TABLE_PARAMETER) . '_EDIT');
-		$delete = constant(strtoupper(TABLE_PARAMETER) . '_DELETE');
-		if ($edit == 1 || $delete == 1)
+		if (TABLE_EDIT == 1 || TABLE_DELETE == 1)
 		{
 			$route .= '/view/' . TABLE_PARAMETER;
 		}
