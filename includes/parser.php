@@ -13,7 +13,7 @@ function parser($input = '')
 
 	$position_break = strpos($input, '<break>');
 	$position_code = strpos($input, '<code>');
-	$position_function = strpos($input, '<function>');
+	$position_php = strpos($input, '<php>');
 
 	/* if document break */
 
@@ -41,90 +41,59 @@ function parser($input = '')
 			'<code>',
 			'</code>'
 		), '||', $output);
-		$output = explode('||', $output);
-		$counter = count($output);
-		for ($i = 1; $i < $counter; $i = $i + 2)
+		$code_parts = explode('||', $output);
+
+		/* parse needed parts */
+
+		foreach ($code_parts as $key => $value)
 		{
-			$output[$i] = trim(htmlspecialchars($output[$i]));
-			$output[$i] = '<code class="box_code">' . $output[$i] . '</code>';
+			if ($key % 2)
+			{
+				$code_parts[$key] = '<code class="box_code">' . trim(htmlspecialchars($value)) . '</code>';
+			}
 		}
-		$output = implode($output);
+		$output = implode($code_parts);
 	}
 
-	/* if function call */
+	/* if php code */
 
-	if ($position_function > -1)
+	if ($position_php > -1)
 	{
 		$output = str_replace(array(
-			'<function>',
-			'</function>'
+			'<php>',
+			'</php>'
 		), '||', $output);
-		$output = explode('||', $output);
-		$counter = count($output);
-		$function_terms = b('function_terms');
-		for ($i = 1; $i < $counter; $i = $i + 2)
+		$php_parts = explode('||', $output);
+		$function_terms = explode(', ', b('function_terms'));
+		
+		/* parse needed parts */
+
+		foreach ($php_parts as $key => $value)
 		{
-			$function = explode('|', $output[$i]);
-
-			/* validate allowed function call */
-
-			$function_terms = explode(', ', $function_terms);
-			$function_parts = explode('_', $function[0]);
-			if ($function_parts && $function_terms)
+			if ($key % 2)
 			{
-				$function_intersect = array_intersect($function_parts, $function_terms);
-			}
-			if ($function_intersect[0] == '' && function_exists($function[0]))
-			{
-				ob_start();
+				/* validate allowed function */
 
-				/* explode parameter */
-
-				$parameter = explode('->', $function[1]);
-				if ($parameter)
+				$valid = 1;
+				foreach ($function_terms as $term)
 				{
-					foreach ($parameter as $key => $value)
+					if (strpos($value, $term))
 					{
-						/* explode arrays */
-
-						$position_array = strpos($value, 'array');
-						if ($position_array > -1)
-						{
-							$array_string = substr($value, 6, -1);
-							$array_parts = explode(', ', $array_string);
-
-							/* fetch array parts */
-
-							foreach ($array_parts as $part)
-							{
-								$position_part = strpos($part, '=>');
-								if ($position_part > -1)
-								{
-									$array_key = trim(substr($part, 0, $position_part));
-									$array_value = trim(substr($part, $position_part + 2));
-									$array[$array_key] = $array_value;
-								}
-								else
-								{
-									$array[] = trim($part);
-								}
-							}
-							$parameter[$key] = $array;
-						}
+						$valid = 0;
 					}
 				}
 
-				/* call function */
+				/* call valid function */
 
-				$result = call_user_func_array($function[0], $parameter);
-				$output[$i] = ob_get_clean();
-				if ($output[$i] == '')
+				if ($valid == 1)
 				{
-					$output[$i] = $result;
+					ob_start();
+					eval($value);
+					$php_parts[$key] = ob_get_clean();
 				}
 			}
 		}
-		$output = implode($output);
+		$output = implode($php_parts);
 	}
 	return $output;
 }
