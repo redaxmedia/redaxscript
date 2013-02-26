@@ -53,25 +53,26 @@
 
 		dawanda.getData = function (call, id, page, callback)
 		{
-			var keyStorage = 'dawandaData' + id.charAt(0).toUpperCase() + id.slice(1);
+			var key = id + page,
+				keyStorage = 'dawandaData' + id.charAt(0).toUpperCase() + id.slice(1) + page;
 
 			/* fetch from storage */
 
 			if (typeof window.sessionStorage === 'object' && typeof JSON.parse === 'function')
 			{
-				r.module.dawanda.storage[id] = window.sessionStorage.getItem(keyStorage) || false;
+				r.module.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
 				/* restore data from storage */
 
-				if (typeof r.module.dawanda.storage[id] === 'string')
+				if (typeof r.module.dawanda.storage[key] === 'string')
 				{
-					r.module.dawanda.data[id] = JSON.parse(r.module.dawanda.storage[id]);
+					r.module.dawanda.data[key] = JSON.parse(r.module.dawanda.storage[key]);
 				}
 			}
 
 			/* fetch from data */
 
-			if (typeof r.module.dawanda.data[id] === 'object' && r.module.dawanda.data[id]['calls'][call])
+			if (typeof r.module.dawanda.data[key] === 'object' && r.module.dawanda.data[key]['calls'][call])
 			{
 				/* callback if data */
 
@@ -92,7 +93,7 @@
 					data:
 					{
 						api_key: options.key,
-						page: page || 1
+						page: page
 					},
 					success: function (data)
 					{
@@ -100,18 +101,18 @@
 
 						if (typeof data.response === 'object' && typeof data.response.result === 'object')
 						{
-							r.module.dawanda.data[id] = $.extend({}, r.module.dawanda.data[id], data.response.result || {});
+							r.module.dawanda.data[key] = $.extend({}, r.module.dawanda.data[key], data.response.result || {});
 
 							/* register calls */
 
-							r.module.dawanda.data[id]['calls'] = r.module.dawanda.data[id]['calls'] || {};
-							r.module.dawanda.data[id]['calls'][call] = true;
+							r.module.dawanda.data[key]['calls'] = r.module.dawanda.data[key]['calls'] || {};
+							r.module.dawanda.data[key]['calls'][call] = true;
 
 							/* set related storage */
 
 							if (typeof window.sessionStorage === 'object' && typeof JSON.stringify === 'function')
 							{
-								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.module.dawanda.data[id]));
+								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.module.dawanda.data[key]));
 							}
 
 							/* callback if data */
