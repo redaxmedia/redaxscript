@@ -17,7 +17,7 @@ function b($name = '')
 
 	/* html */
 
-	$b['html_tags'] = 'applet, base, basefont, bgsound, body, embed, font, form, frame, frameset, function, head, html, iframe, ilayer, img, input, layer, link, meta, object, table, title, xml';
+	$b['html_tags'] = 'applet, base, basefont, bgsound, body, embed, font, form, frame, frameset, head, html, iframe, ilayer, img, input, layer, link, meta, object, php, table, title, xml';
 	$b['html_attributes'] = 'background, codebase, dynsrc, href, lowsrc, name, rel, src, type, url';
 
 	/* function */

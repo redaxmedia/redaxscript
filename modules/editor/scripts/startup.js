@@ -36,7 +36,7 @@ r.module.editor =
 		},
 		toolbar:
 		{
-			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'insert_link', 'unlink', 'insert_image', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
+			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'insert_link', 'unlink', 'insert_image', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_break', 'insert_code', 'insert_php', 'divider', 'unformat'],
 			frontend: ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat']
 		},
 		xhtml:
@@ -245,13 +245,13 @@ r.module.editor =
 			title: l.editor_insert_code_quote,
 			methode: 'insertCode'
 		},
-		insert_function:
+		insert_php:
 		{
 			title: l.editor_insert_php_function,
 			methode: 'insert',
-			command: 'insertFunction',
+			command: 'insertPHP',
 			message: l.editor_insert_php_function,
-			value: 'function|parameter'
+			value: ''
 		},
 		unformat:
 		{

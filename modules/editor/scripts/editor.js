@@ -165,11 +165,11 @@
 							editor.insertHTML('<a href="' + input + '">' + input + '</a>');
 						}
 
-						/* insert function */
+						/* insert php */
 
-						else if (command === 'insertFunction')
+						else if (command === 'insertPHP')
 						{
-							editor.insertHTML('&lt;function&gt;' + input + '&lt;/function&gt;');
+							editor.insertHTML('&lt;php&gt;' + input + '&lt;/php&gt;');
 						}
 
 						/* else default behavior */
@@ -293,8 +293,8 @@
 				/* pseudo tags */
 
 				output = output.replace(/-&gt;/gi, '->');
-				output = output.replace(/&lt;(break|code|function)&gt;/gi, '<$1>');
-				output = output.replace(/&lt;\/(code|function)&gt;/gi, '</$1>');
+				output = output.replace(/&lt;(break|code|php)&gt;/gi, '<$1>');
+				output = output.replace(/&lt;\/(code|php)&gt;/gi, '</$1>');
 				output = output.replace(/[\r\n]/gi, '');
 
 				/* xhtml cleanup */
