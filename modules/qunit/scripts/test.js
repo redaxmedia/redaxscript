@@ -35,6 +35,16 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
+		/* constant */
+
+		win.test('constant', function ()
+		{
+			var expect = 'object',
+				result = typeof r.constant;
+
+			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+		});
+
 		/* version */
 
 		win.test('version', function ()
