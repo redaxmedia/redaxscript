@@ -21,7 +21,12 @@
 		}
 
 		var win = window,
-			qunit = $(options.element.qunit);
+			qunit = $(options.element.qunit),
+			qunitFixture = qunit.next(options.element.qunitFixture);
+
+		/* add classes */
+
+		qunitFixture.addClass(options.classString.qunitFixture);
 
 		/* begin callback */
 
@@ -39,8 +44,7 @@
 				qunitToolbar = qunit.find(options.element.qunitToolbar),
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
 				qunitResult = qunit.find(options.element.qunitResult),
-				qunitTest = qunit.find(options.element.qunitTest),
-				qunitFixture = qunit.find(options.element.qunitFixture);
+				qunitTest = qunit.find(options.element.qunitTest);
 
 			/* add several classes */
 

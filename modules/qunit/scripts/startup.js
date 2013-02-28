@@ -29,7 +29,8 @@ r.module.qunit =
 			qunitToolbar: 'box_qunit toolbar_qunit',
 			qunitUserAgent: 'box_qunit user_agent_qunit',
 			qunitResult: 'title_qunit',
-			qunitTest: 'list_qunit'
+			qunitTest: 'list_qunit',
+			qunitFixture: 'box_fixture'
 		},
 		duration: 500
 	}

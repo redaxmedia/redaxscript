@@ -13,7 +13,8 @@
 	$(function ()
 	{
 		var win = window,
-			fixture = $(r.module.qunit.options.element.qunitFixture);
+			fixture = $(r.module.qunit.options.element.qunitFixture),
+			dummy = 'Hello world';
 
 		/* globals */
 
@@ -62,9 +63,32 @@
 			win.test('cleanAlias', function ()
 			{
 				var expect = 'hello-world',
-					result = $.fn.cleanAlias('Hello world');
+					result = $.fn.cleanAlias(dummy);
 
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+			});
+		}
+
+		/* check search */
+
+		if (typeof $.fn.checkSearch === 'function')
+		{
+			win.asyncTest('checkSearch', function ()
+			{
+				var form = $('<form method="post"><input value="' + dummy + '" class="js_required" /></form>').checkSearch().appendTo(fixture),
+					input = form.find('input'),
+					expect = l.input_incorrect + l.exclamation_mark,
+					result = input.val();
+
+				/* trigger submit */
+
+				form.submit();
+				setTimeout(function ()
+				{
+					result = input.val();
+					win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+					win.start();
+				}, 100);
 			});
 		}
 
@@ -74,7 +98,7 @@
 		{
 			win.test('clearFocus', function ()
 			{
-				var input = $('<input value="Hello world" />').clearFocus().appendTo(fixture),
+				var input = $('<input value="' + dummy + '" />').clearFocus().appendTo(fixture),
 					expect = '',
 					result = input.val();
 
@@ -85,7 +109,7 @@
 
 				/* trigger focusout */
 
-				expect = 'Hello world';
+				expect = dummy;
 				result = input.trigger('focusout').val();
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 			});
@@ -97,7 +121,7 @@
 		{
 			win.test('unmaskPassword', function ()
 			{
-				var input = $('<input type="password" value="Password" />').unmaskPassword().appendTo(fixture),
+				var input = $('<input type="password" value="' + dummy + '" />').unmaskPassword().appendTo(fixture),
 					expect = 'text',
 					result = input.attr('type'),
 					keydown = $.Event('keydown');

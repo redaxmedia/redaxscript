@@ -3,10 +3,11 @@
  *
  * 1. banner qunit
  * 2. box qunit
- * 3. title qunit
- * 4. toolbar qunit
- * 5. list qunit
- * 6. space between elements
+ * 3. box fixture
+ * 4. title qunit
+ * 5. toolbar qunit
+ * 6. list qunit
+ * 7. space between elements
  */
 
 /* @section 1. banner qunit */
@@ -36,7 +37,14 @@
 	border-top: 0;
 }
 
-/* @section 3. title qunit */
+/* @section 3. box fixture */
+
+.box_fixture
+{
+	display: none;
+}
+
+/* @section 4. title qunit */
 
 .title_qunit
 {
@@ -68,7 +76,7 @@
 	text-decoration: underline;
 }
 
-/* @section 4. toolbar qunit */
+/* @section 5. toolbar qunit */
 
 .toolbar_qunit input, .toolbar_qunit select
 {
@@ -85,7 +93,7 @@
 	vertical-align: middle;
 }
 
-/* @section 5. list qunit */
+/* @section 6. list qunit */
 
 .list_qunit
 {
@@ -128,7 +136,7 @@
 	list-style: lower-alpha inside;
 }
 
-/* @section 6. space between elements */
+/* @section 7. space between elements */
 
 .box_qunit + .title_qunit
 {
