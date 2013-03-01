@@ -6,7 +6,7 @@
 
 function feed_generator_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed generator\', \'feed_generator\', \'Redaxmedia\', \'Generate Atom feeds from content\', \'1.2.1\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed generator\', \'feed_generator\', \'Redaxmedia\', \'Generates Atom feeds from content\', \'1.2.1\', 1, 0)';
 	mysql_query($query);
 }
 
