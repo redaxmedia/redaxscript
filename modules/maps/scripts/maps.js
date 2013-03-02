@@ -32,7 +32,7 @@
 					mapZoom = Number(map.data('zoom')),
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
-					mapMeta, mapChildren, mapInstance;
+					mapMeta, mapInstance;
 
 				/* overwrite zoom */
 
@@ -58,13 +58,11 @@
 
 					if (options.replaceBranding)
 					{
-						google.maps.event.addListenerOnce(mapInstance, 'idle', function ()
+						/* remove orignal branding */
+
+						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
-							mapChildren = map.children('div').children('div');
-
-							/* remove orignal branding */
-
-							mapChildren.filter('div:eq(1), div:eq(2), div:eq(3), div:eq(4), div:eq(5)').remove();
+							map.children('div').children('div').filter('div:eq(1), div:eq(2), div:eq(3), div:eq(4), div:eq(5)').remove();
 						});
 
 						/* append custom branding */
