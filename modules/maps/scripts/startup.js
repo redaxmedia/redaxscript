@@ -14,8 +14,8 @@ r.module.maps =
 	{
 		general:
 		{
-			zoom: 6,
-			center: new google.maps.LatLng(51, 3),
+			zoom: 2,
+			center: new google.maps.LatLng(20, 0),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
 			panControl: true,
