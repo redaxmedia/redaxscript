@@ -36,12 +36,6 @@
 
 /* @section 3. map links */
 
-.map_logo, .map_terms
-{
-	position: relative;
-	z-index: 1100;
-}
-
 .map_logo
 {
 	float: left;

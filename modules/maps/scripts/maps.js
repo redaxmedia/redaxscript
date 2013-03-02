@@ -29,19 +29,19 @@
 			$(this).each(function ()
 			{
 				var map = $(this),
-					mapMeta, mapChildren, instance;
+					mapMeta, mapChildren, mapInstance;
 
 				/* create map instance */
 
 				if (map.length)
 				{
-					instance = new google.maps.Map(map[0], options.general);
+					mapInstance = new google.maps.Map(map[0], options.general);
 
 					/* replace branding */
 
 					if (options.replaceBranding)
 					{
-						google.maps.event.addListenerOnce(instance, 'idle', function ()
+						google.maps.event.addListenerOnce(mapInstance, 'idle', function ()
 						{
 							mapChildren = map.children('div').children('div');
 
@@ -53,7 +53,7 @@
 
 							if (options.mapLogo || options.mapTerms)
 							{
-								mapMeta = $('<div>').addClass(options.classString.mapMeta).insertAfter(mapChildren);
+								mapMeta = $('<div>').addClass(options.classString.mapMeta).insertBefore(mapChildren);
 
 								/* append custom logo */
 
@@ -76,7 +76,7 @@
 
 					if (options.styles)
 					{
-						instance.setOptions(
+						mapInstance.setOptions(
 						{
 							styles: options.styles
 						});
