@@ -64,29 +64,29 @@
 
 							/* remove orignal branding */
 
-							mapChildren.eq(1).add(mapChildren.eq(2)).remove();
-
-							/* append custom branding */
-
-							if (options.mapLogo || options.mapTerms)
-							{
-								mapMeta = $('<div>').addClass(options.classString.mapMeta).insertBefore(mapChildren);
-
-								/* append custom logo */
-
-								if (options.mapLogo)
-								{
-									$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
-								}
-
-								/* append custom terms */
-
-								if (options.mapTerms)
-								{
-									$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
-								}
-							}
+							mapChildren.filter('div:eq(1), div:eq(2), div:eq(3), div:eq(4), div:eq(5)').remove();
 						});
+
+						/* append custom branding */
+
+						if (options.mapLogo || options.mapTerms)
+						{
+							mapMeta = $('<div>').addClass(options.classString.mapMeta).appendTo(map);
+
+							/* append custom logo */
+
+							if (options.mapLogo)
+							{
+								$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
+							}
+
+							/* append custom terms */
+
+							if (options.mapTerms)
+							{
+								$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
+							}
+						}
 					}
 
 					/* set custom styles */
