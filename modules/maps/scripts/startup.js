@@ -72,6 +72,7 @@ r.module.maps =
 					}
 				]
 			}
-		]
+		],
+		removeBranding: false
 	}
 };

@@ -29,13 +29,27 @@
 			$(this).each(function ()
 			{
 				var element = $(this),
-					map;
+					branding, map;
 
 				/* create map instance */
 
 				if (element.length)
 				{
 					map = new google.maps.Map(element[0], options.general);
+
+					/* remove branding */
+
+					if (options.removeBranding)
+					{
+						google.maps.event.addListenerOnce(map, 'idle', function()
+						{
+							branding = element.children('div').children('div');
+
+							/* remove logo and terms */
+
+							branding.eq(1).add(branding.eq(2)).remove();
+						});
+					}
 
 					/* set custom styles */
 
