@@ -54,6 +54,16 @@ r.module.maps =
 				]
 			},
 			{
+				featureType: 'road.highway',
+				elementType: 'labels',
+				stylers:
+				[
+					{
+						visibility: 'off'
+					}
+				]
+			},
+			{
 				featureType: 'water',
 				stylers:
 				[
