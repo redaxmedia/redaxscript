@@ -33,7 +33,7 @@
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
 					mapMeta, mapInstance;
-
+				
 				/* overwrite zoom */
 
 				if (mapZoom)
@@ -60,9 +60,14 @@
 					{
 						/* remove orignal branding */
 
+						google.maps.event.addListenerOnce(mapInstance, 'idle', function ()
+						{
+							map.children('div').css('opacity', 0);
+						});
 						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
 							map.children('div').children('div').filter('div:eq(1), div:eq(2), div:eq(3), div:eq(4), div:eq(5)').remove();
+							map.children('div').css('opacity', 1);
 						});
 
 						/* append custom branding */
