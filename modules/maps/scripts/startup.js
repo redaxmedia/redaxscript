@@ -12,6 +12,12 @@ r.module.maps =
 	selector: 'div.js_map',
 	options:
 	{
+		classString:
+		{
+			mapMeta: 'js_map_meta map_meta',
+			mapLogo: 'js_map_logo map_logo',
+			mapTerms: 'js_map_terms map_terms'
+		},
 		general:
 		{
 			zoom: 2,
@@ -73,6 +79,8 @@ r.module.maps =
 				]
 			}
 		],
-		removeBranding: false
+		replaceBranding: true,
+		mapLogo: '<a href="http://maps.google.com/maps" target="_blank">Powered by Google</a>',
+		mapTerms: '<a href="http://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank">Terms of Use</a>'
 	}
 };

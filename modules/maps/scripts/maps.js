@@ -28,26 +28,47 @@
 
 			$(this).each(function ()
 			{
-				var element = $(this),
-					branding, map;
+				var map = $(this),
+					mapMeta, mapChildren, instance;
 
 				/* create map instance */
 
-				if (element.length)
+				if (map.length)
 				{
-					map = new google.maps.Map(element[0], options.general);
+					instance = new google.maps.Map(map[0], options.general);
 
-					/* remove branding */
+					/* replace branding */
 
-					if (options.removeBranding)
+					if (options.replaceBranding)
 					{
-						google.maps.event.addListenerOnce(map, 'idle', function()
+						google.maps.event.addListenerOnce(instance, 'idle', function ()
 						{
-							branding = element.children('div').children('div');
+							mapChildren = map.children('div').children('div');
 
-							/* remove logo and terms */
+							/* remove orignal branding */
 
-							branding.eq(1).add(branding.eq(2)).remove();
+							mapChildren.eq(1).add(mapChildren.eq(2)).remove();
+
+							/* append custom branding */
+
+							if (options.mapLogo || options.mapTerms)
+							{
+								mapMeta = $('<div>').addClass(options.classString.mapMeta).insertAfter(mapChildren);
+
+								/* append custom logo */
+
+								if (options.mapLogo)
+								{
+									$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
+								}
+
+								/* append custom terms */
+
+								if (options.mapTerms)
+								{
+									$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
+								}
+							}
 						});
 					}
 
@@ -55,7 +76,7 @@
 
 					if (options.styles)
 					{
-						map.setOptions(
+						instance.setOptions(
 						{
 							styles: options.styles
 						});

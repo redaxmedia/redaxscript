@@ -1,12 +1,55 @@
 /**
  * @tableofcontents
  *
- * 1. box_map
+ * 1. map
+ * 2. map meta
+ * 3. map links
  */
 
-/* @section 1. box_map */
+/* @section 1. map */
 
-.box_map
+.map
 {
 	height: 500px;
+}
+
+/* @section 2. map meta */
+
+.map_meta
+{
+	background: #fff;
+	bottom: 0;
+	color: #666;
+	display: none;
+	font: 1em georgia, arial;
+	left: 0;
+	padding: 1em 0;
+	position: absolute;
+	width: 100%;
+	z-index: 1000;
+}
+
+.map:hover .map_meta
+{
+	display: block;
+}
+
+/* @section 3. map links */
+
+.map_logo, .map_terms
+{
+	position: relative;
+	z-index: 1100;
+}
+
+.map_logo
+{
+	float: left;
+	margin-left: 1em;
+}
+
+.map_terms
+{
+	float: right;
+	margin-right: 1em;
 }
