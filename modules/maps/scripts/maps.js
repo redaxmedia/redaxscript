@@ -37,7 +37,7 @@
 				{
 					map = new google.maps.Map(element[0], options.general);
 
-					/* custom styles */
+					/* set custom styles */
 
 					if (options.styles)
 					{
@@ -45,7 +45,6 @@
 						{
 							styles: options.styles
 						});
-						
 					}
 				}
 			});
