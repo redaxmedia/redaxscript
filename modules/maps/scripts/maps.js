@@ -29,7 +29,24 @@
 			$(this).each(function ()
 			{
 				var map = $(this),
+					mapZoom = Number(map.data('zoom')),
+					mapLat = Number(map.data('lat')),
+					mapLng = Number(map.data('lng')),
 					mapMeta, mapChildren, mapInstance;
+
+				/* overwrite zoom */
+
+				if (mapZoom)
+				{
+					options.general.zoom = mapZoom;
+				}
+
+				/* overwrite center */
+
+				if (mapLat && mapLng)
+				{
+					options.general.center = new google.maps.LatLng(mapLat, mapLng);
+				}
 
 				/* create map instance */
 
