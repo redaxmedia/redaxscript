@@ -33,6 +33,7 @@ Feature list
 * **Ultra lightweight WYSIWYG editor**
 * Multiple language and template support
 * Available in over 25 languages
+* Salt enhanced password security
 * Extensive setting options
 
 

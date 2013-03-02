@@ -44,7 +44,7 @@
 				{
 					route = route.replace('{id}', id);
 				}
-				output = 'http://' + options.language + '.' + options.url + '/' + route;
+				output = options.protocol + options.language + '.' + options.url + '/' + route;
 			}
 			return output;
 		};

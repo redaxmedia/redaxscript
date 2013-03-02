@@ -62,6 +62,7 @@ module.exports = function(grunt)
 			{
 				_gaq: true,
 				_gat: true,
+				google: true,
 				jQuery: true,
 				l: true,
 				r: true

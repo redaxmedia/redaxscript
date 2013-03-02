@@ -12,6 +12,7 @@ r.module.dawanda =
 	options:
 	{
 		key: '380d7924396f5596116f3d8815c97dfd8c975582',
+		protocol: 'http://',
 		url: 'dawanda.com/api/v1',
 		language: 'en'
 	},
