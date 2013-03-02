@@ -80,7 +80,7 @@ r.module.maps =
 			}
 		],
 		replaceBranding: true,
-		mapLogo: '<a href="http://maps.google.com/maps" target="_blank">Powered by Google</a>',
+		mapLogo: '<a href="http://maps.google.com" target="_blank">Google Maps</a>',
 		mapTerms: '<a href="http://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank">Terms of Use</a>'
 	}
 };
