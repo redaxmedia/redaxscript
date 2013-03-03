@@ -60,13 +60,13 @@
 					{
 						/* remove orignal branding */
 
-						google.maps.event.addListenerOnce(mapInstance, 'idle', function ()
+						google.maps.event.addListenerOnce(mapInstance, 'bounds_changed', function ()
 						{
 							map.children('div').css('opacity', 0);
 						});
 						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
-							map.children('div').children('div').slice(1, 5).remove();
+							map.children('div').children('div').slice(1, 6).remove();
 							map.children('div').css('opacity', 1);
 						});
 
