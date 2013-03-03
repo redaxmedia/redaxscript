@@ -3,7 +3,7 @@
  *
  * 1. map
  * 2. map meta
- * 3. map links
+ * 3. map branding
  */
 
 /* @section 1. map */
@@ -13,6 +13,15 @@
 	height: 500px;
 }
 
+/* mobile */
+
+.mobile .map
+{
+	height: 200px;
+	margin: 0 auto;
+	width: 90%;
+}
+
 /* @section 2. map meta */
 
 .map_meta
@@ -20,7 +29,6 @@
 	background: #fff;
 	bottom: 0;
 	color: #666;
-	display: none;
 	font: 1em georgia, arial;
 	left: 0;
 	padding: 1em 0;
@@ -29,12 +37,19 @@
 	z-index: 1000;
 }
 
-.map:hover .map_meta
+/* desktop */
+
+.desktop .map_meta
+{
+	display: none;
+}
+
+.desktop .map:hover .map_meta
 {
 	display: block;
 }
 
-/* @section 3. map links */
+/* @section 3. map branding */
 
 .map_logo
 {

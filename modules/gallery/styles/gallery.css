@@ -67,7 +67,6 @@
 	background: #fff;
 	bottom: 0;
 	color: #666;
-	display: none;
 	font: 1em georgia, arial;
 	left: 0;
 	padding: 1em 0;
@@ -77,7 +76,14 @@
 	z-index: 1200;
 }
 
-.gallery:hover .gallery_meta
+/* desktop */
+
+.desktop .gallery_meta
+{
+	display: none;
+}
+
+.desktop .gallery:hover .gallery_meta
 {
 	display: block;
 }
