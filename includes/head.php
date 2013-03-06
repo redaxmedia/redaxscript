@@ -7,7 +7,7 @@
 function head()
 {
 	hook(__FUNCTION__ . '_start');
-	if (LAST_PARAMETER)
+	if (LAST_TABLE)
 	{
 		/* query contents */
 
@@ -75,7 +75,7 @@ function head()
 	{
 		$robots = ROBOTS;
 	}
-	else if (LAST_ID == '' || LAST_ID && $check_access == 0)
+	else if (CONTENT_ERROR || LAST_PARAMETER && $check_access == 0)
 	{
 		$robots = 'none';
 	}
