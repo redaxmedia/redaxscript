@@ -33,7 +33,7 @@
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
 					mapMeta, mapInstance;
-				
+
 				/* overwrite zoom */
 
 				if (mapZoom)
@@ -99,6 +99,17 @@
 						mapInstance.setOptions(
 						{
 							styles: options.styles
+						});
+					}
+
+					/* set marker */
+
+					if (options.marker)
+					{
+						new google.maps.Marker(
+						{
+							position: options.general.center,
+							map: mapInstance
 						});
 					}
 				}
