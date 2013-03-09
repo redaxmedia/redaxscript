@@ -41,7 +41,9 @@
 
 .box_fixture
 {
-	display: none;
+	left: -999em;
+	position: absolute;
+	top: -999em;
 }
 
 /* @section 4. title qunit */
