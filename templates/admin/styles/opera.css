@@ -8,6 +8,6 @@
 
 .field_select_admin, .field_select_admin.field_disabled, .field_select_admin.field_readonly, form .field_select_admin.field_note
 {
-	background-color: #f1f1f1;
+	background-color: #fff;
 	background-color: rgba(0, 0, 0, 0);
 }
