@@ -18,6 +18,16 @@
 
 		/* globals */
 
+		win.test('jQuery', function ()
+		{
+			var expect = 'function',
+				result = typeof jQuery;
+
+			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+		});
+
+		/* globals */
+
 		win.test('globals', function ()
 		{
 			var expect = 'object',
