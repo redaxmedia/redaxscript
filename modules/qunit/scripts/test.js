@@ -1,14 +1,21 @@
 /**
  * @tableofcontents
  *
- * 1. test
+ * 1. jquery
+ * 2. globals
+ * 3. base url
+ * 4. constant
+ * 5. version
+ * 6. clean alias
+ * 7. auto resize
+ * 8. check search
+ * 9. clear focus
+ * 10. unmask password
  */
 
 (function ($)
 {
 	'use strict';
-
-	/* @section 1. test */
 
 	$(function ()
 	{
@@ -16,9 +23,9 @@
 			fixture = $(r.module.qunit.options.element.qunitFixture),
 			dummy = 'Hello world';
 
-		/* globals */
+		/* @section 1. jquery */
 
-		win.test('jQuery', function ()
+		win.test('jquery', function ()
 		{
 			var expect = 'function',
 				result = typeof jQuery;
@@ -26,7 +33,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* globals */
+		/* @section 2. globals */
 
 		win.test('globals', function ()
 		{
@@ -36,7 +43,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* base url */
+		/* @section 3. base url */
 
 		win.test('baseURL', function ()
 		{
@@ -46,7 +53,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* constant */
+		/* @section 4. constant */
 
 		win.test('constant', function ()
 		{
@@ -56,7 +63,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* version */
+		/* @section 5. version */
 
 		win.test('version', function ()
 		{
@@ -66,7 +73,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* clean alias */
+		/* @section 6. clean alias */
 
 		if (typeof $.fn.cleanAlias === 'function')
 		{
@@ -79,13 +86,36 @@
 			});
 		}
 
-		/* check search */
+		/* @section 7. auto resize */
+
+		if (typeof $.fn.autoResize === 'function')
+		{
+			win.test('autoResize', function ()
+			{
+				var textarea = $('<textarea cols="1" rows="2"></textarea>').autoResize().appendTo(fixture),
+					expect = 1,
+					result = textarea.attr('rows');
+
+				/* trigger ready */
+
+				result = textarea.trigger('ready').attr('rows');
+				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+
+				/* trigger input */
+
+				expect = dummy.length;
+				result = textarea.val(dummy).trigger('input').attr('rows');
+				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+			});
+		}
+
+		/* @section 8. check search */
 
 		if (typeof $.fn.checkSearch === 'function')
 		{
 			win.asyncTest('checkSearch', function ()
 			{
-				var form = $('<form method="post"><input value="' + dummy + '" class="js_required" /></form>').checkSearch().appendTo(fixture),
+				var form = $('<form method="post"><input class="js_required" value="' + dummy + '" /></form>').checkSearch().appendTo(fixture),
 					input = form.find('input'),
 					expect = l.input_incorrect + l.exclamation_mark,
 					result = input.val();
@@ -102,7 +132,7 @@
 			});
 		}
 
-		/* clear focus */
+		/* @section 9. clear focus */
 
 		if (typeof $.fn.clearFocus === 'function')
 		{
@@ -125,7 +155,7 @@
 			});
 		}
 
-		/* unmask password  */
+		/* @section 10. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{

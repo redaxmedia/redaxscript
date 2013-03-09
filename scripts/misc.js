@@ -1,8 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. key shortcut
- * 2. forward notification
+ * 1. forward notification
+ * 2. key shortcut
  * 3. startup
  */
 
@@ -10,7 +10,31 @@
 {
 	'use strict';
 
-	/* @section 1. key shortcut */
+	/* @section 1. forward notification */
+
+	$.fn.forwardNotification = function (options)
+	{
+		/* extend options */
+
+		if (r.plugin.forwardNotification.options !== options)
+		{
+			options = $.extend({}, r.plugin.forwardNotification.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* trigger click after delay */
+
+			$(this).delay(options.duration).queue(function ()
+			{
+				$(this).click();
+			});
+		});
+	};
+
+	/* @section 2. key shortcut */
 
 	$.fn.keyShortcut = function (options)
 	{
@@ -74,30 +98,6 @@
 						});
 					}
 				}
-			});
-		});
-	};
-
-	/* @section 2. forward notification */
-
-	$.fn.forwardNotification = function (options)
-	{
-		/* extend options */
-
-		if (r.plugin.forwardNotification.options !== options)
-		{
-			options = $.extend({}, r.plugin.forwardNotification.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* trigger click after delay */
-
-			$(this).delay(options.duration).queue(function ()
-			{
-				$(this).click();
 			});
 		});
 	};

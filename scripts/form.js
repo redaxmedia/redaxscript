@@ -1,12 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. check required
- * 2. check search
- * 3. note required
+ * 1. auto resize
+ * 2. check required
+ * 3. check search
  * 4. clear focus
- * 5. unmask password
- * 6. auto resize
+ * 5. note required
+ * 6. unmask password
  * 7. startup
  */
 
@@ -14,7 +14,47 @@
 {
 	'use strict';
 
-	/* @section 1. check required */
+	/* @section 1. auto resize */
+
+	$.fn.autoResize = function (options)
+	{
+		/* extend options */
+
+		if (r.plugin.autoResize.options !== options)
+		{
+			options = $.extend({}, r.plugin.autoResize.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* listen for input */
+
+			$(this).on('ready input', function (event)
+			{
+				var textarea = this;
+
+				if (event.type === 'ready')
+				{
+					while (textarea.clientHeight < textarea.scrollHeight)
+					{
+						textarea.rows += options.summand++;
+					}
+				}
+				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+				{
+					textarea.rows -= 1;
+				}
+				while (textarea.clientHeight < textarea.scrollHeight)
+				{
+					textarea.rows += 1;
+				}
+			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
+		});
+	};
+
+	/* @section 2. check required */
 
 	$.fn.checkRequired = function (options)
 	{
@@ -100,7 +140,7 @@
 		});
 	};
 
-	/* @section 2. check search */
+	/* @section 3. check search */
 
 	$.fn.checkSearch = function (options)
 	{
@@ -139,7 +179,35 @@
 		});
 	};
 
-	/* @section 3. note required */
+	/* @section 4. clear focus */
+
+	$.fn.clearFocus = function ()
+	{
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* listen for focusin and focusout */
+
+			$(this).on('focusin focusout', function (event)
+			{
+				var field = this,
+					fieldValue = $.trim(field.value),
+					fieldValueDefault = field.defaultValue;
+
+				if (event.type === 'focusin' && fieldValue === fieldValueDefault)
+				{
+					field.value = '';
+				}
+				else if (fieldValue === '')
+				{
+					field.value = fieldValueDefault;
+				}
+			});
+		});
+	};
+
+	/* @section 5. note required */
 
 	$.fn.noteRequired = function (options)
 	{
@@ -180,35 +248,7 @@
 		});
 	};
 
-	/* @section 4. clear focus */
-
-	$.fn.clearFocus = function ()
-	{
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* listen for focusin and focusout */
-
-			$(this).on('focusin focusout', function (event)
-			{
-				var field = this,
-					fieldValue = $.trim(field.value),
-					fieldValueDefault = field.defaultValue;
-
-				if (event.type === 'focusin' && fieldValue === fieldValueDefault)
-				{
-					field.value = '';
-				}
-				else if (fieldValue === '')
-				{
-					field.value = fieldValueDefault;
-				}
-			});
-		});
-	};
-
-	/* @section 5. unmask password */
+	/* @section 6. unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -234,50 +274,14 @@
 		});
 	};
 
-	/* @section 6. auto resize */
-
-	$.fn.autoResize = function (options)
-	{
-		/* extend options */
-
-		if (r.plugin.autoResize.options !== options)
-		{
-			options = $.extend({}, r.plugin.autoResize.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* listen for input */
-
-			$(this).on('ready input', function (event)
-			{
-				var textarea = this;
-
-				if (event.type === 'ready')
-				{
-					while (textarea.clientHeight < textarea.scrollHeight)
-					{
-						textarea.rows += options.summand++;
-					}
-				}
-				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-				{
-					textarea.rows -= 1;
-				}
-				while (textarea.clientHeight < textarea.scrollHeight)
-				{
-					textarea.rows += 1;
-				}
-			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
-		});
-	};
-
 	/* @section 7. startup */
 
 	$(function ()
 	{
+		if (r.plugin.autoResize.startup)
+		{
+			$(r.plugin.autoResize.selector).autoResize(r.plugin.autoResize.options);
+		}
 		if (r.plugin.checkRequired.startup)
 		{
 			$(r.plugin.checkRequired.selector).checkRequired(r.plugin.checkRequired.options);
@@ -286,21 +290,18 @@
 		{
 			$(r.plugin.checkSearch.selector).checkSearch(r.plugin.checkSearch.options);
 		}
-		if (r.plugin.noteRequired.startup)
-		{
-			$(r.plugin.noteRequired.selector).noteRequired(r.plugin.noteRequired.options);
-		}
 		if (r.plugin.clearFocus.startup)
 		{
 			$(r.plugin.clearFocus.selector).clearFocus();
+		}
+		if (r.plugin.noteRequired.startup)
+		{
+			$(r.plugin.noteRequired.selector).noteRequired(r.plugin.noteRequired.options);
 		}
 		if (r.plugin.unmaskPassword.startup)
 		{
 			$(r.plugin.unmaskPassword.selector).unmaskPassword();
 		}
-		if (r.plugin.autoResize.startup)
-		{
-			$(r.plugin.autoResize.selector).autoResize(r.plugin.autoResize.options);
-		}
+
 	});
 })(jQuery);

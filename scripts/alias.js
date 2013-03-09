@@ -1,8 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. generate alias
- * 2. clean alias
+ * 1. clean alias
+ * 2. generate alias
  * 3. startup
  */
 
@@ -10,53 +10,7 @@
 {
 	'use strict';
 
-	/* @section 1. generate alias */
-
-	$.fn.generateAlias = function (options)
-	{
-		/* extend options */
-
-		if (r.plugin.generateAlias.options !== options)
-		{
-			options = $.extend({}, r.plugin.generateAlias.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* listen for change and input */
-
-			$(this).on('change input', function ()
-			{
-				var field = $(this),
-					form = field.closest('form'),
-					fiedValue = field[0].value,
-					related = form.find(options.related),
-					aliasValue;
-
-				/* clean alias if value */
-
-				if (fiedValue)
-				{
-					aliasValue = $.fn.cleanAlias(fiedValue);
-					if (aliasValue)
-					{
-						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
-					}
-				}
-
-				/* else clear value */
-
-				else
-				{
-					related[0].value = '';
-				}
-			});
-		});
-	};
-
-	/* @section 2. clean alias */
+	/* @section 1. clean alias */
 
 	$.fn.cleanAlias = function (input)
 	{
@@ -202,6 +156,52 @@
 		output = output.replace(/[^a-z0-9_]/g, ' ');
 		output = output.replace(/\s+/g, '-');
 		return output;
+	};
+
+	/* @section 2. generate alias */
+
+	$.fn.generateAlias = function (options)
+	{
+		/* extend options */
+
+		if (r.plugin.generateAlias.options !== options)
+		{
+			options = $.extend({}, r.plugin.generateAlias.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* listen for change and input */
+
+			$(this).on('change input', function ()
+			{
+				var field = $(this),
+					form = field.closest('form'),
+					fiedValue = field[0].value,
+					related = form.find(options.related),
+					aliasValue;
+
+				/* clean alias if value */
+
+				if (fiedValue)
+				{
+					aliasValue = $.fn.cleanAlias(fiedValue);
+					if (aliasValue)
+					{
+						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
+					}
+				}
+
+				/* else clear value */
+
+				else
+				{
+					related[0].value = '';
+				}
+			});
+		});
 	};
 
 	/* @section 3. startup */
