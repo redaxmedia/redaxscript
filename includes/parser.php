@@ -1,24 +1,57 @@
 <?php
 
 /**
- * Redaxscript_Parser
- *
- * @param string $input
- * @return string
+ * Redaxscript Parser
+ * 
+ * @category Redaxscript
+ * @package Redaxscript Parser
+ * @author Henry Ruhs
+ * @since 1.3
  */
 
 class Redaxscript_Parser
 {
+	/**
+	 * tags
+	 * @var array
+	 */
+
 	protected $tags = array(
 		'<break>' => 'parse_break',
 		'<code>' => 'parse_code',
 		'<php>' => 'parse_php'
-		);
-	public $output;
-	public $route;
-	public $position;
+	);
 
-	/* construct */
+	/**
+	 * output
+	 * @var string
+	 */
+
+	public $output;
+
+	/**
+	 * route
+	 * @var string
+	 */
+
+	public $route;
+
+	/**
+	 * position
+	 * @var array
+	 */
+
+	public $position = array();
+
+	/**
+	 * construct
+	 *
+	 * @since 1.3
+	 *
+	 * @param $input string
+	 * @param $route string
+	 * @return Redaxscript_Parser
+	 */
 
 	function __construct($input = '', $route = '')
 	{
@@ -27,7 +60,11 @@ class Redaxscript_Parser
 		$this->parse_call();
 	}
 
-	/* parse call */
+	/**
+	 * parse call
+	 * 
+	 * @since 1.3
+	 */
 
 	public function parse_call()
 	{
@@ -44,12 +81,19 @@ class Redaxscript_Parser
 		}
 	}
 
-	/* parse break */
+	/**
+	 * parse break
+	 *
+	 * @since 1.3
+	 * 
+	 * @param $input string
+	 * @return $output
+	 */
 
 	public function parse_break($input = '')
 	{
 		$output = str_replace('<break>', '', $input);
-		if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
 		{		
 			$output = substr($output, 0, $this->position['<break>']);
 			if ($this->route)
@@ -60,7 +104,14 @@ class Redaxscript_Parser
 		return $output;
 	}
 
-	/* parse code */
+	/**
+	 * parse code
+	 *
+	 * @since 1.3
+	 * 
+	 * @param $input string
+	 * @return $output
+	 */
 
 	public function parse_code($input = '')
 	{
@@ -83,7 +134,14 @@ class Redaxscript_Parser
 		return $output;
 	}
 
-	/* parse php */
+	/**
+	 * parse php
+	 *
+	 * @since 1.3
+	 * 
+	 * @param $input string
+	 * @return $output
+	 */
 
 	public function parse_php($input = '')
 	{
@@ -113,7 +171,7 @@ class Redaxscript_Parser
 
 				/* call valid function */
 
-				if ($valid == 1)
+				if ($valid === 1)
 				{
 					ob_start();
 					eval($value);
