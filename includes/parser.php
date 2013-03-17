@@ -1,46 +1,73 @@
 <?php
 
 /**
- * parser
+ * Redaxscript_Parser
  *
  * @param string $input
  * @return string
  */
 
-function parser($input = '')
+class Redaxscript_Parser
 {
-	/* check position */
+	protected $tags = array(
+		'<break>' => 'parse_break',
+		'<code>' => 'parse_code',
+		'<php>' => 'parse_php'
+		);
+	public $output;
+	public $route;
+	public $position;
 
-	$position_break = strpos($input, '<break>');
-	$position_code = strpos($input, '<code>');
-	$position_php = strpos($input, '<php>');
+	/* construct */
 
-	/* if document break */
-
-	if ($position_break > -1)
+	function __construct($input = '', $route = '')
 	{
-		$output = str_replace('<break>', '', $input);
-		if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+		$this->output = $input;
+		$this->route = $route;
+		$this->parse_call();
+	}
+
+	/* parse call */
+
+	public function parse_call()
+	{
+		foreach($this->tags as $tag => $function)
 		{
-			$output = substr($output, 0, $position_break);
+			$this->position[$tag] = strpos($this->output, $tag);
+
+			/* call related function if tag */
+
+			if ($this->position[$tag] > -1)
+			{
+				$this->output = $this->$function($this->output);
+			}
 		}
 	}
 
-	/* else fallback */
+	/* parse break */
 
-	else
+	public function parse_break($input = '')
 	{
-		$output = $input;
+		$output = str_replace('<break>', '', $input);
+		if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+		{		
+			$output = substr($output, 0, $this->position['<break>']);
+			if ($this->route)
+			{
+				$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $this->route);
+			}
+		}
+		return $output;
 	}
 
-	/* if code quote */
+	/* parse code */
 
-	if ($position_code > -1)
+	public function parse_code($input = '')
 	{
 		$output = str_replace(array(
 			'<code>',
 			'</code>'
-		), '||', $output);
+		), '||', $input);
 		$code_parts = explode('||', $output);
 
 		/* parse needed parts */
@@ -53,19 +80,20 @@ function parser($input = '')
 			}
 		}
 		$output = implode($code_parts);
+		return $output;
 	}
 
-	/* if php code */
+	/* parse php */
 
-	if ($position_php > -1)
+	public function parse_php($input = '')
 	{
 		$output = str_replace(array(
 			'<php>',
 			'</php>'
-		), '||', $output);
+		), '||', $input);
 		$php_parts = explode('||', $output);
 		$function_terms = explode(', ', b('function_terms'));
-		
+
 		/* parse needed parts */
 
 		foreach ($php_parts as $key => $value)
@@ -90,11 +118,12 @@ function parser($input = '')
 					ob_start();
 					eval($value);
 					$php_parts[$key] = ob_get_clean();
+					
 				}
 			}
 		}
 		$output = implode($php_parts);
+		return $output;
 	}
-	return $output;
 }
 ?>

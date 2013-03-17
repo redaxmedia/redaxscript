@@ -83,8 +83,8 @@ function contents()
 				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
 				{
 					$route = build_route('articles', $id);
-					$position_break = strpos($text, '<break>');
 				}
+				$parser = new Redaxscript_Parser($text, $route);
 
 				/* collect headline output */
 
@@ -105,11 +105,7 @@ function contents()
 
 				/* collect box output */
 
-				$output .= '<div class="box_content">' . parser($text);
-				if ($position_break > -1)
-				{
-					$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $route);
-				}
+				$output .= '<div class="box_content">' . $parser->output;
 				$output .= '</div>' . hook('article_end');
 
 				/* prepend admin dock */
@@ -242,6 +238,8 @@ function extras($filter = '')
 
 				if ($category == CATEGORY || $article == ARTICLE || ($category == 0 && $article == 0))
 				{
+					$parser = new Redaxscript_Parser($text, $route);
+
 					/* collect headline output */
 
 					$output .= hook('extra_start');
@@ -252,7 +250,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . parser($text) . '</div>' . hook('extra_end');
+					$output .= '<div class="box_extra">' . $parser->output . '</div>' . hook('extra_end');
 
 					/* prepend admin dock */
 
