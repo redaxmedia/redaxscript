@@ -63,7 +63,17 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* @section 5. version */
+		/* @section 5. support */
+
+		win.test('support', function ()
+		{
+			var expect = 'object',
+				result = typeof r.support;
+
+			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+		});
+
+		/* @section 6. version */
 
 		win.test('version', function ()
 		{
@@ -73,7 +83,7 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* @section 6. clean alias */
+		/* @section 7. clean alias */
 
 		if (typeof $.fn.cleanAlias === 'function')
 		{
@@ -86,7 +96,7 @@
 			});
 		}
 
-		/* @section 7. auto resize */
+		/* @section 8. auto resize */
 
 		if (typeof $.fn.autoResize === 'function')
 		{
@@ -109,7 +119,7 @@
 			});
 		}
 
-		/* @section 8. check search */
+		/* @section 9. check search */
 
 		if (typeof $.fn.checkSearch === 'function')
 		{
@@ -132,7 +142,7 @@
 			});
 		}
 
-		/* @section 9. clear focus */
+		/* @section 10. clear focus */
 
 		if (typeof $.fn.clearFocus === 'function')
 		{
@@ -155,7 +165,7 @@
 			});
 		}
 
-		/* @section 10. unmask password  */
+		/* @section 11. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{

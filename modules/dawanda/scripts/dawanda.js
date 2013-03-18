@@ -58,7 +58,7 @@
 
 			/* fetch from storage */
 
-			if (typeof window.sessionStorage === 'object' && typeof JSON.parse === 'function')
+			if (r.support.webStorage === true && r.support.nativeJSON === true)
 			{
 				r.module.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
@@ -110,7 +110,7 @@
 
 							/* set related storage */
 
-							if (typeof window.sessionStorage === 'object' && typeof JSON.stringify === 'function')
+							if (r.support.webStorage === true && r.support.nativeJSON === true)
 							{
 								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.module.dawanda.data[key]));
 							}
