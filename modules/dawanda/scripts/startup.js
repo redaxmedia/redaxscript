@@ -6,7 +6,7 @@
 
 /* @section 1. dawanda */
 
-r.module.dawanda =
+r.modules.dawanda =
 {
 	startup: true,
 	options:

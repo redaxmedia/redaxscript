@@ -15,17 +15,17 @@
 	{
 		/* extend options */
 
-		if (r.module.seoTube.options !== options)
+		if (r.modules.seoTube.options !== options)
 		{
-			options = $.extend({}, r.module.seoTube.options, options || {});
+			options = $.extend({}, r.modules.seoTube.options, options || {});
 		}
 
 		var relatedTitle = $(options.related.title),
 			relatedAlias = $(options.related.alias),
 			relatedDescription = $(options.related.description),
 			relatedText = $(options.related.text),
-			video = r.module.seoTube.video,
-			constant = r.module.seoTube.constant,
+			video = r.modules.seoTube.video,
+			constant = r.modules.seoTube.constant,
 			text;
 
 		if (typeof video === 'object')
@@ -39,7 +39,7 @@
 			}
 			if (video.id)
 			{
-				text = '<function>seo_tube_player|' + video.id + '</function>' + r.constant.EOL + r.constant.EOL;
+				text = '<function>seo_tube_player|' + video.id + '</function>' + r.constants.EOL + r.constants.EOL;
 			}
 
 			/* video description */
@@ -49,7 +49,7 @@
 				relatedDescription.val(video.description);
 				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
-					text += '<p class="text_seo_tube">' + video.description + '</p>' + r.constant.EOL + r.constant.EOL;
+					text += '<p class="text_seo_tube">' + video.description + '</p>' + r.constants.EOL + r.constants.EOL;
 				}
 			}
 
@@ -70,7 +70,7 @@
 
 	$(function ()
 	{
-		if (r.module.seoTube.startup && r.constant.TABLE_PARAMETER === 'articles' && (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit'))
+		if (r.modules.seoTube.startup && r.constants.TABLE_PARAMETER === 'articles' && (r.constants.ADMIN_PARAMETER === 'new' || r.constants.ADMIN_PARAMETER === 'edit'))
 		{
 			$.fn.seoTube();
 		}

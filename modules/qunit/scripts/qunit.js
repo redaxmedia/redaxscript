@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.module.qunit.options !== options)
+		if (r.modules.qunit.options !== options)
 		{
-			options = $.extend({}, r.module.qunit.options, options || {});
+			options = $.extend({}, r.modules.qunit.options, options || {});
 		}
 
 		var win = window,
@@ -81,9 +81,9 @@
 
 	$(function ()
 	{
-		if (r.constant.FIRST_PARAMETER === 'qunit')
+		if (r.constants.FIRST_PARAMETER === 'qunit')
 		{
-			$.fn.qunit(r.module.qunit.options);
+			$.fn.qunit(r.modules.qunit.options);
 		}
 	});
 })(jQuery);

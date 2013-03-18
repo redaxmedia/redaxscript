@@ -20,7 +20,7 @@
 	$(function ()
 	{
 		var win = window,
-			fixture = $(r.module.qunit.options.element.qunitFixture),
+			fixture = $(r.modules.qunit.options.element.qunitFixture),
 			dummy = 'Hello world';
 
 		/* @section 1. jquery */
@@ -53,12 +53,12 @@
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
 
-		/* @section 4. constant */
+		/* @section 4. constants */
 
-		win.test('constant', function ()
+		win.test('constants', function ()
 		{
 			var expect = 'object',
-				result = typeof r.constant;
+				result = typeof r.constants;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});

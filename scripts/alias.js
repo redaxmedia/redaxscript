@@ -164,9 +164,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.generateAlias.options !== options)
+		if (r.plugins.generateAlias.options !== options)
 		{
-			options = $.extend({}, r.plugin.generateAlias.options, options || {});
+			options = $.extend({}, r.plugins.generateAlias.options, options || {});
 		}
 
 		/* return this */
@@ -208,9 +208,9 @@
 
 	$(function ()
 	{
-		if (r.plugin.generateAlias.startup)
+		if (r.plugins.generateAlias.startup)
 		{
-			$(r.plugin.generateAlias.selector).generateAlias(r.plugin.generateAlias.options);
+			$(r.plugins.generateAlias.selector).generateAlias(r.plugins.generateAlias.options);
 		}
 	});
 })(jQuery);

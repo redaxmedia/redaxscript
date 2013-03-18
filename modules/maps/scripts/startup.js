@@ -6,7 +6,7 @@
 
 /* @section 1. maps */
 
-r.module.maps =
+r.modules.maps =
 {
 	startup: true,
 	selector: 'div.js_map',

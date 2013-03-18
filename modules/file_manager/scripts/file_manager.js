@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.module.fileManager.options !== options)
+		if (r.modules.fileManager.options !== options)
 		{
-			options = $.extend({}, r.module.fileManager.options, options || {});
+			options = $.extend({}, r.modules.fileManager.options, options || {});
 		}
 
 		/* return this */
@@ -55,9 +55,9 @@
 
 	$(function ()
 	{
-		if (r.module.fileManager.startup && r.constant.ADMIN_PARAMETER === 'file-manager')
+		if (r.modules.fileManager.startup && r.constants.ADMIN_PARAMETER === 'file-manager')
 		{
-			$(r.module.fileManager.selector).fileManager(r.module.fileManager.options);
+			$(r.modules.fileManager.selector).fileManager(r.modules.fileManager.options);
 		}
 	});
 })(jQuery);

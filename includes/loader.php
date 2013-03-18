@@ -397,12 +397,12 @@ function scripts_transport($minify = '')
 
 	/* add constants */
 
-	$output .= 'r.constant = {};';
+	$output .= 'r.constants = {};';
 	foreach ($public_constants as $value)
 	{
-		$output .= 'r.constant.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
+		$output .= 'r.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
 	}
-	$output .= 'r.constant.EOL = \'' . b('constant_eol') . '\';' . PHP_EOL;
+	$output .= 'r.constants.EOL = \'' . b('constant_eol') . '\';' . PHP_EOL;
 
 	/* baseURL fallback */
 

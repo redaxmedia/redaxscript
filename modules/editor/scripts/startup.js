@@ -6,7 +6,7 @@
 
 /* @section 1. editor */
 
-r.module.editor =
+r.modules.editor =
 {
 	startup: true,
 	selector: 'form textarea.js_editor',

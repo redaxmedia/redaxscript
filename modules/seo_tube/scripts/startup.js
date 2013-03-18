@@ -6,7 +6,7 @@
 
 /* @section 1. seo tube */
 
-r.module.seoTube =
+r.modules.seoTube =
 {
 	startup: true,
 	options:

@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.module.debugger.options !== options)
+		if (r.modules.debugger.options !== options)
 		{
-			options = $.extend({}, r.module.debugger.options, options || {});
+			options = $.extend({}, r.modules.debugger.options, options || {});
 		}
 
 		/* return this */
@@ -37,9 +37,9 @@
 
 	$(function ()
 	{
-		if (r.module.debugger.startup)
+		if (r.modules.debugger.startup)
 		{
-			$(r.module.debugger.selector).debugger(r.module.debugger.options);
+			$(r.modules.debugger.selector).debugger(r.modules.debugger.options);
 		}
 	});
 })(jQuery);

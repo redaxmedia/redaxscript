@@ -16,9 +16,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.forwardNotification.options !== options)
+		if (r.plugins.forwardNotification.options !== options)
 		{
-			options = $.extend({}, r.plugin.forwardNotification.options, options || {});
+			options = $.extend({}, r.plugins.forwardNotification.options, options || {});
 		}
 
 		/* return this */
@@ -40,9 +40,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.keyShortcut.options !== options)
+		if (r.plugins.keyShortcut.options !== options)
 		{
-			options = $.extend({}, r.plugin.keyShortcut.options, options || {});
+			options = $.extend({}, r.plugins.keyShortcut.options, options || {});
 		}
 
 		/* return this */
@@ -106,13 +106,13 @@
 
 	$(function ()
 	{
-		if (r.plugin.keyShortcut.startup && r.constant.LOGGED_IN === r.constant.TOKEN)
+		if (r.plugins.keyShortcut.startup && r.constants.LOGGED_IN === r.constants.TOKEN)
 		{
-			$(r.plugin.keyShortcut.selector).keyShortcut(r.plugin.keyShortcut.options);
+			$(r.plugins.keyShortcut.selector).keyShortcut(r.plugins.keyShortcut.options);
 		}
-		if (r.plugin.forwardNotification.startup)
+		if (r.plugins.forwardNotification.startup)
 		{
-			$(r.plugin.forwardNotification.selector).forwardNotification(r.plugin.forwardNotification.options);
+			$(r.plugins.forwardNotification.selector).forwardNotification(r.plugins.forwardNotification.options);
 		}
 	});
 })(jQuery);

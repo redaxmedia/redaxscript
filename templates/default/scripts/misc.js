@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.logoEffect.options !== options)
+		if (r.plugins.logoEffect.options !== options)
 		{
-			options = $.extend({}, r.plugin.logoEffect.options, options || {});
+			options = $.extend({}, r.plugins.logoEffect.options, options || {});
 		}
 
 		/* return this */
@@ -42,9 +42,9 @@
 
 	$(function ()
 	{
-		if (r.plugin.logoEffect.startup)
+		if (r.plugins.logoEffect.startup)
 		{
-			$(r.plugin.logoEffect.selector).logoEffect(r.plugin.logoEffect.options);
+			$(r.plugins.logoEffect.selector).logoEffect(r.plugins.logoEffect.options);
 		}
 	});
 })(jQuery);

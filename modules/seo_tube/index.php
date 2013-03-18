@@ -26,11 +26,11 @@ function seo_tube_scripts_end()
 		/* add seo tube object */
 
 		$output = '<script>' . PHP_EOL;
-		$output .= 'r.module.seoTube.video = ' . json_encode($video_content) . ';';
+		$output .= 'r.modules.seoTube.video = ' . json_encode($video_content) . ';';
 
 		/* add constant object */
 
-		$output .= 'r.module.seoTube.constant = ' . PHP_EOL . '{' . PHP_EOL;
+		$output .= 'r.modules.seoTube.constant = ' . PHP_EOL . '{' . PHP_EOL;
 		$output .= 'SEO_TUBE_DESCRIPTION_PARAGRAPH: \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\',' . PHP_EOL;
 		$output .= 'SEO_TUBE_GDATA_URL: \'' . SEO_TUBE_GDATA_URL . '\',' . PHP_EOL;
 		$output .= 'SEO_TUBE_COMMENT_FEED: \'' . SEO_TUBE_COMMENT_FEED . '\',' . PHP_EOL;

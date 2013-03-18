@@ -6,7 +6,7 @@
 
 /* @section 1. gallery */
 
-r.module.gallery =
+r.modules.gallery =
 {
 	startup: true,
 	selector: 'ul.js_list_gallery li a',
@@ -62,8 +62,8 @@ r.module.gallery =
 
 /* disable preload */
 
-if (r.constant.MY_MOBILE)
+if (r.constants.MY_MOBILE)
 {
-	r.module.gallery.options.scaling = 0.8;
-	r.module.gallery.options.preload.startup = false;
+	r.modules.gallery.options.scaling = 0.8;
+	r.modules.gallery.options.preload.startup = false;
 }

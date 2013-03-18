@@ -16,9 +16,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.adminDock.options !== options)
+		if (r.plugins.adminDock.options !== options)
 		{
-			options = $.extend({}, r.plugin.adminDock.options, options || {});
+			options = $.extend({}, r.plugins.adminDock.options, options || {});
 		}
 
 		/* return this */
@@ -59,9 +59,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.adminPanel.options !== options)
+		if (r.plugins.adminPanel.options !== options)
 		{
-			options = $.extend({}, r.plugin.adminPanel.options, options || {});
+			options = $.extend({}, r.plugins.adminPanel.options, options || {});
 		}
 
 		/* return this */
@@ -77,7 +77,7 @@
 
 			/* open on admin */
 
-			if (r.constant.FIRST_PARAMETER === 'admin')
+			if (r.constants.FIRST_PARAMETER === 'admin')
 			{
 				panelRelated.css('margin-top', panelHeight);
 			}
@@ -110,13 +110,13 @@
 
 	$(function ()
 	{
-		if (r.plugin.adminDock.startup)
+		if (r.plugins.adminDock.startup)
 		{
-			$(r.plugin.adminDock.selector).adminDock(r.plugin.adminDock.options);
+			$(r.plugins.adminDock.selector).adminDock(r.plugins.adminDock.options);
 		}
-		if (r.plugin.adminPanel.startup)
+		if (r.plugins.adminPanel.startup)
 		{
-			$(r.plugin.adminPanel.selector).adminPanel(r.plugin.adminPanel.options);
+			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
 		}
 	});
 })(jQuery);

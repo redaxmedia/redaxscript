@@ -17,9 +17,9 @@
 	{
 		/* extend options */
 
-		if (r.module.gallery.options !== options)
+		if (r.modules.gallery.options !== options)
 		{
-			options = $.extend({}, r.module.gallery.options, options || {});
+			options = $.extend({}, r.modules.gallery.options, options || {});
 		}
 
 		/* return this */
@@ -33,7 +33,7 @@
 
 			/* prematurely terminate gallery */
 
-			if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7)
+			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
 			{
 				return false;
 			}
@@ -56,7 +56,7 @@
 
 					/* opera load fix */
 
-					if (r.constant.MY_BROWSER === 'opera')
+					if (r.constants.MY_BROWSER === 'opera')
 					{
 						image.appendTo(body).remove();
 					}
@@ -151,7 +151,7 @@
 
 				/* opera load fix */
 
-				if (r.constant.MY_BROWSER === 'opera')
+				if (r.constants.MY_BROWSER === 'opera')
 				{
 					image.appendTo(body).remove();
 				}
@@ -361,9 +361,9 @@
 
 	$(function ()
 	{
-		if (r.module.gallery.startup)
+		if (r.modules.gallery.startup)
 		{
-			$(r.module.gallery.selector).gallery(r.module.gallery.options);
+			$(r.modules.gallery.selector).gallery(r.modules.gallery.options);
 		}
 	});
 })(jQuery);

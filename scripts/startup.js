@@ -37,9 +37,9 @@ r.lightbox =
 	}
 };
 
-/* @section 1.2 plugin */
+/* @section 1.2 plugins */
 
-r.plugin =
+r.plugins =
 {
 	accordion:
 	{
@@ -208,9 +208,9 @@ r.plugin =
 	}
 };
 
-/* @section 1.3 module */
+/* @section 1.3 modules */
 
-r.module = {};
+r.modules = {};
 
 /* @section 1.4 support */
 
@@ -276,7 +276,7 @@ r.startup = function (html)
 	}
 	html.className += 'js';
 
-	/* support classes */
+	/* svg class */
 
 	if (r.support.svg === true)
 	{

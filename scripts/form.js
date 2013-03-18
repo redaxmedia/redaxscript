@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.autoResize.options !== options)
+		if (r.plugins.autoResize.options !== options)
 		{
-			options = $.extend({}, r.plugin.autoResize.options, options || {});
+			options = $.extend({}, r.plugins.autoResize.options, options || {});
 		}
 
 		/* return this */
@@ -60,9 +60,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.checkRequired.options !== options)
+		if (r.plugins.checkRequired.options !== options)
 		{
-			options = $.extend({}, r.plugin.checkRequired.options, options || {});
+			options = $.extend({}, r.plugins.checkRequired.options, options || {});
 		}
 
 		/* return this */
@@ -146,9 +146,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.checkSearch.options !== options)
+		if (r.plugins.checkSearch.options !== options)
 		{
-			options = $.extend({}, r.plugin.checkSearch.options, options || {});
+			options = $.extend({}, r.plugins.checkSearch.options, options || {});
 		}
 
 		/* return this */
@@ -213,9 +213,9 @@
 	{
 		/* extend options */
 
-		if (r.plugin.noteRequired.options !== options)
+		if (r.plugins.noteRequired.options !== options)
 		{
-			options = $.extend({}, r.plugin.noteRequired.options, options || {});
+			options = $.extend({}, r.plugins.noteRequired.options, options || {});
 		}
 
 		/* return this */
@@ -278,29 +278,29 @@
 
 	$(function ()
 	{
-		if (r.plugin.autoResize.startup)
+		if (r.plugins.autoResize.startup)
 		{
-			$(r.plugin.autoResize.selector).autoResize(r.plugin.autoResize.options);
+			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
 		}
-		if (r.plugin.checkRequired.startup)
+		if (r.plugins.checkRequired.startup)
 		{
-			$(r.plugin.checkRequired.selector).checkRequired(r.plugin.checkRequired.options);
+			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
 		}
-		if (r.plugin.checkSearch.startup)
+		if (r.plugins.checkSearch.startup)
 		{
-			$(r.plugin.checkSearch.selector).checkSearch(r.plugin.checkSearch.options);
+			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
 		}
-		if (r.plugin.clearFocus.startup)
+		if (r.plugins.clearFocus.startup)
 		{
-			$(r.plugin.clearFocus.selector).clearFocus();
+			$(r.plugins.clearFocus.selector).clearFocus();
 		}
-		if (r.plugin.noteRequired.startup)
+		if (r.plugins.noteRequired.startup)
 		{
-			$(r.plugin.noteRequired.selector).noteRequired(r.plugin.noteRequired.options);
+			$(r.plugins.noteRequired.selector).noteRequired(r.plugins.noteRequired.options);
 		}
-		if (r.plugin.unmaskPassword.startup)
+		if (r.plugins.unmaskPassword.startup)
 		{
-			$(r.plugin.unmaskPassword.selector).unmaskPassword();
+			$(r.plugins.unmaskPassword.selector).unmaskPassword();
 		}
 
 	});

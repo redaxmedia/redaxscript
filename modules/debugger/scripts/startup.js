@@ -6,7 +6,7 @@
 
 /* @section 1. debugger */
 
-r.module.debugger =
+r.modules.debugger =
 {
 	startup: true,
 	selector: 'ul.js_list_debugger',

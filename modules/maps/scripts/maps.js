@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.module.maps.options !== options)
+		if (r.modules.maps.options !== options)
 		{
-			options = $.extend({}, r.module.maps.options, options || {});
+			options = $.extend({}, r.modules.maps.options, options || {});
 		}
 
 		/* return this */
@@ -121,9 +121,9 @@
 
 	$(function ()
 	{
-		if (r.module.maps.startup && r.constant.ADMIN_PARAMETER === '' && typeof google === 'object' && typeof google.maps === 'object')
+		if (r.modules.maps.startup && r.constants.ADMIN_PARAMETER === '' && typeof google === 'object' && typeof google.maps === 'object')
 		{
-			$(r.module.maps.selector).maps(r.module.maps.options);
+			$(r.modules.maps.selector).maps(r.modules.maps.options);
 		}
 	});
 })(jQuery);

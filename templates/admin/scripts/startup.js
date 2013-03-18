@@ -7,7 +7,7 @@
 
 /* @section 1. admin dock */
 
-r.plugin.adminDock =
+r.plugins.adminDock =
 {
 	startup: true,
 	selector: 'div.js_dock_admin',
@@ -24,7 +24,7 @@ r.plugin.adminDock =
 
 /* @section 2. admin panel */
 
-r.plugin.adminPanel =
+r.plugins.adminPanel =
 {
 	startup: true,
 	selector: '#panel_admin',

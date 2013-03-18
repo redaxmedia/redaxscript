@@ -15,19 +15,19 @@
 	{
 		/* extend options */
 
-		if (r.module.analytics.options !== options)
+		if (r.modules.analytics.options !== options)
 		{
-			options = $.extend({}, r.module.analytics.options, options || {});
+			options = $.extend({}, r.modules.analytics.options, options || {});
 		}
 
 		/* create tracker */
 
 		if (options.id && options.url)
 		{
-			r.module.analytics.tracker = _gat._createTracker(options.id);
-			r.module.analytics.tracker._setDomainName(options.url);
-			r.module.analytics.tracker._initData();
-			r.module.analytics.tracker._trackPageview();
+			r.modules.analytics.tracker = _gat._createTracker(options.id);
+			r.modules.analytics.tracker._setDomainName(options.url);
+			r.modules.analytics.tracker._initData();
+			r.modules.analytics.tracker._trackPageview();
 		}
 
 		/* return this */
@@ -47,7 +47,7 @@
 
 				if (category && action)
 				{
-					r.module.analytics.tracker._trackEvent(String(category), String(action), String(label));
+					r.modules.analytics.tracker._trackEvent(String(category), String(action), String(label));
 				}
 			});
 		});
@@ -57,9 +57,9 @@
 
 	$(function ()
 	{
-		if (r.module.analytics.startup && r.constant.LOGGED_IN !== r.constant.TOKEN && typeof _gat === 'object')
+		if (r.modules.analytics.startup && r.constants.LOGGED_IN !== r.constants.TOKEN && typeof _gat === 'object')
 		{
-			$(r.module.analytics.selector).analytics(r.module.analytics.options);
+			$(r.modules.analytics.selector).analytics(r.modules.analytics.options);
 		}
 	});
 })(jQuery);

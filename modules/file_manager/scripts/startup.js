@@ -6,7 +6,7 @@
 
 /* @section 1. file manager */
 
-r.module.fileManager =
+r.modules.fileManager =
 {
 	startup: true,
 	selector: 'form.js_form_file_manager',

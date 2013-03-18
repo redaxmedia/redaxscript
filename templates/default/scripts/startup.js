@@ -6,7 +6,7 @@
 
 /* @section 1. logo effect */
 
-r.plugin.logoEffect =
+r.plugins.logoEffect =
 {
 	startup: true,
 	selector: 'h1.js_logo_effect_trigger',

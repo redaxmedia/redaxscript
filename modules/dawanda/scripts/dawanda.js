@@ -15,23 +15,23 @@
 	{
 		/* extend options */
 
-		if (r.module.dawanda.options !== options)
+		if (r.modules.dawanda.options !== options)
 		{
-			options = $.extend({}, r.module.dawanda.options, options || {});
+			options = $.extend({}, r.modules.dawanda.options, options || {});
 		}
 
 		var dawanda = this;
 
 		/* data and storage object */
 
-		r.module.dawanda.data = {};
-		r.module.dawanda.storage = {};
+		r.modules.dawanda.data = {};
+		r.modules.dawanda.storage = {};
 
 		/* get url */
 
 		dawanda.getURL = function (call, id)
 		{
-			var route = r.module.dawanda.routes[call],
+			var route = r.modules.dawanda.routes[call],
 				output = '';
 
 			/* if route present */
@@ -60,19 +60,19 @@
 
 			if (r.support.webStorage === true && r.support.nativeJSON === true)
 			{
-				r.module.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
+				r.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
 				/* restore data from storage */
 
-				if (typeof r.module.dawanda.storage[key] === 'string')
+				if (typeof r.modules.dawanda.storage[key] === 'string')
 				{
-					r.module.dawanda.data[key] = JSON.parse(r.module.dawanda.storage[key]);
+					r.modules.dawanda.data[key] = JSON.parse(r.modules.dawanda.storage[key]);
 				}
 			}
 
 			/* fetch from data */
 
-			if (typeof r.module.dawanda.data[key] === 'object' && r.module.dawanda.data[key]['calls'][call])
+			if (typeof r.modules.dawanda.data[key] === 'object' && r.modules.dawanda.data[key]['calls'][call])
 			{
 				/* callback if data */
 
@@ -101,18 +101,18 @@
 
 						if (typeof data.response === 'object' && typeof data.response.result === 'object')
 						{
-							r.module.dawanda.data[key] = $.extend({}, r.module.dawanda.data[key], data.response.result || {});
+							r.modules.dawanda.data[key] = $.extend({}, r.modules.dawanda.data[key], data.response.result || {});
 
 							/* register calls */
 
-							r.module.dawanda.data[key]['calls'] = r.module.dawanda.data[key]['calls'] || {};
-							r.module.dawanda.data[key]['calls'][call] = true;
+							r.modules.dawanda.data[key]['calls'] = r.modules.dawanda.data[key]['calls'] || {};
+							r.modules.dawanda.data[key]['calls'][call] = true;
 
 							/* set related storage */
 
 							if (r.support.webStorage === true && r.support.nativeJSON === true)
 							{
-								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.module.dawanda.data[key]));
+								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.modules.dawanda.data[key]));
 							}
 
 							/* callback if data */
@@ -131,7 +131,7 @@
 
 		dawanda.createShortcut = function (i)
 		{
-			r.module.dawanda[i] = function (id, page, callback)
+			r.modules.dawanda[i] = function (id, page, callback)
 			{
 				dawanda.getData(i, id, page, callback);
 			};
@@ -143,9 +143,9 @@
 		{
 			var i = '';
 
-			for (i in r.module.dawanda.routes)
+			for (i in r.modules.dawanda.routes)
 			{
-				if (r.module.dawanda.routes.hasOwnProperty(i))
+				if (r.modules.dawanda.routes.hasOwnProperty(i))
 				{
 					dawanda.createShortcut(i);
 				}
@@ -157,9 +157,9 @@
 
 	$(function ()
 	{
-		if (r.module.dawanda.startup)
+		if (r.modules.dawanda.startup)
 		{
-			$.fn.dawanda(r.module.dawanda.options);
+			$.fn.dawanda(r.modules.dawanda.options);
 		}
 	});
 })(jQuery);

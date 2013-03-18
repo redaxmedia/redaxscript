@@ -6,7 +6,7 @@
 
 /* @section 1. call home */
 
-r.module.callHome =
+r.modules.callHome =
 {
 	startup: true,
 	options:

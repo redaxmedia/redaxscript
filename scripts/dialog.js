@@ -17,14 +17,14 @@
 	{
 		/* extend options */
 
-		if (r.plugin.dialog.options !== options)
+		if (r.plugins.dialog.options !== options)
 		{
-			options = $.extend({}, r.plugin.dialog.options, options || {});
+			options = $.extend({}, r.plugins.dialog.options, options || {});
 		}
 
 		/* detect needed mode */
 
-		if (r.constant.FIRST_PARAMETER === 'admin')
+		if (r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
 		}
@@ -40,7 +40,7 @@
 
 		/* prematurely terminate dialog */
 
-		if (r.constant.MY_BROWSER === 'msie' && r.constant.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
+		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
 		{
 			return false;
 		}
@@ -59,7 +59,7 @@
 
 		/* manage suffix */
 
-		if (r.constant.FIRST_PARAMETER !== 'admin')
+		if (r.constants.FIRST_PARAMETER !== 'admin')
 		{
 			options.suffix = '';
 		}
@@ -169,16 +169,16 @@
 	{
 		/* extend options */
 
-		if (r.plugin.preventUnload.options !== options)
+		if (r.plugins.preventUnload.options !== options)
 		{
-			options = $.extend({}, r.plugin.preventUnload.options, options || {});
+			options = $.extend({}, r.plugins.preventUnload.options, options || {});
 		}
 
 		/* return this */
 
 		return this.each(function ()
 		{
-			if (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit')
+			if (r.constants.ADMIN_PARAMETER === 'new' || r.constants.ADMIN_PARAMETER === 'edit')
 			{
 				/* listen for change */
 
@@ -194,15 +194,15 @@
 
 	$(function ()
 	{
-		if (r.plugin.confirmLink.startup)
+		if (r.plugins.confirmLink.startup)
 		{
-			$(r.plugin.confirmLink.selector).confirmLink();
+			$(r.plugins.confirmLink.selector).confirmLink();
 
 			/* depending startup */
 
-			if (r.plugin.preventUnload.startup)
+			if (r.plugins.preventUnload.startup)
 			{
-				$(r.plugin.preventUnload.selector).preventUnload(r.plugin.preventUnload.options);
+				$(r.plugins.preventUnload.selector).preventUnload(r.plugins.preventUnload.options);
 			}
 		}
 	});

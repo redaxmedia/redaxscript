@@ -15,9 +15,9 @@
 	{
 		/* extend options */
 
-		if (r.module.editor.options !== options)
+		if (r.modules.editor.options !== options)
 		{
-			options = $.extend({}, r.module.editor.options, options || {});
+			options = $.extend({}, r.modules.editor.options, options || {});
 		}
 
 		/* return this */
@@ -26,7 +26,7 @@
 		{
 			/* detect needed mode */
 
-			if (r.constant.FIRST_PARAMETER === 'admin')
+			if (r.constants.FIRST_PARAMETER === 'admin')
 			{
 				options.toolbar = options.toolbar.backend;
 				options.xhtml = options.newline.backend;
@@ -64,7 +64,7 @@
 				for (i = 0; i < options.toolbar.length; i++)
 				{
 					name = options.toolbar[i];
-					data = r.module.editor.controls[name];
+					data = r.modules.editor.controls[name];
 
 					/* append divider */
 
@@ -127,7 +127,7 @@
 
 						/* fix mozilla styles from preview */
 
-						if (r.constant.MY_BROWSER === 'firefox')
+						if (r.constants.MY_BROWSER === 'firefox')
 						{
 							editor.preview.removeAttr('style');
 						}
@@ -189,7 +189,7 @@
 			editor.insertHTML = function (text)
 			{
 				editor.preview.focus();
-				if (r.constant.MY_BROWSER === 'msie')
+				if (r.constants.MY_BROWSER === 'msie')
 				{
 					document.selection.createRange().pasteHTML(text);
 				}
@@ -232,7 +232,7 @@
 			{
 				var output = '';
 
-				if (r.constant.MY_BROWSER === 'msie')
+				if (r.constants.MY_BROWSER === 'msie')
 				{
 					output = document.selection.createRange().text;
 				}
@@ -367,15 +367,15 @@
 				{
 					var output = '<br />';
 
-					if (r.constant.MY_BROWSER === 'firefox')
+					if (r.constants.MY_BROWSER === 'firefox')
 					{
 						output += '<div></div>';
 					}
-					else if (r.constant.MY_BROWSER === 'msie')
+					else if (r.constants.MY_BROWSER === 'msie')
 					{
 						output += '<span></span>';
 					}
-					else if (r.constant.MY_ENGINE === 'webkit')
+					else if (r.constants.MY_ENGINE === 'webkit')
 					{
 						output += '<br />';
 					}
@@ -419,9 +419,9 @@
 
 	$(function ()
 	{
-		if (r.module.editor.startup && (r.constant.LAST_TABLE === 'articles' || (r.constant.ADMIN_PARAMETER === 'new' || r.constant.ADMIN_PARAMETER === 'edit') && (r.constant.TABLE_PARAMETER === 'articles' || r.constant.TABLE_PARAMETER === 'extras' || r.constant.TABLE_PARAMETER === 'comments')))
+		if (r.modules.editor.startup && (r.constants.LAST_TABLE === 'articles' || (r.constants.ADMIN_PARAMETER === 'new' || r.constants.ADMIN_PARAMETER === 'edit') && (r.constants.TABLE_PARAMETER === 'articles' || r.constants.TABLE_PARAMETER === 'extras' || r.constants.TABLE_PARAMETER === 'comments')))
 		{
-			$(r.module.editor.selector).editor(r.module.editor.options);
+			$(r.modules.editor.selector).editor(r.modules.editor.options);
 		}
 	});
 })(jQuery);

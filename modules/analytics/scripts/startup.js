@@ -6,7 +6,7 @@
 
 /* @section 1. analytics */
 
-r.module.analytics =
+r.modules.analytics =
 {
 	startup: true,
 	selector: 'a.js_track_event',
