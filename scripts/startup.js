@@ -5,9 +5,12 @@
  *    1.1 lightbox
  *    1.2 plugin
  *    1.3 module
- *    1.4 base url
- *    1.5 startup
+ *    1.4 support
+ *    1.5 base url
+ *    1.6 startup
  */
+
+'use strict';
 
 /* @section 1. redaxscript object */
 
@@ -209,13 +212,50 @@ r.plugin =
 
 r.module = {};
 
-/* @section 1.4 base url */
+/* @section 1.4 support */
 
-r.baseURL = function ()
+r.support =
 {
-	'use strict';
+	nativeJSON: function (json)
+	{
+		if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(window.JSON),
+	svg: function (doc)
+	{
+		if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(document),
+	webStorage: function (win)
+	{
+		if (typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(window)
+};
 
-	var base = document.getElementsByTagName('base'),
+/* @section 1.5 base url */
+
+r.baseURL = function (doc)
+{
+	var base = doc.getElementsByTagName('base'),
 		checkBase = base.length,
 		output = '';
 
@@ -224,18 +264,23 @@ r.baseURL = function ()
 		output = base[0].href;
 	}
 	return output;
-}();
+}(document);
 
-/* @section 1.5 startup */
+/* @section 1.6 startup */
 
 r.startup = function (html)
 {
-	'use strict';
-
 	if (html.className)
 	{
 		html.className += ' ';
 	}
 	html.className += 'js';
+
+	/* support classes */
+
+	if (r.support.svg === true)
+	{
+		html.className += ' svg';
+	}
 	return true;
 }(document.documentElement);
