@@ -125,6 +125,16 @@ module.exports = function(grunt)
 			{
 				command: 'php ../tocgen/tocgen.php templates -r',
 				stdout: true
+			},
+			svgoAdmin:
+			{
+				command: 'svgo --disable removeViewBox -f templates/admin/images',
+				stdout: true
+			},
+			svgoDefault:
+			{
+				command: 'svgo --disable removeViewBox -f templates/default/images',
+				stdout: true
 			}
 		},
 		img:
@@ -163,5 +173,6 @@ module.exports = function(grunt)
 
 	grunt.registerTask('default', 'lint');
 	grunt.registerTask('toc', 'shell:tocBase shell:tocModules shell:tocTemplates');
-	grunt.registerTask('optimize', 'bom toc img smushit');
+	grunt.registerTask('svgo', 'shell:svgoAdmin shell:svgoDefault');
+	grunt.registerTask('optimize', 'bom toc img smushit svgo');
 };
