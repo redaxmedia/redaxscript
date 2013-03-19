@@ -216,6 +216,39 @@ r.modules = {};
 
 r.support =
 {
+	canvas: function ()
+	{
+		if (typeof document.createElement('canvas').getContext === 'function')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(),
+	cookies: function ()
+	{
+		if (window.navigator.cookieEnabled === true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(),
+	geolocation: function ()
+	{
+		if (typeof window.navigator.geolocation === 'object')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(),
 	nativeJSON: function (json)
 	{
 		if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')
@@ -240,7 +273,7 @@ r.support =
 	}(document),
 	webStorage: function (win)
 	{
-		if (typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
+		if (win.navigator.cookieEnabled === true && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
 		{
 			return true;
 		}
@@ -276,8 +309,12 @@ r.startup = function (html)
 	}
 	html.className += 'js';
 
-	/* svg class */
+	/* support classes */
 
+	if (r.support.canvas === true)
+	{
+		html.className += ' canvas';
+	}
 	if (r.support.svg === true)
 	{
 		html.className += ' svg';
