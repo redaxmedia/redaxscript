@@ -4,13 +4,14 @@
  * 1. jquery
  * 2. globals
  * 3. base url
- * 4. constant
- * 5. version
- * 6. clean alias
- * 7. auto resize
- * 8. check search
- * 9. clear focus
- * 10. unmask password
+ * 4. constants
+ * 5. support
+ * 6. version
+ * 7. clean alias
+ * 8. auto resize
+ * 9. check search
+ * 10. clear focus
+ * 11. unmask password
  */
 
 (function ($)
