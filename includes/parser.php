@@ -5,44 +5,46 @@
  *
  * @since 1.3
  *
- * @category Redaxscript
- * @package Redaxscript Parser
+ * @category Parser
+ * @package Redaxscript
  * @author Henry Ruhs
  */
 
 class Redaxscript_Parser
 {
 	/**
-	 * tags
-	 * @var array
-	 */
-
-	protected $tags = array(
-		'<break>' => 'parse_break',
-		'<code>' => 'parse_code',
-		'<php>' => 'parse_php'
-	);
-
-	/**
 	 * output
 	 * @var string
 	 */
 
-	public $output;
+	private $_output;
 
 	/**
 	 * route
 	 * @var string
 	 */
 
-	public $route;
+	protected $_route;
 
 	/**
-	 * position
+	 * tags
 	 * @var array
 	 */
 
-	public $position = array();
+	protected $_tags = array(
+		'break' => array(
+			'function' => 'parseBreak',
+			'position' => ''
+		),
+		'code' => array(
+			'function' => 'parseCode',
+			'position' => ''
+		),
+		'php' => array(
+			'function' => 'parsePhp',
+			'position' => ''
+		)
+	);
 
 	/**
 	 * construct
@@ -51,37 +53,64 @@ class Redaxscript_Parser
 	 *
 	 * @param $input string
 	 * @param $route string
-	 * @return Redaxscript_Parser
 	 */
 
 	function __construct($input = '', $route = '')
 	{
-		$this->output = $input;
-		$this->route = $route;
-		$this->parse_call();
+		$this->_output = $input;
+		$this->_route = $route;
+
+		/* call init */
+
+		$this->init();
 	}
 
 	/**
-	 * parse call
+	 * init
 	 *
 	 * @since 1.3
-	 *
-	 * @return Redaxscript_Parser
 	 */
 
-	public function parse_call()
+	function init()
 	{
-		foreach($this->tags as $tag => $function)
+		foreach($this->_tags as $key => $value)
 		{
-			$this->position[$tag] = strpos($this->output, $tag);
+			$position = $this->_tag[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
-			/* call related function if tag */
+			/* call related function if tag found */
 
-			if ($this->position[$tag] > -1)
+			if ($position > -1)
 			{
-				$this->output = $this->$function($this->output);
+				$function = $value['function'];
+				$this->_output = $this->$function($this->_output);
 			}
 		}
+	}
+
+	/**
+	 * get output
+	 *
+	 * @since 1.3
+	 * 
+	 * @return $output string
+	 */
+
+	public function getOutput()
+	{
+		return $this->_output;
+	}
+
+	/**
+	 * set output
+	 *
+	 * @since 1.3
+	 * 
+	 * @param $input string
+	 */
+
+	public function setOutput($input = '')
+	{
+		$this->_output = $input;
 	}
 
 	/**
@@ -93,15 +122,15 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parse_break($input = '')
+	public function parseBreak($input = '')
 	{
 		$output = str_replace('<break>', '', $input);
 		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
 		{
-			$output = substr($output, 0, $this->position['<break>']);
-			if ($this->route)
+			$output = substr($output, 0, $this->_tag['break']['position']);
+			if ($this->_route)
 			{
-				$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $this->route);
+				$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $this->_route);
 			}
 		}
 		return $output;
@@ -116,7 +145,7 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parse_code($input = '')
+	public function parseCode($input = '')
 	{
 		$output = str_replace(array(
 			'<code>',
@@ -146,7 +175,7 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parse_php($input = '')
+	public function parsePhp($input = '')
 	{
 		$output = str_replace(array(
 			'<php>',
