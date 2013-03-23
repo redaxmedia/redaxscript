@@ -105,7 +105,7 @@ function contents()
 
 				/* collect box output */
 
-				$output .= '<div class="box_content">' . $parser->output;
+				$output .= '<div class="box_content">' . $parser->getOutput();
 				$output .= '</div>' . hook('article_end');
 
 				/* prepend admin dock */
@@ -250,7 +250,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->output . '</div>' . hook('extra_end');
+					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . hook('extra_end');
 
 					/* prepend admin dock */
 
