@@ -105,27 +105,16 @@ body
 
 /* @section 8. website logo */
 
-.logo_website, .logo_website_effect
-{
-	background: url('templates/default/images/sprite.png');
-	float: left;
-	height: 67px;
-	width: 66px;
-}
-
 .logo_website
 {
-	background-position: -66px 0;
-	position: relative;
-	z-index: 200;
-}
-
-.logo_website_effect
-{
-	left: 0;
-	position: absolute;
-	top: 0;
-	z-index: 100;
+	-moz-border-radius: 3em;
+    -moz-box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+	-webkit-border-radius: 3em;
+    -webkit-box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+	border-radius: 3em;
+    box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+	float: left;
+	height: 6em;
 }
 
 /* @section 9. grid elements */

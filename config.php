@@ -1,11 +1,6 @@
 <?php
 
-/**
- * config database
- * 
- * @param string $name
- * @return string
- */
+/* config database */
 
 function d($name = '')
 {
