@@ -10,7 +10,6 @@
 2 = scripts/form.js
 3 = scripts/interface.js
 4 = scripts/misc.js
-5 = templates/default/scripts/misc.js
 
 [admin_startup]
 1 = templates/admin/scripts/startup.js
