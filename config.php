@@ -4,12 +4,12 @@
 
 function d($name = '')
 {
-	$d['host'] = 'localhost';
-	$d['name'] = 'test';
-	$d['user'] = 'root';
+	$d['host'] = '';
+	$d['name'] = '';
+	$d['user'] = '';
 	$d['password'] = '';
-	$d['prefix'] = 'test2_';
-	$d['salt'] = 'f7fe11a8c8c6fc4458d84babd3720c7314a91c25';
+	$d['prefix'] = '';
+	$d['salt'] = '';
 	$output = $d[$name];
 	return $output;
 }
