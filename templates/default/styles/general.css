@@ -108,13 +108,13 @@ body
 .logo_website
 {
 	-moz-border-radius: 3em;
-    -moz-box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+    -moz-box-shadow: 0 0 0 1px #303030, inset 0 0 0 2px #303030, 0 1px 0 1px #eee;
 	-webkit-border-radius: 3em;
-    -webkit-box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0 0 0 1px #303030, inset 0 0 0 2px #303030, 0 1px 0 1px #eee;
 	border-radius: 3em;
-    box-shadow: 0 0 0 1px #171717, inset 0 0 0 2px #171717, 0 1px 0 1px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 1px #303030, inset 0 0 0 2px #303030, 0 1px 0 1px #eee;
 	float: left;
-	height: 6em;
+	height: 5.5em;
 }
 
 /* @section 9. grid elements */
