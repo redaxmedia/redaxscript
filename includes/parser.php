@@ -33,15 +33,15 @@ class Redaxscript_Parser
 
 	protected $_tags = array(
 		'break' => array(
-			'function' => 'parseBreak',
+			'function' => '_parseBreak',
 			'position' => ''
 		),
 		'code' => array(
-			'function' => 'parseCode',
+			'function' => '_parseCode',
 			'position' => ''
 		),
 		'php' => array(
-			'function' => 'parsePhp',
+			'function' => '_parsePhp',
 			'position' => ''
 		)
 	);
@@ -55,7 +55,7 @@ class Redaxscript_Parser
 	 * @param $route string
 	 */
 
-	function __construct($input = '', $route = '')
+	public function __construct($input = '', $route = '')
 	{
 		$this->_output = $input;
 		$this->_route = $route;
@@ -71,7 +71,7 @@ class Redaxscript_Parser
 	 * @since 1.3
 	 */
 
-	function init()
+	public function init()
 	{
 		foreach($this->_tags as $key => $value)
 		{
@@ -91,26 +91,13 @@ class Redaxscript_Parser
 	 * get output
 	 *
 	 * @since 1.3
-	 * 
-	 * @return $output string
+	 *
+	 * @return $_output string
 	 */
 
 	public function getOutput()
 	{
 		return $this->_output;
-	}
-
-	/**
-	 * set output
-	 *
-	 * @since 1.3
-	 * 
-	 * @param $input string
-	 */
-
-	public function setOutput($input = '')
-	{
-		$this->_output = $input;
 	}
 
 	/**
@@ -122,7 +109,7 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parseBreak($input = '')
+	protected function _parseBreak($input = '')
 	{
 		$output = str_replace('<break>', '', $input);
 		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
@@ -145,7 +132,7 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parseCode($input = '')
+	protected function _parseCode($input = '')
 	{
 		$output = str_replace(array(
 			'<code>',
@@ -175,7 +162,7 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	public function parsePhp($input = '')
+	protected function _parsePhp($input = '')
 	{
 		$output = str_replace(array(
 			'<php>',
