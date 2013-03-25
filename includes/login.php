@@ -16,6 +16,13 @@ function login_form()
 		$code_disabled = ' disabled="disabled"';
 	}
 
+	/* new captcha object */
+
+	if (s('captcha') > 0)
+	{
+		$captcha = new Redaxscript_Captcha();
+	}
+
 	/* reminder question */
 
 	if (s('reminder') == 1)
@@ -39,7 +46,7 @@ function login_form()
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -47,7 +54,11 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
-		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
+		if (LOGGED_IN == TOKEN)
+		{
+			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution());
+		}
+		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 	}
 
 	/* collect hidden and button output */

@@ -196,7 +196,7 @@ function check_alias($input = '', $mode = '')
 
 function check_captcha($task = '', $solution = '')
 {
-	if (LOGGED_IN == TOKEN || s('captcha') == 0 || sha1($task) == $solution)
+	if (s('captcha') == 0 || sha1($task) == $solution)
 	{
 		$output = 1;
 	}

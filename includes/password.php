@@ -14,19 +14,29 @@ function password_reset_form()
 		$code_disabled = ' disabled="disabled"';
 	}
 
+	/* new captcha object */
+
+	$captcha = new Redaxscript_Captcha();
+
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('password_reset') . '</h2>';
 	$output .= form_element('form', 'form_reset', 'js_check_required form_default form_reset', '', '', '', 'action="' . REWRITE_ROUTE . 'password_reset" method="post"');
 	$output .= form_element('fieldset', '', 'set_reset', '', '', l('fields_request') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+
+	/* collect captcha task output */
+
+	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
 
+	/* collect captcha solution output */
+
+	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+	
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
 	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
-	$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'field_button' . $class_disabled, 'password_reset_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';

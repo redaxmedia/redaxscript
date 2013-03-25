@@ -16,6 +16,10 @@ function reminder_form()
 		$code_disabled = ' disabled="disabled"';
 	}
 
+	/* new captcha object */
+
+	$captcha = new Redaxscript_Captcha();
+
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('reminder') . '</h2>';
@@ -25,18 +29,12 @@ function reminder_form()
 
 	/* collect captcha task output */
 
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
-	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
-	}
+	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
 
-	if (s('captcha') > 0)
-	{
-		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
-	}
+	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 
 	/* collect hidden and button output */
 

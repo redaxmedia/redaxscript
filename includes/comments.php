@@ -151,6 +151,13 @@ function comment_form($article = '', $language = '', $access = '')
 		$code_readonly = ' readonly="readonly"';
 	}
 
+	/* new captcha object */
+
+	if (s('captcha') > 0)
+	{
+		$captcha = new Redaxscript_Captcha();
+	}
+
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('comment_new') . '</h2>';
@@ -165,7 +172,7 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -178,9 +185,13 @@ function comment_form($article = '', $language = '', $access = '')
 
 	/* collect captcha solution output */
 
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
+	if (s('captcha') > 0)
 	{
-		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
+		if (LOGGED_IN == TOKEN)
+		{
+			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution());
+		}
+		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 	}
 
 	/* collect hidden and button output */
