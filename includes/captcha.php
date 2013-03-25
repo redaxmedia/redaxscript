@@ -102,7 +102,7 @@ class Redaxscript_Captcha
 	 *
 	 * @since 1.3
 	 *
-	 * @return $_output number
+	 * @return $output number
 	 */
 
 	protected function _createOperator()
