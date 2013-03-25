@@ -27,6 +27,26 @@ class Redaxscript_Captcha
 	private $_solution;
 
 	/**
+	 * range
+	 * @var array
+	 */
+
+	protected $_range = array(
+		'min' => 1,
+		'max' => 10
+	);
+
+	/**
+	 * operators
+	 * @var array
+	 */
+
+	protected $_operators = array(
+		1 => 'plus',
+		-1 => 'minus'
+	);
+
+	/**
 	 * construct
 	 *
 	 * @since 1.3
@@ -48,7 +68,7 @@ class Redaxscript_Captcha
 
 	public function init()
 	{
-		$this->_buildCaptcha();
+		$this->_createCaptcha();
 	}
 
 	/**
@@ -78,45 +98,58 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * build captcha
+	 * create operator
+	 *
+	 * @since 1.3
+	 *
+	 * @return $_output number
+	 */
+
+	protected function _createOperator()
+	{
+		switch (s('captcha'))
+		{
+			case 1:
+				$output = mt_rand(0, 1) * 2 - 1;
+				break;
+			case 2:
+				$output = 1;
+				break;
+			case 3:
+				$output = -1;
+				break;
+		}
+		return $output;
+	}
+
+	/**
+	 * create captcha
 	 *
 	 * @since 1.3
 	 *
 	 */
 
-	protected function _buildCaptcha()
+	protected function _createCaptcha()
 	{
-		/* operator attay */
+		/* range */
 
-		$operator = array(
-			1 => l('plus'),
-			-1 => l('minus')
-		);
+		$min = $this->_range['min'];
+		$max = $this->_range['max'];
 
 		/* random numbers */
 
-		$a = mt_rand(2, 10);
-		$b = mt_rand(1, $a - 1);
+		$a = mt_rand($min + 1, $max);
+		$b = mt_rand($min, $a - 1);
 
-		/* switch captcha mode */
+		/* operator */
 
-		switch (s('captcha'))
-		{
-			case 1:
-				$c = mt_rand(0, 1) * 2 - 1;
-				break;
-			case 2:
-				$c = 1;
-				break;
-			case 3:
-				$c = -1;
-				break;
-		}
+		$c = $this->_createOperator();
+		$d = $this->_operators[$c];
 
 		/* solution and task */
 
 		$this->_solution = sha1($a + $b * $c);
-		$this->_task = l($a) . ' ' . $operator[$c] . ' ' . l($b);
+		$this->_task = l($a) . ' ' . l($d) . ' ' . l($b);
 	}
 }
 ?>
