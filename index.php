@@ -31,7 +31,7 @@ startup();
 
 /* include files as needed */
 
-if (FIRST_PARAMETER == 'password_reset' || LOGGED_IN != TOKEN && s('captcha') > 0)
+if (FIRST_PARAMETER == 'password_reset' || s('captcha') > 0)
 {
 	include_once('includes/captcha.php');
 }

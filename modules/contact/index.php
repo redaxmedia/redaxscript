@@ -57,6 +57,13 @@ function contact_form()
 		$code_readonly = ' readonly="readonly"';
 	}
 
+	/* new captcha object */
+
+	if (s('captcha') > 0)
+	{
+		$captcha = new Redaxscript_Captcha();
+	}
+
 	/* collect output */
 
 	$output = form_element('form', 'form_contact', 'js_check_required form_default form_contact', '', '', '', 'method="post"');
@@ -70,15 +77,19 @@ function contact_form()
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', captcha('task'), 'maxlength="2" required="required"' . $code_disabled);
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
 
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
+	if (s('captcha') > 0)
 	{
-		$output .= form_element('hidden', '', '', 'solution', captcha('solution'));
+		if (LOGGED_IN == TOKEN)
+		{
+			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution());
+		}
+		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 	}
 
 	/* collect hidden and button output */
