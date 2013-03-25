@@ -21,7 +21,7 @@ class Redaxscript_Captcha
 
 	/**
 	 * solution
-	 * @var number
+	 * @var string
 	 */
 
 	private $_solution;
