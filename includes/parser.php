@@ -75,7 +75,7 @@ class Redaxscript_Parser
 	{
 		foreach($this->_tags as $key => $value)
 		{
-			$position = $this->_tag[$key]['position'] = strpos($this->_output, '<' . $key . '>');
+			$position = $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
 			/* call related function if tag found */
 
@@ -114,7 +114,7 @@ class Redaxscript_Parser
 		$output = str_replace('<break>', '', $input);
 		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
 		{
-			$output = substr($output, 0, $this->_tag['break']['position']);
+			$output = substr($output, 0, $this->_tags['break']['position']);
 			if ($this->_route)
 			{
 				$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $this->_route);

@@ -22,7 +22,7 @@ function b($name = '')
 
 	/* function */
 
-	$b['function_terms'] = 'curl, exec, fopen, include, mysql, passthru, popen, shell, system, require';
+	$b['function_terms'] = 'curl, exec, eval, fopen, include, mysql, passthru, popen, shell, system, require';
 
 	/* default */
 

@@ -107,6 +107,8 @@ class Redaxscript_Captcha
 
 	protected function _createOperator()
 	{
+		/* switch captcha mode */
+
 		switch (s('captcha'))
 		{
 			case 1:
