@@ -16,7 +16,7 @@ function registration_form()
 		$code_disabled = ' disabled="disabled"';
 	}
 
-	/* new captcha object */
+	/* captcha object */
 
 	if (s('captcha') > 0)
 	{

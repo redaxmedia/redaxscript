@@ -57,7 +57,7 @@ function contact_form()
 		$code_readonly = ' readonly="readonly"';
 	}
 
-	/* new captcha object */
+	/* captcha object */
 
 	if (s('captcha') > 0)
 	{

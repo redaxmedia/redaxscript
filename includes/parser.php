@@ -40,10 +40,20 @@ class Redaxscript_Parser
 			'function' => '_parseCode',
 			'position' => ''
 		),
-		'php' => array(
-			'function' => '_parsePhp',
+		'function' => array(
+			'function' => '_parseFunction',
 			'position' => ''
 		)
+	);
+
+	/**
+	 * classes
+	 * @var array
+	 */
+
+	protected $_classes = array(
+		'break' => 'link_read_more',
+		'code' => 'box_code'
 	);
 
 	/**
@@ -115,9 +125,12 @@ class Redaxscript_Parser
 		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);
+
+			/* add read more */
+
 			if ($this->_route)
 			{
-				$output .= anchor_element('internal', '', 'link_read_more', l('read_more'), $this->_route);
+				$output .= anchor_element('internal', '', $this->_classes['break'], l('read_more'), $this->_route);
 			}
 		}
 		return $output;
@@ -138,23 +151,23 @@ class Redaxscript_Parser
 			'<code>',
 			'</code>'
 		), '||', $input);
-		$code_parts = explode('||', $output);
+		$parts = explode('||', $output);
 
 		/* parse needed parts */
 
-		foreach ($code_parts as $key => $value)
+		foreach ($parts as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$code_parts[$key] = '<code class="box_code">' . trim(htmlspecialchars($value)) . '</code>';
+				$parts[$key] = '<code class="' . $this->_classes['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
 			}
 		}
-		$output = implode($code_parts);
+		$output = implode($parts);
 		return $output;
 	}
 
 	/**
-	 * parse php
+	 * parse function
 	 *
 	 * @since 1.3
 	 *
@@ -162,44 +175,40 @@ class Redaxscript_Parser
 	 * @return $output string
 	 */
 
-	protected function _parsePhp($input = '')
+	protected function _parseFunction($input = '')
 	{
 		$output = str_replace(array(
-			'<php>',
-			'</php>'
+			'<function>',
+			'</function>'
 		), '||', $input);
-		$php_parts = explode('||', $output);
-		$function_terms = explode(', ', b('function_terms'));
+		$parts = explode('||', $output);
+		$functionTerms = explode(', ', b('function_terms'));
 
 		/* parse needed parts */
 
-		foreach ($php_parts as $key => $value)
+		foreach ($parts as $key => $value)
 		{
 			if ($key % 2)
 			{
-				/* validate allowed function */
+				/* json decode */
 
-				$valid = 1;
-				foreach ($function_terms as $term)
+				$json = json_decode($value);
+				
+				/* catch function output */
+
+				ob_start();
+				foreach ($json as $function => $parameter)
 				{
-					if (strpos($value, $term))
-					{
-						$valid = 0;
+					/* validate allowed functions */
+
+					if (!in_array($function, $functionTerms)) {
+						call_user_func_array($function, $parameter);
 					}
 				}
-
-				/* call valid function */
-
-				if ($valid === 1)
-				{
-					ob_start();
-					eval($value);
-					$php_parts[$key] = ob_get_clean();
-
-				}
+				$parts[$key] = ob_get_clean();
 			}
 		}
-		$output = implode($php_parts);
+		$output = implode($parts);
 		return $output;
 	}
 }

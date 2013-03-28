@@ -16,7 +16,7 @@ function reminder_form()
 		$code_disabled = ' disabled="disabled"';
 	}
 
-	/* new captcha object */
+	/* captcha object */
 
 	$captcha = new Redaxscript_Captcha();
 
