@@ -18,7 +18,15 @@
 
 <h3 class="title_content_sub">.box_code</h3>
 
-<?php echo parser('<code>
+<?php
+
+/* parser object */
+
+$parser = new Redaxscript_Parser;
+
+/* parse code */
+
+echo $parser->getOutput('<code>
 <?php
 
 /**
@@ -40,7 +48,8 @@ function check_preview()
 	return $output;
 }
 ?>
-</code>'); ?>
+</code>');
+?>
 
 
 <h3 class="title_content_sub">.box_infoline</h3>
