@@ -145,7 +145,7 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 			$output .= '<input type="' . $type . '"' . $selector_string . $name_string . $value_string . $code_string . ' />';
 			break;
 		case 'button':
-			$output .= '<button type="submit"' . $selector_string . $name_string . $value_string . $code_string . '><span><span>' . $value . '</span></span></button>';
+			$output .= '<button type="submit"' . $selector_string . $name_string . $value_string . $code_string . '>' . $value . '</button>';
 			break;
 		case 'textarea':
 			$output = $label_string . '<textarea' . $selector_string . $name_string . $code_string . '>' . $value . '</textarea>';
