@@ -26,16 +26,6 @@ textarea
 
 /* @section 2. default buttons */
 
-.field_button
-{
-	font: bold 0.75em arial;
-}
-
-.field_button_large
-{
-	font: bold 1em arial;
-}
-
 .field_button, .field_button_large
 {
 	-moz-border-radius: 0.5em;
@@ -52,8 +42,18 @@ textarea
 	border: 1px solid #adadad;
 	border-radius: 0.5em;
 	box-shadow: inset 0 0 0 1px #e2e2e2, 0 0 4px #c6c6c6;
+	color: #5e5e5e;
 	cursor: pointer;
 	display: inline-block;
+	font: bold 0.75em/2.5em arial;
+	padding: 0 0.75em;
+	text-shadow: 0 1px #d4d4d4;
+	text-transform: uppercase;
+}
+
+.field_button_large
+{
+	font-size: 1em;
 }
 
 /* @section 2.1 hover effect */
@@ -71,59 +71,8 @@ textarea
 	background: linear-gradient(top, #0090db, #62c5ff);
 	border-color: #005da2;
 	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
-}
-
-/* @section 2.2 children elements */
-
-.field_button span, .field_button_large span
-{
-	display: inline-block;
-}
-
-.field_button span span, .field_button_large span span
-{
-	color: #5e5e5e;
-	line-height: 2.75em;
-	padding: 0 0.75em;
-	text-shadow: 0 1px #d4d4d4;
-	text-transform: uppercase;
-}
-
-.field_button:hover span span, .field_button_large:hover span span
-{
 	color: #fff;
 	text-shadow: 0 1px #005da2;
-}
-
-/* @section 3. custom buttons */
-
-.field_button.field_button_heart span span, .field_button.field_button_question span span
-{
-	padding-left: 3em;
-}
-
-/* button hearth */
-
-.field_button.field_button_heart span span
-{
-	background: url('templates/default/images/sprite.png') 0 -819px no-repeat;
-}
-
-.field_button.field_button_heart:hover span span
-{
-	background-position: 0 -849px;
-}
-
-/* button question */
-
-.field_button.field_button_question span span
-{
-	background: url('templates/default/images/sprite.png') 0 -879px no-repeat;
-}
-
-.field_button.field_button_question:hover span span
-{
-	background-position: 0 -909px;
 }
 
 /* @section 4. default fields */
@@ -161,9 +110,9 @@ textarea
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #efefef;
 	box-sizing: border-box;
-	color: #6a6a6a;
-	font: italic 1em arial;
-	text-shadow: 0 1px #fff;
+	color: #777;
+	font: 1.125em 'open sans', 'trebuchet ms', arial;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	transition: background 0.5s ease;
 	padding: 0.5em;
 }
@@ -239,9 +188,9 @@ textarea
 {
 	background: none;
 	color: #4e4e4e;
-	font: italic 1.25em/2em arial;
+	font: 1.25em/2em arial;
 	height: 30px;
-	text-shadow: 0 1px #fff;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	width: 80%;
 }
 
@@ -262,15 +211,7 @@ textarea
 	box-shadow: inset 0 0 0 1px #ddd;
 	color: #ababab;
 	cursor: default;
-	text-shadow: 0 1px #fff;
-}
-
-.field_button.field_disabled span span, .field_button.field_disabled:hover span span, .field_button_large.field_disabled span span, .field_button_large.field_disabled:hover span span
-{
-	background: none;
-	color: #ababab;
-	padding: 0 0.75em;
-	text-shadow: 0 1px #fff;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
 /* @section 8. form default */
@@ -282,7 +223,6 @@ textarea
 
 .form_default .label
 {
-	font-size: 0.875em;
 	display: block;
 }
 

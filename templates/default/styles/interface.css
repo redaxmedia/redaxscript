@@ -83,10 +83,10 @@
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #b9b9b9;
 	display: inline-block;
-	font: 0.75em/2.125em arial;
+	font: 1em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 1em;
-	padding: 0 1.25em;
-	text-shadow: 0 1px #f1f1f1;
+	padding: 0 1em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	text-transform: uppercase;
 }
 
