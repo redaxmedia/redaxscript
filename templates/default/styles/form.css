@@ -187,9 +187,9 @@ textarea
 .field_search
 {
 	background: none;
-	color: #4e4e4e;
-	font: 1.25em/2em arial;
-	height: 30px;
+	color: #777;
+	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
+	height: 1.75em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	width: 80%;
 }
