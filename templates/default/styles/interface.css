@@ -125,86 +125,68 @@
 
 .list_header
 {
-	color: #585858;
 	float: right;
-	font: 2em cuprum, 'trebuchet ms', arial;
+	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-top: 0.5em;
-	text-shadow: 0 -1px #222, 0 1px #eee;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
 }
 
-.list_header a, .list_header a:hover, .list_header > li:hover, .list_header > .item_touch
+.list_header a, .list_header a:hover, .list_header li:hover
 {
 	color: #fff;
-	text-shadow: 0 1px #1b1b1b;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
-
-/* @section 5.1 menu area */
 
 .list_header li
 {
-	background: #535353;
 	padding: 0.25em 0.5em;
 }
 
 .list_header li:hover, .list_header .item_touch
 {
-	background: #777;
-	background: -moz-linear-gradient(top, #777, #636363);
-	background: -ms-linear-gradient(top, #777, #636363);
-	background: -o-linear-gradient(top, #777, #636363);
-	background: -webkit-gradient(linear, left top, left bottom, from(#777), to(#636363));
-	background: -webkit-linear-gradient(top, #777, #636363);
-	background: linear-gradient(top, #777, #636363);
+	background: #333;
 }
 
-/* @section 5.2 dropdown area */
+/* parent items */
 
 .list_header > li
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
-	background: url('templates/default/images/sprite.png') -17px -107px no-repeat;
-	border: 1px solid transparent;
 	border-radius: 0.125em;
+	color: #444;
 	display: inline-block;
 	margin-left: 1em;
-	padding-left: 1em;
 }
 
 .list_header > li:hover, .list_header > .item_touch
 {
-	-moz-box-shadow: 0 0 4px #999;
-	-webkit-box-shadow: 0 0 4px #999;
-	background: url('templates/default/images/sprite.png') -17px -287px #535353 no-repeat;
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, -moz-linear-gradient(top, #474747, #6a6a6a);
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, -ms-linear-gradient(top, #474747, #6a6a6a);
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, -o-linear-gradient(top, #474747, #6a6a6a);
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, -webkit-gradient(linear, left top, left bottom, from(#474747), to(#6a6a6a));
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, -webkit-linear-gradient(top, #474747, #6a6a6a);
-	background: url('templates/default/images/sprite.png') -17px -287px no-repeat, linear-gradient(top, #474747, #6a6a6a);
-	border-color: #3b3b3b;
-	box-shadow: 0 0 4px #999;
+	background: #444;
+	background: -moz-linear-gradient(top, #555, #333);
+	background: -ms-linear-gradient(top, #555, #333);
+	background: -o-linear-gradient(top, #555, #333);
+	background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
+	background: -webkit-linear-gradient(top, #555, #333);
+	background: linear-gradient(top, #555, #333);
 }
 
-/* @section 5.3 children elements */
+/* @section 5.1 list header children */
 
-.list_header > li > .list_children
+.list_header_children
 {
-	border-top: 5px solid transparent;
+	border-top: 4px solid transparent;
 	font-size: 0.75em;
-	left: -1px;
 }
 
-.list_header .list_children li
+.list_header_children li
 {
-	border: 1px solid #3b3b3b;
-	border-top-width: 0;
+	background: #444;
 }
 
-/* @section 5.4 rounded items */
+/* rounded items */
 
-.list_header .list_children li:first-child
+.list_header_children li:first-child
 {
 	-moz-border-radius-topleft: 0.125em;
 	-moz-border-radius-topright: 0.125em;
@@ -212,10 +194,9 @@
 	-webkit-border-top-right-radius: 0.125em;
 	border-top-left-radius: 0.125em;
 	border-top-right-radius: 0.125em;
-	border-top-width: 1px;
 }
 
-.list_header .list_children li:last-child
+.list_header_children li:last-child
 {
 	-moz-border-radius-bottomleft: 0.125em;
 	-moz-border-radius-bottomright: 0.125em;
@@ -225,20 +206,11 @@
 	border-bottom-right-radius: 0.125em;
 }
 
-/* @section 5.5 left space */
+/* left space */
 
-.list_header .list_children ul
+.list_header_children ul
 {
-	border-left: 5px solid transparent;
-	top: -1px;
-}
-
-/* @section 5.6 last children */
-
-.list_header > li:last-child .list_children
-{
-	left: auto;
-	right: -1px;
+	border-left: 4px solid transparent;
 }
 
 /* @section 6. list pagination */
@@ -320,7 +292,7 @@
 
 .list_tab_default a
 {
-	font: 1.5em/1.25em cuprum, 'trebuchet ms', arial;
+	font: 1.5em/1.25em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1em;
 	text-shadow: 0 1px #eee;
 	text-transform: uppercase;

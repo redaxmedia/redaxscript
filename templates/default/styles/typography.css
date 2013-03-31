@@ -223,7 +223,7 @@ pre
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
 	border-radius: 0.25em 0.25em 0 0;
-	font: 1.25em/2em cuprum, arial;
+	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1em;
 }
 
