@@ -137,7 +137,7 @@ r.plugins =
 	forwardNotification:
 	{
 		startup: true,
-		selector: 'a.js_forward_notification span span',
+		selector: 'a.js_forward_notification',
 		options:
 		{
 			duration: 1000

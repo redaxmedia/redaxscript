@@ -27,7 +27,7 @@ function login_form()
 
 	if (s('reminder') == 1)
 	{
-		$legend = anchor_element('internal', '', 'link_reminder', l('reminder_question') . l('question_mark'), 'reminder', '', 'rel="nofollow"');
+		$legend = anchor_element('internal', '', 'link_legend', l('reminder_question') . l('question_mark'), 'reminder', '', 'rel="nofollow"');
 	}
 	else
 	{

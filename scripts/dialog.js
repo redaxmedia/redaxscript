@@ -73,13 +73,13 @@
 
 		/* ok button */
 
-		output += '<a class="js_ok field_button' + options.suffix + '"><span><span>' + l.ok + '</span></span></a>';
+		output += '<a class="js_ok field_button' + options.suffix + '">' + l.ok + '</a>';
 
 		/* cancel button if confirm or prompt */
 
 		if (options.type === 'confirm' || options.type === 'prompt')
 		{
-			output += '<a class="js_cancel field_button' + options.suffix + '"><span><span>' + l.cancel + '</span></span></a>';
+			output += '<a class="js_cancel field_button' + options.suffix + '">' + l.cancel + '</a>';
 		}
 		output += '</div></div>';
 

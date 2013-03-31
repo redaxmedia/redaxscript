@@ -29,7 +29,13 @@
 
 			$(this).delay(options.duration).queue(function ()
 			{
-				$(this).click();
+				var link = $(this),
+					url = link.attr('href');
+
+				if (typeof url === 'string')
+				{
+					window.location = url;
+				}
 			});
 		});
 	};

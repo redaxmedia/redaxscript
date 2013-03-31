@@ -160,7 +160,7 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . 'admin"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . 'admin">' . l('cancel') . '</span></span></a>';
 	$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;

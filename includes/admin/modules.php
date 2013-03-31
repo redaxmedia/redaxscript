@@ -247,13 +247,13 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '">' . l('cancel') . '</span></span></a>';
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1 && $file_install)
 	{
-		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_ROUTE . 'admin/uninstall/modules/' . $alias . '/' . TOKEN . '"><span><span>' . l('uninstall') . '</span></span></a>';
+		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_ROUTE . 'admin/uninstall/modules/' . $alias . '/' . TOKEN . '">' . l('uninstall') . '</span></span></a>';
 	}
 
 	/* submit button */

@@ -437,7 +437,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 		{
 			$route = REWRITE_ROUTE . $route;
 		}
-		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $route . '"><span><span>' . $action . '</span></span></a>';
+		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $route . '">' . $action . '</span></span></a>';
 	}
 	$output .= '</div>';
 	echo $output;

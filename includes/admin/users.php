@@ -20,7 +20,7 @@ function admin_users_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if (USERS_NEW == 1)
 	{
-		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_ROUTE . 'admin/new/users"><span><span>' . l('user_new') . '</span></span></a>';
+		$output .= '<a class="field_button_admin field_button_plus" href="' . REWRITE_ROUTE . 'admin/new/users">' . l('user_new') . '</span></span></a>';
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -266,13 +266,13 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '"><span><span>' . l('cancel') . '</span></span></a>';
+	$output .= '<a class="js_cancel field_button_large_admin field_button_backward" href="' . REWRITE_ROUTE . $cancel_route . '">' . l('cancel') . '</span></span></a>';
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_ROUTE . 'admin/delete/users/' . $id . '/' . TOKEN . '"><span><span>' . l('delete') . '</span></span></a>';
+		$output .= '<a class="js_delete js_confirm field_button_large_admin" href="' . REWRITE_ROUTE . 'admin/delete/users/' . $id . '/' . TOKEN . '">' . l('delete') . '</span></span></a>';
 	}
 
 	/* submit button */

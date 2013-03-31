@@ -2,23 +2,11 @@
 <nav id="navibar" class="navibar grid_space s2o7">
 	<div class="box_navibar">
 		<?php if (LOGGED_IN == TOKEN): ?>
-			<a class="field_button field_button_heart" href="http://redaxscript.com/donate" rel="nofollow">
-				<span>
-					<span>Donate</span>
-				</span>
-			</a>
+			<?php echo anchor_element('external', '', 'field_button field_button_heart', 'Donate', 'redaxscript.com/donate'); ?>
 		<?php elseif (DB_CONNECTED == 1): ?>
-			<a class="field_button" href="<?php echo REWRITE_ROUTE; ?>login" rel="nofollow">
-				<span>
-					<span><?php echo l('login'); ?></span>
-				</span>
-			</a>
+			<?php echo anchor_element('internal', '', 'field_button', l('login'), 'login'); ?>
 		<?php endif; ?>
-		<a class="field_button field_button_question" href="http://redaxscript.com/support" rel="nofollow">
-			<span>
-				<span>Support</span>
-			</span>
-		</a>
+		<?php echo anchor_element('external', '', 'field_button field_button_question', 'Support', 'redaxscript.com/support'); ?>
 	</div>
 </nav>
 <!--[if lt IE 9]></div><![endif]-->
