@@ -322,11 +322,10 @@ r.startup = function (doc, html)
 
 	/* html5 elements */
 
-	doc.createElement('footer');
 	doc.createElement('article');
 	doc.createElement('aside');
+	doc.createElement('footer');
 	doc.createElement('header');
-	doc.createElement('hgroup');
 	doc.createElement('nav');
 	doc.createElement('section');
 	return true;
