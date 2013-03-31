@@ -1,6 +1,9 @@
-<filesmatch \.(phtml)$>
+<filesmatch \.(php|phtml)$>
 	deny from all
 </filesmatch>
+<filesmatch index.php>
+	allow from all
+</filesMatch>
 <ifmodule mod_deflate.c>
 	<filesmatch \.(css|js|php|phtml|svg|xml)$>
 		setoutputfilter deflate
@@ -20,8 +23,6 @@
 	rewriterule ^(.*)$ https://%1/$1 [r=301,l]
 	rewritecond %{request_filename} !-d
 	rewriterule ^(.*)/$ /$1 [r=301,l]
-	rewritecond %{request_filename} !-d
-	rewriterule ^favicon.ico$ favicon.ico [r=301,l]
 	rewritecond %{request_filename} -f
 	rewriterule ^(.*) $1 [l]
 	rewritecond %{request_filename} !-d
