@@ -71,11 +71,6 @@
 
 @media screen and (max-width: 800px)
 {
-	.content
-	{
-		min-height: 200px;
-	}
-
 	.content, .sidebar, .navibar
 	{
 		float: none;

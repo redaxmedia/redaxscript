@@ -162,6 +162,8 @@
 
 .list_header > li:hover, .list_header > .item_touch
 {
+	-moz-box-shadow: 0 0 4px #999999;
+	-webkit-box-shadow: 0 0 4px #999999;
 	background: #444;
 	background: -moz-linear-gradient(top, #555, #333);
 	background: -ms-linear-gradient(top, #555, #333);
@@ -169,6 +171,7 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
 	background: -webkit-linear-gradient(top, #555, #333);
 	background: linear-gradient(top, #555, #333);
+	box-shadow: 0 0 4px #999999;
 }
 
 /* @section 5.1 list header children */

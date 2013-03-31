@@ -301,7 +301,7 @@ r.baseURL = function (doc)
 
 /* @section 1.6 startup */
 
-r.startup = function (html)
+r.startup = function (doc, html)
 {
 	if (html.className)
 	{
@@ -319,5 +319,15 @@ r.startup = function (html)
 	{
 		html.className += ' svg';
 	}
+
+	/* html5 elements */
+
+	doc.createElement('footer');
+	doc.createElement('article');
+	doc.createElement('aside');
+	doc.createElement('header');
+	doc.createElement('hgroup');
+	doc.createElement('nav');
+	doc.createElement('section');
 	return true;
-}(document.documentElement);
+}(document, document.documentElement);

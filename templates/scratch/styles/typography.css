@@ -26,7 +26,7 @@ body
 
 p
 {
-	font: 1em/1.5em arial;
+	font: 1em/2em arial;
 }
 
 pre
@@ -40,4 +40,12 @@ pre
 .link_default
 {
 	text-decoration: underline;
+}
+
+/* @section 3. several titles */
+
+.title_content, .title_content_sub, .title_comment, .title_extra
+{
+	margin-bottom: 0.75em;
+	margin-top: 1.5em;
 }

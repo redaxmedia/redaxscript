@@ -45,7 +45,6 @@ body
 .content
 {
 	margin-top: 3em;
-	min-height: 500px;
 }
 
 /* @section 4. footer */
@@ -97,10 +96,8 @@ body
 
 .sidebar
 {
-	float: right;
 	margin-bottom: 5em;
 	margin-top: 3em;
-	min-height: 500px;
 }
 
 /* @section 8. website logo */

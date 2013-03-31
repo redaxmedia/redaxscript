@@ -156,13 +156,13 @@ textarea
 
 .field_textarea
 {
-	min-height: 100px;
+	min-height: 10em;
 	width: 100%;
 }
 
 .field_textarea_small
 {
-	min-height: 50px;
+	min-height: 5em;
 }
 
 /* @section 6. search elements */

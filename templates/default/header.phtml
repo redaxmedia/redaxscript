@@ -1,8 +1,7 @@
-<!--[if lt IE 9]><div id="header" class="header"><![endif]-->
 <header id="header" class="header">
-	<!--[if lt IE 9]><div class="wrapper clear_fix"><![endif]-->
-	<section class="wrapper clear_fix">
-		<?php if (DB_CONNECTED == 1): ?>
+	<?php if (DB_CONNECTED == 1): ?>
+		<section class="wrapper clear_fix">
+
 			<div class="box_first grid_space s3o7">
 				<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
 				<div class="wrapper_metadata">
@@ -14,6 +13,7 @@
 					<?php endif; ?>
 				</div>
 			</div>
+
 			<div class="box_last grid_space s4o7">
 				<ul class="js_dropdown list_dropdown list_header">
 					<li>
@@ -33,8 +33,7 @@
 					</li>
 				</ul>
 			</div>
-		<?php endif; ?>
-	</section>
-	<!--[if lt IE 9]></div><![endif]-->
+
+		</section>
+	<?php endif; ?>
 </header>
-<!--[if lt IE 9]></div><![endif]-->

@@ -10,11 +10,14 @@
 		<link href="<?php echo ROOT; ?>/templates/default/images/touchicon.png" rel="apple-touch-icon-precomposed" />
 		<link href="templates/default/images/favicon.ico" rel="shortcut icon" />
 	</head>
+
 	<body class="wrapper_body">
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
 			<?php include_once('templates/admin/panel.phtml'); ?>
 		<?php endif; ?>
+
 		<?php include_once('header.phtml'); ?>
+
 		<div class="wrapper clear_fix">
 			<?php if (DB_CONNECTED && CONTENT_ERROR && CENTER_BREAK == ''): ?>
 				<?php include_once('error.phtml'); ?>
@@ -24,7 +27,9 @@
 				<?php include_once('sidebar.phtml'); ?>
 			<?php endif; ?>
 		</div>
+
 		<?php include_once('footer.phtml'); ?>
 		<?php scripts(); ?>
+
 	</body>
 </html>
