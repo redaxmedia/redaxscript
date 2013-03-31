@@ -303,6 +303,18 @@ r.baseURL = function (doc)
 
 r.startup = function (doc, html)
 {
+	var i = '',
+		elements =
+		[
+			'article',
+			'aside',
+			'footer',
+			'header',
+			'hgroup',
+			'nav',
+			'section'
+		];
+
 	if (html.className)
 	{
 		html.className += ' ';
@@ -315,18 +327,24 @@ r.startup = function (doc, html)
 	{
 		html.className += ' canvas';
 	}
+	else
+	{
+		html.className += ' no_canvas';
+	}
 	if (r.support.svg === true)
 	{
 		html.className += ' svg';
 	}
+	else
+	{
+		html.className += ' no_svg';
+	}
 
-	/* html5 elements */
+	/* create elements */
 
-	doc.createElement('article');
-	doc.createElement('aside');
-	doc.createElement('footer');
-	doc.createElement('header');
-	doc.createElement('nav');
-	doc.createElement('section');
+	for (i in elements)
+	{
+		doc.createElement(elements[i]);
+	}
 	return true;
 }(document, document.documentElement);
