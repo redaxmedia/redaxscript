@@ -20,14 +20,12 @@
 
 [firefox]
 1 = styles/firefox.css
-2 = templates/default/styles/firefox.css
 
 [opera]
 1 = templates/default/styles/opera.css
 
 [webkit]
 1 = styles/webkit.css
-2 = templates/default/styles/webkit.css
 
 [admin]
 1 = templates/admin/styles/box.css

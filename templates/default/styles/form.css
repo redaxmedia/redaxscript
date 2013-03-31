@@ -45,15 +45,15 @@ textarea
 	color: #5e5e5e;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.75em/2.5em arial;
+	font: 1em/2.25em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 0.75em;
-	text-shadow: 0 1px #d4d4d4;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
 }
 
 .field_button_large
 {
-	font-size: 1em;
+	font-size: 1.25em;
 }
 
 /* @section 2.1 hover effect */
@@ -72,7 +72,7 @@ textarea
 	border-color: #005da2;
 	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
 	color: #fff;
-	text-shadow: 0 1px #005da2;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
 /* @section 4. default fields */

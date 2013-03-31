@@ -68,10 +68,10 @@
 {
 	color: #3197df;
 	content: '\201e';
-	font: italic 7em/1em georgia;
+	font: italic 7em/1em georgia, arial;
 	left: -0.5em;
 	position: absolute;
-	text-shadow: 0 -1px #1f53a6, 0 1px #fff;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	top: -0.75em;
 }
 
@@ -216,13 +216,13 @@
 
 .box_quote
 {
-	color: #474747;
-	font: italic 1.125em/1.5em arial;
+	color: #555;
+	font: italic 1.25em/1.5em georgia, arial;
 	margin: 1em 0;
 	min-height: 4em;
 	padding: 0 6em;
 	position: relative;
-	text-shadow: 0 1px #fff;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .box_quote:before

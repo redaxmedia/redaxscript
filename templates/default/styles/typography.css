@@ -171,10 +171,10 @@ pre
 
 .title_content_sub
 {
-	font: 1.75em 'pt sans narrow', 'trebuchet ms', arial;
+	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	text-shadow: 0 -1px #1f53a6, 0 1px #fff;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
 .title_content_sub, .title_content_sub a
