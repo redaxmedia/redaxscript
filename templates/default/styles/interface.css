@@ -1,18 +1,13 @@
 /**
  * @tableofcontents
  *
- * 1. general footer list
- * 2. general sidebar list
- * 3. list breadcrumb
- * 4. list default
- * 5. list header
- *    5.1 menu area
- *    5.2 dropdown area
- *    5.3 children elements
- *    5.4 rounded items
- *    5.5 left space
- *    5.6 last children
- * 6. list pagination
+ * 1. list breadcrumb
+ * 2. list default
+ * 3. list footer
+ * 4. list header
+ *    4.1 list header children
+ * 5. list pagination
+ * 6. list sidebar
  * 7. list tab default
  *    7.1 javascript enabled
  * 8. list search result
