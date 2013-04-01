@@ -144,14 +144,6 @@ textarea
 	box-shadow: 0 0 1px #4abdff;
 }
 
-/* uniform option */
-
-.field_select option
-{
-	font: 1em arial;
-	text-shadow: none;
-}
-
 /* @section 5. textarea dimensions */
 
 .field_textarea
@@ -170,7 +162,6 @@ textarea
 .field_button_search
 {
 	background: url('templates/default/images/sprite.png') 0 -67px no-repeat;
-	filter: alpha(opacity=80);
 	float: right;
 	height: 30px;
 	opacity: 0.8;
@@ -180,7 +171,6 @@ textarea
 
 .field_button_search:hover
 {
-	filter: alpha(opacity=100);
 	opacity: 1;
 }
 

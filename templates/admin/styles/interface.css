@@ -187,20 +187,18 @@
 	color: #ccc;
 }
 
-/* @section 4.1 menu area */
-
 .list_panel_admin li
 {
-	background-color: #333;
+	background: #333;
 	padding: 0.25em 0.75em;
 }
 
 .list_panel_admin li:hover, .list_panel_admin .item_touch
 {
-	background-color: #3b3b3b;
+	background: #3b3b3b;
 }
 
-/* @section 4.2 dropdown area */
+/* parent items */
 
 .list_panel_admin > li
 {
@@ -208,13 +206,11 @@
 	-moz-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	-webkit-border-radius: 0.25em;
-	background: url('templates/admin/images/sprite.png') -18px -49px #333;
 	border: 1px solid #151515;
 	border-radius: 0.25em;
 	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
 	display: inline-block;
 	margin-right: 1em;
-	padding-left: 1.75em;
 }
 
 .list_panel_admin > li:hover, .list_panel_admin > .item_touch
@@ -222,23 +218,22 @@
 	background-color: #3b3b3b;
 }
 
-/* @section 4.3 children elements */
+/* @section 4.1 list panel children */
 
-.list_panel_admin > li > .list_children
+.list_panel_children_admin
 {
-	border-top: 5px solid transparent;
-	left: -1px;
+	border-top: 4px solid transparent;
 }
 
-.list_panel_admin .list_children li
+.list_panel_children_admin li
 {
 	border: 1px solid #585858;
 	border-top-width: 0;
 }
 
-/* @section 4.4 rounded items */
+/* rounded items */
 
-.list_panel_admin ul li:first-child
+.list_panel_children_admin li:first-child
 {
 	-moz-border-radius-topleft: 0.25em;
 	-moz-border-radius-topright: 0.25em;
@@ -249,7 +244,7 @@
 	border-top-width: 1px;
 }
 
-.list_panel_admin ul li:last-child
+.list_panel_children_admin li:last-child
 {
 	-moz-border-radius-bottomleft: 0.25em;
 	-moz-border-radius-bottomright: 0.25em;
@@ -259,11 +254,11 @@
 	border-bottom-right-radius: 0.25em;
 }
 
-/* @section 4.5 left space */
+/* left space */
 
-.list_panel_admin .list_children ul
+.list_panel_admin .list_panel_children_admin ul
 {
-	border-left: 5px solid transparent;
+	border-left: 4px solid transparent;
 	top: -1px;
 }
 

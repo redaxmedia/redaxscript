@@ -23,16 +23,6 @@ textarea
 
 /* @section 2. default buttons */
 
-.field_button
-{
-	font: 1em arial;
-}
-
-.field_button_large
-{
-	font: 1.25em arial;
-}
-
 .field_button, .field_button_large, .field_button_search
 {
 	-moz-border-radius: 0.25em;
@@ -50,8 +40,17 @@ textarea
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	border-radius: 0.25em;
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	color: #333;
 	cursor: pointer;
 	display: inline-block;
+	font: 1em/2.25em arial;
+	padding: 0 0.5em;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.field_button_large
+{
+	font-size: 1.25em;
 }
 
 /* @section 2.1 hover effect */
@@ -69,21 +68,6 @@ textarea
 	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 	background: #e6e6e6;
-}
-
-/* @section 2.3 children elements */
-
-.field_button span, .field_button_large span, .field_button_search span
-{
-	display: inline-block;
-}
-
-.field_button span span, .field_button_large span span, .field_button_search span span
-{
-	color: #333;
-	line-height: 2.25em;
-	padding: 0 0.5em;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
 /* field button search */
@@ -152,25 +136,17 @@ textarea
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
-/* uniform option */
-
-.field_select option
-{
-	font: 1em arial;
-	text-shadow: none;
-}
-
 /* @section 4. textarea dimensions */
 
 .field_textarea
 {
-	min-height: 100px;
+	min-height: 10em;
 	width: 100%;
 }
 
 .field_textarea_small
 {
-	min-height: 50px;
+	min-height: 5em;
 }
 
 /* @section 5. disabled and readonly */
