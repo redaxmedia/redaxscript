@@ -144,14 +144,19 @@
 
 /* @section 5. list sidebar */
 
-.list_sidebar  a
+.list_sidebar
+{
+	color: #999;
+	text-indent: 1.25em;
+}
+
+.list_sidebar a
 {
 	display: block;
-	padding: 0 1em;
 	text-decoration: none;
 }
 
-.list_sidebar  a:hover
+.list_sidebar a:hover
 {
 	background: #eee;
 }
@@ -169,9 +174,9 @@
 
 /* children list */
 
-.list_sidebar .list_children a
+.list_sidebar .list_children
 {
-	padding-left: 1.5em;
+	text-indent: 2em;
 }
 
 /* @section 6. list tab default */
