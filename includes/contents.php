@@ -431,13 +431,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if ($action && $route)
 	{
-		/* handle protocol */
-
-		if (check_protocol($route) == '')
-		{
-			$route = REWRITE_ROUTE . $route;
-		}
-		$output .= '<a class="js_forward_notification field_button' . $suffix . '" href="' . $route . '">' . $action . '</span></span></a>';
+		$output .= anchor_element('internal', '', 'js_forward_notification field_button' . $suffix, $action, $route);
 	}
 	$output .= '</div>';
 	echo $output;
