@@ -37,4 +37,21 @@ function helper_class()
 	}
 	echo $output;
 }
+
+/**
+ * helper subset
+ */
+
+function helper_subset()
+{
+	if (LANGUAGE == 'bg' || LANGUAGE == 'ru')
+	{
+		$output = 'cyrillic';
+	}
+	else
+	{
+		$output = 'latin';
+	}
+	echo $output;
+}
 ?>

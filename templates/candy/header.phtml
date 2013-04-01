@@ -1,8 +1,6 @@
-<!--[if lt IE 9]><div id="header" class="header"><![endif]-->
 <header id="header" class="header">
-	<!--[if lt IE 9]><div class="wrapper"><![endif]-->
-	<section class="wrapper">
-		<?php if (DB_CONNECTED == 1): ?>
+	<?php if (DB_CONNECTED == 1): ?>
+		<section class="wrapper">
 			<?php if (s('title')): ?>
 				<h1 class="title_website"><?php echo anchor_element('', '', '', truncate(s('title'), 15), ROOT); ?></h1>
 			<?php endif; ?>
@@ -11,8 +9,6 @@
 				'class' => 'js_dropdown list_dropdown list_header',
 				'limit' => 5
 			)); ?>
-		<?php endif; ?>
-	</section>
-	<!--[if lt IE 9]></div><![endif]-->
+		</section>
+	<?php endif; ?>
 </header>
-<!--[if lt IE 9]></div><![endif]-->
