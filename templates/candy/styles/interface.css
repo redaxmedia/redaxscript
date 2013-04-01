@@ -12,36 +12,14 @@
  * 7. list search result
  */
 
-/* @section 1. general sidebar list */
-
-.sidebar li
-{
-	line-height: 2em;
-}
-
-.sidebar li a
-{
-	color: #9e9032;
-}
-
-.sidebar li a:hover
-{
-	color: #fff;
-}
-
-.sidebar .list_children
-{
-	margin-left: 1em;
-}
-
-/* @section 2. list breadcrumb */
+/* @section 1. list breadcrumb */
 
 .list_breadcrumb li
 {
 	display: inline-block;
 }
 
-/* @section 3. list default */
+/* @section 2. list default */
 
 .list_default li
 {
@@ -49,7 +27,7 @@
 	margin: 1em 1.5em;
 }
 
-/* @section 4. list header */
+/* @section 3. list header */
 
 .list_header, .list_header a
 {
@@ -61,7 +39,7 @@
 	color: #d6d6d6;
 }
 
-/* @section 4.1 dropdown area */
+/* parent items */
 
 .list_header > li
 {
@@ -100,7 +78,7 @@
 	color: #9609ac;
 }
 
-/* @section 4.2 children elements */
+/* children list */
 
 .list_header > li > .list_children
 {
@@ -127,7 +105,7 @@
 	margin: 0.125em 0;
 }
 
-/* @section 5. list footer */
+/* @section 4. list footer */
 
 .list_footer
 {
@@ -152,7 +130,7 @@
 	text-transform: uppercase;
 }
 
-/* @section 6. list pagination */
+/* @section 5. list pagination */
 
 .list_pagination
 {
@@ -203,7 +181,7 @@
 	color: #9609ac;
 }
 
-/* @section 7. list search result */
+/* @section 6. list search result */
 
 .list_search_result
 {
@@ -225,4 +203,28 @@
 {
 	display: block;
 	text-decoration: underline;
+}
+
+/* @section 7. list sidebar */
+
+.list_sidebar a
+{
+	color: #9e9032;
+}
+
+.list_sidebar a:hover
+{
+	color: #fff;
+}
+
+.list_sidebar li
+{
+	line-height: 2em;
+}
+
+/* children list */
+
+.list_sidebar .list_children
+{
+	margin-left: 1em;
 }

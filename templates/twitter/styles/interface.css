@@ -13,37 +13,7 @@
  * 9. space between elements
  */
 
-/* @section 1. general sidebar list */
-
-.sidebar li
-{
-	line-height: 2.25em;
-}
-
-.sidebar li a
-{
-	display: block;
-	padding: 0 1em;
-	text-decoration: none;
-}
-
-.sidebar li a:hover
-{
-	background: #eee;
-}
-
-.sidebar .item_active > a, .sidebar .item_active > a:hover
-{
-	background: #0088cc;
-	color: #fff;
-}
-
-.sidebar .list_children a
-{
-	padding-left: 1.5em;
-}
-
-/* @section 2. list breadcrumb */
+/* @section 1. list breadcrumb */
 
 .list_breadcrumb
 {
@@ -78,7 +48,7 @@
 	margin: 0 0.5em;
 }
 
-/* @section 3. list default */
+/* @section 2. list default */
 
 .list_default li
 {
@@ -86,7 +56,7 @@
 	margin: 0.5em 1.5em;
 }
 
-/* @section 4. list header */
+/* @section 3. list header */
 
 .list_header
 {
@@ -124,7 +94,7 @@
 	background: #222;
 }
 
-/* @section 5. list pagination */
+/* @section 4. list pagination */
 
 .list_pagination
 {
@@ -170,6 +140,38 @@
 .list_pagination span
 {
 	color: #999;
+}
+
+/* @section 5. list sidebar */
+
+.list_sidebar  a
+{
+	display: block;
+	padding: 0 1em;
+	text-decoration: none;
+}
+
+.list_sidebar  a:hover
+{
+	background: #eee;
+}
+
+.list_sidebar li
+{
+	line-height: 2.25em;
+}
+
+.list_sidebar .item_active > a, .list_sidebar .item_active > a:hover
+{
+	background: #0088cc;
+	color: #fff;
+}
+
+/* children list */
+
+.list_sidebar .list_children a
+{
+	padding-left: 1.5em;
 }
 
 /* @section 6. list tab default */
