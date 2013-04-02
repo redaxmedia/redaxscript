@@ -1,7 +1,7 @@
 <filesmatch \.(php|phtml)$>
 	deny from all
 </filesmatch>
-<filesmatch index.php>
+<filesmatch (index.php|install.php)>
 	allow from all
 </filesMatch>
 <ifmodule mod_deflate.c>
