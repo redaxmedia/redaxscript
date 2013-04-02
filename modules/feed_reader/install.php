@@ -6,7 +6,7 @@
 
 function feed_reader_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed reader\', \'feed_reader\', \'Redaxmedia\', \'Reads external RSS and Atom feeds\', \'1.2.1\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed reader\', \'feed_reader\', \'Redaxmedia\', \'Reads external RSS and Atom feeds\', \'1.3\', 1, 0)';
 	mysql_query($query);
 }
 
