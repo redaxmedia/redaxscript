@@ -1,0 +1,10 @@
+{
+	"adjoining-classes": false,
+	"box-model": false,
+	"box-sizing": false,
+	"duplicate-background-images": false,
+	"text-indent": false,
+	"outline-none": false,
+	"qualified-headings": false,
+	"fallback-colors": false
+}
