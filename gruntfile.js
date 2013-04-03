@@ -36,7 +36,6 @@ module.exports = function (grunt)
 			{
 				options:
 				{
-					timeout: 10000,
 					urls: ['http://develop.redaxscript.com/qunit']
 				}
 			}
@@ -55,7 +54,8 @@ module.exports = function (grunt)
 			{
 				src: ['templates/*/styles/*.css']
 			},
-			options: {
+			options:
+			{
 				csslintrc: '.csslintrc'
 			}
 		},
