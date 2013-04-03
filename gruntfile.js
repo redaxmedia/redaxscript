@@ -10,7 +10,7 @@ module.exports = function (grunt)
 		{
 			scripts:
 			{
-				files: ['<%=jshint.base%>', '<%=jshint.modules>', '<%=jshint.templates%>'],
+				files: ['<%=jshint.base%>', '<%=jshint.modules%>', '<%=jshint.templates%>'],
 				tasks: ['jshint']
 			},
 			styles:
