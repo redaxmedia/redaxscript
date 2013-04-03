@@ -1,5 +1,7 @@
-module.exports = function(grunt)
+module.exports = function (grunt)
 {
+	'use strict';
+
 	/* define css rules */
 
 	grunt.cssRules =
@@ -23,54 +25,35 @@ module.exports = function(grunt)
 			scripts:
 			{
 				files: ['<config:lint.base>', '<config:lint.modules>', '<config:lint.templates>'],
-				tasks: 'lint qunit'
+				tasks: ['lint, qunit']
 			},
 			styles:
 			{
 				files: ['<config:csslint.base.src>', '<config:csslint.modules.src>', '<config:csslint.templates.src>'],
-				tasks: 'csslint'
+				tasks: ['csslint']
 			}
-		},
-		lint:
-		{
-			base: ['scripts/*.js'],
-			modules: ['modules/*/scripts/*.js'],
-			templates: ['templates/*/scripts/*.js']
 		},
 		jshint:
 		{
+			gruntfile: ['gruntfile.js'],
+			base: ['scripts/*.js'],
+			modules: ['modules/*/scripts/*.js'],
+			templates: ['templates/*/scripts/*.js'],
 			options:
 			{
-				boss: true,
-				browser: true,
-				curly: true,
-				eqeqeq: true,
-				eqnull: true,
-				es5: true,
-				latedef: true,
-				newcap: true,
-				noarg: true,
-				noempty: true,
-				node: true,
-				strict: true,
-				sub: true,
-				trailing: true,
-				undef: true,
-				white: true
-			},
-			globals:
-			{
-				_gaq: true,
-				_gat: true,
-				google: true,
-				jQuery: true,
-				l: true,
-				r: true
+				jshintrc: '.jshintrc'
 			}
 		},
 		qunit:
 		{
-			src: ['http://develop.redaxscript.com/qunit']
+			develop:
+			{
+				options:
+				{
+					timeout: 10000,
+					urls: ['http://develop.redaxscript.com/qunit']
+				}
+			}
 		},
 		csslint:
 		{
@@ -88,25 +71,6 @@ module.exports = function(grunt)
 			{
 				src: ['templates/*/styles/*.css'],
 				rules: grunt.cssRules
-			}
-		},
-		bom:
-		{
-			base:
-			{
-				src: ['*.php', 'includes/**/*.php', 'scripts/*.js', 'styles/*.css']
-			},
-			languages:
-			{
-				src: ['languages/*.php']
-			},
-			modules:
-			{
-				src: ['modules/**/*.php', 'modules/**/*.css', 'modules/**/*.js']
-			},
-			templates:
-			{
-				src: ['templates/**/*.phtml', 'templates/**/*.css', 'templates/**/*.js']
 			}
 		},
 		shell:
@@ -163,16 +127,18 @@ module.exports = function(grunt)
 
 	/* load tasks */
 
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-css');
-	grunt.loadNpmTasks('grunt-bom');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
 
-	grunt.registerTask('default', 'lint');
-	grunt.registerTask('toc', 'shell:tocBase shell:tocModules shell:tocTemplates');
-	grunt.registerTask('svgo', 'shell:svgoAdmin shell:svgoDefault');
-	grunt.registerTask('optimize', 'bom toc img smushit svgo');
+	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
+	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
+	grunt.registerTask('optimize', ['bom', 'toc', 'img', 'smushit', 'svgo']);
 };

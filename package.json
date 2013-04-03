@@ -24,12 +24,14 @@
 	},
 	"dependencies":
 	{
-		"grunt": "0.3.17",
-		"grunt-css": "0.4.1",
-		"grunt-bom": "0.1.0",
-		"grunt-img": "0.1.4",
-		"grunt-smushit": "0.3.9",
-		"grunt-shell": "0.1.4",
+		"grunt": "0.4.1",
+		"grunt-contrib-jshint": "0.1.1",
+		"grunt-contrib-qunit": "0.2.0",
+		"grunt-contrib-watch": "0.2.0",
+		"grunt-css": "0.5.4",
+		"grunt-img": "0.1.6",
+		"grunt-smushit": "0.4.0",
+		"grunt-shell": "0.2.2",
 		"svgo": "0.2.3"
 	}
 }
