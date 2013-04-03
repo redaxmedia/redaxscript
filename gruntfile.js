@@ -10,12 +10,12 @@ module.exports = function (grunt)
 		{
 			scripts:
 			{
-				files: ['<config:lint.base>', '<config:lint.modules>', '<config:lint.templates>'],
-				tasks: ['lint, qunit']
+				files: ['<%=jshint.base%>', '<%=jshint.modules>', '<%=jshint.templates%>'],
+				tasks: ['jshint']
 			},
 			styles:
 			{
-				files: ['<config:csslint.base.src>', '<config:csslint.modules.src>', '<config:csslint.templates.src>'],
+				files: ['<%=csslint.base.src%>', '<%=csslint.modules.src%>', '<%=csslint.templates.src%>'],
 				tasks: ['csslint']
 			}
 		},
@@ -63,27 +63,26 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles',
-				stdout: true
+				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
 			},
 			tocModules:
 			{
-				command: 'php ../tocgen/tocgen.php modules -r',
-				stdout: true
+				command: 'php ../tocgen/tocgen.php modules -r'
 			},
 			tocTemplates:
 			{
-				command: 'php ../tocgen/tocgen.php templates -r',
-				stdout: true
+				command: 'php ../tocgen/tocgen.php templates -r'
 			},
 			svgoAdmin:
 			{
-				command: 'svgo --disable removeViewBox -f templates/admin/images',
-				stdout: true
+				command: 'svgo --disable removeViewBox -f templates/admin/images'
 			},
 			svgoDefault:
 			{
-				command: 'svgo --disable removeViewBox -f templates/default/images',
+				command: 'svgo --disable removeViewBox -f templates/default/images'
+			},
+			options:
+			{
 				stdout: true
 			}
 		},
@@ -102,11 +101,11 @@ module.exports = function (grunt)
 		{
 			modules:
 			{
-				src: ['<config:img.modules.src>']
+				src: ['<%=img.modules.src%>']
 			},
 			templates:
 			{
-				src: ['<config:img.templates.src>']
+				src: ['<%=img.templates.src%>']
 			}
 		}
 	});
@@ -126,5 +125,5 @@ module.exports = function (grunt)
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
-	grunt.registerTask('optimize', ['bom', 'toc', 'img', 'smushit', 'svgo']);
+	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
 };
