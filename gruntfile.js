@@ -2,20 +2,6 @@ module.exports = function (grunt)
 {
 	'use strict';
 
-	/* define css rules */
-
-	grunt.cssRules =
-	{
-		'adjoining-classes': false,
-		'box-model': false,
-		'box-sizing': false,
-		'compatible-vendor-prefixes': false,
-		'duplicate-background-images': false,
-		'text-indent': false,
-		'outline-none': false,
-		'qualified-headings': false
-	};
-
 	/* config grunt */
 
 	grunt.initConfig(
@@ -59,18 +45,18 @@ module.exports = function (grunt)
 		{
 			base:
 			{
-				src: ['styles/*.css'],
-				rules: grunt.cssRules
+				src: ['styles/*.css', '!styles/webkit.css']
 			},
 			modules:
 			{
-				src: ['modules/*/styles/*.css'],
-				rules: grunt.cssRules
+				src: ['modules/*/styles/*.css']
 			},
 			templates:
 			{
-				src: ['templates/*/styles/*.css'],
-				rules: grunt.cssRules
+				src: ['templates/*/styles/*.css']
+			},
+			options: {
+				csslintrc: '.csslintrc'
 			}
 		},
 		shell:
@@ -127,10 +113,10 @@ module.exports = function (grunt)
 
 	/* load tasks */
 
+	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
