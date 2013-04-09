@@ -249,7 +249,6 @@
 					}
 					event.preventDefault();
 				}
-
 			});
 		});
 	};
