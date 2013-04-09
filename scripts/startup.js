@@ -137,7 +137,7 @@ r.plugins =
 	enableTab:
 	{
 		startup: true,
-		selector: 'form textarea.js_editor',
+		selector: 'form textarea.js_editor, form textarea.js_enable_tab',
 		options:
 		{
 			insertion: '\t'

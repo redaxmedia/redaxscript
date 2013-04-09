@@ -30,11 +30,13 @@
 
 		return this.each(function ()
 		{
-			/* listen for input */
+			/* listen for ready and input */
 
 			$(this).on('ready input', function (event)
 			{
 				var textarea = this;
+
+				/* on ready resize */
 
 				if (event.type === 'ready')
 				{
@@ -43,6 +45,9 @@
 						textarea.rows += options.summand++;
 					}
 				}
+
+				/* general resize */
+
 				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
 				{
 					textarea.rows -= 1;
@@ -158,7 +163,7 @@
 		{
 			/* listen for submit */
 
-			$(this).submit(function (event)
+			$(this).on('submit', function (event)
 			{
 				var field = $(this).find(options.required)[0],
 					fieldValue = $.trim(field.value),
@@ -223,7 +228,7 @@
 
 		return this.each(function ()
 		{
-			/* listen for keydown and focusout */
+			/* listen for keydown */
 
 			$(this).on('keydown', function (event)
 			{
@@ -240,6 +245,9 @@
 						textarea.value = textareaValue.slice(0, selectionStart) + options.insertion + textareaValue.slice(textarea.selectionEnd);
 						textarea.selectionEnd = textarea.selectionStart = selectionStart + options.insertion.length;
 					}
+
+					/* else fallback */
+
 					else if (typeof selection === 'object')
 					{
 						selectionRange = selection.createRange();
