@@ -134,6 +134,15 @@ r.plugins =
 		startup: true,
 		selector: 'a.js_confirm'
 	},
+	enableTab:
+	{
+		startup: true,
+		selector: 'form textarea.js_editor',
+		options:
+		{
+			insertion: '\t'
+		}
+	},
 	forwardNotification:
 	{
 		startup: true,

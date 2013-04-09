@@ -5,9 +5,10 @@
  * 2. check required
  * 3. check search
  * 4. clear focus
- * 5. note required
- * 6. unmask password
- * 7. startup
+ * 5. enable tab
+ * 6. note required
+ * 7. unmask password
+ * 8. startup
  */
 
 (function ($)
@@ -207,7 +208,53 @@
 		});
 	};
 
-	/* @section 5. note required */
+	/* @section 5. enable tab */
+
+	$.fn.enableTab = function (options)
+	{
+		/* extend options */
+
+		if (r.plugins.enableTab.options !== options)
+		{
+			options = $.extend({}, r.plugins.enableTab.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* listen for keydown and focusout */
+
+			$(this).on('keydown', function (event)
+			{
+				var doc = document,
+					textarea = this,
+					textareaValue = this.value,
+					selectionStart, selectionRange;
+
+				if (event.which === 9)
+				{
+					if (typeof textarea.selectionStart === 'number')
+					{
+						selectionStart = textarea.selectionStart;
+						textarea.value = textareaValue.slice(0, selectionStart) + options.insertion + textareaValue.slice(textarea.selectionEnd);
+						textarea.selectionEnd = textarea.selectionStart = selectionStart + options.insertion.length;
+					}
+					else if (typeof doc.selection === 'object')
+					{
+						selectionRange = doc.selection.createRange();
+						selectionRange.text = options.insertion;
+						selectionRange.collapse(false);
+						selectionRange.select();
+					}
+					event.preventDefault();
+				}
+
+			});
+		});
+	};
+
+	/* @section 6. note required */
 
 	$.fn.noteRequired = function (options)
 	{
@@ -248,7 +295,7 @@
 		});
 	};
 
-	/* @section 6. unmask password */
+	/* @section 7. unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -274,7 +321,7 @@
 		});
 	};
 
-	/* @section 7. startup */
+	/* @section 8. startup */
 
 	$(function ()
 	{
@@ -293,6 +340,10 @@
 		if (r.plugins.clearFocus.startup)
 		{
 			$(r.plugins.clearFocus.selector).clearFocus();
+		}
+		if (r.plugins.enableTab.startup)
+		{
+			$(r.plugins.enableTab.selector).enableTab();
 		}
 		if (r.plugins.noteRequired.startup)
 		{

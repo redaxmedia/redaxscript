@@ -40,6 +40,7 @@
 			}
 
 			var editor = this;
+
 			editor.textarea = $(this);
 
 			/* prematurely terminate editor */
