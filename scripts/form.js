@@ -227,22 +227,22 @@
 
 			$(this).on('keydown', function (event)
 			{
-				var doc = document,
-					textarea = this,
+				var textarea = this,
 					textareaValue = this.value,
-					selectionStart, selectionRange;
+					selection = document.selection,
+					selectionStart = textarea.selectionStart,
+					selectionRange;
 
 				if (event.which === 9)
 				{
-					if (typeof textarea.selectionStart === 'number')
+					if (typeof selectionStart === 'number')
 					{
-						selectionStart = textarea.selectionStart;
 						textarea.value = textareaValue.slice(0, selectionStart) + options.insertion + textareaValue.slice(textarea.selectionEnd);
 						textarea.selectionEnd = textarea.selectionStart = selectionStart + options.insertion.length;
 					}
-					else if (typeof doc.selection === 'object')
+					else if (typeof selection === 'object')
 					{
-						selectionRange = doc.selection.createRange();
+						selectionRange = selection.createRange();
 						selectionRange.text = options.insertion;
 						selectionRange.collapse(false);
 						selectionRange.select();
