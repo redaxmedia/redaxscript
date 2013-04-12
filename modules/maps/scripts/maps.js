@@ -126,4 +126,4 @@
 			$(r.modules.maps.selector).maps(r.modules.maps.options);
 		}
 	});
-})(r.library);
+})(jQuery);

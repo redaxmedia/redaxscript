@@ -44,4 +44,4 @@
 			$.fn.callHome(r.modules.callHome.options);
 		}
 	});
-})(r.library);
+})(jQuery);

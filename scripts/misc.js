@@ -121,4 +121,4 @@
 			$(r.plugins.forwardNotification.selector).forwardNotification(r.plugins.forwardNotification.options);
 		}
 	});
-})(r.library);
+})(jQuery);

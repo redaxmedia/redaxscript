@@ -32,18 +32,11 @@ module.exports = function (grunt)
 		},
 		qunit:
 		{
-			jquery:
+			develop:
 			{
 				options:
 				{
 					urls: ['http://develop.redaxscript.com/qunit']
-				}
-			},
-			zepto:
-			{
-				options:
-				{
-					urls: ['http://develop.redaxscript.com/qunit.zepto']
 				}
 			}
 		},

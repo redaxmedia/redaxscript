@@ -366,4 +366,4 @@
 			$(r.modules.gallery.selector).gallery(r.modules.gallery.options);
 		}
 	});
-})(r.library);
+})(jQuery);

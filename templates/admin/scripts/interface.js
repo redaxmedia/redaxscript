@@ -119,4 +119,4 @@
 			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
 		}
 	});
-})(r.library);
+})(jQuery);

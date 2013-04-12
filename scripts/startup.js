@@ -308,11 +308,7 @@ r.baseURL = function (doc)
 	return output;
 }(document);
 
-/* @section 1.6 library */
-
-r.library = 'jQuery';
-
-/* @section 1.7 startup */
+/* @section 1.6 startup */
 
 r.startup = function (doc, html)
 {

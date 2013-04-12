@@ -75,4 +75,4 @@
 			$.fn.seoTube();
 		}
 	});
-})(r.library);
+})(jQuery);

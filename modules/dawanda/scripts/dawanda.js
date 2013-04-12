@@ -162,4 +162,4 @@
 			$.fn.dawanda(r.modules.dawanda.options);
 		}
 	});
-})(r.library);
+})(jQuery);

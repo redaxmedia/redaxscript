@@ -415,12 +415,8 @@ function scripts_transport($minify = '')
 
 	$output .= 'r.generator = \'' . l('redaxscript') . ' ' . l('redaxscript_version') . '\';' . PHP_EOL;
 	$output .= 'r.version = ' . floatval(l('redaxscript_version')) . ';' . PHP_EOL;
-
-	/* library */
-
-	$output .= 'r.library = window[r.library];' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
-	
+
 	/* minify output */
 
 	if ($minify)
