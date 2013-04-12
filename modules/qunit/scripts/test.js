@@ -26,10 +26,10 @@
 
 		/* @section 1. jquery */
 
-		win.test('jquery', function ()
+		win.test('library', function ()
 		{
 			var expect = 'function',
-				result = typeof jQuery;
+				result = typeof r.library;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
@@ -155,13 +155,13 @@
 
 				/* trigger focusin */
 
-				result = input.trigger('focusin').val();
+				result = input.trigger('focus').val();
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 
 				/* trigger focusout */
 
 				expect = dummy;
-				result = input.trigger('focusout').val();
+				result = input.trigger('blur').val();
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
@@ -193,4 +193,4 @@
 			});
 		}
 	});
-})(jQuery);
+})(r.library);

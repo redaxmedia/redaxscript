@@ -62,4 +62,4 @@
 			$(r.modules.analytics.selector).analytics(r.modules.analytics.options);
 		}
 	});
-})(jQuery);
+})(r.library);

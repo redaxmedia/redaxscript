@@ -213,4 +213,4 @@
 			$(r.plugins.generateAlias.selector).generateAlias(r.plugins.generateAlias.options);
 		}
 	});
-})(jQuery);
+})(r.library);

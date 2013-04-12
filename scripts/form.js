@@ -195,13 +195,13 @@
 		{
 			/* listen for focusin and focusout */
 
-			$(this).on('focusin focusout', function (event)
+			$(this).on('focus blur', function (event)
 			{
 				var field = this,
 					fieldValue = $.trim(field.value),
 					fieldValueDefault = field.defaultValue;
 
-				if (event.type === 'focusin' && fieldValue === fieldValueDefault)
+				if (event.type === 'focus' && fieldValue === fieldValueDefault)
 				{
 					field.value = '';
 				}
@@ -362,4 +362,4 @@
 		}
 
 	});
-})(jQuery);
+})(r.library);

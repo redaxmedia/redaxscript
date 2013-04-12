@@ -221,4 +221,4 @@
 			$(r.plugins.tab.selector).tab(r.plugins.tab.options);
 		}
 	});
-})(jQuery);
+})(r.library);
