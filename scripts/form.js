@@ -80,7 +80,8 @@
 			$(this).on('submit change input related', function (event)
 			{
 				var form = $(this),
-					fieldRequired = form.find(options.required),
+					buttonSubmit = form.find(options.elements.buttonSubmit),
+					fieldRequired = form.find(options.elements.fieldRequired),
 					fieldRequiredAll = fieldRequired;
 
 				/* check needed elements only */
@@ -133,6 +134,14 @@
 				if (fieldRequiredAll.hasClass('js_note_error'))
 				{
 					form.trigger('error');
+					buttonSubmit.attr('disabled', 'disabled').addClass('field_disabled');
+
+					/* auto focus */
+
+					if (options.autoFocus === true)
+					{
+						fieldRequiredAll.filter('.js_note_error:first').focus();
+					}
 					event.preventDefault();
 				}
 
@@ -141,6 +150,7 @@
 				else
 				{
 					form.trigger('success');
+					buttonSubmit.removeAttr('disabled').removeClass('field_disabled');
 				}
 			}).attr('novalidate', 'novalidate');
 		});

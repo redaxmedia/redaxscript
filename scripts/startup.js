@@ -111,7 +111,12 @@ r.plugins =
 		selector: 'form.js_check_required',
 		options:
 		{
-			required: 'div.js_required, input.js_required, select.js_required, textarea.js_required'
+			elements:
+			{
+				buttonSubmit: 'button.js_submit',
+				fieldRequired: 'div.js_required, input.js_required, select.js_required, textarea.js_required'
+			},
+			autoFocus: true
 		}
 	},
 	checkSearch:

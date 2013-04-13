@@ -199,7 +199,7 @@
 			{
 				var id = $(this).find(options.element.tabSet).has('.js_note_error').first().attr('id');
 
-				tabList.find('a[href*="' + r.constants.FULL_STRING + '#' + id + '"]').click();
+				tabList.find('a[href*="' + r.constants.FULL_ROUTE + '#' + id + '"]').click();
 			});
 		});
 	};
