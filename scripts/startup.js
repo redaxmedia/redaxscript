@@ -189,7 +189,8 @@ r.plugins =
 		{
 			classString: 'js_note_required note_required box_note',
 			related: 'a.js_cancel, a.js_delete, button.js_submit',
-			duration: 1000
+			timeout: 1000,
+			duration: 300
 		}
 	},
 	preventUnload:

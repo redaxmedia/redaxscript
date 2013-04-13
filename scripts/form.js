@@ -138,7 +138,7 @@
 
 					/* auto focus */
 
-					if (options.autoFocus === true)
+					if (options.autoFocus)
 					{
 						fieldRequiredAll.filter('.js_note_error:first').focus();
 					}
@@ -296,17 +296,23 @@
 			form.on('error success', function (event)
 			{
 				clearTimeout(timeout);
+
+				/* handle error */
+
 				if (event.type === 'error')
 				{
-					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').show();
+					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').slideDown(options.duration);
 				}
+
+				/* else handle success */
+
 				else
 				{
 					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
 					timeout = setTimeout(function ()
 					{
-						noteRequired.hide();
-					}, options.duration);
+						noteRequired.slideUp(options.duration);
+					}, options.timeout);
 				}
 			});
 		});
