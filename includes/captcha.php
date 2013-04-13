@@ -111,14 +111,14 @@ class Redaxscript_Captcha
 
 		switch (s('captcha'))
 		{
-			case 1:
-				$output = mt_rand(0, 1) * 2 - 1;
-				break;
 			case 2:
 				$output = 1;
 				break;
 			case 3:
 				$output = -1;
+				break;
+			default:
+				$output = mt_rand(0, 1) * 2 - 1;
 				break;
 		}
 		return $output;

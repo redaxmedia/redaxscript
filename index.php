@@ -31,7 +31,7 @@ startup();
 
 /* include files as needed */
 
-if (FIRST_PARAMETER == 'password_reset' || s('captcha') > 0)
+if (FIRST_PARAMETER == 'password_reset' || FIRST_PARAMETER == 'reminder' || s('captcha') > 0)
 {
 	include_once('includes/captcha.php');
 }
@@ -43,15 +43,15 @@ if (FIRST_PARAMETER == 'admin' || FIRST_PARAMETER == 'login' || FIRST_PARAMETER 
 {
 	include_once('includes/login.php');
 }
+if ((FIRST_PARAMETER == 'password_reset' || FIRST_PARAMETER == 'reminder') && s('reminder') == 1)
+{
+	include_once('includes/password.php');
+	include_once('includes/reminder.php');
+}
 if (FIRST_PARAMETER == 'registration' && s('registration') == 1)
 {
 	include_once('includes/password.php');
 	include_once('includes/registration.php');
-}
-if ((FIRST_PARAMETER == 'reminder' || FIRST_PARAMETER == 'password_reset') && s('reminder') == 1)
-{
-	include_once('includes/password.php');
-	include_once('includes/reminder.php');
 }
 
 /* include admin files as needed */
