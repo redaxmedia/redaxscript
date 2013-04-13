@@ -6,7 +6,9 @@
 		<meta name="viewport" content="width=device-width" />
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
-		<link type="text/css" href="http://fonts.googleapis.com/css?family=Marmelad&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
+		<?php if (MY_MOBILE == ''): ?>
+			<link type="text/css" href="http://fonts.googleapis.com/css?family=Marmelad&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
+		<?php endif; ?>
 	</head>
 	<body class="wrapper_body">
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
