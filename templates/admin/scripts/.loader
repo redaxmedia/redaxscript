@@ -1,0 +1,6 @@
+[admin_startup]
+1 = templates/admin/scripts/startup.js
+
+[admin]
+1 = scripts/alias.js
+2 = templates/admin/scripts/interface.js

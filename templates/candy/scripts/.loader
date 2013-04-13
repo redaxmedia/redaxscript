@@ -1,5 +1,8 @@
+[inherit]
+1 = admin
+
 [single]
-1 = http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+1 = http://code.jquery.com/jquery-2.0.0-beta3.min.js
 
 [template_startup]
 1 = scripts/startup.js
@@ -10,13 +13,6 @@
 2 = scripts/form.js
 3 = scripts/interface.js
 4 = scripts/misc.js
-
-[admin_startup]
-1 = templates/admin/scripts/startup.js
-
-[admin]
-1 = scripts/alias.js
-2 = templates/admin/scripts/interface.js
 
 [settings]
 deploy = inline
