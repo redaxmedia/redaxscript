@@ -47,14 +47,16 @@ function loader($type = '', $mode = '')
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/' . $type . '/.loader', 1);
 
-	/* inherit from another template */
+	/* inherit from other templates */
 
 	$loader_inherit = $loader_ini['inherit'];
 	if ($loader_inherit)
 	{
-		$template = $loader_inherit[1];
-		$loader_inherit_ini = parse_ini_file('templates/' . $template . '/' . $type . '/.loader', 1);
-		$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		foreach ($loader_inherit as $key => $template)
+		{
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/' . $type . '/.loader', 1);
+			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		}
 	}
 	else
 	{
@@ -193,14 +195,16 @@ function styles()
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/styles/.loader', 1);
 
-	/* inherit from another template */
+	/* inherit from other templates */
 
 	$loader_inherit = $loader_ini['inherit'];
 	if ($loader_inherit)
 	{
-		$template = $loader_inherit[1];
-		$loader_inherit_ini = parse_ini_file('templates/' . $template . '/styles/.loader', 1);
-		$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		foreach ($loader_inherit as $key => $template)
+		{
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/styles/.loader', 1);
+			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		}
 	}
 	$loader_single = $loader_ini['single'];
 
@@ -265,14 +269,16 @@ function scripts($mode = '')
 
 	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/scripts/.loader', 1);
 
-	/* inherit from another template */
+	/* inherit from other templates */
 
 	$loader_inherit = $loader_ini['inherit'];
 	if ($loader_inherit)
 	{
-		$template = $loader_inherit[1];
-		$loader_inherit_ini = parse_ini_file('templates/' . $template . '/scripts/.loader', 1);
-		$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		foreach ($loader_inherit as $key => $template)
+		{
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/scripts/.loader', 1);
+			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
+		}
 	}
 	$loader_minify = $loader_ini['settings']['minify'];
 
