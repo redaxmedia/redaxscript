@@ -136,9 +136,9 @@
 					form.trigger('error');
 					buttonSubmit.attr('disabled', 'disabled').addClass('field_disabled');
 
-					/* auto focus */
+					/* auto focus on submit */
 
-					if (options.autoFocus)
+					if (event.type === 'submit' && options.autoFocus)
 					{
 						fieldRequiredAll.filter('.js_note_error:first').focus();
 					}

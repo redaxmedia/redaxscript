@@ -39,7 +39,7 @@ function reminder_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button' . $class_disabled, 'reminder_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'reminder_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;

@@ -38,7 +38,7 @@ function password_reset_form()
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
 	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button' . $class_disabled, 'password_reset_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'password_reset_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/password_reset'] = 'visited';
 	echo $output;
