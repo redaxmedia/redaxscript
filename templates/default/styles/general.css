@@ -139,12 +139,12 @@ body
 {
 	margin-left: auto;
 	margin-right: auto;
-	width: 980px;
+	width: 60em;
 }
 
 .wrapper_body
 {
-	min-width: 980px;
+	min-width: 60em;
 }
 
 .wrapper_table_default

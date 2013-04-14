@@ -1,44 +1,26 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 1000
- * 2. screen min 800 and max 1000
- * 3. screen min 1000
+ * 1. screen min 50em
+ * 2. screen min 60em
  */
 
-/* @section 1. screen max 1000 */
+/* @section 1. screen min 50em */
 
-@media screen and (max-width: 1000px)
-{
-	.content, .wrapper
-	{
-		width: 100%;
-	}
-
-	.wrapper_body
-	{
-		min-width: 0;
-	}
-}
-
-/* @section 2. screen min 800 and max 1000 */
-
-@media screen and (min-width: 800px) and (max-width: 1000px)
+@media screen and (min-width: 50em)
 {
 	.player
 	{
-		height: 600px;
-		width: 800px;
+		font-size: 1.25em;
 	}
 }
 
-/* @section 3. screen min 1000 */
+/* @section 2. screen min 60em */
 
-@media screen and (min-width: 1000px)
+@media screen and (min-width: 60em)
 {
 	.player
 	{
-		height: 720px;
-		width: 960px;
+		font-size: 1.5em;
 	}
 }

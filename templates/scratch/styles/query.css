@@ -2,10 +2,6 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen max 800
- * 3. screen max 640
- * 4. screen max 480
- * 5. screen max 320
  */
 
 /* @section 1. print */
@@ -21,63 +17,5 @@
 	.footer, .header, .sidebar
 	{
 		display: none;
-	}
-}
-
-/* @section 2. screen max 800 */
-
-@media screen and (max-width: 800px)
-{
-	.content, .sidebar
-	{
-		float: none;
-	}
-
-	.content, .sidebar, .wrapper
-	{
-		width: 100%;
-	}
-
-	.wrapper_body
-	{
-		min-width: 0;
-	}
-}
-
-/* @section 3. screen max 640 */
-
-@media screen and (max-width: 640px)
-{
-	.player
-	{
-		height: 400px;
-		width: 600px;
-	}
-}
-
-/* @section 4. screen max 480 */
-
-@media screen and (max-width: 480px)
-{
-	.player
-	{
-		height: 300px;
-		width: 400px;
-	}
-}
-
-/* @section 5. screen max 320 */
-
-@media screen and (max-width: 320px)
-{
-	.player
-	{
-		height: 180px;
-		width: 240px;
-	}
-
-	.wrapper_body
-	{
-		min-width: 300px;
 	}
 }

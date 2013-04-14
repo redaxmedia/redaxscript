@@ -30,9 +30,9 @@
 
 .player
 {
-	height: 480px;
+	height: 30em;
 	max-width: 100%;
-	width: 640px;
+	width: 40em;
 }
 
 /* @section 2.1 player default */

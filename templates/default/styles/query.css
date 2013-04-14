@@ -2,15 +2,14 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen min 1100
- * 3. screen max 1100
- * 4. screen max 800
- * 5. screen max 640
- * 6. screen max 480
- * 7. screen max 320
+ * 2. screen min 70em
+ * 3. screen max 70em
+ * 4. screen max 50em
+ * 5. screen max 40em
+ * 6. screen max 30em
+ * 7. screen max 20em
  * 8. speed dail
- * 9. mobile
- * 10. rtl direction
+ * 9. rtl direction
  */
 
 /* @section 1. print */
@@ -29,9 +28,9 @@
 	}
 }
 
-/* @section 2. screen min 1100 */
+/* @section 2. screen min 70em */
 
-@media screen and (min-width: 1100px)
+@media screen and (min-width: 70em)
 {
 	.content .box_dock_admin, .footer .box_dock_admin
 	{
@@ -57,9 +56,9 @@
 	}
 }
 
-/* @section 3. screen max 1100 */
+/* @section 3. screen max 70em */
 
-@media screen and (max-width: 1100px)
+@media screen and (max-width: 70em)
 {
 	.box_comment:before
 	{
@@ -67,9 +66,9 @@
 	}
 }
 
-/* @section 4. screen max 800 */
+/* @section 4. screen max 50em */
 
-@media screen and (max-width: 800px)
+@media screen and (max-width: 50em)
 {
 	.content, .sidebar, .navibar
 	{
@@ -81,14 +80,9 @@
 		width: 100%;
 	}
 
-	.header .box_last, .footer .box_last, .list_pagination .item_first, .list_pagination .item_last
+	.header .box_last, .list_pagination .item_first, .list_pagination .item_last
 	{
 		display: none;
-	}
-
-	.footer .s1o5
-	{
-		width: 25%;
 	}
 
 	.wrapper_body
@@ -97,97 +91,64 @@
 	}
 }
 
-/* @section 5. screen max 640 */
+/* @section 5. screen max 40em */
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 40em)
 {
-	.footer .box_fourth
-	{
-		display: none;
-	}
-
-	.footer .s1o5
-	{
-		width: 33.33%;
-	}
-
 	.player
 	{
-		height: 400px;
-		width: 600px;
+		font-size: 0.875em;
 	}
 }
 
-/* @section 6. screen max 480 */
+/* @section 6. screen max 30em */
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 30em)
 {
 	.dialog_default
 	{
-		margin: -50px 0 0 -40%;
+		margin: -5em 0 0 -40%;
 		width: 80%;
 	}
 
-	.footer .s1o5
+	.field_select, .field_text, .field_textarea_small
 	{
-		width: 50%;
+		width: 100%;
 	}
 
-	.footer .box_third, .list_pagination .item_previous, .list_pagination .item_next, .list_tab .item_last
+	.header
+	{
+		font-size: 0.875em;
+	}
+
+	.list_pagination .item_previous, .list_pagination .item_next, .list_tab .item_last
 	{
 		display: none;
 	}
 
 	.player
 	{
-		height: 300px;
-		width: 400px;
-	}
-
-	.title_content
-	{
-		font-size: 2.25em;
-	}
-
-	.title_website
-	{
-		font-size: 3.5em;
+		font-size: 0.75em;
 	}
 }
 
-/* @section 7. screen max 320 */
+/* @section 7. screen max 20em */
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 20em)
 {
-	.list_breadcrumb, .list_tab .item_second
+	.logo_website, .list_tab .item_second
 	{
 		display: none;
 	}
 
+	.header
+	{
+		font-size: 0.75em;
+	}
+
 	.player
 	{
-		height: 180px;
-		width: 240px;
-	}
-
-	.description_website
-	{
-		font-size: 1.125em;
-	}
-
-	.title_content
-	{
-		font-size: 2em;
-	}
-
-	.title_website
-	{
-		font-size: 3.25em;
-	}
-
-	.wrapper_body
-	{
-		min-width: 300px;
+		font-size: 0.5em;
 	}
 }
 
@@ -195,20 +156,13 @@
 
 @media screen and (view-mode: minimized)
 {
-	.bottom, .content, .footer, .sidebar
+	body
 	{
-		display: none;
+		font-size: 0.5em;
 	}
 }
 
-/* @section 9. mobile */
-
-.mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
-{
-	width: 50%;
-}
-
-/* @section 10. rtl direction */
+/* @section 9. rtl direction */
 
 .rtl
 {
