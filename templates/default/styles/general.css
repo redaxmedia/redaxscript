@@ -45,6 +45,7 @@ body
 .content
 {
 	margin-top: 3em;
+	min-height: 40em;
 }
 
 /* @section 4. footer */

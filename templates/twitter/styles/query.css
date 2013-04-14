@@ -2,12 +2,11 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen max 800
- * 3. screen max 640
- * 4. screen max 480
- * 5. screen max 320
- * 6. mobile
- * 7. rtl direction
+ * 2. screen max 50em
+ * 3. screen max 40em
+ * 4. screen max 30em
+ * 5. screen max 20em
+ * 6. rtl direction
  */
 
 /* @section 1. print */
@@ -26,13 +25,18 @@
 	}
 }
 
-/* @section 2. screen max 800 */
+/* @section 2. screen max 50em */
 
-@media screen and (max-width: 800px)
+@media screen and (max-width: 50em)
 {
 	.content
 	{
-		min-height: 200px;
+		min-height: 10em;
+	}
+
+	.content, .sidebar
+	{
+		float: none;
 	}
 
 	.content, .sidebar, .wrapper
@@ -46,25 +50,29 @@
 	}
 }
 
-/* @section 3. screen max 640 */
+/* @section 3. screen max 40em */
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 40em)
 {
 	.player
 	{
-		height: 400px;
-		width: 600px;
+		font-size: 0.875em;
 	}
 }
 
-/* @section 4. screen max 480 */
+/* @section 4. screen max 30em */
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 30em)
 {
 	.dialog_default
 	{
-		margin: -50px 0 0 -40%;
+		margin: -5em 0 0 -40%;
 		width: 80%;
+	}
+
+	.field_select, .field_text, .field_textarea_small
+	{
+		width: 100%;
 	}
 
 	.list_pagination .item_previous, .list_pagination .item_next
@@ -74,40 +82,21 @@
 
 	.player
 	{
-		height: 300px;
-		width: 400px;
+		font-size: 0.75em;
 	}
 }
 
-/* @section 5. screen max 320 */
+/* @section 5. screen max 20em */
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 20em)
 {
-	.list_pagination
-	{
-		display: none;
-	}
-
 	.player
 	{
-		height: 180px;
-		width: 240px;
-	}
-
-	.wrapper_body
-	{
-		min-width: 300px;
+		font-size: 0.5em;
 	}
 }
 
-/* @section 6. mobile */
-
-.mobile .field_select, .mobile .field_text, .mobile .field_textarea_small
-{
-	width: 50%;
-}
-
-/* @section 7. rtl direction */
+/* @section 6. rtl direction */
 
 .rtl
 {

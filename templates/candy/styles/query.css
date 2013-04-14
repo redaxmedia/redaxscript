@@ -2,10 +2,11 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen max 800
- * 3. screen max 640
- * 4. screen max 480
- * 5. screen max 320
+ * 2. screen max 50em
+ * 3. screen max 40em
+ * 4. screen max 30em
+ * 5. screen max 20em
+ * 6. rtl direction
  */
 
 /* @section 1. print */
@@ -24,13 +25,13 @@
 	}
 }
 
-/* @section 2. screen max 800 */
+/* @section 2. screen max 50em */
 
-@media screen and (max-width: 800px)
+@media screen and (max-width: 50em)
 {
 	.content
 	{
-		min-height: 200px;
+		min-height: 10em;
 	}
 
 	.content, .sidebar
@@ -49,9 +50,9 @@
 	}
 }
 
-/* @section 3. screen max 640 */
+/* @section 3. screen max 40em */
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 40em)
 {
 	.list_pagination .item_first, .list_pagination .item_last
 	{
@@ -60,24 +61,28 @@
 
 	.player
 	{
-		height: 400px;
-		width: 600px;
+		font-size: 0.875em;
 	}
 }
 
-/* @section 4. screen max 480 */
+/* @section 4. screen max 30em */
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 30em)
 {
 	.dialog_default
 	{
-		margin: -50px 0 0 -40%;
+		margin: -5em 0 0 -40%;
 		width: 80%;
 	}
 
-	.list_footer, .list_header
+	.field_select, .field_text, .field_textarea_small
 	{
-		font-size: 0.85em;
+		width: 100%;
+	}
+
+	.header, .footer
+	{
+		font-size: 0.875em;
 	}
 
 	.list_pagination .item_previous, .list_pagination .item_next
@@ -87,43 +92,29 @@
 
 	.player
 	{
-		height: 300px;
-		width: 400px;
-	}
-
-	.title_content
-	{
-		font-size: 1.25em;
-	}
-
-	.title_website
-	{
-		font-size: 2.75em;
+		font-size: 0.75em;
 	}
 }
 
-/* @section 5. screen max 320 */
+/* @section 5. screen max 20em */
 
-@media screen and (max-width: 320px)
+@media screen and (max-width: 20em)
 {
+	.header, .footer
+	{
+		font-size: 0.75em;
+	}
+
 	.player
 	{
-		height: 180px;
-		width: 240px;
+		font-size: 0.5em;
 	}
+}
 
-	.title_content
-	{
-		font-size: 1em;
-	}
+/* @section 6. rtl direction */
 
-	.title_website
-	{
-		font-size: 2em;
-	}
-
-	.wrapper_body
-	{
-		min-width: 300px;
-	}
+.rtl
+{
+	direction: rtl;
+	text-align: right;
 }

@@ -70,6 +70,11 @@
 
 @media screen and (max-width: 50em)
 {
+	.content
+	{
+		min-height: 10em;
+	}
+
 	.content, .sidebar, .navibar
 	{
 		float: none;
