@@ -1,84 +1,43 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 640
- * 2. screen max 480
- * 3. screen max 320
- * 4. screen max 240
- * 5. mobile
- * 6. rtl direction
+ * 1. screen max 40em
+ * 2. screen max 30em
+ * 4. rtl direction
  */
 
-/* @section 1. screen max 640 */
+/* @section 1. screen max 40em */
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 40em)
 {
-	.wrapper_panel_menu_admin
+	.list_control_admin .item_future_posting .table_admin .column_third
 	{
 		display: none;
 	}
 }
 
-/* @section 2. screen max 480 */
+/* @section 2. screen max 30em */
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 30em)
 {
 	.dialog_admin
 	{
-		margin: -50px 0 0 -40%;
+		margin: -5em 0 0 -40%;
 		width: 80%;
 	}
 
-	.form_admin .field_button_first, .list_control_admin .item_future_posting, .list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .list_panel_admin .item_system, .table_admin .column_third
+	.field_select_admin, .field_text_admin, .field_textarea_small_admin
 	{
-		display: none;
+		width: 100%;
 	}
 
-	.form_admin .field_button_second
-	{
-		margin-left: 0;
-	}
-
-	.table_admin .column_first
-	{
-		width: auto;
-	}
-}
-
-/* @section 3. screen max 320 */
-
-@media screen and (max-width: 320px)
-{
-	.list_panel_admin .item_access, .table_admin .column_second
+	.list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .table_admin .column_second
 	{
 		display: none;
 	}
 }
 
-/* @section 4. screen max 240 */
-
-@media screen and (max-width: 240px)
-{
-	.dialog_admin
-	{
-		margin: -50px 0 0 -100px;
-		width: 200px;
-	}
-}
-
-/* @section 5. mobile */
-
-.mobile .field_select_admin, .mobile .field_text_admin, .mobile .field_textarea_small_admin
-{
-	width: 50%;
-}
-
-.mobile .table_admin tbody .list_control_admin
-{
-	visibility: visible;
-}
-
-/* @section 6. rtl direction */
+/* @section 4. rtl direction */
 
 .rtl .description_dock_admin, .rtl .wrapper_panel_menu_admin
 {

@@ -42,12 +42,12 @@ body
 {
 	margin-left: auto;
 	margin-right: auto;
-	width: 60em;
+	width: 70em;
 }
 
 .wrapper_body
 {
-	min-width: 60em;
+	min-width: 70em;
 }
 
 .wrapper_table_default

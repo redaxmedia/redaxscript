@@ -21,7 +21,7 @@ body
 
 .content
 {
-	min-height: 500px;
+	min-height: 40em;
 }
 
 /* @section 3. footer */
@@ -92,13 +92,12 @@ body
 {
 	margin-left: auto;
 	margin-right: auto;
-	min-width: 300px;
-	width: 980px;
+	width: 80em;
 }
 
 .wrapper_body
 {
-	min-width: 980px;
+	min-width: 80em;
 }
 
 .wrapper_table_default

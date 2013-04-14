@@ -142,10 +142,14 @@
 .table_admin tbody .list_control_admin
 {
 	margin-top: 1em;
+}
+
+.desktop .table_admin tbody .list_control_admin
+{
 	visibility: hidden;
 }
 
-.table_admin tbody tr:hover .list_control_admin
+.desktop  .table_admin tbody tr:hover .list_control_admin
 {
 	visibility: visible;
 }
