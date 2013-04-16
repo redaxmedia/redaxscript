@@ -19,3 +19,28 @@
 		display: none;
 	}
 }
+
+/* @section 2. screen max 50em */
+
+@media screen and (max-width: 50em)
+{
+	.content
+	{
+		min-height: 10em;
+	}
+
+	.content, .sidebar
+	{
+		float: none;
+	}
+
+	.content, .sidebar, .wrapper
+	{
+		width: 100%;
+	}
+
+	.wrapper_body
+	{
+		min-width: 0;
+	}
+}

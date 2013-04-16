@@ -152,7 +152,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output = '<div class="placeholder_dock_admin clear_fix"><div class="js_dock_admin box_dock_admin">';
+		$output = '<div class="placeholder_dock_admin clear_fix"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN);
