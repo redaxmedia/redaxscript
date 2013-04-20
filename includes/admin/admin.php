@@ -232,7 +232,7 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($new == 1 && $type == 'modules_not_installed')
 	{
-		$output .= '<li class="item_install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+		$output .= '<li class="item_control_admin link_install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
 	}
 
 	/* collect contents output */
@@ -241,17 +241,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 2)
 		{
-			$output .= '<li class="item_future_posting"><span class="future_posting">' . l('future_posting') . '</span></li>';
+			$output .= '<li class="item_control_admin item_future_posting"><span>' . l('future_posting') . '</span></li>';
 		}
 		if ($edit == 1)
 		{
 			if ($status == 1)
 			{
-				$output .= '<li class="item_unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="item_control_admin item_unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 			}
 			else if ($status == 0)
 			{
-				$output .= '<li class="item_publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="item_control_admin item_publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 			}
 		}
 	}
@@ -262,11 +262,11 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 1)
 		{
-			$output .= '<li class="item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 		else if ($status == 0)
 		{
-			$output .= '<li class="item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 	}
 
@@ -274,17 +274,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($edit == 1)
 	{
-		$output .= '<li class="item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table  . '/' . $id) . '</li>';
+		$output .= '<li class="item_control_admin item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table  . '/' . $id) . '</li>';
 	}
 	if ($delete == 1)
 	{
 		if ($type == 'modules_installed')
 		{
-			$output .= '<li class="item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table  . '/' . $alias . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table  . '/' . $alias . '/' . TOKEN) . '</li>';
 		}
 		else
 		{
-			$output .= '<li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table  . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table  . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 	}
 

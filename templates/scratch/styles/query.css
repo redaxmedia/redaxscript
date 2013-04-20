@@ -2,18 +2,13 @@
  * @tableofcontents
  *
  * 1. print
+ * 2. screen max 50em
  */
 
 /* @section 1. print */
 
 @media print
 {
-	body
-	{
-		color: #000;
-		font-size: 1em;
-	}
-
 	.footer, .header, .sidebar
 	{
 		display: none;

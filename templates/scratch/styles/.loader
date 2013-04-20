@@ -8,17 +8,19 @@
 4 = styles/general.css
 5 = styles/grid.css
 6 = styles/interface.css
-7 = styles/table.css
-8 = templates/scratch/styles/box.css
-9 = templates/scratch/styles/dialog.css
-10 = templates/scratch/styles/form.css
-11 = templates/scratch/styles/general.css
-12 = templates/scratch/styles/interface.css
-13 = templates/scratch/styles/media.css
-14 = templates/scratch/styles/note.css
-15 = templates/scratch/styles/table.css
-16 = templates/scratch/styles/typography.css
-17 = templates/scratch/styles/query.css
+7 = styles/media.css
+8 = styles/table.css
+9 = templates/scratch/styles/box.css
+10 = templates/scratch/styles/dialog.css
+11 = templates/scratch/styles/form.css
+12 = templates/scratch/styles/general.css
+13 = templates/scratch/styles/interface.css
+14 = templates/scratch/styles/media.css
+15 = templates/scratch/styles/note.css
+16 = templates/scratch/styles/table.css
+17 = templates/scratch/styles/typography.css
+18 = styles/query.css
+19 = templates/scratch/styles/query.css
 
 [firefox]
 1 = styles/firefox.css

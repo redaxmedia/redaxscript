@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 40em)
 {
-	.list_control_admin .item_future_posting .table_admin .column_third
+	.item_control_admin.item_future_posting, .table_admin .column_third
 	{
 		display: none;
 	}
@@ -20,18 +20,12 @@
 
 @media screen and (max-width: 30em)
 {
-	.dialog_admin
-	{
-		margin: -5em 0 0 -40%;
-		width: 80%;
-	}
-
 	.field_select_admin, .field_text_admin, .field_textarea_small_admin
 	{
 		width: 100%;
 	}
 
-	.list_control_admin .item_enable, .list_control_admin .item_disable, .list_control_admin .item_publish, .list_control_admin .item_unpublish, .table_admin .column_second
+	.item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish, .table_admin .column_second
 	{
 		display: none;
 	}

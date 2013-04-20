@@ -5,23 +5,15 @@
  * 2. screen min 70em
  * 3. screen max 70em
  * 4. screen max 50em
- * 5. screen max 40em
  * 6. screen max 30em
  * 7. screen max 20em
  * 8. speed dail
- * 9. rtl direction
  */
 
 /* @section 1. print */
 
 @media print
 {
-	body
-	{
-		color: #000;
-		font-size: 1em;
-	}
-
 	.bottom, .footer, .header, .navibar, .sidebar
 	{
 		display: none;
@@ -85,7 +77,7 @@
 		width: 100%;
 	}
 
-	.header .box_last, .list_pagination .item_first, .list_pagination .item_last
+	.footer, .header .box_last, .list_pagination .item_first, .list_pagination .item_last
 	{
 		display: none;
 	}
@@ -96,44 +88,18 @@
 	}
 }
 
-/* @section 5. screen max 40em */
-
-@media screen and (max-width: 40em)
-{
-	.player
-	{
-		font-size: 0.875em;
-	}
-}
-
 /* @section 6. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
-	.dialog_default
-	{
-		margin: -5em 0 0 -40%;
-		width: 80%;
-	}
-
-	.field_select, .field_text, .field_textarea_small
-	{
-		width: 100%;
-	}
-
 	.header
 	{
 		font-size: 0.875em;
 	}
 
-	.list_pagination .item_previous, .list_pagination .item_next, .list_tab .item_last
+	.list_pagination .item_previous, .list_pagination .item_next
 	{
 		display: none;
-	}
-
-	.player
-	{
-		font-size: 0.75em;
 	}
 }
 
@@ -141,7 +107,7 @@
 
 @media screen and (max-width: 20em)
 {
-	.logo_website, .list_tab .item_second
+	.logo_website
 	{
 		display: none;
 	}
@@ -149,11 +115,6 @@
 	.header
 	{
 		font-size: 0.75em;
-	}
-
-	.player
-	{
-		font-size: 0.5em;
 	}
 }
 
@@ -165,12 +126,4 @@
 	{
 		font-size: 0.5em;
 	}
-}
-
-/* @section 9. rtl direction */
-
-.rtl
-{
-	direction: rtl;
-	text-align: right;
 }

@@ -1,0 +1,79 @@
+/**
+ * @tableofcontents
+ *
+ * 1. print
+ * 2. screen max 40em
+ * 3. screen max 30em
+ * 4. screen max 20em
+ * 5. rtl direction
+ */
+
+/* @section 1. print */
+
+@media print
+{
+	body
+	{
+		color: #000;
+		font-size: 1em;
+	}
+}
+
+/* @section 2. screen max 40em */
+
+@media screen and (max-width: 40em)
+{
+	.player
+	{
+		font-size: 0.875em;
+	}
+}
+
+/* @section 3. screen max 30em */
+
+@media screen and (max-width: 30em)
+{
+	.dialog
+	{
+		margin: -5em 0 0 -40%;
+		width: 80%;
+	}
+
+	.field_select, .field_text, .field_textarea_small
+	{
+		width: 100%;
+	}
+
+	.list_tab
+	{
+		display: none;
+	}
+
+	.player
+	{
+		font-size: 0.75em;
+	}
+
+	.js .set_tab
+	{
+		display: block;
+	}
+}
+
+/* @section 4. screen max 20em */
+
+@media screen and (max-width: 20em)
+{
+	.player
+	{
+		font-size: 0.5em;
+	}
+}
+
+/* @section 5. rtl direction */
+
+.rtl
+{
+	direction: rtl;
+	text-align: right;
+}

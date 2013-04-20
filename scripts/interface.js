@@ -35,9 +35,9 @@
 
 			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
 
-			/* listen for click */
+			/* listen for click and touchstart */
 
-			$(this).click(function ()
+			$(this).on('click touchstart', function ()
 			{
 				var accordionTitleActive = $(this),
 					accordion = accordionTitleActive.closest(options.element.accordion),
@@ -147,15 +147,14 @@
 
 			/* show first tab set */
 
-			tabSet.hide();
 			tabBox.height('auto').each(function ()
 			{
-				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active').show();
+				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active');
 			});
 
-			/* listen for click */
+			/* listen for click and touchstart */
 
-			$(this).click(function (event)
+			$(this).on('click touchstart', function (event)
 			{
 				var tabItem = $(this),
 					tabList = tabItem.closest(options.element.tabList),
@@ -169,12 +168,12 @@
 					/* remove active classes */
 
 					tabListChildren.removeClass('js_item_active item_active');
-					tabSetSiblings.removeClass('js_set_active set_active').hide();
+					tabSetSiblings.removeClass('js_set_active set_active');
 
 					/* add active classes */
 
 					tabItem.addClass('js_item_active item_active');
-					tabSetRelated.addClass('js_set_active set_active').show();
+					tabSetRelated.addClass('js_set_active set_active');
 				}
 				event.preventDefault();
 			});

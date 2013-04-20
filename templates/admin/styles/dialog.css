@@ -1,19 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. dialog admin
- * 2. dialog overlay admin
+ * 1. dialog overlay admin
  */
 
-/* @section 1. dialog admin */
-
-.dialog_admin
-{
-	margin: -5em 0 0 -15em;
-	width: 30em;
-}
-
-/* @section 2. dialog overlay admin */
+/* @section 1. dialog overlay admin */
 
 .dialog_overlay_admin
 {

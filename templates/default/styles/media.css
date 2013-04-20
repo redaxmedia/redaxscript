@@ -1,20 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. image
- *    1.1 image default
- * 2. player
- *    2.1 player default
+ * 1. image default
+ * 2. player default
+ *    2.1 hover effect
  */
 
-/* @section 1. image */
-
-.image
-{
-	max-width: 100%;
-}
-
-/* @section 1.1 image default */
+/* @section 1. image default */
 
 .image_default
 {
@@ -26,16 +18,7 @@
 	box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
 }
 
-/* @section 2. player */
-
-.player
-{
-	height: 30em;
-	max-width: 100%;
-	width: 40em;
-}
-
-/* @section 2.1 player default */
+/* @section 2. player default */
 
 .player_default
 {
@@ -48,6 +31,8 @@
 	box-shadow: 0 0 3px #c6c6c6;
 	padding: 0.5em;
 }
+
+/* @section 2.1 hover effect */
 
 .player_default:hover
 {

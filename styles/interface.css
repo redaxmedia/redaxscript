@@ -4,7 +4,8 @@
  * 1. list dropdown
  *    1.1 children elements
  * 2. list tab
- * 3. tooltip
+ * 3. set tab
+ * 4. tooltip
  */
 
 /* @section 1. list dropdown */
@@ -50,7 +51,19 @@
 	display: inline-block;
 }
 
-/* @section 3. tooltip */
+/* @section 3. set tab */
+
+.js .set_tab
+{
+	display: none;
+}
+
+.js .set_tab.set_active
+{
+	display: block;
+}
+
+/* @section 4. tooltip */
 
 .has_tooltip
 {

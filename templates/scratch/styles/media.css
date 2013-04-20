@@ -1,22 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. image
- * 2. player
+ * 1. media
  */
 
-/* @section 1. image */
-
-.image
-{
-	max-width: 100%;
-}
-
-/* @section 2. player */
-
-.player
-{
-	height: 30em;
-	max-width: 100%;
-	width: 40em;
-}
+/* @section 1. media */

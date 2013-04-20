@@ -6,19 +6,12 @@
  * 3. screen max 40em
  * 4. screen max 30em
  * 5. screen max 20em
- * 6. rtl direction
  */
 
 /* @section 1. print */
 
 @media print
 {
-	body
-	{
-		color: #000;
-		font-size: 1em;
-	}
-
 	.footer, .header, .sidebar
 	{
 		display: none;
@@ -58,28 +51,12 @@
 	{
 		display: none;
 	}
-
-	.player
-	{
-		font-size: 0.875em;
-	}
 }
 
 /* @section 4. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
-	.dialog_default
-	{
-		margin: -5em 0 0 -40%;
-		width: 80%;
-	}
-
-	.field_select, .field_text, .field_textarea_small
-	{
-		width: 100%;
-	}
-
 	.header, .footer
 	{
 		font-size: 0.875em;
@@ -88,11 +65,6 @@
 	.list_pagination .item_previous, .list_pagination .item_next
 	{
 		display: none;
-	}
-
-	.player
-	{
-		font-size: 0.75em;
 	}
 }
 
@@ -104,17 +76,4 @@
 	{
 		font-size: 0.75em;
 	}
-
-	.player
-	{
-		font-size: 0.5em;
-	}
-}
-
-/* @section 6. rtl direction */
-
-.rtl
-{
-	direction: rtl;
-	text-align: right;
 }

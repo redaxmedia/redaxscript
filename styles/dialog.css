@@ -10,9 +10,11 @@
 .dialog
 {
 	left: 50%;
+	margin: -5em 0 0 -15em;
 	position: fixed;
 	top: 50%;
 	z-index: 1100;
+	width: 30em;
 }
 
 /* @section 2. dialog overlay */
