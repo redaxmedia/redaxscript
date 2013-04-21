@@ -2,12 +2,11 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen min 70em
- * 3. screen max 70em
- * 4. screen max 50em
- * 6. screen max 30em
- * 7. screen max 20em
- * 8. speed dail
+ * 2. screen max 70em
+ * 3. screen max 50em
+ * 4. screen max 30em
+ * 5. screen max 20em
+ * 6. speed dail
  */
 
 /* @section 1. print */
@@ -20,35 +19,7 @@
 	}
 }
 
-/* @section 2. screen min 70em */
-
-@media screen and (min-width: 70em)
-{
-	.content .box_dock_admin, .footer .box_dock_admin
-	{
-		bottom: 0;
-		display: inline-block;
-		left: -5em;
-		position: absolute;
-	}
-
-	.content .link_dock_admin, .footer .link_dock_admin
-	{
-		display: block
-	}
-
-	.content .box_comment + .placeholder_dock_admin .link_dock_admin.link_unpublish, .content .description_dock_admin, .footer .description_dock_admin
-	{
-		display: none;
-	}
-
-	.content .placeholder_dock_admin, .footer .placeholder_dock_admin
-	{
-		position: relative;
-	}
-}
-
-/* @section 3. screen max 70em */
+/* @section 2. screen max 70em */
 
 @media screen and (max-width: 70em)
 {
@@ -58,7 +29,7 @@
 	}
 }
 
-/* @section 4. screen max 50em */
+/* @section 3. screen max 50em */
 
 @media screen and (max-width: 50em)
 {
@@ -88,7 +59,7 @@
 	}
 }
 
-/* @section 6. screen max 30em */
+/* @section 4. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
@@ -103,7 +74,7 @@
 	}
 }
 
-/* @section 7. screen max 20em */
+/* @section 5. screen max 20em */
 
 @media screen and (max-width: 20em)
 {
@@ -118,7 +89,7 @@
 	}
 }
 
-/* @section 8. speed dail */
+/* @section 6. speed dail */
 
 @media screen and (view-mode: minimized)
 {

@@ -3,14 +3,14 @@
  *
  * 1. screen max 40em
  * 2. screen max 30em
- * 4. rtl direction
+ * 3. rtl direction
  */
 
 /* @section 1. screen max 40em */
 
 @media screen and (max-width: 40em)
 {
-	.item_control_admin.item_future_posting, .table_admin .column_third
+	.item_control_admin.item_future_posting, .table_admin .column_last
 	{
 		display: none;
 	}
@@ -30,7 +30,7 @@
 		margin-left: 0;
 	}
 
-	.form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish, .table_admin .column_second
+	.form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish, .table_admin .column_third
 	{
 		display: none;
 	}

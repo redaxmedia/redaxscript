@@ -2,10 +2,11 @@
  * @tableofcontents
  *
  * 1. print
- * 2. screen max 40em
- * 3. screen max 30em
- * 4. screen max 20em
- * 5. rtl direction
+ * 2. screen max 50em
+ * 3. screen max 40em
+ * 4. screen max 30em
+ * 5. screen max 20em
+ * 6. rtl direction
  */
 
 /* @section 1. print */
@@ -19,7 +20,22 @@
 	}
 }
 
-/* @section 2. screen max 40em */
+/* @section 2. screen max 50em */
+
+@media screen and (max-width: 50em)
+{
+	.list_tab
+	{
+		display: none;
+	}
+
+	.js .set_tab
+	{
+		display: block;
+	}
+}
+
+/* @section 3. screen max 40em */
 
 @media screen and (max-width: 40em)
 {
@@ -29,7 +45,7 @@
 	}
 }
 
-/* @section 3. screen max 30em */
+/* @section 4. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
@@ -44,23 +60,13 @@
 		width: 100%;
 	}
 
-	.list_tab
-	{
-		display: none;
-	}
-
 	.player
 	{
 		font-size: 0.75em;
 	}
-
-	.js .set_tab
-	{
-		display: block;
-	}
 }
 
-/* @section 4. screen max 20em */
+/* @section 5. screen max 20em */
 
 @media screen and (max-width: 20em)
 {
@@ -70,7 +76,7 @@
 	}
 }
 
-/* @section 5. rtl direction */
+/* @section 6. rtl direction */
 
 .rtl
 {
