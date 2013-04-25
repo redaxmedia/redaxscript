@@ -13,17 +13,17 @@
 	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 	background: #fff;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-	font-size: 0.875em;
+	font: 0.875em arial;
 	padding: 1em;
-	position: fixed;
+	position: absolute;
 	right: 1em;
 	top: 1em;
-	z-index: 1000;
+	z-index: 2000;
 }
 
 /* @section 2. description validator */
 
 .description_validator
 {
-	font-size: 0.75em;
+	font: 0.75em  arial;
 }

@@ -47,10 +47,16 @@
 							lastLine = that.lastLine,
 							lastColumn = that.lastColumn;
 
+						/* type fallback */
+
+						if ($.inArray(type, ['success', 'warning', 'error']) === -1)
+						{
+							type = 'info';
+						}
+
+						/* collect output */
+
 						output += '<ul class="box_note note_' + type + '">';
-
-						/* validator message */
-
 						output += '<li class="message_validator">' + message + '</li>';
 
 						/* lines and columns */
@@ -85,9 +91,12 @@
 					}
 				}
 
-				/* prepend to body */
+				/* prepend output to body */
 
-				$('<div class="box_validator">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
+				if (output)
+				{
+					$('<div class="box_validator">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
+				}
 			}
 		});
 	};
