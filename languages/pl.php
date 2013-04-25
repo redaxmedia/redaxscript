@@ -344,6 +344,7 @@ $l['powered_by'] = 'Napędzane przez';
 /* characters */
 
 $l['point'] = '.';
+$l['comma'] = ',';
 $l['colon'] = ':';
 $l['question_mark'] = '?';
 $l['exclamation_mark'] = '!';

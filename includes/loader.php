@@ -387,6 +387,7 @@ function scripts_transport($minify = '')
 		'input_incorrect',
 		'input_empty',
 		'point',
+		'comma',
 		'colon',
 		'question_mark',
 		'exclamation_mark'
