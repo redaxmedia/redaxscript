@@ -19,7 +19,10 @@ function validator_loader_start()
 function validator_loader_scripts_transport_start()
 {
 	$output = languages_transport(array(
-		'validator'
+		'validator_from',
+		'validator_to',
+		'validator_line',
+		'validator_column'
 	));
 	echo $output;
 }

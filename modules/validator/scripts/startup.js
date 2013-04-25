@@ -11,7 +11,8 @@ r.modules.validator =
 	startup: true,
 	options:
 	{
-		level: 'error',
+		parser: 'html5',
+		level: 'all',
 		duration: 500
 	}
 };

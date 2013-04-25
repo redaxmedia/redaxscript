@@ -20,12 +20,10 @@
 			options = $.extend({}, r.modules.validator.options, options || {});
 		}
 
-		l.validator_from = 'From';
-		l.validator_line = 'Line';
-		l.validator_column = 'Column';
+		var parameter = '?doc=' + r.baseURL + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json',
+			url = 'http://validator.nu/' + parameter;
 
-		var route = r.baseURL + r.constants.FULL_ROUTE,
-			url = 'http://validator.nu/?doc=' + route + '&level=' + options.level + '&out=json';
+		/* request data */
 
 		$.ajax(
 		{
@@ -44,18 +42,43 @@
 						var that = messages[i],
 							type = that.type,
 							message = that.message,
+							firstLine = that.firstLine,
+							firstColumn = that.firstColumn,
 							lastLine = that.lastLine,
 							lastColumn = that.lastColumn;
 
-						output += '<ul class="box_validator box_note note_' + type + '">';
+						output += '<ul class="box_note note_' + type + '">';
+
+						/* validator message */
+
 						output += '<li class="message_validator">' + message + '</li>';
 
-						/* last line and column */
+						/* lines and columns */
 
-						if (lastLine && lastColumn)
+						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
 							output += '<li class="description_validator">' + l.validator_from + l.colon + ' ';
-							output += l.validator_line + ' ' + lastLine + ', ' + l.validator_column + ' ' + lastColumn;
+
+							/* first wording */
+
+							if (firstLine && firstColumn)
+							{
+								output += l.validator_line + ' ' + firstLine + l.comma + ' ' + l.validator_column + ' ' + firstColumn;
+							}
+
+							/* to wording */
+
+							if (firstLine && firstColumn && lastLine && lastColumn)
+							{
+								output += ' ' + l.validator_to + ' ';
+							}
+
+							/* last wording */
+
+							if (lastLine && lastColumn)
+							{
+								output += l.validator_line + ' ' + lastLine + l.comma + ' ' + l.validator_column + ' ' + lastColumn;
+							}
 							output += '</li>';
 						}
 						output += '</ul>';
@@ -64,7 +87,7 @@
 
 				/* prepend to body */
 
-				$(output).hide().prependTo('body').slideDown();
+				$('<div class="box_validator">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
 			}
 		});
 	};

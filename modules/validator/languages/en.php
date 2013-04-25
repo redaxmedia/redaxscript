@@ -2,5 +2,8 @@
 
 /* validator */
 
-$l['validator_validator'] = 'Validator';
+$l['validator_from'] = 'from';
+$l['validator_to'] = 'to';
+$l['validator_line'] = 'line';
+$l['validator_column'] = 'column';
 ?>
