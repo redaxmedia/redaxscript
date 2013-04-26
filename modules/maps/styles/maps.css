@@ -10,14 +10,14 @@
 
 .map
 {
-	height: 500px;
+	height: 30em;
 }
 
 /* mobile */
 
 .mobile .map
 {
-	height: 250px;
+	height: 15em;
 	margin-left: auto;
 	margin-right: auto;
 	width: 90%;
