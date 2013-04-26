@@ -11,7 +11,8 @@
  * 8. auto resize
  * 9. check search
  * 10. clear focus
- * 11. unmask password
+ * 11. enable tab
+ * 12. unmask password
  */
 
 (function ($)
@@ -166,7 +167,27 @@
 			});
 		}
 
-		/* @section 11. unmask password  */
+		/* @section 11. enable tab */
+
+		if (typeof $.fn.enableTab === 'function')
+		{
+			win.test('enableTab', function ()
+			{
+				var textarea = $('<textarea cols="1" rows="2"></textarea>').enableTab().appendTo(fixture),
+					expect = r.plugins.enableTab.options.insertion,
+					result = textarea.val(),
+					keydown = $.Event('keydown');
+
+				keydown.which  = 9;
+
+				/* trigger keydown */
+
+				result = textarea.trigger(keydown).val();
+				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+			});
+		}
+
+		/* @section 12. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{
