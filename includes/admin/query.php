@@ -505,7 +505,14 @@ function admin_sort()
 				{
 					$parent = $article;
 				}
-				$select_array[$parent][$id] = '';
+				if ($parent)
+				{
+					$select_array[$parent][$id] = '';
+				}
+				else
+				{
+					$select_array[][$id] = '';
+				}
 			}
 		}
 
