@@ -505,20 +505,12 @@ function admin_sort()
 				{
 					$parent = $article;
 				}
-				if ($parent)
-				{
-					$select_array[$parent][$id] = '';
-				}
-				else
-				{
-					$select_array[$id] = '';
-				}
+				$select_array[$parent][$id] = '';
 			}
 		}
 
 		/* build update array */
 
-		$update_array[] = 0;
 		foreach ($select_array as $key => $value)
 		{
 			if (is_array($value))
@@ -538,7 +530,7 @@ function admin_sort()
 
 		foreach ($update_array as $key => $value)
 		{
-			$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = \'' . $key . '\' WHERE id = \'' . $value . '\' LIMIT 1';
+			$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = \'' . ++$key . '\' WHERE id = \'' . $value . '\' LIMIT 1';
 			mysql_query($general_update_query);
 		}
 	}
