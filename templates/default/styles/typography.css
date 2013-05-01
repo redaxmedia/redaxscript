@@ -263,8 +263,3 @@ pre
 	font: bold 3.75em/1em 'pt sans narrow', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
-
-.title_website, .title_website a
-{
-	color: #555;
-}
