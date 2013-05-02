@@ -314,7 +314,24 @@ r.baseURL = function (doc)
 	return output;
 }(document);
 
-/* @section 1.6 startup */
+/* @section 1.6 load font */
+
+r.loadFont = function (url)
+{
+	var doc = document,
+		body = doc.body,
+		head = doc.head,
+		link = doc.createElement('link');
+
+	if (typeof url === 'string')
+	{
+		head.appendChild(link);
+		link.setAttribute('rel', 'stylesheet');
+		link.setAttribute('href', url);
+	}
+};
+
+/* @section 1.7 startup */
 
 r.startup = function (doc, html)
 {
