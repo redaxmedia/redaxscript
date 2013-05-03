@@ -1,116 +1,172 @@
 <?php
 
 /**
- * language detection
+ * Redaxscript Detection
+ *
+ * @since 1.3
+ *
+ * @category Detection
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-function language_detection()
+class Redaxscript_Detection
 {
-	/* get language */
+	/**
+	 * output
+	 * @var string
+	 */
 
-	if ($_GET['l'])
+	protected $_output;
+
+	/**
+	 * construct
+	 *
+	 * @since 1.3
+	 */
+
+	public function __construct()
 	{
-		$language = clean($_GET['l'], 1);
-		if (file_exists('languages/' . $language . '.php'))
+		$this->init();
+	}
+
+	/**
+	 * init
+	 *
+	 * @since 1.3
+	 */
+
+	public function init()
+	{
+		$this->detection();
+	}
+
+	/**
+	 * get output
+	 *
+	 * @since 1.3
+	 *
+	 * @return $_output string
+	 */
+
+	public function getOutput()
+	{	
+		return $this->_output;
+	}
+
+	/**
+	 * get parameter
+	 *
+	 * @since 1.3
+	 *
+	 * @return $_output string
+	 */
+
+	protected function getParameter($parameter = '')
+	{
+		if ($_GET[$parameter])
 		{
-			$_SESSION[ROOT . '/language_selected'] = 1;
+			/* clean get parameter */
+
+			$output = clean($_GET[$parameter], 1);
+			return $output;
 		}
-	}
-
-	/* else use language from session */
-
-	else
-	{
-		$language = $_SESSION[ROOT . '/language'];
-	}
-
-	/* if language not selected */
-
-	if ($_SESSION[ROOT . '/language_selected'] == '')
-	{
-		/* query site language */
-
-		if (s('language') != 'detect')
-		{
-			$language = s('language');
-		}
-
-		/* else use browser language */
-
-		else
-		{
-			$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-		}
-	}
-
-	/* setup language session */
-
-	if (file_exists('languages/' . $language . '.php'))
-	{
-		$_SESSION[ROOT . '/language'] = $language;
-	}
-	else
-	{
-		$_SESSION[ROOT . '/language'] = 'en';
 	}
 }
 
 /**
- * template detection
+ * Redaxscript Detection Language
+ *
+ * @since 1.3
+ *
+ * @category Detection
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-function template_detection()
+class Redaxscript_Detection_Language extends Redaxscript_Detection
 {
-	/* get template */
+	/**
+	 * detection
+	 *
+	 * @since 1.3
+	 */
 
-	if ($_GET['t'])
+	public function detection()
 	{
-		$template = clean($_GET['t'], 1);
-		if (file_exists('templates/' . $template . '/index.phtml'))
+		$languageArray = array(
+			'parameter' => $this->getParameter('l'),
+			'session' => $_SESSION[ROOT . '/language'],
+			'settings' => s('language'),
+			'browser' => substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2),
+			'fallback' => 'en'
+		);
+
+		/* check language file */
+
+		foreach ($languageArray as $key => $language)
 		{
-			$_SESSION[ROOT . '/template_selected'] = 1;
-		}
-	}
-
-	/* else use template from session */
-
-	else
-	{
-		$template = $_SESSION[ROOT . '/template'];
-	}
-
-	/* if template not selected */
-
-	if ($_SESSION[ROOT . '/template_selected'] == '')
-	{
-		/* query site template */
-
-		if (s('template'))
-		{
-			$template = s('template');
-		}
-
-		/* retrieve template from content */
-
-		if (LAST_ID)
-		{
-			$retrieve_template = retrieve('template', LAST_TABLE, 'id', LAST_ID);
-			if ($retrieve_template)
+			if (file_exists('languages/' . $language . '.php'))
 			{
-				$template = $retrieve_template;
+				$this->_output = $language;
+
+				/* if parameter store in session */
+
+				if ($key === 'parameter')
+				{
+					$_SESSION[ROOT . '/language'] = $language;
+				}
+				break;
 			}
 		}
 	}
+}
 
-	/* setup template session */
+/**
+ * Redaxscript Detection Template
+ *
+ * @since 1.3
+ *
+ * @category Detection
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-	if (file_exists('templates/' . $template . '/index.phtml'))
+class Redaxscript_Detection_Template extends Redaxscript_Detection
+{
+	/**
+	 * detection
+	 *
+	 * @since 1.3
+	 */
+
+	public function detection()
 	{
-		$_SESSION[ROOT . '/template'] = $template;
-	}
-	else
-	{
-		$_SESSION[ROOT . '/template'] = 'default';
+		$templateArray = array(
+			'parameter' => $this->getParameter('t'),
+			'session' => $_SESSION[ROOT . '/template'],
+			'content' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
+			'settings' => s('template'),
+			'fallback' => 'default'
+		);
+
+		/* check template file */
+
+		foreach ($templateArray as $key => $template)
+		{
+			if (file_exists('templates/' . $template . '/index.phtml'))
+			{
+				$this->_output = $template;
+
+				/* if parameter store in session */
+
+				if ($key === 'parameter')
+				{
+					$_SESSION[ROOT . '/template'] = $template;
+				}
+				break;
+			}
+		}
 	}
 }
 ?>

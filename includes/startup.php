@@ -293,12 +293,15 @@ function startup()
 		$_SESSION[ROOT . '/update'] = '';
 	}
 
-	/* language and template detection */
+	/* language and template object */
 
-	language_detection();
-	template_detection();
-	define('LANGUAGE', $_SESSION[ROOT . '/language']);
-	define('TEMPLATE', $_SESSION[ROOT . '/template']);
+	$detect_language = New Redaxscript_Detection_Language();
+	$detect_template = New Redaxscript_Detection_Template();
+
+	/* define language and template */
+
+	define('LANGUAGE', $detect_language->getOutput());
+	define('TEMPLATE', $detect_template->getOutput());
 
 	/* error detection */
 
