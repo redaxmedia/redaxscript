@@ -193,7 +193,7 @@ class Redaxscript_Parser
 				/* json decode */
 
 				$json = json_decode($value);
-				
+
 				/* catch function output */
 
 				ob_start();
