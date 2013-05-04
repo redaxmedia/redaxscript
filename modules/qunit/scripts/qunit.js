@@ -71,9 +71,9 @@
 
 			qunitResult.find('br').replaceWith(' ');
 
-			/* fade in qunit */
+			/* show qunit */
 
-			qunit.fadeIn(options.duration);
+			qunit.show();
 		};
 	};
 

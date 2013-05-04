@@ -203,7 +203,7 @@
 
 		return this.each(function ()
 		{
-			/* listen for focusin and focusout */
+			/* listen for focus and blur */
 
 			$(this).on('focus blur', function (event)
 			{
@@ -326,9 +326,9 @@
 
 		return this.each(function ()
 		{
-			/* listen for keydown and focusout */
+			/* listen for keydown and blur */
 
-			$(this).on('keydown focusout', function (event)
+			$(this).on('keydown blur', function (event)
 			{
 				var field = this;
 

@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. jquery
+ * 1. library
  * 2. globals
  * 3. base url
  * 4. constants
@@ -25,12 +25,12 @@
 			fixture = $(r.modules.qunit.options.element.qunitFixture),
 			dummy = 'Hello world';
 
-		/* @section 1. jquery */
+		/* @section 1. library */
 
-		win.test('jquery', function ()
+		win.test('library', function ()
 		{
 			var expect = 'function',
-				result = typeof jQuery;
+				result = typeof $;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
@@ -154,15 +154,15 @@
 					expect = '',
 					result = input.val();
 
-				/* trigger focusin */
+				/* trigger focus */
 
-				result = input.trigger('focusin').val();
+				result = input.trigger('focus').val();
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 
-				/* trigger focusout */
+				/* trigger blur */
 
 				expect = dummy;
-				result = input.trigger('focusout').val();
+				result = input.trigger('blur').val();
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
@@ -206,10 +206,10 @@
 				result = input.trigger(keydown).attr('type');
 				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 
-				/* trigger focusout */
+				/* trigger blur */
 
 				expect = 'password';
-				result = input.trigger('focusout').attr('type');
+				result = input.trigger('blur').attr('type');
 				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 			});
 		}
