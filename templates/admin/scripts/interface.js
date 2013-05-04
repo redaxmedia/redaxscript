@@ -40,14 +40,18 @@
 					dockElementText = dockElement.text(),
 					dockDescription = dockElement.siblings(options.element.dockDescription);
 
-				/* listen for hover */
+				/* listen for mouseenter and mouseleave */
 
-				dockElement.hover(function ()
+				dockElement.on('mouseenter mouseleave', function (event)
 				{
-					dockDescription.text(dockElementText);
-				}, function ()
-				{
-					dockDescription.text('');
+					if (event.type === 'mouseenter')
+					{
+						dockDescription.text(dockElementText);
+					}
+					else
+					{
+						dockDescription.text('');
+					}
 				});
 			});
 		});
@@ -90,17 +94,21 @@
 				panelBox.hide();
 				panelRelated.css('margin-top', panelBarHeight);
 
-				/* listen for hover */
+				/* listen for mouseenter and mouseleave */
 
-				panel.hover(function ()
+				panel.on('mouseenter mouseleave', function (event)
 				{
-					panelBox.stop(1).show();
-				}, function ()
-				{
-					panelBox.delay(options.duration).queue(function ()
+					if (event.type === 'mouseenter')
 					{
-						$(this).hide();
-					});
+						panelBox.stop(1).show();
+					}
+					else
+					{
+						setTimeout(function ()
+						{
+							panelBox.hide();
+						}, options.duration);
+					}
 				});
 			}
 		});
@@ -119,4 +127,4 @@
 			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

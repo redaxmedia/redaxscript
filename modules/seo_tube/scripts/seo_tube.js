@@ -75,4 +75,4 @@
 			$.fn.seoTube();
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

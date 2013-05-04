@@ -220,4 +220,4 @@
 			$(r.plugins.tab.selector).tab(r.plugins.tab.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

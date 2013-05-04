@@ -162,4 +162,4 @@
 			$.fn.dawanda(r.modules.dawanda.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

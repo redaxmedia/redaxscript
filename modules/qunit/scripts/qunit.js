@@ -86,4 +86,4 @@
 			$.fn.qunit(r.modules.qunit.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

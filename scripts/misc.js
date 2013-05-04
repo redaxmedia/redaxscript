@@ -25,18 +25,18 @@
 
 		return this.each(function ()
 		{
-			/* trigger click after delay */
+			var link = $(this),
+				url = link.attr('href');
 
-			$(this).delay(options.duration).queue(function ()
+			/* forward url after delay */
+
+			if (typeof url === 'string')
 			{
-				var link = $(this),
-					url = link.attr('href');
-
-				if (typeof url === 'string')
+				setTimeout(function ()
 				{
 					window.location = url;
-				}
-			});
+				}, options.duration);
+			}
 		});
 	};
 
@@ -121,4 +121,4 @@
 			$(r.plugins.forwardNotification.selector).forwardNotification(r.plugins.forwardNotification.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

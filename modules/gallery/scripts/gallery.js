@@ -367,4 +367,4 @@
 			$(r.modules.gallery.selector).gallery(r.modules.gallery.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

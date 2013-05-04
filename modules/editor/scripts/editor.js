@@ -425,4 +425,4 @@
 			$(r.modules.editor.selector).editor(r.modules.editor.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

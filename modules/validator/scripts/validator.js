@@ -107,4 +107,4 @@
 	{
 		$.fn.validator(r.modules.validator.options);
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

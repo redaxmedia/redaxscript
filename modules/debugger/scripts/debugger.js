@@ -42,4 +42,4 @@
 			$(r.modules.debugger.selector).debugger(r.modules.debugger.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);

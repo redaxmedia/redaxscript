@@ -60,4 +60,4 @@
 			$(r.modules.fileManager.selector).fileManager(r.modules.fileManager.options);
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto);
