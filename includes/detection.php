@@ -122,8 +122,8 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 		$this->detection(array(
 			'parameter' => $this->getParameter('l'),
 			'session' => $_SESSION[ROOT . '/language'],
-			'settings' => s('language'),
-			'browser' => substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2),
+			'contents' => retrieve('language', LAST_TABLE, 'id', LAST_ID),
+			'settings' => s('language') === 'detect' ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : s('language'),
 			'fallback' => 'en'
 		), 'language', 'languages/{type}.php');
 	}
