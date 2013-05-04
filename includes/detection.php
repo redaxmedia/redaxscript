@@ -152,7 +152,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 		$this->detection(array(
 			'parameter' => $this->getParameter('t'),
 			'session' => $_SESSION[ROOT . '/template'],
-			'content' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
+			'contents' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
 			'settings' => s('template'),
 			'fallback' => 'default'
 		), 'template', 'templates/{type}/index.phtml');

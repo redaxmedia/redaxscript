@@ -98,14 +98,14 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * create operator
+	 * check operator
 	 *
 	 * @since 1.3
 	 *
 	 * @return $output number
 	 */
 
-	protected function _createOperator()
+	protected function _checkOperator()
 	{
 		/* switch captcha mode */
 
@@ -145,7 +145,7 @@ class Redaxscript_Captcha
 
 		/* operator */
 
-		$c = $this->_createOperator();
+		$c = $this->_checkOperator();
 		$d = $this->_operators[$c];
 
 		/* solution and task */

@@ -201,7 +201,8 @@ class Redaxscript_Parser
 				{
 					/* validate allowed functions */
 
-					if (!in_array($function, $functionTerms)) {
+					if (!in_array($function, $functionTerms))
+					{
 						call_user_func_array($function, $parameter);
 					}
 				}

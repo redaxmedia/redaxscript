@@ -279,7 +279,8 @@
 
 					if (options.autoResize)
 					{
-						win.on('resize', function () {
+						win.on('resize', function ()
+						{
 							image.trigger('fit');
 						});
 					}
