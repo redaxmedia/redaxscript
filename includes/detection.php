@@ -31,17 +31,6 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * init
-	 *
-	 * @since 1.3
-	 */
-
-	public function init()
-	{
-		$this->detection();
-	}
-
-	/**
 	 * get output
 	 *
 	 * @since 1.3
@@ -50,7 +39,7 @@ class Redaxscript_Detection
 	 */
 
 	public function getOutput()
-	{	
+	{
 		return $this->_output;
 	}
 
@@ -72,6 +61,42 @@ class Redaxscript_Detection
 			return $output;
 		}
 	}
+
+	/**
+	 * detection
+	 *
+	 * @since 1.3
+	 *
+	 * @param $input array
+	 * @param $type string
+	 * @param $path string
+	 */
+
+	protected function detection($input = '', $type = '', $path = '')
+	{
+		foreach ($input as $key => $value)
+		{
+			if ($value)
+			{
+				$path = str_replace('{type}', $value, $path);
+
+				/* if file exists */
+
+				if (file_exists($path))
+				{
+					$this->_output = $value;
+
+					/* save parameter in session */
+
+					if ($key === 'parameter')
+					{
+						$_SESSION[ROOT . '/' . $type] = $value;
+					}
+					break;
+				}
+			}
+		}
+	}
 }
 
 /**
@@ -87,38 +112,20 @@ class Redaxscript_Detection
 class Redaxscript_Detection_Language extends Redaxscript_Detection
 {
 	/**
-	 * detection
+	 * init
 	 *
 	 * @since 1.3
 	 */
 
-	public function detection()
+	public function init()
 	{
-		$languageArray = array(
+		$this->detection(array(
 			'parameter' => $this->getParameter('l'),
 			'session' => $_SESSION[ROOT . '/language'],
 			'settings' => s('language'),
 			'browser' => substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2),
 			'fallback' => 'en'
-		);
-
-		/* check language file */
-
-		foreach ($languageArray as $key => $language)
-		{
-			if (file_exists('languages/' . $language . '.php'))
-			{
-				$this->_output = $language;
-
-				/* if parameter store in session */
-
-				if ($key === 'parameter')
-				{
-					$_SESSION[ROOT . '/language'] = $language;
-				}
-				break;
-			}
-		}
+		), 'language', 'languages/{type}.php');
 	}
 }
 
@@ -135,38 +142,20 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 class Redaxscript_Detection_Template extends Redaxscript_Detection
 {
 	/**
-	 * detection
+	 * init
 	 *
 	 * @since 1.3
 	 */
 
-	public function detection()
+	public function init()
 	{
-		$templateArray = array(
+		$this->detection(array(
 			'parameter' => $this->getParameter('t'),
 			'session' => $_SESSION[ROOT . '/template'],
 			'content' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
 			'settings' => s('template'),
 			'fallback' => 'default'
-		);
-
-		/* check template file */
-
-		foreach ($templateArray as $key => $template)
-		{
-			if (file_exists('templates/' . $template . '/index.phtml'))
-			{
-				$this->_output = $template;
-
-				/* if parameter store in session */
-
-				if ($key === 'parameter')
-				{
-					$_SESSION[ROOT . '/template'] = $template;
-				}
-				break;
-			}
-		}
+		), 'template', 'templates/{type}/index.phtml');
 	}
 }
 ?>
