@@ -65,13 +65,18 @@ module.exports = function (grunt)
 			{
 				dir: 'includes'
 			},
+			languages:
+			{
+				dir: 'languages'
+			},
 			modules:
 			{
 				dir: 'modules'
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpcs'
+				bin: 'vendor/bin/phpcs',
+				standard: 'Redaxscript'
 			}
 		},
 		shell:
@@ -101,6 +106,19 @@ module.exports = function (grunt)
 				stdout: true
 			}
 		},
+		copy:
+		{
+			ruleset:
+			{
+				files:
+				[
+					{
+						src: ['ruleset.xml'],
+						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxscript/'
+					}
+				]
+			}
+		},
 		img:
 		{
 			modules:
@@ -127,6 +145,7 @@ module.exports = function (grunt)
 
 	/* load tasks */
 
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -138,7 +157,8 @@ module.exports = function (grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('default', ['jshint', 'csslint', 'phplint']);
+	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
 	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
