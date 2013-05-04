@@ -59,6 +59,21 @@ module.exports = function (grunt)
 				csslintrc: '.csslintrc'
 			}
 		},
+		phpcs:
+		{
+			includes:
+			{
+				dir: 'includes'
+			},
+			modules:
+			{
+				dir: 'modules'
+			},
+			options:
+			{
+				bin: 'vendor/bin/phpcs'
+			}
+		},
 		shell:
 		{
 			tocBase:
@@ -116,6 +131,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');

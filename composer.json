@@ -1,0 +1,8 @@
+{
+	"name": "Redaxscript",
+	"require":
+	{
+		"php": "5.3.18",
+		"squizlabs/php_codesniffer": "1.4.5"
+	}
+}
