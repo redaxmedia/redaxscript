@@ -99,7 +99,7 @@ function password_reset_post()
 		$login_link = anchor_element('', '', '', $login_route, $login_route);
 		$body_array = array(
 			l('password_new') => $password,
-			code1 => '<br />',
+			'code1' => '<br />',
 			l('login') => $login_link
 		);
 		send_mail($my_email, $my_name, s('email'), s('author'), l('password_new'), $body_array);

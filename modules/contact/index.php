@@ -159,7 +159,7 @@ function contact_post()
 			l('author') => $author . ' (' . MY_IP . ')',
 			l('email') => $email_link,
 			l('url') => $url_link,
-			code1 => '<br />',
+			'code1' => '<br />',
 			l('message') => $text
 		);
 		send_mail(s('email'), s('author'), $email, $author, l('contact'), $body_array);

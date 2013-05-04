@@ -28,7 +28,7 @@ function db_backup_render_start()
 			$body_array = array(
 				l('url') => $url_link,
 				l('database') => d('name'),
-				code1 => '<br />',
+				'code1' => '<br />',
 				l('message') => l('db_backup_save_attachment') . l('point')
 			);
 			$attachment_array = array(

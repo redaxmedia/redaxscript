@@ -103,7 +103,7 @@ function reminder_post()
 				$password_reset_link = anchor_element('', '', '', $password_reset_route, $password_reset_route);
 				$body_array = array(
 					l('user') => $user,
-					code1 => '<br />',
+					'code1' => '<br />',
 					l('password_reset') => $password_reset_link
 				);
 				send_mail($email, $name, s('email'), s('author'), l('reminder'), $body_array);

@@ -287,9 +287,9 @@ function comment_post()
 				l('author') => $author . ' (' . MY_IP . ')',
 				l('email') => $email_link,
 				l('url') => $url_link,
-				code1 => '<br />',
+				'code1' => '<br />',
 				l('comment') => $text,
-				code2 => '<br />',
+				'code2' => '<br />',
 				l('article') => $view_link
 			);
 			send_mail(s('email'), s('author'), $email, $author, l('comment_new'), $body_array);

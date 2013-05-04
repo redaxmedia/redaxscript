@@ -139,7 +139,7 @@ function registration_post()
 			l('name') => $name . ' (' . MY_IP . ')',
 			l('user') => $user,
 			l('password') => $password,
-			code1 => '<br />',
+			'code1' => '<br />',
 			l('login') => $login_link
 		);
 		send_mail($email, $name, s('email'), s('author'), l('registration'), $body_array);
