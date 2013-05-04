@@ -100,7 +100,7 @@
 				fieldRequired.each(function ()
 				{
 					var field = $(this),
-						fieldTag = field.context.tagName,
+						fieldTag = field[0].tagName,
 						noteErrorClasses = 'js_note_error note_error',
 						fieldValue;
 
@@ -140,7 +140,7 @@
 
 					if (event.type === 'submit' && options.autoFocus)
 					{
-						fieldRequiredAll.filter('.js_note_error:first').focus();
+						fieldRequiredAll.filter('.js_note_error').first().focus();
 					}
 					event.preventDefault();
 				}

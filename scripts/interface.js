@@ -66,9 +66,9 @@
 				}
 			});
 
-			/* prevent next tab for last children */
+			/* prevent tab for children */
 
-			accordionBox.children(':last-child').on('keydown', function (event)
+			accordionBox.children().on('keydown', function (event)
 			{
 				if (event.which === 9)
 				{
@@ -182,9 +182,9 @@
 
 			tabList.find('a[href="' + url + '"]').click();
 
-			/* prevent next tab for last children */
+			/* prevent tab for children */
 
-			tabSet.children().children(':last-child').on('keydown', function (event)
+			tabSet.children().on('keydown', function (event)
 			{
 				if (event.which === 9)
 				{
