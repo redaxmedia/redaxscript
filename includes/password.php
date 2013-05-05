@@ -32,7 +32,7 @@ function password_reset_form()
 	/* collect captcha solution output */
 
 	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
-	
+
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);

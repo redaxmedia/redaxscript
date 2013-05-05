@@ -51,7 +51,7 @@ class Redaxscript_Detection
 	 * @return $_output string
 	 */
 
-	protected function getParameter($parameter = '')
+	protected function _getParameter($parameter = '')
 	{
 		if ($_GET[$parameter])
 		{
@@ -72,7 +72,7 @@ class Redaxscript_Detection
 	 * @param $path string
 	 */
 
-	protected function detection($input = '', $type = '', $path = '')
+	protected function _detection($input = '', $type = '', $path = '')
 	{
 		foreach ($input as $key => $value)
 		{
@@ -119,8 +119,8 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 
 	public function init()
 	{
-		$this->detection(array(
-			'parameter' => $this->getParameter('l'),
+		$this->_detection(array(
+			'parameter' => $this->_getParameter('l'),
 			'session' => $_SESSION[ROOT . '/language'],
 			'contents' => retrieve('language', LAST_TABLE, 'id', LAST_ID),
 			'settings' => s('language') === 'detect' ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : s('language'),
@@ -149,8 +149,8 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 
 	public function init()
 	{
-		$this->detection(array(
-			'parameter' => $this->getParameter('t'),
+		$this->_detection(array(
+			'parameter' => $this->_getParameter('t'),
 			'session' => $_SESSION[ROOT . '/template'],
 			'contents' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
 			'settings' => s('template'),

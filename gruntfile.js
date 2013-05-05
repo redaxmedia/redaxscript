@@ -80,6 +80,10 @@ module.exports = function (grunt)
 			{
 				dir: 'modules'
 			},
+			templates:
+			{
+				dir: 'templates'
+			},
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
