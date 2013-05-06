@@ -276,23 +276,39 @@ function comment_post()
 
 		if (s('notification') == 1)
 		{
-			$email_link = anchor_element('email', '', '', $email, $email);
+			/* prepare body parts */
+
+			$emailLink = anchor_element('email', '', '', $email);
 			if ($url)
 			{
-				$url_link = anchor_element('external', '', '', $url, $url);
+				$urlLink = anchor_element('external', '', '', $url);
 			}
-			$view_route = ROOT . '/' . REWRITE_ROUTE . $route;
-			$view_link = anchor_element('', '', '', $view_route, $view_route);
-			$body_array = array(
-				l('author') => $author . ' (' . MY_IP . ')',
-				l('email') => $email_link,
-				l('url') => $url_link,
-				'code1' => '<br />',
-				l('comment') => $text,
-				'code2' => '<br />',
-				l('article') => $view_link
+			$articleRoute = ROOT . '/' . REWRITE_ROUTE . $route;
+			$articleLink = anchor_element('', '', '', $articleRoute);
+
+			/* prepare mail inputs */
+
+			$toArray = array(
+				s('author') => s('email')
 			);
-			send_mail(s('email'), s('author'), $email, $author, l('comment_new'), $body_array);
+			$fromArray = array(
+				$author => $email
+			);
+			$subject = l('comment_new');
+			$bodyArray = array(
+				l('author') => $author . ' (' . MY_IP . ')',
+				l('email') => $emailLink,
+				l('url') => $urlLink,
+				'<br />',
+				l('comment') => $text,
+				'<br />',
+				l('article') => $articleLink
+			);
+
+			/* send with mail object */
+
+			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+			$mail->send();
 		}
 
 		/* build key and value strings */

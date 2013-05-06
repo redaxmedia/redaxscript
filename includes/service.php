@@ -78,6 +78,12 @@ class Redaxscript_Mail
 	 * construct
 	 *
 	 * @since 1.3
+	 * 
+	 * @param $toArray array
+	 * @param $fromArray array
+	 * @param $subject string
+	 * @param $bodyArray array
+	 * @param $attachmentArray array
 	 */
 
 	public function __construct($toArray = '', $fromArray = '', $subject = '', $bodyArray = '', $attachmentArray = '')
@@ -149,15 +155,13 @@ class Redaxscript_Mail
 
 		if ($settings_subject)
 		{
-			$this->_subjectString = $settings_subject . s('divider') . $this->_subject;
+			$this->_subjectString = $settings_subject;
+			if ($this->_subject)
+			{
+				$this->_subjectString .= s('divider');
+			}
 		}
-
-		/* else normal string */
-
-		else
-		{
-			$this->_subjectString = $this->_subject;
-		}
+		$this->_subjectString .= $this->_subject;
 	}
 
 	/**
@@ -174,11 +178,15 @@ class Redaxscript_Mail
 		{
 			if ($key && $value)
 			{
-				$keyCheck = substr($key, 0, 4);
-				if ($keyCheck == 'code')
+				/* if numeric */
+
+				if (is_numeric($key))
 				{
 					$this->_bodyString .= $value;
 				}
+
+				/* else format parts */
+
 				else
 				{
 					$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
