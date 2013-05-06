@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Parser
+ * Redaxscript_Parser
  *
  * @since 1.3
  *
@@ -98,7 +98,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * get output
+	 * getOutput
 	 *
 	 * @since 1.3
 	 *
@@ -111,7 +111,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parse break
+	 * parseBreak
 	 *
 	 * @since 1.3
 	 *
@@ -137,7 +137,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parse code
+	 * parseCode
 	 *
 	 * @since 1.3
 	 *
@@ -167,7 +167,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parse function
+	 * parseFunction
 	 *
 	 * @since 1.3
 	 *

@@ -295,13 +295,13 @@ function startup()
 
 	/* language and template object */
 
-	$detect_language = New Redaxscript_Detection_Language();
-	$detect_template = New Redaxscript_Detection_Template();
+	$detectLanguage = New Redaxscript_Detection_Language();
+	$detectTemplate = New Redaxscript_Detection_Template();
 
 	/* define language and template */
 
-	define('LANGUAGE', $detect_language->getOutput());
-	define('TEMPLATE', $detect_template->getOutput());
+	define('LANGUAGE', $detectLanguage->getOutput());
+	define('TEMPLATE', $detectTemplate->getOutput());
 
 	/* error detection */
 

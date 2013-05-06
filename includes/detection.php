@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Detection
+ * Redaxscript_Detection
  *
  * @since 1.3
  *
@@ -17,7 +17,7 @@ class Redaxscript_Detection
 	 * @var string
 	 */
 
-	protected $_output;
+	private $_output;
 
 	/**
 	 * construct
@@ -31,7 +31,7 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * get output
+	 * getOutput
 	 *
 	 * @since 1.3
 	 *
@@ -44,18 +44,18 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * get parameter
+	 * getParameter
 	 *
 	 * @since 1.3
 	 *
-	 * @return $_output string
+	 * @return $output string
 	 */
 
 	protected function _getParameter($parameter = '')
 	{
 		if ($_GET[$parameter])
 		{
-			/* clean get parameter */
+			/* clean parameter */
 
 			$output = clean($_GET[$parameter], 1);
 			return $output;
@@ -100,7 +100,7 @@ class Redaxscript_Detection
 }
 
 /**
- * Redaxscript Detection Language
+ * Redaxscript_Detection_Language
  *
  * @since 1.3
  *
@@ -130,7 +130,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 }
 
 /**
- * Redaxscript Detection Template
+ * Redaxscript_Detection_Template
  *
  * @since 1.3
  *

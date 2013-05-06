@@ -1,151 +1,265 @@
 <?php
 
 /**
- * send mail
+ * Redaxscript Mail
  *
- * @param string $to
- * @param string $to_name
- * @param string $from
- * @param string $from_name
- * @param string $subject
- * @param array $body_array
- * @param array $attachment_array
+ * @since 1.3
+ *
+ * @category Service
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-function send_mail($to = '', $to_name = '', $from = '', $from_name = '', $subject = '', $body_array = '', $attachment_array = '')
+class Redaxscript_Mail
 {
-	/* validate input */
+	/**
+	 * toArray
+	 * @var array
+	 */
 
-	if ($to_name == '')
+	private $_toArray;
+
+	/**
+	 * fromArray
+	 * @var array
+	 */
+
+	private $_fromArray;
+
+	/**
+	 * subjectArray
+	 * @var object
+	 */
+
+	private $_subject;
+
+	/**
+	 * bodyArray
+	 * @var array
+	 */
+
+	private $_bodyArray;
+	/**
+	 * attachmentArray
+	 * @var array
+	 */
+
+	private $_attachmentArray;
+
+	/**
+	 * formString
+	 * @var string
+	 */
+
+	protected $_formString;
+
+	/**
+	 * subjectString
+	 * @var string
+	 */
+
+	protected $_subjectString;
+
+	/**
+	 * bodyString
+	 * @var string
+	 */
+
+	protected $_bodyString;
+
+	/**
+	 * headerString
+	 * @var string
+	 */
+
+	protected $_headerString;
+
+	/**
+	 * construct
+	 *
+	 * @since 1.3
+	 */
+
+	public function __construct($toArray = '', $fromArray = '', $subject = '', $bodyArray = '', $attachmentArray = '')
 	{
-		$to_name = $to;
+		$this->_toArray = $toArray;
+		$this->_fromArray = $fromArray;
+		$this->_subject = $subject;
+		$this->_bodyArray = $bodyArray;
+		$this->_attachmentArray = $attachmentArray;
+
+		/* call init */
+
+		$this->init();
 	}
-	if ($from_name == '')
+
+	/**
+	 * init
+	 *
+	 * @since 1.3
+	 */
+
+	public function init()
 	{
-		$from_name = $from;
+		if (function_exists('mail'))
+		{
+			$this->_buildFromString();
+			$this->_buildSubjectString();
+			$this->_buildBodyString();
+			$this->_buildHeaderString();
+			$this->_send();
+		}
 	}
 
-	/* build email strings */
+	/**
+	 * buildFromString
+	 *
+	 * @since 1.3
+	 */
 
-	$to_string = $to_name . ' <' . $to . '>';
-	$from_string = $from_name . ' <' . $from . '>';
-	$default_subject = s('subject');
-	if ($default_subject)
+	protected function _buildFromString()
 	{
-		$subject_string = $default_subject . s('divider') . $subject;
+		/* build from string */
+
+		$from = $this->_from[0];
+		$fromName = $this->_from[1];
+
+		/* fallback if numeric */
+
+		if (is_numeric($from))
+		{
+			$from = $fromName;
+		}
+		$this->_fromString = $from . ' <' . $fromName . '>';
 	}
-	else
+
+	/**
+	 * buildSubjectString
+	 *
+	 * @since 1.3
+	 */
+
+	protected function _buildSubjectString()
 	{
-		$subject_string = $subject;
+		/* collect subject string */
+
+		$settings_subject = s('subject');
+
+		/* extended subject string */
+
+		if ($settings_subject)
+		{
+			$this->_subjectString = $settings_subject . s('divider') . $this->_subject;
+		}
+
+		/* else normal string */
+
+		else
+		{
+			$this->_subjectString = $this->_subject;
+		}
 	}
 
-	/* collect body */
+	/**
+	 * buildBodyString
+	 *
+	 * @since 1.3
+	 */
 
-	if (is_array($body_array))
+	protected function _buildBodyString()
 	{
-		foreach ($body_array as $key => $value)
+		/* collect body string */
+
+		foreach ($this->_bodyArray as $key => $value)
 		{
 			if ($key && $value)
 			{
-				$key_check = substr($key, 0, 4);
-				if ($key_check == 'code')
+				$keyCheck = substr($key, 0, 4);
+				if ($keyCheck == 'code')
 				{
-					$body .= $value;
+					$this->_bodyString .= $value;
 				}
 				else
 				{
-					$body .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
+					$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
 				}
 			}
 		}
 	}
 
-	/* collect header */
+	/**
+	 * buildHeaderString
+	 *
+	 * @since 1.3
+	 */
 
-	$header = 'mime-version: 1.0' . PHP_EOL;
-
-	/* if email attachment */
-
-	if (is_array($attachment_array))
+	protected function _buildHeaderString()
 	{
-		foreach ($attachment_array as $file_name => $file_contents)
+		/* collect header string */
+
+		$this->_headerString = 'mime-version: 1.0' . PHP_EOL;
+
+		/* if email attachment */
+
+		if (is_array($this->_attachmentArray))
 		{
-			$file_contents = chunk_split(base64_encode($file_contents));
-			$header .= 'content-type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
-			$header .= '--' . TOKEN . PHP_EOL;
-			if ($body)
+			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
-				$header .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
-				$header .= 'content-transfer-encoding: 8bit' . PHP_EOL . PHP_EOL;
-				$header .= $body . PHP_EOL . PHP_EOL;
-				$header .= '--' . TOKEN . PHP_EOL;
-				$body = '';
+				$fileContents = chunk_split(base64_encode($fileContents));
+				$this->_headerString .= 'content-type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= '--' . TOKEN . PHP_EOL;
+
+				/* integrate body string */
+
+				if ($this->_bodyString)
+				{
+					$this->_headerString .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
+					$this->_headerString .= 'content-transfer-encoding: 8bit' . PHP_EOL . PHP_EOL;
+					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
+					$this->_headerString .= '--' . TOKEN . PHP_EOL;
+					$this->_bodyString = '';
+				}
+				$this->_headerString .= 'content-type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
+				$this->_headerString .= 'content-transfer-encoding: base64' . PHP_EOL;
+				$this->_headerString .= 'content-disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
+				$this->_headerString .= '--' . TOKEN . '--';
 			}
-			$header .= 'content-type: application/octet-stream; name="' . $file_name . '"' . PHP_EOL;
-			$header .= 'content-transfer-encoding: base64' . PHP_EOL;
-			$header .= 'content-disposition: attachment; filename="' . $file_name . '"' . PHP_EOL . PHP_EOL;
-			$header .= $file_contents . PHP_EOL . PHP_EOL;
-			$header .= '--' . TOKEN . '--';
 		}
-	}
-	else
-	{
-		$header .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
-		$header .= 'return-path: <' . $from . '>';
-	}
-	$header .= 'from: ' . $from_string . PHP_EOL;
-	$header .= 'reply-to: ' . $from_string . PHP_EOL;
-
-	/* send email */
-
-	if (function_exists('mail'))
-	{
-		mail($to_string, $subject_string, $body, $header);
-	}
-}
-
-/**
- * curl contents
- *
- * @param string $url
- * @param string $referer
- * @param string $cookies
- * @return string
- */
-
-function curl_contents($url = '', $referer = '', $cookies = '')
-{
-	if (function_exists('curl_version'))
-	{
-		$handle = curl_init();
-		curl_setopt($handle, CURLOPT_URL, $url);
-
-		/* handle referer */
-
-		if ($referer)
+		else
 		{
-			curl_setopt($handle, CURLOPT_REFERER, $referer);
+			$this->_headerString .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
+			$this->_headerString .= 'return-path: <' . $this->_fromString . '>';
 		}
-		curl_setopt($handle, CURLOPT_POST, 1);
-		curl_setopt($handle, CURLOPT_POSTFIELDS, $_POST);
 
-		/* handle cookies */
+		/* from and reply */
 
-		if ($cookies)
+		$this->_headerString .= 'from: ' . $this->_fromString . PHP_EOL;
+		$this->_headerString .= 'reply-to: ' . $this->_fromString . PHP_EOL;
+	}
+
+	/**
+	 * send
+	 *
+	 * @since 1.3
+	 */
+
+	protected function _send()
+	{
+		foreach ($this->_toArray as $to => $toName)
 		{
-			curl_setopt($handle, CURLOPT_COOKIEJAR, $cookies);
-			curl_setopt($handle, CURLOPT_COOKIEFILE, $cookies);
+			/* fallback if numeric */
+
+			if (is_numeric($to))
+			{
+				$to = $toName;
+			}
+			$toString = $to . ' <' . $toName . '>';
+
+			/* send mail */
+
+			mail($toString, $this->_subjectString, $this->_bodyString, $this->_headerString);
 		}
-		curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, 0);
-		curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($handle, CURLOPT_TIMEOUT, 20);
-
-		/* collect output */
-
-		$output = curl_exec($handle);
-		curl_close($handle);
-		return $output;
 	}
 }
 ?>

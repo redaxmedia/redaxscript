@@ -72,7 +72,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * get task
+	 * getTask
 	 *
 	 * @since 1.3
 	 *
@@ -85,7 +85,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * get solution
+	 * getSolution
 	 *
 	 * @since 1.3
 	 *
@@ -98,7 +98,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * check operator
+	 * checkOperator
 	 *
 	 * @since 1.3
 	 *
@@ -125,7 +125,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * create captcha
+	 * createCaptcha
 	 *
 	 * @since 1.3
 	 *
