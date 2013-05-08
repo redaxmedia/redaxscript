@@ -71,7 +71,7 @@
 	position: relative;
 }
 
-a.has_tooltip
+.link_default.has_tooltip
 {
 	cursor: pointer;
 }

@@ -233,6 +233,12 @@
 
 <h3 class="title_content_sub">.has_tooltip > .tooltip + .tooltip_default</h3>
 
-<a class="has_tooltip">.has_tooltip
-	<span class="tooltip tooltip_default">.tooltip + .tooltip_default</span>
+<span class="has_tooltip">.has_tooltip (span > span)
+	<span class="tooltip tooltip_default">Lorem ipsum dolor sit amet.</span>
+</span>
+
+<br />
+
+<a class="link_default has_tooltip">.link_default + .has_tooltip (a > span)
+	<span class="tooltip tooltip_default">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
 </a>
