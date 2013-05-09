@@ -53,7 +53,7 @@ class Redaxscript_Detection
 
 	protected function _getParameter($parameter = '')
 	{
-		if ($_GET[$parameter])
+		if (isset($_GET[$parameter]))
 		{
 			/* clean parameter */
 
@@ -121,9 +121,10 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 	{
 		$this->_detection(array(
 			'parameter' => $this->_getParameter('l'),
-			'session' => $_SESSION[ROOT . '/language'],
+			'session' => isset($_SESSION[ROOT . '/language']) ? $_SESSION[ROOT . '/language'] : '',
 			'contents' => retrieve('language', LAST_TABLE, 'id', LAST_ID),
-			'settings' => s('language') === 'detect' ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : s('language'),
+			'settings' => s('language') === 'detect' ? '' : s('language'),
+			'browser' => isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : '',
 			'fallback' => 'en'
 		), 'language', 'languages/{type}.php');
 	}
@@ -151,7 +152,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 	{
 		$this->_detection(array(
 			'parameter' => $this->_getParameter('t'),
-			'session' => $_SESSION[ROOT . '/template'],
+			'session' => isset($_SESSION[ROOT . '/template']) ? $_SESSION[ROOT . '/template'] : '',
 			'contents' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
 			'settings' => s('template'),
 			'fallback' => 'default'

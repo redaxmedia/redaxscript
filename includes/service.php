@@ -127,8 +127,8 @@ class Redaxscript_Mail
 	{
 		/* build from string */
 
-		$from = $this->_from[0];
-		$fromName = $this->_from[1];
+		$from = isset($this->_from[0]) ? $this->_from[0] : '';
+		$fromName = isset($this->_from[1]) ? $this->_from[1] : '';
 
 		/* fallback if numeric */
 

@@ -57,6 +57,24 @@ class Redaxscript_Parser
 	);
 
 	/**
+	 * functionTerms
+	 * @var array
+	 */
+	protected $_functionTerms = array(
+		'curl',
+		'exec',
+		'eval',
+		'fopen',
+		'include',
+		'mysql',
+		'passthru',
+		'popen',
+		'shell',
+		'system',
+		'require'
+	);
+
+	/**
 	 * construct
 	 *
 	 * @since 1.3
@@ -85,6 +103,8 @@ class Redaxscript_Parser
 	{
 		foreach($this->_tags as $key => $value)
 		{
+			/* save tag related position */
+
 			$position = $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
 			/* call related function if tag found */
@@ -182,7 +202,6 @@ class Redaxscript_Parser
 			'</function>'
 		), '||', $input);
 		$parts = explode('||', $output);
-		$functionTerms = explode(', ', b('function_terms'));
 
 		/* parse needed parts */
 
@@ -199,9 +218,9 @@ class Redaxscript_Parser
 				ob_start();
 				foreach ($json as $function => $parameter)
 				{
-					/* validate allowed functions */
+					/* validate allowed function terms */
 
-					if (!in_array($function, $functionTerms))
+					if (!in_array($function, $this->_functionTerms))
 					{
 						call_user_func_array($function, $parameter);
 					}

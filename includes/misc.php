@@ -20,10 +20,6 @@ function b($name = '')
 	$b['html_tags'] = 'applet, base, basefont, bgsound, body, embed, font, form, frame, frameset, function, head, html, iframe, ilayer, img, input, layer, link, meta, object, table, title, xml';
 	$b['html_attributes'] = 'background, codebase, dynsrc, href, lowsrc, name, rel, src, type, url';
 
-	/* function */
-
-	$b['function_terms'] = 'curl, exec, eval, fopen, include, mysql, passthru, popen, shell, system, require';
-
 	/* default */
 
 	$b['default_alias'] = 'admin, loader, login, logout, password_reset, scripts, styles, registration, reminder';
