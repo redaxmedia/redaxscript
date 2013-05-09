@@ -2,7 +2,14 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. form default
+ * 2. default buttons
+ * 3. default fields
+ * 4. textarea dimensions
+ * 5. search elements
+ * 6. disabled and readonly
+ * 7. form default
+ * 8. form search
+ * 9. space between elements
  */
 
 /* @section 1. tag styling */
@@ -12,7 +19,81 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. form default */
+/* @section 2. default buttons */
+
+.field_button, .field_button_large, .field_button_search
+{
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	background: #f5f5f5;
+	border: 1px solid #eee;
+	border-radius: 0.25em;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 0.75em;
+	line-height: 2.25em;
+}
+
+.field_button_large
+{
+	font-size: 1.25em;
+}
+
+/* @section 3. default fields */
+
+.field_select, .field_text, .field_textarea_small
+{
+	width: 30%;
+}
+
+.dialog .field_text
+{
+	width: 100%;
+}
+
+.field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
+{
+	-moz-border-radius: 0.25em;
+	-moz-box-sizing: border-box;
+	-webkit-border-radius: 0.25em;
+	-webkit-box-sizing: border-box;
+	background: #f5f5f5;
+	border: 1px solid #eee;
+	border-radius: 0.25em;
+	box-sizing: border-box;
+	font-size: 1em;
+	padding: 0.5em;
+}
+
+/* @section 4. textarea dimensions */
+
+.field_textarea
+{
+	min-height: 10em;
+	width: 100%;
+}
+
+.field_textarea_small
+{
+	min-height: 5em;
+}
+
+/* @section 5. search elements */
+
+.field_button_search
+{
+	margin-left: 0.5em;
+}
+
+/* @section 6. disabled and readonly */
+
+.field_button.field_disabled, .field_button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
+{
+	cursor: default;
+	opacity: 0.7;
+}
+
+/* @section 7. form default */
 
 .form_default li
 {
@@ -23,4 +104,23 @@ textarea
 {
 	font-size: 0.875em;
 	display: block;
+}
+
+/* @section 8. form search */
+
+.form_search
+{
+	margin: 1em 0;
+}
+
+/* @section 9. space between elements */
+
+.box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
+{
+	margin-top: 1em;
+}
+
+.field_button + .field_button, .field_button_large + .field_button_large, .field_text + .field_button
+{
+	margin-left: 0.5em;
 }

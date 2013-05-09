@@ -4,6 +4,7 @@
  * 1. tag styling
  * 2. link default
  * 3. several titles
+ * 4. title dialog default
  */
 
 /* @section 1. tag styling */
@@ -49,4 +50,15 @@ pre
 {
 	margin-bottom: 0.75em;
 	margin-top: 1.5em;
+}
+
+/* @section 4. title dialog default */
+
+.title_dialog_default
+{
+	-moz-border-radius: 0.25em 0.25em 0 0;
+	-webkit-border-radius: 0.25em 0.25em 0 0;
+	background: #eee;
+	border-radius: 0.25em 0.25em 0 0;
+	padding: 0.75em;
 }
