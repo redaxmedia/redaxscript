@@ -83,7 +83,7 @@ function debugger_admin_panel_list_modules()
 
 function debugger_extras_end()
 {
-	global $hook;
+	global $hooks;
 
 	/* debug general */
 
@@ -105,11 +105,18 @@ function debugger_extras_end()
 		$debug['general']['mysql_version'] = substr($mysql_version, 0, strpos($mysql_version, '-'));
 	}
 
-	/* debug error */
+	/* debug last error */
 
 	if (function_exists('error_get_last'))
 	{
-		$debug['error'] = error_get_last();
+		$debug['last_error'] = error_get_last();
+	}
+
+	/* debug disabled functions */
+
+	if (function_exists('ini_get'))
+	{
+		$debug['disabled_functions'] = explode(',', ini_get('disable_functions'));
 	}
 
 	/* debug session */
@@ -120,17 +127,17 @@ function debugger_extras_end()
 		$debug['session'][$key] = $value;
 	}
 
-	/* debug constant */
+	/* debug constants */
 
-	$defined_constant = get_defined_constants(1);
-	foreach ($defined_constant['user'] as $key => $value)
+	$defined_constants = get_defined_constants(1);
+	foreach ($defined_constants['user'] as $key => $value)
 	{
-		$debug['constant'][$key] = $value;
+		$debug['constants'][$key] = $value;
 	}
 
-	/* debug hook */
+	/* debug hooks */
 
-	$debug['hook'] = $hook;
+	$debug['hooks'] = $hooks;
 
 	/* debug file */
 

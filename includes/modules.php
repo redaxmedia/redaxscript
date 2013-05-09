@@ -59,7 +59,7 @@ function modules_include()
 
 function hook($input = '')
 {
-	global $hook;
+	global $hooks;
 	static $modules_include;
 
 	/* get modules include */
@@ -76,7 +76,7 @@ function hook($input = '')
 		$function = $value . '_' . $input;
 		if (function_exists($function))
 		{
-			$hook[] = $function;
+			$hooks[] = $function;
 			$output .= call_user_func($function);
 		}
 	}

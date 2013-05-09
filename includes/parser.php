@@ -57,21 +57,27 @@ class Redaxscript_Parser
 	);
 
 	/**
-	 * functionTerms
+	 * forbiddenFunctions
 	 * @var array
 	 */
-	protected $_functionTerms = array(
+	protected $_forbiddenFunctions = array(
 		'curl',
+		'curl_exec',
+		'curl_multi_exec',
 		'exec',
 		'eval',
 		'fopen',
 		'include',
+		'include_once',
 		'mysql',
 		'passthru',
 		'popen',
+		'proc_open',
 		'shell',
+		'shell_exec',
 		'system',
-		'require'
+		'require',
+		'require_once'
 	);
 
 	/**
@@ -218,9 +224,9 @@ class Redaxscript_Parser
 				ob_start();
 				foreach ($json as $function => $parameter)
 				{
-					/* validate allowed function terms */
+					/* validate allowed functions */
 
-					if (!in_array($function, $this->_functionTerms))
+					if (!in_array($function, $this->_forbiddenFunctions))
 					{
 						call_user_func_array($function, $parameter);
 					}
