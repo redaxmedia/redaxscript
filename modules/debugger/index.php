@@ -47,6 +47,7 @@ function debugger_center_start()
 	if (FIRST_PARAMETER == 'debugger')
 	{
 		$error_log = file_get_contents('logs/error.log');
+		file_put_contents('logs/error.log', '');
 
 		/* if error log */
 
