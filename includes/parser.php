@@ -60,6 +60,7 @@ class Redaxscript_Parser
 	 * forbiddenFunctions
 	 * @var array
 	 */
+
 	protected $_forbiddenFunctions = array(
 		'curl',
 		'curl_exec',
