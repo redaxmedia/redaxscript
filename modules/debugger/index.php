@@ -13,6 +13,71 @@ function debugger_loader_start()
 }
 
 /**
+ * debugger render start
+ */
+
+function debugger_render_start()
+{
+	/* log error */
+
+	if (function_exists('ini_set'))
+	{
+		error_reporting(-1);
+		ini_set('log_errors', '1');
+		ini_set('error_log', 'logs/error.log');
+	}
+
+	/* break center */
+
+	if (FIRST_PARAMETER == 'debugger')
+	{
+		define('CENTER_BREAK', 1);
+		define('TITLE', l('debugger_debugger'));
+	}
+}
+
+/**
+ * debugger center start
+ */
+
+function debugger_center_start()
+{
+	/* collect output */
+
+	if (FIRST_PARAMETER == 'debugger')
+	{
+		$error_log = file_get_contents('logs/error.log');
+
+		/* if error log */
+
+		if ($error_log)
+		{
+			$output = '<div class="box_note note_warning">' . break_up($error_log) . '</div>';
+		}
+
+		/* else handle error */
+
+		else
+		{
+			$output = '<div class="box_note note_error">' . l('file_permission_grant') . l('colon') . ' logs/error.log' . l('point') . '</div>';
+		}
+		echo $output;
+	}
+}
+
+/**
+ * debugger panel modules
+ *
+ * @return string
+ */
+
+function debugger_admin_panel_list_modules()
+{
+	$output = '<li>' . anchor_element('internal', '', '', l('debugger_debugger'), 'debugger') . '</li>';
+	return $output;
+}
+
+/**
  * debugger extras end
  */
 
