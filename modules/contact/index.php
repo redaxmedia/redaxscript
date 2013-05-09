@@ -146,23 +146,40 @@ function contact_post()
 	{
 		$error = l('captcha_incorrect');
 	}
+
+	/* else send contact message */
+
 	else
 	{
-		/* send contact message */
+		/* prepare body parts */
 
-		$email_link = anchor_element('email', '', '', $email, $email);
+		$emailLink = anchor_element('email', '', '', $email);
 		if ($url)
 		{
-			$url_link = anchor_element('external', '', '', $url, $url);
+			$urlLink = anchor_element('external', '', '', $url);
 		}
-		$body_array = array(
+
+		/* prepare mail inputs */
+
+		$toArray = array(
+			s('author') => s('email')
+		);
+		$fromArray = array(
+			$author => $email
+		);
+		$subject = l('contact');
+		$bodyArray = array(
 			l('author') => $author . ' (' . MY_IP . ')',
-			l('email') => $email_link,
-			l('url') => $url_link,
-			'code1' => '<br />',
+			l('email') => $emailLink,
+			l('url') => $urlLink,
+			'<br />',
 			l('message') => $text
 		);
-		send_mail(s('email'), s('author'), $email, $author, l('contact'), $body_array);
+
+		/* mail object */
+
+		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+		$mail->send();
 	}
 
 	/* handle error */

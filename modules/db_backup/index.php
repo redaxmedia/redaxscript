@@ -23,18 +23,32 @@ function db_backup_render_start()
 		if (THIRD_PARAMETER == 'send')
 		{
 			define('CENTER_BREAK', 1);
-			$url_link = anchor_element('', '', '', ROOT, ROOT);
-			$file_name = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
-			$body_array = array(
-				l('url') => $url_link,
+
+			/* prepare body parts */
+
+			$urlLink = anchor_element('', '', '', ROOT);
+			$fileName = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
+
+			/* prepare mail inputs */
+
+			$toArray = $fromArray = array(
+				s('author') => s('email')
+			);
+			$subject = l('db_backup_database_backup');
+			$bodyArray = array(
+				l('url') => $urlLink,
 				l('database') => d('name'),
-				'code1' => '<br />',
+				'<br />',
 				l('message') => l('db_backup_save_attachment') . l('point')
 			);
-			$attachment_array = array(
-				$file_name => db_backup(1)
+			$attachmentArray = array(
+				$fileName => db_backup(1)
 			);
-			send_mail(s('email'), s('author'), s('email'), s('author'), l('db_backup_database_backup'), $body_array, $attachment_array);
+
+			/* mail object */
+
+			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
+			$mail->send();
 		}
 	}
 }

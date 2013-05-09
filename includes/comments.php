@@ -305,7 +305,7 @@ function comment_post()
 				l('article') => $articleLink
 			);
 
-			/* send with mail object */
+			/* mail object */
 
 			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
 			$mail->send();

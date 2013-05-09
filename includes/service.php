@@ -113,7 +113,6 @@ class Redaxscript_Mail
 			$this->_buildSubjectString();
 			$this->_buildBodyString();
 			$this->_buildHeaderString();
-			$this->_send();
 		}
 	}
 
@@ -252,7 +251,7 @@ class Redaxscript_Mail
 	 * @since 1.3
 	 */
 
-	protected function _send()
+	public function send()
 	{
 		foreach ($this->_toArray as $to => $toName)
 		{

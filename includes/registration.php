@@ -133,23 +133,31 @@ function registration_post()
 
 		/* send login information */
 
-		$login_route = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$login_link = anchor_element('', '', '', $login_route, $login_route);
-		$body_array = array(
+		$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
+		$loginLink = anchor_element('', '', '', $loginRoute);
+		$toArray = array(
+			$name => $email
+		);
+		if (s('notification') == 1)
+		{
+			$toArray[s('author')] = s('email');
+		}
+		$fromArray = array(
+			$author => $email
+		);
+		$subject = l('registration');
+		$bodyArray = array(
 			l('name') => $name . ' (' . MY_IP . ')',
 			l('user') => $user,
 			l('password') => $password,
-			'code1' => '<br />',
-			l('login') => $login_link
+			'<br />',
+			l('login') => $loginLink
 		);
-		send_mail($email, $name, s('email'), s('author'), l('registration'), $body_array);
 
-		/* send user notification */
+		/* mail object */
 
-		if (s('notification') == 1)
-		{
-			send_mail(s('email'), s('author'), $email, $name, l('user_new'), $body_array);
-		}
+		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+		$mail->send();
 
 		/* build key and value strings */
 

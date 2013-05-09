@@ -99,14 +99,25 @@ function reminder_post()
 
 				/* send reminder information */
 
-				$password_reset_route = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
-				$password_reset_link = anchor_element('', '', '', $password_reset_route, $password_reset_route);
-				$body_array = array(
-					l('user') => $user,
-					'code1' => '<br />',
-					l('password_reset') => $password_reset_link
+				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
+				$passwordResetLink = anchor_element('', '', '', $passwordResetRoute);
+				$toArray = array(
+					s('author') => s('email')
 				);
-				send_mail($email, $name, s('email'), s('author'), l('reminder'), $body_array);
+				$fromArray = array(
+					$author => $email
+				);
+				$subject = l('reminder');
+				$bodyArray = array(
+					l('user') => $user,
+					'<br />',
+					l('password_reset') => $passwordResetLink
+				);
+
+				/* mail object */
+
+				$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+				$mail->send();
 			}
 		}
 	}

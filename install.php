@@ -224,16 +224,24 @@ function install()
 		mysql_query($value);
 	}
 
-	/* email login information */
+	/* send login information */
 
-	$url_link = anchor_element('', '', '', ROOT, ROOT);
-	$body_array = array(
+	$urlLink = anchor_element('external', '', '', ROOT);
+	$toArray = $fromArray = array(
+		$name => $email
+	);
+	$subject = l('installation');
+	$bodyArray = array(
 		l('user') => $user,
 		l('password') => $password,
-		code1 => '<br />',
-		l('url') => $url_link
+		'<br />',
+		l('url') => $urlLink
 	);
-	send_mail($email, $name, s('email'), s('author'), l('installation'), $body_array);
+
+	/* mail object */
+
+	$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+	$mail->send();
 }
 
 /*

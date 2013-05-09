@@ -95,14 +95,25 @@ function password_reset_post()
 	{
 		/* send new password */
 
-		$login_route = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$login_link = anchor_element('', '', '', $login_route, $login_route);
+		$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
+		$loginLink = anchor_element('', '', '', $loginRoute);
+		$toArray = array(
+			$my_name => $my_email
+		);
+		$fromArray = array(
+			s('author') => s('email')
+		);
+		$subject = l('password_new');
 		$body_array = array(
 			l('password_new') => $password,
-			'code1' => '<br />',
-			l('login') => $login_link
+			'<br />',
+			l('login') => $loginLink
 		);
-		send_mail($my_email, $my_name, s('email'), s('author'), l('password_new'), $body_array);
+
+		/* mail object */
+
+		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+		$mail->send();
 
 		/* update password */
 
