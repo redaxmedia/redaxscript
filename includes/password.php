@@ -104,7 +104,7 @@ function password_reset_post()
 			s('author') => s('email')
 		);
 		$subject = l('password_new');
-		$body_array = array(
+		$bodyArray = array(
 			l('password_new') => $password,
 			'<br />',
 			l('login') => $loginLink
