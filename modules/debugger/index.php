@@ -67,7 +67,7 @@ function debugger_center_start()
 }
 
 /**
- * debugger panel modules
+ * debugger admin panel panel list modules
  *
  * @return string
  */
@@ -155,7 +155,7 @@ function debugger_extras_end()
 	{
 		if (count($value))
 		{
-			$output .= '<h3 class="title_extra title_debugger">Debug: ' . $key . '</h3><div class="box_extra box_debugger "><ul class="js_list_debugger list_debugger">';
+			$output .= '<h3 class="title_extra title_debugger">Debug: ' . $key . '</h3><div class="box_extra box_debugger"><ul class="js_list_debugger list_debugger">';
 			foreach ($value as $key_sub => $value_sub)
 			{
 				$output .= '<li>';

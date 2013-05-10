@@ -85,7 +85,7 @@ function file_manager_center_start()
 }
 
 /**
- * file manager panel modules
+ * file manager admin panel panel list modules
  *
  * @return string
  */

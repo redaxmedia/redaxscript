@@ -66,7 +66,7 @@ function db_backup_center_start()
 }
 
 /**
- * db backup panel modules
+ * db backup admin panel panel list modules
  *
  * @return string
  */
