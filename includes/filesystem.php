@@ -1,73 +1,135 @@
 <?php
 
 /**
- * read directory
+ * Redaxscript Read Directory
  *
- * @param string $input
- * @param string|array $ignore
- * @return array
+ * @since 1.3
+ *
+ * @category Filesystem
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-function read_directory($input = '', $ignore = '')
+class Redaxscript_Directory
 {
-	$handle = opendir($input);
-	while ($value = readdir($handle))
-	{
-		$output[] = $value;
-	}
+	/**
+	 * directory
+	 * @var array
+	 */
 
-	/* collect output */
+	private $_directory;
 
-	if ($output)
+	/**
+	 * ignore
+	 * @var array
+	 */
+
+	protected $_ignore = array(
+		'.',
+		'..'
+	);
+
+	/**
+	 * construct
+	 *
+	 * @since 1.3
+	 *
+	 * @param string $directory
+	 * @param string|array $ignore
+	 */
+
+	public function __construct($directory = '', $ignore = '')
 	{
-		if (is_array($ignore) == '')
+		$this->_directory = scandir($directory);
+		if (!is_array($ignore))
 		{
 			$ignore = array(
 				$ignore
 			);
 		}
-		$ignore[] = '.';
-		$ignore[] = '..';
-		$output = array_diff($output, $ignore);
-		sort($output);
+		$this->_ignore = array_merge($this->_ignore, $ignore);
+
+		/* call init */
+
+		$this->init();
 	}
-	return $output;
-}
 
-/**
- * remove directory
- *
- * @param string $input
- * @param integer $mode
- */
+	/**
+	 * init
+	 *
+	 * @since 1.3
+	 */
 
-function remove_directory($input = '', $mode = '')
-{
-	$input_directory = read_directory($input);
-
-	/* delete file and directory */
-
-	if (is_array($input_directory))
+	public function init()
 	{
-		foreach ($input_directory as $value)
+		/* filter directory */
+
+		$this->_directory = array_diff($this->_directory, $this->_ignore);
+	}
+
+	/**
+	 * getOutput
+	 *
+	 * @since 1.3
+	 *
+	 * @return array $_directory
+	 */
+
+	public function getOutput()
+	{
+		return $this->_directory;
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param array $directory
+	 * @param boolean $recursive
+	 *
+	 * @since 1.3
+	 */
+
+	public function remove($directory = 'this', $recursive = true)
+	{
+		if ($directory === 'this')
 		{
-			$route = $input . '/' . $value;
-			if (is_dir($route))
+			$directory = $this->_directory;
+		}
+		else
+		{
+			$directory = scandir($directory);
+		}
+
+		/* walk directory array */
+
+		if (is_array($directory))
+		{
+			foreach ($directory as $value)
 			{
-				remove_directory($route, 1);
-			}
-			else
-			{
-				unlink($route);
+				$route = $directory . '/' . $value;
+
+				/* remove if directory */
+
+				if (is_dir($route))
+				{
+					$this->remove($route, true);
+				}
+
+				/* else unlink file */
+
+				else
+				{
+					unlink($route);
+				}
 			}
 		}
-	}
 
-	/* delete directory itself */
+		/* else remove directory */
 
-	if ($mode == 1)
-	{
-		rmdir($input);
+		else if (is_dir($directory) && $recursive === true)
+		{
+			rmdir($directory);
+		}
 	}
 }
 ?>

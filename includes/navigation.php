@@ -250,10 +250,14 @@ function languages_list($options = '')
 		}
 	}
 
-	/* read languages directory */
+	/* languages directory object */
 
-	$languages_directory = read_directory('languages', 'misc.php');
-	foreach ($languages_directory as $value)
+	$languages_drectory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory_array = $languages_directory->getOutput();
+
+	/* collect languages output */
+
+	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
 		$class_string = ' class="language_' . $value;
@@ -314,10 +318,17 @@ function templates_list($options = '')
 		}
 	}
 
-	/* read templates directory */
+	/* templates directory object */
 
-	$templates_directory = read_directory('templates', array('admin', 'install'));
-	foreach ($templates_directory as $value)
+	$templates_directory = New Redaxscript_Directory('templates', array(
+		'admin',
+		'install'
+	));
+	$templates_directory_array = $templates_directory->getOutput();
+
+	/* collect templates output */
+
+	foreach ($templates_directory_array as $value)
 	{
 		$class_string = ' class="template_' . $value;
 		if ($value == TEMPLATE)

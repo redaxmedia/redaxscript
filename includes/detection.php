@@ -63,26 +63,26 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * detection
+	 * detect
 	 *
 	 * @since 1.3
 	 *
-	 * @param $input array
-	 * @param $type string
-	 * @param $path string
+	 * @param array $input
+	 * @param string $type
+	 * @param string $route
 	 */
 
-	protected function _detection($input = '', $type = '', $path = '')
+	protected function _detect($input = '', $type = '', $route = '')
 	{
 		foreach ($input as $key => $value)
 		{
 			if ($value)
 			{
-				$path = str_replace('{type}', $value, $path);
+				$file = str_replace('{type}', $value, $route);
 
 				/* if file exists */
 
-				if (file_exists($path))
+				if (file_exists($file))
 				{
 					$this->_output = $value;
 
@@ -119,7 +119,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 
 	public function init()
 	{
-		$this->_detection(array(
+		$this->_detect(array(
 			'parameter' => $this->_getParameter('l'),
 			'session' => isset($_SESSION[ROOT . '/language']) ? $_SESSION[ROOT . '/language'] : '',
 			'contents' => retrieve('language', LAST_TABLE, 'id', LAST_ID),
@@ -150,7 +150,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 
 	public function init()
 	{
-		$this->_detection(array(
+		$this->_detect(array(
 			'parameter' => $this->_getParameter('t'),
 			'session' => isset($_SESSION[ROOT . '/template']) ? $_SESSION[ROOT . '/template'] : '',
 			'contents' => retrieve('template', LAST_TABLE, 'id', LAST_ID),

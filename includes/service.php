@@ -78,12 +78,12 @@ class Redaxscript_Mail
 	 * construct
 	 *
 	 * @since 1.3
-	 * 
-	 * @param $toArray array
-	 * @param $fromArray array
-	 * @param $subject string
-	 * @param $bodyArray array
-	 * @param $attachmentArray array
+	 *
+	 * @param array $toArray
+	 * @param array $fromArray
+	 * @param string $subject
+	 * @param array $bodyArray
+	 * @param array $attachmentArray
 	 */
 
 	public function __construct($toArray = '', $fromArray = '', $subject = '', $bodyArray = '', $attachmentArray = '')

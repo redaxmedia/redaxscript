@@ -86,8 +86,8 @@ class Redaxscript_Parser
 	 *
 	 * @since 1.3
 	 *
-	 * @param $input string
-	 * @param $route string
+	 * @param string $input
+	 * @param string $route
 	 */
 
 	public function __construct($input = '', $route = '')
@@ -142,8 +142,8 @@ class Redaxscript_Parser
 	 *
 	 * @since 1.3
 	 *
-	 * @param $input string
-	 * @return $output string
+	 * @param string $input
+	 * @return string $output
 	 */
 
 	protected function _parseBreak($input = '')
@@ -168,8 +168,8 @@ class Redaxscript_Parser
 	 *
 	 * @since 1.3
 	 *
-	 * @param $input string
-	 * @return $output string
+	 * @param string $input
+	 * @return string $output
 	 */
 
 	protected function _parseCode($input = '')
@@ -198,8 +198,8 @@ class Redaxscript_Parser
 	 *
 	 * @since 1.3
 	 *
-	 * @param $input string
-	 * @return $output string
+	 * @param string $input
+	 * @return string $output
 	 */
 
 	protected function _parseFunction($input = '')

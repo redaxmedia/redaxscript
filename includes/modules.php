@@ -8,7 +8,7 @@
 
 function modules_include()
 {
-	static $modules_installed, $modules_directory;
+	static $modules_installed_array, $modules_directory_array;
 
 	/* query installed modules */
 
@@ -34,18 +34,19 @@ function modules_include()
 		}
 	}
 
-	/* read modules directory */
+	/* modules directory object */
 
-	if ($modules_directory == '')
+	if ($modules_directory_array == '')
 	{
-		$modules_directory = read_directory('modules');
+		$modules_directory = New Redaxscript_Directory('modules');
+		$modules_directory_array = $modules_directory->getOutput();
 	}
 
 	/* intersect modules diretory and modules installed */
 
-	if ($modules_directory && $modules_installed)
+	if ($modules_directory_array && $modules_installed_array)
 	{
-		$output = array_intersect($modules_directory, $modules_installed);
+		$output = array_intersect($modules_directory_array, $modules_installed_array);
 	}
 	return $output;
 }
