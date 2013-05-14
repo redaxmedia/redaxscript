@@ -12,7 +12,7 @@ function modules_include()
 
 	/* query installed modules */
 
-	if ($modules_installed == '')
+	if ($modules_installed_array == '')
 	{
 		$query = 'SELECT alias, access FROM ' . PREFIX . 'modules WHERE status = 1';
 		$result = mysql_query($query);
@@ -28,7 +28,7 @@ function modules_include()
 
 				if ($check_access == 1)
 				{
-					$modules_installed[] = $alias;
+					$modules_installed_array[] = $alias;
 				}
 			}
 		}
