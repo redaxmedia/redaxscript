@@ -213,11 +213,15 @@ function admin_users_form()
 
 	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
 
+	/* languages directory object */
+
+	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory_array = $languages_directory->getOutput();
+
 	/* build languages select */
 
 	$language_array[l('select')] = '';
-	$languages_directory = read_directory('languages', 'misc.php');
-	foreach ($languages_directory as $value)
+	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
 		$language_array[l($value)] = $value;

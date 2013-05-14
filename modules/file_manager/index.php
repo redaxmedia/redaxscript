@@ -131,13 +131,17 @@ function file_manager($directory = '')
 	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_manager_file_size') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><th class="column_second">' . l('file_manager_file_size') . '</th><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 
-	/* read file manager directory */
+	/* file manager directory object */
 
-	$file_manager_directory = read_directory($directory);
-	if (count($file_manager_directory))
+	$file_manager_directory = New Redaxscript_Directory($directory);
+	$file_manager_directory_array = $file_manager_directory->getOutput();
+
+	/* collect directory output */
+
+	if (count($file_manager_directory_array) > 1)
 	{
 		$output .= '<tbody>';
-		foreach ($file_manager_directory as $key => $value)
+		foreach ($file_manager_directory_array as $key => $value)
 		{
 			$output .= '<tr><td class="column_first">';
 			$route = $directory . '/' . $value;

@@ -252,7 +252,7 @@ function languages_list($options = '')
 
 	/* languages directory object */
 
-	$languages_drectory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
 	$languages_directory_array = $languages_directory->getOutput();
 
 	/* collect languages output */

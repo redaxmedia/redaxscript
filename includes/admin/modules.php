@@ -46,7 +46,7 @@ function admin_modules_list()
 						$$key = stripslashes($value);
 					}
 				}
-				$modules_installed[] = $alias;
+				$modules_installed_array[] = $alias;
 				$file_install = file_exists('modules/' . $alias . '/install.php');
 
 				/* build class string */
@@ -106,19 +106,22 @@ function admin_modules_list()
 
 	if (MODULES_INSTALL == 1)
 	{
-		$modules_directory = read_directory('modules');
-		if ($modules_directory && $modules_installed)
+		/* modules directory object */
+
+		$modules_directory = New Redaxscript_Directory('modules');
+		$modules_directory_array = $modules_directory->getOutput();
+		if ($modules_directory_array && $modules_installed_array)
 		{
-			$modules_not_installed = array_diff($modules_directory, $modules_installed);
+			$modules_not_installed_array = array_diff($modules_directory_array, $modules_installed_array);
 		}
-		else if ($modules_directory)
+		else if ($modules_directory_array)
 		{
-			$modules_not_installed = $modules_directory;
+			$modules_not_installed_array = $modules_directory_array;
 		}
-		if ($modules_not_installed)
+		if ($modules_not_installed_array)
 		{
 			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
-			foreach ($modules_not_installed as $alias)
+			foreach ($modules_not_installed_array as $alias)
 			{
 				$file_install = file_exists('modules/' . $alias . '/install.php');
 				if ($file_install)

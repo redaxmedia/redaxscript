@@ -517,24 +517,34 @@ function admin_contents_form()
 
 	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
 
+	/* languages directory object */
+
+	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory_array = $languages_directory->getOutput();
+
 	/* build languages select */
 
 	$language_array[l('select')] = '';
-	$languages_directory = read_directory('languages', 'misc.php');
-	foreach ($languages_directory as $value)
+	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
 		$language_array[l($value)] = $value;
 	}
 	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, $language, l('language')) . '</li>';
-
-	/* build templates select */
-
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
+		/* templates directory object */
+
+		$templates_directory = New Redaxscript_Directory('templates', array(
+			'admin',
+			'install'
+		));
+		$templates_directory_array = $templates_directory->getOutput();
+
+		/* build templates select */
+
 		$template_array[l('select')] = '';
-		$templates_directory = read_directory('templates', array('admin', 'install'));
-		foreach ($templates_directory as $value)
+		foreach ($templates_directory_array as $value)
 		{
 			$template_array[$value] = $value;
 		}

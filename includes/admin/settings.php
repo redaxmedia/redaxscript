@@ -16,24 +16,35 @@ function admin_settings_form()
 	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">' . l('general') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_admin">';
 
+	/* languages directory object */
+
+	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory_array = $languages_directory->getOutput();
+
 	/* build languages select */
 
-	$language_directory = read_directory('languages', 'misc.php');
-	if (count($language_directory) > 1)
+	if (count($languages_directory_array) > 1)
 	{
 		$language_array[l('detect')] = 'detect';
 	}
-	foreach ($language_directory as $value)
+	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
 		$language_array[l($value)] = $value;
 	}
 	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, s('language'), l('language')) . '</li>';
 
+	/* templates directory object */
+
+	$templates_directory = New Redaxscript_Directory('templates', array(
+		'admin',
+		'install'
+	));
+	$templates_directory_array = $templates_directory->getOutput();
+
 	/* build templates select */
 
-	$templates_directory = read_directory('templates', array('admin', 'install'));
-	$output .= '<li>' . select_element('template', 'field_select_admin', 'template', $templates_directory, s('template'), l('template')) . '</li>';
+	$output .= '<li>' . select_element('template', 'field_select_admin', 'template', $templates_directory_array, s('template'), l('template')) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect metadata set */

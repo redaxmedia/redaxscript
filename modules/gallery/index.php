@@ -87,12 +87,18 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 	else
 	{
-		$gallery_directory = read_directory($directory, 'thumbs');
-		$gallery_total = count($gallery_directory);
+		/* gallery directory object */
+
+		$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
+		$gallery_directory_array = $file_manager_directory->getOutput();
+
+		/* collect gallery */
+
+		$gallery_total = count($gallery_directory_array);
 		$gallery_name = str_replace('/', '_', $directory);
 		if ($gallery_total)
 		{
-			foreach ($gallery_directory as $value)
+			foreach ($gallery_directory_array as $value)
 			{
 				$route = $directory . '/' . $value;
 				$thumb_route = $directory . '/thumbs/' . $value;
