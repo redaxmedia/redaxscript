@@ -64,7 +64,10 @@ function file_manager_center_start()
 			}
 			else
 			{
-				remove_directory(FILE_MANAGER_DIRECTORY, 1);
+				/* file manager directory object */
+
+				$file_manager_directory = New Redaxscript_Directory($directory);
+				$file_manager_directory->remove();
 			}
 		}
 

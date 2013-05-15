@@ -165,7 +165,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 		else
 		{
-			remove_directory($directory . '/thumbs', 1);
+			$gallery_directory->remove($directory . '/thumbs');
 		}
 	}
 }
