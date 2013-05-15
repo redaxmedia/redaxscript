@@ -86,7 +86,7 @@ class Redaxscript_Mail
 	 * @param $attachmentArray array
 	 */
 
-	public function __construct($toArray = '', $fromArray = '', $subject = '', $bodyArray = '', $attachmentArray = '')
+	public function __construct($toArray = array(), $fromArray = array(), $subject = '', $bodyArray = array(), $attachmentArray = array())
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
@@ -126,8 +126,8 @@ class Redaxscript_Mail
 	{
 		/* build from string */
 
-		$from = isset($this->_from[0]) ? $this->_from[0] : '';
-		$fromName = isset($this->_from[1]) ? $this->_from[1] : '';
+		$from = isset($this->_fromArray[0]) ? $this->_fromArray[0] : '';
+		$fromName = isset($this->_fromArray[1]) ? $this->_fromArray[1] : '';
 
 		/* fallback if numeric */
 
