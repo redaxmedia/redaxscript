@@ -66,8 +66,13 @@ function file_manager_center_start()
 			{
 				/* file manager directory object */
 
-				$file_manager_directory = New Redaxscript_Directory($directory);
-				$file_manager_directory->remove();
+				$file_manager_directory = New Redaxscript_Directory(FILE_MANAGER_DIRECTORY);
+				$file_manager_directory_string = $file_manager_directory->getOutput(ID_PARAMETER);
+
+				/* unlink file */
+
+				$file_manager_directory_route = FILE_MANAGER_DIRECTORY . '/' . $file_manager_directory_string;
+				unlink($file_manager_directory_route);
 			}
 		}
 
@@ -115,7 +120,7 @@ function file_manager($directory = '')
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_create') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
-	else if (chmod($directory, 0777))
+	else if (decoct(fileperms($directory)) != 40777)
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}

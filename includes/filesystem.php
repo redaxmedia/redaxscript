@@ -14,17 +14,24 @@ class Redaxscript_Directory
 {
 	/**
 	 * directory
-	 * @var array
+	 * @var string
 	 */
 
 	private $_directory;
+
+	/**
+	 * directoryArray
+	 * @var array
+	 */
+
+	private $_directoryArray;
 
 	/**
 	 * ignore
 	 * @var array
 	 */
 
-	protected $_ignore = array(
+	protected $_ignoreArray = array(
 		'.',
 		'..'
 	);
@@ -40,14 +47,15 @@ class Redaxscript_Directory
 
 	public function __construct($directory = '', $ignore = '')
 	{
-		$this->_directory = scandir($directory);
+		$this->_directory = $directory;
+		$this->_directoryArray = scandir($directory);
 		if (!is_array($ignore))
 		{
 			$ignore = array(
 				$ignore
 			);
 		}
-		$this->_ignore = array_merge($this->_ignore, $ignore);
+		$this->_ignoreArray = array_merge($this->_ignoreArray, $ignore);
 
 		/* call init */
 
@@ -64,7 +72,7 @@ class Redaxscript_Directory
 	{
 		/* filter directory */
 
-		$this->_directory = array_diff($this->_directory, $this->_ignore);
+		$this->_directoryArray = array_diff($this->_directoryArray, $this->_ignoreArray);
 	}
 
 	/**
@@ -72,18 +80,26 @@ class Redaxscript_Directory
 	 *
 	 * @since 1.3
 	 *
-	 * @return array $_directory
+	 * @param string|number $key
+	 * @return array $_directoryArray
 	 */
 
-	public function getOutput()
+	public function getOutput($key = '')
 	{
-		return $this->_directory;
+		if (array_key_exists($key, $this->_directoryArray))
+		{
+			return $this->_directoryArray[$key];
+		}
+		else
+		{
+			return $this->_directoryArray;
+		}
 	}
 
 	/**
 	 * remove
 	 *
-	 * @param array $directory
+	 * @param string $directory
 	 * @param boolean $recursive
 	 *
 	 * @since 1.3
@@ -94,17 +110,18 @@ class Redaxscript_Directory
 		if ($directory === 'this')
 		{
 			$directory = $this->_directory;
+			$directoryArray = $this->_directoryArray;
 		}
 		else
 		{
-			$directory = scandir($directory);
+			$directoryArray = scandir($directory);
 		}
 
 		/* walk directory array */
 
-		if (is_array($directory))
+		if (is_array($directoryArray))
 		{
-			foreach ($directory as $value)
+			foreach ($directoryArray as $value)
 			{
 				$route = $directory . '/' . $value;
 
@@ -112,6 +129,7 @@ class Redaxscript_Directory
 
 				if (is_dir($route))
 				{
+					
 					$this->remove($route, true);
 				}
 

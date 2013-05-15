@@ -146,12 +146,12 @@ class Redaxscript_Captcha
 		/* operator */
 
 		$c = $this->_checkOperator();
-		$d = $this->_operators[$c];
+		$operator = $this->_operators[$c];
 
 		/* solution and task */
 
 		$this->_solution = sha1($a + $b * $c);
-		$this->_task = l($a) . ' ' . l($d) . ' ' . l($b);
+		$this->_task = l($a) . ' ' . l($operator) . ' ' . l($b);
 	}
 }
 ?>
