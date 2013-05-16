@@ -69,10 +69,9 @@ function file_manager_center_start()
 				$file_manager_directory = New Redaxscript_Directory(FILE_MANAGER_DIRECTORY);
 				$file_manager_directory_string = $file_manager_directory->getOutput(ID_PARAMETER);
 
-				/* remove files */
+				/* remove related children */
 
-				$file_manager_directory_route = FILE_MANAGER_DIRECTORY . '/' . $file_manager_directory_string;
-				$file_manager_directory->remove($file_manager_directory_route);
+				$file_manager_directory->remove($file_manager_directory_string);
 			}
 		}
 

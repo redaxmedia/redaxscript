@@ -105,20 +105,20 @@ class Redaxscript_Directory
 	 * remove
 	 *
 	 * @param string $directory
-	 * @param boolean $recursive
 	 *
 	 * @since 1.3
 	 */
 
-	public function remove($directory = 'this', $recursive = true)
+	public function remove($directory = '')
 	{
-		if ($directory === 'this')
+		if (!$directory)
 		{
 			$directory = $this->_directory;
 			$directoryArray = $this->_directoryArray;
 		}
-		else if (is_dir($directory))
+		else
 		{
+			$directory = $this->_directory . '/' . $directory;
 			$directoryArray = scandir($directory);
 			$directoryArray = array_diff($directoryArray, $this->_ignoreArray);
 		}
@@ -129,20 +129,29 @@ class Redaxscript_Directory
 		{
 			$route = $directory . '/' . $children;
 
-			if ($recursive === true)
+			/* remove if directory */
+			
+			if (is_dir($route))
 			{
-				self::remove($route);
+				$this->remove($route);
+			}
+
+			/* else unlink file */
+
+			else if (is_file($route))
+			{
+				unlink($route);
 			}
 		}
 
-		/* remove directory */
+		/* remove if directory */
 
 		if (is_dir($directory))
 		{
 			rmdir($directory);
 		}
 
-		/* remove file */
+		/* else unlink file */
 
 		else if (is_file($directory))
 		{

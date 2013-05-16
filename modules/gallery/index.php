@@ -76,22 +76,22 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 		}
 	}
 
+	/* gallery directory object */
+
+	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
+	$gallery_directory_array = $gallery_directory->getOutput();
+
 	/* delete gallery thumbs directory */
 
 	if ($command == 'delete')
 	{
-		remove_directory($directory . '/thumbs', 1);
+		$gallery_directory->remove('thumbs');
 	}
 
 	/* else show gallery thumbs */
 
 	else
 	{
-		/* gallery directory object */
-
-		$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
-		$gallery_directory_array = $file_manager_directory->getOutput();
-
 		/* collect gallery */
 
 		$gallery_total = count($gallery_directory_array);
@@ -165,7 +165,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 		else
 		{
-			$gallery_directory->remove($directory . '/thumbs');
+			$gallery_directory->remove('thumbs');
 		}
 	}
 }
