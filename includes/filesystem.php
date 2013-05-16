@@ -80,16 +80,21 @@ class Redaxscript_Directory
 	 *
 	 * @since 1.3
 	 *
-	 * @param string|number $key
+	 * @param number $key
 	 * @return array $_directoryArray
 	 */
 
 	public function getOutput($key = '')
 	{
+		/* single value */
+
 		if (array_key_exists($key, $this->_directoryArray))
 		{
 			return $this->_directoryArray[$key];
 		}
+
+		/* else array */
+
 		else
 		{
 			return $this->_directoryArray;
@@ -112,41 +117,36 @@ class Redaxscript_Directory
 			$directory = $this->_directory;
 			$directoryArray = $this->_directoryArray;
 		}
-		else
+		else if (is_dir($directory))
 		{
 			$directoryArray = scandir($directory);
+			$directoryArray = array_diff($directoryArray, $this->_ignoreArray);
 		}
 
 		/* walk directory array */
 
-		if (is_array($directoryArray))
+		foreach ($directoryArray as $children)
 		{
-			foreach ($directoryArray as $value)
+			$route = $directory . '/' . $children;
+
+			if ($recursive === true)
 			{
-				$route = $directory . '/' . $value;
-
-				/* remove if directory */
-
-				if (is_dir($route))
-				{
-					
-					$this->remove($route, true);
-				}
-
-				/* else unlink file */
-
-				else
-				{
-					unlink($route);
-				}
+				self::remove($route);
 			}
 		}
 
-		/* else remove directory */
+		/* remove directory */
 
-		else if (is_dir($directory) && $recursive === true)
+		if (is_dir($directory))
 		{
 			rmdir($directory);
+		}
+
+		/* remove file */
+
+		else if (is_file($directory))
+		{
+			unlink($directory);
 		}
 	}
 }

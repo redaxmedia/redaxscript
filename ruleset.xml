@@ -18,7 +18,7 @@
 
 	<rule ref="Generic.Files.LineEndings">
 		<properties>
-			<property name="eolChar" value="\r\n"/>
+			<property name="eolChar" value="\r\n" />
 		</properties>
 	</rule>
 </ruleset>

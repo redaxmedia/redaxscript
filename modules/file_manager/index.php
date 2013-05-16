@@ -69,10 +69,10 @@ function file_manager_center_start()
 				$file_manager_directory = New Redaxscript_Directory(FILE_MANAGER_DIRECTORY);
 				$file_manager_directory_string = $file_manager_directory->getOutput(ID_PARAMETER);
 
-				/* unlink file */
+				/* remove files */
 
 				$file_manager_directory_route = FILE_MANAGER_DIRECTORY . '/' . $file_manager_directory_string;
-				unlink($file_manager_directory_route);
+				$file_manager_directory->remove($file_manager_directory_route);
 			}
 		}
 
@@ -146,7 +146,7 @@ function file_manager($directory = '')
 
 	/* collect directory output */
 
-	if (count($file_manager_directory_array) > 1)
+	if (count($file_manager_directory_array))
 	{
 		$output .= '<tbody>';
 		foreach ($file_manager_directory_array as $key => $value)
