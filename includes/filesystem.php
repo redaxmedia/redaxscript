@@ -49,6 +49,9 @@ class Redaxscript_Directory
 	{
 		$this->_directory = $directory;
 		$this->_directoryArray = scandir($directory);
+
+		/* handle and merge ignore */
+
 		if (!is_array($ignore))
 		{
 			$ignore = array(
@@ -86,14 +89,14 @@ class Redaxscript_Directory
 
 	public function getOutput($key = '')
 	{
-		/* single value */
+		/* return single value */
 
 		if (array_key_exists($key, $this->_directoryArray))
 		{
 			return $this->_directoryArray[$key];
 		}
 
-		/* else array */
+		/* else return array */
 
 		else
 		{
@@ -111,11 +114,16 @@ class Redaxscript_Directory
 
 	public function remove($directory = '')
 	{
+		/* handle parent directory */
+
 		if (!$directory)
 		{
 			$directory = $this->_directory;
 			$directoryArray = $this->_directoryArray;
 		}
+
+		/* else handle children diretory */
+
 		else
 		{
 			$directory = $this->_directory . '/' . $directory;
