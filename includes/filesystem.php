@@ -130,7 +130,7 @@ class Redaxscript_Directory
 			$route = $directory . '/' . $children;
 
 			/* remove if directory */
-			
+
 			if (is_dir($route))
 			{
 				$this->remove($route);
