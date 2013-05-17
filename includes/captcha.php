@@ -50,7 +50,6 @@ class Redaxscript_Captcha
 	 * construct
 	 *
 	 * @since 1.3
-	 *
 	 */
 
 	public function __construct()
@@ -128,7 +127,6 @@ class Redaxscript_Captcha
 	 * createCaptcha
 	 *
 	 * @since 1.3
-	 *
 	 */
 
 	protected function _createCaptcha()

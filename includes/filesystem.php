@@ -107,9 +107,9 @@ class Redaxscript_Directory
 	/**
 	 * remove
 	 *
-	 * @param string $directory
-	 *
 	 * @since 1.3
+	 * 
+	 * @param string $directory
 	 */
 
 	public function remove($directory = '')
