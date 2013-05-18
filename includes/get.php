@@ -110,11 +110,13 @@ function get_route($mode = '')
 				$last_value = end($parameter);
 				if (is_numeric($last_value))
 				{
-					$last = end(array_keys($parameter));
+					$parameter_keys = array_keys($parameter);
+					$last = end($parameter_keys);
 					unset($parameter[$last]);
 				}
 			}
-			$last = end(array_keys($parameter));
+			$parameter_keys = array_keys($parameter);
+			$last = end($parameter_keys);
 			foreach ($parameter as $key => $value)
 			{
 				$output .= $value;

@@ -21,7 +21,8 @@ function seo_tube_scripts_end()
 	global $video_content;
 	if ($video_content)
 	{
-		$last = end(array_keys($video_content));
+		$video_content_keys = array_keys($video_content);
+		$last = end($video_content_keys);
 
 		/* add seo tube object */
 

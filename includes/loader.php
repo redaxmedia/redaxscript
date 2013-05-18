@@ -146,7 +146,8 @@ function loader($type = '', $mode = '')
 
 	if ($loader_include)
 	{
-		$last = end(array_keys($loader_include));
+		$loader_include_keys = array_keys($loader_include);
+		$last = end($loader_include_keys);
 		foreach ($loader_include as $key => $value)
 		{
 			include_once($value);
