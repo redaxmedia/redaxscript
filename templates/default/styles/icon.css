@@ -10,14 +10,14 @@
 {
 	-moz-box-shadow: 0 0 3px #999;
 	-webkit-box-shadow: 0 0 3px #999;
-	background: url('templates/default/images/sprite.png') -34px -74px #33acee no-repeat;
+	background: #33acee;
 	box-shadow: 0 0 3px #999;
 	color: #fff;
 	font: bold 0.75em/1.75em arial;
 	display: inline-block;
-	height: 16px;
+	height: 1.25em;
 	text-align: center;
 	text-shadow: 0 1px #005da2;
 	text-transform: uppercase;
-	width: 22px;
+	width: 2em;
 }

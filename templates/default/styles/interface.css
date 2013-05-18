@@ -57,10 +57,9 @@
 
 .list_breadcrumb .divider
 {
-	background: url('templates/default/images/sprite.png') -21px -473px no-repeat;
+	color: #aaa;
+	font: 0.75em 'icon';
 	margin: 0 0.25em;
-	text-indent: -999em;
-	width: 18px;
 }
 
 /* @section 2. list default */
@@ -75,10 +74,8 @@
 
 .list_footer a
 {
-	background: url('templates/default/images/sprite.png') -25px -179px no-repeat;
 	color: #555;
 	text-decoration: none;
-	padding-left: 1.25em;
 }
 
 .list_footer a:hover
@@ -89,7 +86,16 @@
 .list_footer li
 {
 	line-height: 1.75em;
-	text-shadow: 0 1px #eee;
+}
+
+.list_footer li:before
+{
+	font: 1.5em 'icon';
+	color: #444;
+	content: '˃';
+	margin-right: 0.375em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	vertical-align: middle;
 }
 
 /* @section 4. list header */
@@ -251,13 +257,6 @@
 
 /* @section 6. list sidebar */
 
-.list_sidebar a
-{
-	background: url('templates/default/images/sprite.png') -25px -476px no-repeat;
-	display: block;
-	padding-left: 1.25em;
-}
-
 .list_sidebar a:hover
 {
 	color: #0090db;
@@ -266,6 +265,16 @@
 .list_sidebar li
 {
 	line-height: 1.75em;
+}
+
+.list_sidebar li:before
+{
+	font: 1.5em 'icon';
+	color: #ccc;
+	content: '˃';
+	margin-right: 0.375em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	vertical-align: middle;
 }
 
 /* children list */

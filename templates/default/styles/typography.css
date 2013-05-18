@@ -17,7 +17,15 @@
  * 12. title website
  */
 
-/* @section 1. tag styling */
+ /* @section 1. font face */
+ 
+ @font-face
+{
+	font-family: 'icon';
+	src: url('templates/default/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. tag styling */
 
 a
 {
@@ -47,7 +55,7 @@ pre
 	white-space: pre-wrap;
 }
 
-/* @section 2. description website */
+/* @section 3. description website */
 
 .description_website
 {
@@ -57,7 +65,7 @@ pre
 	text-transform: lowercase;
 }
 
-/* @section 3. several links */
+/* @section 4. several links */
 
 .link_default
 {
@@ -81,7 +89,7 @@ pre
 	content: '...';
 }
 
-/* @section 4. title accordion default */
+/* @section 5. title accordion default */
 
 .title_accordion_default
 {
@@ -107,7 +115,7 @@ pre
 	color: #555;
 }
 
-/* @section 4.1 javascript enabled */
+/* @section 5.1 javascript enabled */
 
 .js .title_accordion_default
 {
@@ -120,14 +128,14 @@ pre
 	cursor: default;
 }
 
-/* @section 4.2 last element */
+/* @section 5.2 last element */
 
 .js .set_accordion_last .title_accordion_default
 {
 	border-bottom-width: 1px;
 }
 
-/* @section 5. several titles */
+/* @section 6. several titles */
 
 .js .title_accordion_default.title_active, .title_dialog_default, .sidebar .title_extra
 {
@@ -147,7 +155,7 @@ pre
 	color: #444;
 }
 
-/* @section 6. title content */
+/* @section 7. title content */
 
 .title_content
 {
@@ -167,7 +175,7 @@ pre
 	text-decoration: underline;
 }
 
-/* @section 7. title content sub */
+/* @section 8. title content sub */
 
 .title_content_sub
 {
@@ -182,7 +190,7 @@ pre
 	color: #3197df;
 }
 
-/* @section 8. title comment */
+/* @section 9. title comment */
 
 .title_comment
 {
@@ -216,7 +224,7 @@ pre
 	color: #777;
 }
 
-/* @section 9. title dialog default */
+/* @section 10. title dialog default */
 
 .title_dialog_default
 {
@@ -227,7 +235,7 @@ pre
 	padding: 0 1em;
 }
 
-/* @section 10. title extra */
+/* @section 11. title extra */
 
 .sidebar .title_extra
 {
@@ -242,7 +250,7 @@ pre
 	padding: 0 0.75em;
 }
 
-/* @section 11. title footer */
+/* @section 12. title footer */
 
 .title_footer
 {
@@ -256,7 +264,7 @@ pre
 	color: #444;
 }
 
-/* @section 12. title website */
+/* @section 13. title website */
 
 .title_website
 {
