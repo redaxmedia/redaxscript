@@ -41,7 +41,7 @@ class Redaxscript_Directory
 	 * @var array
 	 */
 
-	protected static $_cache;
+	private static $_cache;
 
 	/**
 	 * construct
