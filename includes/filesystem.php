@@ -37,6 +37,13 @@ class Redaxscript_Directory
 	);
 
 	/**
+	 * cache
+	 * @var array
+	 */
+
+	protected static $_cache;
+
+	/**
 	 * construct
 	 *
 	 * @since 1.3
@@ -48,7 +55,6 @@ class Redaxscript_Directory
 	public function __construct($directory = '', $ignore = '')
 	{
 		$this->_directory = $directory;
-		$this->_directoryArray = scandir($directory);
 
 		/* handle and merge ignore */
 
@@ -73,9 +79,9 @@ class Redaxscript_Directory
 
 	public function init()
 	{
-		/* filter directory */
+		/* scan directory */
 
-		$this->_directoryArray = array_diff($this->_directoryArray, $this->_ignoreArray);
+		$this->_directoryArray = $this->_scan($this->_directory);
 	}
 
 	/**
@@ -105,10 +111,42 @@ class Redaxscript_Directory
 	}
 
 	/**
+	 * scan
+	 *
+	 * @since 1.3
+	 *
+	 * @param string $directory
+	 * @return array $diretoryArray
+	 */
+
+	protected function _scan($directory = '')
+	{
+		/* use from static cache */
+
+		if (array_key_exists($directory, self::$_cache))
+		{
+			$directoryArray = self::$_cache[$directory];
+		}
+
+		/* else scan directory */
+
+		else
+		{
+			$directoryArray = scandir($directory);
+			$directoryArray = array_diff($directoryArray, $this->_ignoreArray);
+
+			/* save to static cache */
+
+			self::$_cache[$directory] = $directoryArray;
+		}
+		return $directoryArray;
+	}
+
+	/**
 	 * remove
 	 *
 	 * @since 1.3
-	 * 
+	 *
 	 * @param string $directory
 	 */
 
@@ -127,8 +165,7 @@ class Redaxscript_Directory
 		else
 		{
 			$directory = $this->_directory . '/' . $directory;
-			$directoryArray = scandir($directory);
-			$directoryArray = array_diff($directoryArray, $this->_ignoreArray);
+			$directoryArray = $this->_scan($directory);
 		}
 
 		/* walk directory array */
