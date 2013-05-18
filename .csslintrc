@@ -1,5 +1,6 @@
 {
 	"adjoining-classes": false,
+	"bulletproof-font-face": false,
 	"box-model": false,
 	"box-sizing": false,
 	"duplicate-background-images": false,

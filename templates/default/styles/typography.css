@@ -1,23 +1,24 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
- * 2. description website
- * 3. several links
- * 4. title accordion default
- *    4.1 javascript enabled
- *    4.2 last element
- * 5. several titles
- * 6. title content
- * 7. title content sub
- * 8. title comment
- * 9. title dialog default
- * 10. title extra
- * 11. title footer
- * 12. title website
+ * 1. font face
+ * 2. tag styling
+ * 3. description website
+ * 4. several links
+ * 5. title accordion default
+ *    5.1 javascript enabled
+ *    5.2 last element
+ * 6. several titles
+ * 7. title content
+ * 8. title content sub
+ * 9. title comment
+ * 10. title dialog default
+ * 11. title extra
+ * 12. title footer
+ * 13. title website
  */
 
- /* @section 1. font face */
+/* @section 1. font face */
  
  @font-face
 {

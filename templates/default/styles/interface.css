@@ -90,9 +90,9 @@
 
 .list_footer li:before
 {
-	font: 1.5em 'icon';
 	color: #444;
 	content: '˃';
+	font: 1.5em 'icon';
 	margin-right: 0.375em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 	vertical-align: middle;
@@ -269,9 +269,9 @@
 
 .list_sidebar li:before
 {
-	font: 1.5em 'icon';
 	color: #ccc;
 	content: '˃';
+	font: 1.5em 'icon';
 	margin-right: 0.375em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 	vertical-align: middle;

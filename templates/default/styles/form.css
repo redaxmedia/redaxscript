@@ -159,17 +159,29 @@ textarea
 
 .field_button_search
 {
-	background: url('templates/default/images/sprite.png') 0 -67px no-repeat;
-	float: right;
-	height: 30px;
+	color: #555;
+	background: transparent;
+	height: 2em;
 	opacity: 0.8;
 	text-indent: -999em;
-	width: 30px;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	position: relative;
+	width: 10%;
 }
 
 .field_button_search:hover
 {
 	opacity: 1;
+}
+
+.field_button_search:before
+{
+	content: 'h';
+	font: 1.5em 'icon';
+	position: absolute;
+	right: 0;
+	text-indent: 0;
+	top: 0;
 }
 
 .field_search
@@ -179,7 +191,7 @@ textarea
 	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	height: 1.75em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	width: 80%;
+	width: 90%;
 }
 
 /* @section 6. disabled and readonly */
