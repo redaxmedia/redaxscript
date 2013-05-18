@@ -160,7 +160,7 @@ class Redaxscript_Directory
 			$directoryArray = $this->_directoryArray;
 		}
 
-		/* else handle children diretory */
+		/* else handle children directory */
 
 		else
 		{
