@@ -203,6 +203,7 @@
 
 .box_note
 {
+	font: bold 1em arial;
 	border: 1px solid;
 	padding: 1em;
 }
