@@ -1,10 +1,10 @@
 <nav id="navibar" class="navibar grid_space s2o7">
 	<div class="box_navibar">
 		<?php if (LOGGED_IN == TOKEN): ?>
-			<?php echo anchor_element('external', '', 'field_button field_button_heart', 'Donate', 'redaxscript.com/donate'); ?>
+			<?php echo anchor_element('external', '', 'field_button field_button_donate', 'Donate', 'redaxscript.com/donate'); ?>
 		<?php elseif (DB_CONNECTED == 1): ?>
-			<?php echo anchor_element('internal', '', 'field_button', l('login'), 'login'); ?>
+			<?php echo anchor_element('internal', '', 'field_button field_button_login', l('login'), 'login'); ?>
 		<?php endif; ?>
-		<?php echo anchor_element('external', '', 'field_button field_button_question', 'Support', 'redaxscript.com/support'); ?>
+		<?php echo anchor_element('external', '', 'field_button field_button_support', 'Support', 'redaxscript.com/support'); ?>
 	</div>
 </nav>

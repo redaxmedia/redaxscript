@@ -57,7 +57,6 @@
 
 .list_breadcrumb .divider
 {
-	color: #aaa;
 	font: 0.75em 'icon';
 	margin: 0 0.25em;
 }
@@ -93,7 +92,7 @@
 	color: #444;
 	content: '˃';
 	font: 1.5em 'icon';
-	margin-right: 0.375em;
+	margin-right: 0.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 	vertical-align: middle;
 }
@@ -144,6 +143,14 @@
 	border-radius: 0.125em;
 	display: inline-block;
 	margin-left: 1em;
+}
+
+.list_header > li:before
+{
+	content: '˅';
+	font: 0.875em 'icon';
+	margin-right: 0.125em;
+	vertical-align: middle;
 }
 
 .list_header > li:hover, .list_header > .item_touch
