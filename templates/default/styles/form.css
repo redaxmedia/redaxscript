@@ -4,15 +4,16 @@
  * 1. tag styling
  * 2. default buttons
  *    2.1 hover effect
- * 3. default fields
- *    3.1 hover effect
- *    3.2 focus effect
- * 4. textarea dimensions
- * 5. search elements
- * 6. disabled and readonly
- * 7. form default
- * 8. form search
- * 9. space between elements
+ * 3. custom buttons
+ * 4. default fields
+ *    4.1 hover effect
+ *    4.2 focus effect
+ * 5. textarea dimensions
+ * 6. search elements
+ * 7. disabled and readonly
+ * 8. form default
+ * 9. form search
+ * 10. space between elements
  */
 
 /* @section 1. tag styling */
@@ -80,22 +81,22 @@ textarea
 	font: 1.25em 'icon';
 	margin-right: 0.5em;
 	text-transform: lowercase;
-	vertical-align: middle;
+	vertical-align: text-top;
 }
 
 .field_button_donate:before
 {
-	content: 'k';
+	content: 'm';
 }
 
 .field_button_login:before
 {
-	content: 'i';
+	content: 'k';
 }
 
 .field_button_support:before
 {
-	content: 'j';
+	content: 'n';
 }
 
 /* @section 4. default fields */
@@ -195,7 +196,7 @@ textarea
 
 .field_button_search:before
 {
-	content: 'h';
+	content: 'j';
 	font: 1.5em 'icon';
 	position: absolute;
 	right: 0;

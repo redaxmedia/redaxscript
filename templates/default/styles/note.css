@@ -1,19 +1,36 @@
 /**
  * @tableofcontents
  *
- * 1. note error
- * 2. note info
- * 3. note success
- * 4. note warning
+ * 1. note icons
+ * 2. note error
+ * 3. note info
+ * 4. note success
+ * 5. note warning
  */
 
-/* @section 1. note error */
+/* @section 1. note icons */
+
+.box_note:before
+{
+	font: 1.5em 'icon';
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+/* @section 2. note error */
 
 .note_error.box_note
 {
 	-moz-box-shadow: inset 0 0 3px #daa4a4;
 	-webkit-box-shadow: inset 0 0 3px #daa4a4;
 	box-shadow: inset 0 0 3px #daa4a4;
+}
+
+/* error icon */
+
+.note_error.box_note:before
+{
+	content: 'f';
 }
 
 .note_error.box_note a
@@ -47,13 +64,20 @@ form .note_error.field_note option
 	background: #ffa3a3;
 }
 
-/* @section 2. note info */
+/* @section 3. note info */
 
 .note_info.box_note
 {
 	-moz-box-shadow: inset 0 0 1px #82d2ed;
 	-webkit-box-shadow: inset 0 0 1px #82d2ed;
 	box-shadow: inset 0 0 1px #82d2ed;
+}
+
+/* info icon */
+
+.note_info.box_note:before
+{
+	content: 'g';
 }
 
 .note_info.box_note a
@@ -87,13 +111,20 @@ form .note_info.field_note option
 	background: #8cd5ff;
 }
 
-/* @section 3. note success */
+/* @section 4. note success */
 
 .note_success.box_note
 {
 	-moz-box-shadow: inset 0 0 1px #8dd186;
 	-webkit-box-shadow: inset 0 0 1px #8dd186;
 	box-shadow: inset 0 0 1px #8dd186;
+}
+
+/* success icon */
+
+.note_success.box_note:before
+{
+	content: 'e';
 }
 
 .note_success.box_note a
@@ -127,13 +158,20 @@ form .note_success.field_note option
 	background: #6eff6e;
 }
 
-/* @section 4. note warning */
+/* @section 5. note warning */
 
 .note_warning.box_note
 {
 	-moz-box-shadow: inset 0 0 1px #d5c648;
 	-webkit-box-shadow: inset 0 0 1px #d5c648;
 	box-shadow: inset 0 0 1px #d5c648;
+}
+
+/* warning icon */
+
+.note_warning.box_note:before
+{
+	content: 'h';
 }
 
 .note_warning.box_note a
