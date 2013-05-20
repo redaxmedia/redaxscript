@@ -262,6 +262,48 @@
 	text-shadow: 0 1px #005da2;
 }
 
+/* icons */
+
+.list_pagination a:before, .list_pagination a:after
+{
+	font: 1em 'icon';
+	vertical-align: text-top;
+}
+
+/* first and previous */
+
+.list_pagination .item_first a:before, .list_pagination .item_previous a:before
+{
+	margin-right: 0.5em;
+}
+
+.list_pagination .item_first a:before
+{
+	content: 'b';
+}
+
+.list_pagination .item_previous a:before
+{
+	content: 'a';
+}
+
+/* last and next*/
+
+.list_pagination .item_last a:after, .list_pagination .item_next a:after
+{
+	margin-left: 0.5em;
+}
+
+.list_pagination .item_last a:after
+{
+	content: 'c';
+}
+
+.list_pagination .item_next a:after
+{
+	content: 'd';
+}
+
 /* @section 6. list sidebar */
 
 .list_sidebar a:hover

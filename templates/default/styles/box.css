@@ -203,9 +203,16 @@
 
 .box_note
 {
-	font: bold 1em arial;
+	font: bold 1em/1.75em arial;
 	border: 1px solid;
 	padding: 1em;
+}
+
+.box_note:before
+{
+	font: 1.25em 'icon';
+	margin-right: 0.5em;
+	vertical-align: middle;
 }
 
 .box_note a

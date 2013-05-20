@@ -1,23 +1,13 @@
 /**
  * @tableofcontents
  *
- * 1. note icons
- * 2. note error
- * 3. note info
- * 4. note success
- * 5. note warning
+ * 1. note error
+ * 2. note info
+ * 3. note success
+ * 4. note warning
  */
 
-/* @section 1. note icons */
-
-.box_note:before
-{
-	font: 1.25em 'icon';
-	margin-right: 0.5em;
-	vertical-align: middle;
-}
-
-/* @section 2. note error */
+/* @section 1. note error */
 
 .note_error.box_note
 {
@@ -64,7 +54,7 @@ form .note_error.field_note option
 	background: #ffa3a3;
 }
 
-/* @section 3. note info */
+/* @section 2. note info */
 
 .note_info.box_note
 {
@@ -111,7 +101,7 @@ form .note_info.field_note option
 	background: #8cd5ff;
 }
 
-/* @section 4. note success */
+/* @section 3. note success */
 
 .note_success.box_note
 {
@@ -158,7 +148,7 @@ form .note_success.field_note option
 	background: #6eff6e;
 }
 
-/* @section 5. note warning */
+/* @section 4. note warning */
 
 .note_warning.box_note
 {
