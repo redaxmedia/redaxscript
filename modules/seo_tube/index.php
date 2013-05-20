@@ -122,13 +122,12 @@ function seo_tube_parser($video_id = '')
 /* seo tube player
  *
  * @param string $video_id
- * @return string
  */
 
 function seo_tube_player($video_id = '')
 {
 	$output = object_element('application/x-shockwave-flash', '', 'player player_default', '', $video_id, 'http://www.youtube.com/v/' . $video_id);
-	return $output;
+	echo $output;
 }
 
 /**

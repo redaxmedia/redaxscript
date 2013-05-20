@@ -409,7 +409,6 @@ function scripts_transport($minify = '')
 	{
 		$output .= 'r.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
 	}
-	$output .= 'r.constants.EOL = \'' . b('constant_eol') . '\';' . PHP_EOL;
 
 	/* baseURL fallback */
 

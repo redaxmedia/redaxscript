@@ -26,6 +26,8 @@
 			relatedText = $(options.related.text),
 			video = r.modules.seoTube.video,
 			constant = r.modules.seoTube.constant,
+			eol = '\n',
+			tab = '\t',
 			text;
 
 		if (typeof video === 'object')
@@ -39,7 +41,7 @@
 			}
 			if (video.id)
 			{
-				text = '<function>seo_tube_player|' + video.id + '</function>' + r.constants.EOL + r.constants.EOL;
+				text = '<function>' + eol + '{' + eol + tab + '"seo_tube_player":' + eol + tab + '{' + eol + tab + tab + '"video_id": "' + video.id + '"' + eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 
 			/* video description */
@@ -49,7 +51,7 @@
 				relatedDescription.val(video.description);
 				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
-					text += '<p class="text_seo_tube">' + video.description + '</p>' + r.constants.EOL + r.constants.EOL;
+					text += '<p class="text_seo_tube">' + video.description + '</p>' + eol + eol;
 				}
 			}
 
@@ -57,7 +59,12 @@
 
 			if (constant.SEO_TUBE_COMMENT_FEED > 0)
 			{
-				text += '<function>feed_reader|' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments->' + constant.SEO_TUBE_COMMENT_LIMIT + '</function>';
+				text += eol + '<function>' + eol + '{' + eol + tab + '"feed_reader":' + eol + tab + '{' + eol + tab + tab + '"url": "' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments"';
+				if (constant.SEO_TUBE_COMMENT_LIMIT)
+				{
+					text += ',' + eol + tab + tab + '"filter": "",' + eol + tab + tab + '"limit": "' + constant.SEO_TUBE_COMMENT_LIMIT + '"';
+				}
+				text += eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 			if (text)
 			{
