@@ -11,7 +11,8 @@ function breadcrumb()
 	/* build breadcrumb */
 
 	$breadcrumb_array = build_breadcrumb();
-	$last = end(array_keys($breadcrumb_array ));
+	$breadcrumb_array_keys = array_keys($breadcrumb_array);
+	$last = end($breadcrumb_array_keys);
 
 	/* collect item output */
 

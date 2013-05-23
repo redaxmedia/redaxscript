@@ -65,7 +65,8 @@ function search_post()
 	else
 	{
 		$search = array_filter(explode(' ', $search_terms));
-		$last = end(array_keys($search));
+		$search_keys = array_keys($search);
+		$last = end($search_keys);
 
 		/* query search */
 

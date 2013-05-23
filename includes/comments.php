@@ -313,7 +313,8 @@ function comment_post()
 
 		/* build key and value strings */
 
-		$last = end(array_keys($r));
+		$r_keys = array_keys($r);
+		$last = end($r_keys);
 		foreach ($r as $key => $value)
 		{
 			$key_string .= $key;

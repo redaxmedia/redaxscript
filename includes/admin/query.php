@@ -195,7 +195,8 @@ function admin_process()
 			$groups = $r['groups'] = $groups_string;
 		}
 	}
-	$last = end(array_keys($r));
+	$r_keys = array_keys($r);
+	$last = end($r_keys);
 
 	/* validate post */
 
