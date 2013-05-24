@@ -8,6 +8,5 @@
 	"img-alt-require": true,
 	"style-disabled": true,
 	"tag-self-close": true,
-	"tag-pair": true,
 	"tagname-lowercase": true
 }

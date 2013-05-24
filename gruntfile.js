@@ -68,6 +68,10 @@ module.exports = function (grunt)
 		},
 		htmlhint:
 		{
+			modules:
+			{
+				src: ['modules/**/*.phtml']
+			},
 			templates:
 			{
 				src: ['templates/**/*.phtml']
