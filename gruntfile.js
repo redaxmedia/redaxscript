@@ -66,9 +66,20 @@ module.exports = function (grunt)
 				csslintrc: '.csslintrc'
 			}
 		},
+		htmlhint:
+		{
+			templates:
+			{
+				src: ['templates/**/*.phtml']
+			},
+			options:
+			{
+				htmlhintrc: '.htmlhintrc'
+			}
+		},
 		phpcs:
 		{
-			includes:
+			base:
 			{
 				dir: 'includes'
 			},
@@ -161,6 +172,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-img');
@@ -168,7 +180,7 @@ module.exports = function (grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint', 'csslint', 'phplint']);
+	grunt.registerTask('default', ['jshint', 'csslint', 'htmlhint', 'phplint']);
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
