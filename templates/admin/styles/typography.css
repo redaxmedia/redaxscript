@@ -8,7 +8,15 @@
  * 3. title dialog admin
  */
 
-/* @section 1. title accordion admin */
+ /* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon admin';
+	src: url('templates/admin/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. title accordion admin */
 
 .title_accordion_admin
 {
@@ -34,7 +42,7 @@
 	color: #474747;
 }
 
-/* @section 1.1 javascript enabled */
+/* @section 2.1 javascript enabled */
 
 .js .title_accordion_admin
 {
@@ -47,14 +55,14 @@
 	cursor: default;
 }
 
-/* @section 1.2 last element*/
+/* @section 2.2 last element*/
 
 .js .set_accordion_admin.set_accordion_last .title_accordion_admin
 {
 	border-bottom-width: 1px;
 }
 
-/* @section 2. several admin titles */
+/* @section 3. several admin titles */
 
 .js .set_accordion_admin .title_accordion_admin.title_active, .title_dialog_admin
 {
@@ -67,7 +75,7 @@
 	color: #ccc;
 }
 
-/* @section 3. title dialog admin */
+/* @section 4. title dialog admin */
 
 .title_dialog_admin
 {

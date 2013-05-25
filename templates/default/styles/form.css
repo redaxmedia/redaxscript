@@ -75,10 +75,10 @@ textarea
 
 .field_button_donate:before, .field_button_login:before, .field_button_support:before
 {
-	font: 1.25em 'icon';
+	font: 1em 'icon default';
 	margin-right: 0.5em;
 	text-transform: lowercase;
-	vertical-align: text-top;
+	vertical-align: text-bottom;
 }
 
 .field_button_donate:before
@@ -191,7 +191,7 @@ textarea
 .field_button_search:before
 {
 	content: 'j';
-	font: 1.5em 'icon';
+	font: 1.5em 'icon default';
 	position: absolute;
 	right: 0;
 	text-indent: 0;

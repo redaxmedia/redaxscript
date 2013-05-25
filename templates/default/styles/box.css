@@ -210,7 +210,7 @@
 
 .box_note:before
 {
-	font: 1.25em 'icon';
+	font: 1.25em 'icon default';
 	margin-right: 0.5em;
 	vertical-align: middle;
 }
