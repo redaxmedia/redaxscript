@@ -11,12 +11,17 @@
 .preview .box_preview
 {
 	-moz-box-shadow: inset 5px 0 0 #585858;
+	-moz-transition: box-shadow 0.3s ease;
+	-ms-transition: box-shadow 0.3s ease;
+	-o-transition: box-shadow 0.3s ease;
 	-webkit-box-shadow: inset 5px 0 0 #585858;
+	-webkit-transition: box-shadow 0.3s ease;
 	background: #303030;
 	box-shadow: inset 5px 0 0 #585858;
 	color: #999;
-	padding: 1em;
+	padding: 1em 1.5em;
 	text-shadow: 0 1px #1b1b1b;
+	transition: box-shadow 0.3s ease;
 }
 
 /* has tooltip */
@@ -30,9 +35,9 @@
 
 .preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover
 {
-	-moz-box-shadow: inset 5px 0 0 #3197df;
-	-webkit-box-shadow: inset 5px 0 0 #3197df;
-	box-shadow: inset 5px 0 0 #3197df;
+	-moz-box-shadow: inset 10px 0 0 #3197df;
+	-webkit-box-shadow: inset 10px 0 0 #3197df;
+	box-shadow: inset 10px 0 0 #3197df;
 }
 
 /* @section 3. dialog preview */

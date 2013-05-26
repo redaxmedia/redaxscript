@@ -44,17 +44,17 @@
 
 .link_dock_admin.link_unpublish:before
 {
-	content: 'e';
+	content: 'o';
 }
 
 .link_dock_admin.link_edit:before
 {
-	content: 'o';
+	content: 'p';
 }
 
 .link_dock_admin.link_delete:before
 {
-	content: 'p';
+	content: 'q';
 }
 
 /* @section 2. link panel admin */
@@ -129,9 +129,9 @@
 .list_control_admin a, .list_control_admin span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px #dadada;
+	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #dadada;
+	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	background: #ddd;
 	background: -moz-linear-gradient(top, #ddd, #c6c6c6);
 	background: -ms-linear-gradient(top, #ddd, #c6c6c6);
@@ -141,18 +141,16 @@
 	background: linear-gradient(top, #ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #dadada;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	color: #666;
 	display: inline-block;
 	line-height: 1.75em;
 	padding: 0 0.75em;
-	text-shadow: 0 1px #eee;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
 .list_control_admin a:hover
 {
-	-moz-box-shadow: inset 0 0 0 1px #5ec5f3;
-	-webkit-box-shadow: inset 0 0 0 1px #5ec5f3;
 	background: #62c5ff;
 	background: -moz-linear-gradient(top, #62c5ff, #0090db);
 	background: -ms-linear-gradient(top, #62c5ff, #0090db);
@@ -161,10 +159,9 @@
 	background: -webkit-linear-gradient(top, #62c5ff, #0090db);
 	background: linear-gradient(top, #62c5ff, #0090db);
 	border-color: #005da2;
-	box-shadow: inset 0 0 0 1px #5ec5f3;
 	color: #fff;
 	text-decoration: none;
-	text-shadow: 0 1px #005da2;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
 .list_control_admin span

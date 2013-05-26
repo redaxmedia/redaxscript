@@ -80,7 +80,7 @@ function admin_users_list()
 			if ($groups)
 			{
 				$groups_array = explode(', ', $groups);
-				$groups_array_keys = array_keys($groups_array)
+				$groups_array_keys = array_keys($groups_array);
 				$groups_array_last = end($groups_array_keys);
 				foreach ($groups_array as $key => $value)
 				{

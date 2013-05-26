@@ -93,6 +93,15 @@
 	padding: 1.25em 0.75em;
 }
 
+.table_admin tbody .row_group td:before
+{
+	content: 'r';
+	font: 1.5em 'icon admin';
+	margin-right: 0.5em;
+	text-transform: lowercase;
+	vertical-align: text-bottom;
+}
+
 /* @section 1.2 head and foot */
 
 .table_admin tfoot, .table_admin thead
@@ -110,9 +119,21 @@
 
 /*  @section 1.3 custom elements */
 
-.table_admin tfoot .column_move, .table_admin thead .column_move
+.table_admin tfoot .column_move, .table_admin thead .column_move {
+	display: inline-block;
+	position: relative;
+}
+
+.table_admin tfoot .column_move:before, .table_admin thead .column_move:before
 {
-	background: url('templates/admin/images/sprite.png') -116px 2px;
+	content: 'a';
+    font: 1.5em/1.75em 'icon admin';
+    position: absolute;
+	right: 0.25em;
+	text-align: center;
+    text-indent: 0;
+    text-transform: lowercase;
+    top: 0;
 }
 
 /* parent link */
@@ -149,7 +170,7 @@
 	visibility: hidden;
 }
 
-.desktop  .table_admin tbody tr:hover .list_control_admin
+.desktop .table_admin tbody tr:hover .list_control_admin
 {
 	visibility: visible;
 }
@@ -167,7 +188,7 @@
 {
 	text-indent: -999em;
 	text-align: left;
-	width: 20px;
+	width: 1em;
 }
 
 /* @section 1.4 move control */
