@@ -129,8 +129,7 @@
 	content: 'a';
     font: 1.5em/1.75em 'icon admin';
     position: absolute;
-	right: 0.25em;
-	text-align: center;
+	right: 0.5em;
     text-indent: 0;
     text-transform: lowercase;
     top: 0;
@@ -195,34 +194,30 @@
 
 .table_admin .move_up, .table_admin .move_down
 {
-	background: url('templates/admin/images/sprite.png');
-	display: block;
-	height: 20px;
-	margin: 0.5em 0;
-	width: 20px;
+	position: relative;
 }
+
+.table_admin .move_up:before, .table_admin .move_down:before
+{
+	font: 1.5em/2em 'icon admin';
+	display: block;
+	position: absolute;
+	text-indent: 0;
+}
+
+.table_admin .move_up:before
+{
+	content: 'b';
+}
+
+.table_admin .move_down:before
+{
+	content: 'c';
+}
+
+/* disabled move control */
 
 .table_admin span.move_up, .table_admin span.move_down
 {
-	opacity: 0.5;
-}
-
-.table_admin tbody .move_up
-{
-	background-position: -5px -5px;
-}
-
-.table_admin tbody a.move_up:hover
-{
-	background-position: -65px -5px;
-}
-
-.table_admin tbody .move_down
-{
-	background-position: -35px -5px;
-}
-
-.table_admin tbody a.move_down:hover
-{
-	background-position: -95px -5px;
+	color: #ccc;
 }
