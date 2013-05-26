@@ -40,11 +40,11 @@
 					dockElementText = dockElement.text(),
 					dockDescription = dockElement.siblings(options.element.dockDescription);
 
-				/* listen for mouseenter and mouseleave */
+				/* listen for mouse and touch events */
 
-				dockElement.on('mouseenter mouseleave', function (event)
+				dockElement.on('mouseenter mouseleave touchstart touchend', function (event)
 				{
-					if (event.type === 'mouseenter')
+					if (event.type === 'mouseenter' || event.type === 'touchstart')
 					{
 						dockDescription.text(dockElementText);
 					}

@@ -53,7 +53,12 @@
 	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	margin-bottom: 1em;
 	margin-top: 1em;
-	padding: 0.25em 0.25em 0.5em;
+	text-shadow: 0 1px #1B1B1B;
+}
+
+.box_dock_admin, .box_dock_admin a
+{
+	color: #474747;
 }
 
 .box_dock_admin .divider
@@ -65,11 +70,9 @@
 
 .description_dock_admin
 {
-	color: #474747;
 	float: right;
 	font: 0.875em/3.25em arial;
-	margin-right: 0.5em;
-	text-shadow: 0 1px #1b1b1b;
+	margin-right: 1em;
 }
 
 /* @section 2.2 footer grid fix */
