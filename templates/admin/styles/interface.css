@@ -44,17 +44,17 @@
 
 .link_dock_admin.link_unpublish:before
 {
-	content: 'o';
+	content: 'p';
 }
 
 .link_dock_admin.link_edit:before
 {
-	content: 'p';
+	content: 'q';
 }
 
 .link_dock_admin.link_delete:before
 {
-	content: 'q';
+	content: 'r';
 }
 
 /* @section 2. link panel admin */

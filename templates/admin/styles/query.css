@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 40em)
 {
-	.item_control_admin.item_future_posting, .table_admin .column_last
+	.item_control_admin.item_future_posting
 	{
 		display: none;
 	}

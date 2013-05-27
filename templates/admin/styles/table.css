@@ -95,7 +95,7 @@
 
 .table_admin tbody .row_group td:before
 {
-	content: 'r';
+	content: 's';
 	font: 1.5em 'icon admin';
 	margin-right: 0.5em;
 	text-transform: lowercase;
