@@ -325,7 +325,6 @@ r.startup = function (doc, html)
 			'aside',
 			'footer',
 			'header',
-			'hgroup',
 			'nav',
 			'section'
 		];
