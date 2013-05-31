@@ -109,15 +109,15 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
+				command: 'php vendor/tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
 			},
 			tocModules:
 			{
-				command: 'php ../tocgen/tocgen.php modules -r'
+				command: 'php vendor/tocgen/tocgen.php modules -r'
 			},
 			tocTemplates:
 			{
-				command: 'php ../tocgen/tocgen.php templates -r'
+				command: 'php vendor/tocgen/tocgen.php templates -r'
 			},
 			svgoAdmin:
 			{
