@@ -127,6 +127,22 @@ module.exports = function (grunt)
 			{
 				command: 'svgo --disable removeViewBox -f templates/default/images'
 			},
+			removeUpstream:
+			{
+				command: 'git remote remove upstream'
+			},
+			addUpstream:
+			{
+				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
+			},
+			fetchUpstream:
+			{
+				command: 'git fetch upstream'
+			},
+			mergeUpstream:
+			{
+				command: 'git merge upstream/master'
+			},
 			options:
 			{
 				stdout: true
@@ -188,5 +204,6 @@ module.exports = function (grunt)
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
+	grunt.registerTask('sync', ['shell:removeUpstream', 'shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
 	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
 };
