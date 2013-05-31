@@ -109,7 +109,7 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php vendor/tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
+				command: 'php vendor/tocgen/tocgen.php scripts && php vendor/tocgen/tocgen.php styles'
 			},
 			tocModules:
 			{
