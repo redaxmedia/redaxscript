@@ -24,6 +24,17 @@
 
 		return this.each(function ()
 		{
+			var editor = this;
+
+			editor.textarea = $(this);
+
+			/* prematurely terminate editor */
+
+			if (editor.textarea.length < 1)
+			{
+				return false;
+			}
+
 			/* detect needed mode */
 
 			if (r.constants.FIRST_PARAMETER === 'admin')
@@ -41,7 +52,7 @@
 
 			/* force xhtml */
 
-			if (options.xhtml)
+			if (options.xhtml === true)
 			{
 				try
 				{
@@ -55,20 +66,8 @@
 					}
 					catch (exception)
 					{
-						return false;
 					}
 				}
-			}
-
-			var editor = this;
-
-			editor.textarea = $(this);
-
-			/* prematurely terminate editor */
-
-			if (editor.textarea.length < 1)
-			{
-				return false;
 			}
 
 			/* build editor elements */
