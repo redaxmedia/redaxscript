@@ -109,7 +109,8 @@
 			{
 				if (options.type === 'prompt')
 				{
-					var value = dialog.find('input.js_prompt')[0].value;
+					var input = dialog.find('input.js_prompt'),
+						value = input.val();
 
 					if (value)
 					{
@@ -136,7 +137,8 @@
 
 			$(this).on('click', function (event)
 			{
-				var url = $(this)[0].href;
+				var link = $(this),
+					url = link.attr('href');
 
 				if (url)
 				{

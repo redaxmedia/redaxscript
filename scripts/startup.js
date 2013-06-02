@@ -80,10 +80,10 @@ r.plugins =
 			},
 			classString:
 			{
-				dialog: 'js_dialog dialog dialog',
-				dialogTitle: 'js_title_dialog title_dialog title_dialog',
-				dialogBox: 'js_box_dialog box_dialog box_dialog',
-				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay'
+				dialog: 'js_dialog dialog',
+				dialogTitle: 'js_title_dialog title_dialog',
+				dialogBox: 'js_box_dialog box_dialog',
+				dialogOverlay: 'js_dialog_overlay dialog_overlay'
 			},
 			suffix:
 			{
@@ -128,11 +128,6 @@ r.plugins =
 			required: 'input.js_required',
 			duration: 1000
 		}
-	},
-	clearFocus:
-	{
-		startup: true,
-		selector: 'form input.js_clear_focus, form textarea.js_clear_focus'
 	},
 	confirmLink:
 	{
@@ -275,6 +270,17 @@ r.support =
 			return false;
 		}
 	}(window.JSON),
+	placeholder: function (doc)
+	{
+		if ('placeholder' in doc.createElement('input'))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(document),
 	svg: function (doc)
 	{
 		if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')
