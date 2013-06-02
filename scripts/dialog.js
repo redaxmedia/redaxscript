@@ -105,11 +105,12 @@
 
 		if (typeof options.callback === 'function')
 		{
-			buttonOk.click(function ()
+			buttonOk.on('click', function ()
 			{
 				if (options.type === 'prompt')
 				{
-					var value = dialog.find('input.js_prompt')[0].value;
+					var input = dialog.find('input.js_prompt'),
+						value = $.trim(input.val());
 
 					if (value)
 					{
@@ -136,9 +137,10 @@
 
 			$(this).on('click', function (event)
 			{
-				var url = $(this)[0].href;
+				var link = $(this),
+					url = link.attr('href');
 
-				if (url)
+				if (typeof url === 'string')
 				{
 					/* confirm dialog to continue */
 

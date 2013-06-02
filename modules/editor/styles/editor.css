@@ -1,14 +1,23 @@
 /**
  * @tableofcontents
  *
- * 1. editor toolbar
- * 2. editor control
- * 3. editor icons
- * 4. editor divider
- * 5. editor preview
+ * 1. font face
+ * 2. editor toolbar
+ * 3. editor control
+ *    3.1 icons
+ *    3.2 divider
+ * 4. editor preview
  */
 
-/* @section 1. editor toolbar */
+/* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon editor';
+	src: url('modules/editor/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. editor toolbar */
 
 .editor_toolbar
 {
@@ -16,236 +25,245 @@
 	-moz-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
-	background: url('modules/editor/images/carbon.png') #232323;
+	background: url('templates/admin/images/carbon.png') #232323;
 	border-radius: 0.25em;
 	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	margin-bottom: 1em;
 	margin-top: 1em;
-	padding: 0.25em 0.25em 0.5em;
+	text-shadow: 0 1px #1b1bb;
 }
 
-/* @section 2. editor control */
+/* @section 3. editor control */
 
 .editor_control
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	background: url('modules/editor/images/icons.png') #333;
-	border: 1px solid #151515;
-	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	cursor: pointer;
 	display: inline-block;
-	height: 24px;
-	margin: 0.5em;
-	width: 24px;
+	cursor: pointer;
+	height: 2.875em;
+	margin: 0 0.5em;
+	position: relative;
+	text-indent: -999em;
+	width: 2em;
 }
 
 .editor_control:hover
 {
-	background-color: #3b3b3b;
+	color: #999;
 }
 
-/* @section 3. editor icons */
-
-.editor_control.source_code
+.editor_control:before
 {
-	background-position: -3px -3px;
+	font: 1.25em/2.25em 'icon editor';
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+	width: 2em;
 }
 
-.editor_control.wysiwyg
+/* @section 3.1 icons */
+
+.editor_control.source_code:before
 {
-	background-position: -3px -33px;
+	content: 'a';
 }
 
-.editor_control.bold
+.editor_control.wysiwyg:before
 {
-	background-position: -3px -63px;
+	content: 'b';
 }
 
-.editor_control.italic
+.editor_control.bold:before
 {
-	background-position: -3px -93px;
+	content: 'c';
 }
 
-.editor_control.underline
+.editor_control.italic:before
 {
-	background-position: -3px -123px;
+	content: 'd';
 }
 
-.editor_control.strike
+.editor_control.underline:before
 {
-	background-position: -3px -153px;
+	content: 'e';
 }
 
-.editor_control.superscript
+.editor_control.strike:before
 {
-	background-position: -3px -183px;
+	content: 'f';
 }
 
-.editor_control.subscript
+.editor_control.superscript:before
 {
-	background-position: -3px -213px;
+	content: 'g';
 }
 
-.editor_control.paragraph
+.editor_control.subscript:before
 {
-	background-position: -3px -243px;
+	content: 'h';
 }
 
-.editor_control.h1
+.editor_control.paragraph:before
 {
-	background-position: -3px -273px;
+	content: 'i';
 }
 
-.editor_control.h2
+.editor_control.h1:before
 {
-	background-position: -3px -303px;
+	content: 'j';
 }
 
-.editor_control.h3
+.editor_control.h2:before
 {
-	background-position: -3px -333px;
+	content: 'k';
 }
 
-.editor_control.h4
+.editor_control.h3:before
 {
-	background-position: -3px -363px;
+	content: 'l';
 }
 
-.editor_control.h5
+.editor_control.h4:before
 {
-	background-position: -3px -393px;
+	content: 'm';
 }
 
-.editor_control.h6
+.editor_control.h5:before
 {
-	background-position: -3px -423px;
+	content: 'n';
 }
 
-.editor_control.ordered_list
+.editor_control.h6:before
 {
-	background-position: -3px -453px;
+	content: 'o';
 }
 
-.editor_control.unordered_list
+.editor_control.ordered_list:before
 {
-	background-position: -3px -483px;
+	content: 'p';
 }
 
-.editor_control.outdent
+.editor_control.unordered_list:before
 {
-	background-position: -3px -513px;
+	content: 'q';
 }
 
-.editor_control.indent
+.editor_control.outdent:before
 {
-	background-position: -3px -543px;
+	content: 'r';
 }
 
-.editor_control.align_left
+.editor_control.indent:before
 {
-	background-position: -3px -573px;
+	content: 's';
 }
 
-.editor_control.align_center
+.editor_control.align_left:before
 {
-	background-position: -3px -603px;
+	content: 't';
 }
 
-.editor_control.align_right
+.editor_control.align_center:before
 {
-	background-position: -3px -633px;
+	content: 'u';
 }
 
-.editor_control.align_justify
+.editor_control.align_right:before
 {
-	background-position: -3px -663px;
+	content: 'v';
 }
 
-.editor_control.undo
+.editor_control.align_justify:before
 {
-	background-position: -3px -693px;
+	content: 'w';
 }
 
-.editor_control.redo
+.editor_control.undo:before
 {
-	background-position: -3px -723px;
+	content: 'x';
 }
 
-.editor_control.insert_image
+.editor_control.redo:before
 {
-	background-position: -3px -753px;
+	content: 'y';
 }
 
-.editor_control.insert_link
+.editor_control.cut:before
 {
-	background-position: -3px -783px;
+	content: 'z';
 }
 
-.editor_control.unlink
+.editor_control.copy:before
 {
-	background-position: -3px -813px;
+	content: '1';
 }
 
-.editor_control.cut
+.editor_control.paste:before
 {
-	background-position: -3px -843px;
+	content: '2';
 }
 
-.editor_control.copy
+.editor_control.insert_link:before
 {
-	background-position: -3px -873px;
+	content: '3';
 }
 
-.editor_control.paste
+.editor_control.unlink:before
 {
-	background-position: -3px -903px;
+	content: '4';
 }
 
-.editor_control.insert_break
+.editor_control.insert_image:before
 {
-	background-position: -3px -933px;
+	content: '5';
 }
 
-.editor_control.insert_code
+.editor_control.insert_break:before
 {
-	background-position: -3px -963px;
+	content: '6';
 }
 
-.editor_control.insert_function
+.editor_control.insert_code:before
 {
-	background-position: -3px -993px;
+	content: '7';
 }
 
-.editor_control.unformat
+.editor_control.insert_function:before
 {
-	background-position: -3px -1023px;
+	content: '8';
 }
 
-/* @section 4. editor divider */
+.editor_control.unformat:before
+{
+	content: '9';
+}
+
+/* @section 3.2 divider */
 
 .editor_divider
 {
 	display: none;
 }
 
-/* @section 5. editor preview */
+/* @section 4. editor preview */
 
 .editor_preview
 {
+	-moz-box-shadow: inset 0 1px #fcfcfc;
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: inset 0 1px #fcfcfc;
 	background: #eee;
-	border: 1px solid #b9b9b9;
+	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
-	min-height: 200px;
+	box-shadow: inset 0 1px #fcfcfc;
+	min-height: 20em;
 	padding: 0.5em;
 }
 
 .editor_preview > div:hover, .editor_preview > img:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > span:hover, .editor_preview > ul:hover
 {
-	outline: 1px dashed #999;
+	outline: 1px dashed #aaa;
+	outline-color: rgba(0, 0, 0, 0.2)
 }

@@ -29,6 +29,7 @@ function qunit_loader_scripts_transport_start()
 			'qunit_description',
 			'qunit_type_expected',
 			'qunit_value_expected',
+			'qunit_attribute_expected',
 			'qunit_test_passed',
 			'qunit_test_failed'
 		));

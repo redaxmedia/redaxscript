@@ -129,11 +129,6 @@ r.plugins =
 			duration: 1000
 		}
 	},
-	clearFocus:
-	{
-		startup: true,
-		selector: 'form input.js_clear_focus, form textarea.js_clear_focus'
-	},
 	confirmLink:
 	{
 		startup: true,
@@ -275,6 +270,17 @@ r.support =
 			return false;
 		}
 	}(window.JSON),
+	placeholder: function (doc)
+	{
+		if ('placeholder' in doc.createElement('input'))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(document),
 	svg: function (doc)
 	{
 		if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')

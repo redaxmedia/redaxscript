@@ -1,8 +1,26 @@
 {
 	"name": "Redaxscript",
+	"repositories":
+	[
+		{
+			"type": "package",
+			"package":
+			{
+				"name": "tocgen",
+				"version": "1.0",
+				"source":
+				{
+					"url": "https://github.com/redaxmedia/tocgen.git",
+					"type": "git",
+					"reference": "master"
+				}
+			}
+		}
+	],
 	"require":
 	{
-                "php": ">=5.3.18,<6.0.0",
-		"squizlabs/php_codesniffer": "1.4.5"
+		"php": "5.3.18",
+		"squizlabs/php_codesniffer": "1.4.5",
+		"tocgen": "1.0"
 	}
 }

@@ -24,6 +24,17 @@
 
 		return this.each(function ()
 		{
+			var editor = this;
+
+			editor.textarea = $(this);
+
+			/* prematurely terminate editor */
+
+			if (editor.textarea.length < 1)
+			{
+				return false;
+			}
+
 			/* detect needed mode */
 
 			if (r.constants.FIRST_PARAMETER === 'admin')
@@ -39,15 +50,24 @@
 				options.newline = options.newline.frontend;
 			}
 
-			var editor = this;
+			/* force xhtml */
 
-			editor.textarea = $(this);
-
-			/* prematurely terminate editor */
-
-			if (editor.textarea.length < 1)
+			if (options.xhtml === true)
 			{
-				return false;
+				try
+				{
+					document.execCommand('styleWithCSS', 0, false);
+				}
+				catch (exception)
+				{
+					try
+					{
+						document.execCommand('useCSS', 0, true);
+					}
+					catch (exception)
+					{
+					}
+				}
 			}
 
 			/* build editor elements */
@@ -392,27 +412,6 @@
 				editor.post();
 				editor.validate();
 			});
-
-			/* force xhtml */
-
-			if (options.xhtml)
-			{
-				try
-				{
-					document.execCommand('styleWithCSS', 0, false);
-				}
-				catch (exception)
-				{
-					try
-					{
-						document.execCommand('useCSS', 0, true);
-					}
-					catch (exception)
-					{
-						return false;
-					}
-				}
-			}
 		});
 	};
 

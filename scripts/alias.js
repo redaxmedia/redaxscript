@@ -179,8 +179,8 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					fiedValue = field[0].value,
-					related = form.find(options.related),
+					fiedValue = $.trim(field.val()),
+					fieldRelated = form.find(options.related),
 					aliasValue;
 
 				/* clean alias if value */
@@ -190,15 +190,15 @@
 					aliasValue = $.fn.cleanAlias(fiedValue);
 					if (aliasValue)
 					{
-						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
+						fieldRelated.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
 					}
 				}
 
-				/* else clear value */
+				/* else clear related value */
 
 				else
 				{
-					related[0].value = '';
+					fieldRelated.val('');
 				}
 			});
 		});

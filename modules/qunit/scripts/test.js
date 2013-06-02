@@ -10,9 +10,8 @@
  * 7. clean alias
  * 8. auto resize
  * 9. check search
- * 10. clear focus
- * 11. enable tab
- * 12. unmask password
+ * 10. enable tab
+ * 11. unmask password
  */
 
 (function ($)
@@ -104,7 +103,7 @@
 		{
 			win.test('autoResize', function ()
 			{
-				var textarea = $('<textarea cols="1" rows="2"></textarea>').autoResize().appendTo(fixture),
+				var textarea = $('<textarea cols="5" rows="5"></textarea>').autoResize().appendTo(fixture),
 					expect = 1,
 					result = textarea.attr('rows');
 
@@ -115,65 +114,37 @@
 
 				/* trigger input */
 
-				expect = dummy.length;
 				result = textarea.val(dummy).trigger('input').attr('rows');
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.notEqual(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
 		/* @section 9. check search */
 
-		if (typeof $.fn.checkSearch === 'function')
+		if (typeof $.fn.checkSearch === 'function' && r.support.placeholder === true)
 		{
-			win.asyncTest('checkSearch', function ()
+			win.test('checkSearch', function ()
 			{
-				var form = $('<form method="post"><input class="js_required" value="' + dummy + '" /></form>').checkSearch().appendTo(fixture),
-					input = form.find('input'),
+				var form = $('<form><input class="js_required" placeholder="' + dummy + '" /></form>').checkSearch().appendTo(fixture),
+					input = form.children('input'),
 					expect = l.input_incorrect + l.exclamation_mark,
-					result = input.val();
+					result = input.attr('placeholder');
 
 				/* trigger submit */
 
 				form.submit();
-				setTimeout(function ()
-				{
-					result = input.val();
-					win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
-					win.start();
-				}, 100);
+				result = input.attr('placeholder');
+				win.equal(result, expect, l.qunit_attribute_expected + l.colon + ' ' + expect);
 			});
 		}
 
-		/* @section 10. clear focus */
-
-		if (typeof $.fn.clearFocus === 'function')
-		{
-			win.test('clearFocus', function ()
-			{
-				var input = $('<input value="' + dummy + '" />').clearFocus().appendTo(fixture),
-					expect = '',
-					result = input.val();
-
-				/* trigger focus */
-
-				result = input.trigger('focus').val();
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
-
-				/* trigger blur */
-
-				expect = dummy;
-				result = input.trigger('blur').val();
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
-			});
-		}
-
-		/* @section 11. enable tab */
+		/* @section 10. enable tab */
 
 		if (typeof $.fn.enableTab === 'function')
 		{
 			win.test('enableTab', function ()
 			{
-				var textarea = $('<textarea cols="1" rows="2"></textarea>').enableTab().appendTo(fixture),
+				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableTab().appendTo(fixture),
 					expect = r.plugins.enableTab.options.insertion,
 					result = textarea.val(),
 					keydown = $.Event('keydown');
@@ -187,7 +158,7 @@
 			});
 		}
 
-		/* @section 12. unmask password  */
+		/* @section 11. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{

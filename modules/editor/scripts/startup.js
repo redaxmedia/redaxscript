@@ -36,7 +36,7 @@ r.modules.editor =
 		},
 		toolbar:
 		{
-			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'insert_link', 'unlink', 'insert_image', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
+			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'cut', 'copy', 'paste', 'divider', 'insert_link', 'unlink', 'divider', 'insert_image', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
 			frontend: ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat']
 		},
 		xhtml:
@@ -195,28 +195,6 @@ r.modules.editor =
 			methode: 'action',
 			command: 'redo'
 		},
-		insert_image:
-		{
-			title: l.editor_insert_image,
-			methode: 'insert',
-			command: 'insertImage',
-			message: l.editor_insert_image,
-			value: 'http://'
-		},
-		insert_link:
-		{
-			title: l.editor_insert_link,
-			methode: 'insert',
-			command: 'createLink',
-			message: l.editor_insert_link,
-			value: 'http://'
-		},
-		unlink:
-		{
-			title: l.editor_remove_link,
-			methode: 'action',
-			command: 'unlink'
-		},
 		cut:
 		{
 			title: l.editor_cut,
@@ -235,6 +213,28 @@ r.modules.editor =
 			methode: 'action',
 			command: 'paste'
 		},
+		insert_link:
+		{
+			title: l.editor_insert_link,
+			methode: 'insert',
+			command: 'createLink',
+			message: l.editor_insert_link,
+			value: 'http://'
+		},
+		unlink:
+		{
+			title: l.editor_remove_link,
+			methode: 'action',
+			command: 'unlink'
+		},
+		insert_image:
+		{
+			title: l.editor_insert_image,
+			methode: 'insert',
+			command: 'insertImage',
+			message: l.editor_insert_image,
+			value: 'http://'
+		},
 		insert_break:
 		{
 			title: l.editor_insert_document_break,
@@ -251,7 +251,7 @@ r.modules.editor =
 			methode: 'insert',
 			command: 'insertFunction',
 			message: l.editor_insert_php_function,
-			value: '{JSON}'
+			value: '{}'
 		},
 		unformat:
 		{

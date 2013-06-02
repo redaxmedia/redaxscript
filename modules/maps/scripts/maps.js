@@ -66,8 +66,7 @@
 						});
 						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
-							map.children('div').children('div').slice(1, 6).remove();
-							map.children('div').css('opacity', 1);
+							map.children('div').css('opacity', 1).children('div').slice(1, 6).remove();
 						});
 
 						/* append custom branding */

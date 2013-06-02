@@ -4,11 +4,10 @@
  * 1. auto resize
  * 2. check required
  * 3. check search
- * 4. clear focus
- * 5. enable tab
- * 6. note required
- * 7. unmask password
- * 8. startup
+ * 4. enable tab
+ * 5. note required
+ * 6. unmask password
+ * 7. startup
  */
 
 (function ($)
@@ -84,12 +83,15 @@
 					fieldRequired = form.find(options.elements.fieldRequired),
 					fieldRequiredAll = fieldRequired;
 
-				/* check needed elements only */
+				/* check related elements */
 
 				if (event.type === 'related')
 				{
 					fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
 				}
+
+				/* else those who changed */
+
 				else if (event.type === 'change' || event.type === 'input')
 				{
 					fieldRequired = fieldRequired.filter(':focus');
@@ -100,7 +102,8 @@
 				fieldRequired.each(function ()
 				{
 					var field = $(this),
-						fieldTag = field[0].tagName,
+						fieldNative = field[0],
+						fieldTag = fieldNative.tagName,
 						noteErrorClasses = 'js_note_error note_error',
 						fieldValue;
 
@@ -113,7 +116,7 @@
 					}
 					else
 					{
-						fieldValue = $.trim(field[0].value);
+						fieldValue = $.trim(fieldNative.value);
 						noteErrorClasses += ' field_note';
 					}
 
@@ -175,19 +178,20 @@
 
 			$(this).on('submit', function (event)
 			{
-				var field = $(this).find(options.required)[0],
-					fieldValue = $.trim(field.value),
-					fieldDefaultValue = field.defaultValue,
+				var form = $(this),
+					field = form.find(options.required),
+					fieldValue = $.trim(field.val()),
+					fieldPlaceholder = field.attr('placeholder'),
 					inputIncorrect = l.input_incorrect + l.exclamation_mark;
 
 				/* prematurely terminate search */
 
-				if (fieldValue === '' || fieldValue === fieldDefaultValue || fieldValue === inputIncorrect)
+				if (fieldValue.length < 3)
 				{
-					field.value = inputIncorrect;
+					field.val('').attr('placeholder', inputIncorrect);
 					setTimeout(function ()
 					{
-						field.value = fieldDefaultValue;
+						field.attr('placeholder', fieldPlaceholder);
 					}, options.duration);
 					event.preventDefault();
 				}
@@ -195,35 +199,7 @@
 		});
 	};
 
-	/* @section 4. clear focus */
-
-	$.fn.clearFocus = function ()
-	{
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* listen for focus and blur */
-
-			$(this).on('focus blur', function (event)
-			{
-				var field = this,
-					fieldValue = $.trim(field.value),
-					fieldValueDefault = field.defaultValue;
-
-				if (event.type === 'focus' && fieldValue === fieldValueDefault)
-				{
-					field.value = '';
-				}
-				else if (fieldValue === '')
-				{
-					field.value = fieldValueDefault;
-				}
-			});
-		});
-	};
-
-	/* @section 5. enable tab */
+	/* @section 4. enable tab */
 
 	$.fn.enableTab = function (options)
 	{
@@ -271,7 +247,7 @@
 		});
 	};
 
-	/* @section 6. note required */
+	/* @section 5. note required */
 
 	$.fn.noteRequired = function (options)
 	{
@@ -318,7 +294,7 @@
 		});
 	};
 
-	/* @section 7. unmask password */
+	/* @section 6. unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -344,7 +320,7 @@
 		});
 	};
 
-	/* @section 8. startup */
+	/* @section 7. startup */
 
 	$(function ()
 	{
@@ -356,13 +332,9 @@
 		{
 			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
 		}
-		if (r.plugins.checkSearch.startup)
+		if (r.plugins.checkSearch.startup && r.support.placeholder === true)
 		{
 			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
-		}
-		if (r.plugins.clearFocus.startup)
-		{
-			$(r.plugins.clearFocus.selector).clearFocus();
 		}
 		if (r.plugins.enableTab.startup)
 		{
@@ -376,6 +348,5 @@
 		{
 			$(r.plugins.unmaskPassword.selector).unmaskPassword();
 		}
-
 	});
 })(window.jQuery || window.Zepto);

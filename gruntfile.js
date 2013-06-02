@@ -109,15 +109,15 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php ../tocgen/tocgen.php scripts && php ../tocgen/tocgen.php styles'
+				command: 'php vendor/tocgen/tocgen.php scripts && php vendor/tocgen/tocgen.php styles'
 			},
 			tocModules:
 			{
-				command: 'php ../tocgen/tocgen.php modules -r'
+				command: 'php vendor/tocgen/tocgen.php modules -r'
 			},
 			tocTemplates:
 			{
-				command: 'php ../tocgen/tocgen.php templates -r'
+				command: 'php vendor/tocgen/tocgen.php templates -r'
 			},
 			svgoAdmin:
 			{
@@ -126,6 +126,22 @@ module.exports = function (grunt)
 			svgoDefault:
 			{
 				command: 'svgo --disable removeViewBox -f templates/default/images'
+			},
+			addUpstream:
+			{
+				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
+			},
+			fetchUpstream:
+			{
+				command: 'git fetch upstream'
+			},
+			mergeUpstream:
+			{
+				command: 'git merge upstream/master'
+			},
+			removeUpstream:
+			{
+				command: 'git remote remove upstream'
 			},
 			options:
 			{
@@ -188,5 +204,6 @@ module.exports = function (grunt)
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
+	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
 	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
 };
