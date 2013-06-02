@@ -39,6 +39,27 @@
 				options.newline = options.newline.frontend;
 			}
 
+			/* force xhtml */
+
+			if (options.xhtml)
+			{
+				try
+				{
+					document.execCommand('styleWithCSS', 0, false);
+				}
+				catch (exception)
+				{
+					try
+					{
+						document.execCommand('useCSS', 0, true);
+					}
+					catch (exception)
+					{
+						return false;
+					}
+				}
+			}
+
 			var editor = this;
 
 			editor.textarea = $(this);
@@ -392,27 +413,6 @@
 				editor.post();
 				editor.validate();
 			});
-
-			/* force xhtml */
-
-			if (options.xhtml)
-			{
-				try
-				{
-					document.execCommand('styleWithCSS', 0, false);
-				}
-				catch (exception)
-				{
-					try
-					{
-						document.execCommand('useCSS', 0, true);
-					}
-					catch (exception)
-					{
-						return false;
-					}
-				}
-			}
 		});
 	};
 

@@ -186,7 +186,7 @@
 
 				/* prematurely terminate search */
 
-				if (fieldValue === '' || fieldValue.length < 3)
+				if (fieldValue.length < 3)
 				{
 					field.val('').attr('placeholder', inputIncorrect);
 					setTimeout(function ()

@@ -251,7 +251,7 @@ r.modules.editor =
 			methode: 'insert',
 			command: 'insertFunction',
 			message: l.editor_insert_php_function,
-			value: '{JSON}'
+			value: '{}'
 		},
 		unformat:
 		{
