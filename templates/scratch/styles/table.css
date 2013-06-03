@@ -6,6 +6,16 @@
 
 /* @section 1. table default */
 
+.table_default th
+{
+	background: #e5e5e5;
+}
+
+.table_default td
+{
+	background: #f5f5f5;
+}
+
 .table_default td, .table_default th
 {
 	padding: 0.75em;
