@@ -1,67 +1,120 @@
 /**
  * @tableofcontents
  *
- * 1. list share this
- * 2. social links
+ * 1. font face
+ * 2. list share this
+ * 3. link share this
+ *    3.1 facebook
+ *    3.2 google
+ *    3.3 twitter
+ *    3.4 pinterest
+ *    3.5 tumblr
+ *    3.6 linkedin
+ *    3.7 stumbleupon
+ *    3.8 delicious
  */
 
-/* @section 1. list share this */
+/* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon share this';
+	src: url('modules/share_this/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. list share this */
 
 .list_share_this
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
-	background: #dadada;
-	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#dadada, 40%), to(#d1d1d1));
-	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	border: 1px solid #cdcdcd;
-	border-radius: 0.25em;
-	display: inline-block;
-	margin: 2em 0;
-	padding: 0 0.5em;
+	margin: 1em 0;
 }
 
 .list_share_this li
 {
 	float: left;
+	margin-right: 3em;
 }
 
-.list_share_this a
+/* @section 3. link share this */
+
+.link_share_this
 {
-	background: url('modules/share_this/images/share_this.png');
-	display: block;
-	height: 16px;
-	margin: 0.5em;
+	display: inline-block;
+	height: 2.75em;
 	opacity: 0.8;
+	position: relative;
 	text-indent: -999em;
-	width: 16px;
 }
 
-.list_share_this a:hover
+.link_share_this:hover
 {
-	-moz-box-shadow: 0 0 2px 1px #fff;
-	-webkit-box-shadow: 0 0 2px 1px #fff;
-	box-shadow: 0 0 2px 1px #fff;
 	opacity: 1;
 }
 
-/* @section 2. social links */
-
-.list_share_this .link_facebook
+.link_share_this:before
 {
-	background-position: -7px -7px;
+	content: 'a';
+	font: 1em/2.25em 'icon share this';
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+	width: 2.25em;
 }
 
-.list_share_this .link_twitter
+/* @section 3.1 facebook */
+
+.link_share_this.link_facebook:before
 {
-	background-position: -37px -7px;
+	content: 'b';
 }
 
-.list_share_this .link_google
+/* @section 3.2 google */
+
+.link_share_this.link_google:before
 {
-	background-position: -67px -7px;
+	content: 'c';
+}
+
+/* @section 3.3 twitter */
+
+.link_share_this.link_twitter:before
+{
+	content: 'd';
+}
+
+/* @section 3.4 pinterest */
+
+.link_share_this.link_pinterest:before
+{
+	content: 'e';
+}
+
+/* @section 3.5 tumblr */
+
+.link_share_this.link_tumblr:before
+{
+	content: 'f';
+}
+
+/* @section 3.6 linkedin */
+
+.link_share_this.link_linkedin:before
+{
+	content: 'g';
+}
+
+/* @section 3.7 stumbleupon */
+
+.link_share_this.link_stumbleupon:before
+{
+	content: 'h';
+}
+
+/* @section 3.8 delicious */
+
+.link_share_this.link_delicious:before
+{
+	content: 'i';
 }

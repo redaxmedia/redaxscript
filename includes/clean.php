@@ -139,7 +139,7 @@ function clean_email($input = '')
 
 function clean_url($input = '')
 {
-	$output = trim(strtolower($input));
+	$output = trim($input);
 	$output = preg_replace('/www.(.*?)/i', '', $output);
 	return $output;
 }
