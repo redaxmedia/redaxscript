@@ -17,12 +17,11 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#62c5ff), to(#0090db));
 	background: -webkit-linear-gradient(top, #62c5ff, #0090db);
 	background: linear-gradient(top, #62c5ff, #0090db);
-	border: 1px solid #005da2;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 	color: #fff;
 	font: bold 0.75em/1.75em arial;
 	display: inline-block;
 	text-align: center;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	width: 2.25em;
+	width: 2.5em;
 }

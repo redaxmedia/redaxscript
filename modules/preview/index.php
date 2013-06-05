@@ -42,6 +42,7 @@ function preview_center_start()
 		include_once('modules/preview/partials/typography.phtml');
 		include_once('modules/preview/partials/box.phtml');
 		include_once('modules/preview/partials/form.phtml');
+		include_once('modules/preview/partials/icon.phtml');
 		include_once('modules/preview/partials/media.phtml');
 		include_once('modules/preview/partials/interface.phtml');
 		include_once('modules/preview/partials/table.phtml');
