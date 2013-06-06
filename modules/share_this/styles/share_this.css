@@ -26,7 +26,7 @@
 
 .list_share_this
 {
-	margin: 1em 0;
+	margin: 2em 0;
 }
 
 .list_share_this li
@@ -41,18 +41,17 @@
 {
 	display: inline-block;
 	height: 2.75em;
-	opacity: 0.8;
 	position: relative;
 	text-indent: -999em;
 }
 
-.link_share_this:hover
-{
-	opacity: 1;
-}
-
 .link_share_this:before
 {
+	-moz-border-radius: 2em;
+	-webkit-border-radius: 2em;
+	background: #aaa;
+	border-radius: 2em;
+	color: #fff;
 	content: 'a';
 	font: 1em/2.25em 'icon share this';
 	left: 0;
@@ -67,6 +66,7 @@
 
 .link_share_this.link_facebook:before
 {
+	background: #3b5998;
 	content: 'b';
 }
 
@@ -74,6 +74,7 @@
 
 .link_share_this.link_google:before
 {
+	background: #d34836;
 	content: 'c';
 }
 
@@ -81,6 +82,7 @@
 
 .link_share_this.link_twitter:before
 {
+	background: #00aced;
 	content: 'd';
 }
 
@@ -88,6 +90,7 @@
 
 .link_share_this.link_pinterest:before
 {
+	background: #cb2027;
 	content: 'e';
 }
 
@@ -95,6 +98,7 @@
 
 .link_share_this.link_tumblr:before
 {
+	background: #32506d;
 	content: 'f';
 }
 
@@ -102,6 +106,7 @@
 
 .link_share_this.link_linkedin:before
 {
+	background: #007bb6;
 	content: 'g';
 }
 
@@ -109,6 +114,7 @@
 
 .link_share_this.link_stumbleupon:before
 {
+	background: #f74425;
 	content: 'h';
 }
 
@@ -116,5 +122,6 @@
 
 .link_share_this.link_delicious:before
 {
+	background: #205cc0;
 	content: 'i';
 }
