@@ -6,7 +6,7 @@
 
 function seo_tube_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'SEO Tube\', \'seo_tube\', \'Ronny Springer & Henry Ruhs\', \'Loads videos from youtube\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'SEO Tube\', \'seo_tube\', \'Ronny Springer & Henry Ruhs\', \'Loads videos from youtube\', \'2.0\', 1, 0)';
 	mysql_query($query);
 }
 

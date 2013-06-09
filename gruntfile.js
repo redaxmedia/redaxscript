@@ -119,13 +119,13 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/tocgen/tocgen.php templates -r'
 			},
-			svgoAdmin:
-			{
-				command: 'svgo --disable removeViewBox -f templates/admin/images'
-			},
-			svgoDefault:
+			svgoTemplates:
 			{
 				command: 'svgo --disable removeViewBox -f templates/default/images'
+			},
+			svgoModules:
+			{
+				command: 'svgo --disable removeViewBox -f modules/multi_language/images'
 			},
 			addUpstream:
 			{
@@ -203,7 +203,7 @@ module.exports = function (grunt)
 	grunt.registerTask('default', ['jshint', 'csslint', 'htmlhint', 'phplint']);
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
-	grunt.registerTask('svgo', ['shell:svgoAdmin', 'shell:svgoDefault']);
+	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
 	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
 	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
 };

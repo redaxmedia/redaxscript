@@ -3,7 +3,7 @@
 /**
  * Redaxscript Captcha
  *
- * @since 1.3
+ * @since 2.0
  *
  * @category Captcha
  * @package Redaxscript
@@ -49,7 +49,7 @@ class Redaxscript_Captcha
 	/**
 	 * construct
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 */
 
 	public function __construct()
@@ -62,7 +62,7 @@ class Redaxscript_Captcha
 	/**
 	 * init
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 */
 
 	public function init()
@@ -73,7 +73,7 @@ class Redaxscript_Captcha
 	/**
 	 * getTask
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return $_task string
 	 */
@@ -86,7 +86,7 @@ class Redaxscript_Captcha
 	/**
 	 * getSolution
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return $_solution number
 	 */
@@ -99,7 +99,7 @@ class Redaxscript_Captcha
 	/**
 	 * checkOperator
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return $output number
 	 */
@@ -126,7 +126,7 @@ class Redaxscript_Captcha
 	/**
 	 * createCaptcha
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 */
 
 	protected function _createCaptcha()

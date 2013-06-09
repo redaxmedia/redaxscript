@@ -2,7 +2,7 @@
 1 = admin
 
 [single]
-1 = http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js
+1 = http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js
 
 [template_startup]
 1 = scripts/startup.js

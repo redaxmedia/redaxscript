@@ -6,7 +6,7 @@
 
 function analytics_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Integrates Goggle Analytics\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Integrates Goggle Analytics\', \'2.0\', 1, 0)';
 	mysql_query($query);
 }
 

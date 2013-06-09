@@ -6,7 +6,7 @@
 
 function call_home_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provides version and news updates\', \'1.3\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provides version and news updates\', \'2.0\', 1, 1)';
 	mysql_query($query);
 }
 

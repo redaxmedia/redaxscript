@@ -6,7 +6,7 @@
 
 function preview_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Preview\', \'preview\', \'Redaxmedia\', \'Previews current template\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Preview\', \'preview\', \'Redaxmedia\', \'Previews current template\', \'2.0\', 1, 0)';
 	mysql_query($query);
 }
 
