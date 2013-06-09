@@ -4,10 +4,8 @@
  * 1. link dock admin
  *    1.1 icons
  * 2. link panel admin
- *    2.1 logout
  * 3. list control admin
  * 4. list panel admin
- *    4.1 list panel children
  * 5. list tab admin
  *    5.1 javascript enabled
  */
@@ -31,7 +29,7 @@
 
 .link_dock_admin:before
 {
-	font: 1.25em/2.25em 'icon admin';
+	font: 1.25em/2.5em 'icon admin';
 	left: 0;
 	position: absolute;
 	text-align: center;
@@ -61,58 +59,10 @@
 
 .link_panel_admin
 {
-	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-moz-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-webkit-border-radius: 0.25em;
-	background: #333;
-	border: 1px solid #151515;
-	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	display: inline-block;
-	font: bold 0.875em/2.125em arial;
-	text-shadow: 0 1px #1b1b1b;
-	text-transform: uppercase;
-	margin-right: 1em;
-	padding: 0 0.75em;
 }
 
 .link_panel_admin, .link_panel_admin:hover
 {
-	color: #ccc;
-}
-
-.link_panel_admin:hover
-{
-	background: #3b3b3b;
-}
-
-/* @section 2.1 logout */
-
-.link_panel_admin.link_logout
-{
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.link_panel_admin.link_logout:before
-{
-	background: url('templates/admin/images/sprite.png') -158px 0;
-	content: '';
-	display: block;
-	height: 30px;
-	left: 5px;
-	margin-top: -15px;
-	position: absolute;
-	top: 50%;
-	width: 14px;
-}
-
-.link_panel_admin.link_logout:hover.link_logout:before
-{
-	-moz-box-shadow: 0 0 3px #b90000;
-	-webkit-box-shadow: 0 0 3px #b90000;
-	box-shadow: 0 0 3px #b90000;
 }
 
 /* @section 3. list control admin */
@@ -129,9 +79,9 @@
 .list_control_admin a, .list_control_admin span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 	background: #ddd;
 	background: -moz-linear-gradient(top, #ddd, #c6c6c6);
 	background: -ms-linear-gradient(top, #ddd, #c6c6c6);
@@ -141,7 +91,7 @@
 	background: linear-gradient(top, #ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 	color: #666;
 	display: inline-block;
 	line-height: 1.75em;
@@ -173,90 +123,14 @@
 
 .list_panel_admin
 {
-	font: bold 1.125em arial;
-	display: inline-block;
-	text-shadow: 0 1px #1b1b1b;
-	text-transform: uppercase;
 }
 
 .list_panel_admin, .list_panel_admin a
 {
-	color: #ccc;
 }
 
 .list_panel_admin li
 {
-	background: #333;
-	padding: 0.25em 0.75em;
-}
-
-.list_panel_admin li:hover, .list_panel_admin .item_touch
-{
-	background: #3b3b3b;
-}
-
-/* parent items */
-
-.list_panel_admin > li
-{
-	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-moz-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-webkit-border-radius: 0.25em;
-	border: 1px solid #151515;
-	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.list_panel_admin > li:hover, .list_panel_admin > .item_touch
-{
-	background-color: #3b3b3b;
-}
-
-/* @section 4.1 list panel children */
-
-.list_panel_children_admin
-{
-	border-top: 4px solid transparent;
-}
-
-.list_panel_children_admin li
-{
-	border: 1px solid #585858;
-	border-top-width: 0;
-}
-
-/* rounded items */
-
-.list_panel_children_admin li:first-child
-{
-	-moz-border-radius-topleft: 0.25em;
-	-moz-border-radius-topright: 0.25em;
-	-webkit-border-top-left-radius: 0.25em;
-	-webkit-border-top-right-radius: 0.25em;
-	border-top-left-radius: 0.25em;
-	border-top-right-radius: 0.25em;
-	border-top-width: 1px;
-}
-
-.list_panel_children_admin li:last-child
-{
-	-moz-border-radius-bottomleft: 0.25em;
-	-moz-border-radius-bottomright: 0.25em;
-	-webkit-border-bottom-left-radius: 0.25em;
-	-webkit-border-bottom-right-radius: 0.25em;
-	border-bottom-left-radius: 0.25em;
-	border-bottom-right-radius: 0.25em;
-}
-
-/* left space */
-
-.list_panel_admin .list_panel_children_admin ul
-{
-	border-left: 4px solid transparent;
-	top: -1px;
 }
 
 /* @section 5. list tab admin */

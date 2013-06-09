@@ -30,12 +30,5 @@ r.plugins.adminPanel =
 	selector: '#panel_admin',
 	options:
 	{
-		element:
-		{
-			panelBox: 'div.js_box_panel_admin',
-			panelBar: 'div.js_panel_bar_admin'
-		},
-		related: '#header',
-		duration: 1000
 	}
 };

@@ -1,14 +1,7 @@
 <nav id="panel_admin" class="js_panel_admin panel_admin">
-	<div class="js_box_panel_admin box_panel_admin">
+	<div class="box_panel_admin">
 		<section class="wrapper clear_fix">
 			<?php admin_panel_list(); ?>
-			<div class="wrapper_panel_menu_admin">
-				<?php if (MY_USER && MY_ID): ?>
-					<?php echo anchor_element('internal', '', 'link_panel_admin link_profile', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID); ?>
-				<?php endif; ?>
-				<?php echo anchor_element('internal', '', 'link_panel_admin link_logout', l('logout'), 'logout'); ?>
-			</div>
 		</section>
 	</div>
-	<div class="js_panel_bar_admin panel_bar_admin"></div>
 </nav>

@@ -72,45 +72,6 @@
 
 		return this.each(function ()
 		{
-			var panel = $(this),
-				panelHeight = panel.height(),
-				panelBox = panel.find(options.element.panelBox),
-				panelBar = panel.find(options.element.panelBar),
-				panelBarHeight = panelBar.height(),
-				panelRelated = $(options.related);
-
-			/* open on admin */
-
-			if (r.constants.FIRST_PARAMETER === 'admin')
-			{
-				panelRelated.css('margin-top', panelHeight);
-			}
-
-			/* else close */
-
-			else
-			{
-				panel.height(panelHeight / 2);
-				panelBox.hide();
-				panelRelated.css('margin-top', panelBarHeight);
-
-				/* listen for mouseenter and mouseleave */
-
-				panel.on('mouseenter mouseleave', function (event)
-				{
-					if (event.type === 'mouseenter')
-					{
-						panelBox.stop(1).show();
-					}
-					else
-					{
-						setTimeout(function ()
-						{
-							panelBox.hide();
-						}, options.duration);
-					}
-				});
-			}
 		});
 	};
 

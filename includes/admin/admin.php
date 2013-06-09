@@ -121,11 +121,22 @@ function admin_panel_list()
 		$output .= '</ul></li>';
 	}
 
+	/* collect profile */
+
+	if (MY_USER && MY_ID)
+	{
+		$output .= '<li>' . anchor_element('internal', '', 'link_panel_admin link_profile', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID) . '</li>';
+	}
+
+	/* collect logout */
+
+	$output .= '<li>' . anchor_element('internal', '', 'link_panel_admin link_logout', l('logout'), 'logout') . '</li>';
+
 	/* collect list output */
 
 	if ($output)
 	{
-		$output = '<ul class="js_dropdown list_dropdown list_panel_admin">' . $output . '</ul>';
+		$output = '<ul class="list_panel_admin">' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');

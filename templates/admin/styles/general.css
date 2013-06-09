@@ -2,7 +2,6 @@
  * @tableofcontents
  *
  * 1. panel admin
- *    1.1 children grid fix
  * 2. wrapper
  */
 
@@ -10,17 +9,11 @@
 
 .panel_admin
 {
+	left: 0;
+	position: absolute;
 	top: 0;
-	position: fixed;
 	width: 100%;
 	z-index: 1000;
-}
-
-/* mobile */
-
-.mobile .panel_admin
-{
-	position: absolute;
 }
 
 .panel_admin a, .panel_admin a:hover
@@ -28,33 +21,11 @@
 	text-decoration: none;
 }
 
-.panel_bar_admin
-{
-	-moz-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 6px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 6px rgba(0, 0, 0, 0.5);
-	background: #0090db;
-	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 6px rgba(0, 0, 0, 0.5);
-	height: 5px;
-}
-
-/* @section 1.1 children grid fix */
-
-.list_panel_admin, .wrapper_panel_menu_admin
-{
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
 /* @section 2. wrapper */
 
 .wrapper_button_admin
 {
 	margin-bottom: 1em;
-}
-
-.wrapper_panel_menu_admin
-{
-	float: right;
 }
 
 .wrapper_table_admin

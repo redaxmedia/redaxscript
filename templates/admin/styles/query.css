@@ -38,7 +38,7 @@
 
 /* @section 3. rtl direction */
 
-.rtl .description_dock_admin, .rtl .wrapper_panel_menu_admin
+.rtl .description_dock_admin
 {
 	float: left;
 }
