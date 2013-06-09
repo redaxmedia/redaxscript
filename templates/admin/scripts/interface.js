@@ -75,7 +75,7 @@
 			var panelList = $(this),
 				panelItem = panelList.find('li'),
 				panelChildren = panelItem.children('ul');;
-			
+
 			/* stop propagation */
 
 			panelChildren.on('click touchstart', function (event)
