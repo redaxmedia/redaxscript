@@ -52,7 +52,7 @@ function admin_panel_list()
 
 	if ($contents_access)
 	{
-		$output = '<li class="item_contents">' . l('contents') . '<ul class="list_panel_children_admin list_contents">';
+		$output = '<li class="item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
@@ -76,7 +76,7 @@ function admin_panel_list()
 
 	if ($access_access)
 	{
-		$output .= '<li class="item_access">' . l('access') . '<ul class="list_panel_children_admin list_access">';
+		$output .= '<li class="item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
 		if (MY_ID)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
@@ -104,7 +104,7 @@ function admin_panel_list()
 
 	if ($system_access || $admin_panel_list_modules)
 	{
-		$output .= '<li class="item_system">' . l('system') . '<ul class="list_panel_children_admin list_stystem">';
+		$output .= '<li class="item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('modules'), 'admin/view/modules');
@@ -136,7 +136,7 @@ function admin_panel_list()
 
 	if ($output)
 	{
-		$output = '<ul class="list_panel_admin">' . $output . '</ul>';
+		$output = '<ul class="js_list_panel_admin list_panel_admin">' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');

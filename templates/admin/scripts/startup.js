@@ -27,8 +27,5 @@ r.plugins.adminDock =
 r.plugins.adminPanel =
 {
 	startup: true,
-	selector: '#panel_admin',
-	options:
-	{
-	}
+	selector: 'ul.js_list_panel_admin'
 };

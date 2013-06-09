@@ -3,11 +3,11 @@
  *
  * 1. link dock admin
  *    1.1 icons
- * 2. link panel admin
- * 3. list control admin
- * 4. list panel admin
- * 5. list tab admin
- *    5.1 javascript enabled
+ * 2. list control admin
+ * 3. list panel admin
+ *    3.1 javascript enabled
+ * 4. list tab admin
+ *    4.1 javascript enabled
  */
 
 /* @section 1. link dock admin */
@@ -55,17 +55,7 @@
 	content: 'r';
 }
 
-/* @section 2. link panel admin */
-
-.link_panel_admin
-{
-}
-
-.link_panel_admin, .link_panel_admin:hover
-{
-}
-
-/* @section 3. list control admin */
+/* @section 2. list control admin */
 
 .item_control_admin
 {
@@ -79,9 +69,9 @@
 .list_control_admin a, .list_control_admin span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	background: #ddd;
 	background: -moz-linear-gradient(top, #ddd, #c6c6c6);
 	background: -ms-linear-gradient(top, #ddd, #c6c6c6);
@@ -91,7 +81,7 @@
 	background: linear-gradient(top, #ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	color: #666;
 	display: inline-block;
 	line-height: 1.75em;
@@ -119,21 +109,27 @@
 	color: #999;
 }
 
-/* @section 4. list panel admin */
+/* @section 3. list panel admin */
 
-.list_panel_admin
+.list_panel_admin a, .list_panel_admin span
 {
+	display: block;
+	padding: 0.5em;
 }
 
-.list_panel_admin, .list_panel_admin a
+.list_panel_admin a:hover
 {
+	background: #333;
 }
 
-.list_panel_admin li
+/* @section 3.1 javascript enabled */
+
+.js .list_panel_admin li > ul
 {
+	display: none;
 }
 
-/* @section 5. list tab admin */
+/* @section 4. list tab admin */
 
 .list_tab_admin
 {
@@ -164,7 +160,7 @@
 	text-decoration: none;
 }
 
-/* @section 5.1 javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {

@@ -72,6 +72,27 @@
 
 		return this.each(function ()
 		{
+			var panelList = $(this),
+				panelItem = panelList.find('li'),
+				panelChildren = panelItem.children('ul');;
+			
+			/* stop propagation */
+
+			panelChildren.on('click touchstart', function (event)
+			{
+				event.stopPropagation();
+			});
+
+			/* listen for click and touchstart */
+
+			panelItem.on('click touchstart', function ()
+			{
+				var thatItem = $(this),
+					thatChildren = thatItem.children('ul');
+
+				thatChildren.toggle();
+			});
+
 		});
 	};
 
@@ -85,7 +106,7 @@
 		}
 		if (r.plugins.adminPanel.startup)
 		{
-			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
+			$(r.plugins.adminPanel.selector).adminPanel();
 		}
 	});
 })(window.jQuery || window.Zepto);

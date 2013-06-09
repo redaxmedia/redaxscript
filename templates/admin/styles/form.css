@@ -26,9 +26,9 @@ textarea
 .field_button_admin, .field_button_large_admin
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	background: #3b3b3b;
 	background: -moz-linear-gradient(top, #3b3b3b, #303030);
 	background: -ms-linear-gradient(top, #3b3b3b, #303030);
@@ -38,12 +38,12 @@ textarea
 	background: linear-gradient(top, #3b3b3b, #303030);
 	border: 1px solid #151515;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	color: #ccc;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875em/2.5em arial;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 	padding: 0 0.75em;
 }

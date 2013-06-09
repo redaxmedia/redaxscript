@@ -44,10 +44,7 @@
 
 .box_dock_admin
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.25em;
 	background: url('templates/admin/images/carbon.png') #232323;
-	border-radius: 0.125em;
 	margin-bottom: 1em;
 	margin-top: 1em;
 	text-shadow: 0 1px #1b1b1b;
@@ -70,6 +67,7 @@
 	float: right;
 	font: 0.875em/3.5em arial;
 	margin-right: 1em;
+	margin-left: 1em;
 }
 
 /* @section 2.2 footer grid fix */
