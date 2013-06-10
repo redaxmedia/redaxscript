@@ -45,7 +45,7 @@
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
 				qunitResult = qunit.find(options.element.qunitResult),
 				qunitTest = qunit.find(options.element.qunitTest),
-				qunitAssert = qunit.find(options.element.qunitAssert);
+				qunitAssert = qunitTest.find(options.element.qunitAssert);
 
 			/* add several classes */
 
