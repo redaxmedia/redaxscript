@@ -7,6 +7,7 @@
  * 4. title qunit
  * 5. toolbar qunit
  * 6. list qunit
+ *    6.1 list qunit assert
  * 7. space between elements
  */
 
@@ -106,7 +107,7 @@
 
 .list_qunit a
 {
-	margin-left: 0.5em;
+	margin-left: 1em;
 	text-decoration: underline;
 }
 
@@ -126,16 +127,34 @@
 	border-bottom: 0;
 }
 
-/* children elements */
+.list_qunit > li > span
+{
+	font: italic 1em monospace, arial;
+	float: right;
+}
 
-.list_qunit ol
+/* @section 6.1 list qunit assert */
+
+.list_qunit_assert
 {
 	margin-top: 1em;
 }
 
-.list_qunit ol > li
+.list_qunit_assert > li
 {
 	list-style: lower-alpha inside;
+}
+
+/* collapsed */
+
+.list_qunit_assert.qunit-collapsed
+{
+	margin-top: 0;
+}
+
+.list_qunit_assert.qunit-collapsed li
+{
+	display: none;
 }
 
 /* @section 7. space between elements */

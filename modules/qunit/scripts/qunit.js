@@ -44,7 +44,8 @@
 				qunitToolbar = qunit.find(options.element.qunitToolbar),
 				qunitUserAgent = qunit.find(options.element.qunitUserAgent),
 				qunitResult = qunit.find(options.element.qunitResult),
-				qunitTest = qunit.find(options.element.qunitTest);
+				qunitTest = qunit.find(options.element.qunitTest),
+				qunitAssert = qunit.find(options.element.qunitAssert);
 
 			/* add several classes */
 
@@ -54,6 +55,7 @@
 			qunitUserAgent.addClass(options.classString.qunitUserAgent);
 			qunitResult.addClass(options.classString.qunitResult);
 			qunitTest.addClass(options.classString.qunitTest);
+			qunitAssert.addClass(options.classString.qunitAssert);
 
 			/* detach and extend banner */
 

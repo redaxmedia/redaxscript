@@ -20,6 +20,7 @@ r.modules.qunit =
 			qunitUserAgent: '#qunit-userAgent',
 			qunitResult: '#qunit-testresult',
 			qunitTest: '#qunit-tests',
+			qunitAssert: 'ol.qunit-assert-list',
 			qunitFixture: '#qunit-fixture'
 		},
 		classString:
@@ -30,6 +31,7 @@ r.modules.qunit =
 			qunitUserAgent: 'box_qunit user_agent_qunit',
 			qunitResult: 'title_qunit',
 			qunitTest: 'list_qunit',
+			qunitAssert: 'list_qunit_assert',
 			qunitFixture: 'box_fixture'
 		},
 		duration: 500
