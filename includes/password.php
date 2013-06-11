@@ -96,7 +96,7 @@ function password_reset_post()
 		/* send new password */
 
 		$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$loginLink = anchor_element('', '', '', $loginRoute);
+		$loginLink = anchor_element('external', '', '', $loginRoute, $loginRoute);
 		$toArray = array(
 			$my_name => $my_email
 		);

@@ -26,7 +26,7 @@ function db_backup_render_start()
 
 			/* prepare body parts */
 
-			$urlLink = anchor_element('', '', '', ROOT);
+			$urlLink = anchor_element('external', '', '', ROOT, ROOT);
 			$fileName = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
 
 			/* prepare mail inputs */
@@ -73,7 +73,7 @@ function db_backup_center_start()
 
 function db_backup_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('', '', '', l('db_backup_database_backup')) . '<ul>';
+	$output = '<li>' . anchor_element('internal', '', '', l('db_backup_database_backup')) . '<ul>';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_download'), 'admin/db-backup/download') . '</li>';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_send_email'), 'admin/db-backup/send') . '</li>';
 	$output .= '</ul></li>';

@@ -1,7 +1,7 @@
 <header id="header" class="header wrapper">
 	<?php if (DB_CONNECTED == 1): ?>
 		<?php if (s('title')): ?>
-			<h1 class="title_website"><?php echo anchor_element('', '', '', s('title'), ROOT); ?></h1>
+			<h1 class="title_website"><?php echo anchor_element('internal', '', '', s('title'), ROOT); ?></h1>
 		<?php endif; ?>
 		<?php if (s('description')): ?>
 			<p class="description_website"><?php echo s('description'); ?></p>

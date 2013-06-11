@@ -100,7 +100,7 @@ function reminder_post()
 				/* send reminder information */
 
 				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
-				$passwordResetLink = anchor_element('', '', '', $passwordResetRoute);
+				$passwordResetLink = anchor_element('external', '', '', $passwordResetRoute, $passwordResetRoute);
 				$toArray = array(
 					s('author') => s('email')
 				);

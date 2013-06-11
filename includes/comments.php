@@ -284,7 +284,7 @@ function comment_post()
 				$urlLink = anchor_element('external', '', '', $url);
 			}
 			$articleRoute = ROOT . '/' . REWRITE_ROUTE . $route;
-			$articleLink = anchor_element('', '', '', $articleRoute);
+			$articleLink = anchor_element('external', '', '', $articleRoute, $articleRoute);
 
 			/* prepare mail inputs */
 

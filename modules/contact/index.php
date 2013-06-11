@@ -153,10 +153,10 @@ function contact_post()
 	{
 		/* prepare body parts */
 
-		$emailLink = anchor_element('email', '', '', $email);
+		$emailLink = anchor_element('email', '', '', $email, $email);
 		if ($url)
 		{
-			$urlLink = anchor_element('external', '', '', $url);
+			$urlLink = anchor_element('external', '', '', $url, $url);
 		}
 
 		/* prepare mail inputs */

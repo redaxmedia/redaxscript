@@ -134,7 +134,7 @@ function registration_post()
 		/* send login information */
 
 		$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$loginLink = anchor_element('', '', '', $loginRoute);
+		$loginLink = anchor_element('external', '', '', $loginRoute, $loginRoute);
 		$toArray = array(
 			$name => $email
 		);

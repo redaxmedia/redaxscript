@@ -226,7 +226,7 @@ function install()
 
 	/* send login information */
 
-	$urlLink = anchor_element('external', '', '', ROOT);
+	$urlLink = anchor_element('external', '', '', ROOT, ROOT);
 	$toArray = $fromArray = array(
 		$name => $email
 	);
