@@ -204,24 +204,24 @@ class Redaxscript_Mail
 	{
 		/* collect header string */
 
-		$this->_headerString = 'mime-version: 1.0' . PHP_EOL;
+		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
 
 		/* if email attachment */
 
-		if (is_array($this->_attachmentArray))
+		if (!empty($this->_attachmentArray))
 		{
 			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
 				$fileContents = chunk_split(base64_encode($fileContents));
-				$this->_headerString .= 'content-type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . TOKEN . PHP_EOL;
 
 				/* integrate body string */
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
-					$this->_headerString .= 'content-transfer-encoding: 8bit' . PHP_EOL . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . TOKEN . PHP_EOL;
 
@@ -229,23 +229,24 @@ class Redaxscript_Mail
 
 					$this->_bodyString = '';
 				}
-				$this->_headerString .= 'content-type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
-				$this->_headerString .= 'content-transfer-encoding: base64' . PHP_EOL;
-				$this->_headerString .= 'content-disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
+				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
+				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . TOKEN . '--';
 			}
 		}
 		else
 		{
-			$this->_headerString .= 'content-type: text/html; charset=' . s('charset') . PHP_EOL;
-			$this->_headerString .= 'return-path: <' . $this->_fromString . '>';
+			$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
+			
 		}
 
-		/* from and reply */
+		/* collect from output */
 
-		$this->_headerString .= 'from: ' . $this->_fromString . PHP_EOL;
-		$this->_headerString .= 'reply-to: ' . $this->_fromString . PHP_EOL;
+		$this->_headerString .= 'From: ' . $this->_fromString . PHP_EOL;
+		$this->_headerString .= 'Reply-To: ' . $this->_fromString . PHP_EOL;
+		$this->_headerString .= 'Return-Path: ' . $this->_fromString . PHP_EOL;
 	}
 
 	/**
