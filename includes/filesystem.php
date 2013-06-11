@@ -116,7 +116,7 @@ class Redaxscript_Directory
 	 * @since 2.0
 	 *
 	 * @param string $directory
-	 * @return array $diretoryArray
+	 * @return array $directoryArray
 	 */
 
 	protected function _scan($directory = '')

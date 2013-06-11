@@ -47,11 +47,11 @@ class Redaxscript_Mail
 	private $_attachmentArray;
 
 	/**
-	 * formString
+	 * fromString
 	 * @var string
 	 */
 
-	protected $_formString;
+	protected $_fromString;
 
 	/**
 	 * subjectString
@@ -126,16 +126,16 @@ class Redaxscript_Mail
 	{
 		/* build from string */
 
-		$from = isset($this->_fromArray[0]) ? $this->_fromArray[0] : '';
-		$fromName = isset($this->_fromArray[1]) ? $this->_fromArray[1] : '';
+		$from = current($this->_fromArray);
+		$fromName = key($this->_fromArray);
 
-		/* fallback if numeric */
+		/* fallback if null */
 
-		if (is_numeric($from))
+		if (!$fromName)
 		{
-			$from = $fromName;
+			$fromName = $from;
 		}
-		$this->_fromString = $from . ' <' . $fromName . '>';
+		$this->_fromString = $fromName . ' <' . $from . '>';
 	}
 
 	/**
@@ -177,7 +177,7 @@ class Redaxscript_Mail
 		{
 			if ($key && $value)
 			{
-				/* if numeric */
+				/* if numeric key */
 
 				if (is_numeric($key))
 				{
@@ -224,6 +224,9 @@ class Redaxscript_Mail
 					$this->_headerString .= 'content-transfer-encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . TOKEN . PHP_EOL;
+
+					/* reset body string */
+
 					$this->_bodyString = '';
 				}
 				$this->_headerString .= 'content-type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
@@ -253,15 +256,15 @@ class Redaxscript_Mail
 
 	public function send()
 	{
-		foreach ($this->_toArray as $to => $toName)
+		foreach ($this->_toArray as $toName => $to)
 		{
-			/* fallback if numeric */
+			/* fallback if null */
 
-			if (is_numeric($to))
+			if (!$toName)
 			{
-				$to = $toName;
+				$toName = $to;
 			}
-			$toString = $to . ' <' . $toName . '>';
+			$toString = $toName . ' <' . $to . '>';
 
 			/* send mail */
 

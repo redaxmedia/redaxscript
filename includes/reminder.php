@@ -105,7 +105,7 @@ function reminder_post()
 					s('author') => s('email')
 				);
 				$fromArray = array(
-					$author => $email
+					$name => $email
 				);
 				$subject = l('reminder');
 				$bodyArray = array(
