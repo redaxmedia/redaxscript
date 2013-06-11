@@ -206,9 +206,16 @@ class Redaxscript_Mail
 
 		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
 
-		/* if email attachment */
+		/* if empty attachment */
 
-		if (!empty($this->_attachmentArray))
+		if (empty($this->_attachmentArray))
+		{
+			$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
+		}
+
+		/* else handle attachment */
+
+		else
 		{
 			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
@@ -235,11 +242,6 @@ class Redaxscript_Mail
 				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . TOKEN . '--';
 			}
-		}
-		else
-		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
-			
 		}
 
 		/* collect from output */
