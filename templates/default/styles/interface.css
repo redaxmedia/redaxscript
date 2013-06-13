@@ -129,7 +129,7 @@
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
-.list_header li:hover, .list_header li:hover a
+.list_header li:hover, .list_header .item_touch, .list_header li:hover a, .list_header .item_touch a
 {
 	color: #fff;
 }
