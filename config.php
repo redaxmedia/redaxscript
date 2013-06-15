@@ -1,21 +1,52 @@
 <?php
 
 /**
-* config database
-*
-* @param string $name
-* @return string
-*/
+ * Redaxscript Config
+ *
+ * @since 2.0
+ *
+ * @category Config
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-function d($name = '')
+class Redaxscript_Config
 {
-	$d['host'] = '';
-	$d['name'] = '';
-	$d['user'] = '';
-	$d['password'] = '';
-	$d['prefix'] = '';
-	$d['salt'] = '';
-	$output = $d[$name];
-	return $output;
+	/**
+	 * config
+	 * @var array
+	 */
+
+	private $_config = array(
+		// [config]
+		'host' => '',
+		'name' => '',
+		'user' => '',
+		'password' => '',
+		'prefix' => '',
+		'salt' => ''
+		// [/config]
+	);
+
+	/**
+	 * get
+	 *
+	 * @since 2.0
+	 *
+	 * @return $output string
+	 */
+
+	public function get($key = '')
+	{
+		if (array_key_exists($key, $this->_config))
+		{
+			$output = $this->_config[$key];
+		}
+		else
+		{
+			$output = '';
+		}
+		return $output;
+	}
 }
 ?>

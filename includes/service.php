@@ -129,7 +129,7 @@ class Redaxscript_Mail
 		$from = current($this->_fromArray);
 		$fromName = key($this->_fromArray);
 
-		/* fallback if null */
+		/* fallback if empty */
 
 		if (!$fromName)
 		{
@@ -261,7 +261,7 @@ class Redaxscript_Mail
 	{
 		foreach ($this->_toArray as $toName => $to)
 		{
-			/* fallback if null */
+			/* fallback if empty */
 
 			if (!$toName)
 			{

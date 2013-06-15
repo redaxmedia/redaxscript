@@ -28,12 +28,17 @@ function startup()
 	define('FILE', get_file());
 	define('ROOT', get_root());
 	define('TOKEN', get_token());
-	define('PREFIX', d('prefix'));
-	define('SALT', d('salt'));
+
+	/* config object */
+
+	$config = New Redaxscript_Config();
+
+	define('PREFIX', $config->get('prefix'));
+	define('SALT', $config->get('salt'));
 
 	/* database connect */
 
-	database_connect(d('host'), d('name'), d('user'), d('password'));
+	database_connect($config->get('host'), $config->get('name'), $config->get('user'), $config->get('password'));
 
 	/* define session */
 

@@ -398,7 +398,7 @@ function install_notification()
 
 /*
  * check install
- * 
+ *
  * @return integer
  */
 
@@ -425,26 +425,24 @@ function write_config()
 	if ($_POST['install_post'])
 	{
 		global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
-		$file = fopen('config.php', 'w+');
-		$contents =
-'<?php
 
-/* config database */
+		/* pattern and replacement */
 
-function d($name = \'\')
-{
-	$d[\'host\'] = \'' . $d_host . '\';
-	$d[\'name\'] = \'' . $d_name . '\';
-	$d[\'user\'] = \'' . $d_user . '\';
-	$d[\'password\'] = \'' . $d_password . '\';
-	$d[\'prefix\'] = \'' . $d_prefix . '\';
-	$d[\'salt\'] = \'' . $d_salt . '\';
-	$output = $d[$name];
-	return $output;
-}
-?>';
-		fwrite($file, $contents);
-		fclose($file);
+		$pattern = '/\/\/\s+\[config].*?\/\/\s+\[\/config]/s';
+		$replacement = '// [config]
+		\'host\' => \'' . $d_host . '\',
+		\'name\' => \'' . $d_name . '\',
+		\'user\' => \'' . $d_user . '\',
+		\'password\' => \'' . $d_password . '\',
+		\'prefix\' => \'' . $d_prefix . '\',
+		\'salt\' => \'' . $d_salt . '\'
+		// [/config]';
+
+		/* process contents */
+
+		$content = file_get_contents('config.php');
+		$content = preg_replace($pattern, $replacement, $content);
+		file_put_contents('config.php', $content);
 	}
 }
 
