@@ -92,7 +92,7 @@
 					thatChildren.stop(0).slideDown();
 				}
 
-				/* else handle mouseleave and touchend */
+				/* else timeout enhanced mouseleave and touchend */
 
 				else
 				{

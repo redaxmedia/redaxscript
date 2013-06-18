@@ -182,14 +182,23 @@
 					field = form.find(options.required),
 					fieldValue = $.trim(field.val()),
 					fieldPlaceholder = field.attr('placeholder'),
-					inputIncorrect = l.input_incorrect + l.exclamation_mark;
+					inputIncorrect = l.input_incorrect + l.exclamation_mark,
+					timeout;
 
-				/* prematurely terminate search */
+				/* prevent multiple timeout */
 
-				if (fieldValue.length < 3)
+				if (fieldPlaceholder === inputIncorrect)
+				{
+					clearTimeout(timeout);
+					event.preventDefault();
+				}
+
+				/* else prematurely terminate search */
+
+				else if (fieldValue.length < 3)
 				{
 					field.val('').attr('placeholder', inputIncorrect);
-					setTimeout(function ()
+					timeout = setTimeout(function ()
 					{
 						field.attr('placeholder', fieldPlaceholder);
 					}, options.duration);

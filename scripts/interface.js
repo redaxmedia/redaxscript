@@ -101,7 +101,8 @@
 		return this.each(function ()
 		{
 			var dropdown = $(this),
-				dropdownRelated = dropdown.find(options.related);
+				dropdownRelated = dropdown.find(options.related),
+				timeout;
 
 			/* listen for touchstart and touchend */
 
@@ -113,9 +114,13 @@
 				{
 					dropdownItem.addClass('item_touch');
 				}
+
+				/* else timeout enhanced touchend */
+
 				else if (event.type === 'touchend')
 				{
-					setTimeout(function ()
+					clearTimeout(timeout);
+					timeout = setTimeout(function ()
 					{
 						dropdownItem.removeClass('item_touch');
 					}, options.duration);

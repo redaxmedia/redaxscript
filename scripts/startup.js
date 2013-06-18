@@ -102,7 +102,7 @@ r.plugins =
 		options:
 		{
 			related: 'li',
-			duration: 1000
+			duration: 2000
 		}
 	},
 	checkRequired:

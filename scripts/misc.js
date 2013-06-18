@@ -26,13 +26,15 @@
 		return this.each(function ()
 		{
 			var link = $(this),
-				url = link.attr('href');
+				url = link.attr('href'),
+				timeout;
 
-			/* forward url after delay */
+			/* timeout enhanced forward */
 
 			if (typeof url === 'string')
 			{
-				setTimeout(function ()
+				clearTimeout(timeout);
+				timeout = setTimeout(function ()
 				{
 					window.location = url;
 				}, options.duration);
