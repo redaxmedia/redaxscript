@@ -271,13 +271,11 @@
 
 			form.on('error success', function (event)
 			{
-				clearTimeout(timeout);
-
 				/* handle error */
 
 				if (event.type === 'error')
 				{
-					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').slideDown(options.duration);
+					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
 				}
 
 				/* else handle success */
@@ -285,9 +283,10 @@
 				else
 				{
 					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
+					clearTimeout(timeout);
 					timeout = setTimeout(function ()
 					{
-						noteRequired.slideUp(options.duration);
+						noteRequired.stop(1).slideUp(options.duration);
 					}, options.timeout);
 				}
 			});
