@@ -126,9 +126,10 @@
 
 			/* setup control events */
 
-			editor.toolbar.find('div.js_editor_control').mousedown(function ()
+			editor.toolbar.children('div.js_editor_control').on('mousedown', function ()
 			{
-				var data = $(this).data('data');
+				var control = $(this),
+					data = control.data('data');
 
 				/* call methode */
 
