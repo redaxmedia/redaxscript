@@ -110,6 +110,8 @@
 			{
 				var dropdownItem = $(this);
 
+				/* if touchstart */
+
 				if (event.type === 'touchstart')
 				{
 					dropdownItem.addClass('item_touch');
