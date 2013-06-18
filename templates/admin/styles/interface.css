@@ -120,6 +120,7 @@
 .list_panel_admin a:hover
 {
 	background: #333;
+	color: #ddd;
 }
 
 /* @section 3.1 javascript enabled */
@@ -129,7 +130,52 @@
 	display: none;
 }
 
-/* @section 4. list tab admin */
+/* @section 4. item panel admin */
+
+.item_panel_admin
+{
+	padding-left: 2em;
+	position: relative;
+}
+
+.item_panel_admin:before
+{
+	font: 1.25em/2em 'icon admin';
+	left: 0;
+	position: absolute;
+	text-indent: 0;
+	top: 0;
+	width: 2em;
+}
+
+/* @section 4.1 icons */
+
+.item_panel_admin.item_contents:before
+{
+	content: 'i';
+}
+
+.item_panel_admin.item_access:before
+{
+	content: 'j';
+}
+
+.item_panel_admin.item_system:before
+{
+	content: 'k';
+}
+
+.item_panel_admin.item_profile:before
+{
+	content: 'l';
+}
+
+.item_panel_admin.item_logout:before
+{
+	content: 'n';
+}
+
+/* @section 5. list tab admin */
 
 .list_tab_admin
 {
@@ -160,7 +206,7 @@
 	text-decoration: none;
 }
 
-/* @section 4.1 javascript enabled */
+/* @section 5.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {

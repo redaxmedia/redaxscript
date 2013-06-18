@@ -40,14 +40,17 @@
 					dockElementText = dockElement.text(),
 					dockDescription = dockElement.siblings(options.element.dockDescription);
 
-				/* listen for mouse and touch events */
-
 				dockElement.on('mouseenter mouseleave touchstart touchend', function (event)
 				{
+					/* handle mouseenter and touchstart */
+
 					if (event.type === 'mouseenter' || event.type === 'touchstart')
 					{
 						dockDescription.text(dockElementText);
 					}
+
+					/* else handle mouseleave and touchend */
+
 					else
 					{
 						dockDescription.text('');
@@ -74,25 +77,32 @@
 		{
 			var panelList = $(this),
 				panelItem = panelList.find('li'),
-				panelChildren = panelItem.children('ul');
+				panelChildren = panelItem.children('ul'),
+				timeout;
 
-			/* stop propagation */
-
-			panelChildren.on('click touchstart', function (event)
-			{
-				event.stopPropagation();
-			});
-
-			/* listen for click and touchstart */
-
-			panelItem.on('click touchstart', function ()
+			panelItem.on('mouseenter mouseleave touchstart touchend', function (event)
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
 
-				thatChildren.toggle();
-			});
+				/* handle mouseenter and touchstart */
 
+				if (event.type === 'mouseenter' || event.type === 'touchstart')
+				{
+					thatChildren.stop(0).slideDown();
+				}
+
+				/* else handle mouseleave and touchend */
+
+				else
+				{
+					clearTimeout(timeout);
+					timeout = setTimeout(function ()
+					{
+						thatChildren.stop(0).slideUp();
+					}, options.timeout);
+				}
+			});
 		});
 	};
 
@@ -106,7 +116,7 @@
 		}
 		if (r.plugins.adminPanel.startup)
 		{
-			$(r.plugins.adminPanel.selector).adminPanel();
+			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

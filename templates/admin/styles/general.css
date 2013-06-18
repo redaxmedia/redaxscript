@@ -10,17 +10,10 @@
 .panel_admin
 {
 	left: 0;
-	position: fixed;
+	position: relative;
 	top: 0;
 	width: 100%;
 	z-index: 1000;
-}
-
-/* mobile */
-
-.mobile .panel_admin
-{
-	position: absolute;
 }
 
 .panel_admin a, .panel_admin a:hover

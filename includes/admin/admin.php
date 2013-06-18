@@ -52,7 +52,7 @@ function admin_panel_list()
 
 	if ($contents_access)
 	{
-		$output = '<li class="item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
+		$output = '<li class="item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
@@ -76,7 +76,7 @@ function admin_panel_list()
 
 	if ($access_access)
 	{
-		$output .= '<li class="item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
+		$output .= '<li class="item_panel_admin item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
 		if (MY_ID)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
@@ -104,7 +104,7 @@ function admin_panel_list()
 
 	if ($system_access || $admin_panel_list_modules)
 	{
-		$output .= '<li class="item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
+		$output .= '<li class="item_panel_admin item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('modules'), 'admin/view/modules');
@@ -125,12 +125,12 @@ function admin_panel_list()
 
 	if (MY_USER && MY_ID)
 	{
-		$output .= '<li>' . anchor_element('internal', '', 'link_panel_admin link_profile', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
 	/* collect logout */
 
-	$output .= '<li>' . anchor_element('internal', '', 'link_panel_admin link_logout', l('logout'), 'logout') . '</li>';
+	$output .= '<li class="item_panel_admin item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
 
 	/* collect list output */
 

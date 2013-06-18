@@ -27,5 +27,10 @@ r.plugins.adminDock =
 r.plugins.adminPanel =
 {
 	startup: true,
-	selector: 'ul.js_list_panel_admin'
+	selector: 'ul.js_list_panel_admin',
+	options:
+	{
+		timeout: 1000,
+		duration: 300
+	}
 };
