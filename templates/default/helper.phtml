@@ -48,6 +48,10 @@ function helper_subset()
 	{
 		$output = 'cyrillic';
 	}
+	else if (LANGUAGE == 'vi')
+	{
+		$output = 'vietnamese';
+	}
 	else
 	{
 		$output = 'latin';
