@@ -200,7 +200,7 @@
 					field.val('').attr('placeholder', inputIncorrect);
 					timeout = setTimeout(function ()
 					{
-						field.attr('placeholder', fieldPlaceholder);
+						field.attr('placeholder', fieldPlaceholder).focus();
 					}, options.duration);
 					event.preventDefault();
 				}
