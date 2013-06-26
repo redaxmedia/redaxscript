@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include_once('templates/base/helper_class.php'); ?>
 <html lang="en" class="<?php helper_class(); ?>">
 	<head>
 		<?php head(); ?>
@@ -7,7 +6,6 @@
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
-			<?php include_once('templates/base/helper_subset.php'); ?>
 			<?php include_once('templates/admin/head.phtml'); ?>
 		<?php endif; ?>
 	</head>
