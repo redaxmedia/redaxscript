@@ -77,31 +77,22 @@
 		{
 			var panelList = $(this),
 				panelItem = panelList.find('li'),
-				panelChildren = panelItem.children('ul'),
-				timeout;
+				panelChildren = panelItem.children('ul');
 
-			panelItem.on('mouseenter mouseleave touchstart touchend', function (event)
+			panelItem.on('click touchover', function (event)
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
 
-				/* handle mouseenter and touchstart */
+				/* handle click and touchover */
 
-				if (event.type === 'mouseenter' || event.type === 'touchstart')
-				{
-					thatChildren.stop(0).slideDown();
-				}
+				panelChildren.stop(0).slideUp();
+				thatChildren.stop(0).slideDown();
 
-				/* else timeout enhanced mouseleave and touchend */
+				/* prevent event behaviour */
 
-				else
-				{
-					clearTimeout(timeout);
-					timeout = setTimeout(function ()
-					{
-						thatChildren.stop(0).slideUp();
-					}, options.timeout);
-				}
+				event.stopPropagation();
+				event.preventDefault();
 			});
 		});
 	};

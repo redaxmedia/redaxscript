@@ -115,66 +115,79 @@
 
 .list_panel_admin a, .list_panel_admin span
 {
+	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
+	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
+	color: #b9b9b9;
+	cursor: pointer;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
 	display: block;
-	padding: 0.5em;
+	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-transform: uppercase;
 }
 
-.list_panel_admin a:hover
+.list_panel_admin a:hover, .list_panel_admin span:hover
 {
-	background: #333;
-	color: #ddd;
+	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	background: #3db1f1;
+	background: -moz-linear-gradient(top, #3db1f1, #0090db);
+	background: -ms-linear-gradient(top, #3db1f1, #0090db);
+	background: -o-linear-gradient(top, #3db1f1, #0090db);
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
+	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
+	background: linear-gradient(top, #3db1f1, #0090db);
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
-/* @section 3.1 javascript enabled */
+/* @section 3.1 icons */
 
-.js .list_panel_admin li > ul
+.item_panel_admin > a:before, .item_panel_admin > span:before
 {
-	display: none;
+	font: 1.25em/1.5em 'icon admin';
+	margin-right: 1em;
+	vertical-align: middle;
+	text-transform: lowercase;
 }
 
-/* @section 4. item panel admin */
-
-.item_panel_admin
-{
-	padding-left: 2em;
-	position: relative;
-}
-
-.item_panel_admin:before
-{
-	font: 1.25em/2em 'icon admin';
-	left: 0;
-	position: absolute;
-	text-indent: 0;
-	top: 0;
-	width: 2em;
-}
-
-/* @section 4.1 icons */
-
-.item_panel_admin.item_contents:before
+.item_panel_admin.item_contents > span:before
 {
 	content: 'i';
 }
 
-.item_panel_admin.item_access:before
+.item_panel_admin.item_access > span:before
 {
 	content: 'j';
 }
 
-.item_panel_admin.item_system:before
+.item_panel_admin.item_system > span:before
 {
 	content: 'k';
 }
 
-.item_panel_admin.item_profile:before
+.item_panel_admin.item_profile > a:before
 {
 	content: 'l';
 }
 
-.item_panel_admin.item_logout:before
+.item_panel_admin.item_logout > a:before
 {
 	content: 'n';
+}
+
+.js .list_panel_admin li ul a
+{
+	padding-left: 3.5em;
+}
+
+/* @section 3.2 javascript enabled */
+
+.js .list_panel_admin li > ul
+{
+	display: none;
 }
 
 /* @section 5. list tab admin */
