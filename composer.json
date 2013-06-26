@@ -27,6 +27,7 @@
 	{
 		"post-install-cmd":
 		[
+			"del composer.lock",
 			"npm install"
 		]
 	}
