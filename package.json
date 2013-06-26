@@ -34,8 +34,8 @@
 		"grunt-htmlhint": "0.4.0",
 		"grunt-jsonlint": "1.0.0",
 		"grunt-phpcs": "0.1.1",
-		"grunt-smushit": "0.4.0",
 		"grunt-shell": "0.2.2",
+		"grunt-smushit": "0.4.0",
 		"svgo": "0.2.3"
 	}
 }

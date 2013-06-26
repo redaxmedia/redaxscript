@@ -194,13 +194,13 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
+	grunt.loadNpmTasks('grunt-img');
+	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
