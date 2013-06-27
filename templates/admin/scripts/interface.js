@@ -86,8 +86,8 @@
 
 				/* handle click and touchover */
 
-				panelChildren.stop(0).slideUp();
-				thatChildren.stop(0).slideDown();
+				panelChildren.stop(0).slideUp(options.duration);
+				thatChildren.stop(0).slideDown(options.duration);
 
 				/* prevent event behaviour */
 
