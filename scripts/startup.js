@@ -296,6 +296,28 @@ r.support =
 			return false;
 		}
 	}(document),
+	touch: function (doc)
+	{
+		if ('ontouchstart' in doc.documentElement)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(document),
+	webGL: function (win)
+	{
+		if (typeof win.WebGLRenderingContext === 'function')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(window),
 	webStorage: function (win)
 	{
 		if (win.navigator.cookieEnabled === true && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')

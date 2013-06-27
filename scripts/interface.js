@@ -218,7 +218,7 @@
 		{
 			$(r.plugins.accordion.selector).accordion(r.plugins.accordion.options);
 		}
-		if (r.plugins.dropdown.startup && r.constants.MY_MOBILE)
+		if (r.plugins.dropdown.startup && r.support.touch)
 		{
 			$(r.plugins.dropdown.selector).dropdown();
 		}
