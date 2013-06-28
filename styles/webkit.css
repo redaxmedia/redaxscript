@@ -4,9 +4,9 @@
  * 1. input and select reset
  */
 
-/* @section 1. input and select reset */
+/* @section 1. remove appearance */
 
-input, input::-webkit-search-cancel-button, select
+input, input::-webkit-search-cancel-button
 {
 	-webkit-appearance: none;
 }
