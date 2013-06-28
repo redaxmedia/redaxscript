@@ -5,9 +5,8 @@
  *    1.1 icons
  * 2. list control admin
  * 3. list panel admin
- *    3.1 javascript enabled
- * 4. item panel admin
- *    4.1 icons
+ *    3.1 icons
+ *    3.2 javascript enabled
  * 5. list tab admin
  *    5.1 javascript enabled
  */
@@ -182,11 +181,6 @@
 .item_panel_admin.item_logout > a:before
 {
 	content: 'n';
-}
-
-.js .list_panel_admin li ul a
-{
-	padding-left: 3.5em;
 }
 
 /* @section 3.2 javascript enabled */
