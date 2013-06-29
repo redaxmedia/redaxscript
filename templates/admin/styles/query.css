@@ -41,6 +41,11 @@
 
 @media screen and (min-width: 50em)
 {
+	.sidebar .description_dock_admin
+	{
+		display: none;
+	}
+
 	.list_panel_admin a, .list_panel_admin span
 	{
 		line-height: 3.5em;

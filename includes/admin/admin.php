@@ -125,7 +125,7 @@ function admin_panel_list()
 
 	if (MY_USER && MY_ID)
 	{
-		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
 	/* collect logout */
