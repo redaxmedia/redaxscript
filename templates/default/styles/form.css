@@ -3,7 +3,7 @@
  *
  * 1. tag styling
  * 2. default buttons
- *    2.1 hover effect
+ *    2.1 hover and active effect
  * 3. custom buttons
  * 4. default fields
  *    4.1 hover effect
@@ -27,8 +27,10 @@ textarea
 
 .field_button, .field_button_large
 {
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	background: #cacaca;
 	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
@@ -36,14 +38,15 @@ textarea
 	background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#bdbdbd));
 	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: linear-gradient(top, #d1d1d1, #bdbdbd);
-	border: 1px solid #9e9e9e;
-	border-radius: 0.5em;
-	color: #666;
+	border: 1px solid #8e8e8e;
+	border-radius: 0.25em;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	color: #4a4a4a;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 1em/2.25em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 0.75em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }
 
@@ -52,7 +55,14 @@ textarea
 	font-size: 1.25em;
 }
 
-/* @section 2.1 hover effect */
+/* @section 2.1 hover and active effect */
+
+.field_button:hover, .field_button_large:hover, .field_button:active, .field_button_large:active
+{
+	border-color: #005da2;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+}
 
 .field_button:hover, .field_button_large:hover
 {
@@ -63,9 +73,14 @@ textarea
 	background: -webkit-gradient(linear, left top, left bottom, from(#0090db), to(#62c5ff));
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	background: linear-gradient(top, #0090db, #62c5ff);
-	border-color: #005da2;
-	color: #fff;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.field_button:active, .field_button_large:active
+{
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+	background: #0090db;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 /* @section 3. custom buttons */
