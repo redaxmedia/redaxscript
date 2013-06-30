@@ -158,16 +158,17 @@
 
 /* @section 1.1.4 move control */
 
-.table_admin tbody .column_move
-{
-	height: 3em;
-}
-
 .table_admin .move_up, .table_admin .move_down
 {
+	color: #666;
 	display: block;
-	height: 100%;
+	min-height: 3em;
 	position: relative;
+}
+
+.table_admin .move_up:hover, .table_admin .move_down:hover
+{
+	color: #0090db;
 }
 
 .table_admin .move_up:before, .table_admin .move_down:before
