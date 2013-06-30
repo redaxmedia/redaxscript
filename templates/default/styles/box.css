@@ -40,13 +40,13 @@
 	-moz-box-shadow: 0 0 3px #c6c6c6;
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #e5e5e5;
-	background: -moz-linear-gradient(top, #e5e5e5, #d5d5d5);
-	background: -ms-linear-gradient(top, #e5e5e5, #d5d5d5);
-	background: -o-linear-gradient(top, #e5e5e5, #d5d5d5);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#d5d5d5));
-	background: -webkit-linear-gradient(top, #e5e5e5, #d5d5d5);
-	background: linear-gradient(top, #e5e5e5, #d5d5d5);
+	background: #e2e2e2;
+	background: -moz-linear-gradient(top, #e2e2e2, #d5d5d5);
+	background: -ms-linear-gradient(top, #e2e2e2, #d5d5d5);
+	background: -o-linear-gradient(top, #e2e2e2, #d5d5d5);
+	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#d5d5d5));
+	background: -webkit-linear-gradient(top, #e2e2e2, #d5d5d5);
+	background: linear-gradient(top, #e2e2e2, #d5d5d5);
 	border: 1px solid #f1f1f1;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #c6c6c6;
@@ -98,11 +98,6 @@
 	-moz-border-radius: 0 0 0.25em 0.25em;
 	-webkit-border-radius: 0 0 0.25em 0.25em;
 	border-radius: 0 0 0.25em 0.25em;
-}
-
-.box_dialog_default, .box_dialog_default a, .sidebar .box_extra, .sidebar .box_extra a
-{
-	color: #474747;
 }
 
 /* @section 6. box extra */

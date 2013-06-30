@@ -54,7 +54,7 @@
 	background: -webkit-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	color: #fff;
-	font-weight: bold;
+	font: bold 1.25em 'pt sans narrow', 'trebuchet ms', arial;
 	text-shadow: 0 1px #777;
 	text-transform: uppercase;
 }

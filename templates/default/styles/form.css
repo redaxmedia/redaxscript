@@ -38,10 +38,10 @@ textarea
 	background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#bdbdbd));
 	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: linear-gradient(top, #d1d1d1, #bdbdbd);
-	border: 1px solid #8e8e8e;
+	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	color: #4a4a4a;
+	color: #666;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 1em/2.25em 'pt sans narrow', 'trebuchet ms', arial;
@@ -260,7 +260,7 @@ textarea
 	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-	background: #e4e4e4;
+	background: #e5e5e5;
 	background: -moz-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: -ms-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: -o-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);

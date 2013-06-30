@@ -22,14 +22,14 @@
 	-moz-box-shadow: 0 0 3px #b9b9b9;
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px #b9b9b9;
-	background: #e5e5e5;
+	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #e2e2e2, #d7d7d7);
 	background: -ms-linear-gradient(top, #e2e2e2, #d7d7d7);
 	background: -o-linear-gradient(top, #e2e2e2, #d7d7d7);
 	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#d7d7d7));
 	background: -webkit-linear-gradient(top, #e2e2e2, #d7d7d7);
 	background: linear-gradient(top, #e2e2e2, #d7d7d7);
-	border:1px solid #f1f1f1;
+	border: 1px solid #f1f1f1;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #b9b9b9;
 	display: inline-block;
@@ -47,7 +47,7 @@
 
 .list_breadcrumb a:hover
 {
-	color:#555;
+	color: #555;
 }
 
 .list_breadcrumb li
@@ -155,8 +155,8 @@
 
 .list_header > li:hover, .list_header > .item_touch
 {
-	-moz-box-shadow: 0 0 4px #999;
-	-webkit-box-shadow: 0 0 4px #999;
+	-moz-box-shadow: 0 0 3px #999;
+	-webkit-box-shadow: 0 0 3px #999;
 	background: #444;
 	background: -moz-linear-gradient(top, #555, #333);
 	background: -ms-linear-gradient(top, #555, #333);
@@ -164,7 +164,7 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#333));
 	background: -webkit-linear-gradient(top, #555, #333);
 	background: linear-gradient(top, #555, #333);
-	box-shadow: 0 0 4px #999;
+	box-shadow: 0 0 3px #999;
 }
 
 /* @section 4.1 list header children */
@@ -238,7 +238,7 @@
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #f1f1f1;
 	border-radius: 0.25em;
-	box-shadow: 0 0 4px #c6c6c6;
+	box-shadow: 0 0 3px #c6c6c6;
 	color: #5e5e5e;
 	font: bold 1em arial;
 	padding: 0.5em 1em;
@@ -247,8 +247,8 @@
 
 .list_pagination a:hover
 {
-	-moz-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
-	-webkit-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
+	-moz-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
+	-webkit-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
 	background: #33acee;
 	background: -moz-linear-gradient(top, #0090db, #62c5ff);
 	background: -ms-linear-gradient(top, #0090db, #62c5ff);
@@ -257,7 +257,7 @@
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	background: linear-gradient(top, #0090db, #62c5ff);
 	border-color: #005da2;
-	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 4px #bdbdbd;
+	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
 	color: #fff;
 	text-shadow: 0 1px #005da2;
 }
@@ -421,7 +421,7 @@
 	-moz-box-shadow: 0 0 3px #c6c6c6;
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #e5e5e5;
+	background: #e2e2e2;
 	border: 1px solid #f1f1f1;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px #c6c6c6;
