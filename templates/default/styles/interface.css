@@ -5,7 +5,6 @@
  * 2. list default
  * 3. list footer
  * 4. list header
- *    4.1 list header children
  * 5. list pagination
  * 6. list sidebar
  * 7. list tab default
@@ -167,7 +166,7 @@
 	box-shadow: 0 0 3px #999;
 }
 
-/* @section 4.1 list header children */
+/* children list */
 
 .list_header_children
 {
