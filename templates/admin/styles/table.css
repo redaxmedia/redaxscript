@@ -113,7 +113,7 @@
 {
 	background: url('templates/admin/images/carbon.png') #232323;
 	color: #ccc;
-	font: bold 1em arial;
+	font: bold 1.25em 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }
 
