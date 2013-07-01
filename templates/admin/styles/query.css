@@ -31,7 +31,7 @@
 		margin-left: 0;
 	}
 
-	.form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish, .table_admin .column_third
+	.description_dock_admin, .form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
 	{
 		display: none;
 	}
