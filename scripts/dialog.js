@@ -24,7 +24,7 @@
 
 		/* detect needed mode */
 
-		if (r.constants.FIRST_PARAMETER === 'admin')
+		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
 		}

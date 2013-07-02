@@ -19,7 +19,7 @@
 	-ms-transition: padding 0.3s ease;
 	-o-transition: padding 0.3s ease;
 	-webkit-transition: padding 0.3s ease;
-	display: inline-block;
+	float: left;
 	height: 3.25em;
 	position: relative;
 	text-indent: -999em;

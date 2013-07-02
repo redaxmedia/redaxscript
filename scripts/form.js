@@ -31,13 +31,13 @@
 		{
 			/* listen for ready and input */
 
-			$(this).on('ready input', function (event)
+			$(this).on('load input', function (event)
 			{
 				var textarea = this;
 
-				/* on ready resize */
+				/* resize on load */
 
-				if (event.type === 'ready')
+				if (event.type === 'load')
 				{
 					while (textarea.clientHeight < textarea.scrollHeight)
 					{
@@ -55,7 +55,7 @@
 				{
 					textarea.rows += 1;
 				}
-			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
+			}).css('overflow', options.overflow).css('resize', 'none');
 		});
 	};
 
@@ -335,6 +335,13 @@
 		if (r.plugins.autoResize.startup)
 		{
 			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
+
+			/* handle load */
+
+			$(window).on('load', function ()
+			{
+				$(r.plugins.autoResize.selector).trigger('load');
+			});
 		}
 		if (r.plugins.checkRequired.startup)
 		{

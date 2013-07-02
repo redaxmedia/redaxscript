@@ -17,26 +17,24 @@ r.modules.editor =
 			editor: 'div.js_editor',
 			editorPreview: 'div.js_editor_preview',
 			editorToolbar: 'div.js_toolbar',
-			editorDivider: 'div.js_editor_divider',
-			editorNewline: 'div.js_editor_newline',
-			editorControl: 'div.js_editor_control',
-			editorSourceCode: 'div.js_editor_control_source_code',
-			editorWysiwyg: 'div.js_editor_control_wysiwyg'
+			editorDivider: 'span.js_editor_divider',
+			editorControl: 'span.js_editor_control',
+			editorSourceCode: 'span.js_editor_control_source_code',
+			editorWysiwyg: 'span.js_editor_control_wysiwyg'
 		},
 		classString:
 		{
 			editor: 'js_editor editor',
 			editorPreview: 'js_required js_editor_preview editor_preview',
-			editorToolbar: 'js_toolbar editor_toolbar',
+			editorToolbar: 'js_toolbar editor_toolbar clear_fix',
 			editorDivider: 'js_editor_divider editor_divider',
-			editorNewline: 'js_editor_newline editor_newline',
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
 			editorWysiwyg: 'wysiwyg'
 		},
 		toolbar:
 		{
-			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'newline', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'newline', 'undo', 'redo', 'divider', 'cut', 'copy', 'paste', 'newline', 'insert_link', 'unlink', 'divider', 'insert_image', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
+			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'undo', 'redo', 'divider', 'cut', 'copy', 'paste', 'insert_link', 'unlink', 'divider', 'insert_image', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
 			frontend: ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat']
 		},
 		xhtml:

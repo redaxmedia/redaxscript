@@ -24,36 +24,56 @@
 	background: url('templates/admin/images/carbon.png') #232323;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	text-shadow: 0 1px #1b1bb;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.editor_toolbar, .editor_toolbar a
+{
+	color: #b9b9b9;
 }
 
 /* @section 3. editor control */
 
 .editor_control
 {
-	display: inline-block;
+	-moz-transition: padding 0.3s ease;
+	-ms-transition: padding 0.3s ease;
+	-o-transition: padding 0.3s ease;
+	-webkit-transition: padding 0.3s ease;
 	cursor: pointer;
-	height: 2.875em;
-	margin: 0 0.5em;
+	float: left;
+	height: 3.25em;
 	position: relative;
 	text-indent: -999em;
-	width: 2em;
+	transition: padding 0.3s ease;
+	width: 3.5em;
 }
 
 .editor_control:hover
 {
-	color: #999;
+	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	background: #3db1f1;
+	background: -moz-linear-gradient(top, #3db1f1, #0090db);
+	background: -ms-linear-gradient(top, #3db1f1, #0090db);
+	background: -o-linear-gradient(top, #3db1f1, #0090db);
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
+	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
+	background: linear-gradient(top, #3db1f1, #0090db);
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
+	color: #000;
+	padding: 0 0.25em;
 }
 
 .editor_control:before
 {
-	font: 1.25em/2.25em 'icon editor';
+	font: 1.25em/2.5em 'icon editor';
 	left: 0;
 	position: absolute;
 	text-align: center;
 	text-indent: 0;
 	top: 0;
-	width: 2em;
+	width: 100%;
 }
 
 /* @section 3.1 icons */
@@ -244,20 +264,17 @@
 
 .editor_preview
 {
-	-moz-box-shadow: inset 0 1px #fcfcfc;
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 1px #fcfcfc;
 	background: #eee;
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
-	box-shadow: inset 0 1px #fcfcfc;
 	min-height: 20em;
 	padding: 0.5em;
 }
 
 .editor_preview > div:hover, .editor_preview > img:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > span:hover, .editor_preview > ul:hover
 {
-	outline: 1px dashed #aaa;
-	outline-color: rgba(0, 0, 0, 0.2)
+	outline: 2px dashed #ddd;
+	outline-color: rgba(0, 0, 0, 0.1);
 }

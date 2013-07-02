@@ -37,7 +37,7 @@
 
 			/* detect needed mode */
 
-			if (r.constants.FIRST_PARAMETER === 'admin')
+			if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 			{
 				options.toolbar = options.toolbar.backend;
 				options.xhtml = options.newline.backend;
@@ -91,28 +91,21 @@
 
 					if (name === 'divider')
 					{
-						$('<div class="' + options.classString.editorDivider + '"></div>').appendTo(editor.toolbar);
-					}
-
-					/* append newline */
-
-					else if (name === 'newline')
-					{
-						$('<div class="' + options.classString.editorNewline + '"></div>').appendTo(editor.toolbar);
+						$('<span class="' + options.classString.editorDivider + '"></span>').appendTo(editor.toolbar);
 					}
 
 					/* append toggle */
 
 					else if (name === 'toggle')
 					{
-						editor.toggler = control = $('<div class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
+						editor.toggler = control = $('<span class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
 					}
 
 					/* append serveral controls */
 
 					else if (data)
 					{
-						control = $('<div class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></div>').appendTo(editor.toolbar);
+						control = $('<span class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
 					}
 
 					/* store control data */
@@ -126,7 +119,7 @@
 
 			/* setup control events */
 
-			editor.toolbar.children('div.js_editor_control').on('mousedown', function ()
+			editor.toolbar.children(options.element.editorControl).on('mousedown', function ()
 			{
 				var control = $(this),
 					data = control.data('data');
@@ -310,14 +303,14 @@
 
 			editor.convertToHTML = function ()
 			{
-				var output = editor.preview.html();
+				var output = editor.preview.html(),
+					eol = '\n',
+					eolFix = new RegExp(eol + eol, 'gi');
 
 				/* pseudo tags */
 
-				output = output.replace(/-&gt;/gi, '->');
 				output = output.replace(/&lt;(break|code|function)&gt;/gi, '<$1>');
 				output = output.replace(/&lt;\/(code|function)&gt;/gi, '</$1>');
-				output = output.replace(/[\r\n]/gi, '');
 
 				/* xhtml cleanup */
 
@@ -338,10 +331,11 @@
 
 				if (options.newline)
 				{
-					output = output.replace(/<br \/>/gi, '<br \/>\n');
-					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>\n');
-					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>\n');
-					output = output.replace(/<(ol|ul)>/gi, '<$1>\n');
+					output = output.replace(/<br \/>/gi, '<br \/>' + eol);
+					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
+					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
+					output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
+					output = output.replace(eolFix, eol);
 				}
 				return output;
 			};
@@ -352,7 +346,6 @@
 			{
 				var output = editor.textarea.val();
 
-				output = output.replace(/->/gi, '-&gt;');
 				output = output.replace(/<(break|code|function)>/gi, '&lt;$1&gt;');
 				output = output.replace(/<\/(code|function)>/gi, '&lt;/$1&gt;');
 				return output;

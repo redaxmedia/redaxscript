@@ -407,7 +407,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	/* handle suffix */
 
-	if (FIRST_PARAMETER == 'admin')
+	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
 		$suffix = '_admin';
 	}
