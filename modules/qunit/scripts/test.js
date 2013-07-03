@@ -107,9 +107,9 @@
 					expect = 1,
 					result = textarea.attr('rows');
 
-				/* trigger load */
+				/* trigger focus */
 
-				result = textarea.trigger('load').attr('rows');
+				result = textarea.trigger('focus').attr('rows');
 				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
 
 				/* trigger input */

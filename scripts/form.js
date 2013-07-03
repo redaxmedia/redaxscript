@@ -29,31 +29,36 @@
 
 		return this.each(function ()
 		{
-			/* listen for ready and input */
+			/* listen for focus and input */
 
-			$(this).on('load input', function (event)
+			$(this).on('focus input', function (event)
 			{
 				var textarea = this;
 
-				/* resize on load */
+				/* check limit */
 
-				if (event.type === 'load')
+				if (textarea.rows < options.limit)
 				{
+					/* resize on focus */
+
+					if (event.type === 'focus')
+					{
+						while (textarea.clientHeight < textarea.scrollHeight)
+						{
+							textarea.rows += options.summand++;
+						}
+					}
+
+					/* general resize */
+
+					while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+					{
+						textarea.rows -= 1;
+					}
 					while (textarea.clientHeight < textarea.scrollHeight)
 					{
-						textarea.rows += options.summand++;
+						textarea.rows += 1;
 					}
-				}
-
-				/* general resize */
-
-				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-				{
-					textarea.rows -= 1;
-				}
-				while (textarea.clientHeight < textarea.scrollHeight)
-				{
-					textarea.rows += 1;
 				}
 			}).css('overflow', options.overflow).css('resize', 'none');
 		});
@@ -335,13 +340,6 @@
 		if (r.plugins.autoResize.startup)
 		{
 			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
-
-			/* handle load */
-
-			$(window).on('load', function ()
-			{
-				$(r.plugins.autoResize.selector).trigger('load');
-			});
 		}
 		if (r.plugins.checkRequired.startup)
 		{

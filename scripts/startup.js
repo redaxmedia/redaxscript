@@ -64,7 +64,8 @@ r.plugins =
 		options:
 		{
 			overflow: 'hidden',
-			summand: 10
+			summand: 10,
+			limit: 1000
 		}
 	},
 	dialog:
