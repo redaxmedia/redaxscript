@@ -47,12 +47,12 @@
 
 .link_dock_admin.link_delete:hover
 {
-	background: #dd0000;
-	background: -moz-linear-gradient(top, #dd0000, #940000);
-	background: -ms-linear-gradient(top, #dd0000, #940000);
-	background: -o-linear-gradient(top, #dd0000, #940000);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#940000));
-	background: -webkit-linear-gradient(top, #dd0000, #940000);
+	background: #d50000;
+	background: -moz-linear-gradient(top, #d50000, #a20000);
+	background: -ms-linear-gradient(top, #d50000, #a20000);
+	background: -o-linear-gradient(top, #d50000, #a20000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#d50000), to(#a20000));
+	background: -webkit-linear-gradient(top, #d50000, #a20000);
 }
 
 /* @section 1.1 icons */
@@ -177,12 +177,12 @@
 
 .item_panel_admin.item_logout a:hover
 {
-	background: #dd0000;
-	background: -moz-linear-gradient(top, #dd0000, #940000);
-	background: -ms-linear-gradient(top, #dd0000, #940000);
-	background: -o-linear-gradient(top, #dd0000, #940000);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#940000));
-	background: -webkit-linear-gradient(top, #dd0000, #940000);
+	background: #d50000;
+	background: -moz-linear-gradient(top, #d50000, #a20000);
+	background: -ms-linear-gradient(top, #d50000, #a20000);
+	background: -o-linear-gradient(top, #d50000, #a20000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#d50000), to(#a20000));
+	background: -webkit-linear-gradient(top, #d50000, #a20000);
 }
 
 /* @section 3.1 icons */
