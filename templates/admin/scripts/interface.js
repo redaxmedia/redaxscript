@@ -91,7 +91,7 @@
 
 				panelChildren.stop(0).slideUp(options.duration);
 				thatChildren.stop(0).slideDown(options.duration);
-			})
+			});
 
 			/* listen for mouseenter and mouseleave */
 
