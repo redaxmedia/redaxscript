@@ -43,6 +43,18 @@
 	padding: 0 0.25em;
 }
 
+/* link delete */
+
+.link_dock_admin.link_delete:hover
+{
+	background: #dd0000;
+	background: -moz-linear-gradient(top, #dd0000, #940000);
+	background: -ms-linear-gradient(top, #dd0000, #940000);
+	background: -o-linear-gradient(top, #dd0000, #940000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#940000));
+	background: -webkit-linear-gradient(top, #dd0000, #940000);
+}
+
 /* @section 1.1 icons */
 
 .link_dock_admin:before
@@ -159,6 +171,18 @@
 	color: #000;
 	padding-left: 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* link logout */
+
+.item_panel_admin.item_logout a:hover
+{
+	background: #dd0000;
+	background: -moz-linear-gradient(top, #dd0000, #940000);
+	background: -ms-linear-gradient(top, #dd0000, #940000);
+	background: -o-linear-gradient(top, #dd0000, #940000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#940000));
+	background: -webkit-linear-gradient(top, #dd0000, #940000);
 }
 
 /* @section 3.1 icons */
