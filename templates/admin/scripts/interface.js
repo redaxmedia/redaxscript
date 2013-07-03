@@ -79,7 +79,9 @@
 				panelItem = panelList.find('li'),
 				panelChildren = panelItem.children('ul');
 
-			panelItem.on('click touchover', function (event)
+			/* listen for click and touchover */
+
+			panelItem.on('click touchover', function ()
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
@@ -88,6 +90,13 @@
 
 				panelChildren.stop(0).slideUp(options.duration);
 				thatChildren.stop(0).slideDown(options.duration);
+			})
+
+			/* listen for mouseleave */
+
+			panelList.on('mouseleave', function ()
+			{
+				panelChildren.stop(0).slideUp(options.duration);
 			});
 		});
 	};
