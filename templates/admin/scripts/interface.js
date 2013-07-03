@@ -77,7 +77,8 @@
 		{
 			var panelList = $(this),
 				panelItem = panelList.find('li'),
-				panelChildren = panelItem.children('ul');
+				panelChildren = panelItem.children('ul'),
+				timeout;
 
 			/* listen for click and touchover */
 
@@ -92,11 +93,23 @@
 				thatChildren.stop(0).slideDown(options.duration);
 			})
 
-			/* listen for mouseleave */
+			/* listen for mouseenter and mouseleave */
 
-			panelList.on('mouseleave', function ()
+			panelList.on('mouseenter mouseleave', function (event)
 			{
-				panelChildren.stop(0).slideUp(options.duration);
+				if (event.type === 'mouseleave')
+				{
+					timeout = setTimeout(function () {
+						panelChildren.stop(0).slideUp(options.duration);
+					}, options.timeout);
+				}
+
+				/* else clear timeout */
+
+				else
+				{
+					clearTimeout(timeout);
+				}
 			});
 		});
 	};
