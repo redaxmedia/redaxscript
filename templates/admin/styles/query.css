@@ -26,12 +26,7 @@
 		width: 100%;
 	}
 
-	.form_admin .field_button_second
-	{
-		margin-left: 0;
-	}
-
-	.description_dock_admin, .form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
+	.description_dock_admin, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
 	{
 		display: none;
 	}

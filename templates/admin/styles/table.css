@@ -160,7 +160,7 @@
 
 .table_admin .move_up, .table_admin .move_down
 {
-	color: #666;
+	color: #474747;
 	display: block;
 	min-height: 3em;
 	position: relative;
@@ -195,7 +195,7 @@
 
 .table_admin span.move_up:before, .table_admin span.move_down:before
 {
-	color: #ccc;
+	color: #b9b9b9;
 }
 
 /* @section 1.2 head and foot */
