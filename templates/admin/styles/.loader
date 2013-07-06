@@ -7,6 +7,3 @@
 6 = templates/admin/styles/table.css
 7 = templates/admin/styles/typography.css
 8 = templates/admin/styles/query.css
-
-[admin_opera]
-1 = templates/admin/styles/opera.css

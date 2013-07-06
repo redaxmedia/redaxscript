@@ -3,7 +3,8 @@
  *
  * 1. screen max 40em
  * 2. screen max 30em
- * 3. rtl direction
+ * 3. screen min 50em
+ * 4. rtl direction
  */
 
 /* @section 1. screen max 40em */
@@ -30,13 +31,47 @@
 		margin-left: 0;
 	}
 
-	.form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish, .table_admin .column_third
+	.description_dock_admin, .form_admin .field_button_first, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
 	{
 		display: none;
 	}
 }
 
-/* @section 3. rtl direction */
+/* @section 3. screen min 50em */
+
+@media screen and (min-width: 50em)
+{
+	.sidebar .description_dock_admin
+	{
+		display: none;
+	}
+
+	.list_panel_admin a, .list_panel_admin span
+	{
+		line-height: 3.5em;
+	}
+
+	.list_panel_admin a:before, .list_panel_admin span:before
+	{
+		font-size: 1.5em;
+	}
+
+	.list_panel_admin > li
+	{
+		float: left;
+		position: relative;
+		width: 20%;
+	}
+
+	.list_panel_admin ul
+	{
+		background: url('templates/admin/images/carbon.png') #232323;
+		position: absolute;
+		width: 100%;
+	}
+}
+
+/* @section 4. rtl direction */
 
 .rtl .description_dock_admin
 {

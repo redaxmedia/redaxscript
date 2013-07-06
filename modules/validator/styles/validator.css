@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. box validator
- *    1.1 screen max 30em
+ *    1.1 screen max 50em
  * 2. description validator
  */
 
@@ -22,9 +22,9 @@
 	z-index: 2000;
 }
 
-/* @section 1.1 screen max 30em */
+/* @section 1.1 screen max 50em */
 
-@media screen and (max-width: 30em)
+@media screen and (max-width: 50em)
 {
 	.box_validator
 	{
@@ -36,5 +36,5 @@
 
 .description_validator
 {
-	font: 0.75em  arial;
+	font: 0.75em arial;
 }

@@ -125,7 +125,7 @@ function admin_panel_list()
 
 	if (MY_USER && MY_ID)
 	{
-		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('hello') . ', ' . MY_USER, 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
 	/* collect logout */
@@ -163,7 +163,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output = '<div class="wrapper_dock_admin clear_fix"><div class="js_dock_admin box_dock_admin clear_fix">';
+		$output = '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN);

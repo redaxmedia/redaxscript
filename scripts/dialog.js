@@ -24,7 +24,7 @@
 
 		/* detect needed mode */
 
-		if (r.constants.FIRST_PARAMETER === 'admin')
+		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
 		}
@@ -68,18 +68,18 @@
 
 		if (options.type === 'prompt')
 		{
-			output += '<input type="text" class="js_prompt field_text' + options.suffix + '" value="' + options.value + '" />';
+			output += '<input type="text" class="' + options.classString.fieldPrompt + options.suffix + '" value="' + options.value + '" />';
 		}
 
 		/* ok button */
 
-		output += '<a class="js_ok field_button' + options.suffix + '">' + l.ok + '</a>';
+		output += '<a class="' + options.classString.buttonOk + options.suffix + '">' + l.ok + '</a>';
 
 		/* cancel button if confirm or prompt */
 
 		if (options.type === 'confirm' || options.type === 'prompt')
 		{
-			output += '<a class="js_cancel field_button' + options.suffix + '">' + l.cancel + '</a>';
+			output += '<a class="' + options.classString.buttonCancel + options.suffix + '">' + l.cancel + '</a>';
 		}
 		output += '</div></div>';
 
@@ -91,6 +91,9 @@
 
 		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
 		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+
+		/* find related buttons */
+
 		buttonOk = dialog.find(options.element.buttonOk);
 		buttonCancel = dialog.find(options.element.buttonCancel);
 
@@ -109,7 +112,7 @@
 			{
 				if (options.type === 'prompt')
 				{
-					var input = dialog.find('input.js_prompt'),
+					var input = dialog.find(options.element.fieldPrompt),
 						value = $.trim(input.val());
 
 					if (value)
@@ -200,7 +203,7 @@
 		{
 			$(r.plugins.confirmLink.selector).confirmLink();
 
-			/* depending startup */
+			/* dependency */
 
 			if (r.plugins.preventUnload.startup)
 			{

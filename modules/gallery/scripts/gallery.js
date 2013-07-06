@@ -33,7 +33,7 @@
 
 			/* prematurely terminate gallery */
 
-			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
+			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || gallery.length || galleryOverlay.length)
 			{
 				return false;
 			}
@@ -85,7 +85,6 @@
 					imageCounter = thumb.data('counter'),
 					imageTotal = thumb.data('total'),
 					imageArtist = thumb.data('artist'),
-					imageDate = thumb.data('date'),
 					imageDescription = thumb.data('description'),
 					gallery = body.find(options.element.gallery),
 					galleryLoader = $('<img src="' + options.loader + '" />'),

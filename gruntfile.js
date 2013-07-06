@@ -21,7 +21,7 @@ module.exports = function (grunt)
 		},
 		jshint:
 		{
-			gruntfile: ['gruntfile.js'],
+			dependency: ['gruntfile.js'],
 			base: ['scripts/*.js'],
 			modules: ['modules/*/scripts/*.js'],
 			templates: ['templates/*/scripts/*.js'],
@@ -29,6 +29,10 @@ module.exports = function (grunt)
 			{
 				jshintrc: '.jshintrc'
 			}
+		},
+		jsonlint:
+		{
+			dependency: ['composer.json', 'package.json']
 		},
 		qunit:
 		{
@@ -193,14 +197,15 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
+	grunt.loadNpmTasks('grunt-img');
+	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-smushit');
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint', 'csslint', 'htmlhint', 'phplint']);
+	grunt.registerTask('default', ['jshint', 'jsonlint', 'csslint', 'htmlhint', 'phplint']);
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);

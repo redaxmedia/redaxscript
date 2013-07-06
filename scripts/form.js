@@ -29,33 +29,38 @@
 
 		return this.each(function ()
 		{
-			/* listen for ready and input */
+			/* listen for focus and input */
 
-			$(this).on('ready input', function (event)
+			$(this).on('focus input', function (event)
 			{
 				var textarea = this;
 
-				/* on ready resize */
+				/* check limit */
 
-				if (event.type === 'ready')
+				if (textarea.rows < options.limit)
 				{
+					/* resize on focus */
+
+					if (event.type === 'focus')
+					{
+						while (textarea.clientHeight < textarea.scrollHeight)
+						{
+							textarea.rows += options.summand++;
+						}
+					}
+
+					/* general resize */
+
+					while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+					{
+						textarea.rows -= 1;
+					}
 					while (textarea.clientHeight < textarea.scrollHeight)
 					{
-						textarea.rows += options.summand++;
+						textarea.rows += 1;
 					}
 				}
-
-				/* general resize */
-
-				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-				{
-					textarea.rows -= 1;
-				}
-				while (textarea.clientHeight < textarea.scrollHeight)
-				{
-					textarea.rows += 1;
-				}
-			}).css('overflow', options.overflow).css('resize', 'none').trigger('ready');
+			}).css('overflow', options.overflow).css('resize', 'none');
 		});
 	};
 
@@ -200,7 +205,7 @@
 					field.val('').attr('placeholder', inputIncorrect);
 					timeout = setTimeout(function ()
 					{
-						field.attr('placeholder', fieldPlaceholder);
+						field.attr('placeholder', fieldPlaceholder).focus();
 					}, options.duration);
 					event.preventDefault();
 				}

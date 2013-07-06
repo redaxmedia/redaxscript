@@ -80,27 +80,35 @@
 				panelChildren = panelItem.children('ul'),
 				timeout;
 
-			panelItem.on('mouseenter mouseleave touchstart touchend', function (event)
+			/* listen for click and touchover */
+
+			panelItem.on('click touchover', function ()
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
 
-				/* handle mouseenter and touchstart */
+				/* handle click and touchover */
 
-				if (event.type === 'mouseenter' || event.type === 'touchstart')
+				panelChildren.stop(0).slideUp(options.duration);
+				thatChildren.stop(0).slideDown(options.duration);
+			});
+
+			/* listen for mouseenter and mouseleave */
+
+			panelList.on('mouseenter mouseleave', function (event)
+			{
+				if (event.type === 'mouseleave')
 				{
-					thatChildren.stop(0).slideDown();
+					timeout = setTimeout(function () {
+						panelChildren.stop(0).slideUp(options.duration);
+					}, options.timeout);
 				}
 
-				/* else timeout enhanced mouseleave and touchend */
+				/* else clear timeout */
 
 				else
 				{
 					clearTimeout(timeout);
-					timeout = setTimeout(function ()
-					{
-						thatChildren.stop(0).slideUp();
-					}, options.timeout);
 				}
 			});
 		});

@@ -64,7 +64,8 @@ r.plugins =
 		options:
 		{
 			overflow: 'hidden',
-			summand: 10
+			summand: 10,
+			limit: 1000
 		}
 	},
 	dialog:
@@ -76,14 +77,18 @@ r.plugins =
 				dialog: 'div.js_dialog',
 				dialogOverlay: 'div.js_dialog_overlay',
 				buttonOk: 'a.js_ok',
-				buttonCancel: 'a.js_cancel'
+				buttonCancel: 'a.js_cancel',
+				fieldPrompt: 'input.js_prompt'
 			},
 			classString:
 			{
 				dialog: 'js_dialog dialog dialog',
 				dialogTitle: 'js_title_dialog title_dialog title_dialog',
 				dialogBox: 'js_box_dialog box_dialog box_dialog',
-				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay'
+				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay',
+				buttonOk: 'js_ok field_button',
+				buttonCancel: 'js_cancel field_button',
+				fieldPrompt: 'js_prompt field_text'
 			},
 			suffix:
 			{
@@ -292,6 +297,28 @@ r.support =
 			return false;
 		}
 	}(document),
+	touch: function (doc)
+	{
+		if ('ontouchstart' in doc.documentElement)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(document),
+	webGL: function (win)
+	{
+		if (typeof win.WebGLRenderingContext === 'function')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(window),
 	webStorage: function (win)
 	{
 		if (win.navigator.cookieEnabled === true && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
