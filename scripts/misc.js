@@ -1,16 +1,18 @@
 /**
  * @tableofcontents
  *
+ * 1. forward notification
  * 2. key shortcut
  * 3. startup
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-$.fn.forwardNotification = function (options)
+(function ($)
+{
+	'use strict';
+
+	/* @section 1. forward notification */
+
+	$.fn.forwardNotification = function (options)
 	{
 		/* extend options */
 

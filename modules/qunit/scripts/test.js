@@ -12,11 +12,6 @@
  * 9. check search
  * 10. enable tab
  * 11. unmask password
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)

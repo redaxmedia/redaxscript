@@ -1,17 +1,19 @@
 /**
  * @tableofcontents
  *
+ * 1. dialog
  * 2. confirm link
  * 3. prevent unload
  * 4. startup
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-$.fn.dialog = function (options)
+(function ($)
+{
+	'use strict';
+
+	/* @section 1. dialog */
+
+	$.fn.dialog = function (options)
 	{
 		/* extend options */
 

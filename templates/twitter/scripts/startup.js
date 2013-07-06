@@ -2,11 +2,6 @@
  * @tableofcontents
  *
  * 1. lightbox overlay
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 /* @section 1. lightbox overlay */

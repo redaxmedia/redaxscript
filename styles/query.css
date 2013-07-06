@@ -1,17 +1,15 @@
 /**
  * @tableofcontents
  *
+ * 1. print
  * 2. screen max 50em
  * 3. screen max 40em
  * 4. screen max 30em
  * 5. screen max 20em
  * 6. rtl direction
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
+
+/* @section 1. print */
 
 @media print
 {

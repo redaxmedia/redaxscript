@@ -2,12 +2,9 @@
  * @tableofcontents
  *
  * 1. remove appearance
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- *//* @section 1. remove appearance */
+ */
+
+/* @section 1. remove appearance */
 
 input, input::-webkit-search-cancel-button
 {

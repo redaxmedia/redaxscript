@@ -1,20 +1,22 @@
 /**
  * @tableofcontents
  *
+ * 1. auto resize
  * 2. check required
  * 3. check search
  * 4. enable tab
  * 5. note required
  * 6. unmask password
  * 7. startup
- *
- * @since 2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-$.fn.autoResize = function (options)
+(function ($)
+{
+	'use strict';
+
+	/* @section 1. auto resize */
+
+	$.fn.autoResize = function (options)
 	{
 		/* extend options */
 
