@@ -1,18 +1,18 @@
 /**
  * @tableofcontents
  *
- * 1. redaxscript object
- *    1.1 lightbox
+ * 1.1 lightbox
  *    1.2 plugins
  *    1.3 modules
  *    1.4 support
  *    1.5 base url
  *    1.6 startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
-
-'use strict';
-
-/* @section 1. redaxscript object */
 
 var r = r || {};
 

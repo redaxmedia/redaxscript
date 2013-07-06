@@ -1,11 +1,13 @@
 /**
  * @tableofcontents
  *
- * 1. hide
  * 2. clear fix
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
-
-/* @section 1. hide */
 
 .js .hide_if_js, .hidden_legend legend
 {

@@ -1,19 +1,17 @@
 /**
  * @tableofcontents
  *
- * 1. accordion
  * 2. dropdown
  * 3. tab
  * 4. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-(function ($)
-{
-	'use strict';
-
-	/* @section 1. accordion */
-
-	$.fn.accordion = function (options)
+$.fn.accordion = function (options)
 	{
 		/* extend options */
 

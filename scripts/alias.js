@@ -1,18 +1,16 @@
 /**
  * @tableofcontents
  *
- * 1. clean alias
  * 2. generate alias
  * 3. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-(function ($)
-{
-	'use strict';
-
-	/* @section 1. clean alias */
-
-	$.fn.cleanAlias = function (input)
+$.fn.cleanAlias = function (input)
 	{
 		var output = input.toLowerCase();
 
