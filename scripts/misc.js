@@ -4,6 +4,11 @@
  * 1. forward notification
  * 2. key shortcut
  * 3. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)

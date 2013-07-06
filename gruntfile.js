@@ -113,15 +113,15 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php vendor/tocgen/tocgen.php scripts && php vendor/tocgen/tocgen.php styles'
+				command: 'php vendor/tocgen/tocgen.php scripts .tocgen && php vendor/tocgen/tocgen.php styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/tocgen/tocgen.php modules -r'
+				command: 'php vendor/tocgen/tocgen.php modules .tocgen -r'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/tocgen/tocgen.php templates -r'
+				command: 'php vendor/tocgen/tocgen.php templates .tocgen -r'
 			},
 			svgoTemplates:
 			{

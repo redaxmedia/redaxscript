@@ -3,6 +3,11 @@
  *
  * 1. admin dock
  * 2. admin panel
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. admin dock */

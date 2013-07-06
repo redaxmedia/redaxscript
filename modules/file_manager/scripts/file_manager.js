@@ -3,6 +3,11 @@
  *
  * 1. file manager
  * 2. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)

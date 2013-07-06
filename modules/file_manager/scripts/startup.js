@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. file manager
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. file manager */

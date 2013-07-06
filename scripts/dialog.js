@@ -5,6 +5,11 @@
  * 2. confirm link
  * 3. prevent unload
  * 4. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)

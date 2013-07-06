@@ -8,6 +8,11 @@
  * 5. note required
  * 6. unmask password
  * 7. startup
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
