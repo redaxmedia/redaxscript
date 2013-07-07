@@ -30,6 +30,11 @@
 			"del composer.lock",
 			"npm install -g grunt-cli",
 			"npm install"
+		],
+		"post-update-cmd":
+		[
+			"del composer.lock",
+			"npm update"
 		]
 	}
 }
