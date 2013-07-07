@@ -1,7 +1,13 @@
 <?php
 
 /**
- * center
+ * Center
+ *
+ * @since 1.2.1
+ *
+ * @category Center
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 function center()
@@ -26,7 +32,13 @@ function center()
 }
 
 /**
- * routing
+ * Routing
+ *
+ * @since 1.2.1
+ *
+ * @category Center
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 function routing()

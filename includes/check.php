@@ -1,10 +1,16 @@
 <?php
 
 /**
- * check login
+ * Check Login
  *
- * @param string $input
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @return $output integer
  */
 
 function check_login($input = '')
@@ -21,11 +27,17 @@ function check_login($input = '')
 }
 
 /**
- * check access
+ * Check Access
  *
- * @param array $access
- * @param array $groups
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $access array
+ * @param $groups array
+ * @return $output integer
  */
 
 function check_access($access = '', $groups = '')
@@ -47,10 +59,16 @@ function check_access($access = '', $groups = '')
 }
 
 /**
- * check email
+ * Check Email
  *
- * @param string $input
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @return $output integer
  */
 
 function check_email($input = '')
@@ -71,10 +89,16 @@ function check_email($input = '')
 }
 
 /**
- * check url
+ * Check Url
  *
- * @param string $input
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @return $output integer
  */
 
 function check_url($input = '')
@@ -99,10 +123,16 @@ function check_url($input = '')
 }
 
 /**
- * check protocol
+ * Check Protocol
  *
- * @param string $input
- * @return string
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @return $output integer
  */
 
 function check_protocol($input = '')
@@ -119,10 +149,16 @@ function check_protocol($input = '')
 }
 
 /**
- * check dns
+ * Check Dns
  *
- * @param string $input
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @return $output integer
  */
 
 function check_dns($input = '')
@@ -146,11 +182,17 @@ function check_dns($input = '')
 }
 
 /**
- * check alias
+ * Check Alias
  *
- * @param string $input
- * @param integer $mode
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
+ * @param $mode integer
+ * @return $output integer
  */
 
 function check_alias($input = '', $mode = '')
@@ -187,11 +229,17 @@ function check_alias($input = '', $mode = '')
 }
 
 /**
- * check captcha
+ * Check Captcha
  *
- * @param string $task
- * @param integer $solution
- * @return integer
+ * @since 1.2.1
+ *
+ * @category Check
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $task string
+ * @param $solution integer
+ * @return $output integer
  */
 
 function check_captcha($task = '', $solution = '')

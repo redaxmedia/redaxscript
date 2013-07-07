@@ -1,7 +1,13 @@
 <?php
 
 /**
- * startup
+ * Startup
+ *
+ * @since 1.2.1
+ *
+ * @category Startup
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 function startup()
@@ -321,9 +327,15 @@ function startup()
 }
 
 /**
- * undefine
+ * Undefine
  *
- * @param string $input
+ * @since 1.2.1
+ *
+ * @category Startup
+ * @package Redaxscript
+ * @author Henry Ruhs
+ * 
+ * @param $input string
  */
 
 function undefine($input = '')
