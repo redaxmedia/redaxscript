@@ -3,22 +3,21 @@
 /* config tocgen */
 
 define(TOCGEN_EOL, "\r\n");
-define(TOCGEN_TOC_CHECK, '@tableofcontents');
+define(TOCGEN_TOC_FLAG, '@tableofcontents');
 define(TOCGEN_TOC_START, '/**');
 define(TOCGEN_TOC_END, ' */' . TOCGEN_EOL . TOCGEN_EOL);
+define(TOCGEN_TOC_PREFIX, ' * ');
+define(TOCGEN_TOC_INDENT, '   ');
 define(TOCGEN_TOC_DELIMITER, ' *' . TOCGEN_EOL);
 define(TOCGEN_TOC_HEAD, TOCGEN_EOL . ' * @tableofcontents' . TOCGEN_EOL . TOCGEN_TOC_DELIMITER);
 define(TOCGEN_TOC_FOOT, TOCGEN_TOC_DELIMITER . ' * @since 2.0' . TOCGEN_EOL . ' *' . TOCGEN_EOL . ' * @package Redaxscript' . TOCGEN_EOL . ' * @author Henry Ruhs' . TOCGEN_EOL);
-define(TOCGEN_TOC_PREFIX, ' * ');
-define(TOCGEN_TOC_INDENT1, '   ');
-define(TOCGEN_TOC_INDENT2, '    ');
-define(TOCGEN_COMMENT_START, '/*');
-define(TOCGEN_COMMENT_END, '*/');
-define(TOCGEN_COMMENT_PREFIX, ' * ');
-define(TOCGEN_COMMENT_SECTION, '@section');
-define(TOCGEN_COMMENT_REGEX, '/\/\*(.|[\r\n])*?\*\//');
+define(TOCGEN_SECTION_FLAG, '@section');
+define(TOCGEN_SECTION_START, '/*');
+define(TOCGEN_SECTION_END, '*/');
+define(TOCGEN_SECTION_PREFIX, '*');
+define(TOCGEN_SECTION_REGEX, '/\/\*(.|[' . TOCGEN_EOL . '])*?\*\//');
 define(TOCGEN_NO_TARGET, 'File or directory not found');
-define(TOCGEN_NO_SECTION, 'Comment ' . TOCGEN_COMMENT_SECTION . ' not found');
+define(TOCGEN_NO_SECTION, TOCGEN_SECTION_FLAG . ' not found');
 define(TOCGEN_NO_CHANGES, 'No changes were made');
 define(TOCGEN_TOC_UPDATED, 'Table of contents updated');
 define(TOCGEN_POINT, '.');
