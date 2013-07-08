@@ -3,6 +3,13 @@
 /**
  * clean
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @param integer $mode
  * @return string
@@ -51,6 +58,13 @@ function clean($input = '', $mode = '')
 /**
  * clean special
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -63,6 +77,13 @@ function clean_special($input = '')
 
 /**
  * clean script
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string
@@ -85,6 +106,13 @@ function clean_script($input = '')
 /**
  * clean html
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -104,6 +132,13 @@ function clean_html($input = '')
 /**
  * clean alias
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -119,6 +154,13 @@ function clean_alias($input = '')
 /**
  * clean email
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -133,6 +175,13 @@ function clean_email($input = '')
 /**
  * clean url
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -146,6 +195,13 @@ function clean_url($input = '')
 
 /**
  * clean mysql
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Clean
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string

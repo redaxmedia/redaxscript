@@ -2,6 +2,13 @@
 
 /**
  * contents
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
  */
 
 function contents()
@@ -188,6 +195,13 @@ function contents()
 /**
  * extras
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param integer|string $filter
  */
 
@@ -277,6 +291,13 @@ function extras($filter = '')
 /**
  * infoline
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param string $table
  * @param integer $id
  * @param string $author
@@ -334,6 +355,13 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 /**
  * pagination
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param integer $sub_active
  * @param integer $sub_maximum
  * @param string $route
@@ -395,6 +423,13 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 /**
  * notification
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param string $title
  * @param string $text
  * @param string $action

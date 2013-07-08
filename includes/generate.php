@@ -3,6 +3,13 @@
 /**
  * anchor element
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Generate
+ * @author Henry Ruhs
+ *
  * @param string $type
  * @param string $id
  * @param string $class
@@ -71,6 +78,13 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 
 /**
  * form element
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Generate
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param string $id
@@ -157,6 +171,13 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 /**
  * select element
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Generate
+ * @author Henry Ruhs
+ *
  * @param string $id
  * @param string $class
  * @param string $name
@@ -236,6 +257,13 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
 /**
  * select date
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Generate
+ * @author Henry Ruhs
+ *
  * @param string $id
  * @param string $class
  * @param string $name
@@ -269,6 +297,13 @@ function select_date($id = '', $class = '', $name = '', $date = '', $format = ''
 
 /**
  * object element
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Generate
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param string $id

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Redaxscript_Parser
+ * Redaxscript Parser
  *
  * @since 2.0
  *
- * @category Parser
  * @package Redaxscript
+ * @category Parser
  * @author Henry Ruhs
  */
 
@@ -129,7 +129,7 @@ class Redaxscript_Parser
 	 *
 	 * @since 2.0
 	 *
-	 * @return $_output string
+	 * @return string
 	 */
 
 	public function getOutput()
@@ -143,7 +143,7 @@ class Redaxscript_Parser
 	 * @since 2.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseBreak($input = '')
@@ -169,7 +169,7 @@ class Redaxscript_Parser
 	 * @since 2.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseCode($input = '')
@@ -199,7 +199,7 @@ class Redaxscript_Parser
 	 * @since 2.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseFunction($input = '')

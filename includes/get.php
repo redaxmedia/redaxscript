@@ -3,6 +3,13 @@
 /**
  * get parameter
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -70,6 +77,13 @@ function get_parameter($input = '')
 /**
  * get route
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @param integer $mode
  * @return string
  */
@@ -132,6 +146,13 @@ function get_route($mode = '')
 /**
  * get file
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -158,6 +179,13 @@ function get_root()
 /**
  * get user ip
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -169,6 +197,13 @@ function get_user_ip()
 
 /**
  * get user agent
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
  *
  * @param integer $mode
  * @return string
@@ -229,6 +264,13 @@ function get_user_agent($mode = '')
 
 /**
  * get token
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
  *
  * @return string
  */

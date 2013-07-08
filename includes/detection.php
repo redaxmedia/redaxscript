@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript_Detection
+ * Redaxscript Detection
  *
  * @since 2.0
  *
@@ -35,7 +35,7 @@ class Redaxscript_Detection
 	 *
 	 * @since 2.0
 	 *
-	 * @return $_output string
+	 * @return string
 	 */
 
 	public function getOutput()
@@ -48,7 +48,7 @@ class Redaxscript_Detection
 	 *
 	 * @since 2.0
 	 *
-	 * @return $output string
+	 * @return string
 	 */
 
 	protected function _getParameter($parameter = '')

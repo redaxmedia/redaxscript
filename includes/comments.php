@@ -3,6 +3,13 @@
 /**
  * comments
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
+ *
  * @param integer $article
  * @param string $route
  */
@@ -124,6 +131,13 @@ function comments($article = '', $route = '')
 /**
  * comment form
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
+ *
  * @param integer $article
  * @param string $language
  * @param string $access
@@ -206,6 +220,13 @@ function comment_form($article = '', $language = '', $access = '')
 
 /**
  * comment post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
  */
 
 function comment_post()

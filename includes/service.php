@@ -5,8 +5,8 @@
  *
  * @since 2.0
  *
- * @category Service
  * @package Redaxscript
+ * @category Service
  * @author Henry Ruhs
  */
 

@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Breadcrumb
+ * breadcrumb
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Breadcrumb
  * @package Redaxscript
+ * @category Breadcrumb
  * @author Henry Ruhs
  */
 
@@ -56,15 +57,16 @@ function breadcrumb()
 }
 
 /**
- * Build Breadcrumb
+ * build breadcrumb
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Breadcrumb
  * @package Redaxscript
+ * @category Breadcrumb
  * @author Henry Ruhs
  *
- * @return $output array
+ * @return array
  */
 
 function build_breadcrumb()

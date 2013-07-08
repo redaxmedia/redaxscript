@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Read Directory
+ * Redaxscript Directory
  *
  * @since 2.0
  *
@@ -89,8 +89,8 @@ class Redaxscript_Directory
 	 *
 	 * @since 2.0
 	 *
-	 * @param number $key
-	 * @return array $_directoryArray
+	 * @param integer $key
+	 * @return array
 	 */
 
 	public function getOutput($key = '')
@@ -116,7 +116,7 @@ class Redaxscript_Directory
 	 * @since 2.0
 	 *
 	 * @param string $directory
-	 * @return array $directoryArray
+	 * @return array
 	 */
 
 	protected function _scan($directory = '')

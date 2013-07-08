@@ -5,8 +5,8 @@
  *
  * @since 2.0
  *
- * @category Captcha
  * @package Redaxscript
+ * @category Captcha
  * @author Henry Ruhs
  */
 
@@ -75,7 +75,7 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0
 	 *
-	 * @return $_task string
+	 * @return string
 	 */
 
 	public function getTask()
@@ -88,7 +88,7 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0
 	 *
-	 * @return $_solution number
+	 * @return integer
 	 */
 
 	public function getSolution()
@@ -101,7 +101,7 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0
 	 *
-	 * @return $output number
+	 * @return integer
 	 */
 
 	protected function _checkOperator()

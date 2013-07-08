@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Center
+ * center
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Center
  * @package Redaxscript
+ * @category Center
  * @author Henry Ruhs
  */
 
@@ -32,12 +33,13 @@ function center()
 }
 
 /**
- * Routing
+ * routing
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Center
  * @package Redaxscript
+ * @category Center
  * @author Henry Ruhs
  */
 

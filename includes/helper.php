@@ -2,6 +2,13 @@
 
 /**
  * helper class
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Helper
+ * @author Henry Ruhs
  */
 
 function helper_class()
@@ -40,6 +47,13 @@ function helper_class()
 
 /**
  * helper subset
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Helper
+ * @author Henry Ruhs
  */
 
 function helper_subset()

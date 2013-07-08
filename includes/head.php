@@ -2,6 +2,13 @@
 
 /**
  * head
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Head
+ * @author Henry Ruhs
  */
 
 function head()

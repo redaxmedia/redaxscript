@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Startup
+ * startup
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Startup
  * @package Redaxscript
+ * @category Startup
  * @author Henry Ruhs
  */
 
@@ -327,15 +328,16 @@ function startup()
 }
 
 /**
- * Undefine
+ * undefine
  *
  * @since 1.2.1
+ * @deprecated 2.0
  *
- * @category Startup
  * @package Redaxscript
+ * @category Startup
  * @author Henry Ruhs
- * 
- * @param $input string
+ *
+ * @param string $input
  */
 
 function undefine($input = '')

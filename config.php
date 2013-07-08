@@ -5,8 +5,8 @@
  *
  * @since 2.0
  *
- * @category Config
  * @package Redaxscript
+ * @category Config
  * @author Henry Ruhs
  */
 
@@ -33,7 +33,8 @@ class Redaxscript_Config
 	 *
 	 * @since 2.0
 	 *
-	 * @return $output string
+	 * @param string $key
+	 * @return string
 	 */
 
 	public function get($key = '')
