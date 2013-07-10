@@ -156,10 +156,15 @@
 
 .table_admin .move_up, .table_admin .move_down
 {
+	-moz-transition: color 0.3s ease;
+	-ms-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	-webkit-transition: color 0.3s ease;
 	color: #474747;
 	display: block;
 	min-height: 3em;
 	position: relative;
+	transition: color 0.3s ease;
 }
 
 .table_admin .move_up:hover, .table_admin .move_down:hover
