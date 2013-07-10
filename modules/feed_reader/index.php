@@ -2,6 +2,13 @@
 
 /**
  * feed reader loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_reader_loader_start()
@@ -13,9 +20,16 @@ function feed_reader_loader_start()
 /**
  * feed reader
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $url
  * @param integer|string $filter
- * @param integer $filter
+ * @param integer $limit
  */
 
 function feed_reader($url = '', $filter = '', $limit = '')

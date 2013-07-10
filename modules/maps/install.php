@@ -2,6 +2,13 @@
 
 /**
  * maps install
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function maps_install()
@@ -12,6 +19,13 @@ function maps_install()
 
 /**
  * maps uninstall
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function maps_uninstall()

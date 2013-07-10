@@ -2,6 +2,13 @@
 
 /**
  * admin contents list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_contents_list()
@@ -379,6 +386,13 @@ function admin_contents_list()
 
 /**
  * admin contents form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_contents_form()

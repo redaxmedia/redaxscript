@@ -2,6 +2,13 @@
 
 /**
  * db backup render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_render_start()
@@ -55,6 +62,13 @@ function db_backup_render_start()
 
 /**
  * db backup center
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_center_start()
@@ -67,6 +81,13 @@ function db_backup_center_start()
 
 /**
  * db backup admin panel panel list modules
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @return string
  */
@@ -82,6 +103,13 @@ function db_backup_admin_panel_list_modules()
 
 /**
  * db backup
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param integer $mode
  */
@@ -104,6 +132,13 @@ function db_backup($mode = '')
 /**
  * db backup clean date
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -117,6 +152,13 @@ function db_backup_clean_date($input = '')
 
 /**
  * db backup process
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @return string
  */
@@ -145,6 +187,13 @@ function db_backup_process()
 
 /**
  * db backup get definitions
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $table
  * @return string
@@ -268,6 +317,13 @@ function db_backup_get_definitions($table = '')
 
 /*
  * db backup get contents
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $table
  * @return string

@@ -2,6 +2,13 @@
 
 /**
  * debugger loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_loader_start()
@@ -14,6 +21,13 @@ function debugger_loader_start()
 
 /**
  * debugger render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_render_start()
@@ -38,6 +52,13 @@ function debugger_render_start()
 
 /**
  * debugger center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_center_start()
@@ -69,6 +90,13 @@ function debugger_center_start()
 /**
  * debugger admin panel panel list modules
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -80,6 +108,13 @@ function debugger_admin_panel_list_modules()
 
 /**
  * debugger extras end
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_extras_end()

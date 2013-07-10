@@ -2,6 +2,13 @@
 
 /**
  * search
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Search
+ * @author Henry Ruhs
  */
 
 function search()
@@ -11,6 +18,13 @@ function search()
 
 /**
  * search form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Search
+ * @author Henry Ruhs
  */
 
 function search_form()
@@ -42,6 +56,13 @@ function search_form()
 
 /**
  * search post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Search
+ * @author Henry Ruhs
  */
 
 function search_post()

@@ -2,6 +2,13 @@
 
 /**
  * feed list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_list()
@@ -28,6 +35,13 @@ function feed_list()
 
 /**
  * feed generator render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_generator_render_start()
@@ -42,6 +56,13 @@ function feed_generator_render_start()
 
 /**
  * feed generator
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * param string $table
  */

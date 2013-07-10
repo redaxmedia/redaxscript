@@ -2,6 +2,13 @@
 
 /**
  * call home install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_install()
@@ -12,6 +19,13 @@ function call_home_install()
 
 /**
  * call home uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_uninstall()

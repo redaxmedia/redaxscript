@@ -2,6 +2,13 @@
 
 /**
  * reminder form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Reminder
+ * @author Henry Ruhs
  */
 
 function reminder_form()
@@ -48,6 +55,13 @@ function reminder_form()
 
 /**
  * reminder post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Reminder
+ * @author Henry Ruhs
  */
 
 function reminder_post()

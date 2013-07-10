@@ -2,6 +2,13 @@
 
 /**
  * preview install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function preview_install()
@@ -12,6 +19,13 @@ function preview_install()
 
 /**
  * preview uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function preview_uninstall()

@@ -2,6 +2,13 @@
 
 /**
  * archive install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function archive_install()
@@ -12,6 +19,13 @@ function archive_install()
 
 /**
  * archive uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function archive_uninstall()

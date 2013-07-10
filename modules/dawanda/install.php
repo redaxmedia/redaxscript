@@ -2,6 +2,13 @@
 
 /**
  * dawanda install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function dawanda_install()
@@ -12,6 +19,13 @@ function dawanda_install()
 
 /**
  * dawanda uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function dawanda_uninstall()

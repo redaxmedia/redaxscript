@@ -2,6 +2,13 @@
 
 /**
  * admin settings form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_settings_form()

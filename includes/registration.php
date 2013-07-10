@@ -2,6 +2,13 @@
 
 /**
  * registration form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Registration
+ * @author Henry Ruhs
  */
 
 function registration_form()
@@ -63,6 +70,13 @@ function registration_form()
 
 /**
  * registration post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Registration
+ * @author Henry Ruhs
  */
 
 function registration_post()

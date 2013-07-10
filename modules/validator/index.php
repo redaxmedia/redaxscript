@@ -2,6 +2,13 @@
 
 /**
  * validator loader start
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function validator_loader_start()
@@ -17,6 +24,13 @@ function validator_loader_start()
 
 /**
  * validator loader scripts transport start
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function validator_loader_scripts_transport_start()

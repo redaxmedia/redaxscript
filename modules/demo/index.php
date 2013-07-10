@@ -2,6 +2,13 @@
 
 /**
  * demo render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function demo_render_start()
@@ -14,6 +21,13 @@ function demo_render_start()
 
 /**
  * demo center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function demo_center_start()
@@ -26,6 +40,13 @@ function demo_center_start()
 
 /**
  * demo login
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function demo_login()

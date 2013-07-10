@@ -2,6 +2,13 @@
 
 /**
  * feed reader install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_reader_install()
@@ -12,6 +19,13 @@ function feed_reader_install()
 
 /**
  * feed reader uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_reader_uninstall()

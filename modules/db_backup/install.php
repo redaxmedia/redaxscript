@@ -2,6 +2,13 @@
 
 /**
  * db backup install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_install()
@@ -12,6 +19,13 @@ function db_backup_install()
 
 /**
  * db backup uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_uninstall()

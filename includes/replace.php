@@ -3,6 +3,13 @@
 /**
  * break up
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -21,6 +28,13 @@ function break_up($input = '')
 
 /**
  * truncate
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
  *
  * @param string $input
  * @param integer $length
@@ -47,6 +61,13 @@ function truncate($input = '', $length = '', $end = '')
 
 /**
  * minify
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param string $input
@@ -89,7 +110,7 @@ function minify($type = '', $input = '')
 		', '
 	), ',', $output);
 
-	/* additional minify if scripts */
+	/* additional minify for scripts */
 
 	if ($type == 'scripts')
 	{
@@ -124,6 +145,13 @@ function minify($type = '', $input = '')
 
 /**
  * entity
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string

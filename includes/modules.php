@@ -3,6 +3,13 @@
 /**
  * modules include
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @return array
  */
 
@@ -53,6 +60,13 @@ function modules_include()
 
 /**
  * hook
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string

@@ -2,6 +2,13 @@
 
 /**
  * sitemap install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function sitemap_install()
@@ -12,6 +19,13 @@ function sitemap_install()
 
 /**
  * sitemap uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function sitemap_uninstall()

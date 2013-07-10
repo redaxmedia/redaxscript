@@ -2,6 +2,13 @@
 
 /**
  * share this loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function share_this_loader_start()
@@ -12,6 +19,13 @@ function share_this_loader_start()
 
 /**
  * share this article end
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @return string
  */
@@ -28,6 +42,13 @@ function share_this_article_end()
 
 /**
  * share this
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @return string
  */

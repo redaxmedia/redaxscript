@@ -2,6 +2,13 @@
 
 /**
  * get file install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function get_file_install()
@@ -12,6 +19,13 @@ function get_file_install()
 
 /**
  * get file uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function get_file_uninstall()

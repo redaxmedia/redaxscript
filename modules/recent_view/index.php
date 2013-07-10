@@ -3,6 +3,13 @@
 /**
  * recent view
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param integer $limit
  */
 
@@ -29,6 +36,13 @@ function recent_view($limit = '')
 
 /**
  * recent view logger
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function recent_view_logger()

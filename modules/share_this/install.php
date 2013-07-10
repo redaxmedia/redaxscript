@@ -2,6 +2,13 @@
 
 /**
  * share this install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function share_this_install()
@@ -12,6 +19,13 @@ function share_this_install()
 
 /**
  * share this uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function share_this_uninstall()

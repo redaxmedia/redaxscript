@@ -2,6 +2,13 @@
 
 /**
  * debugger install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_install()
@@ -12,6 +19,13 @@ function debugger_install()
 
 /**
  * debugger uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function debugger_uninstall()

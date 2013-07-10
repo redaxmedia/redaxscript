@@ -1,6 +1,15 @@
 <?php
 
-/* demo install */
+/**
+ * demo install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
 
 function demo_install()
 {
@@ -8,7 +17,16 @@ function demo_install()
 	mysql_query($query);
 }
 
-/* demo uninstall */
+/**
+ * demo uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
 
 function demo_uninstall()
 {

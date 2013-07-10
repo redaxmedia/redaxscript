@@ -2,6 +2,13 @@
 
 /**
  * admin modules list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_modules_list()
@@ -160,6 +167,13 @@ function admin_modules_list()
 
 /**
  * admin modules form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_modules_form()

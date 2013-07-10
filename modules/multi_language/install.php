@@ -2,6 +2,13 @@
 
 /**
  * multi language install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function multi_language_install()
@@ -12,6 +19,13 @@ function multi_language_install()
 
 /**
  * multi language uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function multi_language_uninstall()

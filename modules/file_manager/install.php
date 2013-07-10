@@ -2,6 +2,13 @@
 
 /**
  * file manager install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_install()
@@ -12,6 +19,13 @@ function file_manager_install()
 
 /**
  * file manager uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_uninstall()

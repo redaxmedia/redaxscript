@@ -2,6 +2,13 @@
 
 /**
  * admin users list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_users_list()
@@ -141,6 +148,13 @@ function admin_users_list()
 
 /**
  * admin users form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_users_form()

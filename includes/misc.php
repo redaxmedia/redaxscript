@@ -3,6 +3,13 @@
 /**
  * shortcut
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Misc
+ * @author Henry Ruhs
+ *
  * @param string $name
  * @return string
  */

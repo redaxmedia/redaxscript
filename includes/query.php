@@ -3,6 +3,13 @@
 /**
  * database connect
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
+ *
  * @param string $host
  * @param string $name
  * @param string $user
@@ -36,6 +43,13 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
 
 /**
  * shortcut
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
  *
  * @param string $name
  * @return string
@@ -73,6 +87,13 @@ function s($name = '')
 /**
  * retrieve
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
+ *
  * @param string $column
  * @param string $table
  * @param string $field
@@ -108,6 +129,13 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 
 /**
  * query table
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string
@@ -148,6 +176,13 @@ function query_table($input = '')
 /**
  * query plumb
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
+ *
  * @param string $column
  * @param string $table
  * @param string $function
@@ -170,6 +205,13 @@ function query_plumb($column = '', $table = '', $function = '')
 
 /**
  * query total
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
  *
  * @param string $table
  * @param string $field
@@ -197,6 +239,13 @@ function query_total($table = '', $field = '', $value = '')
 
 /**
  * build route
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
  *
  * @param string $table
  * @param integer $id
@@ -272,6 +321,13 @@ function build_route($table = '', $id = '')
 
 /**
  * future update
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Query
+ * @author Henry Ruhs
  *
  * @param string $table
  */

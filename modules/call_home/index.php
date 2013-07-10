@@ -2,6 +2,13 @@
 
 /**
  * call home loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_loader_start()
@@ -13,6 +20,13 @@ function call_home_loader_start()
 
 /**
  * call home scripts start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_scripts_start()
@@ -26,6 +40,13 @@ function call_home_scripts_start()
 
 /**
  * call home admin notification start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_admin_notification_start()
@@ -53,6 +74,13 @@ function call_home_admin_notification_start()
 
 /**
  * call home admin notification end
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function call_home_admin_notification_end()

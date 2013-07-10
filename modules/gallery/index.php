@@ -2,6 +2,13 @@
 
 /**
  * gallery loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function gallery_loader_start()
@@ -15,6 +22,13 @@ function gallery_loader_start()
 
 /**
  * gallery loader scripts transport start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function gallery_loader_scripts_transport_start()
@@ -31,6 +45,13 @@ function gallery_loader_scripts_transport_start()
 
 /**
  * gallery
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $directory
  * @param integer $quality
@@ -172,6 +193,13 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 /**
  * gallery build thumb
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $input
  * @param string $directory

@@ -2,6 +2,13 @@
 
 /**
  * admin panel list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_panel_list()
@@ -145,6 +152,13 @@ function admin_panel_list()
 /**
  * admin dock
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
+ *
  * @param string $table
  * @param integer $id
  * @return string
@@ -186,6 +200,13 @@ function admin_dock($table = '', $id = '')
 
 /**
  * admin notification
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_notification()
@@ -209,9 +230,15 @@ function admin_notification()
 	hook(__FUNCTION__ . '_end');
 }
 
-
 /**
  * admin control
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param string $table

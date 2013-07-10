@@ -2,6 +2,13 @@
 
 /**
  * analytics install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function analytics_install()
@@ -12,6 +19,13 @@ function analytics_install()
 
 /**
  * analytics uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function analytics_uninstall()

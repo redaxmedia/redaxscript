@@ -2,6 +2,13 @@
 
 /**
  * admin process
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_process()
@@ -440,6 +447,13 @@ function admin_process()
 
 /**
  * admin move
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_move()
@@ -474,6 +488,13 @@ function admin_move()
 
 /**
  * admin sort
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_sort()
@@ -548,6 +569,13 @@ function admin_sort()
 /**
  * admin status
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
+ *
  * @param string $input
  */
 
@@ -587,6 +615,13 @@ function admin_status($input = '')
 
 /**
  * admin install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_install()
@@ -610,6 +645,13 @@ function admin_install()
 
 /**
  * admin delete
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_delete()
@@ -692,6 +734,13 @@ function admin_delete()
 
 /**
  * admin update
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_update()
@@ -739,6 +788,13 @@ function admin_update()
 
 /**
  * admin children
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  *
  * @param string $table
  * @param integer $id
@@ -810,6 +866,13 @@ function admin_children($table = '', $id = '', $mode = '')
 
 /**
  * admin last update
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_last_update()

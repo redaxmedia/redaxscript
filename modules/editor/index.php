@@ -2,6 +2,13 @@
 
 /**
  * editor loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function editor_loader_start()
@@ -14,6 +21,13 @@ function editor_loader_start()
 
 /**
  * editor loader scripts transport start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function editor_loader_scripts_transport_start()

@@ -2,6 +2,13 @@
 
 /**
  * fb group loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function fb_group_loader_start()
@@ -12,6 +19,13 @@ function fb_group_loader_start()
 
 /**
  * fb group render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function fb_group_render_start()
@@ -25,6 +39,13 @@ function fb_group_render_start()
 
 /**
  * fb group
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param integer $limit_first
@@ -187,6 +208,13 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 /**
  * fb group user link
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param integer $id
  * @param string $name
  * @return string
@@ -200,6 +228,13 @@ function fb_group_user_link($id = '', $name = '')
 
 /**
  * fb group user image
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param integer $id
  * @param string $name

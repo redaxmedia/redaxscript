@@ -2,6 +2,13 @@
 
 /**
  * admin groups list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_groups_list()
@@ -89,6 +96,13 @@ function admin_groups_list()
 
 /**
  * admin groups form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_groups_form()

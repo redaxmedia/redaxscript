@@ -2,6 +2,13 @@
 
 /**
  * validator install
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function validator_install()
@@ -12,6 +19,13 @@ function validator_install()
 
 /**
  * validator uninstall
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function validator_uninstall()

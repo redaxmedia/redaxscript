@@ -2,6 +2,13 @@
 
 /**
  * fb group install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function fb_group_install()
@@ -12,6 +19,13 @@ function fb_group_install()
 
 /**
  * fb group uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function fb_group_uninstall()

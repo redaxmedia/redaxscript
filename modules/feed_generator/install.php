@@ -2,6 +2,13 @@
 
 /**
  * feed generator install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_generator_install()
@@ -12,6 +19,13 @@ function feed_generator_install()
 
 /**
  * feed generator uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_generator_uninstall()

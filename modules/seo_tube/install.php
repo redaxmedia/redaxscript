@@ -2,6 +2,13 @@
 
 /**
  * seo tube install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_install()
@@ -12,6 +19,13 @@ function seo_tube_install()
 
 /**
  * seo tube uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_uninstall()

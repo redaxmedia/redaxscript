@@ -2,6 +2,13 @@
 
 /**
  * password reset form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  */
 
 function password_reset_form()
@@ -46,6 +53,13 @@ function password_reset_form()
 
 /**
  * password reset post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  */
 
 function password_reset_post()
@@ -151,6 +165,13 @@ function password_reset_post()
 
 /**
  * hash generator
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  *
  * @param string $length
  * @return string

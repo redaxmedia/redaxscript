@@ -2,6 +2,13 @@
 
 /**
  * qunit install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_install()
@@ -12,6 +19,13 @@ function qunit_install()
 
 /**
  * qunit uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_uninstall()

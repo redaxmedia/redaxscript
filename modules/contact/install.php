@@ -1,6 +1,15 @@
 <?php
 
-/* contact install */
+/**
+ * contact install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
 
 function contact_install()
 {
@@ -8,7 +17,16 @@ function contact_install()
 	mysql_query($query);
 }
 
-/* contact uninstall */
+/**
+ * contact uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
 
 function contact_uninstall()
 {

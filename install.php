@@ -53,6 +53,13 @@ else
 
 /**
  * install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function install()
@@ -246,6 +253,13 @@ function install()
 
 /*
  * install form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function install_form()
@@ -291,6 +305,13 @@ function install_form()
 
 /**
  * install post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function install_post()
@@ -328,6 +349,13 @@ function install_post()
 
 /*
  * install status
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function install_notification()
@@ -399,6 +427,13 @@ function install_notification()
 /*
  * check install
  *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
+ *
  * @return integer
  */
 
@@ -418,6 +453,13 @@ function check_install()
 
 /**
  * write config
+ *
+ * @since 2.0
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function write_config()
@@ -448,6 +490,13 @@ function write_config()
 
 /**
  * head
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function head()
@@ -466,6 +515,13 @@ function head()
 
 /**
  * center
+ *
+ * @since 1.2.1
+ * @deprecated 2.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
  */
 
 function center()
