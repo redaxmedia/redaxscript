@@ -173,6 +173,7 @@
 	font: 1.5em 'icon admin';
 	position: absolute;
 	text-indent: 0;
+	right: 0.25em;
 }
 
 .table_admin .move_up:before
@@ -228,7 +229,7 @@
 	content: 'a';
 	font: 1.5em/2em 'icon admin';
 	position: absolute;
-	right: 0.675em;
+	right: 0.75em;
 	text-indent: 0;
 	text-transform: lowercase;
 	top: 0;
