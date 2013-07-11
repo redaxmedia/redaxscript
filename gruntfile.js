@@ -109,6 +109,53 @@ module.exports = function (grunt)
 				standard: 'Redaxscript'
 			}
 		},
+		lineending:
+		{
+			css:
+			{
+				files:
+				[
+					{
+						src: ['styles/*.css', 'modules/*/styles/*.css', 'templates/*/styles/*.css'],
+						expand: true
+					}
+				]
+			},
+			js:
+			{
+				files:
+				[
+					{
+						src: ['*.js', 'scripts/*.js', 'modules/*/scripts/*.js', 'templates/*/scripts/*.js'],
+						expand: true
+					}
+				]
+			},
+			phtml:
+			{
+				files:
+				[
+					{
+						src: ['modules/**/*.phtml', 'templates/**/*.phtml'],
+						expand: true
+					}
+				]
+			},
+			php:
+			{
+				files:
+				[
+					{
+						src: ['*.php', 'includes/**/*.php', 'languages/*.php', 'modules/**/*.php'],
+						expand: true
+					}
+				]
+			},
+			options:
+			{
+				eol: 'crlf'
+			}
+		},
 		shell:
 		{
 			tocBase:
@@ -199,6 +246,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
+	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
@@ -208,7 +256,8 @@ module.exports = function (grunt)
 	grunt.registerTask('default', ['jshint', 'jsonlint', 'csslint', 'htmlhint', 'phplint']);
 	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
+	grunt.registerTask('eol', ['lineending']);
 	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
 	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
-	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
+	grunt.registerTask('optimize', ['toc', 'eol', 'img', 'smushit', 'svgo']);
 };
