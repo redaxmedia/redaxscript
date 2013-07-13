@@ -49,6 +49,7 @@ body
 
 .content
 {
+	margin-bottom: 3em;
 	margin-top: 3em;
 	min-height: 40em;
 }
