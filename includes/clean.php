@@ -216,7 +216,7 @@ function clean_mysql($input = '')
 
 	/* mysql real escape */
 
-	if (function_exists('mysql_real_escape_string'))
+	if (DB_CONNECTED == 1 && function_exists('mysql_real_escape_string'))
 	{
 		$output = mysql_real_escape_string($input);
 	}
