@@ -294,6 +294,7 @@
 
 				if (event.type === 'error')
 				{
+					clearTimeout(timeout);
 					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
 				}
 
@@ -302,12 +303,12 @@
 				else
 				{
 					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
-					clearTimeout(timeout);
 					timeout = setTimeout(function ()
 					{
 						noteRequired.stop(1).slideUp(options.duration);
 					}, options.timeout);
 				}
+				
 			});
 		});
 	};

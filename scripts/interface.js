@@ -31,8 +31,9 @@
 
 		return this.each(function ()
 		{
-			var accordionTitle = $(this),
-				accordion = accordionTitle.closest(options.element.accordion),
+			var accordionTrigger = $(this),
+				accordion = accordionTrigger.closest(options.element.accordion),
+				accordionSet = accordion.find(options.element.accordionSet),
 				accordionBox = accordion.find(options.element.accordionBox),
 				accordionForm = accordion.closest('form');
 
@@ -42,14 +43,12 @@
 
 			/* listen for click and touchstart */
 
-			$(this).on('click touchstart', function ()
+			accordionTrigger.on('click touchstart', function ()
 			{
 				var accordionTitleActive = $(this),
 					accordion = accordionTitleActive.closest(options.element.accordion),
-					accordionSet = accordion.find(options.element.accordionSet),
 					accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
 					accordionTitle = accordion.find(options.element.accordionTitle),
-					accordionBox = accordion.find(options.element.accordionBox),
 					accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
 
 				/* remove active classes */
@@ -81,11 +80,15 @@
 				}
 			});
 
-			/* show related set on validation error */
+			/* show related set on submit */
 
-			accordionForm.on('error', function ()
+			accordionForm.on('submit', function ()
 			{
-				$(this).find(options.element.accordionSet).has('.js_note_error').first().children(options.element.accordionTitle).click();
+				var requiredError = accordionSet.find('.js_note_error').first(),
+					accordionTitleError = requiredError.closest(options.element.accordionSet).children(options.element.accordionTitle);
+
+				accordionTitleError.click();
+				requiredError.focus();
 			});
 		});
 	};
@@ -151,7 +154,8 @@
 
 		return this.each(function ()
 		{
-			var url = window.location.href.replace(r.baseURL, ''),
+			var tabTrigger = $(this),
+				tabURL = window.location.href.replace(r.baseURL, ''),
 				tabList = $(options.element.tabList),
 				tabBox = $(options.element.tabBox),
 				tabSet = tabBox.find(options.element.tabSet),
@@ -166,7 +170,7 @@
 
 			/* listen for click and touchstart */
 
-			$(this).on('click touchstart', function (event)
+			tabTrigger.on('click touchstart', function (event)
 			{
 				var tabItem = $(this),
 					tabList = tabItem.closest(options.element.tabList),
@@ -192,7 +196,7 @@
 
 			/* click tab depending on location href */
 
-			tabList.find('a[href="' + url + '"]').click();
+			tabList.find('a[href="' + tabURL + '"]').click();
 
 			/* prevent tab for last children */
 
@@ -204,13 +208,17 @@
 				}
 			});
 
-			/* show related tab on validation error */
+			/* show related tab on submit */
 
-			tabForm.on('error', function ()
+			tabForm.on('submit', function ()
 			{
-				var id = $(this).find(options.element.tabSet).has('.js_note_error').first().attr('id');
+				var requiredError = tabSet.find('.js_note_error').first(),
+					tabNameError = requiredError.closest(options.element.tabSet).attr('id'),
+					tabURLError = r.constants.FULL_ROUTE + '#' + tabNameError,
+					tabLinkError = tabList.find('a[href*="' + tabURLError + '"]');
 
-				tabList.find('a[href*="' + r.constants.FULL_ROUTE + '#' + id + '"]').click();
+				tabLinkError.click();
+				requiredError.focus();
 			});
 		});
 	};
