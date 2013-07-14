@@ -103,6 +103,10 @@ function admin_panel_list()
 		$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
+	/* fetch modules list */
+
+	$admin_panel_list_modules = hook('admin_panel_list_modules');
+
 	/* collect system output */
 
 	if ($system_access || $admin_panel_list_modules)
@@ -114,7 +118,6 @@ function admin_panel_list()
 
 			/* collect modules list */
 
-			$admin_panel_list_modules = hook('admin_panel_list_modules');
 			if ($admin_panel_list_modules)
 			{
 				$output .= '<ul class="js_list_panel_children_admin list_panel_children_admin">' . $admin_panel_list_modules . '</ul>';
@@ -129,11 +132,17 @@ function admin_panel_list()
 	}
 
 	/* collect profile */
-
+	
+	$output .= '<li class="item_panel_admin item_profile">';
 	if (MY_USER && MY_ID)
 	{
-		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID);
 	}
+	else
+	{
+		$output .= '<span>' . l('profile') . '</span>';
+	}
+	$output .= '</li>';
 
 	/* collect logout */
 
