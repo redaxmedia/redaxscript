@@ -81,20 +81,36 @@
 		return this.each(function ()
 		{
 			var panelList = $(this),
-				panelItem = panelList.find('li'),
-				panelChildren = panelItem.children('ul'),
+				panelItem = panelList.children('li'),
+				panelItemAll = panelList.find('li'),
+				panelChildren = panelItemAll.children('ul'),
 				timeout;
+
+			/* listen for mouseenter */
+
+			panelItem.on('mouseenter', function ()
+			{
+				var thatItem = $(this),
+					itemFloat = thatItem.css('float');
+
+				/* item is floated */
+
+				if (itemFloat === 'left' || itemFloat === 'right')
+				{
+					thatItem.click();
+				}
+			});
 
 			/* listen for click and touchover */
 
-			panelItem.on('click touchover', function ()
+			panelItemAll.on('click touchover', function ()
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
 
 				/* handle click and touchover */
 
-				panelChildren.stop(0).slideUp(options.duration);
+				panelChildren.stop(0).slideUp(options.duration).height('auto');
 				thatChildren.stop(0).slideDown(options.duration);
 			});
 
