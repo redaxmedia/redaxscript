@@ -65,13 +65,9 @@
 
 .box_line
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
-	background: #000;
-	background: rgba(0, 0, 0, 0.8);
-	border-radius: 0.125em;
-	height: 0.5em;
-	width: 80%;
+	background: url('templates/candy/images/line.svg');
+	height: 2.5em;
+	width: 26.75em;
 }
 
 .content .box_line

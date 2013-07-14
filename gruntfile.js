@@ -172,7 +172,7 @@ module.exports = function (grunt)
 			},
 			svgoTemplates:
 			{
-				command: 'svgo --disable removeViewBox -f templates/default/images'
+				command: 'svgo --disable removeViewBox -f templates/candy/images && svgo --disable removeViewBox -f templates/default/images'
 			},
 			svgoModules:
 			{
