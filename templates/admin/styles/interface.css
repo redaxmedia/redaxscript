@@ -147,6 +147,11 @@
 	font-size: 0.875rem;
 }
 
+.item_panel_admin
+{
+	position: relative;
+}
+
 .list_panel_admin a, .list_panel_admin span
 {
 	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
@@ -195,7 +200,7 @@
 	background: -webkit-linear-gradient(top, #d50000, #a20000);
 }
 
-/* @section 3.1 icons */
+/* @section 3.1 icons before */
 
 .item_panel_admin > a:before, .item_panel_admin > span:before
 {
@@ -230,6 +235,26 @@
 	content: 'n';
 }
 
+/* @section 3.2 icons after */
+
+.item_panel_admin > span:after
+{
+    font: 1.5em/1.75em 'icon admin';
+    position: absolute;
+	right: 0.75em;
+	top: 0;
+}
+
+.item_panel_admin > span:after
+{
+	content: '˃';
+}
+
+.item_panel_admin.item_active > span:after
+{
+    content: '˅';
+}
+
 /* @section 3.2 javascript enabled */
 
 .js .list_panel_admin li > ul
@@ -239,11 +264,6 @@
 
 /* @section 5. list tab admin */
 
-.list_tab_admin
-{
-	margin-bottom: -1px;
-}
-
 .list_tab_admin li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
@@ -251,6 +271,7 @@
 	background: url('templates/admin/images/carbon.png') #232323;
 	border: 1px solid #232323;
 	border-radius: 0.25em 0.25em 0 0;
+	margin-bottom: -1px;
 	margin-right: 1px;
 	vertical-align: bottom;
 }

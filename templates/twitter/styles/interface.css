@@ -186,12 +186,6 @@
 
 /* @section 6. list tab default */
 
-.list_tab_default
-{
-	border-bottom: 1px solid #d5d5d5;
-	border-bottom-color: rgba(0, 0, 0, 0.15);
-}
-
 .list_tab_default li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;

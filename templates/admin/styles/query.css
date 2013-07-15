@@ -56,6 +56,11 @@
 		font-size: 1.5em;
 	}
 
+	.list_panel_admin .item_panel_admin > span:after
+	{
+		content: '';
+	}
+
 	.list_panel_admin > li
 	{
 		float: left;

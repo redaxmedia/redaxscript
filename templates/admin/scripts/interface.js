@@ -112,6 +112,11 @@
 
 				panelChildren.stop(0).slideUp(options.duration).height('auto');
 				thatChildren.stop(0).slideDown(options.duration);
+
+				/* active item */
+
+				panelItem.removeClass('item_active');
+				thatItem.addClass('item_active');
 			});
 
 			/* listen for mouseenter and mouseleave */
@@ -121,7 +126,10 @@
 				if (event.type === 'mouseleave')
 				{
 					timeout = setTimeout(function () {
-						panelChildren.stop(0).slideUp(options.duration);
+						panelChildren.stop(0).slideUp(options.duration, function ()
+						{
+							panelItem.removeClass('item_active');
+						});
 					}, options.timeout);
 				}
 
