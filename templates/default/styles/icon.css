@@ -13,20 +13,21 @@
 
 .icon_flag
 {
-	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-	background: #62c5ff;
-	background: -moz-linear-gradient(top, #62c5ff, #0090db);
-	background: -ms-linear-gradient(top, #62c5ff, #0090db);
-	background: -o-linear-gradient(top, #62c5ff, #0090db);
-	background: -webkit-gradient(linear, left top, left bottom, from(#62c5ff), to(#0090db));
-	background: -webkit-linear-gradient(top, #62c5ff, #0090db);
-	background: linear-gradient(top, #62c5ff, #0090db);
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+	background: #3db1f1;
+	background: -moz-linear-gradient(top, #3db1f1, #0090db);
+	background: -ms-linear-gradient(top, #3db1f1, #0090db);
+	background: -o-linear-gradient(top, #3db1f1, #0090db);
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
+	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
+	background: linear-gradient(top, #3db1f1, #0090db);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
 	color: #fff;
-	font: bold 0.75em/1.75em arial;
+	font: bold 0.675em/3em arial;
 	display: inline-block;
 	text-align: center;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	width: 2.5em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	text-transform: uppercase;
+	width: 4em;
 }

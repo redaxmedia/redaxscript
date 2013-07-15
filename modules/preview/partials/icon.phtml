@@ -8,7 +8,7 @@ $languages_directory = New Redaxscript_Directory('languages', 'misc.php');
 $languages_directory_array = $languages_directory->getOutput();
 ?>
 
-<?php foreach ($languages_directory_array as $language): ?>
-	<?php $language = substr($language, 0, 2); ?>
-	<span class="icon_flag language_<?php echo $language; ?>" title="<?php echo $language; ?>"><?php echo $language; ?></span>
-<?php endforeach; ?>
+<?php foreach ($languages_directory_array as $language): ?><!--
+--><?php $language = substr($language, 0, 2); ?><!--
+--><span class="icon_flag language_<?php echo $language; ?>" title="<?php echo $language; ?>"><?php echo $language; ?></span><!--
+--><?php endforeach; ?>
