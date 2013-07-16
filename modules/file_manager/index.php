@@ -153,15 +153,15 @@ function file_manager_admin_panel_list_modules()
 
 function file_manager($directory = '')
 {
-	if (is_dir($directory) == '')
+	if (!is_dir($directory))
 	{
 		mkdir($directory, 0777);
 	}
-	if (is_dir($directory) == '')
+	if (!is_dir($directory))
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_create') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
-	else if (decoct(fileperms($directory)) != 40777)
+	else if (!is_writable($directory))
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
