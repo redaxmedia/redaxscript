@@ -5,10 +5,11 @@
  *    1.1 icons
  * 2. list control admin
  * 3. list panel admin
- *    3.1 icons
- *    3.2 javascript enabled
- * 5. list tab admin
- *    5.1 javascript enabled
+ *    3.1 icons before
+ *    3.2 icons after
+ *    3.3 javascript enabled
+ * 4. list tab admin
+ *    4.1 javascript enabled
  *
  * @since 2.0
  *
@@ -28,6 +29,7 @@
 	height: 3.25em;
 	position: relative;
 	text-indent: -999em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	transition: padding 0.3s ease;
 	width: 3.5em;
 }
@@ -45,6 +47,7 @@
 	background: linear-gradient(top, #3db1f1, #0090db);
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
 }
 
@@ -166,7 +169,7 @@
 	display: block;
 	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 	transition: padding-left 0.3s ease;
 }
@@ -185,7 +188,7 @@
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	color: #000;
 	padding-left: 1.25em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link logout */
@@ -255,14 +258,14 @@
     content: '˅';
 }
 
-/* @section 3.2 javascript enabled */
+/* @section 3.3 javascript enabled */
 
 .js .list_panel_admin li > ul
 {
 	display: none;
 }
 
-/* @section 5. list tab admin */
+/* @section 4. list tab admin */
 
 .list_tab_admin li
 {
@@ -289,7 +292,7 @@
 	text-decoration: none;
 }
 
-/* @section 5.1 javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {
