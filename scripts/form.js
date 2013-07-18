@@ -351,7 +351,7 @@
 		{
 			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
 		}
-		if (r.plugins.checkSearch.startup && r.support.placeholder === true)
+		if (r.plugins.checkSearch.startup && r.support.input.placeholder === true)
 		{
 			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
 		}

@@ -331,7 +331,7 @@ r.support =
 			}
 		}
 		return output;
-	(document),
+	}(document),
 	nativeJSON: function (json)
 	{
 		if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')

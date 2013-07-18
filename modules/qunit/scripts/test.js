@@ -126,7 +126,7 @@
 
 		/* @section 9. check search */
 
-		if (typeof $.fn.checkSearch === 'function' && r.support.placeholder === true)
+		if (typeof $.fn.checkSearch === 'function' && r.support.input.placeholder === true)
 		{
 			win.test('checkSearch', function ()
 			{
