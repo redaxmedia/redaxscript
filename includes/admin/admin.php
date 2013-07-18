@@ -132,7 +132,7 @@ function admin_panel_list()
 	}
 
 	/* collect profile */
-	
+
 	$output .= '<li class="item_panel_admin item_profile">';
 	if (MY_USER && MY_ID)
 	{
