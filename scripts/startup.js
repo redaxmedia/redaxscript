@@ -269,6 +269,69 @@ r.support =
 			return false;
 		}
 	}(),
+	input: function (doc)
+	{
+		var types =
+			[
+				'color',
+				'date',
+				'datetime',
+				'datetime-local',
+				'email',
+				'month',
+				'number',
+				'range',
+				'search',
+				'tel',
+				'time',
+				'url',
+				'week'
+			],
+			attributes =
+			[
+				'autocomplete',
+				'autofocus',
+				'pattern',
+				'placeholder',
+				'required'
+			],
+			input = doc.createElement('input'),
+			i = '', j = '', output = {};
+
+		/* check types */
+
+		for (i in types)
+		{
+			var type = types[i];
+
+			input.setAttribute('type', type);
+			if (input.type === type)
+			{
+				output[type] = true;
+			}
+			else
+			{
+				output[type] = false;
+			}
+		}
+
+		/* check attributes */
+	
+		for (j in attributes)
+		{
+			var attribute = attributes[j];
+	
+			if (attribute in input)
+			{
+				output[attribute] = true;
+			}
+			else
+			{
+				output[attribute] = false;
+			}
+		}
+		return output;
+	(document),
 	nativeJSON: function (json)
 	{
 		if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')
@@ -280,17 +343,6 @@ r.support =
 			return false;
 		}
 	}(window.JSON),
-	placeholder: function (doc)
-	{
-		if ('placeholder' in doc.createElement('input'))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}(document),
 	svg: function (doc)
 	{
 		if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')
@@ -357,7 +409,7 @@ r.baseURL = function (doc)
 r.startup = function (doc, html)
 {
 	var i = '',
-		elements =
+		tags =
 		[
 			'article',
 			'aside',
@@ -394,9 +446,9 @@ r.startup = function (doc, html)
 
 	/* create elements */
 
-	for (i in elements)
+	for (i in tags)
 	{
-		doc.createElement(elements[i]);
+		doc.createElement(tags[i]);
 	}
 	return true;
 }(document, document.documentElement);
