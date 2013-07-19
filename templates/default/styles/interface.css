@@ -6,6 +6,8 @@
  * 3. list footer
  * 4. list header
  * 5. list pagination
+ *    5.1 hover and active effect
+ *    5.2 icons
  * 6. list sidebar
  * 7. list tab default
  *    7.1 javascript enabled
@@ -230,29 +232,36 @@
 .list_pagination a, .list_pagination span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px #c6c6c6;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
-	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
-	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
-	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
-	background: linear-gradient(top, #e2e2e2, #dadada);
-	border: 1px solid #f1f1f1;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	background: #cacaca;
+	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#bdbdbd));
+	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: linear-gradient(top, #d1d1d1, #bdbdbd);
+	border: 1px solid #999;
 	border-radius: 0.25em;
-	box-shadow: 0 0 3px #c6c6c6;
-	color: #5e5e5e;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	color: #666;
 	font: bold 1em arial;
 	padding: 0.5em 1em;
-	text-shadow: 0 1px #f5f5f5;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.list_pagination a:hover
+/* @section 5.1 hover and active effect */
+
+.list_pagination a:hover, .list_pagination a:active
 {
-	-moz-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
-	-webkit-box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
+	border-color: #005da2;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.list_pagination a:hover, .list_pagination a:active
+{
 	background: #33acee;
 	background: -moz-linear-gradient(top, #0090db, #62c5ff);
 	background: -ms-linear-gradient(top, #0090db, #62c5ff);
@@ -260,13 +269,17 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#0090db), to(#62c5ff));
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	background: linear-gradient(top, #0090db, #62c5ff);
-	border-color: #005da2;
-	box-shadow: inset 0 0 0 1px #97d4f6, 0 0 3px #bdbdbd;
-	color: #fff;
-	text-shadow: 0 1px #005da2;
 }
 
-/* icons */
+.list_pagination a:active
+{
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+	background: #0090db;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* @section 5.2 icons */
 
 .list_pagination a:before, .list_pagination a:after
 {
@@ -361,7 +374,7 @@
 {
 	font: 1.5em/1.25em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1em;
-	text-shadow: 0 1px #eee;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	text-transform: uppercase;
 }
 
@@ -384,7 +397,6 @@
 	color: #4e4e4e;
 	cursor: default;
 	line-height: 1.5em;
-	text-shadow: none;
 }
 
 /* @section 8. list search result */

@@ -240,7 +240,7 @@
 	font: 12em/1em georgia;
 	left: 0;
 	position: absolute;
-	text-shadow: 0 -1px #b9b9b9;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.15);
 	top: -0.75em;
 }
 
