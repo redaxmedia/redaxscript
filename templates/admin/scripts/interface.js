@@ -84,7 +84,7 @@
 				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
-				timeout;
+				timeoutEnter, timeoutLeave;
 
 			/* listen for mouseenter */
 
@@ -97,7 +97,11 @@
 
 				if (itemFloat === 'left' || itemFloat === 'right')
 				{
-					thatItem.click();
+					clearTimeout(timeoutEnter);
+					timeoutEnter = setTimeout(function ()
+					{
+						thatItem.click();
+					}, options.duration);
 				}
 			});
 
@@ -125,7 +129,9 @@
 			{
 				if (event.type === 'mouseleave')
 				{
-					timeout = setTimeout(function () {
+					clearTimeout(timeoutEnter);
+					timeoutLeave = setTimeout(function ()
+					{
 						panelChildren.stop(0).slideUp(options.duration, function ()
 						{
 							panelItem.removeClass('item_active');
@@ -137,7 +143,7 @@
 
 				else
 				{
-					clearTimeout(timeout);
+					clearTimeout(timeoutLeave);
 				}
 			});
 		});
