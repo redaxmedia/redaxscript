@@ -2,10 +2,11 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. default admin buttons
+ * 2. admin buttons
  *    2.1 hover effect
  *    2.2 active effect
- * 3. default admin fields
+ *    2.3 icons
+ * 3. admin fields
  *    3.1 hover effect
  *    3.2 focus effect
  * 4. textarea dimensions
@@ -26,7 +27,7 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. default admin buttons */
+/* @section 2. admin buttons */
 
 .button_admin, .button_large_admin
 {
@@ -87,7 +88,42 @@ textarea
 	color: #fff;
 }
 
-/* @section 3. default admin fields */
+/* @section 2.3 icons */
+
+.button_admin.button_plus:before, .button_admin.button_sort:before, .button_large_admin.button_cancel:before, .button_large_admin.button_delete:before, .button_large_admin.button_submit:before
+{
+	font: 1em 'icon admin';
+	margin-right: 0.5em;
+	text-transform: lowercase;
+	vertical-align: text-bottom;
+}
+
+.button_admin.button_plus:before
+{
+	content: 'f';
+}
+
+.button_admin.button_sort:before
+{
+	content: 'a';
+}
+
+.button_large_admin.button_cancel:before
+{
+	content: 'e';
+}
+
+.button_large_admin.button_delete:before
+{
+	content: 'r';
+}
+
+.button_large_admin.button_submit:before
+{
+	content: 'd';
+}
+
+/* @section 3. admin fields */
 
 .field_select_admin, .field_text_admin, .field_textarea_small_admin
 {
@@ -199,12 +235,12 @@ textarea
 
 /* @section 6. form admin */
 
-.form_admin .button_backward, .form_admin .button_second
+.form_admin .button_cancel, .form_admin .button_delete
 {
 	float: left;
 }
 
-.form_admin .button_forward
+.form_admin .button_submit
 {
 	float: right;
 }

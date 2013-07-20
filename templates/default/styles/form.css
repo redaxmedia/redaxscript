@@ -4,16 +4,16 @@
  * 1. tag styling
  * 2. default buttons
  *    2.1 hover and active effect
- * 3. custom buttons
- * 4. default fields
- *    4.1 hover effect
- *    4.2 focus effect
- * 5. textarea dimensions
- * 6. search elements
- * 7. disabled and readonly
- * 8. form default
- * 9. form search
- * 10. space between elements
+ *    2.3 icons
+ * 3. default fields
+ *    3.1 hover effect
+ *    3.2 focus effect
+ * 4. textarea dimensions
+ * 5. search elements
+ * 6. disabled and readonly
+ * 7. form default
+ * 8. form search
+ * 9. space between elements
  *
  * @since 2.0
  *
@@ -88,7 +88,7 @@ textarea
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
-/* @section 3. custom buttons */
+/* @section 2.3 icons */
 
 .button_donate:before, .button_login:before, .button_support:before
 {
@@ -113,7 +113,7 @@ textarea
 	content: 'n';
 }
 
-/* @section 4. default fields */
+/* @section 3. default fields */
 
 .field_select, .field_text, .field_textarea_small
 {
@@ -155,7 +155,7 @@ textarea
 	padding: 0.5em;
 }
 
-/* @section 4.1 hover effect */
+/* @section 3.1 hover effect */
 
 .field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover
 {
@@ -168,7 +168,7 @@ textarea
 	background: linear-gradient(top, #ddd, #ebebeb);
 }
 
-/* @section 4.2 focus effect */
+/* @section 3.2 focus effect */
 
 .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
 {
@@ -179,7 +179,7 @@ textarea
 	box-shadow: 0 0 1px #4abdff;
 }
 
-/* @section 5. textarea dimensions */
+/* @section 4. textarea dimensions */
 
 .field_textarea
 {
@@ -192,7 +192,7 @@ textarea
 	min-height: 5em;
 }
 
-/* @section 6. search elements */
+/* @section 5. search elements */
 
 .button_search
 {
@@ -225,7 +225,7 @@ textarea
 	width: 90%;
 }
 
-/* @section 7. disabled and readonly */
+/* @section 6. disabled and readonly */
 
 .button.field_disabled, .button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {
@@ -245,7 +245,7 @@ textarea
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* @section 8. form default */
+/* @section 7. form default */
 
 .form_default li
 {
@@ -257,7 +257,7 @@ textarea
 	display: block;
 }
 
-/* @section 9. form search */
+/* @section 8. form search */
 
 .form_search
 {
@@ -278,7 +278,7 @@ textarea
 	padding: 0.5em 1em;
 }
 
-/* @section 10. space between elements */
+/* @section 9. space between elements */
 
 .box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
 {
