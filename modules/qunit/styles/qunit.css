@@ -71,7 +71,7 @@
 	font: bold 1em/2.25em arial;
 	margin-top: 2em;
 	padding: 0 1em;
-	text-shadow: 0 1px #f1f1f1;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .title_qunit, .title_qunit a

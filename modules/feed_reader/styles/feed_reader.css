@@ -45,7 +45,7 @@
 	border-radius: 0.25em 0.25em 0 0;
 	font: bold 1em/2.25em arial;
 	padding: 0 1em;
-	text-shadow: 0 1px #f1f1f1;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .title_feed_reader, .title_feed_reader a

@@ -405,7 +405,7 @@
 {
 	color: #919191;
 	font-size: 1.125em;
-	text-shadow: 0 1px #ebebeb;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
 .list_search_result .date_search_result
@@ -441,7 +441,7 @@
 	font: 0.875em/1.25em arial;
 	left: 100%;
 	margin-left: 1em;
-	text-shadow: 0 1px #f1f1f1;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	top: -0.625em;
 	padding: 0.75em;
 	width: 20em;
