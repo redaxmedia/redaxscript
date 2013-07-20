@@ -37,7 +37,7 @@
 .list_share_this li
 {
 	float: left;
-	margin-right: 3em;
+	margin-right: 3.25em;
 }
 
 /* @section 3. link share this */
@@ -53,17 +53,23 @@
 .link_share_this:before
 {
 	-moz-border-radius: 2em;
+	-moz-transition: background 0.3s;
+	-ms-transition: background 0.3s;
+	-o-transition: background 0.3s;
 	-webkit-border-radius: 2em;
-	background: #aaa;
+	-webkit-transition: background 0.3s;
+	background: #bbb;
+	background: rgba(0, 0, 0, 0.15);
 	border-radius: 2em;
 	color: #fff;
 	content: 'a';
-	font: 1em/2.25em 'icon share this';
+	font: 1.125em/2.25em 'icon share this';
 	left: 0;
 	position: absolute;
 	text-align: center;
 	text-indent: 0;
 	top: 0;
+	transition: background 0.3s;
 	width: 2.25em;
 }
 
@@ -71,62 +77,94 @@
 
 .link_share_this.link_facebook:before
 {
-	background: #3b5998;
 	content: 'b';
+}
+
+.link_share_this.link_facebook:hover:before
+{
+	background: #3b5998;
 }
 
 /* @section 3.2 google */
 
 .link_share_this.link_google:before
 {
-	background: #d34836;
 	content: 'c';
+}
+
+.link_share_this.link_google:hover:before
+{
+	background: #d34836;
 }
 
 /* @section 3.3 twitter */
 
 .link_share_this.link_twitter:before
 {
-	background: #00aced;
 	content: 'd';
+}
+
+.link_share_this.link_twitter:hover:before
+{
+	background: #00aced;
 }
 
 /* @section 3.4 pinterest */
 
 .link_share_this.link_pinterest:before
 {
-	background: #cb2027;
 	content: 'e';
+}
+
+.link_share_this.link_pinterest:hover:before
+{
+	background: #cb2027;
 }
 
 /* @section 3.5 tumblr */
 
 .link_share_this.link_tumblr:before
 {
-	background: #32506d;
 	content: 'f';
+}
+
+.link_share_this.link_tumblr:hover:before
+{
+	background: #32506d;
 }
 
 /* @section 3.6 linkedin */
 
 .link_share_this.link_linkedin:before
 {
-	background: #007bb6;
 	content: 'g';
+}
+
+.link_share_this.link_linkedin:hover:before
+{
+	background: #007bb6;
 }
 
 /* @section 3.7 stumbleupon */
 
 .link_share_this.link_stumbleupon:before
 {
-	background: #f74425;
 	content: 'h';
+}
+
+.link_share_this.link_stumbleupon:hover:before
+{
+	background: #f74425;
 }
 
 /* @section 3.8 delicious */
 
 .link_share_this.link_delicious:before
 {
-	background: #205cc0;
 	content: 'i';
+}
+
+.link_share_this.link_delicious:hover:before
+{
+	background: #205cc0;
 }
