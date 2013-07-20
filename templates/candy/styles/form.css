@@ -46,6 +46,7 @@ textarea
 	cursor: pointer;
 	display: inline-block;
 	font: 0.875em/2.75em marmelad, serif;
+	text-align: center;
 	text-shadow: 0 1px #000;
 	text-transform: uppercase;
 	padding: 0 0.75em;
@@ -104,10 +105,8 @@ textarea
 {
 	-moz-border-radius: 0.375em;
 	-moz-box-shadow: inset 0 -1px #262626;
-	-moz-box-sizing: border-box;
 	-webkit-border-radius: 0.375em;
 	-webkit-box-shadow: inset 0 -1px #262626;
-	-webkit-box-sizing: border-box;
 	background: #1F1F1F;
 	background: -moz-linear-gradient(top, #282828, #1F1F1F);
 	background: -ms-linear-gradient(top, #282828, #1F1F1F);
@@ -118,7 +117,6 @@ textarea
 	border: 1px solid #262626;
 	border-radius: 0.375em;
 	box-shadow: inset 0 -1px #262626;
-	box-sizing: border-box;
 	color: #c6c6c6;
 	font: 1.125em marmelad, serif;
 	padding: 0.5em;
@@ -155,7 +153,20 @@ textarea
 	min-height: 5em;
 }
 
-/* @section 5. form default */
+/* @section 5. search elements */
+
+.button_search
+{
+	margin-left: 5%;
+	width: 30%;
+}
+
+.field_search
+{
+	width: 65%;
+}
+
+/* @section 6. form default */
 
 .form_default li
 {
@@ -168,14 +179,9 @@ textarea
 	font-size: 1.125em;
 }
 
-/* @section 6. space between elements */
+/* @section 7. space between elements */
 
 .box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
 {
 	margin-top: 1em;
-}
-
-.button + .button, .button_large + .button_large, .field_text + .button
-{
-	margin-left: 1em;
 }

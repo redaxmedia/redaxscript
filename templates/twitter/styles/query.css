@@ -46,7 +46,27 @@
 	}
 }
 
-/* @section 3. screen max 30em */
+/* @section 3. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.button + .button, .button_large + .button_large, .field_text + .button
+	{
+		margin-left: 0.5em;
+	}
+}
+
+/* @section 4. screen max 30em */
+
+@media screen and (max-width: 30em)
+{
+	.button + .button, .button_large + .button_large
+	{
+		margin-top: 0.75em;
+	}
+}
+
+/* @section 5. screen max 30em */
 
 @media screen and (max-width: 30em)
 {

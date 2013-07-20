@@ -60,7 +60,12 @@
 		width: 80%;
 	}
 
-	.button, .field_select, .field_text, .field_textarea_small
+	a.button, a.button_large
+	{
+		display: block;
+	}
+
+	button.button, button.button_large, .field_select, .field_text, .field_textarea_small
 	{
 		width: 100%;
 	}

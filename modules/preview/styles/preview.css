@@ -51,6 +51,7 @@
 .preview .icon_flag
 {
 	margin: 0.125em;
+	float: left;
 }
 
 /* @section 4. dialog */

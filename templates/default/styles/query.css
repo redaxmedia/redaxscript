@@ -64,10 +64,25 @@
 	}
 }
 
-/* @section 4. screen max 30em */
+/* @section 4. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.button + .button, .button_large + .button_large, .field_text + .button
+	{
+		margin-left: 0.5em;
+	}
+}
+
+/* @section 5. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
+	.button + .button, .button_large + .button_large
+	{
+		margin-top: 0.75em;
+	}
+
 	.header
 	{
 		font-size: 0.875em;
@@ -79,7 +94,7 @@
 	}
 }
 
-/* @section 5. screen max 20em */
+/* @section 6. screen max 20em */
 
 @media screen and (max-width: 20em)
 {
@@ -94,7 +109,7 @@
 	}
 }
 
-/* @section 6. speed dail */
+/* @section 7. speed dail */
 
 @media screen and (view-mode: minimized)
 {

@@ -22,11 +22,41 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 2. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.button_admin + .button_admin, .button_large_admin + .button_large_admin, .field_text_admin + .button_admin
+	{
+		margin-left: 0.5em;
+	}
+
+	.form_admin .button_cancel, .form_admin .button_delete
+	{
+		float: left;
+	}
+
+	.form_admin .button_submit
+	{
+		float: right;
+	}
+}
+
+/* @section 3. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
-	.button_admin, .field_select_admin, .field_text_admin, .field_textarea_small_admin
+	.button_admin + .button_admin, .button_large_admin + .button_large_admin
+	{
+		margin-top: 0.75em;
+	}
+
+	a.button_admin, a.button_large_admin
+	{
+		display: block;
+	}
+
+	button.button_admin, button.button_large_admin, .field_select_admin, .field_text_admin, .field_textarea_small_admin
 	{
 		width: 100%;
 	}
@@ -37,7 +67,7 @@
 	}
 }
 
-/* @section 3. screen min 50em */
+/* @section 4. screen min 50em */
 
 @media screen and (min-width: 50em)
 {
@@ -76,7 +106,7 @@
 	}
 }
 
-/* @section 4. rtl direction */
+/* @section 5. rtl direction */
 
 .rtl .description_dock_admin
 {

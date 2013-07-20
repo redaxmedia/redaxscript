@@ -49,12 +49,21 @@ textarea
 	display: inline-block;
 	font: 1em/2.375em arial;
 	padding: 0 0.5em;
+	text-align: center;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
 .button_large
 {
 	font-size: 1.25em;
+}
+
+/* fix underline and color */
+
+a.button, a.button:hover, a.button_large, a.button_large:hover
+{
+	color: #333;
+	text-decoration: none;
 }
 
 /* @section 2.1 hover effect */
@@ -74,19 +83,6 @@ textarea
 	background: #e6e6e6;
 }
 
-/* field button search */
-
-.button_search
-{
-	-moz-border-radius: 0 0.25em 0.25em 0;
-	-webkit-border-radius: 0 0.25em 0.25em 0;
-	border-radius: 0 0.25em 0.25em 0;
-	border-left-width: 0;
-	position: relative;
-	top: -1px;
-	width: 30%;
-}
-
 /* @section 3. default fields */
 
 .field_select, .field_text, .field_textarea_small
@@ -103,33 +99,20 @@ textarea
 {
 	-moz-border-radius: 0.25em;
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-	-moz-box-sizing: border-box;
 	-moz-transition: border 0.2s linear, box-shadow 0.2s linear;
 	-ms-transition: border 0.2s linear, box-shadow 0.2s linear;
 	-o-transition: border 0.2s linear, box-shadow 0.2s linear;
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-	-webkit-box-sizing: border-box;
 	-webkit-transition: border 0.2s linear, box-shadow 0.2s linear;
 	background: #fff;
 	border: 1px solid #d5d5d5;
 	border-color: rgba(0, 0, 0, 0.15);
 	border-radius: 0.25em;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-	box-sizing: border-box;
 	color: #555;
 	padding: 0.5em;
 	transition: border 0.2s linear, box-shadow 0.2s linear;
-}
-
-/* field search */
-
-.field_search
-{
-	-moz-border-radius: 0.25em 0 0 0.25em;
-	-webkit-border-radius: 0.25em 0 0 0.25em;
-	border-radius: 0.25em 0 0 0.25em;
-	width: 70%;
 }
 
 /* @section 3.1 focus effect */
@@ -155,7 +138,28 @@ textarea
 	min-height: 5em;
 }
 
-/* @section 5. disabled and readonly */
+/* @section 5. search elements */
+
+.button_search
+{
+	-moz-border-radius: 0 0.25em 0.25em 0;
+	-webkit-border-radius: 0 0.25em 0.25em 0;
+	border-radius: 0 0.25em 0.25em 0;
+	border-left-width: 0;
+	position: relative;
+	top: -1px;
+	width: 30%;
+}
+
+.field_search
+{
+	-moz-border-radius: 0.25em 0 0 0.25em;
+	-webkit-border-radius: 0.25em 0 0 0.25em;
+	border-radius: 0.25em 0 0 0.25em;
+	width: 70%;
+}
+
+/* @section 6. disabled and readonly */
 
 .button.field_disabled, .button_large.field_disabled, .button_search.field_disabled, .field_search.field_disabled, .field_search.field_readonly, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {
@@ -167,7 +171,7 @@ textarea
 	cursor: default;
 }
 
-/* @section 6. form default and form search */
+/* @section 7. form default and form search */
 
 .form_default, .form_search
 {
@@ -193,14 +197,9 @@ textarea
 	display: block;
 }
 
-/* @section 7. space between elements */
+/* @section 8. space between elements */
 
 .box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
 {
 	margin-top: 1em;
-}
-
-.button + .button, .button_large + .button_large, .field_text + .button
-{
-	margin-left: 0.5em;
 }

@@ -38,6 +38,7 @@ textarea
 	display: inline-block;
 	padding: 0 0.75em;
 	line-height: 2.25em;
+	text-align: center;
 }
 
 .button_large
@@ -60,14 +61,11 @@ textarea
 .field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
 {
 	-moz-border-radius: 0.125em;
-	-moz-box-sizing: border-box;
 	-webkit-border-radius: 0.125em;
-	-webkit-box-sizing: border-box;
 	background: #f5f5f5;
 	border: 1px solid #e5e5e5;
 	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.125em;
-	box-sizing: border-box;
 	font-size: 1em;
 	padding: 0.5em;
 }
@@ -89,7 +87,13 @@ textarea
 
 .button_search
 {
-	margin-left: 0.5em;
+	margin-left: 5%;
+	width: 30%;
+}
+
+.field_search
+{
+	width: 65%;
 }
 
 /* @section 6. disabled and readonly */
@@ -125,9 +129,4 @@ textarea
 .box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
 {
 	margin-top: 1em;
-}
-
-.button + .button, .button_large + .button_large, .field_text + .button
-{
-	margin-left: 0.5em;
 }
