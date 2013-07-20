@@ -171,7 +171,7 @@ function file_manager($directory = '')
 	$output .= '<h2 class="title_content">' . l('file_manager_file_manager') . '</h2>';
 	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
 	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('file_manager_browse'));
-	$output .= '<button type="submit" class="js_upload field_upload field_button_admin hide_if_js">' . l('file_manager_upload') . '</span></span></button>';
+	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('file_manager_upload') . '</span></span></button>';
 	$output .= '</form>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 

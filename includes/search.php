@@ -48,7 +48,7 @@ function search_form()
 
 	$output .= form_element('hidden', '', '', 'search_post');
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button_search' . $class_disabled, 'search_post', l('search'), '', $code_disabled);
+	$output .= form_element('button', '', 'button_search' . $class_disabled, 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');

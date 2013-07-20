@@ -264,20 +264,20 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_large_admin button_backward', l('cancel'), $cancel_route);
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1 && $file_install)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm field_button_large_admin', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_large_admin', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (MODULES_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_large_admin button_forward', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

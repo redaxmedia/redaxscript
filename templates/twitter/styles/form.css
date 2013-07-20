@@ -27,7 +27,7 @@ textarea
 
 /* @section 2. default buttons */
 
-.field_button, .field_button_large, .field_button_search
+.button, .button_large, .button_search
 {
 	-moz-border-radius: 0.25em;
 	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -52,21 +52,21 @@ textarea
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
-.field_button_large
+.button_large
 {
 	font-size: 1.25em;
 }
 
 /* @section 2.1 hover effect */
 
-.field_button:hover, .field_button_large:hover, .field_button_search:hover
+.button:hover, .button_large:hover, .button_search:hover
 {
 	background: #e6e6e6;
 }
 
 /* @section 2.2 active effect */
 
-.field_button:active, .field_button_large:active, .field_button_search:active
+.button:active, .button_large:active, .button_search:active
 {
 	-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -76,7 +76,7 @@ textarea
 
 /* field button search */
 
-.field_button_search
+.button_search
 {
 	-moz-border-radius: 0 0.25em 0.25em 0;
 	-webkit-border-radius: 0 0.25em 0.25em 0;
@@ -157,7 +157,7 @@ textarea
 
 /* @section 5. disabled and readonly */
 
-.field_button.field_disabled, .field_button_large.field_disabled, .field_button_search.field_disabled, .field_search.field_disabled, .field_search.field_readonly, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
+.button.field_disabled, .button_large.field_disabled, .button_search.field_disabled, .field_search.field_disabled, .field_search.field_readonly, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
 {
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -195,12 +195,12 @@ textarea
 
 /* @section 7. space between elements */
 
-.box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
+.box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
 {
 	margin-top: 1em;
 }
 
-.field_button + .field_button, .field_button_large + .field_button_large, .field_text + .field_button
+.button + .button, .button_large + .button_large, .field_text + .button
 {
 	margin-left: 0.5em;
 }

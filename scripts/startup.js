@@ -91,8 +91,8 @@ r.plugins =
 				dialogTitle: 'js_title_dialog title_dialog title_dialog',
 				dialogBox: 'js_box_dialog box_dialog box_dialog',
 				dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay',
-				buttonOk: 'js_ok field_button',
-				buttonCancel: 'js_cancel field_button',
+				buttonOk: 'js_ok button',
+				buttonCancel: 'js_cancel button',
 				fieldPrompt: 'js_prompt field_text'
 			},
 			suffix:

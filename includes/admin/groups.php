@@ -27,7 +27,7 @@ function admin_groups_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_plus', l('group_new'), 'admin/new/groups');
+		$output .= anchor_element('internal', '', 'button_admin button_plus', l('group_new'), 'admin/new/groups');
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -233,20 +233,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_large_admin button_backward', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm field_button_large_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_large_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_large_admin button_forward', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

@@ -466,7 +466,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if ($action && $route)
 	{
-		$output .= anchor_element('internal', '', 'js_forward_notification field_button' . $suffix, $action, $route);
+		$output .= anchor_element('internal', '', 'js_forward_notification button' . $suffix, $action, $route);
 	}
 	$output .= '</div>';
 	echo $output;

@@ -61,11 +61,11 @@ function admin_contents_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if ($table_new == 1)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_plus', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
+		$output .= anchor_element('internal', '', 'button_admin button_plus', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
 	}
 	if (TABLE_EDIT == 1 && $num_rows)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_sort', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'button_admin button_sort', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -710,20 +710,20 @@ function admin_contents_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward field_button_first', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_large_admin button_backward button_first', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (TABLE_DELETE == 1 && $id)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm field_button_large_admin field_button_second', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_large_admin button_second', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (TABLE_NEW == 1 || TABLE_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward field_button_last', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_large_admin button_forward button_last', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

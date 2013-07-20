@@ -1,7 +1,7 @@
 <h2 class="title_content">Form elements</h2>
 
 
-<h3 class="title_content_sub">.form_search > .field_search ~ .field_button_search</h3>
+<h3 class="title_content_sub">.form_search > .field_search ~ .button_search</h3>
 
 <?php search(); ?>
 
@@ -27,8 +27,8 @@
 			<li><?php echo form_element('textarea', 'field_textarea', 'field_textarea', '', '', '.field_textarea'); ?></li>
 		</ul>
 	</fieldset>
-	<?php echo form_element('button', '', 'field_button_large', '', l('submit')); ?>
-	<?php echo form_element('button', '', 'field_button', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'button_large', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'button', '', l('submit')); ?>
 </form>
 
 
@@ -53,8 +53,8 @@
 			<li><?php echo form_element('textarea', 'field_textarea_disabled', 'field_textarea field_disabled', '', '', '.field_textarea', 'disabled="disabled"'); ?></li>
 		</ul>
 	</fieldset>
-	<?php echo form_element('button', '', 'field_button_large field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-	<?php echo form_element('button', '', 'field_button field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
+	<?php echo form_element('button', '', 'button_large field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
+	<?php echo form_element('button', '', 'button field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
 </form>
 
 
@@ -92,8 +92,8 @@
 				<li><?php echo form_element('textarea', 'field_textarea_admin', 'field_textarea_admin', '', '', '.field_textarea_admin'); ?></li>
 			</ul>
 		</fieldset>
-		<?php echo form_element('button', '', 'field_button_large_admin', '', l('submit')); ?>
-		<?php echo form_element('button', '', 'field_button_admin', '', l('submit')); ?>
+		<?php echo form_element('button', '', 'button_large_admin', '', l('submit')); ?>
+		<?php echo form_element('button', '', 'button_admin', '', l('submit')); ?>
 	</form>
 
 
@@ -118,8 +118,8 @@
 				<li><?php echo form_element('textarea', 'field_textarea_admin_disabled', 'field_textarea_admin field_disabled', '', '', '.field_textarea_admin', 'disabled="disabled"'); ?></li>
 			</ul>
 		</fieldset>
-		<?php echo form_element('button', '', 'field_button_large_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-		<?php echo form_element('button', '', 'field_button_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
+		<?php echo form_element('button', '', 'button_large_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
+		<?php echo form_element('button', '', 'button_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
 	</form>
 
 

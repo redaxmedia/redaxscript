@@ -200,7 +200,7 @@ function seo_tube_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button_search', 'seo_tube_post', l('seo_tube_load'));
+	$output .= form_element('button', '', 'button_search', 'seo_tube_post', l('seo_tube_load'));
 	$output .= '</form>';
 	echo $output;
 }

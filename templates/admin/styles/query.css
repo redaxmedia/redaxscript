@@ -26,7 +26,7 @@
 
 @media screen and (max-width: 30em)
 {
-	.field_select_admin, .field_text_admin, .field_textarea_small_admin
+	.button_admin, .field_select_admin, .field_text_admin, .field_textarea_small_admin
 	{
 		width: 100%;
 	}
