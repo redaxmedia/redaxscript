@@ -90,7 +90,7 @@ textarea
 
 /* @section 2.3 icons */
 
-.button_admin.button_plus:before, .button_admin.button_sort:before, .button_large_admin.button_cancel:before, .button_large_admin.button_delete:before, .button_large_admin.button_submit:before
+.button_admin.button_plus:before, .button_large_admin.button_cancel:before, .button_large_admin.button_submit:before
 {
 	font: 1em 'icon admin';
 	margin-right: 0.5em;
@@ -103,19 +103,9 @@ textarea
 	content: 'f';
 }
 
-.button_admin.button_sort:before
-{
-	content: 'a';
-}
-
 .button_large_admin.button_cancel:before
 {
 	content: 'e';
-}
-
-.button_large_admin.button_delete:before
-{
-	content: 'r';
 }
 
 .button_large_admin.button_submit:before
