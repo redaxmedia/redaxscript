@@ -52,11 +52,6 @@
 
 @media screen and (min-width: 50em)
 {
-	.sidebar .description_dock_admin
-	{
-		display: none;
-	}
-
 	.list_panel_admin a, .list_panel_admin span
 	{
 		line-height: 3.5em;
@@ -79,11 +74,16 @@
 		width: 20%;
 	}
 
-	.list_panel_admin ul
+	.list_panel_children_admin
 	{
 		background: url('templates/admin/images/carbon.png') #232323;
 		position: absolute;
 		width: 100%;
+	}
+
+	.sidebar .description_dock_admin
+	{
+		display: none;
 	}
 }
 
