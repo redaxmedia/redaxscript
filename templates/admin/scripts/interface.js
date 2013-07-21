@@ -83,44 +83,27 @@
 			var panelList = $(this),
 				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
-				panelChildren = panelItemAll.children('ul'),
+				panelChildren = panelItem.children('ul'),
 				timeoutEnter, timeoutLeave;
 
-			/* listen for mouseenter */
+			/* listen for mouseenter and touchstart */
 
-			panelItem.on('mouseenter', function ()
-			{
-				var thatItem = $(this),
-					itemFloat = thatItem.css('float');
-
-				/* item is floated */
-
-				if (itemFloat === 'left' || itemFloat === 'right')
-				{
-					clearTimeout(timeoutEnter);
-					timeoutEnter = setTimeout(function ()
-					{
-						thatItem.click();
-					}, options.duration);
-				}
-			});
-
-			/* listen for click and touchover */
-
-			panelItemAll.on('click touchover', function ()
+			panelItemAll.on('mouseenter touchover', function ()
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul');
 
-				/* handle click and touchover */
+				clearTimeout(timeoutEnter);
+				timeoutEnter = setTimeout(function ()
+				{
+					panelChildren.stop(0).slideUp(options.duration);
+					thatChildren.stop(0).slideDown(options.duration);
 
-				panelChildren.stop(0).slideUp(options.duration).height('auto');
-				thatChildren.stop(0).slideDown(options.duration);
+					/* active item */
 
-				/* active item */
-
-				panelItem.removeClass('item_active');
-				thatItem.addClass('item_active');
+					panelItemAll.removeClass('item_active');
+					thatItem.addClass('item_active');
+				}, options.duration);
 			});
 
 			/* listen for mouseenter and mouseleave */
@@ -134,7 +117,7 @@
 					{
 						panelChildren.stop(0).slideUp(options.duration, function ()
 						{
-							panelItem.removeClass('item_active');
+							panelItemAll.removeClass('item_active');
 						});
 					}, options.timeout);
 				}
