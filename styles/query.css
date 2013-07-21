@@ -52,14 +52,8 @@
 
 /* @section 4. screen max 30em */
 
-@media screen and (max-width: 30em)
+@media screen and (max-width: 29.999em)
 {
-	.dialog
-	{
-		margin: -5em 0 0 -40%;
-		width: 80%;
-	}
-
 	a.button, a.button_large
 	{
 		display: block;
@@ -68,6 +62,12 @@
 	button.button, button.button_large, .field_select, .field_text, .field_textarea_small
 	{
 		width: 100%;
+	}
+
+	.dialog
+	{
+		margin: -5em 0 0 -40%;
+		width: 80%;
 	}
 
 	.player

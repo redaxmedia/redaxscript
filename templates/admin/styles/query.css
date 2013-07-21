@@ -4,7 +4,8 @@
  * 1. screen max 40em
  * 2. screen max 30em
  * 3. screen min 50em
- * 4. rtl direction
+ * 4. screen min 30em
+ * 5. rtl direction
  *
  * @since 2.0
  *
@@ -22,29 +23,9 @@
 	}
 }
 
-/* @section 2. screen min 30em */
+/* @section 2. screen max 30em */
 
-@media screen and (min-width: 30em)
-{
-	.button_admin + .button_admin, .button_large_admin + .button_large_admin, .field_text_admin + .button_admin
-	{
-		margin-left: 0.5em;
-	}
-
-	.form_admin .button_cancel, .form_admin .button_delete
-	{
-		float: left;
-	}
-
-	.form_admin .button_submit
-	{
-		float: right;
-	}
-}
-
-/* @section 3. screen max 30em */
-
-@media screen and (max-width: 30em)
+@media screen and (max-width: 29.999em)
 {
 	.button_admin + .button_admin, .button_large_admin + .button_large_admin
 	{
@@ -60,14 +41,14 @@
 	{
 		width: 100%;
 	}
-
+	
 	.description_dock_admin, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
 	{
 		display: none;
 	}
 }
 
-/* @section 4. screen min 50em */
+/* @section 3. screen min 50em */
 
 @media screen and (min-width: 50em)
 {
@@ -103,6 +84,26 @@
 		background: url('templates/admin/images/carbon.png') #232323;
 		position: absolute;
 		width: 100%;
+	}
+}
+
+/* @section 4. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.button_admin + .button_admin, .button_large_admin + .button_large_admin, .field_text_admin + .button_admin
+	{
+		margin-left: 0.5em;
+	}
+
+	.form_admin .button_cancel, .form_admin .button_delete
+	{
+		float: left;
+	}
+
+	.form_admin .button_submit
+	{
+		float: right;
 	}
 }
 

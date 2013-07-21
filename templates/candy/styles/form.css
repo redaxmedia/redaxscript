@@ -9,8 +9,9 @@
  *    3.1 hover effect
  *    3.2 focus effect
  * 4. textarea dimensions
- * 5. form default
- * 6. space between elements
+ * 5. search elements
+ * 6. form default
+ * 7. space between elements
  *
  * @since 2.0
  *
@@ -55,6 +56,13 @@ textarea
 .button_large
 {
 	font-size: 1.25em
+}
+
+/* fix underline */
+
+a.button, a.button:hover, a.button_large, a.button_large:hover
+{
+	text-decoration: none;
 }
 
 /* @section 2.1 hover effect */
