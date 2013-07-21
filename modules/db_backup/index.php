@@ -94,7 +94,7 @@ function db_backup_center_start()
 
 function db_backup_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('db_backup_database_backup')) . '<ul>';
+	$output = '<li>' . anchor_element('internal', '', '', l('db_backup_database_backup')) . '<ul class="js_list_panel_children_admin list_panel_children_admin">';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_download'), 'admin/db-backup/download') . '</li>';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_send_email'), 'admin/db-backup/send') . '</li>';
 	$output .= '</ul></li>';
