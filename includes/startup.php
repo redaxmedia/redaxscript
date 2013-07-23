@@ -231,6 +231,7 @@ function startup()
 	define('MY_ENGINE', get_user_agent(2));
 	define('MY_SYSTEM', get_user_agent(3));
 	define('MY_MOBILE', get_user_agent(4));
+	define('MY_TABLET', get_user_agent(5));
 	if (LOGGED_IN == TOKEN)
 	{
 		define('MY_ID', $_SESSION[ROOT . '/my_id']);
