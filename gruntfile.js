@@ -182,17 +182,9 @@ module.exports = function (grunt)
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
 			},
-			fetchUpstream:
-			{
-				command: 'git fetch upstream'
-			},
-			mergeUpstream:
-			{
-				command: 'git merge upstream/master'
-			},
 			pullUpstream:
 			{
-				command: 'git pull'
+				command: 'git pull upstream master'
 			},
 			removeUpstream:
 			{
@@ -262,6 +254,6 @@ module.exports = function (grunt)
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('eol', ['lineending']);
 	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
-	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:pullUpstream', 'shell:removeUpstream']);
+	grunt.registerTask('sync', ['shell:addUpstream', 'shell:pullUpstream', 'shell:removeUpstream']);
 	grunt.registerTask('optimize', ['toc', 'eol', 'img', 'smushit', 'svgo']);
 };
