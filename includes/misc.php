@@ -34,15 +34,15 @@ function b($name = '')
 
 	/* agent */
 
-	$b['agent_browsers'] = 'chrome, firefox, konqueror, msie, netscape, opera, safari, seamonkey';
-	$b['agent_engines'] = 'gecko, khtml, presto, trident, webkit';
+	$b['agent_browsers'] = 'blazer, bolt, chrome, comodo, dolfin, fennec, firefox, konqueror, msie, netfront, netscape, opera, safari, seamonkey, skyfire, teashark';
+	$b['agent_engines'] = 'gecko, presto, trident, webkit';
 	$b['agent_systems'] = 'linux, mac, windows';
-	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, palm, symbian, phone, mobile';
+	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, palm, symbian, windows phone, mobile';
 	$b['agent_tablets'] = 'android, ipad, kindle, playbook, sch-i800, xoom, tablet';
 
 	/* constant */
 
-	$b['constant_public'] = 'TOKEN, LOGGED_IN, FIRST_PARAMETER, FIRST_SUB_PARAMETER, SECOND_PARAMETER, SECOND_SUB_PARAMETER, THIRD_PARAMETER, THIRD_SUB_PARAMETER, ADMIN_PARAMETER, TABLE_PARAMETER, ID_PARAMETER, ALIAS_PARAMETER, LAST_PARAMETER, LAST_SUB_PARAMETER, FIRST_TABLE, SECOND_TABLE, THIRD_TABLE, LAST_TABLE, FULL_ROUTE, FULL_TOP_ROUTE, MY_IP, MY_BROWSER, MY_BROWSER_VERSION, MY_ENGINE, MY_SYSTEM, MY_MOBILE';
+	$b['constant_public'] = 'TOKEN, LOGGED_IN, FIRST_PARAMETER, FIRST_SUB_PARAMETER, SECOND_PARAMETER, SECOND_SUB_PARAMETER, THIRD_PARAMETER, THIRD_SUB_PARAMETER, ADMIN_PARAMETER, TABLE_PARAMETER, ID_PARAMETER, ALIAS_PARAMETER, LAST_PARAMETER, LAST_SUB_PARAMETER, FIRST_TABLE, SECOND_TABLE, THIRD_TABLE, LAST_TABLE, FULL_ROUTE, FULL_TOP_ROUTE, MY_IP, MY_BROWSER, MY_BROWSER_VERSION, MY_ENGINE, MY_SYSTEM, MY_MOBILE, MY_TABLET';
 	$output = $b[$name];
 	return $output;
 }
