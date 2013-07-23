@@ -30,6 +30,10 @@ function helper_class()
 	{
 		$output .= 'mobile ' . MY_MOBILE;
 	}
+	else if (MY_TABLET)
+	{
+		$output .= 'tablet ' . MY_TABLET;
+	}
 	else
 	{
 		$output .= 'desktop';
