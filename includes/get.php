@@ -245,18 +245,15 @@ function get_user_agent($mode = '')
 			if ($mode == 1)
 			{
 				$output = floor(substr($user_agent, strpos($user_agent, $value) + strlen($value) + 1, 3));
-
-				/* opera fallback */
-
-				if ($output > 100)
-				{
-					$output = substr($output, 0, 1);
-				}
 			}
+
+			/* else output string */
+
 			else
 			{
 				$output = $value;
 			}
+			break;
 		}
 	}
 	if ($output)
