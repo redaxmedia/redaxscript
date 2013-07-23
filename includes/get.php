@@ -224,6 +224,9 @@ function get_user_agent($mode = '')
 		case 4:
 			$type = 'agent_mobiles';
 			break;
+		case 5:
+			$type = 'agent_tablets';
+			break;
 		default:
 			$type = 'agent_browsers';
 			break;
