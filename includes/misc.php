@@ -34,7 +34,7 @@ function b($name = '')
 
 	/* agent */
 
-	$b['agent_browsers'] = 'chrome, konqueror, msie, netscape, opera, safari';
+	$b['agent_browsers'] = 'chrome, firefox, konqueror, msie, netscape, opera, safari';
 	$b['agent_engines'] = 'gecko, khtml, presto, trident, webkit';
 	$b['agent_systems'] = 'linux, macintosh, windows';
 	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, palm, mobile';

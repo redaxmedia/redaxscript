@@ -28,11 +28,19 @@ function helper_class()
 	}
 	if (MY_MOBILE)
 	{
-		$output .= 'mobile ' . MY_MOBILE;
+		$output .= 'mobile';
+		if (MY_MOBILE != 'mobile')
+		{
+			$output .= ' ' . MY_MOBILE;
+		}
 	}
 	else if (MY_TABLET)
 	{
-		$output .= 'tablet ' . MY_TABLET;
+		$output .= 'tablet';
+		if (MY_TABLET != 'tablet')
+		{
+			$output .= ' ' . MY_TABLET;
+		}
 	}
 	else
 	{
