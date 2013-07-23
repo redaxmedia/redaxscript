@@ -34,10 +34,10 @@ function b($name = '')
 
 	/* agent */
 
-	$b['agent_browsers'] = 'blazer, bolt, chrome, comodo, dolfin, fennec, firefox, konqueror, msie, netfront, netscape, opera, safari, seamonkey, skyfire, teashark';
+	$b['agent_browsers'] = 'blazer, bolt, chrome, comodo, dolfin, fennec, firefox, konqueror, msie, netfront, netscape, opera, safari, seamonkey, skyfire, teashark, tizen';
 	$b['agent_engines'] = 'gecko, presto, trident, webkit';
-	$b['agent_systems'] = 'linux, mac, windows';
-	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, palm, symbian, windows phone, mobile';
+	$b['agent_systems'] = 'beos, freebsd, linux, mac, openbsd, sunos, windows';
+	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, motorola, palm, symbian, windows phone, mobile';
 	$b['agent_tablets'] = 'android, ipad, kindle, playbook, sch-i800, xoom, tablet';
 
 	/* constant */
