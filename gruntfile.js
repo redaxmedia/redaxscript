@@ -190,6 +190,10 @@ module.exports = function (grunt)
 			{
 				command: 'git merge upstream/master'
 			},
+			pullUpstream:
+			{
+				command: 'git pull'
+			},
 			removeUpstream:
 			{
 				command: 'git remote remove upstream'
@@ -258,6 +262,6 @@ module.exports = function (grunt)
 	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
 	grunt.registerTask('eol', ['lineending']);
 	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
-	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
+	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:pullUpstream', 'shell:removeUpstream']);
 	grunt.registerTask('optimize', ['toc', 'eol', 'img', 'smushit', 'svgo']);
 };
