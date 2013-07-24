@@ -73,8 +73,8 @@ body
 
 .list_header, .title_website
 {
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 /* @section 5. grid elements */
