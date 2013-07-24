@@ -229,7 +229,7 @@ function startup()
 	define('MY_BROWSER', get_user_agent(0));
 	define('MY_BROWSER_VERSION', get_user_agent(1));
 	define('MY_ENGINE', get_user_agent(2));
-	define('MY_SYSTEM', get_user_agent(3));
+	define('MY_DESKTOP', get_user_agent(3));
 	define('MY_MOBILE', get_user_agent(4));
 	define('MY_TABLET', get_user_agent(5));
 
