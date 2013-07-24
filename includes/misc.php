@@ -36,7 +36,7 @@ function b($name = '')
 
 	$b['agent_browsers'] = 'chrome, firefox, konqueror, msie, netscape, opera, safari';
 	$b['agent_engines'] = 'gecko, khtml, presto, trident, webkit';
-	$b['agent_systems'] = 'linux, macintosh, windows';
+	$b['agent_desktops'] = 'bsd, linux, macintosh, solaris, windows';
 	$b['agent_mobiles'] = 'android, blackberry, ipod, iphone, palm, mobile';
 	$b['agent_tablets'] = 'android, ipad, kindle, xoom, tablet';
 
