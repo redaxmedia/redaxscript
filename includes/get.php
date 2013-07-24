@@ -219,7 +219,7 @@ function get_user_agent($mode = '')
 			$type = 'agent_engines';
 			break;
 		case 3:
-			$type = 'agent_systems';
+			$type = 'agent_desktops';
 			break;
 		case 4:
 			$type = 'agent_mobiles';
@@ -245,6 +245,13 @@ function get_user_agent($mode = '')
 			if ($mode == 1)
 			{
 				$output = floor(substr($user_agent, strpos($user_agent, $value) + strlen($value) + 1, 3));
+
+				/* fallback */
+
+				if ($output > 100)
+				{
+					$output = substr($output, 0, 1);
+				}
 			}
 
 			/* else output string */
