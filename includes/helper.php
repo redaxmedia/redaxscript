@@ -42,9 +42,9 @@ function helper_class()
 			$output .= ' ' . MY_TABLET;
 		}
 	}
-	else
+	else if (MY_DESKTOP)
 	{
-		$output .= 'desktop';
+		$output .= 'desktop ' . MY_DESKTOP;
 	}
 	if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
 	{
