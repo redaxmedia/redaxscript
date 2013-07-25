@@ -83,7 +83,7 @@
 			var panelList = $(this),
 				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
-				panelChildren = panelItem.children('ul'),
+				panelChildren = panelItemAll.children('ul'),
 				timeoutEnter, timeoutLeave;
 
 			/* listen for mouseenter and touchstart */
@@ -91,12 +91,13 @@
 			panelItemAll.on('mouseenter touchover', function ()
 			{
 				var thatItem = $(this),
-					thatChildren = thatItem.children('ul');
+					thatChildren = thatItem.children('ul'),
+					thatRelated = thatItem.closest('li.js_item_panel_admin').find('ul');
 
 				clearTimeout(timeoutEnter);
 				timeoutEnter = setTimeout(function ()
 				{
-					panelChildren.stop(0).slideUp(options.duration);
+					panelChildren.not(thatRelated).stop(0).slideUp(options.duration);
 					thatChildren.stop(0).slideDown(options.duration);
 
 					/* active item */
