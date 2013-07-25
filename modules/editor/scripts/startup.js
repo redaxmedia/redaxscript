@@ -22,10 +22,10 @@ r.modules.editor =
 			editor: 'div.js_editor',
 			editorPreview: 'div.js_editor_preview',
 			editorToolbar: 'div.js_toolbar',
-			editorDivider: 'span.js_editor_divider',
-			editorControl: 'span.js_editor_control',
-			editorSourceCode: 'span.js_editor_control_source_code',
-			editorWysiwyg: 'span.js_editor_control_wysiwyg'
+			editorDivider: 'a.js_editor_divider',
+			editorControl: 'a.js_editor_control',
+			editorSourceCode: 'a.js_editor_control_source_code',
+			editorWysiwyg: 'a.js_editor_control_wysiwyg'
 		},
 		classString:
 		{

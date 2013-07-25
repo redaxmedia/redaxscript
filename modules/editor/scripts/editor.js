@@ -96,21 +96,21 @@
 
 					if (name === 'divider')
 					{
-						$('<span class="' + options.classString.editorDivider + '"></span>').appendTo(editor.toolbar);
+						$('<a class="' + options.classString.editorDivider + '"></a>').appendTo(editor.toolbar);
 					}
 
 					/* append toggle */
 
 					else if (name === 'toggle')
 					{
-						editor.toggler = control = $('<span class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
+						editor.toggler = control = $('<a class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></a>').appendTo(editor.toolbar);
 					}
 
 					/* append serveral controls */
 
 					else if (data)
 					{
-						control = $('<span class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
+						control = $('<a class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></a>').appendTo(editor.toolbar);
 					}
 
 					/* store control data */
@@ -152,7 +152,7 @@
 					{
 						document.execCommand(command, 0, 0);
 
-						/* fix mozilla styles from preview */
+						/* remove firefox styles from preview */
 
 						if (r.constants.MY_BROWSER === 'firefox')
 						{
@@ -286,7 +286,6 @@
 					{
 						message: l.editor_select_text_first + l.point
 					});
-					return false;
 				}
 			};
 
