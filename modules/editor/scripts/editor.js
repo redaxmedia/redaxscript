@@ -122,17 +122,24 @@
 				}
 			}();
 
-			/* setup control events */
+			/* handle control events */
 
-			editor.toolbar.children(options.element.editorControl).on('mousedown', function ()
+			editor.toolbar.children(options.element.editorControl).on('click touchstart', function (event)
 			{
 				var control = $(this),
 					data = control.data('data');
 
-				/* call methode */
+				/* call related methode */
 
 				editor[data.methode](data.command, data.message, data.value);
 				editor.post();
+
+				/* vibrate on touchstart */
+
+				if (event.type === 'touchstart' && r.support.vibrate === true && typeof options.vibrate === 'number')
+				{
+					window.navigator.vibrate(options.vibrate);
+				}
 			});
 
 			/* general action call */
