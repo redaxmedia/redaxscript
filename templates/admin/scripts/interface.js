@@ -60,6 +60,13 @@
 					{
 						dockDescription.text('');
 					}
+
+					/* vibrate on touchstart */
+
+					if (event.type === 'touchstart' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
+					}
 				});
 			});
 		});
@@ -81,14 +88,13 @@
 		return this.each(function ()
 		{
 			var panelList = $(this),
-				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
 				timeoutEnter, timeoutLeave;
 
 			/* listen for mouseenter and touchstart */
 
-			panelItemAll.on('mouseenter touchover', function ()
+			panelItemAll.on('mouseenter touchstart', function (event)
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul'),
@@ -104,6 +110,13 @@
 
 					panelItemAll.removeClass('item_active');
 					thatItem.addClass('item_active');
+
+					/* vibrate on touchstart */
+
+					if (event.type === 'touchstart' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
+					}
 				}, options.duration);
 			});
 

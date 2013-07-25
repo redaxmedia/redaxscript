@@ -71,7 +71,7 @@
 
 				if (typeof r.modules.dawanda.storage[key] === 'string')
 				{
-					r.modules.dawanda.data[key] = JSON.parse(r.modules.dawanda.storage[key]);
+					r.modules.dawanda.data[key] = window.JSON.parse(r.modules.dawanda.storage[key]);
 				}
 			}
 
@@ -117,7 +117,7 @@
 
 							if (r.support.webStorage === true && r.support.nativeJSON === true)
 							{
-								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.modules.dawanda.data[key]));
+								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(r.modules.dawanda.data[key]));
 							}
 
 							/* callback if data */

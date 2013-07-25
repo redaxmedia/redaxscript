@@ -23,7 +23,8 @@ r.plugins.adminDock =
 			dockLink: 'a.js_link_dock_admin',
 			dockDescription: 'span.js_description_dock_admin',
 			dockDescriptionHTML: '<span class="js_description_dock_admin description_dock_admin"></span>'
-		}
+		},
+		vibrate: 100
 	}
 };
 
@@ -36,6 +37,7 @@ r.plugins.adminPanel =
 	options:
 	{
 		timeout: 1000,
-		duration: 300
+		duration: 300,
+		vibrate: 100
 	}
 };

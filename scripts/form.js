@@ -155,6 +155,13 @@
 					{
 						fieldRequiredAll.filter('.js_note_error').first().focus();
 					}
+
+					/* vibrate on submit */
+
+					if (event.type === 'submit' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
+					}
 					event.preventDefault();
 				}
 
@@ -308,7 +315,7 @@
 						noteRequired.stop(1).slideUp(options.duration);
 					}, options.timeout);
 				}
-				
+
 			});
 		});
 	};
