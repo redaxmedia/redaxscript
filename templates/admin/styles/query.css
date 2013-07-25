@@ -41,7 +41,7 @@
 	{
 		width: 100%;
 	}
-	
+
 	.description_dock_admin, .item_control_admin.item_enable, .item_control_admin.item_disable, .item_control_admin.item_publish, .item_control_admin.item_unpublish
 	{
 		display: none;

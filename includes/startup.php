@@ -231,9 +231,9 @@ function startup()
 	define('MY_ENGINE', get_user_agent(2));
 	define('MY_MOBILE', get_user_agent(4));
 	define('MY_TABLET', get_user_agent(5));
-	
+
 	/* if mobile or tablet */
-	
+
 	if (MY_MOBILE || MY_TABLET)
 	{
 		define('MY_DESKTOP', '');
