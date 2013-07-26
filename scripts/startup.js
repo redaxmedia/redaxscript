@@ -127,7 +127,7 @@ r.plugins =
 				fieldRequired: 'div.js_required, input.js_required, select.js_required, textarea.js_required'
 			},
 			autoFocus: true,
-			vibrate: 600
+			vibrate: 300
 		}
 	},
 	checkSearch:

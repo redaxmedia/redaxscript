@@ -52,7 +52,7 @@ r.modules.editor =
 			backend: true,
 			frontend: false
 		},
-		vibrate: 200
+		vibrate: 100
 	},
 	controls:
 	{
