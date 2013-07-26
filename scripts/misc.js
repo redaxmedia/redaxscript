@@ -67,6 +67,7 @@
 			$(this).on('keydown', function (event)
 			{
 				var adminDock = $(options.element.adminDock),
+					adminPanel = $(options.element.adminPanel),
 					buttonSubmit = $(options.element.buttonSubmit),
 					buttonOk = $(options.element.buttonOk),
 					buttonCancel = $(options.element.buttonCancel);
@@ -92,6 +93,13 @@
 					else if (event.which === 79)
 					{
 						buttonOk.click();
+					}
+
+					/* toggle admin panel */
+
+					else if (event.which === 80)
+					{
+						adminPanel.toggle();
 					}
 
 					/* trigger submit action */
