@@ -158,7 +158,7 @@
 
 					/* vibrate on submit */
 
-					if (event.type === 'submit' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -358,7 +358,7 @@
 		{
 			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
 		}
-		if (r.plugins.checkSearch.startup && r.support.input.placeholder === true)
+		if (r.plugins.checkSearch.startup && r.support.input.placeholder)
 		{
 			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
 		}

@@ -261,7 +261,7 @@ r.support =
 	}(document),
 	cookies: function (nav)
 	{
-		if (nav.cookieEnabled === true)
+		if (nav.cookieEnabled)
 		{
 			return true;
 		}
@@ -401,7 +401,7 @@ r.support =
 	}(window),
 	webStorage: function (win, nav)
 	{
-		if (nav.cookieEnabled === true && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
+		if (nav.cookieEnabled && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
 		{
 			return true;
 		}
@@ -450,7 +450,7 @@ r.startup = function (doc, html)
 
 	/* support classes */
 
-	if (r.support.canvas === true)
+	if (r.support.canvas)
 	{
 		html.className += ' canvas';
 	}
@@ -458,7 +458,7 @@ r.startup = function (doc, html)
 	{
 		html.className += ' no_canvas';
 	}
-	if (r.support.svg === true)
+	if (r.support.svg)
 	{
 		html.className += ' svg';
 	}

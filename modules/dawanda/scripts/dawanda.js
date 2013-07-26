@@ -63,7 +63,7 @@
 
 			/* fetch from storage */
 
-			if (r.support.webStorage === true && r.support.nativeJSON === true)
+			if (r.support.webStorage && r.support.nativeJSON)
 			{
 				r.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
@@ -115,7 +115,7 @@
 
 							/* set related storage */
 
-							if (r.support.webStorage === true && r.support.nativeJSON === true)
+							if (r.support.webStorage && r.support.nativeJSON)
 							{
 								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(r.modules.dawanda.data[key]));
 							}

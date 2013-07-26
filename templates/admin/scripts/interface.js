@@ -63,7 +63,7 @@
 
 					/* vibrate on touchstart */
 
-					if (event.type === 'touchstart' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -113,7 +113,7 @@
 
 					/* vibrate on touchstart */
 
-					if (event.type === 'touchstart' && r.support.vibrate === true && typeof options.vibrate === 'number')
+					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
