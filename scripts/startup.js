@@ -237,6 +237,17 @@ r.modules = {};
 
 r.support =
 {
+	battery: function (nav)
+	{
+		if ('battery' in nav)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}(window.navigator),
 	canvas: function (doc)
 	{
 		if (typeof doc.createElement('canvas').getContext === 'function')
