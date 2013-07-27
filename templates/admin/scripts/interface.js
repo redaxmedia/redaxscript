@@ -98,7 +98,8 @@
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul'),
-					thatRelated = thatItem.closest('li.js_item_panel_admin').find('ul');
+					thatClosest = thatItem.closest(options.itemClosest),
+					thatRelated = thatClosest.find('ul');
 
 				clearTimeout(timeoutEnter);
 				timeoutEnter = setTimeout(function ()
