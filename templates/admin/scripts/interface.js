@@ -103,11 +103,23 @@
 					thatRelated = thatClosest.find('ul'),
 					panelFloat = panelItem.css('float');
 
-				/* premature teminate mouseenter */
+				/* exception for mobile panel */
 
-				if (panelFloat === 'none' && event.type === 'mouseenter')
+				if (panelFloat === 'none')
 				{
-					return false;
+					/* premature teminate mouseenter */
+
+					if (event.type === 'mouseenter')
+					{
+						return false;
+					}
+
+					/* else handle click and touchstart */
+
+					else
+					{
+						thatChildren = thatItem.find('ul');
+					}
 				}
 
 				/* timeout enhanced slide */
