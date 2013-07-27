@@ -88,18 +88,29 @@
 		return this.each(function ()
 		{
 			var panelList = $(this),
+				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
 				timeoutEnter, timeoutLeave;
 
-			/* listen for mouseenter and touchstart */
+			/* listen for click, mouseenter and touchmove */
 
-			panelItemAll.on('mouseenter touchstart', function (event)
+			panelItemAll.on('click mouseenter touchmove', function (event)
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul'),
-					thatClosest = thatItem.closest(options.itemClosest),
-					thatRelated = thatClosest.find('ul');
+					thatClosest = thatItem.closest(options.element.itemClosest),
+					thatRelated = thatClosest.find('ul'),
+					panelFloat = panelItem.css('float');
+
+				/* premature teminate slide */
+
+				if (panelFloat === 'none' && event.type === 'mouseenter')
+				{
+					return false;
+				}
+
+				/* slide elements */
 
 				clearTimeout(timeoutEnter);
 				timeoutEnter = setTimeout(function ()
@@ -112,9 +123,9 @@
 					panelItemAll.removeClass('item_active');
 					thatItem.addClass('item_active');
 
-					/* vibrate on touchstart */
+					/* vibrate on touchmove */
 
-					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'touchmove' && r.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}

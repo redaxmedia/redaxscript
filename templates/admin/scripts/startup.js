@@ -36,7 +36,10 @@ r.plugins.adminPanel =
 	selector: 'ul.js_list_panel_admin',
 	options:
 	{
-		itemClosest: 'li.js_item_panel_admin',
+		element:
+		{
+			itemClosest: 'li.js_item_panel_admin'
+		},
 		timeout: 1000,
 		duration: 300,
 		vibrate: 100
