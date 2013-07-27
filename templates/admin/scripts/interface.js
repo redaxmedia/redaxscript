@@ -95,22 +95,22 @@
 
 			/* listen for click, mouseenter and touchmove */
 
-			panelItemAll.on('click mouseenter touchmove', function (event)
+			panelItemAll.on('click mouseenter touchstart', function (event)
 			{
 				var thatItem = $(this),
 					thatChildren = thatItem.children('ul'),
-					thatClosest = thatItem.closest(options.element.itemClosest),
+					thatClosest = thatItem.closest(options.element.panelItem),
 					thatRelated = thatClosest.find('ul'),
 					panelFloat = panelItem.css('float');
 
-				/* premature teminate slide */
+				/* premature teminate mouseenter */
 
 				if (panelFloat === 'none' && event.type === 'mouseenter')
 				{
 					return false;
 				}
 
-				/* slide elements */
+				/* timeout enhanced slide */
 
 				clearTimeout(timeoutEnter);
 				timeoutEnter = setTimeout(function ()
@@ -123,9 +123,9 @@
 					panelItemAll.removeClass('item_active');
 					thatItem.addClass('item_active');
 
-					/* vibrate on touchmove */
+					/* vibrate on touchstart */
 
-					if (event.type === 'touchmove' && r.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -136,6 +136,8 @@
 
 			panelList.on('mouseenter mouseleave', function (event)
 			{
+				/* timeout enhanced slide */
+
 				if (event.type === 'mouseleave')
 				{
 					clearTimeout(timeoutEnter);

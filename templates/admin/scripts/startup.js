@@ -38,7 +38,7 @@ r.plugins.adminPanel =
 	{
 		element:
 		{
-			itemClosest: 'li.js_item_panel_admin'
+			panelItem: 'li.js_item_panel_admin'
 		},
 		timeout: 1000,
 		duration: 300,
