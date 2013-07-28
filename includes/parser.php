@@ -216,9 +216,9 @@ class Redaxscript_Parser
 		{
 			if ($key % 2)
 			{
-				/* json decode */
+				/* decode to array */
 
-				$json = json_decode($value);
+				$json = json_decode($value, true);
 
 				/* catch function output */
 
