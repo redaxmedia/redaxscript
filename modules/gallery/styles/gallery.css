@@ -69,6 +69,9 @@
 
 .gallery_meta
 {
+	-moz-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
 	background: #000;
 	background: rgba(0, 0, 0, 0.5);
 	bottom: 0;
@@ -78,6 +81,7 @@
 	padding: 1em 0;
 	position: absolute;
 	text-align: center;
+	transition: opacity 0.3s;
 	width: 100%;
 	z-index: 1200;
 }
@@ -86,7 +90,7 @@
 
 .desktop .gallery_meta
 {
-	display: none;
+	opacity: 0;
 }
 
 /* @section 4.1 children elements */
@@ -143,20 +147,24 @@
 
 .gallery_next:hover span, .gallery_previous:hover span
 {
-	display: block;
+	opacity: 1;
 }
 
 /* @section 5.1 children elements */
 
 .gallery_next span, .gallery_previous span
 {
+	-moz-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
 	background: #000;
 	background: rgba(0, 0, 0, 0.5);
 	color: #fff;
-	display: none;
 	font: bold 1em arial;
 	margin-top: 3em;
+	opacity: 0;
 	padding: 1em;
+	transition: opacity 0.3s;
 	white-space: nowrap;
 }
 

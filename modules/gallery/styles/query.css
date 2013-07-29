@@ -37,6 +37,6 @@
 {
 	.desktop .gallery:hover .gallery_meta
 	{
-		display: block;
+		opacity: 1;
 	}
 }
