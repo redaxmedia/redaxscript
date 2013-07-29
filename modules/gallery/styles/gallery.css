@@ -202,16 +202,9 @@
 .image_gallery
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
-}
-
-.image_gallery:hover
-{
-	-moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
-	-webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
 }
