@@ -1,9 +1,9 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 40em
- * 2. screen max 30em
- * 3. screen max 20em
+ * 1. screen max 30em
+ * 2. screen max 20em
+ * 3. screen min 40em
  *
  * @since 2.0
  *
@@ -11,32 +11,32 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
-
-@media screen and (max-width: 40em)
-{
-	.gallery:hover .gallery_meta
-	{
-		display: none;
-	}
-}
-
-/* @section 2. screen max 30em */
+/* @section 1. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
 	.gallery_next span, .gallery_previous span
 	{
-		font-size: 1em;
+		font-size: 0.875em;
 	}
 }
 
-/* @section 3. screen max 20em */
+/* @section 2. screen max 20em */
 
 @media screen and (max-width: 20em)
 {
 	.gallery_next span, .gallery_previous span
 	{
 		font-size: 0.75em;
+	}
+}
+
+/* @section 3. screen min 40em */
+
+@media screen and (min-width: 40em)
+{
+	.desktop .gallery:hover .gallery_meta
+	{
+		display: block;
 	}
 }

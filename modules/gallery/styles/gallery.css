@@ -69,10 +69,11 @@
 
 .gallery_meta
 {
-	background: #fff;
+	background: #000;
+	background: rgba(0, 0, 0, 0.5);
 	bottom: 0;
-	color: #666;
-	font: 1em georgia, arial;
+	color: #fff;
+	font: bold 1em arial;
 	left: 0;
 	padding: 1em 0;
 	position: absolute;
@@ -86,11 +87,6 @@
 .desktop .gallery_meta
 {
 	display: none;
-}
-
-.desktop .gallery:hover .gallery_meta
-{
-	display: block;
 }
 
 /* @section 4.1 children elements */
@@ -154,10 +150,11 @@
 
 .gallery_next span, .gallery_previous span
 {
-	background: #fff;
-	color: #666;
+	background: #000;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
 	display: none;
-	font: 1.25em georgia, arial;
+	font: bold 1em arial;
 	margin-top: 3em;
 	padding: 1em;
 	white-space: nowrap;
@@ -165,17 +162,17 @@
 
 .gallery_next span
 {
-	-moz-border-radius: 1.5em 0 0 1.5em;
-	-webkit-border-radius: 1.5em 0 0 1.5em;
-	border-radius: 1.5em 0 0 1.5em;
+	-moz-border-radius: 0.5em 0 0 0.5em;
+	-webkit-border-radius: 0.5em 0 0 0.5em;
+	border-radius: 0.5em 0 0 0.5em;
 	float: right;
 }
 
 .gallery_previous span
 {
-	-moz-border-radius: 0 1.5em 1.5em 0;
-	-webkit-border-radius: 0 1.5em 1.5em 0;
-	border-radius: 0 1.5em 1.5em 0;
+	-moz-border-radius: 0 0.5em 0.5em 0;
+	-webkit-border-radius: 0 0.5em 0.5em 0;
+	border-radius: 0 0.5em 0.5em 0;
 	float: left;
 }
 
@@ -197,23 +194,16 @@
 .image_gallery
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
+	-moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
+	-webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
 	border-radius: 0.25em;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .image_gallery:hover
 {
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-}
-
-.image_gallery_preload
-{
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
+	-moz-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 3px rgba(0, 0, 0, 0.6);
 }
