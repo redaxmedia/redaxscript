@@ -9,7 +9,7 @@
  * 6. list tab default
  *    6.1 javascript enabled
  * 7. list search result
- * 8. tooltip default
+ * 8. tooltip
  * 9. space between elements
  *
  * @since 2.0
@@ -256,9 +256,9 @@
 	text-decoration: underline;
 }
 
-/* @section 8. tooltip default */
+/* @section 8. tooltip */
 
-.tooltip_default
+.tooltip
 {
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
@@ -274,7 +274,20 @@
 	margin-left: 1em;
 	top: -0.625em;
 	padding: 1em;
+}
+
+/* default */
+
+.tooltip_default
+{
 	width: 20em;
+}
+
+/* alternative */
+
+.tooltip_alternative
+{
+	white-space: nowrap;
 }
 
 /* @section 9. space between elements */

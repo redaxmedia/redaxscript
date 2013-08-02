@@ -12,7 +12,7 @@
  * 7. list tab default
  *    7.1 javascript enabled
  * 8. list search result
- * 9. tooltip default
+ * 9. tooltip
  *
  * @since 2.0
  *
@@ -425,9 +425,9 @@
 	text-decoration: underline;
 }
 
-/* @section 9. tooltip default */
+/* @section 9. tooltip */
 
-.tooltip_default
+.tooltip
 {
 	-moz-border-radius: 0.25em;
 	-moz-box-shadow: 0 0 3px #c6c6c6;
@@ -444,5 +444,18 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	top: -0.625em;
 	padding: 0.75em;
+}
+
+/* default */
+
+.tooltip_default
+{
 	width: 20em;
+}
+
+/* alternative */
+
+.tooltip_alternative
+{
+	white-space: nowrap;
 }

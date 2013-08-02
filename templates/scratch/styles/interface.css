@@ -3,7 +3,7 @@
  *
  * 1. list breadcrumb and list pagination
  * 2. list default
- * 3. tooltip default
+ * 3. tooltip
  *
  * @since 2.0
  *
@@ -26,9 +26,9 @@
 	margin: 1em 1.5em;
 }
 
-/* @section 3. tooltip default */
+/* @section 3. tooltip */
 
-.tooltip_default
+.tooltip
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
@@ -41,5 +41,18 @@
 	margin-left: 1em;
 	top: -0.625em;
 	padding: 1em;
+}
+
+/* default */
+
+.tooltip_default
+{
 	width: 20em;
+}
+
+/* alternative */
+
+.tooltip_alternative
+{
+	white-space: nowrap;
 }
