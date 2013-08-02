@@ -28,7 +28,7 @@
  @font-face
 {
 	font-family: 'icon default';
-	src: url('templates/default/fonts/icon.woff') format('woff');
+	src: url('templates/default/fonts/icon.woff') format('woff'), url('templates/default/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. tag styling */

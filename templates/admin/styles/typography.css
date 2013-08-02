@@ -19,7 +19,7 @@
  @font-face
 {
 	font-family: 'icon admin';
-	src: url('templates/admin/fonts/icon.woff') format('woff');
+	src: url('templates/admin/fonts/icon.woff') format('woff'), url('templates/admin/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. title accordion admin */
