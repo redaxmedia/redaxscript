@@ -49,7 +49,7 @@ textarea
 	cursor: pointer;
 	display: inline-block;
 	font: 1em/2.375em arial;
-	padding: 0 0.5em;
+	padding: 0 0.75em;
 	text-align: center;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }

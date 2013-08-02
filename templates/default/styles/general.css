@@ -123,14 +123,14 @@ body
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
 }
 
 .line, .line_space
 {
-	margin-bottom: 1.5rem;
-	margin-top: 1.5rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
 }
 
 /* @section 10. wrapper */
