@@ -219,17 +219,32 @@ class Redaxscript_Parser
 				/* decode to array */
 
 				$json = json_decode($value, true);
-
-				/* catch function output */
-
 				ob_start();
-				foreach ($json as $function => $parameter)
+
+				/* call with parameter */
+
+				if (is_array($json))
+				{
+					foreach ($json as $function => $parameter)
+					{
+						/* validate allowed functions */
+
+						if (!in_array($function, $this->_forbiddenFunctions))
+						{
+							call_user_func_array($function, $parameter);
+						}
+					}
+				}
+
+				/* else simple call */
+
+				else
 				{
 					/* validate allowed functions */
 
-					if (!in_array($function, $this->_forbiddenFunctions))
+					if (!in_array($value, $this->_forbiddenFunctions))
 					{
-						call_user_func_array($function, $parameter);
+						call_user_func($value);
 					}
 				}
 				$parts[$key] = ob_get_clean();
