@@ -260,7 +260,6 @@ function get_user_agent($mode = '')
 			{
 				$output = $value;
 			}
-			break;
 		}
 	}
 	if ($output)
