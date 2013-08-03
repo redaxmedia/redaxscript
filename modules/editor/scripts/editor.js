@@ -315,8 +315,7 @@
 			editor.convertToHTML = function ()
 			{
 				var output = editor.preview.html(),
-					eol = options.eol,
-					eolFix = new RegExp(eol + eol, 'gi');
+					eol = options.eol;
 
 				/* pseudo tags */
 
@@ -346,7 +345,7 @@
 					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
 					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
 					output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
-					output = output.replace(eolFix, eol);
+					output = output.replace(window.RegExp(eol + eol, 'g'), eol);
 				}
 				return output;
 			};

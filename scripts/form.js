@@ -252,9 +252,10 @@
 					selectionBefore = textareaValue.slice(0, selectionStart),
 					selectionAfter = textareaValue.slice(selectionEnd),
 					eol = options.eol,
-					indent = options.indent;
+					indent = options.indent,
+					counter = 0;
 
-				if (typeof selectionStart === 'number')
+				if ('selectionStart' in textarea)
 				{
 					if (event.which === 9)
 					{
@@ -262,16 +263,57 @@
 
 						if (event.shiftKey)
 						{
-							textarea.value = selectionBefore.replace(indent, '') + selectionText + selectionAfter;
-							textarea.selectionStart = selectionStart - indent.length;
+							/* if selection */
+
+							if (selectionText.length)
+							{
+								textarea.value = selectionBefore + selectionText.replace(window.RegExp(eol + indent, 'g'), function ()
+								{
+									counter++;
+									return eol;
+								}).replace(indent, function ()
+								{
+									counter++;
+									return '';
+								}) + selectionAfter;
+								textarea.selectionEnd = selectionEnd - (counter * indent.length);
+								textarea.selectionStart = selectionStart;
+							}
+
+							/* else without selection */
+
+							else if (textareaValue.slice(selectionStart - indent.length).indexOf(indent) === 0)
+							{
+								textarea.value = textareaValue.slice(0, selectionStart - indent.length) + textareaValue.slice(selectionStart);
+								textarea.selectionStart = textarea.selectionEnd = selectionStart - indent.length;
+							}
 						}
 
 						/* add indent */
 
 						else
 						{
-							textarea.value = selectionBefore + indent + selectionText + selectionAfter;
-							textarea.selectionStart = selectionStart + indent.length;
+							/* if selection */
+
+							if (selectionText.length)
+							{
+								textarea.value = selectionBefore + indent + selectionText.replace(window.RegExp(eol, 'g'), function ()
+								{
+									counter++;
+									return eol + indent;
+								}) + selectionAfter;
+								counter++;
+								textarea.selectionEnd = selectionEnd + (counter * indent.length);
+								textarea.selectionStart = selectionStart;
+							}
+
+							/* else without selection */
+
+							else
+							{
+								textarea.value = selectionBefore + indent + selectionText + selectionAfter;
+								textarea.selectionStart = textarea.selectionEnd = selectionStart + indent.length;
+							}
 						}
 						event.preventDefault();
 					}

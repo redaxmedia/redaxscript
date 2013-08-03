@@ -148,7 +148,7 @@ r.plugins =
 	enableIndent:
 	{
 		startup: true,
-		selector: 'form textarea.js_editor, form textarea.js_enable_tab',
+		selector: 'form textarea.js_editor, form textarea.js_enable_indent',
 		options:
 		{
 			eol: '\n',
