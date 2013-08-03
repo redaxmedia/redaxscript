@@ -245,29 +245,34 @@
 			$(this).on('keydown', function (event)
 			{
 				var textarea = this,
-					textareaValue = this.value,
-					selection = document.selection,
+					textareaValue = textarea.value,
 					selectionStart = textarea.selectionStart,
-					selectionRange;
+					selectionEnd = textarea.selectionEnd,
+					selectionText = textareaValue.slice(selectionStart, selectionEnd),
+					selectionBefore = textareaValue.slice(0, selectionStart),
+					selectionAfter = textareaValue.slice(selectionEnd);
 
-				if (event.which === 9)
+				if (typeof selectionStart === 'number')
 				{
-					if (typeof selectionStart === 'number')
+					if (event.which === 9)
 					{
-						textarea.value = textareaValue.slice(0, selectionStart) + options.insertion + textareaValue.slice(textarea.selectionEnd);
-						textarea.selectionEnd = textarea.selectionStart = selectionStart + options.insertion.length;
-					}
+						/* remove indent */
 
-					/* else fallback */
+						if (event.shiftKey)
+						{
+							textarea.value = selectionBefore.replace(options.insertion, '') + selectionText + selectionAfter;
+							textarea.selectionStart = selectionStart - options.insertion.length;
+						}
 
-					else if (typeof selection === 'object')
-					{
-						selectionRange = selection.createRange();
-						selectionRange.text = options.insertion;
-						selectionRange.collapse(false);
-						selectionRange.select();
+						/* add indent */
+
+						else
+						{
+							textarea.value = selectionBefore + options.insertion + selectionText + selectionAfter;
+							textarea.selectionStart = selectionStart + options.insertion.length;
+						}
+						event.preventDefault();
 					}
-					event.preventDefault();
 				}
 			});
 		});
