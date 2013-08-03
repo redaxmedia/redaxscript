@@ -40,32 +40,30 @@
 			{
 				var textarea = this;
 
-				/* check limit */
+				/* resize on focus */
 
-				if (textarea.rows < options.limit)
+				if (event.type === 'focus')
 				{
-					/* resize on focus */
-
-					if (event.type === 'focus')
+					while (textarea.clientHeight < textarea.scrollHeight && textarea.rows < options.limit)
 					{
-						while (textarea.clientHeight < textarea.scrollHeight)
-						{
-							textarea.rows += options.summand++;
-						}
-					}
-
-					/* general resize */
-
-					while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-					{
-						textarea.rows -= 1;
-					}
-					while (textarea.clientHeight < textarea.scrollHeight)
-					{
-						textarea.rows += 1;
+						textarea.rows += options.summand++;
 					}
 				}
-			}).css('overflow', options.overflow).css('resize', 'none');
+
+				/* general resize */
+
+				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+				{
+					textarea.rows -= 1;
+				}
+				while (textarea.clientHeight < textarea.scrollHeight && textarea.rows < options.limit)
+				{
+					textarea.rows += 1;
+				}
+			}).css({
+				overflow: options.overflow,
+				resize: options.resize
+			});
 		});
 	};
 

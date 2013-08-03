@@ -69,6 +69,7 @@ r.plugins =
 		options:
 		{
 			overflow: 'hidden',
+			resize: 'none',
 			summand: 10,
 			limit: 1000
 		}
