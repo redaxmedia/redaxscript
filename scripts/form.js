@@ -289,7 +289,7 @@
 							}
 						}
 
-						/* add indent */
+						/* else add indent */
 
 						else
 						{
