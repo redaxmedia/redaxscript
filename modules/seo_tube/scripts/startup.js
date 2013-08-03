@@ -16,6 +16,8 @@ r.modules.seoTube =
 	startup: true,
 	options:
 	{
+		eol: '\n',
+		indent: '\t',
 		related:
 		{
 			title: '#title',

@@ -145,13 +145,14 @@ r.plugins =
 		startup: true,
 		selector: 'a.js_confirm'
 	},
-	enableTab:
+	enableIndent:
 	{
 		startup: true,
 		selector: 'form textarea.js_editor, form textarea.js_enable_tab',
 		options:
 		{
-			insertion: '\t'
+			eol: '\n',
+			indent: '\t'
 		}
 	},
 	forwardNotification:

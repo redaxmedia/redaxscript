@@ -4,7 +4,7 @@
  * 1. auto resize
  * 2. check required
  * 3. check search
- * 4. enable tab
+ * 4. enable indent
  * 5. note required
  * 6. unmask password
  * 7. startup
@@ -225,15 +225,15 @@
 		});
 	};
 
-	/* @section 4. enable tab */
+	/* @section 4. enable indent */
 
-	$.fn.enableTab = function (options)
+	$.fn.enableIndent = function (options)
 	{
 		/* extend options */
 
-		if (r.plugins.enableTab.options !== options)
+		if (r.plugins.enableIndent.options !== options)
 		{
-			options = $.extend({}, r.plugins.enableTab.options, options || {});
+			options = $.extend({}, r.plugins.enableIndent.options, options || {});
 		}
 
 		/* return this */
@@ -250,7 +250,9 @@
 					selectionEnd = textarea.selectionEnd,
 					selectionText = textareaValue.slice(selectionStart, selectionEnd),
 					selectionBefore = textareaValue.slice(0, selectionStart),
-					selectionAfter = textareaValue.slice(selectionEnd);
+					selectionAfter = textareaValue.slice(selectionEnd),
+					eol = options.eol,
+					indent = options.indent;
 
 				if (typeof selectionStart === 'number')
 				{
@@ -260,16 +262,16 @@
 
 						if (event.shiftKey)
 						{
-							textarea.value = selectionBefore.replace(options.insertion, '') + selectionText + selectionAfter;
-							textarea.selectionStart = selectionStart - options.insertion.length;
+							textarea.value = selectionBefore.replace(indent, '') + selectionText + selectionAfter;
+							textarea.selectionStart = selectionStart - indent.length;
 						}
 
 						/* add indent */
 
 						else
 						{
-							textarea.value = selectionBefore + options.insertion + selectionText + selectionAfter;
-							textarea.selectionStart = selectionStart + options.insertion.length;
+							textarea.value = selectionBefore + indent + selectionText + selectionAfter;
+							textarea.selectionStart = selectionStart + indent.length;
 						}
 						event.preventDefault();
 					}
@@ -367,9 +369,9 @@
 		{
 			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
 		}
-		if (r.plugins.enableTab.startup)
+		if (r.plugins.enableIndent.startup)
 		{
-			$(r.plugins.enableTab.selector).enableTab();
+			$(r.plugins.enableIndent.selector).enableIndent();
 		}
 		if (r.plugins.noteRequired.startup)
 		{

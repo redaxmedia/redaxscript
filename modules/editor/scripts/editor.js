@@ -315,7 +315,7 @@
 			editor.convertToHTML = function ()
 			{
 				var output = editor.preview.html(),
-					eol = '\n',
+					eol = options.eol,
 					eolFix = new RegExp(eol + eol, 'gi');
 
 				/* pseudo tags */

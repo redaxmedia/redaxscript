@@ -52,6 +52,7 @@ r.modules.editor =
 			backend: true,
 			frontend: false
 		},
+		eol: '\n',
 		vibrate: 100
 	},
 	controls:
