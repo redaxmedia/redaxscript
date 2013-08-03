@@ -48,12 +48,12 @@
 	-webkit-transition: padding 0.3s ease;
 	cursor: pointer;
 	float: left;
-	height: 3.25em;
+	height: 3.125em;
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	transition: padding 0.3s ease;
-	width: 3.5em;
+	width: 3.375em;
 }
 
 .editor_control:hover
