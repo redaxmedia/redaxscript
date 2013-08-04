@@ -19,7 +19,7 @@
  @font-face
 {
 	font-family: 'icon editor';
-	src: url('modules/editor/fonts/icon.woff') format('woff');
+	src: url('modules/editor/fonts/icon.woff') format('woff'), url('modules/editor/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. editor toolbar */
