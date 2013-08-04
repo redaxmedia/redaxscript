@@ -115,6 +115,7 @@ function db_backup_admin_panel_list_modules()
  * @category Modules
  * @author Henry Ruhs
  *
+ * @param string $d_name
  * @param integer $mode
  */
 
@@ -164,6 +165,7 @@ function db_backup_clean_date($input = '')
  * @category Modules
  * @author Henry Ruhs
  *
+ * @param string $d_name
  * @return string
  */
 
