@@ -17,12 +17,16 @@ function db_backup_render_start()
 	{
 		define('TITLE', l('db_backup_database_backup'));
 
+		/* config object */
+
+		$config = New Redaxscript_Config();
+
 		/* download database backup */
 
 		if (THIRD_PARAMETER == 'download')
 		{
 			define('RENDER_BREAK', 1);
-			db_backup(0);
+			db_backup($config->get('name'), 0);
 		}
 
 		/* send database backup */
@@ -34,7 +38,7 @@ function db_backup_render_start()
 			/* prepare body parts */
 
 			$urlLink = anchor_element('external', '', '', ROOT, ROOT);
-			$fileName = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
+			$fileName = $config->get('name') . '-' . db_backup_clean_date(NOW) . '.sql';
 
 			/* prepare mail inputs */
 
@@ -44,12 +48,12 @@ function db_backup_render_start()
 			$subject = l('db_backup_database_backup');
 			$bodyArray = array(
 				l('url') => $urlLink,
-				l('database') => d('name'),
+				l('database') => $config->get('name'),
 				'<br />',
 				l('message') => l('db_backup_save_attachment') . l('point')
 			);
 			$attachmentArray = array(
-				$fileName => db_backup(1)
+				$fileName => db_backup($config->get('name'), 1)
 			);
 
 			/* mail object */
@@ -114,18 +118,18 @@ function db_backup_admin_panel_list_modules()
  * @param integer $mode
  */
 
-function db_backup($mode = '')
+function db_backup($d_name = '', $mode = '')
 {
 	if ($mode == 0)
 	{
-		$file_name = d('name') . '_' . db_backup_clean_date(NOW) . '.sql';
+		$file_name = $d_name . '_' . db_backup_clean_date(NOW) . '.sql';
 		header('content-type: application/octet-stream');
 		header('content-disposition: attachment; filename="' . $file_name . '"');
 		echo db_backup_process();
 	}
 	else
 	{
-		return db_backup_process();
+		return db_backup_process($d_name);
 	}
 }
 
@@ -163,11 +167,15 @@ function db_backup_clean_date($input = '')
  * @return string
  */
 
-function db_backup_process()
+function db_backup_process($d_name = '')
 {
+	/* config object */
+
+	$config = New Redaxscript_Config();
+
 	/* query tables */
 
-	$query = 'SHOW TABLES FROM ' . d('name');
+	$query = 'SHOW TABLES FROM ' . $d_name;
 	$result = mysql_query($query);
 
 	/* collect backup output */
