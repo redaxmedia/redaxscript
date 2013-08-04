@@ -103,7 +103,7 @@
 					thatRelated = thatClosest.find('ul'),
 					panelFloat = panelItem.css('float');
 
-				/* exception for mobile panel */
+				/* exception for narrow panel */
 
 				if (panelFloat === 'none')
 				{
@@ -114,11 +114,11 @@
 						return false;
 					}
 
-					/* else handle click and touchstart */
+					/* else show nested list */
 
 					else
 					{
-						thatChildren = thatItem.find('ul');
+						thatChildren.find('ul').show();
 					}
 				}
 
