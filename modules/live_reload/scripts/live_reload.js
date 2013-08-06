@@ -28,8 +28,7 @@
 		var head = $('head'),
 			body = $('body'),
 			style = head.children('style[media="all"]'),
-			liveReloadBox = $('<div class="' + options.classString.liveReloadBox + '"></div>').appendTo(body),
-			noteBox = $('<div class="box_note note_info">' + l.live_reload_live_reload + '</div>').appendTo(liveReloadBox),
+			liveReloadBox = $('<div class="' + options.classString.liveReloadBox + '"></div>').hide().appendTo(body),
 			dataOld = '', intervalReload;
 
 		/* interval reload */
@@ -43,12 +42,12 @@
 				{
 					if (data === dataOld)
 					{
-						noteBox.removeClass('note_success').addClass('note_info').text(l.live_reload_live_reload);
+						liveReloadBox.html('<div class="box_note note_info">' + l.live_reload_live_reload + '</div>').toggle();
 					}
 					else if (dataOld.length)
 					{
 						style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-						noteBox.removeClass('note_info').addClass('note_success').text(l.live_reload_updated);
+						liveReloadBox.html('<div class="box_note note_success">' + l.live_reload_updated + '</div>').show();
 					}
 					dataOld = data;
 				}
