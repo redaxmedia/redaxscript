@@ -25,7 +25,7 @@
 			options = $.extend({}, r.modules.validator.options, options || {});
 		}
 
-		var parameter = '?doc=' + r.baseURL + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json',
+		var parameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json',
 			url = 'http://validator.nu/' + parameter;
 
 		/* request data */
@@ -62,13 +62,13 @@
 						/* collect output */
 
 						output += '<ul class="box_note note_' + type + '">';
-						output += '<li class="message_validator">' + message + '</li>';
+						output += '<li class="' + options.classString.validatorMessage + '">' + message + '</li>';
 
 						/* lines and columns */
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="description_validator">' + l.validator_from + l.colon + ' ';
+							output += '<li class="' + options.classString.validatorDescription + '">' + l.validator_from + l.colon + ' ';
 
 							/* first wording */
 
@@ -100,7 +100,7 @@
 
 				if (output)
 				{
-					$('<div class="box_validator">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
+					$('<div class="' + options.classString.validatorBox + '">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
 				}
 			}
 		});
