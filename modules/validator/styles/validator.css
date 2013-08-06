@@ -19,12 +19,12 @@
 	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 	background: #fff;
+	bottom: 1em;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 	font: 0.75em arial;
 	padding: 1em;
 	position: fixed;
 	right: 1em;
-	bottom: 1em;
 	z-index: 2000;
 }
 
