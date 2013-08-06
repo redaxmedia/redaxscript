@@ -25,14 +25,13 @@
 			options = $.extend({}, r.modules.validator.options, options || {});
 		}
 
-		var parameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json',
-			url = 'http://validator.nu/' + parameter;
+		var parameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
 		$.ajax(
 		{
-			url: url,
+			url: options.url + '/' + parameter,
 			dataType: 'json',
 			success: function (data)
 			{
