@@ -39,6 +39,8 @@
 					i = 0,
 					output = '';
 
+				/* handle messages */
+
 				if (messages.length)
 				{
 					for (i in messages)
