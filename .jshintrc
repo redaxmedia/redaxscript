@@ -4,7 +4,6 @@
 	"curly": true,
 	"eqeqeq": true,
 	"eqnull": true,
-	"es5": true,
 	"latedef": true,
 	"maxdepth": 5,
 	"maxparams": 5,

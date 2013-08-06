@@ -27,16 +27,16 @@
 		"grunt": "0.4.1",
 		"grunt-contrib-copy": "0.4.1",
 		"grunt-contrib-csslint": "0.1.2",
-		"grunt-contrib-jshint": "0.1.1",
-		"grunt-contrib-qunit": "0.2.0",
-		"grunt-contrib-watch": "0.2.0",
+		"grunt-contrib-jshint": "0.6.2",
+		"grunt-contrib-qunit": "0.2.2",
+		"grunt-contrib-watch": "0.5.1",
 		"grunt-htmlhint": "0.4.0",
-		"grunt-img": "0.1.6",
+		"grunt-img": "0.1.7",
 		"grunt-jsonlint": "1.0.0",
-		"grunt-phpcs": "0.1.1",
+		"grunt-phpcs": "0.2.0",
 		"grunt-lineending": "0.2.1",
-		"grunt-shell": "0.2.2",
-		"grunt-smushit": "0.4.0",
-		"svgo": "0.2.3"
+		"grunt-shell": "1.1.2",
+		"grunt-smushit": "1.1.2",
+		"svgo": "0.3.7"
 	}
 }
