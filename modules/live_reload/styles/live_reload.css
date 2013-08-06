@@ -1,0 +1,49 @@
+/**
+ * @tableofcontents
+ *
+ * 1. box live reload
+ *    1.1 screen min 50em
+ *    1.2 screen max 50em
+ *
+ * @since 2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box live reload */
+
+.box_live_reload
+{
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	background: #fff;
+	bottom: 1em;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	font: 0.75em arial;
+	left: 1em;
+	padding: 1em;
+	position: fixed;
+	text-align: center;
+	z-index: 2000;
+}
+
+/* @section 1.1 screen min 50em */
+
+@media screen and (min-width: 50em)
+{
+	.box_live_reload
+	{
+		width: 12.5em;
+	}
+}
+
+/* @section 1.2 screen max 50em */
+
+@media screen and (max-width: 50em)
+{
+	.box_live_reload
+	{
+		right: 1em;
+	}
+}
