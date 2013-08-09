@@ -71,6 +71,26 @@
 	{
 		float: left;
 		position: relative;
+
+	}
+
+	.list_panel_admin.c2 > li
+	{
+		width: 50%;
+	}
+
+	.list_panel_admin.c3 > li
+	{
+		width: 33.33%;
+	}
+
+	.list_panel_admin.c4 > li
+	{
+		width: 25%;
+	}
+
+	.list_panel_admin.c5 > li
+	{
 		width: 20%;
 	}
 

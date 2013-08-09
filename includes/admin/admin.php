@@ -57,8 +57,10 @@ function admin_panel_list()
 
 	/* collect contents output */
 
+	$counter = 2;
 	if ($contents_access)
 	{
+		$counter++;
 		$output = '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
@@ -83,6 +85,7 @@ function admin_panel_list()
 
 	if ($access_access)
 	{
+		$counter++;
 		$output .= '<li class="js_item_panel_admin item_panel_admin item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
 		if (MY_ID)
 		{
@@ -98,10 +101,6 @@ function admin_panel_list()
 		}
 		$output .= '</ul></li>';
 	}
-	else if (MY_ID)
-	{
-		$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
-	}
 
 	/* fetch modules list */
 
@@ -111,6 +110,7 @@ function admin_panel_list()
 
 	if ($system_access || $admin_panel_list_modules)
 	{
+		$counter++;
 		$output .= '<li class="js_item_panel_admin item_panel_admin item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
 		if ($modules_access == 1)
 		{
@@ -152,7 +152,7 @@ function admin_panel_list()
 
 	if ($output)
 	{
-		$output = '<ul class="js_list_panel_admin list_panel_admin">' . $output . '</ul>';
+		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');
