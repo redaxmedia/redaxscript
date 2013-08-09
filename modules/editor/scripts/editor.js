@@ -129,9 +129,9 @@
 				var control = $(this),
 					data = control.data('data');
 
-				/* call related methode */
+				/* call related method */
 
-				editor[data.methode](data.command, data.message, data.value);
+				editor[data.method](data.command, data.message, data.value);
 				editor.post();
 
 				/* vibrate on touchstart */
