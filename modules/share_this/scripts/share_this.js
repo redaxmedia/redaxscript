@@ -29,9 +29,9 @@
 
 		return this.each(function ()
 		{
-			/* listen for click */
+			/* open popup */
 
-			$(this).on('click', function (event)
+			$(this).on('click touchstart', function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),

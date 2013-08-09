@@ -81,7 +81,7 @@
 
 			/* @section 1.2 open gallery */
 
-			$(this).click(function (event)
+			$(this).on('click touchstart', function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),
@@ -221,7 +221,7 @@
 
 					/* next and previous */
 
-					buttonPrevious.add(buttonNext).on('click touchmove', function (event)
+					buttonPrevious.add(buttonNext).on('click touchstart', function (event)
 					{
 						var link = $(this),
 							checkButtonPrevious = link.hasClass('js_gallery_previous'),
@@ -352,7 +352,7 @@
 
 				/* remove gallery and overlay */
 
-				galleryOverlay.on('click touchmove', function ()
+				galleryOverlay.on('click touchstart', function ()
 				{
 					gallery.add(galleryOverlay).remove();
 					win.off();

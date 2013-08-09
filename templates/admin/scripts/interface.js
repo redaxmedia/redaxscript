@@ -93,7 +93,7 @@
 				panelChildren = panelItemAll.children('ul'),
 				timeoutEnter, timeoutLeave;
 
-			/* listen for click, mouseenter and touchmove */
+			/* listen for click, mouseenter and touchstart */
 
 			panelItemAll.on('click mouseenter touchstart', function (event)
 			{
