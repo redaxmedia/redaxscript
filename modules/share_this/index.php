@@ -65,11 +65,11 @@ function share_this($route = '')
 	{
 		$output = '<div class="wrapper_share_this clear_fix"><ul class="list_share_this">';
 		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_facebook', 'Facebook', 'facebook.com/sharer.php?u=' . $route, '', $code . ' data-height="280"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_google', 'Google', 'plusone.google.com/_/+1/confirm?url=' . $route, '', $code . ' data-height="450"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_twitter', 'Twitter', 'twitter.com/share?url=' . $route, '', $code . ' data-height="460"') . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_google', 'Google', 'plusone.google.com/_/+1/confirm?url=' . $route, '', $code) . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_twitter', 'Twitter', 'twitter.com/share?url=' . $route, '', $code . ' data-height="340"') . '</li>';
 		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_pinterest', 'Pinterest', 'pinterest.com/pin/create/button/?url=' . $route, '', $code . ' data-height="500" data-width="800"') . '</li>';
 		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_tumblr', 'Tumblr', 'tumblr.com/share', '', $code) . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_linkedin', 'Linkedin', 'linkedin.com/shareArticle?url=' . $route, '', $code . ' data-height="450" data-width="850"') . '</li>';
+		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_linkedin', 'Linkedin', 'linkedin.com/shareArticle?url=' . $route, '', $code . ' data-width="850"') . '</li>';
 		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_stumbleupon', 'Stumbleupon', 'stumbleupon.com/submit?url=' . $route, '', $code . ' data-width="850"') . '</li>';
 		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_delicious', 'Delicious', 'del.icio.us/post?url=' . $route, '', $code . ' data-height="380"') . '</li>';
 		$output .= '</ul></div>';

@@ -17,7 +17,7 @@ r.modules.shareThis =
 	selector: 'a.js_link_share_this ',
 	options:
 	{
-		height: 400,
+		height: 450,
 		menubar: 0,
 		name: 'Share This',
 		resizable: 0,
