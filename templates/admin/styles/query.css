@@ -74,6 +74,11 @@
 
 	}
 
+	.list_panel_admin.c1 > li
+	{
+		width: 100%;
+	}
+
 	.list_panel_admin.c2 > li
 	{
 		width: 50%;
