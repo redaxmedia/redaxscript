@@ -17,48 +17,43 @@ function admin_panel_list()
 
 	/* define access variables */
 
-	switch (true)
+	if (CATEGORIES_NEW == 1 || CATEGORIES_EDIT == 1 || CATEGORIES_DELETE == 1)
 	{
-		case CATEGORIES_NEW == 1:
-		case CATEGORIES_EDIT == 1:
-		case CATEGORIES_DELETE == 1:
-			$categories_access = 1;
-		case ARTICLES_NEW == 1:
-		case ARTICLES_EDIT == 1:
-		case ARTICLES_DELETE == 1:
-			$articles_access = 1;
-		case EXTRAS_NEW == 1:
-		case EXTRAS_EDIT == 1:
-		case EXTRAS_DELETE == 1:
-			$extras_access = 1;
-		case COMMENTS_NEW == 1:
-		case COMMENTS_EDIT == 1:
-		case COMMENTS_DELETE == 1:
-			$comments_access = 1;
-			$contents_access = 1;
-		case USERS_NEW == 1:
-		case USERS_EDIT == 1:
-		case USERS_DELETE == 1:
-			$users_access = 1;
-		case GROUPS_NEW == 1:
-		case GROUPS_EDIT == 1:
-		case GROUPS_DELETE == 1:
-			$groups_access = 1;
-			$access_access = 1;
-		case MODULES_INSTALL == 1:
-		case MODULES_EDIT == 1:
-		case MODULES_UNINSTALL == 1:
-			$modules_access = 1;
-		case SETTINGS_EDIT == 1:
-			$settings_access = 1;
-			$system_access = 1;
-			break;
+		$categories_access = $contents_access = 1;
+	}
+	if (ARTICLES_NEW == 1 || ARTICLES_EDIT == 1 || ARTICLES_DELETE == 1)
+	{
+		$articles_access = $contents_access = 1;
+	}
+	if (EXTRAS_NEW == 1 || EXTRAS_EDIT == 1 || EXTRAS_DELETE == 1)
+	{
+		$extras_access = $contents_access = 1;
+	}
+	if (COMMENTS_NEW == 1 || COMMENTS_EDIT == 1 || COMMENTS_DELETE == 1)
+	{
+		$comments_access = $contents_access = 1;
+	}
+	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_DELETE == 1)
+	{
+		$users_access = $access_access = 1;
+	}
+	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1 || GROUPS_DELETE == 1)
+	{
+		$groups_access = $access_access = 1;
+	}
+	if (MODULES_INSTALL == 1 || MODULES_EDIT == 1 || MODULES_UNINSTALL == 1)
+	{
+		$modules_access = $system_access = 1;
+	}
+	if (SETTINGS_EDIT == 1)
+	{
+		$settings_access = $system_access = 1;
 	}
 
 	/* collect contents output */
 
 	$counter = 2;
-	if ($contents_access)
+	if ($contents_access == 1)
 	{
 		$counter++;
 		$output = '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
