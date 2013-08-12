@@ -150,7 +150,7 @@
 			win.test('enableIndent', function ()
 			{
 				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableIndent().appendTo(fixture),
-					expect = r.plugins.enableIndent.options.insertion,
+					expect = r.plugins.enableIndent.options.indent,
 					result = textarea.val(),
 					keydown = $.Event('keydown');
 
