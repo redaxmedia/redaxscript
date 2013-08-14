@@ -7,7 +7,7 @@
 			"package":
 			{
 				"name": "tocgen",
-				"version": "2.2",
+				"version": "2.2.1",
 				"source":
 				{
 					"url": "https://github.com/redaxmedia/tocgen.git",
