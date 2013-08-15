@@ -80,7 +80,6 @@
 .list_header a:hover, .list_header .item_active a
 {
 	color: #fff;
-	text-decoration: none;
 }
 
 .list_header li
@@ -131,11 +130,6 @@
 	padding: 0.75em 1em;
 }
 
-.list_pagination a:hover
-{
-	text-decoration: none;
-}
-
 .list_pagination a:hover, .list_pagination span
 {
 	background: #f5f5f5;
@@ -157,7 +151,6 @@
 .list_sidebar a
 {
 	display: block;
-	text-decoration: none;
 }
 
 .list_sidebar a:hover
@@ -206,11 +199,6 @@
 {
 	font: 1em/2.75em arial;
 	padding: 0 1em;
-}
-
-.list_tab_default a:hover
-{
-	text-decoration: none;
 }
 
 /* @section 6.1 javascript enabled */

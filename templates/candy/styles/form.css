@@ -58,13 +58,6 @@ textarea
 	font-size: 1.25em
 }
 
-/* fix underline */
-
-a.button, a.button:hover, a.button_large, a.button_large:hover
-{
-	text-decoration: none;
-}
-
 /* @section 2.1 hover effect */
 
 .button:hover, .button_large:hover, .button_search:hover
@@ -93,7 +86,6 @@ a.button, a.button:hover, a.button_large, a.button_large:hover
 	background: linear-gradient(bottom, #3b3b3b, #303030);
 	box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	position: relative;
-	text-decoration: none;
 	top: 1px;
 }
 

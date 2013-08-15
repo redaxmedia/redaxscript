@@ -58,7 +58,6 @@
 .list_header > li > a
 {
 	padding: 0 0.5em;
-	text-decoration: none;
 }
 
 .list_header > .item_active > a
@@ -124,6 +123,7 @@
 .list_footer a:hover
 {
 	color: #666;
+	text-decoration: underline;
 }
 
 .list_footer li
@@ -218,7 +218,7 @@
 
 .list_sidebar a:hover
 {
-	color: #fff;
+	text-decoration: underline;
 }
 
 .list_sidebar li

@@ -59,12 +59,11 @@ textarea
 	font-size: 1.25em;
 }
 
-/* fix underline and color */
+/* fix color */
 
 a.button:hover, a.button_large:hover
 {
 	color: #333;
-	text-decoration: none;
 }
 
 /* @section 2.1 hover effect */
