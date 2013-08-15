@@ -147,15 +147,19 @@
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
 	border-radius: 0.125em;
-	display: inline-block;
-	margin-left: 1em;
+	float: left;
+}
+
+.list_header > li + li
+{
+	margin-left: 0.5em;
 }
 
 .list_header > li:before
 {
 	content: '˅';
 	font: 0.875em 'icon default';
-	margin-right: 0.125em;
+	margin-right: 0.5em;
 	vertical-align: middle;
 }
 
