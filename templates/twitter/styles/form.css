@@ -61,7 +61,7 @@ textarea
 
 /* fix underline and color */
 
-a.button, a.button:hover, a.button_large, a.button_large:hover
+a.button:hover, a.button_large:hover
 {
 	color: #333;
 	text-decoration: none;
@@ -147,8 +147,6 @@ a.button, a.button:hover, a.button_large, a.button_large:hover
 	-webkit-border-radius: 0 0.25em 0.25em 0;
 	border-radius: 0 0.25em 0.25em 0;
 	border-left-width: 0;
-	position: relative;
-	top: -1px;
 	width: 30%;
 }
 
@@ -158,6 +156,12 @@ a.button, a.button:hover, a.button_large, a.button_large:hover
 	-webkit-border-radius: 0.25em 0 0 0.25em;
 	border-radius: 0.25em 0 0 0.25em;
 	width: 70%;
+}
+
+.button_search, .field_search
+{
+	height: 2rem;
+	vertical-align: top;
 }
 
 /* @section 6. disabled and readonly */

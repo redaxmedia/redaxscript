@@ -73,7 +73,7 @@
 {
 	color: #999;
 	line-height: 3.5em;
-	padding: 0 0.5em;
+	padding: 0 2em;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
 }
 
@@ -86,7 +86,6 @@
 .list_header li
 {
 	display: inline-block;
-	margin-right: 0.5em;
 }
 
 .list_header li:last-child
@@ -168,7 +167,7 @@
 
 .list_sidebar li
 {
-	line-height: 2.25em;
+	line-height: 3em;
 }
 
 .list_sidebar .item_active > a, .list_sidebar .item_active > a:hover
