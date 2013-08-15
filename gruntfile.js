@@ -10,21 +10,50 @@ module.exports = function (grunt)
 		{
 			scripts:
 			{
-				files: ['<%=jshint.base%>', '<%=jshint.modules%>', '<%=jshint.templates%>'],
-				tasks: ['jshint']
+				files:
+				[
+					'<%=jshint.dependency%>',
+					'<%=jshint.base%>',
+					'<%=jshint.modules%>',
+					'<%=jshint.templates%>'
+				],
+				tasks:
+				[
+					'jshint'
+				]
 			},
 			styles:
 			{
-				files: ['<%=csslint.base.src%>', '<%=csslint.modules.src%>', '<%=csslint.templates.src%>'],
-				tasks: ['csslint']
+				files:
+				[
+					'<%=csslint.base.src%>',
+					'<%=csslint.modules.src%>',
+					'<%=csslint.templates.src%>'
+				],
+				tasks:
+				[
+					'csslint'
+				]
 			}
 		},
 		jshint:
 		{
-			dependency: ['gruntfile.js'],
-			base: ['scripts/*.js'],
-			modules: ['modules/*/scripts/*.js'],
-			templates: ['templates/*/scripts/*.js'],
+			dependency:
+			[
+				'gruntfile.js'
+			],
+			base:
+			[
+				'scripts/*.js'
+			],
+			modules:
+			[
+				'modules/*/scripts/*.js'
+			],
+			templates:
+			[
+				'templates/*/scripts/*.js'
+			],
 			options:
 			{
 				jshintrc: '.jshintrc'
@@ -32,7 +61,11 @@ module.exports = function (grunt)
 		},
 		jsonlint:
 		{
-			dependency: ['composer.json', 'package.json']
+			dependency:
+			[
+				'composer.json',
+				'package.json'
+			]
 		},
 		qunit:
 		{
@@ -40,14 +73,20 @@ module.exports = function (grunt)
 			{
 				options:
 				{
-					urls: ['http://develop.redaxscript.com/qunit.default']
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.default'
+					]
 				}
 			},
 			zepto:
 			{
 				options:
 				{
-					urls: ['http://develop.redaxscript.com/qunit.zepto']
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.zepto'
+					]
 				}
 			}
 		},
@@ -55,15 +94,25 @@ module.exports = function (grunt)
 		{
 			base:
 			{
-				src: ['styles/*.css', '!styles/webkit.css']
+				src:
+				[
+					'styles/*.css',
+					'!styles/webkit.css'
+				]
 			},
 			modules:
 			{
-				src: ['modules/*/styles/*.css']
+				src:
+				[
+					'modules/*/styles/*.css'
+				]
 			},
 			templates:
 			{
-				src: ['templates/*/styles/*.css']
+				src:
+				[
+					'templates/*/styles/*.css'
+				]
 			},
 			options:
 			{
@@ -74,11 +123,17 @@ module.exports = function (grunt)
 		{
 			modules:
 			{
-				src: ['modules/**/*.phtml']
+				src:
+				[
+					'modules/**/*.phtml'
+				]
 			},
 			templates:
 			{
-				src: ['templates/**/*.phtml']
+				src:
+				[
+					'templates/**/*.phtml'
+				]
 			},
 			options:
 			{
@@ -116,7 +171,12 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['styles/*.css', 'modules/*/styles/*.css', 'templates/*/styles/*.css'],
+						src:
+						[
+							'styles/*.css',
+							'modules/*/styles/*.css',
+							'templates/*/styles/*.css'
+						],
 						expand: true
 					}
 				]
@@ -126,7 +186,12 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['*.js', 'scripts/*.js', 'modules/*/scripts/*.js', 'templates/*/scripts/*.js'],
+						src:
+						[
+							'scripts/*.js',
+							'modules/*/scripts/*.js',
+							'templates/*/scripts/*.js'
+						],
 						expand: true
 					}
 				]
@@ -136,7 +201,11 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['modules/**/*.phtml', 'templates/**/*.phtml'],
+						src:
+						[
+							'modules/**/*.phtml',
+							'templates/**/*.phtml'
+						],
 						expand: true
 					}
 				]
@@ -146,7 +215,13 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['*.php', 'includes/**/*.php', 'languages/*.php', 'modules/**/*.php'],
+						src:
+						[
+							'*.php',
+							'includes/**/*.php',
+							'languages/*.php',
+							'modules/**/*.php'
+						],
 						expand: true
 					}
 				]
@@ -202,7 +277,10 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['ruleset.xml'],
+						src:
+						[
+							'ruleset.xml'
+						],
 						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxscript/'
 					}
 				]
@@ -212,22 +290,34 @@ module.exports = function (grunt)
 		{
 			modules:
 			{
-				src: ['modules/*/images/*']
+				src:
+				[
+					'modules/*/images/*'
+				]
 			},
 			templates:
 			{
-				src: ['templates/*/images/*']
+				src:
+				[
+					'templates/*/images/*'
+				]
 			}
 		},
 		smushit:
 		{
 			modules:
 			{
-				src: ['<%=img.modules.src%>']
+				src:
+				[
+					'<%=img.modules.src%>'
+				]
 			},
 			templates:
 			{
-				src: ['<%=img.templates.src%>']
+				src:
+				[
+					'<%=img.templates.src%>'
+				]
 			}
 		}
 	});
@@ -249,11 +339,46 @@ module.exports = function (grunt)
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint', 'jsonlint', 'csslint', 'htmlhint', 'phplint']);
-	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
-	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
-	grunt.registerTask('eol', ['lineending']);
-	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
-	grunt.registerTask('sync', ['shell:addUpstream', 'shell:pullUpstream', 'shell:removeUpstream']);
-	grunt.registerTask('optimize', ['toc', 'eol', 'img', 'smushit', 'svgo']);
+	grunt.registerTask('default',
+	[
+		'jshint',
+		'jsonlint',
+		'csslint',
+		'htmlhint',
+		'phplint'
+	]);
+	grunt.registerTask('phplint',
+	[
+		'copy:ruleset',
+		'phpcs'
+	]);
+	grunt.registerTask('toc',
+	[
+		'shell:tocBase',
+		'shell:tocModules',
+		'shell:tocTemplates'
+	]);
+	grunt.registerTask('eol',
+	[
+		'lineending'
+	]);
+	grunt.registerTask('svgo',
+	[
+		'shell:svgoTemplates',
+		'shell:svgoModules'
+	]);
+	grunt.registerTask('sync',
+	[
+		'shell:addUpstream',
+		'shell:pullUpstream',
+		'shell:removeUpstream'
+	]);
+	grunt.registerTask('optimize',
+	[
+		'toc',
+		'eol',
+		'img',
+		'smushit',
+		'svgo'
+	]);
 };

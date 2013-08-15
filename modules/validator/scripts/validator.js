@@ -51,11 +51,17 @@
 							firstLine = that.firstLine,
 							firstColumn = that.firstColumn,
 							lastLine = that.lastLine,
-							lastColumn = that.lastColumn;
+							lastColumn = that.lastColumn,
+							allowedTypes =
+							[
+								'success',
+								'warning',
+								'error'
+							];
 
 						/* type fallback */
 
-						if ($.inArray(type, ['success', 'warning', 'error']) === -1)
+						if ($.inArray(type, allowedTypes) === -1)
 						{
 							type = 'info';
 						}
