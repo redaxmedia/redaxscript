@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. debugger
+ * 1. debug
  * 2. startup
  *
  * @since 2.0
@@ -14,15 +14,15 @@
 {
 	'use strict';
 
-	/* @section 1. debugger */
+	/* @section 1. debug */
 
-	$.fn.debugger = function (options)
+	$.fn.debug = function (options)
 	{
 		/* extend options */
 
-		if (r.modules.debugger.options !== options)
+		if (r.modules.debug.options !== options)
 		{
-			options = $.extend({}, r.modules.debugger.options, options || {});
+			options = $.extend({}, r.modules.debug.options, options || {});
 		}
 
 		/* return this */
@@ -42,9 +42,9 @@
 
 	$(function ()
 	{
-		if (r.modules.debugger.startup)
+		if (r.modules.debug.startup)
 		{
-			$(r.modules.debugger.selector).debugger(r.modules.debugger.options);
+			$(r.modules.debug.selector).debug(r.modules.debug.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

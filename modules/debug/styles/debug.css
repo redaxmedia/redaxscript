@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. debugger
+ * 1. debug
  *
  * @since 2.0
  *
@@ -9,9 +9,9 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. debugger */
+/* @section 1. debug */
 
-.box_debugger del
+.box_debug del
 {
 	color: #999;
 }

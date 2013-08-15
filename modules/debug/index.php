@@ -1,7 +1,7 @@
 <?php
 
 /**
- * debugger loader start
+ * debug loader start
  *
  * @since 1.2.1
  * @deprecated 2.0
@@ -11,16 +11,16 @@
  * @author Henry Ruhs
  */
 
-function debugger_loader_start()
+function debug_loader_start()
 {
 	global $loader_modules_styles, $loader_modules_scripts;
-	$loader_modules_styles[] = 'modules/debugger/styles/debugger.css';
-	$loader_modules_scripts[] = 'modules/debugger/scripts/startup.js';
-	$loader_modules_scripts[] = 'modules/debugger/scripts/debugger.js';
+	$loader_modules_styles[] = 'modules/debug/styles/debug.css';
+	$loader_modules_scripts[] = 'modules/debug/scripts/startup.js';
+	$loader_modules_scripts[] = 'modules/debug/scripts/debug.js';
 }
 
 /**
- * debugger render start
+ * debug render start
  *
  * @since 1.2.1
  * @deprecated 2.0
@@ -30,7 +30,7 @@ function debugger_loader_start()
  * @author Henry Ruhs
  */
 
-function debugger_render_start()
+function debug_render_start()
 {
 	/* log error */
 
@@ -43,15 +43,15 @@ function debugger_render_start()
 
 	/* break center */
 
-	if (FIRST_PARAMETER == 'debugger')
+	if (FIRST_PARAMETER == 'debug')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('debugger_debugger'));
+		define('TITLE', l('debug_debug'));
 	}
 }
 
 /**
- * debugger center start
+ * debug center start
  *
  * @since 1.2.1
  * @deprecated 2.0
@@ -61,11 +61,11 @@ function debugger_render_start()
  * @author Henry Ruhs
  */
 
-function debugger_center_start()
+function debug_center_start()
 {
 	/* collect output */
 
-	if (FIRST_PARAMETER == 'debugger')
+	if (FIRST_PARAMETER == 'debug')
 	{
 		$error_log = file_get_contents('logs/error.log');
 		file_put_contents('logs/error.log', '');
@@ -88,7 +88,7 @@ function debugger_center_start()
 }
 
 /**
- * debugger admin panel panel list modules
+ * debug admin panel panel list modules
  *
  * @since 1.2.1
  * @deprecated 2.0
@@ -100,14 +100,14 @@ function debugger_center_start()
  * @return string
  */
 
-function debugger_admin_panel_list_modules()
+function debug_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('debugger_debugger'), 'debugger') . '</li>';
+	$output = '<li>' . anchor_element('internal', '', '', l('debug_debug'), 'debug') . '</li>';
 	return $output;
 }
 
 /**
- * debugger extras end
+ * debug extras end
  *
  * @since 1.2.1
  * @deprecated 2.0
@@ -117,7 +117,7 @@ function debugger_admin_panel_list_modules()
  * @author Henry Ruhs
  */
 
-function debugger_extras_end()
+function debug_extras_end()
 {
 	global $hooks;
 
@@ -190,7 +190,7 @@ function debugger_extras_end()
 	{
 		if (count($value))
 		{
-			$output .= '<h3 class="title_extra title_debugger">Debug: ' . $key . '</h3><div class="box_extra box_debugger"><ul class="js_list_debugger list_debugger">';
+			$output .= '<h3 class="title_extra title_debug">Debug: ' . $key . '</h3><div class="box_extra box_debug"><ul class="js_list_debug list_debug">';
 			foreach ($value as $key_sub => $value_sub)
 			{
 				$output .= '<li>';

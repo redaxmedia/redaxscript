@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. debugger
+ * 1. debug
  *
  * @since 2.0
  *
@@ -9,12 +9,12 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. debugger */
+/* @section 1. debug */
 
-r.modules.debugger =
+r.modules.debug =
 {
 	startup: true,
-	selector: 'ul.js_list_debugger',
+	selector: 'ul.js_list_debug',
 	options:
 	{
 		related: 'del'
