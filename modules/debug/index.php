@@ -190,17 +190,16 @@ function debug_extras_end()
 	{
 		if (count($value))
 		{
-			$output .= '<h3 class="title_extra title_debug">Debug: ' . $key . '</h3><div class="box_extra box_debug"><ul class="js_list_debug list_debug">';
+			$output .= '<h3 class="title_extra title_debug">Debug: ' . $key . '</h3><div class="box_extra box_debug"><ul class="js_list_debug list_sidebar list_debug">';
 			foreach ($value as $key_sub => $value_sub)
 			{
-				$output .= '<li>';
 				if ($value_sub)
 				{
-					$output .= $key_sub . ': <span>' . $value_sub . '</span>';
+					$output .= '<li>'. $key_sub . ': <span>' . $value_sub . '</span>';
 				}
 				else
 				{
-					$output .= '<del>' . $key_sub . '</del>';
+					$output .= '<li class="js_item_strike item_strike"><del>' . $key_sub . '</del>';
 				}
 				$output .= '</li>';
 			}

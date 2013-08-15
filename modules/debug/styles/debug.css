@@ -11,7 +11,7 @@
 
 /* @section 1. debug */
 
-.box_debug del
+.list_debug .item_strike
 {
 	color: #999;
 }

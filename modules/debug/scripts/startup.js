@@ -17,6 +17,6 @@ r.modules.debug =
 	selector: 'ul.js_list_debug',
 	options:
 	{
-		related: 'del'
+		related: 'li.js_item_strike'
 	}
 };
