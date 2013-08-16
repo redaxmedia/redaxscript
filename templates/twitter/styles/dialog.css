@@ -19,8 +19,8 @@
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }

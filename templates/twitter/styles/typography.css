@@ -30,7 +30,7 @@ a:hover
 body
 {
 	color: #666;
-	font: 0.75em arial;
+	font: 0.875em arial;
 }
 
 p
@@ -53,8 +53,8 @@ pre
 	-webkit-border-radius: 0.25em 0.25em;
 	-webkit-box-sizing: border-box;
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em 0.25em;
 	box-sizing: border-box;
 	font: 1em/3em arial;
@@ -106,8 +106,8 @@ pre
 
 .title_dialog_default
 {
-	border-bottom: 1px solid #d5d5d5;
-	border-bottom-color: rgba(0, 0, 0, 0.15);
+	border-bottom: 1px solid #ddd;
+	border-bottom-color: rgba(0, 0, 0, 0.1);
 	font: bold 1.375em/2em arial;
 	padding: 0 0.75em;
 }
