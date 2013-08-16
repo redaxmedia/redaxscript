@@ -29,7 +29,7 @@ a:hover
 
 body
 {
-	color: #333;
+	color: #666;
 	font: 0.75em arial;
 }
 
@@ -116,9 +116,8 @@ pre
 
 .sidebar .title_extra
 {
-	color: #999;
-	font-size: 0.875em;
-	margin-bottom: 0.5em;
+	font-size: 1em;
+	margin-bottom: 1em;
 	margin-top: 1em;
 	padding: 0 1em;
 	text-transform: uppercase;

@@ -145,7 +145,7 @@
 .list_sidebar
 {
 	color: #999;
-	text-indent: 1.25em;
+	text-indent: 1.5em;
 }
 
 .list_sidebar a
@@ -163,7 +163,7 @@
 	line-height: 3em;
 }
 
-.list_sidebar .item_active > a, .list_sidebar .item_active > a:hover
+.list_sidebar li.item_active > a
 {
 	background: #0088cc;
 	color: #fff;
