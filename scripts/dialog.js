@@ -94,8 +94,8 @@
 
 		/* fade in overlay and dialog */
 
-		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.options.overlay.duration, r.options.overlay.opacity);
+		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.options.body.duration, r.options.body.opacity);
 
 		/* find related buttons */
 

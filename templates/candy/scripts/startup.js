@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. lightbox overlay
+ * 1. overlay options
  *
  * @since 2.0
  *
@@ -9,7 +9,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. lightbox overlay */
+/* @section 1. overlay options */
 
-r.lightbox.overlay.opacity = 0.8;
-r.lightbox.overlay.duration = 400;
+r.options.overlay.opacity = 0.8;
+r.options.overlay.duration = 400;

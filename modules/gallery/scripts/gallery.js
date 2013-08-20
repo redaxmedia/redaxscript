@@ -134,16 +134,16 @@
 				galleryOverlay = body.find(options.element.galleryOverlay);
 				if (checkGalleryOverlay === 0)
 				{
-					galleryOverlay.css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
+					galleryOverlay.css('opacity', 0).fadeTo(r.options.overlay.duration, r.options.overlay.opacity);
 				}
-				gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+				gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.options.body.duration, r.options.body.opacity);
 				galleryLoader = gallery.find(options.element.galleryLoader).css('opacity', 0);
 
 				/* fade in loader on timeout */
 
 				timeoutLoader = setTimeout(function ()
 				{
-					galleryLoader.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+					galleryLoader.fadeTo(r.options.body.duration, r.options.body.opacity);
 				}, options.timeout.loader);
 
 				/* close gallery on timeout */
@@ -181,7 +181,7 @@
 					{
 						if (image.is(':visible'))
 						{
-							gallery.addClass(options.classString.galleryReady).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
+							gallery.addClass(options.classString.galleryReady).fadeTo(r.options.body.duration, r.options.body.opacity);
 							clearInterval(intervalVisible);
 						}
 					}, options.interval);

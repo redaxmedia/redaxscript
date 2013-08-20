@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. redaxscript object
- *    1.1 lightbox
+ *    1.1 options
  *    1.2 plugins
  *    1.3 modules
  *    1.4 support
@@ -21,9 +21,9 @@
 
 var r = r || {};
 
-/* @section 1.1 lightbox */
+/* @section 1.1 options */
 
-r.lightbox =
+r.options =
 {
 	overlay:
 	{
