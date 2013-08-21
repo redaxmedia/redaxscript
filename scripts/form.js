@@ -112,7 +112,7 @@
 					var field = $(this),
 						fieldNative = field[0],
 						fieldTag = fieldNative.tagName,
-						noteErrorClasses = 'js_note_error note_error',
+						noteErrorClasses = 'js_note_error field_note note_error',
 						fieldValue;
 
 					/* check for tag */
@@ -120,12 +120,10 @@
 					if (fieldTag === 'DIV')
 					{
 						fieldValue = $.trim(field.html());
-						noteErrorClasses += ' box_note';
 					}
 					else
 					{
 						fieldValue = $.trim(fieldNative.value);
-						noteErrorClasses += ' field_note';
 					}
 
 					/* check for value */
