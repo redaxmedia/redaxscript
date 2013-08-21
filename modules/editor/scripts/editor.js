@@ -209,7 +209,7 @@
 			editor.insertHTML = function (text)
 			{
 				editor.preview.focus();
-				if (r.constants.MY_BROWSER === 'msie')
+				if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function' && typeof document.selection.createRange().pasteHTML === 'function')
 				{
 					document.selection.createRange().pasteHTML(text);
 				}
