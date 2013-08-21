@@ -13,6 +13,7 @@ $l['es'] = 'Español';
 $l['et'] = 'Eesti';
 $l['fa'] = 'فارسی';
 $l['fr'] = 'Français';
+$l['gr'] = 'ελληνικά';
 $l['he'] = 'עברית';
 $l['hu'] = 'Magyar';
 $l['id'] = 'Bahasa Indonesia';
