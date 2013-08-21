@@ -124,7 +124,7 @@
 
 			/* handle control events */
 
-			editor.toolbar.children(options.element.editorControl).on('click touchstart', function (event)
+			editor.toolbar.children(options.element.editorControl).on('mousedown touchstart', function (event)
 			{
 				var control = $(this),
 					data = control.data('data');
@@ -151,13 +151,6 @@
 					try
 					{
 						document.execCommand(command, 0, 0);
-
-						/* remove firefox styles from preview */
-
-						if (r.constants.MY_BROWSER === 'firefox')
-						{
-							editor.preview.removeAttr('style');
-						}
 					}
 
 					/* alert dialog if no support */
@@ -259,13 +252,13 @@
 			{
 				var output = '';
 
-				if (r.constants.MY_BROWSER === 'msie')
-				{
-					output = document.selection.createRange().text;
-				}
-				else
+				if (typeof window.getSelection === 'function')
 				{
 					output = window.getSelection().toString();
+				}
+				else if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function')
+				{
+					output = document.selection.createRange().text;
 				}
 				return output;
 			};
@@ -390,22 +383,29 @@
 			{
 				if (event.which === 13)
 				{
-					var output = '<br />';
+					var output = '';
 
-					if (r.constants.MY_BROWSER === 'firefox')
-					{
-						output += '<div></div>';
-					}
-					else if (r.constants.MY_BROWSER === 'msie')
-					{
-						output += '<span></span>';
-					}
-					else if (r.constants.MY_ENGINE === 'webkit')
+					/* msie */
+
+					if (r.constants.MY_BROWSER === 'msie')
 					{
 						output += '<br />';
 					}
-					editor.insertHTML(output);
-					event.preventDefault();
+
+					/* webkit */
+
+					else if (r.constants.MY_ENGINE === 'webkit')
+					{
+						output += '<br /><br />';
+					}
+
+					/* insert output */
+
+					if (output)
+					{
+						editor.insertHTML(output);
+						event.preventDefault();
+					}
 				}
 			});
 
