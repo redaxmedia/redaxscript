@@ -44,6 +44,11 @@
 		width: 100%;
 	}
 
+	.box_quote
+	{
+		font-size: 1.25em;
+	}
+
 	.wrapper_body
 	{
 		min-width: 0;
