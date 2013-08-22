@@ -55,6 +55,11 @@
 		width: 100%;
 	}
 
+	.box_quote
+	{
+		font-size: 1.125em;
+	}
+
 	.footer, .header .box_last, .list_pagination .item_first, .list_pagination .item_last
 	{
 		display: none;
