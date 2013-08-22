@@ -36,7 +36,7 @@
 		{
 			/* listen for focus and input */
 
-			$(this).on('focus input', function (event)
+			$(this).on('focus input', function ()
 			{
 				var textarea = this,
 					value = textarea.value,
