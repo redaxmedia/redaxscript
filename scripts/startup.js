@@ -284,6 +284,33 @@ r.support =
 			return false;
 		}
 	}(window.navigator),
+	form: function (doc)
+	{
+		var attributes =
+			[
+				'autocomplete',
+				'noValidate'
+			],
+			form = doc.createElement('form'),
+			i = '', output = {};
+
+		/* check attributes */
+	
+		for (i in attributes)
+		{
+			var attribute = attributes[i];
+	
+			if (attribute in form)
+			{
+				output[attribute] = true;
+			}
+			else
+			{
+				output[attribute] = false;
+			}
+		}
+		return output;
+	}(document),
 	input: function (doc)
 	{
 		var types =
