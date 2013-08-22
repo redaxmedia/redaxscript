@@ -38,17 +38,11 @@
 
 			$(this).on('focus input', function (event)
 			{
-				var textarea = this;
+				var textarea = this,
+					value = textarea.value,
+					newlines = value.split(options.eol).length;
 
-				/* resize on focus */
-
-				if (event.type === 'focus')
-				{
-					while (textarea.clientHeight < textarea.scrollHeight && textarea.rows < options.limit)
-					{
-						textarea.rows += options.summand++;
-					}
-				}
+				textarea.rows = newlines;
 
 				/* general resize */
 

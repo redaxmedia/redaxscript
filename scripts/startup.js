@@ -70,8 +70,8 @@ r.plugins =
 		{
 			overflow: 'hidden',
 			resize: 'none',
-			summand: 10,
-			limit: 1000
+			limit: 5000,
+			eol: '\n'
 		}
 	},
 	dialog:

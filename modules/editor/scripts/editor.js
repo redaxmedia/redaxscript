@@ -362,7 +362,7 @@
 
 				if (html)
 				{
-					editor.textarea.val(html);
+					editor.textarea.val(html).trigger('change');
 				}
 			};
 

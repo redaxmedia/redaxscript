@@ -291,6 +291,7 @@
 	border-radius: 0.25em;
 	min-height: 20em;
 	padding: 0.5em;
+	white-space: pre-wrap;
 }
 
 .editor_preview > div:hover, .editor_preview > img:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > span:hover, .editor_preview > ul:hover
