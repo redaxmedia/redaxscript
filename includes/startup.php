@@ -223,6 +223,17 @@ function startup()
 		));
 	}
 
+	/* define content error */
+
+	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
+	{
+		define('CONTENT_ERROR', 1);
+	}
+	else
+	{
+		define('CONTENT_ERROR', 0);
+	}
+
 	/* define user */
 
 	define('MY_IP', get_user_ip());
@@ -328,17 +339,6 @@ function startup()
 
 	define('LANGUAGE', $detectLanguage->getOutput());
 	define('TEMPLATE', $detectTemplate->getOutput());
-
-	/* error detection */
-
-	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
-	{
-		define('CONTENT_ERROR', 1);
-	}
-	else
-	{
-		define('CONTENT_ERROR', 0);
-	}
 }
 
 /**
