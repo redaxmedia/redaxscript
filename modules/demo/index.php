@@ -13,7 +13,7 @@
 
 function demo_render_start()
 {
-	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo')
+	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo' || ADMIN_PARAMETER == 'unpublish')
 	{
 		define('CENTER_BREAK', 1);
 	}
@@ -35,6 +35,10 @@ function demo_center_start()
 	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo')
 	{
 		demo_login();
+	}
+	if (ADMIN_PARAMETER == 'unpublish')
+	{
+		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 	}
 }
 
