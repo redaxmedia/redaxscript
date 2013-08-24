@@ -52,7 +52,7 @@ function admin_panel_list()
 
 	/* collect contents output */
 
-	$counter = 2;
+	$counter = 1;
 	if ($contents_access == 1)
 	{
 		$counter++;
@@ -125,16 +125,11 @@ function admin_panel_list()
 
 	/* collect profile */
 
-	$output .= '<li class="js_item_panel_admin item_panel_admin item_profile">';
 	if (MY_USER && MY_ID)
 	{
-		$output .= anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID);
+		$counter++;
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
-	else
-	{
-		$output .= '<span>' . l('profile') . '</span>';
-	}
-	$output .= '</li>';
 
 	/* collect logout */
 
