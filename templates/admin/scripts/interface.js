@@ -172,7 +172,43 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 2. admin status */
+
+	$.fn.adminStatus = function (options)
+	{
+		/* extend options */
+
+		if (r.plugins.adminPanel.options !== options)
+		{
+			options = $.extend({}, r.plugins.adminStatus.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			if (r.support.battery === true)
+			{
+				var batteryPercent = navigator.battery.level * 100,
+					batteryBar = $('#battery_admin').append('<div></div>');
+
+				if (batteryPercent)
+				{
+					batteryBar.children('div').css('width', batteryPercent + '%');
+				}
+				if (batteryPercent > 70)
+				{
+					batteryBar.children('div').addClass('high');
+				}
+				if (batteryPercent < 10)
+				{
+					batteryBar.children('div').addClass('low');
+				}
+			}
+		});
+	};
+
+	/* @section 4. startup */
 
 	$(function ()
 	{
@@ -183,6 +219,10 @@
 		if (r.plugins.adminPanel.startup)
 		{
 			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
+		}
+		if (r.plugins.adminStatus.startup)
+		{
+			$(r.plugins.adminStatus.selector).adminStatus(r.plugins.adminStatus.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

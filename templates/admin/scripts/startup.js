@@ -45,3 +45,22 @@ r.plugins.adminPanel =
 		vibrate: 100
 	}
 };
+
+/* @section 3. admin status */
+
+r.plugins.adminStatus =
+{
+	startup: true,
+	selector: 'div.js_status_admin',
+	options:
+	{
+		classString:
+		{
+			batteryFull: 'batteryFull',
+			batteryHalf: 'batteryHalf',
+			batteryLow: 'batteryLow',
+			batteryEmpty: 'batteryEmpty',
+			batteryCharge: 'batteryCharge'
+		}
+	}
+};

@@ -14,11 +14,7 @@
 
 .panel_admin
 {
-	left: 0;
 	position: relative;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
 }
 
 .panel_admin a, .panel_admin a:hover
@@ -26,7 +22,30 @@
 	text-decoration: none;
 }
 
-/* @section 2. wrapper */
+/* @section 2. status admin */
+
+.battery_admin
+{
+	padding: 0.25em;
+}
+
+.battery_admin div
+{
+	background: orange;
+	height: 1em;
+}
+
+.battery_admin .high
+{
+	background: green;
+}
+
+.battery_admin .low
+{
+	background: red;
+}
+
+/* @section 3. wrapper */
 
 .wrapper_button_admin
 {

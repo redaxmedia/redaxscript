@@ -240,7 +240,7 @@
 .item_panel_admin > span:after
 {
 	font: 1.5em/1.75em 'icon admin';
-position: absolute;
+	position: absolute;
 	right: 0.75em;
 	top: 0;
 }
@@ -252,7 +252,7 @@ position: absolute;
 
 .item_panel_admin.item_active > span:after
 {
-content: '˅';
+	content: '˅';
 }
 
 /* @section 3.3 javascript enabled */
