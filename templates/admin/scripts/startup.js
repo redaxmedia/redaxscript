@@ -3,6 +3,7 @@
  *
  * 1. admin dock
  * 2. admin panel
+ * 3. admin status
  *
  * @since 2.0
  *
@@ -56,11 +57,11 @@ r.plugins.adminStatus =
 	{
 		classString:
 		{
-			batteryFull: 'batteryFull',
-			batteryHalf: 'batteryHalf',
-			batteryLow: 'batteryLow',
-			batteryEmpty: 'batteryEmpty',
-			batteryCharge: 'batteryCharge'
+			batteryFull: 'battery_full',
+			batteryHalf: 'battery_half',
+			batteryLow: 'battery_low',
+			batteryEmpty: 'battery_empty',
+			batteryCharge: 'battery_charge'
 		}
 	}
 };

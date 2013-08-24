@@ -3,7 +3,8 @@
  *
  * 1. admin dock
  * 2. admin panel
- * 3. startup
+ *    2. admin status
+ * 4. startup
  *
  * @since 2.0
  *
@@ -189,20 +190,28 @@
 		{
 			if (r.support.battery === true)
 			{
-				var batteryPercent = navigator.battery.level * 100,
-					batteryBar = $('#battery_admin').append('<div></div>');
+				var batteryBar = $('#battery_admin'),
+					batteryPercent = navigator.battery.level * 100;
 
 				if (batteryPercent)
 				{
-					batteryBar.children('div').css('width', batteryPercent + '%');
+					batteryBar.css('width', batteryPercent + '%');
 				}
 				if (batteryPercent > 70)
 				{
-					batteryBar.children('div').addClass('high');
+					batteryBar.addClass(options.classString.batteryFull);
 				}
-				if (batteryPercent < 10)
+				if (batteryPercent < 51)
 				{
-					batteryBar.children('div').addClass('low');
+					batteryBar.addClass(options.classString.batteryHalf);
+				}
+				else if (batteryPercent < 10)
+				{
+					batteryBar.addClass(options.classString.batteryLow);
+				}
+				else if (batteryPercent === 0)
+				{
+					batteryBar.addClass(options.classString.batteryEmpty);
 				}
 			}
 		});

@@ -2,7 +2,8 @@
  * @tableofcontents
  *
  * 1. panel admin
- * 2. wrapper
+ * 2. status admin
+ * 3. wrapper
  *
  * @since 2.0
  *
@@ -26,21 +27,20 @@
 
 .battery_admin
 {
-	padding: 0.25em;
+	height: 100%;
 }
 
-.battery_admin div
-{
-	background: orange;
-	height: 1em;
-}
-
-.battery_admin .high
+.battery_admin.battery_full
 {
 	background: green;
 }
 
-.battery_admin .low
+.battery_admin.battery_half
+{
+	background: orange;
+}
+
+.battery_admin.battery_low
 {
 	background: red;
 }

@@ -7,9 +7,10 @@
  *    2.1 description dock admin
  *    2.2 footer grid fix
  * 3. box panel admin
- * 4. box tab admin
- *    4.1 javascript enabled
- * 5. space between elements
+ * 4. box status admin
+ * 5. box tab admin
+ *    5.1 javascript enabled
+ * 6. space between elements
  *
  * @since 2.0
  *
@@ -85,9 +86,9 @@
 	margin-right: 0.75rem;
 }
 
-/* @section 3. box panel admin and box status admin */
+/* @section 3. box panel admin */
 
-.box_panel_admin, .box_status_admin
+.box_panel_admin
 {
 	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
@@ -95,7 +96,18 @@
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 }
 
-/* @section 4. box tab admin */
+/* @section 4. box status admin */
+
+.box_status_admin
+{
+	-moz-box-shadow: inset 0 1px #000;
+	-webkit-box-shadow: inset 0 1px #000;
+	background: url('templates/admin/images/carbon.png') #232323;
+	box-shadow: inset 0 1px #000;
+	height: 3em;
+}
+
+/* @section 5. box tab admin */
 
 .box_tab_admin
 {
@@ -110,14 +122,14 @@
 	padding: 1em 1.5em;
 }
 
-/* @section 4.1 javascript enabled */
+/* @section 5.1 javascript enabled */
 
 .js .box_tab_admin
 {
 	height: 30em;
 }
 
-/* @section 5. space between elements */
+/* @section 6. space between elements */
 
 .form_admin .box_note
 {
