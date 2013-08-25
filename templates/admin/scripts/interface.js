@@ -3,8 +3,7 @@
  *
  * 1. admin dock
  * 2. admin panel
- *    2. admin status
- * 4. startup
+ * 3. startup
  *
  * @since 2.0
  *
@@ -173,51 +172,7 @@
 		});
 	};
 
-	/* @section 2. admin status */
-
-	$.fn.adminStatus = function (options)
-	{
-		/* extend options */
-
-		if (r.plugins.adminPanel.options !== options)
-		{
-			options = $.extend({}, r.plugins.adminStatus.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			if (r.support.battery === true)
-			{
-				var batteryPercent = navigator.battery.level * 100,
-					batteryBar = $('#battery_admin');
-
-				if (batteryPercent)
-				{
-					batteryBar.css('width', batteryPercent + '%');
-				}
-				if (batteryPercent > 70)
-				{
-					batteryBar.addClass(options.classString.batteryFull);
-				}
-				if (batteryPercent < 51)
-				{
-					batteryBar.addClass(options.classString.batteryHalf);
-				}
-				else if (batteryPercent < 10)
-				{
-					batteryBar.addClass(options.classString.batteryLow);
-				}
-				else if (batteryPercent === 0)
-				{
-					batteryBar.addClass(options.classString.batteryEmpty);
-				}
-			}
-		});
-	};
-
-	/* @section 4. startup */
+	/* @section 3. startup */
 
 	$(function ()
 	{
@@ -228,10 +183,6 @@
 		if (r.plugins.adminPanel.startup)
 		{
 			$(r.plugins.adminPanel.selector).adminPanel(r.plugins.adminPanel.options);
-		}
-		if (r.plugins.adminStatus.startup)
-		{
-			$(r.plugins.adminStatus.selector).adminStatus(r.plugins.adminStatus.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

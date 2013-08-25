@@ -19,9 +19,6 @@
 			<?php include_once('sidebar.phtml'); ?>
 		</div>
 		<?php include_once('footer.phtml'); ?>
-		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
-			<?php include_once('templates/admin/status.phtml'); ?>
-		<?php endif; ?>
 		<?php scripts(); ?>
 	</body>
 </html>

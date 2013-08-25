@@ -2,8 +2,7 @@
  * @tableofcontents
  *
  * 1. panel admin
- * 2. status admin
- * 3. wrapper
+ * 2. wrapper
  *
  * @since 2.0
  *
@@ -23,29 +22,7 @@
 	text-decoration: none;
 }
 
-/* @section 2. status admin */
-
-.battery_admin
-{
-	height: 100%;
-}
-
-.battery_admin.battery_full
-{
-	background: green;
-}
-
-.battery_admin.battery_half
-{
-	background: orange;
-}
-
-.battery_admin.battery_low
-{
-	background: red;
-}
-
-/* @section 3. wrapper */
+/* @section 2. wrapper */
 
 .wrapper_button_admin
 {

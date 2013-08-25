@@ -3,7 +3,6 @@
  *
  * 1. admin dock
  * 2. admin panel
- * 3. admin status
  *
  * @since 2.0
  *
@@ -44,24 +43,5 @@ r.plugins.adminPanel =
 		timeout: 1000,
 		duration: 300,
 		vibrate: 100
-	}
-};
-
-/* @section 3. admin status */
-
-r.plugins.adminStatus =
-{
-	startup: true,
-	selector: 'div.js_status_admin',
-	options:
-	{
-		classString:
-		{
-			batteryFull: 'battery_full',
-			batteryHalf: 'battery_half',
-			batteryLow: 'battery_low',
-			batteryEmpty: 'battery_empty',
-			batteryCharge: 'battery_charge'
-		}
 	}
 };

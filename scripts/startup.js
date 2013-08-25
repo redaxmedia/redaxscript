@@ -183,7 +183,7 @@ r.plugins =
 			element:
 			{
 				adminDock: 'div.js_dock_admin',
-				adminPanel: 'nav.js_panel_admin, div.js_status_admin',
+				adminPanel: 'nav.js_panel_admin',
 				buttonSubmit: 'form button.js_submit',
 				buttonOk: 'div a.js_ok span span, form button.js_ok',
 				buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
