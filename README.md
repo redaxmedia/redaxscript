@@ -11,7 +11,7 @@ Online demo
 > Unfortunately, no one can be told what Redaxscript is.  
 You have to see it for yourself.
 
-You are going to experience limited permissions: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
+You are going to experience limitations: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
 
 
 Feature list
@@ -20,6 +20,7 @@ Feature list
 * Simple installation wizard
 * [Builds contents lightning fast](http://redaxscript.com/general/benchmark/page-load-time)
 * **HTML5, CSS3, RSS2 and ATOM1 compliant**
+* CSSLint, JSHint and HTMLHint validated
 * Search engine friendly environment
 * Fluide and elastic layout
 * Mobile ready with responsive design
