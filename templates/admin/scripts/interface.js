@@ -190,8 +190,8 @@
 		{
 			if (r.support.battery === true)
 			{
-				var batteryBar = $('#battery_admin'),
-					batteryPercent = navigator.battery.level * 100;
+				var batteryPercent = navigator.battery.level * 100,
+					batteryBar = $('#battery_admin');
 
 				if (batteryPercent)
 				{
