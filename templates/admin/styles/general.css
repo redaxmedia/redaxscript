@@ -15,6 +15,7 @@
 .panel_admin
 {
 	position: relative;
+	z-index: 900;
 }
 
 .panel_admin a, .panel_admin a:hover

@@ -19,7 +19,7 @@
 {
 	cursor: pointer;
 	position: relative;
-	z-index: 900;
+	z-index: 500;
 }
 
 .list_dropdown a
