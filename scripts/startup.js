@@ -188,6 +188,11 @@ r.plugins =
 				buttonOk: 'div a.js_ok span span, form button.js_ok',
 				buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
 			}
+		},
+		routes:
+		{
+			login: 'login',
+			logout: 'logout'
 		}
 	},
 	noteRequired:

@@ -88,6 +88,20 @@
 						adminDock.toggle();
 					}
 
+					/* login and logout */
+
+					else if (event.which === 76)
+					{
+						if (r.constants.LOGGED_IN === r.constants.TOKEN)
+						{
+							window.location = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+						}
+						else
+						{
+							window.location = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+						}
+					}
+
 					/* trigger ok action */
 
 					else if (event.which === 79)
@@ -127,7 +141,7 @@
 
 	$(function ()
 	{
-		if (r.plugins.keyShortcut.startup && r.constants.LOGGED_IN === r.constants.TOKEN)
+		if (r.plugins.keyShortcut.startup)
 		{
 			$(r.plugins.keyShortcut.selector).keyShortcut(r.plugins.keyShortcut.options);
 		}

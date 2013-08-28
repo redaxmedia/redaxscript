@@ -158,12 +158,6 @@
 						message: l.dialog_question + l.question_mark,
 						callback: function ()
 						{
-							/* check for internal link */
-
-							if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
-							{
-								url = r.baseURL + url;
-							}
 							window.location = url;
 						}
 					});
