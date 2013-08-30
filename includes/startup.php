@@ -115,7 +115,7 @@ function startup()
 
 	/* define tables */
 
-	if (FULL_ROUTE == '' && check_alias(FIRST_PARAMETER, 1) == 0)
+	if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
 	{
 		/* check for homepage */
 
