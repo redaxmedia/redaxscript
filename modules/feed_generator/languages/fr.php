@@ -3,5 +3,5 @@
 /* feed generator */
 
 $l['feed_generator_feed_articles'] = 'Flux-Article';
-$l['feed_generator_feed_comments'] = 'FLux-Commentaires';
+$l['feed_generator_feed_comments'] = 'Flux-Commentaires';
 ?>
