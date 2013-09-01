@@ -80,15 +80,15 @@
 				}
 			});
 
-			/* show related set on submit */
+			/* show related set on error */
 
-			accordionForm.on('submit', function ()
+			accordionForm.on('error', function ()
 			{
-				var requiredError = accordionSet.find('.js_note_error').first(),
-					accordionTitleError = requiredError.closest(options.element.accordionSet).children(options.element.accordionTitle);
+				var fieldRequired = accordionSet.find('.js_note_error').first(),
+					accordionSetError = fieldRequired.closest(options.element.accordionSet),
+					accordionTitleError = accordionSetError.children(options.element.accordionTitle);
 
 				accordionTitleError.click();
-				requiredError.focus();
 			});
 		});
 	};
@@ -155,7 +155,7 @@
 		return this.each(function ()
 		{
 			var tabTrigger = $(this),
-				tabURL = window.location.href.replace(r.baseURL, ''),
+				tabHash = window.location.hash,
 				tabList = $(options.element.tabList),
 				tabBox = $(options.element.tabBox),
 				tabSet = tabBox.find(options.element.tabSet),
@@ -194,9 +194,12 @@
 				event.preventDefault();
 			});
 
-			/* click tab depending on location href */
+			/* click tab depending on location hash */
 
-			tabList.find('a[href="' + tabURL + '"]').click();
+			if (typeof tabHash === 'string')
+			{
+				tabList.find('a[href*="' + tabHash + '"]').click();
+			}
 
 			/* prevent tab for last children */
 
@@ -208,17 +211,15 @@
 				}
 			});
 
-			/* show related tab on submit */
+			/* show related tab on error */
 
-			tabForm.on('submit', function ()
+			tabForm.on('error', function ()
 			{
-				var requiredError = tabSet.find('.js_note_error').first(),
-					tabNameError = requiredError.closest(options.element.tabSet).attr('id'),
-					tabURLError = r.constants.FULL_ROUTE + '#' + tabNameError,
-					tabLinkError = tabList.find('a[href*="' + tabURLError + '"]');
+				var fieldRequired = tabSet.find('.js_note_error').first(),
+					tabNameError = fieldRequired.closest(options.element.tabSet).attr('id'),
+					tabLinkError = tabList.find('a[href*="' + tabNameError + '"]');
 
 				tabLinkError.click();
-				requiredError.focus();
 			});
 		});
 	};
