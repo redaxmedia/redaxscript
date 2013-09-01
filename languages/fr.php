@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /* site */
 
@@ -193,7 +193,7 @@ $l['url'] = 'URL';
 $l['url_incorrect'] = 'URL est incorrect';
 $l['identifier'] = 'Identifiant';
 $l['token'] = 'Jeton';
-$l['token_incorrect'] = 'Jeton est Incorrect';
+$l['token_incorrect'] = 'Jeton est incorrect';
 
 /* installation */
 
