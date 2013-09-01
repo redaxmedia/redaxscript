@@ -82,7 +82,7 @@ function check_email($input = '')
 
 		/* lookup domain name */
 
-		$output = check_dns($host);
+		$output = check_dns($host, 'mx');
 	}
 	else
 	{
@@ -110,6 +110,9 @@ function check_url($input = '')
 	if ($input == clean_url($input))
 	{
 		list($protocol, $host) = split('//', $input);
+
+		/* empty host fallback */
+
 		if ($host == '')
 		{
 			$host = $input;
@@ -117,7 +120,7 @@ function check_url($input = '')
 
 		/* lookup domain name */
 
-		$output = check_dns($host);
+		$output = check_dns($host, 'a');
 	}
 	else
 	{
@@ -156,7 +159,7 @@ function check_protocol($input = '')
 /**
  * check dns
  *
- * @since 1.2.1
+ * @since 2.0
  * @deprecated 2.0
  *
  * @package Redaxscript
@@ -164,14 +167,15 @@ function check_protocol($input = '')
  * @author Henry Ruhs
  *
  * @param string $input
+ * @param string $type
  * @return integer
  */
 
-function check_dns($input = '')
+function check_dns($input = '', $type = '')
 {
 	if ($input)
 	{
-		if (function_exists('checkdnsrr') && checkdnsrr($input, 'mx') == '')
+		if (function_exists('checkdnsrr') && checkdnsrr($input, $type) == '')
 		{
 			$output = 0;
 		}
