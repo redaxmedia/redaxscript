@@ -242,6 +242,7 @@
 	position: absolute;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.15);
 	top: -0.75em;
+	z-index: -1;
 }
 
 /* @section 12. space between elements */
