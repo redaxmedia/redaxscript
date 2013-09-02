@@ -9,8 +9,6 @@
  * 5. previous and next links
  *    5.1 children elements
  * 6. item gallery
- * 7. image gallery
- *    7.1 hover effect
  *
  * @since 2.0
  *
@@ -196,27 +194,4 @@
 .item_gallery, .image_gallery
 {
 	float: left;
-}
-
-/* @section 7. image gallery */
-
-.image_gallery
-{
-	-moz-border-radius: 0.125em;
-	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	-webkit-border-radius: 0.125em;
-	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	background: #eee;
-	border-radius: 0.125em;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	padding: 0.25em;
-}
-
-/* @section 7.1 hover effect */
-
-.image_gallery:hover
-{
-	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
