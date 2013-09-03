@@ -124,7 +124,7 @@
 						{
 							/* listen for click */
 
-							control.on('click', function (event)
+							control.on('click', function ()
 							{
 								/* call related method */
 
