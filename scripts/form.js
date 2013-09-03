@@ -146,7 +146,7 @@
 						fieldRequiredAll.filter('.js_note_error').first().focus();
 					}
 
-					/* vibrate on submit */
+					/* haptic feedback */
 
 					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
 					{

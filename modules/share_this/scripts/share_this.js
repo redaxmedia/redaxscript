@@ -31,7 +31,7 @@
 		{
 			/* open popup */
 
-			$(this).on('click touchstart', function (event)
+			$(this).on('click', function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),

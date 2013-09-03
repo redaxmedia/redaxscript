@@ -122,16 +122,18 @@
 
 						(function (data)
 						{
-							control.on('click touchstart', function (event)
+							/* listen for click */
+
+							control.on('click', function (event)
 							{
 								/* call related method */
 
 								editor[data.method](data.command, data.message, data.value);
 								editor.post();
 
-								/* vibrate on touchstart */
+								/* haptic feedback */
 
-								if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
+								if (r.support.vibrate && typeof options.vibrate === 'number')
 								{
 									window.navigator.vibrate(options.vibrate);
 								}

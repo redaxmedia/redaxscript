@@ -41,9 +41,9 @@
 
 			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
 
-			/* listen for click and touchstart */
+			/* listen for click */
 
-			accordionTrigger.on('click touchstart', function ()
+			accordionTrigger.on('click', function ()
 			{
 				var accordionTitleActive = $(this),
 					accordion = accordionTitleActive.closest(options.element.accordion),
@@ -168,9 +168,9 @@
 				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active');
 			});
 
-			/* listen for click and touchstart */
+			/* listen for click */
 
-			tabTrigger.on('click touchstart', function (event)
+			tabTrigger.on('click', function (event)
 			{
 				var tabItem = $(this),
 					tabList = tabItem.closest(options.element.tabList),

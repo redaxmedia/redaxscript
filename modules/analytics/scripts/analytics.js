@@ -41,7 +41,7 @@
 		{
 			/* listen for click */
 
-			$(this).one('click touchstart', function ()
+			$(this).one('click', function ()
 			{
 				var trigger = $(this),
 					category = trigger.data('category'),
