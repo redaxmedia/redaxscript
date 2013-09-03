@@ -51,11 +51,28 @@ function maps_scripts_start()
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
+ *
+ * @param integer $lat
+ * @param integer $lng
+ * @param integer $zoom
  */
 
-function maps()
+function maps($lat = '', $lng = '', $zoom = '')
 {
-	$output = '<div class="js_map"></div>';
+	$output = '<div class="js_map"';
+	if ($lat)
+	{
+		$output .= 'data-lat="' . $lat . '"';
+	}
+	if ($lng)
+	{
+		$output .= 'data-lng="' . $lng . '"';
+	}
+	if ($zoom)
+	{
+		$output .= 'data-zoom="' . $zoom . '"';
+	}
+	$output .= '></div>';
 	echo $output;
 }
 ?>
