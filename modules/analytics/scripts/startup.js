@@ -14,7 +14,7 @@
 r.modules.analytics =
 {
 	startup: true,
-	selector: 'a.js_track_event',
+	selector: 'a.js_track_click',
 	options:
 	{
 		id: 'UA-00000000-0',
