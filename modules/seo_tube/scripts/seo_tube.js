@@ -33,7 +33,7 @@
 			constant = r.modules.seoTube.constant,
 			eol = options.eol,
 			indent = options.indent,
-			text;
+			text = '';
 
 		if (typeof video === 'object')
 		{

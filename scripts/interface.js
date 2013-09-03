@@ -110,7 +110,7 @@
 		{
 			var dropdown = $(this),
 				dropdownRelated = dropdown.find(options.related),
-				timeout;
+				timeout = '';
 
 			/* listen for touchstart and touchend */
 

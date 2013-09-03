@@ -297,7 +297,8 @@ r.support =
 				'noValidate'
 			],
 			form = doc.createElement('form'),
-			i = '', output = {};
+			output = {},
+			i = 0;
 
 		/* check attributes */
 	
@@ -343,7 +344,9 @@ r.support =
 				'required'
 			],
 			input = doc.createElement('input'),
-			i = '', j = '', output = {};
+			output = {},
+			i = 0,
+			j = 0;
 
 		/* check types */
 
@@ -466,8 +469,7 @@ r.baseURL = function (doc)
 
 r.startup = function (doc, html)
 {
-	var i = '',
-		tags =
+	var tags =
 		[
 			'article',
 			'aside',
@@ -475,7 +477,8 @@ r.startup = function (doc, html)
 			'header',
 			'nav',
 			'section'
-		];
+		],
+		i = 0;
 
 	if (html.className)
 	{

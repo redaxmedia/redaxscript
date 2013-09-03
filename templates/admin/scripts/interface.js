@@ -91,7 +91,8 @@
 				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
-				timeoutEnter, timeoutLeave;
+				timeoutEnter = '',
+				timeoutLeave = '';
 
 			/* listen for click, mouseenter and touchstart */
 

@@ -41,7 +41,7 @@
 		var body = $('body'),
 			dialog = body.find(options.element.dialog),
 			dialogOverlay = body.find(options.element.dialogOverlay),
-			buttonOk, buttonCancel, output = '';
+			buttonOk = '', buttonCancel = '', output = '';
 
 		/* prematurely terminate dialog */
 

@@ -34,23 +34,24 @@
 			$(this).each(function ()
 			{
 				var map = $(this),
-					mapZoom = Number(map.data('zoom')),
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
-					mapMeta, mapInstance;
-
-				/* overwrite zoom */
-
-				if (mapZoom)
-				{
-					options.general.zoom = mapZoom;
-				}
+					mapZoom = Number(map.data('zoom')),
+					mapMeta = '',
+					mapInstance = '';
 
 				/* overwrite center */
 
 				if (mapLat && mapLng)
 				{
 					options.general.center = new google.maps.LatLng(mapLat, mapLng);
+				}
+
+				/* overwrite zoom */
+
+				if (mapZoom)
+				{
+					options.general.zoom = mapZoom;
 				}
 
 				/* create map instance */

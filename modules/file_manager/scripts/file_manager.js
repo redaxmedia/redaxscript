@@ -32,7 +32,7 @@
 			var form = $(this),
 				fieldFile = form.find(options.element.fieldFile),
 				buttonUpload = form.find(options.element.buttonUpload),
-				buttonBrowse;
+				buttonBrowse = '';
 
 			/* insert fake browse */
 

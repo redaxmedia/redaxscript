@@ -107,7 +107,7 @@
 						fieldNative = field[0],
 						fieldTag = fieldNative.tagName,
 						noteErrorClasses = 'js_note_error field_note note_error',
-						fieldValue;
+						fieldValue = '';
 
 					/* check for tag */
 
@@ -190,7 +190,7 @@
 					fieldValue = $.trim(field.val()),
 					fieldPlaceholder = field.attr('placeholder'),
 					inputIncorrect = l.input_incorrect + l.exclamation_mark,
-					timeout;
+					timeout = '';
 
 				/* prevent multiple timeout */
 
@@ -330,7 +330,7 @@
 			var form = $(this),
 				formRelated = form.children(options.related).first(),
 				noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelated).hide(),
-				timeout;
+				timeout = '';
 
 			/* listen for error and success */
 

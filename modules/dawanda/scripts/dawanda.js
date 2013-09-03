@@ -146,7 +146,7 @@
 
 		dawanda.registerShortcut = function ()
 		{
-			var i = '';
+			var i = 0;
 
 			for (i in r.modules.dawanda.routes)
 			{

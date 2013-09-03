@@ -32,7 +32,7 @@
 		{
 			var link = $(this),
 				url = link.attr('href'),
-				timeout;
+				timeout = '';
 
 			/* timeout enhanced forward */
 

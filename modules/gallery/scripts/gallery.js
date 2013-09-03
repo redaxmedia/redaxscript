@@ -100,7 +100,10 @@
 					buttonNext = gallery.find(options.element.buttonNext),
 					checkGallery = gallery.length,
 					checkGalleryOverlay = galleryOverlay.length,
-					timeoutLoader, timeoutImage, intervalVisible, output = '';
+					timeoutLoader = '',
+					timeoutImage = '',
+					intervalVisible = '',
+					output = '';
 
 				/* prematurely terminate gallery */
 
@@ -301,7 +304,8 @@
 						winWidth = win.width(),
 						minWidth = options.minWidth,
 						scaling = options.scaling,
-						galleryHeight, galleryWidth;
+						galleryHeight = '',
+						galleryWidth = '';
 
 					/* store image dimensions */
 
