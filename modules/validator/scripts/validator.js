@@ -36,8 +36,7 @@
 			success: function (data)
 			{
 				var messages = data.messages,
-					i = 0,
-					output = '';
+					output = '', i = '';
 
 				/* handle messages */
 

@@ -85,7 +85,7 @@
 
 			editor.createToolbar = function ()
 			{
-				var name, data, control, i;
+				var name = '', data = '', control = '', i = '';
 
 				for (i = 0; i < options.toolbar.length; i++)
 				{
@@ -108,39 +108,37 @@
 
 					/* append serveral controls */
 
-					else if (data)
+					else if (typeof data === 'object')
 					{
 						control = $('<a class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></a>').appendTo(editor.toolbar);
 					}
 
-					/* store control data */
+					/* handle control events */
 
-					if (data)
+					if (typeof data === 'object')
 					{
-						control.data('data', data);
+						/* closure for loop */
+
+						(function (data)
+						{
+							control.on('click touchstart', function (event)
+							{
+								/* call related method */
+
+								editor[data.method](data.command, data.message, data.value);
+								editor.post();
+
+								/* vibrate on touchstart */
+
+								if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
+								{
+									window.navigator.vibrate(options.vibrate);
+								}
+							});
+						}(data));
 					}
 				}
 			}();
-
-			/* handle control events */
-
-			editor.toolbar.children(options.element.editorControl).on('mousedown touchstart', function (event)
-			{
-				var control = $(this),
-					data = control.data('data');
-
-				/* call related method */
-
-				editor[data.method](data.command, data.message, data.value);
-				editor.post();
-
-				/* vibrate on touchstart */
-
-				if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
-				{
-					window.navigator.vibrate(options.vibrate);
-				}
-			});
 
 			/* general action call */
 
