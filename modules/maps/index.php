@@ -59,7 +59,7 @@ function maps_scripts_start()
 
 function maps($lat = '', $lng = '', $zoom = '')
 {
-	$output = '<div class="js_map"';
+	$output = '<div class="js_map map"';
 	if ($lat)
 	{
 		$output .= 'data-lat="' . $lat . '"';
