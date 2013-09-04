@@ -243,7 +243,7 @@
 					selectionAfter = textareaValue.slice(selectionEnd),
 					eol = options.eol,
 					indent = options.indent,
-					counter = 0;
+					i = 0;
 
 				if ('selectionStart' in textarea)
 				{
@@ -259,14 +259,14 @@
 							{
 								textarea.value = selectionBefore + selectionText.replace(window.RegExp(eol + indent, 'g'), function ()
 								{
-									counter++;
+									i++;
 									return eol;
 								}).replace(indent, function ()
 								{
-									counter++;
+									i++;
 									return '';
 								}) + selectionAfter;
-								textarea.selectionEnd = selectionEnd - (counter * indent.length);
+								textarea.selectionEnd = selectionEnd - (i * indent.length);
 								textarea.selectionStart = selectionStart;
 							}
 
@@ -289,11 +289,11 @@
 							{
 								textarea.value = selectionBefore + indent + selectionText.replace(window.RegExp(eol, 'g'), function ()
 								{
-									counter++;
+									i++;
 									return eol + indent;
 								}) + selectionAfter;
-								counter++;
-								textarea.selectionEnd = selectionEnd + (counter * indent.length);
+								i++;
+								textarea.selectionEnd = selectionEnd + (i * indent.length);
 								textarea.selectionStart = selectionStart;
 							}
 
