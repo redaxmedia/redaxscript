@@ -62,7 +62,7 @@
 
 					/* replace branding */
 
-					if (options.replaceBranding)
+					if (options.deBranding)
 					{
 						/* remove orignal branding */
 
@@ -72,7 +72,7 @@
 						});
 						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
-							map.children('div').css('opacity', 1).children('div').slice(1, 6).remove();
+							map.children('div').css('opacity', 1).children('div').slice(1, 7).remove();
 						});
 
 						/* append custom branding */
