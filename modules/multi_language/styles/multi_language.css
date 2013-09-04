@@ -29,14 +29,14 @@
 {
 	-moz-box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
-	content: '';
+	bottom: 0;
 	box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
+	content: '';
 	display: block;
-	height: 100%;
 	left: 0;
 	position: absolute;
+	right: 0;
 	top: 0;
-	width: 100%;
 }
 
 .icon_flag.language_de

@@ -40,11 +40,11 @@
 .gallery_overlay
 {
 	background: #000;
-	height: 100%;
+	bottom: 0;
 	left: 0;
 	position: fixed;
+	right: 0;
 	top: 0;
-	width: 100%;
 	z-index: 1000;
 }
 
@@ -79,9 +79,9 @@
 	left: 0;
 	padding: 1em 0;
 	position: absolute;
+	right: 0;
 	text-align: center;
 	transition: opacity 0.3s;
-	width: 100%;
 	z-index: 1200;
 }
 

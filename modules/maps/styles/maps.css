@@ -39,8 +39,13 @@
 	left: 0;
 	padding: 1em 0;
 	position: absolute;
-	width: 100%;
+	right: 0;
 	z-index: 500;
+}
+
+.map_meta a:hover
+{
+	text-decoration: underline;
 }
 
 /* desktop */
