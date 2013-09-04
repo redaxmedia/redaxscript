@@ -4,7 +4,6 @@
  * 1. box preview
  * 2. grid preview
  * 3. icon flag
- * 4. dialog
  *
  * @since 2.0
  *
@@ -22,14 +21,7 @@
 	overflow: hidden;
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-}
-
-/* has tooltip */
-
-.preview .box_preview.has_tooltip
-{
-	display: inline-block;
-}
+}s
 
 /* @section 2. grid preview */
 
@@ -50,14 +42,6 @@
 
 .preview .icon_flag
 {
-	margin: 0.125em;
+	margin: 0.25em;
 	float: left;
-}
-
-/* @section 4. dialog */
-
-.preview .dialog
-{
-	margin: 0;
-	position: static;
 }
