@@ -297,12 +297,11 @@ r.support =
 				'noValidate'
 			],
 			form = doc.createElement('form'),
-			output = {},
-			i = 0;
+			output = {};
 
 		/* check attributes */
 	
-		for (i in attributes)
+		for (var i in attributes)
 		{
 			var attribute = attributes[i];
 	
@@ -344,13 +343,11 @@ r.support =
 				'required'
 			],
 			input = doc.createElement('input'),
-			output = {},
-			i = 0,
-			j = 0;
+			output = {};
 
 		/* check types */
 
-		for (i in types)
+		for (var i in types)
 		{
 			var type = types[i];
 
@@ -367,7 +364,7 @@ r.support =
 
 		/* check attributes */
 	
-		for (j in attributes)
+		for (var i in attributes)
 		{
 			var attribute = attributes[j];
 	
@@ -477,8 +474,7 @@ r.startup = function (doc, html)
 			'header',
 			'nav',
 			'section'
-		],
-		i = 0;
+		];
 
 	if (html.className)
 	{
@@ -507,7 +503,7 @@ r.startup = function (doc, html)
 
 	/* create elements */
 
-	for (i in tags)
+	for (var i in tags)
 	{
 		doc.createElement(tags[i]);
 	}
