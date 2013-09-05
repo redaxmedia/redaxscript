@@ -292,7 +292,7 @@
 									counter++;
 									return eol + indent;
 								}) + selectionAfter;
-								i++;
+								counter++;
 								textarea.selectionEnd = selectionEnd + (counter * indent.length);
 								textarea.selectionStart = selectionStart;
 							}
