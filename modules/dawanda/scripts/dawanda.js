@@ -146,9 +146,7 @@
 
 		dawanda.registerShortcut = function ()
 		{
-			var i = 0;
-
-			for (i in r.modules.dawanda.routes)
+			for (var i in r.modules.dawanda.routes)
 			{
 				if (r.modules.dawanda.routes.hasOwnProperty(i))
 				{
