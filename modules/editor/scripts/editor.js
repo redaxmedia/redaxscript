@@ -85,9 +85,7 @@
 
 			editor.createToolbar = function ()
 			{
-				var i = 0;
-
-				for (i in options.toolbar)
+				for (var i in options.toolbar)
 				{
 					var name = options.toolbar[i],
 						data = r.modules.editor.controls[name],
