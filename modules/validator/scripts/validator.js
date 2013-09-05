@@ -36,14 +36,13 @@
 			success: function (data)
 			{
 				var messages = data.messages,
-					output = '',
-					i = 0;
+					output = '';
 
 				/* handle messages */
 
 				if (messages.length)
 				{
-					for (i in messages)
+					for (var i in messages)
 					{
 						var that = messages[i],
 							type = that.type,
