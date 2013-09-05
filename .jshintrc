@@ -8,7 +8,7 @@
 	"loopfunc": true,
 	"maxdepth": 5,
 	"maxparams": 5,
-	"maxcomplexity": 10,
+	"maxcomplexity": 15,
 	"newcap": true,
 	"noarg": true,
 	"noempty": true,
