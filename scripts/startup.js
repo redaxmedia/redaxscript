@@ -19,7 +19,7 @@
 
 /* @section 1. redaxscript object */
 
-var r = r || {};
+window.r = window.r || {};
 
 /* @section 1.1 options */
 
@@ -364,7 +364,7 @@ r.support =
 
 		/* check attributes */
 	
-		for (var i in attributes)
+		for (var j in attributes)
 		{
 			var attribute = attributes[j];
 	
