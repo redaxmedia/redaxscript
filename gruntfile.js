@@ -235,15 +235,15 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php vendor/tocgen/tocgen.php scripts .tocgen && php vendor/tocgen/tocgen.php styles .tocgen'
+				command: 'php vendor/redaxmedia/tocgen/tocgen.php scripts .tocgen && php vendor/redaxmedia/tocgen/tocgen.php styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/tocgen/tocgen.php modules .tocgen -r'
+				command: 'php vendor/redaxmedia/tocgen/tocgen.php modules .tocgen -r'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/tocgen/tocgen.php templates .tocgen -r'
+				command: 'php vendor/redaxmedia/tocgen/tocgen.php templates .tocgen -r'
 			},
 			svgoTemplates:
 			{
