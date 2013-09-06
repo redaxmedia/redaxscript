@@ -1,7 +1,7 @@
 {
 	"name": "Redaxscript",
 	"description": "Ultra lightweight website engine",
-	"version": 2.0.0,
+	"version": "2.0.0",
 	"homepage": "http://redaxscript.com",
 	"repositories":
 	[
