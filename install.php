@@ -5,8 +5,8 @@ error_reporting(0);
 
 include_once('includes/check.php');
 include_once('includes/clean.php');
-include_once('includes/directory.php');
 include_once('includes/detection.php');
+include_once('includes/directory.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/helper.php');
