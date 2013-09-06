@@ -3,11 +3,7 @@
 	"description": "Ultra lightweight website engine",
 	"version": "2.0.0",
 	"homepage": "http://redaxscript.com",
-	"licences":
-	{
-		"name": "GPL",
-		"url": "http://redaxscript.com/general/about/license"
-	},
+	"licence": "GPL-3.0",
 	"author":
 	{
 		"name": "Henry Ruhs",
