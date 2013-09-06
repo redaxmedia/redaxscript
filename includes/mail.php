@@ -6,7 +6,7 @@
  * @since 2.0
  *
  * @package Redaxscript
- * @category Service
+ * @category Mail
  * @author Henry Ruhs
  */
 
