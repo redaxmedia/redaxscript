@@ -5,7 +5,7 @@
  *
  * @since 2.0
  *
- * @category Filesystem
+ * @category Directory
  * @package Redaxscript
  * @author Henry Ruhs
  */
