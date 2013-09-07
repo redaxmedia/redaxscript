@@ -245,14 +245,6 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/redaxmedia/tocgen/tocgen.php templates .tocgen -r'
 			},
-			svgoTemplates:
-			{
-				command: 'svgo --disable removeViewBox -f templates/candy/images && svgo --disable removeViewBox -f templates/default/images'
-			},
-			svgoModules:
-			{
-				command: 'svgo --disable removeViewBox -f modules/multi_language/images'
-			},
 			addUpstream:
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
@@ -319,6 +311,34 @@ module.exports = function (grunt)
 					'<%=img.templates.src%>'
 				]
 			}
+		},
+		svgmin:
+		{
+			modules:
+			{
+				src:
+				[
+					'modules/*/images/*.svg'
+				],
+				expand: true
+			},
+			templates:
+			{
+				src:
+				[
+					'templates/*/images/*.svg'
+				],
+				expand: true
+			},
+			options:
+			{
+				plugins:
+				[
+					{
+						removeViewBox: false
+					}
+				]
+			}
 		}
 	});
 
@@ -336,6 +356,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
+	grunt.loadNpmTasks('grunt-svgmin');
 
 	/* register tasks */
 
@@ -362,11 +383,6 @@ module.exports = function (grunt)
 	[
 		'lineending'
 	]);
-	grunt.registerTask('svgo',
-	[
-		'shell:svgoTemplates',
-		'shell:svgoModules'
-	]);
 	grunt.registerTask('sync',
 	[
 		'shell:addUpstream',
@@ -379,6 +395,6 @@ module.exports = function (grunt)
 		'eol',
 		'img',
 		'smushit',
-		'svgo'
+		'svgmin'
 	]);
 };
