@@ -284,14 +284,18 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/*/images/*'
+					'modules/*/images/*.gif',
+					'modules/*/images/*.jpg',
+					'modules/*/images/*.png',
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/images/*'
+					'templates/*/images/*.gif',
+					'templates/*/images/*.jpg',
+					'templates/*/images/*.png'
 				]
 			}
 		},
