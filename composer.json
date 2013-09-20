@@ -10,8 +10,8 @@
 	},
 	"require-dev":
 	{
-		"squizlabs/php_codesniffer": "1.4.5",
-		"redaxmedia/tocgen": "2.2.1"
+		"redaxmedia/tocgen": "2.2.1",
+		"squizlabs/php_codesniffer": "1.4.5"
 	},
 	"scripts":
 	{

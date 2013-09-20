@@ -330,7 +330,7 @@ function startup()
 		$_SESSION[ROOT . '/update'] = '';
 	}
 
-	/* language and template object */
+	/* detect language and detect template object */
 
 	$detectLanguage = New Redaxscript_Detection_Language();
 	$detectTemplate = New Redaxscript_Detection_Template();
