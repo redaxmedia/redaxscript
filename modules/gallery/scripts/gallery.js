@@ -57,7 +57,7 @@
 
 					/* setup opacity and add class */
 
-					thumb.css('opacity', options.preload.opacity).addClass('image_gallery_preload');
+					thumb.fadeTo(options.preload.duration, options.preload.opacity).addClass('image_gallery_preload');
 
 					/* opera load fix */
 
@@ -116,12 +116,12 @@
 
 				if (checkGalleryOverlay === 0)
 				{
-					output = '<div class="' + options.classString.galleryOverlay + '"></div>';
+					output = '<div class="' + options.classString.galleryOverlay + ' ' + galleryName + '"></div>';
 				}
 
 				/* collect gallery elements */
 
-				output += '<div class="' + options.classString.gallery + '">';
+				output += '<div class="' + options.classString.gallery + ' ' + galleryName + '">';
 				if (options.loader)
 				{
 					output += '<img class="' + options.classString.galleryLoader + '" src="' + options.loader + '" />';
@@ -316,17 +316,17 @@
 
 					/* calculate image dimensions */
 
-					if (imageHeight > winHeight)
+					if (imageHeight >= winHeight)
 					{
 						imageWidth = imageWidth * winHeight * scaling / imageHeight;
 						imageHeight = winHeight * scaling;
 					}
-					if (imageWidth > winWidth)
+					if (imageWidth >= winWidth)
 					{
 						imageHeight = imageHeight * winWidth * scaling / imageWidth;
 						imageWidth = winWidth * scaling;
 					}
-					if (imageWidth < minWidth)
+					if (imageWidth <= minWidth)
 					{
 						imageHeight = imageHeight * minWidth * scaling / imageWidth;
 						imageWidth = minWidth * scaling;

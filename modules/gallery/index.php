@@ -177,7 +177,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 			if ($output)
 			{
-				$output = '<ul id="' . $gallery_name . '" class="js_list_gallery list_gallery clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_name . '" class="js_list_gallery list_gallery ' . $gallery_name . ' clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}
