@@ -1,11 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 40em
- * 2. screen max 30em
- * 3. screen min 50em
- * 4. screen min 30em
- * 5. rtl direction
+ * 1. screen max 50em
+ * 2. screen max 40em
+ * 3. screen max 30em
+ * 4. screen min 50em
+ * 5. screen min 30em
+ * 6. rtl direction
  *
  * @since 2.0
  *
@@ -13,7 +14,23 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
+/* @section 1. screen max 50em */
+
+@media screen and (max-width: 49.999em)
+{
+
+	.list_panel_admin a, .list_panel_admin span
+	{
+		border-top: 1px solid #151515;
+	}
+
+	.item_panel_admin:first-child > a, .item_panel_admin:first-child > span
+	{
+		border-top: 0;
+	}
+}
+
+/* @section 2. screen max 40em */
 
 @media screen and (max-width: 40em)
 {
@@ -23,7 +40,7 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 3. screen max 30em */
 
 @media screen and (max-width: 29.999em)
 {
@@ -46,14 +63,9 @@
 	{
 		display: none;
 	}
-
-	.list_panel_admin a, .list_panel_admin span
-	{
-		border-top: 1px solid #111;
-	}
 }
 
-/* @section 3. screen min 50em */
+/* @section 4. screen min 50em */
 
 @media screen and (min-width: 50em)
 {
@@ -67,9 +79,9 @@
 		font-size: 1.5em;
 	}
 
-	.list_panel_admin ul a, .list_panel_admin ul span
+	.list_panel_children_admin a, .list_panel_children_admin span
 	{
-		border-top: 1px solid #111;
+		border-top: 1px solid #151515;
 	}
 
 	.list_panel_admin .item_panel_admin > span:after
@@ -122,7 +134,7 @@
 	}
 }
 
-/* @section 4. screen min 30em */
+/* @section 5. screen min 30em */
 
 @media screen and (min-width: 30em)
 {
@@ -142,7 +154,7 @@
 	}
 }
 
-/* @section 5. rtl direction */
+/* @section 6. rtl direction */
 
 .rtl .description_dock_admin
 {
