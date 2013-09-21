@@ -58,8 +58,6 @@
 
 .editor_control:hover
 {
-	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
-	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	background: #3db1f1;
 	background: -moz-linear-gradient(top, #3db1f1, #0090db);
 	background: -ms-linear-gradient(top, #3db1f1, #0090db);
@@ -67,9 +65,7 @@
 	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
 	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
 	background: linear-gradient(top, #3db1f1, #0090db);
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
 }
 

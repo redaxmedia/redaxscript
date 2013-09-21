@@ -187,7 +187,7 @@
 	border-color: #fff #fff #ddd;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
-	margin-right: 1px;
+	margin-right: 0.25em;
 }
 
 .list_tab_default li:hover

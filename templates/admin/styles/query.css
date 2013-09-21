@@ -46,6 +46,11 @@
 	{
 		display: none;
 	}
+
+	.list_panel_admin a, .list_panel_admin span
+	{
+		border-top: 1px solid #111;
+	}
 }
 
 /* @section 3. screen min 50em */
@@ -60,6 +65,11 @@
 	.list_panel_admin a:before, .list_panel_admin span:before
 	{
 		font-size: 1.5em;
+	}
+
+	.list_panel_admin ul a, .list_panel_admin ul span
+	{
+		border-top: 1px solid #111;
 	}
 
 	.list_panel_admin .item_panel_admin > span:after
