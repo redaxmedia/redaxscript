@@ -243,7 +243,6 @@
 						if (imageCounter > 1 || imageCounter < imageTotal)
 						{
 							gallery.remove();
-							win.off();
 							$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
 						}
 						event.preventDefault();
@@ -359,7 +358,6 @@
 				galleryOverlay.on('click', function ()
 				{
 					gallery.add(galleryOverlay).remove();
-					win.off();
 				});
 				event.preventDefault();
 			});
