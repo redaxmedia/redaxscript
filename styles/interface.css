@@ -24,7 +24,7 @@
 
 .list_dropdown a
 {
-	display: inline-block;
+	display: block;
 	white-space: nowrap;
 }
 
