@@ -40,6 +40,8 @@ function startup()
 
 	$config = New Redaxscript_Config();
 
+	/* prefix and salt */
+
 	define('PREFIX', $config->get('prefix'));
 	define('SALT', $config->get('salt'));
 
