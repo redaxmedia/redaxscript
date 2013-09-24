@@ -12,18 +12,24 @@
 	{
 		"redaxmedia/tocgen": "2.2.1",
 		"squizlabs/php_codesniffer": "1.4.5"
+		"yohang/dependency-tools": "1.1.0"
 	},
 	"scripts":
 	{
 		"post-install-cmd":
 		[
-			"del composer.lock",
-			"npm install"
+			"Yohang\\DependencyTools::installDeps"
 		],
 		"post-update-cmd":
 		[
-			"del composer.lock",
-			"npm update"
+			"Yohang\\DependencyTools::installDeps"
 		]
+	},
+	"extra":
+	{
+		"dependency-tools":
+		{
+			"npm": true
+		}
 	}
 }
