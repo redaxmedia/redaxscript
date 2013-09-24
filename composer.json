@@ -11,7 +11,7 @@
 	"require-dev":
 	{
 		"redaxmedia/tocgen": "2.2.1",
-		"squizlabs/php_codesniffer": "1.4.5"
+		"squizlabs/php_codesniffer": "1.4.5",
 		"yohang/dependency-tools": "1.1.0"
 	},
 	"scripts":
