@@ -1,14 +1,17 @@
+![GSP](https://rawgithub.com/redaxmedia/media/master/svg/redaxscript.svg)
+
+
 Redaxscript
 ===========
 
-> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects.  
+> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects.
 Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
 
 Online demo
 -----------
 
-> Unfortunately, no one can be told what Redaxscript is.  
+> Unfortunately, no one can be told what Redaxscript is.
 You have to see it for yourself.
 
 You are going to experience limitations: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
