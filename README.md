@@ -1,4 +1,4 @@
-![GSP](https://rawgithub.com/redaxmedia/media/master/svg/redaxscript.svg)
+![Redaxscript](https://rawgithub.com/redaxmedia/media/master/svg/redaxscript.svg)
 
 
 Redaxscript
