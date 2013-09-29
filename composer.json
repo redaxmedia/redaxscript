@@ -11,25 +11,17 @@
 	"require-dev":
 	{
 		"redaxmedia/tocgen": "2.2.1",
-		"squizlabs/php_codesniffer": "1.4.5",
-		"yohang/dependency-tools": "1.1.0"
+		"squizlabs/php_codesniffer": "1.4.5"
 	},
 	"scripts":
 	{
 		"post-install-cmd":
 		[
-			"Yohang\\DependencyTools::installDeps"
+			"npm install"
 		],
 		"post-update-cmd":
 		[
-			"Yohang\\DependencyTools::installDeps"
+			"npm update"
 		]
-	},
-	"extra":
-	{
-		"dependency-tools":
-		{
-			"npm": true
-		}
 	}
 }
