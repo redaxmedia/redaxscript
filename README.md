@@ -4,7 +4,7 @@
 Redaxscript
 ===========
 
-> Redaxscript is an ultra lightweight website engine, simplifying the world of complex online projects.
+> Redaxscript is an ultra lightweight CMS, simplifying the world of complex online projects.
 Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
 
