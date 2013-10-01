@@ -36,23 +36,26 @@
 
 		intervalReload = setInterval(function ()
 		{
-			$.ajax(
+			if (typeof document.visibilityState === 'undefined' || document.visibilityState === 'visible')
 			{
-				url: r.constants.REWRITE_ROUTE + options.url,
-				success: function (data)
+				$.ajax(
 				{
-					if (data === dataOld)
+					url: r.constants.REWRITE_ROUTE + options.url,
+					success: function (data)
 					{
-						liveReloadBox.html('<div class="box_note note_info">' + l.live_reload_live_reload + '</div>').toggle();
+						if (data === dataOld)
+						{
+							liveReloadBox.html('<div class="box_note note_info">' + l.live_reload_live_reload + '</div>').toggle();
+						}
+						else if (dataOld.length)
+						{
+							style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
+							liveReloadBox.html('<div class="box_note note_success">' + l.live_reload_updated + '</div>').show();
+						}
+						dataOld = data;
 					}
-					else if (dataOld.length)
-					{
-						style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-						liveReloadBox.html('<div class="box_note note_success">' + l.live_reload_updated + '</div>').show();
-					}
-					dataOld = data;
-				}
-			});
+				});
+			}
 		}, options.duration);
 	};
 
