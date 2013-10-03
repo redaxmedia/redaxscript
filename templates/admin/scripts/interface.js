@@ -112,6 +112,7 @@
 
 					if (event.type === 'mouseenter')
 					{
+						thatItem.trigger('enter');
 						return false;
 					}
 
@@ -145,9 +146,9 @@
 				}, options.duration);
 			});
 
-			/* listen for mouseenter and mouseleave */
+			/* listen for enter and leave */
 
-			panelList.on('mouseenter mouseleave', function (event)
+			panelList.on('enter mouseenter mouseleave', function (event)
 			{
 				/* timeout enhanced slide */
 
