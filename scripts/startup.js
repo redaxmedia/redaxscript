@@ -470,13 +470,35 @@
 	{
 		var tags =
 			[
+				'abbr',
 				'article',
 				'aside',
+				'audio',
+				'bdi',
+				'canvas',
+				'data',
+				'datalist',
+				'details',
+				'dialog',
+				'figcaption',
+				'figure',
 				'footer',
 				'header',
+				'hgroup',
+				'main',
+				'mark',
+				'meter',
 				'nav',
-				'section'
+				'output',
+				'progress',
+				'section',
+				'summary',
+				'template',
+				'time',
+				'video'
 			];
+
+		/* javascript enabled */
 
 		if (html.className)
 		{
@@ -503,7 +525,7 @@
 			html.className += ' no_svg';
 		}
 
-		/* create elements */
+		/* html5 fix */
 
 		for (var i in tags)
 		{
