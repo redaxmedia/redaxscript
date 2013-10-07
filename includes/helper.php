@@ -54,6 +54,18 @@ function helper_class()
 		}
 		$output .= 'rtl';
 	}
+	if (LAST_ID)
+	{
+		$output .= ' ';
+	}
+	if (CATEGORY)
+	{
+		$output .= 'category';
+	}
+	else if (ARTICLE)
+	{
+		$output .= 'article';
+	}
 	echo $output;
 }
 

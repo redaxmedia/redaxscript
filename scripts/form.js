@@ -42,7 +42,12 @@
 					value = textarea.value,
 					newlines = value.split(options.eol).length;
 
-				textarea.rows = newlines;
+				/* newlines hack */
+
+				if (textarea.rows < newlines)
+				{
+					textarea.rows = newlines;
+				}
 
 				/* general resize */
 

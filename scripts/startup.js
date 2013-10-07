@@ -72,7 +72,7 @@
 			{
 				overflow: 'hidden',
 				resize: 'none',
-				limit: 5000,
+				limit: 1000,
 				eol: '\n'
 			}
 		},
