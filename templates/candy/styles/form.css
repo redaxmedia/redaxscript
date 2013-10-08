@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. default buttons
+ * 2. button default and button search
  *    2.1 hover effect
  *    2.2 active effect
  * 3. default fields
@@ -26,9 +26,9 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. default buttons */
+/* @section 2. button default and button search */
 
-.button, .button_large, .button_search
+.button_default, button_search
 {
 	-moz-border-radius: 0.375em;
 	-moz-box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -53,14 +53,14 @@ textarea
 	padding: 0 0.75em;
 }
 
-.button_large
+.button_default.button_large
 {
 	font-size: 1.25em
 }
 
 /* @section 2.1 hover effect */
 
-.button:hover, .button_large:hover, .button_search:hover
+.button_default:hover, .button_search:hover
 {
 	background: #5b5b5b;
 	background: -moz-linear-gradient(top, #5b5b5b, #303030);
@@ -73,7 +73,7 @@ textarea
 
 /* @section 2.2 active effect */
 
-.button:active, .button_large:active, .button_search:active
+.button_default:active, .button_search:active
 {
 	-moz-box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	-webkit-box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -91,7 +91,7 @@ textarea
 
 /* @section 3. default fields */
 
-.field_select, .field_text, .field_textarea_small
+.field_select, .field_text, .field_textarea.field_small
 {
 	width: 40%;
 }
@@ -101,7 +101,7 @@ textarea
 	width: 100%;
 }
 
-.field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
+.field_search, .field_select, .field_text, .field_textarea
 {
 	-moz-border-radius: 0.375em;
 	-moz-box-shadow: inset 0 -1px #262626;
@@ -124,7 +124,7 @@ textarea
 
 /* @section 3.1 hover effect */
 
-.field_search:hover, .field_select:hover, .field_text:hover, .field_textarea:hover, .field_textarea_small:hover
+.field_search:hover, .field_select:hover, .field_text:hover, .field_textarea:hover
 {
 	-moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 	-webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
@@ -133,7 +133,7 @@ textarea
 
 /* @section 3.2 focus effect */
 
-.field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
+.field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus
 {
 	-moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
 	-webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
@@ -148,7 +148,7 @@ textarea
 	width: 100%;
 }
 
-.field_textarea_small
+.field_textarea.field_small
 {
 	min-height: 5em;
 }
@@ -181,7 +181,7 @@ textarea
 
 /* @section 7. space between elements */
 
-.box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
+.box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
 {
 	margin-top: 1em;
 }

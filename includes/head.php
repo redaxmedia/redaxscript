@@ -114,15 +114,11 @@ function head()
 		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
 	}
 
-	/* collect author and copyright as needed */
+	/* collect author */
 
 	if (s('author'))
 	{
 		$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
-	}
-	if (s('copyright'))
-	{
-		$output .= '<meta name="copyright" content="' . s('copyright') . '" />' . PHP_EOL;
 	}
 
 	/* collect metadata */

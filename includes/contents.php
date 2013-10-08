@@ -440,11 +440,15 @@ function notification($title = '', $text = '', $action = '', $route = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* handle suffix */
+	/* detect needed mode */
 
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
 		$suffix = '_admin';
+	}
+	else
+	{
+		$suffix = '_default';
 	}
 
 	/* collect output */
@@ -453,7 +457,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	{
 		$output = '<h2 class="title_content title_notification">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_content box_notification' . $suffix . '">';
+	$output .= '<div class="box_content box_notification">';
 
 	/* collect text output */
 

@@ -35,20 +35,19 @@ function search_form()
 
 	if (ATTACK_BLOCKED > 9)
 	{
-		$class_disabled = ' field_disabled';
 		$code_disabled = ' disabled="disabled"';
 	}
 
 	/* collect output */
 
 	$output = form_element('form', '', 'js_check_search form_search', '', '', '', 'method="post"');
-	$output .= form_element('search', '', 'js_required field_search' . $class_disabled, 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
+	$output .= form_element('search', '', 'js_required field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
 
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'search_post');
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'button_search' . $class_disabled, 'search_post', l('search'), '', $code_disabled);
+	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');

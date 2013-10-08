@@ -221,7 +221,7 @@ function admin_users_form()
 	$output .= '<li>' . form_element('password', 'password', 'field_text_admin js_unmask_password' . $class_required, 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
 	$output .= '<li>' . form_element('password', 'password_confirm', 'field_text_admin js_unmask_password' . $class_required, 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
@@ -285,20 +285,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_large_admin button_cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_large_admin button_delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_large_admin button_submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

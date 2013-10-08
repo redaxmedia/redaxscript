@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. default buttons
+ * 2. button default and button search
  * 3. default fields
  * 4. textarea dimensions
  * 5. search elements
@@ -24,9 +24,9 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. default buttons */
+/* @section 2. button default and button search */
 
-.button, .button_large, .button_search
+.button_default, .button_search
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
@@ -41,14 +41,14 @@ textarea
 	text-align: center;
 }
 
-.button_large
+.button_default.button_large
 {
 	font-size: 1.25em;
 }
 
 /* @section 3. default fields */
 
-.field_select, .field_text, .field_textarea_small
+.field_select, .field_text, .field_textarea.field_small
 {
 	width: 30%;
 }
@@ -58,7 +58,7 @@ textarea
 	width: 100%;
 }
 
-.field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
+.field_search, .field_select, .field_text, .field_textarea
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
@@ -78,7 +78,7 @@ textarea
 	width: 100%;
 }
 
-.field_textarea_small
+.field_textarea.field_small
 {
 	min-height: 5em;
 }
@@ -98,7 +98,7 @@ textarea
 
 /* @section 6. disabled and readonly */
 
-.button.field_disabled, .button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
+.button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
 	cursor: default;
 	opacity: 0.8;
@@ -126,7 +126,7 @@ textarea
 
 /* @section 9. space between elements */
 
-.box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
+.box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
 {
 	margin-top: 1em;
 }

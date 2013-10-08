@@ -54,12 +54,12 @@
 
 @media screen and (max-width: 29.999em)
 {
-	a.button, a.button_large
+	a.button_default
 	{
 		display: block;
 	}
 
-	button.button, button.button_large, .field_select, .field_text, .field_textarea_small
+	button.button_default, .field_select, .field_text, .field_textarea.field_small
 	{
 		width: 100%;
 	}

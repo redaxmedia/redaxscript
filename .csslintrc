@@ -4,6 +4,7 @@
 	"box-model": false,
 	"box-sizing": false,
 	"duplicate-background-images": false,
+	"unqualified-attributes": false,
 	"text-indent": false,
 	"outline-none": false,
 	"qualified-headings": false,

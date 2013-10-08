@@ -36,7 +36,7 @@
 
 			/* insert fake browse */
 
-			buttonBrowse = $('<button type="submit" class="js_browse button_admin">' + l.file_manager_browse + '</button>').insertBefore(buttonUpload);
+			buttonBrowse = $('<button type="submit" class="' + options.classString.buttonBrowse + '">' + l.file_manager_browse + '</button>').insertBefore(buttonUpload);
 
 			/* listen for click */
 

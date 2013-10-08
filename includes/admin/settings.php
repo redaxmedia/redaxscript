@@ -62,8 +62,8 @@ function admin_settings_form()
 	$output .= '<li>' . form_element('text', 'title', 'field_text_admin', 'title', s('title'), l('title'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'author', 'field_text_admin', 'author', s('author'), l('author'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'copyright', 'field_text_admin', 'copyright', s('copyright'), l('copyright'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_small_admin', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_admin field_small_admin', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
 	$output .= '<li>' . select_element('robots', 'field_select_admin', 'robots', array(
 		l('index') => 'all',
 		l('index_no') => 'none'
@@ -178,8 +178,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'js_cancel button_large_admin button_cancel', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'js_submit button_large_admin button_submit', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');

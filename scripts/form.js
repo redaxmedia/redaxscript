@@ -142,7 +142,7 @@
 				if (fieldRequiredAll.hasClass('js_note_error'))
 				{
 					form.trigger('error');
-					buttonSubmit.attr('disabled', 'disabled').addClass('field_disabled');
+					buttonSubmit.attr('disabled', 'disabled');
 
 					/* auto focus on submit */
 
@@ -165,7 +165,7 @@
 				else
 				{
 					form.trigger('success');
-					buttonSubmit.removeAttr('disabled').removeClass('field_disabled');
+					buttonSubmit.removeAttr('disabled');
 				}
 			}).attr('novalidate', 'novalidate');
 		});

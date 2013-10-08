@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 30em)
 {
-	.button + .button, .button_large + .button_large
+	.button_default + .button_default
 	{
 		margin-top: 0.75em;
 	}
@@ -72,7 +72,7 @@
 
 @media screen and (min-width: 30em)
 {
-	.button + .button, .button_large + .button_large, .field_text + .button
+	.button_default + .button_default, .field_text + .button_default
 	{
 		margin-left: 0.5em;
 	}

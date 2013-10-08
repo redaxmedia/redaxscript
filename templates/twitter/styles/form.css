@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. default buttons
+ * 2. button default and button search
  *    2.1 hover effect
  *    2.2 active effect
  * 3. default fields
@@ -26,9 +26,9 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. default buttons */
+/* @section 2. button default and button search */
 
-.button, .button_large, .button_search
+.button_default, .button_search
 {
 	-moz-border-radius: 0.25em;
 	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -54,28 +54,28 @@ textarea
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
-.button_large
+.button_default.button_large
 {
 	font-size: 1.25em;
 }
 
 /* fix color */
 
-a.button:hover, a.button_large:hover
+a.button_default:hover
 {
 	color: #333;
 }
 
 /* @section 2.1 hover effect */
 
-.button:hover, .button_large:hover, .button_search:hover
+.button_default:hover, .button_search:hover
 {
 	background: #e6e6e6;
 }
 
 /* @section 2.2 active effect */
 
-.button:active, .button_large:active, .button_search:active
+.button_default:active, .button_search:active
 {
 	-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -85,7 +85,7 @@ a.button:hover, a.button_large:hover
 
 /* @section 3. default fields */
 
-.field_select, .field_text, .field_textarea_small
+.field_select, .field_text, .field_textarea.field_small
 {
 	width: 30%;
 }
@@ -95,7 +95,7 @@ a.button:hover, a.button_large:hover
 	width: 100%;
 }
 
-.field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
+.field_search, .field_select, .field_text, .field_textarea
 {
 	-moz-border-radius: 0.25em;
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -117,7 +117,7 @@ a.button:hover, a.button_large:hover
 
 /* @section 3.1 focus effect */
 
-.field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus, .field_textarea_small:focus
+.field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus
 {
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -133,7 +133,7 @@ a.button:hover, a.button_large:hover
 	width: 100%;
 }
 
-.field_textarea_small
+.field_textarea.field_small
 {
 	min-height: 5em;
 }
@@ -165,7 +165,7 @@ a.button:hover, a.button_large:hover
 
 /* @section 6. disabled and readonly */
 
-.button.field_disabled, .button_large.field_disabled, .button_search.field_disabled, .field_search.field_disabled, .field_search.field_readonly, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
+.button_default[disabled], .button_search[disabled], .field_search[disabled], .field_search[readonly], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -203,7 +203,7 @@ a.button:hover, a.button_large:hover
 
 /* @section 8. space between elements */
 
-.box_dialog_default .button, .box_notification .button, .form_default .button, .form_default .button_large
+.box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
 {
 	margin-top: 1em;
 }

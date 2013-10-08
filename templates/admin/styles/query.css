@@ -44,17 +44,17 @@
 
 @media screen and (max-width: 29.999em)
 {
-	.button_admin + .button_admin, .button_large_admin + .button_large_admin
+	.button_admin + .button_admin
 	{
 		margin-top: 0.75em;
 	}
 
-	a.button_admin, a.button_large_admin
+	a.button_admin
 	{
 		display: block;
 	}
 
-	button.button_admin, button.button_large_admin, .field_select_admin, .field_text_admin, .field_textarea_small_admin
+	button.button_admin, .field_select_admin, .field_text_admin, .field_textarea_admin.field_small_admin
 	{
 		width: 100%;
 	}
@@ -138,7 +138,7 @@
 
 @media screen and (min-width: 30em)
 {
-	.button_admin + .button_admin, .button_large_admin + .button_large_admin, .field_text_admin + .button_admin
+	.button_admin + .button_admin, .field_text_admin + .button_admin
 	{
 		margin-left: 0.5em;
 	}
