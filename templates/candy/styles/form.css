@@ -69,7 +69,7 @@ textarea
 	background: -webkit-gradient(linear, left top, left bottom, from(#5b5b5b), to(#303030));
 	background: -webkit-linear-gradient(top, #5b5b5b, #303030);
 	background: linear-gradient(top, #5b5b5b, #303030);
-	color: #eee;
+	color: #d6d6d6;
 }
 
 /* @section 2.2 active effect */
