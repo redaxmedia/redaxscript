@@ -28,7 +28,7 @@ textarea
 
 /* @section 2. button default and button search */
 
-.button_default, button_search
+.button_default, .button_search
 {
 	-moz-border-radius: 0.375em;
 	-moz-box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -69,6 +69,7 @@ textarea
 	background: -webkit-gradient(linear, left top, left bottom, from(#5b5b5b), to(#303030));
 	background: -webkit-linear-gradient(top, #5b5b5b, #303030);
 	background: linear-gradient(top, #5b5b5b, #303030);
+	color: #eee;
 }
 
 /* @section 2.2 active effect */

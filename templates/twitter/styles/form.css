@@ -59,18 +59,12 @@ textarea
 	font-size: 1.25em;
 }
 
-/* fix color */
-
-a.button_default:hover
-{
-	color: #333;
-}
-
 /* @section 2.1 hover effect */
 
 .button_default:hover, .button_search:hover
 {
 	background: #e6e6e6;
+	color: #000;
 }
 
 /* @section 2.2 active effect */
@@ -159,7 +153,7 @@ a.button_default:hover
 
 .button_search, .field_search
 {
-	height: 2rem;
+	line-height: 1.875rem;
 	vertical-align: top;
 }
 

@@ -57,13 +57,6 @@ textarea
 	font-size: 1em;
 }
 
-/* fix underline */
-
-a.button_admin, a.button_admin:hover
-{
-	text-decoration: none;
-}
-
 /* @section 2.1 hover effect */
 
 .button_admin:hover
