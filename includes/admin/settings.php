@@ -178,8 +178,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');
