@@ -27,7 +27,7 @@ function admin_users_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if (USERS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_plus', l('user_new'), 'admin/new/users');
+		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('user_new'), 'admin/new/users');
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -285,20 +285,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_delete_admin', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;
