@@ -158,13 +158,18 @@ textarea
 
 .button_search
 {
-	margin-left: 5%;
+	margin-left: 3%;
 	width: 30%;
 }
 
 .field_search
 {
-	width: 65%;
+	width: 63%;
+}
+
+.button_search, .field_search
+{
+	vertical-align: middle;
 }
 
 /* @section 6. form default */

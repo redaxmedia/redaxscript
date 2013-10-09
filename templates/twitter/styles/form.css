@@ -48,8 +48,7 @@ textarea
 	color: #333;
 	cursor: pointer;
 	display: inline-block;
-	font: 1em/2.375em arial;
-	padding: 0 0.75em;
+	padding: 0.5em 0.75em;
 	text-align: center;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
@@ -149,12 +148,6 @@ textarea
 	-webkit-border-radius: 0.25em 0 0 0.25em;
 	border-radius: 0.25em 0 0 0.25em;
 	width: 70%;
-}
-
-.button_search, .field_search
-{
-	line-height: 1.875rem;
-	vertical-align: top;
 }
 
 /* @section 6. disabled and readonly */
