@@ -95,7 +95,7 @@ a.button_admin, a.button_admin:hover
 
 /* @section 2.3 icons */
 
-.button_admin.button_plus:before, .button_admin.button_cancel:before, .button_admin.button_submit:before
+.button_admin.button_plus_admin:before, .button_admin.button_cancel_admin:before, .button_admin.button_submit_admin:before
 {
 	font: 1em 'icon admin';
 	margin-right: 0.5em;
@@ -103,17 +103,17 @@ a.button_admin, a.button_admin:hover
 	vertical-align: text-bottom;
 }
 
-.button_admin.button_plus:before
+.button_admin.button_plus_admin:before
 {
 	content: 'f';
 }
 
-.button_admin.button_cancel:before
+.button_admin.button_cancel_admin:before
 {
 	content: 'e';
 }
 
-.button_admin.button_submit:before
+.button_admin.button_submit_admin:before
 {
 	content: 'd';
 }
