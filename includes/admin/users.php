@@ -262,7 +262,7 @@ function admin_users_form()
 					$groups_array[$g['name']] = $g['id'];
 				}
 			}
-			$output .= '<li>' . select_element('groups', 'field_select_admin field_multiple', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+			$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
 		}
 	}
 	$output .= '</ul></fieldset></div>';
