@@ -668,7 +668,7 @@ function admin_contents_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin field_multiple', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
