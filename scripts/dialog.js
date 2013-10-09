@@ -64,13 +64,6 @@
 			output += '<p>' + options.message + '</p>';
 		}
 
-		/* manage suffix */
-
-		if (r.constants.FIRST_PARAMETER !== 'admin')
-		{
-			options.suffix = '';
-		}
-
 		/* prompt */
 
 		if (options.type === 'prompt')
