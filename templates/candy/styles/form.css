@@ -158,13 +158,13 @@ textarea
 
 .button_search
 {
-	margin-left: 3%;
 	width: 30%;
 }
 
 .field_search
 {
-	width: 63%;
+	margin-right: 3%;
+	width: 67%;
 }
 
 .button_search, .field_search

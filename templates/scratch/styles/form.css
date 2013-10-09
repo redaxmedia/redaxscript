@@ -87,13 +87,13 @@ textarea
 
 .button_search
 {
-	margin-left: 5%;
 	width: 30%;
 }
 
 .field_search
 {
-	width: 65%;
+	margin-right: 3%;
+	width: 67%;
 }
 
 /* @section 6. disabled and readonly */
