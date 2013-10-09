@@ -191,13 +191,13 @@ function admin_groups_form()
 		/* collect access set */
 
 		$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('acccess')) . '<ul>';
-		$output .= '<li>' . select_element('categories', 'field_select_admin field_multiple', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('articles', 'field_select_admin field_multiple', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('extras', 'field_select_admin field_multiple', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('comments', 'field_select_admin field_multiple', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('groups', 'field_select_admin field_multiple', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('users', 'field_select_admin field_multiple', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('modules', 'field_select_admin field_multiple', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('categories', 'field_select_admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('articles', 'field_select_admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('extras', 'field_select_admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('users', 'field_select_admin', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('modules', 'field_select_admin', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('settings', 'field_select_admin', 'settings', array(
 			l('none') => 0,
 			l('edit') => 1
