@@ -39,7 +39,8 @@
 			options.suffix = options.suffix.frontend;
 		}
 
-		var body = $('body'),
+		var win = $(window),
+			body = $('body'),
 			dialogOverlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix),
 			dialog = $('<div>').addClass(options.classString.dialog + options.suffix),
 			dialogTitle = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix),
@@ -64,7 +65,7 @@
 
 		dialogTitle.add(dialogBox).appendTo(dialog);
 
-		/* append message */
+		/* message */
 
 		if (options.message)
 		{
@@ -75,7 +76,7 @@
 
 		if (options.type === 'prompt')
 		{
-			fieldPrompt = $('<input type="text" class="' + options.classString.fieldPrompt + (r.flags.backend === true ? options.suffix : '') + '" value="' + options.value + '" />').appendTo(dialogBox);
+			fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialogBox);
 		}
 
 		/* ok button */
@@ -89,11 +90,11 @@
 			buttonCancel.appendTo(dialogBox);
 		}
 
-		/* append output to body */
+		/* append to body */
 
 		dialog.add(dialogOverlay).appendTo(body);
 
-		/* close dialog on click */
+		/* listen for click */
 
 		buttonOk.add(buttonCancel).add(dialogOverlay).on('click', function ()
 		{
@@ -101,7 +102,17 @@
 			r.flags.dialog = false;
 		});
 
-		/* callback if ok */
+		/* listen for keydown */
+
+		win.on('keydown', function (event)
+		{
+			if (event.which === 27)
+			{
+				dialogOverlay.click();
+			}
+		});
+
+		/* callback */
 
 		if (typeof options.callback === 'function')
 		{

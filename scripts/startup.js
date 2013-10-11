@@ -4,9 +4,10 @@
  * 1. redaxscript object
  *    1.1 plugins
  *    1.2 modules
- *    1.3 support
- *    1.4 base url
- *    1.5 startup
+ *    1.3 flags
+ *    1.4 support
+ *    1.5 base url
+ *    1.6 startup
  *
  * @since 2.0
  *
