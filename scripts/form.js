@@ -345,11 +345,12 @@
 
 			form.on('error success', function (event)
 			{
+				clearTimeout(timeout);
+
 				/* handle error */
 
 				if (event.type === 'error')
 				{
-					clearTimeout(timeout);
 					boxNote.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
 				}
 
