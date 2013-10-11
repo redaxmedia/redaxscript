@@ -3,12 +3,13 @@
  *
  * 1. gallery
  * 2. gallery overlay
- * 3. gallery loader
- * 4. gallery meta
- *    4.1 children elements
- * 5. previous and next links
+ * 3. fadein effect
+ * 4. gallery loader
+ * 5. gallery meta
  *    5.1 children elements
- * 6. item gallery
+ * 6. previous and next links
+ *    6.1 children elements
+ * 7. item gallery
  *
  * @since 2.0
  *
@@ -40,6 +41,7 @@
 .gallery_overlay
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.3);
 	bottom: 0;
 	left: 0;
 	position: fixed;
@@ -48,7 +50,18 @@
 	z-index: 1000;
 }
 
-/* @section 3. gallery loader */
+/* @section 3. fadein effect */
+
+.gallery_overlay, .gallery
+{
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
+}
+
+/* @section 4. gallery loader */
 
 .gallery_loader
 {
@@ -64,7 +77,7 @@
 	z-index: 1400;
 }
 
-/* @section 4. gallery meta */
+/* @section 5. gallery meta */
 
 .gallery_meta
 {
@@ -72,7 +85,7 @@
 	-o-transition: opacity 0.3s;
 	-webkit-transition: opacity 0.3s;
 	background: #000;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.3);
 	bottom: 0;
 	color: #fff;
 	font: bold 1em arial;
@@ -92,7 +105,7 @@
 	opacity: 0;
 }
 
-/* @section 4.1 children elements */
+/* @section 5.1 children elements */
 
 .gallery_artist
 {
@@ -111,7 +124,7 @@
 	margin-right: 0.5em;
 }
 
-/* @section 5. previous and next links */
+/* @section 6. previous and next links */
 
 .gallery_next, .gallery_previous
 {
@@ -149,7 +162,7 @@
 	opacity: 1;
 }
 
-/* @section 5.1 children elements */
+/* @section 6.1 children elements */
 
 .gallery_next span, .gallery_previous span
 {
@@ -183,12 +196,11 @@
 	float: left;
 }
 
-/* @section 6. item gallery */
+/* @section 7. item gallery */
 
 .item_gallery
 {
 	margin: 0 1em 1em 0;
-
 }
 
 .item_gallery, .image_gallery

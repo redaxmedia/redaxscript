@@ -51,17 +51,12 @@ r.modules.gallery =
 			loader: 1000,
 			image: 10000
 		},
-		interval: 500,
-		loader: 'modules/gallery/images/loader.gif',
 		scaling: 0.9,
 		minWidth: 300,
+		intervalVisible: 500,
+		loader: true,
 		autoResize: true,
-		preload:
-		{
-			startup: true,
-			opacity: 0.6,
-			duration: 'slow'
-		}
+		preload: true
 	}
 };
 
@@ -69,5 +64,5 @@ r.modules.gallery =
 
 if (r.constants.MY_MOBILE)
 {
-	r.modules.gallery.options.preload.startup = false;
+	r.modules.gallery.options.preload = false;
 }

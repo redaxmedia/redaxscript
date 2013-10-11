@@ -45,7 +45,7 @@
 
 			/* @section 1.1 preload images */
 
-			if (options.preload.startup)
+			if (options.preload)
 			{
 				$(this).each(function ()
 				{
@@ -55,9 +55,9 @@
 						related = thumb.attr('src'),
 						image = $('<img src="' + url + '" />');
 
-					/* setup opacity and add class */
+					/* add preload class */
 
-					thumb.fadeTo(options.preload.duration, options.preload.opacity).addClass('image_gallery_preload');
+					thumb.addClass('image_gallery_preload');
 
 					/* opera load fix */
 
@@ -72,9 +72,9 @@
 					{
 						var thumbRelated = $(this).data('related');
 
-						/* fade in related thumb and remove class */
+						/* remove preload class */
 
-						link.find('img[src="' + thumbRelated + '"]').fadeTo(options.preload.duration, 1).removeClass('image_gallery_preload');
+						link.find('img[src="' + thumbRelated + '"]').removeClass('image_gallery_preload');
 					});
 				});
 			}
@@ -92,14 +92,12 @@
 					imageArtist = thumb.data('artist'),
 					imageDescription = thumb.data('description'),
 					gallery = body.find(options.element.gallery),
-					galleryLoader = $('<img src="' + options.loader + '" />'),
 					galleryMeta = gallery.find(options.element.galleryMeta),
 					galleryOverlay = body.find(options.element.galleryOverlay),
 					galleryName = thumb.data('gallery-name'),
 					buttonPrevious = gallery.find(options.element.buttonPrevious),
 					buttonNext = gallery.find(options.element.buttonNext),
-					checkGallery = gallery.length,
-					checkGalleryOverlay = galleryOverlay.length,
+					galleryLoader = '',
 					timeoutLoader = '',
 					timeoutImage = '',
 					intervalVisible = '',
@@ -107,47 +105,40 @@
 
 				/* prematurely terminate gallery */
 
-				if (checkGallery)
+				if (gallery.length)
 				{
 					return false;
 				}
 
 				/* collect overlay */
 
-				if (checkGalleryOverlay === 0)
+				if (galleryOverlay.length === 0)
 				{
 					output = '<div class="' + options.classString.galleryOverlay + ' ' + galleryName + '"></div>';
 				}
 
 				/* collect gallery elements */
 
-				output += '<div class="' + options.classString.gallery + ' ' + galleryName + '">';
-				if (options.loader)
-				{
-					output += '<img class="' + options.classString.galleryLoader + '" src="' + options.loader + '" />';
-				}
-				output += '</div>';
+				output += '<div class="' + options.classString.gallery + ' ' + galleryName + '"></div>';
 
 				/* append output to body */
 
 				body.append(output);
 
-				/* fade in overlay and loader */
+				/* find related elements */
 
 				galleryOverlay = body.find(options.element.galleryOverlay);
-				if (checkGalleryOverlay === 0)
+				gallery = body.find(options.element.gallery);
+
+				/* show loader on timeout */
+
+				if (options.loader)
 				{
-					galleryOverlay.css('opacity', 0).fadeTo(r.options.overlay.duration, r.options.overlay.opacity);
+					timeoutLoader = setTimeout(function ()
+					{
+						galleryLoader = $('<div class="' + options.classString.galleryLoader + '" />').appendTo(gallery);
+					}, options.timeout.loader);	
 				}
-				gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.options.body.duration, r.options.body.opacity);
-				galleryLoader = gallery.find(options.element.galleryLoader).css('opacity', 0);
-
-				/* fade in loader on timeout */
-
-				timeoutLoader = setTimeout(function ()
-				{
-					galleryLoader.fadeTo(r.options.body.duration, r.options.body.opacity);
-				}, options.timeout.loader);
 
 				/* close gallery on timeout */
 
@@ -173,9 +164,11 @@
 					clearTimeout(timeoutImage);
 
 					/* append image and remove loader */
-
-					galleryLoader.remove();
-					gallery.css('opacity', 0);
+					
+					if (galleryLoader.length)
+					{
+						galleryLoader.remove();
+					}
 					image.appendTo(gallery);
 
 					/* check visible interval */
@@ -184,10 +177,10 @@
 					{
 						if (image.is(':visible'))
 						{
-							gallery.addClass(options.classString.galleryReady).fadeTo(r.options.body.duration, r.options.body.opacity);
+							gallery.addClass(options.classString.galleryReady);
 							clearInterval(intervalVisible);
 						}
-					}, options.interval);
+					}, options.intervalVisible);
 
 					/* append meta information */
 
