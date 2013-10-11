@@ -78,8 +78,8 @@
 			/* build editor elements */
 
 			editor.textarea.hide();
-			editor.container = $('<div class="' + options.classString.editor + '"></div>').insertBefore(editor.textarea);
-			editor.toolbar = $('<div class="' + options.classString.editorToolbar + '" unselectable="on"></div>').appendTo(editor.container);
+			editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
+			editor.toolbar = $('<div unselectable="on">').addClass(options.classString.editorToolbar).appendTo(editor.container);
 
 			/* create toolbar */
 
@@ -95,21 +95,21 @@
 
 					if (name === 'divider')
 					{
-						$('<a class="' + options.classString.editorDivider + '"></a>').appendTo(editor.toolbar);
+						$('<a>').addClass(options.classString.editorDivider).appendTo(editor.toolbar);
 					}
 
 					/* append toggle */
 
 					else if (name === 'toggle')
 					{
-						editor.toggler = control = $('<a class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></a>').appendTo(editor.toolbar);
+						editor.toggler = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
 					}
 
 					/* append serveral controls */
 
 					else if (typeof data === 'object')
 					{
-						control = $('<a class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></a>').appendTo(editor.toolbar);
+						control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + name).appendTo(editor.toolbar);
 					}
 
 					/* handle control events */
@@ -374,7 +374,7 @@
 
 			/* append preview */
 
-			editor.preview = $('<div class="' + options.classString.editorPreview + '" contenteditable="true">' + editor.convertToEntity() + '</div>').appendTo(editor.container);
+			editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.classString.editorPreview).appendTo(editor.container);
 
 			/* insert break on enter */
 

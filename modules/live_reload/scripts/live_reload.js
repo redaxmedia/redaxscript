@@ -28,9 +28,13 @@
 		var head = $('head'),
 			body = $('body'),
 			style = head.children('style[media="all"]'),
-			liveReloadBox = $('<div class="' + options.classString.liveReloadBox + '"></div>').hide().appendTo(body),
+			liveReloadBox = $('<div>').addClass(options.classString.liveReloadBox),
 			dataOld = '',
 			intervalReload = '';
+
+		/* append live reload box */
+
+		liveReloadBox.hide().appendTo(body);
 
 		/* interval reload */
 

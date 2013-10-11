@@ -334,8 +334,12 @@
 		{
 			var form = $(this),
 				formRelated = form.children(options.related).first(),
-				noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelated).hide(),
+				boxNote = $('<div>').addClass(options.classString),
 				timeout = '';
+
+			/* insert note required */
+
+			boxNote.hide().insertBefore(formRelated);
 
 			/* listen for error and success */
 
@@ -346,20 +350,19 @@
 				if (event.type === 'error')
 				{
 					clearTimeout(timeout);
-					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
+					boxNote.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
 				}
 
 				/* else handle success */
 
 				else
 				{
-					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
+					boxNote.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
 					timeout = setTimeout(function ()
 					{
-						noteRequired.stop(1).slideUp(options.duration);
+						boxNote.stop(1).slideUp(options.duration);
 					}, options.timeout);
 				}
-
 			});
 		});
 	};

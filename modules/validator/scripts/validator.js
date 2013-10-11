@@ -106,7 +106,7 @@
 
 				if (output)
 				{
-					$('<div class="' + options.classString.validatorBox + '">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
+					$('<div>' + output + '</div>').addClass(options.classString.validatorBox).hide().prependTo('body').fadeIn(options.duration);
 				}
 			}
 		});
