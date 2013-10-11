@@ -14,4 +14,16 @@
 .dialog_overlay_admin
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+/* @section 2. fadein effect */
+
+.dialog_overlay_admin, .dialog_admin
+{
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
 }

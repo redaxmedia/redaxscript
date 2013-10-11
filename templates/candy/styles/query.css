@@ -99,7 +99,7 @@
 
 @media screen and (min-width: 30em)
 {
-	.button_default + .button_default, .field_text + .button_default
+	.button_default + .button_default
 	{
 		margin-left: 1em;
 	}
