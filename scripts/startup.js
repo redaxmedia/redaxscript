@@ -221,7 +221,11 @@
 
 	r.modules = {};
 
-	/* @section 1.3 support */
+	/* @section 1.3 flags */
+
+	r.flags = {};
+
+	/* @section 1.4 support */
 
 	r.support =
 	{
@@ -427,7 +431,7 @@
 		}()
 	};
 
-	/* @section 1.4 base url */
+	/* @section 1.5 base url */
 
 	r.baseURL = function ()
 	{
@@ -442,7 +446,7 @@
 		return output;
 	}();
 
-	/* @section 1.5 startup */
+	/* @section 1.6 startup */
 
 	r.startup = function ()
 	{
@@ -503,7 +507,7 @@
 			html.className += ' no_svg';
 		}
 
-		/* html5 fix */
+		/* fix elements */
 
 		for (var i in tags)
 		{

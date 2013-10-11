@@ -137,7 +137,7 @@
 					timeoutLoader = setTimeout(function ()
 					{
 						galleryLoader = $('<div class="' + options.classString.galleryLoader + '" />').appendTo(gallery);
-					}, options.timeout.loader);	
+					}, options.timeout.loader);
 				}
 
 				/* close gallery on timeout */
@@ -164,7 +164,7 @@
 					clearTimeout(timeoutImage);
 
 					/* append image and remove loader */
-					
+
 					if (galleryLoader.length)
 					{
 						galleryLoader.remove();

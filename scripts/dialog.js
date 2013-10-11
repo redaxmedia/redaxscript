@@ -32,6 +32,7 @@
 		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
+			r.flags.backend = true;
 		}
 		else
 		{
@@ -39,66 +40,65 @@
 		}
 
 		var body = $('body'),
-			dialog = body.find(options.element.dialog),
-			dialogOverlay = body.find(options.element.dialogOverlay),
-			buttonOk = '',
-			buttonCancel = '',
-			output = '';
+			dialogOverlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix),
+			dialog = $('<div>').addClass(options.classString.dialog + options.suffix),
+			dialogTitle = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix),
+			dialogBox = $('<div>').addClass(options.classString.dialogBox + options.suffix),
+			buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix),
+			buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix),
+			textMessage = '',
+			fieldPrompt = '';
 
 		/* prematurely terminate dialog */
 
-		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
+		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.dialog === true)
 		{
 			return false;
 		}
-
-		/* collect overlay */
-
-		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div>';
-
-		/* collect dialog elements */
-
-		output += '<div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
-		if (options.message)
+		else
 		{
-			output += '<p>' + options.message + '</p>';
+			r.flags.dialog = true;
 		}
 
-		/* prompt */
+		/* append basic elements */
+
+		dialogTitle.add(dialogBox).appendTo(dialog);
+
+		/* append message */
+
+		if (options.message)
+		{
+			textMessage = $('<p>' + options.message + '</p>').appendTo(dialogBox);
+		}
+
+		/* prompt input */
 
 		if (options.type === 'prompt')
 		{
-			output += '<input type="text" class="' + options.classString.fieldPrompt + options.suffix + '" value="' + options.value + '" />';
+			fieldPrompt = $('<input type="text" class="' + options.classString.fieldPrompt + (r.flags.backend === true ? options.suffix : '') + '" value="' + options.value + '" />').appendTo(dialogBox);
 		}
 
 		/* ok button */
 
-		output += '<a class="' + options.classString.buttonOk + options.suffix + '">' + l.ok + '</a>';
+		buttonOk.appendTo(dialogBox);
 
-		/* cancel button if confirm or prompt */
+		/* cancel button */
 
 		if (options.type === 'confirm' || options.type === 'prompt')
 		{
-			output += '<a class="' + options.classString.buttonCancel + options.suffix + '">' + l.cancel + '</a>';
+			buttonCancel.appendTo(dialogBox);
 		}
-		output += '</div></div>';
 
 		/* append output to body */
 
-		body.append(output);
-
-		/* find related elements */
-
-		dialogOverlay = body.find(options.element.dialogOverlay);
-		dialog = body.find(options.element.dialog);
-		buttonOk = dialog.find(options.element.buttonOk);
-		buttonCancel = dialog.find(options.element.buttonCancel);
+		dialog.add(dialogOverlay).appendTo(body);
 
 		/* close dialog on click */
 
-		buttonOk.add(buttonCancel).add(dialogOverlay).click(function ()
+		buttonOk.add(buttonCancel).add(dialogOverlay).on('click', function ()
 		{
 			dialog.add(dialogOverlay).remove();
+			r.flags.dialog = false;
 		});
 
 		/* callback if ok */
@@ -109,8 +109,7 @@
 			{
 				if (options.type === 'prompt')
 				{
-					var input = dialog.find(options.element.fieldPrompt),
-						value = $.trim(input.val());
+					var value = $.trim(fieldPrompt.val());
 
 					if (value)
 					{
