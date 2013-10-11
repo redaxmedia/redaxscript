@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. dialog overlay default
+ * 2. fadein effect
  *
  * @since 2.0
  *
@@ -14,4 +15,16 @@
 .dialog_overlay_default
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/* @section 2. fadein effect */
+
+.dialog_overlay_default, .dialog_default
+{
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
 }

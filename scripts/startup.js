@@ -2,12 +2,11 @@
  * @tableofcontents
  *
  * 1. redaxscript object
- *    1.1 options
- *    1.2 plugins
- *    1.3 modules
- *    1.4 support
- *    1.5 base url
- *    1.6 startup
+ *    1.1 plugins
+ *    1.2 modules
+ *    1.3 support
+ *    1.4 base url
+ *    1.5 startup
  *
  * @since 2.0
  *
@@ -23,28 +22,7 @@
 
 	win.r = win.r || {};
 
-	/* @section 1.1 options */
-
-	r.options =
-	{
-		overlay:
-		{
-			opacity: 0.25,
-			duration: 'slow'
-		},
-		loading:
-		{
-			opacity: 1,
-			duration: 'slow'
-		},
-		body:
-		{
-			opacity: 1,
-			duration: 'fast'
-		}
-	};
-
-	/* @section 1.2 plugins */
+	/* @section 1.1 plugins */
 
 	r.plugins =
 	{
@@ -239,11 +217,11 @@
 		}
 	};
 
-	/* @section 1.3 modules */
+	/* @section 1.2 modules */
 
 	r.modules = {};
 
-	/* @section 1.4 support */
+	/* @section 1.3 support */
 
 	r.support =
 	{
@@ -449,7 +427,7 @@
 		}()
 	};
 
-	/* @section 1.5 base url */
+	/* @section 1.4 base url */
 
 	r.baseURL = function ()
 	{
@@ -464,7 +442,7 @@
 		return output;
 	}();
 
-	/* @section 1.6 startup */
+	/* @section 1.5 startup */
 
 	r.startup = function ()
 	{

@@ -9,9 +9,10 @@
 2 = templates/zepto/scripts/startup.js
 
 [template]
-1 = scripts/form.js
-2 = scripts/interface.js
-3 = scripts/misc.js
+1 = scripts/dialog.js
+2 = scripts/form.js
+3 = scripts/interface.js
+4 = scripts/misc.js
 
 [settings]
 deploy = inline

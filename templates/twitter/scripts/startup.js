@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. overlay
+ * 1. startup
  *
  * @since 2.0
  *
@@ -9,7 +9,4 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. overlay */
-
-r.options.overlay.opacity = 0.8;
-r.options.overlay.duration = 400;
+/* @section 1. startup */

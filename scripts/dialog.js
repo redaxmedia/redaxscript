@@ -87,13 +87,10 @@
 
 		body.append(output);
 
-		/* fade in overlay and dialog */
+		/* find related elements */
 
-		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.options.overlay.duration, r.options.overlay.opacity);
-		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.options.body.duration, r.options.body.opacity);
-
-		/* find related buttons */
-
+		dialogOverlay = body.find(options.element.dialogOverlay);
+		dialog = body.find(options.element.dialog);
 		buttonOk = dialog.find(options.element.buttonOk);
 		buttonCancel = dialog.find(options.element.buttonCancel);
 
