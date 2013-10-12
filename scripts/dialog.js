@@ -41,57 +41,19 @@
 
 		var dialog = {};
 
-		/* @section 1.1 create dialog */
+		/* @section 1.1 listen */
 
-		dialog.init = function ()
+		dialog.listen = function ()
 		{
-			var dialogOverlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix),
-				dialog = $('<div>').addClass(options.classString.dialog + options.suffix),
-				dialogTitle = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix),
-				dialogBox = $('<div>').addClass(options.classString.dialogBox + options.suffix),
-				buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix),
-				buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix),
-				textMessage = '',
-				fieldPrompt = '';
-
-			/* append basic elements */
-
-			dialogTitle.add(dialogBox).appendTo(dialog);
-
-			/* message */
-
-			if (options.message)
-			{
-				textMessage = $('<p>' + options.message + '</p>').appendTo(dialogBox);
-			}
-
-			/* prompt input */
-
-			if (options.type === 'prompt')
-			{
-				fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialogBox);
-			}
-
-			/* ok button */
-
-			buttonOk.appendTo(dialogBox);
-
-			/* cancel button */
-
-			if (options.type === 'confirm' || options.type === 'prompt')
-			{
-				buttonCancel.appendTo(dialogBox);
-			}
-
 			/* listen for click */
 
-			buttonOk.on('click', function ()
+			dialog.buttonOk.on('click', function ()
 			{
 				if (typeof options.callback === 'function')
 				{
 					if (options.type === 'prompt')
 					{
-						var value = $.trim(fieldPrompt.val());
+						var value = $.trim(dialog.fieldPrompt.val());
 
 						if (value)
 						{
@@ -107,16 +69,10 @@
 
 			/* close dialog */
 
-			.add(buttonCancel).add(dialogOverlay).on('click', function ()
+			.add(dialog.buttonCancel).add(dialog.overlay).on('click', function ()
 			{
-				dialog.add(dialogOverlay).remove();
-				r.flags.modal = false;
+				dialog.close();
 			});
-
-			/* append to body */
-
-			dialog.add(dialogOverlay).appendTo('body');
-			r.flags.modal = true;
 
 			/* listen for keydown */
 
@@ -124,9 +80,68 @@
 			{
 				if (event.which === 27)
 				{
-					dialogOverlay.click();
+					dialog.overlay.click();
 				}
 			});
+		};
+
+		/* @section 1.2 close */
+
+		dialog.close = function ()
+		{
+			dialog.container.add(dialog.overlay).remove();
+			r.flags.modal = false;
+		};
+		/* @section 1.3 init */
+
+		dialog.init = function ()
+		{
+			/* build dialog elements */
+
+			dialog.overlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix);
+			dialog.container = $('<div>').addClass(options.classString.dialog + options.suffix);
+			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix);
+			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
+			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
+			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
+
+			/* append dialog elements */
+
+			dialog.title.add(dialog.box).appendTo(dialog.container);
+
+			/* message */
+
+			if (options.message)
+			{
+				dialog.textMessage = $('<p>' + options.message + '</p>').appendTo(dialog.box);
+			}
+
+			/* prompt input */
+
+			if (options.type === 'prompt')
+			{
+				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialog.box);
+			}
+
+			/* ok button */
+
+			dialog.buttonOk.appendTo(dialog.box);
+
+			/* cancel button */
+
+			if (options.type === 'confirm' || options.type === 'prompt')
+			{
+				dialog.buttonCancel.appendTo(dialog.box);
+			}
+
+			/* append to body */
+
+			dialog.container.add(dialog.overlay).appendTo('body');
+			r.flags.modal = true;
+
+			/* listen */
+
+			dialog.listen();
 		};
 
 		/* init as needed */
