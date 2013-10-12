@@ -24,7 +24,6 @@ r.modules.validator =
 		},
 		parser: 'html5',
 		level: 'all',
-		url: 'http://validator.nu',
-		duration: 500
+		url: 'http://validator.nu'
 	}
 };
