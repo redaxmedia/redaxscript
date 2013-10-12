@@ -25,7 +25,7 @@
 			options = $.extend({}, r.modules.dawanda.options, options || {});
 		}
 
-		var dawanda = this;
+		var dawanda = {};
 
 		/* data and storage object */
 

@@ -60,7 +60,7 @@
 
 		return this.each(function ()
 		{
-			var editor = this;
+			var editor = {};
 
 			editor.textarea = $(this);
 

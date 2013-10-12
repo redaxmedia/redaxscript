@@ -39,99 +39,105 @@
 			options.suffix = options.suffix.frontend;
 		}
 
-		var win = $(window),
-			body = $('body'),
-			dialogOverlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix),
-			dialog = $('<div>').addClass(options.classString.dialog + options.suffix),
-			dialogTitle = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix),
-			dialogBox = $('<div>').addClass(options.classString.dialogBox + options.suffix),
-			buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix),
-			buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix),
-			textMessage = '',
-			fieldPrompt = '';
+		var dialog = {};
 
-		/* prematurely terminate dialog */
+		/* @section 1.1 create dialog */
 
-		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.dialog === true)
+		dialog.init = function ()
+		{
+			var dialogOverlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix),
+				dialog = $('<div>').addClass(options.classString.dialog + options.suffix),
+				dialogTitle = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix),
+				dialogBox = $('<div>').addClass(options.classString.dialogBox + options.suffix),
+				buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix),
+				buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix),
+				textMessage = '',
+				fieldPrompt = '';
+
+			/* append basic elements */
+
+			dialogTitle.add(dialogBox).appendTo(dialog);
+
+			/* message */
+
+			if (options.message)
+			{
+				textMessage = $('<p>' + options.message + '</p>').appendTo(dialogBox);
+			}
+
+			/* prompt input */
+
+			if (options.type === 'prompt')
+			{
+				fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialogBox);
+			}
+
+			/* ok button */
+
+			buttonOk.appendTo(dialogBox);
+
+			/* cancel button */
+
+			if (options.type === 'confirm' || options.type === 'prompt')
+			{
+				buttonCancel.appendTo(dialogBox);
+			}
+
+			/* append to body */
+
+			dialog.add(dialogOverlay).appendTo('body');
+			r.flags.modal = true;
+
+			/* listen for click */
+
+			buttonOk.add(buttonCancel).add(dialogOverlay).on('click', function ()
+			{
+				dialog.add(dialogOverlay).remove();
+				r.flags.modal = false;
+			});
+
+			/* listen for keydown */
+
+			$(window).on('keydown', function (event)
+			{
+				if (event.which === 27)
+				{
+					dialogOverlay.click();
+				}
+			});
+
+			/* callback */
+
+			if (typeof options.callback === 'function')
+			{
+				buttonOk.on('click', function ()
+				{
+					if (options.type === 'prompt')
+					{
+						var value = $.trim(fieldPrompt.val());
+
+						if (value)
+						{
+							options.callback.call(this, value);
+						}
+					}
+					else
+					{
+						options.callback.call(this);
+					}
+				});
+			}
+		};
+
+		/* init as needed */
+
+		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.modal === true)
 		{
 			return false;
 		}
 		else
 		{
-			r.flags.dialog = true;
-		}
-
-		/* append basic elements */
-
-		dialogTitle.add(dialogBox).appendTo(dialog);
-
-		/* message */
-
-		if (options.message)
-		{
-			textMessage = $('<p>' + options.message + '</p>').appendTo(dialogBox);
-		}
-
-		/* prompt input */
-
-		if (options.type === 'prompt')
-		{
-			fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialogBox);
-		}
-
-		/* ok button */
-
-		buttonOk.appendTo(dialogBox);
-
-		/* cancel button */
-
-		if (options.type === 'confirm' || options.type === 'prompt')
-		{
-			buttonCancel.appendTo(dialogBox);
-		}
-
-		/* append to body */
-
-		dialog.add(dialogOverlay).appendTo(body);
-
-		/* listen for click */
-
-		buttonOk.add(buttonCancel).add(dialogOverlay).on('click', function ()
-		{
-			dialog.add(dialogOverlay).remove();
-			r.flags.dialog = false;
-		});
-
-		/* listen for keydown */
-
-		win.on('keydown', function (event)
-		{
-			if (event.which === 27)
-			{
-				dialogOverlay.click();
-			}
-		});
-
-		/* callback */
-
-		if (typeof options.callback === 'function')
-		{
-			buttonOk.on('click', function ()
-			{
-				if (options.type === 'prompt')
-				{
-					var value = $.trim(fieldPrompt.val());
-
-					if (value)
-					{
-						options.callback.call(this, value);
-					}
-				}
-				else
-				{
-					options.callback.call(this);
-				}
-			});
+			dialog.init();
 		}
 	};
 
