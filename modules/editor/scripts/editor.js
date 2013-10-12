@@ -60,9 +60,10 @@
 
 		return this.each(function ()
 		{
-			var editor = {};
-
-			editor.textarea = $(this);
+			var editor =
+				{
+					textarea: $(this)
+				}
 
 			/* @section 1.1 create toolbar */
 

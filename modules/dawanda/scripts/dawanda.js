@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. dawanda
+ *    1.1 get url
+ *    1.2 get data
+ *    1.3 create shortcut
+ *    1.4 register shortcut
+ *    1.5 init
  * 2. startup
  *
  * @since 2.0
@@ -27,12 +32,7 @@
 
 		var dawanda = {};
 
-		/* data and storage object */
-
-		r.modules.dawanda.data = {};
-		r.modules.dawanda.storage = {};
-
-		/* get url */
+		/* @section 1.1 get url */
 
 		dawanda.getURL = function (call, id)
 		{
@@ -54,7 +54,7 @@
 			return output;
 		};
 
-		/* get data */
+		/* @section 1.2 get data */
 
 		dawanda.getData = function (call, id, page, callback)
 		{
@@ -132,7 +132,7 @@
 			}
 		};
 
-		/* create shortcut */
+		/* @section 1.3 create shortcut */
 
 		dawanda.createShortcut = function (i)
 		{
@@ -142,7 +142,7 @@
 			};
 		};
 
-		/* register shortcut */
+		/* @section 1.4 register shortcut */
 
 		dawanda.registerShortcut = function ()
 		{
@@ -153,7 +153,25 @@
 					dawanda.createShortcut(i);
 				}
 			}
-		}();
+		};
+
+		/* @section 1.5 init */
+
+		dawanda.init = function ()
+		{
+			/* data and storage object */
+
+			r.modules.dawanda.data = {};
+			r.modules.dawanda.storage = {};
+
+			/* register shortcut */
+
+			dawanda.registerShortcut();
+		}
+
+		/* init */
+
+		dawanda.init();
 	};
 
 	/* @section 2. startup */
