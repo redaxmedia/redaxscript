@@ -83,34 +83,11 @@
 				buttonCancel.appendTo(dialogBox);
 			}
 
-			/* append to body */
-
-			dialog.add(dialogOverlay).appendTo('body');
-			r.flags.modal = true;
-
 			/* listen for click */
 
-			buttonOk.add(buttonCancel).add(dialogOverlay).on('click', function ()
+			buttonOk.on('click', function ()
 			{
-				dialog.add(dialogOverlay).remove();
-				r.flags.modal = false;
-			});
-
-			/* listen for keydown */
-
-			$(window).on('keydown', function (event)
-			{
-				if (event.which === 27)
-				{
-					dialogOverlay.click();
-				}
-			});
-
-			/* callback */
-
-			if (typeof options.callback === 'function')
-			{
-				buttonOk.on('click', function ()
+				if (typeof options.callback === 'function')
 				{
 					if (options.type === 'prompt')
 					{
@@ -125,8 +102,31 @@
 					{
 						options.callback.call(this);
 					}
-				});
-			}
+				}
+			})
+
+			/* close dialog */
+
+			.add(buttonCancel).add(dialogOverlay).on('click', function ()
+			{
+				dialog.add(dialogOverlay).remove();
+				r.flags.modal = false;
+			});
+
+			/* append to body */
+
+			dialog.add(dialogOverlay).appendTo('body');
+			r.flags.modal = true;
+
+			/* listen for keydown */
+
+			$(window).on('keydown', function (event)
+			{
+				if (event.which === 27)
+				{
+					dialogOverlay.click();
+				}
+			});
 		};
 
 		/* init as needed */
