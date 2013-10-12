@@ -63,7 +63,7 @@
 			var editor =
 				{
 					textarea: $(this)
-				}
+				};
 
 			/* @section 1.1 create toolbar */
 

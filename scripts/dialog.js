@@ -49,15 +49,6 @@
 
 		dialog.open = function ()
 		{
-			/* create dialog elements */
-
-			dialog.overlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix);
-			dialog.container = $('<div>').addClass(options.classString.dialog + options.suffix);
-			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix);
-			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
-			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
-			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
-
 			/* append dialog elements */
 
 			dialog.title.add(dialog.box).appendTo(dialog.container);
@@ -91,7 +82,7 @@
 
 			dialog.container.add(dialog.overlay).appendTo('body');
 			r.flags.modal = true;
-		}
+		};
 
 		/* @section 1.2 listen */
 
@@ -132,7 +123,7 @@
 			{
 				if (event.which === 27)
 				{
-					dialog.overlay.click();
+					dialog.close();
 				}
 			});
 		};
@@ -149,6 +140,15 @@
 
 		dialog.init = function ()
 		{
+			/* create dialog elements */
+
+			dialog.overlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix);
+			dialog.container = $('<div>').addClass(options.classString.dialog + options.suffix);
+			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix);
+			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
+			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
+			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
+			
 			/* open and listen */
 
 			dialog.open();
