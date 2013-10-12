@@ -48,7 +48,7 @@
 			{
 				gallery.links.each(function ()
 				{
-					var link = $(this).addClass(options.classString.galleryPreload),
+					var link = $(this).addClass(options.classString.galleryLoader),
 						url = link.attr('href'),
 						image = $('<img src="' + url + '" />');
 
@@ -63,7 +63,7 @@
 
 					image.on('load', function ()
 					{
-						link.removeClass(options.classString.galleryPreload);
+						link.removeClass(options.classString.galleryLoader);
 					});
 				});
 			};
@@ -85,18 +85,24 @@
 						description: link.data('description') || ''
 					},
 					url = link.attr('href'),
-					image = $('<img src="' + url + '" />');
+					image = $('<img src="' + url + '" />'),
+					timeoutLoad = '';
+
+				/* add loader */
+
+				gallery.container.addClass(options.classString.galleryLoader);
+
+				/* append to body */
+
+				gallery.container.add(gallery.overlay).appendTo('body');
+				r.flags.modal = true;
 
 				/* listen for load */
 
 				image.on('load', function ()
 				{
-					gallery.container.html(image);
-
-					/* append to body */
-
-					gallery.container.add(gallery.overlay).appendTo('body');
-					r.flags.modal = true;
+					clearTimeout(timeoutLoad);
+					gallery.container.removeClass(options.classString.galleryLoader).html(image);
 				})
 
 				/* stop propagation */
@@ -105,6 +111,13 @@
 				{
 					event.stopPropagation();
 				});
+
+				/* close after timeout */
+
+				timeoutLoad = setTimeout(function ()
+				{
+					gallery.close();
+				}, options.timeout);
 			};
 
 			/* @section 1.3 loader */

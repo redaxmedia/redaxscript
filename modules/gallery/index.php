@@ -169,7 +169,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 					/* collect image output */
 
 					$image = '<img src="' . $thumb_route . '" class="image image_gallery" alt="' . $image_description . '" />';
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, 'rel="nofollow"' . $data_string) . '</li>';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, $data_string) . '</li>';
 				}
 			}
 

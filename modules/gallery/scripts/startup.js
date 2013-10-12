@@ -20,7 +20,6 @@ r.modules.gallery =
 		element:
 		{
 			gallery: 'div.js_gallery',
-			galleryLoader: 'img.js_gallery_loader',
 			galleryMeta: 'div.js_gallery_meta',
 			galleryPagination: 'span.js_gallery_pagination',
 			galleryDivider: 'span.js_gallery_divider',
@@ -34,8 +33,6 @@ r.modules.gallery =
 		classString:
 		{
 			gallery: 'js_gallery gallery',
-			galleryPreload: 'js_gallery_preload gallery_preload',
-			galleryReady: 'js_gallery_ready gallery_ready',
 			galleryLoader: 'js_gallery_loader gallery_loader',
 			galleryMeta: 'js_gallery_meta gallery_meta',
 			galleryPagination: 'js_gallery_pagination gallery_pagination',
@@ -47,11 +44,7 @@ r.modules.gallery =
 			buttonPrevious: 'js_gallery_previous gallery_previous',
 			buttonNext: 'js_gallery_next gallery_next'
 		},
-		timeout:
-		{
-			loader: 1000,
-			image: 10000
-		},
+		timeout: 10000,
 		loader: true,
 		preload: true
 	}

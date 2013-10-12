@@ -11,19 +11,36 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 30em */
+ /* @section 1. landscape */
+ 
+ @media screen and (orientation: landscape)
+ {
+	.mobile .gallery_overlay
+	{
+		background: #000;
+		background: rgba(0, 0, 0, 0.8);
+	}
+  
+	.mobile .gallery
+	{
+		bottom: 2%;
+		top: 2%;
+	}
+}
+
+/* @section 2. screen max 30em */
 
 @media screen and (max-width: 30em)
 {
 }
 
-/* @section 2. screen max 20em */
+/* @section 3. screen max 20em */
 
 @media screen and (max-width: 20em)
 {
 }
 
-/* @section 3. screen min 40em */
+/* @section 4. screen min 40em */
 
 @media screen and (min-width: 40em)
 {
