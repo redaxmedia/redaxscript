@@ -2,8 +2,14 @@
  * @tableofcontents
  *
  * 1. gallery
- *    1.1 preload images
- *    1.2 open gallery
+ *    1.1 preload
+ *    1.2 open
+ *    1.3 loader
+ *    1.4 listen
+ *    1.5 previous
+ *    1.6 next
+ *    1.7 close
+ *    1.8 init
  * 2. startup
  *
  * @since 2.0
@@ -31,329 +37,191 @@
 
 		return this.each(function ()
 		{
-			var win = $(window),
-				body = $('body'),
-				gallery = body.find(options.element.gallery),
-				galleryOverlay = body.find(options.element.galleryOverlay);
+			var gallery = {};
 
-			/* prematurely terminate gallery */
+			gallery.list = $(this);
+			gallery.links = gallery.list.find('a');
 
-			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || gallery.length || galleryOverlay.length)
+			/* @section 1.1 preload */
+
+			gallery.preload = function ()
 			{
-				return false;
-			}
-
-			/* @section 1.1 preload images */
-
-			if (options.preload)
-			{
-				$(this).each(function ()
+				gallery.links.each(function ()
 				{
-					var link = $(this),
+					var link = $(this).addClass(options.classString.galleryPreload),
 						url = link.attr('href'),
-						thumb = link.children(),
-						related = thumb.attr('src'),
 						image = $('<img src="' + url + '" />');
-
-					/* add preload class */
-
-					thumb.addClass('image_gallery_preload');
 
 					/* opera load fix */
 
 					if (r.constants.MY_BROWSER === 'opera')
 					{
-						image.appendTo(body).remove();
+						image.appendTo('body').remove();
 					}
 
-					/* full image loaded */
+					/* image loaded */
 
-					image.data('related', related).on('load', function ()
+					image.on('load', function ()
 					{
-						var thumbRelated = $(this).data('related');
-
-						/* remove preload class */
-
-						link.find('img[src="' + thumbRelated + '"]').removeClass('image_gallery_preload');
+						link.removeClass(options.classString.galleryPreload);
 					});
 				});
-			}
+			};
 
-			/* @section 1.2 open gallery */
+			/* @section 1.2 open */
 
-			$(this).on('click', function (event)
+			gallery.open = function (link)
 			{
-				var link = $(this),
-					url = link.attr('href'),
-					thumb = link.children(),
-					image = $('<img src="' + url + '" />'),
-					imageCounter = thumb.data('counter'),
-					imageTotal = thumb.data('total'),
-					imageArtist = thumb.data('artist'),
-					imageDescription = thumb.data('description'),
-					gallery = body.find(options.element.gallery),
-					galleryMeta = gallery.find(options.element.galleryMeta),
-					galleryOverlay = body.find(options.element.galleryOverlay),
-					galleryName = thumb.data('gallery-name'),
-					buttonPrevious = gallery.find(options.element.buttonPrevious),
-					buttonNext = gallery.find(options.element.buttonNext),
-					galleryLoader = '',
-					timeoutLoader = '',
-					timeoutImage = '',
-					intervalVisible = '',
-					output = '';
-
-				/* prematurely terminate gallery */
-
-				if (gallery.length)
-				{
-					return false;
-				}
-
-				/* collect overlay */
-
-				if (galleryOverlay.length === 0)
-				{
-					output = '<div class="' + options.classString.galleryOverlay + ' ' + galleryName + '"></div>';
-				}
-
-				/* collect gallery elements */
-
-				output += '<div class="' + options.classString.gallery + ' ' + galleryName + '"></div>';
-
-				/* append output to body */
-
-				body.append(output);
-
-				/* find related elements */
-
-				galleryOverlay = body.find(options.element.galleryOverlay);
-				gallery = body.find(options.element.gallery);
-
-				/* show loader on timeout */
-
-				if (options.loader)
-				{
-					timeoutLoader = setTimeout(function ()
+				var data =
 					{
-						galleryLoader = $('<div class="' + options.classString.galleryLoader + '" />').appendTo(gallery);
-					}, options.timeout.loader);
-				}
+						counter: link.data('counter'),
+						total: link.data('total'),
+						galleryName: link.data('gallery-name')
+					},
+					meta =
+					{
+						artist: link.data('data-artist') || '',
+						date: link.data('date') || '',
+						description: link.data('description') || ''
+					},
+					url = link.attr('href'),
+					image = $('<img src="' + url + '" />');
 
-				/* close gallery on timeout */
-
-				timeoutImage = setTimeout(function ()
-				{
-					galleryOverlay.click();
-				}, options.timeout.image);
-
-				/* opera load fix */
-
-				if (r.constants.MY_BROWSER === 'opera')
-				{
-					image.appendTo(body).remove();
-				}
-
-				/* full image loaded */
+				/* listen for load */
 
 				image.on('load', function ()
 				{
-					/* clear loader and image timeout */
+					gallery.container.html(image);
 
-					clearTimeout(timeoutLoader);
-					clearTimeout(timeoutImage);
+					/* append to body */
 
-					/* append image and remove loader */
+					gallery.container.add(gallery.overlay).appendTo('body');
+					r.flags.modal = true;
+				})
 
-					if (galleryLoader.length)
+				/* stop propagation */
+
+				.on('click', function (event)
+				{
+					event.stopPropagation();
+				});
+			};
+
+			/* @section 1.3 loader */
+
+			gallery.loader = function ()
+			{
+
+			};
+
+			/* @section 1.4 listen */
+
+			gallery.listen = function ()
+			{
+				/* listen for click */
+
+				gallery.links.on('click', function (event)
+				{
+					var link = $(this);
+
+					gallery.open(link);
+					event.preventDefault();
+				});
+
+				/* close dialog */
+
+				gallery.overlay.add(gallery.container).on('click', function ()
+				{
+					gallery.close();
+				});
+
+				/* listen for keydown */
+
+				$(window).on('keydown', function (event)
+				{
+					/* trigger close action */
+
+					if (event.which === 27)
 					{
-						galleryLoader.remove();
+						gallery.close();
 					}
-					image.appendTo(gallery);
 
-					/* check visible interval */
+					/* trigger previous action */
 
-					intervalVisible = setInterval(function ()
+					if (event.which === 37)
 					{
-						if (image.is(':visible'))
-						{
-							gallery.addClass(options.classString.galleryReady);
-							clearInterval(intervalVisible);
-						}
-					}, options.intervalVisible);
-
-					/* append meta information */
-
-					galleryMeta = $('<div class="' + options.classString.galleryMeta + '"><span class="' + options.classString.galleryPagination + '">' + imageCounter + '<span class="' + options.classString.galleryDivider + '">' + l.gallery_divider + '</span>' + imageTotal + '</span></div>').appendTo(gallery);
-
-					/* append image artist */
-
-					if (imageArtist)
-					{
-						galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</span>');
+						gallery.previous();
 					}
 
-					/* append image description */
+					/* trigger next action */
 
-					if (imageDescription)
+					if (event.which === 39)
 					{
-						galleryMeta.prepend('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</span>');
+						gallery.next();
 					}
 
-					/* append previous and next */
+					/* disable up and down */
 
-					if (imageCounter > 1)
+					if (event.which === 38 || event.which === 40)
 					{
-						buttonPrevious = $('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>').appendTo(gallery);
-					}
-					if (imageCounter < imageTotal)
-					{
-						buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
-					}
-
-					/* fit image after render */
-
-					image.trigger('fit');
-
-					/* next and previous */
-
-					buttonPrevious.add(buttonNext).on('click', function (event)
-					{
-						var link = $(this),
-							checkButtonPrevious = link.hasClass('js_gallery_previous'),
-							checkButtonNext = link.hasClass('js_gallery_next');
-
-						/* calculate image counter */
-
-						if (checkButtonPrevious)
-						{
-							imageCounter--;
-						}
-						else if (checkButtonNext)
-						{
-							imageCounter++;
-						}
-						if (imageCounter > 1 || imageCounter < imageTotal)
-						{
-							gallery.remove();
-							$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
-						}
 						event.preventDefault();
-					});
-
-					/* listen for keydown */
-
-					win.on('keydown', function (event)
-					{
-						/* trigger close action */
-
-						if (event.which === 27)
-						{
-							galleryOverlay.click();
-						}
-
-						/* trigger previous action */
-
-						if (event.which === 37)
-						{
-							buttonPrevious.click();
-						}
-
-						/* trigger next action */
-
-						if (event.which === 39)
-						{
-							buttonNext.click();
-						}
-
-						/* disable up and down */
-
-						if (event.which === 38 || event.which === 40)
-						{
-							event.preventDefault();
-						}
-					});
-
-					/* auto resize */
-
-					if (options.autoResize)
-					{
-						win.on('resize', function ()
-						{
-							image.trigger('fit');
-						});
 					}
 				});
+			};
 
-				/* fit image to viewport */
+			/* @section 1.5 previous */
 
-				image.on('fit', function ()
+			gallery.previous = function ()
+			{
+
+			};
+
+			/* @section 1.6 next */
+
+			gallery.next = function ()
+			{
+
+			};
+
+			/* @section 1.7 close */
+
+			gallery.close = function ()
+			{
+				gallery.container.add(gallery.overlay).detach();
+				r.flags.modal = false;
+			};
+
+			/* @section 1.8 init */
+
+			gallery.init = function ()
+			{
+				/* create gallery elements */
+
+				gallery.overlay = $('<div>').addClass(options.classString.galleryOverlay);
+				gallery.container = $('<div>').addClass(options.classString.gallery);
+
+				/* preload */
+
+				if (options.preload)
 				{
-					var image = $(this),
-						imageHeight = image.data('height') || image.height(),
-						imageWidth = image.data('width') || image.width(),
-						winHeight = win.height(),
-						winWidth = win.width(),
-						minWidth = options.minWidth,
-						scaling = options.scaling,
-						galleryHeight = '',
-						galleryWidth = '';
+					gallery.preload();
+				}
 
-					/* store image dimensions */
+				/* listen */
 
-					image.data({
-						'height': imageHeight,
-						'width': imageWidth
-					});
+				gallery.listen();
+			};
 
-					/* calculate image dimensions */
+			/* init as needed */
 
-					if (imageHeight >= winHeight)
-					{
-						imageWidth = imageWidth * winHeight * scaling / imageHeight;
-						imageHeight = winHeight * scaling;
-					}
-					if (imageWidth >= winWidth)
-					{
-						imageHeight = imageHeight * winWidth * scaling / imageWidth;
-						imageWidth = winWidth * scaling;
-					}
-					if (imageWidth <= minWidth)
-					{
-						imageHeight = imageHeight * minWidth * scaling / imageWidth;
-						imageWidth = minWidth * scaling;
-					}
-
-					/* setup height and width */
-
-					image.css(
-					{
-						'height': imageHeight,
-						'width': imageWidth
-					});
-
-					/* gallery outer dimensions */
-
-					galleryHeight = gallery.outerHeight();
-					galleryWidth = gallery.outerWidth();
-
-					/* setup gallery margin */
-
-					gallery.css(
-					{
-						'margin-top': -galleryHeight / 2,
-						'margin-left': -galleryWidth / 2
-					});
-				});
-
-				/* remove gallery and overlay */
-
-				galleryOverlay.on('click', function ()
-				{
-					gallery.add(galleryOverlay).remove();
-				});
-				event.preventDefault();
-			});
+			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.modal === true)
+			{
+				return false;
+			}
+			else if (gallery.list.length)
+			{
+				gallery.init();
+			}
 		});
 	};
 

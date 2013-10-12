@@ -167,7 +167,7 @@
 			/* register shortcut */
 
 			dawanda.registerShortcut();
-		}
+		};
 
 		/* init */
 

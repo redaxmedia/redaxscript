@@ -14,7 +14,7 @@
 r.modules.gallery =
 {
 	startup: true,
-	selector: 'ul.js_list_gallery li a',
+	selector: 'ul.js_list_gallery',
 	options:
 	{
 		element:
@@ -34,6 +34,7 @@ r.modules.gallery =
 		classString:
 		{
 			gallery: 'js_gallery gallery',
+			galleryPreload: 'js_gallery_preload gallery_preload',
 			galleryReady: 'js_gallery_ready gallery_ready',
 			galleryLoader: 'js_gallery_loader gallery_loader',
 			galleryMeta: 'js_gallery_meta gallery_meta',
@@ -51,11 +52,7 @@ r.modules.gallery =
 			loader: 1000,
 			image: 10000
 		},
-		scaling: 0.9,
-		minWidth: 300,
-		intervalVisible: 500,
 		loader: true,
-		autoResize: true,
 		preload: true
 	}
 };
