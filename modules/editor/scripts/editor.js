@@ -4,18 +4,18 @@
  * 1. editor
  *    1.1 create toolbar
  *    1.2 create preview
- *    1.3 general action
- *    1.4 general insert
+ *    1.3 action
+ *    1.4 insert
  *    1.5 insert html
  *    1.6 insert code
  *    1.7 insert break
- *    1.8 alternate format
- *    1.9 get selection
- *    1.10 check selection
- *    1.11 toggle
+ *    1.8 format
+ *    1.9 toggle
+ *    1.10 get selection
+ *    1.11 check selection
  *    1.12 convert to html
  *    1.13 convert to entity
- *    1.14 post html to textarea
+ *    1.14 post
  *    1.15 validate
  *    1.16 init
  * 2. startup
@@ -180,7 +180,7 @@
 				});
 			};
 
-			/* @section 1.3 general action */
+			/* @section 1.3 action */
 
 			editor.action = function (command)
 			{
@@ -203,7 +203,7 @@
 				}
 			};
 
-			/* @section 1.4 general insert */
+			/* @section 1.4 insert */
 
 			editor.insert = function (command, message, value)
 			{
@@ -274,7 +274,7 @@
 				editor.insertHTML('&lt;break&gt;');
 			};
 
-			/* @section 1.8 alternate format */
+			/* @section 1.8 format */
 
 			editor.format = function (tag)
 			{
@@ -284,43 +284,7 @@
 				}
 			};
 
-			/* @section 1.9 get selection */
-
-			editor.select = function ()
-			{
-				var output = '';
-
-				if (typeof window.getSelection === 'function')
-				{
-					output = window.getSelection().toString();
-				}
-				else if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function')
-				{
-					output = document.selection.createRange().text;
-				}
-				return output;
-			};
-
-			/* @section 1.10 check selection */
-
-			editor.checkSelection = function ()
-			{
-				if (editor.select())
-				{
-					return true;
-				}
-				else
-				{
-					/* alert dialog if no selection */
-
-					$.fn.dialog(
-					{
-						message: l.editor_select_text_first + l.point
-					});
-				}
-			};
-
-			/* @section 1.11 toggle */
+			/* @section 1.9 toggle */
 
 			editor.toggle = function ()
 			{
@@ -339,6 +303,42 @@
 				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl + ', ' + options.element.editorDivider).toggle();
 				editor.textarea.add(editor.preview).toggle();
 				editor.validate();
+			};
+
+			/* @section 1.10 get selection */
+
+			editor.select = function ()
+			{
+				var output = '';
+
+				if (typeof window.getSelection === 'function')
+				{
+					output = window.getSelection().toString();
+				}
+				else if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function')
+				{
+					output = document.selection.createRange().text;
+				}
+				return output;
+			};
+
+			/* @section 1.11 check selection */
+
+			editor.checkSelection = function ()
+			{
+				if (editor.select())
+				{
+					return true;
+				}
+				else
+				{
+					/* alert dialog if no selection */
+
+					$.fn.dialog(
+					{
+						message: l.editor_select_text_first + l.point
+					});
+				}
 			};
 
 			/* @section 1.12 convert to html */
@@ -392,7 +392,7 @@
 				return output;
 			};
 
-			/* @section 1.14 post html to textarea */
+			/* @section 1.14 post */
 
 			editor.post = function ()
 			{
@@ -415,27 +415,7 @@
 
 			editor.init = function ()
 			{
-				/* force xhtml */
-
-				if (options.xhtml)
-				{
-					try
-					{
-						document.execCommand('styleWithCSS', false, false);
-					}
-					catch (exception)
-					{
-						try
-						{
-							document.execCommand('useCSS', false, true);
-						}
-						catch (exception)
-						{
-						}
-					}
-				}
-
-				/* build editor elements */
+				/* create editor elements */
 
 				editor.textarea.hide();
 				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
