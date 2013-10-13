@@ -4,10 +4,12 @@
  * 1. gallery
  *    1.1 preload
  *    1.2 open
- *    1.3 loader
- *    1.4 listen
- *    1.5 previous
- *    1.6 next
+ *    1.3 create control
+ *    1.4 create meta
+ *    1.5 listen
+ *    1.6 action
+ *    1.6.1 previous
+ *    1.6.2 next
  *    1.7 close
  *    1.8 init
  * 2. startup
@@ -72,21 +74,22 @@
 
 			gallery.open = function (link)
 			{
-				var data =
-					{
-						counter: link.data('counter'),
-						total: link.data('total'),
-						galleryName: link.data('gallery-name')
-					},
-					meta =
-					{
-						artist: link.data('data-artist') || '',
-						date: link.data('date') || '',
-						description: link.data('description') || ''
-					},
-					url = link.attr('href'),
+				var url = link.attr('href'),
 					image = $('<img src="' + url + '" />'),
 					timeoutLoad = '';
+
+				gallery.data =
+				{
+					counter: link.data('counter'),
+					total: link.data('total'),
+					id: link.data('id')
+				};
+				gallery.meta =
+				{
+					artist: link.data('data-artist') || '',
+					date: link.data('date') || '',
+					description: link.data('description') || ''
+				};
 
 				/* add loader */
 
@@ -103,6 +106,11 @@
 				{
 					clearTimeout(timeoutLoad);
 					gallery.container.removeClass(options.classString.galleryLoader).html(image);
+
+					/* create control and meta */
+
+					gallery.createControl();
+					gallery.createMeta();
 				})
 
 				/* stop propagation */
@@ -120,14 +128,52 @@
 				}, options.timeout);
 			};
 
-			/* @section 1.3 loader */
+			/* @section 1.3 create control */
 
-			gallery.loader = function ()
+			gallery.createControl = function ()
+			{
+				if (gallery.data.total > 1)
+				{
+					/* previous control */
+
+					if (gallery.data.counter > 1)
+					{
+						gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
+
+						/* listen for click */
+
+						.on('click', function (event)
+						{
+							gallery.previous();
+							event.stopPropagation();
+						}).appendTo(gallery.container);
+					}
+
+					/* next control */
+
+					if (gallery.data.counter < gallery.data.total)
+					{
+						gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
+
+						/* listen for click */
+
+						.on('click', function (event)
+						{
+							gallery.next();
+							event.stopPropagation();
+						}).appendTo(gallery.container);
+					}
+				}
+			};
+
+			/* @section 1.4 create meta */
+
+			gallery.createMeta = function ()
 			{
 
 			};
 
-			/* @section 1.4 listen */
+			/* @section 1.5 listen */
 
 			gallery.listen = function ()
 			{
@@ -182,18 +228,46 @@
 				});
 			};
 
-			/* @section 1.5 previous */
+			/* @section 1.6 action */
+
+			gallery.action = function (mode)
+			{
+				var related = $('#' + gallery.data.id),
+					counter = gallery.data.counter,
+					link = '';
+
+				if (mode === 'previous')
+				{
+					counter--;
+				}
+				else if (mode === 'next')
+				{
+					counter++;
+				}
+				if (counter > 1 || counter < gallery.data.total)
+				{
+					link = related.find('a[data-counter="' + counter + '"]');
+
+					if (link.length)
+					{
+						gallery.close();
+						gallery.open(link);
+					}
+				}
+			};
+
+			/* @section 1.6.1 previous */
 
 			gallery.previous = function ()
 			{
-
+				gallery.action('previous');
 			};
 
-			/* @section 1.6 next */
+			/* @section 1.6.2 next */
 
 			gallery.next = function ()
 			{
-
+				gallery.action('next');
 			};
 
 			/* @section 1.7 close */

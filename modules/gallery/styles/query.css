@@ -1,9 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 30em
- * 2. screen max 20em
- * 3. screen min 40em
+ * 1. landscape
+ * 2. screen max 30em
  *
  * @since 2.0
  *
@@ -11,7 +10,7 @@
  * @author Henry Ruhs
  */
 
- /* @section 1. landscape */
+/* @section 1. landscape */
  
  @media screen and (orientation: landscape)
  {
@@ -32,16 +31,8 @@
 
 @media screen and (max-width: 30em)
 {
-}
-
-/* @section 3. screen max 20em */
-
-@media screen and (max-width: 20em)
-{
-}
-
-/* @section 4. screen min 40em */
-
-@media screen and (min-width: 40em)
-{
+	.gallery_control
+	{
+		font-size: 8em;
+	}
 }

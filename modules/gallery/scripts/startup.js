@@ -17,19 +17,6 @@ r.modules.gallery =
 	selector: 'ul.js_list_gallery',
 	options:
 	{
-		element:
-		{
-			gallery: 'div.js_gallery',
-			galleryMeta: 'div.js_gallery_meta',
-			galleryPagination: 'span.js_gallery_pagination',
-			galleryDivider: 'span.js_gallery_divider',
-			galleryArtist: 'span.js_gallery_artist',
-			galleryDescription: 'span.js_gallery_description',
-			galleryLabel: 'span.js_gallery_label',
-			galleryOverlay: 'div.js_gallery_overlay',
-			buttonPrevious: 'a.js_gallery_previous',
-			buttonNext: 'a.js_gallery_next'
-		},
 		classString:
 		{
 			gallery: 'js_gallery gallery',
@@ -41,8 +28,8 @@ r.modules.gallery =
 			galleryDescription: 'js_gallery_description gallery_description',
 			galleryLabel: 'js_gallery_label gallery_label',
 			galleryOverlay: 'js_gallery_overlay gallery_overlay',
-			buttonPrevious: 'js_gallery_previous gallery_previous',
-			buttonNext: 'js_gallery_next gallery_next'
+			controlPrevious: 'js_gallery_previous gallery_control gallery_control_previous',
+			controlNext: 'js_gallery_next gallery_control gallery_control_next'
 		},
 		timeout: 10000,
 		loader: true,

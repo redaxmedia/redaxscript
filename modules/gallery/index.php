@@ -116,7 +116,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 		/* collect gallery */
 
 		$gallery_total = count($gallery_directory_array);
-		$gallery_name = str_replace('/', '_', $directory);
+		$gallery_id = str_replace('/', '_', $directory);
 		if ($gallery_total)
 		{
 			foreach ($gallery_directory_array as $value)
@@ -152,7 +152,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 					/* build data string */
 
-					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
+					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-id="' . $gallery_id . '"';
 					if ($image_artist)
 					{
 						$data_string .= ' data-artist="' . $image_artist . '"';
@@ -177,7 +177,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 			if ($output)
 			{
-				$output = '<ul id="' . $gallery_name . '" class="js_list_gallery list_gallery ' . $gallery_name . ' clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_id . '" class="js_list_gallery list_gallery ' . $gallery_id . ' clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}

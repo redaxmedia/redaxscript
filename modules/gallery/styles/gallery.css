@@ -1,10 +1,12 @@
 /**
  * @tableofcontents
  *
- * 1. gallery
- * 2. gallery overlay
- * 3. fadein effect
- * 4. item gallery
+ * 1. font face
+ * 2. gallery
+ * 3. gallery overlay
+ * 4. fadein effect
+ * 5. gallery loader
+ *    5. gallery list
  *
  * @since 2.0
  *
@@ -12,7 +14,7 @@
  * @author Henry Ruhs
  */
 
- /* @section 1. font face */
+/* @section 1. font face */
 
  @font-face
 {
@@ -41,7 +43,6 @@
 	border-radius: 0.25em;
 	bottom: 0;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-	display: block;
 	left: 0;
 	margin: auto;
 	max-height: 100%;
@@ -105,6 +106,59 @@
 .gallery.gallery_loader:after
 {
 	font-size: 6em;
+}
+
+/* gallery control */
+
+.gallery_control
+{
+	color: #333;
+	color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	font: 16em/0 'icon gallery';
+	position: fixed;
+	text-indent: -999em;
+	top: 50%;
+	width: 40%;
+	z-index: 1200;
+}
+
+.gallery_control:hover
+{
+	color: #000;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.gallery_control:before, .gallery_control:after
+{
+	position: absolute;
+	text-indent: 0;
+}
+
+/* previous */
+
+.gallery_control_previous
+{
+	left: 5%;
+}
+
+.gallery_control_previous:before
+{
+	left: 0;
+	content: '<';
+}
+
+/* next */
+
+.gallery_control_next
+{
+	right: 5%;
+}
+
+.gallery_control_next:after
+{
+	right: 0;
+	content: '>';
 }
 
 /* @section 5. gallery list */

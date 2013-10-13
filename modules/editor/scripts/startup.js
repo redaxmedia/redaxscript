@@ -19,13 +19,8 @@ r.modules.editor =
 	{
 		element:
 		{
-			editor: 'div.js_editor',
-			editorPreview: 'div.js_editor_preview',
-			editorToolbar: 'div.js_toolbar',
 			editorDivider: 'a.js_editor_divider',
-			editorControl: 'a.js_editor_control',
-			editorSourceCode: 'a.js_editor_control_source_code',
-			editorWysiwyg: 'a.js_editor_control_wysiwyg'
+			editorControl: 'a.js_editor_control'
 		},
 		classString:
 		{

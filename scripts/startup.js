@@ -59,14 +59,6 @@
 		{
 			options:
 			{
-				element:
-				{
-					dialog: 'div.js_dialog',
-					dialogOverlay: 'div.js_dialog_overlay',
-					buttonOk: 'a.js_ok',
-					buttonCancel: 'a.js_cancel',
-					fieldPrompt: 'input.js_prompt'
-				},
 				classString:
 				{
 					dialog: 'js_dialog dialog dialog',
