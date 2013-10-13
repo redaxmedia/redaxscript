@@ -411,7 +411,7 @@
 
 			/* init as needed */
 
-			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.modal === true)
+			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
 			{
 				return false;
 			}

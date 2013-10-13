@@ -148,16 +148,19 @@
 			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
 			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
 			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
-			
+
 			/* open and listen */
 
-			dialog.open();
-			dialog.listen();
+			if (!r.flags.modal)
+			{
+				dialog.open();
+				dialog.listen();
+			}
 		};
 
 		/* init as needed */
 
-		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || r.flags.modal === true)
+		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
 		{
 			return false;
 		}
