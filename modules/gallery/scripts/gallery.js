@@ -4,14 +4,15 @@
  * 1. gallery
  *    1.1 preload
  *    1.2 open
- *    1.3 create control
- *    1.4 create meta
- *    1.5 listen
- *    1.6 action
- *    1.6.1 previous
- *    1.6.2 next
- *    1.7 close
- *    1.8 init
+ *    1.3 resize
+ *    1.4 create control
+ *    1.5 create meta
+ *    1.6 listen
+ *    1.7 action
+ *    1.7.1 previous
+ *    1.7.2 next
+ *    1.8 close
+ *    1.9 init
  * 2. startup
  *
  * @since 2.0
@@ -116,6 +117,10 @@
 					}
 					gallery.container.html(image);
 
+					/* resize */
+
+					gallery.resize();
+
 					/* create control and meta */
 
 					gallery.createControl();
@@ -137,7 +142,62 @@
 				}, options.timeout);
 			};
 
-			/* @section 1.3 create control */
+			/* @section 1.3 resize */
+
+			gallery.resize = function ()
+			{
+				var win = $(window),
+					winHeight = win.height(),
+					winWidth = win.width(),
+					image = gallery.container.children('img'),
+					imageHeight = image.data('height') || image.height(),
+					imageWidth = image.data('width') || image.width(),
+					galleryHeight = '',
+					galleryWidth = '';
+
+				/* store image dimensions */
+
+				image.data({
+					'height': imageHeight,
+					'width': imageWidth
+				});
+
+				/* calculate dimensions */
+
+				if (imageHeight > winHeight)
+				{
+					imageWidth = imageWidth * winHeight * options.scaling / imageHeight;
+					imageHeight = winHeight * options.scaling;
+				}
+				if (imageWidth > winWidth)
+				{
+					imageHeight = imageHeight * winWidth * options.scaling / imageWidth;
+					imageWidth = winWidth * options.scaling;
+				}
+
+				/* adjust image dimensions */
+
+				image.css(
+				{
+					'height': imageHeight,
+					'width': imageWidth
+				});
+
+				/* get gallery dimensions */
+
+				galleryHeight = gallery.container.outerHeight();
+				galleryWidth = gallery.container.outerWidth();
+
+				/* adjust gallery offset */
+
+				gallery.container.css(
+				{
+					'margin-top': -galleryHeight / 2,
+					'margin-left': -galleryWidth / 2
+				});
+			};
+
+			/* @section 1.4 create control */
 
 			gallery.createControl = function ()
 			{
@@ -175,7 +235,7 @@
 				}
 			};
 
-			/* @section 1.4 create meta */
+			/* @section 1.5 create meta */
 
 			gallery.createMeta = function ()
 			{
@@ -207,7 +267,7 @@
 				gallery.meta.appendTo(gallery.container);
 			};
 
-			/* @section 1.5 listen */
+			/* @section 1.6 listen */
 
 			gallery.listen = function ()
 			{
@@ -223,7 +283,7 @@
 
 				/* close dialog */
 
-				gallery.overlay.add(gallery.container).on('click', function ()
+				gallery.overlay.on('click', function ()
 				{
 					gallery.close();
 				});
@@ -259,10 +319,17 @@
 					{
 						event.preventDefault();
 					}
+				})
+				
+				/* listen for resize */
+				
+				.on('resize', function ()
+				{
+					gallery.resize();
 				});
 			};
 
-			/* @section 1.6 action */
+			/* @section 1.7 action */
 
 			gallery.action = function (mode)
 			{
@@ -296,21 +363,21 @@
 				}
 			};
 
-			/* @section 1.6.1 previous */
+			/* @section 1.7.1 previous */
 
 			gallery.previous = function ()
 			{
 				gallery.action('previous');
 			};
 
-			/* @section 1.6.2 next */
+			/* @section 1.7.2 next */
 
 			gallery.next = function ()
 			{
 				gallery.action('next');
 			};
 
-			/* @section 1.7 close */
+			/* @section 1.8 close */
 
 			gallery.close = function ()
 			{
@@ -318,7 +385,7 @@
 				r.flags.modal = false;
 			};
 
-			/* @section 1.8 init */
+			/* @section 1.9 init */
 
 			gallery.init = function ()
 			{

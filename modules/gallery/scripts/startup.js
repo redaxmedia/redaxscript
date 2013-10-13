@@ -29,15 +29,17 @@ r.modules.gallery =
 			controlPrevious: 'js_gallery_previous gallery_control gallery_control_previous',
 			controlNext: 'js_gallery_next gallery_control gallery_control_next'
 		},
+		scaling: 0.92,
 		timeout: 10000,
 		loader: true,
 		preload: true
 	}
 };
 
-/* disable preload */
+/* mobile */
 
 if (r.constants.MY_MOBILE)
 {
+	r.modules.gallery.options.scaling = 0.98;
 	r.modules.gallery.options.preload = false;
 }

@@ -20,12 +20,6 @@
 		background: #000;
 		background: rgba(0, 0, 0, 0.8);
 	}
-  
-	.mobile .gallery
-	{
-		bottom: 2%;
-		top: 2%;
-	}
 }
 
 /* @section 2. screen max 30em */
@@ -35,6 +29,11 @@
 	.gallery_control
 	{
 		font-size: 8em;
+	}
+
+	.gallery_meta
+	{
+		display: none;
 	}
 }
 
