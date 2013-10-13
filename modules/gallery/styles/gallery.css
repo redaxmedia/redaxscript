@@ -83,7 +83,7 @@
 	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
 	color: #000;
 	color: rgba(0, 0, 0, 0.3);
-	content: '2';
+	content: '0';
 	font: 3em/2em 'icon gallery';
 	left: 50%;
 	margin: -1em 0 0 -0.5em;
@@ -156,7 +156,7 @@
 	color: #333;
 	color: rgba(0, 0, 0, 0.3);
     bottom: 0;
-    font: bold 0.75em arial;
+    font: bold 2em arial;
     left: 0;
 	padding: 2% 0;
     position: absolute;
@@ -166,12 +166,17 @@
 
 .gallery_artist
 {
-	font-size: 1.25em;
+	font-size: 1.5em;
 }
 
 .gallery_description
 {
-	font-size: 1em;
+	font-size: 1.75em;
+}
+
+.gallery_pagination
+{
+	margin-top: 0.5em;
 }
 
 /* @section 7. gallery list */
