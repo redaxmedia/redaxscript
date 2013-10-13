@@ -6,7 +6,8 @@
  * 3. gallery overlay
  * 4. fadein effect
  * 5. gallery loader
- *    5. gallery list
+ * 6. gallery meta
+ * 7. gallery list
  *
  * @since 2.0
  *
@@ -161,7 +162,31 @@
 	content: '>';
 }
 
-/* @section 5. gallery list */
+/* @section 6. gallery meta */
+
+.gallery_meta
+{
+	color: #333;
+	color: rgba(0, 0, 0, 0.3);
+    bottom: 5%;
+    font: bold 0.75em arial;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+.gallery_artist
+{
+	font-size: 1.25em;
+}
+
+.gallery_description
+{
+	font-size: 1em;
+}
+
+/* @section 7. gallery list */
 
 .item_gallery
 {

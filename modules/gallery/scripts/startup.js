@@ -23,10 +23,8 @@ r.modules.gallery =
 			galleryLoader: 'js_gallery_loader gallery_loader',
 			galleryMeta: 'js_gallery_meta gallery_meta',
 			galleryPagination: 'js_gallery_pagination gallery_pagination',
-			galleryDivider: 'js_gallery_divider gallery_divider',
 			galleryArtist: 'js_gallery_artist gallery_artist',
 			galleryDescription: 'js_gallery_description gallery_description',
-			galleryLabel: 'js_gallery_label gallery_label',
 			galleryOverlay: 'js_gallery_overlay gallery_overlay',
 			controlPrevious: 'js_gallery_previous gallery_control gallery_control_previous',
 			controlNext: 'js_gallery_next gallery_control gallery_control_next'

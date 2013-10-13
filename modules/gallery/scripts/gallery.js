@@ -78,14 +78,13 @@
 					image = $('<img src="' + url + '" />'),
 					timeoutLoad = '';
 
+				/* data */
+
 				gallery.data =
 				{
 					counter: link.data('counter'),
 					total: link.data('total'),
-					id: link.data('id')
-				};
-				gallery.meta =
-				{
+					id: link.data('id'),
 					artist: link.data('data-artist') || '',
 					date: link.data('date') || '',
 					description: link.data('description') || ''
@@ -170,7 +169,32 @@
 
 			gallery.createMeta = function ()
 			{
+				gallery.meta = $('<div>').addClass(options.classString.galleryMeta);
 
+				/* artist */
+
+				if (gallery.data.artist)
+				{
+					gallery.artist = $('<div data-label="' + l.gallery_image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
+				}
+
+				/* description */
+
+				if (gallery.data.description)
+				{
+					gallery.description = $('<div data-label="' + l.gallery_image_description + '">' + gallery.data.description + '</div>').addClass(options.classString.galleryDescription).appendTo(gallery.meta);
+				}
+
+				/* pagination */
+
+				if (gallery.data.total > 1)
+				{
+					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery_divider + gallery.data.total + '</div>').addClass(options.classString.galleryPagination).appendTo(gallery.meta);
+				}
+
+				/* append meta */
+
+				gallery.meta.appendTo(gallery.container);
 			};
 
 			/* @section 1.5 listen */
@@ -244,6 +268,9 @@
 				{
 					counter++;
 				}
+
+				/* close and open gallery */
+
 				if (counter > 1 || counter < gallery.data.total)
 				{
 					link = related.find('a[data-counter="' + counter + '"]');

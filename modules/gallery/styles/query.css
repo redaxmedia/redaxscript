@@ -3,6 +3,7 @@
  *
  * 1. landscape
  * 2. screen max 30em
+ * 3. screen max 20em
  *
  * @since 2.0
  *
@@ -34,5 +35,15 @@
 	.gallery_control
 	{
 		font-size: 8em;
+	}
+}
+
+/* @section 3. screen max 20em */
+
+@media screen and (max-width: 20em)
+{
+	.gallery_control
+	{
+		font-size: 4em;
 	}
 }
