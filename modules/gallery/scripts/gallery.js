@@ -320,9 +320,9 @@
 						event.preventDefault();
 					}
 				})
-				
+
 				/* listen for resize */
-				
+
 				.on('resize', function ()
 				{
 					gallery.resize();
@@ -333,34 +333,32 @@
 
 			gallery.action = function (mode)
 			{
-				if (gallery.data)
+				var related = $('#' + gallery.data.id),
+					counter = gallery.data.counter,
+					link = '';
+
+				if (mode === 'previous')
 				{
-					var related = $('#' + gallery.data.id),
-						counter = gallery.data.counter,
-						link = '';
+					counter--;
+				}
+				else if (mode === 'next')
+				{
+					counter++;
+				}
 
-					if (mode === 'previous')
+				/* close and open gallery */
+
+				if (counter > 1 || counter < gallery.data.total)
+				{
+					link = related.find('a[data-counter="' + counter + '"]');
+
+					if (link.length)
 					{
-						counter--;
-					}
-					else if (mode === 'next')
-					{
-						counter++;
-					}
-
-					/* close and open gallery */
-
-					if (counter > 1 || counter < gallery.data.total)
-					{
-						link = related.find('a[data-counter="' + counter + '"]');
-
-						if (link.length)
-						{
-							gallery.close();
-							gallery.open(link);
-						}
+						gallery.close();
+						gallery.open(link);
 					}
 				}
+
 			};
 
 			/* @section 1.7.1 previous */
@@ -382,6 +380,7 @@
 			gallery.close = function ()
 			{
 				gallery.container.add(gallery.overlay).detach();
+				gallery.data = {};
 				r.flags.modal = false;
 			};
 
@@ -389,6 +388,10 @@
 
 			gallery.init = function ()
 			{
+				/* data object */
+
+				gallery.data = {};
+
 				/* create gallery elements */
 
 				gallery.overlay = $('<div>').addClass(options.classString.galleryOverlay);
