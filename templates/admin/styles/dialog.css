@@ -20,7 +20,7 @@
 
 /* @section 2. fadein effect */
 
-.dialog_overlay_admin, .dialog_admin
+.dialog_admin, .dialog_overlay_admin
 {
 	-moz-animation: fade 0.4s;
 	-ms-animation: fade 0.4s;
