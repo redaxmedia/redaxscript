@@ -45,7 +45,7 @@
 	bottom: 0;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 	left: 0;
-	margin: auto;
+	margin: 0 auto;
 	max-height: 100%;
 	max-width: 100%;
 	position: absolute;
@@ -197,9 +197,4 @@
 .item_gallery, .image_gallery
 {
 	float: left;
-}
-
-.link_gallery
-{
-	display: block;
 }
