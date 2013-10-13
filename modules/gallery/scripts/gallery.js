@@ -256,29 +256,32 @@
 
 			gallery.action = function (mode)
 			{
-				var related = $('#' + gallery.data.id),
-					counter = gallery.data.counter,
-					link = '';
-
-				if (mode === 'previous')
+				if (gallery.data)
 				{
-					counter--;
-				}
-				else if (mode === 'next')
-				{
-					counter++;
-				}
+					var related = $('#' + gallery.data.id),
+						counter = gallery.data.counter,
+						link = '';
 
-				/* close and open gallery */
-
-				if (counter > 1 || counter < gallery.data.total)
-				{
-					link = related.find('a[data-counter="' + counter + '"]');
-
-					if (link.length)
+					if (mode === 'previous')
 					{
-						gallery.close();
-						gallery.open(link);
+						counter--;
+					}
+					else if (mode === 'next')
+					{
+						counter++;
+					}
+
+					/* close and open gallery */
+
+					if (counter > 1 || counter < gallery.data.total)
+					{
+						link = related.find('a[data-counter="' + counter + '"]');
+
+						if (link.length)
+						{
+							gallery.close();
+							gallery.open(link);
+						}
 					}
 				}
 			};
