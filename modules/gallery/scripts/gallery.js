@@ -92,7 +92,10 @@
 
 				/* add loader */
 
-				gallery.container.addClass(options.classString.galleryLoader);
+				if (options.loader)
+				{
+					gallery.container.addClass(options.classString.galleryLoader);
+				}
 
 				/* append to body */
 
@@ -104,7 +107,14 @@
 				image.on('load', function ()
 				{
 					clearTimeout(timeoutLoad);
-					gallery.container.removeClass(options.classString.galleryLoader).html(image);
+
+					/* remove loader */
+
+					if (options.loader)
+					{
+						gallery.container.removeClass(options.classString.galleryLoader);
+					}
+					gallery.container.html(image);
 
 					/* create control and meta */
 
