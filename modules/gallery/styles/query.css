@@ -2,8 +2,8 @@
  * @tableofcontents
  *
  * 1. landscape
- * 2. screen max 30em
- * 3. screen max 20em
+ * 2. screen max 50em
+ * 3. screen max 40em
  *
  * @since 2.0
  *
@@ -22,27 +22,22 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 2. screen max 50em */
 
-@media screen and (max-width: 30em)
+@media screen and (max-width: 50em)
 {
 	.gallery_control
 	{
-		font-size: 8em;
-	}
-
-	.gallery_meta
-	{
-		display: none;
+		font-size: 28vw;
 	}
 }
 
-/* @section 3. screen max 20em */
+/* @section 3. screen max 40em */
 
-@media screen and (max-width: 20em)
+@media screen and (max-width: 40em)
 {
-	.gallery_control
+	.gallery_meta
 	{
-		font-size: 4em;
+		display: none;
 	}
 }

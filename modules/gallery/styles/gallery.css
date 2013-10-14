@@ -33,7 +33,7 @@
 	z-index: 1100;
 }
 
-.gallery img
+.gallery_media
 {
 	-mox-border-radius: 0.25em;
 	-moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
@@ -59,7 +59,7 @@
 
 /* @section 4. fadein effect */
 
-.gallery_overlay, .gallery
+.gallery_media, .gallery_meta, .gallery_overlay
 {
 	-moz-animation: fade 0.4s;
 	-ms-animation: fade 0.4s;

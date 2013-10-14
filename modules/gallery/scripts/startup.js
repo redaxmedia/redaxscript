@@ -21,6 +21,7 @@ r.modules.gallery =
 		{
 			gallery: 'js_gallery gallery',
 			galleryLoader: 'js_gallery_loader gallery_loader',
+			galleryMedia: 'js_gallery_media gallery_media',
 			galleryMeta: 'js_gallery_meta gallery_meta',
 			galleryPagination: 'js_gallery_pagination gallery_pagination',
 			galleryArtist: 'js_gallery_artist gallery_artist',

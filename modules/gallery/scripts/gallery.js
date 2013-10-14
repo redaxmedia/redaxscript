@@ -73,7 +73,7 @@
 
 			/* @section 1.2 open */
 
-			gallery.open = function (link)
+			gallery.open = function (link, mode)
 			{
 				var url = link.attr('href'),
 					image = $('<img src="' + url + '" />'),
@@ -100,12 +100,19 @@
 
 				/* append to body */
 
-				gallery.container.add(gallery.overlay).appendTo('body');
-				r.flags.modal = true;
+				gallery.container.appendTo('body');
+
+				/* complete open */
+
+				if (!mode)
+				{
+					gallery.overlay.appendTo('body');
+					r.flags.modal = true;
+				}
 
 				/* listen for load */
 
-				image.on('load', function ()
+				image.addClass(options.classString.galleryMedia).on('load', function ()
 				{
 					clearTimeout(timeoutLoad);
 
@@ -313,9 +320,9 @@
 						gallery.next();
 					}
 
-					/* disable up and down */
+					/* disable cursors */
 
-					if (event.which === 38 || event.which === 40)
+					if (event.which > 36 && event.which < 41)
 					{
 						event.preventDefault();
 					}
@@ -354,8 +361,8 @@
 
 					if (link.length)
 					{
-						gallery.close();
-						gallery.open(link);
+						gallery.close(mode);
+						gallery.open(link, mode);
 					}
 				}
 
@@ -377,11 +384,18 @@
 
 			/* @section 1.8 close */
 
-			gallery.close = function ()
+			gallery.close = function (mode)
 			{
-				gallery.container.add(gallery.overlay).detach();
 				gallery.data = {};
-				r.flags.modal = false;
+				gallery.container.detach();
+
+				/* complete close */
+
+				if (!mode)
+				{
+					gallery.overlay.detach();
+					r.flags.modal = false;
+				}
 			};
 
 			/* @section 1.9 init */
