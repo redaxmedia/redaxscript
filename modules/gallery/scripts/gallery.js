@@ -102,7 +102,7 @@
 
 				gallery.container.appendTo('body');
 
-				/* complete open */
+				/* initial open */
 
 				if (!mode)
 				{
@@ -130,7 +130,10 @@
 
 					/* create control and meta */
 
-					gallery.createControl();
+					if (gallery.data.total > 1)
+					{
+						gallery.createControl();
+					}
 					gallery.createMeta();
 				})
 
@@ -164,7 +167,8 @@
 
 				/* store image dimensions */
 
-				image.data({
+				image.data(
+				{
 					'height': imageHeight,
 					'width': imageWidth
 				});
@@ -208,37 +212,34 @@
 
 			gallery.createControl = function ()
 			{
-				if (gallery.data.total > 1)
+				/* previous control */
+
+				if (gallery.data.counter > 1)
 				{
-					/* previous control */
+					gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
 
-					if (gallery.data.counter > 1)
+					/* listen for click */
+
+					.on('click', function (event)
 					{
-						gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
+						gallery.previous();
+						event.stopPropagation();
+					}).appendTo(gallery.container);
+				}
 
-						/* listen for click */
+				/* next control */
 
-						.on('click', function (event)
-						{
-							gallery.previous();
-							event.stopPropagation();
-						}).appendTo(gallery.container);
-					}
+				if (gallery.data.counter < gallery.data.total)
+				{
+					gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
 
-					/* next control */
+					/* listen for click */
 
-					if (gallery.data.counter < gallery.data.total)
+					.on('click', function (event)
 					{
-						gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
-
-						/* listen for click */
-
-						.on('click', function (event)
-						{
-							gallery.next();
-							event.stopPropagation();
-						}).appendTo(gallery.container);
-					}
+						gallery.next();
+						event.stopPropagation();
+					}).appendTo(gallery.container);
 				}
 			};
 
@@ -288,13 +289,6 @@
 					event.preventDefault();
 				});
 
-				/* close dialog */
-
-				gallery.overlay.on('click', function ()
-				{
-					gallery.close();
-				});
-
 				/* listen for keydown */
 
 				$(window).on('keydown', function (event)
@@ -333,6 +327,13 @@
 				.on('resize', function ()
 				{
 					gallery.resize();
+				});
+
+				/* listen for click */
+
+				gallery.overlay.on('click', function ()
+				{
+					gallery.close();
 				});
 			};
 
@@ -389,7 +390,7 @@
 				gallery.data = {};
 				gallery.container.detach();
 
-				/* complete close */
+				/* ultimate close */
 
 				if (!mode)
 				{
