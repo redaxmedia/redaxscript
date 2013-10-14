@@ -104,7 +104,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/*/styles/*.css'
+					'modules/*/styles/*.css',
+					'!modules/gallery/styles/query.css'
 				]
 			},
 			templates:
