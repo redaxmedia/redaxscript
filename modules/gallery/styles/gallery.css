@@ -81,7 +81,7 @@
 	-webkit-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
 	-webkit-transform: scale(0);
 	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
-	color: #000;
+	color: #333;
 	color: rgba(0, 0, 0, 0.3);
 	content: '0';
 	font: 3em/2em 'icon gallery';

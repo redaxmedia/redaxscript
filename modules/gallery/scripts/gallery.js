@@ -55,13 +55,6 @@
 						url = link.attr('href'),
 						image = $('<img src="' + url + '" />');
 
-					/* opera load fix */
-
-					if (r.constants.MY_BROWSER === 'opera')
-					{
-						image.appendTo('body').remove();
-					}
-
 					/* image loaded */
 
 					image.on('load', function ()
@@ -218,7 +211,7 @@
 
 				/* listen for click */
 
-				.on('click', function (event)
+				.one('click', function (event)
 				{
 					gallery.previous();
 					event.stopPropagation();
@@ -230,7 +223,7 @@
 
 				/* listen for click */
 
-				.on('click', function (event)
+				.one('click', function (event)
 				{
 					gallery.next();
 					event.stopPropagation();
@@ -401,7 +394,7 @@
 			gallery.close = function (mode)
 			{
 				gallery.data = {};
-				gallery.container.detach();
+				gallery.container.empty().detach();
 
 				/* ultimate close */
 
