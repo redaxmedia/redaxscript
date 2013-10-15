@@ -214,33 +214,27 @@
 			{
 				/* previous control */
 
-				if (gallery.data.counter > 1)
+				gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
+
+				/* listen for click */
+
+				.on('click', function (event)
 				{
-					gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
-
-					/* listen for click */
-
-					.on('click', function (event)
-					{
-						gallery.previous();
-						event.stopPropagation();
-					}).appendTo(gallery.container);
-				}
+					gallery.previous();
+					event.stopPropagation();
+				}).appendTo(gallery.container);
 
 				/* next control */
 
-				if (gallery.data.counter < gallery.data.total)
+				gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
+
+				/* listen for click */
+
+				.on('click', function (event)
 				{
-					gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
-
-					/* listen for click */
-
-					.on('click', function (event)
-					{
-						gallery.next();
-						event.stopPropagation();
-					}).appendTo(gallery.container);
-				}
+					gallery.next();
+					event.stopPropagation();
+				}).appendTo(gallery.container);
 			};
 
 			/* @section 1.5 create meta */
@@ -345,13 +339,32 @@
 					counter = gallery.data.counter,
 					link = '';
 
+				/* previous action */
+
 				if (mode === 'previous')
 				{
-					counter--;
+					if (counter === 1)
+					{
+						counter = gallery.data.total;
+					}
+					else
+					{
+						counter--;
+					}
 				}
+
+				/* next action */
+
 				else if (mode === 'next')
 				{
-					counter++;
+					if (counter === gallery.data.total)
+					{
+						counter = 1;
+					}
+					else
+					{
+						counter++;
+					}
 				}
 
 				/* close and open gallery */
