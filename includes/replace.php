@@ -4,7 +4,7 @@
  * break up
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Replace
@@ -30,7 +30,7 @@ function break_up($input = '')
  * truncate
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Replace
@@ -63,7 +63,7 @@ function truncate($input = '', $length = '', $end = '')
  * minify
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Replace
@@ -147,7 +147,7 @@ function minify($type = '', $input = '')
  * entity
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Replace

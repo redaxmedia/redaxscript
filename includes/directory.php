@@ -3,7 +3,7 @@
 /**
  * Redaxscript Directory
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @category Directory
  * @package Redaxscript
@@ -46,7 +46,7 @@ class Redaxscript_Directory
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $directory
 	 * @param string|array $ignore
@@ -74,7 +74,7 @@ class Redaxscript_Directory
 	/**
 	 * init
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -87,7 +87,7 @@ class Redaxscript_Directory
 	/**
 	 * getOutput
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param integer $key
 	 * @return array
@@ -113,7 +113,7 @@ class Redaxscript_Directory
 	/**
 	 * scan
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $directory
 	 * @return array
@@ -145,7 +145,7 @@ class Redaxscript_Directory
 	/**
 	 * remove
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $directory
 	 */

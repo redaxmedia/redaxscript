@@ -4,7 +4,7 @@
  * admin process
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -449,7 +449,7 @@ function admin_process()
  * admin move
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -490,7 +490,7 @@ function admin_move()
  * admin sort
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -570,7 +570,7 @@ function admin_sort()
  * admin status
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -617,7 +617,7 @@ function admin_status($input = '')
  * admin install
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -647,7 +647,7 @@ function admin_install()
  * admin delete
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -736,7 +736,7 @@ function admin_delete()
  * admin update
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -790,7 +790,7 @@ function admin_update()
  * admin children
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -868,7 +868,7 @@ function admin_children($table = '', $id = '', $mode = '')
  * admin last update
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin

@@ -4,7 +4,7 @@
  * sitemap xml install
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -13,7 +13,7 @@
 
 function sitemap_xml_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Sitemap XML\', \'sitemap_xml\', \'Redaxmedia\', \'Generates a sitemap XML\', \'2.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Sitemap XML\', \'sitemap_xml\', \'Redaxmedia\', \'Generates a sitemap XML\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
@@ -21,7 +21,7 @@ function sitemap_xml_install()
  * sitemap xml uninstall
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

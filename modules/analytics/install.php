@@ -4,7 +4,7 @@
  * analytics install
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -13,7 +13,7 @@
 
 function analytics_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Integrates Goggle Analytics\', \'2.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Analytics\', \'analytics\', \'Redaxmedia\', \'Integrates Goggle Analytics\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
@@ -21,7 +21,7 @@ function analytics_install()
  * analytics uninstall
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

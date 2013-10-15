@@ -4,7 +4,7 @@
  * debug loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -23,7 +23,7 @@ function debug_loader_start()
  * debug render start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -54,7 +54,7 @@ function debug_render_start()
  * debug center start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -91,7 +91,7 @@ function debug_center_start()
  * debug admin panel panel list modules
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -110,7 +110,7 @@ function debug_admin_panel_list_modules()
  * debug extras end
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

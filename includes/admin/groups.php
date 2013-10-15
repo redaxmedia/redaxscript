@@ -4,7 +4,7 @@
  * admin groups list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -98,7 +98,7 @@ function admin_groups_list()
  * admin groups form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin

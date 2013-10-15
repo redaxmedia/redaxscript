@@ -4,7 +4,7 @@
  * login form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Login
@@ -81,7 +81,7 @@ function login_form()
  * login post
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Login
@@ -264,7 +264,7 @@ function login_post()
  * logout
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Login

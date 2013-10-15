@@ -6,7 +6,7 @@
 
 function recent_view_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Recent view\', \'recent_view\', \'Redaxmedia\', \'Generates a list of recent views\', \'2.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Recent view\', \'recent_view\', \'Redaxmedia\', \'Generates a list of recent views\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 

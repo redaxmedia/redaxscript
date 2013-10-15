@@ -4,7 +4,7 @@
  * gallery loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -24,7 +24,7 @@ function gallery_loader_start()
  * gallery loader scripts transport start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -47,7 +47,7 @@ function gallery_loader_scripts_transport_start()
  * gallery
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -195,7 +195,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
  * gallery build thumb
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

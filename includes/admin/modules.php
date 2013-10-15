@@ -4,7 +4,7 @@
  * admin modules list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -169,7 +169,7 @@ function admin_modules_list()
  * admin modules form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin

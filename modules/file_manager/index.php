@@ -4,7 +4,7 @@
  * file manager loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -26,7 +26,7 @@ function file_manager_loader_start()
  * file manager loader scripts transport start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -49,7 +49,7 @@ function file_manager_loader_scripts_transport_start()
  * file manager render start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -69,7 +69,7 @@ function file_manager_render_start()
  * file manager center start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -123,7 +123,7 @@ function file_manager_center_start()
  * file manager admin panel panel list modules
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -142,7 +142,7 @@ function file_manager_admin_panel_list_modules()
  * file manager
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -232,7 +232,7 @@ function file_manager($directory = '')
  * file manager clean file name
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -254,7 +254,7 @@ function file_manager_clean_file_name($input = '')
  * file manager upload
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

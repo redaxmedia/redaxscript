@@ -4,7 +4,7 @@
  * seo tube loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -23,7 +23,7 @@ function seo_tube_loader_start()
  * seo tube scripts end
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -59,7 +59,7 @@ function seo_tube_scripts_end()
  * seo tube center start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -78,7 +78,7 @@ function seo_tube_center_start()
  * seo tube admin contents form start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -97,7 +97,7 @@ function seo_tube_admin_contents_form_start()
  * seo tube get id
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -126,7 +126,7 @@ function seo_tube_get_id($video_url = '')
  * seo tube parser
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -165,7 +165,7 @@ function seo_tube_parser($video_id = '')
 /* seo tube player
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -184,7 +184,7 @@ function seo_tube_player($video_id = '')
  * seo tube form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -209,7 +209,7 @@ function seo_tube_form()
  * seo tube post
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

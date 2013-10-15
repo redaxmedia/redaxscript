@@ -4,7 +4,7 @@
  * get file size
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -36,7 +36,7 @@ function get_file_size($file_name = '', $unit = '')
  * get file date
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

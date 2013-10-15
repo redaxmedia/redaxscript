@@ -3,7 +3,7 @@
 /**
  * Redaxscript Config
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @package Redaxscript
  * @category Config
@@ -31,7 +31,7 @@ class Redaxscript_Config
 	/**
 	 * get
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $key
 	 * @return string

@@ -4,7 +4,7 @@
  * contents
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Contents
@@ -196,7 +196,7 @@ function contents()
  * extras
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Contents
@@ -292,7 +292,7 @@ function extras($filter = '')
  * infoline
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Contents
@@ -356,7 +356,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
  * pagination
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Contents
@@ -424,7 +424,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
  * notification
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Contents

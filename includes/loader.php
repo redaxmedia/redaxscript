@@ -4,7 +4,7 @@
  * loader
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Loader
@@ -195,7 +195,7 @@ function loader($type = '', $mode = '')
  * styles
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Loader
@@ -271,7 +271,7 @@ function styles()
  * scripts
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Loader
@@ -371,7 +371,7 @@ function scripts($mode = '')
  * languages transport
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Loader
@@ -399,7 +399,7 @@ function languages_transport($language = '')
  * scripts transport
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Loader

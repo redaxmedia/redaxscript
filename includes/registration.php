@@ -4,7 +4,7 @@
  * registration form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Registration
@@ -71,7 +71,7 @@ function registration_form()
  * registration post
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Registration

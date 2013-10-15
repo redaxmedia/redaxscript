@@ -4,7 +4,7 @@
  * sitemap xml render start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -25,7 +25,7 @@ function sitemap_xml_render_start()
  * sitemap xml
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

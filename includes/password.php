@@ -4,7 +4,7 @@
  * password reset form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Password
@@ -54,7 +54,7 @@ function password_reset_form()
  * password reset post
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Password
@@ -166,7 +166,7 @@ function password_reset_post()
  * hash generator
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Password

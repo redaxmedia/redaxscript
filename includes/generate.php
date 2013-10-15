@@ -4,7 +4,7 @@
  * anchor element
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Generate
@@ -80,7 +80,7 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
  * form element
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Generate
@@ -172,7 +172,7 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
  * select element
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Generate
@@ -258,7 +258,7 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
  * select date
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Generate
@@ -299,7 +299,7 @@ function select_date($id = '', $class = '', $name = '', $date = '', $format = ''
  * object element
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Generate

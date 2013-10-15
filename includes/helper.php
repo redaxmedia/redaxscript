@@ -3,8 +3,8 @@
 /**
  * helper class
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Helper
@@ -72,8 +72,8 @@ function helper_class()
 /**
  * helper subset
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Helper

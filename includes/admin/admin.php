@@ -4,7 +4,7 @@
  * admin panel list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -149,7 +149,7 @@ function admin_panel_list()
  * admin dock
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -198,7 +198,7 @@ function admin_dock($table = '', $id = '')
  * admin notification
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin
@@ -229,8 +229,8 @@ function admin_notification()
 /**
  * admin control
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Admin

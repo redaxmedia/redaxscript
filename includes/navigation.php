@@ -4,7 +4,7 @@
  * navigation list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Navigation
@@ -240,7 +240,7 @@ function navigation_list($table = '', $options = '')
  * languages list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Navigation
@@ -315,7 +315,7 @@ function languages_list($options = '')
  * templates list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Navigation
@@ -392,7 +392,7 @@ function templates_list($options = '')
  * login list
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Navigation

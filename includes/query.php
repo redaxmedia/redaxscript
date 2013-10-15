@@ -4,7 +4,7 @@
  * database connect
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -45,7 +45,7 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
  * shortcut
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -88,7 +88,7 @@ function s($name = '')
  * retrieve
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -131,7 +131,7 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
  * query table
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -177,7 +177,7 @@ function query_table($input = '')
  * query plumb
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -207,7 +207,7 @@ function query_plumb($column = '', $table = '', $function = '')
  * query total
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -241,7 +241,7 @@ function query_total($table = '', $field = '', $value = '')
  * build route
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query
@@ -323,7 +323,7 @@ function build_route($table = '', $id = '')
  * future update
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Query

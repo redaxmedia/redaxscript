@@ -4,7 +4,7 @@
  * call home install
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -13,7 +13,7 @@
 
 function call_home_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provides version and news updates\', \'2.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provides version and news updates\', \'2.0.0\', 1, 1)';
 	mysql_query($query);
 }
 
@@ -21,7 +21,7 @@ function call_home_install()
  * call home uninstall
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

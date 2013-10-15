@@ -3,8 +3,8 @@
 /**
  * validator loader start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -25,8 +25,8 @@ function validator_loader_start()
 /**
  * validator loader scripts transport start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

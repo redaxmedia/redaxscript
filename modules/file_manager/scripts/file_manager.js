@@ -4,7 +4,7 @@
  * 1. file manager
  * 2. startup
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs

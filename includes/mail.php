@@ -3,7 +3,7 @@
 /**
  * Redaxscript Mail
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @package Redaxscript
  * @category Mail
@@ -77,7 +77,7 @@ class Redaxscript_Mail
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param array $toArray
 	 * @param array $fromArray
@@ -102,7 +102,7 @@ class Redaxscript_Mail
 	/**
 	 * init
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -119,7 +119,7 @@ class Redaxscript_Mail
 	/**
 	 * buildFromString
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	protected function _buildFromString()
@@ -141,7 +141,7 @@ class Redaxscript_Mail
 	/**
 	 * buildSubjectString
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	protected function _buildSubjectString()
@@ -166,7 +166,7 @@ class Redaxscript_Mail
 	/**
 	 * buildBodyString
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	protected function _buildBodyString()
@@ -197,7 +197,7 @@ class Redaxscript_Mail
 	/**
 	 * buildHeaderString
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	protected function _buildHeaderString()
@@ -254,7 +254,7 @@ class Redaxscript_Mail
 	/**
 	 * send
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function send()

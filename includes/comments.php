@@ -4,7 +4,7 @@
  * comments
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Comments
@@ -132,7 +132,7 @@ function comments($article = '', $route = '')
  * comment form
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Comments
@@ -220,7 +220,7 @@ function comment_form($article = '', $language = '', $access = '')
  * comment post
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Comments

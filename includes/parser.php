@@ -3,7 +3,7 @@
 /**
  * Redaxscript Parser
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @package Redaxscript
  * @category Parser
@@ -84,7 +84,7 @@ class Redaxscript_Parser
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
 	 * @param string $route
@@ -103,7 +103,7 @@ class Redaxscript_Parser
 	/**
 	 * init
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -127,7 +127,7 @@ class Redaxscript_Parser
 	/**
 	 * getOutput
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @return string
 	 */
@@ -140,7 +140,7 @@ class Redaxscript_Parser
 	/**
 	 * parseBreak
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
 	 * @return string
@@ -166,7 +166,7 @@ class Redaxscript_Parser
 	/**
 	 * parseCode
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
 	 * @return string
@@ -196,7 +196,7 @@ class Redaxscript_Parser
 	/**
 	 * parseFunction
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
 	 * @return string

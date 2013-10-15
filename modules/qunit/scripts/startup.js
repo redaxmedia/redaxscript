@@ -3,7 +3,7 @@
  *
  * 1. qunit
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs

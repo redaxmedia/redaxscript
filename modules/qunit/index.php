@@ -4,7 +4,7 @@
  * qunit loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -27,7 +27,7 @@ function qunit_loader_start()
  * qunit loader scripts transport start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -55,7 +55,7 @@ function qunit_loader_scripts_transport_start()
  * qunit scripts start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -75,7 +75,7 @@ function qunit_scripts_start()
  * qunit render start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -96,7 +96,7 @@ function qunit_render_start()
  * qunit center start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

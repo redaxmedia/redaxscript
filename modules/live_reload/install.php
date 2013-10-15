@@ -3,8 +3,8 @@
 /**
  * live reload install
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -13,15 +13,15 @@
 
 function live_reload_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Live reload\', \'live_reload\', \'Redaxmedia\', \'CSS live reload for developers\', \'2.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Live reload\', \'live_reload\', \'Redaxmedia\', \'CSS live reload for developers\', \'2.0.0\', 1, 1)';
 	mysql_query($query);
 }
 
 /**
  * live reload uninstall
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

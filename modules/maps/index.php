@@ -3,8 +3,8 @@
 /**
  * maps loader start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -25,8 +25,8 @@ function maps_loader_start()
 /**
  * maps scripts start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -45,8 +45,8 @@ function maps_scripts_start()
 /**
  * maps
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

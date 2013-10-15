@@ -4,7 +4,7 @@
  * fb group loader start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -21,7 +21,7 @@ function fb_group_loader_start()
  * fb group render start
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -41,7 +41,7 @@ function fb_group_render_start()
  * fb group
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -209,7 +209,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
  * fb group user link
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -230,7 +230,7 @@ function fb_group_user_link($id = '', $name = '')
  * fb group user image
  *
  * @since 1.2.1
- * @deprecated 2.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules

@@ -3,8 +3,8 @@
 /**
  * live reload loader start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -22,8 +22,8 @@ function live_reload_loader_start()
 /**
  * live reload loader scripts transport start
  *
- * @since 2.0
- * @deprecated 2.0
+ * @since 2.0.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
