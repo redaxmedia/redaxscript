@@ -311,8 +311,8 @@ $l['verification'] = 'Verificació';
 /* security */
 
 $l['security'] = 'Seguretat';
-$l['captcha'] = 'CAPTCHA';
-$l['captcha_incorrect'] = 'El CAPTCHA és incorrecte';
+$l['captcha'] = 'Captcha';
+$l['captcha_incorrect'] = 'El Captcha és incorrecte';
 $l['blocker'] = 'Bloquejador';
 
 /* notification */
