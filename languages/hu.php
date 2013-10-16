@@ -182,8 +182,8 @@ $l['fields_limited'] = 'A következő mezők 5-10 karaktert fogadnak el';
 
 $l['email'] = 'E-mail';
 $l['email_incorrect'] = 'Érvénytelen E-mail';
-$l['email_empty'] = 'Üres e-mail mező';
-$l['email_unknown'] = 'Ismeretlen e-mail formátum';
+$l['email_empty'] = 'Üres E-mail mező';
+$l['email_unknown'] = 'Ismeretlen E-mail formátum';
 
 /* computing */
 
@@ -217,7 +217,7 @@ $l['account_create'] = 'Felhasználói fiók létrehozása';
 
 $l['reminder'] = 'Emlékeztető';
 $l['reminder_question'] = 'Elfelejtetted a belépési adataid';
-$l['reminder_request'] = 'Írd be az e-mail címed, és újra kiküldjük a bejelntkezési információkat';
+$l['reminder_request'] = 'Írd be az E-mail címed, és újra kiküldjük a bejelntkezési információkat';
 $l['reminder_sent'] = 'A belépési adataid sikeresen kiküldtük';
 
 /* login */

@@ -181,9 +181,9 @@ $l['fields_limited'] = 'Els camps següents estan limitats a 5-10 caràcters';
 /* email */
 
 $l['email'] = 'E-mail';
-$l['email_incorrect'] = 'Le-mail és incorrecte';
-$l['email_empty'] = 'Le-mail està buit';
-$l['email_unknown'] = 'Le-mail és desconegut';
+$l['email_incorrect'] = 'E-mail és incorrecte';
+$l['email_empty'] = 'E-mail està buit';
+$l['email_unknown'] = 'E-mail és desconegut';
 
 /* computing */
 
@@ -217,7 +217,7 @@ $l['account_create'] = 'Crea un compte';
 
 $l['reminder'] = 'Recordatori';
 $l['reminder_question'] = 'Has oblidat el nom dusuari o la contrasenya';
-$l['reminder_request'] = 'Introdueix el teu e-mail per rebre la informació corresponent';
+$l['reminder_request'] = 'Introdueix el teu E-mail per rebre la informació corresponent';
 $l['reminder_sent'] = 'Sha enviat correctament la informació del teu compte';
 
 /* login */

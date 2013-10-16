@@ -217,7 +217,7 @@ $l['account_create'] = 'Crea tu cuenta';
 
 $l['reminder'] = 'Recordatorio';
 $l['reminder_question'] = 'Olvidaste tu usuario y/o contraseña';
-$l['reminder_request'] = 'Ingresa tu e-mail para obtener la información de tu cuenta';
+$l['reminder_request'] = 'Ingresa tu E-mail para obtener la información de tu cuenta';
 $l['reminder_sent'] = 'La información de tu cuenta fue enviada exitosamente';
 
 /* login */
