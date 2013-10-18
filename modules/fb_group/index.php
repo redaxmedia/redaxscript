@@ -115,11 +115,14 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			/* collect likes output */
 
 			$likes = $value->likes->data;
-			$likes_total = $value->likes->count;
+			$likes_total = count($likes);
 			$likes_limit = 2;
 			$likes_counter = 0;
 			$likes_rest = 0;
-			if ($likes)
+
+			/* if likes present */
+
+			if ($likes_total > 1)
 			{
 				$output .= '<div class="box_fb_group_like_infoline">';
 				foreach ($likes as $like_value)
