@@ -16,10 +16,17 @@
 	<rule ref="Generic.NamingConventions.UpperCaseConstantName" />
 	<rule ref="Generic.PHP.DisallowShortOpenTag" />
 	<rule ref="Generic.PHP.LowerCaseConstant" />
+	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 
 	<!-- Inherit from squiz -->
 
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
+	<rule ref="Squiz.PHP.Eval" />
+	<rule ref="Squiz.Scope.MemberVarScope" />
+	<rule ref="Squiz.Scope.MethodScope" />
+	<rule ref="Squiz.Strings.DoubleQuoteUsage" />
+	<rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
+	<rule ref="Squiz.WhiteSpace.SemicolonSpacing" />
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
 
 	<!-- Windows newline -->

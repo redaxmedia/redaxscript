@@ -336,7 +336,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	if ($comments_total)
 	{
-		$output .= '<span class="divider">' . s('divider') . '</span>' . '<span class="infoline_total">' . $comments_total . ' ';
+		$output .= '<span class="divider">' . s('divider') . '</span><span class="infoline_total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= l('comment');
