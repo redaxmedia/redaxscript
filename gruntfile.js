@@ -143,6 +143,10 @@ module.exports = function (grunt)
 		},
 		phpcs:
 		{
+			root:
+			{
+				dir: 'config.php index.php install.php'
+			},
 			base:
 			{
 				dir: 'includes'
