@@ -109,7 +109,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 			{
 				$value->message = $value->application->name;
 			}
-			$output .= '<div class="box_fb_group_message_sub">' . htmlspecialchars($value->message) . '</div>';
+			$output .= '<div class="box_fb_group_message_sub">' . fb_group_parser($value->message) . '</div>';
 			$output .= '</div></div>';
 
 			/* collect likes output */
@@ -195,7 +195,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 					$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
 					$output .= '<div class="wrapper_fb_group_comment_sub">';
 					$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($comment_value->from->id, $comment_value->from->name) . '</h4>';
-					$output .= '<div class="box_fb_group_comment_sub">' . htmlspecialchars($comment_value->message) . '</div>';
+					$output .= '<div class="box_fb_group_comment_sub">' . fb_group_parser($comment_value->message) . '</div>';
 					$output .= '</div></div>';
 				}
 				if ($comment_counter > $limit_second && $limit_second)
@@ -206,6 +206,40 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 		}
 	}
 	echo $output;
+}
+
+/**
+ * fb group parser
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
+ * @param string $message
+ * @return string
+ */
+
+function fb_group_parser($message = '')
+{
+	$output = htmlspecialchars($message);
+	$search = '/(https?:\/\/[^\s]+)/';
+
+	/* get all matches */
+
+	preg_match_all($search, $output, $matches);
+	$matches = $matches[0];
+
+	/* replace each url */
+
+	foreach ($matches as $url)
+	{
+		$link = anchor_element('', '', 'js_confirm link_default', $url, $url);
+		$output = str_replace($url, $link, $output);
+	}
+	return $output;
 }
 
 /**
