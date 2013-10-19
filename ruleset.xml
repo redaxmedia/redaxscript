@@ -8,9 +8,11 @@
 	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
 	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
+	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
 	<rule ref="Generic.Files.ByteOrderMark" />
 	<rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
 	<rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+	<rule ref="Generic.NamingConventions.ConstructorName" />
 	<rule ref="Generic.NamingConventions.UpperCaseConstantName" />
 	<rule ref="Generic.PHP.DisallowShortOpenTag" />
 	<rule ref="Generic.PHP.LowerCaseConstant" />
