@@ -5,7 +5,6 @@
  * 2. editor toolbar
  * 3. editor control
  *    3.1 icons
- *    3.2 divider
  * 4. editor preview
  *
  * @since 2.0.0
@@ -268,13 +267,6 @@
 .editor_control.unformat:before
 {
 	content: '9';
-}
-
-/* @section 3.2 divider */
-
-.editor_divider
-{
-	display: none;
 }
 
 /* @section 4. editor preview */

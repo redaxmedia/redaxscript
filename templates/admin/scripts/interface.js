@@ -58,7 +58,7 @@
 
 					else
 					{
-						dockDescription.text('');
+						dockDescription.empty();
 					}
 
 					/* haptic feedback */

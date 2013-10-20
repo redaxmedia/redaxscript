@@ -81,16 +81,9 @@
 						data = r.modules.editor.controls[name],
 						control = '';
 
-					/* append divider */
-
-					if (name === 'divider')
-					{
-						$('<a>').addClass(options.classString.editorDivider).appendTo(editor.toolbar);
-					}
-
 					/* append toggle */
 
-					else if (name === 'toggle')
+					if (name === 'toggle')
 					{
 						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
 					}
@@ -300,7 +293,7 @@
 					editor.textarea.val(editor.convertToHTML()).focus();
 					editor.controlToggle.attr('title', l.editor_wysiwyg);
 				}
-				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl + ', ' + options.element.editorDivider).toggle();
+				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl).toggle();
 				editor.textarea.add(editor.preview).toggle();
 				editor.validate();
 			};

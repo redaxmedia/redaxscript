@@ -176,17 +176,12 @@ function admin_dock($table = '', $id = '')
 		$output = '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
-			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN);
-			$output .= '<span class="divider">' . s('divider') . '</span>';
-			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_edit', l('edit'), 'admin/edit/' . $table . '/' . $id);
-		}
-		if ($edit == 1 && $delete == 1)
-		{
-			$output .= '<span class="divider">' . s('divider') . '</span>';
+			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
+			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_edit', l('edit'), 'admin/edit/' . $table . '/' . $id, l('edit'));
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'js_confirm js_link_dock_admin link_dock_admin link_delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN);
+			$output .= anchor_element('internal', '', 'js_confirm js_link_dock_admin link_dock_admin link_delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
 		}
 		$output .= '</div></div>';
 	}
