@@ -29,7 +29,6 @@
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#e2e2e2, 10%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	background: linear-gradient(top, #dadada, #e2e2e2 10%, #e2e2e2);
 	border: 1px solid #ebebeb;
@@ -49,7 +48,6 @@
 	background: -moz-linear-gradient(top, #e2e2e2, #d5d5d5);
 	background: -ms-linear-gradient(top, #e2e2e2, #d5d5d5);
 	background: -o-linear-gradient(top, #e2e2e2, #d5d5d5);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#d5d5d5));
 	background: -webkit-linear-gradient(top, #e2e2e2, #d5d5d5);
 	background: linear-gradient(top, #e2e2e2, #d5d5d5);
 	border: 1px solid #f1f1f1;
@@ -134,7 +132,6 @@
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #f1f1f1;
@@ -188,7 +185,6 @@
 	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -ms-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), -o-linear-gradient(top, #8e8e8e, #ccc);
-	background: url('templates/default/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#8e8e8e), to(#ccc));
 	background: url('templates/default/images/noise.png'), -webkit-linear-gradient(top, #8e8e8e, #ccc);
 	background: url('templates/default/images/noise.png'), linear-gradient(top, #8e8e8e, #ccc);
 	border: 1px solid #9e9e9e;

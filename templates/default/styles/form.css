@@ -40,7 +40,6 @@ textarea
 	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#bdbdbd));
 	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
 	background: linear-gradient(top, #d1d1d1, #bdbdbd);
 	border: 1px solid #999;
@@ -76,7 +75,6 @@ textarea
 	background: -moz-linear-gradient(top, #0090db, #62c5ff);
 	background: -ms-linear-gradient(top, #0090db, #62c5ff);
 	background: -o-linear-gradient(top, #0090db, #62c5ff);
-	background: -webkit-gradient(linear, left top, left bottom, from(#0090db), to(#62c5ff));
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	background: linear-gradient(top, #0090db, #62c5ff);
 }
@@ -140,7 +138,6 @@ textarea
 	background: -moz-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -ms-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -o-linear-gradient(top, #e2e2e2, #f1f1f1);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#f1f1f1));
 	background: -webkit-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: linear-gradient(top, #e2e2e2, #f1f1f1);
 	border: 1px solid #b0b0b0;
@@ -161,7 +158,6 @@ textarea
 	background: -moz-linear-gradient(top, #ddd, #ebebeb);
 	background: -ms-linear-gradient(top, #ddd, #ebebeb);
 	background: -o-linear-gradient(top, #ddd, #ebebeb);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#ebebeb));
 	background: -webkit-linear-gradient(top, #ddd, #ebebeb);
 	background: linear-gradient(top, #ddd, #ebebeb);
 }
@@ -233,7 +229,6 @@ textarea
 	background: -moz-linear-gradient(top, #dadada, #e8e8e8);
 	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
 	background: -o-linear-gradient(top, #dadada, #e8e8e8);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), to(#e8e8e8));
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
 	background: linear-gradient(top, #dadada, #e8e8e8);
 	border-color: #ababab;
@@ -267,7 +262,6 @@ textarea
 	background: -moz-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: -ms-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: -o-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), color-stop(#e5e5e5, 50%), color-stop(#ebebeb, 50%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	background: linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
 	border: 1px solid #9e9e9e;

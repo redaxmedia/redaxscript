@@ -38,7 +38,6 @@ textarea
 	background: -moz-linear-gradient(top, #474747, #303030);
 	background: -ms-linear-gradient(top, #474747, #303030);
 	background: -o-linear-gradient(top, #474747, #303030);
-	background: -webkit-gradient(linear, left top, left bottom, from(#474747), to(#303030));
 	background: -webkit-linear-gradient(top, #474747, #303030);
 	background: linear-gradient(top, #474747, #303030);
 	border-radius: 0.375em;
@@ -66,7 +65,6 @@ textarea
 	background: -moz-linear-gradient(top, #5b5b5b, #303030);
 	background: -ms-linear-gradient(top, #5b5b5b, #303030);
 	background: -o-linear-gradient(top, #5b5b5b, #303030);
-	background: -webkit-gradient(linear, left top, left bottom, from(#5b5b5b), to(#303030));
 	background: -webkit-linear-gradient(top, #5b5b5b, #303030);
 	background: linear-gradient(top, #5b5b5b, #303030);
 	color: #d6d6d6;
@@ -82,7 +80,6 @@ textarea
 	background: -moz-linear-gradient(bottom, #3b3b3b, #303030);
 	background: -ms-linear-gradient(bottom, #3b3b3b, #303030);
 	background: -o-linear-gradient(bottom, #3b3b3b, #303030);
-	background: -webkit-gradient(linear, left bottom, left top, from(#3b3b3b), to(#303030));
 	background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
 	background: linear-gradient(bottom, #3b3b3b, #303030);
 	box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -112,7 +109,6 @@ textarea
 	background: -moz-linear-gradient(top, #282828, #1f1f1f);
 	background: -ms-linear-gradient(top, #282828, #1f1f1f);
 	background: -o-linear-gradient(top, #282828, #1f1f1f);
-	background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#1f1f1f));
 	background: -webkit-linear-gradient(top, #282828, #1f1f1f);
 	background: linear-gradient(top, #282828, #1f1f1f);
 	border: 1px solid #262626;

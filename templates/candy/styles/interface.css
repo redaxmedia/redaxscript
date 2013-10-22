@@ -68,7 +68,6 @@
 	background: -moz-linear-gradient(top, #fff, #e2e2e2);
 	background: -ms-linear-gradient(top, #fff, #e2e2e2);
 	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
 	background: linear-gradient(top, #fff, #e2e2e2);
 	border-radius: 0.25em;
@@ -93,7 +92,6 @@
 	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -webkit-gradient(linear, left bottom, left top, from(#1f1f1f), to(#111));
 	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
 	border-radius: 0.375em;
@@ -156,7 +154,6 @@
 	background: -moz-linear-gradient(top , #fff, #e2e2e2);
 	background: -ms-linear-gradient(top, #fff, #e2e2e2);
 	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
 	background: linear-gradient(top, #fff, #e2e2e2);
 	border-radius: 0.125em;
@@ -173,7 +170,6 @@
 	background: -moz-linear-gradient(top, #d0cf20, #92901b);
 	background: -ms-linear-gradient(top, #d0cf20, #92901b);
 	background: -o-linear-gradient(top, #d0cf20, #92901b);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d0cf20), to(#92901b));
 	background: -webkit-linear-gradient(top, #d0cf20, #92901b);
 	background: linear-gradient(top, #d0cf20, #92901b);
 	color: #000;
@@ -243,7 +239,6 @@
 	background: -moz-linear-gradient(top, #d0cf20, #92901b);
 	background: -ms-linear-gradient(top, #d0cf20, #92901b);
 	background: -o-linear-gradient(top, #d0cf20, #92901b);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d0cf20), to(#92901b));
 	background: -webkit-linear-gradient(top, #d0cf20, #92901b);
 	background: linear-gradient(top, #d0cf20, #92901b);
 	color: #000;

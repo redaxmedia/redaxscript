@@ -60,7 +60,6 @@ body
 	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -webkit-gradient(linear, left top, left bottom, from(#1f1f1f), to(#111));
 	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
 	border-bottom: 1px solid #1f1f1f;

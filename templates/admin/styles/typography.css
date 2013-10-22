@@ -32,7 +32,6 @@
 	background: -moz-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -ms-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -o-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d4d4d4), color-stop(#d4d4d4, 30%), to(#bfbfbf));
 	background: -webkit-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	border: 1px solid #b9b9b9;
