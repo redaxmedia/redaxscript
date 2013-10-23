@@ -90,10 +90,6 @@ function lazy_load($src= '', $options = '')
 	if ($image_route)
 	{
 		$output = '<img src="' . LAZY_LOAD_PLACEHOLDER . '" data-src="' . $image_route . '"' . $class_string . $alt_string . ' />';
-
-		/* javascript disabled */
-
-		$output .= '<noscript><img src="' . $image_route . '"' . $class_string . $alt_string . ' /></noscript>';
 		echo $output;
 	}
 }
