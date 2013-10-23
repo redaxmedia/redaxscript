@@ -57,12 +57,12 @@
 
 					/* show images in view */
 
-					if (imageTop >= winTop && imageBottom <= winBottom)
+					if (imageTop >= winTop && imageBottom - options.threshold <= winBottom)
 					{
 						image.attr('src', imageRoute);
 						lazyLoad.images = lazyLoad.images.not(image);
 
-						/* clear move */
+						/* clear move interval */
 
 						if (lazyLoad.images.length < 1)
 						{

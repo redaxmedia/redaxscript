@@ -40,9 +40,17 @@ function lazy_load($src= '', $options = '')
 
 	if (is_array($src))
 	{
+		$allowed_src = array(
+			'desktop',
+			'tablet',
+			'mobile'
+		);
+
+		/* handle each source */
+
 		foreach ($src as $key => $value)
 		{
-			if (constant('MY_' . strtoupper($key)) && file_exists($value))
+			if (in_array($key, $allowed_src) && constant('MY_' . strtoupper($key)) && file_exists($value))
 			{
 				$image_route = $value;
 			}
