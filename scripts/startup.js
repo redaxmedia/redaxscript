@@ -174,7 +174,10 @@
 			selector: 'form.js_note_required',
 			options:
 			{
-				classString: 'js_note_required note_required box_note',
+				classString:
+				{
+					note: 'js_note_required note_required box_note'
+				},
 				related: 'a.js_cancel, a.js_delete, button.js_submit',
 				timeout: 1000,
 				duration: 300
