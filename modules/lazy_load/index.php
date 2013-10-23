@@ -28,10 +28,34 @@ function lazy_load_loader_start()
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
+ *
+ * @param string|array $src
+ * @param array $options
+ * @return string
  */
 
-function lazy_load($options = '')
+function lazy_load($src= '', $options = '')
 {
+	/* multiserve images */
+
+	if (is_array($src))
+	{
+		foreach ($src as $key => $value)
+		{
+			if (constant('MY_' . strtoupper($key)) && file_exists($value))
+			{
+				$image_route = $value;
+			}
+		}
+	}
+
+	/* else single image */
+
+	else if (file_exists($src))
+	{
+		$image_route = $src;
+	}
+
 	/* define option variables */
 
 	if ($options)
@@ -61,39 +85,11 @@ function lazy_load($options = '')
 		$alt_string = ' alt="' . $option_alt . '"';
 	}
 
-	/* multiserve images */
-
-	if (file_exists($option_src))
-	{
-		$image_route = $option_src;
-	}
-
-	/* if desktop */
-
-	if (file_exists($option_desktop))
-	{
-		$image_route = $option_desktop;
-	}
-
-	/* if tablet */
-
-	if (MY_TABLET && file_exists($image_tablet))
-	{
-		$image_route = $option_tablet;
-	}
-
-	/* if mobile */
-
-	if (MY_MOBILE && file_exists($image_mobile))
-	{
-		$image_route = $option_mobile;
-	}
-
 	/* collect output */
 
 	if ($image_route)
 	{
-		$output = '<img data-src="' . $image_route . '"' . $class_string . $alt_string . ' />';
+		$output = '<img src="' . LAZY_LOAD_PLACEHOLDER . '" data-src="' . $image_route . '"' . $class_string . $alt_string . ' />';
 
 		/* javascript disabled */
 

@@ -32,85 +32,82 @@
 
 		return this.each(function ()
 		{
-                    var lazyLoad = {};
+			var lazyLoad = {};
 
-                    lazyLoad.images = $(this);
+			lazyLoad.images = $(this);
 
-                    /* @section 1.1 show */
+			/* @section 1.1 show */
 
-                    lazyLoad.show = function ()
-                    {
-                        var win = $(window),
-                            winHeight = win.height(),
-                            winTop = win.scrollTop(),
-                            winBottom = winTop + winHeight;
+			lazyLoad.show = function ()
+			{
+				var win = $(window),
+					winHeight = win.height(),
+					winTop = win.scrollTop(),
+					winBottom = winTop + winHeight;
 
-                        /* handle images */
+				/* handle images */
 
-                        lazyLoad.images.each(function ()
-                        {
-                            var image = $(this),
-                                imageHeight = image.height(),
-                                imageTop = image.offset().top,
-                                imageBottom = imageTop + imageHeight,
-                                imageRoute = image.data('src');
+				lazyLoad.images.each(function ()
+				{
+					var image = $(this),
+						imageHeight = image.height(),
+						imageTop = image.offset().top,
+						imageBottom = imageTop + imageHeight,
+						imageRoute = image.data('src');
 
-                            /* show images in view */
+					/* show images in view */
 
-                            if (imageTop >= winTop && imageBottom <= winBottom)
-                            {
-                                image.attr('src', imageRoute).addClass(options.classString.lazyLoadLoader).on('load', function ()
-                                {
-                                    image.removeClass(options.classString.lazyLoadLoader);
-                                    lazyLoad.images = lazyLoad.images.not(image);
+					if (imageTop >= winTop && imageBottom <= winBottom)
+					{
+						image.attr('src', imageRoute);
+						lazyLoad.images = lazyLoad.images.not(image);
 
-                                    /* stop lazy load */
+						/* clear move */
 
-                                    if (lazyLoad.images.length < 1)
-                                    {
-                                        clearInterval(lazyLoad.intervalMove);
-                                    }
-                                });
-                            }
-                        });
-                    };
+						if (lazyLoad.images.length < 1)
+						{
+							clearInterval(lazyLoad.intervalMove);
+						}
+					}
+				});
+			};
 
-                    /* @section 1.2 listen */
+			/* @section 1.2 listen */
 
-                    lazyLoad.listen = function ()
-                    {
-                        $(window).on('resize scroll', function ()
-                        {
-                            lazyLoad.move = true;
-                        });
+			lazyLoad.listen = function ()
+			{
+				$(window).on('resize scroll', function ()
+				{
+					lazyLoad.move = true;
+				});
 
-                        /* interval enhanced move */
+				/* interval enhanced move */
 
-                        lazyLoad.intervalMove = setInterval(function ()
-                        {
-                            if (lazyLoad.move)
-                            {
-                                lazyLoad.show();
-                                lazyLoad.move = false;
-                            }
-                        }, options.interval);
-                    };
+				lazyLoad.intervalMove = setInterval(function ()
+				{
+					if (lazyLoad.move)
+					{
+						lazyLoad.show();
+						lazyLoad.move = false;
+					}
+				}, options.interval);
+			};
 
-                    /* @section 1.3 init */
+			/* @section 1.3 init */
 
-                    lazyLoad.init = function ()
-                    {
-                        lazyLoad.show();
-                        lazyLoad.listen();
-                    };
+			lazyLoad.init = function ()
+			{
+				lazyLoad.show();
+				lazyLoad.listen();
+			};
 
-                    /* init as needed */
+			/* init as needed */
 
-                    if (lazyLoad.images.length)
-                    {
-                        lazyLoad.init();
-                    }
-                });
+			if (lazyLoad.images.length)
+			{
+				lazyLoad.init();
+			}
+		});
 	};
 
 	/* @section 2. startup */

@@ -13,7 +13,7 @@
 
 function lazy_load_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Lazy load\', \'lazy_load\', \'Redaxmedia\', \'Lazy loads and multiserves images\', \'2.0.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Lazy load\', \'lazy_load\', \'Redaxmedia\', \'Lazy loads and multiserves images\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
