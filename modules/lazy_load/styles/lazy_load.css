@@ -1,0 +1,26 @@
+/**
+ * @tableofcontents
+ *
+ * 1. lazy load
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. lazy load */
+
+.lazy_load
+{
+	display: block;
+	text-indent: -999em;
+	min-height: 5em;
+}
+
+/* @section 2. lazy load loader */
+
+.lazy_load_loader
+{
+    background: red;
+}
