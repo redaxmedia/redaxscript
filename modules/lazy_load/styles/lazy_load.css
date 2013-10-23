@@ -14,13 +14,4 @@
 .lazy_load
 {
 	display: block;
-	text-indent: -999em;
-	min-height: 5em;
-}
-
-/* @section 2. lazy load loader */
-
-.lazy_load_loader
-{
-    background: red;
 }
