@@ -86,11 +86,11 @@
 			$(this).on('submit change input related', function (event)
 			{
 				var form = $(this),
-					buttonSubmit = form.find(options.elements.buttonSubmit),
-					fieldRequired = form.find(options.elements.fieldRequired),
+					buttonSubmit = form.find(options.element.buttonSubmit),
+					fieldRequired = form.find(options.element.fieldRequired),
 					fieldRequiredAll = fieldRequired;
 
-				/* check related elements */
+				/* check related fields */
 
 				if (event.type === 'related')
 				{
