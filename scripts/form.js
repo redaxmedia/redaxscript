@@ -334,7 +334,7 @@
 		{
 			var form = $(this),
 				formRelated = form.children(options.related).first(),
-				boxNote = $('<div>').addClass(options.classString),
+				boxNote = $('<div>').addClass(options.classString.note),
 				timeout = '';
 
 			/* insert note required */
