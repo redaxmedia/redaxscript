@@ -95,7 +95,7 @@
 			selector: 'form.js_check_required',
 			options:
 			{
-				elements:
+				element:
 				{
 					buttonSubmit: 'button.js_submit',
 					fieldRequired: 'div.js_required, input.js_required, select.js_required, textarea.js_required'
