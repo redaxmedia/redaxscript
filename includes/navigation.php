@@ -201,14 +201,14 @@ function navigation_list($table = '', $options = '')
 		}
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
@@ -283,14 +283,14 @@ function languages_list($options = '')
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
@@ -360,14 +360,14 @@ function templates_list($options = '')
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_ROUTE . TEMPLATE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
