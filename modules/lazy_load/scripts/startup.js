@@ -17,10 +17,6 @@ r.modules.lazyLoad =
 	selector: 'img.js_lazy_load:visible',
 	options:
 	{
-		classString:
-		{
-			lazyLoadLoader: 'lazy_load_loader'
-		},
 		threshold: 200,
 		interval: 200
 	}
