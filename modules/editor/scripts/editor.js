@@ -138,27 +138,14 @@
 				{
 					if (event.which === 13)
 					{
-						var output = '';
-
-						/* msie */
-
-						if (r.constants.MY_BROWSER === 'msie')
+						if (r.constants.MY_ENGINE === 'trident')
 						{
-							output += '<br />';
+							editor.insertHTML('<br />');
+							event.preventDefault();
 						}
-
-						/* webkit */
-
 						else if (r.constants.MY_ENGINE === 'webkit')
 						{
-							output += '<br /><br />';
-						}
-
-						/* insert output */
-
-						if (output)
-						{
-							editor.insertHTML(output);
+							editor.insertHTML('<br /><br />');
 							event.preventDefault();
 						}
 					}

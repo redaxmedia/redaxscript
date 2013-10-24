@@ -281,7 +281,7 @@
 	padding: 0.5em;
 }
 
-.editor_preview > div:hover, .editor_preview > img:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > span:hover, .editor_preview > ul:hover
+.editor_preview > div:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > ul:hover
 {
 	outline: 2px dashed #ddd;
 	outline-color: rgba(0, 0, 0, 0.1);
