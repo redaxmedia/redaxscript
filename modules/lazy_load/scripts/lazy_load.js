@@ -60,14 +60,10 @@
 					if (imageTop >= winTop && imageBottom - options.threshold <= winBottom)
 					{
 						image.attr('src', imageRoute);
-						lazyLoad.images = lazyLoad.images.not(image);
 
 						/* clear move interval */
 
-						if (lazyLoad.images.length < 1)
-						{
-							clearInterval(lazyLoad.intervalMove);
-						}
+						clearInterval(lazyLoad.intervalMove);
 					}
 				});
 			};

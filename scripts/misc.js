@@ -31,17 +31,15 @@
 		return this.each(function ()
 		{
 			var link = $(this),
-				url = link.attr('href'),
-				timeout = '';
+				url = link.attr('href');
 
 			/* timeout enhanced forward */
 
 			if (typeof url === 'string')
 			{
-				clearTimeout(timeout);
-				timeout = setTimeout(function ()
+				setTimeout(function ()
 				{
-					window.location = url;
+					window.location.pathname = url;
 				}, options.duration);
 			}
 		});
@@ -94,11 +92,11 @@
 					{
 						if (r.constants.LOGGED_IN === r.constants.TOKEN)
 						{
-							window.location = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+							window.location.pathname = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+							window.location.pathname = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
 						}
 					}
 

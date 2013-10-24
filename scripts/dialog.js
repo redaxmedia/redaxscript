@@ -195,7 +195,14 @@
 						message: l.dialog_question + l.question_mark,
 						callback: function ()
 						{
-							window.location = url;
+							if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
+							{
+								window.location.pathname = url;
+							}
+							else
+							{
+								window.location = url;
+							}
 						}
 					});
 					event.preventDefault();
