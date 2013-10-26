@@ -29,6 +29,17 @@ function navigation_list($table = '', $options = '')
 		}
 	}
 
+	/* fallback */
+
+	if ($option_order == '')
+	{
+		$option_order = s('order');
+	}
+	if ($option_limit == '')
+	{
+		$option_limit = s('limit');
+	}
+
 	/* switch table */
 
 	switch ($table)
@@ -84,29 +95,9 @@ function navigation_list($table = '', $options = '')
 		}
 	}
 
-	/* setup order option */
+	/* setup rank and limit */
 
-	$query .= ' ORDER BY rank ';
-	if ($option_order)
-	{
-		$query .= $option_order;
-	}
-	else
-	{
-		$query .= s('order');
-	}
-
-	/* setup limit option */
-
-	$query .= ' LIMIT ';
-	if ($option_limit)
-	{
-		$query .= $option_limit;
-	}
-	else
-	{
-		$query .= s('limit');
-	}
+	$query .= ' ORDER BY rank ' . $option_order . ' LIMIT ' . $option_limit;
 
 	/* query result */
 
