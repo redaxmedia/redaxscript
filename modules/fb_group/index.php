@@ -48,12 +48,37 @@ function fb_group_render_start()
  * @author Henry Ruhs
  *
  * @param string $type
- * @param integer $limit_first
- * @param integer $limit_second
+ * @param array $options
  */
 
-function fb_group($type = '', $limit_first = '', $limit_second = '')
+function fb_group($type = '', $options = '')
 {
+	/* define option variables */
+
+	if ($options)
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* fallback */
+
+	if ($option_limit_members == '')
+	{
+		$option_limit_members = s('limit');
+	}
+	if ($option_limit_messages == '')
+	{
+		$option_limit_messages = s('limit');
+	}
+	if ($option_limit_comments == '')
+	{
+		$option_limit_comments = s('limit');
+	}
+
 	/* get contents */
 
 	$contents = fb_group_get_contents($type);
@@ -75,10 +100,13 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 		{
 			/* break if limit reached */
 
-			if (++$counter > $limit_first && $limit_first)
+			if (++$members_counter > $option_limit_members)
 			{
 				break;
 			}
+
+			/* collect members output */
+
 			$output .= '<li>' . fb_group_user_link($value->id, $value->name) . '</li>';
 		}
 		$output .= '</ul>';
@@ -92,7 +120,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 		{
 			/* break if limit reached */
 
-			if (++$message_counter > $limit_first && $limit_first)
+			if (++$messages_counter > $option_limit_messages)
 			{
 				break;
 			}
@@ -116,7 +144,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 
 			$likes = $value->likes->data;
 			$likes_total = count($likes);
-			$likes_limit = 2;
+			$likes_limit = $option_limit_members - 1;
 			$likes_counter = 0;
 			$likes_rest = 0;
 
@@ -131,11 +159,14 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 
 					/* break if limit reached */
 
-					if (++$likes_counter > $likes_limit && $likes_limit)
+					if (++$likes_counter > $likes_limit)
 					{
 						break;
 					}
-					else if ($likes_counter == $likes_total - 1)
+
+					/* collect likes output */
+
+					if ($likes_counter == $likes_total - 1)
 					{
 						$output .= ' ' . l('fb_group_and') . ' ';
 					}
@@ -168,7 +199,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 
 			$comments = $value->comments->data;
 			$comments_total = $value->comments->count;
-			$comment_counter = 0;
+			$comments_counter = 0;
 			if ($comments)
 			{
 				$output .= '<div class="box_fb_group_comment_infoline">' . $comments_total . ' ';
@@ -185,7 +216,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 				{
 					/* break if limit reached */
 
-					if (++$comment_counter > $limit_second && $limit_second)
+					if (++$comments_counter > $option_limit_comments)
 					{
 						break;
 					}
@@ -198,7 +229,7 @@ function fb_group($type = '', $limit_first = '', $limit_second = '')
 					$output .= '<div class="box_fb_group_comment_sub">' . fb_group_parser($comment_value->message) . '</div>';
 					$output .= '</div></div>';
 				}
-				if ($comment_counter > $limit_second && $limit_second)
+				if (++$comments_counter > $option_limit_comments)
 				{
 					$output .= '<div class="box_fb_group_comment_read_more clear_fix">' . anchor_element('external', '', 'js_confirm link_fb_group_comment_read_more', l('read_more'), FB_GROUP_GROUP_URL) . '</div>';
 				}
