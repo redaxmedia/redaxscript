@@ -104,7 +104,7 @@ function head()
 		{
 			$divider = s('divider');
 		}
-		$output .= '<title>' . truncate($title . $divider . $description, 70) . '</title>' . PHP_EOL;
+		$output .= '<title>' . truncate($title . $divider . $description, 80) . '</title>' . PHP_EOL;
 	}
 
 	/* collect refresh route */
