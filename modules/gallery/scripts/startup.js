@@ -25,6 +25,7 @@ r.modules.gallery =
 			galleryMeta: 'js_gallery_meta gallery_meta',
 			galleryPagination: 'js_gallery_pagination gallery_pagination',
 			galleryArtist: 'js_gallery_artist gallery_artist',
+			galleryDate: 'js_gallery_date gallery_date',
 			galleryDescription: 'js_gallery_description gallery_description',
 			galleryOverlay: 'js_gallery_overlay gallery_overlay',
 			controlPrevious: 'js_gallery_previous gallery_control gallery_control_previous',

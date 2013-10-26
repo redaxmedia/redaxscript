@@ -243,6 +243,13 @@
 					gallery.artist = $('<div data-label="' + l.gallery_image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
 				}
 
+				/* date */
+
+				if (gallery.data.date)
+				{
+					gallery.date = $('<div data-label="' + l.date + '">' + gallery.data.date + '</div>').addClass(options.classString.galleryDate).appendTo(gallery.meta);
+				}
+
 				/* description */
 
 				if (gallery.data.description)

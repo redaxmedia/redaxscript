@@ -34,6 +34,7 @@ function gallery_loader_start()
 function gallery_loader_scripts_transport_start()
 {
 	$output = languages_transport(array(
+		'date',
 		'gallery_image_artist',
 		'gallery_image_description',
 		'gallery_image_next',
@@ -54,49 +55,17 @@ function gallery_loader_scripts_transport_start()
  * @author Henry Ruhs
  *
  * @param string $directory
- * @param integer $quality
- * @param integer $scaling
- * @param integer $height
+ * @param array $options
  * @param string $command
  */
 
-function gallery($directory = '', $quality = '', $scaling = '', $height = '', $command = '')
+function gallery($directory = '', $options = '', $command = '')
 {
-	/* define variables */
-
-	if (is_numeric($quality) == '')
+	if ($options === 'build' || $options === 'delete')
 	{
-		$quality = 80;
-		if ($command == '')
-		{
-			$command = $quality;
-		}
+		$command = $options;
 	}
-	else if ($quality > 100)
-	{
-		$quality = 100;
-	}
-	if (is_numeric($scaling) == '')
-	{
-		$scaling = 20;
-		if ($command == '')
-		{
-			$command = $scaling;
-		}
-	}
-	else if ($scaling > 100)
-	{
-		$scaling = 100;
-	}
-	if (is_numeric($height) == '')
-	{
-		$height = 0;
-		if ($command == '')
-		{
-			$command = $height;
-		}
-	}
-
+	
 	/* gallery directory object */
 
 	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
@@ -124,11 +93,11 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 				$route = $directory . '/' . $value;
 				$thumb_route = $directory . '/thumbs/' . $value;
 
-				/* build gallery thumb */
+				/* build thumb */
 
 				if (file_exists($thumb_route) == '' || $command == 'build')
 				{
-					gallery_build_thumb($value, $directory, $route, $quality, $scaling, $height);
+					gallery_build_thumb($value, $directory, $options);
 				}
 				if (file_exists($thumb_route))
 				{
@@ -203,15 +172,37 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
  *
  * @param string $input
  * @param string $directory
- * @param string $route
- * @param integer $quality
- * @param integer $scaling
- * @param integer $height
+ * @param array $options
  */
 
-function gallery_build_thumb($input = '', $directory = '', $route = '', $quality = '', $scaling = '', $height = '')
+function gallery_build_thumb($input = '', $directory = '', $options)
 {
+	/* define option variables */
+
+	if ($options)
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* fallback */
+
+	if ($option_height == '')
+	{
+		$option_height = 100;
+	}
+	if ($option_quality == '')
+	{
+		$option_quality = 80;
+	}
+
+	/* get extension */
+
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
+	$route = $directory . '/' . $input;
 
 	/* switch extension */
 
@@ -227,18 +218,23 @@ function gallery_build_thumb($input = '', $directory = '', $route = '', $quality
 			break;
 	}
 
+	/* original image dimensions */
+
+	$original_dimensions = getimagesize($route);
+	$original_height = $original_dimensions[1];
+	$original_width = $original_dimensions[0];
+
 	/* calculate image dimensions */
 
-	$original_size = getimagesize($route);
-	if ($height)
+	if ($option_height)
 	{
-		$scaling = $height / $original_size[1] * 100;
+		$option_scaling = $option_height / $original_height * 100;
 	}
 	else
 	{
-		$height = round($scaling / 100 * $original_size[1]);
+		$option_height = round($option_scaling / 100 * $original_height);
 	}
-	$width = round($scaling / 100 * $original_size[0]);
+	$option_width = round($option_scaling / 100 * $original_width);
 
 	/* create thumbs directory */
 
@@ -251,9 +247,12 @@ function gallery_build_thumb($input = '', $directory = '', $route = '', $quality
 	/* create thumbs */
 
 	$output = $thumbs_directory . '/' . $input;
-	$process = imagecreatetruecolor($width, $height);
-	imagecopyresampled($process, $image, 0, 0, 0, 0, $width, $height, $original_size[0], $original_size[1]);
-	imagejpeg($process, $output, $quality);
+	$process = imagecreatetruecolor($option_width, $option_height);
+	imagecopyresampled($process, $image, 0, 0, 0, 0, $option_width, $option_height, $original_width, $original_height);
+	imagejpeg($process, $output, $option_quality);
+
+	/* destroy images */
+
 	imagedestroy($image);
 	imagedestroy($process);
 }
