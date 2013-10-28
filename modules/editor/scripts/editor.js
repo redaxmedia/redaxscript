@@ -341,17 +341,14 @@
 
 				if (options.xhtml)
 				{
-					output = output.replace(/ class="(apple-style-span|msonormal)"/gi, '');
 					output = output.replace(/ class=""/gi, '');
 					output = output.replace(/ style="(.*?)"/gi, '');
-					output = output.replace(/<(\w+)>(\s)*<\/\1>/gi, '');
 					output = output.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
 					output = output.replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>');
 					output = output.replace(/<(s|strike)>(.*?)<\/(s|strike)>/gi, '<del>$2</del>');
 					output = output.replace(/<br>/gi, '<br />');
 					output = output.replace(/(<img [^>]+[^\/])>/gi, '$1 />');
 				}
-				output = output.replace(/@@@/gi, '');
 
 				/* add newlines */
 
