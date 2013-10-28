@@ -27,6 +27,13 @@ class Redaxscript_Parser
 	protected $_route;
 
 	/**
+	 * delimiter
+	 * @var string
+	 */
+
+	protected $_delimiter = '@@@';
+
+	/**
 	 * tags
 	 * @var array
 	 */
@@ -177,8 +184,8 @@ class Redaxscript_Parser
 		$output = str_replace(array(
 			'<code>',
 			'</code>'
-		), '||', $input);
-		$parts = explode('||', $output);
+		), $this->_delimiter, $input);
+		$parts = explode($this->_delimiter, $output);
 
 		/* parse needed parts */
 
@@ -207,8 +214,8 @@ class Redaxscript_Parser
 		$output = str_replace(array(
 			'<function>',
 			'</function>'
-		), '||', $input);
-		$parts = explode('||', $output);
+		), $this->_delimiter, $input);
+		$parts = explode($this->_delimiter, $output);
 
 		/* parse needed parts */
 
