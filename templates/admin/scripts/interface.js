@@ -41,17 +41,17 @@
 
 			dockLink.each(function ()
 			{
-				var dockElement = $(this),
-					dockElementText = dockElement.text(),
-					dockDescription = dockElement.siblings(options.element.dockDescription);
+				var dockLink = $(this),
+					dockText = dockLink.text(),
+					dockDescription = dockLink.siblings(options.element.dockDescription);
 
-				dockElement.on('mouseenter mouseleave touchstart touchend', function (event)
+				dockLink.on('mouseenter mouseleave touchstart touchend', function (event)
 				{
 					/* handle mouseenter and touchstart */
 
 					if (event.type === 'mouseenter' || event.type === 'touchstart')
 					{
-						dockDescription.text(dockElementText);
+						dockDescription.text(dockText);
 					}
 
 					/* else handle mouseleave and touchend */
@@ -91,6 +91,7 @@
 				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
+				panelLink = panelList.find('a'),
 				timeoutEnter = '',
 				timeoutLeave = '';
 
@@ -136,13 +137,6 @@
 
 					panelItemAll.removeClass('item_active');
 					thatItem.addClass('item_active');
-
-					/* haptic feedback */
-
-					if (r.support.vibrate && typeof options.vibrate === 'number')
-					{
-						window.navigator.vibrate(options.vibrate);
-					}
 				}, options.duration);
 			});
 
@@ -169,6 +163,18 @@
 				else
 				{
 					clearTimeout(timeoutLeave);
+				}
+			});
+
+			/* listen for click */
+
+			panelLink.on('click', function ()
+			{
+				/* haptic feedback */
+
+				if (r.support.vibrate && typeof options.vibrate === 'number')
+				{
+					window.navigator.vibrate(options.vibrate);
 				}
 			});
 		});
