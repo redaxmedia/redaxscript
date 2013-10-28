@@ -138,7 +138,11 @@
 				{
 					if (event.which === 13)
 					{
-						if (r.constants.MY_ENGINE === 'trident')
+						if (r.constants.MY_EGINE === 'gecko')
+						{
+							document.execCommand('insertBrOnReturn', false, false);
+						}
+						else if (r.constants.MY_ENGINE === 'trident')
 						{
 							editor.insertHTML('<br />');
 							event.preventDefault();
@@ -347,6 +351,7 @@
 					output = output.replace(/<br>/gi, '<br />');
 					output = output.replace(/(<img [^>]+[^\/])>/gi, '$1 />');
 				}
+				output = output.replace(/@@@/gi, '');
 
 				/* add newlines */
 
@@ -397,7 +402,7 @@
 			{
 				/* create editor elements */
 
-				editor.textarea.hide();
+				//editor.textarea.hide();
 				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
 
 				/* create toolbar */
