@@ -402,7 +402,7 @@
 			{
 				/* create editor elements */
 
-				//editor.textarea.hide();
+				editor.textarea.hide();
 				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
 
 				/* create toolbar */
