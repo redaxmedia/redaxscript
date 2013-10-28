@@ -103,9 +103,9 @@
 
 						(function (data)
 						{
-							/* listen for click */
+							/* listen for mousedown to prevent unselect */
 
-							control.on('click', function ()
+							control.on('mousedown', function ()
 							{
 								/* call related method */
 
