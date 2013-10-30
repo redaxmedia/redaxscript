@@ -36,7 +36,7 @@ function demo_center_start()
 	{
 		demo_login();
 	}
-	if (ADMIN_PARAMETER == 'unpublish')
+	if (ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
 	{
 		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 	}
