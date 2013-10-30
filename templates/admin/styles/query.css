@@ -124,8 +124,9 @@
 	.list_panel_children_admin
 	{
 		background: url('templates/admin/images/carbon.png') #232323;
+		left: 0;
 		position: absolute;
-		width: 100%;
+		right: 0;
 	}
 
 	.sidebar .description_dock_admin
