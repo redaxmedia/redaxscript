@@ -13,7 +13,7 @@
 
 function demo_render_start()
 {
-	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo' || ADMIN_PARAMETER == 'unpublish')
+	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo' || ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
 	{
 		define('CENTER_BREAK', 1);
 	}
