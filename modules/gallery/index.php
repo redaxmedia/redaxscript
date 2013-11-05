@@ -65,7 +65,7 @@ function gallery($directory = '', $options = '', $command = '')
 	{
 		$command = $options;
 	}
-	
+
 	/* gallery directory object */
 
 	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');

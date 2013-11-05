@@ -37,6 +37,7 @@
 	},
 	"scripts":
 	{
+		"pretest": "grunt eol",
 		"test": "grunt --verbose"
 	}
 }
