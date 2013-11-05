@@ -7,6 +7,8 @@ Redaxscript
 > Redaxscript is an ultra lightweight CMS, simplifying the world of complex online projects.
 Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
+[![Build Status](https://travis-ci.org/redaxmedia/redaxscript.png?branch=master)](https://travis-ci.org/redaxmedia/redaxscript)
+
 
 Online demo
 -----------
@@ -62,3 +64,4 @@ Related links
 * [Support](http://redaxscript.com/support)
 * [Documentation](http://redaxscript.com/develop/documentation)
 * [Community](http://redaxscript.com/community)
+* [License](http://redaxscript.com/general/about/license)
