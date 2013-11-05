@@ -10,7 +10,4 @@ before_script:
 - composer install
 
 script:
-- grunt
-
-notifications:
-irc: "irc.freenode.net#redaxscript"
+- npm test
