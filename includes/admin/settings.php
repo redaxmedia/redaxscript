@@ -117,7 +117,7 @@ function admin_settings_form()
 		}
 	}
 	$output .= '<li>' . select_element('homepage', 'field_select_admin', 'homepage', $homepage_array, s('homepage'), l('homepage')) . '</li>';
-	$output .= '<li>' . form_element('text', 'limit', 'js_required field_text_admin field_note', 'limit', s('limit'), l('limit'), 'maxlength="2" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'limit', 'js_required field_text_admin field_note', 'limit', s('limit'), l('limit'), 'min="1" max="1000" required="required"') . '</li>';
 	$output .= '<li>' . select_element('order', 'field_select_admin', 'order', array(
 		l('ascending') => 'asc',
 		l('descending') => 'desc'

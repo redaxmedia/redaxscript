@@ -52,7 +52,7 @@ function login_form()
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
