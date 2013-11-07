@@ -78,7 +78,7 @@ function check_email($input = '')
 {
 	if ($input == clean_email($input))
 	{
-		list($user, $host) = split('@', $input);
+		list($user, $host) = preg_split('/@/', $input);
 
 		/* lookup domain name */
 
@@ -109,7 +109,7 @@ function check_url($input = '')
 {
 	if ($input == clean_url($input))
 	{
-		list($protocol, $host) = split('//', $input);
+		list($protocol, $host) = preg_split('/\/\//', $input);
 
 		/* empty host fallback */
 
