@@ -197,7 +197,7 @@
 						{
 							if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
 							{
-								window.location.pathname = url;
+								window.location = r.baseURL + url;
 							}
 							else
 							{

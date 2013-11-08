@@ -64,6 +64,11 @@ function lazy_load($src= '', $options = '')
 		$image_route = $src;
 	}
 
+	/* image dimensions */
+
+	$image_dimensions = getimagesize($image_route);
+	$image_ratio = $image_dimensions[1] / $image_dimensions[0] * 100;
+
 	/* define option variables */
 
 	if ($options)
@@ -97,7 +102,18 @@ function lazy_load($src= '', $options = '')
 
 	if ($image_route)
 	{
-		$output = '<img src="' . LAZY_LOAD_PLACEHOLDER . '" data-src="' . $image_route . '"' . $class_string . $alt_string . ' />';
+		$output = '<img src="' . LAZY_LOAD_IMAGE . '" data-src="' . $image_route . '"' . $class_string . $alt_string . ' />';
+
+		/* wrap placeholder */
+
+		if (LAZY_LOAD_PLACEHOLDER)
+		{
+			$output = '<div class="placeholder_lazy_load" style="padding-bottom:' . $image_ratio . '%">' . $output . '</div>';
+		}
+
+		/* noscript fallback */
+
+		$output .= '<noscript><img src="' . $image_route . '"' . $class_string . $alt_string . ' /></noscript>';
 		echo $output;
 	}
 }

@@ -765,7 +765,7 @@ function admin_update()
 		$r['time'] = clean($_POST['time'], 1);
 		$r['date'] = clean($_POST['date'], 1);
 		$r['homepage'] = clean($_POST['homepage'], 0);
-		$r['limit'] = clean($_POST['limit'], 0) == '' ? 5 : clean($_POST['limit'], 0);
+		$r['limit'] = clean($_POST['limit'], 0) == '' ? 10 : clean($_POST['limit'], 0);
 		$r['order'] = clean($_POST['order'], 0);
 		$r['pagination'] = clean($_POST['pagination'], 0);
 		$r['moderation'] = clean($_POST['moderation'], 0);

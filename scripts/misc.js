@@ -41,7 +41,7 @@
 				{
 					if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
 					{
-						window.location.pathname = url;
+						window.location = r.baseURL + url;
 					}
 					else
 					{
@@ -99,11 +99,11 @@
 					{
 						if (r.constants.LOGGED_IN === r.constants.TOKEN)
 						{
-							window.location.pathname = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location.pathname = r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
 						}
 					}
 
