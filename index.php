@@ -172,7 +172,6 @@ else
 	if (RENDER_BREAK == 1)
 	{
 		return;
-		break;
 	}
 	else
 	{
