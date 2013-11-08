@@ -3,7 +3,7 @@
 /**
  * lazy load loader start
  *
- * @since 2.0.0
+ * @since 2.0.1
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -22,7 +22,7 @@ function lazy_load_loader_start()
 /**
  * lazy load
  *
- * @since 2.0.0
+ * @since 2.0.1
  * @deprecated 2.0.0
  *
  * @package Redaxscript

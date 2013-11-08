@@ -3,7 +3,7 @@
  *
  * 1. lazy load
  *
- * @since 2.0.0
+ * @since 2.0.1
  *
  * @package Redaxscript
  * @author Henry Ruhs
