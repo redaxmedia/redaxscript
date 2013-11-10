@@ -70,7 +70,6 @@
 			editor.createToolbar = function ()
 			{
 				/* append toolbar */
-
 				editor.toolbar = $('<div unselectable="on">').addClass(options.classString.editorToolbar).appendTo(editor.container);
 
 				/* append controls */
@@ -78,8 +77,8 @@
 				for (var i in options.toolbar)
 				{
 					var name = options.toolbar[i],
-						data = r.modules.editor.controls[name],
-						control = '';
+					data = r.modules.editor.controls[name],
+					control = '';
 
 					/* append toggle */
 
@@ -88,7 +87,7 @@
 						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
 					}
 
-					/* append serveral controls */
+					/* append several controls */
 
 					else if (typeof data === 'object')
 					{
@@ -138,7 +137,7 @@
 				{
 					if (event.which === 13)
 					{
-						if (r.constants.MY_EGINE === 'gecko')
+						if (r.constants.MY_ENGINE === 'gecko')
 						{
 							document.execCommand('insertBrOnReturn', false, false);
 						}
@@ -247,7 +246,8 @@
 			{
 				if (editor.checkSelection())
 				{
-					editor.insertHTML('&lt;code&gt;' + editor.select() + '&lt;/code&gt;');
+					// GaryA - change code sections to real code
+					editor.insertHTML('<code>' + editor.select() + '</code>');
 				}
 			};
 
@@ -255,7 +255,8 @@
 
 			editor.insertBreak = function ()
 			{
-				editor.insertHTML('&lt;break&gt;');
+				// GaryA - change breaks to real code
+				editor.insertHTML('<break>');
 			};
 
 			/* @section 1.8 format */
@@ -332,34 +333,86 @@
 				var output = editor.preview.html(),
 					eol = options.eol;
 
+				// GaryA - fix
+				var index,
+					incode = 0;
+				// split string into code and non-code sections
+				var sections = output.split(/(<\/?code>)/);
+				// process each section
+				for (index = 0; index < sections.length; index++)
+				{
+					if (sections[index] === '<code>')
+					{
+						// Set code flag
+						incode = 1;
+					}
+					else if (sections[index] === '</code>')
+					{
+						// Clear code flag
+						incode = 0;
+					}
+					else if (incode === 1)
+					{
+						// in a code section
+						// convert inserted <br> or <br /> tags into EOL
+						if (r.constants.MY_ENGINE === 'webkit')
+						{
+							sections[index] = sections[index].replace(/(<br>|<br \/>){1,2}/g, eol);
+						}
+						else
+						{
+							sections[index] = sections[index].replace(/(<br>|<br \/>)/g, eol);
+						}
+						// convert HTML characters from editor into proper characters
+						sections[index] = sections[index].replace(/&amp;/g, '&');
+						sections[index] = sections[index].replace(/&lt;/g, '<');
+						sections[index] = sections[index].replace(/&gt;/g, '>');
+						sections[index] = sections[index].replace(/&quot;/g, '"');
+						sections[index] = sections[index].replace(/&apos;/g, '\'');
+						sections[index] = sections[index].replace(/&nbsp;/g, ' ');
+					}
+					else
+					{
+						// not in a code section
+
+						/* xhtml cleanup */
+
+						if (options.xhtml)
+						{
+							output = output.replace(/ class=""/gi, '');
+							output = output.replace(/ style="(.*?)"/gi, '');
+							output = output.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
+							output = output.replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>');
+							output = output.replace(/<(s|strike)>(.*?)<\/(s|strike)>/gi, '<del>$2</del>');
+							output = output.replace(/<br>/gi, '<br />');
+							output = output.replace(/(<img [^>]+[^\/])>/gi, '$1 />');
+						}
+
+						/* add newlines */
+
+						if (options.newline)
+						{
+							output = output.replace(/<br \/>/gi, '<br \/>' + eol);
+							output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
+							output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
+							output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
+							output = output.replace(window.RegExp(eol + eol, 'g'), eol);
+						}
+					}
+				}
+				output = '';
+				for (index = 0; index < sections.length; index++)
+				{
+					output += sections[index];
+				}
+				// GaryA - end of fix
+
 				/* pseudo tags */
 
-				output = output.replace(/&lt;(break|code|function)&gt;/gi, '<$1>');
-				output = output.replace(/&lt;\/(code|function)&gt;/gi, '</$1>');
+				// convert function tags so that they display as text in the WYSIWYG editor
+				// don't convert break and code tags - they are handled by CSS
+				output = output.replace(/&lt;(\/?function)&gt;/gi, '<$1>');
 
-				/* xhtml cleanup */
-
-				if (options.xhtml)
-				{
-					output = output.replace(/ class=""/gi, '');
-					output = output.replace(/ style="(.*?)"/gi, '');
-					output = output.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
-					output = output.replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>');
-					output = output.replace(/<(s|strike)>(.*?)<\/(s|strike)>/gi, '<del>$2</del>');
-					output = output.replace(/<br>/gi, '<br />');
-					output = output.replace(/(<img [^>]+[^\/])>/gi, '$1 />');
-				}
-
-				/* add newlines */
-
-				if (options.newline)
-				{
-					output = output.replace(/<br \/>/gi, '<br \/>' + eol);
-					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
-					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
-					output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
-					output = output.replace(window.RegExp(eol + eol, 'g'), eol);
-				}
 				return output;
 			};
 
@@ -369,8 +422,45 @@
 			{
 				var output = editor.textarea.val();
 
-				output = output.replace(/<(break|code|function)>/gi, '&lt;$1&gt;');
-				output = output.replace(/<\/(code|function)>/gi, '&lt;/$1&gt;');
+				// GaryA - fix
+				var index,
+					incode = 0;
+				// split string into code and non-code sections
+				var sections = output.split(/(<\/?code>)/);
+				// process each section
+				for (index = 0; index < sections.length; index++)
+				{
+					if (sections[index] === '<code>')
+					{
+						// Set code flag
+						incode = 1;
+					}
+					else if (sections[index] === '</code>')
+					{
+						// Clear code flag
+						incode = 0;
+					}
+					else if (incode === 1)
+					{
+						// in a code section
+						// convert HTML special characters so that they display in the WYSIWYG editor
+						sections[index] = sections[index].replace(/&/g, '&amp;');
+						sections[index] = sections[index].replace(/</g, '&lt;');
+						sections[index] = sections[index].replace(/>/g, '&gt;');
+						sections[index] = sections[index].replace(/"/g, '&quot;');
+						sections[index] = sections[index].replace(/'/g, '&apos;');
+					}
+				}
+				output = '';
+				for (index = 0; index < sections.length; index++)
+				{
+					output += sections[index];
+				}
+
+				// convert function tags so that they display as text in the WYSIWYG editor
+				// don't convert break and code tags - they are handled by CSS
+				output = output.replace(/<(\/?function)>/gi, '&lt;$1&gt;');
+				// GaryA - end of fix
 				return output;
 			};
 

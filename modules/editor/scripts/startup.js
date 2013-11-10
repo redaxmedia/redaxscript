@@ -3,7 +3,7 @@
  *
  * 1. editor
  *
- * @since 2.0.0
+ * @since 2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -19,13 +19,20 @@ r.modules.editor =
 	{
 		element:
 		{
-			editorControl: 'a.js_editor_control'
+			editor: 'div.js_editor',
+			editorPreview: 'div.js_editor_preview',
+			editorToolbar: 'div.js_toolbar',
+			editorDivider: 'a.js_editor_divider',
+			editorControl: 'a.js_editor_control',
+			editorSourceCode: 'a.js_editor_control_source_code',
+			editorWysiwyg: 'a.js_editor_control_wysiwyg'
 		},
 		classString:
 		{
 			editor: 'js_editor editor',
 			editorPreview: 'js_required js_editor_preview editor_preview',
 			editorToolbar: 'js_toolbar editor_toolbar clear_fix',
+			editorDivider: 'js_editor_divider editor_divider',
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
 			editorWysiwyg: 'wysiwyg'
@@ -35,12 +42,15 @@ r.modules.editor =
 			backend:
 			[
 				'toggle',
+				'divider',
 				'bold',
 				'italic',
 				'underline',
 				'strike',
+				'divider',
 				'superscript',
 				'subscript',
+				'divider',
 				'paragraph',
 				'h1',
 				'h2',
@@ -50,23 +60,28 @@ r.modules.editor =
 				'h6',
 				'ordered_list',
 				'unordered_list',
+				'divider',
 				'outdent',
 				'indent',
+				'divider',
 				'align_left',
 				'align_center',
 				'align_right',
 				'align_justify',
 				'undo',
 				'redo',
+				'divider',
 				'cut',
 				'copy',
 				'paste',
 				'insert_link',
 				'unlink',
+				'divider',
 				'insert_image',
 				'insert_break',
 				'insert_code',
 				'insert_function',
+				'divider',
 				'unformat'
 			],
 			frontend:
@@ -75,6 +90,7 @@ r.modules.editor =
 				'italic',
 				'underline',
 				'strike',
+				'divider',
 				'unformat'
 			]
 		},
