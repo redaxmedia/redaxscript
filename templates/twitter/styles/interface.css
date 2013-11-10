@@ -9,28 +9,32 @@
  * 6. list tab default
  *    6.1 javascript enabled
  * 7. list search result
- * 8. tooltip default
+ * 8. tooltip
  * 9. space between elements
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. list breadcrumb */
 
 .list_breadcrumb
 {
-	-moz-border-radius: 0.125em;
+	-moz-border-radius: 0.25em;
 	-moz-box-shadow: inset 0 1px #fff;
-	-webkit-border-radius: 0.125em;
+	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: inset 0 1px #fff;
 	background: #fbfbfb;
 	background: -moz-linear-gradient(top, #fff, #f5f5f5);
 	background: -ms-linear-gradient(top, #fff, #f5f5f5);
 	background: -o-linear-gradient(top, #fff, #f5f5f5);
-	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f5f5f5));
 	background: -webkit-linear-gradient(top, #fff, #f5f5f5);
 	background: linear-gradient(top, #fff, #f5f5f5);
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
-	border-radius: 0.125em;
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
+	border-radius: 0.25em;
 	box-shadow: inset 0 1px #fff;
 	margin-bottom: 2em;
 	padding: 0.75em 1.25em;
@@ -68,20 +72,18 @@
 {
 	color: #999;
 	line-height: 3.5em;
-	padding: 0 0.5em;
+	padding: 0 2em;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
 }
 
 .list_header a:hover, .list_header .item_active a
 {
 	color: #fff;
-	text-decoration: none;
 }
 
 .list_header li
 {
 	display: inline-block;
-	margin-right: 0.5em;
 }
 
 .list_header li:last-child
@@ -121,15 +123,10 @@
 .list_pagination a, .list_pagination span
 {
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-left-width: 0;
 	padding: 0.75em 1em;
-}
-
-.list_pagination a:hover
-{
-	text-decoration: none;
 }
 
 .list_pagination a:hover, .list_pagination span
@@ -147,13 +144,12 @@
 .list_sidebar
 {
 	color: #999;
-	text-indent: 1.25em;
+	text-indent: 1.5em;
 }
 
 .list_sidebar a
 {
 	display: block;
-	text-decoration: none;
 }
 
 .list_sidebar a:hover
@@ -163,10 +159,10 @@
 
 .list_sidebar li
 {
-	line-height: 2.25em;
+	line-height: 3em;
 }
 
-.list_sidebar .item_active > a, .list_sidebar .item_active > a:hover
+.list_sidebar li.item_active > a
 {
 	background: #0088cc;
 	color: #fff;
@@ -181,12 +177,6 @@
 
 /* @section 6. list tab default */
 
-.list_tab_default
-{
-	border-bottom: 1px solid #d5d5d5;
-	border-bottom-color: rgba(0, 0, 0, 0.15);
-}
-
 .list_tab_default li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
@@ -196,7 +186,7 @@
 	border-color: #fff #fff #ddd;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
-	margin-right: 1px;
+	margin-right: 0.25em;
 }
 
 .list_tab_default li:hover
@@ -208,11 +198,6 @@
 {
 	font: 1em/2.75em arial;
 	padding: 0 1em;
-}
-
-.list_tab_default a:hover
-{
-	text-decoration: none;
 }
 
 /* @section 6.1 javascript enabled */
@@ -257,17 +242,17 @@
 	text-decoration: underline;
 }
 
-/* @section 8. tooltip default */
+/* @section 8. tooltip */
 
-.tooltip_default
+.tooltip
 {
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	color: #555;
@@ -275,7 +260,20 @@
 	margin-left: 1em;
 	top: -0.625em;
 	padding: 1em;
+}
+
+/* default */
+
+.tooltip_default
+{
 	width: 20em;
+}
+
+/* alternative */
+
+.tooltip_alternative
+{
+	white-space: nowrap;
 }
 
 /* @section 9. space between elements */

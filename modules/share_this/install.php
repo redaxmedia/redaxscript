@@ -2,16 +2,30 @@
 
 /**
  * share this install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function share_this_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrates share buttons\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrates social networks\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
 /**
  * share this uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function share_this_uninstall()

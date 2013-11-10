@@ -3,6 +3,11 @@
  *
  * 1. seo tube
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -26,9 +31,9 @@
 			relatedText = $(options.related.text),
 			video = r.modules.seoTube.video,
 			constant = r.modules.seoTube.constant,
-			eol = '\n',
-			tab = '\t',
-			text;
+			eol = options.eol,
+			indent = options.indent,
+			text = '';
 
 		if (typeof video === 'object')
 		{
@@ -41,7 +46,7 @@
 			}
 			if (video.id)
 			{
-				text = '<function>' + eol + '{' + eol + tab + '"seo_tube_player":' + eol + tab + '{' + eol + tab + tab + '"video_id": "' + video.id + '"' + eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
+				text = '<function>' + eol + '{' + eol + indent + '"seo_tube_player":' + eol + indent + '{' + eol + indent + indent + '"video_id": "' + video.id + '"' + eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 
 			/* video description */
@@ -59,12 +64,12 @@
 
 			if (constant.SEO_TUBE_COMMENT_FEED > 0)
 			{
-				text += eol + '<function>' + eol + '{' + eol + tab + '"feed_reader":' + eol + tab + '{' + eol + tab + tab + '"url": "' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments"';
+				text += eol + '<function>' + eol + '{' + eol + indent + '"feed_reader":' + eol + indent + '{' + eol + indent + indent + '"url": "' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments"';
 				if (constant.SEO_TUBE_COMMENT_LIMIT)
 				{
-					text += ',' + eol + tab + tab + '"filter": "",' + eol + tab + tab + '"limit": "' + constant.SEO_TUBE_COMMENT_LIMIT + '"';
+					text += ',' + eol + indent + indent + '"filter": "",' + eol + indent + indent + '"limit": "' + constant.SEO_TUBE_COMMENT_LIMIT + '"';
 				}
-				text += eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
+				text += eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 			if (text)
 			{

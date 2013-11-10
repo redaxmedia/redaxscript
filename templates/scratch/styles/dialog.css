@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. dialog overlay default
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. dialog overlay default */
@@ -9,4 +14,5 @@
 .dialog_overlay_default
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.3);
 }

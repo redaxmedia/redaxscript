@@ -3,30 +3,28 @@
 
 [template]
 1 = styles/reset.css
-2 = styles/box.css
-3 = styles/dialog.css
-4 = styles/general.css
-5 = styles/grid.css
-6 = styles/interface.css
-7 = styles/media.css
-8 = styles/table.css
-9 = templates/candy/styles/box.css
-10 = templates/candy/styles/dialog.css
-11 = templates/candy/styles/form.css
-12 = templates/candy/styles/general.css
-13 = templates/candy/styles/interface.css
-14 = templates/candy/styles/media.css
-15 = templates/candy/styles/note.css
-16 = templates/candy/styles/table.css
-17 = templates/candy/styles/typography.css
-18 = styles/query.css
-19 = templates/candy/styles/query.css
+2 = styles/animate.css
+3 = styles/box.css
+4 = styles/dialog.css
+5 = styles/general.css
+6 = styles/grid.css
+7 = styles/interface.css
+8 = styles/media.css
+9 = styles/table.css
+10 = templates/candy/styles/box.css
+11 = templates/candy/styles/dialog.css
+12 = templates/candy/styles/form.css
+13 = templates/candy/styles/general.css
+14 = templates/candy/styles/interface.css
+15 = templates/candy/styles/media.css
+16 = templates/candy/styles/note.css
+17 = templates/candy/styles/table.css
+18 = templates/candy/styles/typography.css
+19 = styles/query.css
+20 = templates/candy/styles/query.css
 
 [firefox]
 1 = styles/firefox.css
-
-[opera]
-1 = templates/candy/styles/opera.css
 
 [webkit]
 1 = styles/webkit.css

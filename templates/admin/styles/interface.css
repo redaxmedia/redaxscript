@@ -3,44 +3,74 @@
  *
  * 1. link dock admin
  *    1.1 icons
- * 2. link panel admin
- *    2.1 logout
- * 3. list control admin
- * 4. list panel admin
- *    4.1 list panel children
- * 5. list tab admin
- *    5.1 javascript enabled
+ * 2. list control admin
+ * 3. list panel admin
+ *    3.1 icons before
+ *    3.2 icons after
+ *    3.3 javascript enabled
+ * 4. list tab admin
+ *    4.1 javascript enabled
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. link dock admin */
 
 .link_dock_admin
 {
-	display: inline-block;
-	height: 3.25em;
-	margin: 0 0.5em;
+	-moz-transition: padding 0.3s ease;
+	-ms-transition: padding 0.3s ease;
+	-o-transition: padding 0.3s ease;
+	-webkit-transition: padding 0.3s ease;
+	float: left;
+	height: 3.125em;
 	position: relative;
 	text-indent: -999em;
-	width: 2em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	transition: padding 0.3s ease;
+	width: 3.375em;
 }
 
 .link_dock_admin:hover
 {
-	color: #999;
+	background: #3db1f1;
+	background: -moz-linear-gradient(top, #3db1f1, #0090db);
+	background: -ms-linear-gradient(top, #3db1f1, #0090db);
+	background: -o-linear-gradient(top, #3db1f1, #0090db);
+	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
+	background: linear-gradient(top, #3db1f1, #0090db);
+	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	padding: 0 0.25em;
 }
 
-.link_dock_admin:before
+/* link delete */
+
+.link_dock_admin.link_delete:hover
 {
-	font: 1.25em/2.25em 'icon admin';
-	left: 0;
-	position: absolute;
-	text-align: center;
-	text-indent: 0;
-	top: 0;
-	width: 2em;
+	background: #d50000;
+	background: -moz-linear-gradient(top, #d50000, #a20000);
+	background: -ms-linear-gradient(top, #d50000, #a20000);
+	background: -o-linear-gradient(top, #d50000, #a20000);
+	background: -webkit-linear-gradient(top, #d50000, #a20000);
+	background: linear-gradient(top, #d50000, #a20000);
 }
 
 /* @section 1.1 icons */
+
+.link_dock_admin:before
+{
+	font: 1.25em/2.5em 'icon admin';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+}
 
 .link_dock_admin.link_unpublish:before
 {
@@ -57,110 +87,45 @@
 	content: 'r';
 }
 
-/* @section 2. link panel admin */
-
-.link_panel_admin
-{
-	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-moz-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-webkit-border-radius: 0.25em;
-	background: #333;
-	border: 1px solid #151515;
-	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	display: inline-block;
-	font: bold 0.875em/2.125em arial;
-	text-shadow: 0 1px #1b1b1b;
-	text-transform: uppercase;
-	margin-right: 1em;
-	padding: 0 0.75em;
-}
-
-.link_panel_admin, .link_panel_admin:hover
-{
-	color: #ccc;
-}
-
-.link_panel_admin:hover
-{
-	background: #3b3b3b;
-}
-
-/* @section 2.1 logout */
-
-.link_panel_admin.link_logout
-{
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.link_panel_admin.link_logout:before
-{
-	background: url('templates/admin/images/sprite.png') -158px 0;
-	content: '';
-	display: block;
-	height: 30px;
-	left: 5px;
-	margin-top: -15px;
-	position: absolute;
-	top: 50%;
-	width: 14px;
-}
-
-.link_panel_admin.link_logout:hover.link_logout:before
-{
-	-moz-box-shadow: 0 0 3px #b90000;
-	-webkit-box-shadow: 0 0 3px #b90000;
-	box-shadow: 0 0 3px #b90000;
-}
-
-/* @section 3. list control admin */
+/* @section 2. list control admin */
 
 .item_control_admin
 {
 	display: inline-block;
-	font-size: 0.75em;
+	font-size: 0.875em;
 	margin-bottom: 0.5em;
 	margin-right: 0.5em;
-	text-transform: uppercase;
 }
 
 .list_control_admin a, .list_control_admin span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	background: #ddd;
 	background: -moz-linear-gradient(top, #ddd, #c6c6c6);
 	background: -ms-linear-gradient(top, #ddd, #c6c6c6);
 	background: -o-linear-gradient(top, #ddd, #c6c6c6);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#c6c6c6));
 	background: -webkit-linear-gradient(top, #ddd, #c6c6c6);
 	background: linear-gradient(top, #ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	color: #666;
 	display: inline-block;
-	line-height: 1.75em;
+	line-height: 2em;
 	padding: 0 0.75em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
 .list_control_admin a:hover
 {
-	background: #62c5ff;
-	background: -moz-linear-gradient(top, #62c5ff, #0090db);
-	background: -ms-linear-gradient(top, #62c5ff, #0090db);
-	background: -o-linear-gradient(top, #62c5ff, #0090db);
-	background: -webkit-gradient(linear, left top, left bottom, from(#62c5ff), to(#0090db));
-	background: -webkit-linear-gradient(top, #62c5ff, #0090db);
-	background: linear-gradient(top, #62c5ff, #0090db);
+	background: #4cb4ff;
+	background: -moz-linear-gradient(top, #4cb4ff, #0090db);
+	background: -ms-linear-gradient(top, #4cb4ff, #0090db);
+	background: -o-linear-gradient(top, #4cb4ff, #0090db);
+	background: -webkit-linear-gradient(top, #4cb4ff, #0090db);
+	background: linear-gradient(top, #4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
-	text-decoration: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
@@ -169,102 +134,128 @@
 	color: #999;
 }
 
-/* @section 4. list panel admin */
+/* @section 3. list panel admin */
 
 .list_panel_admin
 {
-	font: bold 1.125em arial;
-	display: inline-block;
-	text-shadow: 0 1px #1b1b1b;
+	font-size: 0.875rem;
+}
+
+.item_panel_admin
+{
+	position: relative;
+}
+
+.list_panel_admin a, .list_panel_admin span
+{
+	-moz-transition: padding-left 0.3s ease;
+	-ms-transition: padding-left 0.3s ease;
+	-o-transition: padding-left 0.3s ease;
+	-webkit-transition: padding-left 0.3s ease;
+	color: #b9b9b9;
+	cursor: pointer;
+	display: block;
+	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
+	transition: padding-left 0.3s ease;
 }
 
-.list_panel_admin, .list_panel_admin a
+.list_panel_admin a:hover, .list_panel_admin span:hover
 {
-	color: #ccc;
+	background: #3db1f1;
+	background: -moz-linear-gradient(top, #3db1f1, #0090db);
+	background: -ms-linear-gradient(top, #3db1f1, #0090db);
+	background: -o-linear-gradient(top, #3db1f1, #0090db);
+	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
+	background: linear-gradient(top, #3db1f1, #0090db);
+	color: #000;
+	padding-left: 1.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.list_panel_admin li
+/* link logout */
+
+.item_panel_admin.item_logout a:hover
 {
-	background: #333;
-	padding: 0.25em 0.75em;
+	background: #d50000;
+	background: -moz-linear-gradient(top, #d50000, #a20000);
+	background: -ms-linear-gradient(top, #d50000, #a20000);
+	background: -o-linear-gradient(top, #d50000, #a20000);
+	background: -webkit-linear-gradient(top, #d50000, #a20000);
+	background: linear-gradient(top, #d50000, #a20000);
 }
 
-.list_panel_admin li:hover, .list_panel_admin .item_touch
-{
-	background: #3b3b3b;
-}
+/* @section 3.1 icons before */
 
-/* parent items */
-
-.list_panel_admin > li
+.item_panel_admin > a:before, .item_panel_admin > span:before
 {
-	-moz-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-moz-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	-webkit-border-radius: 0.25em;
-	border: 1px solid #151515;
-	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px #585858, 0 0 1px #474747;
-	display: inline-block;
+	font: 1.25em/1.5em 'icon admin';
 	margin-right: 1em;
+	vertical-align: middle;
+	text-transform: lowercase;
 }
 
-.list_panel_admin > li:hover, .list_panel_admin > .item_touch
+.item_panel_admin.item_contents > span:before
 {
-	background-color: #3b3b3b;
+	content: 'i';
 }
 
-/* @section 4.1 list panel children */
-
-.list_panel_children_admin
+.item_panel_admin.item_access > span:before
 {
-	border-top: 4px solid transparent;
+	content: 'j';
 }
 
-.list_panel_children_admin li
+.item_panel_admin.item_system > span:before
 {
-	border: 1px solid #585858;
-	border-top-width: 0;
+	content: 'k';
 }
 
-/* rounded items */
-
-.list_panel_children_admin li:first-child
+.item_panel_admin.item_profile > a:before, .item_panel_admin.item_profile > span:before
 {
-	-moz-border-radius-topleft: 0.25em;
-	-moz-border-radius-topright: 0.25em;
-	-webkit-border-top-left-radius: 0.25em;
-	-webkit-border-top-right-radius: 0.25em;
-	border-top-left-radius: 0.25em;
-	border-top-right-radius: 0.25em;
-	border-top-width: 1px;
+	content: 'l';
 }
 
-.list_panel_children_admin li:last-child
+.item_panel_admin.item_logout > a:before
 {
-	-moz-border-radius-bottomleft: 0.25em;
-	-moz-border-radius-bottomright: 0.25em;
-	-webkit-border-bottom-left-radius: 0.25em;
-	-webkit-border-bottom-right-radius: 0.25em;
-	border-bottom-left-radius: 0.25em;
-	border-bottom-right-radius: 0.25em;
+	content: 'n';
 }
 
-/* left space */
+/* @section 3.2 icons after */
 
-.list_panel_admin .list_panel_children_admin ul
+.item_panel_admin > span:after
 {
-	border-left: 4px solid transparent;
-	top: -1px;
+	font: 1.5em/1.75em 'icon admin';
+	position: absolute;
+	right: 0.75em;
+	top: 0;
 }
 
-/* @section 5. list tab admin */
-
-.list_tab_admin
+.item_panel_admin > span:after
 {
-	margin-bottom: -1px;
+	content: '˃';
 }
+
+.item_panel_admin.item_active > span:after
+{
+	content: '˅';
+}
+
+/* @section 3.3 javascript enabled */
+
+.js .list_panel_children_admin
+{
+	display: none;
+}
+
+.js .list_panel_children_admin ul
+{
+	left: 100%;
+	top: 0;
+}
+
+/* @section 4. list tab admin */
 
 .list_tab_admin li
 {
@@ -273,14 +264,15 @@
 	background: url('templates/admin/images/carbon.png') #232323;
 	border: 1px solid #232323;
 	border-radius: 0.25em 0.25em 0 0;
-	margin-right: 1px;
+	margin-bottom: -1px;
+	margin-right: 0.25em;
 	vertical-align: bottom;
 }
 
 .list_tab_admin a
 {
 	color: #ccc;
-	font: bold 1.125em/2em arial;
+	font: bold 1.25em/2em 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
 	text-transform: uppercase;
 }
@@ -290,7 +282,7 @@
 	text-decoration: none;
 }
 
-/* @section 5.1 javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {
@@ -300,7 +292,6 @@
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#e2e2e2, 40%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;

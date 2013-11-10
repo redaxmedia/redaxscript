@@ -1,0 +1,23 @@
+/**
+ * @tableofcontents
+ *
+ * 1. lazy load
+ *
+ * @since 2.0.1
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. lazy load */
+
+.placeholder_lazy_load
+{
+	display: none;
+}
+
+.js .placeholder_lazy_load
+{
+	display: block;
+    height: 0.5em;
+}

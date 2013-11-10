@@ -2,6 +2,13 @@
 
 /**
  * preview loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function preview_loader_start()
@@ -15,6 +22,13 @@ function preview_loader_start()
 
 /**
  * preview render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function preview_render_start()
@@ -28,6 +42,13 @@ function preview_render_start()
 
 /**
  * preview center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function preview_center_start()
@@ -42,6 +63,7 @@ function preview_center_start()
 		include_once('modules/preview/partials/typography.phtml');
 		include_once('modules/preview/partials/box.phtml');
 		include_once('modules/preview/partials/form.phtml');
+		include_once('modules/preview/partials/icon.phtml');
 		include_once('modules/preview/partials/media.phtml');
 		include_once('modules/preview/partials/interface.phtml');
 		include_once('modules/preview/partials/table.phtml');

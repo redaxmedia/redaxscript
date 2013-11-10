@@ -2,6 +2,12 @@
  * @tableofcontents
  *
  * 1. reset
+ * 2. normalize
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. reset */
@@ -41,4 +47,13 @@ table
 {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+/* @section 2. normalize */
+
+button, input, select, textarea
+{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }

@@ -5,6 +5,11 @@
  * 2. link default
  * 3. several titles
  * 4. title dialog default
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. tag styling */
@@ -56,9 +61,9 @@ pre
 
 .title_dialog_default
 {
-	-moz-border-radius: 0.25em 0.25em 0 0;
-	-webkit-border-radius: 0.25em 0.25em 0 0;
+	-moz-border-radius: 0.125em 0.125em 0 0;
+	-webkit-border-radius: 0.125em 0.125em 0 0;
 	background: #e5e5e5;
-	border-radius: 0.25em 0.25em 0 0;
+	border-radius: 0.125em 0.125em 0 0;
 	padding: 0.75em;
 }

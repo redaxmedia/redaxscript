@@ -200,8 +200,8 @@ $l['installation_completed'] = 'Uzstādīšana pabeigta';
 
 /* database */
 
-$l['host'] = 'Serveris';
-$l['prefix'] = 'Datu bāzes prefikss';
+$l['host'] = 'Host';
+$l['prefix'] = 'Prefikss';
 $l['database'] = 'Datu bāzes nosaukums';
 $l['database_setup'] = 'Iestatīt datu bāzi';
 $l['database_failed'] = 'Kļūda savienojoties ar datu bāzi';

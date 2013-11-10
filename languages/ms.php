@@ -111,7 +111,7 @@ $l['delete'] = 'Padam';
 $l['save'] = 'Simpan';
 $l['reset'] = 'Tetapkan semula';
 $l['submit'] = 'Kemukakan';
-$l['ok'] = 'OK';
+$l['ok'] = 'Ok';
 $l['cancel'] = 'Batal';
 
 /* status */
@@ -311,8 +311,8 @@ $l['verification'] = 'Pengesahan';
 /* security */
 
 $l['security'] = 'Sekuriti';
-$l['captcha'] = 'CAPTCHA';
-$l['captcha_incorrect'] = 'CAPTCHA tidak tepat';
+$l['captcha'] = 'Captcha';
+$l['captcha_incorrect'] = 'Captcha tidak tepat';
 $l['blocker'] = 'Penghalang';
 
 /* notification */

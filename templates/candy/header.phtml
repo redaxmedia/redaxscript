@@ -2,7 +2,7 @@
 	<?php if (DB_CONNECTED == 1): ?>
 		<section class="wrapper">
 			<?php if (s('title')): ?>
-				<h1 class="title_website"><?php echo anchor_element('', '', '', truncate(s('title'), 15), ROOT); ?></h1>
+				<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
 			<?php endif; ?>
 			<?php navigation_list('categories', array(
 				'children' => 1,

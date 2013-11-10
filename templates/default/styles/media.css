@@ -1,42 +1,45 @@
 /**
  * @tableofcontents
  *
- * 1. image default
- * 2. player default
- *    2.1 hover effect
+ * 1. several media
+ *    1.1 hover effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-/* @section 1. image default */
+/* @section 1. several media */
 
-.image_default
+.image_default, .image_gallery, .player_default
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
-	border-radius: 0.25em;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 6px #c6c6c6;
+	-moz-border-radius: 0.125em;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 0.125em;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	background: #eee;
+	border-radius: 0.125em;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
-/* @section 2. player default */
-
-.player_default
+.image_default, .player_default
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px #c6c6c6;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #ebebeb;
-	border-radius: 0.25em;
-	box-shadow: 0 0 3px #c6c6c6;
-	padding: 0.5em;
+	max-width: 98%;
+	padding: 1%;
 }
 
-/* @section 2.1 hover effect */
-
-.player_default:hover
+.image_gallery
 {
-	-moz-box-shadow: 0 0 3px #999;
-	-webkit-box-shadow: 0 0 3px #999;
-	box-shadow: 0 0 3px #999;
+	max-width: 94%;
+	padding: 3%;
+}
+
+/* @section 1.1 hover effect */
+
+.image_default:hover, .image_gallery:hover, .player_default:hover
+{
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }

@@ -2,9 +2,18 @@
  * @tableofcontents
  *
  * 1. dialog
+ *    1.1 open
+ *    1.2 listen
+ *    1.3 close
+ *    1.4 init
  * 2. confirm link
  * 3. prevent unload
  * 4. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -24,104 +33,140 @@
 
 		/* detect needed mode */
 
-		if (r.constants.FIRST_PARAMETER === 'admin')
+		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
+			r.flags.backend = true;
 		}
 		else
 		{
 			options.suffix = options.suffix.frontend;
 		}
 
-		var body = $('body'),
-			dialog = body.find(options.element.dialog),
-			dialogOverlay = body.find(options.element.dialogOverlay),
-			buttonOk, buttonCancel, output = '';
+		var dialog = {};
 
-		/* prematurely terminate dialog */
+		/* @section 1.1 open */
 
-		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || dialog.length || dialogOverlay.length)
+		dialog.open = function ()
+		{
+			/* append dialog elements */
+
+			dialog.title.add(dialog.box).appendTo(dialog.container);
+
+			/* message */
+
+			if (options.message)
+			{
+				dialog.textMessage = $('<p>' + options.message + '</p>').appendTo(dialog.box);
+			}
+
+			/* prompt input */
+
+			if (options.type === 'prompt')
+			{
+				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialog.box);
+			}
+
+			/* ok button */
+
+			dialog.buttonOk.appendTo(dialog.box);
+
+			/* cancel button */
+
+			if (options.type === 'confirm' || options.type === 'prompt')
+			{
+				dialog.buttonCancel.appendTo(dialog.box);
+			}
+
+			/* append to body */
+
+			dialog.container.add(dialog.overlay).appendTo('body');
+			r.flags.modal = true;
+		};
+
+		/* @section 1.2 listen */
+
+		dialog.listen = function ()
+		{
+			/* listen for click */
+
+			dialog.buttonOk.on('click', function ()
+			{
+				if (typeof options.callback === 'function')
+				{
+					if (options.type === 'prompt')
+					{
+						var value = $.trim(dialog.fieldPrompt.val());
+
+						if (value)
+						{
+							options.callback.call(this, value);
+						}
+					}
+					else
+					{
+						options.callback.call(this);
+					}
+				}
+			})
+
+			/* close dialog */
+
+			.add(dialog.buttonCancel).add(dialog.overlay).on('click', function ()
+			{
+				dialog.close();
+			});
+
+			/* listen for keydown */
+
+			$(window).on('keydown', function (event)
+			{
+				if (event.which === 27)
+				{
+					dialog.close();
+				}
+			});
+		};
+
+		/* @section 1.3 close */
+
+		dialog.close = function ()
+		{
+			dialog.container.add(dialog.overlay).remove();
+			r.flags.modal = false;
+		};
+
+		/* @section 1.4 init */
+
+		dialog.init = function ()
+		{
+			/* create dialog elements */
+
+			dialog.overlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix);
+			dialog.container = $('<div>').addClass(options.classString.dialog + options.suffix);
+			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix);
+			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
+			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
+			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
+
+			/* open and listen */
+
+			if (!r.flags.modal)
+			{
+				dialog.open();
+				dialog.listen();
+			}
+		};
+
+		/* init as needed */
+
+		if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
 		{
 			return false;
 		}
-
-		/* collect overlay */
-
-		output = '<div class="' + options.classString.dialogOverlay + options.suffix + '"></div>';
-
-		/* collect dialog elements */
-
-		output += '<div class="' + options.classString.dialog + options.suffix + '"><h3 class="' + options.classString.dialogTitle + options.suffix + '">' + l[options.type] + '</h3><div class="' + options.classString.dialogBox + options.suffix + '">';
-		if (options.message)
+		else
 		{
-			output += '<p>' + options.message + '</p>';
-		}
-
-		/* manage suffix */
-
-		if (r.constants.FIRST_PARAMETER !== 'admin')
-		{
-			options.suffix = '';
-		}
-
-		/* prompt */
-
-		if (options.type === 'prompt')
-		{
-			output += '<input type="text" class="js_prompt field_text' + options.suffix + '" value="' + options.value + '" />';
-		}
-
-		/* ok button */
-
-		output += '<a class="js_ok field_button' + options.suffix + '">' + l.ok + '</a>';
-
-		/* cancel button if confirm or prompt */
-
-		if (options.type === 'confirm' || options.type === 'prompt')
-		{
-			output += '<a class="js_cancel field_button' + options.suffix + '">' + l.cancel + '</a>';
-		}
-		output += '</div></div>';
-
-		/* append output to body */
-
-		body.append(output);
-
-		/* fade in overlay and dialog */
-
-		dialogOverlay = body.find(options.element.dialogOverlay).css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-		dialog = body.find(options.element.dialog).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-		buttonOk = dialog.find(options.element.buttonOk);
-		buttonCancel = dialog.find(options.element.buttonCancel);
-
-		/* close dialog on click */
-
-		buttonOk.add(buttonCancel).add(dialogOverlay).click(function ()
-		{
-			dialog.add(dialogOverlay).remove();
-		});
-
-		/* callback if ok */
-
-		if (typeof options.callback === 'function')
-		{
-			buttonOk.on('click', function ()
-			{
-				if (options.type === 'prompt')
-				{
-					var input = dialog.find('input.js_prompt'),
-						value = $.trim(input.val());
-
-					if (value)
-					{
-						options.callback.call(this, value);
-					}
-				}
-				else
-				{
-					options.callback.call(this);
-				}
-			});
+			dialog.init();
 		}
 	};
 
@@ -150,13 +195,14 @@
 						message: l.dialog_question + l.question_mark,
 						callback: function ()
 						{
-							/* check for internal link */
-
 							if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
 							{
-								url = r.baseURL + url;
+								window.location = r.baseURL + url;
 							}
-							window.location = url;
+							else
+							{
+								window.location = url;
+							}
 						}
 					});
 					event.preventDefault();
@@ -200,7 +246,7 @@
 		{
 			$(r.plugins.confirmLink.selector).confirmLink();
 
-			/* depending startup */
+			/* dependency */
 
 			if (r.plugins.preventUnload.startup)
 			{

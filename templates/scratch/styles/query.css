@@ -3,6 +3,14 @@
  *
  * 1. print
  * 2. screen max 50em
+ * 3. screen max 30em
+ * 4. screen min 30em
+ * 5. screen min 100em
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. print */
@@ -37,5 +45,40 @@
 	.wrapper_body
 	{
 		min-width: 0;
+	}
+}
+
+/* @section 3. screen max 30em */
+
+@media screen and (max-width: 30em)
+{
+	.button_default + .button_default
+	{
+		margin-top: 0.75em;
+	}
+}
+
+/* @section 4. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.button_default + .button_default
+	{
+		margin-left: 0.5em;
+	}
+}
+
+/* @section 5. screen min 100em */
+
+@media screen and (min-width: 100em)
+{
+	.wrapper
+	{
+		width: 90em;
+	}
+
+	.wrapper_body
+	{
+		min-width: 90em;
 	}
 }

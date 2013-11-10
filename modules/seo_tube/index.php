@@ -2,6 +2,13 @@
 
 /**
  * seo tube loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_loader_start()
@@ -14,6 +21,13 @@ function seo_tube_loader_start()
 
 /**
  * seo tube scripts end
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_scripts_end()
@@ -43,6 +57,13 @@ function seo_tube_scripts_end()
 
 /**
  * seo tube center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_center_start()
@@ -55,6 +76,13 @@ function seo_tube_center_start()
 
 /**
  * seo tube admin contents form start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_admin_contents_form_start()
@@ -67,6 +95,13 @@ function seo_tube_admin_contents_form_start()
 
 /**
  * seo tube get id
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $video_url
  * @return string
@@ -89,6 +124,13 @@ function seo_tube_get_id($video_url = '')
 
 /**
  * seo tube parser
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $video_id
  * @return string
@@ -122,6 +164,13 @@ function seo_tube_parser($video_id = '')
 
 /* seo tube player
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $video_id
  */
 
@@ -133,6 +182,13 @@ function seo_tube_player($video_id = '')
 
 /**
  * seo tube form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_form()
@@ -144,13 +200,20 @@ function seo_tube_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button_search', 'seo_tube_post', l('seo_tube_load'));
+	$output .= form_element('button', '', 'button_search', 'seo_tube_post', l('seo_tube_load'));
 	$output .= '</form>';
 	echo $output;
 }
 
 /**
  * seo tube post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_post()

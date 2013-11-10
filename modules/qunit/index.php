@@ -2,6 +2,13 @@
 
 /**
  * qunit loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_loader_start()
@@ -18,6 +25,13 @@ function qunit_loader_start()
 
 /**
  * qunit loader scripts transport start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_loader_scripts_transport_start()
@@ -39,19 +53,33 @@ function qunit_loader_scripts_transport_start()
 
 /**
  * qunit scripts start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_scripts_start()
 {
 	if (FIRST_PARAMETER == 'qunit')
 	{
-		$output = '<script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>' . PHP_EOL;
+		$output = '<script src="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.js"></script>' . PHP_EOL;
 		echo $output;
 	}
 }
 
 /**
  * qunit render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_render_start()
@@ -66,6 +94,13 @@ function qunit_render_start()
 
 /**
  * qunit center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_center_start()

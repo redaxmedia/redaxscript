@@ -10,6 +10,11 @@
  * 4. box tab admin
  *    4.1 javascript enabled
  * 5. space between elements
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. several admin boxes */
@@ -20,7 +25,6 @@
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
@@ -44,26 +48,16 @@
 
 .box_dock_admin
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
 	background: url('templates/admin/images/carbon.png') #232323;
-	border-radius: 0.25em;
-	box-shadow: inset 0 -1px #005da2, inset 0 -2px #3db1f1, inset 0 -3px #25a4e9, inset 0 -4px #0f98e0, inset 0 -5px #0090db, 0 0 3px rgba(0, 0, 0, 0.5);
+	font-size: 0.875rem;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	text-shadow: 0 1px #1b1b1b;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 }
 
 .box_dock_admin, .box_dock_admin a
 {
-	color: #666;
-}
-
-.box_dock_admin .divider
-{
-	display: none;
+	color: #b9b9b9;
 }
 
 /* @section 2.1 description dock admin */
@@ -71,16 +65,20 @@
 .description_dock_admin
 {
 	float: right;
-	font: 0.875em/3.25em arial;
+	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
 	margin-right: 1em;
+	margin-left: 1em;
+	min-width: 10em;
+	text-align: right;
+	text-transform: uppercase;
 }
 
 /* @section 2.2 footer grid fix */
 
 .footer .box_dock_admin
 {
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
 }
 
 /* @section 3. box panel admin */
@@ -88,7 +86,6 @@
 .box_panel_admin
 {
 	background: url('templates/admin/images/carbon.png') #232323;
-	padding: 1.25em 0;
 }
 
 /* @section 4. box tab admin */
@@ -99,7 +96,6 @@
 	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
 	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
 	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#dadada));
 	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
 	background: linear-gradient(top, #e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;

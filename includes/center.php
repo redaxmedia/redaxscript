@@ -2,6 +2,13 @@
 
 /**
  * center
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Center
+ * @author Henry Ruhs
  */
 
 function center()
@@ -27,6 +34,13 @@ function center()
 
 /**
  * routing
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Center
+ * @author Henry Ruhs
  */
 
 function routing()

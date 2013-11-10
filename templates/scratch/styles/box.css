@@ -4,6 +4,11 @@
  * 1. several boxes
  * 2. box default
  * 3. box dialog default
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. several boxes */
@@ -12,6 +17,7 @@
 {
 	background: #f5f5f5;
 	border: 1px solid #e5e5e5;
+	border-color: rgba(0, 0, 0, 0.1);
 	padding: 1em;
 }
 
@@ -19,17 +25,17 @@
 
 .box_default
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
-	border-radius: 0.25em;
+	-moz-border-radius: 0.125em;
+	-webkit-border-radius: 0.125em;
+	border-radius: 0.125em;
 }
 
 /* @section 3. box dialog default */
 
 .box_dialog_default
 {
-	-moz-border-radius: 0 0 0.25em 0.25em;
-	-webkit-border-radius: 0 0 0.25em 0.25em;
-	border-radius: 0 0 0.25em 0.25em;
+	-moz-border-radius: 0 0 0.125em 0.125em;
+	-webkit-border-radius: 0 0 0.125em 0.125em;
+	border-radius: 0 0 0.125em 0.125em;
 	border-top: 0;
 }

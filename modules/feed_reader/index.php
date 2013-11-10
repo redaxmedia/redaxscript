@@ -2,6 +2,13 @@
 
 /**
  * feed reader loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function feed_reader_loader_start()
@@ -13,18 +20,43 @@ function feed_reader_loader_start()
 /**
  * feed reader
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $url
- * @param integer|string $filter
- * @param integer $filter
+ * @param array $options
  */
 
-function feed_reader($url = '', $filter = '', $limit = '')
+function feed_reader($url = '', $options = '')
 {
-	/* define variables */
+	/* define option variables */
 
-	if (is_numeric($filter))
+	if ($options)
 	{
-		$limit = $filter;
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* fallback */
+
+	if ($option_truncate_title == '')
+	{
+		$option_truncate_title = 80;
+	}
+	if ($option_truncate_text == '')
+	{
+		$option_truncate_text = 1000;
+	}
+	if ($option_limit == '')
+	{
+		$option_limit = s('limit');
 	}
 
 	/* get contents */
@@ -53,10 +85,10 @@ function feed_reader($url = '', $filter = '', $limit = '')
 		{
 			/* define variables */
 
-			$title = entity(truncate($value->title, 80, '...'));
+			$title = entity(trim($value->title));
 			if ($title)
 			{
-				$title = strip_tags($title);
+				$title = truncate(strip_tags($title), $option_truncate_title, '...');
 			}
 
 			/* if atom feed */
@@ -66,7 +98,7 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$route = $value->link['href'];
 				$time = date(s('time'), strtotime($value->updated));
 				$date = date(s('date'), strtotime($value->updated));
-				$text = entity(truncate(trim($value->content), 1000, '...'));
+				$text = entity(trim($value->content));
 			}
 
 			/* else if rss feed */
@@ -76,30 +108,30 @@ function feed_reader($url = '', $filter = '', $limit = '')
 				$route = $value->link;
 				$time = date(s('time'), strtotime($value->pubDate));
 				$date = date(s('date'), strtotime($value->pubDate));
-				$text = entity(truncate(trim($value->description), 1000, '...'));
+				$text = entity(trim($value->description));
 			}
 			if ($text)
 			{
-				$text = strip_tags($text, '<a>');
+				$text = truncate(strip_tags($text, '<a>'), $option_truncate_text, '...');
 			}
 
 			/* if filter is invalid */
 
-			if (is_numeric($filter) || $filter == '')
+			if ($option_filter == '')
 			{
 				$filter_no = 1;
 			}
 			else
 			{
-				$position_title = strpos($title, $filter);
-				$position_text = strpos($text, $filter);
+				$position_title = strpos($title, $option_filter);
+				$position_text = strpos($text, $option_filter);
 				$filter_no = 0;
 			}
 			if ($filter_no || $position_title || $position_text)
 			{
 				/* break if limit reached */
 
-				if (++$counter > $limit && $limit)
+				if (++$counter > $option_limit)
 				{
 					break;
 				}

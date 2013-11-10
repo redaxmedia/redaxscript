@@ -2,6 +2,13 @@
 
 /**
  * admin contents list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_contents_list()
@@ -54,11 +61,11 @@ function admin_contents_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if ($table_new == 1)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_plus', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
+		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
 	}
 	if (TABLE_EDIT == 1 && $num_rows)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_sort', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'button_admin button_sort_admin', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -379,6 +386,13 @@ function admin_contents_list()
 
 /**
  * admin contents form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_contents_form()
@@ -443,7 +457,6 @@ function admin_contents_form()
 		{
 			$author = MY_USER;
 			$email = MY_EMAIL;
-			$class_readonly = ' field_readonly';
 			$code_readonly = ' readonly="readonly"';
 		}
 		if (TABLE_PARAMETER == 'categories')
@@ -493,8 +506,8 @@ function admin_contents_form()
 	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l($wording_single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$output .= '<li>' . form_element('text', 'author', 'js_required field_text_admin field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
-		$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note' . $class_readonly, 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('text', 'author', 'js_required field_text_admin field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 		$output .= '<li>' . form_element('url', 'url', 'field_text_admin', 'url', $url, l('url'), 'maxlength="50"') . '</li>';
 	}
 	else
@@ -504,8 +517,8 @@ function admin_contents_form()
 	}
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
-		$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
-		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_admin field_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
 	}
 	if (TABLE_PARAMETER != 'categories')
 	{
@@ -655,7 +668,7 @@ function admin_contents_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin field_multiple', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -696,20 +709,20 @@ function admin_contents_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward field_button_first', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (TABLE_DELETE == 1 && $id)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm field_button_large_admin field_button_second', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_delete_admin', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (TABLE_NEW == 1 || TABLE_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward field_button_last', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

@@ -2,7 +2,17 @@
  * @tableofcontents
  *
  * 1. dawanda
+ *    1.1 get url
+ *    1.2 get data
+ *    1.3 create shortcut
+ *    1.4 register shortcut
+ *    1.5 init
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -20,14 +30,9 @@
 			options = $.extend({}, r.modules.dawanda.options, options || {});
 		}
 
-		var dawanda = this;
+		var dawanda = {};
 
-		/* data and storage object */
-
-		r.modules.dawanda.data = {};
-		r.modules.dawanda.storage = {};
-
-		/* get url */
+		/* @section 1.1 get url */
 
 		dawanda.getURL = function (call, id)
 		{
@@ -49,7 +54,7 @@
 			return output;
 		};
 
-		/* get data */
+		/* @section 1.2 get data */
 
 		dawanda.getData = function (call, id, page, callback)
 		{
@@ -58,7 +63,7 @@
 
 			/* fetch from storage */
 
-			if (r.support.webStorage === true && r.support.nativeJSON === true)
+			if (r.support.webStorage && r.support.nativeJSON)
 			{
 				r.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
@@ -66,7 +71,7 @@
 
 				if (typeof r.modules.dawanda.storage[key] === 'string')
 				{
-					r.modules.dawanda.data[key] = JSON.parse(r.modules.dawanda.storage[key]);
+					r.modules.dawanda.data[key] = window.JSON.parse(r.modules.dawanda.storage[key]);
 				}
 			}
 
@@ -110,9 +115,9 @@
 
 							/* set related storage */
 
-							if (r.support.webStorage === true && r.support.nativeJSON === true)
+							if (r.support.webStorage && r.support.nativeJSON)
 							{
-								window.sessionStorage.setItem(keyStorage, JSON.stringify(r.modules.dawanda.data[key]));
+								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(r.modules.dawanda.data[key]));
 							}
 
 							/* callback if data */
@@ -127,7 +132,7 @@
 			}
 		};
 
-		/* create shortcut */
+		/* @section 1.3 create shortcut */
 
 		dawanda.createShortcut = function (i)
 		{
@@ -137,20 +142,36 @@
 			};
 		};
 
-		/* register shortcut */
+		/* @section 1.4 register shortcut */
 
 		dawanda.registerShortcut = function ()
 		{
-			var i = '';
-
-			for (i in r.modules.dawanda.routes)
+			for (var i in r.modules.dawanda.routes)
 			{
 				if (r.modules.dawanda.routes.hasOwnProperty(i))
 				{
 					dawanda.createShortcut(i);
 				}
 			}
-		}();
+		};
+
+		/* @section 1.5 init */
+
+		dawanda.init = function ()
+		{
+			/* data and storage object */
+
+			r.modules.dawanda.data = {};
+			r.modules.dawanda.storage = {};
+
+			/* register shortcut */
+
+			dawanda.registerShortcut();
+		};
+
+		/* init */
+
+		dawanda.init();
 	};
 
 	/* @section 2. startup */

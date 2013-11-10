@@ -2,6 +2,13 @@
 
 /**
  * contact render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function contact_render_start()
@@ -14,6 +21,13 @@ function contact_render_start()
 
 /**
  * contact center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function contact_center_start()
@@ -26,6 +40,13 @@ function contact_center_start()
 
 /**
  * contact
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function contact()
@@ -35,6 +56,13 @@ function contact()
 
 /**
  * contact form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function contact_form()
@@ -43,7 +71,6 @@ function contact_form()
 
 	if (ATTACK_BLOCKED > 9)
 	{
-		$class_readonly = $class_disabled = ' field_disabled';
 		$code_readonly = $code_disabled = ' disabled="disabled"';
 	}
 
@@ -53,7 +80,6 @@ function contact_form()
 	{
 		$author = MY_USER;
 		$email = MY_EMAIL;
-		$class_readonly = ' field_readonly';
 		$code_readonly = ' readonly="readonly"';
 	}
 
@@ -68,16 +94,16 @@ function contact_form()
 
 	$output = form_element('form', 'form_contact', 'js_check_required form_default form_contact', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'set_contact', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_readonly, 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('url', 'url', 'field_text' . $class_disabled, 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'js_required js_auto_resize js_editor field_textarea field_note' . $class_disabled, 'text', '', '* ' . l('message'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('url', 'url', 'field_text', 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('textarea', 'text', 'js_required js_auto_resize js_editor field_textarea field_note', 'text', '', '* ' . l('message'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -95,7 +121,7 @@ function contact_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'contact_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'contact_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/contact'] = 'visited';
 	echo $output;
@@ -103,6 +129,13 @@ function contact_form()
 
 /**
  * contact post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function contact_post()
@@ -153,10 +186,10 @@ function contact_post()
 	{
 		/* prepare body parts */
 
-		$emailLink = anchor_element('email', '', '', $email);
+		$emailLink = anchor_element('email', '', '', $email, $email);
 		if ($url)
 		{
-			$urlLink = anchor_element('external', '', '', $url);
+			$urlLink = anchor_element('external', '', '', $url, $url);
 		}
 
 		/* prepare mail inputs */

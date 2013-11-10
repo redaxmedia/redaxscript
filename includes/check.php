@@ -3,6 +3,13 @@
 /**
  * check login
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return integer
  */
@@ -22,6 +29,13 @@ function check_login($input = '')
 
 /**
  * check access
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
  *
  * @param array $access
  * @param array $groups
@@ -49,6 +63,13 @@ function check_access($access = '', $groups = '')
 /**
  * check email
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return integer
  */
@@ -57,11 +78,11 @@ function check_email($input = '')
 {
 	if ($input == clean_email($input))
 	{
-		list($user, $host) = split('@', $input);
+		list($user, $host) = preg_split('/@/', $input);
 
 		/* lookup domain name */
 
-		$output = check_dns($host);
+		$output = check_dns($host, 'mx');
 	}
 	else
 	{
@@ -73,6 +94,13 @@ function check_email($input = '')
 /**
  * check url
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return integer
  */
@@ -81,7 +109,10 @@ function check_url($input = '')
 {
 	if ($input == clean_url($input))
 	{
-		list($protocol, $host) = split('//', $input);
+		list($protocol, $host) = preg_split('/\/\//', $input);
+
+		/* empty host fallback */
+
 		if ($host == '')
 		{
 			$host = $input;
@@ -89,7 +120,7 @@ function check_url($input = '')
 
 		/* lookup domain name */
 
-		$output = check_dns($host);
+		$output = check_dns($host, 'a');
 	}
 	else
 	{
@@ -101,8 +132,15 @@ function check_url($input = '')
 /**
  * check protocol
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
+ *
  * @param string $input
- * @return string
+ * @return integer
  */
 
 function check_protocol($input = '')
@@ -121,15 +159,23 @@ function check_protocol($input = '')
 /**
  * check dns
  *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
+ *
  * @param string $input
+ * @param string $type
  * @return integer
  */
 
-function check_dns($input = '')
+function check_dns($input = '', $type = '')
 {
 	if ($input)
 	{
-		if (function_exists('checkdnsrr') && checkdnsrr($input, 'mx') == '')
+		if (function_exists('checkdnsrr') && checkdnsrr($input, $type) == '')
 		{
 			$output = 0;
 		}
@@ -147,6 +193,13 @@ function check_dns($input = '')
 
 /**
  * check alias
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
  *
  * @param string $input
  * @param integer $mode
@@ -188,6 +241,13 @@ function check_alias($input = '', $mode = '')
 
 /**
  * check captcha
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Check
+ * @author Henry Ruhs
  *
  * @param string $task
  * @param integer $solution

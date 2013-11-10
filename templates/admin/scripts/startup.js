@@ -3,6 +3,11 @@
  *
  * 1. admin dock
  * 2. admin panel
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. admin dock */
@@ -18,7 +23,8 @@ r.plugins.adminDock =
 			dockLink: 'a.js_link_dock_admin',
 			dockDescription: 'span.js_description_dock_admin',
 			dockDescriptionHTML: '<span class="js_description_dock_admin description_dock_admin"></span>'
-		}
+		},
+		vibrate: 100
 	}
 };
 
@@ -27,15 +33,15 @@ r.plugins.adminDock =
 r.plugins.adminPanel =
 {
 	startup: true,
-	selector: '#panel_admin',
+	selector: 'ul.js_list_panel_admin',
 	options:
 	{
 		element:
 		{
-			panelBox: 'div.js_box_panel_admin',
-			panelBar: 'div.js_panel_bar_admin'
+			panelItem: 'li.js_item_panel_admin'
 		},
-		related: '#header',
-		duration: 1000
+		timeout: 1000,
+		duration: 300,
+		vibrate: 100
 	}
 };

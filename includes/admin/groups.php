@@ -2,6 +2,13 @@
 
 /**
  * admin groups list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_groups_list()
@@ -20,7 +27,7 @@ function admin_groups_list()
 	$output .= '<div class="wrapper_button_admin">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'field_button_admin field_button_plus', l('group_new'), 'admin/new/groups');
+		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('group_new'), 'admin/new/groups');
 	}
 	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -89,6 +96,13 @@ function admin_groups_list()
 
 /**
  * admin groups form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_groups_form()
@@ -170,20 +184,20 @@ function admin_groups_form()
 	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l('group')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'js_required js_generate_alias_input field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '<li>' . form_element('text', 'alias', 'js_required js_generate_alias_output field_text_admin field_note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)
 	{
 		/* collect access set */
 
 		$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('acccess')) . '<ul>';
-		$output .= '<li>' . select_element('categories', 'field_select_admin field_multiple', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('articles', 'field_select_admin field_multiple', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('extras', 'field_select_admin field_multiple', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('comments', 'field_select_admin field_multiple', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('groups', 'field_select_admin field_multiple', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('users', 'field_select_admin field_multiple', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('modules', 'field_select_admin field_multiple', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('categories', 'field_select_admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('articles', 'field_select_admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('extras', 'field_select_admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('users', 'field_select_admin', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('modules', 'field_select_admin', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('settings', 'field_select_admin', 'settings', array(
 			l('none') => 0,
 			l('edit') => 1
@@ -219,20 +233,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm field_button_large_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_delete_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	echo $output;

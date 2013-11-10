@@ -8,6 +8,7 @@ $l['bs'] = 'Bosanski';
 $l['ca'] = 'Català';
 $l['cs'] = 'Čeština';
 $l['de'] = 'Deutsch';
+$l['el'] = 'ελληνικά';
 $l['en'] = 'English';
 $l['es'] = 'Español';
 $l['et'] = 'Eesti';
@@ -34,7 +35,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = 'Nightly build';
+$l['redaxscript_version'] = '2.0.1';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /**

@@ -2,6 +2,13 @@
 
 /**
  * db backup render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_render_start()
@@ -10,12 +17,16 @@ function db_backup_render_start()
 	{
 		define('TITLE', l('db_backup_database_backup'));
 
+		/* config object */
+
+		$config = New Redaxscript_Config();
+
 		/* download database backup */
 
 		if (THIRD_PARAMETER == 'download')
 		{
 			define('RENDER_BREAK', 1);
-			db_backup(0);
+			db_backup($config->get('name'), 0);
 		}
 
 		/* send database backup */
@@ -26,8 +37,8 @@ function db_backup_render_start()
 
 			/* prepare body parts */
 
-			$urlLink = anchor_element('', '', '', ROOT);
-			$fileName = d('name') . '-' . db_backup_clean_date(NOW) . '.sql';
+			$urlLink = anchor_element('external', '', '', ROOT, ROOT);
+			$fileName = $config->get('name') . '-' . db_backup_clean_date(NOW) . '.sql';
 
 			/* prepare mail inputs */
 
@@ -37,12 +48,12 @@ function db_backup_render_start()
 			$subject = l('db_backup_database_backup');
 			$bodyArray = array(
 				l('url') => $urlLink,
-				l('database') => d('name'),
+				l('database') => $config->get('name'),
 				'<br />',
 				l('message') => l('db_backup_save_attachment') . l('point')
 			);
 			$attachmentArray = array(
-				$fileName => db_backup(1)
+				$fileName => db_backup($config->get('name'), 1)
 			);
 
 			/* mail object */
@@ -55,6 +66,13 @@ function db_backup_render_start()
 
 /**
  * db backup center
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function db_backup_center_start()
@@ -68,12 +86,19 @@ function db_backup_center_start()
 /**
  * db backup admin panel panel list modules
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
 function db_backup_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('', '', '', l('db_backup_database_backup')) . '<ul>';
+	$output = '<li>' . anchor_element('internal', '', '', l('db_backup_database_backup')) . '<ul class="js_list_panel_children_admin list_panel_children_admin">';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_download'), 'admin/db-backup/download') . '</li>';
 	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_send_email'), 'admin/db-backup/send') . '</li>';
 	$output .= '</ul></li>';
@@ -83,26 +108,41 @@ function db_backup_admin_panel_list_modules()
 /**
  * db backup
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
+ * @param string $d_name
  * @param integer $mode
  */
 
-function db_backup($mode = '')
+function db_backup($d_name = '', $mode = '')
 {
 	if ($mode == 0)
 	{
-		$file_name = d('name') . '_' . db_backup_clean_date(NOW) . '.sql';
+		$file_name = $d_name . '_' . db_backup_clean_date(NOW) . '.sql';
 		header('content-type: application/octet-stream');
 		header('content-disposition: attachment; filename="' . $file_name . '"');
 		echo db_backup_process();
 	}
 	else
 	{
-		return db_backup_process();
+		return db_backup_process($d_name);
 	}
 }
 
 /**
  * db backup clean date
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $input
  * @return string
@@ -118,14 +158,26 @@ function db_backup_clean_date($input = '')
 /**
  * db backup process
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
+ * @param string $d_name
  * @return string
  */
 
-function db_backup_process()
+function db_backup_process($d_name = '')
 {
+	/* config object */
+
+	$config = New Redaxscript_Config();
+
 	/* query tables */
 
-	$query = 'SHOW TABLES FROM ' . d('name');
+	$query = 'SHOW TABLES FROM ' . $d_name;
 	$result = mysql_query($query);
 
 	/* collect backup output */
@@ -145,6 +197,13 @@ function db_backup_process()
 
 /**
  * db backup get definitions
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $table
  * @return string
@@ -268,6 +327,13 @@ function db_backup_get_definitions($table = '')
 
 /*
  * db backup get contents
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $table
  * @return string

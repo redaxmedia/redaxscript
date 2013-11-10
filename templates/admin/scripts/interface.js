@@ -4,6 +4,11 @@
  * 1. admin dock
  * 2. admin panel
  * 3. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -36,21 +41,31 @@
 
 			dockLink.each(function ()
 			{
-				var dockElement = $(this),
-					dockElementText = dockElement.text(),
-					dockDescription = dockElement.siblings(options.element.dockDescription);
+				var dockLink = $(this),
+					dockText = dockLink.text(),
+					dockDescription = dockLink.siblings(options.element.dockDescription);
 
-				/* listen for mouse and touch events */
-
-				dockElement.on('mouseenter mouseleave touchstart touchend', function (event)
+				dockLink.on('mouseenter mouseleave touchstart touchend', function (event)
 				{
+					/* handle mouseenter and touchstart */
+
 					if (event.type === 'mouseenter' || event.type === 'touchstart')
 					{
-						dockDescription.text(dockElementText);
+						dockDescription.text(dockText);
 					}
+
+					/* else handle mouseleave and touchend */
+
 					else
 					{
-						dockDescription.text('');
+						dockDescription.empty();
+					}
+
+					/* haptic feedback */
+
+					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
 					}
 				});
 			});
@@ -72,45 +87,96 @@
 
 		return this.each(function ()
 		{
-			var panel = $(this),
-				panelHeight = panel.height(),
-				panelBox = panel.find(options.element.panelBox),
-				panelBar = panel.find(options.element.panelBar),
-				panelBarHeight = panelBar.height(),
-				panelRelated = $(options.related);
+			var panelList = $(this),
+				panelItem = panelList.children('li'),
+				panelItemAll = panelList.find('li'),
+				panelChildren = panelItemAll.children('ul'),
+				panelLink = panelList.find('a'),
+				timeoutEnter = '',
+				timeoutLeave = '';
 
-			/* open on admin */
+			/* listen for click and mouseenter  */
 
-			if (r.constants.FIRST_PARAMETER === 'admin')
+			panelItemAll.on('click mouseenter', function (event)
 			{
-				panelRelated.css('margin-top', panelHeight);
-			}
+				var thatItem = $(this),
+					thatChildren = thatItem.children('ul'),
+					thatClosest = thatItem.closest(options.element.panelItem),
+					thatRelated = thatClosest.find('ul'),
+					panelFloat = panelItem.css('float');
 
-			/* else close */
+				/* exception for narrow panel */
 
-			else
-			{
-				panel.height(panelHeight / 2);
-				panelBox.hide();
-				panelRelated.css('margin-top', panelBarHeight);
-
-				/* listen for mouseenter and mouseleave */
-
-				panel.on('mouseenter mouseleave', function (event)
+				if (panelFloat === 'none')
 				{
+					/* premature teminate mouseenter */
+
 					if (event.type === 'mouseenter')
 					{
-						panelBox.stop(1).show();
+						thatItem.trigger('enter');
+						return false;
 					}
+
+					/* else show nested list */
+
 					else
 					{
-						setTimeout(function ()
-						{
-							panelBox.hide();
-						}, options.duration);
+						thatChildren.find('ul').show();
 					}
-				});
-			}
+				}
+
+				/* timeout enhanced slide */
+
+				clearTimeout(timeoutEnter);
+				timeoutEnter = setTimeout(function ()
+				{
+					panelChildren.not(thatRelated).stop(0).slideUp(options.duration);
+					thatChildren.stop(0).slideDown(options.duration);
+
+					/* active item */
+
+					panelItemAll.removeClass('item_active');
+					thatItem.addClass('item_active');
+				}, options.duration);
+			});
+
+			/* listen for enter and leave */
+
+			panelList.on('enter mouseenter mouseleave', function (event)
+			{
+				/* timeout enhanced slide */
+
+				if (event.type === 'mouseleave')
+				{
+					clearTimeout(timeoutEnter);
+					timeoutLeave = setTimeout(function ()
+					{
+						panelChildren.stop(0).slideUp(options.duration, function ()
+						{
+							panelItemAll.removeClass('item_active');
+						});
+					}, options.timeout);
+				}
+
+				/* else clear timeout */
+
+				else
+				{
+					clearTimeout(timeoutLeave);
+				}
+			});
+
+			/* listen for click */
+
+			panelLink.on('click', function ()
+			{
+				/* haptic feedback */
+
+				if (r.support.vibrate && typeof options.vibrate === 'number')
+				{
+					window.navigator.vibrate(options.vibrate);
+				}
+			});
 		});
 	};
 

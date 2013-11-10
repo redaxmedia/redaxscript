@@ -201,7 +201,7 @@ $l['installation_completed'] = 'Installation erfolgreich abgeschlossen';
 /* database */
 
 $l['host'] = 'Host';
-$l['prefix'] = 'Prefix';
+$l['prefix'] = 'Präfix';
 $l['database'] = 'Datenbank';
 $l['database_setup'] = 'Ihre Datenbank einrichten';
 $l['database_failed'] = 'Verbindung zur Datenbank fehlgeschlagen';

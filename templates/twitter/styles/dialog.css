@@ -3,6 +3,12 @@
  *
  * 1. dialog default
  * 2. dialog overlay default
+ * 3. fadein effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. dialog default */
@@ -14,8 +20,8 @@
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
@@ -25,4 +31,16 @@
 .dialog_overlay_default
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/* @section 3. fadein effect */
+
+.dialog_default, .dialog_overlay_default
+{
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
 }

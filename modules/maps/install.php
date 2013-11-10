@@ -2,16 +2,30 @@
 
 /**
  * maps install
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function maps_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Maps\', \'maps\', \'Redaxmedia\', \'Integrates Goggle Maps\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Maps\', \'maps\', \'Redaxmedia\', \'Integrates Goggle Maps\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
 /**
  * maps uninstall
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function maps_uninstall()

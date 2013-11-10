@@ -3,6 +3,13 @@
 /**
  * comments
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
+ *
  * @param integer $article
  * @param string $route
  */
@@ -124,6 +131,13 @@ function comments($article = '', $route = '')
 /**
  * comment form
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
+ *
  * @param integer $article
  * @param string $language
  * @param string $access
@@ -137,7 +151,6 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (ATTACK_BLOCKED > 9)
 	{
-		$class_readonly = $class_disabled = ' field_disabled';
 		$code_readonly = $code_disabled = ' disabled="disabled"';
 	}
 
@@ -147,7 +160,6 @@ function comment_form($article = '', $language = '', $access = '')
 	{
 		$author = MY_USER;
 		$email = MY_EMAIL;
-		$class_readonly = ' field_readonly';
 		$code_readonly = ' readonly="readonly"';
 	}
 
@@ -163,16 +175,16 @@ function comment_form($article = '', $language = '', $access = '')
 	$output = '<h2 class="title_content">' . l('comment_new') . '</h2>';
 	$output .= form_element('form', 'form_comment', 'js_check_required form_default form_comment', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note' . $class_readonly, 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_readonly, 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('url', 'url', 'field_text' . $class_disabled, 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'js_required js_auto_resize js_editor field_textarea field_note' . $class_disabled, 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('url', 'url', 'field_text', 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('textarea', 'text', 'js_required js_auto_resize js_editor field_textarea field_note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -197,7 +209,7 @@ function comment_form($article = '', $language = '', $access = '')
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'comment_post', l('create'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
@@ -206,6 +218,13 @@ function comment_form($article = '', $language = '', $access = '')
 
 /**
  * comment post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Comments
+ * @author Henry Ruhs
  */
 
 function comment_post()
@@ -284,7 +303,7 @@ function comment_post()
 				$urlLink = anchor_element('external', '', '', $url);
 			}
 			$articleRoute = ROOT . '/' . REWRITE_ROUTE . $route;
-			$articleLink = anchor_element('', '', '', $articleRoute);
+			$articleLink = anchor_element('external', '', '', $articleRoute, $articleRoute);
 
 			/* prepare mail inputs */
 

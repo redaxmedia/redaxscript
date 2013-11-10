@@ -4,6 +4,11 @@
  * 1. map
  * 2. map meta
  * 3. map branding
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. map */
@@ -34,8 +39,13 @@
 	left: 0;
 	padding: 1em 0;
 	position: absolute;
-	width: 100%;
-	z-index: 1000;
+	right: 0;
+	z-index: 500;
+}
+
+.map_meta a:hover
+{
+	text-decoration: underline;
 }
 
 /* desktop */

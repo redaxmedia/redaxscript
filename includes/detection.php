@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Redaxscript_Detection
+ * Redaxscript Detection
  *
- * @since 1.3
+ * @since 2.0.0
  *
  * @category Detection
  * @package Redaxscript
@@ -22,7 +22,7 @@ class Redaxscript_Detection
 	/**
 	 * construct
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 */
 
 	public function __construct()
@@ -33,9 +33,9 @@ class Redaxscript_Detection
 	/**
 	 * getOutput
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 *
-	 * @return $_output string
+	 * @return string
 	 */
 
 	public function getOutput()
@@ -46,9 +46,9 @@ class Redaxscript_Detection
 	/**
 	 * getParameter
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 *
-	 * @return $output string
+	 * @return string
 	 */
 
 	protected function _getParameter($parameter = '')
@@ -65,7 +65,7 @@ class Redaxscript_Detection
 	/**
 	 * detect
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 *
 	 * @param array $input
 	 * @param string $type
@@ -102,7 +102,7 @@ class Redaxscript_Detection
 /**
  * Redaxscript_Detection_Language
  *
- * @since 1.3
+ * @since 2.0.0
  *
  * @category Detection
  * @package Redaxscript
@@ -114,7 +114,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 	/**
 	 * init
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -133,7 +133,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 /**
  * Redaxscript_Detection_Template
  *
- * @since 1.3
+ * @since 2.0.0
  *
  * @category Detection
  * @package Redaxscript
@@ -145,7 +145,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 	/**
 	 * init
 	 *
-	 * @since 1.3
+	 * @since 2.0.0
 	 */
 
 	public function init()

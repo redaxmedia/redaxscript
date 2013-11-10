@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. maps
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. maps */
@@ -21,7 +26,7 @@ r.modules.maps =
 		general:
 		{
 			zoom: 2,
-			center: new google.maps.LatLng(20, 0),
+			center: new google.maps.LatLng(0, 0),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
 			panControl: true,
@@ -80,8 +85,8 @@ r.modules.maps =
 			}
 		],
 		marker: true,
-		replaceBranding: true,
+		deBranding: true,
 		mapLogo: '<a href="http://maps.google.com" target="_blank">Google Maps</a>',
-		mapTerms: '<a href="http://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank">Terms of use</a>'
+		mapTerms: '<a href="http://google.com/intl/en/help/terms_maps.html" target="_blank">Terms of use</a>'
 	}
 };

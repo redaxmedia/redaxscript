@@ -2,6 +2,13 @@
 
 /**
  * password reset form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  */
 
 function password_reset_form()
@@ -10,7 +17,6 @@ function password_reset_form()
 
 	if (ATTACK_BLOCKED > 9)
 	{
-		$class_disabled = ' field_disabled';
 		$code_disabled = ' disabled="disabled"';
 	}
 
@@ -26,7 +32,7 @@ function password_reset_form()
 
 	/* collect captcha task output */
 
-	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
@@ -38,7 +44,7 @@ function password_reset_form()
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
 	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'password_reset_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'password_reset_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/password_reset'] = 'visited';
 	echo $output;
@@ -46,6 +52,13 @@ function password_reset_form()
 
 /**
  * password reset post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  */
 
 function password_reset_post()
@@ -96,7 +109,7 @@ function password_reset_post()
 		/* send new password */
 
 		$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
-		$loginLink = anchor_element('', '', '', $loginRoute);
+		$loginLink = anchor_element('external', '', '', $loginRoute, $loginRoute);
 		$toArray = array(
 			$my_name => $my_email
 		);
@@ -151,6 +164,13 @@ function password_reset_post()
 
 /**
  * hash generator
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Password
+ * @author Henry Ruhs
  *
  * @param string $length
  * @return string

@@ -217,7 +217,7 @@ $l['account_create'] = 'Account aanmaken';
 
 $l['reminder'] = 'Herinnering';
 $l['reminder_question'] = 'Bent u uw gebruikersnaam of wachtwoord vergeten';
-$l['reminder_request'] = 'Vul uw e-mail adres in om de account informatie te ontvangen';
+$l['reminder_request'] = 'Vul uw E-mail adres in om de account informatie te ontvangen';
 $l['reminder_sent'] = 'Uw account informatie is succesvol verzonden';
 
 /* login */

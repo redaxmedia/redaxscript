@@ -2,16 +2,30 @@
 
 /**
  * qunit install
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'QUnit\', \'qunit\', \'Redaxmedia\', \'Javascript unit testing\', \'1.3\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'QUnit\', \'qunit\', \'Redaxmedia\', \'Javascript unit testing\', \'2.0.0\', 1, 0)';
 	mysql_query($query);
 }
 
 /**
  * qunit uninstall
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function qunit_uninstall()

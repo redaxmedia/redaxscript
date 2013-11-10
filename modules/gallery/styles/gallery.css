@@ -1,214 +1,193 @@
 /**
  * @tableofcontents
  *
- * 1. gallery
- * 2. gallery overlay
- * 3. gallery loader
- * 4. gallery meta
- *    4.1 children elements
- * 5. previous and next links
- *    5.1 children elements
- * 6. item gallery
- * 7. image gallery
+ * 1. font face
+ * 2. gallery
+ * 3. gallery overlay
+ * 4. fadein effect
+ * 5. gallery loader
+ * 6. gallery meta
+ * 7. gallery list
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-/* @section 1. gallery */
+/* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon gallery';
+	src: url('modules/gallery/fonts/icon.woff') format('woff'), url('modules/gallery/fonts/icon.ttf') format('truetype');
+}
+
+/* @section 2. gallery */
 
 .gallery
 {
-	-moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-	background: #fff;
-	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 	left: 50%;
 	position: fixed;
 	top: 50%;
 	z-index: 1100;
 }
 
-.gallery img
+.gallery_media
 {
-	float: left;
+	-mox-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+	border-radius: 0.25em;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
 
-/* @section 2. gallery overlay */
+/* @section 3. gallery overlay */
 
 .gallery_overlay
 {
 	background: #000;
-	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	bottom: 0;
 	left: 0;
 	position: fixed;
+	right: 0;
 	top: 0;
-	width: 100%;
 	z-index: 1000;
 }
 
-/* @section 3. gallery loader */
+/* @section 4. fadein effect */
 
-.gallery_loader
+.gallery_media, .gallery_meta, .gallery_overlay
 {
-	-moz-border-radius: 2.5em;
-	-webkit-border-radius: 2.5em;
-	background: #fff;
-	border-radius: 2.5em;
-	left: 50%;
-	margin: -2.5em 0 0 -2.5em;
-	padding: 1em;
-	position: fixed;
-	top: 50%;
-	z-index: 1400;
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
 }
 
-/* @section 4. gallery meta */
+/* @section 5. gallery loader */
 
-.gallery_meta
+.gallery_loader:after
 {
-	background: #fff;
-	bottom: 0;
-	color: #666;
-	font: 1em georgia, arial;
-	left: 0;
-	padding: 1em 0;
+	-moz-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	-moz-transform: scale(0);
+	-ms-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	-ms-transform: scale(0);
+	-o-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	-o-transform: scale(0);
+	-webkit-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	-webkit-transform: scale(0);
+	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	color: #333;
+	color: rgba(0, 0, 0, 0.3);
+	content: '0';
+	font: 3em/2em 'icon gallery';
+	left: 50%;
+	margin: -1em 0 0 -0.5em;
 	position: absolute;
-	text-align: center;
-	width: 100%;
+	top: 50%;
+    transform: scale(0)
+}
+
+.gallery.gallery_loader:after
+{
+	font-size: 6em;
+}
+
+/* gallery control */
+
+.gallery_control
+{
+	color: #333;
+	color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	font: 16em/0 'icon gallery';
+	position: fixed;
+	text-indent: -999em;
+	top: 50%;
 	z-index: 1200;
 }
 
-/* desktop */
-
-.desktop .gallery_meta
+.gallery_control:hover
 {
-	display: none;
+	color: #000;
+	color: rgba(0, 0, 0, 0.6);
 }
 
-.desktop .gallery:hover .gallery_meta
+.gallery_control:before, .gallery_control:after
 {
-	display: block;
+	position: absolute;
+	text-indent: 0;
 }
 
-/* @section 4.1 children elements */
+/* previous */
+
+.gallery_control_previous
+{
+	left: 5%;
+}
+
+.gallery_control_previous:before
+{
+	left: 0;
+	content: '<';
+}
+
+/* next */
+
+.gallery_control_next
+{
+	right: 5%;
+}
+
+.gallery_control_next:after
+{
+	right: 0;
+	content: '>';
+}
+
+/* @section 6. gallery meta */
+
+.gallery_meta
+{
+	color: #333;
+	color: rgba(0, 0, 0, 0.3);
+    bottom: 0;
+    font: bold 2em arial;
+    left: 0;
+	padding: 2% 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
 
 .gallery_artist
 {
-	float: right;
-	margin-right: 1em;
+	font-size: 1.5em;
 }
 
 .gallery_description
 {
-	float: left;
-	margin-left: 1em;
+	font-size: 1.75em;
 }
 
-.gallery_label
+.gallery_pagination
 {
-	margin-right: 0.5em;
+	margin-top: 0.5em;
 }
 
-/* @section 5. previous and next links */
-
-.gallery_next, .gallery_previous
-{
-	height: 100%;
-	position: absolute;
-	top: 0;
-	width: 40%;
-	z-index: 1300;
-}
-
-/* trident hover fix */
-
-.trident .gallery_next, .trident .gallery_previous
-{
-	background: url('modules/gallery/images/transparent.png');
-}
-
-.gallery_next
-{
-	right: 0;
-}
-
-.gallery_previous
-{
-	left: 0;
-}
-
-.gallery_next:hover, .gallery_previous:hover
-{
-	cursor: pointer;
-}
-
-.gallery_next:hover span, .gallery_previous:hover span
-{
-	display: block;
-}
-
-/* @section 5.1 children elements */
-
-.gallery_next span, .gallery_previous span
-{
-	background: #fff;
-	color: #666;
-	display: none;
-	font: 1.25em georgia, arial;
-	margin-top: 3em;
-	padding: 1em;
-	white-space: nowrap;
-}
-
-.gallery_next span
-{
-	-moz-border-radius: 1.5em 0 0 1.5em;
-	-webkit-border-radius: 1.5em 0 0 1.5em;
-	border-radius: 1.5em 0 0 1.5em;
-	float: right;
-}
-
-.gallery_previous span
-{
-	-moz-border-radius: 0 1.5em 1.5em 0;
-	-webkit-border-radius: 0 1.5em 1.5em 0;
-	border-radius: 0 1.5em 1.5em 0;
-	float: left;
-}
-
-/* @section 6. item gallery */
+/* @section 7. gallery list */
 
 .item_gallery
 {
-	margin: 0 0.5em 0.5em 0;
-
+	margin: 0 1em 1em 0;
+	position: relative;
 }
 
 .item_gallery, .image_gallery
 {
 	float: left;
-}
-
-/* @section 7. image gallery */
-
-.image_gallery
-{
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
-	border-radius: 0.25em;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #c6c6c6;
-}
-
-.image_gallery:hover
-{
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #999;
-}
-
-.image_gallery_preload
-{
-	-moz-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
-	-webkit-box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
-	box-shadow: 0 0 0 1px #ebebeb, 0 0 3px #333;
 }

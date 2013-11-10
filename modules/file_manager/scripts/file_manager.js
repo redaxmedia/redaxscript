@@ -3,6 +3,11 @@
  *
  * 1. file manager
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -27,15 +32,15 @@
 			var form = $(this),
 				fieldFile = form.find(options.element.fieldFile),
 				buttonUpload = form.find(options.element.buttonUpload),
-				buttonBrowse;
+				buttonBrowse = $('<button type="submit">' + l.file_manager_browse + '</button>').addClass(options.classString.buttonBrowse);
 
 			/* insert fake browse */
 
-			buttonBrowse = $('<button type="submit" class="js_browse field_button_admin">' + l.file_manager_browse + '</button>').insertBefore(buttonUpload);
+			buttonBrowse.insertBefore(buttonUpload)
 
 			/* listen for click */
 
-			buttonBrowse.on('click', function (event)
+			.on('click', function (event)
 			{
 				fieldFile.click();
 				buttonUpload.hide();

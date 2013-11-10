@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. file manager
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. file manager */
@@ -16,6 +21,10 @@ r.modules.fileManager =
 		{
 			fieldFile: 'input.js_file',
 			buttonUpload: 'button.js_upload'
+		},
+		classString:
+		{
+			buttonBrowse: 'js_browse button_admin'
 		}
 	}
 };

@@ -7,6 +7,11 @@
  *    2.2 last element
  * 3. several admin titles
  * 4. title dialog admin
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. font face */
@@ -14,7 +19,7 @@
  @font-face
 {
 	font-family: 'icon admin';
-	src: url('templates/admin/fonts/icon.woff') format('woff');
+	src: url('templates/admin/fonts/icon.woff') format('woff'), url('templates/admin/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. title accordion admin */
@@ -27,12 +32,11 @@
 	background: -moz-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -ms-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: -o-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d4d4d4), color-stop(#d4d4d4, 30%), to(#bfbfbf));
 	background: -webkit-linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	background: linear-gradient(top, #d4d4d4, #d4d4d4 30%, #bfbfbf);
 	border: 1px solid #b9b9b9;
 	box-sizing: border-box;
-	font: bold 1.125em/2.5em arial;
+	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
 	text-indent: 1em;
 	text-transform: uppercase;
 	width: 100%;

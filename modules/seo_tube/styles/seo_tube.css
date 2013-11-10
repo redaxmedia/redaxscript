@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. seo tube
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. seo tube */
@@ -9,12 +14,11 @@
 .form_seo_tube
 {
 	background: #dadada;
-	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#e2e2e2, 40%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	margin-bottom: 2em;
 	margin-top: 1em;
