@@ -39,7 +39,7 @@
 
 			/* show active accordion box */
 
-			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
+			accordionSet.filter('.js_set_active').children(options.element.accordionBox).show();
 
 			/* listen for click */
 
