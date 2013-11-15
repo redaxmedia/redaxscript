@@ -27,6 +27,7 @@ $l['pt'] = 'Português';
 $l['ro'] = 'Română';
 $l['ru'] = 'Русский';
 $l['sk'] = 'Slovenčina';
+$l['sr'] = 'Cрпски';
 $l['sv'] = 'Svenska';
 $l['tr'] = 'Türkçe';
 $l['vi'] = 'Tiếng Việt';
