@@ -49,7 +49,7 @@
 				{
 					route = route.replace('{id}', id);
 				}
-				output = options.protocol + options.language + '.' + options.url + '/' + route;
+				output = options.url + '/' + route;
 			}
 			return output;
 		};
