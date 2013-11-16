@@ -61,10 +61,11 @@ function share_this($route = '')
 	$networks = array(
 		'facebook' => array(
 			'url' => 'facebook.com/sharer.php?u=',
-			'code' => ' data-height="280"'
+			'code' => ' data-height="270"'
 		),
 		'googleplusone' => array(
-			'url' => 'plusone.google.com/_/+1/confirm?url='
+			'url' => 'plusone.google.com/_/+1/confirm?url=',
+			'code' => ' data-height="560"'
 		),
 		'twitter' => array(
 			'url' => 'twitter.com/share?url=',
@@ -72,10 +73,7 @@ function share_this($route = '')
 		),
 		'pinterest' => array(
 			'url' => 'pinterest.com/pin/create/button/?url=',
-			'code' => ' data-height="500" data-width="800"'
-		),
-		'tumblr' => array(
-			'url' => 'tumblr.com/share'
+			'code' => ' data-width="850"'
 		),
 		'linkedin' => array(
 			'url' => 'linkedin.com/shareArticle?url=',
@@ -87,7 +85,7 @@ function share_this($route = '')
 		),
 		'delicious' => array(
 			'url' => 'del.icio.us/post?url=',
-			'code' => ' data-height="380"'
+			'code' => ' data-height="580"'
 		)
 	);
 
