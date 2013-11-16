@@ -4,15 +4,8 @@
  * 1. font face
  * 2. list share this
  * 3. link share this
- * 4. icons
- *    4.1 facebook
- *    4.2 google plus one
- *    4.3 twitter
- *    4.4 pinterest
- *    4.5 linkedin
- *    4.6 stumbleupon
- *    4.7 delicious
- * 5. counter
+ *    3.1 icons
+ * 4. counter
  *
  * @since 2.0.2
  *
@@ -51,7 +44,7 @@
 	text-indent: -999em;
 }
 
-/* @section 4. icons */
+/* @section 3.1 icons */
 
 .link_share_this:before
 {
@@ -76,7 +69,7 @@
 	width: 2.25em;
 }
 
-/* @section 4.1 facebook */
+/* facebook */
 
 .link_share_this.link_facebook:before
 {
@@ -88,7 +81,7 @@
 	background: #3b5998;
 }
 
-/* @section 4.2 google plus one */
+/* google plus one */
 
 .link_share_this.link_googleplusone:before
 {
@@ -100,7 +93,7 @@
 	background: #d34836;
 }
 
-/* @section 4.3 twitter */
+/* twitter */
 
 .link_share_this.link_twitter:before
 {
@@ -112,7 +105,7 @@
 	background: #00aced;
 }
 
-/* @section 4.4 pinterest */
+/* pinterest */
 
 .link_share_this.link_pinterest:before
 {
@@ -124,7 +117,7 @@
 	background: #cb2027;
 }
 
-/* @section 4.5 linkedin */
+/* linkedin */
 
 .link_share_this.link_linkedin:before
 {
@@ -136,7 +129,7 @@
 	background: #007bb6;
 }
 
-/* @section 4.6 stumbleupon */
+/* stumbleupon */
 
 .link_share_this.link_stumbleupon:before
 {
@@ -148,7 +141,7 @@
 	background: #f74425;
 }
 
-/* @section 4.7 delicious */
+/* delicious */
 
 .link_share_this.link_delicious:before
 {
@@ -160,7 +153,7 @@
 	background: #205cc0;
 }
 
-/* @section 5. counter */
+/* @section 4. counter */
 
 .link_share_this:after
 {
