@@ -31,7 +31,8 @@
 
 .list_share_this
 {
-	margin: 2em 0;
+	margin-bottom: 3em;
+	margin-top: 2em;
 }
 
 .list_share_this li
@@ -49,6 +50,8 @@
 	position: relative;
 	text-indent: -999em;
 }
+
+/* @section 3.1 icons */
 
 .link_share_this:before
 {
@@ -73,7 +76,7 @@
 	width: 2.25em;
 }
 
-/* @section 3.1 facebook */
+/* @section 3.1.1 facebook */
 
 .link_share_this.link_facebook:before
 {
@@ -85,19 +88,19 @@
 	background: #3b5998;
 }
 
-/* @section 3.2 google */
+/* @section 3.1.2 google plus one */
 
-.link_share_this.link_google:before
+.link_share_this.link_googleplusone:before
 {
 	content: 'c';
 }
 
-.link_share_this.link_google:hover:before
+.link_share_this.link_googleplusone:hover:before
 {
 	background: #d34836;
 }
 
-/* @section 3.3 twitter */
+/* @section 3.1.3 twitter */
 
 .link_share_this.link_twitter:before
 {
@@ -109,7 +112,7 @@
 	background: #00aced;
 }
 
-/* @section 3.4 pinterest */
+/* @section 3.1.4 pinterest */
 
 .link_share_this.link_pinterest:before
 {
@@ -121,7 +124,7 @@
 	background: #cb2027;
 }
 
-/* @section 3.5 tumblr */
+/* @section 3.1.5 tumblr */
 
 .link_share_this.link_tumblr:before
 {
@@ -133,7 +136,7 @@
 	background: #32506d;
 }
 
-/* @section 3.6 linkedin */
+/* @section 3.1.6 linkedin */
 
 .link_share_this.link_linkedin:before
 {
@@ -145,7 +148,7 @@
 	background: #007bb6;
 }
 
-/* @section 3.7 stumbleupon */
+/* @section 3.1.7 stumbleupon */
 
 .link_share_this.link_stumbleupon:before
 {
@@ -157,7 +160,7 @@
 	background: #f74425;
 }
 
-/* @section 3.8 delicious */
+/* @section 3.1.8 delicious */
 
 .link_share_this.link_delicious:before
 {
@@ -167,4 +170,20 @@
 .link_share_this.link_delicious:hover:before
 {
 	background: #205cc0;
+}
+
+/* @section 3.2 counter */
+
+.link_share_this:after
+{
+	color: #bbb;
+	color: rgba(0, 0, 0, 0.15);
+	content: attr(data-counter);
+	bottom: -1.25em;
+	font: bold 1em arial;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	width: 2.5em;
 }

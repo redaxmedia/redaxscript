@@ -3,7 +3,7 @@
 /**
  * share this loader start
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -22,7 +22,7 @@ function share_this_loader_start()
 /**
  * share this article end
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -45,7 +45,7 @@ function share_this_article_end()
 /**
  * share this
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -57,22 +57,53 @@ function share_this_article_end()
 
 function share_this($route = '')
 {
-	$code = 'rel="nofollow" target="_blank"';
+	$code = 'target="_blank" rel="nofollow"';
+	$networks = array(
+		'facebook' => array(
+			'url' => 'facebook.com/sharer.php?u=',
+			'code' => ' data-height="280"'
+		),
+		'googleplusone' => array(
+			'url' => 'plusone.google.com/_/+1/confirm?url='
+		),
+		'twitter' => array(
+			'url' => 'twitter.com/share?url=',
+			'code' => ' data-height="340"'
+		),
+		'pinterest' => array(
+			'url' => 'pinterest.com/pin/create/button/?url=',
+			'code' => ' data-height="500" data-width="800"'
+		),
+		'tumblr' => array(
+			'url' => 'tumblr.com/share'
+		),
+		'linkedin' => array(
+			'url' => 'linkedin.com/shareArticle?url=',
+			'code' => ' data-width="850"'
+		),
+		'stumbleupon' => array(
+			'url' => 'stumbleupon.com/submit?url=',
+			'code' => ' data-width="850"'
+		),
+		'delicious' => array(
+			'url' => 'del.icio.us/post?url=',
+			'code' => ' data-height="380"'
+		)
+	);
 
 	/* collect output */
 
 	if ($route)
 	{
-		$output = '<div class="wrapper_share_this clear_fix"><ul class="list_share_this">';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_facebook', 'Facebook', 'facebook.com/sharer.php?u=' . $route, '', $code . ' data-height="280"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_google', 'Google', 'plusone.google.com/_/+1/confirm?url=' . $route, '', $code) . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_twitter', 'Twitter', 'twitter.com/share?url=' . $route, '', $code . ' data-height="340"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_pinterest', 'Pinterest', 'pinterest.com/pin/create/button/?url=' . $route, '', $code . ' data-height="500" data-width="800"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_tumblr', 'Tumblr', 'tumblr.com/share', '', $code) . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_linkedin', 'Linkedin', 'linkedin.com/shareArticle?url=' . $route, '', $code . ' data-width="850"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_stumbleupon', 'Stumbleupon', 'stumbleupon.com/submit?url=' . $route, '', $code . ' data-width="850"') . '</li>';
-		$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_delicious', 'Delicious', 'del.icio.us/post?url=' . $route, '', $code . ' data-height="380"') . '</li>';
-		$output .= '</ul></div>';
+		$output = '<ul class="list_share_this clear_fix">';
+
+		/* handle each network */
+
+		foreach ($networks as $key => $value)
+		{
+			$output .= '<li>' . anchor_element('external', '', 'js_link_share_this link_share_this link_' . $key, ucfirst($key), $value['url'] . $route, '', $code . ' data-type="' . $key . '"' . $value['code']) . '</li>';
+		}
+		$output .= '</ul>';
 		return $output;
 	}
 }
