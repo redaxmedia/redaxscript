@@ -4,7 +4,7 @@
  * 1. share this
  * 2. startup
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -43,7 +43,7 @@
 					for (var i in data)
 					{
 						var counter = data[i];
-						
+
 						/* facebook fallback */
 
 						if (i === 'Facebook')
