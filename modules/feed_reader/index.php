@@ -35,7 +35,7 @@ function feed_reader($url = '', $options = '')
 {
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{

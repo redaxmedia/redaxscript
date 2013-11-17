@@ -20,7 +20,7 @@ function navigation_list($table = '', $options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
@@ -246,7 +246,7 @@ function languages_list($options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
@@ -321,7 +321,7 @@ function templates_list($options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{

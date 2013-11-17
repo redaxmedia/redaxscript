@@ -55,7 +55,7 @@ function fb_group($type = '', $options = '')
 {
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
