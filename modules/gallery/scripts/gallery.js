@@ -84,6 +84,10 @@
 					description: link.data('description') || ''
 				};
 
+				/* gallery related */
+
+				gallery.related = $('#' + gallery.data.id);
+
 				/* add loader */
 
 				if (options.loader)
@@ -287,32 +291,35 @@
 
 				$(window).on('keydown', function (event)
 				{
-					/* trigger close action */
-
-					if (event.which === 27)
+					if (r.flags.modal)
 					{
-						gallery.close();
-					}
+						/* trigger close action */
 
-					/* trigger previous action */
+						if (event.which === 27)
+						{
+							gallery.close();
+						}
 
-					if (event.which === 37)
-					{
-						gallery.previous();
-					}
+						/* trigger previous action */
 
-					/* trigger next action */
+						if (event.which === 37)
+						{
+							gallery.previous();
+						}
 
-					if (event.which === 39)
-					{
-						gallery.next();
-					}
+						/* trigger next action */
 
-					/* disable cursors */
+						if (event.which === 39)
+						{
+							gallery.next();
+						}
 
-					if (event.which > 36 && event.which < 41)
-					{
-						event.preventDefault();
+						/* disable cursors */
+
+						if (event.which > 36 && event.which < 41)
+						{
+							event.preventDefault();
+						}
 					}
 				})
 
@@ -320,7 +327,10 @@
 
 				.on('resize', function ()
 				{
-					gallery.resize();
+					if (r.flags.modal)
+					{
+						gallery.resize();
+					}
 				});
 
 				/* listen for click */
@@ -335,7 +345,7 @@
 
 			gallery.action = function (mode)
 			{
-				var related = $('#' + gallery.data.id),
+				var related = gallery.related,
 					counter = gallery.data.counter,
 					link = '';
 
