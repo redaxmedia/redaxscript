@@ -65,6 +65,10 @@ module.exports = function (grunt)
 			[
 				'composer.json',
 				'package.json'
+			],
+			modules:
+			[
+				'modules/web_app/files/manifest.json'
 			]
 		},
 		qunit:
