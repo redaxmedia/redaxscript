@@ -3,7 +3,7 @@
 /**
  * gallery loader start
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -23,7 +23,7 @@ function gallery_loader_start()
 /**
  * gallery loader scripts transport start
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -47,7 +47,7 @@ function gallery_loader_scripts_transport_start()
 /**
  * gallery
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -61,7 +61,22 @@ function gallery_loader_scripts_transport_start()
 
 function gallery($directory = '', $options = '', $command = '')
 {
-	if ($options === 'build' || $options === 'delete')
+	global $gallery_counter;
+
+	/* define option variables */
+
+	if (is_array($options))
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* else command fallback */
+
+	else if ($options === 'build' || $options === 'delete')
 	{
 		$command = $options;
 	}
@@ -70,6 +85,13 @@ function gallery($directory = '', $options = '', $command = '')
 
 	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
 	$gallery_directory_array = $gallery_directory->getOutput();
+
+	/* reverse order */
+
+	if ($option_order == 'desc')
+	{
+		$gallery_directory_array = array_reverse($gallery_directory_array);
+	}
 
 	/* delete gallery thumbs directory */
 
@@ -85,7 +107,7 @@ function gallery($directory = '', $options = '', $command = '')
 		/* collect gallery */
 
 		$gallery_total = count($gallery_directory_array);
-		$gallery_id = str_replace('/', '_', $directory);
+		$gallery_id = str_replace('/', '_', $directory) . '_' . ++$gallery_counter;
 		if ($gallery_total)
 		{
 			foreach ($gallery_directory_array as $value)
@@ -121,7 +143,7 @@ function gallery($directory = '', $options = '', $command = '')
 
 					/* build data string */
 
-					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-id="' . $gallery_id . '"';
+					$data_string = 'data-counter="' . ++$image_counter . '" data-total="' . $gallery_total . '" data-id="' . $gallery_id . '"';
 					if ($image_artist)
 					{
 						$data_string .= ' data-artist="' . $image_artist . '"';
@@ -133,11 +155,16 @@ function gallery($directory = '', $options = '', $command = '')
 					if ($image_description)
 					{
 						$data_string .= ' data-description="' . $image_description . '"';
+						$alt_string = ' alt="' . $image_description . '"';
+					}
+					else
+					{
+						$alt_string = ' alt="' . str_replace('_', ' ', pathinfo($value, PATHINFO_FILENAME)) . '"';
 					}
 
 					/* collect image output */
 
-					$image = '<img src="' . $thumb_route . '" class="image image_gallery" alt="' . $image_description . '" />';
+					$image = '<img src="' . $thumb_route . '" class="image image_gallery"' . $alt_string . ' />';
 					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, $data_string) . '</li>';
 				}
 			}
@@ -163,7 +190,7 @@ function gallery($directory = '', $options = '', $command = '')
 /**
  * gallery build thumb
  *
- * @since 1.2.1
+ * @since 2.0.2
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -179,7 +206,7 @@ function gallery_build_thumb($input = '', $directory = '', $options)
 {
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
