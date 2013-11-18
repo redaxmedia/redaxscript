@@ -52,8 +52,7 @@ function web_app_render_start()
 
 function web_app_head_start()
 {
-	$output = '<meta name="mobile-web-app-capable" content="yes">' . PHP_EOL;
-	$output .= '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
+	$output = '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
 	echo $output;
 }
 
