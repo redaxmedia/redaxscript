@@ -50,6 +50,10 @@ function registration_form()
 
 	if (s('captcha') > 0)
 	{
+		if (LOGGED_IN == TOKEN)
+		{
+			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution('raw'));
+		}
 		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 	}
 

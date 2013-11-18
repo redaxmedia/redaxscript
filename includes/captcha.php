@@ -88,12 +88,25 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0.0
 	 *
+	 * @param string $mode
 	 * @return integer
 	 */
 
-	public function getSolution()
+	public function getSolution($mode = 'hash')
 	{
-		return $this->_solution;
+		/* raw output */
+
+		if ($mode === 'raw')
+		{
+			return $this->_solution;
+		}
+
+		/* else hash output */
+
+		else
+		{
+			return sha1($this->_solution);
+		}
 	}
 
 	/**
@@ -148,7 +161,7 @@ class Redaxscript_Captcha
 
 		/* solution and task */
 
-		$this->_solution = sha1($a + $b * $c);
+		$this->_solution = $a + $b * $c;
 		$this->_task = l($a) . ' ' . l($operator) . ' ' . l($b);
 	}
 }
