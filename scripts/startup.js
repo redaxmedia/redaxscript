@@ -15,7 +15,7 @@
  * @author Henry Ruhs
  */
 
-(function (doc, html, win, nav)
+(function (doc, docElement, win, nav)
 {
 	'use strict';
 
@@ -438,7 +438,7 @@
 		}(),
 		touch: function ()
 		{
-			if ('ontouchstart' in html)
+			if ('ontouchstart' in docElement)
 			{
 				return true;
 			}
@@ -566,29 +566,29 @@
 
 		/* javascript enabled */
 
-		if (html.className)
+		if (docElement.className)
 		{
-			html.className += ' ';
+			docElement.className += ' ';
 		}
-		html.className += 'js';
+		docElement.className += 'js';
 
 		/* support classes */
 
 		if (r.support.canvas)
 		{
-			html.className += ' canvas';
+			docElement.className += ' canvas';
 		}
 		else
 		{
-			html.className += ' no_canvas';
+			docElement.className += ' no_canvas';
 		}
 		if (r.support.svg)
 		{
-			html.className += ' svg';
+			docElement.className += ' svg';
 		}
 		else
 		{
-			html.className += ' no_svg';
+			docElement.className += ' no_svg';
 		}
 
 		/* fix elements */
