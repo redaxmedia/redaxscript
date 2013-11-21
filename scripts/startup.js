@@ -318,6 +318,17 @@
 			}
 			return output;
 		}(),
+		history: function ()
+		{
+			if (typeof win.history === 'object' && typeof win.history.pushState  === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		indexedDB: function ()
 		{
 			if ('indexedDB' in win)
@@ -403,6 +414,17 @@
 				return false;
 			}
 		}(win.JSON),
+		postMessage: function ()
+		{
+			if (typeof win.postMessage === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		svg: function ()
 		{
 			if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')
