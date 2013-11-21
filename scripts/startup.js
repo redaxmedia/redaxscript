@@ -296,6 +296,17 @@
 			}
 			return output;
 		}(),
+		indexedDB: function ()
+		{
+			if ('indexedDB' in win)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}	
+		}(),
 		input: function ()
 		{
 			var types =
@@ -417,6 +428,17 @@
 		webStorage: function ()
 		{
 			if (nav.cookieEnabled && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		webSQL: function ()
+		{
+			if (typeof win.openDatabase === 'function')
 			{
 				return true;
 			}
