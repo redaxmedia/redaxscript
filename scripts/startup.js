@@ -447,7 +447,7 @@
 				return false;
 			}
 		}(),
-		WebSockets: function ()
+		webSockets: function ()
 		{
 			if (typeof win.WebSocket === 'function')
 			{
