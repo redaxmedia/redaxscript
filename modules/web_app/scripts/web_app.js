@@ -16,27 +16,41 @@
 
 	/* @section 1. web app */
 
-	$.fn.web_app = function (options)
+	$.fn.webApp = function (options)
 	{
 		/* extend options */
 
-		if (r.modules.web_app.options !== options)
+		if (r.modules.webApp.options !== options)
 		{
-			options = $.extend({}, r.modules.web_app.options, options || {});
+			options = $.extend({}, r.modules.webApp.options, options || {});
 		}
 
-		/* install web app */
+		/* trigger installation */
 
 		if (r.support.webStorage && typeof window.navigator.mozApps === 'object')
 		{
-			var reminder = Number(window.sessionStorage.getItem('webAppReminder')) || 0;
+			var counter  = Number(window.sessionStorage.getItem('webAppInstallCounter')) || 0,
+				request = '';
 
-			/* prevent multiple reminder */
+			/* prevent multiple request */
 
-			if (reminder < options.reminder)
+			if (counter  < options.limit)
 			{
-				window.sessionStorage.setItem('webAppReminder', ++reminder)
-				window.navigator.mozApps.install(r.baseURL + 'manifest_webapp');
+				request = window.navigator.mozApps.install(r.baseURL + 'manifest_webapp');
+
+				/* handle success */
+
+				request.onsuccess  = function ()
+				{
+					window.sessionStorage.setItem('webAppInstallCounter', options.limit);
+				}
+
+				/* handle error */
+
+				request.onerror = function ()
+				{
+					window.sessionStorage.setItem('webAppInstallCounter', ++counter);
+				}
 			}
 		}
 	};
@@ -45,9 +59,9 @@
 
 	$(function ()
 	{
-		if (r.modules.shareThis.startup)
+		if (r.modules.webApp.startup)
 		{
-			$.fn.web_app(r.modules.web_app.options);
+			$.fn.webApp(r.modules.webApp.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

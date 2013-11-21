@@ -11,11 +11,11 @@
 
 /* @section 1. web app */
 
-r.modules.web_app =
+r.modules.webApp =
 {
 	startup: true,
 	options:
 	{
-		reminder: 1
+		limit: 1
 	}
 };
