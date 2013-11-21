@@ -225,6 +225,17 @@
 
 	r.support =
 	{
+		applicationCache: function ()
+		{
+			if (typeof win.applicationCache === 'object')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		battery: function ()
 		{
 			if ('battery' in nav)
@@ -446,7 +457,7 @@
 			{
 				return false;
 			}
-		}()
+		}(),
 		webStorage: function ()
 		{
 			if (nav.cookieEnabled && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
