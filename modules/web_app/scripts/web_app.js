@@ -43,14 +43,14 @@
 				request.onsuccess  = function ()
 				{
 					window.sessionStorage.setItem('webAppInstallCounter', options.limit);
-				}
+				};
 
 				/* handle error */
 
 				request.onerror = function ()
 				{
 					window.sessionStorage.setItem('webAppInstallCounter', ++counter);
-				}
+				};
 			}
 		}
 	};
