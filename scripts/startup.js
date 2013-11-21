@@ -269,6 +269,17 @@
 				return false;
 			}
 		}(),
+		draggable: function ()
+		{
+			if ('draggable' in doc.createElement('span'))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		geolocation: function ()
 		{
 			if (typeof nav.geolocation === 'object')
@@ -447,7 +458,7 @@
 				return false;
 			}
 		}(),
-		webSockets: function ()
+		webSocket: function ()
 		{
 			if (typeof win.WebSocket === 'function')
 			{
@@ -469,7 +480,7 @@
 				return false;
 			}
 		}(),
-		webWorkers: function ()
+		webWorker: function ()
 		{
 			if (typeof win.Worker === 'function')
 			{
