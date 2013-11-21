@@ -425,6 +425,28 @@
 				return false;
 			}
 		}(),
+		webSQL: function ()
+		{
+			if (typeof win.openDatabase === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		WebSockets: function ()
+		{
+			if (typeof win.WebSocket === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}()
 		webStorage: function ()
 		{
 			if (nav.cookieEnabled && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
@@ -436,9 +458,9 @@
 				return false;
 			}
 		}(),
-		webSQL: function ()
+		webWorkers: function ()
 		{
-			if (typeof win.openDatabase === 'function')
+			if (typeof win.Worker === 'function')
 			{
 				return true;
 			}
