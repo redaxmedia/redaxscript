@@ -13,5 +13,9 @@
 
 r.modules.web_app =
 {
-	startup: true
+	startup: true,
+	options:
+	{
+		reminder: 1
+	}
 };
