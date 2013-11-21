@@ -305,7 +305,7 @@
 			else
 			{
 				return false;
-			}	
+			}
 		}(),
 		input: function ()
 		{
