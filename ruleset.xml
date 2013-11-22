@@ -2,7 +2,7 @@
 <ruleset name="Redaxscript">
 	<description>Redaxscript coding standard</description>
 
-	<!-- Inherit from generic -->
+	<!-- inherit from generic -->
 
 	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
 	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
@@ -10,6 +10,11 @@
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
 	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
 	<rule ref="Generic.Files.ByteOrderMark" />
+	<rule ref="Generic.Files.LineEndings">
+		<properties>
+			<property name="eolChar" value="\r\n" />
+		</properties>
+	</rule>
 	<rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
 	<rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
 	<rule ref="Generic.NamingConventions.ConstructorName" />
@@ -19,9 +24,24 @@
 	<rule ref="Generic.PHP.LowerCaseConstant" />
 	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 
-	<!-- Inherit from squiz -->
+	<!-- inherit from squiz -->
 
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
+	<rule ref="Squiz.CSS.ColonSpacing">
+		<exclude-pattern>query.css</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.CSS.DisallowMultipleStyleDefinitions" />
+	<rule ref="Squiz.CSS.DuplicateClassDefinition">
+		<exclude-pattern>query.css</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.CSS.EmptyClassDefinition" />
+	<rule ref="Squiz.CSS.EmptyStyleDefinition" />
+	<rule ref="Squiz.CSS.MissingColon">
+		<exclude-pattern>query.css</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.CSS.SemicolonSpacing">
+		<exclude-pattern>query.css</exclude-pattern>
+	</rule>
 	<rule ref="Squiz.PHP.Eval" />
 	<rule ref="Squiz.Scope.MemberVarScope" />
 	<rule ref="Squiz.Scope.MethodScope" />
@@ -29,12 +49,4 @@
 	<rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
 	<rule ref="Squiz.WhiteSpace.SemicolonSpacing" />
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
-
-	<!-- Windows newline -->
-
-	<rule ref="Generic.Files.LineEndings">
-		<properties>
-			<property name="eolChar" value="\r\n" />
-		</properties>
-	</rule>
 </ruleset>
