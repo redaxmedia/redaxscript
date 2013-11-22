@@ -534,36 +534,6 @@
 
 	r.startup = function ()
 	{
-		var tags =
-			[
-				'abbr',
-				'article',
-				'aside',
-				'audio',
-				'bdi',
-				'canvas',
-				'data',
-				'datalist',
-				'details',
-				'dialog',
-				'figcaption',
-				'figure',
-				'footer',
-				'header',
-				'hgroup',
-				'main',
-				'mark',
-				'meter',
-				'nav',
-				'output',
-				'progress',
-				'section',
-				'summary',
-				'template',
-				'time',
-				'video'
-			];
-
 		/* javascript enabled */
 
 		if (docElement.className)
@@ -589,13 +559,6 @@
 		else
 		{
 			docElement.className += ' no_svg';
-		}
-
-		/* fix elements */
-
-		for (var i in tags)
-		{
-			doc.createElement(tags[i]);
 		}
 		return true;
 	}();
