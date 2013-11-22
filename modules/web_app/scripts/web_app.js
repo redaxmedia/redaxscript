@@ -38,18 +38,15 @@
 			{
 				request = window.navigator.mozApps.install(r.baseURL + 'manifest_webapp');
 
+				/* count multiple request */
+
+				window.sessionStorage.setItem('webAppInstallCounter', ++counter);
+
 				/* handle success */
 
 				request.onsuccess  = function ()
 				{
 					window.sessionStorage.setItem('webAppInstallCounter', options.limit);
-				};
-
-				/* handle error */
-
-				request.onerror = function ()
-				{
-					window.sessionStorage.setItem('webAppInstallCounter', ++counter);
 				};
 			}
 		}
