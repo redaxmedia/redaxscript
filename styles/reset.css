@@ -19,7 +19,6 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 	outline: 0;
 	padding: 0;
 	vertical-align: baseline;
-	white-space: normal;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary
@@ -35,7 +34,6 @@ blockquote, q
 blockquote:before, blockquote:after, q:before, q:after
 {
 	content: '';
-	content: none;
 }
 
 li

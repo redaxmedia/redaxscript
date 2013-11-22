@@ -153,7 +153,7 @@ module.exports = function (grunt)
 			},
 			base:
 			{
-				dir: 'includes'
+				dir: 'includes scripts styles'
 			},
 			languages:
 			{
