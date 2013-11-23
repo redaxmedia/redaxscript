@@ -37,7 +37,7 @@ Feature list
 * Bundled with the latest jQuery
 * **Ultra lightweight WYSIWYG editor**
 * Multiple language and template support
-* Available in over 25 languages
+* Available in 30 languages
 * Salt enhanced password security
 * Extensive setting options
 
