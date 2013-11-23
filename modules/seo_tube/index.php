@@ -43,13 +43,11 @@ function seo_tube_scripts_end()
 		$output = '<script>' . PHP_EOL;
 		$output .= 'r.modules.seoTube.video = ' . json_encode($video_content) . ';';
 
-		/* add constant object */
+		/* add constants */
 
-		$output .= 'r.modules.seoTube.constant = ' . PHP_EOL . '{' . PHP_EOL;
+		$output .= 'r.modules.seoTube.constants = ' . PHP_EOL . '{' . PHP_EOL;
 		$output .= 'SEO_TUBE_DESCRIPTION_PARAGRAPH: \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\',' . PHP_EOL;
 		$output .= 'SEO_TUBE_GDATA_URL: \'' . SEO_TUBE_GDATA_URL . '\',' . PHP_EOL;
-		$output .= 'SEO_TUBE_COMMENT_FEED: \'' . SEO_TUBE_COMMENT_FEED . '\',' . PHP_EOL;
-		$output .= 'SEO_TUBE_COMMENT_LIMIT: ' . SEO_TUBE_COMMENT_LIMIT . PHP_EOL;
 		$output .= '};' . PHP_EOL . '</script>' . PHP_EOL;
 	}
 	echo $output;

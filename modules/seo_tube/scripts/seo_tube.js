@@ -30,7 +30,7 @@
 			relatedDescription = $(options.related.description),
 			relatedText = $(options.related.text),
 			video = r.modules.seoTube.video,
-			constant = r.modules.seoTube.constant,
+			constants = r.modules.seoTube.constants,
 			eol = options.eol,
 			indent = options.indent,
 			text = '';
@@ -54,23 +54,14 @@
 			if (video.description)
 			{
 				relatedDescription.val(video.description);
-				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
+				if (constants.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
 					text += '<p class="text_seo_tube">' + video.description + '</p>' + eol + eol;
 				}
 			}
 
-			/* video related feed */
+			/* video related text */
 
-			if (constant.SEO_TUBE_COMMENT_FEED > 0)
-			{
-				text += eol + '<function>' + eol + '{' + eol + indent + '"feed_reader":' + eol + indent + '{' + eol + indent + indent + '"url": "' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments"';
-				if (constant.SEO_TUBE_COMMENT_LIMIT)
-				{
-					text += ',' + eol + indent + indent + '"filter": "",' + eol + indent + indent + '"limit": "' + constant.SEO_TUBE_COMMENT_LIMIT + '"';
-				}
-				text += eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
-			}
 			if (text)
 			{
 				relatedText.val(text);
