@@ -36,6 +36,11 @@ blockquote:before, blockquote:after, q:before, q:after
 	content: '';
 }
 
+legend
+{
+	max-width: 100%;
+}
+
 li
 {
 	list-style: none;
