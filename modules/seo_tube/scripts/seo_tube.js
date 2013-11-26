@@ -60,7 +60,7 @@
 				}
 			}
 
-			/* video related text */
+			/* video text */
 
 			if (text)
 			{
