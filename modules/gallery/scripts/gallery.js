@@ -9,13 +9,13 @@
  *    1.5 create meta
  *    1.6 listen
  *    1.7 action
- *    1.7.1 previous
- *    1.7.2 next
+ *       1.7.1 previous
+ *       1.7.2 next
  *    1.8 close
  *    1.9 init
  * 2. startup
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
