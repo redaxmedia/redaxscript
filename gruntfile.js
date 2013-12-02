@@ -6,36 +6,6 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
-		watch:
-		{
-			scripts:
-			{
-				files:
-				[
-					'<%=jshint.dependency%>',
-					'<%=jshint.base%>',
-					'<%=jshint.modules%>',
-					'<%=jshint.templates%>'
-				],
-				tasks:
-				[
-					'jshint'
-				]
-			},
-			styles:
-			{
-				files:
-				[
-					'<%=csslint.base.src%>',
-					'<%=csslint.modules.src%>',
-					'<%=csslint.templates.src%>'
-				],
-				tasks:
-				[
-					'csslint'
-				]
-			}
-		},
 		jshint:
 		{
 			dependency:
@@ -361,7 +331,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
