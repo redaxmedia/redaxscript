@@ -9,6 +9,8 @@ Redaxscript
 [![Build Status](https://travis-ci.org/redaxmedia/redaxscript.png?branch=master)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Latest Stable Version](https://poser.pugx.org/redaxmedia/redaxscript/v/stable.png)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Total Downloads](https://poser.pugx.org/redaxmedia/redaxscript/downloads.png)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![Dependency Status](https://david-dm.org/redaxmedia/redaxscript.png)](https://david-dm.org/redaxmedia/redaxscript)
+
 
 
 Online demo
