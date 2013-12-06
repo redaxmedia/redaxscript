@@ -365,7 +365,7 @@ function fb_group_get_contents($type = '')
 {
 	/* define variables */
 
-	$file_path = FB_GROUP_CACHE_PATH . '/fb_group_' . $type . '.json';
+	$file_path = FB_GROUP_CACHE_PATH . '/' . $type . '.json';
 	$file_size = filesize($file_path);
 	$file_time = filectime($file_path);
 	$file_age = time() - $file_time;
