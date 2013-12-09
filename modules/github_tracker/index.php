@@ -30,7 +30,7 @@ function github_tracker_loader_start()
 
 function github_tracker_render_start()
 {
-	if (FIRST_PARAMETER == 'github-tracker' && SECOND_PARAMETER == 'get-contents' && (THIRD_PARAMETER == 'issues' || THIRD_PARAMETER == 'milestones'))
+	if (FIRST_PARAMETER == 'github-tracker' && SECOND_PARAMETER == 'get-contents' && (THIRD_PARAMETER == 'milestones' || THIRD_PARAMETER == 'issues'))
 	{
 		define('RENDER_BREAK', 1);
 		github_tracker_get_contents(THIRD_PARAMETER);
@@ -53,6 +53,38 @@ function github_tracker_render_start()
 
 function github_tracker($type = '', $options = '')
 {
+	/* define option variables */
+
+	if (is_array($options))
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* fallback */
+
+	if ($option_limit_milestones == '')
+	{
+		$option_limit_milestones = s('limit');
+	}
+	if ($option_limit_issues == '')
+	{
+		$option_limit_issues = s('limit');
+	}
+
+	/* get contents */
+
+	$contents = github_tracker_get_contents($type);
+
+	/* decode contents */
+
+	if ($contents)
+	{
+		$contents = json_decode($contents);
+	}
 }
 
 /**
@@ -90,18 +122,21 @@ function github_tracker_get_contents($type = '')
 
 	else
 	{
-		/* get contents */
+		/* curl contents */
 
-		$url = GITHUB_TRACKER_API_URL . '/' . GITHUB_TRACKER_REPO_URL . '/' . $type;
-		$output = file_get_contents($url);
+		$url = GITHUB_TRACKER_API_URL . '/' . GITHUB_TRACKER_USER . '/' . GITHUB_TRACKER_REPO . '/' . $type;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Redaxscript');
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+		$output = curl_exec($ch);
+		curl_close($ch);
 
-		/* write cache file if writable */
+		/* write cache file */
 
 		if (is_writable($file_path))
 		{
-			$file = fopen($file_path, 'w+');
-			fwrite($file, $output);
-			fclose($file);
+			file_put_contents($file_path, $output);
 		}
 	}
 	return $output;
