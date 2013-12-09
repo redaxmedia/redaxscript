@@ -317,7 +317,7 @@ function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
 	{
 		$output = '<a class="link_fb_group_user_image" href="' . FB_GROUP_FACEBOOK_URL . '/profile.php?id=' . $id . '" title="' . $name . '" rel="nofollow">';
 	}
-	$output .= '<img class="image_fb_group_' . $type . '" src="' . FB_GROUP_GRAPH_URL . '/' . $id . '/picture?type=' . $type . '" alt="' . $name . '" />';
+	$output .= '<img class="image_fb_group_' . $type . '" src="' . FB_GROUP_API_URL . '/' . $id . '/picture?type=' . $type . '" alt="' . $name . '" />';
 	if ($mode == 1)
 	{
 		$output .= '</a>';
@@ -348,7 +348,7 @@ function fb_group_get_access_token()
 	{
 		/* get contents */
 
-		$url = FB_GROUP_GRAPH_URL . '/oauth/access_token?client_id=' . FB_GROUP_APP_ID . '&client_secret=' . FB_GROUP_APP_SECRET . '&grant_type=client_credentials';
+		$url = FB_GROUP_API_URL . '/oauth/access_token?client_id=' . FB_GROUP_APP_ID . '&client_secret=' . FB_GROUP_APP_SECRET . '&grant_type=client_credentials';
 		$contents = file_get_contents($url);
 
 		/* remove access token string */
@@ -401,18 +401,20 @@ function fb_group_get_contents($type = '')
 		$access_token = fb_group_get_access_token();
 		if ($access_token)
 		{
-			/* get contents */
+			/* curl contents */
 
-			$url = FB_GROUP_GRAPH_URL . '/' . FB_GROUP_GROUP_ID . '/' . $type. '/?access_token=' . $access_token;
-			$output = file_get_contents($url);
+			$url = FB_GROUP_API_URL . '/' . FB_GROUP_GROUP_ID . '/' . $type. '/?access_token=' . $access_token;
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+			$output = curl_exec($ch);
+			curl_close($ch);
 
-			/* write cache file if writable */
+			/* write cache file */
 
 			if (is_writable($file_path))
 			{
-				$file = fopen($file_path, 'w+');
-				fwrite($file, $output);
-				fclose($file);
+				file_put_contents($file_path, $output);
 			}
 		}
 	}
