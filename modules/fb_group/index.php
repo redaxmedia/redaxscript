@@ -328,6 +328,13 @@ function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
 /**
  * fb group get access token
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -356,6 +363,13 @@ function fb_group_get_access_token()
 
 /**
  * fb group get contents
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $type
  * @return string
