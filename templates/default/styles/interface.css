@@ -70,8 +70,9 @@
 
 .list_default li
 {
-	list-style: inherit;
-	margin: 1em 1.5em;
+	line-height: 2.5em;
+	list-style-position: inside;
+	list-style-type: inherit;
 }
 
 /* @section 3. list footer */
@@ -255,19 +256,15 @@
 
 .list_pagination a:hover, .list_pagination a:active
 {
-	border-color: #005da2;
-	color: #fff;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-}
-
-.list_pagination a:hover, .list_pagination a:active
-{
 	background: #33acee;
 	background: -moz-linear-gradient(top, #0090db, #62c5ff);
 	background: -ms-linear-gradient(top, #0090db, #62c5ff);
 	background: -o-linear-gradient(top, #0090db, #62c5ff);
 	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
 	background: linear-gradient(top, #0090db, #62c5ff);
+	border-color: #005da2;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 }
 
 .list_pagination a:active

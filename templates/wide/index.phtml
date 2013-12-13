@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="<?php echo LANGUAGE; ?>" class="<?php helper_class(); ?>">
 	<head>
-		<?php head(); ?>
 		<meta name="viewport" content="width=device-width" />
+		<?php head(); ?>
 		<?php scripts('startup'); ?>
 		<?php styles(); ?>
 		<?php if (MY_MOBILE == ''): ?>
@@ -11,7 +11,6 @@
 		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
 			<?php include_once('templates/admin/head.phtml'); ?>
 		<?php endif; ?>
-		<link href="<?php echo ROOT; ?>/templates/default/images/touchicon.png" rel="apple-touch-icon-precomposed" />
 		<link href="templates/default/images/favicon.ico" rel="shortcut icon" />
 	</head>
 	<body class="wrapper_body">

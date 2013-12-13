@@ -226,15 +226,11 @@
 
 .item_panel_admin > span:after
 {
+	content: '˃';
 	font: 1.5em/1.75em 'icon admin';
 	position: absolute;
 	right: 0.75em;
 	top: 0;
-}
-
-.item_panel_admin > span:after
-{
-	content: '˃';
 }
 
 .item_panel_admin.item_active > span:after

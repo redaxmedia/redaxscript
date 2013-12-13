@@ -4,7 +4,7 @@
  * 1. share this
  * 2. startup
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -25,22 +25,56 @@
 			options = $.extend({}, r.modules.shareThis.options, options || {});
 		}
 
+		var links = $(this),
+			urlParameter = '?url=' + r.baseURL;
+
+		/* request data */
+
+		$.ajax(
+		{
+			url: options.url + urlParameter,
+			dataType: 'json',
+			success: function (data)
+			{
+				/* handle data */
+
+				if (typeof data === 'object')
+				{
+					for (var i in data)
+					{
+						var counter = data[i];
+
+						/* facebook fallback */
+
+						if (i === 'Facebook')
+						{
+							counter = data[i].share_count;
+						}
+
+						/* filter by type */
+
+						links.filter('[data-type="' + i.toLowerCase() + '"]').attr('data-counter', counter);
+					}
+				}
+			}
+		});
+
 		/* return this */
 
 		return this.each(function ()
 		{
 			/* open popup */
 
-			$(this).on('click', function (event)
+			links.on('click', function (event)
 			{
 				var link = $(this),
 					url = link.attr('href'),
-					height = link.data('height') || options.height,
-					width = link.data('width') || options.width;
+					height = link.data('height') || options.popup.height,
+					width = link.data('width') || options.popup.width;
 
 				if (typeof url === 'string')
 				{
-					window.open(url, options.name, 'height=' + height + ', width=' + width + ', menubar=' + options.menubar + ', resizable=' + options.resizable + ', status=' + options.status + ', scrollbars=' + options.scrollbars + ', toolbar=' + options.toolbar);
+					window.open(url, options.popup.name, 'height=' + height + ', width=' + width + ', menubar=' + options.popup.menubar + ', resizable=' + options.popup.resizable + ', status=' + options.popup.status + ', scrollbars=' + options.popup.scrollbars + ', toolbar=' + options.popup.toolbar);
 					event.preventDefault();
 				}
 			});

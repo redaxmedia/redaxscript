@@ -88,7 +88,7 @@
 						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
 					}
 
-					/* append serveral controls */
+					/* append several controls */
 
 					else if (typeof data === 'object')
 					{
@@ -138,7 +138,7 @@
 				{
 					if (event.which === 13)
 					{
-						if (r.constants.MY_EGINE === 'gecko')
+						if (r.constants.MY_ENGINE === 'gecko')
 						{
 							document.execCommand('insertBrOnReturn', false, false);
 						}

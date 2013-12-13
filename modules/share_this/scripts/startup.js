@@ -17,13 +17,17 @@ r.modules.shareThis =
 	selector: 'a.js_link_share_this ',
 	options:
 	{
-		height: 450,
-		menubar: 0,
-		name: 'Share This',
-		resizable: 0,
-		status: 0,
-		scrollbars: 0,
-		toolbar: 0,
-		width: 500
+		url: 'http://api.sharedcount.com',
+		popup:
+		{
+			height: 450,
+			menubar: 0,
+			name: 'Share This',
+			resizable: 0,
+			status: 0,
+			scrollbars: 0,
+			toolbar: 0,
+			width: 500
+		}
 	}
 };

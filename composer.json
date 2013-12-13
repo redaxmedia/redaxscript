@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "Ultra lightweight CMS",
-	"version": "2.0.0",
+	"version": "2.0.2",
 	"homepage": "http://redaxscript.com",
 	"licence": "GPL-3.0",
 	"require":
@@ -10,7 +10,7 @@
 	},
 	"require-dev":
 	{
-		"redaxmedia/tocgen": "2.2.1",
+		"redaxmedia/tocgen": "3.0.0",
 		"squizlabs/php_codesniffer": "1.4.5"
 	},
 	"scripts":
@@ -18,7 +18,6 @@
 		"post-install-cmd":
 		[
 			"npm install"
-			
 		],
 		"post-update-cmd":
 		[

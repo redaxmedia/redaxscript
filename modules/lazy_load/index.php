@@ -3,7 +3,7 @@
 /**
  * lazy load loader start
  *
- * @since 2.0.0
+ * @since 2.0.1
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -22,7 +22,7 @@ function lazy_load_loader_start()
 /**
  * lazy load
  *
- * @since 2.0.0
+ * @since 2.0.1
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -36,6 +36,17 @@ function lazy_load_loader_start()
 
 function lazy_load($src= '', $options = '')
 {
+	/* define option variables */
+
+	if (is_array($options))
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
 	/* multiserve images */
 
 	if (is_array($src))
@@ -68,17 +79,6 @@ function lazy_load($src= '', $options = '')
 
 	$image_dimensions = getimagesize($image_route);
 	$image_ratio = $image_dimensions[1] / $image_dimensions[0] * 100;
-
-	/* define option variables */
-
-	if ($options)
-	{
-		foreach ($options as $key => $value)
-		{
-			$key = 'option_' . $key;
-			$$key = $value;
-		}
-	}
 
 	/* build class string */
 

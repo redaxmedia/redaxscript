@@ -1,25 +1,64 @@
-<?php
-
-/* config tocgen */
-
-define(TOCGEN_EOL, "\r\n");
-define(TOCGEN_TOC_FLAG, '@tableofcontents');
-define(TOCGEN_TOC_START, '/**');
-define(TOCGEN_TOC_END, ' */' . TOCGEN_EOL . TOCGEN_EOL);
-define(TOCGEN_TOC_PREFIX, ' * ');
-define(TOCGEN_TOC_INDENT, '   ');
-define(TOCGEN_TOC_DELIMITER, ' *' . TOCGEN_EOL);
-define(TOCGEN_TOC_HEAD, TOCGEN_EOL . ' * @tableofcontents' . TOCGEN_EOL . TOCGEN_TOC_DELIMITER);
-define(TOCGEN_TOC_FOOT, TOCGEN_TOC_DELIMITER . ' * @since 2.0.0' . TOCGEN_EOL . TOCGEN_TOC_DELIMITER . ' * @package Redaxscript' . TOCGEN_EOL . ' * @author Henry Ruhs' . TOCGEN_EOL);
-define(TOCGEN_SECTION_FLAG, '@section');
-define(TOCGEN_SECTION_START, '/*');
-define(TOCGEN_SECTION_END, '*/');
-define(TOCGEN_SECTION_PREFIX, '*');
-define(TOCGEN_SECTION_REGEX, '/\/\*(.|[' . TOCGEN_EOL . '])*?\*\//');
-define(TOCGEN_NO_TARGET, 'File or directory not found');
-define(TOCGEN_NO_SECTION, TOCGEN_SECTION_FLAG . ' not found');
-define(TOCGEN_NO_CHANGES, 'No changes were made');
-define(TOCGEN_TOC_UPDATED, 'Table of contents updated');
-define(TOCGEN_POINT, '.');
-define(TOCGEN_COLON, ':');
-?>
+{
+	"eol": "\r\n",
+	"toc":
+	{
+		"flag": "@tableofcontents",
+		"start": "/**",
+		"end": " */\r\n\r\n",
+		"prefix": " * ",
+		"delimiter": " *\r\n",
+		"indent": "   ",
+		"head": "\r\n * @tableofcontents\r\n *\r\n",
+		"foot": " *\r\n * @since 2.0.2\r\n *\r\n * @package Redaxscript\r\n * @author Henry Ruhs\r\n"
+	},
+	"section":
+	{
+		"flag": "@section",
+		"start": "/*",
+		"end": "*/",
+		"delimiter": ".",
+		"pattern": "/\\/\\*(.|[\\r\\n])*?\\*\\//"
+	},
+	"extensions":
+	[
+		"coffee",
+		"css",
+		"js",
+		"less",
+		"sass",
+		"scss"
+	],
+	"exclude":
+	[
+		".",
+		"..",
+		".git",
+		".svn"
+	],
+	"notes":
+	{
+		"error": "[1;31m",
+		"success": "[1;32m",
+		"warning": "[1;33m",
+		"info": "[1;36m"
+	},
+	"wording":
+	{
+		"tocgen": "Tocgen by Redaxmedia",
+		"noTarget": "File or directory not found",
+		"noSection": "No section found",
+		"noChanges": "No changes were made",
+		"duplicateRank": "Duplicate rank detected",
+		"wrongOrder": "Wrong order detected",
+		"tocUpdated": "Table of contents updated",
+		"point": ".",
+		"colon": ":",
+		"indent": "  "
+	},
+	"options":
+	{
+		"force": false,
+		"recursive": true,
+		"quite": false
+	}
+}

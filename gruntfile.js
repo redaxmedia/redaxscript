@@ -6,36 +6,6 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
-		watch:
-		{
-			scripts:
-			{
-				files:
-				[
-					'<%=jshint.dependency%>',
-					'<%=jshint.base%>',
-					'<%=jshint.modules%>',
-					'<%=jshint.templates%>'
-				],
-				tasks:
-				[
-					'jshint'
-				]
-			},
-			styles:
-			{
-				files:
-				[
-					'<%=csslint.base.src%>',
-					'<%=csslint.modules.src%>',
-					'<%=csslint.templates.src%>'
-				],
-				tasks:
-				[
-					'csslint'
-				]
-			}
-		},
 		jshint:
 		{
 			dependency:
@@ -65,6 +35,10 @@ module.exports = function (grunt)
 			[
 				'composer.json',
 				'package.json'
+			],
+			modules:
+			[
+				'modules/web_app/files/manifest.json'
 			]
 		},
 		qunit:
@@ -149,7 +123,7 @@ module.exports = function (grunt)
 			},
 			base:
 			{
-				dir: 'includes'
+				dir: 'includes scripts styles'
 			},
 			languages:
 			{
@@ -240,15 +214,15 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php vendor/redaxmedia/tocgen/tocgen.php scripts .tocgen && php vendor/redaxmedia/tocgen/tocgen.php styles .tocgen'
+				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen && php vendor/redaxmedia/tocgen/cli.php styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/redaxmedia/tocgen/tocgen.php modules .tocgen -r'
+				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/redaxmedia/tocgen/tocgen.php templates .tocgen -r'
+				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
 			},
 			addUpstream:
 			{
@@ -357,7 +331,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');

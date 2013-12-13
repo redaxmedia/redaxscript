@@ -27,6 +27,7 @@ $l['pt'] = 'Português';
 $l['ro'] = 'Română';
 $l['ru'] = 'Русский';
 $l['sk'] = 'Slovenčina';
+$l['sr'] = 'Cрпски';
 $l['sv'] = 'Svenska';
 $l['tr'] = 'Türkçe';
 $l['vi'] = 'Tiếng Việt';
@@ -35,7 +36,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = '2.0.0';
+$l['redaxscript_version'] = '2.0.2';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /**
