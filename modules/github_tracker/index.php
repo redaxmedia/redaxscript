@@ -4,7 +4,7 @@
  * github tracker loader start
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -21,7 +21,7 @@ function github_tracker_loader_start()
  * github tracker render start
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -41,7 +41,7 @@ function github_tracker_render_start()
  * github tracker
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -84,14 +84,68 @@ function github_tracker($type = '', $options = '')
 	if ($contents)
 	{
 		$contents = json_decode($contents);
+		$data = $contents;
 	}
+
+	/* collect milestones output */
+
+	if ($data && $type == 'milestones')
+	{
+		foreach ($data as $value)
+		{
+			/* break if limit reached */
+
+			if (++$milestones_counter > $option_limit_milestones)
+			{
+				break;
+			}
+
+			/* collect milestones output */
+
+			$output .= '<ul class="list_github_tracker_milestones">';
+			$output .= '<li><h3 class="title_github_tracker_milestones">' . $value->title . '</h3></li>';
+			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->description . '</span></li>';
+			$output .= '<li><progress class="progress_github_tracker_milestones" value="' . $value->closed_issues . '" max="' . ($value->closed_issues + $value->open_issues) . '"></progress></li>';
+			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->closed_issues . ' ' . l('github_tracker_closed_issues') . s('divider') . $value->open_issues . ' ' . l('github_tracker_open_issues') . '</span></li>';
+			$output .= '</ul>';
+		}
+	}
+
+	/* collect issues output */
+
+	if ($data && $type == 'issues')
+	{
+		$output = '<div class="wrapper_table"><table class="table table_default table_github_tracker_milestones">';
+		$output .= '<thead><tr><th class="s3o6 column_first">Issue</th><th class="column_second">Created</th><th class="column_last">Milestone</th></tr></thead>';
+		$output .= '<tfoot><tr><td class="column_first">Issue</td><td class="column_second">Created</td><td class="column_last">Milestone</td></tr></tfoot><tbody>';
+		foreach ($data as $value)
+		{
+			/* break if limit reached */
+
+			if (++$issues_counter > $option_limit_issues)
+			{
+				break;
+			}
+
+			/* collect issues output */
+
+			$output .= '<tr>';
+			$output .= '<td class="column_first">' . $value->title . '</td>';
+			$output .= '<td class="column_second">' . date(s('date'), strtotime($value->created_at)) . '</td>';
+			$output .= '<td class="column_last">' . $value->milestone->title . '</td>';
+
+			$output .= '</tr>';
+		}
+		$output .= '</tbody></table></div>';
+	}
+	echo $output;
 }
 
 /**
  * github tracker contents
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -127,6 +181,7 @@ function github_tracker_get_contents($type = '')
 		$url = GITHUB_TRACKER_API_URL . '/' . GITHUB_TRACKER_USER . '/' . GITHUB_TRACKER_REPO . '/' . $type;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_USERAGENT, 'Redaxscript');
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 		$output = curl_exec($ch);

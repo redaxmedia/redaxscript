@@ -4,7 +4,7 @@
  * github tracker install
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -21,7 +21,7 @@ function github_tracker_install()
  * github tracker uninstall
  *
  * @since 2.1.0
- * @deprecated 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Modules
