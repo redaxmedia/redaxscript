@@ -99,13 +99,14 @@ function github_tracker($type = '', $options = '')
 			{
 				break;
 			}
+			$total_issues = $value->closed_issues + $value->open_issues;
 
 			/* collect milestones output */
 
 			$output .= '<ul class="list_github_tracker_milestones">';
 			$output .= '<li><h3 class="title_github_tracker_milestones">' . $value->title . '</h3></li>';
 			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->description . '</span></li>';
-			$output .= '<li><progress class="progress_github_tracker_milestones" value="' . $value->closed_issues . '" max="' . ($value->closed_issues + $value->open_issues) . '"></progress></li>';
+			$output .= '<li><progress class="progress_github_tracker_milestones" value="' . $value->closed_issues . '" max="' . $total_issues . '"></progress></li>';
 			$output .= '<li><span class="text_github_tracker_milestones_status">' . $value->closed_issues . ' ' . l('github_tracker_closed_issues') . s('divider') . $value->open_issues . ' ' . l('github_tracker_open_issues') . '</span></li>';
 			$output .= '</ul>';
 		}
