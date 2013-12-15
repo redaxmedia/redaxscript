@@ -106,7 +106,7 @@ function github_tracker($type = '', $options = '')
 			$output .= '<li><h3 class="title_github_tracker_milestones">' . $value->title . '</h3></li>';
 			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->description . '</span></li>';
 			$output .= '<li><progress class="progress_github_tracker_milestones" value="' . $value->closed_issues . '" max="' . ($value->closed_issues + $value->open_issues) . '"></progress></li>';
-			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->closed_issues . ' ' . l('github_tracker_closed_issues') . s('divider') . $value->open_issues . ' ' . l('github_tracker_open_issues') . '</span></li>';
+			$output .= '<li><span class="text_github_tracker_milestones_status">' . $value->closed_issues . ' ' . l('github_tracker_closed_issues') . s('divider') . $value->open_issues . ' ' . l('github_tracker_open_issues') . '</span></li>';
 			$output .= '</ul>';
 		}
 	}
@@ -115,7 +115,7 @@ function github_tracker($type = '', $options = '')
 
 	if ($data && $type == 'issues')
 	{
-		$output = '<div class="wrapper_table"><table class="table table_default table_github_tracker_milestones">';
+		$output = '<div class="wrapper_table_default"><table class="table table_default table_github_tracker_milestones">';
 		$output .= '<thead><tr><th class="s3o6 column_first">' . l('github_tracker_issues') . '</th><th class="column_second">' . l('github_tracker_created') . '</th><th class="column_third">' . l('github_tracker_updated') . '</th><th class="column_last">' . l('github_tracker_milestones') . '</th></tr></thead>';
 		$output .= '<tfoot><tr><td class="column_first">' . l('github_tracker_issues') . '</td><td class="column_second">' . l('github_tracker_created') . '</td><td class="column_third">' . l('github_tracker_updated') . '</td><td class="column_last">' . l('github_tracker_milestones') . '</td></tr></tfoot>';
 		foreach ($data as $value)
@@ -130,7 +130,7 @@ function github_tracker($type = '', $options = '')
 			/* collect issues output */
 
 			$output .= '<tr>';
-			$output .= '<td class="column_first">' . $value->title . '</td>';
+			$output .= '<td class="column_first">' . anchor_element('external', '', 'js_confirm link_github_tracker_issues', $value->title, $value->html_url) . '</td>';
 			$output .= '<td class="column_second">' . date(s('date'), strtotime($value->created_at)) . '</td>';
 			$output .= '<td class="column_third">' . date(s('date'), strtotime($value->updated_at)) . '</td>';
 			$output .= '<td class="column_last">' . $value->milestone->title . '</td>';
