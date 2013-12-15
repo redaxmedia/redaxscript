@@ -116,8 +116,8 @@ function github_tracker($type = '', $options = '')
 	if ($data && $type == 'issues')
 	{
 		$output = '<div class="wrapper_table"><table class="table table_default table_github_tracker_milestones">';
-		$output .= '<thead><tr><th class="s3o6 column_first">Issue</th><th class="column_second">Created</th><th class="column_last">Milestone</th></tr></thead>';
-		$output .= '<tfoot><tr><td class="column_first">Issue</td><td class="column_second">Created</td><td class="column_last">Milestone</td></tr></tfoot><tbody>';
+		$output .= '<thead><tr><th class="s3o6 column_first">' . l('github_tracker_issues') . '</th><th class="column_second">' . l('github_tracker_created') . '</th><th class="column_third">' . l('github_tracker_updated') . '</th><th class="column_last">' . l('github_tracker_milestones') . '</th></tr></thead>';
+		$output .= '<tfoot><tr><td class="column_first">' . l('github_tracker_issues') . '</td><td class="column_second">' . l('github_tracker_created') . '</td><td class="column_third">' . l('github_tracker_updated') . '</td><td class="column_last">' . l('github_tracker_milestones') . '</td></tr></tfoot>';
 		foreach ($data as $value)
 		{
 			/* break if limit reached */
@@ -132,8 +132,8 @@ function github_tracker($type = '', $options = '')
 			$output .= '<tr>';
 			$output .= '<td class="column_first">' . $value->title . '</td>';
 			$output .= '<td class="column_second">' . date(s('date'), strtotime($value->created_at)) . '</td>';
+			$output .= '<td class="column_third">' . date(s('date'), strtotime($value->updated_at)) . '</td>';
 			$output .= '<td class="column_last">' . $value->milestone->title . '</td>';
-
 			$output .= '</tr>';
 		}
 		$output .= '</tbody></table></div>';
