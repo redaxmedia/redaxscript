@@ -145,7 +145,9 @@ module.exports = function (grunt)
 		},
 		phpunit:
 		{
-			files: false,
+			files:
+			{	
+			},
 			options:
 			{
 				bin: 'vendor/bin/phpunit'
