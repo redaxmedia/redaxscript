@@ -155,63 +155,43 @@ module.exports = function (grunt)
 		{
 			css:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'styles/*.css',
-							'modules/*/styles/*.css',
-							'templates/*/styles/*.css'
-						],
-						expand: true
-					}
-				]
+					'styles/*.css',
+					'modules/*/styles/*.css',
+					'templates/*/styles/*.css'
+				],
+				expand: true
 			},
 			js:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'scripts/*.js',
-							'modules/*/scripts/*.js',
-							'templates/*/scripts/*.js'
-						],
-						expand: true
-					}
-				]
+					'scripts/*.js',
+					'modules/*/scripts/*.js',
+					'templates/*/scripts/*.js'
+				],
+				expand: true
 			},
 			phtml:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'modules/**/*.phtml',
-							'templates/**/*.phtml'
-						],
-						expand: true
-					}
-				]
+					'modules/**/*.phtml',
+					'templates/**/*.phtml'
+				],
+				expand: true
 			},
 			php:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'*.php',
-							'includes/**/*.php',
-							'languages/*.php',
-							'modules/**/*.php'
-						],
-						expand: true
-					}
-				]
+					'*.php',
+					'includes/**/*.php',
+					'languages/*.php',
+					'modules/**/*.php'
+				],
+				expand: true
 			},
 			options:
 			{
