@@ -3,15 +3,13 @@ error_reporting(0);
 
 /* include core files */
 
+include_once('includes/autoloader.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
-include_once('includes/detection.php');
-include_once('includes/directory.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/helper.php');
 include_once('includes/loader.php');
-include_once('includes/mail.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/password.php');
@@ -30,6 +28,7 @@ include_once('config.php');
 
 /* startup redaxscript */
 
+Redaxscript_Autoloader::init();
 startup();
 
 /* include language files */
