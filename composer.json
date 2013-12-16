@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "Ultra lightweight CMS",
-	"version": "2.0.2",
+	"version": "2.1.0",
 	"homepage": "http://redaxscript.com",
 	"licence": "GPL-3.0",
 	"require":
@@ -10,6 +10,7 @@
 	},
 	"require-dev":
 	{
+		"phpunit/phpunit": "3.7.28",
 		"redaxmedia/tocgen": "3.0.0",
 		"squizlabs/php_codesniffer": "1.4.5"
 	},

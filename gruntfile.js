@@ -41,29 +41,6 @@ module.exports = function (grunt)
 				'modules/web_app/files/manifest.json'
 			]
 		},
-		qunit:
-		{
-			jquery:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit.default'
-					]
-				}
-			},
-			zepto:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit.zepto'
-					]
-				}
-			}
-		},
 		csslint:
 		{
 			base:
@@ -141,6 +118,41 @@ module.exports = function (grunt)
 			{
 				bin: 'vendor/bin/phpcs',
 				standard: 'Redaxscript'
+			}
+		},
+		qunit:
+		{
+			jquery:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.default'
+					]
+				}
+			},
+			zepto:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.zepto'
+					]
+				}
+			}
+		},
+		phpunit:
+		{
+			base:
+			{
+				dir: 'tests/includes'
+			},
+			options:
+			{
+				bin: 'vendor/bin/phpunit',
+				bootstrap: 'includes/bootstrap.php'
 			}
 		},
 		lineending:
@@ -336,6 +348,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
+	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
