@@ -1,1 +1,5 @@
-<phpunit strict="true" verbose="true"></phpunit>
+<phpunit strict="true" bootstrap="includes/bootstrap.php">
+	<testsuite name="base">
+		<directory suffix="_test.php">tests/includes</directory>
+	</testsuite>
+</phpunit>

@@ -145,14 +145,10 @@ module.exports = function (grunt)
 		},
 		phpunit:
 		{
-			base:
-			{
-				dir: 'tests/includes'
-			},
+			files: false,
 			options:
 			{
-				bin: 'vendor/bin/phpunit',
-				bootstrap: 'includes/bootstrap.php'
+				bin: 'vendor/bin/phpunit'
 			}
 		},
 		lineending:
