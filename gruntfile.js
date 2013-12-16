@@ -361,7 +361,8 @@ module.exports = function (grunt)
 		'jsonlint',
 		'csslint',
 		'htmlhint',
-		'phplint'
+		'phplint',
+		'phpunit'
 	]);
 	grunt.registerTask('phplint',
 	[
