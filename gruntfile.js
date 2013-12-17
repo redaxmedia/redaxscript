@@ -145,8 +145,9 @@ module.exports = function (grunt)
 		},
 		phpunit:
 		{
-			files:
-			{	
+			general:
+			{
+				dir: ''
 			},
 			options:
 			{
