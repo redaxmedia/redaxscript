@@ -145,7 +145,7 @@ module.exports = function (grunt)
 		},
 		phpunit:
 		{
-			general:
+			testsuite:
 			{
 				dir: ''
 			},
