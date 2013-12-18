@@ -4,6 +4,11 @@
  * 1. admin dock
  * 2. admin panel
  * 3. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -36,24 +41,31 @@
 
 			dockLink.each(function ()
 			{
-				var dockElement = $(this),
-					dockElementText = dockElement.text(),
-					dockDescription = dockElement.siblings(options.element.dockDescription);
+				var dockLink = $(this),
+					dockText = dockLink.text(),
+					dockDescription = dockLink.siblings(options.element.dockDescription);
 
-				dockElement.on('mouseenter mouseleave touchstart touchend', function (event)
+				dockLink.on('mouseenter mouseleave touchstart touchend', function (event)
 				{
 					/* handle mouseenter and touchstart */
 
 					if (event.type === 'mouseenter' || event.type === 'touchstart')
 					{
-						dockDescription.text(dockElementText);
+						dockDescription.text(dockText);
 					}
 
 					/* else handle mouseleave and touchend */
 
 					else
 					{
-						dockDescription.text('');
+						dockDescription.empty();
+					}
+
+					/* haptic feedback */
+
+					if (event.type === 'touchstart' && r.support.vibrate && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
 					}
 				});
 			});
@@ -76,31 +88,73 @@
 		return this.each(function ()
 		{
 			var panelList = $(this),
-				panelItem = panelList.find('li'),
-				panelChildren = panelItem.children('ul'),
-				timeout;
+				panelItem = panelList.children('li'),
+				panelItemAll = panelList.find('li'),
+				panelChildren = panelItemAll.children('ul'),
+				panelLink = panelList.find('a'),
+				timeoutEnter = '',
+				timeoutLeave = '';
 
-			/* listen for click and touchover */
+			/* listen for click and mouseenter  */
 
-			panelItem.on('click touchover', function ()
+			panelItemAll.on('click mouseenter', function (event)
 			{
 				var thatItem = $(this),
-					thatChildren = thatItem.children('ul');
+					thatChildren = thatItem.children('ul'),
+					thatClosest = thatItem.closest(options.element.panelItem),
+					thatRelated = thatClosest.find('ul'),
+					panelFloat = panelItem.css('float');
 
-				/* handle click and touchover */
+				/* exception for narrow panel */
 
-				panelChildren.stop(0).slideUp(options.duration);
-				thatChildren.stop(0).slideDown(options.duration);
+				if (panelFloat === 'none')
+				{
+					/* premature teminate mouseenter */
+
+					if (event.type === 'mouseenter')
+					{
+						thatItem.trigger('enter');
+						return false;
+					}
+
+					/* else show nested list */
+
+					else
+					{
+						thatChildren.find('ul').show();
+					}
+				}
+
+				/* timeout enhanced slide */
+
+				clearTimeout(timeoutEnter);
+				timeoutEnter = setTimeout(function ()
+				{
+					panelChildren.not(thatRelated).stop(0).slideUp(options.duration);
+					thatChildren.stop(0).slideDown(options.duration);
+
+					/* active item */
+
+					panelItemAll.removeClass('item_active');
+					thatItem.addClass('item_active');
+				}, options.duration);
 			});
 
-			/* listen for mouseenter and mouseleave */
+			/* listen for enter and leave */
 
-			panelList.on('mouseenter mouseleave', function (event)
+			panelList.on('enter mouseenter mouseleave', function (event)
 			{
+				/* timeout enhanced slide */
+
 				if (event.type === 'mouseleave')
 				{
-					timeout = setTimeout(function () {
-						panelChildren.stop(0).slideUp(options.duration);
+					clearTimeout(timeoutEnter);
+					timeoutLeave = setTimeout(function ()
+					{
+						panelChildren.stop(0).slideUp(options.duration, function ()
+						{
+							panelItemAll.removeClass('item_active');
+						});
 					}, options.timeout);
 				}
 
@@ -108,7 +162,19 @@
 
 				else
 				{
-					clearTimeout(timeout);
+					clearTimeout(timeoutLeave);
+				}
+			});
+
+			/* listen for click */
+
+			panelLink.on('click', function ()
+			{
+				/* haptic feedback */
+
+				if (r.support.vibrate && typeof options.vibrate === 'number')
+				{
+					window.navigator.vibrate(options.vibrate);
 				}
 			});
 		});

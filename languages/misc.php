@@ -8,6 +8,7 @@ $l['bs'] = 'Bosanski';
 $l['ca'] = 'Català';
 $l['cs'] = 'Čeština';
 $l['de'] = 'Deutsch';
+$l['el'] = 'ελληνικά';
 $l['en'] = 'English';
 $l['es'] = 'Español';
 $l['et'] = 'Eesti';
@@ -26,6 +27,7 @@ $l['pt'] = 'Português';
 $l['ro'] = 'Română';
 $l['ru'] = 'Русский';
 $l['sk'] = 'Slovenčina';
+$l['sr'] = 'Cрпски';
 $l['sv'] = 'Svenska';
 $l['tr'] = 'Türkçe';
 $l['vi'] = 'Tiếng Việt';
@@ -34,7 +36,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = 'Nightly build';
+$l['redaxscript_version'] = '2.1.0';
 $l['redaxscript_website'] = 'redaxscript.com';
 
 /**

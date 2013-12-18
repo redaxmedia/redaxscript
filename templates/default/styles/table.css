@@ -4,6 +4,11 @@
  * 1. table default
  *    1.1 body
  *    1.2 head and foot
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. table default */
@@ -50,7 +55,6 @@
 	background: -moz-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -ms-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: -o-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
-	background: -webkit-gradient(linear, left top, left bottom, from(#c1c1c1), color-stop(#b6b6b6, 50%), color-stop(#b0b0b0, 50%), to(#ababab));
 	background: -webkit-linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	background: linear-gradient(top, #c1c1c1, #b6b6b6 50%, #b0b0b0 50%, #ababab);
 	color: #fff;

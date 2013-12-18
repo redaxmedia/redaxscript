@@ -2,11 +2,16 @@
  * @tableofcontents
  *
  * 1. remove appearance
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. remove appearance */
 
-input, input::-webkit-search-cancel-button
+.field_search, .field_search::-webkit-search-cancel-button
 {
 	-webkit-appearance: none;
 }

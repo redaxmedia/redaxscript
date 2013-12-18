@@ -2,6 +2,13 @@
 
 /**
  * contents
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
  */
 
 function contents()
@@ -188,6 +195,13 @@ function contents()
 /**
  * extras
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param integer|string $filter
  */
 
@@ -277,6 +291,13 @@ function extras($filter = '')
 /**
  * infoline
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param string $table
  * @param integer $id
  * @param string $author
@@ -315,7 +336,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	if ($comments_total)
 	{
-		$output .= '<span class="divider">' . s('divider') . '</span>' . '<span class="infoline_total">' . $comments_total . ' ';
+		$output .= '<span class="divider">' . s('divider') . '</span><span class="infoline_total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= l('comment');
@@ -334,6 +355,13 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 /**
  * pagination
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param integer $sub_active
  * @param integer $sub_maximum
  * @param string $route
@@ -395,6 +423,13 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 /**
  * notification
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Contents
+ * @author Henry Ruhs
+ * 
  * @param string $title
  * @param string $text
  * @param string $action
@@ -405,11 +440,15 @@ function notification($title = '', $text = '', $action = '', $route = '')
 {
 	hook(__FUNCTION__ . '_start');
 
-	/* handle suffix */
+	/* detect needed mode */
 
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
 		$suffix = '_admin';
+	}
+	else
+	{
+		$suffix = '_default';
 	}
 
 	/* collect output */
@@ -418,7 +457,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	{
 		$output = '<h2 class="title_content title_notification">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_content box_notification' . $suffix . '">';
+	$output .= '<div class="box_content box_notification">';
 
 	/* collect text output */
 
@@ -431,7 +470,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if ($action && $route)
 	{
-		$output .= anchor_element('internal', '', 'js_forward_notification field_button' . $suffix, $action, $route);
+		$output .= anchor_element('internal', '', 'js_forward_notification button' . $suffix, $action, $route);
 	}
 	$output .= '</div>';
 	echo $output;

@@ -9,6 +9,11 @@
  * 6. list qunit
  *    6.1 list qunit assert
  * 7. space between elements
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. banner qunit */
@@ -57,7 +62,6 @@
 	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#dadada, 40%), to(#d1d1d1));
 	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
 	border: 1px solid #cdcdcd;
@@ -66,7 +70,7 @@
 	font: bold 1em/2.25em arial;
 	margin-top: 2em;
 	padding: 0 1em;
-	text-shadow: 0 1px #f1f1f1;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .title_qunit, .title_qunit a

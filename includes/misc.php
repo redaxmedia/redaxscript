@@ -3,6 +3,13 @@
 /**
  * shortcut
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Misc
+ * @author Henry Ruhs
+ *
  * @param string $name
  * @return string
  */
@@ -17,7 +24,7 @@ function b($name = '')
 
 	/* html */
 
-	$b['html_tags'] = 'applet, base, basefont, bgsound, body, embed, font, form, frame, frameset, function, head, html, iframe, ilayer, img, input, layer, link, meta, object, table, title, xml';
+	$b['html_tags'] = 'applet, base, basefont, bgsound, body, embed, font, form, frame, frameset, function, head, html, isindex, iframe, ilayer, img, input, layer, link, meta, object, table, title, xml';
 	$b['html_attributes'] = 'background, codebase, dynsrc, href, lowsrc, name, rel, src, type, url';
 
 	/* default */
@@ -27,14 +34,15 @@ function b($name = '')
 
 	/* agent */
 
-	$b['agent_browsers'] = 'chrome, firefox, konqueror, msie, netscape, opera, safari, seamonkey';
+	$b['agent_browsers'] = 'chrome, firefox, konqueror, msie, netscape, opera, safari';
 	$b['agent_engines'] = 'gecko, khtml, presto, trident, webkit';
-	$b['agent_systems'] = 'linux, mac, windows';
-	$b['agent_mobiles'] = 'android, blackberry, ipad, iphone, palm';
+	$b['agent_desktops'] = 'bsd, linux, macintosh, solaris, windows';
+	$b['agent_mobiles'] = 'mobile, android, blackberry, ipod, iphone, palm';
+	$b['agent_tablets'] = 'tablet, android, ipad, kindle, xoom';
 
 	/* constant */
 
-	$b['constant_public'] = 'TOKEN, LOGGED_IN, FIRST_PARAMETER, FIRST_SUB_PARAMETER, SECOND_PARAMETER, SECOND_SUB_PARAMETER, THIRD_PARAMETER, THIRD_SUB_PARAMETER, ADMIN_PARAMETER, TABLE_PARAMETER, ID_PARAMETER, ALIAS_PARAMETER, LAST_PARAMETER, LAST_SUB_PARAMETER, FIRST_TABLE, SECOND_TABLE, THIRD_TABLE, LAST_TABLE, FULL_ROUTE, FULL_TOP_ROUTE, MY_IP, MY_BROWSER, MY_BROWSER_VERSION, MY_ENGINE, MY_SYSTEM, MY_MOBILE';
+	$b['constant_public'] = 'TOKEN, LOGGED_IN, FIRST_PARAMETER, FIRST_SUB_PARAMETER, SECOND_PARAMETER, SECOND_SUB_PARAMETER, THIRD_PARAMETER, THIRD_SUB_PARAMETER, ADMIN_PARAMETER, TABLE_PARAMETER, ID_PARAMETER, ALIAS_PARAMETER, LAST_PARAMETER, LAST_SUB_PARAMETER, FIRST_TABLE, SECOND_TABLE, THIRD_TABLE, LAST_TABLE, FULL_ROUTE, FULL_TOP_ROUTE, REWRITE_ROUTE, LANGUAGE_ROUTE, TEMPLATE_ROUTE, REFRESH_ROUTE, MY_IP, MY_BROWSER, MY_BROWSER_VERSION, MY_ENGINE, MY_DESKTOP, MY_MOBILE, MY_TABLET';
 	$output = $b[$name];
 	return $output;
 }

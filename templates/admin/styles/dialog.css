@@ -2,6 +2,12 @@
  * @tableofcontents
  *
  * 1. dialog overlay admin
+ * 2. fadein effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. dialog overlay admin */
@@ -9,4 +15,16 @@
 .dialog_overlay_admin
 {
 	background: #000;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+/* @section 2. fadein effect */
+
+.dialog_admin, .dialog_overlay_admin
+{
+	-moz-animation: fade 0.4s;
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
 }

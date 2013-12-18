@@ -2,6 +2,13 @@
 
 /**
  * helper class
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Helper
+ * @author Henry Ruhs
  */
 
 function helper_class()
@@ -21,11 +28,23 @@ function helper_class()
 	}
 	if (MY_MOBILE)
 	{
-		$output .= 'mobile ' . MY_MOBILE;
+		$output .= 'mobile';
+		if (MY_MOBILE != 'mobile')
+		{
+			$output .= ' ' . MY_MOBILE;
+		}
 	}
-	else
+	else if (MY_TABLET)
 	{
-		$output .= 'desktop';
+		$output .= 'tablet';
+		if (MY_TABLET != 'tablet')
+		{
+			$output .= ' ' . MY_TABLET;
+		}
+	}
+	else if (MY_DESKTOP)
+	{
+		$output .= 'desktop ' . MY_DESKTOP;
 	}
 	if (LANGUAGE == 'ar' || LANGUAGE == 'fa' || LANGUAGE == 'he')
 	{
@@ -35,11 +54,30 @@ function helper_class()
 		}
 		$output .= 'rtl';
 	}
+	if (LAST_ID)
+	{
+		$output .= ' ';
+	}
+	if (CATEGORY)
+	{
+		$output .= 'category';
+	}
+	else if (ARTICLE)
+	{
+		$output .= 'article';
+	}
 	echo $output;
 }
 
 /**
  * helper subset
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Helper
+ * @author Henry Ruhs
  */
 
 function helper_subset()

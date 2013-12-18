@@ -3,6 +3,11 @@
  *
  * 1. validator
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -20,24 +25,24 @@
 			options = $.extend({}, r.modules.validator.options, options || {});
 		}
 
-		var parameter = '?doc=' + r.baseURL + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json',
-			url = 'http://validator.nu/' + parameter;
+		var urlParameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
 		$.ajax(
 		{
-			url: url,
+			url: options.url + '/' + urlParameter,
 			dataType: 'json',
 			success: function (data)
 			{
 				var messages = data.messages,
-					i = 0,
 					output = '';
+
+				/* handle messages */
 
 				if (messages.length)
 				{
-					for (i in messages)
+					for (var i in messages)
 					{
 						var that = messages[i],
 							type = that.type,
@@ -45,11 +50,17 @@
 							firstLine = that.firstLine,
 							firstColumn = that.firstColumn,
 							lastLine = that.lastLine,
-							lastColumn = that.lastColumn;
+							lastColumn = that.lastColumn,
+							allowedTypes =
+							[
+								'success',
+								'warning',
+								'error'
+							];
 
 						/* type fallback */
 
-						if ($.inArray(type, ['success', 'warning', 'error']) === -1)
+						if ($.inArray(type, allowedTypes) === -1)
 						{
 							type = 'info';
 						}
@@ -57,13 +68,13 @@
 						/* collect output */
 
 						output += '<ul class="box_note note_' + type + '">';
-						output += '<li class="message_validator">' + message + '</li>';
+						output += '<li class="' + options.classString.validatorMessage + '">' + message + '</li>';
 
 						/* lines and columns */
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="description_validator">' + l.validator_from + l.colon + ' ';
+							output += '<li class="' + options.classString.validatorDescription + '">' + l.validator_from + l.colon + ' ';
 
 							/* first wording */
 
@@ -95,7 +106,7 @@
 
 				if (output)
 				{
-					$('<div class="box_validator">' + output + '</div>').hide().prependTo('body').fadeIn(options.duration);
+					$('<div>' + output + '</div>').addClass(options.classString.validatorBox).prependTo('body');
 				}
 			}
 		});

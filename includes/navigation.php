@@ -3,6 +3,13 @@
 /**
  * navigation list
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Navigation
+ * @author Henry Ruhs
+ *
  * @param string $table
  * @param array $options
  */
@@ -13,13 +20,24 @@ function navigation_list($table = '', $options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
 			$key = 'option_' . $key;
 			$$key = $value;
 		}
+	}
+
+	/* fallback */
+
+	if ($option_order == '')
+	{
+		$option_order = s('order');
+	}
+	if ($option_limit == '')
+	{
+		$option_limit = s('limit');
 	}
 
 	/* switch table */
@@ -77,29 +95,9 @@ function navigation_list($table = '', $options = '')
 		}
 	}
 
-	/* setup order option */
+	/* setup rank and limit */
 
-	$query .= ' ORDER BY rank ';
-	if ($option_order)
-	{
-		$query .= $option_order;
-	}
-	else
-	{
-		$query .= s('order');
-	}
-
-	/* setup limit option */
-
-	$query .= ' LIMIT ';
-	if ($option_limit)
-	{
-		$query .= $option_limit;
-	}
-	else
-	{
-		$query .= s('limit');
-	}
+	$query .= ' ORDER BY rank ' . $option_order . ' LIMIT ' . $option_limit;
 
 	/* query result */
 
@@ -194,14 +192,14 @@ function navigation_list($table = '', $options = '')
 		}
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
@@ -232,6 +230,13 @@ function navigation_list($table = '', $options = '')
 /**
  * languages list
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Navigation
+ * @author Henry Ruhs
+ *
  * @param array $options
  */
 
@@ -241,7 +246,7 @@ function languages_list($options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
@@ -269,14 +274,14 @@ function languages_list($options = '')
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
@@ -300,6 +305,13 @@ function languages_list($options = '')
 /**
  * templates list
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Navigation
+ * @author Henry Ruhs
+ *
  * @param array $options
  */
 
@@ -309,7 +321,7 @@ function templates_list($options = '')
 
 	/* define option variables */
 
-	if ($options)
+	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
@@ -339,14 +351,14 @@ function templates_list($options = '')
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_ROUTE . TEMPLATE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
-	/* setup id option */
+	/* build id string */
 
 	if ($option_id)
 	{
 		$id_string = ' id="' . $option_id . '"';
 	}
 
-	/* setup class option */
+	/* build class string */
 
 	if ($option_class)
 	{
@@ -369,6 +381,13 @@ function templates_list($options = '')
 
 /**
  * login list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Navigation
+ * @author Henry Ruhs
  */
 
 function login_list()

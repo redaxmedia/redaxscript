@@ -3,6 +3,13 @@
 /**
  * get parameter
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -70,6 +77,13 @@ function get_parameter($input = '')
 /**
  * get route
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @param integer $mode
  * @return string
  */
@@ -132,6 +146,13 @@ function get_route($mode = '')
 /**
  * get file
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -158,6 +179,13 @@ function get_root()
 /**
  * get user ip
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -169,6 +197,13 @@ function get_user_ip()
 
 /**
  * get user agent
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
  *
  * @param integer $mode
  * @return string
@@ -184,10 +219,13 @@ function get_user_agent($mode = '')
 			$type = 'agent_engines';
 			break;
 		case 3:
-			$type = 'agent_systems';
+			$type = 'agent_desktops';
 			break;
 		case 4:
 			$type = 'agent_mobiles';
+			break;
+		case 5:
+			$type = 'agent_tablets';
 			break;
 		default:
 			$type = 'agent_browsers';
@@ -208,13 +246,16 @@ function get_user_agent($mode = '')
 			{
 				$output = floor(substr($user_agent, strpos($user_agent, $value) + strlen($value) + 1, 3));
 
-				/* opera fallback */
+				/* fallback */
 
 				if ($output > 100)
 				{
 					$output = substr($output, 0, 1);
 				}
 			}
+
+			/* else output string */
+
 			else
 			{
 				$output = $value;
@@ -229,6 +270,13 @@ function get_user_agent($mode = '')
 
 /**
  * get token
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
  *
  * @return string
  */

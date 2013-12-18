@@ -2,9 +2,23 @@
  * @tableofcontents
  *
  * 1. gallery
- *    1.1 preload images
- *    1.2 open gallery
+ *    1.1 preload
+ *    1.2 open
+ *    1.3 resize
+ *    1.4 create control
+ *    1.5 create meta
+ *    1.6 listen
+ *    1.7 action
+ *       1.7.1 previous
+ *       1.7.2 next
+ *    1.8 close
+ *    1.9 init
  * 2. startup
+ *
+ * @since 2.0.2
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -26,334 +40,423 @@
 
 		return this.each(function ()
 		{
-			var win = $(window),
-				body = $('body'),
-				gallery = body.find(options.element.gallery),
-				galleryOverlay = body.find(options.element.galleryOverlay);
+			var gallery = {};
 
-			/* prematurely terminate gallery */
+			gallery.list = $(this);
+			gallery.links = gallery.list.find('a');
 
-			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7 || gallery.length || galleryOverlay.length)
+			/* @section 1.1 preload */
+
+			gallery.preload = function ()
 			{
-				return false;
-			}
-
-			/* @section 1.1 preload images */
-
-			if (options.preload.startup)
-			{
-				$(this).each(function ()
+				gallery.links.each(function ()
 				{
-					var link = $(this),
+					var link = $(this).addClass(options.classString.galleryLoader),
 						url = link.attr('href'),
-						thumb = link.children(),
-						related = thumb.attr('src'),
 						image = $('<img src="' + url + '" />');
 
-					/* setup opacity and add class */
+					/* image loaded */
 
-					thumb.css('opacity', options.preload.opacity).addClass('image_gallery_preload');
-
-					/* opera load fix */
-
-					if (r.constants.MY_BROWSER === 'opera')
+					image.on('load', function ()
 					{
-						image.appendTo(body).remove();
-					}
-
-					/* full image loaded */
-
-					image.data('related', related).on('load', function ()
-					{
-						var thumbRelated = $(this).data('related');
-
-						/* fade in related thumb and remove class */
-
-						link.find('img[src="' + thumbRelated + '"]').fadeTo(options.preload.duration, 1).removeClass('image_gallery_preload');
+						link.removeClass(options.classString.galleryLoader);
 					});
 				});
-			}
+			};
 
-			/* @section 1.2 open gallery */
+			/* @section 1.2 open */
 
-			$(this).click(function (event)
+			gallery.open = function (link, mode)
 			{
-				var link = $(this),
-					url = link.attr('href'),
-					thumb = link.children(),
+				var url = link.attr('href'),
 					image = $('<img src="' + url + '" />'),
-					imageCounter = thumb.data('counter'),
-					imageTotal = thumb.data('total'),
-					imageArtist = thumb.data('artist'),
-					imageDescription = thumb.data('description'),
-					gallery = body.find(options.element.gallery),
-					galleryLoader = $('<img src="' + options.loader + '" />'),
-					galleryMeta = gallery.find(options.element.galleryMeta),
-					galleryOverlay = body.find(options.element.galleryOverlay),
-					galleryName = thumb.data('gallery-name'),
-					buttonPrevious = gallery.find(options.element.buttonPrevious),
-					buttonNext = gallery.find(options.element.buttonNext),
-					checkGallery = gallery.length,
-					checkGalleryOverlay = galleryOverlay.length,
-					timeoutLoader, timeoutImage, intervalVisible, output = '';
+					timeoutLoad = '';
 
-				/* prematurely terminate gallery */
+				/* data */
 
-				if (checkGallery)
+				gallery.data =
 				{
-					return false;
-				}
+					counter: link.data('counter'),
+					total: link.data('total'),
+					id: link.data('id'),
+					artist: link.data('data-artist') || '',
+					date: link.data('date') || '',
+					description: link.data('description') || ''
+				};
 
-				/* collect overlay */
+				/* gallery related */
 
-				if (checkGalleryOverlay === 0)
-				{
-					output = '<div class="' + options.classString.galleryOverlay + '"></div>';
-				}
+				gallery.related = $('#' + gallery.data.id);
 
-				/* collect gallery elements */
+				/* add loader */
 
-				output += '<div class="' + options.classString.gallery + '">';
 				if (options.loader)
 				{
-					output += '<img class="' + options.classString.galleryLoader + '" src="' + options.loader + '" />';
-				}
-				output += '</div>';
-
-				/* append output to body */
-
-				body.append(output);
-
-				/* fade in overlay and loader */
-
-				galleryOverlay = body.find(options.element.galleryOverlay);
-				if (checkGalleryOverlay === 0)
-				{
-					galleryOverlay.css('opacity', 0).fadeTo(r.lightbox.overlay.duration, r.lightbox.overlay.opacity);
-				}
-				gallery = body.find(options.element.gallery).css('opacity', 0).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-				galleryLoader = gallery.find(options.element.galleryLoader).css('opacity', 0);
-
-				/* fade in loader on timeout */
-
-				timeoutLoader = setTimeout(function ()
-				{
-					galleryLoader.fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-				}, options.timeout.loader);
-
-				/* close gallery on timeout */
-
-				timeoutImage = setTimeout(function ()
-				{
-					galleryOverlay.click();
-				}, options.timeout.image);
-
-				/* opera load fix */
-
-				if (r.constants.MY_BROWSER === 'opera')
-				{
-					image.appendTo(body).remove();
+					gallery.container.addClass(options.classString.galleryLoader);
 				}
 
-				/* full image loaded */
+				/* append to body */
 
-				image.on('load', function ()
+				gallery.container.appendTo('body');
+
+				/* initial open */
+
+				if (!mode)
 				{
-					/* clear loader and image timeout */
+					gallery.overlay.appendTo('body');
+					r.flags.modal = true;
+				}
 
-					clearTimeout(timeoutLoader);
-					clearTimeout(timeoutImage);
+				/* listen for load */
 
-					/* append image and remove loader */
+				image.addClass(options.classString.galleryMedia).on('load', function ()
+				{
+					clearTimeout(timeoutLoad);
 
-					galleryLoader.remove();
-					gallery.css('opacity', 0);
-					image.appendTo(gallery);
+					/* remove loader */
 
-					/* check visible interval */
-
-					intervalVisible = setInterval(function ()
+					if (options.loader)
 					{
-						if (image.is(':visible'))
-						{
-							gallery.addClass(options.classString.galleryReady).fadeTo(r.lightbox.body.duration, r.lightbox.body.opacity);
-							clearInterval(intervalVisible);
-						}
-					}, options.interval);
-
-					/* append meta information */
-
-					galleryMeta = $('<div class="' + options.classString.galleryMeta + '"><span class="' + options.classString.galleryPagination + '">' + imageCounter + '<span class="' + options.classString.galleryDivider + '">' + l.gallery_divider + '</span>' + imageTotal + '</span></div>').appendTo(gallery);
-
-					/* append image artist */
-
-					if (imageArtist)
-					{
-						galleryMeta.append('<span class="' + options.classString.galleryArtist + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_artist + l.colon + '</span>' + imageArtist + '</span>');
+						gallery.container.removeClass(options.classString.galleryLoader);
 					}
+					gallery.container.html(image);
 
-					/* append image description */
+					/* resize */
 
-					if (imageDescription)
+					gallery.resize();
+
+					/* create control and meta */
+
+					if (gallery.data.total > 1)
 					{
-						galleryMeta.prepend('<span class="' + options.classString.galleryDescription + '"><span class="' + options.classString.galleryLabel + '">' + l.gallery_image_description + l.colon + '</span>' + imageDescription + '</span>');
+						gallery.createControl();
 					}
+					gallery.createMeta();
+				})
 
-					/* append previous and next */
+				/* stop propagation */
 
-					if (imageCounter > 1)
-					{
-						buttonPrevious = $('<a class="' + options.classString.buttonPrevious + '"><span>' + l.gallery_image_previous + '</span></a>').appendTo(gallery);
-					}
-					if (imageCounter < imageTotal)
-					{
-						buttonNext = $('<a class="' + options.classString.buttonNext + '"><span>' + l.gallery_image_next + '</span></a>').appendTo(gallery);
-					}
+				.on('click', function (event)
+				{
+					event.stopPropagation();
+				});
 
-					/* fit image after render */
+				/* close after timeout */
 
-					image.trigger('fit');
+				timeoutLoad = setTimeout(function ()
+				{
+					gallery.close();
+				}, options.timeout);
+			};
 
-					/* next and previous */
+			/* @section 1.3 resize */
 
-					buttonPrevious.add(buttonNext).on('click touchmove', function (event)
-					{
-						var link = $(this),
-							checkButtonPrevious = link.hasClass('js_gallery_previous'),
-							checkButtonNext = link.hasClass('js_gallery_next');
+			gallery.resize = function ()
+			{
+				var win = $(window),
+					winHeight = win.height(),
+					winWidth = win.width(),
+					image = gallery.container.children('img'),
+					imageHeight = image.data('height') || image.height(),
+					imageWidth = image.data('width') || image.width(),
+					galleryHeight = '',
+					galleryWidth = '';
 
-						/* calculate image counter */
+				/* store image dimensions */
 
-						if (checkButtonPrevious)
-						{
-							imageCounter--;
-						}
-						else if (checkButtonNext)
-						{
-							imageCounter++;
-						}
-						if (imageCounter > 1 || imageCounter < imageTotal)
-						{
-							gallery.remove();
-							win.off();
-							$('#' + galleryName + ' img[data-counter="' + imageCounter + '"]').parent().click();
-						}
-						event.preventDefault();
-					});
+				image.data(
+				{
+					'height': imageHeight,
+					'width': imageWidth
+				});
 
-					/* listen for keydown */
+				/* calculate dimensions */
 
-					win.on('keydown', function (event)
+				if (imageHeight > winHeight)
+				{
+					imageWidth = imageWidth * winHeight * options.scaling / imageHeight;
+					imageHeight = winHeight * options.scaling;
+				}
+				if (imageWidth > winWidth)
+				{
+					imageHeight = imageHeight * winWidth * options.scaling / imageWidth;
+					imageWidth = winWidth * options.scaling;
+				}
+
+				/* adjust image dimensions */
+
+				image.css(
+				{
+					'height': imageHeight,
+					'width': imageWidth
+				});
+
+				/* get gallery dimensions */
+
+				galleryHeight = gallery.container.outerHeight();
+				galleryWidth = gallery.container.outerWidth();
+
+				/* adjust gallery offset */
+
+				gallery.container.css(
+				{
+					'margin-top': -galleryHeight / 2,
+					'margin-left': -galleryWidth / 2
+				});
+			};
+
+			/* @section 1.4 create control */
+
+			gallery.createControl = function ()
+			{
+				/* previous control */
+
+				gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
+
+				/* listen for click */
+
+				.one('click', function (event)
+				{
+					gallery.previous();
+					event.stopPropagation();
+				}).appendTo(gallery.container);
+
+				/* next control */
+
+				gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
+
+				/* listen for click */
+
+				.one('click', function (event)
+				{
+					gallery.next();
+					event.stopPropagation();
+				}).appendTo(gallery.container);
+			};
+
+			/* @section 1.5 create meta */
+
+			gallery.createMeta = function ()
+			{
+				gallery.meta = $('<div>').addClass(options.classString.galleryMeta);
+
+				/* artist */
+
+				if (gallery.data.artist)
+				{
+					gallery.artist = $('<div data-label="' + l.gallery_image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
+				}
+
+				/* date */
+
+				if (gallery.data.date)
+				{
+					gallery.date = $('<div data-label="' + l.date + '">' + gallery.data.date + '</div>').addClass(options.classString.galleryDate).appendTo(gallery.meta);
+				}
+
+				/* description */
+
+				if (gallery.data.description)
+				{
+					gallery.description = $('<div data-label="' + l.gallery_image_description + '">' + gallery.data.description + '</div>').addClass(options.classString.galleryDescription).appendTo(gallery.meta);
+				}
+
+				/* pagination */
+
+				if (gallery.data.total > 1)
+				{
+					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery_divider + gallery.data.total + '</div>').addClass(options.classString.galleryPagination).appendTo(gallery.meta);
+				}
+
+				/* append meta */
+
+				gallery.meta.appendTo(gallery.container);
+			};
+
+			/* @section 1.6 listen */
+
+			gallery.listen = function ()
+			{
+				/* listen for click */
+
+				gallery.links.on('click', function (event)
+				{
+					var link = $(this);
+
+					gallery.open(link);
+					event.preventDefault();
+				});
+
+				/* listen for keydown */
+
+				$(window).on('keydown', function (event)
+				{
+					if (r.flags.modal)
 					{
 						/* trigger close action */
 
 						if (event.which === 27)
 						{
-							galleryOverlay.click();
+							gallery.close();
 						}
 
 						/* trigger previous action */
 
 						if (event.which === 37)
 						{
-							buttonPrevious.click();
+							gallery.previous();
 						}
 
 						/* trigger next action */
 
 						if (event.which === 39)
 						{
-							buttonNext.click();
+							gallery.next();
 						}
 
-						/* disable up and down */
+						/* disable cursors */
 
-						if (event.which === 38 || event.which === 40)
+						if (event.which > 36 && event.which < 41)
 						{
 							event.preventDefault();
 						}
-					});
-
-					/* auto resize */
-
-					if (options.autoResize)
-					{
-						win.on('resize', function ()
-						{
-							image.trigger('fit');
-						});
 					}
-				});
+				})
 
-				/* fit image to viewport */
+				/* listen for resize */
 
-				image.on('fit', function ()
+				.on('resize', function ()
 				{
-					var image = $(this),
-						imageHeight = image.data('height') || image.height(),
-						imageWidth = image.data('width') || image.width(),
-						winHeight = win.height(),
-						winWidth = win.width(),
-						minWidth = options.minWidth,
-						scaling = options.scaling,
-						galleryHeight, galleryWidth;
-
-					/* store image dimensions */
-
-					image.data({
-						'height': imageHeight,
-						'width': imageWidth
-					});
-
-					/* calculate image dimensions */
-
-					if (imageHeight > winHeight)
+					if (r.flags.modal)
 					{
-						imageWidth = imageWidth * winHeight * scaling / imageHeight;
-						imageHeight = winHeight * scaling;
+						gallery.resize();
 					}
-					if (imageWidth > winWidth)
-					{
-						imageHeight = imageHeight * winWidth * scaling / imageWidth;
-						imageWidth = winWidth * scaling;
-					}
-					if (imageWidth < minWidth)
-					{
-						imageHeight = imageHeight * minWidth * scaling / imageWidth;
-						imageWidth = minWidth * scaling;
-					}
-
-					/* setup height and width */
-
-					image.css(
-					{
-						'height': imageHeight,
-						'width': imageWidth
-					});
-
-					/* gallery outer dimensions */
-
-					galleryHeight = gallery.outerHeight();
-					galleryWidth = gallery.outerWidth();
-
-					/* setup gallery margin */
-
-					gallery.css(
-					{
-						'margin-top': -galleryHeight / 2,
-						'margin-left': -galleryWidth / 2
-					});
 				});
 
-				/* remove gallery and overlay */
+				/* listen for click */
 
-				galleryOverlay.on('click touchmove', function ()
+				gallery.overlay.on('click', function ()
 				{
-					gallery.add(galleryOverlay).remove();
-					win.off();
+					gallery.close();
 				});
-				event.preventDefault();
-			});
+			};
+
+			/* @section 1.7 action */
+
+			gallery.action = function (mode)
+			{
+				var related = gallery.related,
+					counter = gallery.data.counter,
+					link = '';
+
+				/* previous action */
+
+				if (mode === 'previous')
+				{
+					if (counter === 1)
+					{
+						counter = gallery.data.total;
+					}
+					else
+					{
+						counter--;
+					}
+				}
+
+				/* next action */
+
+				else if (mode === 'next')
+				{
+					if (counter === gallery.data.total)
+					{
+						counter = 1;
+					}
+					else
+					{
+						counter++;
+					}
+				}
+
+				/* close and open gallery */
+
+				if (counter > 1 || counter < gallery.data.total)
+				{
+					link = related.find('a[data-counter="' + counter + '"]');
+
+					if (link.length)
+					{
+						gallery.close(mode);
+						gallery.open(link, mode);
+					}
+				}
+
+			};
+
+			/* @section 1.7.1 previous */
+
+			gallery.previous = function ()
+			{
+				gallery.action('previous');
+			};
+
+			/* @section 1.7.2 next */
+
+			gallery.next = function ()
+			{
+				gallery.action('next');
+			};
+
+			/* @section 1.8 close */
+
+			gallery.close = function (mode)
+			{
+				gallery.data = {};
+				gallery.container.empty().detach();
+
+				/* ultimate close */
+
+				if (!mode)
+				{
+					gallery.overlay.detach();
+					r.flags.modal = false;
+				}
+			};
+
+			/* @section 1.9 init */
+
+			gallery.init = function ()
+			{
+				/* data object */
+
+				gallery.data = {};
+
+				/* create gallery elements */
+
+				gallery.overlay = $('<div>').addClass(options.classString.galleryOverlay);
+				gallery.container = $('<div>').addClass(options.classString.gallery);
+
+				/* preload */
+
+				if (options.preload)
+				{
+					gallery.preload();
+				}
+
+				/* listen */
+
+				gallery.listen();
+			};
+
+			/* init as needed */
+
+			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
+			{
+				return false;
+			}
+			else if (gallery.list.length)
+			{
+				gallery.init();
+			}
 		});
 	};
 

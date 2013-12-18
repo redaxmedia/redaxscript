@@ -2,6 +2,13 @@
 
 /**
  * startup
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Startup
+ * @author Henry Ruhs
  */
 
 function startup()
@@ -32,6 +39,8 @@ function startup()
 	/* config object */
 
 	$config = New Redaxscript_Config();
+
+	/* prefix and salt */
 
 	define('PREFIX', $config->get('prefix'));
 	define('SALT', $config->get('salt'));
@@ -108,7 +117,7 @@ function startup()
 
 	/* define tables */
 
-	if (FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+	if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
 	{
 		/* check for homepage */
 
@@ -216,14 +225,39 @@ function startup()
 		));
 	}
 
+	/* define content error */
+
+	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
+	{
+		define('CONTENT_ERROR', 1);
+	}
+	else
+	{
+		define('CONTENT_ERROR', 0);
+	}
+
 	/* define user */
 
 	define('MY_IP', get_user_ip());
 	define('MY_BROWSER', get_user_agent(0));
 	define('MY_BROWSER_VERSION', get_user_agent(1));
 	define('MY_ENGINE', get_user_agent(2));
-	define('MY_SYSTEM', get_user_agent(3));
 	define('MY_MOBILE', get_user_agent(4));
+	define('MY_TABLET', get_user_agent(5));
+
+	/* if mobile or tablet */
+
+	if (MY_MOBILE || MY_TABLET)
+	{
+		define('MY_DESKTOP', '');
+	}
+	else
+	{
+		define('MY_DESKTOP', get_user_agent(3));
+	}
+
+	/* if logged in */
+
 	if (LOGGED_IN == TOKEN)
 	{
 		define('MY_ID', $_SESSION[ROOT . '/my_id']);
@@ -298,7 +332,7 @@ function startup()
 		$_SESSION[ROOT . '/update'] = '';
 	}
 
-	/* language and template object */
+	/* detect language and detect template object */
 
 	$detectLanguage = New Redaxscript_Detection_Language();
 	$detectTemplate = New Redaxscript_Detection_Template();
@@ -307,21 +341,17 @@ function startup()
 
 	define('LANGUAGE', $detectLanguage->getOutput());
 	define('TEMPLATE', $detectTemplate->getOutput());
-
-	/* error detection */
-
-	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
-	{
-		define('CONTENT_ERROR', 1);
-	}
-	else
-	{
-		define('CONTENT_ERROR', 0);
-	}
 }
 
 /**
  * undefine
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Startup
+ * @author Henry Ruhs
  *
  * @param string $input
  */

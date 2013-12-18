@@ -2,7 +2,28 @@
  * @tableofcontents
  *
  * 1. editor
+ *    1.1 create toolbar
+ *    1.2 create preview
+ *    1.3 action
+ *    1.4 insert
+ *    1.5 insert html
+ *    1.6 insert code
+ *    1.7 insert break
+ *    1.8 format
+ *    1.9 toggle
+ *    1.10 get selection
+ *    1.11 check selection
+ *    1.12 convert to html
+ *    1.13 convert to entity
+ *    1.14 post
+ *    1.15 validate
+ *    1.16 init
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -20,117 +41,130 @@
 			options = $.extend({}, r.modules.editor.options, options || {});
 		}
 
+		/* detect needed mode */
+
+		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
+		{
+			options.toolbar = options.toolbar.backend;
+			options.xhtml = options.newline.backend;
+			options.newline = options.newline.backend;
+		}
+		else
+		{
+			options.toolbar = options.toolbar.frontend;
+			options.xhtml = options.toolbar.frontend;
+			options.newline = options.newline.frontend;
+		}
+
 		/* return this */
 
 		return this.each(function ()
 		{
-			var editor = this;
-
-			editor.textarea = $(this);
-
-			/* prematurely terminate editor */
-
-			if (editor.textarea.length < 1)
-			{
-				return false;
-			}
-
-			/* detect needed mode */
-
-			if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
-			{
-				options.toolbar = options.toolbar.backend;
-				options.xhtml = options.newline.backend;
-				options.newline = options.newline.backend;
-			}
-			else
-			{
-				options.toolbar = options.toolbar.frontend;
-				options.xhtml = options.toolbar.frontend;
-				options.newline = options.newline.frontend;
-			}
-
-			/* force xhtml */
-
-			if (options.xhtml === true)
-			{
-				try
+			var editor =
 				{
-					document.execCommand('styleWithCSS', 0, false);
-				}
-				catch (exception)
-				{
-					try
-					{
-						document.execCommand('useCSS', 0, true);
-					}
-					catch (exception)
-					{
-					}
-				}
-			}
+					textarea: $(this)
+				};
 
-			/* build editor elements */
-
-			editor.textarea.hide();
-			editor.container = $('<div class="' + options.classString.editor + '"></div>').insertBefore(editor.textarea);
-			editor.toolbar = $('<div class="' + options.classString.editorToolbar + '" unselectable="on"></div>').appendTo(editor.container);
-
-			/* create toolbar */
+			/* @section 1.1 create toolbar */
 
 			editor.createToolbar = function ()
 			{
-				var name, data, control, i;
+				/* append toolbar */
 
-				for (i = 0; i < options.toolbar.length; i++)
+				editor.toolbar = $('<div unselectable="on">').addClass(options.classString.editorToolbar).appendTo(editor.container);
+
+				/* append controls */
+
+				for (var i in options.toolbar)
 				{
-					name = options.toolbar[i];
-					data = r.modules.editor.controls[name];
-
-					/* append divider */
-
-					if (name === 'divider')
-					{
-						$('<span class="' + options.classString.editorDivider + '"></span>').appendTo(editor.toolbar);
-					}
+					var name = options.toolbar[i],
+						data = r.modules.editor.controls[name],
+						control = '';
 
 					/* append toggle */
 
-					else if (name === 'toggle')
+					if (name === 'toggle')
 					{
-						editor.toggler = control = $('<span class="' + options.classString.editorControl + ' ' + options.classString.editorSourceCode + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
+						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
 					}
 
-					/* append serveral controls */
+					/* append several controls */
 
-					else if (data)
+					else if (typeof data === 'object')
 					{
-						control = $('<span class="' + options.classString.editorControl + ' ' + name + '" title="' + data.title + '"></span>').appendTo(editor.toolbar);
+						control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + name).appendTo(editor.toolbar);
 					}
 
-					/* store control data */
+					/* handle control events */
 
-					if (data)
+					if (typeof data === 'object')
 					{
-						control.data('data', data);
+						/* closure for loop */
+
+						(function (data)
+						{
+							/* listen for mousedown to prevent unselect */
+
+							control.on('mousedown', function ()
+							{
+								/* call related method */
+
+								editor[data.method](data.command, data.message, data.value);
+								editor.post();
+
+								/* haptic feedback */
+
+								if (r.support.vibrate && typeof options.vibrate === 'number')
+								{
+									window.navigator.vibrate(options.vibrate);
+								}
+							});
+						}(data));
 					}
 				}
-			}();
+			};
 
-			/* setup control events */
+			/* @section 1.2 create preview */
 
-			editor.toolbar.children(options.element.editorControl).on('mousedown', function ()
+			editor.createPreview = function ()
 			{
-				var control = $(this),
-					data = control.data('data');
+				/* append preview */
 
-				/* call methode */
+				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.classString.editorPreview).appendTo(editor.container);
 
-				editor[data.methode](data.command, data.message, data.value);
-				editor.post();
-			});
+				/* insert break on enter */
 
-			/* general action call */
+				editor.preview.on('keydown', function (event)
+				{
+					if (event.which === 13)
+					{
+						if (r.constants.MY_ENGINE === 'gecko')
+						{
+							document.execCommand('insertBrOnReturn', false, false);
+						}
+						else if (r.constants.MY_ENGINE === 'trident')
+						{
+							editor.insertHTML('<br />');
+							event.preventDefault();
+						}
+						else if (r.constants.MY_ENGINE === 'webkit')
+						{
+							editor.insertHTML('<br /><br />');
+							event.preventDefault();
+						}
+					}
+				})
+
+				/* post and validate on keyup */
+
+				.on('keyup', function ()
+				{
+					editor.post();
+					editor.validate();
+				});
+			};
+
+			/* @section 1.3 action */
 
 			editor.action = function (command)
 			{
@@ -139,13 +173,6 @@
 					try
 					{
 						document.execCommand(command, 0, 0);
-
-						/* fix mozilla styles from preview */
-
-						if (r.constants.MY_BROWSER === 'firefox')
-						{
-							editor.preview.removeAttr('style');
-						}
 					}
 
 					/* alert dialog if no support */
@@ -160,7 +187,7 @@
 				}
 			};
 
-			/* general insert */
+			/* @section 1.4 insert */
 
 			editor.insert = function (command, message, value)
 			{
@@ -199,12 +226,12 @@
 				});
 			};
 
-			/* insert html */
+			/* @section 1.5 insert html */
 
 			editor.insertHTML = function (text)
 			{
 				editor.preview.focus();
-				if (r.constants.MY_BROWSER === 'msie')
+				if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function' && typeof document.selection.createRange().pasteHTML === 'function')
 				{
 					document.selection.createRange().pasteHTML(text);
 				}
@@ -214,7 +241,7 @@
 				}
 			};
 
-			/* insert code quote */
+			/* @section 1.6 insert code */
 
 			editor.insertCode = function ()
 			{
@@ -224,14 +251,14 @@
 				}
 			};
 
-			/* insert document break */
+			/* @section 1.7 insert break */
 
 			editor.insertBreak = function ()
 			{
 				editor.insertHTML('&lt;break&gt;');
 			};
 
-			/* alternate format */
+			/* @section 1.8 format */
 
 			editor.format = function (tag)
 			{
@@ -241,24 +268,45 @@
 				}
 			};
 
-			/* get selection */
+			/* @section 1.9 toggle */
+
+			editor.toggle = function ()
+			{
+				if (editor.mode)
+				{
+					editor.mode = 0;
+					editor.preview.html(editor.convertToEntity()).focus();
+					editor.controlToggle.attr('title', l.editor_source_code);
+				}
+				else
+				{
+					editor.mode = 1;
+					editor.textarea.val(editor.convertToHTML()).focus();
+					editor.controlToggle.attr('title', l.editor_wysiwyg);
+				}
+				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl).toggle();
+				editor.textarea.add(editor.preview).toggle();
+				editor.validate();
+			};
+
+			/* @section 1.10 get selection */
 
 			editor.select = function ()
 			{
 				var output = '';
 
-				if (r.constants.MY_BROWSER === 'msie')
-				{
-					output = document.selection.createRange().text;
-				}
-				else
+				if (typeof window.getSelection === 'function')
 				{
 					output = window.getSelection().toString();
+				}
+				else if (typeof document.selection === 'object' && typeof document.selection.createRange === 'function')
+				{
+					output = document.selection.createRange().text;
 				}
 				return output;
 			};
 
-			/* check for selected text */
+			/* @section 1.11 check selection */
 
 			editor.checkSelection = function ()
 			{
@@ -274,38 +322,15 @@
 					{
 						message: l.editor_select_text_first + l.point
 					});
-					return false;
 				}
 			};
 
-			/* toggle between source code and wysiwyg */
-
-			editor.toggle = function ()
-			{
-				if (editor.mode)
-				{
-					editor.mode = 0;
-					editor.preview.html(editor.convertToEntity()).focus();
-					editor.toggler.attr('title', l.editor_source_code);
-				}
-				else
-				{
-					editor.mode = 1;
-					editor.textarea.val(editor.convertToHTML()).focus();
-					editor.toggler.attr('title', l.editor_wysiwyg);
-				}
-				editor.toggler.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl + ', ' + options.element.editorDivider).toggle();
-				editor.textarea.add(editor.preview).toggle();
-				editor.validate();
-			};
-
-			/* convert to html */
+			/* @section 1.12 convert to html */
 
 			editor.convertToHTML = function ()
 			{
 				var output = editor.preview.html(),
-					eol = '\n',
-					eolFix = new RegExp(eol + eol, 'gi');
+					eol = options.eol;
 
 				/* pseudo tags */
 
@@ -316,10 +341,8 @@
 
 				if (options.xhtml)
 				{
-					output = output.replace(/ class="(apple-style-span|msonormal)"/gi, '');
 					output = output.replace(/ class=""/gi, '');
 					output = output.replace(/ style="(.*?)"/gi, '');
-					output = output.replace(/<(\w+)>(\s)*<\/\1>/gi, '');
 					output = output.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
 					output = output.replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>');
 					output = output.replace(/<(s|strike)>(.*?)<\/(s|strike)>/gi, '<del>$2</del>');
@@ -335,12 +358,12 @@
 					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
 					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
 					output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
-					output = output.replace(eolFix, eol);
+					output = output.replace(window.RegExp(eol + eol, 'g'), eol);
 				}
 				return output;
 			};
 
-			/* convert to entity */
+			/* @section 1.13 convert to entity */
 
 			editor.convertToEntity = function ()
 			{
@@ -351,7 +374,7 @@
 				return output;
 			};
 
-			/* post html to textarea */
+			/* @section 1.14 post */
 
 			editor.post = function ()
 			{
@@ -359,53 +382,38 @@
 
 				if (html)
 				{
-					editor.textarea.val(html);
+					editor.textarea.val(html).trigger('change');
 				}
 			};
 
-			/* validate textarea and preview */
+			/* @section 1.15 validate */
 
 			editor.validate = function ()
 			{
 				editor.textarea.add(editor.preview).attr('data-related', 'editor').trigger('related');
 			};
 
-			/* append preview */
+			/* @section 1.16 init */
 
-			editor.preview = $('<div class="' + options.classString.editorPreview + '" contenteditable="true">' + editor.convertToEntity() + '</div>').appendTo(editor.container);
-
-			/* insert break on enter */
-
-			editor.preview.on('keydown', function (event)
+			editor.init = function ()
 			{
-				if (event.which === 13)
-				{
-					var output = '<br />';
+				/* create editor elements */
 
-					if (r.constants.MY_BROWSER === 'firefox')
-					{
-						output += '<div></div>';
-					}
-					else if (r.constants.MY_BROWSER === 'msie')
-					{
-						output += '<span></span>';
-					}
-					else if (r.constants.MY_ENGINE === 'webkit')
-					{
-						output += '<br />';
-					}
-					editor.insertHTML(output);
-					event.preventDefault();
-				}
-			});
+				editor.textarea.hide();
+				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
 
-			/* post and validate on keyup */
+				/* create toolbar */
 
-			editor.preview.on('keyup', function ()
+				editor.createToolbar();
+				editor.createPreview();
+			};
+
+			/* init as needed */
+
+			if (editor.textarea.length)
 			{
-				editor.post();
-				editor.validate();
-			});
+				editor.init();
+			}
 		});
 	};
 

@@ -3,17 +3,19 @@
  *
  * 1. panel admin
  * 2. wrapper
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. panel admin */
 
 .panel_admin
 {
-	left: 0;
 	position: relative;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
+	z-index: 900;
 }
 
 .panel_admin a, .panel_admin a:hover

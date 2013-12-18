@@ -2,6 +2,13 @@
 
 /**
  * admin settings form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_settings_form()
@@ -55,8 +62,8 @@ function admin_settings_form()
 	$output .= '<li>' . form_element('text', 'title', 'field_text_admin', 'title', s('title'), l('title'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'author', 'field_text_admin', 'author', s('author'), l('author'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'copyright', 'field_text_admin', 'copyright', s('copyright'), l('copyright'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_small_admin', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_small_admin', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_admin field_small_admin', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
 	$output .= '<li>' . select_element('robots', 'field_select_admin', 'robots', array(
 		l('index') => 'all',
 		l('index_no') => 'none'
@@ -110,7 +117,7 @@ function admin_settings_form()
 		}
 	}
 	$output .= '<li>' . select_element('homepage', 'field_select_admin', 'homepage', $homepage_array, s('homepage'), l('homepage')) . '</li>';
-	$output .= '<li>' . form_element('text', 'limit', 'js_required field_text_admin field_note', 'limit', s('limit'), l('limit'), 'maxlength="2" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'limit', 'js_required field_text_admin field_note', 'limit', s('limit'), l('limit'), 'min="1" max="1000" required="required"') . '</li>';
 	$output .= '<li>' . select_element('order', 'field_select_admin', 'order', array(
 		l('ascending') => 'asc',
 		l('descending') => 'desc'
@@ -171,8 +178,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'js_cancel field_button_large_admin field_button_backward', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'js_submit field_button_large_admin field_button_forward', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', 'update', l('save'));
 	$output .= '</form>';
 	echo $output;
 	hook(__FUNCTION__ . '_end');

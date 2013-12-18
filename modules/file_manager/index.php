@@ -2,6 +2,13 @@
 
 /**
  * file manager loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_loader_start()
@@ -17,6 +24,13 @@ function file_manager_loader_start()
 
 /**
  * file manager loader scripts transport start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_loader_scripts_transport_start()
@@ -33,6 +47,13 @@ function file_manager_loader_scripts_transport_start()
 
 /**
  * file manager render start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_render_start()
@@ -46,6 +67,13 @@ function file_manager_render_start()
 
 /**
  * file manager center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function file_manager_center_start()
@@ -94,6 +122,13 @@ function file_manager_center_start()
 /**
  * file manager admin panel panel list modules
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
@@ -106,20 +141,27 @@ function file_manager_admin_panel_list_modules()
 /**
  * file manager
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $directory
  */
 
 function file_manager($directory = '')
 {
-	if (is_dir($directory) == '')
+	if (!is_dir($directory))
 	{
 		mkdir($directory, 0777);
 	}
-	if (is_dir($directory) == '')
+	if (!is_dir($directory))
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_create') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
-	else if (decoct(fileperms($directory)) != 40777)
+	else if (!is_writable($directory))
 	{
 		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
@@ -129,7 +171,7 @@ function file_manager($directory = '')
 	$output .= '<h2 class="title_content">' . l('file_manager_file_manager') . '</h2>';
 	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
 	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('file_manager_browse'));
-	$output .= '<button type="submit" class="js_upload field_upload field_button_admin hide_if_js">' . l('file_manager_upload') . '</span></span></button>';
+	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('file_manager_upload') . '</span></span></button>';
 	$output .= '</form>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 
@@ -189,6 +231,13 @@ function file_manager($directory = '')
 /**
  * file manager clean file name
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @return string
  */
@@ -203,6 +252,13 @@ function file_manager_clean_file_name($input = '')
 
 /**
  * file manager upload
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $diretory
  */

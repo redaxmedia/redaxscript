@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Redaxscript_Detection
+ * Redaxscript Detection
  *
- * @since 2.0
+ * @since 2.0.0
  *
  * @category Detection
  * @package Redaxscript
@@ -22,7 +22,7 @@ class Redaxscript_Detection
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function __construct()
@@ -33,9 +33,9 @@ class Redaxscript_Detection
 	/**
 	 * getOutput
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $_output string
+	 * @return string
 	 */
 
 	public function getOutput()
@@ -46,9 +46,9 @@ class Redaxscript_Detection
 	/**
 	 * getParameter
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $output string
+	 * @return string
 	 */
 
 	protected function _getParameter($parameter = '')
@@ -65,7 +65,7 @@ class Redaxscript_Detection
 	/**
 	 * detect
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param array $input
 	 * @param string $type
@@ -96,67 +96,6 @@ class Redaxscript_Detection
 				}
 			}
 		}
-	}
-}
-
-/**
- * Redaxscript_Detection_Language
- *
- * @since 2.0
- *
- * @category Detection
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-class Redaxscript_Detection_Language extends Redaxscript_Detection
-{
-	/**
-	 * init
-	 *
-	 * @since 2.0
-	 */
-
-	public function init()
-	{
-		$this->_detect(array(
-			'parameter' => $this->_getParameter('l'),
-			'session' => isset($_SESSION[ROOT . '/language']) ? $_SESSION[ROOT . '/language'] : '',
-			'contents' => retrieve('language', LAST_TABLE, 'id', LAST_ID),
-			'settings' => s('language') === 'detect' ? '' : s('language'),
-			'browser' => isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : '',
-			'fallback' => 'en'
-		), 'language', 'languages/{type}.php');
-	}
-}
-
-/**
- * Redaxscript_Detection_Template
- *
- * @since 2.0
- *
- * @category Detection
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-class Redaxscript_Detection_Template extends Redaxscript_Detection
-{
-	/**
-	 * init
-	 *
-	 * @since 2.0
-	 */
-
-	public function init()
-	{
-		$this->_detect(array(
-			'parameter' => $this->_getParameter('t'),
-			'session' => isset($_SESSION[ROOT . '/template']) ? $_SESSION[ROOT . '/template'] : '',
-			'contents' => retrieve('template', LAST_TABLE, 'id', LAST_ID),
-			'settings' => s('template'),
-			'fallback' => 'default'
-		), 'template', 'templates/{type}/index.phtml');
 	}
 }
 ?>

@@ -6,25 +6,24 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
-		watch:
-		{
-			scripts:
-			{
-				files: ['<%=jshint.base%>', '<%=jshint.modules%>', '<%=jshint.templates%>'],
-				tasks: ['jshint']
-			},
-			styles:
-			{
-				files: ['<%=csslint.base.src%>', '<%=csslint.modules.src%>', '<%=csslint.templates.src%>'],
-				tasks: ['csslint']
-			}
-		},
 		jshint:
 		{
-			dependency: ['gruntfile.js'],
-			base: ['scripts/*.js'],
-			modules: ['modules/*/scripts/*.js'],
-			templates: ['templates/*/scripts/*.js'],
+			dependency:
+			[
+				'gruntfile.js'
+			],
+			base:
+			[
+				'scripts/*.js'
+			],
+			modules:
+			[
+				'modules/*/scripts/*.js'
+			],
+			templates:
+			[
+				'templates/*/scripts/*.js'
+			],
 			options:
 			{
 				jshintrc: '.jshintrc'
@@ -32,38 +31,40 @@ module.exports = function (grunt)
 		},
 		jsonlint:
 		{
-			dependency: ['composer.json', 'package.json']
-		},
-		qunit:
-		{
-			jquery:
-			{
-				options:
-				{
-					urls: ['http://develop.redaxscript.com/qunit.default']
-				}
-			},
-			zepto:
-			{
-				options:
-				{
-					urls: ['http://develop.redaxscript.com/qunit.zepto']
-				}
-			}
+			dependency:
+			[
+				'composer.json',
+				'package.json'
+			],
+			modules:
+			[
+				'modules/web_app/files/manifest.json'
+			]
 		},
 		csslint:
 		{
 			base:
 			{
-				src: ['styles/*.css', '!styles/webkit.css']
+				src:
+				[
+					'styles/*.css',
+					'!styles/webkit.css'
+				]
 			},
 			modules:
 			{
-				src: ['modules/*/styles/*.css']
+				src:
+				[
+					'modules/*/styles/*.css',
+					'!modules/gallery/styles/query.css'
+				]
 			},
 			templates:
 			{
-				src: ['templates/*/styles/*.css']
+				src:
+				[
+					'templates/*/styles/*.css'
+				]
 			},
 			options:
 			{
@@ -74,11 +75,17 @@ module.exports = function (grunt)
 		{
 			modules:
 			{
-				src: ['modules/**/*.phtml']
+				src:
+				[
+					'modules/**/*.phtml'
+				]
 			},
 			templates:
 			{
-				src: ['templates/**/*.phtml']
+				src:
+				[
+					'templates/**/*.phtml'
+				]
 			},
 			options:
 			{
@@ -87,9 +94,13 @@ module.exports = function (grunt)
 		},
 		phpcs:
 		{
+			root:
+			{
+				dir: 'config.php index.php install.php'
+			},
 			base:
 			{
-				dir: 'includes'
+				dir: 'includes scripts styles'
 			},
 			languages:
 			{
@@ -109,39 +120,108 @@ module.exports = function (grunt)
 				standard: 'Redaxscript'
 			}
 		},
+		qunit:
+		{
+			jquery:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.default'
+					]
+				}
+			},
+			zepto:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.zepto'
+					]
+				}
+			}
+		},
+		phpunit:
+		{
+			testsuite:
+			{
+				dir: ''
+			},
+			options:
+			{
+				bin: 'vendor/bin/phpunit'
+			}
+		},
+		lineending:
+		{
+			css:
+			{
+				src:
+				[
+					'styles/*.css',
+					'modules/*/styles/*.css',
+					'templates/*/styles/*.css'
+				],
+				expand: true
+			},
+			js:
+			{
+				src:
+				[
+					'scripts/*.js',
+					'modules/*/scripts/*.js',
+					'templates/*/scripts/*.js'
+				],
+				expand: true
+			},
+			phtml:
+			{
+				src:
+				[
+					'modules/**/*.phtml',
+					'templates/**/*.phtml'
+				],
+				expand: true
+			},
+			php:
+			{
+				src:
+				[
+					'*.php',
+					'includes/**/*.php',
+					'languages/*.php',
+					'modules/**/*.php'
+				],
+				expand: true
+			},
+			options:
+			{
+				eol: 'crlf'
+			}
+		},
 		shell:
 		{
 			tocBase:
 			{
-				command: 'php vendor/tocgen/tocgen.php scripts && php vendor/tocgen/tocgen.php styles'
+				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen && php vendor/redaxmedia/tocgen/cli.php styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/tocgen/tocgen.php modules -r'
+				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/tocgen/tocgen.php templates -r'
-			},
-			svgoTemplates:
-			{
-				command: 'svgo --disable removeViewBox -f templates/default/images'
-			},
-			svgoModules:
-			{
-				command: 'svgo --disable removeViewBox -f modules/multi_language/images'
+				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
 			},
 			addUpstream:
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
 			},
-			fetchUpstream:
+			pullUpstream:
 			{
-				command: 'git fetch upstream'
-			},
-			mergeUpstream:
-			{
-				command: 'git merge upstream/master'
+				command: 'git pull upstream master'
 			},
 			removeUpstream:
 			{
@@ -159,7 +239,10 @@ module.exports = function (grunt)
 				files:
 				[
 					{
-						src: ['ruleset.xml'],
+						src:
+						[
+							'ruleset.xml'
+						],
 						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxscript/'
 					}
 				]
@@ -169,22 +252,66 @@ module.exports = function (grunt)
 		{
 			modules:
 			{
-				src: ['modules/*/images/*']
+				src:
+				[
+					'modules/*/images/*.gif',
+					'modules/*/images/*.jpg',
+					'modules/*/images/*.png',
+				]
 			},
 			templates:
 			{
-				src: ['templates/*/images/*']
+				src:
+				[
+					'templates/*/images/*.gif',
+					'templates/*/images/*.jpg',
+					'templates/*/images/*.png'
+				]
 			}
 		},
 		smushit:
 		{
 			modules:
 			{
-				src: ['<%=img.modules.src%>']
+				src:
+				[
+					'<%=img.modules.src%>'
+				]
 			},
 			templates:
 			{
-				src: ['<%=img.templates.src%>']
+				src:
+				[
+					'<%=img.templates.src%>'
+				]
+			}
+		},
+		svgmin:
+		{
+			modules:
+			{
+				src:
+				[
+					'modules/*/images/*.svg'
+				],
+				expand: true
+			},
+			templates:
+			{
+				src:
+				[
+					'templates/*/images/*.svg'
+				],
+				expand: true
+			},
+			options:
+			{
+				plugins:
+				[
+					{
+						removeViewBox: false
+					}
+				]
 			}
 		}
 	});
@@ -195,20 +322,54 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
+	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
+	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
+	grunt.loadNpmTasks('grunt-svgmin');
 
 	/* register tasks */
 
-	grunt.registerTask('default', ['jshint', 'jsonlint', 'csslint', 'htmlhint', 'phplint']);
-	grunt.registerTask('phplint', ['copy:ruleset', 'phpcs']);
-	grunt.registerTask('toc', ['shell:tocBase', 'shell:tocModules', 'shell:tocTemplates']);
-	grunt.registerTask('svgo', ['shell:svgoTemplates', 'shell:svgoModules']);
-	grunt.registerTask('sync', ['shell:addUpstream', 'shell:fetchUpstream', 'shell:mergeUpstream', 'shell:removeUpstream']);
-	grunt.registerTask('optimize', ['toc', 'img', 'smushit', 'svgo']);
+	grunt.registerTask('default',
+	[
+		'jshint',
+		'jsonlint',
+		'csslint',
+		'htmlhint',
+		'phplint',
+		'phpunit'
+	]);
+	grunt.registerTask('phplint',
+	[
+		'copy:ruleset',
+		'phpcs'
+	]);
+	grunt.registerTask('toc',
+	[
+		'shell:tocBase',
+		'shell:tocModules',
+		'shell:tocTemplates'
+	]);
+	grunt.registerTask('eol',
+	[
+		'lineending'
+	]);
+	grunt.registerTask('sync',
+	[
+		'shell:addUpstream',
+		'shell:pullUpstream',
+		'shell:removeUpstream'
+	]);
+	grunt.registerTask('optimize',
+	[
+		'toc',
+		'eol',
+		'img',
+		'smushit',
+		'svgmin'
+	]);
 };

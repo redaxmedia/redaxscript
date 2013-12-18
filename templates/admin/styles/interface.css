@@ -5,10 +5,16 @@
  *    1.1 icons
  * 2. list control admin
  * 3. list panel admin
- *    3.1 icons
- *    3.2 javascript enabled
- * 5. list tab admin
- *    5.1 javascript enabled
+ *    3.1 icons before
+ *    3.2 icons after
+ *    3.3 javascript enabled
+ * 4. list tab admin
+ *    4.1 javascript enabled
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. link dock admin */
@@ -20,26 +26,24 @@
 	-o-transition: padding 0.3s ease;
 	-webkit-transition: padding 0.3s ease;
 	float: left;
-	height: 3.25em;
+	height: 3.125em;
 	position: relative;
 	text-indent: -999em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	transition: padding 0.3s ease;
-	width: 3.5em;
+	width: 3.375em;
 }
 
 .link_dock_admin:hover
 {
-	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
-	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	background: #3db1f1;
 	background: -moz-linear-gradient(top, #3db1f1, #0090db);
 	background: -ms-linear-gradient(top, #3db1f1, #0090db);
 	background: -o-linear-gradient(top, #3db1f1, #0090db);
-	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
 	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
 	background: linear-gradient(top, #3db1f1, #0090db);
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
 }
 
@@ -51,8 +55,8 @@
 	background: -moz-linear-gradient(top, #d50000, #a20000);
 	background: -ms-linear-gradient(top, #d50000, #a20000);
 	background: -o-linear-gradient(top, #d50000, #a20000);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d50000), to(#a20000));
 	background: -webkit-linear-gradient(top, #d50000, #a20000);
+	background: linear-gradient(top, #d50000, #a20000);
 }
 
 /* @section 1.1 icons */
@@ -62,10 +66,10 @@
 	font: 1.25em/2.5em 'icon admin';
 	left: 0;
 	position: absolute;
+	right: 0;
 	text-align: center;
 	text-indent: 0;
 	top: 0;
-	width: 100%;
 }
 
 .link_dock_admin.link_unpublish:before
@@ -96,19 +100,15 @@
 .list_control_admin a, .list_control_admin span
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	background: #ddd;
 	background: -moz-linear-gradient(top, #ddd, #c6c6c6);
 	background: -ms-linear-gradient(top, #ddd, #c6c6c6);
 	background: -o-linear-gradient(top, #ddd, #c6c6c6);
-	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#c6c6c6));
 	background: -webkit-linear-gradient(top, #ddd, #c6c6c6);
 	background: linear-gradient(top, #ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	color: #666;
 	display: inline-block;
 	line-height: 2em;
@@ -118,13 +118,12 @@
 
 .list_control_admin a:hover
 {
-	background: #62c5ff;
-	background: -moz-linear-gradient(top, #62c5ff, #0090db);
-	background: -ms-linear-gradient(top, #62c5ff, #0090db);
-	background: -o-linear-gradient(top, #62c5ff, #0090db);
-	background: -webkit-gradient(linear, left top, left bottom, from(#62c5ff), to(#0090db));
-	background: -webkit-linear-gradient(top, #62c5ff, #0090db);
-	background: linear-gradient(top, #62c5ff, #0090db);
+	background: #4cb4ff;
+	background: -moz-linear-gradient(top, #4cb4ff, #0090db);
+	background: -ms-linear-gradient(top, #4cb4ff, #0090db);
+	background: -o-linear-gradient(top, #4cb4ff, #0090db);
+	background: -webkit-linear-gradient(top, #4cb4ff, #0090db);
+	background: linear-gradient(top, #4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
@@ -137,40 +136,43 @@
 
 /* @section 3. list panel admin */
 
+.list_panel_admin
+{
+	font-size: 0.875rem;
+}
+
+.item_panel_admin
+{
+	position: relative;
+}
+
 .list_panel_admin a, .list_panel_admin span
 {
-	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
 	-moz-transition: padding-left 0.3s ease;
 	-ms-transition: padding-left 0.3s ease;
 	-o-transition: padding-left 0.3s ease;
-	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
 	-webkit-transition: padding-left 0.3s ease;
 	color: #b9b9b9;
 	cursor: pointer;
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 -1px #000;
 	display: block;
 	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 	transition: padding-left 0.3s ease;
 }
 
 .list_panel_admin a:hover, .list_panel_admin span:hover
 {
-	-moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
-	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	background: #3db1f1;
 	background: -moz-linear-gradient(top, #3db1f1, #0090db);
 	background: -ms-linear-gradient(top, #3db1f1, #0090db);
 	background: -o-linear-gradient(top, #3db1f1, #0090db);
-	background: -webkit-gradient(linear, left top, left bottom, from(#3db1f1), to(#0090db));
 	background: -webkit-linear-gradient(top, #3db1f1, #0090db);
 	background: linear-gradient(top, #3db1f1, #0090db);
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), inset 0 -1px #000;
 	color: #000;
 	padding-left: 1.25em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link logout */
@@ -181,11 +183,11 @@
 	background: -moz-linear-gradient(top, #d50000, #a20000);
 	background: -ms-linear-gradient(top, #d50000, #a20000);
 	background: -o-linear-gradient(top, #d50000, #a20000);
-	background: -webkit-gradient(linear, left top, left bottom, from(#d50000), to(#a20000));
 	background: -webkit-linear-gradient(top, #d50000, #a20000);
+	background: linear-gradient(top, #d50000, #a20000);
 }
 
-/* @section 3.1 icons */
+/* @section 3.1 icons before */
 
 .item_panel_admin > a:before, .item_panel_admin > span:before
 {
@@ -210,7 +212,7 @@
 	content: 'k';
 }
 
-.item_panel_admin.item_profile > a:before
+.item_panel_admin.item_profile > a:before, .item_panel_admin.item_profile > span:before
 {
 	content: 'l';
 }
@@ -220,19 +222,36 @@
 	content: 'n';
 }
 
-/* @section 3.2 javascript enabled */
+/* @section 3.2 icons after */
 
-.js .list_panel_admin li > ul
+.item_panel_admin > span:after
+{
+	content: '˃';
+	font: 1.5em/1.75em 'icon admin';
+	position: absolute;
+	right: 0.75em;
+	top: 0;
+}
+
+.item_panel_admin.item_active > span:after
+{
+	content: '˅';
+}
+
+/* @section 3.3 javascript enabled */
+
+.js .list_panel_children_admin
 {
 	display: none;
 }
 
-/* @section 5. list tab admin */
-
-.list_tab_admin
+.js .list_panel_children_admin ul
 {
-	margin-bottom: -1px;
+	left: 100%;
+	top: 0;
 }
+
+/* @section 4. list tab admin */
 
 .list_tab_admin li
 {
@@ -241,7 +260,8 @@
 	background: url('templates/admin/images/carbon.png') #232323;
 	border: 1px solid #232323;
 	border-radius: 0.25em 0.25em 0 0;
-	margin-right: 1px;
+	margin-bottom: -1px;
+	margin-right: 0.25em;
 	vertical-align: bottom;
 }
 
@@ -258,7 +278,7 @@
 	text-decoration: none;
 }
 
-/* @section 5.1 javascript enabled */
+/* @section 4.1 javascript enabled */
 
 .js .list_tab_admin .item_active
 {
@@ -268,7 +288,6 @@
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -webkit-gradient(linear, left top, left bottom, from(#dadada), color-stop(#e2e2e2, 40%), to(#e2e2e2));
 	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;

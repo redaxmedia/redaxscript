@@ -7,6 +7,11 @@
  * 3. several titles
  * 4. title dialog default
  * 5. title extra
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. tag styling */
@@ -20,13 +25,12 @@ a
 a:hover
 {
 	color: #005580;
-	text-decoration: underline;
 }
 
 body
 {
-	color: #333;
-	font: 0.75em arial;
+	color: #666;
+	font: 0.875em arial;
 }
 
 p
@@ -49,13 +53,13 @@ pre
 	-webkit-border-radius: 0.25em 0.25em;
 	-webkit-box-sizing: border-box;
 	background: #fff;
-	border: 1px solid #d5d5d5;
-	border-color: rgba(0, 0, 0, 0.15);
+	border: 1px solid #ddd;
+	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em 0.25em;
 	box-sizing: border-box;
 	font: 1em/3em arial;
 	text-indent: 1em;
-	width: 100%
+	width: 100%;
 }
 
 /* @section 2.1 javascript enabled */
@@ -102,8 +106,8 @@ pre
 
 .title_dialog_default
 {
-	border-bottom: 1px solid #d5d5d5;
-	border-bottom-color: rgba(0, 0, 0, 0.15);
+	border-bottom: 1px solid #ddd;
+	border-bottom-color: rgba(0, 0, 0, 0.1);
 	font: bold 1.375em/2em arial;
 	padding: 0 0.75em;
 }
@@ -112,9 +116,8 @@ pre
 
 .sidebar .title_extra
 {
-	color: #999;
-	font-size: 0.875em;
-	margin-bottom: 0.5em;
+	font-size: 1em;
+	margin-bottom: 1em;
 	margin-top: 1em;
 	padding: 0 1em;
 	text-transform: uppercase;

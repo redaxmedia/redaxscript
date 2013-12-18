@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Redaxscript_Parser
+ * Redaxscript Parser
  *
- * @since 2.0
+ * @since 2.0.0
  *
- * @category Parser
  * @package Redaxscript
+ * @category Parser
  * @author Henry Ruhs
  */
 
@@ -25,6 +25,13 @@ class Redaxscript_Parser
 	 */
 
 	protected $_route;
+
+	/**
+	 * delimiter
+	 * @var string
+	 */
+
+	protected $_delimiter = '@@@';
 
 	/**
 	 * tags
@@ -84,7 +91,7 @@ class Redaxscript_Parser
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
 	 * @param string $route
@@ -103,7 +110,7 @@ class Redaxscript_Parser
 	/**
 	 * init
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -127,9 +134,9 @@ class Redaxscript_Parser
 	/**
 	 * getOutput
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $_output string
+	 * @return string
 	 */
 
 	public function getOutput()
@@ -140,10 +147,10 @@ class Redaxscript_Parser
 	/**
 	 * parseBreak
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseBreak($input = '')
@@ -166,10 +173,10 @@ class Redaxscript_Parser
 	/**
 	 * parseCode
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseCode($input = '')
@@ -177,8 +184,8 @@ class Redaxscript_Parser
 		$output = str_replace(array(
 			'<code>',
 			'</code>'
-		), '||', $input);
-		$parts = explode('||', $output);
+		), $this->_delimiter, $input);
+		$parts = explode($this->_delimiter, $output);
 
 		/* parse needed parts */
 
@@ -196,10 +203,10 @@ class Redaxscript_Parser
 	/**
 	 * parseFunction
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
 	 * @param string $input
-	 * @return string $output
+	 * @return string
 	 */
 
 	protected function _parseFunction($input = '')
@@ -207,8 +214,8 @@ class Redaxscript_Parser
 		$output = str_replace(array(
 			'<function>',
 			'</function>'
-		), '||', $input);
-		$parts = explode('||', $output);
+		), $this->_delimiter, $input);
+		$parts = explode($this->_delimiter, $output);
 
 		/* parse needed parts */
 
@@ -216,23 +223,33 @@ class Redaxscript_Parser
 		{
 			if ($key % 2)
 			{
-				/* json decode */
+				/* validate allowed functions */
 
-				$json = json_decode($value);
-
-				/* catch function output */
-
-				ob_start();
-				foreach ($json as $function => $parameter)
+				if (!in_array($value, $this->_forbiddenFunctions))
 				{
-					/* validate allowed functions */
+					/* decode to array */
 
-					if (!in_array($function, $this->_forbiddenFunctions))
+					$json = json_decode($value, true);
+					ob_start();
+
+					/* multiple calls with parameter */
+
+					if (is_array($json))
 					{
-						call_user_func_array($function, $parameter);
+						foreach ($json as $function => $parameter)
+						{
+							echo call_user_func_array($function, $parameter);
+						}
 					}
+
+					/* else single call */
+
+					else
+					{
+						echo call_user_func($value);
+					}
+					$parts[$key] = ob_get_clean();
 				}
-				$parts[$key] = ob_get_clean();
 			}
 		}
 		$output = implode($parts);

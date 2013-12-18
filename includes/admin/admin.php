@@ -2,6 +2,13 @@
 
 /**
  * admin panel list
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_panel_list()
@@ -10,62 +17,59 @@ function admin_panel_list()
 
 	/* define access variables */
 
-	switch (true)
+	if (CATEGORIES_NEW == 1 || CATEGORIES_EDIT == 1 || CATEGORIES_DELETE == 1)
 	{
-		case CATEGORIES_NEW == 1:
-		case CATEGORIES_EDIT == 1:
-		case CATEGORIES_DELETE == 1:
-			$categories_access = 1;
-		case ARTICLES_NEW == 1:
-		case ARTICLES_EDIT == 1:
-		case ARTICLES_DELETE == 1:
-			$articles_access = 1;
-		case EXTRAS_NEW == 1:
-		case EXTRAS_EDIT == 1:
-		case EXTRAS_DELETE == 1:
-			$extras_access = 1;
-		case COMMENTS_NEW == 1:
-		case COMMENTS_EDIT == 1:
-		case COMMENTS_DELETE == 1:
-			$comments_access = 1;
-			$contents_access = 1;
-		case USERS_NEW == 1:
-		case USERS_EDIT == 1:
-		case USERS_DELETE == 1:
-			$users_access = 1;
-		case GROUPS_NEW == 1:
-		case GROUPS_EDIT == 1:
-		case GROUPS_DELETE == 1:
-			$groups_access = 1;
-			$access_access = 1;
-		case MODULES_INSTALL == 1:
-		case MODULES_EDIT == 1:
-		case MODULES_UNINSTALL == 1:
-			$modules_access = 1;
-		case SETTINGS_EDIT == 1:
-			$settings_access = 1;
-			$system_access = 1;
-			break;
+		$categories_access = $contents_access = 1;
+	}
+	if (ARTICLES_NEW == 1 || ARTICLES_EDIT == 1 || ARTICLES_DELETE == 1)
+	{
+		$articles_access = $contents_access = 1;
+	}
+	if (EXTRAS_NEW == 1 || EXTRAS_EDIT == 1 || EXTRAS_DELETE == 1)
+	{
+		$extras_access = $contents_access = 1;
+	}
+	if (COMMENTS_NEW == 1 || COMMENTS_EDIT == 1 || COMMENTS_DELETE == 1)
+	{
+		$comments_access = $contents_access = 1;
+	}
+	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_DELETE == 1)
+	{
+		$users_access = $access_access = 1;
+	}
+	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1 || GROUPS_DELETE == 1)
+	{
+		$groups_access = $access_access = 1;
+	}
+	if (MODULES_INSTALL == 1 || MODULES_EDIT == 1 || MODULES_UNINSTALL == 1)
+	{
+		$modules_access = $system_access = 1;
+	}
+	if (SETTINGS_EDIT == 1)
+	{
+		$settings_access = $system_access = 1;
 	}
 
 	/* collect contents output */
 
-	if ($contents_access)
+	$counter = 1;
+	if ($contents_access == 1)
 	{
-		$output = '<li class="item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
+		$counter++;
+		$output = '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
 		}
-		if ($articles_access = 1)
+		if ($articles_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('articles'), 'admin/view/articles') . '</li>';
 		}
-		if ($extras_access = 1)
+		if ($extras_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('extras'), 'admin/view/extras') . '</li>';
 		}
-		if ($comments_access = 1)
+		if ($comments_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('comments'), 'admin/view/comments') . '</li>';
 		}
@@ -74,9 +78,10 @@ function admin_panel_list()
 
 	/* collect access output */
 
-	if ($access_access)
+	if ($access_access == 1)
 	{
-		$output .= '<li class="item_panel_admin item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
+		$counter++;
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_access"><span>' . l('access') . '</span><ul class="list_panel_children_admin list_access">';
 		if (MY_ID)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
@@ -91,26 +96,23 @@ function admin_panel_list()
 		}
 		$output .= '</ul></li>';
 	}
-	else if (MY_ID)
-	{
-		$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
-	}
-
-	/* collect panel modules */
-
-	$admin_panel_list_modules = hook('admin_panel_list_modules');
 
 	/* collect system output */
 
-	if ($system_access || $admin_panel_list_modules)
+	if ($system_access == 1)
 	{
-		$output .= '<li class="item_panel_admin item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
+		$counter++;
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_system"><span>' . l('system') . '</span><ul class="list_panel_children_admin list_stystem">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('modules'), 'admin/view/modules');
+
+			/* collect modules list */
+
+			$admin_panel_list_modules = hook('admin_panel_list_modules');
 			if ($admin_panel_list_modules)
 			{
-				$output .= '<ul>' . $admin_panel_list_modules . '</ul>';
+				$output .= '<ul class="js_list_panel_children_admin list_panel_children_admin">' . $admin_panel_list_modules . '</ul>';
 			}
 			$output .= '</li>';
 		}
@@ -125,18 +127,19 @@ function admin_panel_list()
 
 	if (MY_USER && MY_ID)
 	{
-		$output .= '<li class="item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
+		$counter++;
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
 	/* collect logout */
 
-	$output .= '<li class="item_panel_admin item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
+	$output .= '<li class="js_item_panel_admin item_panel_admin item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
 
 	/* collect list output */
 
 	if ($output)
 	{
-		$output = '<ul class="js_list_panel_admin list_panel_admin">' . $output . '</ul>';
+		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');
@@ -144,6 +147,13 @@ function admin_panel_list()
 
 /**
  * admin dock
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  *
  * @param string $table
  * @param integer $id
@@ -166,17 +176,12 @@ function admin_dock($table = '', $id = '')
 		$output = '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
-			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN);
-			$output .= '<span class="divider">' . s('divider') . '</span>';
-			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_edit', l('edit'), 'admin/edit/' . $table . '/' . $id);
-		}
-		if ($edit == 1 && $delete == 1)
-		{
-			$output .= '<span class="divider">' . s('divider') . '</span>';
+			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
+			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_edit', l('edit'), 'admin/edit/' . $table . '/' . $id, l('edit'));
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'js_confirm js_link_dock_admin link_dock_admin link_delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN);
+			$output .= anchor_element('internal', '', 'js_confirm js_link_dock_admin link_dock_admin link_delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
 		}
 		$output .= '</div></div>';
 	}
@@ -186,6 +191,13 @@ function admin_dock($table = '', $id = '')
 
 /**
  * admin notification
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  */
 
 function admin_notification()
@@ -209,9 +221,15 @@ function admin_notification()
 	hook(__FUNCTION__ . '_end');
 }
 
-
 /**
  * admin control
+ *
+ * @since 2.0.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Admin
+ * @author Henry Ruhs
  *
  * @param string $type
  * @param string $table

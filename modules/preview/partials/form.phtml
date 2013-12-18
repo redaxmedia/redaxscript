@@ -1,7 +1,7 @@
 <h2 class="title_content">Form elements</h2>
 
 
-<h3 class="title_content_sub">.form_search > .field_search ~ .field_button_search</h3>
+<h3 class="title_content_sub">.form_search > .field_search ~ .button_search</h3>
 
 <?php search(); ?>
 
@@ -23,52 +23,15 @@
 				l('2') => 2,
 				l('3') => 3
 			), '', '.field_select', 'multiple="multiple"'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea_small', 'field_textarea_small', '', '', '.field_textarea_small'); ?></li>
+			<li><?php echo form_element('textarea', 'field_textarea_field_small', 'field_textarea field_small', '', '', '.field_textarea + .field_small'); ?></li>
 			<li><?php echo form_element('textarea', 'field_textarea', 'field_textarea', '', '', '.field_textarea'); ?></li>
 		</ul>
 	</fieldset>
-	<?php echo form_element('button', '', 'field_button_large', '', l('submit')); ?>
-	<?php echo form_element('button', '', 'field_button', '', l('submit')); ?>
+
+	<?php echo form_element('button', '', 'button_default', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'button_default button_large', '', l('submit')); ?>
 </form>
 
-
-<h3 class="title_content_sub">.field_disabled</h3>
-
-<?php echo form_element('form', '', 'form_default'); ?>
-	<?php echo form_element('fieldset'); ?>
-		<ul>
-			<li><?php echo form_element('text', 'field_text_disabled', 'field_text field_disabled', '', '', '.field_text', 'disabled="disabled"'); ?></li>
-			<li><?php echo select_element('field_select_disabled', 'field_select field_disabled', '', array(
-				l('select') => 'select',
-				l('1') => 1,
-				l('2') => 2,
-				l('3') => 3
-			), '', '.field_select', 'disabled="disabled"'); ?></li>
-			<li><?php echo select_element('field_select_multiple_disabled', 'field_select field_disabled', '', array(
-				l('1') => 1,
-				l('2') => 2,
-				l('3') => 3
-			), '', '.field_select', 'multiple="multiple" disabled="disabled"'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea_small_disabled', 'field_textarea_small field_disabled', '', '', '.field_textarea_small', 'disabled="disabled"'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea_disabled', 'field_textarea field_disabled', '', '', '.field_textarea', 'disabled="disabled"'); ?></li>
-		</ul>
-	</fieldset>
-	<?php echo form_element('button', '', 'field_button_large field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-	<?php echo form_element('button', '', 'field_button field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-</form>
-
-
-<h3 class="title_content_sub">.field_readonly</h3>
-
-<?php echo form_element('form', '', 'form_default'); ?>
-	<?php echo form_element('fieldset'); ?>
-		<ul>
-			<li><?php echo form_element('text', 'field_text_readonly', 'field_text field_readonly', '', '', '.field_text', 'readonly="readonly"'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea_small_readonly', 'field_textarea_small field_readonly', '', '', '.field_textarea_small', 'readonly="readonly"'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea_readonly', 'field_textarea field_readonly', '', '', '.field_textarea', 'readonly="readonly"'); ?></li>
-		</ul>
-	</fieldset>
-</form>
 
 <?php if (LOGGED_IN == TOKEN): ?>
 	<h3 class="title_content_sub">.field_{type}_admin</h3>
@@ -88,50 +51,11 @@
 					l('2') => 2,
 					l('3') => 3
 				), '', '.field_select_admin', 'multiple="multiple"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_small_admin', 'field_textarea_small_admin', '', '', '.field_textarea_small_admin'); ?></li>
+				<li><?php echo form_element('textarea', 'field_textarea_admin_field_small_admin', 'field_textarea_admin field_small_admin', '', '', '.field_textarea_admin + .field_small_admin'); ?></li>
 				<li><?php echo form_element('textarea', 'field_textarea_admin', 'field_textarea_admin', '', '', '.field_textarea_admin'); ?></li>
 			</ul>
 		</fieldset>
-		<?php echo form_element('button', '', 'field_button_large_admin', '', l('submit')); ?>
-		<?php echo form_element('button', '', 'field_button_admin', '', l('submit')); ?>
-	</form>
-
-
-	<h3 class="title_content_sub">.field_disabled</h3>
-
-	<?php echo form_element('form', '', 'form_admin'); ?>
-		<?php echo form_element('fieldset'); ?>
-			<ul>
-				<li><?php echo form_element('text', 'field_text_admin_disabled', 'field_text_admin field_disabled', '', '', '.field_text_admin', 'disabled="disabled"'); ?></li>
-				<li><?php echo select_element('field_select_admin_disabled', 'field_select_admin field_disabled', '', array(
-					l('select') => 'select',
-					l('1') => 1,
-					l('2') => 2,
-					l('3') => 3
-				), '', '.field_select_admin', 'disabled="disabled"'); ?></li>
-				<li><?php echo select_element('field_select_admin_multiple_disabled', 'field_select_admin field_disabled', '', array(
-					l('1') => 1,
-					l('2') => 2,
-					l('3') => 3
-				), '', '.field_select_admin', 'multiple="multiple" disabled="disabled"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_small_admin_disabled', 'field_textarea_small_admin field_disabled', '', '', '.field_textarea_small_admin', 'disabled="disabled"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_admin_disabled', 'field_textarea_admin field_disabled', '', '', '.field_textarea_admin', 'disabled="disabled"'); ?></li>
-			</ul>
-		</fieldset>
-		<?php echo form_element('button', '', 'field_button_large_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-		<?php echo form_element('button', '', 'field_button_admin field_disabled', '', l('submit'), '', 'disabled="disabled"'); ?>
-	</form>
-
-
-	<h3 class="title_content_sub">.field_readonly</h3>
-
-	<?php echo form_element('form', '', 'form_admin'); ?>
-		<?php echo form_element('fieldset'); ?>
-			<ul>
-				<li><?php echo form_element('text', 'field_text_admin_readonly', 'field_text_admin field_readonly', '', '', '.field_text_admin', 'readonly="readonly"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_small_admin_readonly', 'field_textarea_small_admin field_readonly', '', '', '.field_textarea_small_admin', 'readonly="readonly"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_admin_readonly', 'field_textarea_admin field_readonly', '', '', '.field_textarea_admin', 'readonly="readonly"'); ?></li>
-			</ul>
-		</fieldset>
+		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit')); ?>
+		<?php echo form_element('button', '', 'button_admin', '', l('submit')); ?>
 	</form>
 <?php endif; ?>

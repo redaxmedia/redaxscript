@@ -2,6 +2,13 @@
 
 /**
  * head
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Head
+ * @author Henry Ruhs
  */
 
 function head()
@@ -97,7 +104,7 @@ function head()
 		{
 			$divider = s('divider');
 		}
-		$output .= '<title>' . truncate($title . $divider . $description, 70) . '</title>' . PHP_EOL;
+		$output .= '<title>' . truncate($title . $divider . $description, 80) . '</title>' . PHP_EOL;
 	}
 
 	/* collect refresh route */
@@ -107,15 +114,11 @@ function head()
 		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
 	}
 
-	/* collect author and copyright as needed */
+	/* collect author */
 
 	if (s('author'))
 	{
 		$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
-	}
-	if (s('copyright'))
-	{
-		$output .= '<meta name="copyright" content="' . s('copyright') . '" />' . PHP_EOL;
 	}
 
 	/* collect metadata */

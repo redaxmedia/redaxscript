@@ -1,37 +1,40 @@
 /**
  * @tableofcontents
  *
- * 1. image default
- * 2. player default
- *    2.1 hover effect
+ * 1. several media
+ *    1.1 hover effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-/* @section 1. image default */
+/* @section 1. several media */
 
-.image_default
-{
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-	border-radius: 0.25em;
-	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-/* @section 2. player default */
-
-.player_default
+.image_default, .image_gallery, .player_default
 {
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	background: #2c2c2c;
 	border-radius: 0.25em;
-	padding: 0.5em;
 }
 
-/* @section 2.1 hover effect */
+.image_default, .player_default
+{
+	max-width: 98%;
+	padding: 1%;
+}
 
-.player_default:hover
+.image_gallery
+{
+	max-width: 94%;
+	padding: 3%;
+}
+
+/* @section 1.1 hover effect */
+
+.image_default:hover, .image_gallery:hover, .player_default:hover
 {
 	-moz-box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 	-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);

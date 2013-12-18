@@ -1,37 +1,43 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 40em
- * 2. screen max 30em
- * 3. screen max 20em
+ * 1. landscape
+ * 2. screen max 50em
+ * 3. screen max 40em
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
+/* @section 1. landscape */
+
+ @media screen and (orientation: landscape)
+ {
+	.mobile .gallery_overlay
+	{
+		background: #000;
+		background: rgba(0, 0, 0, 0.8);
+	}
+}
+
+/* @section 2. screen max 50em */
+
+@media screen and (max-width: 50em)
+{
+	.gallery_control
+	{
+		font-size: 28vw;
+	}
+}
+
+/* @section 3. screen max 40em */
 
 @media screen and (max-width: 40em)
 {
-	.gallery:hover .gallery_meta
+	.gallery_meta
 	{
 		display: none;
-	}
-}
-
-/* @section 2. screen max 30em */
-
-@media screen and (max-width: 30em)
-{
-	.gallery_next span, .gallery_previous span
-	{
-		font-size: 1em;
-	}
-}
-
-/* @section 3. screen max 20em */
-
-@media screen and (max-width: 20em)
-{
-	.gallery_next span, .gallery_previous span
-	{
-		font-size: 0.75em;
 	}
 }

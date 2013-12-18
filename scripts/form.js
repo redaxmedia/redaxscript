@@ -4,10 +4,15 @@
  * 1. auto resize
  * 2. check required
  * 3. check search
- * 4. enable tab
+ * 4. enable indent
  * 5. note required
  * 6. unmask password
  * 7. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -31,36 +36,33 @@
 		{
 			/* listen for focus and input */
 
-			$(this).on('focus input', function (event)
+			$(this).on('focus input', function ()
 			{
-				var textarea = this;
+				var textarea = this,
+					value = textarea.value,
+					newlines = value.split(options.eol).length;
 
-				/* check limit */
+				/* newlines hack */
 
-				if (textarea.rows < options.limit)
+				if (textarea.rows < newlines)
 				{
-					/* resize on focus */
-
-					if (event.type === 'focus')
-					{
-						while (textarea.clientHeight < textarea.scrollHeight)
-						{
-							textarea.rows += options.summand++;
-						}
-					}
-
-					/* general resize */
-
-					while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
-					{
-						textarea.rows -= 1;
-					}
-					while (textarea.clientHeight < textarea.scrollHeight)
-					{
-						textarea.rows += 1;
-					}
+					textarea.rows = newlines;
 				}
-			}).css('overflow', options.overflow).css('resize', 'none');
+
+				/* general resize */
+
+				while (textarea.clientHeight === textarea.scrollHeight && textarea.rows > 1)
+				{
+					textarea.rows -= 1;
+				}
+				while (textarea.clientHeight < textarea.scrollHeight && textarea.rows < options.limit)
+				{
+					textarea.rows += 1;
+				}
+			}).css({
+				overflow: options.overflow,
+				resize: options.resize
+			});
 		});
 	};
 
@@ -84,11 +86,11 @@
 			$(this).on('submit change input related', function (event)
 			{
 				var form = $(this),
-					buttonSubmit = form.find(options.elements.buttonSubmit),
-					fieldRequired = form.find(options.elements.fieldRequired),
+					buttonSubmit = form.find(options.element.buttonSubmit),
+					fieldRequired = form.find(options.element.fieldRequired),
 					fieldRequiredAll = fieldRequired;
 
-				/* check related elements */
+				/* check related fields */
 
 				if (event.type === 'related')
 				{
@@ -109,20 +111,18 @@
 					var field = $(this),
 						fieldNative = field[0],
 						fieldTag = fieldNative.tagName,
-						noteErrorClasses = 'js_note_error note_error',
-						fieldValue;
+						noteErrorClasses = 'js_note_error field_note note_error',
+						fieldValue = '';
 
 					/* check for tag */
 
 					if (fieldTag === 'DIV')
 					{
 						fieldValue = $.trim(field.html());
-						noteErrorClasses += ' box_note';
 					}
 					else
 					{
 						fieldValue = $.trim(fieldNative.value);
-						noteErrorClasses += ' field_note';
 					}
 
 					/* check for value */
@@ -142,13 +142,20 @@
 				if (fieldRequiredAll.hasClass('js_note_error'))
 				{
 					form.trigger('error');
-					buttonSubmit.attr('disabled', 'disabled').addClass('field_disabled');
+					buttonSubmit.attr('disabled', 'disabled');
 
 					/* auto focus on submit */
 
 					if (event.type === 'submit' && options.autoFocus)
 					{
 						fieldRequiredAll.filter('.js_note_error').first().focus();
+					}
+
+					/* haptic feedback */
+
+					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
 					}
 					event.preventDefault();
 				}
@@ -158,7 +165,7 @@
 				else
 				{
 					form.trigger('success');
-					buttonSubmit.removeAttr('disabled').removeClass('field_disabled');
+					buttonSubmit.removeAttr('disabled');
 				}
 			}).attr('novalidate', 'novalidate');
 		});
@@ -188,7 +195,7 @@
 					fieldValue = $.trim(field.val()),
 					fieldPlaceholder = field.attr('placeholder'),
 					inputIncorrect = l.input_incorrect + l.exclamation_mark,
-					timeout;
+					timeout = '';
 
 				/* prevent multiple timeout */
 
@@ -213,15 +220,15 @@
 		});
 	};
 
-	/* @section 4. enable tab */
+	/* @section 4. enable indent */
 
-	$.fn.enableTab = function (options)
+	$.fn.enableIndent = function (options)
 	{
 		/* extend options */
 
-		if (r.plugins.enableTab.options !== options)
+		if (r.plugins.enableIndent.options !== options)
 		{
-			options = $.extend({}, r.plugins.enableTab.options, options || {});
+			options = $.extend({}, r.plugins.enableIndent.options, options || {});
 		}
 
 		/* return this */
@@ -233,29 +240,78 @@
 			$(this).on('keydown', function (event)
 			{
 				var textarea = this,
-					textareaValue = this.value,
-					selection = document.selection,
+					textareaValue = textarea.value,
 					selectionStart = textarea.selectionStart,
-					selectionRange;
+					selectionEnd = textarea.selectionEnd,
+					selectionText = textareaValue.slice(selectionStart, selectionEnd),
+					selectionBefore = textareaValue.slice(0, selectionStart),
+					selectionAfter = textareaValue.slice(selectionEnd),
+					eol = options.eol,
+					indent = options.indent,
+					counter = 0;
 
-				if (event.which === 9)
+				if ('selectionStart' in textarea)
 				{
-					if (typeof selectionStart === 'number')
+					if (event.which === 9)
 					{
-						textarea.value = textareaValue.slice(0, selectionStart) + options.insertion + textareaValue.slice(textarea.selectionEnd);
-						textarea.selectionEnd = textarea.selectionStart = selectionStart + options.insertion.length;
-					}
+						/* remove indent */
 
-					/* else fallback */
+						if (event.shiftKey)
+						{
+							/* if selection */
 
-					else if (typeof selection === 'object')
-					{
-						selectionRange = selection.createRange();
-						selectionRange.text = options.insertion;
-						selectionRange.collapse(false);
-						selectionRange.select();
+							if (selectionText.length)
+							{
+								textarea.value = selectionBefore + selectionText.replace(window.RegExp(eol + indent, 'g'), function ()
+								{
+									counter++;
+									return eol;
+								}).replace(indent, function ()
+								{
+									counter++;
+									return '';
+								}) + selectionAfter;
+								textarea.selectionEnd = selectionEnd - (counter * indent.length);
+								textarea.selectionStart = selectionStart;
+							}
+
+							/* else without selection */
+
+							else if (textareaValue.slice(selectionStart - indent.length).indexOf(indent) === 0)
+							{
+								textarea.value = textareaValue.slice(0, selectionStart - indent.length) + textareaValue.slice(selectionStart);
+								textarea.selectionStart = textarea.selectionEnd = selectionStart - indent.length;
+							}
+						}
+
+						/* else add indent */
+
+						else
+						{
+							/* if selection */
+
+							if (selectionText.length)
+							{
+								textarea.value = selectionBefore + indent + selectionText.replace(window.RegExp(eol, 'g'), function ()
+								{
+									counter++;
+									return eol + indent;
+								}) + selectionAfter;
+								counter++;
+								textarea.selectionEnd = selectionEnd + (counter * indent.length);
+								textarea.selectionStart = selectionStart;
+							}
+
+							/* else without selection */
+
+							else
+							{
+								textarea.value = selectionBefore + indent + selectionText + selectionAfter;
+								textarea.selectionStart = textarea.selectionEnd = selectionStart + indent.length;
+							}
+						}
+						event.preventDefault();
 					}
-					event.preventDefault();
 				}
 			});
 		});
@@ -278,29 +334,34 @@
 		{
 			var form = $(this),
 				formRelated = form.children(options.related).first(),
-				noteRequired = $('<div class="' + options.classString + '">').insertBefore(formRelated).hide(),
-				timeout;
+				boxNote = $('<div>').addClass(options.classString.note),
+				timeout = '';
+
+			/* insert note required */
+
+			boxNote.hide().insertBefore(formRelated);
 
 			/* listen for error and success */
 
 			form.on('error success', function (event)
 			{
+				clearTimeout(timeout);
+
 				/* handle error */
 
 				if (event.type === 'error')
 				{
-					noteRequired.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
+					boxNote.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
 				}
 
 				/* else handle success */
 
 				else
 				{
-					noteRequired.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
-					clearTimeout(timeout);
+					boxNote.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
 					timeout = setTimeout(function ()
 					{
-						noteRequired.stop(1).slideUp(options.duration);
+						boxNote.stop(1).slideUp(options.duration);
 					}, options.timeout);
 				}
 			});
@@ -345,13 +406,13 @@
 		{
 			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
 		}
-		if (r.plugins.checkSearch.startup && r.support.placeholder === true)
+		if (r.plugins.checkSearch.startup && r.support.input.placeholder)
 		{
 			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
 		}
-		if (r.plugins.enableTab.startup)
+		if (r.plugins.enableIndent.startup)
 		{
-			$(r.plugins.enableTab.selector).enableTab();
+			$(r.plugins.enableIndent.selector).enableIndent();
 		}
 		if (r.plugins.noteRequired.startup)
 		{

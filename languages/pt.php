@@ -217,8 +217,8 @@ $l['account_create'] = 'Crie sua conta';
 
 $l['reminder'] = 'Lembrete';
 $l['reminder_question'] = 'Você esqueceu seu usuário ou senha';
-$l['reminder_request'] = 'Insira seu e-mail para obter informações sobre sua conta';
-$l['reminder_sent'] = 'As informações sobre sua conta foram enviadas para o seu e-mail cadastrado';
+$l['reminder_request'] = 'Insira seu E-mail para obter informações sobre sua conta';
+$l['reminder_sent'] = 'As informações sobre sua conta foram enviadas para o seu E-mail cadastrado';
 
 /* login */
 

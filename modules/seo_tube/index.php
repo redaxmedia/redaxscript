@@ -2,6 +2,13 @@
 
 /**
  * seo tube loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_loader_start()
@@ -14,6 +21,13 @@ function seo_tube_loader_start()
 
 /**
  * seo tube scripts end
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_scripts_end()
@@ -29,13 +43,11 @@ function seo_tube_scripts_end()
 		$output = '<script>' . PHP_EOL;
 		$output .= 'r.modules.seoTube.video = ' . json_encode($video_content) . ';';
 
-		/* add constant object */
+		/* add constants */
 
-		$output .= 'r.modules.seoTube.constant = ' . PHP_EOL . '{' . PHP_EOL;
-		$output .= 'SEO_TUBE_DESCRIPTION_PARAGRAPH: \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\',' . PHP_EOL;
-		$output .= 'SEO_TUBE_GDATA_URL: \'' . SEO_TUBE_GDATA_URL . '\',' . PHP_EOL;
-		$output .= 'SEO_TUBE_COMMENT_FEED: \'' . SEO_TUBE_COMMENT_FEED . '\',' . PHP_EOL;
-		$output .= 'SEO_TUBE_COMMENT_LIMIT: ' . SEO_TUBE_COMMENT_LIMIT . PHP_EOL;
+		$output .= 'r.modules.seoTube.constants = ' . PHP_EOL . '{' . PHP_EOL;
+		$output .= 'SEO_TUBE_API_URL: \'' . SEO_TUBE_API_URL . '\',' . PHP_EOL;
+		$output .= 'SEO_TUBE_DESCRIPTION_PARAGRAPH: \'' . SEO_TUBE_DESCRIPTION_PARAGRAPH . '\'' . PHP_EOL;
 		$output .= '};' . PHP_EOL . '</script>' . PHP_EOL;
 	}
 	echo $output;
@@ -43,6 +55,13 @@ function seo_tube_scripts_end()
 
 /**
  * seo tube center start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_center_start()
@@ -55,6 +74,13 @@ function seo_tube_center_start()
 
 /**
  * seo tube admin contents form start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_admin_contents_form_start()
@@ -67,6 +93,13 @@ function seo_tube_admin_contents_form_start()
 
 /**
  * seo tube get id
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  *
  * @param string $video_url
  * @return string
@@ -90,13 +123,20 @@ function seo_tube_get_id($video_url = '')
 /**
  * seo tube parser
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $video_id
  * @return string
  */
 
 function seo_tube_parser($video_id = '')
 {
-	$video_url = SEO_TUBE_GDATA_URL . '/'. $video_id;
+	$video_url = SEO_TUBE_API_URL . '/'. $video_id;
 	$video_data = simplexml_load_file($video_url);
 
 	/* collect output */
@@ -122,6 +162,13 @@ function seo_tube_parser($video_id = '')
 
 /* seo tube player
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $video_id
  */
 
@@ -133,6 +180,13 @@ function seo_tube_player($video_id = '')
 
 /**
  * seo tube form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_form()
@@ -144,13 +198,20 @@ function seo_tube_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'field_button_search', 'seo_tube_post', l('seo_tube_load'));
+	$output .= form_element('button', '', 'button_search', 'seo_tube_post', l('seo_tube_load'));
 	$output .= '</form>';
 	echo $output;
 }
 
 /**
  * seo tube post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function seo_tube_post()

@@ -3,10 +3,10 @@
 /**
  * Redaxscript Captcha
  *
- * @since 2.0
+ * @since 2.0.0
  *
- * @category Captcha
  * @package Redaxscript
+ * @category Captcha
  * @author Henry Ruhs
  */
 
@@ -49,7 +49,7 @@ class Redaxscript_Captcha
 	/**
 	 * construct
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function __construct()
@@ -62,7 +62,7 @@ class Redaxscript_Captcha
 	/**
 	 * init
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	public function init()
@@ -73,9 +73,9 @@ class Redaxscript_Captcha
 	/**
 	 * getTask
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $_task string
+	 * @return string
 	 */
 
 	public function getTask()
@@ -86,22 +86,35 @@ class Redaxscript_Captcha
 	/**
 	 * getSolution
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $_solution number
+	 * @param string $mode
+	 * @return integer
 	 */
 
-	public function getSolution()
+	public function getSolution($mode = 'hash')
 	{
-		return $this->_solution;
+		/* raw output */
+
+		if ($mode === 'raw')
+		{
+			return $this->_solution;
+		}
+
+		/* else hash output */
+
+		else
+		{
+			return sha1($this->_solution);
+		}
 	}
 
 	/**
 	 * checkOperator
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 *
-	 * @return $output number
+	 * @return integer
 	 */
 
 	protected function _checkOperator()
@@ -126,7 +139,7 @@ class Redaxscript_Captcha
 	/**
 	 * createCaptcha
 	 *
-	 * @since 2.0
+	 * @since 2.0.0
 	 */
 
 	protected function _createCaptcha()
@@ -148,7 +161,7 @@ class Redaxscript_Captcha
 
 		/* solution and task */
 
-		$this->_solution = sha1($a + $b * $c);
+		$this->_solution = $a + $b * $c;
 		$this->_task = l($a) . ' ' . l($operator) . ' ' . l($b);
 	}
 }

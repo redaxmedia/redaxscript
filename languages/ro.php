@@ -217,7 +217,7 @@ $l['account_create'] = 'Creează un cont';
 
 $l['reminder'] = 'Memento';
 $l['reminder_question'] = 'Ai uitat numele de utilizator sau parola';
-$l['reminder_request'] = 'Introduceţi e-mailul pentru a obţine informaţiile corespunzătoare despre cont';
+$l['reminder_request'] = 'Introduceţi E-mailul pentru a obţine informaţiile corespunzătoare despre cont';
 $l['reminder_sent'] = 'Informaţiile despre cont au fost trimise cu succes';
 
 /* login */

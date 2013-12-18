@@ -2,6 +2,13 @@
 
 /**
  * gallery loader start
+ *
+ * @since 2.0.2
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function gallery_loader_start()
@@ -15,11 +22,19 @@ function gallery_loader_start()
 
 /**
  * gallery loader scripts transport start
+ *
+ * @since 2.0.2
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function gallery_loader_scripts_transport_start()
 {
 	$output = languages_transport(array(
+		'date',
 		'gallery_image_artist',
 		'gallery_image_description',
 		'gallery_image_next',
@@ -32,54 +47,51 @@ function gallery_loader_scripts_transport_start()
 /**
  * gallery
  *
+ * @since 2.0.2
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $directory
- * @param integer $quality
- * @param integer $scaling
- * @param integer $height
+ * @param array $options
  * @param string $command
  */
 
-function gallery($directory = '', $quality = '', $scaling = '', $height = '', $command = '')
+function gallery($directory = '', $options = '', $command = '')
 {
-	/* define variables */
+	global $gallery_counter;
 
-	if (is_numeric($quality) == '')
+	/* define option variables */
+
+	if (is_array($options))
 	{
-		$quality = 80;
-		if ($command == '')
+		foreach ($options as $key => $value)
 		{
-			$command = $quality;
+			$key = 'option_' . $key;
+			$$key = $value;
 		}
 	}
-	else if ($quality > 100)
+
+	/* else command fallback */
+
+	else if ($options === 'build' || $options === 'delete')
 	{
-		$quality = 100;
-	}
-	if (is_numeric($scaling) == '')
-	{
-		$scaling = 20;
-		if ($command == '')
-		{
-			$command = $scaling;
-		}
-	}
-	else if ($scaling > 100)
-	{
-		$scaling = 100;
-	}
-	if (is_numeric($height) == '')
-	{
-		$height = 0;
-		if ($command == '')
-		{
-			$command = $height;
-		}
+		$command = $options;
 	}
 
 	/* gallery directory object */
 
 	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
 	$gallery_directory_array = $gallery_directory->getOutput();
+
+	/* reverse order */
+
+	if ($option_order == 'desc')
+	{
+		$gallery_directory_array = array_reverse($gallery_directory_array);
+	}
 
 	/* delete gallery thumbs directory */
 
@@ -95,7 +107,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 		/* collect gallery */
 
 		$gallery_total = count($gallery_directory_array);
-		$gallery_name = str_replace('/', '_', $directory);
+		$gallery_id = str_replace('/', '_', $directory) . '_' . ++$gallery_counter;
 		if ($gallery_total)
 		{
 			foreach ($gallery_directory_array as $value)
@@ -103,11 +115,11 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 				$route = $directory . '/' . $value;
 				$thumb_route = $directory . '/thumbs/' . $value;
 
-				/* build gallery thumb */
+				/* build thumb */
 
 				if (file_exists($thumb_route) == '' || $command == 'build')
 				{
-					gallery_build_thumb($value, $directory, $route, $quality, $scaling, $height);
+					gallery_build_thumb($value, $directory, $options);
 				}
 				if (file_exists($thumb_route))
 				{
@@ -131,7 +143,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 					/* build data string */
 
-					$data_string = 'data-counter="' . ++$gallery_counter . '" data-total="' . $gallery_total . '" data-gallery-name="' . $gallery_name . '"';
+					$data_string = 'data-counter="' . ++$image_counter . '" data-total="' . $gallery_total . '" data-id="' . $gallery_id . '"';
 					if ($image_artist)
 					{
 						$data_string .= ' data-artist="' . $image_artist . '"';
@@ -143,12 +155,17 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 					if ($image_description)
 					{
 						$data_string .= ' data-description="' . $image_description . '"';
+						$alt_string = ' alt="' . $image_description . '"';
+					}
+					else
+					{
+						$alt_string = ' alt="' . str_replace('_', ' ', pathinfo($value, PATHINFO_FILENAME)) . '"';
 					}
 
 					/* collect image output */
 
-					$image = '<img src="' . $thumb_route . '" class="image image_gallery" alt="' . $image_description . '" ' . $data_string . ' />';
-					$output .= '<li class="item_gallery">' . anchor_element('internal', '', 'link_gallery', $image, $route, $image_description, 'rel="nofollow"') . '</li>';
+					$image = '<img src="' . $thumb_route . '" class="image image_gallery"' . $alt_string . ' />';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, $data_string) . '</li>';
 				}
 			}
 
@@ -156,7 +173,7 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 
 			if ($output)
 			{
-				$output = '<ul id="' . $gallery_name . '" class="js_list_gallery list_gallery clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_id . '" class="js_list_gallery list_gallery ' . $gallery_id . ' clear_fix">' . $output . '</ul>';
 				echo $output;
 			}
 		}
@@ -173,17 +190,46 @@ function gallery($directory = '', $quality = '', $scaling = '', $height = '', $c
 /**
  * gallery build thumb
  *
+ * @since 2.0.2
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ *
  * @param string $input
  * @param string $directory
- * @param string $route
- * @param integer $quality
- * @param integer $scaling
- * @param integer $height
+ * @param array $options
  */
 
-function gallery_build_thumb($input = '', $directory = '', $route = '', $quality = '', $scaling = '', $height = '')
+function gallery_build_thumb($input = '', $directory = '', $options)
 {
+	/* define option variables */
+
+	if (is_array($options))
+	{
+		foreach ($options as $key => $value)
+		{
+			$key = 'option_' . $key;
+			$$key = $value;
+		}
+	}
+
+	/* fallback */
+
+	if ($option_height == '')
+	{
+		$option_height = 100;
+	}
+	if ($option_quality == '')
+	{
+		$option_quality = 80;
+	}
+
+	/* get extension */
+
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
+	$route = $directory . '/' . $input;
 
 	/* switch extension */
 
@@ -199,18 +245,23 @@ function gallery_build_thumb($input = '', $directory = '', $route = '', $quality
 			break;
 	}
 
+	/* original image dimensions */
+
+	$original_dimensions = getimagesize($route);
+	$original_height = $original_dimensions[1];
+	$original_width = $original_dimensions[0];
+
 	/* calculate image dimensions */
 
-	$original_size = getimagesize($route);
-	if ($height)
+	if ($option_height)
 	{
-		$scaling = $height / $original_size[1] * 100;
+		$option_scaling = $option_height / $original_height * 100;
 	}
 	else
 	{
-		$height = round($scaling / 100 * $original_size[1]);
+		$option_height = round($option_scaling / 100 * $original_height);
 	}
-	$width = round($scaling / 100 * $original_size[0]);
+	$option_width = round($option_scaling / 100 * $original_width);
 
 	/* create thumbs directory */
 
@@ -223,9 +274,12 @@ function gallery_build_thumb($input = '', $directory = '', $route = '', $quality
 	/* create thumbs */
 
 	$output = $thumbs_directory . '/' . $input;
-	$process = imagecreatetruecolor($width, $height);
-	imagecopyresampled($process, $image, 0, 0, 0, 0, $width, $height, $original_size[0], $original_size[1]);
-	imagejpeg($process, $output, $quality);
+	$process = imagecreatetruecolor($option_width, $option_height);
+	imagecopyresampled($process, $image, 0, 0, 0, 0, $option_width, $option_height, $original_width, $original_height);
+	imagejpeg($process, $output, $option_quality);
+
+	/* destroy images */
+
 	imagedestroy($image);
 	imagedestroy($process);
 }

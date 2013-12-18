@@ -3,6 +3,11 @@
  *
  * 1. maps
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -29,23 +34,24 @@
 			$(this).each(function ()
 			{
 				var map = $(this),
-					mapZoom = Number(map.data('zoom')),
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
-					mapMeta, mapInstance;
-
-				/* overwrite zoom */
-
-				if (mapZoom)
-				{
-					options.general.zoom = mapZoom;
-				}
+					mapZoom = Number(map.data('zoom')),
+					mapMeta = '',
+					mapInstance = '';
 
 				/* overwrite center */
 
 				if (mapLat && mapLng)
 				{
 					options.general.center = new google.maps.LatLng(mapLat, mapLng);
+				}
+
+				/* overwrite zoom */
+
+				if (mapZoom)
+				{
+					options.general.zoom = mapZoom;
 				}
 
 				/* create map instance */
@@ -56,7 +62,7 @@
 
 					/* replace branding */
 
-					if (options.replaceBranding)
+					if (options.deBrand)
 					{
 						/* remove orignal branding */
 
@@ -66,7 +72,7 @@
 						});
 						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
 						{
-							map.children('div').css('opacity', 1).children('div').slice(1, 6).remove();
+							map.children('div').css('opacity', 1).children('div').slice(1, 7).remove();
 						});
 
 						/* append custom branding */

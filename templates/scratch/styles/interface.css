@@ -3,7 +3,12 @@
  *
  * 1. list breadcrumb and list pagination
  * 2. list default
- * 3. tooltip default
+ * 3. tooltip
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. list breadcrumb and list pagination */
@@ -17,13 +22,14 @@
 
 .list_default li
 {
-	list-style: inherit;
-	margin: 1em 1.5em;
+	line-height: 2.5em;
+	list-style-position: inside;
+	list-style-type: inherit;
 }
 
-/* @section 3. tooltip default */
+/* @section 3. tooltip */
 
-.tooltip_default
+.tooltip
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
@@ -36,5 +42,18 @@
 	margin-left: 1em;
 	top: -0.625em;
 	padding: 1em;
+}
+
+/* default */
+
+.tooltip_default
+{
 	width: 20em;
+}
+
+/* alternative */
+
+.tooltip_alternative
+{
+	white-space: nowrap;
 }

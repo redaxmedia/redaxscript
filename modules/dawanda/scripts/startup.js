@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. dawanda
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. dawanda */
@@ -11,10 +16,8 @@ r.modules.dawanda =
 	startup: true,
 	options:
 	{
-		key: '380d7924396f5596116f3d8815c97dfd8c975582',
-		protocol: 'http://',
-		url: 'dawanda.com/api/v1',
-		language: 'en'
+		url: 'http://en.dawanda.com/api/v1',
+		key: '380d7924396f5596116f3d8815c97dfd8c975582'
 	},
 	routes:
 	{

@@ -2,6 +2,13 @@
 
 /**
  * breadcrumb
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Breadcrumb
+ * @author Henry Ruhs
  */
 
 function breadcrumb()
@@ -51,6 +58,13 @@ function breadcrumb()
 
 /**
  * build breadcrumb
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Breadcrumb
+ * @author Henry Ruhs
  *
  * @return array
  */

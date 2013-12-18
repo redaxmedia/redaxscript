@@ -3,6 +3,11 @@
  *
  * 1. seo tube
  * 2. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -25,10 +30,10 @@
 			relatedDescription = $(options.related.description),
 			relatedText = $(options.related.text),
 			video = r.modules.seoTube.video,
-			constant = r.modules.seoTube.constant,
-			eol = '\n',
-			tab = '\t',
-			text;
+			constants = r.modules.seoTube.constants,
+			eol = options.eol,
+			indent = options.indent,
+			text = '';
 
 		if (typeof video === 'object')
 		{
@@ -41,7 +46,7 @@
 			}
 			if (video.id)
 			{
-				text = '<function>' + eol + '{' + eol + tab + '"seo_tube_player":' + eol + tab + '{' + eol + tab + tab + '"video_id": "' + video.id + '"' + eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
+				text = '<function>' + eol + '{' + eol + indent + '"seo_tube_player":' + eol + indent + '{' + eol + indent + indent + '"video_id": "' + video.id + '"' + eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 
 			/* video description */
@@ -49,23 +54,14 @@
 			if (video.description)
 			{
 				relatedDescription.val(video.description);
-				if (constant.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
+				if (constants.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
 					text += '<p class="text_seo_tube">' + video.description + '</p>' + eol + eol;
 				}
 			}
 
-			/* video related feed */
+			/* video text */
 
-			if (constant.SEO_TUBE_COMMENT_FEED > 0)
-			{
-				text += eol + '<function>' + eol + '{' + eol + tab + '"feed_reader":' + eol + tab + '{' + eol + tab + tab + '"url": "' + constant.SEO_TUBE_GDATA_URL + '/' + video.id + '/comments"';
-				if (constant.SEO_TUBE_COMMENT_LIMIT)
-				{
-					text += ',' + eol + tab + tab + '"filter": "",' + eol + tab + tab + '"limit": "' + constant.SEO_TUBE_COMMENT_LIMIT + '"';
-				}
-				text += eol + tab + '}' + eol + '}' + eol + '</function>' + eol + eol;
-			}
 			if (text)
 			{
 				relatedText.val(text);

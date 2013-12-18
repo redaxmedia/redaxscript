@@ -2,27 +2,55 @@
  * @tableofcontents
  *
  * 1. box validator
- *    1.1 screen max 50em
+ *    1.1 screen min 50em
+ *    1.2 screen max 50em
  * 2. description validator
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. box validator */
 
 .box_validator
 {
+	-moz-animation: fade 0.4s;
 	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	-ms-animation: fade 0.4s;
+	-o-animation: fade 0.4s;
+	-webkit-animation: fade 0.4s;
 	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	animation: fade 0.4s;
 	background: #fff;
+	bottom: 1em;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-	font: 0.875em arial;
+	font: 0.75em arial;
 	padding: 1em;
-	position: absolute;
+	position: fixed;
 	right: 1em;
-	top: 1em;
-	z-index: 2000;
+	z-index: 900;
 }
 
-/* @section 1.1 screen max 50em */
+/* box note */
+
+.box_validator .box_note:before
+{
+	float: left;
+}
+
+/* @section 1.1 screen min 50em */
+
+@media screen and (min-width: 50em)
+{
+	.box_validator
+	{
+		width: 20em;
+	}
+}
+
+/* @section 1.2 screen max 50em */
 
 @media screen and (max-width: 50em)
 {

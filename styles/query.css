@@ -7,6 +7,11 @@
  * 4. screen max 30em
  * 5. screen max 20em
  * 6. rtl direction
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. print */
@@ -47,17 +52,22 @@
 
 /* @section 4. screen max 30em */
 
-@media screen and (max-width: 30em)
+@media screen and (max-width: 29.999em)
 {
+	a.button_default
+	{
+		display: block;
+	}
+
+	button.button_default, .field_select, .field_text, .field_textarea.field_small
+	{
+		width: 100%;
+	}
+
 	.dialog
 	{
 		margin: -5em 0 0 -40%;
 		width: 80%;
-	}
-
-	.field_select, .field_text, .field_textarea_small
-	{
-		width: 100%;
 	}
 
 	.player

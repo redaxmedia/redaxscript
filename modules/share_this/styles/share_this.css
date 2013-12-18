@@ -4,14 +4,13 @@
  * 1. font face
  * 2. list share this
  * 3. link share this
- *    3.1 facebook
- *    3.2 google
- *    3.3 twitter
- *    3.4 pinterest
- *    3.5 tumblr
- *    3.6 linkedin
- *    3.7 stumbleupon
- *    3.8 delicious
+ *    3.1 icons
+ * 4. counter
+ *
+ * @since 2.0.2
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. font face */
@@ -19,20 +18,20 @@
  @font-face
 {
 	font-family: 'icon share this';
-	src: url('modules/share_this/fonts/icon.woff') format('woff');
+	src: url('modules/share_this/fonts/icon.woff') format('woff'), url('modules/share_this/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. list share this */
 
 .list_share_this
 {
-	margin: 2em 0;
+	margin-top: 2em;
 }
 
 .list_share_this li
 {
 	float: left;
-	margin-right: 3em;
+	margin: 0 3.5em 2em 0;
 }
 
 /* @section 3. link share this */
@@ -45,83 +44,127 @@
 	text-indent: -999em;
 }
 
+/* @section 3.1 icons */
+
 .link_share_this:before
 {
 	-moz-border-radius: 2em;
+	-moz-transition: background 0.3s;
+	-ms-transition: background 0.3s;
+	-o-transition: background 0.3s;
 	-webkit-border-radius: 2em;
-	background: #aaa;
+	-webkit-transition: background 0.3s;
+	background: #bbb;
+	background: rgba(0, 0, 0, 0.15);
 	border-radius: 2em;
 	color: #fff;
 	content: 'a';
-	font: 1em/2.25em 'icon share this';
+	font: 1.125em/2.25em 'icon share this';
 	left: 0;
 	position: absolute;
 	text-align: center;
 	text-indent: 0;
 	top: 0;
+	transition: background 0.3s;
 	width: 2.25em;
 }
 
-/* @section 3.1 facebook */
+/* facebook */
 
 .link_share_this.link_facebook:before
 {
-	background: #3b5998;
 	content: 'b';
 }
 
-/* @section 3.2 google */
-
-.link_share_this.link_google:before
+.link_share_this.link_facebook:hover:before
 {
-	background: #d34836;
+	background: #3b5998;
+}
+
+/* google plus one */
+
+.link_share_this.link_googleplusone:before
+{
 	content: 'c';
 }
 
-/* @section 3.3 twitter */
+.link_share_this.link_googleplusone:hover:before
+{
+	background: #d34836;
+}
+
+/* twitter */
 
 .link_share_this.link_twitter:before
 {
-	background: #00aced;
 	content: 'd';
 }
 
-/* @section 3.4 pinterest */
+.link_share_this.link_twitter:hover:before
+{
+	background: #00aced;
+}
+
+/* pinterest */
 
 .link_share_this.link_pinterest:before
 {
-	background: #cb2027;
 	content: 'e';
 }
 
-/* @section 3.5 tumblr */
-
-.link_share_this.link_tumblr:before
+.link_share_this.link_pinterest:hover:before
 {
-	background: #32506d;
-	content: 'f';
+	background: #cb2027;
 }
 
-/* @section 3.6 linkedin */
+/* linkedin */
 
 .link_share_this.link_linkedin:before
 {
-	background: #007bb6;
-	content: 'g';
+	content: 'f';
 }
 
-/* @section 3.7 stumbleupon */
+.link_share_this.link_linkedin:hover:before
+{
+	background: #007bb6;
+}
+
+/* stumbleupon */
 
 .link_share_this.link_stumbleupon:before
 {
-	background: #f74425;
-	content: 'h';
+	content: 'g';
 }
 
-/* @section 3.8 delicious */
+.link_share_this.link_stumbleupon:hover:before
+{
+	background: #f74425;
+}
+
+/* delicious */
 
 .link_share_this.link_delicious:before
 {
+	content: 'h';
+}
+
+.link_share_this.link_delicious:hover:before
+{
 	background: #205cc0;
-	content: 'i';
+}
+
+/* @section 4. counter */
+
+.link_share_this:after
+{
+	color: #bbb;
+	color: rgba(0, 0, 0, 0.15);
+	content: attr(data-counter);
+	bottom: -1.25em;
+	font: bold 1em arial;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	width: 2.5em;
 }

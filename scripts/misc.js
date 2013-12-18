@@ -4,6 +4,11 @@
  * 1. forward notification
  * 2. key shortcut
  * 3. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -26,17 +31,22 @@
 		return this.each(function ()
 		{
 			var link = $(this),
-				url = link.attr('href'),
-				timeout;
+				url = link.attr('href');
 
 			/* timeout enhanced forward */
 
 			if (typeof url === 'string')
 			{
-				clearTimeout(timeout);
-				timeout = setTimeout(function ()
+				setTimeout(function ()
 				{
-					window.location = url;
+					if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
+					{
+						window.location = r.baseURL + url;
+					}
+					else
+					{
+						window.location = url;
+					}
 				}, options.duration);
 			}
 		});
@@ -62,6 +72,7 @@
 			$(this).on('keydown', function (event)
 			{
 				var adminDock = $(options.element.adminDock),
+					adminPanel = $(options.element.adminPanel),
 					buttonSubmit = $(options.element.buttonSubmit),
 					buttonOk = $(options.element.buttonOk),
 					buttonCancel = $(options.element.buttonCancel);
@@ -82,11 +93,32 @@
 						adminDock.toggle();
 					}
 
+					/* login and logout */
+
+					else if (event.which === 76)
+					{
+						if (r.constants.LOGGED_IN === r.constants.TOKEN)
+						{
+							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+						}
+						else
+						{
+							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+						}
+					}
+
 					/* trigger ok action */
 
 					else if (event.which === 79)
 					{
 						buttonOk.click();
+					}
+
+					/* toggle admin panel */
+
+					else if (event.which === 80)
+					{
+						adminPanel.toggle();
 					}
 
 					/* trigger submit action */
@@ -114,7 +146,7 @@
 
 	$(function ()
 	{
-		if (r.plugins.keyShortcut.startup && r.constants.LOGGED_IN === r.constants.TOKEN)
+		if (r.plugins.keyShortcut.startup)
 		{
 			$(r.plugins.keyShortcut.selector).keyShortcut(r.plugins.keyShortcut.options);
 		}

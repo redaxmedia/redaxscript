@@ -4,6 +4,11 @@
  * 1. clean alias
  * 2. generate alias
  * 3. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -181,7 +186,7 @@
 					form = field.closest('form'),
 					fiedValue = $.trim(field.val()),
 					fieldRelated = form.find(options.related),
-					aliasValue;
+					aliasValue = '';
 
 				/* clean alias if value */
 

@@ -3,6 +3,13 @@
 /**
  * loader
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Loader
+ * @author Henry Ruhs
+ *
  * @param string $type
  * @param string $mode
  * @return string
@@ -186,6 +193,13 @@ function loader($type = '', $mode = '')
 
 /**
  * styles
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Loader
+ * @author Henry Ruhs
  */
 
 function styles()
@@ -255,6 +269,13 @@ function styles()
 
 /**
  * scripts
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Loader
+ * @author Henry Ruhs
  *
  * @param string $mode
  */
@@ -349,6 +370,13 @@ function scripts($mode = '')
 /**
  * languages transport
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Loader
+ * @author Henry Ruhs
+ *
  * @param array $language
  * @return string
  */
@@ -369,6 +397,13 @@ function languages_transport($language = '')
 
 /**
  * scripts transport
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Loader
+ * @author Henry Ruhs
  *
  * @param boolean $minify
  * @return string

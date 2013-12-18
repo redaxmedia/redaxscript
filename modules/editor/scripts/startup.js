@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. editor
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. editor */
@@ -14,28 +19,64 @@ r.modules.editor =
 	{
 		element:
 		{
-			editor: 'div.js_editor',
-			editorPreview: 'div.js_editor_preview',
-			editorToolbar: 'div.js_toolbar',
-			editorDivider: 'span.js_editor_divider',
-			editorControl: 'span.js_editor_control',
-			editorSourceCode: 'span.js_editor_control_source_code',
-			editorWysiwyg: 'span.js_editor_control_wysiwyg'
+			editorControl: 'a.js_editor_control'
 		},
 		classString:
 		{
 			editor: 'js_editor editor',
 			editorPreview: 'js_required js_editor_preview editor_preview',
 			editorToolbar: 'js_toolbar editor_toolbar clear_fix',
-			editorDivider: 'js_editor_divider editor_divider',
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
 			editorWysiwyg: 'wysiwyg'
 		},
 		toolbar:
 		{
-			backend: ['toggle', 'divider', 'bold', 'italic', 'underline', 'strike', 'divider', 'superscript', 'subscript', 'divider', 'paragraph', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ordered_list', 'unordered_list', 'divider', 'outdent', 'indent', 'divider', 'align_left', 'align_center', 'align_right', 'align_justify', 'undo', 'redo', 'divider', 'cut', 'copy', 'paste', 'insert_link', 'unlink', 'divider', 'insert_image', 'insert_break', 'insert_code', 'insert_function', 'divider', 'unformat'],
-			frontend: ['bold', 'italic', 'underline', 'strike', 'divider', 'unformat']
+			backend:
+			[
+				'toggle',
+				'bold',
+				'italic',
+				'underline',
+				'strike',
+				'superscript',
+				'subscript',
+				'paragraph',
+				'h1',
+				'h2',
+				'h3',
+				'h4',
+				'h5',
+				'h6',
+				'ordered_list',
+				'unordered_list',
+				'outdent',
+				'indent',
+				'align_left',
+				'align_center',
+				'align_right',
+				'align_justify',
+				'undo',
+				'redo',
+				'cut',
+				'copy',
+				'paste',
+				'insert_link',
+				'unlink',
+				'insert_image',
+				'insert_break',
+				'insert_code',
+				'insert_function',
+				'unformat'
+			],
+			frontend:
+			[
+				'bold',
+				'italic',
+				'underline',
+				'strike',
+				'unformat'
+			]
 		},
 		xhtml:
 		{
@@ -46,175 +87,177 @@ r.modules.editor =
 		{
 			backend: true,
 			frontend: false
-		}
+		},
+		eol: '\n',
+		vibrate: 100
 	},
 	controls:
 	{
 		toggle:
 		{
 			title: l.editor_source_code,
-			methode: 'toggle'
+			method: 'toggle'
 		},
 		bold:
 		{
 			title: l.editor_bold,
-			methode: 'action',
+			method: 'action',
 			command: 'bold'
 		},
 		italic:
 		{
 			title: l.editor_italic,
-			methode: 'action',
+			method: 'action',
 			command: 'italic'
 		},
 		underline:
 		{
 			title: l.editor_underline,
-			methode: 'action',
+			method: 'action',
 			command: 'underline'
 		},
 		strike:
 		{
 			title: l.editor_strike,
-			methode: 'action',
+			method: 'action',
 			command: 'strikeThrough'
 		},
 		superscript:
 		{
 			title: l.editor_superscript,
-			methode: 'action',
+			method: 'action',
 			command: 'superscript'
 		},
 		subscript:
 		{
 			title: l.editor_subscript,
-			methode: 'action',
+			method: 'action',
 			command: 'subscript'
 		},
 		paragraph:
 		{
 			title: l.editor_paragraph,
-			methode: 'format',
+			method: 'format',
 			command: 'p'
 		},
 		h1:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h1'
 		},
 		h2:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h2'
 		},
 		h3:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h3'
 		},
 		h4:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h4'
 		},
 		h5:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h5'
 		},
 		h6:
 		{
 			title: l.headline,
-			methode: 'format',
+			method: 'format',
 			command: 'h6'
 		},
 		ordered_list:
 		{
 			title: l.editor_ordered_list,
-			methode: 'action',
+			method: 'action',
 			command: 'insertOrderedList'
 		},
 		unordered_list:
 		{
 			title: l.editor_unordered_list,
-			methode: 'action',
+			method: 'action',
 			command: 'insertUnorderedList'
 		},
 		outdent:
 		{
 			title: l.editor_outdent,
-			methode: 'action',
+			method: 'action',
 			command: 'outdent'
 		},
 		indent:
 		{
 			title: l.editor_indent,
-			methode: 'action',
+			method: 'action',
 			command: 'indent'
 		},
 		align_left:
 		{
 			title: l.editor_align_left,
-			methode: 'action',
+			method: 'action',
 			command: 'justifyLeft'
 		},
 		align_center:
 		{
 			title: l.editor_align_center,
-			methode: 'action',
+			method: 'action',
 			command: 'justifyCenter'
 		},
 		align_right:
 		{
 			title: l.editor_align_right,
-			methode: 'action',
+			method: 'action',
 			command: 'justifyRight'
 		},
 		align_justify:
 		{
 			title: l.editor_align_justify,
-			methode: 'action',
+			method: 'action',
 			command: 'justifyFull'
 		},
 		undo:
 		{
 			title: l.editor_undo,
-			methode: 'action',
+			method: 'action',
 			command: 'undo'
 		},
 		redo:
 		{
 			title: l.editor_redo,
-			methode: 'action',
+			method: 'action',
 			command: 'redo'
 		},
 		cut:
 		{
 			title: l.editor_cut,
-			methode: 'action',
+			method: 'action',
 			command: 'cut'
 		},
 		copy:
 		{
 			title: l.editor_copy,
-			methode: 'action',
+			method: 'action',
 			command: 'copy'
 		},
 		paste:
 		{
 			title: l.editor_paste,
-			methode: 'action',
+			method: 'action',
 			command: 'paste'
 		},
 		insert_link:
 		{
 			title: l.editor_insert_link,
-			methode: 'insert',
+			method: 'insert',
 			command: 'createLink',
 			message: l.editor_insert_link,
 			value: 'http://'
@@ -222,13 +265,13 @@ r.modules.editor =
 		unlink:
 		{
 			title: l.editor_remove_link,
-			methode: 'action',
+			method: 'action',
 			command: 'unlink'
 		},
 		insert_image:
 		{
 			title: l.editor_insert_image,
-			methode: 'insert',
+			method: 'insert',
 			command: 'insertImage',
 			message: l.editor_insert_image,
 			value: 'http://'
@@ -236,25 +279,25 @@ r.modules.editor =
 		insert_break:
 		{
 			title: l.editor_insert_document_break,
-			methode: 'insertBreak'
+			method: 'insertBreak'
 		},
 		insert_code:
 		{
 			title: l.editor_insert_code_quote,
-			methode: 'insertCode'
+			method: 'insertCode'
 		},
 		insert_function:
 		{
 			title: l.editor_insert_php_function,
-			methode: 'insert',
+			method: 'insert',
 			command: 'insertFunction',
 			message: l.editor_insert_php_function,
-			value: '{}'
+			value: ''
 		},
 		unformat:
 		{
 			title: l.editor_remove_format,
-			methode: 'action',
+			method: 'action',
 			command: 'removeFormat'
 		}
 	}

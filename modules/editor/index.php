@@ -2,6 +2,13 @@
 
 /**
  * editor loader start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function editor_loader_start()
@@ -14,11 +21,19 @@ function editor_loader_start()
 
 /**
  * editor loader scripts transport start
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function editor_loader_scripts_transport_start()
 {
 	$output = languages_transport(array(
+		'headline',
 		'editor_bold',
 		'editor_italic',
 		'editor_underline',
@@ -49,8 +64,7 @@ function editor_loader_scripts_transport_start()
 		'editor_insert_code_quote',
 		'editor_insert_php_function',
 		'editor_select_text_first',
-		'editor_browser_support_no',
-		'headline'
+		'editor_browser_support_no'
 	));
 	echo $output;
 }

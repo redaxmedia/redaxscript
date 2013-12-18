@@ -5,6 +5,11 @@
  * 2. dropdown
  * 3. tab
  * 4. startup
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -26,25 +31,24 @@
 
 		return this.each(function ()
 		{
-			var accordionTitle = $(this),
-				accordion = accordionTitle.closest(options.element.accordion),
+			var accordionTrigger = $(this),
+				accordion = accordionTrigger.closest(options.element.accordion),
+				accordionSet = accordion.find(options.element.accordionSet),
 				accordionBox = accordion.find(options.element.accordionBox),
 				accordionForm = accordion.closest('form');
 
 			/* show active accordion box */
 
-			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
+			accordionSet.filter('.js_set_active').children(options.element.accordionBox).show();
 
-			/* listen for click and touchstart */
+			/* listen for click */
 
-			$(this).on('click touchstart', function ()
+			accordionTrigger.on('click', function ()
 			{
 				var accordionTitleActive = $(this),
 					accordion = accordionTitleActive.closest(options.element.accordion),
-					accordionSet = accordion.find(options.element.accordionSet),
 					accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
 					accordionTitle = accordion.find(options.element.accordionTitle),
-					accordionBox = accordion.find(options.element.accordionBox),
 					accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
 
 				/* remove active classes */
@@ -76,11 +80,15 @@
 				}
 			});
 
-			/* show related set on validation error */
+			/* show related set on error */
 
 			accordionForm.on('error', function ()
 			{
-				$(this).find(options.element.accordionSet).has('.js_note_error').first().children(options.element.accordionTitle).click();
+				var fieldRequired = accordionSet.find('.js_note_error').first(),
+					accordionSetError = fieldRequired.closest(options.element.accordionSet),
+					accordionTitleError = accordionSetError.children(options.element.accordionTitle);
+
+				accordionTitleError.click();
 			});
 		});
 	};
@@ -102,7 +110,7 @@
 		{
 			var dropdown = $(this),
 				dropdownRelated = dropdown.find(options.related),
-				timeout;
+				timeout = '';
 
 			/* listen for touchstart and touchend */
 
@@ -146,7 +154,8 @@
 
 		return this.each(function ()
 		{
-			var url = window.location.href.replace(r.baseURL, ''),
+			var tabTrigger = $(this),
+				tabHash = window.location.hash,
 				tabList = $(options.element.tabList),
 				tabBox = $(options.element.tabBox),
 				tabSet = tabBox.find(options.element.tabSet),
@@ -154,14 +163,12 @@
 
 			/* show first tab set */
 
-			tabBox.height('auto').each(function ()
-			{
-				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active');
-			});
+			tabBox.height('auto');
+			tabSet.filter(':first-child').addClass('js_set_active set_active');
 
-			/* listen for click and touchstart */
+			/* listen for click */
 
-			$(this).on('click touchstart', function (event)
+			tabTrigger.on('click', function (event)
 			{
 				var tabItem = $(this),
 					tabList = tabItem.closest(options.element.tabList),
@@ -185,9 +192,12 @@
 				event.preventDefault();
 			});
 
-			/* click tab depending on location href */
+			/* click tab depending on location hash */
 
-			tabList.find('a[href="' + url + '"]').click();
+			if (typeof tabHash === 'string')
+			{
+				tabList.find('a[href*="' + tabHash + '"]').click();
+			}
 
 			/* prevent tab for last children */
 
@@ -199,13 +209,15 @@
 				}
 			});
 
-			/* show related tab on validation error */
+			/* show related tab on error */
 
 			tabForm.on('error', function ()
 			{
-				var id = $(this).find(options.element.tabSet).has('.js_note_error').first().attr('id');
+				var fieldRequired = tabSet.find('.js_note_error').first(),
+					tabNameError = fieldRequired.closest(options.element.tabSet).attr('id'),
+					tabLinkError = tabList.find('a[href*="' + tabNameError + '"]');
 
-				tabList.find('a[href*="' + r.constants.FULL_ROUTE + '#' + id + '"]').click();
+				tabLinkError.click();
 			});
 		});
 	};

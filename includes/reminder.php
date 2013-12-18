@@ -2,6 +2,13 @@
 
 /**
  * reminder form
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Reminder
+ * @author Henry Ruhs
  */
 
 function reminder_form()
@@ -12,7 +19,6 @@ function reminder_form()
 
 	if (ATTACK_BLOCKED > 9)
 	{
-		$class_disabled = ' field_disabled';
 		$code_disabled = ' disabled="disabled"';
 	}
 
@@ -25,11 +31,11 @@ function reminder_form()
 	$output = '<h2 class="title_content">' . l('reminder') . '</h2>';
 	$output .= form_element('form', 'form_reminder', 'js_check_required form_default form_reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
 	$output .= form_element('fieldset', '', 'set_reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note' . $class_disabled, 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
 
-	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note' . $class_disabled, 'task', '', $captcha->getTask(), 'maxlength="2" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
@@ -39,7 +45,7 @@ function reminder_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit field_button' . $class_disabled, 'reminder_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
 	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;
@@ -48,6 +54,13 @@ function reminder_form()
 
 /**
  * reminder post
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Reminder
+ * @author Henry Ruhs
  */
 
 function reminder_post()

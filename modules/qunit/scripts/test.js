@@ -10,8 +10,13 @@
  * 7. clean alias
  * 8. auto resize
  * 9. check search
- * 10. enable tab
+ * 10. enable indent
  * 11. unmask password
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 (function ($)
@@ -121,7 +126,7 @@
 
 		/* @section 9. check search */
 
-		if (typeof $.fn.checkSearch === 'function' && r.support.placeholder === true)
+		if (typeof $.fn.checkSearch === 'function' && r.support.input.placeholder)
 		{
 			win.test('checkSearch', function ()
 			{
@@ -138,14 +143,14 @@
 			});
 		}
 
-		/* @section 10. enable tab */
+		/* @section 10. enable indent */
 
-		if (typeof $.fn.enableTab === 'function')
+		if (typeof $.fn.enableIndent === 'function')
 		{
-			win.test('enableTab', function ()
+			win.test('enableIndent', function ()
 			{
-				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableTab().appendTo(fixture),
-					expect = r.plugins.enableTab.options.insertion,
+				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableIndent().appendTo(fixture),
+					expect = r.plugins.enableIndent.options.indent,
 					result = textarea.val(),
 					keydown = $.Event('keydown');
 

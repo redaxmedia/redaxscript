@@ -2,7 +2,7 @@
 
 /* editor */
 
-$l['editor_wysiwyg'] = 'Wysiwyg';
+$l['editor_wysiwyg'] = 'WYSIWYG';
 $l['editor_source_code'] = 'Kod źródłowy';
 $l['editor_bold'] = 'Pogrubienie';
 $l['editor_italic'] = 'Kursywa';

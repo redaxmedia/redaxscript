@@ -3,6 +3,11 @@
  *
  * 1. hide
  * 2. clear fix
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. hide */
@@ -24,5 +29,5 @@
 	content: '';
 	display: block;
 	height: 0;
-	clear: both
+	clear: both;
 }

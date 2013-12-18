@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. default buttons
+ * 2. button default and button search
  * 3. default fields
  * 4. textarea dimensions
  * 5. search elements
@@ -10,6 +10,11 @@
  * 7. form default
  * 8. form search
  * 9. space between elements
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. tag styling */
@@ -19,9 +24,9 @@ textarea
 	resize: vertical;
 }
 
-/* @section 2. default buttons */
+/* @section 2. button default and button search */
 
-.field_button, .field_button_large, .field_button_search
+.button_default, .button_search
 {
 	-moz-border-radius: 0.125em;
 	-webkit-border-radius: 0.125em;
@@ -33,16 +38,17 @@ textarea
 	display: inline-block;
 	padding: 0 0.75em;
 	line-height: 2.25em;
+	text-align: center;
 }
 
-.field_button_large
+.button_default.button_large
 {
 	font-size: 1.25em;
 }
 
 /* @section 3. default fields */
 
-.field_select, .field_text, .field_textarea_small
+.field_select, .field_text, .field_textarea.field_small
 {
 	width: 30%;
 }
@@ -52,17 +58,14 @@ textarea
 	width: 100%;
 }
 
-.field_search, .field_select, .field_text, .field_textarea, .field_textarea_small
+.field_search, .field_select, .field_text, .field_textarea
 {
 	-moz-border-radius: 0.125em;
-	-moz-box-sizing: border-box;
 	-webkit-border-radius: 0.125em;
-	-webkit-box-sizing: border-box;
 	background: #f5f5f5;
 	border: 1px solid #e5e5e5;
 	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.125em;
-	box-sizing: border-box;
 	font-size: 1em;
 	padding: 0.5em;
 }
@@ -75,21 +78,27 @@ textarea
 	width: 100%;
 }
 
-.field_textarea_small
+.field_textarea.field_small
 {
 	min-height: 5em;
 }
 
 /* @section 5. search elements */
 
-.field_button_search
+.button_search
 {
-	margin-left: 0.5em;
+	width: 30%;
+}
+
+.field_search
+{
+	margin-right: 3%;
+	width: 67%;
 }
 
 /* @section 6. disabled and readonly */
 
-.field_button.field_disabled, .field_button_large.field_disabled, .field_select.field_disabled, .field_text.field_disabled, .field_text.field_readonly, .field_textarea.field_disabled, .field_textarea.field_readonly, .field_textarea_small.field_disabled, .field_textarea_small.field_readonly
+.button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
 	cursor: default;
 	opacity: 0.8;
@@ -117,12 +126,7 @@ textarea
 
 /* @section 9. space between elements */
 
-.box_dialog_default .field_button, .box_notification .field_button, .form_default .field_button, .form_default .field_button_large
+.box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
 {
 	margin-top: 1em;
-}
-
-.field_button + .field_button, .field_button_large + .field_button_large, .field_text + .field_button
-{
-	margin-left: 0.5em;
 }

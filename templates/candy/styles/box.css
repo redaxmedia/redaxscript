@@ -9,6 +9,11 @@
  * 6. box note
  * 7. box quote
  * 8. space between elements
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
  */
 
 /* @section 1. box code */
@@ -60,13 +65,9 @@
 
 .box_line
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
-	background: #000;
-	background: rgba(0, 0, 0, 0.8);
-	border-radius: 0.125em;
-	height: 0.5em;
-	width: 80%;
+	background: url('templates/candy/images/line.svg');
+	height: 2.5em;
+	width: 26.75em;
 }
 
 .content .box_line
@@ -95,9 +96,9 @@
 	font: italic 1.5em/2em georgia;
 	margin: 1em 0;
 	min-height: 4em;
-	padding: 0 5em;
+	padding: 0 1em 0 5em;
 	position: relative;
-	text-shadow: 0 2px #000, 0 0 70px #ddd;
+	text-shadow: 0 2px #000, 0 0 70px rgba(255, 255, 255, 0.8);
 }
 
 .box_quote:before
@@ -109,6 +110,7 @@
 	position: absolute;
 	text-shadow: 0 2px #000;
 	top: -0.75em;
+	z-index: -1;
 }
 
 /* @section 8. space between elements */
