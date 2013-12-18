@@ -12,6 +12,13 @@
 
 /* @section 1. dialog overlay default */
 
+.dialog
+{
+	-moz-box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
 .dialog_overlay_default
 {
 	background: #000;
@@ -23,8 +30,11 @@
 .dialog_default, .dialog_overlay_default
 {
 	-moz-animation: fade 0.4s;
+	-moz-border-radius: 0.25em;
 	-ms-animation: fade 0.4s;
 	-o-animation: fade 0.4s;
 	-webkit-animation: fade 0.4s;
+	-webkit-border-radius: 0.25em;
 	animation: fade 0.4s;
+	border-radius: 0.25em;
 }
