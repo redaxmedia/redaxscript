@@ -242,8 +242,6 @@ module.exports = function (grunt)
 			options:
 			{
 				stdout: true,
-				stdin: true,
-				stderr: true,
 				failOnError: true
 			}
 		},
