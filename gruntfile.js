@@ -215,6 +215,18 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
 			},
+			tocLintBase:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen -l && php vendor/redaxmedia/tocgen/cli.php styles .tocgen -l'
+			},
+			tocLintModules:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen -l'
+			},
+			tocLintTemplates:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen -l'
+			},
 			addUpstream:
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
@@ -341,7 +353,8 @@ module.exports = function (grunt)
 		'csslint',
 		'htmlhint',
 		'phplint',
-		'phpunit'
+		'phpunit',
+		'toclint'
 	]);
 	grunt.registerTask('phplint',
 	[
@@ -353,6 +366,12 @@ module.exports = function (grunt)
 		'shell:tocBase',
 		'shell:tocModules',
 		'shell:tocTemplates'
+	]);
+	grunt.registerTask('toclint',
+	[
+		'shell:tocLintBase',
+		'shell:tocLintModules',
+		'shell:tocLintTemplates'
 	]);
 	grunt.registerTask('eol',
 	[
