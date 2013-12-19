@@ -10,5 +10,4 @@ before_script:
 - composer install
 
 script:
-- php vendor/redaxmedia/tocgen/cli.php styles .tocgen -l
 - npm test
