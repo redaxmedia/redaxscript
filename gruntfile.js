@@ -353,25 +353,25 @@ module.exports = function (grunt)
 		'csslint',
 		'htmlhint',
 		'phplint',
-		'phpunit',
-		'toclint'
+		'toclint',
+		'phpunit'
 	]);
 	grunt.registerTask('phplint',
 	[
 		'copy:ruleset',
 		'phpcs'
 	]);
-	grunt.registerTask('toc',
-	[
-		'shell:tocBase',
-		'shell:tocModules',
-		'shell:tocTemplates'
-	]);
 	grunt.registerTask('toclint',
 	[
 		'shell:tocLintBase',
 		'shell:tocLintModules',
 		'shell:tocLintTemplates'
+	]);
+	grunt.registerTask('toc',
+	[
+		'shell:tocBase',
+		'shell:tocModules',
+		'shell:tocTemplates'
 	]);
 	grunt.registerTask('eol',
 	[
