@@ -1,18 +1,18 @@
 /**
  * @tableofcontents
  *
- * 1. box accordion
+ * 2. box accordion
  * 2. box code
  * 3. several boxes
  * 4. box tab
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. box accordion */
+/* @section 2. box accordion */
 
 .js .box_accordion
 {
