@@ -237,7 +237,7 @@ module.exports = function (grunt)
 			},
 			removeUpstream:
 			{
-				command: 'git remote remove upstream'
+				command: 'git remote rm upstream'
 			},
 			options:
 			{
