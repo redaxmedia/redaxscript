@@ -66,7 +66,7 @@ function qunit_scripts_start()
 {
 	if (FIRST_PARAMETER == 'qunit')
 	{
-		$output = '<script src="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.js"></script>' . PHP_EOL;
+		$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.js"></script>' . PHP_EOL;
 		echo $output;
 	}
 }

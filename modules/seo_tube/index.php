@@ -174,7 +174,7 @@ function seo_tube_parser($video_id = '')
 
 function seo_tube_player($video_id = '')
 {
-	$output = object_element('application/x-shockwave-flash', '', 'player player_default', '', $video_id, 'http://www.youtube.com/v/' . $video_id);
+	$output = object_element('application/x-shockwave-flash', '', 'player player_default', '', $video_id, '//youtube.com/v/' . $video_id);
 	echo $output;
 }
 

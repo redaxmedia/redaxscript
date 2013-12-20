@@ -29,7 +29,7 @@ function analytics_scripts_start()
 {
 	if (LOGGED_IN != TOKEN)
 	{
-		$output = '<script src="http://google-analytics.com/ga.js"></script>' . PHP_EOL;
+		$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
 		echo $output;
 	}
 }
