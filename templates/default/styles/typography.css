@@ -7,7 +7,6 @@
  * 4. several links
  * 5. title accordion default
  *    5.1 javascript enabled
- *    5.2 last element
  * 6. several titles
  * 7. title content
  * 8. title content sub
@@ -17,7 +16,7 @@
  * 12. title footer
  * 13. title website
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -200,7 +199,6 @@ pre
 	display: inline-block;
 	font: bold 1em/2.75em arial;
 	margin-bottom: 2em;
-	margin-right: 0;
 	margin-top: 2em;
 	min-width: 10%;
 	padding: 0 0.5em;
@@ -213,18 +211,14 @@ pre
 	color: #777;
 }
 
-/* @section 10. title dialog */
-
-.title_dialog
-{
-    border-color: #8c8c8c;
-}
+/* @section 10. title dialog default */
 
 .title_dialog_default
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
 	border-radius: 0.25em 0.25em 0 0;
+	border-color: #8c8c8c;
 	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1em;
 }
