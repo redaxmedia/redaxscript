@@ -72,11 +72,11 @@ textarea
 .button_default:hover
 {
 	background: #33acee;
-	background: -moz-linear-gradient(top, #0090db, #62c5ff);
-	background: -ms-linear-gradient(top, #0090db, #62c5ff);
-	background: -o-linear-gradient(top, #0090db, #62c5ff);
-	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
-	background: linear-gradient(top, #0090db, #62c5ff);
+	background: -moz-linear-gradient(top, #00a2f8, #0090db);
+	background: -ms-linear-gradient(top, #00a2f8, #0090db);
+	background: -o-linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
+	background: linear-gradient(top, #00a2f8, #0090db);
 }
 
 .button_default:active
@@ -255,18 +255,18 @@ textarea
 .form_search
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	background: #e5e5e5;
-	background: -moz-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
-	background: -ms-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
-	background: -o-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
-	background: -webkit-linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
-	background: linear-gradient(top, #f9f9f9, #e5e5e5 50%, #ebebeb 50%, #e2e2e2);
+	background: -moz-linear-gradient(top, #f9f9f9, #e2e2e2);
+	background: -ms-linear-gradient(top, #f9f9f9, #e2e2e2);
+	background: -o-linear-gradient(top, #f9f9f9, #e2e2e2);
+	background: -webkit-linear-gradient(top, #f9f9f9, #e2e2e2);
+	background: linear-gradient(top, #f9f9f9, #e2e2e2);
 	border: 1px solid #9e9e9e;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	padding: 0.5em 1em;
 }
 
