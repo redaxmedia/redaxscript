@@ -96,8 +96,9 @@
 {
 	-moz-border-radius: 0 0 0.25em 0.25em;
 	-webkit-border-radius: 0 0 0.25em 0.25em;
-	border-bottom: 1px solid #8c8c8c;
+	border: 1px solid #bdbdbd;
 	border-radius: 0 0 0.25em 0.25em;
+	border-top: 0;
 }
 
 /* @section 6. box extra */
