@@ -12,7 +12,7 @@
 	{
 		"phpunit/phpunit": "3.7.28",
 		"redaxmedia/tocgen": "3.0.1",
-		"squizlabs/php_codesniffer": "1.4.5"
+		"squizlabs/php_codesniffer": "1.5.1"
 	},
 	"scripts":
 	{
