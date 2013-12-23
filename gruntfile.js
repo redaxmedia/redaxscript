@@ -117,7 +117,7 @@ module.exports = function (grunt)
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
-				standard: 'Redaxscript'
+				standard: 'Redaxmedia'
 			}
 		},
 		qunit:
@@ -256,7 +256,7 @@ module.exports = function (grunt)
 						[
 							'ruleset.xml'
 						],
-						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxscript/'
+						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/'
 					}
 				]
 			}
