@@ -170,7 +170,7 @@ function get_file()
 
 function get_root()
 {
-	$host = 'http://' . $_SERVER['HTTP_HOST'];
+	$host = '//' . $_SERVER['HTTP_HOST'];
 	$directory = dirname($_SERVER['SCRIPT_NAME']);
 	$output = $directory == '/' || $directory == '\\' ? $host : $host . $directory;
 	return $output;

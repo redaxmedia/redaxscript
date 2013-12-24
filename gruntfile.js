@@ -41,29 +41,6 @@ module.exports = function (grunt)
 				'modules/web_app/files/manifest.json'
 			]
 		},
-		qunit:
-		{
-			jquery:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit.default'
-					]
-				}
-			},
-			zepto:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit.zepto'
-					]
-				}
-			}
-		},
 		csslint:
 		{
 			base:
@@ -143,67 +120,81 @@ module.exports = function (grunt)
 				standard: 'Redaxscript'
 			}
 		},
+		qunit:
+		{
+			jquery:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.default'
+					]
+				}
+			},
+			zepto:
+			{
+				options:
+				{
+					urls:
+					[
+						'http://develop.redaxscript.com/qunit.zepto'
+					]
+				}
+			}
+		},
+		phpunit:
+		{
+			testsuite:
+			{
+				dir: ''
+			},
+			options:
+			{
+				bin: 'vendor/bin/phpunit'
+			}
+		},
 		lineending:
 		{
 			css:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'styles/*.css',
-							'modules/*/styles/*.css',
-							'templates/*/styles/*.css'
-						],
-						expand: true
-					}
-				]
+					'styles/*.css',
+					'modules/*/styles/*.css',
+					'templates/*/styles/*.css'
+				],
+				expand: true
 			},
 			js:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'scripts/*.js',
-							'modules/*/scripts/*.js',
-							'templates/*/scripts/*.js'
-						],
-						expand: true
-					}
-				]
+					'scripts/*.js',
+					'modules/*/scripts/*.js',
+					'templates/*/scripts/*.js'
+				],
+				expand: true
 			},
 			phtml:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'modules/**/*.phtml',
-							'templates/**/*.phtml'
-						],
-						expand: true
-					}
-				]
+					'modules/**/*.phtml',
+					'templates/**/*.phtml'
+				],
+				expand: true
 			},
 			php:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'*.php',
-							'includes/**/*.php',
-							'languages/*.php',
-							'modules/**/*.php'
-						],
-						expand: true
-					}
-				]
+					'*.php',
+					'includes/**/*.php',
+					'languages/*.php',
+					'modules/**/*.php'
+				],
+				expand: true
 			},
 			options:
 			{
@@ -224,6 +215,18 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
 			},
+			tocLintBase:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen -l && php vendor/redaxmedia/tocgen/cli.php styles .tocgen -l'
+			},
+			tocLintModules:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen -l'
+			},
+			tocLintTemplates:
+			{
+				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen -l'
+			},
 			addUpstream:
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
@@ -234,11 +237,12 @@ module.exports = function (grunt)
 			},
 			removeUpstream:
 			{
-				command: 'git remote remove upstream'
+				command: 'git remote rm upstream'
 			},
 			options:
 			{
-				stdout: true
+				stdout: true,
+				failOnError: true
 			}
 		},
 		copy:
@@ -336,6 +340,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
+	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
@@ -348,12 +353,20 @@ module.exports = function (grunt)
 		'jsonlint',
 		'csslint',
 		'htmlhint',
-		'phplint'
+		'phplint',
+		'toclint',
+		'phpunit'
 	]);
 	grunt.registerTask('phplint',
 	[
 		'copy:ruleset',
 		'phpcs'
+	]);
+	grunt.registerTask('toclint',
+	[
+		'shell:tocLintBase',
+		'shell:tocLintModules',
+		'shell:tocLintTemplates'
 	]);
 	grunt.registerTask('toc',
 	[

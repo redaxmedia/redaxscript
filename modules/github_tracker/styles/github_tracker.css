@@ -1,0 +1,67 @@
+/**
+ * @tableofcontents
+ *
+ * 1. github tracker
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. github tracker */
+
+.list_github_tracker_milestones + .list_github_tracker_milestones
+{
+	margin-top: 2em;
+}
+
+.progress_github_tracker_milestones
+{
+	-moz-border-radius: 0.25em;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 0.25em;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	background: #eee;
+	border-radius: 0.25em;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	height: 3em;
+	overflow: hidden;
+	width: 100%;
+}
+
+/* firefox */
+
+progress::-moz-progress-bar
+{
+	background: #0090db;
+	background: -moz-linear-gradient(#0090db, #3197df);
+	background: -ms-linear-gradient(#0090db, #3197df);
+	background: -o-linear-gradient(#0090db, #3197df);
+	background: -webkit-linear-gradient(#0090db, #3197df);
+	background: linear-gradient(#0090db, #3197df);
+}
+
+/* webkit */
+
+progress::-webkit-progress-bar
+{
+	background: #eee;
+}
+
+progress::-webkit-progress-value
+{
+	background: #0090db;
+	background: -moz-linear-gradient(#0090db, #3197df);
+	background: -ms-linear-gradient(#0090db, #3197df);
+	background: -o-linear-gradient(#0090db, #3197df);
+	background: -webkit-linear-gradient(#0090db, #3197df);
+	background: linear-gradient(#0090db, #3197df);
+}
+
+/* milestone status */
+
+.text_github_tracker_milestones_status
+{
+	font-size: 0.875em;
+}

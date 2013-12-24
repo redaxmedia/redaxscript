@@ -44,7 +44,7 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 				$value = clean_url($value);
 				if (check_protocol($value) == '')
 				{
-					$value_string .= 'http://';
+					$value_string .= '//';
 				}
 				break;
 			case 'internal':

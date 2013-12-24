@@ -195,13 +195,13 @@
 						message: l.dialog_question + l.question_mark,
 						callback: function ()
 						{
-							if (url.substr(0, 7) !== 'http://' && url.substr(0, 8) !== 'https://')
+							if (url.substr(0, 2) === '//' || url.substr(0, 7) === 'http://' || url.substr(0, 8) === 'https://')
 							{
-								window.location = r.baseURL + url;
+								window.location = url;
 							}
 							else
 							{
-								window.location = url;
+								window.location = r.baseURL + url;
 							}
 						}
 					});

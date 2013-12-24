@@ -22,7 +22,7 @@
 
 body
 {
-	background: url('templates/default/images/noise.png') #e2e2e2;
+	background: #efefef;
 }
 
 /* @section 2. bottom */
@@ -58,8 +58,8 @@ body
 
 .footer
 {
-	-moz-box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
-	-webkit-box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	background: #cfcfcf;
 	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
@@ -67,8 +67,8 @@ body
 	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: linear-gradient(top, #cfcfcf, #b9b9b9);
 	border: solid #b9b9b9;
-	border-width: 1px 0;
-	box-shadow: inset 0 1px #ebebeb, inset 0 -1px #ebebeb;
+	border-width: 1em 0;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	margin-top: 5em;
 	padding: 2.5em 0;
 }
@@ -77,16 +77,16 @@ body
 
 .header
 {
-	-moz-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
-	-webkit-box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
-	background: url('templates/default/images/noise.png') #aaa;
-	background: url('templates/default/images/noise.png'), -moz-linear-gradient(top, #ccc, #8e8e8e);
-	background: url('templates/default/images/noise.png'), -ms-linear-gradient(top, #ccc, #8e8e8e);
-	background: url('templates/default/images/noise.png'), -o-linear-gradient(top, #ccc, #8e8e8e);
-	background: url('templates/default/images/noise.png'), -webkit-linear-gradient(top, #ccc, #8e8e8e);
-	background: url('templates/default/images/noise.png'), linear-gradient(top, #ccc, #8e8e8e);
-	border-bottom: 1px solid #919191;
-	box-shadow: inset 0 1px #c1c1c1, inset 0 -1px #c1c1c1, 0 0 3px #a9a9a9;
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background: #cfcfcf;
+	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: linear-gradient(top, #cfcfcf, #b9b9b9);
+	border-bottom: 1px solid #a2a2a2;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 1.25em 0;
 }
 
@@ -150,7 +150,7 @@ body
 	overflow: hidden;
 }
 
-.wrapper_table_default > .table
+.wrapper_table_default > .table_default
 {
 	width: 100%;
 }
