@@ -45,6 +45,7 @@
 		<exclude-pattern>query.css</exclude-pattern>
 	</rule>
 	<rule ref="Squiz.PHP.Eval" />
+	<rule ref="Squiz.PHP.NonExecutableCode" />
 	<rule ref="Squiz.Scope.MemberVarScope" />
 	<rule ref="Squiz.Scope.MethodScope" />
 	<rule ref="Squiz.Strings.DoubleQuoteUsage" />

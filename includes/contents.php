@@ -348,8 +348,8 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 		$output .= '</span>';
 	}
 	$output .= '</div>';
+	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**

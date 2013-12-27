@@ -187,8 +187,8 @@ function loader($type = '', $mode = '')
 	{
 		$output = minify($type, $output);
 	}
+	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**

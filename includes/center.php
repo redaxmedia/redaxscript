@@ -20,7 +20,6 @@ function center()
 	if (CENTER_BREAK == 1)
 	{
 		return;
-		break;
 	}
 
 	/* else routing */
@@ -51,7 +50,6 @@ function routing()
 	{
 		notification(l('error_occurred'), l('token_incorrect'), l('home'), ROOT);
 		return;
-		break;
 	}
 
 	/* call default post */
@@ -63,7 +61,6 @@ function routing()
 		{
 			call_user_func($value . '_post');
 			return;
-			break;
 		}
 	}
 
@@ -81,11 +78,9 @@ function routing()
 				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
 			}
 			return;
-			break;
 		case 'login':
 			login_form();
 			return;
-			break;
 		case 'logout':
 			if (LOGGED_IN == TOKEN)
 			{
@@ -96,7 +91,6 @@ function routing()
 				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
 			}
 			return;
-			break;
 		case 'password_reset':
 			if (s('reminder') == 1 && FIRST_SUB_PARAMETER && THIRD_PARAMETER)
 			{
@@ -107,7 +101,6 @@ function routing()
 				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			}
 			return;
-			break;
 		case 'registration':
 			if (s('registration'))
 			{
@@ -118,7 +111,6 @@ function routing()
 				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			}
 			return;
-			break;
 		case 'reminder':
 			if (s('reminder') == 1)
 			{
@@ -129,11 +121,9 @@ function routing()
 				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			}
 			return;
-			break;
 		default:
 			contents();
 			return;
-			break;
 	}
 }
 ?>

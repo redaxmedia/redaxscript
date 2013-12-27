@@ -185,8 +185,8 @@ function admin_dock($table = '', $id = '')
 		}
 		$output .= '</div></div>';
 	}
+	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -323,7 +323,7 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		$output = '<ul class="list_control_admin">' . $output . '</ul>';
 	}
+	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
-	hook(__FUNCTION__ . '_end');
 }
 ?>
