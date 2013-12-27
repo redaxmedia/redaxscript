@@ -534,7 +534,6 @@ function center()
 		$output = '<div class="box_note note_error">' . l('token_incorrect') . l('point') . '</div>';
 		echo $output;
 		return;
-		break;
 	}
 
 	/* routing */
