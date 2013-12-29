@@ -83,7 +83,7 @@
 
 		win.test('version', function ()
 		{
-			var expect = 'number',
+			var expect = 'string',
 				result = typeof r.version;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);

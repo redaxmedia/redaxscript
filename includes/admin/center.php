@@ -33,7 +33,6 @@ function admin_routing()
 		case is_numeric(ID_PARAMETER) && retrieve('id', TABLE_PARAMETER, 'id', ID_PARAMETER) == '':
 			notification(l('something_wrong'), '', l('back'), 'admin');
 			return;
-			break;
 	}
 
 	/* define access variables */
@@ -87,7 +86,6 @@ function admin_routing()
 		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:
 			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 			return;
-			break;
 	}
 
 	/* check token */
@@ -96,7 +94,6 @@ function admin_routing()
 	{
 		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 		return;
-		break;
 	}
 
 	/* admin routing */
@@ -118,7 +115,6 @@ function admin_routing()
 				call_user_func('admin_' . TABLE_PARAMETER . '_form');
 			}
 			return;
-			break;
 		case 'view':
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
@@ -129,7 +125,6 @@ function admin_routing()
 				call_user_func('admin_' . TABLE_PARAMETER . '_list');
 			}
 			return;
-			break;
 		case 'edit':
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
@@ -140,37 +135,30 @@ function admin_routing()
 				call_user_func('admin_' . TABLE_PARAMETER . '_form');
 			}
 			return;
-			break;
 		case 'up':
 		case 'down':
 			admin_move();
 			return;
-			break;
 		case 'sort':
 			admin_sort();
 			return;
-			break;
 		case 'publish':
 		case 'enable':
 			admin_status(1);
 			return;
-			break;
 		case 'unpublish':
 		case 'disable':
 			admin_status(0);
 			return;
-			break;
 		case 'install':
 		case 'uninstall':
 			admin_install();
 			return;
-			break;
 		case 'delete':
 		case 'process':
 		case 'update':
 			call_user_func('admin_' . ADMIN_PARAMETER);
 			return;
-			break;
 	}
 }
 ?>

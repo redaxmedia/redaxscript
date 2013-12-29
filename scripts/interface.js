@@ -39,7 +39,7 @@
 
 			/* show active accordion box */
 
-			accordion.find(options.element.accordionSet).filter('.js_set_active').children(options.element.accordionBox).show();
+			accordionSet.filter('.js_set_active').children(options.element.accordionBox).show();
 
 			/* listen for click */
 
@@ -163,10 +163,8 @@
 
 			/* show first tab set */
 
-			tabBox.height('auto').each(function ()
-			{
-				$(this).find(options.element.tabSet).first().addClass('js_set_active set_active');
-			});
+			tabBox.height('auto');
+			tabSet.filter(':first-child').addClass('js_set_active set_active');
 
 			/* listen for click */
 

@@ -11,7 +11,7 @@
 
 /* @section 1. remove appearance */
 
-.field_search
+.field_search, .field_search::-webkit-search-cancel-button
 {
 	-webkit-appearance: none;
 }

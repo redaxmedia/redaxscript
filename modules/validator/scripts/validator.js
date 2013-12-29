@@ -25,13 +25,13 @@
 			options = $.extend({}, r.modules.validator.options, options || {});
 		}
 
-		var parameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
 		$.ajax(
 		{
-			url: options.url + '/' + parameter,
+			url: options.url + '/' + urlParameter,
 			dataType: 'json',
 			success: function (data)
 			{

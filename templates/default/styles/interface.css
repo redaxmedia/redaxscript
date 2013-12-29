@@ -25,23 +25,19 @@
 .list_breadcrumb
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px #b9b9b9;
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px #b9b9b9;
-	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #e2e2e2, #d7d7d7);
-	background: -ms-linear-gradient(top, #e2e2e2, #d7d7d7);
-	background: -o-linear-gradient(top, #e2e2e2, #d7d7d7);
-	background: -webkit-linear-gradient(top, #e2e2e2, #d7d7d7);
-	background: linear-gradient(top, #e2e2e2, #d7d7d7);
-	border: 1px solid #f1f1f1;
+	background: #d9d9d9;
+	background: -moz-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -ms-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -o-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -webkit-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: linear-gradient(top, #d9d9d9, #cfcfcf);
 	border-radius: 0.25em;
-	box-shadow: 0 0 3px #b9b9b9;
 	display: inline-block;
 	font: 1em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 1em;
 	padding: 0 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
 	text-transform: uppercase;
 }
 
@@ -255,19 +251,15 @@
 
 .list_pagination a:hover, .list_pagination a:active
 {
+	background: #33acee;
+	background: -moz-linear-gradient(top, #00a2f8, #0090db);
+	background: -ms-linear-gradient(top, #00a2f8, #0090db);
+	background: -o-linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
+	background: linear-gradient(top, #00a2f8, #0090db);
 	border-color: #005da2;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-}
-
-.list_pagination a:hover, .list_pagination a:active
-{
-	background: #33acee;
-	background: -moz-linear-gradient(top, #0090db, #62c5ff);
-	background: -ms-linear-gradient(top, #0090db, #62c5ff);
-	background: -o-linear-gradient(top, #0090db, #62c5ff);
-	background: -webkit-linear-gradient(top, #0090db, #62c5ff);
-	background: linear-gradient(top, #0090db, #62c5ff);
 }
 
 .list_pagination a:active
@@ -354,24 +346,20 @@
 .list_tab_default li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
+	-moz-box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
-	background: #dadada;
-	background: -moz-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
-	background: -ms-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
-	background: -o-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
-	background: -webkit-linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
-	background: linear-gradient(top, #e2e2e2, #e2e2e2 60%, #dadada);
-	border: 1px solid #ebebeb;
+	-webkit-box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
+	background: #ebebeb;
 	border-radius: 0.25em 0.25em 0 0;
-	margin-bottom: -1px;
+	box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
 	margin-right: 0.25em;
 	vertical-align: bottom;
 }
 
 .list_tab_default a
 {
-	font: 1.5em/1.25em 'pt sans narrow', 'trebuchet ms', arial;
-	padding: 0 1em;
+	font: 1.5em/1.5em 'pt sans narrow', 'trebuchet ms', arial;
+	padding: 0 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	text-transform: uppercase;
 }
@@ -380,20 +368,19 @@
 
 .js .list_tab_default .item_active
 {
-	border-bottom-color: #e2e2e2;
-	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -o-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: -webkit-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
-	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
+	background: #d9d9d9;
+	background: -moz-linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: -ms-linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: -o-linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: -webkit-linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: linear-gradient(top, #e3e3e3, #d9d9d9);
 }
 
 .js .list_tab_default .item_active a
 {
 	color: #4e4e4e;
 	cursor: default;
-	line-height: 1.5em;
+	line-height: 1.75em;
 }
 
 /* @section 8. list search result */
@@ -427,18 +414,17 @@
 .tooltip
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px #c6c6c6;
+	-moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px #c6c6c6;
-	background: #e2e2e2;
-	border: 1px solid #f1f1f1;
+	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+	background: #d9d9d9;
 	border-radius: 0.25em;
-	box-shadow: 0 0 3px #c6c6c6;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 	color: #777;
 	font: 0.875em/1.25em arial;
 	left: 100%;
 	margin-left: 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
 	top: -0.625em;
 	padding: 0.75em;
 }

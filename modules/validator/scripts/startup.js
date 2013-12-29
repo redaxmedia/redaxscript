@@ -22,8 +22,8 @@ r.modules.validator =
 			validatorDescription: 'description_validator',
 			validatorMessage: 'message_validator'
 		},
+		url: 'http://validator.nu',
 		parser: 'html5',
-		level: 'all',
-		url: 'http://validator.nu'
+		level: 'all'
 	}
 };

@@ -187,8 +187,8 @@ function loader($type = '', $mode = '')
 	{
 		$output = minify($type, $output);
 	}
+	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -456,7 +456,7 @@ function scripts_transport($minify = '')
 	/* generator and version */
 
 	$output .= 'r.generator = \'' . l('redaxscript') . ' ' . l('redaxscript_version') . '\';' . PHP_EOL;
-	$output .= 'r.version = ' . floatval(l('redaxscript_version')) . ';' . PHP_EOL;
+	$output .= 'r.version = \'' . l('redaxscript_version') . '\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify output */

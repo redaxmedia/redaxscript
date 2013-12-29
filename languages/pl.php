@@ -9,8 +9,8 @@ $l['error'] = 'Błąd';
 
 /* contents */
 
-$l['content'] = 'Zawartość';
-$l['contents'] = 'Zawiera';
+$l['content'] = 'Zawiera';
+$l['contents'] = 'Zawartość';
 $l['content_not_found'] = 'Zawartość nie może zostać odnaleziona';
 
 /* categories */
@@ -19,7 +19,7 @@ $l['category'] = 'Kategoria';
 $l['categories'] = 'Kategorie';
 $l['category_new'] = 'Nowa kategoria';
 $l['category_no'] = 'Brak istniejącej kategorii';
-$l['category_parent'] = 'Parent category';
+$l['category_parent'] = 'Kategoria nadrzędna';
 $l['uncategorized'] = 'Nieskategoryzowane';
 
 /* articles */
@@ -98,7 +98,7 @@ $l['continue'] = 'Kontynuuj';
 $l['back'] = 'Wstecz';
 $l['up'] = 'W górę';
 $l['down'] = 'W dół';
-$l['sort'] = 'Sort';
+$l['sort'] = 'Sortuj';
 $l['new'] = 'Nowy';
 $l['view'] = 'Pokaż';
 $l['read_more'] = 'Czytaj dalej';
@@ -110,7 +110,7 @@ $l['edit'] = 'Edytuj';
 $l['delete'] = 'Usuń';
 $l['save'] = 'Zapisz';
 $l['reset'] = 'Reset';
-$l['submit'] = 'Zgłoś';
+$l['submit'] = 'Wyślij';
 $l['ok'] = 'Ok';
 $l['cancel'] = 'Anuluj';
 
@@ -131,7 +131,7 @@ $l['uninstall'] = 'Odinstaluj';
 $l['restore'] = 'Przywróć';
 $l['process'] = 'Przetwórz';
 $l['update'] = 'Aktualizuj';
-$l['select'] = 'Select';
+$l['select'] = 'Wybierz';
 
 /* form */
 
@@ -150,7 +150,7 @@ $l['author'] = 'Autor';
 $l['author_incorrect'] = 'Autor jest niepoprawny';
 $l['author_empty'] = 'Autor jest pusty';
 $l['text'] = 'Tekst';
-$l['text_empty'] = 'Tekst jest pusty';
+$l['text_empty'] = 'Brak tekstu';
 $l['message'] = 'Wiadomość';
 $l['message_empty'] = 'Wiadomość jest pusta';
 $l['customize'] = 'Dostosuj';
@@ -169,7 +169,7 @@ $l['input_empty'] = 'Wejście jest puste';
 
 /* select */
 
-$l['none'] = 'Żaden';
+$l['none'] = 'Brak';
 $l['all'] = 'Wszystkie';
 
 /* legend */
@@ -189,7 +189,7 @@ $l['email_unknown'] = 'E-mail jest nieznany';
 
 $l['url'] = 'URL';
 $l['url_incorrect'] = 'URL jest niepoprawny';
-$l['identifier'] = 'Identifier';
+$l['identifier'] = 'Identyfikator';
 $l['token'] = 'Klucz';
 $l['token_incorrect'] = 'Klucz jest niepoprawny';
 
@@ -280,23 +280,23 @@ $l['version'] = 'Wersja';
 /* settings */
 
 $l['settings'] = 'Ustawienia';
-$l['general'] = 'Generalne';
+$l['general'] = 'Główne';
 $l['language'] = 'Język';
 $l['languages'] = 'Języki';
 $l['detect'] = 'Wykryj';
 $l['template'] = 'Szablon';
 $l['templates'] = 'Szablony';
-$l['pagination'] = 'Pagination';
+$l['pagination'] = 'Paginacja';
 $l['metadata'] = 'Metadane';
 $l['copyright'] = 'Prawa autorskie';
 $l['description'] = 'Opis';
 $l['keywords'] = 'Słowa kluczowe';
 $l['robots'] = 'Roboty';
-$l['index'] = 'Indeks';
-$l['index_no'] = 'Brak indeksu';
+$l['index'] = 'Indeksuj';
+$l['index_no'] = 'Nie indeksuj';
 $l['formatting'] = 'Formatowanie';
 $l['charset'] = 'Zestaw znaków';
-$l['divider'] = 'Rozdzielacz';
+$l['divider'] = 'Separator';
 $l['homepage'] = 'Strona domowa';
 $l['limit'] = 'Limit';
 $l['order'] = 'Kolejność';
@@ -313,7 +313,7 @@ $l['verification'] = 'Weryfikacja';
 $l['security'] = 'Bezpieczeństwo';
 $l['captcha'] = 'Captcha';
 $l['captcha_incorrect'] = 'Captcha jest niepoprawna';
-$l['blocker'] = 'Blocker';
+$l['blocker'] = 'Bloker';
 
 /* notification */
 

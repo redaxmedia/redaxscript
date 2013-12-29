@@ -348,8 +348,7 @@ function admin_process()
 			$route .= '/edit/' . TABLE_PARAMETER . '/' . ID_PARAMETER;
 		}
 		notification(l('error_occurred'), $error, l('back'), $route);
-		return;
-		break;
+		return null;
 	}
 
 	/* handle success */
@@ -382,8 +381,7 @@ function admin_process()
 			$general_insert_query = 'INSERT INTO ' . PREFIX . TABLE_PARAMETER . ' (' . $key_string . ') VALUES (' . $value_string . ')';
 			mysql_query($general_insert_query);
 			notification(l('operation_completed'), '', l('continue'), $route);
-			return;
-			break;
+			return null;
 
 		/* query edit */
 
@@ -440,8 +438,7 @@ function admin_process()
 				}
 			}
 			notification(l('operation_completed'), '', l('continue'), $route);
-			return;
-			break;
+			return null;
 	}
 }
 

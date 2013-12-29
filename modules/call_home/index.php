@@ -33,7 +33,7 @@ function call_home_scripts_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		$output = '<script src="http://google-analytics.com/ga.js"></script>' . PHP_EOL;
+		$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
 		echo $output;
 	}
 }
@@ -53,21 +53,14 @@ function call_home_admin_notification_start()
 {
 	/* get contents */
 
-	$url_version = 'http://service.' . l('redaxscript_website') . '/version/' . clean_alias(l('redaxscript_version'));
-	$contents = file_get_contents($url_version);
+	$url = 'http://service.' . l('redaxscript_website') . '/version/' . clean_alias(l('redaxscript_version'));
+	$contents = file_get_contents($url);
 
 	/* collect output */
 
 	if ($contents)
 	{
 		$output = $contents;
-	}
-
-	/* else collect error output */
-
-	else
-	{
-		$output = '<div class="box_note note_info">' . l('call_home_server_not_found') . '</div>';
 	}
 	echo $output;
 }

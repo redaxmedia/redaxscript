@@ -29,9 +29,9 @@ r.modules.maps =
 			center: new google.maps.LatLng(0, 0),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
-			panControl: true,
 			scaleControl: false,
 			streetViewControl: false,
+			panControl: true,
 			overviewMapControl: false,
 			zoomControl: true
 		},
@@ -85,8 +85,8 @@ r.modules.maps =
 			}
 		],
 		marker: true,
-		deBranding: true,
-		mapLogo: '<a href="http://maps.google.com" target="_blank">Google Maps</a>',
-		mapTerms: '<a href="http://google.com/intl/en/help/terms_maps.html" target="_blank">Terms of use</a>'
+		deBrand: true,
+		mapLogo: '<a href="//maps.google.com" target="_blank">Google Maps</a>',
+		mapTerms: '<a href="//google.com/intl/en/help/terms_maps.html" target="_blank">Terms of use</a>'
 	}
 };

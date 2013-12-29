@@ -201,7 +201,7 @@ function comment_form($article = '', $language = '', $access = '')
 	{
 		if (LOGGED_IN == TOKEN)
 		{
-			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution());
+			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution('raw'));
 		}
 		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
 	}

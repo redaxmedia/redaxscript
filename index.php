@@ -4,23 +4,20 @@ error_reporting(0);
 /* include core files */
 
 include_once('config.php');
+include_once('includes/autoloader.php');
 include_once('includes/breadcrumb.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
-include_once('includes/detection.php');
-include_once('includes/directory.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
 include_once('includes/helper.php');
 include_once('includes/loader.php');
-include_once('includes/mail.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
-include_once('includes/parser.php');
 include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
@@ -28,6 +25,7 @@ include_once('includes/startup.php');
 
 /* startup redaxscript */
 
+Redaxscript_Autoloader::init();
 startup();
 
 /* include files as needed */
@@ -172,7 +170,6 @@ else
 	if (RENDER_BREAK == 1)
 	{
 		return;
-		break;
 	}
 	else
 	{

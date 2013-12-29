@@ -4,16 +4,10 @@
  * 1. font face
  * 2. list share this
  * 3. link share this
- *    3.1 facebook
- *    3.2 google
- *    3.3 twitter
- *    3.4 pinterest
- *    3.5 tumblr
- *    3.6 linkedin
- *    3.7 stumbleupon
- *    3.8 delicious
+ *    3.1 icons
+ * 4. counter
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -31,13 +25,13 @@
 
 .list_share_this
 {
-	margin: 2em 0;
+	margin-top: 2em;
 }
 
 .list_share_this li
 {
 	float: left;
-	margin-right: 3.25em;
+	margin: 0 3.5em 2em 0;
 }
 
 /* @section 3. link share this */
@@ -49,6 +43,8 @@
 	position: relative;
 	text-indent: -999em;
 }
+
+/* @section 3.1 icons */
 
 .link_share_this:before
 {
@@ -73,7 +69,7 @@
 	width: 2.25em;
 }
 
-/* @section 3.1 facebook */
+/* facebook */
 
 .link_share_this.link_facebook:before
 {
@@ -85,19 +81,19 @@
 	background: #3b5998;
 }
 
-/* @section 3.2 google */
+/* google plus one */
 
-.link_share_this.link_google:before
+.link_share_this.link_googleplusone:before
 {
 	content: 'c';
 }
 
-.link_share_this.link_google:hover:before
+.link_share_this.link_googleplusone:hover:before
 {
 	background: #d34836;
 }
 
-/* @section 3.3 twitter */
+/* twitter */
 
 .link_share_this.link_twitter:before
 {
@@ -109,7 +105,7 @@
 	background: #00aced;
 }
 
-/* @section 3.4 pinterest */
+/* pinterest */
 
 .link_share_this.link_pinterest:before
 {
@@ -121,23 +117,11 @@
 	background: #cb2027;
 }
 
-/* @section 3.5 tumblr */
-
-.link_share_this.link_tumblr:before
-{
-	content: 'f';
-}
-
-.link_share_this.link_tumblr:hover:before
-{
-	background: #32506d;
-}
-
-/* @section 3.6 linkedin */
+/* linkedin */
 
 .link_share_this.link_linkedin:before
 {
-	content: 'g';
+	content: 'f';
 }
 
 .link_share_this.link_linkedin:hover:before
@@ -145,11 +129,11 @@
 	background: #007bb6;
 }
 
-/* @section 3.7 stumbleupon */
+/* stumbleupon */
 
 .link_share_this.link_stumbleupon:before
 {
-	content: 'h';
+	content: 'g';
 }
 
 .link_share_this.link_stumbleupon:hover:before
@@ -157,14 +141,30 @@
 	background: #f74425;
 }
 
-/* @section 3.8 delicious */
+/* delicious */
 
 .link_share_this.link_delicious:before
 {
-	content: 'i';
+	content: 'h';
 }
 
 .link_share_this.link_delicious:hover:before
 {
 	background: #205cc0;
+}
+
+/* @section 4. counter */
+
+.link_share_this:after
+{
+	color: #bbb;
+	color: rgba(0, 0, 0, 0.15);
+	content: attr(data-counter);
+	bottom: -1.25em;
+	font: bold 1em arial;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	width: 2.5em;
 }

@@ -15,7 +15,7 @@
  * @author Henry Ruhs
  */
 
-(function (doc, html, win, nav)
+(function (doc, docElement, win, nav)
 {
 	'use strict';
 
@@ -225,6 +225,17 @@
 
 	r.support =
 	{
+		applicationCache: function ()
+		{
+			if (typeof win.applicationCache === 'object')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		battery: function ()
 		{
 			if ('battery' in nav)
@@ -250,6 +261,17 @@
 		cookies: function ()
 		{
 			if (nav.cookieEnabled)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		draggable: function ()
+		{
+			if ('draggable' in doc.createElement('span'))
 			{
 				return true;
 			}
@@ -295,6 +317,28 @@
 				}
 			}
 			return output;
+		}(),
+		history: function ()
+		{
+			if (typeof win.history === 'object' && typeof win.history.pushState  === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		indexedDB: function ()
+		{
+			if ('indexedDB' in win)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}(),
 		input: function ()
 		{
@@ -370,6 +414,17 @@
 				return false;
 			}
 		}(win.JSON),
+		postMessage: function ()
+		{
+			if (typeof win.postMessage === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		svg: function ()
 		{
 			if (typeof doc.createElementNS === 'function' && typeof doc.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect === 'function')
@@ -383,7 +438,7 @@
 		}(),
 		touch: function ()
 		{
-			if ('ontouchstart' in html)
+			if ('ontouchstart' in docElement)
 			{
 				return true;
 			}
@@ -414,9 +469,42 @@
 				return false;
 			}
 		}(),
+		webSQL: function ()
+		{
+			if (typeof win.openDatabase === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		webSocket: function ()
+		{
+			if (typeof win.WebSocket === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
 		webStorage: function ()
 		{
 			if (nav.cookieEnabled && typeof win.localStorage === 'object' && typeof win.sessionStorage === 'object')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		webWorker: function ()
+		{
+			if (typeof win.Worker === 'function')
 			{
 				return true;
 			}
@@ -446,68 +534,31 @@
 
 	r.startup = function ()
 	{
-		var tags =
-			[
-				'abbr',
-				'article',
-				'aside',
-				'audio',
-				'bdi',
-				'canvas',
-				'data',
-				'datalist',
-				'details',
-				'dialog',
-				'figcaption',
-				'figure',
-				'footer',
-				'header',
-				'hgroup',
-				'main',
-				'mark',
-				'meter',
-				'nav',
-				'output',
-				'progress',
-				'section',
-				'summary',
-				'template',
-				'time',
-				'video'
-			];
-
 		/* javascript enabled */
 
-		if (html.className)
+		if (docElement.className)
 		{
-			html.className += ' ';
+			docElement.className += ' ';
 		}
-		html.className += 'js';
+		docElement.className += 'js';
 
 		/* support classes */
 
 		if (r.support.canvas)
 		{
-			html.className += ' canvas';
+			docElement.className += ' canvas';
 		}
 		else
 		{
-			html.className += ' no_canvas';
+			docElement.className += ' no_canvas';
 		}
 		if (r.support.svg)
 		{
-			html.className += ' svg';
+			docElement.className += ' svg';
 		}
 		else
 		{
-			html.className += ' no_svg';
-		}
-
-		/* fix elements */
-
-		for (var i in tags)
-		{
-			doc.createElement(tags[i]);
+			docElement.className += ' no_svg';
 		}
 		return true;
 	}();

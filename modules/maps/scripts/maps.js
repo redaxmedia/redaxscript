@@ -62,7 +62,7 @@
 
 					/* replace branding */
 
-					if (options.deBranding)
+					if (options.deBrand)
 					{
 						/* remove orignal branding */
 

@@ -276,7 +276,7 @@ r.modules.editor =
 			method: 'insert',
 			command: 'createLink',
 			message: l.editor_insert_link,
-			value: 'http://'
+			value: '//'
 		},
 		unlink:
 		{
@@ -290,7 +290,7 @@ r.modules.editor =
 			method: 'insert',
 			command: 'insertImage',
 			message: l.editor_insert_image,
-			value: 'http://'
+			value: '//'
 		},
 		insert_break:
 		{
