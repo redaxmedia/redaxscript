@@ -3,104 +3,131 @@
 /**
  * breadcrumb
  *
- * @since 1.2.1
- * @deprecated 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @category Breadcrumb
- * @author Henry Ruhs
+ * @author Henry Ruhs, Gary Aylward
  */
 
-function breadcrumb()
+class Redaxscript_Breadcrumb
 {
-	hook(__FUNCTION__ . '_start');
 
-	/* build breadcrumb */
+	/**
+	 * breadcrumbArray
+	 *
+	 * Array to store all the nodes of the breadcrumb trail
+	 *
+	 * @var array
+	 */
+	private static $_breadcrumbArray = array();
 
-	$breadcrumb_array = build_breadcrumb();
-	$breadcrumb_array_keys = array_keys($breadcrumb_array);
-	$last = end($breadcrumb_array_keys);
-
-	/* collect item output */
-
-	foreach ($breadcrumb_array as $key => $value)
+	/**
+	 * construct
+	 *
+	 * @since 2.1.0
+	 */
+	public function __construct()
 	{
-		$title = $value['title'];
-		$route = $value['route'];
-		if ($title)
+		if (self::$_breadcrumbArray == array())
 		{
-			$output .= '<li>';
-			if ($route)
-			{
-				$output .= anchor_element('internal', '', '', $title, $route);
-			}
-			else
-			{
-				$output .= $title;
-			}
-			$output .= '</li>';
-			if ($last != $key)
-			{
-				$output .= '<li class="divider">' . s('divider') . '</li>';
-			}
+			$this->init();
 		}
 	}
 
-	/* collect list output */
-
-	if ($output)
+	/**
+	 * init
+	 *
+	 * @since 2.1.0
+	 */
+	public function init()
 	{
-		$output = '<ul class="list_breadcrumb">' . $output . '</ul>';
+		$this->_buildBreadcrumb();
 	}
-	echo $output;
-	hook(__FUNCTION__ . '_end');
-}
 
-/**
- * build breadcrumb
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Breadcrumb
- * @author Henry Ruhs
- *
- * @return array
- */
+	/**
+	 * displayBreadcrumb
+	 *
+	 * Public function to display the trail as an unordered list
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return string
+	 */
+	public function displayBreadcrumb()
+	{
+		$preOutput = hook(__FUNCTION__ . '_start');
 
-function build_breadcrumb()
-{
-	static $breadcrumb;
+		$breadcrumbArrayKeys = array_keys(self::$_breadcrumbArray);
+		$last = end($breadcrumbArrayKeys);
+		$output = '';
 
-	/* build breadcrumb */
+		/* collect item output */
 
-	if ($breadcrumb == '')
+		foreach (self::$_breadcrumbArray as $key => $value)
+		{
+			$title = array_key_exists('title', $value) ? $value['title'] : '';
+			$route = array_key_exists('route', $value) ? $value['route'] : '';
+			if ($title)
+			{
+				$output .= '<li>';
+				if ($route)
+				{
+					$output .= anchor_element('internal', '', '', $title, $route);
+				}
+				else
+				{
+					$output .= $title;
+				}
+				$output .= '</li>';
+				if ($last != $key)
+				{
+					$output .= '<li class="divider">' . s('divider') . '</li>';
+				}
+			}
+		}
+
+		/* collect list output */
+
+		if ($output)
+		{
+			$output = '<ul class="list_breadcrumb">' . $output . '</ul>';
+		}
+		$output = $preOutput . $output . hook(__FUNCTION__ . '_end');
+		return $output;
+	}
+
+	/**
+	 * _buildBreadcrumb
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return array
+	 */
+	private function _buildBreadcrumb()
 	{
 		$key = 0;
 
 		/* if title constant */
 
-		if (TITLE)
+		if (defined('TITLE') && TITLE)
 		{
-			$breadcrumb[$key]['title'] = TITLE;
+			self::$_breadcrumbArray[$key]['title'] = TITLE;
 		}
 
 		/* else if home */
-
 		else if (FULL_ROUTE == '')
 		{
-			$breadcrumb[$key]['title'] = l('home');
+			self::$_breadcrumbArray[$key]['title'] = l('home');
 		}
 
 		/* else if administration */
-
 		else if (FIRST_PARAMETER == 'admin')
 		{
-			$breadcrumb[$key]['title'] = l('administration');
+			self::$_breadcrumbArray[$key]['title'] = l('administration');
 			if (ADMIN_PARAMETER)
 			{
-				$breadcrumb[$key]['route'] = 'admin';
+				self::$_breadcrumbArray[$key]['route'] = 'admin';
 			}
 
 			/* join admin title */
@@ -108,10 +135,10 @@ function build_breadcrumb()
 			if (l(ADMIN_PARAMETER))
 			{
 				$key++;
-				$breadcrumb[$key]['title'] = l(ADMIN_PARAMETER);
+				self::$_breadcrumbArray[$key]['title'] = l(ADMIN_PARAMETER);
 				if (ADMIN_PARAMETER != LAST_PARAMETER)
 				{
-					$breadcrumb[$key]['route'] = FULL_ROUTE;
+					self::$_breadcrumbArray[$key]['route'] = FULL_ROUTE;
 				}
 
 				/* join table title */
@@ -119,64 +146,57 @@ function build_breadcrumb()
 				if (l(TABLE_PARAMETER))
 				{
 					$key++;
-					$breadcrumb[$key]['title'] = l(TABLE_PARAMETER);
+					self::$_breadcrumbArray[$key]['title'] = l(TABLE_PARAMETER);
 				}
 			}
 		}
 
 		/* else if default alias */
-
 		else if (check_alias(FIRST_PARAMETER, 1) == 1)
 		{
 			/* join default title */
-
 			if (l(FIRST_PARAMETER))
 			{
-				$breadcrumb[$key]['title'] = l(FIRST_PARAMETER);
+				self::$_breadcrumbArray[$key]['title'] = l(FIRST_PARAMETER);
 			}
 		}
 
 		/* handle error */
-
 		else if (LAST_ID == '')
 		{
-			$breadcrumb[$key]['title'] = l('error');
+			self::$_breadcrumbArray[$key]['title'] = l('error');
 		}
 
 		/* query title from content */
-
-		else if (FIRST_TABLE)
+		else if (defined('FIRST_TABLE') && FIRST_TABLE)
 		{
 			/* join first title */
-
-			$breadcrumb[$key]['title'] = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
+			self::$_breadcrumbArray[$key]['title'] = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
 			if (FIRST_PARAMETER != LAST_PARAMETER)
 			{
-				$breadcrumb[$key]['route'] = FIRST_PARAMETER;
+				self::$_breadcrumbArray[$key]['route'] = FIRST_PARAMETER;
 			}
 
 			/* join second title */
 
-			if (SECOND_TABLE)
+			if (defined('SECOND_TABLE') && SECOND_TABLE)
 			{
 				$key++;
-				$breadcrumb[$key]['title'] = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
+				self::$_breadcrumbArray[$key]['title'] = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
 				if (SECOND_PARAMETER != LAST_PARAMETER)
 				{
-					$breadcrumb[$key]['route'] = FIRST_PARAMETER . '/' . SECOND_PARAMETER;
+					self::$_breadcrumbArray[$key]['route'] = FIRST_PARAMETER . '/' . SECOND_PARAMETER;
 				}
 
 				/* join third title */
 
-				if (THIRD_TABLE)
+				if (defined('THIRD_TABLE') && THIRD_TABLE)
 				{
 					$key++;
-					$breadcrumb[$key]['title'] = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
+					self::$_breadcrumbArray[$key]['title'] = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
 				}
 			}
 		}
 	}
-	$output = $breadcrumb;
-	return $output;
 }
 ?>

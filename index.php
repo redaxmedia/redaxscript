@@ -5,7 +5,6 @@ error_reporting(0);
 
 include_once('config.php');
 include_once('includes/autoloader.php');
-include_once('includes/breadcrumb.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
@@ -16,6 +15,7 @@ include_once('includes/head.php');
 include_once('includes/helper.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
+include_once('includes/migrate.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
