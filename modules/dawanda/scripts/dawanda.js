@@ -4,12 +4,13 @@
  * 1. dawanda
  *    1.1 get url
  *    1.2 get data
- *    1.3 create shortcut
- *    1.4 register shortcut
- *    1.5 init
+ *    1.3 generate key
+ *    1.4 create shortcut
+ *    1.5 register shortcut
+ *    1.6 init
  * 2. startup
  *
- * @since 2.0.0
+ * @since 2.0.2
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -56,10 +57,12 @@
 
 		/* @section 1.2 get data */
 
-		dawanda.getData = function (call, id, page, callback)
+		dawanda.getData = function (call, id, data, callback)
 		{
-			var key = id + page,
-				keyStorage = 'dawandaData' + id.charAt(0).toUpperCase() + id.slice(1) + page;
+			var key = dawanda.generateKey(id, data),
+				keyStorage = 'dawandaData' + dawanda.generateKey(id, data);
+
+			data.api_key = options.key;
 
 			/* fetch from storage */
 
@@ -79,7 +82,7 @@
 
 			if (typeof r.modules.dawanda.data[key] === 'object' && r.modules.dawanda.data[key]['calls'][call])
 			{
-				/* callback if data */
+				/* direct callback */
 
 				if (typeof callback === 'function')
 				{
@@ -95,11 +98,7 @@
 				{
 					url: dawanda.getURL(call, id),
 					dataType: 'jsonp',
-					data:
-					{
-						api_key: options.key,
-						page: page
-					},
+					data: data,
 					success: function (data)
 					{
 						/* handle data */
@@ -120,7 +119,7 @@
 								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(r.modules.dawanda.data[key]));
 							}
 
-							/* callback if data */
+							/* delayed callback */
 
 							if (typeof callback === 'function')
 							{
@@ -132,17 +131,32 @@
 			}
 		};
 
-		/* @section 1.3 create shortcut */
+		/* @section 1.3 generate key */
 
-		dawanda.createShortcut = function (i)
+		dawanda.generateKey = r.modules.dawanda.generateKey = function (id, data)
 		{
-			r.modules.dawanda[i] = function (id, page, callback)
+			var output = id;
+
+			/* stringify data object */
+
+			if (r.support.nativeJSON)
 			{
-				dawanda.getData(i, id, page, callback);
+				output += JSON.stringify(data).replace(/[^a-z0-9]/g, '');
+			}
+			return output;
+		};
+
+		/* @section 1.4 create shortcut */
+
+		dawanda.createShortcut = function (call)
+		{
+			r.modules.dawanda[call] = function (id, data, callback)
+			{
+				dawanda.getData(call, id, data, callback);
 			};
 		};
 
-		/* @section 1.4 register shortcut */
+		/* @section 1.5 register shortcut */
 
 		dawanda.registerShortcut = function ()
 		{
@@ -155,7 +169,7 @@
 			}
 		};
 
-		/* @section 1.5 init */
+		/* @section 1.6 init */
 
 		dawanda.init = function ()
 		{
