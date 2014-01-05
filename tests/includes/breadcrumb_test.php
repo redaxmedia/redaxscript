@@ -10,119 +10,350 @@
  * @author Gary Aylward
  */
 
-/* Include module to test */
-include(dirname(__FILE__).'\..\..\includes\breadcrumb.php');
 /* Include stubs */
 include (dirname(__FILE__).'\..\stubs.php');
 
-/* Define needed constants */
-// Test 1
-//define('TITLE', 'title');
-// Test 2
-//define('FULL_ROUTE', '');
-// Test 3
-//define('FULL_ROUTE','admin');
-//define('FIRST_PARAMETER', 'admin');
-//define('ADMIN_PARAMETER', '');
-//define('LAST_PARAMETER', 'admin');
-// Test 4
-//define('FULL_ROUTE','admin/view/categories');
-//define('FIRST_PARAMETER', 'admin');
-//define('SECOND_PARAMETER', 'view');
-//define('THIRD_PARAMETER', 'categories');
-//define('ADMIN_PARAMETER', 'view');
-//define('TABLE_PARAMETER', 'categories');
-//define('LAST_PARAMETER', 'categories');
-// Test 5
-//define('FULL_ROUTE','login');
-//define('FIRST_PARAMETER', 'login');
-//define('LAST_PARAMETER', 'login');
-// Test 6
-//define('FULL_ROUTE','test');
-//define('FIRST_PARAMETER', 'test');
-//define('LAST_PARAMETER', 'test');
-//define('LAST_ID', '');
-// Test 7
-//define('FULL_ROUTE','test');
-//define('FIRST_PARAMETER', 'test');
-//define('LAST_PARAMETER', 'test');
-//define('FIRST_TABLE', 'categories');
-//define('LAST_TABLE', 'categories');
-//define('LAST_ID', '2');
-// Test 8
-//define('FULL_ROUTE','test/sub-test');
-//define('FIRST_PARAMETER', 'test');
-//define('SECOND_PARAMETER', 'sub-test');
-//define('LAST_PARAMETER', 'sub-test');
-//define('FIRST_TABLE', 'categories');
-//define('SECOND_TABLE', 'categories');
-//define('LAST_TABLE', 'categories');
-//define('LAST_ID', '3');
-// Test 8
-define('TITLE', '');
-define('FULL_ROUTE', 'test/sub-test');
-define('FIRST_PARAMETER', 'test');
-define('SECOND_PARAMETER', 'sub-test');
-define('THIRD_PARAMETER', 'test2');
-define('LAST_PARAMETER', 'test2');
-define('FIRST_TABLE', 'categories');
-define('SECOND_TABLE', 'categories');
-define('THIRD_TABLE', 'articles');
-define('LAST_TABLE', 'articles');
-define('LAST_ID', '3');
-
-/* Define expected result */
-// Test 1
-//$expectedResult1 = array(array('title' => 'title'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>title</li></ul>';
-// Test 2
-//$expectedResult1 = array(array('title' => 'home'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>home</li></ul>';
-// Test 3
-//$expectedResult1 = array(array('title' => 'administration'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>administration</li></ul>';
-// Test 4
-//$expectedResult1 = array(array('title' => 'administration', 'route' => 'admin'),
-//		array('title' => 'view', 'route' => 'admin/view/categories'),
-//		array('title' => 'categories'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li><a>administration</a></li><li class="divider">divider</li>';
-//$expectedResult2 .= '<li><a>view</a></li><li class="divider">divider</li><li>categories</li></ul>';
-// Test 5
-//$expectedResult1 = array(array('title' => 'login'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>login</li></ul>';
-// Test 6
-//$expectedResult1 = array(array('title' => 'error'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>error</li></ul>';
-// Test 7
-//$expectedResult1 = array(array('title' => 'test'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li>test</li></ul>';
-// Test 8
-//$expectedResult1 = array(array('title' => 'test', 'route' => 'test'), array('title' => 'sub-test'));
-//$expectedResult2 = '<ul class="list_breadcrumb"><li><a>test</a></li><li class="divider">divider</li><li>sub-test</li></ul>';
-// Test 9
-$expectedResult1 = array(array('title' => 'test', 'route' => 'test'),
-	array('title' => 'sub-test', 'route' => 'test/sub-test'),
-	array('title' => 'test2'));
-$expectedResult2 = '<ul class="list_breadcrumb"><li><a>test</a></li><li class="divider">divider</li>';
-$expectedResult2 .= '<li><a>sub-test</a></li><li class="divider">divider</li><li>test2</li></ul>';
+/**
+ * Redaxscript_Breadcrumb_Test
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @category Tests
+ * @author Gary Aylward
+ */
 
 class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 {
-	/*
-	  public function testBuildBreadcrumb()
-	  {
-	  global $expectedResult1;
-	  $result = build_breadcrumb();
-	  $this->assertEquals($expectedResult1, $result);
-	  }
+
+	private $_constants;
+
+	public function providerTestGetArray()
+	{
+		return array(
+			/* test 1 */
+			array(
+				array(
+					'title' => 'title',
+					'fullRoute' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+				),
+				array(array('title' => 'title'))
+			),
+			/* test 2 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+				),
+				array(array('title' => 'home'))
+			),
+			/* test 3 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'admin',
+					'firstParameter' => 'admin',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'admin'
+				),
+				array(array('title' => 'administration'))
+			),
+			/* test 4 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'admin/view/categories',
+					'firstParameter' => 'admin',
+					'secondParameter' => 'view',
+					'thirdParameter' => 'categories',
+					'adminParameter' => 'view',
+					'tableParameter' => 'categories',
+					'lastParameter' => 'categories'
+				),
+				array(array('title' => 'administration', 'route' => 'admin'),
+					array('title' => 'view', 'route' => 'admin/view/categories'),
+					array('title' => 'categories')
+				)
+			),
+			/* test 5 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'login',
+					'firstParameter' => 'login',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'login'
+				),
+				array(array('title' => 'login'))
+			),
+			/* test 6 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test',
+					'firstParameter' => 'test',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test',
+					'lastId' => ''
+				),
+				array(array('title' => 'error'))
+			),
+			/* test 7 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test',
+					'firstParameter' => 'test',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test',
+					'firstTable' => 'categories',
+					'lastTable' => 'categories',
+					'lastId' => '2'
+				),
+				array(array('title' => 'test'))
+			),
+			/* test 8 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test/sub-test',
+					'firstParameter' => 'test',
+					'secondParameter' => 'sub-test',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'sub-test',
+					'firstTable' => 'categories',
+					'secondTable' => 'categories',
+					'lastTable' => 'categories',
+					'lastId' => '3'
+				),
+				array(array('title' => 'test', 'route' => 'test'),
+					array('title' => 'sub-test')
+				)
+			),
+			/* test 9 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test/sub-test',
+					'firstParameter' => 'test',
+					'secondParameter' => 'sub-test',
+					'thirdParameter' => 'test2',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test2',
+					'firstTable' => 'categories',
+					'secondTable' => 'categories',
+					'thirdTable' => 'articles',
+					'lastTable' => 'articles',
+					'lastId' => '3'
+				),
+				array(array('title' => 'test', 'route' => 'test'),
+					array('title' => 'sub-test', 'route' => 'test/sub-test'),
+					array('title' => 'test2')
+				)
+			)
+		);
+	}
+
+	public function providerTestDisplayBreadcrumb()
+	{
+		return array(
+			/* test 1 */
+			array(
+				array(
+					'title' => 'title',
+					'fullRoute' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+				),
+				'<ul class="list_breadcrumb"><li>title</li></ul>'
+			),
+			/* test 2 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+				),
+				'<ul class="list_breadcrumb"><li>home</li></ul>'
+			),
+			/* test 3 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'admin',
+					'firstParameter' => 'admin',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'admin'
+				),
+				'<ul class="list_breadcrumb"><li>administration</li></ul>'
+			),
+			/* test 4 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'admin/view/categories',
+					'firstParameter' => 'admin',
+					'secondParameter' => 'view',
+					'thirdParameter' => 'categories',
+					'adminParameter' => 'view',
+					'tableParameter' => 'categories',
+					'lastParameter' => 'categories'
+				),
+				'<ul class="list_breadcrumb"><li><a>administration</a></li>'
+				. '<li class="divider">divider</li>'
+				. '<li><a>view</a></li><li class="divider">divider</li>'
+				. '<li>categories</li></ul>'
+			),
+			/* test 5 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'login',
+					'firstParameter' => 'login',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'login'
+				),
+				'<ul class="list_breadcrumb"><li>login</li></ul>'
+			),
+			/* test 6 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test',
+					'firstParameter' => 'test',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test',
+					'lastId' => ''
+				),
+				'<ul class="list_breadcrumb"><li>error</li></ul>'
+			),
+			/* test 7 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test',
+					'firstParameter' => 'test',
+					'secondParameter' => '',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test',
+					'firstTable' => 'categories',
+					'lastTable' => 'categories',
+					'lastId' => '2'
+				),
+				'<ul class="list_breadcrumb"><li>test</li></ul>'
+			),
+			/* test 8 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test/sub-test',
+					'firstParameter' => 'test',
+					'secondParameter' => 'sub-test',
+					'thirdParameter' => '',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'sub-test',
+					'firstTable' => 'categories',
+					'secondTable' => 'categories',
+					'lastTable' => 'categories',
+					'lastId' => '3'
+				),
+				'<ul class="list_breadcrumb"><li><a>test</a></li>'
+				. '<li class="divider">divider</li><li>sub-test</li></ul>'
+			),
+			/* test 9 */
+			array(
+				array(
+					'title' => '',
+					'fullRoute' => 'test/sub-test',
+					'firstParameter' => 'test',
+					'secondParameter' => 'sub-test',
+					'thirdParameter' => 'test2',
+					'adminParameter' => '',
+					'tableParameter' => '',
+					'lastParameter' => 'test2',
+					'firstTable' => 'categories',
+					'secondTable' => 'categories',
+					'thirdTable' => 'articles',
+					'lastTable' => 'articles',
+					'lastId' => '3'
+				),
+				'<ul class="list_breadcrumb"><li><a>test</a></li>'
+				. '<li class="divider">divider</li>'
+				. '<li><a>sub-test</a></li><li class="divider">divider</li>'
+				. '<li>test2</li></ul>'
+			)
+		);
+	}
+
+
+	protected function setUp()
+	{
+		$this->_constants = new Redaxscript_Constants(array());
+	}
+
+
+	/**
+	 * testGetArray
+	 *
+	 * @since 2.1.0
+	 *
+	 * @dataProvider providerTestGetArray
 	 */
 
-	public function testBreadcrumb()
+	public function testGetArray($constants, $expectedResult)
 	{
-		global $expectedResult2;
-		$breadcrumb = new Redaxscript_Breadcrumb;
+		$this->_constants->init($constants);
+		$breadcrumb = new Redaxscript_Breadcrumb($this->_constants);
+		$breadcrumb->init($this->_constants);
+		$result = $breadcrumb->getArray();
+		/* test result */
+		$this->assertEquals($expectedResult, $result);
+	}
+
+	/**
+	 * testDisplayBreadcrumb
+	 *
+	 * @since 2.1.0
+	 *
+	 * @dataProvider providerTestDisplayBreadcrumb
+	 */
+
+	public function testDisplayBreadcrumb($constants, $expectedResult)
+	{
+		$this->_constants->init($constants);
+		$breadcrumb = new Redaxscript_Breadcrumb($this->_constants);
+		$breadcrumb->init($this->_constants);
 		$result = $breadcrumb->displayBreadcrumb();
-		$this->assertEquals($expectedResult2, $result);
+		/* test result */
+		$this->assertEquals($expectedResult, $result);
 	}
 
 }

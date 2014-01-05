@@ -20,15 +20,23 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @var array
 	 */
+
 	private static $_breadcrumbArray = array();
+	private $C;
+	protected $classes = array();
+
 
 	/**
 	 * construct
 	 *
 	 * @since 2.1.0
 	 */
-	public function __construct()
+
+	public function __construct(Redaxscript_Constants $constants)
 	{
+		$this->C = $constants;
+		$this->classes['list'] = 'list_breadcrumb';
+		$this->classes['divider'] = 'divider';
 		if (self::$_breadcrumbArray == array())
 		{
 			$this->init();
@@ -40,6 +48,7 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 */
+
 	public function init()
 	{
 		$this->_buildBreadcrumb();
@@ -54,13 +63,13 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @return string
 	 */
+
 	public function displayBreadcrumb()
 	{
-		$preOutput = hook(__FUNCTION__ . '_start');
+		$output = hook(__FUNCTION__ . '_start');
 
-		$breadcrumbArrayKeys = array_keys(self::$_breadcrumbArray);
-		$last = end($breadcrumbArrayKeys);
-		$output = '';
+		$breadcrumbKeys = array_keys(self::$_breadcrumbArray);
+		$last = end($breadcrumbKeys);
 
 		/* collect item output */
 
@@ -82,7 +91,7 @@ class Redaxscript_Breadcrumb
 				$output .= '</li>';
 				if ($last != $key)
 				{
-					$output .= '<li class="divider">' . s('divider') . '</li>';
+					$output .= '<li class="' . $this->classes['divider'] . '">' . s('divider') . '</li>';
 				}
 			}
 		}
@@ -91,11 +100,24 @@ class Redaxscript_Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="list_breadcrumb">' . $output . '</ul>';
+			$output = '<ul class="' . $this->classes['list'] . '">' . $output . '</ul>';
 		}
-		$output = $preOutput . $output . hook(__FUNCTION__ . '_end');
+		$output .= hook(__FUNCTION__ . '_end');
 		return $output;
 	}
+
+	/**
+	 * getArray
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return array
+	 */
+	public function getArray()
+	{
+		return self::$_breadcrumbArray;
+	}
+
 
 	/**
 	 * _buildBreadcrumb
@@ -104,96 +126,108 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @return array
 	 */
+
 	private function _buildBreadcrumb()
 	{
+		self::$_breadcrumbArray = array();
 		$key = 0;
 
 		/* if title constant */
 
-		if (defined('TITLE') && TITLE)
+		if ($this->C['title'])
 		{
-			self::$_breadcrumbArray[$key]['title'] = TITLE;
+			self::$_breadcrumbArray[$key]['title'] = $this->C['title'];
 		}
 
 		/* else if home */
-		else if (FULL_ROUTE == '')
+
+		else if ($this->C['fullRoute'] == '')
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('home');
 		}
 
 		/* else if administration */
-		else if (FIRST_PARAMETER == 'admin')
+
+		else if ($this->C['firstParameter'] == 'admin')
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('administration');
-			if (ADMIN_PARAMETER)
+
+			if ($this->C['adminParameter'])
 			{
 				self::$_breadcrumbArray[$key]['route'] = 'admin';
 			}
 
 			/* join admin title */
 
-			if (l(ADMIN_PARAMETER))
+			if (l($this->C['adminParameter']))
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = l(ADMIN_PARAMETER);
-				if (ADMIN_PARAMETER != LAST_PARAMETER)
+				self::$_breadcrumbArray[$key]['title'] = l($this->C['adminParameter']);
+
+				if ($this->C['adminParameter'] != $this->C['lastParameter'])
 				{
-					self::$_breadcrumbArray[$key]['route'] = FULL_ROUTE;
+					self::$_breadcrumbArray[$key]['route'] = $this->C['fullRoute'];
 				}
 
 				/* join table title */
 
-				if (l(TABLE_PARAMETER))
+				if (l($this->C['tableParameter']))
 				{
 					$key++;
-					self::$_breadcrumbArray[$key]['title'] = l(TABLE_PARAMETER);
+					self::$_breadcrumbArray[$key]['title'] = l($this->C['tableParameter']);
 				}
 			}
 		}
 
 		/* else if default alias */
-		else if (check_alias(FIRST_PARAMETER, 1) == 1)
+
+		else if (check_alias($this->C['firstParameter'], 1) == 1)
 		{
 			/* join default title */
-			if (l(FIRST_PARAMETER))
+
+			if (l($this->C['firstParameter']))
 			{
-				self::$_breadcrumbArray[$key]['title'] = l(FIRST_PARAMETER);
+				self::$_breadcrumbArray[$key]['title'] = l($this->C['firstParameter']);
 			}
 		}
 
 		/* handle error */
-		else if (LAST_ID == '')
+
+		else if ($this->C['lastId'] == '')
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('error');
 		}
 
 		/* query title from content */
-		else if (defined('FIRST_TABLE') && FIRST_TABLE)
+
+		else if ($this->C['firstTable'])
 		{
 			/* join first title */
-			self::$_breadcrumbArray[$key]['title'] = retrieve('title', FIRST_TABLE, 'alias', FIRST_PARAMETER);
-			if (FIRST_PARAMETER != LAST_PARAMETER)
+			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->C['firstTable'], 'alias', $this->C['firstParameter']);
+
+			if ($this->C['firstParameter'] != $this->C['lastParameter'])
 			{
-				self::$_breadcrumbArray[$key]['route'] = FIRST_PARAMETER;
+				self::$_breadcrumbArray[$key]['route'] = $this->C['firstParameter'];
 			}
 
 			/* join second title */
 
-			if (defined('SECOND_TABLE') && SECOND_TABLE)
+			if ($this->C['secondTable'])
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = retrieve('title', SECOND_TABLE, 'alias', SECOND_PARAMETER);
-				if (SECOND_PARAMETER != LAST_PARAMETER)
+				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->C['secondTable'], 'alias', $this->C['secondParameter']);
+
+				if ($this->C['secondParameter'] != $this->C['lastParameter'])
 				{
-					self::$_breadcrumbArray[$key]['route'] = FIRST_PARAMETER . '/' . SECOND_PARAMETER;
+					self::$_breadcrumbArray[$key]['route'] = $this->C['firstParameter'] . '/' . $this->C['secondParameter'];
 				}
 
 				/* join third title */
 
-				if (defined('THIRD_TABLE') && THIRD_TABLE)
+				if ($this->C['thirdTable'])
 				{
 					$key++;
-					self::$_breadcrumbArray[$key]['title'] = retrieve('title', THIRD_TABLE, 'alias', THIRD_PARAMETER);
+					self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->C['thirdTable'], 'alias', $this->C['thirdParameter']);
 				}
 			}
 		}

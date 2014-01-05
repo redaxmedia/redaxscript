@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL);
 
 /* include core files */
 
@@ -27,6 +27,9 @@ include_once('includes/startup.php');
 
 Redaxscript_Autoloader::init();
 startup();
+
+/* set up constants object using migrate function */
+$C = new Redaxscript_Constants(migrate_constants());
 
 /* include files as needed */
 
