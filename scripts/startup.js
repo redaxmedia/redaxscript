@@ -40,7 +40,7 @@
 					accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion',
 					accordionBox: 'div.js_box_accordion, ul.js_box_accordion'
 				},
-				duration: 'normal'
+				duration: 600
 			}
 		},
 		autoResize:
@@ -85,34 +85,11 @@
 			selector: 'ul.js_dropdown',
 			options:
 			{
-				related: 'li',
-				duration: 2000
-			}
-		},
-		checkRequired:
-		{
-			startup: true,
-			selector: 'form.js_check_required',
-			options:
-			{
 				element:
 				{
-					buttonSubmit: 'button.js_submit',
-					field: 'div.js_editor_preview, input, select, textarea'
+					item: 'li'
 				},
-				autoFocus: true,
-				message: true,
-				vibrate: 300
-			}
-		},
-		checkSearch:
-		{
-			startup: true,
-			selector: 'form.js_check_search',
-			options:
-			{
-				required: 'input.js_required',
-				duration: 1000
+				duration: 2000
 			}
 		},
 		confirmLink:
@@ -145,7 +122,10 @@
 			selector: 'form input.js_generate_alias_input, form input.js_generate_alias_output',
 			options:
 			{
-				related: 'input.js_generate_alias_output'
+				element:
+				{
+					field: 'input.js_generate_alias_output'
+				}
 			}
 		},
 		keyShortcut:
@@ -169,28 +149,16 @@
 				logout: 'logout'
 			}
 		},
-		noteRequired:
-		{
-			startup: true,
-			selector: 'form.js_note_required',
-			options:
-			{
-				classString:
-				{
-					note: 'js_note_required note_required box_note'
-				},
-				related: 'a.js_cancel, a.js_delete, button.js_submit',
-				timeout: 1000,
-				duration: 300
-			}
-		},
 		preventUnload:
 		{
 			startup: true,
 			selector: 'ul.js_box_accordion, div.js_box_tab',
 			options:
 			{
-				excluded: 'ul.js_list_tab a'
+				element:
+				{
+					not: 'ul.js_list_tab a'
+				}
 			}
 		},
 		tab:
@@ -211,6 +179,35 @@
 		{
 			startup: true,
 			selector: 'form input.js_unmask_password'
+		},
+		validateForm:
+		{
+			startup: true,
+			selector: 'form.js_validate_form',
+			options:
+			{
+				element:
+				{
+					buttonSubmit: 'button.js_submit',
+					field: 'div.js_editor_preview, input, select, textarea'
+				},
+				autoFocus: true,
+				message: true,
+				vibrate: 300
+			}
+		},
+		validateSearch:
+		{
+			startup: true,
+			selector: 'form.js_validate_search',
+			options:
+			{
+				element:
+				{
+					field: 'input.js_search'
+				},
+				duration: 1000
+			}
 		}
 	};
 
@@ -332,7 +329,7 @@
 		}(),
 		history: function ()
 		{
-			if (typeof win.history === 'object' && typeof win.history.pushState  === 'function')
+			if (typeof win.history === 'object' && typeof win.history.pushState === 'function')
 			{
 				return true;
 			}
