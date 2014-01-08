@@ -104,36 +104,26 @@
 					fieldRequired = fieldRequired.filter(':focus');
 				}
 
-				/* check required fields */
+				/* validate fields */
 
 				fieldRequired.each(function ()
 				{
 					var field = $(this),
 						fieldNative = field[0],
-						fieldTag = fieldNative.tagName,
-						noteErrorClasses = 'js_note_error field_note note_error',
-						fieldValue = '';
+						noteErrorClasses = 'js_note_error field_note note_error';
 
-					/* check for tag */
+					/* check for validity */
 
-					if (fieldTag === 'DIV')
+					if (r.support.checkValidity)
 					{
-						fieldValue = $.trim(field.html());
-					}
-					else
-					{
-						fieldValue = $.trim(fieldNative.value);
-					}
-
-					/* check for value */
-
-					if (fieldValue)
-					{
-						field.removeClass(noteErrorClasses).trigger('valid');
-					}
-					else
-					{
-						field.addClass(noteErrorClasses).trigger('invalid');
+						if (fieldNative.checkValidity())
+						{
+							field.removeClass(noteErrorClasses).trigger('valid').prev('label').removeClass('label_message').removeAttr('data-message');
+						}
+						else
+						{
+							field.addClass(noteErrorClasses).trigger('invalid').prev('label').addClass('label_message').attr('data-message', fieldNative.validationMessage);
+						}
 					}
 				});
 

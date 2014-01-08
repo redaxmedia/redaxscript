@@ -98,7 +98,7 @@
 				element:
 				{
 					buttonSubmit: 'button.js_submit',
-					fieldRequired: 'div.js_required, input.js_required, select.js_required, textarea.js_required'
+					fieldRequired: 'div.js_editor_preview, input, select, textarea'
 				},
 				autoFocus: true,
 				vibrate: 300
@@ -250,6 +250,17 @@
 		canvas: function ()
 		{
 			if (typeof doc.createElement('canvas').getContext === 'function')
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+		checkValidity: function ()
+		{
+			if (typeof doc.createElement('input').checkValidity === 'function')
 			{
 				return true;
 			}

@@ -14,7 +14,7 @@
 r.modules.editor =
 {
 	startup: true,
-	selector: 'form textarea.js_editor',
+	selector: 'form textarea.js_editor_textarea',
 	options:
 	{
 		element:
@@ -24,7 +24,7 @@ r.modules.editor =
 		classString:
 		{
 			editor: 'js_editor editor',
-			editorPreview: 'js_required js_editor_preview editor_preview',
+			editorPreview: 'js_editor_preview editor_preview',
 			editorToolbar: 'js_toolbar editor_toolbar clear_fix',
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
