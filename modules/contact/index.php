@@ -92,18 +92,18 @@ function contact_form()
 
 	/* collect output */
 
-	$output = form_element('form', 'form_contact', 'js_check_required form_default form_contact', '', '', '', 'method="post"');
+	$output = form_element('form', 'form_contact', 'js_validate_form form_default form_contact', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'set_contact', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'author', 'js_required field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('text', 'author', 'field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('url', 'url', 'field_text', 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'js_required js_auto_resize js_editor_textarea field_textarea field_note', 'text', '', '* ' . l('message'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_editor_textarea field_textarea field_note', 'text', '', '* ' . l('message'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'js_required field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
