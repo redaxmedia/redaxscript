@@ -185,7 +185,7 @@
 				var field = $(this),
 					form = field.closest('form'),
 					fiedValue = $.trim(field.val()),
-					fieldRelated = form.find(options.related),
+					fieldRelated = form.find(options.element.field),
 					aliasValue = '';
 
 				/* clean alias if value */
