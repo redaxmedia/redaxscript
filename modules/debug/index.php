@@ -199,7 +199,7 @@ function debug_extras_end()
 				}
 				else
 				{
-					$output .= '<li class="js_item_strike item_strike"><del>' . $key_sub . '</del>';
+					$output .= '<li class="js_item_debug item_debug_strike"><del>' . $key_sub . '</del>';
 				}
 				$output .= '</li>';
 			}
