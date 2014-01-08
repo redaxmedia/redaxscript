@@ -19,7 +19,7 @@ r.modules.debug =
 	{
 		element:
 		{
-			item: 'li.js_item_strike'
+			item: 'li.js_item_debug'
 		}
 	}
 };
