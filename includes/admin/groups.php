@@ -176,14 +176,14 @@ function admin_groups_form()
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_validate_form form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect group set */
 
 	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l('group')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'js_required js_generate_alias_input field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'alias', 'js_required js_generate_alias_output field_text_admin field_note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'js_generate_alias_input field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'alias', 'js_generate_alias_output field_text_admin field_note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)
