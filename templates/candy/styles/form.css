@@ -181,6 +181,12 @@ textarea
 	font-size: 1.125em;
 }
 
+.form_default .label_message:after
+{
+	content: attr(data-message);
+	margin-left: 0.25em;
+}
+
 /* @section 7. space between elements */
 
 .box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
