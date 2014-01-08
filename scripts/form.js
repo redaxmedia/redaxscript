@@ -120,12 +120,18 @@
 						if (thatNative.checkValidity())
 						{
 							that.removeClass(classString).trigger('valid');
-							thatLabel.removeClass('label_message').removeAttr('data-message');
+							if (options.message)
+							{
+								thatLabel.removeClass('label_message').removeAttr('data-message');
+							}
 						}
 						else
 						{
 							that.addClass(classString).trigger('invalid');
-							thatLabel.addClass('label_message').attr('data-message', thatNative.validationMessage);
+							if (options.message)
+							{
+								thatLabel.addClass('label_message').attr('data-message', thatNative.validationMessage);
+							}
 						}
 					}
 				});

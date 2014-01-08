@@ -101,6 +101,7 @@
 					field: 'div.js_editor_preview, input, select, textarea'
 				},
 				autoFocus: true,
+				message: true,
 				vibrate: 300
 			}
 		},
