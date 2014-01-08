@@ -117,6 +117,12 @@ textarea
 	display: block;
 }
 
+.form_default .label_message:after
+{
+	content: attr(data-message);
+	margin-left: 0.25em;
+}
+
 /* @section 8. form search */
 
 .form_search
