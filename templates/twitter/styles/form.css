@@ -189,8 +189,7 @@ textarea
 
 .form_default .label_message:after
 {
-	content: attr(data-message);
-	margin-left: 0.25em;
+	content: ' ' attr(data-message);
 }
 
 /* @section 8. space between elements */

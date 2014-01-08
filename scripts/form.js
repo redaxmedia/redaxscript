@@ -205,23 +205,23 @@
 		{
 			/* validate form */
 
-			$(this).on('submit change input related', function (event)
+			$(this).on('submit keyup related', function (event)
 			{
 				var form = $(this),
 					buttonSubmit = form.find(options.element.buttonSubmit),
 					field = form.find(options.element.field),
 					fieldAll = field;
 
-				/* check related fields */
+				/* filter related fields */
 
 				if (event.type === 'related')
 				{
 					field = field.filter('[data-related]').removeAttr('data-related');
 				}
 
-				/* else those who changed */
+				/* else filter focued fileds */
 
-				else if (event.type === 'change' || event.type === 'input')
+				else if (event.type === 'keyup')
 				{
 					field = field.filter(':focus');
 				}
@@ -232,12 +232,63 @@
 				{
 					var that = $(this),
 						thatNative = that[0],
+						thatTag = thatNative.tagName,
 						thatLabel = that.siblings('label'),
-						classString = 'js_note_error field_note note_error';
+						classString = 'js_note_error field_note note_error',
+						thatValue = '',
+						thatRequired = '';
 
 					/* check for validity */
 
-					if (r.support.checkValidity)
+					if (thatTag === 'DIV')
+					{
+						thatValue = that.html();
+
+						/* check if empty */
+
+						if (thatValue)
+						{
+							that.removeClass(classString).trigger('valid');
+						}
+						else
+						{
+							that.addClass(classString).trigger('invalid');
+						}
+					}
+
+					/* validity fallback */
+
+					else if (!r.support.checkValidity)
+					{
+						thatValue = that.val();
+						thatRequired = that.attr('required');
+
+						/* check if empty */
+
+						if (thatRequired)
+						{
+							if (thatValue)
+							{
+								that.removeClass(classString).trigger('invalid');
+								if (options.message)
+								{
+									thatLabel.removeClass('label_message').removeAttr('data-message');
+								}
+							}
+							else
+							{
+								that.addClass(classString).trigger('valid');
+								if (options.message)
+								{
+									thatLabel.addClass('label_message').attr('data-message', l.input_empty + l.point);
+								}
+							}
+						}
+					}
+
+					/* native validity */
+
+					else
 					{
 						if (thatNative.checkValidity())
 						{
