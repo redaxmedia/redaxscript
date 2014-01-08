@@ -84,8 +84,8 @@
 
 			accordionForm.on('error', function ()
 			{
-				var fieldRequired = accordionSet.find('.js_note_error').first(),
-					accordionSetError = fieldRequired.closest(options.element.accordionSet),
+				var fieldError = accordionSet.find('.js_note_error').first(),
+					accordionSetError = fieldError.closest(options.element.accordionSet),
 					accordionTitleError = accordionSetError.children(options.element.accordionTitle);
 
 				accordionTitleError.click();
@@ -213,8 +213,8 @@
 
 			tabForm.on('error', function ()
 			{
-				var fieldRequired = tabSet.find('.js_note_error').first(),
-					tabNameError = fieldRequired.closest(options.element.tabSet).attr('id'),
+				var fieldError = tabSet.find('.js_note_error').first(),
+					tabNameError = fieldError.closest(options.element.tabSet).attr('id'),
 					tabLinkError = tabList.find('a[href*="' + tabNameError + '"]');
 
 				tabLinkError.click();
