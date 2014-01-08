@@ -114,6 +114,10 @@ module.exports = function (grunt)
 			{
 				dir: 'templates'
 			},
+			tests:
+			{
+				dir: 'tests'
+			},
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
@@ -192,7 +196,8 @@ module.exports = function (grunt)
 					'*.php',
 					'includes/**/*.php',
 					'languages/*.php',
-					'modules/**/*.php'
+					'modules/**/*.php',
+					'tests/**/*.php'
 				],
 				expand: true
 			},

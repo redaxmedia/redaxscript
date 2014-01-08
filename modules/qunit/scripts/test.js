@@ -128,9 +128,9 @@
 
 		if (typeof $.fn.validateSearch === 'function' && r.support.input.placeholder)
 		{
-			win.test('checkSearch', function ()
+			win.test('validateSearch', function ()
 			{
-				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').checkSearch().appendTo(fixture),
+				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
 					input = form.children('input'),
 					expect = l.input_incorrect + l.exclamation_mark,
 					result = input.attr('placeholder');
