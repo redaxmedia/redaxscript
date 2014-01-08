@@ -250,25 +250,10 @@ textarea
 	display: block;
 }
 
-.form_default .label_message
-{
-	position: relative;
-}
-
 .form_default .label_message:after
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
-	border-radius: 0.25em;
-	background: rgba(255, 0, 0, 0.8);
-	color: #fff;
 	content: attr(data-message);
-	font: bold 0.75em arial;
-	left: 8em;
-	margin-left: 0.5em;
-	padding: 0.25em 0.5em;
-	position: absolute;
-	top: 1em;
+	margin-left: 0.25em;
 }
 
 /* @section 8. form search */

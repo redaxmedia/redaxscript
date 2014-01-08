@@ -98,7 +98,7 @@
 				element:
 				{
 					buttonSubmit: 'button.js_submit',
-					fieldRequired: 'div.js_editor_preview, input, select, textarea'
+					field: 'div.js_editor_preview, input, select, textarea'
 				},
 				autoFocus: true,
 				vibrate: 300

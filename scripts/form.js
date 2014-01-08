@@ -87,49 +87,52 @@
 			{
 				var form = $(this),
 					buttonSubmit = form.find(options.element.buttonSubmit),
-					fieldRequired = form.find(options.element.fieldRequired),
-					fieldRequiredAll = fieldRequired;
+					field = form.find(options.element.field),
+					fieldAll = field;
 
 				/* check related fields */
 
 				if (event.type === 'related')
 				{
-					fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
+					field = field.filter('[data-related]').removeAttr('data-related');
 				}
 
 				/* else those who changed */
 
 				else if (event.type === 'change' || event.type === 'input')
 				{
-					fieldRequired = fieldRequired.filter(':focus');
+					field = field.filter(':focus');
 				}
 
 				/* validate fields */
 
-				fieldRequired.each(function ()
+				field.each(function ()
 				{
-					var field = $(this),
-						fieldNative = field[0],
-						noteErrorClasses = 'js_note_error field_note note_error';
+					var that = $(this),
+						thatNative = that[0],
+						thatLabel = that.siblings('label'),
+						classString = 'js_note_error field_note note_error';
 
 					/* check for validity */
 
 					if (r.support.checkValidity)
 					{
-						if (fieldNative.checkValidity())
+						if (thatNative.checkValidity())
 						{
-							field.removeClass(noteErrorClasses).trigger('valid').prev('label').removeClass('label_message').removeAttr('data-message');
+							that.removeClass(classString).trigger('valid');
+							thatLabel.removeClass('label_message').removeAttr('data-message');
 						}
 						else
 						{
-							field.addClass(noteErrorClasses).trigger('invalid').prev('label').addClass('label_message').attr('data-message', fieldNative.validationMessage);
+							that.addClass(classString).trigger('invalid');
+							thatLabel.addClass('label_message').attr('data-message', thatNative.validationMessage);
 						}
 					}
 				});
 
 				/* trigger error and prevent submit */
 
-				if (fieldRequiredAll.hasClass('js_note_error'))
+				if (fieldAll.hasClass('js_note_error'))
 				{
 					form.trigger('error');
 					buttonSubmit.attr('disabled', 'disabled');
@@ -138,7 +141,7 @@
 
 					if (event.type === 'submit' && options.autoFocus)
 					{
-						fieldRequiredAll.filter('.js_note_error').first().focus();
+						fieldAll.filter('.js_note_error').first().focus();
 					}
 
 					/* haptic feedback */
