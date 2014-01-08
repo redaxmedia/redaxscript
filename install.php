@@ -270,16 +270,16 @@ function install_form()
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
-	$output .= form_element('form', 'form_install', 'js_check_required js_note_required js_accordion form_default accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
+	$output .= form_element('form', 'form_install', 'js_validate_form js_accordion form_default accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
 
 	/* collect database set */
 
 	$output .= '<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">';
 	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">' . l('database_setup') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_default">';
-	$output .= '<li>' . form_element('text', 'd_host', 'js_required field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'js_required field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'js_required field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('password', 'd_password', 'js_unmask_password field_text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_prefix', 'field_text', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
 	$output .= '</ul></fieldset>';
@@ -289,10 +289,10 @@ function install_form()
 	$output .= '<fieldset class="js_set_accordion js_set_accordion_last set_accordion set_accordion_default set_accordion_last">';
 	$output .= '<legend class="js_title_accordion title_accordion title_accordion_default">' . l('account_create') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_default">';
-	$output .= '<li>' . form_element('text', 'name', 'js_required field_text field_note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'js_required field_text field_note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password js_required field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'field_text field_note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect hidden and button output */
