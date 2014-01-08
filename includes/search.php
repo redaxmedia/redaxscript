@@ -41,7 +41,7 @@ function search_form()
 	/* collect output */
 
 	$output = form_element('form', '', 'js_check_search form_search', '', '', '', 'method="post"');
-	$output .= form_element('search', '', 'js_required field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
+	$output .= form_element('search', '', 'field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
 
 	/* collect hidden and button output */
 
