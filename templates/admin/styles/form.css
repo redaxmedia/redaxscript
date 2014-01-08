@@ -214,6 +214,11 @@ textarea
 
 /* @section 6. form admin */
 
+.form_admin li
+{
+	margin: 0.5em 0;
+}
+
 .form_admin .label
 {
 	color: #555;
@@ -221,9 +226,10 @@ textarea
 	display: block;
 }
 
-.form_admin li
+.form_admin .label_message:after
 {
-	margin: 0.5em 0;
+	content: attr(data-message);
+	margin-left: 0.25em;
 }
 
 /* @section 7. space between elements */
