@@ -17,10 +17,6 @@ r.modules.editor =
 	selector: 'form textarea.js_editor_textarea',
 	options:
 	{
-		element:
-		{
-			editorControl: 'a.js_editor_control'
-		},
 		classString:
 		{
 			editor: 'js_editor editor',
@@ -29,6 +25,10 @@ r.modules.editor =
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
 			editorWysiwyg: 'wysiwyg'
+		},
+		element:
+		{
+			editorControl: 'a.js_editor_control'
 		},
 		toolbar:
 		{
