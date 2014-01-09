@@ -232,7 +232,7 @@
 		}
 		if (r.plugins.dropdown.startup && r.support.touch)
 		{
-			$(r.plugins.dropdown.selector).dropdown();
+			$(r.plugins.dropdown.selector).dropdown(r.plugins.dropdown.options);
 		}
 		if (r.plugins.tab.startup)
 		{
