@@ -357,14 +357,14 @@
 			{
 				var form = $(this),
 					field = form.find(options.element.field),
-					fieldValue = $.trim(field.val()),
+					fieldValue = field.val(),
 					fieldPlaceholder = field.attr('placeholder'),
-					inputIncorrect = l.input_incorrect + l.exclamation_mark,
+					message = l.input_incorrect + l.exclamation_mark,
 					timeout = '';
 
 				/* prevent multiple timeout */
 
-				if (fieldPlaceholder === inputIncorrect)
+				if (fieldPlaceholder === message)
 				{
 					clearTimeout(timeout);
 					event.preventDefault();
@@ -374,7 +374,7 @@
 
 				else if (fieldValue.length < 3)
 				{
-					field.val('').attr('placeholder', inputIncorrect);
+					field.val('').attr('placeholder', message);
 					timeout = setTimeout(function ()
 					{
 						field.attr('placeholder', fieldPlaceholder).focus();
