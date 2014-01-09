@@ -80,6 +80,12 @@
 .box_default, .box_tab_default
 {
 	background: #d9d9d9;
+	background: -moz-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -ms-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -o-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: -webkit-linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: linear-gradient(top, #d9d9d9, #cfcfcf);
+	color: #515151;
 	padding: 1em 1.5em;
 }
 
@@ -96,9 +102,8 @@
 {
 	-moz-border-radius: 0 0 0.25em 0.25em;
 	-webkit-border-radius: 0 0 0.25em 0.25em;
-	border: 1px solid #bdbdbd;
+	border-bottom: 1px solid #d9d9d9;
 	border-radius: 0 0 0.25em 0.25em;
-	border-top: 0;
 }
 
 /* @section 6. box extra */
@@ -137,17 +142,17 @@
 	background: linear-gradient(top, #d9d9d9, #cfcfcf);
 	border-radius: 0.25em;
 	display: inline-block;
-	font: 0.75em/2.25em arial;
+	font: 0.75em/2.5em arial;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	padding: 0.25em 1em;
+	padding: 0 1em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
 	text-transform: uppercase;
 }
 
 .box_infoline, .box_infoline a
 {
-	color: #777;
+	color: #515151;
 }
 
 .box_infoline a
@@ -158,6 +163,11 @@
 .box_infoline a:hover
 {
 	color: #5e5e5e;
+}
+
+.box_infoline span
+{
+    vertical-align: middle;
 }
 
 /* @section 8. box line */

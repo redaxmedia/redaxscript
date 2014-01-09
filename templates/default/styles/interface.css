@@ -43,7 +43,7 @@
 
 .list_breadcrumb, .list_breadcrumb a
 {
-	color: #777;
+	color: #515151;
 }
 
 .list_breadcrumb a:hover
@@ -420,7 +420,7 @@
 	background: #d9d9d9;
 	border-radius: 0.25em;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-	color: #777;
+	color: #515151;
 	font: 0.875em/1.25em arial;
 	left: 100%;
 	margin-left: 1em;
