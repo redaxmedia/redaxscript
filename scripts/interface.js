@@ -109,7 +109,7 @@
 		return this.each(function ()
 		{
 			var dropdown = $(this),
-				dropdownRelated = dropdown.find(options.related),
+				dropdownRelated = dropdown.find(options.element.item),
 				timeout = '';
 
 			/* listen for touchstart and touchend */
