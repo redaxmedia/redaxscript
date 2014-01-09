@@ -219,7 +219,7 @@
 					field = field.filter('[data-related]').removeAttr('data-related');
 				}
 
-				/* else filter focued fileds */
+				/* else focused fields */
 
 				else if (event.type === 'keyup')
 				{
@@ -232,79 +232,72 @@
 				{
 					var that = $(this),
 						thatNative = that[0],
-						thatTag = thatNative.tagName,
+						thatContenteditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
 						classString = 'js_note_error field_note note_error',
+						validity = 'valid',
 						thatValue = '',
-						thatRequired = '';
+						thatRequired = '',
+						message = '';
 
-					/* check for validity */
+					/* contenteditable field */
 
-					if (thatTag === 'DIV')
+					if (thatContenteditable)
 					{
 						thatValue = that.html();
 
-						/* check if empty */
+						/* check empty value */
 
-						if (thatValue)
+						if (!thatValue)
 						{
-							that.removeClass(classString).trigger('valid');
-						}
-						else
-						{
-							that.addClass(classString).trigger('invalid');
+							validity = 'invalid';
+							message = l.input_empty + l.point;
 						}
 					}
 
-					/* validity fallback */
+					/* missing support */
 
 					else if (!r.support.checkValidity)
 					{
 						thatValue = that.val();
 						thatRequired = that.attr('required');
 
-						/* check if empty */
+						/* check required value */
 
-						if (thatRequired)
+						if (thatRequired && !thatValue)
 						{
-							if (thatValue)
-							{
-								that.removeClass(classString).trigger('invalid');
-								if (options.message)
-								{
-									thatLabel.removeClass('label_message').removeAttr('data-message');
-								}
-							}
-							else
-							{
-								that.addClass(classString).trigger('valid');
-								if (options.message)
-								{
-									thatLabel.addClass('label_message').attr('data-message', l.input_empty + l.point);
-								}
-							}
+							validity = 'invalid';
+							message = l.input_empty + l.point;
 						}
 					}
 
-					/* native validity */
+					/* use native validity */
+
+					else if (!thatNative.checkValidity())
+					{
+						validity = 'invalid',
+						message = thatNative.validationMessage;
+					}
+
+					/* handle invalid */
+
+					if (validity === 'invalid')
+					{
+						that.addClass(classString).trigger('invalid');
+						if (message && options.message)
+						{
+							thatLabel.addClass('label_message').attr('data-message', message);
+						}
+					}
+
+					/* else handle valid */
 
 					else
 					{
-						if (thatNative.checkValidity())
+						that.removeClass(classString).trigger('valid');
+						if (options.message)
 						{
-							that.removeClass(classString).trigger('valid');
-							if (options.message)
-							{
-								thatLabel.removeClass('label_message').removeAttr('data-message');
-							}
-						}
-						else
-						{
-							that.addClass(classString).trigger('invalid');
-							if (options.message)
-							{
-								thatLabel.addClass('label_message').attr('data-message', thatNative.validationMessage);
-							}
+							thatLabel.removeClass('label_message').removeAttr('data-message');
 						}
 					}
 				});
