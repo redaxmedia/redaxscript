@@ -275,7 +275,7 @@
 
 					else if (!thatNative.checkValidity())
 					{
-						validity = 'invalid',
+						validity = 'invalid';
 						message = thatNative.validationMessage;
 					}
 
