@@ -127,12 +127,10 @@ textarea
 .field_select, .field_text, .field_textarea
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	-moz-transition: background 0.5s ease;
 	-ms-transition: background 0.5s ease;
 	-o-transition: background 0.5s ease;
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 	-webkit-transition: background 0.5s ease;
 	background: #f1f1f1;
 	background: -moz-linear-gradient(top, #e2e2e2, #f1f1f1);
@@ -142,8 +140,7 @@ textarea
 	background: linear-gradient(top, #e2e2e2, #f1f1f1);
 	border: 1px solid #b0b0b0;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-	color: #777;
+	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	transition: background 0.5s ease;
@@ -212,7 +209,7 @@ textarea
 .field_search
 {
 	background: none;
-	color: #777;
+	color: #555;
 	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	height: 1.75em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
@@ -223,8 +220,6 @@ textarea
 
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #dadada, #e8e8e8);
 	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
@@ -232,7 +227,6 @@ textarea
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
 	background: linear-gradient(top, #dadada, #e8e8e8);
 	border-color: #ababab;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 	color: #ababab;
 	cursor: default;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
@@ -260,9 +254,7 @@ textarea
 .form_search
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	background: #e5e5e5;
 	background: -moz-linear-gradient(top, #f9f9f9, #e2e2e2);
 	background: -ms-linear-gradient(top, #f9f9f9, #e2e2e2);
@@ -271,7 +263,6 @@ textarea
 	background: linear-gradient(top, #f9f9f9, #e2e2e2);
 	border: 1px solid #9e9e9e;
 	border-radius: 0.25em;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 0 4px rgba(0, 0, 0, 0.15);
 	padding: 0.5em 1em;
 }
 

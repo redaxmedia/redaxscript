@@ -26,29 +26,29 @@
 {
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
-	background: #d9d9d9;
-	background: -moz-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -ms-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -o-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -webkit-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: linear-gradient(top, #cfcfcf, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
 	font: 1em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 1em;
 	padding: 0 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }
 
 .list_breadcrumb, .list_breadcrumb a
 {
-	color: #777;
+	color: #555;
 }
 
 .list_breadcrumb a:hover
 {
-	color: #555;
+	color: #444;
 }
 
 .list_breadcrumb li
@@ -104,7 +104,7 @@
 	float: right;
 	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-top: 0.5em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }
 
@@ -346,12 +346,14 @@
 .list_tab_default li
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
-	-moz-box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
-	-webkit-box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
-	background: #ebebeb;
+	background: #bdbdbd;
+	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: linear-gradient(top, #d1d1d1, #bdbdbd);
 	border-radius: 0.25em 0.25em 0 0;
-	box-shadow: inset 1px 0 #d9d9d9, inset -1px 0 #d9d9d9, inset 0 1px #d9d9d9;
 	margin-right: 0.25em;
 	vertical-align: bottom;
 }
@@ -360,7 +362,7 @@
 {
 	font: 1.5em/1.5em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1.25em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }
 
@@ -368,12 +370,7 @@
 
 .js .list_tab_default .item_active
 {
-	background: #d9d9d9;
-	background: -moz-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -ms-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -o-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -webkit-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: #ebebeb;
 }
 
 .js .list_tab_default .item_active a
@@ -389,7 +386,7 @@
 {
 	color: #919191;
 	font-size: 1.125em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .list_search_result .date_search_result
@@ -414,17 +411,22 @@
 .tooltip
 {
 	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-	background: #d9d9d9;
+	-webkit-box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	background: #33acee;
+	background: -moz-linear-gradient(top, #00a2f8, #0090db);
+	background: -ms-linear-gradient(top, #00a2f8, #0090db);
+	background: -o-linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
+	background: linear-gradient(top, #00a2f8, #0090db);
 	border-radius: 0.25em;
-	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-	color: #777;
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	color: #fff;
 	font: 0.875em/1.25em arial;
 	left: 100%;
 	margin-left: 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
 	top: -0.625em;
 	padding: 0.75em;
 }

@@ -66,7 +66,7 @@ pre
 {
 	color: #555;
 	font: 1.5em 'pt sans narrow', 'trebuchet ms', arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: lowercase;
 }
 
@@ -100,12 +100,12 @@ pre
 {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	background: #dcdcdc;
-	background: -moz-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -ms-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -o-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -webkit-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: linear-gradient(top, #e3e3e3, #d9d9d9);
+	background: #bdbdbd;
+	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: linear-gradient(top, #d1d1d1, #bdbdbd);
 	box-sizing: border-box;
 	font: 1.5em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	text-indent: 1em;
@@ -134,18 +134,18 @@ pre
 
 .js .title_accordion_default.title_active, .title_dialog_default
 {
-	background: #bdbdbd;
-	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: linear-gradient(top, #d1d1d1, #bdbdbd);
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	background: #33acee;
+	background: -moz-linear-gradient(top, #00a2f8, #0090db);
+	background: -ms-linear-gradient(top, #00a2f8, #0090db);
+	background: -o-linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
+	background: linear-gradient(top, #00a2f8, #0090db);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 }
 
-.js .title_accordion_default.title_active, .js .title_accordion_default.title_active a, .title_dialog_default, .title_dialog_default a, .sidebar .title_extra, .sidebar .title_extra a
+.js .title_accordion_default.title_active, .js .title_accordion_default.title_active a, .title_dialog_default, .title_dialog_default a
 {
-	color: #444;
+	color: #fff;
 }
 
 /* @section 7. title content */
@@ -155,7 +155,7 @@ pre
 	font: 2.5em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 0.5em;
 	margin-top: 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .title_content, .title_content a
@@ -175,12 +175,12 @@ pre
 	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .title_content_sub, .title_content_sub a
 {
-	color: #3197df;
+	color: #0090db;
 }
 
 /* @section 9. title comment */
@@ -189,12 +189,12 @@ pre
 {
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
-	background: #d9d9d9;
-	background: -moz-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -ms-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -o-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: -webkit-linear-gradient(top, #d9d9d9, #cfcfcf);
-	background: linear-gradient(top, #d9d9d9, #cfcfcf);
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: linear-gradient(top, #cfcfcf, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
 	font: bold 1em/2.75em arial;
@@ -203,12 +203,12 @@ pre
 	min-width: 10%;
 	padding: 0 0.5em;
 	text-align: center;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .title_comment, .title_comment a
 {
-	color: #777;
+	color: #555;
 }
 
 /* @section 10. title dialog default */
@@ -240,6 +240,12 @@ pre
 	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-top: 1.5em;
 	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .title_extra, .sidebar .title_extra a
+{
+	color: #555;
 }
 
 /* @section 12. title footer */
@@ -261,5 +267,5 @@ pre
 .title_website
 {
 	font: bold 3.75em/1em 'pt sans narrow', 'trebuchet ms', arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }

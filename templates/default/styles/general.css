@@ -22,7 +22,7 @@
 
 body
 {
-	background: #efefef;
+	background: #dadada;
 }
 
 /* @section 2. bottom */
@@ -41,7 +41,7 @@ body
 
 .bottom a:hover
 {
-	color: #777;
+	color: #555;
 	text-decoration: underline;
 }
 
@@ -66,8 +66,8 @@ body
 	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
 	background: linear-gradient(top, #cfcfcf, #b9b9b9);
-	border: solid #b9b9b9;
-	border-width: 1em 0;
+	border: solid #a2a2a2;
+	border-width: 1px 0;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	margin-top: 5em;
 	padding: 2.5em 0;
