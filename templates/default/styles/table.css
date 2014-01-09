@@ -43,14 +43,14 @@
 
 .table_default tfoot tr, .table_default thead tr
 {
-	background: #d9d9d9;
-	background: -moz-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -ms-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -o-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -webkit-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: linear-gradient(top, #e3e3e3, #d9d9d9);
-	color: #444;
+	background: #bdbdbd;
+	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: linear-gradient(top, #d1d1d1, #bdbdbd);
+	color: #555;
 	font: bold 1.25em 'pt sans narrow', 'trebuchet ms', arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }

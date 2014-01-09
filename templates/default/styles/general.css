@@ -22,7 +22,7 @@
 
 body
 {
-	background: #f7f7f7;
+	background: #dadada;
 }
 
 /* @section 2. bottom */
@@ -41,7 +41,7 @@ body
 
 .bottom a:hover
 {
-	color: #515151;
+	color: #555;
 	text-decoration: underline;
 }
 
