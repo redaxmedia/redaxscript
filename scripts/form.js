@@ -271,7 +271,7 @@
 						}
 					}
 
-					/* use native validity */
+					/* use native validation */
 
 					else if (!thatNative.checkValidity())
 					{
