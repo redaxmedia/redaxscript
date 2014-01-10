@@ -261,7 +261,7 @@ textarea
 	background: -o-linear-gradient(top, #f9f9f9, #e2e2e2);
 	background: -webkit-linear-gradient(top, #f9f9f9, #e2e2e2);
 	background: linear-gradient(top, #f9f9f9, #e2e2e2);
-	border: 1px solid #9e9e9e;
+	border: 1px solid #999;
 	border-radius: 0.25em;
 	padding: 0.5em 1em;
 }
