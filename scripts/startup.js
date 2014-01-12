@@ -55,6 +55,11 @@
 				eol: '\n'
 			}
 		},
+		confirmLink:
+		{
+			startup: true,
+			selector: 'a.js_confirm'
+		},
 		dialog:
 		{
 			options:
@@ -91,11 +96,6 @@
 				},
 				duration: 2000
 			}
-		},
-		confirmLink:
-		{
-			startup: true,
-			selector: 'a.js_confirm'
 		},
 		enableIndent:
 		{
