@@ -36,16 +36,16 @@ textarea
 	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	background: #cacaca;
-	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -ms-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -o-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -webkit-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: linear-gradient(top, #d1d1d1, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	color: #666;
+	color: #555;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 1em/2.25em 'pt sans narrow', 'trebuchet ms', arial;
@@ -138,7 +138,7 @@ textarea
 	background: -o-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: -webkit-linear-gradient(top, #e2e2e2, #f1f1f1);
 	background: linear-gradient(top, #e2e2e2, #f1f1f1);
-	border: 1px solid #b0b0b0;
+	border: 1px solid #b9b9b9;
 	border-radius: 0.25em;
 	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
@@ -151,12 +151,12 @@ textarea
 
 .field_select:hover, .field_text:hover, .field_textarea:hover
 {
-	background: #ebebeb;
-	background: -moz-linear-gradient(top, #ddd, #ebebeb);
-	background: -ms-linear-gradient(top, #ddd, #ebebeb);
-	background: -o-linear-gradient(top, #ddd, #ebebeb);
-	background: -webkit-linear-gradient(top, #ddd, #ebebeb);
-	background: linear-gradient(top, #ddd, #ebebeb);
+	background: #eee;
+	background: -moz-linear-gradient(top, #ddd, #eee);
+	background: -ms-linear-gradient(top, #ddd, #eee);
+	background: -o-linear-gradient(top, #ddd, #eee);
+	background: -webkit-linear-gradient(top, #ddd, #eee);
+	background: linear-gradient(top, #ddd, #eee);
 }
 
 /* @section 3.2 focus effect */
@@ -226,8 +226,8 @@ textarea
 	background: -o-linear-gradient(top, #dadada, #e8e8e8);
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
 	background: linear-gradient(top, #dadada, #e8e8e8);
-	border-color: #ababab;
-	color: #ababab;
+	border-color: #a5a5a5;
+	color: #a5a5a5;
 	cursor: default;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }

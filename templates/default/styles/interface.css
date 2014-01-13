@@ -27,11 +27,11 @@
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: linear-gradient(top, #cfcfcf, #b9b9b9);
+	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
+	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
+	background: -o-linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
+	background: linear-gradient(top, #ccc, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
 	font: 1em/2em 'pt sans narrow', 'trebuchet ms', arial;
@@ -232,16 +232,16 @@
 	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	background: #cacaca;
-	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -ms-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -o-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -webkit-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: linear-gradient(top, #d1d1d1, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	color: #666;
+	color: #555;
 	font: bold 1em arial;
 	padding: 0.5em 1em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
@@ -347,12 +347,12 @@
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
-	background: #bdbdbd;
-	background: -moz-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -ms-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -o-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: -webkit-linear-gradient(top, #d1d1d1, #bdbdbd);
-	background: linear-gradient(top, #d1d1d1, #bdbdbd);
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -ms-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -o-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -webkit-linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: linear-gradient(top, #d1d1d1, #b9b9b9);
 	border-radius: 0.25em 0.25em 0 0;
 	margin-right: 0.25em;
 	vertical-align: bottom;
@@ -370,12 +370,12 @@
 
 .js .list_tab_default .item_active
 {
-	background: #ebebeb;
+	background: #eee;
 }
 
 .js .list_tab_default .item_active a
 {
-	color: #4e4e4e;
+	color: #444;
 	cursor: default;
 	line-height: 1.75em;
 }

@@ -58,17 +58,17 @@ body
 
 .footer
 {
-	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background: #cfcfcf;
-	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: linear-gradient(top, #cfcfcf, #b9b9b9);
-	border: solid #a2a2a2;
+	-moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	background: #ccc;
+	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
+	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
+	background: -o-linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
+	background: linear-gradient(top, #ccc, #b9b9b9);
+	border: solid #a5a5a5;
 	border-width: 1px 0;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 	margin-top: 5em;
 	padding: 2.5em 0;
 }
@@ -77,16 +77,16 @@ body
 
 .header
 {
-	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background: #cfcfcf;
-	background: -moz-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -ms-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -o-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: -webkit-linear-gradient(top, #cfcfcf, #b9b9b9);
-	background: linear-gradient(top, #cfcfcf, #b9b9b9);
-	border-bottom: 1px solid #a2a2a2;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	background: #ccc;
+	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
+	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
+	background: -o-linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
+	background: linear-gradient(top, #ccc, #b9b9b9);
+	border-bottom: 1px solid #a5a5a5;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 	padding: 1.25em 0;
 }
 
