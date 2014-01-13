@@ -15,7 +15,6 @@ include_once('includes/head.php');
 include_once('includes/helper.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
-include_once('includes/migrate.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
@@ -26,10 +25,17 @@ include_once('includes/startup.php');
 /* startup redaxscript */
 
 Redaxscript_Autoloader::init();
+
+/* migrate.php must be included after classes have been autoloaded
+ * because migrate functions have to provide access to classes
+ */
+include_once('includes/migrate.php');
+
 startup();
 
 /* set up constants object using migrate function */
-$C = new Redaxscript_Constants(migrate_constants());
+$C = Redaxscript_Constants::getInstance();
+$C->init(migrate_constants());
 
 /* include files as needed */
 

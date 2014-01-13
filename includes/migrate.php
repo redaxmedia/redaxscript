@@ -27,8 +27,8 @@
 
 function breadcrumb()
 {
-	global $C;
-	$breadcrumb = new Redaxscript_Breadcrumb($C);
+	$constants = Redaxscript_Constants::getInstance();
+	$breadcrumb = new Redaxscript_Breadcrumb($constants);
 	echo $breadcrumb->displayBreadcrumb();
 }
 

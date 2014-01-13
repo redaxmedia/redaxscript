@@ -10,26 +10,61 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Constants implements ArrayAccess
+class Redaxscript_Constants
 {
 
-	protected $_values = array();
+	protected static $_values = array();
+	protected static $_instance = null;
 
 	/**
 	 * construct
 	 *
+	 * Constructor is private to ensure singleton
+	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $constants
 	 */
 
-	public function __construct($constants)
+	private function __construct()
 	{
-		$this->_values = $constants;
+	}
+
+	/**
+	 * setInstance
+	 *
+	 * Sets a reference to the instance of the singleton class
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param object $instance
+	 */
+	public static function setInstance($instance)
+	{
+		self::$_instance = $instance;
+	}
+
+	/**
+	 * getInstance
+	 *
+	 * Instantiates the class if necessary and returns the instance
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return object
+	 */
+	public static function getInstance()
+	{
+		if (self::$_instance === null)
+		{
+			self::$_instance = new self;
+		}
+		return self::$_instance;
 	}
 
 	/**
 	 * init
+	 *
+	 * Fills values array with data. Ensures array is empty first.
 	 *
 	 * @since 2.1.0
 	 *
@@ -37,62 +72,69 @@ class Redaxscript_Constants implements ArrayAccess
 	 */
 	public function init($constants)
 	{
-		$this->_values = array();
-		$this->_values = $constants;
+		self::$_values = array();
+		self::$_values = $constants;
 	}
 
-
 	/**
-	 * offsetExists
+	 * exists
+	 *
+	 * Returns true if item exists in constants array
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $offset
+	 * @param string $key
 	 * @return bool
 	 */
-	public function offsetExists($offset)
+	public static function exists($key)
 	{
-		return array_key_exists($offset, $this->_values);
+		return array_key_exists($key, self::$_values);
 	}
 
 	/**
-	 * offsetGet
+	 * get
+	 *
+	 * Gets item from constants array. Returns null if item does not exist
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $offset
+	 * @param string $get
 	 * @return string
 	 */
-	public function offsetGet($offset)
+	public static function get($key)
 	{
-		return $this->offsetExists($offset) ? $this->_values[$offset] : null;
+		return self::exists($key) ? self::$_values[$key] : null;
 	}
 
 	/**
-	 * offsetSet
+	 * set
+	 *
+	 * Sets item value, may overwrite existing value or add new value
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $offset
+	 * @param string $key
 	 * @param mixed $value
 	 */
-	public function offsetSet($offset, $value)
+	public static function set($key, $value)
 	{
-		$this->_values[$offset] = $value;
+		self::$_values[$key] = $value;
 	}
 
 	/**
-	 * offsetUnset
+	 * clear
+	 *
+	 * Clears item by unsetting array element
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $offset
+	 * @param string $key
 	 */
-	public function offsetUnset($offset)
+	public static function clear($key)
 	{
-		if ($this->offsetExists($offset))
+		if (self::exists($key))
 		{
-			unset($this->_values[$offset]);
+			unset(self::$_values[$key]);
 		}
 	}
 }

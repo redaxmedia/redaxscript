@@ -28,42 +28,80 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	private $_constants;
 
+	/**
+	 * providerTestGetArray
+	 *
+	 * Data provider for testGetArray
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return array
+	 */
 	public function providerTestGetArray()
 	{
 		return array(
-			/* test 1 */
+			/* test 0 */
+			/* single node, module title */
 			array(
 				array(
 					'title' => 'title',
 					'fullRoute' => '',
+					'firstParameter' => '',
+					'secondParameter' => '',
+					'thirdParameter' => '',
 					'adminParameter' => '',
 					'tableParameter' => '',
+					'lastParameter' => '',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
+					'lastId' => ''
 				),
 				array(array('title' => 'title'))
 			),
-			/* test 2 */
+			/* test 1 */
+			/* single node, home */
 			array(
 				array(
 					'title' => '',
 					'fullRoute' => '',
+					'firstParameter' => '',
+					'secondParameter' => '',
+					'thirdParameter' => '',
 					'adminParameter' => '',
 					'tableParameter' => '',
+					'lastParameter' => '',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
+					'lastId' => ''
 				),
 				array(array('title' => 'home'))
 			),
-			/* test 3 */
+			/* test 2 */
+			/* single node, admin */
 			array(
 				array(
 					'title' => '',
 					'fullRoute' => 'admin',
 					'firstParameter' => 'admin',
+					'secondParameter' => '',
+					'thirdParameter' => '',
 					'adminParameter' => '',
 					'tableParameter' => '',
-					'lastParameter' => 'admin'
+					'lastParameter' => 'admin',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
+					'lastId' => ''
 				),
 				array(array('title' => 'administration'))
 			),
-			/* test 4 */
+			/* test 3 */
+			/* Three nodes, admin + view + e.g. categories */
 			array(
 				array(
 					'title' => '',
@@ -73,14 +111,20 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'thirdParameter' => 'categories',
 					'adminParameter' => 'view',
 					'tableParameter' => 'categories',
-					'lastParameter' => 'categories'
+					'lastParameter' => 'categories',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
+					'lastId' => ''
 				),
 				array(array('title' => 'administration', 'route' => 'admin'),
 					array('title' => 'view', 'route' => 'admin/view/categories'),
 					array('title' => 'categories')
 				)
 			),
-			/* test 5 */
+			/* test 4 */
+			/* single node, has default alias, e.g. login */
 			array(
 				array(
 					'title' => '',
@@ -90,11 +134,17 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'thirdParameter' => '',
 					'adminParameter' => '',
 					'tableParameter' => '',
-					'lastParameter' => 'login'
+					'lastParameter' => 'login',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
+					'lastId' => ''
 				),
 				array(array('title' => 'login'))
 			),
-			/* test 6 */
+			/* test 5 */
+			/* single node, error */
 			array(
 				array(
 					'title' => '',
@@ -105,11 +155,16 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'adminParameter' => '',
 					'tableParameter' => '',
 					'lastParameter' => 'test',
+					'firstTable' => '',
+					'secondTable' => '',
+					'thirdTable' => '',
+					'lastTable' => '',
 					'lastId' => ''
 				),
 				array(array('title' => 'error'))
 			),
-			/* test 7 */
+			/* test 6 */
+			/* single node, category */
 			array(
 				array(
 					'title' => '',
@@ -121,12 +176,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'tableParameter' => '',
 					'lastParameter' => 'test',
 					'firstTable' => 'categories',
+					'secondTable' => '',
+					'thirdTable' => '',
 					'lastTable' => 'categories',
 					'lastId' => '2'
 				),
 				array(array('title' => 'test'))
 			),
-			/* test 8 */
+			/* test 7 */
+			/* Two nodes, category + sub-category */
 			array(
 				array(
 					'title' => '',
@@ -139,6 +197,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastParameter' => 'sub-test',
 					'firstTable' => 'categories',
 					'secondTable' => 'categories',
+					'thirdTable' => '',
 					'lastTable' => 'categories',
 					'lastId' => '3'
 				),
@@ -146,11 +205,12 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					array('title' => 'sub-test')
 				)
 			),
-			/* test 9 */
+			/* test 8 */
+			/* Three nodes, category + sub-category + article */
 			array(
 				array(
 					'title' => '',
-					'fullRoute' => 'test/sub-test',
+					'fullRoute' => 'test/sub-test/test2',
 					'firstParameter' => 'test',
 					'secondParameter' => 'sub-test',
 					'thirdParameter' => 'test2',
@@ -171,88 +231,20 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 		);
 	}
 
+	/**
+	 * providerTestDisplayBreadcrumb
+	 *
+	 * Data provider for testDisplayBreadcrumb
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return array
+	 */
 	public function providerTestDisplayBreadcrumb()
 	{
 		return array(
-			/* test 1 */
-			array(
-				array(
-					'title' => 'title',
-					'fullRoute' => '',
-					'adminParameter' => '',
-					'tableParameter' => '',
-				),
-				'<ul class="list_breadcrumb"><li>title</li></ul>'
-			),
-			/* test 2 */
-			array(
-				array(
-					'title' => '',
-					'fullRoute' => '',
-					'adminParameter' => '',
-					'tableParameter' => '',
-				),
-				'<ul class="list_breadcrumb"><li>home</li></ul>'
-			),
-			/* test 3 */
-			array(
-				array(
-					'title' => '',
-					'fullRoute' => 'admin',
-					'firstParameter' => 'admin',
-					'adminParameter' => '',
-					'tableParameter' => '',
-					'lastParameter' => 'admin'
-				),
-				'<ul class="list_breadcrumb"><li>administration</li></ul>'
-			),
-			/* test 4 */
-			array(
-				array(
-					'title' => '',
-					'fullRoute' => 'admin/view/categories',
-					'firstParameter' => 'admin',
-					'secondParameter' => 'view',
-					'thirdParameter' => 'categories',
-					'adminParameter' => 'view',
-					'tableParameter' => 'categories',
-					'lastParameter' => 'categories'
-				),
-				'<ul class="list_breadcrumb"><li><a>administration</a></li>'
-				. '<li class="divider">divider</li>'
-				. '<li><a>view</a></li><li class="divider">divider</li>'
-				. '<li>categories</li></ul>'
-			),
-			/* test 5 */
-			array(
-				array(
-					'title' => '',
-					'fullRoute' => 'login',
-					'firstParameter' => 'login',
-					'secondParameter' => '',
-					'thirdParameter' => '',
-					'adminParameter' => '',
-					'tableParameter' => '',
-					'lastParameter' => 'login'
-				),
-				'<ul class="list_breadcrumb"><li>login</li></ul>'
-			),
-			/* test 6 */
-			array(
-				array(
-					'title' => '',
-					'fullRoute' => 'test',
-					'firstParameter' => 'test',
-					'secondParameter' => '',
-					'thirdParameter' => '',
-					'adminParameter' => '',
-					'tableParameter' => '',
-					'lastParameter' => 'test',
-					'lastId' => ''
-				),
-				'<ul class="list_breadcrumb"><li>error</li></ul>'
-			),
-			/* test 7 */
+			/* test 0 */
+			/* Breadcrumb trail = 1 node */
 			array(
 				array(
 					'title' => '',
@@ -264,12 +256,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'tableParameter' => '',
 					'lastParameter' => 'test',
 					'firstTable' => 'categories',
+					'secondTable' => '',
+					'thirdTable' => '',
 					'lastTable' => 'categories',
 					'lastId' => '2'
 				),
 				'<ul class="list_breadcrumb"><li>test</li></ul>'
 			),
-			/* test 8 */
+			/* test 1 */
+			/* Breadcrumb trail = 2 nodes */
 			array(
 				array(
 					'title' => '',
@@ -282,17 +277,19 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastParameter' => 'sub-test',
 					'firstTable' => 'categories',
 					'secondTable' => 'categories',
+					'thirdTable' => '',
 					'lastTable' => 'categories',
 					'lastId' => '3'
 				),
 				'<ul class="list_breadcrumb"><li><a>test</a></li>'
 				. '<li class="divider">divider</li><li>sub-test</li></ul>'
 			),
-			/* test 9 */
+			/* test 2 */
+			/* Breadcrumb trail= 3 nodes */
 			array(
 				array(
 					'title' => '',
-					'fullRoute' => 'test/sub-test',
+					'fullRoute' => 'test/sub-test/test2',
 					'firstParameter' => 'test',
 					'secondParameter' => 'sub-test',
 					'thirdParameter' => 'test2',
@@ -313,15 +310,22 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 		);
 	}
 
-
+	/**
+	 * setUp
+	 *
+	 * Gets an instance of the constants class to be used in each test
+	 *
+	 * @since 2.1.0
+	 */
 	protected function setUp()
 	{
-		$this->_constants = new Redaxscript_Constants(array());
+		$this->_constants = Redaxscript_Constants::getInstance();
 	}
-
 
 	/**
 	 * testGetArray
+	 *
+	 * Test for the getArray method
 	 *
 	 * @since 2.1.0
 	 *
@@ -340,6 +344,8 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	/**
 	 * testDisplayBreadcrumb
+	 *
+	 * Test for the displayBreadcrumb method
 	 *
 	 * @since 2.1.0
 	 *
