@@ -192,7 +192,7 @@ function seo_tube_player($video_id = '')
 function seo_tube_form()
 {
 	global $video_id;
-	$output .= form_element('form', '', 'form_seo_tube', '', '', '', 'method="post"');
+	$output .= form_element('form', '', 'form_search form_seo_tube', '', '', '', 'method="post"');
 	$output .= form_element('text', 'url', 'field_search', 'url', $video_id, '', 'maxlength="50"  placeholder="' . l('seo_tube_enter_youtube_video') . '"');
 
 	/* collect hidden and button output */
