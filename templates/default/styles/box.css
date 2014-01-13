@@ -55,7 +55,7 @@
 
 .box_comment:before
 {
-	color: #3197df;
+	color: #0090db;
 	content: '\201e';
 	font: italic 7em/1em georgia, arial;
 	left: -0.5em;
@@ -222,7 +222,7 @@
 
 .box_quote:before
 {
-	color: #d0d0d0;
+	color: #ccc;
 	content: '\201e';
 	font: 12em/1em georgia;
 	left: 0;

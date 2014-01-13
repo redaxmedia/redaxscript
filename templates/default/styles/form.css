@@ -37,11 +37,11 @@ textarea
 	-webkit-border-radius: 0.25em;
 	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #d1d1d1, #b9b9b9);
-	background: -ms-linear-gradient(top, #d1d1d1, #b9b9b9);
-	background: -o-linear-gradient(top, #d1d1d1, #b9b9b9);
-	background: -webkit-linear-gradient(top, #d1d1d1, #b9b9b9);
-	background: linear-gradient(top, #d1d1d1, #b9b9b9);
+	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
+	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
+	background: -o-linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
+	background: linear-gradient(top, #ccc, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
