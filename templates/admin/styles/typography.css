@@ -71,8 +71,8 @@
 
 .js .set_accordion_admin .title_accordion_admin.title_active, .title_dialog_admin
 {
-	background: url('templates/admin/images/carbon.png') #232323;
-	border: 1px solid #232323;
+	background: url('templates/admin/images/carbon.png') #222;
+	border: 1px solid #222;
 }
 
 .js .title_accordion_admin.title_active, .js .title_accordion_admin.title_active a, .title_dialog_admin, .title_dialog_admin a
