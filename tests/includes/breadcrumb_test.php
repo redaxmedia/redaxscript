@@ -26,7 +26,7 @@ include (dirname(__FILE__).'\..\stubs.php');
 class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 {
 
-	private $_constants;
+	private $_registry;
 
 	/**
 	 * providerTestGetArray
@@ -43,6 +43,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 			/* test 0 */
 			/* single node, module title */
 			array(
+				/* inputs */
 				array(
 					'title' => 'title',
 					'fullRoute' => '',
@@ -58,11 +59,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'title'))
+				/* outputs */
+				array(
+					array('title' => 'title')
+				)
 			),
 			/* test 1 */
 			/* single node, home */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => '',
@@ -78,11 +83,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'home'))
+				/* outputs */
+				array(
+					array('title' => 'home')
+				)
 			),
 			/* test 2 */
 			/* single node, admin */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'admin',
@@ -98,11 +107,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'administration'))
+				/* outputs */
+				array(
+					array('title' => 'administration')
+				)
 			),
 			/* test 3 */
 			/* Three nodes, admin + view + e.g. categories */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'admin/view/categories',
@@ -118,7 +131,9 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'administration', 'route' => 'admin'),
+				/* outputs */
+				array(
+					array('title' => 'administration', 'route' => 'admin'),
 					array('title' => 'view', 'route' => 'admin/view/categories'),
 					array('title' => 'categories')
 				)
@@ -126,6 +141,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 			/* test 4 */
 			/* single node, has default alias, e.g. login */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'login',
@@ -141,11 +157,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'login'))
+				/* outputs */
+				array(
+					array('title' => 'login')
+				)
 			),
 			/* test 5 */
 			/* single node, error */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test',
@@ -161,11 +181,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => '',
 					'lastId' => ''
 				),
-				array(array('title' => 'error'))
+				/* outputs */
+				array(
+					array('title' => 'error')
+				)
 			),
 			/* test 6 */
 			/* single node, category */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test',
@@ -181,11 +205,15 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'categories',
 					'lastId' => '2'
 				),
-				array(array('title' => 'test'))
+				/* outputs */
+				array(
+					array('title' => 'test')
+				)
 			),
 			/* test 7 */
 			/* Two nodes, category + sub-category */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test/sub-test',
@@ -201,13 +229,16 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'categories',
 					'lastId' => '3'
 				),
-				array(array('title' => 'test', 'route' => 'test'),
+				/* outputs */
+				array(
+					array('title' => 'test', 'route' => 'test'),
 					array('title' => 'sub-test')
 				)
 			),
 			/* test 8 */
 			/* Three nodes, category + sub-category + article */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test/sub-test/test2',
@@ -223,7 +254,9 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'articles',
 					'lastId' => '3'
 				),
-				array(array('title' => 'test', 'route' => 'test'),
+				/* outputs */
+				array(
+					array('title' => 'test', 'route' => 'test'),
 					array('title' => 'sub-test', 'route' => 'test/sub-test'),
 					array('title' => 'test2')
 				)
@@ -246,6 +279,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 			/* test 0 */
 			/* Breadcrumb trail = 1 node */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test',
@@ -261,11 +295,13 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'categories',
 					'lastId' => '2'
 				),
+				/* outputs */
 				'<ul class="list_breadcrumb"><li>test</li></ul>'
 			),
 			/* test 1 */
 			/* Breadcrumb trail = 2 nodes */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test/sub-test',
@@ -281,12 +317,14 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'categories',
 					'lastId' => '3'
 				),
+				/* outputs */
 				'<ul class="list_breadcrumb"><li><a>test</a></li>'
 				. '<li class="divider">divider</li><li>sub-test</li></ul>'
 			),
 			/* test 2 */
-			/* Breadcrumb trail= 3 nodes */
+			/* Breadcrumb trail = 3 nodes */
 			array(
+				/* inputs */
 				array(
 					'title' => '',
 					'fullRoute' => 'test/sub-test/test2',
@@ -302,6 +340,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastTable' => 'articles',
 					'lastId' => '3'
 				),
+				/* outputs */
 				'<ul class="list_breadcrumb"><li><a>test</a></li>'
 				. '<li class="divider">divider</li>'
 				. '<li><a>sub-test</a></li><li class="divider">divider</li>'
@@ -319,7 +358,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 */
 	protected function setUp()
 	{
-		$this->_constants = Redaxscript_Constants::getInstance();
+		$this->_registry = Redaxscript_Registry::getInstance();
 	}
 
 	/**
@@ -332,11 +371,10 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerTestGetArray
 	 */
 
-	public function testGetArray($constants, $expectedResult)
+	public function testGetArray($registry, $expectedResult)
 	{
-		$this->_constants->init($constants);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_constants);
-		$breadcrumb->init($this->_constants);
+		$this->_registry->init($registry);
+		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
 		$result = $breadcrumb->getArray();
 		/* test result */
 		$this->assertEquals($expectedResult, $result);
@@ -352,11 +390,10 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerTestDisplayBreadcrumb
 	 */
 
-	public function testDisplayBreadcrumb($constants, $expectedResult)
+	public function testDisplayBreadcrumb($registry, $expectedResult)
 	{
-		$this->_constants->init($constants);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_constants);
-		$breadcrumb->init($this->_constants);
+		$this->_registry->init($registry);
+		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
 		$result = $breadcrumb->displayBreadcrumb();
 		/* test result */
 		$this->assertEquals($expectedResult, $result);

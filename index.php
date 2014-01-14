@@ -33,9 +33,9 @@ include_once('includes/migrate.php');
 
 startup();
 
-/* set up constants object using migrate function */
-$C = Redaxscript_Constants::getInstance();
-$C->init(migrate_constants());
+/* set up registry object using migrate function */
+$registry = Redaxscript_Registry::getInstance();
+$registry->init(migrate_constants());
 
 /* include files as needed */
 

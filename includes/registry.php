@@ -1,16 +1,16 @@
 <?php
 
 /**
- * constants
+ * registry
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Constants
+ * @category Registry
  * @author Gary Aylward
  */
 
-class Redaxscript_Constants
+class Redaxscript_Registry
 {
 
 	protected static $_values = array();
@@ -27,20 +27,6 @@ class Redaxscript_Constants
 
 	private function __construct()
 	{
-	}
-
-	/**
-	 * setInstance
-	 *
-	 * Sets a reference to the instance of the singleton class
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param object $instance
-	 */
-	public static function setInstance($instance)
-	{
-		self::$_instance = $instance;
 	}
 
 	/**
