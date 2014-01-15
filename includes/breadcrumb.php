@@ -107,9 +107,88 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @return array
 	 */
+
 	public function getArray()
 	{
 		return self::$_breadcrumbArray;
+	}
+
+	/**
+	 * _buildAdminBreadcrumb
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param int $key
+	 */
+	private function _buildAdminBreadcrumb($key)
+	{
+		self::$_breadcrumbArray[$key]['title'] = l('administration');
+
+		if ($this->_registry->get('adminParameter'))
+		{
+			self::$_breadcrumbArray[$key]['route'] = 'admin';
+		}
+
+		/* join admin title */
+
+		if (l($this->_registry->get('adminParameter')))
+		{
+			$key++;
+			self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('adminParameter'));
+
+			if ($this->_registry->get('adminParameter') != $this->_registry->get('lastParameter'))
+			{
+				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
+			}
+
+			/* join table title */
+
+			if (l($this->_registry->get('tableParameter')))
+			{
+				$key++;
+				self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('tableParameter'));
+			}
+		}
+	}
+
+
+	/**
+	 * buildContentBreadcrumb
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param int $key
+	 */
+	private function _buildContentBreadcrumb($key)
+	{
+		/* join first title */
+		self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
+
+		if ($this->_registry->get('firstParameter') != $this->_registry->get('lastParameter'))
+		{
+			self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
+		}
+
+		/* join second title */
+
+		if ($this->_registry->get('secondTable'))
+		{
+			$key++;
+			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
+
+			if ($this->_registry->get('secondParameter') != $this->_registry->get('lastParameter'))
+			{
+				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
+			}
+
+			/* join third title */
+
+			if ($this->_registry->get('thirdTable'))
+			{
+				$key++;
+				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('thirdTable'), 'alias', $this->_registry->get('thirdParameter'));
+			}
+		}
 	}
 
 
@@ -117,8 +196,6 @@ class Redaxscript_Breadcrumb
 	 * _buildBreadcrumb
 	 *
 	 * @since 2.1.0
-	 *
-	 * @return array
 	 */
 
 	private function _buildBreadcrumb()
@@ -144,33 +221,7 @@ class Redaxscript_Breadcrumb
 
 		else if ($this->_registry->get('firstParameter') == 'admin')
 		{
-			self::$_breadcrumbArray[$key]['title'] = l('administration');
-
-			if ($this->_registry->get('adminParameter'))
-			{
-				self::$_breadcrumbArray[$key]['route'] = 'admin';
-			}
-
-			/* join admin title */
-
-			if (l($this->_registry->get('adminParameter')))
-			{
-				$key++;
-				self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('adminParameter'));
-
-				if ($this->_registry->get('adminParameter') != $this->_registry->get('lastParameter'))
-				{
-					self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
-				}
-
-				/* join table title */
-
-				if (l($this->_registry->get('tableParameter')))
-				{
-					$key++;
-					self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('tableParameter'));
-				}
-			}
+			$this->_buildAdminBreadcrumb($key);
 		}
 
 		/* else if default alias */
@@ -196,34 +247,7 @@ class Redaxscript_Breadcrumb
 
 		else if ($this->_registry->get('firstTable'))
 		{
-			/* join first title */
-			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
-
-			if ($this->_registry->get('firstParameter') != $this->_registry->get('lastParameter'))
-			{
-				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
-			}
-
-			/* join second title */
-
-			if ($this->_registry->get('secondTable'))
-			{
-				$key++;
-				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
-
-				if ($this->_registry->get('secondParameter') != $this->_registry->get('lastParameter'))
-				{
-					self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
-				}
-
-				/* join third title */
-
-				if ($this->_registry->get('thirdTable'))
-				{
-					$key++;
-					self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('thirdTable'), 'alias', $this->_registry->get('thirdParameter'));
-				}
-			}
+			$this->_buildContentBreadcrumb($key);
 		}
 	}
 }

@@ -29,7 +29,17 @@ include_once('config.php');
 /* startup redaxscript */
 
 Redaxscript_Autoloader::init();
+
+/* migrate.php must be included after classes have been autoloaded
+ * because migrate functions have to provide access to classes
+ */
+include_once('includes/migrate.php');
+
 startup();
+
+/* set up registry object using migrate function */
+$registry = Redaxscript_Registry::getInstance();
+$registry->init(migrate_constants());
 
 /* include language files */
 
@@ -39,7 +49,9 @@ include_once('languages/misc.php');
 /* define meta */
 
 define('TITLE', l('installation'));
+$registry->set('title', l('installation'));
 define('ROBOTS', 'none');
+$registry->set('robots', 'none');
 
 /* call loader else render template */
 
