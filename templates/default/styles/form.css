@@ -220,6 +220,8 @@ textarea
 
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
+	-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #dadada, #e8e8e8);
 	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
@@ -227,6 +229,7 @@ textarea
 	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
 	background: linear-gradient(top, #dadada, #e8e8e8);
 	border-color: #a5a5a5;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 	color: #a5a5a5;
 	cursor: default;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
