@@ -19,25 +19,25 @@
  * @category Tests
  * @author Gary Aylward
  */
+
 class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 {
 
 	private $_registry;
 
-
 	/**
 	 * setUp
 	 *
-	 * Gets an instance of the regisrty class to be used in each test
+	 * Gets an instance of the registry class to be used in each test
 	 *
 	 * @since 2.1.0
 	 */
+
 	protected function setUp()
 	{
 		$this->_registry = Redaxscript_Registry::getInstance();
 		$this->_registry->init(array());
 	}
-
 
 	/**
 	 * testSetAndGet
@@ -46,6 +46,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 */
+
 	public function testSetAndGet()
 	{
 		$this->_registry->set('testKey', 'testValue');
@@ -54,7 +55,6 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		$this->assertEquals('testValue', $result);
 	}
 
-
 	/**
 	 * testClear
 	 *
@@ -62,6 +62,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 */
+
 	public function testClear()
 	{
 		$this->_registry->set('testKey', 'testValue');
@@ -74,7 +75,6 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		$this->assertEquals(null, $result);
 	}
 
-
 	/**
 	 * testExists
 	 *
@@ -82,6 +82,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 */
+
 	public function testExists()
 	{
 		$result = $this->_registry->exists('testKey');

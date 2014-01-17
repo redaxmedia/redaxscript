@@ -11,7 +11,7 @@
  */
 
 /* Include stubs */
-include (dirname(__FILE__).'\..\stubs.php');
+include_once (dirname(__FILE__) . '\..\stubs.php');
 
 /**
  * Redaxscript_Breadcrumb_Test
@@ -37,6 +37,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
+
 	public function providerTestGetArray()
 	{
 		return array(
@@ -273,6 +274,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
+
 	public function providerTestDisplayBreadcrumb()
 	{
 		return array(
@@ -356,6 +358,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 */
+
 	protected function setUp()
 	{
 		$this->_registry = Redaxscript_Registry::getInstance();

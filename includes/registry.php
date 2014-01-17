@@ -12,17 +12,32 @@
 
 class Redaxscript_Registry
 {
+	/**
+	 * values
+	 *
+	 * the array of registry values
+	 *
+	 * @var array
+	 */
 
 	protected static $_values = array();
+
+	/**
+	 * instance
+	 *
+	 * the singleton instance of the class
+	 *
+	 * @var Redaxscript_Registry
+	 */
+
 	protected static $_instance = null;
 
 	/**
 	 * construct
 	 *
-	 * Constructor is private to ensure singleton
+	 * constructor is private to ensure singleton
 	 *
 	 * @since 2.1.0
-	 *
 	 */
 
 	private function __construct()
@@ -32,12 +47,13 @@ class Redaxscript_Registry
 	/**
 	 * getInstance
 	 *
-	 * Instantiates the class if necessary and returns the instance
+	 * instantiates the class if necessary and returns the instance
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return object
 	 */
+
 	public static function getInstance()
 	{
 		if (self::$_instance === null)
@@ -50,12 +66,13 @@ class Redaxscript_Registry
 	/**
 	 * init
 	 *
-	 * Fills values array with data. Ensures array is empty first.
+	 * fills values array with data, ensures array is empty first.
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $constants
 	 */
+
 	public function init($constants)
 	{
 		self::$_values = array();
@@ -65,13 +82,14 @@ class Redaxscript_Registry
 	/**
 	 * exists
 	 *
-	 * Returns true if item exists in constants array
+	 * returns true if item exists in constants array
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param string $key
-	 * @return bool
+	 * @return boolean
 	 */
+
 	public static function exists($key)
 	{
 		return array_key_exists($key, self::$_values);
@@ -80,13 +98,14 @@ class Redaxscript_Registry
 	/**
 	 * get
 	 *
-	 * Gets item from constants array. Returns null if item does not exist
+	 * gets item from constants array, returns null if item does not exist
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param string $get
 	 * @return string
 	 */
+
 	public static function get($key)
 	{
 		return self::exists($key) ? self::$_values[$key] : null;
@@ -95,33 +114,17 @@ class Redaxscript_Registry
 	/**
 	 * set
 	 *
-	 * Sets item value, may overwrite existing value or add new value
+	 * sets item value, may overwrite existing value or add new value
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param string $key
 	 * @param mixed $value
 	 */
+
 	public static function set($key, $value)
 	{
 		self::$_values[$key] = $value;
-	}
-
-	/**
-	 * clear
-	 *
-	 * Clears item by unsetting array element
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $key
-	 */
-	public static function clear($key)
-	{
-		if (self::exists($key))
-		{
-			unset(self::$_values[$key]);
-		}
 	}
 }
 

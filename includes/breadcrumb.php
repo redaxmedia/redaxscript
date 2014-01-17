@@ -16,14 +16,36 @@ class Redaxscript_Breadcrumb
 	/**
 	 * breadcrumbArray
 	 *
-	 * Array to store all the nodes of the breadcrumb trail
+	 * array to store all the nodes of the breadcrumb trail
 	 *
 	 * @var array
 	 */
 
 	private static $_breadcrumbArray = array();
+
+	/**
+	 * registry
+	 *
+	 * instance of the registry class injected via the constructor
+	 *
+	 * @var Redaxscript_Registry
+	 */
+
 	private $_registry;
-	protected $_classes = array('list' => 'list_breadcrumb', 'divider' => 'divider');
+
+	/**
+	 * classes
+	 *
+	 * array of CSS classes used to style the list
+	 *
+	 * @var array
+	 */
+
+	protected $_classes = array(
+		'list' => 'list_breadcrumb',
+		'divider' => 'divider'
+	);
+
 
 	/**
 	 * construct
@@ -51,7 +73,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * displayBreadcrumb
 	 *
-	 * Public function to display the trail as an unordered list
+	 * public function to display the trail as an unordered list
 	 *
 	 * @since 2.1.0
 	 *
@@ -74,10 +96,15 @@ class Redaxscript_Breadcrumb
 			if ($title)
 			{
 				$output .= '<li>';
+
+				/* if there is a route make the element a link */
+
 				if ($route)
 				{
 					$output .= anchor_element('internal', '', '', $title, $route);
 				}
+
+				/* otherwise make the element plain text */
 				else
 				{
 					$output .= $title;
@@ -116,13 +143,18 @@ class Redaxscript_Breadcrumb
 	/**
 	 * _buildAdminBreadcrumb
 	 *
+	 * build breadcrumb trail for admin page
+	 *
 	 * @since 2.1.0
 	 *
-	 * @param int $key
+	 * @param integer $key
 	 */
-	private function _buildAdminBreadcrumb($key)
+
+	private function _buildAdminBreadcrumb($key = 0)
 	{
 		self::$_breadcrumbArray[$key]['title'] = l('administration');
+
+		/* if adminParameter is set, make this element a link to admin */
 
 		if ($this->_registry->get('adminParameter'))
 		{
@@ -136,7 +168,9 @@ class Redaxscript_Breadcrumb
 			$key++;
 			self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('adminParameter'));
 
-			if ($this->_registry->get('adminParameter') != $this->_registry->get('lastParameter'))
+			/* if this is not the end of the chain, make it a link */
+
+			if ($this->_registry->get('adminParameter') !== $this->_registry->get('lastParameter'))
 			{
 				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
 			}
@@ -151,20 +185,25 @@ class Redaxscript_Breadcrumb
 		}
 	}
 
-
 	/**
 	 * buildContentBreadcrumb
 	 *
+	 * build breadcrumb trail from content - categories and article
+	 *
 	 * @since 2.1.0
 	 *
-	 * @param int $key
+	 * @param integer $key
 	 */
+
 	private function _buildContentBreadcrumb($key)
 	{
 		/* join first title */
+
 		self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
 
-		if ($this->_registry->get('firstParameter') != $this->_registry->get('lastParameter'))
+		/* if this is not the end of the trail, make it a link */
+
+		if ($this->_registry->get('firstParameter') !== $this->_registry->get('lastParameter'))
 		{
 			self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
 		}
@@ -176,7 +215,9 @@ class Redaxscript_Breadcrumb
 			$key++;
 			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
 
-			if ($this->_registry->get('secondParameter') != $this->_registry->get('lastParameter'))
+			/* if this is not the end of the trail, make it a link */
+
+			if ($this->_registry->get('secondParameter') !== $this->_registry->get('lastParameter'))
 			{
 				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
 			}
@@ -191,9 +232,10 @@ class Redaxscript_Breadcrumb
 		}
 	}
 
-
 	/**
 	 * _buildBreadcrumb
+	 *
+	 * build breadcrumb trail as an array
 	 *
 	 * @since 2.1.0
 	 */
@@ -212,21 +254,21 @@ class Redaxscript_Breadcrumb
 
 		/* else if home */
 
-		else if ($this->_registry->get('fullRoute') == '')
+		else if ($this->_registry->get('fullRoute') === '')
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('home');
 		}
 
 		/* else if administration */
 
-		else if ($this->_registry->get('firstParameter') == 'admin')
+		else if ($this->_registry->get('firstParameter') === 'admin')
 		{
 			$this->_buildAdminBreadcrumb($key);
 		}
 
 		/* else if default alias */
 
-		else if (check_alias($this->_registry->get('firstParameter'), 1) == 1)
+		else if (check_alias($this->_registry->get('firstParameter'), 1) === 1)
 		{
 			/* join default title */
 
@@ -238,7 +280,7 @@ class Redaxscript_Breadcrumb
 
 		/* handle error */
 
-		else if ($this->_registry->get('lastId') == '')
+		else if ($this->_registry->get('lastId') === '')
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('error');
 		}
