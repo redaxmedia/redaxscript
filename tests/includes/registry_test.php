@@ -10,6 +10,9 @@
  * @author Gary Aylward
  */
 
+/* Include stubs */
+include_once (dirname(__FILE__) . '/../stubs.php');
+
 /**
  * Redaxscript_Registry_Test
  *
@@ -53,26 +56,6 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		$result = $this->_registry->get('testKey');
 		/* test result */
 		$this->assertEquals('testValue', $result);
-	}
-
-	/**
-	 * testClear
-	 *
-	 * Test for the Clear method
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function testClear()
-	{
-		$this->_registry->set('testKey', 'testValue');
-		$result = $this->_registry->get('testKey');
-		/* test result */
-		$this->assertEquals('testValue', $result);
-		$this->_registry->clear('testKey');
-		$result = $this->_registry->get('testKey');
-		/* test result */
-		$this->assertEquals(null, $result);
 	}
 
 	/**

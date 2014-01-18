@@ -11,7 +11,7 @@
  */
 
 /* Include stubs */
-include_once (dirname(__FILE__) . '\..\stubs.php');
+include_once (dirname(__FILE__) . '/../stubs.php');
 
 /**
  * Redaxscript_Breadcrumb_Test
