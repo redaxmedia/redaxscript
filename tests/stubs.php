@@ -99,6 +99,26 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 
 function s($name = '')
 {
+	static $index = 0;
+
+	if ($name === 'captcha')
+	{
+		/* captcha returns values to give plus, minus and random operator */
+		switch ($index)
+		{
+			case 0:
+				$index++;
+				$name = 2;
+				break;
+			case 1:
+				$index++;
+				$name = 3;
+				break;
+			default:
+				$name = 0;
+				break;
+		}
+	}
 	return $name;
 }
 
