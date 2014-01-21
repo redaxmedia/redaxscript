@@ -202,12 +202,12 @@
 
 .table_admin tfoot, .table_admin thead
 {
-	border: 1px solid #232323;
+	border: 1px solid #222;
 }
 
 .table_admin tfoot tr, .table_admin thead tr
 {
-	background: url('templates/admin/images/carbon.png') #232323;
+	background: url('templates/admin/images/carbon.png') #222;
 	color: #ccc;
 	font: bold 1.25em 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;

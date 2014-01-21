@@ -257,8 +257,8 @@
 {
 	-moz-border-radius: 0.25em 0.25em 0 0;
 	-webkit-border-radius: 0.25em 0.25em 0 0;
-	background: url('templates/admin/images/carbon.png') #232323;
-	border: 1px solid #232323;
+	background: url('templates/admin/images/carbon.png') #222;
+	border: 1px solid #222;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.25em;
@@ -282,8 +282,6 @@
 
 .js .list_tab_admin .item_active
 {
-	-moz-box-shadow: inset 0 1px #fff;
-	-webkit-box-shadow: inset 0 1px #fff;
 	background: #e2e2e2;
 	background: -moz-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	background: -ms-linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
@@ -292,7 +290,6 @@
 	background: linear-gradient(top, #dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	border-bottom-color: #e2e2e2;
-	box-shadow: inset 0 1px #fff;
 }
 
 .js .list_tab_admin .item_active a

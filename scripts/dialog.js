@@ -232,7 +232,7 @@
 
 				$(this).one('change', function ()
 				{
-					$('a').not(options.excluded).confirmLink();
+					$('a').not(options.element.not).confirmLink();
 				});
 			}
 		});

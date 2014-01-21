@@ -123,7 +123,7 @@
 
 	.list_panel_children_admin
 	{
-		background: url('templates/admin/images/carbon.png') #232323;
+		background: url('templates/admin/images/carbon.png') #222;
 		position: absolute;
 		width: 100%;
 	}

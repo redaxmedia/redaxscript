@@ -9,11 +9,11 @@
  * 6. version
  * 7. clean alias
  * 8. auto resize
- * 9. check search
+ * 9. validate search
  * 10. enable indent
  * 11. unmask password
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -124,13 +124,13 @@
 			});
 		}
 
-		/* @section 9. check search */
+		/* @section 9. validate search */
 
-		if (typeof $.fn.checkSearch === 'function' && r.support.input.placeholder)
+		if (typeof $.fn.validateSearch === 'function' && r.support.input.placeholder)
 		{
-			win.test('checkSearch', function ()
+			win.test('validateSearch', function ()
 			{
-				var form = $('<form><input class="js_required" placeholder="' + dummy + '" /></form>').checkSearch().appendTo(fixture),
+				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
 					input = form.children('input'),
 					expect = l.input_incorrect + l.exclamation_mark,
 					result = input.attr('placeholder');

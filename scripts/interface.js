@@ -84,8 +84,8 @@
 
 			accordionForm.on('error', function ()
 			{
-				var fieldRequired = accordionSet.find('.js_note_error').first(),
-					accordionSetError = fieldRequired.closest(options.element.accordionSet),
+				var fieldError = accordionSet.find('.js_note_error').first(),
+					accordionSetError = fieldError.closest(options.element.accordionSet),
 					accordionTitleError = accordionSetError.children(options.element.accordionTitle);
 
 				accordionTitleError.click();
@@ -109,7 +109,7 @@
 		return this.each(function ()
 		{
 			var dropdown = $(this),
-				dropdownRelated = dropdown.find(options.related),
+				dropdownRelated = dropdown.find(options.element.item),
 				timeout = '';
 
 			/* listen for touchstart and touchend */
@@ -213,8 +213,8 @@
 
 			tabForm.on('error', function ()
 			{
-				var fieldRequired = tabSet.find('.js_note_error').first(),
-					tabNameError = fieldRequired.closest(options.element.tabSet).attr('id'),
+				var fieldError = tabSet.find('.js_note_error').first(),
+					tabNameError = fieldError.closest(options.element.tabSet).attr('id'),
 					tabLinkError = tabList.find('a[href*="' + tabNameError + '"]');
 
 				tabLinkError.click();
@@ -232,7 +232,7 @@
 		}
 		if (r.plugins.dropdown.startup && r.support.touch)
 		{
-			$(r.plugins.dropdown.selector).dropdown();
+			$(r.plugins.dropdown.selector).dropdown(r.plugins.dropdown.options);
 		}
 		if (r.plugins.tab.startup)
 		{

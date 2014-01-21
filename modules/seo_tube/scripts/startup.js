@@ -16,14 +16,14 @@ r.modules.seoTube =
 	startup: true,
 	options:
 	{
-		eol: '\n',
-		indent: '\t',
-		related:
+		element:
 		{
 			title: '#title',
 			alias: '#alias',
 			description: '#description',
 			text: '#text'
-		}
+		},
+		eol: '\n',
+		indent: '\t'
 	}
 };

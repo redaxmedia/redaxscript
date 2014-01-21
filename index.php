@@ -41,10 +41,6 @@ $registry->init(migrate_constants());
 
 /* include files as needed */
 
-if (FIRST_PARAMETER == 'password_reset' || FIRST_PARAMETER == 'reminder' || s('captcha') > 0)
-{
-	include_once('includes/captcha.php');
-}
 if (LAST_TABLE == 'articles')
 {
 	include_once('includes/comments.php');

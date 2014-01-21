@@ -2,14 +2,13 @@
  * @tableofcontents
  *
  * 1. auto resize
- * 2. check required
- * 3. check search
- * 4. enable indent
- * 5. note required
- * 6. unmask password
- * 7. startup
+ * 2. enable indent
+ * 3. unmask password
+ * 4. validate form
+ * 5. validate search
+ * 6. startup
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -66,161 +65,7 @@
 		});
 	};
 
-	/* @section 2. check required */
-
-	$.fn.checkRequired = function (options)
-	{
-		/* extend options */
-
-		if (r.plugins.checkRequired.options !== options)
-		{
-			options = $.extend({}, r.plugins.checkRequired.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* validate form */
-
-			$(this).on('submit change input related', function (event)
-			{
-				var form = $(this),
-					buttonSubmit = form.find(options.element.buttonSubmit),
-					fieldRequired = form.find(options.element.fieldRequired),
-					fieldRequiredAll = fieldRequired;
-
-				/* check related fields */
-
-				if (event.type === 'related')
-				{
-					fieldRequired = fieldRequired.filter('[data-related]').removeAttr('data-related');
-				}
-
-				/* else those who changed */
-
-				else if (event.type === 'change' || event.type === 'input')
-				{
-					fieldRequired = fieldRequired.filter(':focus');
-				}
-
-				/* check required fields */
-
-				fieldRequired.each(function ()
-				{
-					var field = $(this),
-						fieldNative = field[0],
-						fieldTag = fieldNative.tagName,
-						noteErrorClasses = 'js_note_error field_note note_error',
-						fieldValue = '';
-
-					/* check for tag */
-
-					if (fieldTag === 'DIV')
-					{
-						fieldValue = $.trim(field.html());
-					}
-					else
-					{
-						fieldValue = $.trim(fieldNative.value);
-					}
-
-					/* check for value */
-
-					if (fieldValue)
-					{
-						field.removeClass(noteErrorClasses).trigger('valid');
-					}
-					else
-					{
-						field.addClass(noteErrorClasses).trigger('invalid');
-					}
-				});
-
-				/* trigger error and prevent submit */
-
-				if (fieldRequiredAll.hasClass('js_note_error'))
-				{
-					form.trigger('error');
-					buttonSubmit.attr('disabled', 'disabled');
-
-					/* auto focus on submit */
-
-					if (event.type === 'submit' && options.autoFocus)
-					{
-						fieldRequiredAll.filter('.js_note_error').first().focus();
-					}
-
-					/* haptic feedback */
-
-					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
-					{
-						window.navigator.vibrate(options.vibrate);
-					}
-					event.preventDefault();
-				}
-
-				/* else trigger success */
-
-				else
-				{
-					form.trigger('success');
-					buttonSubmit.removeAttr('disabled');
-				}
-			}).attr('novalidate', 'novalidate');
-		});
-	};
-
-	/* @section 3. check search */
-
-	$.fn.checkSearch = function (options)
-	{
-		/* extend options */
-
-		if (r.plugins.checkSearch.options !== options)
-		{
-			options = $.extend({}, r.plugins.checkSearch.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			/* listen for submit */
-
-			$(this).on('submit', function (event)
-			{
-				var form = $(this),
-					field = form.find(options.required),
-					fieldValue = $.trim(field.val()),
-					fieldPlaceholder = field.attr('placeholder'),
-					inputIncorrect = l.input_incorrect + l.exclamation_mark,
-					timeout = '';
-
-				/* prevent multiple timeout */
-
-				if (fieldPlaceholder === inputIncorrect)
-				{
-					clearTimeout(timeout);
-					event.preventDefault();
-				}
-
-				/* else prematurely terminate search */
-
-				else if (fieldValue.length < 3)
-				{
-					field.val('').attr('placeholder', inputIncorrect);
-					timeout = setTimeout(function ()
-					{
-						field.attr('placeholder', fieldPlaceholder).focus();
-					}, options.duration);
-					event.preventDefault();
-				}
-			});
-		});
-	};
-
-	/* @section 4. enable indent */
+	/* @section 2. enable indent */
 
 	$.fn.enableIndent = function (options)
 	{
@@ -317,58 +162,7 @@
 		});
 	};
 
-	/* @section 5. note required */
-
-	$.fn.noteRequired = function (options)
-	{
-		/* extend options */
-
-		if (r.plugins.noteRequired.options !== options)
-		{
-			options = $.extend({}, r.plugins.noteRequired.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			var form = $(this),
-				formRelated = form.children(options.related).first(),
-				boxNote = $('<div>').addClass(options.classString.note),
-				timeout = '';
-
-			/* insert note required */
-
-			boxNote.hide().insertBefore(formRelated);
-
-			/* listen for error and success */
-
-			form.on('error success', function (event)
-			{
-				clearTimeout(timeout);
-
-				/* handle error */
-
-				if (event.type === 'error')
-				{
-					boxNote.html(l.input_empty + l.point).removeClass('note_success').addClass('note_error').stop(1).slideDown(options.duration);
-				}
-
-				/* else handle success */
-
-				else
-				{
-					boxNote.html(l.ok + l.point).removeClass('note_error').addClass('note_success');
-					timeout = setTimeout(function ()
-					{
-						boxNote.stop(1).slideUp(options.duration);
-					}, options.timeout);
-				}
-			});
-		});
-	};
-
-	/* @section 6. unmask password */
+	/* @section 3. unmask password */
 
 	$.fn.unmaskPassword = function ()
 	{
@@ -394,7 +188,204 @@
 		});
 	};
 
-	/* @section 7. startup */
+	/* @section 4. validate form */
+
+	$.fn.validateForm = function (options)
+	{
+		/* extend options */
+
+		if (r.plugins.validateForm.options !== options)
+		{
+			options = $.extend({}, r.plugins.validateForm.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* validate form */
+
+			$(this).on('submit keyup related', function (event)
+			{
+				var form = $(this),
+					buttonSubmit = form.find(options.element.buttonSubmit),
+					field = form.find(options.element.field),
+					fieldAll = field;
+
+				/* filter related fields */
+
+				if (event.type === 'related')
+				{
+					field = field.filter('[data-related]').removeAttr('data-related');
+				}
+
+				/* else focused fields */
+
+				else if (event.type === 'keyup')
+				{
+					field = field.filter(':focus');
+				}
+
+				/* validate fields */
+
+				field.each(function ()
+				{
+					var that = $(this),
+						thatNative = that[0],
+						thatContenteditable = that.attr('contenteditable'),
+						thatLabel = that.siblings('label'),
+						classString = 'js_note_error field_note note_error',
+						validity = 'valid',
+						thatValue = '',
+						thatRequired = '',
+						message = '';
+
+					/* contenteditable field */
+
+					if (thatContenteditable)
+					{
+						thatValue = that.html();
+
+						/* check empty value */
+
+						if (!thatValue)
+						{
+							validity = 'invalid';
+							message = l.input_empty + l.point;
+						}
+					}
+
+					/* missing support */
+
+					else if (!r.support.checkValidity)
+					{
+						thatValue = that.val();
+						thatRequired = that.attr('required');
+
+						/* check required value */
+
+						if (thatRequired && !thatValue)
+						{
+							validity = 'invalid';
+							message = l.input_empty + l.point;
+						}
+					}
+
+					/* use native validation */
+
+					else if (!thatNative.checkValidity())
+					{
+						validity = 'invalid';
+						message = thatNative.validationMessage;
+					}
+
+					/* handle invalid */
+
+					if (validity === 'invalid')
+					{
+						that.addClass(classString).trigger('invalid');
+						if (message && options.message)
+						{
+							thatLabel.addClass('label_message').attr('data-message', message);
+						}
+					}
+
+					/* else handle valid */
+
+					else
+					{
+						that.removeClass(classString).trigger('valid');
+						if (options.message)
+						{
+							thatLabel.removeClass('label_message').removeAttr('data-message');
+						}
+					}
+				});
+
+				/* trigger error and prevent submit */
+
+				if (fieldAll.hasClass('js_note_error'))
+				{
+					form.trigger('error');
+					buttonSubmit.attr('disabled', 'disabled');
+
+					/* auto focus on submit */
+
+					if (event.type === 'submit' && options.autoFocus)
+					{
+						fieldAll.filter('.js_note_error').first().focus();
+					}
+
+					/* haptic feedback */
+
+					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
+					{
+						window.navigator.vibrate(options.vibrate);
+					}
+					event.preventDefault();
+				}
+
+				/* else trigger success */
+
+				else
+				{
+					form.trigger('success');
+					buttonSubmit.removeAttr('disabled');
+				}
+			}).attr('novalidate', 'novalidate');
+		});
+	};
+
+	/* @section 5. validate search */
+
+	$.fn.validateSearch = function (options)
+	{
+		/* extend options */
+
+		if (r.plugins.validateSearch.options !== options)
+		{
+			options = $.extend({}, r.plugins.validateSearch.options, options || {});
+		}
+
+		/* return this */
+
+		return this.each(function ()
+		{
+			/* listen for submit */
+
+			$(this).on('submit', function (event)
+			{
+				var form = $(this),
+					field = form.find(options.element.field),
+					fieldValue = field.val(),
+					fieldPlaceholder = field.attr('placeholder'),
+					message = l.input_incorrect + l.exclamation_mark,
+					timeout = '';
+
+				/* prevent multiple timeout */
+
+				if (fieldPlaceholder === message)
+				{
+					clearTimeout(timeout);
+					event.preventDefault();
+				}
+
+				/* else prematurely terminate search */
+
+				else if (fieldValue.length < 3)
+				{
+					field.val('').attr('placeholder', message);
+					timeout = setTimeout(function ()
+					{
+						field.attr('placeholder', fieldPlaceholder).focus();
+					}, options.duration);
+					event.preventDefault();
+				}
+			});
+		});
+	};
+
+	/* @section 6. startup */
 
 	$(function ()
 	{
@@ -402,25 +393,21 @@
 		{
 			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
 		}
-		if (r.plugins.checkRequired.startup)
-		{
-			$(r.plugins.checkRequired.selector).checkRequired(r.plugins.checkRequired.options);
-		}
-		if (r.plugins.checkSearch.startup && r.support.input.placeholder)
-		{
-			$(r.plugins.checkSearch.selector).checkSearch(r.plugins.checkSearch.options);
-		}
 		if (r.plugins.enableIndent.startup)
 		{
 			$(r.plugins.enableIndent.selector).enableIndent();
 		}
-		if (r.plugins.noteRequired.startup)
-		{
-			$(r.plugins.noteRequired.selector).noteRequired(r.plugins.noteRequired.options);
-		}
 		if (r.plugins.unmaskPassword.startup)
 		{
 			$(r.plugins.unmaskPassword.selector).unmaskPassword();
+		}
+		if (r.plugins.validateForm.startup)
+		{
+			$(r.plugins.validateForm.selector).validateForm(r.plugins.validateForm.options);
+		}
+		if (r.plugins.validateSearch.startup && r.support.input.placeholder)
+		{
+			$(r.plugins.validateSearch.selector).validateSearch(r.plugins.validateSearch.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

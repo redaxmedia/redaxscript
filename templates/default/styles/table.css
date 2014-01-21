@@ -22,15 +22,14 @@
 
 .table_default tbody
 {
-	background: #ebebeb;
-	border: solid #ebebeb;
+	background: #eee;
+	border: solid #eee;
 	border-width: 0 1px;
 }
 
-.table_default tbody tr
+.table_default tbody tr + tr
 {
-	border: solid #d9d9d9;
-	border-width: 1px 0;
+	border-top: 1px solid #d5d5d5;
 }
 
 .table_default tbody tr:hover
@@ -43,14 +42,14 @@
 
 .table_default tfoot tr, .table_default thead tr
 {
-	background: #d9d9d9;
-	background: -moz-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -ms-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -o-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: -webkit-linear-gradient(top, #e3e3e3, #d9d9d9);
-	background: linear-gradient(top, #e3e3e3, #d9d9d9);
-	color: #444;
+	background: #b9b9b9;
+	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
+	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
+	background: -o-linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
+	background: linear-gradient(top, #ccc, #b9b9b9);
+	color: #555;
 	font: bold 1.25em 'pt sans narrow', 'trebuchet ms', arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
 }

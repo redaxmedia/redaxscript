@@ -30,6 +30,7 @@
 
 	<?php echo form_element('button', '', 'button_default', '', l('submit')); ?>
 	<?php echo form_element('button', '', 'button_default button_large', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'button_default button_large', '', l('submit'), '', 'disabled="disabled"'); ?>
 </form>
 
 
@@ -55,7 +56,8 @@
 				<li><?php echo form_element('textarea', 'field_textarea_admin', 'field_textarea_admin', '', '', '.field_textarea_admin'); ?></li>
 			</ul>
 		</fieldset>
-		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit')); ?>
 		<?php echo form_element('button', '', 'button_admin', '', l('submit')); ?>
+		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit')); ?>
+		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit'), '', 'disabled="disabled"'); ?>
 	</form>
 <?php endif; ?>

@@ -117,6 +117,11 @@ textarea
 	display: block;
 }
 
+.form_default .label_message:after
+{
+	content: ' ' attr(data-message);
+}
+
 /* @section 8. form search */
 
 .form_search

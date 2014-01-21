@@ -15,7 +15,7 @@ function admin_settings_form()
 {
 	hook(__FUNCTION__ . '_start');
 	$output = '<h2 class="title_content">' . l('settings') . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_check_required js_note_required js_accordion form_admin accordion accordion_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_validate_form js_accordion form_admin accordion accordion_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
 
@@ -75,7 +75,7 @@ function admin_settings_form()
 	$output .= '<fieldset class="js_set_accordion set_accordion set_accordion_admin">';
 	$output .= '<legend class="js_title_accordion title_accordion title_accordion_admin">' . l('contact') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_admin">';
-	$output .= '<li>' . form_element('email', 'email', 'js_required field_text_admin field_note', 'email', s('email'), l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'field_text_admin field_note', 'email', s('email'), l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'subject', 'field_text_admin', 'subject', s('subject'), l('subject'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . select_element('notification', 'field_select_admin', 'notification', array(
 		l('enable') => 1,
@@ -88,7 +88,7 @@ function admin_settings_form()
 	$output .= '<fieldset class="js_set_accordion set_accordion set_accordion_admin">';
 	$output .= '<legend class="js_title_accordion title_accordion title_accordion_admin">' . l('formatting') . '</legend>';
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_admin">';
-	$output .= '<li>' . form_element('text', 'charset', 'js_required field_text_admin field_note', 'charset', s('charset'), l('charset'), 'maxlength="10" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'charset', 'field_text_admin field_note', 'charset', s('charset'), l('charset'), 'maxlength="10" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'divider', 'field_text_admin', 'divider', s('divider'), l('divider'), 'maxlength="10"') . '</li>';
 	$output .= '<li>' . select_element('time', 'field_select_admin', 'time', array(
 		'H:i',
@@ -117,7 +117,7 @@ function admin_settings_form()
 		}
 	}
 	$output .= '<li>' . select_element('homepage', 'field_select_admin', 'homepage', $homepage_array, s('homepage'), l('homepage')) . '</li>';
-	$output .= '<li>' . form_element('text', 'limit', 'js_required field_text_admin field_note', 'limit', s('limit'), l('limit'), 'min="1" max="1000" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'limit', 'field_text_admin field_note', 'limit', s('limit'), l('limit'), 'min="1" max="1000" required="required"') . '</li>';
 	$output .= '<li>' . select_element('order', 'field_select_admin', 'order', array(
 		l('ascending') => 'asc',
 		l('descending') => 'desc'

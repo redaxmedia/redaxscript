@@ -25,15 +25,17 @@
 			options = $.extend({}, r.modules.seoTube.options, options || {});
 		}
 
-		var relatedTitle = $(options.related.title),
-			relatedAlias = $(options.related.alias),
-			relatedDescription = $(options.related.description),
-			relatedText = $(options.related.text),
+		var title = $(options.element.title),
+			alias = $(options.element.alias),
+			description = $(options.element.description),
+			text = $(options.element.text),
 			video = r.modules.seoTube.video,
 			constants = r.modules.seoTube.constants,
 			eol = options.eol,
 			indent = options.indent,
-			text = '';
+			output = '';
+
+		/* video object exists */
 
 		if (typeof video === 'object')
 		{
@@ -41,22 +43,22 @@
 
 			if (video.title)
 			{
-				relatedTitle.val(video.title);
-				relatedAlias.val($.fn.cleanAlias(video.title));
+				title.val(video.title);
+				alias.val($.fn.cleanAlias(video.title));
 			}
 			if (video.id)
 			{
-				text = '<function>' + eol + '{' + eol + indent + '"seo_tube_player":' + eol + indent + '{' + eol + indent + indent + '"video_id": "' + video.id + '"' + eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
+				output = '<function>' + eol + '{' + eol + indent + '"seo_tube_player":' + eol + indent + '{' + eol + indent + indent + '"video_id": "' + video.id + '"' + eol + indent + '}' + eol + '}' + eol + '</function>' + eol + eol;
 			}
 
 			/* video description */
 
 			if (video.description)
 			{
-				relatedDescription.val(video.description);
+				description.val(video.description);
 				if (constants.SEO_TUBE_DESCRIPTION_PARAGRAPH > 0)
 				{
-					text += '<p class="text_seo_tube">' + video.description + '</p>' + eol + eol;
+					output += '<p class="text_seo_tube">' + video.description + '</p>' + eol + eol;
 				}
 			}
 
@@ -64,7 +66,7 @@
 
 			if (text)
 			{
-				relatedText.val(text);
+				text.val(output);
 			}
 		}
 	};

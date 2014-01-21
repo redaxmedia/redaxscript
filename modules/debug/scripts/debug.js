@@ -33,7 +33,7 @@
 
 			$(this).on('click', function ()
 			{
-				$(this).find(options.related).toggle();
+				$(this).find(options.element.item).toggle();
 			});
 		});
 	};
