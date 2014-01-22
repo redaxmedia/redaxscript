@@ -61,7 +61,7 @@ function check_alias($input = '', $mode = '')
 
 function hook($input = '')
 {
-	return NULL;
+	return null;
 }
 
 /**

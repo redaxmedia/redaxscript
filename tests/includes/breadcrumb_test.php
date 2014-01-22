@@ -277,6 +277,16 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public function providerTestDisplayBreadcrumb()
 	{
+		$output0 = '<ul class="list_breadcrumb"><li>test</li></ul>';
+
+		$output1 = '<ul class="list_breadcrumb"><li><a>test</a></li>';
+		$output1 .= '<li class="divider">divider</li><li>sub-test</li></ul>';
+
+		$output2 = '<ul class="list_breadcrumb"><li><a>test</a></li>';
+		$output2 .= '<li class="divider">divider</li>';
+		$output2 .= '<li><a>sub-test</a></li><li class="divider">divider</li>';
+		$output2 .= '<li>test2</li></ul>';
+
 		return array(
 			/* test 0 */
 			/* Breadcrumb trail = 1 node */
@@ -298,7 +308,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastId' => '2'
 				),
 				/* outputs */
-				'<ul class="list_breadcrumb"><li>test</li></ul>'
+				$output0
 			),
 			/* test 1 */
 			/* Breadcrumb trail = 2 nodes */
@@ -320,8 +330,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastId' => '3'
 				),
 				/* outputs */
-				'<ul class="list_breadcrumb"><li><a>test</a></li>'
-				. '<li class="divider">divider</li><li>sub-test</li></ul>'
+				$output1
 			),
 			/* test 2 */
 			/* Breadcrumb trail = 3 nodes */
@@ -343,10 +352,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 					'lastId' => '3'
 				),
 				/* outputs */
-				'<ul class="list_breadcrumb"><li><a>test</a></li>'
-				. '<li class="divider">divider</li>'
-				. '<li><a>sub-test</a></li><li class="divider">divider</li>'
-				. '<li>test2</li></ul>'
+				$output2
 			)
 		);
 	}
