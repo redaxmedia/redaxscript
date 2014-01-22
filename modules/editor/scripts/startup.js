@@ -1,13 +1,13 @@
 /**
-* @tableofcontents
-*
-* 1. editor
-*
-* @since 2.0.0
-*
-* @package Redaxscript
-* @author Henry Ruhs
-*/
+ * @tableofcontents
+ *
+ * 1. editor
+ *
+ * @since 2.0.2
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
 /* @section 1. editor */
 
