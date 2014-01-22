@@ -9,7 +9,7 @@
 		"delimiter": " *\r\n",
 		"indent": "   ",
 		"head": "\r\n * @tableofcontents\r\n *\r\n",
-		"foot": " *\r\n * @since 2.0.2\r\n *\r\n * @package Redaxscript\r\n * @author Henry Ruhs\r\n"
+		"foot": " *\r\n * @since 2.1.0\r\n *\r\n * @package Redaxscript\r\n * @author Henry Ruhs\r\n"
 	},
 	"section":
 	{
