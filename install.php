@@ -31,6 +31,11 @@ include_once('config.php');
 Redaxscript_Autoloader::init();
 startup();
 
+/* set up registry object using migrate function */
+
+$registry = Redaxscript_Registry::getInstance();
+$registry->init(migrate_constants());
+
 /* include language files */
 
 include_once('languages/' . LANGUAGE . '.php');
