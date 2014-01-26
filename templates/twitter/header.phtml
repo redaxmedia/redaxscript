@@ -1,6 +1,9 @@
 <header id="header" class="header">
-	<?php if (DB_CONNECTED == 1): ?>
+	<?php if (DB_CONNECTED): ?>
 		<section class="wrapper">
+
+			<!-- website branding -->
+
 			<?php navigation_list('categories', array(
 				'class' => 'list_header',
 				'limit' => 10

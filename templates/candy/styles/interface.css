@@ -4,13 +4,12 @@
  * 1. list breadcrumb
  * 2. list default
  * 3. list header
- * 4. list footer
- * 5. list pagination
- * 6. list search result
- * 7. list sidebar
- * 8. tooltip
+ * 4. list pagination
+ * 5. list search result
+ * 6. list sidebar
+ * 7. tooltip
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -107,33 +106,7 @@
 	margin: 0.125em 0;
 }
 
-/* @section 4. list footer */
-
-.list_footer
-{
-	margin-bottom: 4em;
-}
-
-.list_footer, .list_footer a
-{
-	color: #777;
-}
-
-.list_footer a:hover
-{
-	color: #666;
-	text-decoration: underline;
-}
-
-.list_footer li
-{
-	display: inline-block;
-	font-size: 1.375em;
-	margin-left: 1em;
-	text-transform: uppercase;
-}
-
-/* @section 5. list pagination */
+/* @section 4. list pagination */
 
 .list_pagination
 {
@@ -182,7 +155,7 @@
 	color: #9609ac;
 }
 
-/* @section 6. list search result */
+/* @section 5. list search result */
 
 .list_search_result
 {
@@ -206,7 +179,7 @@
 	text-decoration: underline;
 }
 
-/* @section 7. list sidebar */
+/* @section 6. list sidebar */
 
 .list_sidebar a
 {
@@ -230,7 +203,7 @@
 	margin-left: 1em;
 }
 
-/* @section 8. tooltip */
+/* @section 7. tooltip */
 
 .tooltip
 {

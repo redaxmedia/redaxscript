@@ -3,14 +3,13 @@
  *
  * 1. tag styling
  * 2. several links
- * 3. text footer
- * 4. title content
- * 5. title content sub
- * 6. title comment
- * 7. several titles
- * 8. title website
+ * 3. title content
+ * 4. title content sub
+ * 5. title comment
+ * 6. several titles
+ * 7. title website
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -66,14 +65,7 @@ pre
 	content: '...';
 }
 
-/* @section 3. text footer */
-
-.text_footer
-{
-	line-height: 2.25em;
-}
-
-/* @section 4. title content */
+/* @section 3. title content */
 
 .title_content
 {
@@ -93,7 +85,7 @@ pre
 	text-decoration: underline;
 }
 
-/* @section 5. title content sub */
+/* @section 4. title content sub */
 
 .title_content_sub
 {
@@ -101,7 +93,7 @@ pre
 	margin-top: 1em;
 }
 
-/* @section 6. title comment */
+/* @section 5. title comment */
 
 .title_comment
 {
@@ -110,7 +102,7 @@ pre
 	margin-top: 1em;
 }
 
-/* @section 7. several titles */
+/* @section 6. several titles */
 
 .title_dialog_default, .sidebar .title_extra
 {
@@ -131,7 +123,7 @@ pre
 	text-transform: uppercase;
 }
 
-/* @section 8. title website */
+/* @section 7. title website */
 
 .title_website
 {

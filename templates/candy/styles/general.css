@@ -36,7 +36,7 @@ body
 	background: url('templates/candy/images/noise.png') #000;
 	border-top: 10px solid #000;
 	margin-top: 2em;
-	padding: 6em 0 2.5em;
+	padding: 8em 0 2em;
 	text-align: center;
 }
 
@@ -48,6 +48,7 @@ body
 .footer a:hover
 {
 	color: #666;
+	text-decoration: underline;
 }
 
 /* @section 4. header */

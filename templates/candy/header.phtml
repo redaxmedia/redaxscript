@@ -1,9 +1,15 @@
 <header id="header" class="header">
-	<?php if (DB_CONNECTED == 1): ?>
+	<?php if (DB_CONNECTED): ?>
 		<section class="wrapper">
+
+			<!-- website branding -->
+
 			<?php if (s('title')): ?>
 				<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
 			<?php endif; ?>
+
+			<!-- dropdown -->
+
 			<?php navigation_list('categories', array(
 				'children' => 1,
 				'class' => 'js_dropdown list_dropdown list_header',
