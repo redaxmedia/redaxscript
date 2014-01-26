@@ -1,8 +1,14 @@
 <header id="header" class="header">
-	<?php if (DB_CONNECTED == 1): ?>
+	<?php if (DB_CONNECTED): ?>
 		<section class="wrapper clear_fix">
+
+			<!-- website branding -->
+
 			<div class="box_first grid_space s3o7">
 				<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
+
+				<!-- metadata -->
+
 				<div class="wrapper_metadata">
 					<?php if (s('title')): ?>
 						<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
@@ -12,8 +18,14 @@
 					<?php endif; ?>
 				</div>
 			</div>
+
+			<!-- dropdown -->
+
 			<div class="box_last grid_space s4o7">
 				<ul class="js_dropdown list_dropdown list_header">
+
+					<!-- categories -->
+
 					<li><?php echo l('categories'); ?>
 						<?php navigation_list('categories', array(
 							'children' => 1,
@@ -21,6 +33,9 @@
 							'limit' => 5
 						)); ?>
 					</li>
+
+					<!-- articles -->
+
 					<li><?php echo l('articles'); ?>
 						<?php navigation_list('articles', array(
 							'class' => 'list_header_children',

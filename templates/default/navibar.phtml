@@ -1,8 +1,14 @@
 <nav id="navibar" class="navibar grid_space s2o7">
 	<div class="box_navibar">
-		<?php if (LOGGED_IN == TOKEN): ?>
+
+		<!-- admin -->
+
+		<?php if (LOGGED_IN === TOKEN && FIRST_PARAMETER !== 'logout'): ?>
 			<?php echo anchor_element('external', '', 'button_default button_donate', 'Donate', 'redaxscript.com/donate'); ?>
-		<?php elseif (DB_CONNECTED == 1): ?>
+
+		<!-- else general -->
+
+		<?php elseif (DB_CONNECTED): ?>
 			<?php echo anchor_element('internal', '', 'button_default button_login', l('login'), 'login'); ?>
 		<?php endif; ?>
 		<?php echo anchor_element('external', '', 'button_default button_support', 'Support', 'redaxscript.com/support'); ?>

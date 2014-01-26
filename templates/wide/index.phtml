@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="<?php echo LANGUAGE; ?>" class="<?php helper_class(); ?>">
+
+	<!-- head -->
+
 	<head>
-		<meta name="viewport" content="width=device-width" />
-		<?php head(); ?>
-		<?php scripts('startup'); ?>
-		<?php styles(); ?>
-		<?php if (MY_MOBILE == ''): ?>
-			<link type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow|Open+Sans&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
-		<?php endif; ?>
-		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
-			<?php include_once('templates/admin/head.phtml'); ?>
-		<?php endif; ?>
-		<link href="templates/default/images/favicon.ico" rel="shortcut icon" />
+
+		<!-- template head -->
+
+		<?php include_once('templates/default/head.phtml'); ?>
+		
+		<!-- admin head -->
+		
+		<?php include_once('templates/admin/head.phtml'); ?>
 	</head>
+
+	<!-- body -->
+
 	<body class="wrapper_body">
-		<?php if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout'): ?>
-			<?php include_once('templates/admin/panel.phtml'); ?>
-		<?php endif; ?>
+
+		<!-- admin panel -->
+
+		<?php include_once('templates/admin/panel.phtml'); ?>
+
+		<!-- header -->
+
 		<?php include_once('templates/default/header.phtml'); ?>
+
+		<!-- main -->
+
 		<div class="wrapper clear_fix">
-			<?php if (DB_CONNECTED && CONTENT_ERROR && CENTER_BREAK == ''): ?>
+
+			<!-- handle error -->
+
+			<?php if (DB_CONNECTED && CONTENT_ERROR && !CENTER_BREAK): ?>
 				<?php include_once('templates/default/error.phtml'); ?>
+
+			<!-- else content -->
+
 			<?php else: ?>
 				<?php include_once('content.phtml'); ?>
 			<?php endif; ?>
 		</div>
+
+		<!-- footer -->
+
 		<?php include_once('templates/default/footer.phtml'); ?>
 		<?php scripts(); ?>
 	</body>
