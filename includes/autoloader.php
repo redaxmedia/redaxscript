@@ -20,6 +20,13 @@ class Redaxscript_Autoloader
 	protected static $_nameSpace = 'Redaxscript_';
 
 	/**
+	 * directory
+	 * @var string
+	 */
+
+	protected static $_directory = 'includes';
+
+	/**
 	 * fileSuffix
 	 * @var string
 	 */
@@ -32,9 +39,16 @@ class Redaxscript_Autoloader
 	 * @since 2.1.0
 	 */
 
-	public static function init()
+	public static function init($directory = '')
 	{
 		spl_autoload_register(array(__CLASS__, '_load'));
+
+		/* directory exists */
+
+		if (is_dir($directory))
+		{
+			self::$_directory = $directory;
+		}
 	}
 
 	/**
@@ -51,9 +65,9 @@ class Redaxscript_Autoloader
 
 		/* include files as needed */
 
-		if (file_exists('includes/' . $fileName))
+		if (file_exists(self::$_directory . '/' . $fileName))
 		{
-			include('includes/' . $fileName);
+			include(self::$_directory . '/' . $fileName);
 		}
 	}
 }

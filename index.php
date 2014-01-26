@@ -4,7 +4,6 @@ error_reporting(0);
 /* include core files */
 
 include_once('config.php');
-include_once('includes/autoloader.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
@@ -22,22 +21,10 @@ include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 
-/* startup redaxscript */
+/* boostrap */
 
-Redaxscript_Autoloader::init();
-
-/* migrate.php must be included after classes have been autoloaded
- * because migrate functions have to provide access to classes
- */
-
-include_once('includes/migrate.php');
-
+include_once('includes/bootstrap.php');
 startup();
-
-/* set up registry object using migrate function */
-
-$registry = Redaxscript_Registry::getInstance();
-$registry->init(migrate_constants());
 
 /* include files as needed */
 

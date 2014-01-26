@@ -121,5 +121,4 @@ function s($name = '')
 	}
 	return $name;
 }
-
 ?>

@@ -105,6 +105,7 @@ class Redaxscript_Breadcrumb
 				}
 
 				/* otherwise make the element plain text */
+
 				else
 				{
 					$output .= $title;

@@ -26,15 +26,10 @@ install_post();
 write_config();
 include_once('config.php');
 
-/* startup redaxscript */
+/* boostrap */
 
-Redaxscript_Autoloader::init();
+include_once('includes/bootstrap.php');
 startup();
-
-/* set up registry object using migrate function */
-
-$registry = Redaxscript_Registry::getInstance();
-$registry->init(migrate_constants());
 
 /* include language files */
 
