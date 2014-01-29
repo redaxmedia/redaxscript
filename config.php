@@ -14,6 +14,7 @@ class Redaxscript_Config
 {
 	/**
 	 * config
+	 *
 	 * @var array
 	 */
 
@@ -37,7 +38,7 @@ class Redaxscript_Config
 	 * @return string
 	 */
 
-	public function get($key = '')
+	public function get($key = null)
 	{
 		if (array_key_exists($key, $this->_config))
 		{
@@ -45,7 +46,7 @@ class Redaxscript_Config
 		}
 		else
 		{
-			$output = '';
+			$output = null;
 		}
 		return $output;
 	}

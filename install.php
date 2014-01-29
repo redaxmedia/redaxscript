@@ -6,6 +6,9 @@ error_reporting(0);
 include_once('includes/autoloader.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
+include_once('includes/detection.php');
+include_once('includes/detection_language.php');
+include_once('includes/detection_template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/helper.php');
@@ -28,8 +31,8 @@ include_once('config.php');
 
 /* boostrap */
 
-include_once('includes/bootstrap.php');
 startup();
+include_once('includes/bootstrap.php');
 
 /* include language files */
 

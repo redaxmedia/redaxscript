@@ -8,6 +8,10 @@ include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
+include_once('includes/detection.php');
+include_once('includes/detection_language.php');
+include_once('includes/detection_template.php');
+include_once('includes/autoloader.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
@@ -23,8 +27,8 @@ include_once('includes/startup.php');
 
 /* boostrap */
 
-include_once('includes/bootstrap.php');
 startup();
+include_once('includes/bootstrap.php');
 
 /* include files as needed */
 

@@ -38,8 +38,8 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
-		$this->_registry->init(array());
+		$this->_registry = Redaxscript_Registry::instance();
+		$this->_registry->init();
 	}
 
 	/**
@@ -57,24 +57,6 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		/* test result */
 		$this->assertEquals('testValue', $result);
 	}
-
-	/**
-	 * testExists
-	 *
-	 * Test for the Exists method
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function testExists()
-	{
-		$result = $this->_registry->exists('testKey');
-		$this->assertFalse($result);
-		$this->_registry->set('testKey', 'testValue');
-		$result = $this->_registry->exists('testKey');
-		$this->assertTrue($result);
-	}
-
 }
 
 ?>
