@@ -14,6 +14,7 @@ class Redaxscript_Detection
 {
 	/**
 	 * output
+	 *
 	 * @var string
 	 */
 
@@ -51,7 +52,7 @@ class Redaxscript_Detection
 	 * @return string
 	 */
 
-	protected function _getParameter($parameter = '')
+	protected function _getParameter($parameter = null)
 	{
 		if (isset($_GET[$parameter]))
 		{
@@ -72,7 +73,7 @@ class Redaxscript_Detection
 	 * @param string $route
 	 */
 
-	protected function _detect($input = '', $type = '', $route = '')
+	protected function _detect($input = null, $type = null, $route = null)
 	{
 		foreach ($input as $key => $value)
 		{

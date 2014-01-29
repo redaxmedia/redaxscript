@@ -39,7 +39,7 @@ class Redaxscript_Autoloader
 	 * @since 2.1.0
 	 */
 
-	public static function init($directory = '')
+	public static function init($directory = null)
 	{
 		spl_autoload_register(array(__CLASS__, '_load'));
 
@@ -59,7 +59,7 @@ class Redaxscript_Autoloader
 	 * @param string $className
 	 */
 
-	protected static function _load($className = '')
+	protected static function _load($className = null)
 	{
 		$fileName = strtolower(str_replace(self::$_nameSpace, '', $className)) . self::$_fileSuffix;
 

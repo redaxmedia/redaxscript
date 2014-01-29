@@ -14,6 +14,7 @@ class Redaxscript_Captcha
 {
 	/**
 	 * task
+	 *
 	 * @var string
 	 */
 
@@ -21,6 +22,7 @@ class Redaxscript_Captcha
 
 	/**
 	 * solution
+	 *
 	 * @var string
 	 */
 
@@ -28,6 +30,7 @@ class Redaxscript_Captcha
 
 	/**
 	 * range
+	 *
 	 * @var array
 	 */
 
@@ -38,6 +41,7 @@ class Redaxscript_Captcha
 
 	/**
 	 * operators
+	 *
 	 * @var array
 	 */
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * registry
+ * Redaxscript Registry
  *
  * @since 2.1.0
  *
@@ -15,7 +15,7 @@ class Redaxscript_Registry
 	/**
 	 * values
 	 *
-	 * the array of registry values
+	 * array of registry values
 	 *
 	 * @var array
 	 */
@@ -25,9 +25,9 @@ class Redaxscript_Registry
 	/**
 	 * instance
 	 *
-	 * the singleton instance of the class
+	 * singleton instance of the class
 	 *
-	 * @var Redaxscript_Registry
+	 * @var object
 	 */
 
 	protected static $_instance = null;
@@ -35,7 +35,7 @@ class Redaxscript_Registry
 	/**
 	 * construct
 	 *
-	 * constructor is private to ensure singleton
+	 * construct is private to ensure singleton
 	 *
 	 * @since 2.1.0
 	 */
@@ -45,54 +45,18 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * getInstance
-	 *
-	 * instantiates the class if necessary and returns the instance
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return object
-	 */
-
-	public static function getInstance()
-	{
-		if (self::$_instance === null)
-		{
-			self::$_instance = new self;
-		}
-		return self::$_instance;
-	}
-
-	/**
 	 * init
 	 *
-	 * fills values array with data, ensures array is empty first.
+	 * fills values array with data, ensures array is empty first
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $constants
+	 * @param array $values
 	 */
 
-	public function init($constants)
+	public function init($values = array())
 	{
-		self::$_values = array();
-		self::$_values = $constants;
-	}
-
-	/**
-	 * exists
-	 *
-	 * returns true if item exists in constants array
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $key
-	 * @return boolean
-	 */
-
-	public static function exists($key)
-	{
-		return array_key_exists($key, self::$_values);
+		self::$_values = $values;
 	}
 
 	/**
@@ -106,9 +70,17 @@ class Redaxscript_Registry
 	 * @return string
 	 */
 
-	public static function get($key)
+	public static function get($key = null)
 	{
-		return self::exists($key) ? self::$_values[$key] : null;
+		if (array_key_exists($key, self::$_values))
+		{
+			$output = self::$_values[$key];
+		}
+		else
+		{
+			$output = null;
+		}
+		return $output;
 	}
 
 	/**
@@ -122,10 +94,28 @@ class Redaxscript_Registry
 	 * @param mixed $value
 	 */
 
-	public static function set($key, $value)
+	public static function set($key = null, $value = null)
 	{
 		self::$_values[$key] = $value;
 	}
-}
 
+	/**
+	 * instance
+	 *
+	 * creates and returns the instance
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return object
+	 */
+
+	public static function instance()
+	{
+		if (self::$_instance === null)
+		{
+			self::$_instance = new self;
+		}
+		return self::$_instance;
+	}
+}
 ?>

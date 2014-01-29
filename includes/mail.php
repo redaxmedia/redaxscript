@@ -14,6 +14,7 @@ class Redaxscript_Mail
 {
 	/**
 	 * toArray
+	 *
 	 * @var array
 	 */
 
@@ -21,6 +22,7 @@ class Redaxscript_Mail
 
 	/**
 	 * fromArray
+	 *
 	 * @var array
 	 */
 
@@ -28,6 +30,7 @@ class Redaxscript_Mail
 
 	/**
 	 * subjectArray
+	 *
 	 * @var object
 	 */
 
@@ -35,12 +38,14 @@ class Redaxscript_Mail
 
 	/**
 	 * bodyArray
+	 *
 	 * @var array
 	 */
 
 	private $_bodyArray;
 	/**
 	 * attachmentArray
+	 *
 	 * @var array
 	 */
 
@@ -48,6 +53,7 @@ class Redaxscript_Mail
 
 	/**
 	 * fromString
+	 *
 	 * @var string
 	 */
 
@@ -55,6 +61,7 @@ class Redaxscript_Mail
 
 	/**
 	 * subjectString
+	 *
 	 * @var string
 	 */
 
@@ -62,6 +69,7 @@ class Redaxscript_Mail
 
 	/**
 	 * bodyString
+	 *
 	 * @var string
 	 */
 
@@ -69,6 +77,7 @@ class Redaxscript_Mail
 
 	/**
 	 * headerString
+	 *
 	 * @var string
 	 */
 
@@ -86,7 +95,7 @@ class Redaxscript_Mail
 	 * @param array $attachmentArray
 	 */
 
-	public function __construct($toArray = array(), $fromArray = array(), $subject = '', $bodyArray = array(), $attachmentArray = array())
+	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $bodyArray = array(), $attachmentArray = array())
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;

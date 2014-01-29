@@ -14,6 +14,7 @@ class Redaxscript_Directory
 {
 	/**
 	 * directory
+	 *
 	 * @var string
 	 */
 
@@ -21,6 +22,7 @@ class Redaxscript_Directory
 
 	/**
 	 * directoryArray
+	 *
 	 * @var array
 	 */
 
@@ -28,6 +30,7 @@ class Redaxscript_Directory
 
 	/**
 	 * ignore
+	 *
 	 * @var array
 	 */
 
@@ -38,6 +41,7 @@ class Redaxscript_Directory
 
 	/**
 	 * cache
+	 *
 	 * @var array
 	 */
 
@@ -52,7 +56,7 @@ class Redaxscript_Directory
 	 * @param string|array $ignore
 	 */
 
-	public function __construct($directory = '', $ignore = '')
+	public function __construct($directory = null, $ignore = null)
 	{
 		$this->_directory = $directory;
 
@@ -93,7 +97,7 @@ class Redaxscript_Directory
 	 * @return array
 	 */
 
-	public function getOutput($key = '')
+	public function getOutput($key = null)
 	{
 		/* return single value */
 
@@ -119,7 +123,7 @@ class Redaxscript_Directory
 	 * @return array
 	 */
 
-	protected function _scan($directory = '')
+	protected function _scan($directory = null)
 	{
 		/* use from static cache */
 
@@ -150,7 +154,7 @@ class Redaxscript_Directory
 	 * @param string $directory
 	 */
 
-	public function remove($directory = '')
+	public function remove($directory = null)
 	{
 		/* handle parent directory */
 

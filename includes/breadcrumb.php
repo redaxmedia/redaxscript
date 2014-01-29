@@ -1,7 +1,7 @@
 <?php
 
 /**
- * breadcrumb
+ * Redaxscript Breadcrumb
  *
  * @since 2.1.0
  *
@@ -12,6 +12,15 @@
 
 class Redaxscript_Breadcrumb
 {
+	/**
+	 * registry
+	 *
+	 * instance of the registry class injected via construct
+	 *
+	 * @var object
+	 */
+
+	private $_registry;
 
 	/**
 	 * breadcrumbArray
@@ -21,22 +30,12 @@ class Redaxscript_Breadcrumb
 	 * @var array
 	 */
 
-	private static $_breadcrumbArray = array();
-
-	/**
-	 * registry
-	 *
-	 * instance of the registry class injected via the constructor
-	 *
-	 * @var Redaxscript_Registry
-	 */
-
-	private $_registry;
+	protected static $_breadcrumbArray = array();
 
 	/**
 	 * classes
 	 *
-	 * array of CSS classes used to style the list
+	 * array of CSS classes used to style breadcrumb
 	 *
 	 * @var array
 	 */
@@ -45,7 +44,6 @@ class Redaxscript_Breadcrumb
 		'list' => 'list_breadcrumb',
 		'divider' => 'divider'
 	);
-
 
 	/**
 	 * construct
@@ -83,6 +81,8 @@ class Redaxscript_Breadcrumb
 	public function displayBreadcrumb()
 	{
 		$output = hook(__FUNCTION__ . '_start');
+
+		/* breadcrumb keys */
 
 		$breadcrumbKeys = array_keys(self::$_breadcrumbArray);
 		$last = end($breadcrumbKeys);
@@ -142,7 +142,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * _buildAdminBreadcrumb
+	 * buildAdminBreadcrumb
 	 *
 	 * build breadcrumb trail for admin page
 	 *
@@ -151,7 +151,7 @@ class Redaxscript_Breadcrumb
 	 * @param integer $key
 	 */
 
-	private function _buildAdminBreadcrumb($key = 0)
+	private function _buildAdminBreadcrumb($key = null)
 	{
 		self::$_breadcrumbArray[$key]['title'] = l('administration');
 
@@ -189,14 +189,14 @@ class Redaxscript_Breadcrumb
 	/**
 	 * buildContentBreadcrumb
 	 *
-	 * build breadcrumb trail from content - categories and article
+	 * build breadcrumb trail from array
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key
 	 */
 
-	private function _buildContentBreadcrumb($key)
+	private function _buildContentBreadcrumb($key = null)
 	{
 		/* join first title */
 
@@ -234,9 +234,9 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * _buildBreadcrumb
+	 * buildBreadcrumb
 	 *
-	 * build breadcrumb trail as an array
+	 * build breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */

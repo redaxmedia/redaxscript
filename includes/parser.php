@@ -14,6 +14,7 @@ class Redaxscript_Parser
 {
 	/**
 	 * output
+	 *
 	 * @var string
 	 */
 
@@ -21,6 +22,7 @@ class Redaxscript_Parser
 
 	/**
 	 * route
+	 *
 	 * @var string
 	 */
 
@@ -28,6 +30,7 @@ class Redaxscript_Parser
 
 	/**
 	 * delimiter
+	 *
 	 * @var string
 	 */
 
@@ -35,6 +38,7 @@ class Redaxscript_Parser
 
 	/**
 	 * tags
+	 *
 	 * @var array
 	 */
 
@@ -55,6 +59,7 @@ class Redaxscript_Parser
 
 	/**
 	 * classes
+	 *
 	 * @var array
 	 */
 
@@ -65,6 +70,7 @@ class Redaxscript_Parser
 
 	/**
 	 * forbiddenFunctions
+	 *
 	 * @var array
 	 */
 
@@ -97,7 +103,7 @@ class Redaxscript_Parser
 	 * @param string $route
 	 */
 
-	public function __construct($input = '', $route = '')
+	public function __construct($input = null, $route = null)
 	{
 		$this->_output = $input;
 		$this->_route = $route;
@@ -153,7 +159,7 @@ class Redaxscript_Parser
 	 * @return string
 	 */
 
-	protected function _parseBreak($input = '')
+	protected function _parseBreak($input = null)
 	{
 		$output = str_replace('<break>', '', $input);
 		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
@@ -179,7 +185,7 @@ class Redaxscript_Parser
 	 * @return string
 	 */
 
-	protected function _parseCode($input = '')
+	protected function _parseCode($input = null)
 	{
 		$output = str_replace(array(
 			'<code>',
@@ -209,7 +215,7 @@ class Redaxscript_Parser
 	 * @return string
 	 */
 
-	protected function _parseFunction($input = '')
+	protected function _parseFunction($input = null)
 	{
 		$output = str_replace(array(
 			'<function>',

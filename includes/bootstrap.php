@@ -11,6 +11,6 @@ Redaxscript_Autoloader::init();
 
 /* migrate registry */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript_Registry::instance();
 $registry->init(migrate_constants());
 ?>
