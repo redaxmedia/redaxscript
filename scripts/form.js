@@ -205,7 +205,7 @@
 		{
 			/* validate form */
 
-			$(this).on('submit keyup related', function (event)
+			$(this).on('submit input related', function (event)
 			{
 				var form = $(this),
 					buttonSubmit = form.find(options.element.buttonSubmit),
@@ -221,7 +221,7 @@
 
 				/* else focused fields */
 
-				else if (event.type === 'keyup')
+				else if (event.type === 'input')
 				{
 					field = field.filter(':focus');
 				}
