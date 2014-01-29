@@ -47,14 +47,14 @@ class Redaxscript_Registry
 	/**
 	 * init
 	 *
-	 * fills values array with data, ensures array is empty first
+	 * fills values array with data
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $values
 	 */
 
-	public function init($values = array())
+	public function init($values = null)
 	{
 		self::$_values = $values;
 	}
@@ -62,7 +62,7 @@ class Redaxscript_Registry
 	/**
 	 * get
 	 *
-	 * gets item from constants array, returns null if item does not exist
+	 * gets item from values array
 	 *
 	 * @since 2.1.0
 	 *
@@ -86,7 +86,7 @@ class Redaxscript_Registry
 	/**
 	 * set
 	 *
-	 * sets item value, may overwrite existing value or add new value
+	 * sets item to values array
 	 *
 	 * @since 2.1.0
 	 *
