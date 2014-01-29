@@ -3,7 +3,6 @@ error_reporting(0);
 
 /* include core files */
 
-include_once('includes/autoloader.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/detection.php');
