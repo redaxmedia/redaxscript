@@ -1,20 +1,8 @@
 <?php
+include_once('tests/stubs.php');
 
 /**
- * registry test
- *
- * @since 2.1.0
- *
- * @package Redaxscript
- * @category Tests
- * @author Gary Aylward
- */
-
-/* Include stubs */
-include_once (dirname(__FILE__) . '/../stubs.php');
-
-/**
- * Redaxscript_Registry_Test
+ * Redaxscript Registry Test
  *
  * @since 2.1.0
  *
@@ -25,6 +13,13 @@ include_once (dirname(__FILE__) . '/../stubs.php');
 
 class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 {
+	/**
+	 * registry
+	 *
+	 * instance of the registry class injected via construct
+	 *
+	 * @var object
+	 */
 
 	private $_registry;
 

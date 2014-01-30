@@ -1,20 +1,8 @@
 <?php
+include_once('tests/stubs.php');
 
 /**
- * breadcrumb test
- *
- * @since 2.1.0
- *
- * @package Redaxscript
- * @category Tests
- * @author Gary Aylward
- */
-
-/* Include stubs */
-include_once (dirname(__FILE__) . '/../stubs.php');
-
-/**
- * Redaxscript_Breadcrumb_Test
+ * Redaxscript Breadcrumb Test
  *
  * @since 2.1.0
  *
@@ -25,13 +13,20 @@ include_once (dirname(__FILE__) . '/../stubs.php');
 
 class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 {
+	/**
+	 * registry
+	 *
+	 * instance of the registry class injected via construct
+	 *
+	 * @var object
+	 */
 
 	private $_registry;
 
 	/**
 	 * providerTestGetArray
 	 *
-	 * Data provider for testGetArray
+	 * data provider for testGetArray
 	 *
 	 * @since 2.1.0
 	 *

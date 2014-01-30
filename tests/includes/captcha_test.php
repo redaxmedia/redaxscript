@@ -1,20 +1,8 @@
 <?php
+include_once('tests/stubs.php');
 
 /**
- * captcha test
- *
- * @since 2.1.0
- *
- * @package Redaxscript
- * @category Tests
- * @author Gary Aylward
- */
-
-/* Include stubs */
-include_once (dirname(__FILE__) . '/../stubs.php');
-
-/**
- * Redaxscript_Captcha_Test
+ * Redaxscript Captcha Test
  *
  * @since 2.1.0
  *
@@ -42,7 +30,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * providerTestCaptcha
 	 *
-	 * data provider for testCaptha method
+	 * data provider for testCaptcha
 	 *
 	 * @since 2.1.0
 	 *
@@ -69,7 +57,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 				'7 plus 6',
 				'13',
 				sha1(13),
-			),
+			)
 		);
 	}
 
