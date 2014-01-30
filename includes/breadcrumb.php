@@ -7,7 +7,8 @@
  *
  * @package Redaxscript
  * @category Breadcrumb
- * @author Henry Ruhs, Gary Aylward
+ * @author Henry Ruhs
+ * @author Gary Aylward
  */
 
 class Redaxscript_Breadcrumb

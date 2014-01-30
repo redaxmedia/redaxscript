@@ -24,7 +24,8 @@ function breadcrumb()
  *
  * @package Redaxscript
  * @category Migrate
- * @author Henry Ruhs, Gary Aylward
+ * @author Henry Ruhs
+ * @author Gary Aylward
  *
  * @return array
  */
