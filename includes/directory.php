@@ -71,7 +71,6 @@ class Redaxscript_Directory
 		$this->init();
 	}
 
-
 	/**
 	 * init
 	 *
@@ -80,11 +79,10 @@ class Redaxscript_Directory
 
 	public function init()
 	{
-			/* scan directory */
+		/* scan directory */
 
 		$this->_directoryArray = $this->_scan($this->_directory);
 	}
-
 
 	/**
 	 * getOutput
