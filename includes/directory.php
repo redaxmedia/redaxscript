@@ -129,6 +129,7 @@ class Redaxscript_Directory
 		}
 
 		/* else scan directory */
+
 		else
 		{
 			$directoryArray = scandir($directory);
