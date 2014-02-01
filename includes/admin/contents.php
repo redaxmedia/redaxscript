@@ -533,7 +533,7 @@ function admin_contents_form()
 	/* languages directory object */
 
 	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
-	$languages_directory_array = $languages_directory->getOutput();
+	$languages_directory_array = $languages_directory->get();
 
 	/* build languages select */
 
@@ -552,7 +552,7 @@ function admin_contents_form()
 			'admin',
 			'install'
 		));
-		$templates_directory_array = $templates_directory->getOutput();
+		$templates_directory_array = $templates_directory->get();
 
 		/* build templates select */
 

@@ -46,7 +46,7 @@ function modules_include()
 	if ($modules_directory_array == '')
 	{
 		$modules_directory = New Redaxscript_Directory('modules');
-		$modules_directory_array = $modules_directory->getOutput();
+		$modules_directory_array = $modules_directory->get();
 	}
 
 	/* intersect modules diretory and modules installed */

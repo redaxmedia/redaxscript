@@ -27,6 +27,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 {
 
 	/**
+	 * root
 	 *
 	 * @var vfsStreamDirectory
 	 */
@@ -66,16 +67,16 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerTestGetOutput
+	 * providerTestGet
 	 *
-	 * data provider for the testGetOutput() method
+	 * data provider for the testGet() method
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTestGetOutput()
+	public function providerTestGet()
 	{
 		return array(
 			/* Test 0 - get all files in a directory */
@@ -128,19 +129,19 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testGetOutput
+	 * testGet
 	 *
-	 * Test for the getOutput method
+	 * Test for the get method
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerTestGetOutput
+	 * @dataProvider providerTestGet
 	 */
 
-	public function testGetOutput($input, $exclude, $expectedResult)
+	public function testGet($input, $exclude, $expectedResult)
 	{
 		$directory = New Redaxscript_Directory(vfsStream::url('root/languages'), $exclude);
-		$result = $directory->getOutput($input);
+		$result = $directory->get($input);
 		/* test result */
 		$this->assertEquals($expectedResult, $result);
 	}

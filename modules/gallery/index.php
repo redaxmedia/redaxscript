@@ -84,7 +84,7 @@ function gallery($directory = '', $options = '', $command = '')
 	/* gallery directory object */
 
 	$gallery_directory = New Redaxscript_Directory($directory, 'thumbs');
-	$gallery_directory_array = $gallery_directory->getOutput();
+	$gallery_directory_array = $gallery_directory->get();
 
 	/* reverse order */
 

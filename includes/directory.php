@@ -90,7 +90,7 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * getOutput
+	 * get
 	 *
 	 * @since 2.0.0
 	 *
@@ -98,7 +98,7 @@ class Redaxscript_Directory
 	 * @return array
 	 */
 
-	public function getOutput($key = null)
+	public function get($key = null)
 	{
 		/* return single value */
 
