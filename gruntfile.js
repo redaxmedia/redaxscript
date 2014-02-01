@@ -232,6 +232,14 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen -l'
 			},
+			apigenBase:
+			{
+				command: 'php vendor/apigen/apigen/apigen.php --source includes --destination ../redaxscript-api/base'
+			},
+			apigenTests:
+			{
+				command: 'php vendor/apigen/apigen/apigen.php --source tests --destination ../redaxscript-api/tests'
+			},
 			addUpstream:
 			{
 				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
@@ -378,6 +386,11 @@ module.exports = function (grunt)
 		'shell:tocBase',
 		'shell:tocModules',
 		'shell:tocTemplates'
+	]);
+	grunt.registerTask('apigen',
+	[
+		'shell:apigenBase',
+		'shell:apigenTests'
 	]);
 	grunt.registerTask('eol',
 	[

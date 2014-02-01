@@ -165,6 +165,13 @@ function get_file()
 /**
  * get root
  *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Get
+ * @author Henry Ruhs
+ *
  * @return string
  */
 
