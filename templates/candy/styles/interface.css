@@ -26,9 +26,8 @@
 
 .list_default li
 {
-	line-height: 2.5em;
-	list-style-position: inside;
-	list-style-type: inherit;
+	list-style: inherit;
+	margin: 1em 1.5em;
 }
 
 /* @section 3. list header */
