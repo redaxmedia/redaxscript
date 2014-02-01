@@ -66,20 +66,33 @@ class Redaxscript_Breadcrumb
 
 	public function init()
 	{
-		$this->_buildBreadcrumb();
+		$this->_build();
 	}
 
 	/**
-	 * displayBreadcrumb
+	 * get
 	 *
-	 * public function to display the trail as an unordered list
+	 * @since 2.1.0
+	 *
+	 * @return array
+	 */
+
+	public function get()
+	{
+		return self::$_breadcrumbArray;
+	}
+
+	/**
+	 * render
+	 *
+	 * render the trail as an unordered list
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return string
 	 */
 
-	public function displayBreadcrumb()
+	public function render()
 	{
 		$output = hook(__FUNCTION__ . '_start');
 
@@ -133,29 +146,77 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * getArray
+	 * build
+	 *
+	 * build breadcrumb array
 	 *
 	 * @since 2.1.0
-	 *
-	 * @return array
 	 */
 
-	public function getArray()
+	private function _build()
 	{
-		return self::$_breadcrumbArray;
+		self::$_breadcrumbArray = array();
+		$key = 0;
+
+		/* if title constant */
+
+		if ($this->_registry->get('title'))
+		{
+			self::$_breadcrumbArray[$key]['title'] = $this->_registry->get('title');
+		}
+
+		/* else if home */
+
+		else if ($this->_registry->get('fullRoute') === '')
+		{
+			self::$_breadcrumbArray[$key]['title'] = l('home');
+		}
+
+		/* else if administration */
+
+		else if ($this->_registry->get('firstParameter') === 'admin')
+		{
+			$this->_buildAdmin($key);
+		}
+
+		/* else if default alias */
+
+		else if (check_alias($this->_registry->get('firstParameter'), 1) === 1)
+		{
+			/* join default title */
+
+			if (l($this->_registry->get('firstParameter')))
+			{
+				self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('firstParameter'));
+			}
+		}
+
+		/* handle error */
+
+		else if ($this->_registry->get('lastId') === '')
+		{
+			self::$_breadcrumbArray[$key]['title'] = l('error');
+		}
+
+		/* query title from content */
+
+		else if ($this->_registry->get('firstTable'))
+		{
+			$this->_buildContent($key);
+		}
 	}
 
 	/**
-	 * buildAdminBreadcrumb
+	 * buildAdmin
 	 *
-	 * build breadcrumb trail for admin page
+	 * build admin breadcrumb trail
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key
 	 */
 
-	private function _buildAdminBreadcrumb($key = null)
+	private function _buildAdmin($key = null)
 	{
 		self::$_breadcrumbArray[$key]['title'] = l('administration');
 
@@ -191,16 +252,16 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * buildContentBreadcrumb
+	 * buildContent
 	 *
-	 * build breadcrumb trail from array
+	 * build content breadcrumb trail
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key
 	 */
 
-	private function _buildContentBreadcrumb($key = null)
+	private function _buildContent($key = null)
 	{
 		/* join first title */
 
@@ -234,67 +295,6 @@ class Redaxscript_Breadcrumb
 				$key++;
 				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('thirdTable'), 'alias', $this->_registry->get('thirdParameter'));
 			}
-		}
-	}
-
-	/**
-	 * buildBreadcrumb
-	 *
-	 * build breadcrumb array
-	 *
-	 * @since 2.1.0
-	 */
-
-	private function _buildBreadcrumb()
-	{
-		self::$_breadcrumbArray = array();
-		$key = 0;
-
-		/* if title constant */
-
-		if ($this->_registry->get('title'))
-		{
-			self::$_breadcrumbArray[$key]['title'] = $this->_registry->get('title');
-		}
-
-		/* else if home */
-
-		else if ($this->_registry->get('fullRoute') === '')
-		{
-			self::$_breadcrumbArray[$key]['title'] = l('home');
-		}
-
-		/* else if administration */
-
-		else if ($this->_registry->get('firstParameter') === 'admin')
-		{
-			$this->_buildAdminBreadcrumb($key);
-		}
-
-		/* else if default alias */
-
-		else if (check_alias($this->_registry->get('firstParameter'), 1) === 1)
-		{
-			/* join default title */
-
-			if (l($this->_registry->get('firstParameter')))
-			{
-				self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('firstParameter'));
-			}
-		}
-
-		/* handle error */
-
-		else if ($this->_registry->get('lastId') === '')
-		{
-			self::$_breadcrumbArray[$key]['title'] = l('error');
-		}
-
-		/* query title from content */
-
-		else if ($this->_registry->get('firstTable'))
-		{
-			$this->_buildContentBreadcrumb($key);
 		}
 	}
 }

@@ -14,7 +14,7 @@ function breadcrumb()
 {
 	$registry = Redaxscript_Registry::instance();
 	$breadcrumb = new Redaxscript_Breadcrumb($registry);
-	echo $breadcrumb->displayBreadcrumb();
+	echo $breadcrumb->render();
 }
 
 /**
