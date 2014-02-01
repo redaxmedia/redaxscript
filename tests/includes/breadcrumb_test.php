@@ -33,7 +33,8 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public function providerTestGet()
 	{
-		$output = json_decode(file_get_contents('tests/provider/breadcrumb_get.json'), true);
+		$contents = file_get_contents('tests/provider/breadcrumb_get.json');
+		$output = json_decode($contents, true);
 		return $output;
 	}
 
@@ -47,7 +48,8 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public function providerTestRender()
 	{
-		$output = json_decode(file_get_contents('tests/provider/breadcrumb_render.json'), true);
+		$contents = file_get_contents('tests/provider/breadcrumb_render.json');
+		$output = json_decode($contents, true);
 		return $output;
 	}
 
