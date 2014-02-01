@@ -39,6 +39,10 @@ module.exports = function (grunt)
 			modules:
 			[
 				'modules/web_app/files/manifest.json'
+			],
+			provider:
+			[
+				'tests/provider/*.json'
 			]
 		},
 		csslint:
