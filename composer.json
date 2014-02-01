@@ -10,6 +10,7 @@
 	},
 	"require-dev":
 	{
+		"mikey179/vfsStream": "1.2.0",
 		"phpunit/phpunit": "3.7.29",
 		"redaxmedia/tocgen": "3.0.1",
 		"squizlabs/php_codesniffer": "1.5.1"

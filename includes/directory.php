@@ -127,9 +127,9 @@ class Redaxscript_Directory
 	{
 		/* use from static cache */
 
-		if (array_key_exists($directory, self::$_cache))
+		if (is_array(self::$_cache) && array_key_exists($directory, self::$_cache))
 		{
-			$directoryArray = self::$_cache[$directory];
+			$directoryArray = array_values(array_diff(self::$_cache[$directory], $this->_ignoreArray));
 		}
 
 		/* else scan directory */
@@ -137,11 +137,12 @@ class Redaxscript_Directory
 		else
 		{
 			$directoryArray = scandir($directory);
-			$directoryArray = array_diff($directoryArray, $this->_ignoreArray);
 
 			/* save to static cache */
 
 			self::$_cache[$directory] = $directoryArray;
+
+			$directoryArray = array_values(array_diff($directoryArray, $this->_ignoreArray));
 		}
 		return $directoryArray;
 	}
@@ -160,29 +161,35 @@ class Redaxscript_Directory
 
 		if (!$directory)
 		{
-			$directory = $this->_directory;
+			$path = $this->_directory;
 			$directoryArray = $this->_directoryArray;
 		}
 
-		/* else handle children directory */
-
+		/* else handle child directory or single file */
 		else
 		{
-			$directory = $this->_directory . '/' . $directory;
-			$directoryArray = $this->_scan($directory);
+			$path = $this->_directory . '/' . $directory;
+			if (is_dir($path))
+			{
+				$directoryArray = $this->_scan($path);
+			}
+			else
+			{
+				$directoryArray = array();
+			}
 		}
 
 		/* walk directory array */
 
 		foreach ($directoryArray as $children)
 		{
-			$route = $directory . '/' . $children;
+			$route = $path . '/' . $children;
 
 			/* remove if directory */
 
 			if (is_dir($route))
 			{
-				$this->remove($route);
+				$this->remove($directory . '/' . $children);
 			}
 
 			/* else unlink file */
@@ -195,17 +202,48 @@ class Redaxscript_Directory
 
 		/* remove if directory */
 
-		if (is_dir($directory))
+		if (is_dir($path))
 		{
-			rmdir($directory);
+			rmdir($path);
 		}
 
 		/* else unlink file */
 
-		else if (is_file($directory))
+		else if (is_file($path))
 		{
-			unlink($directory);
+			unlink($path);
 		}
+	}
+
+	/**
+	 * create
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $directory
+	 * @param integer $mode
+	 * @return boolean
+	 */
+
+	public function create($directory = '', $mode = 0777)
+	{
+		$output = false;
+
+		/* check directory name does not include illegal characters \ / | ? * : ; { } " < > */
+
+		if (preg_match('=[\\\\/|?*:;{}"<>]=', $directory) === 0)
+		{
+			$path = $this->_directory . '/' . $directory;
+
+			/* check directory (or file) doesn't already exist */
+
+			if (!file_exists($path))
+			{
+				mkdir($path, $mode);
+				$output = true;
+			}
+		}
+		return $output;
 	}
 }
 ?>
