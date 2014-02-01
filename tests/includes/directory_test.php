@@ -275,12 +275,13 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 				/* scandir */
 				'root',
 				/* return value */
-				false,
+				true,
 				/* expected result */
 				array(
 					'file.txt',
 					'folder1',
-					'languages'
+					'languages',
+					'test_folder*'
 				),
 			),
 			/* Test 2 - invalid directory name */

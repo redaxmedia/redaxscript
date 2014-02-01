@@ -8,6 +8,7 @@
  * @category Directory
  * @package Redaxscript
  * @author Henry Ruhs
+ * @author Gary Aylward
  */
 
 class Redaxscript_Directory
@@ -148,6 +149,37 @@ class Redaxscript_Directory
 	}
 
 	/**
+	 * create
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $directory
+	 * @param integer $mode
+	 * @return boolean
+	 */
+
+	public function create($directory = '', $mode = 0777)
+	{
+		$path = $this->_directory . '/' . $directory;
+		$output = false;
+
+		/* check path does not exist */
+
+		if (!file_exists($path))
+		{
+			mkdir($path, $mode);
+
+			/* validate directory was created */
+
+			if (is_dir($path))
+			{
+				$output = true;
+			}
+		}
+		return $output;
+	}
+
+	/**
 	 * remove
 	 *
 	 * @since 2.0.0
@@ -166,6 +198,7 @@ class Redaxscript_Directory
 		}
 
 		/* else handle child directory or single file */
+
 		else
 		{
 			$path = $this->_directory . '/' . $directory;
@@ -213,37 +246,6 @@ class Redaxscript_Directory
 		{
 			unlink($path);
 		}
-	}
-
-	/**
-	 * create
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $directory
-	 * @param integer $mode
-	 * @return boolean
-	 */
-
-	public function create($directory = '', $mode = 0777)
-	{
-		$output = false;
-
-		/* check directory name does not include illegal characters \ / | ? * : ; { } " < > */
-
-		if (preg_match('=[\\\\/|?*:;{}"<>]=', $directory) === 0)
-		{
-			$path = $this->_directory . '/' . $directory;
-
-			/* check directory (or file) doesn't already exist */
-
-			if (!file_exists($path))
-			{
-				mkdir($path, $mode);
-				$output = true;
-			}
-		}
-		return $output;
 	}
 }
 ?>
