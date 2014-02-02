@@ -16,9 +16,6 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * setUpBeforeClass
 	 *
-	 * seed random number generator before start of tests so that we
-	 * always get the same sequence
-	 *
 	 * @since 2.1.0
 	 */
 
@@ -30,8 +27,6 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * providerTestCaptcha
 	 *
-	 * data provider for testCaptcha
-	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
@@ -39,27 +34,11 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	public function providerTestCaptcha()
 	{
-		return array(
-			/* test 0 */
-			array(
-				'6 plus 3',
-				'9',
-				sha1(9),
-			),
-			/* test 1 */
-			array(
-				'8 minus 2',
-				'6',
-				sha1(6),
-			),
-			/* test 2 */
-			array(
-				'7 plus 6',
-				'13',
-				sha1(13),
-			)
-		);
+		$contents = file_get_contents('tests/provider/captcha.json');
+		$output = json_decode($contents, true);
+		return $output;
 	}
+
 
 	/**
 	 * testCaptcha
@@ -71,18 +50,23 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerTestCaptcha
 	 */
 
-	public function testCaptcha($expectedTask, $expectedRaw, $expectedHash)
+	public function testCaptcha($expectTask = null, $expectRaw = null, $expectHash = null)
 	{
+		/* setup */
+
 		$captcha = new Redaxscript_Captcha();
+
+		/* result */
+
 		$task = $captcha->getTask();
-		/* test task */
-		$this->assertEquals($expectedTask, $task);
 		$raw = $captcha->getSolution('raw');
-		/* test raw solution */
-		$this->assertEquals($expectedRaw, $raw);
 		$hash = $captcha->getSolution('hash');
-		/* test hashed solution */
-		$this->assertEquals($expectedHash, $hash);
+
+		/* compare */
+
+		$this->assertEquals($expectTask, $task);
+		$this->assertEquals($expectRaw, $raw);
+		$this->assertEquals($expectHash, $hash);
 	}
 
 }

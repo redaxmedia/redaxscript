@@ -24,6 +24,17 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	private $_registry;
 
 	/**
+	 * setUp
+	 *
+	 * @since 2.1.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_registry = Redaxscript_Registry::instance();
+	}
+
+	/**
 	 * providerTestGet
 	 *
 	 * @since 2.1.0
@@ -54,17 +65,6 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * setUp
-	 *
-	 * @since 2.1.0
-	 */
-
-	protected function setUp()
-	{
-		$this->_registry = Redaxscript_Registry::instance();
-	}
-
-	/**
 	 * testGet
 	 *
 	 * @since 2.1.0
@@ -72,7 +72,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerTestGet
 	 */
 
-	public function testGet($registry, $expect)
+	public function testGet($registry = null, $expect = array())
 	{
 		/* setup */
 
@@ -96,7 +96,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerTestRender
 	 */
 
-	public function testRender($registry, $expect)
+	public function testRender($registry = null, $expect = array())
 	{
 		/* setup */
 
