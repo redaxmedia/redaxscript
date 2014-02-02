@@ -8,6 +8,7 @@ include_once('tests/stubs.php');
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Gary Aylward
  */
 
@@ -39,11 +40,8 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 		return $output;
 	}
 
-
 	/**
 	 * testCaptcha
-	 *
-	 * tests all the public methods of the captcha class
 	 *
 	 * @since 2.1.0
 	 *
@@ -68,7 +66,5 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expectRaw, $raw);
 		$this->assertEquals($expectHash, $hash);
 	}
-
 }
-
 ?>

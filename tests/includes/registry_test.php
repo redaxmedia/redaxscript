@@ -26,8 +26,6 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * setUp
 	 *
-	 * Gets an instance of the registry class to be used in each test
-	 *
 	 * @since 2.1.0
 	 */
 
@@ -40,18 +38,22 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * testSetAndGet
 	 *
-	 * Test for the Set and Get methods
-	 *
 	 * @since 2.1.0
 	 */
 
 	public function testSetAndGet()
 	{
+		/* setup */
+
 		$this->_registry->set('testKey', 'testValue');
+
+		/* result */
+
 		$result = $this->_registry->get('testKey');
-		/* test result */
+
+		/* compare */
+
 		$this->assertEquals('testValue', $result);
 	}
 }
-
 ?>
