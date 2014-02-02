@@ -111,14 +111,14 @@ class Redaxscript_Breadcrumb
 			{
 				$output .= '<li>';
 
-				/* if there is a route make the element a link */
+				/* build link if route */
 
 				if ($route)
 				{
 					$output .= anchor_element('internal', '', '', $title, $route);
 				}
 
-				/* otherwise make the element plain text */
+				/* else plain text */
 
 				else
 				{
@@ -155,8 +155,8 @@ class Redaxscript_Breadcrumb
 
 	private function _build()
 	{
-		self::$_breadcrumbArray = array();
 		$key = 0;
+		self::$_breadcrumbArray = array();
 
 		/* if title constant */
 
@@ -220,7 +220,7 @@ class Redaxscript_Breadcrumb
 	{
 		self::$_breadcrumbArray[$key]['title'] = l('administration');
 
-		/* if adminParameter is set, make this element a link to admin */
+		/* if admin parameter  */
 
 		if ($this->_registry->get('adminParameter'))
 		{
@@ -234,7 +234,7 @@ class Redaxscript_Breadcrumb
 			$key++;
 			self::$_breadcrumbArray[$key]['title'] = l($this->_registry->get('adminParameter'));
 
-			/* if this is not the end of the chain, make it a link */
+			/* set route if not end */
 
 			if ($this->_registry->get('adminParameter') !== $this->_registry->get('lastParameter'))
 			{
@@ -267,7 +267,7 @@ class Redaxscript_Breadcrumb
 
 		self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
 
-		/* if this is not the end of the trail, make it a link */
+		/* set route if not end */
 
 		if ($this->_registry->get('firstParameter') !== $this->_registry->get('lastParameter'))
 		{
@@ -281,7 +281,7 @@ class Redaxscript_Breadcrumb
 			$key++;
 			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
 
-			/* if this is not the end of the trail, make it a link */
+			/* set route if not end */
 
 			if ($this->_registry->get('secondParameter') !== $this->_registry->get('lastParameter'))
 			{
