@@ -16,7 +16,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * registry
 	 *
-	 * instance of the registry class injected via construct
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */

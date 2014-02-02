@@ -16,7 +16,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * registry
 	 *
-	 * instance of the registry class injected via construct
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
@@ -26,7 +26,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * breadcrumbArray
 	 *
-	 * array to store all the nodes of the breadcrumb trail
+	 * array to store all nodes of the breadcrumb trail
 	 *
 	 * @var array
 	 */
