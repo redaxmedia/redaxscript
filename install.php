@@ -28,7 +28,7 @@ install_post();
 write_config();
 include_once('config.php');
 
-/* boostrap */
+/* bootstrap */
 
 startup();
 include_once('includes/bootstrap.php');

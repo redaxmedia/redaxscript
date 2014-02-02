@@ -24,7 +24,7 @@ include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 
-/* boostrap */
+/* bootstrap */
 
 startup();
 include_once('includes/bootstrap.php');
