@@ -9,7 +9,8 @@
 	},
 	"folder1":
 	{
-		"folder2": {
+		"folder2":
+		{
 			"file2a.txt": "content file2a",
 			"file2b.txt": "content file2b"
 		},
