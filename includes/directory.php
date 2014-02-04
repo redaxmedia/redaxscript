@@ -158,7 +158,7 @@ class Redaxscript_Directory
 	 * @return boolean
 	 */
 
-	public function create($directory = '', $mode = 0777)
+	public function create($directory = null, $mode = 0777)
 	{
 		$path = $this->_directory . '/' . $directory;
 		$output = false;

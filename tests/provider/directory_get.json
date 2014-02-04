@@ -1,0 +1,32 @@
+[
+	[
+		"",
+		"",
+		[
+				"de.php",
+				"en.php",
+				"misc.php"
+		]
+	 ],
+	 [
+		"",
+		"misc.php",
+		[
+				"de.php",
+				"en.php"
+		]
+	 ],
+	 [
+		"",
+		"de.php",
+		[
+				"en.php",
+				"misc.php"
+		]
+	 ],
+	 [
+		0,
+		"",
+		"de.php"
+	 ]
+]

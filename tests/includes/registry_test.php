@@ -1,5 +1,4 @@
 <?php
-include_once('tests/stubs.php');
 
 /**
  * Redaxscript Registry Test

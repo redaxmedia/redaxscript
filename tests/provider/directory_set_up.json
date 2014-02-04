@@ -1,0 +1,20 @@
+{
+	"languages":
+	{
+		".": "",
+		"..": "",
+		"en.php": "english",
+		"de.php": "german",
+		"misc.php": "misc"
+	},
+	"folder1":
+	{
+		"folder2": {
+			"file2a.txt": "content file2a",
+			"file2b.txt": "content file2b"
+		},
+		"file1a.txt": "content file1a",
+		"file1b.txt": "content file1b"
+	},
+	"file.txt": "content"
+}
