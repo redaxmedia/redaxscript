@@ -38,8 +38,6 @@
 
 .box_default
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #111;
 	background: rgba(0, 0, 0, 0.5);
 	border: 1px solid #2c2c2c;
@@ -51,8 +49,6 @@
 
 .box_dialog_default, .sidebar .box_extra
 {
-	-moz-border-radius: 0.125em 0.125em 0.25em 0.25em;
-	-webkit-border-radius: 0.125em 0.125em 0.25em 0.25em;
 	background: #111;
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 0.125em 0.125em 0.25em 0.25em;

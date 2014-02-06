@@ -48,12 +48,6 @@
 
 .link_share_this:before
 {
-	-moz-border-radius: 2em;
-	-moz-transition: background 0.3s;
-	-ms-transition: background 0.3s;
-	-o-transition: background 0.3s;
-	-webkit-border-radius: 2em;
-	-webkit-transition: background 0.3s;
 	background: #bbb;
 	background: rgba(0, 0, 0, 0.15);
 	border-radius: 2em;
@@ -65,6 +59,7 @@
 	text-align: center;
 	text-indent: 0;
 	top: 0;
+	-webkit-transition: background 0.3s;
 	transition: background 0.3s;
 	width: 2.25em;
 }

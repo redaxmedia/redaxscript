@@ -41,11 +41,8 @@
 .table_admin tbody:nth-child(odd) tr
 {
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
-	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
-	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
-	background: linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-linear-gradient(#e2e2e2, #dadada);
+	background: linear-gradient(#e2e2e2, #dadada);
 }
 
 /* even look */
@@ -53,11 +50,8 @@
 .table_admin tbody:nth-child(even) tr
 {
 	background: #ebebeb;
-	background: -moz-linear-gradient(top, #ebebeb, #e8e8e8);
-	background: -ms-linear-gradient(top, #ebebeb, #e8e8e8);
-	background: -o-linear-gradient(top, #ebebeb, #e8e8e8);
-	background: -webkit-linear-gradient(top, #ebebeb, #e8e8e8);
-	background: linear-gradient(top, #ebebeb, #e8e8e8);
+	background: -webkit-linear-gradient(#ebebeb, #e8e8e8);
+	background: linear-gradient(#ebebeb, #e8e8e8);
 }
 
 .table_admin tbody tr
@@ -82,8 +76,6 @@
 
 .table_admin tbody .row_group
 {
-	-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
@@ -154,14 +146,11 @@
 
 .table_admin .move_up, .table_admin .move_down
 {
-	-moz-transition: color 0.3s ease;
-	-ms-transition: color 0.3s ease;
-	-o-transition: color 0.3s ease;
-	-webkit-transition: color 0.3s ease;
 	color: #474747;
 	display: block;
 	min-height: 3em;
 	position: relative;
+	-webkit-transition: color 0.3s ease;
 	transition: color 0.3s ease;
 }
 

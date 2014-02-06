@@ -1,42 +1,3 @@
-/**
- * @tableofcontents
- *
- * 1. fade
- * 2. rotate
- * 3. scale
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. fade */
-
-@-moz-keyframes fade
-{
-	from
-	{
-		opacity: 0;
-	}
-	to
-	{
-		opacity: 1;
-	}
-}
-
-@-o-keyframes fade
-{
-	from
-	{
-		opacity: 0;
-	}
-	to
-	{
-		opacity: 1;
-	}
-}
-
 @-webkit-keyframes fade
 {
 	from
@@ -61,36 +22,6 @@
 	}
 }
 
-/* @section 2. rotate */
-
-@-moz-keyframes rotate
-{
-	from
-	{
-		-moz-transform: rotate(0);
-		transform: rotate(0);
-	}
-	to
-	{
-		-moz-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
-@-o-keyframes rotate
-{
-	from
-	{
-		-o-transform: rotate(0);
-		transform: rotate(0);
-	}
-	to
-	{
-		-o-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
 @-webkit-keyframes rotate
 {
 	from
@@ -109,41 +40,15 @@
 {
 	from
 	{
+		-webkit-transform: rotate(0);
+		-ms-transform: rotate(0);
 		transform: rotate(0);
 	}
 	to
 	{
+		-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
 		transform: rotate(360deg);
-	}
-}
-
-/* @section 3. scale */
-
-@-moz-keyframes scale
-{
-	from
-	{
-		-moz-transform: scale(0);
-		transform: scale(0);
-	}
-	to
-	{
-		-moz-transform: scale(1);
-		transform: scale(1);
-	}
-}
-
-@-o-keyframes scale
-{
-	from
-	{
-		-o-transform: scale(0);
-		transform: scale(0);
-	}
-	to
-	{
-		-o-transform: scale(1);
-		transform: scale(1);
 	}
 }
 
@@ -165,10 +70,14 @@
 {
 	from
 	{
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
 		transform: scale(0);
 	}
 	to
 	{
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
 		transform: scale(1);
 	}
 }

@@ -22,11 +22,8 @@
 .box_accordion_admin, .box_dialog_admin
 {
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
-	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
-	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
-	background: linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-linear-gradient(#e2e2e2, #dadada);
+	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
 	padding: 1em 1.5em;
@@ -93,11 +90,8 @@
 .box_tab_admin
 {
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #e2e2e2, #dadada);
-	background: -ms-linear-gradient(top, #e2e2e2, #dadada);
-	background: -o-linear-gradient(top, #e2e2e2, #dadada);
-	background: -webkit-linear-gradient(top, #e2e2e2, #dadada);
-	background: linear-gradient(top, #e2e2e2, #dadada);
+	background: -webkit-linear-gradient(#e2e2e2, #dadada);
+	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
 }

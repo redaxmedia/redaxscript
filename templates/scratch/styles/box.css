@@ -25,8 +25,6 @@
 
 .box_default
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
 	border-radius: 0.125em;
 }
 
@@ -34,8 +32,6 @@
 
 .box_dialog_default
 {
-	-moz-border-radius: 0 0 0.125em 0.125em;
-	-webkit-border-radius: 0 0 0.125em 0.125em;
 	border-radius: 0 0 0.125em 0.125em;
 	border-top: 0;
 }

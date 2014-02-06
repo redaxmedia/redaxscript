@@ -48,14 +48,11 @@ pre
 
 .title_accordion_default
 {
-	-moz-border-radius: 0.25em 0.25em;
-	-moz-box-sizing: border-box;
-	-webkit-border-radius: 0.25em 0.25em;
-	-webkit-box-sizing: border-box;
 	background: #fff;
 	border: 1px solid #ddd;
 	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em 0.25em;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font: 1em/3em arial;
 	text-indent: 1em;
@@ -82,8 +79,6 @@ pre
 
 .js .title_accordion_default.title_active
 {
-	-moz-border-radius: 0.25em 0.25em 0 0;
-	-webkit-border-radius: 0.25em 0.25em 0 0;
 	border-radius: 0.25em 0.25em 0 0;
 	color: #555;
 	cursor: default;

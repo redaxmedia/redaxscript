@@ -164,13 +164,26 @@ module.exports = function (grunt)
 		},
 		autoprefixer:
 		{
+			base:
+			{
+				src:
+				[
+					'styles/*.css'
+				]
+			},
 			modules:
 			{
-				src: 'modules/*/styles/*.css'
+				src:
+				[
+					'modules/*/styles/*.css'
+				]
 			},
 			templates:
 			{
-				src: 'templates/*/styles/*.css'
+				src:
+				[
+					'templates/*/styles/*.css'
+				]
 			},
 			options:
 			{

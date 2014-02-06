@@ -14,8 +14,6 @@
 
 .image_default, .image_gallery, .player_default
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #2c2c2c;
 	border-radius: 0.25em;
 }
@@ -36,7 +34,5 @@
 
 .image_default:hover, .image_gallery:hover, .player_default:hover
 {
-	-moz-box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-	-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }

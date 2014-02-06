@@ -26,15 +26,11 @@
 
 .title_accordion_admin
 {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	background: #d5d5d5;
-	background: -moz-linear-gradient(top, #d5d5d5, #ccc);
-	background: -ms-linear-gradient(top, #d5d5d5, #ccc);
-	background: -o-linear-gradient(top, #d5d5d5, #ccc);
-	background: -webkit-linear-gradient(top, #d5d5d5, #ccc);
-	background: linear-gradient(top, #d5d5d5, #ccc);
+	background: -webkit-linear-gradient(#d5d5d5, #ccc);
+	background: linear-gradient(#d5d5d5, #ccc);
 	border: 1px solid #b9b9b9;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
 	text-indent: 1em;
@@ -84,8 +80,6 @@
 
 .title_dialog_admin
 {
-	-moz-border-radius: 0.25em 0.25em 0 0;
-	-webkit-border-radius: 0.25em 0.25em 0 0;
 	border-radius: 0.25em 0.25em 0 0;
 	font: bold 1.125em/2.5em arial;
 	text-transform: uppercase;

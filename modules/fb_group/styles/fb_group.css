@@ -17,8 +17,6 @@
 
 .link_fb_group_user_image
 {
-	-moz-box-shadow: 0 0 6px #c6c6c6;;
-	-webkit-box-shadow: 0 0 6px #c6c6c6;;
 	border: 1px solid #bdbdbd;
 	box-shadow: 0 0 6px #c6c6c6;
 	display: inline-block;
@@ -36,8 +34,6 @@
 
 .box_fb_group_message_sub
 {
-	-moz-box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
-	-webkit-box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
 	box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
 	margin: 1em 0 2em;
 	padding: 0.25em 0 0.25em 1.5em;
@@ -106,14 +102,9 @@
 
 .box_fb_group_comment_infoline
 {
-	-moz-border-radius: 0.25em 0.25em 0 0;
-	-webkit-border-radius: 0.25em 0.25em 0 0;
 	background: #dadada;
-	background: -moz-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -ms-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -o-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: -webkit-linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
-	background: linear-gradient(top, #dadada, #dadada 40%, #d1d1d1);
+	background: -webkit-linear-gradient(#dadada, #dadada 40%, #d1d1d1);
+	background: linear-gradient(#dadada, #dadada 40%, #d1d1d1);
 	border: 1px solid #cdcdcd;
 	border-bottom: 0;
 	border-radius: 0.25em 0.25em 0 0;
@@ -134,8 +125,6 @@
 
 .link_fb_group_comment_read_more
 {
-	-moz-border-radius: 0 0 0.25em 0.25em;
-	-webkit-border-radius: 0 0 0.25em 0.25em;
 	border-radius: 0 0 0.25em 0.25em;
 	display: block;
 	text-decoration: underline;

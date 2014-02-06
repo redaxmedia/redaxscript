@@ -15,10 +15,6 @@
 
 .dialog_default
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 	background: #fff;
 	border: 1px solid #ddd;
 	border-color: rgba(0, 0, 0, 0.1);
@@ -38,9 +34,6 @@
 
 .dialog_default, .dialog_overlay_default
 {
-	-moz-animation: fade 0.4s;
-	-ms-animation: fade 0.4s;
-	-o-animation: fade 0.4s;
 	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }

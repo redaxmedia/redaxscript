@@ -61,14 +61,9 @@
 
 .list_header > .item_active > a
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #fff, #e2e2e2);
-	background: -ms-linear-gradient(top, #fff, #e2e2e2);
-	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
-	background: linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-linear-gradient(#fff, #e2e2e2);
+	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.25em;
 	color: #474747;
 	text-shadow: 0 1px #fff;
@@ -83,14 +78,7 @@
 
 .list_header > li > .list_children
 {
-	-moz-border-radius: 0.375em;
-	-moz-box-shadow: 0 2px 5px 2px #000;
-	-webkit-border-radius: 0.375em;
-	-webkit-box-shadow: 0 2px 5px 2px #000;
 	background: #1f1f1f;
-	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(bottom, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(bottom, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -o-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
 	border-radius: 0.375em;
@@ -121,14 +109,9 @@
 
 .list_pagination a, .list_pagination span
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
 	background: #fff;
-	background: -moz-linear-gradient(top , #fff, #e2e2e2);
-	background: -ms-linear-gradient(top, #fff, #e2e2e2);
-	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
-	background: linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-linear-gradient(#fff, #e2e2e2);
+	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.125em;
 	color: #474747;
 	font-size: 1.125em;
@@ -140,11 +123,8 @@
 .list_pagination .item_active span
 {
 	background: #92901b;
-	background: -moz-linear-gradient(top, #d0cf20, #92901b);
-	background: -ms-linear-gradient(top, #d0cf20, #92901b);
-	background: -o-linear-gradient(top, #d0cf20, #92901b);
-	background: -webkit-linear-gradient(top, #d0cf20, #92901b);
-	background: linear-gradient(top, #d0cf20, #92901b);
+	background: -webkit-linear-gradient(#d0cf20, #92901b);
+	background: linear-gradient(#d0cf20, #92901b);
 	color: #000;
 	text-shadow: 0 1px #d3d25f;
 }
@@ -206,14 +186,9 @@
 
 .tooltip
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
 	background: #92901b;
-	background: -moz-linear-gradient(top, #d0cf20, #92901b);
-	background: -ms-linear-gradient(top, #d0cf20, #92901b);
-	background: -o-linear-gradient(top, #d0cf20, #92901b);
-	background: -webkit-linear-gradient(top, #d0cf20, #92901b);
-	background: linear-gradient(top, #d0cf20, #92901b);
+	background: -webkit-linear-gradient(#d0cf20, #92901b);
+	background: linear-gradient(#d0cf20, #92901b);
 	color: #000;
 	border-radius: 0.125em;
 	font-size: 1em;

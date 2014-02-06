@@ -33,8 +33,6 @@
 
 .box_code
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #eee;
 	border: 1px solid #ccc;
 	border-radius: 0.25em;
@@ -92,8 +90,6 @@
 
 .box_dialog_default
 {
-	-moz-border-radius: 0 0 0.25em 0.25em;
-	-webkit-border-radius: 0 0 0.25em 0.25em;
 	border-radius: 0 0 0.25em 0.25em;
 }
 
@@ -101,8 +97,6 @@
 
 .sidebar .box_extra
 {
-	-moz-border-radius: 0 0 0.125em 0.125em;
-	-webkit-border-radius: 0 0 0.125em 0.125em;
 	background: #eee;
 	border-radius: 0 0 0.125em 0.125em;
     padding: 1em 1.5em;
@@ -117,14 +111,9 @@
 
 .box_infoline
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
-	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
-	background: -o-linear-gradient(top, #ccc, #b9b9b9);
-	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
-	background: linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
 	font: 0.75em/2.5em arial;
@@ -171,10 +160,6 @@
 
 .box_navibar
 {
-	-moz-border-radius: 0 0 0.25em 0.25em;
-	-moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-	-webkit-border-radius: 0 0 0.25em 0.25em;
-	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
 	background: #b9b9b9;
 	border: 1px solid #a5a5a5;
 	border-radius: 0 0 0.25em 0.25em;

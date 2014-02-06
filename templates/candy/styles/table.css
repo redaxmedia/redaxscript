@@ -28,11 +28,8 @@
 .table_default tfoot tr, .table_default thead tr
 {
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #fff, #e2e2e2);
-	background: -ms-linear-gradient(top, #fff, #e2e2e2);
-	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
-	background: linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-linear-gradient(#fff, #e2e2e2);
+	background: linear-gradient(#fff, #e2e2e2);
 	color: #474747;
 	font-weight: bold;
 	text-shadow: 0 1px #fff;

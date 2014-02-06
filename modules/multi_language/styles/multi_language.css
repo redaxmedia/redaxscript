@@ -27,8 +27,6 @@
 .icon_flag.language_ru:after,
 .icon_flag.language_zh:after
 {
-	-moz-box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
 	bottom: 0;
 	box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
 	content: '';

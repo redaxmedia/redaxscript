@@ -22,9 +22,6 @@
 
 .dialog_default, .dialog_overlay_default
 {
-	-moz-animation: fade 0.4s;
-	-ms-animation: fade 0.4s;
-	-o-animation: fade 0.4s;
 	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }

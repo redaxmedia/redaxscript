@@ -30,8 +30,6 @@
 
 .tooltip
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
 	background: #f5f5f5;
 	border: 1px solid #e5e5e5;
 	border-color: rgba(0, 0, 0, 0.1);

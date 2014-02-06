@@ -32,16 +32,9 @@ textarea
 
 .button_default
 {
-	-moz-border-radius: 0.25em;
-	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	-webkit-border-radius: 0.25em;
-	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
-	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
-	background: -o-linear-gradient(top, #ccc, #b9b9b9);
-	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
-	background: linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -72,17 +65,12 @@ textarea
 .button_default:hover
 {
 	background: #33acee;
-	background: -moz-linear-gradient(top, #00a2f8, #0090db);
-	background: -ms-linear-gradient(top, #00a2f8, #0090db);
-	background: -o-linear-gradient(top, #00a2f8, #0090db);
-	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
-	background: linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(#00a2f8, #0090db);
+	background: linear-gradient(#00a2f8, #0090db);
 }
 
 .button_default:active
 {
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
 	background: #0090db;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
 }
@@ -126,23 +114,15 @@ textarea
 
 .field_select, .field_text, .field_textarea
 {
-	-moz-border-radius: 0.25em;
-	-moz-transition: background 0.5s ease;
-	-ms-transition: background 0.5s ease;
-	-o-transition: background 0.5s ease;
-	-webkit-border-radius: 0.25em;
-	-webkit-transition: background 0.5s ease;
 	background: #f1f1f1;
-	background: -moz-linear-gradient(top, #e2e2e2, #f1f1f1);
-	background: -ms-linear-gradient(top, #e2e2e2, #f1f1f1);
-	background: -o-linear-gradient(top, #e2e2e2, #f1f1f1);
-	background: -webkit-linear-gradient(top, #e2e2e2, #f1f1f1);
-	background: linear-gradient(top, #e2e2e2, #f1f1f1);
+	background: -webkit-linear-gradient(#e2e2e2, #f1f1f1);
+	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #b9b9b9;
 	border-radius: 0.25em;
 	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	-webkit-transition: background 0.5s ease;
 	transition: background 0.5s ease;
 	padding: 0.5em;
 }
@@ -152,19 +132,14 @@ textarea
 .field_select:hover, .field_text:hover, .field_textarea:hover
 {
 	background: #eee;
-	background: -moz-linear-gradient(top, #ddd, #eee);
-	background: -ms-linear-gradient(top, #ddd, #eee);
-	background: -o-linear-gradient(top, #ddd, #eee);
-	background: -webkit-linear-gradient(top, #ddd, #eee);
-	background: linear-gradient(top, #ddd, #eee);
+	background: -webkit-linear-gradient(#ddd, #eee);
+	background: linear-gradient(#ddd, #eee);
 }
 
 /* @section 3.2 focus effect */
 
 .field_select:focus, .field_text:focus, .field_textarea:focus
 {
-	-moz-box-shadow: 0 0 1px #4abdff;
-	-webkit-box-shadow: 0 0 1px #4abdff;
 	background: #f8f8f8;
 	border-color: #78b2d1;
 	box-shadow: 0 0 1px #4abdff;
@@ -220,14 +195,9 @@ textarea
 
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
-	-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 	background: #e2e2e2;
-	background: -moz-linear-gradient(top, #dadada, #e8e8e8);
-	background: -ms-linear-gradient(top, #dadada, #e8e8e8);
-	background: -o-linear-gradient(top, #dadada, #e8e8e8);
-	background: -webkit-linear-gradient(top, #dadada, #e8e8e8);
-	background: linear-gradient(top, #dadada, #e8e8e8);
+	background: -webkit-linear-gradient(#dadada, #e8e8e8);
+	background: linear-gradient(#dadada, #e8e8e8);
 	border-color: #a5a5a5;
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 	color: #a5a5a5;
@@ -256,14 +226,9 @@ textarea
 
 .form_search
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #e5e5e5;
-	background: -moz-linear-gradient(top, #f9f9f9, #e2e2e2);
-	background: -ms-linear-gradient(top, #f9f9f9, #e2e2e2);
-	background: -o-linear-gradient(top, #f9f9f9, #e2e2e2);
-	background: -webkit-linear-gradient(top, #f9f9f9, #e2e2e2);
-	background: linear-gradient(top, #f9f9f9, #e2e2e2);
+	background: -webkit-linear-gradient(#f9f9f9, #e2e2e2);
+	background: linear-gradient(#f9f9f9, #e2e2e2);
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	padding: 0.5em 1em;

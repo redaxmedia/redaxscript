@@ -22,9 +22,6 @@
 
 .dialog_admin, .dialog_overlay_admin
 {
-	-moz-animation: fade 0.4s;
-	-ms-animation: fade 0.4s;
-	-o-animation: fade 0.4s;
 	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }

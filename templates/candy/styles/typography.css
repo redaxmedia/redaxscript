@@ -106,14 +106,9 @@ pre
 
 .title_dialog_default, .sidebar .title_extra
 {
-	-moz-border-radius: 0.125em;
-	-webkit-border-radius: 0.125em;
 	background: #fff;
-	background: -moz-linear-gradient(top , #fff, #e2e2e2);
-	background: -ms-linear-gradient(top, #fff, #e2e2e2);
-	background: -o-linear-gradient(top, #fff, #e2e2e2);
-	background: -webkit-linear-gradient(top, #fff, #e2e2e2);
-	background: linear-gradient(top, #fff, #e2e2e2);
+	background: -webkit-linear-gradient(#fff, #e2e2e2);
+	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.125em;
 	color: #474747;
 	font: 1.375em marmelad, serif;

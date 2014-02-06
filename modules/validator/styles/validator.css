@@ -16,12 +16,7 @@
 
 .box_validator
 {
-	-moz-animation: fade 0.4s;
-	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-	-ms-animation: fade 0.4s;
-	-o-animation: fade 0.4s;
 	-webkit-animation: fade 0.4s;
-	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 	animation: fade 0.4s;
 	background: #fff;
 	bottom: 1em;

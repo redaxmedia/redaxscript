@@ -98,14 +98,10 @@ pre
 
 .title_accordion_default
 {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
-	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
-	background: -o-linear-gradient(top, #ccc, #b9b9b9);
-	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
-	background: linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font: 1.5em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	text-indent: 1em;
@@ -135,11 +131,8 @@ pre
 .js .title_accordion_default.title_active, .title_dialog_default
 {
 	background: #33acee;
-	background: -moz-linear-gradient(top, #00a2f8, #0090db);
-	background: -ms-linear-gradient(top, #00a2f8, #0090db);
-	background: -o-linear-gradient(top, #00a2f8, #0090db);
-	background: -webkit-linear-gradient(top, #00a2f8, #0090db);
-	background: linear-gradient(top, #00a2f8, #0090db);
+	background: -webkit-linear-gradient(#00a2f8, #0090db);
+	background: linear-gradient(#00a2f8, #0090db);
 	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 }
 
@@ -187,14 +180,9 @@ pre
 
 .title_comment
 {
-	-moz-border-radius: 0.25em;
-	-webkit-border-radius: 0.25em;
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
-	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
-	background: -o-linear-gradient(top, #ccc, #b9b9b9);
-	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
-	background: linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
 	font: bold 1em/2.75em arial;
@@ -215,8 +203,6 @@ pre
 
 .title_dialog_default
 {
-	-moz-border-radius: 0.25em 0.25em 0 0;
-	-webkit-border-radius: 0.25em 0.25em 0 0;
 	border-radius: 0.25em 0.25em 0 0;
 	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1em;
@@ -226,14 +212,9 @@ pre
 
 .sidebar .title_extra
 {
-	-moz-border-radius: 0.125em 0.125em 0 0;
-	-webkit-border-radius: 0.125em 0.125em 0 0;
 	background: #b9b9b9;
-	background: -moz-linear-gradient(top, #ccc, #b9b9b9);
-	background: -ms-linear-gradient(top, #ccc, #b9b9b9);
-	background: -o-linear-gradient(top, #ccc, #b9b9b9);
-	background: -webkit-linear-gradient(top, #ccc, #b9b9b9);
-	background: linear-gradient(top, #ccc, #b9b9b9);
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
 	border: 1px solid #a5a5a5;
 	border-radius: 0.125em 0.125em 0 0;
 	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;

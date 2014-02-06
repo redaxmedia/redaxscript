@@ -55,14 +55,9 @@ body
 
 .header
 {
-	-moz-box-shadow: 0 1px #000;
-	-webkit-box-shadow: 0 1px #000;
 	background: #1f1f1f;
-	background: url('templates/candy/images/noise.png'), -moz-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -ms-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -o-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(top, #1f1f1f, #111);
-	background: url('templates/candy/images/noise.png'), linear-gradient(top, #1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(#1f1f1f, #111);
+	background: url('templates/candy/images/noise.png'), linear-gradient(#1f1f1f, #111);
 	border-bottom: 1px solid #1f1f1f;
 	box-shadow: 0 1px #000;
 	margin-bottom: 2em;

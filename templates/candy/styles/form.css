@@ -30,16 +30,9 @@ textarea
 
 .button_default, .button_search
 {
-	-moz-border-radius: 0.375em;
-	-moz-box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
-	-webkit-border-radius: 0.375em;
-	-webkit-box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	background: #303030;
-	background: -moz-linear-gradient(top, #474747, #303030);
-	background: -ms-linear-gradient(top, #474747, #303030);
-	background: -o-linear-gradient(top, #474747, #303030);
-	background: -webkit-linear-gradient(top, #474747, #303030);
-	background: linear-gradient(top, #474747, #303030);
+	background: -webkit-linear-gradient(#474747, #303030);
+	background: linear-gradient(#474747, #303030);
 	border-radius: 0.375em;
 	box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	color: #c6c6c6;
@@ -62,11 +55,8 @@ textarea
 .button_default:hover, .button_search:hover
 {
 	background: #5b5b5b;
-	background: -moz-linear-gradient(top, #5b5b5b, #303030);
-	background: -ms-linear-gradient(top, #5b5b5b, #303030);
-	background: -o-linear-gradient(top, #5b5b5b, #303030);
-	background: -webkit-linear-gradient(top, #5b5b5b, #303030);
-	background: linear-gradient(top, #5b5b5b, #303030);
+	background: -webkit-linear-gradient(#5b5b5b, #303030);
+	background: linear-gradient(#5b5b5b, #303030);
 	color: #d6d6d6;
 }
 
@@ -74,12 +64,7 @@ textarea
 
 .button_default:active, .button_search:active
 {
-	-moz-box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
-	-webkit-box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	background: #3b3b3b;
-	background: -moz-linear-gradient(bottom, #3b3b3b, #303030);
-	background: -ms-linear-gradient(bottom, #3b3b3b, #303030);
-	background: -o-linear-gradient(bottom, #3b3b3b, #303030);
 	background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
 	background: linear-gradient(bottom, #3b3b3b, #303030);
 	box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -101,16 +86,9 @@ textarea
 
 .field_search, .field_select, .field_text, .field_textarea
 {
-	-moz-border-radius: 0.375em;
-	-moz-box-shadow: inset 0 -1px #262626;
-	-webkit-border-radius: 0.375em;
-	-webkit-box-shadow: inset 0 -1px #262626;
 	background: #1f1f1f;
-	background: -moz-linear-gradient(top, #282828, #1f1f1f);
-	background: -ms-linear-gradient(top, #282828, #1f1f1f);
-	background: -o-linear-gradient(top, #282828, #1f1f1f);
-	background: -webkit-linear-gradient(top, #282828, #1f1f1f);
-	background: linear-gradient(top, #282828, #1f1f1f);
+	background: -webkit-linear-gradient(#282828, #1f1f1f);
+	background: linear-gradient(#282828, #1f1f1f);
 	border: 1px solid #262626;
 	border-radius: 0.375em;
 	box-shadow: inset 0 -1px #262626;
@@ -123,8 +101,6 @@ textarea
 
 .field_search:hover, .field_select:hover, .field_text:hover, .field_textarea:hover
 {
-	-moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
-	-webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 	box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
@@ -132,8 +108,6 @@ textarea
 
 .field_search:focus, .field_select:focus, .field_text:focus, .field_textarea:focus
 {
-	-moz-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
-	-webkit-box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
 	box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.1), 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
