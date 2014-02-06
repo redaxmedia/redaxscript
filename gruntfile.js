@@ -162,6 +162,31 @@ module.exports = function (grunt)
 				bin: 'vendor/bin/phpunit'
 			}
 		},
+		autoprefixer:
+		{
+			modules:
+			{
+				src: 'modules/*/styles/*.css'
+			},
+			templates:
+			{
+				src: 'templates/*/styles/*.css'
+			},
+			options:
+			{
+				browsers:
+				[
+					'last 2 Android versions',
+					'last 2 BlackBerry versions',
+					'last 2 iOS versions',
+					'last 2 Chrome versions',
+					'last 3 Explorer versions',
+					'last 2 Firefox versions',
+					'last 2 Opera versions',
+					'last 2 Safari versions'
+				]
+			}
+		},
 		lineending:
 		{
 			css:
@@ -348,6 +373,7 @@ module.exports = function (grunt)
 
 	/* load tasks */
 
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -408,6 +434,7 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('optimize',
 	[
+		'autoprefixer',
 		'toc',
 		'eol',
 		'img',
