@@ -177,7 +177,6 @@ module.exports = function (grunt)
 				browsers:
 				[
 					'last 2 Android versions',
-					'last 2 BlackBerry versions',
 					'last 2 iOS versions',
 					'last 2 Chrome versions',
 					'last 3 Explorer versions',
