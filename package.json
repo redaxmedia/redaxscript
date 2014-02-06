@@ -21,6 +21,7 @@
 	"dependencies":
 	{
 		"grunt": "0.4.2",
+		"grunt-autoprefixer": "1.0.20140203",
 		"grunt-contrib-copy": "0.5.0",
 		"grunt-contrib-csslint": "0.2.0",
 		"grunt-contrib-jshint": "0.8.0",
