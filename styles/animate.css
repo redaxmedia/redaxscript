@@ -1,3 +1,18 @@
+/**
+ * @tableofcontents
+ *
+ * 1. fade
+ * 2. rotate
+ * 3. scale
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. fade */
+
 @-webkit-keyframes fade
 {
 	from
@@ -21,6 +36,8 @@
 		opacity: 1;
 	}
 }
+
+/* @section 2. rotate */
 
 @-webkit-keyframes rotate
 {
@@ -51,6 +68,8 @@
 		transform: rotate(360deg);
 	}
 }
+
+/* @section 3. scale */
 
 @-webkit-keyframes scale
 {
