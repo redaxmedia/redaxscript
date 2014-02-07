@@ -93,7 +93,6 @@
 	{
 		float: left;
 		position: relative;
-
 	}
 
 	.list_panel_admin.c1 > li
@@ -126,6 +125,12 @@
 		background: url('templates/admin/images/carbon.png') #222;
 		position: absolute;
 		width: 100%;
+	}
+
+	.list_panel_children_admin ul
+	{
+		left: 100%;
+		top: 0;
 	}
 
 	.sidebar .description_dock_admin

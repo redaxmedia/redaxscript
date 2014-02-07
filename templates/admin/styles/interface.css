@@ -7,11 +7,10 @@
  * 3. list panel admin
  *    3.1 icons before
  *    3.2 icons after
- *    3.3 javascript enabled
  * 4. list tab admin
  *    4.1 javascript enabled
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -124,11 +123,6 @@
 	font-size: 0.875rem;
 }
 
-.item_panel_admin
-{
-	position: relative;
-}
-
 .list_panel_admin a, .list_panel_admin span
 {
 	color: #b9b9b9;
@@ -150,6 +144,16 @@
 	color: #000;
 	padding-left: 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.list_panel_children_admin
+{
+	display: none;
+}
+
+.item_panel_admin
+{
+	position: relative;
 }
 
 /* link logout */
@@ -210,19 +214,6 @@
 .item_panel_admin.item_active > span:after
 {
 	content: '˅';
-}
-
-/* @section 3.3 javascript enabled */
-
-.js .list_panel_children_admin
-{
-	display: none;
-}
-
-.js .list_panel_children_admin ul
-{
-	left: 100%;
-	top: 0;
 }
 
 /* @section 4. list tab admin */
