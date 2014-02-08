@@ -54,5 +54,41 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals('testValue', $result);
 	}
+
+	/**
+	 * testGetInvalidKey
+	 *
+	 * @since 2.1.0
+	 */
+
+	public function testGetInvalidKey()
+	{
+		/* result */
+
+		$result = $this->_registry->get('invalidKey');
+
+		/* compare */
+
+		$this->assertEquals(null, $result);
+	}
+
+	/**
+	 * testGetNull
+	 *
+	 * @since 2.1.0
+	 */
+
+	public function testGetNull()
+	{
+		/* result */
+
+		$result = $this->_registry->get();
+
+		/* compare */
+
+		$this->assertEquals(null, $result);
+	}
+
 }
+
 ?>
