@@ -317,7 +317,7 @@ function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
 	{
 		$output = '<a class="link_fb_group_user_image" href="' . FB_GROUP_FACEBOOK_URL . '/profile.php?id=' . $id . '" title="' . $name . '" rel="nofollow">';
 	}
-	$output .= '<img class="image_fb_group_' . $type . '" src="' . FB_GROUP_API_URL . '/' . $id . '/picture?type=' . $type . '" alt="' . $name . '" />';
+	$output .= '<img class="image_fb_group_' . $type . '" src="' . FB_GROUP_IMG_URL . '/' . $id . '/picture?type=' . $type . '" alt="' . $name . '" />';
 	if ($mode == 1)
 	{
 		$output .= '</a>';
