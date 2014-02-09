@@ -71,7 +71,7 @@ class Redaxscript_Captcha
 
 	public function init()
 	{
-		$this->_createCaptcha();
+		$this->_create();
 	}
 
 	/**
@@ -114,14 +114,14 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * checkOperator
+	 * getOperator
 	 *
 	 * @since 2.0.0
 	 *
 	 * @return integer
 	 */
 
-	protected function _checkOperator()
+	protected function _getOperator()
 	{
 		/* switch captcha mode */
 
@@ -141,12 +141,12 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * createCaptcha
+	 * create
 	 *
 	 * @since 2.0.0
 	 */
 
-	protected function _createCaptcha()
+	protected function _create()
 	{
 		/* range */
 
@@ -160,7 +160,7 @@ class Redaxscript_Captcha
 
 		/* operator */
 
-		$c = $this->_checkOperator();
+		$c = $this->_getOperator();
 		$operator = $this->_operators[$c];
 
 		/* solution and task */

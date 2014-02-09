@@ -88,7 +88,5 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals(null, $result);
 	}
-
 }
-
 ?>

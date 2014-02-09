@@ -54,10 +54,8 @@ class Redaxscript_Registry
 	 * @param array $values
 	 */
 
-	public function init($values = null)
+	public function init($values = array())
 	{
-		/* only initialise if the parameter is an array */
-
 		if (is_array($values))
 		{
 			self::$_values = $values;
