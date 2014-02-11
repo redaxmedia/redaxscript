@@ -14,6 +14,7 @@ class Redaxscript_Autoloader
 {
 	/**
 	 * nameSpace
+	 *
 	 * @var string
 	 */
 
@@ -21,6 +22,7 @@ class Redaxscript_Autoloader
 
 	/**
 	 * directory
+	 *
 	 * @var string
 	 */
 
@@ -28,6 +30,7 @@ class Redaxscript_Autoloader
 
 	/**
 	 * fileSuffix
+	 *
 	 * @var string
 	 */
 

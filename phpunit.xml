@@ -1,4 +1,4 @@
-<phpunit strict="true" bootstrap="includes/bootstrap.php">
+<phpunit bootstrap="includes/bootstrap.php" strict="true">
 	<testsuite name="base">
 		<directory suffix="_test.php">tests/includes</directory>
 	</testsuite>
