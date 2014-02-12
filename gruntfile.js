@@ -162,6 +162,18 @@ module.exports = function (grunt)
 				bin: 'vendor/bin/phpunit'
 			}
 		},
+		watch:
+		{
+			phpunit:
+			{
+				files:
+				[
+					'includes/*/*.php',
+					'tests/*/*.php'
+				],
+				tasks: ['phpunit']
+			}
+		},
 		autoprefixer:
 		{
 			base:
@@ -390,6 +402,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
