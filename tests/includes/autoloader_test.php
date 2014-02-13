@@ -13,12 +13,12 @@
 class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * testArray
+	 * testAutoloader
 	 *
 	 * @since 2.1.0
 	 */
 
-	public function testArray()
+	public function testAutoloader()
 	{
 		/* result */
 
