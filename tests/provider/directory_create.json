@@ -1,32 +1,32 @@
 [
 	[
 		[
-			"test_folder",
+			"test",
 			511
 		],
 		"root",
 		"root",
 		true,
 		[
-			"file.txt",
-			"folder1",
+			"includes",
+			"index.php",
 			"languages",
-			"test_folder"
+			"test"
 		]
 	],
 	[
 		[
-			"test_folder*",
+			"test*",
 			511
 		],
 		"root",
 		"root",
 		true,
 		[
-			"file.txt",
-			"folder1",
+			"includes",
+			"index.php",
 			"languages",
-			"test_folder*"
+			"test*"
 		]
 	],
 	[
@@ -38,22 +38,22 @@
 		"root",
 		false,
 		[
-			"file.txt",
-			"folder1",
+			"includes",
+			"index.php",
 			"languages"
 		]
 	],
 	[
 		[
-			"folder1",
+			"includes",
 			511
 		],
 		"root",
 		"root",
 		false,
 		[
-			"file.txt",
-			"folder1",
+			"includes",
+			"index.php",
 			"languages"
 		]
 	]

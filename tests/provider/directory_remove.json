@@ -1,37 +1,37 @@
 [
 	[
-		"folder1",
+		"includes",
 		"root",
 		"root",
 		[
-			"file.txt",
+			"index.php",
 			"languages"
 		]
 	],
 	[
-		"folder1/folder2",
+		"includes/admin",
 		"root",
-		"root/folder1",
+		"root/includes",
 		[
-			"file1a.txt",
-			"file1b.txt"
+			"autoloader.php",
+			"bootstrap.php"
 		]
 	],
 	[
 		"",
-		"root/folder1",
+		"root/includes",
 		"root",
 		[
-			"file.txt",
+			"index.php",
 			"languages"
 		]
 	],
 	[
-		"file.txt",
+		"index.php",
 		"root",
 		"root",
 		[
-			"folder1",
+			"includes",
 			"languages"
 		]
 	]

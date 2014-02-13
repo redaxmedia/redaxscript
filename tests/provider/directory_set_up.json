@@ -1,21 +1,21 @@
 {
+	"includes":
+	{
+		"admin":
+		{
+			"admin.php": "",
+			"settings.php": ""
+		},
+		"autoloader.php": "",
+		"bootstrap.php": ""
+	},
 	"languages":
 	{
 		".": "",
 		"..": "",
-		"en.php": "english",
-		"de.php": "german",
-		"misc.php": "misc"
+		"en.php": "",
+		"de.php": "",
+		"misc.php": ""
 	},
-	"folder1":
-	{
-		"folder2":
-		{
-			"file2a.txt": "content file2a",
-			"file2b.txt": "content file2b"
-		},
-		"file1a.txt": "content file1a",
-		"file1b.txt": "content file1b"
-	},
-	"file.txt": "content"
+	"index.php": ""
 }

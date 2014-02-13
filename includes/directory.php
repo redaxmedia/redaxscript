@@ -30,12 +30,12 @@ class Redaxscript_Directory
 	private $_directoryArray;
 
 	/**
-	 * ignore
+	 * exclude
 	 *
 	 * @var array
 	 */
 
-	protected $_ignoreArray = array(
+	protected $_exclude = array(
 		'.',
 		'..'
 	);
@@ -54,22 +54,22 @@ class Redaxscript_Directory
 	 * @since 2.0.0
 	 *
 	 * @param string $directory
-	 * @param string|array $ignore
+	 * @param string|array $exclude
 	 */
 
-	public function __construct($directory = null, $ignore = null)
+	public function __construct($directory = null, $exclude = array())
 	{
 		$this->_directory = $directory;
 
-		/* handle and merge ignore */
+		/* handle exclude */
 
-		if (!is_array($ignore))
+		if (!is_array($exclude))
 		{
-			$ignore = array(
-				$ignore
+			$exclude = array(
+				$exclude
 			);
 		}
-		$this->_ignoreArray = array_merge($this->_ignoreArray, $ignore);
+		$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
 
 		/* call init */
 
@@ -130,7 +130,7 @@ class Redaxscript_Directory
 
 		if (is_array(self::$_cache) && array_key_exists($directory, self::$_cache))
 		{
-			$directoryArray = array_values(array_diff(self::$_cache[$directory], $this->_ignoreArray));
+			$directoryArray = self::$_cache[$directory];
 		}
 
 		/* else scan directory */
@@ -142,9 +142,8 @@ class Redaxscript_Directory
 			/* save to static cache */
 
 			self::$_cache[$directory] = $directoryArray;
-
-			$directoryArray = array_values(array_diff($directoryArray, $this->_ignoreArray));
 		}
+		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
 		return $directoryArray;
 	}
 
