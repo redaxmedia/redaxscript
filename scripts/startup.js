@@ -141,6 +141,15 @@
 					buttonSubmit: 'form button.js_submit',
 					buttonOk: 'div a.js_ok span span, form button.js_ok',
 					buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
+				},
+				keyCode:
+				{
+					cancel: 67,
+					dock: 68,
+					log: 76,
+					ok: 79,
+					toggle: 80,
+					submit: 83
 				}
 			},
 			routes:

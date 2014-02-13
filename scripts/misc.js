@@ -81,21 +81,21 @@
 				{
 					/* trigger cancel action */
 
-					if (event.which === 67)
+					if (event.which === options.keyCode.cancel)
 					{
 						buttonCancel.click();
 					}
 
-					/* toggle admin docks */
+					/* toggle admin dock */
 
-					else if (event.which === 68)
+					else if (event.which === options.keyCode.dock)
 					{
 						adminDock.toggle();
 					}
 
 					/* login and logout */
 
-					else if (event.which === 76)
+					else if (event.which === options.keyCode.log)
 					{
 						if (r.constants.LOGGED_IN === r.constants.TOKEN)
 						{
@@ -109,33 +109,23 @@
 
 					/* trigger ok action */
 
-					else if (event.which === 79)
+					else if (event.which === options.keyCode.ok)
 					{
 						buttonOk.click();
 					}
 
 					/* toggle admin panel */
 
-					else if (event.which === 80)
+					else if (event.which === options.keyCode.toggle)
 					{
 						adminPanel.toggle();
 					}
 
 					/* trigger submit action */
 
-					else if (event.which === 83)
+					else if (event.which === options.keyCode.submit)
 					{
 						buttonSubmit.click();
-					}
-
-					/* alert dialog if input incorrect */
-
-					else if (event.which > 65 && event.which < 91 && event.which !== 69 && event.which !== 77 && event.which !== 81)
-					{
-						$.fn.dialog(
-						{
-							message: l.input_incorrect + l.point
-						});
 					}
 				}
 			});
