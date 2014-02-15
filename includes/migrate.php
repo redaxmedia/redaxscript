@@ -29,7 +29,9 @@ function breadcrumb()
 
 function helper_class()
 {
-	echo Redaxscript_Helper::getClass();
+	$registry = Redaxscript_Registry::instance();
+	$helper = new Redaxscript_Helper($registry);
+	echo $helper->getClass();
 }
 
 /**
@@ -44,7 +46,9 @@ function helper_class()
 
 function helper_subset()
 {
-	echo Redaxscript_Helper::getSubset();
+	$registry = Redaxscript_Registry::instance();
+	$helper = new Redaxscript_Helper($registry);
+	echo $helper->getSubset();
 }
 
 /**

@@ -14,37 +14,83 @@
 class Redaxscript_Helper
 {
 	/**
-	 * subsetCyrillic
+	 * registry
+	 *
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	private $_registry;
+
+	/**
+	 * subsetDefault
+	 *
+	 * @var string
+	 */
+
+	protected $_subsetDefault = 'latin';
+
+	/**
+	 * subsetArray
 	 *
 	 * @var array
 	 */
 
-	protected static $_subsetCyrillic = array(
-		'bg',
-		'ru'
+	protected $_subsetArray = array(
+		'cyrillic' => array(
+			'bg',
+			'ru'
+		),
+		'vietnamese' => array(
+			'vi'
+		)
+	);
+	
+	/**
+	 * deviceArray
+	 *
+	 * @var array
+	 */
+
+	protected $_deviceArray = array(
+		'mobile' => 'myMobile',
+		'tablet' => 'myTablet',
+		'desktop' => 'myDesktop'
 	);
 
 	/**
-	 * subsetVietnamese
+	 * directionDefault
+	 *
+	 * @var string
+	 */
+
+	protected $_directionDefault = 'ltr';
+
+	/**
+	 * directionArray
 	 *
 	 * @var array
 	 */
 
-	protected static $_subsetVietnamese = array(
-		'vi'
+	protected $_directionArray = array(
+		'rtl' => array(
+			'ar',
+			'fa',
+			'he'
+		)
 	);
 
 	/**
-	 * rtlDirection
+	 * construct
 	 *
-	 * @var array
+	 * @since 2.1.0
 	 */
 
-	protected static $_rtlDirection = array(
-		'ar',
-		'fa',
-		'he'
-	);
+	public function __construct(Redaxscript_Registry $registry)
+	{
+		$this->_registry = $registry;
+	}
 
 	/**
 	 * getSubset
@@ -52,27 +98,18 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	public static function getSubset()
+	public function getSubset()
 	{
-		/* cyrillic subset */
+		$output = $this->_subsetDefault;
 
-		if (in_array(LANGUAGE, self::$_subsetCyrillic))
+		/* process subset */
+
+		foreach ($this->_subsetArray as $key => $value)
 		{
-			$output = 'cyrillic';
-		}
-
-		/* vietnamese subset */
-
-		else if (in_array(LANGUAGE, self::$_subsetVietnamese))
-		{
-			$output = 'vietnamese';
-		}
-
-		/* latin subset */
-
-		else
-		{
-			$output = 'latin';
+			if (in_array($this->_registry->get('language'), $value))
+			{
+				$output = $key;
+			}
 		}
 		return $output;
 	}
@@ -83,20 +120,20 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	public static function getClass()
+	public function getClass()
 	{
-		/* collect all classes */
+		/* merge classes */
 
 		$classes = array_merge(
-			self::_getBrowserClass(),
-			self::_getDeviceClass(),
-			self::_getDirectionClass(),
-			self::_getContentTypeClass()
+			$this->_getBrowserClass(),
+			$this->_getDeviceClass(),
+			$this->_getContentClass(),
+			$this->_getDirectionClass()
 		);
 
 		/* implode classes */
 
-		$output = implode(' ', array_filter($classes));
+		$output = implode(' ', array_unique($classes));
 		return $output;
 	}
 
@@ -106,19 +143,17 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	protected static function _getBrowserClass()
+	protected function _getBrowserClass()
 	{
-		$output = array();
+		/* browser and version */
 
-		/* browser name and version */
+		$output[] = $this->_registry->get('myBrowser') . $this->_registry->get('myBrowserVersion');
 
-		$output[] = MY_BROWSER . MY_BROWSER_VERSION;
+		/* engine */
 
-		/* engine name */
-
-		if (MY_ENGINE)
+		if ($this->_registry->get('myEngine'))
 		{
-			$output[] = MY_ENGINE;
+			$output[] = $this->_registry->get('myEngine');
 		}
 		return $output;
 	}
@@ -129,38 +164,44 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	protected static function _getDeviceClass()
+	protected function _getDeviceClass()
 	{
-		$output = array();
+		/* process device */
 
-		/* mobile device */
-
-		if (MY_MOBILE)
+		foreach ($this->_deviceArray as $key => $value)
 		{
-			$output[] = 'mobile';
-			if (MY_MOBILE !== 'mobile')
+			if ($this->_registry->get($value))
 			{
-				$output[] = MY_MOBILE;
+				$output[] = $key;
+				if ($this->_registry->get($value) !== $key)
+				{
+					$output[] = $this->_registry->get($value);
+				}
 			}
 		}
+		return $output;
+	}
 
-		/* tablet device */
+	/**
+	 * getContentClass
+	 *
+	 * @since 2.1.0
+	 */
 
-		else if (MY_TABLET)
+	protected function _getContentClass()
+	{
+		/* category */
+
+		if ($this->_registry->get('category'))
 		{
-			$output[] = 'tablet';
-			if (MY_TABLET !== 'tablet')
-			{
-				$output[] = MY_TABLET;
-			}
+			$output[] = 'category';
 		}
 
-		/* desktop device */
+		/* article */
 
-		else if (MY_DESKTOP)
+		else if ($this->_registry->get('article'))
 		{
-			$output[] = 'desktop';
-			$output[] = MY_DESKTOP;
+			$output[] = 'article';
 		}
 		return $output;
 	}
@@ -171,48 +212,18 @@ class Redaxscript_Helper
 	 * @since 2.1.0
 	 */
 
-	protected static function _getDirectionClass()
+	protected function _getDirectionClass()
 	{
-		$output = array();
+		$output[] = $this->_directionDefault;
 
-		/* rtl direction */
+		/* process direction */
 
-		if (in_array(LANGUAGE, self::$_rtlDirection))
+		foreach ($this->_directionArray as $key => $value)
 		{
-			$output[] = 'rtl';
-		}
-
-		/* ltr direction */
-
-		else
-		{
-			$output[] = 'ltr';
-		}
-		return $output;
-	}
-
-	/**
-	 * getContentTypeClass
-	 *
-	 * @since 2.1.0
-	 */
-
-	protected static function _getContentTypeClass()
-	{
-		$output = array();
-
-		/* category */
-
-		if (CATEGORY)
-		{
-			$output[] = 'category';
-		}
-
-		/* article */
-
-		else if (ARTICLE)
-		{
-			$output[] = 'article';
+			if (in_array($this->_registry->get('language'), $value))
+			{
+				$output[] = $key;
+			}
 		}
 		return $output;
 	}
