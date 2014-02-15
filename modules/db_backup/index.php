@@ -17,6 +17,11 @@ function db_backup_render_start()
 	{
 		define('TITLE', l('db_backup_database_backup'));
 
+		/* registry object */
+
+		$registry = Redaxscript_Registry::instance();
+		$registry->set('title', l('db_backup_database_backup'));
+
 		/* config object */
 
 		$config = New Redaxscript_Config();

@@ -43,6 +43,11 @@ include_once('languages/misc.php');
 define('TITLE', l('installation'));
 define('ROBOTS', 'none');
 
+/* registry object */
+
+$registry = Redaxscript_Registry::instance();
+$registry->set('title', l('installation'));
+
 /* call loader else render template */
 
 if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))

@@ -47,6 +47,11 @@ function debug_render_start()
 	{
 		define('CENTER_BREAK', 1);
 		define('TITLE', l('debug_debug'));
+
+		/* registry object */
+
+		$registry = Redaxscript_Registry::instance();
+		$registry->set('title', l('debug_debug'));
 	}
 }
 

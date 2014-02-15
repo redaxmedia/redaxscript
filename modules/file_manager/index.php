@@ -62,6 +62,11 @@ function file_manager_render_start()
 	{
 		define('CENTER_BREAK', 1);
 		define('TITLE', l('file_manager_file_manager'));
+
+		/* registry object */
+
+		$registry = Redaxscript_Registry::instance();
+		$registry->set('title', l('file_manager_file_manager'));
 	}
 }
 

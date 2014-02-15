@@ -294,7 +294,7 @@
 	color: #ccc;
 	content: '˃';
 	font: 1.5em 'icon default';
-	margin-right: 0.375em;
+	margin: 0 0.375em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 	vertical-align: middle;
 }

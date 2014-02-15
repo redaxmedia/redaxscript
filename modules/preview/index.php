@@ -37,6 +37,11 @@ function preview_render_start()
 	{
 		define('CENTER_BREAK', 1);
 		define('TITLE', l('preview_preview'));
+
+		/* registry object */
+
+		$registry = Redaxscript_Registry::instance();
+		$registry->set('title', l('preview_preview'));
 	}
 }
 

@@ -128,7 +128,7 @@ class Redaxscript_Breadcrumb
 
 				/* add divider */
 
-				if ($last != $key)
+				if ($last !== $key)
 				{
 					$output .= '<li class="' . $this->_classes['divider'] . '">' . s('divider') . '</li>';
 				}

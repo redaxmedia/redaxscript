@@ -89,6 +89,11 @@ function qunit_render_start()
 		define('CENTER_BREAK', 1);
 		define('TITLE', l('qunit_title'));
 		define('DESCRIPTION', l('qunit_description'));
+
+		/* registry object */
+
+		$registry = Redaxscript_Registry::instance();
+		$registry->set('title', l('qunit_title'));
 	}
 }
 
