@@ -34,14 +34,14 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * classArray
+	 * classes
 	 *
 	 * array of classes used to style breadcrumb
 	 *
 	 * @var array
 	 */
 
-	protected $_classArray = array(
+	protected $_classes = array(
 		'list' => 'list_breadcrumb',
 		'divider' => 'divider'
 	);
@@ -130,7 +130,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_classArray['divider'] . '">' . s('divider') . '</li>';
+					$output .= '<li class="' . $this->_classes['divider'] . '">' . s('divider') . '</li>';
 				}
 			}
 		}
@@ -139,7 +139,7 @@ class Redaxscript_Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="' . $this->_classArray['list'] . '">' . $output . '</ul>';
+			$output = '<ul class="' . $this->_classes['list'] . '">' . $output . '</ul>';
 		}
 		$output .= hook(__FUNCTION__ . '_end');
 		return $output;
