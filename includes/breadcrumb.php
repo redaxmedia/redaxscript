@@ -26,7 +26,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * breadcrumbArray
 	 *
-	 * array to store all nodes of the breadcrumb trail
+	 * array to store all nodes of the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -85,7 +85,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * render
 	 *
-	 * render the trail as an unordered list
+	 * render breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
@@ -209,7 +209,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * buildAdmin
 	 *
-	 * build admin breadcrumb trail
+	 * build admin breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
@@ -254,7 +254,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * buildContent
 	 *
-	 * build content breadcrumb trail
+	 * build content breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
