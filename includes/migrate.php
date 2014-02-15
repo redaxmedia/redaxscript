@@ -18,6 +18,36 @@ function breadcrumb()
 }
 
 /**
+ * helper class
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Kim Kha Nguyen
+ */
+
+function helper_class()
+{
+	echo Redaxscript_Helper::getClass();
+}
+
+/**
+ * helper subset
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Kim Kha Nguyen
+ */
+
+function helper_subset()
+{
+	echo Redaxscript_Helper::getSubset();
+}
+
+/**
  * migrate constants
  *
  * @since 2.1.0

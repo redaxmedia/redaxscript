@@ -14,7 +14,6 @@ include_once('includes/detection_template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
-include_once('includes/helper.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
