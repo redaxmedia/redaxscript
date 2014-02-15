@@ -46,7 +46,7 @@ class Redaxscript_Helper
 			'vi'
 		)
 	);
-	
+
 	/**
 	 * deviceArray
 	 *
