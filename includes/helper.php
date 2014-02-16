@@ -85,6 +85,8 @@ class Redaxscript_Helper
 	 * construct
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @param object $registry
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -96,6 +98,8 @@ class Redaxscript_Helper
 	 * getSubset
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return string
 	 */
 
 	public function getSubset()
@@ -118,6 +122,8 @@ class Redaxscript_Helper
 	 * getClass
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return string
 	 */
 
 	public function getClass()
@@ -141,6 +147,8 @@ class Redaxscript_Helper
 	 * getBrowserClass
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return array
 	 */
 
 	protected function _getBrowserClass()
@@ -164,6 +172,8 @@ class Redaxscript_Helper
 	 * getDeviceClass
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return array
 	 */
 
 	protected function _getDeviceClass()
@@ -190,6 +200,8 @@ class Redaxscript_Helper
 	 * getContentClass
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return array
 	 */
 
 	protected function _getContentClass()
@@ -216,6 +228,8 @@ class Redaxscript_Helper
 	 * getDirectionClass
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @return array
 	 */
 
 	protected function _getDirectionClass()

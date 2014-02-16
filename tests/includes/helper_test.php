@@ -68,6 +68,8 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
+	 * @param object $registry
+	 * @param string $expect
 	 * @dataProvider providerGetSubset
 	 */
 
@@ -92,6 +94,8 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
+	 * @param object $registry
+	 * @param string $expect
 	 * @dataProvider providerGetClass
 	 */
 

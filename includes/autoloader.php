@@ -40,6 +40,8 @@ class Redaxscript_Autoloader
 	 * init
 	 *
 	 * @since 2.1.0
+	 * 
+	 * @param string $directory
 	 */
 
 	public static function init($directory = null)

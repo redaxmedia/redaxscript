@@ -85,14 +85,17 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
+	 * @param string $parameter
+	 * @param string|array $exclude
+	 * @param array $expect
 	 * @dataProvider providerGet
 	 */
 
-	public function testGet($parameter = null, $ignore = null, $expect = array())
+	public function testGet($parameter = null, $exclude = null, $expect = array())
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url('root/languages'), $ignore);
+		$directory = New Redaxscript_Directory(vfsStream::url('root/languages'), $exclude);
 
 		/* result */
 
@@ -108,6 +111,11 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
+	 * @param array $parameter
+	 * @param string $url
+	 * @param string $scandir
+	 * @param array $expectOne
+	 * @param array $expectTwo
 	 * @dataProvider providerCreate
 	 */
 
@@ -133,6 +141,10 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
+	 * @param string $parameter
+	 * @param string $url
+	 * @param string $scandir
+	 * @param array $expect
 	 * @dataProvider providerRemove
 	 */
 

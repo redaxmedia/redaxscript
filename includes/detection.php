@@ -49,6 +49,7 @@ class Redaxscript_Detection
 	 *
 	 * @since 2.0.0
 	 *
+	 * @param string $parameter
 	 * @return string
 	 */
 
