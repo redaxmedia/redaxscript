@@ -1,35 +1,43 @@
 [
 	[
-		"includes",
-		"root",
-		"root",
+		[
+			"includes",
+			"root",
+			"root"
+		],
 		[
 			"index.php",
 			"languages"
 		]
 	],
 	[
-		"includes/admin",
-		"root",
-		"root/includes",
+		[
+			"includes/admin",
+			"root",
+			"root/includes"
+		],
 		[
 			"autoloader.php",
 			"bootstrap.php"
 		]
 	],
 	[
-		"",
-		"root/includes",
-		"root",
+		[
+			"",
+			"root/includes",
+			"root"
+		],
 		[
 			"index.php",
 			"languages"
 		]
 	],
 	[
-		"index.php",
-		"root",
-		"root",
+		[
+			"index.php",
+			"root",
+			"root"
+		],
 		[
 			"includes",
 			"languages"

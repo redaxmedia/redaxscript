@@ -85,21 +85,21 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $parameter
+	 * @param array $path
 	 * @param string|array $exclude
 	 * @param array $expect
 	 * @dataProvider providerGet
 	 */
 
-	public function testGet($parameter = null, $exclude = null, $expect = array())
+	public function testGet($path = array(), $exclude = null, $expect = array())
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url('root/languages'), $exclude);
+		$directory = New Redaxscript_Directory(vfsStream::url($path[1]), $exclude);
 
 		/* result */
 
-		$result = $directory->get($parameter);
+		$result = $directory->get($path[0]);
 
 		/* compare */
 
@@ -111,24 +111,22 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $parameter
-	 * @param string $url
-	 * @param string $scandir
+	 * @param array $path
 	 * @param array $expectOne
-	 * @param array $expectTwo
+	 * @param boolean $expectTwo
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($parameter = array(), $url = null, $scandir = null, $expectOne = array(), $expectTwo = array())
+	public function testCreate($path = array(), $expectOne = array(), $expectTwo = null)
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($url));
+		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
 
 		/* result */
 
-		$resultOne = $directory->create($parameter[0], $parameter[1]);
-		$resultTwo = scandir(vfsStream::url($scandir));
+		$resultTwo = $directory->create($path[0], 511);
+		$resultOne = scandir(vfsStream::url($path[2]));
 
 		/* compare */
 
@@ -141,23 +139,21 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $parameter
-	 * @param string $url
-	 * @param string $scandir
+	 * @param array $path
 	 * @param array $expect
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($parameter = null, $url = null, $scandir = null, $expect = array())
+	public function testRemove($path = array(), $expect = array())
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($url));
+		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
 
 		/* result */
 
-		$directory->remove($parameter);
-		$result = scandir(vfsStream::url($scandir));
+		$directory->remove($path[0]);
+		$result = scandir(vfsStream::url($path[2]));
 
 		/* compare */
 

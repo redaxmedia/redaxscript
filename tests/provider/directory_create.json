@@ -2,59 +2,55 @@
 	[
 		[
 			"test",
-			511
+			"root",
+			"root"
 		],
-		"root",
-		"root",
-		true,
 		[
 			"includes",
 			"index.php",
 			"languages",
 			"test"
-		]
+		],
+		true
 	],
 	[
 		[
 			"test*",
-			511
+			"root",
+			"root"
 		],
-		"root",
-		"root",
-		true,
 		[
 			"includes",
 			"index.php",
 			"languages",
 			"test*"
-		]
+		],
+		true
 	],
 	[
 		[
-			"test/folder",
-			511
+			"test/test",
+			"root",
+			"root"
 		],
-		"root",
-		"root",
-		false,
 		[
 			"includes",
 			"index.php",
 			"languages"
-		]
+		],
+		false
 	],
 	[
 		[
 			"includes",
-			511
+			"root",
+			"root"
 		],
-		"root",
-		"root",
-		false,
 		[
 			"includes",
 			"index.php",
 			"languages"
-		]
+		],
+		false
 	]
 ]

@@ -1,6 +1,9 @@
 [
 	[
-		"",
+		[
+			"",
+			"root/languages"
+		],
 		"",
 		[
 			"de.php",
@@ -9,7 +12,10 @@
 		]
 	 ],
 	 [
-		"",
+		[
+			"",
+			"root/languages"
+		],
 		"misc.php",
 		[
 			"de.php",
@@ -17,7 +23,10 @@
 		]
 	 ],
 	 [
-		"",
+		[
+			"",
+			"root/languages"
+		],
 		"de.php",
 		[
 			"en.php",
@@ -25,8 +34,16 @@
 		]
 	 ],
 	 [
-		0,
-		"",
-		"de.php"
+		[
+			"",
+			"root/languages"
+		],
+		[
+			"en.php",
+			"de.php"
+		],
+		[
+			"misc.php"
+		]
 	 ]
 ]
