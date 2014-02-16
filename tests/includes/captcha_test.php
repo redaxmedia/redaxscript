@@ -26,14 +26,14 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerTestCaptcha
+	 * providerCaptcha
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTestCaptcha()
+	public function providerCaptcha()
 	{
 		$contents = file_get_contents('tests/provider/captcha.json');
 		$output = json_decode($contents, true);
@@ -45,7 +45,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerTestCaptcha
+	 * @dataProvider providerCaptcha
 	 */
 
 	public function testCaptcha($expectTask = null, $expectRaw = null, $expectHash = null)

@@ -145,6 +145,8 @@ class Redaxscript_Helper
 
 	protected function _getBrowserClass()
 	{
+		$output = array();
+
 		/* browser and version */
 
 		$output[] = $this->_registry->get('myBrowser') . $this->_registry->get('myBrowserVersion');
@@ -166,6 +168,8 @@ class Redaxscript_Helper
 
 	protected function _getDeviceClass()
 	{
+		$output = array();
+
 		/* process device */
 
 		foreach ($this->_deviceArray as $key => $value)
@@ -190,6 +194,8 @@ class Redaxscript_Helper
 
 	protected function _getContentClass()
 	{
+		$output = array();
+
 		/* category */
 
 		if ($this->_registry->get('category'))
@@ -214,7 +220,7 @@ class Redaxscript_Helper
 
 	protected function _getDirectionClass()
 	{
-		$output[] = $this->_directionDefault;
+		$output[0] = $this->_directionDefault;
 
 		/* process direction */
 
@@ -222,7 +228,7 @@ class Redaxscript_Helper
 		{
 			if (in_array($this->_registry->get('language'), $value))
 			{
-				$output[] = $key;
+				$output[0] = $key;
 			}
 		}
 		return $output;

@@ -36,14 +36,14 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerTestGet
+	 * providerGet
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTestGet()
+	public function providerGet()
 	{
 		$contents = file_get_contents('tests/provider/directory_get.json');
 		$output = json_decode($contents, true);
@@ -51,14 +51,14 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerTestCreate
+	 * providerCreate
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTestCreate()
+	public function providerCreate()
 	{
 		$contents = file_get_contents('tests/provider/directory_create.json');
 		$output = json_decode($contents, true);
@@ -66,14 +66,14 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerTestRemove
+	 * providerRemove
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTestRemove()
+	public function providerRemove()
 	{
 		$contents = file_get_contents('tests/provider/directory_remove.json');
 		$output = json_decode($contents, true);
@@ -85,7 +85,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerTestGet
+	 * @dataProvider providerGet
 	 */
 
 	public function testGet($parameter = null, $ignore = null, $expect = array())
@@ -108,7 +108,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerTestCreate
+	 * @dataProvider providerCreate
 	 */
 
 	public function testCreate($parameter = array(), $url = null, $scandir = null, $expectOne = array(), $expectTwo = array())
@@ -133,7 +133,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerTestRemove
+	 * @dataProvider providerRemove
 	 */
 
 	public function testRemove($parameter = null, $url = null, $scandir = null, $expect = array())

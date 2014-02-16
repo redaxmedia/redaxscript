@@ -1,18 +1,16 @@
 <?php
-include_once('tests/stubs.php');
 
 /**
- * Redaxscript Breadcrumb Test
+ * Redaxscript Helper Test
  *
  * @since 2.1.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
- * @author Gary Aylward
  */
 
-class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
+class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * registry
@@ -36,53 +34,53 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerGet
+	 * providerGetSubset
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerGet()
+	public function providerGetSubset()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_get.json');
+		$contents = file_get_contents('tests/provider/helper_get_subset.json');
 		$output = json_decode($contents, true);
 		return $output;
 	}
 
 	/**
-	 * providerRender
+	 * providerGetClass
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerGetClass()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_render.json');
+		$contents = file_get_contents('tests/provider/helper_get_class.json');
 		$output = json_decode($contents, true);
 		return $output;
 	}
 
 	/**
-	 * testGet
+	 * testGetSubset
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerGet
+	 * @dataProvider providerGetSubset
 	 */
 
-	public function testGet($registry = null, $expect = array())
+	public function testGetSubset($registry = null, $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
+		$helper = new Redaxscript_Helper($this->_registry);
 
 		/* result */
 
-		$result = $breadcrumb->get();
+		$result = $helper->getSubset();
 
 		/* compare */
 
@@ -90,23 +88,23 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testRender
+	 * testGetClass
 	 *
 	 * @since 2.1.0
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerGetClass
 	 */
 
-	public function testRender($registry = null, $expect = null)
+	public function testGetClass($registry = null, $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
+		$helper = new Redaxscript_Helper($this->_registry);
 
 		/* result */
 
-		$result = $breadcrumb->render();
+		$result = $helper->getClass();
 
 		/* compare */
 
