@@ -1,0 +1,44 @@
+[
+	[
+		{
+			"lastTable": "categories",
+			"fullRoute": "",
+			"firstParameter": "hello"
+		},
+		"Hello<break> world",
+		"hello/world",
+		"Hello<a>read_more</a>"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"fullRoute": "hello/world",
+			"firstParameter": "hello"
+		},
+		"Hello<break> world",
+		"hello/world",
+		"Hello world"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"fullRoute": "hello/world",
+			"firstParameter": "login"
+		},
+		"Hello<break> world",
+		"hello/world",
+		"Hello<a>read_more</a>"
+	],
+	[
+		"",
+		"Hello <code>world</code>",
+		"",
+		"Hello <code class=\"box_code\">world</code>"
+	],
+	[
+		"",
+		"Hello <function>{\"print_r\":{\"input\":\"world\"}}<function>",
+		"",
+		"Hello world1"
+	]
+]

@@ -13,6 +13,16 @@
 class Redaxscript_Parser
 {
 	/**
+	 * registry
+	 *
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	private $_registry;
+
+	/**
 	 * output
 	 *
 	 * @var string
@@ -103,8 +113,9 @@ class Redaxscript_Parser
 	 * @param string $route
 	 */
 
-	public function __construct($input = null, $route = null)
+	public function __construct(Redaxscript_Registry $registry, $input = null, $route = null)
 	{
+		$this->_registry = $registry;
 		$this->_output = $input;
 		$this->_route = $route;
 
@@ -162,7 +173,7 @@ class Redaxscript_Parser
 	protected function _parseBreak($input = null)
 	{
 		$output = str_replace('<break>', '', $input);
-		if (LAST_TABLE === 'categories' || FULL_ROUTE === '' || check_alias(FIRST_PARAMETER, 1) === 1)
+		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || check_alias($this->_registry->get('firstParameter'), 1) === 1)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);
 

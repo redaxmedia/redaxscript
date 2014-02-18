@@ -169,7 +169,7 @@ class Redaxscript_Breadcrumb
 
 		/* else if home */
 
-		else if ($this->_registry->get('fullRoute') === '')
+		else if (!$this->_registry->get('fullRoute'))
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('home');
 		}
@@ -195,7 +195,7 @@ class Redaxscript_Breadcrumb
 
 		/* handle error */
 
-		else if ($this->_registry->get('lastId') === '')
+		else if (!$this->_registry->get('lastId'))
 		{
 			self::$_breadcrumbArray[$key]['title'] = l('error');
 		}

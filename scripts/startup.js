@@ -100,7 +100,7 @@
 		enableIndent:
 		{
 			startup: true,
-			selector: 'form textarea.js_editor, form textarea.js_enable_indent',
+			selector: 'form textarea.js_editor_textarea, form textarea.js_enable_indent',
 			options:
 			{
 				eol: '\n',

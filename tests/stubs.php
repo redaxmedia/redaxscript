@@ -11,7 +11,21 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 
 function check_alias($input = '', $mode = '')
 {
-	if ($input == 'login')
+	$aliasDefault = array(
+		'admin',
+		'loader',
+		'login',
+		'logout',
+		'password_reset',
+		'scripts',
+		'styles',
+		'registration',
+		'reminder'
+	);
+
+	/* check if default */
+
+	if (in_array($input, $aliasDefault))
 	{
 		return 1;
 	}

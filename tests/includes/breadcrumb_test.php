@@ -70,12 +70,12 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param object $registry
+	 * @param array $registry
 	 * @param array $expect
 	 * @dataProvider providerGet
 	 */
 
-	public function testGet($registry = null, $expect = array())
+	public function testGet($registry = array(), $expect = array())
 	{
 		/* setup */
 
@@ -96,12 +96,12 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param object $registry
+	 * @param array $registry
 	 * @param string $expect
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registry = null, $expect = null)
+	public function testRender($registry = array(), $expect = null)
 	{
 		/* setup */
 

@@ -92,9 +92,10 @@ function contents()
 					$route = build_route('articles', $id);
 				}
 
-				/* parser object */
+				/* registry and parser object */
 
-				$parser = new Redaxscript_Parser($text, $route);
+				$registry = Redaxscript_Registry::instance();
+				$parser = new Redaxscript_Parser($registry, $text, $route);
 
 				/* collect headline output */
 
@@ -255,9 +256,10 @@ function extras($filter = '')
 
 				if ($category == CATEGORY || $article == ARTICLE || ($category == 0 && $article == 0))
 				{
-					/* parser object */
+					/* registry and parser object */
 
-					$parser = new Redaxscript_Parser($text, $route);
+					$registry = Redaxscript_Registry::instance();
+					$parser = new Redaxscript_Parser($registry, $text, $route);
 
 					/* collect headline output */
 
