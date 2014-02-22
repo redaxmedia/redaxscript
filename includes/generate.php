@@ -42,10 +42,6 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 		{
 			case 'external':
 				$value = clean_url($value);
-				if (check_protocol($value) == '')
-				{
-					$value_string .= '//';
-				}
 				break;
 			case 'internal':
 				$value_string .= REWRITE_ROUTE;

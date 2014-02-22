@@ -130,33 +130,6 @@ function check_url($input = '')
 }
 
 /**
- * check protocol
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Check
- * @author Henry Ruhs
- *
- * @param string $input
- * @return integer
- */
-
-function check_protocol($input = '')
-{
-	if (substr($input, 0, 7) == 'http://')
-	{
-		$output = 'http';
-	}
-	else if (substr($input, 0, 8) == 'https://')
-	{
-		$output = 'https';
-	}
-	return $output;
-}
-
-/**
  * check dns
  *
  * @since 2.0.0

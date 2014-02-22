@@ -53,7 +53,7 @@ function call_home_admin_notification_start()
 {
 	/* get contents */
 
-	$url = 'http://service.' . l('redaxscript_website') . '/version/' . clean_alias(l('redaxscript_version'));
+	$url = 'http://service.redaxscript.com/version/' . clean_alias(l('redaxscript_version'));
 	$contents = file_get_contents($url);
 
 	/* collect output */
@@ -78,7 +78,7 @@ function call_home_admin_notification_start()
 
 function call_home_admin_notification_end()
 {
-	$url = 'http://service.' . l('redaxscript_website') . '/news';
+	$url = 'http://service.redaxscript.com/news';
 	$contents = file_get_contents($url);
 
 	/* collect output */

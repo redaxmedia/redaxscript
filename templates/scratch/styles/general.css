@@ -2,11 +2,10 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. header and footer
- * 3. grid elements
- * 4. wrapper
+ * 2. grid elements
+ * 3. wrapper
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -19,15 +18,7 @@ body
 	background: #fff;
 }
 
-/* @section 2. header and footer */
-
-.footer, .header
-{
-	margin-bottom: 2em;
-	margin-top: 2em;
-}
-
-/* @section 3. grid elements */
+/* @section 2. grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
@@ -41,7 +32,7 @@ body
 	margin-top: 1rem;
 }
 
-/* @section 4. wrapper */
+/* @section 3. wrapper */
 
 .wrapper
 {

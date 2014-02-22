@@ -165,7 +165,7 @@ function get_file()
 /**
  * get root
  *
- * @since 1.2.1
+ * @since 2.1.0
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -177,7 +177,8 @@ function get_file()
 
 function get_root()
 {
-	$host = '//' . $_SERVER['HTTP_HOST'];
+	$protocol = $_SERVER['https'] ? 'https' : 'http';
+	$host = $protocol . '://' . $_SERVER['HTTP_HOST'];
 	$directory = dirname($_SERVER['SCRIPT_NAME']);
 	$output = $directory == '/' || $directory == '\\' ? $host : $host . $directory;
 	return $output;

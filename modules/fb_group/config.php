@@ -3,7 +3,7 @@
 /* config fb group */
 
 define(FB_GROUP_API_URL, 'https://graph.facebook.com');
-define(FB_GROUP_FACEBOOK_URL, '//facebook.com');
+define(FB_GROUP_FACEBOOK_URL, 'https://facebook.com');
 define(FB_GROUP_IMG_URL, '//graph.facebook.com');
 define(FB_GROUP_GROUP_URL, '');
 define(FB_GROUP_GROUP_ID, '');
