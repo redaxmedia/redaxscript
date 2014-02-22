@@ -65,7 +65,7 @@
 
 /* @section 3. several admin titles */
 
-.js .set_accordion_admin .title_accordion_admin.title_active, .title_dialog_admin
+.js .title_accordion_admin.title_active, .title_dialog_admin
 {
 	background: url('templates/admin/images/carbon.png') #222;
 	border: 1px solid #222;
