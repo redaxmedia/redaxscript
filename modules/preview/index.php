@@ -71,6 +71,8 @@ function preview_center_start()
 		include_once('modules/preview/partials/icon.phtml');
 		include_once('modules/preview/partials/media.phtml');
 		include_once('modules/preview/partials/interface.phtml');
+		include_once('modules/preview/partials/accordion.phtml');
+		include_once('modules/preview/partials/tab.phtml');
 		include_once('modules/preview/partials/table.phtml');
 		include_once('modules/preview/partials/dialog.phtml');
 		include_once('modules/preview/partials/note.phtml');

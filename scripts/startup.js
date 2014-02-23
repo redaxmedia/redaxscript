@@ -30,12 +30,11 @@
 		accordion:
 		{
 			startup: true,
-			selector: 'div.js_accordion h3.js_title_accordion, form.js_accordion legend.js_title_accordion',
+			selector: 'div.js_accordion, form.js_accordion',
 			options:
 			{
 				element:
 				{
-					accordion: 'div.js_accordion, form.js_accordion',
 					accordionSet: 'div.js_set_accordion, fieldset.js_set_accordion',
 					accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion',
 					accordionBox: 'div.js_box_accordion, ul.js_box_accordion'
@@ -173,13 +172,13 @@
 		tab:
 		{
 			startup: true,
-			selector: 'ul.js_list_tab li',
+			selector: 'div.js_tab, form.js_tab',
 			options:
 			{
 				element:
 				{
 					tabBox: 'div.js_box_tab',
-					tabList: 'ul.js_list_tab',
+					tabItem: 'ul.js_list_tab li',
 					tabSet: 'div.js_set_tab, fieldset.js_set_tab'
 				}
 			}

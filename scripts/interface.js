@@ -31,8 +31,7 @@
 
 		return this.each(function ()
 		{
-			var accordionTrigger = $(this),
-				accordion = accordionTrigger.closest(options.element.accordion),
+			var accordion = $(this),
 				accordionSet = accordion.find(options.element.accordionSet),
 				accordionTitle = accordion.find(options.element.accordionTitle),
 				accordionBox = accordion.find(options.element.accordionBox),
@@ -44,7 +43,7 @@
 
 			/* listen for click */
 
-			accordionTrigger.on('click', function ()
+			accordionTitle.on('click', function ()
 			{
 				var accordionTitleActive = $(this),
 					accordionSetActive = accordionTitleActive.closest(accordionSet),
@@ -148,70 +147,29 @@
 
 		return this.each(function ()
 		{
-			var tabTrigger = $(this),
-				tabHash = window.location.hash,
-				tabList = $(options.element.tabList),
-				tabBox = $(options.element.tabBox),
-				tabSet = tabBox.find(options.element.tabSet),
-				tabForm = tabBox.closest('form');
+			var tab = $(this),
+				tabItem = tab.find(options.element.tabItem),
+				tabBox = tab.find(options.element.tabBox),
+				tabSet = tab.find(options.element.tabSet);
 
-			/* show first tab set */
+			/* show active set */
 
 			tabBox.height('auto');
-			tabSet.filter(':first-child').addClass('js_set_active set_active');
+			tabSet.filter('.js_set_active').show();
 
 			/* listen for click */
 
-			tabTrigger.on('click', function (event)
+			tabItem.on('click', function (event)
 			{
-				var tabItem = $(this),
-					tabList = tabItem.closest(options.element.tabList),
-					tabListChildren = tabList.children(),
-					tabNameRelated = tabItem.children('a').attr('href').split('#')[1],
-					tabSetRelated = $('#' + tabNameRelated),
-					tabSetSiblings = tabSetRelated.siblings(options.element.tabSet);
+				var tabItemActive = $(this),
+					tabNameActive = tabItemActive.children('a').attr('href').split('#')[1],
+					tabSetActive = tabSet.filter('#' + tabNameActive);
 
-				if (tabNameRelated)
-				{
-					/* remove active classes */
+				/* toggle active class */
 
-					tabListChildren.removeClass('js_item_active item_active');
-					tabSetSiblings.removeClass('js_set_active set_active');
-
-					/* add active classes */
-
-					tabItem.addClass('js_item_active item_active');
-					tabSetRelated.addClass('js_set_active set_active');
-				}
+				tabItem.removeClass('js_item_active item_active').filter(tabItemActive).addClass('js_item_active item_active');
+				tabSet.removeClass('js_set_active set_active').filter(tabSetActive).addClass('js_set_active set_active');
 				event.preventDefault();
-			});
-
-			/* click tab depending on location hash */
-
-			if (typeof tabHash === 'string')
-			{
-				tabList.find('a[href*="' + tabHash + '"]').click();
-			}
-
-			/* prevent tab for last children */
-
-			tabSet.children().children(':last-child').on('keydown', function (event)
-			{
-				if (event.which === 9)
-				{
-					event.preventDefault();
-				}
-			});
-
-			/* show related tab on error */
-
-			tabForm.on('error', function ()
-			{
-				var fieldError = tabSet.find('.js_note_error').first(),
-					tabNameError = fieldError.closest(options.element.tabSet).attr('id'),
-					tabLinkError = tabList.find('a[href*="' + tabNameError + '"]');
-
-				tabLinkError.click();
 			});
 		});
 	};

@@ -1,0 +1,61 @@
+<h2 class="title_content">Tab</h2>
+
+
+<h3 class="title_content_sub">.tab + tab_default</h3>
+
+<div class="js_tab tab tab_default">
+	<ul class="js_list_tab list_tab list_tab_default">
+		<li class="js_item_active item_first item_active">
+			<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-1" title="<?php echo l('1'); ?>"><?php echo l('1'); ?></a>
+		</li>
+		<li class="item_second">
+			<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-2" title="<?php echo l('1'); ?>"><?php echo l('2'); ?></a>
+		</li>
+		<li class="item_last">
+			<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-3" title="<?php echo l('1'); ?>"><?php echo l('3'); ?></a>
+		</li>
+	</ul>
+
+	<div class="js_box_tab box_tab box_tab_default">
+		<div id="tab-1" class="js_set_tab js_set_active set_tab set_tab_default set_active">
+			<?php echo l('1'); ?>
+		</div>
+		<div id="tab-2" class="js_set_tab set_tab set_tab_default">
+			<?php echo l('2'); ?>
+		</div>
+		<div id="tab-3" class="js_set_tab set_tab set_tab_default">
+			<?php echo l('3'); ?>
+		</div>
+	</div>
+</div>
+
+
+<?php if (LOGGED_IN == TOKEN): ?>
+	<h3 class="title_content_sub">.tab + .tab_admin > .list_tab_admin ~ .box_tab_admin</h3>
+
+	<div class="js_tab tab tab_admin">
+		<ul class="js_list_tab list_tab list_tab_admin">
+			<li class="item_first">
+				<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-4" title="<?php echo l('4'); ?>"><?php echo l('4'); ?></a>
+			</li>
+			<li class="js_item_active item_second item_active">
+				<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-5" title="<?php echo l('5'); ?>"><?php echo l('5'); ?></a>
+			</li>
+			<li class="item_last">
+				<a href="<?php echo REWRITE_ROUTE . FULL_ROUTE; ?>#tab-6" title="<?php echo l('6'); ?>"><?php echo l('6'); ?></a>
+			</li>
+		</ul>
+
+		<div class="js_box_tab box_tab box_tab_admin">
+			<div id="tab-4" class="js_set_tab set_tab set_tab_admin">
+				<?php echo l('4'); ?>
+			</div>
+			<div id="tab-5" class="js_set_tab js_set_active set_tab set_tab_admin set_active">
+				<?php echo l('5'); ?>
+			</div>
+			<div id="tab-6" class="js_set_tab set_tab set_tab_admin">
+				<?php echo l('6'); ?>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>
