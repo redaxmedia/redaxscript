@@ -25,7 +25,7 @@
 
 /* @section 1.1 head and foot */
 
-.table_default tfoot tr, .table_default thead tr
+.table_default thead tr, .table_default tfoot tr
 {
 	background: #e2e2e2;
 	background: -webkit-linear-gradient(#fff, #e2e2e2);
