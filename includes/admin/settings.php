@@ -15,7 +15,7 @@ function admin_settings_form()
 {
 	hook(__FUNCTION__ . '_start');
 	$output = '<h2 class="title_content">' . l('settings') . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_validate_form js_accordion form_admin accordion accordion_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
+	$output .= form_element('form', 'form_admin', 'js_validate_form js_accordion form_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
 

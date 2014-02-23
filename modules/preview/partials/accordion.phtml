@@ -1,9 +1,9 @@
 <h2 class="title_content">Accordion</h2>
 
 
-<h3 class="title_content_sub">.accordion + .accordion_default (div > div > h3 + div)</h3>
+<h3 class="title_content_sub">.js_accordion (div > div > h3 + div)</h3>
 
-<div class="js_accordion accordion accordion_default">
+<div class="js_accordion">
 	<div class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">
 		<h3 class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">
 			<?php echo l('1'); ?>
@@ -31,10 +31,10 @@
 </div>
 
 
-<h3 class="title_content_sub">.accordion + .accordion_default (form > fieldset > legend + ul)</h3>
+<h3 class="title_content_sub">.js_accordion (form > fieldset > legend + ul)</h3>
 
-<form class="js_accordion accordion accordion_default">
-	<fieldset class="js_set_accordion set_accordion set_accordion_default set_accordion_last">
+<form class="js_accordion">
+	<fieldset class="js_set_accordion set_accordion set_accordion_default">
 		<legend class="js_title_accordion title_accordion title_accordion_default">
 			<?php echo l('1'); ?>
 		</legend>
@@ -68,9 +68,9 @@
 
 
 <?php if (LOGGED_IN == TOKEN): ?>
-	<h3 class="title_content_sub">.accordion + .accordion_admin (div > div > h3 + div)</h3>
+	<h3 class="title_content_sub">.js_accordion (div > div > h3 + div)</h3>
 
-	<div class="js_accordion accordion accordion_admin">
+	<div class="js_accordion">
 		<div class="js_set_accordion js_set_active set_accordion set_accordion_admin set_active">
 			<h3 class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">
 				<?php echo l('1'); ?>
@@ -98,10 +98,10 @@
 	</div>
 
 
-	<h3 class="title_content_sub">.accordion + .accordion_admin (form > fieldset > legend + ul)</h3>
+	<h3 class="title_content_sub">.js_accordion (form > fieldset > legend + ul)</h3>
 
-	<form class="js_accordion accordion accordion_admin">
-		<fieldset class="js_set_accordion set_accordion set_accordion_admin set_accordion_last">
+	<form class="js_accordion">
+		<fieldset class="js_set_accordion set_accordion set_accordion_admin">
 			<legend class="js_title_accordion title_accordion title_accordion_admin">
 				<?php echo l('1'); ?>
 			</legend>

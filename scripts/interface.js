@@ -34,8 +34,7 @@
 			var accordion = $(this),
 				accordionSet = accordion.find(options.element.accordionSet),
 				accordionTitle = accordion.find(options.element.accordionTitle),
-				accordionBox = accordion.find(options.element.accordionBox),
-				accordionChildrenLast = accordionBox.children(':last-child');
+				accordionBox = accordion.find(options.element.accordionBox);
 
 			/* show active box */
 
@@ -60,21 +59,7 @@
 				accordionBoxActive.slideDown(options.duration).addClass('js_box_active box_active');
 			});
 
-			/* tabulator on last children */
-
-			accordionChildrenLast.on('keydown', function (event)
-			{
-				if (event.which === 9)
-				{
-					var childrenLast = $(this),
-						accordionSetNext = childrenLast.closest(accordionSet).next(),
-						accordionTitleNext = accordionSetNext.find(accordionTitle);
-
-					accordionTitleNext.click();
-				}
-			});
-
-			/* show error related set */
+			/* show error */
 
 			accordion.on('error', function ()
 			{
@@ -170,6 +155,16 @@
 				tabItem.removeClass('js_item_active item_active').filter(tabItemActive).addClass('js_item_active item_active');
 				tabSet.removeClass('js_set_active set_active').filter(tabSetActive).addClass('js_set_active set_active');
 				event.preventDefault();
+			});
+
+			/* show error */
+
+			tab.on('error', function ()
+			{
+				var tabNameError = tabSet.has('.js_note_error').first().attr('id'),
+					tabItemError = tabItem.find('a[href*="' + tabNameError + '"]');
+
+				tabItemError.click();
 			});
 		});
 	};

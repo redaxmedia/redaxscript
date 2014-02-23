@@ -277,7 +277,7 @@ function install_form()
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
-	$output .= form_element('form', 'form_install', 'js_validate_form js_accordion form_default accordion accordion_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
+	$output .= form_element('form', 'form_install', 'js_validate_form js_accordion form_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
 
 	/* collect database set */
 

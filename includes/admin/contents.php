@@ -484,11 +484,12 @@ function admin_contents_form()
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
-	/* collect tab output */
+	/* collect tab list output */
 
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_active item_first">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
 	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
 	{
@@ -498,12 +499,11 @@ function admin_contents_form()
 
 	/* collect tab box output */
 
-	$output .= form_element('form', 'form_admin', 'js_validate_form form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect content set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab set_tab set_tab_admin', '', '', l($wording_single)) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'js_set_tab js_set_active set_tab set_tab_admin set_active', '', '', l($wording_single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= '<li>' . form_element('text', 'author', 'field_text_admin field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
