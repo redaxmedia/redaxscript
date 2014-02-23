@@ -45,7 +45,7 @@ textarea
 
 .button_default.button_large
 {
-	font-size: 1.25em;
+	font-size: 1.125em;
 }
 
 /* @section 2.1 hover effect */
@@ -128,7 +128,7 @@ textarea
 {
 	background: #eee;
 	border-color: #ddd;
-	color: #bbb;
+	color: #999;
 	cursor: default;
 }
 
