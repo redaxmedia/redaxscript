@@ -17,9 +17,8 @@
 {
 	background: #fff;
 	border: 1px solid #ddd;
-	border-color: rgba(0, 0, 0, 0.1);
 	border-radius: 0.25em;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* @section 2. dialog overlay default */
@@ -27,7 +26,7 @@
 .dialog_overlay_default
 {
 	background: #000;
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(0, 0, 0, 0.4);
 }
 
 /* @section 3. fadein effect */

@@ -82,8 +82,7 @@ form .note_warning.field_note option
 
 .note_error.box_note, form .note_error.field_note, .note_info.box_note, form .note_info.field_note, .note_success.box_note, form .note_success.field_note, .note_warning.box_note, form .note_warning.field_note
 {
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.2);
 	color: #fff;
-	text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
 }
