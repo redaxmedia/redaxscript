@@ -34,59 +34,53 @@
 			var accordionTrigger = $(this),
 				accordion = accordionTrigger.closest(options.element.accordion),
 				accordionSet = accordion.find(options.element.accordionSet),
+				accordionTitle = accordion.find(options.element.accordionTitle),
 				accordionBox = accordion.find(options.element.accordionBox),
-				accordionForm = accordion.closest('form');
+				accordionChildrenLast = accordionBox.children(':last-child');
 
-			/* show active accordion box */
+			/* show active box */
 
-			accordionSet.filter('.js_set_active').children(options.element.accordionBox).show();
+			accordionBox.filter('.js_box_active').show();
 
 			/* listen for click */
 
 			accordionTrigger.on('click', function ()
 			{
 				var accordionTitleActive = $(this),
-					accordion = accordionTitleActive.closest(options.element.accordion),
-					accordionSetActive = accordionTitleActive.closest(options.element.accordionSet),
-					accordionTitle = accordion.find(options.element.accordionTitle),
-					accordionBoxActive = accordionTitleActive.next(options.element.accordionBox);
+					accordionSetActive = accordionTitleActive.closest(accordionSet),
+					accordionBoxActive = accordionSetActive.find(accordionBox);
 
-				/* remove active classes */
+				/* toggle active class */
 
-				accordionTitle.not(accordionTitleActive).removeClass('js_title_active title_active');
-				accordionSet.not(accordionSetActive).removeClass('js_set_active set_active');
+				accordionSet.removeClass('js_set_active set_active').filter(accordionSetActive).addClass('js_set_active set_active');
+				accordionTitle.removeClass('js_title_active title_active').filter(accordionTitleActive).addClass('js_title_active title_active');
 
-				/* slide accordion box */
+				/* slide boxes */
 
-				accordionBox.not(accordionBoxActive).stop(1).slideUp(options.duration);
-				if (accordionBoxActive.is(':hidden'))
-				{
-					accordionBoxActive.stop(1).slideDown(options.duration);
-
-					/* add active classes */
-
-					accordionTitleActive.addClass('js_title_active title_active');
-					accordionSetActive.addClass('js_set_active set_active');
-				}
+				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('js_box_active box_active');
+				accordionBoxActive.slideDown(options.duration).addClass('js_box_active box_active');
 			});
 
-			/* prevent tab for last children */
+			/* tabulator on last children */
 
-			accordionBox.children(':last-child').on('keydown', function (event)
+			accordionChildrenLast.on('keydown', function (event)
 			{
 				if (event.which === 9)
 				{
-					event.preventDefault();
+					var childrenLast = $(this),
+						accordionSetNext = childrenLast.closest(accordionSet).next(),
+						accordionTitleNext = accordionSetNext.find(accordionTitle);
+
+					accordionTitleNext.click();
 				}
 			});
 
-			/* show related set on error */
+			/* show error related set */
 
-			accordionForm.on('error', function ()
+			accordion.on('error', function ()
 			{
-				var fieldError = accordionSet.find('.js_note_error').first(),
-					accordionSetError = fieldError.closest(options.element.accordionSet),
-					accordionTitleError = accordionSetError.children(options.element.accordionTitle);
+				var accordionSetError = accordionSet.has('.js_note_error').first(),
+					accordionTitleError = accordionSetError.find(accordionTitle);
 
 				accordionTitleError.click();
 			});

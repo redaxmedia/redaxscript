@@ -21,7 +21,7 @@ function admin_settings_form()
 
 	$output .= '<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_admin set_active">';
 	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">' . l('general') . '</legend>';
-	$output .= '<ul class="js_box_accordion box_accordion box_accordion_admin">';
+	$output .= '<ul class="js_box_accordion js_box_active box_accordion box_accordion_admin box_active">';
 
 	/* languages directory object */
 
