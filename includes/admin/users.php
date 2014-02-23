@@ -206,7 +206,7 @@ function admin_users_form()
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
 
 	/* collect tab box output */
-	
+
 	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
 
 	/* collect user set */
