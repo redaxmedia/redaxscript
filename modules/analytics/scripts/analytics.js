@@ -49,7 +49,7 @@
 		{
 			/* listen for click */
 
-			$(this).on('click', function ()
+			$(this).one('click', function ()
 			{
 				var trigger = $(this),
 					category = trigger.data('category'),
