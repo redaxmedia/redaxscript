@@ -85,7 +85,7 @@ r.modules.maps =
 			}
 		],
 		marker: true,
-		deBrand: true,
+		branding: 'replace',
 		mapLogo: '<a href="//maps.google.com" target="_blank">Google Maps</a>',
 		mapTerms: '<a href="//google.com/intl/en/help/terms_maps.html" target="_blank">Terms of use</a>'
 	}

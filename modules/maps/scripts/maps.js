@@ -60,12 +60,10 @@
 				{
 					mapInstance = new google.maps.Map(map[0], options.general);
 
-					/* replace branding */
+					/* remove branding */
 
-					if (options.deBrand)
+					if (options.branding === 'remove' || options.branding === 'replace')
 					{
-						/* remove orignal branding */
-
 						google.maps.event.addListenerOnce(mapInstance, 'bounds_changed', function ()
 						{
 							map.children('div').css('opacity', 0);
@@ -74,26 +72,26 @@
 						{
 							map.children('div').css('opacity', 1).children('div').slice(1, 7).remove();
 						});
+					}
 
-						/* append custom branding */
+					/* replace branding */
 
-						if (options.mapLogo || options.mapTerms)
+					if (options.branding === 'replace' && options.mapLogo && options.mapTerms)
+					{
+						mapMeta = $('<div>').addClass(options.classString.mapMeta).appendTo(map);
+
+						/* append custom logo */
+
+						if (options.mapLogo)
 						{
-							mapMeta = $('<div>').addClass(options.classString.mapMeta).appendTo(map);
+							$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
+						}
 
-							/* append custom logo */
+						/* append custom terms */
 
-							if (options.mapLogo)
-							{
-								$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
-							}
-
-							/* append custom terms */
-
-							if (options.mapTerms)
-							{
-								$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
-							}
+						if (options.mapTerms)
+						{
+							$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
 						}
 					}
 
