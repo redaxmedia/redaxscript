@@ -126,7 +126,7 @@
 
 	$(function ()
 	{
-		if (r.modules.maps.startup && r.constants.ADMIN_PARAMETER === '' && typeof google === 'object' && typeof google.maps === 'object')
+		if (r.modules.maps.startup && !r.constants.ADMIN_PARAMETER && typeof google === 'object' && typeof google.maps === 'object')
 		{
 			$(r.modules.maps.selector).maps(r.modules.maps.options);
 		}

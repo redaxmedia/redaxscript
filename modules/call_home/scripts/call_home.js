@@ -29,14 +29,28 @@
 
 		if (options.id && options.url)
 		{
-			r.modules.callHome.tracker = _gat._createTracker(options.id);
-			r.modules.callHome.tracker._setDomainName(options.url);
-			r.modules.callHome.tracker._initData();
-			r.modules.callHome.tracker._trackPageview();
+			_gaq.push(
+			[
+				'_setAccount',
+				options.id
+			],
+			[
+				'_setDomainName',
+				options.url
+			],
+			[
+				'_trackPageview'
+			]);
 
 			/* track event */
 
-			r.modules.callHome.tracker._trackEvent('call-home', String(r.version), String(r.baseURL));
+			_gaq.push(
+			[
+				'_trackEvent',
+				String('call-home'),
+				String(r.version),
+				String(r.baseURL)
+			]);
 		}
 	};
 
@@ -44,7 +58,7 @@
 
 	$(function ()
 	{
-		if (r.modules.callHome.startup && r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin' && r.constants.ADMIN_PARAMETER === '' && typeof _gat === 'object')
+		if (r.modules.callHome.startup && r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin' && !r.constants.ADMIN_PARAMETER && typeof _gaq === 'object')
 		{
 			$.fn.callHome(r.modules.callHome.options);
 		}

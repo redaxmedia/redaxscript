@@ -29,10 +29,18 @@
 
 		if (options.id && options.url)
 		{
-			r.modules.analytics.tracker = _gat._createTracker(options.id);
-			r.modules.analytics.tracker._setDomainName(options.url);
-			r.modules.analytics.tracker._initData();
-			r.modules.analytics.tracker._trackPageview();
+			_gaq.push(
+			[
+				'_setAccount',
+				options.id
+			],
+			[
+				'_setDomainName',
+				options.url
+			],
+			[
+				'_trackPageview'
+			]);
 		}
 
 		/* return this */
@@ -41,7 +49,7 @@
 		{
 			/* listen for click */
 
-			$(this).one('click', function ()
+			$(this).on('click', function ()
 			{
 				var trigger = $(this),
 					category = trigger.data('category'),
@@ -50,9 +58,15 @@
 
 				/* track event */
 
-				if (category && action)
+				if (category && action && label)
 				{
-					r.modules.analytics.tracker._trackEvent(String(category), String(action), String(label));
+					_gaq.push(
+					[
+						'_trackEvent',
+						String(category),
+						String(action),
+						String(label)
+					]);
 				}
 			});
 		});
@@ -62,7 +76,7 @@
 
 	$(function ()
 	{
-		if (r.modules.analytics.startup && r.constants.LOGGED_IN !== r.constants.TOKEN && typeof _gat === 'object')
+		if (r.modules.analytics.startup && r.constants.LOGGED_IN !== r.constants.TOKEN && typeof _gaq === 'object')
 		{
 			$(r.modules.analytics.selector).analytics(r.modules.analytics.options);
 		}
