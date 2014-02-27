@@ -20,7 +20,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 	 * @var object
 	 */
 
-	private $_registry;
+	protected $_registry;
 
 	/**
 	 * setUp

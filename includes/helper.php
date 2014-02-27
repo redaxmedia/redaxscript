@@ -21,7 +21,7 @@ class Redaxscript_Helper
 	 * @var object
 	 */
 
-	private $_registry;
+	protected $_registry;
 
 	/**
 	 * subsetDefault

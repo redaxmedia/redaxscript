@@ -21,7 +21,7 @@ class Redaxscript_Breadcrumb
 	 * @var object
 	 */
 
-	private $_registry;
+	protected $_registry;
 
 	/**
 	 * breadcrumbArray

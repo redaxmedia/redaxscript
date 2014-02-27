@@ -332,15 +332,16 @@ function startup()
 		$_SESSION[ROOT . '/update'] = '';
 	}
 
-	/* detect language and detect template object */
+	/* registry and detection object */
 
-	$detectLanguage = New Redaxscript_Detection_Language();
-	$detectTemplate = New Redaxscript_Detection_Template();
+	$registry = Redaxscript_Registry::instance();
+	$detectionLanguage = New Redaxscript_Detection_Language($registry);
+	$detectionTemplate = New Redaxscript_Detection_Template($registry);
 
 	/* define language and template */
 
-	define('LANGUAGE', $detectLanguage->getOutput());
-	define('TEMPLATE', $detectTemplate->getOutput());
+	define('LANGUAGE', $detectionLanguage->getOutput());
+	define('TEMPLATE', $detectionTemplate->getOutput());
 }
 
 /**

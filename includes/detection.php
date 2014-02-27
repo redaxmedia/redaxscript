@@ -13,6 +13,16 @@
 class Redaxscript_Detection
 {
 	/**
+	 * registry
+	 *
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
 	 * output
 	 *
 	 * @var string
@@ -26,8 +36,9 @@ class Redaxscript_Detection
 	 * @since 2.0.0
 	 */
 
-	public function __construct()
+	public function __construct(Redaxscript_Registry $registry)
 	{
+		$this->_registry = $registry;
 		$this->init();
 	}
 
@@ -92,7 +103,7 @@ class Redaxscript_Detection
 
 					if ($key === 'parameter')
 					{
-						$_SESSION[ROOT . '/' . $type] = $value;
+						$_SESSION[$this->_registry->get('root') . '/' . $type] = $value;
 					}
 					break;
 				}

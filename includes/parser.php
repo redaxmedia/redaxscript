@@ -20,7 +20,7 @@ class Redaxscript_Parser
 	 * @var object
 	 */
 
-	private $_registry;
+	protected $_registry;
 
 	/**
 	 * output

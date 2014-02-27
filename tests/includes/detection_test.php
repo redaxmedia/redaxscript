@@ -2,17 +2,16 @@
 include_once('tests/stubs.php');
 
 /**
- * Redaxscript Breadcrumb Test
+ * Redaxscript Detection Test
  *
  * @since 2.1.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
- * @author Gary Aylward
  */
 
-class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
+class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * registry
@@ -36,55 +35,55 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * providerGet
+	 * providerDetectionLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerGet()
+	public function providerDetectionLanguage()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_get.json');
+		$contents = file_get_contents('tests/provider/detection_language.json');
 		$output = json_decode($contents, true);
 		return $output;
 	}
 
 	/**
-	 * providerRender
+	 * providerDetectionTemplate
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerDetectionTemplate()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_render.json');
+		$contents = file_get_contents('tests/provider/detection_template.json');
 		$output = json_decode($contents, true);
 		return $output;
 	}
 
 	/**
-	 * testGet
+	 * testDetectionLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $registry
-	 * @param array $expect
-	 * @dataProvider providerGet
+	 * @param string $expect
+	 * @dataProvider providerDetectionLanguage
 	 */
 
-	public function testGet($registry = array(), $expect = array())
+	public function testDetectionLanguage($registry = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
+		$detection = New Redaxscript_Detection_Language($this->_registry);
 
 		/* result */
 
-		$result = $breadcrumb->get();
+		$result = $detection->getOutput();
 
 		/* compare */
 
@@ -92,25 +91,25 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testRender
+	 * testDetectionLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $registry
 	 * @param string $expect
-	 * @dataProvider providerRender
+	 * @dataProvider providerDetectionTemplate
 	 */
 
-	public function testRender($registry = array(), $expect = null)
+	public function testDetectionTemplate($registry = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry);
+		$detection = New Redaxscript_Detection_Template($this->_registry);
 
 		/* result */
 
-		$result = $breadcrumb->render();
+		$result = $detection->getOutput();
 
 		/* compare */
 

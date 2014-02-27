@@ -21,7 +21,7 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 	 * @var object
 	 */
 
-	private $_registry;
+	protected $_registry;
 
 	/**
 	 * setUp
