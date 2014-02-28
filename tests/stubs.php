@@ -49,7 +49,7 @@ function retrieve($column = '', $table = '', $field = '', $value = '')
 	return $value;
 }
 
-/* s */
+/* shortcut */
 
 function s($name = '')
 {
@@ -77,7 +77,7 @@ function s($name = '')
 	return $name;
 }
 
-/* l */
+/* shortcut */
 
 function l($name = '')
 {
