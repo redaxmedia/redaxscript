@@ -91,7 +91,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testDetectionLanguage
+	 * testDetectionTemplate
 	 *
 	 * @since 2.1.0
 	 *
