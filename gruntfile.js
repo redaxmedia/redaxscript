@@ -100,27 +100,49 @@ module.exports = function (grunt)
 		{
 			root:
 			{
-				dir: 'config.php index.php install.php'
+				dir:
+				[
+					'config.php',
+					'index.php',
+					'install.php'
+				]
 			},
 			base:
 			{
-				dir: 'includes scripts styles'
+				dir:
+				[
+					'includes',
+					'scripts',
+					'styles'
+				]
 			},
 			languages:
 			{
-				dir: 'languages'
+				dir:
+				[
+					'languages'
+				]
 			},
 			modules:
 			{
-				dir: 'modules'
+				dir:
+				[
+					'modules'
+				]
 			},
 			templates:
 			{
-				dir: 'templates'
+				dir:
+				[
+					'templates'
+				]
 			},
 			tests:
 			{
-				dir: 'tests'
+				dir:
+				[
+					'tests'
+				]
 			},
 			options:
 			{
