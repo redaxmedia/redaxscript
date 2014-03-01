@@ -8,9 +8,8 @@
  * 5. screen max 20em
  * 6. screen min 30em
  * 7. screen min 100em
- * 8. speed dail
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -128,15 +127,5 @@
 	.wrapper_body
 	{
 		min-width: 90em;
-	}
-}
-
-/* @section 8. speed dail */
-
-@media screen and (view-mode: minimized)
-{
-	body
-	{
-		font-size: 0.5em;
 	}
 }
