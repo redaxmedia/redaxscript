@@ -23,6 +23,13 @@ function analytics_loader_start()
 
 /**
  * analytics scripts start
+ * 
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
  */
 
 function analytics_scripts_start()

@@ -168,17 +168,26 @@ function contents()
 
 		if (ARTICLE)
 		{
-			if ($comments > 0)
+			/* comments replace */
+
+			if ($comments == 1 && COMMENTS_REPLACE == 1)
+			{
+				hook('comments_replace');
+			}
+
+			/* else native comments */
+
+			else if ($comments > 0)
 			{
 				$route = build_route('articles', ARTICLE);
 				comments(ARTICLE, $route);
-			}
 
-			/* comment form */
+				/* comment form */
 
-			if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
-			{
-				comment_form(ARTICLE, $language, $access);
+				if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
+				{
+					comment_form(ARTICLE, $language, $access);
+				}
 			}
 		}
 	}
@@ -202,7 +211,7 @@ function contents()
  * @package Redaxscript
  * @category Contents
  * @author Henry Ruhs
- * 
+ *
  * @param integer|string $filter
  */
 
@@ -299,7 +308,7 @@ function extras($filter = '')
  * @package Redaxscript
  * @category Contents
  * @author Henry Ruhs
- * 
+ *
  * @param string $table
  * @param integer $id
  * @param string $author
@@ -363,7 +372,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
  * @package Redaxscript
  * @category Contents
  * @author Henry Ruhs
- * 
+ *
  * @param integer $sub_active
  * @param integer $sub_maximum
  * @param string $route
@@ -431,7 +440,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
  * @package Redaxscript
  * @category Contents
  * @author Henry Ruhs
- * 
+ *
  * @param string $title
  * @param string $text
  * @param string $action
