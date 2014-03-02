@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript_DetectionLanguage
+ * Redaxscript Detection Language
  *
  * @since 2.0.0
  *

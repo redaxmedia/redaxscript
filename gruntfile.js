@@ -310,11 +310,11 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/apigen/apigen/apigen.php --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/apigen/apigen/apigen.php --deprecated yes --source includes --destination ../redaxscript-api/base'
 			},
 			apiTests:
 			{
-				command: 'php vendor/apigen/apigen/apigen.php --source tests --destination ../redaxscript-api/tests'
+				command: 'php vendor/apigen/apigen/apigen.php --deprecated yes --source tests --destination ../redaxscript-api/tests'
 			},
 			addUpstream:
 			{

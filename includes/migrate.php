@@ -4,6 +4,7 @@
  * breadcrumb
  *
  * @since 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Migrate
@@ -21,6 +22,7 @@ function breadcrumb()
  * helper class
  *
  * @since 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Migrate
@@ -38,6 +40,7 @@ function helper_class()
  * helper subset
  *
  * @since 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Migrate
@@ -55,6 +58,7 @@ function helper_subset()
  * migrate constants
  *
  * @since 2.1.0
+ * @deprecated 2.0.0
  *
  * @package Redaxscript
  * @category Migrate

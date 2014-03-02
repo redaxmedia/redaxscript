@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript_DetectionTemplate
+ * Redaxscript Detection Template
  *
  * @since 2.0.0
  *
