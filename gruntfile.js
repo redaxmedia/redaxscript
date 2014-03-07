@@ -51,16 +51,14 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'styles/*.css',
-					'!styles/webkit.css'
+					'styles/*.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/styles/*.css',
-					'!modules/gallery/styles/query.css'
+					'modules/*/styles/*.css'
 				]
 			},
 			templates:

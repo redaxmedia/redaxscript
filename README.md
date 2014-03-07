@@ -34,8 +34,8 @@ Feature list
 * Mobile ready with responsive design
 * On-demand loader for Javascript and CSS
 * Pre-optimized with [Page Speed](http://redaxscript.com/general/benchmark/google-page-speed) and [Yslow](http://redaxscript.com/general/benchmark/yahoo-yslow)
-* **Intuitive WYSIWYE admin interface**
-* Built-in frontend framework
+* Intuitive WYSIWYE admin interface
+* **Built-in frontend framework**
 * Module system with hook points
 * Advanced user and group permissions
 * Bundled with the latest jQuery
