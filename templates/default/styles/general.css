@@ -58,7 +58,7 @@ body
 
 .footer
 {
-	background: #ccc;
+	background: #b9b9b9;
 	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border: solid #a5a5a5;
@@ -72,7 +72,7 @@ body
 
 .header
 {
-	background: #ccc;
+	background: #b9b9b9;
 	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border-bottom: 1px solid #a5a5a5;

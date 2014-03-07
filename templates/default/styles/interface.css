@@ -111,8 +111,6 @@
 .list_header li
 {
 	padding: 0.25em 0.5em;
-	-webkit-transition: background 0.5s ease;
-	transition: background 0.5s ease;
 }
 
 .list_header li:hover, .list_header .item_touch
@@ -166,6 +164,8 @@
 .list_header_children li
 {
 	background: #444;
+	-webkit-transition: background 0.5s ease;
+	transition: background 0.5s ease;
 }
 
 /* rounded items */
