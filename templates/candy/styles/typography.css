@@ -122,8 +122,8 @@ pre
 
 .title_website
 {
-	font: bold italic 3.5em georgia, arial;
-	text-shadow: 0 2px #000, 0 0 100px rgba(255, 255, 255, 0.8);
+	font: bold 3.5em georgia, arial;
+	text-shadow: 0 2px #000;
 }
 
 .title_website, .title_website a
