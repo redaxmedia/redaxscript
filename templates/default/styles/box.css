@@ -33,13 +33,13 @@
 
 .box_code
 {
-	background: #eee;
+	background: #f5f5f5;
 	border: 1px solid #ccc;
 	border-radius: 0.25em;
 	display: block;
-	font: 1.125em/1.5em monospace, arial;
-	padding: 1em 1.5em;
-	text-shadow: 0 1px #f5f5f5;
+	font: 1em/1.5em monospace, arial;
+	padding: 1em 0.5em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* @section 3. box comment */
