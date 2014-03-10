@@ -7,6 +7,7 @@ Redaxscript
 > Redaxscript is an ultra lightweight CMS, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
 [![Build Status](https://travis-ci.org/redaxmedia/redaxscript.png?branch=master)](https://travis-ci.org/redaxmedia/redaxscript)
+[![Coverage Status](https://coveralls.io/repos/redaxmedia/redaxscript/badge.png)](https://coveralls.io/r/redaxmedia/redaxscript)
 [![Dependency Status](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314/badge.png)](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314)
 [![Dependency Status](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b/badge.png)](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b)
 [![Latest Stable Version](https://poser.pugx.org/redaxmedia/redaxscript/v/stable.png)](https://packagist.org/packages/redaxmedia/redaxscript)
