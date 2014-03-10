@@ -13,4 +13,4 @@ script:
 - npm test
 
 after_script:
-- php vendor/bin/coveralls --verbose
+- php vendor/bin/coveralls --exclude-no-stmt --verbose
