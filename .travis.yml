@@ -3,6 +3,7 @@ language: php
 php:
 - 5.3
 - 5.4
+- 5.5
 
 before_script:
 - npm install -g grunt-cli
@@ -13,4 +14,4 @@ script:
 - npm test
 
 after_script:
-- php vendor/bin/coveralls --exclude-no-stmt --verbose
+- php vendor/bin/coveralls --verbose
