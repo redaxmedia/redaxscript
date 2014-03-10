@@ -11,3 +11,6 @@ before_script:
 
 script:
 - npm test
+
+after_script:
+  - php vendor/bin/coveralls -v
