@@ -2,6 +2,11 @@
 	<testsuite name="base">
 		<directory suffix="_test.php">tests/includes</directory>
 	</testsuite>
+	<filter>
+		<blacklist>
+			<file>includes/migrate.php</file>
+		</blacklist>
+	</filter>
 	<logging>
 		<log type="coverage-clover" target="clover.xml" />
 	</logging>
