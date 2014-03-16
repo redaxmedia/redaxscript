@@ -67,5 +67,6 @@ Related links
 * [Download](http://redaxscript.com/download)
 * [Support](http://redaxscript.com/support)
 * [Documentation](http://redaxscript.com/develop/documentation)
+* [API](http://api.redaxscript.com)
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
