@@ -18,10 +18,14 @@
 	background: #fff;
 }
 
+.table_default caption, .table_default td, .table_default th
+{
+	padding: 0.75em;
+}
+
 .table_default td, .table_default th
 {
 	border-left: 1px solid #ddd;
-	padding: 0.75em;
 }
 
 .table_default td:first-child, .table_default th:first-child
@@ -48,9 +52,14 @@
 
 /* @section 1.2 head and foot */
 
-.table_default thead tr, .table_default tfoot tr
+.table_default caption, .table_default thead tr, .table_default tfoot tr
 {
 	font: bold 1em arial;
+}
+
+.table_default caption
+{
+	border-bottom: 1px solid #ddd;
 }
 
 .table_default tfoot tr

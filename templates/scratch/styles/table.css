@@ -13,7 +13,7 @@
 
 /* @section 1. table default */
 
-.table_default td, .table_default th
+.table_default caption, .table_default td, .table_default th
 {
 	padding: 0.75em;
 }
@@ -27,7 +27,7 @@
 
 /* @section 1.2 head and foot */
 
-.table_default thead tr, .table_default tfoot tr
+.table_default caption, .table_default thead tr, .table_default tfoot tr
 {
 	background: #e5e5e5;
 	font-weight: bold;

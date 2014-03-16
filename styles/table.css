@@ -11,7 +11,7 @@
 
 /* @section 1. table */
 
-.table td, .table th
+.table caption, .table td, .table th
 {
 	text-align: left;
 }

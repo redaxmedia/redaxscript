@@ -189,12 +189,12 @@
 
 /* @section 1.2 head and foot */
 
-.table_admin thead, .table_admin tfoot
+.table_admin caption, .table_admin thead, .table_admin tfoot
 {
 	border: 1px solid #222;
 }
 
-.table_admin thead tr, .table_admin tfoot tr
+.table_admin caption, .table_admin thead tr, .table_admin tfoot tr
 {
 	background: url('templates/admin/images/carbon.png') #222;
 	color: #ccc;
@@ -202,7 +202,7 @@
 	text-transform: uppercase;
 }
 
-.table_admin thead th, .table_admin tfoot td
+.table_admin caption, .table_admin thead th, .table_admin tfoot td
 {
 	padding: 0.5em 1em;
 }
