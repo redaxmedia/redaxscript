@@ -1,5 +1,6 @@
 tools:
  external_code_coverage: true
+ php_analyzer: true
  php_cpd: true
  php_hhvm: true
  php_loc: true
