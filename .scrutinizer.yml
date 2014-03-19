@@ -1,2 +1,4 @@
 tools:
  external_code_coverage: true
+ php_cpd: true
+ php_loc: true
