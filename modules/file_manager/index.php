@@ -265,7 +265,7 @@ function file_manager_clean_file_name($input = '')
  * @category Modules
  * @author Henry Ruhs
  *
- * @param string $diretory
+ * @param string $directory
  */
 
 function file_manager_upload($directory = '')

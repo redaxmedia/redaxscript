@@ -405,7 +405,7 @@ function languages_transport($language = '')
  * @category Loader
  * @author Henry Ruhs
  *
- * @param boolean $minify
+ * @param string|boolean $minify
  * @return string
  */
 

@@ -51,7 +51,7 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 * 
-	 * @param object $registry
+	 * @param Redaxscript_Registry $registry
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
