@@ -1,5 +1,4 @@
 before_commands:
-- composer self-update
 - composer install
 
 tools:
