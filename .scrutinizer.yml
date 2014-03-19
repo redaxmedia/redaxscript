@@ -1,4 +1,4 @@
-before_script:
+before_commands:
 - composer self-update
 - composer install
 
