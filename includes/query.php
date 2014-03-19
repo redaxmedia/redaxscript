@@ -216,7 +216,7 @@ function query_plumb($column = '', $table = '', $function = '')
  * @param string $table
  * @param string $field
  * @param string $value
- * @return string
+ * @return integer
  */
 
 function query_total($table = '', $field = '', $value = '')

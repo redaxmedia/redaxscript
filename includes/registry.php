@@ -69,7 +69,6 @@ class Redaxscript_Registry
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $get
 	 * @return string
 	 */
 

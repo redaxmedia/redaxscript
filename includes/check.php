@@ -175,7 +175,7 @@ function check_dns($input = '', $type = '')
  * @author Henry Ruhs
  *
  * @param string $input
- * @param integer $mode
+ * @param string $mode
  * @return integer
  */
 
