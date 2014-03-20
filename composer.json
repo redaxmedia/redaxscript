@@ -3,7 +3,7 @@
 	"description": "Ultra lightweight CMS",
 	"version": "2.1.0",
 	"homepage": "http://redaxscript.com",
-	"licence": "GPL-3.0",
+	"license": "GPL-3.0",
 	"require":
 	{
 		"php": ">5.3.2"
