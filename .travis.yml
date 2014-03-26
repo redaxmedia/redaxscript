@@ -8,7 +8,7 @@ php:
 before_script:
 - npm install -g grunt-cli
 - composer self-update
-- COMPOSER_PROCESS_TIMEOUT=600 composer install
+- COMPOSER_PROCESS_TIMEOUT=1800 composer install
 
 script:
 - npm test
