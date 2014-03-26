@@ -6,9 +6,10 @@ php:
 - 5.5
 
 before_script:
-- npm install -g grunt-cli
 - composer self-update
 - composer install
+- npm install -g grunt-cli
+- npm install
 
 script:
 - npm test
