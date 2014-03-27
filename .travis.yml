@@ -2,12 +2,14 @@ language: php
 
 php:
 - 5.3
+- 5.4
+- 5.5
 
 before_script:
 - composer self-update
 - composer install
-- npm install --global grunt-cli
-- npm install --no-optional
+- npm install -g grunt-cli
+- npm install
 
 script:
 - npm test
