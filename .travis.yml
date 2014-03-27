@@ -6,8 +6,8 @@ php:
 before_script:
 - composer self-update
 - composer install
-- npm install -g grunt-cli
-- npm install
+- npm install --global grunt-cli
+- npm install --no-optional
 
 script:
 - npm test
