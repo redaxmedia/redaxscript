@@ -63,8 +63,8 @@
 
 		win.test('constants', function ()
 		{
-			var expect = 'object',
-				result = typeof r.constants;
+			var expect = 'number',
+				result = typeof Object.keys(r.constants).length;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
@@ -73,8 +73,8 @@
 
 		win.test('support', function ()
 		{
-			var expect = 'object',
-				result = typeof r.support;
+			var expect = 'number',
+				result = typeof Object.keys(r.support).length;
 
 			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
 		});
