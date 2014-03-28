@@ -104,12 +104,6 @@
 	color: #474747;
 }
 
-.list_qunit a
-{
-	margin-left: 1em;
-	text-decoration: underline;
-}
-
 .list_qunit li
 {
 	padding: 1em;
@@ -126,10 +120,22 @@
 	border-bottom: 0;
 }
 
+
+.list_qunit > li > a
+{
+	margin-left: 1em;
+	text-decoration: underline;
+}
+
 .list_qunit > li > span
 {
 	font: italic 1em monospace, arial;
 	float: right;
+}
+
+.list_qunit > li > strong
+{
+	cursor: pointer;
 }
 
 /* @section 6.1 list qunit assert */
