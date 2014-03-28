@@ -313,6 +313,7 @@ function extras($filter = '')
  * @param integer $id
  * @param string $author
  * @param string $date
+ * @return string
  */
 
 function infoline($table = '', $id = '', $author = '', $date = '')

@@ -11,6 +11,7 @@
  * @author Henry Ruhs
  *
  * @param integer $limit
+ * @return string
  */
 
 function recent_view($limit = '')

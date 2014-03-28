@@ -122,6 +122,7 @@ function db_backup_admin_panel_list_modules()
  *
  * @param string $d_name
  * @param integer $mode
+ * @return string
  */
 
 function db_backup($d_name = '', $mode = '')

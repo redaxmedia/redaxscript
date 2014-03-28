@@ -796,6 +796,7 @@ function admin_update()
  * @param string $table
  * @param integer $id
  * @param integer $mode
+ * @return string
  */
 
 function admin_children($table = '', $id = '', $mode = '')
