@@ -9,7 +9,7 @@ before_script:
 - composer self-update
 - composer install
 - npm install -g grunt-cli
-- npm install
+- npm install --save-optional
 
 script:
 - npm test
