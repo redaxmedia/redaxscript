@@ -1,22 +1,16 @@
 language: php
 
 php:
+- 5.2
 - 5.3
 - 5.4
 - 5.5
-- hhvm
-
-node_js:
-  - 0.11
 
 before_script:
+- npm install -g grunt-cli
+- npm install
 - composer self-update
 - composer install
-- node -v
-- npm -v
-- npm install -g grunt-cli
-- npm install htmlhint@0.9.3
-- npm install
 
 script:
 - npm test
