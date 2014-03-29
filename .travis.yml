@@ -13,7 +13,6 @@ before_script:
 - npm install grunt-contrib-copy
 - npm install grunt-contrib-csslint
 - npm install grunt-contrib-jshint
-- npm install grunt-htmlhint
 - npm install grunt-jsonlint
 - npm install grunt-phpcs
 - npm install grunt-phpunit
