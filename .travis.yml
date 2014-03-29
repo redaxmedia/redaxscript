@@ -9,15 +9,8 @@ before_script:
 - composer self-update
 - composer install
 - npm install -g grunt-cli
-- npm install grunt
-- npm install grunt-contrib-copy
-- npm install grunt-contrib-csslint
-- npm install grunt-contrib-jshint
-- npm install grunt-jsonlint
-- npm install grunt-phpcs
-- npm install grunt-phpunit
-- npm install grunt-lineending
-- npm install grunt-shell
+- travis_retry npm install htmlhint@0.9.3 --verbose
+- npm install
 
 script:
 - npm test
