@@ -5,7 +5,7 @@
  *    1.1 body
  *    1.2 head and foot
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -35,9 +35,9 @@
 
 /* @section 1.1 body */
 
-.table_default tbody tr, .table_default thead th
+.table_default tbody tr
 {
-	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
 }
 
 .table_default tbody tr:hover
@@ -45,21 +45,11 @@
 	background: #f5f5f5;
 }
 
-.table_default tbody tr:last-child
-{
-	border-bottom: 0;
-}
-
 /* @section 1.2 head and foot */
 
 .table_default caption, .table_default thead tr, .table_default tfoot tr
 {
 	font: bold 1em arial;
-}
-
-.table_default caption
-{
-	border-bottom: 1px solid #ddd;
 }
 
 .table_default tfoot tr
