@@ -1,4 +1,4 @@
-<phpunit bootstrap="includes/bootstrap.php" strict="true">
+<phpunit bootstrap="includes/bootstrap.php">
 	<testsuite name="base">
 		<directory suffix="_test.php">tests/includes</directory>
 	</testsuite>
@@ -7,7 +7,4 @@
 			<file>includes/migrate.php</file>
 		</blacklist>
 	</filter>
-	<logging>
-		<log type="coverage-clover" target="clover.xml" />
-	</logging>
 </phpunit>

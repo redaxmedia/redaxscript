@@ -173,12 +173,24 @@ module.exports = function (grunt)
 		},
 		phpunit:
 		{
-			testsuite:
+			development:
 			{
+				options:
+				{
+					debug: true
+				}
+			},
+			integration:
+			{
+				options:
+				{
+					coverageClover: 'clover.xml'
+				}
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpunit'
+				bin: 'vendor/bin/phpunit',
+				strict: true
 			}
 		},
 		autoprefixer:
@@ -412,7 +424,7 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'phpunit'
+					'phpunit:development'
 				]
 			}
 		}
@@ -446,7 +458,7 @@ module.exports = function (grunt)
 		'htmlhint',
 		'phplint',
 		'toclint',
-		'phpunit'
+		'phpunit:integration'
 	]);
 	grunt.registerTask('phplint',
 	[
