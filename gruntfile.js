@@ -175,24 +175,10 @@ module.exports = function (grunt)
 		{
 			testsuite:
 			{
-				dir: ''
 			},
 			options:
 			{
 				bin: 'vendor/bin/phpunit'
-			}
-		},
-		watch:
-		{
-			phpunit:
-			{
-				files:
-				[
-					'includes/*.php',
-					'tests/*/*.php',
-					'tests/*/*.json'
-				],
-				tasks: ['phpunit']
 			}
 		},
 		autoprefixer:
@@ -411,6 +397,22 @@ module.exports = function (grunt)
 					{
 						removeViewBox: false
 					}
+				]
+			}
+		},
+		watch:
+		{
+			phpunit:
+			{
+				files:
+				[
+					'includes/*.php',
+					'tests/*/*.php',
+					'tests/*/*.json'
+				],
+				tasks:
+				[
+					'phpunit'
 				]
 			}
 		}
