@@ -141,9 +141,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * create a task
-	 *
-	 * addition or subtraction of two numbers between allowable range
+	 * create a task of two numbers between allowable range
 	 *
 	 * @since 2.0.0
 	 */
