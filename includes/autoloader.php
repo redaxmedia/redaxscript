@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Autoloader class automatically loads required class files
+ * base class to automatically load class files as needed
  *
  * @since 2.1.0
  *
@@ -13,7 +13,7 @@
 class Redaxscript_Autoloader
 {
 	/**
-	 * the project namespace
+	 * project namespace
 	 *
 	 * @var string
 	 */
@@ -37,11 +37,11 @@ class Redaxscript_Autoloader
 	protected static $_fileSuffix = '.php';
 
 	/**
-	 * register the Autoloader class's _load() method as the SPL autoloader
+	 * register the load method as the spl autoloader
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $directory Optionally specify a directory to search
+	 * @param string $directory specify a optional directory to search
 	 */
 
 	public static function init($directory = null)
@@ -61,7 +61,7 @@ class Redaxscript_Autoloader
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $className The name of the class to load
+	 * @param string $className name of the class to load
 	 */
 
 	protected static function _load($className = null)
