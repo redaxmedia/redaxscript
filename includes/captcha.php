@@ -51,7 +51,7 @@ class Redaxscript_Captcha
 	);
 
 	/**
-	 * init the class
+	 * constructor of the class
 	 *
 	 * @since 2.0.0
 	 */
@@ -64,7 +64,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * create a task to be solved
+	 * init the class
 	 *
 	 * @since 2.0.0
 	 */
