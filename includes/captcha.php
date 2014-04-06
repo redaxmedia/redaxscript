@@ -40,7 +40,7 @@ class Redaxscript_Captcha
 	);
 
 	/**
-	 * list of mathematical operators used for the task
+	 * array of mathematical operators used for the task
 	 *
 	 * @var array
 	 */
