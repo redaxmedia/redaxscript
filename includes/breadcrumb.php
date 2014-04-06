@@ -43,7 +43,7 @@ class Redaxscript_Breadcrumb
 	/**
 	 * constructor
 	 *
-	 * accepts an instance of the registry class as an injected dependency
+	 * instance of the registry is needed as an injected dependency
 	 *
 	 * @since 2.1.0
 	 *
@@ -201,7 +201,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array for the administration
+	 * build the breadcrumb array for current administration
 	 *
 	 * @since 2.1.0
 	 *
@@ -244,7 +244,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array for content
+	 * build the breadcrumb array for current content
 	 *
 	 * @since 2.1.0
 	 *
