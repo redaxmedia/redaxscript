@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Redaxscript Breadcrumb
+ * The Breadcrumb class provides a navigation breadcrumb trail based on
+ * the current article/category or admin page
  *
  * @since 2.1.0
  *
@@ -14,8 +15,6 @@
 class Redaxscript_Breadcrumb
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -24,9 +23,7 @@ class Redaxscript_Breadcrumb
 	protected $_registry;
 
 	/**
-	 * breadcrumbArray
-	 *
-	 * array to store all nodes of the breadcrumb
+	 * array to store all the nodes of the breadcrumb trail
 	 *
 	 * @var array
 	 */
@@ -34,9 +31,7 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * classes
-	 *
-	 * array of classes used to style breadcrumb
+	 * array of classes used to style the breadcrumb trail
 	 *
 	 * @var array
 	 */
@@ -47,11 +42,13 @@ class Redaxscript_Breadcrumb
 	);
 
 	/**
-	 * construct
+	 * constructor
+	 *
+	 * accepts an instance of the Registry class as an injected dependency
 	 *
 	 * @since 2.1.0
-	 * 
-	 * @param Redaxscript_Registry $registry
+	 *
+	 * @param Redaxscript_Registry $registry An instance of the Registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -61,7 +58,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * init
+	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */
@@ -72,7 +69,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * get
+	 * return the raw breadcrumb array for further processing
 	 *
 	 * @since 2.1.0
 	 *
@@ -85,9 +82,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * render
-	 *
-	 * render breadcrumb array
+	 * render the breadcrumb trail as an HTML unordered list of links
 	 *
 	 * @since 2.1.0
 	 *
@@ -148,9 +143,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build
-	 *
-	 * build breadcrumb array
+	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */
@@ -209,9 +202,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * buildAdmin
-	 *
-	 * build admin breadcrumb array
+	 * build the breadcrumb array for an admin page
 	 *
 	 * @since 2.1.0
 	 *
@@ -254,9 +245,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * buildContent
-	 *
-	 * build content breadcrumb array
+	 * build the breadcrumb array from a content (catgeory/article) path
 	 *
 	 * @since 2.1.0
 	 *

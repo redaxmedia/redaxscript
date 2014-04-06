@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Redaxscript Mail
+ * The Mail class provides methods to format and send an email
+ *
+ * This class requires the PHP send() function
  *
  * @since 2.0.0
  *
@@ -13,7 +15,9 @@
 class Redaxscript_Mail
 {
 	/**
-	 * toArray
+	 * list of recipients
+	 *
+	 * associative array in the form name => address
 	 *
 	 * @var array
 	 */
@@ -21,7 +25,9 @@ class Redaxscript_Mail
 	private $_toArray;
 
 	/**
-	 * fromArray
+	 * sender's name and email address
+	 *
+	 * associative array in the from name => address
 	 *
 	 * @var array
 	 */
@@ -29,22 +35,27 @@ class Redaxscript_Mail
 	private $_fromArray;
 
 	/**
-	 * subjectArray
+	 * subject of the email
 	 *
-	 * @var object
+	 * @var string
 	 */
 
 	private $_subject;
 
 	/**
-	 * bodyArray
+	 * items to form the body of the email
+	 *
+	 * key/value pairs display as item: description each on a separate line
+	 * elements with numeric keys are simply concatenated
 	 *
 	 * @var array
 	 */
 
 	private $_bodyArray;
 	/**
-	 * attachmentArray
+	 * list of attachments
+	 *
+	 * associative array in the form filename => contents
 	 *
 	 * @var array
 	 */
@@ -52,7 +63,7 @@ class Redaxscript_Mail
 	private $_attachmentArray;
 
 	/**
-	 * fromString
+	 * formatted string used for From, Reply-To and Return-Path fields
 	 *
 	 * @var string
 	 */
@@ -60,7 +71,7 @@ class Redaxscript_Mail
 	protected $_fromString;
 
 	/**
-	 * subjectString
+	 * formatted string used for Subject field
 	 *
 	 * @var string
 	 */
@@ -68,7 +79,7 @@ class Redaxscript_Mail
 	protected $_subjectString;
 
 	/**
-	 * bodyString
+	 * formatted body of the email
 	 *
 	 * @var string
 	 */
@@ -76,7 +87,7 @@ class Redaxscript_Mail
 	protected $_bodyString;
 
 	/**
-	 * headerString
+	 * formatted email header
 	 *
 	 * @var string
 	 */
@@ -84,15 +95,15 @@ class Redaxscript_Mail
 	protected $_headerString;
 
 	/**
-	 * construct
+	 * constructor
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $toArray
-	 * @param array $fromArray
-	 * @param string $subject
-	 * @param array $bodyArray
-	 * @param array $attachmentArray
+	 * @param array $toArray List of recipients
+	 * @param array $fromArray Sender's name and email address
+	 * @param string $subject Subject of the email
+	 * @param array $bodyArray Items to include in the email body
+	 * @param array $attachmentArray Files to send as attachments
 	 */
 
 	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $bodyArray = array(), $attachmentArray = array())
@@ -109,7 +120,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * init
+	 * build the formatted strings to form the email
 	 *
 	 * @since 2.0.0
 	 */
@@ -126,7 +137,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * buildFromString
+	 * build the contents of the From field
 	 *
 	 * @since 2.0.0
 	 */
@@ -148,7 +159,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * buildSubjectString
+	 * build the contents of the Subject field
 	 *
 	 * @since 2.0.0
 	 */
@@ -173,7 +184,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * buildBodyString
+	 * build the body of the message
 	 *
 	 * @since 2.0.0
 	 */
@@ -204,7 +215,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * buildHeaderString
+	 * build the message header
 	 *
 	 * @since 2.0.0
 	 */
@@ -261,7 +272,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * send
+	 * send the email message using PHP's send() function
 	 *
 	 * @since 2.0.0
 	 */
