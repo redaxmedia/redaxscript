@@ -15,7 +15,7 @@
 class Redaxscript_Breadcrumb
 {
 	/**
-	 * An instance of the registry class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
@@ -23,7 +23,7 @@ class Redaxscript_Breadcrumb
 	protected $_registry;
 
 	/**
-	 * An array to store all the nodes of the breadcrumb trail
+	 * array to store all the nodes of the breadcrumb trail
 	 *
 	 * @var array
 	 */
@@ -31,7 +31,7 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * An array of classes used to style the breadcrumb trail
+	 * array of classes used to style the breadcrumb trail
 	 *
 	 * @var array
 	 */
@@ -42,8 +42,9 @@ class Redaxscript_Breadcrumb
 	);
 
 	/**
-	 * The constructor accepts an instance of the Registry class
-	 * as an injected dependency. It then calls the init() method.
+	 * constructor
+	 *
+	 * accepts an instance of the Registry class as an injected dependency
 	 *
 	 * @since 2.1.0
 	 *
@@ -57,7 +58,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Builds the breadcrumb array
+	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */
@@ -68,7 +69,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Returns the raw breadcrumb array for further processing
+	 * return the raw breadcrumb array for further processing
 	 *
 	 * @since 2.1.0
 	 *
@@ -81,7 +82,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Renders the breadcrumb trail as an HTML unordered list of links
+	 * render the breadcrumb trail as an HTML unordered list of links
 	 *
 	 * @since 2.1.0
 	 *
@@ -142,7 +143,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Builds the breadcrumb array
+	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */
@@ -201,7 +202,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Builds the breadcrumb array for an admin page
+	 * build the breadcrumb array for an admin page
 	 *
 	 * @since 2.1.0
 	 *
@@ -244,7 +245,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * Builds the breadcrumb array from a content (catgeory/article) path
+	 * build the breadcrumb array from a content (catgeory/article) path
 	 *
 	 * @since 2.1.0
 	 *

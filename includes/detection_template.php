@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Detection Template
+ * The Detection Template class detects the required template
  *
  * @since 2.0.0
  *
@@ -13,7 +13,7 @@
 class Redaxscript_Detection_Template extends Redaxscript_Detection
 {
 	/**
-	 * init
+	 * initialise the detection array and detect the required file
 	 *
 	 * @since 2.1.0
 	 */
