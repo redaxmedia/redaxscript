@@ -1,8 +1,7 @@
 <?php
 
 /**
- * The Breadcrumb class provides a navigation breadcrumb trail based on
- * the current article/category or admin page
+ * parent class to provide a location based breadcrumb navigation
  *
  * @since 2.1.0
  *
@@ -23,7 +22,7 @@ class Redaxscript_Breadcrumb
 	protected $_registry;
 
 	/**
-	 * array to store all the nodes of the breadcrumb trail
+	 * array to store all the nodes of the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -31,7 +30,7 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * array of classes used to style the breadcrumb trail
+	 * array of classes used to style the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -44,11 +43,11 @@ class Redaxscript_Breadcrumb
 	/**
 	 * constructor
 	 *
-	 * accepts an instance of the Registry class as an injected dependency
+	 * accepts an instance of the registry class as an injected dependency
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript_Registry $registry An instance of the Registry class
+	 * @param Redaxscript_Registry $registry an instance of the registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -82,7 +81,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * render the breadcrumb trail as an HTML unordered list of links
+	 * render the breadcrumb trail as an unordered list
 	 *
 	 * @since 2.1.0
 	 *
@@ -202,7 +201,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array for an admin page
+	 * build the breadcrumb array for the administration
 	 *
 	 * @since 2.1.0
 	 *
@@ -245,7 +244,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array from a content (catgeory/article) path
+	 * build the breadcrumb array for content
 	 *
 	 * @since 2.1.0
 	 *
