@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Captcha class provides a simple CAPTCHA task to ensure that users are human
+ * parent class to provide a simple mathematical task to ensure human users
  *
  * @since 2.0.0
  *
@@ -29,7 +29,7 @@ class Redaxscript_Captcha
 	private $_solution;
 
 	/**
-	 * allowable range of values for the task
+	 * allowable range for the task
 	 *
 	 * @var array
 	 */
@@ -51,7 +51,7 @@ class Redaxscript_Captcha
 	);
 
 	/**
-	 * constructor
+	 * init the class
 	 *
 	 * @since 2.0.0
 	 */
@@ -92,7 +92,7 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $mode Set to 'raw' to get solution in plain text, otherwise sha1 hash
+	 * @param string $mode switch between plain text and hash solution
 	 * @return integer
 	 */
 
@@ -114,7 +114,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * get the mathematical operator to use for the task
+	 * get the mathematical operator used for the task
 	 *
 	 * @since 2.0.0
 	 *
@@ -143,7 +143,7 @@ class Redaxscript_Captcha
 	/**
 	 * create a task
 	 *
-	 * the task is the addition or subtraction of two numbers between 1 and 10
+	 * addition or subtraction of two numbers between allowable range
 	 *
 	 * @since 2.0.0
 	 */
