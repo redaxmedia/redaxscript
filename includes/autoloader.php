@@ -1,7 +1,7 @@
 <?php
 
 /**
- * base class to automatically load class files as needed
+ * parent class to automatically load class files as needed
  *
  * @since 2.1.0
  *
