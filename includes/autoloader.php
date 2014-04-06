@@ -37,7 +37,7 @@ class Redaxscript_Autoloader
 	protected static $_fileSuffix = '.php';
 
 	/**
-	 * register the load method as the spl autoloader
+	 * init the class
 	 *
 	 * @since 2.1.0
 	 *
