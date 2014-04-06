@@ -34,7 +34,7 @@
 
 			/* prevent multiple request */
 
-			if (counter  < options.limit)
+			if (counter < options.limit)
 			{
 				request = window.navigator.mozApps.install(r.baseURL + 'manifest_webapp');
 
