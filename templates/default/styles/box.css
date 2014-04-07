@@ -65,18 +65,9 @@
 
 .box_default, .box_tab_default
 {
+	background: #eee;
 	color: #555;
 	padding: 1em 1.5em;
-}
-
-.box_default
-{
-	background: #ccc;
-}
-
-.box_tab_default
-{
-	background: #eee;
 }
 
 /* @section 4.1 javascript enabled */
