@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Parser
+ * The Parser class provides methods to parse articles for Redaxscript pseudo-tags
  *
  * @since 2.0.0
  *
@@ -13,8 +13,6 @@
 class Redaxscript_Parser
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -23,7 +21,7 @@ class Redaxscript_Parser
 	protected $_registry;
 
 	/**
-	 * output
+	 * parsed article text
 	 *
 	 * @var string
 	 */
@@ -31,7 +29,7 @@ class Redaxscript_Parser
 	private $_output;
 
 	/**
-	 * route
+	 * URL of article used for read more... link
 	 *
 	 * @var string
 	 */
@@ -39,7 +37,7 @@ class Redaxscript_Parser
 	protected $_route;
 
 	/**
-	 * delimiter
+	 * string used to replace code and function tags during parsing
 	 *
 	 * @var string
 	 */
@@ -47,7 +45,7 @@ class Redaxscript_Parser
 	protected $_delimiter = '@@@';
 
 	/**
-	 * tags
+	 * array of Redaxscript pseudo-tags and functions to parse them with
 	 *
 	 * @var array
 	 */
@@ -68,7 +66,7 @@ class Redaxscript_Parser
 	);
 
 	/**
-	 * classes
+	 * array of CSS classes to apply to pseudo-tags
 	 *
 	 * @var array
 	 */
@@ -79,7 +77,7 @@ class Redaxscript_Parser
 	);
 
 	/**
-	 * forbiddenFunctions
+	 * list of forbidden functions which will not be executed
 	 *
 	 * @var array
 	 */
@@ -105,12 +103,15 @@ class Redaxscript_Parser
 	);
 
 	/**
-	 * construct
+	 * constructor
+	 *
+	 * parses the article so init() does not normally have to be called
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $input
-	 * @param string $route
+	 * @param Redaxscript_Registry $registry Instance of the registry class
+	 * @param string $input Article text to be parsed
+	 * @param string $route URL of the article
 	 */
 
 	public function __construct(Redaxscript_Registry $registry, $input = null, $route = null)
@@ -125,7 +126,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * init
+	 * parse the article
 	 *
 	 * @since 2.0.0
 	 */
@@ -149,7 +150,7 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * getOutput
+	 * return the modified article
 	 *
 	 * @since 2.0.0
 	 *
@@ -162,11 +163,11 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parseBreak
+	 * parse the <break> pseudo-tag
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $input
+	 * @param string $input The article text to be parsed
 	 * @return string
 	 */
 
@@ -188,11 +189,11 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parseCode
+	 * parse the <code>...</code> pseudo-tag pair
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $input
+	 * @param string $input The article text to be parsed
 	 * @return string
 	 */
 
@@ -218,11 +219,11 @@ class Redaxscript_Parser
 	}
 
 	/**
-	 * parseFunction
+	 * parse the <function>...</function> pseudo-tag pair
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $input
+	 * @param string $input The article text to be parsed
 	 * @return string
 	 */
 

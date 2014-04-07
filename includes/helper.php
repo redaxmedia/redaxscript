@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Redaxscript Helper
+ * The Helper class provides information required to correctly render a page
+ *
+ * Provides character subset, text direction, browser class, device class and content type
  *
  * @since 2.1.0
  *
@@ -14,8 +16,6 @@
 class Redaxscript_Helper
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -24,7 +24,7 @@ class Redaxscript_Helper
 	protected $_registry;
 
 	/**
-	 * subsetDefault
+	 * default character subset
 	 *
 	 * @var string
 	 */
@@ -32,7 +32,7 @@ class Redaxscript_Helper
 	protected $_subsetDefault = 'latin';
 
 	/**
-	 * subsetArray
+	 * array of languages requiring character subsets other than the default
 	 *
 	 * @var array
 	 */
@@ -48,7 +48,7 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * deviceArray
+	 * list of device types for responsive templates
 	 *
 	 * @var array
 	 */
@@ -60,7 +60,7 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * directionDefault
+	 * default text direction
 	 *
 	 * @var string
 	 */
@@ -68,7 +68,7 @@ class Redaxscript_Helper
 	protected $_directionDefault = 'ltr';
 
 	/**
-	 * directionArray
+	 * array of languages requiring non-default text direction
 	 *
 	 * @var array
 	 */
@@ -82,11 +82,11 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * construct
+	 * constructor
 	 *
 	 * @since 2.1.0
 	 * 
-	 * @param Redaxscript_Registry $registry
+	 * @param Redaxscript_Registry $registry Instance of the registry
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -95,7 +95,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getSubset
+	 * return the character subset required by the current language
 	 *
 	 * @since 2.1.0
 	 * 
@@ -119,7 +119,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getClass
+	 * return the current browser, device, content and text direction
 	 *
 	 * @since 2.1.0
 	 * 
@@ -144,7 +144,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getBrowserClass
+	 * return browser name and version, and browser engine
 	 *
 	 * @since 2.1.0
 	 * 
@@ -169,7 +169,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getDeviceClass
+	 * return device class
 	 *
 	 * @since 2.1.0
 	 * 
@@ -197,7 +197,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getContentClass
+	 * return content class (category or article)
 	 *
 	 * @since 2.1.0
 	 * 
@@ -225,7 +225,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * getDirectionClass
+	 * return text direction required by current language
 	 *
 	 * @since 2.1.0
 	 * 

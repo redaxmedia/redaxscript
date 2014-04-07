@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Breadcrumb
+ * parent class to provide a location based breadcrumb navigation
  *
  * @since 2.1.0
  *
@@ -14,8 +14,6 @@
 class Redaxscript_Breadcrumb
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -24,9 +22,7 @@ class Redaxscript_Breadcrumb
 	protected $_registry;
 
 	/**
-	 * breadcrumbArray
-	 *
-	 * array to store all nodes of the breadcrumb
+	 * array to store all the nodes of the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -34,9 +30,7 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * classes
-	 *
-	 * array of classes used to style breadcrumb
+	 * array of classes used to style the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -47,11 +41,11 @@ class Redaxscript_Breadcrumb
 	);
 
 	/**
-	 * construct
+	 * constructor of the class
 	 *
 	 * @since 2.1.0
-	 * 
-	 * @param Redaxscript_Registry $registry
+	 *
+	 * @param Redaxscript_Registry $registry an instance of the registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -61,7 +55,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * init
+	 * init the class
 	 *
 	 * @since 2.1.0
 	 */
@@ -72,7 +66,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * get
+	 * return the raw breadcrumb array for further processing
 	 *
 	 * @since 2.1.0
 	 *
@@ -85,9 +79,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * render
-	 *
-	 * render breadcrumb array
+	 * render the breadcrumb trail as an unordered list
 	 *
 	 * @since 2.1.0
 	 *
@@ -148,9 +140,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * build
-	 *
-	 * build breadcrumb array
+	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 */
@@ -209,9 +199,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * buildAdmin
-	 *
-	 * build admin breadcrumb array
+	 * build the breadcrumb array for current administration
 	 *
 	 * @since 2.1.0
 	 *
@@ -254,9 +242,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * buildContent
-	 *
-	 * build content breadcrumb array
+	 * build the breadcrumb array for current content
 	 *
 	 * @since 2.1.0
 	 *

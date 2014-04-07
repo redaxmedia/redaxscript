@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Detection
+ * The Detection class is a base class to detect required assets, it is extended for specific usages
  *
  * @since 2.0.0
  *
@@ -13,8 +13,6 @@
 class Redaxscript_Detection
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -31,7 +29,7 @@ class Redaxscript_Detection
 	private $_output;
 
 	/**
-	 * construct
+	 * constructor
 	 *
 	 * @since 2.0.0
 	 */
@@ -43,7 +41,7 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * getOutput
+	 * get the output of the detection
 	 *
 	 * @since 2.0.0
 	 *
@@ -56,11 +54,11 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * getParameter
+	 * get a parameter from the $_GET superglobal array
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $parameter
+	 * @param string $parameter The name of the parameter to get
 	 * @return string
 	 */
 
@@ -76,13 +74,13 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * detect
+	 * detect the required language or template
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $input
-	 * @param string $type
-	 * @param string $route
+	 * @param array $input Array of possible settings to define the required file
+	 * @param string $type Type of file to detect
+	 * @param string $route Path to the required file
 	 */
 
 	protected function _detect($input = null, $type = null, $route = null)

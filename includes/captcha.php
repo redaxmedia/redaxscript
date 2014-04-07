@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Captcha
+ * parent class to provide a simple mathematical task to ensure human users
  *
  * @since 2.0.0
  *
@@ -13,7 +13,7 @@
 class Redaxscript_Captcha
 {
 	/**
-	 * task
+	 * task to be solved
 	 *
 	 * @var string
 	 */
@@ -21,7 +21,7 @@ class Redaxscript_Captcha
 	private $_task;
 
 	/**
-	 * solution
+	 * solution to the task
 	 *
 	 * @var string
 	 */
@@ -29,7 +29,7 @@ class Redaxscript_Captcha
 	private $_solution;
 
 	/**
-	 * range
+	 * allowable range for the task
 	 *
 	 * @var array
 	 */
@@ -40,7 +40,7 @@ class Redaxscript_Captcha
 	);
 
 	/**
-	 * operators
+	 * array of mathematical operators used for the task
 	 *
 	 * @var array
 	 */
@@ -51,7 +51,7 @@ class Redaxscript_Captcha
 	);
 
 	/**
-	 * construct
+	 * constructor of the class
 	 *
 	 * @since 2.0.0
 	 */
@@ -64,7 +64,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * init
+	 * init the class
 	 *
 	 * @since 2.0.0
 	 */
@@ -75,7 +75,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * getTask
+	 * get the current task
 	 *
 	 * @since 2.0.0
 	 *
@@ -88,11 +88,11 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * getSolution
+	 * get the solution to the current task
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $mode
+	 * @param string $mode switch between plain text and hash solution
 	 * @return integer
 	 */
 
@@ -114,7 +114,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * getOperator
+	 * get the mathematical operator used for the task
 	 *
 	 * @since 2.0.0
 	 *
@@ -141,7 +141,7 @@ class Redaxscript_Captcha
 	}
 
 	/**
-	 * create
+	 * create a task of two numbers between allowable range
 	 *
 	 * @since 2.0.0
 	 */

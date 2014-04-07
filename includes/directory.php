@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Directory
+ * The Directory class provides methods to access directories in the filesystem
  *
  * @since 2.0.0
  *
@@ -14,7 +14,7 @@
 class Redaxscript_Directory
 {
 	/**
-	 * directory
+	 * name of the directory
 	 *
 	 * @var string
 	 */
@@ -22,7 +22,7 @@ class Redaxscript_Directory
 	private $_directory;
 
 	/**
-	 * directoryArray
+	 * array containing the directory listing
 	 *
 	 * @var array
 	 */
@@ -30,7 +30,7 @@ class Redaxscript_Directory
 	private $_directoryArray;
 
 	/**
-	 * exclude
+	 * files to exclude from the directory listing
 	 *
 	 * @var array
 	 */
@@ -41,7 +41,7 @@ class Redaxscript_Directory
 	);
 
 	/**
-	 * cache
+	 * local cache of the directory listing
 	 *
 	 * @var array
 	 */
@@ -49,12 +49,12 @@ class Redaxscript_Directory
 	private static $_cache;
 
 	/**
-	 * construct
+	 * constructor
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $directory
-	 * @param string|array $exclude
+	 * @param string $directory Name of the directory to scan
+	 * @param string|array $exclude File(s) to exclude from the directory listing
 	 */
 
 	public function __construct($directory = null, $exclude = array())
@@ -77,7 +77,7 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * init
+	 * initialise the directory object
 	 *
 	 * @since 2.0.0
 	 */
@@ -90,12 +90,14 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * get
+	 * get a file name from the directory listing
+	 *
+	 * returns the name of the indexed file, or the entire directory list if the index is not found
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param integer $key
-	 * @return array
+	 * @param integer $key Index into the directory listing
+	 * @return string|array
 	 */
 
 	public function get($key = null)
@@ -116,11 +118,11 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * scan
+	 * scan a directory and return an array of file names
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $directory
+	 * @param string $directory Name of the directory to scan
 	 * @return array
 	 */
 
@@ -148,12 +150,12 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * create
+	 * create a new directory
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $directory
-	 * @param integer $mode
+	 * @param string $directory Name of directory to create
+	 * @param integer $mode Access mode, default = 0777
 	 * @return boolean
 	 */
 
@@ -179,11 +181,11 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * remove
+	 * remove a selected directory or file
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $directory
+	 * @param string $directory A directory or single file to remove
 	 */
 
 	public function remove($directory = null)
