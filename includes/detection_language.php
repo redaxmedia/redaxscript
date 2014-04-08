@@ -27,7 +27,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 			'settings' => s('language') === 'detect' ? '' : s('language'),
 			'browser' => isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : '',
 			'fallback' => 'en'
-		), 'language', 'languages/{type}.php');
+		), 'language', 'languages/{value}.php');
 	}
 }
 ?>
