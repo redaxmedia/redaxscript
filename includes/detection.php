@@ -54,7 +54,7 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * get a superglobal parameter
+	 * get the superglobal parameter
 	 *
 	 * @since 2.0.0
 	 *
@@ -78,18 +78,18 @@ class Redaxscript_Detection
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $input array of possible settings
+	 * @param array $setup array of possible setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 */
 
-	protected function _detect($input = null, $type = null, $path = null)
+	protected function _detect($setup = array(), $type = null, $path = null)
 	{
-		foreach ($input as $key => $value)
+		foreach ($setup as $key => $value)
 		{
 			if ($value)
 			{
-				$file = str_replace('{type}', $value, $path);
+				$file = str_replace('{value}', $value, $path);
 
 				/* if file exists */
 
