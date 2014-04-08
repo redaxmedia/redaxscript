@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Registry class provides storage for constants
+ * parent class to store the registry
  *
  * @since 2.1.0
  *
@@ -21,7 +21,7 @@ class Redaxscript_Registry
 	protected static $_values = array();
 
 	/**
-	 * singleton instance of the class
+	 * instance of the class
 	 *
 	 * @var object
 	 */
@@ -29,7 +29,7 @@ class Redaxscript_Registry
 	protected static $_instance = null;
 
 	/**
-	 * constructor is private to ensure singleton
+	 * constructor of the class
 	 *
 	 * @since 2.1.0
 	 */
@@ -39,11 +39,11 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * fill values array with data
+	 * init the class
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $values An associative array of names & values to store
+	 * @param array $values array of registry values
 	 */
 
 	public function init($values = array())
@@ -55,11 +55,11 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * get item from values array
+	 * get item from registry
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $key The name of the item to get
+	 * @param string $key key of the item
 	 * @return string
 	 */
 
@@ -77,12 +77,12 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * set item to values array
+	 * set item to registry
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $key The name of the item to set
-	 * @param mixed $value The value of the item
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
 	 */
 
 	public static function set($key = null, $value = null)
@@ -91,7 +91,7 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * create and return the instance of the singleton class
+	 * instance of the class
 	 *
 	 * @since 2.1.0
 	 *
