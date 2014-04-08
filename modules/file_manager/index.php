@@ -198,10 +198,10 @@ function file_manager($directory = '')
 		foreach ($file_manager_directory_array as $key => $value)
 		{
 			$output .= '<tr><td class="column_first">';
-			$route = $directory . '/' . $value;
-			if (function_exists('exif_imagetype') && exif_imagetype($route))
+			$path = $directory . '/' . $value;
+			if (function_exists('exif_imagetype') && exif_imagetype($path))
 			{
-				$output .= anchor_element('external', '', '', $value, ROOT . '/' . $route);
+				$output .= anchor_element('external', '', '', $value, ROOT . '/' . $path);
 			}
 			else
 			{
@@ -214,7 +214,7 @@ function file_manager($directory = '')
 
 			/* collect filesize and filetime output */
 
-			$output .= '</td><td class="column_second">' . ceil(filesize($route) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($route)) . '</td></tr>';
+			$output .= '</td><td class="column_second">' . ceil(filesize($path) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($path)) . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}

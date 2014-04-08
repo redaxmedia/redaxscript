@@ -112,7 +112,7 @@ function gallery($directory = '', $options = '', $command = '')
 		{
 			foreach ($gallery_directory_array as $value)
 			{
-				$route = $directory . '/' . $value;
+				$path = $directory . '/' . $value;
 				$thumb_route = $directory . '/thumbs/' . $value;
 
 				/* build thumb */
@@ -125,7 +125,7 @@ function gallery($directory = '', $options = '', $command = '')
 				{
 					/* read exif data */
 
-					$image_data = exif_read_data($route);
+					$image_data = exif_read_data($path);
 					if ($image_data)
 					{
 						$image_artist = $image_data['Artist'];
@@ -165,7 +165,7 @@ function gallery($directory = '', $options = '', $command = '')
 					/* collect image output */
 
 					$image = '<img src="' . $thumb_route . '" class="image image_gallery"' . $alt_string . ' />';
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $route, $image_description, $data_string) . '</li>';
+					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $path, $image_description, $data_string) . '</li>';
 				}
 			}
 
@@ -229,25 +229,25 @@ function gallery_build_thumb($input = '', $directory = '', $options)
 	/* get extension */
 
 	$extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
-	$route = $directory . '/' . $input;
+	$path = $directory . '/' . $input;
 
 	/* switch extension */
 
 	switch ($extension)
 	{
 		case 'gif':
-			$image = imagecreatefromgif($route);
+			$image = imagecreatefromgif($path);
 		case 'jpg':
-			$image = imagecreatefromjpeg($route);
+			$image = imagecreatefromjpeg($path);
 			break;
 		case 'png':
-			$image = imagecreatefrompng($route);
+			$image = imagecreatefrompng($path);
 			break;
 	}
 
 	/* original image dimensions */
 
-	$original_dimensions = getimagesize($route);
+	$original_dimensions = getimagesize($path);
 	$original_height = $original_dimensions[1];
 	$original_width = $original_dimensions[0];
 

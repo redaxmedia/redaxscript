@@ -217,20 +217,20 @@ class Redaxscript_Directory
 
 		foreach ($directoryArray as $children)
 		{
-			$route = $path . '/' . $children;
+			$childrenPath = $path . '/' . $children;
 
 			/* remove if directory */
 
-			if (is_dir($route))
+			if (is_dir($childrenPath))
 			{
 				$this->remove($directory . '/' . $children);
 			}
 
 			/* else unlink file */
 
-			else if (is_file($route))
+			else if (is_file($childrenPath))
 			{
-				unlink($route);
+				unlink($childrenPath);
 			}
 		}
 
