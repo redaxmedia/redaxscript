@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Detection Language class detects the required language file
+ * children class to detect the required language
  *
  * @since 2.0.0
  *
@@ -13,7 +13,7 @@
 class Redaxscript_Detection_Language extends Redaxscript_Detection
 {
 	/**
-	 * initialise the detection array and detect the required file
+	 * init the class
 	 *
 	 * @since 2.1.0
 	 */
@@ -30,6 +30,4 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 		), 'language', 'languages/{type}.php');
 	}
 }
-
-
 ?>
