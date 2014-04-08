@@ -3,7 +3,7 @@
 /**
  * children class to detect the required template
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @category Detection
  * @package Redaxscript
@@ -26,7 +26,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 			'contents' => retrieve('template', $this->_registry->get('lastTable'), 'id', $this->_registry->get('lastId')),
 			'settings' => s('template'),
 			'fallback' => 'default'
-		), 'template', 'templates/{type}/index.phtml');
+		), 'template', 'templates/{value}/index.phtml');
 	}
 }
 ?>
