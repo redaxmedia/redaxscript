@@ -29,7 +29,7 @@ class Redaxscript_Autoloader
 	protected static $_directory = 'includes';
 
 	/**
-	 * filename suffix
+	 * file suffix
 	 *
 	 * @var string
 	 */
