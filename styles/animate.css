@@ -58,13 +58,11 @@
 	from
 	{
 		-webkit-transform: rotate(0);
-		-ms-transform: rotate(0);
 		transform: rotate(0);
 	}
 	to
 	{
 		-webkit-transform: rotate(360deg);
-		-ms-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
@@ -90,13 +88,11 @@
 	from
 	{
 		-webkit-transform: scale(0);
-		-ms-transform: scale(0);
 		transform: scale(0);
 	}
 	to
 	{
 		-webkit-transform: scale(1);
-		-ms-transform: scale(1);
 		transform: scale(1);
 	}
 }
