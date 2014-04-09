@@ -75,9 +75,8 @@
 	margin: -1em 0 0 -0.5em;
 	position: absolute;
 	top: 50%;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
+	-webkit-transform: scale(0);
+	transform: scale(0);
 }
 
 .gallery.gallery_loader:after
@@ -143,13 +142,13 @@
 {
 	color: #333;
 	color: rgba(0, 0, 0, 0.3);
-    bottom: 0;
-    font: bold 2em arial;
-    left: 0;
+	bottom: 0;
+	font: bold 2em arial;
+	left: 0;
 	padding: 2% 0;
-    position: absolute;
-    right: 0;
-    text-align: center;
+	position: absolute;
+	right: 0;
+	text-align: center;
 }
 
 .gallery_artist
