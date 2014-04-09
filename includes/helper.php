@@ -1,9 +1,7 @@
 <?php
 
 /**
- * The Helper class provides information required to correctly render a page
- *
- * Provides character subset, text direction, browser class, device class and content type
+ * parent class to provide required helper for templates
  *
  * @since 2.1.0
  *
@@ -32,7 +30,7 @@ class Redaxscript_Helper
 	protected $_subsetDefault = 'latin';
 
 	/**
-	 * array of languages requiring character subsets other than the default
+	 * array of languages and related character subset
 	 *
 	 * @var array
 	 */
@@ -48,7 +46,7 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * list of device types for responsive templates
+	 * array of supported device types
 	 *
 	 * @var array
 	 */
@@ -68,7 +66,7 @@ class Redaxscript_Helper
 	protected $_directionDefault = 'ltr';
 
 	/**
-	 * array of languages requiring non-default text direction
+	 * array of languages and related text direction
 	 *
 	 * @var array
 	 */
@@ -82,11 +80,11 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * constructor
+	 * constructor of the class
 	 *
 	 * @since 2.1.0
 	 * 
-	 * @param Redaxscript_Registry $registry Instance of the registry
+	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
@@ -95,7 +93,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return the character subset required by the current language
+	 * get the helper subset
 	 *
 	 * @since 2.1.0
 	 * 
@@ -119,7 +117,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return the current browser, device, content and text direction
+	 * get the helper class
 	 *
 	 * @since 2.1.0
 	 * 
@@ -144,7 +142,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return browser name and version, and browser engine
+	 * get the browser array
 	 *
 	 * @since 2.1.0
 	 * 
@@ -169,7 +167,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return device class
+	 * get the device array
 	 *
 	 * @since 2.1.0
 	 * 
@@ -197,7 +195,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return content class (category or article)
+	 * get the content array
 	 *
 	 * @since 2.1.0
 	 * 
@@ -225,7 +223,7 @@ class Redaxscript_Helper
 	}
 
 	/**
-	 * return text direction required by current language
+	 * get the direction array
 	 *
 	 * @since 2.1.0
 	 * 
