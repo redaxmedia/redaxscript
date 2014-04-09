@@ -46,7 +46,7 @@ class Redaxscript_Helper
 	);
 
 	/**
-	 * array of supported device types
+	 * array of device types
 	 *
 	 * @var array
 	 */
