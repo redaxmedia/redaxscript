@@ -13,7 +13,7 @@
 class Redaxscript_Mail
 {
 	/**
-	 * array of recipients
+	 * array of recipient
 	 *
 	 * @var array
 	 */
@@ -53,7 +53,7 @@ class Redaxscript_Mail
 	private $_attachmentArray;
 
 	/**
-	 * built from contents
+	 * built recipient contents
 	 *
 	 * @var string
 	 */
@@ -89,7 +89,7 @@ class Redaxscript_Mail
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $toArray array of recipients
+	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
 	 * @param array $bodyArray array of body items
@@ -127,7 +127,7 @@ class Redaxscript_Mail
 	}
 
 	/**
-	 * build the from contents
+	 * build the recipient contents
 	 *
 	 * @since 2.0.0
 	 */
