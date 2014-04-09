@@ -45,7 +45,7 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript_Registry $registry an instance of the registry class
+	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)
