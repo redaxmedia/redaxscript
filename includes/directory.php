@@ -90,7 +90,7 @@ class Redaxscript_Directory
 	}
 
 	/**
-	 * get a item from the directory
+	 * get the directory
 	 *
 	 * @since 2.0.0
 	 *
@@ -183,7 +183,7 @@ class Redaxscript_Directory
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $directory name of the directory 
+	 * @param string $directory name of the directory
 	 */
 
 	public function remove($directory = null)
