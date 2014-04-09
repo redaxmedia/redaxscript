@@ -129,10 +129,10 @@ class Redaxscript_Helper
 		/* merge classes */
 
 		$classes = array_merge(
-			$this->_getBrowserClass(),
-			$this->_getDeviceClass(),
-			$this->_getContentClass(),
-			$this->_getDirectionClass()
+			$this->_getBrowserArray(),
+			$this->_getDeviceArray(),
+			$this->_getContentArray(),
+			$this->_getDirectionArray()
 		);
 
 		/* implode classes */
@@ -149,7 +149,7 @@ class Redaxscript_Helper
 	 * @return array
 	 */
 
-	protected function _getBrowserClass()
+	protected function _getBrowserArray()
 	{
 		$output = array();
 
@@ -174,7 +174,7 @@ class Redaxscript_Helper
 	 * @return array
 	 */
 
-	protected function _getDeviceClass()
+	protected function _getDeviceArray()
 	{
 		$output = array();
 
@@ -202,7 +202,7 @@ class Redaxscript_Helper
 	 * @return array
 	 */
 
-	protected function _getContentClass()
+	protected function _getContentArray()
 	{
 		$output = array();
 
@@ -230,7 +230,7 @@ class Redaxscript_Helper
 	 * @return array
 	 */
 
-	protected function _getDirectionClass()
+	protected function _getDirectionArray()
 	{
 		$output[0] = $this->_directionDefault;
 
