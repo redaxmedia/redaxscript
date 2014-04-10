@@ -27,7 +27,7 @@
 	{
 		var win = window,
 			fixture = $(r.modules.qunit.options.element.qunitFixture),
-			dummy = 'Hello world';
+			dummy = 'hello world';
 
 		/* @section 1. library */
 
