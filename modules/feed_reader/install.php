@@ -13,7 +13,7 @@
 
 function feed_reader_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed reader\', \'feed_reader\', \'Redaxmedia\', \'Reads external RSS and Atom feeds\', \'2.0.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Feed reader\', \'feed_reader\', \'Redaxmedia\', \'Read external RSS and Atom feeds\', \'2.1.0\', 1, 0)';
 	mysql_query($query);
 }
 

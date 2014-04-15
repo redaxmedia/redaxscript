@@ -13,7 +13,7 @@
 
 function demo_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Demo\', \'demo\', \'Redaxmedia\', \'Enables anonymous login\', \'2.0.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Demo\', \'demo\', \'Redaxmedia\', \'Enable anonymous login\', \'2.1.0\', 1, 0)';
 	mysql_query($query);
 }
 

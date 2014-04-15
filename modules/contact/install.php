@@ -13,7 +13,7 @@
 
 function contact_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Contact\', \'contact\', \'Redaxmedia\', \'Simple contact form\', \'2.0.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Contact\', \'contact\', \'Redaxmedia\', \'Simple contact form\', \'2.1.0\', 1, 0)';
 	mysql_query($query);
 }
 
