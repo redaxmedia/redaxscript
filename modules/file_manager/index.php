@@ -183,7 +183,7 @@ function file_manager($directory = '')
 	/* collect thead and tfoot */
 
 	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_manager_file_size') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><th class="column_second">' . l('file_manager_file_size') . '</th><td class="column_last">' . l('date') . '</td></tr></tfoot>';
+	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_manager_file_size') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 
 	/* file manager directory object */
 
