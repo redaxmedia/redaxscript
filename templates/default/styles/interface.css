@@ -164,8 +164,8 @@
 .list_header_children li
 {
 	background: #444;
-	-webkit-transition: background 0.5s ease;
-	transition: background 0.5s ease;
+	-webkit-transition: background 0.4s ease;
+	transition: background 0.4s ease;
 }
 
 /* rounded items */
@@ -378,22 +378,9 @@
 	color: #fff;
 	font: 0.875em/1.25em arial;
 	left: 100%;
-	margin-left: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
 	top: -0.625em;
+	-webkit-transition: opacity 0.4s 0.4s ease;
+	transition: opacity 0.4s 0.4s ease;
 	padding: 0.75em;
-}
-
-/* default */
-
-.tooltip_default
-{
-	width: 20em;
-}
-
-/* alternative */
-
-.tooltip_alternative
-{
-	white-space: nowrap;
 }

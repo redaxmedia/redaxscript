@@ -74,6 +74,14 @@
 	{
 		font-size: 0.75em;
 	}
+
+	.tooltip
+	{
+		position: fixed;
+		top: 1em;
+		left: 1em;
+		right: 1em;
+	}
 }
 
 /* @section 5. screen max 20em */

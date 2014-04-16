@@ -150,8 +150,8 @@
 	display: block;
 	min-height: 3em;
 	position: relative;
-	-webkit-transition: color 0.3s ease;
-	transition: color 0.3s ease;
+	-webkit-transition: color 0.4s ease;
+	transition: color 0.4s ease;
 }
 
 .table_admin .move_up:hover, .table_admin .move_down:hover

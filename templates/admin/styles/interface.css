@@ -25,8 +25,8 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	-webkit-transition: padding 0.3s ease;
-	transition: padding 0.3s ease;
+	-webkit-transition: padding 0.4s ease;
+	transition: padding 0.4s ease;
 	width: 3.375em;
 }
 

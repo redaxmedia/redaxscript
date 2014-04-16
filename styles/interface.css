@@ -83,12 +83,12 @@
 
 .has_tooltip:focus .tooltip, .has_tooltip:hover .tooltip
 {
-	display: block;
+	opacity: 1;
 }
 
 .tooltip
 {
 	position: absolute;
-	display: none;
+	opacity: 0;
 	z-index: 500;
 }

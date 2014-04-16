@@ -64,18 +64,31 @@ function preview_center_start()
 
 		$output = '<div class="preview clear_fix">' . PHP_EOL;
 		ob_start();
-		include_once('modules/preview/partials/grid.phtml');
-		include_once('modules/preview/partials/typography.phtml');
-		include_once('modules/preview/partials/box.phtml');
-		include_once('modules/preview/partials/form.phtml');
-		include_once('modules/preview/partials/icon.phtml');
-		include_once('modules/preview/partials/media.phtml');
-		include_once('modules/preview/partials/interface.phtml');
-		include_once('modules/preview/partials/accordion.phtml');
-		include_once('modules/preview/partials/tab.phtml');
-		include_once('modules/preview/partials/table.phtml');
-		include_once('modules/preview/partials/dialog.phtml');
-		include_once('modules/preview/partials/note.phtml');
+
+		/* include single file */
+
+		if (file_exists('modules/preview/partials/' . SECOND_PARAMETER . '.phtml'))
+		{
+			include_once('modules/preview/partials/' . SECOND_PARAMETER . '.phtml');
+		}
+
+		/* else include all */
+
+		else
+		{
+			include_once('modules/preview/partials/grid.phtml');
+			include_once('modules/preview/partials/typography.phtml');
+			include_once('modules/preview/partials/box.phtml');
+			include_once('modules/preview/partials/form.phtml');
+			include_once('modules/preview/partials/icon.phtml');
+			include_once('modules/preview/partials/media.phtml');
+			include_once('modules/preview/partials/interface.phtml');
+			include_once('modules/preview/partials/accordion.phtml');
+			include_once('modules/preview/partials/tab.phtml');
+			include_once('modules/preview/partials/table.phtml');
+			include_once('modules/preview/partials/dialog.phtml');
+			include_once('modules/preview/partials/note.phtml');
+		}
 		$output .= ob_get_clean() . PHP_EOL;
 		$output .= '</div>';
 		echo $output;

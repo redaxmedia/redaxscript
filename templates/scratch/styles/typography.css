@@ -28,12 +28,12 @@ a:hover
 body
 {
 	color: #666;
-	font: 0.875em arial;
+	font: 1em monda, arial;
 }
 
 p
 {
-	font: 1em/2em arial;
+	font: 1em/2em monda, arial;
 }
 
 pre
@@ -62,6 +62,5 @@ pre
 .title_dialog_default
 {
 	background: #e5e5e5;
-	border-radius: 0.125em 0.125em 0 0;
 	padding: 0.75em;
 }

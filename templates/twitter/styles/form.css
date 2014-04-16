@@ -82,8 +82,8 @@ textarea
 	border-radius: 0.25em;
 	color: #555;
 	padding: 0.75em;
-	-webkit-transition: border 0.2s linear, box-shadow 0.2s linear;
-	transition: border 0.2s linear, box-shadow 0.2s linear;
+	-webkit-transition: border 0.4s ease, box-shadow 0.4s ease;
+	transition: border 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* @section 3.1 focus effect */

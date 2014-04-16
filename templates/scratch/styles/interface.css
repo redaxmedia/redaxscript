@@ -31,26 +31,9 @@
 .tooltip
 {
 	background: #f5f5f5;
-	border: 1px solid #e5e5e5;
-	border-color: rgba(0, 0, 0, 0.1);
-	border-radius: 0.125em;
-	font: 0.875em/1.25em arial;
+	font: 0.875em/1.25em monda, arial;
 	left: 100%;
 	margin-left: 1em;
 	top: -0.625em;
 	padding: 1em;
-}
-
-/* default */
-
-.tooltip_default
-{
-	width: 20em;
-}
-
-/* alternative */
-
-.tooltip_alternative
-{
-	white-space: nowrap;
 }

@@ -76,6 +76,16 @@
 	{
 		margin-left: 0.5em;
 	}
+
+	.tooltip_alternative
+	{
+		white-space: nowrap;
+	}
+
+	.tooltip_default
+	{
+		width: 20em;
+	}
 }
 
 /* @section 5. screen min 100em */

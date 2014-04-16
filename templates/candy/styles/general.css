@@ -6,10 +6,11 @@
  * 3. footer
  * 4. header
  *    4.1 children grid fix
- * 5. grid elements
- * 6. wrapper
+ * 5. sidebar
+ * 6. grid elements
+ * 7. wrapper
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -72,7 +73,14 @@ body
 	margin-right: 0.75rem;
 }
 
-/* @section 5. grid elements */
+/* @section 5. sidebar */
+
+.sidebar
+{
+	margin-top: 2em;
+}
+
+/* @section 6. grid elements */
 
 .grid_space > a, .grid_space > blockquote, .grid_space > button, .grid_space > code, .grid_space > div, .grid_space > dl, .grid_space > fieldset, .grid_space > form, .grid_space > h1, .grid_space > h2, .grid_space > h3, .grid_space > h4, .grid_space > h5, .grid_space > h6, .grid_space > hr, .grid_space > img, .grid_space > ol, .grid_space > p, .grid_space > table, .grid_space > ul, .line_space
 {
@@ -86,7 +94,7 @@ body
 	margin-top: 1rem;
 }
 
-/* @section 6. wrapper */
+/* @section 7. wrapper */
 
 .wrapper
 {
