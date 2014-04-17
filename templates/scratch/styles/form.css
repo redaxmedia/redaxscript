@@ -20,13 +20,12 @@
 
 .button_default, .button_search
 {
-	background: #e5e5e5;
-	color: #666;
+	background: #ddd;
+	color: #333;
 	cursor: pointer;
 	display: inline-block;
 	font: 1em/2.625em monda, arial;
 	padding: 0 0.75em;
-	text-align: center;
 }
 
 .button_default.button_large
@@ -48,7 +47,7 @@
 
 .field_search, .field_select, .field_text, .field_textarea
 {
-	background: #f5f5f5;
+	background: #eee;
 	color: #666;
 	font: 1em monda, arial;
 	padding: 0.5em;
@@ -86,7 +85,7 @@
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
 	cursor: default;
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 /* @section 6. form default */
@@ -98,7 +97,6 @@
 
 .form_default .label
 {
-	font-size: 0.875em;
 	display: block;
 }
 
