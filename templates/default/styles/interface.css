@@ -336,7 +336,6 @@
 .js .list_tab_default .item_active a
 {
 	color: #444;
-	cursor: default;
 	line-height: 1.75em;
 }
 

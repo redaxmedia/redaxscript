@@ -10,6 +10,7 @@
  * 3. textarea
  * 4. search elements
  * 5. form default
+ *    5.1 label
  * 6. space between elements
  *
  * @since 2.1.0
@@ -140,6 +141,8 @@
 {
 	margin: 0.5em 0;
 }
+
+/* @section 5.1 label */
 
 .form_default .label
 {

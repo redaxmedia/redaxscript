@@ -10,6 +10,7 @@
  * 4. search elements
  * 5. disabled and readonly
  * 6. form default and form search
+ *    6.1 label
  * 7. space between elements
  *
  * @since 2.1.0
@@ -118,10 +119,8 @@
 
 .button_default[disabled], .button_search[disabled], .field_search[disabled], .field_search[readonly], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
-	background: #eee;
-	border-color: #ddd;
-	color: #999;
-	cursor: default;
+	opacity: 0.5;
+	pointer-events: none;
 }
 
 /* @section 6. form default and form search */
@@ -138,6 +137,8 @@
 {
 	margin: 0.5em 0;
 }
+
+/* @section 6.1 label */
 
 .form_default .label
 {

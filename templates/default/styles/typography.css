@@ -122,11 +122,6 @@ pre
 	cursor: pointer;
 }
 
-.js .title_accordion_default.title_active
-{
-	cursor: default;
-}
-
 /* @section 6. several titles */
 
 .js .title_accordion_default.title_active, .title_dialog_default

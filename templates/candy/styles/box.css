@@ -21,7 +21,7 @@
 .box_code
 {
 	background: #222;
-	background: rgba(255, 255, 255, 0.05);
+	background: rgba(0, 0, 0, 0.5);
 	display: block;
 	font: 0.875em/1.25em monospace, arial;
 	padding: 2em;
@@ -38,18 +38,20 @@
 
 .box_default
 {
-	background: #111;
-	background: rgba(0, 0, 0, 0.5);
-	border: 1px solid #2c2c2c;
+	background: #e2e2e2;
+	background: -webkit-linear-gradient(#fff, #e2e2e2);
+	background: linear-gradient(#fff, #e2e2e2);
+	color: #474747;
 	border-radius: 0.25em;
 	padding: 1em;
+	text-shadow: 0 1px #fff;
 }
 
 /* @section 4. several boxes */
 
 .box_dialog_default, .sidebar .box_extra
 {
-	background: #111;
+	background: #222;
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 0.125em 0.125em 0.25em 0.25em;
 	color: #fff;

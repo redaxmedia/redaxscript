@@ -11,6 +11,7 @@
  * 3. textarea
  * 4. disabled and readonly
  * 5. form admin
+ *    5.1 label
  * 6. space between elements
  *
  * @since 2.1.0
@@ -155,7 +156,7 @@
 	border-color: #ababab;
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 	color: #9e9e9e;
-	cursor: default;
+	pointer-events: none;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
@@ -176,6 +177,8 @@
 {
 	margin: 0.5em 0;
 }
+
+/* @section 5.1 label */
 
 .form_admin .label
 {

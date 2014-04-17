@@ -51,11 +51,6 @@
 	cursor: pointer;
 }
 
-.js .title_accordion_admin.title_active
-{
-	cursor: default;
-}
-
 /* @section 2.2 last element*/
 
 .js .set_accordion_admin.set_accordion_last .title_accordion_admin

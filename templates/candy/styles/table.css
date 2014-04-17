@@ -15,7 +15,7 @@
 .table_default
 {
 	background: #222;
-	background: rgba(255, 255, 255, 0.05);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .table_default caption, .table_default td, .table_default th

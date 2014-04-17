@@ -80,11 +80,6 @@
 		left: 1em;
 		position: fixed;
 		right: 1em;
-		top: -999em;
-	}
-
-	.tooltip:hover:after
-	{
 		top: 1em;
 	}
 }

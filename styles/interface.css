@@ -5,9 +5,10 @@
  *    1.1 children elements
  * 2. list tab
  * 3. set tab
- * 4. tooltip
+ * 4. title accordion
+ * 5. tooltip
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -56,6 +57,11 @@
 	display: inline-block;
 }
 
+.js .list_tab .item_active
+{
+	pointer-events: none;
+}
+
 /* @section 3. set tab */
 
 .js .set_tab
@@ -68,7 +74,13 @@
 	display: block;
 }
 
-/* @section 4. tooltip */
+/* @section 4. title accordion */
+
+.js .title_accordion_default.title_active {
+	pointer-events: none;
+}
+
+/* @section 5. tooltip */
 
 .tooltip
 {
@@ -85,6 +97,7 @@
 {
 	content: attr(data-tooltip);
 	opacity: 0;
+	pointer-events: none;
 	position: absolute;
 	z-index: 500;
 }
