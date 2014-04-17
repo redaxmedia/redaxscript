@@ -76,7 +76,8 @@
 
 /* @section 4. title accordion */
 
-.js .title_accordion_default.title_active {
+.js .title_accordion_default.title_active
+{
 	pointer-events: none;
 }
 

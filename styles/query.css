@@ -57,6 +57,7 @@
 	a.button_default
 	{
 		display: block;
+		text-align: center;
 	}
 
 	button.button_default, .field_select, .field_text, .field_textarea.field_small

@@ -238,9 +238,8 @@
 	border-radius: 0.25em;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	color: #555;
-	left: 100%;
-	margin-left: 1em;
-	top: -0.625em;
+	left: 110%;
+	top: -1em;
 	-webkit-transition: opacity 0.4s 0.4s ease;
 	transition: opacity 0.4s 0.4s ease;
 	padding: 1em;

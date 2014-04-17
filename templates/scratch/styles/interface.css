@@ -31,8 +31,7 @@
 .tooltip:after
 {
 	background: #eee;
-	left: 100%;
-	margin-left: 1em;
+	left: 110%;
 	top: -1em;
 	padding: 1em;
 }
