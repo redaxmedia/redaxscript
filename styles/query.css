@@ -75,12 +75,17 @@
 		font-size: 0.75em;
 	}
 
-	.tooltip
+	.tooltip:after
 	{
 		position: fixed;
-		top: 1em;
+		top: -999em;
 		left: 1em;
 		right: 1em;
+	}
+
+	.tooltip:hover:after
+	{
+		top: 1em;
 	}
 }
 

@@ -1,30 +1,22 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
- * 2. button default and button search
- * 3. default fields
- * 4. textarea dimensions
- * 5. search elements
- * 6. disabled and readonly
- * 7. form default
- * 8. form search
- * 9. space between elements
+ * 1. several buttons
+ * 2. several fields
+ * 3. textarea
+ * 4. search elements
+ * 5. disabled and readonly
+ * 6. form default
+ * 7. form search
+ * 8. space between elements
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. tag styling */
-
-textarea
-{
-	resize: vertical;
-}
-
-/* @section 2. button default and button search */
+/* @section 1. several buttons */
 
 .button_default, .button_search
 {
@@ -42,7 +34,7 @@ textarea
 	font-size: 1.25em;
 }
 
-/* @section 3. default fields */
+/* @section 2. several fields */
 
 .field_select, .field_text, .field_textarea.field_small
 {
@@ -62,11 +54,12 @@ textarea
 	padding: 0.5em;
 }
 
-/* @section 4. textarea dimensions */
+/* @section 3. textarea */
 
 .field_textarea
 {
 	min-height: 10em;
+	resize: vertical;
 	width: 100%;
 }
 
@@ -75,7 +68,7 @@ textarea
 	min-height: 5em;
 }
 
-/* @section 5. search elements */
+/* @section 4. search elements */
 
 .button_search
 {
@@ -88,7 +81,7 @@ textarea
 	width: 67%;
 }
 
-/* @section 6. disabled and readonly */
+/* @section 5. disabled and readonly */
 
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
@@ -96,7 +89,7 @@ textarea
 	opacity: 0.8;
 }
 
-/* @section 7. form default */
+/* @section 6. form default */
 
 .form_default li
 {
@@ -114,14 +107,14 @@ textarea
 	content: ' ' attr(data-message);
 }
 
-/* @section 8. form search */
+/* @section 7. form search */
 
 .form_search
 {
 	margin: 1em 0;
 }
 
-/* @section 9. space between elements */
+/* @section 8. space between elements */
 
 .box_dialog_default .button_default, .box_notification .button_default, .form_default .button_default
 {

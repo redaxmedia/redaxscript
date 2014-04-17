@@ -1,33 +1,25 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
- * 2. button admin button
+ * 1. several buttons
+ *    1.1 hover effect
+ *    1.2 active effect
+ *    1.3 icons
+ * 2. several fields
  *    2.1 hover effect
- *    2.2 active effect
- *    2.3 icons
- * 3. admin fields
- *    3.1 hover effect
- *    3.2 focus effect
- * 4. textarea dimensions
- * 5. disabled and readonly
- * 6. form admin
- * 7. space between elements
+ *    2.2 focus effect
+ * 3. textarea
+ * 4. disabled and readonly
+ * 5. form admin
+ * 6. space between elements
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. tag styling */
-
-textarea
-{
-	resize: vertical;
-}
-
-/* @section 2. button admin button */
+/* @section 1. several buttons */
 
 .button_admin
 {
@@ -51,7 +43,7 @@ textarea
 	font-size: 1em;
 }
 
-/* @section 2.1 hover effect */
+/* @section 1.1 hover effect */
 
 .button_admin:hover
 {
@@ -61,7 +53,7 @@ textarea
 	color: #eee;
 }
 
-/* @section 2.2 active effect */
+/* @section 1.2 active effect */
 
 .button_admin:active
 {
@@ -72,7 +64,7 @@ textarea
 	color: #fff;
 }
 
-/* @section 2.3 icons */
+/* @section 1.3 icons */
 
 .button_admin.button_plus_admin:before, .button_admin.button_cancel_admin:before, .button_admin.button_submit_admin:before
 {
@@ -97,7 +89,7 @@ textarea
 	content: 'd';
 }
 
-/* @section 3. admin fields */
+/* @section 2. several fields */
 
 .field_select_admin, .field_text_admin, .field_textarea_admin.field_small_admin
 {
@@ -124,14 +116,14 @@ textarea
 	padding: 0.5em;
 }
 
-/* @section 3.1 hover effect */
+/* @section 2.1 hover effect */
 
 .field_select_admin:hover, .field_text_admin:hover, .field_textarea_admin:hover
 {
 	border-color: #adadad;
 }
 
-/* @section 3.2 focus effect */
+/* @section 2.2 focus effect */
 
 .field_select_admin:focus, .field_text_admin:focus, .field_textarea_admin:focus
 {
@@ -142,11 +134,12 @@ textarea
 	box-shadow: 0 0 3px #fff;
 }
 
-/* @section 4. textarea dimensions */
+/* @section 3. textarea */
 
 .field_textarea_admin
 {
 	min-height: 20em;
+	resize: vertical;
 	width: 100%;
 }
 
@@ -155,7 +148,7 @@ textarea
 	min-height: 5em;
 }
 
-/* @section 5. disabled and readonly */
+/* @section 4. disabled and readonly */
 
 .button_admin[disabled]
 {
@@ -178,7 +171,7 @@ textarea
 	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
-/* @section 6. form admin */
+/* @section 5. form admin */
 
 .form_admin li
 {
@@ -197,7 +190,7 @@ textarea
 	content: ' ' attr(data-message);
 }
 
-/* @section 7. space between elements */
+/* @section 6. space between elements */
 
 .box_dialog_admin .button_admin, .box_notification_admin .button_admin, .form_admin .button_admin
 {

@@ -93,12 +93,12 @@
 		margin-left: 1em;
 	}
 
-	.tooltip_alternative
+	.tooltip_alternative:after
 	{
 		white-space: nowrap;
 	}
 
-	.tooltip_default
+	.tooltip_default:after
 	{
 		width: 20em;
 	}

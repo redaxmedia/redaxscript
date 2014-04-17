@@ -184,7 +184,7 @@
 
 /* @section 7. tooltip */
 
-.tooltip
+.tooltip:after
 {
 	background: #92901b;
 	background: -webkit-linear-gradient(#d0cf20, #92901b);
