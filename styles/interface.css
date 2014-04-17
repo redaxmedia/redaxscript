@@ -70,25 +70,26 @@
 
 /* @section 4. tooltip */
 
-.has_tooltip
+.tooltip
 {
 	cursor: help;
 	position: relative;
 }
 
-.link_default.has_tooltip
+.tooltip.link_default
 {
 	cursor: pointer;
 }
 
-.has_tooltip:focus .tooltip, .has_tooltip:hover .tooltip
+.tooltip:after
 {
-	opacity: 1;
+	content: attr(data-tooltip);
+	opacity: 0;
+	position: absolute;
+	z-index: 500;
 }
 
-.tooltip
+.tooltip:focus:after, .tooltip:hover:after
 {
-	position: absolute;
-	opacity: 0;
-	z-index: 500;
+	opacity: 1;
 }

@@ -232,7 +232,7 @@
 
 /* @section 8. tooltip */
 
-.tooltip
+.tooltip:after
 {
 	background: #fff;
 	border: 1px solid #ddd;

@@ -368,9 +368,9 @@
 
 /* @section 9. tooltip */
 
-.tooltip
+.tooltip:after
 {
-	background: #33acee;
+	background: #0090db;
 	background: -webkit-linear-gradient(#00a2f8, #0090db);
 	background: linear-gradient(#00a2f8, #0090db);
 	border-radius: 0.25em;

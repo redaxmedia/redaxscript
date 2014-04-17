@@ -28,7 +28,7 @@
 
 /* @section 3. tooltip */
 
-.tooltip
+.tooltip:after
 {
 	background: #f5f5f5;
 	font: 0.875em/1.25em monda, arial;
