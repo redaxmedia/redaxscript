@@ -60,31 +60,27 @@ function share_this($route = '')
 	$code = 'target="_blank" rel="nofollow"';
 	$networks = array(
 		'facebook' => array(
-			'url' => 'facebook.com/sharer.php?u=',
-			'code' => ' data-height="270"'
+			'url' => 'http://facebook.com/sharer.php?u='
 		),
 		'googleplusone' => array(
-			'url' => 'plusone.google.com/_/+1/confirm?url=',
-			'code' => ' data-height="560"'
+			'url' => 'http://plusone.google.com/_/+1/confirm?url='
 		),
 		'twitter' => array(
-			'url' => 'twitter.com/share?url=',
+			'url' => 'http://twitter.com/share?url=',
 			'code' => ' data-height="340"'
 		),
 		'pinterest' => array(
-			'url' => 'pinterest.com/pin/create/button/?url=',
-			'code' => ' data-width="850"'
+			'url' => 'http://pinterest.com/pin/create/button/?url='
 		),
 		'linkedin' => array(
-			'url' => 'linkedin.com/shareArticle?url=',
-			'code' => ' data-width="850"'
+			'url' => 'http://linkedin.com/shareArticle?url=',
+			'code' => ' data-height="490" data-width="850"'
 		),
 		'stumbleupon' => array(
-			'url' => 'stumbleupon.com/submit?url=',
-			'code' => ' data-width="850"'
+			'url' => 'http://stumbleupon.com/submit?url='
 		),
 		'delicious' => array(
-			'url' => 'del.icio.us/post?url=',
+			'url' => 'http://del.icio.us/post?url=',
 			'code' => ' data-height="580"'
 		)
 	);
