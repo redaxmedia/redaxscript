@@ -13,7 +13,7 @@
 
 function live_reload_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Live reload\', \'live_reload\', \'Redaxmedia\', \'CSS live reload for developers\', \'2.1.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Live reload\', \'live_reload\', \'Redaxmedia\', \'Live reload for CSS\', \'2.1.0\', 1, 1)';
 	mysql_query($query);
 }
 
