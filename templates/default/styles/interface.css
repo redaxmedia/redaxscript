@@ -66,6 +66,11 @@
 	list-style-position: inside;
 }
 
+.list_default ul
+{
+	margin-left: 2em;
+}
+
 /* @section 3. list footer */
 
 .list_footer a

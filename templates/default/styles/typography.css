@@ -162,8 +162,8 @@ pre
 .title_content_sub
 {
 	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
-	margin-bottom: 1em;
-	margin-top: 1em;
+	margin-bottom: 0.5em;
+	margin-top: 1.5em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 

@@ -27,6 +27,11 @@
 	list-style-position: inside;
 }
 
+.list_default ul
+{
+	margin-left: 2em;
+}
+
 /* @section 3. tooltip */
 
 .tooltip:after
