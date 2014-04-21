@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Redaxscript Config
+ * parent class to store database config
  *
  * @since 2.0.0
  *
@@ -13,7 +13,7 @@
 class Redaxscript_Config
 {
 	/**
-	 * config
+	 * database config
 	 *
 	 * @var array
 	 */
@@ -30,23 +30,28 @@ class Redaxscript_Config
 	);
 
 	/**
-	 * get
+	 * get the config
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $key
+	 * @param string $key item from the config
 	 * @return string
 	 */
 
 	public function get($key = null)
 	{
+		/* return single value */
+
 		if (array_key_exists($key, $this->_config))
 		{
 			$output = $this->_config[$key];
 		}
+
+		/* else return array */
+
 		else
 		{
-			$output = null;
+			$output = $this->_config;
 		}
 		return $output;
 	}
