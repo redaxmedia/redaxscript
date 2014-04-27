@@ -9,10 +9,9 @@
  * 6. box note
  * 7. box sidebar
  * 8. box tab default
- *    8.1 javascript enabled
  * 9. space between elements
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -92,13 +91,6 @@
 	background: #fff;
 	border: 1px solid #ddd;
 	padding: 1em 1.5em;
-}
-
-/* @section 8.1 javascript enabled */
-
-.js .box_tab_default
-{
-	height: 30em;
 }
 
 /* @section 9. space between elements */

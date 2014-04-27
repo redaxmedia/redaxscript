@@ -8,10 +8,9 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
- *    4.1 javascript enabled
  * 5. space between elements
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -94,13 +93,6 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
-}
-
-/* @section 4.1 javascript enabled */
-
-.js .box_tab_admin
-{
-	height: 30em;
 }
 
 /* @section 5. space between elements */

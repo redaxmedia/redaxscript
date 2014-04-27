@@ -139,7 +139,6 @@
 
 			/* show active set */
 
-			tabBox.height('auto');
 			tabSet.filter('.js_set_active').show();
 
 			/* listen for click */

@@ -5,7 +5,6 @@
  * 2. box code
  * 3. box comment
  * 4. box default and box tab default
- *    4.1 javascript enabled
  * 5. box dialog default
  * 6. box extra
  * 7. box infoline
@@ -15,7 +14,7 @@
  * 11. box quote
  * 12. space between elements
  *
- * @since 2.0.2
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -68,13 +67,6 @@
 	background: #eee;
 	color: #555;
 	padding: 1em 1.5em;
-}
-
-/* @section 4.1 javascript enabled */
-
-.js .box_tab_default
-{
-	height: 30em;
 }
 
 /* @section 5. box dialog default */
