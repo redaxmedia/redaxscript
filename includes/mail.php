@@ -1,7 +1,7 @@
 <?php
 
 /**
- * parent class to send an email
+ * parent class to send an mail
  *
  * @since 2.0.0
  *
