@@ -134,7 +134,6 @@
 		{
 			var tab = $(this),
 				tabItem = tab.find(options.element.tabItem),
-				tabBox = tab.find(options.element.tabBox),
 				tabSet = tab.find(options.element.tabSet);
 
 			/* show active set */
