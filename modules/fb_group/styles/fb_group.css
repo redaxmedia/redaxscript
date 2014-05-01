@@ -80,6 +80,11 @@
 	margin-right: 1em;
 }
 
+.box_fb_group_comment .image_fb_group_square
+{
+	width: 3em;
+}
+
 .box_fb_group_comment_infoline
 {
 	background: #b9b9b9;
