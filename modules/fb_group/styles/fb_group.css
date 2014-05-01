@@ -1,40 +1,39 @@
 /**
  * @tableofcontents
  *
- * 1. link fb group user image
- * 2. box fb group message sub
- * 3. box fb group like infoline
- * 4. fb group comment elements
+ * 1. fb group message
+ * 2. fb group message sub
+ * 3. fb group infoline
+ * 4. fb group comment
  * 5. space between elements
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. link fb group user image */
+/* @section 1. fb group message */
 
-.link_fb_group_user_image
+.box_fb_group_message .link_fb_group_user_image
 {
-	border: 1px solid #bdbdbd;
-	box-shadow: 0 0 6px #c6c6c6;
 	display: inline-block;
 }
 
-.link_fb_group_user_image img
+.box_fb_group_message .image_fb_group_square
 {
-	border: 1px solid #e1e1e1;
+	background: #eee;
+	border-radius: 0.125em;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 	float: left;
-	height: 50px;
-	width: 50px;
+	padding: 0.25em;
 }
 
-/* @section 2. box fb group message sub */
+/* @section 2. fb group message sub */
 
 .box_fb_group_message_sub
 {
-	box-shadow: inset 1px 0 #bdbdbd, inset 3px 0 #d5d5d5, inset 4px 0 #fcfcfc;
+	box-shadow: inset 1px 0 #b9b9b9, inset 3px 0 #d5d5d5, inset 4px 0 #eee;
 	margin: 1em 0 2em;
 	padding: 0.25em 0 0.25em 1.5em;
 	white-space: pre-line;
@@ -43,15 +42,10 @@
 .title_fb_group_message_sub
 {
 	font-size: 1em;
-	left: 5.5em;
+	left: 5em;
 	position: absolute;
-	top: -4.25em;
+	top: -4em;
 	text-decoration: underline;
-}
-
-.title_fb_group_message_sub, .title_fb_group_message_sub a
-{
-	color: #474747;
 }
 
 .wrapper_fb_group_message_sub
@@ -59,7 +53,7 @@
 	position: relative;
 }
 
-/* @section 3. box fb group like infoline */
+/* @section 3. fb group infoline */
 
 .box_fb_group_like_infoline
 {
@@ -69,23 +63,15 @@
 
 .box_fb_group_like_infoline a
 {
-	color: #474747;
 	text-decoration: underline;
 }
 
-/* @section 4. fb group comment elements */
+/* @section 4. fb group comment */
 
 .box_fb_group_comment, .link_fb_group_comment_read_more
 {
-	background: #e2e2e2;
-	border: 1px solid #cdcdcd;
-	color: #474747;
-	padding: 1em;
-}
-
-.box_fb_group_comment + .box_fb_group_comment, .link_fb_group_comment_read_more
-{
-	border-top-width: 0;
+	background: #eee;
+	padding: 1em 1.5em;
 }
 
 .box_fb_group_comment .link_fb_group_user_image
@@ -94,23 +80,16 @@
 	margin-right: 1em;
 }
 
-.box_fb_group_comment .link_fb_group_user_image img
-{
-	height: 35px;
-	width: 35px;
-}
-
 .box_fb_group_comment_infoline
 {
-	background: #dadada;
-	background: -webkit-linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	background: linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	border: 1px solid #cdcdcd;
-	border-bottom: 0;
-	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1em/2.25em arial;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	background: #b9b9b9;
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
+	border: 1px solid #a5a5a5;
+	border-radius: 0.125em 0.125em 0 0;
+	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;
+	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .box_fb_group_comment_sub
@@ -125,14 +104,8 @@
 
 .link_fb_group_comment_read_more
 {
-	border-radius: 0 0 0.25em 0.25em;
 	display: block;
 	text-decoration: underline;
-}
-
-.link_fb_group_comment_read_more:hover
-{
-	background: #e8e8e8;
 }
 
 /* @section 5. space between elements */

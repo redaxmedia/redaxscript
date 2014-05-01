@@ -2,9 +2,8 @@
  * @tableofcontents
  *
  * 1. several media
- *    1.1 hover effect
  *
- * @since 2.0.0
+ * @since 2.1.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -29,11 +28,4 @@
 {
 	max-width: 94%;
 	padding: 3%;
-}
-
-/* @section 1.1 hover effect */
-
-.image_default:hover, .image_gallery:hover, .player_default:hover
-{
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }

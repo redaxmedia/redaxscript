@@ -15,10 +15,8 @@
 
 .box_feed_reader
 {
-	background: #e2e2e2;
-	border: 1px solid #cdcdcd;
-	color: #474747;
-	padding: 1em;
+	background: #eee;
+	padding: 1em 1.5em;
 	white-space: pre-line;
 }
 
@@ -31,20 +29,14 @@
 
 .title_feed_reader
 {
-	background: #dadada;
-	background: -webkit-linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	background: linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	border: 1px solid #cdcdcd;
-	border-bottom: 0;
-	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1em/2.25em arial;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-}
-
-.title_feed_reader, .title_feed_reader a
-{
-	color: #474747;
+	background: #b9b9b9;
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
+	border: 1px solid #a5a5a5;
+	border-radius: 0.125em 0.125em 0 0;
+	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;
+	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .title_feed_reader a:hover
