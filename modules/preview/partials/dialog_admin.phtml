@@ -1,0 +1,21 @@
+<?php if (LOGGED_IN == TOKEN): ?>
+	<h2 class="title_content">
+		<?php if (SECOND_PARAMETER !== 'dialog_admin'): ?>
+			<a href="preview/dialog_admin" title="Dialog Admin">Dialog Admin</a>
+		<?php else: ?>
+			Dialog Admin
+		<?php endif; ?>
+	</h2>
+
+
+	<h3 class="title_content_sub">.title_dialog_admin + .box_dialog_admin</h3>
+
+	<div class="dialog_admin">
+		<h3 class="title_dialog title_dialog_admin"><?php echo l('confirm'); ?></h3>
+		<div class="box_dialog box_dialog_admin">
+			<p><?php echo l('dialog_question') . l('question_mark'); ?></p>
+			<a class="js_ok button_admin"><?php echo l('ok'); ?></a>
+			<a class="js_cancel button_admin"><?php echo l('cancel'); ?></a>
+		</div>
+	</div>
+<?php endif; ?>

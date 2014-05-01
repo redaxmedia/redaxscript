@@ -1,4 +1,10 @@
-<h2 class="title_content">Notes</h2>
+<h2 class="title_content">
+	<?php if (SECOND_PARAMETER !== 'note'): ?>
+		<a href="preview/note" title="Note">Note</a>
+	<?php else: ?>
+		Note
+	<?php endif; ?>
+</h2>
 
 
 <h3 class="title_content_sub">.box_note</h3>
@@ -8,10 +14,11 @@
 <div class="box_note note_success">.note_success <a href="#">link</a></div>
 <div class="box_note note_info">.note_info <a href="#">link</a></div>
 
-
-<h3 class="title_content_sub">.field_note</h3>
-
 <?php echo form_element('form'); ?>
+
+
+	<h3 class="title_content_sub">input.field_note</h3>
+
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo form_element('text', '', 'field_text field_note note_error', '', '.note_error'); ?></li>
@@ -20,6 +27,10 @@
 			<li><?php echo form_element('text', '', 'field_text field_note note_info', '', '.note_info'); ?></li>
 		</ul>
 	</fieldset>
+
+
+	<h3 class="title_content_sub">select.field_note</h3>
+
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo select_element('', 'field_select field_note note_error', '', array(

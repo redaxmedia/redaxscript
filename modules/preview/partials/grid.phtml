@@ -1,4 +1,10 @@
-<h2 class="title_content">Grid system</h2>
+<h2 class="title_content">
+	<?php if (SECOND_PARAMETER !== 'grid'): ?>
+		<a href="preview/grid" title="Grid">Grid</a>
+	<?php else: ?>
+		Grid
+	<?php endif; ?>
+</h2>
 
 
 <h3 class="title_content_sub">.grid</h3>
@@ -156,7 +162,7 @@
 </div>
 
 
-<h2 class="title_content">Grid sizes</h2>
+<h3 class="title_content_sub">sizes</h3>
 
 <div class="line clear_fix">
 	<div class="grid_space s1o1">

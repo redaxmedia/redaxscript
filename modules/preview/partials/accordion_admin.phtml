@@ -1,0 +1,75 @@
+<?php if (LOGGED_IN == TOKEN): ?>
+	<h2 class="title_content">
+		<?php if (SECOND_PARAMETER !== 'accordion_admin'): ?>
+			<a href="preview/accordion_admin" title="Accordion Admin">Accordion Admin</a>
+		<?php else: ?>
+			Accordion Admin
+		<?php endif; ?>
+	</h2>
+
+
+	<h3 class="title_content_sub">.js_accordion (div > div > h3 + div)</h3>
+
+	<div class="js_accordion">
+		<div class="js_set_accordion js_set_active set_accordion set_accordion_admin set_active">
+			<h3 class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">
+				<?php echo l('1'); ?>
+			</h3>
+			<div class="js_box_accordion js_box_active box_accordion box_accordion_admin box_active">
+				<?php echo l('1'); ?>
+			</div>
+		</div>
+		<div class="js_set_accordion set_accordion set_accordion_admin">
+			<h3 class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('2'); ?>
+			</h3>
+			<div class="js_box_accordion box_accordion box_accordion_admin">
+				<?php echo l('2'); ?>
+			</div>
+		</div>
+		<div class="js_set_accordion set_accordion set_accordion_admin set_accordion_last">
+			<h3 class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('3'); ?>
+			</h3>
+			<div class="js_box_accordion box_accordion box_accordion_admin">
+				<?php echo l('3'); ?>
+			</div>
+		</div>
+	</div>
+
+
+	<h3 class="title_content_sub">.js_accordion (form > fieldset > legend + ul)</h3>
+
+	<form class="js_accordion">
+		<fieldset class="js_set_accordion set_accordion set_accordion_admin">
+			<legend class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('4'); ?>
+			</legend>
+			<ul class="js_box_accordion box_accordion box_accordion_admin">
+				<li>
+					<?php echo l('4'); ?>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_admin set_active">
+			<legend class="js_title_accordion js_title_active title_accordion title_accordion_admin title_active">
+				<?php echo l('5'); ?>
+			</legend>
+			<ul class="js_box_accordion js_box_active box_accordion box_accordion_admin box_active">
+				<li>
+					<?php echo l('5'); ?>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset class="js_set_accordion set_accordion set_accordion_admin set_accordion_last">
+			<legend class="js_title_accordion title_accordion title_accordion_admin">
+				<?php echo l('6'); ?>
+			</legend>
+			<ul class="js_box_accordion box_accordion box_accordion_admin">
+				<li>
+					<?php echo l('6'); ?>
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+<?php endif; ?>

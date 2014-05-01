@@ -1,14 +1,20 @@
-<h2 class="title_content">Form</h2>
+<h2 class="title_content">
+	<?php if (SECOND_PARAMETER !== 'form'): ?>
+		<a href="preview/form" title="Form">Form</a>
+	<?php else: ?>
+		Form
+	<?php endif; ?>
+</h2>
 
 
-<h3 class="title_content_sub">.form_search > .field_search ~ .button_search</h3>
+<h3 class="title_content_sub">.form_search > .field_search + .button_search</h3>
 
 <?php search(); ?>
 
 
 <h3 class="title_content_sub">.field_{type}</h3>
 
-<?php echo form_element('form', '', 'form_default'); ?>
+<?php echo form_element('form', '', 'js_validate_form form_default'); ?>
 	<?php echo form_element('fieldset'); ?>
 		<ul>
 			<li><?php echo form_element('text', 'field_text', 'field_text', '', '', '.field_text'); ?></li>
@@ -24,40 +30,14 @@
 				l('3') => 3
 			), '', '.field_select', 'multiple="multiple"'); ?></li>
 			<li><?php echo form_element('textarea', 'field_textarea_field_small', 'field_textarea field_small', '', '', '.field_textarea + .field_small'); ?></li>
-			<li><?php echo form_element('textarea', 'field_textarea', 'field_textarea', '', '', '.field_textarea'); ?></li>
+			<li><?php echo form_element('textarea', 'field_textarea', 'field_textarea', '', '', '.field_textarea[required]', 'required="required"'); ?></li>
 		</ul>
 	</fieldset>
 
-	<?php echo form_element('button', '', 'button_default', '', l('submit')); ?>
-	<?php echo form_element('button', '', 'button_default button_large', '', l('submit')); ?>
-	<?php echo form_element('button', '', 'button_default button_large', '', l('submit'), '', 'disabled="disabled"'); ?>
+
+	<h3 class="title_content_sub">.button_{type}</h3>
+
+	<?php echo form_element('button', '', 'js_submit button_default', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'js_submit button_default button_large', '', l('submit')); ?>
+	<?php echo form_element('button', '', 'js_submit button_default button_large', '', l('submit'), '', 'disabled="disabled"'); ?>
 </form>
-
-
-<?php if (LOGGED_IN == TOKEN): ?>
-	<h3 class="title_content_sub">.field_{type}_admin</h3>
-
-	<?php echo form_element('form', '', 'form_admin'); ?>
-		<?php echo form_element('fieldset'); ?>
-			<ul>
-				<li><?php echo form_element('text', 'field_text_admin', 'field_text_admin', '', '', '.field_text_admin'); ?></li>
-				<li><?php echo select_element('field_select_admin', 'field_select_admin', '', array(
-					l('select') => 'select',
-					l('1') => 1,
-					l('2') => 2,
-					l('3') => 3
-				), '', '.field_select_admin'); ?></li>
-				<li><?php echo select_element('field_select_admin_multiple', 'field_select_admin', '', array(
-					l('1') => 1,
-					l('2') => 2,
-					l('3') => 3
-				), '', '.field_select_admin', 'multiple="multiple"'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_admin_field_small_admin', 'field_textarea_admin field_small_admin', '', '', '.field_textarea_admin + .field_small_admin'); ?></li>
-				<li><?php echo form_element('textarea', 'field_textarea_admin', 'field_textarea_admin', '', '', '.field_textarea_admin'); ?></li>
-			</ul>
-		</fieldset>
-		<?php echo form_element('button', '', 'button_admin', '', l('submit')); ?>
-		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit')); ?>
-		<?php echo form_element('button', '', 'button_admin button_large_admin', '', l('submit'), '', 'disabled="disabled"'); ?>
-	</form>
-<?php endif; ?>
