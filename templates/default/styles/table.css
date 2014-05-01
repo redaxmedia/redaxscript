@@ -13,11 +13,6 @@
 
 /* @section 1. table default */
 
-.table_default caption, .table_default td, .table_default th
-{
-	padding: 0.75em;
-}
-
 /* @section 1.1 body */
 
 .table_default tbody
@@ -38,6 +33,11 @@
 	background: rgba(0, 0, 0, 0.02);
 }
 
+.table_default tbody td
+{
+	padding: 1em;
+}
+
 /* @section 1.2 head and foot */
 
 .table_default caption, .table_default thead tr, .table_default tfoot tr
@@ -49,4 +49,9 @@
 	font: bold 1.25em 'pt sans narrow', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
+}
+
+.table_default caption, .table_default thead th, .table_default tfoot td
+{
+	padding: 0.5em 1em;
 }
