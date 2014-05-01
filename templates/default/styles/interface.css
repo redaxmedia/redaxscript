@@ -326,7 +326,7 @@
 
 .list_tab_default a
 {
-	font: 1.5em/1.5em 'pt sans narrow', 'trebuchet ms', arial;
+	font: bold 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	padding: 0 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
@@ -342,7 +342,7 @@
 .js .list_tab_default .item_active a
 {
 	color: #444;
-	line-height: 1.75em;
+	line-height: 2.5em;
 }
 
 /* @section 8. list search result */
