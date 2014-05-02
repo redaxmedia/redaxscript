@@ -54,7 +54,7 @@ pre
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font: 1em/3em arial;
-	text-indent: 1em;
+	padding: 0 1em;
 	width: 100%;
 }
 
