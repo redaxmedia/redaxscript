@@ -35,6 +35,7 @@
 	a.button_admin
 	{
 		display: block;
+		text-align: center;
 	}
 
 	button.button_admin, .field_select_admin, .field_text_admin, .field_textarea_admin.field_small_admin
