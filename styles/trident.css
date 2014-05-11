@@ -1,3 +1,14 @@
+/**
+ * @tableofcontents
+ *
+ * 1. tooltip
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. tooltip */
 
 .msie9 .tooltip:after, .msie10 .tooltip:after

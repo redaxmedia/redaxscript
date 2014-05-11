@@ -88,5 +88,26 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals(null, $result);
 	}
+
+	/**
+	 * testReset
+	 *
+	 * @since 2.1.0
+	 */
+
+	public function testReset()
+	{
+		/* setup */
+
+		$this->_registry->reset();
+
+		/* result */
+
+		$result = $this->_registry->instance();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript_Registry', $result);
+	}
 }
 ?>

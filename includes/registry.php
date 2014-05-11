@@ -106,5 +106,18 @@ class Redaxscript_Registry
 		}
 		return self::$_instance;
 	}
+
+	/**
+	 * reset the instance
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return object
+	 */
+
+	public static function reset()
+	{
+		self::$_instance = null;
+	}
 }
 ?>
