@@ -83,7 +83,7 @@ class Redaxscript_Helper
 	 * constructor of the class
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
@@ -96,7 +96,7 @@ class Redaxscript_Helper
 	 * get the helper subset
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return string
 	 */
 
@@ -120,7 +120,7 @@ class Redaxscript_Helper
 	 * get the helper class
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return string
 	 */
 
@@ -145,7 +145,7 @@ class Redaxscript_Helper
 	 * get the browser array
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return array
 	 */
 
@@ -155,7 +155,10 @@ class Redaxscript_Helper
 
 		/* browser and version */
 
-		$output[] = $this->_registry->get('myBrowser') . $this->_registry->get('myBrowserVersion');
+		if ($this->_registry->get('myBrowser') && $this->_registry->get('myBrowserVersion'))
+		{
+			$output[] = $this->_registry->get('myBrowser') . $this->_registry->get('myBrowserVersion');
+		}
 
 		/* engine */
 
@@ -170,7 +173,7 @@ class Redaxscript_Helper
 	 * get the device array
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return array
 	 */
 
@@ -198,7 +201,7 @@ class Redaxscript_Helper
 	 * get the content array
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return array
 	 */
 
@@ -226,7 +229,7 @@ class Redaxscript_Helper
 	 * get the direction array
 	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @return array
 	 */
 

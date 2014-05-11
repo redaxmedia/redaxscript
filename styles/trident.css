@@ -1,0 +1,11 @@
+/* @section 1. tooltip */
+
+.msie9 .tooltip:after, .msie10 .tooltip:after
+{
+	display: none;
+}
+
+.msie9 .tooltip:focus:after, .msie9 .tooltip:hover:after, .msie10 .tooltip:focus:after, .msie10 .tooltip:hover:after
+{
+	display: inline-block;
+}

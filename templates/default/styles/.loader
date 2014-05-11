@@ -27,6 +27,9 @@
 [firefox]
 1 = styles/firefox.css
 
+[trident]
+1 = styles/trident.css
+
 [webkit]
 1 = styles/webkit.css
 
