@@ -12,10 +12,10 @@
 	{
 		"apigen/apigen": "2.8.0",
 		"mikey179/vfsStream": "1.2.0",
-		"phpunit/phpunit": "4.0.18",
+		"phpunit/phpunit": "4.1.0",
 		"redaxmedia/redaxscript-apigen-template": "dev-master",
 		"redaxmedia/tocgen": "3.0.2",
 		"satooshi/php-coveralls": "0.6.1",
-		"squizlabs/php_codesniffer": "1.5.2"
+		"squizlabs/php_codesniffer": "1.5.3"
 	}
 }
