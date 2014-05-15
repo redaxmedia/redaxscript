@@ -38,6 +38,14 @@
 	{
 		display: block;
 	}
+
+	.tooltip:after
+	{
+		left: 1em;
+		position: fixed;
+		right: 1em;
+		top: 1em;
+	}
 }
 
 /* @section 3. screen max 40em */
@@ -74,14 +82,6 @@
 	.player
 	{
 		font-size: 0.75em;
-	}
-
-	.tooltip:after
-	{
-		left: 1em;
-		position: fixed;
-		right: 1em;
-		top: 1em;
 	}
 }
 
