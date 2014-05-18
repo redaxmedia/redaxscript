@@ -40,5 +40,11 @@
 		"Hello <function>{\"print_r\":{\"input\":\"world\"}}<function>",
 		"",
 		"Hello world1"
+	],
+	[
+		"",
+		"<function>{\"exec\":{\"input\":\"dir\"}}<function>",
+		"",
+		""
 	]
 ]
