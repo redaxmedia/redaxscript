@@ -5,9 +5,9 @@
 			"fullRoute": "",
 			"firstParameter": "hello"
 		},
-		"Hello<break> world",
+		"hello<break> world",
 		"hello/world",
-		"Hello<a>read_more</a>"
+		"hello<a>read_more</a>"
 	],
 	[
 		{
@@ -15,9 +15,9 @@
 			"fullRoute": "hello/world",
 			"firstParameter": "hello"
 		},
-		"Hello<break> world",
+		"hello<break> world",
 		"hello/world",
-		"Hello world"
+		"hello world"
 	],
 	[
 		{
@@ -25,21 +25,33 @@
 			"fullRoute": "hello/world",
 			"firstParameter": "login"
 		},
-		"Hello<break> world",
+		"hello<break> world",
 		"hello/world",
-		"Hello<a>read_more</a>"
+		"hello<a>read_more</a>"
 	],
 	[
 		"",
-		"Hello <code>world</code>",
+		"hello <code>world</code>",
 		"",
-		"Hello <code class=\"box_code\">world</code>"
+		"hello <code class=\"box_code\">world</code>"
 	],
 	[
 		"",
-		"Hello <function>{\"print_r\":{\"input\":\"world\"}}<function>",
+		"<function>ob_clean<function>",
 		"",
-		"Hello world1"
+		"1"
+	],
+	[
+		"",
+		"<function>exec<function>",
+		"",
+		""
+	],
+	[
+		"",
+		"<function>{\"md5\":{\"string\":\"hello world\"}}<function>",
+		"",
+		"5eb63bbbe01eeed093cb22bb8f5acdc3"
 	],
 	[
 		"",
