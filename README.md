@@ -61,18 +61,6 @@ Search engine friendly
 * Valid and sematic HTML markup
 
 
-Our standards
--------------
-
-* Use the Allman indent style
-* Learn our naming and coding conventions
-* Keep newlines and whitespaces
-* Keep file and directory structure
-* Follow seperation of concerns
-* Build on modern web techniques
-* Use our quality assurance tools
-
-
 Related links
 -------------
 
