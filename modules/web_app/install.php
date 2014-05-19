@@ -13,7 +13,7 @@
 
 function web_app_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Web app\', \'web_app\', \'Redaxmedia\', \'Web application support\', \'2.0.2\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Web app\', \'web_app\', \'Redaxmedia\', \'Web application support\', \'2.1.0\', 1, 0)';
 	mysql_query($query);
 }
 
