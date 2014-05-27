@@ -111,6 +111,10 @@ function registration_post()
 	{
 		$error = l('user_empty');
 	}
+	else if (!preg_match('/^[A-Za-z]{1}[A-Za-z0-9]+$/', $user))
+	{
+		$error = l('user_invalid');
+	}
 	else if ($email == '')
 	{
 		$error = l('email_empty');

@@ -259,6 +259,7 @@ $l['user_new'] = 'New user';
 $l['user_no'] = 'No user present';
 $l['user_exists'] = 'User already exists';
 $l['user_incorrect'] = 'User is incorrect';
+$l['user_invalid'] = 'User contains invalid character';
 $l['user_empty'] = 'User is empty';
 $l['user_or_email'] = 'User or email';
 $l['session'] = 'Session';
