@@ -45,7 +45,7 @@ function login_form()
 	$output = '<h2 class="title_content">' . l('login') . '</h2>';
 	$output .= form_element('form', 'form_login', 'js_validate_form form_default form_login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
 	$output .= form_element('fieldset', '', 'set_login', '', '', $legend) . '<ul>';
-	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user_or_email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
 	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"' . $code_disabled) . '</li>';
 
 	/* collect captcha task output */
@@ -99,13 +99,13 @@ function login_post()
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
 		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
-		if (strpos($post_user, '@') !== false)
+		if (check_email($post_user) == 0)
 		{
-			$users_query .= 'WHERE email = \'' . $post_user . '\'';
+			$users_query .= 'WHERE user = \'' . $post_user . '\'';
 		}
 		else
 		{
-			$users_query .= 'WHERE user = \'' . $post_user . '\'';
+			$users_query .= 'WHERE email = \'' . $post_user . '\'';
 		}
 		$users_result = mysql_query($users_query);
 		while ($r = mysql_fetch_assoc($users_result))
