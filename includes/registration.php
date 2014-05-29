@@ -115,7 +115,7 @@ function registration_post()
 	{
 		$error = l('email_empty');
 	}
-	else if (check_login($user) == 0 || check_email($user) == 1)
+	else if (check_login($user) == 0)
 	{
 		$error = l('user_incorrect');
 	}
