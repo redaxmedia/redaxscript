@@ -275,7 +275,7 @@ module.exports = function (grunt)
 			},
 			options:
 			{
-				eol: 'crlf'
+				eol: 'lf'
 			}
 		},
 		shell:
