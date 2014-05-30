@@ -103,13 +103,13 @@ function login_post()
 		if (check_email($post_user) == 0)
 		{
 			$post_user = clean($post_user, 0);
-			$users_query .= 'WHERE user = \'' . $post_user . '\'';
+			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT = 1';
 		}
 		else
 		{
 			$post_user = clean($post_user, 3);
 			$login_by_email = 1;
-			$users_query .= 'WHERE email = \'' . $post_user . '\'';
+			$users_query .= 'WHERE email = \'' . $post_user . '\' LIMIT = 1';
 		}
 		$users_result = mysql_query($users_query);
 		while ($r = mysql_fetch_assoc($users_result))

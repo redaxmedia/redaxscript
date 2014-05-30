@@ -131,6 +131,10 @@ function registration_post()
 	{
 		$error = l('user_exists');
 	}
+	else if (retrieve('id', 'users', 'email', $email))
+	{
+		$error = l('user_exists');
+	}
 	else
 	{
 		if (USERS_NEW == 0 && s('verification') == 1)
