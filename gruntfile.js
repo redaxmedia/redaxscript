@@ -292,15 +292,15 @@ module.exports = function (grunt)
 			{
 				command: 'sh vendor/bin/tocgen.sh templates .tocgen'
 			},
-			tocLintBase:
+			toclintBase:
 			{
 				command: 'sh vendor/bin/tocgen.sh scripts .tocgen -l && sh vendor/bin/tocgen.sh styles .tocgen -l'
 			},
-			tocLintModules:
+			toclintModules:
 			{
 				command: 'sh vendor/bin/tocgen.sh modules .tocgen -l'
 			},
-			tocLintTemplates:
+			toclintTemplates:
 			{
 				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
 			},
@@ -467,9 +467,9 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('toclint',
 	[
-		'shell:tocLintBase',
-		'shell:tocLintModules',
-		'shell:tocLintTemplates'
+		'shell:toclintBase',
+		'shell:toclintModules',
+		'shell:toclintTemplates'
 	]);
 	grunt.registerTask('toc',
 	[
