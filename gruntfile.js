@@ -282,27 +282,27 @@ module.exports = function (grunt)
 		{
 			tocBase:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen && php vendor/redaxmedia/tocgen/cli.php styles .tocgen'
+				command: 'sh vendor/bin/tocgen.sh scripts .tocgen && sh vendor/bin/tocgen.sh styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen'
+				command: 'sh vendor/bin/tocgen.sh modules .tocgen'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
+				command: 'sh vendor/bin/tocgen.sh templates .tocgen'
 			},
 			tocLintBase:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen -l && php vendor/redaxmedia/tocgen/cli.php styles .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh scripts .tocgen -l && sh vendor/bin/tocgen.sh styles .tocgen -l'
 			},
 			tocLintModules:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh modules .tocgen -l'
 			},
 			tocLintTemplates:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
 			},
 			apiBase:
 			{
