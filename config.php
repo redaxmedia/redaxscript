@@ -35,6 +35,7 @@ class Redaxscript_Config
 	 * @since 2.0.0
 	 *
 	 * @param string $key item from the config
+	 *
 	 * @return string
 	 */
 
