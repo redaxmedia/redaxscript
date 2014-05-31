@@ -93,6 +93,7 @@ class Redaxscript_Captcha
 	 * @since 2.0.0
 	 *
 	 * @param string $mode switch between plain text and hash solution
+	 *
 	 * @return integer
 	 */
 

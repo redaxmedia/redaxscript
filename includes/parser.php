@@ -166,6 +166,7 @@ class Redaxscript_Parser
 	 * @since 2.0.0
 	 *
 	 * @param string $input content be parsed
+	 *
 	 * @return string
 	 */
 
@@ -192,6 +193,7 @@ class Redaxscript_Parser
 	 * @since 2.0.0
 	 *
 	 * @param string $input content be parsed
+	 *
 	 * @return string
 	 */
 
@@ -222,6 +224,7 @@ class Redaxscript_Parser
 	 * @since 2.0.0
 	 *
 	 * @param string $input content be parsed
+	 *
 	 * @return string
 	 */
 
