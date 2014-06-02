@@ -13,7 +13,7 @@
 
 function maps_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Maps\', \'maps\', \'Redaxmedia\', \'Integrate Goggle Maps\', \'2.1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Maps\', \'maps\', \'Redaxmedia\', \'Integrate Goggle Maps\', \'2.2.0\', 1, 0)';
 	mysql_query($query);
 }
 

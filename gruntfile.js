@@ -6,6 +6,7 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
+		version: grunt.file.readJSON('package.json').version,
 		jshint:
 		{
 			dependency:
@@ -338,69 +339,90 @@ module.exports = function (grunt)
 				[
 					'ruleset.xml'
 				],
-				dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/'
+				dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/',
+				expand: true
+			},
+			distFull:
+			{
+				src:
+				[
+					'<%=compress.distFull.src%>'
+				],
+				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_full',
+				expand: true
+			},
+			distLite:
+			{
+				src:
+					[
+						'<%=compress.distLite.src%>'
+					],
+				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
+				expand: true
 			}
 		},
 		compress:
 		{
-			deployFull:
+			distFull:
 			{
 				src:
 				[
 					'includes/**',
-					'redaxscript/languages/**',
-					'redaxscript/modules/**',
-					'redaxscript/templates/**',
-					'redaxscript/config.php',
-					'redaxscript/index.php',
-					'redaxscript/install.php',
-					'redaxscript/README.md'
+					'languages/**',
+					'modules/**',
+					'templates/**',
+					'config.php',
+					'index.php',
+					'install.php',
+					'README.md'
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_2.1.0_full.zip'
+					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_full.zip'
 				}
 			},
-			deployLite:
+			distLite:
 			{
 				src:
 				[
 					'includes/**',
-					'redaxscript/languages/en.php',
-					'redaxscript/languages/misc.php',
-					'redaxscript/modules/call_home/**',
-					'redaxscript/templates/admin/**',
-					'redaxscript/templates/default/**',
-					'redaxscript/templates/install/**',
-					'redaxscript/config.php',
-					'redaxscript/index.php',
-					'redaxscript/install.php',
-					'redaxscript/README.md'
+					'languages/en.php',
+					'languages/misc.php',
+					'modules/call_home/**',
+					'templates/admin/**',
+					'templates/default/**',
+					'templates/install/**',
+					'config.php',
+					'index.php',
+					'install.php',
+					'README.md'
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_2.1.0_lite.zip'
+					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
 				}
 			},
-			deployLanguages:
+			distLanguages:
 			{
 				src:
 				[
 					'languages/*.php',
 					'!languages/misc.php'
 				],
-				dist: '../redaxscript-dist/files/languages'
+				dest: '../redaxscript-dist/files',
+				expand: true
 			},
-			deployModules:
+			distModules:
 			{
 				src:
 				[
 					'modules/**',
 					'!modules/demo'
 				],
-				dist: '../redaxscript-dist/files/modules'
+				dest: '../redaxscript-dist/files',
+				expand: true
 			},
-			deployTemplates:
+			distTemplates:
 			{
 				src:
 				[
@@ -408,7 +430,27 @@ module.exports = function (grunt)
 					'!templates/admin',
 					'!templates/install'
 				],
-				dist: '../redaxscript-dist/files/templates'
+				dest: '../redaxscript-dist/files',
+				expand: true
+			},
+			distSQL:
+			{
+				src:
+				[
+					'../redaxscript-sql/*.sql'
+				],
+				dest: '../redaxscript-dist/files/sql',
+				expand: true
+			},
+			distMedia:
+			{
+				src:
+				[
+					'../redaxscript-media/files/logos/**',
+					'../redaxscript-media/files/screenshots/**'
+				],
+				dest: '../redaxscript-dist/files/sql',
+				expand: true
 			}
 		},
 		img:
@@ -567,9 +609,16 @@ module.exports = function (grunt)
 		'smushit',
 		'svgmin'
 	]);
-	grunt.registerTask('deploy',
+	grunt.registerTask('dist',
 	[
-		'compress:deployFull',
-		'compress:deployLite'
+		'copy:distFull',
+		'copy:distLite',
+		'compress:distFull',
+		'compress:distLite',
+		'compress:distLanguages',
+		'compress:distModules',
+		'compress:distTemplates',
+		'compress:distSQL',
+		'compress:distMedia'
 	]);
 };

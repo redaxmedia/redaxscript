@@ -13,7 +13,7 @@
 
 function dawanda_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Dawanda\', \'dawanda\', \'Redaxmedia\', \'Javascript powered Dawanda API client\', \'2.1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Dawanda\', \'dawanda\', \'Redaxmedia\', \'Javascript powered Dawanda API client\', \'2.2.0\', 1, 0)';
 	mysql_query($query);
 }
 
