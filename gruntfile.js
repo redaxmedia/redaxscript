@@ -10,21 +10,33 @@ module.exports = function (grunt)
 		jshint:
 		{
 			dependency:
-			[
-				'gruntfile.js'
-			],
+			{
+				src:
+				[
+					'gruntfile.js'
+				]
+			},
 			base:
-			[
-				'scripts/*.js'
-			],
+			{
+				src:
+				[
+					'scripts/*.js'
+				]
+			},
 			modules:
-			[
-				'modules/*/scripts/*.js'
-			],
+			{
+				src:
+				[
+					'modules/*/scripts/*.js'
+				]
+			},
 			templates:
-			[
-				'templates/*/scripts/*.js'
-			],
+			{
+				src:
+				[
+					'templates/*/scripts/*.js'
+				]
+			},
 			options:
 			{
 				jshintrc: '.jshintrc'
@@ -33,18 +45,27 @@ module.exports = function (grunt)
 		jsonlint:
 		{
 			dependency:
-			[
-				'composer.json',
-				'package.json'
-			],
+			{
+				src:
+				[
+					'composer.json',
+					'package.json'
+				]
+			},
 			modules:
-			[
-				'modules/web_app/files/manifest.json'
-			],
+			{
+				src:
+				[
+					'modules/**/*.json'
+				]
+			},
 			provider:
-			[
-				'tests/provider/*.json'
-			]
+			{
+				src:
+				[
+					'tests/provider/*.json'
+				]
+			}
 		},
 		csslint:
 		{
