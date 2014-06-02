@@ -354,9 +354,9 @@ module.exports = function (grunt)
 			distLite:
 			{
 				src:
-					[
-						'<%=compress.distLite.src%>'
-					],
+				[
+					'<%=compress.distLite.src%>'
+				],
 				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
 				expand: true
 			}
@@ -420,7 +420,7 @@ module.exports = function (grunt)
 					'!modules/demo'
 				],
 				dest: '../redaxscript-dist/files',
-				expand: true
+				expand  : true
 			},
 			distTemplates:
 			{
@@ -430,14 +430,13 @@ module.exports = function (grunt)
 					'!templates/admin',
 					'!templates/install'
 				],
-				dest: '../redaxscript-dist/files',
-				expand: true
+				dest: '../redaxscript-dist/files/'
 			},
 			distSQL:
 			{
 				src:
 				[
-					'../redaxscript-sql/*.sql'
+					'../redaxscript-sql/<%= version %>/*.sql'
 				],
 				dest: '../redaxscript-dist/files/sql',
 				expand: true
@@ -446,10 +445,10 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'../redaxscript-media/files/logos/**',
-					'../redaxscript-media/files/screenshots/**'
+					'../redaxscript-media/logos/**',
+					'../redaxscript-media/screenshots/**'
 				],
-				dest: '../redaxscript-dist/files/sql',
+				dest: '../redaxscript-dist/files/media',
 				expand: true
 			}
 		},
