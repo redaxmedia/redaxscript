@@ -334,16 +334,81 @@ module.exports = function (grunt)
 		{
 			ruleset:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'ruleset.xml'
-						],
-						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/'
-					}
-				]
+					'ruleset.xml'
+				],
+				dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/'
+			}
+		},
+		compress:
+		{
+			deployFull:
+			{
+				src:
+				[
+					'includes/**',
+					'redaxscript/languages/**',
+					'redaxscript/modules/**',
+					'redaxscript/templates/**',
+					'redaxscript/config.php',
+					'redaxscript/index.php',
+					'redaxscript/install.php',
+					'redaxscript/README.md'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/releases/redaxscript_2.1.0_full.zip'
+				}
+			},
+			deployLite:
+			{
+				src:
+				[
+					'includes/**',
+					'redaxscript/languages/en.php',
+					'redaxscript/languages/misc.php',
+					'redaxscript/modules/call_home/**',
+					'redaxscript/templates/admin/**',
+					'redaxscript/templates/default/**',
+					'redaxscript/templates/install/**',
+					'redaxscript/config.php',
+					'redaxscript/index.php',
+					'redaxscript/install.php',
+					'redaxscript/README.md'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/releases/redaxscript_2.1.0_lite.zip'
+				}
+			},
+			deployLanguages:
+			{
+				src:
+				[
+					'languages/*.php',
+					'!languages/misc.php'
+				],
+				dist: '../redaxscript-dist/files/languages'
+			},
+			deployModules:
+			{
+				src:
+				[
+					'modules/**',
+					'!modules/demo'
+				],
+				dist: '../redaxscript-dist/files/modules'
+			},
+			deployTemplates:
+			{
+				src:
+				[
+					'templates/**',
+					'!templates/admin',
+					'!templates/install'
+				],
+				dist: '../redaxscript-dist/files/templates'
 			}
 		},
 		img:
@@ -354,7 +419,7 @@ module.exports = function (grunt)
 				[
 					'modules/*/images/*.gif',
 					'modules/*/images/*.jpg',
-					'modules/*/images/*.png',
+					'modules/*/images/*.png'
 				]
 			},
 			templates:
@@ -433,6 +498,7 @@ module.exports = function (grunt)
 	/* load tasks */
 
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -500,5 +566,10 @@ module.exports = function (grunt)
 		'img',
 		'smushit',
 		'svgmin'
+	]);
+	grunt.registerTask('deploy',
+	[
+		'compress:deployFull',
+		'compress:deployLite'
 	]);
 };
