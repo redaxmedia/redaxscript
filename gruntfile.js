@@ -433,16 +433,27 @@ module.exports = function (grunt)
 				dest: '../redaxscript-dist/files',
 				expand: true
 			},
-			distModules:
+			distModules: function ()
 			{
-				src:
-				[
-					'modules/**',
-					'!modules/demo'
-				],
-				dest: '../redaxscript-dist/files',
-				expand  : true
-			},
+				var modules = grunt.file.expand('modules/*'),
+					config = {};
+
+				for (var i in modules)
+				{
+					config[i] =
+					{
+						src:
+						[
+							'modules/' + modules[i] + '/**'
+						],
+						options:
+						{
+							archive: '../redaxscript-dist/files/modules/' + modules[i] + '.zip'
+						}
+					}
+					return config[i];
+				}
+			}(),
 			distTemplates:
 			{
 				src:
