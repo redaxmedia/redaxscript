@@ -450,7 +450,7 @@ module.exports = function (grunt)
 						{
 							archive: '../redaxscript-dist/files/modules/' + modules[i] + '.zip'
 						}
-					}
+					};
 					return config[i];
 				}
 			}(),
