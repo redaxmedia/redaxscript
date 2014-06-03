@@ -433,36 +433,82 @@ module.exports = function (grunt)
 				dest: '../redaxscript-dist/files',
 				expand: true
 			},
-			distModules: function ()
-			{
-				var modules = grunt.file.expand('modules/*'),
-					config = {};
-
-				for (var i in modules)
-				{
-					config[i] =
-					{
-						src:
-						[
-							'modules/' + modules[i] + '/**'
-						],
-						options:
-						{
-							archive: '../redaxscript-dist/files/modules/' + modules[i] + '.zip'
-						}
-					}
-					return config[i];
-				}
-			}(),
-			distTemplates:
+			distModulesAnalytics:
 			{
 				src:
 				[
-					'templates/**',
-					'!templates/admin',
-					'!templates/install'
+					'modules/analytics/**'
 				],
-				dest: '../redaxscript-dist/files/'
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/analytics.zip'
+				}
+			},
+			distModulesArchive:
+			{
+				src:
+				[
+					'modules/archive/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/archive.zip'
+				}
+			},
+			distTemplatesCandy:
+			{
+				src:
+				[
+					'templates/candy/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/candy.zip'
+				}
+			},
+			distTemplatesScratch:
+			{
+				src:
+				[
+					'templates/scratch/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/scratch.zip'
+				}
+			},
+			distTemplatesTwitter:
+			{
+				src:
+				[
+					'templates/twitter/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/twitter.zip'
+				}
+			},
+			distTemplatesWide:
+			{
+				src:
+				[
+					'templates/wide/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/wide.zip'
+				}
+			},
+			distTemplatesZepto:
+			{
+				src:
+				[
+					'templates/zepto/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/zepto.zip'
+				}
 			},
 			distSQL:
 			{
@@ -473,15 +519,27 @@ module.exports = function (grunt)
 				dest: '../redaxscript-dist/files/sql',
 				expand: true
 			},
-			distMedia:
+			distMediaLogos:
 			{
 				src:
 				[
-					'../redaxscript-media/logos/**',
+					'../redaxscript-media/logos/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/media/logos.zip'
+				}
+			},
+			distMediaScreenshots:
+			{
+				src:
+				[
 					'../redaxscript-media/screenshots/**'
 				],
-				dest: '../redaxscript-dist/files/media',
-				expand: true
+				options:
+				{
+					archive: '../redaxscript-dist/files/media/screenshots.zip'
+				}
 			}
 		},
 		img:
@@ -644,12 +702,6 @@ module.exports = function (grunt)
 	[
 		'copy:distFull',
 		'copy:distLite',
-		'compress:distFull',
-		'compress:distLite',
-		'compress:distLanguages',
-		'compress:distModules',
-		'compress:distTemplates',
-		'compress:distSQL',
-		'compress:distMedia'
+		'compress'
 	]);
 };
