@@ -2,7 +2,7 @@
 <?php head(); ?>
 <?php styles(); ?>
 <?php if (!MY_MOBILE): ?>
-	<link type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow|Open+Sans&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
+	<link type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow<?php echo urlencode('|'); ?>Open+Sans&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
 <?php endif; ?>
 <link href="templates/default/images/favicon.ico" rel="shortcut icon" />
 <?php scripts('startup'); ?>
