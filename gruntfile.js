@@ -431,6 +431,7 @@ module.exports = function (grunt)
 					'!languages/misc.php'
 				],
 				dest: '../redaxscript-dist/files',
+				ext: '.zip',
 				expand: true
 			},
 			distModulesAnalytics:
@@ -453,6 +454,281 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/archive.zip'
+				}
+			},
+			distModulesCallHome:
+			{
+				src:
+				[
+					'modules/call_home/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/call_home.zip'
+				}
+			},
+			distModulesContact:
+			{
+				src:
+				[
+					'modules/contact/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/contact.zip'
+				}
+			},
+			distModulesDawanda:
+			{
+				src:
+				[
+					'modules/dawanda/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/dawanda.zip'
+				}
+			},
+			distModulesDBBackup:
+			{
+				src:
+				[
+					'modules/db_backup/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/db_backup.zip'
+				}
+			},
+			distModulesDebug:
+			{
+				src:
+				[
+					'modules/debug/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/debug.zip'
+				}
+			},
+			distModulesDisqus:
+			{
+				src:
+				[
+					'modules/disqus/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/disqus.zip'
+				}
+			},
+			distModulesEditor:
+			{
+				src:
+				[
+					'modules/editor/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/editor.zip'
+				}
+			},
+			distModulesFBGroup:
+			{
+				src:
+				[
+					'modules/fb_group/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/fb_group.zip'
+				}
+			},
+			distModulesFeedGenerator:
+			{
+				src:
+				[
+					'modules/feed_generator/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/feed_generator.zip'
+				}
+			},
+			distModulesFeedReader:
+			{
+				src:
+				[
+					'modules/feed_reader/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/feed_reader.zip'
+				}
+			},
+			distModulesFileManager:
+			{
+				src:
+				[
+					'modules/file_manager/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/file_manager.zip'
+				}
+			},
+			distModulesGallery:
+			{
+				src:
+				[
+					'modules/gallery/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/gallery.zip'
+				}
+			},
+			distModulesGetFile:
+			{
+				src:
+				[
+					'modules/get_file/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/get_file.zip'
+				}
+			},
+			distModulesGithubTracker:
+			{
+				src:
+				[
+					'modules/github_tracker/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/github_tracker.zip'
+				}
+			},
+			distModulesLazyLoad:
+			{
+				src:
+				[
+					'modules/lazy_load/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/lazy_load.zip'
+				}
+			},
+			distModulesMaps:
+			{
+				src:
+				[
+					'modules/maps/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/maps.zip'
+				}
+			},
+			distModulesMultiLanguage:
+			{
+				src:
+				[
+					'modules/multi_language/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/multi_language.zip'
+				}
+			},
+			distModulesPreview:
+			{
+				src:
+				[
+					'modules/preview/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/preview.zip'
+				}
+			},
+			distModulesQunit:
+			{
+				src:
+				[
+					'modules/qunit/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/qunit.zip'
+				}
+			},
+			distModulesRecentView:
+			{
+				src:
+				[
+					'modules/recent_view/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/recent_view.zip'
+				}
+			},
+			distModulesShareThis:
+			{
+				src:
+				[
+					'modules/share_this/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/share_this.zip'
+				}
+			},
+			distModulesSitemap:
+			{
+				src:
+				[
+					'modules/sitemap/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/sitemap.zip'
+				}
+			},
+			distModulesSitemapXML:
+			{
+				src:
+				[
+					'modules/sitemap_xml/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/sitemap_xml.zip'
+				}
+			},
+			distModulesValidator:
+			{
+				src:
+				[
+					'modules/validator/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/validator.zip'
+				}
+			},
+			distModulesWebApp:
+			{
+				src:
+				[
+					'modules/web_app/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/web_app.zip'
 				}
 			},
 			distTemplatesCandy:
