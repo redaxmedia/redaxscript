@@ -54,12 +54,12 @@ if (FIRST_PARAMETER == 'registration' && s('registration') == 1)
 
 if (LOGGED_IN == TOKEN)
 {
-	include_once('includes/admin/admin.php');
-	include_once('includes/admin/center.php');
+	include_once('includes/admin_admin.php');
+	include_once('includes/admin_center.php');
 }
 if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 {
-	include_once('includes/admin/query.php');
+	include_once('includes/admin_query.php');
 	switch (true)
 	{
 		case CATEGORIES_NEW == 1:
@@ -76,26 +76,26 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 		case COMMENTS_DELETE == 1:
 			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 			{
-				include_once('includes/admin/contents.php');
+				include_once('includes/admin_contents.php');
 			}
 		case GROUPS_NEW == 1:
 		case GROUPS_EDIT == 1:
 		case GROUPS_DELETE == 1:
 			if (TABLE_PARAMETER == 'groups')
 			{
-				include_once('includes/admin/groups.php');
+				include_once('includes/admin_groups.php');
 			}
 		case MODULES_INSTALL == 1:
 		case MODULES_EDIT == 1:
 		case MODULES_UNINSTALL == 1:
 			if (TABLE_PARAMETER == 'modules')
 			{
-				include_once('includes/admin/modules.php');
+				include_once('includes/admin_modules.php');
 			}
 		case SETTINGS_EDIT == 1:
 			if (TABLE_PARAMETER == 'settings')
 			{
-				include_once('includes/admin/settings.php');
+				include_once('includes/admin_settings.php');
 			}
 		case USERS_NEW == 1:
 		case USERS_EDIT == 1:
@@ -103,7 +103,7 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 		case USERS_EXCEPTION == 1:
 			if (TABLE_PARAMETER == 'users')
 			{
-				include_once('includes/admin/users.php');
+				include_once('includes/admin_users.php');
 			}
 			break;
 	}
@@ -180,4 +180,3 @@ else
 	}
 	hook('render_end');
 }
-?>

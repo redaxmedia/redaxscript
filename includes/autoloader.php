@@ -9,7 +9,6 @@
  * @category Autoloader
  * @author Henry Ruhs
  */
-
 class Redaxscript_Autoloader
 {
 	/**
@@ -66,14 +65,19 @@ class Redaxscript_Autoloader
 
 	protected static function _load($className = null)
 	{
-		$fileName = strtolower(str_replace(self::$_nameSpace, '', $className)) . self::$_fileSuffix;
+		$fileName = str_replace(self::$_nameSpace, '', $className);
+		$fileNameFolderStyle = str_replace('_', '/', $fileName) . self::$_fileSuffix;
+		$fileName = strtolower($fileName) . self::$_fileSuffix;
 
 		/* include files as needed */
 
-		if (file_exists(self::$_directory . '/' . $fileName))
+		if (file_exists(self::$_directory . '/' . $fileNameFolderStyle))
+		{
+			include(self::$_directory . '/' . $fileNameFolderStyle);
+		}
+		else if (file_exists(self::$_directory . '/' . $fileName))
 		{
 			include(self::$_directory . '/' . $fileName);
 		}
 	}
 }
-?>
