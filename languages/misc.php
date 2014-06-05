@@ -36,7 +36,7 @@ $l['zh'] = '中文';
 /* redaxscript */
 
 $l['redaxscript'] = 'Redaxscript';
-$l['redaxscript_version'] = '2.1.0';
+$l['redaxscript_version'] = '2.2.0';
 $l['redaxscript_website'] = 'http://redaxscript.com';
 
 /**

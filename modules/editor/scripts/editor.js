@@ -46,13 +46,15 @@
 		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.toolbar = options.toolbar.backend;
-			options.xhtml = options.newline.backend;
+			options.xhtml = options.xhtml.backend;
+			options.breakOnEnter = options.breakOnEnter.backend;
 			options.newline = options.newline.backend;
 		}
 		else
 		{
 			options.toolbar = options.toolbar.frontend;
-			options.xhtml = options.toolbar.frontend;
+			options.xhtml = options.xhtml.frontend;
+			options.breakOnEnter = options.breakOnEnter.frontend;
 			options.newline = options.newline.frontend;
 		}
 
@@ -134,30 +136,33 @@
 
 				/* insert break on enter */
 
-				editor.preview.on('keydown', function (event)
+				if (options.breakOnEnter)
 				{
-					if (event.which === 13)
+					editor.preview.on('keydown', function (event)
 					{
-						if (r.constants.MY_ENGINE === 'gecko')
+						if (event.which === 13)
 						{
-							document.execCommand('insertBrOnReturn', false, false);
+							if (r.constants.MY_ENGINE === 'gecko')
+							{
+								document.execCommand('insertBrOnReturn', false, false);
+							}
+							else if (r.constants.MY_ENGINE === 'trident')
+							{
+								editor.insertHTML('<br />');
+								event.preventDefault();
+							}
+							else if (r.constants.MY_ENGINE === 'webkit')
+							{
+								editor.insertHTML('<br /><br />');
+								event.preventDefault();
+							}
 						}
-						else if (r.constants.MY_ENGINE === 'trident')
-						{
-							editor.insertHTML('<br />');
-							event.preventDefault();
-						}
-						else if (r.constants.MY_ENGINE === 'webkit')
-						{
-							editor.insertHTML('<br /><br />');
-							event.preventDefault();
-						}
-					}
-				})
+					});
+				}
 
 				/* post and validate on keyup */
 
-				.on('keyup', function ()
+				editor.preview.on('keyup', function ()
 				{
 					editor.post();
 					editor.validate();

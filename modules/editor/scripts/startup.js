@@ -83,6 +83,11 @@ r.modules.editor =
 			backend: true,
 			frontend: true
 		},
+		breakOnEnter:
+		{
+			backend: true,
+			frontend: true
+		},
 		newline:
 		{
 			backend: true,
