@@ -9,6 +9,7 @@
  * @category Autoloader
  * @author Henry Ruhs
  */
+
 class Redaxscript_Autoloader
 {
 	/**
