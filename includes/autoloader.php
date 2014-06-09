@@ -3,11 +3,12 @@
 /**
  * parent class to automatically load required class files
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Autoloader
  * @author Henry Ruhs
+ * @author Sven Weingartner
  */
 
 class Redaxscript_Autoloader
@@ -59,7 +60,7 @@ class Redaxscript_Autoloader
 	/**
 	 * load a class file
 	 *
-	 * @since 2.1.0
+	 * @since 2.2.0
 	 *
 	 * @param string $className name of the class to load
 	 */
@@ -67,14 +68,14 @@ class Redaxscript_Autoloader
 	protected static function _load($className = null)
 	{
 		$fileName = str_replace(self::$_nameSpace, '', $className);
-		$fileNameFolderStyle = str_replace('_', '/', $fileName) . self::$_fileSuffix;
+		$filePath = str_replace('_', '/', $fileName) . self::$_fileSuffix;
 		$fileName = strtolower($fileName) . self::$_fileSuffix;
 
 		/* include files as needed */
 
-		if (file_exists(self::$_directory . '/' . $fileNameFolderStyle))
+		if (file_exists(self::$_directory . '/' . $filePath))
 		{
-			include(self::$_directory . '/' . $fileNameFolderStyle);
+			include(self::$_directory . '/' . $filePath);
 		}
 		else if (file_exists(self::$_directory . '/' . $fileName))
 		{
