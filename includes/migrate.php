@@ -94,3 +94,34 @@ function migrate_constants()
 	}
 	return $output;
 }
+
+/**
+ * shortcut
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @return string
+ */
+
+function l($name = null)
+{
+	global $l;
+	$json_default = json_decode(file_get_contents('languages/' . LANGUAGE . '.json'), true);
+	$json_current = array();
+	if (LANGUAGE !== 'en')
+	{
+		$json_current = json_decode(file_get_contents('languages/' . LANGUAGE . '.json'), true);;
+	}
+	if (is_array($json_default))
+	{
+		$l = array_merge($l, $json_default, $json_current);
+		define(LANGUAGE_MERGED, 1);
+	}
+	$output = entity($l[$name]);
+	return $output;
+}

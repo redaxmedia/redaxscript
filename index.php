@@ -109,11 +109,6 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 	}
 }
 
-/* include language files */
-
-include_once('languages/' . LANGUAGE . '.php');
-include_once('languages/misc.php');
-
 /* include module files */
 
 $modules_include = modules_include();

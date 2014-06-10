@@ -52,6 +52,13 @@ module.exports = function (grunt)
 					'package.json'
 				]
 			},
+			languages:
+			{
+				src:
+				[
+					'languages/*.json'
+				]
+			},
 			modules:
 			{
 				src:
@@ -252,54 +259,6 @@ module.exports = function (grunt)
 				]
 			}
 		},
-		lineending:
-		{
-			css:
-			{
-				src:
-				[
-					'styles/*.css',
-					'modules/*/styles/*.css',
-					'templates/*/styles/*.css'
-				],
-				expand: true
-			},
-			js:
-			{
-				src:
-				[
-					'scripts/*.js',
-					'modules/*/scripts/*.js',
-					'templates/*/scripts/*.js'
-				],
-				expand: true
-			},
-			phtml:
-			{
-				src:
-				[
-					'modules/**/*.phtml',
-					'templates/**/*.phtml'
-				],
-				expand: true
-			},
-			php:
-			{
-				src:
-				[
-					'*.php',
-					'includes/**/*.php',
-					'languages/*.php',
-					'modules/**/*.php',
-					'tests/**/*.php'
-				],
-				expand: true
-			},
-			options:
-			{
-				eol: 'lf'
-			}
-		},
 		shell:
 		{
 			tocBase:
@@ -407,8 +366,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'includes/**',
-					'languages/en.php',
-					'languages/misc.php',
+					'languages/en.json',
 					'modules/call_home/**',
 					'templates/admin/**',
 					'templates/default/**',
@@ -427,8 +385,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'languages/*.php',
-					'!languages/misc.php'
+					'languages/*.json',
 				],
 				dest: '../redaxscript-dist/files',
 				ext: '.zip',
@@ -914,7 +871,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
-	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
@@ -954,10 +910,6 @@ module.exports = function (grunt)
 	[
 		'shell:apiBase',
 		'shell:apiTests'
-	]);
-	grunt.registerTask('eol',
-	[
-		'lineending'
 	]);
 	grunt.registerTask('sync',
 	[

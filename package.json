@@ -33,7 +33,6 @@
 		"grunt-jsonlint": "1.0.4",
 		"grunt-phpcs": "0.2.2",
 		"grunt-phpunit": "0.3.3",
-		"grunt-lineending": "0.2.2",
 		"grunt-shell": "0.7.0",
 		"grunt-smushit": "1.2.1",
 		"grunt-svgmin": "0.4.0"

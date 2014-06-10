@@ -34,11 +34,6 @@ include_once('config.php');
 startup();
 include_once('includes/bootstrap.php');
 
-/* include language files */
-
-include_once('languages/' . LANGUAGE . '.php');
-include_once('languages/misc.php');
-
 /* define meta */
 
 define('TITLE', l('installation'));
