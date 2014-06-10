@@ -61,7 +61,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerFilePath
 	 */
 
-	public function testAutoloadFilePath($className = '', $expect = '')
+	public function testAutoloadFilePath($className = null, $expect = null)
 	{
 		/* result */
 
