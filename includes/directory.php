@@ -250,4 +250,3 @@ class Redaxscript_Directory
 		}
 	}
 }
-?>

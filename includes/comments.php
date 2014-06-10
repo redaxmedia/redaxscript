@@ -370,4 +370,3 @@ function comment_post()
 	}
 	$_SESSION[ROOT . '/comment'] = '';
 }
-?>

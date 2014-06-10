@@ -68,4 +68,3 @@ function editor_loader_scripts_transport_start()
 	));
 	echo $output;
 }
-?>

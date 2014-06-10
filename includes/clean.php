@@ -229,4 +229,3 @@ function clean_mysql($input = '')
 	}
 	return $output;
 }
-?>

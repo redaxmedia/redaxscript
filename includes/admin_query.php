@@ -878,4 +878,3 @@ function admin_last_update()
 	$query = 'UPDATE ' . PREFIX . 'users SET last = \'' . NOW . '\' WHERE id = ' . MY_ID;
 	mysql_query($query);
 }
-?>

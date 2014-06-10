@@ -283,4 +283,4 @@ function gallery_build_thumb($input = '', $directory = '', $options)
 	imagedestroy($image);
 	imagedestroy($process);
 }
-?>
+

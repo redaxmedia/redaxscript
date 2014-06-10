@@ -33,4 +33,4 @@ function dawanda_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'dawanda\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

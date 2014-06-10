@@ -326,4 +326,3 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	$output .= hook(__FUNCTION__ . '_end');
 	return $output;
 }
-?>

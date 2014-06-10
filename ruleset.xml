@@ -48,4 +48,8 @@
 	<rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing" />
 	<rule ref="Squiz.WhiteSpace.SemicolonSpacing" />
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+
+	<!-- inherit from zend -->
+
+	<rule ref="Zend.Files.ClosingTag" />
 </ruleset>

@@ -33,4 +33,4 @@ function feed_generator_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'feed_generator\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

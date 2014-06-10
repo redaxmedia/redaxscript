@@ -33,4 +33,4 @@ function preview_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'preview\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

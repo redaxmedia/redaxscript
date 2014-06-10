@@ -33,4 +33,4 @@ function debug_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'debug\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

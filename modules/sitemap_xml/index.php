@@ -41,7 +41,7 @@ function sitemap_xml()
 
 	/* collect output */
 
-	$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>' . PHP_EOL;
+	$output = '<?xml version="1.0" encoding="' . s('charset') . '"' . PHP_EOL;
 	$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
 	$output .= '<url><loc>' . ROOT . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>' . PHP_EOL;
 	if ($categories_result)
@@ -108,4 +108,3 @@ function sitemap_xml()
 	$output .= '</urlset>';
 	echo $output;
 }
-?>

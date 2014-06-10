@@ -33,4 +33,4 @@ function file_manager_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'file_manager\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

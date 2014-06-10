@@ -33,4 +33,4 @@ function share_this_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'share_this\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

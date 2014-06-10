@@ -234,4 +234,3 @@ function contact_post()
 	}
 	$_SESSION[ROOT . '/contact'] = '';
 }
-?>

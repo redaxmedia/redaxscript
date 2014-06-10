@@ -11,4 +11,3 @@ $l['file_manager_file_size'] = 'Taille du fichier';
 $l['file_manager_file_no'] = 'Aucun fichier présent';
 $l['file_manager_browse'] = 'Parcourir';
 $l['file_manager_upload'] = 'Téléversement';
-?>

@@ -249,4 +249,3 @@ class Redaxscript_Helper
 		return $output;
 	}
 }
-?>

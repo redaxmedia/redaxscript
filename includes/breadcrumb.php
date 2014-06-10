@@ -286,4 +286,3 @@ class Redaxscript_Breadcrumb
 		}
 	}
 }
-?>

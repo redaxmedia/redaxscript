@@ -52,4 +52,4 @@ function l($name = '')
 	$output = entity($l[$name]);
 	return $output;
 }
-?>
+

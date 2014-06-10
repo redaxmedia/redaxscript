@@ -75,4 +75,3 @@ function maps($lat = '', $lng = '', $zoom = '')
 	$output .= '></div>';
 	echo $output;
 }
-?>

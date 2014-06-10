@@ -285,4 +285,3 @@ class Redaxscript_Mail
 		}
 	}
 }
-?>

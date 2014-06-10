@@ -83,4 +83,3 @@ function l($name = '')
 {
 	return $name;
 }
-?>

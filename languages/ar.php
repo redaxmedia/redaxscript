@@ -348,4 +348,3 @@ $l['comma'] = ',';
 $l['colon'] = ':';
 $l['question_mark'] = '؟';
 $l['exclamation_mark'] = '!';
-?>

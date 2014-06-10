@@ -412,4 +412,3 @@ function login_list()
 	$output = '<ul class="list_login">' . $output . '</ul>';
 	echo $output;
 }
-?>

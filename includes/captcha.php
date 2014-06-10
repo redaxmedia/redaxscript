@@ -170,4 +170,3 @@ class Redaxscript_Captcha
 		$this->_task = l($a) . ' ' . l($operator) . ' ' . l($b);
 	}
 }
-?>

@@ -29,4 +29,3 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 		), 'template', 'templates/{value}/index.phtml');
 	}
 }
-?>

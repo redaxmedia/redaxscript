@@ -467,4 +467,3 @@ function scripts_transport($minify = '')
 	}
 	return $output;
 }
-?>

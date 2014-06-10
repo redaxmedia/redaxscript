@@ -556,4 +556,3 @@ function center()
 		install_form();
 	}
 }
-?>

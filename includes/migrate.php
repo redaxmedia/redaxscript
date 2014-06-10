@@ -94,4 +94,3 @@ function migrate_constants()
 	}
 	return $output;
 }
-?>

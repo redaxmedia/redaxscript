@@ -11,4 +11,4 @@ $l['file_manager_file_size'] = 'Rozmiar pliku';
 $l['file_manager_file_no'] = 'Brak plików';
 $l['file_manager_browse'] = 'Przeglądaj';
 $l['file_manager_upload'] = 'Wyślij';
-?>
+

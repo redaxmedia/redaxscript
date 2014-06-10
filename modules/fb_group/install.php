@@ -33,4 +33,4 @@ function fb_group_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'fb_group\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

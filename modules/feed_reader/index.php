@@ -170,4 +170,3 @@ function feed_reader($url = '', $options = '')
 	}
 	echo $output;
 }
-?>

@@ -12,4 +12,3 @@ define(FB_GROUP_APP_SECRET, '');
 define(FB_GROUP_CACHE_PATH, 'cache/fb_group');
 define(FB_GROUP_CACHE_FEED_EXPIRES, 1800);
 define(FB_GROUP_CACHE_MEMBERS_EXPIRES, 3600);
-?>

@@ -50,4 +50,3 @@ function get_file_date($file_name = '')
 	$output = date(s('date'), filectime($file_name));
 	echo $output;
 }
-?>

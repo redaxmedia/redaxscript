@@ -11,4 +11,3 @@ $l['file_manager_file_size'] = 'Filesize';
 $l['file_manager_file_no'] = 'No file present';
 $l['file_manager_browse'] = 'Browse';
 $l['file_manager_upload'] = 'Upload';
-?>

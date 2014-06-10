@@ -184,4 +184,3 @@ function admin_settings_form()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

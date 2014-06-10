@@ -120,4 +120,3 @@ class Redaxscript_Registry
 		self::$_instance = null;
 	}
 }
-?>

@@ -197,4 +197,3 @@ function github_tracker_get_contents($type = '')
 	}
 	return $output;
 }
-?>

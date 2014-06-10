@@ -33,4 +33,4 @@ function call_home_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'call_home\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

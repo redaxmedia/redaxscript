@@ -11,4 +11,3 @@ $l['file_manager_file_size'] = 'Filesize';
 $l['file_manager_file_no'] = 'Nenhum arquivo presente';
 $l['file_manager_browse'] = 'Procurar';
 $l['file_manager_upload'] = 'Carregar';
-?>

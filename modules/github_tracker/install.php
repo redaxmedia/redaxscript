@@ -33,4 +33,4 @@ function github_tracker_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'github_tracker\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

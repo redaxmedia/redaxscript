@@ -174,4 +174,3 @@ function entity($input = '')
 	}
 	return $output;
 }
-?>

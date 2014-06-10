@@ -303,4 +303,4 @@ function file_manager_upload($directory = '')
 		move_uploaded_file($file, $directory . '/' . $file_name);
 	}
 }
-?>
+

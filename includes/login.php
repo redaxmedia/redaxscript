@@ -292,4 +292,3 @@ function logout()
 	session_destroy();
 	notification(l('goodbye'), l('logged_out'), l('continue'), 'login');
 }
-?>

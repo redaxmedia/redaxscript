@@ -33,4 +33,4 @@ function validator_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'validator\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

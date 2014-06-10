@@ -72,4 +72,3 @@ function web_app_head_end()
 	$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
 	echo $output;
 }
-?>

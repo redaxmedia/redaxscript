@@ -110,4 +110,3 @@ class Redaxscript_Detection
 		}
 	}
 }
-?>

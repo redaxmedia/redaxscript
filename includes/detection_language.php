@@ -30,4 +30,3 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 		), 'language', 'languages/{value}.php');
 	}
 }
-?>

@@ -19,4 +19,4 @@ function recent_view_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'recent_view\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

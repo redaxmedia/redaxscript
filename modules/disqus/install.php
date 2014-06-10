@@ -33,4 +33,4 @@ function disqus_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'disqus\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

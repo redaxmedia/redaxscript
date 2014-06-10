@@ -33,4 +33,3 @@ $l['editor_insert_php_function'] = 'Insérer une fonction PHP';
 $l['editor_remove_format'] = 'Supprimer le formatage';
 $l['editor_select_text_first'] = 'Vous devez sélectionner le texte d\'abord';
 $l['editor_browser_support_no'] = 'Votre navigateur ne supporte pas cette fonction';
-?>

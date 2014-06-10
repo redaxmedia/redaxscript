@@ -99,4 +99,3 @@ function archive()
 	$output .= '</ul></fieldset>';
 	return $output;
 }
-?>

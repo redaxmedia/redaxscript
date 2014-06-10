@@ -9,4 +9,3 @@ $l['qunit_value_expected'] = 'Valeur attendu';
 $l['qunit_attribute_expected'] = 'Attribut attendu';
 $l['qunit_test_passed'] = 'Test avec succès';
 $l['qunit_test_failed'] = 'Test a échoué';
-?>

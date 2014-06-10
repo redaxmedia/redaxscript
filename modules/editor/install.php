@@ -33,4 +33,4 @@ function editor_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'editor\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

@@ -183,4 +183,3 @@ function hash_generator($length = '')
 	$output = substr($b, 0, $length);
 	return $output;
 }
-?>

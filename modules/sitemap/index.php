@@ -154,4 +154,3 @@ function sitemap()
 	$output .= '</ul></fieldset>';
 	return $output;
 }
-?>

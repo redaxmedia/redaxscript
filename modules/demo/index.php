@@ -85,4 +85,3 @@ function demo_login()
 	$_SESSION[ROOT . '/filter'] = 1;
 	notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
 }
-?>

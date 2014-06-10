@@ -283,4 +283,3 @@ function admin_modules_form()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

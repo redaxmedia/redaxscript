@@ -303,4 +303,3 @@ function admin_users_form()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

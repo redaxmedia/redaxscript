@@ -33,4 +33,4 @@ function contact_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'contact\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

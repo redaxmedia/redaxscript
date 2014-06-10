@@ -33,4 +33,4 @@ function web_app_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'web_app\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

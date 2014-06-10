@@ -33,4 +33,4 @@ function get_file_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'get_file\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

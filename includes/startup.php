@@ -374,4 +374,3 @@ function undefine($input = '')
 		}
 	}
 }
-?>

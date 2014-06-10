@@ -488,4 +488,3 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

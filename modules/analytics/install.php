@@ -33,4 +33,4 @@ function analytics_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'analytics\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

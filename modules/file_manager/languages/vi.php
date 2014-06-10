@@ -11,4 +11,3 @@ $l['file_manager_file_size'] = 'Filesize';
 $l['file_manager_file_no'] = 'Hiện chưa có tập tin nào';
 $l['file_manager_browse'] = 'Duyệt';
 $l['file_manager_upload'] = 'Tải lên';
-?>

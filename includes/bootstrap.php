@@ -13,4 +13,3 @@ Redaxscript_Autoloader::init();
 
 $registry = Redaxscript_Registry::instance();
 $registry->init(migrate_constants());
-?>

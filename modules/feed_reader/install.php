@@ -33,4 +33,4 @@ function feed_reader_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'feed_reader\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

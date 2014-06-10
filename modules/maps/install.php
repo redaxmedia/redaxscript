@@ -33,4 +33,4 @@ function maps_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'maps\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

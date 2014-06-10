@@ -118,4 +118,3 @@ function qunit_center_start()
 		echo $output;
 	}
 }
-?>

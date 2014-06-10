@@ -38,4 +38,3 @@ function live_reload_loader_scripts_transport_start()
 	));
 	echo $output;
 }
-?>

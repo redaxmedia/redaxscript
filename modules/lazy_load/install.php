@@ -33,4 +33,4 @@ function lazy_load_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'lazy_load\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

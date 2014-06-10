@@ -46,4 +46,3 @@ function validator_loader_scripts_transport_start()
 		echo $output;
 	}
 }
-?>

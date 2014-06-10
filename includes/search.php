@@ -186,4 +186,3 @@ function search_post()
 		echo $output;
 	}
 }
-?>

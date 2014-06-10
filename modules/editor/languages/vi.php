@@ -33,4 +33,3 @@ $l['editor_insert_php_function'] = 'Chèn hàm PHP';
 $l['editor_remove_format'] = 'Loại bỏ định dạng';
 $l['editor_select_text_first'] = 'Bạn phải chọn một đoạn văn bản trước';
 $l['editor_browser_support_no'] = 'Trình duyệt của bạn không hỗ trợ tính năng này';
-?>

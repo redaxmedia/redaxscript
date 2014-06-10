@@ -11,4 +11,3 @@ $l['file_manager_file_size'] = 'Dateigröße';
 $l['file_manager_file_no'] = 'Keine Datei vorhanden';
 $l['file_manager_browse'] = 'Durchsuchen';
 $l['file_manager_upload'] = 'Hochladen';
-?>

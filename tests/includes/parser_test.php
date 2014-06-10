@@ -77,4 +77,3 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expect, $result);
 	}
 }
-?>

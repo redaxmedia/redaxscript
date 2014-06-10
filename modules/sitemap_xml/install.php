@@ -33,4 +33,4 @@ function sitemap_xml_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'sitemap_xml\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

@@ -154,4 +154,3 @@ function reminder_post()
 	}
 	$_SESSION[ROOT . '/reminder'] = '';
 }
-?>

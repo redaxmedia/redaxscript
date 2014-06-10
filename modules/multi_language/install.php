@@ -33,4 +33,4 @@ function multi_language_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'multi_language\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

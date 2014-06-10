@@ -57,4 +57,3 @@ class Redaxscript_Config
 		return $output;
 	}
 }
-?>

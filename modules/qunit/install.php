@@ -33,4 +33,4 @@ function qunit_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'qunit\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

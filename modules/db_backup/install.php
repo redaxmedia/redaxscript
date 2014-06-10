@@ -33,4 +33,4 @@ function db_backup_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'db_backup\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

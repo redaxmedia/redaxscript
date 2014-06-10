@@ -276,4 +276,3 @@ class Redaxscript_Parser
 		return $output;
 	}
 }
-?>

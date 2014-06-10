@@ -252,4 +252,3 @@ function admin_groups_form()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

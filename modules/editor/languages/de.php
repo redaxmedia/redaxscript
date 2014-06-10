@@ -33,4 +33,3 @@ $l['editor_insert_php_function'] = 'PHP Funktion einfügen';
 $l['editor_remove_format'] = 'Formatierung entfernen';
 $l['editor_select_text_first'] = 'Sie müssen erst den Text auswählen';
 $l['editor_browser_support_no'] = 'Ihr Browser unerstützt diese Funktion nicht';
-?>

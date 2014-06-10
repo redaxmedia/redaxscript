@@ -33,4 +33,4 @@ function live_reload_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'live_reload\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

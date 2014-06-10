@@ -387,4 +387,4 @@ function db_backup_get_contents($table = '')
 	}
 	return $output;
 }
-?>
+

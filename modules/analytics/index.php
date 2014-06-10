@@ -40,4 +40,3 @@ function analytics_scripts_start()
 		echo $output;
 	}
 }
-?>

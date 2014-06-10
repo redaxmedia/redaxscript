@@ -33,4 +33,4 @@ function archive_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'archive\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

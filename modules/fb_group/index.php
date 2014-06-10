@@ -421,4 +421,4 @@ function fb_group_get_contents($type = '')
 	}
 	return $output;
 }
-?>
+

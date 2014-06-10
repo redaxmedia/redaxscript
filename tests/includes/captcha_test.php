@@ -70,4 +70,3 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expectHash, $hash);
 	}
 }
-?>

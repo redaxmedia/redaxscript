@@ -9,4 +9,3 @@ $l['qunit_value_expected'] = 'Giá trị mong đợi';
 $l['qunit_attribute_expected'] = 'Thuộc tính mong đợi';
 $l['qunit_test_passed'] = 'Kiểm tra thành công';
 $l['qunit_test_failed'] = 'Kiểm tra thất bại';
-?>

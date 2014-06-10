@@ -212,4 +212,3 @@ function registration_post()
 	}
 	$_SESSION[ROOT . '/registration'] = '';
 }
-?>

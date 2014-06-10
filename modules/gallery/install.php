@@ -33,4 +33,3 @@ function gallery_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'gallery\' LIMIT 1';
 	mysql_query($query);
 }
-?>

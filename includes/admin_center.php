@@ -161,4 +161,3 @@ function admin_routing()
 			return;
 	}
 }
-?>

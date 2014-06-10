@@ -213,4 +213,3 @@ function debug_extras_end()
 	}
 	echo $output;
 }
-?>
