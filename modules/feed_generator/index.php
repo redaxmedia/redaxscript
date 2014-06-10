@@ -92,7 +92,7 @@ function feed_generator($table = '')
 
 		/* collect feed header output */
 
-		$output = '<?xml version="1.0" encoding="' . s('charset') . '"' . PHP_EOL;
+		$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>' . PHP_EOL;
 		$output .= '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL;
 		$output .= '<id>' . $route . '</id>' . PHP_EOL;
 		if ($title)
