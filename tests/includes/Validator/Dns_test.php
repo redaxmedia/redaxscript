@@ -13,4 +13,3 @@ class Redaxscript_Validator_Dns_Test extends PHPUnit_Framework_TestCase
 {
 
 }
- 
