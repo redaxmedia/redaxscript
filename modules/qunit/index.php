@@ -39,7 +39,7 @@ function qunit_loader_scripts_transport_start()
 	if (FIRST_PARAMETER == 'qunit')
 	{
 		$output = languages_transport(array(
-			'qunit_title',
+			'qunit_qunit',
 			'qunit_description',
 			'qunit_type_expected',
 			'qunit_value_expected',
@@ -87,13 +87,13 @@ function qunit_render_start()
 	if (FIRST_PARAMETER == 'qunit')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('qunit_title'));
+		define('TITLE', l('qunit_qunit'));
 		define('DESCRIPTION', l('qunit_description'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('qunit_title'));
+		$registry->set('title', l('qunit_qunit'));
 	}
 }
 

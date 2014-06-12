@@ -1,7 +1,7 @@
 {
 	"qunit":
 	{
-		"title": "QUnit",
+		"qunit": "QUnit",
 		"description": "Tests unitaires Javascript",
 		"type_expected": "Type attendu",
 		"value_expected": "Valeur attendu",

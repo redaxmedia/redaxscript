@@ -1,7 +1,7 @@
 {
 	"qunit":
 	{
-		"title": "QUnit",
+		"qunit": "QUnit",
 		"description": "Kiểm thử từng phần Javascript",
 		"type_expected": "Kiểu mong đợi",
 		"value_expected": "Giá trị mong đợi",

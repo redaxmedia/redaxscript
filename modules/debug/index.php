@@ -46,12 +46,12 @@ function debug_render_start()
 	if (FIRST_PARAMETER == 'debug')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('debug_title'));
+		define('TITLE', l('debug_debug'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('debug_title'));
+		$registry->set('title', l('debug_debug'));
 	}
 }
 
