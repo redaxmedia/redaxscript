@@ -1,0 +1,19 @@
+[
+	[
+		"Redaxscript_Validator_Dns",
+		true
+
+	],
+	[
+
+		"Redaxscript_Validator_Interface",
+		false
+
+	],
+	[
+
+		"Redaxscript_Validator_DoesNotExist",
+		false
+
+	]
+]
