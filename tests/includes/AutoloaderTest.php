@@ -10,13 +10,14 @@
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
+
 class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 {
 
 	/**
 	 * providerFilePath
 	 *
-	 * @since 2.1.0
+	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
@@ -51,7 +52,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testAutoloadFilePath
+	 * testFilePath
 	 *
 	 * @since 2.2.0
 	 *
@@ -61,7 +62,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 	 * @dataProvider providerFilePath
 	 */
 
-	public function testAutoloadFilePath($className = null, $expect = null)
+	public function testFilePath($className = null, $expect = null)
 	{
 		/* result */
 
