@@ -63,7 +63,7 @@ function db_backup_render_start()
 
 			/* mail object */
 
-			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
+			$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
 			$mail->send();
 		}
 	}

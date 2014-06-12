@@ -324,10 +324,10 @@ function comment_post()
 				l('article') => $articleLink
 			);
 
-			/* mail object */
+			/* mailer object */
 
-			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-			$mail->send();
+			$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+			$mailer->send();
 		}
 
 		/* build key and value strings */

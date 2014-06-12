@@ -69,7 +69,6 @@ class Redaxscript_Autoloader
 	{
 		$fileName = str_replace(self::$_nameSpace, '', $className);
 		$filePath = str_replace('_', '/', $fileName) . self::$_fileSuffix;
-		$fileName = strtolower($fileName) . self::$_fileSuffix;
 
 		/* include files as needed */
 

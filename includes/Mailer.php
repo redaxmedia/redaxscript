@@ -6,11 +6,11 @@
  * @since 2.0.0
  *
  * @package Redaxscript
- * @category Mail
+ * @category Mailer
  * @author Henry Ruhs
  */
 
-class Redaxscript_Mail
+class Redaxscript_Mailer
 {
 	/**
 	 * array of recipient

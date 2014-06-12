@@ -5,18 +5,18 @@ error_reporting(0);
 
 include_once('includes/check.php');
 include_once('includes/clean.php');
-include_once('includes/detection.php');
-include_once('includes/detection_language.php');
-include_once('includes/detection_template.php');
+include_once('includes/Detection.php');
+include_once('includes/Language.php');
+include_once('includes/Template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
-include_once('includes/helper.php');
+include_once('includes/Helper.php');
 include_once('includes/loader.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/password.php');
 include_once('includes/query.php');
-include_once('includes/registry.php');
+include_once('includes/Registry.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 
@@ -32,7 +32,7 @@ include_once('config.php');
 /* bootstrap */
 
 startup();
-include_once('includes/bootstrap.php');
+include_once('includes/Bootstrap.php');
 
 /* define meta */
 
@@ -251,7 +251,7 @@ function install()
 
 	/* mail object */
 
-	$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
+	$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
 	$mail->send();
 }
 

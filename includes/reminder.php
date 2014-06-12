@@ -127,10 +127,10 @@ function reminder_post()
 					l('password_reset') => $passwordResetLink
 				);
 
-				/* mail object */
+				/* mailer object */
 
-				$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-				$mail->send();
+				$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+				$mailer->send();
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 
 /* include files */
 
-include_once('includes/autoloader.php');
+include_once('includes/Autoloader.php');
 include_once('includes/migrate.php');
 
 /* init autoloader */

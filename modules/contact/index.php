@@ -209,10 +209,10 @@ function contact_post()
 			l('message') => $text
 		);
 
-		/* mail object */
+		/* mailer object */
 
-		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-		$mail->send();
+		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
 	}
 
 	/* handle error */

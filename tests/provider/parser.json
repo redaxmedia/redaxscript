@@ -7,7 +7,7 @@
 		},
 		"hello<break> world",
 		"hello/world",
-		"hello<a>read_more</a>"
+		"hello<a>Read more</a>"
 	],
 	[
 		{
@@ -27,7 +27,7 @@
 		},
 		"hello<break> world",
 		"hello/world",
-		"hello<a>read_more</a>"
+		"hello<a>Read more</a>"
 	],
 	[
 		"",

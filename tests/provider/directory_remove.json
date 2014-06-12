@@ -17,8 +17,8 @@
 			"root/includes"
 		],
 		[
-			"autoloader.php",
-			"bootstrap.php"
+			"Autoloader.php",
+			"Bootstrap.php"
 		]
 	],
 	[

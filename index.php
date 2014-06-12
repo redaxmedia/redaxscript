@@ -8,9 +8,9 @@ include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
-include_once('includes/detection.php');
-include_once('includes/detection_language.php');
-include_once('includes/detection_template.php');
+include_once('includes/Detection.php');
+include_once('includes/Language.php');
+include_once('includes/Template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
@@ -19,7 +19,7 @@ include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
-include_once('includes/registry.php');
+include_once('includes/Registry.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
@@ -27,7 +27,7 @@ include_once('includes/startup.php');
 /* bootstrap */
 
 startup();
-include_once('includes/bootstrap.php');
+include_once('includes/Bootstrap.php');
 
 /* include files as needed */
 

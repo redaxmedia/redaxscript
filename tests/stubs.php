@@ -63,23 +63,24 @@ function s($name = '')
 		{
 			case 0:
 				$index++;
-				$name = 2;
+				$output = 2;
 				break;
 			case 1:
 				$index++;
-				$name = 3;
+				$output = 3;
 				break;
 			default:
-				$name = 0;
+				$output = 0;
 				break;
 		}
 	}
-	return $name;
-}
-
-/* shortcut */
-
-function l($name = '')
-{
-	return $name;
+	else if ($name === 'charset')
+	{
+		$output = 'utf-8';
+	}
+	else
+	{
+		$output = $name;
+	}
+	return $output;
 }
