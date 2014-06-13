@@ -1,0 +1,10 @@
+{
+	"gallery":
+	{
+		"image_artist": "Image artist",
+		"image_description": "Image description",
+		"image_next": "Próxima imagem",
+		"image_previous": "Imagem anterior",
+		"divider": " / "
+	}
+}

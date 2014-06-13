@@ -1,0 +1,7 @@
+{
+	"feed_generator":
+	{
+		"feed_articles": "Feed-Article",
+		"feed_comments": "Feed-Comments"
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Quelltext",
+		"bold": "Fett",
+		"italic": "Kursiv",
+		"underline": "Unterstreichen",
+		"strike": "Durchgestrichen",
+		"subscript": "Tiefgestellt",
+		"superscript": "Hochgestellt",
+		"paragraph": "Paragraph",
+		"ordered_list": "Geordnete Liste",
+		"unordered_list": "Ungeordnete Liste",
+		"outdent": "Ausrücken",
+		"indent": "Einrücken",
+		"align_left": "Links ausrichten",
+		"align_center": "Zentrieren",
+		"align_right": "Rechts ausrichten",
+		"align_justify": "Im Block ausrichten",
+		"undo": "Rückwärts",
+		"redo": "Vorwärts",
+		"insert_image": "Bild einfügen",
+		"insert_link": "Verknüpfung einfügen",
+		"remove_link": "Verknüpfung entfernen",
+		"cut": "Ausschneiden",
+		"copy": "Kopieren",
+		"paste": "Einfügen",
+		"insert_document_break": "Dokumentenumbruch einfügen",
+		"insert_code_quote": "Code Zitat einfügen",
+		"insert_php_function": "PHP Funktion einfügen",
+		"remove_format": "Formatierung entfernen",
+		"select_text_first": "Sie müssen erst den Text auswählen",
+		"browser_support_no": "Ihr Browser unerstützt diese Funktion nicht"
+	}
+}
