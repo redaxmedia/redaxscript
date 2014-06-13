@@ -116,14 +116,6 @@ if ($modules_include)
 {
 	foreach ($modules_include as $value)
 	{
-		if (file_exists('modules/' . $value . '/languages/' . LANGUAGE . '.php'))
-		{
-			include_once('modules/' . $value . '/languages/' . LANGUAGE . '.php');
-		}
-		else if (file_exists('modules/' . $value . '/languages/en.php'))
-		{
-			include_once('modules/' . $value . '/languages/en.php');
-		}
 		if (file_exists('modules/' . $value . '/config.php'))
 		{
 			include_once('modules/' . $value . '/config.php');

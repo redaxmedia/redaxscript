@@ -42,15 +42,10 @@ class Redaxscript_Language
 
 	public function init($name = null)
 	{
-		/* merge things one time */
-		global $l;
+		/* fetch and merge things one time */
+		$l = array();
 		$output = '';
-		if ($l === null)
-		{
-			$l = array();
-		}
-		$registry = Redaxscript_Registry::instance();
-		$language = $registry->get('language');
+		$language = $this->_registry->get('language');
 		$language = 'en';
 		$json_default = json_decode(file_get_contents('languages/' . $language . '.json'), true);
 		$json_current = array();
@@ -60,7 +55,7 @@ class Redaxscript_Language
 		}
 		if (is_array($json_default))
 		{
-			$l = array_merge($l, $json_default, $json_current);
+			$l = array_merge($json_default, $json_current);
 		}
 		if (array_key_exists($name, $l))
 		{
