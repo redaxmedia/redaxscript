@@ -45,18 +45,23 @@ class Redaxscript_Language
 		/* fetch and merge things one time */
 		$l = array();
 		$output = '';
+
+		/* not working, hard coded */
 		$language = $this->_registry->get('language');
 		$language = 'en';
 		$json_default = json_decode(file_get_contents('languages/' . $language . '.json'), true);
 		$json_current = array();
+
 		if ($language !== 'en')
 		{
-			$json_current = json_decode(file_get_contents('languages/' . $language . '.json'), true);;
+			$json_current = json_decode(file_get_contents('languages/' . $language . '.json'), true);
 		}
 		if (is_array($json_default))
 		{
 			$l = array_merge($json_default, $json_current);
 		}
+
+		/* later get method */
 		if (array_key_exists($name, $l))
 		{
 			$output = $l[$name];
