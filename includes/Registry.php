@@ -13,20 +13,20 @@
 class Redaxscript_Registry
 {
 	/**
-	 * array of registry values
-	 *
-	 * @var array
-	 */
-
-	protected static $_values = array();
-
-	/**
 	 * instance of the class
 	 *
 	 * @var object
 	 */
 
 	protected static $_instance = null;
+
+	/**
+	 * array of registry values
+	 *
+	 * @var array
+	 */
+
+	protected static $_values = array();
 
 	/**
 	 * constructor of the class
@@ -60,6 +60,7 @@ class Redaxscript_Registry
 	 * @since 2.1.0
 	 *
 	 * @param string $key key of the item
+	 *
 	 * @return string
 	 */
 

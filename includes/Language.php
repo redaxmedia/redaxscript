@@ -13,25 +13,29 @@
 class Redaxscript_Language
 {
 	/**
-	 * instance of the registry class
+	 * instance of the class
 	 *
 	 * @var object
 	 */
 
-	protected $_registry;
+	protected static $_instance = null;
+
+	/**
+	 * array of language values
+	 *
+	 * @var array
+	 */
+
+	protected static $_values = array();
 
 	/**
 	 * constructor of the class
 	 *
 	 * @since 2.2.0
-	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
-	public function __construct(Redaxscript_Registry $registry)
+	public function __construct()
 	{
-		$this->_registry = $registry;
-		$this->init();
 	}
 
 	/**
@@ -40,36 +44,102 @@ class Redaxscript_Language
 	 * @since 2.2.0
 	 */
 
-	public function init($name = null)
+	public static function init($language = 'en')
 	{
-		/* fetch and merge things one time */
-		$l = array();
-		$output = '';
+		self::load('languages/en.json');
 
-		/* not working, hard coded */
-		$language = $this->_registry->get('language');
-		$language = 'en';
-		$json_default = json_decode(file_get_contents('languages/' . $language . '.json'), true);
-		$json_current = array();
+		/* merge another language */
 
 		if ($language !== 'en')
 		{
-			$json_current = json_decode(file_get_contents('languages/' . $language . '.json'), true);
+			self::load('languages/' . $language . '.json');
 		}
-		if (is_array($json_default))
-		{
-			$l = array_merge($json_default, $json_current);
-		}
+	}
 
-		/* later get method */
-		if (array_key_exists($name, $l))
+	/**
+	 * get item from language
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public static function get($key = null)
+	{
+		if (array_key_exists($key, self::$_values))
 		{
-			$output = $l[$name];
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding($l[$name], s('charset'), 'utf-8, latin1');
+				$output = mb_convert_encoding(self::$_values[$key], s('charset'), 'utf-8, latin1');
+			}
+			else
+			{
+				$output = self::$_values[$key];
 			}
 		}
+		else
+		{
+			$output = null;
+		}
 		return $output;
+	}
+
+	/**
+	 * load from language files
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string|array $ single or multiple language files
+	 */
+
+	public function load($json = null)
+	{
+		if (!is_array($json))
+		{
+			$json = array($json);
+		}
+
+		/* merge language files */
+
+		foreach ($json as $file)
+		{
+			$values = json_decode(file_get_contents($file), true);
+			if (is_array($values))
+			{
+				self::$_values = array_merge(self::$_values, $values);
+			}
+		}
+	}
+
+	/**
+	 * instance of the class
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return object
+	 */
+
+	public static function instance()
+	{
+		if (self::$_instance === null)
+		{
+			self::$_instance = new self;
+		}
+		return self::$_instance;
+	}
+
+	/**
+	 * reset the instance
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return object
+	 */
+
+	public static function reset()
+	{
+		self::$_instance = null;
 	}
 }
