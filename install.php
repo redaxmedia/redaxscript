@@ -19,6 +19,10 @@ include_once('includes/Registry.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 
+/* vendor */
+
+include_once('vendor/j4mie/idiorm/idiorm.php');
+
 /* install post */
 
 install_post();

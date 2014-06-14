@@ -24,6 +24,10 @@ include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 
+/* vendor */
+
+include_once('vendor/j4mie/idiorm/idiorm.php');
+
 /* bootstrap */
 
 startup();

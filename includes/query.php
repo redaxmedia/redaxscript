@@ -20,6 +20,10 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
 {
 	$database_connect = mysql_connect($host, $user, $password);
 	$database_select = mysql_select_db($name);
+	//TODO
+	ORM::configure('mysql:host=' . $host . ';dbname=' . $name);
+	ORM::configure('username', $user);
+	ORM::configure('password', $password);
 
 	/* if established database connection */
 
@@ -27,17 +31,10 @@ function database_connect($host = '', $name = '', $user = '', $password = '')
 	{
 		$query = 'SET NAMES \'utf8\'';
 		mysql_query($query);
+		//TODO
+		ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 		$_SESSION[ROOT . '/db_connected'] = 1;
 		$_SESSION[ROOT . '/db_error'] = '';
-	}
-
-	/* else handle error */
-
-	else
-	{
-		$_SESSION[ROOT . '/db_connected'] = 0;
-		$_SESSION[ROOT . '/db_error'] = mysql_error();
-		$_SESSION[ROOT . '/logged_in'] = '';
 	}
 }
 
