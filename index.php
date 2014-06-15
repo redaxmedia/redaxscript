@@ -113,17 +113,35 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 	}
 }
 
-/* include module files */
+/* module files as needed */
 
 $modules_include = modules_include();
 if ($modules_include)
 {
+	/* language object */
+
+	$language = Redaxscript_Language::instance();
+
+	/* process modules */
+
 	foreach ($modules_include as $value)
 	{
+		/* language */
+
+		$language->load(array(
+			'modules/' . $value . '/languages/en.json',
+			'modules/' . $value . '/languages/' . LANGUAGE . '.json'
+		));
+
+		/* config */
+
 		if (file_exists('modules/' . $value . '/config.php'))
 		{
 			include_once('modules/' . $value . '/config.php');
 		}
+
+		/* index */
+
 		if (file_exists('modules/' . $value . '/index.php'))
 		{
 			include_once('modules/' . $value . '/index.php');

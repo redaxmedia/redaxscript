@@ -13,6 +13,14 @@
 class Redaxscript_Captcha
 {
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * task to be solved
 	 *
 	 * @var string
@@ -56,10 +64,9 @@ class Redaxscript_Captcha
 	 * @since 2.0.0
 	 */
 
-	public function __construct()
+	public function __construct(Redaxscript_Language $language)
 	{
-		/* call init */
-
+		$this->_language = $language;
 		$this->init();
 	}
 
@@ -167,6 +174,6 @@ class Redaxscript_Captcha
 		/* solution and task */
 
 		$this->_solution = $a + $b * $c;
-		$this->_task = l($a) . ' ' . l($operator) . ' ' . l($b);
+		$this->_task = $this->_language->get($a) . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b);
 	}
 }

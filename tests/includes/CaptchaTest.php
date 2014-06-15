@@ -15,6 +15,25 @@ include_once('tests/stubs.php');
 class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 {
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * setUp
+	 *
+	 * @since 2.1.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_language = Redaxscript_Language::instance();
+	}
+
+	/**
 	 * setUpBeforeClass
 	 *
 	 * @since 2.1.0
@@ -55,7 +74,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$captcha = new Redaxscript_Captcha();
+		$captcha = new Redaxscript_Captcha($this->_language);
 
 		/* result */
 

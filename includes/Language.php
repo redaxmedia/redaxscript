@@ -105,10 +105,13 @@ class Redaxscript_Language
 
 		foreach ($json as $file)
 		{
-			$values = json_decode(file_get_contents($file), true);
-			if (is_array($values))
+			if (file_exists($file))
 			{
-				self::$_values = array_merge(self::$_values, $values);
+				$values = json_decode(file_get_contents($file), true);
+				if (is_array($values))
+				{
+					self::$_values = array_merge(self::$_values, $values);
+				}
 			}
 		}
 	}

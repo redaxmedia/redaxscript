@@ -167,7 +167,8 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha();
+		$language = Redaxscript_Language::instance();
+		$captcha = new Redaxscript_Captcha($language);
 	}
 
 	/* collect output */
