@@ -62,21 +62,35 @@ class Redaxscript_Language
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
+	 * @param string $index index of the key array
 	 *
 	 * @return string
 	 */
 
-	public static function get($key = null)
+	public static function get($key = null, $index = null)
 	{
-		if (array_key_exists($key, self::$_values))
+		/* handle index */
+
+		if ($index && is_array(self::$_values[$index]))
+		{
+			$values = self::$_values[$index];
+		}
+		else
+		{
+			$values = self::$_values;
+		}
+
+		/* key from values */
+
+		if (array_key_exists($key, $values))
 		{
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding(self::$_values[$key], s('charset'), 'utf-8, latin1');
+				$output = mb_convert_encoding($values[$key], s('charset'), 'utf-8, latin1');
 			}
 			else
 			{
-				$output = self::$_values[$key];
+				$output = $values[$key];
 			}
 		}
 		else

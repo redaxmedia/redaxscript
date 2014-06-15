@@ -17,4 +17,4 @@ $registry->init(migrate_constants());
 /* init language */
 
 $language = Redaxscript_Language::instance();
-$language->init();
+$language->init($registry->get('language'));

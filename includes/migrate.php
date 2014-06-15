@@ -111,9 +111,9 @@ function migrate_constants()
  * @return string
  */
 
-function l($key = null)
+function l($key = null, $index = null)
 {
 	$language = Redaxscript_Language::instance();
-	$output = $language->get($key);
+	$output = $language->get($key, $index);
 	return $output;
 }
