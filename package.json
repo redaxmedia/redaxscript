@@ -39,6 +39,6 @@
 	},
 	"scripts":
 	{
-		"test": "grunt --verbose"
+		"test": "grunt integration --verbose"
 	}
 }

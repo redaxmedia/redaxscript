@@ -886,8 +886,7 @@ module.exports = function (grunt)
 		'csslint',
 		'htmlhint',
 		'phplint',
-		'toclint',
-		'phpunit:integration'
+		'toclint'
 	]);
 	grunt.registerTask('phplint',
 	[
@@ -925,6 +924,11 @@ module.exports = function (grunt)
 		'img',
 		'smushit',
 		'svgmin'
+	]);
+	grunt.registerTask('integration',
+	[
+		'default',
+		'phpunit:integration'
 	]);
 	grunt.registerTask('dist',
 	[
