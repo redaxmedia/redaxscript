@@ -238,7 +238,7 @@ function admin_users_form()
 	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
-		$language_array[l($value)] = $value;
+		$language_array[l($value, '_index')] = $value;
 	}
 	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, $language, l('language')) . '</li>';
 	if ($id == '' || $id > 1)

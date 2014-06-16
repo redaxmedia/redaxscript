@@ -368,34 +368,6 @@ function scripts($mode = '')
 }
 
 /**
- * languages transport
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Loader
- * @author Henry Ruhs
- *
- * @param array $language
- * @return string
- */
-
-function languages_transport($language = '')
-{
-	if (LANGUAGES_TRANSPORT == 0)
-	{
-		$output = 'var l = l || {};' . PHP_EOL;
-	}
-	define('LANGUAGES_TRANSPORT', 1);
-	foreach ($language as $value)
-	{
-		$output .= 'l.' . $value . ' = \'' . l($value) . '\';' . PHP_EOL;
-	}
-	return $output;
-}
-
-/**
  * scripts transport
  *
  * @since 1.2.1
@@ -411,10 +383,13 @@ function languages_transport($language = '')
 
 function scripts_transport($minify = '')
 {
-	/* languages transport */
+	/* languages object */
 
 	$language = Redaxscript_Language::instance();
-	$output = languages_transport($language-getAll());
+
+	/* languages transport */
+
+	$output = 'var l = l || ' . $language-getAll() . ';' . PHP_EOL;
 
 	/* extend redaxscript object */
 
@@ -442,11 +417,11 @@ function scripts_transport($minify = '')
 
 	/* generator and version */
 
-	$output .= 'r.generator = \'' . l('redaxscript') . ' ' . l('redaxscript_version') . '\';' . PHP_EOL;
-	$output .= 'r.version = \'' . l('redaxscript_version') . '\';' . PHP_EOL;
+	$output .= 'r.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'r.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
-	/* minify output */
+	/* minify */
 
 	if ($minify)
 	{
