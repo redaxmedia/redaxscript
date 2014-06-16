@@ -168,7 +168,7 @@ function fb_group($type = '', $options = '')
 
 					if ($likes_counter == $likes_total - 1)
 					{
-						$output .= ' ' . l('fb_group_and') . ' ';
+						$output .= ' ' . l('and', 'fb_group') . ' ';
 					}
 					else if ($likes_total > 1 && $likes_counter < $likes_total - 1)
 					{
@@ -182,15 +182,15 @@ function fb_group($type = '', $options = '')
 				$output .= ' ';
 				if ($likes_total == 1)
 				{
-					$output .= l('fb_group_likes_this');
+					$output .= l('likes_this', 'fb_group');
 				}
 				else if ($likes_rest)
 				{
-					$output .= l('fb_group_and') . ' ' . $likes_rest . ' ' . l('fb_group_other') . ' ' . l('fb_group_like_this');
+					$output .= l('and', 'fb_group') . ' ' . $likes_rest . ' ' . l('other', 'fb_group') . ' ' . l('like_this', 'fb_group');
 				}
 				else
 				{
-					$output .= l('fb_group_like_this');
+					$output .= l('like_this', 'fb_group');
 				}
 				$output .= l('point') . '</div>';
 			}

@@ -1,6 +1,6 @@
-<phpunit bootstrap="includes/bootstrap.php">
+<phpunit bootstrap="includes/Bootstrap.php">
 	<testsuite name="base">
-		<directory suffix="_test.php">tests/includes</directory>
+		<directory>tests/includes</directory>
 	</testsuite>
 	<filter>
 		<blacklist>

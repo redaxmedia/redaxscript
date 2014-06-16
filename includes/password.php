@@ -22,7 +22,8 @@ function password_reset_form()
 
 	/* captcha object */
 
-	$captcha = new Redaxscript_Captcha();
+	$language = Redaxscript_Language::instance();
+	$captcha = new Redaxscript_Captcha($language);
 
 	/* collect output */
 
@@ -123,10 +124,10 @@ function password_reset_post()
 			l('login') => $loginLink
 		);
 
-		/* mail object */
+		/* mailer object */
 
-		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-		$mail->send();
+		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
 
 		/* update password */
 

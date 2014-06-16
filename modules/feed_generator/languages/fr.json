@@ -1,0 +1,7 @@
+{
+	"feed_generator":
+	{
+		"feed_articles": "Flux-Article",
+		"feed_comments": "Flux-Commentaires"
+	}
+}

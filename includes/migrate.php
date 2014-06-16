@@ -14,7 +14,8 @@
 function breadcrumb()
 {
 	$registry = Redaxscript_Registry::instance();
-	$breadcrumb = new Redaxscript_Breadcrumb($registry);
+	$language = Redaxscript_Language::instance();
+	$breadcrumb = new Redaxscript_Breadcrumb($registry, $language);
 	echo $breadcrumb->render();
 }
 
@@ -92,5 +93,27 @@ function migrate_constants()
 
 		$output[$key] = $value;
 	}
+	return $output;
+}
+
+/**
+ * language shortcut
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+
+function l($key = null, $index = null)
+{
+	$language = Redaxscript_Language::instance();
+	$output = $language->get($key, $index);
 	return $output;
 }

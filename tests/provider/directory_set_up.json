@@ -1,21 +1,15 @@
 {
 	"includes":
 	{
-		"admin":
-		{
-			"admin.php": "",
-			"settings.php": ""
-		},
-		"autoloader.php": "",
-		"bootstrap.php": ""
+		"Autoloader.php": "",
+		"Bootstrap.php": ""
 	},
 	"languages":
 	{
 		".": "",
 		"..": "",
-		"en.php": "",
-		"de.php": "",
-		"misc.php": ""
+		"en.json": "",
+		"de.json": ""
 	},
 	"index.php": ""
 }

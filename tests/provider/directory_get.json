@@ -6,9 +6,8 @@
 		],
 		"",
 		[
-			"de.php",
-			"en.php",
-			"misc.php"
+			"de.json",
+			"en.json"
 		]
 	 ],
 	 [
@@ -16,10 +15,9 @@
 			"",
 			"root/languages"
 		],
-		"misc.php",
+		"de.json",
 		[
-			"de.php",
-			"en.php"
+			"en.json"
 		]
 	 ],
 	 [
@@ -27,10 +25,9 @@
 			"",
 			"root/languages"
 		],
-		"de.php",
+		"en.json",
 		[
-			"en.php",
-			"misc.php"
+			"de.json"
 		]
 	 ],
 	 [
@@ -39,11 +36,10 @@
 			"root/languages"
 		],
 		[
-			"en.php",
-			"de.php"
+			"en.json",
+			"de.json"
 		],
 		[
-			"misc.php"
 		]
 	 ]
 ]

@@ -8,9 +8,9 @@ include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
-include_once('includes/detection.php');
-include_once('includes/detection_language.php');
-include_once('includes/detection_template.php');
+include_once('includes/Detection.php');
+include_once('includes/Detection/Language.php');
+include_once('includes/Detection/Template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
@@ -19,15 +19,19 @@ include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
-include_once('includes/registry.php');
+include_once('includes/Registry.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 
+/* vendor */
+
+include_once('vendor/j4mie/idiorm/idiorm.php');
+
 /* bootstrap */
 
 startup();
-include_once('includes/bootstrap.php');
+include_once('includes/Bootstrap.php');
 
 /* include files as needed */
 
@@ -109,30 +113,35 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 	}
 }
 
-/* include language files */
-
-include_once('languages/' . LANGUAGE . '.php');
-include_once('languages/misc.php');
-
-/* include module files */
+/* module files as needed */
 
 $modules_include = modules_include();
 if ($modules_include)
 {
+	/* language object */
+
+	$language = Redaxscript_Language::instance();
+
+	/* process modules */
+
 	foreach ($modules_include as $value)
 	{
-		if (file_exists('modules/' . $value . '/languages/' . LANGUAGE . '.php'))
-		{
-			include_once('modules/' . $value . '/languages/' . LANGUAGE . '.php');
-		}
-		else if (file_exists('modules/' . $value . '/languages/en.php'))
-		{
-			include_once('modules/' . $value . '/languages/en.php');
-		}
+		/* language */
+
+		$language->load(array(
+			'modules/' . $value . '/languages/en.json',
+			'modules/' . $value . '/languages/' . LANGUAGE . '.json'
+		));
+
+		/* config */
+
 		if (file_exists('modules/' . $value . '/config.php'))
 		{
 			include_once('modules/' . $value . '/config.php');
 		}
+
+		/* index */
+
 		if (file_exists('modules/' . $value . '/index.php'))
 		{
 			include_once('modules/' . $value . '/index.php');

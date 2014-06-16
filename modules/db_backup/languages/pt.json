@@ -1,0 +1,9 @@
+{
+	"db_backup":
+	{
+		"download": "Download",
+		"send_email": "Enviar E-mail",
+		"database_backup": "Database backup",
+		"save_attachment": "Salvar backup do anexo"
+	}
+}

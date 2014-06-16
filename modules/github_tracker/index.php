@@ -107,7 +107,7 @@ function github_tracker($type = '', $options = '')
 			$output .= '<li><h3 class="title_github_tracker_milestones">' . $value->title . '</h3></li>';
 			$output .= '<li><span class="text_github_tracker_milestones_description">' . $value->description . '</span></li>';
 			$output .= '<li><progress class="progress_github_tracker_milestones" value="' . $value->closed_issues . '" max="' . $total_issues . '"></progress></li>';
-			$output .= '<li><span class="text_github_tracker_milestones_status">' . $value->closed_issues . ' ' . l('github_tracker_closed_issues') . s('divider') . $value->open_issues . ' ' . l('github_tracker_open_issues') . '</span></li>';
+			$output .= '<li><span class="text_github_tracker_milestones_status">' . $value->closed_issues . ' ' . l('closed_issues', 'github_tracker') . s('divider') . $value->open_issues . ' ' . l('open_issues', 'github_tracker') . '</span></li>';
 			$output .= '</ul>';
 		}
 	}
@@ -117,8 +117,8 @@ function github_tracker($type = '', $options = '')
 	if ($data && $type == 'issues')
 	{
 		$output = '<div class="wrapper_table_default"><table class="table table_default table_github_tracker_milestones">';
-		$output .= '<thead><tr><th class="s3o6 column_first">' . l('github_tracker_issues') . '</th><th class="column_second">' . l('github_tracker_created') . '</th><th class="column_third">' . l('github_tracker_updated') . '</th><th class="column_last">' . l('github_tracker_milestones') . '</th></tr></thead>';
-		$output .= '<tfoot><tr><td class="column_first">' . l('github_tracker_issues') . '</td><td class="column_second">' . l('github_tracker_created') . '</td><td class="column_third">' . l('github_tracker_updated') . '</td><td class="column_last">' . l('github_tracker_milestones') . '</td></tr></tfoot>';
+		$output .= '<thead><tr><th class="s3o6 column_first">' . l('issues', 'github_tracker') . '</th><th class="column_second">' . l('created', 'github_tracker') . '</th><th class="column_third">' . l('updated', 'github_tracker') . '</th><th class="column_last">' . l('milestones', 'github_tracker') . '</th></tr></thead>';
+		$output .= '<tfoot><tr><td class="column_first">' . l('issues', 'github_tracker') . '</td><td class="column_second">' . l('created', 'github_tracker') . '</td><td class="column_third">' . l('updated', 'github_tracker') . '</td><td class="column_last">' . l('milestones', 'github_tracker') . '</td></tr></tfoot>';
 		foreach ($data as $value)
 		{
 			/* break if limit reached */

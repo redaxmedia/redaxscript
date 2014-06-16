@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"title": "title",
+			"title": "Title",
 			"fullRoute": "",
 			"firstParameter": "",
 			"secondParameter": "",
@@ -17,7 +17,7 @@
 		},
 		[
 			{
-				"title": "title"
+				"title": "Title"
 			}
 		]
 	],
@@ -39,7 +39,7 @@
 		},
 		[
 			{
-				"title": "home"
+				"title": "Home"
 			}
 		]
 	],
@@ -61,7 +61,7 @@
 		},
 		[
 			{
-				"title": "administration"
+				"title": "Administration"
 			}
 		]
 	],
@@ -83,15 +83,15 @@
 		},
 		[
 			{
-				"title": "administration",
+				"title": "Administration",
 				"route": "admin"
 			},
 			{
-				"title": "view",
+				"title": "View",
 				"route": "admin/view/categories"
 			},
 			{
-				"title": "categories"
+				"title": "Categories"
 			}
 		]
 	],
@@ -113,7 +113,7 @@
 		},
 		[
 			{
-				"title": "login"
+				"title": "Login"
 			}
 		]
 	],
@@ -135,7 +135,7 @@
 		},
 		[
 			{
-				"title": "error"
+				"title": "Error"
 			}
 		]
 	],

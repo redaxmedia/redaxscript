@@ -211,7 +211,7 @@
 			{
 				/* previous control */
 
-				gallery.buttonPrevious = $('<a>' + l.gallery_image_previous + '</a>').addClass(options.classString.controlPrevious)
+				gallery.buttonPrevious = $('<a>' + l.gallery.image_previous + '</a>').addClass(options.classString.controlPrevious)
 
 				/* listen for click */
 
@@ -223,7 +223,7 @@
 
 				/* next control */
 
-				gallery.buttonNext = $('<a>' + l.gallery_image_next + '</a>').addClass(options.classString.controlNext)
+				gallery.buttonNext = $('<a>' + l.gallery.image_next + '</a>').addClass(options.classString.controlNext)
 
 				/* listen for click */
 
@@ -244,7 +244,7 @@
 
 				if (gallery.data.artist)
 				{
-					gallery.artist = $('<div data-label="' + l.gallery_image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
+					gallery.artist = $('<div data-label="' + l.gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
 				}
 
 				/* date */
@@ -258,14 +258,14 @@
 
 				if (gallery.data.description)
 				{
-					gallery.description = $('<div data-label="' + l.gallery_image_description + '">' + gallery.data.description + '</div>').addClass(options.classString.galleryDescription).appendTo(gallery.meta);
+					gallery.description = $('<div data-label="' + l.gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.classString.galleryDescription).appendTo(gallery.meta);
 				}
 
 				/* pagination */
 
 				if (gallery.data.total > 1)
 				{
-					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery_divider + gallery.data.total + '</div>').addClass(options.classString.galleryPagination).appendTo(gallery.meta);
+					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery.divider + gallery.data.total + '</div>').addClass(options.classString.galleryPagination).appendTo(gallery.meta);
 				}
 
 				/* append meta */

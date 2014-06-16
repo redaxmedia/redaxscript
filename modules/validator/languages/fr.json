@@ -1,0 +1,9 @@
+{
+	"validator":
+	{
+		"from": "De",
+		"to": "À",
+		"line": "Ligne",
+		"column": "Colonne"
+	}
+}
