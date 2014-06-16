@@ -87,13 +87,13 @@ function qunit_render_start()
 	if (FIRST_PARAMETER == 'qunit')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('qunit_qunit'));
-		define('DESCRIPTION', l('qunit_description'));
+		define('TITLE', l('qunit', 'qunit'));
+		define('DESCRIPTION', l('description', 'qunit'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('qunit_qunit'));
+		$registry->set('title', l('qunit', 'qunit'));
 	}
 }
 
