@@ -24,34 +24,6 @@ function qunit_loader_start()
 }
 
 /**
- * qunit loader scripts transport start
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
-
-function qunit_loader_scripts_transport_start()
-{
-	if (FIRST_PARAMETER == 'qunit')
-	{
-		$output = languages_transport(array(
-			'qunit_qunit',
-			'qunit_description',
-			'qunit_type_expected',
-			'qunit_value_expected',
-			'qunit_attribute_expected',
-			'qunit_test_passed',
-			'qunit_test_failed'
-		));
-		echo $output;
-	}
-}
-
-/**
  * qunit scripts start
  *
  * @since 1.2.1

@@ -23,29 +23,6 @@ function file_manager_loader_start()
 }
 
 /**
- * file manager loader scripts transport start
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
-
-function file_manager_loader_scripts_transport_start()
-{
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
-	{
-		$output = languages_transport(array(
-			'file_manager_browse',
-			'file_manager_upload'
-		));
-		echo $output;
-	}
-}
-
-/**
  * file manager render start
  *
  * @since 1.2.1

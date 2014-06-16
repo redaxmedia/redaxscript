@@ -32,7 +32,7 @@
 			var form = $(this),
 				fieldFile = form.find(options.element.fieldFile),
 				buttonUpload = form.find(options.element.buttonUpload),
-				buttonBrowse = $('<button type="submit">' + l.file_manager_browse + '</button>').addClass(options.classString.buttonBrowse);
+				buttonBrowse = $('<button type="submit">' + l.file_manager.browse + '</button>').addClass(options.classString.buttonBrowse);
 
 			/* insert fake browse */
 

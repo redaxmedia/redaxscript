@@ -101,6 +101,19 @@ class Redaxscript_Language
 	}
 
 	/**
+	 * get all items from language
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return array
+	 */
+
+	public static function getAll()
+	{
+		return self::$_values;
+	}
+
+	/**
 	 * load from language files
 	 *
 	 * @since 2.2.0

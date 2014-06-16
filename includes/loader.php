@@ -413,21 +413,8 @@ function scripts_transport($minify = '')
 {
 	/* languages transport */
 
-	$output = languages_transport(array(
-		'ok',
-		'cancel',
-		'dialog_question',
-		'alert',
-		'confirm',
-		'prompt',
-		'input_incorrect',
-		'input_empty',
-		'point',
-		'comma',
-		'colon',
-		'question_mark',
-		'exclamation_mark'
-	));
+	$language = Redaxscript_Language::instance();
+	$output = languages_transport($language-getAll());
 
 	/* extend redaxscript object */
 

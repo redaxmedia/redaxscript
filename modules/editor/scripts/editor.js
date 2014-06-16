@@ -186,7 +186,7 @@
 					{
 						$.fn.dialog(
 						{
-							message: l.editor_browser_support_no + l.point
+							message: l.editor.browser_support_no + l.point
 						});
 					}
 				}
@@ -281,13 +281,13 @@
 				{
 					editor.mode = 0;
 					editor.preview.html(editor.convertToEntity()).focus();
-					editor.controlToggle.attr('title', l.editor_source_code);
+					editor.controlToggle.attr('title', l.editor.source_code);
 				}
 				else
 				{
 					editor.mode = 1;
 					editor.textarea.val(editor.convertToHTML()).focus();
-					editor.controlToggle.attr('title', l.editor_wysiwyg);
+					editor.controlToggle.attr('title', l.editor.wysiwyg);
 				}
 				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl).toggle();
 				editor.textarea.add(editor.preview).toggle();
@@ -325,7 +325,7 @@
 
 					$.fn.dialog(
 					{
-						message: l.editor_select_text_first + l.point
+						message: l.editor.select_text_first + l.point
 					});
 				}
 			};

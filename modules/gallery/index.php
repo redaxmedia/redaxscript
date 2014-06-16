@@ -21,30 +21,6 @@ function gallery_loader_start()
 }
 
 /**
- * gallery loader scripts transport start
- *
- * @since 2.0.2
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
-
-function gallery_loader_scripts_transport_start()
-{
-	$output = languages_transport(array(
-		'date',
-		'gallery_image_artist',
-		'gallery_image_description',
-		'gallery_image_next',
-		'gallery_image_previous',
-		'gallery_divider'
-	));
-	echo $output;
-}
-
-/**
  * gallery
  *
  * @since 2.0.2
