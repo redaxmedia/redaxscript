@@ -61,12 +61,12 @@ function file_manager_render_start()
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('file_manager_file_manager'));
+		define('TITLE', l('file_manager', 'file_manager'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('file_manager_file_manager'));
+		$registry->set('title', l('file_manager', 'file_manager'));
 	}
 }
 
@@ -139,7 +139,7 @@ function file_manager_center_start()
 
 function file_manager_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('file_manager_file_manager'), 'admin/file-manager') . '</li>';
+	$output = '<li>' . anchor_element('internal', '', '', l('file_manager', 'file_manager'), 'admin/file-manager') . '</li>';
 	return $output;
 }
 
@@ -164,26 +164,26 @@ function file_manager($directory = '')
 	}
 	if (!is_dir($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('file_manager_directory_create') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="box_note note_error">' . l('directory_create', 'file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 	else if (!is_writable($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('file_manager_directory_permission_grant') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="box_note note_error">' . l('directory_permission_grant', 'file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('file_manager_file_manager') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('file_manager', 'file_manager') . '</h2>';
 	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
-	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('file_manager_browse'));
-	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('file_manager_upload') . '</span></span></button>';
+	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('browse', 'file_manager'));
+	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('upload', 'file_manager') . '</span></span></button>';
 	$output .= '</form>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_manager_file_size') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_manager_file_size') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_size', 'file_manager') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_size', 'file_manager') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 
 	/* file manager directory object */
 
@@ -220,7 +220,7 @@ function file_manager($directory = '')
 	}
 	else
 	{
-		$error = l('file_manager_file_no') . l('point');
+		$error = l('file_no', 'file_manager') . l('point');
 	}
 
 	/* handle error */
@@ -280,7 +280,7 @@ function file_manager_upload($directory = '')
 	{
 		if (exif_imagetype($file) == '')
 		{
-			$error = l('file_manager_file_type_limit') . l('point');
+			$error = l('file_type_limit', 'file_manager') . l('point');
 		}
 	}
 
@@ -288,7 +288,7 @@ function file_manager_upload($directory = '')
 
 	if ($file_size > 1048576)
 	{
-		$error = l('file_manager_file_size_limit') . l('point');
+		$error = l('file_size_limit', 'file_manager') . l('point');
 	}
 
 	/* handle error */
