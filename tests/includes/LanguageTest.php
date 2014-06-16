@@ -52,6 +52,23 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * testGetAll
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetAll()
+	{
+		/* result */
+
+		$result = $this->_language->getAll();
+
+		/* compare */
+
+		$this->assertArrayHasKey('home', $result);
+	}
+
+	/**
 	 * testGetInvalidKey
 	 *
 	 * @since 2.2.0
