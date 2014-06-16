@@ -110,4 +110,3 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Redaxscript_Registry', $result);
 	}
 }
-

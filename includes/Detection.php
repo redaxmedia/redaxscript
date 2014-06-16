@@ -54,7 +54,7 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * get the superglobal parameter
+	 * get the global parameter
 	 *
 	 * @since 2.0.0
 	 *
