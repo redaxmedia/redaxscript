@@ -36,12 +36,12 @@ function preview_render_start()
 	if (FIRST_PARAMETER == 'preview')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('preview_preview'));
+		define('TITLE', l('preview', 'preview'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('preview_preview'));
+		$registry->set('title', l('preview', 'preview'));
 	}
 }
 
