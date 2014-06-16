@@ -46,12 +46,12 @@ function debug_render_start()
 	if (FIRST_PARAMETER == 'debug')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('debug_debug'));
+		define('TITLE', l('debug', 'debug'));
 
 		/* registry object */
 
 		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('debug_debug'));
+		$registry->set('title', l('debug', 'debug'));
 	}
 }
 
@@ -107,7 +107,7 @@ function debug_center_start()
 
 function debug_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('debug_debug'), 'debug') . '</li>';
+	$output = '<li>' . anchor_element('internal', '', '', l('debug', 'debug'), 'debug') . '</li>';
 	return $output;
 }
 
