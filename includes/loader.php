@@ -389,7 +389,7 @@ function scripts_transport($minify = '')
 
 	/* languages transport */
 
-	$output = 'var l = l || ' . $language-getAll() . ';' . PHP_EOL;
+	$output = 'var l = ' . json_encode($language->getAll()) . ';' . PHP_EOL;
 
 	/* extend redaxscript object */
 

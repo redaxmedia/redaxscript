@@ -101,7 +101,7 @@ class Redaxscript_Language
 	}
 
 	/**
-	 * get all items from language
+	 * get all language values
 	 *
 	 * @since 2.2.0
 	 *
@@ -118,10 +118,10 @@ class Redaxscript_Language
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string|array $ single or multiple language files
+	 * @param string|array $json single or multiple language paths
 	 */
 
-	public function load($json = null)
+	public static function load($json = null)
 	{
 		if (!is_array($json))
 		{
