@@ -84,13 +84,13 @@ class Redaxscript_Language
 
 		if (array_key_exists($key, $values))
 		{
+			$output = $values[$key];
+
+			/* convert encoding */
+
 			if (function_exists('mb_convert_encoding'))
 			{
 				$output = mb_convert_encoding($values[$key], s('charset'), 'utf-8, latin1');
-			}
-			else
-			{
-				$output = $values[$key];
 			}
 		}
 		else
