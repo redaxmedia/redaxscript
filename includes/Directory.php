@@ -101,19 +101,15 @@ class Redaxscript_Directory
 
 	public function get($key = null)
 	{
-		/* return single value */
-
 		if (array_key_exists($key, $this->_directoryArray))
 		{
-			return $this->_directoryArray[$key];
+			$output = $this->_directoryArray[$key];
 		}
-
-		/* else return array */
-
 		else
 		{
-			return $this->_directoryArray;
+			$output = $this->_directoryArray;
 		}
+		return $output;
 	}
 
 	/**

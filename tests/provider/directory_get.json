@@ -9,8 +9,8 @@
 			"de.json",
 			"en.json"
 		]
-	 ],
-	 [
+	],
+	[
 		[
 			"",
 			"root/languages"
@@ -19,8 +19,8 @@
 		[
 			"en.json"
 		]
-	 ],
-	 [
+	],
+	[
 		[
 			"",
 			"root/languages"
@@ -29,8 +29,8 @@
 		[
 			"de.json"
 		]
-	 ],
-	 [
+	],
+	[
 		[
 			"",
 			"root/languages"
@@ -41,5 +41,5 @@
 		],
 		[
 		]
-	 ]
+	]
 ]
