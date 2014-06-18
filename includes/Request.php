@@ -19,11 +19,11 @@ class Redaxscript_Request
 	 */
 
 	protected static $_values = array(
-		'server' => '$_SERVER',
-		'query' => '$_GET',
-		'post' => '$_POST',
-		'session' => '$_SESSION',
-		'coookie' => '$_COOKIE'
+		'server' => '_SERVER',
+		'query' => '_GET',
+		'post' => '_POST',
+		'session' => '_SESSION',
+		'coookie' => '_COOKIE'
 	);
 
 	/**
