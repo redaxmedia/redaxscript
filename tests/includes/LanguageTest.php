@@ -89,7 +89,7 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	{
 		/* result */
 
-		$result = $this->_language->getAll();
+		$result = $this->_language->get();
 
 		/* compare */
 
