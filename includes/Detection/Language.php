@@ -26,7 +26,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 			'contents' => retrieve('language', $this->_registry->get('lastTable'), 'id', $this->_registry->get('lastId')),
 			'settings' => s('language') === 'detect' ? '' : s('language'),
 			'browser' => substr(Redaxscript_Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
-            'fallback' => 'en'
-        ), 'language', 'languages/{value}.json');
+			'fallback' => 'en'
+		), 'language', 'languages/{value}.json');
     }
 }
