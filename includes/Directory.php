@@ -122,6 +122,7 @@ class Redaxscript_Directory
 	 * @since 2.0.0
 	 *
 	 * @param string $directory name of the directory
+	 *
 	 * @return array
 	 */
 
@@ -155,6 +156,7 @@ class Redaxscript_Directory
 	 *
 	 * @param string $directory name of the directory
 	 * @param integer $mode file access mode
+	 *
 	 * @return boolean
 	 */
 
