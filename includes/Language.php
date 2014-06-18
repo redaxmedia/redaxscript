@@ -82,7 +82,7 @@ class Redaxscript_Language
 			$values = self::$_values;
 		}
 
-		/* get values as needed */
+		/* values as needed */
 
 		if (is_null($key))
 		{
