@@ -73,7 +73,7 @@ class Redaxscript_Language
 
 		/* handle index */
 
-		if (isset($index) && is_array(self::$_values[$index]))
+		if (isset($index) && isset(self::$_values[$index]))
 		{
 			$values = self::$_values[$index];
 		}

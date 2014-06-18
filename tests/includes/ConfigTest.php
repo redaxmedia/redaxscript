@@ -1,7 +1,8 @@
 <?php
+include_once('config.php');
 
 /**
- * Redaxscript Mailer Test
+ * Redaxscript Config Test
  *
  * @since 2.2.0
  *
@@ -13,13 +14,36 @@
 class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * testDummy
+	 * testGet
 	 *
-	 * @since 2.20
+	 * @since 2.2.0
 	 */
 
-	public function testDummy()
+	public function testGet()
 	{
-		$this->assertTrue(true);
+		/* result */
+
+		$result = Redaxscript_Config::get('host');
+
+		/* compare */
+
+		$this->assertEmpty($result);
+	}
+
+	/**
+	 * testGetAll
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetAll()
+	{
+		/* result */
+
+		$result = Redaxscript_Config::get();
+
+		/* compare */
+
+		$this->assertArrayHasKey('host', $result);
 	}
 }

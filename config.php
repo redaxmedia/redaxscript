@@ -18,7 +18,7 @@ class Redaxscript_Config
 	 * @var array
 	 */
 
-	private $_config = array(
+	private static $_config = array(
 		// [config]
 		'host' => '',
 		'name' => '',
@@ -32,14 +32,14 @@ class Redaxscript_Config
 	/**
 	 * get item from config
 	 *
-	 * @since 2.0.0
+	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
 	 * @return string|array
 	 */
 
-	public function get($key = null)
+	public static function get($key = null)
 	{
 		$output = null;
 
@@ -47,11 +47,11 @@ class Redaxscript_Config
 
 		if (is_null($key))
 		{
-			$output = $this->_config;
+			$output = self::$_config;
 		}
-		else if (array_key_exists($key, $this->_config))
+		else if (array_key_exists($key, self::$_config))
 		{
-			$output = $this->_config[$key];
+			$output = self::$_config[$key];
 		}
 		return $output;
 	}

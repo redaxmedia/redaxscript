@@ -1,7 +1,7 @@
 <?php
 
 /**
- * parent class to request super globals
+ * parent class to request globals
  *
  * @since 2.2.0
  *
@@ -18,13 +18,7 @@ class Redaxscript_Request
 	 * @var array
 	 */
 
-	protected static $_values = array(
-		'server' => '_SERVER',
-		'query' => '_GET',
-		'post' => '_POST',
-		'session' => '_SESSION',
-		'coookie' => '_COOKIE'
-	);
+	protected static $_values = array();
 
 	/**
 	 * constructor of the class
@@ -45,17 +39,7 @@ class Redaxscript_Request
 
 	public function init()
 	{
-		foreach (self::$_values as $key => $value)
-		{
-			if (isset($$value))
-			{
-				self::$_values[$key] = $$value;
-			}
-			else
-			{
-				self::$_values[$key] = null;
-			}
-		}
+		self::$_values = $GLOBALS;
 	}
 
 	/**
@@ -75,7 +59,7 @@ class Redaxscript_Request
 
 		/* handle index */
 
-		if (isset($index) && is_array(self::$_values[$index]))
+		if (isset($index) && isset(self::$_values[$index]))
 		{
 			$values = self::$_values[$index];
 		}
@@ -109,7 +93,7 @@ class Redaxscript_Request
 
 	public static function getServer($key = null)
 	{
-		$output = self::get($key, 'server');
+		$output = self::get($key, '_SERVER');
 		return $output;
 	}
 
@@ -125,7 +109,7 @@ class Redaxscript_Request
 
 	public static function getQuery($key = null)
 	{
-		$output = self::get($key, 'query');
+		$output = self::get($key, '_GET');
 		return $output;
 	}
 
@@ -141,7 +125,7 @@ class Redaxscript_Request
 
 	public static function getPost($key = null)
 	{
-		$output = self::get($key, 'post');
+		$output = self::get($key, '_POST');
 		return $output;
 	}
 
@@ -157,7 +141,7 @@ class Redaxscript_Request
 
 	public static function getSession($key = null)
 	{
-		$output = self::get($key, 'session');
+		$output = self::get($key, '_SESSION');
 		return $output;
 	}
 
@@ -173,7 +157,7 @@ class Redaxscript_Request
 
 	public static function getCookie($key = null)
 	{
-		$output = self::get($key, 'cookie');
+		$output = self::get($key, '_COOKIE');
 		return $output;
 	}
 
@@ -188,7 +172,7 @@ class Redaxscript_Request
 
 	public static function setServer($key = null, $value = null)
 	{
-		self::$_values['server'][$key] = $value;
+		self::$_values['_SERVER'][$key] = $value;
 	}
 
 	/**
@@ -202,7 +186,7 @@ class Redaxscript_Request
 
 	public static function setQuery($key = null, $value = null)
 	{
-		self::$_values['query'][$key] = $value;
+		self::$_values['_GET'][$key] = $value;
 	}
 
 	/**
@@ -216,7 +200,7 @@ class Redaxscript_Request
 
 	public static function setPost($key = null, $value = null)
 	{
-		self::$_values['post'][$key] = $value;
+		self::$_values['_POST'][$key] = $value;
 	}
 
 	/**
@@ -230,7 +214,7 @@ class Redaxscript_Request
 
 	public static function setSession($key = null, $value = null)
 	{
-		self::$_values['session'][$key] = $value;
+		self::$_values['_SESSION'][$key] = $_SESSION[$key] = $value;
 	}
 
 	/**
@@ -244,6 +228,6 @@ class Redaxscript_Request
 
 	public static function setCookie($key = null, $value = null)
 	{
-		self::$_values['cookie'][$key] = $value;
+		self::$_values['_COOKIE'][$key] = $_COOKIE[$key] = $value;
 	}
 }
