@@ -36,7 +36,7 @@ class Redaxscript_Config
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public function get($key = null)
