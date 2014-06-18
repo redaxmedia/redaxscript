@@ -69,9 +69,11 @@ class Redaxscript_Language
 
 	public static function get($key = null, $index = null)
 	{
+		$output = null;
+
 		/* handle index */
 
-		if ($index && is_array(self::$_values[$index]))
+		if (isset($index) && is_array(self::$_values[$index]))
 		{
 			$values = self::$_values[$index];
 		}
@@ -80,9 +82,13 @@ class Redaxscript_Language
 			$values = self::$_values;
 		}
 
-		/* key from values */
+		/* get values as needed */
 
-		if (array_key_exists($key, $values))
+		if (is_null($key))
+		{
+			$output = $values;
+		}
+		else if (array_key_exists($key, $values))
 		{
 			$output = $values[$key];
 
@@ -93,24 +99,7 @@ class Redaxscript_Language
 				$output = mb_convert_encoding($values[$key], s('charset'), 'utf-8, latin1');
 			}
 		}
-		else
-		{
-			$output = null;
-		}
 		return $output;
-	}
-
-	/**
-	 * get all language values
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public static function getAll()
-	{
-		return self::$_values;
 	}
 
 	/**
