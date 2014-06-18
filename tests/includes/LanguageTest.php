@@ -97,12 +97,12 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testGetInvalidKey
+	 * testGetInvalid
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGetInvalidKey()
+	public function testGetInvalid()
 	{
 		/* result */
 
