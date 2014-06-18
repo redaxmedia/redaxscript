@@ -84,7 +84,7 @@ class Redaxscript_Request
 			$values = self::$_values;
 		}
 
-		/* get from values */
+		/* values as needed */
 
 		if (is_null($key))
 		{
