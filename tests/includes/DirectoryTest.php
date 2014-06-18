@@ -113,8 +113,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 * @since 2.1.0
 	 *
 	 * @param array $path
-	 * @param array $expectOne
-	 * @param boolean $expectTwo
+	 * @param array $expect
 	 *
 	 * @dataProvider providerCreate
 	 */

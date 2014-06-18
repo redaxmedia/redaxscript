@@ -12,7 +12,7 @@
 	],
 	[
 		[
-			"includes/admin",
+			"includes/Detection",
 			"root",
 			"root/includes"
 		],

@@ -1,13 +1,16 @@
 {
 	"includes":
 	{
+		"Detection":
+		{
+			"Language.php": "",
+			"Template.php": ""
+		},
 		"Autoloader.php": "",
 		"Bootstrap.php": ""
 	},
 	"languages":
 	{
-		".": "",
-		"..": "",
 		"en.json": "",
 		"de.json": ""
 	},
