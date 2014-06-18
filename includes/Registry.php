@@ -72,7 +72,7 @@ class Redaxscript_Registry
 
 		if (is_null($key))
 		{
-			$output = self::$_values
+			$output = self::$_values;
 		}
 		else if (array_key_exists($key, self::$_values))
 		{
