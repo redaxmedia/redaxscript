@@ -114,20 +114,6 @@ class Redaxscript_Request
 	}
 
 	/**
-	 * set item to server
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 * @param mixed $value value of the item
-	 */
-
-	public static function setServer($key = null, $value = null)
-	{
-		self::$_values['server'][$key] = $value;
-	}
-
-	/**
 	 * get item from query
 	 *
 	 * @since 2.2.0
@@ -141,20 +127,6 @@ class Redaxscript_Request
 	{
 		$output = self::get($key, 'query');
 		return $output;
-	}
-
-	/**
-	 * set item to query
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 * @param mixed $value value of the item
-	 */
-
-	public static function setQuery($key = null, $value = null)
-	{
-		self::$_values['query'][$key] = $value;
 	}
 
 	/**
@@ -174,20 +146,6 @@ class Redaxscript_Request
 	}
 
 	/**
-	 * set item to post
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 * @param mixed $value value of the item
-	 */
-
-	public static function setPost($key = null, $value = null)
-	{
-		self::$_values['post'][$key] = $value;
-	}
-
-	/**
 	 * get item from session
 	 *
 	 * @since 2.2.0
@@ -204,20 +162,6 @@ class Redaxscript_Request
 	}
 
 	/**
-	 * set item to session
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 * @param mixed $value value of the item
-	 */
-
-	public static function setSession($key = null, $value = null)
-	{
-		self::$_values['session'][$key] = $value;
-	}
-
-	/**
 	 * get item from cookie
 	 *
 	 * @since 2.2.0
@@ -231,6 +175,62 @@ class Redaxscript_Request
 	{
 		$output = self::get($key, 'cookie');
 		return $output;
+	}
+
+	/**
+	 * set item to server
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function setServer($key = null, $value = null)
+	{
+		self::$_values['server'][$key] = $value;
+	}
+
+	/**
+	 * set item to query
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function setQuery($key = null, $value = null)
+	{
+		self::$_values['query'][$key] = $value;
+	}
+
+	/**
+	 * set item to post
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function setPost($key = null, $value = null)
+	{
+		self::$_values['post'][$key] = $value;
+	}
+
+	/**
+	 * set item to session
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function setSession($key = null, $value = null)
+	{
+		self::$_values['session'][$key] = $value;
 	}
 
 	/**
