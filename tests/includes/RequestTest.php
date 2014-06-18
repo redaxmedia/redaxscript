@@ -21,8 +21,6 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		Redaxscript_Request::init();
-		Redaxscript_Request::setQuery('l', 'en');
-		Redaxscript_Request::setQuery('t', 'default');
 	}
 
 	/**
