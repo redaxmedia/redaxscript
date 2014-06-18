@@ -30,29 +30,28 @@ class Redaxscript_Config
 	);
 
 	/**
-	 * get the config
+	 * get item from config
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $key item from the config
+	 * @param string $key key of the item
 	 *
 	 * @return string
 	 */
 
 	public function get($key = null)
 	{
-		/* return single value */
+		$output = null;
 
-		if (array_key_exists($key, $this->_config))
-		{
-			$output = $this->_config[$key];
-		}
+		/* values as needed */
 
-		/* else return array */
-
-		else
+		if (is_null($key))
 		{
 			$output = $this->_config;
+		}
+		else if (array_key_exists($key, $this->_config))
+		{
+			$output = $this->_config[$key];
 		}
 		return $output;
 	}
