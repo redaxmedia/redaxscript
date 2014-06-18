@@ -114,23 +114,6 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testGetNull
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetNull()
-	{
-		/* result */
-
-		$result = $this->_language->get();
-
-		/* compare */
-
-		$this->assertEquals(null, $result);
-	}
-
-	/**
 	 * testReset
 	 *
 	 * @since 2.2.0
