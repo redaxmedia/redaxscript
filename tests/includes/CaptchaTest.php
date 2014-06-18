@@ -67,6 +67,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	 * @param string $expectTask
 	 * @param string $expectRaw
 	 * @param string $expectHash
+	 *
 	 * @dataProvider providerCaptcha
 	 */
 

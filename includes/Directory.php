@@ -94,26 +94,12 @@ class Redaxscript_Directory
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array
+	 * @return array
 	 */
 
-	public function get($key = null)
+	public function get()
 	{
-		$output = null;
-
-		/* values as needed */
-
-		if (is_null($key))
-		{
-			$output = $this->_directoryArray;
-		}
-		else if (array_key_exists($key, $this->_directoryArray))
-		{
-			$output = $this->_directoryArray[$key];
-		}
-		return $output;
+		return $this->_directoryArray;
 	}
 
 	/**

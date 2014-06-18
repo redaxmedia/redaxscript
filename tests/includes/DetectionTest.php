@@ -71,6 +71,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @param array $registry
 	 * @param string $expect
+	 *
 	 * @dataProvider providerDetectionLanguage
 	 */
 
@@ -97,6 +98,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @param array $registry
 	 * @param string $expect
+	 *
 	 * @dataProvider providerDetectionTemplate
 	 */
 

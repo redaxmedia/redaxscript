@@ -123,7 +123,8 @@ class Redaxscript_Language
 		{
 			if (file_exists($file))
 			{
-				$values = json_decode(file_get_contents($file), true);
+				$contents = file_get_contents($file);
+				$values = json_decode($contents, true);
 				if (is_array($values))
 				{
 					self::$_values = array_merge(self::$_values, $values);

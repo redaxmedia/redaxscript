@@ -79,6 +79,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @param array $registry
 	 * @param array $expect
+	 *
 	 * @dataProvider providerGet
 	 */
 
@@ -105,6 +106,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @param array $registry
 	 * @param string $expect
+	 *
 	 * @dataProvider providerRender
 	 */
 

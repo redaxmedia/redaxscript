@@ -1,9 +1,6 @@
 [
 	[
-		[
-			"",
-			"root/languages"
-		],
+		"root/languages",
 		"",
 		[
 			"de.json",
@@ -11,30 +8,21 @@
 		]
 	],
 	[
-		[
-			"",
-			"root/languages"
-		],
+		"root/languages",
 		"de.json",
 		[
 			"en.json"
 		]
 	],
 	[
-		[
-			"",
-			"root/languages"
-		],
+		"root/languages",
 		"en.json",
 		[
 			"de.json"
 		]
 	],
 	[
-		[
-			"",
-			"root/languages"
-		],
+		"root/languages",
 		[
 			"en.json",
 			"de.json"

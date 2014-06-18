@@ -7,6 +7,7 @@
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Gary Aylward
  */
 
@@ -63,13 +64,17 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 	public function testGetAll()
 	{
+		/* setup */
+
+		$this->_registry->set('testAll', 'testAll');
+
 		/* result */
 
 		$result = $this->_registry->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('root', $result);
+		$this->assertArrayHasKey('testAll', $result);
 	}
 
 	/**
