@@ -46,7 +46,7 @@ class Redaxscript_Directory
 	 * @var array
 	 */
 
-	private static $_cache;
+	private static $_cache = array();
 
 	/**
 	 * constructor of the class
@@ -130,7 +130,7 @@ class Redaxscript_Directory
 	{
 		/* use from static cache */
 
-		if (is_array(self::$_cache) && array_key_exists($directory, self::$_cache))
+		if (array_key_exists($directory, self::$_cache))
 		{
 			$directoryArray = self::$_cache[$directory];
 		}
