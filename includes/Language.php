@@ -134,14 +134,14 @@ class Redaxscript_Language
 	}
 
 	/**
-	 * instance of the class
+	 * get the instance
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return object
 	 */
 
-	public static function instance()
+	public static function getInstance()
 	{
 		if (self::$_instance === null)
 		{

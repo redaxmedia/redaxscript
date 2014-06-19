@@ -30,7 +30,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_language = Redaxscript_Language::instance();
+		$this->_language = Redaxscript_Language::getInstance();
 	}
 
 	/**

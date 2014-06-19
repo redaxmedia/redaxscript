@@ -42,7 +42,7 @@ function file_manager_render_start()
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::instance();
+		$registry = Redaxscript_Registry::getInstance();
 		$registry->set('title', l('file_manager', 'file_manager'));
 	}
 }

@@ -24,7 +24,7 @@ function reminder_form()
 
 	/* captcha object */
 
-	$language = Redaxscript_Language::instance();
+	$language = Redaxscript_Language::getInstance();
 	$captcha = new Redaxscript_Captcha($language);
 
 	/* collect output */

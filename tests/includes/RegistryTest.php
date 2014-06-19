@@ -31,7 +31,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::instance();
+		$this->_registry = Redaxscript_Registry::getInstance();
 		$this->_registry->init();
 	}
 
@@ -108,7 +108,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = $this->_registry->instance();
+		$result = $this->_registry->getInstance();
 
 		/* compare */
 

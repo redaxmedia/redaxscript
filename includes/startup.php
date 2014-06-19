@@ -334,7 +334,7 @@ function startup()
 
 	/* registry and detection object */
 
-	$registry = Redaxscript_Registry::instance();
+	$registry = Redaxscript_Registry::getInstance();
 	$registry->init(array(
 		'root' => ROOT,
 		'lastTable' => LAST_TABLE,

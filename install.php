@@ -45,7 +45,7 @@ define('ROBOTS', 'none');
 
 /* registry object */
 
-$registry = Redaxscript_Registry::instance();
+$registry = Redaxscript_Registry::getInstance();
 $registry->set('title', l('installation'));
 
 /* call loader else render template */

@@ -12,10 +12,10 @@ Redaxscript_Request::init();
 
 /* migrate registry */
 
-$registry = Redaxscript_Registry::instance();
+$registry = Redaxscript_Registry::getInstance();
 $registry->init(migrate_constants());
 
 /* language */
 
-$language = Redaxscript_Language::instance();
+$language = Redaxscript_Language::getInstance();
 $language->init($registry->get('language'));

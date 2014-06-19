@@ -94,7 +94,7 @@ function contents()
 
 				/* registry and parser object */
 
-				$registry = Redaxscript_Registry::instance();
+				$registry = Redaxscript_Registry::getInstance();
 				$parser = new Redaxscript_Parser($registry, $text, $route);
 
 				/* collect headline output */
@@ -267,7 +267,7 @@ function extras($filter = '')
 				{
 					/* registry and parser object */
 
-					$registry = Redaxscript_Registry::instance();
+					$registry = Redaxscript_Registry::getInstance();
 					$parser = new Redaxscript_Parser($registry, $text, $route);
 
 					/* collect headline output */

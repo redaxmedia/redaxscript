@@ -30,7 +30,7 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_language = Redaxscript_Language::instance();
+		$this->_language = Redaxscript_Language::getInstance();
 		$this->_language->init('de');
 	}
 
@@ -127,7 +127,7 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = $this->_language->instance();
+		$result = $this->_language->getInstance();
 
 		/* compare */
 

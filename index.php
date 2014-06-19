@@ -121,7 +121,7 @@ if ($modules_include)
 {
 	/* language object */
 
-	$language = Redaxscript_Language::instance();
+	$language = Redaxscript_Language::getInstance();
 
 	/* process modules */
 

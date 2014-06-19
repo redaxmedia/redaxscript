@@ -96,14 +96,14 @@ class Redaxscript_Registry
 	}
 
 	/**
-	 * instance of the class
+	 * get the instance
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return object
 	 */
 
-	public static function instance()
+	public static function getInstance()
 	{
 		if (self::$_instance === null)
 		{
