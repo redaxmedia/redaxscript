@@ -16,17 +16,17 @@
 
 /* @section 1. list dropdown */
 
-.list_dropdown, .list_dropdown li
-{
-	cursor: pointer;
-	position: relative;
-	z-index: 500;
-}
-
 .list_dropdown a
 {
 	display: block;
 	white-space: nowrap;
+}
+
+.list_dropdown li
+{
+	cursor: pointer;
+	position: relative;
+	z-index: 500;
 }
 
 .list_dropdown li:hover > ul, .list_dropdown .item_touch > ul
