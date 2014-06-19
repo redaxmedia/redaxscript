@@ -21,12 +21,12 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 	public function init()
 	{
 		$this->_detect(array(
-			'parameter' => $this->_getParameter('l'),
-			'session' => isset($_SESSION[$this->_registry->get('root') . '/language']) ? $_SESSION[$this->_registry->get('root') . '/language'] : '',
+			'query' => Redaxscript_Request::getQuery('l'),
+			'session' => Redaxscript_Request::getSession($this->_registry->get('root') . '/language'),
 			'contents' => retrieve('language', $this->_registry->get('lastTable'), 'id', $this->_registry->get('lastId')),
 			'settings' => s('language') === 'detect' ? '' : s('language'),
-			'browser' => isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : '',
+			'browser' => substr(Redaxscript_Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		), 'language', 'languages/{value}.json');
-	}
+    }
 }

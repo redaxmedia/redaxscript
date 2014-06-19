@@ -58,6 +58,7 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 	 * @param string $text
 	 * @param string $route
 	 * @param string $expect
+	 *
 	 * @dataProvider providerParser
 	 */
 

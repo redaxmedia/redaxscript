@@ -1,14 +1,14 @@
 [
 	[
-		"Redaxscript_Validator_Dns",
+		"Redaxscript_Detection",
 		true
 	],
 	[
-		"Redaxscript_Validator_Interface",
-		false
+		"Redaxscript_Detection_Language",
+		true
 	],
 	[
-		"Redaxscript_Validator_DoesNotExist",
+		"Redaxscript_DoesNotExist",
 		false
 	]
 ]

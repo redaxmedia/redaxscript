@@ -76,9 +76,5 @@ class Redaxscript_Autoloader
 		{
 			include(self::$_directory . '/' . $filePath);
 		}
-		else if (file_exists(self::$_directory . '/' . $fileName))
-		{
-			include(self::$_directory . '/' . $fileName);
-		}
 	}
 }

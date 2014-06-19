@@ -61,18 +61,22 @@ class Redaxscript_Registry
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public static function get($key = null)
 	{
-		if (array_key_exists($key, self::$_values))
+		$output = null;
+
+		/* values as needed */
+
+		if (is_null($key))
+		{
+			$output = self::$_values;
+		}
+		else if (array_key_exists($key, self::$_values))
 		{
 			$output = self::$_values[$key];
-		}
-		else
-		{
-			$output = null;
 		}
 		return $output;
 	}

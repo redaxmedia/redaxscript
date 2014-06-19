@@ -16,6 +16,7 @@ include_once('includes/modules.php');
 include_once('includes/password.php');
 include_once('includes/query.php');
 include_once('includes/Registry.php');
+include_once('includes/Request.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 

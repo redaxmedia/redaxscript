@@ -89,7 +89,7 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	{
 		/* result */
 
-		$result = $this->_language->getAll();
+		$result = $this->_language->get();
 
 		/* compare */
 
@@ -97,33 +97,16 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testGetInvalidKey
+	 * testGetInvalid
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGetInvalidKey()
+	public function testGetInvalid()
 	{
 		/* result */
 
 		$result = $this->_language->get('invalidKey');
-
-		/* compare */
-
-		$this->assertEquals(null, $result);
-	}
-
-	/**
-	 * testGetNull
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetNull()
-	{
-		/* result */
-
-		$result = $this->_language->get();
 
 		/* compare */
 

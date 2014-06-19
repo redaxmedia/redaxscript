@@ -299,7 +299,7 @@ module.exports = function (grunt)
 			},
 			pullUpstream:
 			{
-				command: 'git pull upstream master'
+				command: 'git pull upstream master && git pull upstream develop'
 			},
 			removeUpstream:
 			{

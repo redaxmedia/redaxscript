@@ -54,32 +54,11 @@ class Redaxscript_Detection
 	}
 
 	/**
-	 * get the global parameter
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $parameter name of the get parameter
-	 *
-	 * @return string
-	 */
-
-	protected function _getParameter($parameter = null)
-	{
-		if (isset($_GET[$parameter]))
-		{
-			/* clean parameter */
-
-			$output = clean($_GET[$parameter], 1);
-			return $output;
-		}
-	}
-
-	/**
 	 * detect the required asset
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $setup array of possible setup
+	 * @param array $setup array of detection setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 */
@@ -88,7 +67,7 @@ class Redaxscript_Detection
 	{
 		foreach ($setup as $key => $value)
 		{
-			if ($value)
+			if (isset($value))
 			{
 				$file = str_replace('{value}', $value, $path);
 
@@ -98,11 +77,11 @@ class Redaxscript_Detection
 				{
 					$this->_output = $value;
 
-					/* save parameter in session */
+					/* store query to session */
 
-					if ($key === 'parameter')
+					if ($key === 'query')
 					{
-						$_SESSION[$this->_registry->get('root') . '/' . $type] = $value;
+						Redaxscript_Request::setSession($this->_registry->get('root') . '/' . $type, $value);
 					}
 					break;
 				}

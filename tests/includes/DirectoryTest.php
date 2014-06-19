@@ -88,18 +88,19 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 * @param array $path
 	 * @param string|array $exclude
 	 * @param array $expect
+	 *
 	 * @dataProvider providerGet
 	 */
 
-	public function testGet($path = array(), $exclude = null, $expect = array())
+	public function testGet($path = null, $exclude = null, $expect = array())
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path[1]), $exclude);
+		$directory = New Redaxscript_Directory(vfsStream::url($path), $exclude);
 
 		/* result */
 
-		$result = $directory->get($path[0]);
+		$result = $directory->get();
 
 		/* compare */
 
@@ -112,26 +113,25 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 * @since 2.1.0
 	 *
 	 * @param array $path
-	 * @param array $expectOne
-	 * @param boolean $expectTwo
+	 * @param array $expect
+	 *
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($path = array(), $expectOne = array(), $expectTwo = null)
+	public function testCreate($path = array(), $expect = array())
 	{
 		/* setup */
 
 		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory->create($path[0], 511);
 
 		/* result */
 
-		$resultTwo = $directory->create($path[0], 511);
-		$resultOne = scandir(vfsStream::url($path[2]));
+		$result = scandir(vfsStream::url($path[2]));
 
 		/* compare */
 
-		$this->assertEquals($expectOne, $resultOne);
-		$this->assertEquals($expectTwo, $resultTwo);
+		$this->assertEquals($expect, $result);
 	}
 
 	/**
@@ -141,6 +141,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @param array $path
 	 * @param array $expect
+	 *
 	 * @dataProvider providerRemove
 	 */
 
@@ -149,10 +150,10 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory->remove($path[0]);
 
 		/* result */
 
-		$directory->remove($path[0]);
 		$result = scandir(vfsStream::url($path[2]));
 
 		/* compare */
