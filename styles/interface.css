@@ -16,7 +16,7 @@
 
 /* @section 1. list dropdown */
 
-.list_dropdown, .list_dropdown li
+.list_dropdown li
 {
 	cursor: pointer;
 	position: relative;
