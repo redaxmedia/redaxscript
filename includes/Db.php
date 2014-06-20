@@ -20,7 +20,7 @@ class Redaxscript_Db extends ORM
 	 * @param string $type database type
 	 */
 
-	public static function connect($type = 'mysql')
+	public static function connect($type = 'mysql', Redaxscript_Config $config)
 	{
 		$registry = Redaxscript_Registry::getInstance();
 
@@ -33,9 +33,9 @@ class Redaxscript_Db extends ORM
 			if ($type === 'mysql')
 			{
 				self::configure(
-					'connection_string' => 'mysql:host=' . Redaxscript_Config::get('host') . ';dbname=' . Redaxscript_Config::get('name'),
-					'username' => Redaxscript_Config::get('user'),
-					'password', Redaxscript_Config::get('password'),
+					'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
+					'username' => $config::get('user'),
+					'password', $config::get('password'),
 					'driver_options', array(
 						PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
 					)
