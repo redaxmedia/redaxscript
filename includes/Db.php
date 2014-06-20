@@ -20,7 +20,7 @@ class Redaxscript_Db extends ORM
 	 * @param string $type database type
 	 */
 
-	public static function connect($type = 'mysql', Redaxscript_Config $config)
+	public static function connect(Redaxscript_Config $config)
 	{
 		$registry = Redaxscript_Registry::getInstance();
 
@@ -30,7 +30,7 @@ class Redaxscript_Db extends ORM
 		{
 			/* mysql */
 
-			if ($type === 'mysql')
+			if ($config::get('type') === 'mysql')
 			{
 				self::configure(
 					'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
