@@ -158,13 +158,13 @@ class Redaxscript_Mailer
 	{
 		/* collect subject string */
 
-		$settings_subject = s('subject');
+		$settingsSubject = s('subject');
 
 		/* extended subject string */
 
-		if ($settings_subject)
+		if ($settingsSubject)
 		{
-			$this->_subjectString = $settings_subject;
+			$this->_subjectString = $settingsSubject;
 			if ($this->_subject)
 			{
 				$this->_subjectString .= s('divider');
