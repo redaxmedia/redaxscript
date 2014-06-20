@@ -107,6 +107,7 @@ function migrate_constants()
  * @author Henry Ruhs
  *
  * @param string $key
+ * @param string $index
  *
  * @return string
  */
