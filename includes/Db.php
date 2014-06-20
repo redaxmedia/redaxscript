@@ -20,7 +20,7 @@ class Redaxscript_Db extends ORM
 	 * @param string $type database type
 	 */
 
-	function static connect($type = 'mysql')
+	public static function connect($type = 'mysql')
 	{
 		$registry = Redaxscript_Registry::getInstance();
 
