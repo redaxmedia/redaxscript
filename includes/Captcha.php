@@ -62,6 +62,8 @@ class Redaxscript_Captcha
 	 * constructor of the class
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param Redaxscript_Language $language instance of the language class
 	 */
 
 	public function __construct(Redaxscript_Language $language)

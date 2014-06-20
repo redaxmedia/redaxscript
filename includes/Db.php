@@ -17,7 +17,8 @@ class Redaxscript_Db extends ORM
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $type database type
+	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript_Config $config instance of the config class
 	 */
 
 	public static function connect(Redaxscript_Registry $registry, Redaxscript_Config $config)

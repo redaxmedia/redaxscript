@@ -54,6 +54,7 @@ class Redaxscript_Breadcrumb
 	 * @since 2.1.0
 	 *
 	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript_Language $language instance of the language class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language)
