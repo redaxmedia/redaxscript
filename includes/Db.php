@@ -12,6 +12,26 @@
 
 class Redaxscript_Db extends ORM
 {
+	function static connect($type = 'mysql')
+	{
+		/* handle mysql */
+
+		if ($type === 'mysql')
+		{
+			self::configure('mysql:host=' . $host . ';dbname=' . $name);
+			self::configure('username', $user);
+			self::configure('password', $password);
+			self::configure('driver_options', array(
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+			));
+		}
+		
+		/* register database */
+		
+		//$_SESSION[ROOT . '/db_connected'] = 1;
+		//$_SESSION[ROOT . '/db_error'] = '';
+	}
+
         /**
 	 * table with prefix
 	 *
