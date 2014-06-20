@@ -1,7 +1,7 @@
 <?php
 
 /**
- * children class to handle database
+ * children class to handle the database
  *
  * @since 2.2.0
  *
