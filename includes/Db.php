@@ -12,4 +12,10 @@
 
 class Redaxscript_Db extends ORM
 {
+	public static function for_prefix_table($table_name = null, $connection_name = self::DEFAULT_CONNECTION)
+	{
+		self::_setup_db($connection_name);
+		$output = new self(Redaxscript_Config::get('prefix') . $table_name, array(), $connection_name);
+		return $output;
+        }
 }
