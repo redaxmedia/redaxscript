@@ -20,6 +20,7 @@ class Redaxscript_Config
 
 	private static $_config = array(
 		// [config]
+		'type' => '',
 		'host' => '',
 		'name' => '',
 		'user' => '',
