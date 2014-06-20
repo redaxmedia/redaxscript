@@ -20,10 +20,8 @@ class Redaxscript_Db extends ORM
 	 * @param string $type database type
 	 */
 
-	public static function connect(Redaxscript_Config $config)
+	public static function connect(Redaxscript_Registry $registry, Redaxscript_Config $config)
 	{
-		$registry = Redaxscript_Registry::getInstance();
-
 		/* try to connect */
 
 		try
@@ -32,15 +30,17 @@ class Redaxscript_Db extends ORM
 
 			if ($config::get('type') === 'mysql')
 			{
-				self::configure(
-					'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
-					'username' => $config::get('user'),
-					'password', $config::get('password'),
-					'driver_options', array(
-						PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+				self::configure(array(
+						'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
+						'username' => $config::get('user'),
+						'password' => $config::get('password'),
+						'driver_options' => array(
+							PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+						)
 					)
 				);
 			}
+			self::configure('return_result_sets', true);
 			$registry->set('dbConnected', true);
 			$registry->set('dbError', false);
 		}
