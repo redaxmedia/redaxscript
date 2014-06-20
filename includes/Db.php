@@ -12,7 +12,7 @@
 
 class Redaxscript_Db extends ORM
 {
-        /**
+	/**
 	 * connect to database
 	 *
 	 * @since 2.2.0
@@ -28,7 +28,7 @@ class Redaxscript_Db extends ORM
 
 		try
 		{
-			/* handle mysql */
+			/* mysql */
 
 			if ($type === 'mysql')
 			{
@@ -54,7 +54,7 @@ class Redaxscript_Db extends ORM
 		}
 	}
 
-        /**
+	/**
 	 * for table with prefix
 	 *
 	 * @since 2.2.0
