@@ -22,23 +22,36 @@ class Redaxscript_Db extends ORM
 
 	function static connect($type = 'mysql')
 	{
-		/* handle mysql */
+		$registry = Redaxscript_Registry::getInstance();
 
-		if ($type === 'mysql')
+		/* try to connect */
+
+		try
 		{
-			self::configure('mysql:host=' . Redaxscript_Config::get('host') . ';dbname=' . Redaxscript_Config::get('name'));
-			self::configure('username', Redaxscript_Config::get('user'));
-			self::configure('password', Redaxscript_Config::get('password'));
-			self::configure('driver_options', array(
-				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-			));
+			/* handle mysql */
+
+			if ($type === 'mysql')
+			{
+				self::configure(
+					'connection_string' => 'mysql:host=' . Redaxscript_Config::get('host') . ';dbname=' . Redaxscript_Config::get('name'),
+					'username' => Redaxscript_Config::get('user'),
+					'password', Redaxscript_Config::get('password'),
+					'driver_options', array(
+						PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+					)
+				);
+			}
+			$registry->set('dbConnected', true);
+			$registry->set('dbError', false);
 		}
 
-		/* register database */
+		/* handle exception */
 
-		$registry = Redaxscript_Registry::getInstance();
-		$registry->set('dbConnected', true);
-		$registry->set('dbError', false);
+		catch (PDOException $exception)
+		{
+			$registry->set('dbConnected', false);
+			$registry->set('dbError', true);
+		}
 	}
 
         /**
