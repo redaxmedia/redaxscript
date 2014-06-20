@@ -33,16 +33,16 @@ class Redaxscript_Db extends ORM
 				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
 			));
 		}
-		
+
 		/* register database */
-		
+
 		$registry = Redaxscript_Registry::getInstance();
 		$registry->set('dbConnected', true);
 		$registry->set('dbError', false);
 	}
 
         /**
-	 * table with prefix
+	 * for table with prefix
 	 *
 	 * @since 2.2.0
 	 *
