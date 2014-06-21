@@ -176,6 +176,6 @@ class Redaxscript_Captcha
 		/* solution and task */
 
 		$this->_solution = $a + $b * $c;
-		$this->_task = $this->_language->get($a) . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b);
+		$this->_task = $this->_language->get($a, '_number') . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b, '_number');
 	}
 }
