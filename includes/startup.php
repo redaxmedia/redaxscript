@@ -342,6 +342,7 @@ function startup()
 		'language' => LANGUAGE,
 		'template' => TEMPLATE
 	));
+	Redaxscript_Request::init();
 	$detectionLanguage = New Redaxscript_Detection_Language($registry);
 	$detectionTemplate = New Redaxscript_Detection_Template($registry);
 

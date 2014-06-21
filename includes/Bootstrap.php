@@ -8,7 +8,6 @@ include_once('includes/migrate.php');
 /* init */
 
 Redaxscript_Autoloader::init();
-Redaxscript_Request::init();
 
 /* migrate registry */
 
