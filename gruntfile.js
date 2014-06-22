@@ -213,7 +213,8 @@ module.exports = function (grunt)
 			{
 				options:
 				{
-					coverageClover: 'clover.xml'
+					coverageClover: 'clover.xml',
+					coverageHtml: 'clover'
 				}
 			},
 			options:

@@ -12,12 +12,12 @@ include_once('config.php');
 Redaxscript_Autoloader::init();
 Redaxscript_Request::init();
 
-/* config and registry */
+/* registry and config */
 
-$config = Redaxscript_Config::getInstance();
 $registry = Redaxscript_Registry::getInstance();
+$config = Redaxscript_Config::getInstance();
 
-/* migrate constants */
+/* migrate deprecated constants */
 
 $registry->init(migrate_constants());
 
@@ -40,7 +40,7 @@ $registry->set('template', $detectionTemplate->getOutput());
 $language = Redaxscript_Language::getInstance();
 $language->init($registry->get('language'));
 
-/* deprecated */
+/* define deprecated constants */
 
 define('LANGUAGE', $detectionLanguage->getOutput());
 define('TEMPLATE', $detectionTemplate->getOutput());

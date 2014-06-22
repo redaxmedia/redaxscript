@@ -15,7 +15,7 @@ class Redaxscript_Singleton_Test extends PHPUnit_Framework_TestCase
 	/**
 	 * testDummy
 	 *
-	 * @since 2.20
+	 * @since 2.2.0
 	 */
 
 	public function testDummy()
