@@ -41,7 +41,10 @@ class Redaxscript_Db extends ORM
 					)
 				);
 			}
-			self::configure('return_result_sets', true);
+			self::configure(array(
+				'return_result_sets', true,
+				'caching', true
+			));
 			$registry->set('dbConnected', true);
 			$registry->set('dbError', false);
 		}
@@ -56,6 +59,23 @@ class Redaxscript_Db extends ORM
 	}
 
 	/**
+	 * tweaked magic method to capture calls
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $name name of the method
+	 * @param string $arguments arguments of the method
+	 *
+	 * @return Redaxscript_Db
+	 */
+
+	public static function __callStatic($name = null, $arguments = null)
+	{
+		$method = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $name));
+		return call_user_func_array(array('Redaxscript_Db', $method), $arguments);
+	}
+
+	/**
 	 * for table with prefix
 	 *
 	 * @since 2.2.0
@@ -63,7 +83,7 @@ class Redaxscript_Db extends ORM
 	 * @param string $table_name name of the table
 	 * @param string $connection_name which connection to use
 	 *
-	 * @return ORM
+	 * @return Redaxscript_Db
 	 */
 
 	public static function for_prefix_table($table_name = null, $connection_name = self::DEFAULT_CONNECTION)

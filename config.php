@@ -20,11 +20,11 @@ class Redaxscript_Config extends Redaxscript_Singleton
 
 	private static $_config = array(
 		// [config]
-		'type' => '',
-		'host' => '',
-		'name' => '',
-		'user' => '',
-		'password' => '',
+		'type' => 'mysql',
+		'host' => 'redaxscript.com',
+		'name' => 'd01ae38a',
+		'user' => 'd01ae38a',
+		'password' => 'travis',
 		'prefix' => '',
 		'salt' => ''
 		// [/config]

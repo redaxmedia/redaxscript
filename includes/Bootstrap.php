@@ -25,17 +25,20 @@ $registry->init(migrate_constants());
 
 Redaxscript_Db::connect($registry, $config);
 
-/* detection */
+if ($registry->get('lastTable') && $registry->get('lastId'))
+{
+	/* detection */
 
-$detectionLanguage = New Redaxscript_Detection_Language($registry);
-$detectionTemplate = New Redaxscript_Detection_Template($registry);
+	$detectionLanguage = New Redaxscript_Detection_Language($registry);
+	$detectionTemplate = New Redaxscript_Detection_Template($registry);
 
-/* define language and template */
+	/* define language and template */
 
-define('LANGUAGE', $detectionLanguage->getOutput());
-define('TEMPLATE', $detectionTemplate->getOutput());
-$registry->set('language', $detectionLanguage->getOutput());
-$registry->set('template', $detectionTemplate->getOutput());
+	define('LANGUAGE', $detectionLanguage->getOutput());
+	define('TEMPLATE', $detectionTemplate->getOutput());
+	$registry->set('language', $detectionLanguage->getOutput());
+	$registry->set('template', $detectionTemplate->getOutput());
+}
 
 /* language */
 

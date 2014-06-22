@@ -27,7 +27,7 @@ class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
 
 		/* compare */
 
-		$this->assertEmpty($result);
+		$this->assertEquals('redaxscript.com', $result);
 	}
 
 	/**
