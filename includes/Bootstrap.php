@@ -34,7 +34,7 @@ $detectionTemplate = New Redaxscript_Detection_Template($registry);
 
 define('LANGUAGE', $detectionLanguage->getOutput());
 define('TEMPLATE', $detectionTemplate->getOutput());
-$registry->set('language',  $detectionLanguage->getOutput());
+$registry->set('language', $detectionLanguage->getOutput());
 $registry->set('template', $detectionTemplate->getOutput());
 
 /* language */

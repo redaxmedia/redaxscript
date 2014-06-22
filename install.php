@@ -15,6 +15,7 @@ include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 include_once('vendor/j4mie/idiorm/idiorm.php');
+include_once('includes/Singleton.php');
 
 /* install post */
 
@@ -472,6 +473,7 @@ function write_config()
 
 		$pattern = '/\/\/\s+\[config].*?\/\/\s+\[\/config]/s';
 		$replacement = '// [config]
+		\'type\' => \'mysql\',
 		\'host\' => \'' . $d_host . '\',
 		\'name\' => \'' . $d_name . '\',
 		\'user\' => \'' . $d_user . '\',

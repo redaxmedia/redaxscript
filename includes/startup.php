@@ -36,18 +36,14 @@ function startup()
 	define('ROOT', get_root());
 	define('TOKEN', get_token());
 
-	/* config object */
-
-	$config = New Redaxscript_Config();
-
 	/* prefix and salt */
 
-	define('PREFIX', $config->get('prefix'));
-	define('SALT', $config->get('salt'));
+	define('PREFIX', Redaxscript_Config::get('prefix'));
+	define('SALT', Redaxscript_Config::get('salt'));
 
 	/* database connect */
 
-	database_connect($config->get('host'), $config->get('name'), $config->get('user'), $config->get('password'));
+	database_connect(Redaxscript_Config::get('host'), Redaxscript_Config::get('name'), Redaxscript_Config::get('user'), Redaxscript_Config::get('password'));
 
 	/* define session */
 
