@@ -63,15 +63,15 @@ class Redaxscript_Db extends ORM
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $table_name name of the table
-	 * @param string $connection_name which connection to use
+	 * @param string $table name of the table
+	 * @param string $connection which connection to use
 	 *
 	 * @return Redaxscript_Db
 	 */
 
-	public static function for_prefix_table($table_name = null, $connection_name = self::DEFAULT_CONNECTION)
+	public static function forPrefixTable($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
-		self::_setup_db($connection_name);
-		return new self(Redaxscript_Config::get('prefix') . $table_name, array(), $connection_name);
+		self::_setup_db($connection);
+		return new self(Redaxscript_Config::get('prefix') . $table, array(), $connection);
 	}
 }
