@@ -3,14 +3,14 @@
 /**
  * parent class to store database config
  *
- * @since 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Config
  * @author Henry Ruhs
  */
 
-class Redaxscript_Config
+class Redaxscript_Config extends Redaxscript_Singleton
 {
 	/**
 	 * database config

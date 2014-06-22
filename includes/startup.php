@@ -331,25 +331,6 @@ function startup()
 	{
 		$_SESSION[ROOT . '/update'] = '';
 	}
-
-	/* registry and detection object */
-
-	$registry = Redaxscript_Registry::getInstance();
-	$registry->init(array(
-		'root' => ROOT,
-		'lastTable' => LAST_TABLE,
-		'lastId' => LAST_ID,
-		'language' => LANGUAGE,
-		'template' => TEMPLATE
-	));
-	Redaxscript_Request::init();
-	$detectionLanguage = New Redaxscript_Detection_Language($registry);
-	$detectionTemplate = New Redaxscript_Detection_Template($registry);
-
-	/* define language and template */
-
-	define('LANGUAGE', $detectionLanguage->getOutput());
-	define('TEMPLATE', $detectionTemplate->getOutput());
 }
 
 /**

@@ -23,8 +23,8 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 		$this->_detect(array(
 			'query' => Redaxscript_Request::getQuery('t'),
 			'session' => Redaxscript_Request::getSession($this->_registry->get('root') . '/template'),
-			'contents' => retrieve('template', $this->_registry->get('lastTable'), 'id', $this->_registry->get('lastId')),
-			'settings' => s('template'),
+			//'contents' => retrieve('template', $this->_registry->get('lastTable'), 'id', $this->_registry->get('lastId')),
+			//'settings' => s('template'),
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');
 	}

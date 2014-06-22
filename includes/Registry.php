@@ -10,16 +10,8 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Registry
+class Redaxscript_Registry extends Redaxscript_Singleton
 {
-	/**
-	 * instance of the class
-	 *
-	 * @var object
-	 */
-
-	protected static $_instance = null;
-
 	/**
 	 * array of registry values
 	 *
@@ -27,16 +19,6 @@ class Redaxscript_Registry
 	 */
 
 	protected static $_values = array();
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 2.1.0
-	 */
-
-	private function __construct()
-	{
-	}
 
 	/**
 	 * init the class
@@ -93,35 +75,5 @@ class Redaxscript_Registry
 	public static function set($key = null, $value = null)
 	{
 		self::$_values[$key] = $value;
-	}
-
-	/**
-	 * get the instance
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return object
-	 */
-
-	public static function getInstance()
-	{
-		if (self::$_instance === null)
-		{
-			self::$_instance = new self;
-		}
-		return self::$_instance;
-	}
-
-	/**
-	 * reset the instance
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return object
-	 */
-
-	public static function reset()
-	{
-		self::$_instance = null;
 	}
 }

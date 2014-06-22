@@ -10,16 +10,8 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Language
+class Redaxscript_Language extends Redaxscript_Singleton
 {
-	/**
-	 * instance of the class
-	 *
-	 * @var object
-	 */
-
-	protected static $_instance = null;
-
 	/**
 	 * array of language values
 	 *
@@ -27,16 +19,6 @@ class Redaxscript_Language
 	 */
 
 	protected static $_values = array();
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function __construct()
-	{
-	}
 
 	/**
 	 * init the class
@@ -131,35 +113,5 @@ class Redaxscript_Language
 				}
 			}
 		}
-	}
-
-	/**
-	 * get the instance
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return object
-	 */
-
-	public static function getInstance()
-	{
-		if (self::$_instance === null)
-		{
-			self::$_instance = new self;
-		}
-		return self::$_instance;
-	}
-
-	/**
-	 * reset the instance
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return object
-	 */
-
-	public static function reset()
-	{
-		self::$_instance = null;
 	}
 }
