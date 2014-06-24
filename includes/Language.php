@@ -78,7 +78,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding($values[$key], s('charset'), 'utf-8, latin1');
+				$output = mb_convert_encoding($values[$key], Redaxscript_Db::forPrefixTable('settings')->where('name', 'charset')->findOne()->value, 'utf-8, latin1');
 			}
 		}
 		return $output;
