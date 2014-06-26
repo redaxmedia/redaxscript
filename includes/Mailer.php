@@ -158,7 +158,7 @@ class Redaxscript_Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = s('subject');
+		$settingsSubject = Redaxscript_Db::getSettings('subject');
 
 		/* extended subject string */
 
@@ -167,7 +167,7 @@ class Redaxscript_Mailer
 			$this->_subjectString = $settingsSubject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= s('divider');
+				$this->_subjectString .= Redaxscript_Db::getSettings('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -220,7 +220,7 @@ class Redaxscript_Mailer
 
 		if (empty($this->_attachmentArray))
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
 		}
 
 		/* else handle attachment */
@@ -237,7 +237,7 @@ class Redaxscript_Mailer
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . s('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . TOKEN . PHP_EOL;

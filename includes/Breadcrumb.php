@@ -134,7 +134,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_classes['divider'] . '">' . s('divider') . '</li>';
+					$output .= '<li class="' . $this->_classes['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
 				}
 			}
 		}
@@ -263,7 +263,7 @@ class Redaxscript_Breadcrumb
 	{
 		/* join first title */
 
-		self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
+		self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
 
 		/* set route if not end */
 
@@ -277,7 +277,7 @@ class Redaxscript_Breadcrumb
 		if ($this->_registry->get('secondTable'))
 		{
 			$key++;
-			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
+			self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
 
 			/* set route if not end */
 
@@ -291,7 +291,7 @@ class Redaxscript_Breadcrumb
 			if ($this->_registry->get('thirdTable'))
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('thirdTable'), 'alias', $this->_registry->get('thirdParameter'));
+				self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
 			}
 		}
 	}

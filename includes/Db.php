@@ -74,4 +74,19 @@ class Redaxscript_Db extends ORM
 		self::_setup_db($connection);
 		return new self(Redaxscript_Config::get('prefix') . $table, array(), $connection);
 	}
+
+	/**
+	 * get item from settings
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public static function getSettings($key = null)
+	{
+		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+	}
 }

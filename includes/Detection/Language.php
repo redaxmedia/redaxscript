@@ -24,7 +24,7 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 			'query' => Redaxscript_Request::getQuery('l'),
 			'session' => Redaxscript_Request::getSession($this->_registry->get('root') . '/language'),
 			'contents' => $this->_registry->get('lastTable') ? Redaxscript_Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->language : null,
-			'settings' => Redaxscript_Db::forPrefixTable('settings')->where('name', 'language')->findOne()->value,
+			'settings' => Redaxscript_Db::getSettings('language'),
 			'browser' => substr(Redaxscript_Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		), 'language', 'languages/{value}.json');

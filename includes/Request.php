@@ -50,7 +50,7 @@ class Redaxscript_Request
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public static function get($key = null, $index = null)

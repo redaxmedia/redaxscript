@@ -42,13 +42,6 @@ function hook($input = '')
 	return null;
 }
 
-/* retrieve */
-
-function retrieve($column = '', $table = '', $field = '', $value = '')
-{
-	return $value;
-}
-
 /* shortcut */
 
 function s($name = '')

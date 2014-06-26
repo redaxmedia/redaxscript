@@ -46,7 +46,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public static function get($key = null, $index = null)
@@ -78,7 +78,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding($values[$key], Redaxscript_Db::forPrefixTable('settings')->where('name', 'charset')->findOne()->value, 'utf-8, latin1');
+				$output = mb_convert_encoding($values[$key], Redaxscript_Db::getSettings('charset'), 'utf-8, latin1');
 			}
 		}
 		return $output;
