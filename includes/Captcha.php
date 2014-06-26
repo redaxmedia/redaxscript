@@ -133,9 +133,11 @@ class Redaxscript_Captcha
 
 	protected function _getOperator()
 	{
+		$mode = Redaxscript_Db::getSettings('captcha');
+
 		/* switch captcha mode */
 
-		switch (s('captcha'))
+		switch ($mode)
 		{
 			case 2:
 				$output = 1;

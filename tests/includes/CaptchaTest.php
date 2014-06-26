@@ -4,7 +4,7 @@ include_once('tests/stubs.php');
 /**
  * Redaxscript Captcha Test
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
@@ -34,44 +34,12 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 2.1.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		mt_srand(0);
-	}
-
-	/**
-	 * providerCaptcha
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCaptcha()
-	{
-		$contents = file_get_contents('tests/provider/captcha.json');
-		$output = json_decode($contents, true);
-		return $output;
-	}
-
-	/**
 	 * testCaptcha
 	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $expectTask
-	 * @param string $expectRaw
-	 * @param string $expectHash
-	 *
-	 * @dataProvider providerCaptcha
+	 * @since 2.2.0
 	 */
 
-	public function testCaptcha($expectTask = null, $expectRaw = null, $expectHash = null)
+	public function testCaptcha()
 	{
 		/* setup */
 
@@ -79,14 +47,11 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$task = $captcha->getTask();
 		$raw = $captcha->getSolution('raw');
 		$hash = $captcha->getSolution('hash');
 
 		/* compare */
 
-		$this->assertEquals($expectTask, $task);
-		$this->assertEquals($expectRaw, $raw);
-		$this->assertEquals($expectHash, $hash);
+		$this->assertEquals($hash, sha1($raw));
 	}
 }

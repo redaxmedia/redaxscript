@@ -41,39 +41,3 @@ function hook($input = '')
 {
 	return null;
 }
-
-/* shortcut */
-
-function s($name = '')
-{
-	static $index = 0;
-
-	/* switch */
-
-	if ($name === 'captcha')
-	{
-		switch ($index)
-		{
-			case 0:
-				$index++;
-				$output = 2;
-				break;
-			case 1:
-				$index++;
-				$output = 3;
-				break;
-			default:
-				$output = 0;
-				break;
-		}
-	}
-	else if ($name === 'charset')
-	{
-		$output = 'utf-8';
-	}
-	else
-	{
-		$output = $name;
-	}
-	return $output;
-}
