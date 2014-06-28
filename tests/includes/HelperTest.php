@@ -13,8 +13,6 @@
 class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object

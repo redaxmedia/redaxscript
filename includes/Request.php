@@ -21,17 +21,6 @@ class Redaxscript_Request
 	protected static $_values = array();
 
 	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 */
-
-	private function __construct()
-	{
-		$this->init();
-	}
-
-	/**
 	 * init the class
 	 *
 	 * @since 2.2.0

@@ -112,25 +112,4 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals(null, $result);
 	}
-
-	/**
-	 * testReset
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testReset()
-	{
-		/* setup */
-
-		$this->_language->reset();
-
-		/* result */
-
-		$result = $this->_language->getInstance();
-
-		/* compare */
-
-		$this->assertInstanceOf('Redaxscript_Language', $result);
-	}
 }

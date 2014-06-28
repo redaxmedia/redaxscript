@@ -13,13 +13,43 @@
 class Redaxscript_Singleton_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * testDummy
+	 * instance of the stub class
+	 *
+	 * @var object
+	 */
+
+	protected $_stub;
+
+	/**
+	 * setUp
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testDummy()
+	protected function setUp()
 	{
-		$this->assertTrue(true);
+		$stub = $this->getMockBuilder('Redaxscript_Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
+		$this->_stub = $stub->getInstance();
+	}
+
+	/**
+	 * testReset
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testReset()
+	{
+		/* setup */
+
+		$this->_stub->reset();
+
+		/* result */
+
+		$result = $this->_stub->getInstance();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript_Singleton', $result);
 	}
 }

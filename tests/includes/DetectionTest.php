@@ -14,8 +14,6 @@ include_once('tests/stubs.php');
 class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
