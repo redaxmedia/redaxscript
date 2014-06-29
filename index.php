@@ -19,8 +19,6 @@ include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 include_once('vendor/j4mie/idiorm/idiorm.php');
-include_once('includes/Singleton.php');
-include_once('config.php');
 
 /* bootstrap */
 
@@ -129,9 +127,9 @@ if ($modules_include)
 
 		/* config */
 
-		if (file_exists('modules/' . $value . '/config.php'))
+		if (file_exists('modules/' . $value . '/Config.php'))
 		{
-			include_once('modules/' . $value . '/config.php');
+			include_once('modules/' . $value . '/Config.php');
 		}
 
 		/* index */

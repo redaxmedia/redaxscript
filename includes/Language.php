@@ -94,9 +94,13 @@ class Redaxscript_Language extends Redaxscript_Singleton
 
 	public static function load($json = null)
 	{
+		/* handle json */
+
 		if (!is_array($json))
 		{
-			$json = array($json);
+			$json = array(
+				$json
+			);
 		}
 
 		/* merge language files */

@@ -3,21 +3,24 @@
 /* include as needed */
 
 include_once('includes/Autoloader.php');
-include_once('includes/migrate.php');
 
 /* init */
 
 Redaxscript_Autoloader::init();
 Redaxscript_Request::init();
 
+/* set config */
+
+Redaxscript_Config::set('type', 'mysql');
+Redaxscript_Config::set('host', 'redaxscript.com');
+Redaxscript_Config::set('name', 'd01ae38a');
+Redaxscript_Config::set('user', 'd01ae38a');
+Redaxscript_Config::set('password', 'travis');
+
 /* registry and config */
 
 $registry = Redaxscript_Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
-
-/* migrate deprecated constants */
-
-$registry->init(migrate_constants());
 
 /* connect database */
 
@@ -37,8 +40,3 @@ $registry->set('template', $detectionTemplate->getOutput());
 
 $language = Redaxscript_Language::getInstance();
 $language->init($registry->get('language'));
-
-/* define deprecated constants */
-
-define('LANGUAGE', $detectionLanguage->getOutput());
-define('TEMPLATE', $detectionTemplate->getOutput());

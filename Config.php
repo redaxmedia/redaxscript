@@ -20,11 +20,11 @@ class Redaxscript_Config extends Redaxscript_Singleton
 
 	private static $_config = array(
 		// [config]
-		'type' => 'mysql',
-		'host' => 'redaxscript.com',
-		'name' => 'd01ae38a',
-		'user' => 'd01ae38a',
-		'password' => 'travis',
+		'type' => '',
+		'host' => '',
+		'name' => '',
+		'user' => '',
+		'password' => '',
 		'prefix' => '',
 		'salt' => ''
 		// [/config]
@@ -55,5 +55,19 @@ class Redaxscript_Config extends Redaxscript_Singleton
 			$output = self::$_config[$key];
 		}
 		return $output;
+	}
+
+	/**
+	 * set item to config
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function set($key = null, $value = null)
+	{
+		self::$_config[$key] = $value;
 	}
 }

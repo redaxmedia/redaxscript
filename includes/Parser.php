@@ -21,6 +21,14 @@ class Redaxscript_Parser
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * parsed output
 	 *
 	 * @var string
@@ -108,13 +116,15 @@ class Redaxscript_Parser
 	 * @since 2.0.0
 	 *
 	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript_Language $language instance of the language class
 	 * @param string $input content be parsed
 	 * @param string $route route of the content
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, $input = null, $route = null)
+	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $input = null, $route = null)
 	{
 		$this->_registry = $registry;
+		$this->_language = $language;
 		$this->_output = $input;
 		$this->_route = $route;
 
@@ -181,7 +191,7 @@ class Redaxscript_Parser
 
 			if ($this->_route)
 			{
-				$output .= anchor_element('internal', '', $this->_classes['break'], l('read_more'), $this->_route);
+				$output .= anchor_element('internal', '', $this->_classes['break'], $this->_language->get('read_more'), $this->_route);
 			}
 		}
 		return $output;

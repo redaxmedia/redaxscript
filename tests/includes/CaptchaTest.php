@@ -34,12 +34,44 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testCaptcha
+	 * tearDown
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testCaptcha()
+	protected function tearDown()
+	{
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+	}
+
+	/**
+	 * testGetTask
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetTask()
+	{
+		/* setup */
+
+		$captcha = new Redaxscript_Captcha($this->_language);
+
+		/* result */
+
+		$task = $captcha->getTask();
+
+		/* compare */
+
+		$this->assertTrue(is_string($task));
+	}
+
+	/**
+	 * testGetSolution
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetSolution()
 	{
 		/* setup */
 
@@ -53,5 +85,47 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 		/* compare */
 
 		$this->assertEquals($hash, sha1($raw));
+	}
+
+	/**
+	 * testPlus
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testPlus()
+	{
+		/* setup */
+
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+
+		/* result */
+
+		$result = new Redaxscript_Captcha($this->_language);
+
+		/* compare */
+
+		$this->assertTrue(is_object($result));
+	}
+
+	/**
+	 * testMinus
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testMinus()
+	{
+		/* setup */
+
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+
+		/* result */
+
+		$result = new Redaxscript_Captcha($this->_language);
+
+		/* compare */
+
+		$this->assertTrue(is_object($result));
 	}
 }

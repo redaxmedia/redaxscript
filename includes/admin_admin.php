@@ -212,9 +212,9 @@ function admin_notification()
 		{
 			$output = '<div class="box_note note_warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
 		}
-		if (is_writable('config.php'))
+		if (is_writable('Config.php'))
 		{
-			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
+			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' Config.php' . l('point') . '</div>';
 		}
 	}
 	echo $output;

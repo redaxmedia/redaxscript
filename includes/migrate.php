@@ -13,9 +13,7 @@
 
 function breadcrumb()
 {
-	$registry = Redaxscript_Registry::getInstance();
-	$language = Redaxscript_Language::getInstance();
-	$breadcrumb = new Redaxscript_Breadcrumb($registry, $language);
+	$breadcrumb = new Redaxscript_Breadcrumb(Redaxscript_Registry::getInstance(), Redaxscript_Language::getInstance());
 	echo $breadcrumb->render();
 }
 
@@ -32,8 +30,7 @@ function breadcrumb()
 
 function helper_class()
 {
-	$registry = Redaxscript_Registry::getInstance();
-	$helper = new Redaxscript_Helper($registry);
+	$helper = new Redaxscript_Helper(Redaxscript_Registry::getInstance());
 	echo $helper->getClass();
 }
 
@@ -50,8 +47,7 @@ function helper_class()
 
 function helper_subset()
 {
-	$registry = Redaxscript_Registry::getInstance();
-	$helper = new Redaxscript_Helper($registry);
+	$helper = new Redaxscript_Helper(Redaxscript_Registry::getInstance());
 	echo $helper->getSubset();
 }
 

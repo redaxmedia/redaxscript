@@ -1,5 +1,5 @@
 <?php
-include_once('config.php');
+include_once('Config.php');
 
 /**
  * Redaxscript Config Test
@@ -14,20 +14,24 @@ include_once('config.php');
 class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * testGet
+	 * testSetAndGet
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGet()
+	public function testSetAndGet()
 	{
+		/* setup */
+
+		Redaxscript_Config::set('host', 'localhost');
+
 		/* result */
 
 		$result = Redaxscript_Config::get('host');
 
 		/* compare */
 
-		$this->assertEquals('redaxscript.com', $result);
+		$this->assertEquals('localhost', $result);
 	}
 
 	/**

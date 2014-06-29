@@ -40,6 +40,10 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 
 		$autoloader = new Redaxscript_Autoloader;
 		$autoloader::init('includes');
+		$autoloader::init(array(
+			'../',
+			'includes'
+		));
 
 		/* result */
 
@@ -47,7 +51,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 
 		/* compare */
 
-		$this->assertEquals('includes', $result);
+		$this->assertArrayHasKey(0, $result);
 	}
 
 	/**

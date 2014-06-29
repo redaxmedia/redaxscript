@@ -27,7 +27,10 @@ class Redaxscript_Autoloader
 	 * @var string
 	 */
 
-	protected static $_directory = 'includes';
+	protected static $_directory = array(
+		'.',
+		'includes'
+	);
 
 	/**
 	 * file suffix
@@ -42,19 +45,24 @@ class Redaxscript_Autoloader
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $directory specify a optional directory to search
+	 * @param string|array $directory specify optional directory to search
 	 */
 
 	public static function init($directory = null)
 	{
-		spl_autoload_register(array(__CLASS__, '_load'));
+		/* handle directory */
 
-		/* directory exists */
-
-		if (is_dir($directory))
+		if (is_array($directory))
 		{
 			self::$_directory = $directory;
 		}
+		else if($directory)
+		{
+			self::$_directory = array(
+				$directory
+			);
+		}
+		spl_autoload_register(array(__CLASS__, '_load'));
 	}
 
 	/**
@@ -72,9 +80,12 @@ class Redaxscript_Autoloader
 
 		/* include files as needed */
 
-		if (file_exists(self::$_directory . '/' . $filePath))
+		foreach (self::$_directory as $directory)
 		{
-			include(self::$_directory . '/' . $filePath);
+			if (file_exists($directory . '/' . $filePath))
+			{
+				include($directory . '/' . $filePath);
+			}
 		}
 	}
 }

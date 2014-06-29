@@ -288,7 +288,7 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source config.php --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source Config.php --source includes --destination ../redaxscript-api/base'
 			},
 			apiTests:
 			{

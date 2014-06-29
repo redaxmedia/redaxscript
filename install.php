@@ -15,7 +15,6 @@ include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
 include_once('vendor/j4mie/idiorm/idiorm.php');
-include_once('includes/Singleton.php');
 
 /* install post */
 
@@ -24,7 +23,6 @@ install_post();
 /* write database config */
 
 write_config();
-include_once('config.php');
 
 /* bootstrap */
 
@@ -362,9 +360,9 @@ function install_post()
 function install_notification()
 {
 	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
-	if (is_writable('config.php') == '')
+	if (is_writable('Config.php') == '')
 	{
-		$error = l('file_permission_grant') . l('colon') . ' config.php';
+		$error = l('file_permission_grant') . l('colon') . ' Config.php';
 	}
 	else if (DB_CONNECTED == 0)
 	{
@@ -484,9 +482,9 @@ function write_config()
 
 		/* process contents */
 
-		$content = file_get_contents('config.php');
+		$content = file_get_contents('Config.php');
 		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('config.php', $content);
+		file_put_contents('Config.php', $content);
 	}
 }
 
