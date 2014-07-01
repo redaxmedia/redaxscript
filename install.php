@@ -26,8 +26,8 @@ write_config();
 
 /* bootstrap */
 
-startup();
 include_once('includes/Bootstrap.php');
+startup();
 
 /* define meta */
 

@@ -22,8 +22,8 @@ include_once('vendor/j4mie/idiorm/idiorm.php');
 
 /* bootstrap */
 
-startup();
 include_once('includes/Bootstrap.php');
+startup();
 
 /* include files as needed */
 

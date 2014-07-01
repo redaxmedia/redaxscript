@@ -129,7 +129,7 @@ module.exports = function (grunt)
 			{
 				dir:
 				[
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php'
 				]
@@ -352,7 +352,7 @@ module.exports = function (grunt)
 					'languages/**',
 					'modules/**',
 					'templates/**',
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php',
 					'README.md'
@@ -372,7 +372,7 @@ module.exports = function (grunt)
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php',
 					'README.md'

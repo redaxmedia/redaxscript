@@ -54,7 +54,7 @@ class Redaxscript_Db extends ORM
 		catch (PDOException $exception)
 		{
 			$registry->set('dbConnected', false);
-			$registry->set('dbError', true);
+			$registry->set('dbError', $exception->getMessage());
 		}
 	}
 
