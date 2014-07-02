@@ -19,9 +19,9 @@ $config = Redaxscript_Config::getInstance();
 
 $registry->init(migrate_constants());
 
-/* connect database */
+/* database */
 
-Redaxscript_Db::connect($registry, $config);
+Redaxscript_Db::init($config);
 
 /* detection */
 

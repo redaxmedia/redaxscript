@@ -22,9 +22,9 @@ Redaxscript_Config::set('password', 'travis');
 $registry = Redaxscript_Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
 
-/* connect database */
+/* database */
 
-Redaxscript_Db::connect($registry, $config);
+Redaxscript_Db::init($config);
 
 /* detection */
 

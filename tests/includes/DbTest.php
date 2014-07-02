@@ -13,14 +13,6 @@
 class Redaxscript_Db_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -36,28 +28,27 @@ class Redaxscript_Db_Test extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
 		$this->_config = Redaxscript_Config::getInstance();
 	}
 
 	/**
-	 * testConnect
+	 * testInit
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testConntect()
+	public function testInit()
 	{
 		/* setup */
 
-		Redaxscript_Db::connect($this->_registry, $this->_config);
+		Redaxscript_Db::init($this->_config);
 
 		/* result */
 
-		$result = $this->_registry->get('dbConnected');
+		$result = Redaxscript_Db::getDb();
 
 		/* compare */
 
-		$this->assertTrue($result);
+		$this->assertInstanceOf('PDO', $result);
 	}
 }

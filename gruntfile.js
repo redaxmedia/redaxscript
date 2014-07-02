@@ -204,10 +204,6 @@ module.exports = function (grunt)
 		{
 			development:
 			{
-				options:
-				{
-					debug: true
-				}
 			},
 			integration:
 			{
