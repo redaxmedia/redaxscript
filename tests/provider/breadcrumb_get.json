@@ -186,5 +186,35 @@
 				"title": "Welcome"
 			}
 		]
+	],
+	[
+		{
+			"title": "",
+			"fullRoute": "ultra/lightweight/cms",
+			"firstParameter": "ultra",
+			"secondParameter": "lightweight",
+			"thirdParameter": "cms",
+			"adminParameter": "",
+			"tableParameter": "",
+			"lastParameter": "cms",
+			"firstTable": "categories",
+			"secondTable": "categories",
+			"thirdTable": "articles",
+			"lastTable": "articles",
+			"lastId": "2"
+		},
+		[
+			{
+				"title": "Ultra",
+				"route": "ultra"
+			},
+			{
+				"title": "Lightweight",
+				"route": "ultra/lightweight"
+			},
+			{
+				"title": "CMS"
+			}
+		]
 	]
 ]

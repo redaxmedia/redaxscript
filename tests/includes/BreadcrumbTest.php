@@ -43,6 +43,64 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		/* first parameter */
+
+		$ultra = Redaxscript_Db::forPrefixTable('categories')->create();
+		$ultra->set(array(
+			'title' => 'Ultra',
+			'alias' => 'ultra',
+			'parent' => 0,
+			'status' => 1,
+			'access' => 0
+		));
+		$ultra->save();
+
+		/* second parameter */
+
+		$lightweight = Redaxscript_Db::forPrefixTable('categories')->create();
+		$lightweight->set(array(
+			'title' => 'Lightweight',
+			'alias' => 'lightweight',
+			'parent' => $ultra->id(),
+			'status' => 1,
+			'access' => 0
+		));
+		$lightweight->save();
+
+		/* third parameter */
+
+		$cms = Redaxscript_Db::forPrefixTable('articles')->create();
+		$cms->set(array(
+			'title' => 'CMS',
+			'alias' => 'cms',
+			'category' => $lightweight->id(),
+			'status' => 1,
+			'access' => 0
+		));
+		$cms->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
+		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
+		Redaxscript_Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
+	}
+
+	/**
 	 * providerGet
 	 *
 	 * @since 2.1.0
