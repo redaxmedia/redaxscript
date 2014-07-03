@@ -70,9 +70,6 @@ class Redaxscript_Directory
 			);
 		}
 		$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
-
-		/* call init */
-
 		$this->init();
 	}
 

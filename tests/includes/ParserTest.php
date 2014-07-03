@@ -73,7 +73,13 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$parser = new Redaxscript_Parser($this->_registry, $this->_language, $text, $route);
+		$options = array(
+			'classString' => array(
+				'break' => 'link-read-more',
+				'code' => 'box-code'
+			)
+		);
+		$parser = new Redaxscript_Parser($this->_registry, $this->_language, $text, $route, $options);
 
 		/* result */
 

@@ -7,7 +7,7 @@
 		},
 		"hello<break> world",
 		"hello/world",
-		"hello<a href=\"hello/world\" class=\"link_read_more\" title=\"Read more\">Read more</a>"
+		"hello<a href=\"hello/world\" class=\"link-read-more\" title=\"Read more\">Read more</a>"
 	],
 	[
 		{
@@ -23,7 +23,7 @@
 		"",
 		"hello <code>world</code>",
 		"",
-		"hello <code class=\"box_code\">world</code>"
+		"hello <code class=\"box-code\">world</code>"
 	],
 	[
 		"",

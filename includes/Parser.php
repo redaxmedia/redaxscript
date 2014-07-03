@@ -45,6 +45,19 @@ class Redaxscript_Parser
 	protected $_route;
 
 	/**
+	 * options of the parser
+	 *
+	 * @var array
+	 */
+
+	protected $_options = array(
+		'classString' => array(
+			'break' => 'link-read-more',
+			'code' => 'box-code'
+		)
+	);
+
+	/**
 	 * string delimiter used during the parser process
 	 *
 	 * @var string
@@ -71,17 +84,6 @@ class Redaxscript_Parser
 			'function' => '_parseFunction',
 			'position' => ''
 		)
-	);
-
-	/**
-	 * array of classes used to style the output
-	 *
-	 * @var array
-	 */
-
-	protected $_classes = array(
-		'break' => 'link_read_more',
-		'code' => 'box_code'
 	);
 
 	/**
@@ -119,17 +121,19 @@ class Redaxscript_Parser
 	 * @param Redaxscript_Language $language instance of the language class
 	 * @param string $input content be parsed
 	 * @param string $route route of the content
+	 * @param array $options options of the parser
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $input = null, $route = null)
+	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $input = null, $route = null, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
 		$this->_output = $input;
 		$this->_route = $route;
-
-		/* call init */
-
+		if (is_array($options))
+		{
+			$this->_options = array_unique(array_merge($this->_options, $options));
+		}
 		$this->init();
 	}
 
@@ -191,7 +195,7 @@ class Redaxscript_Parser
 
 			if ($this->_route)
 			{
-				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_classes['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
+				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_options['classString']['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
 			}
 		}
 		return $output;
@@ -221,7 +225,7 @@ class Redaxscript_Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = '<code class="' . $this->_classes['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
+				$parts[$key] = '<code class="' . $this->_options['classString']['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
 			}
 		}
 		$output = implode($parts);

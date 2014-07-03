@@ -103,9 +103,6 @@ class Redaxscript_Mailer
 		$this->_subject = $subject;
 		$this->_bodyArray = $bodyArray;
 		$this->_attachmentArray = $attachmentArray;
-
-		/* call init */
-
 		$this->init();
 	}
 

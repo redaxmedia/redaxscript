@@ -146,7 +146,13 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry, $this->_language);
+		$options = array(
+			'classString' => array(
+				'list' => 'list-breadcrumb',
+				'divider' => 'item-divider'
+			)
+		);
+		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry, $this->_language, $options);
 
 		/* result */
 

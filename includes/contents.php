@@ -94,7 +94,12 @@ function contents()
 
 				/* parser object */
 
-				$parser = new Redaxscript_Parser(Redaxscript_Registry::getInstance(), Redaxscript_Language::getInstance(), $text, $route);
+				$parser = new Redaxscript_Parser(Redaxscript_Registry::getInstance(), Redaxscript_Language::getInstance(), $text, $route, array(
+					'classString' => array(
+						'break' => 'link_read_more',
+						'code' => 'box_code'
+					)
+				));
 
 				/* collect headline output */
 
@@ -266,7 +271,12 @@ function extras($filter = '')
 				{
 					/* parser object */
 
-					$parser = new Redaxscript_Parser(Redaxscript_Registry::getInstance(), Redaxscript_Language::getInstance(), $text, $route);
+					$parser = new Redaxscript_Parser(Redaxscript_Registry::getInstance(), Redaxscript_Language::getInstance(), $text, $route, array(
+						'classString' => array(
+							'break' => 'link_read_more',
+							'code' => 'box_code'
+						)
+					));
 
 					/* collect headline output */
 

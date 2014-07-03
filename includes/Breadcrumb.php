@@ -38,14 +38,16 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * array of classes used to style the breadcrumb
+	 * options of the breadcrumb
 	 *
 	 * @var array
 	 */
 
-	protected $_classes = array(
-		'list' => 'list_breadcrumb',
-		'divider' => 'divider'
+	protected $_options = array(
+		'classString' => array(
+			'list' => 'list-breadcrumb',
+			'divider' => 'item-divider'
+		)
 	);
 
 	/**
@@ -55,12 +57,17 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @param Redaxscript_Registry $registry instance of the registry class
 	 * @param Redaxscript_Language $language instance of the language class
+	 * @param array $options options of the breadcrumb
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language)
+	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
+		if (is_array($options))
+		{
+			$this->_options = array_unique(array_merge($this->_options, $options));
+		}
 		$this->init();
 	}
 
@@ -134,7 +141,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_classes['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
+					$output .= '<li class="' . $this->_options['classString']['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
 				}
 			}
 		}
@@ -143,7 +150,7 @@ class Redaxscript_Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="' . $this->_classes['list'] . '">' . $output . '</ul>';
+			$output = '<ul class="' . $this->_options['classString']['list'] . '">' . $output . '</ul>';
 		}
 		$output .= hook(__FUNCTION__ . '_end');
 		return $output;
