@@ -28,7 +28,7 @@ r.modules.qunit =
 			qunitAssert: 'ol.qunit-assert-list',
 			qunitFixture: '#qunit-fixture'
 		},
-		classString:
+		className:
 		{
 			qunitHeader: 'title_qunit',
 			qunitBanner: 'box_note banner_qunit',

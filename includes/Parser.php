@@ -51,7 +51,7 @@ class Redaxscript_Parser
 	 */
 
 	protected $_options = array(
-		'classString' => array(
+		'className' => array(
 			'break' => 'link-read-more',
 			'code' => 'box-code'
 		)
@@ -195,7 +195,7 @@ class Redaxscript_Parser
 
 			if ($this->_route)
 			{
-				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_options['classString']['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
+				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_options['className']['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
 			}
 		}
 		return $output;
@@ -225,7 +225,7 @@ class Redaxscript_Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = '<code class="' . $this->_options['classString']['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
+				$parts[$key] = '<code class="' . $this->_options['className']['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
 			}
 		}
 		$output = implode($parts);

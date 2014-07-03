@@ -17,7 +17,7 @@ r.modules.gallery =
 	selector: 'ul.js_list_gallery',
 	options:
 	{
-		classString:
+		className:
 		{
 			gallery: 'js_gallery gallery',
 			galleryLoader: 'js_gallery_loader gallery_loader',

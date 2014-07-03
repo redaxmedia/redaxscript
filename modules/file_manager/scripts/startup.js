@@ -22,7 +22,7 @@ r.modules.fileManager =
 			fieldFile: 'input.js_file',
 			buttonUpload: 'button.js_upload'
 		},
-		classString:
+		className:
 		{
 			buttonBrowse: 'js_browse button_admin'
 		}

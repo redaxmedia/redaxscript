@@ -14,7 +14,7 @@
 function breadcrumb()
 {
 	$options = array(
-		'classString' => array(
+		'className' => array(
 			'list' => 'list_breadcrumb',
 			'divider' => 'divider'
 		)

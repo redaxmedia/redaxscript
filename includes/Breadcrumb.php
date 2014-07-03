@@ -44,7 +44,7 @@ class Redaxscript_Breadcrumb
 	 */
 
 	protected $_options = array(
-		'classString' => array(
+		'className' => array(
 			'list' => 'list-breadcrumb',
 			'divider' => 'item-divider'
 		)
@@ -141,7 +141,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_options['classString']['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
+					$output .= '<li class="' . $this->_options['className']['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
 				}
 			}
 		}
@@ -150,7 +150,7 @@ class Redaxscript_Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="' . $this->_options['classString']['list'] . '">' . $output . '</ul>';
+			$output = '<ul class="' . $this->_options['className']['list'] . '">' . $output . '</ul>';
 		}
 		$output .= hook(__FUNCTION__ . '_end');
 		return $output;

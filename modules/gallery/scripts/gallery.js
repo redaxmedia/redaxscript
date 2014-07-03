@@ -51,7 +51,7 @@
 			{
 				gallery.links.each(function ()
 				{
-					var link = $(this).addClass(options.classString.galleryLoader),
+					var link = $(this).addClass(options.className.galleryLoader),
 						url = link.attr('href'),
 						image = $('<img src="' + url + '" />');
 
@@ -59,7 +59,7 @@
 
 					image.on('load', function ()
 					{
-						link.removeClass(options.classString.galleryLoader);
+						link.removeClass(options.className.galleryLoader);
 					});
 				});
 			};
@@ -92,7 +92,7 @@
 
 				if (options.loader)
 				{
-					gallery.container.addClass(options.classString.galleryLoader);
+					gallery.container.addClass(options.className.galleryLoader);
 				}
 
 				/* append to body */
@@ -109,7 +109,7 @@
 
 				/* listen for load */
 
-				image.addClass(options.classString.galleryMedia).on('load', function ()
+				image.addClass(options.className.galleryMedia).on('load', function ()
 				{
 					clearTimeout(timeoutLoad);
 
@@ -117,7 +117,7 @@
 
 					if (options.loader)
 					{
-						gallery.container.removeClass(options.classString.galleryLoader);
+						gallery.container.removeClass(options.className.galleryLoader);
 					}
 					gallery.container.html(image);
 
@@ -211,7 +211,7 @@
 			{
 				/* previous control */
 
-				gallery.buttonPrevious = $('<a>' + l.gallery.image_previous + '</a>').addClass(options.classString.controlPrevious)
+				gallery.buttonPrevious = $('<a>' + l.gallery.image_previous + '</a>').addClass(options.className.controlPrevious)
 
 				/* listen for click */
 
@@ -223,7 +223,7 @@
 
 				/* next control */
 
-				gallery.buttonNext = $('<a>' + l.gallery.image_next + '</a>').addClass(options.classString.controlNext)
+				gallery.buttonNext = $('<a>' + l.gallery.image_next + '</a>').addClass(options.className.controlNext)
 
 				/* listen for click */
 
@@ -238,34 +238,34 @@
 
 			gallery.createMeta = function ()
 			{
-				gallery.meta = $('<div>').addClass(options.classString.galleryMeta);
+				gallery.meta = $('<div>').addClass(options.className.galleryMeta);
 
 				/* artist */
 
 				if (gallery.data.artist)
 				{
-					gallery.artist = $('<div data-label="' + l.gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.classString.galleryArtist).appendTo(gallery.meta);
+					gallery.artist = $('<div data-label="' + l.gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.className.galleryArtist).appendTo(gallery.meta);
 				}
 
 				/* date */
 
 				if (gallery.data.date)
 				{
-					gallery.date = $('<div data-label="' + l.date + '">' + gallery.data.date + '</div>').addClass(options.classString.galleryDate).appendTo(gallery.meta);
+					gallery.date = $('<div data-label="' + l.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
 				}
 
 				/* description */
 
 				if (gallery.data.description)
 				{
-					gallery.description = $('<div data-label="' + l.gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.classString.galleryDescription).appendTo(gallery.meta);
+					gallery.description = $('<div data-label="' + l.gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
 				}
 
 				/* pagination */
 
 				if (gallery.data.total > 1)
 				{
-					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery.divider + gallery.data.total + '</div>').addClass(options.classString.galleryPagination).appendTo(gallery.meta);
+					gallery.pagination = $('<div>' + gallery.data.counter + l.gallery.divider + gallery.data.total + '</div>').addClass(options.className.galleryPagination).appendTo(gallery.meta);
 				}
 
 				/* append meta */
@@ -432,8 +432,8 @@
 
 				/* create gallery elements */
 
-				gallery.overlay = $('<div>').addClass(options.classString.galleryOverlay);
-				gallery.container = $('<div>').addClass(options.classString.gallery);
+				gallery.overlay = $('<div>').addClass(options.className.galleryOverlay);
+				gallery.container = $('<div>').addClass(options.className.gallery);
 
 				/* preload */
 

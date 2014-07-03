@@ -73,7 +73,7 @@
 			{
 				/* append toolbar */
 
-				editor.toolbar = $('<div unselectable="on">').addClass(options.classString.editorToolbar).appendTo(editor.container);
+				editor.toolbar = $('<div unselectable="on">').addClass(options.className.editorToolbar).appendTo(editor.container);
 
 				/* append controls */
 
@@ -87,14 +87,14 @@
 
 					if (name === 'toggle')
 					{
-						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
+						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + options.className.editorSourceCode).appendTo(editor.toolbar);
 					}
 
 					/* append several controls */
 
 					else if (typeof data === 'object')
 					{
-						control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + name).appendTo(editor.toolbar);
+						control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + name).appendTo(editor.toolbar);
 					}
 
 					/* handle control events */
@@ -132,7 +132,7 @@
 			{
 				/* append preview */
 
-				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.classString.editorPreview).appendTo(editor.container);
+				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.className.editorPreview).appendTo(editor.container);
 
 				/* insert break on enter */
 
@@ -289,7 +289,7 @@
 					editor.textarea.val(editor.convertToHTML()).focus();
 					editor.controlToggle.attr('title', l.editor.wysiwyg);
 				}
-				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl).toggle();
+				editor.controlToggle.toggleClass(options.className.editorSourceCode + ' ' + options.className.editorWysiwyg).nextAll(options.element.editorControl).toggle();
 				editor.textarea.add(editor.preview).toggle();
 				editor.validate();
 			};
@@ -405,7 +405,7 @@
 				/* create editor elements */
 
 				editor.textarea.hide();
-				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
+				editor.container = $('<div>').addClass(options.className.editor).insertBefore(editor.textarea);
 
 				/* create toolbar */
 

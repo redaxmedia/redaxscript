@@ -31,7 +31,7 @@
 
 		/* add classes */
 
-		qunitFixture.addClass(options.classString.qunitFixture);
+		qunitFixture.addClass(options.className.qunitFixture);
 
 		/* begin callback */
 
@@ -54,13 +54,13 @@
 
 			/* add several classes */
 
-			qunitHeader.addClass(options.classString.qunitHeader);
-			qunitBanner.addClass(options.classString.qunitBanner);
-			qunitToolbar.addClass(options.classString.qunitToolbar);
-			qunitUserAgent.addClass(options.classString.qunitUserAgent);
-			qunitResult.addClass(options.classString.qunitResult);
-			qunitTest.addClass(options.classString.qunitTest);
-			qunitAssert.addClass(options.classString.qunitAssert);
+			qunitHeader.addClass(options.className.qunitHeader);
+			qunitBanner.addClass(options.className.qunitBanner);
+			qunitToolbar.addClass(options.className.qunitToolbar);
+			qunitUserAgent.addClass(options.className.qunitUserAgent);
+			qunitResult.addClass(options.className.qunitResult);
+			qunitTest.addClass(options.className.qunitTest);
+			qunitAssert.addClass(options.className.qunitAssert);
 
 			/* detach and extend banner */
 
