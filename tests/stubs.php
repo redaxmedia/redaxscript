@@ -1,12 +1,5 @@
 <?php
 
-/* anchor element */
-
-function anchor_element($type = '', $id = '', $class = '', $name = '', $value = '', $title = '', $code = '')
-{
-	return '<a>' . $name . '</a>';
-}
-
 /* check alias */
 
 function check_alias($input = '', $mode = '')

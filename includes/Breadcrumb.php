@@ -119,7 +119,7 @@ class Redaxscript_Breadcrumb
 
 				if ($route)
 				{
-					$output .= anchor_element('internal', '', '', $title, $route);
+					$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $route . '" title="' . $title . '">' . $title . '</a>';
 				}
 
 				/* else plain text */

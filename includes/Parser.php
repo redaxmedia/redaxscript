@@ -191,7 +191,7 @@ class Redaxscript_Parser
 
 			if ($this->_route)
 			{
-				$output .= anchor_element('internal', '', $this->_classes['break'], $this->_language->get('read_more'), $this->_route);
+				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_classes['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
 			}
 		}
 		return $output;
