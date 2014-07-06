@@ -46,7 +46,7 @@ class Redaxscript_Directory
 	 * @var array
 	 */
 
-	private static $_cache = array();
+	private static $_cache;
 
 	/**
 	 * constructor of the class
@@ -70,6 +70,9 @@ class Redaxscript_Directory
 			);
 		}
 		$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
+
+		/* call init */
+
 		$this->init();
 	}
 
@@ -91,12 +94,26 @@ class Redaxscript_Directory
 	 *
 	 * @since 2.0.0
 	 *
-	 * @return array
+	 * @param string $key key of the item
+	 *
+	 * @return string|array
 	 */
 
-	public function get()
+	public function get($key = null)
 	{
-		return $this->_directoryArray;
+		$output = null;
+
+		/* values as needed */
+
+		if (is_null($key))
+		{
+			$output = $this->_directoryArray;
+		}
+		else if (array_key_exists($key, $this->_directoryArray))
+		{
+			$output = $this->_directoryArray[$key];
+		}
+		return $output;
 	}
 
 	/**
@@ -105,7 +122,6 @@ class Redaxscript_Directory
 	 * @since 2.0.0
 	 *
 	 * @param string $directory name of the directory
-	 *
 	 * @return array
 	 */
 
@@ -113,7 +129,7 @@ class Redaxscript_Directory
 	{
 		/* use from static cache */
 
-		if (array_key_exists($directory, self::$_cache))
+		if (is_array(self::$_cache) && array_key_exists($directory, self::$_cache))
 		{
 			$directoryArray = self::$_cache[$directory];
 		}
@@ -139,7 +155,6 @@ class Redaxscript_Directory
 	 *
 	 * @param string $directory name of the directory
 	 * @param integer $mode file access mode
-	 *
 	 * @return boolean
 	 */
 
@@ -233,3 +248,4 @@ class Redaxscript_Directory
 		}
 	}
 }
+?>
