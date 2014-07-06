@@ -18,7 +18,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_toArray;
+	protected $_toArray;
 
 	/**
 	 * array of sender
@@ -26,7 +26,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_fromArray;
+	protected $_fromArray;
 
 	/**
 	 * subject of the email
@@ -34,7 +34,7 @@ class Redaxscript_Mailer
 	 * @var string
 	 */
 
-	private $_subject;
+	protected $_subject;
 
 	/**
 	 * array of body items
@@ -42,7 +42,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_bodyArray;
+	protected $_bodyArray;
 
 	/**
 	 * array of attachments
@@ -50,7 +50,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_attachmentArray;
+	protected $_attachmentArray;
 
 	/**
 	 * built recipient contents

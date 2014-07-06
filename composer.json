@@ -12,6 +12,7 @@
 	"require-dev":
 	{
 		"apigen/apigen": "2.8.0",
+		"guzzle/guzzle" : "3.9.1",
 		"mikey179/vfsStream": "1.2.0",
 		"phpunit/phpunit": "4.1.3",
 		"redaxmedia/redaxscript-apigen-template": "1.0.0",
