@@ -9,8 +9,8 @@ Redaxscript
 [![Build Status](https://travis-ci.org/redaxmedia/redaxscript.png?branch=master)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/redaxmedia/redaxscript/badges/quality-score.png?s=ba169d3afcf07f694959a6c2c5b0297be03ce752)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript/)
 [![Coverage Status](https://coveralls.io/repos/redaxmedia/redaxscript/badge.png)](https://coveralls.io/r/redaxmedia/redaxscript)
-[![Dependency Status](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314/badge.png)](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314)
-[![Dependency Status](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b/badge.png)](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b)
+[![Dependency Status](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7)
+[![Dependency Status](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c)
 [![Latest Stable Version](http://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](http://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 
