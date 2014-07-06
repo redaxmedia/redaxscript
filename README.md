@@ -11,8 +11,8 @@ Redaxscript
 [![Coverage Status](https://coveralls.io/repos/redaxmedia/redaxscript/badge.png)](https://coveralls.io/r/redaxmedia/redaxscript)
 [![Dependency Status](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314/badge.png)](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314)
 [![Dependency Status](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b/badge.png)](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b)
-[![Latest Stable Version](https://poser.pugx.org/redaxmedia/redaxscript/v/stable.png)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![License](https://poser.pugx.org/redaxmedia/redaxscript/license.png)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![Latest Stable Version](http://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![License](http://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 
 
 Online demo
