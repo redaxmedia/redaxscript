@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "Ultra lightweight CMS",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
 	"require":
@@ -12,9 +12,9 @@
 	{
 		"apigen/apigen": "2.8.0",
 		"mikey179/vfsStream": "1.2.0",
-		"phpunit/phpunit": "4.1.0",
+		"phpunit/phpunit": "4.1.3",
 		"redaxmedia/redaxscript-apigen-template": "1.0.0",
-		"redaxmedia/tocgen": "3.0.2",
+		"redaxmedia/tocgen": "4.0.0",
 		"satooshi/php-coveralls": "0.6.1",
 		"squizlabs/php_codesniffer": "1.5.3"
 	}
