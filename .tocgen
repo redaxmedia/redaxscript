@@ -1,65 +1,6 @@
 {
-	"eol": "\r\n",
 	"toc":
 	{
-		"flag": "@tableofcontents",
-		"start": "/**",
-		"end": " */\r\n\r\n",
-		"prefix": " * ",
-		"delimiter": " *\r\n",
-		"indent": "   ",
-		"head": "\r\n * @tableofcontents\r\n *\r\n",
-		"foot": " *\r\n * @since 2.1.0\r\n *\r\n * @package Redaxscript\r\n * @author Henry Ruhs\r\n"
-	},
-	"section":
-	{
-		"flag": "@section",
-		"start": "/*",
-		"end": "*/",
-		"delimiter": ".",
-		"pattern": "/\\/\\*(.|[\\r\\n])*?\\*\\//"
-	},
-	"extensions":
-	[
-		"coffee",
-		"css",
-		"js",
-		"less",
-		"sass",
-		"scss"
-	],
-	"exclude":
-	[
-		".",
-		"..",
-		".git",
-		".svn"
-	],
-	"notes":
-	{
-		"error": "[1;31m",
-		"success": "[1;32m",
-		"warning": "[1;33m",
-		"info": "[1;36m"
-	},
-	"wording":
-	{
-		"tocgen": "Tocgen by Redaxmedia",
-		"noTarget": "File or directory not found",
-		"noSection": "No section found",
-		"noChanges": "No changes were made",
-		"duplicateRank": "Duplicate rank detected",
-		"wrongOrder": "Wrong order detected",
-		"tocUpdated": "Table of contents updated",
-		"point": ".",
-		"colon": ":",
-		"indent": "  "
-	},
-	"options":
-	{
-		"force": false,
-		"recursive": true,
-		"lint": false,
-		"quite": false
+		"foot": " *\n * @since 2.2.0\n *\n * @package Redaxscript\n * @author Henry Ruhs\n"
 	}
 }

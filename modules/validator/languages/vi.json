@@ -1,0 +1,9 @@
+{
+	"validator":
+	{
+		"from": "Từ",
+		"to": "Đến",
+		"line": "Dòng",
+		"column": "Cột"
+	}
+}

@@ -78,20 +78,20 @@
 
 					if (options.branding === 'replace' && options.mapLogo && options.mapTerms)
 					{
-						mapMeta = $('<div>').addClass(options.classString.mapMeta).appendTo(map);
+						mapMeta = $('<div>').addClass(options.className.mapMeta).appendTo(map);
 
 						/* append custom logo */
 
 						if (options.mapLogo)
 						{
-							$(options.mapLogo).addClass(options.classString.mapLogo).appendTo(mapMeta);
+							$(options.mapLogo).addClass(options.className.mapLogo).appendTo(mapMeta);
 						}
 
 						/* append custom terms */
 
 						if (options.mapTerms)
 						{
-							$(options.mapTerms).addClass(options.classString.mapTerms).appendTo(mapMeta);
+							$(options.mapTerms).addClass(options.className.mapTerms).appendTo(mapMeta);
 						}
 					}
 

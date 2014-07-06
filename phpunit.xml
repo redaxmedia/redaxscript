@@ -1,10 +1,5 @@
-<phpunit bootstrap="includes/bootstrap.php">
+<phpunit bootstrap="tests/Bootstrap.php">
 	<testsuite name="base">
-		<directory suffix="_test.php">tests/includes</directory>
+		<directory>tests/includes</directory>
 	</testsuite>
-	<filter>
-		<blacklist>
-			<file>includes/migrate.php</file>
-		</blacklist>
-	</filter>
 </phpunit>

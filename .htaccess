@@ -3,7 +3,7 @@
 </filesmatch>
 <filesmatch (index.php|install.php)>
 	allow from all
-</filesMatch>
+</filesmatch>
 <ifmodule mod_deflate.c>
 	<filesmatch \.(css|js|php|svg|ttf|woff)$>
 		setoutputfilter deflate

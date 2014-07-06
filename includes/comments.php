@@ -167,7 +167,7 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha();
+		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
 	}
 
 	/* collect output */
@@ -324,10 +324,10 @@ function comment_post()
 				l('article') => $articleLink
 			);
 
-			/* mail object */
+			/* mailer object */
 
-			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-			$mail->send();
+			$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+			$mailer->send();
 		}
 
 		/* build key and value strings */
@@ -370,4 +370,3 @@ function comment_post()
 	}
 	$_SESSION[ROOT . '/comment'] = '';
 }
-?>

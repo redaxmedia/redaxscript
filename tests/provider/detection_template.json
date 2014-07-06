@@ -2,8 +2,8 @@
 	[
 		{
 			"route": "localhost",
-			"lastTable": "",
-			"lastId": ""
+			"lastTable": "articles",
+			"lastId": 1
 		},
 		"default"
 	]

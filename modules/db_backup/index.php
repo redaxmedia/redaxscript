@@ -15,12 +15,12 @@ function db_backup_render_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'db-backup')
 	{
-		define('TITLE', l('db_backup_database_backup'));
+		define('TITLE', l('database_backup', 'db_backup'));
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('db_backup_database_backup'));
+		$registry = Redaxscript_Registry::getInstance();
+		$registry->set('title', l('database_backup', 'db_backup'));
 
 		/* config object */
 
@@ -50,12 +50,12 @@ function db_backup_render_start()
 			$toArray = $fromArray = array(
 				s('author') => s('email')
 			);
-			$subject = l('db_backup_database_backup');
+			$subject = l('database_backup', 'db_backup');
 			$bodyArray = array(
 				l('url') => $urlLink,
 				l('database') => $config->get('name'),
 				'<br />',
-				l('message') => l('db_backup_save_attachment') . l('point')
+				l('message') => l('save_attachment', 'db_backup') . l('point')
 			);
 			$attachmentArray = array(
 				$fileName => db_backup($config->get('name'), 1)
@@ -63,7 +63,7 @@ function db_backup_render_start()
 
 			/* mail object */
 
-			$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
+			$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
 			$mail->send();
 		}
 	}
@@ -103,9 +103,9 @@ function db_backup_center_start()
 
 function db_backup_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('db_backup_database_backup')) . '<ul class="js_list_panel_children_admin list_panel_children_admin">';
-	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_download'), 'admin/db-backup/download') . '</li>';
-	$output .= '<li>' . anchor_element('internal', '', '', l('db_backup_send_email'), 'admin/db-backup/send') . '</li>';
+	$output = '<li>' . anchor_element('internal', '', '', l('database_backup', 'db_backup')) . '<ul class="js_list_panel_children_admin list_panel_children_admin">';
+	$output .= '<li>' . anchor_element('internal', '', '', l('download', 'db_backup'), 'admin/db-backup/download') . '</li>';
+	$output .= '<li>' . anchor_element('internal', '', '', l('send_email', 'db_backup'), 'admin/db-backup/send') . '</li>';
 	$output .= '</ul></li>';
 	return $output;
 }
@@ -387,4 +387,4 @@ function db_backup_get_contents($table = '')
 	}
 	return $output;
 }
-?>
+

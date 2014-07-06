@@ -26,7 +26,7 @@ function registration_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha();
+		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
 	}
 
 	/* collect output */
@@ -167,10 +167,10 @@ function registration_post()
 			l('login') => $loginLink
 		);
 
-		/* mail object */
+		/* mailer object */
 
-		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-		$mail->send();
+		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
 
 		/* build key and value strings */
 
@@ -212,4 +212,3 @@ function registration_post()
 	}
 	$_SESSION[ROOT . '/registration'] = '';
 }
-?>

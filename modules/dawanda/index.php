@@ -17,4 +17,3 @@ function dawanda_loader_start()
 	$loader_modules_scripts[] = 'modules/dawanda/scripts/startup.js';
 	$loader_modules_scripts[] = 'modules/dawanda/scripts/dawanda.js';
 }
-?>

@@ -26,7 +26,7 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha();
+		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
 	}
 
 	/* reminder question */
@@ -94,11 +94,23 @@ function login_post()
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/login'] == 'visited')
 	{
-		$post_user = clean($_POST['user'], 0);
+		$post_user = $_POST['user'];
 		$post_password = $_POST['password'];
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
-		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users WHERE user = \'' . $post_user . '\'';
+		$login_by_email = 0;
+		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
+		if (check_email($post_user) == 0)
+		{
+			$post_user = clean($post_user, 0);
+			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT 1';
+		}
+		else
+		{
+			$post_user = clean($post_user, 3);
+			$login_by_email = 1;
+			$users_query .= 'WHERE email = \'' . $post_user . '\' LIMIT 1';
+		}
 		$users_result = mysql_query($users_query);
 		while ($r = mysql_fetch_assoc($users_result))
 		{
@@ -120,9 +132,13 @@ function login_post()
 	{
 		$error = l('password_empty');
 	}
-	else if (check_login($post_user) == 0)
+	else if ($login_by_email == 0 && check_login($post_user) == 0)
 	{
 		$error = l('user_incorrect');
+	}
+	else if ($login_by_email == 1 && check_email($post_user) == 0)
+	{
+		$error = l('email_incorrect');
 	}
 	else if (check_login($post_password) == 0)
 	{
@@ -276,4 +292,3 @@ function logout()
 	session_destroy();
 	notification(l('goodbye'), l('logged_out'), l('continue'), 'login');
 }
-?>

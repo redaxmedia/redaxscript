@@ -108,4 +108,3 @@ function sitemap_xml()
 	$output .= '</urlset>';
 	echo $output;
 }
-?>

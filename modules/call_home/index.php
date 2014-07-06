@@ -89,4 +89,3 @@ function call_home_admin_notification_end()
 	}
 	echo $output;
 }
-?>

@@ -1,0 +1,14 @@
+{
+	"file_manager":
+	{
+		"file_manager": "Datei manager",
+		"directory_create": "Erstellen Sie das Verzeichnis",
+		"directory_permission_grant": "Erteilen Sie dem Verzeichnis Schreibrechte",
+		"file_type_limit": "Der Dateityp ist nicht erlaubt",
+		"file_size_limit": "Die Datei ist zu gross",
+		"file_size": "Dateigröße",
+		"file_no": "Keine Datei vorhanden",
+		"browse": "Durchsuchen",
+		"upload": "Hochladen"
+	}
+}

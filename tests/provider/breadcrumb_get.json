@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"title": "title",
+			"title": "Title",
 			"fullRoute": "",
 			"firstParameter": "",
 			"secondParameter": "",
@@ -17,7 +17,7 @@
 		},
 		[
 			{
-				"title": "title"
+				"title": "Title"
 			}
 		]
 	],
@@ -39,7 +39,7 @@
 		},
 		[
 			{
-				"title": "home"
+				"title": "Home"
 			}
 		]
 	],
@@ -61,7 +61,7 @@
 		},
 		[
 			{
-				"title": "administration"
+				"title": "Administration"
 			}
 		]
 	],
@@ -83,15 +83,15 @@
 		},
 		[
 			{
-				"title": "administration",
+				"title": "Administration",
 				"route": "admin"
 			},
 			{
-				"title": "view",
+				"title": "View",
 				"route": "admin/view/categories"
 			},
 			{
-				"title": "categories"
+				"title": "Categories"
 			}
 		]
 	],
@@ -113,20 +113,20 @@
 		},
 		[
 			{
-				"title": "login"
+				"title": "Login"
 			}
 		]
 	],
 	[
 		{
 			"title": "",
-			"fullRoute": "test",
-			"firstParameter": "test",
+			"fullRoute": "invalid",
+			"firstParameter": "invalid",
 			"secondParameter": "",
 			"thirdParameter": "",
 			"adminParameter": "",
 			"tableParameter": "",
-			"lastParameter": "test",
+			"lastParameter": "invalid",
 			"firstTable": "",
 			"secondTable": "",
 			"thirdTable": "",
@@ -135,85 +135,85 @@
 		},
 		[
 			{
-				"title": "error"
+				"title": "Error"
 			}
 		]
 	],
 	[
 		{
 			"title": "",
-			"fullRoute": "test",
-			"firstParameter": "test",
+			"fullRoute": "home",
+			"firstParameter": "home",
 			"secondParameter": "",
 			"thirdParameter": "",
 			"adminParameter": "",
 			"tableParameter": "",
-			"lastParameter": "test",
+			"lastParameter": "home",
 			"firstTable": "categories",
 			"secondTable": "",
 			"thirdTable": "",
 			"lastTable": "categories",
-			"lastId": "2"
+			"lastId": "1"
 		},
 		[
 			{
-				"title": "test"
+				"title": "Home"
 			}
 		]
 	],
 	[
 		{
 			"title": "",
-			"fullRoute": "test/sub-test",
-			"firstParameter": "test",
-			"secondParameter": "sub-test",
+			"fullRoute": "home/welcome",
+			"firstParameter": "home",
+			"secondParameter": "welcome",
 			"thirdParameter": "",
 			"adminParameter": "",
 			"tableParameter": "",
-			"lastParameter": "sub-test",
+			"lastParameter": "welcome",
 			"firstTable": "categories",
-			"secondTable": "categories",
+			"secondTable": "articles",
 			"thirdTable": "",
-			"lastTable": "categories",
-			"lastId": "3"
+			"lastTable": "articles",
+			"lastId": "1"
 		},
 		[
 			{
-				"title": "test",
-				"route": "test"
+				"title": "Home",
+				"route": "home"
 			},
 			{
-				"title": "sub-test"
+				"title": "Welcome"
 			}
 		]
 	],
 	[
 		{
 			"title": "",
-			"fullRoute": "test/sub-test/test2",
-			"firstParameter": "test",
-			"secondParameter": "sub-test",
-			"thirdParameter": "test2",
+			"fullRoute": "ultra/lightweight/cms",
+			"firstParameter": "ultra",
+			"secondParameter": "lightweight",
+			"thirdParameter": "cms",
 			"adminParameter": "",
 			"tableParameter": "",
-			"lastParameter": "test2",
+			"lastParameter": "cms",
 			"firstTable": "categories",
 			"secondTable": "categories",
 			"thirdTable": "articles",
 			"lastTable": "articles",
-			"lastId": "3"
+			"lastId": "2"
 		},
 		[
 			{
-				"title": "test",
-				"route": "test"
+				"title": "Ultra",
+				"route": "ultra"
 			},
 			{
-				"title": "sub-test",
-				"route": "test/sub-test"
+				"title": "Lightweight",
+				"route": "ultra/lightweight"
 			},
 			{
-				"title": "test2"
+				"title": "CMS"
 			}
 		]
 	]

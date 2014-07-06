@@ -16,7 +16,7 @@ r.modules.validator =
 	startup: true,
 	options:
 	{
-		classString:
+		className:
 		{
 			validatorBox: 'box_validator',
 			validatorDescription: 'description_validator',

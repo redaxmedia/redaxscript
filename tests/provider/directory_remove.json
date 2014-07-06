@@ -12,13 +12,13 @@
 	],
 	[
 		[
-			"includes/admin",
+			"includes/Detection",
 			"root",
 			"root/includes"
 		],
 		[
-			"autoloader.php",
-			"bootstrap.php"
+			"Autoloader.php",
+			"Bootstrap.php"
 		]
 	],
 	[

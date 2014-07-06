@@ -1,0 +1,12 @@
+{
+	"qunit":
+	{
+		"qunit": "QUnit",
+		"description": "Javascript unit testing",
+		"type_expected": "Expected type",
+		"value_expected": "Expected value",
+		"attribute_expected": "Expected attribute",
+		"test_passed": "Test passed",
+		"test_failed": "Test failed"
+	}
+}

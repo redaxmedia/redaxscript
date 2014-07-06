@@ -350,4 +350,3 @@ function future_update($table = '')
 	}
 	mysql_query($general_update_query);
 }
-?>

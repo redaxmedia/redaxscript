@@ -28,7 +28,7 @@
 		var head = $('head'),
 			body = $('body'),
 			style = head.children('style[media="all"]'),
-			liveReloadBox = $('<div>').addClass(options.classString.liveReloadBox),
+			liveReloadBox = $('<div>').addClass(options.className.liveReloadBox),
 			dataOld = '',
 			intervalReload = '';
 
@@ -49,12 +49,12 @@
 					{
 						if (data === dataOld)
 						{
-							liveReloadBox.html('<div class="box_note note_info">' + l.live_reload_live_reload + '</div>').toggle();
+							liveReloadBox.html('<div class="box_note note_info">' + l.live_reload.live_reload + '</div>').toggle();
 						}
 						else if (dataOld.length)
 						{
 							style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-							liveReloadBox.html('<div class="box_note note_success">' + l.live_reload_updated + '</div>').show();
+							liveReloadBox.html('<div class="box_note note_success">' + l.live_reload.updated + '</div>').show();
 						}
 						dataOld = data;
 					}

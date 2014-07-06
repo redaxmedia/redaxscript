@@ -87,7 +87,7 @@ function contact_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha();
+		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
 	}
 
 	/* collect output */
@@ -209,10 +209,10 @@ function contact_post()
 			l('message') => $text
 		);
 
-		/* mail object */
+		/* mailer object */
 
-		$mail = new Redaxscript_Mail($toArray, $fromArray, $subject, $bodyArray);
-		$mail->send();
+		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
 	}
 
 	/* handle error */
@@ -230,8 +230,7 @@ function contact_post()
 
 	else
 	{
-		notification(l('operation_completed'), l('contact_message_sent'), l('home'), ROOT);
+		notification(l('operation_completed'), l('message_sent', 'contact'), l('home'), ROOT);
 	}
 	$_SESSION[ROOT . '/contact'] = '';
 }
-?>

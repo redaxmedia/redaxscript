@@ -3,14 +3,10 @@ error_reporting(0);
 
 /* include core files */
 
-include_once('config.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
-include_once('includes/detection.php');
-include_once('includes/detection_language.php');
-include_once('includes/detection_template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
@@ -19,15 +15,15 @@ include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
-include_once('includes/registry.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
+include_once('vendor/j4mie/idiorm/idiorm.php');
 
 /* bootstrap */
 
+include_once('includes/Bootstrap.php');
 startup();
-include_once('includes/bootstrap.php');
 
 /* include files as needed */
 
@@ -54,12 +50,12 @@ if (FIRST_PARAMETER == 'registration' && s('registration') == 1)
 
 if (LOGGED_IN == TOKEN)
 {
-	include_once('includes/admin/admin.php');
-	include_once('includes/admin/center.php');
+	include_once('includes/admin_admin.php');
+	include_once('includes/admin_center.php');
 }
 if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 {
-	include_once('includes/admin/query.php');
+	include_once('includes/admin_query.php');
 	switch (true)
 	{
 		case CATEGORIES_NEW == 1:
@@ -76,26 +72,26 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 		case COMMENTS_DELETE == 1:
 			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 			{
-				include_once('includes/admin/contents.php');
+				include_once('includes/admin_contents.php');
 			}
 		case GROUPS_NEW == 1:
 		case GROUPS_EDIT == 1:
 		case GROUPS_DELETE == 1:
 			if (TABLE_PARAMETER == 'groups')
 			{
-				include_once('includes/admin/groups.php');
+				include_once('includes/admin_groups.php');
 			}
 		case MODULES_INSTALL == 1:
 		case MODULES_EDIT == 1:
 		case MODULES_UNINSTALL == 1:
 			if (TABLE_PARAMETER == 'modules')
 			{
-				include_once('includes/admin/modules.php');
+				include_once('includes/admin_modules.php');
 			}
 		case SETTINGS_EDIT == 1:
 			if (TABLE_PARAMETER == 'settings')
 			{
-				include_once('includes/admin/settings.php');
+				include_once('includes/admin_settings.php');
 			}
 		case USERS_NEW == 1:
 		case USERS_EDIT == 1:
@@ -103,36 +99,41 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 		case USERS_EXCEPTION == 1:
 			if (TABLE_PARAMETER == 'users')
 			{
-				include_once('includes/admin/users.php');
+				include_once('includes/admin_users.php');
 			}
 			break;
 	}
 }
 
-/* include language files */
-
-include_once('languages/' . LANGUAGE . '.php');
-include_once('languages/misc.php');
-
-/* include module files */
+/* module files as needed */
 
 $modules_include = modules_include();
 if ($modules_include)
 {
+	/* language object */
+
+	$language = Redaxscript_Language::getInstance();
+
+	/* process modules */
+
 	foreach ($modules_include as $value)
 	{
-		if (file_exists('modules/' . $value . '/languages/' . LANGUAGE . '.php'))
+		/* language */
+
+		$language->load(array(
+			'modules/' . $value . '/languages/en.json',
+			'modules/' . $value . '/languages/' . LANGUAGE . '.json'
+		));
+
+		/* config */
+
+		if (file_exists('modules/' . $value . '/Config.php'))
 		{
-			include_once('modules/' . $value . '/languages/' . LANGUAGE . '.php');
+			include_once('modules/' . $value . '/Config.php');
 		}
-		else if (file_exists('modules/' . $value . '/languages/en.php'))
-		{
-			include_once('modules/' . $value . '/languages/en.php');
-		}
-		if (file_exists('modules/' . $value . '/config.php'))
-		{
-			include_once('modules/' . $value . '/config.php');
-		}
+
+		/* index */
+
 		if (file_exists('modules/' . $value . '/index.php'))
 		{
 			include_once('modules/' . $value . '/index.php');
@@ -180,4 +181,3 @@ else
 	}
 	hook('render_end');
 }
-?>

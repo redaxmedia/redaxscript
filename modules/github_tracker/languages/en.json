@@ -1,0 +1,11 @@
+{
+	"github_tracker":
+	{
+		"issues": "Issues",
+		"created": "Created",
+		"updated": "Updated",
+		"milestones": "Milestones",
+		"open_issues": "open issues",
+		"closed_issues": "closed issues"
+	}
+}

@@ -56,4 +56,3 @@ function disqus_comments_replace()
 	$output .= '<script src="' . DISQUS_EMBED_URL . '"></script>' . PHP_EOL;
 	echo $output;
 }
-?>

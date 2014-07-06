@@ -117,4 +117,3 @@ function lazy_load($src= '', $options = '')
 		echo $output;
 	}
 }
-?>

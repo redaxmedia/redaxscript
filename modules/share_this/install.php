@@ -13,7 +13,7 @@
 
 function share_this_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrate social buttons\', \'2.1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Share this\', \'share_this\', \'Redaxmedia\', \'Integrate social buttons\', \'2.2.0\', 1, 0)';
 	mysql_query($query);
 }
 
@@ -33,4 +33,4 @@ function share_this_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'share_this\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

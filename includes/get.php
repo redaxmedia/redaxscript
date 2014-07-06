@@ -298,4 +298,3 @@ function get_token()
 	$output = sha1($a . $b . $c . $d);
 	return $output;
 }
-?>

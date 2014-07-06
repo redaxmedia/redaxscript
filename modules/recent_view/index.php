@@ -58,4 +58,4 @@ function recent_view_logger()
 	$output = array_reverse($_SESSION[ROOT . '/recent_view']);
 	return $output;
 }
-?>
+

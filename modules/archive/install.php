@@ -13,7 +13,7 @@
 
 function archive_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Archive\', \'archive\', \'Redaxmedia\', \'Generate a archive tree\', \'2.1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Archive\', \'archive\', \'Redaxmedia\', \'Generate a archive tree\', \'2.2.0\', 1, 0)';
 	mysql_query($query);
 }
 
@@ -33,4 +33,4 @@ function archive_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'archive\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

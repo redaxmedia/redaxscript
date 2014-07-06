@@ -1,0 +1,14 @@
+[
+	[
+		"Redaxscript_Detection",
+		true
+	],
+	[
+		"Redaxscript_Detection_Language",
+		true
+	],
+	[
+		"Redaxscript_DoesNotExist",
+		false
+	]
+]

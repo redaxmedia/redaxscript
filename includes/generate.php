@@ -340,4 +340,3 @@ function object_element($type = '', $id = '', $class = '', $name = '', $value = 
 	}
 	return $output;
 }
-?>

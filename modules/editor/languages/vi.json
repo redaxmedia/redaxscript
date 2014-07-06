@@ -1,0 +1,36 @@
+{
+	"editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Mã nguồn",
+		"bold": "In đậm",
+		"italic": "In nghiêng",
+		"underline": "Gạch dưới",
+		"strike": "Gạch ngang",
+		"subscript": "Chỉ số dưới",
+		"superscript": "Chỉ số trên",
+		"paragraph": "Đoạn",
+		"ordered_list": "Danh sách có thứ tự",
+		"unordered_list": "Danh sách không thứ tự",
+		"outdent": "Bật lề ra",
+		"indent": "Thụt lề vô",
+		"align_left": "Canh trái",
+		"align_center": "Canh giữa",
+		"align_right": "Canh phải",
+		"align_justify": "Canh đều",
+		"undo": "Làm ngược",
+		"redo": "Làm tới",
+		"insert_image": "Chèn hình ảnh",
+		"insert_link": "Chèn liên kết",
+		"remove_link": "Loại bỏ liên kết",
+		"cut": "Cắt",
+		"copy": "Sao chép",
+		"paste": "Dán",
+		"insert_document_break": "Chèn ngắt quãng tài liệu",
+		"insert_code_quote": "Chèn đoạn mã nguồn",
+		"insert_php_function": "Chèn hàm PHP",
+		"remove_format": "Loại bỏ định dạng",
+		"select_text_first": "Bạn phải chọn một đoạn văn bản trước",
+		"browser_support_no": "Trình duyệt của bạn không hỗ trợ tính năng này"
+	}
+}

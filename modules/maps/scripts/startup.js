@@ -17,7 +17,7 @@ r.modules.maps =
 	selector: 'div.js_map',
 	options:
 	{
-		classString:
+		className:
 		{
 			mapMeta: 'js_map_meta map_meta',
 			mapLogo: 'js_map_logo map_logo',

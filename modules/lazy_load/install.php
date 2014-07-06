@@ -13,7 +13,7 @@
 
 function lazy_load_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Lazy load\', \'lazy_load\', \'Redaxmedia\', \'Lazyload and multiserve images\', \'2.1.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Lazy load\', \'lazy_load\', \'Redaxmedia\', \'Lazyload and multiserve images\', \'2.2.0\', 1, 0)';
 	mysql_query($query);
 }
 
@@ -33,4 +33,4 @@ function lazy_load_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'lazy_load\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

@@ -239,4 +239,3 @@ function check_captcha($task = '', $solution = '')
 	}
 	return $output;
 }
-?>

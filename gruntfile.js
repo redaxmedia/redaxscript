@@ -6,24 +6,37 @@ module.exports = function (grunt)
 
 	grunt.initConfig(
 	{
+		version: grunt.file.readJSON('package.json').version,
 		jshint:
 		{
 			dependency:
-			[
-				'gruntfile.js'
-			],
+			{
+				src:
+				[
+					'gruntfile.js'
+				]
+			},
 			base:
-			[
-				'scripts/*.js'
-			],
+			{
+				src:
+				[
+					'scripts/*.js'
+				]
+			},
 			modules:
-			[
-				'modules/*/scripts/*.js'
-			],
+			{
+				src:
+				[
+					'modules/*/scripts/*.js'
+				]
+			},
 			templates:
-			[
-				'templates/*/scripts/*.js'
-			],
+			{
+				src:
+				[
+					'templates/*/scripts/*.js'
+				]
+			},
 			options:
 			{
 				jshintrc: '.jshintrc'
@@ -32,18 +45,34 @@ module.exports = function (grunt)
 		jsonlint:
 		{
 			dependency:
-			[
-				'composer.json',
-				'package.json'
-			],
+			{
+				src:
+				[
+					'composer.json',
+					'package.json'
+				]
+			},
+			languages:
+			{
+				src:
+				[
+					'languages/*.json'
+				]
+			},
 			modules:
-			[
-				'modules/web_app/files/manifest.json'
-			],
+			{
+				src:
+				[
+					'modules/**/*.json'
+				]
+			},
 			provider:
-			[
-				'tests/provider/*.json'
-			]
+			{
+				src:
+				[
+					'tests/provider/*.json'
+				]
+			}
 		},
 		csslint:
 		{
@@ -100,7 +129,7 @@ module.exports = function (grunt)
 			{
 				dir:
 				[
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php'
 				]
@@ -175,16 +204,13 @@ module.exports = function (grunt)
 		{
 			development:
 			{
-				options:
-				{
-					debug: true
-				}
 			},
 			integration:
 			{
 				options:
 				{
-					coverageClover: 'clover.xml'
+					coverageClover: 'clover.xml',
+					coverageHtml: 'clover'
 				}
 			},
 			options:
@@ -230,83 +256,35 @@ module.exports = function (grunt)
 				]
 			}
 		},
-		lineending:
-		{
-			css:
-			{
-				src:
-				[
-					'styles/*.css',
-					'modules/*/styles/*.css',
-					'templates/*/styles/*.css'
-				],
-				expand: true
-			},
-			js:
-			{
-				src:
-				[
-					'scripts/*.js',
-					'modules/*/scripts/*.js',
-					'templates/*/scripts/*.js'
-				],
-				expand: true
-			},
-			phtml:
-			{
-				src:
-				[
-					'modules/**/*.phtml',
-					'templates/**/*.phtml'
-				],
-				expand: true
-			},
-			php:
-			{
-				src:
-				[
-					'*.php',
-					'includes/**/*.php',
-					'languages/*.php',
-					'modules/**/*.php',
-					'tests/**/*.php'
-				],
-				expand: true
-			},
-			options:
-			{
-				eol: 'crlf'
-			}
-		},
 		shell:
 		{
 			tocBase:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen && php vendor/redaxmedia/tocgen/cli.php styles .tocgen'
+				command: 'sh vendor/bin/tocgen.sh scripts .tocgen && sh vendor/bin/tocgen.sh styles .tocgen'
 			},
 			tocModules:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen'
+				command: 'sh vendor/bin/tocgen.sh modules .tocgen'
 			},
 			tocTemplates:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen'
+				command: 'sh vendor/bin/tocgen.sh templates .tocgen'
 			},
-			tocLintBase:
+			toclintBase:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php scripts .tocgen -l && php vendor/redaxmedia/tocgen/cli.php styles .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh scripts .tocgen -l && sh vendor/bin/tocgen.sh styles .tocgen -l'
 			},
-			tocLintModules:
+			toclintModules:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php modules .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh modules .tocgen -l'
 			},
-			tocLintTemplates:
+			toclintTemplates:
 			{
-				command: 'php vendor/redaxmedia/tocgen/cli.php templates .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
 			},
 			apiBase:
 			{
-				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source config.php --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source Config.php --source includes --destination ../redaxscript-api/base'
 			},
 			apiTests:
 			{
@@ -318,7 +296,7 @@ module.exports = function (grunt)
 			},
 			pullUpstream:
 			{
-				command: 'git pull upstream master'
+				command: 'git pull upstream master && git pull upstream develop'
 			},
 			removeUpstream:
 			{
@@ -334,16 +312,464 @@ module.exports = function (grunt)
 		{
 			ruleset:
 			{
-				files:
+				src:
 				[
-					{
-						src:
-						[
-							'ruleset.xml'
-						],
-						dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/'
-					}
-				]
+					'ruleset.xml'
+				],
+				dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/',
+				expand: true
+			},
+			distFull:
+			{
+				src:
+				[
+					'<%=compress.distFull.src%>'
+				],
+				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_full',
+				expand: true
+			},
+			distLite:
+			{
+				src:
+				[
+					'<%=compress.distLite.src%>'
+				],
+				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
+				expand: true
+			}
+		},
+		compress:
+		{
+			distFull:
+			{
+				src:
+				[
+					'includes/**',
+					'languages/**',
+					'modules/**',
+					'templates/**',
+					'Config.php',
+					'index.php',
+					'install.php',
+					'README.md'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_full.zip'
+				}
+			},
+			distLite:
+			{
+				src:
+				[
+					'includes/**',
+					'languages/en.json',
+					'modules/call_home/**',
+					'templates/admin/**',
+					'templates/default/**',
+					'templates/install/**',
+					'Config.php',
+					'index.php',
+					'install.php',
+					'README.md'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
+				}
+			},
+			distLanguages:
+			{
+				src:
+				[
+					'languages/*.json',
+				],
+				dest: '../redaxscript-dist/files',
+				ext: '.zip',
+				expand: true
+			},
+			distModulesAnalytics:
+			{
+				src:
+				[
+					'modules/analytics/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/analytics.zip'
+				}
+			},
+			distModulesArchive:
+			{
+				src:
+				[
+					'modules/archive/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/archive.zip'
+				}
+			},
+			distModulesCallHome:
+			{
+				src:
+				[
+					'modules/call_home/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/call_home.zip'
+				}
+			},
+			distModulesContact:
+			{
+				src:
+				[
+					'modules/contact/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/contact.zip'
+				}
+			},
+			distModulesDawanda:
+			{
+				src:
+				[
+					'modules/dawanda/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/dawanda.zip'
+				}
+			},
+			distModulesDBBackup:
+			{
+				src:
+				[
+					'modules/db_backup/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/db_backup.zip'
+				}
+			},
+			distModulesDebug:
+			{
+				src:
+				[
+					'modules/debug/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/debug.zip'
+				}
+			},
+			distModulesDisqus:
+			{
+				src:
+				[
+					'modules/disqus/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/disqus.zip'
+				}
+			},
+			distModulesEditor:
+			{
+				src:
+				[
+					'modules/editor/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/editor.zip'
+				}
+			},
+			distModulesFBGroup:
+			{
+				src:
+				[
+					'modules/fb_group/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/fb_group.zip'
+				}
+			},
+			distModulesFeedGenerator:
+			{
+				src:
+				[
+					'modules/feed_generator/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/feed_generator.zip'
+				}
+			},
+			distModulesFeedReader:
+			{
+				src:
+				[
+					'modules/feed_reader/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/feed_reader.zip'
+				}
+			},
+			distModulesFileManager:
+			{
+				src:
+				[
+					'modules/file_manager/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/file_manager.zip'
+				}
+			},
+			distModulesGallery:
+			{
+				src:
+				[
+					'modules/gallery/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/gallery.zip'
+				}
+			},
+			distModulesGetFile:
+			{
+				src:
+				[
+					'modules/get_file/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/get_file.zip'
+				}
+			},
+			distModulesGithubTracker:
+			{
+				src:
+				[
+					'modules/github_tracker/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/github_tracker.zip'
+				}
+			},
+			distModulesLazyLoad:
+			{
+				src:
+				[
+					'modules/lazy_load/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/lazy_load.zip'
+				}
+			},
+			distModulesMaps:
+			{
+				src:
+				[
+					'modules/maps/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/maps.zip'
+				}
+			},
+			distModulesMultiLanguage:
+			{
+				src:
+				[
+					'modules/multi_language/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/multi_language.zip'
+				}
+			},
+			distModulesPreview:
+			{
+				src:
+				[
+					'modules/preview/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/preview.zip'
+				}
+			},
+			distModulesQunit:
+			{
+				src:
+				[
+					'modules/qunit/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/qunit.zip'
+				}
+			},
+			distModulesRecentView:
+			{
+				src:
+				[
+					'modules/recent_view/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/recent_view.zip'
+				}
+			},
+			distModulesShareThis:
+			{
+				src:
+				[
+					'modules/share_this/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/share_this.zip'
+				}
+			},
+			distModulesSitemap:
+			{
+				src:
+				[
+					'modules/sitemap/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/sitemap.zip'
+				}
+			},
+			distModulesSitemapXML:
+			{
+				src:
+				[
+					'modules/sitemap_xml/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/sitemap_xml.zip'
+				}
+			},
+			distModulesValidator:
+			{
+				src:
+				[
+					'modules/validator/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/validator.zip'
+				}
+			},
+			distModulesWebApp:
+			{
+				src:
+				[
+					'modules/web_app/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/web_app.zip'
+				}
+			},
+			distTemplatesCandy:
+			{
+				src:
+				[
+					'templates/candy/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/candy.zip'
+				}
+			},
+			distTemplatesScratch:
+			{
+				src:
+				[
+					'templates/scratch/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/scratch.zip'
+				}
+			},
+			distTemplatesTwitter:
+			{
+				src:
+				[
+					'templates/twitter/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/twitter.zip'
+				}
+			},
+			distTemplatesWide:
+			{
+				src:
+				[
+					'templates/wide/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/wide.zip'
+				}
+			},
+			distTemplatesZepto:
+			{
+				src:
+				[
+					'templates/zepto/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/templates/zepto.zip'
+				}
+			},
+			distSQL:
+			{
+				src:
+				[
+					'../redaxscript-sql/<%= version %>/*.sql'
+				],
+				dest: '../redaxscript-dist/files/sql',
+				expand: true
+			},
+			distMediaLogos:
+			{
+				src:
+				[
+					'../redaxscript-media/logos/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/media/logos.zip'
+				}
+			},
+			distMediaScreenshots:
+			{
+				src:
+				[
+					'../redaxscript-media/screenshots/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/media/screenshots.zip'
+				}
 			}
 		},
 		img:
@@ -354,7 +780,7 @@ module.exports = function (grunt)
 				[
 					'modules/*/images/*.gif',
 					'modules/*/images/*.jpg',
-					'modules/*/images/*.png',
+					'modules/*/images/*.png'
 				]
 			},
 			templates:
@@ -433,6 +859,7 @@ module.exports = function (grunt)
 	/* load tasks */
 
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -441,7 +868,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jsonlint');
-	grunt.loadNpmTasks('grunt-lineending');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
@@ -457,8 +883,7 @@ module.exports = function (grunt)
 		'csslint',
 		'htmlhint',
 		'phplint',
-		'toclint',
-		'phpunit:integration'
+		'toclint'
 	]);
 	grunt.registerTask('phplint',
 	[
@@ -467,9 +892,9 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('toclint',
 	[
-		'shell:tocLintBase',
-		'shell:tocLintModules',
-		'shell:tocLintTemplates'
+		'shell:toclintBase',
+		'shell:toclintModules',
+		'shell:toclintTemplates'
 	]);
 	grunt.registerTask('toc',
 	[
@@ -481,10 +906,6 @@ module.exports = function (grunt)
 	[
 		'shell:apiBase',
 		'shell:apiTests'
-	]);
-	grunt.registerTask('eol',
-	[
-		'lineending'
 	]);
 	grunt.registerTask('sync',
 	[
@@ -500,5 +921,16 @@ module.exports = function (grunt)
 		'img',
 		'smushit',
 		'svgmin'
+	]);
+	grunt.registerTask('integration',
+	[
+		'default',
+		'phpunit:integration'
+	]);
+	grunt.registerTask('dist',
+	[
+		'copy:distFull',
+		'copy:distLite',
+		'compress'
 	]);
 };

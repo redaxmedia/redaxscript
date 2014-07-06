@@ -1,0 +1,10 @@
+{
+	"gallery":
+	{
+		"image_artist": "Tác giả bức ảnh",
+		"image_description": "Mô tả bức ảnh",
+		"image_next": "Ảnh kế tiếp",
+		"image_previous": "Ảnh liền trước",
+		"divider": " / "
+	}
+}

@@ -97,4 +97,3 @@ function hook($input = '')
 	}
 	return $output;
 }
-?>

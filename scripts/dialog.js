@@ -64,7 +64,7 @@
 
 			if (options.type === 'prompt')
 			{
-				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.classString.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialog.box);
+				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.className.fieldPrompt + (r.flags.backend ? options.suffix : '')).appendTo(dialog.box);
 			}
 
 			/* ok button */
@@ -142,12 +142,12 @@
 		{
 			/* create dialog elements */
 
-			dialog.overlay = $('<div>').addClass(options.classString.dialogOverlay + options.suffix);
-			dialog.container = $('<div>').addClass(options.classString.dialog + options.suffix);
-			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.classString.dialogTitle + options.suffix);
-			dialog.box = $('<div>').addClass(options.classString.dialogBox + options.suffix);
-			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.classString.buttonOk + options.suffix);
-			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.classString.buttonCancel + options.suffix);
+			dialog.overlay = $('<div>').addClass(options.className.dialogOverlay + options.suffix);
+			dialog.container = $('<div>').addClass(options.className.dialog + options.suffix);
+			dialog.title = $('<h3>' + l[options.type] + '</h3>').addClass(options.className.dialogTitle + options.suffix);
+			dialog.box = $('<div>').addClass(options.className.dialogBox + options.suffix);
+			dialog.buttonOk = $('<a>' + l.ok + '</a>').addClass(options.className.buttonOk + options.suffix);
+			dialog.buttonCancel = $('<a>' + l.cancel + '</a>').addClass(options.className.buttonCancel + options.suffix);
 
 			/* open and listen */
 

@@ -142,36 +142,3 @@ function minify($type = '', $input = '')
 	$output = trim($output);
 	return $output;
 }
-
-/**
- * entity
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Replace
- * @author Henry Ruhs
- *
- * @param string $input
- * @return string
- */
-
-function entity($input = '')
-{
-	/* if mb convert econding */
-
-	if (function_exists('mb_convert_encoding'))
-	{
-		$output = mb_convert_encoding($input, s('charset'), 'utf-8, latin1');
-	}
-
-	/* else fallback */
-
-	else
-	{
-		$output = $input;
-	}
-	return $output;
-}
-?>

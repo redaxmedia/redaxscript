@@ -63,7 +63,7 @@
 		{
 			options:
 			{
-				classString:
+				className:
 				{
 					dialog: 'js_dialog dialog dialog',
 					dialogTitle: 'js_title_dialog title_dialog title_dialog',

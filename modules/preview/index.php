@@ -36,12 +36,12 @@ function preview_render_start()
 	if (FIRST_PARAMETER == 'preview')
 	{
 		define('CENTER_BREAK', 1);
-		define('TITLE', l('preview_preview'));
+		define('TITLE', l('preview', 'preview'));
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::instance();
-		$registry->set('title', l('preview_preview'));
+		$registry = Redaxscript_Registry::getInstance();
+		$registry->set('title', l('preview', 'preview'));
 	}
 }
 
@@ -99,4 +99,4 @@ function preview_center_start()
 		echo $output;
 	}
 }
-?>
+

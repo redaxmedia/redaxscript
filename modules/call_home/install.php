@@ -13,7 +13,7 @@
 
 function call_home_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provide version and news updates\', \'2.1.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'call_home\', \'Redaxmedia\', \'Provide version and news updates\', \'2.2.0\', 1, 1)';
 	mysql_query($query);
 }
 
@@ -33,4 +33,4 @@ function call_home_uninstall()
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'call_home\' LIMIT 1';
 	mysql_query($query);
 }
-?>
+

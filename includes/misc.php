@@ -46,4 +46,3 @@ function b($name = '')
 	$output = $b[$name];
 	return $output;
 }
-?>

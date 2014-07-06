@@ -178,4 +178,3 @@ function head()
 	echo $output;
 	hook(__FUNCTION__ . '_end');
 }
-?>

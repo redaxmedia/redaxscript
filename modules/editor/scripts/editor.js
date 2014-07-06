@@ -46,13 +46,15 @@
 		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.toolbar = options.toolbar.backend;
-			options.xhtml = options.newline.backend;
+			options.xhtml = options.xhtml.backend;
+			options.breakOnEnter = options.breakOnEnter.backend;
 			options.newline = options.newline.backend;
 		}
 		else
 		{
 			options.toolbar = options.toolbar.frontend;
-			options.xhtml = options.toolbar.frontend;
+			options.xhtml = options.xhtml.frontend;
+			options.breakOnEnter = options.breakOnEnter.frontend;
 			options.newline = options.newline.frontend;
 		}
 
@@ -71,7 +73,7 @@
 			{
 				/* append toolbar */
 
-				editor.toolbar = $('<div unselectable="on">').addClass(options.classString.editorToolbar).appendTo(editor.container);
+				editor.toolbar = $('<div unselectable="on">').addClass(options.className.editorToolbar).appendTo(editor.container);
 
 				/* append controls */
 
@@ -85,14 +87,14 @@
 
 					if (name === 'toggle')
 					{
-						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + options.classString.editorSourceCode).appendTo(editor.toolbar);
+						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + options.className.editorSourceCode).appendTo(editor.toolbar);
 					}
 
 					/* append several controls */
 
 					else if (typeof data === 'object')
 					{
-						control = $('<a title="' + data.title + '"></a>').addClass(options.classString.editorControl + ' ' + name).appendTo(editor.toolbar);
+						control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + name).appendTo(editor.toolbar);
 					}
 
 					/* handle control events */
@@ -130,34 +132,37 @@
 			{
 				/* append preview */
 
-				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.classString.editorPreview).appendTo(editor.container);
+				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.className.editorPreview).appendTo(editor.container);
 
 				/* insert break on enter */
 
-				editor.preview.on('keydown', function (event)
+				if (options.breakOnEnter)
 				{
-					if (event.which === 13)
+					editor.preview.on('keydown', function (event)
 					{
-						if (r.constants.MY_ENGINE === 'gecko')
+						if (event.which === 13)
 						{
-							document.execCommand('insertBrOnReturn', false, false);
+							if (r.constants.MY_ENGINE === 'gecko')
+							{
+								document.execCommand('insertBrOnReturn', false, false);
+							}
+							else if (r.constants.MY_ENGINE === 'trident')
+							{
+								editor.insertHTML('<br />');
+								event.preventDefault();
+							}
+							else if (r.constants.MY_ENGINE === 'webkit')
+							{
+								editor.insertHTML('<br /><br />');
+								event.preventDefault();
+							}
 						}
-						else if (r.constants.MY_ENGINE === 'trident')
-						{
-							editor.insertHTML('<br />');
-							event.preventDefault();
-						}
-						else if (r.constants.MY_ENGINE === 'webkit')
-						{
-							editor.insertHTML('<br /><br />');
-							event.preventDefault();
-						}
-					}
-				})
+					});
+				}
 
 				/* post and validate on keyup */
 
-				.on('keyup', function ()
+				editor.preview.on('keyup', function ()
 				{
 					editor.post();
 					editor.validate();
@@ -181,7 +186,7 @@
 					{
 						$.fn.dialog(
 						{
-							message: l.editor_browser_support_no + l.point
+							message: l.editor.browser_support_no + l.point
 						});
 					}
 				}
@@ -276,15 +281,15 @@
 				{
 					editor.mode = 0;
 					editor.preview.html(editor.convertToEntity()).focus();
-					editor.controlToggle.attr('title', l.editor_source_code);
+					editor.controlToggle.attr('title', l.editor.source_code);
 				}
 				else
 				{
 					editor.mode = 1;
 					editor.textarea.val(editor.convertToHTML()).focus();
-					editor.controlToggle.attr('title', l.editor_wysiwyg);
+					editor.controlToggle.attr('title', l.editor.wysiwyg);
 				}
-				editor.controlToggle.toggleClass(options.classString.editorSourceCode + ' ' + options.classString.editorWysiwyg).nextAll(options.element.editorControl).toggle();
+				editor.controlToggle.toggleClass(options.className.editorSourceCode + ' ' + options.className.editorWysiwyg).nextAll(options.element.editorControl).toggle();
 				editor.textarea.add(editor.preview).toggle();
 				editor.validate();
 			};
@@ -320,7 +325,7 @@
 
 					$.fn.dialog(
 					{
-						message: l.editor_select_text_first + l.point
+						message: l.editor.select_text_first + l.point
 					});
 				}
 			};
@@ -400,7 +405,7 @@
 				/* create editor elements */
 
 				editor.textarea.hide();
-				editor.container = $('<div>').addClass(options.classString.editor).insertBefore(editor.textarea);
+				editor.container = $('<div>').addClass(options.className.editor).insertBefore(editor.textarea);
 
 				/* create toolbar */
 

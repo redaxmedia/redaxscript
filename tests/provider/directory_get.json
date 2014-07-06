@@ -1,49 +1,33 @@
 [
 	[
-		[
-			"",
-			"root/languages"
-		],
+		"root/languages",
 		"",
 		[
-			"de.php",
-			"en.php",
-			"misc.php"
+			"de.json",
+			"en.json"
 		]
-	 ],
-	 [
+	],
+	[
+		"root/languages",
+		"de.json",
 		[
-			"",
-			"root/languages"
-		],
-		"misc.php",
-		[
-			"de.php",
-			"en.php"
+			"en.json"
 		]
-	 ],
-	 [
+	],
+	[
+		"root/languages",
+		"en.json",
 		[
-			"",
-			"root/languages"
-		],
-		"de.php",
-		[
-			"en.php",
-			"misc.php"
+			"de.json"
 		]
-	 ],
-	 [
+	],
+	[
+		"root/languages",
 		[
-			"",
-			"root/languages"
+			"en.json",
+			"de.json"
 		],
 		[
-			"en.php",
-			"de.php"
-		],
-		[
-			"misc.php"
 		]
-	 ]
+	]
 ]
