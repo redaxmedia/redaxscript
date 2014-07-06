@@ -37,12 +37,12 @@ class Redaxscript_Mailer
 	protected $_subject;
 
 	/**
-	 * array of body items
+	 * body of the email
 	 *
-	 * @var array
+	 * @var string|array
 	 */
 
-	protected $_bodyArray;
+	protected $_body;
 
 	/**
 	 * array of attachments
@@ -92,16 +92,16 @@ class Redaxscript_Mailer
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
-	 * @param array $bodyArray array of body items
+	 * @param array $body body of the email
 	 * @param array $attachmentArray array of attachments
 	 */
 
-	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $bodyArray = array(), $attachmentArray = array())
+	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
 		$this->_subject = $subject;
-		$this->_bodyArray = $bodyArray;
+		$this->_body = $body;
 		$this->_attachmentArray = $attachmentArray;
 		$this->init();
 	}
@@ -178,26 +178,31 @@ class Redaxscript_Mailer
 
 	protected function _buildBodyString()
 	{
-		/* collect body string */
-
-		foreach ($this->_bodyArray as $key => $value)
+		if (is_array($this->_body))
 		{
-			if ($key && $value)
+			foreach ($this->_body as $key => $value)
 			{
-				/* if numeric key */
-
-				if (is_numeric($key))
+				if ($key && $value)
 				{
-					$this->_bodyString .= $value;
-				}
+					/* if numeric key */
 
-				/* else format parts */
+					if (is_numeric($key))
+					{
+						$this->_bodyString .= $value;
+					}
 
-				else
-				{
-					$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
+					/* else format parts */
+
+					else
+					{
+						$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
+					}
 				}
 			}
+		}
+		else
+		{
+			$this->_bodyString = $this->_body;
 		}
 	}
 

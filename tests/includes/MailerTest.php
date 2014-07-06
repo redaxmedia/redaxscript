@@ -45,12 +45,12 @@ class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 	protected $_subject;
 
 	/**
-	 * array of body items
+	 * body of the email
 	 *
-	 * @var array
+	 * @var string|array
 	 */
 
-	protected $_bodyArray;
+	protected $_body;
 
 	/**
 	 * array of attachments
@@ -71,7 +71,7 @@ class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 		/* client */
 
 		$this->_guzzel = new \Guzzle\Http\Client('http://127.0.0.1:1080');
-		$this->mailcatcher->delete('/messages')->send();
+		//$this->_guzzel->delete('/messages')->send();
 
 		/* data */
 
@@ -82,7 +82,7 @@ class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 			'From' => 'from@redaxscript.com'
 		);
 		$this->_subject = 'Test';
-		$this->_bodyArray = array(
+		$this->_body = array(
 			'Test' => 'test'
 		);
 	}
@@ -95,7 +95,7 @@ class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 
 	public function testMessage()
 	{
-		$mailer = new Redaxscript_Mailer($this->_toArray, $this->_fromArray, $this->_subject, $this->_bodyArray);
+		$mailer = new Redaxscript_Mailer($this->_toArray, $this->_fromArray, $this->_subject, $this->_body);
 		$mailer->send();
 	}
 }
