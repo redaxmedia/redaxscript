@@ -3,14 +3,14 @@
 /**
  * parent class to store database config
  *
- * @since 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Config
  * @author Henry Ruhs
  */
 
-class Redaxscript_Config
+class Redaxscript_Config extends Redaxscript_Singleton
 {
 	/**
 	 * database config
@@ -20,6 +20,7 @@ class Redaxscript_Config
 
 	private static $_config = array(
 		// [config]
+		'type' => '',
 		'host' => '',
 		'name' => '',
 		'user' => '',
@@ -54,5 +55,19 @@ class Redaxscript_Config
 			$output = self::$_config[$key];
 		}
 		return $output;
+	}
+
+	/**
+	 * set item to config
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function set($key = null, $value = null)
+	{
+		self::$_config[$key] = $value;
 	}
 }

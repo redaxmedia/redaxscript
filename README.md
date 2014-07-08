@@ -6,13 +6,13 @@ Redaxscript
 
 > Redaxscript is an ultra lightweight CMS, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
-[![Build Status](https://travis-ci.org/redaxmedia/redaxscript.png?branch=master)](https://travis-ci.org/redaxmedia/redaxscript)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/redaxmedia/redaxscript/badges/quality-score.png?s=ba169d3afcf07f694959a6c2c5b0297be03ce752)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript/)
-[![Coverage Status](https://coveralls.io/repos/redaxmedia/redaxscript/badge.png)](https://coveralls.io/r/redaxmedia/redaxscript)
-[![Dependency Status](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314/badge.png)](https://www.versioneye.com/user/projects/5310e5a6ec13756c3e000314)
-[![Dependency Status](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b/badge.png)](https://www.versioneye.com/user/projects/5310e5aaec13756c3e00031b)
-[![Latest Stable Version](https://poser.pugx.org/redaxmedia/redaxscript/v/stable.png)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![License](https://poser.pugx.org/redaxmedia/redaxscript/license.png)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![Build Status](http://img.shields.io/travis/redaxmedia/redaxscript.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
+[![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg?style=flat)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript/)
+[![Coverage Status](http://img.shields.io/coveralls/redaxmedia/redaxscript.svg?style=flat)](https://coveralls.io/r/redaxmedia/redaxscript)
+[![Dependency Status](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7)
+[![Dependency Status](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c)
+[![Latest Stable Version](http://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![License](http://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 
 
 Online demo

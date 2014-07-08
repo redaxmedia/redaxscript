@@ -38,14 +38,16 @@ class Redaxscript_Breadcrumb
 	protected static $_breadcrumbArray = array();
 
 	/**
-	 * array of classes used to style the breadcrumb
+	 * options of the breadcrumb
 	 *
 	 * @var array
 	 */
 
-	protected $_classes = array(
-		'list' => 'list_breadcrumb',
-		'divider' => 'divider'
+	protected $_options = array(
+		'className' => array(
+			'list' => 'list-breadcrumb',
+			'divider' => 'item-divider'
+		)
 	);
 
 	/**
@@ -54,12 +56,18 @@ class Redaxscript_Breadcrumb
 	 * @since 2.1.0
 	 *
 	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript_Language $language instance of the language class
+	 * @param array $options options of the breadcrumb
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language)
+	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
+		if (is_array($options))
+		{
+			$this->_options = array_unique(array_merge($this->_options, $options));
+		}
 		$this->init();
 	}
 
@@ -118,7 +126,7 @@ class Redaxscript_Breadcrumb
 
 				if ($route)
 				{
-					$output .= anchor_element('internal', '', '', $title, $route);
+					$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $route . '" title="' . $title . '">' . $title . '</a>';
 				}
 
 				/* else plain text */
@@ -133,7 +141,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_classes['divider'] . '">' . s('divider') . '</li>';
+					$output .= '<li class="' . $this->_options['className']['divider'] . '">' . Redaxscript_Db::getSettings('divider') . '</li>';
 				}
 			}
 		}
@@ -142,7 +150,7 @@ class Redaxscript_Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="' . $this->_classes['list'] . '">' . $output . '</ul>';
+			$output = '<ul class="' . $this->_options['className']['list'] . '">' . $output . '</ul>';
 		}
 		$output .= hook(__FUNCTION__ . '_end');
 		return $output;
@@ -262,7 +270,7 @@ class Redaxscript_Breadcrumb
 	{
 		/* join first title */
 
-		self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('firstTable'), 'alias', $this->_registry->get('firstParameter'));
+		self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
 
 		/* set route if not end */
 
@@ -276,7 +284,7 @@ class Redaxscript_Breadcrumb
 		if ($this->_registry->get('secondTable'))
 		{
 			$key++;
-			self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('secondTable'), 'alias', $this->_registry->get('secondParameter'));
+			self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
 
 			/* set route if not end */
 
@@ -290,7 +298,7 @@ class Redaxscript_Breadcrumb
 			if ($this->_registry->get('thirdTable'))
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = retrieve('title', $this->_registry->get('thirdTable'), 'alias', $this->_registry->get('thirdParameter'));
+				self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
 			}
 		}
 	}

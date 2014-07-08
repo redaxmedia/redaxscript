@@ -21,23 +21,12 @@ class Redaxscript_Request
 	protected static $_values = array();
 
 	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 */
-
-	private function __construct()
-	{
-		$this->init();
-	}
-
-	/**
 	 * init the class
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function init()
+	public static function init()
 	{
 		self::$_values = $GLOBALS;
 	}
@@ -50,7 +39,7 @@ class Redaxscript_Request
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public static function get($key = null, $index = null)

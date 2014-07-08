@@ -14,8 +14,6 @@ include_once('tests/stubs.php');
 class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -24,6 +22,13 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+	/**
 	 * setUp
 	 *
 	 * @since 2.1.0
@@ -31,7 +36,8 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::instance();
+		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_language = Redaxscript_Language::getInstance();
 	}
 
 	/**
@@ -67,7 +73,13 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$parser = new Redaxscript_Parser($this->_registry, $text, $route);
+		$options = array(
+			'className' => array(
+				'break' => 'link-read-more',
+				'code' => 'box-code'
+			)
+		);
+		$parser = new Redaxscript_Parser($this->_registry, $this->_language, $text, $route, $options);
 
 		/* result */
 

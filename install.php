@@ -5,9 +5,6 @@ error_reporting(0);
 
 include_once('includes/check.php');
 include_once('includes/clean.php');
-include_once('includes/Detection.php');
-include_once('includes/Detection/Language.php');
-include_once('includes/Detection/Template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/loader.php');
@@ -15,13 +12,8 @@ include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/password.php');
 include_once('includes/query.php');
-include_once('includes/Registry.php');
-include_once('includes/Request.php');
 include_once('includes/replace.php');
 include_once('includes/startup.php');
-
-/* vendor */
-
 include_once('vendor/j4mie/idiorm/idiorm.php');
 
 /* install post */
@@ -31,12 +23,11 @@ install_post();
 /* write database config */
 
 write_config();
-include_once('config.php');
 
 /* bootstrap */
 
-startup();
 include_once('includes/Bootstrap.php');
+startup();
 
 /* define meta */
 
@@ -45,7 +36,7 @@ define('ROBOTS', 'none');
 
 /* registry object */
 
-$registry = Redaxscript_Registry::instance();
+$registry = Redaxscript_Registry::getInstance();
 $registry->set('title', l('installation'));
 
 /* call loader else render template */
@@ -369,9 +360,9 @@ function install_post()
 function install_notification()
 {
 	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
-	if (is_writable('config.php') == '')
+	if (is_writable('Config.php') == '')
 	{
-		$error = l('file_permission_grant') . l('colon') . ' config.php';
+		$error = l('file_permission_grant') . l('colon') . ' Config.php';
 	}
 	else if (DB_CONNECTED == 0)
 	{
@@ -480,6 +471,7 @@ function write_config()
 
 		$pattern = '/\/\/\s+\[config].*?\/\/\s+\[\/config]/s';
 		$replacement = '// [config]
+		\'type\' => \'mysql\',
 		\'host\' => \'' . $d_host . '\',
 		\'name\' => \'' . $d_name . '\',
 		\'user\' => \'' . $d_user . '\',
@@ -490,9 +482,9 @@ function write_config()
 
 		/* process contents */
 
-		$content = file_get_contents('config.php');
+		$content = file_get_contents('Config.php');
 		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('config.php', $content);
+		file_put_contents('Config.php', $content);
 	}
 }
 

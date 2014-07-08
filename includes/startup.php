@@ -36,18 +36,14 @@ function startup()
 	define('ROOT', get_root());
 	define('TOKEN', get_token());
 
-	/* config object */
-
-	$config = New Redaxscript_Config();
-
 	/* prefix and salt */
 
-	define('PREFIX', $config->get('prefix'));
-	define('SALT', $config->get('salt'));
+	define('PREFIX', Redaxscript_Config::get('prefix'));
+	define('SALT', Redaxscript_Config::get('salt'));
 
 	/* database connect */
 
-	database_connect($config->get('host'), $config->get('name'), $config->get('user'), $config->get('password'));
+	database_connect(Redaxscript_Config::get('host'), Redaxscript_Config::get('name'), Redaxscript_Config::get('user'), Redaxscript_Config::get('password'));
 
 	/* define session */
 
@@ -331,24 +327,6 @@ function startup()
 	{
 		$_SESSION[ROOT . '/update'] = '';
 	}
-
-	/* registry and detection object */
-
-	$registry = Redaxscript_Registry::instance();
-	$registry->init(array(
-		'root' => ROOT,
-		'lastTable' => LAST_TABLE,
-		'lastId' => LAST_ID,
-		'language' => LANGUAGE,
-		'template' => TEMPLATE
-	));
-	$detectionLanguage = New Redaxscript_Detection_Language($registry);
-	$detectionTemplate = New Redaxscript_Detection_Template($registry);
-
-	/* define language and template */
-
-	define('LANGUAGE', $detectionLanguage->getOutput());
-	define('TEMPLATE', $detectionTemplate->getOutput());
 }
 
 /**

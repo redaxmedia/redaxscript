@@ -13,6 +13,17 @@
 class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 {
 	/**
+	 * setUp
+	 *
+	 * @since 2.2.0
+	 */
+
+	protected function setUp()
+	{
+		Redaxscript_Request::init();
+	}
+
+	/**
 	 * testGetAll
 	 *
 	 * @since 2.2.0

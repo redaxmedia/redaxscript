@@ -14,8 +14,6 @@
 class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -31,7 +29,7 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::instance();
+		$this->_registry = Redaxscript_Registry::getInstance();
 		$this->_registry->init();
 	}
 
@@ -92,26 +90,5 @@ class Redaxscript_Registry_Test extends PHPUnit_Framework_TestCase
 		/* compare */
 
 		$this->assertEquals(null, $result);
-	}
-
-	/**
-	 * testReset
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function testReset()
-	{
-		/* setup */
-
-		$this->_registry->reset();
-
-		/* result */
-
-		$result = $this->_registry->instance();
-
-		/* compare */
-
-		$this->assertInstanceOf('Redaxscript_Registry', $result);
 	}
 }

@@ -3,14 +3,10 @@ error_reporting(0);
 
 /* include core files */
 
-include_once('config.php');
 include_once('includes/center.php');
 include_once('includes/check.php');
 include_once('includes/clean.php');
 include_once('includes/contents.php');
-include_once('includes/Detection.php');
-include_once('includes/Detection/Language.php');
-include_once('includes/Detection/Template.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
@@ -19,20 +15,15 @@ include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
-include_once('includes/Registry.php');
-include_once('includes/Request.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
-
-/* vendor */
-
 include_once('vendor/j4mie/idiorm/idiorm.php');
 
 /* bootstrap */
 
-startup();
 include_once('includes/Bootstrap.php');
+startup();
 
 /* include files as needed */
 
@@ -121,7 +112,7 @@ if ($modules_include)
 {
 	/* language object */
 
-	$language = Redaxscript_Language::instance();
+	$language = Redaxscript_Language::getInstance();
 
 	/* process modules */
 
@@ -136,9 +127,9 @@ if ($modules_include)
 
 		/* config */
 
-		if (file_exists('modules/' . $value . '/config.php'))
+		if (file_exists('modules/' . $value . '/Config.php'))
 		{
-			include_once('modules/' . $value . '/config.php');
+			include_once('modules/' . $value . '/Config.php');
 		}
 
 		/* index */

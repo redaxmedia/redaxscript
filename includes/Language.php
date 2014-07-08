@@ -10,16 +10,8 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Language
+class Redaxscript_Language extends Redaxscript_Singleton
 {
-	/**
-	 * instance of the class
-	 *
-	 * @var object
-	 */
-
-	protected static $_instance = null;
-
 	/**
 	 * array of language values
 	 *
@@ -27,16 +19,6 @@ class Redaxscript_Language
 	 */
 
 	protected static $_values = array();
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function __construct()
-	{
-	}
 
 	/**
 	 * init the class
@@ -64,7 +46,7 @@ class Redaxscript_Language
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 
 	public static function get($key = null, $index = null)
@@ -96,7 +78,7 @@ class Redaxscript_Language
 
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding($values[$key], s('charset'), 'utf-8, latin1');
+				$output = mb_convert_encoding($values[$key], Redaxscript_Db::getSettings('charset'), 'utf-8, latin1');
 			}
 		}
 		return $output;
@@ -112,9 +94,13 @@ class Redaxscript_Language
 
 	public static function load($json = null)
 	{
+		/* handle json */
+
 		if (!is_array($json))
 		{
-			$json = array($json);
+			$json = array(
+				$json
+			);
 		}
 
 		/* merge language files */
@@ -131,35 +117,5 @@ class Redaxscript_Language
 				}
 			}
 		}
-	}
-
-	/**
-	 * instance of the class
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return object
-	 */
-
-	public static function instance()
-	{
-		if (self::$_instance === null)
-		{
-			self::$_instance = new self;
-		}
-		return self::$_instance;
-	}
-
-	/**
-	 * reset the instance
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return object
-	 */
-
-	public static function reset()
-	{
-		self::$_instance = null;
 	}
 }

@@ -16,7 +16,7 @@ r.modules.liveReload =
 	startup: true,
 	options:
 	{
-		classString:
+		className:
 		{
 			liveReloadBox: 'box_live_reload'
 		},

@@ -129,7 +129,7 @@ module.exports = function (grunt)
 			{
 				dir:
 				[
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php'
 				]
@@ -204,16 +204,13 @@ module.exports = function (grunt)
 		{
 			development:
 			{
-				options:
-				{
-					debug: true
-				}
 			},
 			integration:
 			{
 				options:
 				{
-					coverageClover: 'clover.xml'
+					coverageClover: 'clover.xml',
+					coverageHtml: 'clover'
 				}
 			},
 			options:
@@ -287,7 +284,7 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source config.php --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source Config.php --source includes --destination ../redaxscript-api/base'
 			},
 			apiTests:
 			{
@@ -351,7 +348,7 @@ module.exports = function (grunt)
 					'languages/**',
 					'modules/**',
 					'templates/**',
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php',
 					'README.md'
@@ -371,7 +368,7 @@ module.exports = function (grunt)
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',
-					'config.php',
+					'Config.php',
 					'index.php',
 					'install.php',
 					'README.md'

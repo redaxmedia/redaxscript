@@ -4,7 +4,7 @@ include_once('tests/stubs.php');
 /**
  * Redaxscript Captcha Test
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
@@ -30,48 +30,27 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_language = Redaxscript_Language::instance();
+		$this->_language = Redaxscript_Language::getInstance();
 	}
 
 	/**
-	 * setUpBeforeClass
+	 * tearDown
 	 *
-	 * @since 2.1.0
+	 * @since 2.2.0
 	 */
 
-	public static function setUpBeforeClass()
+	protected function tearDown()
 	{
-		mt_srand(0);
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
-	 * providerCaptcha
+	 * testGetTask
 	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
+	 * @since 2.2.0
 	 */
 
-	public function providerCaptcha()
-	{
-		$contents = file_get_contents('tests/provider/captcha.json');
-		$output = json_decode($contents, true);
-		return $output;
-	}
-
-	/**
-	 * testCaptcha
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $expectTask
-	 * @param string $expectRaw
-	 * @param string $expectHash
-	 *
-	 * @dataProvider providerCaptcha
-	 */
-
-	public function testCaptcha($expectTask = null, $expectRaw = null, $expectHash = null)
+	public function testGetTask()
 	{
 		/* setup */
 
@@ -80,13 +59,73 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 		/* result */
 
 		$task = $captcha->getTask();
+
+		/* compare */
+
+		$this->assertTrue(is_string($task));
+	}
+
+	/**
+	 * testGetSolution
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetSolution()
+	{
+		/* setup */
+
+		$captcha = new Redaxscript_Captcha($this->_language);
+
+		/* result */
+
 		$raw = $captcha->getSolution('raw');
 		$hash = $captcha->getSolution('hash');
 
 		/* compare */
 
-		$this->assertEquals($expectTask, $task);
-		$this->assertEquals($expectRaw, $raw);
-		$this->assertEquals($expectHash, $hash);
+		$this->assertEquals($hash, sha1($raw));
+	}
+
+	/**
+	 * testPlus
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testPlus()
+	{
+		/* setup */
+
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+
+		/* result */
+
+		$result = new Redaxscript_Captcha($this->_language);
+
+		/* compare */
+
+		$this->assertTrue(is_object($result));
+	}
+
+	/**
+	 * testMinus
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testMinus()
+	{
+		/* setup */
+
+		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+
+		/* result */
+
+		$result = new Redaxscript_Captcha($this->_language);
+
+		/* compare */
+
+		$this->assertTrue(is_object($result));
 	}
 }

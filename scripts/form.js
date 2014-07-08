@@ -234,7 +234,7 @@
 						thatNative = that[0],
 						thatContenteditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
-						classString = 'js_note_error field_note note_error',
+						className = 'js_note_error field_note note_error',
 						validity = 'valid',
 						thatValue = '',
 						thatRequired = '',
@@ -283,7 +283,7 @@
 
 					if (validity === 'invalid')
 					{
-						that.addClass(classString).trigger('invalid');
+						that.addClass(className).trigger('invalid');
 						if (message && options.message)
 						{
 							thatLabel.addClass('label_message').attr('data-message', message);
@@ -294,7 +294,7 @@
 
 					else
 					{
-						that.removeClass(classString).trigger('valid');
+						that.removeClass(className).trigger('valid');
 						if (options.message)
 						{
 							thatLabel.removeClass('label_message').removeAttr('data-message');

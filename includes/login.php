@@ -26,8 +26,7 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
-		$language = Redaxscript_Language::instance();
-		$captcha = new Redaxscript_Captcha($language);
+		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
 	}
 
 	/* reminder question */

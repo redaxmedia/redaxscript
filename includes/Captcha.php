@@ -62,6 +62,8 @@ class Redaxscript_Captcha
 	 * constructor of the class
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param Redaxscript_Language $language instance of the language class
 	 */
 
 	public function __construct(Redaxscript_Language $language)
@@ -131,9 +133,11 @@ class Redaxscript_Captcha
 
 	protected function _getOperator()
 	{
+		$mode = Redaxscript_Db::getSettings('captcha');
+
 		/* switch captcha mode */
 
-		switch (s('captcha'))
+		switch ($mode)
 		{
 			case 2:
 				$output = 1;
@@ -174,6 +178,6 @@ class Redaxscript_Captcha
 		/* solution and task */
 
 		$this->_solution = $a + $b * $c;
-		$this->_task = $this->_language->get($a) . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b);
+		$this->_task = $this->_language->get($a, '_number') . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b, '_number');
 	}
 }

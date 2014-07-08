@@ -32,6 +32,8 @@ class Redaxscript_Detection
 	 * constructor of the class
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
 	public function __construct(Redaxscript_Registry $registry)

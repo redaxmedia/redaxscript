@@ -7,7 +7,7 @@
 		},
 		"hello<break> world",
 		"hello/world",
-		"hello<a>Read more</a>"
+		"hello<a href=\"hello/world\" class=\"link-read-more\" title=\"Read more\">Read more</a>"
 	],
 	[
 		{
@@ -20,20 +20,10 @@
 		"hello world"
 	],
 	[
-		{
-			"lastTable": "articles",
-			"fullRoute": "hello/world",
-			"firstParameter": "login"
-		},
-		"hello<break> world",
-		"hello/world",
-		"hello<a>Read more</a>"
-	],
-	[
 		"",
 		"hello <code>world</code>",
 		"",
-		"hello <code class=\"box_code\">world</code>"
+		"hello <code class=\"box-code\">world</code>"
 	],
 	[
 		"",

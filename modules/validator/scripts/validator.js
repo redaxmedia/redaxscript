@@ -68,13 +68,13 @@
 						/* collect output */
 
 						output += '<ul class="box_note note_' + type + '">';
-						output += '<li class="' + options.classString.validatorMessage + '">' + message + '</li>';
+						output += '<li class="' + options.className.validatorMessage + '">' + message + '</li>';
 
 						/* lines and columns */
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="' + options.classString.validatorDescription + '">' + l.validator.from + l.colon + ' ';
+							output += '<li class="' + options.className.validatorDescription + '">' + l.validator.from + l.colon + ' ';
 
 							/* first wording */
 
@@ -106,7 +106,7 @@
 
 				if (output)
 				{
-					$('<div>' + output + '</div>').addClass(options.classString.validatorBox).prependTo('body');
+					$('<div>' + output + '</div>').addClass(options.className.validatorBox).prependTo('body');
 				}
 			}
 		});

@@ -14,8 +14,6 @@ include_once('tests/stubs.php');
 class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * registry
-	 *
 	 * instance of the registry class
 	 *
 	 * @var object
@@ -31,7 +29,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::instance();
+		$this->_registry = Redaxscript_Registry::getInstance();
 	}
 
 	/**
@@ -117,5 +115,33 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals($expect, $result);
 	}
-}
 
+	/**
+	 * testDetectionTemplate
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $expect
+	 */
+
+	public function testDetectionQuery()
+	{
+		/* setup */
+
+		Redaxscript_Request::setQuery('l', 'en');
+		Redaxscript_Request::setQuery('t', 'default');
+		$this->_registry->init();
+		$detectionLanguage = New Redaxscript_Detection_Language($this->_registry);
+		$detectionTemplate = New Redaxscript_Detection_Template($this->_registry);
+
+		/* result */
+
+		$resultLanguage = $detectionLanguage->getOutput();
+		$resultTemplate = $detectionTemplate->getOutput();
+
+		/* compare */
+
+		$this->assertEquals('en', $resultLanguage);
+		$this->assertEquals('default', $resultTemplate);
+	}
+}
