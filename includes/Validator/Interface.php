@@ -12,12 +12,15 @@
 interface Redaxscript_Validator_Interface
 {
 
+	const VALIDATION_OK = 1;
+	const VALIDATION_FAIL = 0;
+
 	/**
-	 * checkes the validator
+	 * checks the validator
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return bool
+	 * @return integer
 	 */
 
 	public function validate();

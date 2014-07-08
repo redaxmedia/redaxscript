@@ -16,7 +16,7 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 	 * @var string
 	 */
 
-	private $_input;
+	private $_host;
 
 	/**
 	 * @var string
@@ -29,18 +29,18 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $input
-	 * @param string $type
+	 * @param string $host host may either be the IP address in dotted-quad notation or the host name
+	 * @param string $type type may be any one of: A, MX, NS, SOA, PTR, CNAME, AAAA, A6, SRV, NAPTR, TXT or ANY
 	 */
 
-	public function __construct($input = '', $type = '')
+	public function __construct($host = '', $type = '')
 	{
-		$this->_input = $input;
+		$this->_host = $host;
 		$this->_type = $type;
 	}
 
 	/**
-	 * checkes the validator
+	 * checks the validator
 	 *
 	 * @since 2.2.0
 	 *
@@ -51,20 +51,21 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 
 	public function validate()
 	{
-		if ($this->_input)
+		if ($this->_host)
 		{
-			if (function_exists('checkdnsrr') && checkdnsrr($this->_input, $this->_type) == '')
+			// Note: The checkdnsrr function is not implemented on the Windows platform
+			if (function_exists('checkdnsrr') && checkdnsrr($this->_host, $this->_type) === false)
 			{
-				$output = 0;
+				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 			}
 			else
 			{
-				$output = 1;
+				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			}
 		}
 		else
 		{
-			$output = 0;
+			$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 		}
 
 		return $output;
