@@ -87,12 +87,12 @@ class Redaxscript_Mailer
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.2.0
 	 *
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
-	 * @param array $body body of the email
+	 * @param string|array $body body of the email
 	 * @param array $attachmentArray array of attachments
 	 */
 
@@ -232,8 +232,8 @@ class Redaxscript_Mailer
 			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
 				$fileContents = chunk_split(base64_encode($fileContents));
-				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . TOKEN . PHP_EOL;
+				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . uniqid() . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= '--' . uniqid() . PHP_EOL;
 
 				/* integrate body string */
 
@@ -242,7 +242,7 @@ class Redaxscript_Mailer
 					$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
-					$this->_headerString .= '--' . TOKEN . PHP_EOL;
+					$this->_headerString .= '--' . uniqid() . PHP_EOL;
 
 					/* reset body string */
 
@@ -252,7 +252,7 @@ class Redaxscript_Mailer
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
 				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . TOKEN . '--';
+				$this->_headerString .= '--' . uniqid() . '--';
 			}
 		}
 

@@ -13,89 +13,46 @@
 class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * instance of the guzzel class
-	 *
-	 * @var object
-	 */
-
-	protected $_guzzel;
-
-	/**
-	 * array of recipient
-	 *
-	 * @var array
-	 */
-
-	protected $_toArray;
-
-	/**
-	 * array of sender
-	 *
-	 * @var array
-	 */
-
-	protected $_fromArray;
-
-	/**
-	 * subject of the email
-	 *
-	 * @var string
-	 */
-
-	protected $_subject;
-
-	/**
-	 * body of the email
-	 *
-	 * @var string|array
-	 */
-
-	protected $_body;
-
-	/**
-	 * array of attachments
-	 *
-	 * @var array
-	 */
-
-	protected $_attachmentArray;
-
-	/**
-	 * setUp
+	 * providerMailer
 	 *
 	 * @since 2.2.0
+	 *
+	 * @return array
 	 */
 
-	protected function setUp()
+	public function providerMailer()
 	{
-		/* client */
-
-		$this->_guzzel = new \Guzzle\Http\Client('http://127.0.0.1:1080');
-		//$this->_guzzel->delete('/messages')->send();
-
-		/* data */
-
-		$this->_toArray = array(
-			'To' => 'to@redaxscript.com'
-		);
-		$this->_fromArray = array(
-			'From' => 'from@redaxscript.com'
-		);
-		$this->_subject = 'Test';
-		$this->_body = array(
-			'Test' => 'test'
-		);
+		$contents = file_get_contents('tests/provider/mailer.json');
+		$output = json_decode($contents, true);
+		return $output;
 	}
 
 	/**
 	 * testMessage
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param array $toArray
+	 * @param array $fromArray
+	 * @param string $subject
+	 * @param string|array $body
+	 * @param array $attachmentArray
+	 *
+	 * @dataProvider providerMailer
 	 */
 
-	public function testMessage()
+	public function testMessage($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
 	{
-		$mailer = new Redaxscript_Mailer($this->_toArray, $this->_fromArray, $this->_subject, $this->_body);
+		/* setup */
+
+		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
+
+		/* result */
+
 		$mailer->send();
+
+		/*compare */
+
+		$this->assertTrue(true);
 	}
 }
