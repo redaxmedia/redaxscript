@@ -1,12 +1,17 @@
 [
 	[
-		"mail.gmx.net",
-		"A",
+		"smtp.web.de",
+		"MX",
 		1
 	],
 	[
-		"mail.dummyfakedomain.net",
-		"A",
+		"www.domain.com",
+		"MX",
 		0
+	],
+	[
+		"www.domain.com",
+		"A",
+		1
 	]
 ]

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * URL validator
+ * String validator
  *
  * @since 2.2.0
  *
@@ -9,11 +9,11 @@
  * @category Validator
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
+class Redaxscript_Validator_String implements Redaxscript_Validator_Interface
 {
 
 	/**
-	 * check url
+	 * check string
 	 *
 	 * @since 2.2.0
 	 *
@@ -25,11 +25,14 @@ class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
 	 * @return integer
 	 */
 
-	function validate($input = '')
+	public function validate($input = '', $minLength = 0, $maxLength = 999)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if (filter_var($input, FILTER_VALIDATE_URL) !== false)
+		if (ctype_alnum($input)
+			&& strlen($input) >= $minLength
+			&& strlen($input) <= $maxLength
+		)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

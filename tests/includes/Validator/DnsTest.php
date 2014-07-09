@@ -43,8 +43,8 @@ class Redaxscript_Validator_Dns_Test extends PHPUnit_Framework_TestCase
 			return;
 		}
 
-		$validator = new Redaxscript_Validator_Dns($host, $type);
-		$result = $validator->validate();
+		$validator = new Redaxscript_Validator_Dns();
+		$result = $validator->validate($host, $type);
 
 		$this->assertEquals($expect, $result);
 	}

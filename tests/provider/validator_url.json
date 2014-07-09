@@ -1,0 +1,30 @@
+[
+	[
+		"http://www.mydomain.com/",
+		1
+	],
+	[
+		"http://www.mydomain.com/test/",
+		1
+	],
+	[
+		"http://www.mydomain.com/test",
+		1
+	],
+	[
+		"http://www.mydomain.com",
+		1
+	],
+	[
+		"www.mydomain.com",
+		0
+	],
+	[
+		"http://www.mydomain",
+		1
+	],
+	[
+		"nonsense",
+		0
+	]
+]

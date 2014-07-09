@@ -12,32 +12,9 @@
 class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 {
 
-	/**
-	 * @var string
-	 */
+	const DNS_TYPE_A = 'A';
+	const DNS_TYPE_MX = 'MX';
 
-	private $_host;
-
-	/**
-	 * @var string
-	 */
-
-	private $_type;
-
-	/**
-	 * check dns
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $host host may either be the IP address in dotted-quad notation or the host name
-	 * @param string $type type may be any one of: A, MX, NS, SOA, PTR, CNAME, AAAA, A6, SRV, NAPTR, TXT or ANY
-	 */
-
-	public function __construct($host = '', $type = '')
-	{
-		$this->_host = $host;
-		$this->_type = $type;
-	}
 
 	/**
 	 * checks the validator
@@ -45,16 +22,22 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 	 * @since 2.2.0
 	 *
 	 * @author Henry Ruhs
+	 * @author Sven Weingartner
+	 *
+	 * @param string $host host may either be the IP address in dotted-quad notation or the host name
+	 * @param string $type type may be any one of: A, MX, NS, SOA, PTR, CNAME, AAAA, A6, SRV, NAPTR, TXT or ANY
 	 *
 	 * @return integer
 	 */
 
-	public function validate()
+	public function validate($host = '', $type = '')
 	{
-		if ($this->_host)
+		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+
+		if ($host)
 		{
 			// Note: The checkdnsrr function is not implemented on the Windows platform
-			if (function_exists('checkdnsrr') && checkdnsrr($this->_host, $this->_type) === false)
+			if (function_exists('checkdnsrr') && checkdnsrr($host, $type) === false)
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 			}
@@ -62,10 +45,6 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			}
-		}
-		else
-		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 		}
 
 		return $output;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DNS validator
+ * Alias validator
  *
  * @since 2.2.0
  *
@@ -38,32 +38,6 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 		self::ALIAS_DEFAULT_REMINDER
 	);
 
-	/**
-	 * @var int
-	 */
-
-	private $_alias;
-
-	/**
-	 * @var int
-	 */
-
-	private $_mode;
-
-	/**
-	 * check dns
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $alias
-	 * @param string $mode
-	 */
-
-	public function __construct($alias = '', $mode = '')
-	{
-		$this->_alias = $alias;
-		$this->_mode = $mode;
-	}
 
 	/**
 	 * checks the validator
@@ -71,37 +45,35 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 	 * @since 2.2.0
 	 *
 	 * @author Henry Ruhs
+	 * @author Sven Weingartner
+	 *
+	 * @param string $alias
+	 * @param string $mode
 	 *
 	 * @return integer
 	 */
 
-	public function validate()
+	public function validate($alias = '', $mode = '')
 	{
+		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+
 		/* validate alias */
 
-		if ($this->_mode == self::ALIAS_MODE_USER)
+		if ($mode == self::ALIAS_MODE_USER)
 		{
-			if ($this->_alias != clean_alias($this->_alias) || is_numeric($this->_alias))
+			if ($alias != clean_alias($alias) || is_numeric($alias))
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
-			}
-			else
-			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 			}
 		}
 
 		/* check for default alias */
 
-		else if ($this->_mode == self::ALIAS_MODE_DEFAULT)
+		else if ($mode == self::ALIAS_MODE_DEFAULT)
 		{
-			if (in_array($this->_alias, self::$defaultAliases))
+			if (in_array($alias, self::$defaultAliases))
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
-			}
-			else
-			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 			}
 		}
 

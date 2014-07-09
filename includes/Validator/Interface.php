@@ -20,8 +20,10 @@ interface Redaxscript_Validator_Interface
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param mixed $value
+	 *
 	 * @return integer
 	 */
 
-	public function validate();
+	public function validate($value);
 }

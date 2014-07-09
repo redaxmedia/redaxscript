@@ -1,0 +1,22 @@
+[
+	[
+		"test@googlemail.com",
+		1
+	],
+	[
+		"test@dummymail@com",
+		0
+	],
+	[
+		"abc",
+		0
+	],
+	[
+		"nonsense@nonsense",
+		0
+	],
+	[
+		"nonsense@nonsense@nonsense",
+		0
+	]
+]
