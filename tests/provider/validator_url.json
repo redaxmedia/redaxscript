@@ -1,26 +1,42 @@
 [
 	[
 		"http://www.mydomain.com/",
-		1
+		0
 	],
 	[
 		"http://www.mydomain.com/test/",
-		1
+		0
 	],
 	[
 		"http://www.mydomain.com/test",
-		1
+		0
 	],
 	[
 		"http://www.mydomain.com",
-		1
+		0
 	],
 	[
 		"www.mydomain.com",
 		0
 	],
 	[
-		"http://www.mydomain",
+		"http://mydomain",
+		1
+	],
+	[
+		"http://mydomain.com/",
+		1
+	],
+	[
+		"http://mydomain.com/test/",
+		1
+	],
+	[
+		"http://mydomain.com/test",
+		1
+	],
+	[
+		"http://mydomain.com",
 		1
 	],
 	[
