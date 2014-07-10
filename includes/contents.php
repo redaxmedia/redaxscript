@@ -13,6 +13,8 @@
 
 function contents()
 {
+	$aliasValidator = new Redaxscript_Validator_Alias();
+
 	hook(__FUNCTION__ . '_start');
 
 	/* query contents */
@@ -54,6 +56,8 @@ function contents()
 
 	/* handle error */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	if (DB_CONNECTED == 0)
 	{
 		$error = l('database_failed');
@@ -74,7 +78,7 @@ function contents()
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -87,7 +91,9 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+				if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
+					|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+				)
 				{
 					$route = build_route('articles', $id);
 				}
@@ -107,7 +113,9 @@ function contents()
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content">';
-					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || check_alias(FIRST_PARAMETER, 1) == 1)
+					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
+						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+					)
 					{
 						$output .= anchor_element('internal', '', '', $title, $route);
 					}
@@ -246,12 +254,14 @@ function extras($filter = '')
 
 	/* collect output */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	if ($result)
 	{
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -321,6 +331,7 @@ function extras($filter = '')
  * @param integer $id
  * @param string $author
  * @param string $date
+ *
  * @return string
  */
 

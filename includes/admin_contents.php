@@ -98,6 +98,8 @@ function admin_contents_list()
 
 	/* collect tfoot */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	$output .= '<tfoot><tr><td class="column_first">' . l('title') . '</td><td class="column_second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
@@ -122,7 +124,7 @@ function admin_contents_list()
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -629,29 +631,29 @@ function admin_contents_form()
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
 		$output .= '<li>' . select_element('headline', 'field_select_admin', 'headline', array(
-			l('enable') => 1,
-			l('disable') => 0
-		), $headline, l('headline')) . '</li>';
+				l('enable') => 1,
+				l('disable') => 0
+			), $headline, l('headline')) . '</li>';
 	}
 	if (TABLE_PARAMETER == 'articles')
 	{
 		$output .= '<li>' . select_element('infoline', 'field_select_admin', 'infoline', array(
-			l('enable') => 1,
-			l('disable') => 0
-		), $infoline, l('infoline')) . '</li>';
+				l('enable') => 1,
+				l('disable') => 0
+			), $infoline, l('infoline')) . '</li>';
 		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', array(
-			l('enable') => 1,
-			l('freeze') => 2,
-			l('restrict') => 3,
-			l('disable') => 0
-		), $comments, l('comments')) . '</li>';
+				l('enable') => 1,
+				l('freeze') => 2,
+				l('restrict') => 3,
+				l('disable') => 0
+			), $comments, l('comments')) . '</li>';
 	}
 	if ($status != 2)
 	{
 		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
-			l('publish') => 1,
-			l('unpublish') => 0
-		), $status, l('status')) . '</li>';
+				l('publish') => 1,
+				l('unpublish') => 0
+			), $status, l('status')) . '</li>';
 	}
 
 	/* build access select */

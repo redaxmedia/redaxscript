@@ -45,6 +45,8 @@ function comments($article = '', $route = '')
 
 	/* handle error */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('comment_no');
@@ -58,7 +60,7 @@ function comments($article = '', $route = '')
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 

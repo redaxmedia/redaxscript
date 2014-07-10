@@ -13,6 +13,8 @@
 
 function admin_process()
 {
+	$aliasValidator = new Redaxscript_Validator_Alias();
+
 	/* clean post */
 
 	switch (TABLE_PARAMETER)
@@ -239,7 +241,10 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && check_alias($alias, 0) == 1 || check_alias($alias, 1) == 1)
+			if (TABLE_PARAMETER != 'groups'
+				&& $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_USER) == Redaxscript_Validator_Interface::VALIDATION_OK
+				|| $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+			)
 			{
 				$error = l('alias_incorrect');
 			}

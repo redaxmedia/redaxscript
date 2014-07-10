@@ -13,6 +13,8 @@
 
 function head()
 {
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	hook(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
@@ -25,7 +27,7 @@ function head()
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];
-				$check_access = check_access($access, MY_GROUPS);
+				$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 				/* if access granted */
 
