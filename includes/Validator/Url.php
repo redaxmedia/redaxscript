@@ -29,7 +29,9 @@ class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if (filter_var($input, FILTER_VALIDATE_URL) !== false)
+		if ($input == clean_url($input)
+			&& filter_var($input, FILTER_VALIDATE_URL) !== false
+		)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

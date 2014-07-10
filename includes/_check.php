@@ -1,31 +1,6 @@
 <?php
 
-/**
- * check login
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Check
- * @author Henry Ruhs
- *
- * @param string $input
- * @return integer
- */
 
-function check_login($input = '')
-{
-	if (ctype_alnum($input) && strlen($input) > 4 && strlen($input) < 51)
-	{
-		$output = 1;
-	}
-	else
-	{
-		$output = 0;
-	}
-	return $output;
-}
 
 /**
  * check access
@@ -39,6 +14,7 @@ function check_login($input = '')
  *
  * @param array $access
  * @param array $groups
+ *
  * @return integer
  */
 
@@ -60,36 +36,6 @@ function check_access($access = '', $groups = '')
 	return $output;
 }
 
-/**
- * check email
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Check
- * @author Henry Ruhs
- *
- * @param string $input
- * @return integer
- */
-
-function check_email($input = '')
-{
-	if ($input == clean_email($input))
-	{
-		list($user, $host) = preg_split('/@/', $input);
-
-		/* lookup domain name */
-
-		$output = check_dns($host, 'mx');
-	}
-	else
-	{
-		$output = 0;
-	}
-	return $output;
-}
 
 /**
  * check url
@@ -102,6 +48,7 @@ function check_email($input = '')
  * @author Henry Ruhs
  *
  * @param string $input
+ *
  * @return integer
  */
 
@@ -141,6 +88,7 @@ function check_url($input = '')
  *
  * @param string $input
  * @param string $type
+ *
  * @return integer
  */
 
@@ -176,6 +124,7 @@ function check_dns($input = '', $type = '')
  *
  * @param string $input
  * @param string $mode
+ *
  * @return integer
  */
 
@@ -208,34 +157,6 @@ function check_alias($input = '', $mode = '')
 		{
 			$output = 0;
 		}
-	}
-	return $output;
-}
-
-/**
- * check captcha
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Check
- * @author Henry Ruhs
- *
- * @param string $task
- * @param integer $solution
- * @return integer
- */
-
-function check_captcha($task = '', $solution = '')
-{
-	if (s('captcha') == 0 || sha1($task) == $solution)
-	{
-		$output = 1;
-	}
-	else
-	{
-		$output = 0;
 	}
 	return $output;
 }

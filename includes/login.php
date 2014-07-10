@@ -90,6 +90,10 @@ function login_form()
 
 function login_post()
 {
+	$loginValidator = new Redaxscript_Validator_Login();
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/login'] == 'visited')
@@ -100,7 +104,8 @@ function login_post()
 		$solution = $_POST['solution'];
 		$login_by_email = 0;
 		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
-		if (check_email($post_user) == 0)
+
+		if ($emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 		{
 			$post_user = clean($post_user, 0);
 			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT 1';
@@ -132,19 +137,24 @@ function login_post()
 	{
 		$error = l('password_empty');
 	}
-	else if ($login_by_email == 0 && check_login($post_user) == 0)
+	else if ($login_by_email == 0
+		&& $loginValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL
+	)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($login_by_email == 1 && check_email($post_user) == 0)
+	else if ($login_by_email == 1
+		&& $emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL
+	)
 	{
 		$error = l('email_incorrect');
 	}
-	else if (check_login($post_password) == 0)
+	else if ($loginValidator->validate($post_password) == Redaxscript_Validator_Interface::VALIDATION_FAIL
+	)
 	{
 		$error = l('password_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}

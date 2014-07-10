@@ -103,6 +103,10 @@ function registration_post()
 
 	/* validate post */
 
+	$loginValidator = new Redaxscript_Validator_Login();
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+
 	if ($name == '')
 	{
 		$error = l('name_empty');
@@ -115,15 +119,15 @@ function registration_post()
 	{
 		$error = l('email_empty');
 	}
-	else if (check_login($user) == 0)
+	else if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('user_incorrect');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}

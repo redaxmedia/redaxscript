@@ -32,7 +32,12 @@ class Redaxscript_Validator_Email implements Redaxscript_Validator_Interface
 
 		if (filter_var($input, FILTER_VALIDATE_EMAIL) !== false)
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$inputArray = explode('@', $input);
+
+			/* lookup domain name */
+
+			$dnsValidator = new Redaxscript_Validator_Dns();
+			$output = $dnsValidator->validate($inputArray[1], Redaxscript_Validator_Dns::DNS_TYPE_MX);
 		}
 
 		return $output;
