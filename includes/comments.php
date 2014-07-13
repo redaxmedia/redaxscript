@@ -45,6 +45,8 @@ function comments($article = '', $route = '')
 
 	/* handle error */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('comment_no');
@@ -58,7 +60,7 @@ function comments($article = '', $route = '')
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -229,6 +231,10 @@ function comment_form($article = '', $language = '', $access = '')
 
 function comment_post()
 {
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+	$urlValidator = new Redaxscript_Validator_Url();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/comment'] == 'visited')
@@ -266,15 +272,15 @@ function comment_post()
 	{
 		$error = l('comment_empty');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && check_url($url) == 0)
+	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('url_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}

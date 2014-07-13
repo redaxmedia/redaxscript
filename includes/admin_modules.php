@@ -28,6 +28,8 @@ function admin_modules_list()
 
 	/* collect thead and tfoot */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('version') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
@@ -40,7 +42,7 @@ function admin_modules_list()
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -228,9 +230,9 @@ function admin_modules_form()
 
 	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
 	$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
-		l('enable') => 1,
-		l('disable') => 0
-	), $status, l('status')) . '</li>';
+			l('enable') => 1,
+			l('disable') => 0
+		), $status, l('status')) . '</li>';
 
 	/* build access select */
 

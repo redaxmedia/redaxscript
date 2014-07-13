@@ -9,7 +9,6 @@
  * @category Parser
  * @author Henry Ruhs
  */
-
 class Redaxscript_Parser
 {
 	/**
@@ -145,7 +144,7 @@ class Redaxscript_Parser
 
 	public function init()
 	{
-		foreach($this->_tags as $key => $value)
+		foreach ($this->_tags as $key => $value)
 		{
 			/* save tag related position */
 
@@ -186,8 +185,13 @@ class Redaxscript_Parser
 
 	protected function _parseBreak($input = null)
 	{
+		$aliasValidator = new Redaxscript_Validator_Alias();
+
 		$output = str_replace('<break>', '', $input);
-		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || check_alias($this->_registry->get('firstParameter'), 1) === 1)
+		if ($this->_registry->get('lastTable') === 'categories'
+			|| !$this->_registry->get('fullRoute')
+			|| $aliasValidator->validate($this->_registry->get('firstParameter'), Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+		)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);
 
