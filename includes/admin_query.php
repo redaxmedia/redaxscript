@@ -241,10 +241,7 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups'
-				&& $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_USER) == Redaxscript_Validator_Interface::VALIDATION_OK
-				|| $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
-			)
+			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_USER) == Redaxscript_Validator_Interface::VALIDATION_OK || $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
 			{
 				$error = l('alias_incorrect');
 			}
@@ -318,9 +315,7 @@ function admin_process()
 			{
 				$error = l('password_empty');
 			}
-			if ($password_confirm == 0
-				|| $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL
-			)
+			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 			{
 				$error = l('password_incorrect');
 			}

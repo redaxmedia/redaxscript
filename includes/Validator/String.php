@@ -29,10 +29,7 @@ class Redaxscript_Validator_String implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if (ctype_alnum($input)
-			&& strlen($input) >= $minLength
-			&& strlen($input) <= $maxLength
-		)
+		if (ctype_alnum($input) && strlen($input) >= $minLength && strlen($input) <= $maxLength)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

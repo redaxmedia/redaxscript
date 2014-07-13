@@ -33,7 +33,9 @@ class Redaxscript_Validator_Login implements Redaxscript_Validator_Interface
 //TODO: docblock 1. better description
 //TODO: docblock 2. no author inside method blocks
 //TODO: docblock 3. missing variable description
-	public function validate($input = '') //TODO: 1. please provide better naming, in this case $login 2. use null over ''
+//TODO: 1. please provide better naming, in this case $login 2. use null over ''
+
+	public function validate($input = '')
 	{
 		$validator = new Redaxscript_Validator_String();
 		$output = $validator->validate($input, self::LENGTH_MIN, self::LENGTH_MAX);

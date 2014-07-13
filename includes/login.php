@@ -137,15 +137,11 @@ function login_post()
 	{
 		$error = l('password_empty');
 	}
-	else if ($login_by_email == 0
-		&& $loginValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL
-	)
+	else if ($login_by_email == 0 && $loginValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($login_by_email == 1
-		&& $emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL
-	)
+	else if ($login_by_email == 1 && $emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}

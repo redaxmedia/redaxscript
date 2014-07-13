@@ -225,9 +225,7 @@ function startup()
 
 	$aliasValidator = new Redaxscript_Validator_Alias();
 
-	if (LAST_ID == ''
-		&& $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_FAIL
-	)
+	if (LAST_ID == '' && $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		define('CONTENT_ERROR', 1);
 	}
