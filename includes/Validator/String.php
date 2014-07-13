@@ -40,3 +40,4 @@ class Redaxscript_Validator_String implements Redaxscript_Validator_Interface
 		return $output;
 	}
 }
+//TODO: please remove this class and related tests

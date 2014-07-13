@@ -1,41 +1,39 @@
 <?php
 
 /**
- * URL validator
+ * children class to validate url
  *
  * @since 2.2.0
  *
- * @package Redaxscript
  * @category Validator
+ * @package Redaxscript
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
 {
-
 	/**
-	 * check url
+	 * validate the url
 	 *
 	 * @since 2.2.0
 	 *
-	 * @author Henry Ruhs
-	 * @author Sven Weingartner
-	 *
-	 * @param string $input
+	 * @param string $url universal resource locator
+	 * @param string $dns optional dns validation
 	 *
 	 * @return integer
 	 */
 
-	function validate($input = '')
+	public function validate($url = null, $dns = true)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if ($input == clean_url($input)
-			&& filter_var($input, FILTER_VALIDATE_URL) !== false
-		)
+		/* validate url */
+
+		if ($url == clean_url($url) && filter_var($url, FILTER_VALIDATE_URL) !== false)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}
-
 		return $output;
 	}
 }
+//TODO: remove clean_url() and add missing DNS validation like in email validator

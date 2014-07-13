@@ -5,10 +5,11 @@
  *
  * @since 2.2.0
  *
- * @package Redaxscript
  * @category Validator
+ * @package Redaxscript
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 {
 
@@ -24,8 +25,8 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 	 * @author Henry Ruhs
 	 * @author Sven Weingartner
 	 *
-	 * @param string $host host may either be the IP address in dotted-quad notation or the host name
-	 * @param string $type type may be any one of: A, MX, NS, SOA, PTR, CNAME, AAAA, A6, SRV, NAPTR, TXT or ANY
+	 * @param string $host host of the domain
+	 * @param string $type optional type
 	 *
 	 * @return integer
 	 */
@@ -33,10 +34,9 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 	public function validate($host = '', $type = '')
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
-
+//TODO: what is happening here, more documentation please
 		if ($host)
 		{
-			// Note: The checkdnsrr function is not implemented on the Windows platform
 			if (function_exists('checkdnsrr') && checkdnsrr($host, $type) === false)
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
@@ -46,7 +46,7 @@ class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			}
 		}
-
 		return $output;
 	}
 }
+//TODO: What about renaming to Validator_Domain ?

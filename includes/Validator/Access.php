@@ -5,10 +5,11 @@
  *
  * @since 2.2.0
  *
- * @package Redaxscript
  * @category Validator
+ * @package Redaxscript
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
 {
 
@@ -35,12 +36,11 @@ class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
 		$groups_array = explode(', ', $groups);
 
 		/* intersect access and groups */
-
+		//TODO: please use type safe === all over the place
 		if ($access == 0 || in_array(1, $groups_array) || array_intersect($access_array, $groups_array))
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}
-
 		return $output;
 	}
 }

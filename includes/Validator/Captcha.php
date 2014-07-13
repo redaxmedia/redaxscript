@@ -1,40 +1,38 @@
 <?php
 
 /**
- * Captcha validator
+ * children class to validate captcha
  *
  * @since 2.2.0
  *
- * @package Redaxscript
  * @category Validator
+ * @package Redaxscript
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Captcha implements Redaxscript_Validator_Interface
 {
-
 	/**
-	 * check captcha
+	 * validate the captcha
 	 *
 	 * @since 2.2.0
 	 *
-	 * @author Henry Ruhs
-	 * @author Sven Weingartner
-	 *
-	 * @param string $task
-	 * @param string $solution
+	 * @param string $raw plain answer
+	 * @param string $hash hashed solution
 	 *
 	 * @return integer
 	 */
 
-	public function validate($task = '', $solution = '')
+	public function validate($raw = null, $hash = null)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if (sha1($task) == $solution || s('captcha') == 0)
+		/* validate raw and hash */
+
+		if (sha1($raw) === $hash || Redaxscript_Db::getSettings('captcha') === 0)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}
-
 		return $output;
 	}
 }

@@ -1,45 +1,47 @@
 <?php
 
 /**
- * Email validator
+ * children class to validate email
  *
  * @since 2.2.0
  *
- * @package Redaxscript
  * @category Validator
+ * @package Redaxscript
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Email implements Redaxscript_Validator_Interface
 {
-
-
 	/**
-	 * check email
+	 * validate the email
 	 *
 	 * @since 2.2.0
 	 *
-	 * @author Henry Ruhs
-	 * @author Sven Weingartner
-	 *
-	 * @param string $input
+	 * @param string $email email address
+	 * @param string $dns optional dns validation
 	 *
 	 * @return integer
 	 */
 
-	public function validate($input = '')
+	public function validate($email = null, $dns = true)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		if (filter_var($input, FILTER_VALIDATE_EMAIL) !== false)
+		/* validate email */
+
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false)
 		{
-			$inputArray = explode('@', $input);
+			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$emailArray = explode('@', $email);
 
-			/* lookup domain name */
+			/* validate domain */
 
-			$dnsValidator = new Redaxscript_Validator_Dns();
-			$output = $dnsValidator->validate($inputArray[1], Redaxscript_Validator_Dns::DNS_TYPE_MX);
+			if ($dns === true)
+			{
+				$dnsValidator = new Redaxscript_Validator_Dns();
+				$output = $dnsValidator->validate($emailArray[1], Redaxscript_Validator_Dns::DNS_TYPE_MX);
+			}
 		}
-
 		return $output;
 	}
 }
