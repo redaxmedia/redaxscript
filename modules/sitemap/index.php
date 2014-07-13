@@ -15,6 +15,8 @@
 
 function sitemap()
 {
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	/* query categories */
 
 	$categories_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'categories WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 && parent = 0 ORDER BY rank ASC';
@@ -33,7 +35,7 @@ function sitemap()
 		while ($r = mysql_fetch_assoc($categories_result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -109,7 +111,7 @@ function sitemap()
 		while ($r = mysql_fetch_assoc($articles_result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 

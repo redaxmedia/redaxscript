@@ -29,6 +29,7 @@ function b($name = '')
 
 	/* default */
 
+	// @see Redaxscript_Validator_Alias::$defaultAliases
 	$b['default_alias'] = 'admin, loader, login, logout, password_reset, scripts, styles, registration, reminder';
 	$b['default_post'] = 'comment, login, password_reset, registration, reminder, search';
 

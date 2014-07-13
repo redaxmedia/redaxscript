@@ -17,6 +17,8 @@ function modules_include()
 {
 	static $modules_installed_array, $modules_directory_array;
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	/* query installed modules */
 
 	if ($modules_installed_array == '')
@@ -29,7 +31,7 @@ function modules_include()
 			{
 				$alias = $r['alias'];
 				$access = $r['access'];
-				$check_access = check_access($access, MY_GROUPS);
+				$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 				/* if access granted */
 
@@ -69,6 +71,7 @@ function modules_include()
  * @author Henry Ruhs
  *
  * @param string $input
+ *
  * @return string
  */
 

@@ -37,6 +37,8 @@ function admin_routing()
 
 	/* define access variables */
 
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	if (ADMIN_PARAMETER && TABLE_PARAMETER)
 	{
 		if (TABLE_PARAMETER == 'modules')
@@ -63,7 +65,7 @@ function admin_routing()
 	if ($edit == 1 || $delete == 1)
 	{
 		$access = retrieve('access', TABLE_PARAMETER, 'id', ID_PARAMETER);
-		$check_access = check_access($access, MY_GROUPS);
+		$check_access = $accessValidator->validate($access, MY_GROUPS);
 	}
 
 	/* validate access */

@@ -4,6 +4,11 @@
 
 include_once('includes/Autoloader.php');
 
+/* include core files */
+
+include_once('includes/clean.php');
+include_once('includes/query.php');
+
 /* init */
 
 Redaxscript_Autoloader::init();

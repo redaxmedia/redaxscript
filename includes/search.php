@@ -66,6 +66,8 @@ function search_form()
 
 function search_post()
 {
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10)
@@ -122,7 +124,7 @@ function search_post()
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];
-				$check_access = check_access($access, MY_GROUPS);
+				$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 				/* if access granted */
 

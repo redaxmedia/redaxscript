@@ -140,6 +140,10 @@ function contact_form()
 
 function contact_post()
 {
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+	$urlValidator = new Redaxscript_Validator_Url();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/contact'] == 'visited')
@@ -167,15 +171,15 @@ function contact_post()
 	{
 		$error = l('message_empty');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && check_url($url) == 0)
+	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('url_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}

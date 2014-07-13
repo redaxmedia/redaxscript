@@ -101,6 +101,7 @@ function navigation_list($table = '', $options = '')
 
 	/* query result */
 
+	$accessValidator = new Redaxscript_Validator_Access();
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 	if ($result == '' || $num_rows == '')
@@ -114,7 +115,7 @@ function navigation_list($table = '', $options = '')
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -214,14 +215,14 @@ function navigation_list($table = '', $options = '')
 
 	if ($error && $option_parent == '')
 	{
-		$output = '<ul' .$id_string . $class_string . '><li>' . $error . '</li></ul>';
+		$output = '<ul' . $id_string . $class_string . '><li>' . $error . '</li></ul>';
 	}
 
 	/* else collect list output */
 
 	else if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');
@@ -296,7 +297,7 @@ function languages_list($options = '')
 
 	if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');
@@ -373,7 +374,7 @@ function templates_list($options = '')
 
 	if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
 	hook(__FUNCTION__ . '_end');

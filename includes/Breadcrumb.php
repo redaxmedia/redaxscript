@@ -10,7 +10,6 @@
  * @author Henry Ruhs
  * @author Gary Aylward
  */
-
 class Redaxscript_Breadcrumb
 {
 	/**
@@ -164,6 +163,8 @@ class Redaxscript_Breadcrumb
 
 	private function _build()
 	{
+		$aliasValidator = new Redaxscript_Validator_Alias();
+
 		$key = 0;
 		self::$_breadcrumbArray = array();
 
@@ -190,7 +191,7 @@ class Redaxscript_Breadcrumb
 
 		/* else if default alias */
 
-		else if (check_alias($this->_registry->get('firstParameter'), 1) === 1)
+		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
 		{
 			/* join default title */
 

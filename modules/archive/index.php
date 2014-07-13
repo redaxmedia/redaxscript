@@ -15,6 +15,8 @@
 
 function archive()
 {
+	$accessValidator = new Redaxscript_Validator_Access();
+
 	$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 ORDER BY date DESC';
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
@@ -31,7 +33,7 @@ function archive()
 			/* check for access */
 
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 

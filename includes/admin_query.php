@@ -13,6 +13,8 @@
 
 function admin_process()
 {
+	$aliasValidator = new Redaxscript_Validator_Alias();
+
 	/* clean post */
 
 	switch (TABLE_PARAMETER)
@@ -239,7 +241,10 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && check_alias($alias, 0) == 1 || check_alias($alias, 1) == 1)
+			if (TABLE_PARAMETER != 'groups'
+				&& $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_USER) == Redaxscript_Validator_Interface::VALIDATION_OK
+				|| $aliasValidator->validate($alias, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+			)
 			{
 				$error = l('alias_incorrect');
 			}
@@ -286,6 +291,8 @@ function admin_process()
 
 	/* validate users post */
 
+	$loginValidator = new Redaxscript_Validator_Login();
+
 	if (TABLE_PARAMETER == 'users')
 	{
 		if ($user == '')
@@ -301,7 +308,7 @@ function admin_process()
 		{
 			$error = l('user_exists');
 		}
-		if (check_login($user) == 0)
+		if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 		{
 			$error = l('user_incorrect');
 		}
@@ -311,7 +318,9 @@ function admin_process()
 			{
 				$error = l('password_empty');
 			}
-			if ($password_confirm == 0 || check_login($password) == 0)
+			if ($password_confirm == 0
+				|| $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL
+			)
 			{
 				$error = l('password_incorrect');
 			}
@@ -319,6 +328,8 @@ function admin_process()
 	}
 
 	/* validate last post */
+
+	$emailValidator = new Redaxscript_Validator_Email();
 
 	switch (TABLE_PARAMETER)
 	{
@@ -328,7 +339,7 @@ function admin_process()
 				$error = l('author_empty');
 			}
 		case 'users':
-			if (check_email($email) == 0)
+			if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 			{
 				$error = l('email_incorrect');
 			}
@@ -796,6 +807,7 @@ function admin_update()
  * @param string $table
  * @param integer $id
  * @param integer $mode
+ *
  * @return string
  */
 
