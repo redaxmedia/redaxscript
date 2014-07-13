@@ -202,11 +202,11 @@ function contact_post()
 		);
 		$subject = l('contact');
 		$bodyArray = array(
-			l('author') => $author . ' (' . MY_IP . ')',
-			l('email') => $emailLink,
-			l('url') => $urlLink,
+			'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+			'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+			'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
 			'<br />',
-			l('message') => $text
+			'<strong>' . l('message') . l('colon') . '</strong> ' . $text
 		);
 
 		/* mailer object */

@@ -315,13 +315,13 @@ function comment_post()
 			);
 			$subject = l('comment_new');
 			$bodyArray = array(
-				l('author') => $author . ' (' . MY_IP . ')',
-				l('email') => $emailLink,
-				l('url') => $urlLink,
+				'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+				'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
 				'<br />',
-				l('comment') => $text,
+				'<strong>' . l('comment') . l('colon') . '</strong> ' . $text,
 				'<br />',
-				l('article') => $articleLink
+				'<strong>' . l('article') . l('colon') . '</strong> ' . $articleLink
 			);
 
 			/* mailer object */

@@ -238,10 +238,10 @@ function install()
 	);
 	$subject = l('installation');
 	$bodyArray = array(
-		l('user') => $user,
-		l('password') => $password,
+		'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+		'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
 		'<br />',
-		l('url') => $urlLink
+		'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink
 	);
 
 	/* mail object */

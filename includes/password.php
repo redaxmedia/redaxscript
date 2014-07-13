@@ -118,9 +118,9 @@ function password_reset_post()
 		);
 		$subject = l('password_new');
 		$bodyArray = array(
-			l('password_new') => $password,
+			'<strong>' . l('password_new') . l('colon') . '</strong> ' . $password,
 			'<br />',
-			l('login') => $loginLink
+			'<strong>' . l('login') . l('colon') . '</strong> ' . $loginLink
 		);
 
 		/* mailer object */

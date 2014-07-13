@@ -122,9 +122,9 @@ function reminder_post()
 				);
 				$subject = l('reminder');
 				$bodyArray = array(
-					l('user') => $user,
+					'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
 					'<br />',
-					l('password_reset') => $passwordResetLink
+					'<strong>' . l('password_reset') . l('colon') . '</strong> ' . $passwordResetLink
 				);
 
 				/* mailer object */

@@ -182,22 +182,8 @@ class Redaxscript_Mailer
 		{
 			foreach ($this->_body as $key => $value)
 			{
-				if ($key && $value)
-				{
-					/* if numeric key */
 
-					if (is_numeric($key))
-					{
-						$this->_bodyString .= $value;
-					}
-
-					/* else format parts */
-
-					else
-					{
-						$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
-					}
-				}
+				$this->_bodyString .= $value;
 			}
 		}
 		else
@@ -232,7 +218,8 @@ class Redaxscript_Mailer
 			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
 				$fileContents = chunk_split(base64_encode($fileContents));
-				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . uniqid() . '"' . PHP_EOL . PHP_EOL;
+				$boundary = uniqid();
+				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . uniqid() . PHP_EOL;
 
 				/* integrate body string */
@@ -242,7 +229,7 @@ class Redaxscript_Mailer
 					$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
-					$this->_headerString .= '--' . uniqid() . PHP_EOL;
+					$this->_headerString .= '--' . $boundary . PHP_EOL;
 
 					/* reset body string */
 
@@ -252,7 +239,7 @@ class Redaxscript_Mailer
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
 				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . uniqid() . '--';
+				$this->_headerString .= '--' . $boundary . '--';
 			}
 		}
 

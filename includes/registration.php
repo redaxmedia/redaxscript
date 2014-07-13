@@ -160,11 +160,11 @@ function registration_post()
 		);
 		$subject = l('registration');
 		$bodyArray = array(
-			l('name') => $name . ' (' . MY_IP . ')',
-			l('user') => $user,
-			l('password') => $password,
+			'<strong>' . l('name') . l('colon') . '</strong> ' . $name . ' (' . MY_IP . ')',
+			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+			'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
 			'<br />',
-			l('login') => $loginLink
+			'<strong>' . l('login') . l('colon') . '<strong> ' . $loginLink
 		);
 
 		/* mailer object */

@@ -7,10 +7,10 @@
 			"From": "from@redaxscript.com"
 		},
 		"test",
-		{
-			"test": "test",
-			"1": "<br />"
-		},
+		[
+			"test",
+			"test"
+		],
 		[
 			"test.php"
 		]
