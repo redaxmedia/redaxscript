@@ -3,7 +3,6 @@
 /* include as needed */
 
 include_once('includes/Autoloader.php');
-include_once('includes/migrate.php');
 
 /* init */
 
@@ -14,10 +13,6 @@ Redaxscript_Request::init();
 
 $registry = Redaxscript_Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
-
-/* migrate deprecated constants */
-
-$registry->init(migrate_constants());
 
 /* database */
 

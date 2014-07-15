@@ -4,11 +4,6 @@
 
 include_once('includes/Autoloader.php');
 
-/* include core files */
-
-include_once('includes/clean.php');
-include_once('includes/query.php');
-
 /* init */
 
 Redaxscript_Autoloader::init();
@@ -31,17 +26,7 @@ $config = Redaxscript_Config::getInstance();
 
 Redaxscript_Db::init($config);
 
-/* detection */
-
-$detectionLanguage = New Redaxscript_Detection_Language($registry);
-$detectionTemplate = New Redaxscript_Detection_Template($registry);
-
-/* set language and template */
-
-$registry->set('language', $detectionLanguage->getOutput());
-$registry->set('template', $detectionTemplate->getOutput());
-
 /* language */
 
 $language = Redaxscript_Language::getInstance();
-$language->init($registry->get('language'));
+$language->init('en');

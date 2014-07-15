@@ -115,8 +115,8 @@ class Redaxscript_Breadcrumb
 
 		foreach (self::$_breadcrumbArray as $key => $value)
 		{
-			$title = array_key_exists('title', $value) ? $value['title'] : '';
-			$route = array_key_exists('route', $value) ? $value['route'] : '';
+			$title = array_key_exists('title', $value) ? $value['title'] : null;
+			$route = array_key_exists('route', $value) ? $value['route'] : null;
 			if ($title)
 			{
 				$output .= '<li>';

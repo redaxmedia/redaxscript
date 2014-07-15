@@ -10,6 +10,7 @@ include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
+include_once('includes/migrate.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/navigation.php');
@@ -23,6 +24,11 @@ include_once('vendor/j4mie/idiorm/idiorm.php');
 
 include_once('includes/Bootstrap.php');
 startup();
+
+/* migrate deprecated constants */
+
+$registry = Redaxscript_Registry::getInstance();
+$registry->init(migrate_constants());
 
 /* include files as needed */
 

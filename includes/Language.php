@@ -26,7 +26,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 * @since 2.2.0
 	 */
 
-	public static function init($language = 'en')
+	public function init($language = 'en')
 	{
 		self::load('languages/en.json');
 

@@ -7,6 +7,7 @@ include_once('includes/clean.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/loader.php');
+include_once('includes/migrate.php');
 include_once('includes/misc.php');
 include_once('includes/modules.php');
 include_once('includes/password.php');
@@ -27,6 +28,11 @@ write_config();
 
 include_once('includes/Bootstrap.php');
 startup();
+
+/* migrate deprecated constants */
+
+$registry = Redaxscript_Registry::getInstance();
+$registry->init(migrate_constants());
 
 /* define meta */
 
