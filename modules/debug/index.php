@@ -168,6 +168,15 @@ function debug_extras_end()
 		$debug['session'][$key] = $value;
 	}
 
+	/* debug registry */
+
+	$registry = Redaxscript_Registry::getInstance();
+	$registry_array = $registry->get();
+	foreach ($registry_array as $key => $value)
+	{
+		$debug['registry'][$key] = $value;
+	}
+
 	/* debug constants */
 
 	$defined_constants = get_defined_constants(1);
