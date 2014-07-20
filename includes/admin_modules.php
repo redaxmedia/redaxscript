@@ -28,8 +28,6 @@ function admin_modules_list()
 
 	/* collect thead and tfoot */
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('version') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
@@ -38,6 +36,7 @@ function admin_modules_list()
 	}
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		$output .= '<tbody>';
 		while ($r = mysql_fetch_assoc($result))
 		{

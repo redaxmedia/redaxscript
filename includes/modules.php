@@ -17,8 +17,6 @@ function modules_include()
 {
 	static $modules_installed_array, $modules_directory_array;
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	/* query installed modules */
 
 	if ($modules_installed_array == '')
@@ -27,6 +25,7 @@ function modules_include()
 		$result = mysql_query($query);
 		if ($result)
 		{
+			$accessValidator = new Redaxscript_Validator_Access();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$alias = $r['alias'];

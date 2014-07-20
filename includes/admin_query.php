@@ -14,6 +14,7 @@
 function admin_process()
 {
 	$aliasValidator = new Redaxscript_Validator_Alias();
+	$loginValidator = new Redaxscript_Validator_Login();
 
 	/* clean post */
 
@@ -287,8 +288,6 @@ function admin_process()
 	}
 
 	/* validate users post */
-
-	$loginValidator = new Redaxscript_Validator_Login();
 
 	if (TABLE_PARAMETER == 'users')
 	{

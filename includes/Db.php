@@ -35,9 +35,9 @@ class Redaxscript_Db extends ORM
 			);
 		}
 		self::configure(array(
-			'return_result_sets' => true,
 			'caching' => true,
-			'caching_auto_clear' => true
+			'caching_auto_clear' => true,
+			'return_result_sets' => true
 		));
 	}
 
@@ -54,7 +54,7 @@ class Redaxscript_Db extends ORM
 
 	public static function forPrefixTable($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
-		self::_setup_db($connection);
+		self::_setupDb($connection);
 		return new self(Redaxscript_Config::get('prefix') . $table, array(), $connection);
 	}
 

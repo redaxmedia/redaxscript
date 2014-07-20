@@ -13,8 +13,6 @@
 
 function head()
 {
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	hook(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
@@ -24,6 +22,7 @@ function head()
 		$result = mysql_query($query);
 		if ($result)
 		{
+			$accessValidator = new Redaxscript_Validator_Access();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];

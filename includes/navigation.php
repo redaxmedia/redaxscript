@@ -101,7 +101,6 @@ function navigation_list($table = '', $options = '')
 
 	/* query result */
 
-	$accessValidator = new Redaxscript_Validator_Access();
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
 	if ($result == '' || $num_rows == '')
@@ -110,8 +109,7 @@ function navigation_list($table = '', $options = '')
 	}
 	else if ($result)
 	{
-		/* collect output */
-
+		$accessValidator = new Redaxscript_Validator_Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

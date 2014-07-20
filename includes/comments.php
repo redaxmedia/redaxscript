@@ -45,8 +45,6 @@ function comments($article = '', $route = '')
 
 	/* handle error */
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('comment_no');
@@ -56,6 +54,7 @@ function comments($article = '', $route = '')
 
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		$output = '<div class="box_line"></div>';
 		while ($r = mysql_fetch_assoc($result))
 		{

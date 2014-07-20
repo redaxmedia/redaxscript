@@ -13,9 +13,8 @@
 
 function contents()
 {
-	$aliasValidator = new Redaxscript_Validator_Alias();
-
 	hook(__FUNCTION__ . '_start');
+	$aliasValidator = new Redaxscript_Validator_Alias();
 
 	/* query contents */
 
@@ -56,8 +55,6 @@ function contents()
 
 	/* handle error */
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	if (DB_CONNECTED == 0)
 	{
 		$error = l('database_failed');
@@ -75,6 +72,7 @@ function contents()
 
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
@@ -254,10 +252,9 @@ function extras($filter = '')
 
 	/* collect output */
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

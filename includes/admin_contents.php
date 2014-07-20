@@ -98,8 +98,6 @@ function admin_contents_list()
 
 	/* collect tfoot */
 
-	$accessValidator = new Redaxscript_Validator_Access();
-
 	$output .= '<tfoot><tr><td class="column_first">' . l('title') . '</td><td class="column_second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
@@ -121,6 +119,7 @@ function admin_contents_list()
 	}
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

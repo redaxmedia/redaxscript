@@ -366,9 +366,6 @@ function install_notification()
 {
 	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
 
-	$loginValidator = new Redaxscript_Validator_Login();
-	$emailValidator = new Redaxscript_Validator_Email();
-
 	if (is_writable('Config.php') == '')
 	{
 		$error = l('file_permission_grant') . l('colon') . ' Config.php';
@@ -386,6 +383,8 @@ function install_notification()
 
 	else if ($_POST['install_post'])
 	{
+		$loginValidator = new Redaxscript_Validator_Login();
+		$emailValidator = new Redaxscript_Validator_Email();
 		if ($name == '')
 		{
 			$error = l('name_empty');
@@ -451,14 +450,7 @@ function check_install()
 
 	$loginValidator = new Redaxscript_Validator_Login();
 	$emailValidator = new Redaxscript_Validator_Email();
-
-	if ($_POST['install_post']
-		&& DB_CONNECTED == 1
-		&& $name
-		&& $loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_OK
-		&& $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_OK
-		&& $emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_OK
-	)
+	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_OK && $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_OK && $emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_OK)
 	{
 		$output = 1;
 	}

@@ -159,14 +159,14 @@ class Redaxscript_Breadcrumb
 	 * build the breadcrumb array
 	 *
 	 * @since 2.1.0
+	 *
+	 * @param integer $key key of the item
 	 */
 
-	private function _build()
+	private function _build($key = 0)
 	{
-		$aliasValidator = new Redaxscript_Validator_Alias();
-
-		$key = 0;
 		self::$_breadcrumbArray = array();
+		$aliasValidator = new Redaxscript_Validator_Alias();
 
 		/* if title constant */
 
@@ -221,10 +221,10 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param integer $key
+	 * @param integer $key key of the item
 	 */
 
-	private function _buildAdmin($key = null)
+	private function _buildAdmin($key = 0)
 	{
 		self::$_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
 
@@ -267,7 +267,7 @@ class Redaxscript_Breadcrumb
 	 * @param integer $key
 	 */
 
-	private function _buildContent($key = null)
+	private function _buildContent($key = 0)
 	{
 		/* join first title */
 
