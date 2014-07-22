@@ -13,18 +13,18 @@
 class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
 {
 	/**
-	 * Check if Domain is a valid domain
+	 * check if domain is a valid domain
 	 */
 	const DNS_TYPE_A = 'A';
 
 	/**
-	 * Check if Domain is registered as a mail server
+	 * check if domain is registered as a mail server
 	 */
 	const DNS_TYPE_MX = 'MX';
 
 
 	/**
-	 * Validates DNS records corresponding to a given Internet host name or IP address
+	 * validates DNS records corresponding to a given internet host name or IP address
 	 *
 	 * @since 2.2.0
 	 *

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Alias validator
+ * alias validator
  *
  * @since 2.2.0
  *
@@ -13,13 +13,13 @@
 class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 {
 	/**
-	 * Konstants for the mode
+	 * constants for the mode
 	 */
 	const ALIAS_MODE_USER = 0;
 	const ALIAS_MODE_DEFAULT = 1;
 
 	/**
-	 * Predefined aliases
+	 * predefined aliases
 	 */
 	const ALIAS_DEFAULT_ADMIN = 'admin';
 	const ALIAS_DEFAULT_LOADER = 'loader';
@@ -32,7 +32,7 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 	const ALIAS_DEFAULT_REMINDER = 'reminder';
 
 	/**
-	 * @var array List of all predefined aliases
+	 * @var array list of all predefined aliases
 	 */
 	public static $defaultAliases = array(
 		self::ALIAS_DEFAULT_ADMIN,
@@ -48,7 +48,7 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 
 
 	/**
-	 * Validates the alias
+	 * validates the alias
 	 *
 	 * @since 2.2.0
 	 *
@@ -62,7 +62,7 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		/* Validates user alias */
+		/* validates user alias */
 
 		if ($mode == self::ALIAS_MODE_USER)
 		{//TODO: remove clean function with $alias in_array of $aliasArray :-)
@@ -72,7 +72,7 @@ class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
 			}
 		}
 
-		/* Validates for default alias */
+		/* validates for default alias */
 
 		else if ($mode == self::ALIAS_MODE_DEFAULT)
 		{

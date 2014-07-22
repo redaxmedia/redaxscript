@@ -13,17 +13,17 @@
 class Redaxscript_Validator_Login implements Redaxscript_Validator_Interface
 {
 	/**
-	 * Minimal length for login names
+	 * minimal length for login names
 	 */
 	const LENGTH_MIN = 5;
 
 	/**
-	 * Maximal length for login names
+	 * maximal length for login names
 	 */
 	const LENGTH_MAX = 52;
 
 	/**
-	 * Check if the login name is valid.
+	 * check if the login name is valid.
 	 * Current rule set:
 	 * - min 5 chars
 	 * - max 52 chars
