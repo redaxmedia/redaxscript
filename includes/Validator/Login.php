@@ -5,41 +5,45 @@
  *
  * @since 2.2.0
  *
- * @package Redaxscript
- * @category Validator
+ * @category Redaxscript
+ * @package Redaxscript_Validator
  * @author Sven Weingartner
  */
-//TODO: @category before @package please - I change this in the other classes
-//TODO: Missing whitespace
+
 class Redaxscript_Validator_Login implements Redaxscript_Validator_Interface
 {
-//TODO: No introductional whitespace here
-//TODO: Please use constant block like @vars
+	/**
+	 * Minimal length for login names
+	 */
 	const LENGTH_MIN = 5;
+
+	/**
+	 * Maximal length for login names
+	 */
 	const LENGTH_MAX = 52;
 
 	/**
-	 * check login
+	 * Check if the login name is valid.
+	 * Current rule set:
+	 * - min 5 chars
+	 * - max 52 chars
+	 * - only numbers and chars are allowed, no special chars
 	 *
 	 * @since 2.2.0
 	 *
-	 * @author Henry Ruhs
-	 * @author Sven Weingartner
-	 *
-	 * @param string $input
+	 * @param string $login The login name
 	 *
 	 * @return integer
 	 */
-//TODO: docblock 1. better description
-//TODO: docblock 2. no author inside method blocks
-//TODO: docblock 3. missing variable description
-//TODO: 1. please provide better naming, in this case $login 2. use null over ''
 
-	public function validate($input = '')
+	public function validate($login = null)
 	{
-		$validator = new Redaxscript_Validator_String();
-		$output = $validator->validate($input, self::LENGTH_MIN, self::LENGTH_MAX);
-		//TODO: please remove whitespace before outputs
+		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+
+		if (!empty($login) && ctype_alnum($login) && strlen($login) >= self::LENGTH_MIN && strlen($login) <= self::LENGTH_MAX)
+		{
+			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+		}
 		return $output;
 	}
 }
