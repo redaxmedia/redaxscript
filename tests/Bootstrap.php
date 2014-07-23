@@ -29,4 +29,8 @@ Redaxscript_Db::init($config);
 /* language */
 
 $language = Redaxscript_Language::getInstance();
-$language->init('en');
+$language::init('en');
+
+/* hook */
+
+Redaxscript_Hook::init();

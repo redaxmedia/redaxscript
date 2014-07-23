@@ -39,12 +39,12 @@ class Redaxscript_Request
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* handle index */
 

@@ -148,11 +148,11 @@ class Redaxscript_Parser
 		{
 			/* save tag related position */
 
-			$position = $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
+			 $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
 			/* call related function if tag found */
 
-			if ($position > -1)
+			if ($this->_tags[$key]['position'] > -1)
 			{
 				$function = $value['function'];
 				$this->_output = $this->$function($this->_output);

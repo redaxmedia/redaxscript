@@ -174,7 +174,7 @@ module.exports = function (grunt)
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
-				standard: 'Redaxmedia'
+				standard: 'ruleset.xml'
 			}
 		},
 		qunit:
@@ -310,15 +310,6 @@ module.exports = function (grunt)
 		},
 		copy:
 		{
-			ruleset:
-			{
-				src:
-				[
-					'ruleset.xml'
-				],
-				dest: 'vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Redaxmedia/',
-				expand: true
-			},
 			distFull:
 			{
 				src:
@@ -887,7 +878,6 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('phplint',
 	[
-		'copy:ruleset',
 		'phpcs'
 	]);
 	grunt.registerTask('toclint',
@@ -917,7 +907,6 @@ module.exports = function (grunt)
 	[
 		'autoprefixer',
 		'toc',
-		'eol',
 		'img',
 		'smushit',
 		'svgmin'

@@ -54,7 +54,7 @@ class Redaxscript_Directory
 	 * @since 2.0.0
 	 *
 	 * @param string $directory name of the directory
-	 * @param string|array $exclude files to exclude
+	 * @param mixed $exclude files to exclude
 	 */
 
 	public function __construct($directory = null, $exclude = array())

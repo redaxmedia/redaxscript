@@ -18,10 +18,3 @@ function clean_url($input = '')
 	$output = preg_replace('/www.(.*?)/i', '', $output);
 	return $output;
 }
-
-/* hook */
-
-function hook($input = '')
-{
-	return null;
-}

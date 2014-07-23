@@ -58,6 +58,29 @@ function helper_subset()
 }
 
 /**
+ * language shortcut
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @param string $key
+ * @param string $index
+ *
+ * @return string
+ */
+
+function l($key = null, $index = null)
+{
+	$language = Redaxscript_Language::getInstance();
+	$output = $language->get($key, $index);
+	return $output;
+}
+
+/**
  * migrate constants
  *
  * @since 2.1.0
@@ -95,28 +118,5 @@ function migrate_constants()
 
 		$output[$key] = $value;
 	}
-	return $output;
-}
-
-/**
- * language shortcut
- *
- * @since 2.2.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Henry Ruhs
- *
- * @param string $key
- * @param string $index
- *
- * @return string
- */
-
-function l($key = null, $index = null)
-{
-	$language = Redaxscript_Language::getInstance();
-	$output = $language->get($key, $index);
 	return $output;
 }

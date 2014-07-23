@@ -34,7 +34,7 @@ class Redaxscript_Breadcrumb
 	 * @var array
 	 */
 
-	protected static $_breadcrumbArray = array();
+	protected $_breadcrumbArray = array();
 
 	/**
 	 * options of the breadcrumb
@@ -91,7 +91,7 @@ class Redaxscript_Breadcrumb
 
 	public function get()
 	{
-		return self::$_breadcrumbArray;
+		return $this->_breadcrumbArray;
 	}
 
 	/**
@@ -104,16 +104,16 @@ class Redaxscript_Breadcrumb
 
 	public function render()
 	{
-		$output = hook(__FUNCTION__ . '_start');
+		$output = Redaxscript_Hook::trigger('breadcrumb_start');
 
 		/* breadcrumb keys */
 
-		$breadcrumbKeys = array_keys(self::$_breadcrumbArray);
+		$breadcrumbKeys = array_keys($this->_breadcrumbArray);
 		$last = end($breadcrumbKeys);
 
 		/* collect item output */
 
-		foreach (self::$_breadcrumbArray as $key => $value)
+		foreach ($this->_breadcrumbArray as $key => $value)
 		{
 			$title = array_key_exists('title', $value) ? $value['title'] : null;
 			$route = array_key_exists('route', $value) ? $value['route'] : null;
@@ -151,7 +151,7 @@ class Redaxscript_Breadcrumb
 		{
 			$output = '<ul class="' . $this->_options['className']['list'] . '">' . $output . '</ul>';
 		}
-		$output .= hook(__FUNCTION__ . '_end');
+		$output .= Redaxscript_Hook::trigger('breadcrumb_end');
 		return $output;
 	}
 
@@ -165,21 +165,20 @@ class Redaxscript_Breadcrumb
 
 	private function _build($key = 0)
 	{
-		self::$_breadcrumbArray = array();
 		$aliasValidator = new Redaxscript_Validator_Alias();
 
 		/* if title constant */
 
 		if ($this->_registry->get('title'))
 		{
-			self::$_breadcrumbArray[$key]['title'] = $this->_registry->get('title');
+			$this->_breadcrumbArray[$key]['title'] = $this->_registry->get('title');
 		}
 
 		/* else if home */
 
 		else if (!$this->_registry->get('fullRoute'))
 		{
-			self::$_breadcrumbArray[$key]['title'] = $this->_language->get('home');
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('home');
 		}
 
 		/* else if administration */
@@ -191,13 +190,13 @@ class Redaxscript_Breadcrumb
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
+		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
 		{
 			/* join default title */
 
-			if ($this->_language->get($this->_registry->get('firstParameter')))
+			if ($this->_registry->get('firstParameter') && $this->_language->get($this->_registry->get('firstParameter')))
 			{
-				self::$_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('firstParameter'));
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('firstParameter'));
 			}
 		}
 
@@ -205,7 +204,7 @@ class Redaxscript_Breadcrumb
 
 		else if (!$this->_registry->get('lastId'))
 		{
-			self::$_breadcrumbArray[$key]['title'] = $this->_language->get('error');
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('error');
 		}
 
 		/* query title from content */
@@ -226,35 +225,35 @@ class Redaxscript_Breadcrumb
 
 	private function _buildAdmin($key = 0)
 	{
-		self::$_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
+		$this->_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
 
 		/* if admin parameter  */
 
 		if ($this->_registry->get('adminParameter'))
 		{
-			self::$_breadcrumbArray[$key]['route'] = 'admin';
+			$this->_breadcrumbArray[$key]['route'] = 'admin';
 		}
 
 		/* join admin title */
 
-		if ($this->_language->get($this->_registry->get('adminParameter')))
+		if ($this->_registry->get('adminParameter') && $this->_language->get($this->_registry->get('adminParameter')))
 		{
 			$key++;
-			self::$_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('adminParameter'));
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('adminParameter'));
 
 			/* set route if not end */
 
 			if ($this->_registry->get('adminParameter') !== $this->_registry->get('lastParameter'))
 			{
-				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
+				$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
 			}
 
 			/* join table title */
 
-			if ($this->_language->get($this->_registry->get('tableParameter')))
+			if ($this->_registry->get('tableParameter') && $this->_language->get($this->_registry->get('tableParameter')))
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('tableParameter'));
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('tableParameter'));
 			}
 		}
 	}
@@ -271,13 +270,13 @@ class Redaxscript_Breadcrumb
 	{
 		/* join first title */
 
-		self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
+		$this->_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
 
 		/* set route if not end */
 
 		if ($this->_registry->get('firstParameter') !== $this->_registry->get('lastParameter'))
 		{
-			self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
+			$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
 		}
 
 		/* join second title */
@@ -285,13 +284,13 @@ class Redaxscript_Breadcrumb
 		if ($this->_registry->get('secondTable'))
 		{
 			$key++;
-			self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
+			$this->_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
 
 			/* set route if not end */
 
 			if ($this->_registry->get('secondParameter') !== $this->_registry->get('lastParameter'))
 			{
-				self::$_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
+				$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
 			}
 
 			/* join third title */
@@ -299,7 +298,7 @@ class Redaxscript_Breadcrumb
 			if ($this->_registry->get('thirdTable'))
 			{
 				$key++;
-				self::$_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
+				$this->_breadcrumbArray[$key]['title'] = Redaxscript_Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
 			}
 		}
 	}

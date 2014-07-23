@@ -42,7 +42,7 @@ class Redaxscript_Config extends Redaxscript_Singleton
 
 	public static function get($key = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* values as needed */
 

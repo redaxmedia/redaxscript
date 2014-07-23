@@ -39,7 +39,7 @@ class Redaxscript_Mailer
 	/**
 	 * body of the email
 	 *
-	 * @var string|array
+	 * @var mixed
 	 */
 
 	protected $_body;
@@ -92,7 +92,7 @@ class Redaxscript_Mailer
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
-	 * @param string|array $body body of the email
+	 * @param mixed $body body of the email
 	 * @param array $attachmentArray array of attachments
 	 */
 

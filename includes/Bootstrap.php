@@ -37,3 +37,7 @@ $language->init($registry->get('language'));
 
 define('LANGUAGE', $detectionLanguage->getOutput());
 define('TEMPLATE', $detectionTemplate->getOutput());
+
+/* hook */
+
+Redaxscript_Hook::init();

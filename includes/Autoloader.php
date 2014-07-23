@@ -45,7 +45,7 @@ class Redaxscript_Autoloader
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string|array $directory specify optional directory to search
+	 * @param mixed $directory specify optional directory to search
 	 */
 
 	public static function init($directory = null)

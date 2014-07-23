@@ -1,7 +1,7 @@
 <?php
 
 /**
- * parent class to provide language
+ * parent class to provide the current language
  *
  * @since 2.2.0
  *
@@ -26,7 +26,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 * @since 2.2.0
 	 */
 
-	public function init($language = 'en')
+	public static function init($language = 'en')
 	{
 		self::load('languages/en.json');
 
@@ -46,12 +46,12 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* handle index */
 
@@ -89,7 +89,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string|array $json single or multiple language paths
+	 * @param mixed $json single or multiple language paths
 	 */
 
 	public static function load($json = null)
