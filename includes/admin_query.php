@@ -324,7 +324,6 @@ function admin_process()
 	/* validate last post */
 
 	$emailValidator = new Redaxscript_Validator_Email();
-
 	switch (TABLE_PARAMETER)
 	{
 		case 'comments':
@@ -363,6 +362,14 @@ function admin_process()
 		if (TABLE_EDIT == 1 || TABLE_DELETE == 1)
 		{
 			$route .= '/view/' . TABLE_PARAMETER;
+			if ($alias)
+			{
+				$route .= '#' . $alias;
+			}
+			else if ($user)
+			{
+				$route .= '#' . $user;
+			}
 		}
 	}
 
@@ -642,7 +649,7 @@ function admin_install()
 			}
 		}
 	}
-	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
+	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER);
 }
 
 /**

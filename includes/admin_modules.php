@@ -71,6 +71,10 @@ function admin_modules_list()
 				/* collect table row */
 
 				$output .= '<tr';
+				if ($alias)
+				{
+					$output .= ' id="' . $alias . '"';
+				}
 				if ($class_status)
 				{
 					$output .= ' class="' . $class_status . '"';

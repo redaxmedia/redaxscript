@@ -66,6 +66,10 @@ function admin_users_list()
 			/* collect table row */
 
 			$output .= '<tr';
+			if ($user)
+			{
+				$output .= ' id="' . $user . '"';
+			}
 			if ($class_status)
 			{
 				$output .= ' class="' . $class_status . '"';
