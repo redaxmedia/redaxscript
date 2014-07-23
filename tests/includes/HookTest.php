@@ -24,7 +24,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * testGet
+	 * testTrigger
 	 *
 	 * @since 2.2.0
 	 */
