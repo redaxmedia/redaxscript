@@ -202,7 +202,7 @@ function admin_dock($table = '', $id = '')
 
 function admin_notification()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* insecure file warning */
 
@@ -210,15 +210,15 @@ function admin_notification()
 	{
 		if (file_exists('install.php'))
 		{
-			$output = '<div class="box_note note_warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
+			$output .= '<div class="box_note note_warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
 		}
 		if (is_writable('Config.php'))
 		{
 			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' Config.php' . l('point') . '</div>';
 		}
 	}
+	$output  .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**

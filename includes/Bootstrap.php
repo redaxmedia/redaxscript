@@ -14,9 +14,10 @@ Redaxscript_Request::init();
 $registry = Redaxscript_Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
 
-/* database */
+/* database and hook */
 
 Redaxscript_Db::init($config);
+Redaxscript_Hook::init($registry);
 
 /* detection */
 
@@ -37,7 +38,3 @@ $language->init($registry->get('language'));
 
 define('LANGUAGE', $detectionLanguage->getOutput());
 define('TEMPLATE', $detectionTemplate->getOutput());
-
-/* hook */
-
-Redaxscript_Hook::init();

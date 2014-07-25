@@ -24,19 +24,27 @@ class Redaxscript_Hook
 	 * init the class
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param Redaxscript_Registry $registry instance of the registry class
 	 */
 
-	public static function init()
+	public static function init(Redaxscript_Registry $registry)
 	{
-		$modulesDirectory = New Redaxscript_Directory('modules');
+		$accessValidator = new Redaxscript_Validator_Access();
+		$modulesDirectory = new Redaxscript_Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
-		$modulesInstalled = Redaxscript_Db::forPrefixTable('modules')->findMany();
+		$modulesInstalled = Redaxscript_Db::forPrefixTable('modules')->where('status', 1)->findMany();
 
-		/* intersect available and installed modules */
+		/* proccess installed modules */
 
-		if (is_array($modulesAvailable) && is_array($modulesInstalled))
+		foreach ($modulesInstalled as $module)
 		{
-			self::$_modules = array_intersect($modulesAvailable, $modulesInstalled);
+			/* validate access */
+
+			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === 1)
+			{
+				self::$_modules[] = $module->alias;
+			}
 		}
 	}
 

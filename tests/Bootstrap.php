@@ -22,15 +22,12 @@ Redaxscript_Config::set('password', 'travis');
 $registry = Redaxscript_Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
 
-/* database */
+/* database and hook */
 
 Redaxscript_Db::init($config);
+Redaxscript_Hook::init($registry);
 
 /* language */
 
 $language = Redaxscript_Language::getInstance();
 $language::init('en');
-
-/* hook */
-
-Redaxscript_Hook::init();

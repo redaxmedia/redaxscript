@@ -13,14 +13,22 @@
 class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
 	 * setUp
 	 *
 	 * @since 2.2.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
-		Redaxscript_Hook::init();
+		$this->_registry = Redaxscript_Registry::getInstance();
 	}
 
 	/**
@@ -31,6 +39,10 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public function testTrigger()
 	{
+		/* setup */
+
+		Redaxscript_Hook::init($this->_registry);
+
 		/* result */
 
 		$result = Redaxscript_Hook::trigger('test');

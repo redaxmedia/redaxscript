@@ -22,6 +22,8 @@ class Redaxscript_Db extends ORM
 
 	public static function init(Redaxscript_Config $config)
 	{
+		/* mysql */
+
 		if ($config::get('type') === 'mysql')
 		{
 			self::configure(array(
@@ -34,6 +36,9 @@ class Redaxscript_Db extends ORM
 				)
 			);
 		}
+
+		/* general */
+
 		self::configure(array(
 			'caching' => true,
 			'caching_auto_clear' => true,
