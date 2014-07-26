@@ -205,12 +205,18 @@ module.exports = function (grunt)
 			development:
 			{
 			},
+			report:
+			{
+				options:
+				{
+					coverageHtml: 'clover'
+				}
+			},
 			integration:
 			{
 				options:
 				{
-					coverageClover: 'clover.xml',
-					coverageHtml: 'clover'
+					coverageClover: 'clover.xml'
 				}
 			},
 			options:
