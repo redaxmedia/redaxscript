@@ -63,7 +63,7 @@ class Redaxscript_Hook
 	{
 		$output = false;
 
-		/* trigger event hooks */
+		/* trigger module hooks */
 
 		foreach (self::$_modules as $module)
 		{

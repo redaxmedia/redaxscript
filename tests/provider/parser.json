@@ -39,6 +39,12 @@
 	],
 	[
 		"",
+		"<function>invalid<function>",
+		"",
+		""
+	],
+	[
+		"",
 		"<function>{\"md5\":{\"string\":\"hello world\"}}<function>",
 		"",
 		"5eb63bbbe01eeed093cb22bb8f5acdc3"
@@ -46,6 +52,12 @@
 	[
 		"",
 		"<function>{\"exec\":{\"input\":\"dir\"}}<function>",
+		"",
+		""
+	],
+	[
+		"",
+		"<function>{\"invalid\":{\"\":\"\"}}<function>",
 		"",
 		""
 	]

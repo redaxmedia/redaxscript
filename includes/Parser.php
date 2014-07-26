@@ -270,7 +270,7 @@ class Redaxscript_Parser
 				{
 					foreach ($json as $function => $parameter)
 					{
-						if (!in_array($function, $this->_forbiddenFunctions))
+						if (function_exists($function) && !in_array($function, $this->_forbiddenFunctions))
 						{
 							echo call_user_func_array($function, $parameter);
 						}
@@ -281,7 +281,7 @@ class Redaxscript_Parser
 
 				else
 				{
-					if (!in_array($value, $this->_forbiddenFunctions))
+					if (function_exists($value) && !in_array($value, $this->_forbiddenFunctions))
 					{
 						echo call_user_func($value);
 					}
