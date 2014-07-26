@@ -43,7 +43,7 @@ class Redaxscript_Hook
 
 			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === 1)
 			{
-				self::$_modules[] = $module->alias;
+				self::$_modules[$module->alias] = $module->alias;
 			}
 		}
 	}
@@ -54,11 +54,12 @@ class Redaxscript_Hook
 	 * @since 2.2.0
 	 *
 	 * @param string $hook name of the module hook
+	 * @param array $parameter parameter of the module hook
 	 *
 	 * @return string $output
 	 */
 
-	public static function trigger($hook = null)
+	public static function trigger($hook = null, $parameter = array())
 	{
 		$output = false;
 
@@ -67,12 +68,21 @@ class Redaxscript_Hook
 		foreach (self::$_modules as $module)
 		{
 			$function = $module . '_' . $hook;
+			$object = 'Redaxscript_Modules_' . mb_convert_case($module, MB_CASE_TITLE);
+			$method = str_replace('_', '', mb_convert_case($hook, MB_CASE_TITLE));
+
+			/* method exists */
+
+			if (method_exists($object, $method))
+			{
+				$output .= call_user_func_array(array($object, $method), $parameter);
+			}
 
 			/* function exists */
 
-			if (function_exists($function))
+			else if (function_exists($function))
 			{
-				$output .= call_user_func($function);
+				$output .= call_user_func_array($function, $parameter);
 			}
 		}
 		return $output;

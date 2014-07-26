@@ -222,7 +222,7 @@ function contents()
  * @category Contents
  * @author Henry Ruhs
  *
- * @param integer|string $filter
+ * @param mixed $filter
  */
 
 function extras($filter = '')

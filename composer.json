@@ -15,7 +15,7 @@
 		"mikey179/vfsStream": "1.2.0",
 		"phpunit/phpunit": "4.1.3",
 		"redaxmedia/redaxscript-apigen-template": "1.0.0",
-		"redaxmedia/tocgen": "4.0.0",
+		"redaxmedia/tocgen": "4.0.1",
 		"satooshi/php-coveralls": "0.6.1",
 		"squizlabs/php_codesniffer": "1.5.3"
 	}

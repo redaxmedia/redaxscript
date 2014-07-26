@@ -12,8 +12,6 @@
 
 class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
 {
-
-
 	/**
 	 * checks the validator
 	 *
@@ -22,7 +20,7 @@ class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
 	 * @author Henry Ruhs
 	 * @author Sven Weingartner
 	 *
-	 * @param int|string $access
+	 * @param mixed $access
 	 * @param string $groups
 	 *
 	 * @return integer
