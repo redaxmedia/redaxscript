@@ -138,7 +138,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 class Redaxscript_Modules_Call_Home
 {
-	public function hookMethod($first = null, $second = null)
+	public static function hookMethod($first = null, $second = null)
 	{
 		return $first;
 	}
