@@ -13,7 +13,7 @@
 class Redaxscript_Hook
 {
 	/**
-	 * array of installed modules
+	 * array of installed and enabled modules
 	 *
 	 * @var array
 	 */
@@ -46,6 +46,19 @@ class Redaxscript_Hook
 				self::$_modules[$module->alias] = $module->alias;
 			}
 		}
+	}
+
+	/**
+	 * get the modules array
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return mixed
+	 */
+
+	public static function get()
+	{
+		return self::$_modules;
 	}
 
 	/**

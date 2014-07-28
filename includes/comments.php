@@ -16,7 +16,7 @@
 
 function comments($article = '', $route = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query comments */
 
@@ -75,7 +75,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= hook('comment_start') . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript_Hook::trigger('comment_start') . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -89,7 +89,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . hook('comment_end');
+				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript_Hook::trigger('comment_end');
 
 				/* admin dock */
 
@@ -126,7 +126,7 @@ function comments($article = '', $route = '')
 	{
 		pagination($sub_active, $sub_maximum, $route);
 	}
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -146,7 +146,7 @@ function comments($article = '', $route = '')
 
 function comment_form($article = '', $language = '', $access = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -214,7 +214,7 @@ function comment_form($article = '', $language = '', $access = '')
 	$output .= '</form>';
 	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

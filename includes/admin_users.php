@@ -13,7 +13,7 @@
 
 function admin_users_list()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query users */
 
@@ -147,7 +147,7 @@ function admin_users_list()
 	}
 	$output .= '</table></div>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -163,7 +163,7 @@ function admin_users_list()
 
 function admin_users_form()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define fields for existing user */
 
@@ -305,5 +305,5 @@ function admin_users_form()
 	}
 	$output .= '</form>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

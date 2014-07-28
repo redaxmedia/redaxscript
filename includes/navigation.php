@@ -16,7 +16,7 @@
 
 function navigation_list($table = '', $options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -223,7 +223,7 @@ function navigation_list($table = '', $options = '')
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -241,7 +241,7 @@ function navigation_list($table = '', $options = '')
 
 function languages_list($options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -298,7 +298,7 @@ function languages_list($options = '')
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -316,7 +316,7 @@ function languages_list($options = '')
 
 function templates_list($options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -375,7 +375,7 @@ function templates_list($options = '')
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

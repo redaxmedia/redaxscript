@@ -13,7 +13,7 @@
 
 function admin_modules_list()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query modules */
 
@@ -167,7 +167,7 @@ function admin_modules_list()
 	}
 	$output .= '</table></div>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -183,7 +183,7 @@ function admin_modules_list()
 
 function admin_modules_form()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define fields for existing user */
 
@@ -286,5 +286,5 @@ function admin_modules_form()
 	}
 	$output .= '</form>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

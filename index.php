@@ -12,7 +12,6 @@ include_once('includes/head.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/misc.php');
-include_once('includes/modules.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/replace.php');
@@ -112,7 +111,7 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 
 /* module files as needed */
 
-$modules_include = modules_include();
+$modules_include = Redaxscript_Hook::get();
 if ($modules_include)
 {
 	/* language object */
@@ -154,7 +153,7 @@ if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAM
 }
 else
 {
-	hook('render_start');
+	Redaxscript_Hook::trigger('render_start');
 
 	/* undefine */
 
@@ -184,5 +183,5 @@ else
 		}
 		include_once('templates/' . TEMPLATE . '/index.phtml');
 	}
-	hook('render_end');
+	Redaxscript_Hook::trigger('render_end');
 }

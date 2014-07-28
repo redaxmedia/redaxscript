@@ -82,7 +82,7 @@ class Redaxscript_Breadcrumb
 	}
 
 	/**
-	 * return the raw breadcrumb array for further processing
+	 * get the breadcrumb array for further processing
 	 *
 	 * @since 2.1.0
 	 *

@@ -13,7 +13,7 @@
 
 function admin_panel_list()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -109,7 +109,7 @@ function admin_panel_list()
 
 			/* collect modules list */
 
-			$admin_panel_list_modules = hook('admin_panel_list_modules');
+			$admin_panel_list_modules = Redaxscript_Hook::trigger('admin_panel_list_modules');
 			if ($admin_panel_list_modules)
 			{
 				$output .= '<ul class="js_list_panel_children_admin list_panel_children_admin">' . $admin_panel_list_modules . '</ul>';
@@ -142,7 +142,7 @@ function admin_panel_list()
 		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -162,7 +162,7 @@ function admin_panel_list()
 
 function admin_dock($table = '', $id = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -185,7 +185,7 @@ function admin_dock($table = '', $id = '')
 		}
 		$output .= '</div></div>';
 	}
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }
 
@@ -217,7 +217,7 @@ function admin_notification()
 			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' Config.php' . l('point') . '</div>';
 		}
 	}
-	$output  .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }
 
@@ -244,7 +244,7 @@ function admin_notification()
 
 function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -323,6 +323,6 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		$output = '<ul class="list_control_admin">' . $output . '</ul>';
 	}
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }

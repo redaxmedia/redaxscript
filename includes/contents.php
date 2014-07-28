@@ -13,7 +13,7 @@
 
 function contents()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	$aliasValidator = new Redaxscript_Validator_Alias();
 
 	/* query contents */
@@ -107,7 +107,7 @@ function contents()
 
 				/* collect headline output */
 
-				$output .= hook('article_start');
+				$output .= Redaxscript_Hook::trigger('article_start');
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content">';
@@ -127,7 +127,7 @@ function contents()
 				/* collect box output */
 
 				$output .= '<div class="box_content">' . $parser->getOutput();
-				$output .= '</div>' . hook('article_end');
+				$output .= '</div>' . Redaxscript_Hook::trigger('article_end');
 
 				/* prepend admin dock */
 
@@ -182,7 +182,7 @@ function contents()
 
 			if ($comments == 1 && COMMENTS_REPLACE == 1)
 			{
-				hook('comments_replace');
+				Redaxscript_Hook::trigger('comments_replace');
 			}
 
 			/* else native comments */
@@ -209,7 +209,7 @@ function contents()
 		$route = build_route('categories', CATEGORY);
 		pagination($sub_active, $sub_maximum, $route);
 	}
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -229,7 +229,7 @@ function extras($filter = '')
 {
 	if ($filter == '')
 	{
-		hook(__FUNCTION__ . '_start');
+		Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	}
 
 	/* query extras */
@@ -287,7 +287,7 @@ function extras($filter = '')
 
 					/* collect headline output */
 
-					$output .= hook('extra_start');
+					$output .= Redaxscript_Hook::trigger('extra_start');
 					if ($headline == 1)
 					{
 						$output .= '<h3 class="title_extra">' . $title . '</h3>';
@@ -295,7 +295,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . hook('extra_end');
+					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript_Hook::trigger('extra_end');
 
 					/* prepend admin dock */
 
@@ -310,7 +310,7 @@ function extras($filter = '')
 	echo $output;
 	if ($filter == '')
 	{
-		hook(__FUNCTION__ . '_end');
+		Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	}
 }
 
@@ -334,7 +334,7 @@ function extras($filter = '')
 
 function infoline($table = '', $id = '', $author = '', $date = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	$time = date(s('time'), strtotime($date));
 	$date = date(s('date'), strtotime($date));
 	if ($table == 'articles')
@@ -376,7 +376,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 		$output .= '</span>';
 	}
 	$output .= '</div>';
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }
 
@@ -397,7 +397,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 function pagination($sub_active = '', $sub_maximum = '', $route = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	$output .= '<ul class="list_pagination">';
 
 	/* collect first and previous output */
@@ -445,7 +445,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	}
 	$output .= '</ul>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -466,7 +466,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 
 function notification($title = '', $text = '', $action = '', $route = '')
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* detect needed mode */
 
@@ -502,5 +502,5 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	}
 	$output .= '</div>';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

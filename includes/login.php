@@ -13,7 +13,7 @@
 
 function login_form()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -74,7 +74,7 @@ function login_form()
 	$output .= '</form>';
 	$_SESSION[ROOT . '/login'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

@@ -13,7 +13,7 @@
 
 function reminder_form()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -49,7 +49,7 @@ function reminder_form()
 	$output .= '</form>';
 	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

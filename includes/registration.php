@@ -13,7 +13,7 @@
 
 function registration_form()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -64,7 +64,7 @@ function registration_form()
 	$output .= '</form>';
 	$_SESSION[ROOT . '/registration'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
+	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

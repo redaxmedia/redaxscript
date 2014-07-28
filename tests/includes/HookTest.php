@@ -50,6 +50,27 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * testGet
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGet()
+	{
+		/* setup */
+
+		Redaxscript_Hook::init($this->_registry);
+
+		/* result */
+
+		$result = Redaxscript_Hook::get();
+
+		/* compare */
+
+		$this->assertArrayHasKey('call_home', $result);
+	}
+
+	/**
 	 * tearDownAfterClass
 	 *
 	 * @since 2.2.0
