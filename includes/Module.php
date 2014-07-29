@@ -67,6 +67,6 @@ class Redaxscript_Module
 
 	public function uninstall()
 	{
-		Redaxscript_Db::forPrefixTable('modules')->where('alias', $this->_module['alias'])->deleteMany();
+		Redaxscript_Db::forPrefixTable('modules')->where('alias', self::$_module['alias'])->deleteMany();
 	}
 }
