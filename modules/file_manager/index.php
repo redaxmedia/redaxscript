@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -29,7 +29,7 @@ function file_manager_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -54,7 +54,7 @@ function file_manager_render_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -108,7 +108,7 @@ function file_manager_center_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @return string
@@ -127,7 +127,7 @@ function file_manager_admin_panel_list_modules()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $directory
@@ -217,7 +217,7 @@ function file_manager($directory = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $input
@@ -239,7 +239,7 @@ function file_manager_clean_file_name($input = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $directory

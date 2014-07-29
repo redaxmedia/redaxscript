@@ -13,7 +13,7 @@
 
 function head()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
 		/* query contents */
@@ -94,7 +94,7 @@ function head()
 
 	/* collect meta output */
 
-	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
+	$output .= '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
 
 	/* collect title output */
@@ -176,6 +176,6 @@ function head()
 		$canonical_url .= FULL_ROUTE;
 	}
 	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

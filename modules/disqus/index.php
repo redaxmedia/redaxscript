@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -27,7 +27,7 @@ function disqus_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -46,7 +46,7 @@ function disqus_render_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 

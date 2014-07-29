@@ -6,7 +6,7 @@
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Tests
+ * @category Test
  * @author Sven Weingartner
  */
 

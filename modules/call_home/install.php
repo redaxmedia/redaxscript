@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -24,7 +24,7 @@ function call_home_install()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 

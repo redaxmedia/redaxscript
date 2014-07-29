@@ -13,7 +13,7 @@
 
 function reminder_form()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -28,7 +28,7 @@ function reminder_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('reminder') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('reminder') . '</h2>';
 	$output .= form_element('form', 'form_reminder', 'js_validate_form form_default form_reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
 	$output .= form_element('fieldset', '', 'set_reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
@@ -47,9 +47,9 @@ function reminder_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

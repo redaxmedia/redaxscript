@@ -6,7 +6,7 @@
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Tests
+ * @category Test
  * @author Sven Weingartner
  */
 class Redaxscript_Validator_Alias_Test extends PHPUnit_Framework_TestCase

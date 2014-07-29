@@ -6,7 +6,7 @@
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Tests
+ * @category Test
  * @author Henry Ruhs
  * @author Gary Aylward
  */

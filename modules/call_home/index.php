@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -25,7 +25,7 @@ function call_home_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -45,7 +45,7 @@ function call_home_scripts_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -72,7 +72,7 @@ function call_home_admin_notification_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 

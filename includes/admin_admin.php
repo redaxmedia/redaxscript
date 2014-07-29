@@ -13,7 +13,7 @@
 
 function admin_panel_list()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output = '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
@@ -141,8 +141,8 @@ function admin_panel_list()
 	{
 		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -162,7 +162,7 @@ function admin_panel_list()
 
 function admin_dock($table = '', $id = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -173,7 +173,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output = '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
+		$output .= '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
@@ -244,7 +244,7 @@ function admin_notification()
 
 function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 

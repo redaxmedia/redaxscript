@@ -16,7 +16,7 @@
 
 function comments($article = '', $route = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query comments */
 
@@ -55,7 +55,7 @@ function comments($article = '', $route = '')
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript_Validator_Access();
-		$output = '<div class="box_line"></div>';
+		$output .= '<div class="box_line"></div>';
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
@@ -118,6 +118,7 @@ function comments($article = '', $route = '')
 	{
 		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 
 	/* call pagination as needed */
@@ -126,7 +127,6 @@ function comments($article = '', $route = '')
 	{
 		pagination($sub_active, $sub_maximum, $route);
 	}
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -146,7 +146,7 @@ function comments($article = '', $route = '')
 
 function comment_form($article = '', $language = '', $access = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -173,7 +173,7 @@ function comment_form($article = '', $language = '', $access = '')
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('comment_new') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('comment_new') . '</h2>';
 	$output .= form_element('form', 'form_comment', 'js_validate_form form_default form_comment', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
@@ -212,9 +212,9 @@ function comment_form($article = '', $language = '', $access = '')
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

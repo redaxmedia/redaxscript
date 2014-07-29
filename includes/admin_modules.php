@@ -13,7 +13,7 @@
 
 function admin_modules_list()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query modules */
 
@@ -23,7 +23,7 @@ function admin_modules_list()
 
 	/* collect listing output */
 
-	$output = '<h2 class="title_content">' . l('modules') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('modules') . '</h2>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead and tfoot */
@@ -135,7 +135,7 @@ function admin_modules_list()
 			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
 			foreach ($modules_not_installed_array as $alias)
 			{
-				$file_install = file_exists('modules/' . $alias . '/install.php');
+				$file_install = is_dir('modules/' . $alias);
 				if ($file_install)
 				{
 					$class_file_install = '';
@@ -166,8 +166,8 @@ function admin_modules_list()
 		}
 	}
 	$output .= '</table></div>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -183,7 +183,7 @@ function admin_modules_list()
 
 function admin_modules_form()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define fields for existing user */
 
@@ -209,7 +209,7 @@ function admin_modules_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -285,6 +285,6 @@ function admin_modules_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

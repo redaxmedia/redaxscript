@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -24,7 +24,7 @@ function fb_group_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -44,7 +44,7 @@ function fb_group_render_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $type
@@ -246,7 +246,7 @@ function fb_group($type = '', $options = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $message
@@ -280,7 +280,7 @@ function fb_group_parser($message = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param integer $id
@@ -301,7 +301,7 @@ function fb_group_user_link($id = '', $name = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param integer $id
@@ -332,7 +332,7 @@ function fb_group_user_image($id = '', $name = '', $type = '', $mode = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @return string
@@ -368,7 +368,7 @@ function fb_group_get_access_token()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Modules
+ * @category Module
  * @author Henry Ruhs
  *
  * @param string $type

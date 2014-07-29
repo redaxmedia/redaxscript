@@ -17,8 +17,7 @@
 
 function loader($type = '', $mode = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
-
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	if ($mode == 'inline' || $mode == 'outline')
 	{
 		/* get module scripts */
@@ -204,7 +203,7 @@ function loader($type = '', $mode = '')
 
 function styles()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* parse loader ini */
 
@@ -263,8 +262,8 @@ function styles()
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -284,7 +283,7 @@ function scripts($mode = '')
 {
 	if ($mode == '')
 	{
-		Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+		$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	}
 
 	/* parse loader ini */
@@ -308,7 +307,7 @@ function scripts($mode = '')
 
 	if ($mode == 'startup')
 	{
-		$output = '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
+		$output .= '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
 	}
 
 	/* else general mode */
@@ -360,11 +359,11 @@ function scripts($mode = '')
 			$output .= '<script src="' . REWRITE_ROUTE . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
-	echo $output;
 	if ($mode == '')
 	{
-		Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	}
+	echo $output;
 }
 
 /**

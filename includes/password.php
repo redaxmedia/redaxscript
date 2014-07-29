@@ -13,6 +13,8 @@
 
 function password_reset_form()
 {
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+
 	/* disable fields if attack blocked */
 
 	if (ATTACK_BLOCKED > 9)
@@ -26,7 +28,7 @@ function password_reset_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('password_reset') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('password_reset') . '</h2>';
 	$output .= form_element('form', 'form_reset', 'js_validate_form form_default form_reset', '', '', '', 'action="' . REWRITE_ROUTE . 'password_reset" method="post"');
 	$output .= form_element('fieldset', '', 'set_reset', '', '', l('fields_request') . l('point')) . '<ul>';
 
@@ -46,6 +48,7 @@ function password_reset_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'password_reset_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/password_reset'] = 'visited';
 	echo $output;
 }

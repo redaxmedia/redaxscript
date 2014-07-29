@@ -13,7 +13,7 @@
 
 function login_form()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -42,7 +42,7 @@ function login_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('login') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('login') . '</h2>';
 	$output .= form_element('form', 'form_login', 'js_validate_form form_default form_login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
 	$output .= form_element('fieldset', '', 'set_login', '', '', $legend) . '<ul>';
 	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
@@ -72,9 +72,9 @@ function login_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'login_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/login'] = 'visited';
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

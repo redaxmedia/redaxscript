@@ -6,7 +6,7 @@
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Tests
+ * @category Test
  * @author Henry Ruhs
  */
 
@@ -39,14 +39,25 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public static function setUpBeforeClass()
 	{
-		$callHome = Redaxscript_Db::forPrefixTable('modules')->create();
-		$callHome->set(array(
+		$module = new Redaxscript_Module(array(
 			'name' => 'Call home',
 			'alias' => 'call_home',
-			'status' => 1,
-			'access' => 0
 		));
-		$callHome->save();
+		$module->install();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		$module = new Redaxscript_Module(array(
+			'alias' => 'call_home',
+		));
+		$module->uninstall();
 	}
 
 	/**
@@ -68,17 +79,6 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 		/* compare */
 
 		$this->assertArrayHasKey('call_home', $result);
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		Redaxscript_Db::forPrefixTable('modules')->where('alias', 'call_home')->deleteMany();
 	}
 
 	/**
@@ -157,7 +157,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
  * @since 2.2.0
  */
 
-class Redaxscript_Modules_Call_Home
+class Redaxscript_Module_Call_Home
 {
 	public static function hookMethod($first = null, $second = null)
 	{

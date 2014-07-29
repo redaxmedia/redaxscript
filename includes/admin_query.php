@@ -639,13 +639,30 @@ function admin_install()
 	{
 		/* install module */
 
-		if (file_exists('modules/' . ALIAS_PARAMETER . '/install.php'))
+		if (is_dir('modules/' . ALIAS_PARAMETER))
 		{
 			$module = retrieve('id', 'modules', 'alias', ALIAS_PARAMETER);
 			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
 			{
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
-				call_user_func(ALIAS_PARAMETER . '_' . ADMIN_PARAMETER);
+				include_once('modules/' . ALIAS_PARAMETER . '/index.php');
+				$function = ALIAS_PARAMETER . '_' . ADMIN_PARAMETER;
+				$object = 'Redaxscript_Module_' . mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE);
+				$method = str_replace('_', '', mb_convert_case(ADMIN_PARAMETER, MB_CASE_TITLE));
+
+				/* method exists */
+
+				if (method_exists($object, $method))
+				{
+					call_user_func(array($object, $method));
+				}
+
+				/* function exists */
+
+				else if (function_exists($function))
+				{
+					call_user_func($function);
+				}
 			}
 		}
 	}

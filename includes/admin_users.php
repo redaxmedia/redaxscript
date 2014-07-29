@@ -13,7 +13,7 @@
 
 function admin_users_list()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query users */
 
@@ -23,7 +23,7 @@ function admin_users_list()
 
 	/* collect listing output */
 
-	$output = '<h2 class="title_content">' . l('users') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('users') . '</h2>';
 	$output .= '<div class="wrapper_button_admin">';
 	if (USERS_NEW == 1)
 	{
@@ -146,8 +146,8 @@ function admin_users_list()
 		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -163,7 +163,7 @@ function admin_users_list()
 
 function admin_users_form()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define fields for existing user */
 
@@ -200,7 +200,7 @@ function admin_users_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -304,6 +304,6 @@ function admin_users_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

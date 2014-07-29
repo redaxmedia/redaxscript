@@ -81,7 +81,7 @@ class Redaxscript_Hook
 		foreach (self::$_modules as $module)
 		{
 			$function = $module . '_' . $hook;
-			$object = 'Redaxscript_Modules_' . mb_convert_case($module, MB_CASE_TITLE);
+			$object = 'Redaxscript_Module_' . mb_convert_case($module, MB_CASE_TITLE);
 			$method = str_replace('_', '', mb_convert_case($hook, MB_CASE_TITLE));
 
 			/* method exists */

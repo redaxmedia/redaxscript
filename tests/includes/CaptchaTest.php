@@ -7,7 +7,7 @@ include_once('tests/stubs.php');
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Tests
+ * @category Test
  * @author Henry Ruhs
  * @author Gary Aylward
  */

@@ -13,8 +13,8 @@
 
 function admin_settings_form()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
-	$output = '<h2 class="title_content">' . l('settings') . '</h2>';
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output .= '<h2 class="title_content">' . l('settings') . '</h2>';
 	$output .= form_element('form', 'form_admin', 'js_validate_form js_accordion form_admin', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
@@ -181,6 +181,6 @@ function admin_settings_form()
 	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large_admin button_cancel_admin', l('cancel'), 'admin');
 	$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', 'update', l('save'));
 	$output .= '</form>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }

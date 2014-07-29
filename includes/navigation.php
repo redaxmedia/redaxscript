@@ -16,7 +16,7 @@
 
 function navigation_list($table = '', $options = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -222,8 +222,8 @@ function navigation_list($table = '', $options = '')
 	{
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -241,7 +241,7 @@ function navigation_list($table = '', $options = '')
 
 function languages_list($options = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -297,8 +297,8 @@ function languages_list($options = '')
 	{
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -316,7 +316,7 @@ function languages_list($options = '')
 
 function templates_list($options = '')
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -374,8 +374,8 @@ function templates_list($options = '')
 	{
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -391,14 +391,15 @@ function templates_list($options = '')
 
 function login_list()
 {
+	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
 	{
-		$output = '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'rel="nofollow"') . '</li>';
 		$output .= '<li class="item_administration">' . anchor_element('internal', '', '', l('administration'), 'admin', '', 'rel="nofollow"') . '</li>';
 	}
 	else
 	{
-		$output = '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'rel="nofollow"') . '</li>';
 		if (s('reminder') == 1)
 		{
 			$output .= '<li class="item_reminder">' . anchor_element('internal', '', '', l('reminder'), 'reminder', '', 'rel="nofollow"') . '</li>';
@@ -409,5 +410,6 @@ function login_list()
 		}
 	}
 	$output = '<ul class="list_login">' . $output . '</ul>';
+	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }
