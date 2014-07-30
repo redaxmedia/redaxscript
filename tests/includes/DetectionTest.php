@@ -78,7 +78,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = New Redaxscript_Detection_Language($this->_registry);
+		$detection = new Redaxscript_Detection_Language($this->_registry);
 
 		/* result */
 
@@ -105,7 +105,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = New Redaxscript_Detection_Template($this->_registry);
+		$detection = new Redaxscript_Detection_Template($this->_registry);
 
 		/* result */
 
@@ -131,8 +131,8 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		Redaxscript_Request::setQuery('l', 'en');
 		Redaxscript_Request::setQuery('t', 'default');
 		$this->_registry->init();
-		$detectionLanguage = New Redaxscript_Detection_Language($this->_registry);
-		$detectionTemplate = New Redaxscript_Detection_Template($this->_registry);
+		$detectionLanguage = new Redaxscript_Detection_Language($this->_registry);
+		$detectionTemplate = new Redaxscript_Detection_Template($this->_registry);
 
 		/* result */
 

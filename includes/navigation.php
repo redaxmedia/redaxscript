@@ -256,7 +256,7 @@ function languages_list($options = '')
 
 	/* languages directory object */
 
-	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory = new Redaxscript_Directory('languages', 'misc.php');
 	$languages_directory_array = $languages_directory->get();
 
 	/* collect languages output */
@@ -331,7 +331,7 @@ function templates_list($options = '')
 
 	/* templates directory object */
 
-	$templates_directory = New Redaxscript_Directory('templates', array(
+	$templates_directory = new Redaxscript_Directory('templates', array(
 		'admin',
 		'install'
 	));

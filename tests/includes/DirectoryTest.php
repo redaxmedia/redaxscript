@@ -96,7 +96,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path), $exclude);
+		$directory = new Redaxscript_Directory(vfsStream::url($path), $exclude);
 
 		/* result */
 
@@ -122,7 +122,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory = new Redaxscript_Directory(vfsStream::url($path[1]));
 		$directory->create($path[0], 511);
 
 		/* result */
@@ -149,7 +149,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory = new Redaxscript_Directory(vfsStream::url($path[1]));
 		$directory->remove($path[0]);
 
 		/* result */
