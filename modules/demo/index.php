@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Redaxscript Demo Module
+ *
+ * @since 2.2.0
+ *
+ * @package Redaxscript
+ * @category Module
+ * @author Henry Ruhs
+ */
+
 class Redaxscript_Module_Demo extends Redaxscript_Module
 {
 	/**
