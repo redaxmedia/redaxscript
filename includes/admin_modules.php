@@ -55,7 +55,7 @@ function admin_modules_list()
 					}
 				}
 				$modules_installed_array[] = $alias;
-				$file_install = file_exists('modules/' . $alias . '/install.php');
+				$file_install = is_dir('modules/' . $alias);
 
 				/* build class string */
 
@@ -205,7 +205,7 @@ function admin_modules_form()
 		$wording_submit = l('save');
 		$route = 'admin/process/modules/' . $id;
 	}
-	$file_install = file_exists('modules/' . $alias . '/install.php');
+	$file_install = is_dir('modules/' . $alias);
 
 	/* collect output */
 
