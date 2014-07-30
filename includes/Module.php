@@ -40,7 +40,7 @@ class Redaxscript_Module
 	{
 		if (is_array($module))
 		{
-			self::$_module = array_merge(self::$_module, $module);
+			static::$_module = array_merge(static::$_module, $module);
 		}
 	}
 
@@ -54,9 +54,12 @@ class Redaxscript_Module
 
 	public function install()
 	{
-		$module = Redaxscript_Db::forPrefixTable('modules')->create();
-		$module->set(self::$_module);
-		$module->save();
+		if (isset(static::$_module['name']) && isset(static::$_module['alias']))
+		{
+			$module = Redaxscript_Db::forPrefixTable('modules')->create();
+			$module->set(static::$_module);
+			$module->save();
+		}
 	}
 
 	/**
@@ -67,6 +70,9 @@ class Redaxscript_Module
 
 	public function uninstall()
 	{
-		Redaxscript_Db::forPrefixTable('modules')->where('alias', self::$_module['alias'])->deleteMany();
+		if (isset(static::$_module['alias']))
+		{
+			Redaxscript_Db::forPrefixTable('modules')->where('alias', static::$_module['alias'])->deleteMany();
+		}
 	}
 }
