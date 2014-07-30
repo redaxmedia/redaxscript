@@ -148,6 +148,10 @@ function admin_modules_list()
 				/* collect table row */
 
 				$output .= '<tr';
+				if ($alias)
+				{
+					$output .= ' id="' . $alias . '"';
+				}
 				if ($class_file_install)
 				{
 					$output .= ' class="' . $class_file_install . '"';
@@ -257,6 +261,7 @@ function admin_modules_form()
 
 	/* collect hidden output */
 
+	$output .= form_element('hidden', '', '', 'alias', $alias);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 
 	/* cancel button */

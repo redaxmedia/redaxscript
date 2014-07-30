@@ -75,6 +75,7 @@ function admin_process()
 		/* modules */
 
 		case 'modules';
+			$alias = clean($_POST['alias'], 2);
 			$status = $r['status'] = clean($_POST['status'], 0);
 			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
 			{
