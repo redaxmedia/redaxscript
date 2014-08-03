@@ -11,7 +11,6 @@ include_once('includes/get.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
-include_once('includes/misc.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/replace.php');

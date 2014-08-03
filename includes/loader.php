@@ -392,7 +392,39 @@ function scripts_transport($minify = '')
 
 	/* extend redaxscript object */
 
-	$public_constants = explode(', ', b('constant_public'));
+	$public_constants = array(
+		'TOKEN',
+		'LOGGED_IN',
+		'FIRST_PARAMETER',
+		'FIRST_SUB_PARAMETER',
+		'SECOND_PARAMETER',
+		'SECOND_SUB_PARAMETER',
+		'THIRD_PARAMETER',
+		'THIRD_SUB_PARAMETER',
+		'ADMIN_PARAMETER',
+		'TABLE_PARAMETER',
+		'ID_PARAMETER',
+		'ALIAS_PARAMETER',
+		'LAST_PARAMETER',
+		'LAST_SUB_PARAMETER',
+		'FIRST_TABLE',
+		'SECOND_TABLE',
+		'THIRD_TABLE',
+		'LAST_TABLE',
+		'FULL_ROUTE',
+		'FULL_TOP_ROUTE',
+		'REWRITE_ROUTE',
+		'LANGUAGE_ROUTE',
+		'TEMPLATE_ROUTE',
+		'REFRESH_ROUTE',
+		'MY_IP',
+		'MY_BROWSER',
+		'MY_BROWSER_VERSION',
+		'MY_ENGINE',
+		'MY_DESKTOP',
+		'MY_MOBILE',
+		'MY_TABLET'
+	);
 
 	/* collect output */
 

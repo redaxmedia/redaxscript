@@ -91,14 +91,117 @@ function clean_special($input = '')
 
 function clean_script($input = '')
 {
-	$search_characters = explode(', ', b('script_characters'));
-	$search = explode(', ', b('script_tags') . ', ' . b('script_handlers'));
+	$script_characters = array(
+		chr(0x2a),
+		chr(0x2b),
+		chr(0x2d) . chr(0x2d),
+		chr(0x23),
+		chr(0x25),
+		chr(0x26),
+		chr(0x27),
+		chr(0x28) . chr(0x29),
+		chr(0x3b),
+		chr(0x5c) . chr(0x5c),
+		chr(0x7b),
+		chr(0x7d)
+	);
+	$script_tags = array(
+		'alert',
+		'code',
+		'expression',
+		'java',
+		'script',
+		'perl',
+		'print',
+		'xss'
+	);
+	$script_handlers = array(
+		'fscommand',
+		'onabort',
+		'onactivate',
+		'onafterprint',
+		'onafterupdate',
+		'onbeforeactivate',
+		'onbeforecopy',
+		'onbeforecut',
+		'onbeforedeactivate',
+		'onbeforeeditfocus',
+		'onbeforepaste',
+		'onbeforeprint',
+		'onbeforeunload',
+		'onbeforeupdate',
+		'onblur',
+		'onbounce',
+		'oncellchange',
+		'onchange',
+		'onclick',
+		'oncontextmenu',
+		'oncontrolselect',
+		'oncopy',
+		'oncut',
+		'ondataavailable',
+		'ondatasetchanged',
+		'ondatasetcomplete',
+		'ondblclick',
+		'ondeactivate',
+		'ondrag',
+		'ondragend',
+		'ondragenter',
+		'ondragleave',
+		'ondragover',
+		'ondragstart',
+		'ondrop',
+		'onerror',
+		'onerrorupdate',
+		'onfilterchange',
+		'onfinish',
+		'onfocus',
+		'onfocusin',
+		'onfocusout',
+		'onhelp',
+		'onkeydown',
+		'onkeypress',
+		'onkeyup',
+		'onlayoutcomplete',
+		'onload',
+		'onlosecapture',
+		'onmousedown',
+		'onmouseenter',
+		'onmouseleave',
+		'onmousemove',
+		'onmouseout',
+		'onmouseover',
+		'onmouseup',
+		'onmousewheel',
+		'onmove',
+		'onmoveend',
+		'onmovestart',
+		'onpaste',
+		'onpropertychange',
+		'onreadystatechange',
+		'onreset',
+		'onresize',
+		'onresizeend',
+		'onresizestart',
+		'onrowenter',
+		'onrowexit',
+		'onrowsdelete',
+		'onrowsinserted',
+		'onscroll',
+		'onselect',
+		'onselectionchange',
+		'onselectstart',
+		'onstartonstop',
+		'onsubmit',
+		'onunload'
+	);
+	$search = $script_tags . $script_handlers;
 	foreach ($search as $key => $value)
 	{
 		$replace[$key] = '[' . $value . ']';
 		$search[$key] = '/' . $value . '/i';
 	}
-	$output = str_replace($search_characters, '', $input);
+	$output = str_replace($script_characters, '', $input);
 	$output = preg_replace($search, $replace, $output);
 	return $output;
 }
@@ -119,7 +222,46 @@ function clean_script($input = '')
 
 function clean_html($input = '')
 {
-	$search = explode(', ', b('html_tags') . ', ' . b('html_attributes'));
+	$html_tags = array(
+		'applet',
+		'base',
+		'basefont',
+		'bgsound',
+		'body',
+		'embed',
+		'font',
+		'form',
+		'frame',
+		'frameset',
+		'function',
+		'head',
+		'html',
+		'isindex',
+		'iframe',
+		'ilayer',
+		'img',
+		'input',
+		'layer',
+		'link',
+		'meta',
+		'object',
+		'table',
+		'title',
+		'xml'
+	);
+	$html_attributes = array(
+		'background',
+		'codebase',
+		'dynsrc',
+		'href',
+		'lowsrc',
+		'name',
+		'rel',
+		'src',
+		'type',
+		'url'
+	);
+	$search =$html_tags . $html_attributes;
 	foreach ($search as $key => $value)
 	{
 		$replace[$key] = '[' . $value . ']';

@@ -54,7 +54,14 @@ function routing()
 
 	/* call default post */
 
-	$post_list = explode(', ', b('default_post'));
+	$post_list = array(
+		'comment',
+		'login',
+		'password_reset',
+		'registration',
+		'reminder',
+		'search'
+	);
 	foreach ($post_list as $value)
 	{
 		if ($_POST[$value . '_post'] && function_exists($value . '_post'))

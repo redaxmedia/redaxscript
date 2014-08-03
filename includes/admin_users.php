@@ -233,7 +233,7 @@ function admin_users_form()
 
 	/* languages directory object */
 
-	$languages_directory = new Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory = new Redaxscript_Directory('languages');
 	$languages_directory_array = $languages_directory->get();
 
 	/* build languages select */

@@ -157,7 +157,7 @@ class Redaxscript_Helper
 
 		if ($this->_registry->get('myBrowser') && $this->_registry->get('myBrowserVersion'))
 		{
-			$output[] = $this->_registry->get('myBrowser') . $this->_registry->get('myBrowserVersion');
+			$output[] = $this->_registry->get('myBrowser') . ' v' . $this->_registry->get('myBrowserVersion');
 		}
 
 		/* engine */

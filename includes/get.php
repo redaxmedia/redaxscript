@@ -224,27 +224,69 @@ function get_user_agent($mode = '')
 	switch ($mode)
 	{
 		case 2:
-			$type = 'agent_engines';
+			/* engines */
+
+			$type_array = array(
+				'gecko',
+				'khtml',
+				'presto',
+				'trident',
+				'webkit'
+			);
 			break;
 		case 3:
-			$type = 'agent_desktops';
+			/* desktops */
+
+			$type_array = array(
+				'bsd',
+				'linux',
+				'macintosh',
+				'solaris',
+				'windows'
+			);
 			break;
 		case 4:
-			$type = 'agent_mobiles';
+			/* mobiles */
+
+			$type_array = array(
+				'mobile',
+				'android',
+				'blackberry',
+				'ipod',
+				'iphone',
+				'palm'
+			);
 			break;
 		case 5:
-			$type = 'agent_tablets';
+			/* tablets */
+
+			$type_array = array(
+				'tablet',
+				'android',
+				'ipad',
+				'kindle',
+				'xoom'
+			);
 			break;
 		default:
-			$type = 'agent_browsers';
+			/* _browsers */
+
+			$type_array = array(
+				'chrome',
+				'firefox',
+				'konqueror',
+				'msie',
+				'netscape',
+				'opera',
+				'safari'
+			);
 			break;
 	}
-	$list = explode(', ', b($type));
 	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
 
 	/* collect output */
 
-	foreach ($list as $value)
+	foreach ($type_array as $value)
 	{
 		if (stristr($user_agent, $value))
 		{
