@@ -62,7 +62,13 @@ class Redaxscript_Autoloader
 				$directory
 			);
 		}
-		spl_autoload_register(array(__CLASS__, '_load'));
+
+		/* register autoload */
+
+		spl_autoload_register(array(
+			__CLASS__,
+			'_load'
+		));
 	}
 
 	/**
