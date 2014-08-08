@@ -19,7 +19,7 @@ function breadcrumb()
 			'divider' => 'divider'
 		)
 	);
-	$breadcrumb = new Redaxscript_Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript_Language::getInstance(), $options);
+	$breadcrumb = new Redaxscript\Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript_Language::getInstance(), $options);
 	echo $breadcrumb->render();
 }
 

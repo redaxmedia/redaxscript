@@ -21,8 +21,8 @@ Redaxscript_Hook::init($registry);
 
 /* detection */
 
-$detectionLanguage = new Redaxscript_Detection_Language($registry);
-$detectionTemplate = new Redaxscript_Detection_Template($registry);
+$detectionLanguage = new Redaxscript\Detection\Language($registry);
+$detectionTemplate = new Redaxscript\Detection\Template($registry);
 
 /* set language and template */
 

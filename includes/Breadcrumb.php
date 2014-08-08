@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to provide a location based breadcrumb navigation
@@ -11,7 +12,7 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Breadcrumb
+class Breadcrumb
 {
 	/**
 	 * instance of the registry class
@@ -55,12 +56,12 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript\Registry $registry instance of the registry class
-	 * @param Redaxscript_Language $language instance of the language class
+	 * @param Registry $registry instance of the registry class
+	 * @param Language $language instance of the language class
 	 * @param array $options options of the breadcrumb
 	 */
 
-	public function __construct(Redaxscript\Registry $registry, Redaxscript_Language $language, $options = null)
+	public function __construct(Registry $registry, Language $language, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
@@ -141,7 +142,7 @@ class Redaxscript_Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_options['className']['divider'] . '">' . Redaxscript\Db::getSettings('divider') . '</li>';
+					$output .= '<li class="' . $this->_options['className']['divider'] . '">' . Db::getSettings('divider') . '</li>';
 				}
 			}
 		}
@@ -271,7 +272,7 @@ class Redaxscript_Breadcrumb
 	{
 		/* join first title */
 
-		$this->_breadcrumbArray[$key]['title'] = Redaxscript\Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
+		$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
 
 		/* set route if not end */
 
@@ -285,7 +286,7 @@ class Redaxscript_Breadcrumb
 		if ($this->_registry->get('secondTable'))
 		{
 			$key++;
-			$this->_breadcrumbArray[$key]['title'] = Redaxscript\Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
+			$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
 
 			/* set route if not end */
 
@@ -299,7 +300,7 @@ class Redaxscript_Breadcrumb
 			if ($this->_registry->get('thirdTable'))
 			{
 				$key++;
-				$this->_breadcrumbArray[$key]['title'] = Redaxscript\Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
+				$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
 			}
 		}
 	}
