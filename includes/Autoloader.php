@@ -19,7 +19,7 @@ class Redaxscript_Autoloader
 	 * @var string
 	 */
 
-	protected static $_nameSpace = 'Redaxscript_';
+	protected static $_nameSpace = 'Redaxscript';
 
 	/**
 	 * directory to search for class files

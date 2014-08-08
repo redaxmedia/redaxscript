@@ -33,7 +33,14 @@ class Redaxscript_Hook
 		$accessValidator = new Redaxscript_Validator_Access();
 		$modulesDirectory = new Redaxscript_Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
-		$modulesInstalled = Redaxscript_Db::forPrefixTable('modules')->where('status', 1)->findMany();
+		try
+		{
+			$modulesInstalled = Redaxscript_Db::forPrefixTable('modules')->where('status', 1)->findMany();
+		}
+		catch (PDOException $exception)
+		{
+			$modulesInstalled = null;
+		}
 
 		/* proccess installed modules */
 

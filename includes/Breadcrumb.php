@@ -10,6 +10,7 @@
  * @author Henry Ruhs
  * @author Gary Aylward
  */
+
 class Redaxscript_Breadcrumb
 {
 	/**

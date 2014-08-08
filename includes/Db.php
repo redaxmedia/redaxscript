@@ -75,6 +75,13 @@ class Redaxscript_Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+		try
+		{
+			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+		}
+		catch (PDOException $exception)
+		{
+			return false;
+		}
 	}
 }
