@@ -52,7 +52,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	{
 		/* first parameter */
 
-		$ultra = Redaxscript_Db::forPrefixTable('categories')->create();
+		$ultra = Redaxscript\Db::forPrefixTable('categories')->create();
 		$ultra->set(array(
 			'title' => 'Ultra',
 			'alias' => 'ultra',
@@ -64,7 +64,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 		/* second parameter */
 
-		$lightweight = Redaxscript_Db::forPrefixTable('categories')->create();
+		$lightweight = Redaxscript\Db::forPrefixTable('categories')->create();
 		$lightweight->set(array(
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
@@ -76,7 +76,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 		/* third parameter */
 
-		$cms = Redaxscript_Db::forPrefixTable('articles')->create();
+		$cms = Redaxscript\Db::forPrefixTable('articles')->create();
 		$cms->set(array(
 			'title' => 'CMS',
 			'alias' => 'cms',
@@ -95,9 +95,9 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
-		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
-		Redaxscript_Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
+		Redaxscript\Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
+		Redaxscript\Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
+		Redaxscript\Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
 	}
 
 	/**

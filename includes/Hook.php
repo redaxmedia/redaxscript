@@ -35,7 +35,7 @@ class Redaxscript_Hook
 		$modulesAvailable = $modulesDirectory->get();
 		try
 		{
-			$modulesInstalled = Redaxscript_Db::forPrefixTable('modules')->where('status', 1)->findMany();
+			$modulesInstalled = Redaxscript\Db::forPrefixTable('modules')->where('status', 1)->findMany();
 		}
 		catch (PDOException $exception)
 		{

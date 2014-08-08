@@ -6,17 +6,17 @@ include_once('includes/Autoloader.php');
 
 /* init */
 
-Redaxscript_Autoloader::init();
-Redaxscript_Request::init();
+Redaxscript\Autoloader::init();
+Redaxscript\Request::init();
 
 /* registry and config */
 
 $registry = Redaxscript_Registry::getInstance();
-$config = Redaxscript_Config::getInstance();
+$config = Redaxscript\Config::getInstance();
 
 /* database and hook */
 
-Redaxscript_Db::init($config);
+Redaxscript\Db::init($config);
 Redaxscript_Hook::init($registry);
 
 /* detection */

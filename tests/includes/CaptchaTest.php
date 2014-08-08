@@ -41,7 +41,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	protected function tearDown()
 	{
-		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
 
 		/* result */
 
@@ -118,7 +118,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
 
 		/* result */
 

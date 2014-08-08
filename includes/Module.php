@@ -56,7 +56,7 @@ class Redaxscript_Module
 	{
 		if (isset(static::$_module['name']) && isset(static::$_module['alias']))
 		{
-			$module = Redaxscript_Db::forPrefixTable('modules')->create();
+			$module = Redaxscript\Db::forPrefixTable('modules')->create();
 			$module->set(static::$_module);
 			$module->save();
 		}
@@ -72,7 +72,7 @@ class Redaxscript_Module
 	{
 		if (isset(static::$_module['alias']))
 		{
-			Redaxscript_Db::forPrefixTable('modules')->where('alias', static::$_module['alias'])->deleteMany();
+			Redaxscript\Db::forPrefixTable('modules')->where('alias', static::$_module['alias'])->deleteMany();
 		}
 	}
 }

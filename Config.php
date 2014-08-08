@@ -1,4 +1,6 @@
 <?php
+namespace Redaxscript;
+use Redaxscript_Singleton as Singleton;
 
 /**
  * parent class to store database config
@@ -10,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Config extends Redaxscript_Singleton
+class Config extends Singleton
 {
 	/**
 	 * database config

@@ -1,4 +1,7 @@
 <?php
+namespace Redaxscript;
+use ORM as ORM;
+use PDO as PDO;
 
 /**
  * children class to handle the database
@@ -10,17 +13,17 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Db extends ORM
+class Db extends ORM
 {
 	/**
 	 * connect to database
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param Redaxscript_Config $config instance of the config class
+	 * @param Config $config instance of the config class
 	 */
 
-	public static function init(Redaxscript_Config $config)
+	public static function init(Config $config)
 	{
 		/* mysql */
 
@@ -54,13 +57,13 @@ class Redaxscript_Db extends ORM
 	 * @param string $table name of the table
 	 * @param string $connection which connection to use
 	 *
-	 * @return Redaxscript_Db
+	 * @return Db
 	 */
 
 	public static function forPrefixTable($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(Redaxscript_Config::get('prefix') . $table, array(), $connection);
+		return new self(Config::get('prefix') . $table, array(), $connection);
 	}
 
 	/**
@@ -75,13 +78,6 @@ class Redaxscript_Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		try
-		{
-			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
-		}
-		catch (PDOException $exception)
-		{
-			return false;
-		}
+		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
 	}
 }

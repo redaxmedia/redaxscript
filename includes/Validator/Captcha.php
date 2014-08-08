@@ -29,7 +29,7 @@ class Redaxscript_Validator_Captcha implements Redaxscript_Validator_Interface
 
 		/* validate raw and hash */
 
-		if (sha1($raw) === $hash || Redaxscript_Db::getSettings('captcha') === 0)
+		if (sha1($raw) === $hash || Redaxscript\Db::getSettings('captcha') === 0)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

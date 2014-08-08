@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to automatically load required class files
@@ -11,7 +12,7 @@
  * @author Sven Weingartner
  */
 
-class Redaxscript_Autoloader
+class Autoloader
 {
 	/**
 	 * project namespace
@@ -19,7 +20,7 @@ class Redaxscript_Autoloader
 	 * @var string
 	 */
 
-	protected static $_nameSpace = 'Redaxscript';
+	protected static $_namespace = 'Redaxscript';
 
 	/**
 	 * directory to search for class files
@@ -45,10 +46,11 @@ class Redaxscript_Autoloader
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param mixed $directory specify optional directory to search
+	 * @param mixed $directory optional directory to search
+	 * @param mixed $namespace project namespace
 	 */
 
-	public static function init($directory = null)
+	public static function init($directory = null, $namespace = null)
 	{
 		/* handle directory */
 
@@ -61,6 +63,13 @@ class Redaxscript_Autoloader
 			self::$_directory = array(
 				$directory
 			);
+		}
+
+		/* handle namespace */
+
+		if (is_array($namespace))
+		{
+			self::$_namespace = $namespace;
 		}
 
 		/* register autoload */
@@ -81,16 +90,18 @@ class Redaxscript_Autoloader
 
 	protected static function _load($className = null)
 	{
-		$fileName = str_replace(self::$_nameSpace, '', $className);
-		$filePath = str_replace('_', '/', $fileName) . self::$_fileSuffix;
+		$fileName = str_replace(self::$_namespace, '', $className);
+		$fileName = str_replace('_', '/', $fileName);
+		$fileName = str_replace('\\', '/', $fileName);
+		$filePath = $fileName . self::$_fileSuffix;
 
 		/* include files as needed */
 
 		foreach (self::$_directory as $directory)
 		{
-			if (file_exists($directory . '/' . $filePath))
+			if (file_exists($directory . $filePath))
 			{
-				include($directory . '/' . $filePath);
+				include_once($directory . $filePath);
 			}
 		}
 	}

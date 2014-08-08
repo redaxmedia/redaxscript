@@ -30,7 +30,7 @@ class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = Redaxscript_Db::forPrefixTable('modules')->where('alias', 'test')->findOne()->name;
+		$result = Redaxscript\Db::forPrefixTable('modules')->where('alias', 'test')->findOne()->name;
 
 		/* compare */
 
@@ -54,8 +54,8 @@ class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		Redaxscript_Db::clearCache();
-		$result = Redaxscript_Db::forPrefixTable('modules')->where('alias', 'test')->findOne();
+		Redaxscript\Db::clearCache();
+		$result = Redaxscript\Db::forPrefixTable('modules')->where('alias', 'test')->findOne();
 
 		/* compare */
 
