@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to provide the current language
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Language extends Redaxscript_Singleton
+class Language extends Singleton
 {
 	/**
 	 * array of language values
@@ -78,13 +79,13 @@ class Redaxscript_Language extends Redaxscript_Singleton
 
 			if (function_exists('mb_convert_encoding'))
 			{
-				try
+				$charset = Db::getSettings('charset');
+
+				/* process if charset */
+
+				if (isset($charset))
 				{
-					$output = mb_convert_encoding($values[$key], Redaxscript\Db::getSettings('charset'), 'utf-8, latin1');
-				}
-				catch (PDOException $exception)
-				{
-					$output = mb_convert_encoding($values[$key], 'utf-8', 'utf-8, latin1');
+					$output = mb_convert_encoding($values[$key], $charset, 'utf-8, latin1');
 				}
 			}
 		}

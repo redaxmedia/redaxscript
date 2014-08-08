@@ -120,7 +120,7 @@ function admin_modules_list()
 	{
 		/* modules directory object */
 
-		$modules_directory = new Redaxscript_Directory('modules');
+		$modules_directory = new Redaxscript\Directory('modules');
 		$modules_directory_array = $modules_directory->get();
 		if ($modules_directory_array && $modules_installed_array)
 		{

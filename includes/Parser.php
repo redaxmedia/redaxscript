@@ -116,14 +116,14 @@ class Redaxscript_Parser
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript\Registry $registry instance of the registry class
 	 * @param Redaxscript_Language $language instance of the language class
 	 * @param string $input content be parsed
 	 * @param string $route route of the content
 	 * @param array $options options of the parser
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $input = null, $route = null, $options = null)
+	public function __construct(Redaxscript\Registry $registry, Redaxscript_Language $language, $input = null, $route = null, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;

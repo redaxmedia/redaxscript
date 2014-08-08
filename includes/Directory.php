@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to handle directories in the filesystem
@@ -11,7 +12,7 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Directory
+class Directory
 {
 	/**
 	 * name of the directory

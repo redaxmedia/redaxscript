@@ -55,12 +55,12 @@ class Redaxscript_Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript\Registry $registry instance of the registry class
 	 * @param Redaxscript_Language $language instance of the language class
 	 * @param array $options options of the breadcrumb
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $options = null)
+	public function __construct(Redaxscript\Registry $registry, Redaxscript_Language $language, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;

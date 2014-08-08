@@ -29,7 +29,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_registry = Redaxscript\Registry::getInstance();
 	}
 
 	/**

@@ -38,7 +38,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_registry = Redaxscript\Registry::getInstance();
 		$this->_language = Redaxscript_Language::getInstance();
 	}
 

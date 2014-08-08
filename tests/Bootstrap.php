@@ -19,7 +19,7 @@ Redaxscript_Config::set('password', 'travis');
 
 /* registry and config */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript\Registry::getInstance();
 $config = Redaxscript_Config::getInstance();
 
 /* database and hook */

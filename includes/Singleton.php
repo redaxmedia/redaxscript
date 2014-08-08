@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * abstract class to build a singleton class
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-abstract class Redaxscript_Singleton
+abstract class Singleton
 {
 	/**
 	 * instance of the class

@@ -24,7 +24,7 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 			'query' => Redaxscript\Request::getQuery('t'),
 			'session' => Redaxscript\Request::getSession($this->_registry->get('root') . '/template'),
 			'contents' => $this->_registry->get('lastTable') ? Redaxscript\Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->template : null,
-			'settings' => $this->_registry->get('dbConnected') ? Redaxscript\Db::getSettings('template') : null,
+			'settings' => Redaxscript\Db::getSettings('template'),
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');
 	}

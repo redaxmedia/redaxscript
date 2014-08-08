@@ -1,6 +1,5 @@
 <?php
 namespace Redaxscript;
-use Redaxscript_Singleton as Singleton;
 
 /**
  * parent class to store database config

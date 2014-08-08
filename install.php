@@ -29,7 +29,7 @@ startup();
 
 /* migrate deprecated constants */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript\Registry::getInstance();
 $registry->init(migrate_constants());
 
 /* define meta */
@@ -39,7 +39,7 @@ define('ROBOTS', 'none');
 
 /* registry object */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript\Registry::getInstance();
 $registry->set('title', l('installation'));
 
 /* call loader else render template */

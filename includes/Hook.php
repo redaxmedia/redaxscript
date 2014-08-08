@@ -25,19 +25,19 @@ class Redaxscript_Hook
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript\Registry $registry instance of the registry class
 	 */
 
-	public static function init(Redaxscript_Registry $registry)
+	public static function init(Redaxscript\Registry $registry)
 	{
 		$accessValidator = new Redaxscript_Validator_Access();
-		$modulesDirectory = new Redaxscript_Directory('modules');
+		$modulesDirectory = new Redaxscript\Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
 		try
 		{
 			$modulesInstalled = Redaxscript\Db::forPrefixTable('modules')->where('status', 1)->findMany();
 		}
-		catch (PDOException $exception)
+		catch (\PDOException $exception)
 		{
 			$modulesInstalled = null;
 		}

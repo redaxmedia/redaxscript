@@ -25,7 +25,7 @@ startup();
 
 /* migrate deprecated constants */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript\Registry::getInstance();
 $registry->init(migrate_constants());
 
 /* include files as needed */

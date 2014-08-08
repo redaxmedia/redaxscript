@@ -384,7 +384,7 @@ function scripts_transport($minify = '')
 {
 	/* languages object */
 
-	$language = Redaxscript_Language::getInstance();
+	$language = Redaxscript\Language::getInstance();
 
 	/* languages transport */
 

@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to store the registry
@@ -10,7 +11,7 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Registry extends Redaxscript_Singleton
+class Registry extends Singleton
 {
 	/**
 	 * array of registry values

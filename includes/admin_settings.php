@@ -25,7 +25,7 @@ function admin_settings_form()
 
 	/* languages directory object */
 
-	$languages_directory = new Redaxscript_Directory('languages');
+	$languages_directory = new Redaxscript\Directory('languages');
 	$languages_directory_array = $languages_directory->get();
 
 	/* build languages select */
@@ -43,7 +43,7 @@ function admin_settings_form()
 
 	/* templates directory object */
 
-	$templates_directory = new Redaxscript_Directory('templates', array(
+	$templates_directory = new Redaxscript\Directory('templates', array(
 		'admin',
 		'install'
 	));

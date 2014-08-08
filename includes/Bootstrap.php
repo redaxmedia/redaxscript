@@ -11,7 +11,7 @@ Redaxscript\Request::init();
 
 /* registry and config */
 
-$registry = Redaxscript_Registry::getInstance();
+$registry = Redaxscript\Registry::getInstance();
 $config = Redaxscript\Config::getInstance();
 
 /* database and hook */
@@ -31,7 +31,7 @@ $registry->set('template', $detectionTemplate->getOutput());
 
 /* language */
 
-$language = Redaxscript_Language::getInstance();
+$language = Redaxscript\Language::getInstance();
 $language->init($registry->get('language'));
 
 /* define deprecated constants */

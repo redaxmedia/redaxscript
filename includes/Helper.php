@@ -84,10 +84,10 @@ class Redaxscript_Helper
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Redaxscript\Registry $registry instance of the registry class
 	 */
 
-	public function __construct(Redaxscript_Registry $registry)
+	public function __construct(Redaxscript\Registry $registry)
 	{
 		$this->_registry = $registry;
 	}

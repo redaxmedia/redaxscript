@@ -28,7 +28,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_registry = Redaxscript\Registry::getInstance();
 	}
 
 	/**
