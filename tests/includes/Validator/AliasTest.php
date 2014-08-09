@@ -2,7 +2,7 @@
 use Redaxscript\Validator;
 
 /**
- * AliasTest
+ * ValidatorAliasTest
  *
  * @since 2.2.0
  *
@@ -10,7 +10,7 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Sven Weingartner
  */
-class AliasTest extends PHPUnit_Framework_TestCase
+class ValidatorAliasTest extends PHPUnit_Framework_TestCase
 {
 
 	/**
