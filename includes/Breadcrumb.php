@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 use Redaxscript\Validator;
-use Redaxscript_Validator_Interface as Redaxscript_Validator_Interface;
+use Redaxscript_Validator_Interface;
 
 /**
  * parent class to provide a location based breadcrumb navigation

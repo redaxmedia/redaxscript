@@ -1,6 +1,6 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface as Redaxscript_Validator_Interface;
+use Redaxscript_Validator_Interface;
 
 /**
  * Alias validator
