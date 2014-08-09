@@ -1,17 +1,17 @@
 <?php
-include_once('Config.php');
+use Redaxscript\Config;
 
 /**
- * Redaxscript Config Test
+ * ConfigTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
+class ConfigTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * testSetAndGet
@@ -23,11 +23,11 @@ class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Config::set('host', 'localhost');
+		Config::set('host', 'localhost');
 
 		/* result */
 
-		$result = Redaxscript_Config::get('host');
+		$result = Config::get('host');
 
 		/* compare */
 
@@ -44,7 +44,7 @@ class Redaxscript_Config_Test extends PHPUnit_Framework_TestCase
 	{
 		/* result */
 
-		$result = Redaxscript_Config::get();
+		$result = Config::get();
 
 		/* compare */
 

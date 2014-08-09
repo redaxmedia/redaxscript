@@ -1,33 +1,39 @@
 <?php
+namespace Redaxscript;
 
 /* include as needed */
 
 include_once('includes/Autoloader.php');
+include_once('hook_function.php');
+include_once('hook_method.php');
+/* temp */
+include_once('stubs.php');
+/* temp */
 
 /* init */
 
-Redaxscript_Autoloader::init();
-Redaxscript_Request::init();
+Autoloader::init();
+Request::init();
 
 /* set config */
 
-Redaxscript_Config::set('type', 'mysql');
-Redaxscript_Config::set('host', 'redaxscript.com');
-Redaxscript_Config::set('name', 'd01ae38a');
-Redaxscript_Config::set('user', 'd01ae38a');
-Redaxscript_Config::set('password', 'travis');
+Config::set('type', 'mysql');
+Config::set('host', 'redaxscript.com');
+Config::set('name', 'd01ae38a');
+Config::set('user', 'd01ae38a');
+Config::set('password', 'travis');
 
 /* registry and config */
 
-$registry = Redaxscript\Registry::getInstance();
-$config = Redaxscript_Config::getInstance();
+$registry = Registry::getInstance();
+$config = Config::getInstance();
 
 /* database and hook */
 
-Redaxscript\Db::init($config);
-Redaxscript_Hook::init($registry);
+Db::init($config);
+Hook::init($registry);
 
 /* language */
 
-$language = Redaxscript_Language::getInstance();
+$language = Language::getInstance();
 $language::init('en');

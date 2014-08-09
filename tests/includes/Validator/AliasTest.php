@@ -1,15 +1,16 @@
 <?php
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Alias Test
+ * AliasTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Alias_Test extends PHPUnit_Framework_TestCase
+class AliasTest extends PHPUnit_Framework_TestCase
 {
 
 	/**
@@ -37,7 +38,7 @@ class Redaxscript_Validator_Alias_Test extends PHPUnit_Framework_TestCase
 
 	public function testAlias($alias = '', $mode = '', $expect = '')
 	{
-		$validator = new Redaxscript_Validator_Alias();
+		$validator = new Validator\Alias();
 		$result = $validator->validate($alias, $mode);
 
 		$this->assertEquals($expect, $result);

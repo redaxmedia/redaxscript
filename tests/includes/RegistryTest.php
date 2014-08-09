@@ -1,17 +1,18 @@
 <?php
+use Redaxscript\Registry;
 
 /**
- * Redaxscript Registry Test
+ * RegistryTest
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
  */
 
-class Redaxscript\Registry_Test extends PHPUnit_Framework_TestCase
+class RegistryTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * instance of the registry class
@@ -29,7 +30,7 @@ class Redaxscript\Registry_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript\Registry::getInstance();
+		$this->_registry = Registry::getInstance();
 		$this->_registry->init();
 	}
 

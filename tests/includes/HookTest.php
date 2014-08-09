@@ -1,16 +1,19 @@
 <?php
+use Redaxscript\Hook;
+use Redaxscript\Module;
+use Redaxscript\Registry;
 
 /**
- * Redaxscript Hook Test
+ * HookTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
+class HookTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * instance of the registry class
@@ -28,7 +31,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->_registry = Redaxscript\Registry::getInstance();
+		$this->_registry = Registry::getInstance();
 	}
 
 	/**
@@ -39,7 +42,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public static function setUpBeforeClass()
 	{
-		$module = new Redaxscript_Module(array(
+		$module = new Module(array(
 			'name' => 'Call home',
 			'alias' => 'call_home',
 		));
@@ -54,7 +57,7 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 
 	public static function tearDownAfterClass()
 	{
-		$module = new Redaxscript_Module(array(
+		$module = new Module(array(
 			'alias' => 'call_home',
 		));
 		$module->uninstall();
@@ -70,11 +73,11 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Hook::init($this->_registry);
+		Hook::init($this->_registry);
 
 		/* result */
 
-		$result = Redaxscript_Hook::get();
+		$result = Hook::get();
 
 		/* compare */
 
@@ -91,11 +94,11 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Hook::init($this->_registry);
+		Hook::init($this->_registry);
 
 		/* result */
 
-		$result = Redaxscript_Hook::trigger('hook_method', array(
+		$result = Hook::trigger('hook_method', array(
 			1,
 			2
 		));
@@ -115,11 +118,11 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Hook::init($this->_registry);
+		Hook::init($this->_registry);
 
 		/* result */
 
-		$result = Redaxscript_Hook::trigger('hook_function', array(
+		$result = Hook::trigger('hook_function', array(
 			1,
 			2
 		));
@@ -139,39 +142,14 @@ class Redaxscript_Hook_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Hook::init($this->_registry);
+		Hook::init($this->_registry);
 
 		/* result */
 
-		$result = Redaxscript_Hook::trigger('hook_invalid');
+		$result = Hook::trigger('hook_invalid');
 
 		/* compare */
 
 		$this->assertEquals(false, $result);
 	}
-}
-
-/**
- * testHookMethod
- *
- * @since 2.2.0
- */
-
-class Redaxscript_Module_Call_Home
-{
-	public static function hookMethod($first = null, $second = null)
-	{
-		return $first;
-	}
-}
-
-/**
- * testHookFunction
- *
- * @since 2.2.0
- */
-
-function call_home_hook_function($first = null, $second = null)
-{
-	return $second;
 }

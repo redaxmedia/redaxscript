@@ -1,16 +1,18 @@
 <?php
+use Redaxscript\Db;
+use Redaxscript\Module;
 
 /**
- * Redaxscript Module Test
+ * ModuleTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
+class ModuleTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * testInstall
@@ -22,7 +24,7 @@ class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$module = new Redaxscript_Module(array(
+		$module = new Module(array(
 			'name' => 'Test',
 			'alias' => 'test',
 		));
@@ -30,7 +32,7 @@ class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = Redaxscript\Db::forPrefixTable('modules')->where('alias', 'test')->findOne()->name;
+		$result = Db::forPrefixTable('modules')->where('alias', 'test')->findOne()->name;
 
 		/* compare */
 
@@ -47,15 +49,15 @@ class Redaxscript_Module_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$module = new Redaxscript_Module(array(
+		$module = new Module(array(
 			'alias' => 'test',
 		));
 		$module->uninstall();
 
 		/* result */
 
-		Redaxscript\Db::clearCache();
-		$result = Redaxscript\Db::forPrefixTable('modules')->where('alias', 'test')->findOne();
+		Db::clearCache();
+		$result = Db::forPrefixTable('modules')->where('alias', 'test')->findOne();
 
 		/* compare */
 

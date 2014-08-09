@@ -1,17 +1,18 @@
 <?php
+use Redaxscript\Autoloader;
 
 /**
- * Redaxscript Autoloader Test
+ * AutoloaderTest
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
+class AutoloaderTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * providerFilePath
@@ -38,7 +39,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$autoloader = new Redaxscript_Autoloader;
+		$autoloader = new Autoloader;
 		$autoloader::init('includes');
 		$autoloader::init(array(
 			'.',

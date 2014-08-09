@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Detection;
-use Redaxscript\Db as Db;
-use Redaxscript\Detection as Detection;
-use Redaxscript\Request as Request;
+use Redaxscript\Db;
+use Redaxscript\Detection;
+use Redaxscript\Request;
 
 /**
  * children class to detect the required language

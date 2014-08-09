@@ -14,7 +14,7 @@
 function contents()
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-	$aliasValidator = new Redaxscript_Validator_Alias();
+	$aliasValidator = new Redaxscript/Validator/Alias();
 
 	/* query contents */
 
@@ -72,7 +72,7 @@ function contents()
 
 	else if ($result)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Redaxscript/Validator/Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
@@ -90,7 +90,7 @@ function contents()
 					}
 				}
 				if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-					|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+					|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript/Validator/Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
 				)
 				{
 					$route = build_route('articles', $id);
@@ -112,7 +112,7 @@ function contents()
 				{
 					$output .= '<h2 class="title_content">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
+						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript/Validator/Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK
 					)
 					{
 						$output .= anchor_element('internal', '', '', $title, $route);
@@ -254,7 +254,7 @@ function extras($filter = '')
 
 	if ($result)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Redaxscript/Validator/Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

@@ -1,16 +1,17 @@
 <?php
+use Redaxscript\Language;
 
 /**
- * Redaxscript Language Test
+ * LanguageTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
+class LanguageTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * language
@@ -30,7 +31,7 @@ class Redaxscript_Language_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_language = Redaxscript_Language::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_language->init('de');
 	}
 

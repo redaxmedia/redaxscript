@@ -117,7 +117,7 @@ function search_post()
 
 		else if ($result)
 		{
-			$accessValidator = new Redaxscript_Validator_Access();
+			$accessValidator = new Redaxscript/Validator/Access();
 			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
 			$output .= form_element('fieldset', '', 'set_search_result', '', '', '<span class="title_content_sub title_search_result_sub">' . l('articles') . '</span>') . '<ol class="list_search_result">';
 			while ($r = mysql_fetch_assoc($result))

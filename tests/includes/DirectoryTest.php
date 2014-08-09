@@ -1,18 +1,19 @@
 <?php
-use org\bovigo\vfs\vfsStream;
+use Redaxscript\Directory;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
- * Redaxscript Directory Test
+ * DirectoryTest
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
  */
 
-class Redaxscript\Directory_Test extends PHPUnit_Framework_TestCase
+class DirectoryTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * root
@@ -32,7 +33,7 @@ class Redaxscript\Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		$contents = file_get_contents('tests/provider/directory_set_up.json');
 		$output = json_decode($contents, true);
-		$this->_root = vfsStream::setup('root', 0777, $output);
+		$this->_root = Stream::setup('root', 0777, $output);
 	}
 
 	/**
@@ -96,7 +97,7 @@ class Redaxscript\Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = new Redaxscript\Directory(vfsStream::url($path), $exclude);
+		$directory = new Directory(Stream::url($path), $exclude);
 
 		/* result */
 
@@ -122,12 +123,12 @@ class Redaxscript\Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = new Redaxscript\Directory(vfsStream::url($path[1]));
+		$directory = new Directory(Stream::url($path[1]));
 		$directory->create($path[0], 511);
 
 		/* result */
 
-		$result = scandir(vfsStream::url($path[2]));
+		$result = scandir(Stream::url($path[2]));
 
 		/* compare */
 
@@ -149,12 +150,12 @@ class Redaxscript\Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = new Redaxscript\Directory(vfsStream::url($path[1]));
+		$directory = new Directory(Stream::url($path[1]));
 		$directory->remove($path[0]);
 
 		/* result */
 
-		$result = scandir(vfsStream::url($path[2]));
+		$result = scandir(Stream::url($path[2]));
 
 		/* compare */
 

@@ -1,18 +1,20 @@
 <?php
-include_once('tests/stubs.php');
+use Redaxscript\Captcha;
+use Redaxscript\Db;
+use Redaxscript\Language;
 
 /**
- * Redaxscript Captcha Test
+ * CaptchaTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
  */
 
-class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
+class CaptchaTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * instance of the language class
@@ -30,7 +32,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_language = Redaxscript_Language::getInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
@@ -41,7 +43,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 	protected function tearDown()
 	{
-		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
@@ -54,7 +56,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$captcha = new Redaxscript_Captcha($this->_language);
+		$captcha = new Captcha($this->_language);
 
 		/* result */
 
@@ -75,7 +77,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$captcha = new Redaxscript_Captcha($this->_language);
+		$captcha = new Captcha($this->_language);
 
 		/* result */
 
@@ -101,7 +103,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = new Redaxscript_Captcha($this->_language);
+		$result = new Captcha($this->_language);
 
 		/* compare */
 
@@ -122,7 +124,7 @@ class Redaxscript_Captcha_Test extends PHPUnit_Framework_TestCase
 
 		/* result */
 
-		$result = new Redaxscript_Captcha($this->_language);
+		$result = new Captcha($this->_language);
 
 		/* compare */
 

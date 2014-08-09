@@ -1,17 +1,19 @@
 <?php
-include_once('tests/stubs.php');
+use Redaxscript\Detection;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
- * Redaxscript Detection Test
+ * DetectionTest
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
+class DetectionTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * instance of the registry class
@@ -29,7 +31,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript\Registry::getInstance();
+		$this->_registry = Registry::getInstance();
 	}
 
 	/**
@@ -78,7 +80,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = new Redaxscript_Detection_Language($this->_registry);
+		$detection = new Detection\Language($this->_registry);
 
 		/* result */
 
@@ -105,7 +107,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = new Redaxscript_Detection_Template($this->_registry);
+		$detection = new Detection\Template($this->_registry);
 
 		/* result */
 
@@ -128,11 +130,11 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setQuery('l', 'en');
-		Redaxscript_Request::setQuery('t', 'default');
+		Request::setQuery('l', 'en');
+		Request::setQuery('t', 'default');
 		$this->_registry->init();
-		$detectionLanguage = new Redaxscript_Detection_Language($this->_registry);
-		$detectionTemplate = new Redaxscript_Detection_Template($this->_registry);
+		$detectionLanguage = new Detection\Language($this->_registry);
+		$detectionTemplate = new Detection\Template($this->_registry);
 
 		/* result */
 

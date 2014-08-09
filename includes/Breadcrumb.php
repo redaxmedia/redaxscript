@@ -1,5 +1,7 @@
 <?php
 namespace Redaxscript;
+use Redaxscript\Validator;
+use Redaxscript_Validator_Interface as Redaxscript_Validator_Interface;
 
 /**
  * parent class to provide a location based breadcrumb navigation
@@ -167,7 +169,7 @@ class Breadcrumb
 
 	private function _build($key = 0)
 	{
-		$aliasValidator = new Redaxscript_Validator_Alias();
+		$aliasValidator = new Validator\Alias();
 
 		/* if title constant */
 
@@ -192,7 +194,7 @@ class Breadcrumb
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Redaxscript_Validator_Alias::ALIAS_MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
+		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::ALIAS_MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
 		{
 			/* join default title */
 

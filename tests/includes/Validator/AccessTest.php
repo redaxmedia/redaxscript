@@ -1,16 +1,17 @@
 <?php
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator Access Test
+ * AccessTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Access_Test extends PHPUnit_Framework_TestCase
+class AccessTest extends PHPUnit_Framework_TestCase
 {
 
 	/**
@@ -40,7 +41,7 @@ class Redaxscript_Validator_Access_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$validator = new Redaxscript_Validator_Access();
+		$validator = new Validator\Access();
 
 		/* result */
 

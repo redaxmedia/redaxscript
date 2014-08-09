@@ -1,14 +1,14 @@
 [
 	[
-		"Redaxscript_Detection",
+		"Redaxscript\\Detection",
 		true
 	],
 	[
-		"Redaxscript_Detection_Language",
+		"Redaxscript\\Detection\\Language",
 		true
 	],
 	[
-		"Redaxscript_DoesNotExist",
+		"Redaxscript\\DoesNotExist",
 		false
 	]
 ]

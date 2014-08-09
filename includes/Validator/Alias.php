@@ -1,4 +1,6 @@
 <?php
+namespace Redaxscript\Validator;
+use Redaxscript_Validator_Interface as Redaxscript_Validator_Interface;
 
 /**
  * Alias validator
@@ -10,7 +12,7 @@
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Alias implements Redaxscript_Validator_Interface
+class Alias implements Redaxscript_Validator_Interface
 {
 
 	const ALIAS_MODE_USER = 0;

@@ -105,7 +105,7 @@ class Hook
 		foreach (self::$_modules as $module)
 		{
 			$function = $module . self::$_delimiter . $hook;
-			$object = self::$_namespace . mb_convert_case($module, MB_CASE_TITLE);
+			$object = self::$_namespace . '\\' . str_replace(self::$_delimiter, '', mb_convert_case($module, MB_CASE_TITLE));
 			$method = str_replace(self::$_delimiter, '', mb_convert_case($hook, MB_CASE_TITLE));
 
 			/* method exists */

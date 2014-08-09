@@ -22,7 +22,7 @@ function head()
 		$result = mysql_query($query);
 		if ($result)
 		{
-			$accessValidator = new Redaxscript_Validator_Access();
+			$accessValidator = new Redaxscript/Validator/Access();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];

@@ -1,6 +1,6 @@
 <?php
 namespace Redaxscript\Modules;
-use Redaxscript\Module as Module;
+use Redaxscript\Module;
 
 /**
  * Enable anonymous login

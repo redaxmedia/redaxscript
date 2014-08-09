@@ -62,7 +62,7 @@ function admin_routing()
 	}
 	if ($edit == 1 || $delete == 1)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Redaxscript/Validator/Access();
 		$access = retrieve('access', TABLE_PARAMETER, 'id', ID_PARAMETER);
 		$check_access = $accessValidator->validate($access, MY_GROUPS);
 	}

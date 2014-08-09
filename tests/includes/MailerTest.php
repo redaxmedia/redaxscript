@@ -1,16 +1,17 @@
 <?php
+use Redaxscript\Mailer;
 
 /**
- * Redaxscript Mailer Test
+ * MailerTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Test
+ * @category Tests
  * @author Henry Ruhs
  */
 
-class Redaxscript\Mailer_Test extends PHPUnit_Framework_TestCase
+class MailerTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * providerMailer
@@ -45,7 +46,7 @@ class Redaxscript\Mailer_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
+		$mailer = new Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
 
 		/* result */
 
