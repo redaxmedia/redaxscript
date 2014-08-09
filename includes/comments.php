@@ -16,7 +16,7 @@
 
 function comments($article = '', $route = '')
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query comments */
 
@@ -75,7 +75,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= Redaxscript_Hook::trigger('comment_start', $id) . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript\Hook::trigger('comment_start', $id) . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -89,7 +89,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript_Hook::trigger('comment_end', $id);
+				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $id);
 
 				/* admin dock */
 
@@ -118,7 +118,7 @@ function comments($article = '', $route = '')
 	{
 		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
 	}
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 
 	/* call pagination as needed */
@@ -146,7 +146,7 @@ function comments($article = '', $route = '')
 
 function comment_form($article = '', $language = '', $access = '')
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -168,7 +168,7 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* collect output */
@@ -212,7 +212,7 @@ function comment_form($article = '', $language = '', $access = '')
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
 }

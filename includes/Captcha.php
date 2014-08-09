@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to provide a simple mathematical task to ensure human users
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Captcha
+class Captcha
 {
 	/**
 	 * instance of the language class
@@ -63,10 +64,10 @@ class Redaxscript_Captcha
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param Redaxscript_Language $language instance of the language class
+	 * @param Language $language instance of the language class
 	 */
 
-	public function __construct(Redaxscript_Language $language)
+	public function __construct(Language $language)
 	{
 		$this->_language = $language;
 		$this->init();
@@ -133,7 +134,7 @@ class Redaxscript_Captcha
 
 	protected function _getOperator()
 	{
-		$mode = Redaxscript\Db::getSettings('captcha');
+		$mode = Db::getSettings('captcha');
 
 		/* switch captcha mode */
 

@@ -106,7 +106,7 @@ class Breadcrumb
 
 	public function render()
 	{
-		$output = Redaxscript_Hook::trigger('breadcrumb_start');
+		$output = Hook::trigger('breadcrumb_start');
 
 		/* breadcrumb keys */
 
@@ -153,7 +153,7 @@ class Breadcrumb
 		{
 			$output = '<ul class="' . $this->_options['className']['list'] . '">' . $output . '</ul>';
 		}
-		$output .= Redaxscript_Hook::trigger('breadcrumb_end');
+		$output .= Hook::trigger('breadcrumb_end');
 		return $output;
 	}
 

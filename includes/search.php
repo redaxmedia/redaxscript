@@ -29,7 +29,7 @@ function search()
 
 function search_form()
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -49,7 +49,7 @@ function search_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }
 

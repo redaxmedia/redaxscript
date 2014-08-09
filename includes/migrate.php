@@ -36,7 +36,7 @@ function breadcrumb()
 
 function helper_class()
 {
-	$helper = new Redaxscript_Helper(Redaxscript\Registry::getInstance());
+	$helper = new Redaxscript\Helper(Redaxscript\Registry::getInstance());
 	echo $helper->getClass();
 }
 
@@ -53,7 +53,7 @@ function helper_class()
 
 function helper_subset()
 {
-	$helper = new Redaxscript_Helper(Redaxscript\Registry::getInstance());
+	$helper = new Redaxscript\Helper(Redaxscript\Registry::getInstance());
 	echo $helper->getSubset();
 }
 

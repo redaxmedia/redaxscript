@@ -110,12 +110,12 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 
 /* module files as needed */
 
-$modules_include = Redaxscript_Hook::get();
+$modules_include = Redaxscript\Hook::get();
 if ($modules_include)
 {
 	/* language object */
 
-	$language = Redaxscript_Language::getInstance();
+	$language = Redaxscript\Language::getInstance();
 
 	/* process modules */
 
@@ -152,7 +152,7 @@ if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAM
 }
 else
 {
-	Redaxscript_Hook::trigger('render_start');
+	Redaxscript\Hook::trigger('render_start');
 
 	/* undefine */
 
@@ -182,5 +182,5 @@ else
 		}
 		include_once('templates/' . TEMPLATE . '/index.phtml');
 	}
-	Redaxscript_Hook::trigger('render_end');
+	Redaxscript\Hook::trigger('render_end');
 }

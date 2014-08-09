@@ -1,4 +1,6 @@
 <?php
+namespace Redaxscript;
+use Redaxscript_Validator_Access as Redaxscript_Validator_Access;
 
 /**
  * parent class to handle module hooks
@@ -10,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Hook
+class Hook
 {
 	/**
 	 * array of installed and enabled modules
@@ -25,21 +27,21 @@ class Redaxscript_Hook
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param Redaxscript\Registry $registry instance of the registry class
+	 * @param Registry $registry instance of the registry class
 	 */
 
-	public static function init(Redaxscript\Registry $registry)
+	public static function init(Registry $registry)
 	{
 		$accessValidator = new Redaxscript_Validator_Access();
-		$modulesDirectory = new Redaxscript\Directory('modules');
+		$modulesDirectory = new Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
 		try
 		{
-			$modulesInstalled = Redaxscript\Db::forPrefixTable('modules')->where('status', 1)->findMany();
+			$modulesInstalled = Db::forPrefixTable('modules')->where('status', 1)->findMany();
 		}
 		catch (\PDOException $exception)
 		{
-			$modulesInstalled = null;
+			$modulesInstalled = array();
 		}
 
 		/* proccess installed modules */

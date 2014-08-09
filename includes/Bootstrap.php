@@ -17,7 +17,7 @@ $config = Redaxscript\Config::getInstance();
 /* database and hook */
 
 Redaxscript\Db::init($config);
-Redaxscript_Hook::init($registry);
+Redaxscript\Hook::init($registry);
 
 /* detection */
 

@@ -17,7 +17,7 @@
 
 function loader($type = '', $mode = '')
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if ($mode == 'inline' || $mode == 'outline')
 	{
 		/* get module scripts */
@@ -145,7 +145,7 @@ function loader($type = '', $mode = '')
 	ob_start();
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		Redaxscript_Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_start');
+		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_start');
 	}
 
 	/* collect include output */
@@ -164,7 +164,7 @@ function loader($type = '', $mode = '')
 
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		Redaxscript_Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_end');
+		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_end');
 	}
 	$output .= ob_get_clean() . PHP_EOL;
 
@@ -186,7 +186,7 @@ function loader($type = '', $mode = '')
 	{
 		$output = minify($type, $output);
 	}
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }
 
@@ -203,7 +203,7 @@ function loader($type = '', $mode = '')
 
 function styles()
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* parse loader ini */
 
@@ -262,7 +262,7 @@ function styles()
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }
 
@@ -283,7 +283,7 @@ function scripts($mode = '')
 {
 	if ($mode == '')
 	{
-		$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+		$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	}
 
 	/* parse loader ini */
@@ -361,7 +361,7 @@ function scripts($mode = '')
 	}
 	if ($mode == '')
 	{
-		$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	}
 	echo $output;
 }

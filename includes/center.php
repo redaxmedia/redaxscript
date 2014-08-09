@@ -13,7 +13,7 @@
 
 function center()
 {
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* center break */
 
@@ -28,7 +28,7 @@ function center()
 	{
 		routing();
 	}
-	Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**

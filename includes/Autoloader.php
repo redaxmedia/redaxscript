@@ -23,6 +23,22 @@ class Autoloader
 	protected static $_namespace = 'Redaxscript';
 
 	/**
+	 * project separator
+	 *
+	 * @var string
+	 */
+
+	protected static $_separator = '\\';
+
+	/**
+	 * file suffix
+	 *
+	 * @var string
+	 */
+
+	protected static $_fileSuffix = '.php';
+
+	/**
 	 * directory to search for class files
 	 *
 	 * @var string
@@ -34,23 +50,14 @@ class Autoloader
 	);
 
 	/**
-	 * file suffix
-	 *
-	 * @var string
-	 */
-
-	protected static $_fileSuffix = '.php';
-
-	/**
 	 * init the class
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param mixed $directory optional directory to search
-	 * @param mixed $namespace project namespace
 	 */
 
-	public static function init($directory = null, $namespace = null)
+	public static function init($directory = null)
 	{
 		/* handle directory */
 
@@ -63,13 +70,6 @@ class Autoloader
 			self::$_directory = array(
 				$directory
 			);
-		}
-
-		/* handle namespace */
-
-		if (is_array($namespace))
-		{
-			self::$_namespace = $namespace;
 		}
 
 		/* register autoload */
@@ -91,8 +91,10 @@ class Autoloader
 	protected static function _load($className = null)
 	{
 		$fileName = str_replace(self::$_namespace, '', $className);
+		$fileName = str_replace(self::$_separator, '/', $fileName);
+		/* temp */
 		$fileName = str_replace('_', '/', $fileName);
-		$fileName = str_replace('\\', '/', $fileName);
+		/* temp */
 		$filePath = $fileName . self::$_fileSuffix;
 
 		/* include files as needed */

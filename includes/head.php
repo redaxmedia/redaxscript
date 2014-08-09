@@ -13,7 +13,7 @@
 
 function head()
 {
-	$output = Redaxscript_Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
 		/* query contents */
@@ -176,6 +176,6 @@ function head()
 		$canonical_url .= FULL_ROUTE;
 	}
 	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
-	$output .= Redaxscript_Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }

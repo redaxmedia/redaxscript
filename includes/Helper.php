@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to provide required helper for templates
@@ -11,7 +12,7 @@
  * @author Kim Kha Nguyen
  */
 
-class Redaxscript_Helper
+class Helper
 {
 	/**
 	 * instance of the registry class
@@ -84,10 +85,10 @@ class Redaxscript_Helper
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param Redaxscript\Registry $registry instance of the registry class
+	 * @param Registry $registry instance of the registry class
 	 */
 
-	public function __construct(Redaxscript\Registry $registry)
+	public function __construct(Registry $registry)
 	{
 		$this->_registry = $registry;
 	}
