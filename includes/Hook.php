@@ -1,6 +1,5 @@
 <?php
 namespace Redaxscript;
-use Redaxscript_Validator_Access as Redaxscript_Validator_Access;
 
 /**
  * parent class to handle module hooks
@@ -14,6 +13,22 @@ use Redaxscript_Validator_Access as Redaxscript_Validator_Access;
 
 class Hook
 {
+	/**
+	 * module namespace
+	 *
+	 * @var string
+	 */
+
+	protected static $_namespace = 'Redaxscript\Modules';
+
+	/**
+	 * hook delimiter
+	 *
+	 * @var string
+	 */
+
+	protected static $_delimiter = '_';
+
 	/**
 	 * array of installed and enabled modules
 	 *
@@ -32,7 +47,7 @@ class Hook
 
 	public static function init(Registry $registry)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Validator\Access();
 		$modulesDirectory = new Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
 		try
@@ -89,9 +104,9 @@ class Hook
 
 		foreach (self::$_modules as $module)
 		{
-			$function = $module . '_' . $hook;
-			$object = 'Redaxscript_Module_' . mb_convert_case($module, MB_CASE_TITLE);
-			$method = str_replace('_', '', mb_convert_case($hook, MB_CASE_TITLE));
+			$function = $module . self::$_delimiter . $hook;
+			$object = self::$_namespace . mb_convert_case($module, MB_CASE_TITLE);
+			$method = str_replace(self::$_delimiter, '', mb_convert_case($hook, MB_CASE_TITLE));
 
 			/* method exists */
 

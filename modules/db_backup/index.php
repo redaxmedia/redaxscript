@@ -24,7 +24,7 @@ function db_backup_render_start()
 
 		/* config object */
 
-		$config = Redaxscript_Config::getInstance();
+		$config = Redaxscript\Config::getInstance();
 
 		/* download database backup */
 
@@ -63,7 +63,7 @@ function db_backup_render_start()
 
 			/* mail object */
 
-			$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
+			$mail = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
 			$mail->send();
 		}
 	}

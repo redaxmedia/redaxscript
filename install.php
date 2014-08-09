@@ -249,7 +249,7 @@ function install()
 
 	/* mail object */
 
-	$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+	$mail = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 	$mail->send();
 }
 

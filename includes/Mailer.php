@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to send an mail
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Mailer
+class Mailer
 {
 	/**
 	 * array of recipient
@@ -155,7 +156,7 @@ class Redaxscript_Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = Redaxscript\Db::getSettings('subject');
+		$settingsSubject = Db::getSettings('subject');
 
 		/* extended subject string */
 
@@ -164,7 +165,7 @@ class Redaxscript_Mailer
 			$this->_subjectString = $settingsSubject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= Redaxscript\Db::getSettings('divider');
+				$this->_subjectString .= Db::getSettings('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -208,7 +209,7 @@ class Redaxscript_Mailer
 
 		if (empty($this->_attachmentArray))
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript\Db::getSettings('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
 		}
 
 		/* else handle attachment */
@@ -226,7 +227,7 @@ class Redaxscript_Mailer
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript\Db::getSettings('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . $boundary . PHP_EOL;

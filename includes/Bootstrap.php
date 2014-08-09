@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /* include as needed */
 
@@ -6,23 +7,23 @@ include_once('includes/Autoloader.php');
 
 /* init */
 
-Redaxscript\Autoloader::init();
-Redaxscript\Request::init();
+Autoloader::init();
+Request::init();
 
 /* registry and config */
 
-$registry = Redaxscript\Registry::getInstance();
-$config = Redaxscript\Config::getInstance();
+$registry = Registry::getInstance();
+$config = Config::getInstance();
 
 /* database and hook */
 
-Redaxscript\Db::init($config);
-Redaxscript\Hook::init($registry);
+Db::init($config);
+Hook::init($registry);
 
 /* detection */
 
-$detectionLanguage = new Redaxscript\Detection\Language($registry);
-$detectionTemplate = new Redaxscript\Detection\Template($registry);
+$detectionLanguage = new Detection\Language($registry);
+$detectionTemplate = new Detection\Template($registry);
 
 /* set language and template */
 
@@ -31,7 +32,7 @@ $registry->set('template', $detectionTemplate->getOutput());
 
 /* language */
 
-$language = Redaxscript\Language::getInstance();
+$language = Language::getInstance();
 $language->init($registry->get('language'));
 
 /* define deprecated constants */

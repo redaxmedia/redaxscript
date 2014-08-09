@@ -87,7 +87,7 @@ function contact_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* collect output */
@@ -215,7 +215,7 @@ function contact_post()
 
 		/* mailer object */
 
-		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 	}
 

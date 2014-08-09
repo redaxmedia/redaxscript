@@ -23,12 +23,12 @@ class Autoloader
 	protected static $_namespace = 'Redaxscript';
 
 	/**
-	 * project separator
+	 * project class delimiter
 	 *
 	 * @var string
 	 */
 
-	protected static $_separator = '\\';
+	protected static $_delimiter = '\\';
 
 	/**
 	 * file suffix
@@ -91,10 +91,12 @@ class Autoloader
 	protected static function _load($className = null)
 	{
 		$fileName = str_replace(self::$_namespace, '', $className);
-		$fileName = str_replace(self::$_separator, '/', $fileName);
+		$fileName = str_replace(self::$_delimiter, '/', $fileName);
+
 		/* temp */
 		$fileName = str_replace('_', '/', $fileName);
 		/* temp */
+
 		$filePath = $fileName . self::$_fileSuffix;
 
 		/* include files as needed */

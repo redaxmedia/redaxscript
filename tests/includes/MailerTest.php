@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
+class Redaxscript\Mailer_Test extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * providerMailer
@@ -45,7 +45,7 @@ class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
+		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
 
 		/* result */
 

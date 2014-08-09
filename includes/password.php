@@ -128,7 +128,7 @@ function password_reset_post()
 
 		/* mailer object */
 
-		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
 		/* update password */

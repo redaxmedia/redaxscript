@@ -1,7 +1,9 @@
 <?php
+namespace Redaxscript\Modules;
+use Redaxscript\Module as Module;
 
 /**
- * Redaxscript Demo Module
+ * Enable anonymous login
  *
  * @since 2.2.0
  *
@@ -10,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Module_Demo extends Redaxscript_Module
+class Demo extends Module
 {
 	/**
 	 * custom module setup
