@@ -54,10 +54,12 @@ class Hook
 		{
 			$modulesInstalled = Db::forPrefixTable('modules')->where('status', 1)->findMany();
 		}
+		// @codeCoverageIgnoreStart
 		catch (\PDOException $exception)
 		{
 			$modulesInstalled = array();
 		}
+		// @codeCoverageIgnoreEnd
 
 		/* proccess installed modules */
 

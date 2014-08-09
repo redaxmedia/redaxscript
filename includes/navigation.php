@@ -109,7 +109,7 @@ function navigation_list($table = '', $options = '')
 	}
 	else if ($result)
 	{
-		$accessValidator = new Redaxscript/Validator/Access();
+		$accessValidator = new Redaxscript\Validator\Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];

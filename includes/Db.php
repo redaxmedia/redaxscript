@@ -82,9 +82,11 @@ class Db extends ORM
 		{
 			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
 		}
+		// @codeCoverageIgnoreStart
 		catch (\PDOException $exception)
 		{
 			return false;
 		}
+		// @codeCoverageIgnoreEnd
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-error_reporting(-1);
+error_reporting(0);
 
 /* include core files */
 
@@ -478,8 +478,8 @@ function write_config()
 
 		/* pattern and replacement */
 
-		$pattern = '/\/\/\s+\[config].*?\/\/\s+\[\/config]/s';
-		$replacement = '// [config]
+		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
+		$replacement = '// @configStart
 		\'type\' => \'mysql\',
 		\'host\' => \'' . $d_host . '\',
 		\'name\' => \'' . $d_name . '\',
@@ -487,7 +487,7 @@ function write_config()
 		\'password\' => \'' . $d_password . '\',
 		\'prefix\' => \'' . $d_prefix . '\',
 		\'salt\' => \'' . $d_salt . '\'
-		// [/config]';
+		// @configEnd';
 
 		/* process contents */
 

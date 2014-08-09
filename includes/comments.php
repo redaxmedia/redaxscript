@@ -54,7 +54,7 @@ function comments($article = '', $route = '')
 
 	else if ($result)
 	{
-		$accessValidator = new Redaxscript/Validator/Access();
+		$accessValidator = new Redaxscript\Validator\Access();
 		$output .= '<div class="box_line"></div>';
 		while ($r = mysql_fetch_assoc($result))
 		{

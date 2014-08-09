@@ -20,7 +20,7 @@ class Config extends Singleton
 	 */
 
 	private static $_config = array(
-		// [config]
+		// @configStart
 		'type' => '',
 		'host' => '',
 		'name' => '',
@@ -28,7 +28,7 @@ class Config extends Singleton
 		'password' => '',
 		'prefix' => '',
 		'salt' => ''
-		// [/config]
+		// @configEnd
 	);
 
 	/**
