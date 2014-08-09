@@ -103,9 +103,9 @@ class Autoloader
 
 		foreach (self::$_directory as $directory)
 		{
-			if (file_exists($directory . $filePath))
+			if (file_exists($directory . '/' . $filePath))
 			{
-				include_once($directory . $filePath);
+				include_once($directory . '/' . $filePath);
 			}
 		}
 	}

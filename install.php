@@ -242,6 +242,7 @@ function install()
 	$subject = l('installation');
 	$bodyArray = array(
 		'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+		'<br />',
 		'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
 		'<br />',
 		'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink
