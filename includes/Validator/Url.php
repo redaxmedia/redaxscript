@@ -9,7 +9,6 @@
  * @package Redaxscript_Validator
  * @author Sven Weingartner
  */
-
 class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
 {
 	/**
@@ -29,11 +28,27 @@ class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
 
 		/* validate url */
 
-		if ($url == clean_url($url) && filter_var($url, FILTER_VALIDATE_URL) !== false)
+		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}
+
+		/* validate domain */
+
+		if ($dns === true)
+		{
+			$parsedUrl = parse_url($url);
+			if (isset($parsedUrl['host']))
+			{
+				$dnsValidator = new Redaxscript_Validator_Dns();
+				$output = $dnsValidator->validate($parsedUrl['host'], Redaxscript_Validator_Dns::DNS_TYPE_A);
+			}
+			else
+			{
+				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+			}
+		}
+
 		return $output;
 	}
 }
-//TODO: remove clean_url() and add missing DNS validation like in email validator
