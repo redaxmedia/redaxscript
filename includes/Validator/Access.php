@@ -1,4 +1,6 @@
 <?php
+namespace Redaxscript\Validator;
+use Redaxscript_Validator_Interface;
 
 /**
  * DNS validator
@@ -10,7 +12,7 @@
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
+class Access implements Redaxscript_Validator_Interface
 {
 
 

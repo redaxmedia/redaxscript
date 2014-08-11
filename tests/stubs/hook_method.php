@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules;
 
 /**
- * testHookMethod
+ * hookMethod
  *
  * @since 2.2.0
  */

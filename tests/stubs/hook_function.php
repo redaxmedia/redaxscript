@@ -1,6 +1,6 @@
 <?php
 /**
- * testHookFunction
+ * hookFunction
  *
  * @since 2.2.0
  */

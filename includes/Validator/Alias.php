@@ -36,7 +36,7 @@ class Alias implements Redaxscript_Validator_Interface
 	/**
 	 * @var array list of all predefined aliases
 	 */
-	public static $defaultAliases = array(
+	public static $aliasArray = array(
 		self::ALIAS_DEFAULT_ADMIN,
 		self::ALIAS_DEFAULT_LOADER,
 		self::ALIAS_DEFAULT_LOGIN,
@@ -60,25 +60,25 @@ class Alias implements Redaxscript_Validator_Interface
 	 * @return integer
 	 */
 
-	public function validate($alias = '', $mode = '')
+	public function validate($alias = null, $mode = null)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
 		/* validates user alias */
 
 		if ($mode == self::ALIAS_MODE_USER)
-		{//TODO: remove clean function with $alias in_array of $aliasArray :-)
-			if ($alias != clean_alias($alias) || is_numeric($alias))
+		{
+			if (preg_match('/[^a-z0-9_]/i', $alias) || is_numeric($alias))
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			}
 		}
 
-		/* validates for default alias */
+		/* validate default alias */
 
 		else if ($mode == self::ALIAS_MODE_DEFAULT)
 		{
-			if (in_array($alias, self::$defaultAliases))
+			if (in_array($alias, self::$aliasArray))
 			{
 				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			}

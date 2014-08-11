@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Autoloader;
 
 /**
@@ -12,7 +13,7 @@ use Redaxscript\Autoloader;
  * @author Sven Weingartner
  */
 
-class AutoloaderTest extends PHPUnit_Framework_TestCase
+class AutoloaderTest extends TestCase
 {
 	/**
 	 * providerFilePath
@@ -24,9 +25,7 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
 
 	public function providerFilePath()
 	{
-		$contents = file_get_contents('tests/provider/autoloader_file_path.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/autoloader_file_path.json');
 	}
 
 	/**

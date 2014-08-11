@@ -3,7 +3,7 @@ namespace Redaxscript\Tests;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Helper
+ * TestCase
  *
  * @since 2.2.0
  *
@@ -12,17 +12,19 @@ use PHPUnit_Framework_TestCase;
  * @author Henry Ruhs
  */
 
-class Helper extends PHPUnit_Framework_TestCase
+class TestCase extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * getProvider
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param string $json
+	 *
 	 * @return array
 	 */
 
-	function getProvider($json = null)
+	public function getProvider($json = null)
 	{
 		$contents = file_get_contents($json);
 		$output = json_decode($contents, true);

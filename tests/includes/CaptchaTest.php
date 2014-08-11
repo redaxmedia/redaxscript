@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Captcha;
 use Redaxscript\Db;
 use Redaxscript\Language;
@@ -14,7 +15,7 @@ use Redaxscript\Language;
  * @author Gary Aylward
  */
 
-class CaptchaTest extends PHPUnit_Framework_TestCase
+class CaptchaTest extends TestCase
 {
 	/**
 	 * instance of the language class
@@ -99,7 +100,7 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
 
 		/* result */
 
@@ -120,7 +121,7 @@ class CaptchaTest extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript\Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
 
 		/* result */
 

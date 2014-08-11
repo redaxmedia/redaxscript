@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Config;
 use Redaxscript\Db;
 
@@ -12,7 +13,7 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class DbTest extends PHPUnit_Framework_TestCase
+class DbTest extends TestCase
 {
 	/**
 	 * instance of the config class

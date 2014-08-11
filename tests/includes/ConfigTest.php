@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Config;
 
 /**
@@ -11,7 +12,7 @@ use Redaxscript\Config;
  * @author Henry Ruhs
  */
 
-class ConfigTest extends PHPUnit_Framework_TestCase
+class ConfigTest extends TestCase
 {
 	/**
 	 * testSetAndGet

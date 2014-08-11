@@ -87,7 +87,7 @@ class DirectoryTest extends PHPUnit_Framework_TestCase
 	 * @since 2.1.0
 	 *
 	 * @param array $path
-	 * @param string|array $exclude
+	 * @param mixed $exclude
 	 * @param array $expect
 	 *
 	 * @dataProvider providerGet

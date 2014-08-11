@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Breadcrumb;
 use Redaxscript\Db;
 use Redaxscript\Language;
@@ -15,7 +16,7 @@ use Redaxscript\Registry;
  * @author Gary Aylward
  */
 
-class BreadcrumbTest extends PHPUnit_Framework_TestCase
+class BreadcrumbTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -113,9 +114,7 @@ class BreadcrumbTest extends PHPUnit_Framework_TestCase
 
 	public function providerGet()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_get.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/breadcrumb_get.json');
 	}
 
 	/**
@@ -128,9 +127,7 @@ class BreadcrumbTest extends PHPUnit_Framework_TestCase
 
 	public function providerRender()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_render.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/breadcrumb_render.json');
 	}
 
 	/**
