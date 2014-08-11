@@ -5,8 +5,8 @@
  *
  * @since 2.2.0
  *
- * @category Validator
- * @package Redaxscript
+ * @category Redaxscript
+ * @package Redaxscript_Validator
  * @author Sven Weingartner
  */
 

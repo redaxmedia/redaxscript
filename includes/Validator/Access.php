@@ -1,6 +1,4 @@
 <?php
-namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * DNS validator
@@ -12,8 +10,10 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Access implements Redaxscript_Validator_Interface
+class Redaxscript_Validator_Access implements Redaxscript_Validator_Interface
 {
+
+
 	/**
 	 * checks the validator
 	 *
@@ -22,7 +22,7 @@ class Access implements Redaxscript_Validator_Interface
 	 * @author Henry Ruhs
 	 * @author Sven Weingartner
 	 *
-	 * @param mixed $access
+	 * @param int|string $access
 	 * @param string $groups
 	 *
 	 * @return integer

@@ -5,14 +5,13 @@
  *
  * @since 2.2.0
  *
- * @category Validator
- * @package Redaxscript
+ * @category Redaxscript
+ * @package Redaxscript_Validator
  * @author Sven Weingartner
  */
 
 interface Redaxscript_Validator_Interface
 {
-
 	const VALIDATION_OK = 1;
 	const VALIDATION_FAIL = 0;
 	//TODO: maby we use true and false instead

@@ -3,21 +3,26 @@ namespace Redaxscript\Validator;
 use Redaxscript_Validator_Interface;
 
 /**
- * Alias validator
+ * alias validator
  *
  * @since 2.2.0
  *
- * @category Validator
- * @package Redaxscript
+ * @category Redaxscript
+ * @package Redaxscript_Validator
  * @author Sven Weingartner
  */
 
 class Alias implements Redaxscript_Validator_Interface
 {
-
+	/**
+	 * constants for the mode
+	 */
 	const ALIAS_MODE_USER = 0;
 	const ALIAS_MODE_DEFAULT = 1;
-//TODO: why not an protected array for the defaut alias that can be extended?
+
+	/**
+	 * predefined aliases
+	 */
 	const ALIAS_DEFAULT_ADMIN = 'admin';
 	const ALIAS_DEFAULT_LOADER = 'loader';
 	const ALIAS_DEFAULT_LOGIN = 'login';
@@ -28,7 +33,9 @@ class Alias implements Redaxscript_Validator_Interface
 	const ALIAS_DEFAULT_REGISTRATION = 'registration';
 	const ALIAS_DEFAULT_REMINDER = 'reminder';
 
-
+	/**
+	 * @var array list of all predefined aliases
+	 */
 	public static $defaultAliases = array(
 		self::ALIAS_DEFAULT_ADMIN,
 		self::ALIAS_DEFAULT_LOADER,
@@ -43,15 +50,12 @@ class Alias implements Redaxscript_Validator_Interface
 
 
 	/**
-	 * checks the validator
+	 * validates the alias
 	 *
 	 * @since 2.2.0
 	 *
-	 * @author Henry Ruhs
-	 * @author Sven Weingartner
-	 *
 	 * @param string $alias
-	 * @param string $mode
+	 * @param string $mode default = 1, user = 0
 	 *
 	 * @return integer
 	 */
@@ -60,7 +64,7 @@ class Alias implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		/* validate alias */
+		/* validates user alias */
 
 		if ($mode == self::ALIAS_MODE_USER)
 		{//TODO: remove clean function with $alias in_array of $aliasArray :-)
@@ -70,8 +74,8 @@ class Alias implements Redaxscript_Validator_Interface
 			}
 		}
 
-		/* check for default alias */
-		//TODO: please replace the phrase "check" with "validate" all over the place
+		/* validates for default alias */
+
 		else if ($mode == self::ALIAS_MODE_DEFAULT)
 		{
 			if (in_array($alias, self::$defaultAliases))
