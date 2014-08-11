@@ -84,7 +84,8 @@ class Detection
 
 					if ($key === 'query')
 					{
-						Request::setSession($this->_registry->get('root') . '/' . $type, $value);
+						$root = $this->_registry->get('root');
+						Request::setSession($root . '/' . $type, $value);
 					}
 					break;
 				}

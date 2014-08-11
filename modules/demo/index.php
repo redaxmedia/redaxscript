@@ -1,9 +1,11 @@
 <?php
 namespace Redaxscript\Modules;
 use Redaxscript\Module;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
- * Enable anonymous login
+ * enable anonymous login
  *
  * @since 2.2.0
  *
@@ -14,6 +16,14 @@ use Redaxscript\Module;
 
 class Demo extends Module
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected static $_registry;
+
 	/**
 	 * custom module setup
 	 *
@@ -31,6 +41,17 @@ class Demo extends Module
 	);
 
 	/**
+	 * constructor of the class
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function __construct()
+	{
+		self::$_registry = Registry::getInstance();
+	}
+
+	/**
 	 * renderStart
 	 *
 	 * @since 2.2.0
@@ -38,9 +59,9 @@ class Demo extends Module
 
 	public static function renderStart()
 	{
-		if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo' || ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
+		if (self::$_registry->get('firstParameter') === 'login' && self::$_registry->get('secondParameter') === 'demo' || self::$_registry->get('adminParameter') === 'unpublish' && self::$_registry->get('myUser') === 'demo')
 		{
-			define('CENTER_BREAK', 1);
+			self::$_registry->set('centerBreak', 1);
 		}
 	}
 
@@ -52,11 +73,16 @@ class Demo extends Module
 
 	public static function centerStart()
 	{
-		if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo')
+		/* trigger login */
+
+		if (self::$_registry->get('firstParameter') === 'login' && self::$_registry->get('secondParameter') === 'demo')
 		{
 			self::demoLogin();
 		}
-		if (ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
+
+		/* disable unpublish */
+
+		if (self::$_registry->get('adminParameter') === 'unpublish' && self::$_registry->get('myUser') === 'demo')
 		{
 			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 		}
@@ -70,34 +96,26 @@ class Demo extends Module
 
 	public static function demoLogin()
 	{
-		$_SESSION[ROOT . '/logged_in'] = TOKEN;
-		$_SESSION[ROOT . '/my_id'] = 0;
-		$_SESSION[ROOT . '/my_name'] = 'Anonymous';
-		$_SESSION[ROOT . '/my_user'] = 'anonymous';
-		$_SESSION[ROOT . '/my_email'] = 'anonymous@anonymous.com';
-		$_SESSION[ROOT . '/categories_new'] = 1;
-		$_SESSION[ROOT . '/categories_edit'] = 1;
-		$_SESSION[ROOT . '/categories_delete'] = 0;
-		$_SESSION[ROOT . '/articles_new'] = 1;
-		$_SESSION[ROOT . '/articles_edit'] = 1;
-		$_SESSION[ROOT . '/articles_delete'] = 0;
-		$_SESSION[ROOT . '/extras_new'] = 0;
-		$_SESSION[ROOT . '/extras_edit'] = 0;
-		$_SESSION[ROOT . '/extras_delete'] = 0;
-		$_SESSION[ROOT . '/comments_new'] = 1;
-		$_SESSION[ROOT . '/comments_edit'] = 1;
-		$_SESSION[ROOT . '/comments_delete'] = 0;
-		$_SESSION[ROOT . '/groups_new'] = 0;
-		$_SESSION[ROOT . '/groups_edit'] = 0;
-		$_SESSION[ROOT . '/groups_delete'] = 0;
-		$_SESSION[ROOT . '/users_new'] = 0;
-		$_SESSION[ROOT . '/users_edit'] = 0;
-		$_SESSION[ROOT . '/users_delete'] = 0;
-		$_SESSION[ROOT . '/modules_install'] = 0;
-		$_SESSION[ROOT . '/modules_edit'] = 0;
-		$_SESSION[ROOT . '/modules_uninstall'] = 0;
-		$_SESSION[ROOT . '/settings_edit'] = 1;
-		$_SESSION[ROOT . '/filter'] = 1;
+		$root = self::$_registry->get('root');
+		$token = self::$_registry->get('token');
+
+		/* session values */
+
+		Request::setSession($root . '/logged_in', $token);
+		Request::setSession($root . '/my_name', 'Anonymous');
+		Request::setSession($root . '/my_user', 'demo');
+		Request::setSession($root . '/my_email', 'anonymous@demo.com');
+		Request::setSession($root . '/categories_new', 1);
+		Request::setSession($root . '/categories_edit', 1);
+		Request::setSession($root . '/articles_new', 1);
+		Request::setSession($root . '/articles_edit', 1);
+		Request::setSession($root . '/comments_new', 1);
+		Request::setSession($root . '/comments_edit', 1);
+		Request::setSession($root . '/settings_edit', 1);
+		Request::setSession($root . '/filter', 1);
+
+		/* notification */
+
 		notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
 	}
 }

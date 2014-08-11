@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Detection;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -13,7 +14,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class DetectionTest extends PHPUnit_Framework_TestCase
+class DetectionTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -44,9 +45,7 @@ class DetectionTest extends PHPUnit_Framework_TestCase
 
 	public function providerDetectionLanguage()
 	{
-		$contents = file_get_contents('tests/provider/detection_language.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/detection_language.json');
 	}
 
 	/**
@@ -59,9 +58,7 @@ class DetectionTest extends PHPUnit_Framework_TestCase
 
 	public function providerDetectionTemplate()
 	{
-		$contents = file_get_contents('tests/provider/detection_template.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/detection_template.json');
 	}
 
 	/**
