@@ -1,17 +1,20 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 
 /**
- * ValidatorAccessTest
+ * AccessTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class ValidatorAccessTest extends PHPUnit_Framework_TestCase
+class AccessTest extends TestCase
 {
 
 	/**
@@ -24,9 +27,7 @@ class ValidatorAccessTest extends PHPUnit_Framework_TestCase
 
 	public function providerValidatorAccess()
 	{
-		$contents = file_get_contents('tests/provider/validator_access.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/validator_access.json');
 	}
 
 	/**

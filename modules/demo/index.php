@@ -48,6 +48,7 @@ class Demo extends Module
 
 	public function __construct()
 	{
+		parent::__construct();
 		self::$_registry = Registry::getInstance();
 	}
 

@@ -64,7 +64,7 @@ class Alias implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		/* validates user alias */
+		/* validate user alias */
 
 		if ($mode == self::ALIAS_MODE_USER)
 		{
