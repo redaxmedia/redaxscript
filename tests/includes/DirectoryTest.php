@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Directory;
 use org\bovigo\vfs\vfsStream as Stream;
 
@@ -13,7 +14,7 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @author Gary Aylward
  */
 
-class DirectoryTest extends PHPUnit_Framework_TestCase
+class DirectoryTest extends TestCase
 {
 	/**
 	 * root
@@ -31,9 +32,7 @@ class DirectoryTest extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$contents = file_get_contents('tests/provider/directory_set_up.json');
-		$output = json_decode($contents, true);
-		$this->_root = Stream::setup('root', 0777, $output);
+		$this->_root = Stream::setup('root', 0777, $this->getProvider('tests/provider/directory_set_up.json'));
 	}
 
 	/**
@@ -46,9 +45,7 @@ class DirectoryTest extends PHPUnit_Framework_TestCase
 
 	public function providerGet()
 	{
-		$contents = file_get_contents('tests/provider/directory_get.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_get.json');
 	}
 
 	/**
@@ -61,9 +58,7 @@ class DirectoryTest extends PHPUnit_Framework_TestCase
 
 	public function providerCreate()
 	{
-		$contents = file_get_contents('tests/provider/directory_create.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_create.json');
 	}
 
 	/**
@@ -76,9 +71,7 @@ class DirectoryTest extends PHPUnit_Framework_TestCase
 
 	public function providerRemove()
 	{
-		$contents = file_get_contents('tests/provider/directory_remove.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_remove.json');
 	}
 
 	/**
