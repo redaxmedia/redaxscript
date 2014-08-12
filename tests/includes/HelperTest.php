@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Helper;
 use Redaxscript\Registry;
 
@@ -12,7 +13,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class HelperTest extends PHPUnit_Framework_TestCase
+class HelperTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -43,9 +44,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
 
 	public function providerGetSubset()
 	{
-		$contents = file_get_contents('tests/provider/helper_get_subset.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/helper_get_subset.json');
 	}
 
 	/**
@@ -58,9 +57,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
 
 	public function providerGetClass()
 	{
-		$contents = file_get_contents('tests/provider/helper_get_class.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/helper_get_class.json');
 	}
 
 	/**
