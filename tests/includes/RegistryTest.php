@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Registry;
 
 /**
@@ -12,7 +13,7 @@ use Redaxscript\Registry;
  * @author Gary Aylward
  */
 
-class RegistryTest extends PHPUnit_Framework_TestCase
+class RegistryTest extends TestCase
 {
 	/**
 	 * instance of the registry class
