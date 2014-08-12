@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Db;
 use Redaxscript\Hook;
 use Redaxscript\Module;
@@ -14,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class HookTest extends PHPUnit_Framework_TestCase
+class HookTest extends TestCase
 {
 	/**
 	 * instance of the registry class
