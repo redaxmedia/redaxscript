@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Db;
 use Redaxscript\Module;
 
@@ -12,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class ModuleTest extends PHPUnit_Framework_TestCase
+class ModuleTest extends TestCase
 {
 	/**
 	 * testInstall
