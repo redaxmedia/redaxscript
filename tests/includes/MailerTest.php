@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Mailer;
 
 /**
@@ -11,7 +12,7 @@ use Redaxscript\Mailer;
  * @author Henry Ruhs
  */
 
-class MailerTest extends PHPUnit_Framework_TestCase
+class MailerTest extends TestCase
 {
 	/**
 	 * providerMailer
@@ -23,9 +24,7 @@ class MailerTest extends PHPUnit_Framework_TestCase
 
 	public function providerMailer()
 	{
-		$contents = file_get_contents('tests/provider/mailer.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/mailer.json');
 	}
 
 	/**
@@ -36,7 +35,7 @@ class MailerTest extends PHPUnit_Framework_TestCase
 	 * @param array $toArray
 	 * @param array $fromArray
 	 * @param string $subject
-	 * @param string|array $body
+	 * @param mixed $body
 	 * @param array $attachmentArray
 	 *
 	 * @dataProvider providerMailer
