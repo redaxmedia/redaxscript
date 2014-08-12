@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to build a module class
+ * parent class to build a module
  *
  * @since 2.2.0
  *
@@ -49,8 +49,6 @@ class Module
 	 * install the module
 	 *
 	 * @since 2.2.0
-	 *
-	 * @param string $alias alias of the module
 	 */
 
 	public function install()
