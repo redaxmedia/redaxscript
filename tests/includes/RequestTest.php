@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Request;
 
 /**
@@ -11,7 +12,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class RequestTest extends PHPUnit_Framework_TestCase
+class RequestTest extends TestCase
 {
 	/**
 	 * setUp
