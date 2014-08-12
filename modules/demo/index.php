@@ -10,7 +10,7 @@ use Redaxscript\Request;
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
