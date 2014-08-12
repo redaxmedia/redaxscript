@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 
 /**
  * SingletonTest
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class SingletonTest extends PHPUnit_Framework_TestCase
+class SingletonTest extends TestCase
 {
 	/**
 	 * instance of the stub class
