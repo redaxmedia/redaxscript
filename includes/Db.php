@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
-use ORM as ORM;
-use PDO as PDO;
+use ORM;
+use PDO;
 
 /**
  * children class to handle the database
