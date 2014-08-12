@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  *
  * @param integer $limit
@@ -42,7 +42,7 @@ function recent_view($limit = '')
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 

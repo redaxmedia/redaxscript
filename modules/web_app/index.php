@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
@@ -25,7 +25,7 @@ function web_app_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
@@ -46,7 +46,7 @@ function web_app_render_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
@@ -63,7 +63,7 @@ function web_app_head_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 

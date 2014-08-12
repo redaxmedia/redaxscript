@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
@@ -26,7 +26,7 @@ function lazy_load_loader_start()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  *
  * @param string|array $src

@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
@@ -24,7 +24,7 @@ function file_manager_install()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Module
+ * @category Modules
  * @author Henry Ruhs
  */
 
