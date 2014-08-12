@@ -9,6 +9,7 @@
  * @category Tests
  * @author Sven Weingartner
  */
+
 class Redaxscript_Validator_Captcha_Test extends PHPUnit_Framework_TestCase
 {
 

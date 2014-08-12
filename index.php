@@ -168,7 +168,7 @@ else
 
 	/* render break */
 
-	if (RENDER_BREAK == 1 || $registry->get('renderBreak') == 1)
+	if (RENDER_BREAK == 1 || Redaxscript\Registry::get('renderBreak') == 1)
 	{
 		return;
 	}
@@ -176,7 +176,7 @@ else
 	{
 		/* handle error */
 
-		if (CONTENT_ERROR && CENTER_BREAK == '' && $registry->get('centerBreak') == '')
+		if (CONTENT_ERROR && CENTER_BREAK == '' || Redaxscript\Registry::get('centerBreak') == '')
 		{
 			header('http/1.0 404 not found');
 		}

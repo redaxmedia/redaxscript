@@ -17,7 +17,7 @@ function center()
 
 	/* center break */
 
-	if (CENTER_BREAK == 1)
+	if (CENTER_BREAK == 1 || Redaxscript\Registry::get('centerBreak') == 1)
 	{
 		return;
 	}

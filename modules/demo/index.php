@@ -17,14 +17,6 @@ use Redaxscript\Request;
 class Demo extends Module
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected static $_registry;
-
-	/**
 	 * custom module setup
 	 *
 	 * @var array
@@ -41,18 +33,6 @@ class Demo extends Module
 	);
 
 	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function __construct()
-	{
-		parent::__construct();
-		self::$_registry = Registry::getInstance();
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 2.2.0
@@ -60,9 +40,9 @@ class Demo extends Module
 
 	public static function renderStart()
 	{
-		if (self::$_registry->get('firstParameter') === 'login' && self::$_registry->get('secondParameter') === 'demo' || self::$_registry->get('adminParameter') === 'unpublish' && self::$_registry->get('myUser') === 'demo')
+		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo' || Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
 		{
-			self::$_registry->set('centerBreak', 1);
+			Registry::set('centerBreak', 1);
 		}
 	}
 
@@ -76,14 +56,14 @@ class Demo extends Module
 	{
 		/* trigger login */
 
-		if (self::$_registry->get('firstParameter') === 'login' && self::$_registry->get('secondParameter') === 'demo')
+		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo')
 		{
 			self::demoLogin();
 		}
 
 		/* disable unpublish */
 
-		if (self::$_registry->get('adminParameter') === 'unpublish' && self::$_registry->get('myUser') === 'demo')
+		if (Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
 		{
 			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
 		}
@@ -97,8 +77,8 @@ class Demo extends Module
 
 	public static function demoLogin()
 	{
-		$root = self::$_registry->get('root');
-		$token = self::$_registry->get('token');
+		$root = Registry::get('root');
+		$token = Registry::get('token');
 
 		/* session values */
 
