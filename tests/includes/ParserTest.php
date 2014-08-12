@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Language;
 use Redaxscript\Parser;
 use Redaxscript\Registry;
@@ -13,7 +14,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class ParserTest extends PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -52,9 +53,7 @@ class ParserTest extends PHPUnit_Framework_TestCase
 
 	public function providerParser()
 	{
-		$contents = file_get_contents('tests/provider/parser.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/parser.json');
 	}
 
 	/**
