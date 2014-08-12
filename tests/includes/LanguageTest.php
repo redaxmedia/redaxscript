@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Tests;
 use Redaxscript\Language;
 
 /**
@@ -11,7 +12,7 @@ use Redaxscript\Language;
  * @author Henry Ruhs
  */
 
-class LanguageTest extends PHPUnit_Framework_TestCase
+class LanguageTest extends TestCase
 {
 	/**
 	 * language
