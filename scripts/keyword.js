@@ -35,10 +35,27 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					fiedValue = $.trim(field.val()),
+					fieldText = $.trim(field.text()),
 					related = form.find(options.element.field),
 					keywordValue = '';
 
+				/* process if text */
+
+				if (fieldText)
+				{
+					//do stuff here
+					if (keywordValue)
+					{
+						related.val(keywordValue);
+					}
+				}
+
+				/* else clear related value */
+
+				else
+				{
+					related.val('')
+				}
 			});
 		});
 	};
