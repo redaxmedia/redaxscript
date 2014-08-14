@@ -17,16 +17,15 @@
 
 	/* @section 1. fetch keyword */
 
-	$.fn.fetchKeyword = function (field, options)
+	$.fn.fetchKeyword = function (input, options)
 	{
-		var text = field.text(),
-			textNode = $(text),
+		var node = $(input),
 			outputArray = [],
 			output = '';
 
-		/* proccess text node */
+		/* proccess node elements */
 
-		textNode.each(function ()
+		node.each(function ()
 		{
 			var that = $(this),
 				thatNative = that[0],
@@ -69,14 +68,14 @@
 				var field = $(this),
 					form = field.closest('form'),
 					related = form.find(options.element.related),
-					fieldText = $.trim(field.text()),
+					fieldValue = $.trim(field.val()),
 					keywordValue = '';
 
-				/* fetch keyword from text */
+				/* fetch keyword from value */
 
-				if (fieldText)
+				if (fieldValue)
 				{
-					keywordValue = $.fn.fetchKeyword(field, options);
+					keywordValue = $.fn.fetchKeyword(fieldValue, options);
 					if (keywordValue)
 					{
 						related.val(keywordValue);
