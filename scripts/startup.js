@@ -130,7 +130,7 @@
 		generateKeyword:
 		{
 			startup: true,
-			selector: 'form input.js_generate_keyword_output',
+			selector: 'form textarea.js_generate_keyword_input,
 			options:
 			{
 				element:
