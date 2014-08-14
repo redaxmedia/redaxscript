@@ -185,11 +185,11 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					related = form.find(options.element.field),
+					related = form.find(options.element.related),
 					fieldValue = $.trim(field.val()),
 					aliasValue = '';
 
-				/* clean alias if value */
+				/* clean alias from value */
 
 				if (fieldValue)
 				{

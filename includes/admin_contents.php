@@ -523,11 +523,11 @@ function admin_contents_form()
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
 		$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
-		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_admin field_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize js_generate_keyword_output field_textarea_admin field_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
 	}
 	if (TABLE_PARAMETER != 'categories')
 	{
-		$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_editor_textarea field_textarea_admin field_note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_generate_keyword_input js_editor_textarea field_textarea_admin field_note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
