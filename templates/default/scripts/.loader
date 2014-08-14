@@ -12,8 +12,7 @@
 1 = scripts/dialog.js
 2 = scripts/form.js
 3 = scripts/interface.js
-4 = scripts/keyword.js
-5 = scripts/misc.js
+4 = scripts/misc.js
 
 [settings]
 deploy = inline
