@@ -2,7 +2,7 @@
 1 = admin
 
 [single]
-1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js
+1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 
 [template_startup]
 1 = scripts/startup.js
@@ -12,7 +12,8 @@
 1 = scripts/dialog.js
 2 = scripts/form.js
 3 = scripts/interface.js
-4 = scripts/misc.js
+4 = scripts/keyword.js
+5 = scripts/misc.js
 
 [settings]
 deploy = inline
