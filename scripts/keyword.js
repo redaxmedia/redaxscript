@@ -35,8 +35,8 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					fieldText = $.trim(field.text()),
 					related = form.find(options.element.field),
+					fieldText = $.trim(field.text()),
 					keywordValue = '';
 
 				/* process if text */
