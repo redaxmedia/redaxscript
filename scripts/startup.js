@@ -127,6 +127,27 @@
 				}
 			}
 		},
+		generateKeyword:
+		{
+			startup: true,
+			selector: 'form textarea.js_generate_keyword_input,
+			options:
+			{
+				element:
+				{
+					field: 'input.js_generate_keyword_output'
+				},
+				tag:
+				{
+					'h1',
+					'h2',
+					'h3',
+					'strong',
+					'em'
+				},
+				limit: 10
+			}
+		},
 		keyShortcut:
 		{
 			startup: true,

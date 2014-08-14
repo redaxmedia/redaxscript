@@ -185,15 +185,15 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					fiedValue = $.trim(field.val()),
 					related = form.find(options.element.field),
+					fieldValue = $.trim(field.val()),
 					aliasValue = '';
 
 				/* clean alias if value */
 
-				if (fiedValue)
+				if (fieldValue)
 				{
-					aliasValue = $.fn.cleanAlias(fiedValue);
+					aliasValue = $.fn.cleanAlias(fieldValue);
 					if (aliasValue)
 					{
 						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');
