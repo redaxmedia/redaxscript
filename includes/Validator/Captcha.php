@@ -1,4 +1,6 @@
 <?php
+namespace Redaxscript\Validator;
+use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate captcha
@@ -6,11 +8,12 @@
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Captcha implements Redaxscript_Validator_Interface
+class Captcha implements Redaxscript_Validator_Interface
 {
 	/**
 	 * validate the captcha
@@ -27,9 +30,9 @@ class Redaxscript_Validator_Captcha implements Redaxscript_Validator_Interface
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
 
-		/* validate raw and hash */
+		/* validate raw again hash */
 
-		if (sha1($raw) === $hash || Redaxscript\Db::getSettings('captcha') == 0)
+		if (sha1($raw) === $hash || Db::getSettings('captcha') == 0)
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

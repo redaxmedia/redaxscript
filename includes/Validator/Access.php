@@ -32,7 +32,7 @@ class Access implements Redaxscript_Validator_Interface
 		$accessArray = explode(',', $access);
 		$groupsArray = explode(',', $groups);
 
-		/* validate data */
+		/* validate access again group */
 
 		if ($access == 0 || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
 		{

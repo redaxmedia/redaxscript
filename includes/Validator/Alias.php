@@ -18,7 +18,7 @@ class Alias implements Redaxscript_Validator_Interface
 	/**
 	 * general validate mode
 	 *
-	 * @const string
+	 * @const integer
 	 */
 
 	const MODE_GENERAL = 0;
@@ -26,7 +26,7 @@ class Alias implements Redaxscript_Validator_Interface
 	/**
 	 * default validate mode
 	 *
-	 * @const string
+	 * @const integer
 	 */
 
 	const MODE_DEFAULT = 1;
@@ -54,8 +54,8 @@ class Alias implements Redaxscript_Validator_Interface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $alias user and default alias
-	 * @param string $mode mode of processed validation
+	 * @param string $alias alias for routing
+	 * @param string $mode switch between general and default validation
 	 *
 	 * @return integer
 	 */

@@ -17,7 +17,7 @@ use Redaxscript\Validator;
 class AliasTest extends TestCase
 {
 	/**
-	 * providerValidatorAccess
+	 * providerValidatorAlias
 	 *
 	 * @since 2.2.0
 	 *

@@ -1,31 +1,32 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+use Redaxscript\Tests\TestCase;
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Captcha Test
+ * CaptchaTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Captcha_Test extends PHPUnit_Framework_TestCase
+class CaptchaTest extends TestCase
 {
-
 	/**
-	 * provider
+	 * providerValidatorCaptcha
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function provider()
+	public function providerValidatorCaptcha()
 	{
-		$contents = file_get_contents('tests/provider/validator_captcha.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/validator_captcha.json');
 	}
 
 	/**
@@ -33,13 +34,20 @@ class Redaxscript_Validator_Captcha_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @dataProvider provider
+	 * @dataProvider providerValidatorCaptcha
 	 */
 
-	public function testCaptcha($task = '', $solution = '', $expect = '')
+	public function testCaptcha($task = null, $solution = null, $expect = null)
 	{
-		$validator = new Redaxscript_Validator_Captcha();
+		/* setup */
+
+		$validator = new Validator\Captcha();
+
+		/* result */
+
 		$result = $validator->validate($task, $solution);
+
+		/* compare */
 
 		$this->assertEquals($expect, $result);
 	}
