@@ -16,7 +16,6 @@ use Redaxscript\Validator;
 
 class AccessTest extends TestCase
 {
-
 	/**
 	 * providerValidatorAccess
 	 *

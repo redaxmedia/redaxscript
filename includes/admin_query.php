@@ -243,7 +243,7 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::ALIAS_MODE_USER) == Redaxscript_Validator_Interface::VALIDATION_OK || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::ALIAS_MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
+			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript_Validator_Interface::VALIDATION_OK || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
 			{
 				$error = l('alias_incorrect');
 			}

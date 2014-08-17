@@ -194,7 +194,7 @@ class Breadcrumb
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::ALIAS_MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
+		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
 		{
 			/* join default title */
 
