@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to send an mail
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Mailer
+class Mailer
 {
 	/**
 	 * array of recipient
@@ -18,7 +19,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_toArray;
+	protected $_toArray;
 
 	/**
 	 * array of sender
@@ -26,7 +27,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_fromArray;
+	protected $_fromArray;
 
 	/**
 	 * subject of the email
@@ -34,15 +35,15 @@ class Redaxscript_Mailer
 	 * @var string
 	 */
 
-	private $_subject;
+	protected $_subject;
 
 	/**
-	 * array of body items
+	 * body of the email
 	 *
-	 * @var array
+	 * @var mixed
 	 */
 
-	private $_bodyArray;
+	protected $_body;
 
 	/**
 	 * array of attachments
@@ -50,7 +51,7 @@ class Redaxscript_Mailer
 	 * @var array
 	 */
 
-	private $_attachmentArray;
+	protected $_attachmentArray;
 
 	/**
 	 * built recipient contents
@@ -87,21 +88,21 @@ class Redaxscript_Mailer
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.2.0
 	 *
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
-	 * @param array $bodyArray array of body items
+	 * @param mixed $body body of the email
 	 * @param array $attachmentArray array of attachments
 	 */
 
-	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $bodyArray = array(), $attachmentArray = array())
+	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
 		$this->_subject = $subject;
-		$this->_bodyArray = $bodyArray;
+		$this->_body = $body;
 		$this->_attachmentArray = $attachmentArray;
 		$this->init();
 	}
@@ -155,7 +156,7 @@ class Redaxscript_Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = Redaxscript_Db::getSettings('subject');
+		$settingsSubject = Db::getSettings('subject');
 
 		/* extended subject string */
 
@@ -164,7 +165,7 @@ class Redaxscript_Mailer
 			$this->_subjectString = $settingsSubject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= Redaxscript_Db::getSettings('divider');
+				$this->_subjectString .= Db::getSettings('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -178,26 +179,17 @@ class Redaxscript_Mailer
 
 	protected function _buildBodyString()
 	{
-		/* collect body string */
-
-		foreach ($this->_bodyArray as $key => $value)
+		if (is_array($this->_body))
 		{
-			if ($key && $value)
+			foreach ($this->_body as $key => $value)
 			{
-				/* if numeric key */
 
-				if (is_numeric($key))
-				{
-					$this->_bodyString .= $value;
-				}
-
-				/* else format parts */
-
-				else
-				{
-					$this->_bodyString .= '<strong>' . $key . ':</strong> ' . $value . '<br />';
-				}
+				$this->_bodyString .= $value;
 			}
+		}
+		else
+		{
+			$this->_bodyString = $this->_body;
 		}
 	}
 
@@ -217,7 +209,7 @@ class Redaxscript_Mailer
 
 		if (empty($this->_attachmentArray))
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
 		}
 
 		/* else handle attachment */
@@ -227,17 +219,18 @@ class Redaxscript_Mailer
 			foreach ($this->_attachmentArray as $fileName => $fileContents)
 			{
 				$fileContents = chunk_split(base64_encode($fileContents));
-				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . TOKEN . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . TOKEN . PHP_EOL;
+				$boundary = uniqid();
+				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL . PHP_EOL;
+				$this->_headerString .= '--' . uniqid() . PHP_EOL;
 
 				/* integrate body string */
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . Redaxscript_Db::getSettings('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
-					$this->_headerString .= '--' . TOKEN . PHP_EOL;
+					$this->_headerString .= '--' . $boundary . PHP_EOL;
 
 					/* reset body string */
 
@@ -247,7 +240,7 @@ class Redaxscript_Mailer
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
 				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $fileName . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= $fileContents . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . TOKEN . '--';
+				$this->_headerString .= '--' . $boundary . '--';
 			}
 		}
 

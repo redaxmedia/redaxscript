@@ -13,6 +13,9 @@
 
 function admin_process()
 {
+	$aliasValidator = new Redaxscript\Validator\Alias();
+	$loginValidator = new Redaxscript_Validator_Login();
+
 	/* clean post */
 
 	switch (TABLE_PARAMETER)
@@ -72,6 +75,7 @@ function admin_process()
 		/* modules */
 
 		case 'modules';
+			$alias = clean($_POST['alias'], 2);
 			$status = $r['status'] = clean($_POST['status'], 0);
 			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
 			{
@@ -239,7 +243,7 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && check_alias($alias, 0) == 1 || check_alias($alias, 1) == 1)
+			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript_Validator_Interface::VALIDATION_OK || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
 			{
 				$error = l('alias_incorrect');
 			}
@@ -301,7 +305,7 @@ function admin_process()
 		{
 			$error = l('user_exists');
 		}
-		if (check_login($user) == 0)
+		if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 		{
 			$error = l('user_incorrect');
 		}
@@ -311,7 +315,7 @@ function admin_process()
 			{
 				$error = l('password_empty');
 			}
-			if ($password_confirm == 0 || check_login($password) == 0)
+			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 			{
 				$error = l('password_incorrect');
 			}
@@ -320,6 +324,7 @@ function admin_process()
 
 	/* validate last post */
 
+	$emailValidator = new Redaxscript_Validator_Email();
 	switch (TABLE_PARAMETER)
 	{
 		case 'comments':
@@ -328,7 +333,7 @@ function admin_process()
 				$error = l('author_empty');
 			}
 		case 'users':
-			if (check_email($email) == 0)
+			if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 			{
 				$error = l('email_incorrect');
 			}
@@ -358,6 +363,14 @@ function admin_process()
 		if (TABLE_EDIT == 1 || TABLE_DELETE == 1)
 		{
 			$route .= '/view/' . TABLE_PARAMETER;
+			if ($alias)
+			{
+				$route .= '#' . $alias;
+			}
+			else if ($user)
+			{
+				$route .= '#' . $user;
+			}
 		}
 	}
 
@@ -627,17 +640,34 @@ function admin_install()
 	{
 		/* install module */
 
-		if (file_exists('modules/' . ALIAS_PARAMETER . '/install.php'))
+		if (is_dir('modules/' . ALIAS_PARAMETER))
 		{
 			$module = retrieve('id', 'modules', 'alias', ALIAS_PARAMETER);
 			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
 			{
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
-				call_user_func(ALIAS_PARAMETER . '_' . ADMIN_PARAMETER);
+				include_once('modules/' . ALIAS_PARAMETER . '/index.php');
+				$function = ALIAS_PARAMETER . '_' . ADMIN_PARAMETER;
+				$object = 'Redaxscript\Modules\\' . mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE);
+				$method = str_replace('_', '', mb_convert_case(ADMIN_PARAMETER, MB_CASE_TITLE));
+
+				/* method exists */
+
+				if (method_exists($object, $method))
+				{
+					call_user_func(array($object, $method));
+				}
+
+				/* function exists */
+
+				else if (function_exists($function))
+				{
+					call_user_func($function);
+				}
 			}
 		}
 	}
-	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
+	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER);
 }
 
 /**
@@ -796,6 +826,7 @@ function admin_update()
  * @param string $table
  * @param integer $id
  * @param integer $mode
+ *
  * @return string
  */
 

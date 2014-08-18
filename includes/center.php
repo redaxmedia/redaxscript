@@ -13,11 +13,11 @@
 
 function center()
 {
-	hook(__FUNCTION__ . '_start');
+	Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* center break */
 
-	if (CENTER_BREAK == 1)
+	if (CENTER_BREAK == 1 || Redaxscript\Registry::get('centerBreak') == 1)
 	{
 		return;
 	}
@@ -28,7 +28,7 @@ function center()
 	{
 		routing();
 	}
-	hook(__FUNCTION__ . '_end');
+	Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 }
 
 /**
@@ -54,7 +54,14 @@ function routing()
 
 	/* call default post */
 
-	$post_list = explode(', ', b('default_post'));
+	$post_list = array(
+		'comment',
+		'login',
+		'password_reset',
+		'registration',
+		'reminder',
+		'search'
+	);
 	foreach ($post_list as $value)
 	{
 		if ($_POST[$value . '_post'] && function_exists($value . '_post'))

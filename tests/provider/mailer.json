@@ -1,0 +1,29 @@
+[
+	[
+		{
+			"To": "to@redaxscript.com"
+		},
+		{
+			"From": "from@redaxscript.com"
+		},
+		"test",
+		[
+			"test",
+			"test"
+		],
+		[
+			"test.php"
+		]
+	],
+	[
+		[
+			"to@redaxscript.com"
+		],
+		[
+			"from@redaxscript.com"
+		],
+		"test",
+		"test",
+		""
+	]
+]

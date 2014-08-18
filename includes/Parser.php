@@ -1,4 +1,7 @@
 <?php
+namespace Redaxscript;
+use Redaxscript\Validator;
+use Redaxscript_Validator_Interface as Redaxscript_Validator_Interface;
 
 /**
  * parent class to parse content for pseudo tags
@@ -9,8 +12,7 @@
  * @category Parser
  * @author Henry Ruhs
  */
-
-class Redaxscript_Parser
+class Parser
 {
 	/**
 	 * instance of the registry class
@@ -117,14 +119,14 @@ class Redaxscript_Parser
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
-	 * @param Redaxscript_Language $language instance of the language class
+	 * @param Registry $registry instance of the registry class
+	 * @param Language $language instance of the language class
 	 * @param string $input content be parsed
 	 * @param string $route route of the content
 	 * @param array $options options of the parser
 	 */
 
-	public function __construct(Redaxscript_Registry $registry, Redaxscript_Language $language, $input = null, $route = null, $options = null)
+	public function __construct(Registry $registry, Language $language, $input = null, $route = null, $options = null)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
@@ -145,15 +147,15 @@ class Redaxscript_Parser
 
 	public function init()
 	{
-		foreach($this->_tags as $key => $value)
+		foreach ($this->_tags as $key => $value)
 		{
 			/* save tag related position */
 
-			$position = $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
+			 $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
 			/* call related function if tag found */
 
-			if ($position > -1)
+			if ($this->_tags[$key]['position'] > -1)
 			{
 				$function = $value['function'];
 				$this->_output = $this->$function($this->_output);
@@ -186,8 +188,12 @@ class Redaxscript_Parser
 
 	protected function _parseBreak($input = null)
 	{
+		$aliasValidator = new Validator\Alias();
+
+		/* collect output */
+
 		$output = str_replace('<break>', '', $input);
-		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || check_alias($this->_registry->get('firstParameter'), 1) === 1)
+		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Redaxscript_Validator_Interface::VALIDATION_OK)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);
 
@@ -267,7 +273,7 @@ class Redaxscript_Parser
 				{
 					foreach ($json as $function => $parameter)
 					{
-						if (!in_array($function, $this->_forbiddenFunctions))
+						if (function_exists($function) && !in_array($function, $this->_forbiddenFunctions))
 						{
 							echo call_user_func_array($function, $parameter);
 						}
@@ -278,7 +284,7 @@ class Redaxscript_Parser
 
 				else
 				{
-					if (!in_array($value, $this->_forbiddenFunctions))
+					if (function_exists($value) && !in_array($value, $this->_forbiddenFunctions))
 					{
 						echo call_user_func($value);
 					}

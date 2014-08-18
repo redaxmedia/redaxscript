@@ -3,4 +3,5 @@
 
 [admin]
 1 = scripts/alias.js
-2 = templates/admin/scripts/interface.js
+2 = scripts/keyword.js
+3 = templates/admin/scripts/interface.js

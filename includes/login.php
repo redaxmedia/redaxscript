@@ -13,7 +13,7 @@
 
 function login_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -26,7 +26,7 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* reminder question */
@@ -42,7 +42,7 @@ function login_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('login') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('login') . '</h2>';
 	$output .= form_element('form', 'form_login', 'js_validate_form form_default form_login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
 	$output .= form_element('fieldset', '', 'set_login', '', '', $legend) . '<ul>';
 	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
@@ -72,9 +72,9 @@ function login_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'login_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/login'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -90,6 +90,10 @@ function login_form()
 
 function login_post()
 {
+	$loginValidator = new Redaxscript_Validator_Login();
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/login'] == 'visited')
@@ -100,7 +104,8 @@ function login_post()
 		$solution = $_POST['solution'];
 		$login_by_email = 0;
 		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
-		if (check_email($post_user) == 0)
+
+		if ($emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 		{
 			$post_user = clean($post_user, 0);
 			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT 1';
@@ -132,19 +137,20 @@ function login_post()
 	{
 		$error = l('password_empty');
 	}
-	else if ($login_by_email == 0 && check_login($post_user) == 0)
+	else if ($login_by_email == 0 && $loginValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($login_by_email == 1 && check_email($post_user) == 0)
+	else if ($login_by_email == 1 && $emailValidator->validate($post_user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if (check_login($post_password) == 0)
+	else if ($loginValidator->validate($post_password) == Redaxscript_Validator_Interface::VALIDATION_FAIL
+	)
 	{
 		$error = l('password_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}

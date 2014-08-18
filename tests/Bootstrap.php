@@ -1,42 +1,37 @@
 <?php
+namespace Redaxscript;
 
 /* include as needed */
 
 include_once('includes/Autoloader.php');
+include_once('stubs/hook_function.php');
+include_once('stubs/hook_method.php');
+include_once('TestCase.php');
 
 /* init */
 
-Redaxscript_Autoloader::init();
-Redaxscript_Request::init();
+Autoloader::init();
+Request::init();
 
 /* set config */
 
-Redaxscript_Config::set('type', 'mysql');
-Redaxscript_Config::set('host', 'redaxscript.com');
-Redaxscript_Config::set('name', 'd01ae38a');
-Redaxscript_Config::set('user', 'd01ae38a');
-Redaxscript_Config::set('password', 'travis');
+Config::set('type', 'mysql');
+Config::set('host', 'redaxscript.com');
+Config::set('name', 'd01ae38a');
+Config::set('user', 'd01ae38a');
+Config::set('password', 'travis');
 
 /* registry and config */
 
-$registry = Redaxscript_Registry::getInstance();
-$config = Redaxscript_Config::getInstance();
+$registry = Registry::getInstance();
+$config = Config::getInstance();
 
-/* database */
+/* database and hook */
 
-Redaxscript_Db::init($config);
-
-/* detection */
-
-$detectionLanguage = New Redaxscript_Detection_Language($registry);
-$detectionTemplate = New Redaxscript_Detection_Template($registry);
-
-/* set language and template */
-
-$registry->set('language', $detectionLanguage->getOutput());
-$registry->set('template', $detectionTemplate->getOutput());
+Db::init($config);
+Hook::init($registry);
 
 /* language */
 
-$language = Redaxscript_Language::getInstance();
-$language->init($registry->get('language'));
+$language = Language::getInstance();
+$language::init('en');

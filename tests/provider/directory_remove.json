@@ -6,6 +6,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"index.php",
 			"languages"
 		]
@@ -17,6 +19,8 @@
 			"root/includes"
 		],
 		[
+			".",
+			"..",
 			"Autoloader.php",
 			"Bootstrap.php"
 		]
@@ -28,6 +32,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"index.php",
 			"languages"
 		]
@@ -39,6 +45,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"includes",
 			"languages"
 		]

@@ -29,7 +29,7 @@ function search()
 
 function search_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -40,7 +40,7 @@ function search_form()
 
 	/* collect output */
 
-	$output = form_element('form', '', 'js_validate_search form_search', '', '', '', 'method="post"');
+	$output .= form_element('form', '', 'js_validate_search form_search', '', '', '', 'method="post"');
 	$output .= form_element('search', '', 'js_search field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
 
 	/* collect hidden and button output */
@@ -49,8 +49,8 @@ function search_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -117,12 +117,13 @@ function search_post()
 
 		else if ($result)
 		{
+			$accessValidator = new Redaxscript\Validator\Access();
 			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
 			$output .= form_element('fieldset', '', 'set_search_result', '', '', '<span class="title_content_sub title_search_result_sub">' . l('articles') . '</span>') . '<ol class="list_search_result">';
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];
-				$check_access = check_access($access, MY_GROUPS);
+				$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 				/* if access granted */
 

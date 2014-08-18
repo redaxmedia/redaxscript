@@ -16,7 +16,7 @@
 
 function navigation_list($table = '', $options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -109,12 +109,11 @@ function navigation_list($table = '', $options = '')
 	}
 	else if ($result)
 	{
-		/* collect output */
-
+		$accessValidator = new Redaxscript\Validator\Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -214,17 +213,17 @@ function navigation_list($table = '', $options = '')
 
 	if ($error && $option_parent == '')
 	{
-		$output = '<ul' .$id_string . $class_string . '><li>' . $error . '</li></ul>';
+		$output = '<ul' . $id_string . $class_string . '><li>' . $error . '</li></ul>';
 	}
 
 	/* else collect list output */
 
 	else if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -242,7 +241,7 @@ function navigation_list($table = '', $options = '')
 
 function languages_list($options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -257,7 +256,7 @@ function languages_list($options = '')
 
 	/* languages directory object */
 
-	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory = new Redaxscript\Directory('languages');
 	$languages_directory_array = $languages_directory->get();
 
 	/* collect languages output */
@@ -296,10 +295,10 @@ function languages_list($options = '')
 
 	if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -317,7 +316,7 @@ function languages_list($options = '')
 
 function templates_list($options = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define option variables */
 
@@ -332,7 +331,7 @@ function templates_list($options = '')
 
 	/* templates directory object */
 
-	$templates_directory = New Redaxscript_Directory('templates', array(
+	$templates_directory = new Redaxscript\Directory('templates', array(
 		'admin',
 		'install'
 	));
@@ -373,10 +372,10 @@ function templates_list($options = '')
 
 	if ($output)
 	{
-		$output = '<ul' .$id_string . $class_string . '>' . $output . '</ul>';
+		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -392,14 +391,15 @@ function templates_list($options = '')
 
 function login_list()
 {
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
 	{
-		$output = '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li class="item_logout">' . anchor_element('internal', '', '', l('logout'), 'logout', '', 'rel="nofollow"') . '</li>';
 		$output .= '<li class="item_administration">' . anchor_element('internal', '', '', l('administration'), 'admin', '', 'rel="nofollow"') . '</li>';
 	}
 	else
 	{
-		$output = '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li class="item_login">' . anchor_element('internal', '', '', l('login'), 'login', '', 'rel="nofollow"') . '</li>';
 		if (s('reminder') == 1)
 		{
 			$output .= '<li class="item_reminder">' . anchor_element('internal', '', '', l('reminder'), 'reminder', '', 'rel="nofollow"') . '</li>';
@@ -410,5 +410,6 @@ function login_list()
 		}
 	}
 	$output = '<ul class="list_login">' . $output . '</ul>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }

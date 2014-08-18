@@ -1,7 +1,9 @@
 <?php
+namespace Redaxscript\Tests;
+use Redaxscript\Request;
 
 /**
- * Redaxscript Request Test
+ * RequestTest
  *
  * @since 2.2.0
  *
@@ -10,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
+class RequestTest extends TestCase
 {
 	/**
 	 * setUp
@@ -20,7 +22,7 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		Redaxscript_Request::init();
+		Request::init();
 	}
 
 	/**
@@ -33,7 +35,7 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* result */
 
-		$result = Redaxscript_Request::get();
+		$result = Request::get();
 
 		/* compare */
 
@@ -50,11 +52,11 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setServer('testKey', 'testValue');
+		Request::setServer('testKey', 'testValue');
 
 		/* result */
 
-		$result = Redaxscript_Request::getServer('testKey');
+		$result = Request::getServer('testKey');
 
 		/* compare */
 
@@ -71,11 +73,11 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setQuery('testKey', 'testValue');
+		Request::setQuery('testKey', 'testValue');
 
 		/* result */
 
-		$result = Redaxscript_Request::getQuery('testKey');
+		$result = Request::getQuery('testKey');
 
 		/* compare */
 
@@ -92,11 +94,11 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setPost('testKey', 'testValue');
+		Request::setPost('testKey', 'testValue');
 
 		/* result */
 
-		$result = Redaxscript_Request::getPost('testKey');
+		$result = Request::getPost('testKey');
 
 		/* compare */
 
@@ -113,11 +115,11 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setSession('testKey', 'testValue');
+		Request::setSession('testKey', 'testValue');
 
 		/* result */
 
-		$result = Redaxscript_Request::getSession('testKey');
+		$result = Request::getSession('testKey');
 
 		/* compare */
 
@@ -134,11 +136,11 @@ class Redaxscript_Request_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setCookie('testKey', 'testValue');
+		Request::setCookie('testKey', 'testValue');
 
 		/* result */
 
-		$result = Redaxscript_Request::getCookie('testKey');
+		$result = Request::getCookie('testKey');
 
 		/* compare */
 

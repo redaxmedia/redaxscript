@@ -6,6 +6,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"includes",
 			"index.php",
 			"languages",
@@ -19,6 +21,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"includes",
 			"index.php",
 			"languages",
@@ -32,6 +36,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"includes",
 			"index.php",
 			"languages"
@@ -44,6 +50,8 @@
 			"root"
 		],
 		[
+			".",
+			"..",
 			"includes",
 			"index.php",
 			"languages"

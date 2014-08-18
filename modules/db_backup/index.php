@@ -19,19 +19,19 @@ function db_backup_render_start()
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::getInstance();
+		$registry = Redaxscript\Registry::getInstance();
 		$registry->set('title', l('database_backup', 'db_backup'));
 
 		/* config object */
 
-		$config = New Redaxscript_Config();
+		$config = Redaxscript\Config::getInstance();
 
 		/* download database backup */
 
 		if (THIRD_PARAMETER == 'download')
 		{
 			define('RENDER_BREAK', 1);
-			db_backup($config->get('name'), 0);
+			db_backup($config::get('name'), 0);
 		}
 
 		/* send database backup */
@@ -43,7 +43,7 @@ function db_backup_render_start()
 			/* prepare body parts */
 
 			$urlLink = anchor_element('external', '', '', ROOT, ROOT);
-			$fileName = $config->get('name') . '-' . db_backup_clean_date(NOW) . '.sql';
+			$fileName = $config::get('name') . '-' . db_backup_clean_date(NOW) . '.sql';
 
 			/* prepare mail inputs */
 
@@ -52,18 +52,18 @@ function db_backup_render_start()
 			);
 			$subject = l('database_backup', 'db_backup');
 			$bodyArray = array(
-				l('url') => $urlLink,
-				l('database') => $config->get('name'),
+				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
+				'<strong>' . l('database') . l('colon') . '</strong> ' . $config::get('name'),
 				'<br />',
-				l('message') => l('save_attachment', 'db_backup') . l('point')
+				'<strong>' . l('message') . l('colon') . '</strong> ' . l('save_attachment', 'db_backup') . l('point')
 			);
 			$attachmentArray = array(
-				$fileName => db_backup($config->get('name'), 1)
+				$fileName => db_backup($config::get('name'), 1)
 			);
 
 			/* mail object */
 
-			$mail = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
+			$mail = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray, $attachmentArray);
 			$mail->send();
 		}
 	}
@@ -177,10 +177,6 @@ function db_backup_clean_date($input = '')
 
 function db_backup_process($d_name = '')
 {
-	/* config object */
-
-	$config = New Redaxscript_Config();
-
 	/* query tables */
 
 	$query = 'SHOW TABLES FROM ' . $d_name;

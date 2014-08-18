@@ -13,7 +13,7 @@
 
 function reminder_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -24,11 +24,11 @@ function reminder_form()
 
 	/* captcha object */
 
-	$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('reminder') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('reminder') . '</h2>';
 	$output .= form_element('form', 'form_reminder', 'js_validate_form form_default form_reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
 	$output .= form_element('fieldset', '', 'set_reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
@@ -47,9 +47,9 @@ function reminder_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -65,6 +65,9 @@ function reminder_form()
 
 function reminder_post()
 {
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/reminder'] == 'visited')
@@ -80,11 +83,11 @@ function reminder_post()
 	{
 		$error = l('email_empty');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -122,14 +125,14 @@ function reminder_post()
 				);
 				$subject = l('reminder');
 				$bodyArray = array(
-					l('user') => $user,
+					'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
 					'<br />',
-					l('password_reset') => $passwordResetLink
+					'<strong>' . l('password_reset') . l('colon') . '</strong> ' . $passwordResetLink
 				);
 
 				/* mailer object */
 
-				$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+				$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 				$mailer->send();
 			}
 		}

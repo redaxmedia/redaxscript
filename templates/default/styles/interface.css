@@ -103,7 +103,7 @@
 .list_header
 {
 	float: right;
-	font: 2em 'pt sans narrow', 'trebuchet ms', arial;
+	font: 1.75em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-top: 0.5em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
@@ -140,7 +140,7 @@
 
 .list_header > li + li
 {
-	margin-left: 0.5em;
+	margin-left: 0.25em;
 }
 
 .list_header > li:before

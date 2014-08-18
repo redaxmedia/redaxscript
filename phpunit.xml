@@ -2,4 +2,9 @@
 	<testsuite name="base">
 		<directory>tests/includes</directory>
 	</testsuite>
+	<filter>
+		<blacklist>
+			<directory>vendor</directory>
+		</blacklist>
+	</filter>
 </phpunit>

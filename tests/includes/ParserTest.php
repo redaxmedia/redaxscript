@@ -1,8 +1,11 @@
 <?php
-include_once('tests/stubs.php');
+namespace Redaxscript\Tests;
+use Redaxscript\Language;
+use Redaxscript\Parser;
+use Redaxscript\Registry;
 
 /**
- * Redaxscript Parser Test
+ * ParserTest
  *
  * @since 2.1.0
  *
@@ -11,7 +14,7 @@ include_once('tests/stubs.php');
  * @author Henry Ruhs
  */
 
-class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -36,8 +39,8 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
-		$this->_language = Redaxscript_Language::getInstance();
+		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
@@ -50,9 +53,7 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 
 	public function providerParser()
 	{
-		$contents = file_get_contents('tests/provider/parser.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/parser.json');
 	}
 
 	/**
@@ -79,7 +80,7 @@ class Redaxscript_Parser_Test extends PHPUnit_Framework_TestCase
 				'code' => 'box-code'
 			)
 		);
-		$parser = new Redaxscript_Parser($this->_registry, $this->_language, $text, $route, $options);
+		$parser = new Parser($this->_registry, $this->_language, $text, $route, $options);
 
 		/* result */
 

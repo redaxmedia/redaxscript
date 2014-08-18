@@ -1,7 +1,10 @@
 <?php
+namespace Redaxscript\Tests;
+use Redaxscript\Config;
+use Redaxscript\Db;
 
 /**
- * Redaxscript Db Test
+ * DbTest
  *
  * @since 2.2.0
  *
@@ -10,7 +13,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Db_Test extends PHPUnit_Framework_TestCase
+class DbTest extends TestCase
 {
 	/**
 	 * instance of the config class
@@ -28,7 +31,7 @@ class Redaxscript_Db_Test extends PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		$this->_config = Redaxscript_Config::getInstance();
+		$this->_config = Config::getInstance();
 	}
 
 	/**
@@ -41,11 +44,11 @@ class Redaxscript_Db_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Db::init($this->_config);
+		Db::init($this->_config);
 
 		/* result */
 
-		$result = Redaxscript_Db::getDb();
+		$result = Db::getDb();
 
 		/* compare */
 

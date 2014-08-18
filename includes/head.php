@@ -13,7 +13,7 @@
 
 function head()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
 		/* query contents */
@@ -22,10 +22,11 @@ function head()
 		$result = mysql_query($query);
 		if ($result)
 		{
+			$accessValidator = new Redaxscript\Validator\Access();
 			while ($r = mysql_fetch_assoc($result))
 			{
 				$access = $r['access'];
-				$check_access = check_access($access, MY_GROUPS);
+				$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 				/* if access granted */
 
@@ -93,7 +94,7 @@ function head()
 
 	/* collect meta output */
 
-	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
+	$output .= '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
 
 	/* collect title output */
@@ -175,6 +176,6 @@ function head()
 		$canonical_url .= FULL_ROUTE;
 	}
 	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }

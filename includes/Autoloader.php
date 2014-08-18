@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to automatically load required class files
@@ -11,7 +12,7 @@
  * @author Sven Weingartner
  */
 
-class Redaxscript_Autoloader
+class Autoloader
 {
 	/**
 	 * project namespace
@@ -19,7 +20,23 @@ class Redaxscript_Autoloader
 	 * @var string
 	 */
 
-	protected static $_nameSpace = 'Redaxscript_';
+	protected static $_namespace = 'Redaxscript';
+
+	/**
+	 * project class delimiter
+	 *
+	 * @var string
+	 */
+
+	protected static $_delimiter = '\\';
+
+	/**
+	 * file suffix
+	 *
+	 * @var string
+	 */
+
+	protected static $_fileSuffix = '.php';
 
 	/**
 	 * directory to search for class files
@@ -33,19 +50,11 @@ class Redaxscript_Autoloader
 	);
 
 	/**
-	 * file suffix
-	 *
-	 * @var string
-	 */
-
-	protected static $_fileSuffix = '.php';
-
-	/**
 	 * init the class
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string|array $directory specify optional directory to search
+	 * @param mixed $directory optional directory to search
 	 */
 
 	public static function init($directory = null)
@@ -62,7 +71,13 @@ class Redaxscript_Autoloader
 				$directory
 			);
 		}
-		spl_autoload_register(array(__CLASS__, '_load'));
+
+		/* register autoload */
+
+		spl_autoload_register(array(
+			__CLASS__,
+			'_load'
+		));
 	}
 
 	/**
@@ -75,8 +90,14 @@ class Redaxscript_Autoloader
 
 	protected static function _load($className = null)
 	{
-		$fileName = str_replace(self::$_nameSpace, '', $className);
-		$filePath = str_replace('_', '/', $fileName) . self::$_fileSuffix;
+		$fileName = str_replace(self::$_namespace, '', $className);
+		$fileName = str_replace(self::$_delimiter, '/', $fileName);
+
+		/* temp */
+		$fileName = str_replace('_', '/', $fileName);
+		/* temp */
+
+		$filePath = $fileName . self::$_fileSuffix;
 
 		/* include files as needed */
 
@@ -84,7 +105,7 @@ class Redaxscript_Autoloader
 		{
 			if (file_exists($directory . '/' . $filePath))
 			{
-				include($directory . '/' . $filePath);
+				include_once($directory . '/' . $filePath);
 			}
 		}
 	}

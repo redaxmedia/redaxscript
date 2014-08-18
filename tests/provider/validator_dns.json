@@ -1,0 +1,17 @@
+[
+	[
+		"smtp.web.de",
+		"MX",
+		1
+	],
+	[
+		"www.domain.com",
+		"MX",
+		0
+	],
+	[
+		"www.domain.com",
+		"A",
+		1
+	]
+]

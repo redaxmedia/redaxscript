@@ -1,4 +1,8 @@
 <?php
+namespace Redaxscript\Detection;
+use Redaxscript\Db;
+use Redaxscript\Detection;
+use Redaxscript\Request;
 
 /**
  * children class to detect the required language
@@ -10,7 +14,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Detection_Language extends Redaxscript_Detection
+class Language extends Detection
 {
 	/**
 	 * init the class
@@ -21,11 +25,11 @@ class Redaxscript_Detection_Language extends Redaxscript_Detection
 	public function init()
 	{
 		$this->_detect(array(
-			'query' => Redaxscript_Request::getQuery('l'),
-			'session' => Redaxscript_Request::getSession($this->_registry->get('root') . '/language'),
-			'contents' => $this->_registry->get('lastTable') ? Redaxscript_Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->language : null,
-			'settings' => Redaxscript_Db::getSettings('language'),
-			'browser' => substr(Redaxscript_Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
+			'query' => Request::getQuery('l'),
+			'session' => Request::getSession($this->_registry->get('root') . '/language'),
+			'contents' => $this->_registry->get('lastTable') ? Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->language : null,
+			'settings' => Db::getSettings('language'),
+			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		), 'language', 'languages/{value}.json');
     }

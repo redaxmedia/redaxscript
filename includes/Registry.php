@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to store the registry
@@ -10,7 +11,7 @@
  * @author Gary Aylward
  */
 
-class Redaxscript_Registry extends Redaxscript_Singleton
+class Registry extends Singleton
 {
 	/**
 	 * array of registry values
@@ -28,7 +29,7 @@ class Redaxscript_Registry extends Redaxscript_Singleton
 	 * @param array $values array of registry values
 	 */
 
-	public function init($values = array())
+	public static function init($values = array())
 	{
 		if (is_array($values))
 		{
@@ -43,12 +44,12 @@ class Redaxscript_Registry extends Redaxscript_Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* values as needed */
 

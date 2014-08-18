@@ -50,7 +50,7 @@ function debug_render_start()
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::getInstance();
+		$registry = Redaxscript\Registry::getInstance();
 		$registry->set('title', l('debug', 'debug'));
 	}
 }
@@ -166,6 +166,15 @@ function debug_extras_end()
 	{
 		$key = str_replace(ROOT . '/', '', $key);
 		$debug['session'][$key] = $value;
+	}
+
+	/* debug registry */
+
+	$registry = Redaxscript\Registry::getInstance();
+	$registry_array = $registry->get();
+	foreach ($registry_array as $key => $value)
+	{
+		$debug['registry'][$key] = $value;
 	}
 
 	/* debug constants */
