@@ -12,11 +12,11 @@
 	"require-dev":
 	{
 		"apigen/apigen": "2.8.0",
-		"mikey179/vfsStream": "1.2.0",
-		"phpunit/phpunit": "4.1.3",
+		"mikey179/vfsStream": "1.3.0",
+		"phpunit/phpunit": "4.2.0",
 		"redaxmedia/redaxscript-apigen-template": "1.0.0",
-		"redaxmedia/tocgen": "4.0.1",
+		"redaxmedia/tocgen": "4.0.2",
 		"satooshi/php-coveralls": "0.6.1",
-		"squizlabs/php_codesniffer": "1.5.3"
+		"squizlabs/php_codesniffer": "1.5.4"
 	}
 }
