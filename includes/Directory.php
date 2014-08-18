@@ -58,7 +58,7 @@ class Directory
 	 * @param mixed $exclude files to exclude
 	 */
 
-	public function __construct($directory = null, $exclude = array())
+	public function __construct($directory = null, $exclude = null)
 	{
 		$this->_directory = $directory;
 
