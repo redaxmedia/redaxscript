@@ -64,7 +64,7 @@ function qunit_render_start()
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::getInstance();
+		$registry = Redaxscript\Registry::getInstance();
 		$registry->set('title', l('qunit', 'qunit'));
 	}
 }

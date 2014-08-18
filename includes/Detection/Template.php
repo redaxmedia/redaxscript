@@ -1,4 +1,8 @@
 <?php
+namespace Redaxscript\Detection;
+use Redaxscript\Db;
+use Redaxscript\Detection;
+use Redaxscript\Request;
 
 /**
  * children class to detect the required template
@@ -10,7 +14,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Detection_Template extends Redaxscript_Detection
+class Template extends Detection
 {
 	/**
 	 * init the class
@@ -21,10 +25,10 @@ class Redaxscript_Detection_Template extends Redaxscript_Detection
 	public function init()
 	{
 		$this->_detect(array(
-			'query' => Redaxscript_Request::getQuery('t'),
-			'session' => Redaxscript_Request::getSession($this->_registry->get('root') . '/template'),
-			'contents' => $this->_registry->get('lastTable') ? Redaxscript_Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->template : null,
-			'settings' => Redaxscript_Db::getSettings('template'),
+			'query' => Request::getQuery('t'),
+			'session' => Request::getSession($this->_registry->get('root') . '/template'),
+			'contents' => $this->_registry->get('lastTable') ? Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->template : null,
+			'settings' => Db::getSettings('template'),
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');
 	}

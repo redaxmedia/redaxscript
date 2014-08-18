@@ -1,7 +1,10 @@
 <?php
+namespace Redaxscript\Tests;
+use Redaxscript\Helper;
+use Redaxscript\Registry;
 
 /**
- * Redaxscript Helper Test
+ * HelperTest
  *
  * @since 2.1.0
  *
@@ -10,7 +13,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
+class HelperTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -28,7 +31,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_registry = Registry::getInstance();
 	}
 
 	/**
@@ -41,9 +44,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 
 	public function providerGetSubset()
 	{
-		$contents = file_get_contents('tests/provider/helper_get_subset.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/helper_get_subset.json');
 	}
 
 	/**
@@ -56,9 +57,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 
 	public function providerGetClass()
 	{
-		$contents = file_get_contents('tests/provider/helper_get_class.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/helper_get_class.json');
 	}
 
 	/**
@@ -77,7 +76,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$helper = new Redaxscript_Helper($this->_registry);
+		$helper = new Helper($this->_registry);
 
 		/* result */
 
@@ -104,7 +103,7 @@ class Redaxscript_Helper_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$helper = new Redaxscript_Helper($this->_registry);
+		$helper = new Helper($this->_registry);
 
 		/* result */
 

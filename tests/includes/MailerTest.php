@@ -1,7 +1,9 @@
 <?php
+namespace Redaxscript\Tests;
+use Redaxscript\Mailer;
 
 /**
- * Redaxscript Mailer Test
+ * MailerTest
  *
  * @since 2.2.0
  *
@@ -10,16 +12,47 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Mailer_Test extends PHPUnit_Framework_TestCase
+class MailerTest extends TestCase
 {
 	/**
-	 * testDummy
+	 * providerMailer
 	 *
 	 * @since 2.2.0
+	 *
+	 * @return array
 	 */
 
-	public function testDummy()
+	public function providerMailer()
 	{
+		return $this->getProvider('tests/provider/mailer.json');
+	}
+
+	/**
+	 * testMessage
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param array $toArray
+	 * @param array $fromArray
+	 * @param string $subject
+	 * @param mixed $body
+	 * @param array $attachmentArray
+	 *
+	 * @dataProvider providerMailer
+	 */
+
+	public function testMessage($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
+	{
+		/* setup */
+
+		$mailer = new Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
+
+		/* result */
+
+		$mailer->send();
+
+		/*compare */
+
 		$this->assertTrue(true);
 	}
 }

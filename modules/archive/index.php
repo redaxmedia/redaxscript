@@ -24,6 +24,7 @@ function archive()
 	}
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		$month_names = explode(', ', l('month_names'));
 		$last = 0;
 		while ($r = mysql_fetch_assoc($result))
@@ -31,7 +32,7 @@ function archive()
 			/* check for access */
 
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 

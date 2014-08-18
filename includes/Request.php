@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to request globals
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Request
+class Request
 {
 	/**
 	 * array of request values
@@ -39,12 +40,12 @@ class Redaxscript_Request
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* handle index */
 

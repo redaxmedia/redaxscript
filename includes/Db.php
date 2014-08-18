@@ -1,4 +1,7 @@
 <?php
+namespace Redaxscript;
+use ORM;
+use PDO;
 
 /**
  * children class to handle the database
@@ -10,18 +13,20 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Db extends ORM
+class Db extends ORM
 {
 	/**
 	 * connect to database
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param Redaxscript_Config $config instance of the config class
+	 * @param Config $config instance of the config class
 	 */
 
-	public static function init(Redaxscript_Config $config)
+	public static function init(Config $config)
 	{
+		/* mysql */
+
 		if ($config::get('type') === 'mysql')
 		{
 			self::configure(array(
@@ -34,10 +39,13 @@ class Redaxscript_Db extends ORM
 				)
 			);
 		}
+
+		/* general */
+
 		self::configure(array(
-			'return_result_sets' => true,
 			'caching' => true,
-			'caching_auto_clear' => true
+			'caching_auto_clear' => true,
+			'return_result_sets' => true
 		));
 	}
 
@@ -49,13 +57,13 @@ class Redaxscript_Db extends ORM
 	 * @param string $table name of the table
 	 * @param string $connection which connection to use
 	 *
-	 * @return Redaxscript_Db
+	 * @return Db
 	 */
 
 	public static function forPrefixTable($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
-		self::_setup_db($connection);
-		return new self(Redaxscript_Config::get('prefix') . $table, array(), $connection);
+		self::_setupDb($connection);
+		return new self(Config::get('prefix') . $table, array(), $connection);
 	}
 
 	/**
@@ -70,6 +78,15 @@ class Redaxscript_Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+		try
+		{
+			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+		}
+		// @codeCoverageIgnoreStart
+		catch (\PDOException $exception)
+		{
+			return false;
+		}
+		// @codeCoverageIgnoreEnd
 	}
 }

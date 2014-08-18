@@ -1,7 +1,9 @@
 <?php
+namespace Redaxscript\Tests;
+use Redaxscript\Autoloader;
 
 /**
- * Redaxscript Autoloader Test
+ * AutoloaderTest
  *
  * @since 2.1.0
  *
@@ -11,7 +13,7 @@
  * @author Sven Weingartner
  */
 
-class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
+class AutoloaderTest extends TestCase
 {
 	/**
 	 * providerFilePath
@@ -23,9 +25,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 
 	public function providerFilePath()
 	{
-		$contents = file_get_contents('tests/provider/autoloader_file_path.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/autoloader_file_path.json');
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Redaxscript_Autoloader_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$autoloader = new Redaxscript_Autoloader;
+		$autoloader = new Autoloader;
 		$autoloader::init('includes');
 		$autoloader::init(array(
 			'.',

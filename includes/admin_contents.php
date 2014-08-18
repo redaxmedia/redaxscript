@@ -13,7 +13,7 @@
 
 function admin_contents_list()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -57,7 +57,7 @@ function admin_contents_list()
 
 	/* collect listing output */
 
-	$output = '<h2 class="title_content">' . l(TABLE_PARAMETER) . '</h2>';
+	$output .= '<h2 class="title_content">' . l(TABLE_PARAMETER) . '</h2>';
 	$output .= '<div class="wrapper_button_admin">';
 	if ($table_new == 1)
 	{
@@ -119,10 +119,11 @@ function admin_contents_list()
 	}
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript\Validator\Access();
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -233,6 +234,10 @@ function admin_contents_list()
 				/* collect table row */
 
 				$output .= '<tr';
+				if ($alias)
+				{
+					$output .= ' id="' . $alias . '"';
+				}
 				if ($class_status)
 				{
 					$output .= ' class="' . $class_status . '"';
@@ -380,8 +385,8 @@ function admin_contents_list()
 		$output .= '<tbody><tr><td colspan="4">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -397,7 +402,7 @@ function admin_contents_list()
 
 function admin_contents_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* switch table */
 
@@ -483,7 +488,7 @@ function admin_contents_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -518,11 +523,11 @@ function admin_contents_form()
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
 		$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small_admin', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
-		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize field_textarea_admin field_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'keywords', 'js_auto_resize js_generate_keyword_output field_textarea_admin field_small_admin', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
 	}
 	if (TABLE_PARAMETER != 'categories')
 	{
-		$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_editor_textarea field_textarea_admin field_note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_generate_keyword_input js_editor_textarea field_textarea_admin field_note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -532,7 +537,7 @@ function admin_contents_form()
 
 	/* languages directory object */
 
-	$languages_directory = New Redaxscript_Directory('languages', 'misc.php');
+	$languages_directory = new Redaxscript\Directory('languages');
 	$languages_directory_array = $languages_directory->get();
 
 	/* build languages select */
@@ -548,7 +553,7 @@ function admin_contents_form()
 	{
 		/* templates directory object */
 
-		$templates_directory = New Redaxscript_Directory('templates', array(
+		$templates_directory = new Redaxscript\Directory('templates', array(
 			'admin',
 			'install'
 		));
@@ -629,29 +634,29 @@ function admin_contents_form()
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
 		$output .= '<li>' . select_element('headline', 'field_select_admin', 'headline', array(
-			l('enable') => 1,
-			l('disable') => 0
-		), $headline, l('headline')) . '</li>';
+				l('enable') => 1,
+				l('disable') => 0
+			), $headline, l('headline')) . '</li>';
 	}
 	if (TABLE_PARAMETER == 'articles')
 	{
 		$output .= '<li>' . select_element('infoline', 'field_select_admin', 'infoline', array(
-			l('enable') => 1,
-			l('disable') => 0
-		), $infoline, l('infoline')) . '</li>';
+				l('enable') => 1,
+				l('disable') => 0
+			), $infoline, l('infoline')) . '</li>';
 		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', array(
-			l('enable') => 1,
-			l('freeze') => 2,
-			l('restrict') => 3,
-			l('disable') => 0
-		), $comments, l('comments')) . '</li>';
+				l('enable') => 1,
+				l('freeze') => 2,
+				l('restrict') => 3,
+				l('disable') => 0
+			), $comments, l('comments')) . '</li>';
 	}
 	if ($status != 2)
 	{
 		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
-			l('publish') => 1,
-			l('unpublish') => 0
-		), $status, l('status')) . '</li>';
+				l('publish') => 1,
+				l('unpublish') => 0
+			), $status, l('status')) . '</li>';
 	}
 
 	/* build access select */
@@ -725,6 +730,6 @@ function admin_contents_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }

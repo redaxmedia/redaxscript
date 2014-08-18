@@ -158,7 +158,8 @@
 		output = output.replace(/[\u0417\u0437\u305c\u30bc]/g, 'ze');
 		output = output.replace(/[\u305e\u30be]/g, 'zo');
 		output = output.replace(/[\u305a\u30ba]/g, 'zu');
-		output = output.replace(/[^a-z0-9_]/g, ' ');
+		output = output.replace(/\W+/g, ' ');
+		output = output.trim();
 		output = output.replace(/\s+/g, '-');
 		return output;
 	};
@@ -184,15 +185,15 @@
 			{
 				var field = $(this),
 					form = field.closest('form'),
-					fiedValue = $.trim(field.val()),
-					related = form.find(options.element.field),
+					related = form.find(options.element.related),
+					fieldValue = $.trim(field.val()),
 					aliasValue = '';
 
-				/* clean alias if value */
+				/* clean alias from value */
 
-				if (fiedValue)
+				if (fieldValue)
 				{
-					aliasValue = $.fn.cleanAlias(fiedValue);
+					aliasValue = $.fn.cleanAlias(fieldValue);
 					if (aliasValue)
 					{
 						related.val(aliasValue).add(field).attr('data-related', 'alias').trigger('related');

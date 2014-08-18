@@ -1,8 +1,10 @@
 <?php
-use org\bovigo\vfs\vfsStream;
+namespace Redaxscript\Tests;
+use Redaxscript\Directory;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
- * Redaxscript Directory Test
+ * DirectoryTest
  *
  * @since 2.1.0
  *
@@ -12,7 +14,7 @@ use org\bovigo\vfs\vfsStream;
  * @author Gary Aylward
  */
 
-class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
+class DirectoryTest extends TestCase
 {
 	/**
 	 * root
@@ -30,9 +32,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$contents = file_get_contents('tests/provider/directory_set_up.json');
-		$output = json_decode($contents, true);
-		$this->_root = vfsStream::setup('root', 0777, $output);
+		$this->_root = Stream::setup('root', 0777, $this->getProvider('tests/provider/directory_set_up.json'));
 	}
 
 	/**
@@ -45,9 +45,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 
 	public function providerGet()
 	{
-		$contents = file_get_contents('tests/provider/directory_get.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_get.json');
 	}
 
 	/**
@@ -60,9 +58,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 
 	public function providerCreate()
 	{
-		$contents = file_get_contents('tests/provider/directory_create.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_create.json');
 	}
 
 	/**
@@ -75,9 +71,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 
 	public function providerRemove()
 	{
-		$contents = file_get_contents('tests/provider/directory_remove.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/directory_remove.json');
 	}
 
 	/**
@@ -86,7 +80,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	 * @since 2.1.0
 	 *
 	 * @param array $path
-	 * @param string|array $exclude
+	 * @param mixed $exclude
 	 * @param array $expect
 	 *
 	 * @dataProvider providerGet
@@ -96,7 +90,7 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path), $exclude);
+		$directory = new Directory(Stream::url($path), $exclude);
 
 		/* result */
 
@@ -122,12 +116,12 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory = new Directory(Stream::url($path[1]));
 		$directory->create($path[0], 511);
 
 		/* result */
 
-		$result = scandir(vfsStream::url($path[2]));
+		$result = scandir(Stream::url($path[2]));
 
 		/* compare */
 
@@ -149,12 +143,12 @@ class Redaxscript_Directory_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		$directory = New Redaxscript_Directory(vfsStream::url($path[1]));
+		$directory = new Directory(Stream::url($path[1]));
 		$directory->remove($path[0]);
 
 		/* result */
 
-		$result = scandir(vfsStream::url($path[2]));
+		$result = scandir(Stream::url($path[2]));
 
 		/* compare */
 

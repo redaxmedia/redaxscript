@@ -1,87 +1,102 @@
 <?php
+namespace Redaxscript\Modules;
+use Redaxscript\Module;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
- * demo render start
+ * enable anonymous login
  *
- * @since 1.2.1
- * @deprecated 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-function demo_render_start()
+class Demo extends Module
 {
-	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo' || ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
+
+	protected static $_module = array(
+		'name' => 'Demo',
+		'alias' => 'demo',
+		'author' => 'Redaxmedia',
+		'description' => 'Enable anonymous login',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
+
+	/**
+	 * renderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function renderStart()
 	{
-		define('CENTER_BREAK', 1);
+		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo' || Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
+		{
+			Registry::set('centerBreak', 1);
+		}
 	}
-}
 
-/**
- * demo center start
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	/**
+	 * centerStart
+	 *
+	 * @since 2.2.0
+	 */
 
-function demo_center_start()
-{
-	if (FIRST_PARAMETER == 'login' && SECOND_PARAMETER == 'demo')
+	public static function centerStart()
 	{
-		demo_login();
+		/* trigger login */
+
+		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo')
+		{
+			self::demoLogin();
+		}
+
+		/* disable unpublish */
+
+		if (Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
+		{
+			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
+		}
 	}
-	if (ADMIN_PARAMETER == 'unpublish' && MY_ID == 0)
+
+	/**
+	 * demoLogin
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function demoLogin()
 	{
-		notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
+		$root = Registry::get('root');
+		$token = Registry::get('token');
+
+		/* session values */
+
+		Request::setSession($root . '/logged_in', $token);
+		Request::setSession($root . '/my_name', 'Anonymous');
+		Request::setSession($root . '/my_user', 'demo');
+		Request::setSession($root . '/my_email', 'anonymous@demo.com');
+		Request::setSession($root . '/categories_new', 1);
+		Request::setSession($root . '/categories_edit', 1);
+		Request::setSession($root . '/articles_new', 1);
+		Request::setSession($root . '/articles_edit', 1);
+		Request::setSession($root . '/comments_new', 1);
+		Request::setSession($root . '/comments_edit', 1);
+		Request::setSession($root . '/settings_edit', 1);
+		Request::setSession($root . '/filter', 1);
+
+		/* notification */
+
+		notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
 	}
-}
-
-/**
- * demo login
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
-
-function demo_login()
-{
-	$_SESSION[ROOT . '/logged_in'] = TOKEN;
-	$_SESSION[ROOT . '/my_id'] = 0;
-	$_SESSION[ROOT . '/my_name'] = 'Anonymous';
-	$_SESSION[ROOT . '/my_user'] = 'anonymous';
-	$_SESSION[ROOT . '/my_email'] = 'anonymous@anonymous.com';
-	$_SESSION[ROOT . '/categories_new'] = 1;
-	$_SESSION[ROOT . '/categories_edit'] = 1;
-	$_SESSION[ROOT . '/categories_delete'] = 0;
-	$_SESSION[ROOT . '/articles_new'] = 1;
-	$_SESSION[ROOT . '/articles_edit'] = 1;
-	$_SESSION[ROOT . '/articles_delete'] = 0;
-	$_SESSION[ROOT . '/extras_new'] = 0;
-	$_SESSION[ROOT . '/extras_edit'] = 0;
-	$_SESSION[ROOT . '/extras_delete'] = 0;
-	$_SESSION[ROOT . '/comments_new'] = 1;
-	$_SESSION[ROOT . '/comments_edit'] = 1;
-	$_SESSION[ROOT . '/comments_delete'] = 0;
-	$_SESSION[ROOT . '/groups_new'] = 0;
-	$_SESSION[ROOT . '/groups_edit'] = 0;
-	$_SESSION[ROOT . '/groups_delete'] = 0;
-	$_SESSION[ROOT . '/users_new'] = 0;
-	$_SESSION[ROOT . '/users_edit'] = 0;
-	$_SESSION[ROOT . '/users_delete'] = 0;
-	$_SESSION[ROOT . '/modules_install'] = 0;
-	$_SESSION[ROOT . '/modules_edit'] = 0;
-	$_SESSION[ROOT . '/modules_uninstall'] = 0;
-	$_SESSION[ROOT . '/settings_edit'] = 1;
-	$_SESSION[ROOT . '/filter'] = 1;
-	notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
 }

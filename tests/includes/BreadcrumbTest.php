@@ -1,8 +1,12 @@
 <?php
-include_once('tests/stubs.php');
+namespace Redaxscript\Tests;
+use Redaxscript\Breadcrumb;
+use Redaxscript\Db;
+use Redaxscript\Language;
+use Redaxscript\Registry;
 
 /**
- * Redaxscript Breadcrumb Test
+ * BreadcrumbTest
  *
  * @since 2.1.0
  *
@@ -12,7 +16,7 @@ include_once('tests/stubs.php');
  * @author Gary Aylward
  */
 
-class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
+class BreadcrumbTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -38,8 +42,8 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
-		$this->_language = Redaxscript_Language::getInstance();
+		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
@@ -52,7 +56,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 	{
 		/* first parameter */
 
-		$ultra = Redaxscript_Db::forPrefixTable('categories')->create();
+		$ultra = Db::forPrefixTable('categories')->create();
 		$ultra->set(array(
 			'title' => 'Ultra',
 			'alias' => 'ultra',
@@ -64,7 +68,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 		/* second parameter */
 
-		$lightweight = Redaxscript_Db::forPrefixTable('categories')->create();
+		$lightweight = Db::forPrefixTable('categories')->create();
 		$lightweight->set(array(
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
@@ -76,7 +80,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 		/* third parameter */
 
-		$cms = Redaxscript_Db::forPrefixTable('articles')->create();
+		$cms = Db::forPrefixTable('articles')->create();
 		$cms->set(array(
 			'title' => 'CMS',
 			'alias' => 'cms',
@@ -95,9 +99,9 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
-		Redaxscript_Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
-		Redaxscript_Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
+		Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
+		Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
+		Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
 	}
 
 	/**
@@ -110,9 +114,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public function providerGet()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_get.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/breadcrumb_get.json');
 	}
 
 	/**
@@ -125,9 +127,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 
 	public function providerRender()
 	{
-		$contents = file_get_contents('tests/provider/breadcrumb_render.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/breadcrumb_render.json');
 	}
 
 	/**
@@ -152,7 +152,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 				'divider' => 'item-divider'
 			)
 		);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry, $this->_language, $options);
+		$breadcrumb = new Breadcrumb($this->_registry, $this->_language, $options);
 
 		/* result */
 
@@ -179,7 +179,7 @@ class Redaxscript_Breadcrumb_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$breadcrumb = new Redaxscript_Breadcrumb($this->_registry, $this->_language);
+		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
 
 		/* result */
 

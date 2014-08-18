@@ -87,7 +87,7 @@ function contact_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* collect output */
@@ -140,6 +140,10 @@ function contact_form()
 
 function contact_post()
 {
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+	$urlValidator = new Redaxscript_Validator_Url();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/contact'] == 'visited')
@@ -167,15 +171,15 @@ function contact_post()
 	{
 		$error = l('message_empty');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && check_url($url) == 0)
+	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('url_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -202,16 +206,16 @@ function contact_post()
 		);
 		$subject = l('contact');
 		$bodyArray = array(
-			l('author') => $author . ' (' . MY_IP . ')',
-			l('email') => $emailLink,
-			l('url') => $urlLink,
+			'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+			'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+			'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
 			'<br />',
-			l('message') => $text
+			'<strong>' . l('message') . l('colon') . '</strong> ' . $text
 		);
 
 		/* mailer object */
 
-		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 	}
 

@@ -13,7 +13,7 @@
 
 function registration_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -26,12 +26,12 @@ function registration_form()
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('account_create') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('account_create') . '</h2>';
 	$output .= form_element('form', 'form_registration', 'js_validate_form form_default form_registration', '', '', '', 'action="' . REWRITE_ROUTE . 'registration" method="post"');
 	$output .= form_element('fieldset', '', 'set_registration', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'field_text field_note', 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
@@ -62,9 +62,9 @@ function registration_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'registration_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/registration'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -103,6 +103,10 @@ function registration_post()
 
 	/* validate post */
 
+	$loginValidator = new Redaxscript_Validator_Login();
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+
 	if ($name == '')
 	{
 		$error = l('name_empty');
@@ -115,15 +119,15 @@ function registration_post()
 	{
 		$error = l('email_empty');
 	}
-	else if (check_login($user) == 0)
+	else if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('user_incorrect');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -160,16 +164,16 @@ function registration_post()
 		);
 		$subject = l('registration');
 		$bodyArray = array(
-			l('name') => $name . ' (' . MY_IP . ')',
-			l('user') => $user,
-			l('password') => $password,
+			'<strong>' . l('name') . l('colon') . '</strong> ' . $name . ' (' . MY_IP . ')',
+			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+			'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
 			'<br />',
-			l('login') => $loginLink
+			'<strong>' . l('login') . l('colon') . '<strong> ' . $loginLink
 		);
 
 		/* mailer object */
 
-		$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
 		/* build key and value strings */

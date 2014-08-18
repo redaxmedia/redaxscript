@@ -3,16 +3,14 @@ error_reporting(0);
 
 /* include core files */
 
-include_once('includes/center.php');
-include_once('includes/check.php');
 include_once('includes/clean.php');
+include_once('includes/center.php');
 include_once('includes/contents.php');
 include_once('includes/generate.php');
 include_once('includes/get.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
-include_once('includes/misc.php');
-include_once('includes/modules.php');
+include_once('includes/migrate.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/replace.php');
@@ -24,6 +22,11 @@ include_once('vendor/j4mie/idiorm/idiorm.php');
 
 include_once('includes/Bootstrap.php');
 startup();
+
+/* migrate deprecated constants */
+
+$registry = Redaxscript\Registry::getInstance();
+$registry->init(migrate_constants());
 
 /* include files as needed */
 
@@ -107,12 +110,12 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 
 /* module files as needed */
 
-$modules_include = modules_include();
+$modules_include = Redaxscript\Hook::get();
 if ($modules_include)
 {
 	/* language object */
 
-	$language = Redaxscript_Language::getInstance();
+	$language = Redaxscript\Language::getInstance();
 
 	/* process modules */
 
@@ -149,7 +152,7 @@ if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAM
 }
 else
 {
-	hook('render_start');
+	Redaxscript\Hook::trigger('render_start');
 
 	/* undefine */
 
@@ -165,7 +168,7 @@ else
 
 	/* render break */
 
-	if (RENDER_BREAK == 1)
+	if (RENDER_BREAK == 1 || Redaxscript\Registry::get('renderBreak') == 1)
 	{
 		return;
 	}
@@ -173,11 +176,11 @@ else
 	{
 		/* handle error */
 
-		if (CONTENT_ERROR && CENTER_BREAK == '')
+		if (CONTENT_ERROR && CENTER_BREAK == '' || Redaxscript\Registry::get('centerBreak') == '')
 		{
 			header('http/1.0 404 not found');
 		}
 		include_once('templates/' . TEMPLATE . '/index.phtml');
 	}
-	hook('render_end');
+	Redaxscript\Hook::trigger('render_end');
 }

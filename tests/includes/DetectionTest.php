@@ -1,8 +1,11 @@
 <?php
-include_once('tests/stubs.php');
+namespace Redaxscript\Tests;
+use Redaxscript\Detection;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
- * Redaxscript Detection Test
+ * DetectionTest
  *
  * @since 2.1.0
  *
@@ -11,7 +14,7 @@ include_once('tests/stubs.php');
  * @author Henry Ruhs
  */
 
-class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
+class DetectionTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -29,7 +32,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->_registry = Redaxscript_Registry::getInstance();
+		$this->_registry = Registry::getInstance();
 	}
 
 	/**
@@ -42,9 +45,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	public function providerDetectionLanguage()
 	{
-		$contents = file_get_contents('tests/provider/detection_language.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/detection_language.json');
 	}
 
 	/**
@@ -57,9 +58,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 
 	public function providerDetectionTemplate()
 	{
-		$contents = file_get_contents('tests/provider/detection_template.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/detection_template.json');
 	}
 
 	/**
@@ -78,7 +77,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = New Redaxscript_Detection_Language($this->_registry);
+		$detection = new Detection\Language($this->_registry);
 
 		/* result */
 
@@ -105,7 +104,7 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = New Redaxscript_Detection_Template($this->_registry);
+		$detection = new Detection\Template($this->_registry);
 
 		/* result */
 
@@ -128,11 +127,11 @@ class Redaxscript_Detection_Test extends PHPUnit_Framework_TestCase
 	{
 		/* setup */
 
-		Redaxscript_Request::setQuery('l', 'en');
-		Redaxscript_Request::setQuery('t', 'default');
+		Request::setQuery('l', 'en');
+		Request::setQuery('t', 'default');
 		$this->_registry->init();
-		$detectionLanguage = New Redaxscript_Detection_Language($this->_registry);
-		$detectionTemplate = New Redaxscript_Detection_Template($this->_registry);
+		$detectionLanguage = new Detection\Language($this->_registry);
+		$detectionTemplate = new Detection\Template($this->_registry);
 
 		/* result */
 

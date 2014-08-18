@@ -123,8 +123,30 @@
 			{
 				element:
 				{
-					field: 'input.js_generate_alias_output'
+					related: 'input.js_generate_alias_output'
 				}
+			}
+		},
+		generateKeyword:
+		{
+			startup: true,
+			selector: 'form textarea.js_generate_keyword_input',
+			options:
+			{
+				element:
+				{
+					related: 'textarea.js_generate_keyword_output'
+				},
+				tag:
+				[
+					'h1',
+					'h2',
+					'h3',
+					'strong',
+					'em'
+				],
+				delimiter: ' ',
+				limit: 10
 			}
 		},
 		keyShortcut:

@@ -1,7 +1,8 @@
 <?php
+namespace Redaxscript;
 
 /**
- * parent class to provide language
+ * parent class to provide the current language
  *
  * @since 2.2.0
  *
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Language extends Redaxscript_Singleton
+class Language extends Singleton
 {
 	/**
 	 * array of language values
@@ -46,12 +47,12 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the key array
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = null;
+		$output = false;
 
 		/* handle index */
 
@@ -78,7 +79,14 @@ class Redaxscript_Language extends Redaxscript_Singleton
 
 			if (function_exists('mb_convert_encoding'))
 			{
-				$output = mb_convert_encoding($values[$key], Redaxscript_Db::getSettings('charset'), 'utf-8, latin1');
+				$charset = Db::getSettings('charset');
+
+				/* process if charset */
+
+				if (isset($charset))
+				{
+					$output = mb_convert_encoding($values[$key], $charset, 'utf-8, latin1');
+				}
 			}
 		}
 		return $output;
@@ -89,7 +97,7 @@ class Redaxscript_Language extends Redaxscript_Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string|array $json single or multiple language paths
+	 * @param mixed $json single or multiple language paths
 	 */
 
 	public static function load($json = null)

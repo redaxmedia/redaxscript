@@ -38,12 +38,12 @@ function startup()
 
 	/* prefix and salt */
 
-	define('PREFIX', Redaxscript_Config::get('prefix'));
-	define('SALT', Redaxscript_Config::get('salt'));
+	define('PREFIX', Redaxscript\Config::get('prefix'));
+	define('SALT', Redaxscript\Config::get('salt'));
 
 	/* database connect */
 
-	database_connect(Redaxscript_Config::get('host'), Redaxscript_Config::get('name'), Redaxscript_Config::get('user'), Redaxscript_Config::get('password'));
+	database_connect(Redaxscript\Config::get('host'), Redaxscript\Config::get('name'), Redaxscript\Config::get('user'), Redaxscript\Config::get('password'));
 
 	/* define session */
 
@@ -223,7 +223,8 @@ function startup()
 
 	/* define content error */
 
-	if (LAST_ID == '' && check_alias(FIRST_PARAMETER, 1) == 0)
+	$aliasValidator = new Redaxscript\Validator\Alias();
+	if (LAST_ID == '' && $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		define('CONTENT_ERROR', 1);
 	}

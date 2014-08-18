@@ -42,7 +42,7 @@ function file_manager_render_start()
 
 		/* registry object */
 
-		$registry = Redaxscript_Registry::getInstance();
+		$registry = Redaxscript\Registry::getInstance();
 		$registry->set('title', l('file_manager', 'file_manager'));
 	}
 }
@@ -76,7 +76,7 @@ function file_manager_center_start()
 			{
 				/* file manager directory object */
 
-				$file_manager_directory = New Redaxscript_Directory(FILE_MANAGER_DIRECTORY);
+				$file_manager_directory = new Redaxscript\Directory(FILE_MANAGER_DIRECTORY);
 				$file_manager_directory_string = $file_manager_directory->get(ID_PARAMETER);
 
 				/* remove related children */
@@ -164,7 +164,7 @@ function file_manager($directory = '')
 
 	/* file manager directory object */
 
-	$file_manager_directory = New Redaxscript_Directory($directory);
+	$file_manager_directory = new Redaxscript\Directory($directory);
 	$file_manager_directory_array = $file_manager_directory->get();
 
 	/* collect directory output */

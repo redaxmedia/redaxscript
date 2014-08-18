@@ -17,8 +17,7 @@
 
 function loader($type = '', $mode = '')
 {
-	hook(__FUNCTION__ . '_start');
-
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if ($mode == 'inline' || $mode == 'outline')
 	{
 		/* get module scripts */
@@ -146,7 +145,7 @@ function loader($type = '', $mode = '')
 	ob_start();
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		hook(__FUNCTION__ . '_' . $type . '_transport_start');
+		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_start');
 	}
 
 	/* collect include output */
@@ -165,7 +164,7 @@ function loader($type = '', $mode = '')
 
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		hook(__FUNCTION__ . '_' . $type . '_transport_end');
+		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_end');
 	}
 	$output .= ob_get_clean() . PHP_EOL;
 
@@ -187,7 +186,7 @@ function loader($type = '', $mode = '')
 	{
 		$output = minify($type, $output);
 	}
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }
 
@@ -204,7 +203,7 @@ function loader($type = '', $mode = '')
 
 function styles()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* parse loader ini */
 
@@ -263,8 +262,8 @@ function styles()
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -284,7 +283,7 @@ function scripts($mode = '')
 {
 	if ($mode == '')
 	{
-		hook(__FUNCTION__ . '_start');
+		$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	}
 
 	/* parse loader ini */
@@ -308,7 +307,7 @@ function scripts($mode = '')
 
 	if ($mode == 'startup')
 	{
-		$output = '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
+		$output .= '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
 	}
 
 	/* else general mode */
@@ -360,11 +359,11 @@ function scripts($mode = '')
 			$output .= '<script src="' . REWRITE_ROUTE . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
-	echo $output;
 	if ($mode == '')
 	{
-		hook(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	}
+	echo $output;
 }
 
 /**
@@ -385,7 +384,7 @@ function scripts_transport($minify = '')
 {
 	/* languages object */
 
-	$language = Redaxscript_Language::getInstance();
+	$language = Redaxscript\Language::getInstance();
 
 	/* languages transport */
 
@@ -393,7 +392,39 @@ function scripts_transport($minify = '')
 
 	/* extend redaxscript object */
 
-	$public_constants = explode(', ', b('constant_public'));
+	$public_constants = array(
+		'TOKEN',
+		'LOGGED_IN',
+		'FIRST_PARAMETER',
+		'FIRST_SUB_PARAMETER',
+		'SECOND_PARAMETER',
+		'SECOND_SUB_PARAMETER',
+		'THIRD_PARAMETER',
+		'THIRD_SUB_PARAMETER',
+		'ADMIN_PARAMETER',
+		'TABLE_PARAMETER',
+		'ID_PARAMETER',
+		'ALIAS_PARAMETER',
+		'LAST_PARAMETER',
+		'LAST_SUB_PARAMETER',
+		'FIRST_TABLE',
+		'SECOND_TABLE',
+		'THIRD_TABLE',
+		'LAST_TABLE',
+		'FULL_ROUTE',
+		'FULL_TOP_ROUTE',
+		'REWRITE_ROUTE',
+		'LANGUAGE_ROUTE',
+		'TEMPLATE_ROUTE',
+		'REFRESH_ROUTE',
+		'MY_IP',
+		'MY_BROWSER',
+		'MY_BROWSER_VERSION',
+		'MY_ENGINE',
+		'MY_DESKTOP',
+		'MY_MOBILE',
+		'MY_TABLET'
+	);
 
 	/* collect output */
 

@@ -13,7 +13,7 @@
 
 function admin_panel_list()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output = '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
+		$output .= '<li class="js_item_panel_admin item_panel_admin item_contents"><span>' . l('contents') . '</span><ul class="list_panel_children_admin list_contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
@@ -109,7 +109,7 @@ function admin_panel_list()
 
 			/* collect modules list */
 
-			$admin_panel_list_modules = hook('admin_panel_list_modules');
+			$admin_panel_list_modules = Redaxscript\Hook::trigger('admin_panel_list_modules');
 			if ($admin_panel_list_modules)
 			{
 				$output .= '<ul class="js_list_panel_children_admin list_panel_children_admin">' . $admin_panel_list_modules . '</ul>';
@@ -141,8 +141,8 @@ function admin_panel_list()
 	{
 		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -162,7 +162,7 @@ function admin_panel_list()
 
 function admin_dock($table = '', $id = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -173,7 +173,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output = '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
+		$output .= '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clear_fix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'js_link_dock_admin link_dock_admin link_unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
@@ -185,7 +185,7 @@ function admin_dock($table = '', $id = '')
 		}
 		$output .= '</div></div>';
 	}
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }
 
@@ -202,7 +202,7 @@ function admin_dock($table = '', $id = '')
 
 function admin_notification()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* insecure file warning */
 
@@ -210,15 +210,15 @@ function admin_notification()
 	{
 		if (file_exists('install.php'))
 		{
-			$output = '<div class="box_note note_warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
+			$output .= '<div class="box_note note_warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
 		}
 		if (is_writable('Config.php'))
 		{
 			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' Config.php' . l('point') . '</div>';
 		}
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -244,7 +244,7 @@ function admin_notification()
 
 function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define access variables */
 
@@ -323,6 +323,6 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		$output = '<ul class="list_control_admin">' . $output . '</ul>';
 	}
-	$output .= hook(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
 }

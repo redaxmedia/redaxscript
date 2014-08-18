@@ -16,7 +16,7 @@
 
 function comments($article = '', $route = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query comments */
 
@@ -54,11 +54,12 @@ function comments($article = '', $route = '')
 
 	else if ($result)
 	{
-		$output = '<div class="box_line"></div>';
+		$accessValidator = new Redaxscript\Validator\Access();
+		$output .= '<div class="box_line"></div>';
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -74,7 +75,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= hook('comment_start') . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript\Hook::trigger('comment_start', $id) . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -88,7 +89,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . hook('comment_end');
+				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $id);
 
 				/* admin dock */
 
@@ -117,6 +118,7 @@ function comments($article = '', $route = '')
 	{
 		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
 	}
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 
 	/* call pagination as needed */
@@ -125,7 +127,6 @@ function comments($article = '', $route = '')
 	{
 		pagination($sub_active, $sub_maximum, $route);
 	}
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -145,7 +146,7 @@ function comments($article = '', $route = '')
 
 function comment_form($article = '', $language = '', $access = '')
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* disable fields if attack blocked */
 
@@ -167,12 +168,12 @@ function comment_form($article = '', $language = '', $access = '')
 
 	if (s('captcha') > 0)
 	{
-		$captcha = new Redaxscript_Captcha(Redaxscript_Language::getInstance());
+		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
 	}
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('comment_new') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('comment_new') . '</h2>';
 	$output .= form_element('form', 'form_comment', 'js_validate_form form_default form_comment', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
@@ -211,9 +212,9 @@ function comment_form($article = '', $language = '', $access = '')
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'), '', $code_disabled);
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -229,6 +230,10 @@ function comment_form($article = '', $language = '', $access = '')
 
 function comment_post()
 {
+	$emailValidator = new Redaxscript_Validator_Email();
+	$captchaValidator = new Redaxscript_Validator_Captcha();
+	$urlValidator = new Redaxscript_Validator_Url();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/comment'] == 'visited')
@@ -266,15 +271,15 @@ function comment_post()
 	{
 		$error = l('comment_empty');
 	}
-	else if (check_email($email) == 0)
+	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && check_url($url) == 0)
+	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('url_incorrect');
 	}
-	else if (check_captcha($task, $solution) == 0)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -315,18 +320,18 @@ function comment_post()
 			);
 			$subject = l('comment_new');
 			$bodyArray = array(
-				l('author') => $author . ' (' . MY_IP . ')',
-				l('email') => $emailLink,
-				l('url') => $urlLink,
+				'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+				'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
 				'<br />',
-				l('comment') => $text,
+				'<strong>' . l('comment') . l('colon') . '</strong> ' . $text,
 				'<br />',
-				l('article') => $articleLink
+				'<strong>' . l('article') . l('colon') . '</strong> ' . $articleLink
 			);
 
 			/* mailer object */
 
-			$mailer = new Redaxscript_Mailer($toArray, $fromArray, $subject, $bodyArray);
+			$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 			$mailer->send();
 		}
 

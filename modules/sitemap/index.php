@@ -30,10 +30,11 @@ function sitemap()
 	}
 	else if ($categories_result)
 	{
+		$accessValidator = new Redaxscript_Validator_Access();
 		while ($r = mysql_fetch_assoc($categories_result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -109,7 +110,7 @@ function sitemap()
 		while ($r = mysql_fetch_assoc($articles_result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 

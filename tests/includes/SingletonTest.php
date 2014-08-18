@@ -1,7 +1,8 @@
 <?php
+namespace Redaxscript\Tests;
 
 /**
- * Redaxscript Singleton Test
+ * SingletonTest
  *
  * @since 2.2.0
  *
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Singleton_Test extends PHPUnit_Framework_TestCase
+class SingletonTest extends TestCase
 {
 	/**
 	 * instance of the stub class
@@ -28,7 +29,7 @@ class Redaxscript_Singleton_Test extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$stub = $this->getMockBuilder('Redaxscript_Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
+		$stub = $this->getMockBuilder('Redaxscript\Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
 		$this->_stub = $stub->getInstance();
 	}
 
@@ -50,6 +51,6 @@ class Redaxscript_Singleton_Test extends PHPUnit_Framework_TestCase
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript_Singleton', $result);
+		$this->assertInstanceOf('Redaxscript\Singleton', $result);
 	}
 }

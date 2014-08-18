@@ -13,7 +13,7 @@
 
 function admin_modules_list()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* query modules */
 
@@ -23,7 +23,7 @@ function admin_modules_list()
 
 	/* collect listing output */
 
-	$output = '<h2 class="title_content">' . l('modules') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('modules') . '</h2>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead and tfoot */
@@ -36,11 +36,12 @@ function admin_modules_list()
 	}
 	else if ($result)
 	{
+		$accessValidator = new Redaxscript\Validator\Access();
 		$output .= '<tbody>';
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = check_access($access, MY_GROUPS);
+			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
@@ -54,7 +55,7 @@ function admin_modules_list()
 					}
 				}
 				$modules_installed_array[] = $alias;
-				$file_install = file_exists('modules/' . $alias . '/install.php');
+				$file_install = is_dir('modules/' . $alias);
 
 				/* build class string */
 
@@ -70,6 +71,10 @@ function admin_modules_list()
 				/* collect table row */
 
 				$output .= '<tr';
+				if ($alias)
+				{
+					$output .= ' id="' . $alias . '"';
+				}
 				if ($class_status)
 				{
 					$output .= ' class="' . $class_status . '"';
@@ -115,7 +120,7 @@ function admin_modules_list()
 	{
 		/* modules directory object */
 
-		$modules_directory = New Redaxscript_Directory('modules');
+		$modules_directory = new Redaxscript\Directory('modules');
 		$modules_directory_array = $modules_directory->get();
 		if ($modules_directory_array && $modules_installed_array)
 		{
@@ -130,7 +135,7 @@ function admin_modules_list()
 			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
 			foreach ($modules_not_installed_array as $alias)
 			{
-				$file_install = file_exists('modules/' . $alias . '/install.php');
+				$file_install = is_dir('modules/' . $alias);
 				if ($file_install)
 				{
 					$class_file_install = '';
@@ -143,6 +148,10 @@ function admin_modules_list()
 				/* collect table row */
 
 				$output .= '<tr';
+				if ($alias)
+				{
+					$output .= ' id="' . $alias . '"';
+				}
 				if ($class_file_install)
 				{
 					$output .= ' class="' . $class_file_install . '"';
@@ -161,8 +170,8 @@ function admin_modules_list()
 		}
 	}
 	$output .= '</table></div>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }
 
 /**
@@ -178,7 +187,7 @@ function admin_modules_list()
 
 function admin_modules_form()
 {
-	hook(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
 	/* define fields for existing user */
 
@@ -200,11 +209,11 @@ function admin_modules_form()
 		$wording_submit = l('save');
 		$route = 'admin/process/modules/' . $id;
 	}
-	$file_install = file_exists('modules/' . $alias . '/install.php');
+	$file_install = is_dir('modules/' . $alias);
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -228,9 +237,9 @@ function admin_modules_form()
 
 	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
 	$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
-		l('enable') => 1,
-		l('disable') => 0
-	), $status, l('status')) . '</li>';
+			l('enable') => 1,
+			l('disable') => 0
+		), $status, l('status')) . '</li>';
 
 	/* build access select */
 
@@ -252,6 +261,7 @@ function admin_modules_form()
 
 	/* collect hidden output */
 
+	$output .= form_element('hidden', '', '', 'alias', $alias);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 
 	/* cancel button */
@@ -280,6 +290,6 @@ function admin_modules_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large_admin button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
+	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
-	hook(__FUNCTION__ . '_end');
 }

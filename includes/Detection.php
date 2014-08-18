@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript;
 
 /**
  * parent class to detect the required asset
@@ -10,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-class Redaxscript_Detection
+class Detection
 {
 	/**
 	 * instance of the registry class
@@ -33,10 +34,10 @@ class Redaxscript_Detection
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param Redaxscript_Registry $registry instance of the registry class
+	 * @param Registry $registry instance of the registry class
 	 */
 
-	public function __construct(Redaxscript_Registry $registry)
+	public function __construct(Registry $registry)
 	{
 		$this->_registry = $registry;
 		$this->init();
@@ -83,7 +84,8 @@ class Redaxscript_Detection
 
 					if ($key === 'query')
 					{
-						Redaxscript_Request::setSession($this->_registry->get('root') . '/' . $type, $value);
+						$root = $this->_registry->get('root');
+						Request::setSession($root . '/' . $type, $value);
 					}
 					break;
 				}
