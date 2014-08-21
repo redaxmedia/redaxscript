@@ -3,7 +3,7 @@ namespace Redaxscript\Validator;
 use Redaxscript_Validator_Interface;
 
 /**
- * children class to validate captcha
+ * children class to validate captcha raw again hash
  *
  * @since 2.2.0
  *

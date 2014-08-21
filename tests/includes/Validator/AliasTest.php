@@ -34,6 +34,10 @@ class AliasTest extends TestCase
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param string $alias
+	 * @param integer $mode
+	 * @param integer $expect
+	 *
 	 * @dataProvider providerValidatorAlias
 	 */
 

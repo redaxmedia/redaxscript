@@ -34,6 +34,10 @@ class CaptchaTest extends TestCase
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param string $task
+	 * @param string $solution
+	 * @param integer $expect
+	 *
 	 * @dataProvider providerValidatorCaptcha
 	 */
 

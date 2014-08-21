@@ -1,4 +1,7 @@
 <?php
+namespace Redaxscript\Validator;
+use Redaxscript\Validator;
+use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate email
@@ -6,19 +9,20 @@
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Email implements Redaxscript_Validator_Interface
+class Email implements Redaxscript_Validator_Interface
 {
 	/**
 	 * validate the email
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $email email address
-	 * @param string $dns optional dns validation
+	 * @param string $email target email adress
+	 * @param string $dns optional validate dns
 	 *
 	 * @return integer
 	 */
@@ -34,12 +38,12 @@ class Redaxscript_Validator_Email implements Redaxscript_Validator_Interface
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 			$emailArray = explode('@', $email);
 
-			/* validate domain */
+			/* validate dns */
 
 			if ($dns === true)
 			{
-				$dnsValidator = new Redaxscript_Validator_Dns();
-				$output = $dnsValidator->validate($emailArray[1], Redaxscript_Validator_Dns::DNS_TYPE_MX);
+				$dnsValidator = new Validator\Dns();
+				$output = $dnsValidator->validate($emailArray[1], 'MX');
 			}
 		}
 		return $output;

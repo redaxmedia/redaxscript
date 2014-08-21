@@ -1,37 +1,38 @@
 <?php
-//TODO: Please provide a better description; usual parent class to ... or children class to do something
+namespace Redaxscript\Validator;
+use Redaxscript_Validator_Interface;
+
 /**
- * Login validator
+ * children class to validate login
  *
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Login implements Redaxscript_Validator_Interface
+class Login implements Redaxscript_Validator_Interface
 {
 	/**
-	 * minimal length for login names
+	 * allowed range for login
+	 *
+	 * @var array
 	 */
-	const LENGTH_MIN = 5;
+
+	protected $_range = array(
+		'min' => 5,
+		'max' => 50
+	);
 
 	/**
-	 * maximal length for login names
-	 */
-	const LENGTH_MAX = 52;
-
-	/**
-	 * check if the login name is valid.
-	 * Current rule set:
-	 * - min 5 chars
-	 * - max 52 chars
-	 * - only numbers and chars are allowed, no special chars
+	 * validate the url
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $login The login name
+	 * @param string $url target url
+	 * @param string $dns optional validate dns
 	 *
 	 * @return integer
 	 */
@@ -39,8 +40,11 @@ class Redaxscript_Validator_Login implements Redaxscript_Validator_Interface
 	public function validate($login = null)
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$length = strlen($login);
 
-		if (!empty($login) && ctype_alnum($login) && strlen($login) >= self::LENGTH_MIN && strlen($login) <= self::LENGTH_MAX)
+		/* validate login */
+
+		if (ctype_alnum($login) && $length >= $this->_range['min'] && $length <= $this->_range['max'])
 		{
 			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
 		}

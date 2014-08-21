@@ -3,7 +3,7 @@ namespace Redaxscript\Validator;
 use Redaxscript_Validator_Interface;
 
 /**
- * children class to validate alias
+ * children class to validate general and default alias
  *
  * @since 2.2.0
  *

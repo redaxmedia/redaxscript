@@ -34,6 +34,10 @@ class AccessTest extends TestCase
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param string $access
+	 * @param string $groups
+	 * @param integer $expect
+	 *
 	 * @dataProvider providerValidatorAccess
 	 */
 

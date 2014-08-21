@@ -3,7 +3,7 @@ namespace Redaxscript\Validator;
 use Redaxscript_Validator_Interface;
 
 /**
- * children class to validate access
+ * children class to validate access again group
  *
  * @since 2.2.0
  *

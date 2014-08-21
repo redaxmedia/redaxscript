@@ -1,42 +1,36 @@
 <?php
+namespace Redaxscript\Validator;
+use Redaxscript_Validator_Interface;
 
 /**
- * DNS validator
+ * children class to validate domain name service
  *
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
-class Redaxscript_Validator_Dns implements Redaxscript_Validator_Interface
+class Dns implements Redaxscript_Validator_Interface
 {
 	/**
-	 * check if domain is a valid domain
-	 */
-	const DNS_TYPE_A = 'A';
-
-	/**
-	 * check if domain is registered as a mail server
-	 */
-	const DNS_TYPE_MX = 'MX';
-
-
-	/**
-	 * validates DNS records corresponding to a given internet host name or IP address
+	 * validate the dns
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $host host or ip of the domain
-	 * @param string $type optional type
+	 * @param string $host host of the domain
+	 * @param string $type optional domain type
 	 *
 	 * @return integer
 	 */
 
-	public function validate($host = '', $type = self::DNS_TYPE_MX)
+	public function validate($host = null, $type = 'A')
 	{
 		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+
+		/* validate dns */
 
 		if ($host)
 		{

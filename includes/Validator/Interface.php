@@ -1,21 +1,33 @@
 <?php
 
 /**
- * interface for a validator
+ * interface to build a validator class
  *
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
 
 interface Redaxscript_Validator_Interface
 {
+	/**
+	 * status passed
+	 *
+	 * @const integer
+	 */
+
 	const VALIDATION_OK = 1;
+
+	/**
+	 * status failed
+	 *
+	 * @const integer
+	 */
+
 	const VALIDATION_FAIL = 0;
-	//TODO: maby we use true and false instead
-	//TODO: integer would make sence if you have _WARNING for value 2
 
 	/**
 	 * general validate function
