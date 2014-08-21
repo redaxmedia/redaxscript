@@ -1,6 +1,5 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate domain name service
@@ -13,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Dns implements Redaxscript_Validator_Interface
+class Dns implements Validator
 {
 	/**
 	 * validate the dns
@@ -28,7 +27,7 @@ class Dns implements Redaxscript_Validator_Interface
 
 	public function validate($host = null, $type = 'A')
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 
 		/* validate dns */
 
@@ -36,11 +35,11 @@ class Dns implements Redaxscript_Validator_Interface
 		{
 			if (function_exists('checkdnsrr') && checkdnsrr($host, $type) === false)
 			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+				$output = Validator::FAILED;
 			}
 			else
 			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+				$output = Validator::PASSED;
 			}
 		}
 		return $output;

@@ -171,15 +171,15 @@ function contact_post()
 	{
 		$error = l('message_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($emailValidator->validate($email) == Validator\Validator::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($url && $urlValidator->validate($url) == Validator\Validator::FAILED)
 	{
 		$error = l('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($captchaValidator->validate($task, $solution) == Validator\Validator::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

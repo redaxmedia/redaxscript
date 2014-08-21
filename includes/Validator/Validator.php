@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Validator;
 
 /**
  * interface to build a validator class
@@ -11,7 +12,7 @@
  * @author Sven Weingartner
  */
 
-interface Redaxscript_Validator_Interface
+interface Validator
 {
 	/**
 	 * status passed
@@ -19,7 +20,7 @@ interface Redaxscript_Validator_Interface
 	 * @const integer
 	 */
 
-	const VALIDATION_OK = 1;
+	const PASSED = 1;
 
 	/**
 	 * status failed
@@ -27,7 +28,7 @@ interface Redaxscript_Validator_Interface
 	 * @const integer
 	 */
 
-	const VALIDATION_FAIL = 0;
+	const FAILED = 0;
 
 	/**
 	 * general validate function

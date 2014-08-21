@@ -243,7 +243,7 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript_Validator_Interface::VALIDATION_OK || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript_Validator_Interface::VALIDATION_OK)
+			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Validator\Validator::PASSED || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Validator\Validator::PASSED)
 			{
 				$error = l('alias_incorrect');
 			}
@@ -305,7 +305,7 @@ function admin_process()
 		{
 			$error = l('user_exists');
 		}
-		if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		if ($loginValidator->validate($user) == Validator\Validator::FAILED)
 		{
 			$error = l('user_incorrect');
 		}
@@ -315,7 +315,7 @@ function admin_process()
 			{
 				$error = l('password_empty');
 			}
-			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+			if ($password_confirm == 0 || $loginValidator->validate($password) == Validator\Validator::FAILED)
 			{
 				$error = l('password_incorrect');
 			}
@@ -333,7 +333,7 @@ function admin_process()
 				$error = l('author_empty');
 			}
 		case 'users':
-			if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+			if ($emailValidator->validate($email) == Validator\Validator::FAILED)
 			{
 				$error = l('email_incorrect');
 			}

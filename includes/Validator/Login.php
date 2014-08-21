@@ -1,6 +1,5 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate login
@@ -13,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Login implements Redaxscript_Validator_Interface
+class Login implements Validator
 {
 	/**
 	 * allowed range for login
@@ -39,14 +38,14 @@ class Login implements Redaxscript_Validator_Interface
 
 	public function validate($login = null)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 		$length = strlen($login);
 
 		/* validate login */
 
 		if (ctype_alnum($login) && $length >= $this->_range['min'] && $length <= $this->_range['max'])
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$output = Validator::PASSED;
 		}
 		return $output;
 	}

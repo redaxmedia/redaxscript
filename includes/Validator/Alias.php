@@ -1,6 +1,5 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate general and default alias
@@ -13,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Alias implements Redaxscript_Validator_Interface
+class Alias implements Validator
 {
 	/**
 	 * general validate mode
@@ -62,7 +61,7 @@ class Alias implements Redaxscript_Validator_Interface
 
 	public function validate($alias = null, $mode = 0)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 
 		/* validate general alias */
 
@@ -70,7 +69,7 @@ class Alias implements Redaxscript_Validator_Interface
 		{
 			if (preg_match('/[^a-z0-9_]/i', $alias) || is_numeric($alias))
 			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+				$output = Validator::PASSED;
 			}
 		}
 
@@ -80,7 +79,7 @@ class Alias implements Redaxscript_Validator_Interface
 		{
 			if (in_array($alias, $this->defaultArray))
 			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+				$output = Validator::PASSED;
 			}
 		}
 		return $output;

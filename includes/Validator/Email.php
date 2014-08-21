@@ -1,7 +1,5 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate email
@@ -14,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Email implements Redaxscript_Validator_Interface
+class Email implements Validator
 {
 	/**
 	 * validate the email
@@ -29,20 +27,20 @@ class Email implements Redaxscript_Validator_Interface
 
 	public function validate($email = null, $dns = true)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 
 		/* validate email */
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false)
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$output = Validator::PASSED;
 			$emailArray = explode('@', $email);
 
 			/* validate dns */
 
 			if ($dns === true)
 			{
-				$dnsValidator = new Validator\Dns();
+				$dnsValidator = new Dns();
 				$output = $dnsValidator->validate($emailArray[1], 'MX');
 			}
 		}

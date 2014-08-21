@@ -400,15 +400,15 @@ function install_notification()
 		{
 			$error = l('email_empty');
 		}
-		else if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($loginValidator->validate($user) == Validator\Validator::FAILED)
 		{
 			$error = l('user_incorrect');
 		}
-		else if ($loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($loginValidator->validate($password) == Validator\Validator::FAILED)
 		{
 			$error = l('password_incorrect');
 		}
-		else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($emailValidator->validate($email) == Validator\Validator::FAILED)
 		{
 			$error = l('email_incorrect');
 		}
@@ -449,7 +449,7 @@ function check_install()
 
 	$loginValidator = new Redaxscript_Validator_Login();
 	$emailValidator = new Redaxscript_Validator_Email();
-	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_OK && $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_OK && $emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_OK)
+	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Validator\Validator::PASSED && $loginValidator->validate($password) == Validator\Validator::PASSED && $emailValidator->validate($email) == Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}

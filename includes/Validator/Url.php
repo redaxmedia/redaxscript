@@ -1,7 +1,5 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
  * children class to validate url
@@ -14,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Url implements Redaxscript_Validator_Interface
+class Url implements Validator
 {
 	/**
 	 * validate the url
@@ -29,13 +27,13 @@ class Url implements Redaxscript_Validator_Interface
 
 	public function validate($url = null, $dns = true)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 
 		/* validate url */
 
 		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$output = Validator::PASSED;
 
 			/* validate dns */
 
@@ -44,12 +42,12 @@ class Url implements Redaxscript_Validator_Interface
 				$parsedUrl = parse_url($url);
 				if (isset($parsedUrl['host']))
 				{
-					$dnsValidator = new Validator\Dns();
+					$dnsValidator = new Dns();
 					$output = $dnsValidator->validate($parsedUrl['host']);
 				}
 				else
 				{
-					$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+					$output = Validator::FAILED;
 				}
 			}
 		}
