@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript;
+
 use Redaxscript\Validator;
 
 /**

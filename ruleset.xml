@@ -20,6 +20,17 @@
 	<rule ref="Generic.PHP.LowerCaseConstant" />
 	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 
+	<!-- inherit from psr1 -->
+
+	<rule ref="PSR1.Classes.ClassDeclaration" />
+	<rule ref="PSR1.Methods.CamelCapsMethodName" />
+
+	<!-- inherit from psr2 -->
+
+	<rule ref="PSR2.ControlStructures.ControlStructureSpacing" />
+	<rule ref="PSR2.Namespaces.NamespaceDeclaration" />
+	<rule ref="PSR2.Namespaces.UseDeclaration" />
+
 	<!-- inherit from squiz -->
 
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />

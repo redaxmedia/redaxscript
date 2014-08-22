@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use Redaxscript\Detection;
 use Redaxscript\Registry;
 use Redaxscript\Request;

@@ -68,7 +68,7 @@ function file_manager_center_start()
 		}
 		else if (THIRD_PARAMETER == 'delete')
 		{
-			if ( TOKEN_PARAMETER == '')
+			if (TOKEN_PARAMETER == '')
 			{
 				$error = l('token_incorrect');
 			}

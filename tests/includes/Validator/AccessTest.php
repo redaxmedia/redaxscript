@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Validator;
+
 use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 

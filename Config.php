@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to store database config
+ * Parent class to store database config
  *
  * @since 2.2.0
  *
