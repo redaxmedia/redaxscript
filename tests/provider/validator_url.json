@@ -40,7 +40,11 @@
 		1
 	],
 	[
-		"nonsense",
+		"invalid",
+		1
+	],
+	[
+		"invalid",
 		0
 	]
 ]
