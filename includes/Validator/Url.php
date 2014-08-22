@@ -45,10 +45,6 @@ class Url implements Validator
 					$dnsValidator = new Dns();
 					$output = $dnsValidator->validate($parsedUrl['host']);
 				}
-				else
-				{
-					$output = Validator::FAILED;
-				}
 			}
 		}
 		return $output;
