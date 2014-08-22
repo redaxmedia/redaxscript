@@ -65,7 +65,7 @@ class Autoloader
 		{
 			self::$_directory = $directory;
 		}
-		else if($directory)
+		else if ($directory)
 		{
 			self::$_directory = array(
 				$directory
