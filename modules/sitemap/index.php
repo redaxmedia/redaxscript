@@ -30,7 +30,7 @@ function sitemap()
 	}
 	else if ($categories_result)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Redaxscript\Validator\Access();
 		while ($r = mysql_fetch_assoc($categories_result))
 		{
 			$access = $r['access'];

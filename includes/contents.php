@@ -90,7 +90,7 @@ function contents()
 					}
 				}
 				if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-					|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Validator\Validator::PASSED
+					|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::PASSED
 				)
 				{
 					$route = build_route('articles', $id);
@@ -112,7 +112,7 @@ function contents()
 				{
 					$output .= '<h2 class="title_content">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Validator\Validator::PASSED
+						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::PASSED
 					)
 					{
 						$output .= anchor_element('internal', '', '', $title, $route);

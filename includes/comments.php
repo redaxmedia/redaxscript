@@ -230,9 +230,9 @@ function comment_form($article = '', $language = '', $access = '')
 
 function comment_post()
 {
-	$emailValidator = new Redaxscript_Validator_Email();
-	$captchaValidator = new Redaxscript_Validator_Captcha();
-	$urlValidator = new Redaxscript_Validator_Url();
+	$emailValidator = new Redaxscript\Validator\Email();
+	$captchaValidator = new Redaxscript\Validator\Captcha();
+	$urlValidator = new Redaxscript\Validator\Url();
 
 	/* clean post */
 
@@ -271,15 +271,15 @@ function comment_post()
 	{
 		$error = l('comment_empty');
 	}
-	else if ($emailValidator->validate($email) == Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && $urlValidator->validate($url) == Validator\Validator::FAILED)
+	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

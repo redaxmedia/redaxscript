@@ -14,7 +14,7 @@
 function admin_process()
 {
 	$aliasValidator = new Redaxscript\Validator\Alias();
-	$loginValidator = new Redaxscript_Validator_Login();
+	$loginValidator = new Redaxscript\Validator\Login();
 
 	/* clean post */
 
@@ -243,7 +243,7 @@ function admin_process()
 			{
 				$error = l('alias_exists');
 			}
-			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Validator\Validator::PASSED || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Validator\Validator::PASSED)
+			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript\Validator\Validator::PASSED || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::PASSED)
 			{
 				$error = l('alias_incorrect');
 			}
@@ -305,7 +305,7 @@ function admin_process()
 		{
 			$error = l('user_exists');
 		}
-		if ($loginValidator->validate($user) == Validator\Validator::FAILED)
+		if ($loginValidator->validate($user) == Redaxscript\Validator\Validator::FAILED)
 		{
 			$error = l('user_incorrect');
 		}
@@ -315,7 +315,7 @@ function admin_process()
 			{
 				$error = l('password_empty');
 			}
-			if ($password_confirm == 0 || $loginValidator->validate($password) == Validator\Validator::FAILED)
+			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript\Validator\Validator::FAILED)
 			{
 				$error = l('password_incorrect');
 			}
@@ -324,7 +324,7 @@ function admin_process()
 
 	/* validate last post */
 
-	$emailValidator = new Redaxscript_Validator_Email();
+	$emailValidator = new Redaxscript\Validator\Email();
 	switch (TABLE_PARAMETER)
 	{
 		case 'comments':
@@ -333,7 +333,7 @@ function admin_process()
 				$error = l('author_empty');
 			}
 		case 'users':
-			if ($emailValidator->validate($email) == Validator\Validator::FAILED)
+			if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
 			{
 				$error = l('email_incorrect');
 			}
