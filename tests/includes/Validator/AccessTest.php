@@ -27,7 +27,7 @@ class AccessTest extends TestCase
 
 	public function providerValidatorAccess()
 	{
-		return $this->getProvider('tests/provider/validator_access.json');
+		return $this->getProvider('tests/provider/Validator/access.json');
 	}
 
 	/**

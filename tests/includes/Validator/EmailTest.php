@@ -27,7 +27,7 @@ class EmailTest extends TestCase
 
 	public function providerValidatorEmail()
 	{
-		return $this->getProvider('tests/provider/validator_email.json');
+		return $this->getProvider('tests/provider/Validator/email.json');
 	}
 
 	/**

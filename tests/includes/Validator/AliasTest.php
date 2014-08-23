@@ -27,7 +27,7 @@ class AliasTest extends TestCase
 
 	public function providerValidatorAlias()
 	{
-		return $this->getProvider('tests/provider/validator_alias.json');
+		return $this->getProvider('tests/provider/Validator/alias.json');
 	}
 
 	/**

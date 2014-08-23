@@ -27,7 +27,7 @@ class CaptchaTest extends TestCase
 
 	public function providerValidatorCaptcha()
 	{
-		return $this->getProvider('tests/provider/validator_captcha.json');
+		return $this->getProvider('tests/provider/Validator/captcha.json');
 	}
 
 	/**

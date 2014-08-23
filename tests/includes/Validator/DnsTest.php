@@ -27,7 +27,7 @@ class DnsTest extends TestCase
 
 	public function providerValidatorDns()
 	{
-		return $this->getProvider('tests/provider/validator_dns.json');
+		return $this->getProvider('tests/provider/Validator/dns.json');
 	}
 
 	/**

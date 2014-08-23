@@ -1,5 +1,8 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Detection;
+
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * parent class to detect the required asset

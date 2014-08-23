@@ -108,7 +108,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(1, $result);
+		$this->assertEquals(-1, $result);
 	}
 
 	/**
@@ -132,7 +132,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(2, $result);
+		$this->assertEquals(3, $result);
 	}
 
 	/**

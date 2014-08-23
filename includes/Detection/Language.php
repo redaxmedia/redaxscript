@@ -2,7 +2,6 @@
 namespace Redaxscript\Detection;
 
 use Redaxscript\Db;
-use Redaxscript\Detection;
 use Redaxscript\Request;
 
 /**

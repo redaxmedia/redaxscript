@@ -11,6 +11,6 @@ class CallHome
 {
 	public static function hookMethod($first = null, $second = null)
 	{
-		return $first;
+		return $first - $second;
 	}
 }

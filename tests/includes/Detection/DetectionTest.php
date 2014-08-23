@@ -1,9 +1,10 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Detection;
 
 use Redaxscript\Detection;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Tests\TestCase;
 
 /**
  * DetectionTest
@@ -46,7 +47,7 @@ class DetectionTest extends TestCase
 
 	public function providerDetectionLanguage()
 	{
-		return $this->getProvider('tests/provider/detection_language.json');
+		return $this->getProvider('tests/provider/Detection/language.json');
 	}
 
 	/**
@@ -59,7 +60,7 @@ class DetectionTest extends TestCase
 
 	public function providerDetectionTemplate()
 	{
-		return $this->getProvider('tests/provider/detection_template.json');
+		return $this->getProvider('tests/provider/Detection/template.json');
 	}
 
 	/**

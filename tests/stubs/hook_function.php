@@ -7,5 +7,5 @@
 
 function call_home_hook_function($first = null, $second = null)
 {
-	return $second;
+	return $first + $second;
 }
