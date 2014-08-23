@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript;
+
 use ORM;
 use PDO;
 

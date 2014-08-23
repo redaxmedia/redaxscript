@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Validator;
+
 use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 
@@ -26,13 +27,17 @@ class AliasTest extends TestCase
 
 	public function providerValidatorAlias()
 	{
-		return $this->getProvider('tests/provider/validator_alias.json');
+		return $this->getProvider('tests/provider/Validator/alias.json');
 	}
 
 	/**
 	 * testAlias
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param string $alias
+	 * @param integer $mode
+	 * @param integer $expect
 	 *
 	 * @dataProvider providerValidatorAlias
 	 */

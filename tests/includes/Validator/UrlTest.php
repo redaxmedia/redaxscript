@@ -1,30 +1,33 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+
+use Redaxscript\Tests\TestCase;
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Url Test
+ * UrlTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Url_Test extends PHPUnit_Framework_TestCase
-{
 
+class UrlTest extends TestCase
+{
 	/**
-	 * provider
+	 * providerValidatorUrl
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function provider()
+	public function providerValidatorUrl()
 	{
-		$contents = file_get_contents('tests/provider/validator_url.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/Validator/url.json');
 	}
 
 	/**
@@ -32,13 +35,23 @@ class Redaxscript_Validator_Url_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @dataProvider provider
+	 * @param string $url
+	 * @param integer $expect
+	 *
+	 * @dataProvider providerValidatorUrl
 	 */
 
-	public function testUrl($url = '', $expect = '')
+	public function testUrl($url = null, $expect = null)
 	{
-		$validator = new Redaxscript_Validator_Url();
+		/* setup */
+
+		$validator = new Validator\Url();
+
+		/* result */
+
 		$result = $validator->validate($url);
+
+		/* compare */
 
 		$this->assertEquals($expect, $result);
 	}

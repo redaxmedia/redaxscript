@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use Redaxscript\Captcha;
 use Redaxscript\Db;
 use Redaxscript\Language;

@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use Redaxscript\Db;
 use Redaxscript\Hook;
 use Redaxscript\Module;
@@ -107,7 +108,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(1, $result);
+		$this->assertEquals(-1, $result);
 	}
 
 	/**
@@ -131,7 +132,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(2, $result);
+		$this->assertEquals(3, $result);
 	}
 
 	/**

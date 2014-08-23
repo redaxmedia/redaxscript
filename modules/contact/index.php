@@ -140,9 +140,9 @@ function contact_form()
 
 function contact_post()
 {
-	$emailValidator = new Redaxscript_Validator_Email();
-	$captchaValidator = new Redaxscript_Validator_Captcha();
-	$urlValidator = new Redaxscript_Validator_Url();
+	$emailValidator = new Redaxscript\Validator\Email();
+	$captchaValidator = new Redaxscript\Validator\Captcha();
+	$urlValidator = new Redaxscript\Validator\Url();
 
 	/* clean post */
 
@@ -171,15 +171,15 @@ function contact_post()
 	{
 		$error = l('message_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && $urlValidator->validate($url) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

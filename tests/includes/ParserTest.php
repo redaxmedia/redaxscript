@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use Redaxscript\Language;
 use Redaxscript\Parser;
 use Redaxscript\Registry;

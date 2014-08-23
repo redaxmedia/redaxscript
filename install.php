@@ -382,8 +382,8 @@ function install_notification()
 
 	else if ($_POST['install_post'])
 	{
-		$loginValidator = new Redaxscript_Validator_Login();
-		$emailValidator = new Redaxscript_Validator_Email();
+		$loginValidator = new Redaxscript\Validator\Login();
+		$emailValidator = new Redaxscript\Validator\Email();
 		if ($name == '')
 		{
 			$error = l('name_empty');
@@ -400,15 +400,15 @@ function install_notification()
 		{
 			$error = l('email_empty');
 		}
-		else if ($loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($loginValidator->validate($user) == Redaxscript\Validator\Validator::FAILED)
 		{
 			$error = l('user_incorrect');
 		}
-		else if ($loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($loginValidator->validate($password) == Redaxscript\Validator\Validator::FAILED)
 		{
 			$error = l('password_incorrect');
 		}
-		else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+		else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
 		{
 			$error = l('email_incorrect');
 		}
@@ -447,9 +447,9 @@ function check_install()
 {
 	global $name, $user, $password, $email;
 
-	$loginValidator = new Redaxscript_Validator_Login();
-	$emailValidator = new Redaxscript_Validator_Email();
-	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript_Validator_Interface::VALIDATION_OK && $loginValidator->validate($password) == Redaxscript_Validator_Interface::VALIDATION_OK && $emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_OK)
+	$loginValidator = new Redaxscript\Validator\Login();
+	$emailValidator = new Redaxscript\Validator\Email();
+	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}

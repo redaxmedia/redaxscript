@@ -65,8 +65,8 @@ function reminder_form()
 
 function reminder_post()
 {
-	$emailValidator = new Redaxscript_Validator_Email();
-	$captchaValidator = new Redaxscript_Validator_Captcha();
+	$emailValidator = new Redaxscript\Validator\Email();
+	$captchaValidator = new Redaxscript\Validator\Captcha();
 
 	/* clean post */
 
@@ -83,11 +83,11 @@ function reminder_post()
 	{
 		$error = l('email_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript_Validator_Interface::VALIDATION_FAIL)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

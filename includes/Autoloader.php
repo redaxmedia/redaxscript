@@ -65,7 +65,7 @@ class Autoloader
 		{
 			self::$_directory = $directory;
 		}
-		else if($directory)
+		else if ($directory)
 		{
 			self::$_directory = array(
 				$directory
@@ -92,11 +92,6 @@ class Autoloader
 	{
 		$fileName = str_replace(self::$_namespace, '', $className);
 		$fileName = str_replace(self::$_delimiter, '/', $fileName);
-
-		/* temp */
-		$fileName = str_replace('_', '/', $fileName);
-		/* temp */
-
 		$filePath = $fileName . self::$_fileSuffix;
 
 		/* include files as needed */

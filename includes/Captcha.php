@@ -38,7 +38,7 @@ class Captcha
 	private $_solution;
 
 	/**
-	 * allowable range for the task
+	 * allowed range for the task
 	 *
 	 * @var array
 	 */

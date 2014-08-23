@@ -1,30 +1,33 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+
+use Redaxscript\Tests\TestCase;
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Email Test
+ * EmailTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Email_Test extends PHPUnit_Framework_TestCase
-{
 
+class EmailTest extends TestCase
+{
 	/**
-	 * provider
+	 * providerValidatorEmail
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function provider()
+	public function providerValidatorEmail()
 	{
-		$contents = file_get_contents('tests/provider/validator_email.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/Validator/email.json');
 	}
 
 	/**
@@ -32,13 +35,23 @@ class Redaxscript_Validator_Email_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @dataProvider provider
+	 * @param string $email
+	 * @param integer $expect
+	 *
+	 * @dataProvider providerValidatorEmail
 	 */
 
-	public function testEmail($email = '', $expect = '')
+	public function testEmail($email = null, $expect = null)
 	{
-		$validator = new Redaxscript_Validator_Email();
+		/* setup */
+
+		$validator = new Validator\Email();
+
+		/* result */
+
 		$result = $validator->validate($email);
+
+		/* compare */
 
 		$this->assertEquals($expect, $result);
 	}

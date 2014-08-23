@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Modules;
+
 use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;

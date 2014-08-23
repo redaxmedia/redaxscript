@@ -1,9 +1,8 @@
 <?php
 namespace Redaxscript\Validator;
-use Redaxscript_Validator_Interface;
 
 /**
- * children class to validate access
+ * children class to validate access again group
  *
  * @since 2.2.0
  *
@@ -13,7 +12,7 @@ use Redaxscript_Validator_Interface;
  * @author Sven Weingartner
  */
 
-class Access implements Redaxscript_Validator_Interface
+class Access implements Validator
 {
 	/**
 	 * validate the access
@@ -28,7 +27,7 @@ class Access implements Redaxscript_Validator_Interface
 
 	public function validate($access = null, $groups = null)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 		$accessArray = explode(',', $access);
 		$groupsArray = explode(',', $groups);
 
@@ -36,7 +35,7 @@ class Access implements Redaxscript_Validator_Interface
 
 		if ($access == 0 || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
+			$output = Validator::PASSED;
 		}
 		return $output;
 	}

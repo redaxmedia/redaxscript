@@ -24,7 +24,7 @@ function archive()
 	}
 	else if ($result)
 	{
-		$accessValidator = new Redaxscript_Validator_Access();
+		$accessValidator = new Redaxscript\Validator\Access();
 		$month_names = explode(', ', l('month_names'));
 		$last = 0;
 		while ($r = mysql_fetch_assoc($result))

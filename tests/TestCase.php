@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use PHPUnit_Framework_TestCase;
 
 /**

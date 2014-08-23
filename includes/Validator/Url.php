@@ -1,4 +1,5 @@
 <?php
+namespace Redaxscript\Validator;
 
 /**
  * children class to validate url
@@ -6,49 +7,46 @@
  * @since 2.2.0
  *
  * @category Redaxscript
- * @package Redaxscript_Validator
+ * @package Validator
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Url implements Redaxscript_Validator_Interface
+
+class Url implements Validator
 {
 	/**
 	 * validate the url
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $url universal resource locator
-	 * @param string $dns optional dns validation
+	 * @param string $url target url
+	 * @param string $dns optional validate dns
 	 *
 	 * @return integer
 	 */
 
 	public function validate($url = null, $dns = true)
 	{
-		$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+		$output = Validator::FAILED;
 
 		/* validate url */
 
 		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
 		{
-			$output = Redaxscript_Validator_Interface::VALIDATION_OK;
-		}
+			$output = Validator::PASSED;
 
-		/* validate domain */
+			/* validate dns */
 
-		if ($dns === true)
-		{
-			$parsedUrl = parse_url($url);
-			if (isset($parsedUrl['host']))
+			if ($dns === true)
 			{
-				$dnsValidator = new Redaxscript_Validator_Dns();
-				$output = $dnsValidator->validate($parsedUrl['host'], Redaxscript_Validator_Dns::DNS_TYPE_A);
-			}
-			else
-			{
-				$output = Redaxscript_Validator_Interface::VALIDATION_FAIL;
+				$parsedUrl = parse_url($url);
+				if (isset($parsedUrl['host']))
+				{
+					$dnsValidator = new Dns();
+					$output = $dnsValidator->validate($parsedUrl['host']);
+				}
 			}
 		}
-
 		return $output;
 	}
 }

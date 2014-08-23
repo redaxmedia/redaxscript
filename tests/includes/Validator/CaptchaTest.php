@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Validator;
+
 use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 
@@ -26,13 +27,17 @@ class CaptchaTest extends TestCase
 
 	public function providerValidatorCaptcha()
 	{
-		return $this->getProvider('tests/provider/validator_captcha.json');
+		return $this->getProvider('tests/provider/Validator/captcha.json');
 	}
 
 	/**
 	 * testCaptcha
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param string $task
+	 * @param string $solution
+	 * @param integer $expect
 	 *
 	 * @dataProvider providerValidatorCaptcha
 	 */

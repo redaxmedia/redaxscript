@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Validator;
+
 use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 
@@ -26,13 +27,17 @@ class AccessTest extends TestCase
 
 	public function providerValidatorAccess()
 	{
-		return $this->getProvider('tests/provider/validator_access.json');
+		return $this->getProvider('tests/provider/Validator/access.json');
 	}
 
 	/**
 	 * testAccess
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param string $access
+	 * @param string $groups
+	 * @param integer $expect
 	 *
 	 * @dataProvider providerValidatorAccess
 	 */

@@ -1,30 +1,33 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+
+use Redaxscript\Tests\TestCase;
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Dns Test
+ * DnsTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Dns_Test extends PHPUnit_Framework_TestCase
-{
 
+class DnsTest extends TestCase
+{
 	/**
-	 * providerDns
+	 * providerValidatorDns
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDns()
+	public function providerValidatorDns()
 	{
-		$contents = file_get_contents('tests/provider/validator_dns.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/Validator/dns.json');
 	}
 
 	/**
@@ -32,19 +35,24 @@ class Redaxscript_Validator_Dns_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @dataProvider providerDns
+	 * @param string $host
+	 * @param string $type
+	 * @param integer $expect
+	 *
+	 * @dataProvider providerValidatorDns
 	 */
 
-	public function testDns($host = '', $type = '', $expect = '')
+	public function testDns($host = null, $type = null, $expect = null)
 	{
-		// Note: The checkdnsrr function is not implemented on the Windows platform
-		if (!function_exists('checkdnsrr'))
-		{
-			return;
-		}
+		/* setup */
 
-		$validator = new Redaxscript_Validator_Dns();
+		$validator = new Validator\Dns();
+
+		/* result */
+
 		$result = $validator->validate($host, $type);
+
+		/* compare */
 
 		$this->assertEquals($expect, $result);
 	}

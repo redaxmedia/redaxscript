@@ -1,30 +1,33 @@
 <?php
+namespace Redaxscript\Tests\Validator;
+
+use Redaxscript\Tests\TestCase;
+use Redaxscript\Validator;
 
 /**
- * Redaxscript Validator_Login Test
+ * LoginTest
  *
  * @since 2.2.0
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Sven Weingartner
  */
-class Redaxscript_Validator_Login_Test extends PHPUnit_Framework_TestCase
-{
 
+class LoginTest extends TestCase
+{
 	/**
-	 * provider
+	 * providerValidatorLogin
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function provider()
+	public function providerValidatorLogin()
 	{
-		$contents = file_get_contents('tests/provider/validator_login.json');
-		$output = json_decode($contents, true);
-		return $output;
+		return $this->getProvider('tests/provider/Validator/login.json');
 	}
 
 	/**
@@ -32,13 +35,23 @@ class Redaxscript_Validator_Login_Test extends PHPUnit_Framework_TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @dataProvider provider
+	 * @param string $login
+	 * @param integer $expect
+	 *
+	 * @dataProvider providerValidatorLogin
 	 */
 
-	public function testLogin($login = '', $expect = '')
+	public function testLogin($login = null, $expect = null)
 	{
-		$validator = new Redaxscript_Validator_Login();
+		/* setup */
+
+		$validator = new Validator\Login();
+
+		/* result */
+
 		$result = $validator->validate($login);
+
+		/* compare */
 
 		$this->assertEquals($expect, $result);
 	}

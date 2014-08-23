@@ -1,5 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
+
 use Redaxscript\Directory;
 use org\bovigo\vfs\vfsStream as Stream;
 
