@@ -5,7 +5,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * parent class to detect the required asset
+ * abstract class to build a detection class
  *
  * @since 2.0.0
  *
@@ -14,7 +14,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class Detection
+abstract class Detection
 {
 	/**
 	 * instance of the registry class

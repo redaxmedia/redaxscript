@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to provide a simple mathematical task to ensure human users
+ * parent class to provide a mathematical task to ensure human users
  *
  * @since 2.0.0
  *
