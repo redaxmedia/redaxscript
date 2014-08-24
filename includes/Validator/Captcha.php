@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Validator;
 
+use Redaxscript\Db;
+
 /**
  * children class to validate captcha raw again hash
  *
