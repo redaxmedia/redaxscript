@@ -54,7 +54,7 @@ class Alias implements Validator
 	 * @since 2.2.0
 	 *
 	 * @param string $alias alias for routing
-	 * @param string $mode switch between general and default validation
+	 * @param integer $mode switch between general and default validation
 	 *
 	 * @return integer
 	 */

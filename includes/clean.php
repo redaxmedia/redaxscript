@@ -195,7 +195,7 @@ function clean_script($input = '')
 		'onsubmit',
 		'onunload'
 	);
-	$search = $script_tags . $script_handlers;
+	$search = array_merge($script_tags, $script_handlers);
 	foreach ($search as $key => $value)
 	{
 		$replace[$key] = '[' . $value . ']';
@@ -261,7 +261,7 @@ function clean_html($input = '')
 		'type',
 		'url'
 	);
-	$search =$html_tags . $html_attributes;
+	$search = array_merge($html_tags, $html_attributes);
 	foreach ($search as $key => $value)
 	{
 		$replace[$key] = '[' . $value . ']';
@@ -310,7 +310,7 @@ function clean_alias($input = '')
 function clean_email($input = '')
 {
 	$output = trim(strtolower($input));
-	$output = preg_replace('/[^@a-z0-9._-]/i', '', $input);
+	$output = preg_replace('/[^@a-z0-9._-]/i', '', $output);
 	return $output;
 }
 

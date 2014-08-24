@@ -20,7 +20,7 @@ class Email implements Validator
 	 * @since 2.2.0
 	 *
 	 * @param string $email target email adress
-	 * @param string $dns optional validate dns
+	 * @param boolean $dns optional validate dns
 	 *
 	 * @return integer
 	 */
