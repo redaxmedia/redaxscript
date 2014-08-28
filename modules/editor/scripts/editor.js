@@ -173,22 +173,19 @@
 
 			editor.action = function (command)
 			{
-				if (editor.checkSelection())
+				try
 				{
-					try
-					{
-						document.execCommand(command, 0, 0);
-					}
+					document.execCommand(command, 0, 0);
+				}
 
-					/* alert dialog if no support */
+				/* alert dialog if no support */
 
-					catch (exception)
+				catch (exception)
+				{
+					$.fn.dialog(
 					{
-						$.fn.dialog(
-						{
-							message: l.editor.browser_support_no + l.point
-						});
-					}
+						message: l.editor.browser_support_no + l.point
+					});
 				}
 			};
 
