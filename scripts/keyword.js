@@ -19,30 +19,26 @@
 
 	$.fn.fetchKeyword = function (input, options)
 	{
-		var node = $(input),
+		var node = $('<div>').append(input),
+			target = node.find(options.element.target).slice(0, options.limit),
 			outputArray = [],
 			output = '';
 
-		/* proccess node elements */
+		/* proccess target elements */
 
-		node.each(function ()
+		target.each(function ()
 		{
-			var that = $(this),
-				thatNative = that[0],
-				thatTag = thatNative.tagName;
+			var that = $(this);
 
-			/* validate node tag */
-
-			if (thatTag)
-			{
-				thatTag = thatTag.toLowerCase();
-				if ($.inArray(thatTag, options.tag) > -1 && outputArray.length < options.limit)
-				{
-					$.merge(outputArray, that.text().toLowerCase().split(' '));
-				}
-			}
+			$.merge(outputArray, that.text().toLowerCase().split(' '));
 		});
-		output = outputArray.join(options.delimiter);
+
+		/* join array */
+
+		if (outputArray.length)
+		{
+			output = outputArray.join(options.delimiter);
+		}
 		return output;
 	};
 
