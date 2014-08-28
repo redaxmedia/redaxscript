@@ -37,7 +37,7 @@
 
 		if (outputArray.length)
 		{
-			output = outputArray.join(options.delimiter);
+			output = outputArray.slice(0, options.limit).join(options.delimiter);
 		}
 		return output;
 	};

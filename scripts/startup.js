@@ -139,7 +139,7 @@
 					target: 'h1, h2, h3, strong'
 				},
 				delimiter: ' ',
-				limit: 20
+				limit: 10
 			}
 		},
 		keyShortcut:
