@@ -26,12 +26,11 @@ class Login implements Validator
 	);
 
 	/**
-	 * validate the url
+	 * validate the login
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $url target url
-	 * @param string $dns optional validate dns
+	 * @param string $login login name
 	 *
 	 * @return integer
 	 */

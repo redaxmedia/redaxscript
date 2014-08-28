@@ -130,9 +130,9 @@ if ($modules_include)
 
 		/* config */
 
-		if (file_exists('modules/' . $value . '/Config.php'))
+		if (file_exists('modules/' . $value . '/config.php'))
 		{
-			include_once('modules/' . $value . '/Config.php');
+			include_once('modules/' . $value . '/config.php');
 		}
 
 		/* index */

@@ -135,16 +135,9 @@
 			{
 				element:
 				{
-					related: 'textarea.js_generate_keyword_output'
+					related: 'textarea.js_generate_keyword_output',
+					target: 'h1, h2, h3, strong'
 				},
-				tag:
-				[
-					'h1',
-					'h2',
-					'h3',
-					'strong',
-					'em'
-				],
 				delimiter: ' ',
 				limit: 10
 			}
