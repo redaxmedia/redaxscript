@@ -1,39 +1,30 @@
-<h2 class="title_content">
-	<?php if (SECOND_PARAMETER !== 'interface'): ?>
-		<a href="preview/interface" title="Interface">Interface</a>
-	<?php else: ?>
-		Interface
-	<?php endif; ?>
-</h2>
-
-
 <h3 class="title_content_sub">ul.list_default</h3>
 
 <ul class="list_default">
-	<li><?php echo l('1'); ?></li>
-	<li><?php echo l('2'); ?>
+	<li><?php echo l('1', '_number'); ?></li>
+	<li><?php echo l('2', '_number'); ?>
 		<ul>
-			<li><?php echo l('1'); ?></li>
-			<li><?php echo l('2'); ?></li>
-			<li><?php echo l('3'); ?></li>
+			<li><?php echo l('1', '_number'); ?></li>
+			<li><?php echo l('2', '_number'); ?></li>
+			<li><?php echo l('3', '_number'); ?></li>
 		</ul>
 	</li>
-	<li><?php echo l('3'); ?></li>
+	<li><?php echo l('3', '_number'); ?></li>
 </ul>
 
 
 <h3 class="title_content_sub">ol.list_default</h3>
 
 <ol class="list_default">
-	<li><?php echo l('1'); ?></li>
-	<li><?php echo l('2'); ?>
+	<li><?php echo l('1', '_number'); ?></li>
+	<li><?php echo l('2', '_number'); ?>
 		<ul>
-			<li><?php echo l('1'); ?></li>
-			<li><?php echo l('2'); ?></li>
-			<li><?php echo l('3'); ?></li>
+			<li><?php echo l('1', '_number'); ?></li>
+			<li><?php echo l('2', '_number'); ?></li>
+			<li><?php echo l('3', '_number'); ?></li>
 		</ul>
 	</li>
-	<li><?php echo l('3'); ?></li>
+	<li><?php echo l('3', '_number'); ?></li>
 </ol>
 
 
@@ -41,11 +32,11 @@
 
 <ol class="list_search_result">
 	<li class="item_search_result">
-		<a href="#" class="link_search_result" title="<?php echo l('preview_preview'); ?>"><?php echo l('preview_preview'); ?></a>
+		<a href="#" class="link_search_result" title="<?php echo l('preview', 'preview'); ?>"><?php echo l('preview', 'preview'); ?></a>
 		<span class="date_search_result">01.01.2012</span>
 	</li>
 	<li class="item_search_result">
-		<a href="#" class="link_search_result" title="<?php echo l('preview_preview'); ?>"><?php echo l('preview_preview'); ?></a>
+		<a href="#" class="link_search_result" title="<?php echo l('preview', 'preview'); ?>"><?php echo l('preview', 'preview'); ?></a>
 		<span class="date_search_result">01.01.2012</span>
 	</li>
 </ol>
@@ -54,11 +45,11 @@
 <h3 class="title_content_sub">.list_breadcrumb</h3>
 
 <ul class="list_breadcrumb">
-	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
+	<li><a href="#"><?php echo l('preview', 'preview'); ?></a></li>
 	<li class="divider"><?php echo s('divider'); ?></li>
-	<li><a href="#"><?php echo l('preview_preview'); ?></a></li>
+	<li><a href="#"><?php echo l('preview', 'preview'); ?></a></li>
 	<li class="divider"><?php echo s('divider'); ?></li>
-	<li><?php echo l('preview_preview'); ?></li>
+	<li><?php echo l('preview', 'preview'); ?></li>
 </ul>
 
 

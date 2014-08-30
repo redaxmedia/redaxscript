@@ -59,7 +59,7 @@ class Demo extends Module
 
 		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo')
 		{
-			self::demoLogin();
+			self::_login();
 		}
 
 		/* disable unpublish */
@@ -71,12 +71,12 @@ class Demo extends Module
 	}
 
 	/**
-	 * demoLogin
+	 * login
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function demoLogin()
+	protected static function _login()
 	{
 		$root = Registry::get('root');
 		$token = Registry::get('token');
