@@ -82,7 +82,7 @@ class Preview extends Module
 
 			if (Registry::get('secondParameter'))
 			{
-				$output .= self::_render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml') . PHP_EOL;
+				$output .= self::_render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml');
 			}
 
 			/* else include all */
@@ -91,7 +91,7 @@ class Preview extends Module
 			{
 				foreach ($partialsDirectoryArray as $partial)
 				{
-					$output .= self::_render(str_replace('.phtml', '', $partial), $partialsPath . $partial) . PHP_EOL;
+					$output .= self::_render(str_replace('.phtml', '', $partial), $partialsPath . $partial);
 				}
 			}
 			$output .= '</div>' . PHP_EOL;
@@ -114,14 +114,14 @@ class Preview extends Module
 	{
 		/* collect title output */
 
-		$output = '<h2 class="title_content" title="' . $alias . '">';
+		$output = '<h2 class="title_content" title="' . $alias . '">' . PHP_EOL;
 		if (Registry::get('secondParameter') === $alias)
 		{
 			$output .= $alias;
 		}
 		else
 		{
-			$output .= '<a href="preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>';
+			$output .= '<a href="preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>' . PHP_EOL;
 		}
 		$output .=  '</h2>' . PHP_EOL;
 
