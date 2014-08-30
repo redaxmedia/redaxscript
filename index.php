@@ -154,6 +154,17 @@ else
 {
 	Redaxscript\Hook::trigger('render_start');
 
+	/* transport registry to constants */
+
+	if (Redaxscript\Registry::get('renderBreak'))
+	{
+		define(RENDER_BREAK, Redaxscript\Registry::get('renderBreak'));
+	}
+	if (Redaxscript\Registry::get('centerBreak'))
+	{
+		define(CENTER_BREAK, Redaxscript\Registry::get('centerBreak'));
+	}
+
 	/* undefine */
 
 	undefine(array(
@@ -168,7 +179,7 @@ else
 
 	/* render break */
 
-	if (RENDER_BREAK == 1 || Redaxscript\Registry::get('renderBreak') == 1)
+	if (RENDER_BREAK == 1)
 	{
 		return;
 	}
@@ -176,7 +187,7 @@ else
 	{
 		/* handle error */
 
-		if (CONTENT_ERROR && CENTER_BREAK == '' || Redaxscript\Registry::get('centerBreak') == '')
+		if (CONTENT_ERROR && CENTER_BREAK == '')
 		{
 			header('http/1.0 404 not found');
 		}
