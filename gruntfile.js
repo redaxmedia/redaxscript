@@ -343,6 +343,7 @@ module.exports = function (grunt)
 				[
 					'includes/**',
 					'languages/**',
+					'libraries/**',
 					'modules/**',
 					'templates/**',
 					'Config.php',
@@ -361,6 +362,7 @@ module.exports = function (grunt)
 				[
 					'includes/**',
 					'languages/en.json',
+					'libraries/**',
 					'modules/call_home/**',
 					'templates/admin/**',
 					'templates/default/**',

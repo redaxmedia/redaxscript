@@ -16,7 +16,6 @@ include_once('includes/query.php');
 include_once('includes/replace.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
-include_once('vendor/j4mie/idiorm/idiorm.php');
 
 /* bootstrap */
 
