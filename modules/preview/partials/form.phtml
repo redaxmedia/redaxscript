@@ -20,14 +20,14 @@
 			<li><?php echo form_element('text', 'field_text', 'field_text', '', '', '.field_text'); ?></li>
 			<li><?php echo select_element('field_select', 'field_select', '', array(
 				l('select') => 'select',
-				l('1') => 1,
-				l('2') => 2,
-				l('3') => 3
+				l('1', 'number') => 1,
+				l('2', 'number') => 2,
+				l('3', 'number') => 3
 			), '', '.field_select'); ?></li>
 			<li><?php echo select_element('field_select_multiple', 'field_select', '', array(
-				l('1') => 1,
-				l('2') => 2,
-				l('3') => 3
+				l('1', 'number') => 1,
+				l('2', 'number') => 2,
+				l('3', 'number') => 3
 			), '', '.field_select', 'multiple="multiple"'); ?></li>
 			<li><?php echo form_element('textarea', 'field_textarea_field_small', 'field_textarea field_small', '', '', '.field_textarea + .field_small'); ?></li>
 			<li><?php echo form_element('textarea', 'field_textarea', 'field_textarea', '', '', '.field_textarea[required]', 'required="required"'); ?></li>

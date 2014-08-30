@@ -32,7 +32,7 @@
 
 			<!-- handle error -->
 
-			<?php if (DB_CONNECTED && CONTENT_ERROR && !CENTER_BREAK): ?>
+			<?php if (DB_CONNECTED && CONTENT_ERROR && !CENTER_BREAK && !Redaxscript\Registry::get('centerBreak')): ?>
 				<?php include_once('error.phtml'); ?>
 
 			<!-- else content and sidebar -->
