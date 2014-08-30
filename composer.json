@@ -18,5 +18,13 @@
 		"redaxmedia/tocgen": "4.0.2",
 		"satooshi/php-coveralls": "0.6.1",
 		"squizlabs/php_codesniffer": "1.5.4"
+	},
+	"scripts":
+	{
+		"post-install-cmd":
+		[
+			"mkdir libraries",
+			"cp vendor/j4mie/idiorm/idiorm.php libraries/ORM.php"
+		]
 	}
 }

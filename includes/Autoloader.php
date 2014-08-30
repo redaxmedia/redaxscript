@@ -46,7 +46,8 @@ class Autoloader
 
 	protected static $_directory = array(
 		'.',
-		'includes'
+		'includes',
+		'libraries'
 	);
 
 	/**
