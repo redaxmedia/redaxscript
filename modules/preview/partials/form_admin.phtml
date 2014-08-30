@@ -1,13 +1,4 @@
 <?php if (LOGGED_IN == TOKEN): ?>
-	<h2 class="title_content">
-		<?php if (SECOND_PARAMETER !== 'form_admin'): ?>
-			<a href="preview/form_admin" title="Form Admin">Form Admin</a>
-		<?php else: ?>
-			Form Admin
-		<?php endif; ?>
-	</h2>
-
-
 	<h3 class="title_content_sub">.field_{type}_admin</h3>
 
 	<?php echo form_element('form', '', 'js_validate_form form_admin'); ?>
@@ -16,14 +7,14 @@
 		<li><?php echo form_element('text', 'field_text_admin', 'field_text_admin', '', '', '.field_text_admin'); ?></li>
 		<li><?php echo select_element('field_select_admin', 'field_select_admin', '', array(
 				l('select') => 'select',
-				l('1', 'number') => 1,
-				l('2', 'number') => 2,
-				l('3', 'number') => 3
+				l('1', '_number') => 1,
+				l('2', '_number') => 2,
+				l('3', '_number') => 3
 			), '', '.field_select_admin'); ?></li>
 		<li><?php echo select_element('field_select_admin_multiple', 'field_select_admin', '', array(
-				l('1', 'number') => 1,
-				l('2', 'number') => 2,
-				l('3', 'number') => 3
+				l('1', '_number') => 1,
+				l('2', '_number') => 2,
+				l('3', '_number') => 3
 			), '', '.field_select_admin', 'multiple="multiple"'); ?></li>
 		<li><?php echo form_element('textarea', 'field_textarea_admin_field_small_admin', 'field_textarea_admin field_small_admin', '', '', '.field_textarea_admin + .field_small_admin'); ?></li>
 		<li><?php echo form_element('textarea', 'field_textarea_admin', 'field_textarea_admin', '', '', '.field_textarea_admin[required]', 'required="required"'); ?></li>

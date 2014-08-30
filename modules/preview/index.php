@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules;
 
+use Redaxscript\Directory;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -69,43 +70,69 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
+			$partialsPath = 'modules/preview/partials/';
+			$partialsDirectory = new Directory($partialsPath);
+			$partialsDirectoryArray = $partialsDirectory->get();
+
 			/* collect partial output */
 
 			$output = '<div class="preview clear_fix">' . PHP_EOL;
-			ob_start();
 
 			/* include as needed */
 
-			if (file_exists('modules/preview/partials/' . Registry::get('secondParameter') . '.phtml'))
+			if (Registry::get('secondParameter'))
 			{
-				include_once('modules/preview/partials/' . Registry::get('secondParameter') . '.phtml');
+				$output .= self::_render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml') . PHP_EOL;
 			}
 
 			/* else include all */
 
 			else
 			{
-				include_once('modules/preview/partials/grid.phtml');
-				include_once('modules/preview/partials/typography.phtml');
-				include_once('modules/preview/partials/box.phtml');
-				include_once('modules/preview/partials/form.phtml');
-				include_once('modules/preview/partials/form_admin.phtml');
-				include_once('modules/preview/partials/icon.phtml');
-				include_once('modules/preview/partials/media.phtml');
-				include_once('modules/preview/partials/interface.phtml');
-				include_once('modules/preview/partials/accordion.phtml');
-				include_once('modules/preview/partials/accordion_admin.phtml');
-				include_once('modules/preview/partials/tab.phtml');
-				include_once('modules/preview/partials/tab_admin.phtml');
-				include_once('modules/preview/partials/table.phtml');
-				include_once('modules/preview/partials/table_admin.phtml');
-				include_once('modules/preview/partials/dialog.phtml');
-				include_once('modules/preview/partials/dialog_admin.phtml');
-				include_once('modules/preview/partials/note.phtml');
+				foreach ($partialsDirectoryArray as $partial)
+				{
+					$output .= self::_render(str_replace('.phtml', '', $partial), $partialsPath . $partial) . PHP_EOL;
+				}
 			}
-			$output .= ob_get_clean() . PHP_EOL;
 			$output .= '</div>' . PHP_EOL;
 			echo $output;
 		}
+	}
+
+	/**
+	 * render
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param $alias
+	 * @param $path
+	 *
+	 * @return string
+	 */
+
+	protected static function _render($alias = null, $path = null)
+	{
+		/* collect title output */
+
+		$output = '<h2 class="title_content" title="' . $alias . '">';
+		if (Registry::get('secondParameter') === $alias)
+		{
+			$output .= $alias;
+		}
+		else
+		{
+			$output .= '<a href="preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>';
+		}
+		$output .=  '</h2>' . PHP_EOL;
+
+		/* collect content output */
+
+		if (file_exists($path))
+		{
+			ob_start();
+			include_once($path);
+			$output .= ob_get_clean();
+		}
+		return $output;
 	}
 }
