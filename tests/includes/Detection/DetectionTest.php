@@ -121,8 +121,6 @@ class DetectionTest extends TestCase
 	 * testDetectionTemplate
 	 *
 	 * @since 2.2.0
-	 *
-	 * @param string $expect
 	 */
 
 	public function testDetectionQuery()

@@ -41,7 +41,7 @@ class Autoloader
 	/**
 	 * directory to search for class files
 	 *
-	 * @var string
+	 * @var array
 	 */
 
 	protected static $_directory = array(
