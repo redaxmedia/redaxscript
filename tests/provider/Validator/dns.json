@@ -1,6 +1,6 @@
 [
 	[
-		"smtp.web.de",
+		"smtp.gmail.com",
 		"MX",
 		1
 	],
@@ -11,6 +11,11 @@
 	],
 	[
 		"www.domain.com",
+		"A",
+		1
+	],
+	[
+		"localhost",
 		"A",
 		1
 	]

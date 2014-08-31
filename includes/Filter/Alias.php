@@ -25,8 +25,8 @@ class Alias implements Filter
 
 	public function filter($alias = null)
 	{
-		$output = preg_replace('/\W+/g', ' ', strtolower($alias));
-		$output = preg_replace('/\s+/g', '-', trim($output));
+		$output = preg_replace('/\W+/', ' ', strtolower($alias));
+		$output = preg_replace('/\s+/', '-', trim($output));
 		return $output;
 	}
 }

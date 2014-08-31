@@ -1,3 +1,22 @@
-{
-
-}
+[
+	[
+		"alias",
+		"alias"
+	],
+	[
+		"ALIAS",
+		"alias"
+	],
+	[
+		" alias ",
+		"alias"
+	],
+	[
+		"ali@_s",
+		"ali-_s"
+	],
+	[
+		"äli#s",
+		"li-s"
+	]
+]
