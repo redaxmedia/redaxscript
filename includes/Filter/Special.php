@@ -25,7 +25,7 @@ class Special implements Filter
 
 	public function sanitize($special = null)
 	{
-		$output = filter_var($special, FILTER_SANITIZE_SPEC_CHARS);
+		$output = filter_var($special, FILTER_SANITIZE_SPECIAL_CHARS);
 		return $output;
 	}
 }
