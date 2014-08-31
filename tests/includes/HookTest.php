@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Db;
 use Redaxscript\Hook;
 use Redaxscript\Module;
 use Redaxscript\Registry;

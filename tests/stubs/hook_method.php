@@ -5,6 +5,11 @@ namespace Redaxscript\Modules;
  * hookMethod
  *
  * @since 2.2.0
+ *
+ * @param integer $first
+ * @param integer $second
+ *
+ * @return integer
  */
 
 class CallHome

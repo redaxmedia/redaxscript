@@ -32,7 +32,7 @@ class Captcha
 	/**
 	 * solution to the task
 	 *
-	 * @var string
+	 * @var integer
 	 */
 
 	private $_solution;
