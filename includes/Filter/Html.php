@@ -68,7 +68,7 @@ class Html implements Filter
 	);
 
 	/**
-	 * filter the html
+	 * sanitize the html
 	 *
 	 * @since 2.2.0
 	 *
@@ -77,7 +77,7 @@ class Html implements Filter
 	 * @return string
 	 */
 
-	public function filter($html = null)
+	public function sanitize($html = null)
 	{
 		$output = str_replace($this->_htmlTags, '', $html);
 		$output = str_replace($this->_htmlAttributes, '', $output);

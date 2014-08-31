@@ -14,7 +14,7 @@ namespace Redaxscript\Filter;
 class Special implements Filter
 {
 	/**
-	 * filter the special
+	 * sanitize the special
 	 *
 	 * @since 2.2.0
 	 *
@@ -23,7 +23,7 @@ class Special implements Filter
 	 * @return string
 	 */
 
-	public function filter($special = null)
+	public function sanitize($special = null)
 	{
 		$output = filter_var($special, FILTER_SANITIZE_SPEC_CHARS);
 		return $output;

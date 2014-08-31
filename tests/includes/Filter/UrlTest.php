@@ -48,7 +48,7 @@ class UrlTest extends TestCase
 
 		/* result */
 
-		$result = $filter->filter($url);
+		$result = $filter->sanitize($url);
 
 		/* compare */
 

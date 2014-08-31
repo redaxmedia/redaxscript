@@ -139,7 +139,7 @@ class Script implements Filter
 	);
 
 	/**
-	 * filter the script
+	 * sanitize the script
 	 *
 	 * @since 2.2.0
 	 *
@@ -148,7 +148,7 @@ class Script implements Filter
 	 * @return string
 	 */
 
-	public function filter($script = null)
+	public function sanitize($script = null)
 	{
 		$output = str_replace($this->scriptCharacters, '', $script);
 		$output = str_replace($this->scriptTags, '', $output);

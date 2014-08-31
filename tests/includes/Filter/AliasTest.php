@@ -48,7 +48,7 @@ class AliasTest extends TestCase
 
 		/* result */
 
-		$result = $filter->filter($alias);
+		$result = $filter->sanitize($alias);
 
 		/* compare */
 

@@ -14,7 +14,7 @@ namespace Redaxscript\Filter;
 class Url implements Filter
 {
 	/**
-	 * filter the url
+	 * sanitize the url
 	 *
 	 * @since 2.2.0
 	 *
@@ -23,7 +23,7 @@ class Url implements Filter
 	 * @return string
 	 */
 
-	public function filter($url = null)
+	public function sanitize($url = null)
 	{
 		$output = filter_var(strtolower($url), FILTER_SANITIZE_URL);
 		return $output;

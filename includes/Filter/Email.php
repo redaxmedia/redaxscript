@@ -14,7 +14,7 @@ namespace Redaxscript\Filter;
 class Email implements Filter
 {
 	/**
-	 * filter the email
+	 * sanitize the email
 	 *
 	 * @since 2.2.0
 	 *
@@ -23,7 +23,7 @@ class Email implements Filter
 	 * @return string
 	 */
 
-	public function filter($email = null)
+	public function sanitize($email = null)
 	{
 		$output = filter_var(strtolower($email), FILTER_SANITIZE_EMAIL);
 		return $output;

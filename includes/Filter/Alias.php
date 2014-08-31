@@ -14,7 +14,7 @@ namespace Redaxscript\Filter;
 class Alias implements Filter
 {
 	/**
-	 * filter the alias
+	 * sanitize the alias
 	 *
 	 * @since 2.2.0
 	 *
@@ -23,7 +23,7 @@ class Alias implements Filter
 	 * @return string
 	 */
 
-	public function filter($alias = null)
+	public function sanitize($alias = null)
 	{
 		$output = preg_replace('/\W+/', ' ', strtolower($alias));
 		$output = preg_replace('/\s+/', '-', trim($output));

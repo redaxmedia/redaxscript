@@ -48,7 +48,7 @@ class EmailTest extends TestCase
 
 		/* result */
 
-		$result = $filter->filter($email);
+		$result = $filter->sanitize($email);
 
 		/* compare */
 

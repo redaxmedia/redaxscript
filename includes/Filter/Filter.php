@@ -14,14 +14,14 @@ namespace Redaxscript\Filter;
 interface Filter
 {
 	/**
-	 * filter the value
+	 * sanitize the value
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param mixed $value general value to filter
+	 * @param string $value general value to filter
 	 *
 	 * @return string
 	 */
 
-	public function filter($value = null);
+	public function sanitize($value = null);
 }
