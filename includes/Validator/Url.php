@@ -19,7 +19,7 @@ class Url implements Validator
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $url target url
+	 * @param string $url target url address
 	 * @param boolean $dns optional validate dns
 	 *
 	 * @return integer

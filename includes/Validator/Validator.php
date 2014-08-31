@@ -31,7 +31,7 @@ interface Validator
 	const FAILED = 0;
 
 	/**
-	 * general validate function
+	 * validate the value
 	 *
 	 * @since 2.2.0
 	 *

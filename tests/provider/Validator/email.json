@@ -4,7 +4,7 @@
 		1
 	],
 	[
-		"test@dummymail@com",
+		"test@invalid@com",
 		0
 	],
 	[
@@ -12,11 +12,11 @@
 		0
 	],
 	[
-		"nonsense@nonsense",
+		"invalid@invalid",
 		0
 	],
 	[
-		"nonsense@nonsense@nonsense",
+		"invalid@invalid@invalid",
 		0
 	]
 ]
