@@ -1,20 +1,20 @@
 <?php
-namespace Redaxscript\Detection;
+namespace Redaxscript\Detector;
 
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a detection class
+ * abstract class to build a detector class
  *
  * @since 2.0.0
  *
- * @category Detection
+ * @category Detector
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-abstract class Detection
+abstract class Detector
 {
 	/**
 	 * instance of the registry class
@@ -25,7 +25,7 @@ abstract class Detection
 	protected $_registry;
 
 	/**
-	 * output of the detection
+	 * output of the detector
 	 *
 	 * @var string
 	 */
@@ -47,7 +47,7 @@ abstract class Detection
 	}
 
 	/**
-	 * get the output of the detection
+	 * get the output of the detector
 	 *
 	 * @since 2.0.0
 	 *
@@ -64,7 +64,7 @@ abstract class Detection
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $setup array of detection setup
+	 * @param array $setup array of detector setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 */

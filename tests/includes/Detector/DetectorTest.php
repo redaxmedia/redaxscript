@@ -1,13 +1,13 @@
 <?php
-namespace Redaxscript\Tests\Detection;
+namespace Redaxscript\Tests\Detector;
 
-use Redaxscript\Detection;
+use Redaxscript\Detector;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCase;
 
 /**
- * DetectionTest
+ * DetectorTest
  *
  * @since 2.1.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\Tests\TestCase;
  * @author Henry Ruhs
  */
 
-class DetectionTest extends TestCase
+class DetectorTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -38,52 +38,52 @@ class DetectionTest extends TestCase
 	}
 
 	/**
-	 * providerDetectionLanguage
+	 * providerDetectorLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDetectionLanguage()
+	public function providerDetectorLanguage()
 	{
-		return $this->getProvider('tests/provider/Detection/language.json');
+		return $this->getProvider('tests/provider/Detector/language.json');
 	}
 
 	/**
-	 * providerDetectionTemplate
+	 * providerDetectorTemplate
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDetectionTemplate()
+	public function providerDetectorTemplate()
 	{
-		return $this->getProvider('tests/provider/Detection/template.json');
+		return $this->getProvider('tests/provider/Detector/template.json');
 	}
 
 	/**
-	 * testDetectionLanguage
+	 * testDetectorLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $registry
 	 * @param string $expect
 	 *
-	 * @dataProvider providerDetectionLanguage
+	 * @dataProvider providerDetectorLanguage
 	 */
 
-	public function testDetectionLanguage($registry = array(), $expect = null)
+	public function testDetectorLanguage($registry = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = new Detection\Language($this->_registry);
+		$detector = new Detector\Language($this->_registry);
 
 		/* result */
 
-		$result = $detection->getOutput();
+		$result = $detector->getOutput();
 
 		/* compare */
 
@@ -91,26 +91,26 @@ class DetectionTest extends TestCase
 	}
 
 	/**
-	 * testDetectionTemplate
+	 * testDetectorTemplate
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $registry
 	 * @param string $expect
 	 *
-	 * @dataProvider providerDetectionTemplate
+	 * @dataProvider providerDetectorTemplate
 	 */
 
-	public function testDetectionTemplate($registry = array(), $expect = null)
+	public function testDetectorTemplate($registry = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detection = new Detection\Template($this->_registry);
+		$detector = new Detector\Template($this->_registry);
 
 		/* result */
 
-		$result = $detection->getOutput();
+		$result = $detector->getOutput();
 
 		/* compare */
 
@@ -118,25 +118,25 @@ class DetectionTest extends TestCase
 	}
 
 	/**
-	 * testDetectionTemplate
+	 * testDetectorTemplate
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testDetectionQuery()
+	public function testDetectorQuery()
 	{
 		/* setup */
 
 		Request::setQuery('l', 'en');
 		Request::setQuery('t', 'default');
 		$this->_registry->init();
-		$detectionLanguage = new Detection\Language($this->_registry);
-		$detectionTemplate = new Detection\Template($this->_registry);
+		$detectorLanguage = new Detector\Language($this->_registry);
+		$detectorTemplate = new Detector\Template($this->_registry);
 
 		/* result */
 
-		$resultLanguage = $detectionLanguage->getOutput();
-		$resultTemplate = $detectionTemplate->getOutput();
+		$resultLanguage = $detectorLanguage->getOutput();
+		$resultTemplate = $detectorTemplate->getOutput();
 
 		/* compare */
 

@@ -1,8 +1,9 @@
 {
 	"includes":
 	{
-		"Detection":
+		"Detector":
 		{
+			"Detector.php": "",
 			"Language.php": "",
 			"Template.php": ""
 		},

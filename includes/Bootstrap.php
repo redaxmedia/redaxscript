@@ -20,15 +20,15 @@ $config = Config::getInstance();
 Db::init($config);
 Hook::init($registry);
 
-/* detection */
+/* detector */
 
-$detectionLanguage = new Detection\Language($registry);
-$detectionTemplate = new Detection\Template($registry);
+$detectorLanguage = new Detector\Language($registry);
+$detectorTemplate = new Detector\Template($registry);
 
 /* set language and template */
 
-$registry->set('language', $detectionLanguage->getOutput());
-$registry->set('template', $detectionTemplate->getOutput());
+$registry->set('language', $detectorLanguage->getOutput());
+$registry->set('template', $detectorTemplate->getOutput());
 
 /* language */
 
@@ -37,5 +37,5 @@ $language->init($registry->get('language'));
 
 /* define deprecated constants */
 
-define('LANGUAGE', $detectionLanguage->getOutput());
-define('TEMPLATE', $detectionTemplate->getOutput());
+define('LANGUAGE', $detectorLanguage->getOutput());
+define('TEMPLATE', $detectorTemplate->getOutput());
