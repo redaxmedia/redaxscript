@@ -18,7 +18,7 @@ interface Filter
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $value general value to filter
+	 * @param string $value general value to sanitize
 	 *
 	 * @return string
 	 */
