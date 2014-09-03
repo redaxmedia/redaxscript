@@ -25,7 +25,7 @@ class Special implements Filter
 
 	public function sanitize($special = null)
 	{
-		$output = filter_var($special, FILTER_SANITIZE_SPECIAL_CHARS);
+		$output = preg_replace('/\W+/i', '', $special);
 		return $output;
 	}
 }

@@ -6,5 +6,9 @@
 	[
 		"DOMAIN.COM",
 		"domain.com"
+	],
+	[
+		" domain . com",
+		"domain.com"
 	]
 ]
