@@ -14,7 +14,7 @@
 	],
 	[
 		[
-			"includes/Detection",
+			"includes/Detector",
 			"root",
 			"root/includes"
 		],

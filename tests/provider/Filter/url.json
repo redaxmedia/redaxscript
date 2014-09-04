@@ -1,0 +1,14 @@
+[
+	[
+		"domain.com",
+		"domain.com"
+	],
+	[
+		"DOMAIN.COM",
+		"domain.com"
+	],
+	[
+		" domain . com",
+		"domain.com"
+	]
+]

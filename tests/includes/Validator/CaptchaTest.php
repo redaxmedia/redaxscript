@@ -35,14 +35,14 @@ class CaptchaTest extends TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $task
-	 * @param string $solution
+	 * @param string $raw
+	 * @param string $hash
 	 * @param integer $expect
 	 *
 	 * @dataProvider providerValidatorCaptcha
 	 */
 
-	public function testCaptcha($task = null, $solution = null, $expect = null)
+	public function testCaptcha($raw = null, $hash = null, $expect = null)
 	{
 		/* setup */
 
@@ -50,7 +50,7 @@ class CaptchaTest extends TestCase
 
 		/* result */
 
-		$result = $validator->validate($task, $solution);
+		$result = $validator->validate($raw, $hash);
 
 		/* compare */
 

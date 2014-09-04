@@ -36,7 +36,7 @@ class Alias implements Validator
 	 * @var array
 	 */
 
-	protected $defaultArray = array(
+	protected $_defaultArray = array(
 		'admin',
 		'loader',
 		'login',
@@ -53,7 +53,7 @@ class Alias implements Validator
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $alias alias for routing
+	 * @param string $alias alias for routes and users
 	 * @param integer $mode switch between general and default validation
 	 *
 	 * @return integer
@@ -77,7 +77,7 @@ class Alias implements Validator
 
 		else if ($mode === self::MODE_DEFAULT)
 		{
-			if (in_array($alias, $this->defaultArray))
+			if (in_array($alias, $this->_defaultArray))
 			{
 				$output = Validator::PASSED;
 			}

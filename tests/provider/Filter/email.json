@@ -1,0 +1,18 @@
+[
+	[
+		"test@domain.com",
+		"test@domain.com"
+	],
+	[
+		"TEST@DOMAIN.COM",
+		"test@domain.com"
+	],
+	[
+		"test @ domain . com",
+		"test@domain.com"
+	],
+	[
+		"te(st)@do\\main.com",
+		"test@domain.com"
+	]
+]

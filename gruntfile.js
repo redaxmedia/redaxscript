@@ -843,9 +843,9 @@ module.exports = function (grunt)
 			{
 				files:
 				[
-					'includes/*.php',
-					'tests/*/*.php',
-					'tests/*/*.json'
+					'includes/**/*.php',
+					'tests/**/*.php',
+					'tests/**/*.json'
 				],
 				tasks:
 				[

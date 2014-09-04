@@ -159,8 +159,7 @@
 		output = output.replace(/[\u305e\u30be]/g, 'zo');
 		output = output.replace(/[\u305a\u30ba]/g, 'zu');
 		output = output.replace(/\W+/g, ' ');
-		output = output.trim();
-		output = output.replace(/\s+/g, '-');
+		output = output.trim().replace(/\s+/g, '-');
 		return output;
 	};
 

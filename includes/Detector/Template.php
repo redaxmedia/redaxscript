@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Detection;
+namespace Redaxscript\Detector;
 
 use Redaxscript\Db;
 use Redaxscript\Request;
@@ -9,12 +9,12 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detection
+ * @category Detector
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-class Template extends Detection
+class Template extends Detector
 {
 	/**
 	 * init the class

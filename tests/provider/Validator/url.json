@@ -1,42 +1,42 @@
 [
 	[
-		"http://www.mydomain.com/",
+		"http://www.domain.com/",
 		1
 	],
 	[
-		"http://www.mydomain.com/test/",
+		"http://www.domain.com/test/",
 		1
 	],
 	[
-		"http://www.mydomain.com/test",
+		"http://www.domain.com/test",
 		1
 	],
 	[
-		"http://www.mydomain.com",
+		"http://www.domain.com",
 		1
 	],
 	[
-		"www.mydomain.com",
+		"www.domain.com",
 		0
 	],
 	[
-		"http://mydomain",
+		"http://domain",
 		0
 	],
 	[
-		"http://mydomain.com/",
+		"http://domain.com/",
 		1
 	],
 	[
-		"http://mydomain.com/test/",
+		"http://domain.com/test/",
 		1
 	],
 	[
-		"http://mydomain.com/test",
+		"http://domain.com/test",
 		1
 	],
 	[
-		"http://mydomain.com",
+		"http://domain.com",
 		1
 	],
 	[

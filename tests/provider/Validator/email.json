@@ -1,22 +1,22 @@
 [
 	[
-		"test@googlemail.com",
+		"test@redaxmedia.com",
 		1
 	],
 	[
-		"test@dummymail@com",
+		"test@invalid@com",
 		0
 	],
 	[
-		"abc",
+		"invalid",
 		0
 	],
 	[
-		"nonsense@nonsense",
+		"invalid@invalid",
 		0
 	],
 	[
-		"nonsense@nonsense@nonsense",
+		"invalid@invalid@invalid",
 		0
 	]
 ]
