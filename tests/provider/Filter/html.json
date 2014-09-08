@@ -1,6 +1,18 @@
 [
 	[
-		"foobar",
-		"foobar"
+		"<div>",
+		"<div></div>"
+	],
+	[
+		"<a href=\"_blank\"><span>test</span></a>",
+		"<a><span>test</span></a>"
+	],
+	[
+		"<img src=\"_blank\" />",
+		"<img>"
+	],
+	[
+		"<div><script></script></div>",
+		"<div></div>"
 	]
 ]
