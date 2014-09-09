@@ -154,6 +154,10 @@ class Html implements Filter
 
 		if ($filter === true)
 		{
+			/* disable errors */
+
+			libxml_use_internal_errors(true);
+
 			/* process tags */
 
 			foreach ($this->_htmlTags as $tag)
@@ -180,6 +184,10 @@ class Html implements Filter
 					}
 				}
 			}
+
+			/* clear errors */
+
+			libxml_clear_errors();
 		}
 		$output = $doc->saveHTML($body->item(0)->childNodes->item(0));
 		return $output;
