@@ -1,6 +1,26 @@
 [
 	[
-		"foobar",
-		"foobar"
+		"<div>",
+		"<div></div>"
+	],
+	[
+		"<XSS>",
+		"<xss></xss>"
+	],
+	[
+		"<a href=\"_blank\"><span>test</span></a>",
+		"<a><span>test</span></a>"
+	],
+	[
+		"<img src=\"_blank\" />",
+		"<img>"
+	],
+	[
+		"<div><SCRIPT>alert('xss')</SCRIPT></div>",
+		"<div></div>"
+	],
+	[
+		"<DIV STYLE=background-image:url(javascript:alert('xss'))>",
+		"<div></div>"
 	]
 ]
