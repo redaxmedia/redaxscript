@@ -211,7 +211,6 @@ module.exports = function (grunt)
 				dir: 'tests/includes',
 				options:
 				{
-					coverageHtml: 'clover',
 					coverageClover: 'clover.xml'
 				}
 			},
