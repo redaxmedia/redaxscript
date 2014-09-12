@@ -3,8 +3,8 @@
  *
  * 1. redaxscript
  *    1.1 plugins
- *    1.4 base url
- *    1.5 startup
+ *    1.2 base url
+ *    1.3 startup
  *
  * @since 2.2.0
  *
@@ -237,7 +237,7 @@
 		}
 	};
 
-	/* @section 1.4 base url */
+	/* @section 1.2 base url */
 
 	r.baseURL = function ()
 	{
@@ -252,7 +252,7 @@
 		return output;
 	}();
 
-	/* @section 1.5 startup */
+	/* @section 1.3 startup */
 
 	r.startup = function ()
 	{
