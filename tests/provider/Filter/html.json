@@ -13,7 +13,7 @@
 	],
 	[
 		"<img src=\"_blank\" />",
-		"<img>"
+		""
 	],
 	[
 		"<div><SCRIPT>alert('xss')</SCRIPT></div>",
