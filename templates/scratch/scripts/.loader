@@ -5,8 +5,9 @@
 1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 
 [template_startup]
-1 = scripts/startup.js
-2 = templates/scratch/scripts/startup.js
+1 = scripts/support.js
+2 = scripts/startup.js
+3 = templates/scratch/scripts/startup.js
 
 [template]
 1 = scripts/dialog.js

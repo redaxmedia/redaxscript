@@ -5,8 +5,9 @@
 1 = //cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js
 
 [template_startup]
-1 = scripts/startup.js
-2 = templates/zepto/scripts/startup.js
+1 = scripts/support.js
+2 = scripts/startup.js
+3 = templates/zepto/scripts/startup.js
 
 [template]
 1 = scripts/dialog.js

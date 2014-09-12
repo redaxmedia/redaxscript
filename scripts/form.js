@@ -405,7 +405,7 @@
 		{
 			$(r.plugins.validateForm.selector).validateForm(r.plugins.validateForm.options);
 		}
-		if (r.plugins.validateSearch.startup && r.support.input.placeholder)
+		if (r.plugins.validateSearch.startup && typeof r.support.input === 'object' && r.support.input.placeholder)
 		{
 			$(r.plugins.validateSearch.selector).validateSearch(r.plugins.validateSearch.options);
 		}
