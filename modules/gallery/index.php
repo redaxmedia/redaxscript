@@ -149,7 +149,7 @@ function gallery($directory = '', $options = '', $command = '')
 
 			if ($output)
 			{
-				$output = '<ul id="' . $gallery_id . '" class="js_list_gallery list_gallery ' . $gallery_id . ' clear_fix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_id . '" class="js_list_gallery list_gallery ' . $gallery_id . ' clearfix">' . $output . '</ul>';
 				echo $output;
 			}
 		}

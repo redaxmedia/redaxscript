@@ -21,7 +21,7 @@ r.modules.editor =
 		{
 			editor: 'js_editor editor',
 			editorPreview: 'js_editor_preview editor_preview',
-			editorToolbar: 'js_toolbar editor_toolbar clear_fix',
+			editorToolbar: 'js_toolbar editor_toolbar clearfix',
 			editorControl: 'js_editor_control editor_control',
 			editorSourceCode: 'source_code',
 			editorWysiwyg: 'wysiwyg'

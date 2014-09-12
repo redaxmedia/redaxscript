@@ -17,14 +17,14 @@
 	display: none;
 }
 
-/* @section 2. clear fix */
+/* @section 2. clearfix */
 
-.clear_fix
+.clearfix
 {
 	clear: both;
 }
 
-.clear_fix:after
+.clearfix:after
 {
 	content: '';
 	display: block;

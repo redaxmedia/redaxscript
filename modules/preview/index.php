@@ -76,7 +76,7 @@ class Preview extends Module
 
 			/* collect partial output */
 
-			$output = '<div class="preview clear_fix">' . PHP_EOL;
+			$output = '<div class="preview clearfix">' . PHP_EOL;
 
 			/* include as needed */
 

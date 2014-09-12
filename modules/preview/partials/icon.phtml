@@ -5,7 +5,7 @@ $languagesDirectory = new Redaxscript\Directory('languages');
 $languagesDirectoryArray = $languagesDirectory->get();
 ?>
 
-<div class="clear_fix">
+<div class="clearfix">
 	<?php foreach ($languagesDirectoryArray as $language): ?><!--
 		--><?php $language = substr($language, 0, 2); ?><!--
 		--><span class="icon_flag language_<?php echo $language; ?>" title="<?php echo $language; ?>"><?php echo $language; ?></span><!--

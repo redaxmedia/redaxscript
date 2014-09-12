@@ -89,7 +89,7 @@ function share_this($route = '')
 
 	if ($route)
 	{
-		$output = '<ul class="list_share_this clear_fix">';
+		$output = '<ul class="list_share_this clearfix">';
 
 		/* handle each network */
 

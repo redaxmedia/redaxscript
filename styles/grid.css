@@ -10,7 +10,6 @@
  *    1.6 sixth
  *    1.7 seventh
  *    1.8 eighth
- *    1.9 golden ratio
  *
  * @since 2.0.2
  *
@@ -154,16 +153,4 @@
 .s7o8
 {
 	width: 87.5%;
-}
-
-/* @section 1.9 golden ratio */
-
-.gr1
-{
-	width: 61.8%;
-}
-
-.gr2
-{
-	width: 38.2%;
 }

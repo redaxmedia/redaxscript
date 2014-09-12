@@ -140,7 +140,7 @@ function feed_reader($url = '', $options = '')
 
 				if ($title)
 				{
-					$output .= '<h3 class="title_feed_reader clear_fix">';
+					$output .= '<h3 class="title_feed_reader clearfix">';
 					if ($route)
 					{
 						$output .= anchor_element('external', '', 'title_first', $title, $route, '', 'rel="nofollow"');

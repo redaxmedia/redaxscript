@@ -127,7 +127,7 @@ function fb_group($type = '', $options = '')
 
 			/* collect message output */
 
-			$output .= '<div class="box_fb_group_message clear_fix">' . fb_group_user_image($value->from->id, $value->from->name, 'square', 1);
+			$output .= '<div class="box_fb_group_message clearfix">' . fb_group_user_image($value->from->id, $value->from->name, 'square', 1);
 			$output .= '<div class="wrapper_fb_group_message_sub">';
 			$output .= '<h3 class="title_fb_group_message_sub">' . fb_group_user_link($value->from->id, $value->from->name) . '</h3>';
 
@@ -223,7 +223,7 @@ function fb_group($type = '', $options = '')
 
 					/* collect comment output */
 
-					$output .= '<div class="box_fb_group_comment clear_fix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
+					$output .= '<div class="box_fb_group_comment clearfix">' . fb_group_user_image($comment_value->from->id, $comment_value->from->name, 'square', 1);
 					$output .= '<div class="wrapper_fb_group_comment_sub">';
 					$output .= '<h4 class="title_fb_group_comment_sub">' . fb_group_user_link($comment_value->from->id, $comment_value->from->name) . '</h4>';
 					$output .= '<div class="box_fb_group_comment_sub">' . fb_group_parser($comment_value->message) . '</div>';
@@ -231,7 +231,7 @@ function fb_group($type = '', $options = '')
 				}
 				if (++$comments_counter > $option_limit_comments)
 				{
-					$output .= '<div class="box_fb_group_comment_read_more clear_fix">' . anchor_element('external', '', 'js_confirm link_fb_group_comment_read_more', l('read_more'), FB_GROUP_GROUP_URL) . '</div>';
+					$output .= '<div class="box_fb_group_comment_read_more clearfix">' . anchor_element('external', '', 'js_confirm link_fb_group_comment_read_more', l('read_more'), FB_GROUP_GROUP_URL) . '</div>';
 				}
 			}
 		}
