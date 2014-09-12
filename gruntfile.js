@@ -204,25 +204,21 @@ module.exports = function (grunt)
 		{
 			development:
 			{
-			},
-			report:
-			{
-				options:
-				{
-					coverageHtml: 'clover'
-				}
+				dir: 'tests/includes'
 			},
 			integration:
 			{
+				dir: 'tests/includes',
 				options:
 				{
+					coverageHtml: 'clover',
 					coverageClover: 'clover.xml'
 				}
 			},
 			options:
 			{
 				bin: 'vendor/bin/phpunit',
-				strict: true
+				bootstrap: 'tests/Bootstrap.php'
 			}
 		},
 		autoprefixer:
