@@ -16,11 +16,9 @@
 {
 	'use strict';
 
-	/* @section 1. redaxscript */
-
 	win.r = win.r || {};
 
-	/* create objects */
+	/* @section 1. redaxscript */
 
 	r.modules = r.modules || {};
 	r.flags = r.flags || {};

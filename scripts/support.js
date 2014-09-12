@@ -34,9 +34,9 @@
 {
 	'use strict';
 
-	/* @section 1. support */
-
 	win.r = win.r || {};
+
+	/* @section 1. support */
 
 	r.support =
 	{
