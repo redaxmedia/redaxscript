@@ -22,8 +22,23 @@ class Html implements Filter
 	 */
 
 	protected $_htmlTags = array(
+		'applet',
+		'audio',
+		'base',
+		'bgsound',
+		'embed',
+		'frame',
+		'frameset',
 		'function',
-		'script'
+		'form',
+		'isindex',
+		'iframe',
+		'img',
+		'link',
+		'meta',
+		'object',
+		'script',
+		'video'
 	);
 
 	/**

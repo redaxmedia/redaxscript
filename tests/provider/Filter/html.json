@@ -12,8 +12,8 @@
 		"<a><span>test</span></a>"
 	],
 	[
-		"<img src=\"_blank\" />",
-		"<img>"
+		"<div><img src=\"_blank\" /></div>",
+		"<div></div>"
 	],
 	[
 		"<div><SCRIPT>alert('xss')</SCRIPT></div>",
