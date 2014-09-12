@@ -67,7 +67,7 @@ class Alias implements Validator
 
 		if ($mode === self::MODE_GENERAL)
 		{
-			if (preg_match('/[^a-z0-9_]/i', $alias) || is_numeric($alias))
+			if (preg_match('/[^a-z0-9-]/i', $alias) || is_numeric($alias))
 			{
 				$output = Validator::PASSED;
 			}
