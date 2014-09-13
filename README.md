@@ -14,7 +14,7 @@ Redaxscript
 [![Repo size](https://reposs.herokuapp.com/?path=redaxmedia/redaxscript&style=flat)](https://github.com/redaxmedia/redaxscript)
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![Bountysource](http://img.shields.io/badge/bountysource-donate-32a370.svg?style=flat)](https://www.bountysource.com/trackers/351960-redaxmedia-redaxscript?utm_source=351960)
+[![Bountysource](http://img.shields.io/badge/bountysource-donate-129e5e.svg?style=flat)](https://www.bountysource.com/trackers/351960-redaxmedia-redaxscript?utm_source=351960)
 
 Online demo
 -----------
