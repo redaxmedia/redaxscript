@@ -67,7 +67,7 @@ class Hook
 		{
 			/* validate access */
 
-			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === 1)
+			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === Validator\Validator::PASSED)
 			{
 				self::$_modules[$module->alias] = $module->alias;
 			}

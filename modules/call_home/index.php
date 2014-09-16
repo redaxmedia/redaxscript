@@ -1,91 +1,102 @@
 <?php
+namespace Redaxscript\Modules;
+
+use Redaxscript\Module;
+use Redaxscript\Registry;
 
 /**
- * call home loader start
+ * provide version and news updates
  *
- * @since 1.2.1
- * @deprecated 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-function call_home_loader_start()
+class CallHome extends Module
 {
-	global $loader_modules_scripts;
-	$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
-	$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
-}
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
 
-/**
- * call home scripts start
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	protected static $_module = array(
+		'name' => 'Call Home',
+		'alias' => 'call_home',
+		'author' => 'Redaxmedia',
+		'description' => 'Provide version and news updates',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
 
-function call_home_scripts_start()
-{
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function loaderStart()
 	{
-		$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+		global $loader_modules_scripts;
+		$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
+	}
+
+	/**
+	 * scriptsStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function scriptsStart()
+	{
+		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
+		{
+			$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+			echo $output;
+		}
+	}
+
+	/**
+	 * adminNotificationStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function adminNotificationStart()
+	{
+		$url = 'http://service.redaxscript.com/version/' . l('redaxscript_version');
+		$contents = file_get_contents($url);
+
+		/* collect output */
+
+		if ($contents)
+		{
+			$output = $contents;
+		}
 		echo $output;
 	}
-}
 
-/**
- * call home admin notification start
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	/**
+	 * adminNotificationEnd
+	 *
+	 * @since 2.2.0
+	 */
 
-function call_home_admin_notification_start()
-{
-	/* get contents */
-
-	$url = 'http://service.redaxscript.com/version/' . clean_alias(l('redaxscript_version'));
-	$contents = file_get_contents($url);
-
-	/* collect output */
-
-	if ($contents)
+	public static function adminNotificationEnd()
 	{
-		$output = $contents;
+		$url = 'http://service.redaxscript.com/news';
+		$contents = file_get_contents($url);
+
+		/* collect output */
+
+		if ($contents)
+		{
+			$output = $contents;
+		}
+		echo $output;
 	}
-	echo $output;
-}
-
-/**
- * call home admin notification end
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
-
-function call_home_admin_notification_end()
-{
-	$url = 'http://service.redaxscript.com/news';
-	$contents = file_get_contents($url);
-
-	/* collect output */
-
-	if ($contents)
-	{
-		$output = $contents;
-	}
-	echo $output;
 }

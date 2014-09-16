@@ -4,9 +4,9 @@ namespace Redaxscript;
 /* include as needed */
 
 include_once('includes/Autoloader.php');
+include_once('TestCase.php');
 include_once('stubs/hook_function.php');
 include_once('stubs/hook_method.php');
-include_once('TestCase.php');
 
 /* init */
 

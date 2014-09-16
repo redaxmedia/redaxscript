@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(-1);
 
 /* include core files */
 
@@ -24,22 +24,11 @@ write_config();
 /* bootstrap */
 
 include_once('includes/Bootstrap.php');
-startup();
-
-/* migrate deprecated constants */
-
-$registry = Redaxscript\Registry::getInstance();
-$registry->init(migrate_constants());
 
 /* define meta */
 
 define('TITLE', l('installation'));
 define('ROBOTS', 'none');
-
-/* registry object */
-
-$registry = Redaxscript\Registry::getInstance();
-$registry->set('title', l('installation'));
 
 /* call loader else render template */
 

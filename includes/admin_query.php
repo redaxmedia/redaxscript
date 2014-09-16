@@ -648,7 +648,7 @@ function admin_install()
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
 				include_once('modules/' . ALIAS_PARAMETER . '/index.php');
 				$function = ALIAS_PARAMETER . '_' . ADMIN_PARAMETER;
-				$object = 'Redaxscript\Modules\\' . mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE);
+				$object = 'Redaxscript\Modules\\' . str_replace('_', '', mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE));
 				$method = str_replace('_', '', mb_convert_case(ADMIN_PARAMETER, MB_CASE_TITLE));
 
 				/* method exists */

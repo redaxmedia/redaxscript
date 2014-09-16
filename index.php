@@ -20,12 +20,6 @@ include_once('includes/startup.php');
 /* bootstrap */
 
 include_once('includes/Bootstrap.php');
-startup();
-
-/* migrate deprecated constants */
-
-$registry = Redaxscript\Registry::getInstance();
-$registry->init(migrate_constants());
 
 /* include files as needed */
 

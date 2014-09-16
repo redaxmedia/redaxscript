@@ -76,11 +76,10 @@ function contents()
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
-			if ($check_access == 1)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
 			{
 				if ($r)
 				{
@@ -258,11 +257,10 @@ function extras($filter = '')
 		while ($r = mysql_fetch_assoc($result))
 		{
 			$access = $r['access'];
-			$check_access = $accessValidator->validate($access, MY_GROUPS);
 
 			/* if access granted */
 
-			if ($check_access == 1)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
 			{
 				if ($r)
 				{
