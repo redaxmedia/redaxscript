@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules;
 
+use Redaxscript\Filter;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -68,34 +69,27 @@ class CallHome extends Module
 
 	public static function adminNotificationStart()
 	{
-		$url = 'http://service.redaxscript.com/version/' . l('redaxscript_version');
-		$contents = file_get_contents($url);
+		$aliasFilter = new Filter\Alias();
+		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(l('version', '_package'));
+		$urlNews = 'http://service.redaxscript.com/news';
 
-		/* collect output */
+		/* get contents */
 
-		if ($contents)
+		$contentsVersion = file_get_contents($urlVersion);
+		$contentsNews = file_get_contents($urlNews);
+
+		/* collect version output */
+
+		if ($contentsVersion)
 		{
-			$output = $contents;
+			$output = $contentsVersion;
 		}
-		echo $output;
-	}
 
-	/**
-	 * adminNotificationEnd
-	 *
-	 * @since 2.2.0
-	 */
+		/* collect news output */
 
-	public static function adminNotificationEnd()
-	{
-		$url = 'http://service.redaxscript.com/news';
-		$contents = file_get_contents($url);
-
-		/* collect output */
-
-		if ($contents)
+		if ($contentsNews)
 		{
-			$output = $contents;
+			$output .= $contentsNews;
 		}
 		echo $output;
 	}
