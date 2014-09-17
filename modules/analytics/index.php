@@ -1,42 +1,65 @@
 <?php
+namespace Redaxscript\Modules;
+
+use Redaxscript\Module;
+use Redaxscript\Registry;
 
 /**
- * analytics loader start
+ * integrate goggle analytics
  *
- * @since 1.2.1
- * @deprecated 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-function analytics_loader_start()
+class Analytics extends Module
 {
-	if (LOGGED_IN != TOKEN)
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
+
+	protected static $_module = array(
+		'name' => 'Analytics',
+		'alias' => 'analytics',
+		'author' => 'Redaxmedia',
+		'description' => 'Integrate Goggle Analytics',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
+
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function loaderStart()
 	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/analytics/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/analytics/scripts/analytics.js';
+		if (Registry::get('loggedIn') !== Registry::get('token'))
+		{
+			global $loader_modules_scripts;
+			$loader_modules_scripts[] = 'modules/analytics/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/analytics/scripts/analytics.js';
+		}
 	}
-}
 
-/**
- * analytics scripts start
- * 
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	/**
+	 * scriptsStart
+	 *
+	 * @since 2.2.0
+	 */
 
-function analytics_scripts_start()
-{
-	if (LOGGED_IN != TOKEN)
+	public static function scriptsStart()
 	{
-		$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
-		echo $output;
+		if (Registry::get('loggedIn') !== Registry::get('token'))
+		{
+			$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+			echo $output;
+		}
 	}
 }

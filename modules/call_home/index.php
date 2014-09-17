@@ -41,9 +41,12 @@ class CallHome extends Module
 
 	public static function loaderStart()
 	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
+		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
+		{
+			global $loader_modules_scripts;
+			$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
+		}
 	}
 
 	/**
