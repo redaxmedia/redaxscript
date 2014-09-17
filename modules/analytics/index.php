@@ -5,7 +5,7 @@ use Redaxscript\Module;
 use Redaxscript\Registry;
 
 /**
- * integrate goggle analytics
+ * integrate google analytics
  *
  * @since 2.2.0
  *
@@ -26,7 +26,7 @@ class Analytics extends Module
 		'name' => 'Analytics',
 		'alias' => 'analytics',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate Goggle Analytics',
+		'description' => 'Integrate Google Analytics',
 		'version' => '2.2.0',
 		'status' => 1,
 		'access' => 0
