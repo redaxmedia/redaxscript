@@ -16,36 +16,36 @@ use Redaxscript\Registry;
 
 class Validator extends Module
 {
-    /**
-     * custom module setup
-     *
-     * @var array
-     */
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
 
-    protected static $_module = array(
-        'name' => 'Validator',
-        'alias' => 'validator',
-        'author' => 'Redaxmedia',
-        'description' => 'HTML validator for developers',
-        'version' => '2.2.0',
-        'status' => 1,
-        'access' => 1
-    );
+	protected static $_module = array(
+		'name' => 'Validator',
+		'alias' => 'validator',
+		'author' => 'Redaxmedia',
+		'description' => 'HTML validator for developers',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 1
+	);
 
-    /**
-     * loaderStart
-     *
-     * @since 2.2.0
-     */
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
 
-    public static function loaderStart()
-    {
-        if (Registry::get('firstParameter') !== 'admin')
-        {
-            global $loader_modules_styles, $loader_modules_scripts;
-            $loader_modules_styles[] = 'modules/validator/styles/validator.css';
-            $loader_modules_scripts[] = 'modules/validator/scripts/startup.js';
-            $loader_modules_scripts[] = 'modules/validator/scripts/validator.js';
-        }
-    }
+	public static function loaderStart()
+	{
+		if (Registry::get('firstParameter') !== 'admin')
+		{
+			global $loader_modules_styles, $loader_modules_scripts;
+			$loader_modules_styles[] = 'modules/validator/styles/validator.css';
+			$loader_modules_scripts[] = 'modules/validator/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/validator/scripts/validator.js';
+		}
+	}
 }
