@@ -4,7 +4,6 @@
  * 1. box validator
  *    1.1 screen min 50em
  *    1.2 screen max 50em
- * 2. description validator
  *
  * @since 2.0.0
  *
@@ -16,12 +15,8 @@
 
 .box_validator
 {
-	-webkit-animation: fade 0.4s;
-	animation: fade 0.4s;
-	background: #fff;
 	bottom: 1em;
-	font: 0.75em arial;
-	padding: 1em;
+	font: 0.875em arial;
 	position: fixed;
 	right: 1em;
 	z-index: 900;
@@ -52,11 +47,4 @@
 	{
 		left: 1em;
 	}
-}
-
-/* @section 2. description validator */
-
-.description_validator
-{
-	font: 0.75em arial;
 }
