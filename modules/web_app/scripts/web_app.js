@@ -29,7 +29,7 @@
 
 		if (r.support.webStorage && typeof window.navigator.mozApps === 'object')
 		{
-			var counter  = Number(window.sessionStorage.getItem('webAppInstallCounter')) || 0,
+			var counter  = Number(window.localStorage.getItem('webAppInstallCounter')) || 0,
 				request = '';
 
 			/* prevent multiple request */
