@@ -67,7 +67,7 @@ class WebApp extends Module
 	 * @since 2.2.0
 	 */
 
-	function headStart()
+	public static function headStart()
 	{
 		$output = '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
 		echo $output;
@@ -79,7 +79,7 @@ class WebApp extends Module
 	 * @since 2.2.0
 	 */
 
-	function headEnd()
+	public static function headEnd()
 	{
 		$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
 		echo $output;
