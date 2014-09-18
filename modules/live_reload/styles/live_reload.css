@@ -15,11 +15,9 @@
 
 .box_live_reload
 {
-	background: #fff;
 	bottom: 1em;
-	font: 0.75em arial;
-	left: 1em;
-	padding: 1em;
+	font: 0.875em arial;
+	right: 1em;
 	position: fixed;
 	z-index: 900;
 }
@@ -40,6 +38,6 @@
 {
 	.box_live_reload
 	{
-		right: 1em;
+		left: 1em;
 	}
 }
