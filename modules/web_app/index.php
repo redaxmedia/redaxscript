@@ -29,7 +29,7 @@ class WebApp extends Module
 		'description' => 'Web application support',
 		'version' => '2.2.0',
 		'status' => 1,
-		'access' => 1
+		'access' => 0
 	);
 
 	/**
