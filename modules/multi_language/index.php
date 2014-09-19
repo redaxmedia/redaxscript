@@ -1,18 +1,45 @@
 <?php
+namespace Redaxscript\Modules;
+
+use Redaxscript\Module;
 
 /**
- * multi language loader start
+ * support for multiple languages
  *
- * @since 1.2.1
- * @deprecated 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-function multi_language_loader_start()
+class MultiLanguage extends Module
 {
-	global $loader_modules_styles;
-	$loader_modules_styles[] = 'modules/multi_language/styles/multi_language.css';
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
+
+	protected static $_module = array(
+		'name' => 'MultiLanguage',
+		'alias' => 'multi_language',
+		'author' => 'Redaxmedia',
+		'description' => 'Support for multiple languages',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
+
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function loaderStart()
+	{
+		global $loader_modules_styles;
+		$loader_modules_styles[] = 'modules/multi_language/styles/multi_language.css';
+	}
 }
