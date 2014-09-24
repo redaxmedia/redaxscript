@@ -1,7 +1,7 @@
 {
 	"name": "Redaxscript",
 	"description": "Ultra lightweight CMS",
-	"version": "2.0.2",
+	"version": "2.2.0",
 	"launch_path": "/",
 	"icons":
 	{
@@ -9,8 +9,8 @@
 	},
 	"developer":
 	{
-	  "name": "Redaxmedia",
-	  "url": "http://redaxmedia.com"
+		"name": "Redaxmedia",
+		"url": "http://redaxmedia.com"
 	},
 	"default_locale": "en"
 }

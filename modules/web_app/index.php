@@ -1,74 +1,87 @@
 <?php
+namespace Redaxscript\Modules;
+
+use Redaxscript\Module;
+use Redaxscript\Registry;
 
 /**
- * web app loader start
+ * web application support
  *
- * @since 2.0.2
- * @deprecated 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-function web_app_loader_start()
+class WebApp extends Module
 {
-	global $loader_modules_scripts;
-	$loader_modules_scripts[] = 'modules/web_app/scripts/startup.js';
-	$loader_modules_scripts[] = 'modules/web_app/scripts/web_app.js';
-}
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
 
-/**
- * web app render start
- *
- * @since 2.0.2
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	protected static $_module = array(
+		'name' => 'Web App',
+		'alias' => 'web_app',
+		'author' => 'Redaxmedia',
+		'description' => 'Web application support',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
 
-function web_app_render_start()
-{
-	if (FIRST_PARAMETER === 'manifest_webapp')
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function loaderStart()
 	{
-		header('content-type: application/x-web-app-manifest+json');
-		include_once('modules/web_app/files/manifest.json');
-		define('RENDER_BREAK', 1);
+		global $loader_modules_scripts;
+		$loader_modules_scripts[] = 'modules/web_app/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/web_app/scripts/web_app.js';
 	}
-}
 
-/**
- * web app head start
- *
- * @since 2.0.2
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	/**
+	 * renderStart
+	 *
+	 * @since 2.2.0
+	 */
 
-function web_app_head_start()
-{
-	$output = '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
-	echo $output;
-}
+	public static function renderStart()
+	{
+		if (Registry::get('firstParameter') === 'manifest_webapp')
+		{
+			header('content-type: application/x-web-app-manifest+json');
+			include_once('modules/web_app/files/manifest.json');
+			Registry::set('renderBreak', 1);
+		}
+	}
 
-/**
- * web app head end
- *
- * @since 2.0.2
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Modules
- * @author Henry Ruhs
- */
+	/**
+	 * headStart
+	 *
+	 * @since 2.2.0
+	 */
 
-function web_app_head_end()
-{
-	$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
-	echo $output;
+	public static function headStart()
+	{
+		$output = '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
+		echo $output;
+	}
+
+	/**
+	 * headEnd
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function headEnd()
+	{
+		$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
+		echo $output;
+	}
 }
