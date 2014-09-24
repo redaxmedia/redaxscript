@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
 use Redaxscript\Module;
@@ -25,7 +25,7 @@ class CallHome extends Module
 
 	protected static $_module = array(
 		'name' => 'Call Home',
-		'alias' => 'call_home',
+		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
 		'version' => '2.2.0',

@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\CallHome;
 
 /**
  * hookMethod

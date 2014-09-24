@@ -11,7 +11,7 @@
  * @return integer
  */
 
-function call_home_hook_function($first = null, $second = null)
+function CallHome_hook_function($first = null, $second = null)
 {
 	return $first + $second;
 }

@@ -20,7 +20,10 @@ class Autoloader
 	 * @var string
 	 */
 
-	protected static $_namespace = 'Redaxscript';
+	protected static $_namespace = array(
+		'Redaxscript\Modules\\',
+		'Redaxscript\\'
+	);
 
 	/**
 	 * project class delimiter
@@ -47,7 +50,8 @@ class Autoloader
 	protected static $_directory = array(
 		'.',
 		'includes',
-		'libraries'
+		'libraries',
+		'modules'
 	);
 
 	/**

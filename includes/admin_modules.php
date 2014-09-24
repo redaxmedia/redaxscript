@@ -54,7 +54,6 @@ function admin_modules_list()
 					}
 				}
 				$modules_installed_array[] = $alias;
-				$file_install = is_dir('modules/' . $alias);
 
 				/* build class string */
 
@@ -82,10 +81,7 @@ function admin_modules_list()
 
 				/* collect control output */
 
-				if ($file_install)
-				{
-					$output .= admin_control('modules_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
-				}
+				$output .= admin_control('modules_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
 
 				/* collect alias and version output */
 
@@ -134,16 +130,6 @@ function admin_modules_list()
 			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
 			foreach ($modules_not_installed_array as $alias)
 			{
-				$file_install = is_dir('modules/' . $alias);
-				if ($file_install)
-				{
-					$class_file_install = '';
-				}
-				else
-				{
-					$class_file_install = 'row_disabled';
-				}
-
 				/* collect table row */
 
 				$output .= '<tr';
@@ -151,18 +137,11 @@ function admin_modules_list()
 				{
 					$output .= ' id="' . $alias . '"';
 				}
-				if ($class_file_install)
-				{
-					$output .= ' class="' . $class_file_install . '"';
-				}
 				$output .= '><td colspan="3">' . $alias;
 
 				/* collect control output */
 
-				if ($file_install)
-				{
-					$output .= admin_control('modules_not_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
-				}
+				$output .= admin_control('modules_not_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
 				$output .= '</td></tr>';
 			}
 			$output .= '</tbody>';
@@ -208,7 +187,6 @@ function admin_modules_form()
 		$wording_submit = l('save');
 		$route = 'admin/process/modules/' . $id;
 	}
-	$file_install = is_dir('modules/' . $alias);
 
 	/* collect output */
 
@@ -277,7 +255,7 @@ function admin_modules_form()
 
 	/* uninstall button */
 
-	if (MODULES_UNINSTALL == 1 && $file_install)
+	if (MODULES_UNINSTALL == 1)
 	{
 		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large_admin button_uninstall_admin', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}

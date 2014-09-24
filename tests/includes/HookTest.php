@@ -46,7 +46,7 @@ class HookTest extends TestCase
 	{
 		$module = new Module(array(
 			'name' => 'Call home',
-			'alias' => 'call_home',
+			'alias' => 'CallHome',
 		));
 		$module->install();
 	}
@@ -60,7 +60,7 @@ class HookTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		$module = new Module(array(
-			'alias' => 'call_home',
+			'alias' => 'CallHome',
 		));
 		$module->uninstall();
 	}
@@ -83,7 +83,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('call_home', $result);
+		$this->assertArrayHasKey('CallHome', $result);
 	}
 
 	/**

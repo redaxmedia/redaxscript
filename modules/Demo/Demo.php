@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\Demo;
 
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -25,7 +25,7 @@ class Demo extends Module
 
 	protected static $_module = array(
 		'name' => 'Demo',
-		'alias' => 'demo',
+		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable anonymous login',
 		'version' => '2.2.0',

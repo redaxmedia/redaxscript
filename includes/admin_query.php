@@ -640,7 +640,8 @@ function admin_install()
 	{
 		/* install module */
 
-		if (is_dir('modules/' . ALIAS_PARAMETER))
+		$alias = str_replace('_', '', mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE));
+		if (is_dir('modules/' . ALIAS_PARAMETER) || is_dir('modules/' . $alias))
 		{
 			$module = retrieve('id', 'modules', 'alias', ALIAS_PARAMETER);
 			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
@@ -648,7 +649,7 @@ function admin_install()
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
 				include_once('modules/' . ALIAS_PARAMETER . '/index.php');
 				$function = ALIAS_PARAMETER . '_' . ADMIN_PARAMETER;
-				$object = 'Redaxscript\Modules\\' . str_replace('_', '', mb_convert_case(ALIAS_PARAMETER, MB_CASE_TITLE));
+				$object = 'Redaxscript\Modules\\' . $alias . '\\' . $alias;
 				$method = str_replace('_', '', mb_convert_case(ADMIN_PARAMETER, MB_CASE_TITLE));
 
 				/* method exists */

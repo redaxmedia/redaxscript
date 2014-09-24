@@ -28,13 +28,13 @@ class ModuleTest extends TestCase
 
 		$module = new Module(array(
 			'name' => 'Test',
-			'alias' => 'test',
+			'alias' => 'Test',
 		));
 		$module->install();
 
 		/* result */
 
-		$result = Db::forPrefixTable('modules')->where('alias', 'test')->findOne()->name;
+		$result = Db::forPrefixTable('modules')->where('alias', 'Test')->findOne()->name;
 
 		/* compare */
 
@@ -52,14 +52,14 @@ class ModuleTest extends TestCase
 		/* setup */
 
 		$module = new Module(array(
-			'alias' => 'test',
+			'alias' => 'Test',
 		));
 		$module->uninstall();
 
 		/* result */
 
 		Db::clearCache();
-		$result = Db::forPrefixTable('modules')->where('alias', 'test')->findOne();
+		$result = Db::forPrefixTable('modules')->where('alias', 'Test')->findOne();
 
 		/* compare */
 
