@@ -42,17 +42,17 @@ class Config extends Module
 			),
 			'twitter' => array(
 				'url' => 'http://twitter.com/share?url=',
-				'className' => ' twitter',
+				'className' => ' link_twitter',
 				'attribute' => ' data-type="twitter" data-height="340"'
 			),
 			'pinterest' => array(
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
-				'className' => ' pinterest',
+				'className' => ' link_pinterest',
 				'attribute' => ' data-type="pinterest"'
 			),
 			'linkedin' => array(
 				'url' => 'http://linkedin.com/shareArticle?url=',
-				'className' => ' linkedin',
+				'className' => ' link_linkedin',
 				'attribute' => ' data-type="linkedin" data-height="490" data-width="850"'
 			),
 			'stumbleupon' => array(
