@@ -180,7 +180,7 @@ function contents()
 		{
 			/* comments replace */
 
-			if ($comments == 1 && COMMENTS_REPLACE == 1)
+			if ($comments == 1 && COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentsReplace'))
 			{
 				Redaxscript\Hook::trigger('comments_replace');
 			}
