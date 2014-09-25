@@ -15,14 +15,14 @@ use Redaxscript\Module;
 
 class Config extends Module
 {
-	 /**
-	  * module config
-	  *
-	  * @var array
-	  */
+	/**
+	 * module config
+	 *
+	 * @var array
+	 */
 
-	 private static $_config = array(
-	 	 'element' => '<div id="disqus_thread"></div>',
-	 	 'url' => '//example.disqus.com/embed.js'
-	 );
+	protected static $_config = array(
+		'element' => '<div id="disqus_thread"></div>',
+		'url' => '//example.disqus.com/embed.js'
+	);
 }
