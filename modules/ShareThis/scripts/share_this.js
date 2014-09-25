@@ -42,18 +42,19 @@
 				{
 					for (var i in data)
 					{
-						var counter = data[i];
+						var counter = data[i],
+                            type = i.toLowerCase();
 
 						/* facebook fallback */
 
-						if (i === 'Facebook')
+						if (type === 'facebook')
 						{
 							counter = data[i].share_count;
 						}
 
 						/* filter by type */
 
-						links.filter('[data-type="' + i.toLowerCase() + '"]').attr('data-counter', counter);
+						links.filter('[data-type="' + type + '"]').attr('data-counter', counter);
 					}
 				}
 			}
