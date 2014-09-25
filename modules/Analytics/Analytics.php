@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\Analytics;
 
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -24,7 +24,7 @@ class Analytics extends Module
 
 	protected static $_module = array(
 		'name' => 'Analytics',
-		'alias' => 'analytics',
+		'alias' => 'Analytics',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Analytics',
 		'version' => '2.2.0',

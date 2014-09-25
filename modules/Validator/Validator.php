@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\Validator;
 
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -24,7 +24,7 @@ class Validator extends Module
 
 	protected static $_module = array(
 		'name' => 'Validator',
-		'alias' => 'validator',
+		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
 		'version' => '2.2.0',

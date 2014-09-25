@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\WebApp;
 
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -24,7 +24,7 @@ class WebApp extends Module
 
 	protected static $_module = array(
 		'name' => 'Web App',
-		'alias' => 'web_app',
+		'alias' => 'WebApp',
 		'author' => 'Redaxmedia',
 		'description' => 'Web application support',
 		'version' => '2.2.0',

@@ -1,10 +1,10 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\MultiLanguage;
 
 use Redaxscript\Module;
 
 /**
- * javascript powered dawanda api client
+ * support for multiple languages
  *
  * @since 2.2.0
  *
@@ -13,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class Dawanda extends Module
+class MultiLanguage extends Module
 {
 	/**
 	 * custom module setup
@@ -22,10 +22,10 @@ class Dawanda extends Module
 	 */
 
 	protected static $_module = array(
-		'name' => 'Dawanda',
-		'alias' => 'dawanda',
+		'name' => 'Multi language',
+		'alias' => 'MultiLanguage',
 		'author' => 'Redaxmedia',
-		'description' => 'Javascript powered Dawanda API client',
+		'description' => 'Support for multiple languages',
 		'version' => '2.2.0',
 		'status' => 1,
 		'access' => 0
@@ -39,8 +39,7 @@ class Dawanda extends Module
 
 	public static function loaderStart()
 	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/dawanda/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/dawanda/scripts/dawanda.js';
+		global $loader_modules_styles;
+		$loader_modules_styles[] = 'modules/multi_language/styles/multi_language.css';
 	}
 }

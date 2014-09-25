@@ -1,10 +1,10 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\Editor;
 
 use Redaxscript\Module;
 
 /**
- * live reload for css
+ * javascript powered wysiwyg editor
  *
  * @since 2.2.0
  *
@@ -13,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class LiveReload extends Module
+class Editor extends Module
 {
 	/**
 	 * custom module setup
@@ -22,13 +22,13 @@ class LiveReload extends Module
 	 */
 
 	protected static $_module = array(
-		'name' => 'Live Reload',
-		'alias' => 'live_reload',
+		'name' => 'Editor',
+		'alias' => 'Editor',
 		'author' => 'Redaxmedia',
-		'description' => 'Live reload for CSS',
+		'description' => 'Javascript powered WYSIWYG editor',
 		'version' => '2.2.0',
 		'status' => 1,
-		'access' => 1
+		'access' => 0
 	);
 
 	/**
@@ -40,8 +40,8 @@ class LiveReload extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/live_reload/styles/live_reload.css';
-		$loader_modules_scripts[] = 'modules/live_reload/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/live_reload/scripts/live_reload.js';
+		$loader_modules_styles[] = 'modules/editor/styles/editor.css';
+		$loader_modules_scripts[] = 'modules/editor/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/editor/scripts/editor.js';
 	}
 }

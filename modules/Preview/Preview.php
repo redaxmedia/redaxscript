@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules;
+namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
 use Redaxscript\Module;
@@ -25,7 +25,7 @@ class Preview extends Module
 
 	protected static $_module = array(
 		'name' => 'Preview',
-		'alias' => 'preview',
+		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
 		'version' => '2.2.0',
