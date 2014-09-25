@@ -83,11 +83,7 @@ class ShareThis extends Config
 
 			foreach (self::$_config['networks'] as $key => $value)
 			{
-				$anchorString = ' href="' . $value['url'] . $url . '"';
-				$anchorString .= ' class="' . self::$_config['className']['link'] . $value['className'] . '"';
-				$anchorString .= self::$_config['attribute']['link'] . $value['attribute'];
-				$anchorString .= ' title="' . ucfirst($key) . '"';
-				$output .= '<li><a' . $anchorString . '>' . ucfirst($key) . '</a></li>';
+				$output .= '<li><a href="' . $value['url'] . $url . '" class="' . self::$_config['className']['link'] . $value['className'] . '" title="' . ucfirst($key) . '"' . self::$_config['attribute']['link'] . $value['attribute'] . '>' . ucfirst($key) . '</a></li>';
 			}
 			$output .= '</ul>';
 			return $output;
