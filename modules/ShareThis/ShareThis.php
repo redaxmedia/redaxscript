@@ -55,8 +55,8 @@ class ShareThis extends Config
 	{
 		if (Registry::get('lastTable') == 'articles')
 		{
-			$route = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
-			$output = self::_render($route);
+			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
+			$output = self::_render($url);
 			return $output;
 		}
 	}
@@ -66,16 +66,16 @@ class ShareThis extends Config
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $route
+	 * @param $url
 	 *
 	 * @return string
 	 */
 
-	protected static function _render($route = null)
+	protected static function _render($url = null)
 	{
 		/* collect output */
 
-		if ($route)
+		if ($url)
 		{
 			$output = '<ul class="' . self::$_config['className']['list'] . '">';
 
@@ -83,7 +83,7 @@ class ShareThis extends Config
 
 			foreach (self::$_config['networks'] as $key => $value)
 			{
-				$hrefString = ' href="' . $value['url'] . $route . '"';
+				$hrefString = ' href="' . $value['url'] . $url . '"';
 				$classString = ' class="' . self::$_config['className']['link'] . $value['className'] . '"';
 				$attributeString = self::$_config['attribute']['link'] . $value['attribute'];
 				$output .= '<li><a' . $hrefString . $classString . $attributeString . '>' . ucfirst($key) . '</a></li>';
