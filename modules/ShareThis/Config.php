@@ -22,47 +22,47 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
-        'className' => array(
-            'list' => 'list_share_this clearfix',
-            'link' => 'js_link_share_this link_share_this'
-        ),
+		'className' => array(
+			'list' => 'list_share_this clearfix',
+			'link' => 'js_link_share_this link_share_this'
+		),
 		'attribute' => array(
-            'link' => ' target="_blank" rel="nofollow"'
-        ),
+			'link' => ' target="_blank" rel="nofollow"'
+		),
 		'network' => array(
 			'facebook' => array(
 				'url' => 'http://facebook.com/sharer.php?u=',
-                'className' => ' link_facebook',
-                'attribute' => ' data-type="facebook"'
+				'className' => ' link_facebook',
+				'attribute' => ' data-type="facebook"'
 			),
 			'googleplusone' => array(
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
-                'className' => ' link_googleplusone',
-                'attribute' => ' data-type="googleplusone"'
+				'className' => ' link_googleplusone',
+				'attribute' => ' data-type="googleplusone"'
 			),
 			'twitter' => array(
 				'url' => 'http://twitter.com/share?url=',
-                'className' => ' twitter',
+				'className' => ' twitter',
 				'attribute' => ' data-type="twitter" data-height="340"'
 			),
 			'pinterest' => array(
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
-                'className' => ' pinterest',
-                'attribute' => ' data-type="pinterest"'
+				'className' => ' pinterest',
+				'attribute' => ' data-type="pinterest"'
 			),
 			'linkedin' => array(
 				'url' => 'http://linkedin.com/shareArticle?url=',
-                'className' => ' linkedin',
+				'className' => ' linkedin',
 				'attribute' => ' data-type="linkedin" data-height="490" data-width="850"'
 			),
 			'stumbleupon' => array(
 				'url' => 'http://stumbleupon.com/submit?url=',
-                'className' => ' link_stumbleupon',
-                'attribute' => ' data-type="stumbleupon"'
+				'className' => ' link_stumbleupon',
+				'attribute' => ' data-type="stumbleupon"'
 			),
 			'delicious' => array(
 				'url' => 'http://del.icio.us/post?url=',
-                'className' => ' link_delicious',
+				'className' => ' link_delicious',
 				'attribute' => ' data-type="delicious" data-height="580"'
 			)
 		)
