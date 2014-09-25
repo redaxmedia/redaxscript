@@ -39,6 +39,9 @@
 				options.url
 			],
 			[
+				'_gat._anonymizeIp'
+			],
+			[
 				'_trackPageview'
 			]);
 		}
