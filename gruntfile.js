@@ -288,6 +288,10 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source Config.php --source includes --destination ../redaxscript-api/base'
 			},
+			apiModules:
+			{
+				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source modules --destination ../redaxscript-api/modules'
+			},
 			apiTests:
 			{
 				command: 'php vendor/apigen/apigen/apigen.php --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source tests --destination ../redaxscript-api/tests'
@@ -387,7 +391,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/analytics/**'
+					'modules/Analytics/**'
 				],
 				options:
 				{
@@ -409,7 +413,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/call_home/**'
+					'modules/CallHome/**'
 				],
 				options:
 				{
@@ -431,7 +435,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/dawanda/**'
+					'modules/Dawanda/**'
 				],
 				options:
 				{
@@ -464,7 +468,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/disqus/**'
+					'modules/Disqus/**'
 				],
 				options:
 				{
@@ -475,7 +479,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/editor/**'
+					'modules/Editor/**'
 				],
 				options:
 				{
@@ -570,11 +574,22 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/lazy_load.zip'
 				}
 			},
+			distModulesLiveReload:
+			{
+				src:
+				[
+					'modules/LiveReload/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/live_reload.zip'
+				}
+			},
 			distModulesMaps:
 			{
 				src:
 				[
-					'modules/maps/**'
+					'modules/Maps/**'
 				],
 				options:
 				{
@@ -585,7 +600,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/multi_language/**'
+					'modules/MultiLanguage/**'
 				],
 				options:
 				{
@@ -596,7 +611,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/preview/**'
+					'modules/Preview/**'
 				],
 				options:
 				{
@@ -629,7 +644,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/share_this/**'
+					'modules/ShareThis/**'
 				],
 				options:
 				{
@@ -662,7 +677,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/validator/**'
+					'modules/Validator/**'
 				],
 				options:
 				{
@@ -673,7 +688,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/web_app/**'
+					'modules/WebApp/**'
 				],
 				options:
 				{
@@ -899,6 +914,7 @@ module.exports = function (grunt)
 	grunt.registerTask('api',
 	[
 		'shell:apiBase',
+		'shell:apiModules',
 		'shell:apiTests'
 	]);
 	grunt.registerTask('sync',
