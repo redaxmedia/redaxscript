@@ -69,7 +69,7 @@ class Maps extends Config
 	 * @since 2.2.0
 	 */
 
-	public static function _render($lat = 0, $lng = 0, $zoom = 0)
+	public static function render($lat = 0, $lng = 0, $zoom = 0)
 	{
 		$output = '<div class="js_map map"';
 		if (is_numeric($lat))
