@@ -25,7 +25,7 @@ r.modules.maps =
 		},
 		general:
 		{
-			zoom: 2,
+			zoom: 0,
 			center: new google.maps.LatLng(0, 0),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
