@@ -41,8 +41,11 @@ class Preview extends Module
 
 	public static function loaderStart()
 	{
-		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/preview/styles/preview.css';
+		if (Registry::get('firstParameter') === 'preview')
+		{
+			global $loader_modules_styles;
+			$loader_modules_styles[] = 'modules/preview/styles/preview.css';
+		}
 	}
 
 	/**
