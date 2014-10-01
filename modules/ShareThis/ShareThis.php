@@ -40,9 +40,9 @@ class ShareThis extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/share_this/styles/share_this.css';
-		$loader_modules_scripts[] = 'modules/share_this/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/share_this/scripts/share_this.js';
+		$loader_modules_styles[] = 'modules/ShareThis/styles/share_this.css';
+		$loader_modules_scripts[] = 'modules/ShareThis/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/ShareThis/scripts/share_this.js';
 	}
 
 	/**

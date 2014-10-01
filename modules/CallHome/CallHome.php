@@ -44,8 +44,8 @@ class CallHome extends Module
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
 			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/call_home/scripts/startup.js';
-			$loader_modules_scripts[] = 'modules/call_home/scripts/call_home.js';
+			$loader_modules_scripts[] = 'modules/CallHome/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/CallHome/scripts/call_home.js';
 		}
 	}
 

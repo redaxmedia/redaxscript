@@ -40,6 +40,6 @@ class MultiLanguage extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/multi_language/styles/multi_language.css';
+		$loader_modules_styles[] = 'modules/MultiLanguage/styles/multi_language.css';
 	}
 }

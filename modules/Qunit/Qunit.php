@@ -43,10 +43,10 @@ class Qunit extends Module
 		if (Registry::get('firstParameter') === 'qunit')
 		{
 			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/qunit/styles/qunit.css';
-			$loader_modules_scripts[] = 'modules/qunit/scripts/startup.js';
-			$loader_modules_scripts[] = 'modules/qunit/scripts/qunit.js';
-			$loader_modules_scripts[] = 'modules/qunit/scripts/test.js';
+			$loader_modules_styles[] = 'modules/Qunit/styles/qunit.css';
+			$loader_modules_scripts[] = 'modules/Qunit/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/Qunit/scripts/qunit.js';
+			$loader_modules_scripts[] = 'modules/Qunit/scripts/test.js';
 		}
 	}
 
@@ -60,7 +60,7 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.11.0/qunit.min.js"></script>' . PHP_EOL;
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>' . PHP_EOL;
 			echo $output;
 		}
 	}

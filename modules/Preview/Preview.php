@@ -73,7 +73,7 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			$partialsPath = 'modules/preview/partials/';
+			$partialsPath = 'modules/Preview/partials/';
 			$partialsDirectory = new Directory($partialsPath);
 			$partialsDirectoryArray = $partialsDirectory->get();
 

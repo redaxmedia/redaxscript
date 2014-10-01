@@ -56,26 +56,15 @@
 
 .title_qunit
 {
-	background: #dadada;
-	background: -webkit-linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	background: linear-gradient(#dadada, #dadada 40%, #d1d1d1);
-	border: 1px solid #cdcdcd;
-	border-bottom: 0;
-	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1em/2.25em arial;
+	background: #b9b9b9;
+	background: -webkit-linear-gradient(#ccc, #b9b9b9);
+	background: linear-gradient(#ccc, #b9b9b9);
+	border: 1px solid #a5a5a5;
+	border-radius: 0.125em 0.125em 0 0;
+	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;
 	margin-top: 2em;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-}
-
-.title_qunit, .title_qunit a
-{
-	color: #474747;
-}
-
-.title_qunit a:hover
-{
-	text-decoration: underline;
+	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* @section 5. toolbar qunit */

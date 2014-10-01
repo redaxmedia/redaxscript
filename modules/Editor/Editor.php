@@ -40,8 +40,8 @@ class Editor extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/editor/styles/editor.css';
-		$loader_modules_scripts[] = 'modules/editor/scripts/startup.js';
-		$loader_modules_scripts[] = 'modules/editor/scripts/editor.js';
+		$loader_modules_styles[] = 'modules/Editor/styles/editor.css';
+		$loader_modules_scripts[] = 'modules/Editor/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/Editor/scripts/editor.js';
 	}
 }
