@@ -31,7 +31,6 @@
 	border: 1px solid #999;
 	border-radius: 0.25em;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-	color: #555;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 1em/2.25em 'pt sans narrow', 'trebuchet ms', arial;
@@ -111,7 +110,6 @@
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #b9b9b9;
 	border-radius: 0.25em;
-	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	-webkit-transition: background 0.4s ease;
@@ -155,7 +153,6 @@
 
 .button_search
 {
-	color: #555;
 	background: transparent;
 	height: 2em;
 	text-indent: -999em;
@@ -177,7 +174,6 @@
 .field_search
 {
 	background: none;
-	color: #555;
 	font: 1.25em/2em 'pt sans narrow', 'trebuchet ms', arial;
 	height: 1.75em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);

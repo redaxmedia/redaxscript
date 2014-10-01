@@ -65,7 +65,6 @@
 .box_default, .box_tab_default
 {
 	background: #eee;
-	color: #555;
 	padding: 1em 1.5em;
 }
 
@@ -105,11 +104,6 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	text-transform: uppercase;
-}
-
-.box_infoline, .box_infoline a
-{
-	color: #555;
 }
 
 .box_infoline a
@@ -178,7 +172,6 @@
 
 .box_quote
 {
-	color: #555;
 	font: italic 1.25em/1.5em georgia, arial;
 	margin: 1em 0;
 	min-height: 4em;
