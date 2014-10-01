@@ -19,7 +19,7 @@ class Hook
 	 * @var string
 	 */
 
-	protected static $_namespace = 'Redaxscript\Modules';
+	protected static $_namespace = 'Redaxscript\Modules\\';
 
 	/**
 	 * hook delimiter
@@ -107,7 +107,7 @@ class Hook
 		foreach (self::$_modules as $module)
 		{
 			$function = $module . self::$_delimiter . $hook;
-			$object = self::$_namespace . '\\' . $module . '\\' . $module;
+			$object = self::$_namespace . $module . '\\' . $module;
 			$method = str_replace(self::$_delimiter, '', mb_convert_case($hook, MB_CASE_TITLE));
 
 			/* method exists */
