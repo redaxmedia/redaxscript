@@ -4,6 +4,10 @@
 		"<div></div>"
 	],
 	[
+		"<article><div><p>test</p></div></article>",
+		"<article><div><p>test</p></div></article>"
+	],
+	[
 		"<XSS>",
 		"<xss></xss>"
 	],
@@ -12,12 +16,12 @@
 		"<a><span>test</span></a>"
 	],
 	[
-		"<div><img src=\"_blank\" /></div>",
-		"<div></div>"
+		"<img src=\"_blank\" />",
+		""
 	],
 	[
-		"<div><SCRIPT>alert('xss')</SCRIPT></div>",
-		"<div></div>"
+		"<SCRIPT>alert('xss')</SCRIPT>",
+		""
 	],
 	[
 		"<DIV STYLE=background-image:url(javascript:alert('xss'))>",

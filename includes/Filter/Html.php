@@ -161,6 +161,7 @@ class Html implements Filter
 
 	public function sanitize($html = null, $filter = true)
 	{
+		$output = '';
 		$doc = new DOMDocument();
 		$doc->loadHTML($html);
 		$body = $doc->getElementsByTagName('body');
@@ -204,7 +205,23 @@ class Html implements Filter
 
 			libxml_clear_errors();
 		}
-		$output = $doc->saveHTML($body->item(0)->childNodes->item(0));
+
+		/* cleanup document */
+
+		if (isset($doc->firstChild) && $doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
+		{
+			/* remove doctype */
+
+			$doc->removeChild($doc->firstChild);
+
+			/* remove html wrapper */
+
+			if (isset($doc->firstChild->firstChild->firstChild) && $doc->firstChild->firstChild->tagName === 'body')
+			{
+				$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
+				$output = trim($doc->saveHTML());
+			}
+		}
 		return $output;
 	}
 }
