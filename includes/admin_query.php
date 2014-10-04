@@ -15,6 +15,7 @@ function admin_process()
 {
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
+	$specialFilter = new Redaxscript\Filter\Special;
 
 	/* clean post */
 
@@ -79,8 +80,8 @@ function admin_process()
 			$status = $r['status'] = clean($_POST['status'], 0);
 			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
 			{
-				$access = array_map('clean_special', $_POST['access']);
-				$access = array_map('clean_mysql', $access);
+				$access = array_map(array($specialFilter, 'sanitize'), $_POST['access']);
+				$access = array_map('clean', $access);
 				$access_string = implode(', ', $access);
 				if ($access_string == '')
 				{
@@ -150,8 +151,8 @@ function admin_process()
 		);
 		foreach ($groups_array as $value)
 		{
-			$$value = array_map('clean_special', $_POST[$value]);
-			$$value = array_map('clean_mysql', $$value);
+			$$value = array_map(array($specialFilter, 'sanitize'), $_POST[$value]);
+			$$value = array_map('clean', $$value);
 			$groups_string = implode(', ', $$value);
 			if ($groups_string == '')
 			{
@@ -196,8 +197,8 @@ function admin_process()
 		}
 		if (ID_PARAMETER == '' || ID_PARAMETER > 1)
 		{
-			$groups = array_map('clean_special', $_POST['groups']);
-			$groups = array_map('clean_mysql', $groups);
+			$groups = array_map(array($specialFilter, 'sanitize'), $_POST['groups']);
+			$groups = array_map('clean', $groups);
 			$groups_string = implode(', ', $groups);
 			if ($groups_string == '')
 			{

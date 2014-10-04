@@ -24,6 +24,83 @@ function breadcrumb()
 }
 
 /**
+ * clean
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @param string $input
+ * @param integer $mode
+ * @return string
+ */
+
+function clean($input = null, $mode = 5)
+{
+	$output = $input;
+	$registry = Redaxscript\Registry::getInstance();
+
+	/* if untrusted user */
+
+	if ($registry->get('filter') === 1)
+	{
+		if ($mode == 0)
+		{
+			$specialFilter = new Redaxscript\Filter\Special;
+			$output = $specialFilter->sanitize($output);
+		}
+		if ($mode == 1)
+		{
+			$htmlFilter = new Redaxscript\Filter\Html;
+			$output = $htmlFilter->sanitize($output);
+		}
+	}
+
+	/* type related clean */
+
+	if ($mode == 2)
+	{
+		$aliasFilter = new Redaxscript\Filter\Alias;
+		$output = $aliasFilter->sanitize($output);
+	}
+	if ($mode == 3)
+	{
+		$emailFilter = new Redaxscript\Filter\Email;
+		$output = $emailFilter->sanitize($output);
+	}
+	if ($mode == 4)
+	{
+		$urlFilter = new Redaxscript\Filter\Url;
+		$output = $urlFilter->sanitize($output);
+	}
+
+	/* mysql clean */
+
+	if (get_magic_quotes_gpc())
+	{
+		$output = stripslashes($output);
+	}
+
+	/* mysql real escape */
+
+	if (DB_CONNECTED == 1 && function_exists('mysql_real_escape_string'))
+	{
+		$output = mysql_real_escape_string($input);
+	}
+
+	/* mysql escape fallback */
+
+	else if (function_exists('mysql_escape_string'))
+	{
+		$output = mysql_escape_string($input);
+	}
+	return $output;
+}
+
+/**
  * helper class
  *
  * @since 2.1.0

@@ -41,13 +41,15 @@ function anchor_element($type = '', $id = '', $class = '', $name = '', $value = 
 		switch ($type)
 		{
 			case 'external':
-				$value = clean_url($value);
+				$urlFilter = new Redaxscript\Filter\Url;
+				$urlFilter->sanitize($value);
 				break;
 			case 'internal':
 				$value_string .= REWRITE_ROUTE;
 				break;
 			case 'email':
-				$value = clean_email($value);
+				$emailFilter = new Redaxscript\Filter\Email;
+				$emailFilter->sanitize($value);
 				$value_string .= 'mailto:';
 				break;
 		}

@@ -26,8 +26,9 @@ function get_parameter($input = '')
 
 		/* clean parameter */
 
-		$parameter = array_map('clean_alias', $parameter);
-		$parameter = array_map('clean_mysql', $parameter);
+		$specialFilter = new Redaxscript\Filter\Special;
+		$parameter = array_map(array($specialFilter, 'sanitize'), $parameter);
+		$parameter = array_map('clean', $parameter);
 	}
 
 	/* if admin parameter */
@@ -115,7 +116,7 @@ function get_route($mode = '')
 			/* clean parameter */
 
 			$parameter = array_map('clean_alias', $parameter);
-			$parameter = array_map('clean_mysql', $parameter);
+			$parameter = array_map('clean', $parameter);
 
 			/* mode one */
 
