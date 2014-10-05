@@ -18,7 +18,22 @@ filter:
   - includes/replace.php
   - includes/search.php
   - includes/startup.php
-
+  - modules/archive
+  - modules/contact
+  - modules/db_backup
+  - modules/debug
+  - modules/fb_group
+  - modules/feed_generator
+  - modules/feed_reader
+  - modules/file_manager
+  - modules/gallery
+  - modules/get_file
+  - modules/github_tracker
+  - modules/lazy_load
+  - modules/recent_view
+  - modules/sitemap
+  - modules/sitemap_xml
+	
 tools:
  external_code_coverage: true
  php_analyzer: true
