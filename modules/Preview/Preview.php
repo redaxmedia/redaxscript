@@ -108,7 +108,7 @@ class Preview extends Module
 	 * @since 2.2.0
 	 *
 	 * @param $alias
-	 * @param $path
+	 * @param string $path
 	 *
 	 * @return string
 	 */

@@ -157,7 +157,7 @@ class Request
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string $value value of the item
 	 */
 
 	public static function setServer($key = null, $value = null)
@@ -171,7 +171,7 @@ class Request
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string $value value of the item
 	 */
 
 	public static function setQuery($key = null, $value = null)
@@ -185,7 +185,7 @@ class Request
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string $value value of the item
 	 */
 
 	public static function setPost($key = null, $value = null)
@@ -213,7 +213,7 @@ class Request
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string $value value of the item
 	 */
 
 	public static function setCookie($key = null, $value = null)
