@@ -1,3 +1,7 @@
+filter:
+ excluded_paths:
+  - includes/admin_*.php
+
 tools:
  external_code_coverage: true
  php_analyzer: true
