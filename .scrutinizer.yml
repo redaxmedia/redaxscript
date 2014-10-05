@@ -18,21 +18,23 @@ filter:
   - includes/replace.php
   - includes/search.php
   - includes/startup.php
-  - modules/archive
-  - modules/contact
-  - modules/db_backup
-  - modules/debug
-  - modules/fb_group
-  - modules/feed_generator
-  - modules/feed_reader
-  - modules/file_manager
-  - modules/gallery
-  - modules/get_file
-  - modules/github_tracker
-  - modules/lazy_load
-  - modules/recent_view
-  - modules/sitemap
-  - modules/sitemap_xml
+  - modules/archive/*.php
+  - modules/contact/*.php
+  - modules/db_backup/*.php
+  - modules/debug/*.php
+  - modules/fb_group/*.php
+  - modules/feed_generator/*.php
+  - modules/feed_reader/*.php
+  - modules/file_manager/*.php
+  - modules/gallery/*.php
+  - modules/get_file/*.php
+  - modules/github_tracker/*.php
+  - modules/lazy_load/*.php
+  - modules/recent_view/*.php
+  - modules/sitemap/*.php
+  - modules/sitemap_xml/*.php
+  - index.php
+  - install.php
 
 tools:
  external_code_coverage: true
