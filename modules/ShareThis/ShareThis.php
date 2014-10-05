@@ -66,7 +66,7 @@ class ShareThis extends Config
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $url
+	 * @param string $url
 	 *
 	 * @return string
 	 */

@@ -64,7 +64,7 @@ class Config extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string $value value of the item
 	 */
 
 	public static function set($key = null, $value = null)
