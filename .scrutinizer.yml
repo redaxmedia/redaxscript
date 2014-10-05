@@ -33,7 +33,7 @@ filter:
   - modules/recent_view
   - modules/sitemap
   - modules/sitemap_xml
-	
+
 tools:
  external_code_coverage: true
  php_analyzer: true
