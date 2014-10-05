@@ -24,10 +24,16 @@ class Language extends Detector
 
 	public function init()
 	{
+		$root = $this->_registry->get('root');
+		$lastTable = $this->_registry->get('lastTable');
+		$lastId = $this->_registry->get('lastId');
+
+		/* detect language */
+
 		$this->_detect(array(
 			'query' => Request::getQuery('l'),
-			'session' => Request::getSession($this->_registry->get('root') . '/language'),
-			'contents' => $this->_registry->get('lastTable') ? Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->language : null,
+			'session' => Request::getSession($root . '/language'),
+			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->language : null,
 			'settings' => Db::getSettings('language'),
 			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'

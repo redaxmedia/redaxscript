@@ -95,7 +95,6 @@ function minify($type = '', $input = '')
 	$output = str_replace(array(
 		' }',
 		'} ',
-		';}'
 	), '}', $output);
 	$output = str_replace(array(
 		' :',

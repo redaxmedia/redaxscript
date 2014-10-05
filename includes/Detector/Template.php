@@ -24,10 +24,16 @@ class Template extends Detector
 
 	public function init()
 	{
+		$root = $this->_registry->get('root');
+		$lastTable = $this->_registry->get('lastTable');
+		$lastId = $this->_registry->get('lastId');
+
+		/* detect template */
+
 		$this->_detect(array(
 			'query' => Request::getQuery('t'),
-			'session' => Request::getSession($this->_registry->get('root') . '/template'),
-			'contents' => $this->_registry->get('lastTable') ? Db::forPrefixTable($this->_registry->get('lastTable'))->where('id', $this->_registry->get('lastId'))->findOne()->template : null,
+			'session' => Request::getSession($root . '/template'),
+			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->template : null,
 			'settings' => Db::getSettings('template'),
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');
