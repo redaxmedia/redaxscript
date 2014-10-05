@@ -115,7 +115,8 @@ function get_route($mode = '')
 
 			/* clean parameter */
 
-			$parameter = array_map('clean_alias', $parameter);
+			$aliasFilter = new Redaxscript\Filter\Alias;
+			$parameter = array_map(array($aliasFilter, 'sanitize'), $parameter);
 			$parameter = array_map('clean', $parameter);
 
 			/* mode one */

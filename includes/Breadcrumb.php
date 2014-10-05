@@ -170,50 +170,55 @@ class Breadcrumb
 	private function _build($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
+		$title = $this->_registry->get('title');
+		$firstParameter = $this->_registry->get('firstParameter');
+		$firstTable = $this->_registry->get('firstTable');
+		$fullRoute = $this->_registry->get('fullRoute');
+		$lastId = $this->_registry->get('lastId');
 
-		/* if title constant */
+		/* if title */
 
-		if ($this->_registry->get('title'))
+		if ($title)
 		{
-			$this->_breadcrumbArray[$key]['title'] = $this->_registry->get('title');
+			$this->_breadcrumbArray[$key]['title'] = $title;
 		}
 
 		/* else if home */
 
-		else if (!$this->_registry->get('fullRoute'))
+		else if (!$fullRoute)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('home');
 		}
 
 		/* else if administration */
 
-		else if ($this->_registry->get('firstParameter') === 'admin')
+		else if ($firstParameter === 'admin')
 		{
 			$this->_buildAdmin($key);
 		}
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\Validator::PASSED)
+		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\Validator::PASSED)
 		{
 			/* join default title */
 
-			if ($this->_registry->get('firstParameter') && $this->_language->get($this->_registry->get('firstParameter')))
+			if ($firstParameter && $this->_language->get($firstParameter))
 			{
-				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('firstParameter'));
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($firstParameter);
 			}
 		}
 
 		/* handle error */
 
-		else if (!$this->_registry->get('lastId'))
+		else if (!$lastId)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('error');
 		}
 
 		/* query title from content */
 
-		else if ($this->_registry->get('firstTable'))
+		else if ($firstTable)
 		{
 			$this->_buildContent($key);
 		}
@@ -229,35 +234,42 @@ class Breadcrumb
 
 	private function _buildAdmin($key = 0)
 	{
+		$adminParameter = $this->_registry->get('adminParameter');
+		$tableParameter = $this->_registry->get('tableParameter');
+		$lastParameter = $this->_registry->get('lastParameter');
+		$fullRoute = $this->_registry->get('fullRoute');
+
+		/* join first title */
+
 		$this->_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
 
 		/* if admin parameter  */
 
-		if ($this->_registry->get('adminParameter'))
+		if ($adminParameter)
 		{
 			$this->_breadcrumbArray[$key]['route'] = 'admin';
 		}
 
 		/* join admin title */
 
-		if ($this->_registry->get('adminParameter') && $this->_language->get($this->_registry->get('adminParameter')))
+		if ($adminParameter && $this->_language->get($adminParameter))
 		{
 			$key++;
-			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('adminParameter'));
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($adminParameter);
 
 			/* set route if not end */
 
-			if ($this->_registry->get('adminParameter') !== $this->_registry->get('lastParameter'))
+			if ($adminParameter !== $lastParameter)
 			{
-				$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('fullRoute');
+				$this->_breadcrumbArray[$key]['route'] = $fullRoute;
 			}
 
 			/* join table title */
 
-			if ($this->_registry->get('tableParameter') && $this->_language->get($this->_registry->get('tableParameter')))
+			if ($tableParameter && $this->_language->get($tableParameter))
 			{
 				$key++;
-				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($this->_registry->get('tableParameter'));
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($tableParameter);
 			}
 		}
 	}
@@ -272,37 +284,45 @@ class Breadcrumb
 
 	private function _buildContent($key = 0)
 	{
+		$firstParameter = $this->_registry->get('firstParameter');
+		$secondParameter = $this->_registry->get('secondParameter');
+		$thirdParameter = $this->_registry->get('thirdParameter');
+		$lastParameter = $this->_registry->get('lastParameter');
+		$firstTable = $this->_registry->get('firstTable');
+		$secondTable = $this->_registry->get('secondTable');
+		$thirdTable = $this->_registry->get('thirdTable');
+
 		/* join first title */
 
-		$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('firstTable'))->where('alias', $this->_registry->get('firstParameter'))->findOne()->title;
+		$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($firstTable)->where('alias', $firstParameter)->findOne()->title;
 
 		/* set route if not end */
 
-		if ($this->_registry->get('firstParameter') !== $this->_registry->get('lastParameter'))
+		if ($firstParameter !== $lastParameter)
 		{
-			$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter');
+			$this->_breadcrumbArray[$key]['route'] = $firstParameter;
 		}
 
 		/* join second title */
 
-		if ($this->_registry->get('secondTable'))
+		if ($secondTable)
 		{
 			$key++;
-			$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('secondTable'))->where('alias', $this->_registry->get('secondParameter'))->findOne()->title;
+			$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($secondTable)->where('alias', $secondParameter)->findOne()->title;
 
 			/* set route if not end */
 
-			if ($this->_registry->get('secondParameter') !== $this->_registry->get('lastParameter'))
+			if ($secondParameter !== $lastParameter)
 			{
-				$this->_breadcrumbArray[$key]['route'] = $this->_registry->get('firstParameter') . '/' . $this->_registry->get('secondParameter');
+				$this->_breadcrumbArray[$key]['route'] = $firstParameter . '/' . $secondParameter;
 			}
 
 			/* join third title */
 
-			if ($this->_registry->get('thirdTable'))
+			if ($thirdTable)
 			{
 				$key++;
-				$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($this->_registry->get('thirdTable'))->where('alias', $this->_registry->get('thirdParameter'))->findOne()->title;
+				$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($thirdTable)->where('alias', $thirdParameter)->findOne()->title;
 			}
 		}
 	}
