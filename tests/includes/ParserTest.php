@@ -58,7 +58,7 @@ class ParserTest extends TestCase
 	}
 
 	/**
-	 * testParseBreak
+	 * testParser
 	 *
 	 * @since 2.1.0
 	 *
@@ -70,7 +70,7 @@ class ParserTest extends TestCase
 	 * @dataProvider providerParser
 	 */
 
-	public function testParseBreak($registry = array(), $text = null, $route = null, $expect = null)
+	public function testParser($registry = array(), $text = null, $route = null, $expect = null)
 	{
 		/* setup */
 

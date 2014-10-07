@@ -85,6 +85,10 @@ class Parser
 		'function' => array(
 			'function' => '_parseFunction',
 			'position' => ''
+		),
+		'module' => array(
+			'function' => '_parseModule',
+			'position' => ''
 		)
 	);
 
@@ -208,7 +212,7 @@ class Parser
 	}
 
 	/**
-	 * parse the code tag pair
+	 * parse the code tag
 	 *
 	 * @since 2.0.0
 	 *
@@ -282,12 +286,67 @@ class Parser
 
 				/* else single call */
 
-				else
+				else if (function_exists($value) && !in_array($value, $this->_forbiddenFunctions))
 				{
-					if (function_exists($value) && !in_array($value, $this->_forbiddenFunctions))
+					echo call_user_func($value);
+				}
+				$parts[$key] = ob_get_clean();
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
+	 * parse the module tag
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $input content be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseModule($input = null)
+	{
+		$namespace = 'Redaxscript\Modules\\';
+		$output = str_replace(array(
+			'<module>',
+			'</module>'
+		), $this->_delimiter, $input);
+		$parts = explode($this->_delimiter, $output);
+
+		/* parse needed parts */
+
+		foreach ($parts as $key => $value)
+		{
+			$object = $namespace . $value . '\\' . $value;
+			if ($key % 2)
+			{
+				/* decode to array */
+
+				$json = json_decode($value, true);
+				ob_start();
+
+				/* multiple calls with parameter */
+
+				if (is_array($json))
+				{
+					foreach ($json as $module => $parameter)
 					{
-						echo call_user_func($value);
+						$object = $namespace . $module . '\\' . $module;
+						if (method_exists($object, 'render'))
+						{
+							echo call_user_func_array(array($object, 'render'), $parameter);
+						}
 					}
+				}
+
+				/* else single call */
+
+				else if (method_exists($object, 'render'))
+				{
+					echo call_user_func(array($object, 'render'));
 				}
 				$parts[$key] = ob_get_clean();
 			}
@@ -296,3 +355,4 @@ class Parser
 		return $output;
 	}
 }
+
