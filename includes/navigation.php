@@ -269,7 +269,7 @@ function languages_list($options = '')
 			$class_string .= ' item_active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
+		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value, '_index'), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
 	}
 
 	/* build id string */
