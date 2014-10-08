@@ -72,6 +72,7 @@ class CallHome extends Module
 
 	public static function adminNotificationStart()
 	{
+		$output = '';
 		$aliasFilter = new Filter\Alias();
 		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(l('version', '_package'));
 		$urlNews = 'http://service.redaxscript.com/news';
