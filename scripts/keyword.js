@@ -21,7 +21,7 @@
 	{
 		var node = $('<div>').append(input),
 			target = node.find(options.element.target).slice(0, options.limit),
-			outputArray = [],
+			keywordArray = [],
 			output = '';
 
 		/* proccess target elements */
@@ -30,14 +30,14 @@
 		{
 			var that = $(this);
 
-			$.merge(outputArray, that.text().toLowerCase().split(' '));
+			$.merge(keywordArray, that.text().toLowerCase().split(' '));
 		});
 
 		/* join array */
 
-		if (outputArray.length)
+		if (keywordArray.length)
 		{
-			output = outputArray.slice(0, options.limit).join(options.delimiter);
+			output = keywordArray.slice(0, options.limit).join(options.delimiter);
 		}
 		return output;
 	};
