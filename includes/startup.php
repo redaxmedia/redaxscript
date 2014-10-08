@@ -26,14 +26,25 @@ function startup()
 		ini_set('url_rewriter.tags', 0);
 	}
 
-	/* session start */
-
-	session_start();
-
 	/* define general */
 
 	define('FILE', get_file());
 	define('ROOT', get_root());
+
+	/* session start */
+
+	session_start();
+
+	/* prevent session hijacking */
+
+	if (!$_SESSION[ROOT . '/regenerate_id'])
+	{
+		session_regenerate_id();
+		$_SESSION[ROOT . '/regenerate_id'] = 1;
+	}
+
+	/* define token */
+
 	define('TOKEN', get_token());
 
 	/* prefix and salt */
