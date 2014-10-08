@@ -78,22 +78,11 @@ r.modules.editor =
 				'unformat'
 			]
 		},
-		xhtml:
-		{
-			backend: true,
-			frontend: true
-		},
 		breakOnEnter:
 		{
 			backend: true,
 			frontend: true
 		},
-		newline:
-		{
-			backend: true,
-			frontend: false
-		},
-		eol: '\n',
 		vibrate: 100
 	},
 	controls:

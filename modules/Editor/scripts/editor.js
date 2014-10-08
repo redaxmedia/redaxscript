@@ -46,26 +46,21 @@
 		if (r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.toolbar = options.toolbar.backend;
-			options.xhtml = options.xhtml.backend;
 			options.breakOnEnter = options.breakOnEnter.backend;
-			options.newline = options.newline.backend;
 		}
 		else
 		{
 			options.toolbar = options.toolbar.frontend;
-			options.xhtml = options.xhtml.frontend;
 			options.breakOnEnter = options.breakOnEnter.frontend;
-			options.newline = options.newline.frontend;
 		}
 
 		/* return this */
 
 		return this.each(function ()
 		{
-			var editor =
-				{
-					textarea: $(this)
-				};
+			var editor = {};
+
+			editor.textarea = $(this);
 
 			/* @section 1.1 create toolbar */
 
@@ -331,37 +326,10 @@
 
 			editor.convertToHTML = function ()
 			{
-				var output = editor.preview.html(),
-					eol = options.eol;
-
-				/* pseudo tags */
+				var output = editor.preview.html();
 
 				output = output.replace(/&lt;(break|code|function)&gt;/gi, '<$1>');
 				output = output.replace(/&lt;\/(code|function)&gt;/gi, '</$1>');
-
-				/* xhtml cleanup */
-
-				if (options.xhtml)
-				{
-					output = output.replace(/ class=""/gi, '');
-					output = output.replace(/ style="(.*?)"/gi, '');
-					output = output.replace(/<b>(.*?)<\/b>/gi, '<strong>$1</strong>');
-					output = output.replace(/<i>(.*?)<\/i>/gi, '<em>$1</em>');
-					output = output.replace(/<(s|strike)>(.*?)<\/(s|strike)>/gi, '<del>$2</del>');
-					output = output.replace(/<br>/gi, '<br />');
-					output = output.replace(/(<img [^>]+[^\/])>/gi, '$1 />');
-				}
-
-				/* add newlines */
-
-				if (options.newline)
-				{
-					output = output.replace(/<br \/>/gi, '<br \/>' + eol);
-					output = output.replace(/<\/h([1-6])>/gi, '<\/h$1>' + eol);
-					output = output.replace(/<\/(div|li|ol|p|span|ul)>/gi, '<\/$1>' + eol);
-					output = output.replace(/<(ol|ul)>/gi, '<$1>' + eol);
-					output = output.replace(window.RegExp(eol + eol, 'g'), eol);
-				}
 				return output;
 			};
 
@@ -371,8 +339,8 @@
 			{
 				var output = editor.textarea.val();
 
-				output = output.replace(/<(break|code|function)>/gi, '&lt;$1&gt;');
-				output = output.replace(/<\/(code|function)>/gi, '&lt;/$1&gt;');
+				output = output.replace(/<(break|code|function|module)>/gi, '&lt;$1&gt;');
+				output = output.replace(/<\/(code|function|module)>/gi, '&lt;/$1&gt;');
 				return output;
 			};
 
@@ -382,7 +350,7 @@
 			{
 				var html = editor.convertToHTML();
 
-				if (html)
+				if (html.length)
 				{
 					editor.textarea.val(html).trigger('change');
 				}
