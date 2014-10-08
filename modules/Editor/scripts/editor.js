@@ -328,8 +328,8 @@
 			{
 				var output = editor.preview.html();
 
-				output = output.replace(/&lt;(break|code|function)&gt;/gi, '<$1>');
-				output = output.replace(/&lt;\/(code|function)&gt;/gi, '</$1>');
+				output = output.replace(/&lt;(break|code|function|module)&gt;/gi, '<$1>');
+				output = output.replace(/&lt;\/(code|function|module)&gt;/gi, '</$1>');
 				return output;
 			};
 
