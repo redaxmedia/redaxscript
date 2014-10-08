@@ -55,6 +55,8 @@ class Db extends ORM
 	 *
 	 * @since 2.2.0
 	 *
+	 * @method ORM _setupDb(string $connection)
+	 *
 	 * @param string $table name of the table
 	 * @param string $connection which connection to use
 	 *
@@ -71,6 +73,8 @@ class Db extends ORM
 	 * get item from settings
 	 *
 	 * @since 2.2.0
+	 *
+	 * @method ORM findOne(integer $id)
 	 *
 	 * @param string $key key of the item
 	 *

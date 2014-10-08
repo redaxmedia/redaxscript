@@ -236,6 +236,7 @@ class Helper
 
 	protected function _getDirectionArray()
 	{
+		$output = array();
 		$output[0] = $this->_directionDefault;
 
 		/* process direction */
