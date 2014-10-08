@@ -15,6 +15,7 @@ use PDO;
  *
  * @method _setupDb(string $connection)
  * @method deleteMany()
+ * @method findMany()
  * @method findOne()
  */
 
