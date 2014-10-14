@@ -184,7 +184,15 @@ function loader($type = '', $mode = '')
 
 	if ($loader_minify)
 	{
-		$output = minify($type, $output);
+		$minifier = new Redaxscript\Minifier();
+		if ($type == 'scripts')
+		{
+			$output = $minifier->scripts($output);
+		}
+		else if ($type == 'styles')
+		{
+			$output = $minifier->styles($output);
+		}
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
@@ -456,7 +464,8 @@ function scripts_transport($minify = '')
 
 	if ($minify)
 	{
-		$output = minify('scripts', $output);
+		$minifier = new Redaxscript\Minifier();
+		$output = $minifier->scripts($output);
 	}
 	return $output;
 }

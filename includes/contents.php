@@ -502,3 +502,62 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }
+
+/**
+ * break up
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
+ *
+ * @param string $input
+ * @return string
+ */
+
+function break_up($input = '')
+{
+	$search = array(
+		chr(13) . chr(10),
+		chr(13),
+		chr(10)
+	);
+	$replace = '<br />';
+	$output = str_replace($search, $replace, $input);
+	return $output;
+}
+
+/**
+ * truncate
+ *
+ * @since 1.2.1
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Replace
+ * @author Henry Ruhs
+ *
+ * @param string $input
+ * @param integer $length
+ * @param string $end
+ * @return string
+ */
+
+function truncate($input = '', $length = '', $end = '')
+{
+	$length -= mb_strlen($end);
+	if (mb_strlen($input) > $length)
+	{
+		$output = trim(mb_substr($input, 0, $length)) . $end;
+	}
+
+	/* else fallback */
+
+	else
+	{
+		$output = $input;
+	}
+	return $output;
+}

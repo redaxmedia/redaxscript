@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules\CallHome;
 
 /**
- * stub to test a module
+ * stub class to test a module
  *
  * @since 2.2.0
  *
