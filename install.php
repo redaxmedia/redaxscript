@@ -11,6 +11,10 @@ include_once('includes/password.php');
 include_once('includes/query.php');
 include_once('includes/startup.php');
 
+/* bootstrap */
+
+include_once('includes/Bootstrap.php');
+
 /* install post */
 
 install_post();
@@ -18,10 +22,6 @@ install_post();
 /* write database config */
 
 write_config();
-
-/* bootstrap */
-
-include_once('includes/Bootstrap.php');
 
 /* define meta */
 
