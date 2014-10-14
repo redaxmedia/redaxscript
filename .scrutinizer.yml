@@ -15,24 +15,11 @@ filter:
   - includes/query.php
   - includes/registration.php
   - includes/reminder.php
-  - includes/replace.php
   - includes/search.php
   - includes/startup.php
-  - modules/archive/*.php
-  - modules/contact/*.php
-  - modules/db_backup/*.php
-  - modules/debug/*.php
-  - modules/fb_group/*.php
-  - modules/feed_generator/*.php
-  - modules/feed_reader/*.php
-  - modules/file_manager/*.php
-  - modules/gallery/*.php
-  - modules/get_file/*.php
-  - modules/github_tracker/*.php
-  - modules/lazy_load/*.php
-  - modules/recent_view/*.php
-  - modules/sitemap/*.php
-  - modules/sitemap_xml/*.php
+  - modules/*/config.php
+  - modules/*/index.php
+  - modules/*/install.php
   - index.php
   - install.php
 
