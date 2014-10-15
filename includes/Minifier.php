@@ -14,11 +14,11 @@ namespace Redaxscript;
 class Minifier
 {
 	/**
-	 * shortcut to minify styles
+	 * shortcut for styles
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $input styles input
+	 * @param $input related styles input
 	 *
 	 * @return string
 	 */
@@ -29,11 +29,11 @@ class Minifier
 	}
 
 	/**
-	 * shortcut to minify scripts
+	 * shortcut for scripts
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $input scripts input
+	 * @param $input related scripts input
 	 *
 	 * @return string
 	 */
@@ -63,8 +63,8 @@ class Minifier
 		/* replace tabs and newlines */
 
 		$output = preg_replace('/\t+/', '', $output);
-		$output = preg_replace('/\r+/', PHP_EOL, $output);
-		$output = preg_replace('/\n+/', PHP_EOL, $output);
+		$output = preg_replace('/\r+/', '', $output);
+		$output = preg_replace('/\n+/', '', $output);
 
 		/* general minify */
 
@@ -97,6 +97,10 @@ class Minifier
 				' (',
 				'( '
 			), '(', $output);
+			$output = str_replace(array(
+				' )',
+				') '
+			), ')', $output);
 			$output = str_replace(array(
 				' +',
 				'+ '

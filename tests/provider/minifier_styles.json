@@ -2,5 +2,13 @@
 	[
 		"/* @section 1. test */",
 		""
+	],
+	[
+		" .foo, .bar { } ; ",
+		".foo,.bar{};"
+	],
+	[
+		"text-align : center ; ",
+		"text-align:center;"
 	]
 ]
