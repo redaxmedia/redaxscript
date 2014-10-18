@@ -1,7 +1,7 @@
 <?php
 
 /**
- * stub function to test the deprecated hook
+ * stub function to test a hook
  *
  * @since 2.2.0
  *
