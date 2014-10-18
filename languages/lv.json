@@ -13,6 +13,21 @@
 		"Deviņi",
 		"Desmit"
 	],
+	"_month":
+	[
+		"Janvāris",
+		"Februāris",
+		"Marts",
+		"Aprīlis",
+		"Maijs",
+		"Jūnijs",
+		"Jūlijs",
+		"Augusts",
+		"Septembris",
+		"Oktobris",
+		"Novembris",
+		"Decembris"
+	],
 	"home": "Uz sākumu",
 	"administration": "Administrācija",
 	"system": "Sistēma",
@@ -51,7 +66,6 @@
 	"day": "Diena",
 	"month": "Mēnesis",
 	"year": "Gads",
-	"month_names": "Janvāris, Februāris, Marts, Aprīlis, Maijs, Jūnijs, Jūlijs, Augusts, Septembris, Oktobris, Novembris, Decembris",
 	"today": "Šodien",
 	"yesterday": "Vakar",
 	"on": "",

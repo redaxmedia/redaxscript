@@ -13,6 +13,21 @@
 		"Nio",
 		"Tio"
 	],
+	"_month":
+	[
+		"Januari",
+		"Februari",
+		"Mars",
+		"April",
+		"Maj",
+		"Juni",
+		"Juli",
+		"Augusti",
+		"September",
+		"Oktober",
+		"November",
+		"December"
+	],
 	"home": "Hem",
 	"administration": "Administration",
 	"system": "System",
@@ -51,7 +66,6 @@
 	"day": "Dag",
 	"month": "Månad",
 	"year": "År",
-	"month_names": "Januari, Februari, Mars, April, Maj, Juni, Juli, Augusti, September, Oktober, November, December",
 	"today": "Idag",
 	"yesterday": "Igår",
 	"on": "",

@@ -13,6 +13,21 @@
 		"Sembilan",
 		"Sepuluh"
 	],
+	"_month":
+	[
+		"Januari",
+		"Pebruari",
+		"Mac",
+		"April",
+		"Mei",
+		"Jun",
+		"Julai",
+		"Ogos",
+		"September",
+		"Oktober",
+		"November",
+		"Disember"
+	],
 	"home": "Utama",
 	"administration": "Pentadbiran",
 	"system": "Sistem",
@@ -51,7 +66,6 @@
 	"day": "Hari",
 	"month": "Bulan",
 	"year": "Tahun",
-	"month_names": "Januari, Pebruari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember",
 	"today": "Hari ini",
 	"yesterday": "Semalam",
 	"on": "pada",

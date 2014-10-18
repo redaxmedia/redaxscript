@@ -25,7 +25,6 @@ function archive()
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		$month_names = explode(', ', l('month_names'));
 		$last = 0;
 		while ($r = mysql_fetch_assoc($result))
 		{
@@ -70,7 +69,7 @@ function archive()
 					{
 						$output .= '</ul></fieldset>';
 					}
-					$output .= form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive_sub">' . $month_names[$month] . ' ' . $year . '</span>') . '<ul class="list_default list_archive">';
+					$output .= form_element('fieldset', '', 'set_archive', '', '', '<span class="title_content_sub title_archive_sub">' . l($month, '_month') . ' ' . $year . '</span>') . '<ul class="list_default list_archive">';
 				}
 				$output .= '<li>' . anchor_element('internal', '', '', $title, $route, $description) . '</li>';
 				$last = $month + $year;

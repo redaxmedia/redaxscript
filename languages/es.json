@@ -13,6 +13,21 @@
 		"Nueve",
 		"Diez"
 	],
+	"_month":
+	[
+		"Enero",
+		"Febrero",
+		"Marzo",
+		"Abril",
+		"Mayo",
+		"Junio",
+		"Julio",
+		"Agosto",
+		"Septiembre",
+		"Octubre",
+		"Noviembre",
+		"Diciembre"
+	],
 	"home": "Inicio",
 	"administration": "Administración",
 	"system": "Sistema",
@@ -51,7 +66,6 @@
 	"day": "Día",
 	"month": "Mes",
 	"year": "Año",
-	"month_names": "Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre",
 	"today": "Hoy",
 	"yesterday": "Ayer",
 	"on": "en",

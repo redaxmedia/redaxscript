@@ -13,6 +13,21 @@
 		"Devet",
 		"Deset"
 	],
+	"_month":
+	[
+		"Januar",
+		"Februar",
+		"Mart",
+		"April",
+		"Maj",
+		"Juni",
+		"Juli",
+		"August",
+		"Septembar",
+		"Oktobar",
+		"Novembar",
+		"Decembar"
+	],
 	"home": "Kuæa",
 	"administration": "Administracija",
 	"system": "Sistem",
@@ -51,7 +66,6 @@
 	"day": "Dan",
 	"month": "Mjesec",
 	"year": "Godina",
-	"month_names": "Januar, Februar, Mart, April, Maj, Juni, Juli, August, Septembar, Oktobar, Novembar, Decembar",
 	"today": "Danas",
 	"yesterday": "Juèer",
 	"on": "na",

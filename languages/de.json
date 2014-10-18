@@ -13,6 +13,21 @@
 		"Neun",
 		"Zehn"
 	],
+	"_month":
+	[
+		"Januar",
+		"Februar",
+		"März",
+		"April",
+		"Mai",
+		"Juni",
+		"Juli",
+		"August",
+		"September",
+		"Oktober",
+		"November",
+		"Dezember"
+	],
 	"home": "Startseite",
 	"administration": "Verwaltung",
 	"system": "System",
@@ -51,7 +66,6 @@
 	"day": "Tag",
 	"month": "Monat",
 	"year": "Jahr",
-	"month_names": "Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember",
 	"today": "Heute",
 	"yesterday": "Gestern",
 	"on": "am",

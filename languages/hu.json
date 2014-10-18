@@ -13,6 +13,21 @@
 		"Kilenc",
 		"Tíz"
 	],
+	"_month":
+	[
+		"Január",
+		"Február",
+		"Március",
+		"Április",
+		"Május",
+		"Június",
+		"Július",
+		"Augusztus",
+		"Szeptember",
+		"Október",
+		"November",
+		"December"
+	],
 	"home": "Főoldal",
 	"administration": "Adminisztráció",
 	"system": "Rendszer",
@@ -51,7 +66,6 @@
 	"day": "Nap",
 	"month": "Hónap",
 	"year": "Év",
-	"month_names": "Január, Február, Március, Április, Május, Június, Július, Augusztus, Szeptember, Október, November, December",
 	"today": "Ma",
 	"yesterday": "Tegnap",
 	"on": "ekkor:",

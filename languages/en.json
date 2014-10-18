@@ -32,13 +32,6 @@
 		"vi": "Tiếng Việt",
 		"zh": "中文"
 	},
-	"_package":
-	{
-		"name": "Redaxscript",
-		"description": "Ultra lightweight CMS",
-		"version": "2.2.0",
-		"homepage": "http://redaxscript.com"
-	},
 	"_number":
 	[
 		"Zero",
@@ -53,6 +46,28 @@
 		"Nine",
 		"Ten"
 	],
+	"_month":
+	[
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	],
+	"_package":
+	{
+	  "name": "Redaxscript",
+	  "description": "Ultra lightweight CMS",
+	  "version": "2.2.0",
+	  "homepage": "http://redaxscript.com"
+	},
 	"home": "Home",
 	"administration": "Administration",
 	"system": "System",
@@ -91,7 +106,6 @@
 	"day": "Day",
 	"month": "Month",
 	"year": "Year",
-	"month_names": "January, February, March, April, May, June, July, August, September, October, November, December",
 	"today": "Today",
 	"yesterday": "Yesterday",
 	"on": "on",

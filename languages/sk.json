@@ -13,6 +13,21 @@
 		"Devät",
 		"Desat"
 	],
+	"_month":
+	[
+		"Január",
+		"Február",
+		"Marec",
+		"Apríl",
+		"Máj",
+		"Jún",
+		"Júl",
+		"August",
+		"September",
+		"Október",
+		"November",
+		"December"
+	],
 	"home": "Domov",
 	"administration": "Administrácia",
 	"system": "Systém",
@@ -51,7 +66,6 @@
 	"day": "Deň",
 	"month": "Mesiac",
 	"year": "Rok",
-	"month_names": "Január, Február, Marec, Apríl, Máj, Jún, Júl, August, September, Október, November, December",
 	"today": "Dnes",
 	"yesterday": "Včera",
 	"on": "na",

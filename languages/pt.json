@@ -13,6 +13,21 @@
 		"Nove",
 		"Dez"
 	],
+	"_month":
+	[
+		"Janeiro",
+		"Fevereiro",
+		"Março",
+		"Abril",
+		"Maio",
+		"Junho",
+		"Julho",
+		"Agosto",
+		"Setembro",
+		"Outubro",
+		"Novembro",
+		"Dezembro"
+	],
 	"home": "Início",
 	"administration": "Administração",
 	"system": "Sistema",
@@ -51,7 +66,6 @@
 	"day": "Dia",
 	"month": "Mês",
 	"year": "Ano",
-	"month_names": "Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro",
 	"today": "Hoje",
 	"yesterday": "Ontem",
 	"on": "em",

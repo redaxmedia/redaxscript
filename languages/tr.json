@@ -13,6 +13,21 @@
 		"Dokuz",
 		"On"
 	],
+	"_month":
+	[
+		"Ocak",
+		"Subat",
+		"Mart",
+		"Nisan",
+		"Mayis",
+		"Haziran",
+		"Temmuz",
+		"Agustos",
+		"Eylül",
+		"Ekim",
+		"Kasim",
+		"Aralik"
+	],
 	"home": "Anasayfa",
 	"administration": "Yönetim",
 	"system": "Sistem",
@@ -51,7 +66,6 @@
 	"day": "Gün",
 	"month": "Ay",
 	"year": "Yil",
-	"month_names": "Ocak, Subat, Mart, Nisan, Mayis, Haziran, Temmuz, Agustos, Eylül, Ekim, Kasim, Aralik",
 	"today": "Bugün",
 	"yesterday": "Dün",
 	"on": "",

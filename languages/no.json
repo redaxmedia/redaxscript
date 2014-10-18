@@ -13,6 +13,21 @@
 		"Ni",
 		"Ti"
 	],
+	"_month":
+	[
+		"Januar",
+		"Februar",
+		"Mars",
+		"April",
+		"Mai",
+		"Juni",
+		"Juli",
+		"August",
+		"September",
+		"Oktober",
+		"November",
+		"Desember"
+	],
 	"home": "Hjem",
 	"administration": "Administrasjon",
 	"system": "System",
@@ -51,7 +66,6 @@
 	"day": "Dag",
 	"month": "Måned",
 	"year": "År",
-	"month_names": "Januar, Februar, Mars, April, Mai, Juni, Juli, August, September, Oktober, November, Desember",
 	"today": "I dag",
 	"yesterday": "I går",
 	"on": "på",

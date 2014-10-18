@@ -13,6 +13,21 @@
 		"Neuf",
 		"Dix"
 	],
+	"_month":
+	[
+		"Janvier",
+		"Février",
+		"Mars",
+		"Avril",
+		"Mai",
+		"Juin",
+		"Juillet",
+		"Août",
+		"Septembre",
+		"Octobre",
+		"Novembre",
+		"Décembre"
+	],
 	"home": "Accueil",
 	"administration": "Administration",
 	"system": "Système",
@@ -51,7 +66,6 @@
 	"day": "Jour",
 	"month": "Mois",
 	"year": "Année",
-	"month_names": "Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Août, Septembre, Octobre, Novembre, Décembre",
 	"today": "Aujourd'hui",
 	"yesterday": "Hier",
 	"on": "sur",

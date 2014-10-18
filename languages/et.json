@@ -13,6 +13,21 @@
 		"Üheksa",
 		"Kümme"
 	],
+	"_month":
+	[
+		"Jaanuar",
+		"Veebruar",
+		"Märts",
+		"Aprill",
+		"Mai",
+		"Juuni",
+		"Juuli",
+		"August",
+		"September",
+		"Oktoober",
+		"November",
+		"Detsember"
+	],
 	"home": "Pealeht",
 	"administration": "Administreerimine",
 	"system": "Süsteem",
@@ -51,7 +66,6 @@
 	"day": "Päev",
 	"month": "Kuu",
 	"year": "Aasta",
-	"month_names": "Jaanuar, Veebruar, Märts, Aprill, Mai, Juuni, Juuli, August, September, Oktoober, November, Detsember",
 	"today": "Täna",
 	"yesterday": "Eile",
 	"on": "",

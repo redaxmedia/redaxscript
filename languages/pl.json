@@ -13,6 +13,21 @@
 		"Dziewięć",
 		"Dziesięć"
 	],
+	"_month":
+	[
+		"Styczeń",
+		"Luty",
+		"Marzec",
+		"Kwiecień",
+		"Maj",
+		"Czerwiec",
+		"Lipiec",
+		"Sierpień",
+		"Wrzesień",
+		"Październik",
+		"Listopad",
+		"Grudzień"
+	],
 	"home": "Strona główna",
 	"administration": "Administracja",
 	"system": "System",
@@ -51,7 +66,6 @@
 	"day": "Dzień",
 	"month": "Miesiąc",
 	"year": "Rok",
-	"month_names": "Styczeń, Luty, Marzec, Kwiecień, Maj, Czerwiec, Lipiec, Sierpień, Wrzesień, Październik, Listopad, Grudzień",
 	"today": "Dziś",
 	"yesterday": "Wczoraj",
 	"on": "dnia",

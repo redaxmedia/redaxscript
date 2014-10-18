@@ -13,6 +13,21 @@
 		"Sembilan",
 		"Sepuluh"
 	],
+	"_month":
+	[
+		"Januari",
+		"Pebruari",
+		"Maret",
+		"April",
+		"Mei",
+		"Juni",
+		"Juli",
+		"Agustus",
+		"September",
+		"Oktober",
+		"Nopember",
+		"Desember"
+	],
 	"home": "Home",
 	"administration": "Administrasi",
 	"system": "Sistem",
@@ -51,7 +66,6 @@
 	"day": "Hari",
 	"month": "Bulan",
 	"year": "Tahun",
-	"month_names": "Januari, Pebruari, Maret, April, Mei, Juni, Juli, Agustus, September, Oktober, Nopember, Desember",
 	"today": "Hari ini",
 	"yesterday": "Kemarin",
 	"on": "pada",

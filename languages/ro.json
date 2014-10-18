@@ -13,6 +13,21 @@
 		"Nouă",
 		"Zece"
 	],
+	"_month":
+	[
+		"Ianuarie",
+		"Februarie",
+		"Martie",
+		"Aprilie",
+		"Mai",
+		"Iunie",
+		"Iulie",
+		"August",
+		"Septembrie",
+		"Octombrie",
+		"Noiembrie",
+		"Decembrie"
+	],
 	"home": "Acasă",
 	"administration": "Administrare",
 	"system": "Sistem",
@@ -51,7 +66,6 @@
 	"day": "Ziua",
 	"month": "Luna",
 	"year": "Anul",
-	"month_names": "Ianuarie, Februarie, Martie, Aprilie, Mai, Iunie, Iulie, August, Septembrie, Octombrie, Noiembrie, Decembrie",
 	"today": "Astăzi",
 	"yesterday": "Ieri",
 	"on": "pe",

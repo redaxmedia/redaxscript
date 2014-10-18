@@ -13,6 +13,21 @@
 		"Negen",
 		"Tien"
 	],
+	"_month":
+	[
+		"Januari",
+		"Februari",
+		"Maart",
+		"April",
+		"Mei",
+		"Juni",
+		"Juli",
+		"Augustus",
+		"September",
+		"Oktober",
+		"November",
+		"December"
+	],
 	"home": "Home",
 	"administration": "Administratie",
 	"system": "Systeem",
@@ -51,7 +66,6 @@
 	"day": "Dag",
 	"month": "Maand",
 	"year": "Jaar",
-	"month_names": "januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december",
 	"today": "Vandaag",
 	"yesterday": "Gisteren",
 	"on": "aan",
@@ -90,7 +104,7 @@
 	"restrict": "Beperk",
 	"install": "Install",
 	"uninstall": "Deïnstalleren",
-	"restore": "herstellen",
+	"restore": "Herstellen",
 	"process": "Verwerk",
 	"update": "Update",
 	"select": "Select",
