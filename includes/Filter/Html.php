@@ -161,7 +161,6 @@ class Html implements Filter
 
 	public function sanitize($html = null, $filter = true)
 	{
-		$output = '';
 		$doc = new DOMDocument();
 		$doc->loadHTML($html);
 		$body = $doc->getElementsByTagName('body');
@@ -191,11 +190,14 @@ class Html implements Filter
 			{
 				foreach ($node->childNodes as $childNode)
 				{
-					foreach ($this->_htmlAttributes as $attribute)
+					if ($childNode->nodeType !== XML_TEXT_NODE)
 					{
-						if($childNode->hasAttribute($attribute))
+						foreach ($this->_htmlAttributes as $attribute)
 						{
-							$childNode->removeAttribute($attribute);
+							if ($childNode->hasAttribute($attribute))
+							{
+								$childNode->removeAttribute($attribute);
+							}
 						}
 					}
 				}
@@ -205,6 +207,26 @@ class Html implements Filter
 
 			libxml_clear_errors();
 		}
+
+		/* cleanup document */
+
+		$output = $this->_cleanup($doc);
+		return $output;
+	}
+
+	/**
+	 * cleanup the document
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param DOMDocument $doc target with document
+	 *
+	 * @return string
+	 */
+
+	protected function _cleanup(DOMDocument $doc)
+	{
+		$output = '';
 
 		/* cleanup document */
 

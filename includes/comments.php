@@ -243,7 +243,7 @@ function comment_post()
 		$text = break_up($_POST['text']);
 		$text = $r['text'] = clean($text, 1);
 		$r['language'] = clean($_POST['language'], 0);
-		$r['date'] = clean($_POST['date'], 1);
+		$r['date'] = clean($_POST['date'], 5);
 		$article = $r['article'] = clean($_POST['article'], 0);
 		$r['rank'] = query_plumb('rank', 'comments', 'max') + 1;
 		$r['access'] = clean($_POST['access'], 0);

@@ -70,7 +70,7 @@ function search_post()
 
 	if (ATTACK_BLOCKED < 10)
 	{
-		$search_terms = clean($_POST['search_terms'], 1);
+		$search_terms = clean($_POST['search_terms'], 5);
 	}
 
 	/* validate post */

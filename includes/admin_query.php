@@ -29,13 +29,13 @@ function admin_process()
 		/* articles */
 
 		case 'articles':
-			$r['keywords'] = clean($_POST['keywords'], 1);
+			$r['keywords'] = clean($_POST['keywords'], 5);
 			$r['template'] = clean($_POST['template'], 0);
 
 		/* extras */
 
 		case 'extras':
-			$title = $r['title'] = clean($_POST['title'], 1);
+			$title = $r['title'] = clean($_POST['title'], 5);
 			if (TABLE_PARAMETER != 'categories')
 			{
 				$r['headline'] = clean($_POST['headline'], 0);
@@ -53,7 +53,7 @@ function admin_process()
 			{
 				$text = $r['text'] = clean($_POST['text'], 1);
 				$date = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'] . ' ' . $_POST['hour'] . ':' . $_POST['minute'] . ':00';
-				$date = $r['date'] = clean($date, 1);
+				$date = $r['date'] = clean($date, 5);
 			}
 			$rank = $r['rank'] = clean($_POST['rank'], 0);
 
@@ -91,7 +91,7 @@ function admin_process()
 			}
 			if (TABLE_PARAMETER != 'extras' && TABLE_PARAMETER != 'comments')
 			{
-				$r['description'] = clean($_POST['description'], 1);
+				$r['description'] = clean($_POST['description'], 5);
 			}
 			$token = $_POST['token'];
 			break;
@@ -779,19 +779,19 @@ function admin_update()
 
 		$r['language'] = clean($_POST['language'], 0);
 		$r['template'] = clean($_POST['template'], 0);
-		$r['title'] = clean($_POST['title'], 1);
-		$r['author'] = clean($_POST['author'], 0);
-		$r['copyright'] = clean($_POST['copyright'], 1);
-		$r['description'] = clean($_POST['description'], 1);
-		$r['keywords'] = clean($_POST['keywords'], 1);
+		$r['title'] = clean($_POST['title'], 5);
+		$r['author'] = clean($_POST['author'], 5);
+		$r['copyright'] = clean($_POST['copyright'], 5);
+		$r['description'] = clean($_POST['description'], 5);
+		$r['keywords'] = clean($_POST['keywords'], 5);
 		$r['robots'] = clean($_POST['robots'], 0);
 		$r['email'] = clean($_POST['email'], 3);
-		$r['subject'] = clean($_POST['subject'], 1);
+		$r['subject'] = clean($_POST['subject'], 5);
 		$r['notification'] = clean($_POST['notification'], 0);
-		$r['charset'] = clean($_POST['charset'], 1) == '' ? 'utf-8' : clean($_POST['charset'], 1);
-		$r['divider'] = clean($_POST['divider'], 1);
-		$r['time'] = clean($_POST['time'], 1);
-		$r['date'] = clean($_POST['date'], 1);
+		$r['charset'] = clean($_POST['charset'], 5) == '' ? 'utf-8' : clean($_POST['charset'], 5);
+		$r['divider'] = clean($_POST['divider'], 5);
+		$r['time'] = clean($_POST['time'], 5);
+		$r['date'] = clean($_POST['date'], 5);
 		$r['homepage'] = clean($_POST['homepage'], 0);
 		$r['limit'] = clean($_POST['limit'], 0) == '' ? 10 : clean($_POST['limit'], 0);
 		$r['order'] = clean($_POST['order'], 0);

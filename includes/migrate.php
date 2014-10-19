@@ -38,24 +38,28 @@ function breadcrumb()
  * @return string
  */
 
-function clean($input = null, $mode = 5)
+function clean($input = null, $mode = null)
 {
 	$output = $input;
 	$registry = Redaxscript\Registry::getInstance();
 
 	/* if untrusted user */
 
-	if ($registry->get('filter') === 1)
+	if ($registry->get('filter') == 1)
 	{
 		if ($mode == 0)
 		{
-			$specialFilter = new Redaxscript\Filter\Special;
+			$specialFilter = new Redaxscript\Filter\Special();
 			$output = $specialFilter->sanitize($output);
 		}
 		if ($mode == 1)
 		{
-			$htmlFilter = new Redaxscript\Filter\Html;
+			$htmlFilter = new Redaxscript\Filter\Html();
 			$output = $htmlFilter->sanitize($output);
+		}
+		if ($mode == 5)
+		{
+			$output = strip_tags($output);
 		}
 	}
 
@@ -63,17 +67,17 @@ function clean($input = null, $mode = 5)
 
 	if ($mode == 2)
 	{
-		$aliasFilter = new Redaxscript\Filter\Alias;
+		$aliasFilter = new Redaxscript\Filter\Alias();
 		$output = $aliasFilter->sanitize($output);
 	}
 	if ($mode == 3)
 	{
-		$emailFilter = new Redaxscript\Filter\Email;
+		$emailFilter = new Redaxscript\Filter\Email();
 		$output = $emailFilter->sanitize($output);
 	}
 	if ($mode == 4)
 	{
-		$urlFilter = new Redaxscript\Filter\Url;
+		$urlFilter = new Redaxscript\Filter\Url();
 		$output = $urlFilter->sanitize($output);
 	}
 
@@ -86,9 +90,9 @@ function clean($input = null, $mode = 5)
 
 	/* mysql real escape */
 
-	if (DB_CONNECTED == 1 && function_exists('mysql_real_escape_string'))
+	if ($registry->get('dbConnected') == 1 && function_exists('mysql_real_escape_string'))
 	{
-		$output = mysql_real_escape_string($input);
+		$output = mysql_real_escape_string($output);
 	}
 
 	/* mysql escape fallback */

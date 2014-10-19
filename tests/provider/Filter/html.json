@@ -1,5 +1,9 @@
 [
 	[
+	  "test",
+	  "<p>test</p>"
+	],
+	[
 		"<div>",
 		"<div></div>"
 	],
@@ -8,8 +12,12 @@
 		"<article><div><p>test</p></div></article>"
 	],
 	[
-		"<XSS>",
-		"<xss></xss>"
+	  "<ul><li>test</li></ul>",
+	  "<ul><li>test</li></ul>"
+	],
+	[
+	  "<p><div>invalid</div></p>",
+	  "<p></p>"
 	],
 	[
 		"<a href=\"_blank\"><span>test</span></a>",
