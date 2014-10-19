@@ -80,7 +80,7 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return Db
 	 */
 
 	public static function getSettings($key = null)

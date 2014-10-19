@@ -18,7 +18,7 @@ class Minifier
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $input related styles input
+	 * @param string $input related styles input
 	 *
 	 * @return string
 	 */
@@ -33,7 +33,7 @@ class Minifier
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $input related scripts input
+	 * @param string $input related scripts input
 	 *
 	 * @return string
 	 */
@@ -48,8 +48,8 @@ class Minifier
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $input styles and scripts input
-	 * @param $type related type of input
+	 * @param string $input styles and scripts input
+	 * @param string $type related type of input
 	 *
 	 * @return string
 	 */

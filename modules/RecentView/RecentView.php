@@ -38,13 +38,14 @@ class RecentView extends Module
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param $limit limit for the list
+	 * @param integer $limit limit for the list
 	 *
 	 * @return string
 	 */
 
 	public static function render($limit = 10)
 	{
+		$output = '';
 		$counter = 0;
 		$log = self::_log();
 		if ($log)

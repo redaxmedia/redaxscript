@@ -80,7 +80,7 @@ class DirectoryTest extends TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $path
+	 * @param string $path
 	 * @param mixed $exclude
 	 * @param array $expect
 	 *
