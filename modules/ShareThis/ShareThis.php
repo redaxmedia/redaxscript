@@ -73,13 +73,11 @@ class ShareThis extends Config
 
 	protected static function _render($url = null)
 	{
-		/* collect output */
-
 		if ($url)
 		{
 			$output = '<ul class="' . self::$_config['className']['list'] . '">';
 
-			/* handle each network */
+			/* process each network */
 
 			foreach (self::$_config['networks'] as $key => $value)
 			{
