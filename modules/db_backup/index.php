@@ -53,7 +53,9 @@ function db_backup_render_start()
 			$subject = l('database_backup', 'db_backup');
 			$bodyArray = array(
 				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
+				'<br />',
 				'<strong>' . l('database') . l('colon') . '</strong> ' . $config::get('name'),
+				'<br />',
 				'<br />',
 				'<strong>' . l('message') . l('colon') . '</strong> ' . l('save_attachment', 'db_backup') . l('point')
 			);

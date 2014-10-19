@@ -320,12 +320,15 @@ function comment_post()
 			$subject = l('comment_new');
 			$bodyArray = array(
 				'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+				'<br />',
 				'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+				'<br />',
 				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
 				'<br />',
-				'<strong>' . l('comment') . l('colon') . '</strong> ' . $text,
+				'<strong>' . l('article') . l('colon') . '</strong> ' . $articleLink,
 				'<br />',
-				'<strong>' . l('article') . l('colon') . '</strong> ' . $articleLink
+				'<br />',
+				'<strong>' . l('comment') . l('colon') . '</strong> ' . $text
 			);
 
 			/* mailer object */

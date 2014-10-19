@@ -207,8 +207,11 @@ function contact_post()
 		$subject = l('contact');
 		$bodyArray = array(
 			'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+			'<br />',
 			'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+			'<br />',
 			'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
+			'<br />',
 			'<br />',
 			'<strong>' . l('message') . l('colon') . '</strong> ' . $text
 		);

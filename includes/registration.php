@@ -165,7 +165,9 @@ function registration_post()
 		$subject = l('registration');
 		$bodyArray = array(
 			'<strong>' . l('name') . l('colon') . '</strong> ' . $name . ' (' . MY_IP . ')',
+			'<br />',
 			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+			'<br />',
 			'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
 			'<br />',
 			'<strong>' . l('login') . l('colon') . '<strong> ' . $loginLink
