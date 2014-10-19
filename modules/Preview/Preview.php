@@ -94,7 +94,8 @@ class Preview extends Module
 			{
 				foreach ($partialsDirectoryArray as $partial)
 				{
-					$output .= self::_render(str_replace('.phtml', '', $partial), $partialsPath . $partial);
+					$alias = str_replace('.phtml', '', $partial);
+					$output .= self::_render($alias, $partialsPath . $partial);
 				}
 			}
 			$output .= '</div>' . PHP_EOL;
@@ -124,7 +125,7 @@ class Preview extends Module
 		}
 		else
 		{
-			$output .= '<a href="preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>' . PHP_EOL;
+			$output .= '<a href="' . Registry::get('rewriteRoute') . 'preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>' . PHP_EOL;
 		}
 		$output .=  '</h2>' . PHP_EOL;
 

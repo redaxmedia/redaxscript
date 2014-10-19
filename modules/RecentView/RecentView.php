@@ -59,7 +59,7 @@ class RecentView extends Module
 				{
 					break;
 				}
-				$output .= '<li><a href="' . Registry::get('fullRoute') . $value . '" title="' . $value . '">' . $value . '</a></li>';
+				$output .= '<li><a href="' . Registry::get('rewriteRoute') . $value . '" title="' . $value . '">' . $value . '</a></li>';
 			}
 			$output .= '</ul>';
 		}
@@ -78,14 +78,16 @@ class RecentView extends Module
 	{
 		$root = Registry::get('root');
 		$fullRoute = Registry::get('fullRoute');
+		$recentView = Request::getSession($root . '/recent_view');
 
 		/* handle recent view */
 
-		if (end(Request::getSession($root . '/recent_view')) !== $fullRoute && $fullRoute)
+		if ($fullRoute && current($recentView) !== $fullRoute)
 		{
-			$_SESSION[$root . '/recent_view'][] = $fullRoute;
+			array_unshift($recentView, $fullRoute);
+			Request::setSession($root . '/recent_view', $recentView);
 		}
-		$output = array_reverse(Request::getSession($root . '/recent_view'));
+		$output = $recentView;
 		return $output;
 	}
 }
