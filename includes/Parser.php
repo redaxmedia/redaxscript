@@ -12,6 +12,7 @@ use Redaxscript\Validator;
  * @category Parser
  * @author Henry Ruhs
  */
+
 class Parser
 {
 	/**

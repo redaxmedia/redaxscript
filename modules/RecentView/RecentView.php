@@ -82,7 +82,7 @@ class RecentView extends Module
 
 		/* handle recent view */
 
-		if ($fullRoute && current($recentView) !== $fullRoute)
+		if ($fullRoute && is_array($recentView) && current($recentView) !== $fullRoute)
 		{
 			array_unshift($recentView, $fullRoute);
 			Request::setSession($root . '/recent_view', $recentView);
