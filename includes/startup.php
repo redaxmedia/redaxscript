@@ -55,6 +55,7 @@ function startup()
 	/* database connect */
 
 	database_connect(Redaxscript\Config::get('host'), Redaxscript\Config::get('name'), Redaxscript\Config::get('user'), Redaxscript\Config::get('password'));
+	Redaxscript\Db::init(Redaxscript\Config::getInstance());
 
 	/* define session */
 
@@ -145,13 +146,12 @@ function startup()
 
 			if (s('order') == 'asc')
 			{
-				$function = 'min';
+				$rank = Redaxscript\Db::forPrefixTable($table)->min('rank');
 			}
 			else if (s('order') == 'desc')
 			{
-				$function = 'max';
+				$rank = Redaxscript\Db::forPrefixTable($table)->max('rank');
 			}
-			$rank = query_plumb('rank', $table, $function);
 
 			/* if category is published */
 

@@ -101,8 +101,8 @@ function navigation_list($table = '', $options = '')
 
 	/* query result */
 
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable($table)->rawQuery($query)->findArray();
+	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l($wording_single . '_no') . l('point');
@@ -110,7 +110,7 @@ function navigation_list($table = '', $options = '')
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 

@@ -196,7 +196,7 @@ function registration_post()
 		/* insert user */
 
 		$query = 'INSERT INTO ' . PREFIX . 'users (' . $key_string . ') VALUES (' . $value_string . ')';
-		mysql_query($query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($query);
 	}
 
 	/* handle error */

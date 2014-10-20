@@ -26,10 +26,10 @@ function contents()
 	else if (CATEGORY)
 	{
 		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
-		$result = mysql_query($query);
+		$result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($query)->findArray();
 		if ($result)
 		{
-			$num_rows = mysql_num_rows($result);
+			$num_rows = count($result);
 			$sub_maximum = ceil($num_rows / s('limit'));
 			$sub_active = LAST_SUB_PARAMETER;
 
@@ -50,8 +50,8 @@ function contents()
 	{
 		$query .= ' LIMIT 0';
 	}
-	$result = mysql_query($query);
-	$num_rows_active = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$num_rows_active = count($result);
 
 	/* handle error */
 
@@ -73,7 +73,7 @@ function contents()
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 
@@ -247,14 +247,14 @@ function extras($filter = '')
 		$query .= ' && status = 1';
 	}
 	$query .= ' ORDER BY rank';
-	$result = mysql_query($query);
+	$result = Redaxscript\Db::forPrefixTable('extras')->rawQuery($query)->findArray();
 
 	/* collect output */
 
 	if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 

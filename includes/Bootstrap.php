@@ -10,22 +10,22 @@ include_once('includes/Autoloader.php');
 Autoloader::init();
 Request::init();
 
-/* deprecated startup */
-
-startup();
-
 /* registry and config */
 
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* migrate constants */
-
-$registry->init(migrate_constants());
-
-/* database and hook */
+/* database */
 
 Db::init($config);
+
+/* startup and migrate constants */
+
+startup();
+$registry->init(migrate_constants());
+
+/* hook */
+
 Hook::init($registry);
 
 /* detector */

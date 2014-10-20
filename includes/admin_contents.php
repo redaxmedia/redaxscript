@@ -318,7 +318,7 @@ function admin_contents_list()
 
 				if (TABLE_EDIT == 1)
 				{
-					$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
+					$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
 						$output .= anchor_element('internal', '', 'move_up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
@@ -478,7 +478,7 @@ function admin_contents_form()
 			$comments = 0;
 		}
 		$status = 1;
-		$rank = query_plumb('rank', TABLE_PARAMETER, 'max') + 1;
+		$rank = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank') + 1;
 		$access = 0;
 		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');

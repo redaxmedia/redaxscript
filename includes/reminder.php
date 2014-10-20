@@ -100,10 +100,10 @@ function reminder_post()
 		/* query users */
 
 		$query = 'SELECT id, user, password FROM ' . PREFIX . 'users WHERE email = \'' . $email . '\' && status = 1';
-		$result = mysql_query($query);
+		$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
 		if ($result)
 		{
-			while ($r = mysql_fetch_assoc($result))
+			foreach ($result as $r)
 			{
 				if ($r)
 				{

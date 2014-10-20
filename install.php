@@ -216,7 +216,7 @@ function install()
 
 	foreach ($r as $key => $value)
 	{
-		mysql_query($value);
+		Redaxscript\Db::forPrefixTable()->rawExecute($query);
 	}
 
 	/* send login information */

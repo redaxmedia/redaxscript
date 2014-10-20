@@ -116,8 +116,8 @@ function login_post()
 			$login_by_email = 1;
 			$users_query .= 'WHERE email = \'' . $post_user . '\' LIMIT 1';
 		}
-		$users_result = mysql_query($users_query);
-		while ($r = mysql_fetch_assoc($users_result))
+		$users_result = Redaxscript\Db::forPrefixTable('users')->rawQuery($users_query)->findArray();
+		foreach ($users_result as $r)
 		{
 			foreach ($r as $key => $value)
 			{
@@ -181,11 +181,11 @@ function login_post()
 		/* query groups */
 
 		$groups_query = 'SELECT categories, articles, extras, comments, groups, users, modules, settings, filter FROM ' . PREFIX . 'groups WHERE id IN (' . $my_groups . ') && status = 1';
-		$groups_result = mysql_query($groups_query);
+		$groups_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($groups_query)->findArray();
 		if ($groups_result)
 		{
-			$num_rows = mysql_num_rows($groups_result);
-			while ($r = mysql_fetch_assoc($groups_result))
+			$num_rows = count($groups_result);
+			foreach ($groups_result as $r)
 			{
 				if ($r)
 				{

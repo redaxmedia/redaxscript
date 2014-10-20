@@ -689,7 +689,7 @@ function admin_delete()
 	$general_delete_query = 'DELETE FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER . ' LIMIT 1';
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 	{
-		$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
+		$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
 		$rank_old = retrieve('rank', TABLE_PARAMETER, 'id', ID_PARAMETER);
 		if ($rank_old > 1 && $rank_old < $rank_desc)
 		{

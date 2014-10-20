@@ -174,36 +174,6 @@ function query_table($input = '')
 }
 
 /**
- * query plumb
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Query
- * @author Henry Ruhs
- *
- * @param string $column
- * @param string $table
- * @param string $function
- * @return string
- */
-
-function query_plumb($column = '', $table = '', $function = '')
-{
-	if ($column && $table && $function)
-	{
-		$query = 'SELECT ' . $function . '(' . $column . ') FROM ' . PREFIX . $table;
-		$result = mysql_query($query);
-		if ($result)
-		{
-			$output = mysql_result($result, 0, 0);
-		}
-	}
-	return $output;
-}
-
-/**
  * query total
  *
  * @since 1.2.1

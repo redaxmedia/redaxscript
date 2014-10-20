@@ -21,10 +21,10 @@ function comments($article = '', $route = '')
 	/* query comments */
 
 	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
-	$result = mysql_query($query);
+	$result = Redaxscript\Db::forPrefixTable('comments')->rawQuery($query)->findArray();
 	if ($result)
 	{
-		$num_rows = mysql_num_rows($result);
+		$num_rows = count($result);
 		$sub_maximum = ceil($num_rows / s('limit'));
 		$sub_active = LAST_SUB_PARAMETER;
 
@@ -40,8 +40,8 @@ function comments($article = '', $route = '')
 		}
 	}
 	$query .= ' LIMIT ' . $offset_string . s('limit');
-	$result = mysql_query($query);
-	$num_rows_active = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable('comments')->rawQuery($query)->findArray();
+	$num_rows_active = count($result);
 
 	/* handle error */
 
@@ -56,7 +56,7 @@ function comments($article = '', $route = '')
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
 		$output .= '<div class="box_line"></div>';
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 
@@ -245,7 +245,7 @@ function comment_post()
 		$r['language'] = clean($_POST['language'], 0);
 		$r['date'] = clean($_POST['date'], 5);
 		$article = $r['article'] = clean($_POST['article'], 0);
-		$r['rank'] = query_plumb('rank', 'comments', 'max') + 1;
+		$r['rank'] = Redaxscript\Db::forPrefixTable('comments')->max('rank') + 1;
 		$r['access'] = clean($_POST['access'], 0);
 		if ($r['access'] == '')
 		{
@@ -355,7 +355,7 @@ function comment_post()
 		/* insert comment */
 
 		$query = 'INSERT INTO ' . PREFIX . 'comments (' . $key_string . ') VALUES (' . $value_string . ')';
-		mysql_query($query);
+		Redaxscript\Db::forPrefixTable('comments')->rawExecute($query);
 	}
 
 	/* handle error */

@@ -19,11 +19,11 @@ function head()
 		/* query contents */
 
 		$query = 'SELECT title, description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
-		$result = mysql_query($query);
+		$result = Redaxscript\Db::forPrefixTable(LAST_TABLE)->rawQuery($query)->findArray();
 		if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
-			while ($r = mysql_fetch_assoc($result))
+			foreach ($result as $r)
 			{
 				$access = $r['access'];
 
