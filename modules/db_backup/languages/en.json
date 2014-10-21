@@ -1,9 +1,0 @@
-{
-	"db_backup":
-	{
-		"download": "Download",
-		"send_email": "Send E-mail",
-		"database_backup": "Database backup",
-		"save_attachment": "Save backup from attachment"
-	}
-}

@@ -1,9 +1,0 @@
-{
-	"db_backup":
-	{
-		"download": "Herunterladen",
-		"send_email": "E-mail senden",
-		"database_backup": "Datenbank Sicherung",
-		"save_attachment": "Sicherung vom Anhang speichern"
-	}
-}
