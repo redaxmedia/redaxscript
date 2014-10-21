@@ -432,7 +432,7 @@ function admin_contents_form()
 
 		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
 		$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
-		$r = count($result);
+		$r = $result[0];
 		if ($r)
 		{
 			foreach ($r as $key => $value)

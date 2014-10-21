@@ -52,15 +52,10 @@ function startup()
 	define('PREFIX', Redaxscript\Config::get('prefix'));
 	define('SALT', Redaxscript\Config::get('salt'));
 
-	/* database connect */
-
-	database_connect(Redaxscript\Config::get('host'), Redaxscript\Config::get('name'), Redaxscript\Config::get('user'), Redaxscript\Config::get('password'));
-	Redaxscript\Db::init(Redaxscript\Config::getInstance());
-
 	/* define session */
 
-	define('DB_CONNECTED', $_SESSION[ROOT . '/db_connected']);
-	define('DB_ERROR', $_SESSION[ROOT . '/db_error']);
+	define('DB_CONNECTED', 1);
+	define('DB_ERROR', '');
 	define('LOGGED_IN', $_SESSION[ROOT . '/logged_in']);
 	define('ATTACK_BLOCKED', $_SESSION[ROOT . '/attack_blocked']);
 

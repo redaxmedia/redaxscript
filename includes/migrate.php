@@ -141,6 +141,34 @@ function l($key = null, $index = null)
 }
 
 /**
+ * settings shortcut
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+
+function s($key = null)
+{
+	$output = Redaxscript\Db::getSettings($key);
+
+	/* charset fallback */
+
+	if (empty($output) && $key == 'charset')
+	{
+		$output = 'utf-8';
+	}
+	return $output;
+}
+
+/**
  * migrate constants
  *
  * @since 2.1.0

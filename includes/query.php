@@ -1,90 +1,6 @@
 <?php
 
 /**
- * database connect
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Query
- * @author Henry Ruhs
- *
- * @param string $host
- * @param string $name
- * @param string $user
- * @param string $password
- */
-
-function database_connect($host = '', $name = '', $user = '', $password = '')
-{
-	$database_connect = mysql_connect($host, $user, $password);
-	$database_select = mysql_select_db($name);
-
-	/* if established database connection */
-
-	if ($database_connect && $database_select)
-	{
-		$query = 'SET NAMES \'utf8\'';
-		mysql_query($query);
-		$_SESSION[ROOT . '/db_connected'] = 1;
-		$_SESSION[ROOT . '/db_error'] = '';
-	}
-
-	/* else handle error */
-
-	else
-	{
-		$_SESSION[ROOT . '/db_connected'] = 0;
-		$_SESSION[ROOT . '/db_error'] = mysql_error();
-		$_SESSION[ROOT . '/logged_in'] = '';
-	}
-}
-
-/**
- * shortcut
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Query
- * @author Henry Ruhs
- *
- * @param string $name
- * @return string
- */
-
-function s($name = '')
-{
-	static $settings;
-
-	/* query settings */
-
-	if ($settings == '')
-	{
-		$query = 'SELECT name, value FROM ' . PREFIX . 'settings';
-		$result = Redaxscript\Db::forPrefixTable('settings')->rawQuery($query)->findArray();
-		if ($result)
-		{
-			foreach ($result as $r)
-			{
-				$settings[$r['name']] = $r['value'];
-			}
-		}
-	}
-	$output = $settings[$name];
-
-	/* charset fallback */
-
-	if (DB_CONNECTED == 0 && $name == 'charset')
-	{
-		$output = 'utf-8';
-	}
-	return $output;
-}
-
-/**
  * query table
  *
  * @since 1.2.1
@@ -181,13 +97,13 @@ function build_route($table = '', $id = '')
 				$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
 				break;
 		}
-		$result = mysql_query($query);
+		$result = Redaxscript\Db::forPrefixTable($table)->rawQuery($query)->findArray();
 
 		/* collect output */
 
 		if ($result)
 		{
-			$output = mysql_fetch_row($result);
+			$output = $result[0];
 		}
 		if (is_array($output))
 		{
