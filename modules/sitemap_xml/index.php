@@ -37,7 +37,7 @@ function sitemap_xml()
 	/* query categories */
 
 	$categories_query = 'SELECT id, alias, parent FROM ' . PREFIX . 'categories WHERE status = 1 && access = 0 ORDER BY rank ASC';
-	$categories_result = mysql_query($categories_query);
+	$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
 
 	/* collect output */
 
@@ -46,7 +46,7 @@ function sitemap_xml()
 	$output .= '<url><loc>' . ROOT . '</loc><lastmod>' . TODAY . '</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>' . PHP_EOL;
 	if ($categories_result)
 	{
-		while ($r = mysql_fetch_assoc($categories_result))
+		foreach ($categories_result as $r)
 		{
 			if ($r)
 			{
@@ -76,13 +76,13 @@ function sitemap_xml()
 	/* query articles */
 
 	$articles_query = 'SELECT id, alias, category FROM ' . PREFIX . 'articles WHERE status = 1 && access = 0 ORDER BY rank ASC';
-	$articles_result = mysql_query($articles_query);
+	$articles_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($articles_query)->findArray();
 
 	/* collect output */
 
 	if ($articles_result)
 	{
-		while ($r = mysql_fetch_assoc($articles_result))
+		foreach ($articles_result as $r)
 		{
 			if ($r)
 			{

@@ -78,7 +78,7 @@ function feed_generator($table = '')
 	/* query table contents */
 
 	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . $language . '\' || language = \'all\') && status = 1 && access = 0 ORDER BY rank ' . s('order') . ' LIMIT ' . s('limit');
-	$result = mysql_query($query);
+	$result = Redaxscript\Db::forPrefixTable($table)->rawQuery($query)->findArray();
 	if ($result)
 	{
 		/* define variables */
@@ -126,7 +126,7 @@ function feed_generator($table = '')
 
 		/* collect feed body output */
 
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			if ($r)
 			{
