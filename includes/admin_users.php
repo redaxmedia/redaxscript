@@ -18,8 +18,8 @@ function admin_users_list()
 	/* query users */
 
 	$query = 'SELECT id, name, user, language, first, last, status, groups FROM ' . PREFIX . 'users ORDER BY last DESC';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
+	$num_rows = count($result);
 
 	/* collect listing output */
 
@@ -33,7 +33,7 @@ function admin_users_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s3o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('user') . '</th><td class="s1o6 column_third">' . l('groups') . '</td><th class="s1o6 column_last">' . l('session') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="s3o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('user') . '</th><th class="s1o6 column_third">' . l('groups') . '</th><th class="s1o6 column_last">' . l('session') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('user') . '</td><td class="column_third">' . l('groups') . '</td><td class="column_last">' . l('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
@@ -42,7 +42,7 @@ function admin_users_list()
 	else if ($result)
 	{
 		$output .= '<tbody>';
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			if ($r)
 			{
@@ -98,7 +98,7 @@ function admin_users_list()
 					$group_alias = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->alias;
 					if ($group_alias)
 					{
-						$group_name = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', $value)->findOne()->name;
+						$group_name = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->name;
 						$output .= anchor_element('internal', '', 'link_parent', $group_name, 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{
@@ -173,8 +173,8 @@ function admin_users_form()
 		/* query user */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'users WHERE id = ' . ID_PARAMETER;
-		$result = mysql_query($query);
-		$r = mysql_fetch_assoc($result);
+		$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
+		$r = $result[0];
 		if ($r)
 		{
 			foreach ($r as $key => $value)
@@ -258,10 +258,10 @@ function admin_users_form()
 		if (GROUPS_EDIT == 1 && USERS_EDIT == 1)
 		{
 			$groups_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-			$groups_result = mysql_query($groups_query);
+			$groups_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($groups_query)->findArray();
 			if ($groups_result)
 			{
-				while ($g = mysql_fetch_assoc($groups_result))
+				foreach ($groups_result as $g)
 				{
 					$groups_array[$g['name']] = $g['id'];
 				}

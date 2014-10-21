@@ -52,8 +52,8 @@ function admin_contents_list()
 	/* query contents */
 
 	$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$num_rows = count($result);
 
 	/* collect listing output */
 
@@ -120,7 +120,7 @@ function admin_contents_list()
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 
@@ -431,8 +431,8 @@ function admin_contents_form()
 		/* query content */
 
 		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
-		$result = mysql_query($query);
-		$r = mysql_fetch_assoc($result);
+		$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+		$r = count($result);
 		if ($r)
 		{
 			foreach ($r as $key => $value)
@@ -584,10 +584,10 @@ function admin_contents_form()
 			$category_array[l('none')] = 0;
 		}
 		$categories_query = 'SELECT id, title, parent FROM ' . PREFIX . 'categories ORDER BY rank ASC';
-		$categories_result = mysql_query($categories_query);
+		$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
 		if ($categories_result)
 		{
-			while ($c = mysql_fetch_assoc($categories_result))
+			foreach ($categories_result as $c)
 			{
 				if (TABLE_PARAMETER != 'categories')
 				{
@@ -623,10 +623,10 @@ function admin_contents_form()
 			$articles_query .= ' WHERE comments > 0';
 		}
 		$articles_query .= ' ORDER BY rank ASC';
-		$articles_result = mysql_query($articles_query);
+		$articles_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($articles_query)->findArray();
 		if ($articles_result)
 		{
-			while ($a = mysql_fetch_assoc($articles_result))
+			foreach ($articles_result as $a)
 			{
 				$article_array[$a['title']] = $a['id'];
 			}
@@ -667,10 +667,10 @@ function admin_contents_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT id, name FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = mysql_query($access_query);
+		$access_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
-			while ($g = mysql_fetch_assoc($access_result))
+			foreach ($access_result as $g)
 			{
 				$access_array[$g['name']] = $g['id'];
 			}

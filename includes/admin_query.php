@@ -393,7 +393,7 @@ function admin_process()
 				}
 			}
 			$general_insert_query = 'INSERT INTO ' . PREFIX . TABLE_PARAMETER . ' (' . $key_string . ') VALUES (' . $value_string . ')';
-			mysql_query($general_insert_query);
+			Redaxscript\Db::forPrefixTable('users')->rawExecute($general_insert_query);
 			notification(l('operation_completed'), '', l('continue'), $route);
 			return null;
 
@@ -419,8 +419,8 @@ function admin_process()
 				$categories_update_query = 'UPDATE ' . PREFIX . 'categories SET status = ' . $status . ', access = \'' . $access . '\' WHERE id IN (' . $categories_string . ')';
 				$articles_update_query = 'UPDATE ' . PREFIX . 'articles SET status = ' . $status . ', access = \'' . $access . '\' WHERE category IN (' . $categories_string . ')';
 				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $status . ', access = \'' . $access . '\' WHERE article IN (' . $categories_children_string . ')';
-				mysql_query($categories_update_query);
-				mysql_query($articles_update_query);
+				Redaxscript\Db::forPrefixTable('users')->rawExecute($categories_update_query);
+				Redaxscript\Db::forPrefixTable('users')->rawExecute($articles_update_query);
 			}
 
 			/* articles */
@@ -436,10 +436,10 @@ function admin_process()
 
 			/* general */
 
-			mysql_query($general_update_query);
+			Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
 			if ($comments_update_query)
 			{
-				mysql_query($comments_update_query);
+				Redaxscript\Db::forPrefixTable('users')->rawExecute($comments_update_query);
 			}
 			if (USERS_EXCEPTION == 1)
 			{
@@ -492,8 +492,8 @@ function admin_move()
 
 	$rank_old_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . $rank_old . ' WHERE id = ' . $id;
 	$rank_new_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . $rank_new . ' WHERE id = ' . ID_PARAMETER;
-	mysql_query($rank_old_update_query);
-	mysql_query($rank_new_update_query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($rank_old_update_query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($rank_new_update_query);
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
@@ -515,13 +515,13 @@ function admin_sort()
 		/* query general select */
 
 		$general_select_query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-		$result = mysql_query($general_select_query);
+		$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($general_select_query)->findArray();
 
 		/* build select array */
 
 		if ($result)
 		{
-			while ($r = mysql_fetch_assoc($result))
+			foreach ($result as $r)
 			{
 				if ($r)
 				{
@@ -571,7 +571,7 @@ function admin_sort()
 		foreach ($update_array as $key => $value)
 		{
 			$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = \'' . ++$key . '\' WHERE id = \'' . $value . '\' LIMIT 1';
-			mysql_query($general_update_query);
+			Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
 		}
 	}
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
@@ -603,8 +603,8 @@ function admin_status($input = '')
 		$categories_update_query = 'UPDATE ' . PREFIX . 'categories SET status = ' . $input . ' WHERE id IN (' . $categories_string . ')';
 		$articles_update_query = 'UPDATE ' . PREFIX . 'articles SET status = ' . $input . ' WHERE category IN (' . $categories_string . ')';
 		$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $input . ' WHERE article IN (' . $categories_children_string . ')';
-		mysql_query($categories_update_query);
-		mysql_query($articles_update_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($categories_update_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($articles_update_query);
 	}
 
 	/* query articles status */
@@ -616,10 +616,10 @@ function admin_status($input = '')
 
 	/* query general status */
 
-	mysql_query($general_update_query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
 	if ($comments_update_query)
 	{
-		mysql_query($comments_update_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($comments_update_query);
 	}
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
@@ -696,7 +696,7 @@ function admin_delete()
 			for ($rank_old; $rank_old - 1 < $rank_desc; $rank_old++)
 			{
 				$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . ($rank_old - 1) . ' WHERE rank = ' . $rank_old;
-				mysql_query($general_update_query);
+				Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
 			}
 		}
 	}
@@ -711,8 +711,8 @@ function admin_delete()
 		$articles_delete_query = 'DELETE FROM ' . PREFIX . 'articles WHERE category IN (' . $categories_string . ')';
 		$extras_update_query = 'UPDATE ' . PREFIX . '.extras SET category = 0 WHERE category IN (' . $categories_string . ')';
 		$comments_delete_query = 'DELETE FROM ' . PREFIX . 'comments WHERE article IN (' . $categories_children_string . ')';
-		mysql_query($categories_delete_query);
-		mysql_query($articles_delete_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($categories_delete_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($articles_delete_query);
 	}
 
 	/* query articles */
@@ -724,20 +724,20 @@ function admin_delete()
 		if (ID_PARAMETER == s('homepage'))
 		{
 			$homepage_update_query = 'UPDATE ' . PREFIX . 'settings SET value = 0 WHERE name = \'homepage\' LIMIT 1';
-			mysql_query($homepage_update_query);
+			Redaxscript\Db::forPrefixTable('users')->rawExecute($homepage_update_query);
 		}
 	}
 
 	/* query general */
 
-	mysql_query($general_delete_query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($general_delete_query);
 	if ($extras_update_query)
 	{
-		mysql_query($extras_update_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($extras_update_query);
 	}
 	if ($comments_delete_query)
 	{
-		mysql_query($comments_delete_query);
+		Redaxscript\Db::forPrefixTable('users')->rawExecute($comments_delete_query);
 	}
 
 	/* handle exception */
@@ -808,7 +808,7 @@ function admin_update()
 		foreach ($r as $key => $value)
 		{
 			$query = 'UPDATE ' . PREFIX . 'settings SET value = \'' . $value . '\' WHERE name = \'' . $key . '\' LIMIT 1';
-			mysql_query($query);
+			Redaxscript\Db::forPrefixTable('users')->rawExecute($query);
 		}
 		notification(l('operation_completed'), '', l('continue'), 'admin/edit/settings');
 	}
@@ -836,12 +836,12 @@ function admin_children($table = '', $id = '', $mode = '')
 	if ($table == 'categories')
 	{
 		$categories_query = 'SELECT id FROM ' . PREFIX . 'categories WHERE parent = ' . $id;
-		$categories_result = mysql_query($categories_query);
-		$categories_num_rows = mysql_fetch_assoc($categories_result);
+		$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
+		$categories_num_rows = count($categories_result);
 		if ($categories_result)
 		{
 			$i = 0;
-			while ($c = mysql_fetch_assoc($categories_result))
+			foreach ($categories_result as $c)
 			{
 				$categories_children_string .= $c['id'];
 				if ($i++ > $categories_num_rows)
@@ -875,11 +875,11 @@ function admin_children($table = '', $id = '', $mode = '')
 		if ($mode == 2)
 		{
 			$articles_query = 'SELECT id FROM ' . PREFIX . 'articles WHERE category IN (' . $categories_string . ')';
-			$articles_result = mysql_query($articles_query);
-			$articles_num_rows = mysql_num_rows($articles_result);
+			$articles_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($articles_query)->findArray();
+			$articles_num_rows = count($articles_result);
 			if ($articles_result)
 			{
-				while ($a = mysql_fetch_assoc($articles_result))
+				foreach ($articles_result as $a)
 				{
 					$categories_children_string .= $a['id'];
 					if ($i++ > $articles_num_rows)
@@ -908,5 +908,5 @@ function admin_children($table = '', $id = '', $mode = '')
 function admin_last_update()
 {
 	$query = 'UPDATE ' . PREFIX . 'users SET last = \'' . NOW . '\' WHERE id = ' . MY_ID;
-	mysql_query($query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($query);
 }

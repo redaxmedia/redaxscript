@@ -64,10 +64,10 @@ function s($name = '')
 	if ($settings == '')
 	{
 		$query = 'SELECT name, value FROM ' . PREFIX . 'settings';
-		$result = mysql_query($query);
+		$result = Redaxscript\Db::forPrefixTable('settings')->rawQuery($query)->findArray();
 		if ($result)
 		{
-			while ($r = mysql_fetch_assoc($result))
+			foreach ($result as $r)
 			{
 				$settings[$r['name']] = $r['value'];
 			}
@@ -265,15 +265,15 @@ function future_update($table = '')
 	if ($table == 'articles')
 	{
 		$general_select_query = 'SELECT id, date FROM ' . PREFIX . 'articles WHERE date < \'' . NOW . '\' && status = 2';
-		$general_result = mysql_query($general_select_query);
+		$general_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($general_select_query)->findArray();
 		if ($general_result)
 		{
-			while ($r = mysql_fetch_assoc($general_result))
+			foreach ($general_result as $r)
 			{
 				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET date = \'' . $r['date'] . '\', status = 1 WHERE article = ' . $r['id'] . ' && status = 2';
-				mysql_query($comments_update_query);
+				Redaxscript\Db::forPrefixTable('users')->rawExecute($comments_update_query);
 			}
 		}
 	}
-	mysql_query($general_update_query);
+	Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
 }
