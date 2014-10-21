@@ -157,10 +157,10 @@ function startup()
 
 			if ($rank)
 			{
-				$status = retrieve('status', $table, 'rank', $rank);
+				$status = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->status;
 				if ($status == 1)
 				{
-					$id = retrieve('id', $table, 'rank', $rank);
+					$id = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->id;
 				}
 			}
 		}
@@ -205,7 +205,7 @@ function startup()
 		}
 		if (LAST_TABLE)
 		{
-			$id = retrieve('id', LAST_TABLE, 'alias', LAST_PARAMETER);
+			$id = Redaxscript\Db::forPrefixTable(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
 		}
 	}
 

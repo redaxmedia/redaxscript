@@ -156,14 +156,14 @@ function query_table($input = '')
 
 	else
 	{
-		$category = retrieve('id', 'categories', 'alias', $input);
+		$category = Redaxscript\Db::forPrefixTable('categories')->where('alias', $input)->findOne()->id;
 		if ($category)
 		{
 			$output = $table[$input] = 'categories';
 		}
 		else
 		{
-			$article = retrieve('id', 'articles', 'alias', $input);
+			$article = Redaxscript\Db::forPrefixTable('articles')->where('alias', $input)->findOne()->id;
 			if ($article)
 			{
 				$output = $table[$input] = 'articles';

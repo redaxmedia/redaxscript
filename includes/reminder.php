@@ -91,7 +91,7 @@ function reminder_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if (retrieve('id', 'users', 'email', $email) == '')
+	else if (Redaxscript\Db::forPrefixTable('users')->where('email', $email)->findOne()->id == '')
 	{
 		$error = l('email_unknown');
 	}

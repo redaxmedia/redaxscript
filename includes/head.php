@@ -144,11 +144,11 @@ function head()
 	{
 		if (SECOND_TABLE == 'categories')
 		{
-			$category = retrieve('id', SECOND_TABLE, 'alias', SECOND_PARAMETER);
+			$category = Redaxscript\Db::forPrefixTable(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
 		}
 		else
 		{
-			$category = retrieve('id', FIRST_TABLE, 'alias', FIRST_PARAMETER);
+			$category = Redaxscript\Db::forPrefixTable(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
 		}
 
 		/* total articles of category */
