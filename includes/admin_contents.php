@@ -20,8 +20,8 @@ function admin_contents_list()
 	$table_new = TABLE_NEW;
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$articles_total = query_total('articles');
-		$articles_comments_disable = query_total('articles', 'comments', 0);
+		$articles_total = Redaxscript\Db::forPrefixTable('articles')->count();
+		$articles_comments_disable = Redaxscript\Db::forPrefixTable('articles')->where('comments', 0)->count();
 		if ($articles_total == $articles_comments_disable)
 		{
 			$table_new = 0;

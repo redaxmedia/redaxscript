@@ -131,40 +131,6 @@ function query_table($input = '')
 }
 
 /**
- * query total
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Query
- * @author Henry Ruhs
- *
- * @param string $table
- * @param string $field
- * @param string $value
- * @return integer
- */
-
-function query_total($table = '', $field = '', $value = '')
-{
-	if ($table)
-	{
-		$query = 'SELECT id FROM ' . PREFIX . $table;
-		if ($field)
-		{
-			$query .= ' WHERE ' . $field . ' = \'' . $value . '\'';
-		}
-		$result = mysql_query($query);
-		if ($result)
-		{
-			$output = mysql_num_rows($result);
-		}
-	}
-	return $output;
-}
-
-/**
  * build route
  *
  * @since 1.2.1

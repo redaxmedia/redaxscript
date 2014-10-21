@@ -153,7 +153,7 @@ function head()
 
 		/* total articles of category */
 
-		$articles_total = query_total('articles', 'category', $category);
+		$articles_total = Redaxscript\Db::forPrefixTable('articles')->where('category', $category)->count();
 		if ($articles_total == 1)
 		{
 			$canonical_route = FIRST_PARAMETER;

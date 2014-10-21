@@ -80,27 +80,6 @@ function clean($input = null, $mode = null)
 		$urlFilter = new Redaxscript\Filter\Url();
 		$output = $urlFilter->sanitize($output);
 	}
-
-	/* mysql clean */
-
-	if (get_magic_quotes_gpc())
-	{
-		$output = stripslashes($output);
-	}
-
-	/* mysql real escape */
-
-	if ($registry->get('dbConnected') == 1 && function_exists('mysql_real_escape_string'))
-	{
-		$output = mysql_real_escape_string($output);
-	}
-
-	/* mysql escape fallback */
-
-	else if (function_exists('mysql_escape_string'))
-	{
-		$output = mysql_escape_string($input);
-	}
 	return $output;
 }
 

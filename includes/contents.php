@@ -337,7 +337,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 	$date = date(s('date'), strtotime($date));
 	if ($table == 'articles')
 	{
-		$comments_total = query_total('comments', 'article', $id);
+		$comments_total = Redaxscript\Db::forPrefixTable('comments')->where('article', $id)->count();
 	}
 
 	/* collect output */
