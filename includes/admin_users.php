@@ -95,10 +95,10 @@ function admin_users_list()
 				$groups_array_last = end($groups_array_keys);
 				foreach ($groups_array as $key => $value)
 				{
-                    $group_alias = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->alias;
+					$group_alias = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->alias;
 					if ($group_alias)
 					{
-                        $group_name = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', $value)->findOne()->name;
+						$group_name = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', $value)->findOne()->name;
 						$output .= anchor_element('internal', '', 'link_parent', $group_name, 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{

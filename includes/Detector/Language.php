@@ -38,5 +38,5 @@ class Language extends Detector
 			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		), 'language', 'languages/{value}.json');
-    }
+	}
 }
