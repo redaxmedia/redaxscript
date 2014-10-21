@@ -185,7 +185,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($parent)
 						{
-							$output .= retrieve('title', 'categories', 'id', $parent);
+                            $output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
 						}
 						else
 						{
@@ -202,7 +202,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($category)
 						{
-							$output .= retrieve('title', 'categories', 'id', $category);
+                            $output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
 						}
 						else
 						{
@@ -219,7 +219,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($article)
 						{
-							$output .= retrieve('title', 'articles', 'id', $article);
+                            $output .= Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
 						}
 						else
 						{
@@ -281,7 +281,8 @@ function admin_contents_list()
 					{
 						if ($parent)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $parent), 'admin/edit/categories/' . $parent);
+                            $parent_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $parent_title, 'admin/edit/categories/' . $parent);
 						}
 						else
 						{
@@ -292,7 +293,8 @@ function admin_contents_list()
 					{
 						if ($category)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $category), 'admin/edit/categories/' . $category);
+                            $category_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $category_title, 'admin/edit/categories/' . $category);
 						}
 						else
 						{
@@ -303,7 +305,8 @@ function admin_contents_list()
 					{
 						if ($article)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'articles', 'id', $article), 'admin/edit/articles/' . $article);
+                            $article_title = Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $article_title, 'admin/edit/articles/' . $article);
 						}
 						else
 						{

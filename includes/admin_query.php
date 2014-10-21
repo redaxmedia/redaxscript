@@ -105,7 +105,7 @@ function admin_process()
 		$comments = $r['comments'] = clean($_POST['comments'], 0);
 		if ($category && ID_PARAMETER == '')
 		{
-			$status = $r['status'] = retrieve('status', 'categories', 'id', $category);
+			$status = $r['status'] = Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->status;
 		}
 	}
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
@@ -129,7 +129,7 @@ function admin_process()
 	}
 	if (TABLE_PARAMETER == 'comments' && ID_PARAMETER == '')
 	{
-		$status = $r['status'] = retrieve('status', 'articles', 'id', $article);
+		$status = $r['status'] = Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->status;
 	}
 	if (TABLE_PARAMETER == 'comments' || TABLE_PARAMETER == 'users')
 	{
@@ -225,8 +225,8 @@ function admin_process()
 			}
 			else
 			{
-				$title_id = retrieve('title', TABLE_PARAMETER, 'id', ID_PARAMETER);
-				$id_title = retrieve('id', TABLE_PARAMETER, 'title', $title);
+				$title_id = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->title;
+				$id_title = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('title', $title)->findOne()->id;
 			}
 			if ($id_title && strcasecmp($title_id, $title) < 0)
 			{
@@ -234,11 +234,11 @@ function admin_process()
 			}
 			if (TABLE_PARAMETER == 'categories')
 			{
-				$opponent_id = retrieve('id', 'articles', 'alias', $alias);
+				$opponent_id = Redaxscript\Db::forPrefixTable('articles')->where('alias', $alias)->findOne()->id;
 			}
 			if (TABLE_PARAMETER == 'articles')
 			{
-				$opponent_id = retrieve('id', 'categories', 'alias', $alias);
+				$opponent_id = Redaxscript\Db::forPrefixTable('categories')->where('alias', $alias)->findOne()->id;
 			}
 			if ($opponent_id)
 			{
@@ -258,8 +258,8 @@ function admin_process()
 			}
 			else
 			{
-				$alias_id = retrieve('alias', TABLE_PARAMETER, 'id', ID_PARAMETER);
-				$id_alias = retrieve('id', TABLE_PARAMETER, 'alias', $alias);
+				$alias_id = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->alias;
+				$id_alias = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('alias', $alias)->findOne()->id;
 			}
 			if ($id_alias && strcasecmp($alias_id, $alias) < 0)
 			{
@@ -299,8 +299,8 @@ function admin_process()
 		}
 		else
 		{
-			$user_id = retrieve('user', TABLE_PARAMETER, 'id', ID_PARAMETER);
-			$id_user = retrieve('id', TABLE_PARAMETER, 'user', $user);
+			$user_id = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->user;
+			$id_user = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('user', $user)->findOne()->id;
 		}
 		if ($id_user && strcasecmp($user_id, $user) < 0)
 		{
@@ -471,9 +471,9 @@ function admin_move()
 {
 	/* retrieve rank */
 
-	$rank_asc = query_plumb('rank', TABLE_PARAMETER, 'min');
-	$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
-	$rank_old = retrieve('rank', TABLE_PARAMETER, 'id', ID_PARAMETER);
+	$rank_asc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->min('rank');
+	$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
+	$rank_old = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->rank;
 
 	/* calculate new rank */
 
@@ -486,7 +486,7 @@ function admin_move()
 	{
 		$rank_new = $rank_old + 1;
 	}
-	$id = retrieve('id', TABLE_PARAMETER, 'rank', $rank_new);
+	$id = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('rank', $rank_new)->findOne()->id;
 
 	/* query rank */
 
@@ -643,7 +643,7 @@ function admin_install()
 
 		if (is_dir('modules/' . ALIAS_PARAMETER))
 		{
-			$module = retrieve('id', 'modules', 'alias', ALIAS_PARAMETER);
+			$module = Redaxscript\Db::forPrefixTable('modules')->where('alias', ALIAS_PARAMETER)->findOne()->id;
 			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
 			{
 				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
@@ -690,7 +690,7 @@ function admin_delete()
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 	{
 		$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
-		$rank_old = retrieve('rank', TABLE_PARAMETER, 'id', ID_PARAMETER);
+		$rank_old = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->rank;
 		if ($rank_old > 1 && $rank_old < $rank_desc)
 		{
 			for ($rank_old; $rank_old - 1 < $rank_desc; $rank_old++)

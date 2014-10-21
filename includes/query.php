@@ -85,49 +85,6 @@ function s($name = '')
 }
 
 /**
- * retrieve
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Query
- * @author Henry Ruhs
- *
- * @param string $column
- * @param string $table
- * @param string $field
- * @param string $value
- * @return string
- */
-
-function retrieve($column = '', $table = '', $field = '', $value = '')
-{
-	static $retrieve;
-
-	/* fetch from cache */
-
-	if ($retrieve[$column . $table . $field . $value])
-	{
-		$output = $retrieve[$column . $table . $field . $value];
-	}
-
-	/* else query */
-
-	else if ($column && $table && $field && $value)
-	{
-		$query = 'SELECT ' . $column . ' FROM ' . PREFIX . $table . ' WHERE ' . $field . ' = \'' . $value . '\'';
-		$result = mysql_query($query);
-		if ($result)
-		{
-			$r = mysql_fetch_assoc($result);
-			$output = $retrieve[$column . $table . $field . $value] = $r[$column];
-		}
-	}
-	return $output;
-}
-
-/**
  * query table
  *
  * @since 1.2.1

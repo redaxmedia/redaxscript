@@ -30,7 +30,7 @@ function admin_routing()
 		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
 		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
 		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
-		case is_numeric(ID_PARAMETER) && retrieve('id', TABLE_PARAMETER, 'id', ID_PARAMETER) == '':
+		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
 			notification(l('something_wrong'), '', l('back'), 'admin');
 			return;
 	}
@@ -63,7 +63,7 @@ function admin_routing()
 	if ($edit == 1 || $delete == 1)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		$access = retrieve('access', TABLE_PARAMETER, 'id', ID_PARAMETER);
+		$access = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->access;
 		$check_access = $accessValidator->validate($access, MY_GROUPS);
 	}
 
