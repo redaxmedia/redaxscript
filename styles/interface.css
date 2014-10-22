@@ -26,7 +26,6 @@
 {
 	cursor: pointer;
 	position: relative;
-	z-index: 500;
 }
 
 .list_dropdown li:hover > ul, .list_dropdown .item_touch > ul
@@ -42,6 +41,7 @@
 	left: 0;
 	position: absolute;
 	top: 100%;
+	z-index: 1;
 }
 
 .list_dropdown ul ul
