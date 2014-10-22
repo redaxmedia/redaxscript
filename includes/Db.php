@@ -85,15 +85,6 @@ class Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		try
-		{
-			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
-		}
-		// @codeCoverageIgnoreStart
-		catch (\PDOException $exception)
-		{
-			return false;
-		}
-		// @codeCoverageIgnoreEnd
+		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
 	}
 }
