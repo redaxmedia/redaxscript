@@ -20,7 +20,7 @@ interface Validator
 	 * @const integer
 	 */
 
-	const PASSED = 1;
+	const PASSED = true;
 
 	/**
 	 * status failed
@@ -28,7 +28,7 @@ interface Validator
 	 * @const integer
 	 */
 
-	const FAILED = 0;
+	const FAILED = false;
 
 	/**
 	 * validate the value

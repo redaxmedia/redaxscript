@@ -1,0 +1,102 @@
+<?php
+namespace Redaxscript\Modules\LazyLoad;
+
+use Redaxscript\Registry;
+
+/**
+ * lazyload and multiserve images
+ *
+ * @since 2.2.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
+
+class LazyLoad extends Config
+{
+	/**
+	 * custom module setup
+	 *
+	 * @var array
+	 */
+
+	protected static $_module = array(
+		'name' => 'Lazy load',
+		'alias' => 'LazyLoad',
+		'author' => 'Redaxmedia',
+		'description' => 'Lazyload and multiserve images',
+		'version' => '2.2.0',
+		'status' => 1,
+		'access' => 0
+	);
+
+	/**
+	 * loaderStart
+	 *
+	 * @since 2.2.0
+	 */
+
+	public static function loaderStart()
+	{
+		global $loader_modules_styles, $loader_modules_scripts;
+		$loader_modules_styles[] = 'modules/LazyLoad/styles/lazy_load.css';
+		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/lazy_load.js';
+	}
+
+	/**
+	 * render
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param mixed $src
+	 * @param array $options
+	 *
+	 * @return string
+	 */
+
+	public static function render($src = null, $options = array())
+	{
+		/* multiserve images */
+
+		if (is_array($src))
+		{
+			/* process source */
+
+			foreach ($src as $key => $value)
+			{
+				if (in_array($key, self::$_config['device']) && Registry::get('my' . ucfirst($key)))
+				{
+					$src = $value;
+				}
+			}
+		}
+
+		/* collect output */
+
+		if (file_exists($src))
+		{
+			$output = '<img src="' . self::$_config['placeholder'] . '" data-src="' . $src . '"' . ' class="' . self::$_config['className']['image'] . $value['className'] . '" alt="' . $options['alt'] . '" />';
+
+			/* placeholder */
+
+			if (self::$_config['placeholder'])
+			{
+				/* calculate image ratio */
+
+				$imageDimensions = getimagesize($src);
+				$imageRatio = $imageDimensions[1] / $imageDimensions[0] * 100;
+
+				/* placeholder */
+
+				$output = '<div class="' . self::$_config['className']['placeholder'] . '" style="padding-bottom:' . $imageRatio . '%">' . $output . '</div>';
+			}
+
+			/* noscript fallback */
+
+			$output .= '<noscript><img src="' . $src . '"' . ' class="' . self::$_config['className'] . $value['className'] . '"' . ' alt="' . $options['alt'] . '"' . ' /></noscript>';
+		}
+		echo $output;
+	}
+}
