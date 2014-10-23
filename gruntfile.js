@@ -442,28 +442,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/dawanda.zip'
 				}
 			},
-			distModulesDBBackup:
-			{
-				src:
-				[
-					'modules/db_backup/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/db_backup.zip'
-				}
-			},
-			distModulesDebug:
-			{
-				src:
-				[
-					'modules/debug/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/debug.zip'
-				}
-			},
 			distModulesDisqus:
 			{
 				src:
