@@ -38,7 +38,7 @@ class RecentView extends Module
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param integer $limit limit for the list
+	 * @param integer $limit
 	 *
 	 * @return string
 	 */

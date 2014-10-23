@@ -67,6 +67,12 @@ class Maps extends Config
 	 * render
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param integer $lat
+	 * @param integer $lng
+	 * @param integer $zoom
+	 *
+	 * return string
 	 */
 
 	public static function render($lat = 0, $lng = 0, $zoom = 0)
