@@ -15,7 +15,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class RecentView extends Module
+class RecentView extends Config
 {
 	/**
 	 * custom module setup
@@ -50,7 +50,13 @@ class RecentView extends Module
 		$log = self::_log();
 		if ($log)
 		{
-			$output = '<ul class="list_recent_view">';
+			/* html elements */
+
+			$linkElement = new Html('a');
+			$listElement = new Html('ul');
+
+			/* process log */
+
 			foreach ($log as $value)
 			{
 				/* break if limit reached */
@@ -59,9 +65,20 @@ class RecentView extends Module
 				{
 					break;
 				}
-				$output .= '<li><a href="' . Registry::get('rewriteRoute') . $value . '" title="' . $value . '">' . $value . '</a></li>';
+				$output .= '<li>';
+				$output .= $linkElement->attr(array(
+					'href' => Registry::get('rewriteRoute') . $value,
+					'title' => $value
+				))->text($value);
+				$output .= '</li>';
 			}
-			$output .= '</ul>';
+
+			/* collect list output */
+
+			if ($output)
+			{
+				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+			}
 		}
 		return $output;
 	}

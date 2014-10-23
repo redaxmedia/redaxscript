@@ -1,10 +1,11 @@
 <?php
 namespace Redaxscript\Modules\LazyLoad;
 
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
- * lazyload and multiserve images
+ * lazy load images
  *
  * @since 2.2.0
  *
@@ -25,7 +26,7 @@ class LazyLoad extends Config
 		'name' => 'Lazy load',
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',
-		'description' => 'Lazyload and multiserve images',
+		'description' => 'Lazy load images',
 		'version' => '2.2.0',
 		'status' => 1,
 		'access' => 0
@@ -58,7 +59,7 @@ class LazyLoad extends Config
 
 	public static function render($src = null, $options = array())
 	{
-		/* multiserve images */
+		/* device related images */
 
 		if (is_array($src))
 		{
@@ -77,7 +78,15 @@ class LazyLoad extends Config
 
 		if (file_exists($src))
 		{
-			$output = '<img src="' . self::$_config['placeholder'] . '" data-src="' . $src . '"' . ' class="' . self::$_config['className']['image'] . $value['className'] . '" alt="' . $options['alt'] . '" />';
+			$imageElement = new Html('img', array(
+				'src' => self::$_config['placeholder'],
+				'class' => self::$_config['className']['image'] . ' ' . $value['className'],
+				'alt' => $options['alt']
+			));
+
+			/* collect output */
+
+			$output = $imageElement->copy()->attr('data-src', $src);
 
 			/* placeholder */
 
@@ -90,12 +99,19 @@ class LazyLoad extends Config
 
 				/* placeholder */
 
-				$output = '<div class="' . self::$_config['className']['placeholder'] . '" style="padding-bottom:' . $imageRatio . '%">' . $output . '</div>';
+				$placeholderElement = new Html('div', array(
+					'class' => self::$_config['className']['placeholder'],
+					'style' => 'padding-bottom:' . $imageRatio . '%'
+				));
+
+				/* collect output */
+
+				$output = $placeholderElement->html($output);
 			}
 
 			/* noscript fallback */
 
-			$output .= '<noscript><img src="' . $src . '"' . ' class="' . self::$_config['className'] . $value['className'] . '"' . ' alt="' . $options['alt'] . '"' . ' /></noscript>';
+			$output .= '<noscript>' . $imageElement . '</noscript>';
 		}
 		echo $output;
 	}
