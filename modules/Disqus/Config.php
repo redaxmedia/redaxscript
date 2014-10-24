@@ -22,7 +22,7 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
-		'element' => '<div id="disqus_thread"></div>',
+		'id' => 'disqus_thread',
 		'url' => '//example.disqus.com/embed.js'
 	);
 }
