@@ -79,9 +79,12 @@ class Element
 
 		/* process attributes */
 
-		foreach($attributeArray as $attribute => $value)
+		if (is_array($attributeArray))
 		{
-			$this->attr($attribute, $value);
+			foreach($attributeArray as $attribute => $value)
+			{
+				$this->attr($attribute, $value);
+			}
 		}
 		return $this;
 	}
@@ -167,7 +170,7 @@ class Element
 
 	public function html($html = null)
 	{
-		$this->_html  = $html;
+		$this->_html = $html;
 		return $this;
 	}
 
@@ -183,7 +186,10 @@ class Element
 
 	public function text($text = null)
 	{
-		$this->_html = strip_tags($text);
+		if (strip_tags($text))
+		{
+			$this->_html = strip_tags($text);
+		}
 		return $this;
 	}
 

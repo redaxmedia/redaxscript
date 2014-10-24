@@ -1,10 +1,10 @@
 [
 	[
 		{
-			"To": "to@redaxscript.com"
+			"to": "to@redaxscript.com"
 		},
 		{
-			"From": "from@redaxscript.com"
+			"from": "from@redaxscript.com"
 		},
 		"test",
 		[
