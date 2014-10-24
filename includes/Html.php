@@ -13,91 +13,217 @@ namespace Redaxscript;
 
 class Html
 {
-	private $tag = null;
+    /**
+     * tag of the element
+     *
+     * @var string
+     */
 
-	private $unaryTagArray = array(
-		'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input',
-		'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'
-	);
+    protected $_tag = null;
 
-	private $attributeArray = array();
+    /**
+     * array of singleton tags
+     *
+     * @var array
+     */
 
-	private $innerHtml;
+    protected $_singletonTags = array(
+        'area',
+        'base',
+        'br',
+        'col',
+        'command',
+        'embed',
+        'hr',
+        'img',
+        'input',
+        'keygen',
+        'link',
+        'meta',
+        'param',
+        'source',
+        'track',
+        'wbr',
+    );
 
-	public function __construct($tag = null, $attributeArray = array()) {
-		$this->tag = strtolower($tag);
+    /**
+     * attributes of the element
+     *
+     * @var array
+     */
 
-		foreach($attributeArray as $attribute => $value) {
+    protected $_attributeArray = array();
+
+    /**
+     * html of the element
+     *
+     * @var string
+     */
+
+    protected $_html;
+
+    /**
+     * constructor of the class
+     *
+     * @since 2.2.0
+     *
+     * @param string $tag tag of the element
+     * @param array $attributeArray attributes of the element
+     *
+     * @return Html
+     */
+
+	public function __construct($tag = null, $attributeArray = array())
+    {
+		$this->_tag = strtolower($tag);
+
+        /* process attributes */
+
+		foreach($attributeArray as $attribute => $value)
+        {
 			$this->attr($attribute, $value);
 		}
-
 		return $this;
 	}
 
-	function attr($attribute = null, $value = null) {
-		if(!is_array($attribute)) {
-			$this->attributeArray[$attribute] = trim($value);
-		}
-		else {
-			$this->attributeArray = array_merge($this->attributeArray, $attribute);
-		}
+    /**
+     * stringify the element
+     *
+     * @since 2.2.0
+     *
+     * @return string
+     */
 
+    public function __toString()
+    {
+        return $this->_render();
+    }
+
+    /**
+     * copy the element
+     *
+     * @since 2.2.0
+     *
+     * @return Html
+     */
+
+    public function copy()
+    {
+        return clone $this;
+    }
+
+    /**
+     * set attributes
+     *
+     * @since 2.2.0
+     *
+     * @param mixed $attribute name or set of attributes
+     * @param array $value value of the attribute
+     *
+     * @return Html
+     */
+
+    public function attr($attribute = null, $value = null)
+    {
+		if(is_array($attribute))
+        {
+            $this->_attributeArray = array_merge($this->_attributeArray, $attribute);
+		}
+		else
+        {
+            $this->_attributeArray[$attribute] = trim($value);
+		}
 		return $this;
 	}
 
-	function removeAttr($attribute) {
-		if(isset($this->attributeArray[$attribute])) {
-			unset($this->attributeArray[$attribute]);
+    /**
+     * remove attributes
+     *
+     * @since 2.2.0
+     *
+     * @param string $attribute name of attributes
+     *
+     * @return Html
+     */
+
+    public function removeAttr($attribute = null)
+    {
+		if(isset($this->_attributeArray[$attribute]))
+        {
+			unset($this->_attributeArray[$attribute]);
 		}
 		return $this;
 	}
 
-	function html($html) {
-		$this->innerHtml = $html;
+    /**
+     * set html
+     *
+     * @since 2.2.0
+     *
+     * @param string $html html of the element
+     *
+     * @return Html
+     */
 
+    public function html($html = null)
+    {
+		$this->_html  = $html;
 		return $this;
 	}
 
-	function text($text) {
-		$this->innerHtml = strip_tags($text);
+    /**
+     * set text
+     *
+     * @since 2.2.0
+     *
+     * @param string $text text of the element
+     *
+     * @return Html
+     */
 
+    public function text($text = null)
+    {
+		$this->_html = strip_tags($text);
 		return $this;
 	}
 
-	function _render() {
-		// Start the tag
+    /**
+     * render the element
+     *
+     * @since 2.2.0
+     *
+     * @return string
+     */
 
-		$output = "<".$this->tag;
+    protected function _render()
+    {
+		$output = '<' . $this->_tag;
 
-		// Add attributes
-		if(is_array($this->attributeArray)) {
-			foreach($this->attributeArray as $key => $value)
-			{
-				if ($value)
-				{
-					$output .= " ". $key . "=\"". $value . "\"";
-				}
-			}
+		/* process attributes */
+
+        foreach($this->_attributeArray as $key => $value)
+        {
+            if ($value)
+            {
+                $output .= ' ' . $key . '="' . $value . '"';
+            }
+        }
+
+		/* singleton tag */
+
+		if(in_array($this->_tag, $this->_singletonTags))
+        {
+            $output .= ' />';
+
 		}
 
-		// Close the element
-		if(!in_array($this->tag, $this->unaryTagArray)) {
-			$output.= ">" . $this->innerHtml . "</" . $this->tag . ">";
-		}
-		else {
-			$output.= " />";
-		}
+        /* else normal tag */
 
+		else
+        {
+            $output .= '>' . $this->_html . '</' . $this->_tag . '>';
+		}
 		return $output;
 	}
 
-	function copy()
-	{
-		return clone $this;
-	}
-
-	function __toString()
-	{
-		return $this->_render();
-	}
 }
