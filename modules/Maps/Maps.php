@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Maps;
 
-use Redaxscript\Html;
+use Redaxscript\Element;
 use Redaxscript\Registry;
 
 /**
@@ -78,7 +78,7 @@ class Maps extends Config
 
 	public static function render($lat = 0, $lng = 0, $zoom = 0)
 	{
-		$mapElement = new Html('div', array(
+		$mapElement = new Element('div', array(
 			'class' => self::$_config['className']
 		));
 

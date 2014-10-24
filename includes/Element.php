@@ -7,11 +7,11 @@ namespace Redaxscript;
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Html
+ * @category Element
  * @author Henry Ruhs
  */
 
-class Html
+class Element
 {
 	/**
 	 * tag of the element
@@ -70,7 +70,7 @@ class Html
 	 * @param string $tag tag of the element
 	 * @param array $attributeArray attributes of the element
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function __construct($tag = null, $attributeArray = array())
@@ -104,7 +104,7 @@ class Html
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function copy()
@@ -120,7 +120,7 @@ class Html
 	 * @param mixed $attribute name or set of attributes
 	 * @param array $value value of the attribute
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function attr($attribute = null, $value = null)
@@ -143,7 +143,7 @@ class Html
 	 *
 	 * @param string $attribute name of attributes
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function removeAttr($attribute = null)
@@ -162,7 +162,7 @@ class Html
 	 *
 	 * @param string $html html of the element
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function html($html = null)
@@ -178,7 +178,7 @@ class Html
 	 *
 	 * @param string $text text of the element
 	 *
-	 * @return Html
+	 * @return Element
 	 */
 
 	public function text($text = null)

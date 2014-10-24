@@ -78,8 +78,8 @@ class ShareThis extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Html('a');
-			$listElement = new Html('ul');
+			$linkElement = new Element('a');
+			$listElement = new Element('ul');
 
 			/* process network */
 
