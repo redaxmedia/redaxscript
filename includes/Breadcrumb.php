@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
@@ -118,9 +117,9 @@ class Breadcrumb
 
 		/* html elements */
 
-		$linkElement = new Html('a');
-		$itemElement = new Html('li');
-		$listElement = new Html('ul');
+		$linkElement = new Element('a');
+		$itemElement = new Element('li');
+		$listElement = new Element('ul');
 
 		/* collect item output */
 

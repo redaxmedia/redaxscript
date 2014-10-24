@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
@@ -195,7 +194,7 @@ class Parser
 	protected function _parseBreak($input = null)
 	{
 		$aliasValidator = new Validator\Alias();
-		$linkElement = new Html('a');
+		$linkElement = new Element('a');
 
 		/* collect output */
 
@@ -235,7 +234,7 @@ class Parser
 			'</code>'
 		), $this->_delimiter, $input);
 		$parts = explode($this->_delimiter, $output);
-		$codeElement = new Html('code');
+		$codeElement = new Element('code');
 
 		/* parse needed parts */
 
