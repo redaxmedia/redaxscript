@@ -92,7 +92,7 @@ class ElementTest extends TestCase
 
 		/* result */
 
-		$result = $element->removeAttr($attribute)->html($html)->text($text);;
+		$result = $element->removeAttr($attribute)->html($html)->text($text);
 
 		/* compare */
 
