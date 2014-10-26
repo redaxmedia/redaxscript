@@ -22,19 +22,20 @@ $config = Config::getInstance();
 
 Db::init($config);
 
-/* get database */
+/* test database */
 
 try
 {
-	Db::getDb()->getAttribute(PDO::ATTR_CONNECTION_STATUS);
-	$registry->set('dbConnect', true);
+	if ($config->get('type') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
+	{
+		$registry->set('dbConnect', true);
+	}
 }
 
 /* catch pdo exception */
 
 catch (PDOException $exception)
 {
-	$registry->set('dbConnect', false);
 	$registry->set('dbException', $exception->getMessage());
 }
 

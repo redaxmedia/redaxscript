@@ -13,7 +13,7 @@ use PDO;
  * @category Db
  * @author Henry Ruhs
  *
- * @method _setupDb(string $connection)
+ * @method _setupDb()
  * @method deleteMany()
  * @method deleteOne()
  * @method findMany()
