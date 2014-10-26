@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+use PDO;
 use PDOException;
 
 /* include as needed */
@@ -25,7 +26,7 @@ Db::init($config);
 
 try
 {
-	Db::getDb();
+	Db::getDb()->getAttribute(PDO::ATTR_CONNECTION_STATUS);
 	$registry->set('dbConnect', true);
 }
 

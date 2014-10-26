@@ -212,7 +212,7 @@ function install()
 
 	foreach ($r as $key => $value)
 	{
-		Redaxscript\Db::rawExecute($value);
+		Redaxscript\Db::forPrefixTable()->rawExecute($value);
 	}
 
 	/* send login information */

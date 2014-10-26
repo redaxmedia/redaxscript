@@ -25,7 +25,7 @@ class Language extends Detector
 	public function init()
 	{
 		$root = $this->_registry->get('root');
-		$dbConnect = false;//$this->_registry->get('dbConnect');
+		$dbConnect = $this->_registry->get('dbConnect');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 
@@ -34,7 +34,7 @@ class Language extends Detector
 		$this->_detect(array(
 			'query' => Request::getQuery('l'),
 			'session' => Request::getSession($root . '/language'),
-			'contents' => $dbConnect ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->language : null,
+			'contents' => $lastTable && $lastId ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->language : null,
 			'settings' => $dbConnect ? Db::getSettings('language') : null,
 			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
