@@ -251,11 +251,6 @@ function install_form()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
 
-	$d_name = $d_user = 'd01c1803';
-	$d_password = 'changeme';
-	$name = 'Changeme';
-	$email = 'info@redaxmedia.com';
-
 	/* collect output */
 
 	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
