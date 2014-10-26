@@ -55,11 +55,7 @@ function contents()
 
 	/* handle error */
 
-	if (DB_CONNECTED == 0)
-	{
-		$error = l('database_failed');
-	}
-	else if (CATEGORY && $num_rows == '')
+	if (CATEGORY && $num_rows == '')
 	{
 		$error = l('article_no');
 	}

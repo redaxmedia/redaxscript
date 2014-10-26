@@ -24,6 +24,7 @@ function startup()
 		}
 		ini_set('session.use_trans_sid', 0);
 		ini_set('url_rewriter.tags', 0);
+		ini_set('mbstring.substitute_character', 0);
 	}
 
 	/* define general */
@@ -54,14 +55,12 @@ function startup()
 
 	/* define session */
 
-	define('DB_CONNECTED', 1);
-	define('DB_ERROR', '');
 	define('LOGGED_IN', $_SESSION[ROOT . '/logged_in']);
 	define('ATTACK_BLOCKED', $_SESSION[ROOT . '/attack_blocked']);
 
 	/* setup charset */
 
-	if (function_exists('ini_set'))
+	if (function_exists('ini_set') && FILE != 'install.php')
 	{
 		ini_set('default_charset', s('charset'));
 	}
@@ -111,96 +110,92 @@ function startup()
 		define('TEMPLATE_ROUTE', '.');
 	}
 
-	/* redirect to install */
-
-	if (DB_CONNECTED == 0 && file_exists('install.php'))
-	{
-		define('REFRESH_ROUTE', ROOT . '/install.php');
-	}
-
 	/* define tables */
 
-	if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
+	if (FILE != 'install.php')
 	{
-		/* check for homepage */
-
-		if (s('homepage') > 0)
+		if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
 		{
-			$table = 'articles';
-			$id = s('homepage');
-		}
+			/* check for homepage */
 
-		/* else fallback */
-
-		else
-		{
-			$table = 'categories';
-			$id = 0;
-
-			/* check order */
-
-			if (s('order') == 'asc')
+			if (s('homepage') > 0)
 			{
-				$rank = Redaxscript\Db::forPrefixTable($table)->min('rank');
-			}
-			else if (s('order') == 'desc')
-			{
-				$rank = Redaxscript\Db::forPrefixTable($table)->max('rank');
+				$table = 'articles';
+				$id = s('homepage');
 			}
 
-			/* if category is published */
+			/* else fallback */
 
-			if ($rank)
+			else
 			{
-				$status = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->status;
-				if ($status == 1)
+				$table = 'categories';
+				$id = 0;
+
+				/* check order */
+
+				if (s('order') == 'asc')
 				{
-					$id = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->id;
+					$rank = Redaxscript\Db::forPrefixTable($table)->min('rank');
+				}
+				else if (s('order') == 'desc')
+				{
+					$rank = Redaxscript\Db::forPrefixTable($table)->max('rank');
+				}
+
+				/* if category is published */
+
+				if ($rank)
+				{
+					$status = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->status;
+					if ($status == 1)
+					{
+						$id = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->id;
+					}
 				}
 			}
-		}
-		define('FIRST_TABLE', $table);
-		define('SECOND_TABLE', '');
-		define('THIRD_TABLE', '');
-		define('LAST_TABLE', $table);
-	}
-	else
-	{
-		if (FIRST_PARAMETER)
-		{
-			define('FIRST_TABLE', query_table(FIRST_PARAMETER));
-		}
-		else
-		{
-			define('FIRST_TABLE', '');
-		}
-		if (FIRST_TABLE)
-		{
-			define('SECOND_TABLE', query_table(SECOND_PARAMETER));
-		}
-		else
-		{
+			define('FIRST_TABLE', $table);
 			define('SECOND_TABLE', '');
-		}
-		if (SECOND_TABLE)
-		{
-			define('THIRD_TABLE', query_table(THIRD_PARAMETER));
-		}
-		else
-		{
 			define('THIRD_TABLE', '');
-		}
-		if (LAST_PARAMETER)
-		{
-			define('LAST_TABLE', query_table(LAST_PARAMETER));
+			define('LAST_TABLE', $table);
 		}
 		else
 		{
-			define('LAST_TABLE', '');
-		}
-		if (LAST_TABLE)
-		{
-			$id = Redaxscript\Db::forPrefixTable(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
+			if (FIRST_PARAMETER)
+			{
+				define('FIRST_TABLE', query_table(FIRST_PARAMETER));
+			}
+			else
+			{
+				define('FIRST_TABLE', '');
+			}
+			if (FIRST_TABLE)
+			{
+				define('SECOND_TABLE', query_table(SECOND_PARAMETER));
+			}
+			else
+			{
+				define('SECOND_TABLE', '');
+			}
+			if (SECOND_TABLE)
+			{
+				define('THIRD_TABLE', query_table(THIRD_PARAMETER));
+			}
+			else
+			{
+				define('THIRD_TABLE', '');
+			}
+			if (LAST_PARAMETER)
+			{
+				define('LAST_TABLE', query_table(LAST_PARAMETER));
+			}
+			else
+			{
+				define('LAST_TABLE', '');
+			}
+			if (LAST_TABLE)
+			{
+				$id = Redaxscript\Db::forPrefixTable(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
+			}
 		}
 	}
 
@@ -324,7 +319,7 @@ function startup()
 	/* future update */
 
 	define('UPDATE', $_SESSION[ROOT . '/update']);
-	if (UPDATE == '')
+	if (UPDATE == '' && FILE != 'install.php')
 	{
 		future_update('articles');
 		future_update('extras');

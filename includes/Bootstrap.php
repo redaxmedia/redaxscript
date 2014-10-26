@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript;
 
+use PDOException;
+
 /* include as needed */
 
 include_once('includes/Autoloader.php');
@@ -19,6 +21,22 @@ $config = Config::getInstance();
 
 Db::init($config);
 
+/* get database */
+
+try
+{
+	Db::getDb();
+	$registry->set('dbConnect', true);
+}
+
+/* catch pdo exception */
+
+catch (PDOException $exception)
+{
+	$registry->set('dbConnect', false);
+	$registry->set('dbException', $exception->getMessage());
+}
+
 /* startup and migrate constants */
 
 startup();
@@ -26,7 +44,10 @@ $registry->init(migrate_constants());
 
 /* hook */
 
-Hook::init($registry);
+if ($registry->get('file') !== 'install.php')
+{
+	Hook::init($registry);
+}
 
 /* detector */
 

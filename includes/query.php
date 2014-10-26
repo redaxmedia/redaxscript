@@ -97,7 +97,7 @@ function build_route($table = '', $id = '')
 				$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
 				break;
 		}
-		$result = Redaxscript\Db::forPrefixTable($table)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forPrefixTable()->rawQuery($query)->findArray();
 
 		/* collect output */
 

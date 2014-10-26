@@ -32,6 +32,13 @@ class Db extends ORM
 
 	public static function init(Config $config)
 	{
+		/* sqlite */
+
+		if ($config::get('type') === 'sqlite')
+		{
+			self::configure('sqlite:' . $config::get('host'));
+		}
+
 		/* mysql */
 
 		if ($config::get('type') === 'mysql')

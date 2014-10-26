@@ -8,7 +8,6 @@ include_once('includes/get.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/password.php');
-include_once('includes/query.php');
 include_once('includes/startup.php');
 
 /* bootstrap */
@@ -53,9 +52,6 @@ else
 function install()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
-	$r['create_database'] = 'CREATE DATABASE IF NOT EXISTS ' . $d_name;
-	$r['grant_privileges'] = 'GRANT ALL PRIVILEGES ON ' . $d_name . '.* TO \'' . $d_user . '\'@\'' . $d_host . '\' IDENTIFIED BY \'' . $d_password . '\'';
-	$r['flush_privileges'] = 'FLUSH PRIVILEGES';
 	$r['create_articles'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'articles (
 		id int(10) NOT NULL AUTO_INCREMENT,
 		title varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -216,7 +212,7 @@ function install()
 
 	foreach ($r as $key => $value)
 	{
-		Redaxscript\Db::forPrefixTable()->rawExecute($query);
+		Redaxscript\Db::rawExecute($value);
 	}
 
 	/* send login information */
@@ -254,6 +250,11 @@ function install()
 function install_form()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+
+	$d_name = $d_user = 'd01c1803';
+	$d_password = 'changeme';
+	$name = 'Changeme';
+	$email = 'info@redaxmedia.com';
 
 	/* collect output */
 
@@ -350,17 +351,18 @@ function install_post()
 function install_notification()
 {
 	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
+	$registry = Redaxscript\Registry::getInstance();
 
 	if (is_writable('Config.php') == '')
 	{
 		$error = l('file_permission_grant') . l('colon') . ' Config.php';
 	}
-	else if (DB_CONNECTED == 0)
+	else if (!$registry->get('dbConnect'))
 	{
 		$error = l('database_failed');
-		if (DB_ERROR)
+		if ($registry->get('dbException'))
 		{
-			$error .= l('colon') . ' ' . DB_ERROR;
+			$error .= l('colon') . ' ' . $registry->get('dbException');
 		}
 	}
 
@@ -433,9 +435,10 @@ function check_install()
 {
 	global $name, $user, $password, $email;
 
+	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
+	if ($_POST['install_post'] && $registry->get('dbConnect') === true && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}
@@ -499,7 +502,7 @@ function head()
 {
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<title>' . TITLE . '</title>' . PHP_EOL;
-	$output .= '<meta http-equiv="content-type" content="text/html; charset=' . s('charset') . '" />' . PHP_EOL;
+	$output .= '<meta http-equiv="content-type" content="text/html; charset=utf-8" />' . PHP_EOL;
 	if (check_install() == 1)
 	{
 		$output .= '<meta http-equiv="refresh" content="2; url=' . ROOT . '" />' . PHP_EOL;

@@ -158,13 +158,6 @@ function l($key = null, $index = null)
 function s($key = null)
 {
 	$output = Redaxscript\Db::getSettings($key);
-
-	/* charset fallback */
-
-	if (empty($output) && $key == 'charset')
-	{
-		$output = 'utf-8';
-	}
 	return $output;
 }
 
@@ -206,5 +199,6 @@ function migrate_constants()
 
 		$output[$key] = $value;
 	}
+	$output = array_merge($output, Redaxscript\Registry::get());
 	return $output;
 }
