@@ -39,19 +39,15 @@ class Db extends ORM
 			self::configure('sqlite:' . $config::get('host'));
 		}
 
-		/* mysql */
+		/* mysql and pgsql */
 
-		if ($config::get('type') === 'mysql')
+		if ($config::get('type') === 'mysql' || $config::get('type') === 'pgsql')
 		{
 			self::configure(array(
-					'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
-					'username' => $config::get('user'),
-					'password' => $config::get('password'),
-					'driver_options' => array(
-						PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-					)
-				)
-			);
+				'connection_string' => $config::get('type') . ':host=' . $config::get('host') . ';dbname=' . $config::get('name') . ';charset=utf8',
+				'username' => $config::get('user'),
+				'password' => $config::get('password')
+			));
 		}
 
 		/* general */
