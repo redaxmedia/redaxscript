@@ -80,6 +80,13 @@ function clean($input = null, $mode = null)
 		$urlFilter = new Redaxscript\Filter\Url();
 		$output = $urlFilter->sanitize($output);
 	}
+
+	/* sql clean */
+
+	if (get_magic_quotes_gpc())
+	{
+		$output = stripslashes($output);
+	}
 	return $output;
 }
 
