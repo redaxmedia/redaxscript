@@ -36,7 +36,7 @@ class Db extends ORM
 
 		if ($config::get('type') === 'sqlite')
 		{
-			self::configure('sqlite:' . $config::get('host'));
+			self::configure('sqlite:' . $config::get('file'));
 		}
 
 		/* mysql and pgsql */
