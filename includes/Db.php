@@ -32,21 +32,28 @@ class Db extends ORM
 
 	public static function init(Config $config)
 	{
+		$type = $config::get('type');
+		$file = $config::get('file');
+		$host = $config::get('host');
+		$name = $config::get('name');
+		$user = $config::get('user');
+		$password = $config::get('password');
+
 		/* sqlite */
 
-		if ($config::get('type') === 'sqlite')
+		if ($type === 'sqlite')
 		{
-			self::configure('sqlite:' . $config::get('file'));
+			self::configure('sqlite:' . $file);
 		}
 
 		/* mysql and pgsql */
 
-		if ($config::get('type') === 'mysql' || $config::get('type') === 'pgsql')
+		if ($type === 'mysql' || $type === 'pgsql')
 		{
 			self::configure(array(
-				'connection_string' => $config::get('type') . ':host=' . $config::get('host') . ';dbname=' . $config::get('name') . ';charset=utf8',
-				'username' => $config::get('user'),
-				'password' => $config::get('password')
+				'connection_string' => $type . ':host=' . $host . ';dbname=' . $name . ';charset=utf8',
+				'username' => $user,
+				'password' => $password
 			));
 		}
 
@@ -83,7 +90,7 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
 	public static function getSettings($key = null)
