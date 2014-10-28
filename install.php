@@ -329,22 +329,25 @@ function install_post()
 
 	/* write config */
 
-	$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
-	$replacement = '// @configStart
-		\'type\' => \'mysql\',
-		\'host\' => \'' . $d_host . '\',
-		\'name\' => \'' . $d_name . '\',
-		\'user\' => \'' . $d_user . '\',
-		\'password\' => \'' . $d_password . '\',
-		\'prefix\' => \'' . $d_prefix . '\',
-		\'salt\' => \'' . $d_salt . '\'
-		// @configEnd';
+	if ($_POST['install_post'])
+	{
+		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
+		$replacement = '// @configStart
+			\'type\' => \'mysql\',
+			\'host\' => \'' . $d_host . '\',
+			\'name\' => \'' . $d_name . '\',
+			\'user\' => \'' . $d_user . '\',
+			\'password\' => \'' . $d_password . '\',
+			\'prefix\' => \'' . $d_prefix . '\',
+			\'salt\' => \'' . $d_salt . '\'
+			// @configEnd';
 
-	/* process contents */
+		/* process contents */
 
-	$content = file_get_contents('Config.php');
-	$content = preg_replace($pattern, $replacement, $content);
-	file_put_contents('Config.php', $content);
+		$content = file_get_contents('Config.php');
+		$content = preg_replace($pattern, $replacement, $content);
+		file_put_contents('Config.php', $content);
+	}
 }
 
 /*

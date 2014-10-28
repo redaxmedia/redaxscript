@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\RecentView;
 
-use Redaxscript\Module;
+use Redaxscript\Element;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
