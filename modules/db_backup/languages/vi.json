@@ -1,9 +1,0 @@
-{
-	"db_backup":
-	{
-		"download": "Tải về",
-		"send_email": "Gửi E-mail",
-		"database_backup": "Sao lưu dữ liệu",
-		"save_attachment": "Lưu bản sao từ tập tin đính kèm"
-	}
-}

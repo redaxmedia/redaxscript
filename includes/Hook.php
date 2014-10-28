@@ -50,16 +50,7 @@ class Hook
 		$accessValidator = new Validator\Access();
 		$modulesDirectory = new Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
-		try
-		{
-			$modulesInstalled = Db::forPrefixTable('modules')->where('status', 1)->findMany();
-		}
-		// @codeCoverageIgnoreStart
-		catch (\PDOException $exception)
-		{
-			$modulesInstalled = array();
-		}
-		// @codeCoverageIgnoreEnd
+		$modulesInstalled = Db::forPrefixTable('modules')->where('status', 1)->findMany();
 
 		/* proccess installed modules */
 

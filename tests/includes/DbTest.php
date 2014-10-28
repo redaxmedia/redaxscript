@@ -36,15 +36,33 @@ class DbTest extends TestCase
 	}
 
 	/**
+	 * providerDb
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return array
+	 */
+
+	public function providerDb()
+	{
+		return $this->getProvider('tests/provider/db.json');
+	}
+
+	/**
 	 * testInit
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param string $type
+	 *
+	 * @dataProvider providerDb
 	 */
 
-	public function testInit()
+	public function testInit($type = null)
 	{
 		/* setup */
 
+		$this->_config->set('type', $type);
 		Db::init($this->_config);
 
 		/* result */

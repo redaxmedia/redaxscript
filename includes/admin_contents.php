@@ -20,8 +20,8 @@ function admin_contents_list()
 	$table_new = TABLE_NEW;
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$articles_total = query_total('articles');
-		$articles_comments_disable = query_total('articles', 'comments', 0);
+		$articles_total = Redaxscript\Db::forPrefixTable('articles')->count();
+		$articles_comments_disable = Redaxscript\Db::forPrefixTable('articles')->where('comments', 0)->count();
 		if ($articles_total == $articles_comments_disable)
 		{
 			$table_new = 0;
@@ -52,8 +52,8 @@ function admin_contents_list()
 	/* query contents */
 
 	$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$num_rows = count($result);
 
 	/* collect listing output */
 
@@ -120,7 +120,7 @@ function admin_contents_list()
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 
@@ -185,7 +185,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($parent)
 						{
-							$output .= retrieve('title', 'categories', 'id', $parent);
+							$output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
 						}
 						else
 						{
@@ -202,7 +202,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($category)
 						{
-							$output .= retrieve('title', 'categories', 'id', $category);
+							$output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
 						}
 						else
 						{
@@ -219,7 +219,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($article)
 						{
-							$output .= retrieve('title', 'articles', 'id', $article);
+							$output .= Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
 						}
 						else
 						{
@@ -281,7 +281,8 @@ function admin_contents_list()
 					{
 						if ($parent)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $parent), 'admin/edit/categories/' . $parent);
+							$parent_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $parent_title, 'admin/edit/categories/' . $parent);
 						}
 						else
 						{
@@ -292,7 +293,8 @@ function admin_contents_list()
 					{
 						if ($category)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'categories', 'id', $category), 'admin/edit/categories/' . $category);
+							$category_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $category_title, 'admin/edit/categories/' . $category);
 						}
 						else
 						{
@@ -303,7 +305,8 @@ function admin_contents_list()
 					{
 						if ($article)
 						{
-							$output .= anchor_element('internal', '', 'link_parent', retrieve('title', 'articles', 'id', $article), 'admin/edit/articles/' . $article);
+							$article_title = Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
+							$output .= anchor_element('internal', '', 'link_parent', $article_title, 'admin/edit/articles/' . $article);
 						}
 						else
 						{
@@ -318,7 +321,7 @@ function admin_contents_list()
 
 				if (TABLE_EDIT == 1)
 				{
-					$rank_desc = query_plumb('rank', TABLE_PARAMETER, 'max');
+					$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
 						$output .= anchor_element('internal', '', 'move_up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
@@ -428,8 +431,8 @@ function admin_contents_form()
 		/* query content */
 
 		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
-		$result = mysql_query($query);
-		$r = mysql_fetch_assoc($result);
+		$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+		$r = $result[0];
 		if ($r)
 		{
 			foreach ($r as $key => $value)
@@ -478,7 +481,7 @@ function admin_contents_form()
 			$comments = 0;
 		}
 		$status = 1;
-		$rank = query_plumb('rank', TABLE_PARAMETER, 'max') + 1;
+		$rank = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank') + 1;
 		$access = 0;
 		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');
@@ -581,10 +584,10 @@ function admin_contents_form()
 			$category_array[l('none')] = 0;
 		}
 		$categories_query = 'SELECT id, title, parent FROM ' . PREFIX . 'categories ORDER BY rank ASC';
-		$categories_result = mysql_query($categories_query);
+		$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
 		if ($categories_result)
 		{
-			while ($c = mysql_fetch_assoc($categories_result))
+			foreach ($categories_result as $c)
 			{
 				if (TABLE_PARAMETER != 'categories')
 				{
@@ -620,10 +623,10 @@ function admin_contents_form()
 			$articles_query .= ' WHERE comments > 0';
 		}
 		$articles_query .= ' ORDER BY rank ASC';
-		$articles_result = mysql_query($articles_query);
+		$articles_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($articles_query)->findArray();
 		if ($articles_result)
 		{
-			while ($a = mysql_fetch_assoc($articles_result))
+			foreach ($articles_result as $a)
 			{
 				$article_array[$a['title']] = $a['id'];
 			}
@@ -664,10 +667,10 @@ function admin_contents_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT id, name FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = mysql_query($access_query);
+		$access_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
-			while ($g = mysql_fetch_assoc($access_result))
+			foreach ($access_result as $g)
 			{
 				$access_array[$g['name']] = $g['id'];
 			}

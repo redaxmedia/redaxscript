@@ -1,0 +1,30 @@
+[
+	[
+		"br",
+		"",
+		"<br />"
+	],
+	[
+		"a",
+		{
+			"href": "test"
+		},
+		"<a href=\"test\"></a>"
+	],
+	[
+		"img",
+		{
+			"src": "test",
+			"class": "image",
+			"alt": "test"
+		},
+		"<img src=\"test\" class=\"image\" alt=\"test\" />"
+	],
+	[
+		"div",
+		{
+			"class": " "
+		},
+		"<div></div>"
+	]
+]

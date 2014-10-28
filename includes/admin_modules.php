@@ -18,8 +18,8 @@ function admin_modules_list()
 	/* query modules */
 
 	$query = 'SELECT id, name, alias, version, status FROM ' . PREFIX . 'modules';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable('modules')->rawQuery($query)->findArray();
+	$num_rows = count($result);
 
 	/* collect listing output */
 
@@ -38,7 +38,7 @@ function admin_modules_list()
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
 		$output .= '<tbody>';
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			$access = $r['access'];
 
@@ -174,8 +174,8 @@ function admin_modules_form()
 		/* query modules */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'modules WHERE id = ' . ID_PARAMETER;
-		$result = mysql_query($query);
-		$r = mysql_fetch_assoc($result);
+		$result = Redaxscript\Db::forPrefixTable('modules')->rawQuery($query)->findArray();
+		$r = $result[0];
 		if ($r)
 		{
 			foreach ($r as $key => $value)
@@ -224,10 +224,10 @@ function admin_modules_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = mysql_query($access_query);
+		$access_result = Redaxscript\Db::forPrefixTable('users')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
-			while ($g = mysql_fetch_assoc($access_result))
+			foreach ($access_result as $g)
 			{
 				$access_array[$g['name']] = $g['id'];
 			}

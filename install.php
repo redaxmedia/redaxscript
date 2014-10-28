@@ -8,20 +8,15 @@ include_once('includes/get.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/password.php');
-include_once('includes/query.php');
 include_once('includes/startup.php');
-
-/* bootstrap */
-
-include_once('includes/Bootstrap.php');
 
 /* install post */
 
 install_post();
 
-/* write database config */
+/* bootstrap */
 
-write_config();
+include_once('includes/Bootstrap.php');
 
 /* define meta */
 
@@ -53,9 +48,6 @@ else
 function install()
 {
 	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
-	$r['create_database'] = 'CREATE DATABASE IF NOT EXISTS ' . $d_name;
-	$r['grant_privileges'] = 'GRANT ALL PRIVILEGES ON ' . $d_name . '.* TO \'' . $d_user . '\'@\'' . $d_host . '\' IDENTIFIED BY \'' . $d_password . '\'';
-	$r['flush_privileges'] = 'FLUSH PRIVILEGES';
 	$r['create_articles'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'articles (
 		id int(10) NOT NULL AUTO_INCREMENT,
 		title varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -208,7 +200,7 @@ function install()
 	$r['insert_settings'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'settings (id, name, value) VALUES (1, \'language\', \'detect\'), (2, \'template\', \'default\'), (3, \'title\', \'Redaxscript\'), (4, \'author\', \'\'), (5, \'copyright\', \'\'), (6, \'description\', \'Ultra lightweight CMS\'), (7, \'keywords\', \'\'), (8, \'robots\', \'all\'), (9, \'email\', \'' . $email . '\'), (10, \'subject\', \'Redaxscript\'), (11, \'notification\', \'0\'), (12, \'charset\', \'utf-8\'), (13, \'divider\', \' • \'), (14, \'time\', \'H:i\'), (15, \'date\', \'d.m.Y\'), (16, \'homepage\', \'0\'), (17, \'limit\', \'10\'), (18, \'order\', \'asc\'), (19, \'pagination\', \'1\'), (20, \'moderation\', \'0\'), (21, \'registration\', \'1\'), (22, \'verification\', \'0\'), (23, \'reminder\', \'1\'), (24, \'captcha\', \'0\'), (25, \'blocker\', \'1\'), (26, \'version\', \'' . l('redaxscript_version') . '\')';
 	if (is_dir('modules/CallHome'))
 	{
-		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'CallHome\', \'Redaxmedia\', \'Provide version and news updates\', \'' . l('redaxscript_version') . '\', 1, 0)';
+		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'CallHome\', \'Redaxmedia\', \'Provide version and news updates\', \'' . l('version', '_package') . '\', 1, 0)';
 	}
 	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . $d_salt . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
 
@@ -216,7 +208,7 @@ function install()
 
 	foreach ($r as $key => $value)
 	{
-		mysql_query($value);
+		Redaxscript\Db::rawExecute($value);
 	}
 
 	/* send login information */
@@ -309,16 +301,16 @@ function install_post()
 
 	/* clean post */
 
-	$d_host = clean($_POST['d_host'], 5);
-	$d_name = clean($_POST['d_name'], 5);
-	$d_user = clean($_POST['d_user'], 5);
-	$d_password = clean($_POST['d_password'], 5);
-	$d_prefix = clean($_POST['d_prefix'], 5);
-	$d_salt = clean($_POST['d_salt'], 5);
-	$name = clean($_POST['name'], 0);
-	$user = clean($_POST['user'], 0);
-	$password = clean($_POST['password'], 0);
-	$email = clean($_POST['email'], 3);
+	$d_host = stripslashes($_POST['d_host']);
+	$d_name = stripslashes($_POST['d_name']);
+	$d_user = stripslashes($_POST['d_user']);
+	$d_password = stripslashes($_POST['d_password']);
+	$d_prefix = stripslashes($_POST['d_prefix']);
+	$d_salt = stripslashes($_POST['d_salt']);
+	$name = stripslashes($_POST['name']);
+	$user = stripslashes($_POST['user']);
+	$password = stripslashes($_POST['password']);
+	$email = stripslashes($_POST['email']);
 
 	/* validate post */
 
@@ -332,7 +324,29 @@ function install_post()
 	}
 	if ($password == '')
 	{
-		$password = hash_generator(10);
+		$password = substr(sha1(uniqid()), 0, 10);
+	}
+
+	/* write config */
+
+	if ($_POST['install_post'])
+	{
+		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
+		$replacement = '// @configStart
+			\'type\' => \'mysql\',
+			\'host\' => \'' . $d_host . '\',
+			\'name\' => \'' . $d_name . '\',
+			\'user\' => \'' . $d_user . '\',
+			\'password\' => \'' . $d_password . '\',
+			\'prefix\' => \'' . $d_prefix . '\',
+			\'salt\' => \'' . $d_salt . '\'
+			// @configEnd';
+
+		/* process contents */
+
+		$content = file_get_contents('Config.php');
+		$content = preg_replace($pattern, $replacement, $content);
+		file_put_contents('Config.php', $content);
 	}
 }
 
@@ -350,17 +364,18 @@ function install_post()
 function install_notification()
 {
 	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
+	$registry = Redaxscript\Registry::getInstance();
 
 	if (is_writable('Config.php') == '')
 	{
 		$error = l('file_permission_grant') . l('colon') . ' Config.php';
 	}
-	else if (DB_CONNECTED == 0)
+	else if (!$registry->get('dbStatus'))
 	{
 		$error = l('database_failed');
-		if (DB_ERROR)
+		if ($registry->get('dbException'))
 		{
-			$error .= l('colon') . ' ' . DB_ERROR;
+			$error .= l('colon') . ' ' . $registry->get('dbException');
 		}
 	}
 
@@ -433,9 +448,10 @@ function check_install()
 {
 	global $name, $user, $password, $email;
 
+	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && DB_CONNECTED == 1 && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
+	if ($_POST['install_post'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}
@@ -444,44 +460,6 @@ function check_install()
 		$output = 0;
 	}
 	return $output;
-}
-
-/**
- * write config
- *
- * @since 2.0.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Install
- * @author Henry Ruhs
- */
-
-function write_config()
-{
-	if ($_POST['install_post'])
-	{
-		global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
-
-		/* pattern and replacement */
-
-		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
-		$replacement = '// @configStart
-		\'type\' => \'mysql\',
-		\'host\' => \'' . $d_host . '\',
-		\'name\' => \'' . $d_name . '\',
-		\'user\' => \'' . $d_user . '\',
-		\'password\' => \'' . $d_password . '\',
-		\'prefix\' => \'' . $d_prefix . '\',
-		\'salt\' => \'' . $d_salt . '\'
-		// @configEnd';
-
-		/* process contents */
-
-		$content = file_get_contents('Config.php');
-		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('Config.php', $content);
-	}
 }
 
 /**
@@ -499,12 +477,12 @@ function head()
 {
 	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
 	$output .= '<title>' . TITLE . '</title>' . PHP_EOL;
-	$output .= '<meta http-equiv="content-type" content="text/html; charset=' . s('charset') . '" />' . PHP_EOL;
+	$output .= '<meta http-equiv="content-type" content="text/html; charset=utf-8" />' . PHP_EOL;
 	if (check_install() == 1)
 	{
 		$output .= '<meta http-equiv="refresh" content="2; url=' . ROOT . '" />' . PHP_EOL;
 	}
-	$output .= '<meta name="generator" content="' . l('redaxscript') . ' ' . l('redaxscript_version') . '" />' . PHP_EOL;
+	$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
 	$output .= '<meta name="robots" content="' . ROBOTS . '" />' . PHP_EOL;
 	echo $output;
 }

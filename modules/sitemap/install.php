@@ -14,7 +14,7 @@
 function sitemap_install()
 {
 	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Sitemap\', \'sitemap\', \'Redaxmedia\', \'Generate a sitemap tree\', \'2.2.0\', 1, 0)';
-	mysql_query($query);
+	Redaxscript\Db::forPrefixTable('categories')->rawExecute($query);
 }
 
 /**
@@ -31,6 +31,6 @@ function sitemap_install()
 function sitemap_uninstall()
 {
 	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'sitemap\' LIMIT 1';
-	mysql_query($query);
+	Redaxscript\Db::forPrefixTable('categories')->rawExecute($query);
 }
 

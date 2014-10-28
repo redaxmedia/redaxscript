@@ -76,20 +76,6 @@ class Language extends Singleton
 		else if (array_key_exists($key, $values))
 		{
 			$output = $values[$key];
-
-			/* convert encoding */
-
-			if (function_exists('mb_convert_encoding'))
-			{
-				$charset = Db::getSettings('charset');
-
-				/* process if charset */
-
-				if (isset($charset))
-				{
-					$output = mb_convert_encoding($values[$key], $charset, 'utf-8, latin1');
-				}
-			}
 		}
 		return $output;
 	}

@@ -108,10 +108,10 @@ function admin_settings_form()
 	$output .= '<ul class="js_box_accordion box_accordion box_accordion_admin">';
 	$homepage_array[l('none')] = 0;
 	$homepage_query = 'SELECT id, title FROM ' . PREFIX . 'articles ORDER BY rank ASC';
-	$homepage_result = mysql_query($homepage_query);
+	$homepage_result = Redaxscript\Db::forPrefixTable('users')->rawQuery($homepage_query)->findArray();
 	if ($homepage_result)
 	{
-		while ($r = mysql_fetch_assoc($homepage_result))
+		foreach ($homepage_result as $r)
 		{
 			$homepage_array[$r['title']] = $r['id'];
 		}

@@ -80,27 +80,7 @@ function clean($input = null, $mode = null)
 		$urlFilter = new Redaxscript\Filter\Url();
 		$output = $urlFilter->sanitize($output);
 	}
-
-	/* mysql clean */
-
-	if (get_magic_quotes_gpc())
-	{
-		$output = stripslashes($output);
-	}
-
-	/* mysql real escape */
-
-	if ($registry->get('dbConnected') == 1 && function_exists('mysql_real_escape_string'))
-	{
-		$output = mysql_real_escape_string($output);
-	}
-
-	/* mysql escape fallback */
-
-	else if (function_exists('mysql_escape_string'))
-	{
-		$output = mysql_escape_string($input);
-	}
+	$output = stripslashes($output);
 	return $output;
 }
 
@@ -162,6 +142,27 @@ function l($key = null, $index = null)
 }
 
 /**
+ * settings shortcut
+ *
+ * @since 2.2.0
+ * @deprecated 2.0.0
+ *
+ * @package Redaxscript
+ * @category Migrate
+ * @author Henry Ruhs
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+
+function s($key = null)
+{
+	$output = Redaxscript\Db::getSettings($key);
+	return $output;
+}
+
+/**
  * migrate constants
  *
  * @since 2.1.0
@@ -199,5 +200,6 @@ function migrate_constants()
 
 		$output[$key] = $value;
 	}
+	$output = array_merge($output, Redaxscript\Registry::get());
 	return $output;
 }

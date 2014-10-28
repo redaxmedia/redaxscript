@@ -22,6 +22,7 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
+		'className' => 'js_map map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
 		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM',
 		'sensor' => true

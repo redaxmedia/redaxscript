@@ -73,18 +73,35 @@ class ShareThis extends Config
 
 	protected static function _render($url = null)
 	{
+		$output = '';
 		if ($url)
 		{
-			$output = '<ul class="' . self::$_config['className']['list'] . '">';
+			/* html elements */
 
-			/* process each network */
+			$linkElement = new Element('a');
+			$listElement = new Element('ul');
+
+			/* process network */
 
 			foreach (self::$_config['networks'] as $key => $value)
 			{
-				$output .= '<li><a href="' . $value['url'] . $url . '" class="' . self::$_config['className']['link'] . $value['className'] . '" title="' . ucfirst($key) . '"' . self::$_config['attribute']['link'] . $value['attribute'] . '>' . ucfirst($key) . '</a></li>';
+				$output .= '<li>';
+				$output .= $linkElement->attr(array(
+					'href' => $value['url'] . $url,
+					'class' => self::$_config['className']['link'] . $value['className'],
+					'title' => ucfirst($key),
+					'target' => '_blank'
+				))->text(ucfirst($key));
+				$output .= '</li>';
 			}
-			$output .= '</ul>';
-			return $output;
+
+			/* collect list output */
+
+			if ($output)
+			{
+				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+			}
 		}
+		return $output;
 	}
 }

@@ -33,7 +33,7 @@ class Breadcrumb
 	protected $_language;
 
 	/**
-	 * array to store all the nodes of the breadcrumb
+	 * array to store the nodes of the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -115,6 +115,12 @@ class Breadcrumb
 		$breadcrumbKeys = array_keys($this->_breadcrumbArray);
 		$last = end($breadcrumbKeys);
 
+		/* html elements */
+
+		$linkElement = new Element('a');
+		$itemElement = new Element('li');
+		$listElement = new Element('ul');
+
 		/* collect item output */
 
 		foreach ($this->_breadcrumbArray as $key => $value)
@@ -129,7 +135,10 @@ class Breadcrumb
 
 				if ($route)
 				{
-					$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $route . '" title="' . $title . '">' . $title . '</a>';
+					$output .= $linkElement->attr(array(
+						'href' => $this->_registry->get('rewriteRoute') . $route,
+						'title' => $title
+					))->text($title);
 				}
 
 				/* else plain text */
@@ -144,7 +153,7 @@ class Breadcrumb
 
 				if ($last !== $key)
 				{
-					$output .= '<li class="' . $this->_options['className']['divider'] . '">' . Db::getSettings('divider') . '</li>';
+					$output .= $itemElement->attr('class', $this->_options['className']['divider'])->text(Db::getSettings('divider'));
 				}
 			}
 		}
@@ -153,7 +162,7 @@ class Breadcrumb
 
 		if ($output)
 		{
-			$output = '<ul class="' . $this->_options['className']['list'] . '">' . $output . '</ul>';
+			$output = $listElement->attr('class', $this->_options['className']['list'])->html($output);
 		}
 		$output .= Hook::trigger('breadcrumb_end');
 		return $output;

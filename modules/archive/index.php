@@ -16,8 +16,8 @@
 function archive()
 {
 	$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 ORDER BY date DESC';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($query)->findArray();
+	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('article_no') . l('point');
@@ -26,7 +26,7 @@ function archive()
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
 		$last = 0;
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			/* check for access */
 

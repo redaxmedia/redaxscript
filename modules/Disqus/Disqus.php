@@ -68,8 +68,16 @@ class Disqus extends Config
 
 	public static function commentsReplace()
 	{
-		$output = self::$_config['element'] . PHP_EOL;
-		$output .= '<script src="' . self::$_config['url'] . '"></script>' . PHP_EOL;
+		$divElement = new Element('div', array(
+			'id' => self::$_config['id']
+		));
+		$scriptElement = new Element('script', array(
+			'src' => self::$_config['url']
+		));
+
+		/* collect output */
+
+		$output = $divElement . $scriptElement;
 		echo $output;
 	}
 }
