@@ -34,7 +34,7 @@ try
 
 		/* has tables */
 
-		if (Db::forPrefixTable()->rawQuery('SHOW TABLES')->findMany()->count())
+		if (Db::forPrefixTable()->rawQuery('SHOW TABLES LIKE ' . $config->get('prefix') . '%')->findMany()->count())
 		{
 			$registry->set('dbStatus', 2);
 		}

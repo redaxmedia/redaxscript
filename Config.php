@@ -22,7 +22,6 @@ class Config extends Singleton
 	private static $_config = array(
 		// @configStart
 		'type' => '',
-		'file' => '',
 		'host' => '',
 		'name' => '',
 		'user' => '',

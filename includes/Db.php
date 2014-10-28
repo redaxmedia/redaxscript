@@ -2,7 +2,6 @@
 namespace Redaxscript;
 
 use ORM;
-use PDO;
 
 /**
  * children class to handle the database
