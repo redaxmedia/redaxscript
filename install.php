@@ -367,7 +367,7 @@ function install_notification()
 	{
 		$error = l('file_permission_grant') . l('colon') . ' Config.php';
 	}
-	else if (!$registry->get('dbConnect'))
+	else if (!$registry->get('dbStatus'))
 	{
 		$error = l('database_failed');
 		if ($registry->get('dbException'))
@@ -448,7 +448,7 @@ function check_install()
 	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && $registry->get('dbConnect') && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
+	if ($_POST['install_post'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}
