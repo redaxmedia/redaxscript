@@ -10,17 +10,13 @@ include_once('includes/migrate.php');
 include_once('includes/password.php');
 include_once('includes/startup.php');
 
-/* bootstrap */
-
-include_once('includes/Bootstrap.php');
-
 /* install post */
 
 install_post();
 
-/* write database config */
+/* bootstrap */
 
-write_config();
+include_once('includes/Bootstrap.php');
 
 /* define meta */
 
@@ -204,7 +200,7 @@ function install()
 	$r['insert_settings'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'settings (id, name, value) VALUES (1, \'language\', \'detect\'), (2, \'template\', \'default\'), (3, \'title\', \'Redaxscript\'), (4, \'author\', \'\'), (5, \'copyright\', \'\'), (6, \'description\', \'Ultra lightweight CMS\'), (7, \'keywords\', \'\'), (8, \'robots\', \'all\'), (9, \'email\', \'' . $email . '\'), (10, \'subject\', \'Redaxscript\'), (11, \'notification\', \'0\'), (12, \'charset\', \'utf-8\'), (13, \'divider\', \' • \'), (14, \'time\', \'H:i\'), (15, \'date\', \'d.m.Y\'), (16, \'homepage\', \'0\'), (17, \'limit\', \'10\'), (18, \'order\', \'asc\'), (19, \'pagination\', \'1\'), (20, \'moderation\', \'0\'), (21, \'registration\', \'1\'), (22, \'verification\', \'0\'), (23, \'reminder\', \'1\'), (24, \'captcha\', \'0\'), (25, \'blocker\', \'1\'), (26, \'version\', \'' . l('redaxscript_version') . '\')';
 	if (is_dir('modules/CallHome'))
 	{
-		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'CallHome\', \'Redaxmedia\', \'Provide version and news updates\', \'' . l('redaxscript_version') . '\', 1, 0)';
+		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'CallHome\', \'Redaxmedia\', \'Provide version and news updates\', \'' . l('version', '_package') . '\', 1, 0)';
 	}
 	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . $d_salt . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
 
@@ -212,7 +208,7 @@ function install()
 
 	foreach ($r as $key => $value)
 	{
-		Redaxscript\Db::forPrefixTable()->rawExecute($value);
+		Redaxscript\Db::rawExecute($value);
 	}
 
 	/* send login information */
@@ -305,16 +301,16 @@ function install_post()
 
 	/* clean post */
 
-	$d_host = clean($_POST['d_host'], 5);
-	$d_name = clean($_POST['d_name'], 5);
-	$d_user = clean($_POST['d_user'], 5);
-	$d_password = clean($_POST['d_password'], 5);
-	$d_prefix = clean($_POST['d_prefix'], 5);
-	$d_salt = clean($_POST['d_salt'], 5);
-	$name = clean($_POST['name'], 0);
-	$user = clean($_POST['user'], 0);
-	$password = clean($_POST['password'], 0);
-	$email = clean($_POST['email'], 3);
+	$d_host = stripslashes($_POST['d_host']);
+	$d_name = stripslashes($_POST['d_name']);
+	$d_user = stripslashes($_POST['d_user']);
+	$d_password = stripslashes($_POST['d_password']);
+	$d_prefix = stripslashes($_POST['d_prefix']);
+	$d_salt = stripslashes($_POST['d_salt']);
+	$name = stripslashes($_POST['name']);
+	$user = stripslashes($_POST['user']);
+	$password = stripslashes($_POST['password']);
+	$email = stripslashes($_POST['email']);
 
 	/* validate post */
 
@@ -328,8 +324,27 @@ function install_post()
 	}
 	if ($password == '')
 	{
-		$password = hash_generator(10);
+		$password = substr(sha1(uniqid()), 0, 10);
 	}
+
+	/* write config */
+
+	$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
+	$replacement = '// @configStart
+		\'type\' => \'mysql\',
+		\'host\' => \'' . $d_host . '\',
+		\'name\' => \'' . $d_name . '\',
+		\'user\' => \'' . $d_user . '\',
+		\'password\' => \'' . $d_password . '\',
+		\'prefix\' => \'' . $d_prefix . '\',
+		\'salt\' => \'' . $d_salt . '\'
+		// @configEnd';
+
+	/* process contents */
+
+	$content = file_get_contents('Config.php');
+	$content = preg_replace($pattern, $replacement, $content);
+	file_put_contents('Config.php', $content);
 }
 
 /*
@@ -433,7 +448,7 @@ function check_install()
 	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && $registry->get('dbConnect') === true && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
+	if ($_POST['install_post'] && $registry->get('dbConnect') && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
 	{
 		$output = 1;
 	}
@@ -442,44 +457,6 @@ function check_install()
 		$output = 0;
 	}
 	return $output;
-}
-
-/**
- * write config
- *
- * @since 2.0.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Install
- * @author Henry Ruhs
- */
-
-function write_config()
-{
-	if ($_POST['install_post'])
-	{
-		global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
-
-		/* pattern and replacement */
-
-		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
-		$replacement = '// @configStart
-		\'type\' => \'mysql\',
-		\'host\' => \'' . $d_host . '\',
-		\'name\' => \'' . $d_name . '\',
-		\'user\' => \'' . $d_user . '\',
-		\'password\' => \'' . $d_password . '\',
-		\'prefix\' => \'' . $d_prefix . '\',
-		\'salt\' => \'' . $d_salt . '\'
-		// @configEnd';
-
-		/* process contents */
-
-		$content = file_get_contents('Config.php');
-		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('Config.php', $content);
-	}
 }
 
 /**
@@ -502,7 +479,7 @@ function head()
 	{
 		$output .= '<meta http-equiv="refresh" content="2; url=' . ROOT . '" />' . PHP_EOL;
 	}
-	$output .= '<meta name="generator" content="' . l('redaxscript') . ' ' . l('redaxscript_version') . '" />' . PHP_EOL;
+	$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
 	$output .= '<meta name="robots" content="' . ROBOTS . '" />' . PHP_EOL;
 	echo $output;
 }

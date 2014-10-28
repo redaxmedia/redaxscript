@@ -22,13 +22,22 @@ $config = Config::getInstance();
 
 Db::init($config);
 
-/* test database */
+/* database status */
 
 try
 {
+	/* has connection */
+
 	if ($config->get('type') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 	{
-		$registry->set('dbConnect', true);
+		$registry->set('dbStatus', 1);
+
+		/* has tables */
+
+		if (Db::forPrefixTable()->rawQuery('SHOW TABLES')->findMany()->count())
+		{
+			$registry->set('dbStatus', 2);
+		}
 	}
 }
 
@@ -46,7 +55,7 @@ $registry->init(migrate_constants());
 
 /* hook */
 
-if ($registry->get('file') !== 'install.php')
+if ($registry->get('dbStatus') === 2)
 {
 	Hook::init($registry);
 }

@@ -25,7 +25,7 @@ class Template extends Detector
 	public function init()
 	{
 		$root = $this->_registry->get('root');
-		$dbConnect = $this->_registry->get('dbConnect');
+		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 
@@ -34,8 +34,8 @@ class Template extends Detector
 		$this->_detect(array(
 			'query' => Request::getQuery('t'),
 			'session' => Request::getSession($root . '/template'),
-			'contents' => $lastTable && $lastId ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->template : null,
-			'settings' => $dbConnect ? Db::getSettings('template') : null,
+			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->template : null,
+			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');
 	}
