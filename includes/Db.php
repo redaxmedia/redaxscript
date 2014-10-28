@@ -50,8 +50,18 @@ class Db extends ORM
 
 		if ($type === 'mysql' || $type === 'pgsql')
 		{
+			if ($type === 'mysql')
+			{
+				self::configure('connection_string', 'mysql:host=' . $host . ';dbname=' . $name . ';charset=utf8');
+			}
+			else
+			{
+				self::configure('connection_string', 'pgsql:host=' . $host . ';dbname=' . $name . ';options=--client_encoding=utf8');
+			}
+
+			/* username and password */
+
 			self::configure(array(
-				'connection_string' => $type . ':host=' . $host . ';dbname=' . $name . ';charset=utf8',
 				'username' => $user,
 				'password' => $password
 			));
