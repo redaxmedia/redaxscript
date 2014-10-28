@@ -21,10 +21,9 @@ after_script:
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
 
 deploy
-- provider: heroku
-- api: TjuQ86X7x2okykATfa04KxadkxxXgnHVaB509unw6193i4xkbqkJXGUh9PHdraBWbhPPHbZAFFL1Sujjosn3CYP2bpWPxqYuODyR9bTvIXPhAoioAKcoLVMgyT0eBaea4YgFfH0nRi2KbO/bBZzPn53oI/8shuT4a/Zut7FLNzc=
-- app: redaxscript
-
+ provider: heroku
+ app: redaxscript
+ api: TjuQ86X7x2okykATfa04KxadkxxXgnHVaB509unw6193i4xkbqkJXGUh9PHdraBWbhPPHbZAFFL1Sujjosn3CYP2bpWPxqYuODyR9bTvIXPhAoioAKcoLVMgyT0eBaea4YgFfH0nRi2KbO/bBZzPn53oI/8shuT4a/Zut7FLNzc=
 
 notifications:
  irc:
