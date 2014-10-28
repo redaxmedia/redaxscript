@@ -23,7 +23,6 @@ after_script:
 
 deploy:
  provider: heroku
- buildpack: php
  app: redaxscript
  api_key: 38742e83-af6f-42a4-bfaa-83944fc55066
 
