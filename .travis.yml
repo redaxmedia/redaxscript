@@ -8,7 +8,7 @@ php:
 
 before_script:
 - composer self-update
-- composer update
+- composer install
 - npm install -g grunt-cli
 - travis_retry npm install
 
@@ -20,7 +20,7 @@ after_script:
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
 
-before_deploy
+before_deploy:
 - git clean -df
 
 deploy:
