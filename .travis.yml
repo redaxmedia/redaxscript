@@ -8,7 +8,7 @@ php:
 
 before_script:
 - composer self-update
-- composer install
+- composer update
 - npm install -g grunt-cli
 - travis_retry npm install
 
