@@ -24,7 +24,7 @@ deploy:
  provider: heroku
  strategy: api
  app: redaxscript
- api_key: 38742e83-af6f-42a4-bfaa-83944fc55066
+ api_key: LZLqHnODg16fr/lb4CYxMrd2mf+NE3NS9wjleXlWtOjMxog0Tk4hB/Bjb5+GIvoAbh1QvEn7H17Vr3CRqycMGFId8w0SDQZZIu4/l47mnzvY+8oPR9r7+cCDObk08AbVwA3AzYfBBwNeHdgoUIFYk5yN1Z6mwL2ve+3rPNvY+Kw=
 
 notifications:
  irc:
