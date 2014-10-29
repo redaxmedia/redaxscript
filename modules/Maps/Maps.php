@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Maps;
 
+use Redaxscript\Element;
 use Redaxscript\Registry;
 
 /**
@@ -67,24 +68,35 @@ class Maps extends Config
 	 * render
 	 *
 	 * @since 2.2.0
+	 *
+	 * @param integer $lat
+	 * @param integer $lng
+	 * @param integer $zoom
+	 *
+	 * return string
 	 */
 
 	public static function render($lat = 0, $lng = 0, $zoom = 0)
 	{
-		$output = '<div class="js_map map"';
+		$mapElement = new Element('div', array(
+			'class' => self::$_config['className']
+		));
+
+		/* collect attributes */
+
 		if (is_numeric($lat))
 		{
-			$output .= ' data-lat="' . $lat . '"';
+			$mapElement->attr('data-lat', $lat);
 		}
 		if (is_numeric($lng))
 		{
-			$output .= ' data-lng="' . $lng . '"';
+			$mapElement->attr('data-lng', $lng);
 		}
 		if (is_numeric($zoom))
 		{
-			$output .= ' data-zoom="' . $zoom . '"';
+			$mapElement->attr('data-zoom', $zoom);
 		}
-		$output .= '></div>';
+		$output = $mapElement;
 		echo $output;
 	}
 }

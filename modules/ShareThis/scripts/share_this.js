@@ -43,7 +43,7 @@
 					for (var i in data)
 					{
 						var counter = data[i],
-                            type = i.toLowerCase();
+							type = i.toLowerCase();
 
 						/* facebook fallback */
 

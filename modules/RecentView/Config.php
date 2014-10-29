@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\Disqus;
+namespace Redaxscript\Modules\RecentView;
 
 use Redaxscript\Module;
 
@@ -22,7 +22,8 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
-		'id' => 'disqus_thread',
-		'url' => '//example.disqus.com/embed.js'
+		'className' => array(
+			'list' => 'list_recent_view'
+		)
 	);
 }

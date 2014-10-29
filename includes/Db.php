@@ -2,7 +2,6 @@
 namespace Redaxscript;
 
 use ORM;
-use PDO;
 
 /**
  * children class to handle the database
@@ -13,7 +12,7 @@ use PDO;
  * @category Db
  * @author Henry Ruhs
  *
- * @method _setupDb(string $connection)
+ * @method _setupDb()
  * @method deleteMany()
  * @method deleteOne()
  * @method findMany()
@@ -32,19 +31,39 @@ class Db extends ORM
 
 	public static function init(Config $config)
 	{
-		/* mysql */
+		$type = $config::get('type');
+		$file = $config::get('file');
+		$host = $config::get('host');
+		$name = $config::get('name');
+		$user = $config::get('user');
+		$password = $config::get('password');
 
-		if ($config::get('type') === 'mysql')
+		/* sqlite */
+
+		if ($type === 'sqlite')
 		{
+			self::configure('sqlite:' . $file);
+		}
+
+		/* mysql and pgsql */
+
+		if ($type === 'mysql' || $type === 'pgsql')
+		{
+			if ($type === 'mysql')
+			{
+				self::configure('connection_string', 'mysql:host=' . $host . ';dbname=' . $name . ';charset=utf8');
+			}
+			else
+			{
+				self::configure('connection_string', 'pgsql:host=' . $host . ';dbname=' . $name . ';options=--client_encoding=utf8');
+			}
+
+			/* username and password */
+
 			self::configure(array(
-					'connection_string' => 'mysql:host=' . $config::get('host') . ';dbname=' . $config::get('name'),
-					'username' => $config::get('user'),
-					'password' => $config::get('password'),
-					'driver_options' => array(
-						PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-					)
-				)
-			);
+				'username' => $user,
+				'password' => $password
+			));
 		}
 
 		/* general */
@@ -80,20 +99,11 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
 	public static function getSettings($key = null)
 	{
-		try
-		{
-			return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
-		}
-		// @codeCoverageIgnoreStart
-		catch (\PDOException $exception)
-		{
-			return false;
-		}
-		// @codeCoverageIgnoreEnd
+		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
 	}
 }

@@ -127,7 +127,7 @@
 		margin-left: 0.5em;
 	}
 
-	.form_admin .button_cancel, .form_admin .button_delete
+	.form_admin .button_cancel_admin, .form_admin .button_delete_admin
 	{
 		float: left;
 	}

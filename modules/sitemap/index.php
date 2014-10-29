@@ -18,8 +18,8 @@ function sitemap()
 	/* query categories */
 
 	$categories_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'categories WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 && parent = 0 ORDER BY rank ASC';
-	$categories_result = mysql_query($categories_query);
-	$categories_num_rows = mysql_num_rows($categories_result);
+	$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
+	$categories_num_rows = count($categories_result);
 
 	/* collect output */
 
@@ -31,7 +31,7 @@ function sitemap()
 	else if ($categories_result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		while ($r = mysql_fetch_assoc($categories_result))
+		foreach ($categories_result as $r)
 		{
 			$access = $r['access'];
 
@@ -94,8 +94,8 @@ function sitemap()
 	/* query articles */
 
 	$articles_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 && category = 0 ORDER BY rank ASC';
-	$articles_result = mysql_query($articles_query);
-	$articles_num_rows = mysql_num_rows($articles_result);
+	$articles_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($articles_query)->findArray();
+	$articles_num_rows = count($articles_result);
 
 	/* collect output */
 
@@ -106,7 +106,7 @@ function sitemap()
 	}
 	else if ($articles_result)
 	{
-		while ($r = mysql_fetch_assoc($articles_result))
+		foreach ($articles_result as $r)
 		{
 			$access = $r['access'];
 			$check_access = $accessValidator->validate($access, MY_GROUPS);

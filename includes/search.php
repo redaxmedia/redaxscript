@@ -106,8 +106,8 @@ function search_post()
 			$query .= ')';
 		}
 		$query .= ' ORDER BY date DESC LIMIT 50';
-		$result = mysql_query($query);
-		$num_rows = mysql_num_rows($result);
+		$result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($query)->findArray();
+		$num_rows = count($result);
 		if ($result == '' || $num_rows == '')
 		{
 			$error = l('search_no');
@@ -120,7 +120,7 @@ function search_post()
 			$accessValidator = new Redaxscript\Validator\Access();
 			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
 			$output .= form_element('fieldset', '', 'set_search_result', '', '', '<span class="title_content_sub title_search_result_sub">' . l('articles') . '</span>') . '<ol class="list_search_result">';
-			while ($r = mysql_fetch_assoc($result))
+			foreach ($result as $r)
 			{
 				$access = $r['access'];
 

@@ -26,9 +26,6 @@ class Config extends Module
 			'list' => 'list_share_this clearfix',
 			'link' => 'js_link_share_this link_share_this'
 		),
-		'attribute' => array(
-			'link' => ' target="_blank" rel="nofollow"'
-		),
 		'network' => array(
 			'facebook' => array(
 				'url' => 'http://facebook.com/sharer.php?u=',

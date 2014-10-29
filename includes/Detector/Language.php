@@ -25,6 +25,7 @@ class Language extends Detector
 	public function init()
 	{
 		$root = $this->_registry->get('root');
+		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 
@@ -34,9 +35,9 @@ class Language extends Detector
 			'query' => Request::getQuery('l'),
 			'session' => Request::getSession($root . '/language'),
 			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->language : null,
-			'settings' => Db::getSettings('language'),
+			'settings' => $dbStatus === 2 ? Db::getSettings('language') : null,
 			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		), 'language', 'languages/{value}.json');
-    }
+	}
 }

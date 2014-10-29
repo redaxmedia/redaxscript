@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\RecentView;
 
-use Redaxscript\Module;
+use Redaxscript\Element;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -15,7 +15,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class RecentView extends Module
+class RecentView extends Config
 {
 	/**
 	 * custom module setup
@@ -38,7 +38,7 @@ class RecentView extends Module
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param integer $limit limit for the list
+	 * @param integer $limit
 	 *
 	 * @return string
 	 */
@@ -50,7 +50,13 @@ class RecentView extends Module
 		$log = self::_log();
 		if ($log)
 		{
-			$output = '<ul class="list_recent_view">';
+			/* html elements */
+
+			$linkElement = new Element('a');
+			$listElement = new Element('ul');
+
+			/* process log */
+
 			foreach ($log as $value)
 			{
 				/* break if limit reached */
@@ -59,9 +65,20 @@ class RecentView extends Module
 				{
 					break;
 				}
-				$output .= '<li><a href="' . Registry::get('rewriteRoute') . $value . '" title="' . $value . '">' . $value . '</a></li>';
+				$output .= '<li>';
+				$output .= $linkElement->attr(array(
+					'href' => Registry::get('rewriteRoute') . $value,
+					'title' => $value
+				))->text($value);
+				$output .= '</li>';
 			}
-			$output .= '</ul>';
+
+			/* collect list output */
+
+			if ($output)
+			{
+				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+			}
 		}
 		return $output;
 	}
@@ -82,8 +99,12 @@ class RecentView extends Module
 
 		/* handle recent view */
 
-		if ($fullRoute && is_array($recentView) && current($recentView) !== $fullRoute)
+		if ($fullRoute && current($recentView) !== $fullRoute)
 		{
+			if (!is_array($recentView))
+			{
+				$recentView = array();
+			}
 			array_unshift($recentView, $fullRoute);
 			Request::setSession($root . '/recent_view', $recentView);
 		}

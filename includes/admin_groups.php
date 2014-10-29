@@ -18,8 +18,8 @@ function admin_groups_list()
 	/* query groups */
 
 	$query = 'SELECT id, name, alias, filter, status FROM ' . PREFIX . 'groups';
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($query)->findArray();
+	$num_rows = count($result);
 
 	/* collect listing output */
 
@@ -42,7 +42,7 @@ function admin_groups_list()
 	else if ($result)
 	{
 		$output .= '<tbody>';
-		while ($r = mysql_fetch_assoc($result))
+		foreach ($result as $r)
 		{
 			if ($r)
 			{
@@ -120,8 +120,8 @@ function admin_groups_form()
 		/* query user */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'groups WHERE id = ' . ID_PARAMETER;
-		$result = mysql_query($query);
-		$r = mysql_fetch_assoc($result);
+		$result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($query)->findArray();
+		$r = $result[0];
 		if ($r)
 		{
 			foreach ($r as $key => $value)

@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\Disqus;
+namespace Redaxscript\Modules\LazyLoad;
 
 use Redaxscript\Module;
 
@@ -22,7 +22,15 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
-		'id' => 'disqus_thread',
-		'url' => '//example.disqus.com/embed.js'
+		'className' => array(
+			'image' => 'js_lazy_load lazy_load',
+			'placeholder' => 'placeholder_lazy_load'
+		),
+		'placeholder' => 'modules/LazyLoad/images/placeholder.png',
+		'device' => array(
+			'desktop',
+			'tablet',
+			'mobile'
+		)
 	);
 }

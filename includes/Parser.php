@@ -194,6 +194,7 @@ class Parser
 	protected function _parseBreak($input = null)
 	{
 		$aliasValidator = new Validator\Alias();
+		$linkElement = new Element('a');
 
 		/* collect output */
 
@@ -206,7 +207,11 @@ class Parser
 
 			if ($this->_route)
 			{
-				$output .= '<a href="' . $this->_registry->get('rewriteRoute') . $this->_route . '" class="' . $this->_options['className']['break'] . '" title="' . $this->_language->get('read_more') . '">' . $this->_language->get('read_more') . '</a>';
+				$output .= $linkElement->attr(array(
+					'href' => $this->_registry->get('rewriteRoute') . $this->_route,
+					'class' => $this->_options['className']['break'],
+					'title' => $this->_language->get('read_more')
+				))->text($this->_language->get('read_more'));
 			}
 		}
 		return $output;
@@ -229,6 +234,7 @@ class Parser
 			'</code>'
 		), $this->_delimiter, $input);
 		$parts = explode($this->_delimiter, $output);
+		$codeElement = new Element('code');
 
 		/* parse needed parts */
 
@@ -236,7 +242,7 @@ class Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = '<code class="' . $this->_options['className']['code'] . '">' . trim(htmlspecialchars($value)) . '</code>';
+				$parts[$key] = $codeElement->attr('class', $this->_options['className']['code'])->html(htmlspecialchars($value));
 			}
 		}
 		$output = implode($parts);

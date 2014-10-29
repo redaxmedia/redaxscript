@@ -15,14 +15,15 @@
  *    1.11 input
  *    1.12 native json
  *    1.13 post message
- *    1.14 svg
- *    1.15 touch
- *    1.16 vibrate
- *    1.17 web gl
- *    1.18 web sql
- *    1.19 web socket
- *    1.20 web storage
- *    1.21 web worker
+ *    1.14 speech
+ *    1.15 svg
+ *    1.16 touch
+ *    1.17 vibrate
+ *    1.18 web gl
+ *    1.19 web sql
+ *    1.20 web socket
+ *    1.21 web storage
+ *    1.22 web worker
  *
  * @since 2.2.0
  *
@@ -290,7 +291,21 @@
 			}
 		}(),
 
-		/* @section 1.14 svg */
+		/* @section 1.14 speech */
+
+		speech: function ()
+		{
+			if ('speechSynthesis' in win)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}(),
+
+		/* @section 1.15 svg */
 
 		svg: function ()
 		{
@@ -304,7 +319,7 @@
 			}
 		}(),
 
-		/* @section 1.15 touch */
+		/* @section 1.16 touch */
 
 		touch: function ()
 		{
@@ -318,7 +333,7 @@
 			}
 		}(),
 
-		/* @section 1.16 vibrate */
+		/* @section 1.17 vibrate */
 
 		vibrate: function ()
 		{
@@ -332,7 +347,7 @@
 			}
 		}(),
 
-		/* @section 1.17 web gl */
+		/* @section 1.18 web gl */
 
 		webGL: function ()
 		{
@@ -346,7 +361,7 @@
 			}
 		}(),
 
-		/* @section 1.18 web sql */
+		/* @section 1.19 web sql */
 
 		webSQL: function ()
 		{
@@ -360,7 +375,7 @@
 			}
 		}(),
 
-		/* @section 1.19 web socket */
+		/* @section 1.20 web socket */
 
 		webSocket: function ()
 		{
@@ -374,7 +389,7 @@
 			}
 		}(),
 
-		/* @section 1.20 web storage */
+		/* @section 1.21 web storage */
 
 		webStorage: function ()
 		{
@@ -388,7 +403,7 @@
 			}
 		}(),
 
-		/* @section 1.21 web worker */
+		/* @section 1.22 web worker */
 
 		webWorker: function ()
 		{
