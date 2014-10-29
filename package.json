@@ -31,6 +31,7 @@
 		"grunt-htmlhint": "0.4.1",
 		"grunt-img": "0.1.8",
 		"grunt-jsonlint": "1.0.4",
+		"grunt-jsonmin": "0.2.4",
 		"grunt-phpcs": "0.2.3",
 		"grunt-phpunit": "0.3.6",
 		"grunt-shell": "1.1.1",

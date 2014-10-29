@@ -6,11 +6,11 @@ php:
 - 5.5
 - 5.6
 
-before_script:
+install:
 - composer self-update
 - composer install
+- npm install
 - npm install -g grunt-cli
-- travis_retry npm install
 
 script:
 - npm test
@@ -19,6 +19,13 @@ after_script:
 - php vendor/bin/coveralls --verbose
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+
+deploy:
+ provider: heroku
+ strategy: api
+ app: redaxscript
+ api_key:
+  secure: XEp2ob+1idf2ZJLMqYWrmqCPKnSJQ7KH/sVwiqE0DSfs7aRRB9EoRGLKsR9unCgN5YnEJ5wOSxXdrvbfSGFJy8veBF5DPouSPo80G4uk/TQ2CRxrHQHVFLfK7Y6Jn7w8dP4ek1cUJSYEMJW3gBPLwzFi6XGmuUZ0PdlKyASxmzg=
 
 notifications:
  irc:
