@@ -21,6 +21,7 @@ after_script:
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
 
 before_deploy:
+ - git add composer.lock
  - git clean -df
 
 deploy:
