@@ -8,7 +8,7 @@ php:
 
 env:
  global:
- - secure: LZLqHnODg16fr/lb4CYxMrd2mf+NE3NS9wjleXlWtOjMxog0Tk4hB/Bjb5+GIvoAbh1QvEn7H17Vr3CRqycMGFId8w0SDQZZIu4/l47mnzvY+8oPR9r7+cCDObk08AbVwA3AzYfBBwNeHdgoUIFYk5yN1Z6mwL2ve+3rPNvY+Kw=
+ - secure: Nt4/0gNNA5ZD2t9sCFI4RN0CXL1G0G8hbYv6aQKDI/pY0y55hUpdi0ubW6UOJW1IgRlKxmhVVnOeiTtAe+5dn4fj1HAoMgzUBrYTu9eJUzQg0YUGT7MXLn4qvG3MUD8JuWbuhIEzMmoqKZ1JJ8VOonyxIoleXC/cRhRdBYfUc0c=
 
 before_script:
 - composer self-update
