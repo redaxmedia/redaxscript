@@ -25,7 +25,7 @@ deploy:
  strategy: api
  app: redaxscript
  api_key:
-  secure: XEp2ob+1idf2ZJLMqYWrmqCPKnSJQ7KH/sVwiqE0DSfs7aRRB9EoRGLKsR9unCgN5YnEJ5wOSxXdrvbfSGFJy8veBF5DPouSPo80G4uk/TQ2CRxrHQHVFLfK7Y6Jn7w8dP4ek1cUJSYEMJW3gBPLwzFi6XGmuUZ0PdlKyASxmzg=
+  secure: CvUp6rO6I7+HZCj/kRGPnm/5P/Inwf4MXiaCdOnCoQ+2MTj8yZf6inzM9tybFmJHuaom2bB/lyxZw77DUalqRbF9wmj5haxa98Zp9SwwxvgY6NMOI2be3pMcFpgI9po9pO9Hc2Wltt6y144su1hBbKHavQXhy3IUV4o0DLfFW/k=
 
 notifications:
  irc:
