@@ -111,6 +111,7 @@
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #b9b9b9;
 	border-radius: 0.25em;
+	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	-webkit-transition: background 0.4s ease;
