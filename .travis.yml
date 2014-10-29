@@ -8,7 +8,7 @@ php:
 
 before_script:
 - composer self-update
-- composer update
+- composer install
 - npm install -g grunt-cli
 - travis_retry npm install
 
@@ -21,11 +21,11 @@ after_script:
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
 
 before_deploy:
- - git add composer.lock
  - git clean -df
 
 deploy:
  provider: heroku
+ strategy: api
  app: redaxscript
  api_key: 38742e83-af6f-42a4-bfaa-83944fc55066
 
