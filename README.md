@@ -65,6 +65,7 @@ Search engine friendly
 Links
 -----
 
+
 **General**
 
 * [Website](http://redaxscript.com)
@@ -74,8 +75,10 @@ Links
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
 
+
 **Development**
 
+* [Github](http://github.redaxscript.com)
 * [API](http://api.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
