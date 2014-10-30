@@ -81,5 +81,5 @@ Links
 * [Github](http://github.redaxscript.com)
 * [API](http://api.redaxscript.com)
 * [Travis](http://travis.redaxscript.com)
-* [Coveralls](http://coveralls.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
+* [Coveralls](http://coveralls.redaxscript.com)
