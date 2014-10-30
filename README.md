@@ -71,8 +71,6 @@ Links
 * [Documentation](http://redaxscript.com/develop/documentation)
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
-
-
 * [API](http://api.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
