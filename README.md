@@ -65,12 +65,17 @@ Search engine friendly
 Links
 -----
 
+**General**
+
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
 * [Support](http://redaxscript.com/support)
 * [Documentation](http://redaxscript.com/develop/documentation)
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
+
+**Development**
+
 * [API](http://api.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
