@@ -62,8 +62,8 @@ Search engine friendly
 * Valid and sematic HTML markup
 
 
-Related links
--------------
+Links
+-----
 
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
@@ -72,9 +72,6 @@ Related links
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
 
-
-Developer links
----------------
 
 * [API](http://api.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
