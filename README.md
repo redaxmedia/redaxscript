@@ -68,7 +68,15 @@ Related links
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
 * [Support](http://redaxscript.com/support)
-* [API](http://api.redaxscript.com)
 * [Documentation](http://redaxscript.com/develop/documentation)
 * [Community](http://redaxscript.com/community)
 * [License](http://redaxscript.com/general/about/license)
+
+
+Developer links
+---------------
+
+* [API](http://api.redaxscript.com)
+* [Coveralls](http://coveralls.redaxscript.com)
+* [Scrutenizer](http://scrutenizer.redaxscript.com)
+* [Travis](http://travis.redaxscript.com)
