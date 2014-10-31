@@ -18,7 +18,6 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
- * @method selectMany()
  * @method tableAlias()
  */
 
@@ -96,7 +95,7 @@ class Db extends ORM
 	}
 
 	/**
-	 * join with prefix
+	 * left join with prefix
 	 *
 	 * @since 2.2.0
 	 *
@@ -107,9 +106,9 @@ class Db extends ORM
 	 * @return Db
 	 */
 
-	public function joinPrefix($table = null, $constraint = null, $tableAlias = null)
+	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
 	{
-		return $this->_addJoinSource('', Config::get('prefix') . $table, $constraint, $tableAlias);
+		return $this->_addJoinSource('LEFT', Config::get('prefix') . $table, $constraint, $tableAlias);
 	}
 
 	/**

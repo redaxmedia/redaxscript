@@ -65,13 +65,6 @@ function build_route($table = '', $id = '')
 {
 	if ($table && $id)
 	{
-		$query = 'SELECT p.alias, c.alias';
-		if ($table != 'categories')
-		{
-			$query .= ', a.alias';
-		}
-		$query .= ' FROM ' . PREFIX . $table . ' AS';
-
 		/* switch table */
 
 		switch ($table)
@@ -79,19 +72,34 @@ function build_route($table = '', $id = '')
 			case 'categories':
 				$result = Redaxscript\Db::forTablePrefix('categories')
 					->tableAlias('c')
-					->joinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
 					->select('p.alias', 'parent_alias')
 					->select('c.alias', 'category_alias')
-				    ->where('c.id', $id)
+					->where('c.id', $id)
 					->findArray();
 				break;
 			case 'articles':
-				$query .= ' a LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE a.id = ' . $id;
-				$result = Redaxscript\Db::forTablePrefix()->rawQuery($query)->findArray();
+				$result = Redaxscript\Db::forTablePrefix('articles')
+					->tableAlias('a')
+					->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
+					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->select('p.alias', 'parent_alias')
+					->select('c.alias', 'category_alias')
+					->select('a.alias', 'article_alias')
+					->where('a.id', $id)
+					->findArray();
 				break;
 			case 'comments':
-				$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
-				//$result = Redaxscript\Db::forTablePrefix()->rawQuery($query)->findArray();
+				$result = Redaxscript\Db::forTablePrefix('comments')
+					->tableAlias('m')
+					->leftJoinPrefix('articles', 'm.article = a.id', 'a')
+					->leftJoinPrefix('categories', 'a.category = c.id', 'c')
+					->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
+					->select('p.alias', 'parent_alias')
+					->select('c.alias', 'category_alias')
+					->select('a.alias', 'article_alias')
+					->where('m.id', $id)
+					->findArray();
 				break;
 		}
 
@@ -112,13 +120,6 @@ function build_route($table = '', $id = '')
 		if ($table == 'comments' && $output)
 		{
 			$output .= '#comment-' . $id;
-		}
-
-		/* store in cache */
-
-		if ($output)
-		{
-			$route[$table . $id] = $output;
 		}
 	}
 	return $output;
