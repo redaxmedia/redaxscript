@@ -34,7 +34,7 @@ class ModuleTest extends TestCase
 
 		/* result */
 
-		$result = Db::forPrefixTable('modules')->where('alias', 'Test')->findOne()->name;
+		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
 
 		/* compare */
 
@@ -59,7 +59,7 @@ class ModuleTest extends TestCase
 		/* result */
 
 		Db::clearCache();
-		$result = Db::forPrefixTable('modules')->where('alias', 'Test')->findOne();
+		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
 
 		/* compare */
 
