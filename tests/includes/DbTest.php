@@ -73,4 +73,69 @@ class DbTest extends TestCase
 
 		$this->assertInstanceOf('PDO', $result);
 	}
+
+	/**
+	 * testForTablePrefix
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testForTablePrefix()
+	{
+		/* result */
+
+		$result = Db::forTablePrefix('categories')->where('id', 1)->findOne()->alias;
+
+		/* compare */
+
+		$this->assertEquals('home', $result);
+	}
+
+	/**
+	 * testLeftJoinPrefix
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testLeftJoinPrefix()
+	{
+		/* expect and result */
+
+		$expect = array(
+			'category_alias' => 'home',
+			'article_alias' => 'welcome'
+		);
+		$result = Db::forTablePrefix('articles')
+			->tableAlias('a')
+			->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
+			->select('c.alias', 'category_alias')
+			->select('a.alias', 'article_alias')
+			->where('a.id', 1)
+			->findArray();
+		$result = $result[0];
+
+		/* compare */
+
+		$this->assertEquals($expect, $result);
+	}
+
+	/**
+	 * testGetSettings
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testGetSettings()
+	{
+		/* result */
+
+		$result = Db::getSettings('charset');
+
+		/* compare */
+
+		$this->assertEquals('utf-8', $result);
+	}
 }
