@@ -62,9 +62,11 @@ class Minifier
 
 		/* replace tabs and newlines */
 
-		$output = preg_replace('/\t+/', '', $output);
-		$output = preg_replace('/\r+/', '', $output);
-		$output = preg_replace('/\n+/', '', $output);
+		$output = preg_replace(array(
+			'/\t+/',
+			'/\r+/',
+			'/\n+/'
+		), '', $output);
 
 		/* general minify */
 
