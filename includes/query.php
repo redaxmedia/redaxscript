@@ -29,14 +29,14 @@ function query_table($input = '')
 
 	else
 	{
-		$category = Redaxscript\Db::forPrefixTable('categories')->where('alias', $input)->findOne()->id;
+		$category = Redaxscript\Db::forTablePrefix('categories')->where('alias', $input)->findOne()->id;
 		if ($category)
 		{
 			$output = $table[$input] = 'categories';
 		}
 		else
 		{
-			$article = Redaxscript\Db::forPrefixTable('articles')->where('alias', $input)->findOne()->id;
+			$article = Redaxscript\Db::forTablePrefix('articles')->where('alias', $input)->findOne()->id;
 			if ($article)
 			{
 				$output = $table[$input] = 'articles';
@@ -63,41 +63,45 @@ function query_table($input = '')
 
 function build_route($table = '', $id = '')
 {
-	static $route;
-
-	/* fetch from cache */
-
-	if ($route[$table . $id])
+	if ($table && $id)
 	{
-		$output = $route[$table . $id];
-	}
-
-	/* else query */
-
-	else if ($table && $id)
-	{
-		$query = 'SELECT p.alias, c.alias';
-		if ($table != 'categories')
-		{
-			$query .= ', a.alias';
-		}
-		$query .= ' FROM ' . PREFIX . $table . ' AS';
-
 		/* switch table */
 
 		switch ($table)
 		{
 			case 'categories':
-				$query .= ' c LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE c.id = ' . $id;
+				$result = Redaxscript\Db::forTablePrefix('categories')
+					->tableAlias('c')
+					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->select('p.alias', 'parent_alias')
+					->select('c.alias', 'category_alias')
+					->where('c.id', $id)
+					->findArray();
 				break;
 			case 'articles':
-				$query .= ' a LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE a.id = ' . $id;
+				$result = Redaxscript\Db::forTablePrefix('articles')
+					->tableAlias('a')
+					->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
+					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->select('p.alias', 'parent_alias')
+					->select('c.alias', 'category_alias')
+					->select('a.alias', 'article_alias')
+					->where('a.id', $id)
+					->findArray();
 				break;
 			case 'comments':
-				$query .= ' m LEFT JOIN ' . PREFIX . 'articles AS a ON m.article = a.id LEFT JOIN ' . PREFIX . 'categories AS c ON a.category = c.id LEFT JOIN ' . PREFIX . 'categories AS p ON c.parent = p.id WHERE m.id = ' . $id;
+				$result = Redaxscript\Db::forTablePrefix('comments')
+					->tableAlias('m')
+					->leftJoinPrefix('articles', 'm.article = a.id', 'a')
+					->leftJoinPrefix('categories', 'a.category = c.id', 'c')
+					->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
+					->select('p.alias', 'parent_alias')
+					->select('c.alias', 'category_alias')
+					->select('a.alias', 'article_alias')
+					->where('m.id', $id)
+					->findArray();
 				break;
 		}
-		$result = Redaxscript\Db::forPrefixTable()->rawQuery($query)->findArray();
 
 		/* collect output */
 
@@ -116,13 +120,6 @@ function build_route($table = '', $id = '')
 		if ($table == 'comments' && $output)
 		{
 			$output .= '#comment-' . $id;
-		}
-
-		/* store in cache */
-
-		if ($output)
-		{
-			$route[$table . $id] = $output;
 		}
 	}
 	return $output;
@@ -147,15 +144,15 @@ function future_update($table = '')
 	if ($table == 'articles')
 	{
 		$general_select_query = 'SELECT id, date FROM ' . PREFIX . 'articles WHERE date < \'' . NOW . '\' && status = 2';
-		$general_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($general_select_query)->findArray();
+		$general_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($general_select_query)->findArray();
 		if ($general_result)
 		{
 			foreach ($general_result as $r)
 			{
 				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET date = \'' . $r['date'] . '\', status = 1 WHERE article = ' . $r['id'] . ' && status = 2';
-				Redaxscript\Db::forPrefixTable('users')->rawExecute($comments_update_query);
+				Redaxscript\Db::forTablePrefix('users')->rawExecute($comments_update_query);
 			}
 		}
 	}
-	Redaxscript\Db::forPrefixTable('users')->rawExecute($general_update_query);
+	Redaxscript\Db::forTablePrefix('users')->rawExecute($general_update_query);
 }

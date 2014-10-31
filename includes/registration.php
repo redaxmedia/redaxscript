@@ -92,7 +92,7 @@ function registration_post()
 		$r['description'] = '';
 		$r['language'] = LANGUAGE;
 		$r['first'] = $r['last'] = NOW;
-		$r['groups'] = Redaxscript\Db::forPrefixTable('groups')->where('alias', 'members')->findOne()->id;
+		$r['groups'] = Redaxscript\Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
 		if ($r['groups'] == '')
 		{
 			$r['groups'] = 0;
@@ -131,7 +131,7 @@ function registration_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if (Redaxscript\Db::forPrefixTable('users')->where('user', $user)->findOne()->id)
+	else if (Redaxscript\Db::forTablePrefix('users')->where('user', $user)->findOne()->id)
 	{
 		$error = l('user_exists');
 	}
@@ -196,7 +196,7 @@ function registration_post()
 		/* insert user */
 
 		$query = 'INSERT INTO ' . PREFIX . 'users (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::forPrefixTable('users')->rawExecute($query);
+		Redaxscript\Db::forTablePrefix('users')->rawExecute($query);
 	}
 
 	/* handle error */

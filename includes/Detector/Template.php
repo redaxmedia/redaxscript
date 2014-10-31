@@ -34,7 +34,7 @@ class Template extends Detector
 		$this->_detect(array(
 			'query' => Request::getQuery('t'),
 			'session' => Request::getSession($root . '/template'),
-			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->template : null,
+			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
 			'fallback' => 'default'
 		), 'template', 'templates/{value}/index.phtml');

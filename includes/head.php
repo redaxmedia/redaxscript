@@ -19,7 +19,7 @@ function head()
 		/* query contents */
 
 		$query = 'SELECT title, description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
-		$result = Redaxscript\Db::forPrefixTable(LAST_TABLE)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(LAST_TABLE)->rawQuery($query)->findArray();
 		if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
@@ -144,16 +144,16 @@ function head()
 	{
 		if (SECOND_TABLE == 'categories')
 		{
-			$category = Redaxscript\Db::forPrefixTable(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
+			$category = Redaxscript\Db::forTablePrefix(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
 		}
 		else
 		{
-			$category = Redaxscript\Db::forPrefixTable(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
+			$category = Redaxscript\Db::forTablePrefix(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
 		}
 
 		/* total articles of category */
 
-		$articles_total = Redaxscript\Db::forPrefixTable('articles')->where('category', $category)->count();
+		$articles_total = Redaxscript\Db::forTablePrefix('articles')->where('category', $category)->count();
 		if ($articles_total == 1)
 		{
 			$canonical_route = FIRST_PARAMETER;

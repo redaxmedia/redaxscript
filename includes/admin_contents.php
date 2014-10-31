@@ -20,8 +20,8 @@ function admin_contents_list()
 	$table_new = TABLE_NEW;
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$articles_total = Redaxscript\Db::forPrefixTable('articles')->count();
-		$articles_comments_disable = Redaxscript\Db::forPrefixTable('articles')->where('comments', 0)->count();
+		$articles_total = Redaxscript\Db::forTablePrefix('articles')->count();
+		$articles_comments_disable = Redaxscript\Db::forTablePrefix('articles')->where('comments', 0)->count();
 		if ($articles_total == $articles_comments_disable)
 		{
 			$table_new = 0;
@@ -52,7 +52,7 @@ function admin_contents_list()
 	/* query contents */
 
 	$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-	$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -185,7 +185,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($parent)
 						{
-							$output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
+							$output .= Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
 						}
 						else
 						{
@@ -202,7 +202,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($category)
 						{
-							$output .= Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
+							$output .= Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
 						}
 						else
 						{
@@ -219,7 +219,7 @@ function admin_contents_list()
 						$output .= '<tbody><tr class="row_group"><td colspan="4">';
 						if ($article)
 						{
-							$output .= Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
+							$output .= Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
 						}
 						else
 						{
@@ -281,7 +281,7 @@ function admin_contents_list()
 					{
 						if ($parent)
 						{
-							$parent_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $parent)->findOne()->title;
+							$parent_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
 							$output .= anchor_element('internal', '', 'link_parent', $parent_title, 'admin/edit/categories/' . $parent);
 						}
 						else
@@ -293,7 +293,7 @@ function admin_contents_list()
 					{
 						if ($category)
 						{
-							$category_title = Redaxscript\Db::forPrefixTable('categories')->where('id', $category)->findOne()->title;
+							$category_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
 							$output .= anchor_element('internal', '', 'link_parent', $category_title, 'admin/edit/categories/' . $category);
 						}
 						else
@@ -305,7 +305,7 @@ function admin_contents_list()
 					{
 						if ($article)
 						{
-							$article_title = Redaxscript\Db::forPrefixTable('articles')->where('id', $article)->findOne()->title;
+							$article_title = Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
 							$output .= anchor_element('internal', '', 'link_parent', $article_title, 'admin/edit/articles/' . $article);
 						}
 						else
@@ -321,7 +321,7 @@ function admin_contents_list()
 
 				if (TABLE_EDIT == 1)
 				{
-					$rank_desc = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank');
+					$rank_desc = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
 						$output .= anchor_element('internal', '', 'move_up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
@@ -431,7 +431,7 @@ function admin_contents_form()
 		/* query content */
 
 		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -481,7 +481,7 @@ function admin_contents_form()
 			$comments = 0;
 		}
 		$status = 1;
-		$rank = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->max('rank') + 1;
+		$rank = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank') + 1;
 		$access = 0;
 		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');
@@ -584,7 +584,7 @@ function admin_contents_form()
 			$category_array[l('none')] = 0;
 		}
 		$categories_query = 'SELECT id, title, parent FROM ' . PREFIX . 'categories ORDER BY rank ASC';
-		$categories_result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($categories_query)->findArray();
+		$categories_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($categories_query)->findArray();
 		if ($categories_result)
 		{
 			foreach ($categories_result as $c)
@@ -623,7 +623,7 @@ function admin_contents_form()
 			$articles_query .= ' WHERE comments > 0';
 		}
 		$articles_query .= ' ORDER BY rank ASC';
-		$articles_result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($articles_query)->findArray();
+		$articles_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($articles_query)->findArray();
 		if ($articles_result)
 		{
 			foreach ($articles_result as $a)
@@ -667,7 +667,7 @@ function admin_contents_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT id, name FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($access_query)->findArray();
+		$access_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)

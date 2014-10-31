@@ -135,21 +135,21 @@ function startup()
 
 				if (s('order') == 'asc')
 				{
-					$rank = Redaxscript\Db::forPrefixTable($table)->min('rank');
+					$rank = Redaxscript\Db::forTablePrefix($table)->min('rank');
 				}
 				else if (s('order') == 'desc')
 				{
-					$rank = Redaxscript\Db::forPrefixTable($table)->max('rank');
+					$rank = Redaxscript\Db::forTablePrefix($table)->max('rank');
 				}
 
 				/* if category is published */
 
 				if ($rank)
 				{
-					$status = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->status;
+					$status = Redaxscript\Db::forTablePrefix($table)->where('rank', $rank)->findOne()->status;
 					if ($status == 1)
 					{
-						$id = Redaxscript\Db::forPrefixTable($table)->where('rank', $rank)->findOne()->id;
+						$id = Redaxscript\Db::forTablePrefix($table)->where('rank', $rank)->findOne()->id;
 					}
 				}
 			}
@@ -194,7 +194,7 @@ function startup()
 			}
 			if (LAST_TABLE)
 			{
-				$id = Redaxscript\Db::forPrefixTable(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
+				$id = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
 			}
 		}
 	}

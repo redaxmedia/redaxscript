@@ -106,7 +106,7 @@ function search_post()
 			$query .= ')';
 		}
 		$query .= ' ORDER BY date DESC LIMIT 50';
-		$result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($query)->findArray();
 		$num_rows = count($result);
 		if ($result == '' || $num_rows == '')
 		{

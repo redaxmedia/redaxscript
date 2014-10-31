@@ -91,7 +91,7 @@ function reminder_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if (Redaxscript\Db::forPrefixTable('users')->where('email', $email)->findOne()->id == '')
+	else if (Redaxscript\Db::forTablePrefix('users')->where('email', $email)->findOne()->id == '')
 	{
 		$error = l('email_unknown');
 	}
@@ -100,7 +100,7 @@ function reminder_post()
 		/* query users */
 
 		$query = 'SELECT id, user, password FROM ' . PREFIX . 'users WHERE email = \'' . $email . '\' && status = 1';
-		$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('users')->rawQuery($query)->findArray();
 		if ($result)
 		{
 			foreach ($result as $r)

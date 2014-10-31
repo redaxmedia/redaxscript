@@ -57,7 +57,7 @@ class BreadcrumbTest extends TestCase
 	{
 		/* first parameter */
 
-		$ultra = Db::forPrefixTable('categories')->create();
+		$ultra = Db::forTablePrefix('categories')->create();
 		$ultra->set(array(
 			'title' => 'Ultra',
 			'alias' => 'ultra',
@@ -69,7 +69,7 @@ class BreadcrumbTest extends TestCase
 
 		/* second parameter */
 
-		$lightweight = Db::forPrefixTable('categories')->create();
+		$lightweight = Db::forTablePrefix('categories')->create();
 		$lightweight->set(array(
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
@@ -81,7 +81,7 @@ class BreadcrumbTest extends TestCase
 
 		/* third parameter */
 
-		$cms = Db::forPrefixTable('articles')->create();
+		$cms = Db::forTablePrefix('articles')->create();
 		$cms->set(array(
 			'title' => 'CMS',
 			'alias' => 'cms',
@@ -100,9 +100,9 @@ class BreadcrumbTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forPrefixTable('categories')->where('alias', 'ultra')->deleteMany();
-		Db::forPrefixTable('categories')->where('alias', 'lightweight')->deleteMany();
-		Db::forPrefixTable('articles')->where('alias', 'cms')->deleteMany();
+		Db::forTablePrefix('categories')->where('alias', 'ultra')->deleteMany();
+		Db::forTablePrefix('categories')->where('alias', 'lightweight')->deleteMany();
+		Db::forTablePrefix('articles')->where('alias', 'cms')->deleteMany();
 	}
 
 	/**

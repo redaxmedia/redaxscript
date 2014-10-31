@@ -16,7 +16,7 @@
 function archive()
 {
 	$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 ORDER BY date DESC';
-	$result = Redaxscript\Db::forPrefixTable('articles')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($query)->findArray();
 	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{

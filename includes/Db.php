@@ -12,11 +12,13 @@ use ORM;
  * @category Db
  * @author Henry Ruhs
  *
+ * @method _addJoinSource()
  * @method _setupDb()
  * @method deleteMany()
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @method tableAlias()
  */
 
 class Db extends ORM
@@ -86,10 +88,27 @@ class Db extends ORM
 	 * @return Db
 	 */
 
-	public static function forPrefixTable($table = null, $connection = self::DEFAULT_CONNECTION)
+	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
 		return new self(Config::get('prefix') . $table, array(), $connection);
+	}
+
+	/**
+	 * left join with prefix
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $table name of the table
+	 * @param string $constraint constraint as needed
+	 * @param string $tableAlias alias of the table
+	 *
+	 * @return Db
+	 */
+
+	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
+	{
+		return $this->_addJoinSource('LEFT', Config::get('prefix') . $table, $constraint, $tableAlias);
 	}
 
 	/**
@@ -104,6 +123,6 @@ class Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		return self::forPrefixTable('settings')->where('name', $key)->findOne()->value;
+		return self::forTablePrefix('settings')->where('name', $key)->findOne()->value;
 	}
 }

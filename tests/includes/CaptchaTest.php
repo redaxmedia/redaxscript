@@ -45,7 +45,7 @@ class CaptchaTest extends TestCase
 
 	protected function tearDown()
 	{
-		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
@@ -101,7 +101,7 @@ class CaptchaTest extends TestCase
 	{
 		/* setup */
 
-		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
 
 		/* result */
 
@@ -122,7 +122,7 @@ class CaptchaTest extends TestCase
 	{
 		/* setup */
 
-		Db::forPrefixTable('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
 
 		/* result */
 

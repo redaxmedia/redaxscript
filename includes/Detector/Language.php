@@ -34,7 +34,7 @@ class Language extends Detector
 		$this->_detect(array(
 			'query' => Request::getQuery('l'),
 			'session' => Request::getSession($root . '/language'),
-			'contents' => $lastTable ? Db::forPrefixTable($lastTable)->where('id', $lastId)->findOne()->language : null,
+			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->language : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('language') : null,
 			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'

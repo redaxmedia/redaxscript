@@ -21,7 +21,7 @@ function comments($article = '', $route = '')
 	/* query comments */
 
 	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
-	$result = Redaxscript\Db::forPrefixTable('comments')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
 	if ($result)
 	{
 		$num_rows = count($result);
@@ -40,7 +40,7 @@ function comments($article = '', $route = '')
 		}
 	}
 	$query .= ' LIMIT ' . $offset_string . s('limit');
-	$result = Redaxscript\Db::forPrefixTable('comments')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
 	$num_rows_active = count($result);
 
 	/* handle error */
@@ -245,7 +245,7 @@ function comment_post()
 		$r['language'] = clean($_POST['language'], 0);
 		$r['date'] = clean($_POST['date'], 5);
 		$article = $r['article'] = clean($_POST['article'], 0);
-		$r['rank'] = Redaxscript\Db::forPrefixTable('comments')->max('rank') + 1;
+		$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
 		$r['access'] = clean($_POST['access'], 0);
 		if ($r['access'] == '')
 		{
@@ -355,7 +355,7 @@ function comment_post()
 		/* insert comment */
 
 		$query = 'INSERT INTO ' . PREFIX . 'comments (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::forPrefixTable('comments')->rawExecute($query);
+		Redaxscript\Db::forTablePrefix('comments')->rawExecute($query);
 	}
 
 	/* handle error */

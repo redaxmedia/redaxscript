@@ -26,7 +26,7 @@ function contents()
 	else if (CATEGORY)
 	{
 		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
-		$result = Redaxscript\Db::forPrefixTable('categories')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($query)->findArray();
 		if ($result)
 		{
 			$num_rows = count($result);
@@ -50,7 +50,7 @@ function contents()
 	{
 		$query .= ' LIMIT 0';
 	}
-	$result = Redaxscript\Db::forPrefixTable(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
 	$num_rows_active = count($result);
 
 	/* handle error */
@@ -243,7 +243,7 @@ function extras($filter = '')
 		$query .= ' && status = 1';
 	}
 	$query .= ' ORDER BY rank';
-	$result = Redaxscript\Db::forPrefixTable('extras')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('extras')->rawQuery($query)->findArray();
 
 	/* collect output */
 
@@ -333,7 +333,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 	$date = date(s('date'), strtotime($date));
 	if ($table == 'articles')
 	{
-		$comments_total = Redaxscript\Db::forPrefixTable('comments')->where('article', $id)->count();
+		$comments_total = Redaxscript\Db::forTablePrefix('comments')->where('article', $id)->count();
 	}
 
 	/* collect output */

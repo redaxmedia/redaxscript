@@ -18,7 +18,7 @@ function admin_users_list()
 	/* query users */
 
 	$query = 'SELECT id, name, user, language, first, last, status, groups FROM ' . PREFIX . 'users ORDER BY last DESC';
-	$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('users')->rawQuery($query)->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -95,10 +95,10 @@ function admin_users_list()
 				$groups_array_last = end($groups_array_keys);
 				foreach ($groups_array as $key => $value)
 				{
-					$group_alias = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->alias;
+					$group_alias = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->alias;
 					if ($group_alias)
 					{
-						$group_name = Redaxscript\Db::forPrefixTable('groups')->where('id', $value)->findOne()->name;
+						$group_name = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->name;
 						$output .= anchor_element('internal', '', 'link_parent', $group_name, 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{
@@ -173,7 +173,7 @@ function admin_users_form()
 		/* query user */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'users WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forPrefixTable('users')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('users')->rawQuery($query)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -258,7 +258,7 @@ function admin_users_form()
 		if (GROUPS_EDIT == 1 && USERS_EDIT == 1)
 		{
 			$groups_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-			$groups_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($groups_query)->findArray();
+			$groups_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($groups_query)->findArray();
 			if ($groups_result)
 			{
 				foreach ($groups_result as $g)

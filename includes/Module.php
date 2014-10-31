@@ -55,7 +55,7 @@ class Module
 	{
 		if (isset(static::$_module['name']) && isset(static::$_module['alias']))
 		{
-			$module = Db::forPrefixTable('modules')->create();
+			$module = Db::forTablePrefix('modules')->create();
 			$module->set(static::$_module);
 			$module->save();
 		}
@@ -71,7 +71,7 @@ class Module
 	{
 		if (isset(static::$_module['alias']))
 		{
-			Db::forPrefixTable('modules')->where('alias', static::$_module['alias'])->deleteMany();
+			Db::forTablePrefix('modules')->where('alias', static::$_module['alias'])->deleteMany();
 		}
 	}
 }
