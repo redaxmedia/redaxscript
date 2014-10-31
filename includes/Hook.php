@@ -50,7 +50,7 @@ class Hook
 		$accessValidator = new Validator\Access();
 		$modulesDirectory = new Directory('modules');
 		$modulesAvailable = $modulesDirectory->get();
-		$modulesInstalled = Db::forPrefixTable('modules')->where('status', 1)->findMany();
+		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
 		/* proccess installed modules */
 

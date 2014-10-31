@@ -18,7 +18,7 @@ function admin_groups_list()
 	/* query groups */
 
 	$query = 'SELECT id, name, alias, filter, status FROM ' . PREFIX . 'groups';
-	$result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($query)->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -120,7 +120,7 @@ function admin_groups_form()
 		/* query user */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'groups WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($query)->findArray();
 		$r = $result[0];
 		if ($r)
 		{

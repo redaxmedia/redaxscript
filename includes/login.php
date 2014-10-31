@@ -116,7 +116,7 @@ function login_post()
 			$login_by_email = 1;
 			$users_query .= 'WHERE email = \'' . $post_user . '\' LIMIT 1';
 		}
-		$users_result = Redaxscript\Db::forPrefixTable('users')->rawQuery($users_query)->findArray();
+		$users_result = Redaxscript\Db::forTablePrefix('users')->rawQuery($users_query)->findArray();
 		foreach ($users_result as $r)
 		{
 			foreach ($r as $key => $value)
@@ -181,7 +181,7 @@ function login_post()
 		/* query groups */
 
 		$groups_query = 'SELECT categories, articles, extras, comments, groups, users, modules, settings, filter FROM ' . PREFIX . 'groups WHERE id IN (' . $my_groups . ') && status = 1';
-		$groups_result = Redaxscript\Db::forPrefixTable('groups')->rawQuery($groups_query)->findArray();
+		$groups_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($groups_query)->findArray();
 		if ($groups_result)
 		{
 			$num_rows = count($groups_result);

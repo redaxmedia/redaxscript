@@ -101,7 +101,7 @@ function navigation_list($table = '', $options = '')
 
 	/* query result */
 
-	$result = Redaxscript\Db::forPrefixTable($table)->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix($table)->rawQuery($query)->findArray();
 	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{

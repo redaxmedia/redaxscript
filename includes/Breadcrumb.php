@@ -303,7 +303,7 @@ class Breadcrumb
 
 		/* join first title */
 
-		$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($firstTable)->where('alias', $firstParameter)->findOne()->title;
+		$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($firstTable)->where('alias', $firstParameter)->findOne()->title;
 
 		/* set route if not end */
 
@@ -317,7 +317,7 @@ class Breadcrumb
 		if ($secondTable)
 		{
 			$key++;
-			$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($secondTable)->where('alias', $secondParameter)->findOne()->title;
+			$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($secondTable)->where('alias', $secondParameter)->findOne()->title;
 
 			/* set route if not end */
 
@@ -331,7 +331,7 @@ class Breadcrumb
 			if ($thirdTable)
 			{
 				$key++;
-				$this->_breadcrumbArray[$key]['title'] = Db::forPrefixTable($thirdTable)->where('alias', $thirdParameter)->findOne()->title;
+				$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($thirdTable)->where('alias', $thirdParameter)->findOne()->title;
 			}
 		}
 	}

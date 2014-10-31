@@ -18,7 +18,7 @@ function admin_modules_list()
 	/* query modules */
 
 	$query = 'SELECT id, name, alias, version, status FROM ' . PREFIX . 'modules';
-	$result = Redaxscript\Db::forPrefixTable('modules')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('modules')->rawQuery($query)->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -174,7 +174,7 @@ function admin_modules_form()
 		/* query modules */
 
 		$query = 'SELECT * FROM ' . PREFIX . 'modules WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forPrefixTable('modules')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('modules')->rawQuery($query)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -224,7 +224,7 @@ function admin_modules_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forPrefixTable('users')->rawQuery($access_query)->findArray();
+		$access_result = Redaxscript\Db::forTablePrefix('users')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)
