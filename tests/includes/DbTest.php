@@ -138,4 +138,40 @@ class DbTest extends TestCase
 
 		$this->assertEquals('utf-8', $result);
 	}
+
+	/**
+	 * testOrderGlobal
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testOrderGlobal()
+	{
+		/* result */
+
+		$result = Db::forTablePrefix('categories')->orderGlobal('rank')->findOne()->alias;
+
+		/* compare */
+
+		$this->assertEquals('home', $result);
+	}
+
+	/**
+	 * testLimitGlobal
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testLimitGlobal()
+	{
+		/* result */
+
+		$result = Db::forTablePrefix('categories')->limitGlobal('rank')->findOne()->alias;
+
+		/* compare */
+
+		$this->assertEquals('home', $result);
+	}
 }

@@ -13,6 +13,7 @@ use ORM;
  * @author Henry Ruhs
  *
  * @method _addJoinSource()
+ * @method _addOrderBy()
  * @method _setupDb()
  * @method deleteMany()
  * @method deleteOne()
@@ -124,5 +125,34 @@ class Db extends ORM
 	public static function getSettings($key = null)
 	{
 		return self::forTablePrefix('settings')->where('name', $key)->findOne()->value;
+	}
+
+	/**
+	 * order according to settings
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $column name of the column
+	 *
+	 * @return Db
+	 */
+
+	public function orderGlobal($column = null)
+	{
+		return $this->_addOrderBy($column, self::getSettings('order'));
+	}
+
+	/**
+	 * limit according to settings
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return Db
+	 */
+
+	public function limitGlobal()
+	{
+		$this->_limit = self::getSettings('limit');
+		return $this;
 	}
 }

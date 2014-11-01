@@ -18,8 +18,11 @@ function head()
 	{
 		/* query contents */
 
-		$query = 'SELECT title, description, keywords, access FROM ' . PREFIX . LAST_TABLE . ' WHERE alias = \'' . LAST_PARAMETER . '\' && status = 1';
-		$result = Redaxscript\Db::forTablePrefix(LAST_TABLE)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(LAST_TABLE)
+			->where(array(
+				'alias' => LAST_PARAMETER,
+				'status' => 1
+			))->findArray();
 		if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
