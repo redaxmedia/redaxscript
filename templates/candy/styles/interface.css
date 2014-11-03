@@ -68,7 +68,6 @@
 .list_header > .item_active > a
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#fff, #e2e2e2);
 	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.25em;
 	color: #474747;
@@ -85,7 +84,6 @@
 .list_header > li > .list_children
 {
 	background: #1f1f1f;
-	background: url('templates/candy/images/noise.png'), -webkit-linear-gradient(bottom, #1f1f1f, #111);
 	background: url('templates/candy/images/noise.png'), linear-gradient(bottom, #1f1f1f, #111);
 	border-radius: 0.375em;
 	box-shadow: 0 2px 5px 2px #000;
@@ -116,7 +114,6 @@
 .list_pagination a, .list_pagination span
 {
 	background: #fff;
-	background: -webkit-linear-gradient(#fff, #e2e2e2);
 	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.125em;
 	color: #474747;
@@ -129,7 +126,6 @@
 .list_pagination .item_active span
 {
 	background: #92901b;
-	background: -webkit-linear-gradient(#d0cf20, #92901b);
 	background: linear-gradient(#d0cf20, #92901b);
 	color: #000;
 	text-shadow: 0 1px #d3d25f;
@@ -193,7 +189,6 @@
 .tooltip:after
 {
 	background: #92901b;
-	background: -webkit-linear-gradient(#d0cf20, #92901b);
 	background: linear-gradient(#d0cf20, #92901b);
 	color: #000;
 	border-radius: 0.125em;
@@ -201,7 +196,6 @@
 	left: 110%;
 	text-shadow: 0 1px #d3d25f;
 	top: -1em;
-	-webkit-transition: opacity 0.4s 0.4s ease;
 	transition: opacity 0.4s 0.4s ease;
 	padding: 1em;
 }

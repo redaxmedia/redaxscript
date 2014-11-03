@@ -59,7 +59,6 @@
 	text-align: center;
 	text-indent: 0;
 	top: 0;
-	-webkit-transition: background 0.4s ease;
 	transition: background 0.4s ease;
 	width: 2.25em;
 }

@@ -44,7 +44,6 @@ progress::-webkit-progress-bar
 progress::-webkit-progress-value
 {
 	background: #0090db;
-	background: -webkit-linear-gradient(#0090db, #3197df);
 	background: linear-gradient(#0090db, #3197df);
 }
 

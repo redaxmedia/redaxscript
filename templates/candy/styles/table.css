@@ -28,7 +28,6 @@
 .table_default caption, .table_default thead tr, .table_default tfoot tr
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#fff, #e2e2e2);
 	background: linear-gradient(#fff, #e2e2e2);
 	color: #474747;
 	font-weight: bold;

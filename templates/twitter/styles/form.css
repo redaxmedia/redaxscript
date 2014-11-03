@@ -24,7 +24,6 @@
 .button_default, .button_search
 {
 	background: #f5f5f5;
-	background: -webkit-linear-gradient(#ffffff, #e6e6e6);
 	background: linear-gradient(#ffffff, #e6e6e6);
 	border: 1px solid #ddd;
 	border-radius: 0.25em;
@@ -74,7 +73,6 @@
 	border-radius: 0.25em;
 	color: #555;
 	padding: 0.75em;
-	-webkit-transition: border 0.4s ease, box-shadow 0.4s ease;
 	transition: border 0.4s ease, box-shadow 0.4s ease;
 }
 

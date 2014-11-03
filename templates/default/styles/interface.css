@@ -25,7 +25,6 @@
 .list_breadcrumb
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;
@@ -149,7 +148,6 @@
 .list_header > li:hover, .list_header > .item_touch
 {
 	background: #444;
-	background: -webkit-linear-gradient(#555, #333);
 	background: linear-gradient(#555, #333);
 	box-shadow: 0 0 3px #999;
 }
@@ -165,7 +163,6 @@
 .list_header_children li
 {
 	background: #444;
-	-webkit-transition: background 0.4s ease;
 	transition: background 0.4s ease;
 }
 
@@ -207,7 +204,6 @@
 .list_pagination a, .list_pagination span
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
@@ -222,7 +218,6 @@
 .list_pagination a:hover, .list_pagination a:active
 {
 	background: #33acee;
-	background: -webkit-linear-gradient(#00a2f8, #0090db);
 	background: linear-gradient(#00a2f8, #0090db);
 	border-color: #005da2;
 	color: #fff;
@@ -311,7 +306,6 @@
 .list_tab_default li
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border-radius: 0.25em 0.25em 0 0;
 	margin-right: 0.25em;
@@ -370,7 +364,6 @@
 .tooltip:after
 {
 	background: #0090db;
-	background: -webkit-linear-gradient(#00a2f8, #0090db);
 	background: linear-gradient(#00a2f8, #0090db);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
@@ -379,7 +372,6 @@
 	left: 110%;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
 	top: -0.625em;
-	-webkit-transition: opacity 0.4s 0.4s ease;
 	transition: opacity 0.4s 0.4s ease;
 	padding: 0.75em;
 }

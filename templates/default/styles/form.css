@@ -26,7 +26,6 @@
 .button_default
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border: 1px solid #999;
 	border-radius: 0.25em;
@@ -57,7 +56,6 @@
 .button_default:hover
 {
 	background: #33acee;
-	background: -webkit-linear-gradient(#00a2f8, #0090db);
 	background: linear-gradient(#00a2f8, #0090db);
 }
 
@@ -107,14 +105,12 @@
 .field_select, .field_text, .field_textarea
 {
 	background: #f1f1f1;
-	background: -webkit-linear-gradient(#e2e2e2, #f1f1f1);
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #b9b9b9;
 	border-radius: 0.25em;
 	color: #555;
 	font: 1.125em 'open sans', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	-webkit-transition: background 0.4s ease;
 	transition: background 0.4s ease;
 	padding: 0.5em;
 }
@@ -124,7 +120,6 @@
 .field_select:hover, .field_text:hover, .field_textarea:hover
 {
 	background: #eee;
-	background: -webkit-linear-gradient(#ddd, #eee);
 	background: linear-gradient(#ddd, #eee);
 }
 
@@ -187,7 +182,6 @@
 .button_default[disabled], .field_select[disabled], .field_text[disabled], .field_text[readonly], .field_textarea[disabled], .field_textarea[readonly]
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#dadada, #e8e8e8);
 	background: linear-gradient(#dadada, #e8e8e8);
 	border-color: #a5a5a5;
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
@@ -220,7 +214,6 @@
 .form_search
 {
 	background: #e5e5e5;
-	background: -webkit-linear-gradient(#f9f9f9, #e2e2e2);
 	background: linear-gradient(#f9f9f9, #e2e2e2);
 	border: 1px solid #999;
 	border-radius: 0.25em;

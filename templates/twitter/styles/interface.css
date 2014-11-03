@@ -23,7 +23,6 @@
 .list_breadcrumb
 {
 	background: #fbfbfb;
-	background: -webkit-linear-gradient(#fff, #f5f5f5);
 	background: linear-gradient(#fff, #f5f5f5);
 	border: 1px solid #ddd;
 	border-radius: 0.25em;
@@ -246,7 +245,6 @@
 	color: #555;
 	left: 110%;
 	top: -1em;
-	-webkit-transition: opacity 0.4s 0.4s ease;
 	transition: opacity 0.4s 0.4s ease;
 	padding: 1em;
 }

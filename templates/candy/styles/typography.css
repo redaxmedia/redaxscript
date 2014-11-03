@@ -108,7 +108,6 @@ pre
 .title_dialog_default, .sidebar .title_extra
 {
 	background: #fff;
-	background: -webkit-linear-gradient(#fff, #e2e2e2);
 	background: linear-gradient(#fff, #e2e2e2);
 	border-radius: 0.125em;
 	color: #474747;

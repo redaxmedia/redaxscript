@@ -43,7 +43,6 @@
 .table_default caption, .table_default thead tr, .table_default tfoot tr
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	font: bold 1.25em 'pt sans narrow', 'trebuchet ms', arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
