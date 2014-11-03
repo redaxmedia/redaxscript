@@ -35,7 +35,6 @@ body
 .header
 {
 	background: #2c2c2c;
-	background: -webkit-linear-gradient(#333, #222);
 	background: linear-gradient(#333, #222);
 	margin-bottom: 2em;
 }

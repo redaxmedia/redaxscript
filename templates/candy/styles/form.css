@@ -24,7 +24,6 @@
 .button_default, .button_search
 {
 	background: #303030;
-	background: -webkit-linear-gradient(#474747, #303030);
 	background: linear-gradient(#474747, #303030);
 	border-radius: 0.375em;
 	box-shadow: inset 0 1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
@@ -47,7 +46,6 @@
 .button_default:hover, .button_search:hover
 {
 	background: #5b5b5b;
-	background: -webkit-linear-gradient(#5b5b5b, #303030);
 	background: linear-gradient(#5b5b5b, #303030);
 	color: #d6d6d6;
 }
@@ -57,7 +55,6 @@
 .button_default:active, .button_search:active
 {
 	background: #3b3b3b;
-	background: -webkit-linear-gradient(bottom, #3b3b3b, #303030);
 	background: linear-gradient(bottom, #3b3b3b, #303030);
 	box-shadow: inset 0 -1px #5e5e5e, 0 1px 1px #000, 0 0 0 4px rgba(255, 255, 255, 0.05);
 	position: relative;
@@ -79,7 +76,6 @@
 .field_search, .field_select, .field_text, .field_textarea
 {
 	background: #1f1f1f;
-	background: -webkit-linear-gradient(#282828, #1f1f1f);
 	background: linear-gradient(#282828, #1f1f1f);
 	border: 1px solid #262626;
 	border-radius: 0.375em;

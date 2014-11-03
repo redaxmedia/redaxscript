@@ -25,7 +25,6 @@
 .button_admin
 {
 	background: #3b3b3b;
-	background: -webkit-linear-gradient(#3b3b3b, #303030);
 	background: linear-gradient(#3b3b3b, #303030);
 	border: 1px solid #151515;
 	border-radius: 0.25em;
@@ -48,7 +47,6 @@
 .button_admin:hover
 {
 	background: #474747;
-	background: -webkit-linear-gradient(#474747, #3b3b3b);
 	background: linear-gradient(#474747, #3b3b3b);
 	color: #eee;
 }
@@ -58,7 +56,6 @@
 .button_admin:active
 {
 	background: #4cb4ff;
-	background: -webkit-linear-gradient(#4cb4ff, #0090db);
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
@@ -104,14 +101,12 @@
 .field_select_admin, .field_text_admin, .field_textarea_admin
 {
 	background: #f1f1f1;
-	background: -webkit-linear-gradient(#e2e2e2, #f1f1f1);
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
 	color: #6a6a6a;
 	font: 1em arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	-webkit-transition: background 0.4s ease;
 	transition: background 0.4s ease;
 	padding: 0.5em;
 }
@@ -128,7 +123,6 @@
 .field_select_admin:focus, .field_text_admin:focus, .field_textarea_admin:focus
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#f1f1f1, #e2e2e2);
 	background: linear-gradient(#f1f1f1, #e2e2e2);
 	border-color: #ababab;
 	box-shadow: 0 0 3px #fff;
@@ -163,7 +157,6 @@
 .field_select_admin[disabled], .field_text_admin[disabled], .field_text_admin[readonly], .field_textarea_admin[disabled], .field_textarea_admin[readonly]
 {
 	background: #d4d4d4;
-	background: -webkit-linear-gradient(#d4d4d4, #e2e2e2);
 	background: linear-gradient(#d4d4d4, #e2e2e2);
 	border-color: #d5d5d5;
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);

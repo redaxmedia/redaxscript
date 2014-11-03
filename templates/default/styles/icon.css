@@ -14,7 +14,6 @@
 .icon_flag
 {
 	background: #3db1f1;
-	background: -webkit-linear-gradient(#00a2f8, #0090db);
 	background: linear-gradient(#00a2f8, #0090db);
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
 	color: #fff;

@@ -36,7 +36,6 @@
 .table_admin tbody:nth-child(odd) tr
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#e2e2e2, #dadada);
 	background: linear-gradient(#e2e2e2, #dadada);
 }
 
@@ -45,7 +44,6 @@
 .table_admin tbody:nth-child(even) tr
 {
 	background: #ebebeb;
-	background: -webkit-linear-gradient(#ebebeb, #e8e8e8);
 	background: linear-gradient(#ebebeb, #e8e8e8);
 }
 
@@ -145,7 +143,6 @@
 	display: block;
 	min-height: 3em;
 	position: relative;
-	-webkit-transition: color 0.4s ease;
 	transition: color 0.4s ease;
 }
 

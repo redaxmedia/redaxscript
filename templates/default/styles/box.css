@@ -94,7 +94,6 @@
 .box_infoline
 {
 	background: #b9b9b9;
-	background: -webkit-linear-gradient(#ccc, #b9b9b9);
 	background: linear-gradient(#ccc, #b9b9b9);
 	border-radius: 0.25em;
 	display: inline-block;

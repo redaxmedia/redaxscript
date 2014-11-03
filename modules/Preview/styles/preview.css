@@ -28,7 +28,6 @@
 .preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover
 {
 	background: #3db1f1;
-	background: -webkit-linear-gradient(#3db1f1, #0090db);
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);

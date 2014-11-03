@@ -39,7 +39,6 @@
 .box_default
 {
 	background: #e2e2e2;
-	background: -webkit-linear-gradient(#fff, #e2e2e2);
 	background: linear-gradient(#fff, #e2e2e2);
 	color: #474747;
 	border-radius: 0.25em;
