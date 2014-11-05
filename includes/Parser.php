@@ -37,7 +37,7 @@ class Parser
 	 * @var string
 	 */
 
-	private $_output;
+	protected $_output;
 
 	/**
 	 * route of the content

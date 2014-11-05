@@ -71,7 +71,7 @@ class ShareThis extends Config
 	 * @return string
 	 */
 
-	protected static function _render($url = null)
+	public static function render($url = null)
 	{
 		$output = '';
 		if ($url)

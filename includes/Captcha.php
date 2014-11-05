@@ -27,7 +27,7 @@ class Captcha
 	 * @var string
 	 */
 
-	private $_task;
+	protected $_task;
 
 	/**
 	 * solution to the task
@@ -35,7 +35,7 @@ class Captcha
 	 * @var integer
 	 */
 
-	private $_solution;
+	protected $_solution;
 
 	/**
 	 * allowed range for the task

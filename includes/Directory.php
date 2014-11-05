@@ -20,7 +20,7 @@ class Directory
 	 * @var string
 	 */
 
-	private $_directory;
+	protected $_directory;
 
 	/**
 	 * array of directories
@@ -28,7 +28,7 @@ class Directory
 	 * @var array
 	 */
 
-	private $_directoryArray;
+	protected $_directoryArray;
 
 	/**
 	 * array of files to exclude
@@ -47,7 +47,7 @@ class Directory
 	 * @var array
 	 */
 
-	private static $_cache = array();
+	protected static $_cache = array();
 
 	/**
 	 * constructor of the class

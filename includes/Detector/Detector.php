@@ -30,7 +30,7 @@ abstract class Detector
 	 * @var string
 	 */
 
-	private $_output;
+	protected $_output;
 
 	/**
 	 * constructor of the class

@@ -114,7 +114,7 @@ class Preview extends Module
 	 * @return string
 	 */
 
-	protected static function _render($alias = null, $path = null)
+	public static function render($alias = null, $path = null)
 	{
 		/* collect title output */
 
