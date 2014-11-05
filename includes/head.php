@@ -16,13 +16,16 @@ function head()
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
 	{
-		/* query contents */
+		/* fetch result */
 
 		$result = Redaxscript\Db::forTablePrefix(LAST_TABLE)
 			->where(array(
 				'alias' => LAST_PARAMETER,
 				'status' => 1
 			))->findArray();
+
+		/* process result */
+
 		if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();

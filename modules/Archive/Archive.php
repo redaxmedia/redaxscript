@@ -2,8 +2,9 @@
 namespace Redaxscript\Modules\Archive;
 
 use Redaxscript\Db;
-use Redaxscript\Module;
+use Redaxscript\Element;
 use Redaxscript\Registry;
+use Redaxscript\Validator;
 
 /**
  * generate a archive tree
@@ -15,7 +16,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Archive extends Module
+class Archive extends Config
 {
 	/**
 	 * custom module setup
@@ -44,6 +45,11 @@ class Archive extends Module
 	public static function render()
 	{
 		$output = '';
+		$linkElement = new Element('a');
+		$listElement = new Element('ul');
+
+		/* fetch result */
+
 		$result = Db::forTablePrefix('articles')
 			->where(array(
 				'language' => Registry::get('language') || null,
@@ -51,5 +57,38 @@ class Archive extends Module
 			))
 			->orderDesc('date')
 			->findArray();
+
+		/* process result */
+
+		if (is_empty($result))
+		{
+			$error = l('article_no') . l('point');
+		}
+		else
+		{
+			$accessValidator = new Validator\Access();
+			foreach ($result as $value)
+			{
+				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
+				{
+					$output .= '<li>' . $linkElement->text($value['text']) . '</li>';
+				}
+			}
+		}
+
+		/* handle error */
+
+		if ($error)
+		{
+			$output = '<li>' . $error . '</li>';
+		}
+
+		/* collect list output */
+
+		if ($output)
+		{
+			$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+		}
+		return $output;
 	}
 }
