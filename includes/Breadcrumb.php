@@ -291,7 +291,7 @@ class Breadcrumb
 	 * @param integer $key
 	 */
 
-    protected function _buildContent($key = 0)
+	protected function _buildContent($key = 0)
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');
