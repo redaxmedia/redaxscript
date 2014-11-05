@@ -23,7 +23,7 @@ class Directory
 	protected $_directory;
 
 	/**
-	 * array of directories
+	 * array of directory
 	 *
 	 * @var array
 	 */

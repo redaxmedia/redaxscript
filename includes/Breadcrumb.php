@@ -33,7 +33,7 @@ class Breadcrumb
 	protected $_language;
 
 	/**
-	 * array to store the nodes of the breadcrumb
+	 * array of the breadcrumb
 	 *
 	 * @var array
 	 */

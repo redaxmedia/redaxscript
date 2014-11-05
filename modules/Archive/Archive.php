@@ -1,7 +1,9 @@
 <?php
 namespace Redaxscript\Modules\Archive;
 
+use Redaxscript\Db;
 use Redaxscript\Module;
+use Redaxscript\Registry;
 
 /**
  * generate a archive tree
@@ -32,7 +34,7 @@ class Archive extends Module
 	);
 
 	/**
-	 * render the breadcrumb trail as an unordered list
+	 * render
 	 *
 	 * @since 2.2.0
 	 *
@@ -41,17 +43,13 @@ class Archive extends Module
 
 	public static function render()
 	{
-
-	}
-
-	/**
-	 * build the archive array
-	 *
-	 * @since 2.2.0
-	 */
-
-	private static function _build()
-	{
-
+		$output = '';
+		$result = Db::forTablePrefix('articles')
+			->where(array(
+				'language' => Registry::get('language') || null,
+				'status' => 1
+			))
+			->orderDesc('date')
+			->findArray();
 	}
 }
