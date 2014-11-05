@@ -37,16 +37,16 @@ class DirectoryTest extends TestCase
 	}
 
 	/**
-	 * providerGet
+	 * providerGetArray
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerGet()
+	public function providerGetArray()
 	{
-		return $this->getProvider('tests/provider/directory_get.json');
+		return $this->getProvider('tests/provider/directory_get_array.json');
 	}
 
 	/**
@@ -76,7 +76,7 @@ class DirectoryTest extends TestCase
 	}
 
 	/**
-	 * testGet
+	 * testGetArray
 	 *
 	 * @since 2.1.0
 	 *
@@ -84,10 +84,10 @@ class DirectoryTest extends TestCase
 	 * @param mixed $exclude
 	 * @param array $expect
 	 *
-	 * @dataProvider providerGet
+	 * @dataProvider providerGetArray
 	 */
 
-	public function testGet($path = null, $exclude = null, $expect = array())
+	public function testGetArray($path = null, $exclude = null, $expect = array())
 	{
 		/* setup */
 
@@ -95,7 +95,7 @@ class DirectoryTest extends TestCase
 
 		/* result */
 
-		$result = $directory->get();
+		$result = $directory->getArray();
 
 		/* compare */
 

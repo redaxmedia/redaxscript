@@ -106,16 +106,16 @@ class BreadcrumbTest extends TestCase
 	}
 
 	/**
-	 * providerGet
+	 * providerGetArray
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerGet()
+	public function providerGetArray()
 	{
-		return $this->getProvider('tests/provider/breadcrumb_get.json');
+		return $this->getProvider('tests/provider/breadcrumb_get_array.json');
 	}
 
 	/**
@@ -132,17 +132,17 @@ class BreadcrumbTest extends TestCase
 	}
 
 	/**
-	 * testGet
+	 * testGetArray
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param array $registry
 	 * @param array $expect
 	 *
-	 * @dataProvider providerGet
+	 * @dataProvider providerGetArray
 	 */
 
-	public function testGet($registry = array(), $expect = array())
+	public function testGetArray($registry = array(), $expect = array())
 	{
 		/* setup */
 
@@ -157,7 +157,7 @@ class BreadcrumbTest extends TestCase
 
 		/* result */
 
-		$result = $breadcrumb->get();
+		$result = $breadcrumb->getArray();
 
 		/* compare */
 

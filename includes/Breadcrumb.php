@@ -93,7 +93,7 @@ class Breadcrumb
 	 * @return array
 	 */
 
-	public function get()
+	public function getArray()
 	{
 		return $this->_breadcrumbArray;
 	}

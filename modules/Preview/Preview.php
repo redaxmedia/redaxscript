@@ -75,7 +75,7 @@ class Preview extends Module
 		{
 			$partialsPath = 'modules/Preview/partials/';
 			$partialsDirectory = new Directory($partialsPath);
-			$partialsDirectoryArray = $partialsDirectory->get();
+			$partialsDirectoryArray = $partialsDirectory->getArray();
 
 			/* collect partial output */
 

@@ -88,14 +88,14 @@ class Directory
 	}
 
 	/**
-	 * get item from directory
+	 * get the directory array for further processing
 	 *
 	 * @since 2.0.0
 	 *
 	 * @return array
 	 */
 
-	public function get()
+	public function getArray()
 	{
 		return $this->_directoryArray;
 	}
