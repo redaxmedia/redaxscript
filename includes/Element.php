@@ -209,7 +209,7 @@ class Element
 
 		foreach($this->_attributeArray as $key => $value)
 		{
-			if ($value)
+			if (is_string($key) && $value)
 			{
 				$output .= ' ' . $key . '="' . $value . '"';
 			}

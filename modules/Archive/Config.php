@@ -23,6 +23,7 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
+			'headline' => 'title_content_sub title_archive',
 			'list' => 'list_default list_archive'
 		)
 	);
