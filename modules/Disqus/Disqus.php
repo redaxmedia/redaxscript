@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
+use Redaxscript\Element;
 use Redaxscript\Registry;
 
 /**
@@ -56,7 +57,7 @@ class Disqus extends Config
 	{
 		if (Registry::get('article'))
 		{
-			Registry::set('commentReplace', 1);
+			Registry::set('commentsReplace', 1);
 		}
 	}
 
