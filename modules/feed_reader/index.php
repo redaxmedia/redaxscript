@@ -85,7 +85,7 @@ function feed_reader($url = '', $options = '')
 		{
 			/* define variables */
 
-			$title = entity(trim($value->title));
+			$title = trim($value->title);
 			if ($title)
 			{
 				$title = truncate(strip_tags($title), $option_truncate_title, '...');
@@ -98,7 +98,7 @@ function feed_reader($url = '', $options = '')
 				$route = $value->link['href'];
 				$time = date(s('time'), strtotime($value->updated));
 				$date = date(s('date'), strtotime($value->updated));
-				$text = entity(trim($value->content));
+				$text = trim($value->content);
 			}
 
 			/* else if rss feed */
@@ -108,7 +108,7 @@ function feed_reader($url = '', $options = '')
 				$route = $value->link;
 				$time = date(s('time'), strtotime($value->pubDate));
 				$date = date(s('date'), strtotime($value->pubDate));
-				$text = entity(trim($value->description));
+				$text = trim($value->description);
 			}
 			if ($text)
 			{

@@ -56,7 +56,7 @@ class WebApp extends Module
 		if (Registry::get('firstParameter') === 'manifest_webapp')
 		{
 			header('content-type: application/x-web-app-manifest+json');
-			include_once('modules/web_app/files/manifest.json');
+			include_once('modules/WebApp/files/manifest.json');
 			Registry::set('renderBreak', 1);
 		}
 	}
@@ -81,7 +81,7 @@ class WebApp extends Module
 
 	public static function headEnd()
 	{
-		$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
+		$output = '<link href="' . ROOT . '/modules/WebApp/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
 		echo $output;
 	}
 }
