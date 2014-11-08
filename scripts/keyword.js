@@ -28,9 +28,10 @@
 
 		target.each(function ()
 		{
-			var that = $(this);
+			var that = $(this),
+				text = $.trim(that.text().toLowerCase());
 
-			$.merge(keywordArray, that.text().toLowerCase().split(' '));
+			$.merge(keywordArray, text.split(' '));
 		});
 
 		/* join array */

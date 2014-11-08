@@ -56,8 +56,8 @@ class ShareThis extends Config
 		if (Registry::get('lastTable') === 'articles')
 		{
 			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
-			$output = self::_render($url);
-			return $output;
+			$output = self::render($url);
+			echo $output;
 		}
 	}
 
@@ -79,7 +79,9 @@ class ShareThis extends Config
 			/* html elements */
 
 			$linkElement = new Element('a');
-			$listElement = new Element('ul');
+			$listElement = new Element('ul', array(
+					'class' => self::$_config['className']['list'])
+			);
 
 			/* process network */
 
@@ -98,7 +100,7 @@ class ShareThis extends Config
 
 			if ($output)
 			{
-				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+				$output = $listElement->html($output);
 			}
 		}
 		return $output;

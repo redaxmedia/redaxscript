@@ -85,7 +85,7 @@ class Preview extends Module
 
 			if (Registry::get('secondParameter'))
 			{
-				$output .= self::_render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml');
+				$output .= self::render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml');
 			}
 
 			/* else include all */
@@ -95,7 +95,7 @@ class Preview extends Module
 				foreach ($partialsDirectoryArray as $partial)
 				{
 					$alias = str_replace('.phtml', '', $partial);
-					$output .= self::_render($alias, $partialsPath . $partial);
+					$output .= self::render($alias, $partialsPath . $partial);
 				}
 			}
 			$output .= '</div>' . PHP_EOL;

@@ -8,12 +8,13 @@
  * 5. support
  * 6. version
  * 7. clean alias
- * 8. auto resize
- * 9. validate search
- * 10. enable indent
- * 11. unmask password
+ * 8. fetch keyword
+ * 9. auto resize
+ * 10. validate search
+ * 11. enable indent
+ * 12. unmask password
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -102,7 +103,27 @@
 			});
 		}
 
-		/* @section 8. auto resize */
+		/* @section 8. fetch keyword */
+
+		if (typeof $.fn.fetchKeyword === 'function')
+		{
+			win.test('generateKeyword', function ()
+			{
+				var expect = 'hello world',
+					result = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum', {
+						element:
+						{
+							target: 'h1, h2, h3, strong'
+						},
+						delimiter: ' ',
+						limit: 10
+					});
+
+				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+			});
+		}
+
+		/* @section 9. auto resize */
 
 		if (typeof $.fn.autoResize === 'function')
 		{
@@ -124,7 +145,7 @@
 			});
 		}
 
-		/* @section 9. validate search */
+		/* @section 10. validate search */
 
 		if (typeof $.fn.validateSearch === 'function' && r.support.input.placeholder)
 		{
@@ -143,7 +164,7 @@
 			});
 		}
 
-		/* @section 10. enable indent */
+		/* @section 11. enable indent */
 
 		if (typeof $.fn.enableIndent === 'function')
 		{
@@ -163,7 +184,7 @@
 			});
 		}
 
-		/* @section 11. unmask password  */
+		/* @section 12. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{
