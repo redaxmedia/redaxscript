@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\Archive;
 
 use Redaxscript\Db;
 use Redaxscript\Element;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Validator;
 
@@ -69,7 +70,7 @@ class Archive extends Config
 
 		if (empty($result))
 		{
-			$error = l('article_no') . l('point');
+			$error = Language::get('article_no') . Language::get('point');
 		}
 		else
 		{
@@ -92,7 +93,7 @@ class Archive extends Config
 							$output .= $listElement->html($outputItem);
 							$outputItem = '';
 						}
-						$output .= $headlineElement->text(l($value['month'] - 1, '_month') . ' ' . $value['year']);
+						$output .= $headlineElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
 					}
 
 					/* collect item output */
@@ -124,7 +125,7 @@ class Archive extends Config
 
 		if (count($result) === $accessDeny)
 		{
-			$error = l('access_no') . l('point');
+			$error = Language::get('access_no') . Language::get('point');
 		}
 
 		/* handle error */

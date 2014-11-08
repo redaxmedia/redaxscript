@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -44,7 +45,7 @@ class Preview extends Module
 		if (Registry::get('firstParameter') === 'preview')
 		{
 			global $loader_modules_styles;
-			$loader_modules_styles[] = 'modules/preview/styles/preview.css';
+			$loader_modules_styles[] = 'modules/Preview/styles/preview.css';
 		}
 	}
 
@@ -58,8 +59,8 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			Registry::set('title', l('preview', '_preview'));
-			Registry::set('title', l('description', '_preview'));
+			Registry::set('title', Language::get('preview', '_preview'));
+			Registry::set('description', Language::get('description', '_preview'));
 			Registry::set('centerBreak', 1);
 		}
 	}

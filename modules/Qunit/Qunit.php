@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Qunit;
 
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -75,8 +76,8 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			Registry::set('title', l('qunit', '_qunit'));
-			Registry::set('description', l('description', '_qunit'));
+			Registry::set('title', Language::get('qunit', '_qunit'));
+			Registry::set('description', Language::get('description', '_qunit'));
 			Registry::set('centerBreak', 1);
 		}
 	}
