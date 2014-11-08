@@ -1,6 +1,7 @@
 {
-	"preview":
+	"_preview":
 	{
-		"preview": "Avant-première"
+		"preview": "Avant-première",
+		"description": "Overview of the elements"
 	}
 }

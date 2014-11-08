@@ -1,5 +1,5 @@
 {
-	"qunit":
+	"_qunit":
 	{
 		"qunit": "QUnit",
 		"description": "Javascript unit testing",

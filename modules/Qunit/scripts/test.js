@@ -37,7 +37,7 @@
 			var expect = 'function',
 				result = typeof $;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 2. globals */
@@ -47,7 +47,7 @@
 			var expect = 'object',
 				result = typeof r && typeof l;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 3. base url */
@@ -57,7 +57,7 @@
 			var expect = 'string',
 				result = typeof r.baseURL;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 4. constants */
@@ -67,7 +67,7 @@
 			var expect = 'number',
 				result = typeof Object.keys(r.constants).length;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 5. support */
@@ -77,7 +77,7 @@
 			var expect = 'number',
 				result = typeof Object.keys(r.support).length;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 6. version */
@@ -87,7 +87,7 @@
 			var expect = 'string',
 				result = typeof r.version;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 7. clean alias */
@@ -99,7 +99,7 @@
 				var expect = 'hello-world',
 					result = $.fn.cleanAlias(dummy);
 
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
@@ -119,7 +119,7 @@
 						limit: 10
 					});
 
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
@@ -136,12 +136,12 @@
 				/* trigger focus */
 
 				result = textarea.trigger('focus').attr('rows');
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 
 				/* trigger input */
 
 				result = textarea.val(dummy).trigger('input').attr('rows');
-				win.notEqual(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.notEqual(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
@@ -160,7 +160,7 @@
 
 				form.submit();
 				result = input.attr('placeholder');
-				win.equal(result, expect, l.qunit_attribute_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_attribute_expected + l.colon + ' ' + expect);
 			});
 		}
 
@@ -180,7 +180,7 @@
 				/* trigger keydown */
 
 				result = textarea.trigger(keydown).val();
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
@@ -201,13 +201,13 @@
 				/* trigger keydown */
 
 				result = input.trigger(keydown).attr('type');
-				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 
 				/* trigger blur */
 
 				expect = 'password';
 				result = input.trigger('blur').attr('type');
-				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 			});
 		}
 	});

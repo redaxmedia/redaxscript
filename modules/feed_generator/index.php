@@ -20,11 +20,11 @@ function feed_list()
 
 	if ($articles_total > 0)
 	{
-		$output = '<li>' . anchor_element('internal', '', '', l('feed_articles', 'feed_generator'), 'feed/articles', '', 'rel="nofollow"') . '</li>';
+		$output = '<li>' . anchor_element('internal', '', '', l('feed_articles', '_feed_generator'), 'feed/articles', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($comments_total > 0)
 	{
-		$output .= '<li>' . anchor_element('internal', '', '', l('feed_comments', 'feed_generator'), 'feed/comments', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li>' . anchor_element('internal', '', '', l('feed_comments', '_feed_generator'), 'feed/comments', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($articles_total > 0 || $comments_total > 0)
 	{
@@ -122,7 +122,7 @@ function feed_generator($table = '')
 		{
 			$output .= '<rights>' . $copyright . '</rights>' . PHP_EOL;
 		}
-		$output .= '<generator>' . l('redaxscript') . ' ' . l('redaxscript_version') . '</generator>' . PHP_EOL . PHP_EOL;
+		$output .= '<generator>' . l('name', '_package') . ' ' . l('version', '_package') . '</generator>' . PHP_EOL . PHP_EOL;
 
 		/* collect feed body output */
 

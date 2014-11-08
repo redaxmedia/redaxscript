@@ -1,6 +1,7 @@
 {
-	"preview":
+	"_preview":
 	{
-		"preview": "Xem Trước"
+		"preview": "Xem Trước",
+		"description": "Overview of the elements"
 	}
 }

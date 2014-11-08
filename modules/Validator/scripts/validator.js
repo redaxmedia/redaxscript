@@ -74,27 +74,27 @@
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="' + options.className.validatorDescription + '">' + l.validator.from + l.colon + ' ';
+							output += '<li class="' + options.className.validatorDescription + '">' + l._validator.from + l.colon + ' ';
 
 							/* first wording */
 
 							if (firstLine && firstColumn)
 							{
-								output += l.validator.line + ' ' + firstLine + l.comma + ' ' + l.validator.column + ' ' + firstColumn;
+								output += l._validator.line + ' ' + firstLine + l.comma + ' ' + l._validator.column + ' ' + firstColumn;
 							}
 
 							/* to wording */
 
 							if (firstLine && firstColumn && lastLine && lastColumn)
 							{
-								output += ' ' + l.validator.to + ' ';
+								output += ' ' + l._validator.to + ' ';
 							}
 
 							/* last wording */
 
 							if (lastLine && lastColumn)
 							{
-								output += l.validator.line + ' ' + lastLine + l.comma + ' ' + l.validator.column + ' ' + lastColumn;
+								output += l._validator.line + ' ' + lastLine + l.comma + ' ' + l._validator.column + ' ' + lastColumn;
 							}
 							output += '</li>';
 						}

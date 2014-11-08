@@ -58,7 +58,8 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			Registry::set('title', l('preview', 'preview'));
+			Registry::set('title', l('preview', '_preview'));
+			Registry::set('title', l('description', '_preview'));
 			Registry::set('centerBreak', 1);
 		}
 	}

@@ -75,8 +75,8 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			Registry::set('title', l('qunit', 'qunit'));
-			Registry::set('description', l('description', 'qunit'));
+			Registry::set('title', l('qunit', '_qunit'));
+			Registry::set('description', l('description', '_qunit'));
 			Registry::set('centerBreak', 1);
 		}
 	}
