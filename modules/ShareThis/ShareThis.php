@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\ShareThis;
 use Redaxscript\Registry;
 
 /**
- * integrate social buttons
+ * integrate social networks
  *
  * @since 2.2.0
  *
@@ -25,7 +25,7 @@ class ShareThis extends Config
 		'name' => 'Share this',
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate social buttons',
+		'description' => 'Integrate social networks',
 		'version' => '2.2.0',
 		'status' => 1,
 		'access' => 0

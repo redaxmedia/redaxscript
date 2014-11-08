@@ -237,7 +237,7 @@ function contact_post()
 
 	else
 	{
-		notification(l('operation_completed'), l('message_sent', 'contact'), l('home'), ROOT);
+		notification(l('operation_completed'), l('message_sent', '_contact'), l('home'), ROOT);
 	}
 	$_SESSION[ROOT . '/contact'] = '';
 }
