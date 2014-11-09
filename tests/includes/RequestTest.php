@@ -27,12 +27,12 @@ class RequestTest extends TestCase
 	}
 
 	/**
-	 * testGetAll
+	 * testAll
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGetAll()
+	public function testAll()
 	{
 		/* result */
 
@@ -41,6 +41,27 @@ class RequestTest extends TestCase
 		/* compare */
 
 		$this->assertArrayHasKey('_SERVER', $result);
+	}
+
+	/**
+	 * testGlobals
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGlobals()
+	{
+		/* setup */
+
+		Request::set('testKey', 'testValue');
+
+		/* result */
+
+		$result = Request::get('testKey');
+
+		/* compare */
+
+		$this->assertEquals('testValue', $result);
 	}
 
 	/**

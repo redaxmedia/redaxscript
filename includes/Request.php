@@ -33,7 +33,7 @@ class Request
 	}
 
 	/**
-	 * get item from request
+	 * get item from globals
 	 *
 	 * @since 2.2.0
 	 *
@@ -149,6 +149,20 @@ class Request
 	{
 		$output = self::get($key, '_COOKIE');
 		return $output;
+	}
+
+	/**
+	 * set item to globals
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function set($key = null, $value = null)
+	{
+		self::$_values[$key] = $GLOBALS[$key] = $value;
 	}
 
 	/**
