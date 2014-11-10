@@ -81,7 +81,7 @@ class Preview extends Module
 
 			/* collect partial output */
 
-			$output = '<div class="preview clearfix">' . PHP_EOL;
+			$output = '<div class="preview clearfix">';
 
 			/* include as needed */
 
@@ -100,7 +100,7 @@ class Preview extends Module
 					$output .= self::render($alias, $partialsPath . $partial);
 				}
 			}
-			$output .= '</div>' . PHP_EOL;
+			$output .= '</div>';
 			echo $output;
 		}
 	}
@@ -118,24 +118,21 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-		$output = '';
-		$headlineElement = new Element('h2', array(
-			'title' => $alias
-		));
-		$linkElement = new Element('a', array(
-			'href' => Registry::get('secondParameter') === $alias ? $alias : Registry::get('rewriteRoute') . 'preview/' . $alias
-			'title' => $alias
-		))->text($alias);
+        $headlineElement = new Element('h2', array(
+            'title' => $alias
+        ));
+        $linkElement = new Element('a', array(
+            'href' => Registry::get('secondParameter') === $alias ? $alias : Registry::get('rewriteRoute') . 'preview/' . $alias,
+            'title' => $alias
+        ));
+        $linkElement->text($alias);
 
-		/* collect output */
+        /* collect output */
 
-		$output = $headlineElement->html($linkElement);
-		if (file_exists($path))
-		{
-			ob_start();
-			include_once($path);
-			$output .= ob_get_clean();
-		}
+        $output = $headlineElement->html($linkElement);
+        ob_start();
+        include_once($path);
+        $output .= ob_get_clean();
 		return $output;
 	}
 }

@@ -58,7 +58,7 @@ class Analytics extends Module
 	{
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
-			$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+			$output = '<script src="//google-analytics.com/ga.js"></script>';
 			echo $output;
 		}
 	}

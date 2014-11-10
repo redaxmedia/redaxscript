@@ -59,7 +59,7 @@ class Maps extends Config
 	{
 		if (!Registry::get('adminParameter'))
 		{
-			$output = '<script src="' . self::$_config['apiUrl'] . '?key=' .  self::$_config['apiKey'] . '&amp;sensor=' . self::$_config['sensor'] . '"></script>' . PHP_EOL;
+			$output = '<script src="' . self::$_config['apiUrl'] . '?key=' .  self::$_config['apiKey'] . '&amp;sensor=' . self::$_config['sensor'] . '"></script>';
 			echo $output;
 		}
 	}

@@ -60,7 +60,7 @@ class CallHome extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
-			$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+			$output = '<script src="//google-analytics.com/ga.js"></script>';
 			echo $output;
 		}
 	}
