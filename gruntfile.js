@@ -402,7 +402,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/archive/**'
+					'modules/Archive/**'
 				],
 				options:
 				{
@@ -523,7 +523,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/get_file/**'
+					'modules/GetFile/**'
 				],
 				options:
 				{
@@ -545,7 +545,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/lazy_load/**'
+					'modules/LazyLoad/**'
 				],
 				options:
 				{
@@ -600,7 +600,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/qunit/**'
+					'modules/Qunit/**'
 				],
 				options:
 				{
@@ -611,7 +611,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/recent_view/**'
+					'modules/RecentView/**'
 				],
 				options:
 				{
@@ -633,18 +633,18 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/sitemap/**'
+					'modules/Sitemap/**'
 				],
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/sitemap.zip'
 				}
 			},
-			distModulesSitemapXML:
+			distModulesSitemapXml:
 			{
 				src:
 				[
-					'modules/sitemap_xml/**'
+					'modules/SitemapXml/**'
 				],
 				options:
 				{
