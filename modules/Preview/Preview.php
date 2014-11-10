@@ -118,21 +118,18 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-		/* collect title output */
+		$output = '';
+		$headlineElement = new Element('h2', array(
+			'title' => $alias
+		));
+		$linkElement = new Element('a', array(
+			'href' => Registry::get('secondParameter') === $alias ? $alias : Registry::get('rewriteRoute') . 'preview/' . $alias
+			'title' => $alias
+		))->text($alias);
 
-		$output = '<h2 class="title_content" title="' . $alias . '">' . PHP_EOL;
-		if (Registry::get('secondParameter') === $alias)
-		{
-			$output .= $alias;
-		}
-		else
-		{
-			$output .= '<a href="' . Registry::get('rewriteRoute') . 'preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>' . PHP_EOL;
-		}
-		$output .=  '</h2>' . PHP_EOL;
+		/* collect output */
 
-		/* collect content output */
-
+		$output = $headlineElement->html($linkElement);
 		if (file_exists($path))
 		{
 			ob_start();
