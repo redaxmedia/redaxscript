@@ -60,7 +60,7 @@ function navigation_list($table = '', $options = '')
 
 	/* query contents */
 
-	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
+	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1';
 
 	/* setup parent */
 
@@ -264,7 +264,7 @@ function languages_list($options = '')
 	{
 		$value = substr($value, 0, 2);
 		$class_string = ' class="language_' . $value;
-		if ($value == LANGUAGE)
+		if ($value == Redaxscript\Registry::get('language'))
 		{
 			$class_string .= ' item_active';
 		}
@@ -341,7 +341,7 @@ function templates_list($options = '')
 	foreach ($templates_directory_array as $value)
 	{
 		$class_string = ' class="template_' . $value;
-		if ($value == TEMPLATE)
+		if ($value == Redaxscript\Registry::get('template'))
 		{
 			$class_string .= ' item_active';
 		}

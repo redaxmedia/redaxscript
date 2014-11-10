@@ -71,7 +71,7 @@ function feed_generator($table = '')
 {
 	if ($_GET['l'])
 	{
-		$language = LANGUAGE;
+		$language = Redaxscript\Registry::get('language');
 		$language_route = LANGUAGE_ROUTE;
 	}
 

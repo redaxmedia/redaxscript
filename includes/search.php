@@ -90,7 +90,7 @@ function search_post()
 
 		/* query search */
 
-		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1';
+		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1';
 		if ($search)
 		{
 			$query .= ' && (';

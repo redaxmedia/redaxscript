@@ -57,7 +57,7 @@ class Disqus extends Config
 	{
 		if (Registry::get('article'))
 		{
-			Registry::set('commentsReplace', 1);
+			Registry::set('commentsReplace', true);
 		}
 	}
 

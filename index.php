@@ -116,7 +116,7 @@ if ($modules_include)
 
 		$language->load(array(
 			'modules/' . $value . '/languages/en.json',
-			'modules/' . $value . '/languages/' . LANGUAGE . '.json'
+			'modules/' . $value . '/languages/' . Redaxscript\Registry::get('language') . '.json'
 		));
 
 		/* config */
@@ -169,7 +169,7 @@ else
 		{
 			header('http/1.0 404 not found');
 		}
-		include_once('templates/' . TEMPLATE . '/index.phtml');
+		include_once('templates/' . Redaxscript\Registry::get('template') . '/index.phtml');
 	}
 	Redaxscript\Hook::trigger('render_end');
 }

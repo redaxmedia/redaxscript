@@ -51,7 +51,7 @@ function loader($type = '', $mode = '')
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/' . $type . '/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/' . $type . '/.loader', 1);
 
 	/* inherit from other templates */
 
@@ -66,7 +66,7 @@ function loader($type = '', $mode = '')
 	}
 	else
 	{
-		$template = TEMPLATE;
+		$template = Redaxscript\Registry::get('template');
 	}
 
 	/* startup mode */
@@ -215,7 +215,7 @@ function styles()
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/styles/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/styles/.loader', 1);
 
 	/* inherit from other templates */
 
@@ -296,7 +296,7 @@ function scripts($mode = '')
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . TEMPLATE . '/scripts/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/scripts/.loader', 1);
 
 	/* inherit from other templates */
 

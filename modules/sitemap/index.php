@@ -17,7 +17,7 @@ function sitemap()
 {
 	/* query categories */
 
-	$categories_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'categories WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 && parent = 0 ORDER BY rank ASC';
+	$categories_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'categories WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1 && parent = 0 ORDER BY rank ASC';
 	$categories_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($categories_query)->findArray();
 	$categories_num_rows = count($categories_result);
 
@@ -93,7 +93,7 @@ function sitemap()
 
 	/* query articles */
 
-	$articles_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'articles WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && status = 1 && category = 0 ORDER BY rank ASC';
+	$articles_query = 'SELECT id, title, alias, description, access FROM ' . PREFIX . 'articles WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1 && category = 0 ORDER BY rank ASC';
 	$articles_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($articles_query)->findArray();
 	$articles_num_rows = count($articles_result);
 

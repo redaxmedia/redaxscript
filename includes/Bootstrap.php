@@ -74,8 +74,3 @@ $registry->set('template', $detectorTemplate->getOutput());
 
 $language = Language::getInstance();
 $language->init($registry->get('language'));
-
-/* define deprecated constants */
-
-define('LANGUAGE', $detectorLanguage->getOutput());
-define('TEMPLATE', $detectorTemplate->getOutput());
