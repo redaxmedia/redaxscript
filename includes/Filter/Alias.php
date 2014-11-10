@@ -25,7 +25,7 @@ class Alias implements Filter
 
 	public function sanitize($alias = null)
 	{
-		$output = preg_replace('/\W+/i', ' ', strtolower($alias));
+		$output = preg_replace('/\W+/i', ' ', $alias);
 		$output = preg_replace('/\s+/i', '-', trim($output));
 		return $output;
 	}

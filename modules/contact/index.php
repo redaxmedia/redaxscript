@@ -15,7 +15,7 @@ function contact_render_start()
 {
 	if ($_POST['contact_post'])
 	{
-		define('CENTER_BREAK', 1);
+		Redaxscript\Registry::set('centerBreak', true);
 	}
 }
 

@@ -32,7 +32,7 @@ function fb_group_render_start()
 {
 	if (FIRST_PARAMETER == 'fb-group' && SECOND_PARAMETER == 'get-contents' && (THIRD_PARAMETER == 'members' || THIRD_PARAMETER == 'feed'))
 	{
-		define('RENDER_BREAK', 1);
+		Redaxscript\Registry::set('renderBreak', true);
 		fb_group_get_contents(THIRD_PARAMETER);
 	}
 }

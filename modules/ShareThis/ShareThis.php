@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\ShareThis;
 
+use Redaxscript\Element;
 use Redaxscript\Registry;
 
 /**
@@ -78,10 +79,12 @@ class ShareThis extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Element('a');
+			$linkElement = new Element('a', array(
+				'target' => '_blank'
+			));
 			$listElement = new Element('ul', array(
-					'class' => self::$_config['className']['list'])
-			);
+				'class' => self::$_config['className']['list']
+			));
 
 			/* process network */
 
@@ -90,8 +93,7 @@ class ShareThis extends Config
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(
 					'href' => $value['url'] . $url,
-					'class' => self::$_config['className']['link'] . $value['className'],
-					'target' => '_blank'
+					'class' => self::$_config['className']['link'] . $value['className']
 				))->text($key);
 				$output .= '</li>';
 			}

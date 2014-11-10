@@ -43,9 +43,9 @@ class SitemapXml extends Module
 	{
 		if (Registry::get('firstParameter') === 'sitemap_xml')
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/xml');
 			self::render();
-			Registry::set('renderBreak', 1);
 		}
 	}
 

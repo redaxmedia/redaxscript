@@ -15,9 +15,9 @@ function sitemap_xml_render_start()
 {
 	if (FIRST_PARAMETER == 'sitemap_xml')
 	{
+		Redaxscript\Registry::set('renderBreak', true);
 		header('content-type: application/xml');
 		sitemap_xml();
-		define('RENDER_BREAK', 1);
 	}
 }
 

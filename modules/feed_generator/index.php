@@ -48,7 +48,7 @@ function feed_generator_render_start()
 {
 	if (FIRST_PARAMETER == 'feed' && (SECOND_PARAMETER == 'articles' || SECOND_PARAMETER == 'comments'))
 	{
-		define('RENDER_BREAK', 1);
+		Redaxscript\Registry::set('renderBreak', true);
 		header('content-type: application/atom+xml');
 		feed_generator(SECOND_PARAMETER);
 	}

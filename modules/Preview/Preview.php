@@ -61,7 +61,7 @@ class Preview extends Module
 		{
 			Registry::set('title', Language::get('preview', '_preview'));
 			Registry::set('description', Language::get('description', '_preview'));
-			Registry::set('centerBreak', 1);
+			Registry::set('centerBreak', true);
 		}
 	}
 

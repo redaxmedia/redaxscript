@@ -37,13 +37,8 @@ function file_manager_render_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
 	{
-		define('CENTER_BREAK', 1);
-		define('TITLE', l('file_manager', '_file_manager'));
-
-		/* registry object */
-
-		$registry = Redaxscript\Registry::getInstance();
-		$registry->set('title', l('file_manager', '_file_manager'));
+		Redaxscript\Registry::set('title', l('file_manager', '_file_manager'));
+		Redaxscript\Registry::set('centerBreak', true);
 	}
 }
 

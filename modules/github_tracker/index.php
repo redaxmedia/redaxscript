@@ -32,7 +32,7 @@ function github_tracker_render_start()
 {
 	if (FIRST_PARAMETER == 'github-tracker' && SECOND_PARAMETER == 'get-contents' && (THIRD_PARAMETER == 'milestones' || THIRD_PARAMETER == 'issues'))
 	{
-		define('RENDER_BREAK', 1);
+		Redaxscript\Registry::set('renderBreak', true);
 		github_tracker_get_contents(THIRD_PARAMETER);
 	}
 }

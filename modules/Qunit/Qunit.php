@@ -78,7 +78,7 @@ class Qunit extends Module
 		{
 			Registry::set('title', Language::get('qunit', '_qunit'));
 			Registry::set('description', Language::get('description', '_qunit'));
-			Registry::set('centerBreak', 1);
+			Registry::set('centerBreak', true);
 		}
 	}
 

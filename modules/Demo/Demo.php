@@ -44,7 +44,7 @@ class Demo extends Module
 	{
 		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo' || Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
 		{
-			Registry::set('centerBreak', 1);
+			Registry::set('centerBreak', true);
 		}
 	}
 

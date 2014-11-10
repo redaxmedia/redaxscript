@@ -55,9 +55,9 @@ class WebApp extends Module
 	{
 		if (Registry::get('firstParameter') === 'manifest_webapp')
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/x-web-app-manifest+json');
 			include_once('modules/WebApp/files/manifest.json');
-			Registry::set('renderBreak', 1);
 		}
 	}
 

@@ -26,8 +26,8 @@ function get_parameter($input = '')
 
 		/* clean parameter */
 
-		$specialFilter = new Redaxscript\Filter\Special;
-		$parameter = array_map(array($specialFilter, 'sanitize'), $parameter);
+		$aliasFilter = new Redaxscript\Filter\Alias;
+		$parameter = array_map(array($aliasFilter, 'sanitize'), $parameter);
 		$parameter = array_map('clean', $parameter);
 	}
 
