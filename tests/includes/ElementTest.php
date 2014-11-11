@@ -29,18 +29,30 @@ class ElementTest extends TestCase
 	}
 
 	/**
-	 * providerEdit
+	 * providerAttr
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerEdit()
+	public function providerAttr()
 	{
-		return $this->getProvider('tests/provider/element_edit.json');
+		return $this->getProvider('tests/provider/element_attr.json');
 	}
 
+	/**
+	 * providerClass
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return array
+	 */
+
+	public function providerClass()
+	{
+		return $this->getProvider('tests/provider/element_class.json');
+	}
 	/**
 	 * testCreate
 	 *
@@ -69,30 +81,95 @@ class ElementTest extends TestCase
 	}
 
 	/**
-	 * testEdit
+	 * testAttr
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $attribute
-	 * @param string $html
-	 * @param string $text
+	 * @param array $attribute
 	 * @param string $expect
 	 *
-	 * @dataProvider providerEdit
+	 * @dataProvider providerAttr
 	 */
 
-	public function testEdit($attribute = null, $html = null, $text = null, $expect = null)
+	public function testAttr($attribute = array(), $expect = null)
 	{
 		/* setup */
 
-		$element = new Element('a', array(
-			'href' => 'test',
-			'class' => 'link'
-		));
+		$element = new Element('a');
 
 		/* result */
 
-		$result = $element->removeAttr($attribute)->html($html)->text($text);
+		$result = $element->attr($attribute[0], $attribute[1])->removeAttr($attribute[2])->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $result);
+	}
+
+	/**
+	 * testClass
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param array $className
+	 * @param string $expect
+	 *
+	 * @dataProvider providerClass
+	 */
+
+	public function testClass($className = array(), $expect = null)
+	{
+		/* setup */
+
+		$element = new Element('a');
+
+		/* result */
+
+		$result = $element->addClass($className[0])->removeClass($className[1])->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $result);
+	}
+
+	/**
+	 * testHtml
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testHtml()
+	{
+		/* setup */
+
+		$element = new Element('a');
+
+		/* expect and result */
+
+		$expect = '<a><span>test</span></a>';
+		$result = $element->html('<span>test</span>');
+
+		/* compare */
+
+		$this->assertEquals($expect, $result);
+	}
+
+	/**
+	 * testText
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testText()
+	{
+		/* setup */
+
+		$element = new Element('a');
+
+		/* expect and result */
+
+		$expect = '<a>test</a>';
+		$result = $element->text('<span>test</span>');
 
 		/* compare */
 

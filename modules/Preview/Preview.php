@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
+use Redaxscript\Element;
 use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -75,9 +76,11 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			$partialsPath = 'modules/Preview/partials/';
+			$partialsPath = 'modules/Preview/partials';
+			$partialExtension = '.phtml';
 			$partialsDirectory = new Directory($partialsPath);
 			$partialsDirectoryArray = $partialsDirectory->getArray();
+			$secondParameter = Registry::get('secondParameter');
 
 			/* collect partial output */
 
@@ -85,9 +88,9 @@ class Preview extends Module
 
 			/* include as needed */
 
-			if (Registry::get('secondParameter'))
+			if ($secondParameter)
 			{
-				$output .= self::render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml');
+				$output .= self::render($secondParameter, $partialsPath . '/' . $secondParameter . $partialExtension);
 			}
 
 			/* else include all */
@@ -96,8 +99,8 @@ class Preview extends Module
 			{
 				foreach ($partialsDirectoryArray as $partial)
 				{
-					$alias = str_replace('.phtml', '', $partial);
-					$output .= self::render($alias, $partialsPath . $partial);
+					$alias = str_replace($partialExtension, '', $partial);
+					$output .= self::render($alias, $partialsPath . '/' . $partial);
 				}
 			}
 			$output .= '</div>';
@@ -119,10 +122,11 @@ class Preview extends Module
 	public static function render($alias = null, $path = null)
 	{
         $headlineElement = new Element('h2', array(
+			'class' => 'title_content',
             'title' => $alias
         ));
         $linkElement = new Element('a', array(
-            'href' => Registry::get('secondParameter') === $alias ? $alias : Registry::get('rewriteRoute') . 'preview/' . $alias,
+            'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
             'title' => $alias
         ));
         $linkElement->text($alias);
