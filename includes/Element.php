@@ -55,9 +55,9 @@ class Element
 	protected $_attributeArray = array();
 
 	/**
-	 * classes of the element
+	 * html of the element
 	 *
-	 * @var array
+	 * @var string
 	 */
 
 	protected $_html;
