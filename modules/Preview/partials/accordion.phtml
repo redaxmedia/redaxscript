@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? 'admin' : 'default';
+$suffix = isset($admin) ? '_admin' : '_default';
 $titlePartialElement = new Element('h3', array(
 	'class' => 'title_content_sub'
 ));
@@ -39,7 +39,7 @@ $boxAccordionElement = new Element('div', array(
 
 	<!-- inactive -->
 
-	<?php foreach (array(2, 3, 4, 5) for $value): ?>
+	<?php foreach (array(2, 3, 4, 5) as $value): ?>
 
 		<?php echo $setAccordionElement->html(
 			$titleAccordionElement->text(Language::get($value, '_number')) .
