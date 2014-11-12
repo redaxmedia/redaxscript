@@ -37,7 +37,7 @@ class Parser
 	 * @var string
 	 */
 
-	private $_output;
+	protected $_output;
 
 	/**
 	 * route of the content
@@ -69,26 +69,26 @@ class Parser
 	protected $_delimiter = '@@@';
 
 	/**
-	 * array of pseudo tags and related functions
+	 * array of pseudo tags
 	 *
 	 * @var array
 	 */
 
 	protected $_tags = array(
 		'break' => array(
-			'function' => '_parseBreak',
+			'method' => '_parseBreak',
 			'position' => ''
 		),
 		'code' => array(
-			'function' => '_parseCode',
+			'method' => '_parseCode',
 			'position' => ''
 		),
 		'function' => array(
-			'function' => '_parseFunction',
+			'method' => '_parseFunction',
 			'position' => ''
 		),
 		'module' => array(
-			'function' => '_parseModule',
+			'method' => '_parseModule',
 			'position' => ''
 		)
 	);
@@ -158,12 +158,12 @@ class Parser
 
 			 $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
-			/* call related function if tag found */
+			/* call method if tag found */
 
 			if ($this->_tags[$key]['position'] > -1)
 			{
-				$function = $value['function'];
-				$this->_output = $this->$function($this->_output);
+				$method = $value['method'];
+				$this->_output = $this->$method($this->_output);
 			}
 		}
 	}

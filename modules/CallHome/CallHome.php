@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -59,7 +60,7 @@ class CallHome extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
-			$output = '<script src="//google-analytics.com/ga.js"></script>' . PHP_EOL;
+			$output = '<script src="//google-analytics.com/ga.js"></script>';
 			echo $output;
 		}
 	}
@@ -74,7 +75,7 @@ class CallHome extends Module
 	{
 		$output = '';
 		$aliasFilter = new Filter\Alias();
-		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(l('version', '_package'));
+		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(Language::get('version', '_package'));
 		$urlNews = 'http://service.redaxscript.com/news';
 
 		/* get contents */

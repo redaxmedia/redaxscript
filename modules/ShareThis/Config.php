@@ -32,7 +32,7 @@ class Config extends Module
 				'className' => ' link_facebook',
 				'attribute' => ' data-type="facebook"'
 			),
-			'googleplusone' => array(
+			'google' => array(
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
 				'className' => ' link_googleplusone',
 				'attribute' => ' data-type="googleplusone"'

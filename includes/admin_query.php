@@ -907,6 +907,9 @@ function admin_children($table = '', $id = '', $mode = '')
 
 function admin_last_update()
 {
-	$query = 'UPDATE ' . PREFIX . 'users SET last = \'' . NOW . '\' WHERE id = ' . MY_ID;
-	Redaxscript\Db::forTablePrefix('users')->rawExecute($query);
+	if (MY_ID)
+	{
+		$query = 'UPDATE ' . PREFIX . 'users SET last = \'' . NOW . '\' WHERE id = ' . MY_ID;
+		Redaxscript\Db::forTablePrefix('users')->rawExecute($query);
+	}
 }

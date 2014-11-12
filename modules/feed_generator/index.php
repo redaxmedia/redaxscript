@@ -20,11 +20,11 @@ function feed_list()
 
 	if ($articles_total > 0)
 	{
-		$output = '<li>' . anchor_element('internal', '', '', l('feed_articles', 'feed_generator'), 'feed/articles', '', 'rel="nofollow"') . '</li>';
+		$output = '<li>' . anchor_element('internal', '', '', l('feed_articles', '_feed_generator'), 'feed/articles', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($comments_total > 0)
 	{
-		$output .= '<li>' . anchor_element('internal', '', '', l('feed_comments', 'feed_generator'), 'feed/comments', '', 'rel="nofollow"') . '</li>';
+		$output .= '<li>' . anchor_element('internal', '', '', l('feed_comments', '_feed_generator'), 'feed/comments', '', 'rel="nofollow"') . '</li>';
 	}
 	if ($articles_total > 0 || $comments_total > 0)
 	{
@@ -48,7 +48,7 @@ function feed_generator_render_start()
 {
 	if (FIRST_PARAMETER == 'feed' && (SECOND_PARAMETER == 'articles' || SECOND_PARAMETER == 'comments'))
 	{
-		define('RENDER_BREAK', 1);
+		Redaxscript\Registry::set('renderBreak', true);
 		header('content-type: application/atom+xml');
 		feed_generator(SECOND_PARAMETER);
 	}
@@ -71,7 +71,7 @@ function feed_generator($table = '')
 {
 	if ($_GET['l'])
 	{
-		$language = LANGUAGE;
+		$language = Redaxscript\Registry::get('language');
 		$language_route = LANGUAGE_ROUTE;
 	}
 
@@ -92,37 +92,37 @@ function feed_generator($table = '')
 
 		/* collect feed header output */
 
-		$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>' . PHP_EOL;
-		$output .= '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL;
-		$output .= '<id>' . $route . '</id>' . PHP_EOL;
+		$output = '<?xml version="1.0" encoding="' . s('charset') . '"?>';
+		$output .= '<feed xmlns="http://www.w3.org/2005/Atom">';
+		$output .= '<id>' . $route . '</id>';
 		if ($title)
 		{
-			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
+			$output .= '<title type="text">' . $title . '</title>';
 		}
 		if ($description)
 		{
-			$output .= '<subtitle type="text">' . $description . '</subtitle>' . PHP_EOL;
+			$output .= '<subtitle type="text">' . $description . '</subtitle>';
 		}
-		$output .= '<link type="application/atom+xml" href="' . $route . '" rel="self" />' . PHP_EOL;
-		$output .= '<updated>' . date('c', strtotime(NOW)) . '</updated>' . PHP_EOL;
+		$output .= '<link type="application/atom+xml" href="' . $route . '" rel="self" />';
+		$output .= '<updated>' . date('c', strtotime(NOW)) . '</updated>';
 		if ($author || $email)
 		{
-			$output .= '<author>' . PHP_EOL;
+			$output .= '<author>';
 			if ($author)
 			{
-				$output .= '<name>' . $author . '</name>' . PHP_EOL;
+				$output .= '<name>' . $author . '</name>';
 			}
 			if ($email)
 			{
-				$output .= '<email>' . $email . '</email>' . PHP_EOL;
+				$output .= '<email>' . $email . '</email>';
 			}
-			$output .= '</author>' . PHP_EOL;
+			$output .= '</author>';
 		}
 		if ($copyright)
 		{
-			$output .= '<rights>' . $copyright . '</rights>' . PHP_EOL;
+			$output .= '<rights>' . $copyright . '</rights>';
 		}
-		$output .= '<generator>' . l('redaxscript') . ' ' . l('redaxscript_version') . '</generator>' . PHP_EOL . PHP_EOL;
+		$output .= '<generator>' . l('name', '_package') . ' ' . l('version', '_package') . '</generator>';
 
 		/* collect feed body output */
 
@@ -160,17 +160,17 @@ function feed_generator($table = '')
 
 			/* collect entry output */
 
-			$output .= '<entry>' . PHP_EOL;
-			$output .= '<id>' . $route . '</id>' . PHP_EOL;
-			$output .= '<title type="text">' . $title . '</title>' . PHP_EOL;
-			$output .= '<link href="' . $route . '" />' . PHP_EOL;
-			$output .= '<updated>' . $date . '</updated>' . PHP_EOL;
+			$output .= '<entry>';
+			$output .= '<id>' . $route . '</id>';
+			$output .= '<title type="text">' . $title . '</title>';
+			$output .= '<link href="' . $route . '" />';
+			$output .= '<updated>' . $date . '</updated>';
 			if ($description)
 			{
-				$output .= '<summary type="text">' . $description . '</summary>' . PHP_EOL;
+				$output .= '<summary type="text">' . $description . '</summary>';
 			}
-			$output .= '<content type="html">' . $text . '</content>' . PHP_EOL;
-			$output .= '</entry>' . PHP_EOL;
+			$output .= '<content type="html">' . $text . '</content>';
+			$output .= '</entry>';
 		}
 		$output .= '</feed>';
 	}

@@ -235,7 +235,7 @@ function admin_users_form()
 	/* languages directory object */
 
 	$languages_directory = new Redaxscript\Directory('languages');
-	$languages_directory_array = $languages_directory->get();
+	$languages_directory_array = $languages_directory->getArray();
 
 	/* build languages select */
 

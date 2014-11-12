@@ -25,7 +25,7 @@
 			options = $.extend({}, r.modules.webApp.options, options || {});
 		}
 
-		/* trigger installation */
+		/* trigger install */
 
 		if (r.support.webStorage && typeof window.navigator.mozApps === 'object')
 		{
@@ -40,13 +40,13 @@
 
 				/* count multiple request */
 
-				window.sessionStorage.setItem('webAppInstallCounter', ++counter);
+				window.localStorage.setItem('webAppInstallCounter', ++counter);
 
 				/* handle success */
 
 				request.onsuccess  = function ()
 				{
-					window.sessionStorage.setItem('webAppInstallCounter', options.limit);
+					window.localStorage.setItem('webAppInstallCounter', options.limit);
 				};
 			}
 		}

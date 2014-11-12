@@ -15,7 +15,7 @@ function contact_render_start()
 {
 	if ($_POST['contact_post'])
 	{
-		define('CENTER_BREAK', 1);
+		Redaxscript\Registry::set('centerBreak', true);
 	}
 }
 
@@ -237,7 +237,7 @@ function contact_post()
 
 	else
 	{
-		notification(l('operation_completed'), l('message_sent', 'contact'), l('home'), ROOT);
+		notification(l('operation_completed'), l('message_sent', '_contact'), l('home'), ROOT);
 	}
 	$_SESSION[ROOT . '/contact'] = '';
 }

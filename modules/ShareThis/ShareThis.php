@@ -1,10 +1,11 @@
 <?php
 namespace Redaxscript\Modules\ShareThis;
 
+use Redaxscript\Element;
 use Redaxscript\Registry;
 
 /**
- * integrate social buttons
+ * integrate social networks
  *
  * @since 2.2.0
  *
@@ -25,7 +26,7 @@ class ShareThis extends Config
 		'name' => 'Share this',
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate social buttons',
+		'description' => 'Integrate social networks',
 		'version' => '2.2.0',
 		'status' => 1,
 		'access' => 0
@@ -56,8 +57,8 @@ class ShareThis extends Config
 		if (Registry::get('lastTable') === 'articles')
 		{
 			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
-			$output = self::_render($url);
-			return $output;
+			$output = self::render($url);
+			echo $output;
 		}
 	}
 
@@ -71,15 +72,19 @@ class ShareThis extends Config
 	 * @return string
 	 */
 
-	protected static function _render($url = null)
+	public static function render($url = null)
 	{
 		$output = '';
 		if ($url)
 		{
 			/* html elements */
 
-			$linkElement = new Element('a');
-			$listElement = new Element('ul');
+			$linkElement = new Element('a', array(
+				'target' => '_blank'
+			));
+			$listElement = new Element('ul', array(
+				'class' => self::$_config['className']['list']
+			));
 
 			/* process network */
 
@@ -88,10 +93,8 @@ class ShareThis extends Config
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(
 					'href' => $value['url'] . $url,
-					'class' => self::$_config['className']['link'] . $value['className'],
-					'title' => ucfirst($key),
-					'target' => '_blank'
-				))->text(ucfirst($key));
+					'class' => self::$_config['className']['link'] . $value['className']
+				))->text($key);
 				$output .= '</li>';
 			}
 
@@ -99,7 +102,7 @@ class ShareThis extends Config
 
 			if ($output)
 			{
-				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+				$output = $listElement->html($output);
 			}
 		}
 		return $output;

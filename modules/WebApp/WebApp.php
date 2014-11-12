@@ -55,9 +55,9 @@ class WebApp extends Module
 	{
 		if (Registry::get('firstParameter') === 'manifest_webapp')
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/x-web-app-manifest+json');
-			include_once('modules/web_app/files/manifest.json');
-			Registry::set('renderBreak', 1);
+			include_once('modules/WebApp/files/manifest.json');
 		}
 	}
 
@@ -69,7 +69,7 @@ class WebApp extends Module
 
 	public static function headStart()
 	{
-		$output = '<meta name="apple-mobile-web-app-capable" content="yes">' . PHP_EOL;
+		$output = '<meta name="apple-mobile-web-app-capable" content="yes">';
 		echo $output;
 	}
 
@@ -81,7 +81,7 @@ class WebApp extends Module
 
 	public static function headEnd()
 	{
-		$output = '<link href="' . ROOT . '/modules/web_app/images/icon.png" rel="apple-touch-icon-precomposed" />' . PHP_EOL;
+		$output = '<link href="modules/WebApp/images/icon.png" rel="apple-touch-icon-precomposed" />';
 		echo $output;
 	}
 }

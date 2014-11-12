@@ -37,13 +37,8 @@ function file_manager_render_start()
 {
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == 'file-manager')
 	{
-		define('CENTER_BREAK', 1);
-		define('TITLE', l('file_manager', 'file_manager'));
-
-		/* registry object */
-
-		$registry = Redaxscript\Registry::getInstance();
-		$registry->set('title', l('file_manager', 'file_manager'));
+		Redaxscript\Registry::set('title', l('file_manager', '_file_manager'));
+		Redaxscript\Registry::set('centerBreak', true);
 	}
 }
 
@@ -77,7 +72,7 @@ function file_manager_center_start()
 				/* file manager directory object */
 
 				$file_manager_directory = new Redaxscript\Directory(FILE_MANAGER_DIRECTORY);
-				$file_manager_directory_string = $file_manager_directory->get(ID_PARAMETER);
+				$file_manager_directory_string = $file_manager_directory->getArray();
 
 				/* remove related children */
 
@@ -116,7 +111,7 @@ function file_manager_center_start()
 
 function file_manager_admin_panel_list_modules()
 {
-	$output = '<li>' . anchor_element('internal', '', '', l('file_manager', 'file_manager'), 'admin/file-manager') . '</li>';
+	$output = '<li>' . anchor_element('internal', '', '', l('file_manager', '_file_manager'), 'admin/file-manager') . '</li>';
 	return $output;
 }
 
@@ -141,31 +136,31 @@ function file_manager($directory = '')
 	}
 	if (!is_dir($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('directory_create', 'file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="box_note note_error">' . l('directory_create', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 	else if (!is_writable($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('directory_permission_grant', 'file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="box_note note_error">' . l('directory_permission_grant', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('file_manager', 'file_manager') . '</h2>';
+	$output .= '<h2 class="title_content">' . l('file_manager', '_file_manager') . '</h2>';
 	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
-	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('browse', 'file_manager'));
-	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('upload', 'file_manager') . '</span></span></button>';
+	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('browse', '_file_manager'));
+	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('upload', '_file_manager') . '</span></span></button>';
 	$output .= '</form>';
 	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_size', 'file_manager') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_size', 'file_manager') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_size', '_file_manager') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_size', '_file_manager') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
 
 	/* file manager directory object */
 
 	$file_manager_directory = new Redaxscript\Directory($directory);
-	$file_manager_directory_array = $file_manager_directory->get();
+	$file_manager_directory_array = $file_manager_directory->getArray();
 
 	/* collect directory output */
 
@@ -197,7 +192,7 @@ function file_manager($directory = '')
 	}
 	else
 	{
-		$error = l('file_no', 'file_manager') . l('point');
+		$error = l('file_no', '_file_manager') . l('point');
 	}
 
 	/* handle error */
@@ -257,7 +252,7 @@ function file_manager_upload($directory = '')
 	{
 		if (exif_imagetype($file) == '')
 		{
-			$error = l('file_type_limit', 'file_manager') . l('point');
+			$error = l('file_type_limit', '_file_manager') . l('point');
 		}
 	}
 
@@ -265,7 +260,7 @@ function file_manager_upload($directory = '')
 
 	if ($file_size > 1048576)
 	{
-		$error = l('file_size_limit', 'file_manager') . l('point');
+		$error = l('file_size_limit', '_file_manager') . l('point');
 	}
 
 	/* handle error */

@@ -55,9 +55,9 @@ class Element
 	protected $_attributeArray = array();
 
 	/**
-	 * html of the element
+	 * classes of the element
 	 *
-	 * @var string
+	 * @var array
 	 */
 
 	protected $_html;
@@ -99,7 +99,7 @@ class Element
 
 	public function __toString()
 	{
-		return $this->_render();
+		return $this->render();
 	}
 
 	/**
@@ -159,7 +159,77 @@ class Element
 	}
 
 	/**
-	 * set html
+	 * add class
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $className name of the classes
+	 *
+	 * @return Element
+	 */
+
+	public function addClass($className = null)
+	{
+		$this->_editClass($className, 'add');
+		return $this;
+	}
+
+	/**
+	 * remove class
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $className name of the classes
+	 *
+	 * @return Element
+	 */
+
+	public function removeClass($className = null)
+	{
+		$this->_editClass($className, 'remove');
+		return $this;
+	}
+
+	/**
+	 * edit class
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $className name of the classes
+	 * @param string $type add or remove
+	 *
+	 * @return Element
+	 */
+
+	protected function _editClass($className = null, $type = null)
+	{
+		$classArray = explode(' ', $className);
+		if (isset($this->_attributeArray['class']))
+		{
+			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
+		}
+		else
+		{
+			$attributeClassArray = array();
+		}
+
+		/* add or remove */
+
+		if (is_array($attributeClassArray) && is_array($classArray))
+		{
+			if ($type === 'add')
+			{
+				$this->_attributeArray['class'] = implode(' ', array_merge($attributeClassArray, $classArray));
+			}
+			else if ($type === 'remove')
+			{
+				$this->_attributeArray['class'] = implode(' ', array_diff($attributeClassArray, $classArray));
+			}
+		}
+	}
+
+	/**
+	 * set html to element
 	 *
 	 * @since 2.2.0
 	 *
@@ -175,7 +245,7 @@ class Element
 	}
 
 	/**
-	 * set text
+	 * set text to element
 	 *
 	 * @since 2.2.0
 	 *
@@ -201,7 +271,7 @@ class Element
 	 * @return string
 	 */
 
-	protected function _render()
+	public function render()
 	{
 		$output = '<' . $this->_tag;
 
@@ -209,7 +279,7 @@ class Element
 
 		foreach($this->_attributeArray as $key => $value)
 		{
-			if ($value)
+			if (is_string($key) && $value)
 			{
 				$output .= ' ' . $key . '="' . $value . '"';
 			}
@@ -231,5 +301,4 @@ class Element
 		}
 		return $output;
 	}
-
 }

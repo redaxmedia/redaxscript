@@ -8,7 +8,7 @@
 		"function foo(bar){};"
 	],
 	[
-	  "$('div.js_foo, div.js_bar') ; ",
-	  "$('div.js_foo,div.js_bar');"
+		"$('div.js_foo, div.js_bar') ; ",
+		"$('div.js_foo,div.js_bar');"
 	]
 ]

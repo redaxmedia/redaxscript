@@ -90,7 +90,7 @@ function registration_post()
 		$password = hash_generator(10);
 		$r['password'] = sha1($password) . SALT;
 		$r['description'] = '';
-		$r['language'] = LANGUAGE;
+		$r['language'] = Redaxscript\Registry::get('language');
 		$r['first'] = $r['last'] = NOW;
 		$r['groups'] = Redaxscript\Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
 		if ($r['groups'] == '')

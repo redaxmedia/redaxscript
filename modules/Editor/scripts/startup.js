@@ -89,48 +89,48 @@ r.modules.editor =
 	{
 		toggle:
 		{
-			title: l.editor.source_code,
+			title: l._editor.source_code,
 			method: 'toggle'
 		},
 		bold:
 		{
-			title: l.editor.bold,
+			title: l._editor.bold,
 			method: 'action',
 			command: 'bold'
 		},
 		italic:
 		{
-			title: l.editor.italic,
+			title: l._editor.italic,
 			method: 'action',
 			command: 'italic'
 		},
 		underline:
 		{
-			title: l.editor.underline,
+			title: l._editor.underline,
 			method: 'action',
 			command: 'underline'
 		},
 		strike:
 		{
-			title: l.editor.strike,
+			title: l._editor.strike,
 			method: 'action',
 			command: 'strikeThrough'
 		},
 		superscript:
 		{
-			title: l.editor.superscript,
+			title: l._editor.superscript,
 			method: 'action',
 			command: 'superscript'
 		},
 		subscript:
 		{
-			title: l.editor.subscript,
+			title: l._editor.subscript,
 			method: 'action',
 			command: 'subscript'
 		},
 		paragraph:
 		{
-			title: l.editor.paragraph,
+			title: l._editor.paragraph,
 			method: 'format',
 			command: 'p'
 		},
@@ -172,125 +172,125 @@ r.modules.editor =
 		},
 		ordered_list:
 		{
-			title: l.editor.ordered_list,
+			title: l._editor.ordered_list,
 			method: 'action',
 			command: 'insertOrderedList'
 		},
 		unordered_list:
 		{
-			title: l.editor.unordered_list,
+			title: l._editor.unordered_list,
 			method: 'action',
 			command: 'insertUnorderedList'
 		},
 		outdent:
 		{
-			title: l.editor.outdent,
+			title: l._editor.outdent,
 			method: 'action',
 			command: 'outdent'
 		},
 		indent:
 		{
-			title: l.editor.indent,
+			title: l._editor.indent,
 			method: 'action',
 			command: 'indent'
 		},
 		align_left:
 		{
-			title: l.editor.align_left,
+			title: l._editor.align_left,
 			method: 'action',
 			command: 'justifyLeft'
 		},
 		align_center:
 		{
-			title: l.editor.align_center,
+			title: l._editor.align_center,
 			method: 'action',
 			command: 'justifyCenter'
 		},
 		align_right:
 		{
-			title: l.editor.align_right,
+			title: l._editor.align_right,
 			method: 'action',
 			command: 'justifyRight'
 		},
 		align_justify:
 		{
-			title: l.editor.align_justify,
+			title: l._editor.align_justify,
 			method: 'action',
 			command: 'justifyFull'
 		},
 		undo:
 		{
-			title: l.editor.undo,
+			title: l._editor.undo,
 			method: 'action',
 			command: 'undo'
 		},
 		redo:
 		{
-			title: l.editor.redo,
+			title: l._editor.redo,
 			method: 'action',
 			command: 'redo'
 		},
 		cut:
 		{
-			title: l.editor.cut,
+			title: l._editor.cut,
 			method: 'action',
 			command: 'cut'
 		},
 		copy:
 		{
-			title: l.editor.copy,
+			title: l._editor.copy,
 			method: 'action',
 			command: 'copy'
 		},
 		paste:
 		{
-			title: l.editor.paste,
+			title: l._editor.paste,
 			method: 'action',
 			command: 'paste'
 		},
 		insert_link:
 		{
-			title: l.editor.insert_link,
+			title: l._editor.insert_link,
 			method: 'insert',
 			command: 'createLink',
-			message: l.editor.insert_link,
+			message: l._editor.insert_link,
 			value: 'http://'
 		},
 		unlink:
 		{
-			title: l.editor.remove_link,
+			title: l._editor.remove_link,
 			method: 'action',
 			command: 'unlink'
 		},
 		insert_image:
 		{
-			title: l.editor.insert_image,
+			title: l._editor.insert_image,
 			method: 'insert',
 			command: 'insertImage',
-			message: l.editor.insert_image,
+			message: l._editor.insert_image,
 			value: 'http://'
 		},
 		insert_break:
 		{
-			title: l.editor.insert_document_break,
+			title: l._editor.insert_document_break,
 			method: 'insertBreak'
 		},
 		insert_code:
 		{
-			title: l.editor.insert_code_quote,
+			title: l._editor.insert_code_quote,
 			method: 'insertCode'
 		},
 		insert_function:
 		{
-			title: l.editor.insert_php_function,
+			title: l._editor.insert_php_function,
 			method: 'insert',
 			command: 'insertFunction',
-			message: l.editor.insert_php_function,
+			message: l._editor.insert_php_function,
 			value: ''
 		},
 		unformat:
 		{
-			title: l.editor.remove_format,
+			title: l._editor.remove_format,
 			method: 'action',
 			command: 'removeFormat'
 		}

@@ -34,7 +34,7 @@ try
 
 		/* has tables */
 
-		if (Db::forTablePrefix()->rawQuery('SHOW TABLES LIKE ' . $config->get('prefix') . '%')->findMany()->count())
+		if (Db::forTablePrefix()->rawQuery('SHOW TABLES LIKE \'' . $config->get('prefix') . '%\'')->findMany()->count())
 		{
 			$registry->set('dbStatus', 2);
 		}
@@ -74,8 +74,3 @@ $registry->set('template', $detectorTemplate->getOutput());
 
 $language = Language::getInstance();
 $language->init($registry->get('language'));
-
-/* define deprecated constants */
-
-define('LANGUAGE', $detectorLanguage->getOutput());
-define('TEMPLATE', $detectorTemplate->getOutput());

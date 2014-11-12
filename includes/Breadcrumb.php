@@ -33,7 +33,7 @@ class Breadcrumb
 	protected $_language;
 
 	/**
-	 * array to store the nodes of the breadcrumb
+	 * array of the breadcrumb
 	 *
 	 * @var array
 	 */
@@ -93,7 +93,7 @@ class Breadcrumb
 	 * @return array
 	 */
 
-	public function get()
+	public function getArray()
 	{
 		return $this->_breadcrumbArray;
 	}
@@ -176,7 +176,7 @@ class Breadcrumb
 	 * @param integer $key key of the item
 	 */
 
-	private function _build($key = 0)
+	protected function _build($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
 		$title = $this->_registry->get('title');
@@ -241,7 +241,7 @@ class Breadcrumb
 	 * @param integer $key key of the item
 	 */
 
-	private function _buildAdmin($key = 0)
+	protected function _buildAdmin($key = 0)
 	{
 		$adminParameter = $this->_registry->get('adminParameter');
 		$tableParameter = $this->_registry->get('tableParameter');
@@ -291,7 +291,7 @@ class Breadcrumb
 	 * @param integer $key
 	 */
 
-	private function _buildContent($key = 0)
+	protected function _buildContent($key = 0)
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');

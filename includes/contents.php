@@ -25,7 +25,7 @@ function contents()
 	}
 	else if (CATEGORY)
 	{
-		$query .= ' && (language = \'' . LANGUAGE . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
+		$query .= ' && (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
 		$result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($query)->findArray();
 		if ($result)
 		{
@@ -176,7 +176,7 @@ function contents()
 		{
 			/* comments replace */
 
-			if ($comments == 1 && COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentsReplace'))
+			if ($comments == 1 && (COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentsReplace')))
 			{
 				Redaxscript\Hook::trigger('comments_replace');
 			}
@@ -229,7 +229,7 @@ function extras($filter = '')
 
 	/* query extras */
 
-	$query = 'SELECT id, title, text, category, article, headline, access FROM ' . PREFIX . 'extras WHERE (language = \'' . LANGUAGE . '\' || language = \'\')';
+	$query = 'SELECT id, title, text, category, article, headline, access FROM ' . PREFIX . 'extras WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\')';
 	if (is_numeric($filter))
 	{
 		$query .= ' && rank = ' . $filter;

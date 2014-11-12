@@ -20,7 +20,7 @@ function comments($article = '', $route = '')
 
 	/* query comments */
 
-	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . LANGUAGE . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
+	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
 	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
 	if ($result)
 	{

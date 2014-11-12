@@ -2,6 +2,8 @@
 namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
+use Redaxscript\Element;
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -44,7 +46,7 @@ class Preview extends Module
 		if (Registry::get('firstParameter') === 'preview')
 		{
 			global $loader_modules_styles;
-			$loader_modules_styles[] = 'modules/preview/styles/preview.css';
+			$loader_modules_styles[] = 'modules/Preview/styles/preview.css';
 		}
 	}
 
@@ -58,8 +60,9 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			Registry::set('title', l('preview', 'preview'));
-			Registry::set('centerBreak', 1);
+			Registry::set('title', Language::get('preview', '_preview'));
+			Registry::set('description', Language::get('description', '_preview'));
+			Registry::set('centerBreak', true);
 		}
 	}
 
@@ -73,19 +76,21 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			$partialsPath = 'modules/Preview/partials/';
+			$partialsPath = 'modules/Preview/partials';
+			$partialExtension = '.phtml';
 			$partialsDirectory = new Directory($partialsPath);
-			$partialsDirectoryArray = $partialsDirectory->get();
+			$partialsDirectoryArray = $partialsDirectory->getArray();
+			$secondParameter = Registry::get('secondParameter');
 
 			/* collect partial output */
 
-			$output = '<div class="preview clearfix">' . PHP_EOL;
+			$output = '<div class="preview clearfix">';
 
 			/* include as needed */
 
-			if (Registry::get('secondParameter'))
+			if ($secondParameter)
 			{
-				$output .= self::_render(Registry::get('secondParameter'), $partialsPath . Registry::get('secondParameter') . '.phtml');
+				$output .= self::render($secondParameter, $partialsPath . '/' . $secondParameter . $partialExtension);
 			}
 
 			/* else include all */
@@ -94,11 +99,11 @@ class Preview extends Module
 			{
 				foreach ($partialsDirectoryArray as $partial)
 				{
-					$alias = str_replace('.phtml', '', $partial);
-					$output .= self::_render($alias, $partialsPath . $partial);
+					$alias = str_replace($partialExtension, '', $partial);
+					$output .= self::render($alias, $partialsPath . '/' . $partial);
 				}
 			}
-			$output .= '</div>' . PHP_EOL;
+			$output .= '</div>';
 			echo $output;
 		}
 	}
@@ -114,29 +119,24 @@ class Preview extends Module
 	 * @return string
 	 */
 
-	protected static function _render($alias = null, $path = null)
+	public static function render($alias = null, $path = null)
 	{
-		/* collect title output */
+		$headlineElement = new Element('h2', array(
+			'class' => 'title_content',
+			'title' => $alias
+		));
+		$linkElement = new Element('a', array(
+			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
+			'title' => $alias
+		));
+		$linkElement->text($alias);
 
-		$output = '<h2 class="title_content" title="' . $alias . '">' . PHP_EOL;
-		if (Registry::get('secondParameter') === $alias)
-		{
-			$output .= $alias;
-		}
-		else
-		{
-			$output .= '<a href="' . Registry::get('rewriteRoute') . 'preview/' . $alias . '" title="' . $alias . '">' . $alias . '</a>' . PHP_EOL;
-		}
-		$output .=  '</h2>' . PHP_EOL;
+		/* collect output */
 
-		/* collect content output */
-
-		if (file_exists($path))
-		{
-			ob_start();
-			include_once($path);
-			$output .= ob_get_clean();
-		}
+		$output = $headlineElement->html($linkElement);
+		ob_start();
+		include_once($path);
+		$output .= ob_get_clean();
 		return $output;
 	}
 }

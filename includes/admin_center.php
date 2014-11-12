@@ -82,6 +82,8 @@ function admin_routing()
 		case ADMIN_PARAMETER == 'delete' && $delete == 0 && USERS_EXCEPTION == 0:
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] && $new == 0:
 		case ADMIN_PARAMETER == 'process' && $_POST['edit'] && $edit == 0 && USERS_EXCEPTION == 0:
+		case ADMIN_PARAMETER == 'process' && $_POST['groups'] && GROUPS_EDIT == 0:
+		case ADMIN_PARAMETER == 'process' && $_POST['user'] != MY_USER && USERS_EDIT == 0:
 		case ADMIN_PARAMETER == 'update' && $edit == 0;
 		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
 		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:

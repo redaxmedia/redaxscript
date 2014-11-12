@@ -20,15 +20,15 @@ class Directory
 	 * @var string
 	 */
 
-	private $_directory;
+	protected $_directory;
 
 	/**
-	 * array of directories
+	 * array of directory
 	 *
 	 * @var array
 	 */
 
-	private $_directoryArray;
+	protected $_directoryArray;
 
 	/**
 	 * array of files to exclude
@@ -47,7 +47,7 @@ class Directory
 	 * @var array
 	 */
 
-	private static $_cache = array();
+	protected static $_cache = array();
 
 	/**
 	 * constructor of the class
@@ -88,14 +88,14 @@ class Directory
 	}
 
 	/**
-	 * get item from directory
+	 * get the directory array for further processing
 	 *
 	 * @since 2.0.0
 	 *
 	 * @return array
 	 */
 
-	public function get()
+	public function getArray()
 	{
 		return $this->_directoryArray;
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Demo;
 
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -43,7 +44,7 @@ class Demo extends Module
 	{
 		if (Registry::get('firstParameter') === 'login' && Registry::get('secondParameter') === 'demo' || Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
 		{
-			Registry::set('centerBreak', 1);
+			Registry::set('centerBreak', true);
 		}
 	}
 
@@ -66,7 +67,7 @@ class Demo extends Module
 
 		if (Registry::get('adminParameter') === 'unpublish' && Registry::get('myUser') === 'demo')
 		{
-			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
+			notification(Language::get('error_occurred'), Language::get('access_no'), Language::get('back'), 'admin');
 		}
 	}
 
@@ -98,6 +99,6 @@ class Demo extends Module
 
 		/* notification */
 
-		notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
+		notification(Language::get('welcome'), Language::get('logged_in'), Language::get('continue'), 'admin');
 	}
 }

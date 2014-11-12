@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Qunit;
 
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 
@@ -60,7 +61,7 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>' . PHP_EOL;
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>';
 			echo $output;
 		}
 	}
@@ -75,9 +76,9 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			Registry::set('title', l('qunit', 'qunit'));
-			Registry::set('description', l('description', 'qunit'));
-			Registry::set('centerBreak', 1);
+			Registry::set('title', Language::get('qunit', '_qunit'));
+			Registry::set('description', Language::get('description', '_qunit'));
+			Registry::set('centerBreak', true);
 		}
 	}
 

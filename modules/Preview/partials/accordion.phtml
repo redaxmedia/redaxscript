@@ -1,65 +1,51 @@
-<h3 class="title_content_sub">.js_accordion (div > div > h3 + div)</h3>
+<?php
+namespace Redaxscript;
+
+$suffix = isset($admin) ? '_admin' : '_default';
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$setAccordionElement = new Element('div', array(
+	'class' => 'js_set_accordion set_accordion set_accordion' . $suffix
+));
+$titleAccordionElement = new Element('h3', array(
+	'class' => 'js_title_accordion title_accordion title_accordion' . $suffix
+));
+$boxAccordionElement = new Element('div', array(
+	'class' => 'js_box_accordion box_accordion box_accordion' . $suffix
+));
+?>
+
+<?php echo $titlePartialElement->text('.js_accordion (div > h3 + div)'); ?>
 
 <div class="js_accordion">
-	<div class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">
-		<h3 class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">
-			<?php echo l('1', '_number'); ?>
-		</h3>
-		<div class="js_box_accordion js_box_active box_accordion box_accordion_default box_active">
-			<?php echo l('1', '_number'); ?>
-		</div>
-	</div>
-	<div class="js_set_accordion set_accordion set_accordion_default">
-		<h3 class="js_title_accordion title_accordion title_accordion_default">
-			<?php echo l('2', '_number'); ?>
-		</h3>
-		<div class="js_box_accordion box_accordion box_accordion_default">
-			<?php echo l('2', '_number'); ?>
-		</div>
-	</div>
-	<div class="js_set_accordion set_accordion set_accordion_default set_accordion_last">
-		<h3 class="js_title_accordion title_accordion title_accordion_default">
-			<?php echo l('3', '_number'); ?>
-		</h3>
-		<div class="js_box_accordion box_accordion box_accordion_default">
-			<?php echo l('3', '_number'); ?>
-		</div>
-	</div>
+
+	<!-- active -->
+
+	<?php echo $setAccordionElement
+		->copy()
+		->addClass('js_set_active set_active')
+		->html(
+			$titleAccordionElement
+				->copy()
+				->addClass('js_title_active title_active')
+				->text(Language::get(1, '_number')) .
+			$boxAccordionElement
+				->copy()
+				->addClass('js_box_active box_active')
+				->text(Language::get(1, '_number'))
+		);
+	?>
+
+	<!-- inactive -->
+
+	<?php foreach (array(2, 3, 4, 5) as $value): ?>
+
+		<?php echo $setAccordionElement->html(
+			$titleAccordionElement->text(Language::get($value, '_number')) .
+			$boxAccordionElement->text(Language::get($value, '_number'))
+		); ?>
+
+	<?php endforeach; ?>
+
 </div>
-
-
-<h3 class="title_content_sub">.js_accordion (form > fieldset > legend + ul)</h3>
-
-<form class="js_accordion">
-	<fieldset class="js_set_accordion set_accordion set_accordion_default">
-		<legend class="js_title_accordion title_accordion title_accordion_default">
-			<?php echo l('4', '_number'); ?>
-		</legend>
-		<ul class="js_box_accordion box_accordion box_accordion_default">
-			<li>
-				<?php echo l('4', '_number'); ?>
-			</li>
-		</ul>
-	</fieldset>
-	<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">
-		<legend class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">
-			<?php echo l('5', '_number'); ?>
-		</legend>
-		<ul class="js_box_accordion js_box_active box_accordion box_accordion_default box_active">
-			<li>
-				<?php echo l('5', '_number'); ?>
-			</li>
-		</ul>
-	</fieldset>
-	<fieldset class="js_set_accordion set_accordion set_accordion_default set_accordion_last">
-		<legend class="js_title_accordion title_accordion title_accordion_default">
-			<?php echo l('6', '_number'); ?>
-		</legend>
-		<ul class="js_box_accordion box_accordion box_accordion_default">
-			<li>
-				<?php echo l('6', '_number'); ?>
-			</li>
-		</ul>
-	</fieldset>
-</form>
-

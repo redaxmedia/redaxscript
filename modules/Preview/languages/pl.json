@@ -1,6 +1,7 @@
 {
-	"preview":
+	"_preview":
 	{
-		"preview": "Podgląd"
+		"preview": "Podgląd",
+		"description": "Overview of the elements"
 	}
 }

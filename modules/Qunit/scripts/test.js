@@ -8,12 +8,13 @@
  * 5. support
  * 6. version
  * 7. clean alias
- * 8. auto resize
- * 9. validate search
- * 10. enable indent
- * 11. unmask password
+ * 8. fetch keyword
+ * 9. auto resize
+ * 10. validate search
+ * 11. enable indent
+ * 12. unmask password
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -36,7 +37,7 @@
 			var expect = 'function',
 				result = typeof $;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 2. globals */
@@ -46,7 +47,7 @@
 			var expect = 'object',
 				result = typeof r && typeof l;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 3. base url */
@@ -56,7 +57,7 @@
 			var expect = 'string',
 				result = typeof r.baseURL;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 4. constants */
@@ -66,7 +67,7 @@
 			var expect = 'number',
 				result = typeof Object.keys(r.constants).length;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 5. support */
@@ -76,7 +77,7 @@
 			var expect = 'number',
 				result = typeof Object.keys(r.support).length;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 6. version */
@@ -86,7 +87,7 @@
 			var expect = 'string',
 				result = typeof r.version;
 
-			win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 		});
 
 		/* @section 7. clean alias */
@@ -98,11 +99,31 @@
 				var expect = 'hello-world',
 					result = $.fn.cleanAlias(dummy);
 
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
-		/* @section 8. auto resize */
+		/* @section 8. fetch keyword */
+
+		if (typeof $.fn.fetchKeyword === 'function')
+		{
+			win.test('generateKeyword', function ()
+			{
+				var expect = 'hello world',
+					result = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum', {
+						element:
+						{
+							target: 'h1, h2, h3, strong'
+						},
+						delimiter: ' ',
+						limit: 10
+					});
+
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+			});
+		}
+
+		/* @section 9. auto resize */
 
 		if (typeof $.fn.autoResize === 'function')
 		{
@@ -115,16 +136,16 @@
 				/* trigger focus */
 
 				result = textarea.trigger('focus').attr('rows');
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 
 				/* trigger input */
 
 				result = textarea.val(dummy).trigger('input').attr('rows');
-				win.notEqual(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.notEqual(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
-		/* @section 9. validate search */
+		/* @section 10. validate search */
 
 		if (typeof $.fn.validateSearch === 'function' && r.support.input.placeholder)
 		{
@@ -139,11 +160,11 @@
 
 				form.submit();
 				result = input.attr('placeholder');
-				win.equal(result, expect, l.qunit_attribute_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_attribute_expected + l.colon + ' ' + expect);
 			});
 		}
 
-		/* @section 10. enable indent */
+		/* @section 11. enable indent */
 
 		if (typeof $.fn.enableIndent === 'function')
 		{
@@ -159,11 +180,11 @@
 				/* trigger keydown */
 
 				result = textarea.trigger(keydown).val();
-				win.equal(result, expect, l.qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
 			});
 		}
 
-		/* @section 11. unmask password  */
+		/* @section 12. unmask password  */
 
 		if (typeof $.fn.unmaskPassword === 'function')
 		{
@@ -180,13 +201,13 @@
 				/* trigger keydown */
 
 				result = input.trigger(keydown).attr('type');
-				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 
 				/* trigger blur */
 
 				expect = 'password';
 				result = input.trigger('blur').attr('type');
-				win.equal(result, expect, l.qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
 			});
 		}
 	});
