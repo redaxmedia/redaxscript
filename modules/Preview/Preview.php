@@ -121,22 +121,22 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-        $headlineElement = new Element('h2', array(
+		$headlineElement = new Element('h2', array(
 			'class' => 'title_content',
-            'title' => $alias
-        ));
-        $linkElement = new Element('a', array(
-            'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
-            'title' => $alias
-        ));
-        $linkElement->text($alias);
+			'title' => $alias
+		));
+		$linkElement = new Element('a', array(
+			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
+			'title' => $alias
+		));
+		$linkElement->text($alias);
 
-        /* collect output */
+		/* collect output */
 
-        $output = $headlineElement->html($linkElement);
-        ob_start();
-        include_once($path);
-        $output .= ob_get_clean();
+		$output = $headlineElement->html($linkElement);
+		ob_start();
+		include_once($path);
+		$output .= ob_get_clean();
 		return $output;
 	}
 }

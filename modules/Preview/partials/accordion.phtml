@@ -19,17 +19,35 @@ $boxAccordionElement = new Element('div', array(
 
 <div class="js_accordion">
 
-	<?php
-	echo $setAccordionElement->copy()->addClass('js_set_active set_active')->html(
-		$titleAccordionElement->copy()->addClass('js_title_active title_active')->text(Language::get(1, '_number')) .
-		$boxAccordionElement->copy()->addClass('js_box_active box_active')->text(Language::get(1, '_number'))
-	);
-	echo $setAccordionElement->html(
-		$titleAccordionElement->text(Language::get(2, '_number')) . $boxAccordionElement->text(Language::get(2, '_number'))
-	);
-	echo $setAccordionElement->html(
-		$titleAccordionElement->text(Language::get(3, '_number')) . $boxAccordionElement->text(Language::get(3, '_number'))
-	);
+	<!-- active -->
+
+	<?php echo $setAccordionElement
+		->copy()
+		->addClass('js_set_active set_active')
+		->html(
+			$titleAccordionElement
+				->copy()
+				->addClass('js_title_active title_active')
+				->text(Language::get(1, '_number')) .
+			$boxAccordionElement
+				->copy()
+				->addClass('js_box_active box_active')
+				->text(Language::get(1, '_number'))
+		);
 	?>
+
+	<!-- inactive -->
+
+	<?php echo $setAccordionElement->html(
+		$titleAccordionElement->text(Language::get(2, '_number')) .
+		$boxAccordionElement->text(Language::get(2, '_number'))
+	); ?>
+
+	<!-- inactive -->
+
+	<?php echo $setAccordionElement->html(
+		$titleAccordionElement->text(Language::get(3, '_number')) .
+		$boxAccordionElement->text(Language::get(3, '_number'))
+	); ?>
 
 </div>
