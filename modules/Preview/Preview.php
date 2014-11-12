@@ -64,6 +64,17 @@ class Preview extends Module
 			Registry::set('description', Language::get('description', '_preview'));
 			Registry::set('centerBreak', true);
 		}
+
+		/* suffix for classes */
+
+		if (Registry::get('loggedIn') === Registry::get('token'))
+		{
+			Registry::set('previewSuffix', 'admin');
+		}
+		else
+		{
+			egistry::set('previewSuffix', 'default');
+		}
 	}
 
 	/**
