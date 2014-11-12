@@ -1,0 +1,8 @@
+<?php
+namespace Redaxscript;
+
+if (Registry::get('loggedIn') === Registry::get('token'))
+{
+	Registry::set('previewAccordion', 'admin');
+	include_once('accordion.phtml');
+}
