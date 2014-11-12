@@ -39,16 +39,13 @@ $boxAccordionElement = new Element('div', array(
 
 	<!-- inactive -->
 
-	<?php echo $setAccordionElement->html(
-		$titleAccordionElement->text(Language::get(2, '_number')) .
-		$boxAccordionElement->text(Language::get(2, '_number'))
-	); ?>
+	<?php foreach (array(2, 3, 4, 5) for $value): ?>
 
-	<!-- inactive -->
+		<?php echo $setAccordionElement->html(
+			$titleAccordionElement->text(Language::get($value, '_number')) .
+			$boxAccordionElement->text(Language::get($value, '_number'))
+		); ?>
 
-	<?php echo $setAccordionElement->html(
-		$titleAccordionElement->text(Language::get(3, '_number')) .
-		$boxAccordionElement->text(Language::get(3, '_number'))
-	); ?>
+	<?php endforeach; ?>
 
 </div>
