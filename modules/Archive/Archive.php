@@ -54,9 +54,9 @@ class Archive extends Config
 			'class' => self::$_config['className']['headline']
 		));
 
-		/* fetch result */
+		/* fetch articles */
 
-		$result = Db::forTablePrefix('articles')
+		$articles = Db::forTablePrefix('articles')
 			->selectExpr('*, YEAR(date) as year, MONTH(date) as month')
 			->where('status', 1)
 			->whereIn('language', array(
@@ -66,9 +66,9 @@ class Archive extends Config
 			->orderByDesc('date')
 			->findArray();
 
-		/* process result */
+		/* process articles */
 
-		if (empty($result))
+		if (empty($articles))
 		{
 			$error = Language::get('article_no') . Language::get('point');
 		}
@@ -78,7 +78,7 @@ class Archive extends Config
 			$accessDeny = 0;
 			$lastDate = 0;
 			$outputItem = '';
-			foreach ($result as $value)
+			foreach ($articles as $value)
 			{
 				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
 				{
@@ -100,7 +100,7 @@ class Archive extends Config
 
 					$outputItem .= '<li>';
 					$outputItem .= $linkElement->attr(array(
-						'href' => $value['category'] === 0 ? $value['alias'] : build_route('articles', $value['id']),
+						'href' => $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']),
 						'title' => empty($value['description']) ? $value['title'] : $value['description']
 					))->text($value['title']);
 					$outputItem .= '</li>';

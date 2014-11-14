@@ -59,15 +59,24 @@ class SitemapXml extends Module
 
 	public static function render()
 	{
-		/* fetch result */
+		/* fetch categories */
 
-		$result = Db::forTablePrefix('categories')
-			->leftJoinPrefix('articles', null, 'a')
+		$categories = Db::forTablePrefix('categories')
 			->where(array(
 				'status' => 1,
 				'access' => 0
 			))
-			->orderByDesc('date')
+			->orderByAsc('rank')
+			->findArray();
+
+		/* fetch articles */
+
+		$articles = Db::forTablePrefix('articles')
+			->where(array(
+				'status' => 1,
+				'access' => 0
+			))
+			->orderByAsc('rank')
 			->findArray();
 
 		/* collect output */
@@ -76,13 +85,20 @@ class SitemapXml extends Module
 		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>';
 
-		/* process result */
+		/* process categories */
 
-		foreach ($result as $value)
+		foreach ($categories as $value)
 		{
-			$route = $value['parent'] === 0 ? $value['alias'] : build_route('categories', $value['id']);
-			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route;
-			$output .= '<url><loc>' . $url . '</loc><lastmod>' . $value['date'] . '</lastmod></url>';
+			$route = $value['parent'] < 1 ? $value['alias'] : build_route('categories', $value['id']);
+			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>';
+		}
+
+		/* process articles */
+
+		foreach ($articles as $value)
+		{
+			$route = $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']);
+			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>';
 		}
 		$output .= '</urlset>';
 		echo $output;
