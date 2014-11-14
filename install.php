@@ -16,7 +16,7 @@ install_post();
 
 /* bootstrap */
 
-include_once('includes/Bootstrap.php');
+include_once('includes/bootstrap.php');
 
 /* define meta */
 
