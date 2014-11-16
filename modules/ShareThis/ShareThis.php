@@ -58,7 +58,7 @@ class ShareThis extends Config
 		{
 			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
 			$output = self::render($url);
-			echo $output;
+			return $output;
 		}
 	}
 

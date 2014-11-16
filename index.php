@@ -17,7 +17,7 @@ include_once('includes/startup.php');
 
 /* bootstrap */
 
-include_once('includes/Bootstrap.php');
+include_once('includes/bootstrap.php');
 
 /* include files as needed */
 

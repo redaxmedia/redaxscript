@@ -234,7 +234,9 @@ class Parser
 			'</code>'
 		), $this->_delimiter, $input);
 		$parts = explode($this->_delimiter, $output);
-		$codeElement = new Element('code');
+		$codeElement = new Element('code', array(
+			'class' => $this->_options['className']['code']
+		));
 
 		/* parse needed parts */
 
@@ -242,7 +244,7 @@ class Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $codeElement->attr('class', $this->_options['className']['code'])->html(htmlspecialchars($value));
+				$parts[$key] = $codeElement->html(htmlspecialchars($value));
 			}
 		}
 		$output = implode($parts);

@@ -218,7 +218,7 @@ module.exports = function (grunt)
 			options:
 			{
 				bin: 'vendor/bin/phpunit',
-				bootstrap: 'tests/Bootstrap.php'
+				bootstrap: './tests/bootstrap.php'
 			}
 		},
 		autoprefixer:
@@ -381,7 +381,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'languages/*.json',
+					'languages/*.json'
 				],
 				dest: '../redaxscript-dist/files',
 				ext: '.zip',
