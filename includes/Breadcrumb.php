@@ -109,6 +109,7 @@ class Breadcrumb
 	public function render()
 	{
 		$output = Hook::trigger('breadcrumb_start');
+		$outputItem = '';
 
 		/* breadcrumb keys */
 
@@ -119,7 +120,9 @@ class Breadcrumb
 
 		$linkElement = new Element('a');
 		$itemElement = new Element('li');
-		$listElement = new Element('ul');
+		$listElement = new Element('ul', array(
+			'class' => $this->_options['className']['list']
+		));
 
 		/* collect item output */
 
@@ -129,13 +132,13 @@ class Breadcrumb
 			$route = array_key_exists('route', $value) ? $value['route'] : null;
 			if ($title)
 			{
-				$output .= '<li>';
+				$outputItem .= '<li>';
 
 				/* build link if route */
 
 				if ($route)
 				{
-					$output .= $linkElement->attr(array(
+					$outputItem .= $linkElement->attr(array(
 						'href' => $this->_registry->get('rewriteRoute') . $route,
 						'title' => $title
 					))->text($title);
@@ -145,24 +148,24 @@ class Breadcrumb
 
 				else
 				{
-					$output .= $title;
+					$outputItem .= $title;
 				}
-				$output .= '</li>';
+				$outputItem .= '</li>';
 
 				/* add divider */
 
 				if ($last !== $key)
 				{
-					$output .= $itemElement->attr('class', $this->_options['className']['divider'])->text(Db::getSettings('divider'));
+					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text(Db::getSettings('divider'));
 				}
 			}
 		}
 
 		/* collect list output */
 
-		if ($output)
+		if ($outputItem)
 		{
-			$output = $listElement->attr('class', $this->_options['className']['list'])->html($output);
+			$output = $listElement->html($outputItem);
 		}
 		$output .= Hook::trigger('breadcrumb_end');
 		return $output;

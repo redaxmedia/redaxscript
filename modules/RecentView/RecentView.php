@@ -61,7 +61,7 @@ class RecentView extends Config
 			{
 				/* break if limit reached */
 
-				if (++$counter > $limit && $limit)
+				if (++$counter > $limit)
 				{
 					break;
 				}

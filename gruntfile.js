@@ -381,7 +381,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'languages/*.json',
+					'languages/*.json'
 				],
 				dest: '../redaxscript-dist/files',
 				ext: '.zip',

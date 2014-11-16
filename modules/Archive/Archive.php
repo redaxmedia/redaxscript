@@ -46,6 +46,10 @@ class Archive extends Config
 	public static function render()
 	{
 		$output = '';
+		$outputItem = '';
+
+		/* html elements */
+
 		$linkElement = new Element('a');
 		$listElement = new Element('ul', array(
 			'class' => self::$_config['className']['list'])
@@ -77,7 +81,6 @@ class Archive extends Config
 			$accessValidator = new Validator\Access();
 			$accessDeny = 0;
 			$lastDate = 0;
-			$outputItem = '';
 			foreach ($articles as $value)
 			{
 				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
@@ -107,7 +110,7 @@ class Archive extends Config
 
 					/* collect list output */
 
-					if (end($result) === $value)
+					if (end($articles) === $value)
 					{
 						$output .= $listElement->html($outputItem);
 						$outputItem = '';
@@ -119,13 +122,13 @@ class Archive extends Config
 					$accessDeny++;
 				}
 			}
-		}
 
-		/* handle access */
+			/* handle access */
 
-		if (count($result) === $accessDeny)
-		{
-			$error = Language::get('access_no') . Language::get('point');
+			if (count($articles) === $accessDeny)
+			{
+				$error = Language::get('access_no') . Language::get('point');
+			}
 		}
 
 		/* handle error */
