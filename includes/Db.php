@@ -124,7 +124,14 @@ class Db extends ORM
 
 	public static function getSettings($key = null)
 	{
-		return self::forTablePrefix('settings')->where('name', $key)->findOne()->value;
+		$settings = self::forTablePrefix('settings')->findMany();
+		foreach ($settings as $value)
+		{
+			if ($value->name === $key)
+			{
+				return $value->value;
+			}
+		}
 	}
 
 	/**
