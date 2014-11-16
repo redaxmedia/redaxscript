@@ -15,6 +15,7 @@ Redaxscript
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Bountysource](http://img.shields.io/badge/bountysource-contribute-129e5e.svg?style=flat)](https://www.bountysource.com/trackers/351960-redaxmedia-redaxscript)
+[![Gitter chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
 
 Online demo
 -----------
