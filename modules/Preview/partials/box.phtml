@@ -8,12 +8,16 @@ $boxElement = new Element('div');
 $boxElement->text(Language::get('preview', '_preview'));
 ?>
 
+<!-- several boxes -->
+
 <?php foreach (array('box_comment', 'box_extra', 'box_default') as $value): ?>
 
 	<?php echo $titlePartialElement->text('.' . $value); ?>
 	<?php echo $boxElement->copy()->addClass($value); ?>
 
 <?php endforeach; ?>
+
+<!-- box code -->
 
 <?php echo $titlePartialElement->text('.box_code'); ?>
 
@@ -25,3 +29,16 @@ $boxElement->text(Language::get('preview', '_preview'));
 	}
 }
 &lt;/module&gt;')
+
+<!-- box quote -->
+
+<?php echo $titlePartialElement->text('.box_quote'); ?>
+
+<blockquote class="box_quote">Redaxscript is an ultra lightweight CMS.</blockquote>
+<p>Some text after .box_quote to demonstrate the spaces.</p>
+
+<!-- box line -->
+
+<?php echo $titlePartialElement->text('.box_line'); ?>
+
+<div class="box_line"></div>
