@@ -198,7 +198,7 @@ class ElementTest extends TestCase
 
 		$this->assertEquals($expect, $result);
 	}
-	
+
 	/**
 	 * testClean
 	 *
