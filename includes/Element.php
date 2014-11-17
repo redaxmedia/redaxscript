@@ -229,7 +229,7 @@ class Element
 	}
 
 	/**
-	 * set html to element
+	 * set html to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -245,7 +245,7 @@ class Element
 	}
 
 	/**
-	 * set text to element
+	 * set text to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -264,7 +264,7 @@ class Element
 	}
 	
 	/**
-	 * clean html of element
+	 * clean the element
 	 *
 	 * @since 2.2.0
 	 *
