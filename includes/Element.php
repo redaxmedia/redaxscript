@@ -262,6 +262,20 @@ class Element
 		}
 		return $this;
 	}
+	
+	/**
+	 * clean html of element
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return Element
+	 */
+
+	public function clean()
+	{
+		$this->_html = '';
+		return $this;
+	}
 
 	/**
 	 * render the element
