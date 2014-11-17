@@ -126,6 +126,9 @@ class Db extends ORM
 	{
 		$output = false;
 		$settings = self::forTablePrefix('settings')->findMany();
+
+		/* process settings */
+
 		foreach ($settings as $value)
 		{
 			if ($value->name === $key)
