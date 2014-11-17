@@ -4,9 +4,24 @@ namespace Redaxscript;
 $titlePartialElement = new Element('h3', array(
 	'class' => 'title_content_sub'
 ))
-$boxElement = new Element('div', array(
-	'class' => 'js_set_accordion set_accordion set_accordion' . $suffix
-));
+$boxElement = new Element('div');
+$boxElement->text(Language::get('preview', '_preview'));
 ?>
 
-<?php echo $titlePartialElement->text('.box_comment'); ?>
+<?php foreach (array('box_comment', 'box_extra', 'box_default') as $value): ?>
+
+	<?php echo $titlePartialElement->text('.' . $value); ?>
+	<?php echo $boxElement->copy()->addClass($value); ?>
+
+<?php endforeach; ?>
+
+<?php echo $titlePartialElement->text('.box_code'); ?>
+
+<?php echo $boxElement->copy->addClass('box_code')->text('&lt;module&gt;
+{
+	"ModuleName":
+	{
+		"parameter": "value"
+	}
+}
+&lt;/module&gt;')
