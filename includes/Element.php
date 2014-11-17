@@ -262,7 +262,7 @@ class Element
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * clean the element
 	 *
