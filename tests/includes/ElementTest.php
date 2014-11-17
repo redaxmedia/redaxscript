@@ -81,6 +81,29 @@ class ElementTest extends TestCase
 	}
 
 	/**
+	 * testCopy
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testCopy()
+	{
+		/* setup */
+
+		$element = new Element('a');
+		$elementCopy = $element->copy()->attr('href', 'test');
+
+		/* expect and result */
+
+		$expect = $element;
+		$result = $elementCopy;
+
+		/* compare */
+
+		$this->assertNotEquals($expect, $result);
+	}
+
+	/**
 	 * testAttr
 	 *
 	 * @since 2.2.0
@@ -175,27 +198,27 @@ class ElementTest extends TestCase
 
 		$this->assertEquals($expect, $result);
 	}
-
+	
 	/**
-	 * testCopy
+	 * testClean
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testCopy()
+	public function testClean()
 	{
 		/* setup */
 
 		$element = new Element('a');
-		$elementCopy = $element->copy()->attr('href', 'test');
+		$element->text('test');
 
 		/* expect and result */
 
-		$expect = $element;
-		$result = $elementCopy;
+		$expect = '<a></a>';
+		$result = $element->clean();
 
 		/* compare */
 
-		$this->assertNotEquals($expect, $result);
+		$this->assertEquals($expect, $result);
 	}
 }
