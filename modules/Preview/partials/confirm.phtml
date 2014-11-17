@@ -4,7 +4,7 @@ namespace Redaxscript;
 $titlePartialElement = new Element('h3', array(
 	'class' => 'title_content_sub'
 ));
-$buttonConfirmElement = new Element('a', array(
+$buttonElement = new Element('a', array(
 	'class' => 'js_confirm button_default'
 ));
 ?>
@@ -13,6 +13,6 @@ $buttonConfirmElement = new Element('a', array(
 
 <?php echo $titlePartialElement->text('.js_confirm'); ?>
 
-<?php echo $buttonConfirmElement
+<?php echo $buttonElement
 	->attr('href', Registry::get('rewriteRoute') . 'preview')
 	->text(Language::get('confirm')); ?>
