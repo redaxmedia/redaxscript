@@ -3,7 +3,7 @@ namespace Redaxscript;
 
 $titlePartialElement = new Element('h3', array(
 	'class' => 'title_content_sub'
-))
+));
 $boxElement = new Element('div');
 $boxElement->text(Language::get('preview', '_preview'));
 ?>
@@ -21,14 +21,16 @@ $boxElement->text(Language::get('preview', '_preview'));
 
 <?php echo $titlePartialElement->text('.box_code'); ?>
 
-<?php echo $boxElement->copy->addClass('box_code')->text('&lt;module&gt;
+<?php echo $boxElement->copy()->addClass('box_code')->text(htmlspecialchars(
+'<module>
 {
 	"ModuleName":
 	{
 		"parameter": "value"
 	}
 }
-&lt;/module&gt;'); ?>
+</module>'
+)); ?>
 
 <!-- box quote -->
 

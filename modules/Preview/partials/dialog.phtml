@@ -1,0 +1,33 @@
+<?php
+namespace Redaxscript;
+
+$suffix = isset($admin) ? '_admin' : '_default';
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$titleDialogElement = new Element('h3', array(
+	'class' => 'title_dialog title_dialog' . $suffix
+));
+$boxDialogElement = new Element('div', array(
+	'class' => 'box_dialog' . $suffix
+));
+$textDialogElement = new Element('p');
+$buttonDialogElement = new Element('a', array(
+	'class' => 'button_default'
+));
+?>
+
+<!-- dialog -->
+
+<?php echo $titlePartialElement->text('.title_dialog' . $suffix . ' + .box_dialog' . $suffix); ?>
+
+<div class="js_dialog dialog<?php echo $suffix; ?>">
+
+	<?php echo $titleDialogElement->text(Language::get('confirm')); ?>
+	<?php echo $boxDialogElement->html(
+		$textDialogElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
+		$buttonDialogElement->copy()->text(Language::get('ok')) .
+		$buttonDialogElement->copy()->text(Language::get('cancel'))
+	); ?>
+
+</div>
