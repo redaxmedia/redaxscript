@@ -323,6 +323,7 @@ module.exports = function (grunt)
 					'<%=compress.distFull.src%>'
 				],
 				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_full',
+				dot: true,
 				expand: true
 			},
 			distLite:
@@ -332,6 +333,7 @@ module.exports = function (grunt)
 					'<%=compress.distLite.src%>'
 				],
 				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
+				dot: true,
 				expand: true
 			}
 		},
@@ -345,16 +347,20 @@ module.exports = function (grunt)
 					'languages/**',
 					'libraries/**',
 					'modules/**',
+					'scripts/**',
+					'styles/**',
 					'templates/**',
 					'Config.php',
 					'index.php',
 					'install.php',
-					'README.md'
+					'README.md',
+					'.htaccess'
 				],
 				options:
 				{
 					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_full.zip'
-				}
+				},
+				dot: true
 			},
 			distLite:
 			{
@@ -363,19 +369,23 @@ module.exports = function (grunt)
 					'includes/**',
 					'languages/en.json',
 					'libraries/**',
-					'modules/call_home/**',
+					'modules/CallHome/**',
+					'scripts/**',
+					'styles/**',
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',
 					'Config.php',
 					'index.php',
 					'install.php',
-					'README.md'
+					'README.md',
+					'.htaccess'
 				],
 				options:
 				{
 					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
-				}
+				},
+				dot: true
 			},
 			distLanguages:
 			{
@@ -386,6 +396,7 @@ module.exports = function (grunt)
 				dest: '../redaxscript-dist/files',
 				ext: '.zip',
 				expand: true
+
 			},
 			distModulesAnalytics:
 			{
@@ -574,17 +585,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/maps.zip'
 				}
 			},
-			distModulesMultiLanguage:
-			{
-				src:
-				[
-					'modules/MultiLanguage/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/multi_language.zip'
-				}
-			},
 			distModulesPreview:
 			{
 				src:
@@ -682,7 +682,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/candy.zip'
-				}
+				},
+				dot: true
 			},
 			distTemplatesScratch:
 			{
@@ -693,7 +694,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/scratch.zip'
-				}
+				},
+				dot: true
 			},
 			distTemplatesTwitter:
 			{
@@ -704,7 +706,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/twitter.zip'
-				}
+				},
+				dot: true
 			},
 			distTemplatesWide:
 			{
@@ -715,7 +718,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/wide.zip'
-				}
+				},
+				dot: true
 			},
 			distTemplatesZepto:
 			{
@@ -726,7 +730,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/zepto.zip'
-				}
+				},
+				dot: true
 			},
 			distSQL:
 			{
