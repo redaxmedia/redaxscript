@@ -208,14 +208,14 @@ class Html implements Filter
 			libxml_clear_errors();
 		}
 
-		/* cleanup document */
+		/* clean document */
 
-		$output = $this->_cleanup($doc);
+		$output = $this->_clean($doc);
 		return $output;
 	}
 
 	/**
-	 * cleanup the document
+	 * clean the document
 	 *
 	 * @since 2.2.0
 	 *
@@ -224,7 +224,7 @@ class Html implements Filter
 	 * @return string
 	 */
 
-	protected function _cleanup(DOMDocument $doc)
+	protected function _clean(DOMDocument $doc)
 	{
 		$output = '';
 
