@@ -18,11 +18,11 @@ $boxAccordionElement = new Element('div', array(
 
 <!-- accordion -->
 
-<?php echo $titlePartialElement->text('.js_accordion (div > h3 + div)'); ?>
+<?php echo $titlePartialElement->text('.title_accordion' . $suffix . ' + box_accordion' . $suffix); ?>
 
 <div class="js_accordion accordion">
 
-	<!-- active -->
+	<!-- first -->
 
 	<?php echo $setAccordionElement
 		->copy()
@@ -31,23 +31,31 @@ $boxAccordionElement = new Element('div', array(
 			$titleAccordionElement
 				->copy()
 				->addClass('js_title_active title_active')
-				->text(Language::get(1, '_number')) .
+				->text(Language::get('first')) .
 			$boxAccordionElement
 				->copy()
 				->addClass('js_box_active box_active')
-				->text(Language::get(1, '_number'))
-		);
-	?>
-
-	<!-- inactive -->
-
-	<?php foreach (array(2, 3, 4, 5) as $value): ?>
-
-		<?php echo $setAccordionElement->html(
-			$titleAccordionElement->text(Language::get($value, '_number')) .
-			$boxAccordionElement->text(Language::get($value, '_number'))
+				->text(Language::get('first'))
 		); ?>
 
-	<?php endforeach; ?>
+	<!-- number -->
 
+	<?php for ($i = 2; $i < 5; $i++): ?>
+
+		<?php echo $setAccordionElement->html(
+			$titleAccordionElement->text(Language::get($i, '_number')) .
+			$boxAccordionElement->text(Language::get($i, '_number'))
+		); ?>
+
+	<?php endfor; ?>
+
+	<!-- last -->
+
+	<?php echo $setAccordionElement
+		->copy()
+		->addClass('js_set_accordion_last set_accordion_last')
+		->html(
+			$titleAccordionElement->text(Language::get('last')) .
+			$boxAccordionElement->text(Language::get('last'))
+		); ?>
 </div>

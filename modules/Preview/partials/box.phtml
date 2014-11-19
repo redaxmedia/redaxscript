@@ -6,11 +6,16 @@ $titlePartialElement = new Element('h3', array(
 ));
 $boxElement = new Element('div');
 $boxElement->text(Language::get('preview', '_preview'));
+$boxArray = array(
+	'box_comment',
+	'box_extra',
+	'box_default'
+);
 ?>
 
 <!-- several boxes -->
 
-<?php foreach (array('box_comment', 'box_extra', 'box_default') as $value): ?>
+<?php foreach ($boxArray as $value): ?>
 
 	<?php echo $titlePartialElement->text('.' . $value); ?>
 	<?php echo $boxElement->copy()->addClass($value); ?>
@@ -37,7 +42,7 @@ $boxElement->text(Language::get('preview', '_preview'));
 <?php echo $titlePartialElement->text('.box_quote'); ?>
 
 <blockquote class="box_quote">Redaxscript is an ultra lightweight CMS.</blockquote>
-<p>Some text after .box_quote to demonstrate the spaces.</p>
+<p>Placeholder text to demonstrate spacing.</p>
 
 <!-- box line -->
 
