@@ -45,7 +45,7 @@ $noteArray = array(
 	<?php foreach ($noteArray as $value): ?>
 
 		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
-		<?php echo $fieldTextElement->copy()->addClass($value)->attr('value', $value); ?>
+		<?php echo $fieldTextElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
 
@@ -58,7 +58,7 @@ $noteArray = array(
 	<?php foreach ($noteArray as $value): ?>
 
 		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
-		<?php echo $fieldSelectElement->copy()->addClass($value)->attr('value', $value); ?>
+		<?php echo $fieldSelectElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
 

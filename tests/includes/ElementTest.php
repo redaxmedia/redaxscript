@@ -156,6 +156,28 @@ class ElementTest extends TestCase
 	}
 
 	/**
+	 * testVal
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testVal()
+	{
+		/* setup */
+
+		$element = new Element('input');
+
+		/* expect and result */
+
+		$expect = '<input value="test" />';
+		$result = $element->val('test');
+
+		/* compare */
+
+		$this->assertEquals($expect, $result);
+	}
+
+	/**
 	 * testHtml
 	 *
 	 * @since 2.2.0
