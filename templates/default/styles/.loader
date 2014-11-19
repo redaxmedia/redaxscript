@@ -20,7 +20,7 @@
 16 = templates/default/styles/media.css
 17 = templates/default/styles/note.css
 18 = templates/default/styles/table.css
-19 = templates/default/styles/typography.css
+19 = templates/default/styles/typo.css
 20 = styles/query.css
 21 = templates/default/styles/query.css
 
