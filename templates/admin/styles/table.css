@@ -52,6 +52,11 @@
 	border-top: 1px solid #b9b9b9;
 }
 
+.table_admin caption + tbody tr:last-child
+{
+	border-bottom: 1px solid #b9b9b9;
+}
+
 .table_admin tbody td
 {
 	padding: 1em;
@@ -72,11 +77,6 @@
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
-}
-
-.table_admin tfoot + tbody .row_group
-{
-	border-top: 0;
 }
 
 .table_admin tbody .row_group td
