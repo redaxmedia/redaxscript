@@ -355,7 +355,7 @@ function comment_post()
 		/* insert comment */
 
 		$query = 'INSERT INTO ' . PREFIX . 'comments (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::forTablePrefix('comments')->rawExecute($query);
+		Redaxscript\Db::rawExecute($query);
 	}
 
 	/* handle error */

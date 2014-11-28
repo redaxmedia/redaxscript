@@ -19,7 +19,11 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @method orderByAsc()
+ * @method orderByDesc()
+ * @method selectExpr()
  * @method tableAlias()
+ * @method whereIn()
  */
 
 class Db extends ORM
