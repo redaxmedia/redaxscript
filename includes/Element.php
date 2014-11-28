@@ -229,7 +229,23 @@ class Element
 	}
 
 	/**
-	 * set html to element
+	 * set value to the element
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $value value of the element
+	 *
+	 * @return Element
+	 */
+
+	public function val($value = null)
+	{
+		$this->_attributeArray['value'] = $value;
+		return $this;
+	}
+
+	/**
+	 * set html to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -245,7 +261,7 @@ class Element
 	}
 
 	/**
-	 * set text to element
+	 * set text to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -260,6 +276,21 @@ class Element
 		{
 			$this->_html = strip_tags($text);
 		}
+		return $this;
+	}
+
+	/**
+	 * clean the element
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return Element
+	 */
+
+	public function clean()
+	{
+		$this->_attributeArray['value'] = '';
+		$this->_html = '';
 		return $this;
 	}
 

@@ -1,0 +1,39 @@
+<?php
+namespace Redaxscript;
+
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$linkElement = new Element('a');
+$linkElement->text(Language::get('preview', '_preview'));
+$titleElement = new Element('h3');
+$titleElement->text(Language::get('preview', '_preview'));
+$linkArray = array(
+	'link_default',
+	'link_read_more'
+);
+$titleArray = array(
+	'title_content',
+	'title_content_sub',
+	'title_comment',
+	'title_extra'
+);
+?>
+
+<!-- several links -->
+
+<?php foreach ($linkArray as $value): ?>
+
+	<?php echo $titlePartialElement->text('.' . $value); ?>
+	<?php echo $linkElement->copy()->addClass($value); ?>
+
+<?php endforeach; ?>
+
+<!-- several titles -->
+
+<?php foreach ($titleArray as $value): ?>
+
+	<?php echo $titlePartialElement->text('.' . $value); ?>
+	<?php echo $titleElement->copy()->addClass($value); ?>
+
+<?php endforeach; ?>

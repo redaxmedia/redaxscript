@@ -25,7 +25,7 @@
 
 /* @section 2. grid preview */
 
-.preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview, .preview .box_preview.has_tooltip:hover
+.preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview
 {
 	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);

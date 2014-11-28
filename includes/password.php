@@ -134,7 +134,7 @@ function password_reset_post()
 		/* update password */
 
 		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . sha1($password) . SALT . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
-		Redaxscript\Db::forTablePrefix('users')->rawExecute($query);
+		Redaxscript\Db::rawExecute($query);
 	}
 
 	/* handle error */

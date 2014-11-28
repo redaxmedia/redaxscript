@@ -5,5 +5,5 @@
 4 = templates/admin/styles/general.css
 5 = templates/admin/styles/interface.css
 6 = templates/admin/styles/table.css
-7 = templates/admin/styles/typography.css
+7 = templates/admin/styles/typo.css
 8 = templates/admin/styles/query.css

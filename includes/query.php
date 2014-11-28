@@ -150,9 +150,9 @@ function future_update($table = '')
 			foreach ($general_result as $r)
 			{
 				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET date = \'' . $r['date'] . '\', status = 1 WHERE article = ' . $r['id'] . ' && status = 2';
-				Redaxscript\Db::forTablePrefix('users')->rawExecute($comments_update_query);
+				Redaxscript\Db::rawExecute($comments_update_query);
 			}
 		}
 	}
-	Redaxscript\Db::forTablePrefix('users')->rawExecute($general_update_query);
+	Redaxscript\Db::rawExecute($general_update_query);
 }

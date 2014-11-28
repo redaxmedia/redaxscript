@@ -19,7 +19,11 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @method orderByAsc()
+ * @method orderByDesc()
+ * @method selectExpr()
  * @method tableAlias()
+ * @method whereIn()
  */
 
 class Db extends ORM
@@ -124,14 +128,19 @@ class Db extends ORM
 
 	public static function getSettings($key = null)
 	{
+		$output = false;
 		$settings = self::forTablePrefix('settings')->findMany();
+
+		/* process settings */
+
 		foreach ($settings as $value)
 		{
 			if ($value->name === $key)
 			{
-				return $value->value;
+				$output = $value->value;
 			}
 		}
+		return $output;
 	}
 
 	/**

@@ -1,0 +1,65 @@
+<?php
+namespace Redaxscript;
+
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$linkElement = new Element('a', array(
+	'href' => '#'
+));
+$linkElement->text('link');
+$boxElement = new Element('div', array(
+	'class' => 'box_note'
+));
+$fieldTextElement = new Element('input', array(
+	'type' => 'text',
+	'class' => 'field_text field_note',
+	'placeholder' => 'Placeholder text'
+));
+$fieldSelectElement = new Element('select', array(
+	'class' => 'field_select field_note',
+));
+$optionNative = '<option>Placeholder text</option>';
+$fieldSelectElement->html($optionNative . $optionNative . $optionNative);
+$noteArray = array(
+	'note_error',
+	'note_warning',
+	'note_success',
+	'note_info'
+);
+?>
+
+<!-- several boxes -->
+
+<?php foreach ($noteArray as $value): ?>
+
+	<?php echo $titlePartialElement->text('.box_note.' . $value); ?>
+	<?php echo $boxElement->copy()->addClass($value)->html('Placeholder text and ' . $linkElement . '.'); ?>
+
+<?php endforeach; ?>
+
+<!-- text fields -->
+
+<form>
+
+	<?php foreach ($noteArray as $value): ?>
+
+		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
+		<?php echo $fieldTextElement->copy()->addClass($value)->val($value); ?>
+
+	<?php endforeach; ?>
+
+</form>
+
+<!-- select fields -->
+
+<form>
+
+	<?php foreach ($noteArray as $value): ?>
+
+		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
+		<?php echo $fieldSelectElement->copy()->addClass($value)->val($value); ?>
+
+	<?php endforeach; ?>
+
+</form>

@@ -27,12 +27,6 @@
 	border-top: 1px solid #d5d5d5;
 }
 
-.table_default tbody tr:hover
-{
-	background: #e1e1e1;
-	background: rgba(0, 0, 0, 0.02);
-}
-
 .table_default tbody td
 {
 	padding: 1em;

@@ -1,0 +1,89 @@
+<?php
+namespace Redaxscript;
+
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$clearfixElement = new Element('div', array(
+	'class' => 'clearfix'
+));
+$gridElement = new Element('div');
+$boxElement = new Element('div', array(
+	'class' => 'box_preview'
+));
+$gridArray = array(
+	array(
+		'.clearfix > .grid',
+		'',
+		'grid',
+	),
+	array(
+		'.clearfix > .grid_space',
+		'',
+		'grid_space',
+	),
+	array(
+		'.clearfix.line > .grid',
+		'line',
+		'grid',
+	),
+	array(
+		'.clearfix.line > .grid_space',
+		'line',
+		'grid_space',
+	),
+	array(
+		'.clearfix.line_space > .grid',
+		'line_space',
+		'grid'
+	),
+	array(
+		'.clearfix.line_space > .grid_space',
+		'line_space',
+		'grid_space'
+	)
+);
+?>
+
+<!-- grid combination -->
+
+<?php foreach ($gridArray as $value): ?>
+
+	<?php echo $titlePartialElement->text($value[0]); ?>
+
+	<!-- s1o2 -->
+
+	<?php echo $clearfixElement->addClass($value[1])->html(
+		$gridElement->copy()->addClass($value[2] . ' s1o2')->html($boxElement->text('s1o2')) .
+		$gridElement->copy()->addClass($value[2] . ' s1o2')->html($boxElement->text('s1o2'))
+	); ?>
+
+	<!-- s1o3 -->
+
+	<?php echo $clearfixElement->addClass($value[1])->html(
+		$gridElement->copy()->addClass($value[2] . ' s1o3')->html($boxElement->text('s1o3')) .
+		$gridElement->copy()->addClass($value[2] . ' s2o3')->html($boxElement->text('s1o3'))
+	); ?>
+
+<?php endforeach; ?>
+
+<!-- grid sizes -->
+
+<?php echo $titlePartialElement->text('grid sizes'); ?>
+
+<div class="line clearfix">
+
+	<?php echo $gridElement->copy()->addClass('grid_space s1o1')->html($boxElement->text('s1o1')); ?>
+
+</div>
+
+<?php for ($i = 2; $i < 9; $i++): ?>
+
+	<div class="line clearfix">
+
+		<?php echo $gridElement->copy()->addClass('grid_space s1o' . $i)->html($boxElement->text('s1o' . $i)); ?>
+		<?php echo $gridElement->copy()->addClass('grid_space s' . ($i - 1) . 'o' . $i)->html($boxElement->text('s' . ($i - 1) . 'o' . $i)); ?>
+
+	</div>
+
+<?php endfor; ?>

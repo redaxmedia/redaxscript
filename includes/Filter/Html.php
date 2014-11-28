@@ -2,6 +2,7 @@
 namespace Redaxscript\Filter;
 
 use DOMDocument;
+use Redaxscript\Db;
 
 /**
  * children class to filter html
@@ -161,6 +162,8 @@ class Html implements Filter
 
 	public function sanitize($html = null, $filter = true)
 	{
+		$charset = Db::getSettings('charset');
+		$html = mb_convert_encoding($html, 'html-entities', $charset);
 		$doc = new DOMDocument();
 		$doc->loadHTML($html);
 		$body = $doc->getElementsByTagName('body');
@@ -208,14 +211,14 @@ class Html implements Filter
 			libxml_clear_errors();
 		}
 
-		/* cleanup document */
+		/* clean document */
 
-		$output = $this->_cleanup($doc);
+		$output = html_entity_decode($this->_clean($doc), ENT_QUOTES, $charset);
 		return $output;
 	}
 
 	/**
-	 * cleanup the document
+	 * clean the document
 	 *
 	 * @since 2.2.0
 	 *
@@ -224,7 +227,7 @@ class Html implements Filter
 	 * @return string
 	 */
 
-	protected function _cleanup(DOMDocument $doc)
+	protected function _clean(DOMDocument $doc)
 	{
 		$output = '';
 
