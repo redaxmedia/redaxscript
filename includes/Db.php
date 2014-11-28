@@ -25,6 +25,7 @@ use ORM;
  * @method orderByDesc()
  * @method selectExpr()
  * @method tableAlias()
+ * @method whereIdIs()
  * @method whereIn()
  */
 
