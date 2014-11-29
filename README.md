@@ -1,4 +1,4 @@
-![Redaxscript](https://rawgithub.com/redaxmedia/media/master/svg/redaxscript.svg)
+![Redaxscript](http://c34.imgup.net/02_redaxsc651c.png)
 
 
 Redaxscript
