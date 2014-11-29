@@ -59,6 +59,8 @@ class LazyLoad extends Config
 
 	public static function render($src = null, $options = array())
 	{
+		$output = '';
+
 		/* device related images */
 
 		if (is_array($src))
@@ -80,7 +82,7 @@ class LazyLoad extends Config
 		{
 			$imageElement = new Element('img', array(
 				'src' => self::$_config['placeholder'],
-				'class' => self::$_config['className']['image'] . ' ' . $value['className'],
+				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
 				'alt' => $options['alt']
 			));
 
