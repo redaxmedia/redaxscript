@@ -224,7 +224,7 @@ function admin_modules_form()
 	{
 		$access_array[l('all')] = 0;
 		$access_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forTablePrefix('users')->rawQuery($access_query)->findArray();
+		$access_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($access_query)->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)

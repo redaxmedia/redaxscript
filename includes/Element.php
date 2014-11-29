@@ -121,7 +121,7 @@ class Element
 	 * @since 2.2.0
 	 *
 	 * @param mixed $attribute name or set of attributes
-	 * @param array $value value of the attribute
+	 * @param string $value value of the attribute
 	 *
 	 * @return Element
 	 */

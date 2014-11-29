@@ -19,10 +19,13 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @method rawExecute()
+ * @method rawQuery()
  * @method orderByAsc()
  * @method orderByDesc()
  * @method selectExpr()
  * @method tableAlias()
+ * @method whereIdIs()
  * @method whereIn()
  */
 
