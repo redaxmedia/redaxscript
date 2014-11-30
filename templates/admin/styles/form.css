@@ -37,7 +37,7 @@
 	padding: 0 0.75em;
 }
 
-.button_admin.button_large_admin
+.button_admin.button_large
 {
 	font-size: 1em;
 }
@@ -88,7 +88,7 @@
 
 /* @section 2. several fields */
 
-.field_select_admin, .field_text_admin, .field_textarea_admin.field_small_admin
+.field_select_admin, .field_text_admin, .field_textarea_admin.field_small
 {
 	width: 40%;
 }
@@ -137,7 +137,7 @@
 	width: 100%;
 }
 
-.field_textarea_admin.field_small_admin
+.field_textarea_admin.field_small
 {
 	min-height: 5em;
 }

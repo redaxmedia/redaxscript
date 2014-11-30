@@ -1,0 +1,34 @@
+<?php
+namespace Redaxscript;
+
+$suffix = isset($admin) ? '_admin' : '_default';
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$buttonElement = new Element('ul', array(
+	'class' => 'button button' . $suffix
+));
+$buttonElement->text(Language::get('preview', '_preview'))
+?>
+
+<!-- button -->
+
+<?php echo $titlePartialElement->text('button.button' . $suffix); ?>
+
+<?php echo $buttonElement; ?>
+<?php echo $buttonElement
+	->copy()
+	->attr('disabled', 'disabled'); ?>
+
+<!-- button large -->
+
+<?php echo $titlePartialElement->text('button.button' . $suffix . '.button_large'); ?>
+
+<?php echo $buttonElement
+	->copy()
+	->addClass('button_large'); ?>
+
+<?php echo $buttonElement
+	->copy()
+	->addClass('button_large')
+	->attr('disabled', 'disabled'); ?>
