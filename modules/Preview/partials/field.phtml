@@ -48,6 +48,14 @@ $fieldSelectElement->html($optionNative . $optionNative . $optionNative);
 	->copy()
 	->attr('disabled', 'disabled'); ?>
 
+<!-- small -->
+
+<?php echo $titlePartialElement->text('.field_textarea' . $suffix . '.field_small'); ?>
+
+<?php echo $fieldTextareaElement
+	->copy()
+	->addClass('field_small'); ?>
+
 <!-- field select -->
 
 <?php echo $titlePartialElement->text('.field_select' . $suffix); ?>
