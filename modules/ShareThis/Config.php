@@ -29,38 +29,36 @@ class Config extends Module
 		'network' => array(
 			'facebook' => array(
 				'url' => 'http://facebook.com/sharer.php?u=',
-				'className' => ' link_facebook',
-				'attribute' => ' data-type="facebook"'
+				'className' => 'link_facebook',
+				'attribute' => 'data-type="facebook"'
 			),
-			'google' => array(
+			'googleplusone' => array(
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
-				'className' => ' link_googleplusone',
-				'attribute' => ' data-type="googleplusone"'
+				'className' => 'link_googleplusone'
 			),
 			'twitter' => array(
 				'url' => 'http://twitter.com/share?url=',
-				'className' => ' link_twitter',
-				'attribute' => ' data-type="twitter" data-height="340"'
+				'className' => 'link_twitter',
+				'height' => 340
 			),
 			'pinterest' => array(
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
-				'className' => ' link_pinterest',
-				'attribute' => ' data-type="pinterest"'
+				'className' => 'link_pinterest'
 			),
 			'linkedin' => array(
 				'url' => 'http://linkedin.com/shareArticle?url=',
-				'className' => ' link_linkedin',
-				'attribute' => ' data-type="linkedin" data-height="490" data-width="850"'
+				'className' => 'link_linkedin',
+				'height' => 490,
+				'width' => 850
 			),
 			'stumbleupon' => array(
 				'url' => 'http://stumbleupon.com/submit?url=',
-				'className' => ' link_stumbleupon',
-				'attribute' => ' data-type="stumbleupon"'
+				'className' => 'link_stumbleupon'
 			),
 			'delicious' => array(
 				'url' => 'http://del.icio.us/post?url=',
-				'className' => ' link_delicious',
-				'attribute' => ' data-type="delicious" data-height="580"'
+				'className' => 'link_delicious',
+				'height' => 580
 			)
 		)
 	);
