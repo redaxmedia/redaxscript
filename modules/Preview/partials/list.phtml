@@ -1,0 +1,37 @@
+<?php
+namespace Redaxscript;
+
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$listOrderedElement = new Element('ol', array(
+	'class' => 'list_default'
+));
+$listUnorderedElement = new Element('ul', array(
+	'class' => 'list_default'
+));
+$itemElement = new Element('li');
+$listContent = '';
+?>
+
+<!-- list content -->
+
+<?php for ($i = 0; $i < 5; $i++): ?>
+
+	<?php $listContent .= $itemElement
+		->copy()
+		->text(Language::get($i + 1, '_number')); ?>
+
+<?php endfor; ?>
+
+<!-- list ordered -->
+
+<?php echo $titlePartialElement->text('ol.list_default'); ?>
+
+<?php echo $listOrderedElement->html($listContent); ?>
+
+<!-- list unordered -->
+
+<?php echo $titlePartialElement->text('ul.list_default'); ?>
+
+<?php echo $listUnorderedElement->html($listContent); ?>

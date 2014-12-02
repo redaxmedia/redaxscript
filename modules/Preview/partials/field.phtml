@@ -1,0 +1,71 @@
+<?php
+namespace Redaxscript;
+
+$suffix = isset($admin) ? '_admin' : '';
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$fieldTextElement = new Element('input', array(
+	'class' => 'field_text' . $suffix
+));
+$fieldTextElement->val(Language::get('preview', '_preview'));
+$fieldTextareaElement = new Element('textarea', array(
+	'class' => 'field_textarea' . $suffix
+));
+$fieldTextareaElement->val(Language::get('preview', '_preview'));
+$fieldSelectElement = new Element('select', array(
+	'class' => 'field_select' . $suffix
+));
+$optionNative = '<option>Placeholder text</option>';
+$fieldSelectElement->html($optionNative . $optionNative . $optionNative);
+?>
+
+<!-- field text -->
+
+<?php echo $titlePartialElement->text('.field_text' . $suffix); ?>
+
+<?php echo $fieldTextElement; ?>
+
+<!-- disabled -->
+
+<?php echo $titlePartialElement->text('.field_text' . $suffix . '[disabled]'); ?>
+
+<?php echo $fieldTextElement
+	->copy()
+	->attr('disabled', 'disabled'); ?>
+
+<!-- field textarea -->
+
+<?php echo $titlePartialElement->text('.field_textarea' . $suffix); ?>
+
+<?php echo $fieldTextareaElement; ?>
+
+<!-- disabled -->
+
+<?php echo $titlePartialElement->text('.field_textarea' . $suffix . '[disabled]'); ?>
+
+<?php echo $fieldTextareaElement
+	->copy()
+	->attr('disabled', 'disabled'); ?>
+
+<!-- small -->
+
+<?php echo $titlePartialElement->text('.field_textarea' . $suffix . '.field_small'); ?>
+
+<?php echo $fieldTextareaElement
+	->copy()
+	->addClass('field_small'); ?>
+
+<!-- field select -->
+
+<?php echo $titlePartialElement->text('.field_select' . $suffix); ?>
+
+<?php echo $fieldSelectElement; ?>
+
+<!-- disabled -->
+
+<?php echo $titlePartialElement->text('.field_select' . $suffix . '[disabled]'); ?>
+
+<?php echo $fieldSelectElement
+	->copy()
+	->attr('disabled', 'disabled'); ?>

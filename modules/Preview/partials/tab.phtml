@@ -1,0 +1,60 @@
+<?php
+namespace Redaxscript;
+
+$suffix = isset($admin) ? '_admin' : '_default';
+$titlePartialElement = new Element('h3', array(
+	'class' => 'title_content_sub'
+));
+$listTabElement = new Element('ul', array(
+	'class' => 'js_list_tab list_tab list_tab' . $suffix
+));
+$boxTabElement = new Element('div', array(
+	'class' => 'js_box_tab box_tab box_tab' . $suffix
+));
+$itemTabElement = new Element('li');
+$setTabElement = new Element('div', array(
+	'class' => 'js_set_tab set_tab set_tab' . $suffix
+));
+$listContent = '';
+$boxContent = '';
+$itemActive = 'js_item_active item_active';
+$setActive = 'js_set_active set_active';
+$itemArray = array(
+	'item_first',
+	'item_second',
+	'item_third',
+	'item_fourth',
+	'item_last'
+);
+?>
+
+<!-- list and set content -->
+
+<?php foreach ($itemArray as $key => $value): ?>
+
+	<?php $id = 'tab' . $suffix . '_' . $key; ?>
+
+	<?php $listContent .= $itemTabElement
+		->copy()
+		->addClass($key === 0 ? $itemActive : '')
+		->addClass($value)
+		->html('<a href="' . Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id . '">' . Language::get($key + 1, '_number') . '</a>'); ?>
+
+	<?php $boxContent .= $setTabElement
+			->copy()
+			->addClass($key === 0 ? $setActive : '')
+			->attr('id', $id)
+			->text(Language::get($key + 1, '_number')); ?>
+
+<?php endforeach; ?>
+
+<!-- tab -->
+
+<?php echo $titlePartialElement->text('.list_accordion' . $suffix . ' + .box_tab' . $suffix); ?>
+
+<div class="js_tab tab">
+
+	<?php echo $listTabElement->copy()->html($listContent); ?>
+	<?php echo $boxTabElement->copy()->html($boxContent); ?>
+
+</div>
