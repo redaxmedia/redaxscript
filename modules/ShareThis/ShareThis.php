@@ -88,7 +88,7 @@ class ShareThis extends Config
 
 			/* process network */
 
-			foreach (self::$_config['networks'] as $key => $value)
+			foreach (self::$_config['network'] as $key => $value)
 			{
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(

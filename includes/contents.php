@@ -100,7 +100,7 @@ function contents()
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('article_start', $id);
+				$output .= Redaxscript\Hook::trigger('article_start', $r);
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content">';
@@ -120,7 +120,7 @@ function contents()
 				/* collect box output */
 
 				$output .= '<div class="box_content">' . $parser->getOutput();
-				$output .= '</div>' . Redaxscript\Hook::trigger('article_end', $id);
+				$output .= '</div>' . Redaxscript\Hook::trigger('article_end', $r);
 
 				/* prepend admin dock */
 
@@ -279,7 +279,7 @@ function extras($filter = '')
 
 					/* collect headline output */
 
-					$output .= Redaxscript\Hook::trigger('extra_start', $id);
+					$output .= Redaxscript\Hook::trigger('extra_start', $r);
 					if ($headline == 1)
 					{
 						$output .= '<h3 class="title_extra">' . $title . '</h3>';
@@ -287,7 +287,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $id);
+					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $r);
 
 					/* prepend admin dock */
 

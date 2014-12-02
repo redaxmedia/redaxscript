@@ -74,7 +74,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('comment_start', $id) . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript\Hook::trigger('comment_start', $r) . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -88,7 +88,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $id);
+				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $r);
 
 				/* admin dock */
 
