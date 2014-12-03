@@ -104,21 +104,10 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 $modules_include = Redaxscript\Hook::get();
 if ($modules_include)
 {
-	/* language object */
-
-	$language = Redaxscript\Language::getInstance();
-
 	/* process modules */
 
 	foreach ($modules_include as $value)
 	{
-		/* language */
-
-		$language->load(array(
-			'modules/' . $value . '/languages/en.json',
-			'modules/' . $value . '/languages/' . Redaxscript\Registry::get('language') . '.json'
-		));
-
 		/* config */
 
 		if (file_exists('modules/' . $value . '/config.php'))
@@ -134,6 +123,10 @@ if ($modules_include)
 		}
 	}
 }
+
+/* module init */
+
+Redaxscript\Hook::trigger('init');
 
 /* call loader else render template */
 
