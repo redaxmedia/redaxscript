@@ -344,7 +344,7 @@ class Parser
 					foreach ($json as $module => $parameter)
 					{
 						$object = $namespace . $module . '\\' . $module;
-						if (method_exists($object, 'render'))
+						if (in_array($module, Hook::getModules()) && method_exists($object, 'render'))
 						{
 							echo call_user_func_array(array($object, 'render'), $parameter);
 						}
@@ -353,7 +353,7 @@ class Parser
 
 				/* else single call */
 
-				else if (method_exists($object, 'render'))
+				else if (in_array($value, Hook::getModules()) && method_exists($object, 'render'))
 				{
 					echo call_user_func(array($object, 'render'));
 				}

@@ -101,7 +101,7 @@ if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
 
 /* module files as needed */
 
-$modules_include = Redaxscript\Hook::get();
+$modules_include = Redaxscript\Hook::getModules();
 if ($modules_include)
 {
 	/* process modules */

@@ -38,6 +38,14 @@ class Hook
 	protected static $_modules = array();
 
 	/**
+	 * array of triggered hooks
+	 *
+	 * @var array
+	 */
+
+	protected static $_hooks = array();
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.2.0
@@ -73,9 +81,22 @@ class Hook
 	 * @return mixed
 	 */
 
-	public static function get()
+	public static function getModules()
 	{
 		return self::$_modules;
+	}
+
+	/**
+	 * get the hooks array
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return mixed
+	 */
+
+	public static function getHooks()
+	{
+		return self::$_hooks;
 	}
 
 	/**
@@ -93,7 +114,7 @@ class Hook
 	{
 		$output = false;
 
-		/* trigger module hooks */
+		/* trigger module hook */
 
 		foreach (self::$_modules as $module)
 		{
@@ -106,6 +127,7 @@ class Hook
 			if (method_exists($object, $method))
 			{
 				$output .= call_user_func_array(array($object, $method), $parameter);
+				self::$_hooks[$hook][] = $module;
 			}
 
 			/* function exists */
@@ -113,6 +135,7 @@ class Hook
 			else if (function_exists($function))
 			{
 				$output .= call_user_func_array($function, $parameter);
+				self::$_hooks[$hook][] = $module;
 			}
 		}
 		return $output;
