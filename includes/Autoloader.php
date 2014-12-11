@@ -70,7 +70,7 @@ class Autoloader
 		{
 			self::$_directory = $directory;
 		}
-		else if ($directory)
+		else if (is_string($directory))
 		{
 			self::$_directory = array(
 				$directory

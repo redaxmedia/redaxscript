@@ -146,12 +146,12 @@ class Directory
 
 	public function create($directory = null, $mode = 0777)
 	{
-		$path = $this->_directory . '/' . $directory;
 		$output = false;
+		$path = $this->_directory . '/' . $directory;
 
-		/* check path does not exist */
+		/* directory does not exist */
 
-		if (!file_exists($path))
+		if (!is_dir($path))
 		{
 			mkdir($path, $mode);
 
