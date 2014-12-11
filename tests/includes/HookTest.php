@@ -87,12 +87,12 @@ class HookTest extends TestCase
 	}
 
 	/**
-	 * testGetHooks
+	 * testGetEvents
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGetHooks()
+	public function testGetEvents()
 	{
 		/* setup */
 
@@ -101,7 +101,7 @@ class HookTest extends TestCase
 
 		/* result */
 
-		$result = Hook::getHooks();
+		$result = Hook::getEvents();
 
 		/* compare */
 
