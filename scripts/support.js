@@ -49,10 +49,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.2 battery */
@@ -63,10 +60,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.3 canvas */
@@ -77,10 +71,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.4 check validity */
@@ -91,10 +82,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.5 cookies */
@@ -105,10 +93,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.6 draggable */
@@ -119,10 +104,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.7 geolocation */
@@ -133,10 +115,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.8 form */
@@ -177,10 +156,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.10 index db */
@@ -191,10 +167,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.11 input */
@@ -271,10 +244,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(win.JSON),
 
 		/* @section 1.13 post message */
@@ -285,10 +255,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.14 speech */
@@ -299,10 +266,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.15 svg */
@@ -313,10 +277,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.16 touch */
@@ -327,10 +288,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.17 vibrate */
@@ -341,10 +299,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.18 web gl */
@@ -355,10 +310,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.19 web sql */
@@ -369,10 +321,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.20 web socket */
@@ -383,10 +332,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.21 web storage */
@@ -397,10 +343,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}(),
 
 		/* @section 1.22 web worker */
@@ -411,10 +354,7 @@
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}()
 	};
 })(document, document.documentElement, window, window.navigator);
