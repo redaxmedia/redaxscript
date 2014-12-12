@@ -17,6 +17,30 @@ use Redaxscript\Module;
 class ModuleTest extends TestCase
 {
 	/**
+	 * testInit
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
+		$module = new Module(array(
+			'alias' => 'Test',
+		));
+		$module->init();
+
+		/* result */
+
+		$result = $module;
+
+		/* compare */
+
+		$this->assertTrue(is_object($result));
+	}
+
+	/**
 	 * testInstall
 	 *
 	 * @since 2.2.0
@@ -55,10 +79,10 @@ class ModuleTest extends TestCase
 			'alias' => 'Test',
 		));
 		$module->uninstall();
+		Db::clearCache();
 
 		/* result */
 
-		Db::clearCache();
 		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
 
 		/* compare */

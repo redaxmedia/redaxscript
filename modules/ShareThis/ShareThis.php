@@ -93,7 +93,10 @@ class ShareThis extends Config
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(
 					'href' => $value['url'] . $url,
-					'class' => self::$_config['className']['link'] . $value['className']
+					'class' => self::$_config['className']['link'] . ' ' . $value['className'],
+					'data-type' => $key,
+					'data-height' => $value['height'],
+					'data-width' => $value['width']
 				))->text($key);
 				$output .= '</li>';
 			}

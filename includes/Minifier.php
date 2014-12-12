@@ -62,13 +62,13 @@ class Minifier
 
 		/* replace tabs and newlines */
 
+		$output = preg_replace('/\t+/', '', $output);
 		$output = preg_replace(array(
-			'/\t+/',
 			'/\r+/',
 			'/\n+/'
-		), '', $output);
+		), PHP_EOL, $output);
 
-		/* general minify */
+		/* general */
 
 		$output = str_replace(array(
 			' {',
@@ -91,7 +91,7 @@ class Minifier
 			', '
 		), ',', $output);
 
-		/* additional minify for script */
+		/* scripts */
 
 		if ($type == 'scripts')
 		{
@@ -115,6 +115,14 @@ class Minifier
 				' =',
 				'= '
 			), '=', $output);
+			$output = str_replace(array(
+				' >',
+				'> '
+			), '>', $output);
+			$output = str_replace(array(
+				' <',
+				'< '
+			), '<', $output);
 			$output = str_replace(array(
 				' ||',
 				'|| '

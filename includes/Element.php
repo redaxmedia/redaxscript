@@ -81,7 +81,7 @@ class Element
 
 		if (is_array($attributeArray))
 		{
-			foreach($attributeArray as $attribute => $value)
+			foreach ($attributeArray as $attribute => $value)
 			{
 				$this->attr($attribute, $value);
 			}
@@ -128,11 +128,11 @@ class Element
 
 	public function attr($attribute = null, $value = null)
 	{
-		if(is_array($attribute))
+		if (is_array($attribute))
 		{
 			$this->_attributeArray = array_merge($this->_attributeArray, $attribute);
 		}
-		else
+		else if (is_string($attribute) && is_string($value))
 		{
 			$this->_attributeArray[$attribute] = trim($value);
 		}
@@ -151,7 +151,7 @@ class Element
 
 	public function removeAttr($attribute = null)
 	{
-		if(isset($this->_attributeArray[$attribute]))
+		if (isset($this->_attributeArray[$attribute]))
 		{
 			unset($this->_attributeArray[$attribute]);
 		}
@@ -308,7 +308,7 @@ class Element
 
 		/* process attributes */
 
-		foreach($this->_attributeArray as $key => $value)
+		foreach ($this->_attributeArray as $key => $value)
 		{
 			if (is_string($key) && $value)
 			{
@@ -318,7 +318,7 @@ class Element
 
 		/* singleton tag */
 
-		if(in_array($this->_tag, $this->_singletonTags))
+		if (in_array($this->_tag, $this->_singletonTags))
 		{
 			$output .= ' />';
 

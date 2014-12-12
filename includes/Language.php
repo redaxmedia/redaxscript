@@ -92,7 +92,7 @@ class Language extends Singleton
 	{
 		/* handle json */
 
-		if (!is_array($json))
+		if (is_string($json))
 		{
 			$json = array(
 				$json

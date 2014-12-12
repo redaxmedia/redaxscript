@@ -46,6 +46,24 @@ class Module
 	}
 
 	/**
+	 * init the class
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function init()
+	{
+		if (isset(static::$_module['alias']))
+		{
+			$language = Language::getInstance();
+			$language->load(array(
+				'modules/' . static::$_module['alias'] . '/languages/en.json',
+				'modules/' . static::$_module['alias'] . '/languages/' . Registry::get('language') . '.json'
+			));
+		}
+	}
+
+	/**
 	 * install the module
 	 *
 	 * @since 2.2.0

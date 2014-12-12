@@ -38,6 +38,14 @@ class Hook
 	protected static $_modules = array();
 
 	/**
+	 * array of triggered events
+	 *
+	 * @var array
+	 */
+
+	protected static $_events = array();
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.2.0
@@ -73,9 +81,22 @@ class Hook
 	 * @return mixed
 	 */
 
-	public static function get()
+	public static function getModules()
 	{
 		return self::$_modules;
+	}
+
+	/**
+	 * get the events array
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return mixed
+	 */
+
+	public static function getEvents()
+	{
+		return self::$_events;
 	}
 
 	/**
@@ -83,29 +104,30 @@ class Hook
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $hook name of the module hook
+	 * @param string $event name of the module event
 	 * @param array $parameter parameter of the module hook
 	 *
 	 * @return string $output
 	 */
 
-	public static function trigger($hook = null, $parameter = array())
+	public static function trigger($event = null, $parameter = array())
 	{
 		$output = false;
 
-		/* trigger module hooks */
+		/* trigger event */
 
 		foreach (self::$_modules as $module)
 		{
-			$function = $module . self::$_delimiter . $hook;
+			$function = $module . self::$_delimiter . $event;
 			$object = self::$_namespace . $module . '\\' . $module;
-			$method = str_replace(self::$_delimiter, '', mb_convert_case($hook, MB_CASE_TITLE));
+			$method = str_replace(self::$_delimiter, '', mb_convert_case($event, MB_CASE_TITLE));
 
 			/* method exists */
 
 			if (method_exists($object, $method))
 			{
 				$output .= call_user_func_array(array($object, $method), $parameter);
+				self::$_events[$event][] = $module;
 			}
 
 			/* function exists */
@@ -113,6 +135,7 @@ class Hook
 			else if (function_exists($function))
 			{
 				$output .= call_user_func_array($function, $parameter);
+				self::$_events[$event][] = $module;
 			}
 		}
 		return $output;

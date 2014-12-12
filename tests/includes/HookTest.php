@@ -66,12 +66,12 @@ class HookTest extends TestCase
 	}
 
 	/**
-	 * testGet
+	 * testGetModules
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGet()
+	public function testGetModules()
 	{
 		/* setup */
 
@@ -79,11 +79,33 @@ class HookTest extends TestCase
 
 		/* result */
 
-		$result = Hook::get();
+		$result = Hook::getModules();
 
 		/* compare */
 
 		$this->assertArrayHasKey('CallHome', $result);
+	}
+
+	/**
+	 * testGetEvents
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetEvents()
+	{
+		/* setup */
+
+		Hook::init($this->_registry);
+		Hook::trigger('hook_method');
+
+		/* result */
+
+		$result = Hook::getEvents();
+
+		/* compare */
+
+		$this->assertArrayHasKey('hook_method', $result);
 	}
 
 	/**
