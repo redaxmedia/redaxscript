@@ -136,13 +136,10 @@
 			{
 				var attribute = attributes[i];
 
+				output[attribute] = false;
 				if (attribute in form)
 				{
 					output[attribute] = true;
-				}
-				else
-				{
-					output[attribute] = false;
 				}
 			}
 			return output;
@@ -207,14 +204,11 @@
 			{
 				var type = types[i];
 
+				output[type] = false;
 				input.setAttribute('type', type);
 				if (input.type === type)
 				{
 					output[type] = true;
-				}
-				else
-				{
-					output[type] = false;
 				}
 			}
 
@@ -224,13 +218,10 @@
 			{
 				var attribute = attributes[j];
 
+				output[attribute] = false;
 				if (attribute in input)
 				{
 					output[attribute] = true;
-				}
-				else
-				{
-					output[attribute] = false;
 				}
 			}
 			return output;
