@@ -56,11 +56,11 @@ class GetFile extends Module
 
 			/* calculate output */
 
-			if ($unit == 'kb' || $unit == 'mb')
+			if ($unit === 'kb' || $unit === 'mb')
 			{
 				$output = $output / 1024;
 			}
-			if ($unit == 'mb')
+			if ($unit === 'mb')
 			{
 				$output = $output / 1024;
 			}
