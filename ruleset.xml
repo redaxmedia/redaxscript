@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Redaxmedia">
-	<description>Redaxmedia coding standard</description>
+<ruleset name="Redaxscript">
+	<description>Redaxscript coding standards</description>
 
 	<!-- inherit from generic -->
 
