@@ -42,7 +42,6 @@ class Db extends ORM
 	public static function init(Config $config)
 	{
 		$type = $config::get('type');
-		$file = $config::get('file');
 		$host = $config::get('host');
 		$name = $config::get('name');
 		$user = $config::get('user');
@@ -52,7 +51,7 @@ class Db extends ORM
 
 		if ($type === 'sqlite')
 		{
-			self::configure('sqlite:' . $file);
+			self::configure('sqlite:' . $host);
 		}
 
 		/* mysql and pgsql */
