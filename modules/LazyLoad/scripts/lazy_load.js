@@ -23,9 +23,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.lazyLoad.options !== options)
+		if (rxs.modules.lazyLoad.options !== options)
 		{
-			options = $.extend({}, r.modules.lazyLoad.options, options || {});
+			options = $.extend({}, rxs.modules.lazyLoad.options, options || {});
 		}
 
 		/* return this */
@@ -110,9 +110,9 @@
 
 	$(function ()
 	{
-		if (r.modules.lazyLoad.startup)
+		if (rxs.modules.lazyLoad.startup)
 		{
-			$(r.modules.lazyLoad.selector).lazyLoad(r.modules.lazyLoad.options);
+			$(rxs.modules.lazyLoad.selector).lazyLoad(rxs.modules.lazyLoad.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

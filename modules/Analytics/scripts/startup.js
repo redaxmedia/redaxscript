@@ -11,7 +11,7 @@
 
 /* @section 1. analytics */
 
-r.modules.analytics =
+rxs.modules.analytics =
 {
 	startup: true,
 	selector: 'a.js_track_click, button.js_track_click',

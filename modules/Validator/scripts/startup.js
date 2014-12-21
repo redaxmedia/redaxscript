@@ -11,7 +11,7 @@
 
 /* @section 1. validator */
 
-r.modules.validator =
+rxs.modules.validator =
 {
 	startup: true,
 	options:

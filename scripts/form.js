@@ -24,9 +24,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.autoResize.options !== options)
+		if (rxs.plugins.autoResize.options !== options)
 		{
-			options = $.extend({}, r.plugins.autoResize.options, options || {});
+			options = $.extend({}, rxs.plugins.autoResize.options, options || {});
 		}
 
 		/* return this */
@@ -71,9 +71,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.enableIndent.options !== options)
+		if (rxs.plugins.enableIndent.options !== options)
 		{
-			options = $.extend({}, r.plugins.enableIndent.options, options || {});
+			options = $.extend({}, rxs.plugins.enableIndent.options, options || {});
 		}
 
 		/* return this */
@@ -194,9 +194,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.validateForm.options !== options)
+		if (rxs.plugins.validateForm.options !== options)
 		{
-			options = $.extend({}, r.plugins.validateForm.options, options || {});
+			options = $.extend({}, rxs.plugins.validateForm.options, options || {});
 		}
 
 		/* return this */
@@ -251,13 +251,13 @@
 						if (!thatValue)
 						{
 							validity = 'invalid';
-							message = l.input_empty + l.point;
+							message = rxs.language.input_empty + rxs.language.point;
 						}
 					}
 
 					/* missing support */
 
-					else if (!r.support.checkValidity)
+					else if (!rxs.support.checkValidity)
 					{
 						thatValue = that.val();
 						thatRequired = that.attr('required');
@@ -267,7 +267,7 @@
 						if (thatRequired && !thatValue)
 						{
 							validity = 'invalid';
-							message = l.input_empty + l.point;
+							message = rxs.language.input_empty + rxs.language.point;
 						}
 					}
 
@@ -318,7 +318,7 @@
 
 					/* haptic feedback */
 
-					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'submit' && rxs.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -342,9 +342,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.validateSearch.options !== options)
+		if (rxs.plugins.validateSearch.options !== options)
 		{
-			options = $.extend({}, r.plugins.validateSearch.options, options || {});
+			options = $.extend({}, rxs.plugins.validateSearch.options, options || {});
 		}
 
 		/* return this */
@@ -359,7 +359,7 @@
 					field = form.find(options.element.field),
 					fieldValue = field.val(),
 					fieldPlaceholder = field.attr('placeholder'),
-					message = l.input_incorrect + l.exclamation_mark,
+					message = rxs.language.input_incorrect + rxs.language.exclamation_mark,
 					timeout = '';
 
 				/* prevent multiple timeout */
@@ -389,25 +389,25 @@
 
 	$(function ()
 	{
-		if (r.plugins.autoResize.startup)
+		if (rxs.plugins.autoResize.startup)
 		{
-			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
+			$(rxs.plugins.autoResize.selector).autoResize(rxs.plugins.autoResize.options);
 		}
-		if (r.plugins.enableIndent.startup)
+		if (rxs.plugins.enableIndent.startup)
 		{
-			$(r.plugins.enableIndent.selector).enableIndent();
+			$(rxs.plugins.enableIndent.selector).enableIndent();
 		}
-		if (r.plugins.unmaskPassword.startup)
+		if (rxs.plugins.unmaskPassword.startup)
 		{
-			$(r.plugins.unmaskPassword.selector).unmaskPassword();
+			$(rxs.plugins.unmaskPassword.selector).unmaskPassword();
 		}
-		if (r.plugins.validateForm.startup)
+		if (rxs.plugins.validateForm.startup)
 		{
-			$(r.plugins.validateForm.selector).validateForm(r.plugins.validateForm.options);
+			$(rxs.plugins.validateForm.selector).validateForm(rxs.plugins.validateForm.options);
 		}
-		if (r.plugins.validateSearch.startup && typeof r.support.input === 'object' && r.support.input.placeholder)
+		if (rxs.plugins.validateSearch.startup && typeof rxs.support.input === 'object' && rxs.support.input.placeholder)
 		{
-			$(r.plugins.validateSearch.selector).validateSearch(r.plugins.validateSearch.options);
+			$(rxs.plugins.validateSearch.selector).validateSearch(rxs.plugins.validateSearch.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

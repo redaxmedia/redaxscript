@@ -11,7 +11,7 @@
 
 /* @section 1. share this */
 
-r.modules.shareThis =
+rxs.modules.shareThis =
 {
 	startup: true,
 	selector: 'a.js_link_share_this ',

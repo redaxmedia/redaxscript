@@ -11,7 +11,7 @@
 
 /* @section 1. call home */
 
-r.modules.callHome =
+rxs.modules.callHome =
 {
 	startup: true,
 	options:

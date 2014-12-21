@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.maps.options !== options)
+		if (rxs.modules.maps.options !== options)
 		{
-			options = $.extend({}, r.modules.maps.options, options || {});
+			options = $.extend({}, rxs.modules.maps.options, options || {});
 		}
 
 		/* return this */
@@ -124,9 +124,9 @@
 
 	$(function ()
 	{
-		if (r.modules.maps.startup && !r.constants.ADMIN_PARAMETER && typeof google === 'object' && typeof google.maps === 'object')
+		if (rxs.modules.maps.startup && !rxs.constants.ADMIN_PARAMETER && typeof google === 'object' && typeof google.maps === 'object')
 		{
-			$(r.modules.maps.selector).maps(r.modules.maps.options);
+			$(rxs.modules.maps.selector).maps(rxs.modules.maps.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

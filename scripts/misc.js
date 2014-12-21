@@ -21,9 +21,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.forwardNotification.options !== options)
+		if (rxs.plugins.forwardNotification.options !== options)
 		{
-			options = $.extend({}, r.plugins.forwardNotification.options, options || {});
+			options = $.extend({}, rxs.plugins.forwardNotification.options, options || {});
 		}
 
 		/* return this */
@@ -45,7 +45,7 @@
 					}
 					else
 					{
-						window.location = r.baseURL + url;
+						window.location = rxs.baseURL + url;
 					}
 				}, options.duration);
 			}
@@ -58,9 +58,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.keyShortcut.options !== options)
+		if (rxs.plugins.keyShortcut.options !== options)
 		{
-			options = $.extend({}, r.plugins.keyShortcut.options, options || {});
+			options = $.extend({}, rxs.plugins.keyShortcut.options, options || {});
 		}
 
 		/* return this */
@@ -97,13 +97,13 @@
 
 					else if (event.which === options.keyCode.log)
 					{
-						if (r.constants.LOGGED_IN === r.constants.TOKEN)
+						if (rxs.registry.LOGGED_IN === rxs.registry.TOKEN)
 						{
-							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+							window.location = rxs.baseURL + rxs.registry.REWRITE_ROUTE + rxs.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+							window.location = rxs.baseURL + rxs.registry.REWRITE_ROUTE + rxs.plugins.keyShortcut.routes.login;
 						}
 					}
 
@@ -136,13 +136,13 @@
 
 	$(function ()
 	{
-		if (r.plugins.keyShortcut.startup)
+		if (rxs.plugins.keyShortcut.startup)
 		{
-			$(r.plugins.keyShortcut.selector).keyShortcut(r.plugins.keyShortcut.options);
+			$(rxs.plugins.keyShortcut.selector).keyShortcut(rxs.plugins.keyShortcut.options);
 		}
-		if (r.plugins.forwardNotification.startup)
+		if (rxs.plugins.forwardNotification.startup)
 		{
-			$(r.plugins.forwardNotification.selector).forwardNotification(r.plugins.forwardNotification.options);
+			$(rxs.plugins.forwardNotification.selector).forwardNotification(rxs.plugins.forwardNotification.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

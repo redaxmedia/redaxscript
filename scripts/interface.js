@@ -22,9 +22,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.accordion.options !== options)
+		if (rxs.plugins.accordion.options !== options)
 		{
-			options = $.extend({}, r.plugins.accordion.options, options || {});
+			options = $.extend({}, rxs.plugins.accordion.options, options || {});
 		}
 
 		/* return this */
@@ -77,9 +77,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.accordion.options !== options)
+		if (rxs.plugins.accordion.options !== options)
 		{
-			options = $.extend({}, r.plugins.dropdown.options, options || {});
+			options = $.extend({}, rxs.plugins.dropdown.options, options || {});
 		}
 
 		/* return this */
@@ -123,9 +123,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.tab.options !== options)
+		if (rxs.plugins.tab.options !== options)
 		{
-			options = $.extend({}, r.plugins.tab.options, options || {});
+			options = $.extend({}, rxs.plugins.tab.options, options || {});
 		}
 
 		/* return this */
@@ -171,17 +171,17 @@
 
 	$(function ()
 	{
-		if (r.plugins.accordion.startup)
+		if (rxs.plugins.accordion.startup)
 		{
-			$(r.plugins.accordion.selector).accordion(r.plugins.accordion.options);
+			$(rxs.plugins.accordion.selector).accordion(rxs.plugins.accordion.options);
 		}
-		if (r.plugins.dropdown.startup && r.support.touch)
+		if (rxs.plugins.dropdown.startup && rxs.support.touch)
 		{
-			$(r.plugins.dropdown.selector).dropdown(r.plugins.dropdown.options);
+			$(rxs.plugins.dropdown.selector).dropdown(rxs.plugins.dropdown.options);
 		}
-		if (r.plugins.tab.startup)
+		if (rxs.plugins.tab.startup)
 		{
-			$(r.plugins.tab.selector).tab(r.plugins.tab.options);
+			$(rxs.plugins.tab.selector).tab(rxs.plugins.tab.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

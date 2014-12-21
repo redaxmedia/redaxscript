@@ -11,5 +11,5 @@
 
 /* @section 1. startup */
 
-r.plugins.accordion.startup = false;
-r.plugins.confirmLink.startup = false;
+rxs.plugins.accordion.startup = false;
+rxs.plugins.confirmLink.startup = false;

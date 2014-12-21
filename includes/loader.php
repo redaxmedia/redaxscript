@@ -390,14 +390,6 @@ function scripts($mode = '')
 
 function scripts_transport($minify = '')
 {
-	/* languages object */
-
-	$language = Redaxscript\Language::getInstance();
-
-	/* languages transport */
-
-	$output = 'var l = ' . json_encode($language->get()) . ';' . PHP_EOL;
-
 	/* extend redaxscript object */
 
 	$public_constants = array(
@@ -436,28 +428,36 @@ function scripts_transport($minify = '')
 
 	/* collect output */
 
-	$output .= 'if (typeof r === \'object\')' . PHP_EOL;
+	$output = 'if (typeof rxs === \'object\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
+
+	/* languages object */
+
+	$language = Redaxscript\Language::getInstance();
+
+	/* add language */
+
+	$output .= 'rxs.language = ' . json_encode($language->get()) . ';' . PHP_EOL;
 
 	/* add constants */
 
-	$output .= 'r.constants = {};';
+	$output .= 'rxs.constants = {};';
 	foreach ($public_constants as $value)
 	{
-		$output .= 'r.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
+		$output .= 'rxs.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
 	}
 
 	/* baseURL fallback */
 
-	$output .= 'if (r.baseURL === \'\')' . PHP_EOL;
+	$output .= 'if (rxs.baseURL === \'\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
-	$output .= 'r.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
+	$output .= 'rxs.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* generator and version */
 
-	$output .= 'r.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
-	$output .= 'r.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rxs.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rxs.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify */

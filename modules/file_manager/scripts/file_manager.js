@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.fileManager.options !== options)
+		if (rxs.modules.fileManager.options !== options)
 		{
-			options = $.extend({}, r.modules.fileManager.options, options || {});
+			options = $.extend({}, rxs.modules.fileManager.options, options || {});
 		}
 
 		/* return this */
@@ -32,7 +32,7 @@
 			var form = $(this),
 				fieldFile = form.find(options.element.fieldFile),
 				buttonUpload = form.find(options.element.buttonUpload),
-				buttonBrowse = $('<button type="submit">' + l._file_manager.browse + '</button>').addClass(options.className.buttonBrowse);
+				buttonBrowse = $('<button type="submit">' + rxs.language._file_manager.browse + '</button>').addClass(options.className.buttonBrowse);
 
 			/* insert fake browse */
 
@@ -60,9 +60,9 @@
 
 	$(function ()
 	{
-		if (r.modules.fileManager.startup && r.constants.ADMIN_PARAMETER === 'file-manager')
+		if (rxs.modules.fileManager.startup && rxs.constants.ADMIN_PARAMETER === 'file-manager')
 		{
-			$(r.modules.fileManager.selector).fileManager(r.modules.fileManager.options);
+			$(rxs.modules.fileManager.selector).fileManager(rxs.modules.fileManager.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

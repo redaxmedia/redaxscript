@@ -26,9 +26,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.dawanda.options !== options)
+		if (rxs.modules.dawanda.options !== options)
 		{
-			options = $.extend({}, r.modules.dawanda.options, options || {});
+			options = $.extend({}, rxs.modules.dawanda.options, options || {});
 		}
 
 		var dawanda = {};
@@ -37,7 +37,7 @@
 
 		dawanda.getURL = function (call, id)
 		{
-			var route = r.modules.dawanda.routes[call],
+			var route = rxs.modules.dawanda.routes[call],
 				output = '';
 
 			/* if route present */
@@ -66,21 +66,21 @@
 
 			/* fetch from storage */
 
-			if (r.support.webStorage && r.support.nativeJSON)
+			if (rxs.support.webStorage && rxs.support.nativeJSON)
 			{
-				r.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
+				rxs.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
 				/* restore data from storage */
 
-				if (typeof r.modules.dawanda.storage[key] === 'string')
+				if (typeof rxs.modules.dawanda.storage[key] === 'string')
 				{
-					r.modules.dawanda.data[key] = window.JSON.parse(r.modules.dawanda.storage[key]);
+					rxs.modules.dawanda.data[key] = window.JSON.parse(rxs.modules.dawanda.storage[key]);
 				}
 			}
 
 			/* fetch from data */
 
-			if (typeof r.modules.dawanda.data[key] === 'object' && r.modules.dawanda.data[key]['calls'][call])
+			if (typeof rxs.modules.dawanda.data[key] === 'object' && rxs.modules.dawanda.data[key]['calls'][call])
 			{
 				/* direct callback */
 
@@ -105,18 +105,18 @@
 
 						if (typeof data.response === 'object' && typeof data.response.result === 'object')
 						{
-							r.modules.dawanda.data[key] = $.extend({}, r.modules.dawanda.data[key], data.response.result || {});
+							rxs.modules.dawanda.data[key] = $.extend({}, rxs.modules.dawanda.data[key], data.response.result || {});
 
 							/* register calls */
 
-							r.modules.dawanda.data[key]['calls'] = r.modules.dawanda.data[key]['calls'] || {};
-							r.modules.dawanda.data[key]['calls'][call] = true;
+							rxs.modules.dawanda.data[key]['calls'] = rxs.modules.dawanda.data[key]['calls'] || {};
+							rxs.modules.dawanda.data[key]['calls'][call] = true;
 
 							/* set related storage */
 
-							if (r.support.webStorage && r.support.nativeJSON)
+							if (rxs.support.webStorage && rxs.support.nativeJSON)
 							{
-								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(r.modules.dawanda.data[key]));
+								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(rxs.modules.dawanda.data[key]));
 							}
 
 							/* delayed callback */
@@ -133,13 +133,13 @@
 
 		/* @section 1.3 generate key */
 
-		dawanda.generateKey = r.modules.dawanda.generateKey = function (id, data)
+		dawanda.generateKey = rxs.modules.dawanda.generateKey = function (id, data)
 		{
 			var output = id;
 
 			/* stringify data object */
 
-			if (r.support.nativeJSON)
+			if (rxs.support.nativeJSON)
 			{
 				output += JSON.stringify(data).replace(/[^a-z0-9]/g, '');
 			}
@@ -150,7 +150,7 @@
 
 		dawanda.createShortcut = function (call)
 		{
-			r.modules.dawanda[call] = function (id, data, callback)
+			rxs.modules.dawanda[call] = function (id, data, callback)
 			{
 				dawanda.getData(call, id, data, callback);
 			};
@@ -160,9 +160,9 @@
 
 		dawanda.registerShortcut = function ()
 		{
-			for (var i in r.modules.dawanda.routes)
+			for (var i in rxs.modules.dawanda.routes)
 			{
-				if (r.modules.dawanda.routes.hasOwnProperty(i))
+				if (rxs.modules.dawanda.routes.hasOwnProperty(i))
 				{
 					dawanda.createShortcut(i);
 				}
@@ -175,8 +175,8 @@
 		{
 			/* data and storage object */
 
-			r.modules.dawanda.data = {};
-			r.modules.dawanda.storage = {};
+			rxs.modules.dawanda.data = {};
+			rxs.modules.dawanda.storage = {};
 
 			/* register shortcut */
 
@@ -192,9 +192,9 @@
 
 	$(function ()
 	{
-		if (r.modules.dawanda.startup)
+		if (rxs.modules.dawanda.startup)
 		{
-			$.fn.dawanda(r.modules.dawanda.options);
+			$.fn.dawanda(rxs.modules.dawanda.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

@@ -23,11 +23,9 @@
 	"predef":
 	[
 		"_gaq",
-		"_gat",
 		"google",
 		"jQuery",
-		"l",
-		"r",
+		"rxs",
 		"Zepto"
 	]
 }

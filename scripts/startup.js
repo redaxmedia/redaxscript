@@ -16,17 +16,17 @@
 {
 	'use strict';
 
-	win.r = win.r || {};
+	win.rxs = win.rxs || {};
 
 	/* @section 1. redaxscript */
 
-	r.modules = r.modules || {};
-	r.flags = r.flags || {};
-	r.support = r.support || {};
+	rxs.flags = rxs.flags || {};
+	rxs.modules = rxs.modules || {};
+	rxs.support = rxs.support || {};
 
 	/* @section 1.1 plugins */
 
-	r.plugins =
+	rxs.plugins =
 	{
 		accordion:
 		{
@@ -237,7 +237,7 @@
 
 	/* @section 1.2 base url */
 
-	r.baseURL = function ()
+	rxs.baseURL = function ()
 	{
 		var base = doc.getElementsByTagName('base'),
 			checkBase = base.length,
@@ -252,7 +252,7 @@
 
 	/* @section 1.3 startup */
 
-	r.startup = function ()
+	rxs.startup = function ()
 	{
 		/* javascript enabled */
 
@@ -264,7 +264,7 @@
 
 		/* support classes */
 
-		if (r.support.canvas)
+		if (rxs.support.canvas)
 		{
 			docElement.className += ' canvas';
 		}
@@ -272,7 +272,7 @@
 		{
 			docElement.className += ' no_canvas';
 		}
-		if (r.support.svg)
+		if (rxs.support.svg)
 		{
 			docElement.className += ' svg';
 		}

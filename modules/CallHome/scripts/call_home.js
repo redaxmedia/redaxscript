@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.callHome.options !== options)
+		if (rxs.modules.callHome.options !== options)
 		{
-			options = $.extend({}, r.modules.callHome.options, options || {});
+			options = $.extend({}, rxs.modules.callHome.options, options || {});
 		}
 
 		/* create tracker */
@@ -48,8 +48,8 @@
 			[
 				'_trackEvent',
 				String('call-home'),
-				String(r.version),
-				String(r.baseURL)
+				String(rxs.version),
+				String(rxs.baseURL)
 			]);
 		}
 	};
@@ -58,9 +58,9 @@
 
 	$(function ()
 	{
-		if (r.modules.callHome.startup && r.constants.LOGGED_IN === r.constants.TOKEN && r.constants.FIRST_PARAMETER === 'admin' && !r.constants.ADMIN_PARAMETER && typeof _gaq === 'object')
+		if (rxs.modules.callHome.startup && rxs.constants.LOGGED_IN === rxs.constants.TOKEN && rxs.constants.FIRST_PARAMETER === 'admin' && !rxs.constants.ADMIN_PARAMETER && typeof _gaq === 'object')
 		{
-			$.fn.callHome(r.modules.callHome.options);
+			$.fn.callHome(rxs.modules.callHome.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

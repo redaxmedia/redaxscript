@@ -49,9 +49,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.generateKeyword.options !== options)
+		if (rxs.plugins.generateKeyword.options !== options)
 		{
-			options = $.extend({}, r.plugins.generateKeyword.options, options || {});
+			options = $.extend({}, rxs.plugins.generateKeyword.options, options || {});
 		}
 
 		/* return this */
@@ -93,9 +93,9 @@
 
 	$(function ()
 	{
-		if (r.plugins.generateKeyword.startup)
+		if (rxs.plugins.generateKeyword.startup)
 		{
-			$(r.plugins.generateKeyword.selector).generateKeyword(r.plugins.generateKeyword.options);
+			$(rxs.plugins.generateKeyword.selector).generateKeyword(rxs.plugins.generateKeyword.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

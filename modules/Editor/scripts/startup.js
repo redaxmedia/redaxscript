@@ -11,7 +11,7 @@
 
 /* @section 1. editor */
 
-r.modules.editor =
+rxs.modules.editor =
 {
 	startup: true,
 	selector: 'form textarea.js_editor_textarea',
@@ -89,208 +89,208 @@ r.modules.editor =
 	{
 		toggle:
 		{
-			title: l._editor.source_code,
+			title: rxs.language._editor.source_code,
 			method: 'toggle'
 		},
 		bold:
 		{
-			title: l._editor.bold,
+			title: rxs.language._editor.bold,
 			method: 'action',
 			command: 'bold'
 		},
 		italic:
 		{
-			title: l._editor.italic,
+			title: rxs.language._editor.italic,
 			method: 'action',
 			command: 'italic'
 		},
 		underline:
 		{
-			title: l._editor.underline,
+			title: rxs.language._editor.underline,
 			method: 'action',
 			command: 'underline'
 		},
 		strike:
 		{
-			title: l._editor.strike,
+			title: rxs.language._editor.strike,
 			method: 'action',
 			command: 'strikeThrough'
 		},
 		superscript:
 		{
-			title: l._editor.superscript,
+			title: rxs.language._editor.superscript,
 			method: 'action',
 			command: 'superscript'
 		},
 		subscript:
 		{
-			title: l._editor.subscript,
+			title: rxs.language._editor.subscript,
 			method: 'action',
 			command: 'subscript'
 		},
 		paragraph:
 		{
-			title: l._editor.paragraph,
+			title: rxs.language._editor.paragraph,
 			method: 'format',
 			command: 'p'
 		},
 		h1:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h1'
 		},
 		h2:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h2'
 		},
 		h3:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h3'
 		},
 		h4:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h4'
 		},
 		h5:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h5'
 		},
 		h6:
 		{
-			title: l.headline,
+			title: rxs.language.headline,
 			method: 'format',
 			command: 'h6'
 		},
 		ordered_list:
 		{
-			title: l._editor.ordered_list,
+			title: rxs.language._editor.ordered_list,
 			method: 'action',
 			command: 'insertOrderedList'
 		},
 		unordered_list:
 		{
-			title: l._editor.unordered_list,
+			title: rxs.language._editor.unordered_list,
 			method: 'action',
 			command: 'insertUnorderedList'
 		},
 		outdent:
 		{
-			title: l._editor.outdent,
+			title: rxs.language._editor.outdent,
 			method: 'action',
 			command: 'outdent'
 		},
 		indent:
 		{
-			title: l._editor.indent,
+			title: rxs.language._editor.indent,
 			method: 'action',
 			command: 'indent'
 		},
 		align_left:
 		{
-			title: l._editor.align_left,
+			title: rxs.language._editor.align_left,
 			method: 'action',
 			command: 'justifyLeft'
 		},
 		align_center:
 		{
-			title: l._editor.align_center,
+			title: rxs.language._editor.align_center,
 			method: 'action',
 			command: 'justifyCenter'
 		},
 		align_right:
 		{
-			title: l._editor.align_right,
+			title: rxs.language._editor.align_right,
 			method: 'action',
 			command: 'justifyRight'
 		},
 		align_justify:
 		{
-			title: l._editor.align_justify,
+			title: rxs.language._editor.align_justify,
 			method: 'action',
 			command: 'justifyFull'
 		},
 		undo:
 		{
-			title: l._editor.undo,
+			title: rxs.language._editor.undo,
 			method: 'action',
 			command: 'undo'
 		},
 		redo:
 		{
-			title: l._editor.redo,
+			title: rxs.language._editor.redo,
 			method: 'action',
 			command: 'redo'
 		},
 		cut:
 		{
-			title: l._editor.cut,
+			title: rxs.language._editor.cut,
 			method: 'action',
 			command: 'cut'
 		},
 		copy:
 		{
-			title: l._editor.copy,
+			title: rxs.language._editor.copy,
 			method: 'action',
 			command: 'copy'
 		},
 		paste:
 		{
-			title: l._editor.paste,
+			title: rxs.language._editor.paste,
 			method: 'action',
 			command: 'paste'
 		},
 		insert_link:
 		{
-			title: l._editor.insert_link,
+			title: rxs.language._editor.insert_link,
 			method: 'insert',
 			command: 'createLink',
-			message: l._editor.insert_link,
+			message: rxs.language._editor.insert_link,
 			value: 'http://'
 		},
 		unlink:
 		{
-			title: l._editor.remove_link,
+			title: rxs.language._editor.remove_link,
 			method: 'action',
 			command: 'unlink'
 		},
 		insert_image:
 		{
-			title: l._editor.insert_image,
+			title: rxs.language._editor.insert_image,
 			method: 'insert',
 			command: 'insertImage',
-			message: l._editor.insert_image,
+			message: rxs.language._editor.insert_image,
 			value: 'http://'
 		},
 		insert_break:
 		{
-			title: l._editor.insert_document_break,
+			title: rxs.language._editor.insert_document_break,
 			method: 'insertBreak'
 		},
 		insert_code:
 		{
-			title: l._editor.insert_code_quote,
+			title: rxs.language._editor.insert_code_quote,
 			method: 'insertCode'
 		},
 		insert_function:
 		{
-			title: l._editor.insert_php_function,
+			title: rxs.language._editor.insert_php_function,
 			method: 'insert',
 			command: 'insertFunction',
-			message: l._editor.insert_php_function,
+			message: rxs.language._editor.insert_php_function,
 			value: ''
 		},
 		unformat:
 		{
-			title: l._editor.remove_format,
+			title: rxs.language._editor.remove_format,
 			method: 'action',
 			command: 'removeFormat'
 		}

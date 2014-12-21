@@ -11,7 +11,7 @@
 
 /* @section 1. file manager */
 
-r.modules.fileManager =
+rxs.modules.fileManager =
 {
 	startup: true,
 	selector: 'form.js_form_file_manager',

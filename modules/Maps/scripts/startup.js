@@ -11,7 +11,7 @@
 
 /* @section 1. maps */
 
-r.modules.maps =
+rxs.modules.maps =
 {
 	startup: true,
 	selector: 'div.js_map',

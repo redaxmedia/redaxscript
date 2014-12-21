@@ -20,12 +20,12 @@
 	{
 		/* extend options */
 
-		if (r.modules.validator.options !== options)
+		if (rxs.modules.validator.options !== options)
 		{
-			options = $.extend({}, r.modules.validator.options, options || {});
+			options = $.extend({}, rxs.modules.validator.options, options || {});
 		}
 
-		var urlParameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + rxs.baseURL + rxs.constants.REWRITE_ROUTE + rxs.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
@@ -74,27 +74,27 @@
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="' + options.className.validatorDescription + '">' + l._validator.from + l.colon + ' ';
+							output += '<li class="' + options.className.validatorDescription + '">' + rxs.language._validator.from + rxs.language.colon + ' ';
 
 							/* first wording */
 
 							if (firstLine && firstColumn)
 							{
-								output += l._validator.line + ' ' + firstLine + l.comma + ' ' + l._validator.column + ' ' + firstColumn;
+								output += rxs.language._validator.line + ' ' + firstLine + rxs.language.comma + ' ' + rxs.language._validator.column + ' ' + firstColumn;
 							}
 
 							/* to wording */
 
 							if (firstLine && firstColumn && lastLine && lastColumn)
 							{
-								output += ' ' + l._validator.to + ' ';
+								output += ' ' + rxs.language._validator.to + ' ';
 							}
 
 							/* last wording */
 
 							if (lastLine && lastColumn)
 							{
-								output += l._validator.line + ' ' + lastLine + l.comma + ' ' + l._validator.column + ' ' + lastColumn;
+								output += rxs.language._validator.line + ' ' + lastLine + rxs.language.comma + ' ' + rxs.language._validator.column + ' ' + lastColumn;
 							}
 							output += '</li>';
 						}
@@ -116,6 +116,6 @@
 
 	$(function ()
 	{
-		$.fn.validator(r.modules.validator.options);
+		$.fn.validator(rxs.modules.validator.options);
 	});
 })(window.jQuery || window.Zepto);

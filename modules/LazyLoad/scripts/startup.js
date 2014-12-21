@@ -11,7 +11,7 @@
 
 /* @section 1. lazy load */
 
-r.modules.lazyLoad =
+rxs.modules.lazyLoad =
 {
 	startup: true,
 	selector: 'img.js_lazy_load:visible',

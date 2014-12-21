@@ -27,7 +27,7 @@
 	$(function ()
 	{
 		var win = window,
-			fixture = $(r.modules.qunit.options.element.qunitFixture),
+			fixture = $(rxs.modules.qunit.options.element.qunitFixture),
 			dummy = 'hello world';
 
 		/* @section 1. library */
@@ -37,7 +37,7 @@
 			var expect = 'function',
 				result = typeof $;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 2. globals */
@@ -45,9 +45,9 @@
 		win.test('globals', function ()
 		{
 			var expect = 'object',
-				result = typeof r && typeof l;
+				result = typeof rxs;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 3. base url */
@@ -55,9 +55,9 @@
 		win.test('baseURL', function ()
 		{
 			var expect = 'string',
-				result = typeof r.baseURL;
+				result = typeof rxs.baseURL;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 4. constants */
@@ -65,9 +65,9 @@
 		win.test('constants', function ()
 		{
 			var expect = 'number',
-				result = typeof Object.keys(r.constants).length;
+				result = typeof Object.keys(rxs.constants).length;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 5. support */
@@ -75,9 +75,9 @@
 		win.test('support', function ()
 		{
 			var expect = 'number',
-				result = typeof Object.keys(r.support).length;
+				result = typeof Object.keys(rxs.support).length;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 6. version */
@@ -85,9 +85,9 @@
 		win.test('version', function ()
 		{
 			var expect = 'string',
-				result = typeof r.version;
+				result = typeof rxs.version;
 
-			win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+			win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 		});
 
 		/* @section 7. clean alias */
@@ -99,7 +99,7 @@
 				var expect = 'hello-world',
 					result = $.fn.cleanAlias(dummy);
 
-				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.value_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -119,7 +119,7 @@
 						limit: 10
 					});
 
-				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.value_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -136,31 +136,31 @@
 				/* trigger focus */
 
 				result = textarea.trigger('focus').attr('rows');
-				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.value_expected + rxs.language.colon + ' ' + expect);
 
 				/* trigger input */
 
 				result = textarea.val(dummy).trigger('input').attr('rows');
-				win.notEqual(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+				win.notEqual(result, expect, rxs.language._qunit.value_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 
 		/* @section 10. validate search */
 
-		if (typeof $.fn.validateSearch === 'function' && r.support.input.placeholder)
+		if (typeof $.fn.validateSearch === 'function' && rxs.support.input.placeholder)
 		{
 			win.test('validateSearch', function ()
 			{
 				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
 					input = form.children('input'),
-					expect = l.input_incorrect + l.exclamation_mark,
+					expect = rxs.language.input_incorrect + rxs.language.exclamation_mark,
 					result = input.attr('placeholder');
 
 				/* trigger submit */
 
 				form.submit();
 				result = input.attr('placeholder');
-				win.equal(result, expect, l._qunit_attribute_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.attribute_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -171,7 +171,7 @@
 			win.test('enableIndent', function ()
 			{
 				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableIndent().appendTo(fixture),
-					expect = r.plugins.enableIndent.options.indent,
+					expect = rxs.plugins.enableIndent.options.indent,
 					result = textarea.val(),
 					keydown = $.Event('keydown');
 
@@ -180,7 +180,7 @@
 				/* trigger keydown */
 
 				result = textarea.trigger(keydown).val();
-				win.equal(result, expect, l._qunit_value_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.value_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -201,13 +201,13 @@
 				/* trigger keydown */
 
 				result = input.trigger(keydown).attr('type');
-				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 
 				/* trigger blur */
 
 				expect = 'password';
 				result = input.trigger('blur').attr('type');
-				win.equal(result, expect, l._qunit_type_expected + l.colon + ' ' + expect);
+				win.equal(result, expect, rxs.language._qunit.type_expected + rxs.language.colon + ' ' + expect);
 			});
 		}
 	});
