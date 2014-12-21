@@ -56,7 +56,7 @@ class Parser
 	protected $_options = array(
 		'className' => array(
 			'break' => 'link-read-more',
-			'code' => 'box-code'
+			'quote' => 'box-quote'
 		)
 	);
 
@@ -79,8 +79,8 @@ class Parser
 			'method' => '_parseBreak',
 			'position' => ''
 		),
-		'code' => array(
-			'method' => '_parseCode',
+		'quote' => array(
+			'method' => '_parseQuote',
 			'position' => ''
 		),
 		'function' => array(
@@ -218,7 +218,7 @@ class Parser
 	}
 
 	/**
-	 * parse the code tag
+	 * parse the quote tag
 	 *
 	 * @since 2.0.0
 	 *
@@ -227,14 +227,14 @@ class Parser
 	 * @return string
 	 */
 
-	protected function _parseCode($input = null)
+	protected function _parseQuote($input = null)
 	{
 		$output = str_replace(array(
-			'<code>',
-			'</code>'
+			'<quote>',
+			'</quote>'
 		), $this->_delimiter, $input);
 		$parts = explode($this->_delimiter, $output);
-		$codeElement = new Element('code', array(
+		$preElement = new Element('pre', array(
 			'class' => $this->_options['className']['code']
 		));
 
@@ -244,7 +244,7 @@ class Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $codeElement->html(htmlspecialchars($value));
+				$parts[$key] = $preElement->html(htmlspecialchars($value));
 			}
 		}
 		$output = implode($parts);

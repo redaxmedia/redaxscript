@@ -21,9 +21,9 @@
 	],
 	[
 		"",
-		"hello <code>world</code>",
+		"hello <quote>world</quote>",
 		"",
-		"hello <code class=\"box-code\">world</code>"
+		"hello <pre class=\"box-code\">world</pre>"
 	],
 	[
 		"",
