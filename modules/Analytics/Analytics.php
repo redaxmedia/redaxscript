@@ -43,7 +43,7 @@ class Analytics extends Module
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
 			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Analytics/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/Analytics/scripts/init.js';
 			$loader_modules_scripts[] = 'modules/Analytics/scripts/analytics.js';
 		}
 	}

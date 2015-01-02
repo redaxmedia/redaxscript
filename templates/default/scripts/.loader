@@ -6,8 +6,8 @@
 
 [template_startup]
 1 = scripts/support.js
-2 = scripts/startup.js
-3 = templates/default/scripts/startup.js
+2 = scripts/init.js
+3 = templates/default/scripts/init.js
 
 [template]
 1 = scripts/dialog.js

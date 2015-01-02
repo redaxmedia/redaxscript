@@ -41,7 +41,7 @@ class WebApp extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/WebApp/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/WebApp/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/WebApp/scripts/web_app.js';
 	}
 
