@@ -31,9 +31,9 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.gallery.options !== options)
+		if (rs.modules.gallery.options !== options)
 		{
-			options = $.extend({}, rxs.modules.gallery.options, options || {});
+			options = $.extend({}, rs.modules.gallery.options, options || {});
 		}
 
 		/* return this */
@@ -104,7 +104,7 @@
 				if (!mode)
 				{
 					gallery.overlay.appendTo('body');
-					rxs.flags.modal = true;
+					rs.flags.modal = true;
 				}
 
 				/* listen for load */
@@ -211,7 +211,7 @@
 			{
 				/* previous control */
 
-				gallery.buttonPrevious = $('<a>' + rxs.language._gallery.image_previous + '</a>').addClass(options.className.controlPrevious)
+				gallery.buttonPrevious = $('<a>' + rs.language._gallery.image_previous + '</a>').addClass(options.className.controlPrevious)
 
 				/* listen for click */
 
@@ -223,7 +223,7 @@
 
 				/* next control */
 
-				gallery.buttonNext = $('<a>' + rxs.language._gallery.image_next + '</a>').addClass(options.className.controlNext)
+				gallery.buttonNext = $('<a>' + rs.language._gallery.image_next + '</a>').addClass(options.className.controlNext)
 
 				/* listen for click */
 
@@ -244,28 +244,28 @@
 
 				if (gallery.data.artist)
 				{
-					gallery.artist = $('<div data-label="' + rxs.language._gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.className.galleryArtist).appendTo(gallery.meta);
+					gallery.artist = $('<div data-label="' + rs.language._gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.className.galleryArtist).appendTo(gallery.meta);
 				}
 
 				/* date */
 
 				if (gallery.data.date)
 				{
-					gallery.date = $('<div data-label="' + rxs.language.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
+					gallery.date = $('<div data-label="' + rs.language.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
 				}
 
 				/* description */
 
 				if (gallery.data.description)
 				{
-					gallery.description = $('<div data-label="' + rxs.language._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
+					gallery.description = $('<div data-label="' + rs.language._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
 				}
 
 				/* pagination */
 
 				if (gallery.data.total > 1)
 				{
-					gallery.pagination = $('<div>' + gallery.data.counter + rxs.language._gallery.divider + gallery.data.total + '</div>').addClass(options.className.galleryPagination).appendTo(gallery.meta);
+					gallery.pagination = $('<div>' + gallery.data.counter + rs.language._gallery.divider + gallery.data.total + '</div>').addClass(options.className.galleryPagination).appendTo(gallery.meta);
 				}
 
 				/* append meta */
@@ -291,7 +291,7 @@
 
 				$(window).on('keydown', function (event)
 				{
-					if (rxs.flags.modal)
+					if (rs.flags.modal)
 					{
 						/* trigger close action */
 
@@ -327,7 +327,7 @@
 
 				.on('resize', function ()
 				{
-					if (rxs.flags.modal)
+					if (rs.flags.modal)
 					{
 						gallery.resize();
 					}
@@ -418,7 +418,7 @@
 				if (!mode)
 				{
 					gallery.overlay.detach();
-					rxs.flags.modal = false;
+					rs.flags.modal = false;
 				}
 			};
 
@@ -449,7 +449,7 @@
 
 			/* init as needed */
 
-			if (rxs.constants.MY_BROWSER === 'msie' && rxs.constants.MY_BROWSER_VERSION < 7)
+			if (rs.constants.MY_BROWSER === 'msie' && rs.constants.MY_BROWSER_VERSION < 7)
 			{
 				return false;
 			}
@@ -464,9 +464,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.gallery.startup)
+		if (rs.modules.gallery.startup)
 		{
-			$(rxs.modules.gallery.selector).gallery(rxs.modules.gallery.options);
+			$(rs.modules.gallery.selector).gallery(rs.modules.gallery.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

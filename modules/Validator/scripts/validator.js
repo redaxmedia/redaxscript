@@ -20,12 +20,12 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.validator.options !== options)
+		if (rs.modules.validator.options !== options)
 		{
-			options = $.extend({}, rxs.modules.validator.options, options || {});
+			options = $.extend({}, rs.modules.validator.options, options || {});
 		}
 
-		var urlParameter = '?doc=' + rxs.baseURL + rxs.constants.REWRITE_ROUTE + rxs.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + rs.baseURL + rs.constants.REWRITE_ROUTE + rs.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
@@ -74,27 +74,27 @@
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="' + options.className.validatorDescription + '">' + rxs.language._validator.from + rxs.language.colon + ' ';
+							output += '<li class="' + options.className.validatorDescription + '">' + rs.language._validator.from + rs.language.colon + ' ';
 
 							/* first wording */
 
 							if (firstLine && firstColumn)
 							{
-								output += rxs.language._validator.line + ' ' + firstLine + rxs.language.comma + ' ' + rxs.language._validator.column + ' ' + firstColumn;
+								output += rs.language._validator.line + ' ' + firstLine + rs.language.comma + ' ' + rs.language._validator.column + ' ' + firstColumn;
 							}
 
 							/* to wording */
 
 							if (firstLine && firstColumn && lastLine && lastColumn)
 							{
-								output += ' ' + rxs.language._validator.to + ' ';
+								output += ' ' + rs.language._validator.to + ' ';
 							}
 
 							/* last wording */
 
 							if (lastLine && lastColumn)
 							{
-								output += rxs.language._validator.line + ' ' + lastLine + rxs.language.comma + ' ' + rxs.language._validator.column + ' ' + lastColumn;
+								output += rs.language._validator.line + ' ' + lastLine + rs.language.comma + ' ' + rs.language._validator.column + ' ' + lastColumn;
 							}
 							output += '</li>';
 						}
@@ -116,6 +116,6 @@
 
 	$(function ()
 	{
-		$.fn.validator(rxs.modules.validator.options);
+		$.fn.validator(rs.modules.validator.options);
 	});
 })(window.jQuery || window.Zepto);

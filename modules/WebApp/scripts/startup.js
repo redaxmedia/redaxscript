@@ -11,7 +11,7 @@
 
 /* @section 1. web app */
 
-rxs.modules.webApp =
+rs.modules.webApp =
 {
 	startup: true,
 	options:

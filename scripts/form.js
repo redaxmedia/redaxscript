@@ -24,9 +24,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.autoResize.options !== options)
+		if (rs.plugins.autoResize.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.autoResize.options, options || {});
+			options = $.extend({}, rs.plugins.autoResize.options, options || {});
 		}
 
 		/* return this */
@@ -71,9 +71,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.enableIndent.options !== options)
+		if (rs.plugins.enableIndent.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.enableIndent.options, options || {});
+			options = $.extend({}, rs.plugins.enableIndent.options, options || {});
 		}
 
 		/* return this */
@@ -194,9 +194,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.validateForm.options !== options)
+		if (rs.plugins.validateForm.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.validateForm.options, options || {});
+			options = $.extend({}, rs.plugins.validateForm.options, options || {});
 		}
 
 		/* return this */
@@ -251,13 +251,13 @@
 						if (!thatValue)
 						{
 							validity = 'invalid';
-							message = rxs.language.input_empty + rxs.language.point;
+							message = rs.language.input_empty + rs.language.point;
 						}
 					}
 
 					/* missing support */
 
-					else if (!rxs.support.checkValidity)
+					else if (!rs.support.checkValidity)
 					{
 						thatValue = that.val();
 						thatRequired = that.attr('required');
@@ -267,7 +267,7 @@
 						if (thatRequired && !thatValue)
 						{
 							validity = 'invalid';
-							message = rxs.language.input_empty + rxs.language.point;
+							message = rs.language.input_empty + rs.language.point;
 						}
 					}
 
@@ -318,7 +318,7 @@
 
 					/* haptic feedback */
 
-					if (event.type === 'submit' && rxs.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'submit' && rs.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -342,9 +342,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.validateSearch.options !== options)
+		if (rs.plugins.validateSearch.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.validateSearch.options, options || {});
+			options = $.extend({}, rs.plugins.validateSearch.options, options || {});
 		}
 
 		/* return this */
@@ -359,7 +359,7 @@
 					field = form.find(options.element.field),
 					fieldValue = field.val(),
 					fieldPlaceholder = field.attr('placeholder'),
-					message = rxs.language.input_incorrect + rxs.language.exclamation_mark,
+					message = rs.language.input_incorrect + rs.language.exclamation_mark,
 					timeout = '';
 
 				/* prevent multiple timeout */
@@ -389,25 +389,25 @@
 
 	$(function ()
 	{
-		if (rxs.plugins.autoResize.startup)
+		if (rs.plugins.autoResize.startup)
 		{
-			$(rxs.plugins.autoResize.selector).autoResize(rxs.plugins.autoResize.options);
+			$(rs.plugins.autoResize.selector).autoResize(rs.plugins.autoResize.options);
 		}
-		if (rxs.plugins.enableIndent.startup)
+		if (rs.plugins.enableIndent.startup)
 		{
-			$(rxs.plugins.enableIndent.selector).enableIndent();
+			$(rs.plugins.enableIndent.selector).enableIndent();
 		}
-		if (rxs.plugins.unmaskPassword.startup)
+		if (rs.plugins.unmaskPassword.startup)
 		{
-			$(rxs.plugins.unmaskPassword.selector).unmaskPassword();
+			$(rs.plugins.unmaskPassword.selector).unmaskPassword();
 		}
-		if (rxs.plugins.validateForm.startup)
+		if (rs.plugins.validateForm.startup)
 		{
-			$(rxs.plugins.validateForm.selector).validateForm(rxs.plugins.validateForm.options);
+			$(rs.plugins.validateForm.selector).validateForm(rs.plugins.validateForm.options);
 		}
-		if (rxs.plugins.validateSearch.startup && typeof rxs.support.input === 'object' && rxs.support.input.placeholder)
+		if (rs.plugins.validateSearch.startup && typeof rs.support.input === 'object' && rs.support.input.placeholder)
 		{
-			$(rxs.plugins.validateSearch.selector).validateSearch(rxs.plugins.validateSearch.options);
+			$(rs.plugins.validateSearch.selector).validateSearch(rs.plugins.validateSearch.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

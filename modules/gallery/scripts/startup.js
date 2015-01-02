@@ -11,7 +11,7 @@
 
 /* @section 1. gallery */
 
-rxs.modules.gallery =
+rs.modules.gallery =
 {
 	startup: true,
 	selector: 'ul.js_list_gallery',
@@ -40,9 +40,9 @@ rxs.modules.gallery =
 
 /* mobile */
 
-if (rxs.constants.MY_MOBILE)
+if (rs.constants.MY_MOBILE)
 {
-	rxs.modules.gallery.options.scaling = 0.98;
-	rxs.modules.gallery.options.loader = false;
-	rxs.modules.gallery.options.preload = false;
+	rs.modules.gallery.options.scaling = 0.98;
+	rs.modules.gallery.options.loader = false;
+	rs.modules.gallery.options.preload = false;
 }

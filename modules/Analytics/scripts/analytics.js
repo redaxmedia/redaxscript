@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.analytics.options !== options)
+		if (rs.modules.analytics.options !== options)
 		{
-			options = $.extend({}, rxs.modules.analytics.options, options || {});
+			options = $.extend({}, rs.modules.analytics.options, options || {});
 		}
 
 		/* create tracker */
@@ -79,9 +79,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.analytics.startup && rxs.constants.LOGGED_IN !== rxs.constants.TOKEN && typeof _gaq === 'object')
+		if (rs.modules.analytics.startup && rs.constants.LOGGED_IN !== rs.constants.TOKEN && typeof _gaq === 'object')
 		{
-			$(rxs.modules.analytics.selector).analytics(rxs.modules.analytics.options);
+			$(rs.modules.analytics.selector).analytics(rs.modules.analytics.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

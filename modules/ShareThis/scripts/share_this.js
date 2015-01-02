@@ -20,13 +20,13 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.shareThis.options !== options)
+		if (rs.modules.shareThis.options !== options)
 		{
-			options = $.extend({}, rxs.modules.shareThis.options, options || {});
+			options = $.extend({}, rs.modules.shareThis.options, options || {});
 		}
 
 		var links = $(this),
-			urlParameter = '?url=' + rxs.baseURL;
+			urlParameter = '?url=' + rs.baseURL;
 
 		/* request data */
 
@@ -86,9 +86,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.shareThis.startup)
+		if (rs.modules.shareThis.startup)
 		{
-			$(rxs.modules.shareThis.selector).shareThis(rxs.modules.shareThis.options);
+			$(rs.modules.shareThis.selector).shareThis(rs.modules.shareThis.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

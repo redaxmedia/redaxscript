@@ -21,9 +21,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.adminDock.options !== options)
+		if (rs.plugins.adminDock.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.adminDock.options, options || {});
+			options = $.extend({}, rs.plugins.adminDock.options, options || {});
 		}
 
 		/* return this */
@@ -63,7 +63,7 @@
 
 					/* haptic feedback */
 
-					if (event.type === 'touchstart' && rxs.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'touchstart' && rs.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -78,9 +78,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.adminPanel.options !== options)
+		if (rs.plugins.adminPanel.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.adminPanel.options, options || {});
+			options = $.extend({}, rs.plugins.adminPanel.options, options || {});
 		}
 
 		/* return this */
@@ -172,7 +172,7 @@
 			{
 				/* haptic feedback */
 
-				if (rxs.support.vibrate && typeof options.vibrate === 'number')
+				if (rs.support.vibrate && typeof options.vibrate === 'number')
 				{
 					window.navigator.vibrate(options.vibrate);
 				}
@@ -184,13 +184,13 @@
 
 	$(function ()
 	{
-		if (rxs.plugins.adminDock.startup)
+		if (rs.plugins.adminDock.startup)
 		{
-			$(rxs.plugins.adminDock.selector).adminDock(rxs.plugins.adminDock.options);
+			$(rs.plugins.adminDock.selector).adminDock(rs.plugins.adminDock.options);
 		}
-		if (rxs.plugins.adminPanel.startup)
+		if (rs.plugins.adminPanel.startup)
 		{
-			$(rxs.plugins.adminPanel.selector).adminPanel(rxs.plugins.adminPanel.options);
+			$(rs.plugins.adminPanel.selector).adminPanel(rs.plugins.adminPanel.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

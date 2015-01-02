@@ -11,7 +11,7 @@
 
 /* @section 1. editor */
 
-rxs.modules.editor =
+rs.modules.editor =
 {
 	startup: true,
 	selector: 'form textarea.js_editor_textarea',
@@ -89,208 +89,208 @@ rxs.modules.editor =
 	{
 		toggle:
 		{
-			title: rxs.language._editor.source_code,
+			title: rs.language._editor.source_code,
 			method: 'toggle'
 		},
 		bold:
 		{
-			title: rxs.language._editor.bold,
+			title: rs.language._editor.bold,
 			method: 'action',
 			command: 'bold'
 		},
 		italic:
 		{
-			title: rxs.language._editor.italic,
+			title: rs.language._editor.italic,
 			method: 'action',
 			command: 'italic'
 		},
 		underline:
 		{
-			title: rxs.language._editor.underline,
+			title: rs.language._editor.underline,
 			method: 'action',
 			command: 'underline'
 		},
 		strike:
 		{
-			title: rxs.language._editor.strike,
+			title: rs.language._editor.strike,
 			method: 'action',
 			command: 'strikeThrough'
 		},
 		superscript:
 		{
-			title: rxs.language._editor.superscript,
+			title: rs.language._editor.superscript,
 			method: 'action',
 			command: 'superscript'
 		},
 		subscript:
 		{
-			title: rxs.language._editor.subscript,
+			title: rs.language._editor.subscript,
 			method: 'action',
 			command: 'subscript'
 		},
 		paragraph:
 		{
-			title: rxs.language._editor.paragraph,
+			title: rs.language._editor.paragraph,
 			method: 'format',
 			command: 'p'
 		},
 		h1:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h1'
 		},
 		h2:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h2'
 		},
 		h3:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h3'
 		},
 		h4:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h4'
 		},
 		h5:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h5'
 		},
 		h6:
 		{
-			title: rxs.language.headline,
+			title: rs.language.headline,
 			method: 'format',
 			command: 'h6'
 		},
 		ordered_list:
 		{
-			title: rxs.language._editor.ordered_list,
+			title: rs.language._editor.ordered_list,
 			method: 'action',
 			command: 'insertOrderedList'
 		},
 		unordered_list:
 		{
-			title: rxs.language._editor.unordered_list,
+			title: rs.language._editor.unordered_list,
 			method: 'action',
 			command: 'insertUnorderedList'
 		},
 		outdent:
 		{
-			title: rxs.language._editor.outdent,
+			title: rs.language._editor.outdent,
 			method: 'action',
 			command: 'outdent'
 		},
 		indent:
 		{
-			title: rxs.language._editor.indent,
+			title: rs.language._editor.indent,
 			method: 'action',
 			command: 'indent'
 		},
 		align_left:
 		{
-			title: rxs.language._editor.align_left,
+			title: rs.language._editor.align_left,
 			method: 'action',
 			command: 'justifyLeft'
 		},
 		align_center:
 		{
-			title: rxs.language._editor.align_center,
+			title: rs.language._editor.align_center,
 			method: 'action',
 			command: 'justifyCenter'
 		},
 		align_right:
 		{
-			title: rxs.language._editor.align_right,
+			title: rs.language._editor.align_right,
 			method: 'action',
 			command: 'justifyRight'
 		},
 		align_justify:
 		{
-			title: rxs.language._editor.align_justify,
+			title: rs.language._editor.align_justify,
 			method: 'action',
 			command: 'justifyFull'
 		},
 		undo:
 		{
-			title: rxs.language._editor.undo,
+			title: rs.language._editor.undo,
 			method: 'action',
 			command: 'undo'
 		},
 		redo:
 		{
-			title: rxs.language._editor.redo,
+			title: rs.language._editor.redo,
 			method: 'action',
 			command: 'redo'
 		},
 		cut:
 		{
-			title: rxs.language._editor.cut,
+			title: rs.language._editor.cut,
 			method: 'action',
 			command: 'cut'
 		},
 		copy:
 		{
-			title: rxs.language._editor.copy,
+			title: rs.language._editor.copy,
 			method: 'action',
 			command: 'copy'
 		},
 		paste:
 		{
-			title: rxs.language._editor.paste,
+			title: rs.language._editor.paste,
 			method: 'action',
 			command: 'paste'
 		},
 		insert_link:
 		{
-			title: rxs.language._editor.insert_link,
+			title: rs.language._editor.insert_link,
 			method: 'insert',
 			command: 'createLink',
-			message: rxs.language._editor.insert_link,
+			message: rs.language._editor.insert_link,
 			value: 'http://'
 		},
 		unlink:
 		{
-			title: rxs.language._editor.remove_link,
+			title: rs.language._editor.remove_link,
 			method: 'action',
 			command: 'unlink'
 		},
 		insert_image:
 		{
-			title: rxs.language._editor.insert_image,
+			title: rs.language._editor.insert_image,
 			method: 'insert',
 			command: 'insertImage',
-			message: rxs.language._editor.insert_image,
+			message: rs.language._editor.insert_image,
 			value: 'http://'
 		},
 		insert_break:
 		{
-			title: rxs.language._editor.insert_document_break,
+			title: rs.language._editor.insert_document_break,
 			method: 'insertBreak'
 		},
 		insert_code:
 		{
-			title: rxs.language._editor.insert_code_quote,
+			title: rs.language._editor.insert_code_quote,
 			method: 'insertCode'
 		},
 		insert_function:
 		{
-			title: rxs.language._editor.insert_php_function,
+			title: rs.language._editor.insert_php_function,
 			method: 'insert',
 			command: 'insertFunction',
-			message: rxs.language._editor.insert_php_function,
+			message: rs.language._editor.insert_php_function,
 			value: ''
 		},
 		unformat:
 		{
-			title: rxs.language._editor.remove_format,
+			title: rs.language._editor.remove_format,
 			method: 'action',
 			command: 'removeFormat'
 		}

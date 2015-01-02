@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.liveReload.options !== options)
+		if (rs.modules.liveReload.options !== options)
 		{
-			options = $.extend({}, rxs.modules.liveReload.options, options || {});
+			options = $.extend({}, rs.modules.liveReload.options, options || {});
 		}
 
 		var head = $('head'),
@@ -44,17 +44,17 @@
 			{
 				$.ajax(
 				{
-					url: rxs.constants.REWRITE_ROUTE + options.url,
+					url: rs.constants.REWRITE_ROUTE + options.url,
 					success: function (data)
 					{
 						if (data === dataOld)
 						{
-							liveReloadBox.html('<div class="box_note note_info">' + rxs.language._live_reload.live_reload + '</div>').toggle();
+							liveReloadBox.html('<div class="box_note note_info">' + rs.language._live_reload.live_reload + '</div>').toggle();
 						}
 						else if (dataOld.length)
 						{
 							style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-							liveReloadBox.html('<div class="box_note note_success">' + rxs.language._live_reload.updated + '</div>').show();
+							liveReloadBox.html('<div class="box_note note_success">' + rs.language._live_reload.updated + '</div>').show();
 						}
 						dataOld = data;
 					}
@@ -67,6 +67,6 @@
 
 	$(function ()
 	{
-		$.fn.liveReload(rxs.modules.liveReload.options);
+		$.fn.liveReload(rs.modules.liveReload.options);
 	});
 })(window.jQuery || window.Zepto);

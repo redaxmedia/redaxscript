@@ -20,14 +20,14 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.webApp.options !== options)
+		if (rs.modules.webApp.options !== options)
 		{
-			options = $.extend({}, rxs.modules.webApp.options, options || {});
+			options = $.extend({}, rs.modules.webApp.options, options || {});
 		}
 
 		/* trigger install */
 
-		if (rxs.support.webStorage && typeof window.navigator.mozApps === 'object')
+		if (rs.support.webStorage && typeof window.navigator.mozApps === 'object')
 		{
 			var counter  = Number(window.localStorage.getItem('webAppInstallCounter')) || 0,
 				request = '';
@@ -36,7 +36,7 @@
 
 			if (counter < options.limit)
 			{
-				request = window.navigator.mozApps.install(rxs.baseURL + 'manifest_webapp');
+				request = window.navigator.mozApps.install(rs.baseURL + 'manifest_webapp');
 
 				/* count multiple request */
 
@@ -56,9 +56,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.webApp.startup)
+		if (rs.modules.webApp.startup)
 		{
-			$.fn.webApp(rxs.modules.webApp.options);
+			$.fn.webApp(rs.modules.webApp.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

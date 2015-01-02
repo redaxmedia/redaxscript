@@ -11,7 +11,7 @@
 
 /* @section 1. live reload */
 
-rxs.modules.liveReload =
+rs.modules.liveReload =
 {
 	startup: true,
 	options:

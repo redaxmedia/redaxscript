@@ -169,9 +169,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.generateAlias.options !== options)
+		if (rs.plugins.generateAlias.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.generateAlias.options, options || {});
+			options = $.extend({}, rs.plugins.generateAlias.options, options || {});
 		}
 
 		/* return this */
@@ -213,9 +213,9 @@
 
 	$(function ()
 	{
-		if (rxs.plugins.generateAlias.startup)
+		if (rs.plugins.generateAlias.startup)
 		{
-			$(rxs.plugins.generateAlias.selector).generateAlias(rxs.plugins.generateAlias.options);
+			$(rs.plugins.generateAlias.selector).generateAlias(rs.plugins.generateAlias.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

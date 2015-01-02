@@ -11,7 +11,7 @@
 
 /* @section 1. dawanda */
 
-rxs.modules.dawanda =
+rs.modules.dawanda =
 {
 	startup: true,
 	options:

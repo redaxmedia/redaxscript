@@ -428,7 +428,7 @@ function scripts_transport($minify = '')
 
 	/* collect output */
 
-	$output = 'if (typeof rxs === \'object\')' . PHP_EOL;
+	$output = 'if (typeof rs === \'object\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
 
 	/* languages object */
@@ -437,27 +437,27 @@ function scripts_transport($minify = '')
 
 	/* add language */
 
-	$output .= 'rxs.language = ' . json_encode($language->get()) . ';' . PHP_EOL;
+	$output .= 'rs.language = ' . json_encode($language->get()) . ';' . PHP_EOL;
 
 	/* add constants */
 
-	$output .= 'rxs.constants = {};';
+	$output .= 'rs.constants = {};';
 	foreach ($public_constants as $value)
 	{
-		$output .= 'rxs.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
+		$output .= 'rs.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
 	}
 
 	/* baseURL fallback */
 
-	$output .= 'if (rxs.baseURL === \'\')' . PHP_EOL;
+	$output .= 'if (rs.baseURL === \'\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
-	$output .= 'rxs.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
+	$output .= 'rs.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* generator and version */
 
-	$output .= 'rxs.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
-	$output .= 'rxs.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rs.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rs.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify */

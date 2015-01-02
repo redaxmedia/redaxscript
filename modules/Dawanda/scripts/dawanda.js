@@ -26,9 +26,9 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.dawanda.options !== options)
+		if (rs.modules.dawanda.options !== options)
 		{
-			options = $.extend({}, rxs.modules.dawanda.options, options || {});
+			options = $.extend({}, rs.modules.dawanda.options, options || {});
 		}
 
 		var dawanda = {};
@@ -37,7 +37,7 @@
 
 		dawanda.getURL = function (call, id)
 		{
-			var route = rxs.modules.dawanda.routes[call],
+			var route = rs.modules.dawanda.routes[call],
 				output = '';
 
 			/* if route present */
@@ -66,21 +66,21 @@
 
 			/* fetch from storage */
 
-			if (rxs.support.webStorage && rxs.support.nativeJSON)
+			if (rs.support.webStorage && rs.support.nativeJSON)
 			{
-				rxs.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
+				rs.modules.dawanda.storage[key] = window.sessionStorage.getItem(keyStorage) || false;
 
 				/* restore data from storage */
 
-				if (typeof rxs.modules.dawanda.storage[key] === 'string')
+				if (typeof rs.modules.dawanda.storage[key] === 'string')
 				{
-					rxs.modules.dawanda.data[key] = window.JSON.parse(rxs.modules.dawanda.storage[key]);
+					rs.modules.dawanda.data[key] = window.JSON.parse(rs.modules.dawanda.storage[key]);
 				}
 			}
 
 			/* fetch from data */
 
-			if (typeof rxs.modules.dawanda.data[key] === 'object' && rxs.modules.dawanda.data[key]['calls'][call])
+			if (typeof rs.modules.dawanda.data[key] === 'object' && rs.modules.dawanda.data[key]['calls'][call])
 			{
 				/* direct callback */
 
@@ -105,18 +105,18 @@
 
 						if (typeof data.response === 'object' && typeof data.response.result === 'object')
 						{
-							rxs.modules.dawanda.data[key] = $.extend({}, rxs.modules.dawanda.data[key], data.response.result || {});
+							rs.modules.dawanda.data[key] = $.extend({}, rs.modules.dawanda.data[key], data.response.result || {});
 
 							/* register calls */
 
-							rxs.modules.dawanda.data[key]['calls'] = rxs.modules.dawanda.data[key]['calls'] || {};
-							rxs.modules.dawanda.data[key]['calls'][call] = true;
+							rs.modules.dawanda.data[key]['calls'] = rs.modules.dawanda.data[key]['calls'] || {};
+							rs.modules.dawanda.data[key]['calls'][call] = true;
 
 							/* set related storage */
 
-							if (rxs.support.webStorage && rxs.support.nativeJSON)
+							if (rs.support.webStorage && rs.support.nativeJSON)
 							{
-								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(rxs.modules.dawanda.data[key]));
+								window.sessionStorage.setItem(keyStorage, window.JSON.stringify(rs.modules.dawanda.data[key]));
 							}
 
 							/* delayed callback */
@@ -133,13 +133,13 @@
 
 		/* @section 1.3 generate key */
 
-		dawanda.generateKey = rxs.modules.dawanda.generateKey = function (id, data)
+		dawanda.generateKey = rs.modules.dawanda.generateKey = function (id, data)
 		{
 			var output = id;
 
 			/* stringify data object */
 
-			if (rxs.support.nativeJSON)
+			if (rs.support.nativeJSON)
 			{
 				output += JSON.stringify(data).replace(/[^a-z0-9]/g, '');
 			}
@@ -150,7 +150,7 @@
 
 		dawanda.createShortcut = function (call)
 		{
-			rxs.modules.dawanda[call] = function (id, data, callback)
+			rs.modules.dawanda[call] = function (id, data, callback)
 			{
 				dawanda.getData(call, id, data, callback);
 			};
@@ -160,9 +160,9 @@
 
 		dawanda.registerShortcut = function ()
 		{
-			for (var i in rxs.modules.dawanda.routes)
+			for (var i in rs.modules.dawanda.routes)
 			{
-				if (rxs.modules.dawanda.routes.hasOwnProperty(i))
+				if (rs.modules.dawanda.routes.hasOwnProperty(i))
 				{
 					dawanda.createShortcut(i);
 				}
@@ -175,8 +175,8 @@
 		{
 			/* data and storage object */
 
-			rxs.modules.dawanda.data = {};
-			rxs.modules.dawanda.storage = {};
+			rs.modules.dawanda.data = {};
+			rs.modules.dawanda.storage = {};
 
 			/* register shortcut */
 
@@ -192,9 +192,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.dawanda.startup)
+		if (rs.modules.dawanda.startup)
 		{
-			$.fn.dawanda(rxs.modules.dawanda.options);
+			$.fn.dawanda(rs.modules.dawanda.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

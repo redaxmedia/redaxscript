@@ -26,17 +26,17 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.dialog.options !== options)
+		if (rs.plugins.dialog.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.dialog.options, options || {});
+			options = $.extend({}, rs.plugins.dialog.options, options || {});
 		}
 
 		/* detect needed mode */
 
-		if (rxs.registry.LOGGED_IN === rxs.registry.TOKEN && rxs.registry.FIRST_PARAMETER === 'admin')
+		if (rs.registry.LOGGED_IN === rs.registry.TOKEN && rs.registry.FIRST_PARAMETER === 'admin')
 		{
 			options.suffix = options.suffix.backend;
-			rxs.flags.backend = true;
+			rs.flags.backend = true;
 		}
 		else
 		{
@@ -64,7 +64,7 @@
 
 			if (options.type === 'prompt')
 			{
-				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.className.fieldPrompt + (rxs.flags.backend ? options.suffix : '')).appendTo(dialog.box);
+				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.className.fieldPrompt + (rs.flags.backend ? options.suffix : '')).appendTo(dialog.box);
 			}
 
 			/* ok button */
@@ -81,7 +81,7 @@
 			/* append to body */
 
 			dialog.container.add(dialog.overlay).appendTo('body');
-			rxs.flags.modal = true;
+			rs.flags.modal = true;
 		};
 
 		/* @section 1.2 listen */
@@ -133,7 +133,7 @@
 		dialog.close = function ()
 		{
 			dialog.container.add(dialog.overlay).remove();
-			rxs.flags.modal = false;
+			rs.flags.modal = false;
 		};
 
 		/* @section 1.4 init */
@@ -144,14 +144,14 @@
 
 			dialog.overlay = $('<div>').addClass(options.className.dialogOverlay + options.suffix);
 			dialog.container = $('<div>').addClass(options.className.dialog + options.suffix);
-			dialog.title = $('<h3>' + rxs.language[options.type] + '</h3>').addClass(options.className.dialogTitle + options.suffix);
+			dialog.title = $('<h3>' + rs.language[options.type] + '</h3>').addClass(options.className.dialogTitle + options.suffix);
 			dialog.box = $('<div>').addClass(options.className.dialogBox + options.suffix);
-			dialog.buttonOk = $('<a>' + rxs.language.ok + '</a>').addClass(options.className.buttonOk + options.suffix);
-			dialog.buttonCancel = $('<a>' + rxs.language.cancel + '</a>').addClass(options.className.buttonCancel + options.suffix);
+			dialog.buttonOk = $('<a>' + rs.language.ok + '</a>').addClass(options.className.buttonOk + options.suffix);
+			dialog.buttonCancel = $('<a>' + rs.language.cancel + '</a>').addClass(options.className.buttonCancel + options.suffix);
 
 			/* open and listen */
 
-			if (!rxs.flags.modal)
+			if (!rs.flags.modal)
 			{
 				dialog.open();
 				dialog.listen();
@@ -160,7 +160,7 @@
 
 		/* init as needed */
 
-		if (rxs.registry.MY_BROWSER === 'msie' && rxs.registry.MY_BROWSER_VERSION < 7)
+		if (rs.registry.MY_BROWSER === 'msie' && rs.registry.MY_BROWSER_VERSION < 7)
 		{
 			return false;
 		}
@@ -192,7 +192,7 @@
 					$.fn.dialog(
 					{
 						type: 'confirm',
-						message: rxs.language.dialog_question + rxs.language.question_mark,
+						message: rs.language.dialog_question + rs.language.question_mark,
 						callback: function ()
 						{
 							if (url.substr(0, 2) === '//' || url.substr(0, 7) === 'http://' || url.substr(0, 8) === 'https://')
@@ -201,7 +201,7 @@
 							}
 							else
 							{
-								window.location = rxs.baseURL + url;
+								window.location = rs.baseURL + url;
 							}
 						}
 					});
@@ -217,16 +217,16 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.preventUnload.options !== options)
+		if (rs.plugins.preventUnload.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.preventUnload.options, options || {});
+			options = $.extend({}, rs.plugins.preventUnload.options, options || {});
 		}
 
 		/* return this */
 
 		return this.each(function ()
 		{
-			if (rxs.registry.ADMIN_PARAMETER === 'new' || rxs.registry.ADMIN_PARAMETER === 'edit')
+			if (rs.registry.ADMIN_PARAMETER === 'new' || rs.registry.ADMIN_PARAMETER === 'edit')
 			{
 				/* listen for change */
 
@@ -242,15 +242,15 @@
 
 	$(function ()
 	{
-		if (rxs.plugins.confirmLink.startup)
+		if (rs.plugins.confirmLink.startup)
 		{
-			$(rxs.plugins.confirmLink.selector).confirmLink();
+			$(rs.plugins.confirmLink.selector).confirmLink();
 
 			/* dependency */
 
-			if (rxs.plugins.preventUnload.startup)
+			if (rs.plugins.preventUnload.startup)
 			{
-				$(rxs.plugins.preventUnload.selector).preventUnload(rxs.plugins.preventUnload.options);
+				$(rs.plugins.preventUnload.selector).preventUnload(rs.plugins.preventUnload.options);
 			}
 		}
 	});

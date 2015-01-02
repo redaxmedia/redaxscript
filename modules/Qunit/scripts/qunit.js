@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.qunit.options !== options)
+		if (rs.modules.qunit.options !== options)
 		{
-			options = $.extend({}, rxs.modules.qunit.options, options || {});
+			options = $.extend({}, rs.modules.qunit.options, options || {});
 		}
 
 		var win = window,
@@ -66,11 +66,11 @@
 
 			if (qunitBanner.hasClass('qunit-pass'))
 			{
-				qunitBanner.addClass('note_success').text(rxs.language._qunit.test_passed + rxs.language.point);
+				qunitBanner.addClass('note_success').text(rs.language._qunit.test_passed + rs.language.point);
 			}
 			else if (qunitBanner.hasClass('qunit-fail'))
 			{
-				qunitBanner.addClass('note_error').text(rxs.language._qunit.test_failed + rxs.language.point);
+				qunitBanner.addClass('note_error').text(rs.language._qunit.test_failed + rs.language.point);
 			}
 			qunitBanner.detach().insertAfter(qunitUserAgent);
 
@@ -88,9 +88,9 @@
 
 	$(function ()
 	{
-		if (rxs.constants.FIRST_PARAMETER === 'qunit')
+		if (rs.constants.FIRST_PARAMETER === 'qunit')
 		{
-			$.fn.qunit(rxs.modules.qunit.options);
+			$.fn.qunit(rs.modules.qunit.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

@@ -21,9 +21,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.forwardNotification.options !== options)
+		if (rs.plugins.forwardNotification.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.forwardNotification.options, options || {});
+			options = $.extend({}, rs.plugins.forwardNotification.options, options || {});
 		}
 
 		/* return this */
@@ -45,7 +45,7 @@
 					}
 					else
 					{
-						window.location = rxs.baseURL + url;
+						window.location = rs.baseURL + url;
 					}
 				}, options.duration);
 			}
@@ -58,9 +58,9 @@
 	{
 		/* extend options */
 
-		if (rxs.plugins.keyShortcut.options !== options)
+		if (rs.plugins.keyShortcut.options !== options)
 		{
-			options = $.extend({}, rxs.plugins.keyShortcut.options, options || {});
+			options = $.extend({}, rs.plugins.keyShortcut.options, options || {});
 		}
 
 		/* return this */
@@ -97,13 +97,13 @@
 
 					else if (event.which === options.keyCode.log)
 					{
-						if (rxs.registry.LOGGED_IN === rxs.registry.TOKEN)
+						if (rs.registry.LOGGED_IN === rs.registry.TOKEN)
 						{
-							window.location = rxs.baseURL + rxs.registry.REWRITE_ROUTE + rxs.plugins.keyShortcut.routes.logout;
+							window.location = rs.baseURL + rs.registry.REWRITE_ROUTE + rs.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = rxs.baseURL + rxs.registry.REWRITE_ROUTE + rxs.plugins.keyShortcut.routes.login;
+							window.location = rs.baseURL + rs.registry.REWRITE_ROUTE + rs.plugins.keyShortcut.routes.login;
 						}
 					}
 
@@ -136,13 +136,13 @@
 
 	$(function ()
 	{
-		if (rxs.plugins.keyShortcut.startup)
+		if (rs.plugins.keyShortcut.startup)
 		{
-			$(rxs.plugins.keyShortcut.selector).keyShortcut(rxs.plugins.keyShortcut.options);
+			$(rs.plugins.keyShortcut.selector).keyShortcut(rs.plugins.keyShortcut.options);
 		}
-		if (rxs.plugins.forwardNotification.startup)
+		if (rs.plugins.forwardNotification.startup)
 		{
-			$(rxs.plugins.forwardNotification.selector).forwardNotification(rxs.plugins.forwardNotification.options);
+			$(rs.plugins.forwardNotification.selector).forwardNotification(rs.plugins.forwardNotification.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

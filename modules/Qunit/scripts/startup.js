@@ -11,7 +11,7 @@
 
 /* @section 1. qunit */
 
-rxs.modules.qunit =
+rs.modules.qunit =
 {
 	startup: true,
 	options:

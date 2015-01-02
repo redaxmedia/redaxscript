@@ -36,14 +36,14 @@
 	{
 		/* extend options */
 
-		if (rxs.modules.editor.options !== options)
+		if (rs.modules.editor.options !== options)
 		{
-			options = $.extend({}, rxs.modules.editor.options, options || {});
+			options = $.extend({}, rs.modules.editor.options, options || {});
 		}
 
 		/* detect needed mode */
 
-		if (rxs.constants.LOGGED_IN === rxs.constants.TOKEN && rxs.constants.FIRST_PARAMETER === 'admin')
+		if (rs.constants.LOGGED_IN === rs.constants.TOKEN && rs.constants.FIRST_PARAMETER === 'admin')
 		{
 			options.toolbar = options.toolbar.backend;
 			options.breakOnEnter = options.breakOnEnter.backend;
@@ -75,7 +75,7 @@
 				for (var i in options.toolbar)
 				{
 					var name = options.toolbar[i],
-						data = rxs.modules.editor.controls[name],
+						data = rs.modules.editor.controls[name],
 						control = '';
 
 					/* append toggle */
@@ -111,7 +111,7 @@
 
 								/* haptic feedback */
 
-								if (rxs.support.vibrate && typeof options.vibrate === 'number')
+								if (rs.support.vibrate && typeof options.vibrate === 'number')
 								{
 									window.navigator.vibrate(options.vibrate);
 								}
@@ -137,16 +137,16 @@
 					{
 						if (event.which === 13)
 						{
-							if (rxs.constants.MY_ENGINE === 'gecko')
+							if (rs.constants.MY_ENGINE === 'gecko')
 							{
 								document.execCommand('insertBrOnReturn', false, false);
 							}
-							else if (rxs.constants.MY_ENGINE === 'trident')
+							else if (rs.constants.MY_ENGINE === 'trident')
 							{
 								editor.insertHTML('<br />');
 								event.preventDefault();
 							}
-							else if (rxs.constants.MY_ENGINE === 'webkit')
+							else if (rs.constants.MY_ENGINE === 'webkit')
 							{
 								editor.insertHTML('<br /><br />');
 								event.preventDefault();
@@ -179,7 +179,7 @@
 				{
 					$.fn.dialog(
 					{
-						message: rxs.language._editor.browser_support_no + rxs.language.point
+						message: rs.language._editor.browser_support_no + rs.language.point
 					});
 				}
 			};
@@ -193,7 +193,7 @@
 				$.fn.dialog(
 				{
 					type: 'prompt',
-					message: message + rxs.language.colon,
+					message: message + rs.language.colon,
 					value: value,
 					callback: function (input)
 					{
@@ -273,13 +273,13 @@
 				{
 					editor.mode = 0;
 					editor.preview.html(editor.convertToEntity()).focus();
-					editor.controlToggle.attr('title', rxs.language._editor.source_code);
+					editor.controlToggle.attr('title', rs.language._editor.source_code);
 				}
 				else
 				{
 					editor.mode = 1;
 					editor.textarea.val(editor.convertToHTML()).focus();
-					editor.controlToggle.attr('title', rxs.language._editor.wysiwyg);
+					editor.controlToggle.attr('title', rs.language._editor.wysiwyg);
 				}
 				editor.controlToggle.toggleClass(options.className.editorSourceCode + ' ' + options.className.editorWysiwyg).nextAll(options.element.editorControl).toggle();
 				editor.textarea.add(editor.preview).toggle();
@@ -317,7 +317,7 @@
 
 					$.fn.dialog(
 					{
-						message: rxs.language._editor.select_text_first + rxs.language.point
+						message: rs.language._editor.select_text_first + rs.language.point
 					});
 				}
 			};
@@ -391,9 +391,9 @@
 
 	$(function ()
 	{
-		if (rxs.modules.editor.startup && (rxs.constants.LAST_TABLE === 'articles' || (rxs.constants.ADMIN_PARAMETER === 'new' || rxs.constants.ADMIN_PARAMETER === 'edit') && (rxs.constants.TABLE_PARAMETER === 'articles' || rxs.constants.TABLE_PARAMETER === 'extras' || rxs.constants.TABLE_PARAMETER === 'comments')))
+		if (rs.modules.editor.startup && (rs.constants.LAST_TABLE === 'articles' || (rs.constants.ADMIN_PARAMETER === 'new' || rs.constants.ADMIN_PARAMETER === 'edit') && (rs.constants.TABLE_PARAMETER === 'articles' || rs.constants.TABLE_PARAMETER === 'extras' || rs.constants.TABLE_PARAMETER === 'comments')))
 		{
-			$(rxs.modules.editor.selector).editor(rxs.modules.editor.options);
+			$(rs.modules.editor.selector).editor(rs.modules.editor.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

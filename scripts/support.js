@@ -35,11 +35,11 @@
 {
 	'use strict';
 
-	win.rxs = win.rxs || {};
+	win.rs = win.rs || {};
 
 	/* @section 1. support */
 
-	rxs.support =
+	rs.support =
 	{
 		/* @section 1.1 application cache */
 
