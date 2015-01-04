@@ -1,8 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. library
- * 2. globals
+ * 1. framework
+ * 2. namespace
  * 3. base url
  * 4. registry
  * 5. support
@@ -30,9 +30,9 @@
 			fixture = $(rs.modules.qunit.options.element.qunitFixture),
 			dummy = 'hello world';
 
-		/* @section 1. library */
+		/* @section 1. framework */
 
-		win.test('library', function ()
+		win.test('framework', function ()
 		{
 			var expect = 'function',
 				result = typeof $;
@@ -40,9 +40,9 @@
 			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
-		/* @section 2. globals */
+		/* @section 2. namespace */
 
-		win.test('globals', function ()
+		win.test('namespace', function ()
 		{
 			var expect = 'object',
 				result = typeof rs;
