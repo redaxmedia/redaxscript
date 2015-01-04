@@ -36,7 +36,7 @@
 				<!-- categories -->
 
 				<li><?php echo Language::get('categories'); ?>
-					<?php navigation_list('categories', array(
+					<?php echo Template::navigation('categories', array(
 						'children' => 1,
 						'class' => 'list_header_children',
 						'limit' => 5
@@ -46,7 +46,7 @@
 				<!-- articles -->
 
 				<li><?php echo Language::get('articles'); ?>
-					<?php navigation_list('articles', array(
+					<?php echo Template::navigation('articles', array(
 						'class' => 'list_header_children',
 						'limit' => 5
 					)); ?>

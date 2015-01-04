@@ -1,15 +1,12 @@
 <?php namespace Redaxscript; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Registry::get('language'); ?>" class="<?php helper_class(); ?>">
+<html lang="<?php echo Registry::get('language'); ?>" class="<?php echo Template::helperClass(); ?>">
 
 	<!-- head -->
 
 	<head>
-
-		<!-- template head -->
-
-		<?php include_once('templates/default/head.phtml'); ?>
+		<?php echo Template::partial('templates/default/head.phtml'); ?>
 	</head>
 
 	<!-- body -->
@@ -19,11 +16,11 @@
 		<!-- main -->
 
 		<div class="wrapper clearfix">
-			<?php include_once('content.phtml'); ?>
+			<?php echo Template::partial('templates/install/content.phtml'); ?>
 		</div>
 
 		<!-- footer -->
 
-		<?php scripts(); ?>
+		<?php echo Template::script(); ?>
 	</body>
 </html>

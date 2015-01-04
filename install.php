@@ -23,6 +23,10 @@ include_once('includes/bootstrap.php');
 define('TITLE', l('installation'));
 define('ROBOTS', 'none');
 
+/* module init */
+
+Redaxscript\Hook::trigger('init');
+
 /* call loader else render template */
 
 if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
