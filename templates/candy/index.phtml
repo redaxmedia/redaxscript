@@ -6,38 +6,35 @@
 	<!-- head -->
 
 	<head>
-
-		<!-- template head -->
-
-		<?php include_once('head.phtml'); ?>
-
-		<!-- admin head -->
-
-		<?php include_once('templates/admin/head.phtml'); ?>
+		<?php echo Template::partial(array(
+			'templates/candy/head.phtml',
+			'templates/admin/head.phtml'
+		)); ?>
 	</head>
 
 	<!-- body -->
 
 	<body class="wrapper_body">
 
-		<!-- admin panel -->
+		<!-- admin panel and header -->
 
-		<?php include_once('templates/admin/panel.phtml'); ?>
-
-		<!-- header -->
-
-		<?php include_once('header.phtml'); ?>
+		<?php echo Template::partial(array(
+			'templates/admin/panel.phtml',
+			'templates/candy/header.phtml'
+		)); ?>
 
 		<!-- main -->
 
 		<div class="wrapper clearfix">
-			<?php include_once('content.phtml'); ?>
-			<?php include_once('sidebar.phtml'); ?>
+			<?php echo Template::partial(array(
+				'templates/candy/content.phtml',
+				'templates/candy/sidebar.phtml'
+			)); ?>
 		</div>
 
 		<!-- footer -->
 
-		<?php include_once('footer.phtml'); ?>
-		<?php scripts(); ?>
+		<?php echo Template::partial('templates/candy/footer.phtml'); ?>
+		<?php echo Template::script(); ?>
 	</body>
 </html>

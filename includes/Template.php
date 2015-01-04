@@ -171,10 +171,10 @@ class Template
 	 * @return string
 	 */
 
-	public static function navigation($type = null, $options = null)
+	public static function navigation($table = null, $options = null)
 	{
 		ob_start();
-		navigation_list($type, $options);
+		navigation_list($table, $options);
 		$output = ob_get_contents();
 		ob_end_clean();
 		return $output;

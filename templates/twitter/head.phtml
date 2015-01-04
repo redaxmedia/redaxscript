@@ -1,6 +1,20 @@
 <?php namespace Redaxscript; ?>
 
+<!-- base and title -->
+
+<?php echo Template::base(); ?>
+<?php echo Template::title(); ?>
+
+<!-- meta -->
+
+<?php echo Template::meta(); ?>
 <meta name="viewport" content="width=device-width" />
-<?php head(); ?>
-<?php styles(); ?>
-<?php scripts('init'); ?>
+
+<!-- link -->
+
+<?php echo Template::link(); ?>
+
+<!-- style and script -->
+
+<?php echo Template::style(); ?>
+<?php echo Template::script('init'); ?>
