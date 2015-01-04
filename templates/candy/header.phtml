@@ -1,20 +1,22 @@
+<?php namespace Redaxscript; ?>
+
 <header id="header" class="header">
-	<?php if (DB_CONNECTED): ?>
-		<section class="wrapper">
+	<section class="wrapper">
 
-			<!-- website branding -->
+		<!-- website branding -->
 
-			<?php if (s('title')): ?>
-				<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
-			<?php endif; ?>
+		<?php if (Db::getSettings('title')): ?>
+			<h1 class="title_website">
+				<a href="<?php Registry::get('root'); ?>"><?php echo Db::getSettings('title'); ?></a>
+			</h1>
+		<?php endif; ?>
 
-			<!-- dropdown -->
+		<!-- dropdown -->
 
-			<?php navigation_list('categories', array(
-				'children' => 1,
-				'class' => 'js_dropdown list_dropdown list_header',
-				'limit' => 5
-			)); ?>
-		</section>
-	<?php endif; ?>
+		<?php navigation_list('categories', array(
+			'children' => 1,
+			'class' => 'js_dropdown list_dropdown list_header',
+			'limit' => 5
+		)); ?>
+	</section>
 </header>

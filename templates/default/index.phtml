@@ -1,5 +1,7 @@
+<?php namespace Redaxscript; ?>
+
 <!DOCTYPE html>
-<html lang="<?php echo Redaxscript\Registry::get('language'); ?>" class="<?php helper_class(); ?>">
+<html lang="<?php echo Registry::get('language'); ?>" class="<?php helper_class(); ?>">
 
 	<!-- head -->
 
@@ -30,9 +32,9 @@
 
 		<div class="wrapper clearfix">
 
-			<!-- handle error -->
+			<!-- handle content error -->
 
-			<?php if (DB_CONNECTED && CONTENT_ERROR && Redaxscript\Registry::get('centerBreak') === false): ?>
+			<?php if (Registry::get('contentError')): ?>
 				<?php include_once('error.phtml'); ?>
 
 			<!-- else content and sidebar -->

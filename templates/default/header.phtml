@@ -1,49 +1,57 @@
+<?php namespace Redaxscript; ?>
+
 <header id="header" class="header">
-	<?php if (DB_CONNECTED): ?>
-		<section class="wrapper clearfix">
+	<section class="wrapper clearfix">
 
-			<!-- website branding -->
+		<!-- website branding -->
 
-			<div class="box_first grid_space s3o7">
-				<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
+		<div class="box_first grid_space s3o7">
+			<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
 
-				<!-- metadata -->
+			<!-- metadata -->
 
-				<div class="wrapper_metadata">
-					<?php if (s('title')): ?>
-						<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
-					<?php endif; ?>
-					<?php if (s('description')): ?>
-						<p class="description_website"><?php echo truncate(s('description'), 50); ?></p>
-					<?php endif; ?>
-				</div>
+			<div class="wrapper_metadata">
+
+				<!-- title -->
+
+				<?php if (Db::getSettings('title')): ?>
+					<h1 class="title_website">
+						<a href="<?php Registry::get('root'); ?>"><?php echo Db::getSettings('title'); ?></a>
+					</h1>
+				<?php endif; ?>
+
+				<!-- description -->
+
+				<?php if (Db::getSettings('description')): ?>
+					<p class="description_website"><?php echo Db::getSettings('description'); ?></p>
+				<?php endif; ?>
 			</div>
+		</div>
 
-			<!-- dropdown -->
+		<!-- dropdown -->
 
-			<div class="box_last grid_space s4o7">
-				<ul class="js_dropdown list_dropdown list_header">
+		<div class="box_last grid_space s4o7">
+			<ul class="js_dropdown list_dropdown list_header">
 
-					<!-- categories -->
+				<!-- categories -->
 
-					<li><?php echo l('categories'); ?>
-						<?php navigation_list('categories', array(
-							'children' => 1,
-							'class' => 'list_header_children',
-							'limit' => 5
-						)); ?>
-					</li>
+				<li><?php echo Language::get('categories'); ?>
+					<?php navigation_list('categories', array(
+						'children' => 1,
+						'class' => 'list_header_children',
+						'limit' => 5
+					)); ?>
+				</li>
 
-					<!-- articles -->
+				<!-- articles -->
 
-					<li><?php echo l('articles'); ?>
-						<?php navigation_list('articles', array(
-							'class' => 'list_header_children',
-							'limit' => 5
-						)); ?>
-					</li>
-				</ul>
-			</div>
-		</section>
-	<?php endif; ?>
+				<li><?php echo Language::get('articles'); ?>
+					<?php navigation_list('articles', array(
+						'class' => 'list_header_children',
+						'limit' => 5
+					)); ?>
+				</li>
+			</ul>
+		</div>
+	</section>
 </header>

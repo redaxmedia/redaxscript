@@ -1,4 +1,6 @@
-<?php if (LOGGED_IN === TOKEN && FIRST_PARAMETER !== 'logout'): ?>
+<?php namespace Redaxscript; ?>
+
+<?php if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') !== 'logout'): ?>
 	<nav id="panel_admin" class="js_panel_admin panel_admin">
 		<div class="box_panel_admin">
 			<section class="wrapper clearfix">

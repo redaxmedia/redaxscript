@@ -169,7 +169,11 @@ else
 	{
 		/* handle error */
 
-		if (CONTENT_ERROR && Redaxscript\Registry::get('centerBreak') === false)
+		if (Redaxscript\Registry::get('centerBreak'))
+		{
+			Redaxscript\Registry::set('contentError', false);
+		}
+		if (Redaxscript\Registry::get('contentError'))
 		{
 			header('http/1.0 404 not found');
 		}
