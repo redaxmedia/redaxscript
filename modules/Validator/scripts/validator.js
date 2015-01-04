@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. validator
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -25,7 +25,7 @@
 			options = $.extend({}, rs.modules.validator.options, options || {});
 		}
 
-		var urlParameter = '?doc=' + rs.baseURL + rs.constants.REWRITE_ROUTE + rs.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + rs.baseURL + rs.registry.rewriteRoute + rs.registry.fullRoute + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
@@ -112,7 +112,7 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{

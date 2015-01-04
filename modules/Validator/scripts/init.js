@@ -13,7 +13,7 @@
 
 rs.modules.validator =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		className:

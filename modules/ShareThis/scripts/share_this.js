@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. share this
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -82,11 +82,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.shareThis.startup)
+		if (rs.modules.shareThis.init)
 		{
 			$(rs.modules.shareThis.selector).shareThis(rs.modules.shareThis.options);
 		}

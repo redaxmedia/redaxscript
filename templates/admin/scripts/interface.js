@@ -3,7 +3,7 @@
  *
  * 1. admin dock
  * 2. admin panel
- * 3. startup
+ * 3. init
  *
  * @since 2.0.0
  *
@@ -180,15 +180,15 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (rs.plugins.adminDock.startup)
+		if (rs.plugins.adminDock.init)
 		{
 			$(rs.plugins.adminDock.selector).adminDock(rs.plugins.adminDock.options);
 		}
-		if (rs.plugins.adminPanel.startup)
+		if (rs.plugins.adminPanel.init)
 		{
 			$(rs.plugins.adminPanel.selector).adminPanel(rs.plugins.adminPanel.options);
 		}

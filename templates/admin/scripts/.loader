@@ -1,4 +1,4 @@
-[admin_startup]
+[admin_init]
 1 = templates/admin/scripts/init.js
 
 [admin]

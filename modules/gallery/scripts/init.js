@@ -13,7 +13,7 @@
 
 rs.modules.gallery =
 {
-	startup: true,
+	init: true,
 	selector: 'ul.js_list_gallery',
 	options:
 	{
@@ -40,7 +40,7 @@ rs.modules.gallery =
 
 /* mobile */
 
-if (rs.constants.MY_MOBILE)
+if (rs.registry.myMobile)
 {
 	rs.modules.gallery.options.scaling = 0.98;
 	rs.modules.gallery.options.loader = false;

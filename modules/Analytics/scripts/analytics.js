@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. analytics
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -75,11 +75,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.analytics.startup && rs.constants.LOGGED_IN !== rs.constants.TOKEN && typeof _gaq === 'object')
+		if (rs.modules.analytics.init && rs.registry.loggedIn !== rs.registry.token && typeof _gaq === 'object')
 		{
 			$(rs.modules.analytics.selector).analytics(rs.modules.analytics.options);
 		}

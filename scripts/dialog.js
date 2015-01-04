@@ -8,7 +8,7 @@
  *    1.4 init
  * 2. confirm link
  * 3. prevent unload
- * 4. startup
+ * 4. init
  *
  * @since 2.0.0
  *
@@ -33,7 +33,7 @@
 
 		/* detect needed mode */
 
-		if (rs.registry.LOGGED_IN === rs.registry.TOKEN && rs.registry.FIRST_PARAMETER === 'admin')
+		if (rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin')
 		{
 			options.suffix = options.suffix.backend;
 			rs.flags.backend = true;
@@ -158,16 +158,9 @@
 			}
 		};
 
-		/* init as needed */
+		/* init */
 
-		if (rs.registry.MY_BROWSER === 'msie' && rs.registry.MY_BROWSER_VERSION < 7)
-		{
-			return false;
-		}
-		else
-		{
-			dialog.init();
-		}
+		dialog.init();
 	};
 
 	/* @section 2. confirm link */
@@ -226,7 +219,7 @@
 
 		return this.each(function ()
 		{
-			if (rs.registry.ADMIN_PARAMETER === 'new' || rs.registry.ADMIN_PARAMETER === 'edit')
+			if (rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit')
 			{
 				/* listen for change */
 
@@ -238,17 +231,17 @@
 		});
 	};
 
-	/* @section 4. startup */
+	/* @section 4. init */
 
 	$(function ()
 	{
-		if (rs.plugins.confirmLink.startup)
+		if (rs.plugins.confirmLink.init)
 		{
 			$(rs.plugins.confirmLink.selector).confirmLink();
 
 			/* dependency */
 
-			if (rs.plugins.preventUnload.startup)
+			if (rs.plugins.preventUnload.init)
 			{
 				$(rs.plugins.preventUnload.selector).preventUnload(rs.plugins.preventUnload.options);
 			}

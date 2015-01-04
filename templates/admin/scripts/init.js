@@ -14,7 +14,7 @@
 
 rs.plugins.adminDock =
 {
-	startup: true,
+	init: true,
 	selector: 'div.js_dock_admin',
 	options:
 	{
@@ -32,7 +32,7 @@ rs.plugins.adminDock =
 
 rs.plugins.adminPanel =
 {
-	startup: true,
+	init: true,
 	selector: 'ul.js_list_panel_admin',
 	options:
 	{

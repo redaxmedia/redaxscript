@@ -13,7 +13,7 @@
 
 rs.modules.callHome =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		id: 'UA-16122280-10',

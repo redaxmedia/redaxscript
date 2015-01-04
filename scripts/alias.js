@@ -3,9 +3,9 @@
  *
  * 1. clean alias
  * 2. generate alias
- * 3. startup
+ * 3. init
  *
- * @since 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -209,11 +209,11 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (rs.plugins.generateAlias.startup)
+		if (rs.plugins.generateAlias.init)
 		{
 			$(rs.plugins.generateAlias.selector).generateAlias(rs.plugins.generateAlias.options);
 		}

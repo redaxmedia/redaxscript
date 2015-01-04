@@ -4,7 +4,7 @@
  * 1. accordion
  * 2. dropdown
  * 3. tab
- * 4. startup
+ * 4. init
  *
  * @since 2.0.0
  *
@@ -167,19 +167,19 @@
 		});
 	};
 
-	/* @section 4. startup */
+	/* @section 4. init */
 
 	$(function ()
 	{
-		if (rs.plugins.accordion.startup)
+		if (rs.plugins.accordion.init)
 		{
 			$(rs.plugins.accordion.selector).accordion(rs.plugins.accordion.options);
 		}
-		if (rs.plugins.dropdown.startup && rs.support.touch)
+		if (rs.plugins.dropdown.init && rs.support.touch)
 		{
 			$(rs.plugins.dropdown.selector).dropdown(rs.plugins.dropdown.options);
 		}
-		if (rs.plugins.tab.startup)
+		if (rs.plugins.tab.init)
 		{
 			$(rs.plugins.tab.selector).tab(rs.plugins.tab.options);
 		}

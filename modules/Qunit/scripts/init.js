@@ -13,7 +13,7 @@
 
 rs.modules.qunit =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		element:

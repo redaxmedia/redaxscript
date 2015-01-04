@@ -13,7 +13,7 @@
 
 rs.modules.shareThis =
 {
-	startup: true,
+	init: true,
 	selector: 'a.js_link_share_this ',
 	options:
 	{

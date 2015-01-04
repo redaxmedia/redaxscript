@@ -8,7 +8,7 @@
  *    1.4 create shortcut
  *    1.5 register shortcut
  *    1.6 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -188,11 +188,11 @@
 		dawanda.init();
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.dawanda.startup)
+		if (rs.modules.dawanda.init)
 		{
 			$.fn.dawanda(rs.modules.dawanda.options);
 		}

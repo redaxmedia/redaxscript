@@ -13,7 +13,7 @@
 
 rs.modules.dawanda =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		url: 'http://en.dawanda.com/api/v1',

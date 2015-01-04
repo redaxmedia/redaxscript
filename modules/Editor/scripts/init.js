@@ -13,7 +13,7 @@
 
 rs.modules.editor =
 {
-	startup: true,
+	init: true,
 	selector: 'form textarea.js_editor_textarea',
 	options:
 	{

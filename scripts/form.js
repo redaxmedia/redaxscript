@@ -6,9 +6,9 @@
  * 3. unmask password
  * 4. validate form
  * 5. validate search
- * 6. startup
+ * 6. init
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -385,27 +385,27 @@
 		});
 	};
 
-	/* @section 6. startup */
+	/* @section 6. init */
 
 	$(function ()
 	{
-		if (rs.plugins.autoResize.startup)
+		if (rs.plugins.autoResize.init)
 		{
 			$(rs.plugins.autoResize.selector).autoResize(rs.plugins.autoResize.options);
 		}
-		if (rs.plugins.enableIndent.startup)
+		if (rs.plugins.enableIndent.init)
 		{
 			$(rs.plugins.enableIndent.selector).enableIndent();
 		}
-		if (rs.plugins.unmaskPassword.startup)
+		if (rs.plugins.unmaskPassword.init)
 		{
 			$(rs.plugins.unmaskPassword.selector).unmaskPassword();
 		}
-		if (rs.plugins.validateForm.startup)
+		if (rs.plugins.validateForm.init)
 		{
 			$(rs.plugins.validateForm.selector).validateForm(rs.plugins.validateForm.options);
 		}
-		if (rs.plugins.validateSearch.startup && typeof rs.support.input === 'object' && rs.support.input.placeholder)
+		if (rs.plugins.validateSearch.init && typeof rs.support.input === 'object' && rs.support.input.placeholder)
 		{
 			$(rs.plugins.validateSearch.selector).validateSearch(rs.plugins.validateSearch.options);
 		}

@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. call home
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -54,11 +54,11 @@
 		}
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.callHome.startup && rs.constants.LOGGED_IN === rs.constants.TOKEN && rs.constants.FIRST_PARAMETER === 'admin' && !rs.constants.ADMIN_PARAMETER && typeof _gaq === 'object')
+		if (rs.modules.callHome.init && rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin' && !rs.registry.adminParameter && typeof _gaq === 'object')
 		{
 			$.fn.callHome(rs.modules.callHome.options);
 		}

@@ -3,7 +3,7 @@
  *
  * 1. forward notification
  * 2. key shortcut
- * 3. startup
+ * 3. init
  *
  * @since 2.0.0
  *
@@ -97,13 +97,13 @@
 
 					else if (event.which === options.keyCode.log)
 					{
-						if (rs.registry.LOGGED_IN === rs.registry.TOKEN)
+						if (rs.registry.loggedIn === rs.registry.token)
 						{
-							window.location = rs.baseURL + rs.registry.REWRITE_ROUTE + rs.plugins.keyShortcut.routes.logout;
+							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = rs.baseURL + rs.registry.REWRITE_ROUTE + rs.plugins.keyShortcut.routes.login;
+							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.login;
 						}
 					}
 
@@ -132,15 +132,15 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (rs.plugins.keyShortcut.startup)
+		if (rs.plugins.keyShortcut.init)
 		{
 			$(rs.plugins.keyShortcut.selector).keyShortcut(rs.plugins.keyShortcut.options);
 		}
-		if (rs.plugins.forwardNotification.startup)
+		if (rs.plugins.forwardNotification.init)
 		{
 			$(rs.plugins.forwardNotification.selector).forwardNotification(rs.plugins.forwardNotification.options);
 		}

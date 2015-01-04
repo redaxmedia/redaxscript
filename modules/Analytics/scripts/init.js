@@ -13,7 +13,7 @@
 
 rs.modules.analytics =
 {
-	startup: true,
+	init: true,
 	selector: 'a.js_track_click, button.js_track_click',
 	options:
 	{

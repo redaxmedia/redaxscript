@@ -5,7 +5,7 @@
  *    1.1 show
  *    1.2 listen
  *    1.3 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.1
  *
@@ -106,11 +106,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.lazyLoad.startup)
+		if (rs.modules.lazyLoad.init)
 		{
 			$(rs.modules.lazyLoad.selector).lazyLoad(rs.modules.lazyLoad.options);
 		}

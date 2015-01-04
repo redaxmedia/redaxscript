@@ -69,14 +69,14 @@ function loader($type = '', $mode = '')
 		$template = Redaxscript\Registry::get('template');
 	}
 
-	/* startup mode */
+	/* init mode */
 
-	if ($mode == 'startup')
+	if ($mode == 'init')
 	{
-		$loader_template_startup = $loader_ini['template_startup'];
+		$loader_template_init = $loader_ini['template_init'];
 		if (LOGGED_IN == TOKEN)
 		{
-			$loader_admin_startup = $loader_ini['admin_startup'];
+			$loader_admin_init = $loader_ini['admin_init'];
 		}
 	}
 
@@ -103,13 +103,13 @@ function loader($type = '', $mode = '')
 	/* merge loader include as needed */
 
 	$loader_include = array();
-	if ($loader_template_startup)
+	if ($loader_template_init)
 	{
-		$loader_include = array_merge($loader_include, $loader_template_startup);
+		$loader_include = array_merge($loader_include, $loader_template_init);
 	}
-	if ($loader_admin_startup)
+	if ($loader_admin_init)
 	{
-		$loader_include = array_merge($loader_include, $loader_admin_startup);
+		$loader_include = array_merge($loader_include, $loader_admin_init);
 	}
 	if ($loader_modules)
 	{
@@ -311,11 +311,11 @@ function scripts($mode = '')
 	}
 	$loader_minify = $loader_ini['settings']['minify'];
 
-	/* startup mode */
+	/* init mode */
 
-	if ($mode == 'startup')
+	if ($mode == 'init')
 	{
-		$output .= '<script> /* <![cdata[ */ ' . loader('scripts', 'startup') . ' /* ]]> */ </script>' . PHP_EOL;
+		$output .= '<script> /* <![cdata[ */ ' . loader('scripts', 'init') . ' /* ]]> */ </script>' . PHP_EOL;
 	}
 
 	/* else general mode */
@@ -392,38 +392,33 @@ function scripts_transport($minify = '')
 {
 	/* extend redaxscript object */
 
-	$public_constants = array(
-		'TOKEN',
-		'LOGGED_IN',
-		'FIRST_PARAMETER',
-		'FIRST_SUB_PARAMETER',
-		'SECOND_PARAMETER',
-		'SECOND_SUB_PARAMETER',
-		'THIRD_PARAMETER',
-		'THIRD_SUB_PARAMETER',
-		'ADMIN_PARAMETER',
-		'TABLE_PARAMETER',
-		'ID_PARAMETER',
-		'ALIAS_PARAMETER',
-		'LAST_PARAMETER',
-		'LAST_SUB_PARAMETER',
-		'FIRST_TABLE',
-		'SECOND_TABLE',
-		'THIRD_TABLE',
-		'LAST_TABLE',
-		'FULL_ROUTE',
-		'FULL_TOP_ROUTE',
-		'REWRITE_ROUTE',
-		'LANGUAGE_ROUTE',
-		'TEMPLATE_ROUTE',
-		'REFRESH_ROUTE',
-		'MY_IP',
-		'MY_BROWSER',
-		'MY_BROWSER_VERSION',
-		'MY_ENGINE',
-		'MY_DESKTOP',
-		'MY_MOBILE',
-		'MY_TABLET'
+	$public_registry = array(
+		'token',
+		'loggedIn',
+		'firstParameter',
+		'secondParameter',
+		'thirdParameter',
+		'adminParameter',
+		'tableParameter',
+		'idParameter',
+		'aliasParameter',
+		'lastParameter',
+		'firstTable',
+		'secondTable',
+		'thirdTable',
+		'lastTable',
+		'fullRoute',
+		'fullTopRoute',
+		'rewriteRoute',
+		'languageRoute',
+		'templateRoute',
+		'refreshRoute',
+		'myBrowser',
+		'myBrowserVersion',
+		'myEngine',
+		'myDesktop',
+		'myMobile',
+		'myTablet'
 	);
 
 	/* collect output */
@@ -439,12 +434,12 @@ function scripts_transport($minify = '')
 
 	$output .= 'rs.language = ' . json_encode($language->get()) . ';' . PHP_EOL;
 
-	/* add constants */
+	/* add registry */
 
-	$output .= 'rs.constants = {};';
-	foreach ($public_constants as $value)
+	$output .= 'rs.registry = {};';
+	foreach ($public_registry as $value)
 	{
-		$output .= 'rs.constants.' . $value . ' = \'' . constant($value) . '\';' . PHP_EOL;
+		$output .= 'rs.registry.' . $value . ' = \'' . Redaxscript\Registry::get($value) . '\';' . PHP_EOL;
 	}
 
 	/* baseURL fallback */

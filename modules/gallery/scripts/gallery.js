@@ -13,7 +13,7 @@
  *       1.7.2 next
  *    1.8 close
  *    1.9 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -447,24 +447,17 @@
 				gallery.listen();
 			};
 
-			/* init as needed */
+			/* init */
 
-			if (rs.constants.MY_BROWSER === 'msie' && rs.constants.MY_BROWSER_VERSION < 7)
-			{
-				return false;
-			}
-			else if (gallery.list.length)
-			{
-				gallery.init();
-			}
+			gallery.init();
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.gallery.startup)
+		if (rs.modules.gallery.init)
 		{
 			$(rs.modules.gallery.selector).gallery(rs.modules.gallery.options);
 		}

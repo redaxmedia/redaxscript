@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. file manager
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -56,11 +56,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.fileManager.startup && rs.constants.ADMIN_PARAMETER === 'file-manager')
+		if (rs.modules.fileManager.init && rs.registry.adminParameter === 'file-manager')
 		{
 			$(rs.modules.fileManager.selector).fileManager(rs.modules.fileManager.options);
 		}

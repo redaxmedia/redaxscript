@@ -18,7 +18,7 @@
  *    1.14 post
  *    1.15 validate
  *    1.16 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -43,7 +43,7 @@
 
 		/* detect needed mode */
 
-		if (rs.constants.LOGGED_IN === rs.constants.TOKEN && rs.constants.FIRST_PARAMETER === 'admin')
+		if (rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin')
 		{
 			options.toolbar = options.toolbar.backend;
 			options.breakOnEnter = options.breakOnEnter.backend;
@@ -137,16 +137,16 @@
 					{
 						if (event.which === 13)
 						{
-							if (rs.constants.MY_ENGINE === 'gecko')
+							if (rs.registry.myEngine === 'gecko')
 							{
 								document.execCommand('insertBrOnReturn', false, false);
 							}
-							else if (rs.constants.MY_ENGINE === 'trident')
+							else if (rs.registry.myEngine === 'trident')
 							{
 								editor.insertHTML('<br />');
 								event.preventDefault();
 							}
-							else if (rs.constants.MY_ENGINE === 'webkit')
+							else if (rs.registry.myEngine === 'webkit')
 							{
 								editor.insertHTML('<br /><br />');
 								event.preventDefault();
@@ -387,11 +387,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.editor.startup && (rs.constants.LAST_TABLE === 'articles' || (rs.constants.ADMIN_PARAMETER === 'new' || rs.constants.ADMIN_PARAMETER === 'edit') && (rs.constants.TABLE_PARAMETER === 'articles' || rs.constants.TABLE_PARAMETER === 'extras' || rs.constants.TABLE_PARAMETER === 'comments')))
+		if (rs.modules.editor.init && (rs.registry.lastTable === 'articles' || (rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit') && (rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments')))
 		{
 			$(rs.modules.editor.selector).editor(rs.modules.editor.options);
 		}

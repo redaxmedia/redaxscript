@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. live reload
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -44,7 +44,7 @@
 			{
 				$.ajax(
 				{
-					url: rs.constants.REWRITE_ROUTE + options.url,
+					url: rs.registry.rewriteRoute + options.url,
 					success: function (data)
 					{
 						if (data === dataOld)
@@ -63,7 +63,7 @@
 		}, options.duration);
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{

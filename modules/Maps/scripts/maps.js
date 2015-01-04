@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. maps
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -120,11 +120,11 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.maps.startup && !rs.constants.ADMIN_PARAMETER && typeof google === 'object' && typeof google.maps === 'object')
+		if (rs.modules.maps.init && !rs.registry.adminParameter && typeof google === 'object' && typeof google.maps === 'object')
 		{
 			$(rs.modules.maps.selector).maps(rs.modules.maps.options);
 		}

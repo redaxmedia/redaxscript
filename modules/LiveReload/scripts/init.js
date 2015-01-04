@@ -13,7 +13,7 @@
 
 rs.modules.liveReload =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		className:

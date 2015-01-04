@@ -4,7 +4,7 @@
 [single]
 1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 
-[template_startup]
+[template_init]
 1 = scripts/support.js
 2 = scripts/init.js
 3 = templates/default/scripts/init.js

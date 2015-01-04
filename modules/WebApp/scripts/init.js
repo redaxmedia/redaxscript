@@ -13,7 +13,7 @@
 
 rs.modules.webApp =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		limit: 1

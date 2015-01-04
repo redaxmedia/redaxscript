@@ -13,7 +13,7 @@
 
 rs.modules.fileManager =
 {
-	startup: true,
+	init: true,
 	selector: 'form.js_form_file_manager',
 	options:
 	{

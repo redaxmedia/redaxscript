@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. web app
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -52,11 +52,11 @@
 		}
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.webApp.startup)
+		if (rs.modules.webApp.init)
 		{
 			$.fn.webApp(rs.modules.webApp.options);
 		}

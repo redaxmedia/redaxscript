@@ -4,7 +4,7 @@
  * 1. library
  * 2. globals
  * 3. base url
- * 4. constants
+ * 4. registry
  * 5. support
  * 6. version
  * 7. clean alias
@@ -60,12 +60,12 @@
 			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
-		/* @section 4. constants */
+		/* @section 4. registry */
 
-		win.test('constants', function ()
+		win.test('registry', function ()
 		{
 			var expect = 'number',
-				result = typeof Object.keys(rs.constants).length;
+				result = typeof Object.keys(rs.registry).length;
 
 			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});

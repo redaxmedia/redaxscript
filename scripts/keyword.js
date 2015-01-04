@@ -3,7 +3,7 @@
  *
  * 1. fetch keyword
  * 2. generate keyword
- * 3. startup
+ * 3. init
  *
  * @since 2.2.0
  *
@@ -89,11 +89,11 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (rs.plugins.generateKeyword.startup)
+		if (rs.plugins.generateKeyword.init)
 		{
 			$(rs.plugins.generateKeyword.selector).generateKeyword(rs.plugins.generateKeyword.options);
 		}

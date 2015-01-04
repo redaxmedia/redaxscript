@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. qunit
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -84,11 +84,11 @@
 		};
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.constants.FIRST_PARAMETER === 'qunit')
+		if (rs.registry.firstParameter === 'qunit')
 		{
 			$.fn.qunit(rs.modules.qunit.options);
 		}

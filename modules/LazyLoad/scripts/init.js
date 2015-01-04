@@ -13,7 +13,7 @@
 
 rs.modules.lazyLoad =
 {
-	startup: true,
+	init: true,
 	selector: 'img.js_lazy_load:visible',
 	options:
 	{
