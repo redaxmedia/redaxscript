@@ -4,7 +4,7 @@ namespace Redaxscript;
 /**
  * parent class to provide template tags
  *
- * @since 2.2.0
+ * @since 2.3.0
  *
  * @package Redaxscript
  * @category Template
@@ -23,11 +23,9 @@ class Template
 
 	public static function base()
 	{
-		ob_start();
-		head('base');
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('head', array(
+			'base'
+		));
 	}
 
 	/**
@@ -40,11 +38,7 @@ class Template
 
 	public static function adminPanel()
 	{
-		ob_start();
-		admin_panel_list();
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('admin_panel_list');
 	}
 
 	/**
@@ -77,11 +71,7 @@ class Template
 
 	public static function content()
 	{
-		ob_start();
-		center();
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('center');
 	}
 
 	/**
@@ -89,16 +79,16 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param mixed $filter
+	 *
 	 * @return string
 	 */
 
 	public static function extra($filter = null)
 	{
-		ob_start();
-		extras($filter);
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('extras', array(
+			$filter
+		));
 	}
 
 	/**
@@ -139,11 +129,9 @@ class Template
 
 	public static function link()
 	{
-		ob_start();
-		head('link');
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('head', array(
+			'link'
+		));
 	}
 
 	/**
@@ -156,11 +144,9 @@ class Template
 
 	public static function meta()
 	{
-		ob_start();
-		head('meta');
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('head', array(
+			'meta'
+		));
 	}
 
 	/**
@@ -168,16 +154,18 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param string $table
+	 * @param array $options
+	 *
 	 * @return string
 	 */
 
 	public static function navigation($table = null, $options = null)
 	{
-		ob_start();
-		navigation_list($table, $options);
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('navigation_list', array(
+			$table,
+			$options
+		));
 	}
 
 	/**
@@ -185,7 +173,7 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param mixed $file file to include
+	 * @param mixed $file
 	 *
 	 * @return string
 	 */
@@ -198,14 +186,15 @@ class Template
 				$file
 			);
 		}
+
+		/* include as needed */
+
 		ob_start();
 		foreach ($file as $value)
 		{
 			include($value);
 		}
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return ob_get_clean();
 	}
 
 	/**
@@ -218,11 +207,7 @@ class Template
 
 	public static function search()
 	{
-		ob_start();
-		search();
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('search');
 	}
 
 	/**
@@ -230,16 +215,16 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param string $mode
+	 *
 	 * @return string
 	 */
 
 	public static function script($mode = null)
 	{
-		ob_start();
-		scripts($mode);
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('scripts', array(
+			$mode
+		));
 	}
 
 	/**
@@ -252,11 +237,7 @@ class Template
 
 	public static function style()
 	{
-		ob_start();
-		styles();
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+		return self::_migrate('styles');
 	}
 
 	/**
@@ -269,10 +250,40 @@ class Template
 
 	public static function title()
 	{
+		return self::_migrate('head', array(
+			'title'
+		));
+	}
+
+
+	/**
+	 * migrate
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $function
+	 * @param array $parameter
+	 *
+	 * @return string
+	 */
+
+	protected static function _migrate($function = null, $parameter = null)
+	{
 		ob_start();
-		head('title');
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
+
+		/* call with parameter */
+
+		if ($parameter)
+		{
+			call_user_func_array($function, $parameter);
+		}
+
+		/* else simple call */
+
+		else
+		{
+			call_user_func($function);
+		}
+		return ob_get_clean();
 	}
 }
