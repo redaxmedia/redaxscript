@@ -23,9 +23,11 @@ class Template
 
 	public static function base()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('head', array(
 			'base'
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -38,7 +40,9 @@ class Template
 
 	public static function adminPanel()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('admin_panel_list');
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -71,7 +75,9 @@ class Template
 
 	public static function content()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('center');
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -86,9 +92,11 @@ class Template
 
 	public static function extra($filter = null)
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('extras', array(
 			$filter
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -129,9 +137,11 @@ class Template
 
 	public static function link()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('head', array(
 			'link'
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -144,9 +154,11 @@ class Template
 
 	public static function meta()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('head', array(
 			'meta'
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -162,10 +174,12 @@ class Template
 
 	public static function navigation($table = null, $options = null)
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('navigation_list', array(
 			$table,
 			$options
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -207,7 +221,9 @@ class Template
 
 	public static function search()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('search');
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -222,9 +238,11 @@ class Template
 
 	public static function script($mode = null)
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('scripts', array(
 			$mode
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -237,7 +255,9 @@ class Template
 
 	public static function style()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('styles');
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -250,9 +270,11 @@ class Template
 
 	public static function title()
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('head', array(
 			'title'
 		));
+		// @codeCoverageIgnoreEnd
 	}
 
 
@@ -269,6 +291,7 @@ class Template
 
 	protected static function _migrate($function = null, $parameter = null)
 	{
+		// @codeCoverageIgnoreStart
 		ob_start();
 
 		/* call with parameter */
@@ -285,5 +308,6 @@ class Template
 			call_user_func($function);
 		}
 		return ob_get_clean();
+		// @codeCoverageIgnoreEnd
 	}
 }
