@@ -9,6 +9,8 @@
  * @package Redaxscript
  * @category Head
  * @author Henry Ruhs
+ *
+ * @param string $type
  */
 
 function head($type = '')

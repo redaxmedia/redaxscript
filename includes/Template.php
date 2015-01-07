@@ -194,7 +194,9 @@ class Template
 
 	public static function partial($file = null)
 	{
-		if (!is_array($file))
+		/* handle file */
+
+		if (is_string($file))
 		{
 			$file = array(
 				$file
