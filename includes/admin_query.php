@@ -176,7 +176,14 @@ function admin_process()
 
 	if (TABLE_PARAMETER == 'users')
 	{
-		$user = $r['user'] = clean($_POST['user'], 0);
+		if ($_POST['user'])
+		{
+			$user = $r['user'] = clean($_POST['user'], 0);
+		}
+		else
+		{
+			$user = $r['user'] = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->user;
+		}
 		$password_check = $password_confirm = 1;
 		if ($_POST['edit'] && $_POST['password'] == '' && $_POST['password_confirm'] == '' || $_POST['delete'])
 		{
