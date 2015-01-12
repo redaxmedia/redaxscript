@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. maps
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.maps.options !== options)
+		if (rs.modules.maps.options !== options)
 		{
-			options = $.extend({}, r.modules.maps.options, options || {});
+			options = $.extend({}, rs.modules.maps.options, options || {});
 		}
 
 		/* return this */
@@ -120,13 +120,13 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.maps.startup && !r.constants.ADMIN_PARAMETER && typeof google === 'object' && typeof google.maps === 'object')
+		if (rs.modules.maps.init && !rs.registry.adminParameter && typeof google === 'object' && typeof google.maps === 'object')
 		{
-			$(r.modules.maps.selector).maps(r.modules.maps.options);
+			$(rs.modules.maps.selector).maps(rs.modules.maps.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

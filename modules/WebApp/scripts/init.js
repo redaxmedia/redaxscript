@@ -11,9 +11,9 @@
 
 /* @section 1. web app */
 
-r.modules.webApp =
+rs.modules.webApp =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		limit: 1

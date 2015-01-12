@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. share this
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -20,13 +20,13 @@
 	{
 		/* extend options */
 
-		if (r.modules.shareThis.options !== options)
+		if (rs.modules.shareThis.options !== options)
 		{
-			options = $.extend({}, r.modules.shareThis.options, options || {});
+			options = $.extend({}, rs.modules.shareThis.options, options || {});
 		}
 
 		var links = $(this),
-			urlParameter = '?url=' + r.baseURL;
+			urlParameter = '?url=' + rs.baseURL;
 
 		/* request data */
 
@@ -82,13 +82,13 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.shareThis.startup)
+		if (rs.modules.shareThis.init)
 		{
-			$(r.modules.shareThis.selector).shareThis(r.modules.shareThis.options);
+			$(rs.modules.shareThis.selector).shareThis(rs.modules.shareThis.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

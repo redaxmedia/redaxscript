@@ -41,7 +41,7 @@ class LiveReload extends Module
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
 		$loader_modules_styles[] = 'modules/LiveReload/styles/live_reload.css';
-		$loader_modules_scripts[] = 'modules/LiveReload/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/LiveReload/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/LiveReload/scripts/live_reload.js';
 	}
 }

@@ -25,9 +25,11 @@ function search()
  * @package Redaxscript
  * @category Search
  * @author Henry Ruhs
+ *
+ * @param string $table
  */
 
-function search_form()
+function search_form($table = 'articles')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
@@ -46,6 +48,7 @@ function search_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'search_post');
+	$output .= form_element('hidden', '', '', 'table', $table);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
@@ -71,6 +74,7 @@ function search_post()
 	if (ATTACK_BLOCKED < 10)
 	{
 		$search_terms = clean($_POST['search_terms'], 5);
+		$table = clean($_POST['table']);
 	}
 
 	/* validate post */
@@ -79,47 +83,42 @@ function search_post()
 	{
 		$error = l('input_incorrect');
 	}
-
-	/* query results */
-
 	else
 	{
-		$search = array_filter(explode(' ', $search_terms));
-		$search_keys = array_keys($search);
-		$last = end($search_keys);
+		/* fetch result */
 
-		/* query search */
+		$result = Redaxscript\Db::forTablePrefix($table)
+			->where('status', 1)
+			->whereIn('language', array(
+				Redaxscript\Registry::get('language'),
+				''
+			))
+			->whereLikeMany(array(
+				'title',
+				'description',
+				'keywords',
+				'text'
+			), array(
+				'%' . $search_terms . '%',
+				'%' . $search_terms . '%',
+				'%' . $search_terms . '%',
+				'%' . $search_terms . '%'
+			))
+			->orderByDesc('date')
+			->findArray();
 
-		$query = 'SELECT id, title, alias, description, date, category, access FROM ' . PREFIX . 'articles WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1';
-		if ($search)
-		{
-			$query .= ' && (';
-			foreach ($search as $key => $value)
-			{
+		/* process result */
 
-				$query .= 'title LIKE \'%' . $value . '%\' || description LIKE \'%' . $value . '%\' || keywords LIKE \'%' . $value . '%\' || text LIKE \'%' . $value . '%\'';
-				if ($last != $key)
-				{
-					$query .= ' || ';
-				}
-			}
-			$query .= ')';
-		}
-		$query .= ' ORDER BY date DESC LIMIT 50';
-		$result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($query)->findArray();
 		$num_rows = count($result);
-		if ($result == '' || $num_rows == '')
+		if (empty($result))
 		{
 			$error = l('search_no');
 		}
-
-		/* collect output */
-
 		else if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
 			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
-			$output .= form_element('fieldset', '', 'set_search_result', '', '', '<span class="title_content_sub title_search_result_sub">' . l('articles') . '</span>') . '<ol class="list_search_result">';
+			$output .= form_element('fieldset', '', 'set_search_result', '', '', '') . '<ol class="list_search_result">';
 			foreach ($result as $r)
 			{
 				$access = $r['access'];
@@ -146,13 +145,13 @@ function search_post()
 
 					/* build route */
 
-					if ($category == 0)
+					if ($table == 'categories' && $parent == 0 || $table == 'articles' && $category == 0)
 					{
 						$route = $alias;
 					}
 					else
 					{
-						$route = build_route('articles', $id);
+						$route = build_route($table, $id);
 					}
 
 					/* collect item output */

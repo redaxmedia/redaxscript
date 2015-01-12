@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. startup
+ * 1. init
  *
  * @since 2.0.0
  *
@@ -9,4 +9,4 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. startup */
+/* @section 1. init */

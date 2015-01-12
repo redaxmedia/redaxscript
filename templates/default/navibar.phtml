@@ -1,19 +1,21 @@
+<?php namespace Redaxscript; ?>
+
 <nav id="navibar" class="navibar grid_space s2o7">
 	<div class="box_navibar">
 
 		<!-- donate -->
 
-		<?php if (LOGGED_IN === TOKEN && FIRST_PARAMETER !== 'logout'): ?>
-			<?php echo anchor_element('external', '', 'button_default button_donate', 'Donate', 'http://redaxscript.com/donate'); ?>
+		<?php if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') !== 'logout'): ?>
+			<a href="http://redaxscript.com/donate" class="button_default button_donate">Donate</a>
 
 		<!-- else login -->
 
-		<?php elseif (DB_CONNECTED): ?>
-			<?php echo anchor_element('internal', '', 'button_default button_login', l('login'), 'login'); ?>
+		<?php else: ?>
+			<a href="<?php Registry::get('rewriteRoute'); ?>login" class="button_default button_login"><?php echo Language::get('login'); ?></a>
 		<?php endif; ?>
 
 		<!-- support -->
 
-		<?php echo anchor_element('external', '', 'button_default button_support', 'Support', 'http://redaxscript.com/support'); ?>
+		<a href="http://redaxscript.com/support" class="button_default button_support">Support</a>
 	</div>
 </nav>

@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. live reload
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.liveReload.options !== options)
+		if (rs.modules.liveReload.options !== options)
 		{
-			options = $.extend({}, r.modules.liveReload.options, options || {});
+			options = $.extend({}, rs.modules.liveReload.options, options || {});
 		}
 
 		var head = $('head'),
@@ -44,17 +44,17 @@
 			{
 				$.ajax(
 				{
-					url: r.constants.REWRITE_ROUTE + options.url,
+					url: rs.registry.rewriteRoute + options.url,
 					success: function (data)
 					{
 						if (data === dataOld)
 						{
-							liveReloadBox.html('<div class="box_note note_info">' + l._live_reload.live_reload + '</div>').toggle();
+							liveReloadBox.html('<div class="box_note note_info">' + rs.language._live_reload.live_reload + '</div>').toggle();
 						}
 						else if (dataOld.length)
 						{
 							style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-							liveReloadBox.html('<div class="box_note note_success">' + l._live_reload.updated + '</div>').show();
+							liveReloadBox.html('<div class="box_note note_success">' + rs.language._live_reload.updated + '</div>').show();
 						}
 						dataOld = data;
 					}
@@ -63,10 +63,10 @@
 		}, options.duration);
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		$.fn.liveReload(r.modules.liveReload.options);
+		$.fn.liveReload(rs.modules.liveReload.options);
 	});
 })(window.jQuery || window.Zepto);

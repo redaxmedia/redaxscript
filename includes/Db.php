@@ -27,6 +27,7 @@ use ORM;
  * @method tableAlias()
  * @method whereIdIs()
  * @method whereIn()
+ * @method whereRaw()
  */
 
 class Db extends ORM
@@ -116,6 +117,22 @@ class Db extends ORM
 	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
 	{
 		return $this->_addJoinSource('LEFT', Config::get('prefix') . $table, $constraint, $tableAlias);
+	}
+
+	/**
+	 * where like with many
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param array $column array of column names
+	 * @param array $values array of values
+	 *
+	 * @return Db
+	 */
+
+	public function whereLikeMany($column = null, $values = null)
+	{
+		return $this->whereRaw(implode($column, ' LIKE ? OR ') . ' LIKE ?', $values);
 	}
 
 	/**

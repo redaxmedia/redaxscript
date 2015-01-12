@@ -1,7 +1,23 @@
+<?php namespace Redaxscript; ?>
+
+<!-- base and title -->
+
+<?php echo Template::base(); ?>
+<?php echo Template::title(); ?>
+
+<!-- meta -->
+
+<?php echo Template::meta(); ?>
 <meta name="viewport" content="width=device-width" />
-<?php head(); ?>
-<?php styles(); ?>
-<?php if (!MY_MOBILE): ?>
-	<link type="text/css" href="//fonts.googleapis.com/css?family=Marmelad&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
+
+<!-- link -->
+
+<?php echo Template::link(); ?>
+<?php if (!Registry::get('myMobile')): ?>
+	<link href="//fonts.googleapis.com/css?family=Marmelad&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
 <?php endif; ?>
-<?php scripts('startup'); ?>
+
+<!-- style and script -->
+
+<?php echo Template::style(); ?>
+<?php echo Template::script('init'); ?>

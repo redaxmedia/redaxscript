@@ -3,7 +3,7 @@
  *
  * 1. fetch keyword
  * 2. generate keyword
- * 3. startup
+ * 3. init
  *
  * @since 2.2.0
  *
@@ -49,9 +49,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.generateKeyword.options !== options)
+		if (rs.plugins.generateKeyword.options !== options)
 		{
-			options = $.extend({}, r.plugins.generateKeyword.options, options || {});
+			options = $.extend({}, rs.plugins.generateKeyword.options, options || {});
 		}
 
 		/* return this */
@@ -89,13 +89,13 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (r.plugins.generateKeyword.startup)
+		if (rs.plugins.generateKeyword.init)
 		{
-			$(r.plugins.generateKeyword.selector).generateKeyword(r.plugins.generateKeyword.options);
+			$(rs.plugins.generateKeyword.selector).generateKeyword(rs.plugins.generateKeyword.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

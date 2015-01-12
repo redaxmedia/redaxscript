@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. file manager
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.fileManager.options !== options)
+		if (rs.modules.fileManager.options !== options)
 		{
-			options = $.extend({}, r.modules.fileManager.options, options || {});
+			options = $.extend({}, rs.modules.fileManager.options, options || {});
 		}
 
 		/* return this */
@@ -32,7 +32,7 @@
 			var form = $(this),
 				fieldFile = form.find(options.element.fieldFile),
 				buttonUpload = form.find(options.element.buttonUpload),
-				buttonBrowse = $('<button type="submit">' + l._file_manager.browse + '</button>').addClass(options.className.buttonBrowse);
+				buttonBrowse = $('<button type="submit">' + rs.language._file_manager.browse + '</button>').addClass(options.className.buttonBrowse);
 
 			/* insert fake browse */
 
@@ -56,13 +56,13 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.fileManager.startup && r.constants.ADMIN_PARAMETER === 'file-manager')
+		if (rs.modules.fileManager.init && rs.registry.adminParameter === 'file-manager')
 		{
-			$(r.modules.fileManager.selector).fileManager(r.modules.fileManager.options);
+			$(rs.modules.fileManager.selector).fileManager(rs.modules.fileManager.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

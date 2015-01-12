@@ -11,9 +11,9 @@
 
 /* @section 1. call home */
 
-r.modules.callHome =
+rs.modules.callHome =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		id: 'UA-16122280-10',

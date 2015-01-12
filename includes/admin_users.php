@@ -273,10 +273,6 @@ function admin_users_form()
 
 	/* collect hidden output */
 
-	if ($id)
-	{
-		$output .= form_element('hidden', '', '', 'user', $user);
-	}
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 
 	/* collect button output */

@@ -3,7 +3,7 @@
  *
  * 1. forward notification
  * 2. key shortcut
- * 3. startup
+ * 3. init
  *
  * @since 2.0.0
  *
@@ -21,9 +21,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.forwardNotification.options !== options)
+		if (rs.plugins.forwardNotification.options !== options)
 		{
-			options = $.extend({}, r.plugins.forwardNotification.options, options || {});
+			options = $.extend({}, rs.plugins.forwardNotification.options, options || {});
 		}
 
 		/* return this */
@@ -45,7 +45,7 @@
 					}
 					else
 					{
-						window.location = r.baseURL + url;
+						window.location = rs.baseURL + url;
 					}
 				}, options.duration);
 			}
@@ -58,9 +58,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.keyShortcut.options !== options)
+		if (rs.plugins.keyShortcut.options !== options)
 		{
-			options = $.extend({}, r.plugins.keyShortcut.options, options || {});
+			options = $.extend({}, rs.plugins.keyShortcut.options, options || {});
 		}
 
 		/* return this */
@@ -97,13 +97,13 @@
 
 					else if (event.which === options.keyCode.log)
 					{
-						if (r.constants.LOGGED_IN === r.constants.TOKEN)
+						if (rs.registry.loggedIn === rs.registry.token)
 						{
-							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.logout;
+							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = r.baseURL + r.constants.REWRITE_ROUTE + r.plugins.keyShortcut.routes.login;
+							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.login;
 						}
 					}
 
@@ -132,17 +132,17 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (r.plugins.keyShortcut.startup)
+		if (rs.plugins.keyShortcut.init)
 		{
-			$(r.plugins.keyShortcut.selector).keyShortcut(r.plugins.keyShortcut.options);
+			$(rs.plugins.keyShortcut.selector).keyShortcut(rs.plugins.keyShortcut.options);
 		}
-		if (r.plugins.forwardNotification.startup)
+		if (rs.plugins.forwardNotification.init)
 		{
-			$(r.plugins.forwardNotification.selector).forwardNotification(r.plugins.forwardNotification.options);
+			$(rs.plugins.forwardNotification.selector).forwardNotification(rs.plugins.forwardNotification.options);
 		}
 	});
 })(window.jQuery || window.Zepto);
