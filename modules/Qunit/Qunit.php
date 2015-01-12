@@ -45,7 +45,7 @@ class Qunit extends Module
 		{
 			global $loader_modules_styles, $loader_modules_scripts;
 			$loader_modules_styles[] = 'modules/Qunit/styles/qunit.css';
-			$loader_modules_scripts[] = 'modules/Qunit/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/Qunit/scripts/init.js';
 			$loader_modules_scripts[] = 'modules/Qunit/scripts/qunit.js';
 			$loader_modules_scripts[] = 'modules/Qunit/scripts/test.js';
 		}

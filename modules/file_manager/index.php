@@ -17,7 +17,7 @@ function file_manager_loader_start()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
 		$loader_modules_styles[] = 'modules/file_manager/styles/file_manager.css';
-		$loader_modules_scripts[] = 'modules/file_manager/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/file_manager/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/file_manager/scripts/file_manager.js';
 	}
 }

@@ -1,9 +1,11 @@
+<?php namespace Redaxscript; ?>
+
 <!-- footer -->
 
-<?php if (!MY_MOBILE): ?>
+<?php if (!Registry::get('myMobile')): ?>
 	<footer id="footer" class="footer">
 		<section class="wrapper clearfix">
-			<?php extras('footer'); ?>
+			<?php echo Template::extra('footer'); ?>
 		</section>
 	</footer>
 <?php endif; ?>
@@ -12,6 +14,8 @@
 
 <div id="bottom" class="bottom">
 	<section class="wrapper">
-		<?php echo l('powered_by') . ' ' . anchor_element('external', '', 'link_powered_by', l('name', '_package'), l('homepage', '_package')) . ' ' . l('version', '_package'); ?>
+		<?php echo Language::get('powered_by'); ?>
+		<a href="<?php echo Language::get('homepage', '_package'); ?>" class="link_powered_by"><?php echo Language::get('name', '_package'); ?></a>
+		<?php echo Language::get('version', '_package'); ?>
 	</section>
 </div>

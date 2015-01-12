@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. validator
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -20,12 +20,12 @@
 	{
 		/* extend options */
 
-		if (r.modules.validator.options !== options)
+		if (rs.modules.validator.options !== options)
 		{
-			options = $.extend({}, r.modules.validator.options, options || {});
+			options = $.extend({}, rs.modules.validator.options, options || {});
 		}
 
-		var urlParameter = '?doc=' + r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + rs.baseURL + rs.registry.rewriteRoute + rs.registry.fullRoute + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 
@@ -74,27 +74,27 @@
 
 						if (firstLine && firstColumn || lastLine && lastColumn)
 						{
-							output += '<li class="' + options.className.validatorDescription + '">' + l._validator.from + l.colon + ' ';
+							output += '<li class="' + options.className.validatorDescription + '">' + rs.language._validator.from + rs.language.colon + ' ';
 
 							/* first wording */
 
 							if (firstLine && firstColumn)
 							{
-								output += l._validator.line + ' ' + firstLine + l.comma + ' ' + l._validator.column + ' ' + firstColumn;
+								output += rs.language._validator.line + ' ' + firstLine + rs.language.comma + ' ' + rs.language._validator.column + ' ' + firstColumn;
 							}
 
 							/* to wording */
 
 							if (firstLine && firstColumn && lastLine && lastColumn)
 							{
-								output += ' ' + l._validator.to + ' ';
+								output += ' ' + rs.language._validator.to + ' ';
 							}
 
 							/* last wording */
 
 							if (lastLine && lastColumn)
 							{
-								output += l._validator.line + ' ' + lastLine + l.comma + ' ' + l._validator.column + ' ' + lastColumn;
+								output += rs.language._validator.line + ' ' + lastLine + rs.language.comma + ' ' + rs.language._validator.column + ' ' + lastColumn;
 							}
 							output += '</li>';
 						}
@@ -112,10 +112,10 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		$.fn.validator(r.modules.validator.options);
+		$.fn.validator(rs.modules.validator.options);
 	});
 })(window.jQuery || window.Zepto);

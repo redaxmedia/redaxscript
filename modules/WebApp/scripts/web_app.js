@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. web app
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -20,14 +20,14 @@
 	{
 		/* extend options */
 
-		if (r.modules.webApp.options !== options)
+		if (rs.modules.webApp.options !== options)
 		{
-			options = $.extend({}, r.modules.webApp.options, options || {});
+			options = $.extend({}, rs.modules.webApp.options, options || {});
 		}
 
 		/* trigger install */
 
-		if (r.support.webStorage && typeof window.navigator.mozApps === 'object')
+		if (rs.support.webStorage && typeof window.navigator.mozApps === 'object')
 		{
 			var counter  = Number(window.localStorage.getItem('webAppInstallCounter')) || 0,
 				request = '';
@@ -36,7 +36,7 @@
 
 			if (counter < options.limit)
 			{
-				request = window.navigator.mozApps.install(r.baseURL + 'manifest_webapp');
+				request = window.navigator.mozApps.install(rs.baseURL + 'manifest_webapp');
 
 				/* count multiple request */
 
@@ -52,13 +52,13 @@
 		}
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.webApp.startup)
+		if (rs.modules.webApp.init)
 		{
-			$.fn.webApp(r.modules.webApp.options);
+			$.fn.webApp(rs.modules.webApp.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

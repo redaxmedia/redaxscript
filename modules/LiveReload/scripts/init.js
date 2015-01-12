@@ -11,9 +11,9 @@
 
 /* @section 1. live reload */
 
-r.modules.liveReload =
+rs.modules.liveReload =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		className:

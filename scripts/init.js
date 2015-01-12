@@ -4,7 +4,7 @@
  * 1. redaxscript
  *    1.1 plugins
  *    1.2 base url
- *    1.3 startup
+ *    1.3 helper
  *
  * @since 2.2.0
  *
@@ -16,21 +16,21 @@
 {
 	'use strict';
 
-	win.r = win.r || {};
+	win.rs = win.rs || {};
 
 	/* @section 1. redaxscript */
 
-	r.modules = r.modules || {};
-	r.flags = r.flags || {};
-	r.support = r.support || {};
+	rs.flags = rs.flags || {};
+	rs.modules = rs.modules || {};
+	rs.support = rs.support || {};
 
 	/* @section 1.1 plugins */
 
-	r.plugins =
+	rs.plugins =
 	{
 		accordion:
 		{
-			startup: true,
+			init: true,
 			selector: 'div.js_accordion, form.js_accordion',
 			options:
 			{
@@ -45,7 +45,7 @@
 		},
 		autoResize:
 		{
-			startup: true,
+			init: true,
 			selector: 'form textarea.js_auto_resize',
 			options:
 			{
@@ -57,7 +57,7 @@
 		},
 		confirmLink:
 		{
-			startup: true,
+			init: true,
 			selector: 'a.js_confirm'
 		},
 		dialog:
@@ -86,7 +86,7 @@
 		},
 		dropdown:
 		{
-			startup: true,
+			init: true,
 			selector: 'ul.js_dropdown',
 			options:
 			{
@@ -99,7 +99,7 @@
 		},
 		enableIndent:
 		{
-			startup: true,
+			init: true,
 			selector: 'form textarea.js_editor_textarea, form textarea.js_enable_indent',
 			options:
 			{
@@ -109,7 +109,7 @@
 		},
 		forwardNotification:
 		{
-			startup: true,
+			init: true,
 			selector: 'a.js_forward_notification',
 			options:
 			{
@@ -118,7 +118,7 @@
 		},
 		generateAlias:
 		{
-			startup: true,
+			init: true,
 			selector: 'form input.js_generate_alias_input, form input.js_generate_alias_output',
 			options:
 			{
@@ -130,7 +130,7 @@
 		},
 		generateKeyword:
 		{
-			startup: true,
+			init: true,
 			selector: 'form textarea.js_generate_keyword_input',
 			options:
 			{
@@ -145,7 +145,7 @@
 		},
 		keyShortcut:
 		{
-			startup: true,
+			init: true,
 			selector: win,
 			options:
 			{
@@ -175,7 +175,7 @@
 		},
 		preventUnload:
 		{
-			startup: true,
+			init: true,
 			selector: 'ul.js_box_accordion, div.js_box_tab',
 			options:
 			{
@@ -187,7 +187,7 @@
 		},
 		tab:
 		{
-			startup: true,
+			init: true,
 			selector: 'div.js_tab, form.js_tab',
 			options:
 			{
@@ -201,12 +201,12 @@
 		},
 		unmaskPassword:
 		{
-			startup: true,
+			init: true,
 			selector: 'form input.js_unmask_password'
 		},
 		validateForm:
 		{
-			startup: true,
+			init: true,
 			selector: 'form.js_validate_form',
 			options:
 			{
@@ -222,7 +222,7 @@
 		},
 		validateSearch:
 		{
-			startup: true,
+			init: true,
 			selector: 'form.js_validate_search',
 			options:
 			{
@@ -237,7 +237,7 @@
 
 	/* @section 1.2 base url */
 
-	r.baseURL = function ()
+	rs.baseURL = function ()
 	{
 		var base = doc.getElementsByTagName('base'),
 			checkBase = base.length,
@@ -250,9 +250,9 @@
 		return output;
 	}();
 
-	/* @section 1.3 startup */
+	/* @section 1.3 helper */
 
-	r.startup = function ()
+	rs.helper = function ()
 	{
 		/* javascript enabled */
 
@@ -264,7 +264,7 @@
 
 		/* support classes */
 
-		if (r.support.canvas)
+		if (rs.support.canvas)
 		{
 			docElement.className += ' canvas';
 		}
@@ -272,7 +272,7 @@
 		{
 			docElement.className += ' no_canvas';
 		}
-		if (r.support.svg)
+		if (rs.support.svg)
 		{
 			docElement.className += ' svg';
 		}

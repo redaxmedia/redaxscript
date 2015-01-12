@@ -16,7 +16,7 @@ function gallery_loader_start()
 	global $loader_modules_styles, $loader_modules_scripts;
 	$loader_modules_styles[] = 'modules/gallery/styles/gallery.css';
 	$loader_modules_styles[] = 'modules/gallery/styles/query.css';
-	$loader_modules_scripts[] = 'modules/gallery/scripts/startup.js';
+	$loader_modules_scripts[] = 'modules/gallery/scripts/init.js';
 	$loader_modules_scripts[] = 'modules/gallery/scripts/gallery.js';
 }
 

@@ -1,41 +1,40 @@
+<?php namespace Redaxscript; ?>
+
 <!DOCTYPE html>
-<html lang="<?php echo Redaxscript\Registry::get('language'); ?>" class="<?php helper_class(); ?>">
+<html lang="<?php echo Registry::get('language'); ?>" class="<?php echo Template::helperClass(); ?>">
 
 	<!-- head -->
 
 	<head>
-
-		<!-- template head -->
-
-		<?php include_once('head.phtml'); ?>
-
-		<!-- admin head -->
-
-		<?php include_once('templates/admin/head.phtml'); ?>
+		<?php echo Template::partial(array(
+			'templates/twitter/head.phtml',
+			'templates/admin/head.phtml'
+		)); ?>
 	</head>
 
 	<!-- body -->
 
 	<body class="wrapper_body">
 
-		<!-- admin panel -->
+		<!-- admin panel and header -->
 
-		<?php include_once('templates/admin/panel.phtml'); ?>
-
-		<!-- header -->
-
-		<?php include_once('header.phtml'); ?>
+		<?php echo Template::partial(array(
+			'templates/admin/panel.phtml',
+			'templates/twitter/header.phtml'
+		)); ?>
 
 		<!-- main -->
 
 		<div class="wrapper clearfix">
-			<?php include_once('sidebar.phtml'); ?>
-			<?php include_once('content.phtml'); ?>
+			<?php echo Template::partial(array(
+				'templates/twitter/sidebar.phtml',
+				'templates/twitter/content.phtml'
+			)); ?>
 		</div>
 
 		<!-- footer -->
 
-		<?php include_once('footer.phtml'); ?>
-		<?php scripts(); ?>
+		<?php echo Template::partial('templates/twitter/footer.phtml'); ?>
+		<?php echo Template::script(); ?>
 	</body>
 </html>

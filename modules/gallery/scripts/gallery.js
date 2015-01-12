@@ -13,7 +13,7 @@
  *       1.7.2 next
  *    1.8 close
  *    1.9 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.2
  *
@@ -31,9 +31,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.gallery.options !== options)
+		if (rs.modules.gallery.options !== options)
 		{
-			options = $.extend({}, r.modules.gallery.options, options || {});
+			options = $.extend({}, rs.modules.gallery.options, options || {});
 		}
 
 		/* return this */
@@ -104,7 +104,7 @@
 				if (!mode)
 				{
 					gallery.overlay.appendTo('body');
-					r.flags.modal = true;
+					rs.flags.modal = true;
 				}
 
 				/* listen for load */
@@ -211,7 +211,7 @@
 			{
 				/* previous control */
 
-				gallery.buttonPrevious = $('<a>' + l._gallery.image_previous + '</a>').addClass(options.className.controlPrevious)
+				gallery.buttonPrevious = $('<a>' + rs.language._gallery.image_previous + '</a>').addClass(options.className.controlPrevious)
 
 				/* listen for click */
 
@@ -223,7 +223,7 @@
 
 				/* next control */
 
-				gallery.buttonNext = $('<a>' + l._gallery.image_next + '</a>').addClass(options.className.controlNext)
+				gallery.buttonNext = $('<a>' + rs.language._gallery.image_next + '</a>').addClass(options.className.controlNext)
 
 				/* listen for click */
 
@@ -244,28 +244,28 @@
 
 				if (gallery.data.artist)
 				{
-					gallery.artist = $('<div data-label="' + l._gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.className.galleryArtist).appendTo(gallery.meta);
+					gallery.artist = $('<div data-label="' + rs.language._gallery.image_artist + '">' + gallery.data.artist + '</div>').addClass(options.className.galleryArtist).appendTo(gallery.meta);
 				}
 
 				/* date */
 
 				if (gallery.data.date)
 				{
-					gallery.date = $('<div data-label="' + l.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
+					gallery.date = $('<div data-label="' + rs.language.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
 				}
 
 				/* description */
 
 				if (gallery.data.description)
 				{
-					gallery.description = $('<div data-label="' + l._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
+					gallery.description = $('<div data-label="' + rs.language._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
 				}
 
 				/* pagination */
 
 				if (gallery.data.total > 1)
 				{
-					gallery.pagination = $('<div>' + gallery.data.counter + l._gallery.divider + gallery.data.total + '</div>').addClass(options.className.galleryPagination).appendTo(gallery.meta);
+					gallery.pagination = $('<div>' + gallery.data.counter + rs.language._gallery.divider + gallery.data.total + '</div>').addClass(options.className.galleryPagination).appendTo(gallery.meta);
 				}
 
 				/* append meta */
@@ -291,7 +291,7 @@
 
 				$(window).on('keydown', function (event)
 				{
-					if (r.flags.modal)
+					if (rs.flags.modal)
 					{
 						/* trigger close action */
 
@@ -327,7 +327,7 @@
 
 				.on('resize', function ()
 				{
-					if (r.flags.modal)
+					if (rs.flags.modal)
 					{
 						gallery.resize();
 					}
@@ -418,7 +418,7 @@
 				if (!mode)
 				{
 					gallery.overlay.detach();
-					r.flags.modal = false;
+					rs.flags.modal = false;
 				}
 			};
 
@@ -447,26 +447,19 @@
 				gallery.listen();
 			};
 
-			/* init as needed */
+			/* init */
 
-			if (r.constants.MY_BROWSER === 'msie' && r.constants.MY_BROWSER_VERSION < 7)
-			{
-				return false;
-			}
-			else if (gallery.list.length)
-			{
-				gallery.init();
-			}
+			gallery.init();
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.gallery.startup)
+		if (rs.modules.gallery.init)
 		{
-			$(r.modules.gallery.selector).gallery(r.modules.gallery.options);
+			$(rs.modules.gallery.selector).gallery(rs.modules.gallery.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

@@ -64,13 +64,16 @@ class Directory
 
 		/* handle exclude */
 
-		if (!is_array($exclude))
+		if (is_string($exclude))
 		{
 			$exclude = array(
 				$exclude
 			);
 		}
-		$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
+		if (is_array($exclude))
+		{
+			$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
+		}
 		$this->init();
 	}
 

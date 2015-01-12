@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. analytics
- * 2. startup
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -20,9 +20,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.analytics.options !== options)
+		if (rs.modules.analytics.options !== options)
 		{
-			options = $.extend({}, r.modules.analytics.options, options || {});
+			options = $.extend({}, rs.modules.analytics.options, options || {});
 		}
 
 		/* create tracker */
@@ -75,13 +75,13 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.analytics.startup && r.constants.LOGGED_IN !== r.constants.TOKEN && typeof _gaq === 'object')
+		if (rs.modules.analytics.init && rs.registry.loggedIn !== rs.registry.token && typeof _gaq === 'object')
 		{
-			$(r.modules.analytics.selector).analytics(r.modules.analytics.options);
+			$(rs.modules.analytics.selector).analytics(rs.modules.analytics.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

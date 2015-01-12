@@ -41,7 +41,7 @@ class Editor extends Module
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
 		$loader_modules_styles[] = 'modules/Editor/styles/editor.css';
-		$loader_modules_scripts[] = 'modules/Editor/scripts/startup.js';
+		$loader_modules_scripts[] = 'modules/Editor/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/Editor/scripts/editor.js';
 	}
 }

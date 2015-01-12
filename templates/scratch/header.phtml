@@ -1,5 +1,9 @@
+<?php namespace Redaxscript; ?>
+
 <header id="header" class="header wrapper">
-	<?php if (DB_CONNECTED): ?>
-		<h1 class="title_website"><?php echo anchor_element('external', '', '', truncate(s('title'), 15), ROOT); ?></h1>
+	<?php if (Db::getSettings('title')): ?>
+		<h1 class="title_website">
+			<a href="<?php Registry::get('root'); ?>"><?php echo Db::getSettings('title'); ?></a>
+		</h1>
 	<?php endif; ?>
 </header>

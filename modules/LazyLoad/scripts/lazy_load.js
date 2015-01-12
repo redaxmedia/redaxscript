@@ -5,7 +5,7 @@
  *    1.1 show
  *    1.2 listen
  *    1.3 init
- * 2. startup
+ * 2. init
  *
  * @since 2.0.1
  *
@@ -23,9 +23,9 @@
 	{
 		/* extend options */
 
-		if (r.modules.lazyLoad.options !== options)
+		if (rs.modules.lazyLoad.options !== options)
 		{
-			options = $.extend({}, r.modules.lazyLoad.options, options || {});
+			options = $.extend({}, rs.modules.lazyLoad.options, options || {});
 		}
 
 		/* return this */
@@ -106,13 +106,13 @@
 		});
 	};
 
-	/* @section 2. startup */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (r.modules.lazyLoad.startup)
+		if (rs.modules.lazyLoad.init)
 		{
-			$(r.modules.lazyLoad.selector).lazyLoad(r.modules.lazyLoad.options);
+			$(rs.modules.lazyLoad.selector).lazyLoad(rs.modules.lazyLoad.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

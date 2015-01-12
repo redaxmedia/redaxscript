@@ -1,3 +1,7 @@
+<?php namespace Redaxscript; ?>
+
 <footer id="footer" class="footer wrapper">
-	<?php echo l('powered_by') . ' ' . anchor_element('external', '', 'link_powered_by', l('name', '_package'), l('homepage', '_package')) . ' ' . l('version', '_package'); ?>
+	<?php echo Language::get('powered_by'); ?>
+	<a href="<?php echo Language::get('homepage', '_package'); ?>" class="link_powered_by"><?php echo Language::get('name', '_package'); ?></a>
+	<?php echo Language::get('version', '_package'); ?>
 </footer>

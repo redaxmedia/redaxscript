@@ -11,6 +11,6 @@
 
 /* @section 1. disqus */
 
-window.disqus_identifier = r.constants.FULL_ROUTE;
+window.disqus_identifier = rs.registry.fullRoute;
 window.disqus_title = document.title;
-window.disqus_url = r.baseURL + r.constants.REWRITE_ROUTE + r.constants.FULL_ROUTE;
+window.disqus_url = rs.baseURL + rs.registry.rewriteRoute + rs.registry.fullRoute;

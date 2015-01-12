@@ -122,6 +122,28 @@ class DbTest extends TestCase
 	}
 
 	/**
+	 * testWhereLikeMany
+	 *
+	 * @since 2.3.0
+	 *
+	 */
+
+	public function testWhereLikeMany()
+	{
+		/* result */
+
+		$result = Db::forTablePrefix('articles')->whereLikeMany(array(
+			'title'
+		), array(
+			'%welcome%'
+		))->findOne()->alias;
+
+		/* compare */
+
+		$this->assertEquals('welcome', $result);
+	}
+
+	/**
 	 * testGetSettings
 	 *
 	 * @since 2.2.0

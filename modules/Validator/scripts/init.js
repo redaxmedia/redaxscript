@@ -11,9 +11,9 @@
 
 /* @section 1. validator */
 
-r.modules.validator =
+rs.modules.validator =
 {
-	startup: true,
+	init: true,
 	options:
 	{
 		className:

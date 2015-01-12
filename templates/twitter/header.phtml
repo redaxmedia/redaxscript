@@ -1,13 +1,13 @@
+<?php namespace Redaxscript; ?>
+
 <header id="header" class="header">
-	<?php if (DB_CONNECTED): ?>
-		<section class="wrapper">
+	<section class="wrapper">
 
-			<!-- website branding -->
+		<!-- dropdown -->
 
-			<?php navigation_list('categories', array(
-				'class' => 'list_header',
-				'limit' => 10
-			)); ?>
-		</section>
-	<?php endif; ?>
+		<?php echo Template::navigation('categories', array(
+			'class' => 'list_header',
+			'limit' => 10
+		)); ?>
+	</section>
 </header>

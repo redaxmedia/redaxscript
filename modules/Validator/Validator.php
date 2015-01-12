@@ -44,7 +44,7 @@ class Validator extends Module
 		{
 			global $loader_modules_styles, $loader_modules_scripts;
 			$loader_modules_styles[] = 'modules/Validator/styles/validator.css';
-			$loader_modules_scripts[] = 'modules/Validator/scripts/startup.js';
+			$loader_modules_scripts[] = 'modules/Validator/scripts/init.js';
 			$loader_modules_scripts[] = 'modules/Validator/scripts/validator.js';
 		}
 	}

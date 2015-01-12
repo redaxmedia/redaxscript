@@ -9,9 +9,11 @@
  * @package Redaxscript
  * @category Head
  * @author Henry Ruhs
+ *
+ * @param string $type
  */
 
-function head()
+function head($type = '')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	if (LAST_TABLE)
@@ -99,12 +101,18 @@ function head()
 
 	/* collect meta output */
 
-	$output .= '<base href="' . ROOT . '/" />' . PHP_EOL;
-	$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
+	if ($type == '' || $type == 'base')
+	{
+		$output .= '<base href="' . ROOT . '/" />' . PHP_EOL;
+	}
+	if ($type == '' || $type == 'meta')
+	{
+		$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
+	}
 
-	/* collect title output */
+	/* collect title */
 
-	if ($title || $description)
+	if (($type == '' || $type == 'title') && ($title || $description))
 	{
 		if ($title && $description)
 		{
@@ -113,74 +121,70 @@ function head()
 		$output .= '<title>' . truncate($title . $divider . $description, 80) . '</title>' . PHP_EOL;
 	}
 
-	/* collect refresh route */
+	/* collect meta */
 
-	if (REFRESH_ROUTE)
-	{
-		$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
-	}
+	if ($type == '' || $type == 'meta') {
+		/* collect refresh route */
 
-	/* collect author */
-
-	if (s('author'))
-	{
-		$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
-	}
-
-	/* collect metadata */
-
-	$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
-	if ($description)
-	{
-		$output .= '<meta name="description" content="' . $description . '" />' . PHP_EOL;
-	}
-	if ($keywords)
-	{
-		$output .= '<meta name="keywords" content="' . $keywords . '" />' . PHP_EOL;
-	}
-	$output .= '<meta name="robots" content="' . $robots . '" />' . PHP_EOL;
-
-	/* build canonical url */
-
-	$canonical_url = ROOT . '/' . REWRITE_ROUTE;
-
-	/* if article in category */
-
-	if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles')
-	{
-		if (SECOND_TABLE == 'categories')
-		{
-			$category = Redaxscript\Db::forTablePrefix(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
-		}
-		else
-		{
-			$category = Redaxscript\Db::forTablePrefix(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
+		if (REFRESH_ROUTE) {
+			$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
 		}
 
-		/* total articles of category */
+		/* collect author */
 
-		$articles_total = Redaxscript\Db::forTablePrefix('articles')->where('category', $category)->count();
-		if ($articles_total == 1)
-		{
-			$canonical_route = FIRST_PARAMETER;
-			if (SECOND_TABLE == 'categories')
-			{
-				$canonical_route .= '/' . SECOND_PARAMETER;
+		if (s('author')) {
+			$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
+		}
+
+		/* collect metadata */
+
+		$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
+		if ($description) {
+			$output .= '<meta name="description" content="' . $description . '" />' . PHP_EOL;
+		}
+		if ($keywords) {
+			$output .= '<meta name="keywords" content="' . $keywords . '" />' . PHP_EOL;
+		}
+		$output .= '<meta name="robots" content="' . $robots . '" />' . PHP_EOL;
+	}
+
+	/* collect link */
+
+	if ($type == '' || $type == 'link')
+	{
+		/* build canonical url */
+
+		$canonical_url = ROOT . '/' . REWRITE_ROUTE;
+
+		/* if article in category */
+
+		if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles') {
+			if (SECOND_TABLE == 'categories') {
+				$category = Redaxscript\Db::forTablePrefix(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
+			} else {
+				$category = Redaxscript\Db::forTablePrefix(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
+			}
+
+			/* total articles of category */
+
+			$articles_total = Redaxscript\Db::forTablePrefix('articles')->where('category', $category)->count();
+			if ($articles_total == 1) {
+				$canonical_route = FIRST_PARAMETER;
+				if (SECOND_TABLE == 'categories') {
+					$canonical_route .= '/' . SECOND_PARAMETER;
+				}
 			}
 		}
-	}
 
-	/* extend canonical url */
+		/* extend canonical url */
 
-	if ($canonical_route)
-	{
-		$canonical_url .= $canonical_route;
+		if ($canonical_route) {
+			$canonical_url .= $canonical_route;
+		} else {
+			$canonical_url .= FULL_ROUTE;
+		}
+		$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	}
-	else
-	{
-		$canonical_url .= FULL_ROUTE;
-	}
-	$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
 }

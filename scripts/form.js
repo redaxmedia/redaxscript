@@ -6,9 +6,9 @@
  * 3. unmask password
  * 4. validate form
  * 5. validate search
- * 6. startup
+ * 6. init
  *
- * @since 2.1.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -24,9 +24,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.autoResize.options !== options)
+		if (rs.plugins.autoResize.options !== options)
 		{
-			options = $.extend({}, r.plugins.autoResize.options, options || {});
+			options = $.extend({}, rs.plugins.autoResize.options, options || {});
 		}
 
 		/* return this */
@@ -71,9 +71,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.enableIndent.options !== options)
+		if (rs.plugins.enableIndent.options !== options)
 		{
-			options = $.extend({}, r.plugins.enableIndent.options, options || {});
+			options = $.extend({}, rs.plugins.enableIndent.options, options || {});
 		}
 
 		/* return this */
@@ -194,9 +194,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.validateForm.options !== options)
+		if (rs.plugins.validateForm.options !== options)
 		{
-			options = $.extend({}, r.plugins.validateForm.options, options || {});
+			options = $.extend({}, rs.plugins.validateForm.options, options || {});
 		}
 
 		/* return this */
@@ -251,13 +251,13 @@
 						if (!thatValue)
 						{
 							validity = 'invalid';
-							message = l.input_empty + l.point;
+							message = rs.language.input_empty + rs.language.point;
 						}
 					}
 
 					/* missing support */
 
-					else if (!r.support.checkValidity)
+					else if (!rs.support.checkValidity)
 					{
 						thatValue = that.val();
 						thatRequired = that.attr('required');
@@ -267,7 +267,7 @@
 						if (thatRequired && !thatValue)
 						{
 							validity = 'invalid';
-							message = l.input_empty + l.point;
+							message = rs.language.input_empty + rs.language.point;
 						}
 					}
 
@@ -318,7 +318,7 @@
 
 					/* haptic feedback */
 
-					if (event.type === 'submit' && r.support.vibrate && typeof options.vibrate === 'number')
+					if (event.type === 'submit' && rs.support.vibrate && typeof options.vibrate === 'number')
 					{
 						window.navigator.vibrate(options.vibrate);
 					}
@@ -342,9 +342,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.validateSearch.options !== options)
+		if (rs.plugins.validateSearch.options !== options)
 		{
-			options = $.extend({}, r.plugins.validateSearch.options, options || {});
+			options = $.extend({}, rs.plugins.validateSearch.options, options || {});
 		}
 
 		/* return this */
@@ -359,7 +359,7 @@
 					field = form.find(options.element.field),
 					fieldValue = field.val(),
 					fieldPlaceholder = field.attr('placeholder'),
-					message = l.input_incorrect + l.exclamation_mark,
+					message = rs.language.input_incorrect + rs.language.exclamation_mark,
 					timeout = '';
 
 				/* prevent multiple timeout */
@@ -385,29 +385,29 @@
 		});
 	};
 
-	/* @section 6. startup */
+	/* @section 6. init */
 
 	$(function ()
 	{
-		if (r.plugins.autoResize.startup)
+		if (rs.plugins.autoResize.init)
 		{
-			$(r.plugins.autoResize.selector).autoResize(r.plugins.autoResize.options);
+			$(rs.plugins.autoResize.selector).autoResize(rs.plugins.autoResize.options);
 		}
-		if (r.plugins.enableIndent.startup)
+		if (rs.plugins.enableIndent.init)
 		{
-			$(r.plugins.enableIndent.selector).enableIndent();
+			$(rs.plugins.enableIndent.selector).enableIndent();
 		}
-		if (r.plugins.unmaskPassword.startup)
+		if (rs.plugins.unmaskPassword.init)
 		{
-			$(r.plugins.unmaskPassword.selector).unmaskPassword();
+			$(rs.plugins.unmaskPassword.selector).unmaskPassword();
 		}
-		if (r.plugins.validateForm.startup)
+		if (rs.plugins.validateForm.init)
 		{
-			$(r.plugins.validateForm.selector).validateForm(r.plugins.validateForm.options);
+			$(rs.plugins.validateForm.selector).validateForm(rs.plugins.validateForm.options);
 		}
-		if (r.plugins.validateSearch.startup && typeof r.support.input === 'object' && r.support.input.placeholder)
+		if (rs.plugins.validateSearch.init && typeof rs.support.input === 'object' && rs.support.input.placeholder)
 		{
-			$(r.plugins.validateSearch.selector).validateSearch(r.plugins.validateSearch.options);
+			$(rs.plugins.validateSearch.selector).validateSearch(rs.plugins.validateSearch.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

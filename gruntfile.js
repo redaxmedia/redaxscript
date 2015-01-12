@@ -179,23 +179,13 @@ module.exports = function (grunt)
 		},
 		qunit:
 		{
-			jquery:
+			development:
 			{
 				options:
 				{
 					urls:
 					[
-						'http://develop.redaxscript.com/qunit.default'
-					]
-				}
-			},
-			zepto:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit.zepto'
+						'http://develop.redaxscript.com/qunit'
 					]
 				}
 			}
@@ -286,15 +276,15 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/bin/apigen --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --php no --source Config.php --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source Config.php --source includes --destination ../redaxscript-api/base'
 			},
 			apiModules:
 			{
-				command: 'php vendor/bin/apigen --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --php no --source modules --destination ../redaxscript-api/modules'
+				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source modules --destination ../redaxscript-api/modules'
 			},
 			apiTests:
 			{
-				command: 'php vendor/bin/apigen --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --php no --source tests --destination ../redaxscript-api/tests'
+				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source tests --destination ../redaxscript-api/tests'
 			},
 			addUpstream:
 			{
@@ -718,18 +708,6 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/templates/wide.zip'
-				},
-				dot: true
-			},
-			distTemplatesZepto:
-			{
-				src:
-				[
-					'templates/zepto/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/templates/zepto.zip'
 				},
 				dot: true
 			},

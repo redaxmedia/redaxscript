@@ -4,7 +4,7 @@
  * 1. accordion
  * 2. dropdown
  * 3. tab
- * 4. startup
+ * 4. init
  *
  * @since 2.0.0
  *
@@ -22,9 +22,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.accordion.options !== options)
+		if (rs.plugins.accordion.options !== options)
 		{
-			options = $.extend({}, r.plugins.accordion.options, options || {});
+			options = $.extend({}, rs.plugins.accordion.options, options || {});
 		}
 
 		/* return this */
@@ -77,9 +77,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.accordion.options !== options)
+		if (rs.plugins.accordion.options !== options)
 		{
-			options = $.extend({}, r.plugins.dropdown.options, options || {});
+			options = $.extend({}, rs.plugins.dropdown.options, options || {});
 		}
 
 		/* return this */
@@ -123,9 +123,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.tab.options !== options)
+		if (rs.plugins.tab.options !== options)
 		{
-			options = $.extend({}, r.plugins.tab.options, options || {});
+			options = $.extend({}, rs.plugins.tab.options, options || {});
 		}
 
 		/* return this */
@@ -167,21 +167,21 @@
 		});
 	};
 
-	/* @section 4. startup */
+	/* @section 4. init */
 
 	$(function ()
 	{
-		if (r.plugins.accordion.startup)
+		if (rs.plugins.accordion.init)
 		{
-			$(r.plugins.accordion.selector).accordion(r.plugins.accordion.options);
+			$(rs.plugins.accordion.selector).accordion(rs.plugins.accordion.options);
 		}
-		if (r.plugins.dropdown.startup && r.support.touch)
+		if (rs.plugins.dropdown.init && rs.support.touch)
 		{
-			$(r.plugins.dropdown.selector).dropdown(r.plugins.dropdown.options);
+			$(rs.plugins.dropdown.selector).dropdown(rs.plugins.dropdown.options);
 		}
-		if (r.plugins.tab.startup)
+		if (rs.plugins.tab.init)
 		{
-			$(r.plugins.tab.selector).tab(r.plugins.tab.options);
+			$(rs.plugins.tab.selector).tab(rs.plugins.tab.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

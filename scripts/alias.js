@@ -3,9 +3,9 @@
  *
  * 1. clean alias
  * 2. generate alias
- * 3. startup
+ * 3. init
  *
- * @since 2.0.0
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -169,9 +169,9 @@
 	{
 		/* extend options */
 
-		if (r.plugins.generateAlias.options !== options)
+		if (rs.plugins.generateAlias.options !== options)
 		{
-			options = $.extend({}, r.plugins.generateAlias.options, options || {});
+			options = $.extend({}, rs.plugins.generateAlias.options, options || {});
 		}
 
 		/* return this */
@@ -209,13 +209,13 @@
 		});
 	};
 
-	/* @section 3. startup */
+	/* @section 3. init */
 
 	$(function ()
 	{
-		if (r.plugins.generateAlias.startup)
+		if (rs.plugins.generateAlias.init)
 		{
-			$(r.plugins.generateAlias.selector).generateAlias(r.plugins.generateAlias.options);
+			$(rs.plugins.generateAlias.selector).generateAlias(rs.plugins.generateAlias.options);
 		}
 	});
 })(window.jQuery || window.Zepto);
