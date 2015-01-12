@@ -218,13 +218,17 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param string $table
+	 *
 	 * @return string
 	 */
 
-	public static function search()
+	public static function search($table = 'articles')
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('search');
+		return self::_migrate('search', array(
+			$table
+		));
 		// @codeCoverageIgnoreEnd
 	}
 
