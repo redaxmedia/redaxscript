@@ -9,11 +9,6 @@
 		"name": "Henry Ruhs",
 		"url": "http://redaxmedia.com"
 	},
-	"repository":
-	{
-		"type": "git",
-		"url": "http://github.com/redaxmedia/redaxscript"
-	},
 	"bugs":
 	{
 		"url": "http://github.com/redaxmedia/redaxscript/issues"
