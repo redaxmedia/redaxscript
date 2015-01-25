@@ -79,7 +79,7 @@ class FeedGenerator extends Module
 
 		/* process result */
 
-		if (isset($result))
+		if ($result)
 		{
 			$route = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
 			if (Request::getQuery('l'))
@@ -103,14 +103,14 @@ class FeedGenerator extends Module
 
 			if ($title)
 			{
-				$output .= '<title type="text">' . $title . '</title>';
+				$output .= '<title>' . $title . '</title>';
 			}
 
 			/* description */
 
 			if ($description)
 			{
-				$output .= '<subtitle type="text">' . $description . '</subtitle>';
+				$output .= '<subtitle>' . $description . '</subtitle>';
 			}
 
 			/* author */
@@ -147,18 +147,18 @@ class FeedGenerator extends Module
 
 				/* title */
 
-				$output .= '<title type="text">' . ($table === 'comments' ? $value['author'] : $value['title']) . '</title>';
+				$output .= '<title>' . ($table === 'comments' ? $value['author'] : $value['title']) . '</title>';
 
 				/* description */
 
 				if ($value['description'])
 				{
-					$output .= '<summary type="text">' . $value['description'] . '</summary>';
+					$output .= '<summary>' . $value['description'] . '</summary>';
 				}
 
 				/* text */
 
-				$output .= '<content type="html">' . strip_tags($value['text']) . '</content>';
+				$output .= '<content>' . strip_tags($value['text']) . '</content>';
 
 				/* author */
 

@@ -480,7 +480,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/feed_generator/**'
+					'modules/FeedGenerator/**'
 				],
 				options:
 				{
