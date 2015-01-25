@@ -122,7 +122,7 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-		$headlineElement = new Element('h2', array(
+		$titleElement = new Element('h2', array(
 			'class' => 'title_content',
 			'title' => $alias
 		));
@@ -134,7 +134,7 @@ class Preview extends Module
 
 		/* collect output */
 
-		$output = $headlineElement->html($linkElement);
+		$output = $titleElement->html($linkElement);
 		$output .= Template::partial($path);
 		return $output;
 	}

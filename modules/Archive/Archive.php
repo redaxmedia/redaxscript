@@ -50,13 +50,13 @@ class Archive extends Config
 
 		/* html elements */
 
+		$titleElement = new Element('h3', array(
+			'class' => self::$_config['className']['title']
+		));
 		$linkElement = new Element('a');
 		$listElement = new Element('ul', array(
 			'class' => self::$_config['className']['list'])
 		);
-		$headlineElement = new Element('h3', array(
-			'class' => self::$_config['className']['headline']
-		));
 
 		/* fetch articles */
 
@@ -96,7 +96,7 @@ class Archive extends Config
 							$output .= $listElement->html($outputItem);
 							$outputItem = '';
 						}
-						$output .= $headlineElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
+						$output .= $titleElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
 					}
 
 					/* collect item output */

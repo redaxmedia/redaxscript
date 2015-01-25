@@ -50,13 +50,13 @@ class Sitemap extends Config
 
 		/* html elements */
 
+		$titleElement = new Element('h3', array(
+			'class' => self::$_config['className']['title']
+		));
 		$linkElement = new Element('a');
 		$listElement = new Element('ul', array(
 				'class' => self::$_config['className']['list'])
 		);
-		$headlineElement = new Element('h3', array(
-			'class' => self::$_config['className']['headline']
-		));
 
 		/* fetch articles */
 
@@ -95,7 +95,7 @@ class Sitemap extends Config
 							$output .= $listElement->html($outputItem);
 							$outputItem = '';
 						}
-						$output .= $headlineElement->text(
+						$output .= $titleElement->text(
 							$currentCategory < 1 ? Language::get('uncategorized') : Db::forTablePrefix('categories')->whereIdIs($currentCategory)->findOne()->title
 						);
 					}

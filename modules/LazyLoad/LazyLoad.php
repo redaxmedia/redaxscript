@@ -115,6 +115,6 @@ class LazyLoad extends Config
 
 			$output .= '<noscript>' . $imageElement . '</noscript>';
 		}
-		echo $output;
+		return $output;
 	}
 }

@@ -44,7 +44,7 @@ class SitemapXml extends Module
 		if (Registry::get('firstParameter') === 'sitemap_xml')
 		{
 			header('content-type: application/xml');
-			self::render();
+			echo self::render();
 			Registry::set('renderBreak', true);
 		}
 	}
@@ -101,6 +101,6 @@ class SitemapXml extends Module
 			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>';
 		}
 		$output .= '</urlset>';
-		echo $output;
+		return $output;
 	}
 }

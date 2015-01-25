@@ -73,7 +73,7 @@ class Maps extends Config
 	 * @param integer $lng
 	 * @param integer $zoom
 	 *
-	 * return string
+	 * @return string
 	 */
 
 	public static function render($lat = 0, $lng = 0, $zoom = 0)
@@ -97,6 +97,6 @@ class Maps extends Config
 			$mapElement->attr('data-zoom', $zoom);
 		}
 		$output = $mapElement;
-		echo $output;
+		return $output;
 	}
 }
