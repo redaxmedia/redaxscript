@@ -6,6 +6,7 @@ use Redaxscript\Element;
 use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
+use Redaxscript\Template;
 
 /**
  * preview template elements
@@ -134,9 +135,7 @@ class Preview extends Module
 		/* collect output */
 
 		$output = $headlineElement->html($linkElement);
-		ob_start();
-		include_once($path);
-		$output .= ob_get_clean();
+		$output .= Template::partial($path);
 		return $output;
 	}
 }
