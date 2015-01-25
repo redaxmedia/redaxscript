@@ -93,7 +93,7 @@ class FeedReader extends Config
 
 				/* handle feed type */
 
-				$url = $value->link['href'] ? (string)$value->link['href'] : $value->link;
+				$url = $value->link['href'] ? (string)$value->link['href'] : (string)$value->link;
 				$text = $value->summary ? $value->summary : $value->description;
 
 				/* url */
@@ -109,7 +109,7 @@ class FeedReader extends Config
 
 				/* collect output */
 
-				$output .= $titleElement->html($linkElement) . $boxElement->html($text);
+				$output .= $titleElement->html($linkElement) . $boxElement->text($text);
 			}
 		}
 		return $output;
