@@ -10,11 +10,11 @@ use Redaxscript\Request;
 /**
  * generate atom feeds from content
  *
- * @since 2.4.0
+ * @since 2.3.0
  *
  * @package Redaxscript
  * @category Modules
- * @author Your Name
+ * @author Henry Ruhs
  */
 
 class FeedGenerator extends Module
@@ -58,7 +58,7 @@ class FeedGenerator extends Module
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param string $table name of the table
+	 * @param string $table
 	 *
 	 * @return string
 	 */
