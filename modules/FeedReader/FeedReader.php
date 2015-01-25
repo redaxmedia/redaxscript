@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
+use Redaxscript\Element;
+use SimpleXMLElement;
+
 /**
  * read external rss and atom feeds
  *
@@ -52,18 +55,22 @@ class FeedReader extends Config
 	 * @return string
 	 */
 
-	public static function render($url = null, $options = null)
+	public static function render($url = null, $options = array())
 	{
 		$output = '';
+		$counter = 0;
 
 		/* html elements */
 
 		$titleElement = new Element('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$boxElement = new Element('ul', array(
-				'class' => self::$_config['className']['list'])
-		);
+		$linkElement = new Element('a', array(
+			'target' => '_blank'
+		));
+		$boxElement = new Element('div', array(
+			'class' => self::$_config['className']['box']
+		));
 
 		/* get contents */
 
@@ -71,49 +78,38 @@ class FeedReader extends Config
 		if ($contents)
 		{
 			$feed = new SimpleXMLElement($contents);
-
-			/* handle type */
-
-			if ($feed->entry)
-			{
-				$type = 'atom';
-				$result = $feed->entry;
-			}
-			else if ($feed->channel)
-			{
-				$type = 'rss';
-				$result = $feed->channel->item;
-			}
+			$result = $feed->entry ? $feed->entry : $feed->channel->item;
 
 			/* process result */
 
 			foreach ($result as $value)
 			{
-				$title = trim($value->title);
+				/* break if limit reached */
 
-				/* atom */
-
-				if ($type == 'atom')
+				if (++$counter > $options['limit'])
 				{
-					$route = $value->link['href'];
-					$time = date(s('time'), strtotime($value->updated));
-					$date = date(s('date'), strtotime($value->updated));
-					$text = trim($value->content);
+					break;
 				}
 
-				/* rss */
+				/* handle feed type */
 
-				else if ($type == 'rss')
+				$url = $value->link['href'] ? (string)$value->link['href'] : $value->link;
+				$text = $value->summary ? $value->summary : $value->description;
+
+				/* url */
+
+				if ($url)
 				{
-					$route = $value->link;
-					$time = date(s('time'), strtotime($value->pubDate));
-					$date = date(s('date'), strtotime($value->pubDate));
-					$text = trim($value->description);
+					$linkElement->attr('href', $url)->text($value->title);
+				}
+				else
+				{
+					$linkElement = $value->title;
 				}
 
 				/* collect output */
 
-				$output .= $titleElement->text($title);
+				$output .= $titleElement->html($linkElement) . $boxElement->html($text);
 			}
 		}
 		return $output;

@@ -104,7 +104,7 @@ class Archive extends Config
 					$outputItem .= '<li>';
 					$outputItem .= $linkElement->attr(array(
 						'href' => $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']),
-						'title' => empty($value['description']) ? $value['title'] : $value['description']
+						'title' => $value['description'] ? $value['description'] : $value['title']
 					))->text($value['title']);
 					$outputItem .= '</li>';
 

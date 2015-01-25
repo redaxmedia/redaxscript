@@ -491,7 +491,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/feed_reader/**'
+					'modules/FeedReader/**'
 				],
 				options:
 				{

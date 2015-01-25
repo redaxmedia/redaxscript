@@ -38,47 +38,45 @@ class RecentView extends Config
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param integer $limit
+	 * @param array $options
 	 *
 	 * @return string
 	 */
 
-	public static function render($limit = 10)
+	public static function render($options = array())
 	{
 		$output = '';
 		$counter = 0;
 		$log = self::_log();
-		if ($log)
+
+		/* html elements */
+
+		$linkElement = new Element('a');
+		$listElement = new Element('ul');
+
+		/* process log */
+
+		foreach ($log as $value)
 		{
-			/* html elements */
+			/* break if limit reached */
 
-			$linkElement = new Element('a');
-			$listElement = new Element('ul');
-
-			/* process log */
-
-			foreach ($log as $value)
+			if (++$counter > $options['limit'])
 			{
-				/* break if limit reached */
-
-				if (++$counter > $limit)
-				{
-					break;
-				}
-				$output .= '<li>';
-				$output .= $linkElement->attr(array(
-					'href' => Registry::get('rewriteRoute') . $value,
-					'title' => $value
-				))->text($value);
-				$output .= '</li>';
+				break;
 			}
+			$output .= '<li>';
+			$output .= $linkElement->attr(array(
+				'href' => Registry::get('rewriteRoute') . $value,
+				'title' => $value
+			))->text($value);
+			$output .= '</li>';
+		}
 
-			/* collect list output */
+		/* collect list output */
 
-			if ($output)
-			{
-				$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
-			}
+		if ($output)
+		{
+			$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
 		}
 		return $output;
 	}

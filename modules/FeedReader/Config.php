@@ -24,8 +24,6 @@ class Config extends Module
 	protected static $_config = array(
 		'className' => array(
 			'title' => 'title_feed_reader clearfix',
-			'titleFirst' => 'title_first',
-			'titleSecond' => 'title_second',
 			'box' => 'box_feed_reader'
 		)
 	);
