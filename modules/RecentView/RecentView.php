@@ -28,7 +28,7 @@ class RecentView extends Config
 		'alias' => 'RecentView',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a recent view list',
-		'version' => '2.2.0',
+		'version' => '2.3.0',
 		'status' => 1,
 		'access' => 0
 	);

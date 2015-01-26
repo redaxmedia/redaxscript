@@ -27,7 +27,7 @@ class Validator extends Module
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
-		'version' => '2.2.0',
+		'version' => '2.3.0',
 		'status' => 1,
 		'access' => 1
 	);

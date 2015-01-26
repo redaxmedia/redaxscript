@@ -26,7 +26,7 @@ class LiveReload extends Module
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
 		'description' => 'Live reload for CSS',
-		'version' => '2.2.0',
+		'version' => '2.3.0',
 		'status' => 1,
 		'access' => 1
 	);

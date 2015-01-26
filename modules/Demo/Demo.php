@@ -29,7 +29,7 @@ class Demo extends Module
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable anonymous login',
-		'version' => '2.2.0',
+		'version' => '2.3.0',
 		'status' => 1,
 		'access' => 0
 	);

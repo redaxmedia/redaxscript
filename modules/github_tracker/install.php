@@ -13,7 +13,7 @@
 
 function github_tracker_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Github tracker\', \'github_tracker\', \'Redaxmedia\', \'Integrate milestones and issues from Github\', \'2.2.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Github tracker\', \'github_tracker\', \'Redaxmedia\', \'Integrate milestones and issues from Github\', \'2.3.0\', 1, 0)';
 	Redaxscript\Db::rawExecute($query);
 }
 
