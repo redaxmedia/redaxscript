@@ -72,14 +72,14 @@ Links
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
 * [Community](http://redaxscript.com/community)
-* [License](http://redaxscript.com/general/about/license)
 * [Wiki](https://github.com/redaxmedia/redaxscript/wiki)
+* [License](http://redaxscript.com/general/about/license)
 
 
 **Development**
 
+* [API](http://api.redaxscript.com)
 * [Github](http://github.redaxscript.com)
 * [Travis](http://travis.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
-* [API](http://api.redaxscript.com)
