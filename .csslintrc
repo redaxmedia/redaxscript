@@ -5,7 +5,6 @@
 	"box-sizing": false,
 	"compatible-vendor-prefixes": false,
 	"duplicate-background-images": false,
-	"gradients": false,
 	"outline-none": false,
 	"qualified-headings": false,
 	"text-indent": false,
