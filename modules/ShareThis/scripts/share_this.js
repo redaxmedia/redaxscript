@@ -25,14 +25,18 @@
 			options = $.extend({}, rs.modules.shareThis.options, options || {});
 		}
 
-		var links = $(this),
-			urlParameter = '?url=' + rs.baseURL;
+		var links = $(this);
 
 		/* request data */
 
 		$.ajax(
 		{
-			url: options.url + urlParameter,
+			url: options.url,
+			data:
+			{
+				url : rs.baseURL,
+				apikey : options.key
+			},
 			dataType: 'json',
 			success: function (data)
 			{
