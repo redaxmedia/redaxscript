@@ -13,7 +13,7 @@
 
 function file_manager_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'File manager\', \'file_manager\', \'Redaxmedia\', \'Simple file management\', \'2.3.0\', 1, 1)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'File manager\', \'file_manager\', \'Redaxmedia\', \'Simple file management\', \'2.4.0\', 1, 1)';
 	Redaxscript\Db::rawExecute($query);
 }
 

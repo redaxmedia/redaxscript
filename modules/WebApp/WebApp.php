@@ -27,7 +27,7 @@ class WebApp extends Module
 		'alias' => 'WebApp',
 		'author' => 'Redaxmedia',
 		'description' => 'Web application support',
-		'version' => '2.3.0',
+		'version' => '2.4.0',
 		'status' => 1,
 		'access' => 0
 	);

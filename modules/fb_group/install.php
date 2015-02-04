@@ -13,7 +13,7 @@
 
 function fb_group_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Facebook group\', \'fb_group\', \'Redaxmedia\', \'Integrate a Facebook group\', \'2.3.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Facebook group\', \'fb_group\', \'Redaxmedia\', \'Integrate a Facebook group\', \'2.4.0\', 1, 0)';
 	Redaxscript\Db::rawExecute($query);
 }
 
