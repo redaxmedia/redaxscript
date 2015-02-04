@@ -40,10 +40,10 @@
 
 		return this.each(function ()
 		{
-			var gallery = {};
-
-			gallery.list = $(this);
-			gallery.links = gallery.list.find('a');
+			var gallery =
+				{
+					links: $(this)
+				};
 
 			/* @section 1.1 preload */
 
