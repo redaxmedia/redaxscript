@@ -25,6 +25,14 @@ abstract class Detector
 	protected $_registry;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * output of the detector
 	 *
 	 * @var string
@@ -38,11 +46,13 @@ abstract class Detector
 	 * @since 2.0.0
 	 *
 	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
-	public function __construct(Registry $registry)
+	public function __construct(Registry $registry, Request $request)
 	{
 		$this->_registry = $registry;
+		$this->_request = $request;
 		$this->init();
 	}
 
@@ -88,7 +98,7 @@ abstract class Detector
 					if ($key === 'query')
 					{
 						$root = $this->_registry->get('root');
-						Request::setSession($root . '/' . $type, $value);
+						$this->_request->setSession($root . '/' . $type, $value);
 					}
 					break;
 				}

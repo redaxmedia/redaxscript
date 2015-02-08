@@ -21,7 +21,7 @@ Config::set('name', 'd01ae38a');
 Config::set('user', 'd01ae38a');
 Config::set('password', 'travis');
 
-/* registry and config */
+/* get instance */
 
 $registry = Registry::getInstance();
 $config = Config::getInstance();

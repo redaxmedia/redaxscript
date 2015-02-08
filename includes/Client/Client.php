@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Client;
 
+use Redaxscript\Request;
+
 /**
  * abstract class to build a client class
  *

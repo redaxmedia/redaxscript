@@ -14,12 +14,12 @@ namespace Redaxscript\Server;
 interface Server
 {
 	/**
-	 * get server information
+	 * get the output of the server
 	 *
 	 * @since 2.4.0
 	 *
 	 * @return string
 	 */
 
-	public function get();
+	public function getOutput();
 }
