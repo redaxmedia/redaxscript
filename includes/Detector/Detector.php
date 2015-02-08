@@ -9,8 +9,8 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detector
  * @package Redaxscript
+ * @category Detector
  * @author Henry Ruhs
  */
 
