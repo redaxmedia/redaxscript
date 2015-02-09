@@ -13,4 +13,21 @@ namespace Redaxscript\Client;
 
 class Mobile extends Client
 {
+	/**
+	 * init the class
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function init()
+	{
+		$this->_detect(array(
+			'mobile',
+			'android',
+			'blackberry',
+			'iphone',
+			'ipod',
+			'palm'
+		));
+	}
 }

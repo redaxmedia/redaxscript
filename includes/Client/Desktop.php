@@ -13,4 +13,20 @@ namespace Redaxscript\Client;
 
 class Desktop extends Client
 {
+	/**
+	 * init the class
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function init()
+	{
+		$this->_detect(array(
+			'bsd',
+			'linux',
+			'macintosh',
+			'solaris',
+			'windows'
+		));
+	}
 }
