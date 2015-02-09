@@ -24,8 +24,8 @@
 	{
 		"post-install-cmd":
 		[
-			"mkdir libraries",
-			"cp vendor/j4mie/idiorm/idiorm.php libraries/ORM.php"
+			"php -r \"is_dir('libraries') || mkdir('libraries');\"",
+			"php -r \"copy('vendor/j4mie/idiorm/idiorm.php', 'libraries/ORM.php');\""
 		]
 	}
 }

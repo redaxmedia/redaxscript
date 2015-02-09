@@ -1,11 +1,11 @@
 <?php
-namespace Redaxscript\Tests\Client;
+namespace Redaxscript\Tests\System;
 
 use Redaxscript\Tests\TestCase;
-use Redaxscript\Client;
+use Redaxscript\System;
 
 /**
- * VersionTest
+ * FileTest
  *
  * @since 2.4.0
  *
@@ -14,7 +14,7 @@ use Redaxscript\Client;
  * @author Henry Ruhs
  */
 
-class VersionTest extends TestCase
+class FileTest extends TestCase
 {
 	/**
 	 * testDummy
