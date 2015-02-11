@@ -1,11 +1,11 @@
 <?php
-namespace Redaxscript\Tests\System;
+namespace Redaxscript\Tests\Server;
 
 use Redaxscript\Tests\TestCase;
-use Redaxscript\System;
+use Redaxscript\Server;
 
 /**
- * IpTest
+ * RootTest
  *
  * @since 2.4.0
  *
@@ -14,7 +14,7 @@ use Redaxscript\System;
  * @author Henry Ruhs
  */
 
-class IpTest extends TestCase
+class RootTest extends TestCase
 {
 	/**
 	 * testDummy

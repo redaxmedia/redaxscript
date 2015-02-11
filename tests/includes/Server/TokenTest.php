@@ -1,8 +1,8 @@
 <?php
-namespace Redaxscript\Tests\System;
+namespace Redaxscript\Tests\Server;
 
 use Redaxscript\Tests\TestCase;
-use Redaxscript\System;
+use Redaxscript\Server;
 
 /**
  * TokenTest

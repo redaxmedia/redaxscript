@@ -46,7 +46,7 @@ abstract class Client
 	}
 
 	/**
-	 * get the output of the client
+	 * get the output
 	 *
 	 * @since 2.4.0
 	 *

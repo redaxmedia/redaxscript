@@ -169,7 +169,7 @@ class Parser
 	}
 
 	/**
-	 * get the parsed output
+	 * get the output
 	 *
 	 * @since 2.0.0
 	 *

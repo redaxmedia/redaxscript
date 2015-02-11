@@ -57,7 +57,7 @@ abstract class Detector
 	}
 
 	/**
-	 * get the output of the detector
+	 * get the output
 	 *
 	 * @since 2.0.0
 	 *

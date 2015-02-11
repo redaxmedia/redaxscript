@@ -236,7 +236,6 @@ function startup()
 
 	/* define user */
 
-	define('MY_IP', get_user_ip());
 	define('MY_BROWSER', get_user_agent(0));
 	define('MY_BROWSER_VERSION', get_user_agent(1));
 	define('MY_ENGINE', get_user_agent(2));

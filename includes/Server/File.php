@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * interface to define a server class
+ * children class to get file
  *
  * @since 2.4.0
  *
@@ -11,15 +11,19 @@ namespace Redaxscript\Server;
  * @author Henry Ruhs
  */
 
-interface Server
+class File extends Server
 {
 	/**
-	 * get the output of the server
+	 * get the output
 	 *
 	 * @since 2.4.0
 	 *
 	 * @return string
 	 */
 
-	public function getOutput();
+	public function getOutput()
+	{
+		$output = basename($this->_request->get('SCRIPT_NAME'));
+		return $output;
+	}
 }

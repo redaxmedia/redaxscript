@@ -164,7 +164,7 @@ function registration_post()
 		);
 		$subject = l('registration');
 		$bodyArray = array(
-			'<strong>' . l('name') . l('colon') . '</strong> ' . $name . ' (' . MY_IP . ')',
+			'<strong>' . l('name') . l('colon') . '</strong> ' . $name,
 			'<br />',
 			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
 			'<br />',
