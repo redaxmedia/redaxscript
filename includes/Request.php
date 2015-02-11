@@ -33,7 +33,7 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from request
+	 * get item from globals
 	 *
 	 * @since 2.2.0
 	 *
@@ -152,7 +152,7 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to request
+	 * set item to globals
 	 *
 	 * @since 2.2.0
 	 *
