@@ -23,7 +23,7 @@ class File extends Server
 
 	public function getOutput()
 	{
-		$output = basename($this->_request->get('SCRIPT_NAME'));
+		$output = basename($this->_request->getServer('SCRIPT_NAME'));
 		return $output;
 	}
 }

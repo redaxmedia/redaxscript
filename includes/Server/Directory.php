@@ -23,7 +23,7 @@ class Directory extends Server
 
 	public function getOutput()
 	{
-		$output = dirname($this->_request->get('SCRIPT_NAME'));
+		$output = dirname($this->_request->getServer('SCRIPT_NAME'));
 		return $output;
 	}
 }

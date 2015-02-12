@@ -29,8 +29,8 @@ class Root extends Server
 
 		/* collect  output */
 
-		$output = $protocol->getOutput() . $host->getOutput();
-		if ($directory->getOutput() === '/' || $directory->getOutput() === '\\')
+		$output = $protocol->getOutput() . '://' . $host->getOutput();
+		if ($directory->getOutput() !== '/' && $directory->getOutput() !== '\\')
 		{
 			$output .= $directory->getOutput();
 		}
