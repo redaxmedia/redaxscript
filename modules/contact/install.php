@@ -13,7 +13,7 @@
 
 function contact_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Contact\', \'contact\', \'Redaxmedia\', \'Simple contact form\', \'2.3.0\', 1, 0)';
+	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Contact\', \'contact\', \'Redaxmedia\', \'Simple contact form\', \'2.4.0\', 1, 0)';
 	Redaxscript\Db::rawExecute($query);
 }
 

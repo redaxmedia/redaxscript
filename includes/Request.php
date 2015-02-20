@@ -11,7 +11,7 @@ namespace Redaxscript;
  * @author Henry Ruhs
  */
 
-class Request
+class Request extends Singleton
 {
 	/**
 	 * array of request values

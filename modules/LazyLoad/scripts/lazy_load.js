@@ -32,9 +32,10 @@
 
 		return this.each(function ()
 		{
-			var lazyLoad = {};
-
-			lazyLoad.images = $(this);
+			var lazyLoad =
+				{
+					images: $(this)
+				};
 
 			/* @section 1.1 show */
 

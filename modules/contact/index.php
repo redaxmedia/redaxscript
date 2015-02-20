@@ -206,7 +206,7 @@ function contact_post()
 		);
 		$subject = l('contact');
 		$bodyArray = array(
-			'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+			'<strong>' . l('author') . l('colon') . '</strong> ' . $author,
 			'<br />',
 			'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
 			'<br />',

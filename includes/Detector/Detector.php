@@ -9,8 +9,8 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detector
  * @package Redaxscript
+ * @category Detector
  * @author Henry Ruhs
  */
 
@@ -23,6 +23,14 @@ abstract class Detector
 	 */
 
 	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
 
 	/**
 	 * output of the detector
@@ -38,16 +46,18 @@ abstract class Detector
 	 * @since 2.0.0
 	 *
 	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
-	public function __construct(Registry $registry)
+	public function __construct(Registry $registry, Request $request)
 	{
 		$this->_registry = $registry;
+		$this->_request = $request;
 		$this->init();
 	}
 
 	/**
-	 * get the output of the detector
+	 * get the output
 	 *
 	 * @since 2.0.0
 	 *
@@ -88,7 +98,7 @@ abstract class Detector
 					if ($key === 'query')
 					{
 						$root = $this->_registry->get('root');
-						Request::setSession($root . '/' . $type, $value);
+						$this->_request->setSession($root . '/' . $type, $value);
 					}
 					break;
 				}

@@ -16,14 +16,23 @@ use Redaxscript\Request;
 class RequestTest extends TestCase
 {
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	protected function setUp()
 	{
-		Request::init();
+		$this->_request = Request::getInstance();
+		$this->_request->init();
 	}
 
 	/**
@@ -36,7 +45,7 @@ class RequestTest extends TestCase
 	{
 		/* result */
 
-		$result = Request::get();
+		$result = $this->_request->get();
 
 		/* compare */
 
@@ -53,11 +62,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::set('testKey', 'testValue');
+		$this->_request->set('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::get('testKey');
+		$result = $this->_request->get('testKey');
 
 		/* compare */
 
@@ -74,11 +83,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setServer('testKey', 'testValue');
+		$this->_request->setServer('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::getServer('testKey');
+		$result = $this->_request->getServer('testKey');
 
 		/* compare */
 
@@ -95,11 +104,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setQuery('testKey', 'testValue');
+		$this->_request->setQuery('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::getQuery('testKey');
+		$result = $this->_request->getQuery('testKey');
 
 		/* compare */
 
@@ -116,11 +125,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setPost('testKey', 'testValue');
+		$this->_request->setPost('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::getPost('testKey');
+		$result = $this->_request->getPost('testKey');
 
 		/* compare */
 
@@ -137,11 +146,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setSession('testKey', 'testValue');
+		$this->_request->setSession('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::getSession('testKey');
+		$result = $this->_request->getSession('testKey');
 
 		/* compare */
 
@@ -158,11 +167,11 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setCookie('testKey', 'testValue');
+		$this->_request->setCookie('testKey', 'testValue');
 
 		/* result */
 
-		$result = Request::getCookie('testKey');
+		$result = $this->_request->getCookie('testKey');
 
 		/* compare */
 

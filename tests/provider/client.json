@@ -1,0 +1,112 @@
+[
+	[
+		"Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+		{
+			"browser": "safari",
+			"desktop": "linux",
+			"engine": "webkit",
+			"mobile": "android",
+			"tablet": "android",
+			"version": "4"
+		}
+	],
+	[
+		"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+		{
+			"browser": "chrome",
+			"desktop": "windows",
+			"engine": "webkit",
+			"mobile": "",
+			"tablet": "",
+			"version": "41"
+		}
+	],
+	[
+		"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:33.0) Gecko/20100101 Firefox/33.0",
+		{
+			"browser": "firefox",
+			"desktop": "linux",
+			"engine": "gecko",
+			"mobile": "",
+			"tablet": "",
+			"version": "33"
+		}
+	],
+	[
+		"Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
+		{
+			"browser": "msie",
+			"desktop": "windows",
+			"engine": "trident",
+			"mobile": "",
+			"tablet": "",
+			"version": "11"
+		}
+	],
+	[
+		"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
+		{
+			"browser": "msie",
+			"desktop": "windows",
+			"engine": "trident",
+			"mobile": "",
+			"tablet": "",
+			"version": "10"
+		}
+	],
+	[
+		"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)",
+		{
+			"browser": "msie",
+			"desktop": "windows",
+			"engine": "trident",
+			"mobile": "",
+			"tablet": "",
+			"version": "9"
+		}
+	],
+	[
+		"Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16",
+		{
+			"browser": "opera",
+			"desktop": "linux",
+			"engine": "presto",
+			"mobile": "",
+			"tablet": "",
+			"version": "12"
+		}
+	],
+	[
+		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A",
+		{
+			"browser": "safari",
+			"desktop": "macintosh",
+			"engine": "webkit",
+			"mobile": "",
+			"tablet": "",
+			"version": "7"
+		}
+	],
+	[
+		"Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25",
+		{
+			"browser": "safari",
+			"desktop": "",
+			"engine": "webkit",
+			"mobile": "mobile",
+			"tablet": "ipad",
+			"version": "6"
+		}
+	],
+	[
+		"Mozilla/5.0 (iPhone; U; ru; CPU iPhone OS 4_2_1 like Mac OS X; ru) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148a Safari/6533.18.5",
+		{
+			"browser": "safari",
+			"desktop": "",
+			"engine": "webkit",
+			"mobile": "iphone",
+			"tablet": "",
+			"version": "5"
+		}
+	]
+]

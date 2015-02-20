@@ -2,7 +2,7 @@
 namespace Redaxscript\Validator;
 
 /**
- * interface to build a validator class
+ * interface to define a validator class
  *
  * @since 2.2.0
  *

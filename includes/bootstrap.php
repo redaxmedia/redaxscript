@@ -13,9 +13,10 @@ include_once('includes/Autoloader.php');
 Autoloader::init();
 Request::init();
 
-/* registry and config */
+/* get instance */
 
 $registry = Registry::getInstance();
+$request = Request::getInstance();
 $config = Config::getInstance();
 
 /* database */
@@ -62,8 +63,8 @@ if ($registry->get('dbStatus') === 2)
 
 /* detector */
 
-$detectorLanguage = new Detector\Language($registry);
-$detectorTemplate = new Detector\Template($registry);
+$detectorLanguage = new Detector\Language($registry, $request);
+$detectorTemplate = new Detector\Template($registry, $request);
 
 /* set language and template */
 

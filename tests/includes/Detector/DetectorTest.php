@@ -27,6 +27,14 @@ class DetectorTest extends TestCase
 	protected $_registry;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
 	 * @since 2.1.0
@@ -35,6 +43,7 @@ class DetectorTest extends TestCase
 	protected function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+		$this->_request = Request::getInstance();
 	}
 
 	/**
@@ -79,7 +88,7 @@ class DetectorTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detector = new Detector\Language($this->_registry);
+		$detector = new Detector\Language($this->_registry, $this->_request);
 
 		/* result */
 
@@ -106,7 +115,7 @@ class DetectorTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$detector = new Detector\Template($this->_registry);
+		$detector = new Detector\Template($this->_registry, $this->_request);
 
 		/* result */
 
@@ -127,11 +136,11 @@ class DetectorTest extends TestCase
 	{
 		/* setup */
 
-		Request::setQuery('l', 'en');
-		Request::setQuery('t', 'default');
 		$this->_registry->init();
-		$detectorLanguage = new Detector\Language($this->_registry);
-		$detectorTemplate = new Detector\Template($this->_registry);
+		$this->_request->setQuery('l', 'en');
+		$this->_request->setQuery('t', 'default');
+		$detectorLanguage = new Detector\Language($this->_registry, $this->_request);
+		$detectorTemplate = new Detector\Template($this->_registry, $this->_request);
 
 		/* result */
 

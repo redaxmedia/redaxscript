@@ -271,7 +271,7 @@ function get_user_agent($mode = '')
 			);
 			break;
 		default:
-			/* _browsers */
+			/* browsers */
 
 			$type_array = array(
 				'chrome',

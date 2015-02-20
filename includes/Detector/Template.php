@@ -9,8 +9,8 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detector
  * @package Redaxscript
+ * @category Detector
  * @author Henry Ruhs
  */
 
@@ -32,8 +32,8 @@ class Template extends Detector
 		/* detect template */
 
 		$this->_detect(array(
-			'query' => Request::getQuery('t'),
-			'session' => Request::getSession($root . '/template'),
+			'query' => $this->_request->getQuery('t'),
+			'session' => $this->_request->getSession($root . '/template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
 			'fallback' => 'default'

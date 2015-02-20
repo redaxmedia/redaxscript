@@ -14,7 +14,7 @@
 rs.modules.gallery =
 {
 	init: true,
-	selector: 'ul.js_list_gallery',
+	selector: 'ul.js_list_gallery a',
 	options:
 	{
 		className:
