@@ -7,6 +7,41 @@ module.exports = function (grunt)
 	grunt.initConfig(
 	{
 		version: grunt.file.readJSON('package.json').version,
+		jscs:
+		{
+			dependency:
+			{
+				src:
+				[
+					'gruntfile.js'
+				]
+			},
+			base:
+			{
+				src:
+				[
+					'scripts/*.js'
+				]
+			},
+			modules:
+			{
+				src:
+				[
+					'modules/*/scripts/*.js'
+				]
+			},
+			templates:
+			{
+				src:
+				[
+					'templates/*/scripts/*.js'
+				]
+			},
+			options:
+			{
+				config: '.jscsrc'
+			}
+		},
 		jshint:
 		{
 			dependency:
@@ -849,6 +884,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
+	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-jsonmin');
 	grunt.loadNpmTasks('grunt-phpcs');
@@ -861,6 +897,7 @@ module.exports = function (grunt)
 
 	grunt.registerTask('default',
 	[
+		'jscs',
 		'jshint',
 		'jsonlint',
 		'csslint',

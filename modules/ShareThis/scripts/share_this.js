@@ -47,8 +47,8 @@
 					url: options.url,
 					data:
 					{
-						url : rs.baseURL,
-						apikey : options.key
+						url: rs.baseURL,
+						apikey: options.key
 					},
 					dataType: 'json',
 					success: function (data)
