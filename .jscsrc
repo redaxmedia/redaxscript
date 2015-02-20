@@ -34,9 +34,5 @@
 	"disallowSpacesInsideArrayBrackets": true,
 	"disallowSpacesInsideBrackets": true,
 	"disallowSpacesInsideParentheses": true,
-	"validateIndentation": "\t",
-	"excludeFiles":
-	[
-		"node_modules/**"
-	]
+	"validateIndentation": "\t"
 }
