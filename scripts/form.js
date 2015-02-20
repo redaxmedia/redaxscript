@@ -58,7 +58,8 @@
 				{
 					textarea.rows += 1;
 				}
-			}).css({
+			}).css(
+			{
 				overflow: options.overflow,
 				resize: options.resize
 			});
