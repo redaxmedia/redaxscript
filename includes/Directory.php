@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to handle directories in the filesystem
+ * parent class to handle a directory in the filesystem
  *
  * @since 2.0.0
  *
