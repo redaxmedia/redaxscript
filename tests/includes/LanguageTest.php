@@ -49,20 +49,24 @@ class LanguageTest extends TestCase
 	}
 
 	/**
-	 * testGet
+	 * testGetAndSet
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
-	public function testGet()
+	public function testGetAndSet()
 	{
+		/* setup */
+
+		$this->_language->set('testKey', 'testValue');
+
 		/* result */
 
-		$result = $this->_language->get('home');
+		$result = $this->_language->get('testKey');
 
 		/* compare */
 
-		$this->assertEquals('Startseite', $result);
+		$this->assertEquals('testValue', $result);
 	}
 
 	/**
@@ -114,26 +118,5 @@ class LanguageTest extends TestCase
 		/* compare */
 
 		$this->assertEquals(null, $result);
-	}
-
-	/**
-	 * testSet
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testSet()
-	{
-		/* setup */
-
-		$this->_language->set('testKey', 'testValue');
-
-		/* result */
-
-		$result = $this->_language->get('testKey');
-
-		/* compare */
-
-		$this->assertEquals('testValue', $result);
 	}
 }
