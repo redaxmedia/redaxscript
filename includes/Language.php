@@ -81,6 +81,20 @@ class Language extends Singleton
 	}
 
 	/**
+	 * set item to language
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function set($key = null, $value = null)
+	{
+		self::$_values[$key] = $value;
+	}
+
+	/**
 	 * load from language files
 	 *
 	 * @since 2.2.0

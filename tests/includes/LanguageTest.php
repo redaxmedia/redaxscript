@@ -115,4 +115,25 @@ class LanguageTest extends TestCase
 
 		$this->assertEquals(null, $result);
 	}
+
+	/**
+	 * testSet
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testSet()
+	{
+		/* setup */
+
+		$this->_language->set('testKey', 'testValue');
+
+		/* result */
+
+		$result = $this->_language->get('testKey');
+
+		/* compare */
+
+		$this->assertEquals('testValue', $result);
+	}
 }

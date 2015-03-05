@@ -15,4 +15,13 @@ use Redaxscript\Route;
 
 class RouteTest extends TestCase
 {
+	/**
+	 * testRoute
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testRoute()
+	{
+	}
 }

@@ -15,4 +15,13 @@ use Redaxscript\Parameter;
 
 class ParameterTest extends TestCase
 {
+	/**
+	 * testParameter
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testParameter()
+	{
+	}
 }
