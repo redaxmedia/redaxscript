@@ -116,7 +116,7 @@ class Element
 	}
 
 	/**
-	 * set attribute
+	 * set attribute to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -140,7 +140,7 @@ class Element
 	}
 
 	/**
-	 * remove attribute
+	 * remove attribute from the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -159,7 +159,7 @@ class Element
 	}
 
 	/**
-	 * add class
+	 * add class to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -175,7 +175,7 @@ class Element
 	}
 
 	/**
-	 * remove class
+	 * remove class from the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -191,7 +191,7 @@ class Element
 	}
 
 	/**
-	 * edit class
+	 * edit class helper
 	 *
 	 * @since 2.2.0
 	 *
