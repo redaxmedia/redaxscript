@@ -85,7 +85,7 @@ class Language extends Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $json single or multiple language paths
+	 * @param mixed $json single or multiple language paths
 	 */
 
 	public static function load($json = null)
