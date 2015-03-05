@@ -116,7 +116,7 @@ class Element
 	}
 
 	/**
-	 * set attributes
+	 * set attribute
 	 *
 	 * @since 2.2.0
 	 *
@@ -140,7 +140,7 @@ class Element
 	}
 
 	/**
-	 * remove attributes
+	 * remove attribute
 	 *
 	 * @since 2.2.0
 	 *
