@@ -72,7 +72,7 @@ Links
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
 * [Community](http://redaxscript.com/community)
-* [Wiki](https://github.com/redaxmedia/redaxscript/wiki)
+* [Wiki](https://wiki.redaxscript.com)
 * [License](http://redaxscript.com/general/about/license)
 
 
