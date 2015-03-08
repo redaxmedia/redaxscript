@@ -161,7 +161,6 @@ class Parameter
 			if (is_numeric($subParameter))
 			{
 				return $subParameter;
-				break;
 			}
 		}
 	}
