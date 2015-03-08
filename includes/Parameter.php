@@ -72,7 +72,7 @@ class Parameter
 
 	public function getFirst()
 	{
-		if (!is_numeric($this->_parameterArray[0]))
+		if (isset($this->_parameterArray[0]) && !is_numeric($this->_parameterArray[0]))
 		{
 			return $this->_parameterArray[0];
 		}
@@ -88,7 +88,7 @@ class Parameter
 
 	public function getSecond()
 	{
-		if (!is_numeric($this->_parameterArray[1]))
+		if (isset($this->_parameterArray[1]) && !is_numeric($this->_parameterArray[1]))
 		{
 			return $this->_parameterArray[1];
 		}
@@ -104,7 +104,7 @@ class Parameter
 
 	public function getThird()
 	{
-		if (!is_numeric($this->_parameterArray[2]))
+		if (isset($this->_parameterArray[2]) && !is_numeric($this->_parameterArray[2]))
 		{
 			return $this->_parameterArray[2];
 		}
@@ -120,7 +120,7 @@ class Parameter
 
 	public function getFourth()
 	{
-		if (!is_numeric($this->_parameterArray[3]))
+		if (isset($this->_parameterArray[3]) && !is_numeric($this->_parameterArray[3]))
 		{
 			return $this->_parameterArray[3];
 		}
@@ -140,26 +140,9 @@ class Parameter
 		{
 			return end($this->_parameterArray);
 		}
-		else if (!is_numeric(prev($this->_parameterArray)))
+		else
 		{
 			return prev($this->_parameterArray);
-		}
-	}
-
-	/**
-	 * get the token parameter
-	 *
-	 * @since 2.4.0
-	 *
-	 * @return string
-	 */
-
-	public function getToken()
-	{
-		$token = new Server\Token($this->_request);
-		if ($this->getLast() === $token)
-		{
-			return $this->getLast();
 		}
 	}
 
@@ -244,6 +227,23 @@ class Parameter
 		if ($this->getTable() && $this->getSub())
 		{
 			return $this->getSub();
+		}
+	}
+
+	/**
+	 * get the token parameter
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return string
+	 */
+
+	public function getToken()
+	{
+		$token = new Server\Token($this->_request);
+		if ($this->getLast() === $token->getOutput())
+		{
+			return $this->getLast();
 		}
 	}
 }

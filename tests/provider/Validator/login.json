@@ -1,18 +1,18 @@
 [
 	[
 		"username",
-		1
+		true
 	],
 	[
 		"123456",
-		1
+		true
 	],
 	[
 		"1234",
-		0
+		false
 	],
 	[
 		"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-		0
+		false
 	]
 ]

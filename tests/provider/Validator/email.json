@@ -1,22 +1,22 @@
 [
 	[
 		"test@redaxmedia.com",
-		1
+		true
 	],
 	[
 		"test@invalid@com",
-		0
+		false
 	],
 	[
 		"invalid",
-		0
+		false
 	],
 	[
 		"invalid@invalid",
-		0
+		false
 	],
 	[
 		"invalid@invalid@invalid",
-		0
+		false
 	]
 ]

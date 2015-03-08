@@ -1,50 +1,50 @@
 [
 	[
 		"http://www.domain.com/",
-		1
+		true
 	],
 	[
 		"http://www.domain.com/test/",
-		1
+		true
 	],
 	[
 		"http://www.domain.com/test",
-		1
+		true
 	],
 	[
 		"http://www.domain.com",
-		1
+		true
 	],
 	[
 		"www.domain.com",
-		0
+		false
 	],
 	[
 		"http://domain",
-		0
+		false
 	],
 	[
 		"http://domain.com/",
-		1
+		true
 	],
 	[
 		"http://domain.com/test/",
-		1
+		true
 	],
 	[
 		"http://domain.com/test",
-		1
+		true
 	],
 	[
 		"http://domain.com",
-		1
+		true
 	],
 	[
 		"invalid",
-		0
+		false
 	],
 	[
 		"",
-		0
+		false
 	]
 ]

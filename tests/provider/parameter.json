@@ -1,0 +1,226 @@
+[
+	[
+		"",
+		{
+			"first": "",
+			"second": "",
+			"third": "",
+			"fourth": "",
+			"last": "",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello",
+		{
+			"first": "hello",
+			"second": "",
+			"third": "",
+			"fourth": "",
+			"last": "hello",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/1337",
+		{
+			"first": "hello",
+			"second": "",
+			"third": "",
+			"fourth": "",
+			"last": "hello",
+			"sub": "1337",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "",
+			"fourth": "",
+			"last": "world",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "",
+			"fourth": "",
+			"last": "world",
+			"sub": "1337",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world/to",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "",
+			"last": "to",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world/to/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "",
+			"last": "to",
+			"sub": "1337",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world/to/all",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "all",
+			"last": "all",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"hello/world/to/all/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "all",
+			"last": "all",
+			"sub": "1337",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"admin",
+		{
+			"first": "admin",
+			"second": "",
+			"third": "",
+			"fourth": "",
+			"last": "admin",
+			"sub": "",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"admin/view/articles",
+		{
+			"first": "admin",
+			"second": "view",
+			"third": "articles",
+			"fourth": "",
+			"last": "articles",
+			"sub": "",
+			"admin": "view",
+			"table": "articles",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
+		"admin/edit/articles/1",
+		{
+			"first": "admin",
+			"second": "edit",
+			"third": "articles",
+			"fourth": "",
+			"last": "articles",
+			"sub": "1",
+			"admin": "edit",
+			"table": "articles",
+			"alias": "",
+			"id": "1",
+			"token": ""
+		}
+	],
+	[
+		"admin/delete/articles/1/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"first": "admin",
+			"second": "delete",
+			"third": "articles",
+			"fourth": "",
+			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
+			"sub": "1",
+			"admin": "delete",
+			"table": "articles",
+			"alias": "",
+			"id": "1",
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		}
+	],
+	[
+		"admin/install/modules/CallHome/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"first": "admin",
+			"second": "install",
+			"third": "modules",
+			"fourth": "CallHome",
+			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
+			"sub": "",
+			"admin": "install",
+			"table": "modules",
+			"alias": "CallHome",
+			"id": "",
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		}
+	]
+]

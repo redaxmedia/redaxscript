@@ -2,36 +2,36 @@
 	[
 		"123",
 		0,
-		1
+		true
 	],
 	[
 		"abc",
 		0,
-		0
+		false
 	],
 	[
 		"abc ",
 		0,
-		1
+		true
 	],
 	[
 		"ab-c",
 		1,
-		0
+		false
 	],
 	[
 		"ab_c",
 		1,
-		0
+		false
 	],
 	[
 		"admin",
 		1,
-		1
+		true
 	],
 	[
 		"invalid",
 		1,
-		0
+		false
 	]
 ]
