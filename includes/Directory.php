@@ -23,12 +23,12 @@ class Directory
 	protected $_directory;
 
 	/**
-	 * array of directory
+	 * array of the directory
 	 *
 	 * @var array
 	 */
 
-	protected $_directoryArray;
+	protected $_directoryArray = array();
 
 	/**
 	 * array of files to exclude
@@ -42,7 +42,7 @@ class Directory
 	);
 
 	/**
-	 * local cache for directories
+	 * local cache for directory
 	 *
 	 * @var array
 	 */
@@ -104,7 +104,7 @@ class Directory
 	}
 
 	/**
-	 * scan a directory
+	 * scan the directory
 	 *
 	 * @since 2.0.0
 	 *
@@ -137,7 +137,7 @@ class Directory
 	}
 
 	/**
-	 * create a directory
+	 * create the directory
 	 *
 	 * @since 2.1.0
 	 *
@@ -169,7 +169,7 @@ class Directory
 	}
 
 	/**
-	 * remove a directory
+	 * remove the directory
 	 *
 	 * @since 2.0.0
 	 *

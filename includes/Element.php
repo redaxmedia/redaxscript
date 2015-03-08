@@ -203,10 +203,10 @@ class Element
 
 	protected function _editClass($className = null, $type = null)
 	{
-		$classArray = explode(' ', $className);
+		$classArray = array_filter(explode(' ', $className));
 		if (isset($this->_attributeArray['class']))
 		{
-			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
+			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
 		}
 		else
 		{

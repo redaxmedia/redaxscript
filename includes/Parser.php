@@ -32,7 +32,7 @@ class Parser
 	protected $_language;
 
 	/**
-	 * parsed output
+	 * output of the parser
 	 *
 	 * @var string
 	 */
@@ -233,7 +233,7 @@ class Parser
 			'<quote>',
 			'</quote>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 		$preElement = new Element('pre', array(
 			'class' => $this->_options['className']['code']
 		));
@@ -267,7 +267,7 @@ class Parser
 			'<function>',
 			'</function>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */
 
@@ -323,7 +323,7 @@ class Parser
 			'<module>',
 			'</module>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */
 

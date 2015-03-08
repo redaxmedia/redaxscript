@@ -28,8 +28,8 @@ class Access implements Validator
 	public function validate($access = null, $groups = null)
 	{
 		$output = Validator::FAILED;
-		$accessArray = explode(',', $access);
-		$groupsArray = explode(',', $groups);
+		$accessArray = array_filter(explode(',', $access));
+		$groupsArray = array_filter(explode(',', $groups));
 
 		/* validate access again group */
 

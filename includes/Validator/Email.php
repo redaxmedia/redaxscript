@@ -34,7 +34,7 @@ class Email implements Validator
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false)
 		{
 			$output = Validator::PASSED;
-			$emailArray = explode('@', $email);
+			$emailArray = array_filter(explode('@', $email));
 
 			/* validate dns */
 
