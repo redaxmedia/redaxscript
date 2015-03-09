@@ -125,14 +125,14 @@ class Db extends ORM
 	 * @since 2.3.0
 	 *
 	 * @param array $column array of column names
-	 * @param array $values array of values
+	 * @param array $likeArray array of the like
 	 *
 	 * @return Db
 	 */
 
-	public function whereLikeMany($column = null, $values = null)
+	public function whereLikeMany($column = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode($column, ' LIKE ? OR ') . ' LIKE ?', $values);
+		return $this->whereRaw(implode($column, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
 	}
 
 	/**

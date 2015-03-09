@@ -14,26 +14,26 @@ namespace Redaxscript;
 class Registry extends Singleton
 {
 	/**
-	 * array of registry values
+	 * array of the registry
 	 *
 	 * @var array
 	 */
 
-	protected static $_values = array();
+	protected static $_registryArray = array();
 
 	/**
 	 * init the class
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $values array of registry values
+	 * @param array $registryArray array of the registry
 	 */
 
-	public static function init($values = array())
+	public static function init($registryArray = array())
 	{
-		if (is_array($values))
+		if (is_array($registryArray))
 		{
-			self::$_values = $values;
+			self::$_registryArray = $registryArray;
 		}
 	}
 
@@ -55,11 +55,11 @@ class Registry extends Singleton
 
 		if (is_null($key))
 		{
-			$output = self::$_values;
+			$output = self::$_registryArray;
 		}
-		else if (array_key_exists($key, self::$_values))
+		else if (array_key_exists($key, self::$_registryArray))
 		{
-			$output = self::$_values[$key];
+			$output = self::$_registryArray[$key];
 		}
 		return $output;
 	}
@@ -75,6 +75,6 @@ class Registry extends Singleton
 
 	public static function set($key = null, $value = null)
 	{
-		self::$_values[$key] = $value;
+		self::$_registryArray[$key] = $value;
 	}
 }

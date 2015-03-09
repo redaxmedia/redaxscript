@@ -14,12 +14,12 @@ namespace Redaxscript;
 class Language extends Singleton
 {
 	/**
-	 * array of language values
+	 * array of the language
 	 *
 	 * @var array
 	 */
 
-	protected static $_values = array();
+	protected static $_languageArray = array();
 
 	/**
 	 * init the class
@@ -58,24 +58,24 @@ class Language extends Singleton
 
 		/* handle index */
 
-		if (isset($index) && isset(self::$_values[$index]))
+		if (isset($index) && isset(self::$_languageArray[$index]))
 		{
-			$values = self::$_values[$index];
+			$languageArray = self::$_languageArray[$index];
 		}
 		else
 		{
-			$values = self::$_values;
+            $languageArray = self::$_languageArray;
 		}
 
-		/* values as needed */
+		/* output as needed */
 
 		if (is_null($key))
 		{
-			$output = $values;
+			$output = $languageArray;
 		}
-		else if (array_key_exists($key, $values))
+		else if (array_key_exists($key, $languageArray))
 		{
-			$output = $values[$key];
+			$output = $languageArray[$key];
 		}
 		return $output;
 	}
@@ -91,7 +91,7 @@ class Language extends Singleton
 
 	public static function set($key = null, $value = null)
 	{
-		self::$_values[$key] = $value;
+		self::$_languageArray[$key] = $value;
 	}
 
 	/**
@@ -120,10 +120,10 @@ class Language extends Singleton
 			if (file_exists($file))
 			{
 				$contents = file_get_contents($file);
-				$values = json_decode($contents, true);
-				if (is_array($values))
+                $languageArray = json_decode($contents, true);
+				if (is_array($languageArray))
 				{
-					self::$_values = array_merge(self::$_values, $values);
+					self::$_languageArray = array_merge(self::$_languageArray, $languageArray);
 				}
 			}
 		}

@@ -14,12 +14,12 @@ namespace Redaxscript;
 class Request extends Singleton
 {
 	/**
-	 * array of request values
+	 * array of the request
 	 *
 	 * @var array
 	 */
 
-	protected static $_values = array();
+	protected static $_requestArray = array();
 
 	/**
 	 * init the class
@@ -29,7 +29,7 @@ class Request extends Singleton
 
 	public static function init()
 	{
-		self::$_values = $GLOBALS;
+		self::$_requestArray = $GLOBALS;
 	}
 
 	/**
@@ -49,24 +49,24 @@ class Request extends Singleton
 
 		/* handle index */
 
-		if (isset($index) && isset(self::$_values[$index]))
+		if (isset($index) && isset(self::$_requestArray[$index]))
 		{
-			$values = self::$_values[$index];
+            $requestArray = self::$_requestArray[$index];
 		}
 		else
 		{
-			$values = self::$_values;
+            $requestArray = self::$_requestArray;
 		}
 
-		/* values as needed */
+		/* output as needed */
 
 		if (is_null($key))
 		{
-			$output = $values;
+			$output = $requestArray;
 		}
-		else if (array_key_exists($key, $values))
+		else if (array_key_exists($key, $requestArray))
 		{
-			$output = $values[$key];
+			$output = $requestArray[$key];
 		}
 		return $output;
 	}
@@ -162,7 +162,7 @@ class Request extends Singleton
 
 	public static function set($key = null, $value = null)
 	{
-		self::$_values[$key] = $GLOBALS[$key] = $value;
+		self::$_requestArray[$key] = $GLOBALS[$key] = $value;
 	}
 
 	/**
@@ -176,7 +176,7 @@ class Request extends Singleton
 
 	public static function setServer($key = null, $value = null)
 	{
-		self::$_values['_SERVER'][$key] = $value;
+		self::$_requestArray['_SERVER'][$key] = $value;
 	}
 
 	/**
@@ -190,7 +190,7 @@ class Request extends Singleton
 
 	public static function setQuery($key = null, $value = null)
 	{
-		self::$_values['_GET'][$key] = $value;
+		self::$_requestArray['_GET'][$key] = $value;
 	}
 
 	/**
@@ -204,7 +204,7 @@ class Request extends Singleton
 
 	public static function setPost($key = null, $value = null)
 	{
-		self::$_values['_POST'][$key] = $value;
+		self::$_requestArray['_POST'][$key] = $value;
 	}
 
 	/**
@@ -218,7 +218,7 @@ class Request extends Singleton
 
 	public static function setSession($key = null, $value = null)
 	{
-		self::$_values['_SESSION'][$key] = $_SESSION[$key] = $value;
+		self::$_requestArray['_SESSION'][$key] = $_SESSION[$key] = $value;
 	}
 
 	/**
@@ -232,6 +232,6 @@ class Request extends Singleton
 
 	public static function setCookie($key = null, $value = null)
 	{
-		self::$_values['_COOKIE'][$key] = $_COOKIE[$key] = $value;
+		self::$_requestArray['_COOKIE'][$key] = $_COOKIE[$key] = $value;
 	}
 }
