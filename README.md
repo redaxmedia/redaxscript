@@ -73,6 +73,7 @@ Links
 * [Download](http://redaxscript.com/download)
 * [Community](http://redaxscript.com/community)
 * [Wiki](https://wiki.redaxscript.com)
+* [Chat](https://chat.redaxscript.com)
 * [License](http://redaxscript.com/general/about/license)
 
 
