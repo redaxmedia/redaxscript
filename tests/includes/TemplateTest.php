@@ -23,13 +23,13 @@ class TemplateTest extends TestCase
 
 	public function testBreadcrumb()
 	{
-		/* result */
+		/* actual */
 
-		$result = Template::breadcrumb();
+		$actual = Template::breadcrumb();
 
 		/* compare */
 
-		$this->assertTrue(is_string($result));
+		$this->assertTrue(is_string($actual));
 	}
 
 	/**
@@ -40,13 +40,13 @@ class TemplateTest extends TestCase
 
 	public function testHelperClass()
 	{
-		/* result */
+		/* actual */
 
-		$result = Template::helperClass();
+		$actual = Template::helperClass();
 
 		/* compare */
 
-		$this->assertTrue(is_string($result));
+		$this->assertTrue(is_string($actual));
 	}
 
 	/**
@@ -57,13 +57,13 @@ class TemplateTest extends TestCase
 
 	public function testHelperSubset()
 	{
-		/* result */
+		/* actual */
 
-		$result = Template::HelperSubset();
+		$actual = Template::HelperSubset();
 
 		/* compare */
 
-		$this->assertTrue(is_string($result));
+		$this->assertTrue(is_string($actual));
 	}
 
 	/**
@@ -74,12 +74,12 @@ class TemplateTest extends TestCase
 
 	public function testPartial()
 	{
-		/* result */
+		/* actual */
 
-		$result = Template::partial('tests/stubs/partial.phtml');
+		$actual = Template::partial('tests/stubs/partial.phtml');
 
 		/* compare */
 
-		$this->assertTrue(is_string($result));
+		$this->assertTrue(is_string($actual));
 	}
 }

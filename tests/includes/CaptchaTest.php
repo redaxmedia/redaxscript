@@ -60,7 +60,7 @@ class CaptchaTest extends TestCase
 
 		$captcha = new Captcha($this->_language);
 
-		/* result */
+		/* actual */
 
 		$task = $captcha->getTask();
 
@@ -81,7 +81,7 @@ class CaptchaTest extends TestCase
 
 		$captcha = new Captcha($this->_language);
 
-		/* result */
+		/* actual */
 
 		$raw = $captcha->getSolution('raw');
 		$hash = $captcha->getSolution('hash');
@@ -103,13 +103,13 @@ class CaptchaTest extends TestCase
 
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
 
-		/* result */
+		/* actual */
 
-		$result = new Captcha($this->_language);
+		$actual = new Captcha($this->_language);
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_object($actual));
 	}
 
 	/**
@@ -124,12 +124,12 @@ class CaptchaTest extends TestCase
 
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
 
-		/* result */
+		/* actual */
 
-		$result = new Captcha($this->_language);
+		$actual = new Captcha($this->_language);
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_object($actual));
 	}
 }

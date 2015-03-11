@@ -47,12 +47,12 @@ class LoginTest extends TestCase
 
 		$validator = new Validator\Login();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($login);
+		$actual = $validator->validate($login);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

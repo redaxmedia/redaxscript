@@ -46,12 +46,12 @@ class UrlTest extends TestCase
 
 		$filter = new Filter\Url();
 
-		/* result */
+		/* actual */
 
-		$result = $filter->sanitize($url);
+		$actual = $filter->sanitize($url);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

@@ -77,13 +77,13 @@ class HookTest extends TestCase
 
 		Hook::init($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = Hook::getModules();
+		$actual = Hook::getModules();
 
 		/* compare */
 
-		$this->assertArrayHasKey('CallHome', $result);
+		$this->assertArrayHasKey('CallHome', $actual);
 	}
 
 	/**
@@ -99,13 +99,13 @@ class HookTest extends TestCase
 		Hook::init($this->_registry);
 		Hook::trigger('hook_method');
 
-		/* result */
+		/* actual */
 
-		$result = Hook::getEvents();
+		$actual = Hook::getEvents();
 
 		/* compare */
 
-		$this->assertArrayHasKey('hook_method', $result);
+		$this->assertArrayHasKey('hook_method', $actual);
 	}
 
 	/**
@@ -120,16 +120,16 @@ class HookTest extends TestCase
 
 		Hook::init($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = Hook::trigger('hook_method', array(
+		$actual = Hook::trigger('hook_method', array(
 			1,
 			2
 		));
 
 		/* compare */
 
-		$this->assertEquals(-1, $result);
+		$this->assertEquals(-1, $actual);
 	}
 
 	/**
@@ -144,16 +144,16 @@ class HookTest extends TestCase
 
 		Hook::init($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = Hook::trigger('hook_function', array(
+		$actual = Hook::trigger('hook_function', array(
 			1,
 			2
 		));
 
 		/* compare */
 
-		$this->assertEquals(3, $result);
+		$this->assertEquals(3, $actual);
 	}
 
 	/**
@@ -168,12 +168,12 @@ class HookTest extends TestCase
 
 		Hook::init($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = Hook::trigger('hook_invalid');
+		$actual = Hook::trigger('hook_invalid');
 
 		/* compare */
 
-		$this->assertEquals(false, $result);
+		$this->assertEquals(false, $actual);
 	}
 }

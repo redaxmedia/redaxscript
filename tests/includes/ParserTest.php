@@ -83,12 +83,12 @@ class ParserTest extends TestCase
 		);
 		$parser = new Parser($this->_registry, $this->_language, $text, $route, $options);
 
-		/* result */
+		/* actual */
 
-		$result = $parser->getOutput();
+		$actual = $parser->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

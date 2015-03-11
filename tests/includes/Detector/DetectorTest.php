@@ -90,13 +90,13 @@ class DetectorTest extends TestCase
 		$this->_registry->init($registry);
 		$detector = new Detector\Language($this->_registry, $this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $detector->getOutput();
+		$actual = $detector->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -117,13 +117,13 @@ class DetectorTest extends TestCase
 		$this->_registry->init($registry);
 		$detector = new Detector\Template($this->_registry, $this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $detector->getOutput();
+		$actual = $detector->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -142,14 +142,14 @@ class DetectorTest extends TestCase
 		$detectorLanguage = new Detector\Language($this->_registry, $this->_request);
 		$detectorTemplate = new Detector\Template($this->_registry, $this->_request);
 
-		/* result */
+		/* actual */
 
-		$resultLanguage = $detectorLanguage->getOutput();
-		$resultTemplate = $detectorTemplate->getOutput();
+		$actualLanguage = $detectorLanguage->getOutput();
+		$actualTemplate = $detectorTemplate->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('en', $resultLanguage);
-		$this->assertEquals('default', $resultTemplate);
+		$this->assertEquals('en', $actualLanguage);
+		$this->assertEquals('default', $actualTemplate);
 	}
 }

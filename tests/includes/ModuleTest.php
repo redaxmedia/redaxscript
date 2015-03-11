@@ -31,13 +31,13 @@ class ModuleTest extends TestCase
 		));
 		$module->init();
 
-		/* result */
+		/* actual */
 
-		$result = $module;
+		$actual = $module;
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_object($actual));
 	}
 
 	/**
@@ -56,13 +56,13 @@ class ModuleTest extends TestCase
 		));
 		$module->install();
 
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
+		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
 
 		/* compare */
 
-		$this->assertEquals('Test', $result);
+		$this->assertEquals('Test', $actual);
 	}
 
 	/**
@@ -81,12 +81,12 @@ class ModuleTest extends TestCase
 		$module->uninstall();
 		Db::clearCache();
 
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
+		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
 
 		/* compare */
 
-		$this->assertFalse(is_object($result));
+		$this->assertFalse(is_object($actual));
 	}
 }

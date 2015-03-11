@@ -60,13 +60,13 @@ class LanguageTest extends TestCase
 
 		$this->_language->set('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_language->get('testKey');
+		$actual = $this->_language->get('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -77,13 +77,13 @@ class LanguageTest extends TestCase
 
 	public function testGetIndex()
 	{
-		/* result */
+		/* actual */
 
-		$result = $this->_language->get('name', '_package');
+		$actual = $this->_language->get('name', '_package');
 
 		/* compare */
 
-		$this->assertEquals('Redaxscript', $result);
+		$this->assertEquals('Redaxscript', $actual);
 	}
 
 	/**
@@ -94,13 +94,13 @@ class LanguageTest extends TestCase
 
 	public function testGetAll()
 	{
-		/* result */
+		/* actual */
 
-		$result = $this->_language->get();
+		$actual = $this->_language->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('home', $result);
+		$this->assertArrayHasKey('home', $actual);
 	}
 
 	/**
@@ -111,12 +111,12 @@ class LanguageTest extends TestCase
 
 	public function testGetInvalid()
 	{
-		/* result */
+		/* actual */
 
-		$result = $this->_language->get('invalidKey');
+		$actual = $this->_language->get('invalidKey');
 
 		/* compare */
 
-		$this->assertEquals(null, $result);
+		$this->assertEquals(null, $actual);
 	}
 }

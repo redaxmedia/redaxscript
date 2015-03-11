@@ -43,13 +43,13 @@ class RequestTest extends TestCase
 
 	public function testAll()
 	{
-		/* result */
+		/* actual */
 
-		$result = $this->_request->get();
+		$actual = $this->_request->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('_SERVER', $result);
+		$this->assertArrayHasKey('_SERVER', $actual);
 	}
 
 	/**
@@ -64,13 +64,13 @@ class RequestTest extends TestCase
 
 		$this->_request->set('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->get('testKey');
+		$actual = $this->_request->get('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -85,13 +85,13 @@ class RequestTest extends TestCase
 
 		$this->_request->setServer('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->getServer('testKey');
+		$actual = $this->_request->getServer('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -106,13 +106,13 @@ class RequestTest extends TestCase
 
 		$this->_request->setQuery('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->getQuery('testKey');
+		$actual = $this->_request->getQuery('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -127,13 +127,13 @@ class RequestTest extends TestCase
 
 		$this->_request->setPost('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->getPost('testKey');
+		$actual = $this->_request->getPost('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -148,13 +148,13 @@ class RequestTest extends TestCase
 
 		$this->_request->setSession('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->getSession('testKey');
+		$actual = $this->_request->getSession('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -169,12 +169,12 @@ class RequestTest extends TestCase
 
 		$this->_request->setCookie('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_request->getCookie('testKey');
+		$actual = $this->_request->getCookie('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 }

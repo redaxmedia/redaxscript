@@ -54,13 +54,13 @@ class ServerTest extends TestCase
 
 		$directory = new Server\Directory($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $directory->getOutput();
+		$actual = $directory->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('/tests/includes/Server', $result);
+		$this->assertEquals('/tests/includes/Server', $actual);
 	}
 
 	/**
@@ -75,13 +75,13 @@ class ServerTest extends TestCase
 
 		$file = new Server\File($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $file->getOutput();
+		$actual = $file->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('ServerTest.php', $result);
+		$this->assertEquals('ServerTest.php', $actual);
 	}
 
 	/**
@@ -96,13 +96,13 @@ class ServerTest extends TestCase
 
 		$host = new Server\Host($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $host->getOutput();
+		$actual = $host->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('localhost', $result);
+		$this->assertEquals('localhost', $actual);
 	}
 
 	/**
@@ -117,13 +117,13 @@ class ServerTest extends TestCase
 
 		$protocol = new Server\Protocol($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $protocol->getOutput();
+		$actual = $protocol->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('http', $result);
+		$this->assertEquals('http', $actual);
 	}
 
 	/**
@@ -138,13 +138,13 @@ class ServerTest extends TestCase
 
 		$root = new Server\Root($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $root->getOutput();
+		$actual = $root->getOutput();
 
 		/* compare */
 
-		$this->assertEquals('http://localhost/tests/includes/Server', $result);
+		$this->assertEquals('http://localhost/tests/includes/Server', $actual);
 	}
 
 	/**
@@ -159,12 +159,12 @@ class ServerTest extends TestCase
 
 		$token = new Server\Token($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $token->getOutput();
+		$actual = $token->getOutput();
 
 		/* compare */
 
-		$this->assertNotEmpty($result);
+		$this->assertNotEmpty($actual);
 	}
 }

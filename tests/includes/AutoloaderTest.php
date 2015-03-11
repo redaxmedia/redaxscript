@@ -46,13 +46,13 @@ class AutoloaderTest extends TestCase
 			'includes'
 		));
 
-		/* result */
+		/* actual */
 
-		$result = $this->readAttribute($autoloader, '_directory');
+		$actual = $this->readAttribute($autoloader, '_directory');
 
 		/* compare */
 
-		$this->assertArrayHasKey(0, $result);
+		$this->assertArrayHasKey(0, $actual);
 	}
 
 	/**
@@ -68,13 +68,13 @@ class AutoloaderTest extends TestCase
 
 	public function testFilePath($className = null, $expect = null)
 	{
-		/* result */
+		/* actual */
 
-		$result = class_exists($className);
+		$actual = class_exists($className);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result, 'Classname: ' . $className);
+		$this->assertEquals($expect, $actual, 'Classname: ' . $className);
 	}
 
 	/**
@@ -85,13 +85,13 @@ class AutoloaderTest extends TestCase
 
 	public function testAutoloader()
 	{
-		/* result */
+		/* actual */
 
-		$result = spl_autoload_functions();
+		$actual = spl_autoload_functions();
 
 		/* compare */
 
-		$this->assertInternalType('array', $result);
+		$this->assertInternalType('array', $actual);
 	}
 }
 

@@ -80,7 +80,7 @@ class Router extends Parameter
 		);
 		$output = '';
 
-		/* handle admin parameter */
+		/* admin route */
 
 		if (in_array($adminParameter, $this->_routerArray['view']))
 		{
@@ -90,6 +90,9 @@ class Router extends Parameter
 		{
 			$output = 'admin/edit/' . $tableParameter;
 		}
+
+		/* else general route */
+
 		else
 		{
 			if ($type === 'lite')

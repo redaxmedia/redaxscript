@@ -65,13 +65,13 @@ class DbTest extends TestCase
 		$this->_config->set('type', $type);
 		Db::init($this->_config);
 
-		/* result */
+		/* actual */
 
-		$result = Db::getDb();
+		$actual = Db::getDb();
 
 		/* compare */
 
-		$this->assertInstanceOf('PDO', $result);
+		$this->assertInstanceOf('PDO', $actual);
 	}
 
 	/**
@@ -83,13 +83,13 @@ class DbTest extends TestCase
 
 	public function testForTablePrefix()
 	{
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('categories')->where('id', 1)->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->where('id', 1)->findOne()->alias;
 
 		/* compare */
 
-		$this->assertEquals('home', $result);
+		$this->assertEquals('home', $actual);
 	}
 
 	/**
@@ -101,24 +101,24 @@ class DbTest extends TestCase
 
 	public function testLeftJoinPrefix()
 	{
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = array(
 			'category_alias' => 'home',
 			'article_alias' => 'welcome'
 		);
-		$result = Db::forTablePrefix('articles')
+		$actual = Db::forTablePrefix('articles')
 			->tableAlias('a')
 			->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
 			->where('a.id', 1)
 			->findArray();
-		$result = $result[0];
+		$actual = $actual[0];
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -130,9 +130,9 @@ class DbTest extends TestCase
 
 	public function testWhereLikeMany()
 	{
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('articles')->whereLikeMany(array(
+		$actual = Db::forTablePrefix('articles')->whereLikeMany(array(
 			'title'
 		), array(
 			'%welcome%'
@@ -140,7 +140,7 @@ class DbTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals('welcome', $result);
+		$this->assertEquals('welcome', $actual);
 	}
 
 	/**
@@ -152,13 +152,13 @@ class DbTest extends TestCase
 
 	public function testGetSettings()
 	{
-		/* result */
+		/* actual */
 
-		$result = Db::getSettings('charset');
+		$actual = Db::getSettings('charset');
 
 		/* compare */
 
-		$this->assertEquals('utf-8', $result);
+		$this->assertEquals('utf-8', $actual);
 	}
 
 	/**
@@ -170,13 +170,13 @@ class DbTest extends TestCase
 
 	public function testOrderGlobal()
 	{
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('categories')->orderGlobal('rank')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->orderGlobal('rank')->findOne()->alias;
 
 		/* compare */
 
-		$this->assertEquals('home', $result);
+		$this->assertEquals('home', $actual);
 	}
 
 	/**
@@ -188,12 +188,12 @@ class DbTest extends TestCase
 
 	public function testLimitGlobal()
 	{
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('categories')->limitGlobal('rank')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->limitGlobal('rank')->findOne()->alias;
 
 		/* compare */
 
-		$this->assertEquals('home', $result);
+		$this->assertEquals('home', $actual);
 	}
 }

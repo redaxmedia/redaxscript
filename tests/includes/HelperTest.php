@@ -79,13 +79,13 @@ class HelperTest extends TestCase
 		$this->_registry->init($registry);
 		$helper = new Helper($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = $helper->getSubset();
+		$actual = $helper->getSubset();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -106,12 +106,12 @@ class HelperTest extends TestCase
 		$this->_registry->init($registry);
 		$helper = new Helper($this->_registry);
 
-		/* result */
+		/* actual */
 
-		$result = $helper->getClass();
+		$actual = $helper->getClass();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

@@ -68,13 +68,13 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$browser = new Client\Browser($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $browser->getOutput();
+		$actual = $browser->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['browser'], $result);
+		$this->assertEquals($expect['browser'], $actual);
 	}
 
 	/**
@@ -95,13 +95,13 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$desktop = new Client\Desktop($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $desktop->getOutput();
+		$actual = $desktop->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['desktop'], $result);
+		$this->assertEquals($expect['desktop'], $actual);
 	}
 
 	/**
@@ -122,13 +122,13 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$engine = new Client\Engine($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $engine->getOutput();
+		$actual = $engine->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['engine'], $result);
+		$this->assertEquals($expect['engine'], $actual);
 	}
 
 	/**
@@ -149,13 +149,13 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$mobile = new Client\Mobile($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $mobile->getOutput();
+		$actual = $mobile->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['mobile'], $result);
+		$this->assertEquals($expect['mobile'], $actual);
 	}
 
 	/**
@@ -176,13 +176,13 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$tablet = new Client\Tablet($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $tablet->getOutput();
+		$actual = $tablet->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['tablet'], $result);
+		$this->assertEquals($expect['tablet'], $actual);
 	}
 
 	/**
@@ -203,12 +203,12 @@ class ClientTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', $userAgent);
 		$version = new Client\Version($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $version->getOutput();
+		$actual = $version->getOutput();
 
 		/* compare */
 
-		$this->assertEquals($expect['version'], $result);
+		$this->assertEquals($expect['version'], $actual);
 	}
 }

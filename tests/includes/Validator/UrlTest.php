@@ -47,12 +47,12 @@ class UrlTest extends TestCase
 
 		$validator = new Validator\Url();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($url);
+		$actual = $validator->validate($url);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

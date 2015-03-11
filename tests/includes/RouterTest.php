@@ -67,13 +67,13 @@ class RouterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$router = new Router($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $router->getLite();
+		$actual = $router->getLite();
 
 		/* compare */
 
-		$this->assertEquals($expect['lite'], $result);
+		$this->assertEquals($expect['lite'], $actual);
 	}
 
 	/**
@@ -94,12 +94,12 @@ class RouterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$router = new Router($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $router->getFull();
+		$actual = $router->getFull();
 
 		/* compare */
 
-		$this->assertEquals($expect['full'], $result);
+		$this->assertEquals($expect['full'], $actual);
 	}
 }

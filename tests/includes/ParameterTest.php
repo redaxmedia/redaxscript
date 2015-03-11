@@ -67,13 +67,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getFirst();
+		$actual = $parameter->getFirst();
 
 		/* compare */
 
-		$this->assertEquals($expect['first'], $result);
+		$this->assertEquals($expect['first'], $actual);
 	}
 
 	/**
@@ -94,13 +94,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getSecond();
+		$actual = $parameter->getSecond();
 
 		/* compare */
 
-		$this->assertEquals($expect['second'], $result);
+		$this->assertEquals($expect['second'], $actual);
 	}
 
 	/**
@@ -121,13 +121,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getThird();
+		$actual = $parameter->getThird();
 
 		/* compare */
 
-		$this->assertEquals($expect['third'], $result);
+		$this->assertEquals($expect['third'], $actual);
 	}
 
 	/**
@@ -148,13 +148,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getFourth();
+		$actual = $parameter->getFourth();
 
 		/* compare */
 
-		$this->assertEquals($expect['fourth'], $result);
+		$this->assertEquals($expect['fourth'], $actual);
 	}
 
 	/**
@@ -175,13 +175,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getLast();
+		$actual = $parameter->getLast();
 
 		/* compare */
 
-		$this->assertEquals($expect['last'], $result);
+		$this->assertEquals($expect['last'], $actual);
 	}
 
 	/**
@@ -202,13 +202,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getSub();
+		$actual = $parameter->getSub();
 
 		/* compare */
 
-		$this->assertEquals($expect['sub'], $result);
+		$this->assertEquals($expect['sub'], $actual);
 	}
 
 	/**
@@ -229,13 +229,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getAdmin();
+		$actual = $parameter->getAdmin();
 
 		/* compare */
 
-		$this->assertEquals($expect['admin'], $result);
+		$this->assertEquals($expect['admin'], $actual);
 	}
 
 	/**
@@ -256,13 +256,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getTable();
+		$actual = $parameter->getTable();
 
 		/* compare */
 
-		$this->assertEquals($expect['table'], $result);
+		$this->assertEquals($expect['table'], $actual);
 	}
 
 	/**
@@ -283,13 +283,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getAlias();
+		$actual = $parameter->getAlias();
 
 		/* compare */
 
-		$this->assertEquals($expect['alias'], $result);
+		$this->assertEquals($expect['alias'], $actual);
 	}
 
 	/**
@@ -310,13 +310,13 @@ class ParameterTest extends TestCase
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getId();
+		$actual = $parameter->getId();
 
 		/* compare */
 
-		$this->assertEquals($expect['id'], $result);
+		$this->assertEquals($expect['id'], $actual);
 	}
 
 	/**
@@ -340,12 +340,12 @@ class ParameterTest extends TestCase
 		$this->_request->setServer('HTTP_HOST', 'test');
 		$parameter = new Parameter($this->_request);
 
-		/* result */
+		/* actual */
 
-		$result = $parameter->getToken();
+		$actual = $parameter->getToken();
 
 		/* compare */
 
-		$this->assertEquals($expect['token'], $result);
+		$this->assertEquals($expect['token'], $actual);
 	}
 }

@@ -155,13 +155,13 @@ class BreadcrumbTest extends TestCase
 		);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language, $options);
 
-		/* result */
+		/* actual */
 
-		$result = $breadcrumb->getArray();
+		$actual = $breadcrumb->getArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -182,12 +182,12 @@ class BreadcrumbTest extends TestCase
 		$this->_registry->init($registry);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
 
-		/* result */
+		/* actual */
 
-		$result = $breadcrumb->render();
+		$actual = $breadcrumb->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

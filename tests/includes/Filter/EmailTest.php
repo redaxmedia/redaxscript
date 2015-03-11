@@ -46,12 +46,12 @@ class EmailTest extends TestCase
 
 		$filter = new Filter\Email();
 
-		/* result */
+		/* actual */
 
-		$result = $filter->sanitize($email);
+		$actual = $filter->sanitize($email);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

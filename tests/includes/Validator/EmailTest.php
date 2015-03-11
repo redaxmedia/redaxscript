@@ -47,12 +47,12 @@ class EmailTest extends TestCase
 
 		$validator = new Validator\Email();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($email);
+		$actual = $validator->validate($email);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

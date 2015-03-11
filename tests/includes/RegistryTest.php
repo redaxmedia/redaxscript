@@ -48,13 +48,13 @@ class RegistryTest extends TestCase
 
 		$this->_registry->set('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_registry->get('testKey');
+		$actual = $this->_registry->get('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -69,13 +69,13 @@ class RegistryTest extends TestCase
 
 		$this->_registry->set('testAll', 'testAll');
 
-		/* result */
+		/* actual */
 
-		$result = $this->_registry->get();
+		$actual = $this->_registry->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('testAll', $result);
+		$this->assertArrayHasKey('testAll', $actual);
 	}
 
 	/**
@@ -86,12 +86,12 @@ class RegistryTest extends TestCase
 
 	public function testGetInvalid()
 	{
-		/* result */
+		/* actual */
 
-		$result = $this->_registry->get('invalidKey');
+		$actual = $this->_registry->get('invalidKey');
 
 		/* compare */
 
-		$this->assertEquals(null, $result);
+		$this->assertEquals(null, $actual);
 	}
 }
