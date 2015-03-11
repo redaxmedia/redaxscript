@@ -33,7 +33,7 @@ class Captcha implements Validator
 
 		/* validate raw again hash */
 
-		if (sha1($raw) === $hash || Db::getSettings('captcha') === 0)
+		if (sha1($raw) === $hash || Db::getSettings('captcha') < 1)
 		{
 			$output = Validator::PASSED;
 		}
