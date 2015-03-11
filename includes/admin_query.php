@@ -389,33 +389,21 @@ function admin_process()
 		/* query new */
 
 		case $_POST['new']:
-			foreach ($r as $key => $value)
-			{
-				$key_string .= $key;
-				$value_string .= '\'' . $value . '\'';
-				if ($last != $key)
-				{
-					$key_string .= ', ';
-					$value_string .= ', ';
-				}
-			}
-			$general_insert_query = 'INSERT INTO ' . PREFIX . TABLE_PARAMETER . ' (' . $key_string . ') VALUES (' . $value_string . ')';
-			Redaxscript\Db::rawExecute($general_insert_query);
+			Redaxscript\Db::forTablePrefix(Redaxscript\Registry::get('tableParameter'))
+				->create()
+				->set($r)
+				->save();
 			notification(l('operation_completed'), '', l('continue'), $route);
 			return null;
 
 		/* query edit */
 
 		case $_POST['edit']:
-			foreach ($r as $key => $value)
-			{
-				$set_string .= $key . ' = \'' . $value . '\'';
-				if ($last != $key)
-				{
-					$set_string .= ', ';
-				}
-			}
-			$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET ' . $set_string . ' WHERE id = ' . ID_PARAMETER . ' LIMIT 1';
+			Redaxscript\Db::forTablePrefix(Redaxscript\Registry::get('tableParameter'))
+				->whereIdIs(Redaxscript\Registry::get('idParameter'))
+				->findOne()
+				->set($r)
+				->save();
 
 			/* categories */
 
@@ -443,7 +431,7 @@ function admin_process()
 
 			/* general */
 
-			Redaxscript\Db::rawExecute($general_update_query);
+			//Redaxscript\Db::rawExecute($general_update_query);
 			if ($comments_update_query)
 			{
 				Redaxscript\Db::rawExecute($comments_update_query);
