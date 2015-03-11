@@ -31,7 +31,7 @@ class Directory
 	protected $_directoryArray = array();
 
 	/**
-	 * array of files to exclude
+	 * array of the files to exclude
 	 *
 	 * @var array
 	 */
@@ -42,7 +42,7 @@ class Directory
 	);
 
 	/**
-	 * local cache for directory
+	 * array of the local cache
 	 *
 	 * @var array
 	 */

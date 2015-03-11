@@ -208,19 +208,51 @@
 		}
 	],
 	[
-		"admin/install/modules/CallHome/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		"admin/process/articles/1",
+		{
+			"first": "admin",
+			"second": "process",
+			"third": "articles",
+			"fourth": "",
+			"last": "articles",
+			"sub": "1",
+			"admin": "process",
+			"table": "articles",
+			"alias": "",
+			"id": "1",
+			"token": ""
+		}
+	],
+	[
+		"admin/install/modules/helloWorld/0071877d20a65c02d9a1654f109b97dc61416d1a",
 		{
 			"first": "admin",
 			"second": "install",
 			"third": "modules",
-			"fourth": "CallHome",
+			"fourth": "helloWorld",
 			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
 			"sub": "",
 			"admin": "install",
 			"table": "modules",
-			"alias": "CallHome",
+			"alias": "helloWorld",
 			"id": "",
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		}
+	],
+	[
+		"admin/update/settings",
+		{
+			"first": "admin",
+			"second": "update",
+			"third": "settings",
+			"fourth": "",
+			"last": "settings",
+			"sub": "",
+			"admin": "update",
+			"table": "settings",
+			"alias": "",
+			"id": "",
+			"token": ""
 		}
 	]
 ]
