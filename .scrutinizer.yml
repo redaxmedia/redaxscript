@@ -5,7 +5,6 @@ filter:
   - includes/comments.php
   - includes/contents.php
   - includes/generate.php
-  - includes/get.php
   - includes/head.php
   - includes/loader.php
   - includes/login.php

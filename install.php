@@ -4,7 +4,6 @@ error_reporting(0);
 /* include core files */
 
 include_once('includes/generate.php');
-include_once('includes/get.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/password.php');

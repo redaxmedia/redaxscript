@@ -6,7 +6,6 @@ error_reporting(0);
 include_once('includes/center.php');
 include_once('includes/contents.php');
 include_once('includes/generate.php');
-include_once('includes/get.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');

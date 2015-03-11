@@ -29,8 +29,11 @@ function startup()
 
 	/* define general */
 
-	define('FILE', get_file());
-	define('ROOT', get_root());
+	$request = Redaxscript\Request::getInstance();
+	$file = new Redaxscript\Server\File($request);
+	$root = new Redaxscript\Server\Root($request);
+	define('FILE', $file->getOutput());
+	define('ROOT', $root->getOutput());
 
 	/* session start */
 
@@ -46,7 +49,8 @@ function startup()
 
 	/* define token */
 
-	define('TOKEN', get_token());
+	$token = new Redaxscript\Server\Token($request);
+	define('TOKEN', $token->getOutput());
 
 	/* prefix and salt */
 
@@ -67,18 +71,19 @@ function startup()
 
 	/* define parameter */
 
-	define('FIRST_PARAMETER', get_parameter('first'));
-	define('FIRST_SUB_PARAMETER', get_parameter('first_sub'));
-	define('SECOND_PARAMETER', get_parameter('second'));
-	define('SECOND_SUB_PARAMETER', get_parameter('second_sub'));
-	define('THIRD_PARAMETER', get_parameter('third'));
-	define('THIRD_SUB_PARAMETER', get_parameter('third_sub'));
+	$parameter = new Redaxscript\Parameter($request);
+	define('FIRST_PARAMETER', $parameter->getFirst());
+	define('FIRST_SUB_PARAMETER', $parameter->getSub());
+	define('SECOND_PARAMETER', $parameter->getSecond());
+	define('SECOND_SUB_PARAMETER', $parameter->getSub());
+	define('THIRD_PARAMETER', $parameter->getThird());
+	define('THIRD_SUB_PARAMETER', $parameter->getSub());
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		define('ADMIN_PARAMETER', get_parameter('admin'));
-		define('TABLE_PARAMETER', get_parameter('table'));
-		define('ID_PARAMETER', get_parameter('id'));
-		define('ALIAS_PARAMETER', get_parameter('alias'));
+		define('ADMIN_PARAMETER', $parameter->getAdmin());
+		define('TABLE_PARAMETER', $parameter->getTable());
+		define('ID_PARAMETER', $parameter->getId());
+		define('ALIAS_PARAMETER', $parameter->getAlias());
 	}
 	else
 	{
@@ -89,14 +94,15 @@ function startup()
 			'ALIAS_PARAMETER'
 		));
 	}
-	define('LAST_PARAMETER', get_parameter('last'));
-	define('LAST_SUB_PARAMETER', get_parameter('last_sub'));
-	define('TOKEN_PARAMETER', get_parameter('token'));
+	define('LAST_PARAMETER', $parameter->getLast());
+	define('LAST_SUB_PARAMETER', $parameter->getSub());
+	define('TOKEN_PARAMETER', $parameter->getToken());
 
 	/* define routes */
 
-	define('FULL_ROUTE', get_route(0));
-	define('FULL_TOP_ROUTE', get_route(1));
+	$router = new Redaxscript\Router($request);
+	define('FULL_ROUTE', $router->getLite());
+	define('FULL_TOP_ROUTE', $router->getFull());
 	if (function_exists('apache_get_modules') && in_array('mod_rewrite', apache_get_modules()) == '' || file_exists('.htaccess') == '' || FILE == 'install.php')
 	{
 		define('REWRITE_ROUTE', '?p=');
@@ -236,11 +242,16 @@ function startup()
 
 	/* define user */
 
-	define('MY_BROWSER', get_user_agent(0));
-	define('MY_BROWSER_VERSION', get_user_agent(1));
-	define('MY_ENGINE', get_user_agent(2));
-	define('MY_MOBILE', get_user_agent(4));
-	define('MY_TABLET', get_user_agent(5));
+	$browser = new Redaxscript\Client\Browser($request);
+	$version = new Redaxscript\Client\Version($request);
+	$engine = new Redaxscript\Client\Engine($request);
+	$mobile = new Redaxscript\Client\Mobile($request);
+	$tablet = new Redaxscript\Client\Tablet($request);
+	define('MY_BROWSER', $browser->getOutput());
+	define('MY_BROWSER_VERSION', $version->getOutput());
+	define('MY_ENGINE', $engine->getOutput());
+	define('MY_MOBILE', $mobile->getOutput());
+	define('MY_TABLET', $tablet->getOutput());
 
 	/* if mobile or tablet */
 
@@ -250,7 +261,8 @@ function startup()
 	}
 	else
 	{
-		define('MY_DESKTOP', get_user_agent(3));
+		$desktop = new Redaxscript\Client\Desktop($request);
+		define('MY_DESKTOP', $desktop->getOutput());
 	}
 
 	/* if logged in */

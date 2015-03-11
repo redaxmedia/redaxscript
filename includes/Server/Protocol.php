@@ -23,7 +23,7 @@ class Protocol extends Server
 
 	public function getOutput()
 	{
-		$output = $this->_request->getServer('HTTPS') !== 'off' ? 'https' : 'http';
+		$output = $this->_request->getServer('HTTPS') === 'off' || !$this->_request->getServer('HTTPS') ? 'http' : 'https';
 		return $output;
 	}
 }
