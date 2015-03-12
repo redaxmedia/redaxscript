@@ -103,20 +103,19 @@ function login_post()
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
 		$login_by_email = 0;
-		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
-
+		$users = Redaxscript\Db::forTablePrefix('users');
 		if ($emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
 			$post_user = clean($post_user, 0);
-			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT 1';
+			$users->where('user', $post_user);
 		}
 		else
 		{
 			$post_user = clean($post_user, 3);
 			$login_by_email = 1;
-			$users_query .= 'WHERE email = \'' . $post_user . '\' LIMIT 1';
+			$users->where('email', $post_user);
 		}
-		$users_result = Redaxscript\Db::forTablePrefix('users')->rawQuery($users_query)->findArray();
+		$users_result = $users->findArray();
 		foreach ($users_result as $r)
 		{
 			foreach ($r as $key => $value)
@@ -180,8 +179,7 @@ function login_post()
 
 		/* query groups */
 
-		$groups_query = 'SELECT categories, articles, extras, comments, groups, users, modules, settings, filter FROM ' . PREFIX . 'groups WHERE id IN (' . $my_groups . ') && status = 1';
-		$groups_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($groups_query)->findArray();
+		$groups_result = Redaxscript\Db::forTablePrefix('groups')->whereIdIn(explode(',', $my_groups))->where('status', 1)->findArray();
 		if ($groups_result)
 		{
 			$num_rows = count($groups_result);
