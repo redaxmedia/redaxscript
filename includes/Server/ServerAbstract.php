@@ -13,7 +13,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-abstract class Server
+abstract class ServerAbstract
 {
 	/**
 	 * instance of the request class

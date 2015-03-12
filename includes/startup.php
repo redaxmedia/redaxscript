@@ -231,7 +231,7 @@ function startup()
 	/* define content error */
 
 	$aliasValidator = new Redaxscript\Validator\Alias();
-	if (LAST_ID == '' && $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::FAILED)
+	if (LAST_ID == '' && $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		define('CONTENT_ERROR', 1);
 	}

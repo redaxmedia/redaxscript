@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Alias implements Validator
+class Alias implements ValidatorInterface
 {
 	/**
 	 * general validate mode
@@ -61,7 +61,7 @@ class Alias implements Validator
 
 	public function validate($alias = null, $mode = 0)
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 
 		/* validate general alias */
 
@@ -69,7 +69,7 @@ class Alias implements Validator
 		{
 			if (preg_match('/[^a-z0-9-]/i', $alias) || is_numeric($alias))
 			{
-				$output = Validator::PASSED;
+				$output = ValidatorInterface::PASSED;
 			}
 		}
 
@@ -79,7 +79,7 @@ class Alias implements Validator
 		{
 			if (in_array($alias, $this->_defaultArray))
 			{
-				$output = Validator::PASSED;
+				$output = ValidatorInterface::PASSED;
 			}
 		}
 		return $output;

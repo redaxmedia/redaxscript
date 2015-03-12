@@ -14,7 +14,7 @@ use Redaxscript\Db;
  * @author Sven Weingartner
  */
 
-class Captcha implements Validator
+class Captcha implements ValidatorInterface
 {
 	/**
 	 * validate the captcha
@@ -29,13 +29,13 @@ class Captcha implements Validator
 
 	public function validate($raw = null, $hash = null)
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 
 		/* validate raw again hash */
 
 		if (sha1($raw) === $hash || Db::getSettings('captcha') < 1)
 		{
-			$output = Validator::PASSED;
+			$output = ValidatorInterface::PASSED;
 		}
 		return $output;
 	}

@@ -11,7 +11,7 @@ namespace Redaxscript\Client;
  * @author Henry Ruhs
  */
 
-class Browser extends Client
+class Browser extends ClientAbstract
 {
 	/**
 	 * init the class

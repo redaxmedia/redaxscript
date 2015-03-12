@@ -75,7 +75,7 @@ function contents()
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -84,7 +84,7 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::PASSED)
+				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					$route = build_route('articles', $id);
 				}
@@ -105,7 +105,7 @@ function contents()
 				{
 					$output .= '<h2 class="title_content">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\Validator::PASSED
+						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
 					{
 						$output .= anchor_element('internal', '', '', $title, $route);
@@ -254,7 +254,7 @@ function extras($filter = '')
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{

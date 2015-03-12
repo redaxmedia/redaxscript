@@ -105,7 +105,7 @@ function login_post()
 		$login_by_email = 0;
 		$users_query = 'SELECT id, name, user, email, password, language, status, groups FROM ' . PREFIX . 'users ';
 
-		if ($emailValidator->validate($post_user) == Redaxscript\Validator\Validator::FAILED)
+		if ($emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
 			$post_user = clean($post_user, 0);
 			$users_query .= 'WHERE user = \'' . $post_user . '\' LIMIT 1';
@@ -137,20 +137,20 @@ function login_post()
 	{
 		$error = l('password_empty');
 	}
-	else if ($login_by_email == 0 && $loginValidator->validate($post_user) == Redaxscript\Validator\Validator::FAILED)
+	else if ($login_by_email == 0 && $loginValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($login_by_email == 1 && $emailValidator->validate($post_user) == Redaxscript\Validator\Validator::FAILED)
+	else if ($login_by_email == 1 && $emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\Validator::FAILED
+	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\ValidatorInterface::FAILED
 	)
 	{
 		$error = l('password_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

@@ -14,7 +14,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class Template extends Detector
+class Template extends DetectorAbstract
 {
 	/**
 	 * init the class

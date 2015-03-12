@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-interface Filter
+interface FilterInterface
 {
 	/**
 	 * sanitize the value

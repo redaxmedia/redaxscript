@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-class Special implements Filter
+class Special implements FilterInterface
 {
 	/**
 	 * sanitize the special

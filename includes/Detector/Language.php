@@ -14,7 +14,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class Language extends Detector
+class Language extends DetectorAbstract
 {
 	/**
 	 * init the class

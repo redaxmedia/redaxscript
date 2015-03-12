@@ -11,7 +11,7 @@ namespace Redaxscript\Server;
  * @author Henry Ruhs
  */
 
-class Token extends Server
+class Token extends ServerAbstract
 {
 	/**
 	 * get the output

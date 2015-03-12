@@ -14,7 +14,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-abstract class Detector
+abstract class DetectorAbstract
 {
 	/**
 	 * instance of the registry class

@@ -11,7 +11,7 @@ namespace Redaxscript\Client;
  * @author Henry Ruhs
  */
 
-class Mobile extends Client
+class Mobile extends ClientAbstract
 {
 	/**
 	 * init the class

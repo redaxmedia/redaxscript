@@ -211,7 +211,7 @@ class Breadcrumb
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\Validator::PASSED)
+		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
 			/* join default title */
 

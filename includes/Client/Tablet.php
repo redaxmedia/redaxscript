@@ -11,7 +11,7 @@ namespace Redaxscript\Client;
  * @author Henry Ruhs
  */
 
-class Tablet extends Client
+class Tablet extends ClientAbstract
 {
 	/**
 	 * init the class

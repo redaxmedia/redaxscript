@@ -82,7 +82,7 @@ class Sitemap extends Config
 			$lastCategory = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
+				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
 					$currentCategory = $value['category'];
 

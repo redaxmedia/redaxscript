@@ -11,7 +11,7 @@ namespace Redaxscript\Server;
  * @author Henry Ruhs
  */
 
-class File extends Server
+class File extends ServerAbstract
 {
 	/**
 	 * get the output

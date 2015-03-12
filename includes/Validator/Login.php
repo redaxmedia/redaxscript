@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Login implements Validator
+class Login implements ValidatorInterface
 {
 	/**
 	 * allowed range for login
@@ -37,14 +37,14 @@ class Login implements Validator
 
 	public function validate($login = null)
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 		$length = strlen($login);
 
 		/* validate login */
 
 		if (ctype_alnum($login) && $length >= $this->_range['min'] && $length <= $this->_range['max'])
 		{
-			$output = Validator::PASSED;
+			$output = ValidatorInterface::PASSED;
 		}
 		return $output;
 	}

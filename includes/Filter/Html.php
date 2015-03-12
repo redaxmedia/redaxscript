@@ -14,7 +14,7 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Html implements Filter
+class Html implements FilterInterface
 {
 	/**
 	 * array of tags

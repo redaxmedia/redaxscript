@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-interface Validator
+interface ValidatorInterface
 {
 	/**
 	 * status passed

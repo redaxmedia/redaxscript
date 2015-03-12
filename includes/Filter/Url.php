@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-class Url implements Filter
+class Url implements FilterInterface
 {
 	/**
 	 * sanitize the url

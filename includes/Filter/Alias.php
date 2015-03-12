@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-class Alias implements Filter
+class Alias implements FilterInterface
 {
 	/**
 	 * sanitize the alias

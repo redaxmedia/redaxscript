@@ -119,15 +119,15 @@ function registration_post()
 	{
 		$error = l('email_empty');
 	}
-	else if ($loginValidator->validate($user) == Redaxscript\Validator\Validator::FAILED)
+	else if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

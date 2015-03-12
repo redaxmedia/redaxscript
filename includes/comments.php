@@ -62,7 +62,7 @@ function comments($article = '', $route = '')
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -270,15 +270,15 @@ function comment_post()
 	{
 		$error = l('comment_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\Validator::FAILED)
+	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}
