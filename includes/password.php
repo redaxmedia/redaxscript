@@ -81,8 +81,11 @@ function password_reset_post()
 
 	if ($post_id && $post_password)
 	{
-		$users_query = 'SELECT id, name, email, password FROM ' . PREFIX . 'users WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
-		$users_result = Redaxscript\Db::forTablePrefix('users')->rawQuery($users_query)->findArray();
+		$users_result = Redaxscript\Db::forTablePrefix('users')->where(array(
+			'id' => $post_id,
+			'password' => $post_password,
+			'status' => 1
+		))->findArray();
 		foreach ($users_result as $r)
 		{
 			foreach ($r as $key => $value)
@@ -133,8 +136,15 @@ function password_reset_post()
 
 		/* update password */
 
-		$query = 'UPDATE ' . PREFIX . 'users SET password = \'' . sha1($password) . SALT . '\' WHERE id = ' . $post_id . ' && password = \'' . $post_password . '\' && status = 1';
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('users')
+			->where(array(
+				'id' => $post_id,
+				'password' => $post_password,
+				'status' => 1
+			))
+			->findOne()
+			->set('password', sha1($password) . Redaxscript\Registry::get('salt'))
+			->save();
 	}
 
 	/* handle error */

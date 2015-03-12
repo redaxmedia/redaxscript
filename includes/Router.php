@@ -73,12 +73,12 @@ class Router extends Parameter
 
 	protected function _getRoute($type = 'lite')
 	{
+		$output = '';
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
 		$subArray = array(
 			$this->getSub()
 		);
-		$output = '';
 
 		/* admin route */
 

@@ -99,8 +99,10 @@ function reminder_post()
 	{
 		/* query users */
 
-		$query = 'SELECT id, user, password FROM ' . PREFIX . 'users WHERE email = \'' . $email . '\' && status = 1';
-		$result = Redaxscript\Db::forTablePrefix('users')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('users')->where(array(
+			'email' => $email,
+			'status' => 1
+		))->findArray();
 		if ($result)
 		{
 			foreach ($result as $r)
