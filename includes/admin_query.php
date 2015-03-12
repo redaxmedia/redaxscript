@@ -431,7 +431,6 @@ function admin_process()
 
 			/* general */
 
-			//Redaxscript\Db::rawExecute($general_update_query);
 			if ($comments_update_query)
 			{
 				Redaxscript\Db::rawExecute($comments_update_query);
