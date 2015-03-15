@@ -178,25 +178,12 @@ function registration_post()
 		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
-		/* build key and value strings */
+		/* create user */
 
-		$r_keys = array_keys($r);
-		$last = end($r_keys);
-		foreach ($r as $key => $value)
-		{
-			$key_string .= $key;
-			$value_string .= '\'' . $value . '\'';
-			if ($last != $key)
-			{
-				$key_string .= ', ';
-				$value_string .= ', ';
-			}
-		}
-
-		/* insert user */
-
-		$query = 'INSERT INTO ' . PREFIX . 'users (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('users')
+			->create()
+			->set($r)
+			->save();
 	}
 
 	/* handle error */

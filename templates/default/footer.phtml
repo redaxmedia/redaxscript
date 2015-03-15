@@ -5,7 +5,9 @@
 <?php if (!Registry::get('myMobile')): ?>
 	<footer id="footer" class="footer">
 		<section class="wrapper clearfix">
-			<?php echo Template::extra('footer'); ?>
+			<?php echo Template::extra(array(
+				'filter' => 'footer'
+			)); ?>
 		</section>
 	</footer>
 <?php endif; ?>
