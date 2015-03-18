@@ -25,9 +25,11 @@ use ORM;
  * @method orderByDesc()
  * @method selectExpr()
  * @method tableAlias()
+ * @method whereGt()
  * @method whereIdIn()
  * @method whereIdIs()
  * @method whereIn()
+ * @method whereLt()
  * @method whereRaw()
  */
 

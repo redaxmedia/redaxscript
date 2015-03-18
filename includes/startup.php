@@ -324,6 +324,7 @@ function startup()
 	define('GMDATE_PLUS_WEEK', gmdate('D, d M Y H:i:s', strtotime('+1 week')) . ' GMT');
 	define('GMDATE_PLUS_YEAR', gmdate('D, d M Y H:i:s', strtotime('+1 year')) . ' GMT');
 	define('NOW', date('Y-m-d H:i:s'));
+	Redaxscript\Registry::set('now', NOW);
 	define('DELAY', date('Y-m-d H:i:s', strtotime('+1 minute')));
 	define('TODAY', date('Y-m-d'));
 
@@ -333,6 +334,7 @@ function startup()
 	if (UPDATE == '' && FILE != 'install.php')
 	{
 		future_update('articles');
+		future_update('comments');
 		future_update('extras');
 		$_SESSION[ROOT . '/update'] = DELAY;
 	}
