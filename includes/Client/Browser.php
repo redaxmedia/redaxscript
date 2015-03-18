@@ -24,6 +24,7 @@ class Browser extends ClientAbstract
 		$this->_detect(array(
 			'safari',
 			'chrome',
+			'chromium',
 			'firefox',
 			'konqueror',
 			'msie',

@@ -24,6 +24,7 @@ class Desktop extends ClientAbstract
 		$this->_detect(array(
 			'bsd',
 			'linux',
+			'ubuntu',
 			'macintosh',
 			'solaris',
 			'windows'
