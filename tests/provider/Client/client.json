@@ -11,6 +11,17 @@
 		}
 	],
 	[
+		"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Ubuntu/11.10 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2",
+		{
+			"browser": "chromium",
+			"desktop": "ubuntu",
+			"engine": "webkit",
+			"mobile": "",
+			"tablet": "",
+			"version": "15"
+		}
+	],
+	[
 		"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
 		{
 			"browser": "chrome",
@@ -25,7 +36,7 @@
 		"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:33.0) Gecko/20100101 Firefox/33.0",
 		{
 			"browser": "firefox",
-			"desktop": "linux",
+			"desktop": "ubuntu",
 			"engine": "gecko",
 			"mobile": "",
 			"tablet": "",
@@ -66,10 +77,21 @@
 		}
 	],
 	[
+		"Mozilla/5.0 (X11; Linux) KHTML/4.9.1 (like Gecko) Konqueror/4.9",
+		{
+			"browser": "konqueror",
+			"desktop": "linux",
+			"engine": "gecko",
+			"mobile": "",
+			"tablet": "",
+			"version": "4"
+		}
+	],
+	[
 		"Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16",
 		{
 			"browser": "opera",
-			"desktop": "linux",
+			"desktop": "ubuntu",
 			"engine": "presto",
 			"mobile": "",
 			"tablet": "",
