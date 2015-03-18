@@ -361,7 +361,7 @@ function admin_process()
 			$route .= '/edit/' . TABLE_PARAMETER . '/' . ID_PARAMETER;
 		}
 		notification(l('error_occurred'), $error, l('back'), $route);
-		return null;
+		return;
 	}
 
 	/* handle success */
@@ -394,7 +394,7 @@ function admin_process()
 				->set($r)
 				->save();
 			notification(l('operation_completed'), '', l('continue'), $route);
-			return null;
+			return;
 
 		/* query edit */
 
@@ -446,7 +446,7 @@ function admin_process()
 				}
 			}
 			notification(l('operation_completed'), '', l('continue'), $route);
-			return null;
+			return;
 	}
 }
 

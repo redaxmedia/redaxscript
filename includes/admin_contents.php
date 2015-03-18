@@ -498,7 +498,7 @@ function admin_contents_form()
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
 	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
-	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
+	if (TABLE_PARAMETER != 'categories')
 	{
 		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('date'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
@@ -681,7 +681,7 @@ function admin_contents_form()
 
 	/* collect date set */
 
-	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
+	if (TABLE_PARAMETER != 'categories')
 	{
 		$output .= form_element('fieldset', 'tab-3', 'js_set_tab set_tab set_tab_admin', '', '', l('date')) . '<ul>';
 		$output .= '<li>' . select_date('day', 'field_select_admin', 'day', $date, 'd', 1, 32, l('day')) . '</li>';
