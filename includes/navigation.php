@@ -57,10 +57,14 @@ function navigation_list($table = '', $options = '')
 			$query_parent = 'article';
 			break;
 	}
-
 	/* query contents */
 
-	$query = 'SELECT * FROM ' . PREFIX . $table . ' WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && status = 1';
+	$contents = Redaxscript\Db::forTablePrefix($table)
+		->where('status', 1)
+		->whereIn('language', array(
+			Redaxscript\Registry::get('language'),
+			''
+		));
 
 	/* setup parent */
 
@@ -68,11 +72,11 @@ function navigation_list($table = '', $options = '')
 	{
 		if ($option_parent)
 		{
-			$query .= ' && ' . $query_parent . ' = ' . $option_parent;
+			$contents->where($query_parent, $option_parent);
 		}
 		else if ($table == 'categories')
 		{
-			$query .= ' && ' . $query_parent . ' = 0';
+			$contents->where($query_parent, 0);
 		}
 	}
 
@@ -84,24 +88,32 @@ function navigation_list($table = '', $options = '')
 
 		if ($option_filter_alias)
 		{
-			$query .= ' && alias IN (' . $option_filter_alias . ')';
+			$contents->whereIn('alias', $option_filter_alias);
 		}
 
 		/* setup filter rank option */
 
 		if ($option_filter_rank)
 		{
-			$query .= ' && rank IN (' . $option_filter_rank . ')';
+			$contents->whereIn('rank', $option_filter_rank);
 		}
 	}
 
 	/* setup rank and limit */
 
-	$query .= ' ORDER BY rank ' . $option_order . ' LIMIT ' . $option_limit;
+	if ($option_order === 'asc')
+	{
+		$contents->orderByAsc('rank');
+	}
+	else
+	{
+		$contents->orderByDesc('rank');
+	}
+	$contents->limit($option_limit);
 
 	/* query result */
 
-	$result = Redaxscript\Db::forTablePrefix($table)->rawQuery($query)->findArray();
+	$result = $contents->findArray();
 	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{
