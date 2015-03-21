@@ -51,8 +51,7 @@ function admin_contents_list()
 
 	/* query contents */
 
-	$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -430,8 +429,7 @@ function admin_contents_form()
 	{
 		/* query content */
 
-		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -583,8 +581,7 @@ function admin_contents_form()
 		{
 			$category_array[l('none')] = 0;
 		}
-		$categories_query = 'SELECT id, title, parent FROM ' . PREFIX . 'categories ORDER BY rank ASC';
-		$categories_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($categories_query)->findArray();
+		$categories_result = Redaxscript\Db::forTablePrefix('categories')->orderByAsc('rank')->findArray();
 		if ($categories_result)
 		{
 			foreach ($categories_result as $c)
@@ -617,13 +614,12 @@ function admin_contents_form()
 		{
 			$article_array[l('all')] = 0;
 		}
-		$articles_query = 'SELECT id, title FROM ' . PREFIX . 'articles';
+		$articles = Redaxscript\Db::forTablePrefix('articles');
 		if (TABLE_PARAMETER == 'comments')
 		{
-			$articles_query .= ' WHERE comments > 0';
+			$articles->where('comments', 0);
 		}
-		$articles_query .= ' ORDER BY rank ASC';
-		$articles_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($articles_query)->findArray();
+		$articles_result = $articles->orderByAsc('rank')->findArray();
 		if ($articles_result)
 		{
 			foreach ($articles_result as $a)
@@ -666,8 +662,7 @@ function admin_contents_form()
 	if (GROUPS_EDIT == 1)
 	{
 		$access_array[l('all')] = 0;
-		$access_query = 'SELECT id, name FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($access_query)->findArray();
+		$access_result = Redaxscript\Db::forTablePrefix('groups')->orderByAsc('name')->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)
