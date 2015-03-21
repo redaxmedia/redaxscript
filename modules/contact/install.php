@@ -13,8 +13,18 @@
 
 function contact_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Contact\', \'contact\', \'Redaxmedia\', \'Simple contact form\', \'2.4.0\', 1, 0)';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')
+		->create()
+		->set(array(
+			'name' => 'Contact',
+			'alias' => 'contact',
+			'author' => 'Redaxmedia',
+			'description' => 'Simple contact form',
+			'version' => '2.4.0',
+			'status' => 1,
+			'access' => 0
+		))
+		->save();
 }
 
 /**
@@ -30,7 +40,6 @@ function contact_install()
 
 function contact_uninstall()
 {
-	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'contact\' LIMIT 1';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')->where('alias', 'contact')->findMany()->delete();
 }
 

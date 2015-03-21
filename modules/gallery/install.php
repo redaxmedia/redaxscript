@@ -13,8 +13,18 @@
 
 function gallery_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Gallery\', \'gallery\', \'Redaxmedia\', \'Lightbox enhanced image gallery\', \'2.4.0\', 1, 0)';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')
+		->create()
+		->set(array(
+			'name' => 'Gallery',
+			'alias' => 'gallery',
+			'author' => 'Redaxmedia',
+			'description' => 'Lightbox enhanced image gallery',
+			'version' => '2.4.0',
+			'status' => 1,
+			'access' => 0
+		))
+		->save();
 }
 
 /**
@@ -30,6 +40,5 @@ function gallery_install()
 
 function gallery_uninstall()
 {
-	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'gallery\' LIMIT 1';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')->where('alias', 'gallery')->findMany()->delete();
 }

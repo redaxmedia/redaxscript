@@ -13,8 +13,18 @@
 
 function file_manager_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'File manager\', \'file_manager\', \'Redaxmedia\', \'Simple file management\', \'2.4.0\', 1, 1)';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')
+		->create()
+		->set(array(
+			'name' => 'File manager',
+			'alias' => 'file_manager',
+			'author' => 'Redaxmedia',
+			'description' => 'Simple file management',
+			'version' => '2.4.0',
+			'status' => 1,
+			'access' => 1
+		))
+		->save();
 }
 
 /**
@@ -30,7 +40,6 @@ function file_manager_install()
 
 function file_manager_uninstall()
 {
-	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'file_manager\' LIMIT 1';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')->where('alias', 'file_manager')->findMany()->delete();
 }
 
