@@ -20,8 +20,20 @@ function comments($article = '', $route = '')
 
 	/* query comments */
 
-	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
-	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
+	$comments = Redaxscript\Db::forTablePrefix('comments')
+		->where(array(
+			'status' => 1,
+			'article' => $article
+		))
+		->whereIn('language', array(
+			Redaxscript\Registry::get('language'),
+			''
+		))
+		->orderGlobal('rank');
+
+	/* query result */
+
+	$result = $comments->findArray();
 	if ($result)
 	{
 		$num_rows = count($result);
@@ -39,8 +51,11 @@ function comments($article = '', $route = '')
 			$offset_string = ($sub_active - 1) * s('limit') . ', ';
 		}
 	}
-	$query .= ' LIMIT ' . $offset_string . s('limit');
-	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
+	$comments->limit($offset_string . s('limit'));
+
+	/* query result */
+
+	$result = $comments->findArray();
 	$num_rows_active = count($result);
 
 	/* handle error */
@@ -337,25 +352,12 @@ function comment_post()
 			$mailer->send();
 		}
 
-		/* build key and value strings */
+		/* create comment */
 
-		$r_keys = array_keys($r);
-		$last = end($r_keys);
-		foreach ($r as $key => $value)
-		{
-			$key_string .= $key;
-			$value_string .= '\'' . $value . '\'';
-			if ($last != $key)
-			{
-				$key_string .= ', ';
-				$value_string .= ', ';
-			}
-		}
-
-		/* insert comment */
-
-		$query = 'INSERT INTO ' . PREFIX . 'comments (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('comments')
+			->create()
+			->set($r)
+			->save();
 	}
 
 	/* handle error */

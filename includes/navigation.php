@@ -57,6 +57,7 @@ function navigation_list($table = '', $options = '')
 			$query_parent = 'article';
 			break;
 	}
+
 	/* query contents */
 
 	$contents = Redaxscript\Db::forTablePrefix($table)
