@@ -101,8 +101,8 @@ function startup()
 	/* define routes */
 
 	$router = new Redaxscript\Router($request);
-	define('FULL_ROUTE', $router->getLite());
-	define('FULL_TOP_ROUTE', $router->getFull());
+	define('LITE_ROUTE', $router->getLite());
+	define('FULL_ROUTE', $router->getFull());
 	if (function_exists('apache_get_modules') && in_array('mod_rewrite', apache_get_modules()) == '' || file_exists('.htaccess') == '' || FILE == 'install.php')
 	{
 		define('REWRITE_ROUTE', '?p=');

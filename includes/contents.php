@@ -16,17 +16,26 @@ function contents()
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 	$aliasValidator = new Redaxscript\Validator\Alias();
 
-	/* query contents */
+	/* query articles */
 
-	$query = 'SELECT id, title, author, text, language, date, headline, infoline, comments, access FROM ' . PREFIX . 'articles WHERE status = 1';
+	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
 	if (ARTICLE)
 	{
-		$query .= ' && id = ' . ARTICLE;
+		$articles->where('id', ARTICLE);
 	}
 	else if (CATEGORY)
 	{
-		$query .= ' && (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && category = ' . CATEGORY . ' ORDER BY rank ' . s('order');
-		$result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($query)->findArray();
+		$articles
+			->where('category', CATEGORY)
+			->whereIn('language', array(
+				Redaxscript\Registry::get('language'),
+				''
+			))
+			->orderGlobal('rank');
+
+		/* query result */
+
+		$result = $articles->findArray();
 		if ($result)
 		{
 			$num_rows = count($result);
@@ -44,13 +53,16 @@ function contents()
 				$offset_string = ($sub_active - 1) * s('limit') . ', ';
 			}
 		}
-		$query .= ' LIMIT ' . $offset_string . s('limit');
+		$articles->limit($offset_string . s('limit'));
 	}
 	else
 	{
-		$query .= ' LIMIT 0';
+		$articles->limit(0);
 	}
-	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
+
+	/* query result */
+
+	$result = $articles->findArray();
 	$num_rows_active = count($result);
 
 	/* handle error */
@@ -227,21 +239,31 @@ function extras($filter = '')
 
 	/* query extras */
 
-	$query = 'SELECT id, title, text, category, article, headline, access FROM ' . PREFIX . 'extras WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\')';
+	$extras = Redaxscript\Db::forTablePrefix('extras')
+		->whereIn('language', array(
+			Redaxscript\Registry::get('language'),
+			''
+		));
+
+	/* setup filter */
+
 	if (is_numeric($filter))
 	{
-		$query .= ' && rank = ' . $filter;
+		$extras->where('rank', $filter);
 	}
 	else if ($filter)
 	{
-		$query .= ' && alias = \'' . $filter . '\'';
+		$extras->where('alias', $filter);
 	}
 	else
 	{
-		$query .= ' && status = 1';
+		$extras->where('status', 1);
 	}
-	$query .= ' ORDER BY rank';
-	$result = Redaxscript\Db::forTablePrefix('extras')->rawQuery($query)->findArray();
+	$extras->orderByAsc('rank');
+
+	/* query result */
+
+	$result = $extras->findArray();
 
 	/* collect output */
 

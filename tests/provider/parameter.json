@@ -16,6 +16,22 @@
 		}
 	],
 	[
+		"1337",
+		{
+			"first": "",
+			"second": "",
+			"third": "",
+			"fourth": "",
+			"last": "",
+			"sub": "1337",
+			"admin": "",
+			"table": "",
+			"alias": "",
+			"id": "",
+			"token": ""
+		}
+	],
+	[
 		"hello",
 		{
 			"first": "hello",
