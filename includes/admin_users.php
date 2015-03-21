@@ -17,7 +17,7 @@ function admin_users_list()
 
 	/* query users */
 
-	$result = Redaxscript\Db::forTablePrefix('users')->orderByDesc('last')->findArray();
+	$result = Redaxscript\Db::forTablePrefix('users')->orderByAsc('name')->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
