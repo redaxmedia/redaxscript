@@ -508,8 +508,7 @@ function admin_sort()
 	{
 		/* query general select */
 
-		$general_select_query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($general_select_query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();
 
 		/* build select array */
 
@@ -564,8 +563,11 @@ function admin_sort()
 
 		foreach ($update_array as $key => $value)
 		{
-			$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = \'' . ++$key . '\' WHERE id = \'' . $value . '\' LIMIT 1';
-			Redaxscript\Db::rawExecute($general_update_query);
+			Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)
+				->where('id', $value)
+				->findOne()
+				->set('rank', ++$key)
+				->save();
 		}
 	}
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
@@ -807,8 +809,11 @@ function admin_update()
 
 		foreach ($r as $key => $value)
 		{
-			$query = 'UPDATE ' . PREFIX . 'settings SET value = \'' . $value . '\' WHERE name = \'' . $key . '\' LIMIT 1';
-			Redaxscript\Db::rawExecute($query);
+			Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)
+				->where('name', $key)
+				->findOne()
+				->set('value', $value)
+				->save();
 		}
 		notification(l('operation_completed'), '', l('continue'), 'admin/edit/settings');
 	}
@@ -911,7 +916,10 @@ function admin_last_update()
 {
 	if (MY_ID)
 	{
-		$query = 'UPDATE ' . PREFIX . 'users SET last = \'' . NOW . '\' WHERE id = ' . MY_ID;
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('users')
+			->where('id', MY_ID)
+			->findOne()
+			->set('last', NOW)
+			->save();
 	}
 }
