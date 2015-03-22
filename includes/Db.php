@@ -139,6 +139,29 @@ class Db extends ORM
 	}
 
 	/**
+	 * find a flatten array
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param $key key of the item
+	 *
+	 * @return array
+	 */
+
+	public function findArrayFlat($key = 'id')
+	{
+		$output = array();
+		foreach ($this->findArray() as $value)
+		{
+			if (isset($value[$key]))
+			{
+				$output[] = $value[$key];
+			}
+		}
+		return $output;
+	}
+
+	/**
 	 * get item from settings
 	 *
 	 * @since 2.2.0

@@ -597,17 +597,15 @@ function admin_status($input = '')
 	if (TABLE_PARAMETER == 'categories')
 	{
 		$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
-		$categoryChildrenArray = $categoryChildren->findArray();
-		$articleChildren = Redaxscript\Db::forTablePrefix('articles');
-		$articleChildrenArray = $articleChildren->findArray();
-		if (count($categoryChildrenArray) > 0)
-		{
-			$articleChildren->whereIn('category', $categoryChildrenArray);
-		}
-		if (count($articleChildrenArray) > 0)
+		$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+			ID_PARAMETER
+		));
+		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
+		$articleArray = $articleChildren->findArrayFlat();
+		if (count($articleArray) > 0)
 		{
 			Redaxscript\Db::forTablePrefix('comments')
-				->whereIn('article', $articleChildrenArray)
+				->whereIn('article', $articleArray)
 				->findMany()
 				->set('status', $input)
 				->save();
