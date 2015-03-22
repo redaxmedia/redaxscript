@@ -484,10 +484,8 @@ function admin_move()
 
 	/* query rank */
 
-	$rank_old_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . $rank_old . ' WHERE id = ' . $id;
-	$rank_new_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . $rank_new . ' WHERE id = ' . ID_PARAMETER;
-	Redaxscript\Db::rawExecute($rank_old_update_query);
-	Redaxscript\Db::rawExecute($rank_new_update_query);
+	Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', $id)->findOne()->set('rank', $rank_old)->save();
+	Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->set('rank', $rank_new)->save();
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
 
@@ -588,34 +586,45 @@ function admin_sort()
 
 function admin_status($input = '')
 {
-	$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET status = ' . $input . ' WHERE id = ' . ID_PARAMETER;
+	Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)
+		->where('id', ID_PARAMETER)
+		->findMany()
+		->set('status', $input)
+		->save();
 
-	/* query categories status */
+	/* query categories */
 
 	if (TABLE_PARAMETER == 'categories')
 	{
-		$categories_string = admin_children('categories', ID_PARAMETER, 0);
-		$categories_children_string = admin_children('categories', ID_PARAMETER, 2);
-		$categories_update_query = 'UPDATE ' . PREFIX . 'categories SET status = ' . $input . ' WHERE id IN (' . $categories_string . ')';
-		$articles_update_query = 'UPDATE ' . PREFIX . 'articles SET status = ' . $input . ' WHERE category IN (' . $categories_string . ')';
-		$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $input . ' WHERE article IN (' . $categories_children_string . ')';
-		Redaxscript\Db::rawExecute($categories_update_query);
-		Redaxscript\Db::rawExecute($articles_update_query);
+		$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
+		$categoryChildrenArray = $categoryChildren->findArray();
+		$articleChildren = Redaxscript\Db::forTablePrefix('articles');
+		$articleChildrenArray = $articleChildren->findArray();
+		if (count($categoryChildrenArray) > 0)
+		{
+			$articleChildren->whereIn('category', $categoryChildrenArray);
+		}
+		if (count($articleChildrenArray) > 0)
+		{
+			Redaxscript\Db::forTablePrefix('comments')
+				->whereIn('article', $articleChildrenArray)
+				->findMany()
+				->set('status', $input)
+				->save();
+		}
+		$categoryChildren->findMany()->set('status', $input)->save();
+		$articleChildren->findMany()->set('status', $input)->save();
 	}
 
-	/* query articles status */
+	/* query articles */
 
 	if (TABLE_PARAMETER == 'articles')
 	{
-		$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $input . ' WHERE article = ' . ID_PARAMETER;
-	}
-
-	/* query general status */
-
-	Redaxscript\Db::rawExecute($general_update_query);
-	if ($comments_update_query)
-	{
-		Redaxscript\Db::rawExecute($comments_update_query);
+		Redaxscript\Db::forTablePrefix('comments')
+			->where('article', ID_PARAMETER)
+			->findMany()
+			->set('status', $input)
+			->save();
 	}
 	notification(l('operation_completed'), '', l('continue'), 'admin/view/' . TABLE_PARAMETER);
 }
