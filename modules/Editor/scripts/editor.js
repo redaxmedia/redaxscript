@@ -18,7 +18,7 @@
  *    1.14 init
  * 2. init
  *
- * @since 2.2.0
+ * @since 2.4.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
