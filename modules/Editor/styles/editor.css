@@ -271,14 +271,14 @@
 
 .editor_preview > break, .editor_preview > function, .editor_preview > quote
 {
-	background: url('modules/Editor/images/carbon.png') #222;
+	border: 2px dashed;
 	color: #b9b9b9;
 	display: block;
 	font-size: 1.5em;
 	height: 3em;
+	margin: 1em;
 	position: relative;
 	text-indent: -999em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
