@@ -198,7 +198,10 @@ class Parser
 
 		/* collect output */
 
-		$output = str_replace('<break>', '', $input);
+		$output = str_replace(array(
+			'<break>',
+			'</break>'
+		), '', $input);
 		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);

@@ -7,20 +7,18 @@
  *    1.3 action
  *    1.4 insert
  *    1.5 insert html
- *    1.6 insert code
+ *    1.6 insert quote
  *    1.7 insert break
  *    1.8 format
  *    1.9 toggle
  *    1.10 get selection
  *    1.11 check selection
- *    1.12 convert to html
- *    1.13 convert to entity
- *    1.14 post
- *    1.15 validate
- *    1.16 init
+ *    1.12 post
+ *    1.13 validate
+ *    1.14 init
  * 2. init
  *
- * @since 2.0.2
+ * @since 2.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -128,7 +126,7 @@
 			{
 				/* append preview */
 
-				editor.preview = $('<div contenteditable="true">' + editor.convertToEntity() + '</div>').addClass(options.className.editorPreview).appendTo(editor.container);
+				editor.preview = $('<div contenteditable="true">' + editor.textarea.val() + '</div>').addClass(options.className.editorPreview).appendTo(editor.container);
 
 				/* insert break on enter */
 
@@ -209,7 +207,7 @@
 
 						else if (command === 'insertFunction')
 						{
-							editor.insertHTML('&lt;function&gt;' + input + '&lt;/function&gt;');
+							editor.insertHTML('<function>' + input + '</function>');
 						}
 
 						/* else default behavior */
@@ -239,13 +237,13 @@
 				}
 			};
 
-			/* @section 1.6 insert code */
+			/* @section 1.6 insert quote */
 
-			editor.insertCode = function ()
+			editor.insertQuote = function ()
 			{
 				if (editor.checkSelection())
 				{
-					editor.insertHTML('&lt;code&gt;' + editor.select() + '&lt;/code&gt;');
+					editor.insertHTML('<quote>' + editor.select() + '</quote>');
 				}
 			};
 
@@ -253,7 +251,7 @@
 
 			editor.insertBreak = function ()
 			{
-				editor.insertHTML('&lt;break&gt;');
+				editor.insertHTML('<break></break>');
 			};
 
 			/* @section 1.8 format */
@@ -273,13 +271,13 @@
 				if (editor.mode)
 				{
 					editor.mode = 0;
-					editor.preview.html(editor.convertToEntity()).focus();
+					editor.preview.html(editor.textarea.val()).focus();
 					editor.controlToggle.attr('title', rs.language._editor.source_code);
 				}
 				else
 				{
 					editor.mode = 1;
-					editor.textarea.val(editor.convertToHTML()).focus();
+					editor.textarea.val(editor.preview.html()).focus();
 					editor.controlToggle.attr('title', rs.language._editor.wysiwyg);
 				}
 				editor.controlToggle.toggleClass(options.className.editorSourceCode + ' ' + options.className.editorWysiwyg).nextAll(options.element.editorControl).toggle();
@@ -323,33 +321,11 @@
 				}
 			};
 
-			/* @section 1.12 convert to html */
-
-			editor.convertToHTML = function ()
-			{
-				var output = editor.preview.html();
-
-				output = output.replace(/&lt;(break|code|function|module)&gt;/gi, '<$1>');
-				output = output.replace(/&lt;\/(code|function|module)&gt;/gi, '</$1>');
-				return output;
-			};
-
-			/* @section 1.13 convert to entity */
-
-			editor.convertToEntity = function ()
-			{
-				var output = editor.textarea.val();
-
-				output = output.replace(/<(break|code|function|module)>/gi, '&lt;$1&gt;');
-				output = output.replace(/<\/(code|function|module)>/gi, '&lt;/$1&gt;');
-				return output;
-			};
-
-			/* @section 1.14 post */
+			/* @section 1.12 post */
 
 			editor.post = function ()
 			{
-				var html = editor.convertToHTML();
+				var html = editor.preview.html();
 
 				if (html.length)
 				{
@@ -357,14 +333,14 @@
 				}
 			};
 
-			/* @section 1.15 validate */
+			/* @section 1.13 validate */
 
 			editor.validate = function ()
 			{
 				editor.textarea.add(editor.preview).attr('data-related', 'editor').trigger('related');
 			};
 
-			/* @section 1.16 init */
+			/* @section 1.14 init */
 
 			editor.init = function ()
 			{
