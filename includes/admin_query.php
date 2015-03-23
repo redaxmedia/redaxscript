@@ -405,20 +405,44 @@ function admin_process()
 				->set($r)
 				->save();
 
-			/* categories */
+			/* query categories */
 
 			if (TABLE_PARAMETER == 'categories')
 			{
-				$categories_string = admin_children('categories', ID_PARAMETER, 0);
-				$categories_children_string = admin_children('categories', ID_PARAMETER, 2);
-				$categories_update_query = 'UPDATE ' . PREFIX . 'categories SET status = ' . $status . ', access = \'' . $access . '\' WHERE id IN (' . $categories_string . ')';
-				$articles_update_query = 'UPDATE ' . PREFIX . 'articles SET status = ' . $status . ', access = \'' . $access . '\' WHERE category IN (' . $categories_string . ')';
-				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $status . ', access = \'' . $access . '\' WHERE article IN (' . $categories_children_string . ')';
-				Redaxscript\Db::rawExecute($categories_update_query);
-				Redaxscript\Db::rawExecute($articles_update_query);
+				$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
+				$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+					ID_PARAMETER
+				));
+				$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
+				$articleArray = $articleChildren->findArrayFlat();
+				if (count($articleArray) > 0)
+				{
+					Redaxscript\Db::forTablePrefix('comments')
+						->whereIn('article', $articleArray)
+						->findMany()
+						->set(array(
+							'status' => $status,
+							'access' => $access
+						))
+						->save();
+				}
+				$categoryChildren
+					->findMany()
+					->set(array(
+						'status' => $status,
+						'access' => $access
+					))
+					->save();
+				$articleChildren
+					->findMany()
+					->set(array(
+						'status' => $status,
+						'access' => $access
+					))
+					->save();
 			}
 
-			/* articles */
+			/* query articles */
 
 			if (TABLE_PARAMETER == 'articles')
 			{
@@ -426,14 +450,14 @@ function admin_process()
 				{
 					$status = 0;
 				}
-				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET status = ' . $status . ', access = \'' . $access . '\' WHERE article = ' . ID_PARAMETER;
-			}
-
-			/* general */
-
-			if ($comments_update_query)
-			{
-				Redaxscript\Db::rawExecute($comments_update_query);
+				Redaxscript\Db::forTablePrefix('comments')
+					->where('article', ID_PARAMETER)
+					->findMany()
+					->set(array(
+						'status' => $status,
+						'access' => $access
+					))
+					->save();
 			}
 			if (USERS_EXCEPTION == 1)
 			{
@@ -687,66 +711,70 @@ function admin_install()
 
 function admin_delete()
 {
-	/* query general */
-
-	$general_delete_query = 'DELETE FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER . ' LIMIT 1';
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 	{
-		$rank_desc = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank');
-		$rank_old = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->rank;
-		if ($rank_old > 1 && $rank_old < $rank_desc)
-		{
-			for ($rank_old; $rank_old - 1 < $rank_desc; $rank_old++)
-			{
-				$general_update_query = 'UPDATE ' . PREFIX . TABLE_PARAMETER . ' SET rank = ' . ($rank_old - 1) . ' WHERE rank = ' . $rank_old;
-				Redaxscript\Db::rawExecute($general_update_query);
-			}
-		}
+		Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)
+			->where('id', ID_PARAMETER)
+			->findMany()
+			->delete();
 	}
 
 	/* query categories */
 
 	if (TABLE_PARAMETER == 'categories')
 	{
-		$categories_string = admin_children('categories', ID_PARAMETER, 0);
-		$categories_children_string = admin_children('categories', ID_PARAMETER, 2);
-		if ($categories_string)
+		$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
+		$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+			ID_PARAMETER
+		));
+		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
+		$articleArray = $articleChildren->findArrayFlat();
+		if (count($articleArray) > 0)
 		{
-			$categories_delete_query = 'DELETE FROM ' . PREFIX . 'categories WHERE id IN (' . $categories_string . ')';
-			$articles_delete_query = 'DELETE FROM ' . PREFIX . 'articles WHERE category IN (' . $categories_string . ')';
-			$extras_update_query = 'UPDATE ' . PREFIX . 'extras SET category = 0 WHERE category IN (' . $categories_string . ')';
+			Redaxscript\Db::forTablePrefix('comments')
+				->whereIn('article', $articleArray)
+				->findMany()
+				->delete();
 		}
-		if ($categories_children_string)
-		{
-			$comments_delete_query = 'DELETE FROM ' . PREFIX . 'comments WHERE article IN (' . $categories_children_string . ')';
-		}
-		Redaxscript\Db::rawExecute($categories_delete_query);
-		Redaxscript\Db::rawExecute($articles_delete_query);
+		$categoryChildren->findMany()->delete();
+		$articleChildren->findMany()->delete();
+
+		/* reset extras */
+
+		Redaxscript\Db::forTablePrefix('extras')
+			->whereIn('category', $categoryArray)
+			->findMany()
+			->set('category', 0)
+			->save();
 	}
 
 	/* query articles */
 
 	if (TABLE_PARAMETER == 'articles')
 	{
-		$extras_update_query = 'UPDATE ' . PREFIX . 'extras SET article = 0 WHERE article = ' . ID_PARAMETER;
-		$comments_delete_query = 'DELETE FROM ' . PREFIX . 'comments WHERE article = ' . ID_PARAMETER;
+		Redaxscript\Db::forTablePrefix('comments')
+			->where('article', ID_PARAMETER)
+			->findMany()
+			->delete();
+
+		/* reset extras */
+
+		Redaxscript\Db::forTablePrefix('extras')
+			->where('article', ID_PARAMETER)
+			->findMany()
+			->set('article', 0)
+			->save();
+
+		/* reset homepage */
+
 		if (ID_PARAMETER == s('homepage'))
 		{
-			$homepage_update_query = 'UPDATE ' . PREFIX . 'settings SET value = 0 WHERE name = \'homepage\' LIMIT 1';
-			Redaxscript\Db::rawExecute($homepage_update_query);
+			Redaxscript\Db::forTablePrefix('settings')
+				->where('name', 'homepage')
+				->findOne()
+				->set('value', 0)
+				->save();
 		}
-	}
-
-	/* query general */
-
-	Redaxscript\Db::rawExecute($general_delete_query);
-	if ($extras_update_query)
-	{
-		Redaxscript\Db::rawExecute($extras_update_query);
-	}
-	if ($comments_delete_query)
-	{
-		Redaxscript\Db::rawExecute($comments_delete_query);
 	}
 
 	/* handle exception */
@@ -823,88 +851,6 @@ function admin_update()
 				->save();
 		}
 		notification(l('operation_completed'), '', l('continue'), 'admin/edit/settings');
-	}
-}
-
-/**
- * admin children
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Admin
- * @author Henry Ruhs
- *
- * @param string $table
- * @param integer $id
- * @param integer $mode
- *
- * @return string
- */
-
-function admin_children($table = '', $id = '', $mode = '')
-{
-	$output = '';
-	if ($table == 'categories')
-	{
-		$categories_query = 'SELECT id FROM ' . PREFIX . 'categories WHERE parent = ' . $id;
-		$categories_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($categories_query)->findArray();
-		$categories_num_rows = count($categories_result);
-		if ($categories_result)
-		{
-			$i = 0;
-			foreach ($categories_result as $c)
-			{
-				$categories_children_string .= $c['id'];
-				if ($i++ > $categories_num_rows)
-				{
-					$categories_children_string .= ', ';
-				}
-			}
-		}
-		$categories_string = $id;
-		if ($categories_children_string)
-		{
-			$categories_string .= ', ' . $categories_children_string;
-		}
-
-		/* mode zero */
-
-		if ($mode == 0)
-		{
-			$output = $categories_string;
-		}
-
-		/* mode one */
-
-		if ($mode == 1)
-		{
-			$output = $categories_children_string;
-		}
-
-		/* mode two */
-
-		if ($mode == 2 && $categories_string)
-		{
-			$articles_query = 'SELECT id FROM ' . PREFIX . 'articles WHERE category IN (' . $categories_string . ')';
-			$articles_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($articles_query)->findArray();
-			$articles_num_rows = count($articles_result);
-			if ($articles_result)
-			{
-				$i = 0;
-				foreach ($articles_result as $a)
-				{
-					$categories_children_string .= $a['id'];
-					if ($i++ > $articles_num_rows)
-					{
-						$categories_children_string .= ', ';
-					}
-				}
-			}
-			$output = $categories_children_string;
-		}
-		return $output;
 	}
 }
 
