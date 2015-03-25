@@ -27,6 +27,7 @@ function login_form()
 	if (s('captcha') > 0)
 	{
 		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+		$captcha->init();
 	}
 
 	/* reminder question */

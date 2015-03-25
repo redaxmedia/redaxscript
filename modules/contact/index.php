@@ -88,6 +88,7 @@ function contact_form()
 	if (s('captcha') > 0)
 	{
 		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+		$captcha->init();
 	}
 
 	/* collect output */

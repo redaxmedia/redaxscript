@@ -25,6 +25,7 @@ function reminder_form()
 	/* captcha object */
 
 	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+	$captcha->init();
 
 	/* collect output */
 

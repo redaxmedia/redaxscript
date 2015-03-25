@@ -25,6 +25,7 @@ function password_reset_form()
 	/* captcha object */
 
 	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+	$captcha->init();
 
 	/* collect output */
 
