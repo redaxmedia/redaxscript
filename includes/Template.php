@@ -55,13 +55,13 @@ class Template
 
 	public static function breadcrumb()
 	{
-		$options = array(
+		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
+		$breadcrumb->init(array(
 			'className' => array(
 				'list' => 'list_breadcrumb',
 				'divider' => 'divider'
 			)
-		);
-		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance(), $options);
+		));
 		return $breadcrumb->render();
 	}
 

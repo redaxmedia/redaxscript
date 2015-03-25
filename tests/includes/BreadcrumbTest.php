@@ -147,13 +147,13 @@ class BreadcrumbTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$options = array(
+		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
+		$breadcrumb->init(array(
 			'className' => array(
 				'list' => 'list-breadcrumb',
 				'divider' => 'item-divider'
 			)
-		);
-		$breadcrumb = new Breadcrumb($this->_registry, $this->_language, $options);
+		));
 
 		/* actual */
 
@@ -181,6 +181,7 @@ class BreadcrumbTest extends TestCase
 
 		$this->_registry->init($registry);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
+		$breadcrumb->init();
 
 		/* actual */
 
