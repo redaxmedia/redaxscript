@@ -72,6 +72,7 @@ function startup()
 	/* define parameter */
 
 	$parameter = new Redaxscript\Parameter($request);
+	$parameter->init();
 	define('FIRST_PARAMETER', $parameter->getFirst());
 	define('FIRST_SUB_PARAMETER', $parameter->getSub());
 	define('SECOND_PARAMETER', $parameter->getSecond());
@@ -101,6 +102,7 @@ function startup()
 	/* define routes */
 
 	$router = new Redaxscript\Router($request);
+	$router->init();
 	define('LITE_ROUTE', $router->getLite());
 	define('FULL_ROUTE', $router->getFull());
 	if (function_exists('apache_get_modules') && in_array('mod_rewrite', apache_get_modules()) == '' || file_exists('.htaccess') == '' || FILE == 'install.php')

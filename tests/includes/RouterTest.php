@@ -66,6 +66,7 @@ class RouterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$router = new Router($this->_request);
+		$router->init();
 
 		/* actual */
 
@@ -93,6 +94,7 @@ class RouterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$router = new Router($this->_request);
+		$router->init();
 
 		/* actual */
 

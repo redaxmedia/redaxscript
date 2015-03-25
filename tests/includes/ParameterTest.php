@@ -66,6 +66,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -93,6 +94,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -120,6 +122,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -147,6 +150,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -174,6 +178,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -201,6 +206,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -228,6 +234,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -255,6 +262,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -282,6 +290,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -309,6 +318,7 @@ class ParameterTest extends TestCase
 
 		$this->_request->setQuery('p', $route);
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 
@@ -339,6 +349,7 @@ class ParameterTest extends TestCase
 		$this->_request->setServer('HTTP_USER_AGENT', 'test');
 		$this->_request->setServer('HTTP_HOST', 'test');
 		$parameter = new Parameter($this->_request);
+		$parameter->init();
 
 		/* actual */
 

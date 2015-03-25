@@ -40,8 +40,6 @@ class Parameter
 	public function __construct(Request $request)
 	{
 		$this->_request = $request;
-		$this->_parameterArray = array_filter(explode('/', $this->_request->getQuery('p')));
-		$this->init();
 	}
 
 	/**
@@ -52,6 +50,7 @@ class Parameter
 
 	public function init()
 	{
+		$this->_parameterArray = array_filter(explode('/', $this->_request->getQuery('p')));
 		if (is_array($this->_parameterArray))
 		{
 			$aliasFilter = new Filter\Alias;
