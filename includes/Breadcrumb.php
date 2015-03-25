@@ -56,7 +56,7 @@ class Breadcrumb
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.1.0
+	 * @since 2.4.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
@@ -71,7 +71,7 @@ class Breadcrumb
 	/**
 	 * init the class
 	 *
-	 * @since 2.1.0
+	 * @since 2.4.0
 	 *
 	 * @param array $options options of the breadcrumb
 	 */
