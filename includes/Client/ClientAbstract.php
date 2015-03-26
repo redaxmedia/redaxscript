@@ -42,7 +42,7 @@ abstract class ClientAbstract
 	public function __construct(Request $request)
 	{
 		$this->_request = $request;
-		$this->init();
+		$this->_autorun();
 	}
 
 	/**

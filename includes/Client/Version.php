@@ -14,12 +14,12 @@ namespace Redaxscript\Client;
 class Version extends ClientAbstract
 {
 	/**
-	 * init the class
+	 * automate run
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function init()
+	protected function _autorun()
 	{
 		$this->_detect(array(
 			'version',

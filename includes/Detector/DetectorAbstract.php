@@ -53,7 +53,7 @@ abstract class DetectorAbstract
 	{
 		$this->_registry = $registry;
 		$this->_request = $request;
-		$this->init();
+		$this->_autorun();
 	}
 
 	/**

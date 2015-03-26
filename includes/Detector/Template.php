@@ -17,12 +17,12 @@ use Redaxscript\Request;
 class Template extends DetectorAbstract
 {
 	/**
-	 * init the class
+	 * automate run
 	 *
 	 * @since 2.1.0
 	 */
 
-	public function init()
+	protected function _autorun()
 	{
 		$root = $this->_registry->get('root');
 		$dbStatus = $this->_registry->get('dbStatus');
