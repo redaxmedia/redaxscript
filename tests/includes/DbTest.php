@@ -75,6 +75,24 @@ class DbTest extends TestCase
 	}
 
 	/**
+	 * testRawInstance
+	 *
+	 * @since 2.4.0
+	 *
+	 */
+
+	public function testRawInstance()
+	{
+		/* actual */
+
+		$actual = Db::rawInstance()->getDb();
+
+		/* compare */
+
+		$this->assertInstanceOf('PDO', $actual);
+	}
+
+	/**
 	 * testForTablePrefix
 	 *
 	 * @since 2.2.0

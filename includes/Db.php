@@ -19,6 +19,7 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @methid getDb()
  * @method rawExecute()
  * @method rawQuery()
  * @method orderByAsc()
@@ -86,6 +87,20 @@ class Db extends ORM
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
 		));
+	}
+
+	/**
+	 * raw instance helper
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return Db
+	 */
+
+	public static function rawInstance()
+	{
+		self::_setup_db();
+		return new self(null);
 	}
 
 	/**

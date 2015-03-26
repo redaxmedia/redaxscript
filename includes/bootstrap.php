@@ -27,15 +27,15 @@ Db::init($config);
 
 try
 {
-	/* has connection */
+	/* has driver */
 
 	if ($config->get('type') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 	{
 		$registry->set('dbStatus', 1);
 
-		/* has tables */
+		/* has table */
 
-		if (Db::forTablePrefix()->rawQuery('SHOW TABLES LIKE \'' . $config->get('prefix') . '%\'')->findMany()->count())
+		if (Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . $config->get('prefix') . '%\'')->findMany()->count())
 		{
 			$registry->set('dbStatus', 2);
 		}
