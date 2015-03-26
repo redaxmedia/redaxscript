@@ -6,7 +6,7 @@ use Redaxscript\Installer;
 /**
  * InstallerTest
  *
- * @since 2.2.0
+ * @since 2.4.0
  *
  * @package Redaxscript
  * @category Tests
