@@ -91,7 +91,8 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path), $exclude);
+		$directory = new Directory();
+        $directory->init(Stream::url($path), $exclude);
 
 		/* actual */
 
@@ -117,7 +118,8 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path[1]));
+		$directory = new Directory();
+        $directory->init(Stream::url($path[1]));
 		$directory->create($path[0], 511);
 
 		/* actual */
@@ -144,7 +146,8 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path[1]));
+        $directory = new Directory();
+        $directory->init(Stream::url($path[1]));
 		$directory->remove($path[0]);
 
 		/* actual */

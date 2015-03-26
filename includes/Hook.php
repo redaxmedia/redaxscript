@@ -56,8 +56,9 @@ class Hook
 	public static function init(Registry $registry)
 	{
 		$accessValidator = new Validator\Access();
-		$modulesDirectory = new Directory('modules');
-		$modulesAvailable = $modulesDirectory->getArray();
+		$directory = new Directory();
+		$directory->init('modules');
+		$modulesAvailable = $directory->getArray();
 		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
 		/* proccess installed modules */

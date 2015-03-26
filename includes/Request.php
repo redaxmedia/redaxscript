@@ -51,11 +51,11 @@ class Request extends Singleton
 
 		if (isset($index) && isset(self::$_requestArray[$index]))
 		{
-            $requestArray = self::$_requestArray[$index];
+			$requestArray = self::$_requestArray[$index];
 		}
 		else
 		{
-            $requestArray = self::$_requestArray;
+			$requestArray = self::$_requestArray;
 		}
 
 		/* output as needed */

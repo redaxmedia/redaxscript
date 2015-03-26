@@ -64,7 +64,7 @@ class Language extends Singleton
 		}
 		else
 		{
-            $languageArray = self::$_languageArray;
+			$languageArray = self::$_languageArray;
 		}
 
 		/* output as needed */
@@ -120,7 +120,7 @@ class Language extends Singleton
 			if (file_exists($file))
 			{
 				$contents = file_get_contents($file);
-                $languageArray = json_decode($contents, true);
+				$languageArray = json_decode($contents, true);
 				if (is_array($languageArray))
 				{
 					self::$_languageArray = array_merge(self::$_languageArray, $languageArray);

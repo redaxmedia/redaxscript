@@ -36,7 +36,7 @@ use ORM;
 class Db extends ORM
 {
 	/**
-	 * connect to database
+	 * init the class
 	 *
 	 * @since 2.2.0
 	 *

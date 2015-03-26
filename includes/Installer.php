@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to install a database
+ * parent class to install the database
  *
  * @since 2.4.0
  *

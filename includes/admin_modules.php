@@ -114,7 +114,8 @@ function admin_modules_list()
 	{
 		/* modules directory object */
 
-		$modules_directory = new Redaxscript\Directory('modules');
+		$modules_directory = new Redaxscript\Directory();
+		$modules_directory->init('modules');
 		$modules_directory_array = $modules_directory->getArray();
 		if ($modules_directory_array && $modules_installed_array)
 		{
