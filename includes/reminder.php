@@ -135,7 +135,8 @@ function reminder_post()
 
 				/* mailer object */
 
-				$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
+				$mailer = new Redaxscript\Mailer();
+				$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 				$mailer->send();
 			}
 		}

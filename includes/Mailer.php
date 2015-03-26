@@ -86,9 +86,9 @@ class Mailer
 	protected $_headerString;
 
 	/**
-	 * constructor of the class
+	 * init the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 *
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
@@ -97,31 +97,20 @@ class Mailer
 	 * @param array $attachmentArray array of attachments
 	 */
 
-	public function __construct($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
+	public function init($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
 		$this->_subject = $subject;
 		$this->_body = $body;
 		$this->_attachmentArray = $attachmentArray;
-		$this->init();
-	}
 
-	/**
-	 * init the class
-	 *
-	 * @since 2.0.0
-	 */
+		/* build as needed */
 
-	public function init()
-	{
-		if (function_exists('mail'))
-		{
-			$this->_buildFromString();
-			$this->_buildSubjectString();
-			$this->_buildBodyString();
-			$this->_buildHeaderString();
-		}
+		$this->_buildFromString();
+		$this->_buildSubjectString();
+		$this->_buildBodyString();
+		$this->_buildHeaderString();
 	}
 
 	/**
@@ -254,24 +243,27 @@ class Mailer
 	/**
 	 * send the email
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.0
 	 */
 
 	public function send()
 	{
-		foreach ($this->_toArray as $toName => $to)
+		if (function_exists('mail'))
 		{
-			/* fallback if empty */
-
-			if (!$toName)
+			foreach ($this->_toArray as $toName => $to)
 			{
-				$toName = $to;
+				/* name fallback */
+
+				if (!$toName)
+				{
+					$toName = $to;
+				}
+				$toString = $toName . ' <' . $to . '>';
+
+				/* send mail */
+
+				mail($toString, $this->_subjectString, $this->_bodyString, $this->_headerString);
 			}
-			$toString = $toName . ' <' . $to . '>';
-
-			/* send mail */
-
-			mail($toString, $this->_subjectString, $this->_bodyString, $this->_headerString);
 		}
 	}
 }
