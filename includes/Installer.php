@@ -13,7 +13,6 @@ namespace Redaxscript;
 
 class Installer
 {
-
 	/**
 	 * create mysql tables
 	 *
@@ -32,6 +31,50 @@ class Installer
 	 */
 
 	public function insertMysql()
+	{
+		return true;
+	}
+
+	/**
+	 * create pgsql tables
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function createPgsql()
+	{
+		return true;
+	}
+
+	/**
+	 * insert pgsql rows
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function insertPgsql()
+	{
+		return true;
+	}
+
+	/**
+	 * create sqlite tables
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function createSqlite()
+	{
+		return true;
+	}
+
+	/**
+	 * insert sqlite rows
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function insertSqlite()
 	{
 		return true;
 	}

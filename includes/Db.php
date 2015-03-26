@@ -51,13 +51,6 @@ class Db extends ORM
 		$user = $config::get('user');
 		$password = $config::get('password');
 
-		/* sqlite */
-
-		if ($type === 'sqlite')
-		{
-			self::configure('sqlite:' . $host);
-		}
-
 		/* mysql and pgsql */
 
 		if ($type === 'mysql' || $type === 'pgsql')
@@ -77,6 +70,13 @@ class Db extends ORM
 				'username' => $user,
 				'password' => $password
 			));
+		}
+
+		/* sqlite */
+
+		if ($type === 'sqlite')
+		{
+			self::configure('sqlite:' . $host);
 		}
 
 		/* general */
