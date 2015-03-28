@@ -35,6 +35,7 @@ class InstallerTest extends TestCase
 	{
 		$this->_config = Config::getInstance();
 		$this->_config->set('prefix', 'installer_');
+		Db::clearCache();
 	}
 
 	/**

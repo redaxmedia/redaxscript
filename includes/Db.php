@@ -15,6 +15,7 @@ use ORM;
  * @method _addJoinSource()
  * @method _addOrderBy()
  * @method _setupDb()
+ * @method clearCache()
  * @method deleteMany()
  * @method deleteOne()
  * @method findMany()
