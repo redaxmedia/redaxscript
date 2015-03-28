@@ -19,7 +19,7 @@ use ORM;
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
- * @methid getDb()
+ * @method getDb()
  * @method rawExecute()
  * @method rawQuery()
  * @method orderByAsc()

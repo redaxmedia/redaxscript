@@ -84,6 +84,8 @@ class Captcha
 	 * init the class
 	 *
 	 * @since 2.4.0
+	 *
+	 * @param integer $mode captcha operator mode
 	 */
 
 	public function init($mode = null)

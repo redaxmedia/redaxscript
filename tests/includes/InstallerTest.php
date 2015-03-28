@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Config;
+use Redaxscript\Db;
 use Redaxscript\Installer;
 
 /**
@@ -16,6 +18,37 @@ use Redaxscript\Installer;
 class InstallerTest extends TestCase
 {
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
+	 * setUp
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function setUp()
+	{
+		$this->_config = Config::getInstance();
+		$this->_config->set('prefix', 'installer_');
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function tearDown()
+	{
+		$this->_config->set('prefix', '');
+	}
+
+	/**
 	 * testCreateMysql
 	 *
 	 * @since 2.4.0
@@ -26,118 +59,38 @@ class InstallerTest extends TestCase
 		/* setup */
 
 		$installer = new Installer();
+		$installer->init($this->_config);
+		$installer->createMysql();
 
 		/* actual */
 
-		$actual = $installer->createMysql();
+		$actual = Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . $this->_config->get('prefix') . '%\'')->findMany()->count();
 
 		/* compare */
 
-		$this->assertEquals(true, $actual);
+		$this->assertEquals(8, $actual);
 	}
 
 	/**
-	 * testInsertMysql
+	 * testDropMysql
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testInsertMysql()
+	public function testDropMysql()
 	{
 		/* setup */
 
 		$installer = new Installer();
+		$installer->init($this->_config);
+		$installer->dropMysql();
 
 		/* actual */
 
-		$actual = $installer->insertMysql();
+		$actual = Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . $this->_config->get('prefix') . '%\'')->findMany()->count();
 
 		/* compare */
 
-		$this->assertEquals(true, $actual);
-	}
-
-	/**
-	 * testCreatePgsql
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testCreatePgsql()
-	{
-		/* setup */
-
-		$installer = new Installer();
-
-		/* actual */
-
-		$actual = $installer->createPgsql();
-
-		/* compare */
-
-		$this->assertEquals(true, $actual);
-	}
-
-	/**
-	 * testInsertPgsql
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInsertPgsql()
-	{
-		/* setup */
-
-		$installer = new Installer();
-
-		/* actual */
-
-		$actual = $installer->insertPgsql();
-
-		/* compare */
-
-		$this->assertEquals(true, $actual);
-	}
-
-	/**
-	 * testCreateSqlite
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testCreateSqlite()
-	{
-		/* setup */
-
-		$installer = new Installer();
-
-		/* actual */
-
-		$actual = $installer->createSqlite();
-
-		/* compare */
-
-		$this->assertEquals(true, $actual);
-	}
-
-	/**
-	 * testInsertSqlite
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInsertSqlite()
-	{
-		/* setup */
-
-		$installer = new Installer();
-
-		/* actual */
-
-		$actual = $installer->insertSqlite();
-
-		/* compare */
-
-		$this->assertEquals(true, $actual);
+		$this->assertEquals(0, $actual);
 	}
 }

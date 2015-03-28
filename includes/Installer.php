@@ -14,68 +14,110 @@ namespace Redaxscript;
 class Installer
 {
 	/**
-	 * create mysql tables
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param Config $config instance of the config class
+	 */
+
+	public function init(Config $config)
+	{
+		$this->_config = $config;
+	}
+
+	/**
+	 * create mysql
 	 *
 	 * @since 2.4.0
 	 */
 
 	public function createMysql()
 	{
-		return true;
+		$this->_process('create', 'mysql');
 	}
 
 	/**
-	 * insert mysql rows
+	 * drop mysql
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function insertMysql()
+	public function dropMysql()
 	{
-		return true;
+		$this->_process('drop', 'mysql');
 	}
 
 	/**
-	 * create pgsql tables
+	 * process sql
 	 *
 	 * @since 2.4.0
+	 *
+	 * @param string $action action to process
+	 * @param string $type type of the database
 	 */
 
-	public function createPgsql()
+	public function _process($action = null, $type = 'mysql')
 	{
-		return true;
+		$sqlDirectory = new Directory();
+		$sqlDirectory->init('database/' . $type . '/' . $action);
+		$sqlArray = $sqlDirectory->getArray();
+
+		/* process sql files */
+
+		foreach ($sqlArray as $file)
+		{
+			$sqlContents = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
+			if ($sqlContents)
+			{
+				if ($this->_config->get('prefix'))
+				{
+					$sqlContents = $this->_prefix($sqlContents, $action, $type);
+				}
+				Db::rawExecute($sqlContents);
+			}
+		}
 	}
 
 	/**
-	 * insert pgsql rows
+	 * prefix tables
 	 *
 	 * @since 2.4.0
-	 */
-
-	public function insertPgsql()
-	{
-		return true;
-	}
-
-	/**
-	 * create sqlite tables
 	 *
-	 * @since 2.4.0
-	 */
-
-	public function createSqlite()
-	{
-		return true;
-	}
-
-	/**
-	 * insert sqlite rows
+	 * @param string $contents contents of the sql
+	 * @param string $action action to process
+	 * @param string $type type of the database
 	 *
-	 * @since 2.4.0
+	 * @return string
 	 */
 
-	public function insertSqlite()
+	protected function _prefix($contents = null, $action = null, $type = 'mysql')
 	{
-		return true;
+		$output = $contents;
+
+		/* mysql */
+
+		if ($type === 'mysql')
+		{
+			if ($action === 'create')
+			{
+				$search = 'CREATE TABLE IF NOT EXISTS ';
+			}
+			if ($action === 'drop')
+			{
+				$search = 'DROP TABLE ';
+			}
+			$replace = $search . $this->_config->get('prefix');
+			$output = str_replace($search, $replace, $output);
+		}
+		return $output;
 	}
 }
