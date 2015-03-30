@@ -38,6 +38,6 @@ class Language extends DetectorAbstract
 			'settings' => $dbStatus === 2 ? Db::getSettings('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
-		), 'language', 'languages/{value}.json');
+		), 'language', 'languages/' . $this->_filePlaceholder . '.json');
 	}
 }

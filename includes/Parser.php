@@ -61,7 +61,7 @@ class Parser
 	);
 
 	/**
-	 * string delimiter used during the parser process
+	 * delimiter used during the parser process
 	 *
 	 * @var string
 	 */

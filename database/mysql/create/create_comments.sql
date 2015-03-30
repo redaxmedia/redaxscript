@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS comments (
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */comments (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	email varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

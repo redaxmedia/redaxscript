@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS modules (
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

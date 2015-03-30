@@ -22,6 +22,14 @@ class Installer
 	protected $_config;
 
 	/**
+	 * placeholder for the prefix
+	 *
+	 * @var string
+	 */
+
+	protected $_prefixPlaceholder = '/* {configPrefix} */';
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.4.0
@@ -35,58 +43,58 @@ class Installer
 	}
 
 	/**
-	 * create mysql
+	 * create table
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function createMysql()
+	public function create()
 	{
-		$this->_execute('create');
+		$this->_execute('create', $this->_config->get('type'));
 	}
 
 	/**
-	 * insert mysql
+	 * insert into table
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function insertMysql()
+	public function insert()
 	{
-		$this->_execute('insert');
+		$this->_execute('insert', $this->_config->get('type'));
 	}
 
 	/**
-	 * update mysql
+	 * update table
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function updateMysql()
+	public function update()
 	{
-		$this->_execute('update');
+		$this->_execute('update', $this->_config->get('type'));
 	}
 	
 	/**
-	 * delete mysql
+	 * delete from table
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function deleteMysql()
+	public function delete()
 	{
-		$this->_execute('delete');
+		$this->_execute('delete', $this->_config->get('type'));
 	}
 
 	/**
-	 * drop mysql
+	 * drop table
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function dropMysql()
+	public function drop()
 	{
-		$this->_execute('drop');
+		$this->_execute('drop', $this->_config->get('type'));
 	}
 
 	/**
@@ -113,56 +121,10 @@ class Installer
 			{
 				if ($this->_config->get('prefix'))
 				{
-					$query = $this->_prefix($query, $action, $type);
+					$query = str_replace($this->_prefixPlaceholder, $this->_config->get('prefix'), $query);
 				}
 				Db::rawExecute($query);
 			}
 		}
-	}
-
-	/**
-	 * prefix tables
-	 *
-	 * @since 2.4.0
-	 *
-	 * @param string $query raw sql query
-	 * @param string $action action to process
-	 * @param string $type type of the database
-	 *
-	 * @return string
-	 */
-
-	protected function _prefix($query = null, $action = null, $type = 'mysql')
-	{
-		$output = $query;
-
-		/* mysql */
-
-		if ($type === 'mysql')
-		{
-			if ($action === 'create')
-			{
-				$search = 'CREATE TABLE IF NOT EXISTS ';
-			}
-			if ($action === 'insert')
-			{
-				$search = 'INSERT INTO ';
-			}
-			if ($action === 'update')
-			{
-				$search = 'UPDATE ';
-			}
-			if ($action === 'delete')
-			{
-				$search = 'DELETE FROM ';
-			}
-			if ($action === 'drop')
-			{
-				$search = 'DROP TABLE ';
-			}
-			$replace = $search . $this->_config->get('prefix');
-			$output = str_replace($search, $replace, $output);
-		}
-		return $output;
 	}
 }

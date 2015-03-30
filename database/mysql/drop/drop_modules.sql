@@ -1,1 +1,1 @@
-DROP TABLE modules;
+DROP TABLE /* {configPrefix} */modules;

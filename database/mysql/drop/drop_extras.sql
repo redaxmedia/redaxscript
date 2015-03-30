@@ -1,1 +1,1 @@
-DROP TABLE extras;
+DROP TABLE /* {configPrefix} */extras;

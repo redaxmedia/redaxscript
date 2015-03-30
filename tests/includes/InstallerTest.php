@@ -59,9 +59,10 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
+		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
-		$installer->createMysql();
+		$installer->create();
 
 		/* actual */
 
@@ -82,9 +83,10 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
+		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
-		$installer->dropMysql();
+		$installer->drop();
 
 		/* actual */
 

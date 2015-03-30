@@ -1,1 +1,1 @@
-DROP TABLE groups;
+DROP TABLE /* {configPrefix} */groups;

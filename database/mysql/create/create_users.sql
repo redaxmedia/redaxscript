@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	id int(10) NOT NULL AUTO_INCREMENT,
 	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	user varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

@@ -1,1 +1,1 @@
-DROP TABLE categories;
+DROP TABLE /* {configPrefix} */categories;

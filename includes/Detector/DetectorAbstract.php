@@ -41,6 +41,14 @@ abstract class DetectorAbstract
 	protected $_output;
 
 	/**
+	 * placeholder for the file
+	 *
+	 * @var string
+	 */
+
+	protected $_filePlaceholder = '{filePlaceholder}';
+
+	/**
 	 * constructor of the class
 	 *
 	 * @since 2.0.0
@@ -85,7 +93,7 @@ abstract class DetectorAbstract
 		{
 			if (isset($value))
 			{
-				$file = str_replace('{value}', $value, $path);
+				$file = str_replace($this->_filePlaceholder, $value, $path);
 
 				/* if file exists */
 
