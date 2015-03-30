@@ -1,1 +1,1 @@
-DELETE FROM modules;
+DELETE FROM /* {configPrefix} */modules;

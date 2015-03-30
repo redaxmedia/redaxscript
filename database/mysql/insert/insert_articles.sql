@@ -1,0 +1,1 @@
+INSERT INTO /* {configPrefix} */articles (id, title, alias, author, description, keywords, text, language, template, date, category, headline, infoline, comments, status, rank, access) VALUES (1, 'Welcome', 'welcome', 'admin', '', '', '<p>Congratulations! Redaxscript has been successfully installed.</p>', '', '', '2015-01-01 00:00:00', 1, 1, 0, 0, 1, 1, '0');
