@@ -42,7 +42,40 @@ class Installer
 
 	public function createMysql()
 	{
-		$this->_process('create', 'mysql');
+		$this->_execute('create');
+	}
+
+	/**
+	 * insert mysql
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function insertMysql()
+	{
+		$this->_execute('insert');
+	}
+
+	/**
+	 * update mysql
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function updateMysql()
+	{
+		$this->_execute('update');
+	}
+	
+	/**
+	 * delete mysql
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function deleteMysql()
+	{
+		$this->_execute('delete');
 	}
 
 	/**
@@ -53,11 +86,11 @@ class Installer
 
 	public function dropMysql()
 	{
-		$this->_process('drop', 'mysql');
+		$this->_execute('drop');
 	}
 
 	/**
-	 * process sql
+	 * execute sql query
 	 *
 	 * @since 2.4.0
 	 *
@@ -65,7 +98,7 @@ class Installer
 	 * @param string $type type of the database
 	 */
 
-	public function _process($action = null, $type = 'mysql')
+	public function _execute($action = null, $type = 'mysql')
 	{
 		$sqlDirectory = new Directory();
 		$sqlDirectory->init('database/' . $type . '/' . $action);
@@ -75,14 +108,14 @@ class Installer
 
 		foreach ($sqlArray as $file)
 		{
-			$sqlContents = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
-			if ($sqlContents)
+			$query = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
+			if ($query)
 			{
 				if ($this->_config->get('prefix'))
 				{
-					$sqlContents = $this->_prefix($sqlContents, $action, $type);
+					$query = $this->_prefix($query, $action, $type);
 				}
-				Db::rawExecute($sqlContents);
+				Db::rawExecute($query);
 			}
 		}
 	}
@@ -92,16 +125,16 @@ class Installer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $contents contents of the sql
+	 * @param string $query raw sql query
 	 * @param string $action action to process
 	 * @param string $type type of the database
 	 *
 	 * @return string
 	 */
 
-	protected function _prefix($contents = null, $action = null, $type = 'mysql')
+	protected function _prefix($query = null, $action = null, $type = 'mysql')
 	{
-		$output = $contents;
+		$output = $query;
 
 		/* mysql */
 
@@ -110,6 +143,18 @@ class Installer
 			if ($action === 'create')
 			{
 				$search = 'CREATE TABLE IF NOT EXISTS ';
+			}
+			if ($action === 'insert')
+			{
+				$search = 'INSERT INTO ';
+			}
+			if ($action === 'update')
+			{
+				$search = 'UPDATE ';
+			}
+			if ($action === 'delete')
+			{
+				$search = 'DELETE FROM ';
 			}
 			if ($action === 'drop')
 			{
