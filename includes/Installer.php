@@ -43,7 +43,7 @@ class Installer
 	}
 
 	/**
-	 * create table
+	 * execute a create
 	 *
 	 * @since 2.4.0
 	 */
@@ -54,40 +54,7 @@ class Installer
 	}
 
 	/**
-	 * insert into table
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function insert()
-	{
-		$this->_execute('insert', $this->_config->get('type'));
-	}
-
-	/**
-	 * update table
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function update()
-	{
-		$this->_execute('update', $this->_config->get('type'));
-	}
-
-	/**
-	 * delete from table
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function delete()
-	{
-		$this->_execute('delete', $this->_config->get('type'));
-	}
-
-	/**
-	 * drop table
+	 * execute a drop
 	 *
 	 * @since 2.4.0
 	 */

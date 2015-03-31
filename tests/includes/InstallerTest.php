@@ -70,31 +70,7 @@ class InstallerTest extends TestCase
 
 		/* compare */
 
-		$this->assertGreaterThan(7, $actual);
-	}
-
-	/**
-	 * testInsertMysql
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInsertMysql()
-	{
-		/* setup */
-
-		$this->_config->set('type', 'mysql');
-		$installer = new Installer();
-		$installer->init($this->_config);
-		$installer->insert();
-
-		/* actual */
-
-		$actual = Db::forTablePrefix('articles')->findMany()->count();
-
-		/* compare */
-
-		$this->assertGreaterThan(0, $actual);
+		$this->assertEquals(8, $actual);
 	}
 
 	/**
