@@ -74,7 +74,7 @@ class Installer
 	{
 		$this->_execute('update', $this->_config->get('type'));
 	}
-	
+
 	/**
 	 * delete from table
 	 *
