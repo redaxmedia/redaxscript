@@ -24,7 +24,7 @@ Online demo
 > Unfortunately, no one can be told what Redaxscript is.
 You have to see it for yourself.
 
-[http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
+Try it now: [http://demo.redaxscript.com/login/demo](http://demo.redaxscript.com/login/demo)
 
 
 Feature list
