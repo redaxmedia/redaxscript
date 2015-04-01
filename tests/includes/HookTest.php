@@ -44,7 +44,8 @@ class HookTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'name' => 'Call home',
 			'alias' => 'CallHome',
 		));
@@ -59,7 +60,8 @@ class HookTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'alias' => 'CallHome',
 		));
 		$module->uninstall();

@@ -25,29 +25,24 @@ class Module
 	);
 
 	/**
-	 * constructor of the class
+	 * init the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 *
 	 * @param array $moduleArray custom module setup
 	 */
 
-	public function __construct($moduleArray = array())
+	public function init($moduleArray = array())
 	{
+		/* merge module setup */
+
 		if (is_array($moduleArray))
 		{
 			static::$_moduleArray = array_merge(static::$_moduleArray, $moduleArray);
 		}
-	}
 
-	/**
-	 * init the class
-	 *
-	 * @since 2.2.0
-	 */
+		/* load the language */
 
-	public function init()
-	{
 		if (isset(static::$_moduleArray['alias']))
 		{
 			$language = Language::getInstance();

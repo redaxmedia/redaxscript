@@ -61,9 +61,7 @@ class BreadcrumbTest extends TestCase
 		$ultra->set(array(
 			'title' => 'Ultra',
 			'alias' => 'ultra',
-			'parent' => 0,
-			'status' => 1,
-			'access' => 0
+			'parent' => 0
 		));
 		$ultra->save();
 
@@ -73,9 +71,7 @@ class BreadcrumbTest extends TestCase
 		$lightweight->set(array(
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
-			'parent' => $ultra->id(),
-			'status' => 1,
-			'access' => 0
+			'parent' => $ultra->id()
 		));
 		$lightweight->save();
 
@@ -85,9 +81,7 @@ class BreadcrumbTest extends TestCase
 		$cms->set(array(
 			'title' => 'CMS',
 			'alias' => 'cms',
-			'category' => $lightweight->id(),
-			'status' => 1,
-			'access' => 0
+			'category' => $lightweight->id()
 		));
 		$cms->save();
 	}

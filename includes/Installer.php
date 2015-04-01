@@ -43,7 +43,7 @@ class Installer
 	}
 
 	/**
-	 * execute a create
+	 * create a table
 	 *
 	 * @since 2.4.0
 	 */
@@ -54,7 +54,7 @@ class Installer
 	}
 
 	/**
-	 * execute a drop
+	 * drop a table
 	 *
 	 * @since 2.4.0
 	 */
@@ -62,6 +62,46 @@ class Installer
 	public function drop()
 	{
 		$this->_execute('drop', $this->_config->get('type'));
+	}
+
+	/**
+	 * insert articles
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function insertArticles()
+	{
+		Db::forTablePrefix('articles')
+			->create()
+			->set(array(
+				'id' => 1,
+				'title' => 'Welcome',
+				'alias' => 'welcome',
+				'author' => 'admin',
+				'text' => '<p>Congratulations! Redaxscript has been successfully installed.</p>',
+				'category' => 1,
+				'rank' => 1
+			))->save();
+	}
+
+	/**
+	 * insert categories
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function insertCategories()
+	{
+		Db::forTablePrefix('categories')
+			->create()
+			->set(array(
+				'id' => 1,
+				'title' => 'Home',
+				'alias' => 'home',
+				'author' => 'admin',
+				'rank' => 1
+			))->save();
 	}
 
 	/**

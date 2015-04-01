@@ -17,6 +17,17 @@ use Redaxscript\Module;
 class ModuleTest extends TestCase
 {
 	/**
+	 * setUp
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function setUp()
+	{
+		Db::clearCache();
+	}
+
+	/**
 	 * testInit
 	 *
 	 * @since 2.2.0
@@ -26,10 +37,10 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'alias' => 'Test',
 		));
-		$module->init();
 
 		/* actual */
 
@@ -50,7 +61,8 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'name' => 'Test',
 			'alias' => 'Test',
 		));
@@ -75,11 +87,11 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
-			'alias' => 'Test',
+		$module = new Module();
+		$module->init(array(
+			'alias' => 'Test'
 		));
 		$module->uninstall();
-		Db::clearCache();
 
 		/* actual */
 

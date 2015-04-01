@@ -96,4 +96,24 @@ class InstallerTest extends TestCase
 
 		$this->assertEquals(0, $actual);
 	}
+
+	/**
+	 * testInsertArticles
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testInsertArticles()
+	{
+	}
+
+	/**
+	 * testInsertCategories
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testInsertCategories()
+	{
+	}
 }
