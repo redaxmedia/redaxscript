@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
 	author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	version varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-	status int(1) DEFAULT NULL,
-	access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	status int(1) DEFAULT 1,
+	access varchar(255) COLLATE utf8_unicode_ci DEFAULT 0,
 	PRIMARY KEY(id)
 )
 ENGINE = MyISAM
