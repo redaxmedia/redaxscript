@@ -16,12 +16,12 @@ use Redaxscript\Module;
 class LiveReload extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Live Reload',
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',

@@ -17,12 +17,12 @@ use Redaxscript\Registry;
 class Disqus extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Disqus',
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',

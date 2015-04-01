@@ -21,12 +21,12 @@ use Redaxscript\Template;
 class Preview extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Preview',
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
@@ -79,7 +79,8 @@ class Preview extends Module
 		{
 			$partialsPath = 'modules/Preview/partials';
 			$partialExtension = '.phtml';
-			$partialsDirectory = new Directory($partialsPath);
+			$partialsDirectory = new Directory();
+			$partialsDirectory->init($partialsPath);
 			$partialsDirectoryArray = $partialsDirectory->getArray();
 			$secondParameter = Registry::get('secondParameter');
 

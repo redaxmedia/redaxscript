@@ -17,12 +17,12 @@ use Redaxscript\Registry;
 class LazyLoad extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Lazy load',
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',

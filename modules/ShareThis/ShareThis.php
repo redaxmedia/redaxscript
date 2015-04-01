@@ -17,12 +17,12 @@ use Redaxscript\Registry;
 class ShareThis extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Share this',
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
