@@ -65,43 +65,64 @@ class Installer
 	}
 
 	/**
-	 * insert articles
+	 * insert records
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function insertArticles()
+	public function insertRecords()
 	{
+		/* articles */
+
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'id' => 1,
 				'title' => 'Welcome',
 				'alias' => 'welcome',
 				'author' => 'admin',
-				'text' => '<p>Congratulations! Redaxscript has been successfully installed.</p>',
+				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
 				'rank' => 1
 			))->save();
-	}
 
-	/**
-	 * insert categories
-	 *
-	 * @since 2.4.0
-	 */
+		/* categories */
 
-	public function insertCategories()
-	{
 		Db::forTablePrefix('categories')
 			->create()
 			->set(array(
-				'id' => 1,
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => 'admin',
 				'rank' => 1
 			))->save();
+
+		/* extras */
+
+		$extrasArray = array(
+			'categories' => 1,
+			'articles' => 1,
+			'comments' => 1,
+			'languages' => 0,
+			'templates' => 0,
+			'footer' => 0
+		);
+		$extrasRank = 1;
+
+		/* process extras array */
+
+		foreach ($extrasArray as $key => $value)
+		{
+			Db::forTablePrefix('extras')
+				->create()
+				->set(array(
+					'title' => ucfirst($key),
+					'alias' => $key,
+					'author' => 'admin',
+					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
+					'status' => $value,
+					'rank' => $extrasRank++
+				))->save();
+		}
 	}
 
 	/**

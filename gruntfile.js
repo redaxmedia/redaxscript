@@ -139,6 +139,13 @@ module.exports = function (grunt)
 		},
 		htmlhint:
 		{
+			database:
+			{
+				src:
+				[
+					'database/**/*.phtml'
+				]
+			},
 			modules:
 			{
 				src:
