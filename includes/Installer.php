@@ -68,9 +68,11 @@ class Installer
 	 * insert records
 	 *
 	 * @since 2.4.0
+	 *
+	 * @param array $options options of the records
 	 */
 
-	public function insertRecords()
+	public function insertRecords($options = null)
 	{
 		/* articles */
 
@@ -79,7 +81,7 @@ class Installer
 			->set(array(
 				'title' => 'Welcome',
 				'alias' => 'welcome',
-				'author' => 'admin',
+				'author' => $options['author'],
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
 				'rank' => 1
@@ -92,7 +94,7 @@ class Installer
 			->set(array(
 				'title' => 'Home',
 				'alias' => 'home',
-				'author' => 'admin',
+				'author' => $options['author'],
 				'rank' => 1
 			))->save();
 
@@ -117,12 +119,71 @@ class Installer
 				->set(array(
 					'title' => ucfirst($key),
 					'alias' => $key,
-					'author' => 'admin',
+					'author' => $options['author'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
 					'status' => $value,
 					'rank' => $extrasRank++
 				))->save();
 		}
+
+		/* groups */
+
+		Db::forTablePrefix('groups')
+			->create()
+			->set(array(
+				'title' => 'Administrators',
+				'alias' => 'administrators',
+				'description' => 'Unlimited access',
+				'categories' => 1,
+				'articles' => 1,
+				'extras' => 1,
+				'comments' => 1,
+				'groups' => 1,
+				'users' => 1,
+				'modules' => 1,
+				'settings' => 1,
+				'filter' => 0,
+			))->save();
+		Db::forTablePrefix('groups')
+			->create()
+			->set(array(
+				'title' => 'Members',
+				'alias' => 'members',
+				'description' => 'Default members group'
+			))->save();
+
+		/* settings */
+
+		Db::forTablePrefix('settings')
+			->create()
+			->set(array(
+				'language' => 'detect',
+				'template' => 'default',
+				'title' => 'Redaxscript',
+				'author' => null,
+				'copyright' => null,
+				'description' => 'Ultra lightweight CMS',
+				'keywords' => null,
+				'robots' => 'all',
+				'email' => $options['email'],
+				'subject' => 'Redaxscript',
+				'notification' => 0,
+				'charset' => 'utf-8',
+				'divider' => ' • ',
+				'time' => 'H:i',
+				'date' => 'd.m.Y',
+				'homepage' => '0',
+				'limit' => 10,
+				'order' => 'asc',
+				'pagination' => '1',
+				'moderation' => '0',
+				'registration' => '1',
+				'verification' => '0',
+				'reminder' => '1',
+				'captcha' => '0',
+				'blocker' => '1',
+				'version' => Language::get('version', '_package')
+			))->save();
 	}
 
 	/**
