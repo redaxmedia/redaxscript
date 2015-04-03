@@ -1,17 +1,17 @@
 {
 	"_number":
 	[
-		"Zero",
-		"One",
-		"Two",
-		"Three",
-		"Four",
-		"Five",
-		"Six",
-		"Seven",
-		"Eight",
-		"Nine",
-		"Ten"
+		"零",
+		"一",
+		"二",
+		"三",
+		"四",
+		"五",
+		"六",
+		"七",
+		"八",
+		"九",
+		"十"
 	],
 	"_month":
 	[
@@ -112,7 +112,7 @@
 	"title_exists": "すでに存在しているタイトルです",
 	"title_incorrect": "不正なタイトルです",
 	"title_empty": "タイトルが空です",
-	"alias": "Alias",
+	"alias": "別名",
 	"alias_exists": "その別名はすでに使用されているため使用できません",
 	"alias_incorrect": "別名が正しくありません",
 	"alias_empty": "別名が空です",
