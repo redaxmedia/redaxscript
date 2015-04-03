@@ -50,19 +50,19 @@ class InstallerTest extends TestCase
 	}
 
 	/**
-	 * testCreateMysql
+	 * testRawCreateMysql
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testCreateMysql()
+	public function testRawCreateMysql()
 	{
 		/* setup */
 
 		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
-		$installer->create();
+		$installer->rawCreate();
 
 		/* actual */
 
@@ -74,19 +74,66 @@ class InstallerTest extends TestCase
 	}
 
 	/**
-	 * testDropMysql
+	 * testInsertData
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testDropMysql()
+	public function testInsertData()
 	{
 		/* setup */
 
 		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
-		$installer->drop();
+		$installer->insertData(array(
+			'name' => 'Admin',
+			'user' => 'admin',
+			'password' => 'admin',
+			'email' => 'admin@localhost'
+		));
+
+		/* actual */
+
+		$actualArticles = Db::forTablePrefix('articles')->findMany()->count();
+		$actualCategories = Db::forTablePrefix('categories')->findMany()->count();
+		$actualExtras = Db::forTablePrefix('extras')->findMany()->count();
+		$actualGroups = Db::forTablePrefix('groups')->findMany()->count();
+		$actualSettings = Db::forTablePrefix('settings')->findMany()->count();
+		if (is_dir('modules/CallHome'))
+		{
+			$actualModules = Db::forTablePrefix('modules')->findMany()->count();
+		}
+		$actualUsers = Db::forTablePrefix('users')->findMany()->count();
+
+		/* compare */
+
+		$this->assertEquals(1, $actualArticles);
+		$this->assertEquals(1, $actualCategories);
+		$this->assertEquals(6, $actualExtras);
+		$this->assertEquals(2, $actualGroups);
+		$this->assertEquals(26, $actualSettings);
+		if (is_dir('modules/CallHome'))
+		{
+			$this->assertEquals(1, $actualModules);
+		}
+		$this->assertEquals(1, $actualUsers);
+	}
+
+	/**
+	 * testRawDropMysql
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testRawDropMysql()
+	{
+		/* setup */
+
+		$this->_config->set('type', 'mysql');
+		$installer = new Installer();
+		$installer->init($this->_config);
+		$installer->rawDrop();
 
 		/* actual */
 
@@ -95,25 +142,5 @@ class InstallerTest extends TestCase
 		/* compare */
 
 		$this->assertEquals(0, $actual);
-	}
-
-	/**
-	 * testInsertArticles
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInsertArticles()
-	{
-	}
-
-	/**
-	 * testInsertCategories
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInsertCategories()
-	{
 	}
 }
