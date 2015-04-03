@@ -38,6 +38,14 @@ use ORM;
 class Db extends ORM
 {
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected static $_config;
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.2.0
@@ -47,11 +55,12 @@ class Db extends ORM
 
 	public static function init(Config $config)
 	{
-		$type = $config::get('type');
-		$host = $config::get('host');
-		$name = $config::get('name');
-		$user = $config::get('user');
-		$password = $config::get('password');
+		self::$_config = $config;
+		$type = $config->get('type');
+		$host = $config->get('host');
+		$name = $config->get('name');
+		$user = $config->get('user');
+		$password = $config->get('password');
 
 		/* mysql and pgsql */
 
@@ -114,7 +123,7 @@ class Db extends ORM
 
 	public static function countTablePrefix()
 	{
-		return Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . Config::get('prefix') . '%\'')->findMany()->count();
+		return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
 	}
 
 	/**
@@ -131,7 +140,7 @@ class Db extends ORM
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(Config::get('prefix') . $table, array(), $connection);
+		return new self(self::$_config->get('prefix') . $table, array(), $connection);
 	}
 
 	/**
@@ -148,7 +157,7 @@ class Db extends ORM
 
 	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
 	{
-		return $this->_addJoinSource('LEFT', Config::get('prefix') . $table, $constraint, $tableAlias);
+		return $this->_addJoinSource('LEFT', self::$_config->get('prefix') . $table, $constraint, $tableAlias);
 	}
 
 	/**
