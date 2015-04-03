@@ -66,7 +66,7 @@ class InstallerTest extends TestCase
 
 		/* actual */
 
-		$actual = Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . $this->_config->get('prefix') . '%\'')->findMany()->count();
+		$actual = Db::countTablePrefix();
 
 		/* compare */
 
@@ -137,7 +137,7 @@ class InstallerTest extends TestCase
 
 		/* actual */
 
-		$actual = Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . $this->_config->get('prefix') . '%\'')->findMany()->count();
+		$actual = Db::countTablePrefix();
 
 		/* compare */
 

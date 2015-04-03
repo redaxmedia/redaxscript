@@ -91,6 +91,23 @@ class DbTest extends TestCase
 
 		$this->assertInstanceOf('PDO', $actual);
 	}
+	/**
+	 * testCountTablePrefix
+	 *
+	 * @since 2.4.0
+	 *
+	 */
+
+	public function testCountTablePrefix()
+	{
+		/* actual */
+
+		$actual = Db::countTablePrefix();
+
+		/* compare */
+
+		$this->assertGreaterThan(0, $actual);
+	}
 
 	/**
 	 * testForTablePrefix

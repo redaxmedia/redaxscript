@@ -105,6 +105,19 @@ class Db extends ORM
 	}
 
 	/**
+	 * count table with prefix
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return Db
+	 */
+
+	public static function countTablePrefix()
+	{
+		return Db::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . Config::get('prefix') . '%\'')->findMany()->count();
+	}
+
+	/**
 	 * for table with prefix
 	 *
 	 * @since 2.2.0
