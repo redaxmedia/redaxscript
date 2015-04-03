@@ -74,6 +74,8 @@ class Installer
 
 	public function insertData($options = null)
 	{
+		$language = Language::getInstance();
+
 		/* articles */
 
 		Db::forTablePrefix('articles')
@@ -180,7 +182,7 @@ class Installer
 			'reminder' => '1',
 			'captcha' => '0',
 			'blocker' => '1',
-			'version' => Language::get('version', '_package')
+			'version' => $language->get('version', '_package')
 		);
 
 		/* process settings array */
@@ -207,7 +209,7 @@ class Installer
 					'description' => 'Default members group',
 					'author' => 'Redaxmedia',
 					'description' => 'Provide version and news updates',
-					'version' => Language::get('version', '_package')
+					'version' => $language->get('version', '_package')
 				))->save();
 		}
 

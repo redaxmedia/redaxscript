@@ -45,10 +45,11 @@ class Module
 
 		if (isset(static::$_moduleArray['alias']))
 		{
+			$registry = Registry::getInstance();
 			$language = Language::getInstance();
 			$language->load(array(
 				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
-				'modules/' . static::$_moduleArray['alias'] . '/languages/' . Registry::get('language') . '.json'
+				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
 			));
 		}
 	}
