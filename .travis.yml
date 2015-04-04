@@ -15,6 +15,9 @@ install:
 script:
 - npm test
 
+before_script:
+- mysql -u root -e 'create database test;'
+
 after_script:
 - php vendor/bin/coveralls --verbose
 - wget https://scrutinizer-ci.com/ocular.phar

@@ -13,22 +13,32 @@ include_once('stubs/hook_method.php');
 Autoloader::init();
 Request::init();
 
-/* set config */
-
-Config::set('type', 'mysql');
-Config::set('host', 'redaxscript.com');
-Config::set('name', 'd01ae38a');
-Config::set('user', 'd01ae38a');
-Config::set('password', 'travis');
-
 /* get instance */
 
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* database and hook */
+/* set config */
+
+$config->set('type', 'mysql');
+$config->set('host', 'localhost');
+$config->set('name', 'test');
+$config->set('user', 'root');
+
+/* database */
 
 Db::init($config);
+
+/* installer */
+
+$installer = new Installer();
+$installer->init($config);
+$installer->rawDrop();
+$installer->rawCreate();
+$installer->insertData();
+
+/* hook */
+
 Hook::init($registry);
 
 /* language */

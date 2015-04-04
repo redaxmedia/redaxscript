@@ -169,7 +169,7 @@ class Installer
 			'subject' => 'Redaxscript',
 			'notification' => 0,
 			'charset' => 'utf-8',
-			'divider' => ' • ',
+			'divider' => '&#8201;&#8226;&#8201;',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',
 			'homepage' => '0',

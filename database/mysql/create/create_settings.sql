@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */settings (
 ENGINE = MyISAM
 DEFAULT CHARSET = utf8
 COLLATE = utf8_unicode_ci
-AUTO_INCREMENT = 27;
+AUTO_INCREMENT = 1;

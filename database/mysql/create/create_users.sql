@@ -15,4 +15,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 ENGINE = MyISAM
 DEFAULT CHARSET = utf8
 COLLATE = utf8_unicode_ci
-AUTO_INCREMENT = 2;
+AUTO_INCREMENT = 1;

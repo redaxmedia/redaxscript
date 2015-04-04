@@ -1,1 +1,1 @@
-DROP TABLE /* {configPrefix} */users;
+DROP TABLE IF EXISTS /* {configPrefix} */users;

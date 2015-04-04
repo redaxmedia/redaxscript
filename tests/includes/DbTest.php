@@ -120,7 +120,7 @@ class DbTest extends TestCase
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->where('id', 1)->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->where('alias', 'home')->findOne()->alias;
 
 		/* compare */
 
@@ -147,7 +147,7 @@ class DbTest extends TestCase
 			->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
-			->where('a.id', 1)
+			->where('a.alias', 'welcome')
 			->findArray();
 		$actual = $actual[0];
 
