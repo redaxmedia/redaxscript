@@ -50,16 +50,15 @@ class InstallerTest extends TestCase
 	}
 
 	/**
-	 * testRawCreateMysql
+	 * testRawCreate
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testRawCreateMysql()
+	public function testRawCreate()
 	{
 		/* setup */
 
-		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
 		$installer->rawCreate();
@@ -83,7 +82,6 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
-		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
 		$installer->insertData(array(
@@ -121,16 +119,15 @@ class InstallerTest extends TestCase
 	}
 
 	/**
-	 * testRawDropMysql
+	 * testRawDrop
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testRawDropMysql()
+	public function testRawDrop()
 	{
 		/* setup */
 
-		$this->_config->set('type', 'mysql');
 		$installer = new Installer();
 		$installer->init($this->_config);
 		$installer->rawDrop();

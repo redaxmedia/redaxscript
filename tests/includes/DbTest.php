@@ -106,7 +106,7 @@ class DbTest extends TestCase
 
 		/* compare */
 
-		$this->assertGreaterThan(0, $actual);
+		$this->assertGreaterThan(-1, $actual);
 	}
 
 	/**

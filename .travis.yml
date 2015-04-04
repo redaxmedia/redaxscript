@@ -12,11 +12,11 @@ install:
 - npm install
 - npm install -g grunt-cli
 
-script:
-- npm test
-
 before_script:
 - mysql -u root -e 'create database test;'
+
+script:
+- npm test
 
 after_script:
 - php vendor/bin/coveralls --verbose

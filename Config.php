@@ -21,7 +21,7 @@ class Config extends Singleton
 
 	private static $_config = array(
 		// @configStart
-		'type' => '',
+		'type' => 'sqlite',
 		'host' => '',
 		'name' => '',
 		'user' => '',

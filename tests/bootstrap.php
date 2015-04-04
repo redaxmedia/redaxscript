@@ -18,13 +18,6 @@ Request::init();
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* set config */
-
-$config->set('type', 'mysql');
-$config->set('host', 'localhost');
-$config->set('name', 'test');
-$config->set('user', 'root');
-
 /* database */
 
 Db::init($config);

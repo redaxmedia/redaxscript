@@ -85,7 +85,7 @@ class Db extends ORM
 
 		/* sqlite */
 
-		if ($type === 'sqlite')
+		if ($type === 'sqlite' && is_file($host))
 		{
 			self::configure('sqlite:' . $host);
 		}
@@ -123,7 +123,14 @@ class Db extends ORM
 
 	public static function countTablePrefix()
 	{
-		return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
+		if (self::$_config->get('type') === 'mysql')
+		{
+			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
+		}
+		if (self::$_config->get('type') === 'sqlite')
+		{
+			return self::forTable('sqlite_master')->select('name')->where('type', 'table')->findMany()->count() - 9;
+		}
 	}
 
 	/**
