@@ -85,7 +85,7 @@ class Db extends ORM
 
 		/* sqlite */
 
-		if ($type === 'sqlite' && is_file($host))
+		if ($type === 'sqlite')
 		{
 			self::configure('sqlite:' . $host);
 		}
@@ -129,7 +129,7 @@ class Db extends ORM
 		}
 		if (self::$_config->get('type') === 'sqlite')
 		{
-			return self::forTable('sqlite_master')->select('name')->where('type', 'table')->findMany()->count() - 9;
+			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('prefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
 		}
 	}
 
