@@ -19,15 +19,25 @@ $registry = Registry::getInstance();
 $config = Config::getInstance();
 $request = Request::getInstance();
 
-/* mysql */
+/* mysql and pgsql */
 
-if (in_array('mysql', $request->get('argv')))
+if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get('argv')))
 {
-	echo 'MySQL - ';
-	$config->set('type', 'mysql');
+	if (in_array('mysql', $request->get('argv')))
+	{
+		echo 'MySQL - ';
+		$config->set('type', 'mysql');
+		$config->set('user', 'root');
+	}
+	if (in_array('pgsql', $request->get('argv')))
+	{
+		echo 'PostgreSQL - ';
+		$config->set('type', 'pgsql');
+		$config->set('user', 'postgres');
+	}
 	$config->set('host', 'localhost');
 	$config->set('name', 'test');
-	$config->set('user', 'root');
+	$config->set('password', 'test');
 }
 
 /* sqlite */
