@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS /* {configPrefix} */groups (
-	id int(10) NOT NULL AUTO_INCREMENT,
+	id int(10) AUTO_INCREMENT PRIMARY KEY,
 	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -12,8 +12,7 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */groups (
 	modules varchar(255) COLLATE utf8_unicode_ci DEFAULT 0,
 	settings int(1) DEFAULT 0,
 	filter int(1) DEFAULT 1,
-	status int(1) DEFAULT 1,
-	PRIMARY KEY(id)
+	status int(1) DEFAULT 1
 )
 ENGINE = MyISAM
 DEFAULT CHARSET = utf8

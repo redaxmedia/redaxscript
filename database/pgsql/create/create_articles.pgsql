@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */articles (
+	id SERIAL PRIMARY KEY,
+	title varchar(255) DEFAULT NULL,
+	alias varchar(255) DEFAULT NULL,
+	author varchar(255) DEFAULT NULL,
+	description varchar(255) DEFAULT NULL,
+	keywords varchar(255) DEFAULT NULL,
+	text text,
+	language char(3) DEFAULT NULL,
+	template varchar(255) DEFAULT NULL,
+	date timestamp DEFAULT CURRENT_TIMESTAMP,
+	sibling integer DEFAULT 0,
+	category integer DEFAULT 0,
+	headline integer DEFAULT 1,
+	infoline integer DEFAULT 0,
+	comments integer DEFAULT 0,
+	status integer DEFAULT 1,
+	rank integer DEFAULT NULL,
+	access varchar(255) DEFAULT 0
+);
