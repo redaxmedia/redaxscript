@@ -31,9 +31,9 @@ Feature list
 ------------
 
 * Simple installation wizard
-* Database support for MySQL, PostreSQL and SQLite
+* **Support for MySQL, PostreSQL and SQLite**
 * [Builds contents lightning fast](http://redaxscript.com/general/benchmark/page-load-time)
-* **HTML5, CSS3, RSS2 and ATOM1 compliant**
+* HTML5, CSS3, RSS2 and ATOM1 compliant
 * CSSLint, JSHint and HTMLHint validated
 * Search engine friendly environment
 * Fluide and elastic layout
