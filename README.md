@@ -34,15 +34,14 @@ Feature list
 * Support for MySQL, PostreSQL and SQLite
 * Builds contents lightning fast
 * HTML5, CSS3, RSS2 and ATOM1 compliant
-* CSSLint, JSHint and HTMLHint validated
-* Search engine friendly environment
+* CSSLint, HTMLHint, JSHint and JSCS validated
 * Fluide and elastic layout
 * Mobile ready with responsive design
 * On-demand loader for Javascript and CSS
 * Pre-optimized with [Page Speed](http://redaxscript.com/general/benchmark/google-page-speed) and [Yslow](http://redaxscript.com/general/benchmark/yahoo-yslow)
 * Intuitive WYSIWYE admin interface
 * Built-in frontend framework
-* Module system with hook points
+* Extendable with modules
 * Advanced user and group permissions
 * Bundled with the latest jQuery
 * Ultra lightweight WYSIWYG editor
@@ -57,7 +56,7 @@ Search engine friendly
 
 * Canonical URL management to prevent duplicate content
 * Robots management to prevent indexing of non-content pages
-* **Search engine friendly URL** structure
+* Search engine friendly URL structure
 * Unique meta description and meta keywords on each page
 * Redirect www to non-www and remove trailing slashes
 * [Sitemap XML](http://redaxscript.com/download/modules/sitemap-xml-module) module for search engines
