@@ -17,6 +17,25 @@ Request::init();
 
 $registry = Registry::getInstance();
 $config = Config::getInstance();
+$request = Request::getInstance();
+
+/* mysql */
+
+if (in_array('mysql', $request->get('argv')))
+{
+	echo 'MySQL - ';
+	$config->set('type', 'mysql');
+	$config->set('host', 'localhost');
+	$config->set('name', 'test');
+	$config->set('user', 'root');
+}
+
+/* sqlite */
+
+else
+{
+	echo 'SQLite - ';
+}
 
 /* database */
 

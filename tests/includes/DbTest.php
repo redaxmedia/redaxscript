@@ -33,6 +33,18 @@ class DbTest extends TestCase
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
+		$this->_config->set('restore', $this->_config->get('type'));
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function tearDown()
+	{
+		$this->_config->set('type', $this->_config->get('restore'));
 	}
 
 	/**
