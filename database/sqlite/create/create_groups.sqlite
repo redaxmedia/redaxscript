@@ -13,4 +13,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */groups (
 	settings int(1) DEFAULT 0,
 	filter int(1) DEFAULT 1,
 	status int(1) DEFAULT 1
-)
+);

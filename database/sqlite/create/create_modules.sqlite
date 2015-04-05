@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
 	version varchar(255) DEFAULT NULL,
 	status int(1) DEFAULT 1,
 	access varchar(255) DEFAULT 0
-)
+);

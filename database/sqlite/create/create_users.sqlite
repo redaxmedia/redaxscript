@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	last datetime DEFAULT NULL,
 	status int(1) DEFAULT 1,
 	groups varchar(255) DEFAULT 0
-)
+);

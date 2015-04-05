@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */comments (
 	status int(1) DEFAULT 1,
 	rank int(10) DEFAULT NULL,
 	access varchar(255) DEFAULT 0
-)
+);
