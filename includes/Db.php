@@ -127,6 +127,10 @@ class Db extends ORM
 		{
 			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
 		}
+		if (self::$_config->get('type') === 'pgsql')
+		{
+			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('prefix') . '%')->findMany()->count();
+		}
 		if (self::$_config->get('type') === 'sqlite')
 		{
 			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('prefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
@@ -170,17 +174,17 @@ class Db extends ORM
 	/**
 	 * where like with many
 	 *
-	 * @since 2.3.0
+	 * @since 2.4.0
 	 *
-	 * @param array $column array of column names
+	 * @param array $columnArray array of column names
 	 * @param array $likeArray array of the like
 	 *
 	 * @return Db
 	 */
 
-	public function whereLikeMany($column = null, $likeArray = null)
+	public function whereLikeMany($columnArray = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode($column, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
+		return $this->whereRaw(implode($columnArray, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
 	}
 
 	/**

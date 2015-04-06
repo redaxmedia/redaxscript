@@ -180,7 +180,7 @@ class DbTest extends TestCase
 		/* actual */
 
 		$actual = Db::forTablePrefix('articles')->whereLikeMany(array(
-			'title'
+			'alias'
 		), array(
 			'%welcome%'
 		))->findOne()->alias;

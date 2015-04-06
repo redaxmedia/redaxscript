@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
-	id int(10) AUTO_INCREMENT PRIMARY KEY,
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
 	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS /* {configPrefix} */comments (
-	id int(10) AUTO_INCREMENT PRIMARY KEY,
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
 	author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	email varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	url varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
