@@ -152,6 +152,7 @@
 	"token_incorrect": "Token je pogrešan",
 	"installation": "Instalacija",
 	"installation_completed": "Instalacija završena uspješno",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefix",
 	"database": "Baza podataka",

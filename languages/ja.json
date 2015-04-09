@@ -152,6 +152,7 @@
 	"token_incorrect": "トークンが正しくありません",
 	"installation": "インストール",
 	"installation_completed": "インストールは正常に完了しました",
+	"type": "Type",
 	"host": "ホスト名",
 	"prefix": "プリフィックス",
 	"database": "データベース",

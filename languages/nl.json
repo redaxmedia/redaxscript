@@ -152,6 +152,7 @@
 	"token_incorrect": "Token is onjuist",
 	"installation": "Installatie",
 	"installation_completed": "Installatie succesvol voltooid",
+	"type": "Type",
 	"host": "Hostnaam",
 	"prefix": "Prefix",
 	"database": "Datanase",

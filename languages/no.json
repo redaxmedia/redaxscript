@@ -152,6 +152,7 @@
 	"token_incorrect": "Symbolet er feil",
 	"installation": "Installasjon",
 	"installation_completed": "Installasjon fullført",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefiks",
 	"database": "Database",

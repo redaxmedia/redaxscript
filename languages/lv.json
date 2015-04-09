@@ -152,6 +152,7 @@
 	"token_incorrect": "Nekorekts simbols",
 	"installation": "Uzstādīšana",
 	"installation_completed": "Uzstādīšana pabeigta",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefikss",
 	"database": "Datu bāzes nosaukums",

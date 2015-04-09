@@ -152,6 +152,7 @@
 	"token_incorrect": "Token tidak tepat",
 	"installation": "Instalasi",
 	"installation_completed": "Instalasi telah selesai dengan benar",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Awalan",
 	"database": "Basis Data",

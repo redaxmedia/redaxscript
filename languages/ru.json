@@ -152,6 +152,7 @@
 	"token_incorrect": "Неправильный token",
 	"installation": "Установка",
 	"installation_completed": "Установка завершена успешно",
+	"type": "Тип",
 	"host": "Хост",
 	"prefix": "Префикс",
 	"database": "База данных",

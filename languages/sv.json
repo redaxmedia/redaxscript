@@ -152,6 +152,7 @@
 	"token_incorrect": "Kännetecken är felaktigt",
 	"installation": "Installation",
 	"installation_completed": "Installationen slutfördes framgångsrikt",
+	"type": "Type",
 	"host": "Värd",
 	"prefix": "Prefix",
 	"database": "Databas",

@@ -152,6 +152,7 @@
 	"token_incorrect": "Mã xác thực không đúng",
 	"installation": "Cài đặt",
 	"installation_completed": "Việc cài đặt đã hoàn tất",
+	"type": "Type",
 	"host": "Máy chủ",
 	"prefix": "Tiền tố",
 	"database": "Cơ sở dữ liệu",

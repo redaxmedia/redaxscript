@@ -152,6 +152,7 @@
 	"token_incorrect": "Příznak je neplatný",
 	"installation": "Instalace",
 	"installation_completed": "Instalace byla úspěšně dokončena",
+	"type": "Type",
 	"host": "Hostitel",
 	"prefix": "Předpona",
 	"database": "Databáze",

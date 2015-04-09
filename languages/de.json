@@ -152,6 +152,7 @@
 	"token_incorrect": "Token ist fehlerhaft",
 	"installation": "Installation",
 	"installation_completed": "Installation erfolgreich abgeschlossen",
+	"type": "Typ",
 	"host": "Host",
 	"prefix": "Präfix",
 	"database": "Datenbank",
