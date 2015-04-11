@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */extras (
 	headline int(1) DEFAULT 1,
 	status int(1) DEFAULT 1,
 	rank int(10) DEFAULT NULL,
-	access varchar(255) COLLATE utf8_unicode_ci DEFAULT 0
+	access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 )
 ENGINE = MyISAM
 DEFAULT CHARSET = utf8

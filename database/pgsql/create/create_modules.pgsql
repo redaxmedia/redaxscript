@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
 	description varchar(255) DEFAULT NULL,
 	version varchar(255) DEFAULT NULL,
 	status integer DEFAULT 1,
-	access varchar(255) DEFAULT 0
+	access varchar(255) DEFAULT NULL
 );

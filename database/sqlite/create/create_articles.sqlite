@@ -16,5 +16,5 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */articles (
 	comments int(1) DEFAULT 0,
 	status int(1) DEFAULT 1,
 	rank int(10) DEFAULT NULL,
-	access varchar(255) DEFAULT 0
+	access varchar(255) DEFAULT NULL
 );

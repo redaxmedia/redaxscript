@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */categories (
 	parent integer DEFAULT 0,
 	status integer DEFAULT 1,
 	rank integer DEFAULT NULL,
-	access varchar(255) DEFAULT 0
+	access varchar(255) DEFAULT NULL
 );
