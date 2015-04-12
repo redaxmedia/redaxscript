@@ -85,7 +85,7 @@ function admin_process()
 				$access_string = implode(', ', $access);
 				if ($access_string == '')
 				{
-					$access_string = 0;
+					$access_string = null;
 				}
 				$access = $r['access'] = $access_string;
 			}

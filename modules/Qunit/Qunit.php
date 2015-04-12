@@ -28,9 +28,7 @@ class Qunit extends Module
 		'alias' => 'Qunit',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript unit testing',
-		'version' => '2.4.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**

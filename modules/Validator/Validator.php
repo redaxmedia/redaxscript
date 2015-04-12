@@ -28,8 +28,7 @@ class Validator extends Module
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
 		'version' => '2.4.0',
-		'status' => 1,
-		'access' => 1
+		'access' => '1'
 	);
 
 	/**

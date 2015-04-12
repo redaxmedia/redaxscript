@@ -21,7 +21,7 @@ class Module
 
 	protected static $_moduleArray = array(
 		status => 1,
-		access => 0
+		access => null
 	);
 
 	/**

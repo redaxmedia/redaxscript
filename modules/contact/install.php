@@ -20,9 +20,7 @@ function contact_install()
 			'alias' => 'contact',
 			'author' => 'Redaxmedia',
 			'description' => 'Simple contact form',
-			'version' => '2.4.0',
-			'status' => 1,
-			'access' => 0
+			'version' => '2.4.0'
 		))
 		->save();
 }

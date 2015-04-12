@@ -26,9 +26,7 @@ class Dawanda extends Module
 		'alias' => 'Dawanda',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered Dawanda API client',
-		'version' => '2.4.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**

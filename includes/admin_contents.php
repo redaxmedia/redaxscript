@@ -480,7 +480,7 @@ function admin_contents_form()
 		}
 		$status = 1;
 		$rank = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank') + 1;
-		$access = 0;
+		$access = null;
 		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');
 		$route = 'admin/process/' . TABLE_PARAMETER;
@@ -662,7 +662,7 @@ function admin_contents_form()
 
 	if (GROUPS_EDIT == 1)
 	{
-		$access_array[l('all')] = 0;
+		$access_array[l('all')] = null;
 		$access_result = Redaxscript\Db::forTablePrefix('groups')->orderByAsc('name')->findArray();
 		if ($access_result)
 		{

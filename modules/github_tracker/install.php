@@ -20,9 +20,7 @@ function github_tracker_install()
 			'alias' => 'github_tracker',
 			'author' => 'Redaxmedia',
 			'description' => 'Integrate milestones and issues from Github',
-			'version' => '2.4.0',
-			'status' => 1,
-			'access' => 0
+			'version' => '2.4.0'
 		))
 		->save();
 }

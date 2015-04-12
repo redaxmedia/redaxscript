@@ -33,7 +33,7 @@ class Access implements ValidatorInterface
 
 		/* validate access again group */
 
-		if ($access == 0 || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
+		if (is_null($access) || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
 		{
 			$output = ValidatorInterface::PASSED;
 		}

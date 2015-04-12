@@ -27,9 +27,7 @@ class GetFile extends Module
 		'alias' => 'GetFile',
 		'author' => 'Redaxmedia',
 		'description' => 'File information helper',
-		'version' => '2.4.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**
