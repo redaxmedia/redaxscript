@@ -18,8 +18,8 @@ Redaxscript
 [![Gitter chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
 
 
-Online demo
------------
+Demo
+----
 
 > Unfortunately, no one can be told what Redaxscript is.
 You have to see it for yourself.
