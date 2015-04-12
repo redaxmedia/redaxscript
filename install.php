@@ -208,22 +208,21 @@ function install_post()
 
 	if ($_POST['install_post'])
 	{
-		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
-		$replacement = '// @configStart
-			\'type\' => \'' . $d_type . '\',
-			\'host\' => \'' . $d_host . '\',
-			\'name\' => \'' . $d_name . '\',
-			\'user\' => \'' . $d_user . '\',
-			\'password\' => \'' . $d_password . '\',
-			\'prefix\' => \'' . $d_prefix . '\',
-			\'salt\' => \'' . $d_salt . '\'
-			// @configEnd';
+		$contents =
+'{
+	"type": "' . $d_type . '",
+	"host": "' . $d_host . '",
+	"name": "' . $d_name . '",
+	"user": "' . $d_user . '",
+	"password": "' . $d_password . '",
+	"prefix": "' . $d_prefix . '",
+	"salt": "' . $d_salt . '"
+}';
 
-		/* process contents */
 
-		$content = file_get_contents('Config.php');
-		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('Config.php', $content);
+		/* put contents */
+
+		file_put_contents('config.php', $contents);
 	}
 }
 
@@ -244,9 +243,9 @@ function install_notification()
 
 	$registry = Redaxscript\Registry::getInstance();
 
-	if (is_writable('Config.php') == '')
+	if (is_writable('config.php') == '')
 	{
-		$error = l('file_permission_grant') . l('colon') . ' Config.php';
+		$error = l('file_permission_grant') . l('colon') . ' config.php';
 	}
 	else if (!$registry->get('dbStatus'))
 	{
