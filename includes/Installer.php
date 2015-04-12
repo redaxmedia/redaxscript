@@ -85,6 +85,7 @@ class Installer
 				'alias' => 'welcome',
 				'author' => $options['user'],
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
+				'language' => '',
 				'category' => 1,
 				'rank' => 1
 			))->save();
@@ -97,18 +98,37 @@ class Installer
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $options['user'],
+				'language' => '',
 				'rank' => 1
 			))->save();
 
 		/* extras */
 
 		$extrasArray = array(
-			'categories' => 1,
-			'articles' => 1,
-			'comments' => 1,
-			'languages' => 0,
-			'templates' => 0,
-			'footer' => 0
+			'categories' => array(
+				'status' => 1,
+				'headline' => 1
+			),
+			'articles' => array(
+				'status' => 1,
+				'headline' => 1
+			),
+			'comments' => array(
+				'status' => 1,
+				'headline' => 1
+			),
+			'languages' => array(
+				'status' => 0,
+				'headline' => 1
+			),
+			'templates' => array(
+				'status' => 0,
+				'headline' => 1
+			),
+			'footer' => array(
+				'status' => 0,
+				'headline' => 0
+			)
 		);
 		$extrasRank = 0;
 
@@ -123,7 +143,9 @@ class Installer
 					'alias' => $key,
 					'author' => $options['user'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
-					'status' => $value,
+					'language' => '',
+					'headline' => $value['headline'],
+					'status' => $value['status'],
 					'rank' => ++$extrasRank
 				))->save();
 		}
@@ -136,14 +158,14 @@ class Installer
 				'name' => 'Administrators',
 				'alias' => 'administrators',
 				'description' => 'Unlimited access',
-				'categories' => 1,
-				'articles' => 1,
-				'extras' => 1,
-				'comments' => 1,
-				'groups' => 1,
-				'users' => 1,
-				'modules' => 1,
-				'settings' => 1,
+				'categories' => '1, 2, 3',
+				'articles' => '1, 2, 3',
+				'extras' => '1, 2, 3',
+				'comments' => '1, 2, 3',
+				'groups' => '1, 2, 3',
+				'users' => '1, 2, 3',
+				'modules' => '1, 2, 3',
+				'settings' => '1, 2, 3',
 				'filter' => 0,
 			))->save();
 		Db::forTablePrefix('groups')
@@ -153,6 +175,22 @@ class Installer
 				'alias' => 'members',
 				'description' => 'Default members group'
 			))->save();
+
+		/* modules */
+
+		if (is_dir('modules/CallHome'))
+		{
+			Db::forTablePrefix('modules')
+				->create()
+				->set(array(
+					'name' => 'Call home',
+					'alias' => 'CallHome',
+					'description' => 'Default members group',
+					'author' => 'Redaxmedia',
+					'description' => 'Provide version and news updates',
+					'version' => $language->get('version', '_package')
+				))->save();
+		}
 
 		/* settings */
 
@@ -197,22 +235,6 @@ class Installer
 				))->save();
 		}
 
-		/* modules */
-
-		if (is_dir('modules/CallHome'))
-		{
-			Db::forTablePrefix('modules')
-				->create()
-				->set(array(
-					'name' => 'Call home',
-					'alias' => 'CallHome',
-					'description' => 'Default members group',
-					'author' => 'Redaxmedia',
-					'description' => 'Provide version and news updates',
-					'version' => $language->get('version', '_package')
-				))->save();
-		}
-
 		/* users */
 
 		Db::forTablePrefix('users')
@@ -223,7 +245,8 @@ class Installer
 				'password' => sha1($options['password']) . $this->_config->get('salt'),
 				'email' => $options['email'],
 				'description' => 'God admin',
-				'groups' => 1
+				'language' => '',
+				'groups' => '1'
 			))->save();
 	}
 
