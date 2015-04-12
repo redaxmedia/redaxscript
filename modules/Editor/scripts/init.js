@@ -65,7 +65,7 @@ rs.modules.editor =
 				'unlink',
 				'insert_image',
 				'insert_break',
-				'insert_code',
+				'insert_quote',
 				'insert_function',
 				'unformat'
 			],
@@ -254,7 +254,7 @@ rs.modules.editor =
 			method: 'insert',
 			command: 'createLink',
 			message: rs.language._editor.insert_link,
-			value: 'http://'
+			value: ''
 		},
 		unlink:
 		{
@@ -268,17 +268,17 @@ rs.modules.editor =
 			method: 'insert',
 			command: 'insertImage',
 			message: rs.language._editor.insert_image,
-			value: 'http://'
+			value: ''
 		},
 		insert_break:
 		{
 			title: rs.language._editor.insert_document_break,
 			method: 'insertBreak'
 		},
-		insert_code:
+		insert_quote:
 		{
 			title: rs.language._editor.insert_code_quote,
-			method: 'insertCode'
+			method: 'insertQuote'
 		},
 		insert_function:
 		{

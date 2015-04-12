@@ -7,6 +7,41 @@ module.exports = function (grunt)
 	grunt.initConfig(
 	{
 		version: grunt.file.readJSON('package.json').version,
+		jscs:
+		{
+			dependency:
+			{
+				src:
+				[
+					'gruntfile.js'
+				]
+			},
+			base:
+			{
+				src:
+				[
+					'scripts/*.js'
+				]
+			},
+			modules:
+			{
+				src:
+				[
+					'modules/*/scripts/*.js'
+				]
+			},
+			templates:
+			{
+				src:
+				[
+					'templates/*/scripts/*.js'
+				]
+			},
+			options:
+			{
+				config: '.jscsrc'
+			}
+		},
 		jshint:
 		{
 			dependency:
@@ -104,6 +139,13 @@ module.exports = function (grunt)
 		},
 		htmlhint:
 		{
+			database:
+			{
+				src:
+				[
+					'database/**/*.phtml'
+				]
+			},
 			modules:
 			{
 				src:
@@ -129,7 +171,7 @@ module.exports = function (grunt)
 			{
 				dir:
 				[
-					'Config.php',
+					'config.php',
 					'index.php',
 					'install.php'
 				]
@@ -340,7 +382,7 @@ module.exports = function (grunt)
 					'scripts/**',
 					'styles/**',
 					'templates/**',
-					'Config.php',
+					'config.php',
 					'index.php',
 					'install.php',
 					'README.md',
@@ -365,7 +407,7 @@ module.exports = function (grunt)
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',
-					'Config.php',
+					'config.php',
 					'index.php',
 					'install.php',
 					'README.md',
@@ -849,6 +891,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
+	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-jsonmin');
 	grunt.loadNpmTasks('grunt-phpcs');
@@ -861,6 +904,7 @@ module.exports = function (grunt)
 
 	grunt.registerTask('default',
 	[
+		'jscs',
 		'jshint',
 		'jsonlint',
 		'csslint',

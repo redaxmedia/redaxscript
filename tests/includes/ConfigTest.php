@@ -27,13 +27,13 @@ class ConfigTest extends TestCase
 
 		Config::set('host', 'localhost');
 
-		/* result */
+		/* actual */
 
-		$result = Config::get('host');
+		$actual = Config::get('host');
 
 		/* compare */
 
-		$this->assertEquals('localhost', $result);
+		$this->assertEquals('localhost', $actual);
 	}
 
 	/**
@@ -44,12 +44,12 @@ class ConfigTest extends TestCase
 
 	public function testGetAll()
 	{
-		/* result */
+		/* actual */
 
-		$result = Config::get();
+		$actual = Config::get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('host', $result);
+		$this->assertArrayHasKey('host', $actual);
 	}
 }

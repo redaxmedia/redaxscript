@@ -20,19 +20,17 @@ use Redaxscript\Validator;
 class Archive extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Archive',
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**
@@ -83,7 +81,7 @@ class Archive extends Config
 			$lastDate = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
+				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
 					$currentDate = $value['month'] + $value['year'];
 

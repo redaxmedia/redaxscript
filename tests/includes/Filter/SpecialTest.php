@@ -46,12 +46,12 @@ class SpecialTest extends TestCase
 
 		$filter = new Filter\Special();
 
-		/* result */
+		/* actual */
 
-		$result = $filter->sanitize($special);
+		$actual = $filter->sanitize($special);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

@@ -18,19 +18,17 @@ use Redaxscript\Registry;
 class SitemapXml extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap XML',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**
@@ -62,20 +60,16 @@ class SitemapXml extends Module
 		/* fetch categories */
 
 		$categories = Db::forTablePrefix('categories')
-			->where(array(
-				'status' => 1,
-				'access' => 0
-			))
+			->where('status', 1)
+			->whereNull('access')
 			->orderByAsc('rank')
 			->findArray();
 
 		/* fetch articles */
 
 		$articles = Db::forTablePrefix('articles')
-			->where(array(
-				'status' => 1,
-				'access' => 0
-			))
+			->where('status', 1)
+			->whereNull('access')
 			->orderByAsc('rank')
 			->findArray();
 

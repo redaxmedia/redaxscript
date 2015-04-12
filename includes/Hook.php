@@ -56,7 +56,8 @@ class Hook
 	public static function init(Registry $registry)
 	{
 		$accessValidator = new Validator\Access();
-		$modulesDirectory = new Directory('modules');
+		$modulesDirectory = new Directory();
+		$modulesDirectory->init('modules');
 		$modulesAvailable = $modulesDirectory->getArray();
 		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
@@ -66,7 +67,7 @@ class Hook
 		{
 			/* validate access */
 
-			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === Validator\Validator::PASSED)
+			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
 				self::$_modules[$module->alias] = $module->alias;
 			}

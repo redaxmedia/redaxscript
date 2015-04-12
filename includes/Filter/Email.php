@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-class Email implements Filter
+class Email implements FilterInterface
 {
 	/**
 	 * sanitize the email

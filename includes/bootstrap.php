@@ -13,10 +13,12 @@ include_once('includes/Autoloader.php');
 Autoloader::init();
 Request::init();
 
-/* registry and config */
+/* get instance */
 
 $registry = Registry::getInstance();
+$request = Request::getInstance();
 $config = Config::getInstance();
+$config::init();
 
 /* database */
 
@@ -32,9 +34,9 @@ try
 	{
 		$registry->set('dbStatus', 1);
 
-		/* has tables */
+		/* has table */
 
-		if (Db::forTablePrefix()->rawQuery('SHOW TABLES LIKE \'' . $config->get('prefix') . '%\'')->findMany()->count())
+		if (Db::countTablePrefix())
 		{
 			$registry->set('dbStatus', 2);
 		}
@@ -62,8 +64,8 @@ if ($registry->get('dbStatus') === 2)
 
 /* detector */
 
-$detectorLanguage = new Detector\Language($registry);
-$detectorTemplate = new Detector\Template($registry);
+$detectorLanguage = new Detector\Language($registry, $request);
+$detectorTemplate = new Detector\Template($registry, $request);
 
 /* set language and template */
 

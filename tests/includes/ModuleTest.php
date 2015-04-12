@@ -17,6 +17,17 @@ use Redaxscript\Module;
 class ModuleTest extends TestCase
 {
 	/**
+	 * setUp
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function setUp()
+	{
+		Db::clearCache();
+	}
+
+	/**
 	 * testInit
 	 *
 	 * @since 2.2.0
@@ -26,18 +37,18 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'alias' => 'Test',
 		));
-		$module->init();
 
-		/* result */
+		/* actual */
 
-		$result = $module;
+		$actual = $module;
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_object($actual));
 	}
 
 	/**
@@ -50,19 +61,20 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
+		$module = new Module();
+		$module->init(array(
 			'name' => 'Test',
 			'alias' => 'Test',
 		));
 		$module->install();
 
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
+		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
 
 		/* compare */
 
-		$this->assertEquals('Test', $result);
+		$this->assertEquals('Test', $actual);
 	}
 
 	/**
@@ -75,18 +87,18 @@ class ModuleTest extends TestCase
 	{
 		/* setup */
 
-		$module = new Module(array(
-			'alias' => 'Test',
+		$module = new Module();
+		$module->init(array(
+			'alias' => 'Test'
 		));
 		$module->uninstall();
-		Db::clearCache();
 
-		/* result */
+		/* actual */
 
-		$result = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
+		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
 
 		/* compare */
 
-		$this->assertFalse(is_object($result));
+		$this->assertFalse(is_object($actual));
 	}
 }

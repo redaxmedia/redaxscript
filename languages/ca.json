@@ -152,6 +152,7 @@
 	"token_incorrect": "El token és incorrecte",
 	"installation": "Instal·lació",
 	"installation_completed": "La instal·lació sha completat correctament",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefixe",
 	"database": "Base de dades",

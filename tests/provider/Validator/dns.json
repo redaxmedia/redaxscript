@@ -2,21 +2,21 @@
 	[
 		"smtp.gmail.com",
 		"MX",
-		1
+		true
 	],
 	[
 		"www.domain.com",
 		"MX",
-		0
+		false
 	],
 	[
 		"www.domain.com",
 		"A",
-		1
+		true
 	],
 	[
 		"redaxscript.com",
 		"A",
-		1
+		true
 	]
 ]

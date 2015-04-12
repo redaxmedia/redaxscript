@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Dns implements Validator
+class Dns implements ValidatorInterface
 {
 	/**
 	 * validate the dns
@@ -27,7 +27,7 @@ class Dns implements Validator
 
 	public function validate($host = null, $type = 'A')
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 
 		/* validate dns */
 
@@ -35,11 +35,11 @@ class Dns implements Validator
 		{
 			if (function_exists('checkdnsrr') && checkdnsrr($host, $type) === false)
 			{
-				$output = Validator::FAILED;
+				$output = ValidatorInterface::FAILED;
 			}
 			else
 			{
-				$output = Validator::PASSED;
+				$output = ValidatorInterface::PASSED;
 			}
 		}
 		return $output;

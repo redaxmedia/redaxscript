@@ -152,6 +152,7 @@
 	"token_incorrect": "თოქენი არასწორია",
 	"installation": "ინსტალაცია",
 	"installation_completed": "ინსტალაცია დასრულდა წარმატებით",
+	"type": "Type",
 	"host": "ჰოსტი",
 	"prefix": "პრეფიქსი",
 	"database": "მონაცემთა ბაზა",

@@ -68,7 +68,7 @@
 	background: linear-gradient(#d50000, #a20000);
 }
 
-.editor_control:before
+.editor_control:before, .editor_preview > break:before, .editor_preview > quote:before, .editor_preview > function:before, .editor_preview > module:before
 {
 	font: 1.25em/2.5em 'icon editor';
 	left: 0;
@@ -236,17 +236,17 @@
 	content: '5';
 }
 
-.editor_control.insert_break:before
+.editor_control.insert_break:before, .editor_preview > break:before
 {
 	content: '6';
 }
 
-.editor_control.insert_code:before
+.editor_control.insert_quote:before, .editor_preview > quote:before
 {
 	content: '7';
 }
 
-.editor_control.insert_function:before
+.editor_control.insert_function:before, .editor_preview > function:before, .editor_preview > module:before
 {
 	content: '8';
 }
@@ -267,8 +267,20 @@
 	padding: 0.5em;
 }
 
-.editor_preview > div:hover, .editor_preview > ol:hover, .editor_preview > p:hover, .editor_preview > ul:hover
+/* pseudo tags */
+
+.editor_preview > break, .editor_preview > function, .editor_preview > module, .editor_preview > quote
 {
-	outline: 2px dashed #ddd;
-	outline-color: rgba(0, 0, 0, 0.1);
+	border: 2px dashed;
+	color: #b9b9b9;
+	display: block;
+	font-size: 1.5em;
+	height: 3em;
+	margin: 1em;
+	position: relative;
+	text-indent: -999em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }

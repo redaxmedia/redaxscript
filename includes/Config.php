@@ -14,22 +14,33 @@ namespace Redaxscript;
 class Config extends Singleton
 {
 	/**
-	 * database config
+	 * array of the config
 	 *
 	 * @var array
 	 */
 
-	private static $_config = array(
-		// @configStart
-		'type' => '',
-		'host' => '',
-		'name' => '',
-		'user' => '',
-		'password' => '',
-		'prefix' => '',
-		'salt' => ''
-		// @configEnd
-	);
+	private static $_configArray = array();
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $file file with config
+	 */
+
+	public static function init($file = 'config.php')
+	{
+		if (file_exists($file))
+		{
+			$contents = file_get_contents($file);
+			$_configArray = json_decode($contents, true);
+			if (is_array($_configArray))
+			{
+				self::$_configArray = array_merge(self::$_configArray, $_configArray);
+			}
+		}
+	}
 
 	/**
 	 * get item from config
@@ -49,11 +60,11 @@ class Config extends Singleton
 
 		if (is_null($key))
 		{
-			$output = self::$_config;
+			$output = self::$_configArray;
 		}
-		else if (array_key_exists($key, self::$_config))
+		else if (array_key_exists($key, self::$_configArray))
 		{
-			$output = self::$_config[$key];
+			$output = self::$_configArray[$key];
 		}
 		return $output;
 	}
@@ -69,6 +80,6 @@ class Config extends Singleton
 
 	public static function set($key = null, $value = null)
 	{
-		self::$_config[$key] = $value;
+		self::$_configArray[$key] = $value;
 	}
 }

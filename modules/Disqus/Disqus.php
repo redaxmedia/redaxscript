@@ -17,19 +17,17 @@ use Redaxscript\Registry;
 class Disqus extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Disqus',
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with disqus',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**

@@ -13,13 +13,13 @@
 
 function breadcrumb()
 {
-	$options = array(
+	$breadcrumb = new Redaxscript\Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$breadcrumb->init(array(
 		'className' => array(
 			'list' => 'list_breadcrumb',
 			'divider' => 'divider'
 		)
-	);
-	$breadcrumb = new Redaxscript\Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), $options);
+	));
 	echo $breadcrumb->render();
 }
 

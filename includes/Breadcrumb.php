@@ -56,32 +56,32 @@ class Breadcrumb
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.1.0
+	 * @since 2.4.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param array $options options of the breadcrumb
 	 */
 
-	public function __construct(Registry $registry, Language $language, $options = null)
+	public function __construct(Registry $registry, Language $language)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
-		if (is_array($options))
-		{
-			$this->_options = array_unique(array_merge($this->_options, $options));
-		}
-		$this->init();
 	}
 
 	/**
 	 * init the class
 	 *
-	 * @since 2.1.0
+	 * @since 2.4.0
+	 *
+	 * @param array $options options of the breadcrumb
 	 */
 
-	public function init()
+	public function init($options = null)
 	{
+		if (is_array($options))
+		{
+			$this->_options = array_unique(array_merge($this->_options, $options));
+		}
 		$this->_build();
 	}
 
@@ -211,7 +211,7 @@ class Breadcrumb
 
 		/* else if default alias */
 
-		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\Validator::PASSED)
+		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
 			/* join default title */
 

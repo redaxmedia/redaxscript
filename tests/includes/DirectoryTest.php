@@ -91,15 +91,16 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path), $exclude);
+		$directory = new Directory();
+		$directory->init(Stream::url($path), $exclude);
 
-		/* result */
+		/* actual */
 
-		$result = $directory->getArray();
+		$actual = $directory->getArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -117,16 +118,17 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path[1]));
+		$directory = new Directory();
+		$directory->init(Stream::url($path[1]));
 		$directory->create($path[0], 511);
 
-		/* result */
+		/* actual */
 
-		$result = scandir(Stream::url($path[2]));
+		$actual = scandir(Stream::url($path[2]));
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -144,15 +146,16 @@ class DirectoryTest extends TestCase
 	{
 		/* setup */
 
-		$directory = new Directory(Stream::url($path[1]));
+		$directory = new Directory();
+		$directory->init(Stream::url($path[1]));
 		$directory->remove($path[0]);
 
-		/* result */
+		/* actual */
 
-		$result = scandir(Stream::url($path[2]));
+		$actual = scandir(Stream::url($path[2]));
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

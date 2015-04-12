@@ -17,8 +17,7 @@ function admin_modules_list()
 
 	/* query modules */
 
-	$query = 'SELECT id, name, alias, version, status FROM ' . PREFIX . 'modules';
-	$result = Redaxscript\Db::forTablePrefix('modules')->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix('modules')->orderByAsc('name')->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -44,7 +43,7 @@ function admin_modules_list()
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -115,7 +114,8 @@ function admin_modules_list()
 	{
 		/* modules directory object */
 
-		$modules_directory = new Redaxscript\Directory('modules');
+		$modules_directory = new Redaxscript\Directory();
+		$modules_directory->init('modules');
 		$modules_directory_array = $modules_directory->getArray();
 		if ($modules_directory_array && $modules_installed_array)
 		{
@@ -173,8 +173,7 @@ function admin_modules_form()
 	{
 		/* query modules */
 
-		$query = 'SELECT * FROM ' . PREFIX . 'modules WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forTablePrefix('modules')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('modules')->where('id', ID_PARAMETER)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -223,8 +222,7 @@ function admin_modules_form()
 	if (GROUPS_EDIT == 1)
 	{
 		$access_array[l('all')] = 0;
-		$access_query = 'SELECT * FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($access_query)->findArray();
+		$access_result = Redaxscript\Db::forTablePrefix('groups')->orderByAsc('name')->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)

@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */extras (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title varchar(255) DEFAULT NULL,
+	alias varchar(255) DEFAULT NULL,
+	author varchar(255) DEFAULT NULL,
+	text longtext,
+	language char(3) DEFAULT NULL,
+	date timestamp DEFAULT CURRENT_TIMESTAMP,
+	sibling int(10) DEFAULT 0,
+	category int(10) DEFAULT 0,
+	article int(10) DEFAULT 0,
+	headline int(1) DEFAULT 1,
+	status int(1) DEFAULT 1,
+	rank int(10) DEFAULT NULL,
+	access varchar(255) DEFAULT NULL
+);

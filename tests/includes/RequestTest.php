@@ -16,14 +16,23 @@ use Redaxscript\Request;
 class RequestTest extends TestCase
 {
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	protected function setUp()
 	{
-		Request::init();
+		$this->_request = Request::getInstance();
+		$this->_request->init();
 	}
 
 	/**
@@ -34,13 +43,13 @@ class RequestTest extends TestCase
 
 	public function testAll()
 	{
-		/* result */
+		/* actual */
 
-		$result = Request::get();
+		$actual = $this->_request->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('_SERVER', $result);
+		$this->assertArrayHasKey('_SERVER', $actual);
 	}
 
 	/**
@@ -53,15 +62,15 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::set('testKey', 'testValue');
+		$this->_request->set('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::get('testKey');
+		$actual = $this->_request->get('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -74,15 +83,15 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setServer('testKey', 'testValue');
+		$this->_request->setServer('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::getServer('testKey');
+		$actual = $this->_request->getServer('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -95,15 +104,15 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setQuery('testKey', 'testValue');
+		$this->_request->setQuery('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::getQuery('testKey');
+		$actual = $this->_request->getQuery('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -116,15 +125,15 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setPost('testKey', 'testValue');
+		$this->_request->setPost('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::getPost('testKey');
+		$actual = $this->_request->getPost('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -137,15 +146,15 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setSession('testKey', 'testValue');
+		$this->_request->setSession('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::getSession('testKey');
+		$actual = $this->_request->getSession('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -158,14 +167,14 @@ class RequestTest extends TestCase
 	{
 		/* setup */
 
-		Request::setCookie('testKey', 'testValue');
+		$this->_request->setCookie('testKey', 'testValue');
 
-		/* result */
+		/* actual */
 
-		$result = Request::getCookie('testKey');
+		$actual = $this->_request->getCookie('testKey');
 
 		/* compare */
 
-		$this->assertEquals('testValue', $result);
+		$this->assertEquals('testValue', $actual);
 	}
 }

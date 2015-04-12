@@ -19,19 +19,17 @@ use Redaxscript\Registry;
 class CallHome extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Call home',
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**

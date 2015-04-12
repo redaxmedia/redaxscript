@@ -71,13 +71,13 @@ class ElementTest extends TestCase
 
 		$element = new Element($tag, $attributeArray);
 
-		/* result */
+		/* actual */
 
-		$result = $element;
+		$actual = $element;
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -93,14 +93,14 @@ class ElementTest extends TestCase
 		$element = new Element('a');
 		$elementCopy = $element->copy()->attr('href', 'test');
 
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = $element;
-		$result = $elementCopy;
+		$actual = $elementCopy;
 
 		/* compare */
 
-		$this->assertNotEquals($expect, $result);
+		$this->assertNotEquals($expect, $actual);
 	}
 
 	/**
@@ -120,13 +120,13 @@ class ElementTest extends TestCase
 
 		$element = new Element('a');
 
-		/* result */
+		/* actual */
 
-		$result = $element->attr($attribute[0], $attribute[1])->removeAttr($attribute[2])->render();
+		$actual = $element->attr($attribute[0], $attribute[1])->removeAttr($attribute[2])->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -146,13 +146,13 @@ class ElementTest extends TestCase
 
 		$element = new Element('a');
 
-		/* result */
+		/* actual */
 
-		$result = $element->addClass($className[0])->removeClass($className[1])->render();
+		$actual = $element->addClass($className[0])->removeClass($className[1])->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -167,14 +167,14 @@ class ElementTest extends TestCase
 
 		$element = new Element('input');
 
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = '<input value="test" />';
-		$result = $element->val('test');
+		$actual = $element->val('test');
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -189,14 +189,14 @@ class ElementTest extends TestCase
 
 		$element = new Element('a');
 
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = '<a><span>test</span></a>';
-		$result = $element->html('<span>test</span>');
+		$actual = $element->html('<span>test</span>');
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -211,14 +211,14 @@ class ElementTest extends TestCase
 
 		$element = new Element('a');
 
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = '<a>test</a>';
-		$result = $element->text('<span>test</span>');
+		$actual = $element->text('<span>test</span>');
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -234,13 +234,13 @@ class ElementTest extends TestCase
 		$element = new Element('a');
 		$element->text('test');
 
-		/* expect and result */
+		/* expect and actual */
 
 		$expect = '<a></a>';
-		$result = $element->clean();
+		$actual = $element->clean();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

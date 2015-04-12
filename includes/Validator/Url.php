@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Url implements Validator
+class Url implements ValidatorInterface
 {
 	/**
 	 * validate the url
@@ -27,13 +27,13 @@ class Url implements Validator
 
 	public function validate($url = null, $dns = true)
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 
 		/* validate url */
 
 		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
 		{
-			$output = Validator::PASSED;
+			$output = ValidatorInterface::PASSED;
 
 			/* validate dns */
 

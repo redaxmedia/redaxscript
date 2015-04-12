@@ -9,20 +9,20 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detector
  * @package Redaxscript
+ * @category Detector
  * @author Henry Ruhs
  */
 
-class Language extends Detector
+class Language extends DetectorAbstract
 {
 	/**
-	 * init the class
+	 * automate run
 	 *
 	 * @since 2.1.0
 	 */
 
-	public function init()
+	protected function _autorun()
 	{
 		$root = $this->_registry->get('root');
 		$dbStatus = $this->_registry->get('dbStatus');
@@ -32,12 +32,12 @@ class Language extends Detector
 		/* detect language */
 
 		$this->_detect(array(
-			'query' => Request::getQuery('l'),
-			'session' => Request::getSession($root . '/language'),
+			'query' => $this->_request->getQuery('l'),
+			'session' => $this->_request->getSession($root . '/language'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->language : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('language') : null,
-			'browser' => substr(Request::getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
+			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
-		), 'language', 'languages/{value}.json');
+		), 'language', 'languages/' . $this->_filePlaceholder . '.json');
 	}
 }

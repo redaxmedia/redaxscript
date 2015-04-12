@@ -31,7 +31,7 @@
  * @author Henry Ruhs
  */
 
-(function (doc, docElement, win, nav)
+(function (doc, win, nav)
 {
 	'use strict';
 
@@ -275,7 +275,7 @@
 
 		touch: function ()
 		{
-			if ('ontouchstart' in docElement)
+			if ('ontouchstart' in win)
 			{
 				return true;
 			}
@@ -348,4 +348,4 @@
 			return false;
 		}()
 	};
-})(document, document.documentElement, window, window.navigator);
+})(document, window, window.navigator);

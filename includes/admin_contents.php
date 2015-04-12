@@ -51,8 +51,7 @@ function admin_contents_list()
 
 	/* query contents */
 
-	$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' ORDER BY rank ASC';
-	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
+	$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();
 	$num_rows = count($result);
 
 	/* collect listing output */
@@ -126,7 +125,7 @@ function admin_contents_list()
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -430,8 +429,7 @@ function admin_contents_form()
 	{
 		/* query content */
 
-		$query = 'SELECT * FROM ' . PREFIX . TABLE_PARAMETER . ' WHERE id = ' . ID_PARAMETER;
-		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findArray();
 		$r = $result[0];
 		if ($r)
 		{
@@ -482,7 +480,7 @@ function admin_contents_form()
 		}
 		$status = 1;
 		$rank = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank') + 1;
-		$access = 0;
+		$access = null;
 		$wording_headline = l($wording_single . '_new');
 		$wording_submit = l('create');
 		$route = 'admin/process/' . TABLE_PARAMETER;
@@ -498,7 +496,7 @@ function admin_contents_form()
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
 	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
-	if (TABLE_PARAMETER != 'categories' && TABLE_PARAMETER != 'comments')
+	if (TABLE_PARAMETER != 'categories')
 	{
 		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('date'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
@@ -539,7 +537,8 @@ function admin_contents_form()
 
 	/* languages directory object */
 
-	$languages_directory = new Redaxscript\Directory('languages');
+	$languages_directory = new Redaxscript\Directory();
+	$languages_directory->init('languages');
 	$languages_directory_array = $languages_directory->getArray();
 
 	/* build languages select */
@@ -583,8 +582,7 @@ function admin_contents_form()
 		{
 			$category_array[l('none')] = 0;
 		}
-		$categories_query = 'SELECT id, title, parent FROM ' . PREFIX . 'categories ORDER BY rank ASC';
-		$categories_result = Redaxscript\Db::forTablePrefix('categories')->rawQuery($categories_query)->findArray();
+		$categories_result = Redaxscript\Db::forTablePrefix('categories')->orderByAsc('rank')->findArray();
 		if ($categories_result)
 		{
 			foreach ($categories_result as $c)
@@ -617,13 +615,12 @@ function admin_contents_form()
 		{
 			$article_array[l('all')] = 0;
 		}
-		$articles_query = 'SELECT id, title FROM ' . PREFIX . 'articles';
+		$articles = Redaxscript\Db::forTablePrefix('articles');
 		if (TABLE_PARAMETER == 'comments')
 		{
-			$articles_query .= ' WHERE comments > 0';
+			$articles->where('comments', 0);
 		}
-		$articles_query .= ' ORDER BY rank ASC';
-		$articles_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($articles_query)->findArray();
+		$articles_result = $articles->orderByAsc('rank')->findArray();
 		if ($articles_result)
 		{
 			foreach ($articles_result as $a)
@@ -665,9 +662,8 @@ function admin_contents_form()
 
 	if (GROUPS_EDIT == 1)
 	{
-		$access_array[l('all')] = 0;
-		$access_query = 'SELECT id, name FROM ' . PREFIX . 'groups ORDER BY name ASC';
-		$access_result = Redaxscript\Db::forTablePrefix('groups')->rawQuery($access_query)->findArray();
+		$access_array[l('all')] = null;
+		$access_result = Redaxscript\Db::forTablePrefix('groups')->orderByAsc('name')->findArray();
 		if ($access_result)
 		{
 			foreach ($access_result as $g)
@@ -681,12 +677,12 @@ function admin_contents_form()
 
 	/* collect date set */
 
-	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
+	if (TABLE_PARAMETER != 'categories')
 	{
 		$output .= form_element('fieldset', 'tab-3', 'js_set_tab set_tab set_tab_admin', '', '', l('date')) . '<ul>';
 		$output .= '<li>' . select_date('day', 'field_select_admin', 'day', $date, 'd', 1, 32, l('day')) . '</li>';
 		$output .= '<li>' . select_date('month', 'field_select_admin', 'month', $date, 'm', 1, 13, l('month')) . '</li>';
-		$output .= '<li>' . select_date('year', 'field_select_admin', 'year', $date, 'Y', 2000, 2020, l('year')) . '</li>';
+		$output .= '<li>' . select_date('year', 'field_select_admin', 'year', $date, 'Y', 2000, 2021, l('year')) . '</li>';
 		$output .= '<li>' . select_date('hour', 'field_select_admin', 'hour', $date, 'H', 0, 24, l('hour')) . '</li>';
 		$output .= '<li>' . select_date('minute', 'field_select_admin', 'minute', $date, 'i', 0, 60, l('minute')) . '</li>';
 		$output .= '</ul></fieldset>';

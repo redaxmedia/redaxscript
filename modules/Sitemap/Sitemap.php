@@ -20,19 +20,17 @@ use Redaxscript\Validator;
 class Sitemap extends Config
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Sitemap',
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**
@@ -82,7 +80,7 @@ class Sitemap extends Config
 			$lastCategory = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\Validator::PASSED)
+				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
 					$currentCategory = $value['category'];
 

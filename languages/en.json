@@ -18,6 +18,7 @@
 		"hu": "Magyar",
 		"id": "Bahasa Indonesia",
 		"it": "Italiano",
+		"ja": "日本語",
 		"lv": "Latviešu",
 		"ms": "Bahasa Melayu",
 		"nl": "Nederlands",
@@ -64,10 +65,10 @@
 	],
 	"_package":
 	{
-	  "name": "Redaxscript",
-	  "description": "Ultra lightweight CMS",
-	  "version": "2.3.0",
-	  "homepage": "http://redaxscript.com"
+		"name": "Redaxscript",
+		"description": "Ultra lightweight CMS",
+		"version": "2.4.0",
+		"homepage": "http://redaxscript.com"
 	},
 	"home": "Home",
 	"administration": "Administration",
@@ -193,6 +194,8 @@
 	"token_incorrect": "Token is incorrect",
 	"installation": "Installation",
 	"installation_completed": "Installation completed successfully",
+	"type": "Type",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefix",
 	"database": "Database",

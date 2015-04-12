@@ -19,19 +19,17 @@ use Redaxscript\Request;
 class Demo extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable anonymous login',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**
@@ -87,7 +85,7 @@ class Demo extends Module
 		Request::setSession($root . '/logged_in', $token);
 		Request::setSession($root . '/my_name', 'Anonymous');
 		Request::setSession($root . '/my_user', 'demo');
-		Request::setSession($root . '/my_email', 'anonymous@demo.com');
+		Request::setSession($root . '/my_email', 'anonymous@localhost');
 		Request::setSession($root . '/categories_new', 1);
 		Request::setSession($root . '/categories_edit', 1);
 		Request::setSession($root . '/articles_new', 1);

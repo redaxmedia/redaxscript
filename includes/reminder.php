@@ -25,6 +25,7 @@ function reminder_form()
 	/* captcha object */
 
 	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+	$captcha->init();
 
 	/* collect output */
 
@@ -83,11 +84,11 @@ function reminder_post()
 	{
 		$error = l('email_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -99,8 +100,10 @@ function reminder_post()
 	{
 		/* query users */
 
-		$query = 'SELECT id, user, password FROM ' . PREFIX . 'users WHERE email = \'' . $email . '\' && status = 1';
-		$result = Redaxscript\Db::forTablePrefix('users')->rawQuery($query)->findArray();
+		$result = Redaxscript\Db::forTablePrefix('users')->where(array(
+			'email' => $email,
+			'status' => 1
+		))->findArray();
 		if ($result)
 		{
 			foreach ($result as $r)
@@ -132,7 +135,8 @@ function reminder_post()
 
 				/* mailer object */
 
-				$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
+				$mailer = new Redaxscript\Mailer();
+				$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 				$mailer->send();
 			}
 		}

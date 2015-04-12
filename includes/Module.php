@@ -14,51 +14,42 @@ namespace Redaxscript;
 class Module
 {
 	/**
-	 * common module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
-		'name' => null,
-		'alias' => null,
-		'author' => 'Redaxmedia',
-		'description' => null,
-		'version' => null,
-		'status' => 1,
-		'access' => 0
+	protected static $_moduleArray = array(
+		status => 1,
+		access => null
 	);
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param array $module custom module setup
-	 */
-
-	public function __construct($module = array())
-	{
-		if (is_array($module))
-		{
-			static::$_module = array_merge(static::$_module, $module);
-		}
-	}
 
 	/**
 	 * init the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
+	 *
+	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init()
+	public function init($moduleArray = array())
 	{
-		if (isset(static::$_module['alias']))
+		/* merge module setup */
+
+		if (is_array($moduleArray))
 		{
+			static::$_moduleArray = array_merge(static::$_moduleArray, $moduleArray);
+		}
+
+		/* load the language */
+
+		if (isset(static::$_moduleArray['alias']))
+		{
+			$registry = Registry::getInstance();
 			$language = Language::getInstance();
 			$language->load(array(
-				'modules/' . static::$_module['alias'] . '/languages/en.json',
-				'modules/' . static::$_module['alias'] . '/languages/' . Registry::get('language') . '.json'
+				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
+				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
 			));
 		}
 	}
@@ -71,10 +62,10 @@ class Module
 
 	public function install()
 	{
-		if (isset(static::$_module['name']) && isset(static::$_module['alias']))
+		if (isset(static::$_moduleArray['name']) && isset(static::$_moduleArray['alias']))
 		{
 			$module = Db::forTablePrefix('modules')->create();
-			$module->set(static::$_module);
+			$module->set(static::$_moduleArray);
 			$module->save();
 		}
 	}
@@ -87,9 +78,9 @@ class Module
 
 	public function uninstall()
 	{
-		if (isset(static::$_module['alias']))
+		if (isset(static::$_moduleArray['alias']))
 		{
-			Db::forTablePrefix('modules')->where('alias', static::$_module['alias'])->deleteMany();
+			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
 		}
 	}
 }

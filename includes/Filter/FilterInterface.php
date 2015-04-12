@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * interface to build a filter class
+ * interface to define a filter class
  *
  * @since 2.2.0
  *
@@ -11,7 +11,7 @@ namespace Redaxscript\Filter;
  * @author Henry Ruhs
  */
 
-interface Filter
+interface FilterInterface
 {
 	/**
 	 * sanitize the value

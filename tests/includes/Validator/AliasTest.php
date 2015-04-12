@@ -48,12 +48,12 @@ class AliasTest extends TestCase
 
 		$validator = new Validator\Alias();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($alias, $mode);
+		$actual = $validator->validate($alias, $mode);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

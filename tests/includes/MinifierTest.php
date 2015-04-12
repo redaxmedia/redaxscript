@@ -58,13 +58,13 @@ class MinifierTest extends TestCase
 
 		$minifier = new Minifier();
 
-		/* result */
+		/* actual */
 
-		$result = $minifier->styles($styles);
+		$actual = $minifier->styles($styles);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -84,12 +84,12 @@ class MinifierTest extends TestCase
 
 		$minifier = new Minifier();
 
-		/* result */
+		/* actual */
 
-		$result = $minifier->scripts($scripts);
+		$actual = $minifier->scripts($scripts);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

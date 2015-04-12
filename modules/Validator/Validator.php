@@ -17,19 +17,18 @@ use Redaxscript\Registry;
 class Validator extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Validator',
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 1
+		'version' => '2.4.0',
+		'access' => '1'
 	);
 
 	/**

@@ -35,9 +35,9 @@
 		win.test('framework', function ()
 		{
 			var expect = 'function',
-				result = typeof $;
+				actual = typeof $;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 2. namespace */
@@ -45,9 +45,9 @@
 		win.test('namespace', function ()
 		{
 			var expect = 'object',
-				result = typeof rs;
+				actual = typeof rs;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 3. base url */
@@ -55,9 +55,9 @@
 		win.test('baseURL', function ()
 		{
 			var expect = 'string',
-				result = typeof rs.baseURL;
+				actual = typeof rs.baseURL;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 4. registry */
@@ -65,9 +65,9 @@
 		win.test('registry', function ()
 		{
 			var expect = 'number',
-				result = typeof Object.keys(rs.registry).length;
+				actual = typeof Object.keys(rs.registry).length;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 5. support */
@@ -75,9 +75,9 @@
 		win.test('support', function ()
 		{
 			var expect = 'number',
-				result = typeof Object.keys(rs.support).length;
+				actual = typeof Object.keys(rs.support).length;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 6. version */
@@ -85,9 +85,9 @@
 		win.test('version', function ()
 		{
 			var expect = 'string',
-				result = typeof rs.version;
+				actual = typeof rs.version;
 
-			win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+			win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 		});
 
 		/* @section 7. clean alias */
@@ -97,9 +97,9 @@
 			win.test('cleanAlias', function ()
 			{
 				var expect = 'hello-world',
-					result = $.fn.cleanAlias(dummy);
+					actual = $.fn.cleanAlias(dummy);
 
-				win.equal(result, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
+				win.equal(actual, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -110,7 +110,7 @@
 			win.test('generateKeyword', function ()
 			{
 				var expect = 'hello world',
-					result = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum', {
+					actual = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum', {
 						element:
 						{
 							target: 'h1, h2, h3, strong'
@@ -119,7 +119,7 @@
 						limit: 10
 					});
 
-				win.equal(result, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
+				win.equal(actual, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -131,17 +131,17 @@
 			{
 				var textarea = $('<textarea cols="5" rows="5"></textarea>').autoResize().appendTo(fixture),
 					expect = 1,
-					result = textarea.attr('rows');
+					actual = textarea.attr('rows');
 
 				/* trigger focus */
 
-				result = textarea.trigger('focus').attr('rows');
-				win.equal(result, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
+				actual = textarea.trigger('focus').attr('rows');
+				win.equal(actual, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
 
 				/* trigger input */
 
-				result = textarea.val(dummy).trigger('input').attr('rows');
-				win.notEqual(result, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
+				actual = textarea.val(dummy).trigger('input').attr('rows');
+				win.notEqual(actual, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -154,13 +154,13 @@
 				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
 					input = form.children('input'),
 					expect = rs.language.input_incorrect + rs.language.exclamation_mark,
-					result = input.attr('placeholder');
+					actual = input.attr('placeholder');
 
 				/* trigger submit */
 
 				form.submit();
-				result = input.attr('placeholder');
-				win.equal(result, expect, rs.language._qunit.attribute_expected + rs.language.colon + ' ' + expect);
+				actual = input.attr('placeholder');
+				win.equal(actual, expect, rs.language._qunit.attribute_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -172,15 +172,15 @@
 			{
 				var textarea = $('<textarea cols="5" rows="5"></textarea>').enableIndent().appendTo(fixture),
 					expect = rs.plugins.enableIndent.options.indent,
-					result = textarea.val(),
+					actual = textarea.val(),
 					keydown = $.Event('keydown');
 
 				keydown.which  = 9;
 
 				/* trigger keydown */
 
-				result = textarea.trigger(keydown).val();
-				win.equal(result, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
+				actual = textarea.trigger(keydown).val();
+				win.equal(actual, expect, rs.language._qunit.value_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 
@@ -192,7 +192,7 @@
 			{
 				var input = $('<input type="password" value="' + dummy + '" />').unmaskPassword().appendTo(fixture),
 					expect = 'text',
-					result = input.attr('type'),
+					actual = input.attr('type'),
 					keydown = $.Event('keydown');
 
 				keydown.ctrlKey = true;
@@ -200,14 +200,14 @@
 
 				/* trigger keydown */
 
-				result = input.trigger(keydown).attr('type');
-				win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+				actual = input.trigger(keydown).attr('type');
+				win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 
 				/* trigger blur */
 
 				expect = 'password';
-				result = input.trigger('blur').attr('type');
-				win.equal(result, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
+				actual = input.trigger('blur').attr('type');
+				win.equal(actual, expect, rs.language._qunit.type_expected + rs.language.colon + ' ' + expect);
 			});
 		}
 	});

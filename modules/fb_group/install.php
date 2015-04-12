@@ -13,8 +13,16 @@
 
 function fb_group_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Facebook group\', \'fb_group\', \'Redaxmedia\', \'Integrate a Facebook group\', \'2.3.0\', 1, 0)';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')
+		->create()
+		->set(array(
+			'name' => 'Facebook group',
+			'alias' => 'fb_group',
+			'author' => 'Redaxmedia',
+			'description' => 'Integrate a Facebook group',
+			'version' => '2.4.0'
+		))
+		->save();
 }
 
 /**
@@ -30,7 +38,6 @@ function fb_group_install()
 
 function fb_group_uninstall()
 {
-	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'fb_group\' LIMIT 1';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')->where('alias', 'fb_group')->findMany()->delete();
 }
 

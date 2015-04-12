@@ -140,19 +140,10 @@ function build_route($table = '', $id = '')
 
 function future_update($table = '')
 {
-	$general_update_query = 'UPDATE ' . PREFIX . $table . ' SET status = 1 WHERE date < \'' . NOW . '\' && status = 2';
-	if ($table == 'articles')
-	{
-		$general_select_query = 'SELECT id, date FROM ' . PREFIX . 'articles WHERE date < \'' . NOW . '\' && status = 2';
-		$general_result = Redaxscript\Db::forTablePrefix('articles')->rawQuery($general_select_query)->findArray();
-		if ($general_result)
-		{
-			foreach ($general_result as $r)
-			{
-				$comments_update_query = 'UPDATE ' . PREFIX . 'comments SET date = \'' . $r['date'] . '\', status = 1 WHERE article = ' . $r['id'] . ' && status = 2';
-				Redaxscript\Db::rawExecute($comments_update_query);
-			}
-		}
-	}
-	Redaxscript\Db::rawExecute($general_update_query);
+	Redaxscript\Db::forTablePrefix($table)
+		->where('status', 2)
+		->whereLt('date', Redaxscript\Registry::get('now'))
+		->findMany()
+		->set('status', 1)
+		->save();
 }

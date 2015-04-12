@@ -13,22 +13,55 @@ include_once('stubs/hook_method.php');
 Autoloader::init();
 Request::init();
 
-/* set config */
-
-Config::set('type', 'mysql');
-Config::set('host', 'redaxscript.com');
-Config::set('name', 'd01ae38a');
-Config::set('user', 'd01ae38a');
-Config::set('password', 'travis');
-
-/* registry and config */
+/* get instance */
 
 $registry = Registry::getInstance();
+$request = Request::getInstance();
 $config = Config::getInstance();
+$config::init();
 
-/* database and hook */
+/* mysql and pgsql */
+
+if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get('argv')))
+{
+	if (in_array('mysql', $request->get('argv')))
+	{
+		echo 'MySQL - ';
+		$config->set('type', 'mysql');
+		$config->set('user', 'root');
+	}
+	if (in_array('pgsql', $request->get('argv')))
+	{
+		echo 'PostgreSQL - ';
+		$config->set('type', 'pgsql');
+		$config->set('user', 'postgres');
+	}
+	$config->set('host', 'localhost');
+	$config->set('name', 'test');
+	$config->set('password', 'test');
+}
+
+/* sqlite */
+
+else
+{
+	echo 'SQLite - ';
+}
+
+/* database */
 
 Db::init($config);
+
+/* installer */
+
+$installer = new Installer();
+$installer->init($config);
+$installer->rawDrop();
+$installer->rawCreate();
+$installer->insertData();
+
+/* hook */
+
 Hook::init($registry);
 
 /* language */

@@ -15,25 +15,38 @@ use ORM;
  * @method _addJoinSource()
  * @method _addOrderBy()
  * @method _setupDb()
+ * @method clearCache()
  * @method deleteMany()
  * @method deleteOne()
  * @method findMany()
  * @method findOne()
+ * @method getDb()
  * @method rawExecute()
  * @method rawQuery()
  * @method orderByAsc()
  * @method orderByDesc()
  * @method selectExpr()
  * @method tableAlias()
+ * @method whereGt()
+ * @method whereIdIn()
  * @method whereIdIs()
  * @method whereIn()
+ * @method whereLt()
  * @method whereRaw()
  */
 
 class Db extends ORM
 {
 	/**
-	 * connect to database
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected static $_config;
+
+	/**
+	 * init the class
 	 *
 	 * @since 2.2.0
 	 *
@@ -42,18 +55,12 @@ class Db extends ORM
 
 	public static function init(Config $config)
 	{
-		$type = $config::get('type');
-		$host = $config::get('host');
-		$name = $config::get('name');
-		$user = $config::get('user');
-		$password = $config::get('password');
-
-		/* sqlite */
-
-		if ($type === 'sqlite')
-		{
-			self::configure('sqlite:' . $host);
-		}
+		self::$_config = $config;
+		$type = $config->get('type');
+		$host = $config->get('host');
+		$name = $config->get('name');
+		$user = $config->get('user');
+		$password = $config->get('password');
 
 		/* mysql and pgsql */
 
@@ -76,6 +83,13 @@ class Db extends ORM
 			));
 		}
 
+		/* sqlite */
+
+		if ($type === 'sqlite')
+		{
+			self::configure('sqlite:' . $host);
+		}
+
 		/* general */
 
 		self::configure(array(
@@ -83,6 +97,44 @@ class Db extends ORM
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
 		));
+	}
+
+	/**
+	 * raw instance helper
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return Db
+	 */
+
+	public static function rawInstance()
+	{
+		self::_setup_db();
+		return new self(null);
+	}
+
+	/**
+	 * count table with prefix
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return Db
+	 */
+
+	public static function countTablePrefix()
+	{
+		if (self::$_config->get('type') === 'mysql')
+		{
+			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
+		}
+		if (self::$_config->get('type') === 'pgsql')
+		{
+			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('prefix') . '%')->findMany()->count();
+		}
+		if (self::$_config->get('type') === 'sqlite')
+		{
+			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('prefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
+		}
 	}
 
 	/**
@@ -99,7 +151,7 @@ class Db extends ORM
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(Config::get('prefix') . $table, array(), $connection);
+		return new self(self::$_config->get('prefix') . $table, array(), $connection);
 	}
 
 	/**
@@ -116,23 +168,46 @@ class Db extends ORM
 
 	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
 	{
-		return $this->_addJoinSource('LEFT', Config::get('prefix') . $table, $constraint, $tableAlias);
+		return $this->_addJoinSource('LEFT', self::$_config->get('prefix') . $table, $constraint, $tableAlias);
 	}
 
 	/**
 	 * where like with many
 	 *
-	 * @since 2.3.0
+	 * @since 2.4.0
 	 *
-	 * @param array $column array of column names
-	 * @param array $values array of values
+	 * @param array $columnArray array of column names
+	 * @param array $likeArray array of the like
 	 *
 	 * @return Db
 	 */
 
-	public function whereLikeMany($column = null, $values = null)
+	public function whereLikeMany($columnArray = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode($column, ' LIKE ? OR ') . ' LIKE ?', $values);
+		return $this->whereRaw(implode($columnArray, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
+	}
+
+	/**
+	 * find a flatten array
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param $key key of the item
+	 *
+	 * @return array
+	 */
+
+	public function findArrayFlat($key = 'id')
+	{
+		$output = array();
+		foreach ($this->findArray() as $value)
+		{
+			if (isset($value[$key]))
+			{
+				$output[] = $value[$key];
+			}
+		}
+		return $output;
 	}
 
 	/**

@@ -152,6 +152,7 @@
 	"token_incorrect": "Érvénytelen jel",
 	"installation": "Telepítés",
 	"installation_completed": "A telepítés sikeresen megtörtént",
+	"type": "Type",
 	"host": "Hoszt",
 	"prefix": "Előtag",
 	"database": "Adatbázis",

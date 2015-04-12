@@ -61,9 +61,7 @@ class BreadcrumbTest extends TestCase
 		$ultra->set(array(
 			'title' => 'Ultra',
 			'alias' => 'ultra',
-			'parent' => 0,
-			'status' => 1,
-			'access' => 0
+			'parent' => 0
 		));
 		$ultra->save();
 
@@ -73,9 +71,7 @@ class BreadcrumbTest extends TestCase
 		$lightweight->set(array(
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
-			'parent' => $ultra->id(),
-			'status' => 1,
-			'access' => 0
+			'parent' => $ultra->id()
 		));
 		$lightweight->save();
 
@@ -85,9 +81,7 @@ class BreadcrumbTest extends TestCase
 		$cms->set(array(
 			'title' => 'CMS',
 			'alias' => 'cms',
-			'category' => $lightweight->id(),
-			'status' => 1,
-			'access' => 0
+			'category' => $lightweight->id()
 		));
 		$cms->save();
 	}
@@ -147,21 +141,21 @@ class BreadcrumbTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$options = array(
+		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
+		$breadcrumb->init(array(
 			'className' => array(
 				'list' => 'list-breadcrumb',
 				'divider' => 'item-divider'
 			)
-		);
-		$breadcrumb = new Breadcrumb($this->_registry, $this->_language, $options);
+		));
 
-		/* result */
+		/* actual */
 
-		$result = $breadcrumb->getArray();
+		$actual = $breadcrumb->getArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -181,13 +175,14 @@ class BreadcrumbTest extends TestCase
 
 		$this->_registry->init($registry);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
+		$breadcrumb->init();
 
-		/* result */
+		/* actual */
 
-		$result = $breadcrumb->render();
+		$actual = $breadcrumb->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

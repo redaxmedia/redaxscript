@@ -16,19 +16,17 @@ use Redaxscript\Module;
 class Editor extends Module
 {
 	/**
-	 * custom module setup
+	 * array of the module
 	 *
 	 * @var array
 	 */
 
-	protected static $_module = array(
+	protected static $_moduleArray = array(
 		'name' => 'Editor',
 		'alias' => 'Editor',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered WYSIWYG editor',
-		'version' => '2.3.0',
-		'status' => 1,
-		'access' => 0
+		'version' => '2.4.0'
 	);
 
 	/**

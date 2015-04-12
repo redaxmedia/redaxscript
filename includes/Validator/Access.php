@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Access implements Validator
+class Access implements ValidatorInterface
 {
 	/**
 	 * validate the access
@@ -27,15 +27,15 @@ class Access implements Validator
 
 	public function validate($access = null, $groups = null)
 	{
-		$output = Validator::FAILED;
-		$accessArray = explode(',', $access);
-		$groupsArray = explode(',', $groups);
+		$output = ValidatorInterface::FAILED;
+		$accessArray = array_filter(explode(',', $access));
+		$groupsArray = array_filter(explode(',', $groups));
 
 		/* validate access again group */
 
-		if ($access == 0 || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
+		if (is_null($access) || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
 		{
-			$output = Validator::PASSED;
+			$output = ValidatorInterface::PASSED;
 		}
 		return $output;
 	}

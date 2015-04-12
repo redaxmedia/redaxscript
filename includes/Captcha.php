@@ -22,6 +22,14 @@ class Captcha
 	protected $_language;
 
 	/**
+	 * captcha operator mode
+	 *
+	 * @var string
+	 */
+
+	protected $_mode;
+
+	/**
 	 * task to be solved
 	 *
 	 * @var string
@@ -62,7 +70,7 @@ class Captcha
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.0
 	 *
 	 * @param Language $language instance of the language class
 	 */
@@ -70,17 +78,26 @@ class Captcha
 	public function __construct(Language $language)
 	{
 		$this->_language = $language;
-		$this->init();
 	}
 
 	/**
 	 * init the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.0
+	 *
+	 * @param integer $mode captcha operator mode
 	 */
 
-	public function init()
+	public function init($mode = null)
 	{
+		if (is_numeric($mode))
+		{
+			$this->_mode = $mode;
+		}
+		else
+		{
+			$this->_mode = Db::getSettings('captcha');
+		}
 		$this->_create();
 	}
 
@@ -134,11 +151,9 @@ class Captcha
 
 	protected function _getOperator()
 	{
-		$mode = Db::getSettings('captcha');
+		/* switch mode */
 
-		/* switch captcha mode */
-
-		switch ($mode)
+		switch ($this->_mode)
 		{
 			case 2:
 				$output = 1;

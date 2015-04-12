@@ -20,8 +20,20 @@ function comments($article = '', $route = '')
 
 	/* query comments */
 
-	$query = 'SELECT id, author, url, text, date, article, access FROM ' . PREFIX . 'comments WHERE (language = \'' . Redaxscript\Registry::get('language') . '\' || language = \'\') && article = ' . $article . ' && status = 1 ORDER BY rank ' . s('order');
-	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
+	$comments = Redaxscript\Db::forTablePrefix('comments')
+		->where(array(
+			'status' => 1,
+			'article' => $article
+		))
+		->whereIn('language', array(
+			Redaxscript\Registry::get('language'),
+			''
+		))
+		->orderGlobal('rank');
+
+	/* query result */
+
+	$result = $comments->findArray();
 	if ($result)
 	{
 		$num_rows = count($result);
@@ -39,8 +51,11 @@ function comments($article = '', $route = '')
 			$offset_string = ($sub_active - 1) * s('limit') . ', ';
 		}
 	}
-	$query .= ' LIMIT ' . $offset_string . s('limit');
-	$result = Redaxscript\Db::forTablePrefix('comments')->rawQuery($query)->findArray();
+	$comments->limit($offset_string . s('limit'));
+
+	/* query result */
+
+	$result = $comments->findArray();
 	$num_rows_active = count($result);
 
 	/* handle error */
@@ -62,7 +77,7 @@ function comments($article = '', $route = '')
 
 			/* if access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -168,6 +183,7 @@ function comment_form($article = '', $language = '', $access = '')
 	if (s('captcha') > 0)
 	{
 		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+		$captcha->init();
 	}
 
 	/* collect output */
@@ -270,15 +286,15 @@ function comment_post()
 	{
 		$error = l('comment_empty');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\Validator::FAILED)
+	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -319,7 +335,7 @@ function comment_post()
 			);
 			$subject = l('comment_new');
 			$bodyArray = array(
-				'<strong>' . l('author') . l('colon') . '</strong> ' . $author . ' (' . MY_IP . ')',
+				'<strong>' . l('author') . l('colon') . '</strong> ' . $author,
 				'<br />',
 				'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
 				'<br />',
@@ -333,29 +349,17 @@ function comment_post()
 
 			/* mailer object */
 
-			$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
+			$mailer = new Redaxscript\Mailer();
+			$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 			$mailer->send();
 		}
 
-		/* build key and value strings */
+		/* create comment */
 
-		$r_keys = array_keys($r);
-		$last = end($r_keys);
-		foreach ($r as $key => $value)
-		{
-			$key_string .= $key;
-			$value_string .= '\'' . $value . '\'';
-			if ($last != $key)
-			{
-				$key_string .= ', ';
-				$value_string .= ', ';
-			}
-		}
-
-		/* insert comment */
-
-		$query = 'INSERT INTO ' . PREFIX . 'comments (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('comments')
+			->create()
+			->set($r)
+			->save();
 	}
 
 	/* handle error */

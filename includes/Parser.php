@@ -32,7 +32,7 @@ class Parser
 	protected $_language;
 
 	/**
-	 * parsed output
+	 * output of the parser
 	 *
 	 * @var string
 	 */
@@ -61,7 +61,7 @@ class Parser
 	);
 
 	/**
-	 * string delimiter used during the parser process
+	 * delimiter used during the parser process
 	 *
 	 * @var string
 	 */
@@ -122,43 +122,46 @@ class Parser
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
+	 */
+
+	public function __construct(Registry $registry, Language $language)
+	{
+		$this->_registry = $registry;
+		$this->_language = $language;
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.4.0
+	 *
 	 * @param string $input content be parsed
 	 * @param string $route route of the content
 	 * @param array $options options of the parser
 	 */
 
-	public function __construct(Registry $registry, Language $language, $input = null, $route = null, $options = null)
+	public function init($input = null, $route = null, $options = null)
 	{
-		$this->_registry = $registry;
-		$this->_language = $language;
 		$this->_output = $input;
 		$this->_route = $route;
 		if (is_array($options))
 		{
 			$this->_options = array_unique(array_merge($this->_options, $options));
 		}
-		$this->init();
-	}
 
-	/**
-	 * init the class
-	 *
-	 * @since 2.0.0
-	 */
+		/* process tags */
 
-	public function init()
-	{
 		foreach ($this->_tags as $key => $value)
 		{
-			/* save tag related position */
+			/* save tag position */
 
 			 $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
-			/* call method if tag found */
+			/* call related method */
 
 			if ($this->_tags[$key]['position'] > -1)
 			{
@@ -169,7 +172,7 @@ class Parser
 	}
 
 	/**
-	 * get the parsed output
+	 * get the output
 	 *
 	 * @since 2.0.0
 	 *
@@ -198,8 +201,11 @@ class Parser
 
 		/* collect output */
 
-		$output = str_replace('<break>', '', $input);
-		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\Validator::PASSED)
+		$output = str_replace(array(
+			'<break>',
+			'</break>'
+		), '', $input);
+		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
 			$output = substr($output, 0, $this->_tags['break']['position']);
 
@@ -233,7 +239,7 @@ class Parser
 			'<quote>',
 			'</quote>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 		$preElement = new Element('pre', array(
 			'class' => $this->_options['className']['code']
 		));
@@ -267,7 +273,7 @@ class Parser
 			'<function>',
 			'</function>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */
 
@@ -323,7 +329,7 @@ class Parser
 			'<module>',
 			'</module>'
 		), $this->_delimiter, $input);
-		$parts = explode($this->_delimiter, $output);
+		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */
 

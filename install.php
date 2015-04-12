@@ -4,7 +4,6 @@ error_reporting(0);
 /* include core files */
 
 include_once('includes/generate.php');
-include_once('includes/get.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/password.php');
@@ -51,169 +50,30 @@ else
 
 function install()
 {
-	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
-	$r['create_articles'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'articles (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		title varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		keywords varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		text longtext COLLATE utf8_unicode_ci,
-		language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-		template varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		date datetime DEFAULT NULL,
-		category int(10) DEFAULT NULL,
-		headline int(1) DEFAULT NULL,
-		infoline int(1) DEFAULT NULL,
-		comments int(1) DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		rank int(10) DEFAULT NULL,
-		access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 2';
-	$r['create_categories'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'categories (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		title varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		keywords varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-		template varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		parent int(10) DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		rank int(10) DEFAULT NULL,
-		access varchar(255)COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 2';
-	$r['create_comments'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'comments (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		email varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		url varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		text longtext COLLATE utf8_unicode_ci,
-		language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-		date datetime DEFAULT NULL,
-		article int(10) DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		rank int(10) DEFAULT NULL,
-		access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 1';
-	$r['create_extras'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'extras (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		title varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		text longtext COLLATE utf8_unicode_ci,
-		language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-		date datetime DEFAULT NULL,
-		category int(10) DEFAULT NULL,
-		article int(10) DEFAULT NULL,
-		headline int(1) DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		rank int(10) DEFAULT NULL,
-		access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 6';
-	$r['create_groups'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'groups (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		categories varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		articles varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		extras varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		comments varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		groups varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		users varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		modules varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		settings int(1) DEFAULT NULL,
-		filter int(1) DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 3';
-	$r['create_modules'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'modules (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		version varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 2';
-	$r['create_settings'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'settings (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		value varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 27';
-	$r['create_users'] = 'CREATE TABLE IF NOT EXISTS ' . $d_name . '.' . $d_prefix . 'users (
-		id int(10) NOT NULL AUTO_INCREMENT,
-		name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		user varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		password varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		email varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-		first datetime DEFAULT NULL,
-		last datetime DEFAULT NULL,
-		status int(1) DEFAULT NULL,
-		groups varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-		PRIMARY KEY(id)
-	)
-	ENGINE = MyISAM
-	DEFAULT CHARSET = utf8
-	COLLATE = utf8_unicode_ci
-	AUTO_INCREMENT = 2';
-	$r['insert_articles'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'articles (id, title, alias, author, description, keywords, text, language, template, date, category, headline, infoline, comments, status, rank, access) VALUES (1, \'Welcome\', \'welcome\', \'' . $user . '\', \'\', \'\', \'<p>Congratulations! Redaxscript has been successfully installed.</p>\', \'\', \'\', \'' . NOW . '\', 1, 1, 0, 0, 1, 1, \'0\')';
-	$r['insert_categories'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'categories (id, title, alias, author, description, keywords, language, template, parent, status, rank, access) VALUES (1, \'Home\', \'home\', \'' . $user . '\', \'\', \'\', \'\', \'\', 0, 1, 1, \'0\')';
-	$r['insert_extras'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'extras (id, title, alias, author, text, language, date, category, article, headline, status, rank, access) VALUES (1, \'Categories\', \'categories\', \'' . $user . '\', \'<function>\n{\n\t"navigation_list":\n\t{\n\t\t"table": "categories",\n\t\t"options":\n\t\t{\n\t\t\t"class": "list_sidebar",\n\t\t\t"children": 1\n\t\t}\n\t}\n}\n</function>\', \'\', \'' . NOW . '\', 0, 0, 1, 1, 1, \'0\'), (2, \'Articles\', \'articles\', \'' . $user . '\', \'<function>\n{\n\t"navigation_list":\n\t{\n\t\t"table": "articles",\n\t\t"options":\n\t\t{\n\t\t\t"class": "list_sidebar"\n\t\t}\n\t}\n}\n</function>\', \'\', \'' . NOW . '\', 0, 0, 1, 1, 2, \'0\'), (3, \'Comments\', \'comments\', \'' . $user . '\', \'<function>\n{\n\t"navigation_list":\n\t{\n\t\t"table": "comments",\n\t\t"options":\n\t\t{\n\t\t\t"class": "list_sidebar"\n\t\t}\n\t}\n}\n</function>\', \'\', \'' . NOW . '\', 0, 0, 1, 1, 3, \'0\'), (4, \'Languages\', \'languages\', \'' . $user . '\', \'<function>\n{\n\t"languages_list":\n\t{\n\t\t"options":\n\t\t{\n\t\t\t"class": "list_sidebar"\n\t\t}\n\t}\n}\n</function>\', \'\', \'' . NOW . '\', 0, 0, 1, 0, 4, \'0\'), (5, \'Templates\', \'templates\', \'' . $user . '\', \'<function>\n{\n\t"templates_list":\n\t{\n\t\t"options":\n\t\t{\n\t\t\t"class": "list_sidebar"\n\t\t}\n\t}\n}\n</function>\', \'\', \'' . NOW . '\', 0, 0, 1, 0, 5, \'0\'), (6, \'Footer\', \'footer\', \'' . $user . '\', \'<div class="box_first grid_space s1o5">\n\t<h3 class="title_footer">\n\t\t<a href="http://redaxscript.com/general" title="General">General</a>\n\t</h3>\n\t<ul class="list_footer">\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/general/introduction" title="Introduction">Introduction</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/general/feature-list" title="Feature list">Feature list</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/general/benchmark" title="Benchmark">Benchmark</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/general/service" title="Service">Service</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/general/about" title="About">About</a>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class="box_second grid_space s1o5">\n\t<h3 class="title_footer">\n\t\t<a href="http://redaxscript.com/download" title="Download">Download</a>\n\t</h3>\n\t<ul class="list_footer">\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/download/releases" title="Releases">Releases</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/download/templates" title="Templates">Templates</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/download/languages" title="Languages">Languages</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/download/modules" title="Modules">Modules</a>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class="box_third grid_space s1o5">\n\t<h3 class="title_footer">\n\t\t<a href="http://redaxscript.com/support" title="Support">Support</a>\n\t</h3>\n\t<ul class="list_footer">\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/support/getting-started" title="Getting started">Getting started</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/support/installation-guide" title="Installation guide">Installation guide</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/support/troubleshooting" title="Troubleshooting">Troubleshooting</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/support/faq" title="FAQ">FAQ</a>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class="box_fourth grid_space s1o5">\n\t<h3 class="title_footer">\n\t\t<a href="http://redaxscript.com/develop" title="Develop">Develop</a>\n\t</h3>\n\t<ul class="list_footer">\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/develop/source-code" title="Source code">Source code</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/develop/github-guide" title="Github guide">Github guide</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/develop/documentation" title="Documentation">Documentation</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/develop/roadmap" title="Roadmap">Roadmap</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/develop/changelog" title="Changelog">Changelog</a>\n\t\t</li>\n\t</ul>\n</div>\n\n<div class="box_last grid_space s1o5">\n\t<h3 class="title_footer">\n\t\t<a href="http://redaxscript.com/community" title="Community">Community</a>\n\t</h3>\n\t<ul class="list_footer">\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/community/facebook-group" title="Facebook group">Facebook group</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/community/team" title="Team">Team</a>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href="http://redaxscript.com/community/contribute" title="Contribute">Contribute</a>\n\t\t</li>\n\t</ul>\n</div>\', \'\', \'' . NOW . '\', 0, 0, 0, 0, 6, \'0\')';
-	$r['insert_groups'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'groups (id, name, alias, description, categories, articles, extras, comments, groups, users, modules, settings, filter, status) VALUES (1, \'Administrators\', \'administrators\', \'Unlimited access\', \'1, 2, 3\', \'1, 2, 3\', \'1, 2, 3\', \'1, 2, 3\', \'1, 2, 3\', \'1, 2, 3\', \'1, 2, 3\', 1, 0, 1), (2, \'Members\', \'members\', \'Default members group\', \'0\', \'0\', \'0\', \'0\', \'0\', \'0\', \'0\', 0, 1, 1)';
-	$r['insert_settings'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'settings (id, name, value) VALUES (1, \'language\', \'detect\'), (2, \'template\', \'default\'), (3, \'title\', \'Redaxscript\'), (4, \'author\', \'\'), (5, \'copyright\', \'\'), (6, \'description\', \'Ultra lightweight CMS\'), (7, \'keywords\', \'\'), (8, \'robots\', \'all\'), (9, \'email\', \'' . $email . '\'), (10, \'subject\', \'Redaxscript\'), (11, \'notification\', \'0\'), (12, \'charset\', \'utf-8\'), (13, \'divider\', \' • \'), (14, \'time\', \'H:i\'), (15, \'date\', \'d.m.Y\'), (16, \'homepage\', \'0\'), (17, \'limit\', \'10\'), (18, \'order\', \'asc\'), (19, \'pagination\', \'1\'), (20, \'moderation\', \'0\'), (21, \'registration\', \'1\'), (22, \'verification\', \'0\'), (23, \'reminder\', \'1\'), (24, \'captcha\', \'0\'), (25, \'blocker\', \'1\'), (26, \'version\', \'' . l('redaxscript_version') . '\')';
-	if (is_dir('modules/CallHome'))
-	{
-		$r['insert_modules'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'modules (name, alias, author, description, version, status, access) VALUES (\'Call home\', \'CallHome\', \'Redaxmedia\', \'Provide version and news updates\', \'' . l('version', '_package') . '\', 1, 0)';
-	}
-	$r['insert_users'] = 'INSERT INTO ' . $d_name . '.' . $d_prefix . 'users (id, name, user, password, email, description, language, first, last, status, groups) VALUES (1, \'' . $name . '\', \'' . $user . '\', \'' . sha1($password) . $d_salt . '\', \'' . $email . '\', \'God admin\', \'\', \'' . NOW . '\', \'' . NOW . '\', 1, \'1\')';
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
-	/* install database */
+	/* config */
 
-	foreach ($r as $key => $value)
-	{
-		Redaxscript\Db::rawExecute($value);
-	}
+	$config = Redaxscript\Config::getInstance();
+	$config->set('type', $d_type);
+	$config->set('host', $d_host);
+	$config->set('name', $d_name);
+	$config->set('user', $d_user);
+	$config->set('password', $d_password);
+	$config->set('prefix', $d_prefix);
+	$config->set('salt', $d_salt);
+
+	/* installer */
+
+	$installer = new Redaxscript\Installer();
+	$installer->init($config);
+	$installer->rawCreate();
+	$installer->insertData(array(
+		'name' => $name,
+		'user' => $user,
+		'password' => $password,
+		'email' => $email
+	));
 
 	/* send login information */
 
@@ -249,7 +109,7 @@ function install()
 
 function install_form()
 {
-	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
 
 	/* collect output */
 
@@ -261,9 +121,14 @@ function install_form()
 	$output .= '<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">';
 	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">' . l('database_setup') . '</legend>';
 	$output .= '<ul class="js_box_accordion js_box_active box_accordion box_accordion_default box_active">';
+	$output .= '<li>' . select_element('type', 'field_select', 'd_type', array(
+			'SQLite' => 'sqlite',
+			'MySQL' => 'mysql',
+			'PostgreSQL' => 'pgsql'
+		), $d_type, l('type')) . '</li>';
 	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, l('name'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, l('user'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('password', 'd_password', 'js_unmask_password field_text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_prefix', 'field_text', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
 	$output .= '</ul></fieldset>';
@@ -301,10 +166,11 @@ function install_form()
 
 function install_post()
 {
-	global $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
 	/* clean post */
 
+	$d_type = stripslashes($_POST['d_type']);
 	$d_host = stripslashes($_POST['d_host']);
 	$d_name = stripslashes($_POST['d_name']);
 	$d_user = stripslashes($_POST['d_user']);
@@ -320,7 +186,14 @@ function install_post()
 
 	if ($d_host == '')
 	{
-		$d_host = 'localhost';
+		if ($d_type == 'sqlite')
+		{
+			$d_host = 'db/db.sqlite';
+		}
+		else
+		{
+			$d_host = 'localhost';
+		}
 	}
 	if ($user == '')
 	{
@@ -335,22 +208,21 @@ function install_post()
 
 	if ($_POST['install_post'])
 	{
-		$pattern = '/\/\/\s+\@configStart.*?\/\/\s+\@configEnd/s';
-		$replacement = '// @configStart
-			\'type\' => \'mysql\',
-			\'host\' => \'' . $d_host . '\',
-			\'name\' => \'' . $d_name . '\',
-			\'user\' => \'' . $d_user . '\',
-			\'password\' => \'' . $d_password . '\',
-			\'prefix\' => \'' . $d_prefix . '\',
-			\'salt\' => \'' . $d_salt . '\'
-			// @configEnd';
+		$contents =
+'{
+	"type": "' . $d_type . '",
+	"host": "' . $d_host . '",
+	"name": "' . $d_name . '",
+	"user": "' . $d_user . '",
+	"password": "' . $d_password . '",
+	"prefix": "' . $d_prefix . '",
+	"salt": "' . $d_salt . '"
+}';
 
-		/* process contents */
 
-		$content = file_get_contents('Config.php');
-		$content = preg_replace($pattern, $replacement, $content);
-		file_put_contents('Config.php', $content);
+		/* put contents */
+
+		file_put_contents('config.php', $contents);
 	}
 }
 
@@ -367,12 +239,13 @@ function install_post()
 
 function install_notification()
 {
-	global $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $name, $user, $password, $email;
+
 	$registry = Redaxscript\Registry::getInstance();
 
-	if (is_writable('Config.php') == '')
+	if (is_writable('config.php') == '')
 	{
-		$error = l('file_permission_grant') . l('colon') . ' Config.php';
+		$error = l('file_permission_grant') . l('colon') . ' config.php';
 	}
 	else if (!$registry->get('dbStatus'))
 	{
@@ -389,15 +262,15 @@ function install_notification()
 	{
 		$loginValidator = new Redaxscript\Validator\Login();
 		$emailValidator = new Redaxscript\Validator\Email();
-		if ($name == '')
+		if ($d_type != 'sqlite' && $name == '')
 		{
 			$error = l('name_empty');
 		}
-		else if ($user == '')
+		else if ($d_type != 'sqlite' && $user == '')
 		{
 			$error = l('user_empty');
 		}
-		else if ($password == '')
+		else if ($d_type != 'sqlite' && $password == '')
 		{
 			$error = l('password_empty');
 		}
@@ -405,15 +278,15 @@ function install_notification()
 		{
 			$error = l('email_empty');
 		}
-		else if ($loginValidator->validate($user) == Redaxscript\Validator\Validator::FAILED)
+		else if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
 			$error = l('user_incorrect');
 		}
-		else if ($loginValidator->validate($password) == Redaxscript\Validator\Validator::FAILED)
+		else if ($loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
 			$error = l('password_incorrect');
 		}
-		else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+		else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
 			$error = l('email_incorrect');
 		}
@@ -455,7 +328,7 @@ function check_install()
 	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\Validator::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\Validator::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\Validator::PASSED)
+	if ($_POST['install_post'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::PASSED)
 	{
 		$output = 1;
 	}

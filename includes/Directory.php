@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to handle directories in the filesystem
+ * parent class to handle a directory in the filesystem
  *
  * @since 2.0.0
  *
@@ -23,15 +23,15 @@ class Directory
 	protected $_directory;
 
 	/**
-	 * array of directory
+	 * array of the directory
 	 *
 	 * @var array
 	 */
 
-	protected $_directoryArray;
+	protected $_directoryArray = array();
 
 	/**
-	 * array of files to exclude
+	 * array of the files to exclude
 	 *
 	 * @var array
 	 */
@@ -42,7 +42,7 @@ class Directory
 	);
 
 	/**
-	 * local cache for directories
+	 * array of the local cache
 	 *
 	 * @var array
 	 */
@@ -50,15 +50,15 @@ class Directory
 	protected static $_cache = array();
 
 	/**
-	 * constructor of the class
+	 * init the class
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.0
 	 *
 	 * @param string $directory name of the directory
 	 * @param mixed $exclude files to exclude
 	 */
 
-	public function __construct($directory = null, $exclude = null)
+	public function init($directory = null, $exclude = null)
 	{
 		$this->_directory = $directory;
 
@@ -74,17 +74,7 @@ class Directory
 		{
 			$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
 		}
-		$this->init();
-	}
 
-	/**
-	 * init the class
-	 *
-	 * @since 2.0.0
-	 */
-
-	public function init()
-	{
 		/* scan directory */
 
 		$this->_directoryArray = $this->_scan($this->_directory);
@@ -104,7 +94,7 @@ class Directory
 	}
 
 	/**
-	 * scan a directory
+	 * scan the directory
 	 *
 	 * @since 2.0.0
 	 *
@@ -137,7 +127,7 @@ class Directory
 	}
 
 	/**
-	 * create a directory
+	 * create the directory
 	 *
 	 * @since 2.1.0
 	 *
@@ -169,7 +159,7 @@ class Directory
 	}
 
 	/**
-	 * remove a directory
+	 * remove the directory
 	 *
 	 * @since 2.0.0
 	 *

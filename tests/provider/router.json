@@ -1,0 +1,121 @@
+[
+	[
+		"",
+		{
+			"lite": "",
+			"full": ""
+		}
+	],
+	[
+		"1337",
+		{
+			"lite": "",
+			"full": "1337"
+		}
+	],
+	[
+		"hello",
+		{
+			"lite": "hello",
+			"full": "hello"
+		}
+	],
+	[
+		"hello/1337",
+		{
+			"lite": "hello",
+			"full": "hello/1337"
+		}
+	],
+	[
+		"hello/world",
+		{
+			"lite": "hello/world",
+			"full": "hello/world"
+		}
+	],
+	[
+		"hello/world/1337",
+		{
+			"lite": "hello/world",
+			"full": "hello/world/1337"
+		}
+	],
+	[
+		"hello/world/to",
+		{
+			"lite": "hello/world/to",
+			"full": "hello/world/to"
+		}
+	],
+	[
+		"hello/world/to/1337",
+		{
+			"lite": "hello/world/to",
+			"full": "hello/world/to/1337"
+		}
+	],
+	[
+		"hello/world/to/all",
+		{
+			"lite": "hello/world/to/all",
+			"full": "hello/world/to/all"
+		}
+	],
+	[
+		"hello/world/to/all/1337",
+		{
+			"lite": "hello/world/to/all",
+			"full": "hello/world/to/all/1337"
+		}
+	],
+	[
+		"admin",
+		{
+			"lite": "admin",
+			"full": "admin"
+		}
+	],
+	[
+		"admin/view/articles",
+		{
+			"lite": "admin/view/articles",
+			"full": "admin/view/articles"
+		}
+	],
+	[
+		"admin/edit/articles/1",
+		{
+			"lite": "admin/edit/articles",
+			"full": "admin/edit/articles/1"
+		}
+	],
+	[
+		"admin/delete/articles/1/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"lite": "admin/view/articles",
+			"full": "admin/view/articles"
+		}
+	],
+	[
+		"admin/process/articles/1",
+		{
+			"lite": "admin/view/articles",
+			"full": "admin/view/articles"
+		}
+	],
+	[
+		"admin/install/modules/helloWorld/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"lite": "admin/view/modules",
+			"full": "admin/view/modules"
+		}
+	],
+	[
+		"admin/update/settings",
+		{
+			"lite": "admin/edit/settings",
+			"full": "admin/edit/settings"
+		}
+	]
+]

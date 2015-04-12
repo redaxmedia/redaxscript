@@ -152,6 +152,7 @@
 	"token_incorrect": "Token on ebakorrektne",
 	"installation": "Installatsioon",
 	"installation_completed": "Installatsioon valmis",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefix",
 	"database": "Andmebaas",

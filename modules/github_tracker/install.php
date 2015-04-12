@@ -13,8 +13,16 @@
 
 function github_tracker_install()
 {
-	$query = 'INSERT INTO ' . PREFIX . 'modules (name, alias, author, description, version, status, access) VALUES (\'Github tracker\', \'github_tracker\', \'Redaxmedia\', \'Integrate milestones and issues from Github\', \'2.3.0\', 1, 0)';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')
+		->create()
+		->set(array(
+			'name' => 'Github tracker',
+			'alias' => 'github_tracker',
+			'author' => 'Redaxmedia',
+			'description' => 'Integrate milestones and issues from Github',
+			'version' => '2.4.0'
+		))
+		->save();
 }
 
 /**
@@ -30,7 +38,6 @@ function github_tracker_install()
 
 function github_tracker_uninstall()
 {
-	$query = 'DELETE FROM ' . PREFIX . 'modules WHERE alias = \'github_tracker\' LIMIT 1';
-	Redaxscript\Db::rawExecute($query);
+	Redaxscript\Db::forTablePrefix('modules')->where('alias', 'github_tracker')->findMany()->delete();
 }
 

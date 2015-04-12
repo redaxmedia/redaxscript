@@ -46,12 +46,12 @@ class AliasTest extends TestCase
 
 		$filter = new Filter\Alias();
 
-		/* result */
+		/* actual */
 
-		$result = $filter->sanitize($alias);
+		$actual = $filter->sanitize($alias);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

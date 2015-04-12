@@ -9,20 +9,20 @@ use Redaxscript\Request;
  *
  * @since 2.0.0
  *
- * @category Detector
  * @package Redaxscript
+ * @category Detector
  * @author Henry Ruhs
  */
 
-class Template extends Detector
+class Template extends DetectorAbstract
 {
 	/**
-	 * init the class
+	 * automate run
 	 *
 	 * @since 2.1.0
 	 */
 
-	public function init()
+	protected function _autorun()
 	{
 		$root = $this->_registry->get('root');
 		$dbStatus = $this->_registry->get('dbStatus');
@@ -32,11 +32,11 @@ class Template extends Detector
 		/* detect template */
 
 		$this->_detect(array(
-			'query' => Request::getQuery('t'),
-			'session' => Request::getSession($root . '/template'),
+			'query' => $this->_request->getQuery('t'),
+			'session' => $this->_request->getSession($root . '/template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
 			'fallback' => 'default'
-		), 'template', 'templates/{value}/index.phtml');
+		), 'template', 'templates/' . $this->_filePlaceholder . '/index.phtml');
 	}
 }

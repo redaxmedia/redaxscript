@@ -48,12 +48,12 @@ class AccessTest extends TestCase
 
 		$validator = new Validator\Access();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($access, $groups);
+		$actual = $validator->validate($access, $groups);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

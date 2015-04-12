@@ -152,6 +152,7 @@
 	"token_incorrect": "الرمز غير صحيح",
 	"installation": "التثبيت",
 	"installation_completed": "تم التثبيت بنجاح",
+	"type": "Type",
 	"host": "المستضيف",
 	"prefix": "بادئة",
 	"database": "قاعدة البيانات",

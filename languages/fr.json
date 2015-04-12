@@ -152,6 +152,7 @@
 	"token_incorrect": "Jeton est incorrect",
 	"installation": "Installation",
 	"installation_completed": "Installation achevée avec succès",
+	"type": "Type",
 	"host": "Hôte",
 	"prefix": "Préfixe",
 	"database": "Base de données",

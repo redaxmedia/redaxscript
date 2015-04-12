@@ -152,6 +152,7 @@
 	"token_incorrect": "Token שגוי",
 	"installation": "התקנה",
 	"installation_completed": "ההתקנה הצליחה",
+	"type": "Type",
 	"host": "שרת",
 	"prefix": "קידומת",
 	"database": "מסד נתונים",

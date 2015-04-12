@@ -2,7 +2,7 @@
 namespace Redaxscript\Validator;
 
 /**
- * interface to build a validator class
+ * interface to define a validator class
  *
  * @since 2.2.0
  *
@@ -12,12 +12,12 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-interface Validator
+interface ValidatorInterface
 {
 	/**
 	 * status passed
 	 *
-	 * @const integer
+	 * @const boolean
 	 */
 
 	const PASSED = true;
@@ -25,7 +25,7 @@ interface Validator
 	/**
 	 * status failed
 	 *
-	 * @const integer
+	 * @const boolean
 	 */
 
 	const FAILED = false;
@@ -37,7 +37,7 @@ interface Validator
 	 *
 	 * @param string $value general value to validate
 	 *
-	 * @return integer
+	 * @return boolean
 	 */
 
 	public function validate($value = null);

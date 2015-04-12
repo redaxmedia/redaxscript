@@ -48,12 +48,12 @@ class DnsTest extends TestCase
 
 		$validator = new Validator\Dns();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($host, $type);
+		$actual = $validator->validate($host, $type);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

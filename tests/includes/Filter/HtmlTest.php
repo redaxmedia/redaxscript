@@ -46,12 +46,12 @@ class HtmlTest extends TestCase
 
 		$filter = new Filter\Html();
 
-		/* result */
+		/* actual */
 
-		$result = $filter->sanitize($html);
+		$actual = $filter->sanitize($html);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

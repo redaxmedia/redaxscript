@@ -55,13 +55,13 @@ class Template
 
 	public static function breadcrumb()
 	{
-		$options = array(
+		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
+		$breadcrumb->init(array(
 			'className' => array(
 				'list' => 'list_breadcrumb',
 				'divider' => 'divider'
 			)
-		);
-		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance(), $options);
+		));
 		return $breadcrumb->render();
 	}
 
@@ -70,13 +70,17 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param array $options
+	 *
 	 * @return string
 	 */
 
-	public static function content()
+	public static function content($options = null)
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('center');
+		return self::_migrate('center', array(
+			$options
+		));
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -85,16 +89,16 @@ class Template
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param mixed $filter
+	 * @param array $options
 	 *
 	 * @return string
 	 */
 
-	public static function extra($filter = null)
+	public static function extra($options = null)
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('extras', array(
-			$filter
+			$options['filter']
 		));
 		// @codeCoverageIgnoreEnd
 	}

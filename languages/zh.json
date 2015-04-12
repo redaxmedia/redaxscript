@@ -152,6 +152,7 @@
 	"token_incorrect": "标记有误",
 	"installation": "安装",
 	"installation_completed": "安装已经成功完成",
+	"type": "Type",
 	"host": "主机",
 	"prefix": "前缀",
 	"database": "数据库",

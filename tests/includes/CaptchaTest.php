@@ -38,17 +38,6 @@ class CaptchaTest extends TestCase
 	}
 
 	/**
-	 * tearDown
-	 *
-	 * @since 2.2.0
-	 */
-
-	protected function tearDown()
-	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-	}
-
-	/**
 	 * testGetTask
 	 *
 	 * @since 2.2.0
@@ -59,8 +48,9 @@ class CaptchaTest extends TestCase
 		/* setup */
 
 		$captcha = new Captcha($this->_language);
+		$captcha->init();
 
-		/* result */
+		/* actual */
 
 		$task = $captcha->getTask();
 
@@ -80,8 +70,9 @@ class CaptchaTest extends TestCase
 		/* setup */
 
 		$captcha = new Captcha($this->_language);
+		$captcha->init();
 
-		/* result */
+		/* actual */
 
 		$raw = $captcha->getSolution('raw');
 		$hash = $captcha->getSolution('hash');
@@ -101,15 +92,16 @@ class CaptchaTest extends TestCase
 	{
 		/* setup */
 
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 2)->save();
+		$captcha = new Captcha($this->_language);
+		$captcha->init(2);
 
-		/* result */
+		/* actual */
 
-		$result = new Captcha($this->_language);
+		$actual = $captcha->getSolution('hash');
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_string($actual));
 	}
 
 	/**
@@ -122,14 +114,15 @@ class CaptchaTest extends TestCase
 	{
 		/* setup */
 
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 3)->save();
+		$captcha = new Captcha($this->_language);
+		$captcha->init(3);
 
-		/* result */
+		/* actual */
 
-		$result = new Captcha($this->_language);
+		$actual = $captcha->getSolution('hash');
 
 		/* compare */
 
-		$this->assertTrue(is_object($result));
+		$this->assertTrue(is_string($actual));
 	}
 }

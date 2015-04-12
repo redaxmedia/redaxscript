@@ -152,6 +152,7 @@
 	"token_incorrect": "Token hatali",
 	"installation": "Kurulum",
 	"installation_completed": "Kurulum basariyla tamamlandi",
+	"type": "Type",
 	"host": "Sunucu",
 	"prefix": "Ön ek",
 	"database": "Veritabani",

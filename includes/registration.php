@@ -27,6 +27,7 @@ function registration_form()
 	if (s('captcha') > 0)
 	{
 		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
+		$captcha->init();
 	}
 
 	/* collect output */
@@ -119,15 +120,15 @@ function registration_post()
 	{
 		$error = l('email_empty');
 	}
-	else if ($loginValidator->validate($user) == Redaxscript\Validator\Validator::FAILED)
+	else if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('user_incorrect');
 	}
-	else if ($emailValidator->validate($email) == Redaxscript\Validator\Validator::FAILED)
+	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\Validator::FAILED)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}
@@ -164,7 +165,7 @@ function registration_post()
 		);
 		$subject = l('registration');
 		$bodyArray = array(
-			'<strong>' . l('name') . l('colon') . '</strong> ' . $name . ' (' . MY_IP . ')',
+			'<strong>' . l('name') . l('colon') . '</strong> ' . $name,
 			'<br />',
 			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
 			'<br />',
@@ -175,28 +176,16 @@ function registration_post()
 
 		/* mailer object */
 
-		$mailer = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
+		$mailer = new Redaxscript\Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
-		/* build key and value strings */
+		/* create user */
 
-		$r_keys = array_keys($r);
-		$last = end($r_keys);
-		foreach ($r as $key => $value)
-		{
-			$key_string .= $key;
-			$value_string .= '\'' . $value . '\'';
-			if ($last != $key)
-			{
-				$key_string .= ', ';
-				$value_string .= ', ';
-			}
-		}
-
-		/* insert user */
-
-		$query = 'INSERT INTO ' . PREFIX . 'users (' . $key_string . ') VALUES (' . $value_string . ')';
-		Redaxscript\Db::rawExecute($query);
+		Redaxscript\Db::forTablePrefix('users')
+			->create()
+			->set($r)
+			->save();
 	}
 
 	/* handle error */

@@ -37,7 +37,7 @@ function head($type = '')
 
 				/* if access granted */
 
-				if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\Validator::PASSED)
+				if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					if ($r)
 					{

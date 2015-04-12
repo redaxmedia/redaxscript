@@ -71,7 +71,8 @@ function file_manager_center_start()
 			{
 				/* file manager directory object */
 
-				$file_manager_directory = new Redaxscript\Directory(FILE_MANAGER_DIRECTORY);
+				$file_manager_directory = new Redaxscript\Directory();
+				$file_manager_directory->init(FILE_MANAGER_DIRECTORY);
 				$file_manager_directory_string = $file_manager_directory->getArray();
 
 				/* remove related children */
@@ -159,7 +160,8 @@ function file_manager($directory = '')
 
 	/* file manager directory object */
 
-	$file_manager_directory = new Redaxscript\Directory($directory);
+	$file_manager_directory = new Redaxscript\Directory();
+	$file_manager_directory->init($directory);
 	$file_manager_directory_array = $file_manager_directory->getArray();
 
 	/* collect directory output */

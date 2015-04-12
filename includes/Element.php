@@ -116,7 +116,7 @@ class Element
 	}
 
 	/**
-	 * set attributes
+	 * set attribute to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -140,7 +140,7 @@ class Element
 	}
 
 	/**
-	 * remove attributes
+	 * remove attribute from the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -159,7 +159,7 @@ class Element
 	}
 
 	/**
-	 * add class
+	 * add class to the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -175,7 +175,7 @@ class Element
 	}
 
 	/**
-	 * remove class
+	 * remove class from the element
 	 *
 	 * @since 2.2.0
 	 *
@@ -191,7 +191,7 @@ class Element
 	}
 
 	/**
-	 * edit class
+	 * edit class helper
 	 *
 	 * @since 2.2.0
 	 *
@@ -203,10 +203,10 @@ class Element
 
 	protected function _editClass($className = null, $type = null)
 	{
-		$classArray = explode(' ', $className);
+		$classArray = array_filter(explode(' ', $className));
 		if (isset($this->_attributeArray['class']))
 		{
-			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
+			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
 		}
 		else
 		{

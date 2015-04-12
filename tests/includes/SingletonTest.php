@@ -45,12 +45,12 @@ class SingletonTest extends TestCase
 
 		$this->_stub->reset();
 
-		/* result */
+		/* actual */
 
-		$result = $this->_stub->getInstance();
+		$actual = $this->_stub->getInstance();
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Singleton', $result);
+		$this->assertInstanceOf('Redaxscript\Singleton', $actual);
 	}
 }

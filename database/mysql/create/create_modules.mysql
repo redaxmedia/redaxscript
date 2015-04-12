@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules (
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
+	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	author varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	version varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+	status int(1) DEFAULT 1,
+	access varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+)
+ENGINE = MyISAM
+DEFAULT CHARSET = utf8
+COLLATE = utf8_unicode_ci
+AUTO_INCREMENT = 1;

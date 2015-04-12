@@ -12,7 +12,7 @@ namespace Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class Email implements Validator
+class Email implements ValidatorInterface
 {
 	/**
 	 * validate the email
@@ -27,14 +27,14 @@ class Email implements Validator
 
 	public function validate($email = null, $dns = true)
 	{
-		$output = Validator::FAILED;
+		$output = ValidatorInterface::FAILED;
 
 		/* validate email */
 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false)
 		{
-			$output = Validator::PASSED;
-			$emailArray = explode('@', $email);
+			$output = ValidatorInterface::PASSED;
+			$emailArray = array_filter(explode('@', $email));
 
 			/* validate dns */
 

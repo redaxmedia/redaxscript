@@ -152,6 +152,7 @@
 	"token_incorrect": "Klucz jest niepoprawny",
 	"installation": "Instalacja",
 	"installation_completed": "Instalacja zakończona prawidłowo",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefiks",
 	"database": "Baza danych",

@@ -48,12 +48,12 @@ class CaptchaTest extends TestCase
 
 		$validator = new Validator\Captcha();
 
-		/* result */
+		/* actual */
 
-		$result = $validator->validate($raw, $hash);
+		$actual = $validator->validate($raw, $hash);
 
 		/* compare */
 
-		$this->assertEquals($expect, $result);
+		$this->assertEquals($expect, $actual);
 	}
 }

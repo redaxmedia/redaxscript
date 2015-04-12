@@ -152,6 +152,7 @@
 	"token_incorrect": "شناسه صحیح نیست",
 	"installation": "نصب",
 	"installation_completed": "عملیات نصب با موفقیت به پایان رسید",
+	"type": "Type",
 	"host": "Host",
 	"prefix": "Prefix",
 	"database": "Database",

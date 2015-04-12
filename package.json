@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "Ultra lightweight CMS",
-	"version": "2.3.0",
+	"version": "2.4.0",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
@@ -25,7 +25,8 @@
 		"grunt-contrib-watch": "0.6.1",
 		"grunt-htmlhint": "0.4.1",
 		"grunt-img": "0.1.8",
-		"grunt-jsonlint": "1.0.4",
+		"grunt-jscs": "1.5.0",
+        "grunt-jsonlint": "1.0.4",
 		"grunt-jsonmin": "0.2.4",
 		"grunt-phpcs": "0.2.3",
 		"grunt-phpunit": "0.3.6",

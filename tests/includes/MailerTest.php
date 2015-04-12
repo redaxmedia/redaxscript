@@ -46,9 +46,10 @@ class MailerTest extends TestCase
 	{
 		/* setup */
 
-		$mailer = new Mailer($toArray, $fromArray, $subject, $body, $attachmentArray);
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $body, $attachmentArray);
 
-		/* result */
+		/* actual */
 
 		$mailer->send();
 
