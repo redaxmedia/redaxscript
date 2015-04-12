@@ -165,7 +165,7 @@ class Installer
 				'groups' => '1, 2, 3',
 				'users' => '1, 2, 3',
 				'modules' => '1, 2, 3',
-				'settings' => '1, 2, 3',
+				'settings' => 1,
 				'filter' => 0,
 			))->save();
 		Db::forTablePrefix('groups')
