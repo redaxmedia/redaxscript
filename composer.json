@@ -13,7 +13,7 @@
 	"require-dev":
 	{
 		"apigen/apigen": "4.1.1",
-		"mikey179/vfsStream": "1.4.0",
+		"mikey179/vfsStream": "1.5.0",
 		"phpunit/phpunit": "4.6.4",
 		"redaxmedia/redaxscript-apigen-template": "2.0.0",
 		"redaxmedia/tocgen": "4.0.2",
