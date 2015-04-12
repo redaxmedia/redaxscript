@@ -48,7 +48,6 @@ class Autoloader
 	 */
 
 	protected static $_directory = array(
-		'.',
 		'includes',
 		'libraries',
 		'modules'

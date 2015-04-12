@@ -16,8 +16,9 @@ Request::init();
 /* get instance */
 
 $registry = Registry::getInstance();
-$config = Config::getInstance();
 $request = Request::getInstance();
+$config = Config::getInstance();
+$config::init();
 
 /* mysql and pgsql */
 

@@ -18,6 +18,7 @@ Request::init();
 $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
+$config::init();
 
 /* database */
 
