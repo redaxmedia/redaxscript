@@ -219,7 +219,6 @@ function install_post()
 	"salt": "' . $d_salt . '"
 }';
 
-
 		/* put contents */
 
 		file_put_contents('config.php', $contents);
