@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	first datetime DEFAULT NULL,
 	last datetime DEFAULT NULL,
 	status int(1) DEFAULT 1,
-	groups varchar(255) COLLATE utf8_unicode_ci DEFAULT 0
+	groups varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 )
 ENGINE = MyISAM
 DEFAULT CHARSET = utf8

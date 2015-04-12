@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	first timestamp with time zone DEFAULT NULL,
 	last timestamp with time zone DEFAULT NULL,
 	status integer DEFAULT 1,
-	groups varchar(255) DEFAULT 0
+	groups varchar(255) DEFAULT NULL
 );
