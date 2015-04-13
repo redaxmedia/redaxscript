@@ -236,19 +236,12 @@ module.exports = function (grunt)
 			{
 				dir: 'tests/includes'
 			},
-			integration:
-			{
-				dir: 'tests/includes',
-				options:
-				{
-					coverageHtml: 'clover',
-					coverageClover: 'clover.xml'
-				}
-			},
 			options:
 			{
 				bin: 'vendor/bin/phpunit',
-				bootstrap: './tests/bootstrap.php'
+				bootstrap: './tests/bootstrap.php',
+				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
+				coverageHtml: grunt.option('html') ? grunt.option('html') : false
 			}
 		},
 		autoprefixer:
@@ -946,11 +939,6 @@ module.exports = function (grunt)
 		'img',
 		'smushit',
 		'svgmin'
-	]);
-	grunt.registerTask('integration',
-	[
-		'default',
-		'phpunit:integration'
 	]);
 	grunt.registerTask('dist',
 	[
