@@ -16,6 +16,27 @@ use Redaxscript\Config;
 class ConfigTest extends TestCase
 {
 	/**
+	 * testInit
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
+		Config::init();
+
+		/* actual */
+
+		$actual = Config::get('type');
+
+		/* compare */
+
+		$this->assertEquals('sqlite', $actual);
+	}
+
+	/**
 	 * testSetAndGet
 	 *
 	 * @since 2.2.0
