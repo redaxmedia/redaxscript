@@ -68,6 +68,8 @@ class Router extends Parameter
 	 *
 	 * @since 2.4.0
 	 *
+	 * @param string $type type of the route
+	 *
 	 * @return string
 	 */
 

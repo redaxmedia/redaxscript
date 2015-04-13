@@ -185,7 +185,6 @@ class Installer
 				->set(array(
 					'name' => 'Call home',
 					'alias' => 'CallHome',
-					'description' => 'Default members group',
 					'author' => 'Redaxmedia',
 					'description' => 'Provide version and news updates',
 					'version' => $language->get('version', '_package')
