@@ -9,32 +9,44 @@ include_once('includes/migrate.php');
 include_once('includes/password.php');
 include_once('includes/startup.php');
 
-/* install post */
+if (is_array($argv))
+{
+	/* install cli */
 
-install_post();
+	install_cli($argv);
+}
+else
+{
+	/* install post */
+
+	install_post();
+}
 
 /* bootstrap */
 
 include_once('includes/bootstrap.php');
 
-/* define meta */
-
-define('TITLE', l('installation'));
-define('ROBOTS', 'none');
-
-/* module init */
-
-Redaxscript\Hook::trigger('init');
-
-/* call loader else render template */
-
-if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
+if (!is_array($argv))
 {
-	echo loader(SECOND_PARAMETER, 'outline');
-}
-else
-{
-	include_once('templates/install/install.phtml');
+	/* define meta */
+
+	define('TITLE', l('installation'));
+	define('ROBOTS', 'none');
+
+	/* module init */
+
+	Redaxscript\Hook::trigger('init');
+
+	/* call loader else render template */
+
+	if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
+	{
+		echo loader(SECOND_PARAMETER, 'outline');
+	}
+	else
+	{
+		include_once('templates/install/install.phtml');
+	}
 }
 
 /**
@@ -96,7 +108,7 @@ function install()
 	$mail->send();
 }
 
-/*
+/**
  * install form
  *
  * @since 1.2.1
@@ -150,6 +162,50 @@ function install_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default button_large', 'install_post', l('install'));
 	$output .= '</form>';
+	echo $output;
+}
+
+/**
+ * install cli
+ *
+ * @since 2.4.0
+ * @deprecated 2.4.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
+ *
+ * @param array $argv
+ */
+
+function install_cli($argv = array())
+{
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+
+	$output = '';
+	$supportedTypes = array(
+		'mysql',
+		'pgsql',
+		'sqlite'
+	);
+
+	if (in_array($argv[1], $supportedTypes))
+	{
+		$output .= l('type') . l('colon') . ' ' . $argv[1] . PHP_EOL;
+	}
+	if (isset($argv[2]))
+	{
+		$output .= l('host') . l('colon') . ' ' . $argv[2] . PHP_EOL;
+	}
+	//--db-name
+	//--db-user
+	//--db-password
+	//--db-prefix
+	//--db-salt
+	//--admin-name
+	//--admin-user
+	//--admin-password
+	//--admin-email
 	echo $output;
 }
 
@@ -208,7 +264,26 @@ function install_post()
 
 	if ($_POST['install_post'])
 	{
-		$contents =
+		write_config();
+	}
+}
+
+/**
+ * write config
+ *
+ * @since 2.4.0
+ * @deprecated 2.4.0
+ *
+ * @package Redaxscript
+ * @category Install
+ * @author Henry Ruhs
+ */
+
+function write_config()
+{
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
+
+	$contents =
 '{
 	"type": "' . $d_type . '",
 	"host": "' . $d_host . '",
@@ -219,13 +294,12 @@ function install_post()
 	"salt": "' . $d_salt . '"
 }';
 
-		/* put contents */
+	/* put contents */
 
-		file_put_contents('config.php', $contents);
-	}
+	file_put_contents('config.php', $contents);
 }
 
-/*
+/**
  * install status
  *
  * @since 1.2.1
@@ -307,7 +381,7 @@ function install_notification()
 	echo $output;
 }
 
-/*
+/**
  * check install
  *
  * @since 1.2.1
