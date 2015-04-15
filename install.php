@@ -20,14 +20,11 @@ else
 	/* install post */
 
 	install_post();
-}
 
-/* bootstrap */
+	/* bootstrap */
 
-include_once('includes/bootstrap.php');
+	include_once('includes/bootstrap.php');
 
-if (!is_array($argv))
-{
 	/* define meta */
 
 	define('TITLE', l('installation'));
@@ -183,29 +180,54 @@ function install_cli($argv = array())
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
 
 	$output = '';
-	$supportedTypes = array(
+	$typeArray = array(
 		'mysql',
 		'pgsql',
 		'sqlite'
 	);
+	$optionArray = array(
+		'--db-name',
+		'--db-user',
+		'--db-password',
+		'--db-prefix',
+		'--db-salt',
+		'--admin-name',
+		'--admin-user',
+		'--admin-password',
+		'--admin-email'
+	);
 
-	if (in_array($argv[1], $supportedTypes))
+	/* type and host */
+
+	if (in_array($argv[1], $typeArray))
 	{
-		$output .= l('type') . l('colon') . ' ' . $argv[1] . PHP_EOL;
+		$output .= 'Type: ' . $argv[1] . PHP_EOL;
 	}
 	if (isset($argv[2]))
 	{
-		$output .= l('host') . l('colon') . ' ' . $argv[2] . PHP_EOL;
+		$output .= 'Host: ' . $argv[2] . PHP_EOL;
 	}
-	//--db-name
-	//--db-user
-	//--db-password
-	//--db-prefix
-	//--db-salt
-	//--admin-name
-	//--admin-user
-	//--admin-password
-	//--admin-email
+
+	/* handle options */
+
+	foreach ($argv as $key => $value)
+	{
+		if ($key > 2)
+		{
+			if (in_array($value, $optionArray))
+			{
+				$search = array(
+					'--db-',
+					'--admin-'
+				);
+				$replace = array(
+					'Database ',
+					'Admin '
+				);
+				$output .=  str_replace($search, $replace, $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+			}
+		}
+	}
 	echo $output;
 }
 
