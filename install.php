@@ -243,10 +243,10 @@ function install_cli($argv = array())
 
 	/* write config */
 
-	if ($_POST['install_post'])
-	{
-		write_config();
-	}
+	write_config();
+
+	/* print output */
+
 	echo $output;
 }
 
