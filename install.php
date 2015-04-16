@@ -14,6 +14,14 @@ if (is_array($argv))
 	/* install cli */
 
 	install_cli($argv);
+
+	/* bootstrap */
+
+	include_once('includes/bootstrap.php');
+
+	/* install */
+
+	install();
 }
 else
 {
@@ -177,7 +185,7 @@ function install_form()
 
 function install_cli($argv = array())
 {
-	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
 	$output = '';
 	$typeArray = array(
@@ -185,12 +193,14 @@ function install_cli($argv = array())
 		'pgsql',
 		'sqlite'
 	);
-	$optionArray = array(
+	$dbArray = array(
 		'--db-name',
 		'--db-user',
 		'--db-password',
 		'--db-prefix',
-		'--db-salt',
+		'--db-salt'
+	);
+	$adminArray = array(
 		'--admin-name',
 		'--admin-user',
 		'--admin-password',
@@ -201,10 +211,12 @@ function install_cli($argv = array())
 
 	if (in_array($argv[1], $typeArray))
 	{
+		$d_type = $argv[1];
 		$output .= 'Type: ' . $argv[1] . PHP_EOL;
 	}
 	if (isset($argv[2]))
 	{
+		$d_host = $argv[2];
 		$output .= 'Host: ' . $argv[2] . PHP_EOL;
 	}
 
@@ -214,19 +226,26 @@ function install_cli($argv = array())
 	{
 		if ($key > 2)
 		{
-			if (in_array($value, $optionArray))
+			if (in_array($value, $dbArray))
 			{
-				$search = array(
-					'--db-',
-					'--admin-'
-				);
-				$replace = array(
-					'Database ',
-					'Admin '
-				);
-				$output .=  str_replace($search, $replace, $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+				$suffix = str_replace('--db-', 'd_', $value);
+				$$suffix = $argv[$key + 1];
+				$output .=  str_replace('--db-', 'Database ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+			}
+			else if (in_array($value, $adminArray))
+			{
+				$suffix = str_replace('--admin-', '', $value);
+				$$suffix = $argv[$key + 1];
+				$output .=  str_replace('--admin-', 'Admin ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
 			}
 		}
+	}
+
+	/* write config */
+
+	if ($_POST['install_post'])
+	{
+		write_config();
 	}
 	echo $output;
 }
@@ -266,7 +285,7 @@ function install_post()
 	{
 		if ($d_type == 'sqlite')
 		{
-			$d_host = 'db/db.sqlite';
+			$d_host = 'sqlite/db.sqlite';
 		}
 		else
 		{
