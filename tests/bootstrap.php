@@ -5,8 +5,8 @@ namespace Redaxscript;
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');
+include_once('stubs/CallHome.php');
 include_once('stubs/hook_function.php');
-include_once('stubs/hook_method.php');
 
 /* init */
 

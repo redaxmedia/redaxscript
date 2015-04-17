@@ -87,6 +87,13 @@ module.exports = function (grunt)
 					'package.json'
 				]
 			},
+			config:
+			{
+				src:
+				[
+					'config.php'
+				]
+			},
 			languages:
 			{
 				src:

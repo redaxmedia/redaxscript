@@ -18,14 +18,6 @@ use org\bovigo\vfs\vfsStream as Stream;
 class DirectoryTest extends TestCase
 {
 	/**
-	 * root
-	 *
-	 * @var object
-	 */
-
-	private $_root;
-
-	/**
 	 * setUp
 	 *
 	 * @since 2.1.0
@@ -33,7 +25,7 @@ class DirectoryTest extends TestCase
 
 	protected function setUp()
 	{
-		$this->_root = Stream::setup('root', 0777, $this->getProvider('tests/provider/directory_set_up.json'));
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/directory_set_up.json'));
 	}
 
 	/**

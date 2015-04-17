@@ -2,6 +2,8 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Config;
+use org\bovigo\vfs\vfsStream as Stream;
+use org\bovigo\vfs\visitor\vfsStreamVisitor;
 
 /**
  * ConfigTest
@@ -16,6 +18,25 @@ use Redaxscript\Config;
 class ConfigTest extends TestCase
 {
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
+	 * setUp
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function setUp()
+	{
+		$this->_config = Config::getInstance();
+	}
+
+	/**
 	 * testInit
 	 *
 	 * @since 2.4.0
@@ -25,11 +46,11 @@ class ConfigTest extends TestCase
 	{
 		/* setup */
 
-		Config::init();
+		$this->_config->init();
 
 		/* actual */
 
-		$actual = Config::get('type');
+		$actual = $this->_config->get('type');
 
 		/* compare */
 
@@ -46,11 +67,11 @@ class ConfigTest extends TestCase
 	{
 		/* setup */
 
-		Config::set('host', 'localhost');
+		$this->_config->set('host', 'localhost');
 
 		/* actual */
 
-		$actual = Config::get('host');
+		$actual = $this->_config->get('host');
 
 		/* compare */
 
@@ -67,10 +88,31 @@ class ConfigTest extends TestCase
 	{
 		/* actual */
 
-		$actual = Config::get();
+		$actual = $this->_config->get();
 
 		/* compare */
 
 		$this->assertArrayHasKey('host', $actual);
+	}
+
+	/**
+	 * testWrite
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testWrite()
+	{
+		/* setup */
+
+		Stream::setup('root');
+
+		/* actual */
+
+		$actual = $this->_config->write(Stream::url('root/config.php'));
+
+		/* compare */
+
+		$this->assertNotFalse($actual);
 	}
 }

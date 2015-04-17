@@ -82,4 +82,38 @@ class Config extends Singleton
 	{
 		self::$_configArray[$key] = $value;
 	}
+
+	/**
+	 * write config to file
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $file file with config
+	 *
+	 * @return boolean
+	 */
+
+	public static function write($file = 'config.php')
+	{
+		$last = end(array_keys(self::$_configArray));
+
+		/* process config */
+
+		$contents = '{' . PHP_EOL;
+		foreach (self::$_configArray as $key => $value)
+		{
+			$contents .= '	"' . $key . '": "' . $value . '"';
+			if ($key !== $last)
+			{
+				$contents .= ',';
+			}
+			$contents .= PHP_EOL;
+		}
+		$contents .= '}';
+
+		/* write to file */
+
+		$output = file_put_contents($file, $contents) > 0 ? true : false;
+		return $output;
+	}
 }
