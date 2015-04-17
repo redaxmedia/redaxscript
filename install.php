@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(-1);
 
 /* include core files */
 
@@ -8,6 +8,8 @@ include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/password.php');
 include_once('includes/startup.php');
+include_once('includes/Singleton.php');
+include_once('includes/Config.php');
 
 if (is_array($argv))
 {
@@ -67,23 +69,12 @@ else
 
 function install()
 {
-	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
-
-	/* config */
-
-	$config = Redaxscript\Config::getInstance();
-	$config->set('type', $d_type);
-	$config->set('host', $d_host);
-	$config->set('name', $d_name);
-	$config->set('user', $d_user);
-	$config->set('password', $d_password);
-	$config->set('prefix', $d_prefix);
-	$config->set('salt', $d_salt);
+	global $name, $user, $password, $email;
 
 	/* installer */
 
 	$installer = new Redaxscript\Installer();
-	$installer->init($config);
+	$installer->init(Redaxscript\Config::getInstance());
 	$installer->rawCreate();
 	$installer->insertData(array(
 		'name' => $name,
@@ -324,20 +315,15 @@ function write_config()
 {
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
 
-	$contents =
-'{
-	"type": "' . $d_type . '",
-	"host": "' . $d_host . '",
-	"name": "' . $d_name . '",
-	"user": "' . $d_user . '",
-	"password": "' . $d_password . '",
-	"prefix": "' . $d_prefix . '",
-	"salt": "' . $d_salt . '"
-}';
-
-	/* put contents */
-
-	file_put_contents('config.php', $contents);
+	$config = Redaxscript\Config::getInstance();
+	$config->set('type', $d_type);
+	$config->set('host', $d_host);
+	$config->set('name', $d_name);
+	$config->set('user', $d_user);
+	$config->set('password', $d_password);
+	$config->set('prefix', $d_prefix);
+	$config->set('salt', $d_salt);
+	$config->write();
 }
 
 /**
