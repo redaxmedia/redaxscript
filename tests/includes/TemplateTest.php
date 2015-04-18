@@ -2,6 +2,9 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Template;
+use org\bovigo\vfs\vfsStream as Stream;
+use org\bovigo\vfs\vfsStreamFile as StreamFile;
+use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 
 /**
  * ConfigTest
@@ -74,9 +77,15 @@ class TemplateTest extends TestCase
 
 	public function testPartial()
 	{
+		/* setup */
+
+		Stream::setup('root');
+		$file = new StreamFile('partial.phtml');
+		StreamWrapper::getRoot()->addChild($file);
+
 		/* actual */
 
-		$actual = Template::partial('tests/stubs/partial.phtml');
+		$actual = Template::partial(Stream::url('root/partial.phtml'));
 
 		/* compare */
 

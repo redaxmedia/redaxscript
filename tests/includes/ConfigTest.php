@@ -3,7 +3,6 @@ namespace Redaxscript\Tests;
 
 use Redaxscript\Config;
 use org\bovigo\vfs\vfsStream as Stream;
-use org\bovigo\vfs\visitor\vfsStreamVisitor;
 
 /**
  * ConfigTest
