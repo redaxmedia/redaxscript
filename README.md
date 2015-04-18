@@ -1,4 +1,4 @@
-![Redaxscript](https://dummyimage.com/1000x300/0090db/ffffff&text=Redaxscript)
+![Redaxscript's core repository](https://dummyimage.com/1000x300/0090db/ffffff&text=Redaxscript+repository)
 ![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+Content+Management+System)
 
 
