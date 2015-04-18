@@ -1,12 +1,12 @@
 ![Redaxscript](https://dummyimage.com/1000x300/0090db/ffffff&text=Redaxscript)
-![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+Content+Management+System)
+![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+CMS)
 
 
 
 Redaxscript
 ===========
 
-> Redaxscript is an ultra lightweight CMS, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
+> Redaxscript is an ultra lightweight Content Management System, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg?style=flat)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
