@@ -24,7 +24,7 @@ Demo
 > Unfortunately, no one can be told what Redaxscript is.
 You have to see it for yourself.
 
-[![Demo](http://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](http://demo.redaxscript.com/login/demo)
+[![Demo](https://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](http://demo.redaxscript.com/login/demo)
 
 
 Links
