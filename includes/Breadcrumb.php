@@ -114,7 +114,7 @@ class Breadcrumb
 		/* breadcrumb keys */
 
 		$breadcrumbKeys = array_keys($this->_breadcrumbArray);
-		$last = end($breadcrumbKeys);
+		$lastKey = end($breadcrumbKeys);
 
 		/* html elements */
 
@@ -154,7 +154,7 @@ class Breadcrumb
 
 				/* add divider */
 
-				if ($last !== $key)
+				if ($key !== $lastKey)
 				{
 					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text(Db::getSettings('divider'));
 				}

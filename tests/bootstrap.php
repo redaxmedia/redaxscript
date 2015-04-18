@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript;
 
+/* strict reporting */
+
+error_reporting(E_STRICT);
+
 /* include as needed */
 
 include_once('includes/Autoloader.php');

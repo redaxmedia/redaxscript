@@ -95,7 +95,8 @@ class Config extends Singleton
 
 	public static function write($file = 'config.php')
 	{
-		$last = end(array_keys(self::$_configArray));
+		$configKeys = array_keys(self::$_configArray);
+		$lastKey = end($configKeys);
 
 		/* process config */
 
@@ -103,7 +104,7 @@ class Config extends Singleton
 		foreach (self::$_configArray as $key => $value)
 		{
 			$contents .= '	"' . $key . '": "' . $value . '"';
-			if ($key !== $last)
+			if ($key !== $lastKey)
 			{
 				$contents .= ',';
 			}
