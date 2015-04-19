@@ -22,7 +22,6 @@ Request::init();
 $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
-$config::init();
 
 /* mysql and pgsql */
 
@@ -50,6 +49,7 @@ if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get(
 else
 {
 	echo 'SQLite - ';
+	$config->set('type', 'sqlite');
 }
 
 /* database */

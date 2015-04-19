@@ -12,8 +12,13 @@ install:
 - npm install
 - npm install -g grunt-cli
 
+before_script:
+- mysql -u root -e 'create database test'
+- psql -U postgres -c 'create database test'
+
 script:
 - npm test
+- npm run phpunit
 
 after_script:
 - php vendor/bin/coveralls --verbose

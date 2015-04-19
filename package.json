@@ -36,7 +36,8 @@
 	},
 	"scripts":
 	{
-		"test": "grunt --verbose && grunt phpunit --xml clover.xml"
+		"test": "grunt --verbose",
+		"phpunit": "grunt phpunit --testsuite mysql && grunt phpunit --testsuite pgsql && grunt phpunit --xml clover.xml"
 	}
 }
 

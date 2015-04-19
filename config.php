@@ -1,5 +1,5 @@
 {
-	"type": "sqlite",
+	"type": "",
 	"host": "",
 	"name": "",
 	"user": "",

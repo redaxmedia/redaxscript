@@ -27,33 +27,12 @@ class ConfigTest extends TestCase
 	/**
 	 * setUp
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-	}
-
-	/**
-	 * testInit
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInit()
-	{
-		/* setup */
-
-		$this->_config->init();
-
-		/* actual */
-
-		$actual = $this->_config->get('type');
-
-		/* compare */
-
-		$this->assertEquals('sqlite', $actual);
 	}
 
 	/**
@@ -113,5 +92,27 @@ class ConfigTest extends TestCase
 		/* compare */
 
 		$this->assertNotFalse($actual);
+	}
+
+	/**
+	 * testInit
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
+		Stream::setup('root');
+		$this->_config->init(Stream::url('root/config.php'));
+
+		/* actual */
+
+		$actual = $this->_config->get('type');
+
+		/* compare */
+
+		$this->assertNotEmpty($actual);
 	}
 }
