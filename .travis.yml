@@ -13,8 +13,10 @@ install:
 - npm install -g grunt-cli
 
 before_script:
+- mysqladmin -u root password test
 - mysql -u root -e 'create database test'
-- psql -U postgres -c 'create database test'
+- psql -c 'alter user  postgres with password '\'test\'
+- psql -c 'create database test'
 
 script:
 - npm test
@@ -31,6 +33,8 @@ deploy:
  app: redaxscript
  api_key:
   secure: CvUp6rO6I7+HZCj/kRGPnm/5P/Inwf4MXiaCdOnCoQ+2MTj8yZf6inzM9tybFmJHuaom2bB/lyxZw77DUalqRbF9wmj5haxa98Zp9SwwxvgY6NMOI2be3pMcFpgI9po9pO9Hc2Wltt6y144su1hBbKHavQXhy3IUV4o0DLfFW/k=
+ run:
+  - php install.php pgsql ec2-107-22-166-233.compute-1.amazonaws.com --db-name d9hqe8ic374o4m --db-user mceeadeocomspu --db-password 5lXvPX95nMexpZ16o_I75fyQ72 --admin-name Admin --admin-user admin --admin-password admin --admin-email info@redaxmedia.com
 
 notifications:
  irc:
