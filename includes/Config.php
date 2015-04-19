@@ -63,6 +63,10 @@ class Config extends Singleton
 		{
 			$output = self::$_configArray[$key];
 		}
+		else if (getenv($key))
+		{
+			$output = getenv($key);
+		}
 		return $output;
 	}
 
