@@ -23,7 +23,6 @@ after_script:
 
 deploy:
  provider: heroku
- strategy: api
  app: redaxscript
  api_key:
   secure: CvUp6rO6I7+HZCj/kRGPnm/5P/Inwf4MXiaCdOnCoQ+2MTj8yZf6inzM9tybFmJHuaom2bB/lyxZw77DUalqRbF9wmj5haxa98Zp9SwwxvgY6NMOI2be3pMcFpgI9po9pO9Hc2Wltt6y144su1hBbKHavQXhy3IUV4o0DLfFW/k=
