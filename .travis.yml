@@ -12,10 +12,6 @@ install:
 - npm install
 - npm install -g grunt-cli
 
-before_script:
-- psql -c 'alter user  postgres with password '\'test\'
-- psql -c 'create database test'
-
 script:
 - npm test
 - npm run phpunit
