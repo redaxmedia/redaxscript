@@ -31,14 +31,11 @@ class Config extends Singleton
 
 	public static function init($file = 'config.php')
 	{
-		if (file_exists($file))
+		$contents = file_get_contents($file);
+		$_configArray = json_decode($contents, true);
+		if (is_array($_configArray))
 		{
-			$contents = file_get_contents($file);
-			$_configArray = json_decode($contents, true);
-			if (is_array($_configArray))
-			{
-				self::$_configArray = array_merge(self::$_configArray, $_configArray);
-			}
+			self::$_configArray = array_merge(self::$_configArray, $_configArray);
 		}
 	}
 
