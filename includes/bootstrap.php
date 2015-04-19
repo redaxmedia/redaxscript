@@ -36,7 +36,7 @@ try
 
 		/* has table */
 
-		if (Db::countTablePrefix())
+		if (Db::countTablePrefix() > 7)
 		{
 			$registry->set('dbStatus', 2);
 		}
