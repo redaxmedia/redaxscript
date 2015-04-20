@@ -24,18 +24,6 @@ class Host extends ServerAbstract
 	public function getOutput()
 	{
 		$output = $this->_request->getServer('HTTP_HOST');
-        if (empty($output))
-        {
-            $output = $this->_request->getServer('SERVER_NAME');
-
-            /* server port */
-
-            $serverPort = $this->_request->getServer('SERVER_PORT');
-            if ($serverPort !== 80)
-            {
-                $output .= ':' . $serverPort;
-            }
-        }
 		return $output;
 	}
 }
