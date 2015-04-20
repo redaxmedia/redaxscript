@@ -30,18 +30,18 @@ if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get(
 	if (in_array('mysql', $request->get('argv')))
 	{
 		echo 'MySQL - ';
-		$config->set('type', 'mysql');
-		$config->set('user', 'root');
+		$config->set('dbType', 'mysql');
+		$config->set('dbUser', 'root');
 	}
 	if (in_array('pgsql', $request->get('argv')))
 	{
 		echo 'PostgreSQL - ';
-		$config->set('type', 'pgsql');
-		$config->set('user', 'postgres');
+		$config->set('dbType', 'pgsql');
+		$config->set('dbUser', 'postgres');
 	}
-	$config->set('host', 'localhost');
-	$config->set('name', 'test');
-	$config->set('password', 'test');
+	$config->set('dbHost', 'localhost');
+	$config->set('dbName', 'test');
+	$config->set('dbPassword', 'test');
 }
 
 /* sqlite */
@@ -49,7 +49,7 @@ if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get(
 else
 {
 	echo 'SQLite - ';
-	$config->set('type', 'sqlite');
+	$config->set('dbType', 'sqlite');
 }
 
 /* database */

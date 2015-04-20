@@ -45,11 +45,11 @@ class ConfigTest extends TestCase
 	{
 		/* setup */
 
-		$this->_config->set('host', 'localhost');
+		$this->_config->set('dbHost', 'localhost');
 
 		/* actual */
 
-		$actual = $this->_config->get('host');
+		$actual = $this->_config->get('dbHost');
 
 		/* compare */
 
@@ -70,7 +70,7 @@ class ConfigTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('host', $actual);
+		$this->assertArrayHasKey('dbHost', $actual);
 	}
 
 	/**
@@ -109,7 +109,7 @@ class ConfigTest extends TestCase
 
 		/* actual */
 
-		$actual = $this->_config->get('type');
+		$actual = $this->_config->get('dbType');
 
 		/* compare */
 

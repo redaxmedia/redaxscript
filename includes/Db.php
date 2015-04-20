@@ -56,38 +56,38 @@ class Db extends ORM
 	public static function init(Config $config)
 	{
 		self::$_config = $config;
-		$type = $config->get('type');
-		$host = $config->get('host');
-		$name = $config->get('name');
-		$user = $config->get('user');
-		$password = $config->get('password');
+		$dbType = $config->get('dbType');
+		$dbHost = $config->get('dbHost');
+		$dbName = $config->get('dbName');
+		$dbUser = $config->get('dbUser');
+		$dbPassword = $config->get('dbPassword');
 
 		/* mysql and pgsql */
 
-		if ($type === 'mysql' || $type === 'pgsql')
+		if ($dbType === 'mysql' || $dbType === 'pgsql')
 		{
-			if ($type === 'mysql')
+			if ($dbType === 'mysql')
 			{
-				self::configure('connection_string', 'mysql:host=' . $host . ';dbname=' . $name . ';charset=utf8');
+				self::configure('connection_string', 'mysql:host=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
 			}
 			else
 			{
-				self::configure('connection_string', 'pgsql:host=' . $host . ';dbname=' . $name . ';options=--client_encoding=utf8');
+				self::configure('connection_string', 'pgsql:host=' . $dbHost . ';dbname=' . $dbName . ';options=--client_encoding=utf8');
 			}
 
 			/* username and password */
 
 			self::configure(array(
-				'username' => $user,
-				'password' => $password
+				'username' => $dbUser,
+				'password' => $dbPassword
 			));
 		}
 
 		/* sqlite */
 
-		if ($type === 'sqlite')
+		if ($dbType === 'sqlite')
 		{
-			self::configure('sqlite:' . $host);
+			self::configure('sqlite:' . $dbHost);
 		}
 
 		/* general */
@@ -123,17 +123,17 @@ class Db extends ORM
 
 	public static function countTablePrefix()
 	{
-		if (self::$_config->get('type') === 'mysql')
+		if (self::$_config->get('dbType') === 'mysql')
 		{
-			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('prefix') . '%\'')->findMany()->count();
+			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('dbPrefix') . '%\'')->findMany()->count();
 		}
-		if (self::$_config->get('type') === 'pgsql')
+		if (self::$_config->get('dbType') === 'pgsql')
 		{
-			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('prefix') . '%')->findMany()->count();
+			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('dbPrefix') . '%')->findMany()->count();
 		}
-		if (self::$_config->get('type') === 'sqlite')
+		if (self::$_config->get('dbType') === 'sqlite')
 		{
-			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('prefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
+			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('dbPrefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
 		}
 	}
 
@@ -151,7 +151,7 @@ class Db extends ORM
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(self::$_config->get('prefix') . $table, array(), $connection);
+		return new self(self::$_config->get('dbPrefix') . $table, array(), $connection);
 	}
 
 	/**
@@ -168,7 +168,7 @@ class Db extends ORM
 
 	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
 	{
-		return $this->_addJoinSource('LEFT', self::$_config->get('prefix') . $table, $constraint, $tableAlias);
+		return $this->_addJoinSource('LEFT', self::$_config->get('dbPrefix') . $table, $constraint, $tableAlias);
 	}
 
 	/**

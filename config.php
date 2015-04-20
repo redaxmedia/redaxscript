@@ -1,9 +1,9 @@
 {
-	"type": "",
-	"host": "",
-	"name": "",
-	"user": "",
-	"password": "",
-	"prefix": "",
-	"salt": ""
+	"dbType": "",
+	"dbHost": "",
+	"dbName": "",
+	"dbUser": "",
+	"dbPassword": "",
+	"dbPrefix": "",
+	"dbSalt": ""
 }

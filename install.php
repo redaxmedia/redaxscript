@@ -80,10 +80,10 @@ function install()
 	$installer->rawDrop();
 	$installer->rawCreate();
 	$installer->insertData(array(
-		'name' => $name,
-		'user' => $user,
-		'password' => $password,
-		'email' => $email
+		'adminName' => $name,
+		'adminUser' => $user,
+		'adminPassword' => $password,
+		'adminEmail' => $email
 	));
 
 	/* send login information */
@@ -319,13 +319,13 @@ function write_config()
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt;
 
 	$config = Redaxscript\Config::getInstance();
-	$config->set('type', $d_type);
-	$config->set('host', $d_host);
-	$config->set('name', $d_name);
-	$config->set('user', $d_user);
-	$config->set('password', $d_password);
-	$config->set('prefix', $d_prefix);
-	$config->set('salt', $d_salt);
+	$config->set('dbType', $d_type);
+	$config->set('dbHost', $d_host);
+	$config->set('dbName', $d_name);
+	$config->set('dbUser', $d_user);
+	$config->set('dbPassword', $d_password);
+	$config->set('dbPrefix', $d_prefix);
+	$config->set('dbSalt', $d_salt);
 	$config->write();
 }
 

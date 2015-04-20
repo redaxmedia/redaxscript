@@ -34,7 +34,7 @@ class InstallerTest extends TestCase
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-		$this->_config->set('prefix', 'installer_');
+		$this->_config->set('dbPrefix', 'installer_');
 		Db::clearCache();
 	}
 
@@ -46,7 +46,7 @@ class InstallerTest extends TestCase
 
 	public function tearDown()
 	{
-		$this->_config->set('prefix', '');
+		$this->_config->set('dbPrefix', '');
 	}
 
 	/**
@@ -85,10 +85,10 @@ class InstallerTest extends TestCase
 		$installer = new Installer();
 		$installer->init($this->_config);
 		$installer->insertData(array(
-			'name' => 'Admin',
-			'user' => 'admin',
-			'password' => 'admin',
-			'email' => 'admin@localhost'
+			'adminName' => 'Admin',
+			'adminUser' => 'admin',
+			'adminPassword' => 'admin',
+			'adminEmail' => 'admin@localhost'
 		));
 
 		/* actual */

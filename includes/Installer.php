@@ -50,7 +50,7 @@ class Installer
 
 	public function rawCreate()
 	{
-		$this->_rawExecute('create', $this->_config->get('type'));
+		$this->_rawExecute('create', $this->_config->get('dbType'));
 	}
 
 	/**
@@ -61,7 +61,7 @@ class Installer
 
 	public function rawDrop()
 	{
-		$this->_rawExecute('drop', $this->_config->get('type'));
+		$this->_rawExecute('drop', $this->_config->get('dbType'));
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Installer
 			->set(array(
 				'title' => 'Welcome',
 				'alias' => 'welcome',
-				'author' => $options['user'],
+				'author' => $options['adminUser'],
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'language' => '',
 				'category' => 1,
@@ -97,7 +97,7 @@ class Installer
 			->set(array(
 				'title' => 'Home',
 				'alias' => 'home',
-				'author' => $options['user'],
+				'author' => $options['adminUser'],
 				'language' => '',
 				'rank' => 1
 			))->save();
@@ -141,7 +141,7 @@ class Installer
 				->set(array(
 					'title' => ucfirst($key),
 					'alias' => $key,
-					'author' => $options['user'],
+					'author' => $options['adminUser'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
 					'language' => '',
 					'headline' => $value['headline'],
@@ -202,7 +202,7 @@ class Installer
 			'description' => 'Ultra lightweight CMS',
 			'keywords' => null,
 			'robots' => 'all',
-			'email' => $options['email'],
+			'email' => $options['adminEmail'],
 			'subject' => 'Redaxscript',
 			'notification' => 0,
 			'charset' => 'utf-8',
@@ -239,10 +239,10 @@ class Installer
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
-				'name' => $options['name'],
-				'user' => $options['user'],
-				'password' => sha1($options['password']) . $this->_config->get('salt'),
-				'email' => $options['email'],
+				'name' => $options['adminName'],
+				'user' => $options['adminUser'],
+				'password' => sha1($options['adminPassword']) . $this->_config->get('dbSalt'),
+				'email' => $options['adminEmail'],
 				'description' => 'God admin',
 				'language' => '',
 				'groups' => '1'
@@ -271,9 +271,9 @@ class Installer
 			$query = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
 			if ($query)
 			{
-				if ($this->_config->get('prefix'))
+				if ($this->_config->get('dbPrefix'))
 				{
-					$query = str_replace($this->_prefixPlaceholder, $this->_config->get('prefix'), $query);
+					$query = str_replace($this->_prefixPlaceholder, $this->_config->get('dbPrefix'), $query);
 				}
 				Db::rawExecute($query);
 			}

@@ -33,7 +33,7 @@ class DbTest extends TestCase
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-		$this->_config->set('restore', $this->_config->get('type'));
+		$this->_config->set('dbRestore', $this->_config->get('dbType'));
 	}
 
 	/**
@@ -44,7 +44,7 @@ class DbTest extends TestCase
 
 	public function tearDown()
 	{
-		$this->_config->set('type', $this->_config->get('restore'));
+		$this->_config->set('dbType', $this->_config->get('dbRestore'));
 	}
 
 	/**
@@ -65,16 +65,16 @@ class DbTest extends TestCase
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $type
+	 * @param string $dbType
 	 *
 	 * @dataProvider providerDb
 	 */
 
-	public function testInit($type = null)
+	public function testInit($dbType = null)
 	{
 		/* setup */
 
-		$this->_config->set('type', $type);
+		$this->_config->set('dbType', $dbType);
 		Db::init($this->_config);
 
 		/* actual */

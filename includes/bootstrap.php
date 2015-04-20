@@ -30,7 +30,7 @@ try
 {
 	/* has connection */
 
-	if ($config->get('type') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
+	if ($config->get('dbType') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 	{
 		$registry->set('dbStatus', 1);
 
