@@ -15,7 +15,6 @@
 </ifmodule>
 <ifmodule mod_rewrite.c>
 	rewriteengine on
-	rewritebase /
 	rewritecond %{https} off
 	rewritecond %{http_host} ^www\.(.*)$ [nc]
 	rewriterule ^(.*)$ http://%1/$1 [r=301,l]

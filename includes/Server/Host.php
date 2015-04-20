@@ -24,6 +24,10 @@ class Host extends ServerAbstract
 	public function getOutput()
 	{
 		$output = $this->_request->getServer('HTTP_HOST');
+        if (empty($output))
+        {
+            $output = $this->_request->getServer('SERVER_NAME');
+        }
 		return $output;
 	}
 }
