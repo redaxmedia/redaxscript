@@ -20,6 +20,7 @@ after_script:
 - php vendor/bin/coveralls --verbose
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+- rm clover.xml
 
 deploy:
  provider: heroku
