@@ -180,3 +180,12 @@ else
 	}
 	Redaxscript\Hook::trigger('render_end');
 }
+
+/* temp debug */
+
+if ($_GET['debug'] === 'on')
+{
+    echo '<pre>';
+    print_r($_SERVER);
+    echo '</pre>';
+}
