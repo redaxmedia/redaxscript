@@ -27,6 +27,14 @@ class Host extends ServerAbstract
         if (empty($output))
         {
             $output = $this->_request->getServer('SERVER_NAME');
+
+            /* server port */
+
+            $serverPort = $this->_request->getServer('SERVER_PORT');
+            if ($serverPort)
+            {
+                $output .= ':' . $serverPort;
+            }
         }
 		return $output;
 	}
