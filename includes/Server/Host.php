@@ -31,7 +31,7 @@ class Host extends ServerAbstract
             /* server port */
 
             $serverPort = $this->_request->getServer('SERVER_PORT');
-            if ($serverPort)
+            if ($serverPort !== 80)
             {
                 $output .= ':' . $serverPort;
             }
