@@ -180,3 +180,7 @@ else
 	}
 	Redaxscript\Hook::trigger('render_end');
 }
+
+/* hot debug for heroku */
+
+print_r(ini_get_all());
