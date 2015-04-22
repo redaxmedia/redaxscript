@@ -29,7 +29,12 @@ class Request extends Singleton
 
 	public static function init()
 	{
-		self::$_requestArray = $GLOBALS;
+		self::$_requestArray = array(
+			'server' => $_SERVER,
+			'get' => $_GET,
+			'post' => $_POST,
+			'cookie' => $_COOKIE
+		);
 	}
 
 	/**
@@ -83,7 +88,7 @@ class Request extends Singleton
 
 	public static function getServer($key = null)
 	{
-		$output = self::get($key, '_SERVER');
+		$output = self::get($key, 'server');
 		return $output;
 	}
 
@@ -99,7 +104,7 @@ class Request extends Singleton
 
 	public static function getQuery($key = null)
 	{
-		$output = self::get($key, '_GET');
+		$output = self::get($key, 'get');
 		return $output;
 	}
 
@@ -115,7 +120,7 @@ class Request extends Singleton
 
 	public static function getPost($key = null)
 	{
-		$output = self::get($key, '_POST');
+		$output = self::get($key, 'post');
 		return $output;
 	}
 
@@ -131,7 +136,7 @@ class Request extends Singleton
 
 	public static function getSession($key = null)
 	{
-		$output = self::get($key, '_SESSION');
+		$output = self::get($key, 'session');
 		return $output;
 	}
 
@@ -147,7 +152,7 @@ class Request extends Singleton
 
 	public static function getCookie($key = null)
 	{
-		$output = self::get($key, '_COOKIE');
+		$output = self::get($key, 'cookie');
 		return $output;
 	}
 
@@ -176,7 +181,7 @@ class Request extends Singleton
 
 	public static function setServer($key = null, $value = null)
 	{
-		self::$_requestArray['_SERVER'][$key] = $value;
+		self::$_requestArray['server'][$key] = $value;
 	}
 
 	/**
@@ -190,7 +195,7 @@ class Request extends Singleton
 
 	public static function setQuery($key = null, $value = null)
 	{
-		self::$_requestArray['_GET'][$key] = $value;
+		self::$_requestArray['get'][$key] = $value;
 	}
 
 	/**
@@ -204,7 +209,7 @@ class Request extends Singleton
 
 	public static function setPost($key = null, $value = null)
 	{
-		self::$_requestArray['_POST'][$key] = $value;
+		self::$_requestArray['post'][$key] = $value;
 	}
 
 	/**
@@ -218,7 +223,7 @@ class Request extends Singleton
 
 	public static function setSession($key = null, $value = null)
 	{
-		self::$_requestArray['_SESSION'][$key] = $_SESSION[$key] = $value;
+		self::$_requestArray['session'][$key] = $_SESSION[$key] = $value;
 	}
 
 	/**
@@ -232,6 +237,6 @@ class Request extends Singleton
 
 	public static function setCookie($key = null, $value = null)
 	{
-		self::$_requestArray['_COOKIE'][$key] = $_COOKIE[$key] = $value;
+		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
 	}
 }

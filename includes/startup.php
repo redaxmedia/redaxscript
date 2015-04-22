@@ -22,7 +22,6 @@ function startup()
 			ini_set('display_startup_errors', 0);
 			ini_set('display_errors', 0);
 		}
-		ini_set('auto_globals_jit', 0);
 		ini_set('session.use_trans_sid', 0);
 		ini_set('url_rewriter.tags', 0);
 		ini_set('mbstring.substitute_character', 0);
