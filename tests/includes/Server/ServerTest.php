@@ -35,7 +35,7 @@ class ServerTest extends TestCase
 	{
 		$this->_request = Request::getInstance();
 		$this->_request->init();
-		$this->_request->set('_SERVER', array(
+		$this->_request->set('server', array(
 			'HTTP_HOST' => 'localhost',
 			'HTTPS' => 'off',
 			'SCRIPT_NAME' => '/tests/includes/Server/ServerTest.php'

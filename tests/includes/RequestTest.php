@@ -49,7 +49,7 @@ class RequestTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('_SERVER', $actual);
+		$this->assertArrayHasKey('server', $actual);
 	}
 
 	/**

@@ -164,7 +164,7 @@
 	"account_create": "创建你的帐户",
 	"reminder": "提醒",
 	"reminder_question": "你忘了你的用户或密码",
-	"reminder_request": "请输入您的 E-mail 来取回得相应的帐户信息",
+	"reminder_request": "请输入您的 Email 来取回得相应的帐户信息",
 	"reminder_sent": "您的帐户信息已成功发送",
 	"login": "登陆",
 	"login_incorrect": "成功登陆",

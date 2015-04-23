@@ -100,6 +100,33 @@ class Db extends ORM
 	}
 
 	/**
+	 * get item from settings
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public static function getSettings($key = null)
+	{
+		$output = false;
+		$settings = self::forTablePrefix('settings')->findMany();
+
+		/* process settings */
+
+		foreach ($settings as $value)
+		{
+			if ($value->name === $key)
+			{
+				$output = $value->value;
+			}
+		}
+		return $output;
+	}
+
+	/**
 	 * raw instance helper
 	 *
 	 * @since 2.4.0
@@ -192,7 +219,7 @@ class Db extends ORM
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param $key key of the item
+	 * @param string $key key of the item
 	 *
 	 * @return array
 	 */
@@ -205,33 +232,6 @@ class Db extends ORM
 			if (isset($value[$key]))
 			{
 				$output[] = $value[$key];
-			}
-		}
-		return $output;
-	}
-
-	/**
-	 * get item from settings
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string
-	 */
-
-	public static function getSettings($key = null)
-	{
-		$output = false;
-		$settings = self::forTablePrefix('settings')->findMany();
-
-		/* process settings */
-
-		foreach ($settings as $value)
-		{
-			if ($value->name === $key)
-			{
-				$output = $value->value;
 			}
 		}
 		return $output;
