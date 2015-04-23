@@ -101,10 +101,11 @@ function install()
 		'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink
 	);
 
-	/* mail object */
+	/* mailer object */
 
-	$mail = new Redaxscript\Mailer($toArray, $fromArray, $subject, $bodyArray);
-	$mail->send();
+	$mailer = new Redaxscript\Mailer();
+	$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+	$mailer->send();
 }
 
 /**

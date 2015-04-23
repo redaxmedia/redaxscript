@@ -750,37 +750,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/templates/wide.zip'
 				},
 				dot: true
-			},
-			distSQL:
-			{
-				src:
-				[
-					'../redaxscript-sql/<%= version %>/*.sql'
-				],
-				dest: '../redaxscript-dist/files/sql',
-				expand: true
-			},
-			distMediaLogos:
-			{
-				src:
-				[
-					'../redaxscript-media/logos/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/media/logos.zip'
-				}
-			},
-			distMediaScreenshots:
-			{
-				src:
-				[
-					'../redaxscript-media/screenshots/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/media/screenshots.zip'
-				}
 			}
 		},
 		jsonmin:
