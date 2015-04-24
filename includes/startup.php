@@ -54,8 +54,8 @@ function startup()
 
 	/* prefix and salt */
 
-	define('PREFIX', Redaxscript\Config::get('prefix'));
-	define('SALT', Redaxscript\Config::get('salt'));
+	define('PREFIX', Redaxscript\Config::get('dbPrefix'));
+	define('SALT', Redaxscript\Config::get('dbSalt'));
 
 	/* define session */
 
