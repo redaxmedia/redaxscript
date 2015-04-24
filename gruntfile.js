@@ -97,7 +97,7 @@ module.exports = function (grunt)
 					'.jshintrc',
 					'.tocgen'
 				]
-			}
+			},
 			config:
 			{
 				src:
