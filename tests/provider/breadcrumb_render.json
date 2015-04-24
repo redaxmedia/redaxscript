@@ -33,6 +33,6 @@
 			"lastTable": "articles",
 			"lastId": "1"
 		},
-		"<ul class=\"list-breadcrumb\"><li><a href=\"home\" title=\"Home\">Home</a></li><li class=\"item-divider\">&#8201;&#8226;&#8201;</li><li>Welcome</li></ul>"
+		"<ul class=\"list-breadcrumb\"><li><a href=\"home\" title=\"Home\">Home</a></li><li class=\"item-divider\"> - </li><li>Welcome</li></ul>"
 	]
 ]
