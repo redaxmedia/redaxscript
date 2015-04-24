@@ -87,6 +87,17 @@ module.exports = function (grunt)
 					'package.json'
 				]
 			},
+			ruleset:
+			{
+				src:
+				[
+					'.csslintrc',
+					'.htmlhintrc',
+					'.jscsrc',
+					'.jshintrc',
+					'.tocgen'
+				]
+			},
 			config:
 			{
 				src:
