@@ -94,7 +94,8 @@ module.exports = function (grunt)
 					'.csslintrc',
 					'.htmlhintrc',
 					'.jscsrc',
-					'.jshintrc'
+					'.jshintrc',
+					'.tocgen'
 				]
 			}
 			config:
