@@ -139,8 +139,8 @@ function install_form()
 			'PostgreSQL' => 'pgsql'
 		), $d_type, l('type')) . '</li>';
 	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, l('name'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, l('user'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('password', 'd_password', 'js_unmask_password field_text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_prefix', 'field_text', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
 	$output .= '</ul></fieldset>';
@@ -276,6 +276,10 @@ function install_post()
 
 	/* validate post */
 
+	if ($d_type == '')
+	{
+		$d_type = 'mysql';
+	}
 	if ($d_host == '')
 	{
 		if ($d_type == 'sqlite')
@@ -298,10 +302,7 @@ function install_post()
 
 	/* write config */
 
-	if ($_POST['install_post'])
-	{
-		write_config();
-	}
+	write_config();
 }
 
 /**

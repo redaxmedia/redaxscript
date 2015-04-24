@@ -1,2 +1,5 @@
 [inherit]
 1 = default
+
+[template]
+1 = templates/install/scripts/install.js

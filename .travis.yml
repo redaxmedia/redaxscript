@@ -27,7 +27,7 @@ deploy:
  api_key:
   secure: CvUp6rO6I7+HZCj/kRGPnm/5P/Inwf4MXiaCdOnCoQ+2MTj8yZf6inzM9tybFmJHuaom2bB/lyxZw77DUalqRbF9wmj5haxa98Zp9SwwxvgY6NMOI2be3pMcFpgI9po9pO9Hc2Wltt6y144su1hBbKHavQXhy3IUV4o0DLfFW/k=
  run:
-  - php install.php pgsql ec2-23-23-81-189.compute-1.amazonaws.com --db-name ddeaavg5gp549 --db-user hmfpfcgduapsgq --db-password 2GfkSIapJoAcFl37kNVM6nmjkr --db-prefix test_ --admin-name Admin --admin-user admin --admin-password admin --admin-email info@redaxmedia.com
+  - php install.php pgsql ec2-23-23-81-189.compute-1.amazonaws.com --db-name ddeaavg5gp549 --db-user hmfpfcgduapsgq --db-password 2GfkSIapJoAcFl37kNVM6nmjkr --db-prefix test_ --db-salt b66e42b397a215cec2ecb3d7a5bdae1b6738abc9 --admin-name Admin --admin-user admin --admin-password admin --admin-email info@redaxmedia.com
 
 notifications:
  irc:

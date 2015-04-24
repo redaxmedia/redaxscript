@@ -28,6 +28,8 @@ class Template extends DetectorAbstract
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
+		$fileInstall = $this->_registry->get('file') === 'install.php';
+		$partial = $fileInstall ? 'install.phtml' : 'index.phtml';
 
 		/* detect template */
 
@@ -36,7 +38,8 @@ class Template extends DetectorAbstract
 			'session' => $this->_request->getSession($root . '/template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
+			'install' => $fileInstall ? 'install' : null,
 			'fallback' => 'default'
-		), 'template', 'templates/' . $this->_filePlaceholder . '/index.phtml');
+		), 'template', 'templates/' . $this->_filePlaceholder . '/' . $partial);
 	}
 }
