@@ -21,21 +21,15 @@ $config::init();
 
 Db::init($config);
 
-/* set database status */
+/* startup and migrate */
 
-$registry->set('dbStatus', Db::getStatus());
+startup();
+$registry->init(migrate_constants());
 
-/* database has tables */
+/* hook */
 
 if ($registry->get('dbStatus') === 2)
 {
-	/* startup and migrate */
-
-	startup();
-	$registry->init(migrate_constants());
-
-	/* hook */
-
 	Hook::init($registry);
 }
 

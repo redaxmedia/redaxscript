@@ -47,6 +47,10 @@ function startup()
 		$_SESSION[ROOT . '/regenerate_id'] = 1;
 	}
 
+	/* database status */
+
+	Redaxscript\Registry::set('dbStatus', Redaxscript\Db::getStatus());
+
 	/* define token */
 
 	$token = new Redaxscript\Server\Token($request);
@@ -64,7 +68,7 @@ function startup()
 
 	/* setup charset */
 
-	if (function_exists('ini_set') && FILE != 'install.php')
+	if (function_exists('ini_set') && Redaxscript\Registry::get('dbStatus') === 2)
 	{
 		ini_set('default_charset', s('charset'));
 	}
@@ -120,7 +124,7 @@ function startup()
 
 	/* define tables */
 
-	if (FILE != 'install.php')
+	if (Redaxscript\Registry::get('dbStatus') === 2)
 	{
 		if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
 		{
@@ -205,6 +209,15 @@ function startup()
 				$id = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
 			}
 		}
+	}
+	else
+	{
+		undefine(array(
+			'FIRST_TABLE',
+			'SECOND_TABLE',
+			'THIRD_TABLE',
+			'LAST_TABLE'
+		));
 	}
 
 	/* define ids */
@@ -333,7 +346,7 @@ function startup()
 	/* future update */
 
 	define('UPDATE', $_SESSION[ROOT . '/update']);
-	if (UPDATE == '' && FILE != 'install.php')
+	if (UPDATE == '' && Redaxscript\Registry::get('dbStatus') === 2)
 	{
 		future_update('articles');
 		future_update('comments');
