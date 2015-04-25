@@ -2,6 +2,7 @@
 namespace Redaxscript;
 
 use ORM;
+use PDO;
 
 /**
  * children class to handle the database
@@ -97,6 +98,34 @@ class Db extends ORM
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
 		));
+	}
+
+	/**
+	 * get the database status
+	 *
+	 * @since 2.4.0
+	 *
+	 * @return string
+	 */
+
+	public static function getStatus()
+	{
+		$output = 0;
+
+		/* has connection */
+
+		if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
+		{
+			$output = 1;
+
+			/* has tables */
+
+			if (self::countTablePrefix() > 7)
+			{
+				$output = 2;
+			}
+		}
+		return $output;
 	}
 
 	/**

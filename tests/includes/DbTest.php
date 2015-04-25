@@ -87,6 +87,42 @@ class DbTest extends TestCase
 	}
 
 	/**
+	 * testGetStatus
+	 *
+	 * @since 2.4.0
+	 *
+	 */
+
+	public function testGetStatus()
+	{
+		/* actual */
+
+		$actual = Db::getStatus();
+
+		/* compare */
+
+		$this->assertEquals(2, $actual);
+	}
+
+	/**
+	 * testGetSettings
+	 *
+	 * @since 2.2.0
+	 *
+	 */
+
+	public function testGetSettings()
+	{
+		/* actual */
+
+		$actual = Db::getSettings('charset');
+
+		/* compare */
+
+		$this->assertEquals('utf-8', $actual);
+	}
+
+	/**
 	 * testRawInstance
 	 *
 	 * @since 2.4.0
@@ -191,13 +227,13 @@ class DbTest extends TestCase
 	}
 
 	/**
-	 * testfindArrayFlat
+	 * testFindArrayFlat
 	 *
 	 * @since 2.4.0
 	 *
 	 */
 
-	public function testfindArrayFlat()
+	public function testFindArrayFlat()
 	{
 		/* expect and actual */
 
@@ -209,24 +245,6 @@ class DbTest extends TestCase
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testGetSettings
-	 *
-	 * @since 2.2.0
-	 *
-	 */
-
-	public function testGetSettings()
-	{
-		/* actual */
-
-		$actual = Db::getSettings('charset');
-
-		/* compare */
-
-		$this->assertEquals('utf-8', $actual);
 	}
 
 	/**

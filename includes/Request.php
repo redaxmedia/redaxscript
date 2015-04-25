@@ -24,7 +24,7 @@ class Request extends Singleton
 	/**
 	 * init the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public static function init()
@@ -33,6 +33,7 @@ class Request extends Singleton
 			'server' => $_SERVER,
 			'get' => $_GET,
 			'post' => $_POST,
+			'session' => $_SESSION,
 			'cookie' => $_COOKIE
 		);
 	}

@@ -18,6 +18,14 @@ include_once('includes/startup.php');
 
 include_once('includes/bootstrap.php');
 
+/* redirect to install */
+
+$registry = Redaxscript\Registry::getInstance();
+if ($registry->get('dbStatus') < 2)
+{
+	echo '<meta http-equiv="refresh" content="2; url=install.php" />' . PHP_EOL;
+}
+
 /* include files as needed */
 
 if (LAST_TABLE == 'articles')

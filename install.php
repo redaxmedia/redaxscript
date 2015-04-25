@@ -245,7 +245,10 @@ function install_cli($argv = array())
 
 	/* write config */
 
-	write_config();
+	if (isset($argv[1]) && isset($argv[2]))
+	{
+		write_config();
+	}
 
 	/* print output */
 
@@ -309,7 +312,10 @@ function install_post()
 
 	/* write config */
 
-	write_config();
+	if ($_POST['install_post'])
+	{
+		write_config();
+	}
 }
 
 /**

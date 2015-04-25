@@ -33,7 +33,7 @@ class Language extends Singleton
 	{
 		self::load('languages/en.json');
 
-		/* merge another language */
+		/* merge language */
 
 		if ($language !== 'en')
 		{

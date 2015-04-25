@@ -1,9 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use PDO;
-use PDOException;
-
 /* include as needed */
 
 include_once('includes/Autoloader.php');
@@ -24,41 +21,21 @@ $config::init();
 
 Db::init($config);
 
-/* database status */
+/* set database status */
 
-try
-{
-	/* has connection */
+$registry->set('dbStatus', Db::getStatus());
 
-	if ($config->get('dbType') === Db::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
-	{
-		$registry->set('dbStatus', 1);
-
-		/* has table */
-
-		if (Db::countTablePrefix() > 7)
-		{
-			$registry->set('dbStatus', 2);
-		}
-	}
-}
-
-/* catch pdo exception */
-
-catch (PDOException $exception)
-{
-	$registry->set('dbException', $exception->getMessage());
-}
-
-/* startup and migrate constants */
-
-startup();
-$registry->init(migrate_constants());
-
-/* hook */
+/* database has tables */
 
 if ($registry->get('dbStatus') === 2)
 {
+	/* startup and migrate */
+
+	startup();
+	$registry->init(migrate_constants());
+
+	/* hook */
+
 	Hook::init($registry);
 }
 
