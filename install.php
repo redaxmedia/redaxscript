@@ -297,7 +297,7 @@ function install_post()
 	{
 		if ($d_type == 'sqlite')
 		{
-			$d_host = 'sqlite/db.sqlite';
+			$d_host = 'database.sqlite';
 		}
 		else
 		{
