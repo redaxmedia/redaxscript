@@ -144,7 +144,10 @@ function install_form()
 	$output .= '<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">';
 	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">' . l('database_setup') . '</legend>';
 	$output .= '<ul class="js_box_accordion js_box_active box_accordion box_accordion_default box_active">';
-	$output .= '<li>' . select_element('type', 'field_select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
+	if ($typeArray)
+	{
+		$output .= '<li>' . select_element('type', 'field_select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
+	}
 	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';

@@ -384,6 +384,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'database/**',
 					'includes/**',
 					'languages/**',
 					'libraries/**',
@@ -407,6 +408,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'database/**',
 					'includes/**',
 					'languages/en.json',
 					'libraries/**',

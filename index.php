@@ -21,7 +21,7 @@ include_once('includes/bootstrap.php');
 /* redirect to install */
 
 $registry = Redaxscript\Registry::getInstance();
-if ($registry->get('dbStatus') < 2)
+if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 {
 	echo '<meta http-equiv="refresh" content="2; url=install.php" />' . PHP_EOL;
 }
