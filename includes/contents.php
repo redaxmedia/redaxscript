@@ -203,7 +203,7 @@ function contents()
 
 				if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
 				{
-					comment_form(ARTICLE, $language, $access);
+					comment_form(ARTICLE, $language);
 				}
 			}
 		}

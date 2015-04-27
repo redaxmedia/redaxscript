@@ -155,10 +155,9 @@ function comments($article = '', $route = '')
  *
  * @param integer $article
  * @param string $language
- * @param string $access
  */
 
-function comment_form($article = '', $language = '', $access = '')
+function comment_form($article = '', $language = '')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
@@ -209,7 +208,6 @@ function comment_form($article = '', $language = '', $access = '')
 	$output .= form_element('hidden', '', '', 'language', $language);
 	$output .= form_element('hidden', '', '', 'date', NOW);
 	$output .= form_element('hidden', '', '', 'article', $article);
-	$output .= form_element('hidden', '', '', 'access', $access);
 
 	/* collect captcha solution output */
 
@@ -262,10 +260,10 @@ function comment_post()
 		$r['date'] = clean($_POST['date'], 5);
 		$article = $r['article'] = clean($_POST['article'], 0);
 		$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
-		$r['access'] = clean($_POST['access'], 0);
+		$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
 		if ($r['access'] == '')
 		{
-			$r['access'] = 0;
+			$r['access'] = null;
 		}
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
