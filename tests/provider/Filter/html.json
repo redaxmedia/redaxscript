@@ -12,12 +12,12 @@
 		"<article><div><p>test</p></div></article>"
 	],
 	[
-	  "<ul><li>test</li></ul>",
-	  "<ul><li>test</li></ul>"
+		"<ul><li>test</li></ul>",
+		"<ul><li>test</li></ul>"
 	],
 	[
-	  "<p><div>invalid</div></p>",
-	  "<p></p>"
+		"<p><div>invalid</div></p>",
+		"<p></p>"
 	],
 	[
 		"<a href=\"_blank\"><span>test</span></a>",
@@ -28,11 +28,23 @@
 		""
 	],
 	[
-		"<SCRIPT>alert('xss')</SCRIPT>",
+		"<object data=\"xss.swf\"></object>",
 		""
 	],
 	[
-		"<DIV STYLE=background-image:url(javascript:alert('xss'))>",
-		"<div></div>"
+		"<body onload=alert('xss')>",
+		""
+	],
+	[
+		"<span onmouseover=\"alert('xss')\"></span>",
+		"<span></span>"
+	],
+	[
+		"<script>alert('xss')</script>",
+		""
+	],
+	[
+		"<table background=\"javascript:alert('xss')\">",
+		"<table></table>"
 	]
 ]
