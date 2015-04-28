@@ -327,15 +327,15 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/bin/apigen generate --source includes --destination ../redaxscript-api/base'
 			},
 			apiModules:
 			{
-				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source modules --destination ../redaxscript-api/modules'
+				command: 'php vendor/bin/apigen generate --source modules --destination ../redaxscript-api/modules'
 			},
 			apiTests:
 			{
-				command: 'php vendor/bin/apigen generate --template-config vendor/redaxmedia/redaxscript-apigen-template/config.neon --source tests --destination ../redaxscript-api/tests'
+				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
 			},
 			addUpstream:
 			{
