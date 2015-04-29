@@ -221,7 +221,7 @@ function admin_modules_form()
 
 	if (GROUPS_EDIT == 1)
 	{
-		$access_array[l('all')] = 0;
+		$access_array[l('all')] = null;
 		$access_result = Redaxscript\Db::forTablePrefix('groups')->orderByAsc('name')->findArray();
 		if ($access_result)
 		{
