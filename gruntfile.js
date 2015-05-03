@@ -889,12 +889,8 @@ module.exports = function (grunt)
 		'jsonlint',
 		'csslint',
 		'htmlhint',
-		'phplint',
+		'phpcs',
 		'toclint'
-	]);
-	grunt.registerTask('phplint',
-	[
-		'phpcs'
 	]);
 	grunt.registerTask('toclint',
 	[
