@@ -17,7 +17,7 @@ Redaxscript
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Bountysource](https://img.shields.io/badge/bountysource-contribute-129e5e.svg?style=flat)](https://www.bountysource.com/trackers/351960-redaxmedia-redaxscript)
 [![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
-[![Documentation Status](https://readthedocs.org/projects/redaxscript/badge/?style=flat)](https://readthedocs.org/projects/redaxscript/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/redaxscript/badge/?style=flat)](https://redaxscript.readthedocs.org/)
 
 
 Demo
