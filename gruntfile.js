@@ -327,15 +327,15 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/bin/apigen generate --source includes --destination ../redaxscript-api/base'
+				command: 'php vendor/bin/phpdoc run -d includes -t ../redaxscript-api/modules'
 			},
 			apiModules:
 			{
-				command: 'php vendor/bin/apigen generate --source modules --destination ../redaxscript-api/modules'
+				command: 'php vendor/bin/phpdoc run -d modules -t ../redaxscript-api/modules'
 			},
 			apiTests:
 			{
-				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
+				command: 'php vendor/bin/phpdoc run -d tests -t ../redaxscript-api/tests'
 			},
 			addUpstream:
 			{

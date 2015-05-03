@@ -25,15 +25,15 @@ $config = Config::getInstance();
 
 /* mysql and pgsql */
 
-if (in_array('mysql', $request->get('argv')) || in_array('pgsql', $request->get('argv')))
+if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request->getServer('argv')))
 {
-	if (in_array('mysql', $request->get('argv')))
+	if (in_array('mysql', $request->getServer('argv')))
 	{
 		echo 'MySQL - ';
 		$config->set('dbType', 'mysql');
 		$config->set('dbUser', 'root');
 	}
-	if (in_array('pgsql', $request->get('argv')))
+	if (in_array('pgsql', $request->getServer('argv')))
 	{
 		echo 'PostgreSQL - ';
 		$config->set('dbType', 'pgsql');
