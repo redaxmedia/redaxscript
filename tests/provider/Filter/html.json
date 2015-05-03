@@ -1,5 +1,9 @@
 [
 	[
+		"test",
+		"<p>test</p>"
+	],
+	[
 		"тест",
 		"<p>тест</p>"
 	],
@@ -16,35 +20,55 @@
 		"<ul><li>test</li></ul>"
 	],
 	[
-		"<p><div>invalid</div></p>",
+		"<p><div>test</div></p>",
 		"<p></p>"
 	],
 	[
-		"<a href=\"_blank\"><span>test</span></a>",
+		"&lt;span href="\test\"&gt;test&lt;/span&gt;",
+		"<p><span>test</span></p>"
+	],
+	[
+		"<a href=\"test\"><span>test</span></a>",
 		"<a><span>test</span></a>"
 	],
 	[
-		"<img src=\"_blank\" />",
+		"<img src=\"test\" />",
 		""
 	],
 	[
-		"<object data=\"xss.swf\"></object>",
+		"<object data=\"test.swf\"></object>",
 		""
 	],
 	[
-		"<body onload=alert('xss')>",
+		"<script>alert('test')</script>",
 		""
 	],
 	[
-		"<span onmouseover=\"alert('xss')\"></span>",
+		"</title><script>alert('test');</script>",
+		""
+	],
+	[
+		"<body onload=alert('test')>",
+		""
+	],
+	[
+		"<span onmouseover=\"alert('test')\"></span>",
 		"<span></span>"
 	],
 	[
-		"<script>alert('xss')</script>",
+		"<table background=\"javascript:alert('test')\">",
+		"<table></table>"
+	],
+	[
+		"<iframe src=\"javascript:alert('test');\"></iframe>",
 		""
 	],
 	[
-		"<table background=\"javascript:alert('xss')\">",
-		"<table></table>"
+		"<link href=\"javascript:alert('test');\">",
+		""
+	],
+	[
+		"<div style=\"width: expression(alert('test'));\">",
+		"<div></div>"
 	]
 ]
