@@ -12,11 +12,11 @@ Redaxscript
 [![Coverage Status](https://img.shields.io/coveralls/redaxmedia/redaxscript.svg?style=flat)](https://coveralls.io/r/redaxmedia/redaxscript)
 [![Dependency Status](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7)
 [![Dependency Status](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c)
-[![Repo size](https://reposs.herokuapp.com/?path=redaxmedia/redaxscript&style=flat)](https://github.com/redaxmedia/redaxscript)
+[![Repo Size](https://reposs.herokuapp.com/?path=redaxmedia/redaxscript&style=flat)](https://github.com/redaxmedia/redaxscript)
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Bountysource](https://img.shields.io/badge/bountysource-contribute-129e5e.svg?style=flat)](https://www.bountysource.com/trackers/351960-redaxmedia-redaxscript)
-[![Gitter chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
+[![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
 
 
 Demo

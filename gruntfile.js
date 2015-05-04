@@ -327,7 +327,7 @@ module.exports = function (grunt)
 			},
 			apiBase:
 			{
-				command: 'php vendor/bin/phpdoc run -d includes -t ../redaxscript-api/modules'
+				command: 'php vendor/bin/phpdoc run -d includes -t ../redaxscript-api/base'
 			},
 			apiModules:
 			{
