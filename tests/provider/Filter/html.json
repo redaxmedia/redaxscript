@@ -24,8 +24,8 @@
 		"<p></p>"
 	],
 	[
-		"&lt;span href="\test\"&gt;test&lt;/span&gt;",
-		"<p><span>test</span></p>"
+		"&lt;span href=\"test\"&gt;test&lt;/span&gt;",
+		"<span>test</span>"
 	],
 	[
 		"<a href=\"test\"><span>test</span></a>",

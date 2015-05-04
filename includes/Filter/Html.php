@@ -163,7 +163,7 @@ class Html implements FilterInterface
 	public function sanitize($html = null, $filter = true)
 	{
 		$charset = Db::getSettings('charset');
-		$html = mb_convert_encoding($html, 'html-entities', $charset);
+		$html = mb_convert_encoding(html_entity_decode($html), 'html-entities', $charset);
 		$doc = new DOMDocument();
 		$doc->loadHTML($html);
 		$body = $doc->getElementsByTagName('body');
