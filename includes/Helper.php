@@ -129,7 +129,7 @@ class Helper
 	{
 		/* merge classes */
 
-		$classes = array_merge(
+		$classArray = array_merge(
 			$this->_getBrowserArray(),
 			$this->_getDeviceArray(),
 			$this->_getContentArray(),
@@ -138,7 +138,7 @@ class Helper
 
 		/* implode classes */
 
-		$output = implode(' ', array_unique($classes));
+		$output = implode(' ', array_unique($classArray));
 		return $output;
 	}
 

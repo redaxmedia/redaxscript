@@ -1,11 +1,10 @@
 <?php
 namespace Redaxscript\Modules\Demo;
 
-use Redaxscript\Config;
+use Redaxscript\Config as GlobalConfig;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
-use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -19,7 +18,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class Demo extends Module
+class Demo extends Config
 {
 	/**
 	 * array of the module
@@ -31,7 +30,7 @@ class Demo extends Module
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
-		'description' => 'Enable anonymous login',
+		'description' => 'Enable demo login',
 		'version' => '2.4.0'
 	);
 
@@ -127,7 +126,7 @@ class Demo extends Module
 	protected static function _reinstall()
 	{
 		$installer = new Installer();
-		$installer->init(Config::getInstance());
+		$installer->init(GlobalConfig::getInstance());
 		$installer->rawDrop();
 		$installer->rawCreate();
 		$installer->insertData(array(
@@ -136,8 +135,21 @@ class Demo extends Module
 			'adminPassword' => 'admin',
 			'adminEmail' => 'admin@localhost'
 		));
-		self::install();
-		Db::forTablePrefix('users')
+
+		/* process modules */
+
+		foreach (self::$_config['modules'] as $key => $value)
+		{
+			if (is_dir('modules/' . $key))
+			{
+				$module = new $value;
+				$module->install();
+			}
+		}
+
+		/* reset filter */
+
+		Db::forTablePrefix('groups')
 			->findMany()
 			->set('filter', 1)
 			->save();

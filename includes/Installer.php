@@ -180,15 +180,8 @@ class Installer
 
 		if (is_dir('modules/CallHome'))
 		{
-			Db::forTablePrefix('modules')
-				->create()
-				->set(array(
-					'name' => 'Call home',
-					'alias' => 'CallHome',
-					'author' => 'Redaxmedia',
-					'description' => 'Provide version and news updates',
-					'version' => $language->get('version', '_package')
-				))->save();
+			$callHome = new Modules\CallHome\CallHome;
+			$callHome->install();
 		}
 
 		/* settings */
