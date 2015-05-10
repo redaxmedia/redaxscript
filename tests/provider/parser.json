@@ -63,19 +63,19 @@
 	],
 	[
 		"",
-		"<module>CallHome<module>",
+		"<module>Test<module>",
 		"",
 		"0"
 	],
 	[
 		"",
-		"<module>{\"CallHome\":{\"first\":\"1\",\"second\":\"1\"}}<module>",
+		"<module>{\"Test\":{\"first\":\"1\",\"second\":\"1\"}}<module>",
 		"",
 		"2"
 	],
 	[
 		"",
-		"<module>invalid<module>",
+		"<module>Invalid<module>",
 		"",
 		""
 	]

@@ -2,13 +2,12 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Hook;
-use Redaxscript\Module;
 use Redaxscript\Registry;
 
 /**
  * HookTest
  *
- * @since 2.2.0
+ * @since 2.4.0
  *
  * @package Redaxscript
  * @category Tests
@@ -28,7 +27,7 @@ class HookTest extends TestCase
 	/**
 	 * setUp
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function setUp()
@@ -37,40 +36,9 @@ class HookTest extends TestCase
 	}
 
 	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		$module = new Module();
-		$module->init(array(
-			'name' => 'Call home',
-			'alias' => 'CallHome',
-		));
-		$module->install();
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		$module = new Module();
-		$module->init(array(
-			'alias' => 'CallHome',
-		));
-		$module->uninstall();
-	}
-
-	/**
 	 * testGetModules
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function testGetModules()
@@ -85,13 +53,13 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('CallHome', $actual);
+		$this->assertArrayHasKey('Test', $actual);
 	}
 
 	/**
 	 * testGetEvents
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function testGetEvents()
@@ -99,7 +67,7 @@ class HookTest extends TestCase
 		/* setup */
 
 		Hook::init($this->_registry);
-		Hook::trigger('hook_method');
+		Hook::trigger('render');
 
 		/* actual */
 
@@ -107,13 +75,13 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('hook_method', $actual);
+		$this->assertArrayHasKey('render', $actual);
 	}
 
 	/**
 	 * testTriggerMethod
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function testTriggerMethod()
@@ -124,44 +92,17 @@ class HookTest extends TestCase
 
 		/* actual */
 
-		$actual = Hook::trigger('hook_method', array(
-			1,
-			2
-		));
+		$actual = Hook::trigger('render');
 
 		/* compare */
 
-		$this->assertEquals(-1, $actual);
-	}
-
-	/**
-	 * testTriggerFunction
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testTriggerFunction()
-	{
-		/* setup */
-
-		Hook::init($this->_registry);
-
-		/* actual */
-
-		$actual = Hook::trigger('hook_function', array(
-			1,
-			2
-		));
-
-		/* compare */
-
-		$this->assertEquals(3, $actual);
+		$this->assertEquals(0, $actual);
 	}
 
 	/**
 	 * testTriggerInvalid
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 */
 
 	public function testTriggerInvalid()
@@ -172,7 +113,7 @@ class HookTest extends TestCase
 
 		/* actual */
 
-		$actual = Hook::trigger('hook_invalid');
+		$actual = Hook::trigger('invalid');
 
 		/* compare */
 

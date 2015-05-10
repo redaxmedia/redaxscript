@@ -3,14 +3,12 @@ namespace Redaxscript;
 
 /* strict reporting */
 
-error_reporting(E_STRICT);
+error_reporting(E_STRICT || E_ERROR);
 
 /* include as needed */
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');
-include_once('stubs/CallHome.php');
-include_once('stubs/hook_function.php');
 
 /* init */
 
@@ -63,6 +61,11 @@ $installer->init($config);
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData();
+if (is_dir('modules/Test'))
+{
+	$test = new Modules\Test\Test;
+	$test->install();
+}
 
 /* hook */
 
