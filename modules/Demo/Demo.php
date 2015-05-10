@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Demo;
 
 use Redaxscript\Config;
+use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Module;
@@ -135,5 +136,10 @@ class Demo extends Module
 			'adminPassword' => 'admin',
 			'adminEmail' => 'admin@localhost'
 		));
+		self::install();
+		Db::forTablePrefix('users')
+			->findMany()
+			->set('filter', 1)
+			->save();
 	}
 }
