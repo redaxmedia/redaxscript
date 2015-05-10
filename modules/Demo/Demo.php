@@ -106,9 +106,9 @@ class Demo extends Config
 			Request::setSession($root . '/' . $value . '_edit', 1);
 			Request::setSession($root . '/' . $value . '_delete', 1);
 		}
-		Request::setSession($root . '/modules_install', 1);
-		Request::setSession($root . '/modules_edit', 1);
-		Request::setSession($root . '/modules_uninstall', 1);
+		Request::setSession($root . '/modules_install', 0);
+		Request::setSession($root . '/modules_edit', 0);
+		Request::setSession($root . '/modules_uninstall', 0);
 		Request::setSession($root . '/settings_edit', 1);
 		Request::setSession($root . '/filter', 1);
 
@@ -147,11 +147,14 @@ class Demo extends Config
 			}
 		}
 
-		/* reset filter */
+		/* access and filter */
 
 		Db::forTablePrefix('groups')
 			->findMany()
-			->set('filter', 1)
+			->set(array(
+				'modules' => null,
+				'filter' => 1
+			))
 			->save();
 	}
 }
