@@ -1,5 +1,5 @@
 <?php namespace Redaxscript; ?>
 
 <?php if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') !== 'logout' && !Registry::get('myMobile')): ?>
-	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700&amp;subset=<?php helper_subset(); ?>" rel="stylesheet" />
+	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
 <?php endif; ?>

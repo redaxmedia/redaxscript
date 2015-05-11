@@ -1,9 +1,0 @@
-[inherit]
-1 = default
-
-[template]
-1 = templates/api/styles/code.css
-2 = templates/api/styles/misc.css
-
-[settings]
-rewrite = true
