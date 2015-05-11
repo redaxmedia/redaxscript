@@ -1,0 +1,17 @@
+{
+	"name": "Redaxscript",
+	"description": "Ultra lightweight Content Management System",
+	"website": "http://redaxscript.com",
+	"success_url": "home/welcome",
+	"addons":
+	[
+		"heroku-postgresql:hobby-dev"
+	],
+	"env":
+	{
+		"BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php"
+	},
+	"scripts": {
+		"postdeploy": "bundle exec rake db:migrate"
+	}
+}
