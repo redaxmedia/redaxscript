@@ -10,12 +10,12 @@
 	"env":
 	{
 		"BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
-		"dbType": "",
+		"dbType": "pgsql",
 		"dbHost": "",
 		"dbName": "",
 		"dbUser": "",
 		"dbPassword": "",
-		"dbPrefix": "",
+		"dbPrefix": "rs_",
 		"dbSalt": ""
 	}
 }
