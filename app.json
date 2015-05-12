@@ -17,5 +17,9 @@
 		"dbPassword": "",
 		"dbPrefix": "rs_",
 		"dbSalt": ""
+	},
+	"scripts":
+	{
+		"postdeploy": "php install.php pgsql"
 	}
 }
