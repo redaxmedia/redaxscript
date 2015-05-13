@@ -4,71 +4,15 @@
 		"<p>test</p>"
 	],
 	[
-		"тест",
-		"<p>тест</p>"
-	],
-	[
 		"<div>",
 		"<div></div>"
-	],
-	[
-		"<article><div><p>test</p></div></article>",
-		"<article><div><p>test</p></div></article>"
 	],
 	[
 		"<ul><li>test</li></ul>",
 		"<ul><li>test</li></ul>"
 	],
 	[
-		"<p><div>test</div></p>",
-		"<p></p>"
-	],
-	[
-		"&lt;span href=\"test\"&gt;test&lt;/span&gt;",
-		"<span>test</span>"
-	],
-	[
-		"<a href=\"test\"><span>test</span></a>",
-		"<a><span>test</span></a>"
-	],
-	[
-		"<img src=\"test\" />",
+		"<iframe src=\"test\"></iframe>",
 		""
-	],
-	[
-		"<object data=\"test.swf\"></object>",
-		""
-	],
-	[
-		"<script>alert('test')</script>",
-		""
-	],
-	[
-		"</title><script>alert('test');</script>",
-		""
-	],
-	[
-		"<body onload=alert('test')>",
-		""
-	],
-	[
-		"<span onmouseover=\"alert('test')\"></span>",
-		"<span></span>"
-	],
-	[
-		"<table background=\"javascript:alert('test')\">",
-		"<table></table>"
-	],
-	[
-		"<iframe src=\"javascript:alert('test');\"></iframe>",
-		""
-	],
-	[
-		"<link href=\"javascript:alert('test');\">",
-		""
-	],
-	[
-		"<div style=\"width: expression(alert('test'));\">",
-		"<div></div>"
 	]
 ]

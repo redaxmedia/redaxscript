@@ -7,7 +7,7 @@ use Redaxscript\Db;
 /**
  * children class to filter html
  *
- * @since 2.2.0
+ * @since 2.4.0
  *
  * @category Redaxscript
  * @package Filter
@@ -23,23 +23,11 @@ class Html implements FilterInterface
 	 */
 
 	protected $_htmlTags = array(
-		'applet',
-		'audio',
-		'base',
-		'bgsound',
-		'embed',
-		'frame',
-		'frameset',
-		'function',
-		'form',
-		'isindex',
-		'iframe',
-		'img',
-		'link',
-		'meta',
-		'object',
-		'script',
-		'video'
+		'div',
+        'li',
+		'p',
+		'span',
+        'ul'
 	);
 
 	/**
@@ -49,110 +37,14 @@ class Html implements FilterInterface
 	 */
 
 	protected $_htmlAttributes = array(
-		'archive',
-		'background',
-		'cite',
-		'classid',
-		'codebase',
-		'dynsrc',
-		'fscommand',
-		'formaction',
-		'icon',
-		'href',
-		'longdesc',
-		'lowsrc',
-		'manifest',
-		'name',
-		'onabort',
-		'onactivate',
-		'onafterprint',
-		'onafterupdate',
-		'onbeforeactivate',
-		'onbeforecopy',
-		'onbeforecut',
-		'onbeforedeactivate',
-		'onbeforeeditfocus',
-		'onbeforepaste',
-		'onbeforeprint',
-		'onbeforeunload',
-		'onbeforeupdate',
-		'onblur',
-		'onbounce',
-		'oncellchange',
-		'onchange',
-		'onclick',
-		'oncontextmenu',
-		'oncontrolselect',
-		'oncopy',
-		'oncut',
-		'ondataavailable',
-		'ondatasetchanged',
-		'ondatasetcomplete',
-		'ondblclick',
-		'ondeactivate',
-		'ondrag',
-		'ondragend',
-		'ondragenter',
-		'ondragleave',
-		'ondragover',
-		'ondragstart',
-		'ondrop',
-		'onerror',
-		'onerrorupdate',
-		'onfilterchange',
-		'onfinish',
-		'onfocus',
-		'onfocusin',
-		'onfocusout',
-		'onhelp',
-		'onkeydown',
-		'onkeypress',
-		'onkeyup',
-		'onlayoutcomplete',
-		'onload',
-		'onlosecapture',
-		'onmousedown',
-		'onmouseenter',
-		'onmouseleave',
-		'onmousemove',
-		'onmouseout',
-		'onmouseover',
-		'onmouseup',
-		'onmousewheel',
-		'onmove',
-		'onmoveend',
-		'onmovestart',
-		'onpaste',
-		'onpropertychange',
-		'onreadystatechange',
-		'onreset',
-		'onresize',
-		'onresizeend',
-		'onresizestart',
-		'onrowenter',
-		'onrowexit',
-		'onrowsdelete',
-		'onrowsinserted',
-		'onscroll',
-		'onselect',
-		'onselectionchange',
-		'onselectstart',
-		'onstartonstop',
-		'onsubmit',
-		'onunload',
-		'poster',
-		'profile',
-		'rel',
-		'src',
-		'style',
-		'type',
-		'usemap'
+		'class',
+		'id'
 	);
 
 	/**
 	 * sanitize the html
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 *
 	 * @param string $html target with html
 	 * @param boolean $filter optional filter nodes
@@ -163,10 +55,9 @@ class Html implements FilterInterface
 	public function sanitize($html = null, $filter = true)
 	{
 		$charset = Db::getSettings('charset');
-		$html = mb_convert_encoding(html_entity_decode($html), 'html-entities', $charset);
-		$doc = new DOMDocument();
-		$doc->loadHTML($html);
-		$body = $doc->getElementsByTagName('body');
+		$html = mb_convert_encoding($html, 'html-entities', $charset);
+        $html = html_entity_decode($html, ENT_QUOTES, $charset);
+		$doc = self::_createDocument($html);
 
 		/* filter nodes */
 
@@ -176,35 +67,10 @@ class Html implements FilterInterface
 
 			libxml_use_internal_errors(true);
 
-			/* process tags */
+			/* clean tags and attributes */
 
-			foreach ($this->_htmlTags as $tag)
-			{
-				$node = $doc->getElementsByTagName($tag);
-				foreach ($node as $childNode)
-				{
-					$childNode->parentNode->removeChild($childNode);
-				}
-			}
-
-			/* process attributes */
-
-			foreach ($body as $node)
-			{
-				foreach ($node->childNodes as $childNode)
-				{
-					if ($childNode->nodeType !== XML_TEXT_NODE)
-					{
-						foreach ($this->_htmlAttributes as $attribute)
-						{
-							if ($childNode->hasAttribute($attribute))
-							{
-								$childNode->removeAttribute($attribute);
-							}
-						}
-					}
-				}
-			}
+            $doc = self::_stripTags($doc);
+            $doc = self::_stripAttributes($doc);
 
 			/* clear errors */
 
@@ -213,25 +79,41 @@ class Html implements FilterInterface
 
 		/* clean document */
 
-		$output = html_entity_decode($this->_clean($doc), ENT_QUOTES, $charset);
+		$doc = self::_cleanDocument($doc);
+		$output = trim($doc->saveHTML());
 		return $output;
+	}
+
+	/**
+	 * create the document
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $html target with html
+	 *
+	 * @return DOMDocument
+	 */
+
+	public function _createDocument($html = null)
+	{
+		$doc = new DOMDocument();
+		$doc->loadHTML($html);
+		return $doc;
 	}
 
 	/**
 	 * clean the document
 	 *
-	 * @since 2.2.0
+	 * @since 2.4.0
 	 *
 	 * @param DOMDocument $doc target with document
 	 *
-	 * @return string
+	 * @return DOMDocument
 	 */
 
-	protected function _clean(DOMDocument $doc)
+	protected function _cleanDocument(DOMDocument $doc)
 	{
-		$output = '';
-
-		/* cleanup document */
+		/* clean document */
 
 		if (isset($doc->firstChild) && $doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
 		{
@@ -244,9 +126,38 @@ class Html implements FilterInterface
 			if (isset($doc->firstChild->firstChild->firstChild) && $doc->firstChild->firstChild->tagName === 'body')
 			{
 				$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
-				$output = trim($doc->saveHTML());
 			}
 		}
-		return $output;
+		return $doc;
+	}
+
+	/**
+	 * strip the tags
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param DOMDocument $doc target with document
+	 *
+	 * @return DOMDocument
+	 */
+
+	protected function _stripTags(DOMDocument $doc)
+	{
+		return $doc;
+	}
+
+	/**
+	 * strip the attributes
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param DOMDocument $doc target with document
+	 *
+	 * @return DOMDocument
+	 */
+
+	protected function _stripAttributes(DOMDocument $doc)
+	{
+		return $doc;
 	}
 }
