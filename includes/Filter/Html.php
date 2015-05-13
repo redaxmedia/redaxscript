@@ -24,10 +24,10 @@ class Html implements FilterInterface
 
 	protected $_htmlTags = array(
 		'div',
-        'li',
+		'li',
 		'p',
 		'span',
-        'ul'
+		'ul'
 	);
 
 	/**
@@ -56,7 +56,7 @@ class Html implements FilterInterface
 	{
 		$charset = Db::getSettings('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
-        $html = html_entity_decode($html, ENT_QUOTES, $charset);
+		$html = html_entity_decode($html, ENT_QUOTES, $charset);
 		$doc = self::_createDocument($html);
 
 		/* filter nodes */
@@ -69,8 +69,8 @@ class Html implements FilterInterface
 
 			/* clean tags and attributes */
 
-            $doc = self::_stripTags($doc);
-            $doc = self::_stripAttributes($doc);
+			$doc = self::_stripTags($doc);
+			$doc = self::_stripAttributes($doc);
 
 			/* clear errors */
 
