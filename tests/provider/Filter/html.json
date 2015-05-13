@@ -4,8 +4,8 @@
 		"<p>test</p>"
 	],
 	[
-		"<div>",
-		"<div></div>"
+		"<span>",
+		"<span></span>"
 	],
 	[
 		"<ul><li>test</li></ul>",
@@ -14,5 +14,9 @@
 	[
 		"<iframe src=\"test\"></iframe>",
 		""
+	],
+	[
+		"<div><div><script src=\"test\"></script></div></div>",
+		"<div><div></div></div>"
 	]
 ]

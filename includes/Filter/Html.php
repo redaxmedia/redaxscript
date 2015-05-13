@@ -22,11 +22,25 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_htmlTags = array(
+	protected $_allowedTags = array(
 		'div',
+		'em',
+		'h1',
+		'h2',
+		'h3',
+		'h4',
+		'h5',
+		'h6',
 		'li',
 		'p',
+		'ol',
 		'span',
+		'sub',
+		'sup',
+		'table',
+		'td',
+		'tr',
+		'strong',
 		'ul'
 	);
 
@@ -36,7 +50,7 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_htmlAttributes = array(
+	protected $_allowedAttributes = array(
 		'class',
 		'id'
 	);
@@ -46,7 +60,7 @@ class Html implements FilterInterface
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $html target with html
+	 * @param string $html target html
 	 * @param boolean $filter optional filter nodes
 	 *
 	 * @return string
@@ -57,7 +71,8 @@ class Html implements FilterInterface
 		$charset = Db::getSettings('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
 		$html = html_entity_decode($html, ENT_QUOTES, $charset);
-		$doc = self::_createDocument($html);
+		$doc = $this->_createDocument($html);
+		$doc = $this->_cleanDocument($doc);
 
 		/* filter nodes */
 
@@ -69,17 +84,16 @@ class Html implements FilterInterface
 
 			/* clean tags and attributes */
 
-			$doc = self::_stripTags($doc);
-			$doc = self::_stripAttributes($doc);
+			$doc = $this->_stripTags($doc);
+			$doc = $this->_stripAttributes($doc);
 
 			/* clear errors */
 
 			libxml_clear_errors();
 		}
 
-		/* clean document */
+		/* collect output */
 
-		$doc = self::_cleanDocument($doc);
 		$output = trim($doc->saveHTML());
 		return $output;
 	}
@@ -89,7 +103,7 @@ class Html implements FilterInterface
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $html target with html
+	 * @param string $html target html
 	 *
 	 * @return DOMDocument
 	 */
@@ -106,7 +120,7 @@ class Html implements FilterInterface
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param DOMDocument $doc target with document
+	 * @param DOMDocument $doc target document
 	 *
 	 * @return DOMDocument
 	 */
@@ -121,7 +135,7 @@ class Html implements FilterInterface
 
 			$doc->removeChild($doc->firstChild);
 
-			/* remove html wrapper */
+			/* remove tags */
 
 			if (isset($doc->firstChild->firstChild->firstChild) && $doc->firstChild->firstChild->tagName === 'body')
 			{
@@ -136,14 +150,28 @@ class Html implements FilterInterface
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param DOMDocument $doc target with document
+	 * @param object $node target node
 	 *
-	 * @return DOMDocument
+	 * @return object
 	 */
 
-	protected function _stripTags(DOMDocument $doc)
+	protected function _stripTags($node = null)
 	{
-		return $doc;
+		foreach ($node->childNodes as $childNode)
+		{
+			if ($childNode->nodeType === XML_ELEMENT_NODE)
+			{
+				if (!in_array($childNode->tagName, $this->_allowedTags))
+				{
+					$childNode->parentNode->removeChild($childNode);
+				}
+				if ($childNode->hasChildNodes())
+				{
+					$this->_stripTags($childNode);
+				}
+			}
+		}
+		return $node;
 	}
 
 	/**
@@ -151,13 +179,13 @@ class Html implements FilterInterface
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param DOMDocument $doc target with document
+	 * @param object $node target node
 	 *
-	 * @return DOMDocument
+	 * @return object
 	 */
 
-	protected function _stripAttributes(DOMDocument $doc)
+	protected function _stripAttributes($node = null)
 	{
-		return $doc;
+		return $node;
 	}
 }
