@@ -193,11 +193,14 @@ function install_cli($argv = array())
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
 	$output = '';
-	$typeArray = array(
-		'mysql',
-		'pgsql',
-		'sqlite'
-	);
+    $typeArray = array();
+    foreach (PDO::getAvailableDrivers() as $driver)
+    {
+        if (is_dir('database/' . $driver))
+        {
+            $typeArray[$driver] = $driver;
+        }
+    };
 	$dbArray = array(
 		'--db-name',
 		'--db-user',

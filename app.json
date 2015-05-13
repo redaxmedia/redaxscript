@@ -9,17 +9,6 @@
 	],
 	"env":
 	{
-		"BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
-		"dbType": "pgsql",
-		"dbHost": "",
-		"dbName": "",
-		"dbUser": "",
-		"dbPassword": "",
-		"dbPrefix": "rs_",
-		"dbSalt": ""
-	},
-	"scripts":
-	{
-		"postdeploy": "php install.php pgsql"
+		"BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php"
 	}
 }
