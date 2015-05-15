@@ -52,6 +52,7 @@ class Html implements FilterInterface
 		'th',
 		'tr',
 		'strong',
+		'u',
 		'ul',
 		'wbr'
 	);
