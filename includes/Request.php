@@ -30,11 +30,11 @@ class Request extends Singleton
 	public static function init()
 	{
 		self::$_requestArray = array(
-			'server' => $_SERVER,
-			'get' => $_GET,
-			'post' => $_POST,
-			'session' => $_SESSION,
-			'cookie' => $_COOKIE
+			'server' => isset($_SERVER) ? $_SERVER : array(),
+			'get' => isset($_GET) ? $_GET : array(),
+			'post' => isset($_POST) ? $_POST : array(),
+			'session' => isset($_SESSION) ? $_SESSION : array(),
+			'cookie' => isset($_COOKIE) ? $_COOKIE : array()
 		);
 	}
 
