@@ -1,9 +1,10 @@
-{
-	"dbType": "",
-	"dbHost": "",
-	"dbName": "",
-	"dbUser": "",
-	"dbPassword": "",
-	"dbPrefix": "",
-	"dbSalt": ""
-}
+<?php
+return array(
+	'dbType' => '',
+	'dbHost' => '',
+	'dbName' => '',
+	'dbUser' => '',
+	'dbPassword' => '',
+	'dbPrefix' => '',
+	'dbSalt' => ''
+);

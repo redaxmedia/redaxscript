@@ -125,8 +125,6 @@ class ConfigTest extends TestCase
 	{
 		/* setup */
 
-		Stream::setup('root');
-		file_put_contents(Stream::url('root/config.php'), json_encode($this->_config->get()));
 		$this->_config->init(Stream::url('root/config.php'));
 
 		/* actual */

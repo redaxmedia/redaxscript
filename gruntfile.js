@@ -99,13 +99,6 @@ module.exports = function (grunt)
 					'.tocgen'
 				]
 			},
-			config:
-			{
-				src:
-				[
-					'config.php'
-				]
-			},
 			languages:
 			{
 				src:

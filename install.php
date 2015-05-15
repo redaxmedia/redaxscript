@@ -13,7 +13,7 @@ include_once('includes/Config.php');
 
 if (is_array($argv))
 {
-	error_reporting(E_ERROR);
+	error_reporting(E_ERROR || E_PARSE);
 
 	/* install cli */
 

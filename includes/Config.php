@@ -4,7 +4,7 @@ namespace Redaxscript;
 /**
  * parent class to store database config
  *
- * @since 2.2.0
+ * @since 2.4.0
  *
  * @package Redaxscript
  * @category Config
@@ -31,8 +31,7 @@ class Config extends Singleton
 
 	public static function init($file = 'config.php')
 	{
-		$contents = file_get_contents($file);
-		$configArray= json_decode($contents, true);
+		$configArray = include($file);
 		if (is_array($configArray))
 		{
 			self::$_configArray = $configArray;
@@ -101,17 +100,18 @@ class Config extends Singleton
 
 		/* process config */
 
-		$contents = '{' . PHP_EOL;
+		$contents = '<?php' . PHP_EOL;
+		$contents .= 'return array(' . PHP_EOL;
 		foreach (self::$_configArray as $key => $value)
 		{
-			$contents .= '	"' . $key . '": "' . $value . '"';
+			$contents .= '	\'' . $key . '\' => \'' . $value . '\'';
 			if ($key !== $lastKey)
 			{
 				$contents .= ',';
 			}
 			$contents .= PHP_EOL;
 		}
-		$contents .= '}';
+		$contents .= ');';
 
 		/* write to file */
 
