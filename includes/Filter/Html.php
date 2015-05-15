@@ -23,7 +23,12 @@ class Html implements FilterInterface
 	 */
 
 	protected $_allowedTags = array(
+		'br',
+		'caption',
 		'div',
+		'dd',
+		'dl',
+		'dt',
 		'em',
 		'h1',
 		'h2',
@@ -33,15 +38,22 @@ class Html implements FilterInterface
 		'h6',
 		'li',
 		'p',
+		'pre',
 		'ol',
 		'span',
+		'strike',
+		'strong',
 		'sub',
 		'sup',
 		'table',
+		'tbody',
+		'tfoot',
 		'td',
+		'th',
 		'tr',
 		'strong',
-		'ul'
+		'ul',
+		'wbr'
 	);
 
 	/**
@@ -52,7 +64,10 @@ class Html implements FilterInterface
 
 	protected $_allowedAttributes = array(
 		'class',
-		'id'
+		'colspan',
+		'id',
+		'rowspan',
+		'title'
 	);
 
 	/**
@@ -82,7 +97,7 @@ class Html implements FilterInterface
 
 			libxml_use_internal_errors(true);
 
-			/* clean tags and attributes */
+			/* strip tags and attributes */
 
 			$doc = $this->_stripTags($doc);
 			$doc = $this->_stripAttributes($doc);
@@ -165,6 +180,9 @@ class Html implements FilterInterface
 				{
 					$childNode->parentNode->removeChild($childNode);
 				}
+
+				/* strip children tags */
+
 				if ($childNode->hasChildNodes())
 				{
 					$this->_stripTags($childNode);
@@ -186,6 +204,26 @@ class Html implements FilterInterface
 
 	protected function _stripAttributes($node = null)
 	{
+		foreach ($node->childNodes as $childNode)
+		{
+			if ($childNode->nodeType === XML_ELEMENT_NODE)
+			{
+				foreach ($childNode->attributes as $attributeName => $attributeNode)
+				{
+					if (!in_array($attributeName, $this->_allowedAttributes))
+					{
+						$childNode->removeAttribute($attributeName);
+					}
+				}
+
+				/* strip children attributes */
+
+				if ($childNode->hasChildNodes())
+				{
+					$this->_stripAttributes($childNode);
+				}
+			}
+		}
 		return $node;
 	}
 }

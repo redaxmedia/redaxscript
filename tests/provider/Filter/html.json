@@ -8,8 +8,20 @@
 		"<span></span>"
 	],
 	[
+		"<p><div>test</div></p>",
+		"<p></p>"
+	],
+	[
 		"<ul><li>test</li></ul>",
 		"<ul><li>test</li></ul>"
+	],
+	[
+		"&lt;span&gt;test&lt;/span&gt;",
+		"<span>test</span>"
+	],
+	[
+		"<script>alert('test')</script>",
+		""
 	],
 	[
 		"<iframe src=\"test\"></iframe>",
@@ -18,5 +30,13 @@
 	[
 		"<div><div><script src=\"test\"></script></div></div>",
 		"<div><div></div></div>"
+	],
+	[
+		"<span src=\"test\">",
+		"<span></span>"
+	],
+	[
+		"<div><div><span href=\"test\"></div></div>",
+		"<div><div><span></span></div></div>"
 	]
 ]
