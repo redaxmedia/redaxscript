@@ -85,7 +85,6 @@ class Html implements FilterInterface
 	{
 		$charset = Db::getSettings('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
-		$html = html_entity_decode($html, ENT_QUOTES, $charset);
 		$doc = $this->_createDocument($html);
 		$doc = $this->_cleanDocument($doc);
 

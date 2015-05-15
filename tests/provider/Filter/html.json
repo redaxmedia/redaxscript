@@ -16,10 +16,6 @@
 		"<ul><li>test</li></ul>"
 	],
 	[
-		"&lt;span&gt;test&lt;/span&gt;",
-		"<span>test</span>"
-	],
-	[
 		"<script>alert('test')</script>",
 		""
 	],
