@@ -7,5 +7,5 @@ return array(
 	'dbUser' => $dbUrl['user'],
 	'dbPassword' => $dbUrl['pass'],
 	'dbPrefix' => 'rs_',
-	'dbSalt' => ''
+	'dbSalt' => 'b66e42b397a215cec2ecb3d7a5bdae1b6738abc9'
 );
