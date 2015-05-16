@@ -56,27 +56,6 @@ class ConfigTest extends TestCase
 		$this->assertEquals('localhost', $actual);
 	}
 
-    /**
-     * testGetEnv
-     *
-     * @since 2.4.0
-     */
-
-    public function testGetEnv()
-    {
-        /* setup */
-
-        putenv('dbHost=localhost');
-
-        /* actual */
-
-        $actual = $this->_config->get('dbHost');
-
-        /* compare */
-
-        $this->assertEquals('localhost', $actual);
-    }
-
 	/**
 	 * testGetAll
 	 *
