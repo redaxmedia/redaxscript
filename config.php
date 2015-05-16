@@ -6,6 +6,6 @@ return array(
 	'dbName' => trim($dbUrl['path'], '/'),
 	'dbUser' => $dbUrl['user'],
 	'dbPassword' => $dbUrl['pass'],
-	'dbPrefix' => 'rxs_',
+	'dbPrefix' => 'rs_',
 	'dbSalt' => ''
 );
