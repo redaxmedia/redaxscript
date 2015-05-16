@@ -13,8 +13,6 @@ include_once('includes/Config.php');
 
 if (is_array($argv))
 {
-	error_reporting(E_ERROR || E_PARSE);
-
 	/* install cli */
 
 	install_cli($argv);
@@ -201,7 +199,9 @@ function install_cli($argv = array())
             $typeArray[$driver] = $driver;
         }
     };
+	$dbUrlOption = '--db-url';
 	$dbArray = array(
+		'--db-host',
 		'--db-name',
 		'--db-user',
 		'--db-password',
@@ -215,43 +215,56 @@ function install_cli($argv = array())
 		'--admin-email'
 	);
 
-	/* type and host */
+	/* type */
 
 	if (in_array($argv[1], $typeArray))
 	{
 		$d_type = $argv[1];
 		$output .= 'Type: ' . $argv[1] . PHP_EOL;
 	}
-	if (isset($argv[2]))
+
+	/* parse url options */
+
+	if ($argv[2] === $dbUrlOption)
 	{
-		$d_host = $argv[2];
-		$output .= 'Host: ' . $argv[2] . PHP_EOL;
+		$dbUrl = parse_url(getenv($argv[3]));
+		$d_host = $dbUrl['host'];
+		$d_name = trim($dbUrl['path'], '/');
+		$d_user = $dbUrl['user'];
+		$d_password = $dbUrl['pass'];
+		$output .= 'Database host: ' . $d_host . PHP_EOL;
+		$output .= 'Database name: ' . $d_name . PHP_EOL;
+		$output .= 'Database user: ' . $d_user . PHP_EOL;
+		$output .= 'Database password: ' . $d_password . PHP_EOL;
 	}
 
-	/* handle options */
+	/* handle db options */
 
 	foreach ($argv as $key => $value)
 	{
-		if ($key > 2)
+		if (in_array($value, $dbArray))
 		{
-			if (in_array($value, $dbArray))
-			{
-				$suffix = str_replace('--db-', 'd_', $value);
-				$$suffix = $argv[$key + 1];
-				$output .=  str_replace('--db-', 'Database ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
-			}
-			else if (in_array($value, $adminArray))
-			{
-				$suffix = str_replace('--admin-', '', $value);
-				$$suffix = $argv[$key + 1];
-				$output .=  str_replace('--admin-', 'Admin ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
-			}
+			$suffix = str_replace('--db-', 'd_', $value);
+			$$suffix = $argv[$key + 1];
+			$output .=  str_replace('--db-', 'Database ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+		}
+	}
+
+	/* handle admin options */
+
+	foreach ($argv as $key => $value)
+	{
+		if (in_array($value, $adminArray))
+		{
+			$suffix = str_replace('--admin-', '', $value);
+			$$suffix = $argv[$key + 1];
+			$output .=  str_replace('--admin-', 'Admin ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
 		}
 	}
 
 	/* write config */
 
-	if (isset($argv[1]) && isset($argv[2]))
+	if (isset($argv[1]))
 	{
 		write_config();
 	}
