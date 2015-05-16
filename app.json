@@ -1,6 +1,7 @@
 {
 	"name": "Redaxscript",
 	"description": "Ultra lightweight Content Management System",
+	"logo": "https://rawgit.com/redaxmedia/redaxscript/master/templates/default/images/redaxscript.svg",
 	"website": "http://redaxscript.com",
 	"addons":
 	[
