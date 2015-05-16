@@ -235,7 +235,7 @@ function install_cli($argv = array())
 		$output .= 'Database host: ' . $d_host . PHP_EOL;
 		$output .= 'Database name: ' . $d_name . PHP_EOL;
 		$output .= 'Database user: ' . $d_user . PHP_EOL;
-		$output .= 'Database password: ' . $d_password . PHP_EOL;
+		$output .= 'Database password: ' . str_repeat('*', strlen($d_password)) . PHP_EOL;
 	}
 
 	/* handle db options */
