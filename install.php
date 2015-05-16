@@ -191,14 +191,14 @@ function install_cli($argv = array())
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
 	$output = '';
-    $typeArray = array();
-    foreach (PDO::getAvailableDrivers() as $driver)
-    {
-        if (is_dir('database/' . $driver))
-        {
-            $typeArray[$driver] = $driver;
-        }
-    };
+	$typeArray = array();
+	foreach (PDO::getAvailableDrivers() as $driver)
+	{
+		if (is_dir('database/' . $driver))
+		{
+			$typeArray[$driver] = $driver;
+		}
+	};
 	$dbUrlOption = '--db-url';
 	$dbArray = array(
 		'--db-host',
@@ -246,7 +246,7 @@ function install_cli($argv = array())
 		{
 			$suffix = str_replace('--db-', 'd_', $value);
 			$$suffix = $argv[$key + 1];
-			$output .=  str_replace('--db-', 'Database ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+			$output .=  str_replace('--db-', 'Database ', $value) . ': ' . ($value === '--db-password' ? str_repeat('*', strlen($argv[$key + 1])) : $argv[$key + 1])  . PHP_EOL;
 		}
 	}
 
@@ -258,7 +258,7 @@ function install_cli($argv = array())
 		{
 			$suffix = str_replace('--admin-', '', $value);
 			$$suffix = $argv[$key + 1];
-			$output .=  str_replace('--admin-', 'Admin ', $value) . ': ' . $argv[$key + 1] . PHP_EOL;
+			$output .=  str_replace('--admin-', 'Admin ', $value) . ': ' . ($value === '--admin-password' ? str_repeat('*', strlen($argv[$key + 1])) : $argv[$key + 1]) . PHP_EOL;
 		}
 	}
 
