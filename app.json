@@ -15,8 +15,7 @@
 	{
 		"postdeploy":
 		[
-			"php install.php pgsql --db-url DATABASE_URL --db-prefix rs_ --db-salt b66e42b397a215cec2ecb3d7a5bdae1b6738abc9 --admin-name Admin --admin-user admin --admin-password admin --admin-email admin@localhost",
-			"php -r \"copy('app_config.php', 'config.php');\""
+			"php install.php pgsql --db-url DATABASE_URL --db-prefix rs_ --db-salt b66e42b397a215cec2ecb3d7a5bdae1b6738abc9 --admin-name Admin --admin-user admin --admin-password admin --admin-email admin@localhost && php -r \"copy('app_config.php', 'config.php');\""
 		]
 	}
 }
