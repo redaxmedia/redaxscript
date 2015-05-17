@@ -48,6 +48,7 @@ class Demo extends Config
 
 			if (Registry::get('secondParameter') === 'login')
 			{
+				Registry::set('title', Language::get('login'));
 				Registry::set('centerBreak', true);
 			}
 
