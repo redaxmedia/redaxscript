@@ -3,6 +3,7 @@ namespace Redaxscript;
 
 use ORM;
 use PDO;
+use PDOException;
 
 /**
  * children class to handle the database
@@ -116,16 +117,22 @@ class Db extends ORM
 
 		/* has connection */
 
-		if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
+		try
 		{
-			$output = 1;
-
-			/* has tables */
-
-			if (self::countTablePrefix() > 7)
+			if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 			{
-				$output = 2;
+				$output = 1;
+
+				/* has tables */
+
+				if (self::countTablePrefix() > 7)
+				{
+					$output = 2;
+				}
 			}
+		}
+		catch (PDOException $exception)
+		{
 		}
 		return $output;
 	}
