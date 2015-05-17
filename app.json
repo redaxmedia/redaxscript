@@ -3,6 +3,13 @@
 	"description": "Ultra lightweight Content Management System",
 	"logo": "https://rawgit.com/redaxmedia/redaxscript/master/templates/default/images/redaxscript.svg",
 	"website": "http://redaxscript.com",
+	"keywords":
+	[
+		"cms",
+		"content",
+		"management",
+		"system"
+	],
 	"addons":
 	[
 		"heroku-postgresql:hobby-dev"
