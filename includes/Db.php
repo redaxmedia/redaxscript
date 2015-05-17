@@ -133,6 +133,7 @@ class Db extends ORM
 		}
 		catch (PDOException $exception)
 		{
+			$output = -1;
 		}
 		return $output;
 	}
