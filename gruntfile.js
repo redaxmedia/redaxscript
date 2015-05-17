@@ -83,7 +83,6 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'app.json',
 					'composer.json',
 					'package.json'
 				]
