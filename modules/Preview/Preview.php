@@ -31,7 +31,7 @@ class Preview extends Module
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '2.4.0'
+		'version' => '2.5.0'
 	);
 
 	/**

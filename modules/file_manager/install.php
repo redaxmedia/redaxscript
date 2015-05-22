@@ -20,7 +20,7 @@ function file_manager_install()
 			'alias' => 'file_manager',
 			'author' => 'Redaxmedia',
 			'description' => 'Simple file management',
-			'version' => '2.4.0',
+			'version' => '2.5.0',
 			'access' => '1'
 		))
 		->save();

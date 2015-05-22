@@ -20,7 +20,7 @@ function fb_group_install()
 			'alias' => 'fb_group',
 			'author' => 'Redaxmedia',
 			'description' => 'Integrate a Facebook group',
-			'version' => '2.4.0'
+			'version' => '2.5.0'
 		))
 		->save();
 }

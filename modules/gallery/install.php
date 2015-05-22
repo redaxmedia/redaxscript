@@ -20,7 +20,7 @@ function gallery_install()
 			'alias' => 'gallery',
 			'author' => 'Redaxmedia',
 			'description' => 'Lightbox enhanced image gallery',
-			'version' => '2.4.0'
+			'version' => '2.5.0'
 		))
 		->save();
 }
