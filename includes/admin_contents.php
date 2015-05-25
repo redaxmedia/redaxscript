@@ -554,7 +554,8 @@ function admin_contents_form()
 	{
 		/* templates directory object */
 
-		$templates_directory = new Redaxscript\Directory('templates', array(
+		$templates_directory = new Redaxscript\Directory();
+		$templates_directory->init('templates', array(
 			'admin',
 			'install'
 		));
