@@ -280,6 +280,5 @@
 		{
 			docElement.className += ' no_svg';
 		}
-		return true;
 	}();
 })(document, document.documentElement, window);
