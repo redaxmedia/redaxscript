@@ -36,6 +36,7 @@ function admin_process()
 
 		case 'extras':
 			$title = $r['title'] = clean($_POST['title'], 5);
+			$r['sibling'] = clean($_POST['sibling'], 0);
 			if (TABLE_PARAMETER != 'categories')
 			{
 				$r['headline'] = clean($_POST['headline'], 0);
