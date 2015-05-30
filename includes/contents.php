@@ -19,19 +19,32 @@ function contents()
 	/* query articles */
 
 	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
+	$articles->whereIn('language', array(
+		Redaxscript\Registry::get('language'),
+		''
+	));
 	if (ARTICLE)
 	{
-		$articles->where('id', ARTICLE);
+		/* query sibling collection */
+
+		$sibling = Redaxscript\Db::forTablePrefix('articles')->where('id', ARTICLE)->findOne()->sibling;
+		$sibling_array = Redaxscript\Db::forTablePrefix('articles')->whereIn('sibling', array(
+			ARTICLE,
+			$sibling
+		))->select('id')->findArrayFlat();
+
+		/* process sibling array */
+
+		foreach ($sibling_array as $value)
+		{
+			$id_array[] = $value;
+		}
+		$id_array[] = $sibling;
+		$articles->whereIn('id', $id_array);
 	}
 	else if (CATEGORY)
 	{
-		$articles
-			->where('category', CATEGORY)
-			->whereIn('language', array(
-				Redaxscript\Registry::get('language'),
-				''
-			))
-			->orderGlobal('rank');
+		$articles->where('category', CATEGORY)->orderGlobal('rank');
 
 		/* query result */
 
