@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */extras (
 	text text,
 	language char(3) DEFAULT NULL,
 	date timestamp DEFAULT CURRENT_TIMESTAMP,
-	sibling integer DEFAULT 0,
 	category integer DEFAULT 0,
 	article integer DEFAULT 0,
 	headline integer DEFAULT 1,

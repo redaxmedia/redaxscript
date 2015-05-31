@@ -419,7 +419,6 @@ function admin_contents_form()
 			break;
 		case 'extras':
 			$wording_single = 'extra';
-			$wording_sibling = 'extra_sibling';
 			break;
 		case 'comments':
 			$wording_single = 'comment';
@@ -467,10 +466,10 @@ function admin_contents_form()
 			$email = MY_EMAIL;
 			$code_readonly = ' readonly="readonly"';
 		}
-		$sibling = 0;
 		if (TABLE_PARAMETER == 'categories')
 		{
 			$parent = 0;
+			$sibling = 0;
 		}
 		if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 		{
@@ -479,6 +478,7 @@ function admin_contents_form()
 		}
 		if (TABLE_PARAMETER == 'articles')
 		{
+			$sibling = 0;
 			$infoline = 0;
 			$comments = 0;
 		}
@@ -577,7 +577,7 @@ function admin_contents_form()
 
 	/* build sibling select */
 
-	if (TABLE_PARAMETER != 'comments')
+	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
 		$sibling_array[l('none')] = 0;
 		$sibling_result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();
