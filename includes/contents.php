@@ -23,35 +23,17 @@ function contents()
 		Redaxscript\Registry::get('language'),
 		''
 	));
-	if (ARTICLE)
+
+	/* handle sibling */
+
+	if (LAST_ID)
 	{
-		$sibling = Redaxscript\Db::forTablePrefix('articles')->where('id', ARTICLE)->findOne()->sibling;
+		$sibling = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('id', LAST_ID)->findOne()->sibling;
 
 		/* query sibling collection */
 
 		$sibling_array = Redaxscript\Db::forTablePrefix('articles')->whereIn('sibling', array(
-			ARTICLE,
-			$sibling > 0 ? $sibling : null
-		))->select('id')->findArrayFlat();
-
-		/* process sibling array */
-
-		foreach ($sibling_array as $value)
-		{
-			$id_array[] = $value;
-		}
-		$id_array[] = $sibling;
-		$id_array[] = ARTICLE;
-		$articles->whereIn('id', $id_array);
-	}
-	else if (CATEGORY)
-	{
-		$sibling = Redaxscript\Db::forTablePrefix('categories')->where('id', CATEGORY)->findOne()->sibling;
-
-		/* query sibling collection */
-
-		$sibling_array = Redaxscript\Db::forTablePrefix('categories')->whereIn('sibling', array(
-			CATEGORY,
+			LAST_ID,
 			$sibling > 0 ? $sibling : null
 		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
 
@@ -61,6 +43,21 @@ function contents()
 		{
 			$id_array[] = $value;
 		}
+	}
+
+	/* handle article */
+
+	if (ARTICLE)
+	{
+		$id_array[] = $sibling;
+		$id_array[] = ARTICLE;
+		$articles->whereIn('id', $id_array);
+	}
+
+	/* else handle category */
+
+	else if (CATEGORY)
+	{
 		if (empty($id_array))
 		{
 			if ($sibling > 0)
