@@ -468,8 +468,8 @@ function admin_contents_form()
 		}
 		if (TABLE_PARAMETER == 'categories')
 		{
-			$parent = 0;
 			$sibling = 0;
+			$parent = 0;
 		}
 		if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 		{
