@@ -210,8 +210,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'templates/*/scripts/*.js',
-					'templates/*/styles/*.css',
-					'templates/*/*.phhtml'
+					'templates/*/styles/*.css'
 				]
 			},
 			tests:
@@ -225,7 +224,11 @@ module.exports = function (grunt)
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
-				standard: 'ruleset.xml'
+				standard: 'ruleset.xml',
+				callback: function (error)
+				{
+					grunt.option('force', error ? true : false);
+				}
 			}
 		},
 		qunit:
