@@ -225,9 +225,9 @@ module.exports = function (grunt)
 			{
 				bin: 'vendor/bin/phpcs',
 				standard: 'ruleset.xml',
-				callback: function (error)
+				callback: function (error, stdout, stderr)
 				{
-					grunt.option('force', error ? true : false);
+					grunt.option('force', stderr.indexOf('PHP Parse error') > -1);
 				}
 			}
 		},
