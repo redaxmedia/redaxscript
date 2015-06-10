@@ -30,7 +30,7 @@
 				type = that.val(),
 				host = fieldHost.attr('data-' + type) || fieldHost.attr('data-default');
 
-            fieldHost.val(host);
+			fieldHost.val(host);
 
 			/* hide related */
 
