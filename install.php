@@ -146,7 +146,7 @@ function install_form()
 	{
 		$output .= '<li>' . select_element('type', 'field_select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
 	}
-	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite' . '"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('password', 'd_password', 'js_unmask_password field_text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
