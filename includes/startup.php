@@ -346,7 +346,7 @@ function startup()
 	/* future update */
 
 	define('UPDATE', $_SESSION[ROOT . '/update']);
-	if (UPDATE == '' && Redaxscript\Registry::get('dbStatus') === 2)
+	if (UPDATE == '' && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
 	{
 		future_update('articles');
 		future_update('comments');

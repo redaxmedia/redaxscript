@@ -19,14 +19,18 @@
 	{
 		var fieldType = $('#type'),
 			fieldRelated = $('#d_name, #d_user, #d_password'),
-			fieldRequired = $('#d_name, #d_user');
+			fieldRequired = $('#d_name, #d_user'),
+			fieldHost = $('#d_host');
 
 		/* listen for change */
 
 		fieldType.on('change', function ()
 		{
 			var that = $(this),
-				type = that.val();
+				type = that.val(),
+				host = fieldHost.attr('data-' + type) || fieldHost.attr('data-default');
+
+            fieldHost.val(host);
 
 			/* hide related */
 
