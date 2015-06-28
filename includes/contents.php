@@ -145,7 +145,7 @@ function contents()
 				$parser->init($text, $route, array(
 					'className' => array(
 						'break' => 'link_read_more',
-						'code' => 'box_code'
+						'quote' => 'box_code'
 					)
 				));
 
@@ -335,7 +335,7 @@ function extras($filter = '')
 					$parser->init($text, $route, array(
 						'className' => array(
 							'break' => 'link_read_more',
-							'code' => 'box_code'
+							'quote' => 'box_code'
 						)
 					));
 

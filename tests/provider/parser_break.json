@@ -1,0 +1,22 @@
+[
+	[
+		{
+			"lastTable": "categories",
+			"fullRoute": "",
+			"firstParameter": "hello"
+		},
+		"hello<break> world",
+		"hello/world",
+		"hello<a href=\"hello/world\" class=\"link-break\" title=\"Read more\">Read more</a>"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"fullRoute": "hello/world",
+			"firstParameter": "hello"
+		},
+		"hello<break> world",
+		"hello/world",
+		"hello world"
+	]
+]

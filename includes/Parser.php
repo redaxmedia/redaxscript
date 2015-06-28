@@ -55,8 +55,8 @@ class Parser
 
 	protected $_options = array(
 		'className' => array(
-			'break' => 'link-read-more',
-			'quote' => 'box-quote'
+			'break' => 'link-break',
+			'quote' => 'code-quote'
 		)
 	);
 
@@ -81,6 +81,14 @@ class Parser
 		),
 		'quote' => array(
 			'method' => '_parseQuote',
+			'position' => ''
+		),
+		'language' => array(
+			'method' => '_parseLanguage',
+			'position' => ''
+		),
+		'registry' => array(
+			'method' => '_parseRegistry',
 			'position' => ''
 		),
 		'function' => array(
@@ -241,7 +249,7 @@ class Parser
 		), $this->_delimiter, $input);
 		$parts = array_filter(explode($this->_delimiter, $output));
 		$preElement = new Element('pre', array(
-			'class' => $this->_options['className']['code']
+			'class' => $this->_options['className']['quote']
 		));
 
 		/* parse needed parts */
@@ -258,7 +266,69 @@ class Parser
 	}
 
 	/**
-	 * parse the function tag pair
+	 * parse the language tag
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input content be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseLanguage($input = null)
+	{
+		$output = str_replace(array(
+			'<language>',
+			'</language>'
+		), $this->_delimiter, $input);
+		$parts = array_filter(explode($this->_delimiter, $output));
+
+		/* parse needed parts */
+
+		foreach ($parts as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$parts[$key] = $this->_language->get($value);
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
+	 * parse the registry tag
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input content be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseRegistry($input = null)
+	{
+		$output = str_replace(array(
+			'<registry>',
+			'</registry>'
+		), $this->_delimiter, $input);
+		$parts = array_filter(explode($this->_delimiter, $output));
+
+		/* parse needed parts */
+
+		foreach ($parts as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$parts[$key] = $this->_registry->get($value);
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
+	 * parse the function tag
 	 *
 	 * @since 2.0.0
 	 *
