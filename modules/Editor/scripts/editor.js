@@ -251,7 +251,7 @@
 
 			editor.insertReadmore = function ()
 			{
-				editor.insertHTML('<readmore />');
+				editor.insertHTML('<readmore>');
 			};
 
 			/* @section 1.8 format */
