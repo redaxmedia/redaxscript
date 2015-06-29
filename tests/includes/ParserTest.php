@@ -45,29 +45,29 @@ class ParserTest extends TestCase
 	}
 
 	/**
-	 * providerBreak
+	 * providerReadmore
 	 *
 	 * @since 2.5.0
 	 *
 	 * @return array
 	 */
 
-	public function providerBreak()
+	public function providerReadmore()
 	{
-		return $this->getProvider('tests/provider/parser_break.json');
+		return $this->getProvider('tests/provider/parser_readmore.json');
 	}
 
 	/**
-	 * providerQuote
+	 * providerCodequote
 	 *
 	 * @since 2.5.0
 	 *
 	 * @return array
 	 */
 
-	public function providerQuote()
+	public function providerCodequote()
 	{
-		return $this->getProvider('tests/provider/parser_quote.json');
+		return $this->getProvider('tests/provider/parser_codequote.json');
 	}
 
 	/**
@@ -123,7 +123,7 @@ class ParserTest extends TestCase
 	}
 
 	/**
-	 * testBreak
+	 * testReadmore
 	 *
 	 * @since 2.5.0
 	 *
@@ -132,10 +132,10 @@ class ParserTest extends TestCase
 	 * @param string $route
 	 * @param string $expect
 	 *
-	 * @dataProvider providerBreak
+	 * @dataProvider providerReadmore
 	 */
 
-	public function testBreak($registry = array(), $input = null, $route = null, $expect = null)
+	public function testReadmore($registry = array(), $input = null, $route = null, $expect = null)
 	{
 		/* setup */
 
@@ -153,17 +153,17 @@ class ParserTest extends TestCase
 	}
 
 	/**
-	 * testQuote
+	 * testCodeQuote
 	 *
 	 * @since 2.5.0
 	 *
 	 * @param string $input
 	 * @param string $expect
 	 *
-	 * @dataProvider providerQuote
+	 * @dataProvider providerCodequote
 	 */
 
-	public function testQuote($input = null, $expect = null)
+	public function testCodequote($input = null, $expect = null)
 	{
 		/* setup */
 
