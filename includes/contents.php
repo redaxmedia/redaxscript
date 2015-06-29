@@ -144,8 +144,8 @@ function contents()
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				$parser->init($text, $route, array(
 					'className' => array(
-						'break' => 'link_read_more',
-						'quote' => 'box_code'
+						'readmore' => 'link_read_more',
+						'codequote' => 'box_code'
 					)
 				));
 
@@ -334,8 +334,8 @@ function extras($filter = '')
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					$parser->init($text, $route, array(
 						'className' => array(
-							'break' => 'link_read_more',
-							'quote' => 'box_code'
+							'readmore' => 'link_read_more',
+							'codequote' => 'box_code'
 						)
 					));
 

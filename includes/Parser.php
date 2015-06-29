@@ -55,8 +55,8 @@ class Parser
 
 	protected $_options = array(
 		'className' => array(
-			'break' => 'link-break',
-			'quote' => 'code-quote'
+			'readmore' => 'link-readmore',
+			'codequote' => 'code-quote'
 		)
 	);
 

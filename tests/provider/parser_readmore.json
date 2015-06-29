@@ -7,7 +7,7 @@
 		},
 		"hello<readmore /> world",
 		"hello/world",
-		"hello<a href=\"hello/world\" class=\"link-break\" title=\"Read more\">Read more</a>"
+		"hello<a href=\"hello/world\" class=\"link-readmore\" title=\"Read more\">Read more</a>"
 	],
 	[
 		{
