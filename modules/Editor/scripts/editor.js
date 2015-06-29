@@ -237,21 +237,21 @@
 				}
 			};
 
-			/* @section 1.6 insert quote */
+			/* @section 1.6 insert codequote */
 
-			editor.insertQuote = function ()
+			editor.insertCodequote = function ()
 			{
 				if (editor.checkSelection())
 				{
-					editor.insertHTML('<quote>' + editor.select() + '</quote>');
+					editor.insertHTML('<codequote>' + editor.select() + '</codequote>');
 				}
 			};
 
-			/* @section 1.7 insert break */
+			/* @section 1.7 insert readmore */
 
-			editor.insertBreak = function ()
+			editor.insertReadmore = function ()
 			{
-				editor.insertHTML('<break></break>');
+				editor.insertHTML('<readmore />');
 			};
 
 			/* @section 1.8 format */

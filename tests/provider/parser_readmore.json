@@ -5,7 +5,7 @@
 			"fullRoute": "",
 			"firstParameter": "hello"
 		},
-		"hello<readmore> world",
+		"hello<readmore /> world",
 		"hello/world",
 		"hello<a href=\"hello/world\" class=\"link-break\" title=\"Read more\">Read more</a>"
 	],
@@ -15,7 +15,7 @@
 			"fullRoute": "hello/world",
 			"firstParameter": "hello"
 		},
-		"hello<readmore> world",
+		"hello<readmore /> world",
 		"hello/world",
 		"hello world"
 	]

@@ -79,7 +79,7 @@ class Parser
 			'method' => '_parseReadmore',
 			'position' => '',
 			'search' => array(
-				'<readmore>'
+				'<readmore />'
 			)
 		),
 		'codequote' => array(

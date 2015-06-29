@@ -26,9 +26,9 @@
 		"cut": "Cắt",
 		"copy": "Sao chép",
 		"paste": "Dán",
-		"insert_document_break": "Chèn ngắt quãng tài liệu",
-		"insert_code_quote": "Chèn đoạn mã nguồn",
-		"insert_php_function": "Chèn hàm PHP",
+		"insert_readmore": "Chèn ngắt quãng tài liệu",
+		"insert_codequote": "Chèn đoạn mã nguồn",
+		"insert_function": "Chèn hàm PHP",
 		"remove_format": "Loại bỏ định dạng",
 		"select_text_first": "Bạn phải chọn một đoạn văn bản trước",
 		"browser_support_no": "Trình duyệt của bạn không hỗ trợ tính năng này"

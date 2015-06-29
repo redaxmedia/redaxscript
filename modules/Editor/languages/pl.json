@@ -26,9 +26,9 @@
 		"cut": "Wytnij",
 		"copy": "Kopiuj",
 		"paste": "Wklej",
-		"insert_document_break": "Wstaw łamanie strony",
-		"insert_code_quote": "Wstaw znaczniki code",
-		"insert_php_function": "Wstaw funkcję PHP",
+		"insert_readmore": "Wstaw łamanie strony",
+		"insert_codequote": "Wstaw znaczniki code",
+		"insert_function": "Wstaw funkcję PHP",
 		"remove_format": "Usuń formatowanie",
 		"select_text_first": "Najpierw musisz zaznaczyć tekst",
 		"browser_support_no": "Twoja przeglądarka nie obsługuje tej funkcji"
