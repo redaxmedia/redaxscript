@@ -419,6 +419,7 @@ function admin_contents_form()
 			break;
 		case 'extras':
 			$wording_single = 'extra';
+			$wording_sibling = 'extra_sibling';
 			break;
 		case 'comments':
 			$wording_single = 'comment';
@@ -481,6 +482,10 @@ function admin_contents_form()
 			$sibling = 0;
 			$infoline = 0;
 			$comments = 0;
+		}
+		if (TABLE_PARAMETER == 'extras')
+		{
+			$sibling = 0;
 		}
 		$status = 1;
 		$rank = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank') + 1;
@@ -577,7 +582,7 @@ function admin_contents_form()
 
 	/* build sibling select */
 
-	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
+	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
 		$sibling_array[l('none')] = 0;
 		$sibling_result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();

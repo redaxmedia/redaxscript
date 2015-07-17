@@ -31,7 +31,6 @@ function admin_process()
 		case 'articles':
 			$r['keywords'] = clean($_POST['keywords'], 5);
 			$r['template'] = clean($_POST['template'], 0);
-			$r['sibling'] = clean($_POST['sibling'], 0);
 
 		/* extras */
 
@@ -41,6 +40,7 @@ function admin_process()
 			{
 				$r['headline'] = clean($_POST['headline'], 0);
 			}
+			$r['sibling'] = clean($_POST['sibling'], 0);
 
 		/* comments */
 
