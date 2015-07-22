@@ -284,25 +284,40 @@ function extras($filter = '')
 			''
 		));
 
-	/* setup filter */
+	/* has filter */
 
-	if (is_numeric($filter))
+	if ($filter)
 	{
-		$extras->where('rank', $filter);
-	}
-	else if ($filter)
-	{
-		$extras->where('alias', $filter);
+		$id = Redaxscript\Db::forTablePrefix('extras')->where('alias', $filter)->findOne()->id;
+
+		/* handle sibling */
+
+		$sibling = Redaxscript\Db::forTablePrefix('extras')->where('id', $id)->findOne()->sibling;
+
+		/* query sibling collection */
+
+		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling', array(
+			$id,
+			$sibling > 0 ? $sibling : null
+		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+
+		/* process sibling array */
+
+		foreach ($sibling_array as $value)
+		{
+			$id_array[] = $value;
+		}
+		$id_array[] = $sibling;
+		$id_array[] = $id;
 	}
 	else
 	{
-		$extras->where('status', 1);
+		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findArrayFlat();
 	}
-	$extras->orderByAsc('rank');
 
 	/* query result */
 
-	$result = $extras->findArray();
+	$result = $extras->whereIn('id', $id_array)->findArray();
 
 	/* collect output */
 
