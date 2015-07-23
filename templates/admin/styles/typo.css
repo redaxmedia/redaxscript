@@ -16,7 +16,7 @@
 
 /* @section 1. font face */
 
- @font-face
+@font-face
 {
 	font-family: 'icon admin';
 	src: url('templates/admin/fonts/icon.woff') format('woff'), url('templates/admin/fonts/icon.ttf') format('truetype');
