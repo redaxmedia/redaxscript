@@ -26,9 +26,9 @@
 		"cut": "Cortar",
 		"copy": "Copiar",
 		"paste": "Colar",
-		"insert_document_break": "Inserir quebra de página",
-		"insert_code_quote": "Insert code quote",
-		"insert_php_function": "Inserir função PHP",
+		"insert_readmore": "Inserir quebra de página",
+		"insert_codequote": "Insert code quote",
+		"insert_function": "Inserir função PHP",
 		"remove_format": "Remover formatação",
 		"select_text_first": "Você deve selecionar o texto primeiro",
 		"browser_support_no": "O seu navegador não suporta esta função"

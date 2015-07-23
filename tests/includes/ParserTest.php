@@ -45,43 +45,242 @@ class ParserTest extends TestCase
 	}
 
 	/**
-	 * providerParser
+	 * providerReadmore
 	 *
-	 * @since 2.1.0
+	 * @since 2.5.0
 	 *
 	 * @return array
 	 */
 
-	public function providerParser()
+	public function providerReadmore()
 	{
-		return $this->getProvider('tests/provider/parser.json');
+		return $this->getProvider('tests/provider/parser_readmore.json');
 	}
 
 	/**
-	 * testParser
+	 * providerCodequote
 	 *
-	 * @since 2.1.0
+	 * @since 2.5.0
+	 *
+	 * @return array
+	 */
+
+	public function providerCodequote()
+	{
+		return $this->getProvider('tests/provider/parser_codequote.json');
+	}
+
+	/**
+	 * providerLanguage
+	 *
+	 * @since 2.5.0
+	 *
+	 * @return array
+	 */
+
+	public function providerLanguage()
+	{
+		return $this->getProvider('tests/provider/parser_language.json');
+	}
+
+	/**
+	 * providerRegistry
+	 *
+	 * @since 2.5.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRegistry()
+	{
+		return $this->getProvider('tests/provider/parser_registry.json');
+	}
+
+	/**
+	 * providerFunction
+	 *
+	 * @since 2.5.0
+	 *
+	 * @return array
+	 */
+
+	public function providerFunction()
+	{
+		return $this->getProvider('tests/provider/parser_function.json');
+	}
+
+	/**
+	 * providerModule
+	 *
+	 * @since 2.5.0
+	 *
+	 * @return array
+	 */
+
+	public function providerModule()
+	{
+		return $this->getProvider('tests/provider/parser_module.json');
+	}
+
+	/**
+	 * testReadmore
+	 *
+	 * @since 2.5.0
 	 *
 	 * @param array $registry
 	 * @param string $input
 	 * @param string $route
 	 * @param string $expect
 	 *
-	 * @dataProvider providerParser
+	 * @dataProvider providerReadmore
 	 */
 
-	public function testParser($registry = array(), $input = null, $route = null, $expect = null)
+	public function testReadmore($registry = array(), $input = null, $route = null, $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
 		$parser = new Parser($this->_registry, $this->_language);
-		$parser->init($input, $route, array(
-			'className' => array(
-				'break' => 'link-read-more',
-				'code' => 'box-code'
-			)
-		));
+		$parser->init($input, $route);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testCodeQuote
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerCodequote
+	 */
+
+	public function testCodequote($input = null, $expect = null)
+	{
+		/* setup */
+
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testLanguage
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $language
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerLanguage
+	 */
+
+	public function testLanguage($language = null, $input = null, $expect = null)
+	{
+		/* setup */
+
+		$this->_language->init($language);
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testRegistry
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param array $registry
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerRegistry
+	 */
+
+	public function testRegistry($registry = array(), $input = null, $expect = null)
+	{
+		/* setup */
+
+		$this->_registry->init($registry);
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testFunction
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerFunction
+	 */
+
+	public function testFunction($input = null, $expect = null)
+	{
+		/* setup */
+
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testModule
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerModule
+	 */
+
+	public function testModule($input = null, $expect = null)
+	{
+		/* setup */
+
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
 
 		/* actual */
 

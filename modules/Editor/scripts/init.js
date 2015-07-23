@@ -270,22 +270,22 @@ rs.modules.editor =
 			message: rs.language._editor.insert_image,
 			value: ''
 		},
-		insert_break:
+		insert_readmore:
 		{
-			title: rs.language._editor.insert_document_break,
-			method: 'insertBreak'
+			title: rs.language._editor.insert_readmore,
+			method: 'insertReadmore'
 		},
-		insert_quote:
+		insert_codequote:
 		{
-			title: rs.language._editor.insert_code_quote,
-			method: 'insertQuote'
+			title: rs.language._editor.insert_codequote,
+			method: 'insertCodequote'
 		},
 		insert_function:
 		{
-			title: rs.language._editor.insert_php_function,
+			title: rs.language._editor.insert_function,
 			method: 'insert',
 			command: 'insertFunction',
-			message: rs.language._editor.insert_php_function,
+			message: rs.language._editor.insert_function,
 			value: ''
 		},
 		unformat:

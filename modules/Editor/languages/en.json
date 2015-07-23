@@ -26,9 +26,9 @@
 		"cut": "Cut",
 		"copy": "Copy",
 		"paste": "Paste",
-		"insert_document_break": "Insert document break",
-		"insert_code_quote": "Insert code quote",
-		"insert_php_function": "Insert PHP function",
+		"insert_readmore": "Insert document break",
+		"insert_codequote": "Insert code quote",
+		"insert_function": "Insert PHP function",
 		"remove_format": "Remove formatting",
 		"select_text_first": "You have to select the text first",
 		"browser_support_no": "Your browser does not support this function"

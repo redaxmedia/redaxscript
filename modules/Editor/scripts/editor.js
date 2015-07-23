@@ -7,8 +7,8 @@
  *    1.3 action
  *    1.4 insert
  *    1.5 insert html
- *    1.6 insert quote
- *    1.7 insert break
+ *    1.6 insert codequote
+ *    1.7 insert readmore
  *    1.8 format
  *    1.9 toggle
  *    1.10 get selection
@@ -237,21 +237,21 @@
 				}
 			};
 
-			/* @section 1.6 insert quote */
+			/* @section 1.6 insert codequote */
 
-			editor.insertQuote = function ()
+			editor.insertCodequote = function ()
 			{
 				if (editor.checkSelection())
 				{
-					editor.insertHTML('<quote>' + editor.select() + '</quote>');
+					editor.insertHTML('<codequote>' + editor.select() + '</codequote>');
 				}
 			};
 
-			/* @section 1.7 insert break */
+			/* @section 1.7 insert readmore */
 
-			editor.insertBreak = function ()
+			editor.insertReadmore = function ()
 			{
-				editor.insertHTML('<break></break>');
+				editor.insertHTML('<readmore>');
 			};
 
 			/* @section 1.8 format */

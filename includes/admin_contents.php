@@ -411,12 +411,15 @@ function admin_contents_form()
 	{
 		case 'categories':
 			$wording_single = 'category';
+			$wording_sibling = 'category_sibling';
 			break;
 		case 'articles':
 			$wording_single = 'article';
+			$wording_sibling = 'article_sibling';
 			break;
 		case 'extras':
 			$wording_single = 'extra';
+			$wording_sibling = 'extra_sibling';
 			break;
 		case 'comments':
 			$wording_single = 'comment';
@@ -466,6 +469,7 @@ function admin_contents_form()
 		}
 		if (TABLE_PARAMETER == 'categories')
 		{
+			$sibling = 0;
 			$parent = 0;
 		}
 		if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
@@ -475,8 +479,13 @@ function admin_contents_form()
 		}
 		if (TABLE_PARAMETER == 'articles')
 		{
+			$sibling = 0;
 			$infoline = 0;
 			$comments = 0;
+		}
+		if (TABLE_PARAMETER == 'extras')
+		{
+			$sibling = 0;
 		}
 		$status = 1;
 		$rank = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank') + 1;
@@ -554,7 +563,8 @@ function admin_contents_form()
 	{
 		/* templates directory object */
 
-		$templates_directory = new Redaxscript\Directory('templates', array(
+		$templates_directory = new Redaxscript\Directory();
+		$templates_directory->init('templates', array(
 			'admin',
 			'install'
 		));
@@ -570,7 +580,26 @@ function admin_contents_form()
 		$output .= '<li>' . select_element('template', 'field_select_admin', 'template', $template_array, $template, l('template')) . '</li>';
 	}
 
-	/* build category select */
+	/* build sibling select */
+
+	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
+	{
+		$sibling_array[l('none')] = 0;
+		$sibling_result = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->orderByAsc('rank')->findArray();
+		if ($sibling_result)
+		{
+			foreach ($sibling_result as $s)
+			{
+				if (ID_PARAMETER != $s['id'])
+				{
+					$sibling_array[$s['title']] = $s['id'];
+				}
+			}
+		}
+		$output .= '<li>' . select_element('sibling', 'field_select_admin', 'sibling', $sibling_array, $sibling, l($wording_sibling)) . '</li>';
+	}
+
+	/* build category and parent select */
 
 	if (TABLE_PARAMETER != 'comments')
 	{
@@ -633,29 +662,29 @@ function admin_contents_form()
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
 		$output .= '<li>' . select_element('headline', 'field_select_admin', 'headline', array(
-				l('enable') => 1,
-				l('disable') => 0
-			), $headline, l('headline')) . '</li>';
+			l('enable') => 1,
+			l('disable') => 0
+		), $headline, l('headline')) . '</li>';
 	}
 	if (TABLE_PARAMETER == 'articles')
 	{
 		$output .= '<li>' . select_element('infoline', 'field_select_admin', 'infoline', array(
-				l('enable') => 1,
-				l('disable') => 0
-			), $infoline, l('infoline')) . '</li>';
+			l('enable') => 1,
+			l('disable') => 0
+		), $infoline, l('infoline')) . '</li>';
 		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', array(
-				l('enable') => 1,
-				l('freeze') => 2,
-				l('restrict') => 3,
-				l('disable') => 0
-			), $comments, l('comments')) . '</li>';
+			l('enable') => 1,
+			l('freeze') => 2,
+			l('restrict') => 3,
+			l('disable') => 0
+		), $comments, l('comments')) . '</li>';
 	}
 	if ($status != 2)
 	{
 		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
-				l('publish') => 1,
-				l('unpublish') => 0
-			), $status, l('status')) . '</li>';
+			l('publish') => 1,
+			l('unpublish') => 0
+		), $status, l('status')) . '</li>';
 	}
 
 	/* build access select */

@@ -26,7 +26,7 @@ class Test extends Module
 		'alias' => 'Test',
 		'author' => 'Redaxmedia',
 		'description' => 'Made for testing',
-		'version' => '2.4.0'
+		'version' => '2.5.0'
 	);
 
 	/**

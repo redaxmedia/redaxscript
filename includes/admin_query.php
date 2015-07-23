@@ -40,6 +40,7 @@ function admin_process()
 			{
 				$r['headline'] = clean($_POST['headline'], 0);
 			}
+			$r['sibling'] = clean($_POST['sibling'], 0);
 
 		/* comments */
 
@@ -711,7 +712,7 @@ function admin_install()
 
 function admin_delete()
 {
-	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
+	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments' || TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users')
 	{
 		Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)
 			->where('id', ID_PARAMETER)

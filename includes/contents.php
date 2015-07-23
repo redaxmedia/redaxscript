@@ -19,21 +19,59 @@ function contents()
 	/* query articles */
 
 	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
+	$articles->whereIn('language', array(
+		Redaxscript\Registry::get('language'),
+		''
+	));
+
+	/* handle sibling */
+
+	if (LAST_ID)
+	{
+		$sibling = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('id', LAST_ID)->findOne()->sibling;
+
+		/* query sibling collection */
+
+		$sibling_array = Redaxscript\Db::forTablePrefix('articles')->whereIn('sibling', array(
+			LAST_ID,
+			$sibling > 0 ? $sibling : null
+		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+
+		/* process sibling array */
+
+		foreach ($sibling_array as $value)
+		{
+			$id_array[] = $value;
+		}
+	}
+
+	/* handle article */
+
 	if (ARTICLE)
 	{
-		$articles->where('id', ARTICLE);
+		$id_array[] = $sibling;
+		$id_array[] = ARTICLE;
+		$articles->whereIn('id', $id_array);
 	}
+
+	/* else handle category */
+
 	else if (CATEGORY)
 	{
-		$articles
-			->where('category', CATEGORY)
-			->whereIn('language', array(
-				Redaxscript\Registry::get('language'),
-				''
-			))
-			->orderGlobal('rank');
+		if (empty($id_array))
+		{
+			if ($sibling > 0)
+			{
+				$id_array[] = $sibling;
+			}
+			else
+			{
+				$id_array[] = CATEGORY;
+			}
+		}
+		$articles->whereIn('category', $id_array)->orderGlobal('rank');
 
-		/* query result */
+		/* handle sub parameter */
 
 		$result = $articles->findArray();
 		if ($result)
@@ -106,8 +144,8 @@ function contents()
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				$parser->init($text, $route, array(
 					'className' => array(
-						'break' => 'link_read_more',
-						'code' => 'box_code'
+						'readmore' => 'link_read_more',
+						'codequote' => 'box_code'
 					)
 				));
 
@@ -246,25 +284,40 @@ function extras($filter = '')
 			''
 		));
 
-	/* setup filter */
+	/* has filter */
 
-	if (is_numeric($filter))
+	if ($filter)
 	{
-		$extras->where('rank', $filter);
-	}
-	else if ($filter)
-	{
-		$extras->where('alias', $filter);
+		$id = Redaxscript\Db::forTablePrefix('extras')->where('alias', $filter)->findOne()->id;
+
+		/* handle sibling */
+
+		$sibling = Redaxscript\Db::forTablePrefix('extras')->where('id', $id)->findOne()->sibling;
+
+		/* query sibling collection */
+
+		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling', array(
+			$id,
+			$sibling > 0 ? $sibling : null
+		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+
+		/* process sibling array */
+
+		foreach ($sibling_array as $value)
+		{
+			$id_array[] = $value;
+		}
+		$id_array[] = $sibling;
+		$id_array[] = $id;
 	}
 	else
 	{
-		$extras->where('status', 1);
+		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findArrayFlat();
 	}
-	$extras->orderByAsc('rank');
 
 	/* query result */
 
-	$result = $extras->findArray();
+	$result = $extras->whereIn('id', $id_array)->findArray();
 
 	/* collect output */
 
@@ -296,8 +349,8 @@ function extras($filter = '')
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					$parser->init($text, $route, array(
 						'className' => array(
-							'break' => 'link_read_more',
-							'code' => 'box_code'
+							'readmore' => 'link_read_more',
+							'codequote' => 'box_code'
 						)
 					));
 

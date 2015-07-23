@@ -27,7 +27,7 @@ class LazyLoad extends Config
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',
 		'description' => 'Lazy load images',
-		'version' => '2.4.0'
+		'version' => '2.5.0'
 	);
 
 	/**

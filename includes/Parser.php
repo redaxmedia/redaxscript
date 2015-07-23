@@ -55,8 +55,8 @@ class Parser
 
 	protected $_options = array(
 		'className' => array(
-			'break' => 'link-read-more',
-			'quote' => 'box-quote'
+			'readmore' => 'link-readmore',
+			'codequote' => 'code-quote'
 		)
 	);
 
@@ -75,21 +75,52 @@ class Parser
 	 */
 
 	protected $_tags = array(
-		'break' => array(
-			'method' => '_parseBreak',
-			'position' => ''
+		'readmore' => array(
+			'method' => '_parseReadmore',
+			'position' => '',
+			'search' => array(
+				'<readmore>'
+			)
 		),
-		'quote' => array(
-			'method' => '_parseQuote',
-			'position' => ''
+		'codequote' => array(
+			'method' => '_parseCodequote',
+			'position' => '',
+			'search' => array(
+				'<codequote>',
+				'</codequote>'
+			)
+		),
+		'language' => array(
+			'method' => '_parseLanguage',
+			'position' => '',
+			'search' => array(
+				'<language>',
+				'</language>'
+			)
+		),
+		'registry' => array(
+			'method' => '_parseRegistry',
+			'position' => '',
+			'search' => array(
+				'<registry>',
+				'</registry>'
+			)
 		),
 		'function' => array(
 			'method' => '_parseFunction',
-			'position' => ''
+			'position' => '',
+			'search' => array(
+				'<function>',
+				'</function>'
+			)
 		),
 		'module' => array(
 			'method' => '_parseModule',
-			'position' => ''
+			'position' => '',
+			'search' => array(
+				'<module>',
+				'</module>'
+			)
 		)
 	);
 
@@ -185,7 +216,7 @@ class Parser
 	}
 
 	/**
-	 * parse the break tag
+	 * parse the readmore tag
 	 *
 	 * @since 2.0.0
 	 *
@@ -194,37 +225,34 @@ class Parser
 	 * @return string
 	 */
 
-	protected function _parseBreak($input = null)
+	protected function _parseReadmore($input = null)
 	{
 		$aliasValidator = new Validator\Alias();
 		$linkElement = new Element('a');
 
 		/* collect output */
 
-		$output = str_replace(array(
-			'<break>',
-			'</break>'
-		), '', $input);
+		$output = str_replace($this->_tags['readmore']['search'], '', $input);
 		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
-			$output = substr($output, 0, $this->_tags['break']['position']);
+			$output = substr($output, 0, $this->_tags['readmore']['position']);
 
-			/* add read more */
+			/* add link element */
 
 			if ($this->_route)
 			{
 				$output .= $linkElement->attr(array(
 					'href' => $this->_registry->get('rewriteRoute') . $this->_route,
-					'class' => $this->_options['className']['break'],
-					'title' => $this->_language->get('read_more')
-				))->text($this->_language->get('read_more'));
+					'class' => $this->_options['className']['readmore'],
+					'title' => $this->_language->get('readmore')
+				))->text($this->_language->get('readmore'));
 			}
 		}
 		return $output;
 	}
 
 	/**
-	 * parse the quote tag
+	 * parse the codequote tag
 	 *
 	 * @since 2.0.0
 	 *
@@ -233,15 +261,12 @@ class Parser
 	 * @return string
 	 */
 
-	protected function _parseQuote($input = null)
+	protected function _parseCodequote($input = null)
 	{
-		$output = str_replace(array(
-			'<quote>',
-			'</quote>'
-		), $this->_delimiter, $input);
+		$output = str_replace($this->_tags['codequote']['search'], $this->_delimiter, $input);
 		$parts = array_filter(explode($this->_delimiter, $output));
 		$preElement = new Element('pre', array(
-			'class' => $this->_options['className']['code']
+			'class' => $this->_options['className']['codequote']
 		));
 
 		/* parse needed parts */
@@ -258,7 +283,63 @@ class Parser
 	}
 
 	/**
-	 * parse the function tag pair
+	 * parse the language tag
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input content be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseLanguage($input = null)
+	{
+		$output = str_replace($this->_tags['language']['search'], $this->_delimiter, $input);
+		$parts = array_filter(explode($this->_delimiter, $output));
+
+		/* parse needed parts */
+
+		foreach ($parts as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$parts[$key] = $this->_language->get($value);
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
+	 * parse the registry tag
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $input content be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseRegistry($input = null)
+	{
+		$output = str_replace($this->_tags['registry']['search'], $this->_delimiter, $input);
+		$parts = array_filter(explode($this->_delimiter, $output));
+
+		/* parse needed parts */
+
+		foreach ($parts as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$parts[$key] = $this->_registry->get($value);
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
+	 * parse the function tag
 	 *
 	 * @since 2.0.0
 	 *
@@ -269,10 +350,7 @@ class Parser
 
 	protected function _parseFunction($input = null)
 	{
-		$output = str_replace(array(
-			'<function>',
-			'</function>'
-		), $this->_delimiter, $input);
+		$output = str_replace($this->_tags['function']['search'], $this->_delimiter, $input);
 		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */
@@ -325,10 +403,7 @@ class Parser
 	protected function _parseModule($input = null)
 	{
 		$namespace = 'Redaxscript\Modules\\';
-		$output = str_replace(array(
-			'<module>',
-			'</module>'
-		), $this->_delimiter, $input);
+		$output = str_replace($this->_tags['module']['search'], $this->_delimiter, $input);
 		$parts = array_filter(explode($this->_delimiter, $output));
 
 		/* parse needed parts */

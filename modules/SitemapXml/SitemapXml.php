@@ -28,7 +28,7 @@ class SitemapXml extends Module
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap XML',
-		'version' => '2.4.0'
+		'version' => '2.5.0'
 	);
 
 	/**
@@ -75,16 +75,16 @@ class SitemapXml extends Module
 
 		/* collect output */
 
-		$output = '<?xml version="1.0" encoding="' . Db::getSettings('charset') . '"?>';
-		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>';
+		$output = '<?xml version="1.0" encoding="' . Db::getSettings('charset') . '"?>' . PHP_EOL;
+		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>' . PHP_EOL;
 
 		/* process categories */
 
 		foreach ($categories as $value)
 		{
 			$route = $value['parent'] < 1 ? $value['alias'] : build_route('categories', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>';
+			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 
 		/* process articles */
@@ -92,7 +92,7 @@ class SitemapXml extends Module
 		foreach ($articles as $value)
 		{
 			$route = $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>';
+			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 		$output .= '</urlset>';
 		return $output;

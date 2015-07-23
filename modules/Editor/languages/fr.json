@@ -26,9 +26,9 @@
 		"cut": "Couper",
 		"copy": "Copier",
 		"paste": "Coller",
-		"insert_document_break": "Insérer un saut de documents",
-		"insert_code_quote": "Insérer le code citation",
-		"insert_php_function": "Insérer une fonction PHP",
+		"insert_readmore": "Insérer un saut de documents",
+		"insert_codequote": "Insérer le code citation",
+		"insert_function": "Insérer une fonction PHP",
 		"remove_format": "Supprimer le formatage",
 		"select_text_first": "Vous devez sélectionner le texte d'abord",
 		"browser_support_no": "Votre navigateur ne supporte pas cette fonction"
