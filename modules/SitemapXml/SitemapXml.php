@@ -50,7 +50,7 @@ class SitemapXml extends Module
 	/**
 	 * render
 	 *
-	 * @since 2.2.0
+	 * @since 2.5.0
 	 *
 	 * @return string
 	 */
