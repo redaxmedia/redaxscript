@@ -65,6 +65,7 @@ class Db extends ORM
 		$dbName = $config->get('dbName');
 		$dbUser = $config->get('dbUser');
 		$dbPassword = $config->get('dbPassword');
+		$dbSocket = strstr($dbHost, '.sock');
 
 		/* mysql and pgsql */
 
@@ -72,11 +73,11 @@ class Db extends ORM
 		{
 			if ($dbType === 'mysql')
 			{
-				self::configure('connection_string', 'mysql:host=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
+				self::configure('connection_string', 'mysql:' . ($dbSocket ? 'unix_socket' : 'host') . '=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
 			}
 			else
 			{
-				self::configure('connection_string', 'pgsql:host=' . $dbHost . ';dbname=' . $dbName . ';options=--client_encoding=utf8');
+				self::configure('connection_string', 'pgsql:' . ($dbSocket ? 'unix_socket' : 'host') . '=' . $dbHost . ';dbname=' . $dbName . ';options=--client_encoding=utf8');
 			}
 
 			/* username and password */
