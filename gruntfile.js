@@ -514,17 +514,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/editor.zip'
 				}
 			},
-			distModulesFBGroup:
-			{
-				src:
-				[
-					'modules/fb_group/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/fb_group.zip'
-				}
-			},
 			distModulesFeedGenerator:
 			{
 				src:
@@ -578,17 +567,6 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/get_file.zip'
-				}
-			},
-			distModulesGithubTracker:
-			{
-				src:
-				[
-					'modules/github_tracker/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/github_tracker.zip'
 				}
 			},
 			distModulesLazyLoad:
