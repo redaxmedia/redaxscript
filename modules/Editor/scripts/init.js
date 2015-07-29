@@ -64,8 +64,8 @@ rs.modules.editor =
 				'insert_link',
 				'unlink',
 				'insert_image',
-				'insert_break',
-				'insert_quote',
+				'insert_readmore',
+				'insert_codequote',
 				'insert_function',
 				'unformat'
 			],
@@ -270,11 +270,6 @@ rs.modules.editor =
 			message: rs.language._editor.insert_image,
 			value: ''
 		},
-		insert_readmore:
-		{
-			title: rs.language._editor.insert_readmore,
-			method: 'insertReadmore'
-		},
 		insert_codequote:
 		{
 			title: rs.language._editor.insert_codequote,
@@ -287,6 +282,11 @@ rs.modules.editor =
 			command: 'insertFunction',
 			message: rs.language._editor.insert_function,
 			value: ''
+		},
+		insert_readmore:
+		{
+			title: rs.language._editor.insert_readmore,
+			method: 'insertReadmore'
 		},
 		unformat:
 		{
