@@ -139,6 +139,11 @@
 					related: 'textarea.js_generate_keyword_output',
 					target: 'h1, h2, h3, strong'
 				},
+				splitter:
+				{
+					text: '\n',
+					keyword: ' '
+				},
 				delimiter: ' ',
 				limit: 10
 			}
