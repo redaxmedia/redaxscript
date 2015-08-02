@@ -50,12 +50,12 @@
 	content: '\e605';
 }
 
-.link_directory_lister.folder_closed:before
+.link_directory_lister.directory_closed:before
 {
 	content: '\e606';
 }
 
-.link_directory_lister.folder_open:before
+.link_directory_lister.directory_open:before
 {
 	content: '\e607';
 }

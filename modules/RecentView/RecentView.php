@@ -50,7 +50,9 @@ class RecentView extends Config
 		/* html elements */
 
 		$linkElement = new Element('a');
-		$listElement = new Element('ul');
+		$listElement = new Element('ul', array(
+				'class' => self::$_config['className']['list'])
+		);
 
 		/* process log */
 
@@ -74,7 +76,7 @@ class RecentView extends Config
 
 		if ($output)
 		{
-			$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+			$output = $listElement->html($output);
 		}
 		return $output;
 	}

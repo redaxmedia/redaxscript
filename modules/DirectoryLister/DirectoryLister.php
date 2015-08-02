@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\DirectoryLister;
 
 use Redaxscript\Directory;
 use Redaxscript\Element;
+use Redaxscript\Registry;
 
 /**
  * simple directory lister
@@ -56,17 +57,54 @@ class DirectoryLister extends Config
 	public static function render($directory = null, $exclude = null)
 	{
 		$output = '';
+		$outputDirectory = '';
+		$outputFile = '';
 		if ($directory)
 		{
+			/* html elements */
+
+			$linkElement = new Element('a', array(
+					'class' => self::$_config['className']['link'])
+			);
+			$listElement = new Element('ul', array(
+					'class' => self::$_config['className']['list'])
+			);
+
+			/* list directory object */
+
 			$listDirectory = new Directory();
 			$listDirectory->init($directory, $exclude);
 			$listDirectoryArray = $listDirectory->getArray();
 
-			/* process list directory array */
+			/* process directory */
 
 			foreach ($listDirectoryArray as $key => $value)
 			{
-				$output .= $value;
+				if (is_dir($directory . '/' . $value))
+				{
+					$outputDirectory .= '<li>';
+					$outputDirectory .= $linkElement->attr(array(
+						'href' => Registry::get('fullRoute') . '?directory=' . $directory . '/' . $value,
+						'title' => $value
+					))->text($value);
+					$outputDirectory .= '</li>';
+				}
+				else
+				{
+					$outputFile .= '<li>';
+					$outputFile .= $linkElement->attr(array(
+						'href' => $directory . '/' . $value,
+						'title' => $value
+					))->text($value);
+					$outputFile .= '</li>';
+				}
+			}
+
+			/* collect list output */
+
+			if ($outputDirectory || $outputFile)
+			{
+				$output = $listElement->html($outputDirectory . $outputFile);
 			}
 		}
 		return $output;
