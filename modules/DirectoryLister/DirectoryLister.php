@@ -2,7 +2,6 @@
 namespace Redaxscript\Modules\DirectoryLister;
 
 use Redaxscript\Directory;
-use Redaxscript\Module;
 use Redaxscript\Element;
 
 /**
@@ -15,7 +14,7 @@ use Redaxscript\Element;
  * @author Henry Ruhs
  */
 
-class DirectoryLister extends Module
+class DirectoryLister extends Config
 {
 	/**
 	 * array of the module
@@ -49,15 +48,26 @@ class DirectoryLister extends Module
 	 * @since 2.5.0
 	 *
 	 * @param string $directory
+	 * @param mixed $exclude
 	 *
 	 * @return string
 	 */
 
-	public static function render($directory = null)
+	public static function render($directory = null, $exclude = null)
 	{
 		$output = '';
 		if ($directory)
 		{
+			$listDirectory = new Directory();
+			$listDirectory->init($directory, $exclude);
+			$listDirectoryArray = $listDirectory->getArray();
+
+			/* process list directory array */
+
+			foreach ($listDirectoryArray as $key => $value)
+			{
+				$output .= $value;
+			}
 		}
 		return $output;
 	}

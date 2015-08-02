@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. font face
+ * 2. icons
  *
  * @since 2.5.0
  *
@@ -15,4 +16,46 @@
 {
 	font-family: 'icon directory lister';
 	src: url('modules/DirectoryLister/fonts/icon.woff') format('woff'), url('modules/DirectoryLister/fonts/icon.ttf') format('truetype');
+}
+
+/* @section 2. icons */
+
+.link_directory_lister:before
+{
+	font: 1em 'icon-directory-lister';
+}
+
+.link_directory_lister.file_empty:before
+{
+	content: '\e600';
+}
+
+.link_directory_lister.file_text:before
+{
+	content: '\e601';
+}
+
+.link_directory_lister.file_picture:before
+{
+	content: '\e602';
+}
+
+.link_directory_lister.file_music:before
+{
+	content: '\e603';
+}
+
+.link_directory_lister.file_video:before
+{
+	content: '\e605';
+}
+
+.link_directory_lister.folder_closed:before
+{
+	content: '\e606';
+}
+
+.link_directory_lister.folder_open:before
+{
+	content: '\e607';
 }
