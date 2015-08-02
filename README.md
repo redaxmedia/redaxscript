@@ -37,8 +37,8 @@ Links
 
 * [Website](http://redaxscript.com)
 * [Download](http://redaxscript.com/download)
-* [Community](http://redaxscript.com/community)
-* [Wiki](https://github.com/redaxmedia/redaxscript/wiki)
+* [Forum](http://forum.redaxscript.com)
+* [Wiki](http://wiki.redaxscript.com)
 * [License](http://redaxscript.com/general/about/license)
 
 
