@@ -1,0 +1,18 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ *
+ * @since 2.5.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon directory lister';
+	src: url('modules/DirectoryLister/fonts/icon.woff') format('woff'), url('modules/DirectoryLister/fonts/icon.ttf') format('truetype');
+}
