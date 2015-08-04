@@ -2,7 +2,8 @@
  * @tableofcontents
  *
  * 1. font face
- * 2. icons
+ * 2. directory list
+ * 3. icons
  *
  * @since 2.5.0
  *
@@ -18,16 +19,38 @@
 	src: url('modules/DirectoryLister/fonts/icon.woff') format('woff'), url('modules/DirectoryLister/fonts/icon.ttf') format('truetype');
 }
 
-/* @section 2. icons */
+/* @section 2. directory list */
+
+.list_directory_lister li
+{
+	margin: 0.5em 0;
+}
+
+.link_directory_lister
+{
+	display: inline-block;
+	width: 60%;
+}
+
+.text_directory_lister
+{
+	display: inline-block;
+	width: 20%;
+}
+
+.text_directory_lister.text_size:after
+{
+	content: ' Kb';
+}
+
+/* @section 3. icons */
 
 .link_directory_lister:before
 {
-	font: 1em 'icon-directory-lister';
-}
-
-.link_directory_lister.file_empty:before
-{
 	content: '\e600';
+	font: 1em 'icon directory lister';
+	margin-right: 0.5em;
+	vertical-align: middle;
 }
 
 .link_directory_lister.file_text:before
@@ -35,7 +58,7 @@
 	content: '\e601';
 }
 
-.link_directory_lister.file_picture:before
+.link_directory_lister.file_image:before
 {
 	content: '\e602';
 }

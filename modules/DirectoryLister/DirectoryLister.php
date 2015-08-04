@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\DirectoryLister;
 
+use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Element;
 use Redaxscript\Registry;
@@ -40,7 +41,7 @@ class DirectoryLister extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/DirectoryLister/styles/diretory_lister.css';
+		$loader_modules_styles[] = 'modules/DirectoryLister/styles/directory_lister.css';
 	}
 
 	/**
@@ -66,6 +67,7 @@ class DirectoryLister extends Config
 			$linkElement = new Element('a', array(
 					'class' => self::$_config['className']['link'])
 			);
+			$textElement = new Element('span');
 			$listElement = new Element('ul', array(
 					'class' => self::$_config['className']['list'])
 			);
@@ -75,6 +77,10 @@ class DirectoryLister extends Config
 			$listDirectory = new Directory();
 			$listDirectory->init($directory, $exclude);
 			$listDirectoryArray = $listDirectory->getArray();
+
+			/* date format */
+
+			$dateFormat = Db::getSettings('date');
 
 			/* process directory */
 
@@ -96,6 +102,14 @@ class DirectoryLister extends Config
 						'href' => $directory . '/' . $value,
 						'title' => $value
 					))->text($value);
+					$outputFile .= $textElement
+						->copy()
+						->addClass(self::$_config['className']['textSize'])
+						->html(ceil(filesize($directory . '/' . $value) / 1024));
+					$outputFile .= $textElement
+						->copy()
+						->addClass(self::$_config['className']['textDate'])
+						->html(date($dateFormat, filectime($directory . '/' . $value)));
 					$outputFile .= '</li>';
 				}
 			}

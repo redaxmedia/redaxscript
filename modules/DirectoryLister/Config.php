@@ -24,7 +24,9 @@ class Config extends Module
 	protected static $_config = array(
 		'className' => array(
 			'list' => 'list_directory_lister clearfix',
-			'link' => 'link_directory_lister'
+			'link' => 'link_directory_lister',
+			'textSize' => 'text_directory_lister text_size',
+			'textData' => 'text_directory_lister text_date'
 		),
 		'files' => array(
 			'text' => array(
@@ -41,6 +43,20 @@ class Config extends Module
 					'jpg',
 					'pdf',
 					'png'
+				)
+			),
+			'music' => array(
+				'className' => 'file_music',
+				'extention' => array(
+					'mp3',
+					'wav'
+				)
+			),
+			'video' => array(
+				'className' => 'file_video',
+				'extention' => array(
+					'avi',
+					'mp4'
 				)
 			)
 		)

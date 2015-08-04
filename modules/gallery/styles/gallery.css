@@ -6,10 +6,11 @@
  * 3. gallery overlay
  * 4. fadein effect
  * 5. gallery loader
- * 6. gallery meta
- * 7. gallery list
+ * 6. gallery control
+ * 7. gallery meta
+ * 8. gallery list
  *
- * @since 2.0.0
+ * @since 2.5.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -85,7 +86,7 @@
 	font-size: 6em;
 }
 
-/* gallery control */
+/* @section 6. gallery control */
 
 .gallery_control
 {
@@ -137,7 +138,7 @@
 	content: '>';
 }
 
-/* @section 6. gallery meta */
+/* @section 7. gallery meta */
 
 .gallery_meta
 {
@@ -167,7 +168,7 @@
 	margin-top: 0.5em;
 }
 
-/* @section 7. gallery list */
+/* @section 8. gallery list */
 
 .item_gallery
 {
