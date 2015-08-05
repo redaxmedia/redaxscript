@@ -26,39 +26,32 @@ class Config extends Module
 			'list' => 'list_directory_lister clearfix',
 			'link' => 'link_directory_lister',
 			'textSize' => 'text_directory_lister text_size',
-			'textData' => 'text_directory_lister text_date'
-		),
-		'files' => array(
-			'text' => array(
-				'className' => 'file_text',
-				'extention' => array(
-					'doc',
-					'txt'
-				)
-			),
-			'image' => array(
-				'className' => 'file_image',
-				'extention' => array(
-					'gif',
-					'jpg',
-					'pdf',
-					'png'
-				)
-			),
-			'music' => array(
-				'className' => 'file_music',
-				'extention' => array(
-					'mp3',
-					'wav'
-				)
-			),
-			'video' => array(
-				'className' => 'file_video',
-				'extention' => array(
-					'avi',
-					'mp4'
-				)
+			'textDate' => 'text_directory_lister text_date',
+			'types' => array(
+				'directoryClosed' => 'directory_closed',
+				'directoryOpen' => 'directory_open',
+				'fileBlank' => 'file_blank',
+				'fileText' => 'file_text',
+				'fileImage' => 'file_image',
+				'fileMusic' => 'file_music',
+				'fileVideo' => 'file_video'
 			)
+		),
+		'size' => array(
+			'unit' => 'kB',
+			'divider' => 1024
+		),
+		'extention' => array(
+			'doc' => 'fileText',
+			'txt' => 'fileText',
+			'gif' => 'fileImage',
+			'jpg' => 'fileImage',
+			'pdf' => 'fileImage',
+			'png' => 'fileImage',
+			'mp3' => 'fileMusic',
+			'wav' => 'fileMusic',
+			'avi' => 'fileVideo',
+			'mp4' => 'fileVideo'
 		)
 	);
 }

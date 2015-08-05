@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\DirectoryLister;
 use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Element;
-use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * simple directory lister
@@ -60,17 +60,33 @@ class DirectoryLister extends Config
 		$output = '';
 		$outputDirectory = '';
 		$outputFile = '';
-		if ($directory)
+
+		/* handle query */
+
+		$directoryQuery = Request::getQuery('dir');
+		if ($directoryQuery)
+		{
+			$directory = $directoryQuery;
+		}
+
+		/* has directory */
+
+		if (is_dir($directory))
 		{
 			/* html elements */
 
 			$linkElement = new Element('a', array(
-					'class' => self::$_config['className']['link'])
-			);
-			$textElement = new Element('span');
+					'class' => self::$_config['className']['link']
+			));
+			$textSizeElement = new Element('span', array(
+					'class' => self::$_config['className']['textSize']
+			));
+			$textDateElement = new Element('span', array(
+					'class' => self::$_config['className']['textDate']
+			));
 			$listElement = new Element('ul', array(
-					'class' => self::$_config['className']['list'])
-			);
+					'class' => self::$_config['className']['list']
+			));
 
 			/* list directory object */
 
@@ -89,27 +105,31 @@ class DirectoryLister extends Config
 				if (is_dir($directory . '/' . $value))
 				{
 					$outputDirectory .= '<li>';
-					$outputDirectory .= $linkElement->attr(array(
-						'href' => Registry::get('fullRoute') . '?directory=' . $directory . '/' . $value,
-						'title' => $value
-					))->text($value);
+					$outputDirectory .= $linkElement
+						->copy()
+						->attr(array(
+							'href' => '?dir=' . $directory . '/' . $value,
+							'title' => $value
+						))
+						->addClass(self::$_config['className']['types']['directoryClosed'])
+						->text($value);
 					$outputDirectory .= '</li>';
 				}
 				else
 				{
 					$outputFile .= '<li>';
-					$outputFile .= $linkElement->attr(array(
-						'href' => $directory . '/' . $value,
-						'title' => $value
-					))->text($value);
-					$outputFile .= $textElement
+					$outputFile .= $linkElement
 						->copy()
-						->addClass(self::$_config['className']['textSize'])
-						->html(ceil(filesize($directory . '/' . $value) / 1024));
-					$outputFile .= $textElement
-						->copy()
-						->addClass(self::$_config['className']['textDate'])
-						->html(date($dateFormat, filectime($directory . '/' . $value)));
+						->attr(array(
+							'href' => $directory . '/' . $value,
+							'title' => $value
+						))
+						->addClass(self::$_config['className']['types']['fileBlank'])
+						->text($value);
+					$outputFile .= $textSizeElement
+						->attr('data-unit', self::$_config['size']['unit'])
+						->html(ceil(filesize($directory . '/' . $value) / self::$_config['size']['number']));
+					$outputFile .= $textDateElement->html(date($dateFormat, filectime($directory . '/' . $value)));
 					$outputFile .= '</li>';
 				}
 			}
