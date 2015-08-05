@@ -176,7 +176,7 @@ class Directory
 			$directoryArray = $this->_directoryArray;
 		}
 
-		/* else handle child directory or single file */
+		/* else handle child */
 
 		else
 		{
@@ -197,7 +197,7 @@ class Directory
 		{
 			$childrenPath = $path . '/' . $children;
 
-			/* remove if directory */
+			/* remove directory */
 
 			if (is_dir($childrenPath))
 			{
@@ -212,7 +212,7 @@ class Directory
 			}
 		}
 
-		/* remove if directory */
+		/* remove directory */
 
 		if (is_dir($path))
 		{

@@ -40,7 +40,7 @@
 			var route = rs.modules.dawanda.routes[call],
 				output = '';
 
-			/* if route present */
+			/* route present */
 
 			if (route)
 			{

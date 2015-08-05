@@ -80,7 +80,7 @@ function contents()
 			$sub_maximum = ceil($num_rows / s('limit'));
 			$sub_active = LAST_SUB_PARAMETER;
 
-			/* if sub parameter */
+			/* sub parameter */
 
 			if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
 			{
@@ -123,7 +123,7 @@ function contents()
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
@@ -328,7 +328,7 @@ function extras($filter = '')
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{

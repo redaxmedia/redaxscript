@@ -95,7 +95,7 @@ abstract class DetectorAbstract
 			{
 				$file = str_replace($this->_filePlaceholder, $value, $path);
 
-				/* if file exists */
+				/* file exists */
 
 				if (file_exists($file))
 				{

@@ -188,28 +188,28 @@ class Breadcrumb
 		$fullRoute = $this->_registry->get('fullRoute');
 		$lastId = $this->_registry->get('lastId');
 
-		/* if title */
+		/* title */
 
 		if ($title)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $title;
 		}
 
-		/* else if home */
+		/* else home */
 
 		else if (!$fullRoute)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('home');
 		}
 
-		/* else if administration */
+		/* else administration */
 
 		else if ($firstParameter === 'admin')
 		{
 			$this->_buildAdmin($key);
 		}
 
-		/* else if default alias */
+		/* else default alias */
 
 		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
 		{
@@ -255,7 +255,7 @@ class Breadcrumb
 
 		$this->_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
 
-		/* if admin parameter  */
+		/* admin parameter  */
 
 		if ($adminParameter)
 		{
@@ -269,7 +269,7 @@ class Breadcrumb
 			$key++;
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($adminParameter);
 
-			/* set route if not end */
+			/* set route */
 
 			if ($adminParameter !== $lastParameter)
 			{
@@ -308,7 +308,7 @@ class Breadcrumb
 
 		$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($firstTable)->where('alias', $firstParameter)->findOne()->title;
 
-		/* set route if not end */
+		/* set route */
 
 		if ($firstParameter !== $lastParameter)
 		{
@@ -322,7 +322,7 @@ class Breadcrumb
 			$key++;
 			$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($secondTable)->where('alias', $secondParameter)->findOne()->title;
 
-			/* set route if not end */
+			/* set route */
 
 			if ($secondParameter !== $lastParameter)
 			{

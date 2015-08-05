@@ -154,7 +154,7 @@ function startup()
 					$rank = Redaxscript\Db::forTablePrefix($table)->max('rank');
 				}
 
-				/* if category is published */
+				/* category is published */
 
 				if ($rank)
 				{
@@ -268,7 +268,7 @@ function startup()
 	define('MY_MOBILE', $mobile->getOutput());
 	define('MY_TABLET', $tablet->getOutput());
 
-	/* if mobile or tablet */
+	/* mobile or tablet */
 
 	if (MY_MOBILE || MY_TABLET)
 	{
@@ -280,7 +280,7 @@ function startup()
 		define('MY_DESKTOP', $desktop->getOutput());
 	}
 
-	/* if logged in */
+	/* logged in */
 
 	if (LOGGED_IN == TOKEN)
 	{

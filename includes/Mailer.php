@@ -126,7 +126,7 @@ class Mailer
 		$from = current($this->_fromArray);
 		$fromName = key($this->_fromArray);
 
-		/* fallback if empty */
+		/* name fallback */
 
 		if (!$fromName)
 		{
@@ -194,7 +194,7 @@ class Mailer
 
 		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
 
-		/* if empty attachment */
+		/* empty attachment */
 
 		if (empty($this->_attachmentArray))
 		{

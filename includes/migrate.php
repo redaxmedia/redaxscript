@@ -43,7 +43,7 @@ function clean($input = null, $mode = null)
 	$output = $input;
 	$registry = Redaxscript\Registry::getInstance();
 
-	/* if untrusted user */
+	/* untrusted user */
 
 	if ($registry->get('filter') == 1)
 	{

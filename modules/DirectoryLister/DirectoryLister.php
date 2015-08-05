@@ -102,6 +102,8 @@ class DirectoryLister extends Config
 
 			foreach ($listDirectoryArray as $key => $value)
 			{
+				/* handle directory */
+
 				if (is_dir($directory . '/' . $value))
 				{
 					$outputDirectory .= '<li>';
@@ -115,7 +117,10 @@ class DirectoryLister extends Config
 						->text($value);
 					$outputDirectory .= '</li>';
 				}
-				else
+
+				/* else handle file */
+
+				else if (is_file($directory . '/' . $value))
 				{
 					$outputFile .= '<li>';
 					$outputFile .= $linkElement

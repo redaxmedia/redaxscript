@@ -258,7 +258,7 @@ function file_manager_upload($directory = '')
 		}
 	}
 
-	/* if filesize limit */
+	/* filesize limit */
 
 	if ($file_size > 1048576)
 	{
