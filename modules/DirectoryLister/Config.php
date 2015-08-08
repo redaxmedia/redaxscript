@@ -51,6 +51,7 @@ class Config extends Module
 			'mp3' => 'fileMusic',
 			'wav' => 'fileMusic',
 			'avi' => 'fileVideo',
+			'mov' => 'fileVideo',
 			'mp4' => 'fileVideo'
 		)
 	);

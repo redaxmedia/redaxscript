@@ -176,7 +176,7 @@ class Directory
 			$directoryArray = $this->_directoryArray;
 		}
 
-		/* else handle child */
+		/* else handle children */
 
 		else
 		{

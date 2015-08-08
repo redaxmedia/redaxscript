@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\DirectoryLister;
 use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Element;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
@@ -106,11 +107,12 @@ class DirectoryLister extends Config
 
 				if (is_dir($directory . '/' . $value))
 				{
+					$directoryName = $directory . '/' . $value;
 					$outputDirectory .= '<li>';
 					$outputDirectory .= $linkElement
 						->copy()
 						->attr(array(
-							'href' => '?dir=' . $directory . '/' . $value,
+							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&dir=' . $directoryName,
 							'title' => $value
 						))
 						->addClass(self::$_config['className']['types']['directoryClosed'])
@@ -122,20 +124,26 @@ class DirectoryLister extends Config
 
 				else if (is_file($directory . '/' . $value))
 				{
-					$outputFile .= '<li>';
-					$outputFile .= $linkElement
-						->copy()
-						->attr(array(
-							'href' => $directory . '/' . $value,
-							'title' => $value
-						))
-						->addClass(self::$_config['className']['types']['fileBlank'])
-						->text($value);
-					$outputFile .= $textSizeElement
-						->attr('data-unit', self::$_config['size']['unit'])
-						->html(ceil(filesize($directory . '/' . $value) / self::$_config['size']['number']));
-					$outputFile .= $textDateElement->html(date($dateFormat, filectime($directory . '/' . $value)));
-					$outputFile .= '</li>';
+					$fileName = $directory . '/' . $value;
+					$fileExtention = pathinfo($fileName, PATHINFO_EXTENSION);
+					if (array_key_exists($fileExtention, self::$_config['extention']))
+					{
+						$fileType = self::$_config['extention'][$fileExtention];
+						$outputFile .= '<li>';
+						$outputFile .= $linkElement
+							->copy()
+							->attr(array(
+								'href' => $directory . '/' . $value,
+								'title' => $value
+							))
+							->addClass(self::$_config['className']['types'][$fileType])
+							->text($value);
+						$outputFile .= $textSizeElement
+							->attr('data-unit', self::$_config['size']['unit'])
+							->html(ceil(filesize($fileName) / self::$_config['size']['divider']));
+						$outputFile .= $textDateElement->html(date($dateFormat, filectime($fileName)));
+						$outputFile .= '</li>';
+					}
 				}
 			}
 
