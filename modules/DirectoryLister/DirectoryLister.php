@@ -68,9 +68,8 @@ class DirectoryLister extends Config
 		$directoryQuery = Request::getQuery('dir');
 		if ($directoryQuery)
 		{
-			//$pathFilter = new Filter\Path();
-			//$directory = $pathFilter->sanitize($directoryQuery);
-			$directory = $directoryQuery;
+			$pathFilter = new Filter\Path();
+			$directory = $pathFilter->sanitize($directoryQuery);
 		}
 
 		/* has directory */
