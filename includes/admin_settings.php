@@ -99,7 +99,7 @@ function admin_settings_form()
 	$output .= '<li>' . select_element('date', 'field_select_admin', 'date', array(
 		'd.m.Y',
 		'm.d.Y',
-		'Y.d.m'
+		'Y.m.d'
 	), s('date'), l('date')) . '</li>';
 	$output .= '</ul></fieldset>';
 
