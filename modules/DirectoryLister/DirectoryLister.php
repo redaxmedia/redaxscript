@@ -65,7 +65,7 @@ class DirectoryLister extends Config
 
 		/* handle query */
 
-		$directoryQuery = Request::getQuery('dir');
+		$directoryQuery = Request::getQuery('d');
 		if ($directoryQuery)
 		{
 			$pathFilter = new Filter\Path();
@@ -115,7 +115,7 @@ class DirectoryLister extends Config
 					$outputDirectory .= $linkElement
 						->copy()
 						->attr(array(
-							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&dir=' . $path,
+							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $path,
 							'title' => $value
 						))
 						->addClass(self::$_config['className']['types']['directoryClosed'])

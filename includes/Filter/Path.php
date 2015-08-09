@@ -31,9 +31,9 @@ class Path implements FilterInterface
 			' ',
 			'..',
 		), '', $output);
-		$output = str_replace($seperator . $seperator, $seperator, $output);
+		$output = $str = preg_replace('~' . $seperator . '+~', $seperator, $output);
 		$output = ltrim($output, '.');
-		$output = ltrim($output, $seperator);
+		$output = trim($output, $seperator);
 		return $output;
 	}
 }

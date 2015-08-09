@@ -40,7 +40,7 @@ class PathTest extends TestCase
 	 * @dataProvider providerFilterPath
 	 */
 
-	public function testUrl($path = null, $expect = null)
+	public function testPath($path = null, $expect = null)
 	{
 		/* setup */
 
