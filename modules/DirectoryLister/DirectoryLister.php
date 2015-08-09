@@ -11,7 +11,7 @@ use Redaxscript\Request;
 /**
  * simple directory lister
  *
- * @since 2.5.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @category Modules
@@ -31,13 +31,13 @@ class DirectoryLister extends Config
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
 	 * loaderStart
 	 *
-	 * @since 2.5.0
+	 * @since 2.6.0
 	 */
 
 	public static function loaderStart()
@@ -49,7 +49,7 @@ class DirectoryLister extends Config
 	/**
 	 * render
 	 *
-	 * @since 2.5.0
+	 * @since 2.6.0
 	 *
 	 * @param string $directory
 	 * @param mixed $exclude

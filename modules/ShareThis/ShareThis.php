@@ -27,7 +27,7 @@ class ShareThis extends Config
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social networks',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**

@@ -30,7 +30,7 @@ class Archive extends Config
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**

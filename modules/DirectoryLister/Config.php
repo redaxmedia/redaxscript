@@ -6,7 +6,7 @@ use Redaxscript\Module;
 /**
  * parent class to store module config
  *
- * @since 2.5.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @category Modules
