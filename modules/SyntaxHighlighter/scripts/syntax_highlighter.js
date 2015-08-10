@@ -32,7 +32,6 @@
 			hljs.configure(options);
 			$(this).each(function(i, block)
 			{
-
 				hljs.highlightBlock(block);
 			});
 		}
