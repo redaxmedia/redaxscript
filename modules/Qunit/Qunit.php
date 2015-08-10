@@ -59,7 +59,7 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>';
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.18.0/qunit.min.js"></script>';
 			echo $output;
 		}
 	}
