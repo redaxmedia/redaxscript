@@ -28,13 +28,14 @@ class Config extends Module
 			'textSize' => 'text_directory_lister text_size',
 			'textDate' => 'text_directory_lister text_date',
 			'types' => array(
-				'directoryClosed' => 'directory_closed',
-				'directoryOpen' => 'directory_open',
+				'directory' => 'directory',
+				'directoryParent' => 'directory_parent',
 				'fileBlank' => 'file_blank',
 				'fileText' => 'file_text',
 				'fileImage' => 'file_image',
 				'fileMusic' => 'file_music',
-				'fileVideo' => 'file_video'
+				'fileVideo' => 'file_video',
+				'fileArchive' => 'file_archive'
 			)
 		),
 		'size' => array(
@@ -52,7 +53,10 @@ class Config extends Module
 			'wav' => 'fileMusic',
 			'avi' => 'fileVideo',
 			'mov' => 'fileVideo',
-			'mp4' => 'fileVideo'
+			'mp4' => 'fileVideo',
+			'tar' => 'fileArchive',
+			'rar' => 'fileArchive',
+			'zip' => 'fileArchive'
 		)
 	);
 }

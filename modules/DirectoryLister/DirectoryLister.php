@@ -5,6 +5,7 @@ use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Element;
 use Redaxscript\Filter;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -66,10 +67,11 @@ class DirectoryLister extends Config
 		/* handle query */
 
 		$directoryQuery = Request::getQuery('d');
-		if ($directoryQuery)
+		if ($directoryQuery && $directory !== $directoryQuery)
 		{
 			$pathFilter = new Filter\Path();
 			$directory = $pathFilter->sanitize($directoryQuery);
+			$parentDirectory = dirname($directory);
 		}
 
 		/* has directory */
@@ -101,6 +103,22 @@ class DirectoryLister extends Config
 
 			$dateFormat = Db::getSettings('date');
 
+			/* parent directory */
+
+			if (is_dir($parentDirectory))
+			{
+				$outputDirectory .= '<li>';
+				$outputDirectory .= $linkElement
+					->copy()
+					->attr(array(
+						'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory,
+						'title' => Language::get('directory_parent', '_directory_lister')
+					))
+					->addClass(self::$_config['className']['types']['directoryParent'])
+					->text(Language::get('directory_parent', '_directory_lister'));
+				$outputDirectory .= '</li>';
+			}
+
 			/* process directory */
 
 			foreach ($listDirectoryArray as $key => $value)
@@ -116,10 +134,14 @@ class DirectoryLister extends Config
 						->copy()
 						->attr(array(
 							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $path,
-							'title' => $value
+							'title' => Language::get('directory', '_directory_lister')
 						))
-						->addClass(self::$_config['className']['types']['directoryClosed'])
+						->addClass(self::$_config['className']['types']['directory'])
 						->text($value);
+					$outputDirectory .= $textSizeElement->copy();
+					$outputDirectory .= $textDateElement
+						->copy()
+						->text(date($dateFormat, filectime($path)));
 					$outputDirectory .= '</li>';
 				}
 
@@ -135,15 +157,18 @@ class DirectoryLister extends Config
 						$outputFile .= $linkElement
 							->copy()
 							->attr(array(
-								'href' => $directory . '/' . $value,
-								'title' => $value
+								'href' => $path,
+								'title' => Language::get('file', '_directory_lister')
 							))
 							->addClass(self::$_config['className']['types'][$fileType])
 							->text($value);
 						$outputFile .= $textSizeElement
+							->copy()
 							->attr('data-unit', self::$_config['size']['unit'])
 							->html(ceil(filesize($path) / self::$_config['size']['divider']));
-						$outputFile .= $textDateElement->html(date($dateFormat, filectime($path)));
+						$outputFile .= $textDateElement
+							->copy()
+							->html(date($dateFormat, filectime($path)));
 						$outputFile .= '</li>';
 					}
 				}

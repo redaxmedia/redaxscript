@@ -29,16 +29,16 @@
 .link_directory_lister
 {
 	display: inline-block;
-	width: 80%;
+	width: 70%;
 }
 
 .text_directory_lister
 {
 	display: inline-block;
-	width: 10%;
+	width: 15%;
 }
 
-.text_directory_lister.text_size:after
+.text_directory_lister.text_size[data-unit]:after
 {
 	content: ' ' attr(data-unit);
 }
@@ -52,10 +52,24 @@
 
 .link_directory_lister:before
 {
-	font: 1.25em/1.5em 'icon directory lister';
+	font: 1.125em/1.5em 'icon directory lister';
 	margin-right: 0.5em;
 	vertical-align: middle;
 }
+
+/* directory */
+
+.link_directory_lister.directory:before
+{
+	content: '\e606';
+}
+
+.link_directory_lister.directory_parent:before
+{
+	content: '\e604';
+}
+
+/* file */
 
 .link_directory_lister.file_blank:before
 {
@@ -82,12 +96,7 @@
 	content: '\e605';
 }
 
-.link_directory_lister.directory_closed:before
-{
-	content: '\e606';
-}
-
-.link_directory_lister.directory_open:before
+.link_directory_lister.file_archive:before
 {
 	content: '\e607';
 }
