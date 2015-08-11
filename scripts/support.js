@@ -6,26 +6,29 @@
  *    1.2 battery
  *    1.3 canvas
  *    1.4 check validity
- *    1.5 cookies
- *    1.6 draggable
- *    1.7 geolocation
- *    1.8 form
- *    1.9 history
- *    1.10 index db
- *    1.11 input
- *    1.12 native json
- *    1.13 post message
- *    1.14 speech
- *    1.15 svg
- *    1.16 touch
- *    1.17 vibrate
- *    1.18 web gl
- *    1.19 web sql
- *    1.20 web socket
- *    1.21 web storage
- *    1.22 web worker
+ *    1.5 css transform
+ *    1.6 css transition
+ *    1.7 cookies
+ *    1.8 draggable
+ *    1.9 geolocation
+ *    1.10 form
+ *    1.11 fullscreen
+ *    1.12 history
+ *    1.13 index db
+ *    1.14 input
+ *    1.15 native json
+ *    1.16 post message
+ *    1.17 speech
+ *    1.18 svg
+ *    1.19 touch
+ *    1.20 vibrate
+ *    1.21 web gl
+ *    1.22 web sql
+ *    1.23 web socket
+ *    1.24 web storage
+ *    1.25 web worker
  *
- * @since 2.2.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -85,7 +88,59 @@
 			return false;
 		}(),
 
-		/* @section 1.5 cookies */
+		/* @section 1.5 css transform */
+
+		cssTransform: function ()
+		{
+			var transform =
+				[
+					'transform',
+					'WebkitTransform',
+					'MozTransform',
+					'msTransform',
+					'OTransform'
+				],
+				span = doc.createElement('span')
+
+			/* process transform */
+
+			for (var i in transform)
+			{
+				if (transform[i] in span.style)
+				{
+					return true;
+				}
+			}
+			return false;
+		}(),
+
+		/* @section 1.6 css transition */
+
+		cssTransition: function ()
+		{
+			var transition =
+				[
+					'transition',
+					'WebkitTransition',
+					'MozTransition',
+					'msTransition',
+					'OTransition'
+				],
+				span = doc.createElement('span')
+
+			/* process transition */
+
+			for (var i in transition)
+			{
+				if (transition[i] in span.style)
+				{
+					return true;
+				}
+			}
+			return false;
+		}(),
+
+		/* @section 1.7 cookies */
 
 		cookies: function ()
 		{
@@ -96,7 +151,7 @@
 			return false;
 		}(),
 
-		/* @section 1.6 draggable */
+		/* @section 1.8 draggable */
 
 		draggable: function ()
 		{
@@ -107,7 +162,7 @@
 			return false;
 		}(),
 
-		/* @section 1.7 geolocation */
+		/* @section 1.9 geolocation */
 
 		geolocation: function ()
 		{
@@ -118,7 +173,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 form */
+		/* @section 1.10 form */
 
 		form: function ()
 		{
@@ -130,7 +185,7 @@
 				form = doc.createElement('form'),
 				output = {};
 
-			/* check attributes */
+			/* process attributes */
 
 			for (var i in attributes)
 			{
@@ -145,7 +200,18 @@
 			return output;
 		}(),
 
-		/* @section 1.9 history */
+		/* @section 1.11 fullscreen */
+
+		fullscreen: function ()
+		{
+			if (doc.fullscreenEnabled || doc.webkitFullscreenEnabled  || doc.mozFullScreenEnabled || doc.msFullscreenEnabled)
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.12 history */
 
 		history: function ()
 		{
@@ -156,7 +222,7 @@
 			return false;
 		}(),
 
-		/* @section 1.10 index db */
+		/* @section 1.13 index db */
 
 		indexedDB: function ()
 		{
@@ -167,7 +233,7 @@
 			return false;
 		}(),
 
-		/* @section 1.11 input */
+		/* @section 1.14 input */
 
 		input: function ()
 		{
@@ -198,7 +264,7 @@
 				input = doc.createElement('input'),
 				output = {};
 
-			/* check types */
+			/* process types */
 
 			for (var i in types)
 			{
@@ -212,7 +278,7 @@
 				}
 			}
 
-			/* check attributes */
+			/* process attributes */
 
 			for (var j in attributes)
 			{
@@ -227,7 +293,7 @@
 			return output;
 		}(),
 
-		/* @section 1.12 native json */
+		/* @section 1.15 native json */
 
 		nativeJSON: function (json)
 		{
@@ -238,7 +304,7 @@
 			return false;
 		}(win.JSON),
 
-		/* @section 1.13 post message */
+		/* @section 1.16 post message */
 
 		postMessage: function ()
 		{
@@ -249,7 +315,7 @@
 			return false;
 		}(),
 
-		/* @section 1.14 speech */
+		/* @section 1.17 speech */
 
 		speech: function ()
 		{
@@ -260,7 +326,7 @@
 			return false;
 		}(),
 
-		/* @section 1.15 svg */
+		/* @section 1.18 svg */
 
 		svg: function ()
 		{
@@ -271,18 +337,18 @@
 			return false;
 		}(),
 
-		/* @section 1.16 touch */
+		/* @section 1.19 touch */
 
 		touch: function ()
 		{
-			if ('ontouchstart' in win)
+			if ('touchstart' in win || nav.msPointerEnabled)
 			{
 				return true;
 			}
 			return false;
 		}(),
 
-		/* @section 1.17 vibrate */
+		/* @section 1.20 vibrate */
 
 		vibrate: function ()
 		{
@@ -293,7 +359,7 @@
 			return false;
 		}(),
 
-		/* @section 1.18 web gl */
+		/* @section 1.21 web gl */
 
 		webGL: function ()
 		{
@@ -304,7 +370,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 web sql */
+		/* @section 1.22 web sql */
 
 		webSQL: function ()
 		{
@@ -315,7 +381,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 web socket */
+		/* @section 1.23 web socket */
 
 		webSocket: function ()
 		{
@@ -326,7 +392,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 web storage */
+		/* @section 1.24 web storage */
 
 		webStorage: function ()
 		{
@@ -337,7 +403,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 web worker */
+		/* @section 1.25 web worker */
 
 		webWorker: function ()
 		{

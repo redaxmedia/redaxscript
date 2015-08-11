@@ -257,7 +257,7 @@
 
 	/* @section 1.3 helper */
 
-	rs.helper = function ()
+	(function ()
 	{
 		/* javascript enabled */
 
@@ -269,21 +269,19 @@
 
 		/* support classes */
 
-		if (rs.support.canvas)
+		for (var i in rs.support)
 		{
-			docElement.className += ' canvas';
+			if (typeof rs.support[i] === 'boolean')
+			{
+				if (rs.support[i])
+				{
+					docElement.className += ' ' + i.toLowerCase();
+				}
+				else
+				{
+					docElement.className += ' no_' + i.toLowerCase();
+				}
+			}
 		}
-		else
-		{
-			docElement.className += ' no_canvas';
-		}
-		if (rs.support.svg)
-		{
-			docElement.className += ' svg';
-		}
-		else
-		{
-			docElement.className += ' no_svg';
-		}
-	}();
+	})();
 })(document, document.documentElement, window);
