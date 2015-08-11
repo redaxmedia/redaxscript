@@ -71,7 +71,7 @@ class DirectoryLister extends Config
 		{
 			$pathFilter = new Filter\Path();
 			$directory = $pathFilter->sanitize($directoryQuery);
-			$parentDirectory = dirname($directory);
+			$parentDirectory = $pathFilter->sanitize(dirname($directory));
 		}
 
 		/* has directory */
