@@ -49,12 +49,12 @@ class CallHome extends Module
 	}
 
 	/**
-	 * scriptsStart
+	 * scriptStart
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function scriptsStart()
+	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{

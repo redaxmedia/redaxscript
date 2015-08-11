@@ -48,12 +48,12 @@ class Maps extends Config
 	}
 
 	/**
-	 * scriptsEnd
+	 * scriptEnd
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function scriptsEnd()
+	public static function scriptEnd()
 	{
 		if (!Registry::get('adminParameter'))
 		{

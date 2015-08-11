@@ -25,12 +25,18 @@
 			options = $.extend({}, rs.modules.syntaxHighlighter.options, options || {});
 		}
 
-		/* configure and highlight */
+		/* configure */
 
 		hljs.configure(options);
-		$(this).each(function(i, block)
+
+		/* return this */
+
+		return this.each(function ()
 		{
-			hljs.highlightBlock(block);
+			$(this).each(function(i, block)
+			{
+				hljs.highlightBlock(block);
+			});
 		});
 	};
 

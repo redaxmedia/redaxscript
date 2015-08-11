@@ -45,24 +45,24 @@ class SyntaxHighlighter extends Module
 	}
 
 	/**
-	 * stylesEnd
+	 * linkEnd
 	 *
 	 * @since 2.6.0
 	 */
 
-	public static function stylesEnd()
+	public static function linkEnd()
 	{
 		$output = '<link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css" rel="stylesheet" />';
 		echo $output;
 	}
 
 	/**
-	 * scriptsEnd
+	 * scriptEnd
 	 *
 	 * @since 2.6.0
 	 */
 
-	public static function scriptsEnd()
+	public static function scriptEnd()
 	{
 		$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>';
 		echo $output;
