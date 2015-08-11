@@ -1,10 +1,10 @@
 [
 	[
 		"hello <codequote>world</codequote>",
-		"hello <pre class=\"code-quote\">world</pre>"
+		"hello <pre class=\"js-code-quote code-quote\">world</pre>"
 	],
 	[
 		"hello <codequote><strong>world</strong></codequote>",
-		"hello <pre class=\"code-quote\">&lt;strong&gt;world&lt;/strong&gt;</pre>"
+		"hello <pre class=\"js-code-quote code-quote\">&lt;strong&gt;world&lt;/strong&gt;</pre>"
 	]
 ]
