@@ -14,7 +14,7 @@
 rs.modules.syntaxHighlighter =
 {
 	init: true,
-	selector: 'pre.js_code',
+	selector: 'pre.js_code_quote',
 	options:
 	{
 		languages:
