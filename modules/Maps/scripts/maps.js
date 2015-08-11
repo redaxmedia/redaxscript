@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($)
+(function ($, google)
 {
 	'use strict';
 
@@ -124,9 +124,9 @@
 
 	$(function ()
 	{
-		if (rs.modules.maps.init && !rs.registry.adminParameter && typeof google === 'object' && typeof google.maps === 'object')
+		if (rs.modules.maps.init)
 		{
 			$(rs.modules.maps.selector).maps(rs.modules.maps.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery || window.Zepto, window.google);

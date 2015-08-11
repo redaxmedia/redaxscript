@@ -13,7 +13,8 @@
 
 rs.modules.maps =
 {
-	init: true,
+	init: !rs.registry.adminParameter,
+	dependency: typeof window.google === 'object' && typeof window.google.maps === 'object',
 	selector: 'div.js_map',
 	options:
 	{
@@ -26,8 +27,8 @@ rs.modules.maps =
 		general:
 		{
 			zoom: 0,
-			center: new google.maps.LatLng(0, 0),
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			center: new window.google.maps.LatLng(0, 0),
+			mapTypeId: window.google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
 			scaleControl: false,
 			streetViewControl: false,

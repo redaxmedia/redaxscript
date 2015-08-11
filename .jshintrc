@@ -22,8 +22,6 @@
 	"white": true,
 	"predef":
 	[
-		"_gaq",
-		"google",
 		"jQuery",
 		"rs",
 		"Zepto"

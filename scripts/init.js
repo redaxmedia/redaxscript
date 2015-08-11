@@ -86,7 +86,7 @@
 		},
 		dropdown:
 		{
-			init: true,
+			init: rs.support.touch,
 			selector: 'ul.js_dropdown',
 			options:
 			{
@@ -227,7 +227,7 @@
 		},
 		validateSearch:
 		{
-			init: true,
+			init: rs.support.input && rs.support.input.placeholder,
 			selector: 'form.js_validate_search',
 			options:
 			{

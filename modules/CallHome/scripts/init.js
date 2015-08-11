@@ -13,7 +13,8 @@
 
 rs.modules.callHome =
 {
-	init: true,
+	init: rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin' && !rs.registry.adminParameter,
+	dependency: typeof _gaq === 'object',
 	options:
 	{
 		id: 'UA-16122280-10',

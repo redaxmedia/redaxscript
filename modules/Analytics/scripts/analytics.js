@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($)
+(function ($, _gaq)
 {
 	'use strict';
 
@@ -79,9 +79,9 @@
 
 	$(function ()
 	{
-		if (rs.modules.analytics.init && rs.registry.loggedIn !== rs.registry.token && typeof _gaq === 'object')
+		if (rs.modules.analytics.init && rs.modules.analytics.dependency)
 		{
 			$(rs.modules.analytics.selector).analytics(rs.modules.analytics.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery || window.Zepto, window._gaq);

@@ -27,21 +27,18 @@
 
 		/* configure and highlight */
 
-		if (typeof hljs === 'object')
+		hljs.configure(options);
+		$(this).each(function(i, block)
 		{
-			hljs.configure(options);
-			$(this).each(function(i, block)
-			{
-				hljs.highlightBlock(block);
-			});
-		}
+			hljs.highlightBlock(block);
+		});
 	};
 
 	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.modules.syntaxHighlighter.init)
+		if (rs.modules.syntaxHighlighter.init && rs.modules.syntaxHighlighter.dependency)
 		{
 			$(rs.modules.syntaxHighlighter.selector).syntaxHighlighter(rs.modules.syntaxHighlighter.options);
 		}

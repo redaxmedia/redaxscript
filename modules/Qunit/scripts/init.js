@@ -13,7 +13,7 @@
 
 rs.modules.qunit =
 {
-	init: true,
+	init: rs.registry.firstParameter === 'qunit',
 	options:
 	{
 		element:

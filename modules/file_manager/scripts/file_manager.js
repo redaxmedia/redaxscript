@@ -60,7 +60,7 @@
 
 	$(function ()
 	{
-		if (rs.modules.fileManager.init && rs.registry.adminParameter === 'file-manager')
+		if (rs.modules.fileManager.init)
 		{
 			$(rs.modules.fileManager.selector).fileManager(rs.modules.fileManager.options);
 		}

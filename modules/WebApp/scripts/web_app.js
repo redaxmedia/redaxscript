@@ -27,26 +27,26 @@
 
 		/* trigger install */
 
-		if (rs.support.webStorage && typeof window.navigator.mozApps === 'object')
+		if (rs.support.webStorage && typeof navigator.mozApps === 'object')
 		{
-			var counter  = Number(window.localStorage.getItem('webAppInstallCounter')) || 0,
+			var counter  = Number(localStorage.getItem('webAppInstallCounter')) || 0,
 				request = '';
 
 			/* prevent multiple request */
 
 			if (counter < options.limit)
 			{
-				request = window.navigator.mozApps.install(rs.baseURL + 'manifest_webapp');
+				request = navigator.mozApps.install(rs.baseURL + 'manifest_webapp');
 
 				/* count multiple request */
 
-				window.localStorage.setItem('webAppInstallCounter', ++counter);
+				localStorage.setItem('webAppInstallCounter', ++counter);
 
 				/* handle success */
 
 				request.onsuccess  = function ()
 				{
-					window.localStorage.setItem('webAppInstallCounter', options.limit);
+					localStorage.setItem('webAppInstallCounter', options.limit);
 				};
 			}
 		}

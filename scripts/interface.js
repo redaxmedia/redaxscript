@@ -175,7 +175,7 @@
 		{
 			$(rs.plugins.accordion.selector).accordion(rs.plugins.accordion.options);
 		}
-		if (rs.plugins.dropdown.init && rs.support.touch)
+		if (rs.plugins.dropdown.init)
 		{
 			$(rs.plugins.dropdown.selector).dropdown(rs.plugins.dropdown.options);
 		}

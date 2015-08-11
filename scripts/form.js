@@ -317,7 +317,7 @@
 						fieldAll.filter('.js_note_error').first().focus();
 					}
 
-					/* haptic feedback */
+					/* vibrate feedback */
 
 					if (event.type === 'submit' && rs.support.vibrate && typeof options.vibrate === 'number')
 					{
@@ -406,7 +406,7 @@
 		{
 			$(rs.plugins.validateForm.selector).validateForm(rs.plugins.validateForm.options);
 		}
-		if (rs.plugins.validateSearch.init && typeof rs.support.input === 'object' && rs.support.input.placeholder)
+		if (rs.plugins.validateSearch.init)
 		{
 			$(rs.plugins.validateSearch.selector).validateSearch(rs.plugins.validateSearch.options);
 		}

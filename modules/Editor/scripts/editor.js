@@ -108,11 +108,11 @@
 								editor[data.method](data.command, data.message, data.value);
 								editor.post();
 
-								/* haptic feedback */
+								/* vibrate feedback */
 
 								if (rs.support.vibrate && typeof options.vibrate === 'number')
 								{
-									window.navigator.vibrate(options.vibrate);
+									navigator.vibrate(options.vibrate);
 								}
 							});
 						}(data));
@@ -368,7 +368,7 @@
 
 	$(function ()
 	{
-		if (rs.modules.editor.init && (rs.registry.lastTable === 'articles' || (rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit') && (rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments')))
+		if (rs.modules.editor.init)
 		{
 			$(rs.modules.editor.selector).editor(rs.modules.editor.options);
 		}

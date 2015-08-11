@@ -116,6 +116,9 @@
 
 	$(function ()
 	{
-		$.fn.validator(rs.modules.validator.options);
+		if (rs.modules.validator.init)
+		{
+			$.fn.validator(rs.modules.validator.options);
+		}
 	});
 })(window.jQuery || window.Zepto);
