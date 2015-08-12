@@ -100,7 +100,7 @@
 					'msTransform',
 					'OTransform'
 				],
-				span = doc.createElement('span')
+				span = doc.createElement('span');
 
 			/* process transform */
 
@@ -126,7 +126,7 @@
 					'msTransition',
 					'OTransition'
 				],
-				span = doc.createElement('span')
+				span = doc.createElement('span');
 
 			/* process transition */
 
@@ -204,7 +204,7 @@
 
 		fullscreen: function ()
 		{
-			if (doc.fullscreenEnabled || doc.webkitFullscreenEnabled  || doc.mozFullScreenEnabled || doc.msFullscreenEnabled)
+			if (doc.fullscreenEnabled || doc.webkitFullscreenEnabled || doc.mozFullScreenEnabled || doc.msFullscreenEnabled)
 			{
 				return true;
 			}
