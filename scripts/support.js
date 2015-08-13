@@ -6,28 +6,29 @@
  *    1.2 battery
  *    1.3 canvas
  *    1.4 check validity
- *    1.5 css transform
- *    1.6 css transition
- *    1.7 css viewport unit
- *    1.8 cookies
- *    1.9 draggable
- *    1.10 geolocation
- *    1.11 form
- *    1.12 fullscreen
- *    1.13 history
- *    1.14 index db
- *    1.15 input
- *    1.16 native json
- *    1.17 post message
- *    1.18 speech
- *    1.19 svg
- *    1.20 touch
- *    1.21 vibrate
- *    1.22 web gl
- *    1.23 web sql
- *    1.24 web socket
- *    1.25 web storage
- *    1.26 web worker
+ *    1.5 css flexbox
+ *    1.6 css transform
+ *    1.7 css transition
+ *    1.8 css viewport unit
+ *    1.9 cookies
+ *    1.10 draggable
+ *    1.11 geolocation
+ *    1.12 form
+ *    1.13 fullscreen
+ *    1.14 history
+ *    1.15 index db
+ *    1.16 input
+ *    1.17 native json
+ *    1.18 post message
+ *    1.19 speech
+ *    1.20 svg
+ *    1.21 touch
+ *    1.22 vibrate
+ *    1.23 web gl
+ *    1.24 web sql
+ *    1.25 web socket
+ *    1.26 web storage
+ *    1.27 web worker
  *
  * @since 2.6.0
  *
@@ -35,7 +36,7 @@
  * @author Henry Ruhs
  */
 
-(function (doc, win, nav)
+(function (doc, docElement, win, nav)
 {
 	'use strict';
 
@@ -89,7 +90,18 @@
 			return false;
 		}(),
 
-		/* @section 1.5 css transform */
+		/* @section 1.5 css flexbox */
+
+		cssFlexbox: function ()
+		{
+			if ('flexWrap' in docElement.style || 'WebkitFlexWrap' in docElement.style || 'msFlexWrap' in docElement.style)
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.6 css transform */
 
 		cssTransform: function ()
 		{
@@ -115,7 +127,7 @@
 			return false;
 		}(),
 
-		/* @section 1.6 css transition */
+		/* @section 1.7 css transition */
 
 		cssTransition: function ()
 		{
@@ -141,7 +153,7 @@
 			return false;
 		}(),
 
-		/* @section 1.7 css viewport unit */
+		/* @section 1.8 css viewport unit */
 
 		cssViewportUnit: function ()
 		{
@@ -156,7 +168,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 cookies */
+		/* @section 1.9 cookies */
 
 		cookies: function ()
 		{
@@ -167,7 +179,7 @@
 			return false;
 		}(),
 
-		/* @section 1.9 draggable */
+		/* @section 1.10 draggable */
 
 		draggable: function ()
 		{
@@ -178,7 +190,7 @@
 			return false;
 		}(),
 
-		/* @section 1.10 geolocation */
+		/* @section 1.11 geolocation */
 
 		geolocation: function ()
 		{
@@ -189,7 +201,7 @@
 			return false;
 		}(),
 
-		/* @section 1.11 form */
+		/* @section 1.12 form */
 
 		form: function ()
 		{
@@ -216,7 +228,7 @@
 			return output;
 		}(),
 
-		/* @section 1.12 fullscreen */
+		/* @section 1.13 fullscreen */
 
 		fullscreen: function ()
 		{
@@ -227,7 +239,7 @@
 			return false;
 		}(),
 
-		/* @section 1.13 history */
+		/* @section 1.14 history */
 
 		history: function ()
 		{
@@ -238,7 +250,7 @@
 			return false;
 		}(),
 
-		/* @section 1.14 index db */
+		/* @section 1.15 index db */
 
 		indexedDB: function ()
 		{
@@ -249,7 +261,7 @@
 			return false;
 		}(),
 
-		/* @section 1.15 input */
+		/* @section 1.16 input */
 
 		input: function ()
 		{
@@ -309,7 +321,7 @@
 			return output;
 		}(),
 
-		/* @section 1.16 native json */
+		/* @section 1.17 native json */
 
 		nativeJSON: function (json)
 		{
@@ -320,7 +332,7 @@
 			return false;
 		}(win.JSON),
 
-		/* @section 1.17 post message */
+		/* @section 1.18 post message */
 
 		postMessage: function ()
 		{
@@ -331,7 +343,7 @@
 			return false;
 		}(),
 
-		/* @section 1.18 speech */
+		/* @section 1.19 speech */
 
 		speech: function ()
 		{
@@ -342,7 +354,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 svg */
+		/* @section 1.20 svg */
 
 		svg: function ()
 		{
@@ -353,7 +365,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 touch */
+		/* @section 1.21 touch */
 
 		touch: function ()
 		{
@@ -364,7 +376,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 vibrate */
+		/* @section 1.22 vibrate */
 
 		vibrate: function ()
 		{
@@ -375,7 +387,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 web gl */
+		/* @section 1.23 web gl */
 
 		webGL: function ()
 		{
@@ -386,7 +398,7 @@
 			return false;
 		}(),
 
-		/* @section 1.23 web sql */
+		/* @section 1.24 web sql */
 
 		webSQL: function ()
 		{
@@ -397,7 +409,7 @@
 			return false;
 		}(),
 
-		/* @section 1.24 web socket */
+		/* @section 1.25 web socket */
 
 		webSocket: function ()
 		{
@@ -408,7 +420,7 @@
 			return false;
 		}(),
 
-		/* @section 1.25 web storage */
+		/* @section 1.26 web storage */
 
 		webStorage: function ()
 		{
@@ -419,7 +431,7 @@
 			return false;
 		}(),
 
-		/* @section 1.26 web worker */
+		/* @section 1.27 web worker */
 
 		webWorker: function ()
 		{
@@ -430,4 +442,4 @@
 			return false;
 		}()
 	};
-})(document, window, window.navigator);
+})(document, document.documentElement, window, window.navigator);
