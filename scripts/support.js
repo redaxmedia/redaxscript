@@ -8,7 +8,7 @@
  *    1.4 check validity
  *    1.5 css transform
  *    1.6 css transition
- *    1.7 css viewport
+ *    1.7 css viewport unit
  *    1.8 cookies
  *    1.9 draggable
  *    1.10 geolocation
@@ -141,9 +141,9 @@
 			return false;
 		}(),
 
-		/* @section 1.7 css viewport */
+		/* @section 1.7 css viewport unit */
 
-		cssViewport: function ()
+		cssViewportUnit: function ()
 		{
 			var span = doc.createElement('span'),
 				computedStyle = win.getComputedStyle ? getComputedStyle(span) : span.currentStyle;
