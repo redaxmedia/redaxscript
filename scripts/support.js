@@ -8,25 +8,26 @@
  *    1.4 check validity
  *    1.5 css transform
  *    1.6 css transition
- *    1.7 cookies
- *    1.8 draggable
- *    1.9 geolocation
- *    1.10 form
- *    1.11 fullscreen
- *    1.12 history
- *    1.13 index db
- *    1.14 input
- *    1.15 native json
- *    1.16 post message
- *    1.17 speech
- *    1.18 svg
- *    1.19 touch
- *    1.20 vibrate
- *    1.21 web gl
- *    1.22 web sql
- *    1.23 web socket
- *    1.24 web storage
- *    1.25 web worker
+ *    1.7 css viewport
+ *    1.8 cookies
+ *    1.9 draggable
+ *    1.10 geolocation
+ *    1.11 form
+ *    1.12 fullscreen
+ *    1.13 history
+ *    1.14 index db
+ *    1.15 input
+ *    1.16 native json
+ *    1.17 post message
+ *    1.18 speech
+ *    1.19 svg
+ *    1.20 touch
+ *    1.21 vibrate
+ *    1.22 web gl
+ *    1.23 web sql
+ *    1.24 web socket
+ *    1.25 web storage
+ *    1.26 web worker
  *
  * @since 2.6.0
  *
@@ -140,7 +141,22 @@
 			return false;
 		}(),
 
-		/* @section 1.7 cookies */
+		/* @section 1.7 css viewport */
+
+		cssViewport: function ()
+		{
+			var span = document.createElement('span'),
+				computedStyle = win.getComputedStyle ? getComputedStyle(span) : span.currentStyle;
+
+			span.style = 'height: 50vh; width: 50vw;';
+			if (parseInt(win.innerHeight / 2) === parseInt(computedStyle.height) && parseInt(win.innerWidth / 2) === parseInt(computedStyle.width))
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.8 cookies */
 
 		cookies: function ()
 		{
@@ -151,7 +167,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 draggable */
+		/* @section 1.9 draggable */
 
 		draggable: function ()
 		{
@@ -162,7 +178,7 @@
 			return false;
 		}(),
 
-		/* @section 1.9 geolocation */
+		/* @section 1.10 geolocation */
 
 		geolocation: function ()
 		{
@@ -173,7 +189,7 @@
 			return false;
 		}(),
 
-		/* @section 1.10 form */
+		/* @section 1.11 form */
 
 		form: function ()
 		{
@@ -200,7 +216,7 @@
 			return output;
 		}(),
 
-		/* @section 1.11 fullscreen */
+		/* @section 1.12 fullscreen */
 
 		fullscreen: function ()
 		{
@@ -211,7 +227,7 @@
 			return false;
 		}(),
 
-		/* @section 1.12 history */
+		/* @section 1.13 history */
 
 		history: function ()
 		{
@@ -222,7 +238,7 @@
 			return false;
 		}(),
 
-		/* @section 1.13 index db */
+		/* @section 1.14 index db */
 
 		indexedDB: function ()
 		{
@@ -233,7 +249,7 @@
 			return false;
 		}(),
 
-		/* @section 1.14 input */
+		/* @section 1.15 input */
 
 		input: function ()
 		{
@@ -293,7 +309,7 @@
 			return output;
 		}(),
 
-		/* @section 1.15 native json */
+		/* @section 1.16 native json */
 
 		nativeJSON: function (json)
 		{
@@ -304,7 +320,7 @@
 			return false;
 		}(win.JSON),
 
-		/* @section 1.16 post message */
+		/* @section 1.17 post message */
 
 		postMessage: function ()
 		{
@@ -315,7 +331,7 @@
 			return false;
 		}(),
 
-		/* @section 1.17 speech */
+		/* @section 1.18 speech */
 
 		speech: function ()
 		{
@@ -326,7 +342,7 @@
 			return false;
 		}(),
 
-		/* @section 1.18 svg */
+		/* @section 1.19 svg */
 
 		svg: function ()
 		{
@@ -337,7 +353,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 touch */
+		/* @section 1.20 touch */
 
 		touch: function ()
 		{
@@ -348,7 +364,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 vibrate */
+		/* @section 1.21 vibrate */
 
 		vibrate: function ()
 		{
@@ -359,7 +375,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 web gl */
+		/* @section 1.22 web gl */
 
 		webGL: function ()
 		{
@@ -370,7 +386,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 web sql */
+		/* @section 1.23 web sql */
 
 		webSQL: function ()
 		{
@@ -381,7 +397,7 @@
 			return false;
 		}(),
 
-		/* @section 1.23 web socket */
+		/* @section 1.24 web socket */
 
 		webSocket: function ()
 		{
@@ -392,7 +408,7 @@
 			return false;
 		}(),
 
-		/* @section 1.24 web storage */
+		/* @section 1.25 web storage */
 
 		webStorage: function ()
 		{
@@ -403,7 +419,7 @@
 			return false;
 		}(),
 
-		/* @section 1.25 web worker */
+		/* @section 1.26 web worker */
 
 		webWorker: function ()
 		{
