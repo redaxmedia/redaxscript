@@ -145,7 +145,7 @@
 
 		cssViewport: function ()
 		{
-			var span = document.createElement('span'),
+			var span = doc.createElement('span'),
 				computedStyle = win.getComputedStyle ? getComputedStyle(span) : span.currentStyle;
 
 			span.style = 'height: 50vh; width: 50vw;';
