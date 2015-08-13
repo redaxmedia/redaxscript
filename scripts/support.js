@@ -160,7 +160,8 @@
 			var span = doc.createElement('span'),
 				computedStyle = win.getComputedStyle ? getComputedStyle(span) : span.currentStyle;
 
-			span.style = 'height: 50vh; width: 50vw;';
+			span.style.height = '50vh';
+			span.style.width = '50vw';
 			if (parseInt(win.innerHeight / 2) === parseInt(computedStyle.height) && parseInt(win.innerWidth / 2) === parseInt(computedStyle.width))
 			{
 				return true;
