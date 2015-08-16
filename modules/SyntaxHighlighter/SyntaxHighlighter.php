@@ -1,9 +1,7 @@
 <?php
 namespace Redaxscript\Modules\SyntaxHighlighter;
 
-use Redaxscript\Language;
 use Redaxscript\Module;
-use Redaxscript\Registry;
 
 /**
  * javascript powered syntax highlighter

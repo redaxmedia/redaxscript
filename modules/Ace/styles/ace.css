@@ -1,0 +1,37 @@
+/**
+ * @tableofcontents
+ *
+ * 1. ace
+ *
+ * @since 2.6.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. ace */
+
+.has_ace_editor
+{
+	position: relative;
+}
+
+.has_ace_editor .ace_editor
+{
+	bottom: 0;
+	border: 1px solid #c9c9c9;
+	border-radius: 0.25em;
+	font-size: 1rem;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 1em;
+	z-index: 1;
+}
+
+/* hide textarea */
+
+.has_ace_editor .field_textarea_admin
+{
+	opacity: 0;
+}
