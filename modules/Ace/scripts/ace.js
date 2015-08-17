@@ -59,8 +59,6 @@
 	{
 		if (rs.modules.ace.init && rs.modules.ace.dependency)
 		{
-			rs.plugins.autoResize.init = false;
-			rs.plugins.enableIndent.init = false;
 			$(rs.modules.ace.selector).ace(rs.modules.ace.options);
 		}
 	});
