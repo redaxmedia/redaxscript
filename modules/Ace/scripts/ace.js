@@ -33,12 +33,20 @@
 				container = $('<div>').attr('id', 'editor').insertBefore(textarea),
 				editor = ace.edit('editor');
 
+			textarea.hide();
 			container.parent().addClass(options.className.hasAceEditor);
 
 			/* theme and mode */
 
 			editor.setTheme(options.theme);
 			editor.getSession().setMode(options.mode);
+
+			/* infinity lines */
+
+			editor.setOptions(
+			{
+				maxLines: Infinity
+			});
 
 			/* transport to editor */
 
