@@ -154,7 +154,7 @@ function contents()
 				$output .= Redaxscript\Hook::trigger('article_start', $r);
 				if ($headline == 1)
 				{
-					$output .= '<h2 class="title_content">';
+					$output .= '<h2 class="title_content" id="article-' . $alias . '">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
 						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
@@ -359,7 +359,7 @@ function extras($filter = '')
 					$output .= Redaxscript\Hook::trigger('extra_start', $r);
 					if ($headline == 1)
 					{
-						$output .= '<h3 class="title_extra">' . $title . '</h3>';
+						$output .= '<h3 class="title_extra" id="extra-' . $alias . '">' . $title . '</h3>';
 					}
 
 					/* collect box output */
