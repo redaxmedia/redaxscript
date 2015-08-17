@@ -7,28 +7,29 @@
  *    1.3 canvas
  *    1.4 check validity
  *    1.5 css flexbox
- *    1.6 css transform
- *    1.7 css transition
- *    1.8 css viewport unit
- *    1.9 cookies
- *    1.10 draggable
- *    1.11 geolocation
- *    1.12 form
- *    1.13 fullscreen
- *    1.14 history
- *    1.15 index db
- *    1.16 input
- *    1.17 native json
- *    1.18 post message
- *    1.19 speech
- *    1.20 svg
- *    1.21 touch
- *    1.22 vibrate
- *    1.23 web gl
- *    1.24 web sql
- *    1.25 web socket
- *    1.26 web storage
- *    1.27 web worker
+ *    1.6 css pointer events
+ *    1.7 css transform
+ *    1.8 css transition
+ *    1.9 css viewport unit
+ *    1.10 cookies
+ *    1.11 draggable
+ *    1.12 geolocation
+ *    1.13 form
+ *    1.14 fullscreen
+ *    1.15 history
+ *    1.16 index db
+ *    1.17 input
+ *    1.18 native json
+ *    1.19 post message
+ *    1.20 speech
+ *    1.21 svg
+ *    1.22 touch
+ *    1.23 vibrate
+ *    1.24 web gl
+ *    1.25 web sql
+ *    1.26 web socket
+ *    1.27 web storage
+ *    1.28 web worker
  *
  * @since 2.6.0
  *
@@ -101,7 +102,21 @@
 			return false;
 		}(),
 
-		/* @section 1.6 css transform */
+		/* @section 1.6 css pointer events */
+
+		cssPointerEvents: function ()
+		{
+			var span = doc.createElement('span');
+
+			span.style.cssText = 'pointer-events: auto';
+			if (span.style.pointerEvents === 'auto')
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.7 css transform */
 
 		cssTransform: function ()
 		{
@@ -127,7 +142,7 @@
 			return false;
 		}(),
 
-		/* @section 1.7 css transition */
+		/* @section 1.8 css transition */
 
 		cssTransition: function ()
 		{
@@ -153,7 +168,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 css viewport unit */
+		/* @section 1.9 css viewport unit */
 
 		cssViewportUnit: function ()
 		{
@@ -169,7 +184,7 @@
 			return false;
 		}(),
 
-		/* @section 1.9 cookies */
+		/* @section 1.10 cookies */
 
 		cookies: function ()
 		{
@@ -180,7 +195,7 @@
 			return false;
 		}(),
 
-		/* @section 1.10 draggable */
+		/* @section 1.11 draggable */
 
 		draggable: function ()
 		{
@@ -191,7 +206,7 @@
 			return false;
 		}(),
 
-		/* @section 1.11 geolocation */
+		/* @section 1.12 geolocation */
 
 		geolocation: function ()
 		{
@@ -202,7 +217,7 @@
 			return false;
 		}(),
 
-		/* @section 1.12 form */
+		/* @section 1.13 form */
 
 		form: function ()
 		{
@@ -229,7 +244,7 @@
 			return output;
 		}(),
 
-		/* @section 1.13 fullscreen */
+		/* @section 1.14 fullscreen */
 
 		fullscreen: function ()
 		{
@@ -240,7 +255,7 @@
 			return false;
 		}(),
 
-		/* @section 1.14 history */
+		/* @section 1.15 history */
 
 		history: function ()
 		{
@@ -251,7 +266,7 @@
 			return false;
 		}(),
 
-		/* @section 1.15 index db */
+		/* @section 1.16 index db */
 
 		indexedDB: function ()
 		{
@@ -262,7 +277,7 @@
 			return false;
 		}(),
 
-		/* @section 1.16 input */
+		/* @section 1.17 input */
 
 		input: function ()
 		{
@@ -322,7 +337,7 @@
 			return output;
 		}(),
 
-		/* @section 1.17 native json */
+		/* @section 1.18 native json */
 
 		nativeJSON: function (json)
 		{
@@ -333,7 +348,7 @@
 			return false;
 		}(win.JSON),
 
-		/* @section 1.18 post message */
+		/* @section 1.19 post message */
 
 		postMessage: function ()
 		{
@@ -344,7 +359,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 speech */
+		/* @section 1.20 speech */
 
 		speech: function ()
 		{
@@ -355,7 +370,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 svg */
+		/* @section 1.21 svg */
 
 		svg: function ()
 		{
@@ -366,7 +381,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 touch */
+		/* @section 1.22 touch */
 
 		touch: function ()
 		{
@@ -377,7 +392,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 vibrate */
+		/* @section 1.23 vibrate */
 
 		vibrate: function ()
 		{
@@ -388,7 +403,7 @@
 			return false;
 		}(),
 
-		/* @section 1.23 web gl */
+		/* @section 1.24 web gl */
 
 		webGL: function ()
 		{
@@ -399,7 +414,7 @@
 			return false;
 		}(),
 
-		/* @section 1.24 web sql */
+		/* @section 1.25 web sql */
 
 		webSQL: function ()
 		{
@@ -410,7 +425,7 @@
 			return false;
 		}(),
 
-		/* @section 1.25 web socket */
+		/* @section 1.26 web socket */
 
 		webSocket: function ()
 		{
@@ -421,7 +436,7 @@
 			return false;
 		}(),
 
-		/* @section 1.26 web storage */
+		/* @section 1.27 web storage */
 
 		webStorage: function ()
 		{
@@ -432,7 +447,7 @@
 			return false;
 		}(),
 
-		/* @section 1.27 web worker */
+		/* @section 1.28 web worker */
 
 		webWorker: function ()
 		{
