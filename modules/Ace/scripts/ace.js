@@ -68,6 +68,10 @@
 		if (rs.modules.ace.init && rs.modules.ace.dependency)
 		{
 			$(rs.modules.ace.selector).ace(rs.modules.ace.options);
+
+			/* disable editor */
+
+			rs.modules.editor = false;
 		}
 	});
 })(window.jQuery || window.Zepto, window.ace);
