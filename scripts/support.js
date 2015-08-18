@@ -369,7 +369,7 @@
 
 		speech: function ()
 		{
-			if ('speechSynthesis' in win)
+			if ('speechSynthesis' in win && 'SpeechRecognition' in win)
 			{
 				return true;
 			}
