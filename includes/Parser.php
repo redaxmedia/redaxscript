@@ -218,7 +218,7 @@ class Parser
 	/**
 	 * parse the readmore tag
 	 *
-	 * @since 2.0.0
+	 * @since 2.6.0
 	 *
 	 * @param string $input content be parsed
 	 *
@@ -241,11 +241,14 @@ class Parser
 
 			if ($this->_route)
 			{
-				$output .= $linkElement->attr(array(
-					'href' => $this->_registry->get('rewriteRoute') . $this->_route,
-					'class' => $this->_options['className']['readmore'],
-					'title' => $this->_language->get('readmore')
-				))->text($this->_language->get('readmore'));
+				$output .= $linkElement
+					->copy()
+					->attr(array(
+						'href' => $this->_registry->get('rewriteRoute') . $this->_route,
+						'class' => $this->_options['className']['readmore'],
+						'title' => $this->_language->get('readmore')
+					))
+					->text($this->_language->get('readmore'));
 			}
 		}
 		return $output;
@@ -254,7 +257,7 @@ class Parser
 	/**
 	 * parse the codequote tag
 	 *
-	 * @since 2.0.0
+	 * @since 2.6.0
 	 *
 	 * @param string $input content be parsed
 	 *
@@ -275,7 +278,7 @@ class Parser
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $preElement->html(htmlspecialchars($value));
+				$parts[$key] = $preElement->copy()->html(htmlspecialchars($value));
 			}
 		}
 		$output = implode($parts);
