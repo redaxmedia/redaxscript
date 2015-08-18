@@ -345,14 +345,14 @@
 
 		/* @section 1.18 native json */
 
-		nativeJSON: function (json)
+		nativeJSON: function ()
 		{
-			if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')
+			if (typeof win.JSON === 'object' && typeof win.JSON.parse === 'function' && typeof win.JSON.stringify === 'function')
 			{
 				return true;
 			}
 			return false;
-		}(win.JSON),
+		}(),
 
 		/* @section 1.19 post message */
 
