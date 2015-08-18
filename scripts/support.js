@@ -170,19 +170,25 @@
 
 		/* @section 1.9 css viewport unit */
 
-		cssViewportUnit: function ()
+		cssViewportUnit: (function ()
 		{
-			var span = doc.createElement('span'),
-				computedStyle = win.getComputedStyle ? getComputedStyle(span) : span.currentStyle;
+			var div = doc.createElement('div'),
+				estimatedHeight = parseInt(win.innerHeight / 2),
+				estimatedWidth = parseInt(win.innerWidth / 2),
+				computedHeight,
+				computedWidth;
 
-			span.style.height = '50vh';
-			span.style.width = '50vw';
-			if (parseInt(win.innerHeight / 2) === parseInt(computedStyle.height) && parseInt(win.innerWidth / 2) === parseInt(computedStyle.width))
+			docElement.appendChild(div);
+			div.style.cssText = 'height: 50vh; width: 50vw;';
+			computedHeight = parseInt(win.getComputedStyle ? getComputedStyle(div).height : div.currentStyle.height);
+			computedWidth = parseInt(win.getComputedStyle ? getComputedStyle(div).width : div.currentStyle.width);
+			docElement.removeChild(div);
+			if (estimatedHeight === computedHeight && estimatedWidth === computedWidth)
 			{
 				return true;
 			}
 			return false;
-		}(),
+		})(),
 
 		/* @section 1.10 cookies */
 
