@@ -10,7 +10,7 @@
  *    1.6 css pointer events
  *    1.7 css transform
  *    1.8 css transition
- *    1.9 css viewport unit
+ *    1.9 css viewport units
  *    1.10 cookies
  *    1.11 draggable
  *    1.12 geolocation
@@ -168,9 +168,9 @@
 			return false;
 		}(),
 
-		/* @section 1.9 css viewport unit */
+		/* @section 1.9 css viewport units */
 
-		cssViewportUnit: (function ()
+		cssViewportUnits: (function ()
 		{
 			var div = doc.createElement('div'),
 				estimatedHeight = parseInt(win.innerHeight / 2),
