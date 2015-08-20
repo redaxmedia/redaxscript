@@ -391,7 +391,7 @@
 
 		touch: function ()
 		{
-			if ('touchstart' in win || nav.msPointerEnabled)
+			if ('touchstart' in win)
 			{
 				return true;
 			}
