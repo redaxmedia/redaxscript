@@ -61,7 +61,8 @@
 {
 	.link_directory_lister
 	{
-		width: 70%;
+		margin-right: 5%;
+		width: 65%;
 	}
 
 	.link_directory_lister, .text_directory_lister
