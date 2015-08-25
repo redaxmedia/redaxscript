@@ -24,10 +24,11 @@ class Version extends ClientAbstract
 		$this->_detect(array(
 			'version',
 			'chrome',
+			'edge',
 			'firefox',
 			'konqueror',
 			'msie',
-			'netscape',
+			'netscape'
 		), 'version');
 	}
 }

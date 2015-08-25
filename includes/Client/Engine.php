@@ -25,7 +25,8 @@ class Engine extends ClientAbstract
 			'gecko',
 			'presto',
 			'trident',
-			'webkit'
+			'webkit',
+			'edge'
 		));
 	}
 }

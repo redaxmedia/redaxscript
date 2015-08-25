@@ -44,6 +44,17 @@
 		}
 	],
 	[
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240",
+		{
+			"browser": "edge",
+			"desktop": "windows",
+			"engine": "edge",
+			"mobile": "",
+			"tablet": "",
+			"version": "12"
+		}
+	],
+	[
 		"Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
 		{
 			"browser": "msie",

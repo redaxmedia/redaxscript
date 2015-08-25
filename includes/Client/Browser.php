@@ -25,6 +25,7 @@ class Browser extends ClientAbstract
 			'safari',
 			'chrome',
 			'chromium',
+			'edge',
 			'firefox',
 			'konqueror',
 			'msie',
