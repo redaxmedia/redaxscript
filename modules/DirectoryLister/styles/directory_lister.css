@@ -34,11 +34,6 @@
 	white-space: nowrap;
 }
 
-.link_directory_lister, .text_directory_lister
-{
-	vertical-align: top;
-}
-
 .text_directory_lister
 {
 	display: none;
@@ -68,6 +63,7 @@
 	.link_directory_lister, .text_directory_lister
 	{
 		display: inline-block;
+		vertical-align: top;
 	}
 }
 
