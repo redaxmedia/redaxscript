@@ -28,13 +28,20 @@
 
 .link_directory_lister
 {
-	display: inline-block;
-	width: 70%;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.link_directory_lister, .text_directory_lister
+{
+	vertical-align: top;
 }
 
 .text_directory_lister
 {
-	display: inline-block;
+	display: none;
 	width: 15%;
 }
 
@@ -46,6 +53,21 @@
 .text_directory_lister:last-child
 {
 	text-align: right;
+}
+
+/* query */
+
+@media screen and (min-width: 40em)
+{
+	.link_directory_lister
+	{
+		width: 70%;
+	}
+
+	.link_directory_lister, .text_directory_lister
+	{
+		display: inline-block;
+	}
 }
 
 /* @section 3. icons */
