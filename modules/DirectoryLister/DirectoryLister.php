@@ -53,16 +53,23 @@ class DirectoryLister extends Config
 	 * @since 2.6.0
 	 *
 	 * @param string $directory
-	 * @param mixed $exclude
+	 * @param array $options
 	 *
 	 * @return string
 	 */
 
-	public static function render($directory = null, $exclude = null)
+	public static function render($directory = null, $options = null)
 	{
 		$output = '';
 		$outputDirectory = '';
 		$outputFile = '';
+
+		/* handle options */
+
+		if ($options['hash'])
+		{
+			$hashString = '#' . $options['hash'];
+		}
 
 		/* handle query */
 
@@ -96,7 +103,7 @@ class DirectoryLister extends Config
 			/* list directory object */
 
 			$listDirectory = new Directory();
-			$listDirectory->init($directory, $exclude);
+			$listDirectory->init($directory);
 			$listDirectoryArray = $listDirectory->getArray();
 
 			/* date format */
@@ -111,7 +118,7 @@ class DirectoryLister extends Config
 				$outputDirectory .= $linkElement
 					->copy()
 					->attr(array(
-						'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory,
+						'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
 						'title' => Language::get('directory_parent', '_directory_lister')
 					))
 					->addClass(self::$_config['className']['types']['directoryParent'])
@@ -133,7 +140,7 @@ class DirectoryLister extends Config
 					$outputDirectory .= $linkElement
 						->copy()
 						->attr(array(
-							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $path,
+							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
 							'title' => Language::get('directory', '_directory_lister')
 						))
 						->addClass(self::$_config['className']['types']['directory'])
