@@ -42,6 +42,9 @@ class Config extends Module
 			'unit' => 'kB',
 			'divider' => 1024
 		),
+		'replaceKey' => array(
+			'extension'	=> '{extension}'
+		),
 		'extension' => array(
 			'doc' => 'fileText',
 			'txt' => 'fileText',

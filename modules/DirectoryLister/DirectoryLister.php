@@ -140,7 +140,7 @@ class DirectoryLister extends Config
 				{
 					foreach ($options['replace'] as $replaceKey => $replaceValue)
 					{
-						if ($replaceKey === 'extension')
+						if ($replaceKey === self::$_config['replaceKey']['extension'])
 						{
 							$replaceKey = $fileExtension;
 						}
