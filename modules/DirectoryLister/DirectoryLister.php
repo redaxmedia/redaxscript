@@ -64,7 +64,7 @@ class DirectoryLister extends Config
 		$outputDirectory = '';
 		$outputFile = '';
 
-		/* handle options */
+		/* hash option */
 
 		if ($options['hash'])
 		{
@@ -131,6 +131,22 @@ class DirectoryLister extends Config
 			foreach ($listDirectoryArray as $key => $value)
 			{
 				$path = $directory . '/' . $value;
+				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
+				$text = $value;
+
+				/* replace option */
+
+				if ($options['replace'])
+				{
+					foreach ($options['replace'] as $replaceKey => $replaceValue)
+					{
+						if ($replaceKey === 'extension')
+						{
+							$replaceKey = $fileExtension;
+						}
+						$text = str_replace($replaceKey, $replaceValue, $text);
+					}
+				}
 
 				/* handle directory */
 
@@ -144,7 +160,7 @@ class DirectoryLister extends Config
 							'title' => Language::get('directory', '_directory_lister')
 						))
 						->addClass(self::$_config['className']['types']['directory'])
-						->text($value);
+						->text($text);
 					$outputDirectory .= $textSizeElement->copy();
 					$outputDirectory .= $textDateElement
 						->copy()
@@ -156,10 +172,9 @@ class DirectoryLister extends Config
 
 				else if (is_file($path))
 				{
-					$fileExtention = pathinfo($path, PATHINFO_EXTENSION);
-					if (array_key_exists($fileExtention, self::$_config['extention']))
+					if (array_key_exists($fileExtension, self::$_config['extension']))
 					{
-						$fileType = self::$_config['extention'][$fileExtention];
+						$fileType = self::$_config['extension'][$fileExtension];
 						$outputFile .= '<li>';
 						$outputFile .= $linkElement
 							->copy()
@@ -168,7 +183,7 @@ class DirectoryLister extends Config
 								'title' => Language::get('file', '_directory_lister')
 							))
 							->addClass(self::$_config['className']['types'][$fileType])
-							->text($value);
+							->text($text);
 						$outputFile .= $textSizeElement
 							->copy()
 							->attr('data-unit', self::$_config['size']['unit'])

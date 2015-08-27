@@ -42,7 +42,7 @@ class Config extends Module
 			'unit' => 'kB',
 			'divider' => 1024
 		),
-		'extention' => array(
+		'extension' => array(
 			'doc' => 'fileText',
 			'txt' => 'fileText',
 			'gif' => 'fileImage',
