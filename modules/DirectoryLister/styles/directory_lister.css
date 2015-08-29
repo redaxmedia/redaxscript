@@ -21,11 +21,6 @@
 
 /* @section 2. directory list */
 
-.list_directory_lister li
-{
-	margin: 0.5em 0;
-}
-
 .link_directory_lister
 {
 	display: block;
