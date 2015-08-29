@@ -1,17 +1,17 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <nav id="navibar" class="navibar grid_space s2o7">
 	<div class="box_navibar">
 
 		<!-- donate -->
 
-		<?php if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') !== 'logout'): ?>
+		<?php if (Template::registry('loggedIn') === Template::registry('token') && Template::registry('firstParameter') !== 'logout'): ?>
 			<a href="http://redaxscript.com/donate" class="button_default button_donate">Donate</a>
 
 		<!-- else login -->
 
 		<?php else: ?>
-			<a href="<?php echo Registry::get('rewriteRoute'); ?>login" class="button_default button_login"><?php echo Language::get('login'); ?></a>
+			<a href="<?php echo Template::registry('rewriteRoute'); ?>login" class="button_default button_login"><?php echo Template::language('login'); ?></a>
 		<?php endif; ?>
 
 		<!-- support -->

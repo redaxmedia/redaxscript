@@ -1,9 +1,9 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <header id="header" class="header wrapper">
-	<?php if (Db::getSettings('title')): ?>
+	<?php if (Template::setting('title')): ?>
 		<h1 class="title_website">
-			<a href="<?php echo Registry::get('root'); ?>"><?php echo Db::getSettings('title'); ?></a>
+			<a href="<?php echo Template::registry('root'); ?>"><?php echo Template::setting('title'); ?></a>
 		</h1>
 	<?php endif; ?>
 </header>

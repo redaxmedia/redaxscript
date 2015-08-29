@@ -1,6 +1,6 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
-<?php if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') !== 'logout'): ?>
+<?php if (Template::registry('loggedIn') === Template::registry('token') && Template::registry('firstParameter') !== 'logout'): ?>
 	<nav id="panel_admin" class="js_panel_admin panel_admin">
 		<div class="box_panel_admin">
 			<section class="wrapper clearfix">

@@ -1,4 +1,4 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <!-- base and title -->
 
@@ -13,7 +13,7 @@
 <!-- link -->
 
 <?php echo Template::link(); ?>
-<?php if (!Registry::get('myMobile')): ?>
+<?php if (!Template::registry('myMobile')): ?>
 	<link href="//fonts.googleapis.com/css?family=Marmelad&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
 <?php endif; ?>
 
