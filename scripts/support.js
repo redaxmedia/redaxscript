@@ -179,7 +179,7 @@
 				computedWidth;
 
 			docElement.appendChild(div);
-			div.style.cssText = 'height: 50vh; width: 50vw;';
+			div.style.cssText = 'height: calc(100vh - 50vh); width: calc(100vw - 50vw);';
 			computedHeight = parseInt(win.getComputedStyle ? getComputedStyle(div).height : div.currentStyle.height);
 			computedWidth = parseInt(win.getComputedStyle ? getComputedStyle(div).width : div.currentStyle.width);
 			docElement.removeChild(div);
