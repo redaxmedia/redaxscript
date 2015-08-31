@@ -280,17 +280,48 @@ class Element
 	}
 
 	/**
+	 * append to the element
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $html html to append
+	 *
+	 * @return Element
+	 */
+
+	public function append($html = null)
+	{
+		$this->_html .= $html;
+		return $this;
+	}
+
+	/**
+	 * prepend to the element
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $html html to prepend
+	 *
+	 * @return Element
+	 */
+
+	public function prepend($html = null)
+	{
+		$this->_html = $html . $this->_html;
+		return $this;
+	}
+
+	/**
 	 * clean the element
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @return Element
 	 */
 
 	public function clean()
 	{
-		$this->_attributeArray['value'] = '';
-		$this->_html = '';
+		$this->html('');
 		return $this;
 	}
 

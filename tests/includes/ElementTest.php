@@ -222,6 +222,52 @@ class ElementTest extends TestCase
 	}
 
 	/**
+	 * testAppend
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testAppend()
+	{
+		/* setup */
+
+		$element = new Element('div');
+		$element->html('<span>test</span>');
+
+		/* expect and actual */
+
+		$expect = '<div><span>test</span><span>append</span></div>';
+		$actual = $element->append('<span>append</span>');
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testPrepend
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testPrepend()
+	{
+		/* setup */
+
+		$element = new Element('div');
+		$element->html('<span>test</span>');
+
+		/* expect and actual */
+
+		$expect = '<div><span>prepend</span><span>test</span></div>';
+		$actual = $element->prepend('<span>prepend</span>');
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
 	 * testClean
 	 *
 	 * @since 2.2.0
