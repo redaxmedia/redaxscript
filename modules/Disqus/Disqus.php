@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -67,10 +67,10 @@ class Disqus extends Config
 
 	public static function commentsReplace()
 	{
-		$divElement = new Element('div', array(
+		$divElement = new Html\Element('div', array(
 			'id' => self::$_config['id']
 		));
-		$scriptElement = new Element('script', array(
+		$scriptElement = new Html\Element('script', array(
 			'src' => self::$_config['url']
 		));
 

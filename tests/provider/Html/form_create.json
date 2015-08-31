@@ -1,0 +1,16 @@
+[
+	[
+		"",
+		{
+			"method": "get"
+		},
+		"<form method=\"get\" class=\"js-validate-form form-default\"><input type=\"hidden\" name=\"token\" /></form>"
+	],
+	[
+		{
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		},
+		"",
+		"<form method=\"post\" class=\"js-validate-form form-default\"><input type=\"hidden\" name=\"token\" value=\"0071877d20a65c02d9a1654f109b97dc61416d1a\" /></form>"
+	]
+]

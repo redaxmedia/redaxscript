@@ -1,8 +1,8 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Html;
 
 /**
- * parent class to generate html
+ * children class to generate a element
  *
  * @since 2.2.0
  *
@@ -11,7 +11,7 @@ namespace Redaxscript;
  * @author Henry Ruhs
  */
 
-class Element
+class Element extends HtmlAbstract
 {
 	/**
 	 * tag of the element
@@ -245,22 +245,6 @@ class Element
 	}
 
 	/**
-	 * set html to the element
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $html html of the element
-	 *
-	 * @return Element
-	 */
-
-	public function html($html = null)
-	{
-		$this->_html = $html;
-		return $this;
-	}
-
-	/**
 	 * set text to the element
 	 *
 	 * @since 2.2.0
@@ -276,52 +260,6 @@ class Element
 		{
 			$this->_html = strip_tags($text);
 		}
-		return $this;
-	}
-
-	/**
-	 * append to the element
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $html html to append
-	 *
-	 * @return Element
-	 */
-
-	public function append($html = null)
-	{
-		$this->_html .= $html;
-		return $this;
-	}
-
-	/**
-	 * prepend to the element
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $html html to prepend
-	 *
-	 * @return Element
-	 */
-
-	public function prepend($html = null)
-	{
-		$this->_html = $html . $this->_html;
-		return $this;
-	}
-
-	/**
-	 * clean the element
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return Element
-	 */
-
-	public function clean()
-	{
-		$this->html('');
 		return $this;
 	}
 

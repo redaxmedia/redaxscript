@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\LazyLoad;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -78,7 +78,7 @@ class LazyLoad extends Config
 
 		if (file_exists($src))
 		{
-			$imageElement = new Element('img', array(
+			$imageElement = new Html\Element('img', array(
 				'src' => self::$_config['placeholder'],
 				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
 				'alt' => $options['alt']
@@ -99,7 +99,7 @@ class LazyLoad extends Config
 
 				/* placeholder */
 
-				$placeholderElement = new Element('div', array(
+				$placeholderElement = new Html\Element('div', array(
 					'class' => self::$_config['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
 				));

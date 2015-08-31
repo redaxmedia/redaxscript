@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use SimpleXMLElement;
 
 /**
@@ -60,13 +60,13 @@ class FeedReader extends Config
 
 		/* html elements */
 
-		$titleElement = new Element('h3', array(
+		$titleElement = new Html\Element('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$linkElement = new Element('a', array(
+		$linkElement = new Html\Element('a', array(
 			'target' => '_blank'
 		));
-		$boxElement = new Element('div', array(
+		$boxElement = new Html\Element('div', array(
 			'class' => self::$_config['className']['box']
 		));
 

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
@@ -118,9 +119,9 @@ class Breadcrumb
 
 		/* html elements */
 
-		$linkElement = new Element('a');
-		$itemElement = new Element('li');
-		$listElement = new Element('ul', array(
+		$linkElement = new Html\Element('a');
+		$itemElement = new Html\Element('li');
+		$listElement = new Html\Element('ul', array(
 			'class' => $this->_options['className']['list']
 		));
 

@@ -1,12 +1,13 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Html;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
+use Redaxscript\Tests\TestCase;
 
 /**
- * HelperTest
+ * ElementTest
  *
- * @since 2.2.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @category Tests
@@ -25,7 +26,7 @@ class ElementTest extends TestCase
 
 	public function providerCreate()
 	{
-		return $this->getProvider('tests/provider/element_create.json');
+		return $this->getProvider('tests/provider/Html/element_create.json');
 	}
 
 	/**
@@ -38,7 +39,7 @@ class ElementTest extends TestCase
 
 	public function providerAttr()
 	{
-		return $this->getProvider('tests/provider/element_attr.json');
+		return $this->getProvider('tests/provider/Html/element_attr.json');
 	}
 
 	/**
@@ -51,8 +52,9 @@ class ElementTest extends TestCase
 
 	public function providerClass()
 	{
-		return $this->getProvider('tests/provider/element_class.json');
+		return $this->getProvider('tests/provider/Html/element_class.json');
 	}
+
 	/**
 	 * testCreate
 	 *
@@ -69,7 +71,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element($tag, $attributeArray);
+		$element = new Html\Element($tag, $attributeArray);
 
 		/* actual */
 
@@ -90,7 +92,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 		$elementCopy = $element->copy()->attr('href', 'test');
 
 		/* expect and actual */
@@ -118,7 +120,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 
 		/* actual */
 
@@ -144,7 +146,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 
 		/* actual */
 
@@ -165,7 +167,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('input');
+		$element = new Html\Element('input');
 
 		/* expect and actual */
 
@@ -187,7 +189,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 
 		/* expect and actual */
 
@@ -209,7 +211,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 
 		/* expect and actual */
 
@@ -231,7 +233,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('div');
+		$element = new Html\Element('div');
 		$element->html('<span>test</span>');
 
 		/* expect and actual */
@@ -254,7 +256,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('div');
+		$element = new Html\Element('div');
 		$element->html('<span>test</span>');
 
 		/* expect and actual */
@@ -277,7 +279,7 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Element('a');
+		$element = new Html\Element('a');
 		$element->text('test');
 
 		/* expect and actual */

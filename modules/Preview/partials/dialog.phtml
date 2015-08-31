@@ -2,17 +2,17 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '_default';
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element('h3', array(
 	'class' => 'title_content_sub'
 ));
-$titleDialogElement = new Element('h3', array(
+$titleDialogElement = new Html\Element('h3', array(
 	'class' => 'title_dialog title_dialog' . $suffix
 ));
-$boxDialogElement = new Element('div', array(
+$boxDialogElement = new Html\Element('div', array(
 	'class' => 'box_dialog' . $suffix
 ));
-$textDialogElement = new Element('p');
-$buttonDialogElement = new Element('a', array(
+$textDialogElement = new Html\Element('p');
+$buttonDialogElement = new Html\Element('a', array(
 	'class' => 'button' . $suffix
 ));
 ?>

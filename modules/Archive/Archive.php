@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules\Archive;
 
 use Redaxscript\Db;
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Validator;
@@ -48,11 +48,11 @@ class Archive extends Config
 
 		/* html elements */
 
-		$titleElement = new Element('h3', array(
+		$titleElement = new Html\Element('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$linkElement = new Element('a');
-		$listElement = new Element('ul', array(
+		$linkElement = new Html\Element('a');
+		$listElement = new Html\Element('ul', array(
 			'class' => self::$_config['className']['list'])
 		);
 

@@ -1,12 +1,12 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element('h3', array(
 	'class' => 'title_content_sub'
 ));
-$linkElement = new Element('a');
+$linkElement = new Html\Element('a');
 $linkElement->text(Language::get('preview', '_preview'));
-$titleElement = new Element('h3');
+$titleElement = new Html\Element('h3');
 $titleElement->text(Language::get('preview', '_preview'));
 $linkArray = array(
 	'link_default',

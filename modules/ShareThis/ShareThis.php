@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\ShareThis;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -77,10 +77,10 @@ class ShareThis extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Element('a', array(
+			$linkElement = new Html\Element('a', array(
 				'target' => '_blank'
 			));
-			$listElement = new Element('ul', array(
+			$listElement = new Html\Element('ul', array(
 				'class' => self::$_config['className']['list']
 			));
 

@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\RecentView;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -49,8 +49,8 @@ class RecentView extends Config
 
 		/* html elements */
 
-		$linkElement = new Element('a');
-		$listElement = new Element('ul', array(
+		$linkElement = new Html\Element('a');
+		$listElement = new Html\Element('ul', array(
 				'class' => self::$_config['className']['list'])
 		);
 

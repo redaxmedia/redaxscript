@@ -2,10 +2,10 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '_default';
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element('h3', array(
 	'class' => 'title_content_sub'
 ));
-$buttonElement = new Element('ul', array(
+$buttonElement = new Html\Element('ul', array(
 	'class' => 'button' . $suffix
 ));
 $buttonElement->text(Language::get('preview', '_preview'));

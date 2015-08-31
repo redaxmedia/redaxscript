@@ -1,22 +1,22 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element('h3', array(
 	'class' => 'title_content_sub'
 ));
-$linkElement = new Element('a', array(
+$linkElement = new Html\Element('a', array(
 	'href' => '#'
 ));
 $linkElement->text('link');
-$boxElement = new Element('div', array(
+$boxElement = new Html\Element('div', array(
 	'class' => 'box_note'
 ));
-$fieldTextElement = new Element('input', array(
+$fieldTextElement = new Html\Element('input', array(
 	'type' => 'text',
 	'class' => 'field_text field_note',
 	'placeholder' => 'Placeholder text'
 ));
-$fieldSelectElement = new Element('select', array(
+$fieldSelectElement = new Html\Element('select', array(
 	'class' => 'field_select field_note',
 ));
 $optionNative = '<option>Placeholder text</option>';

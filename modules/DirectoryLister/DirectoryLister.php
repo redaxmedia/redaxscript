@@ -3,8 +3,8 @@ namespace Redaxscript\Modules\DirectoryLister;
 
 use Redaxscript\Db;
 use Redaxscript\Directory;
-use Redaxscript\Element;
 use Redaxscript\Filter;
+use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -87,16 +87,16 @@ class DirectoryLister extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Element('a', array(
+			$linkElement = new Html\Element('a', array(
 				'class' => self::$_config['className']['link']
 			));
-			$textSizeElement = new Element('span', array(
+			$textSizeElement = new Html\Element('span', array(
 				'class' => self::$_config['className']['textSize']
 			));
-			$textDateElement = new Element('span', array(
+			$textDateElement = new Html\Element('span', array(
 				'class' => self::$_config['className']['textDate']
 			));
-			$listElement = new Element('ul', array(
+			$listElement = new Html\Element('ul', array(
 				'class' => self::$_config['className']['list']
 			));
 

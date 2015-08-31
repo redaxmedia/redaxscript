@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
@@ -228,7 +229,7 @@ class Parser
 	protected function _parseReadmore($input = null)
 	{
 		$aliasValidator = new Validator\Alias();
-		$linkElement = new Element('a');
+		$linkElement = new Html\Element('a');
 
 		/* collect output */
 
@@ -268,7 +269,7 @@ class Parser
 	{
 		$output = str_replace($this->_tags['codequote']['search'], $this->_delimiter, $input);
 		$parts = array_filter(explode($this->_delimiter, $output));
-		$preElement = new Element('pre', array(
+		$preElement = new Html\Element('pre', array(
 			'class' => $this->_options['className']['codequote']
 		));
 
