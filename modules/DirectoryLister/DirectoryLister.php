@@ -88,16 +88,16 @@ class DirectoryLister extends Config
 			/* html elements */
 
 			$linkElement = new Element('a', array(
-					'class' => self::$_config['className']['link']
+				'class' => self::$_config['className']['link']
 			));
 			$textSizeElement = new Element('span', array(
-					'class' => self::$_config['className']['textSize']
+				'class' => self::$_config['className']['textSize']
 			));
 			$textDateElement = new Element('span', array(
-					'class' => self::$_config['className']['textDate']
+				'class' => self::$_config['className']['textDate']
 			));
 			$listElement = new Element('ul', array(
-					'class' => self::$_config['className']['list']
+				'class' => self::$_config['className']['list']
 			));
 
 			/* list directory object */

@@ -4,7 +4,7 @@ namespace Redaxscript;
 use Redaxscript\Validator;
 
 /**
- * parent class to provide a location based breadcrumb navigation
+ * parent class to generate a breadcrumb navigation
  *
  * @since 2.1.0
  *
