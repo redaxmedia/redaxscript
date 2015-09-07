@@ -1,10 +1,12 @@
-<p class="mbl">Syntax for your content.</p>
+<?php use Redaxscript\Template as Template; ?>
 
-<code class="box_code">&lt;module&gt;
+<p>Syntax for your content.</p>
+
+<code class="js_code_quote box_code">&lt;module&gt;
 {
 	"ShareThis":
 	{
-		"url": "http://domain.com"
+		"url": "<?php echo Template::registry('root'); ?>"
 	}
 }
 &lt;/module&gt;</code>

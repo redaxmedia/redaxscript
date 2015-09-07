@@ -1,1 +1,3 @@
-Browse <span class="link_default">domain.com/preview</span> to preview elements of your template.
+<?php use Redaxscript\Template as Template; ?>
+
+<p>Browse <a href="<?php echo Template::registry('rewriteRoute'); ?>preview" class="link_default">preview</a> to preview elements of your template.</p>

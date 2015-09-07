@@ -2,12 +2,17 @@
 
 <code class="js_code_quote box_code">&lt;module&gt;
 {
-	"FeedReader":
+	"DirectoryLister":
 	{
-		"url": "http://domain.com/feed.atom",
+		"directory": "directoryLister",
 		"options":
 		{
-			"limit": 10
+			"hash": "directory",
+			"replace:"
+			{
+				"_": "",
+				".": ""
+			}
 		}
 	}
 }

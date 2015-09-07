@@ -8,13 +8,13 @@
  * 5. support
  * 6. version
  * 7. clean alias
- * 8. fetch keyword
+ * 8. g keyword
  * 9. auto resize
  * 10. validate search
  * 11. enable indent
  * 12. unmask password
  *
- * @since 2.2.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -103,14 +103,15 @@
 			});
 		}
 
-		/* @section 8. fetch keyword */
+		/* @section 8. g keyword */
 
 		if (typeof $.fn.fetchKeyword === 'function')
 		{
-			win.test('generateKeyword', function ()
+			win.test('fetchKeyword', function ()
 			{
 				var expect = 'hello world',
-					actual = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum', {
+					actual = $.fn.fetchKeyword('<span>lorim <strong> hello world </strong> impsum',
+					{
 						element:
 						{
 							target: 'h1, h2, h3, strong'

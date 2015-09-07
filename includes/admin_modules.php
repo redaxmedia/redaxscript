@@ -187,7 +187,7 @@ function admin_modules_form()
 		$route = 'admin/process/modules/' . $id;
 	}
 
-	/* docs directory object */
+	/* directory object */
 
 	$docs_directory = new Redaxscript\Directory();
 	$docs_directory ->init('modules/' . $alias . '/docs');
@@ -205,7 +205,7 @@ function admin_modules_form()
 	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
 	foreach ($docs_directory_array as $key => $value)
 	{
-		$output .= '<li class="item_third">' . anchor_element('internal', '', '', substr($value, 0, -6), FULL_ROUTE . '#tab-'. ($key + 3)) . '</li>';
+		$output .= '<li class="item_third">' . anchor_element('internal', '', '', str_replace('.phtml', '', $value), FULL_ROUTE . '#tab-'. ($key + 3)) . '</li>';
 	}
 	$output .= '</ul>';
 
@@ -244,12 +244,16 @@ function admin_modules_form()
 		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
 	}
 
+	/* template object */
+
+	$template = new Redaxscript\Template;
+
 	/* collect docs set */
 
 	foreach ($docs_directory_array as $key => $value)
 	{
 		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'js_set_tab set_tab set_tab_admin', '', '', 'docs') . '<ul>';
-		$output .= '<li>' . file_get_contents('modules/' . $alias . '/docs/' . $value) . '</li></ul></fieldset>';
+		$output .= '<li>' . $template->partial('modules/' . $alias . '/docs/' . $value) . '</li></ul></fieldset>';
 	}
 	$output .= '</div>';
 
