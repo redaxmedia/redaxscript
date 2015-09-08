@@ -26,22 +26,20 @@ $boxArray = array(
 
 <?php echo $titlePartialElement->text('.js_code_quote box_code'); ?>
 
-<?php echo $boxElement->copy()->addClass('js_code_quote box_code')->text(htmlspecialchars(
-'<module>
+<?php echo $boxElement->copy()->addClass('js_code_quote box_code')->text('&lt;module&gt;
 {
 	"ModuleName":
 	{
 		"parameter": "value"
 	}
 }
-</module>'
-)); ?>
+&lt;/module&gt;'); ?>
 
 <!-- box quote -->
 
 <?php echo $titlePartialElement->text('.box_quote'); ?>
 
-<blockquote class="box_quote">Redaxscript is an ultra lightweight CMS.</blockquote>
+<blockquote class="box_quote">Ultra lightweight Content Management System for MySQL, PostgreSQL and SQLite.</blockquote>
 <p>Placeholder text to demonstrate spacing.</p>
 
 <!-- box line -->
