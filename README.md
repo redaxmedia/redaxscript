@@ -5,7 +5,7 @@
 Redaxscript
 ===========
 
-> Redaxscript is an ultra lightweight Content Management System, simplifying the world of complex online projects. Experience the future of web design and development - leave behind the confusion and build websites intuitively.
+> Ultra lightweight Content Management System for MySQL, PostgreSQL and SQLite.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
