@@ -1,5 +1,10 @@
 [
 	[
+		"",
+		"prepend",
+		"<div>prepend</div>"
+	],
+	[
 		"<span>test</span>",
 		"<span>prepend</span>",
 		"<div><span>prepend</span><span>test</span></div>"

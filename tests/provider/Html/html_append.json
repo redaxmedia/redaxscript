@@ -1,5 +1,10 @@
 [
 	[
+		"",
+		"append",
+		"<div>append</div>"
+	],
+	[
 		"<span>test</span>",
 		"<span>append</span>",
 		"<div><span>test</span><span>append</span></div>"
