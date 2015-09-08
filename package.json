@@ -1,6 +1,6 @@
 {
 	"name": "redaxscript",
-	"description": "Ultra lightweight Content Management System for MySQL, PostgreSQL and SQLite",
+	"description": "Ultra lightweight Content Management System",
 	"version": "2.5.0",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
