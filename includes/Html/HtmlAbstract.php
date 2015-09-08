@@ -79,7 +79,7 @@ abstract class HtmlAbstract
 
 	public function clean()
 	{
-		$this->html('');
+		$this->html(null);
 		return $this;
 	}
 }

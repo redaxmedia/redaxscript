@@ -77,44 +77,4 @@ class FormTest extends TestCase
 
 		$this->assertEquals($expect, $actual);
 	}
-
-	/**
-	 * testHtml
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testHtml()
-	{
-	}
-
-	/**
-	 * testAppend
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testAppend()
-	{
-	}
-
-	/**
-	 * testPrepend
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testPrepend()
-	{
-	}
-
-	/**
-	 * testClean
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testClean()
-	{
-	}
 }

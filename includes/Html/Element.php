@@ -240,7 +240,7 @@ class Element extends HtmlAbstract
 
 	public function val($value = null)
 	{
-		$this->_attributeArray['value'] = $value;
+		$this->_attributeArray['value'] = trim($value);
 		return $this;
 	}
 

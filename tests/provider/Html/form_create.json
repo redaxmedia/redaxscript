@@ -4,7 +4,7 @@
 		{
 			"method": "get"
 		},
-		"<form method=\"get\" class=\"js-validate-form form-default\"><input type=\"hidden\" name=\"token\" /></form>"
+		"<form method=\"get\" class=\"js-validate-form form-default\"></form>"
 	],
 	[
 		{

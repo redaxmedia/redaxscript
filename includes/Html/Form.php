@@ -78,6 +78,7 @@ class Form extends HtmlAbstract
 	public function render()
 	{
 		$output = Hook::trigger('form_start');
+		$token = $this->_registry->get('token');
 
 		/* html elements */
 
@@ -86,11 +87,14 @@ class Form extends HtmlAbstract
 			'action' => $this->_options['action'],
 			'class' => $this->_options['className']['form']
 		));
-		$tokenElement = new Element('input', array(
-			'type' => 'hidden',
-			'name' => 'token',
-			'value' => $this->_registry->get('token')
-		));
+		if ($token)
+		{
+			$tokenElement = new Element('input', array(
+				'type' => 'hidden',
+				'name' => 'token',
+				'value' => $token
+			));
+		}
 
 		/* collect output */
 

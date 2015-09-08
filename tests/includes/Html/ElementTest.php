@@ -56,6 +56,32 @@ class ElementTest extends TestCase
 	}
 
 	/**
+	 * providerVal
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerVal()
+	{
+		return $this->getProvider('tests/provider/Html/element_val.json');
+	}
+
+	/**
+	 * providerText
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerText()
+	{
+		return $this->getProvider('tests/provider/Html/element_text.json');
+	}
+
+	/**
 	 * testCreate
 	 *
 	 * @since 2.2.0
@@ -160,41 +186,23 @@ class ElementTest extends TestCase
 	/**
 	 * testVal
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
+	 *
+	 * @param array $value
+	 * @param string $expect
+	 *
+	 * @dataProvider providerVal
 	 */
 
-	public function testVal()
+	public function testVal($value = null, $expect = null)
 	{
 		/* setup */
 
 		$element = new Html\Element('input');
 
-		/* expect and actual */
+		/* actual */
 
-		$expect = '<input value="test" />';
-		$actual = $element->val('test');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testHtml
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testHtml()
-	{
-		/* setup */
-
-		$element = new Html\Element('a');
-
-		/* expect and actual */
-
-		$expect = '<a><span>test</span></a>';
-		$actual = $element->html('<span>test</span>');
+		$actual = $element->val($value);
 
 		/* compare */
 
@@ -204,88 +212,23 @@ class ElementTest extends TestCase
 	/**
 	 * testText
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
+	 *
+	 * @param array $text
+	 * @param string $expect
+	 *
+	 * @dataProvider providerText
 	 */
 
-	public function testText()
+	public function testText($text = null, $expect = null)
 	{
 		/* setup */
 
 		$element = new Html\Element('a');
 
-		/* expect and actual */
+		/* actual */
 
-		$expect = '<a>test</a>';
-		$actual = $element->text('<span>test</span>');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testAppend
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testAppend()
-	{
-		/* setup */
-
-		$element = new Html\Element('div');
-		$element->html('<span>test</span>');
-
-		/* expect and actual */
-
-		$expect = '<div><span>test</span><span>append</span></div>';
-		$actual = $element->append('<span>append</span>');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testPrepend
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testPrepend()
-	{
-		/* setup */
-
-		$element = new Html\Element('div');
-		$element->html('<span>test</span>');
-
-		/* expect and actual */
-
-		$expect = '<div><span>prepend</span><span>test</span></div>';
-		$actual = $element->prepend('<span>prepend</span>');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testClean
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testClean()
-	{
-		/* setup */
-
-		$element = new Html\Element('a');
-		$element->text('test');
-
-		/* expect and actual */
-
-		$expect = '<a></a>';
-		$actual = $element->clean();
+		$actual = $element->text($text);
 
 		/* compare */
 
