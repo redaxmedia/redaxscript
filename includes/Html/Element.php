@@ -55,14 +55,6 @@ class Element extends HtmlAbstract
 	protected $_attributeArray = array();
 
 	/**
-	 * html of the element
-	 *
-	 * @var string
-	 */
-
-	protected $_html;
-
-	/**
 	 * constructor of the class
 	 *
 	 * @since 2.2.0

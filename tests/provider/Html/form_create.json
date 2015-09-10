@@ -13,7 +13,7 @@
 			"token": false
 		},
 		{
-			"prefix": "<form method=\"post\" class=\"js-validate-form form-default\"><input type=\"number\" name=\"task\"",
+			"prefix": "<form method=\"post\" class=\"js-validate-form form-default\"><ul><li><label for=\"task\" class=\"label_default\">",
 			"suffix": "</form>"
 		}
 	],

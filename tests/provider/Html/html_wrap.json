@@ -1,0 +1,17 @@
+[
+	[
+		"",
+		"div",
+		"<div></div>"
+	],
+	[
+		"test",
+		"div",
+		"<div><div>test</div></div>"
+	],
+	[
+		"<li>test</li>",
+		"ul",
+		"<div><ul><li>test</li></ul></div>"
+	]
+]

@@ -43,7 +43,11 @@ class Form extends HtmlAbstract
 
 	protected $_options = array(
 		'className' => array(
-			'form' => 'js-validate-form form-default'
+			'form' => 'js-validate-form form-default',
+			'captcha' => array(
+				'field' => 'field_text field_note',
+				'label' => 'label_default'
+			)
 		),
 		'method' => 'post',
 		'action' => '',
@@ -104,7 +108,7 @@ class Form extends HtmlAbstract
 		));
 		$formElement->html($this->_html);
 
-		/* captcha */
+		/* captcha task */
 
 		if ($this->_options['captcha'])
 		{
@@ -113,18 +117,28 @@ class Form extends HtmlAbstract
 
 			/* task */
 
+			$labelElement = new Element('label', array(
+				'for' => 'task',
+				'class' => $this->_options['className']['captcha']['label']
+			));
+			$labelElement->text($captcha->getTask());
 			$taskElement = new Element('input', array(
 				'type' => 'number',
+				'id' => 'task',
 				'name' => 'task',
-				'value' => $captcha->getTask(),
+				'class' => $this->_options['className']['captcha']['field'],
 				'min' => 1,
 				'max' => 2,
 				'required' => 'required'
 			));
-			$formElement->append($taskElement);
+			$formElement->append('<li>' . $labelElement . $taskElement . '</li>');
+		}
+		$formElement->wrap('ul');
 
-			/* solution */
+		/* captcha solution */
 
+		if ($this->_options['captcha'])
+		{
 			$solutionElement = new Element('input', array(
 				'type' => 'hidden',
 				'name' => 'solution',

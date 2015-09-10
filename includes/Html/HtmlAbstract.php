@@ -22,11 +22,11 @@ abstract class HtmlAbstract
 	protected $_html;
 
 	/**
-	 * set html to the element
+	 * set the html
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $html html of the form
+	 * @param string $html html to set
 	 *
 	 * @return Element
 	 */
@@ -38,7 +38,7 @@ abstract class HtmlAbstract
 	}
 
 	/**
-	 * append to the element
+	 * append to the html
 	 *
 	 * @since 2.6.0
 	 *
@@ -54,7 +54,7 @@ abstract class HtmlAbstract
 	}
 
 	/**
-	 * prepend to the element
+	 * prepend to the html
 	 *
 	 * @since 2.6.0
 	 *
@@ -70,7 +70,26 @@ abstract class HtmlAbstract
 	}
 
 	/**
-	 * clean the element
+	 * wrap the html
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $tag tag of the wrap
+	 *
+	 * @return Element
+	 */
+
+	public function wrap($tag = null)
+	{
+		if ($tag && $this->_html)
+		{
+			$this->_html = '<' . $tag . '>' . $this->_html . '</' . $tag . '>' ;
+		}
+		return $this;
+	}
+
+	/**
+	 * clean the html
 	 *
 	 * @since 2.6.0
 	 *
