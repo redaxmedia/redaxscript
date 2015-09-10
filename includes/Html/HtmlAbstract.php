@@ -83,7 +83,7 @@ abstract class HtmlAbstract
 	{
 		if ($tag && $this->_html)
 		{
-			$this->_html = '<' . $tag . '>' . $this->_html . '</' . $tag . '>' ;
+			$this->_html = '<' . $tag . '>' . $this->_html . '</' . $tag . '>';
 		}
 		return $this;
 	}
