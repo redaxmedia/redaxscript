@@ -1,8 +1,11 @@
 <?php
 namespace Redaxscript\Html;
 
+use Redaxscript\Captcha;
 use Redaxscript\Hook;
+use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * children class to generate a form
@@ -25,6 +28,14 @@ class Form extends HtmlAbstract
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * options of the form
 	 *
 	 * @var array
@@ -35,7 +46,9 @@ class Form extends HtmlAbstract
 			'form' => 'js-validate-form form-default'
 		),
 		'method' => 'post',
-		'action' => ''
+		'action' => '',
+		'captcha' => false,
+		'token' => true
 	);
 
 	/**
@@ -44,11 +57,13 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param Registry $registry instance of the registry class
+	 * @param Language $language instance of the language class
 	 */
 
-	public function __construct(Registry $registry)
+	public function __construct(Registry $registry, Language $language)
 	{
 		$this->_registry = $registry;
+		$this->_language = $language;
 	}
 
 	/**
@@ -87,19 +102,80 @@ class Form extends HtmlAbstract
 			'action' => $this->_options['action'],
 			'class' => $this->_options['className']['form']
 		));
-		if ($token)
+		$formElement->html($this->_html);
+
+		/* captcha */
+
+		if ($this->_options['captcha'])
+		{
+			$captcha = new Captcha($this->_language->getInstance());
+			$captcha->init();
+
+			/* task */
+
+			$taskElement = new Element('input', array(
+				'type' => 'number',
+				'name' => 'task',
+				'value' => $captcha->getTask(),
+				'min' => 1,
+				'max' => 2,
+				'required' => 'required'
+			));
+			$formElement->append($taskElement);
+
+			/* solution */
+
+			$solutionElement = new Element('input', array(
+				'type' => 'hidden',
+				'name' => 'solution',
+				'value' => $captcha->getSolution()
+			));
+			$formElement->append($solutionElement);
+		}
+
+		/* token */
+
+		if ($token && $this->_options['token'])
 		{
 			$tokenElement = new Element('input', array(
 				'type' => 'hidden',
 				'name' => 'token',
 				'value' => $token
 			));
+			$formElement->append($tokenElement);
 		}
 
 		/* collect output */
 
-		$output .= $formElement->html($this->_html)->append($tokenElement);
+		$output .= $formElement;
 		$output .= Hook::trigger('form_end');
 		return $output;
+	}
+
+	/**
+	 * process post and get
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param Request $request instance of the request class
+	 *
+	 * @return string
+	 */
+
+	public function process(Request $request)
+	{
+		$post = $request->getPost();
+		$query = $request->getQuery();
+
+		/* handle post and get */
+
+		if ($post)
+		{
+			return $post;
+		}
+		else
+		{
+			return $query;
+		}
 	}
 }

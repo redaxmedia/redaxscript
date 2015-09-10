@@ -7,6 +7,26 @@
 		"<form method=\"get\" class=\"js-validate-form form-default\"></form>"
 	],
 	[
+		"",
+		{
+			"captcha": true,
+			"token": false
+		},
+		{
+			"prefix": "<form method=\"post\" class=\"js-validate-form form-default\"><input type=\"number\" name=\"task\"",
+			"suffix": "</form>"
+		}
+	],
+	[
+		{
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		},
+		{
+			"token": false
+		},
+		"<form method=\"post\" class=\"js-validate-form form-default\"></form>"
+	],
+	[
 		{
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		},

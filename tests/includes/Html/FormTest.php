@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Html;
 
 use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCase;
 
@@ -26,6 +27,14 @@ class FormTest extends TestCase
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * setUp
 	 *
 	 * @since 2.6.0
@@ -34,6 +43,7 @@ class FormTest extends TestCase
 	protected function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
@@ -66,7 +76,7 @@ class FormTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$form = new Html\Form($this->_registry);
+		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init($options);
 
 		/* actual */
@@ -75,6 +85,14 @@ class FormTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		if ($options['captcha'])
+		{
+			$this->assertStringStartsWith($expect['prefix'], $actual);
+			$this->assertStringEndsWith($expect['suffix'], $actual);
+		}
+		else
+		{
+			$this->assertEquals($expect, $actual);
+		}
 	}
 }
