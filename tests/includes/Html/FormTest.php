@@ -85,14 +85,6 @@ class FormTest extends TestCase
 
 		/* compare */
 
-		if ($options['captcha'])
-		{
-			$this->assertStringStartsWith($expect['prefix'], $actual);
-			$this->assertStringEndsWith($expect['suffix'], $actual);
-		}
-		else
-		{
-			$this->assertEquals($expect, $actual);
-		}
+		$this->assertEquals($expect, $actual);
 	}
 }
