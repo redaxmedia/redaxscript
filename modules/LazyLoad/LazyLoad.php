@@ -79,9 +79,9 @@ class LazyLoad extends Config
 		if (file_exists($src))
 		{
 			$imageElement = new Html\Element('img', array(
-				'src' => self::$_config['placeholder'],
+				'alt' => $options['alt'],
 				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
-				'alt' => $options['alt']
+				'src' => self::$_config['placeholder']
 			));
 
 			/* collect output */

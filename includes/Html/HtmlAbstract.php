@@ -79,7 +79,7 @@ abstract class HtmlAbstract
 	 * @return Element
 	 */
 
-	public function wrap($tag = null)
+	public function wrapInner($tag = null)
 	{
 		if ($tag && $this->_html)
 		{
