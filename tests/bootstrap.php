@@ -37,7 +37,7 @@ if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request
 		$config->set('dbType', 'pgsql');
 		$config->set('dbUser', 'postgres');
 	}
-	$config->set('dbHost', 'localhost');
+	$config->set('dbHost', '127.0.0.1');
 	$config->set('dbName', 'test');
 	$config->set('dbPassword', 'test');
 }
