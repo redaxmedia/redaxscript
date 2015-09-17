@@ -1,0 +1,14 @@
+[
+	[
+		"button",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"button\"></button></form>"
+	],
+	[
+		"submit",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-submit button-default\" type=\"submit\">Submit</button></form>"
+	],
+	[
+		"reset",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-reset button-default\" type=\"reset\">Reset</button></form>"
+	]
+]

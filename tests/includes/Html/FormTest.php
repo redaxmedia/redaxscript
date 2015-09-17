@@ -73,6 +73,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerButton
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerButton()
+	{
+		return $this->getProvider('tests/provider/Html/form_button.json');
+	}
+
+	/**
 	 * testCreate
 	 *
 	 * @param array $options
@@ -118,6 +131,35 @@ class FormTest extends TestCase
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
 		$form->token();
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testButton
+	 *
+	 * @param string $method
+	 * @param string $expect
+	 *
+	 * @dataProvider providerButton
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testButton($method = null, $expect = null)
+	{
+		/* setup */
+
+		$this->_registry->init();
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->$method();
 
 		/* actual */
 
