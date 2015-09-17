@@ -60,9 +60,21 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerToken
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerToken()
+	{
+		return $this->getProvider('tests/provider/Html/form_token.json');
+	}
+
+	/**
 	 * testCreate
 	 *
-	 * @param array $registry
 	 * @param array $options
 	 * @param string $expect
 	 *
@@ -71,17 +83,45 @@ class FormTest extends TestCase
 	 * @since 2.6.0
 	 */
 
-	public function testCreate($registry = array(), $options = array(), $expect = null)
+	public function testCreate($options = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init($options);
 
 		/* actual */
 
-		$actual = $form->render();
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testToken
+	 *
+	 * @param array $registry
+	 * @param string $expect
+	 *
+	 * @dataProvider providerToken
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testToken($registry = array(), $expect = null)
+	{
+		/* setup */
+
+		$this->_registry->init($registry);
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->token();
+
+		/* actual */
+
+		$actual = $form;
 
 		/* compare */
 

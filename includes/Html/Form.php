@@ -42,7 +42,7 @@ class Form extends HtmlAbstract
 	protected $_options = array(
 		'className' => array(
 			'form' => 'js-validate-form form-default',
-			'button' => 'button-default',
+			'button' => 'js-button button-default',
 			'submit' => 'js-submit button-default',
 			'reset' => 'js-reset button-default'
 		),

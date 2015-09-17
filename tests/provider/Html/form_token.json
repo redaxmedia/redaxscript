@@ -1,0 +1,12 @@
+[
+	[
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"></form>"
+	],
+	[
+		{
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input name=\"token\" type=\"hidden\" value=\"0071877d20a65c02d9a1654f109b97dc61416d1a\" /></form>"
+	]
+]
