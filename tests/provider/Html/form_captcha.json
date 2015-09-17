@@ -1,0 +1,8 @@
+[
+	[
+		{
+			"prefix": "<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"label-default\" for=\"task\">",
+			"suffix": "</form>"
+		}
+	]
+]

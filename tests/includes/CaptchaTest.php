@@ -83,6 +83,29 @@ class CaptchaTest extends TestCase
 	}
 
 	/**
+	 * testGetRange
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testGetRange()
+	{
+		/* setup */
+
+		$captcha = new Captcha($this->_language);
+		$captcha->init();
+
+		/* actual */
+
+		$min = $captcha->getMin();
+		$max = $captcha->getMax();
+
+		/* compare */
+
+		$this->assertTrue($min < $max);
+	}
+
+	/**
 	 * testPlus
 	 *
 	 * @since 2.2.0

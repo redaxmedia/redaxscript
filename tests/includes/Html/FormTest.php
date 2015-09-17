@@ -73,6 +73,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerCaptcha
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerCaptcha()
+	{
+		return $this->getProvider('tests/provider/Html/form_captcha.json');
+	}
+
+	/**
 	 * providerButton
 	 *
 	 * @since 2.6.0
@@ -110,6 +123,34 @@ class FormTest extends TestCase
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testCaptcha
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerCaptcha
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testCaptcha($expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->captcha();
+
+		/* actual */
+
+		$actual = $form->render();
+
+		/* compare */
+
+		$this->assertStringStartsWith($expect['prefix'], $actual);
+		$this->assertStringEndsWith($expect['suffix'], $actual);
 	}
 
 	/**
@@ -156,7 +197,6 @@ class FormTest extends TestCase
 	{
 		/* setup */
 
-		$this->_registry->init();
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
 		$form->$method();

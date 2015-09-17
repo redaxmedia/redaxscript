@@ -142,6 +142,32 @@ class Captcha
 	}
 
 	/**
+	 * get the minimum range
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+
+	public function getMin()
+	{
+		return $this->_range['min'];
+	}
+
+	/**
+	 * get the maximum range
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+
+	public function getMax()
+	{
+		return $this->_range['max'];
+	}
+
+	/**
 	 * get the mathematical operator used for the task
 	 *
 	 * @since 2.0.0
@@ -178,8 +204,8 @@ class Captcha
 	{
 		/* range */
 
-		$min = $this->_range['min'];
-		$max = $this->_range['max'];
+		$min = $this->getMin();
+		$max = $this->getMax();
 
 		/* random numbers */
 

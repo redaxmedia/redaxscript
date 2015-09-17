@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Html;
 
+use Redaxscript\Captcha;
 use Redaxscript\Hook;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -42,6 +43,8 @@ class Form extends HtmlAbstract
 	protected $_options = array(
 		'className' => array(
 			'form' => 'js-validate-form form-default',
+			'field' => 'field-default',
+			'label' => 'label-default',
 			'button' => 'js-button button-default',
 			'submit' => 'js-submit button-default',
 			'reset' => 'js-reset button-default'
@@ -93,6 +96,50 @@ class Form extends HtmlAbstract
 		{
 			$this->_options = array_unique(array_merge($this->_options, $options));
 		}
+	}
+
+	/**
+	 * append the captcha
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+
+	public function captcha()
+	{
+		/* captcha */
+
+		$captcha = new Captcha($this->_language->getInstance());
+		$captcha->init();
+
+		/* task */
+
+		$labelElement = new Element('label', array(
+			'class' => $this->_options['className']['label'],
+			'for' => 'task'
+		));
+		$labelElement->text($captcha->getTask());
+		$taskElement = new Element('input', array(
+			'class' => $this->_options['className']['field'],
+			'id' => 'task',
+			'min' => $captcha->getMin(),
+			'max' => $captcha->getMax(),
+			'name' => 'task',
+			'required' => 'required',
+			'type' => 'number'
+		));
+		$this->append($labelElement . $taskElement);
+
+		/* solution */
+
+		$solutionElement = new Element('input', array(
+			'name' => 'solution',
+			'type' => 'hidden',
+			'value' => $captcha->getSolution()
+		));
+		$this->append($solutionElement);
+		return $this;
 	}
 
 	/**
