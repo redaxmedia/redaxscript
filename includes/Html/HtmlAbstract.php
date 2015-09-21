@@ -70,25 +70,6 @@ abstract class HtmlAbstract
 	}
 
 	/**
-	 * wrap the html
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $tag tag of the wrap
-	 *
-	 * @return Element
-	 */
-
-	public function wrapInner($tag = null)
-	{
-		if ($tag && $this->_html)
-		{
-			$this->_html = '<' . $tag . '>' . $this->_html . '</' . $tag . '>';
-		}
-		return $this;
-	}
-
-	/**
 	 * clean the html
 	 *
 	 * @since 2.6.0

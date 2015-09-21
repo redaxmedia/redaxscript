@@ -44,15 +44,32 @@ class Contact extends Module
 		$formElement->init(array(
 			'className' => array(
 				'form' => 'js_validate_form form_default',
+				'field' => 'field_text',
+				'label' => 'label',
 				'button' => 'button_default',
 				'submit' => 'js_submit button_default',
 				'reset' => 'js_reset button_default'
 			),
 			'name' => 'contact'
 		));
+		$labelElement = new Html\Element('label', array(
+			'class' => 'label'
+		));
+		$fieldElement = new Html\Element('input', array(
+			'class' => 'field_text',
+			'type' => 'text'
+		));
+
+		/* build form */
+
 		$formElement
-			->append('<li><input class="field_note field_text" /></li>')
-			->wrapInner('ul')
+			->append('<ul><li>')
+			->append($labelElement->copy()->attr('for', 'test1')->text('text for label'))
+			->append($fieldElement->copy()->attr('id', 'test1'))
+			->append('</li><li>')
+			->captcha('task')
+			->append('</li></ul>')
+			->captcha('solution')
 			->token()
 			->submit()
 			->reset();

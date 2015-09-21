@@ -35,6 +35,14 @@ class Form extends HtmlAbstract
 	protected $_language;
 
 	/**
+	 * captcha of the form
+	 *
+	 * @var object
+	 */
+
+	protected $_captcha;
+
+	/**
 	 * options of the form
 	 *
 	 * @var array
@@ -51,7 +59,8 @@ class Form extends HtmlAbstract
 		),
 		'action' => '',
 		'method' => 'post',
-		'name' => ''
+		'name' => '',
+		'captcha' => true
 	);
 
 	/**
@@ -96,6 +105,14 @@ class Form extends HtmlAbstract
 		{
 			$this->_options = array_unique(array_merge($this->_options, $options));
 		}
+
+		/* captcha */
+
+		if ($this->_options['captcha'])
+		{
+			$this->_captcha = new Captcha($this->_language->getInstance());
+			$this->_captcha->init();
+		}
 	}
 
 	/**
@@ -103,42 +120,45 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
+	 * @param string $type type of the captcha
+	 *
 	 * @return string
 	 */
 
-	public function captcha()
+	public function captcha($type = null)
 	{
-		/* captcha */
-
-		$captcha = new Captcha($this->_language->getInstance());
-		$captcha->init();
-
 		/* task */
 
-		$labelElement = new Element('label', array(
-			'class' => $this->_options['className']['label'],
-			'for' => 'task'
-		));
-		$labelElement->text($captcha->getTask());
-		$taskElement = new Element('input', array(
-			'class' => $this->_options['className']['field'],
-			'id' => 'task',
-			'min' => $captcha->getMin(),
-			'max' => $captcha->getMax(),
-			'name' => 'task',
-			'required' => 'required',
-			'type' => 'number'
-		));
-		$this->append($labelElement . $taskElement);
+		if ($type === 'task')
+		{
+			$labelElement = new Element('label', array(
+				'class' => $this->_options['className']['label'],
+				'for' => 'task'
+			));
+			$labelElement->text($this->_captcha->getTask());
+			$taskElement = new Element('input', array(
+				'class' => $this->_options['className']['field'],
+				'id' => 'task',
+				'min' => $this->_captcha->getMin(),
+				'max' => $this->_captcha->getMax(),
+				'name' => 'task',
+				'required' => 'required',
+				'type' => 'number'
+			));
+			$this->append($labelElement . $taskElement);
+		}
 
 		/* solution */
 
-		$solutionElement = new Element('input', array(
-			'name' => 'solution',
-			'type' => 'hidden',
-			'value' => $captcha->getSolution()
-		));
-		$this->append($solutionElement);
+		if ($type === 'solution')
+		{
+			$solutionElement = new Element('input', array(
+				'name' => 'solution',
+				'type' => 'hidden',
+				'value' => $this->_captcha->getSolution()
+			));
+			$this->append($solutionElement);
+		}
 		return $this;
 	}
 

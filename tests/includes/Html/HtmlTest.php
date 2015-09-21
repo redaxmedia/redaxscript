@@ -56,19 +56,6 @@ class HtmlTest extends TestCase
 	}
 
 	/**
-	 * providerWrapInner
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerWrapInner()
-	{
-		return $this->getProvider('tests/provider/Html/html_wrap_inner.json');
-	}
-
-	/**
 	 * testHtml
 	 *
 	 * @since 2.6.0
@@ -144,34 +131,6 @@ class HtmlTest extends TestCase
 		/* actual */
 
 		$actual = $element->prepend($prepend);
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testWrapInner
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $html
-	 * @param string $wrap
-	 * @param string $expect
-	 *
-	 * @dataProvider providerWrapInner
-	 */
-
-	public function testWrapInner($html = null, $wrap = null, $expect = null)
-	{
-		/* setup */
-
-		$element = new Html\Element('div');
-		$element->html($html);
-
-		/* actual */
-
-		$actual = $element->wrapInner($wrap);
 
 		/* compare */
 
