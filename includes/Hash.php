@@ -20,7 +20,7 @@ class Hash
 	 */
 
 	protected static $_config;
-	
+
 	/**
 	 * salted hash
 	 *
@@ -79,7 +79,7 @@ class Hash
 	}
 
     /**
-     * validate the hash
+     * verify the hash
      *
      * @since 2.6.0
      *

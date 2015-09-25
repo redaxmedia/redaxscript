@@ -73,10 +73,7 @@ class Element extends HtmlAbstract
 
 		if (is_array($attributeArray))
 		{
-			foreach ($attributeArray as $attribute => $value)
-			{
-				$this->attr($attribute, $value);
-			}
+			$this->attr($attributeArray);
 		}
 		return $this;
 	}
@@ -122,7 +119,7 @@ class Element extends HtmlAbstract
 	{
 		if (is_array($attribute))
 		{
-			$this->_attributeArray = array_merge($this->_attributeArray, $attribute);
+			$this->_attributeArray = array_merge($this->_attributeArray, array_map('trim', $attribute));
 		}
 		else if (is_string($attribute) && is_string($value))
 		{
