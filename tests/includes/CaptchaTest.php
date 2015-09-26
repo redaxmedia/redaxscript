@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Captcha;
-use Redaxscript\Db;
 use Redaxscript\Language;
 
 /**
@@ -74,12 +73,11 @@ class CaptchaTest extends TestCase
 
 		/* actual */
 
-		$raw = $captcha->getSolution('raw');
-		$hash = $captcha->getSolution('hash');
+		$solution = $captcha->getSolution();
 
 		/* compare */
 
-		$this->assertEquals($hash, sha1($raw));
+		$this->assertTrue(is_numeric($solution));
 	}
 
 	/**
@@ -120,11 +118,11 @@ class CaptchaTest extends TestCase
 
 		/* actual */
 
-		$actual = $captcha->getSolution('hash');
+		$actual = $captcha->getSolution();
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertTrue(is_numeric($actual));
 	}
 
 	/**
@@ -142,10 +140,10 @@ class CaptchaTest extends TestCase
 
 		/* actual */
 
-		$actual = $captcha->getSolution('hash');
+		$actual = $captcha->getSolution();
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertTrue(is_numeric($actual));
 	}
 }

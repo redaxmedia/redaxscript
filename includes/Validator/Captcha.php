@@ -1,7 +1,9 @@
 <?php
 namespace Redaxscript\Validator;
 
+use Redaxscript\Config;
 use Redaxscript\Db;
+use Redaxscript\Hash;
 
 /**
  * children class to validate captcha raw again hash
@@ -30,10 +32,11 @@ class Captcha implements ValidatorInterface
 	public function validate($raw = null, $hash = null)
 	{
 		$output = ValidatorInterface::FAILED;
+		$captchaHash = new Hash(Config::getInstance());
 
-		/* validate raw again hash */
+		/* validate captcha */
 
-		if (sha1($raw) === $hash || Db::getSettings('captcha') < 1)
+		if ($captchaHash->validate($raw, $hash) || Db::getSettings('captcha') < 1)
 		{
 			$output = ValidatorInterface::PASSED;
 		}

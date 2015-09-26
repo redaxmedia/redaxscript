@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Validator;
 
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\Validator;
 
@@ -17,6 +18,29 @@ use Redaxscript\Validator;
 
 class CaptchaTest extends TestCase
 {
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 2.6.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 2.6.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+	}
+
 	/**
 	 * providerValidatorCaptcha
 	 *
@@ -33,16 +57,16 @@ class CaptchaTest extends TestCase
 	/**
 	 * testCaptcha
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @param string $raw
-	 * @param string $hash
+	 * @param array $hashArray
 	 * @param integer $expect
 	 *
 	 * @dataProvider providerValidatorCaptcha
 	 */
 
-	public function testCaptcha($raw = null, $hash = null, $expect = null)
+	public function testCaptcha($raw = null, $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
@@ -50,7 +74,7 @@ class CaptchaTest extends TestCase
 
 		/* actual */
 
-		$actual = $validator->validate($raw, $hash);
+		$actual = $validator->validate($raw, function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 
 		/* compare */
 

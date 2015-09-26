@@ -40,6 +40,7 @@ if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request
 	$config->set('dbHost', '127.0.0.1');
 	$config->set('dbName', 'test');
 	$config->set('dbPassword', 'test');
+	$config->set('dbSalt', 'test');
 }
 
 /* sqlite */

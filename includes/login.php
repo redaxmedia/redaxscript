@@ -61,11 +61,13 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
+		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$captchaHash->init($captcha->getSolution());
 		if (LOGGED_IN == TOKEN)
 		{
-			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution('raw'));
+			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
 		}
-		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 	}
 
 	/* collect hidden and button output */
@@ -145,8 +147,7 @@ function login_post()
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\ValidatorInterface::FAILED
-	)
+	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('password_incorrect');
 	}

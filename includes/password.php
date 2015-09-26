@@ -40,7 +40,9 @@ function password_reset_form()
 
 	/* collect captcha solution output */
 
-	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+	$captchaHash->init($captcha->getSolution());
+	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 
 	/* collect hidden and button output */
 
@@ -67,6 +69,8 @@ function password_reset_form()
 
 function password_reset_post()
 {
+	$captchaValidator = new Redaxscript\Validator\Captcha();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/password_reset'] == 'visited')
@@ -103,7 +107,7 @@ function password_reset_post()
 	{
 		$error = l('input_incorrect');
 	}
-	else if (sha1($task) != $solution)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}

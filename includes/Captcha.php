@@ -102,7 +102,7 @@ class Captcha
 	}
 
 	/**
-	 * get the current task
+	 * get the task
 	 *
 	 * @since 2.0.0
 	 *
@@ -115,30 +115,16 @@ class Captcha
 	}
 
 	/**
-	 * get the solution to the current task
+	 * get the solution
 	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $mode switch between plain answer and hashed solution
+	 * @since 2.6.0
 	 *
 	 * @return integer
 	 */
 
-	public function getSolution($mode = 'hash')
+	public function getSolution()
 	{
-		/* raw output */
-
-		if ($mode === 'raw')
-		{
-			return $this->_solution;
-		}
-
-		/* else hash output */
-
-		else
-		{
-			return sha1($this->_solution);
-		}
+		return $this->_solution;
 	}
 
 	/**

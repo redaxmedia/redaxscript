@@ -41,7 +41,9 @@ function reminder_form()
 
 	/* collect captcha solution output */
 
-	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+	$captchaHash->init($captcha->getSolution());
+	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 
 	/* collect hidden and button output */
 

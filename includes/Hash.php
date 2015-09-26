@@ -22,20 +22,20 @@ class Hash
 	protected static $_config;
 
 	/**
+	 * raw string
+	 *
+	 * @var string
+	 */
+
+	protected $_raw;
+
+	/**
 	 * salted hash
 	 *
 	 * @var string
 	 */
 
 	protected $_hash;
-
-	/**
-	 * raw data
-	 *
-	 * @var string
-	 */
-
-	protected $_raw;
 
 	/**
 	 * constructor of the class
@@ -55,7 +55,7 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $raw raw data
+	 * @param string $raw plain string
 	 */
 
 	public function init($raw = null)
@@ -64,7 +64,19 @@ class Hash
 		{
 			$this->_raw = $raw;
 		}
+
 		$this->_create();
+	}
+
+	/**
+	 * get the raw
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function getRaw()
+	{
+		return $this->_raw;
 	}
 
 	/**
@@ -79,22 +91,19 @@ class Hash
 	}
 
     /**
-     * verify the hash
+     * validate the hash
      *
      * @since 2.6.0
      *
-     * @param string $raw raw data
+     * @param string $raw plain string
+     * @param string $hash salted hash
      *
      * @return boolean
      */
 
-    public function verifyHash($raw = null)
+    public function validate($raw = null, $hash = null)
     {
-        if (function_exists('password_verify'))
-        {
-            return password_verify($raw, $this->_hash);
-        }
-        return $this->_hash === hash('sha512', $raw . $this->_config->get('salt'));
+        return function_exists('password_hash') ? password_verify($raw, $hash) : $hash === hash('sha512', $raw . $this->_config->get('salt'));
     }
 
 	/**
@@ -105,13 +114,6 @@ class Hash
 
 	protected function _create()
 	{
-        if (function_exists('password_hash'))
-        {
-            $this->_hash = password_hash($this->_raw, PASSWORD_BCRYPT);
-        }
-        else
-        {
-		    $this->_hash = hash('sha512', $this->_raw . $this->_config->get('salt'));
-        }
+		$this->_hash = function_exists('password_verify') ? password_hash($this->_raw, PASSWORD_DEFAULT) : hash('sha512', $this->_raw . $this->_config->get('salt'));
 	}
 }

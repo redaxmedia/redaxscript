@@ -213,11 +213,13 @@ function comment_form($article = '', $language = '')
 
 	if (s('captcha') > 0)
 	{
+		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$captchaHash->init($captcha->getSolution());
 		if (LOGGED_IN == TOKEN)
 		{
-			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution('raw'));
+			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
 		}
-		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 	}
 
 	/* collect hidden and button output */
