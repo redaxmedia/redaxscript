@@ -303,17 +303,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($edit == 1)
 	{
-		$output .= '<li class="item_control_admin item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table  . '/' . $id) . '</li>';
+		$output .= '<li class="item_control_admin item_edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table . '/' . $id) . '</li>';
 	}
 	if ($delete == 1)
 	{
 		if ($type == 'modules_installed')
 		{
-			$output .= '<li class="item_control_admin item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table  . '/' . $alias . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
 		}
 		else
 		{
-			$output .= '<li class="item_control_admin item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table  . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="item_control_admin item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 	}
 

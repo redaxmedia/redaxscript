@@ -256,7 +256,7 @@ class Breadcrumb
 
 		$this->_breadcrumbArray[$key]['title'] = $this->_language->get('administration');
 
-		/* admin parameter  */
+		/* admin parameter */
 
 		if ($adminParameter)
 		{

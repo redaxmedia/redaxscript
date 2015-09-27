@@ -93,7 +93,7 @@ function login_form()
 
 function login_post()
 {
-	$passwordValidator =  new Redaxscript\Validator\Password();
+	$passwordValidator = new Redaxscript\Validator\Password();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
 	$captchaValidator = new Redaxscript\Validator\Captcha();

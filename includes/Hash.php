@@ -90,21 +90,21 @@ class Hash
 		return $this->_hash;
 	}
 
-    /**
-     * validate a salted hash
-     *
-     * @since 2.6.0
-     *
-     * @param string $raw plain string
-     * @param string $hash salted hash
-     *
-     * @return boolean
-     */
+	/**
+	 * validate a salted hash
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $raw plain string
+	 * @param string $hash salted hash
+	 *
+	 * @return boolean
+	 */
 
-    public function validate($raw = null, $hash = null)
-    {
-        return function_exists('password_hash') ? password_verify($raw, $hash) : $hash === hash('sha512', $raw . $this->_config->get('salt'));
-    }
+	public function validate($raw = null, $hash = null)
+	{
+		return function_exists('password_hash') ? password_verify($raw, $hash) : $hash === hash('sha512', $raw . $this->_config->get('salt'));
+	}
 
 	/**
 	 * create a salted hash

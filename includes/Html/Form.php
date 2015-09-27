@@ -224,19 +224,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $text text of the submit
+	 * @param string $html html of the submit
 	 * @param array $attributeArray attributes of the submit
 	 *
 	 * @return Form
 	 */
 
-	public function submit($text = null, $attributeArray = array())
+	public function submit($html = null, $attributeArray = array())
 	{
 		if ($attributeArray)
 		{
 			$attributeArray = array_unique(array_merge($this->_attributeArray['submit'], $attributeArray));
 		}
-		return $this->button($text, $attributeArray);
+		return $this->button($html, $attributeArray);
 	}
 
 	/**
@@ -244,19 +244,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $text text of the reset
+	 * @param string $html html of the reset
 	 * @param array $attributeArray attributes of the reset
 	 *
 	 * @return Form
 	 */
 
-	public function reset($text = null, $attributeArray = array())
+	public function reset($html = null, $attributeArray = array())
 	{
 		if ($attributeArray)
 		{
 			$attributeArray = array_unique(array_merge($this->_attributeArray['reset'], $attributeArray));
 		}
-		return $this->button($text, $attributeArray);
+		return $this->button($html, $attributeArray);
 	}
 
 	/**
@@ -264,20 +264,20 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $type type of the button
+	 * @param string $html html of the button
 	 * @param array $attributeArray attributes of the button
 	 *
 	 * @return Form
 	 */
 
-	public function button($text = null, $attributeArray = array())
+	public function button($html = null, $attributeArray = array())
 	{
 		if ($attributeArray)
 		{
 			$attributeArray = array_unique(array_merge($this->_attributeArray['button'], $attributeArray));
 		}
 		$buttonElement = new Element('button', $attributeArray);
-		$buttonElement->text(is_null($text) ? $this->_language->get($attributeArray['type']) : $text);
+		$buttonElement->html($html ? $html : $this->_language->get($attributeArray['type']));
 		$this->append($buttonElement);
 		return $this;
 	}
