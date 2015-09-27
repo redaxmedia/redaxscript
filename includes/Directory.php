@@ -72,7 +72,7 @@ class Directory
 		}
 		if (is_array($exclude))
 		{
-			$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
+			$this->_exclude = array_merge($this->_exclude, $exclude);
 		}
 
 		/* scan directory */

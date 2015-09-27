@@ -1,11 +1,11 @@
 [
 	[
 		"button",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"button\"></button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"button\">Ok</button></form>"
 	],
 	[
 		"submit",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-submit button-default\" type=\"submit\">Submit</button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"submit\">Submit</button></form>"
 	],
 	[
 		"reset",

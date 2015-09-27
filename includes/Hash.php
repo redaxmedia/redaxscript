@@ -64,7 +64,6 @@ class Hash
 		{
 			$this->_raw = $raw;
 		}
-
 		$this->_create();
 	}
 

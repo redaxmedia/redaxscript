@@ -142,11 +142,12 @@ function contents()
 				/* parser object */
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				$parser->init($text, $route, array(
+				$parser->init($text, array(
 					'className' => array(
 						'readmore' => 'link_read_more',
 						'codequote' => 'js_code_quote box_code'
-					)
+					),
+					'route' => $route
 				));
 
 				/* collect headline output */
@@ -347,11 +348,12 @@ function extras($filter = '')
 					/* parser object */
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text, $route, array(
+					$parser->init($text, array(
 						'className' => array(
 							'readmore' => 'link_read_more',
 							'codequote' => 'js_code_quote box_code'
-						)
+						),
+						'route' => $route
 					));
 
 					/* collect headline output */

@@ -77,11 +77,11 @@ class Breadcrumb
 	 * @param array $options options of the breadcrumb
 	 */
 
-	public function init($options = null)
+	public function init($options = array())
 	{
 		if (is_array($options))
 		{
-			$this->_options = array_unique(array_merge($this->_options, $options));
+			$this->_options = array_merge($this->_options, $options);
 		}
 		$this->_build();
 	}

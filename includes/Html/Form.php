@@ -133,11 +133,11 @@ class Form extends HtmlAbstract
 	{
 		if (is_array($attributeArray))
 		{
-			$this->_attributeArray = array_unique(array_merge($this->_attributeArray, $attributeArray));
+			$this->_attributeArray = array_replace_recursive($this->_attributeArray, $attributeArray);
 		}
 		if (is_array($options))
 		{
-			$this->_options = array_unique(array_merge($this->_options, $options));
+			$this->_options = array_merge($this->_options, $options);
 		}
 
 		/* captcha */
@@ -163,7 +163,7 @@ class Form extends HtmlAbstract
 	{
 		/* task */
 
-		if ($type === 'task')
+		if ($type === 'task' || is_null($type))
 		{
 			$labelElement = new Element('label', array(
 				'class' => $this->_attributeArray['label']['class'],
@@ -184,7 +184,7 @@ class Form extends HtmlAbstract
 
 		/* solution */
 
-		if ($type === 'solution')
+		if ($type === 'solution' || is_null($type))
 		{
 			$solutionElement = new Element('input', array(
 				'name' => 'solution',
@@ -224,19 +224,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $html html of the submit
+	 * @param string $text text of the submit
 	 * @param array $attributeArray attributes of the submit
 	 *
 	 * @return Form
 	 */
 
-	public function submit($html = null, $attributeArray = array())
+	public function submit($text = null, $attributeArray = array())
 	{
-		if ($attributeArray)
+		if (is_array($attributeArray))
 		{
-			$attributeArray = array_unique(array_merge($this->_attributeArray['submit'], $attributeArray));
+			$attributeArray = array_merge($this->_attributeArray['submit'], $attributeArray);
 		}
-		return $this->button($html, $attributeArray);
+		return $this->button($text ? $text : $this->_language->get('submit'), $attributeArray);
 	}
 
 	/**
@@ -244,19 +244,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $html html of the reset
+	 * @param string $text text of the reset
 	 * @param array $attributeArray attributes of the reset
 	 *
 	 * @return Form
 	 */
 
-	public function reset($html = null, $attributeArray = array())
+	public function reset($text = null, $attributeArray = array())
 	{
-		if ($attributeArray)
+		if (is_array($attributeArray))
 		{
-			$attributeArray = array_unique(array_merge($this->_attributeArray['reset'], $attributeArray));
+			$attributeArray = array_merge($this->_attributeArray['reset'], $attributeArray);
 		}
-		return $this->button($html, $attributeArray);
+		return $this->button($text ? $text : $this->_language->get('reset'), $attributeArray);
 	}
 
 	/**
@@ -264,20 +264,24 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $html html of the button
+	 * @param string $text text of the button
 	 * @param array $attributeArray attributes of the button
 	 *
 	 * @return Form
 	 */
 
-	public function button($html = null, $attributeArray = array())
+	public function button($text = null, $attributeArray = array())
 	{
 		if ($attributeArray)
 		{
-			$attributeArray = array_unique(array_merge($this->_attributeArray['button'], $attributeArray));
+			$attributeArray = array_merge($this->_attributeArray['button'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['button'];
 		}
 		$buttonElement = new Element('button', $attributeArray);
-		$buttonElement->html($html ? $html : $this->_language->get($attributeArray['type']));
+		$buttonElement->text($text ? $text : $this->_language->get('ok'));
 		$this->append($buttonElement);
 		return $this;
 	}

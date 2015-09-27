@@ -1,12 +1,20 @@
 [
 	[
 		"",
+		"",
 		"<form class=\"js-validate-form form-default\" method=\"post\"></form>"
 	],
 	[
 		{
-			"method": "get"
+			"form":
+			{
+				"method": "get",
+				"name": "test"
+			}
 		},
-		"<form class=\"js-validate-form form-default\" method=\"get\"></form>"
+		{
+			"captcha": false
+		},
+		"<form class=\"js-validate-form form-default\" method=\"get\" name=\"test\"></form>"
 	]
 ]

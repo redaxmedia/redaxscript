@@ -41,35 +41,6 @@ class Parser
 	protected $_output;
 
 	/**
-	 * route of the content
-	 *
-	 * @var string
-	 */
-
-	protected $_route;
-
-	/**
-	 * options of the parser
-	 *
-	 * @var array
-	 */
-
-	protected $_options = array(
-		'className' => array(
-			'readmore' => 'link-readmore',
-			'codequote' => 'js-code-quote code-quote'
-		)
-	);
-
-	/**
-	 * delimiter used during the parser process
-	 *
-	 * @var string
-	 */
-
-	protected $_delimiter = '@@@';
-
-	/**
 	 * array of pseudo tags
 	 *
 	 * @var array
@@ -152,6 +123,20 @@ class Parser
 	);
 
 	/**
+	 * options of the parser
+	 *
+	 * @var array
+	 */
+
+	protected $_options = array(
+		'className' => array(
+			'readmore' => 'link-readmore',
+			'codequote' => 'js-code-quote code-quote'
+		),
+		'delimiter' => '@@@'
+	);
+
+	/**
 	 * constructor of the class
 	 *
 	 * @since 2.4.0
@@ -171,18 +156,16 @@ class Parser
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $input content be parsed
-	 * @param string $route route of the content
+	 * @param string $input content to be parsed
 	 * @param array $options options of the parser
 	 */
 
-	public function init($input = null, $route = null, $options = null)
+	public function init($input = null, $options = null)
 	{
 		$this->_output = $input;
-		$this->_route = $route;
 		if (is_array($options))
 		{
-			$this->_options = array_unique(array_merge($this->_options, $options));
+			$this->_options = array_merge($this->_options, $options);
 		}
 
 		/* process tags */
@@ -240,12 +223,12 @@ class Parser
 
 			/* add link element */
 
-			if ($this->_route)
+			if ($this->_options['route'])
 			{
 				$output .= $linkElement
 					->copy()
 					->attr(array(
-						'href' => $this->_registry->get('rewriteRoute') . $this->_route,
+						'href' => $this->_registry->get('rewriteRoute') . $this->_options['route'],
 						'class' => $this->_options['className']['readmore'],
 						'title' => $this->_language->get('readmore')
 					))
@@ -267,8 +250,8 @@ class Parser
 
 	protected function _parseCodequote($input = null)
 	{
-		$output = str_replace($this->_tags['codequote']['search'], $this->_delimiter, $input);
-		$parts = array_filter(explode($this->_delimiter, $output));
+		$output = str_replace($this->_tags['codequote']['search'], $this->_options['delimiter'], $input);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
 		$preElement = new Html\Element('pre', array(
 			'class' => $this->_options['className']['codequote']
 		));
@@ -298,8 +281,8 @@ class Parser
 
 	protected function _parseLanguage($input = null)
 	{
-		$output = str_replace($this->_tags['language']['search'], $this->_delimiter, $input);
-		$parts = array_filter(explode($this->_delimiter, $output));
+		$output = str_replace($this->_tags['language']['search'], $this->_options['delimiter'], $input);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
 		/* parse needed parts */
 
@@ -326,8 +309,8 @@ class Parser
 
 	protected function _parseRegistry($input = null)
 	{
-		$output = str_replace($this->_tags['registry']['search'], $this->_delimiter, $input);
-		$parts = array_filter(explode($this->_delimiter, $output));
+		$output = str_replace($this->_tags['registry']['search'], $this->_options['delimiter'], $input);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
 		/* parse needed parts */
 
@@ -354,8 +337,8 @@ class Parser
 
 	protected function _parseFunction($input = null)
 	{
-		$output = str_replace($this->_tags['function']['search'], $this->_delimiter, $input);
-		$parts = array_filter(explode($this->_delimiter, $output));
+		$output = str_replace($this->_tags['function']['search'], $this->_options['delimiter'], $input);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
 		/* parse needed parts */
 
@@ -407,8 +390,8 @@ class Parser
 	protected function _parseModule($input = null)
 	{
 		$namespace = 'Redaxscript\Modules\\';
-		$output = str_replace($this->_tags['module']['search'], $this->_delimiter, $input);
-		$parts = array_filter(explode($this->_delimiter, $output));
+		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $input);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
 		/* parse needed parts */
 

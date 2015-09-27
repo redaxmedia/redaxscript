@@ -101,6 +101,7 @@ class FormTest extends TestCase
 	/**
 	 * testCreate
 	 *
+	 * @param array $attributeArray
 	 * @param array $options
 	 * @param string $expect
 	 *
@@ -109,20 +110,20 @@ class FormTest extends TestCase
 	 * @since 2.6.0
 	 */
 
-	public function testCreate($options = array(), $expect = null)
+	public function testCreate($attributeArray = array(), $options = array(), $expect = null)
 	{
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
-		$form->init($options);
+		$form->init($attributeArray, $options);
 
 		/* actual */
 
-		$actual = $form;
+		$actual = $form->render();
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -149,8 +150,8 @@ class FormTest extends TestCase
 
 		/* compare */
 
-		//$this->assertStringStartsWith($expect['prefix'], $actual);
-		//$this->assertStringEndsWith($expect['suffix'], $actual);
+		$this->assertStringStartsWith($expect['prefix'], $actual);
+		$this->assertStringEndsWith($expect['suffix'], $actual);
 	}
 
 	/**
@@ -207,6 +208,6 @@ class FormTest extends TestCase
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }
