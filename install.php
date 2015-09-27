@@ -6,7 +6,6 @@ error_reporting(0);
 include_once('includes/generate.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
-include_once('includes/password.php');
 include_once('includes/startup.php');
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
@@ -166,7 +165,7 @@ function install_form()
 
 	/* collect hidden and button output */
 
-	$output .= form_element('hidden', '', '', 'd_salt', hash_generator(40));
+	$output .= form_element('hidden', '', '', 'd_salt', sha1(uniqid()));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default button_large', 'install_post', l('install'));
 	$output .= '</form>';

@@ -229,12 +229,14 @@ class Installer
 
 		/* users */
 
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init($options['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
 				'name' => $options['adminName'],
 				'user' => $options['adminUser'],
-				'password' => sha1($options['adminPassword']) . $this->_config->get('dbSalt'),
+				'password' => $passwordHash->getHash(),
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
 				'language' => '',

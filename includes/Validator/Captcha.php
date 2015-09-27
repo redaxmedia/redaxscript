@@ -6,14 +6,13 @@ use Redaxscript\Db;
 use Redaxscript\Hash;
 
 /**
- * children class to validate captcha raw again hash
+ * children class to validate captcha
  *
  * @since 2.2.0
  *
  * @category Redaxscript
  * @package Validator
  * @author Henry Ruhs
- * @author Sven Weingartner
  */
 
 class Captcha implements ValidatorInterface
@@ -23,20 +22,20 @@ class Captcha implements ValidatorInterface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $raw plain answer
+	 * @param string $task plain task
 	 * @param string $hash hashed solution
 	 *
 	 * @return integer
 	 */
 
-	public function validate($raw = null, $hash = null)
+	public function validate($task = null, $hash = null)
 	{
 		$output = ValidatorInterface::FAILED;
 		$captchaHash = new Hash(Config::getInstance());
 
 		/* validate captcha */
 
-		if ($captchaHash->validate($raw, $hash) || Db::getSettings('captcha') < 1)
+		if ($task && $captchaHash->validate($task, $hash) || Db::getSettings('captcha') < 1)
 		{
 			$output = ValidatorInterface::PASSED;
 		}

@@ -77,7 +77,7 @@ function password_reset_post()
 	{
 		$post_id = clean($_POST['id'], 0);
 		$post_password = clean($_POST['password'], 0);
-		$password = hash_generator(10);
+		$password = substr(sha1(uniqid()), 0, 10);
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
 	}
@@ -142,6 +142,8 @@ function password_reset_post()
 
 		/* update password */
 
+		$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$passwordHash->init($password);
 		Redaxscript\Db::forTablePrefix('users')
 			->where(array(
 				'id' => $post_id,
@@ -149,7 +151,7 @@ function password_reset_post()
 				'status' => 1
 			))
 			->findOne()
-			->set('password', sha1($password) . Redaxscript\Registry::get('salt'))
+			->set('password', $passwordHash->getHash())
 			->save();
 	}
 
@@ -179,26 +181,4 @@ function password_reset_post()
 		notification(l('operation_completed'), l('password_sent'), l('login'), 'login');
 	}
 	$_SESSION[ROOT . '/password_reset'] = '';
-}
-
-/**
- * hash generator
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Password
- * @author Henry Ruhs
- *
- * @param string $length
- * @return string
- */
-
-function hash_generator($length = '')
-{
-	$a = mt_rand(1, 1000000);
-	$b = sha1($a);
-	$output = substr($b, 0, $length);
-	return $output;
 }

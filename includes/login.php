@@ -93,6 +93,7 @@ function login_form()
 
 function login_post()
 {
+	$passwordValidator =  new Redaxscript\Validator\Password();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
 	$captchaValidator = new Redaxscript\Validator\Captcha();
@@ -147,7 +148,7 @@ function login_post()
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	else if ($passwordValidator->validate($post_password, $my_password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('password_incorrect');
 	}
@@ -155,7 +156,7 @@ function login_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if ($my_id == '' || (md5($post_password) . SALT != $my_password && sha1($post_password) . SALT != $my_password))
+	else if ($my_id == '')
 	{
 		$error = l('login_incorrect');
 	}

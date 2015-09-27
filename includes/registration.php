@@ -90,8 +90,10 @@ function registration_post()
 		$name = $r['name'] = clean($_POST['name'], 0);
 		$user = $r['user'] = clean($_POST['user'], 0);
 		$email = $r['email'] = clean($_POST['email'], 3);
-		$password = hash_generator(10);
-		$r['password'] = sha1($password) . SALT;
+		$password = substr(sha1(uniqid()), 0, 10);
+		$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$passwordHash->init($password);
+		$r['password'] = $passwordHash->getHash();
 		$r['description'] = '';
 		$r['language'] = Redaxscript\Registry::get('language');
 		$r['first'] = $r['last'] = NOW;
