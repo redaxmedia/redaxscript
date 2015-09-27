@@ -43,23 +43,52 @@ class Form extends HtmlAbstract
 	protected $_captcha;
 
 	/**
+	 * attributes of the form
+	 *
+	 * @var array
+	 */
+
+	protected $_attributeArray = array(
+		'form' => array(
+			'class' => 'js-validate-form form-default',
+			'method' => 'post'
+		),
+		'label' => array(
+			'class' => 'label-default'
+		),
+		'text' => array(
+			'class' => 'field-text',
+			'type' => 'text'
+		),
+		'select' => array(
+			'class' => 'field-select'
+		),
+		'textarea' => array(
+			'class' => 'field-textarea',
+			'cols' => 100,
+			'row' => 5
+		),
+		'submit' => array(
+			'class' => 'js-button button-default',
+			'type' => 'submit'
+		),
+		'reset' => array(
+			'class' => 'js-reset button-default',
+			'type' => 'reset'
+		),
+		'button' => array(
+			'class' => 'js-button button-default',
+			'type' => 'button'
+		)
+	);
+
+	/**
 	 * options of the form
 	 *
 	 * @var array
 	 */
 
 	protected $_options = array(
-		'className' => array(
-			'form' => 'js-validate-form form-default',
-			'field' => 'field-default',
-			'label' => 'label-default',
-			'button' => 'js-button button-default',
-			'submit' => 'js-submit button-default',
-			'reset' => 'js-reset button-default'
-		),
-		'action' => '',
-		'method' => 'post',
-		'name' => '',
 		'captcha' => true
 	);
 
@@ -96,11 +125,16 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
+	 * @param array $attributeArray attributes of the form
 	 * @param array $options options of the form
 	 */
 
-	public function init($options = null)
+	public function init($attributeArray = array(), $options = null)
 	{
+		if (is_array($attributeArray))
+		{
+			$this->_attributeArray = array_unique(array_merge($this->_attributeArray, $attributeArray));
+		}
 		if (is_array($options))
 		{
 			$this->_options = array_unique(array_merge($this->_options, $options));
@@ -122,7 +156,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @param string $type type of the captcha
 	 *
-	 * @return string
+	 * @return Form
 	 */
 
 	public function captcha($type = null)
@@ -132,12 +166,12 @@ class Form extends HtmlAbstract
 		if ($type === 'task')
 		{
 			$labelElement = new Element('label', array(
-				'class' => $this->_options['className']['label'],
+				'class' => $this->_attributeArray['label']['class'],
 				'for' => 'task'
 			));
 			$labelElement->text($this->_captcha->getTask());
 			$taskElement = new Element('input', array(
-				'class' => $this->_options['className']['field'],
+				'class' => $this->_attributeArray['text']['class'],
 				'id' => 'task',
 				'min' => $this->_captcha->getMin(),
 				'max' => $this->_captcha->getMax(),
@@ -167,7 +201,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @return Form
 	 */
 
 	public function token()
@@ -190,12 +224,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @param string $text text of the submit
+	 * @param array $attributeArray attributes of the submit
+	 *
+	 * @return Form
 	 */
 
-	public function submit()
+	public function submit($text = null, $attributeArray = array())
 	{
-		return $this->button('submit');
+		if ($attributeArray)
+		{
+			$attributeArray = array_unique(array_merge($this->_attributeArray['submit'], $attributeArray));
+		}
+		return $this->button($text, $attributeArray);
 	}
 
 	/**
@@ -203,12 +244,19 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @param string $text text of the reset
+	 * @param array $attributeArray attributes of the reset
+	 *
+	 * @return Form
 	 */
 
-	public function reset()
+	public function reset($text = null, $attributeArray = array())
 	{
-		return $this->button('reset');
+		if ($attributeArray)
+		{
+			$attributeArray = array_unique(array_merge($this->_attributeArray['reset'], $attributeArray));
+		}
+		return $this->button($text, $attributeArray);
 	}
 
 	/**
@@ -217,17 +265,19 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $type type of the button
+	 * @param array $attributeArray attributes of the button
 	 *
-	 * @return string
+	 * @return Form
 	 */
 
-	public function button($type = 'button')
+	public function button($text = null, $attributeArray = array())
 	{
-		$buttonElement = new Element('button', array(
-			'class' => $this->_options['className'][$type],
-			'type' => $type
-		));
-		$buttonElement->text(Language::get($type));
+		if ($attributeArray)
+		{
+			$attributeArray = array_unique(array_merge($this->_attributeArray['button'], $attributeArray));
+		}
+		$buttonElement = new Element('button', $attributeArray);
+		$buttonElement->text(is_null($text) ? $this->_language->get($attributeArray['type']) : $text);
 		$this->append($buttonElement);
 		return $this;
 	}
@@ -243,12 +293,7 @@ class Form extends HtmlAbstract
 	public function render()
 	{
 		$output = Hook::trigger('form_start');
-		$formElement = new Element('form', array(
-			'action' => $this->_options['action'],
-			'class' => $this->_options['className']['form'],
-			'method' => $this->_options['method'],
-			'name' => $this->_options['name']
-		));
+		$formElement = new Element('form', $this->_attributeArray['form']);
 
 		/* collect output */
 

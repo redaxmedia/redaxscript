@@ -91,7 +91,7 @@ class Hash
 	}
 
     /**
-     * validate the hash
+     * validate a salted hash
      *
      * @since 2.6.0
      *
