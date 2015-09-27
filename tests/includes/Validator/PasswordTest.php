@@ -17,14 +17,14 @@ use Redaxscript\Validator;
 class PasswordTest extends TestCase
 {
 	/**
-	 * providerValidatorPassword
+	 * providerPassword
 	 *
 	 * @since 2.6.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidatorPassword()
+	public function providerPassword()
 	{
 		return $this->getProvider('tests/provider/Validator/password.json');
 	}
@@ -35,13 +35,13 @@ class PasswordTest extends TestCase
 	 * @since 2.6.0
 	 *
 	 * @param string $password
-	 * @param string $hash
+	 * @param array $hashArray
 	 * @param integer $expect
 	 *
-	 * @dataProvider providerValidatorPassword
+	 * @dataProvider providerPassword
 	 */
 
-	public function testLogin($password = null, $hash = null, $expect = null)
+	public function testPassword($password = null, $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
@@ -49,7 +49,7 @@ class PasswordTest extends TestCase
 
 		/* actual */
 
-		$actual = $validator->validate($password, $hash);
+		$actual = $validator->validate($password, function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 
 		/* compare */
 

@@ -53,17 +53,15 @@ class HashTest extends TestCase
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $dbSalt
 	 * @param string $raw
 	 *
 	 * @dataProvider providerHash
 	 */
 
-	public function testInit($dbSalt = null, $raw = null)
+	public function testInit($raw = null)
 	{
 		/* setup */
 
-		$this->_config->set('dbSalt', $dbSalt);
 		$hash = new Hash($this->_config);
 		$hash->init($raw);
 
@@ -77,17 +75,15 @@ class HashTest extends TestCase
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $dbSalt
 	 * @param string $raw
 	 *
 	 * @dataProvider providerHash
 	 */
 
-	public function testGetRaw($dbSalt = null, $raw = null)
+	public function testGetRaw($raw = null)
 	{
 		/* setup */
 
-		$this->_config->set('dbSalt', $dbSalt);
 		$hash = new Hash($this->_config);
 		$hash->init($raw);
 
@@ -106,18 +102,16 @@ class HashTest extends TestCase
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $dbSalt
 	 * @param string $raw
 	 * @param array $hashArray
 	 *
 	 * @dataProvider providerHash
 	 */
 
-	public function testGetHash($dbSalt = null, $raw = null, $hashArray = array())
+	public function testGetHash($raw = null, $hashArray = array())
 	{
 		/* setup */
 
-		$this->_config->set('dbSalt', $dbSalt);
 		$hash = new Hash($this->_config);
 		$hash->init($raw);
 
@@ -143,18 +137,16 @@ class HashTest extends TestCase
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $dbSalt
 	 * @param string $raw
 	 * @param array $hashArray
 	 *
 	 * @dataProvider providerHash
 	 */
 
-	public function testValidate($dbSalt = null, $raw = null, $hashArray = array())
+	public function testValidate($raw = null, $hashArray = array())
 	{
 		/* setup */
 
-		$this->_config->set('dbSalt', $dbSalt);
 		$hash = new Hash($this->_config);
 		$hash->init($raw);
 

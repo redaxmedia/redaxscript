@@ -47,27 +47,27 @@ class DetectorTest extends TestCase
 	}
 
 	/**
-	 * providerDetectorLanguage
+	 * providerLanguage
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDetectorLanguage()
+	public function providerLanguage()
 	{
 		return $this->getProvider('tests/provider/Detector/language.json');
 	}
 
 	/**
-	 * providerDetectorTemplate
+	 * providerTemplate
 	 *
 	 * @since 2.1.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDetectorTemplate()
+	public function providerTemplate()
 	{
 		return $this->getProvider('tests/provider/Detector/template.json');
 	}
@@ -80,7 +80,7 @@ class DetectorTest extends TestCase
 	 * @param array $registry
 	 * @param string $expect
 	 *
-	 * @dataProvider providerDetectorLanguage
+	 * @dataProvider providerLanguage
 	 */
 
 	public function testDetectorLanguage($registry = array(), $expect = null)
@@ -107,7 +107,7 @@ class DetectorTest extends TestCase
 	 * @param array $registry
 	 * @param string $expect
 	 *
-	 * @dataProvider providerDetectorTemplate
+	 * @dataProvider providerTemplate
 	 */
 
 	public function testDetectorTemplate($registry = array(), $expect = null)

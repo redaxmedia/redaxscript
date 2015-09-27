@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class SpecialTest extends TestCase
 {
 	/**
-	 * providerFilterSpecial
+	 * providerSpecial
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterSpecial()
+	public function providerSpecial()
 	{
 		return $this->getProvider('tests/provider/Filter/special.json');
 	}
@@ -37,7 +37,7 @@ class SpecialTest extends TestCase
 	 * @param string $special
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterSpecial
+	 * @dataProvider providerSpecial
 	 */
 
 	public function testSpecial($special = null, $expect = null)

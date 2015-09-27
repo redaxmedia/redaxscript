@@ -18,14 +18,14 @@ use Redaxscript\Validator;
 class UrlTest extends TestCase
 {
 	/**
-	 * providerValidatorUrl
+	 * providerUrl
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidatorUrl()
+	public function providerUrl()
 	{
 		return $this->getProvider('tests/provider/Validator/url.json');
 	}
@@ -38,7 +38,7 @@ class UrlTest extends TestCase
 	 * @param string $url
 	 * @param integer $expect
 	 *
-	 * @dataProvider providerValidatorUrl
+	 * @dataProvider providerUrl
 	 */
 
 	public function testUrl($url = null, $expect = null)

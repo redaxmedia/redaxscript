@@ -18,14 +18,14 @@ use Redaxscript\Validator;
 class LoginTest extends TestCase
 {
 	/**
-	 * providerValidatorLogin
+	 * providerLogin
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidatorLogin()
+	public function providerLogin()
 	{
 		return $this->getProvider('tests/provider/Validator/login.json');
 	}
@@ -38,7 +38,7 @@ class LoginTest extends TestCase
 	 * @param string $login
 	 * @param integer $expect
 	 *
-	 * @dataProvider providerValidatorLogin
+	 * @dataProvider providerLogin
 	 */
 
 	public function testLogin($login = null, $expect = null)

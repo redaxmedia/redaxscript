@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class PathTest extends TestCase
 {
 	/**
-	 * providerFilterPath
+	 * providerPath
 	 *
 	 * @since 2.6.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterPath()
+	public function providerPath()
 	{
 		return $this->getProvider('tests/provider/Filter/path.json');
 	}
@@ -37,7 +37,7 @@ class PathTest extends TestCase
 	 * @param string $path
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterPath
+	 * @dataProvider providerPath
 	 */
 
 	public function testPath($path = null, $expect = null)
