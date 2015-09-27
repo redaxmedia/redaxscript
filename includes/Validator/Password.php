@@ -31,10 +31,6 @@ class Password implements ValidatorInterface
 	{
 		$output = ValidatorInterface::FAILED;
 		$passwordHash = new Hash(Config::getInstance());
-		//
-		$passwordHash->init($password);
-		var_dump($passwordHash->getHash());
-		//
 
 		/* validate password */
 
