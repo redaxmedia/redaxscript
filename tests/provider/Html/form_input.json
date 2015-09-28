@@ -1,8 +1,26 @@
 [
 	[
-		"text",
+		"number",
 		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-number\" type=\"number\" /></form>"
+	],
+	[
+		"number",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"number\" /></form>"
+	],
+	[
+		"input",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-text\" type=\"text\" /></form>"
+	],
+	[
+		"input",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"text\" /></form>"
 	]
 ]

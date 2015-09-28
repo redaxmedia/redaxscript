@@ -56,7 +56,11 @@ class Form extends HtmlAbstract
 		'label' => array(
 			'class' => 'label-default'
 		),
-		'text' => array(
+		'number' => array(
+			'class' => 'field-number',
+			'type' => 'number'
+		),
+		'input' => array(
 			'class' => 'field-text',
 			'type' => 'text'
 		),
@@ -154,7 +158,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $text text of the captcha
+	 * @param string $text text of the label
 	 * @param array $attributeArray attributes of the input
 	 *
 	 * @return Form
@@ -162,6 +166,40 @@ class Form extends HtmlAbstract
 
 	public function label($text = null, $attributeArray = array())
 	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['label'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['label'];
+		}
+		$labelElement = new Element('label', $attributeArray);
+		$labelElement->text($text);
+		$this->append($labelElement);
+	}
+
+	/**
+	 * append the number
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $attributeArray attributes of the number
+	 *
+	 * @return Form
+	 */
+
+	public function number($attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['number'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['number'];
+		}
+		return $this->input($attributeArray);
 	}
 
 	/**
@@ -176,6 +214,16 @@ class Form extends HtmlAbstract
 
 	public function input($attributeArray = array())
 	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['input'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['input'];
+		}
+		$inputElement = new Element('input', $attributeArray);
+		$this->append($inputElement);
 	}
 
 	/**
@@ -194,19 +242,15 @@ class Form extends HtmlAbstract
 
 		if ($type === 'task' || is_null($type))
 		{
-			$labelElement = new Element('label', array(
-				'class' => $this->_attributeArray['label']['class'],
+			$labelElement = $this->label($this->_captcha->getTask(), array(
 				'for' => 'task'
 			));
-			$labelElement->text($this->_captcha->getTask());
-			$taskElement = new Element('input', array(
-				'class' => $this->_attributeArray['text']['class'],
+			$taskElement = $this->number(array(
 				'id' => 'task',
 				'min' => $this->_captcha->getMin(),
 				'max' => $this->_captcha->getMax(),
 				'name' => 'task',
-				'required' => 'required',
-				'type' => 'number'
+				'required' => 'required'
 			));
 			$this->append($labelElement . $taskElement);
 		}
@@ -265,6 +309,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = array_merge($this->_attributeArray['submit'], $attributeArray);
 		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['submit'];
+		}
 		return $this->button($text ? $text : $this->_language->get('submit'), $attributeArray);
 	}
 
@@ -285,6 +333,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = array_merge($this->_attributeArray['reset'], $attributeArray);
 		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['reset'];
+		}
 		return $this->button($text ? $text : $this->_language->get('reset'), $attributeArray);
 	}
 
@@ -301,7 +353,7 @@ class Form extends HtmlAbstract
 
 	public function button($text = null, $attributeArray = array())
 	{
-		if ($attributeArray)
+		if (is_array($attributeArray))
 		{
 			$attributeArray = array_merge($this->_attributeArray['button'], $attributeArray);
 		}

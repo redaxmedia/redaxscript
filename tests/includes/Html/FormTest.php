@@ -145,7 +145,7 @@ class FormTest extends TestCase
 
 		/* actual */
 
-		$actual = $form->render();
+		$actual = $form;
 
 		/* compare */
 
@@ -170,22 +170,22 @@ class FormTest extends TestCase
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		//$form->label($text, $attributeArray);
+		$form->label($text, $attributeArray);
 
 		/* actual */
 
-		$actual = $form->render();
+		$actual = $form;
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
 	 * testInput
 	 *
 	 * @param string $method
-	 * @param string $text
+	 * @param array $attributeArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerInput
@@ -199,15 +199,15 @@ class FormTest extends TestCase
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		//$form->$method($attributeArray);
+		$form->$method($attributeArray);
 
 		/* actual */
 
-		$actual = $form->render();
+		$actual = $form;
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -286,7 +286,7 @@ class FormTest extends TestCase
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		$form->$method($text);
+		$form->$method($text, $attributeArray);
 
 		/* actual */
 

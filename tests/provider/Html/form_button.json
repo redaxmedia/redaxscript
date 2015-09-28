@@ -1,20 +1,44 @@
 [
 	[
-		"button",
-		"",
-		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"button\">Ok</button></form>"
-	],
-	[
 		"submit",
 		"",
 		"",
 		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"submit\">Submit</button></form>"
 	],
 	[
+		"submit",
+		"test",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"submit\">test</button></form>"
+	],
+	[
 		"reset",
 		"",
 		"",
 		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-reset button-default\" type=\"reset\">Reset</button></form>"
+	],
+	[
+		"reset",
+		"test",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"reset\">test</button></form>"
+	],
+	[
+		"button",
+		"",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"button\">Ok</button></form>"
+	],
+	[
+		"button",
+		"test",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"button\">test</button></form>"
 	]
 ]
