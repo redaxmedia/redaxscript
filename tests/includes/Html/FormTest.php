@@ -60,6 +60,32 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerLabel
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerLabel()
+	{
+		return $this->getProvider('tests/provider/Html/form_label.json');
+	}
+
+	/**
+	 * providerInput
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerInput()
+	{
+		return $this->getProvider('tests/provider/Html/form_input.json');
+	}
+
+	/**
 	 * providerToken
 	 *
 	 * @since 2.6.0
@@ -127,6 +153,64 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * testLabel
+	 *
+	 * @param string $text
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerLabel
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testLabel($text = null, $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		//$form->label($text, $attributeArray);
+
+		/* actual */
+
+		$actual = $form->render();
+
+		/* compare */
+
+		//$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testInput
+	 *
+	 * @param string $method
+	 * @param string $text
+	 * @param array $expect
+	 *
+	 * @dataProvider providerInput
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testInput($method = null, $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		//$form->$method($attributeArray);
+
+		/* actual */
+
+		$actual = $form->render();
+
+		/* compare */
+
+		//$this->assertEquals($expect, $actual);
+	}
+
+	/**
 	 * testCaptcha
 	 *
 	 * @param array $expect
@@ -187,6 +271,8 @@ class FormTest extends TestCase
 	 * testButton
 	 *
 	 * @param string $method
+	 * @param string $text
+	 * @param array $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerButton
@@ -194,13 +280,13 @@ class FormTest extends TestCase
 	 * @since 2.6.0
 	 */
 
-	public function testButton($method = null, $expect = null)
+	public function testButton($method = null, $text = null, $attributeArray = array(), $expect = null)
 	{
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		$form->$method();
+		$form->$method($text);
 
 		/* actual */
 

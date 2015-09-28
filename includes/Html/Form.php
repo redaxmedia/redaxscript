@@ -150,6 +150,35 @@ class Form extends HtmlAbstract
 	}
 
 	/**
+	 * append the label
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $text text of the captcha
+	 * @param array $attributeArray attributes of the input
+	 *
+	 * @return Form
+	 */
+
+	public function label($text = null, $attributeArray = array())
+	{
+	}
+
+	/**
+	 * append the input
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $attributeArray attributes of the input
+	 *
+	 * @return Form
+	 */
+
+	public function input($attributeArray = array())
+	{
+	}
+
+	/**
 	 * append the captcha
 	 *
 	 * @since 2.6.0
