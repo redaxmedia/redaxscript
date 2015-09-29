@@ -104,14 +104,14 @@ class ConfigTest extends TestCase
 	{
 		/* setup */
 
-		//$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init(Stream::url('root/config.php'));
 
 		/* actual */
 
-		//$actual = $this->_config->get('dbType');
+		$actual = $this->_config->get('dbType');
 
 		/* compare */
 
-		//$this->assertNotEmpty($actual);
+		$this->assertNotEmpty($actual);
 	}
 }

@@ -130,17 +130,17 @@ class TemplateTest extends TestCase
 	{
 		/* setup */
 
-//		Stream::setup('root');
-//		$file = new StreamFile('partial.phtml');
-//		StreamWrapper::getRoot()->addChild($file);
+		Stream::setup('root');
+		$file = new StreamFile('partial.phtml');
+		StreamWrapper::getRoot()->addChild($file);
 
 		/* actual */
 
-//		$actual = Template::partial(Stream::url('root/partial.phtml'));
+		$actual = Template::partial(Stream::url('root/partial.phtml'));
 
 		/* compare */
 
-//		$this->assertTrue(is_string($actual));
+		$this->assertTrue(is_string($actual));
 	}
 
 	/**
