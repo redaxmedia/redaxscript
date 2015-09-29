@@ -83,7 +83,7 @@ class Breadcrumb
 		{
 			$this->_options = array_merge($this->_options, $options);
 		}
-		$this->_build();
+		$this->_create();
 	}
 
 	/**
@@ -135,7 +135,7 @@ class Breadcrumb
 			{
 				$outputItem .= '<li>';
 
-				/* build link if route */
+				/* create a link */
 
 				if ($route)
 				{
@@ -173,14 +173,14 @@ class Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array
+	 * create the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key key of the item
 	 */
 
-	protected function _build($key = 0)
+	protected function _create($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
 		$title = $this->_registry->get('title');
@@ -207,7 +207,7 @@ class Breadcrumb
 
 		else if ($firstParameter === 'admin')
 		{
-			$this->_buildAdmin($key);
+			$this->_createAdmin($key);
 		}
 
 		/* else default alias */
@@ -233,19 +233,19 @@ class Breadcrumb
 
 		else if ($firstTable)
 		{
-			$this->_buildContent($key);
+			$this->_createContent($key);
 		}
 	}
 
 	/**
-	 * build the breadcrumb array for current administration
+	 * create the breadcrumb array for current administration
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key key of the item
 	 */
 
-	protected function _buildAdmin($key = 0)
+	protected function _createAdmin($key = 0)
 	{
 		$adminParameter = $this->_registry->get('adminParameter');
 		$tableParameter = $this->_registry->get('tableParameter');
@@ -288,14 +288,14 @@ class Breadcrumb
 	}
 
 	/**
-	 * build the breadcrumb array for current content
+	 * create the breadcrumb array for current content
 	 *
 	 * @since 2.1.0
 	 *
 	 * @param integer $key
 	 */
 
-	protected function _buildContent($key = 0)
+	protected function _createContent($key = 0)
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');
