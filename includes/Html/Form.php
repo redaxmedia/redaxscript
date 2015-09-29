@@ -60,9 +60,13 @@ class Form extends HtmlAbstract
 			'class' => 'field-number',
 			'type' => 'number'
 		),
-		'input' => array(
+		'text' => array(
 			'class' => 'field-text',
 			'type' => 'text'
+		),
+		'hidden' => array(
+			'class' => 'field-hidden',
+			'type' => 'hidden'
 		),
 		'select' => array(
 			'class' => 'field-select'
@@ -191,39 +195,37 @@ class Form extends HtmlAbstract
 
 	public function number($attributeArray = array())
 	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['number'], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['number'];
-		}
-		return $this->input($attributeArray);
+		return $this->_createInput('number', $attributeArray);
 	}
 
 	/**
-	 * append the input
+	 * append the text
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $attributeArray attributes of the input
+	 * @param array $attributeArray attributes of the text
 	 *
 	 * @return Form
 	 */
 
-	public function input($attributeArray = array())
+	public function text($attributeArray = array())
 	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['input'], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['input'];
-		}
-		$inputElement = new Element('input', $attributeArray);
-		$this->append($inputElement);
+		return $this->_createInput('text', $attributeArray);
+	}
+
+	/**
+	 * append the hidden
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $attributeArray attributes of the hidden
+	 *
+	 * @return Form
+	 */
+
+	public function hidden($attributeArray = array())
+	{
+		return $this->_createInput('hidden', $attributeArray);
 	}
 
 	/**
@@ -240,7 +242,7 @@ class Form extends HtmlAbstract
 	{
 		/* task */
 
-		if ($type === 'task' || is_null($type))
+		if ($type === 'task')
 		{
 			$labelElement = $this->label($this->_captcha->getTask(), array(
 				'for' => 'task'
@@ -257,11 +259,10 @@ class Form extends HtmlAbstract
 
 		/* solution */
 
-		if ($type === 'solution' || is_null($type))
+		if ($type === 'solution')
 		{
-			$solutionElement = new Element('input', array(
+			$solutionElement = $this->hidden(array(
 				'name' => 'solution',
-				'type' => 'hidden',
 				'value' => $this->_captcha->getSolution()
 			));
 			$this->append($solutionElement);
@@ -305,15 +306,7 @@ class Form extends HtmlAbstract
 
 	public function submit($text = null, $attributeArray = array())
 	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['submit'], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['submit'];
-		}
-		return $this->button($text ? $text : $this->_language->get('submit'), $attributeArray);
+		return $this->_createButton('submit', $text ? $text : $this->_language->get('submit'), $attributeArray);
 	}
 
 	/**
@@ -329,15 +322,7 @@ class Form extends HtmlAbstract
 
 	public function reset($text = null, $attributeArray = array())
 	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['reset'], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['reset'];
-		}
-		return $this->button($text ? $text : $this->_language->get('reset'), $attributeArray);
+		return $this->_createButton('reset', $text ? $text : $this->_language->get('reset'), $attributeArray);
 	}
 
 	/**
@@ -353,18 +338,7 @@ class Form extends HtmlAbstract
 
 	public function button($text = null, $attributeArray = array())
 	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['button'], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['button'];
-		}
-		$buttonElement = new Element('button', $attributeArray);
-		$buttonElement->text($text ? $text : $this->_language->get('ok'));
-		$this->append($buttonElement);
-		return $this;
+		return $this->_createButton('button', $text ? $text : $this->_language->get('ok'), $attributeArray);
 	}
 
 	/**
@@ -385,5 +359,60 @@ class Form extends HtmlAbstract
 		$output .= $formElement->html($this->_html);
 		$output .= Hook::trigger('form_end');
 		return $output;
+	}
+
+	/**
+	 * create the input
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $type type of the input
+	 * @param array $attributeArray attributes of the input
+	 *
+	 * @return Form
+	 */
+
+	protected function _createInput($type = 'text', $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+
+			$attributeArray = array_merge($this->_attributeArray[$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray[$type];
+		}
+		$inputElement = new Element('input', $attributeArray);
+		$this->append($inputElement);
+		return $this;
+	}
+
+	/**
+	 * create the button
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $type type of the button
+	 * @param string $text text of the button
+	 * @param array $attributeArray attributes of the button
+	 *
+	 * @return Form
+	 */
+
+	public function _createButton($type = null, $text = null, $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray[$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray[$type];
+		}
+		$buttonElement = new Element('button', $attributeArray);
+		$buttonElement->text($text);
+		$this->append($buttonElement);
+		return $this;
 	}
 }

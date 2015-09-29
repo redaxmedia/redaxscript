@@ -203,7 +203,7 @@ class FormTest extends TestCase
 
 		/* actual */
 
-		$actual = $form;
+		$actual = $form->render();
 
 		/* compare */
 

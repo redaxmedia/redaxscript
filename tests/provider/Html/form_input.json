@@ -12,15 +12,27 @@
 		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"number\" /></form>"
 	],
 	[
-		"input",
+		"text",
 		"",
 		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-text\" type=\"text\" /></form>"
 	],
 	[
-		"input",
+		"text",
 		{
 			"class": "test"
 		},
 		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"text\" /></form>"
+	],
+	[
+		"hidden",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-hidden\" type=\"hidden\" /></form>"
+	],
+	[
+		"hidden",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"hidden\" /></form>"
 	]
 ]

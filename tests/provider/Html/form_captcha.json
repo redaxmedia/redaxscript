@@ -9,7 +9,7 @@
 	[
 		{
 			"type": "solution",
-			"prefix": "<form class=\"js-validate-form form-default\" method=\"post\"><input name=\"solution\" type=\"hidden\"",
+			"prefix": "<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-hidden\" type=\"hidden\" name=\"solution\"",
 			"suffix": "</form>"
 		}
 	]
