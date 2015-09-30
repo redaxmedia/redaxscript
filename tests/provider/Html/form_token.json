@@ -7,6 +7,6 @@
 		{
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input name=\"token\" type=\"hidden\" value=\"0071877d20a65c02d9a1654f109b97dc61416d1a\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-hidden\" type=\"hidden\" name=\"token\" value=\"0071877d20a65c02d9a1654f109b97dc61416d1a\" /></form>"
 	]
 ]

@@ -14,6 +14,23 @@ use Redaxscript\Registry;
  * @package Redaxscript
  * @category Html
  * @author Henry Ruhs
+*
+ * @method button()
+ * @method checkbox()
+ * @method datetime()
+ * @method email()
+ * @method file()
+ * @method hidden()
+ * @method number()
+ * @method password()
+ * @method radio()
+ * @method range()
+ * @method reset()
+ * @method search()
+ * @method submit()
+ * @method tel()
+ * @method text()
+ * @method url()
  */
 
 class Form extends HtmlAbstract
@@ -43,90 +60,108 @@ class Form extends HtmlAbstract
 	protected $_captcha;
 
 	/**
+	 * language of the form
+	 *
+	 * @var array
+	 */
+
+	protected $_languageArray = array(
+		'button' => array(
+			'button' => 'ok',
+			'submit' => 'submit',
+			'reset' => 'reset'
+		)
+	);
+
+	/**
 	 * attributes of the form
 	 *
 	 * @var array
 	 */
 
 	protected $_attributeArray = array(
-		'button' => array(
-			'class' => 'js-button button-default',
-			'type' => 'button'
-		),
-		'checkbox' => array(
-			'class' => 'field-checkbox',
-			'type' => 'checkbox'
-		),
-		'datetime' => array(
-			'class' => 'field-date',
-			'type' => 'datetime'
-		),
-		'email' => array(
-			'class' => 'field-email',
-			'type' => 'email'
-		),
-		'file' => array(
-			'class' => 'field-file',
-			'type' => 'file'
-		),
 		'form' => array(
 			'class' => 'js-validate-form form-default',
 			'method' => 'post'
 		),
-		'hidden' => array(
-			'class' => 'field-hidden',
-			'type' => 'hidden'
-		),
 		'label' => array(
 			'class' => 'label-default'
 		),
-		'number' => array(
-			'class' => 'field-number',
-			'type' => 'number'
-		),
-		'password' => array(
-			'class' => 'field-password',
-			'type' => 'password'
-		),
-		'radio' => array(
-			'class' => 'field-radio',
-			'type' => 'radio'
-		),
-		'range' => array(
-			'class' => 'field-range',
-			'type' => 'range'
-		),
-		'reset' => array(
-			'class' => 'js-reset button-default',
-			'type' => 'reset'
-		),
-		'search' => array(
-			'class' => 'field-search',
-			'type' => 'search'
-		),
 		'select' => array(
 			'class' => 'field-select'
-		),
-		'submit' => array(
-			'class' => 'js-button button-default',
-			'type' => 'submit'
-		),
-		'tel' => array(
-			'class' => 'field-tel',
-			'type' => 'tel'
-		),
-		'text' => array(
-			'class' => 'field-text',
-			'type' => 'text'
 		),
 		'textarea' => array(
 			'class' => 'field-textarea',
 			'cols' => 100,
 			'row' => 5
 		),
-		'url' => array(
-			'class' => 'field-url',
-			'type' => 'url'
+		'button' => array(
+			'button' => array(
+				'class' => 'js-button button-default',
+				'type' => 'button'
+			),
+			'reset' => array(
+				'class' => 'js-reset button-default',
+				'type' => 'reset'
+			),
+			'submit' => array(
+				'class' => 'js-button button-default',
+				'type' => 'submit'
+			)
+		),
+		'input' => array(
+			'checkbox' => array(
+				'class' => 'field-checkbox',
+				'type' => 'checkbox'
+			),
+			'datetime' => array(
+				'class' => 'field-date',
+				'type' => 'datetime'
+			),
+			'email' => array(
+				'class' => 'field-email',
+				'type' => 'email'
+			),
+			'file' => array(
+				'class' => 'field-file',
+				'type' => 'file'
+			),
+			'hidden' => array(
+				'class' => 'field-hidden',
+				'type' => 'hidden'
+			),
+			'number' => array(
+				'class' => 'field-number',
+				'type' => 'number'
+			),
+			'password' => array(
+				'class' => 'field-password',
+				'type' => 'password'
+			),
+			'radio' => array(
+				'class' => 'field-radio',
+				'type' => 'radio'
+			),
+			'range' => array(
+				'class' => 'field-range',
+				'type' => 'range'
+			),
+			'search' => array(
+				'class' => 'field-search',
+				'type' => 'search'
+			),
+			'tel' => array(
+				'class' => 'field-tel',
+				'type' => 'tel'
+			),
+			'text' => array(
+				'class' => 'field-text',
+				'type' => 'text'
+			),
+			'url' => array(
+				'class' => 'field-url',
+				'type' => 'url'
+			)
 		)
 	);
 
@@ -156,7 +191,35 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * stringify the element
+	 * call method as needed
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $method name of the method
+	 * @param array $arguments arguments of the method
+	 *
+	 * @return Form
+	 */
+
+	public function __call($method = null, $arguments = array())
+	{
+		/* button */
+
+		if (array_key_exists($method, $this->_attributeArray['button']))
+		{
+			return $this->_createButton($method, $arguments[0], $arguments[1]);
+		}
+
+		/* input */
+
+		if (array_key_exists($method, $this->_attributeArray['input']))
+		{
+			return $this->_createInput($method, $arguments[0]);
+		}
+	}
+
+	/**
+	 * stringify the form
 	 *
 	 * @since 2.6.0
 	 *
@@ -221,51 +284,7 @@ class Form extends HtmlAbstract
 		$labelElement = new Element('label', $attributeArray);
 		$labelElement->text($text);
 		$this->append($labelElement);
-	}
-
-	/**
-	 * append the number
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param array $attributeArray attributes of the number
-	 *
-	 * @return Form
-	 */
-
-	public function number($attributeArray = array())
-	{
-		return $this->_createInput('number', $attributeArray);
-	}
-
-	/**
-	 * append the text
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param array $attributeArray attributes of the text
-	 *
-	 * @return Form
-	 */
-
-	public function text($attributeArray = array())
-	{
-		return $this->_createInput('text', $attributeArray);
-	}
-
-	/**
-	 * append the hidden
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param array $attributeArray attributes of the hidden
-	 *
-	 * @return Form
-	 */
-
-	public function hidden($attributeArray = array())
-	{
-		return $this->_createInput('hidden', $attributeArray);
+		return $this;
 	}
 
 	/**
@@ -284,28 +303,26 @@ class Form extends HtmlAbstract
 
 		if ($type === 'task')
 		{
-			$labelElement = $this->label($this->_captcha->getTask(), array(
+			$this->label($this->_captcha->getTask(), array(
 				'for' => 'task'
 			));
-			$taskElement = $this->number(array(
+			$this->number(array(
 				'id' => 'task',
 				'min' => $this->_captcha->getMin(),
 				'max' => $this->_captcha->getMax(),
 				'name' => 'task',
 				'required' => 'required'
 			));
-			$this->append($labelElement . $taskElement);
 		}
 
 		/* solution */
 
 		if ($type === 'solution')
 		{
-			$solutionElement = $this->hidden(array(
+			$this->hidden(array(
 				'name' => 'solution',
 				'value' => $this->_captcha->getSolution()
 			));
-			$this->append($solutionElement);
 		}
 		return $this;
 	}
@@ -323,62 +340,12 @@ class Form extends HtmlAbstract
 		$token = $this->_registry->get('token');
 		if ($token)
 		{
-			$tokenElement = new Element('input', array(
+			$this->hidden(array(
 				'name' => 'token',
-				'type' => 'hidden',
 				'value' => $token
 			));
-			$this->append($tokenElement);
 		}
 		return $this;
-	}
-
-	/**
-	 * append the submit
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $text text of the submit
-	 * @param array $attributeArray attributes of the submit
-	 *
-	 * @return Form
-	 */
-
-	public function submit($text = null, $attributeArray = array())
-	{
-		return $this->_createButton('submit', $text ? $text : $this->_language->get('submit'), $attributeArray);
-	}
-
-	/**
-	 * append the reset
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $text text of the reset
-	 * @param array $attributeArray attributes of the reset
-	 *
-	 * @return Form
-	 */
-
-	public function reset($text = null, $attributeArray = array())
-	{
-		return $this->_createButton('reset', $text ? $text : $this->_language->get('reset'), $attributeArray);
-	}
-
-	/**
-	 * append the button
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $text text of the button
-	 * @param array $attributeArray attributes of the button
-	 *
-	 * @return Form
-	 */
-
-	public function button($text = null, $attributeArray = array())
-	{
-		return $this->_createButton('button', $text ? $text : $this->_language->get('ok'), $attributeArray);
 	}
 
 	/**
@@ -402,33 +369,6 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * create the input
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $type type of the input
-	 * @param array $attributeArray attributes of the input
-	 *
-	 * @return Form
-	 */
-
-	protected function _createInput($type = 'text', $attributeArray = array())
-	{
-		if (is_array($attributeArray))
-		{
-
-			$attributeArray = array_merge($this->_attributeArray[$type], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray[$type];
-		}
-		$inputElement = new Element('input', $attributeArray);
-		$this->append($inputElement);
-		return $this;
-	}
-
-	/**
 	 * create the button
 	 *
 	 * @since 2.6.0
@@ -444,15 +384,42 @@ class Form extends HtmlAbstract
 	{
 		if (is_array($attributeArray))
 		{
-			$attributeArray = array_merge($this->_attributeArray[$type], $attributeArray);
+			$attributeArray = array_merge($this->_attributeArray['button'][$type], $attributeArray);
 		}
 		else
 		{
-			$attributeArray = $this->_attributeArray[$type];
+			$attributeArray = $this->_attributeArray['button'][$type];
 		}
 		$buttonElement = new Element('button', $attributeArray);
-		$buttonElement->text($text);
+		$buttonElement->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
 		$this->append($buttonElement);
+		return $this;
+	}
+
+	/**
+	 * create the input
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $type type of the input
+	 * @param array $attributeArray attributes of the input
+	 *
+	 * @return Form
+	 */
+
+	protected function _createInput($type = 'text', $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+
+			$attributeArray = array_merge($this->_attributeArray['input'][$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['input'][$type];
+		}
+		$inputElement = new Element('input', $attributeArray);
+		$this->append($inputElement);
 		return $this;
 	}
 }
