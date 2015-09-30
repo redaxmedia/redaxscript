@@ -49,9 +49,33 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_attributeArray = array(
+		'button' => array(
+			'class' => 'js-button button-default',
+			'type' => 'button'
+		),
+		'checkbox' => array(
+			'class' => 'field-checkbox',
+			'type' => 'checkbox'
+		),
+		'datetime' => array(
+			'class' => 'field-date',
+			'type' => 'datetime'
+		),
+		'email' => array(
+			'class' => 'field-email',
+			'type' => 'email'
+		),
+		'file' => array(
+			'class' => 'field-file',
+			'type' => 'file'
+		),
 		'form' => array(
 			'class' => 'js-validate-form form-default',
 			'method' => 'post'
+		),
+		'hidden' => array(
+			'class' => 'field-hidden',
+			'type' => 'hidden'
 		),
 		'label' => array(
 			'class' => 'label-default'
@@ -60,33 +84,49 @@ class Form extends HtmlAbstract
 			'class' => 'field-number',
 			'type' => 'number'
 		),
-		'text' => array(
-			'class' => 'field-text',
-			'type' => 'text'
+		'password' => array(
+			'class' => 'field-password',
+			'type' => 'password'
 		),
-		'hidden' => array(
-			'class' => 'field-hidden',
-			'type' => 'hidden'
+		'radio' => array(
+			'class' => 'field-radio',
+			'type' => 'radio'
+		),
+		'range' => array(
+			'class' => 'field-range',
+			'type' => 'range'
+		),
+		'reset' => array(
+			'class' => 'js-reset button-default',
+			'type' => 'reset'
+		),
+		'search' => array(
+			'class' => 'field-search',
+			'type' => 'search'
 		),
 		'select' => array(
 			'class' => 'field-select'
+		),
+		'submit' => array(
+			'class' => 'js-button button-default',
+			'type' => 'submit'
+		),
+		'tel' => array(
+			'class' => 'field-tel',
+			'type' => 'tel'
+		),
+		'text' => array(
+			'class' => 'field-text',
+			'type' => 'text'
 		),
 		'textarea' => array(
 			'class' => 'field-textarea',
 			'cols' => 100,
 			'row' => 5
 		),
-		'submit' => array(
-			'class' => 'js-button button-default',
-			'type' => 'submit'
-		),
-		'reset' => array(
-			'class' => 'js-reset button-default',
-			'type' => 'reset'
-		),
-		'button' => array(
-			'class' => 'js-button button-default',
-			'type' => 'button'
+		'url' => array(
+			'class' => 'field-url',
+			'type' => 'url'
 		)
 	);
 
