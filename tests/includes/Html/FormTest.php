@@ -73,6 +73,32 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerTextarea
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerTextarea()
+	{
+		return $this->getProvider('tests/provider/Html/form_textarea.json');
+	}
+
+	/**
+	 * providerSelect
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerSelect()
+	{
+		return $this->getProvider('tests/provider/Html/form_select.json');
+	}
+
+	/**
 	 * providerInput
 	 *
 	 * @since 2.6.0
@@ -86,19 +112,6 @@ class FormTest extends TestCase
 	}
 
 	/**
-	 * providerToken
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerToken()
-	{
-		return $this->getProvider('tests/provider/Html/form_token.json');
-	}
-
-	/**
 	 * providerCaptcha
 	 *
 	 * @since 2.6.0
@@ -109,6 +122,19 @@ class FormTest extends TestCase
 	public function providerCaptcha()
 	{
 		return $this->getProvider('tests/provider/Html/form_captcha.json');
+	}
+
+	/**
+	 * providerToken
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerToken()
+	{
+		return $this->getProvider('tests/provider/Html/form_token.json');
 	}
 
 	/**
@@ -171,6 +197,63 @@ class FormTest extends TestCase
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
 		$form->label($text, $attributeArray);
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testTextarea
+	 *
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerTextarea
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testTextarea($attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->textarea($attributeArray);
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testSelect
+	 *
+	 * @param array $optionArray
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerSelect
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testSelect($optionArray = array(), $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->select($optionArray, $attributeArray);
 
 		/* actual */
 

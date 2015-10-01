@@ -1,0 +1,18 @@
+[
+	[
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><textarea class=\"field-textarea\" cols=\"100\" row=\"5\"></textarea></form>"
+	],
+	[
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><textarea class=\"test\" cols=\"100\" row=\"5\"></textarea></form>"
+	],
+	[
+		{
+			"value": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><textarea class=\"field-textarea\" cols=\"100\" row=\"5\">test</textarea></form>"
+	]
+]

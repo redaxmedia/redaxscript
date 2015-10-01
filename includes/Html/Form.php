@@ -266,7 +266,7 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $text text of the label
-	 * @param array $attributeArray attributes of the input
+	 * @param array $attributeArray attributes of the label
 	 *
 	 * @return Form
 	 */
@@ -284,6 +284,59 @@ class Form extends HtmlAbstract
 		$labelElement = new Element('label', $attributeArray);
 		$labelElement->text($text);
 		$this->append($labelElement);
+		return $this;
+	}
+
+	/**
+	 * append the textarea
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $attributeArray attributes of the textarea
+	 *
+	 * @return Form
+	 */
+
+	public function textarea($attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['textarea'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['textarea'];
+		}
+		$textareaElement = new Element('textarea', $attributeArray);
+		$textareaElement->text($attributeArray['value'])->val(null);
+		$this->append($textareaElement);
+		return $this;
+	}
+
+	/**
+	 * append the select
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $optionArray options of the select
+	 * @param array $attributeArray attributes of the select
+	 *
+	 * @return Form
+	 */
+
+	public function select($optionArray = array(), $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['select'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['select'];
+		}
+		$selectElement = new Element('select', $attributeArray);
+		$selectElement->html($this->_createOption($optionArray, $attributeArray['value']))->val(null);
+		$this->append($selectElement);
 		return $this;
 	}
 
@@ -394,6 +447,37 @@ class Form extends HtmlAbstract
 		$buttonElement->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
 		$this->append($buttonElement);
 		return $this;
+	}
+
+	/**
+	 * create the option
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $optionArray options of the select
+	 * @param string $selected option to be selected
+	 *
+	 * @return string
+	 */
+
+	protected function _createOption($optionArray = array(), $selected = null)
+	{
+		$output = '';
+		$optionElement = new Element('option');
+
+		/* process option */
+
+		foreach ($optionArray as $key => $value)
+		{
+			$output .= $optionElement
+				->copy()
+				->attr(array(
+					'selected' => $value === $selected ? 'selected' : null,
+					'value' => $value
+				))
+				->text(is_string($key) ? $key : null);
+		}
+		return $output;
 	}
 
 	/**
