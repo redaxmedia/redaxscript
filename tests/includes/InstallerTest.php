@@ -59,8 +59,8 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
-		$installer = new Installer();
-		$installer->init($this->_config);
+		$installer = new Installer($this->_config);
+		$installer->init();
 		$installer->rawCreate();
 
 		/* actual */
@@ -82,8 +82,8 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
-		$installer = new Installer();
-		$installer->init($this->_config);
+		$installer = new Installer($this->_config);
+		$installer->init();
 		$installer->insertData(array(
 			'adminName' => 'Admin',
 			'adminUser' => 'admin',
@@ -128,8 +128,8 @@ class InstallerTest extends TestCase
 	{
 		/* setup */
 
-		$installer = new Installer();
-		$installer->init($this->_config);
+		$installer = new Installer($this->_config);
+		$installer->init();
 		$installer->rawDrop();
 
 		/* actual */

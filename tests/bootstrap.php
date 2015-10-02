@@ -53,12 +53,13 @@ else
 
 /* database */
 
-Db::init($config);
+Db::construct($config);
+Db::init();
 
 /* installer */
 
-$installer = new Installer();
-$installer->init($config);
+$installer = new Installer($config);
+$installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData();
@@ -70,7 +71,8 @@ if (is_dir('modules/Test'))
 
 /* hook */
 
-Hook::init($registry);
+Hook::construct($registry);
+Hook::init();
 
 /* language */
 

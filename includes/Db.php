@@ -50,21 +50,31 @@ class Db extends ORM
 	protected static $_config;
 
 	/**
-	 * init the class
+	 * constructor of the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @param Config $config instance of the config class
 	 */
 
-	public static function init(Config $config)
+	public static function construct(Config $config)
 	{
 		self::$_config = $config;
-		$dbType = $config->get('dbType');
-		$dbHost = $config->get('dbHost');
-		$dbName = $config->get('dbName');
-		$dbUser = $config->get('dbUser');
-		$dbPassword = $config->get('dbPassword');
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.6.0
+	 */
+
+	public static function init()
+	{
+		$dbType = self::$_config->get('dbType');
+		$dbHost = self::$_config->get('dbHost');
+		$dbName = self::$_config->get('dbName');
+		$dbUser = self::$_config->get('dbUser');
+		$dbPassword = self::$_config->get('dbPassword');
 		$dbSocket = strstr($dbHost, '.sock');
 
 		/* mysql and pgsql */

@@ -45,7 +45,8 @@ class HookTest extends TestCase
 	{
 		/* setup */
 
-		Hook::init($this->_registry);
+		Hook::construct($this->_registry);
+		Hook::init();
 
 		/* actual */
 
@@ -66,7 +67,8 @@ class HookTest extends TestCase
 	{
 		/* setup */
 
-		Hook::init($this->_registry);
+		Hook::construct($this->_registry);
+		Hook::init();
 		Hook::trigger('render');
 
 		/* actual */
@@ -88,7 +90,8 @@ class HookTest extends TestCase
 	{
 		/* setup */
 
-		Hook::init($this->_registry);
+		Hook::construct($this->_registry);
+		Hook::init();
 
 		/* actual */
 
@@ -109,7 +112,8 @@ class HookTest extends TestCase
 	{
 		/* setup */
 
-		Hook::init($this->_registry);
+		Hook::construct($this->_registry);
+		Hook::init();
 
 		/* actual */
 

@@ -126,8 +126,8 @@ class Demo extends Config
 
 	protected static function _reinstall()
 	{
-		$installer = new Installer();
-		$installer->init(GlobalConfig::getInstance());
+		$installer = new Installer(GlobalConfig::getInstance());
+		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();
 		$installer->insertData(array(

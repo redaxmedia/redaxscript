@@ -22,6 +22,14 @@ class Installer
 	protected $_config;
 
 	/**
+	 * path of the raw sql
+	 *
+	 * @var string
+	 */
+
+	protected $_path;
+
+	/**
 	 * placeholder for the prefix
 	 *
 	 * @var string
@@ -30,16 +38,27 @@ class Installer
 	protected $_prefixPlaceholder = '/* {configPrefix} */';
 
 	/**
-	 * init the class
+	 * constructor of the class
 	 *
 	 * @since 2.4.0
 	 *
 	 * @param Config $config instance of the config class
 	 */
 
-	public function init(Config $config)
+	public function __construct(Config $config)
 	{
 		$this->_config = $config;
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @param string $path path of the raw sql
+	 */
+
+	public function init($path = 'database')
+	{
+		$this->_path = $path;
 	}
 
 	/**
@@ -256,7 +275,7 @@ class Installer
 	public function _rawExecute($action = null, $type = 'mysql')
 	{
 		$sqlDirectory = new Directory();
-		$sqlDirectory->init('database/' . $type . '/' . $action);
+		$sqlDirectory->init($this->_path . '/' . $type . '/' . $action);
 		$sqlArray = $sqlDirectory->getArray();
 
 		/* process sql files */

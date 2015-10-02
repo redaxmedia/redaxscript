@@ -75,7 +75,8 @@ class DbTest extends TestCase
 		/* setup */
 
 		$this->_config->set('dbType', $dbType);
-		Db::init($this->_config);
+		Db::construct($this->_config);
+		Db::init();
 
 		/* actual */
 
