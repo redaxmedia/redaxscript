@@ -1,19 +1,19 @@
 <?php
-namespace Redaxscript\Modules\Test;
+namespace Redaxscript\Modules\TestDummy;
 
 use Redaxscript\Module;
 
 /**
  * made for testing
  *
- * @since 2.4.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-class Test extends Module
+class TestDummy extends Module
 {
 	/**
 	 * array of the module
@@ -22,8 +22,8 @@ class Test extends Module
 	 */
 
 	protected static $_moduleArray = array(
-		'name' => 'Test',
-		'alias' => 'Test',
+		'name' => 'Test dummy',
+		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Made for testing',
 		'version' => '2.6.0'
@@ -34,14 +34,14 @@ class Test extends Module
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param integer $first
-	 * @param integer $second
+	 * @param integer $firstNumber
+	 * @param integer $secondNumber
 	 *
 	 * @return integer
 	 */
 
-	public static function render($first = null, $second = null)
+	public static function render($firstNumber = null, $secondNumber = null)
 	{
-		return $first + $second;
+		return $firstNumber + $secondNumber;
 	}
 }

@@ -63,9 +63,9 @@ $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData();
-if (is_dir('modules/Test'))
+if (is_dir('modules/TestDummy'))
 {
-	$test = new Modules\Test\Test;
+	$test = new Modules\TestDummy\TestDummy;
 	$test->install();
 }
 

@@ -73,7 +73,7 @@ class Module
 			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
 			{
 				$installer = new Installer(Config::getInstance());
-				$installer->init('modules/' . static::$_moduleArray['alias'] . 'database');
+				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
 				$installer->rawCreate();
 			}
 		}
@@ -96,7 +96,7 @@ class Module
 			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
 			{
 				$installer = new Installer(Config::getInstance());
-				$installer->init('modules/' . static::$_moduleArray['alias'] . 'database');
+				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
 				$installer->rawDrop();
 			}
 		}

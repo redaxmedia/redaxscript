@@ -54,7 +54,7 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey('Test', $actual);
+		$this->assertArrayHasKey('TestDummy', $actual);
 	}
 
 	/**

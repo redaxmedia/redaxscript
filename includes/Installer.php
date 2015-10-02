@@ -96,6 +96,7 @@ class Installer
 	public function insertData($options = null)
 	{
 		$language = Language::getInstance();
+		$language->init();
 
 		/* articles */
 

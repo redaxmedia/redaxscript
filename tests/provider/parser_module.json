@@ -1,10 +1,10 @@
 [
 	[
-		"<module>Test<module>",
+		"<module>TestDummy<module>",
 		"0"
 	],
 	[
-		"<module>{\"Test\":{\"first\":\"1\",\"second\":\"1\"}}<module>",
+		"<module>{\"TestDummy\":{\"firstNumber\":\"1\",\"secondNumber\":\"1\"}}<module>",
 		"2"
 	],
 	[

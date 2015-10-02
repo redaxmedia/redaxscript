@@ -63,18 +63,18 @@ class ModuleTest extends TestCase
 
 		$module = new Module();
 		$module->init(array(
-			'name' => 'Test',
-			'alias' => 'Test',
+			'name' => 'Test dummy',
+			'alias' => 'TestDummy',
 		));
 		$module->install();
 
 		/* actual */
 
-		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne()->name;
+		$actual = Db::forTablePrefix('modules')->where('alias', 'TestDummy')->findOne()->name;
 
 		/* compare */
 
-		$this->assertEquals('Test', $actual);
+		$this->assertEquals('Test dummy', $actual);
 	}
 
 	/**
@@ -89,13 +89,13 @@ class ModuleTest extends TestCase
 
 		$module = new Module();
 		$module->init(array(
-			'alias' => 'Test'
+			'alias' => 'TestDummy'
 		));
 		$module->uninstall();
 
 		/* actual */
 
-		$actual = Db::forTablePrefix('modules')->where('alias', 'Test')->findOne();
+		$actual = Db::forTablePrefix('modules')->where('alias', 'TestDummy')->findOne();
 
 		/* compare */
 
