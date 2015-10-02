@@ -123,7 +123,7 @@ class Html implements FilterInterface
 	 * @return DOMDocument
 	 */
 
-	public function _createDocument($html = null)
+	protected function _createDocument($html = null)
 	{
 		$doc = new DOMDocument();
 		$doc->loadHTML($html);

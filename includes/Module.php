@@ -67,6 +67,15 @@ class Module
 			$module = Db::forTablePrefix('modules')->create();
 			$module->set(static::$_moduleArray);
 			$module->save();
+
+			/* create from sql */
+
+			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
+			{
+				$installer = new Installer(Config::getInstance());
+				$installer->init('modules/' . static::$_moduleArray['alias'] . 'database');
+				$installer->rawCreate();
+			}
 		}
 	}
 
@@ -81,6 +90,15 @@ class Module
 		if (isset(static::$_moduleArray['alias']))
 		{
 			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
+
+			/* drop from sql */
+
+			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
+			{
+				$installer = new Installer(Config::getInstance());
+				$installer->init('modules/' . static::$_moduleArray['alias'] . 'database');
+				$installer->rawDrop();
+			}
 		}
 	}
 }

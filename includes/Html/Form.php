@@ -433,7 +433,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function _createButton($type = null, $text = null, $attributeArray = array())
+	protected function _createButton($type = null, $text = null, $attributeArray = array())
 	{
 		if (is_array($attributeArray))
 		{

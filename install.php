@@ -72,8 +72,8 @@ function install()
 
 	/* installer */
 
-	$installer = new Redaxscript\Installer();
-	$installer->init(Redaxscript\Config::getInstance());
+	$installer = new Redaxscript\Installer(Redaxscript\Config::getInstance());
+	$installer->init();
 	$installer->rawDrop();
 	$installer->rawCreate();
 	$installer->insertData(array(

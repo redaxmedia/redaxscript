@@ -40,7 +40,7 @@ class Installer
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.4.0
+	 * @since 2.6.0
 	 *
 	 * @param Config $config instance of the config class
 	 */
@@ -53,6 +53,8 @@ class Installer
 	/**
 	 * init the class
 	 *
+	 * @since 2.6.0
+	 *
 	 * @param string $path path of the raw sql
 	 */
 
@@ -62,7 +64,7 @@ class Installer
 	}
 
 	/**
-	 * create from raw sql
+	 * create from sql
 	 *
 	 * @since 2.4.0
 	 */
@@ -73,7 +75,7 @@ class Installer
 	}
 
 	/**
-	 * drop from raw sql
+	 * drop from sql
 	 *
 	 * @since 2.4.0
 	 */
@@ -208,14 +210,14 @@ class Installer
 		$settingsArray = array(
 			'language' => 'detect',
 			'template' => 'default',
-			'title' => 'Redaxscript',
+			'title' => $language->get('name', '_package'),
 			'author' => null,
 			'copyright' => null,
-			'description' => 'Ultra lightweight CMS',
+			'description' => $language->get('description', '_package'),
 			'keywords' => null,
 			'robots' => 'all',
 			'email' => $options['adminEmail'],
-			'subject' => 'Redaxscript',
+			'subject' => $language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
@@ -264,7 +266,7 @@ class Installer
 	}
 
 	/**
-	 * execute from raw sql
+	 * execute from sql
 	 *
 	 * @since 2.4.0
 	 *
@@ -272,7 +274,7 @@ class Installer
 	 * @param string $type type of the database
 	 */
 
-	public function _rawExecute($action = null, $type = 'mysql')
+	protected function _rawExecute($action = null, $type = 'mysql')
 	{
 		$sqlDirectory = new Directory();
 		$sqlDirectory->init($this->_path . '/' . $type . '/' . $action);
