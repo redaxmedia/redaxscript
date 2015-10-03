@@ -285,7 +285,7 @@ class Installer
 
 		foreach ($sqlArray as $file)
 		{
-			$query = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
+			$query = file_get_contents($this->_path . '/' . $type . '/' . $action . '/' . $file);
 			if ($query)
 			{
 				if ($this->_config->get('dbPrefix'))

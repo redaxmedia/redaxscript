@@ -65,8 +65,8 @@ $installer->rawCreate();
 $installer->insertData();
 if (is_dir('modules/TestDummy'))
 {
-	$test = new Modules\TestDummy\TestDummy;
-	$test->install();
+	$testDummy = new Modules\TestDummy\TestDummy;
+	$testDummy->install();
 }
 
 /* hook */

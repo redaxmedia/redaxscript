@@ -57,7 +57,7 @@ class Module
 	/**
 	 * install the module
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function install()
@@ -70,7 +70,7 @@ class Module
 
 			/* create from sql */
 
-			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
+			if(is_dir('modules/' . static::$_moduleArray['alias'] . '/database'))
 			{
 				$installer = new Installer(Config::getInstance());
 				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
@@ -82,7 +82,7 @@ class Module
 	/**
 	 * uninstall the module
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function uninstall()
@@ -93,7 +93,7 @@ class Module
 
 			/* drop from sql */
 
-			if(file_exists('modules/' . static::$_moduleArray['alias'] . '/database'))
+			if(is_dir('modules/' . static::$_moduleArray['alias'] . '/database'))
 			{
 				$installer = new Installer(Config::getInstance());
 				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
