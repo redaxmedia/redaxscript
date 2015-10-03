@@ -54,7 +54,7 @@ class ModuleTest extends TestCase
 	/**
 	 * testInstall
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function testInstall()
@@ -69,17 +69,19 @@ class ModuleTest extends TestCase
 
 		/* actual */
 
-		$actual = Db::forTablePrefix('modules')->where('alias', 'TestDummy')->findOne()->alias;
+		$actualModules = Db::forTablePrefix('modules')->findMany()->count();
+		$actualTestDummy = Db::forTablePrefix('test_dummy')->findMany()->count();
 
 		/* compare */
 
-		$this->assertEquals('TestDummy', $actual);
+		$this->assertEquals(2, $actualModules);
+		$this->assertEquals(0, $actualTestDummy);
 	}
 
 	/**
 	 * testUninstall
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function testUninstall()
@@ -94,10 +96,10 @@ class ModuleTest extends TestCase
 
 		/* actual */
 
-		$actual = Db::forTablePrefix('modules')->where('alias', 'TestDummy')->findOne();
+		$actualModules = Db::forTablePrefix('modules')->findMany()->count();
 
 		/* compare */
 
-		$this->assertFalse(is_object($actual));
+		$this->assertEquals(1, $actualModules);
 	}
 }
