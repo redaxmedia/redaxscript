@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS /* {configPrefix} */test_dummy (
+	id int(10) PRIMARY KEY AUTO_INCREMENT
+)
+ENGINE = MyISAM
+DEFAULT CHARSET = utf8
+COLLATE = utf8_unicode_ci
+AUTO_INCREMENT = 1;
