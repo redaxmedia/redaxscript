@@ -22,12 +22,12 @@ class Installer
 	protected $_config;
 
 	/**
-	 * path of the raw sql
+	 * name of the directory
 	 *
 	 * @var string
 	 */
 
-	protected $_path;
+	protected $_directory;
 
 	/**
 	 * placeholder for the prefix
@@ -55,12 +55,12 @@ class Installer
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $path path of the raw sql
+	 * @param string $directory name of the directory
 	 */
 
-	public function init($path = 'database')
+	public function init($directory = 'database')
 	{
-		$this->_path = $path;
+		$this->_directory = $directory;
 	}
 
 	/**
@@ -278,14 +278,14 @@ class Installer
 	protected function _rawExecute($action = null, $type = 'mysql')
 	{
 		$sqlDirectory = new Directory();
-		$sqlDirectory->init($this->_path . '/' . $type . '/' . $action);
+		$sqlDirectory->init($this->_directory . '/' . $type . '/' . $action);
 		$sqlArray = $sqlDirectory->getArray();
 
 		/* process sql files */
 
 		foreach ($sqlArray as $file)
 		{
-			$query = file_get_contents($this->_path . '/' . $type . '/' . $action . '/' . $file);
+			$query = file_get_contents($this->_directory . '/' . $type . '/' . $action . '/' . $file);
 			if ($query)
 			{
 				if ($this->_config->get('dbPrefix'))

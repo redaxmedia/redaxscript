@@ -70,10 +70,11 @@ class Module
 
 			/* create from sql */
 
-			if(is_dir('modules/' . static::$_moduleArray['alias'] . '/database'))
+			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			if(is_dir($directory))
 			{
 				$installer = new Installer(Config::getInstance());
-				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
+				$installer->init($directory);
 				$installer->rawCreate();
 			}
 		}
@@ -93,10 +94,11 @@ class Module
 
 			/* drop from sql */
 
-			if(is_dir('modules/' . static::$_moduleArray['alias'] . '/database'))
+			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			if(is_dir($directory))
 			{
 				$installer = new Installer(Config::getInstance());
-				$installer->init('modules/' . static::$_moduleArray['alias'] . '/database');
+				$installer->init($directory);
 				$installer->rawDrop();
 			}
 		}
