@@ -51,7 +51,8 @@ class Breadcrumb
 		'className' => array(
 			'list' => 'list-breadcrumb',
 			'divider' => 'item-divider'
-		)
+		),
+		'divider' => null
 	);
 
 	/**
@@ -72,7 +73,7 @@ class Breadcrumb
 	/**
 	 * init the class
 	 *
-	 * @since 2.4.0
+	 * @since 2.6.0
 	 *
 	 * @param array $options options of the breadcrumb
 	 */
@@ -82,6 +83,10 @@ class Breadcrumb
 		if (is_array($options))
 		{
 			$this->_options = array_merge($this->_options, $options);
+		}
+		if (is_null($this->_options['divider']))
+		{
+			$this->_options['divider'] = Db::getSettings('divider');
 		}
 		$this->_create();
 	}
@@ -157,7 +162,7 @@ class Breadcrumb
 
 				if ($key !== $lastKey)
 				{
-					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text(Db::getSettings('divider'));
+					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text($this->_options['divider']);
 				}
 			}
 		}
