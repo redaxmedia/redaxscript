@@ -22,7 +22,7 @@ class Hash
 	protected static $_config;
 
 	/**
-	 * raw string
+	 * plain raw
 	 *
 	 * @var string
 	 */
@@ -55,12 +55,12 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $raw plain string
+	 * @param string $raw plain raw
 	 */
 
 	public function init($raw = null)
 	{
-		if ($raw)
+		if (is_string($raw))
 		{
 			$this->_raw = $raw;
 		}
@@ -90,11 +90,11 @@ class Hash
 	}
 
 	/**
-	 * validate a salted hash
+	 * validate raw again hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $raw plain string
+	 * @param string $raw plain raw
 	 * @param string $hash salted hash
 	 *
 	 * @return boolean
