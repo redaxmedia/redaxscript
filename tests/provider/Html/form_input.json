@@ -14,7 +14,7 @@
 	[
 		"datetime",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-date\" type=\"datetime\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-date\" type=\"datetime\" /></form>"
 	],
 	[
 		"datetime",
@@ -26,7 +26,7 @@
 	[
 		"email",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-email\" type=\"email\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-email\" type=\"email\" /></form>"
 	],
 	[
 		"email",
@@ -62,7 +62,7 @@
 	[
 		"number",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-number\" type=\"number\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-number\" type=\"number\" /></form>"
 	],
 	[
 		"number",
@@ -74,7 +74,7 @@
 	[
 		"password",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-password\" type=\"password\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-password\" type=\"password\" /></form>"
 	],
 	[
 		"password",
@@ -122,7 +122,7 @@
 	[
 		"tel",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-tel\" type=\"tel\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-tel\" type=\"tel\" /></form>"
 	],
 	[
 		"tel",
@@ -134,7 +134,7 @@
 	[
 		"text",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-text\" type=\"text\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-text\" type=\"text\" /></form>"
 	],
 	[
 		"text",
@@ -146,7 +146,7 @@
 	[
 		"url",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-url\" type=\"url\" /></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-url\" type=\"url\" /></form>"
 	],
 	[
 		"url",

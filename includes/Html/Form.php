@@ -66,6 +66,7 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_languageArray = array(
+		'legend' => 'fields_required',
 		'button' => array(
 			'button' => 'ok',
 			'submit' => 'submit',
@@ -83,6 +84,9 @@ class Form extends HtmlAbstract
 		'form' => array(
 			'class' => 'js-validate-form form-default',
 			'method' => 'post'
+		),
+		'legend' => array(
+			'class' => 'legend-default'
 		),
 		'label' => array(
 			'class' => 'label-default'
@@ -102,11 +106,13 @@ class Form extends HtmlAbstract
 			),
 			'reset' => array(
 				'class' => 'js-reset button-default',
-				'type' => 'reset'
+				'type' => 'reset',
+				'value' => 'reset'
 			),
 			'submit' => array(
 				'class' => 'js-button button-default',
-				'type' => 'submit'
+				'type' => 'submit',
+				'value' => 'submit'
 			)
 		),
 		'input' => array(
@@ -115,11 +121,11 @@ class Form extends HtmlAbstract
 				'type' => 'checkbox'
 			),
 			'datetime' => array(
-				'class' => 'field-date',
+				'class' => 'field-default field-date',
 				'type' => 'datetime'
 			),
 			'email' => array(
-				'class' => 'field-email',
+				'class' => 'field-default field-email',
 				'type' => 'email'
 			),
 			'file' => array(
@@ -131,11 +137,11 @@ class Form extends HtmlAbstract
 				'type' => 'hidden'
 			),
 			'number' => array(
-				'class' => 'field-number',
+				'class' => 'field-default field-number',
 				'type' => 'number'
 			),
 			'password' => array(
-				'class' => 'field-password',
+				'class' => 'field-default field-password',
 				'type' => 'password'
 			),
 			'radio' => array(
@@ -151,15 +157,15 @@ class Form extends HtmlAbstract
 				'type' => 'search'
 			),
 			'tel' => array(
-				'class' => 'field-tel',
+				'class' => 'field-default field-tel',
 				'type' => 'tel'
 			),
 			'text' => array(
-				'class' => 'field-text',
+				'class' => 'field-default field-text',
 				'type' => 'text'
 			),
 			'url' => array(
-				'class' => 'field-url',
+				'class' => 'field-default field-url',
 				'type' => 'url'
 			)
 		)
@@ -172,7 +178,8 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_options = array(
-		'captcha' => true
+		'captcha' => true,
+		'blocker' => true
 	);
 
 	/**
@@ -258,6 +265,33 @@ class Form extends HtmlAbstract
 			$this->_captcha = new Captcha($this->_language->getInstance());
 			$this->_captcha->init();
 		}
+	}
+
+	/**
+	 * append the legend
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $text text of the legend
+	 * @param array $attributeArray attributes of the legend
+	 *
+	 * @return Form
+	 */
+
+	public function legend($text = null, $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['legend'], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['legend'];
+		}
+		$labelElement = new Element('legend', $attributeArray);
+		$labelElement->text($text ? $text : $this->_language->get($this->_languageArray['legend']));
+		$this->append($labelElement);
+		return $this;
 	}
 
 	/**

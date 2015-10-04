@@ -17,7 +17,7 @@
 		"submit",
 		"",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"submit\">Submit</button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-button button-default\" type=\"submit\" value=\"submit\">Submit</button></form>"
 	],
 	[
 		"submit",
@@ -25,13 +25,13 @@
 		{
 			"class": "test"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"submit\">test</button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"submit\" value=\"submit\">test</button></form>"
 	],
 	[
 		"reset",
 		"",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-reset button-default\" type=\"reset\">Reset</button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"js-reset button-default\" type=\"reset\" value=\"reset\">Reset</button></form>"
 	],
 	[
 		"reset",
@@ -39,7 +39,7 @@
 		{
 			"class": "test"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"reset\">test</button></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><button class=\"test\" type=\"reset\" value=\"reset\">test</button></form>"
 	],
 	[
 		"invalid",

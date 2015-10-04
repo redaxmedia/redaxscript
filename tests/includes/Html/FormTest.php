@@ -60,6 +60,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerLegend
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerLegend()
+	{
+		return $this->getProvider('tests/provider/Html/form_legend.json');
+	}
+
+	/**
 	 * providerLabel
 	 *
 	 * @since 2.6.0
@@ -168,6 +181,35 @@ class FormTest extends TestCase
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init($attributeArray, $options);
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testLegend
+	 *
+	 * @param string $text
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerLegend
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testLegend($text = null, $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->legend($text, $attributeArray);
 
 		/* actual */
 
