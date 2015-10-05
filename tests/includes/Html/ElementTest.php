@@ -97,7 +97,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element($tag, $attributeArray);
+		$element = new Html\Element();
+		$element->init($tag, $attributeArray);
 
 		/* actual */
 
@@ -118,7 +119,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 		$elementCopy = $element->copy()->attr('href', 'test');
 
 		/* expect and actual */
@@ -146,7 +148,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 
 		/* actual */
 
@@ -172,7 +175,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 
 		/* actual */
 
@@ -198,7 +202,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('input');
+		$element = new Html\Element();
+		$element->init('input');
 
 		/* actual */
 
@@ -224,7 +229,8 @@ class ElementTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 
 		/* actual */
 

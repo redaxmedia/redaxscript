@@ -49,10 +49,12 @@ class RecentView extends Config
 
 		/* html elements */
 
-		$linkElement = new Html\Element('a');
-		$listElement = new Html\Element('ul', array(
-				'class' => self::$_config['className']['list'])
-		);
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_config['className']['list']
+		));
 
 		/* process log */
 

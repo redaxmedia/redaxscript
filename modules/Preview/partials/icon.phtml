@@ -1,10 +1,12 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$iconElement = new Html\Element('span', array(
+$iconElement = new Html\Element();
+$iconElement->init('span', array(
 	'class' => 'icon_flag'
 ));
 $languagesDirectory = new Directory('languages');

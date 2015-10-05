@@ -70,7 +70,8 @@ class HtmlTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 
 		/* actual */
 
@@ -97,8 +98,8 @@ class HtmlTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('div');
-		$element->html($html);
+		$element = new Html\Element();
+		$element->init('div')->html($html);
 
 		/* actual */
 
@@ -125,8 +126,8 @@ class HtmlTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('div');
-		$element->html($html);
+		$element = new Html\Element();
+		$element->init('div')->html($html);
 
 		/* actual */
 
@@ -147,7 +148,8 @@ class HtmlTest extends TestCase
 	{
 		/* setup */
 
-		$element = new Html\Element('a');
+		$element = new Html\Element();
+		$element->init('a');
 
 		/* expect and actual */
 

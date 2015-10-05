@@ -78,7 +78,8 @@ class LazyLoad extends Config
 
 		if (file_exists($src))
 		{
-			$imageElement = new Html\Element('img', array(
+			$imageElement = new Html\Element();
+			$imageElement->init('img', array(
 				'alt' => $options['alt'],
 				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
 				'src' => self::$_config['placeholder']
@@ -99,7 +100,8 @@ class LazyLoad extends Config
 
 				/* placeholder */
 
-				$placeholderElement = new Html\Element('div', array(
+				$placeholderElement = new Html\Element();
+				$placeholderElement->init('div', array(
 					'class' => self::$_config['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
 				));

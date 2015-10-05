@@ -245,6 +245,8 @@ class Form extends HtmlAbstract
 	 *
 	 * @param array $attributeArray attributes of the form
 	 * @param array $options options of the form
+	 *
+	 * @return Form
 	 */
 
 	public function init($attributeArray = array(), $options = null)
@@ -265,6 +267,7 @@ class Form extends HtmlAbstract
 			$this->_captcha = new Captcha($this->_language->getInstance());
 			$this->_captcha->init();
 		}
+		return $this;
 	}
 
 	/**
@@ -288,8 +291,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['legend'];
 		}
-		$labelElement = new Element('legend', $attributeArray);
-		$labelElement->text($text ? $text : $this->_language->get($this->_languageArray['legend']));
+		$labelElement = new Element();
+		$labelElement
+			->init('legend', $attributeArray)
+			->text($text ? $text : $this->_language->get($this->_languageArray['legend']));
 		$this->append($labelElement);
 		return $this;
 	}
@@ -315,8 +320,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['label'];
 		}
-		$labelElement = new Element('label', $attributeArray);
-		$labelElement->text($text);
+		$labelElement = new Element();
+		$labelElement
+			->init('label', $attributeArray)
+			->text($text);
 		$this->append($labelElement);
 		return $this;
 	}
@@ -341,8 +348,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['textarea'];
 		}
-		$textareaElement = new Element('textarea', $attributeArray);
-		$textareaElement->text($attributeArray['value'])->val(null);
+		$textareaElement = new Element();
+		$textareaElement
+			->init('textarea', $attributeArray)
+			->text($attributeArray['value'])->val(null);
 		$this->append($textareaElement);
 		return $this;
 	}
@@ -368,8 +377,11 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['select'];
 		}
-		$selectElement = new Element('select', $attributeArray);
-		$selectElement->html($this->_createOption($optionArray, $attributeArray['value']))->val(null);
+		$selectElement = new Element();
+		$selectElement
+			->init('select', $attributeArray)
+			->html($this->_createOption($optionArray, $attributeArray['value']))
+			->val(null);
 		$this->append($selectElement);
 		return $this;
 	}
@@ -446,7 +458,8 @@ class Form extends HtmlAbstract
 	public function render()
 	{
 		$output = Hook::trigger('form_start');
-		$formElement = new Element('form', $this->_attributeArray['form']);
+		$formElement = new Element();
+		$formElement->init('form', $this->_attributeArray['form']);
 
 		/* collect output */
 
@@ -477,8 +490,10 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['button'][$type];
 		}
-		$buttonElement = new Element('button', $attributeArray);
-		$buttonElement->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
+		$buttonElement = new Element();
+		$buttonElement
+			->init('button', $attributeArray)
+			->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
 		$this->append($buttonElement);
 		return $this;
 	}
@@ -497,7 +512,8 @@ class Form extends HtmlAbstract
 	protected function _createOption($optionArray = array(), $selected = null)
 	{
 		$output = '';
-		$optionElement = new Element('option');
+		$optionElement = new Element();
+		$optionElement->init('option');
 
 		/* process option */
 
@@ -536,7 +552,8 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['input'][$type];
 		}
-		$inputElement = new Element('input', $attributeArray);
+		$inputElement = new Element();
+		$inputElement->init('input', $attributeArray);
 		$this->append($inputElement);
 		return $this;
 	}

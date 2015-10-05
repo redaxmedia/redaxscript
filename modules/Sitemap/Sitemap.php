@@ -48,13 +48,16 @@ class Sitemap extends Config
 
 		/* html elements */
 
-		$titleElement = new Html\Element('h3', array(
+		$titleElement = new Html\Element();
+		$titleElement->init('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$linkElement = new Html\Element('a');
-		$listElement = new Html\Element('ul', array(
-			'class' => self::$_config['className']['list'])
-		);
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_config['className']['list']
+		));
 
 		/* fetch articles */
 

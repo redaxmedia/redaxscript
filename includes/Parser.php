@@ -212,7 +212,8 @@ class Parser
 	protected function _parseReadmore($input = null)
 	{
 		$aliasValidator = new Validator\Alias();
-		$linkElement = new Html\Element('a');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
 
 		/* collect output */
 
@@ -252,7 +253,8 @@ class Parser
 	{
 		$output = str_replace($this->_tags['codequote']['search'], $this->_options['delimiter'], $input);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
-		$preElement = new Html\Element('pre', array(
+		$preElement = new Html\Element();
+		$preElement->init('pre', array(
 			'class' => $this->_options['className']['codequote']
 		));
 

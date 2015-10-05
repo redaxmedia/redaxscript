@@ -1,14 +1,18 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$clearfixElement = new Html\Element('div', array(
+$clearfixElement = new Html\Element();
+$clearfixElement->init('div', array(
 	'class' => 'clearfix'
 ));
-$gridElement = new Html\Element('div');
-$boxElement = new Html\Element('div', array(
+$gridElement = new Html\Element();
+$gridElement->init('div');
+$boxElement = new Html\Element();
+$boxElement->init('div', array(
 	'class' => 'box_preview'
 ));
 $gridArray = array(

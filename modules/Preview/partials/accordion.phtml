@@ -2,16 +2,20 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '_default';
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$setAccordionElement = new Html\Element('div', array(
+$setAccordionElement = new Html\Element();
+$setAccordionElement->init('div', array(
 	'class' => 'js_set_accordion set_accordion set_accordion' . $suffix
 ));
-$titleAccordionElement = new Html\Element('h3', array(
+$titleAccordionElement = new Html\Element();
+$titleAccordionElement->init('h3', array(
 	'class' => 'js_title_accordion title_accordion title_accordion' . $suffix
 ));
-$boxAccordionElement = new Html\Element('div', array(
+$boxAccordionElement = new Html\Element();
+$boxAccordionElement->init('div', array(
 	'class' => 'js_box_accordion box_accordion box_accordion' . $suffix
 ));
 ?>

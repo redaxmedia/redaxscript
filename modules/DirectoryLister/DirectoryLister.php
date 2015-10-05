@@ -87,16 +87,20 @@ class DirectoryLister extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Html\Element('a', array(
+			$linkElement = new Html\Element();
+			$linkElement->init('a', array(
 				'class' => self::$_config['className']['link']
 			));
-			$textSizeElement = new Html\Element('span', array(
+			$textSizeElement = new Html\Element();
+			$textSizeElement->init('span', array(
 				'class' => self::$_config['className']['textSize']
 			));
-			$textDateElement = new Html\Element('span', array(
+			$textDateElement = new Html\Element();
+			$textDateElement->init('span', array(
 				'class' => self::$_config['className']['textDate']
 			));
-			$listElement = new Html\Element('ul', array(
+			$listElement = new Html\Element();
+			$listElement->init('ul', array(
 				'class' => self::$_config['className']['list']
 			));
 

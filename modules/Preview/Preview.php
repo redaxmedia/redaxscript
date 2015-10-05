@@ -121,19 +121,20 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-		$titleElement = new Html\Element('h2', array(
+		$titleElement = new Html\Element();
+		$titleElement->init('h2', array(
 			'class' => 'title_content',
 			'title' => $alias
 		));
-		$linkElement = new Html\Element('a', array(
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
 			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
 			'title' => $alias
 		));
-		$linkElement->text($alias);
 
 		/* collect output */
 
-		$output = $titleElement->html($linkElement);
+		$output = $titleElement->html($linkElement->text($alias));
 		$output .= Template::partial($path);
 		return $output;
 	}

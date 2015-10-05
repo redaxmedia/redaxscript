@@ -76,7 +76,8 @@ class Maps extends Config
 
 	public static function render($lat = 0, $lng = 0, $zoom = 0)
 	{
-		$mapElement = new Html\Element('div', array(
+		$mapElement = new Html\Element();
+		$mapElement->init('div', array(
 			'class' => self::$_config['className']
 		));
 

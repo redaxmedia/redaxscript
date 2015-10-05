@@ -60,13 +60,16 @@ class FeedReader extends Config
 
 		/* html elements */
 
-		$titleElement = new Html\Element('h3', array(
+		$titleElement = new Html\Element();
+		$titleElement->init('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$linkElement = new Html\Element('a', array(
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
 			'target' => '_blank'
 		));
-		$boxElement = new Html\Element('div', array(
+		$boxElement = new Html\Element();
+		$boxElement->init('div', array(
 			'class' => self::$_config['className']['box']
 		));
 

@@ -1,26 +1,33 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$linkElement = new Html\Element('a', array(
-	'href' => '#'
-));
-$linkElement->text('link');
-$boxElement = new Html\Element('div', array(
+$linkElement = new Html\Element();
+$linkElement
+	->init('a', array(
+		'href' => '#'
+	))
+	->text('link');
+$boxElement = new Html\Element();
+$boxElement->init('div', array(
 	'class' => 'box_note'
 ));
-$fieldTextElement = new Html\Element('input', array(
+$fieldTextElement = new Html\Element();
+$fieldTextElement->init('input', array(
 	'type' => 'text',
 	'class' => 'field_text field_note',
 	'placeholder' => 'Placeholder text'
 ));
-$fieldSelectElement = new Html\Element('select', array(
-	'class' => 'field_select field_note',
-));
 $optionNative = '<option>Placeholder text</option>';
-$fieldSelectElement->html($optionNative . $optionNative . $optionNative);
+$fieldSelectElement = new Html\Element();
+$fieldSelectElement
+	->init('select', array(
+		'class' => 'field_select field_note',
+	))
+	->html($optionNative . $optionNative . $optionNative);
 $noteArray = array(
 	'note_error',
 	'note_warning',

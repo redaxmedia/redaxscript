@@ -124,9 +124,12 @@ class Breadcrumb
 
 		/* html elements */
 
-		$linkElement = new Html\Element('a');
-		$itemElement = new Html\Element('li');
-		$listElement = new Html\Element('ul', array(
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
 			'class' => $this->_options['className']['list']
 		));
 

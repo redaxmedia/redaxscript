@@ -1,13 +1,18 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$linkElement = new Html\Element('a');
-$linkElement->text(Language::get('preview', '_preview'));
-$titleElement = new Html\Element('h3');
-$titleElement->text(Language::get('preview', '_preview'));
+$linkElement = new Html\Element();
+$linkElement
+	->init('a')
+	->text(Language::get('preview', '_preview'));
+$titleElement = new Html\Element();
+$titleElement
+	->init('h3')
+	->text(Language::get('preview', '_preview'));
 $linkArray = array(
 	'link_default',
 	'link_read_more'

@@ -1,13 +1,16 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$imageElement = new Html\Element('img', array(
+$imageElement = new Html\Element();
+$imageElement->init('img', array(
 	'class' => 'image image_default'
 ));
-$playerElement = new Html\Element('iframe', array(
+$playerElement = new Html\Element();
+$playerElement->init('iframe', array(
 	'class' => 'player player_default'
 ));
 ?>

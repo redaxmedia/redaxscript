@@ -2,22 +2,29 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '';
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$fieldTextElement = new Html\Element('input', array(
-	'class' => 'field_text' . $suffix
-));
-$fieldTextElement->val(Language::get('preview', '_preview'));
-$fieldTextareaElement = new Html\Element('textarea', array(
-	'class' => 'field_textarea' . $suffix
-));
-$fieldTextareaElement->val(Language::get('preview', '_preview'));
-$fieldSelectElement = new Html\Element('select', array(
-	'class' => 'field_select' . $suffix
-));
+$fieldTextElement = new Html\Element();
+$fieldTextElement
+	->init('input', array(
+		'class' => 'field_text' . $suffix
+	))
+	->val(Language::get('preview', '_preview'));
+$fieldTextareaElement = new Html\Element();
+$fieldTextareaElement
+	->init('textarea', array(
+		'class' => 'field_textarea' . $suffix
+	))
+	->val(Language::get('preview', '_preview'));
 $optionNative = '<option>Placeholder text</option>';
-$fieldSelectElement->html($optionNative . $optionNative . $optionNative);
+$fieldSelectElement = new Html\Element();
+$fieldSelectElement
+	->init('select', array(
+		'class' => 'field_select' . $suffix
+	))
+	->html($optionNative . $optionNative . $optionNative);
 ?>
 
 <!-- field text -->

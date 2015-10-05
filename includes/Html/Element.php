@@ -55,7 +55,7 @@ class Element extends HtmlAbstract
 	protected $_attributeArray = array();
 
 	/**
-	 * constructor of the class
+	 * init the class
 	 *
 	 * @since 2.2.0
 	 *
@@ -65,7 +65,7 @@ class Element extends HtmlAbstract
 	 * @return Element
 	 */
 
-	public function __construct($tag = null, $attributeArray = array())
+	public function init($tag = null, $attributeArray = array())
 	{
 		$this->_tag = strtolower($tag);
 

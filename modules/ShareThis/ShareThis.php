@@ -77,10 +77,12 @@ class ShareThis extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Html\Element('a', array(
+			$linkElement = new Html\Element();
+			$linkElement->init('a', array(
 				'target' => '_blank'
 			));
-			$listElement = new Html\Element('ul', array(
+			$listElement = new Html\Element();
+			$listElement->init('ul', array(
 				'class' => self::$_config['className']['list']
 			));
 

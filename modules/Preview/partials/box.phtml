@@ -1,11 +1,12 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$boxElement = new Html\Element('div');
-$boxElement->text(Language::get('preview', '_preview'));
+$boxElement = new Html\Element();
+$boxElement->init('div')->text(Language::get('preview', '_preview'));
 $boxArray = array(
 	'box_comment',
 	'box_extra',
