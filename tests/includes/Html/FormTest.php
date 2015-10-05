@@ -86,6 +86,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerInput
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerInput()
+	{
+		return $this->getProvider('tests/provider/Html/form_input.json');
+	}
+	
+	/**
 	 * providerTextarea
 	 *
 	 * @since 2.6.0
@@ -109,19 +122,6 @@ class FormTest extends TestCase
 	public function providerSelect()
 	{
 		return $this->getProvider('tests/provider/Html/form_select.json');
-	}
-
-	/**
-	 * providerInput
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInput()
-	{
-		return $this->getProvider('tests/provider/Html/form_input.json');
 	}
 
 	/**
@@ -250,6 +250,35 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * testInput
+	 *
+	 * @param string $method
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerInput
+	 *
+	 * @since 2.6.0
+	 */
+
+	public function testInput($method = null, $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->$method($attributeArray);
+
+		/* actual */
+
+		$actual = $form->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
 	 * testTextarea
 	 *
 	 * @param array $attributeArray
@@ -300,35 +329,6 @@ class FormTest extends TestCase
 		/* actual */
 
 		$actual = $form;
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testInput
-	 *
-	 * @param string $method
-	 * @param array $attributeArray
-	 * @param array $expect
-	 *
-	 * @dataProvider providerInput
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testInput($method = null, $attributeArray = array(), $expect = array())
-	{
-		/* setup */
-
-		$form = new Html\Form($this->_registry, $this->_language);
-		$form->init();
-		$form->$method($attributeArray);
-
-		/* actual */
-
-		$actual = $form->render();
 
 		/* compare */
 
