@@ -4,6 +4,10 @@
 		"<p>test</p>"
 	],
 	[
+		"hello \"world",
+		"<p>hello world</p>"
+	],
+	[
 		"<span>",
 		"<span></span>"
 	],

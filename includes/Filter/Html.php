@@ -93,18 +93,8 @@ class Html implements FilterInterface
 
 		if ($filter === true)
 		{
-			/* disable errors */
-
-			libxml_use_internal_errors(true);
-
-			/* strip tags and attributes */
-
 			$doc = $this->_stripTags($doc);
 			$doc = $this->_stripAttributes($doc);
-
-			/* clear errors */
-
-			libxml_clear_errors();
 		}
 
 		/* collect output */
@@ -188,6 +178,13 @@ class Html implements FilterInterface
 					$this->_stripTags($childNode);
 				}
 			}
+
+			/* strip children values */
+
+			else if ($childNode->nodeValue)
+			{
+				$this->_stripValues($childNode);
+			}
 		}
 		return $node;
 	}
@@ -225,5 +222,20 @@ class Html implements FilterInterface
 			}
 		}
 		return $node;
+	}
+
+	/**
+	 * strip the values
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param object $node target node
+	 *
+	 * @return object
+	 */
+
+	protected function _stripValues($node = null)
+	{
+		$node->nodeValue = str_replace('"', '', $node->nodeValue);
 	}
 }
