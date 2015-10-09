@@ -17,7 +17,7 @@ use Redaxscript\Db;
 class Html implements FilterInterface
 {
 	/**
-	 * array of tags
+	 * array of allowed tags
 	 *
 	 * @var array
 	 */
@@ -58,7 +58,7 @@ class Html implements FilterInterface
 	);
 
 	/**
-	 * array of attributes
+	 * array of allowed attributes
 	 *
 	 * @var array
 	 */
@@ -69,6 +69,164 @@ class Html implements FilterInterface
 		'id',
 		'rowspan',
 		'title'
+	);
+
+	/**
+	 * array of forbidden values
+	 *
+	 * @var array
+	 */
+
+	protected $_forbiddenValues = array(
+		'ondeviceorientation',
+		'ondevicemotion',
+		'onautocompleteerror',
+		'onautocomplete',
+		'onunload',
+		'onstorage',
+		'onpopstate',
+		'onpageshow',
+		'onpagehide',
+		'ononline',
+		'onoffline',
+		'onmessage',
+		'onlanguagechange',
+		'onhashchange',
+		'onbeforeunload',
+		'onwaiting',
+		'onvolumechange',
+		'ontoggle',
+		'ontimeupdate',
+		'onsuspend',
+		'onsubmit',
+		'onstalled',
+		'onshow',
+		'onselect',
+		'onseeking',
+		'onseeked',
+		'onscroll',
+		'onresize',
+		'onreset',
+		'onratechange',
+		'onprogress',
+		'onplaying',
+		'onplay',
+		'onpause',
+		'onmousewheel',
+		'onmouseup',
+		'onmouseover',
+		'onmouseout',
+		'onmousemove',
+		'onmouseleave',
+		'onmouseenter',
+		'onmousedown',
+		'onloadstart',
+		'onloadedmetadata',
+		'onloadeddata',
+		'onload',
+		'onkeyup',
+		'onkeypress',
+		'onkeydown',
+		'oninvalid',
+		'oninput',
+		'onfocus',
+		'onerror',
+		'onended',
+		'onemptied',
+		'ondurationchange',
+		'ondrop',
+		'ondragstart',
+		'ondragover',
+		'ondragleave',
+		'ondragenter',
+		'ondragend',
+		'ondrag',
+		'ondblclick',
+		'oncuechange',
+		'oncontextmenu',
+		'onclose',
+		'onclick',
+		'onchange',
+		'oncanplaythrough',
+		'oncanplay',
+		'oncancel',
+		'onblur',
+		'onabort',
+		'onwheel',
+		'ontransitionend',
+		'onsearch',
+		'onwheel',
+		'ondevicemotion',
+		'ondeviceorientation',
+		'ondeviceproximity',
+		'onuserproximity',
+		'ondevicelight',
+		'onabort',
+		'onblur',
+		'onfocus',
+		'oncanplay',
+		'oncanplaythrough',
+		'onchange',
+		'onclick',
+		'oncontextmenu',
+		'ondblclick',
+		'ondrag',
+		'ondragend',
+		'ondragenter',
+		'ondragleave',
+		'ondragover',
+		'ondragstart',
+		'ondrop',
+		'ondurationchange',
+		'onemptied',
+		'onended',
+		'oninput',
+		'oninvalid',
+		'onkeydown',
+		'onkeypress',
+		'onkeyup',
+		'onload',
+		'onloadeddata',
+		'onloadedmetadata',
+		'onloadstart',
+		'onmousedown',
+		'onmouseenter',
+		'onmouseleave',
+		'onmousemove',
+		'onmouseout',
+		'onmouseover',
+		'onmouseup',
+		'onpause',
+		'onplay',
+		'onplaying',
+		'onprogress',
+		'onratechange',
+		'onreset',
+		'onresize',
+		'onscroll',
+		'onseeked',
+		'onseeking',
+		'onselect',
+		'onshow',
+		'onstalled',
+		'onsubmit',
+		'onsuspend',
+		'ontimeupdate',
+		'onvolumechange',
+		'onwaiting',
+		'onerror',
+		'onafterprint',
+		'onbeforeprint',
+		'onbeforeunload',
+		'onhashchange',
+		'onlanguagechange',
+		'onmessage',
+		'onoffline',
+		'ononline',
+		'onpagehide',
+		'onpageshow',
+		'onpopstate',
+		'onunload'
 	);
 
 	/**
@@ -93,18 +251,9 @@ class Html implements FilterInterface
 
 		if ($filter === true)
 		{
-			/* disable errors */
-
-			libxml_use_internal_errors(true);
-
-			/* strip tags and attributes */
-
 			$doc = $this->_stripTags($doc);
 			$doc = $this->_stripAttributes($doc);
-
-			/* clear errors */
-
-			libxml_clear_errors();
+			$doc = $this->_stripValues($doc);
 		}
 
 		/* collect output */
@@ -222,6 +371,37 @@ class Html implements FilterInterface
 				{
 					$this->_stripAttributes($childNode);
 				}
+			}
+		}
+		return $node;
+	}
+
+	/**
+	 * strip the values
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param object $node target node
+	 *
+	 * @return object
+	 */
+
+	protected function _stripValues($node = null)
+	{
+		foreach ($node->childNodes as $childNode)
+		{
+			if ($childNode->nodeType === XML_ELEMENT_NODE)
+			{
+				/* strip children values */
+
+				if ($childNode->hasChildNodes())
+				{
+					$this->_stripValues($childNode);
+				}
+			}
+			else
+			{
+				$childNode->nodeValue = str_ireplace($this->_forbiddenValues, '', $childNode->nodeValue);
 			}
 		}
 		return $node;
