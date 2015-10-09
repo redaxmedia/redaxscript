@@ -60,7 +60,7 @@ class Hash
 
 	public function init($raw = null)
 	{
-		if (is_string($raw))
+		if (is_numeric($raw) || is_string($raw))
 		{
 			$this->_raw = $raw;
 		}

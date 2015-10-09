@@ -88,7 +88,6 @@ function password_reset_post()
 	{
 		$users_result = Redaxscript\Db::forTablePrefix('users')->where(array(
 			'id' => $post_id,
-			'password' => $post_password,
 			'status' => 1
 		))->findArray();
 		foreach ($users_result as $r)
@@ -111,7 +110,7 @@ function password_reset_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if ($my_id == '' || $my_password == '')
+	else if ($my_id == '' || sha1($my_password) != $post_password)
 	{
 		$error = l('access_no');
 	}
@@ -147,7 +146,6 @@ function password_reset_post()
 		Redaxscript\Db::forTablePrefix('users')
 			->where(array(
 				'id' => $post_id,
-				'password' => $post_password,
 				'status' => 1
 			))
 			->findOne()
