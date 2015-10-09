@@ -37,7 +37,6 @@
 					mapLat = Number(map.data('lat')),
 					mapLng = Number(map.data('lng')),
 					mapZoom = Number(map.data('zoom')),
-					mapMeta = '',
 					mapInstance = '';
 
 				/* overwrite center */
@@ -60,9 +59,9 @@
 				{
 					mapInstance = new google.maps.Map(map[0], options.general);
 
-					/* remove branding */
+					/* debranding */
 
-					if (options.branding === 'remove' || options.branding === 'replace')
+					if (options.deBranding)
 					{
 						google.maps.event.addListenerOnce(mapInstance, 'bounds_changed', function ()
 						{
@@ -72,27 +71,6 @@
 						{
 							map.children('div').css('opacity', 1).children('div').slice(1, 7).remove();
 						});
-					}
-
-					/* replace branding */
-
-					if (options.branding === 'replace' && options.mapLogo && options.mapTerms)
-					{
-						mapMeta = $('<div>').addClass(options.className.mapMeta).appendTo(map);
-
-						/* append custom logo */
-
-						if (options.mapLogo)
-						{
-							$(options.mapLogo).addClass(options.className.mapLogo).appendTo(mapMeta);
-						}
-
-						/* append custom terms */
-
-						if (options.mapTerms)
-						{
-							$(options.mapTerms).addClass(options.className.mapTerms).appendTo(mapMeta);
-						}
 					}
 
 					/* set custom styles */

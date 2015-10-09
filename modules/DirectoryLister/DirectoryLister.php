@@ -89,7 +89,8 @@ class DirectoryLister extends Config
 
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'class' => self::$_config['className']['link']
+				'class' => self::$_config['className']['link'],
+				'target' => '_blank'
 			));
 			$textSizeElement = new Html\Element();
 			$textSizeElement->init('span', array(

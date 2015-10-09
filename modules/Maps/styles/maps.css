@@ -2,10 +2,8 @@
  * @tableofcontents
  *
  * 1. map
- * 2. map meta
- * 3. map branding
  *
- * @since 2.0.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -23,53 +21,4 @@
 .mobile .map
 {
 	height: 15em;
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
-}
-
-/* @section 2. map meta */
-
-.map_meta
-{
-	background: #fff;
-	bottom: 0;
-	color: #666;
-	font: 1em georgia, arial;
-	left: 0;
-	padding: 1em 0;
-	position: absolute;
-	right: 0;
-	z-index: 500;
-}
-
-.map_meta a:hover
-{
-	text-decoration: underline;
-}
-
-/* desktop */
-
-.desktop .map_meta
-{
-	display: none;
-}
-
-.desktop .map:hover .map_meta
-{
-	display: block;
-}
-
-/* @section 3. map branding */
-
-.map_logo
-{
-	float: left;
-	margin-left: 1em;
-}
-
-.map_terms
-{
-	float: right;
-	margin-right: 1em;
 }

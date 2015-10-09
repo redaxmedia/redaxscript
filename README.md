@@ -44,7 +44,7 @@ Links
 **Development**
 
 * [API](http://api.redaxscript.com)
-* [Github](http://github.redaxscript.com)
+* [GitHub](http://github.redaxscript.com)
 * [Travis](http://travis.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)

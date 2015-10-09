@@ -65,7 +65,7 @@ class Maps extends Config
 	/**
 	 * render
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @param integer $lat
 	 * @param integer $lng
@@ -74,27 +74,18 @@ class Maps extends Config
 	 * @return string
 	 */
 
-	public static function render($lat = 0, $lng = 0, $zoom = 0)
+	public static function render($lat = 0, $lng = 0, $zoom = 1)
 	{
 		$mapElement = new Html\Element();
 		$mapElement->init('div', array(
-			'class' => self::$_config['className']
+			'class' => self::$_config['className'],
+			'data-lat' => is_numeric($lat) ? $lat : null,
+			'data-lng' => is_numeric($lng) ? $lng : null,
+			'data-zoom' => is_numeric($zoom) ? $zoom : null
 		));
 
-		/* collect attributes */
+		/* collect output */
 
-		if (is_numeric($lat))
-		{
-			$mapElement->attr('data-lat', $lat);
-		}
-		if (is_numeric($lng))
-		{
-			$mapElement->attr('data-lng', $lng);
-		}
-		if (is_numeric($zoom))
-		{
-			$mapElement->attr('data-zoom', $zoom);
-		}
 		$output = $mapElement;
 		return $output;
 	}
