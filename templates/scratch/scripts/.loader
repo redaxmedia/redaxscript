@@ -3,6 +3,7 @@
 
 [single]
 1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+2 = scripts/fallback.js
 
 [template_init]
 1 = scripts/support.js
