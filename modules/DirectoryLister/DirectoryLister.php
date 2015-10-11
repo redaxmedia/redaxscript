@@ -89,8 +89,7 @@ class DirectoryLister extends Config
 
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'class' => self::$_config['className']['link'],
-				'target' => '_blank'
+				'class' => self::$_config['className']['link']
 			));
 			$textSizeElement = new Html\Element();
 			$textSizeElement->init('span', array(
@@ -185,6 +184,7 @@ class DirectoryLister extends Config
 							->copy()
 							->attr(array(
 								'href' => $path,
+								'target' => '_blank',
 								'title' => Language::get('file', '_directory_lister')
 							))
 							->addClass(self::$_config['className']['types'][$fileType])
