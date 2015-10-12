@@ -9,6 +9,6 @@
 		{
 			"class": "test"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"test\">test</label></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"test\">test:</label></form>"
 	]
 ]

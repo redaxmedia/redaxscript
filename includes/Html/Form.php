@@ -294,7 +294,7 @@ class Form extends HtmlAbstract
 		$labelElement = new Element();
 		$labelElement
 			->init('legend', $attributeArray)
-			->text($text ? $text : $this->_language->get($this->_languageArray['legend']));
+			->text($text ? $text . $this->_language->get('point') : $this->_language->get($this->_languageArray['legend']) . $this->_language->get('point'));
 		$this->append($labelElement);
 		return $this;
 	}
@@ -323,7 +323,7 @@ class Form extends HtmlAbstract
 		$labelElement = new Element();
 		$labelElement
 			->init('label', $attributeArray)
-			->text($text);
+			->text($text ? $text . $this->_language->get('colon') : null);
 		$this->append($labelElement);
 		return $this;
 	}
@@ -351,7 +351,8 @@ class Form extends HtmlAbstract
 		$textareaElement = new Element();
 		$textareaElement
 			->init('textarea', $attributeArray)
-			->text($attributeArray['value'])->val(null);
+			->text($attributeArray['value'])
+			->val(null);
 		$this->append($textareaElement);
 		return $this;
 	}

@@ -2,10 +2,12 @@
 namespace Redaxscript\Modules\Contact;
 
 use Redaxscript\Html;
+use Redaxscript\Filter;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * simple contact form
@@ -104,7 +106,8 @@ class Contact extends Module
 			->text(array(
 				'id' => 'author',
 				'name' => 'author',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => Request::getPost('author')
 			))
 			->append('</li><li>')
 			->label('* ' . Language::get('email'), array(
@@ -113,15 +116,17 @@ class Contact extends Module
 			->email(array(
 				'id' => 'email',
 				'name' => 'email',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => Request::getPost('email')
 			))
 			->append('</li><li>')
 			->label(Language::get('url'), array(
-				'for' => 'email'
+				'for' => 'url'
 			))
 			->url(array(
 				'id' => 'url',
-				'name' => 'url'
+				'name' => 'url',
+				'value' => Request::getPost('url')
 			))
 			->append('</li><li>')
 			->label('* ' . Language::get('message'), array(
@@ -130,7 +135,8 @@ class Contact extends Module
 			->textarea(array(
 				'id' => 'text',
 				'name' => 'text',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => Request::getPost('text')
 			))
 			->append('</li><li>')
 			->captcha('task')
@@ -150,6 +156,78 @@ class Contact extends Module
 
 	public static function _process()
 	{
-		return true;
+		$specialFilter = new Filter\Special();
+		$emailFilter = new Filter\Email();
+		$urlFilter  = new Filter\Url();
+		$htmlFilter  = new Filter\Html();
+		$emailValidator = new Validator\Email();
+		$urlValidator = new Validator\Url();
+		$captchaValidator = new Validator\Captcha();
+
+		/* process post */
+
+		$postData = array(
+			'author' => $specialFilter->sanitize(Request::getPost('author')),
+			'email' => $emailFilter->sanitize(Request::getPost('email')),
+			'url' => $urlFilter->sanitize(Request::getPost('url')),
+			'text' => nl2br($htmlFilter->sanitize(Request::getPost('text'))),
+			'task' => Request::getPost('task'),
+			'solution' => Request::getPost('solution')
+		);
+
+		/* validate post */
+
+		if (is_null($postData['author']))
+		{
+			$errorData['author'] = Language::get('author_empty');
+		}
+		if (is_null($postData['email']))
+		{
+			$errorData['email'] = Language::get('email_empty');
+		}
+		else if ($emailValidator->validate($postData['email']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorData['email'] = Language::get('email_incorrect');
+		}
+		if (isset($errorData['url']) && $urlValidator->validate($postData['url']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorData['url'] = Language::get('url_incorrect');
+		}
+		if (is_null($postData['text']))
+		{
+			$errorData['text'] = Language::get('message_empty');
+		}
+		if ($captchaValidator->validate($postData['task'], $postData['solution']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorData['captcha'] = Language::get('captcha_incorrect');
+		}
+
+		/* handle success */
+
+		if (is_null($errorData))
+		{
+			self::_send($postData);
+		}
+
+		/* handle error */
+
+		else
+		{
+			var_dump($errorData);
+		}
+	}
+
+	/**
+	 * send
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param array $postData
+	 */
+
+	public static function _send($postData = array())
+	{
+		var_dump('send message!');
+		var_dump($postData);
 	}
 }

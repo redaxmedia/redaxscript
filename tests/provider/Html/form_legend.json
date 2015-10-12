@@ -2,13 +2,13 @@
 	[
 		"",
 		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><legend class=\"legend-default\">Required fields are marked with an asterisk</legend></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><legend class=\"legend-default\">Required fields are marked with an asterisk.</legend></form>"
 	],
 	[
 		"test",
 		{
 			"class": "test"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><legend class=\"test\">test</legend></form>"
+		"<form class=\"js-validate-form form-default\" method=\"post\"><legend class=\"test\">test.</legend></form>"
 	]
 ]
