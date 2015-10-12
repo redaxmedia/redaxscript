@@ -1,9 +1,11 @@
 <?php
 namespace Redaxscript\Modules\Contact;
 
+use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Language;
+use Redaxscript\Mailer;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Module;
@@ -177,11 +179,11 @@ class Contact extends Module
 
 		/* validate post */
 
-		if (is_null($postData['author']))
+		if (empty($postData['author']))
 		{
 			$errorData['author'] = Language::get('author_empty');
 		}
-		if (is_null($postData['email']))
+		if (empty($postData['email']))
 		{
 			$errorData['email'] = Language::get('email_empty');
 		}
@@ -193,7 +195,7 @@ class Contact extends Module
 		{
 			$errorData['url'] = Language::get('url_incorrect');
 		}
-		if (is_null($postData['text']))
+		if (empty($postData['text']))
 		{
 			$errorData['text'] = Language::get('message_empty');
 		}
@@ -227,7 +229,28 @@ class Contact extends Module
 
 	public static function _send($postData = array())
 	{
-		var_dump('send message!');
-		var_dump($postData);
+		$toArray = array(
+			Db::getSettings('author') => Db::getSettings('email')
+		);
+		$fromArray = array(
+			$postData['author'] => $postData['email']
+		);
+		$subject = Language::get('contact');
+		$bodyArray = array(
+			Language::get('author') . Language::get('colon') . ' ' . $postData['author'],
+			'<br />',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $postData['email'] . '">' . $postData['email'] .'</a>',
+			'<br />',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $postData['url'] . '">' . $postData['url'] .'</a>',
+			'<br />',
+			'<br />',
+			Language::get('message') . Language::get('colon') . ' ' . $postData['text']
+		);
+
+		/* send message */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
 	}
 }

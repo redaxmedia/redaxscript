@@ -223,7 +223,7 @@ class Mailer
 
 					/* reset body string */
 
-					$this->_bodyString = '';
+					$this->_bodyString = null;
 				}
 				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
