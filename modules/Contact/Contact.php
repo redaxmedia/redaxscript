@@ -47,6 +47,7 @@ class Contact extends Module
 	{
 		if (Request::getPost(get_class()) === 'submit')
 		{
+			Registry::set('centerBreak', true);
 			self::_process();
 		}
 	}
@@ -108,8 +109,9 @@ class Contact extends Module
 			->text(array(
 				'id' => 'author',
 				'name' => 'author',
+				'readonly' => Registry::get('myName') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Request::getPost('author')
+				'value' => Registry::get('myName') ? Registry::get('myName') : Request::getPost('author')
 			))
 			->append('</li><li>')
 			->label('* ' . Language::get('email'), array(
@@ -118,8 +120,9 @@ class Contact extends Module
 			->email(array(
 				'id' => 'email',
 				'name' => 'email',
+				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Request::getPost('email')
+				'value' => Registry::get('myEmail') ? Registry::get('myEmail') : Request::getPost('email')
 			))
 			->append('</li><li>')
 			->label(Language::get('url'), array(
@@ -204,18 +207,19 @@ class Contact extends Module
 			$errorData['captcha'] = Language::get('captcha_incorrect');
 		}
 
-		/* handle success */
+		/* handle error */
 
-		if (is_null($errorData))
+		if ($errorData)
 		{
-			self::_send($postData);
+			notification(Language::get('error_occurred'), $errorData, Language::get('home'), Registry::get('root'));
 		}
 
-		/* handle error */
+		/* handle success */
 
 		else
 		{
-			var_dump($errorData);
+			notification(Language::get('operation_completed'), Language::get('message_sent', '_contact'), Language::get('home'), Registry::get('root'));
+			self::_send($postData);
 		}
 	}
 
@@ -242,7 +246,6 @@ class Contact extends Module
 			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $postData['email'] . '">' . $postData['email'] .'</a>',
 			'<br />',
 			Language::get('url') . Language::get('colon') . ' <a href="' . $postData['url'] . '">' . $postData['url'] .'</a>',
-			'<br />',
 			'<br />',
 			Language::get('message') . Language::get('colon') . ' ' . $postData['text']
 		);

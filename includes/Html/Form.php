@@ -2,6 +2,8 @@
 namespace Redaxscript\Html;
 
 use Redaxscript\Captcha;
+use Redaxscript\Config;
+use Redaxscript\Hash;
 use Redaxscript\Hook;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -178,8 +180,8 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_options = array(
-		'captcha' => true,
-		'blocker' => true
+		'blocker' => true,
+		'captcha' => true
 	);
 
 	/**
@@ -406,10 +408,13 @@ class Form extends HtmlAbstract
 			$this->label($this->_captcha->getTask(), array(
 				'for' => 'task'
 			));
+
+			/* number */
+
 			$this->number(array(
 				'id' => 'task',
 				'min' => $this->_captcha->getMin(),
-				'max' => $this->_captcha->getMax(),
+				'max' => $this->_captcha->getMax() * 2,
 				'name' => 'task',
 				'required' => 'required'
 			));
@@ -419,9 +424,14 @@ class Form extends HtmlAbstract
 
 		if ($type === 'solution')
 		{
+			$captchaHash = new Hash(Config::getInstance());
+			$captchaHash->init($this->_captcha->getSolution());
+
+			/* hidden */
+
 			$this->hidden(array(
 				'name' => 'solution',
-				'value' => $this->_captcha->getSolution()
+				'value' => $captchaHash->getHash()
 			));
 		}
 		return $this;

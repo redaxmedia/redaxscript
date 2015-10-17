@@ -560,9 +560,15 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	/* collect text output */
 
-	if ($text)
+	if (is_string($text))
 	{
-		$output .= '<p class="text_notification">' . $text . l('point') . '</p>';
+		$text = array(
+			$text
+		);
+	}
+	foreach ($text as $value)
+	{
+		$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
 	}
 
 	/* collect button output */
