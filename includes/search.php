@@ -42,15 +42,15 @@ function search_form($table = 'articles')
 
 	/* collect output */
 
-	$output .= form_element('form', '', 'js_validate_search form_search', '', '', '', 'method="post"');
-	$output .= form_element('search', '', 'js_search field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
+	$output .= form_element('form', '', 'rs-js-validate-search rs-form-search', '', '', '', 'method="post"');
+	$output .= form_element('search', '', 'rs-js-search rs-field-search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
 
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'search_post');
 	$output .= form_element('hidden', '', '', 'table', $table);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
+	$output .= form_element('button', '', 'rs-button-search', 'search_post', l('search'), '', $code_disabled);
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
@@ -117,8 +117,8 @@ function search_post()
 		else if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
-			$output = '<h2 class="title_content title_search_result">' . l('search') . '</h2>';
-			$output .= form_element('fieldset', '', 'set_search_result', '', '', '') . '<ol class="list_search_result">';
+			$output = '<h2 class="rs-title-content title-search-result">' . l('search') . '</h2>';
+			$output .= form_element('fieldset', '', 'set_search_result', '', '', '') . '<ol class="rs-list-search-result">';
 			foreach ($result as $r)
 			{
 				$access = $r['access'];
@@ -156,7 +156,7 @@ function search_post()
 
 					/* collect item output */
 
-					$output .= '<li class="item_search_result">' . anchor_element('internal', '', 'link_search_result', $title, $route, $description) . '<span class="date_search_result">' . $date . '</span></li>';
+					$output .= '<li class="rs-item-search-result">' . anchor_element('internal', '', 'link_search_result', $title, $route, $description) . '<span class="rs-date-search-result">' . $date . '</span></li>';
 				}
 				else
 				{
