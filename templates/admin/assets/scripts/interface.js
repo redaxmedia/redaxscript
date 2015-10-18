@@ -135,8 +135,8 @@
 
 					/* active item */
 
-					panelItemAll.removeClass('item_active');
-					thatItem.addClass('item_active');
+					panelItemAll.removeClass('item-active');
+					thatItem.addClass('item-active');
 				}, options.duration);
 			});
 
@@ -153,7 +153,7 @@
 					{
 						panelChildren.stop(0).slideUp(options.duration, function ()
 						{
-							panelItemAll.removeClass('item_active');
+							panelItemAll.removeClass('item-active');
 						});
 					}, options.timeout);
 				}

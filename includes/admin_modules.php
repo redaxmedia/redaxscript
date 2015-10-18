@@ -223,7 +223,7 @@ function admin_modules_form()
 	/* collect customize set */
 
 	$output .= form_element('fieldset', 'tab-2', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('customize')) . '<ul>';
-	$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+	$output .= '<li>' . select_element('status', 'admin-field-select-admin', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';
@@ -241,7 +241,7 @@ function admin_modules_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
+		$output .= '<li>' . select_element('access', 'admin-field-select-admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
 	}
 
 	/* template object */

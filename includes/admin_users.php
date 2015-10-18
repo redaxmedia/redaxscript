@@ -244,10 +244,10 @@ function admin_users_form()
 		$value = substr($value, 0, 2);
 		$language_array[l($value, '_index')] = $value;
 	}
-	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, $language, l('language')) . '</li>';
+	$output .= '<li>' . select_element('language', 'admin-field-select-admin', 'language', $language_array, $language, l('language')) . '</li>';
 	if ($id == '' || $id > 1)
 	{
-		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+		$output .= '<li>' . select_element('status', 'admin-field-select-admin', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';
@@ -264,7 +264,7 @@ function admin_users_form()
 					$groups_array[$g['name']] = $g['id'];
 				}
 			}
-			$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+			$output .= '<li>' . select_element('groups', 'admin-field-select-admin', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
 		}
 	}
 	$output .= '</ul></fieldset></div>';

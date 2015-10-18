@@ -116,7 +116,7 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 	}
 	if ($id && $label)
 	{
-		$label_string = '<label class="rs-label" for="' . $id . '">' . $label . l('colon') . '</label>';
+		$label_string = '<label class="admin-label" for="' . $id . '">' . $label . l('colon') . '</label>';
 	}
 	if ($code)
 	{
@@ -229,7 +229,7 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
 	}
 	if ($id && $label)
 	{
-		$label_string = '<label class="rs-label" for="' . $id . '">' . $label . l('colon') . '</label>';
+		$label_string = '<label class="admin-label" for="' . $id . '">' . $label . l('colon') . '</label>';
 	}
 
 	/* collect output */

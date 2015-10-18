@@ -26,7 +26,7 @@ function admin_groups_list()
 	$output .= '<div class="admin-wrapper-button-admin">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('group_new'), 'admin/new/groups');
+		$output .= anchor_element('internal', '', 'admin-button-admin admin-button-plus-admin', l('group_new'), 'admin/new/groups');
 	}
 	$output .= '</div><div class="admin-wrapper-table-admin"><table class="admin-table admin-table-admin">';
 
@@ -193,14 +193,14 @@ function admin_groups_form()
 		/* collect access set */
 
 		$output .= form_element('fieldset', 'tab-2', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('acccess')) . '<ul>';
-		$output .= '<li>' . select_element('categories', 'field_select_admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('articles', 'field_select_admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('extras', 'field_select_admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('users', 'field_select_admin', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('modules', 'field_select_admin', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('settings', 'field_select_admin', 'settings', array(
+		$output .= '<li>' . select_element('categories', 'admin-field-select-admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('articles', 'admin-field-select-admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('extras', 'admin-field-select-admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('comments', 'admin-field-select-admin', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('groups', 'admin-field-select-admin', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('users', 'admin-field-select-admin', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('modules', 'admin-field-select-admin', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('settings', 'admin-field-select-admin', 'settings', array(
 			l('none') => 0,
 			l('edit') => 1
 		), $settings, l('settings')) . '</li>';
@@ -209,11 +209,11 @@ function admin_groups_form()
 		/* collect customize set */
 
 		$output .= form_element('fieldset', 'tab-3', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('customize')) . '<ul>';
-		$output .= '<li>' . select_element('filter', 'field_select_admin', 'filter', array(
+		$output .= '<li>' . select_element('filter', 'admin-field-select-admin', 'filter', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $filter, l('filter')) . '</li>';
-		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+		$output .= '<li>' . select_element('status', 'admin-field-select-admin', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';

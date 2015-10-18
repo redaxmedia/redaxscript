@@ -18,7 +18,7 @@
 
 /* @section 1. link dock admin */
 
-.link_dock_admin
+.admin-link-dock-admin
 {
 	float: left;
 	height: 3.125em;
@@ -29,7 +29,7 @@
 	width: 3.375em;
 }
 
-.link_dock_admin:hover
+.admin-link-dock-admin:hover
 {
 	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
@@ -40,7 +40,7 @@
 
 /* link delete */
 
-.link_dock_admin.link_delete:hover
+.admin-link-dock-admin.admin-link-delete:hover
 {
 	background: #d50000;
 	background: linear-gradient(#d50000, #a20000);
@@ -48,7 +48,7 @@
 
 /* @section 1.1 icons */
 
-.link_dock_admin:before
+.admin-link-dock-admin:before
 {
 	font: 1.25em/2.5em 'icon admin';
 	left: 0;
@@ -59,24 +59,24 @@
 	top: 0;
 }
 
-.link_dock_admin.link_unpublish:before
+.admin-link-dock-admin.admin-link-unpublish:before
 {
 	content: 'p';
 }
 
-.link_dock_admin.link_edit:before
+.admin-link-dock-admin.admin-link-edit:before
 {
 	content: 'q';
 }
 
-.link_dock_admin.link_delete:before
+.admin-link-dock-admin.admin-link-delete:before
 {
 	content: 'r';
 }
 
 /* @section 2. list control admin */
 
-.item_control_admin
+.admin-item-control-admin
 {
 	display: inline-block;
 	font-size: 0.875em;
@@ -84,7 +84,7 @@
 	margin-right: 0.5em;
 }
 
-.list_control_admin a, .list_control_admin span
+.admin-list-control-admin a, .admin-list-control-admin span
 {
 	background: #ddd;
 	background: linear-gradient(#ddd, #c6c6c6);
@@ -97,7 +97,7 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
-.list_control_admin a:hover
+.admin-list-control-admin a:hover
 {
 	background: #4cb4ff;
 	background: linear-gradient(#4cb4ff, #0090db);
@@ -106,19 +106,19 @@
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
-.list_control_admin span
+.admin-list-control-admin span
 {
 	color: #999;
 }
 
 /* @section 3. list panel admin */
 
-.list_panel_admin
+.admin-list-panel-admin
 {
 	font-size: 0.875rem;
 }
 
-.list_panel_admin a, .list_panel_admin span
+.admin-list-panel-admin a, .admin-list-panel-admin span
 {
 	color: #b9b9b9;
 	cursor: pointer;
@@ -130,7 +130,7 @@
 	transition: padding-left 0.3s ease;
 }
 
-.list_panel_admin a:hover, .list_panel_admin span:hover
+.admin-list-panel-admin a:hover, .admin-list-panel-admin span:hover
 {
 	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
@@ -139,19 +139,19 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.list_panel_children_admin
+.admin-list-panel-children-admin
 {
 	display: none;
 }
 
-.item_panel_admin
+.admin-item-panel-admin
 {
 	position: relative;
 }
 
 /* link logout */
 
-.item_panel_admin.item_logout a:hover
+.admin-item-panel-admin.admin-item-logout a:hover
 {
 	background: #d50000;
 	background: linear-gradient(#d50000, #a20000);
@@ -159,7 +159,7 @@
 
 /* @section 3.1 icons before */
 
-.item_panel_admin > a:before, .item_panel_admin > span:before
+.admin-item-panel-admin > a:before, .admin-item-panel-admin > span:before
 {
 	font: 1.25em/1.5em 'icon admin';
 	margin-right: 1em;
@@ -167,34 +167,34 @@
 	text-transform: lowercase;
 }
 
-.item_panel_admin.item_contents > span:before
+.admin-item-panel-admin.admin-item-contents > span:before
 {
 	content: 'i';
 }
 
-.item_panel_admin.item_access > span:before
+.admin-item-panel-admin.admin-item-access > span:before
 {
 	content: 'j';
 }
 
-.item_panel_admin.item_system > span:before
+.admin-item-panel-admin.admin-item-system > span:before
 {
 	content: 'k';
 }
 
-.item_panel_admin.item_profile > a:before, .item_panel_admin.item_profile > span:before
+.admin-item-panel-admin.admin-item-profile > a:before, .admin-item-panel-admin.admin-item-profile > span:before
 {
 	content: 'l';
 }
 
-.item_panel_admin.item_logout > a:before
+.admin-item-panel-admin.admin-item-logout > a:before
 {
 	content: 'n';
 }
 
 /* @section 3.2 icons after */
 
-.item_panel_admin > span:after
+.admin-item-panel-admin > span:after
 {
 	content: '˃';
 	font: 1.5em/1.75em 'icon admin';
@@ -203,14 +203,14 @@
 	top: 0;
 }
 
-.item_panel_admin.item_active > span:after
+.admin-item-panel-admin.admin-item-active > span:after
 {
 	content: '˅';
 }
 
 /* @section 4. list tab admin */
 
-.list_tab_admin li
+.admin-list-tab-admin li
 {
 	background: url('templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
@@ -220,7 +220,7 @@
 	vertical-align: bottom;
 }
 
-.list_tab_admin a
+.admin-list-tab-admin a
 {
 	color: #ccc;
 	font: bold 1.25em/2em 'open sans condensed', 'trebuchet ms', arial;
@@ -228,14 +228,14 @@
 	text-transform: uppercase;
 }
 
-.list_tab_admin a:hover
+.admin-list-tab-admin a:hover
 {
 	text-decoration: none;
 }
 
 /* @section 4.1 javascript enabled */
 
-.js .list_tab_admin .item_active
+.admin-js .admin-list-tab-admin .admin-item-active
 {
 	background: #e2e2e2;
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
@@ -243,7 +243,7 @@
 	border-bottom-color: #e2e2e2;
 }
 
-.js .list_tab_admin .item_active a
+.admin-js .admin-list-tab-admin .admin-item-active a
 {
 	color: #474747;
 	line-height: 2.5em;

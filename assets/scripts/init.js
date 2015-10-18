@@ -156,11 +156,11 @@
 			{
 				element:
 				{
-					adminDock: 'div.js_dock_admin',
-					adminPanel: 'nav.js_panel_admin',
-					buttonSubmit: 'form button.js_submit',
-					buttonOk: 'div a.js_ok span span, form button.js_ok',
-					buttonCancel: 'div a.js_cancel span span, form button.js_cancel'
+					adminDock: 'div.admin-js-dock-admin',
+					adminPanel: 'nav.admin-js-panel-admin',
+					buttonSubmit: 'form button.rs-js-submit',
+					buttonOk: 'div a.rs-js-ok span span, form button.rs-js-ok',
+					buttonCancel: 'div a.rs-js-cancel span span, form button.rs-js-cancel'
 				},
 				keyCode:
 				{

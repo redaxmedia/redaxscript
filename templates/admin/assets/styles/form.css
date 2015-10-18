@@ -22,7 +22,7 @@
 
 /* @section 1. button admin */
 
-.button_admin
+.admin-button-admin
 {
 	background: #3b3b3b;
 	background: linear-gradient(#3b3b3b, #303030);
@@ -37,14 +37,14 @@
 	padding: 0 0.75em;
 }
 
-.button_admin.button_large
+.admin-button-admin.admin-button-large
 {
 	font-size: 1em;
 }
 
 /* @section 1.1 hover effect */
 
-.button_admin:hover
+.admin-button-admin:hover
 {
 	background: #474747;
 	background: linear-gradient(#474747, #3b3b3b);
@@ -53,7 +53,7 @@
 
 /* @section 1.2 active effect */
 
-.button_admin:active
+.admin-button-admin:active
 {
 	background: #4cb4ff;
 	background: linear-gradient(#4cb4ff, #0090db);
@@ -63,7 +63,7 @@
 
 /* @section 1.3 icons */
 
-.button_admin.button_plus_admin:before, .button_admin.button_cancel_admin:before, .button_admin.button_submit_admin:before
+.admin-button-admin.admin-button-plus-admin:before, .admin-button-admin.admin-button-cancel-admin:before, .admin-button-admin.admin-button-submit-admin:before
 {
 	font: 1em 'icon admin';
 	margin-right: 0.5em;
@@ -71,34 +71,34 @@
 	vertical-align: text-bottom;
 }
 
-.button_admin.button_plus_admin:before
+.admin-button-admin.admin-button-plus-admin:before
 {
 	content: 'f';
 }
 
-.button_admin.button_cancel_admin:before
+.admin-button-admin.admin-button-cancel-admin:before
 {
 	content: 'e';
 }
 
-.button_admin.button_submit_admin:before
+.admin-button-admin.admin-button-submit-admin:before
 {
 	content: 'd';
 }
 
 /* @section 2. several fields */
 
-.field_select_admin, .field_text_admin, .field_textarea_admin.field_small
+.admin-field-select-admin, .admin-field-text-admin, .admin-field-textarea-admin.admin-field-small
 {
 	width: 40%;
 }
 
-.dialog_admin .field_text_admin
+.admin-dialog-admin .admin-field-text-admin
 {
 	width: 100%;
 }
 
-.field_select_admin, .field_text_admin, .field_textarea_admin
+.admin-field-select-admin, .admin-field-text-admin, .admin-field-textarea-admin
 {
 	background: #f1f1f1;
 	background: linear-gradient(#e2e2e2, #f1f1f1);
@@ -113,14 +113,14 @@
 
 /* @section 2.1 hover effect */
 
-.field_select_admin:hover, .field_text_admin:hover, .field_textarea_admin:hover
+.admin-field-select-admin:hover, .admin-field-text-admin:hover, .admin-field-textarea-admin:hover
 {
 	border-color: #adadad;
 }
 
 /* @section 2.2 focus effect */
 
-.field_select_admin:focus, .field_text_admin:focus, .field_textarea_admin:focus
+.admin-field-select-admin:focus, .admin-field-text-admin:focus, .admin-field-textarea-admin:focus
 {
 	background: #e2e2e2;
 	background: linear-gradient(#f1f1f1, #e2e2e2);
@@ -130,21 +130,21 @@
 
 /* @section 3. textarea */
 
-.field_textarea_admin
+.admin-field-textarea-admin
 {
 	min-height: 20em;
 	resize: vertical;
 	width: 100%;
 }
 
-.field_textarea_admin.field_small
+.admin-field-textarea-admin.admin-field-small
 {
 	min-height: 5em;
 }
 
 /* @section 4. disabled and readonly */
 
-.button_admin[disabled]
+.admin-button-admin[disabled]
 {
 	background: #ccc;
 	border-color: #ababab;
@@ -154,7 +154,7 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
-.field_select_admin[disabled], .field_text_admin[disabled], .field_text_admin[readonly], .field_textarea_admin[disabled], .field_textarea_admin[readonly]
+.admin-field-select-admin[disabled], .admin-field-text-admin[disabled], .admin-field-text-admin[readonly], .admin-field-textarea-admin[disabled], .admin-field-textarea-admin[readonly]
 {
 	background: #d4d4d4;
 	background: linear-gradient(#d4d4d4, #e2e2e2);
@@ -166,28 +166,28 @@
 
 /* @section 5. form admin */
 
-.form_admin li
+.admin-form-admin li
 {
 	margin: 0.5em 0;
 }
 
 /* @section 5.1 label */
 
-.form_admin .label
+.admin-form-admin .label
 {
 	color: #555;
 	font: bold 0.875em arial;
 	display: block;
 }
 
-.form_admin .label_message:after
+.admin-form-admin .admin-label-message:after
 {
 	content: ' ' attr(data-message);
 }
 
 /* @section 6. space between elements */
 
-.box_dialog_admin .button_admin, .box_notification_admin .button_admin, .form_admin .button_admin
+.admin-box-dialog-admin .admin-button-admin, .admin-box-notification-admin .admin-button-admin, .admin-form-admin .admin-button-admin
 {
 	margin-top: 1em;
 }

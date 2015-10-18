@@ -139,7 +139,7 @@ function admin_panel_list()
 
 	if ($output)
 	{
-		$output = '<ul class="admin-js-list-panel-admin admin-list-panel-admin c' . $counter . '">' . $output . '</ul>';
+		$output = '<ul class="admin-js-list-panel-admin admin-list-panel-admin admin-c' . $counter . '">' . $output . '</ul>';
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
@@ -173,7 +173,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output .= '<div class="wrapper_dock_admin"><div class="js_dock_admin box_dock_admin clearfix">';
+		$output .= '<div class="admin-wrapper-dock-admin"><div class="admin-js-dock-admin admin-box-dock-admin rs-clearfix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'admin-js-link-dock-admin admin-link-dock-admin admin-link-unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));

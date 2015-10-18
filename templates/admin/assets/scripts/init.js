@@ -15,14 +15,14 @@
 rs.plugins.adminDock =
 {
 	init: true,
-	selector: 'div.js_dock_admin',
+	selector: 'div.admin-js-dock-admin',
 	options:
 	{
 		element:
 		{
-			dockLink: 'a.js_link_dock_admin',
-			dockDescription: 'span.js_description_dock_admin',
-			dockDescriptionHTML: '<span class="js_description_dock_admin description_dock_admin"></span>'
+			dockLink: 'a.admin-js-link-dock-admin',
+			dockDescription: 'span.admin-js-description-dock-admin',
+			dockDescriptionHTML: '<span class="admin-js-description-dock-admin admin-description-dock-admin"></span>'
 		},
 		vibrate: 100
 	}
@@ -33,12 +33,12 @@ rs.plugins.adminDock =
 rs.plugins.adminPanel =
 {
 	init: true,
-	selector: 'ul.js_list_panel_admin',
+	selector: 'ul.admin-js-list-panel-admin',
 	options:
 	{
 		element:
 		{
-			panelItem: 'li.js_item_panel_admin'
+			panelItem: 'li.admin-js-item-panel-admin'
 		},
 		timeout: 1000,
 		duration: 300,

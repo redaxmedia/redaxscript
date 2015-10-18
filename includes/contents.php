@@ -543,11 +543,11 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		$suffix = '_admin';
+		$suffix = '-admin';
 	}
 	else
 	{
-		$suffix = '_default';
+		$suffix = '-default';
 	}
 
 	/* collect output */

@@ -60,11 +60,11 @@ function admin_contents_list()
 	$output .= '<div class="admin-wrapper-button-admin">';
 	if ($table_new == 1)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
+		$output .= anchor_element('internal', '', 'admin-button-admin admin-button-plus-admin', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
 	}
 	if (TABLE_EDIT == 1 && $num_rows)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_sort_admin', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'admin-button-admin admin-button-sort-admin', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
 	}
 	$output .= '</div><div class="admin-wrapper-table-admin"><table class="admin-table admin-table-admin">';
 
@@ -247,7 +247,7 @@ function admin_contents_list()
 				}
 				if ($status == 1)
 				{
-					$output .= anchor_element('internal', '', 'link_view', $name, $route);
+					$output .= anchor_element('internal', '', 'admin-link-view', $name, $route);
 				}
 				else
 				{
@@ -323,7 +323,7 @@ function admin_contents_list()
 					$rank_desc = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
-						$output .= anchor_element('internal', '', 'move_up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= anchor_element('internal', '', 'admin-move-up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 					}
 					else
 					{
@@ -331,7 +331,7 @@ function admin_contents_list()
 					}
 					if ($rank < $rank_desc)
 					{
-						$output .= anchor_element('internal', '', 'move_down', l('down'), 'admin/down/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= anchor_element('internal', '', 'admin-move-down', l('down'), 'admin/down/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 					}
 					else
 					{
@@ -558,7 +558,7 @@ function admin_contents_form()
 		$value = substr($value, 0, 2);
 		$language_array[l($value, '_index')] = $value;
 	}
-	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, $language, l('language')) . '</li>';
+	$output .= '<li>' . select_element('language', 'admin-field-select-admin', 'language', $language_array, $language, l('language')) . '</li>';
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
 		/* templates directory object */
@@ -577,7 +577,7 @@ function admin_contents_form()
 		{
 			$template_array[$value] = $value;
 		}
-		$output .= '<li>' . select_element('template', 'field_select_admin', 'template', $template_array, $template, l('template')) . '</li>';
+		$output .= '<li>' . select_element('template', 'admin-field-select-admin', 'template', $template_array, $template, l('template')) . '</li>';
 	}
 
 	/* build sibling select */
@@ -596,7 +596,7 @@ function admin_contents_form()
 				}
 			}
 		}
-		$output .= '<li>' . select_element('sibling', 'field_select_admin', 'sibling', $sibling_array, $sibling, l($wording_sibling)) . '</li>';
+		$output .= '<li>' . select_element('sibling', 'admin-field-select-admin', 'sibling', $sibling_array, $sibling, l($wording_sibling)) . '</li>';
 	}
 
 	/* build category and parent select */
@@ -628,11 +628,11 @@ function admin_contents_form()
 		}
 		if (TABLE_PARAMETER == 'categories')
 		{
-			$output .= '<li>' . select_element('parent', 'field_select_admin', 'parent', $category_array, $parent, l('category_parent')) . '</li>';
+			$output .= '<li>' . select_element('parent', 'admin-field-select-admin', 'parent', $category_array, $parent, l('category_parent')) . '</li>';
 		}
 		else
 		{
-			$output .= '<li>' . select_element('category', 'field_select_admin', 'category', $category_array, $category, l('category')) . '</li>';
+			$output .= '<li>' . select_element('category', 'admin-field-select-admin', 'category', $category_array, $category, l('category')) . '</li>';
 		}
 	}
 
@@ -657,22 +657,22 @@ function admin_contents_form()
 				$article_array[$a['title']] = $a['id'];
 			}
 		}
-		$output .= '<li>' . select_element('article', 'field_select_admin', 'article', $article_array, $article, l('article')) . '</li>';
+		$output .= '<li>' . select_element('article', 'admin-field-select-admin', 'article', $article_array, $article, l('article')) . '</li>';
 	}
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
-		$output .= '<li>' . select_element('headline', 'field_select_admin', 'headline', array(
+		$output .= '<li>' . select_element('headline', 'admin-field-select-admin', 'headline', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $headline, l('headline')) . '</li>';
 	}
 	if (TABLE_PARAMETER == 'articles')
 	{
-		$output .= '<li>' . select_element('infoline', 'field_select_admin', 'infoline', array(
+		$output .= '<li>' . select_element('infoline', 'admin-field-select-admin', 'infoline', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $infoline, l('infoline')) . '</li>';
-		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', array(
+		$output .= '<li>' . select_element('comments', 'admin-field-select-admin', 'comments', array(
 			l('enable') => 1,
 			l('freeze') => 2,
 			l('restrict') => 3,
@@ -681,7 +681,7 @@ function admin_contents_form()
 	}
 	if ($status != 2)
 	{
-		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+		$output .= '<li>' . select_element('status', 'admin-field-select-admin', 'status', array(
 			l('publish') => 1,
 			l('unpublish') => 0
 		), $status, l('status')) . '</li>';
@@ -700,7 +700,7 @@ function admin_contents_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('access', 'admin-field-select-admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -709,11 +709,11 @@ function admin_contents_form()
 	if (TABLE_PARAMETER != 'categories')
 	{
 		$output .= form_element('fieldset', 'tab-3', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('date')) . '<ul>';
-		$output .= '<li>' . select_date('day', 'field_select_admin', 'day', $date, 'd', 1, 32, l('day')) . '</li>';
-		$output .= '<li>' . select_date('month', 'field_select_admin', 'month', $date, 'm', 1, 13, l('month')) . '</li>';
-		$output .= '<li>' . select_date('year', 'field_select_admin', 'year', $date, 'Y', 2000, 2021, l('year')) . '</li>';
-		$output .= '<li>' . select_date('hour', 'field_select_admin', 'hour', $date, 'H', 0, 24, l('hour')) . '</li>';
-		$output .= '<li>' . select_date('minute', 'field_select_admin', 'minute', $date, 'i', 0, 60, l('minute')) . '</li>';
+		$output .= '<li>' . select_date('day', 'admin-field-select-admin', 'day', $date, 'd', 1, 32, l('day')) . '</li>';
+		$output .= '<li>' . select_date('month', 'admin-field-select-admin', 'month', $date, 'm', 1, 13, l('month')) . '</li>';
+		$output .= '<li>' . select_date('year', 'admin-field-select-admin', 'year', $date, 'Y', 2000, 2021, l('year')) . '</li>';
+		$output .= '<li>' . select_date('hour', 'admin-field-select-admin', 'hour', $date, 'H', 0, 24, l('hour')) . '</li>';
+		$output .= '<li>' . select_date('minute', 'admin-field-select-admin', 'minute', $date, 'i', 0, 60, l('minute')) . '</li>';
 		$output .= '</ul></fieldset>';
 	}
 	$output .= '</div>';
