@@ -144,8 +144,8 @@ function contents()
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				$parser->init($text, array(
 					'className' => array(
-						'readmore' => 'link_read_more',
-						'codequote' => 'js_code_quote box_code'
+						'readmore' => 'rs-link-read_more',
+						'codequote' => 'rs-js-code-quote rs-box-code'
 					),
 					'route' => $route
 				));
@@ -155,7 +155,7 @@ function contents()
 				$output .= Redaxscript\Hook::trigger('article_start', $r);
 				if ($headline == 1)
 				{
-					$output .= '<h2 class="title_content" id="article-' . $alias . '">';
+					$output .= '<h2 class="rs-title-content" id="article-' . $alias . '">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
 						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
@@ -171,7 +171,7 @@ function contents()
 
 				/* collect box output */
 
-				$output .= '<div class="box_content">' . $parser->getOutput();
+				$output .= '<div class="rs-box-content">' . $parser->getOutput();
 				$output .= '</div>' . Redaxscript\Hook::trigger('article_end', $r);
 
 				/* prepend admin dock */
@@ -350,8 +350,8 @@ function extras($filter = '')
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					$parser->init($text, array(
 						'className' => array(
-							'readmore' => 'link_read_more',
-							'codequote' => 'js_code_quote box_code'
+							'readmore' => 'rs-link-read_more',
+							'codequote' => 'rs-js-code-quote rs-box-code'
 						),
 						'route' => $route
 					));
@@ -361,12 +361,12 @@ function extras($filter = '')
 					$output .= Redaxscript\Hook::trigger('extra_start', $r);
 					if ($headline == 1)
 					{
-						$output .= '<h3 class="title_extra" id="extra-' . $alias . '">' . $title . '</h3>';
+						$output .= '<h3 class="rs-title-extra" id="extra-' . $alias . '">' . $title . '</h3>';
 					}
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $r);
+					$output .= '<div class="rs-box-extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $r);
 
 					/* prepend admin dock */
 
@@ -415,27 +415,27 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	/* collect output */
 
-	$output .= '<div class="box_infoline box_infoline_' . $table . '">';
+	$output .= '<div class="rs-box-infoline rs-box-infoline_' . $table . '">';
 
 	/* collect author output */
 
 	if ($table == 'articles')
 	{
-		$output .= '<span class="infoline_posted_by">' . l('posted_by') . ' ' . $author . '</span>';
-		$output .= '<span class="infoline_on"> ' . l('on') . ' </span>';
+		$output .= '<span class="rs-infoline-posted-by">' . l('posted_by') . ' ' . $author . '</span>';
+		$output .= '<span class="rs-infoline-on"> ' . l('on') . ' </span>';
 	}
 
 	/* collect date and time output */
 
-	$output .= '<span class="infoline_date">' . $date . '</span>';
-	$output .= '<span class="infoline_at"> ' . l('at') . ' </span>';
-	$output .= '<span class="infoline_time">' . $time . '</span>';
+	$output .= '<span class="rs-infoline-date">' . $date . '</span>';
+	$output .= '<span class="rs-infoline-at"> ' . l('at') . ' </span>';
+	$output .= '<span class="rs-infoline-time">' . $time . '</span>';
 
 	/* collect comment output */
 
 	if ($comments_total)
 	{
-		$output .= '<span class="divider">' . s('divider') . '</span><span class="infoline_total">' . $comments_total . ' ';
+		$output .= '<span class="rs-divider">' . s('divider') . '</span><span class="rs-infoline-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= l('comment');
@@ -469,7 +469,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 function pagination($sub_active = '', $sub_maximum = '', $route = '')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-	$output .= '<ul class="list_pagination">';
+	$output .= '<ul class="rs-list-pagination">';
 
 	/* collect first and previous output */
 
@@ -477,8 +477,8 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$first_route = $route;
 		$previous_route = $route . '/' . ($sub_active - 1);
-		$output .= '<li class="item_first">' . anchor_element('internal', '', '', l('first'), $first_route) . '</li>';
-		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_route, '', 'rel="previous"') . '</li>';
+		$output .= '<li class="rs-item-first">' . anchor_element('internal', '', '', l('first'), $first_route) . '</li>';
+		$output .= '<li class="rs-item-previous">' . anchor_element('internal', '', '', l('previous'), $previous_route, '', 'rel="previous"') . '</li>';
 	}
 
 	/* collect center output */
@@ -497,11 +497,11 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 		if ($i == $sub_active)
 		{
 			$j++;
-			$output .= '<li class="item_number item_active"><span>' . $i . '</span></li>';
+			$output .= '<li class="rs-item-number rs-item-active"><span>' . $i . '</span></li>';
 		}
 		else if ($i > 0 && $i < $sub_maximum + 1)
 		{
-			$output .= '<li class="item_number">' . anchor_element('internal', '', '', $i, $route . '/' . $i) . '</li>';
+			$output .= '<li class="rs-item-number">' . anchor_element('internal', '', '', $i, $route . '/' . $i) . '</li>';
 		}
 	}
 
@@ -511,8 +511,8 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$next_route = $route . '/' . ($sub_active + 1);
 		$last_route = $route . '/' . $sub_maximum;
-		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_route, '', 'rel="next"') . '</li>';
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
+		$output .= '<li class="rs-item-next">' . anchor_element('internal', '', '', l('next'), $next_route, '', 'rel="next"') . '</li>';
+		$output .= '<li class="rs-item-last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
 	}
 	$output .= '</ul>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
@@ -554,9 +554,9 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if ($title)
 	{
-		$output .= '<h2 class="title_content title_notification">' . $title . '</h2>';
+		$output .= '<h2 class="rs-title-content rs-title-notification">' . $title . '</h2>';
 	}
-	$output .= '<div class="box_content box_notification">';
+	$output .= '<div class="rs-box-content rs-box-notification">';
 
 	/* collect text output */
 
@@ -568,14 +568,14 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	}
 	foreach ($text as $value)
 	{
-		$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
+		$output .= '<p class="rs-text-notification">' . $value . l('point') . '</p>';
 	}
 
 	/* collect button output */
 
 	if ($action && $route)
 	{
-		$output .= anchor_element('internal', '', 'js_forward_notification button' . $suffix, $action, $route);
+		$output .= anchor_element('internal', '', 'rs-js-forward-notification rs-button' . $suffix, $action, $route);
 	}
 	$output .= '</div>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

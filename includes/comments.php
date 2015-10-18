@@ -70,7 +70,7 @@ function comments($article = '', $route = '')
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		$output .= '<div class="box_line"></div>';
+		$output .= '<div class="rs-box-line"></div>';
 		foreach ($result as $r)
 		{
 			$access = $r['access'];
@@ -89,7 +89,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('comment_start', $r) . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript\Hook::trigger('comment_start', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -103,7 +103,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $r);
+				$output .= '<div class="rs-box-comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $r);
 
 				/* admin dock */
 
@@ -130,7 +130,7 @@ function comments($article = '', $route = '')
 
 	if ($error)
 	{
-		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
+		$output = '<div class="rs-box-comment-error">' . $error . l('point') . '</div>';
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
@@ -188,8 +188,8 @@ function comment_form($article = '', $language = '')
 	/* collect output */
 
 	$output .= '<h2 class="title_content">' . l('comment_new') . '</h2>';
-	$output .= form_element('form', 'form_comment', 'js_validate_form form_default form_comment', '', '', '', 'method="post"');
-	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
+	$output .= form_element('form', 'form_comment', 'rs-js-validate-form rs-form-default rs-form-comment', '', '', '', 'method="post"');
+	$output .= form_element('fieldset', '', 'rs-set-comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'rs-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('url', 'url', 'rs-field-text', 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';

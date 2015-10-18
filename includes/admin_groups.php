@@ -22,18 +22,18 @@ function admin_groups_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('groups') . '</h2>';
-	$output .= '<div class="wrapper_button_admin">';
+	$output .= '<h2 class="admin-title-content">' . l('groups') . '</h2>';
+	$output .= '<div class="admin-wrapper-button-admin">';
 	if (GROUPS_NEW == 1)
 	{
 		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('group_new'), 'admin/new/groups');
 	}
-	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '</div><div class="admin-wrapper-table-admin"><table class="admin-table admin-table-admin">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('filter') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('filter') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="admin-s4o6 admin-column-first">' . l('name') . '</th><th class="admin-s1o6 admin-column-second">' . l('alias') . '</th><th class="admin-s1o6 admin-column-last">' . l('filter') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="admin-column-first">' . l('name') . '</td><td class="admin-column-second">' . l('alias') . '</td><td class="admin-column-last">' . l('filter') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('group_no') . l('point');
@@ -73,7 +73,7 @@ function admin_groups_list()
 			{
 				$output .= ' class="' . $class_status . '"';
 			}
-			$output .= '><td class="column_first">' . $name;
+			$output .= '><td class="admin-column-first">' . $name;
 
 			/* collect control output */
 
@@ -81,7 +81,7 @@ function admin_groups_list()
 
 			/* collect alias and filter output */
 
-			$output .= '</td><td class="column_second">' . $alias . '</td><td class="column_last">' . $filter . '</td></tr>';
+			$output .= '</td><td class="admin-column-second">' . $alias . '</td><td class="admin-column-last">' . $filter . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
@@ -163,36 +163,36 @@ function admin_groups_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= '<h2 class="admin-title-content">' . $wording_headline . '</h2>';
+	$output .= form_element('form', 'form_admin', 'admin-js-validate-form admin-js-tab admin-form-admin admin-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 
-	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<ul class="admin-js-list-tab admin-list-tab admin-list-tab-admin">';
+	$output .= '<li class="admin-js-item-active admin-item-first admin-item-active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
 	if ($id == '' || $id > 1)
 	{
-		$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
+		$output .= '<li class="admin-item-second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
+		$output .= '<li class="admin-item-last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
 	$output .= '</ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
+	$output .= '<div class="admin-js-box-tab admin-box-tab admin-box-tab-admin">';
 
 	/* collect group set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab js_set_active set_tab set_tab_admin set_active', '', '', l('group')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'js_generate_alias_input field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'alias', 'js_generate_alias_output field_text_admin field_note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= form_element('fieldset', 'tab-1', 'admin-js-set-tab admin-js-set-active admin-set-tab admin-set-tab-admin admin-set-active', '', '', l('group')) . '<ul>';
+	$output .= '<li>' . form_element('text', 'name', 'admin-js-generate-alias-input admin-field-text-admin admin-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'alias', 'admin-js-generate-alias-output admin-field-text-admin admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'admin-js-auto-resize admin-field-textarea-admin admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)
 	{
 		/* collect access set */
 
-		$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('acccess')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-2', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('acccess')) . '<ul>';
 		$output .= '<li>' . select_element('categories', 'field_select_admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('articles', 'field_select_admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('extras', 'field_select_admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
@@ -208,7 +208,7 @@ function admin_groups_form()
 
 		/* collect customize set */
 
-		$output .= form_element('fieldset', 'tab-3', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-3', 'admin-js-set-tab admin-set-tab admin-set-tab-admin', '', '', l('customize')) . '<ul>';
 		$output .= '<li>' . select_element('filter', 'field_select_admin', 'filter', array(
 			l('enable') => 1,
 			l('disable') => 0
@@ -235,20 +235,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large button_cancel_admin', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'admin-js-cancel admin-button-admin admin-button-large admin-button-cancel-admin', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large button_delete_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'admin-js-delete admin-js-confirm admin-button-admin admin-button-large admin-button-delete-admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'admin-js-submit admin-button-admin admin-button-large admin-button-submit-admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

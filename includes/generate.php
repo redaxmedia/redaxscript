@@ -116,7 +116,7 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 	}
 	if ($id && $label)
 	{
-		$label_string = '<label class="label" for="' . $id . '">' . $label . l('colon') . '</label>';
+		$label_string = '<label class="rs-label" for="' . $id . '">' . $label . l('colon') . '</label>';
 	}
 	if ($code)
 	{
@@ -134,7 +134,7 @@ function form_element($type = '', $id = '', $class = '', $name = '', $value = ''
 			$output = '<fieldset' . $selector_string . '>';
 			if ($label)
 			{
-				$output .= '<legend class="legend">' . $label . '</legend>';
+				$output .= '<legend class="rs-legend">' . $label . '</legend>';
 			}
 			break;
 		case 'checkbox':
@@ -229,7 +229,7 @@ function select_element($id = '', $class = '', $name = '', $options = '', $selec
 	}
 	if ($id && $label)
 	{
-		$label_string = '<label class="label" for="' . $id . '">' . $label . l('colon') . '</label>';
+		$label_string = '<label class="rs-label" for="' . $id . '">' . $label . l('colon') . '</label>';
 	}
 
 	/* collect output */
