@@ -19,7 +19,7 @@
 @font-face
 {
 	font-family: 'icon admin';
-	src: url('templates/admin/fonts/icon.woff') format('woff'), url('templates/admin/fonts/icon.ttf') format('truetype');
+	src: url('templates/admin/assets/fonts/icon.woff') format('woff'), url('templates/admin/assets/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. title accordion admin */
@@ -60,7 +60,7 @@
 
 .js .title_accordion_admin.title_active, .title_dialog_admin
 {
-	background: url('templates/admin/images/carbon.png') #222;
+	background: url('templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
 }
 

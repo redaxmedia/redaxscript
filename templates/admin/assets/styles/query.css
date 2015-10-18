@@ -101,7 +101,7 @@
 
 	.list_panel_children_admin
 	{
-		background: url('templates/admin/images/carbon.png') #222;
+		background: url('templates/admin/assets/images/carbon.png') #222;
 		position: absolute;
 		width: 100%;
 	}

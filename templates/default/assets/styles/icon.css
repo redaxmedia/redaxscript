@@ -14,11 +14,11 @@
 @font-face
 {
     font-family: 'icon-redaxscript';
-    src:url('templates/default/fonts/icon-redaxscript.eot?8u4sj4');
-    src:url('templates/default/fonts/icon-redaxscript.eot?8u4sj4#iefix') format('embedded-opentype'),
-    url('templates/default/fonts/icon-redaxscript.ttf?8u4sj4') format('truetype'),
-    url('templates/default/fonts/icon-redaxscript.woff?8u4sj4') format('woff'),
-    url('templates/default/fonts/icon-redaxscript.svg?8u4sj4#icon-redaxscript') format('svg');
+    src:url('templates/default/assets/fonts/icon-redaxscript.eot?8u4sj4');
+    src:url('templates/default/assets/fonts/icon-redaxscript.eot?8u4sj4#iefix') format('embedded-opentype'),
+    url('templates/default/assets/fonts/icon-redaxscript.ttf?8u4sj4') format('truetype'),
+    url('templates/default/assets/fonts/icon-redaxscript.woff?8u4sj4') format('woff'),
+    url('templates/default/assets/fonts/icon-redaxscript.svg?8u4sj4#icon-redaxscript') format('svg');
     font-weight: normal;
     font-style: normal;
 }

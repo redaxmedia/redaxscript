@@ -2,6 +2,6 @@
 1 = templates/admin/assets/scripts/init.js
 
 [admin]
-1 = scripts/alias.js
-2 = scripts/keyword.js
+1 = assets/scripts/alias.js
+2 = assets/scripts/keyword.js
 3 = templates/admin/assets/scripts/interface.js

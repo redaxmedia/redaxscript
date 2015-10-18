@@ -188,7 +188,7 @@
 
 .table_admin caption, .table_admin thead tr, .table_admin tfoot tr
 {
-	background: url('templates/admin/images/carbon.png') #222;
+	background: url('templates/admin/assets/images/carbon.png') #222;
 	color: #ccc;
 	font: bold 1.25em 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;

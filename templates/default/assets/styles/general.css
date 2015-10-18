@@ -89,7 +89,7 @@ body
 
 .rs-teaser
 {
-	background: url('templates/default/images/bg.jpg') no-repeat center top / cover;
+	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
 	min-height: 86vh;
 	margin-bottom: 2em;
 	padding: 20vh 1em;
@@ -235,4 +235,17 @@ body
 
 .rs-preview > * + h3 {
 	margin-top: 3em;
+}
+
+.clearfix
+{
+	clear: both;
+}
+
+.clearfix:after
+{
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
 }

@@ -5,15 +5,15 @@
 1 = //ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
 
 [template_init]
-1 = scripts/support.js
-2 = scripts/init.js
+1 = assets/scripts/support.js
+2 = assets/scripts/init.js
 3 = templates/default/assets/scripts/init.js
 
 [template]
-1 = scripts/dialog.js
-2 = scripts/form.js
-3 = scripts/interface.js
-4 = scripts/misc.js
+1 = assets/scripts/dialog.js
+2 = assets/scripts/form.js
+3 = assets/scripts/interface.js
+4 = assets/scripts/misc.js
 5 = templates/default/assets/scripts/temp.js
 
 [settings]
