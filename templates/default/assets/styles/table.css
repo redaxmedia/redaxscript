@@ -1,0 +1,46 @@
+/**
+ * @tableofcontents
+ *
+ * 1. table default
+ *    1.1 body
+ *    1.2 head and foot
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. table default */
+
+.rs-table-default caption,
+.rs-table-default td,
+.rs-table-default th
+{
+	padding: 0.5em 0.75em;
+	background: rgba(50, 62, 76, 0.3);
+}
+
+/* @section 1.1 body */
+
+.rs-table-default th,
+.rs-table-default tfoot td,
+.rs-table-default caption
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-table-default tr
+{
+	border-bottom: 1px solid #323e4c;
+}
+
+/* @section 1.2 head and foot */
+
+.rs-table-default caption,
+.rs-table-default thead tr,
+.rs-table-default tfoot tr
+{
+	font-weight: bold;
+}

@@ -1,7 +1,7 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Template::registry('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+<html lang="<?php echo Registry::get('language'); ?>" class="<?php echo Template::helperClass(); ?>">
 
 	<!-- head -->
 
@@ -14,7 +14,7 @@
 
 	<!-- body -->
 
-	<body class="wrapper_body">
+	<body class="rs-wrapper_body">
 
 		<!-- admin panel and header -->
 
@@ -23,20 +23,25 @@
 			'templates/default/header.phtml'
 		)); ?>
 
+		<!-- top -->
+
+		<?php echo Template::partial(array(
+			'templates/default/teaser.phtml',
+		)); ?>
+
 		<!-- main -->
 
-		<div class="wrapper clearfix">
+		<div class="rs-wrapper rs-wrapper-content rs-clearfix">
 
 			<!-- handle content error -->
 
-			<?php if (Template::registry('contentError')): ?>
+			<?php if (Registry::get('contentError')): ?>
 				<?php echo Template::partial('templates/default/error.phtml'); ?>
 
 			<!-- else content and sidebar -->
 
 			<?php else: ?>
 				<?php echo Template::partial(array(
-					'templates/default/navibar.phtml',
 					'templates/default/content.phtml',
 					'templates/default/sidebar.phtml'
 				)); ?>

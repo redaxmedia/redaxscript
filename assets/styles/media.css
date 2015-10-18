@@ -1,0 +1,27 @@
+/**
+ * @tableofcontents
+ *
+ * 1. image
+ * 2. player
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. image */
+
+.rs-image
+{
+	max-width: 100%;
+}
+
+/* @section 2. player */
+
+.rs-player
+{
+	height: 30em;
+	max-width: 100%;
+	width: 40em;
+}

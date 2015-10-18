@@ -1,0 +1,371 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button default and button search
+ * 2. several fields
+ * 3. textarea
+ * 4. search elements
+ * 5. disabled and readonly
+ * 6. form default
+ *    6.1 label
+ * 7. form search
+ * 8. space between elements
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. several form elements */
+
+.rs-field-select,
+.rs-field-text,
+.rs-field-textarea.rs-field-small
+{
+	width: 30%;
+}
+
+.rs-dialog .rs-field-text
+{
+	width: 100%;
+}
+
+.rs-field-search,
+.rs-field-select,
+.rs-field-text,
+.rs-field-textarea,
+.rs-button-default,
+.rs-button-custom,
+.rs-button-search
+{
+	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
+	border-radius: 0.125em;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+	padding-bottom: 0.375em;
+	padding-top: 0.375em;
+}
+
+/* @section 2. several buttons */
+
+.rs-button-search
+{
+	position: relative;
+	text-indent: -999em;
+}
+
+.rs-button-search::after 
+{
+	content: '\2315';
+	font: 1em/1em 'icon-redaxscript';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-indent: 0;
+}
+
+/* @section 2.1 button default, button custom, button search */
+
+.rs-button-default,
+.rs-button-custom,
+.rs-button-search
+{
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	color: #fff;
+	text-align: center;
+	-webkit-transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s;
+	cursor: pointer;
+}
+
+.rs-button-default,
+.rs-button-search
+{
+	background: linear-gradient(#699b3c, #659438);
+}
+
+.rs-button-default:hover,
+.rs-button-search:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#699b3c, #659438);
+}
+
+.rs-button-custom
+{
+	background: linear-gradient(#457ecd, #3873b5);
+}
+
+.rs-button-custom:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#457ECD, #3873B5);
+}
+
+.rs-button-default,
+.rs-button-custom
+{
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.rs-button-default:active,
+.rs-button-custom:active,
+.rs-button-search:active
+{
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+}
+
+/* @section 2.2 button large */
+
+.rs-button-large
+{
+	font-size: 1.75em;
+	padding: 0.5em 1em;
+}
+
+.rs-box-cta:first-child .rs-button-large
+{
+	display: block;
+}
+
+/* @section 2.3 button misc */
+
+.rs-button-support:before
+{
+	content: '\2691';
+	font: 1em/1em 'icon-redaxscript';
+}
+
+.rs-button-donate:before
+{
+	content: '\2665';
+	font: 1em/1em 'icon-redaxscript';
+}
+
+/* @section 3. several fields */
+
+.rs-field-search,
+.rs-field-select,
+.rs-field-text,
+.rs-field-textarea
+{
+	border: 2px solid #9c9c9c;
+	height: 2em;
+	padding: 0 0.5em;
+	-webkit-transition: box-shadow 0.2s, border 0.2s;
+	transition: box-shadow 0.2s, border 0.2s;
+}
+
+.rs-field-search:hover,
+.rs-field-select:hover,
+.rs-field-text:hover,
+.rs-field-textarea:hover
+{
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.rs-field-search:focus,
+.rs-field-select:focus,
+.rs-field-text:focus,
+.rs-field-textarea:focus
+{
+	border-color: #3873B5;
+}
+
+/* @section 4. textarea */
+
+.rs-field-textarea
+{
+	min-height: 10em;
+	resize: vertical;
+	width: 100%;
+	padding: 0.5em;
+}
+
+.rs-field-textarea.rs-field-small
+{
+	min-height: 5em;
+}
+
+
+/* @section 5. disabled and readonly */
+
+.rs-button-default[disabled],
+.rs-button-custom[disabled],
+.rs-field-select[disabled],
+.rs-field-text[disabled],
+.rs-field-text[readonly],
+.rs-field-textarea[disabled],
+.rs-field-textarea[readonly]
+{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* @section 6. form default */
+
+.rs-form-default li
+{
+	margin: 0.5em 0;
+}
+
+/* @section 6.1 label */
+
+.rs-form-default .rs-label
+{
+	display: block;
+}
+
+.rs-form-default .rs-label-message:after
+{
+	content: ' ' attr(data-message);
+}
+
+/* @section 7. custom styles */
+
+.rs-box-navibar .rs-button-default
+{
+	display: inline-block;
+	font-size: 0.875em;
+	margin: 0 0.25em 1em;
+	width: 7.5em;
+}
+
+.rs-box-navibar .rs-button-default:before
+{
+	margin-left: -1.25em;
+	margin-right: 0.75em;
+}
+
+/* @section 8. space between elements */
+
+.rs-box-dialog-default .rs-button-default,
+.rs-box-notification .rs-button-default,
+.rs-form-default .rs-button-default
+{
+	margin-top: 1em;
+}
+
+/* @section 9. sidebar form elements */
+
+.rs-sidebar .rs-field-search,
+.rs-sidebar .rs-field-select,
+.rs-sidebar .rs-field-text,
+.rs-sidebar .rs-field-textarea
+{
+	border-color: transparent;
+}
+
+.rs-sidebar .rs-field-search:hover,
+.rs-sidebar .rs-field-select:hover,
+.rs-sidebar .rs-field-text:hover,
+.rs-sidebar .rs-field-textarea:hover
+{
+	box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.15) inset;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-field-search,
+	.rs-field-select,
+	.rs-field-text,
+	.rs-field-textarea,
+	.rs-button-default,
+	.rs-button-custom,
+	.rs-button-search
+	{
+		width: 100%;
+	}
+
+	.rs-field-search
+	{
+		text-align: center;
+	}
+}
+
+/* @section 10.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-field-search,
+	.rs-field-select,
+	.rs-field-text,
+	.rs-field-textarea,
+	.rs-button-default,
+	.rs-button-custom,
+	.rs-button-search
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.rs-button-default + .rs-button-default
+	{
+		margin-left: 1em;
+	}
+
+	.rs-button-search
+	{
+		max-height: 2em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 20%;
+	}
+
+	.rs-field-search
+	{
+		margin-right: 3%;
+		width: 77%;
+	}
+
+	.rs-box-navibar .rs-button-default
+	{
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+	}
+
+	.rs-box-navibar .rs-button-default
+	{
+		position: absolute;
+		right: 0;
+		margin-right: -4.75em;
+		min-width: 7em;
+		font-size: 1.5em;
+		-webkit-transition: margin-right 0.2s;
+		transition: margin-right 0.2s;
+	}
+
+	.rs-box-navibar .rs-button-default:hover
+	{
+		margin-right: 0;
+	}
+
+	.rs-box-navibar .rs-button-donate
+	{
+		top: 20vh;
+	}
+
+	.rs-box-navibar .rs-button-support
+	{
+		top: 30vh;
+	}
+
+}
+
+/* @section 10.3 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-box-cta:first-child .rs-button-large
+	{
+		margin: 1em auto 0;
+		max-width: 50%;
+	}
+}

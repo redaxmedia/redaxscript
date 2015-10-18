@@ -1,0 +1,32 @@
+[inherit]
+1 = admin
+
+[template]
+1 = assets/styles/normalize.css
+2 = assets/styles/animate.css
+3 = assets/styles/box.css
+4 = assets/styles/dialog.css
+5 = assets/styles/general.css
+6 = assets/styles/grid.css
+7 = assets/styles/interface.css
+8 = assets/styles/media.css
+9 = assets/styles/table.css
+10 = templates/default/assets/styles/typo.css
+11 = templates/default/assets/styles/animate.css
+12 = templates/default/assets/styles/box.css
+13 = templates/default/assets/styles/dialog.css
+14 = templates/default/assets/styles/form.css
+15 = templates/default/assets/styles/general.css
+16 = templates/default/assets/styles/icon.css
+17 = templates/default/assets/styles/interface.css
+18 = templates/default/assets/styles/media.css
+19 = templates/default/assets/styles/modules.css
+20 = templates/default/assets/styles/table.css
+21 = styles/query.css
+22 = assets/styles/query.css
+23 = templates/default/assets/styles/note.css
+
+[settings]
+deploy = inline
+rewrite = false
+minify = true

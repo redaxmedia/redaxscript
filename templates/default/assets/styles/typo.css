@@ -1,0 +1,338 @@
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. link default
+ * 3. several titles
+ * 4. title dialog default
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. tag styling */
+
+a
+{
+	text-decoration: none;
+	color: #323e4c;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+}
+
+body
+{
+	color: #323e4c;
+	font: 300 1.25em/1.75em 'Open Sans Condensed', arial, sans-serif;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+pre
+{
+	font: 1em/1.5em monospace, arial;
+	white-space: pre-wrap;
+}
+
+/* @section 2. links */
+
+.rs-content p a
+{
+	color: #000;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+	-webkit-transition: border 0.2s;
+	transition: border 0.2s;
+}
+
+.rs-content p a:hover
+{
+	border-color: #457ecd;
+}
+
+.rs-link-default
+{
+	text-decoration: underline;
+}
+
+/* @section 2.1 read more link */
+
+.rs-link-read-more
+{
+	background: linear-gradient(#699b3c, #659438);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
+	padding: 0.375em 0.5em;
+	text-decoration: none;
+	-webkit-transition: transform 0.2s;
+	transition: transform 0.2s;
+}
+
+.rs-link-read-more::after
+{
+	content: '\3009';
+	font: 0.75em/1em 'icon-redaxscript';
+	margin-left: 0.375em;
+}
+
+.rs-link-read-more:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#699b3c, #659438);
+}
+
+.rs-link-read-more:active
+{
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}
+
+/* @section 2.2 link custom */
+
+.rs-link-custom,
+.rs-sidebar a,
+.rs-box-note a
+{
+	position: relative;
+}
+
+.rs-link-custom:before,
+.rs-link-custom:after,
+.rs-sidebar a:before,
+.rs-sidebar a:after,
+.rs-box-note a:before,
+.rs-box-note a:after
+{
+	position: absolute;
+	content: '';
+	left: 0;
+	right: 0;
+	height: 2px;
+	-webkit-transition: opacity 0.2s, top 0.2s;
+	transition: opacity 0.2s, top 0.2s;
+}
+
+.rs-link-custom:before,
+.rs-sidebar a:before,
+.rs-box-note a:before
+{
+	top: 94%;
+	opacity: 1;
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.rs-link-custom:hover:before,
+.rs-sidebar a:hover:before,
+.rs-box-note a:hover:before
+{
+	opacity: 0;
+	top: 200%;
+}
+
+.rs-link-custom:after,
+.rs-sidebar a:after,
+.rs-box-note a:after
+{
+	top: 50%;
+	background: rgba(0, 0, 0, 0.3);
+	opacity: 0;
+}
+
+.rs-link-custom:hover:after,
+.rs-sidebar a:hover:after,
+.rs-box-note a:hover:after
+{
+	opacity: 1;
+	top: 94%;
+}
+
+/* @section 3. several titles */
+
+.rs-title-accordion
+{
+	background: #323e4c;
+	padding: 0.25em 0.5em;
+	color: #fff;
+}
+
+.rs-title-active
+{
+	background: linear-gradient(#699b3c, #659438);
+}
+
+.rs-title-extra
+{
+	margin-top: 1em;
+}
+
+/* @section 4. title content */
+
+.rs-title-content
+{
+	font-size: 2em;
+	border-left: 0.125em solid rgba(0, 0, 0, 0.3);
+	padding-left: 0.25em;
+}
+
+/* @section 5. title website */
+
+.rs-title-website
+{
+	float: left;
+	font-size: 3.5em;
+	font-weight: normal;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.rs-title-website a {
+	display: block;
+	line-height: 1em;
+	white-space: nowrap;
+}
+
+/* @section 6. description website */
+
+.rs-description-website
+{
+	color: #9c9c9c;
+	color: rgba(255, 255, 255, 0.4);
+	display: none;
+	font-weight: 700;
+	left: 0;
+	margin-left: 0.125em;
+	opacity: 0;
+	position: absolute;
+	top: 20%;
+	-webkit-transition: opacity 0.2s, top 0.2s;
+	transition: opacity 0.2s, top 0.2s;
+}
+
+.rs-box-meta:hover .rs-description-website
+{
+	opacity: 1;
+	top: 100%;
+}
+
+/* @section 7. title teaser */
+
+.rs-title-teaser
+{
+	opacity: 0;
+	background: rgba(50, 62, 77, 0.8);
+	border-left: 0.25em solid #c77a46;
+	color: #fff;
+	display: inline-block;
+	font-size: 1.5em;
+	font-weight: 300;
+	line-height: 1.25em;
+	padding: 0.375em 0.75em;
+	margin-top: -5em;
+	border-radius: 0 0.125em 0.125em 0;
+	-webkit-animation: rs-fade 1s ease 1.25s forwards, rs-title-teaser 1s ease 1s forwards;
+	animation: rs-fade 1s ease 1.25s forwards, rs-title-teaser 1s ease 1s forwards;
+}
+
+.rs-title-teaser .rs-text-important
+{
+	font-weight: 700;
+}
+
+.rs-title-teaser::-moz-selection,
+.rs-title-teaser span::-moz-selection
+{
+	background: #c77a46;
+}
+
+.rs-title-teaser::selection,
+.rs-title-teaser span::selection
+{
+	background: #c77a46;
+}
+
+/* @section 8. header */
+
+.rs-header,
+.rs-header a
+{
+	color: #fff;
+}
+
+/* @section 9. content */
+
+.rs-box-content p
+{
+	margin: 1em 0;
+}
+
+/* @section 10. sidebar */
+
+.rs-sidebar a
+{
+	color: #fff;
+}
+
+/* @section 11. footer */
+
+.rs-footer,
+.rs-footer a
+{
+	color: #bbb;
+}
+
+.rs-footer a:hover
+{
+	color: #fff;
+}
+
+/* @section 12. query */
+
+/* @section 12.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-description-website
+	{
+		display: block;
+	}
+
+	.rs-title-teaser
+	{
+		font-size: 3em;
+	}
+
+	.rs-title-teaser .rs-text-first-line
+	{
+		display: block;
+	}
+
+	.rs-link-read-more
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+/* @section 12.2 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-teaser:after
+	{
+		-webkit-animation: rs-pulse 7s ease-in-out infinite;
+		animation: rs-pulse 7s ease-in-out infinite;
+		border-radius: 50%;
+		box-shadow: 0 0 8em 3em #ffdc00;
+		content: '';
+		height: 0;
+		left: 65%;
+		position: absolute;
+		top: 3em;
+		width: 0;
+	}
+}

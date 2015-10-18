@@ -1,0 +1,339 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb and list pagination
+ * 2. list default
+ * 3. tooltip
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. several lists */
+
+.rs-list-breadcrumb li,
+.rs-list-pagination li
+{
+	display: inline-block;
+}
+
+/* @section 2. list default */
+
+.rs-list-default li
+{
+	list-style: inherit;
+	list-style-position: outside;
+	margin-left: 1em;
+}
+
+ul.rs-list-default li
+{
+	list-style-type: square;
+}
+
+/* @section 3. tooltip */
+
+.rs-tooltip:after
+{
+	background: #323e4c;
+	color: #fff;
+	border-radius: 0.25em;
+	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+	left: 110%;
+	top: -0.5em;
+	padding: 0.5em 1em;
+	font-size: 0.875em;
+	line-height: 1.5em;
+	transition: opacity 0.3s ease 0.1s;
+}
+
+/* @section 4. list header */
+
+
+.rs-list-header li
+{
+	font: 300 1.125em/2em 'Open Sans Condensed', arial, sans-serif;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+.rs-list-header > li
+{
+	padding: 0 1em;
+}
+
+/* @section 5. list tabs */
+
+.rs-list-tab > li
+{
+	vertical-align: bottom;
+}
+
+.rs-list-tab > li + li
+{
+	margin-left: 0.125em;
+}
+
+.rs-list-tab > li:not(.rs-item-active)
+{
+	margin-bottom: 0.125em;
+}
+
+.rs-list-tab .rs-item-active a
+{
+	background: #323e4c;
+	color: #fff;
+	padding: 0.5em 1em;
+	border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-list-tab > li > a
+{
+	background: rgba(50, 62, 76, 0.3);
+	padding: 0.25em 1em;
+	display: block;
+}
+
+.rs-list-tab > li > a:hover
+{
+	background: linear-gradient(#699b3c, #659438);
+	color: #fff;
+}
+
+/* @section 6. query */
+
+/* @section 6.1 min width 30rem */
+
+@media screen and (min-width: 30rem)
+{
+	.rs-tooltip-alternative:after
+	{
+		white-space: nowrap;
+	}
+
+	.rs-tooltip-default:after
+	{
+		width: 20em;
+	}
+}
+
+/* @section 6.2 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+
+	/* @section 6.2.1 list header */
+
+	.rs-list-header
+	{
+		background: #3873b5;
+	}
+
+	.rs-list-header > li
+	{
+		box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	.rs-list-header-children
+	{
+		box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.7);
+		font-size: 0.875em;
+		margin: 0 -1.125em;
+		padding: 0 1.75em;
+	}
+
+	/* @section 6.2.2 nav trigger - hamburger icon */
+
+	.rs-navigation-trigger
+	{
+		color: rgba(255, 255, 255, 0.7);
+		cursor: pointer;
+		float: right;
+		font-size: 2em;
+		margin-top: 0.25em;
+		padding-top: 1.5em;
+		position: relative;
+		vertical-align: top;
+		z-index: 10;
+	}
+
+	.rs-navigation-trigger:after,
+	.rs-navigation-trigger:before
+	{
+		background: #3873b5;
+		bottom: 2.5em;
+		content: '';
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		right: 0;
+		outline: medium none;
+		-webkit-transition: transform 0.2s;
+		transition: transform 0.2s;
+	}
+
+	.rs-navigation-trigger:after
+	{
+		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+	}
+
+	/* @section 6.2.3 nav trigger - close icon */
+
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:after,
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:before
+	{
+		box-shadow: none;
+	}
+
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:after
+	{
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:before
+	{
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+
+	/* @section 6.2.4 navigation */
+
+	.rs-fn-navigation
+	{
+		left: 0;
+		bottom: 0;
+		position: absolute;
+		top: 0;
+		-webkit-transition: transform 0.2s;
+		transition: transform 0.2s;
+		width: 75%;
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+		z-index: 10;
+	}
+
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-fn-navigation
+	{
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+
+	/* @section 6.2.5 navigation dark layer */
+
+	.rs-fn-navigation-trigger ~ .rs-fn-has-navigation:after {
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		-webkit-transition: background 0.2s;
+		transition: background 0.2s;
+		z-index: 1;
+	}
+
+	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation:after {
+		background: rgba(0, 0, 0, 0.8);
+		z-index: 5;
+	}
+}
+
+/* @section 6.3 min width 50rem */
+
+@media screen and (min-width: 50rem) {
+
+	/* @section 6.3.1 list header */
+
+	.rs-list-header > li
+	{
+		display: inline-block;
+		border-radius: 0.125em;
+		background: linear-gradient(#457ECD, #3873B5);
+		box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+		margin: 0.5em 0;
+		padding: 0.25em 1em;
+	}
+
+	.rs-list-header > li:hover
+	{
+		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#457ECD, #3873B5);
+		color: #000;
+		cursor: pointer;
+	}
+
+	.rs-list-header > li + li
+	{
+		margin-left: 1em;
+	}
+
+	/* @section 6.3.2 nav trigger - hamburger icon */
+
+	.rs-navigation-trigger
+	{
+		display: none;
+	}
+
+	/* @section 6.3.3 list children */
+
+	.rs-list-header-children
+	{
+		font-size: 0.875em;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children
+	{
+		border-top: 0.5em solid transparent;
+		min-width: 90%;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li
+	{
+		background: #3873B5;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children a
+	{
+		padding: 0 0.5em;
+	}
+
+	.rs-list-header .rs-list-header-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-header .rs-list-header-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li:hover
+	{
+		background: #457ecd;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li:hover a
+	{
+		color: #000;
+	}
+
+	.rs-list-header .rs-list-header-children:after
+	{
+		border-radius: 0.25em;
+		bottom: 0;
+		box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: -1;
+	}
+}
