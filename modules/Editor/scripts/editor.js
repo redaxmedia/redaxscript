@@ -243,7 +243,7 @@
 			{
 				if (editor.checkSelection())
 				{
-					editor.insertHTML('<prequote>' + editor.select() + '</codequote>');
+					editor.insertHTML('<codequote>' + editor.select() + '</codequote>');
 				}
 			};
 

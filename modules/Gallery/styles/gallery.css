@@ -21,7 +21,7 @@
  @font-face
 {
 	font-family: 'icon gallery';
-	src: url('modules/gallery/fonts/icon.woff') format('woff'), url('modules/gallery/fonts/icon.ttf') format('truetype');
+	src: url('modules/Gallery/fonts/icon.woff') format('woff'), url('modules/Gallery/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. gallery */
@@ -71,7 +71,7 @@
 	color: #333;
 	color: rgba(0, 0, 0, 0.3);
 	content: '0';
-	font: 3em/2em 'icon gallery';
+	font: 6em/2em 'icon gallery';
 	left: 50%;
 	margin: -1em 0 0 -0.5em;
 	position: absolute;
@@ -79,11 +79,6 @@
 	-webkit-transform: scale(0);
 	-ms-transform: scale(0);
 	transform: scale(0);
-}
-
-.gallery.gallery_loader:after
-{
-	font-size: 6em;
 }
 
 /* @section 6. gallery control */
