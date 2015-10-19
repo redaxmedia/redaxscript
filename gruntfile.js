@@ -558,17 +558,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/feed_reader.zip'
 				}
 			},
-			distModulesFileManager:
-			{
-				src:
-				[
-					'modules/file_manager/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/file_manager.zip'
-				}
-			},
 			distModulesGallery:
 			{
 				src:
@@ -710,17 +699,6 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/validator.zip'
-				}
-			},
-			distModulesWebApp:
-			{
-				src:
-				[
-					'modules/WebApp/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/web_app.zip'
 				}
 			},
 			distTemplatesCandy:
