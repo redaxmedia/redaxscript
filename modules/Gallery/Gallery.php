@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Gallery;
 
+use Redaxscript\Directory;
 use Redaxscript\Html;
 
 /**
@@ -50,13 +51,41 @@ class Gallery extends Config
 	 * @since 2.6.0
 	 *
 	 * @param string $directory
-	 * @param array $options
+	 * @param mixed $options
 	 *
 	 * @return string
 	 */
 
-	public static function render($directory = null, $options = array())
+	public static function render($directory = null, $options = null)
 	{
+		$output = '';
+
+		/*  command fallback */
+
+		if ($options === 'create' || $options === 'remove')
+		{
+			$command = $options;
+		}
+
+		/* gallery directory */
+
+		$galleryDirectory = new Directory();
+		$galleryDirectory->init($directory, self::$_config['thumbs']);
+		$galleryDirectoryArray = $galleryDirectory->getArray();
+
+		/* delete thumbs */
+
+		if ($command == 'delete')
+		{
+			$galleryDirectory->remove(self::$_config['thumbs']);
+		}
+
+		/* process directory */
+
+		foreach ($galleryDirectoryArray as $key => $value)
+		{
+			$output .= $value;
+		}
 	}
 
 	/**
@@ -66,12 +95,12 @@ class Gallery extends Config
 	 *
 	 * @param string $fileName
 	 * @param string $directory
-	 * @param array $options
+	 * @param mixed $options
 	 *
 	 * @return string
 	 */
 
-	public static function _createThumb($fileName = null, $directory = null, $options = array())
+	public static function _createThumb($fileName = null, $directory = null, $options = null)
 	{
 	}
 }
