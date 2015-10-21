@@ -224,11 +224,7 @@ module.exports = function (grunt)
 			options:
 			{
 				bin: 'vendor/bin/phpcs',
-				standard: 'ruleset.xml',
-				callback: function (error, stdout, stderr)
-				{
-					grunt.option('force', stderr.indexOf('PHP Parse error') > -1);
-				}
+				standard: 'ruleset.xml'
 			}
 		},
 		qunit:
@@ -252,7 +248,7 @@ module.exports = function (grunt)
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpunit',
+				bin: 'vendor/bin/paratest',
 				bootstrap: './tests/bootstrap.php',
 				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
 				coverageHtml: grunt.option('html') ? grunt.option('html') : false
