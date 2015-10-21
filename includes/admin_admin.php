@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="admin-js-item-panel-admin admin-item-panel-admin admin-item-contents"><span>' . l('contents') . '</span><ul class="admin-list-panel-children-admin admin-list-contents">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span>' . l('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
@@ -81,7 +81,7 @@ function admin_panel_list()
 	if ($access_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="admin-js-item-panel-admin admin-item-panel-admin admin-item-access"><span>' . l('access') . '</span><ul class="admin-list-panel-children-admin admin-list-access">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span>' . l('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
 		if (MY_ID)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
@@ -102,7 +102,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="admin-js-item-panel-admin admin-item-panel-admin admin-item-system"><span>' . l('system') . '</span><ul class="admin-list-panel-children-admin admin-list-stystem">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span>' . l('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li>' . anchor_element('internal', '', '', l('modules'), 'admin/view/modules');
@@ -112,7 +112,7 @@ function admin_panel_list()
 			$admin_panel_list_modules = Redaxscript\Hook::trigger('admin_panel_list_modules');
 			if ($admin_panel_list_modules)
 			{
-				$output .= '<ul class="admin-js-admin-list-panel-children-admin admin-list-panel-children-admin">' . $admin_panel_list_modules . '</ul>';
+				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">' . $admin_panel_list_modules . '</ul>';
 			}
 			$output .= '</li>';
 		}
@@ -128,18 +128,18 @@ function admin_panel_list()
 	if (MY_USER && MY_ID)
 	{
 		$counter++;
-		$output .= '<li class="admin-js-item-panel-admin admin-item-panel-admin admin-item-profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
 	}
 
 	/* collect logout */
 
-	$output .= '<li class="admin-js-item-panel-admin admin-item-panel-admin admin-item-logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
 
 	/* collect list output */
 
 	if ($output)
 	{
-		$output = '<ul class="admin-js-list-panel-admin admin-list-panel-admin admin-c' . $counter . '">' . $output . '</ul>';
+		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-c' . $counter . '">' . $output . '</ul>';
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
@@ -173,15 +173,15 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output .= '<div class="admin-wrapper-dock-admin"><div class="admin-js-dock-admin admin-box-dock-admin rs-clearfix">';
+		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-clearfix">';
 		if ($edit == 1)
 		{
-			$output .= anchor_element('internal', '', 'admin-js-link-dock-admin admin-link-dock-admin admin-link-unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
-			$output .= anchor_element('internal', '', 'admin-js-link-dock-admin admin-link-dock-admin admin-link-edit', l('edit'), 'admin/edit/' . $table . '/' . $id, l('edit'));
+			$output .= anchor_element('internal', '', 'rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
+			$output .= anchor_element('internal', '', 'rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-edit', l('edit'), 'admin/edit/' . $table . '/' . $id, l('edit'));
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'admin-js-confirm admin-js-link-dock-admin admin-link-dock-admin admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
+			$output .= anchor_element('internal', '', 'rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
 		}
 		$output .= '</div></div>';
 	}
@@ -210,11 +210,11 @@ function admin_notification()
 	{
 		if (file_exists('install.php'))
 		{
-			$output .= '<div class="admin-box-note admin-note-warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
+			$output .= '<div class="rs-admin-box-note rs-admin-note-warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
 		}
 		if (is_writable('config.php'))
 		{
-			$output .= '<div class="admin-box-note admin-note-warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
+			$output .= '<div class="rs-admin-box-note rs-admin-note-warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
 		}
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
@@ -261,7 +261,7 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($new == 1 && $type == 'modules_not_installed')
 	{
-		$output .= '<li class="admin-item-control-admin admin-link-install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+		$output .= '<li class="rs-admin-item-control rs-admin-link-install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
 	}
 
 	/* collect contents output */
@@ -270,17 +270,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 2)
 		{
-			$output .= '<li class="admin-item-control-admin admin-item-future-posting"><span>' . l('future_posting') . '</span></li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-future-posting"><span>' . l('future_posting') . '</span></li>';
 		}
 		if ($edit == 1)
 		{
 			if ($status == 1)
 			{
-				$output .= '<li class="admin-item-control-admin admin-item-unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="rs-admin-item-control rs-admin-item-unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 			}
 			else if ($status == 0)
 			{
-				$output .= '<li class="admin-item-control-admin admin-item-publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="rs-admin-item-control rs-admin-item-publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 			}
 		}
 	}
@@ -291,11 +291,11 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 1)
 		{
-			$output .= '<li class="admin-item-control-admin admin-item-disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 		else if ($status == 0)
 		{
-			$output .= '<li class="admin-item-control-admin admin-item-enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 	}
 
@@ -303,17 +303,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($edit == 1)
 	{
-		$output .= '<li class="admin-item-control-admin admin-item-edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table . '/' . $id) . '</li>';
+		$output .= '<li class="rs-admin-item-control rs-admin-item-edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table . '/' . $id) . '</li>';
 	}
 	if ($delete == 1)
 	{
 		if ($type == 'modules_installed')
 		{
-			$output .= '<li class="admin-item-control-admin admin-item-uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
 		}
 		else
 		{
-			$output .= '<li class="admin-item-control-admin admin-item-delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
 		}
 	}
 
@@ -321,7 +321,7 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($output)
 	{
-		$output = '<ul class="admin-list-control-admin">' . $output . '</ul>';
+		$output = '<ul class="rs-admin-list-control">' . $output . '</ul>';
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	return $output;
