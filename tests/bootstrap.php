@@ -37,9 +37,10 @@ if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request
 		$config->set('dbType', 'pgsql');
 		$config->set('dbUser', 'postgres');
 	}
-	$config->set('dbHost', 'localhost');
+	$config->set('dbHost', '127.0.0.1');
 	$config->set('dbName', 'test');
 	$config->set('dbPassword', 'test');
+	$config->set('dbSalt', 'test');
 }
 
 /* sqlite */
@@ -52,24 +53,26 @@ else
 
 /* database */
 
-Db::init($config);
+Db::construct($config);
+Db::init();
 
 /* installer */
 
-$installer = new Installer();
-$installer->init($config);
+$installer = new Installer($config);
+$installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData();
-if (is_dir('modules/Test'))
+if (is_dir('modules/TestDummy'))
 {
-	$test = new Modules\Test\Test;
-	$test->install();
+	$testDummy = new Modules\TestDummy\TestDummy;
+	$testDummy->install();
 }
 
 /* hook */
 
-Hook::init($registry);
+Hook::construct($registry);
+Hook::init();
 
 /* language */
 

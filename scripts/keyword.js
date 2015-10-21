@@ -29,9 +29,9 @@
 		target.each(function ()
 		{
 			var that = $(this),
-				text = $.trim(that.text().toLowerCase());
+				text = $.trim(that.text().split(options.splitter.text)[0].toLowerCase());
 
-			$.merge(keywordArray, text.split(' '));
+			$.merge(keywordArray, text.split(options.splitter.keyword));
 		});
 
 		/* join array */

@@ -1,0 +1,116 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. directory list
+ * 3. icons
+ *
+ * @since 2.6.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+ @font-face
+{
+	font-family: 'icon directory lister';
+	src: url('modules/DirectoryLister/fonts/icon.woff') format('woff'), url('modules/DirectoryLister/fonts/icon.ttf') format('truetype');
+}
+
+/* @section 2. directory list */
+
+.link_directory_lister
+{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.text_directory_lister
+{
+	display: none;
+	width: 15%;
+}
+
+.text_directory_lister.text_size[data-unit]:after
+{
+	content: ' ' attr(data-unit);
+}
+
+.text_directory_lister:last-child
+{
+	text-align: right;
+}
+
+/* query */
+
+@media screen and (min-width: 40em)
+{
+	.link_directory_lister
+	{
+		margin-right: 5%;
+		width: 65%;
+	}
+
+	.link_directory_lister, .text_directory_lister
+	{
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+/* @section 3. icons */
+
+.link_directory_lister:before
+{
+	font: 1.125em/1.5em 'icon directory lister';
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+/* directory */
+
+.link_directory_lister.directory:before
+{
+	content: '\e606';
+}
+
+.link_directory_lister.directory_parent:before
+{
+	content: '\e604';
+}
+
+/* file */
+
+.link_directory_lister.file_blank:before
+{
+	content: '\e600';
+}
+
+.link_directory_lister.file_text:before
+{
+	content: '\e601';
+}
+
+.link_directory_lister.file_image:before
+{
+	content: '\e602';
+}
+
+.link_directory_lister.file_music:before
+{
+	content: '\e603';
+}
+
+.link_directory_lister.file_video:before
+{
+	content: '\e605';
+}
+
+.link_directory_lister.file_archive:before
+{
+	content: '\e607';
+}

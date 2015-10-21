@@ -1,0 +1,163 @@
+[
+	[
+		"checkbox",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-checkbox\" type=\"checkbox\" /></form>"
+	],
+	[
+		"checkbox",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"checkbox\" /></form>"
+	],
+	[
+		"datetime",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-date\" type=\"datetime\" /></form>"
+	],
+	[
+		"datetime",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"datetime\" /></form>"
+	],
+	[
+		"email",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-email\" type=\"email\" /></form>"
+	],
+	[
+		"email",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"email\" /></form>"
+	],
+	[
+		"file",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-file\" type=\"file\" /></form>"
+	],
+	[
+		"file",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"file\" /></form>"
+	],
+	[
+		"hidden",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-hidden\" type=\"hidden\" /></form>"
+	],
+	[
+		"hidden",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"hidden\" /></form>"
+	],
+	[
+		"number",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-number\" type=\"number\" /></form>"
+	],
+	[
+		"number",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"number\" /></form>"
+	],
+	[
+		"password",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-password\" type=\"password\" /></form>"
+	],
+	[
+		"password",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"password\" /></form>"
+	],
+	[
+		"radio",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-radio\" type=\"radio\" /></form>"
+	],
+	[
+		"radio",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"radio\" /></form>"
+	],
+	[
+		"range",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-range\" type=\"range\" /></form>"
+	],
+	[
+		"range",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"range\" /></form>"
+	],
+	[
+		"search",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-search\" type=\"search\" /></form>"
+	],
+	[
+		"search",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"search\" /></form>"
+	],
+	[
+		"tel",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-tel\" type=\"tel\" /></form>"
+	],
+	[
+		"tel",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"tel\" /></form>"
+	],
+	[
+		"text",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-text\" type=\"text\" /></form>"
+	],
+	[
+		"text",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"text\" /></form>"
+	],
+	[
+		"url",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-default field-url\" type=\"url\" /></form>"
+	],
+	[
+		"url",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"test\" type=\"url\" /></form>"
+	],
+	[
+		"invalid",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"></form>"
+	]
+]

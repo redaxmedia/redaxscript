@@ -72,7 +72,7 @@ class Directory
 		}
 		if (is_array($exclude))
 		{
-			$this->_exclude = array_unique(array_merge($this->_exclude, $exclude));
+			$this->_exclude = array_merge($this->_exclude, $exclude);
 		}
 
 		/* scan directory */
@@ -176,7 +176,7 @@ class Directory
 			$directoryArray = $this->_directoryArray;
 		}
 
-		/* else handle child directory or single file */
+		/* else handle children */
 
 		else
 		{
@@ -197,7 +197,7 @@ class Directory
 		{
 			$childrenPath = $path . '/' . $children;
 
-			/* remove if directory */
+			/* remove directory */
 
 			if (is_dir($childrenPath))
 			{
@@ -212,7 +212,7 @@ class Directory
 			}
 		}
 
-		/* remove if directory */
+		/* remove directory */
 
 		if (is_dir($path))
 		{

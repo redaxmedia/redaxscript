@@ -27,7 +27,7 @@ class GetFile extends Module
 		'alias' => 'GetFile',
 		'author' => 'Redaxmedia',
 		'description' => 'File information helper',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -67,7 +67,7 @@ class GetFile extends Module
 
 		/* date */
 
-		else if ($type === 'date')
+		if ($type === 'date')
 		{
 			$output = date(Db::getSettings('date'), filectime($fileName));
 		}

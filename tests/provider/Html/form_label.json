@@ -1,0 +1,14 @@
+[
+	[
+		"",
+		"",
+		"<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"label-default\"></label></form>"
+	],
+	[
+		"test",
+		{
+			"class": "test"
+		},
+		"<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"test\">test:</label></form>"
+	]
+]

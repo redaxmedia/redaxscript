@@ -123,7 +123,7 @@ function admin_contents_list()
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{

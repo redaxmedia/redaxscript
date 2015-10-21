@@ -80,7 +80,7 @@ function contents()
 			$sub_maximum = ceil($num_rows / s('limit'));
 			$sub_active = LAST_SUB_PARAMETER;
 
-			/* if sub parameter */
+			/* sub parameter */
 
 			if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
 			{
@@ -123,7 +123,7 @@ function contents()
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
@@ -142,11 +142,12 @@ function contents()
 				/* parser object */
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				$parser->init($text, $route, array(
+				$parser->init($text, array(
 					'className' => array(
 						'readmore' => 'link_read_more',
-						'codequote' => 'box_code'
-					)
+						'codequote' => 'js_code_quote box_code'
+					),
+					'route' => $route
 				));
 
 				/* collect headline output */
@@ -154,7 +155,7 @@ function contents()
 				$output .= Redaxscript\Hook::trigger('article_start', $r);
 				if ($headline == 1)
 				{
-					$output .= '<h2 class="title_content">';
+					$output .= '<h2 class="title_content" id="article-' . $alias . '">';
 					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
 						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
@@ -328,7 +329,7 @@ function extras($filter = '')
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
@@ -347,11 +348,12 @@ function extras($filter = '')
 					/* parser object */
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text, $route, array(
+					$parser->init($text, array(
 						'className' => array(
 							'readmore' => 'link_read_more',
-							'codequote' => 'box_code'
-						)
+							'codequote' => 'js_code_quote box_code'
+						),
+						'route' => $route
 					));
 
 					/* collect headline output */
@@ -359,7 +361,7 @@ function extras($filter = '')
 					$output .= Redaxscript\Hook::trigger('extra_start', $r);
 					if ($headline == 1)
 					{
-						$output .= '<h3 class="title_extra">' . $title . '</h3>';
+						$output .= '<h3 class="title_extra" id="extra-' . $alias . '">' . $title . '</h3>';
 					}
 
 					/* collect box output */
@@ -558,9 +560,15 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	/* collect text output */
 
-	if ($text)
+	if (is_string($text))
 	{
-		$output .= '<p class="text_notification">' . $text . l('point') . '</p>';
+		$text = array(
+			$text
+		);
+	}
+	foreach ($text as $value)
+	{
+		$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
 	}
 
 	/* collect button output */

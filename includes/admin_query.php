@@ -197,7 +197,9 @@ function admin_process()
 		$password = clean($_POST['password'], 0);
 		if ($password_check == 1 && $password_confirm == 1)
 		{
-			$r['password'] = sha1($password) . SALT;
+			$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+			$passwordHash->init($password);
+			$r['password'] = $passwordHash->getHash();
 		}
 		if ($_POST['new'])
 		{

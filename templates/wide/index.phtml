@@ -1,7 +1,7 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Registry::get('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+<html lang="<?php echo Template::registry('language'); ?>" class="<?php echo Template::helperClass(); ?>">
 
 	<!-- head -->
 
@@ -29,7 +29,7 @@
 
 			<!-- handle content error -->
 
-			<?php if (Registry::get('contentError')): ?>
+			<?php if (Template::registry('contentError')): ?>
 				<?php echo Template::partial('templates/default/error.phtml'); ?>
 
 			<!-- else content -->

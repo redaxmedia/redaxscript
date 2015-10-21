@@ -2,18 +2,26 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '_default';
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$tableElement = new Element('table', array(
+$tableElement = new Html\Element();
+$tableElement->init('table', array(
 	'class' => 'table table' . $suffix
 ));
-$theadElement = new Element('thead');
-$tfootElement = new Element('tfoot');
-$tbodyElement = new Element('tbody');
-$captionElement = new Element('caption');
-$thElement = new Element('th');
-$tdElement = new Element('td');
+$theadElement = new Html\Element();
+$theadElement->init('thead');
+$tfootElement = new Html\Element();
+$tfootElement->init('tfoot');
+$tbodyElement = new Html\Element();
+$tbodyElement->init('tbody');
+$captionElement = new Html\Element();
+$captionElement->init('caption');
+$thElement = new Html\Element();
+$thElement->init('th');
+$tdElement = new Html\Element();
+$tdElement->init('td');
 $theadContent = '';
 $tfootContent = '';
 $tbodyContent = '';

@@ -28,7 +28,7 @@ class Qunit extends Module
 		'alias' => 'Qunit',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript unit testing',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -50,16 +50,16 @@ class Qunit extends Module
 	}
 
 	/**
-	 * scriptsEnd
+	 * scriptEnd
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function scriptsEnd()
+	public static function scriptEnd()
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>';
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/qunit/1.18.0/qunit.min.js"></script>';
 			echo $output;
 		}
 	}

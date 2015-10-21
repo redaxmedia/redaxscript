@@ -1,11 +1,12 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$boxElement = new Element('div');
-$boxElement->text(Language::get('preview', '_preview'));
+$boxElement = new Html\Element();
+$boxElement->init('div')->text(Language::get('preview', '_preview'));
 $boxArray = array(
 	'box_comment',
 	'box_extra',
@@ -24,24 +25,22 @@ $boxArray = array(
 
 <!-- box code -->
 
-<?php echo $titlePartialElement->text('.box_code'); ?>
+<?php echo $titlePartialElement->text('.js_code_quote box_code'); ?>
 
-<?php echo $boxElement->copy()->addClass('box_code')->text(htmlspecialchars(
-'<module>
+<?php echo $boxElement->copy()->addClass('js_code_quote box_code')->text('&lt;module&gt;
 {
 	"ModuleName":
 	{
 		"parameter": "value"
 	}
 }
-</module>'
-)); ?>
+&lt;/module&gt;'); ?>
 
 <!-- box quote -->
 
 <?php echo $titlePartialElement->text('.box_quote'); ?>
 
-<blockquote class="box_quote">Redaxscript is an ultra lightweight CMS.</blockquote>
+<blockquote class="box_quote">Ultra lightweight Content Management System for MySQL, PostgreSQL and SQLite.</blockquote>
 <p>Placeholder text to demonstrate spacing.</p>
 
 <!-- box line -->

@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class AliasTest extends TestCase
 {
 	/**
-	 * providerFilterAlias
+	 * providerAlias
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterAlias()
+	public function providerAlias()
 	{
 		return $this->getProvider('tests/provider/Filter/alias.json');
 	}
@@ -37,7 +37,7 @@ class AliasTest extends TestCase
 	 * @param string $alias
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterAlias
+	 * @dataProvider providerAlias
 	 */
 
 	public function testAlias($alias = null, $expect = null)

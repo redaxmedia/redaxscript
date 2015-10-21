@@ -1,0 +1,42 @@
+[
+	[
+		"hello/world",
+		"hello/world"
+	],
+	[
+		"Hello/World",
+		"Hello/World"
+	],
+	[
+		" hello / world ",
+		"hello/world"
+	],
+	[
+		"//hello///world////test",
+		"hello/world/test"
+	],
+	[
+		"./hello/world",
+		"hello/world"
+	],
+	[
+		"../hello/world",
+		"hello/world"
+	],
+	[
+		"../hello/world",
+		"hello/world"
+	],
+	[
+		"../hello/world/../../world",
+		"hello/world/world"
+	],
+	[
+		"%2e%2e/hello/world",
+		"hello/world"
+	],
+	[
+		"hello/world/hello.php",
+		"hello/world/hello.php"
+	]
+]

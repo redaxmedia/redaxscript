@@ -57,7 +57,7 @@ class Module
 	/**
 	 * install the module
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function install()
@@ -67,13 +67,23 @@ class Module
 			$module = Db::forTablePrefix('modules')->create();
 			$module->set(static::$_moduleArray);
 			$module->save();
+
+			/* create from sql */
+
+			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			if(is_dir($directory))
+			{
+				$installer = new Installer(Config::getInstance());
+				$installer->init($directory);
+				$installer->rawCreate();
+			}
 		}
 	}
 
 	/**
 	 * uninstall the module
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 */
 
 	public function uninstall()
@@ -81,6 +91,16 @@ class Module
 		if (isset(static::$_moduleArray['alias']))
 		{
 			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
+
+			/* drop from sql */
+
+			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			if(is_dir($directory))
+			{
+				$installer = new Installer(Config::getInstance());
+				$installer->init($directory);
+				$installer->rawDrop();
+			}
 		}
 	}
 }

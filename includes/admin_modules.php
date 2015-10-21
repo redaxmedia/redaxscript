@@ -41,7 +41,7 @@ function admin_modules_list()
 		{
 			$access = $r['access'];
 
-			/* if access granted */
+			/* access granted */
 
 			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
@@ -187,6 +187,12 @@ function admin_modules_form()
 		$route = 'admin/process/modules/' . $id;
 	}
 
+	/* directory object */
+
+	$docs_directory = new Redaxscript\Directory();
+	$docs_directory ->init('modules/' . $alias . '/docs');
+	$docs_directory_array = $docs_directory->getArray();
+
 	/* collect output */
 
 	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
@@ -196,7 +202,12 @@ function admin_modules_form()
 
 	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
 	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l('module'), FULL_ROUTE . '#tab-1') . '</li>';
-	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
+	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
+	foreach ($docs_directory_array as $key => $value)
+	{
+		$output .= '<li class="item_third">' . anchor_element('internal', '', '', str_replace('.phtml', '', $value), FULL_ROUTE . '#tab-'. ($key + 3)) . '</li>';
+	}
+	$output .= '</ul>';
 
 	/* collect tab box output */
 
@@ -230,9 +241,21 @@ function admin_modules_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
 	}
-	$output .= '</ul></fieldset></div>';
+
+	/* template object */
+
+	$template = new Redaxscript\Template;
+
+	/* collect docs set */
+
+	foreach ($docs_directory_array as $key => $value)
+	{
+		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'js_set_tab set_tab set_tab_admin', '', '', 'docs') . '<ul>';
+		$output .= '<li>' . $template->partial('modules/' . $alias . '/docs/' . $value) . '</li></ul></fieldset>';
+	}
+	$output .= '</div>';
 
 	/* collect hidden output */
 

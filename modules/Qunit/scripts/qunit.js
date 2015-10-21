@@ -88,7 +88,7 @@
 
 	$(function ()
 	{
-		if (rs.registry.firstParameter === 'qunit')
+		if (rs.modules.qunit.init)
 		{
 			$.fn.qunit(rs.modules.qunit.options);
 		}

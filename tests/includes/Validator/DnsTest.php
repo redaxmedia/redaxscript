@@ -18,14 +18,14 @@ use Redaxscript\Validator;
 class DnsTest extends TestCase
 {
 	/**
-	 * providerValidatorDns
+	 * providerDns
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidatorDns()
+	public function providerDns()
 	{
 		return $this->getProvider('tests/provider/Validator/dns.json');
 	}
@@ -39,7 +39,7 @@ class DnsTest extends TestCase
 	 * @param string $type
 	 * @param integer $expect
 	 *
-	 * @dataProvider providerValidatorDns
+	 * @dataProvider providerDns
 	 */
 
 	public function testDns($host = null, $type = null, $expect = null)

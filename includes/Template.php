@@ -132,6 +132,23 @@ class Template
 	}
 
 	/**
+	 * language
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 * @param string $index
+	 *
+	 * @return string
+	 */
+
+	public static function language($key = null, $index = null)
+	{
+		$language = Language::getInstance();
+		return $language->get($key, $index);
+	}
+
+	/**
 	 * link
 	 *
 	 * @since 2.3.0
@@ -218,22 +235,19 @@ class Template
 	}
 
 	/**
-	 * search
+	 * registry
 	 *
-	 * @since 2.3.0
+	 * @since 2.6.0
 	 *
-	 * @param string $table
+	 * @param string $key
 	 *
 	 * @return string
 	 */
 
-	public static function search($table = 'articles')
+	public static function registry($key = null)
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('search', array(
-			$table
-		));
-		// @codeCoverageIgnoreEnd
+		$registry = Registry::getInstance();
+		return $registry->get($key);
 	}
 
 	/**
@@ -253,6 +267,40 @@ class Template
 			$mode
 		));
 		// @codeCoverageIgnoreEnd
+	}
+
+	/**
+	 * search
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $table
+	 *
+	 * @return string
+	 */
+
+	public static function search($table = 'articles')
+	{
+		// @codeCoverageIgnoreStart
+		return self::_migrate('search', array(
+			$table
+		));
+		// @codeCoverageIgnoreEnd
+	}
+
+	/**
+	 * setting
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+
+	public static function setting($key = null)
+	{
+		return Db::getSettings($key);
 	}
 
 	/**

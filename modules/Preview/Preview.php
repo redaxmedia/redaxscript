@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -31,7 +31,7 @@ class Preview extends Module
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -121,19 +121,20 @@ class Preview extends Module
 
 	public static function render($alias = null, $path = null)
 	{
-		$titleElement = new Element('h2', array(
+		$titleElement = new Html\Element();
+		$titleElement->init('h2', array(
 			'class' => 'title_content',
 			'title' => $alias
 		));
-		$linkElement = new Element('a', array(
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
 			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
 			'title' => $alias
 		));
-		$linkElement->text($alias);
 
 		/* collect output */
 
-		$output = $titleElement->html($linkElement);
+		$output = $titleElement->html($linkElement->text($alias));
 		$output .= Template::partial($path);
 		return $output;
 	}

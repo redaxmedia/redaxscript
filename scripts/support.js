@@ -6,32 +6,38 @@
  *    1.2 battery
  *    1.3 canvas
  *    1.4 check validity
- *    1.5 cookies
- *    1.6 draggable
- *    1.7 geolocation
- *    1.8 form
- *    1.9 history
- *    1.10 index db
- *    1.11 input
- *    1.12 native json
- *    1.13 post message
- *    1.14 speech
- *    1.15 svg
- *    1.16 touch
- *    1.17 vibrate
- *    1.18 web gl
- *    1.19 web sql
- *    1.20 web socket
- *    1.21 web storage
- *    1.22 web worker
+ *    1.5 css flexbox
+ *    1.6 css pointer events
+ *    1.7 css transform
+ *    1.8 css transition
+ *    1.9 css viewport units
+ *    1.10 cookies
+ *    1.11 draggable
+ *    1.12 geolocation
+ *    1.13 form
+ *    1.14 fullscreen
+ *    1.15 history
+ *    1.16 index db
+ *    1.17 input
+ *    1.18 native json
+ *    1.19 post message
+ *    1.20 speech
+ *    1.21 svg
+ *    1.22 touch
+ *    1.23 vibrate
+ *    1.24 web gl
+ *    1.25 web sql
+ *    1.26 web socket
+ *    1.27 web storage
+ *    1.28 web worker
  *
- * @since 2.2.0
+ * @since 2.6.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-(function (doc, win, nav)
+(function (doc, docElement, win, nav)
 {
 	'use strict';
 
@@ -85,7 +91,106 @@
 			return false;
 		}(),
 
-		/* @section 1.5 cookies */
+		/* @section 1.5 css flexbox */
+
+		cssFlexbox: function ()
+		{
+			if ('flexWrap' in docElement.style || 'WebkitFlexWrap' in docElement.style || 'msFlexWrap' in docElement.style)
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.6 css pointer events */
+
+		cssPointerEvents: function ()
+		{
+			var span = doc.createElement('span');
+
+			span.style.cssText = 'pointer-events: auto';
+			if (span.style.pointerEvents === 'auto')
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.7 css transform */
+
+		cssTransform: function ()
+		{
+			var transform =
+				[
+					'transform',
+					'WebkitTransform',
+					'MozTransform',
+					'msTransform',
+					'OTransform'
+				],
+				span = doc.createElement('span');
+
+			/* process transform */
+
+			for (var i in transform)
+			{
+				if (transform[i] in span.style)
+				{
+					return true;
+				}
+			}
+			return false;
+		}(),
+
+		/* @section 1.8 css transition */
+
+		cssTransition: function ()
+		{
+			var transition =
+				[
+					'transition',
+					'WebkitTransition',
+					'MozTransition',
+					'msTransition',
+					'OTransition'
+				],
+				span = doc.createElement('span');
+
+			/* process transition */
+
+			for (var i in transition)
+			{
+				if (transition[i] in span.style)
+				{
+					return true;
+				}
+			}
+			return false;
+		}(),
+
+		/* @section 1.9 css viewport units */
+
+		cssViewportUnits: (function ()
+		{
+			var div = doc.createElement('div'),
+				estimatedHeight = parseInt(win.innerHeight / 2),
+				estimatedWidth = parseInt(win.innerWidth / 2),
+				computedHeight,
+				computedWidth;
+
+			docElement.appendChild(div);
+			div.style.cssText = 'height: calc(100vh - 50vh); width: calc(100vw - 50vw);';
+			computedHeight = parseInt(win.getComputedStyle ? getComputedStyle(div).height : div.currentStyle.height);
+			computedWidth = parseInt(win.getComputedStyle ? getComputedStyle(div).width : div.currentStyle.width);
+			docElement.removeChild(div);
+			if (estimatedHeight === computedHeight && estimatedWidth === computedWidth)
+			{
+				return true;
+			}
+			return false;
+		})(),
+
+		/* @section 1.10 cookies */
 
 		cookies: function ()
 		{
@@ -96,7 +201,7 @@
 			return false;
 		}(),
 
-		/* @section 1.6 draggable */
+		/* @section 1.11 draggable */
 
 		draggable: function ()
 		{
@@ -107,7 +212,7 @@
 			return false;
 		}(),
 
-		/* @section 1.7 geolocation */
+		/* @section 1.12 geolocation */
 
 		geolocation: function ()
 		{
@@ -118,7 +223,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 form */
+		/* @section 1.13 form */
 
 		form: function ()
 		{
@@ -130,7 +235,7 @@
 				form = doc.createElement('form'),
 				output = {};
 
-			/* check attributes */
+			/* process attributes */
 
 			for (var i in attributes)
 			{
@@ -145,7 +250,18 @@
 			return output;
 		}(),
 
-		/* @section 1.9 history */
+		/* @section 1.14 fullscreen */
+
+		fullscreen: function ()
+		{
+			if (doc.fullscreenEnabled || doc.webkitFullscreenEnabled || doc.mozFullScreenEnabled || doc.msFullscreenEnabled)
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.15 history */
 
 		history: function ()
 		{
@@ -156,7 +272,7 @@
 			return false;
 		}(),
 
-		/* @section 1.10 index db */
+		/* @section 1.16 index db */
 
 		indexedDB: function ()
 		{
@@ -167,7 +283,7 @@
 			return false;
 		}(),
 
-		/* @section 1.11 input */
+		/* @section 1.17 input */
 
 		input: function ()
 		{
@@ -198,7 +314,7 @@
 				input = doc.createElement('input'),
 				output = {};
 
-			/* check types */
+			/* process types */
 
 			for (var i in types)
 			{
@@ -212,7 +328,7 @@
 				}
 			}
 
-			/* check attributes */
+			/* process attributes */
 
 			for (var j in attributes)
 			{
@@ -227,18 +343,18 @@
 			return output;
 		}(),
 
-		/* @section 1.12 native json */
+		/* @section 1.18 native json */
 
-		nativeJSON: function (json)
+		nativeJSON: function ()
 		{
-			if (typeof json === 'object' && typeof json.parse === 'function' && typeof json.stringify === 'function')
+			if (typeof win.JSON === 'object' && typeof win.JSON.parse === 'function' && typeof win.JSON.stringify === 'function')
 			{
 				return true;
 			}
 			return false;
-		}(win.JSON),
+		}(),
 
-		/* @section 1.13 post message */
+		/* @section 1.19 post message */
 
 		postMessage: function ()
 		{
@@ -249,18 +365,18 @@
 			return false;
 		}(),
 
-		/* @section 1.14 speech */
+		/* @section 1.20 speech */
 
 		speech: function ()
 		{
-			if ('speechSynthesis' in win)
+			if ('speechSynthesis' in win && 'SpeechRecognition' in win)
 			{
 				return true;
 			}
 			return false;
 		}(),
 
-		/* @section 1.15 svg */
+		/* @section 1.21 svg */
 
 		svg: function ()
 		{
@@ -271,18 +387,18 @@
 			return false;
 		}(),
 
-		/* @section 1.16 touch */
+		/* @section 1.22 touch */
 
 		touch: function ()
 		{
-			if ('ontouchstart' in win)
+			if ('touchstart' in win)
 			{
 				return true;
 			}
 			return false;
 		}(),
 
-		/* @section 1.17 vibrate */
+		/* @section 1.23 vibrate */
 
 		vibrate: function ()
 		{
@@ -293,7 +409,7 @@
 			return false;
 		}(),
 
-		/* @section 1.18 web gl */
+		/* @section 1.24 web gl */
 
 		webGL: function ()
 		{
@@ -304,7 +420,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 web sql */
+		/* @section 1.25 web sql */
 
 		webSQL: function ()
 		{
@@ -315,7 +431,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 web socket */
+		/* @section 1.26 web socket */
 
 		webSocket: function ()
 		{
@@ -326,7 +442,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 web storage */
+		/* @section 1.27 web storage */
 
 		webStorage: function ()
 		{
@@ -337,7 +453,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 web worker */
+		/* @section 1.28 web worker */
 
 		webWorker: function ()
 		{
@@ -348,4 +464,4 @@
 			return false;
 		}()
 	};
-})(document, window, window.navigator);
+})(document, document.documentElement, window, window.navigator);

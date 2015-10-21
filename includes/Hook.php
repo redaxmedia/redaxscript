@@ -14,6 +14,14 @@ namespace Redaxscript;
 class Hook
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected static $_registry;
+
+	/**
 	 * module namespace
 	 *
 	 * @var string
@@ -46,14 +54,25 @@ class Hook
 	protected static $_events = array();
 
 	/**
-	 * init the class
+	 * constructor of the class
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 */
 
-	public static function init(Registry $registry)
+	public static function construct(Registry $registry)
+	{
+		self::$_registry = $registry;
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.6.0
+	 */
+
+	public static function init()
 	{
 		$accessValidator = new Validator\Access();
 		$modulesDirectory = new Directory();
@@ -67,7 +86,7 @@ class Hook
 		{
 			/* validate access */
 
-			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, $registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, self::$_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
 				self::$_modules[$module->alias] = $module->alias;
 			}

@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($)
+(function ($, _gaq)
 {
 	'use strict';
 
@@ -58,9 +58,9 @@
 
 	$(function ()
 	{
-		if (rs.modules.callHome.init && rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin' && !rs.registry.adminParameter && typeof _gaq === 'object')
+		if (rs.modules.callHome.init && rs.modules.callHome.dependency)
 		{
 			$.fn.callHome(rs.modules.callHome.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery || window.Zepto, window._gaq);

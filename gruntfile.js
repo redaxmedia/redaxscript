@@ -437,6 +437,17 @@ module.exports = function (grunt)
 				expand: true
 
 			},
+			distModulesAce:
+			{
+				src:
+				[
+					'modules/Ace/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/ace.zip'
+				}
+			},
 			distModulesAnalytics:
 			{
 				src:
@@ -474,7 +485,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/contact/**'
+					'modules/Contact/**'
 				],
 				options:
 				{
@@ -490,6 +501,17 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/dawanda.zip'
+				}
+			},
+			distModulesDirectoryLister:
+			{
+				src:
+				[
+					'modules/DirectoryLister/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/directory_lister.zip'
 				}
 			},
 			distModulesDisqus:
@@ -534,17 +556,6 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/feed_reader.zip'
-				}
-			},
-			distModulesFileManager:
-			{
-				src:
-				[
-					'modules/file_manager/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/file_manager.zip'
 				}
 			},
 			distModulesGallery:
@@ -668,6 +679,17 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/modules/sitemap_xml.zip'
 				}
 			},
+			distModulesSyntaxHighlighter:
+			{
+				src:
+				[
+					'modules/SyntaxHighlighter/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/modules/syntax_highlighter.zip'
+				}
+			},
 			distModulesValidator:
 			{
 				src:
@@ -677,17 +699,6 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/modules/validator.zip'
-				}
-			},
-			distModulesWebApp:
-			{
-				src:
-				[
-					'modules/WebApp/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/web_app.zip'
 				}
 			},
 			distTemplatesCandy:

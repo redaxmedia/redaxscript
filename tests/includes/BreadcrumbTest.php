@@ -142,12 +142,7 @@ class BreadcrumbTest extends TestCase
 
 		$this->_registry->init($registry);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
-		$breadcrumb->init(array(
-			'className' => array(
-				'list' => 'list-breadcrumb',
-				'divider' => 'item-divider'
-			)
-		));
+		$breadcrumb->init();
 
 		/* actual */
 

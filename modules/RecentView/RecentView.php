@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\RecentView;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -28,7 +28,7 @@ class RecentView extends Config
 		'alias' => 'RecentView',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a recent view list',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -49,8 +49,12 @@ class RecentView extends Config
 
 		/* html elements */
 
-		$linkElement = new Element('a');
-		$listElement = new Element('ul');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_config['className']['list']
+		));
 
 		/* process log */
 
@@ -74,7 +78,7 @@ class RecentView extends Config
 
 		if ($output)
 		{
-			$output = $listElement->attr('class', self::$_config['className']['list'])->html($output);
+			$output = $listElement->html($output);
 		}
 		return $output;
 	}

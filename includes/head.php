@@ -35,7 +35,7 @@ function head($type = '')
 			{
 				$access = $r['access'];
 
-				/* if access granted */
+				/* access granted */
 
 				if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
@@ -156,7 +156,7 @@ function head($type = '')
 
 		$canonical_url = ROOT . '/' . REWRITE_ROUTE;
 
-		/* if article in category */
+		/* article in category */
 
 		if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles') {
 			if (SECOND_TABLE == 'categories') {

@@ -41,7 +41,9 @@ function reminder_form()
 
 	/* collect captcha solution output */
 
-	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+	$captchaHash->init($captcha->getSolution());
+	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 
 	/* collect hidden and button output */
 
@@ -118,7 +120,7 @@ function reminder_post()
 
 				/* send reminder information */
 
-				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . $password;
+				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . sha1($password);
 				$passwordResetLink = anchor_element('external', '', '', $passwordResetRoute, $passwordResetRoute);
 				$toArray = array(
 					s('author') => s('email')

@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class HtmlTest extends TestCase
 {
 	/**
-	 * providerFilterHtml
+	 * providerHtml
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterHtml()
+	public function providerHtml()
 	{
 		return $this->getProvider('tests/provider/Filter/html.json');
 	}
@@ -37,7 +37,7 @@ class HtmlTest extends TestCase
 	 * @param string $html
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterHtml
+	 * @dataProvider providerHtml
 	 */
 
 	public function testHtml($html = null, $expect = null)

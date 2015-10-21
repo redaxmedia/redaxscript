@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class EmailTest extends TestCase
 {
 	/**
-	 * providerFilterEmail
+	 * providerEmail
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterEmail()
+	public function providerEmail()
 	{
 		return $this->getProvider('tests/provider/Filter/email.json');
 	}
@@ -37,7 +37,7 @@ class EmailTest extends TestCase
 	 * @param string $email
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterEmail
+	 * @dataProvider providerEmail
 	 */
 
 	public function testEmail($email = null, $expect = null)

@@ -13,7 +13,7 @@
 
 rs.modules.editor =
 {
-	init: true,
+	init: rs.registry.lastTable === 'articles' || rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit' && rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments',
 	selector: 'form textarea.js_editor_textarea',
 	options:
 	{

@@ -105,28 +105,28 @@ class Mailer
 		$this->_body = $body;
 		$this->_attachmentArray = $attachmentArray;
 
-		/* build as needed */
+		/* create as needed */
 
-		$this->_buildFromString();
-		$this->_buildSubjectString();
-		$this->_buildBodyString();
-		$this->_buildHeaderString();
+		$this->_createFromString();
+		$this->_createSubjectString();
+		$this->_createBodyString();
+		$this->_createHeaderString();
 	}
 
 	/**
-	 * build the recipient contents
+	 * create the recipient contents
 	 *
 	 * @since 2.0.0
 	 */
 
-	protected function _buildFromString()
+	protected function _createFromString()
 	{
-		/* build from string */
+		/* create from string */
 
 		$from = current($this->_fromArray);
 		$fromName = key($this->_fromArray);
 
-		/* fallback if empty */
+		/* name fallback */
 
 		if (!$fromName)
 		{
@@ -136,12 +136,12 @@ class Mailer
 	}
 
 	/**
-	 * build the subject contents
+	 * create the subject contents
 	 *
 	 * @since 2.0.0
 	 */
 
-	protected function _buildSubjectString()
+	protected function _createSubjectString()
 	{
 		/* collect subject string */
 
@@ -161,12 +161,12 @@ class Mailer
 	}
 
 	/**
-	 * build the body contents
+	 * create the body contents
 	 *
 	 * @since 2.0.0
 	 */
 
-	protected function _buildBodyString()
+	protected function _createBodyString()
 	{
 		if (is_array($this->_body))
 		{
@@ -183,18 +183,18 @@ class Mailer
 	}
 
 	/**
-	 * build the header contents
+	 * create the header contents
 	 *
 	 * @since 2.0.0
 	 */
 
-	protected function _buildHeaderString()
+	protected function _createHeaderString()
 	{
 		/* collect header string */
 
 		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
 
-		/* if empty attachment */
+		/* empty attachment */
 
 		if (empty($this->_attachmentArray))
 		{
@@ -223,7 +223,7 @@ class Mailer
 
 					/* reset body string */
 
-					$this->_bodyString = '';
+					$this->_bodyString = null;
 				}
 				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $fileName . '"' . PHP_EOL;
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;

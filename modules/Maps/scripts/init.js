@@ -13,21 +13,16 @@
 
 rs.modules.maps =
 {
-	init: true,
+	init: !rs.registry.adminParameter,
+	dependency: typeof window.google === 'object' && typeof window.google.maps === 'object',
 	selector: 'div.js_map',
 	options:
 	{
-		className:
-		{
-			mapMeta: 'js_map_meta map_meta',
-			mapLogo: 'js_map_logo map_logo',
-			mapTerms: 'js_map_terms map_terms'
-		},
 		general:
 		{
-			zoom: 0,
-			center: new google.maps.LatLng(0, 0),
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			zoom: 1,
+			center: new window.google.maps.LatLng(0, 0),
+			mapTypeId: window.google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: false,
 			scaleControl: false,
 			streetViewControl: false,
@@ -85,8 +80,6 @@ rs.modules.maps =
 			}
 		],
 		marker: true,
-		branding: 'replace',
-		mapLogo: '<a href="//maps.google.com" target="_blank">Google Maps</a>',
-		mapTerms: '<a href="//google.com/intl/en/help/terms_maps.html" target="_blank">Terms of use</a>'
+		deBranding: true
 	}
 };

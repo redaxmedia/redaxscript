@@ -19,7 +19,8 @@ $config = Config::getInstance();
 /* config and database */
 
 $config->init();
-Db::init($config);
+Db::construct($config);
+Db::init();
 
 /* startup and migrate */
 
@@ -30,7 +31,8 @@ $registry->init(migrate_constants());
 
 if ($registry->get('dbStatus') === 2)
 {
-	Hook::init($registry);
+	Hook::construct($registry);
+	Hook::init();
 }
 
 /* detector */

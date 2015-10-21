@@ -40,7 +40,9 @@ function password_reset_form()
 
 	/* collect captcha solution output */
 
-	$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+	$captchaHash->init($captcha->getSolution());
+	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 
 	/* collect hidden and button output */
 
@@ -67,13 +69,15 @@ function password_reset_form()
 
 function password_reset_post()
 {
+	$captchaValidator = new Redaxscript\Validator\Captcha();
+
 	/* clean post */
 
 	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/password_reset'] == 'visited')
 	{
 		$post_id = clean($_POST['id'], 0);
 		$post_password = clean($_POST['password'], 0);
-		$password = hash_generator(10);
+		$password = substr(sha1(uniqid()), 0, 10);
 		$task = $_POST['task'];
 		$solution = $_POST['solution'];
 	}
@@ -84,7 +88,6 @@ function password_reset_post()
 	{
 		$users_result = Redaxscript\Db::forTablePrefix('users')->where(array(
 			'id' => $post_id,
-			'password' => $post_password,
 			'status' => 1
 		))->findArray();
 		foreach ($users_result as $r)
@@ -103,11 +106,11 @@ function password_reset_post()
 	{
 		$error = l('input_incorrect');
 	}
-	else if (sha1($task) != $solution)
+	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if ($my_id == '' || $my_password == '')
+	else if ($my_id == '' || sha1($my_password) != $post_password)
 	{
 		$error = l('access_no');
 	}
@@ -138,14 +141,15 @@ function password_reset_post()
 
 		/* update password */
 
+		$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$passwordHash->init($password);
 		Redaxscript\Db::forTablePrefix('users')
 			->where(array(
 				'id' => $post_id,
-				'password' => $post_password,
 				'status' => 1
 			))
 			->findOne()
-			->set('password', sha1($password) . Redaxscript\Registry::get('salt'))
+			->set('password', $passwordHash->getHash())
 			->save();
 	}
 
@@ -175,26 +179,4 @@ function password_reset_post()
 		notification(l('operation_completed'), l('password_sent'), l('login'), 'login');
 	}
 	$_SESSION[ROOT . '/password_reset'] = '';
-}
-
-/**
- * hash generator
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Password
- * @author Henry Ruhs
- *
- * @param string $length
- * @return string
- */
-
-function hash_generator($length = '')
-{
-	$a = mt_rand(1, 1000000);
-	$b = sha1($a);
-	$output = substr($b, 0, $length);
-	return $output;
 }

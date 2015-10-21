@@ -18,14 +18,14 @@ use Redaxscript\Validator;
 class AccessTest extends TestCase
 {
 	/**
-	 * providerValidatorAccess
+	 * providerAccess
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidatorAccess()
+	public function providerAccess()
 	{
 		return $this->getProvider('tests/provider/Validator/access.json');
 	}
@@ -39,7 +39,7 @@ class AccessTest extends TestCase
 	 * @param string $groups
 	 * @param integer $expect
 	 *
-	 * @dataProvider providerValidatorAccess
+	 * @dataProvider providerAccess
 	 */
 
 	public function testAccess($access = null, $groups = null, $expect = null)

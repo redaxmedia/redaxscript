@@ -211,7 +211,7 @@ function loader($type = '', $mode = '')
 
 function styles()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('style_start');
 
 	/* parse loader ini */
 
@@ -252,6 +252,7 @@ function styles()
 
 	/* collect output */
 
+	$output .= Redaxscript\Hook::trigger('link_start');
 	if ($loader_include)
 	{
 		foreach ($loader_include as $value)
@@ -259,18 +260,19 @@ function styles()
 			$output .= '<link type="text/css" href="' . $value . '" media="all" rel="stylesheet" />' . PHP_EOL;
 		}
 	}
+	if ($loader_deploy != 'inline')
+	{
+		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
+	}
+	$output .= Redaxscript\Hook::trigger('link_end');
 
-	/* type of deployment */
+	/* inline deployment */
 
 	if ($loader_deploy == 'inline')
 	{
 		$output .= '<style media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
 	}
-	else
-	{
-		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
-	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('style_end');
 	echo $output;
 }
 
@@ -291,7 +293,7 @@ function scripts($mode = '')
 {
 	if ($mode == '')
 	{
-		$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+		$output = Redaxscript\Hook::trigger('script_start');
 	}
 
 	/* parse loader ini */
@@ -369,7 +371,7 @@ function scripts($mode = '')
 	}
 	if ($mode == '')
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger('script_end');
 	}
 	echo $output;
 }

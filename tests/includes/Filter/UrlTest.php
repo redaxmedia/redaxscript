@@ -17,14 +17,14 @@ use Redaxscript\Tests\TestCase;
 class UrlTest extends TestCase
 {
 	/**
-	 * providerFilterUrl
+	 * providerUrl
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	public function providerFilterUrl()
+	public function providerUrl()
 	{
 		return $this->getProvider('tests/provider/Filter/url.json');
 	}
@@ -37,7 +37,7 @@ class UrlTest extends TestCase
 	 * @param string $url
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilterUrl
+	 * @dataProvider providerUrl
 	 */
 
 	public function testUrl($url = null, $expect = null)

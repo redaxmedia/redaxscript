@@ -129,19 +129,19 @@ class ParserTest extends TestCase
 	 *
 	 * @param array $registry
 	 * @param string $input
-	 * @param string $route
+	 * @param array $options
 	 * @param string $expect
 	 *
 	 * @dataProvider providerReadmore
 	 */
 
-	public function testReadmore($registry = array(), $input = null, $route = null, $expect = null)
+	public function testReadmore($registry = array(), $input = null, $options = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
 		$parser = new Parser($this->_registry, $this->_language);
-		$parser->init($input, $route);
+		$parser->init($input, $options);
 
 		/* actual */
 

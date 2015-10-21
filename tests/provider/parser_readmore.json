@@ -1,22 +1,27 @@
 [
 	[
 		{
-			"lastTable": "categories",
-			"fullRoute": "",
-			"firstParameter": "hello"
-		},
-		"hello<readmore> world",
-		"hello/world",
-		"hello<a href=\"hello/world\" class=\"link-readmore\" title=\"Read more\">Read more</a>"
-	],
-	[
-		{
 			"lastTable": "articles",
 			"fullRoute": "hello/world",
 			"firstParameter": "hello"
 		},
 		"hello<readmore> world",
-		"hello/world",
+		{
+			"route": "hello/world"
+		},
 		"hello world"
+	],
+	[
+		{
+			"lastTable": "categories",
+			"fullRoute": "",
+			"firstParameter": "hello"
+		},
+		"hello<readmore> world",
+		{
+			"route": "hello/world"
+		},
+		"hello<a href=\"hello/world\" class=\"link-readmore\" title=\"Read more\">Read more</a>"
 	]
+
 ]

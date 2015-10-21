@@ -93,7 +93,7 @@ class HelperTest extends TestCase
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param object $registry
+	 * @param array $registry
 	 * @param string $expect
 	 *
 	 * @dataProvider providerGetClass

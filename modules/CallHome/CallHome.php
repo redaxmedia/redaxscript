@@ -29,7 +29,7 @@ class CallHome extends Module
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -49,12 +49,12 @@ class CallHome extends Module
 	}
 
 	/**
-	 * scriptsStart
+	 * scriptStart
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function scriptsStart()
+	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{

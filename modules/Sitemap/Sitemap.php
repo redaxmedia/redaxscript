@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules\Sitemap;
 
 use Redaxscript\Db;
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Validator;
@@ -30,7 +30,7 @@ class Sitemap extends Config
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -48,13 +48,16 @@ class Sitemap extends Config
 
 		/* html elements */
 
-		$titleElement = new Element('h3', array(
+		$titleElement = new Html\Element();
+		$titleElement->init('h3', array(
 			'class' => self::$_config['className']['title']
 		));
-		$linkElement = new Element('a');
-		$listElement = new Element('ul', array(
-			'class' => self::$_config['className']['list'])
-		);
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_config['className']['list']
+		));
 
 		/* fetch articles */
 

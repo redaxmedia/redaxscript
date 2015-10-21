@@ -102,7 +102,7 @@ class Captcha
 	}
 
 	/**
-	 * get the current task
+	 * get the task
 	 *
 	 * @since 2.0.0
 	 *
@@ -115,30 +115,42 @@ class Captcha
 	}
 
 	/**
-	 * get the solution to the current task
+	 * get the solution
 	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $mode switch between plain answer and hashed solution
+	 * @since 2.6.0
 	 *
 	 * @return integer
 	 */
 
-	public function getSolution($mode = 'hash')
+	public function getSolution()
 	{
-		/* raw output */
+		return $this->_solution;
+	}
 
-		if ($mode === 'raw')
-		{
-			return $this->_solution;
-		}
+	/**
+	 * get the minimum range
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
 
-		/* else hash output */
+	public function getMin()
+	{
+		return $this->_range['min'];
+	}
 
-		else
-		{
-			return sha1($this->_solution);
-		}
+	/**
+	 * get the maximum range
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return string
+	 */
+
+	public function getMax()
+	{
+		return $this->_range['max'];
 	}
 
 	/**
@@ -178,8 +190,8 @@ class Captcha
 	{
 		/* range */
 
-		$min = $this->_range['min'];
-		$max = $this->_range['max'];
+		$min = $this->getMin();
+		$max = $this->getMax();
 
 		/* random numbers */
 

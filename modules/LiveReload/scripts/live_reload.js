@@ -67,6 +67,9 @@
 
 	$(function ()
 	{
-		$.fn.liveReload(rs.modules.liveReload.options);
+		if (rs.modules.liveReload.init)
+		{
+			$.fn.liveReload(rs.modules.liveReload.options);
+		}
 	});
 })(window.jQuery || window.Zepto);

@@ -86,7 +86,7 @@
 		},
 		dropdown:
 		{
-			init: true,
+			init: rs.support.touch,
 			selector: 'ul.js_dropdown',
 			options:
 			{
@@ -138,6 +138,11 @@
 				{
 					related: 'textarea.js_generate_keyword_output',
 					target: 'h1, h2, h3, strong'
+				},
+				splitter:
+				{
+					text: '\n',
+					keyword: ' '
 				},
 				delimiter: ' ',
 				limit: 10
@@ -222,7 +227,7 @@
 		},
 		validateSearch:
 		{
-			init: true,
+			init: rs.support.input && rs.support.input.placeholder,
 			selector: 'form.js_validate_search',
 			options:
 			{
@@ -252,7 +257,7 @@
 
 	/* @section 1.3 helper */
 
-	rs.helper = function ()
+	(function ()
 	{
 		/* javascript enabled */
 
@@ -264,21 +269,19 @@
 
 		/* support classes */
 
-		if (rs.support.canvas)
+		for (var i in rs.support)
 		{
-			docElement.className += ' canvas';
+			if (typeof rs.support[i] === 'boolean')
+			{
+				if (rs.support[i])
+				{
+					docElement.className += ' ' + i.toLowerCase();
+				}
+				else
+				{
+					docElement.className += ' no_' + i.toLowerCase();
+				}
+			}
 		}
-		else
-		{
-			docElement.className += ' no_canvas';
-		}
-		if (rs.support.svg)
-		{
-			docElement.className += ' svg';
-		}
-		else
-		{
-			docElement.className += ' no_svg';
-		}
-	}();
+	})();
 })(document, document.documentElement, window);

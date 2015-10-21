@@ -2,17 +2,22 @@
 namespace Redaxscript;
 
 $suffix = isset($admin) ? '_admin' : '_default';
-$titlePartialElement = new Element('h3', array(
+$titlePartialElement = new Html\Element();
+$titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'
 ));
-$listTabElement = new Element('ul', array(
+$listTabElement = new Html\Element();
+$listTabElement->init('ul', array(
 	'class' => 'js_list_tab list_tab list_tab' . $suffix
 ));
-$boxTabElement = new Element('div', array(
+$boxTabElement = new Html\Element();
+$boxTabElement->init('div', array(
 	'class' => 'js_box_tab box_tab box_tab' . $suffix
 ));
-$itemTabElement = new Element('li');
-$setTabElement = new Element('div', array(
+$itemTabElement = new Html\Element();
+$itemTabElement->init('li');
+$setTabElement = new Html\Element();
+$setTabElement->init('div', array(
 	'class' => 'js_set_tab set_tab set_tab' . $suffix
 ));
 $listContent = '';

@@ -61,11 +61,13 @@ function login_form()
 
 	if (s('captcha') > 0)
 	{
+		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+		$captchaHash->init($captcha->getSolution());
 		if (LOGGED_IN == TOKEN)
 		{
-			$output .= form_element('hidden', '', '', 'task', $captcha->getSolution('raw'));
+			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
 		}
-		$output .= form_element('hidden', '', '', 'solution', $captcha->getSolution());
+		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
 	}
 
 	/* collect hidden and button output */
@@ -91,6 +93,7 @@ function login_form()
 
 function login_post()
 {
+	$passwordValidator = new Redaxscript\Validator\Password();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
 	$captchaValidator = new Redaxscript\Validator\Captcha();
@@ -145,8 +148,7 @@ function login_post()
 	{
 		$error = l('email_incorrect');
 	}
-	else if ($loginValidator->validate($post_password) == Redaxscript\Validator\ValidatorInterface::FAILED
-	)
+	else if ($passwordValidator->validate($post_password, $my_password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = l('password_incorrect');
 	}
@@ -154,7 +156,7 @@ function login_post()
 	{
 		$error = l('captcha_incorrect');
 	}
-	else if ($my_id == '' || (md5($post_password) . SALT != $my_password && sha1($post_password) . SALT != $my_password))
+	else if ($my_id == '')
 	{
 		$error = l('login_incorrect');
 	}

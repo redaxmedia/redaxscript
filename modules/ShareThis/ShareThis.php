@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\ShareThis;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -27,7 +27,7 @@ class ShareThis extends Config
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social networks',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -77,10 +77,12 @@ class ShareThis extends Config
 		{
 			/* html elements */
 
-			$linkElement = new Element('a', array(
+			$linkElement = new Html\Element();
+			$linkElement->init('a', array(
 				'target' => '_blank'
 			));
-			$listElement = new Element('ul', array(
+			$listElement = new Html\Element();
+			$listElement->init('ul', array(
 				'class' => self::$_config['className']['list']
 			));
 
@@ -90,11 +92,11 @@ class ShareThis extends Config
 			{
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(
-					'href' => $value['url'] . $url,
 					'class' => self::$_config['className']['link'] . ' ' . $value['className'],
-					'data-type' => $key,
 					'data-height' => $value['height'],
-					'data-width' => $value['width']
+					'data-type' => $key,
+					'data-width' => $value['width'],
+					'href' => $value['url'] . $url,
 				))->text($key);
 				$output .= '</li>';
 			}

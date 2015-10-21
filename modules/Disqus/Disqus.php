@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
-use Redaxscript\Element;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -27,7 +27,7 @@ class Disqus extends Config
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with disqus',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -67,16 +67,18 @@ class Disqus extends Config
 
 	public static function commentsReplace()
 	{
-		$divElement = new Element('div', array(
+		$boxElement = new Html\Element();
+		$boxElement->init('div', array(
 			'id' => self::$_config['id']
 		));
-		$scriptElement = new Element('script', array(
+		$scriptElement = new Html\Element();
+		$scriptElement->init('script', array(
 			'src' => self::$_config['url']
 		));
 
 		/* collect output */
 
-		$output = $divElement . $scriptElement;
+		$output = $boxElement . $scriptElement;
 		echo $output;
 	}
 }

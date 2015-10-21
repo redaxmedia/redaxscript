@@ -22,6 +22,14 @@ class Installer
 	protected $_config;
 
 	/**
+	 * name of the directory
+	 *
+	 * @var string
+	 */
+
+	protected $_directory;
+
+	/**
 	 * placeholder for the prefix
 	 *
 	 * @var string
@@ -30,20 +38,33 @@ class Installer
 	protected $_prefixPlaceholder = '/* {configPrefix} */';
 
 	/**
-	 * init the class
+	 * constructor of the class
 	 *
-	 * @since 2.4.0
+	 * @since 2.6.0
 	 *
 	 * @param Config $config instance of the config class
 	 */
 
-	public function init(Config $config)
+	public function __construct(Config $config)
 	{
 		$this->_config = $config;
 	}
 
 	/**
-	 * create from raw sql
+	 * init the class
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $directory name of the directory
+	 */
+
+	public function init($directory = 'database')
+	{
+		$this->_directory = $directory;
+	}
+
+	/**
+	 * create from sql
 	 *
 	 * @since 2.4.0
 	 */
@@ -54,7 +75,7 @@ class Installer
 	}
 
 	/**
-	 * drop from raw sql
+	 * drop from sql
 	 *
 	 * @since 2.4.0
 	 */
@@ -75,6 +96,7 @@ class Installer
 	public function insertData($options = null)
 	{
 		$language = Language::getInstance();
+		$language->init();
 
 		/* articles */
 
@@ -189,14 +211,14 @@ class Installer
 		$settingsArray = array(
 			'language' => 'detect',
 			'template' => 'default',
-			'title' => 'Redaxscript',
+			'title' => $language->get('name', '_package'),
 			'author' => null,
 			'copyright' => null,
-			'description' => 'Ultra lightweight CMS',
+			'description' => $language->get('description', '_package'),
 			'keywords' => null,
 			'robots' => 'all',
 			'email' => $options['adminEmail'],
-			'subject' => 'Redaxscript',
+			'subject' => $language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
@@ -229,12 +251,14 @@ class Installer
 
 		/* users */
 
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init($options['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
 				'name' => $options['adminName'],
 				'user' => $options['adminUser'],
-				'password' => sha1($options['adminPassword']) . $this->_config->get('dbSalt'),
+				'password' => $passwordHash->getHash(),
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
 				'language' => '',
@@ -243,7 +267,7 @@ class Installer
 	}
 
 	/**
-	 * execute from raw sql
+	 * execute from sql
 	 *
 	 * @since 2.4.0
 	 *
@@ -251,17 +275,17 @@ class Installer
 	 * @param string $type type of the database
 	 */
 
-	public function _rawExecute($action = null, $type = 'mysql')
+	protected function _rawExecute($action = null, $type = 'mysql')
 	{
 		$sqlDirectory = new Directory();
-		$sqlDirectory->init('database/' . $type . '/' . $action);
+		$sqlDirectory->init($this->_directory . '/' . $type . '/' . $action);
 		$sqlArray = $sqlDirectory->getArray();
 
 		/* process sql files */
 
 		foreach ($sqlArray as $file)
 		{
-			$query = file_get_contents('database/' . $type . '/' . $action . '/' . $file);
+			$query = file_get_contents($this->_directory . '/' . $type . '/' . $action . '/' . $file);
 			if ($query)
 			{
 				if ($this->_config->get('dbPrefix'))

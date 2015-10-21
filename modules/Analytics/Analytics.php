@@ -27,7 +27,7 @@ class Analytics extends Module
 		'alias' => 'Analytics',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Analytics',
-		'version' => '2.5.0'
+		'version' => '2.6.0'
 	);
 
 	/**
@@ -47,12 +47,12 @@ class Analytics extends Module
 	}
 
 	/**
-	 * scriptsStart
+	 * scriptStart
 	 *
 	 * @since 2.2.0
 	 */
 
-	public static function scriptsStart()
+	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
