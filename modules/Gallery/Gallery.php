@@ -2,7 +2,6 @@
 namespace Redaxscript\Modules\Gallery;
 
 use Redaxscript\Directory;
-use Redaxscript\Html;
 
 /**
  * read external rss and atom feeds
