@@ -235,7 +235,7 @@
 
 /* @section 4.1 javascript enabled */
 
-.rs-admin-js .rs-admin-list-tab .rs-admin-item-active
+.rs-js .rs-admin-list-tab .rs-item-active
 {
 	background: #e2e2e2;
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
@@ -243,7 +243,7 @@
 	border-bottom-color: #e2e2e2;
 }
 
-.rs-admin-js .rs-admin-list-tab .rs-admin-item-active a
+.rs-js .rs-admin-list-tab .rs-item-active a
 {
 	color: #474747;
 	line-height: 2.5em;

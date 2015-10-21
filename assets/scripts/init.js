@@ -265,7 +265,7 @@
 		{
 			docElement.className += ' ';
 		}
-		docElement.className += 'js';
+		docElement.className += 'rs-js';
 
 		/* support classes */
 
@@ -275,11 +275,11 @@
 			{
 				if (rs.support[i])
 				{
-					docElement.className += ' ' + i.toLowerCase();
+					docElement.className += ' rs-' + i.toLowerCase();
 				}
 				else
 				{
-					docElement.className += ' no-' + i.toLowerCase();
+					docElement.className += ' rs-no-' + i.toLowerCase();
 				}
 			}
 		}

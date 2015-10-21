@@ -84,7 +84,7 @@ class Preview extends Module
 
 			/* collect partial output */
 
-			$output = '<div class="preview clearfix">';
+			$output = '<div class="rs-preview rs-clearfix">';
 
 			/* include as needed */
 
@@ -123,7 +123,7 @@ class Preview extends Module
 	{
 		$titleElement = new Html\Element();
 		$titleElement->init('h2', array(
-			'class' => 'title_content',
+			'class' => 'rs-title-preview',
 			'title' => $alias
 		));
 		$linkElement = new Html\Element();

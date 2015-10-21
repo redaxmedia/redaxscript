@@ -83,7 +83,7 @@ ul.rs-list-default li
 	margin-bottom: 0.125em;
 }
 
-.rs-list-tab .rs-item-active a
+.rs-list-tab .rs-item-active
 {
 	background: #323e4c;
 	color: #fff;
@@ -91,17 +91,17 @@ ul.rs-list-default li
 	border-radius: 0.125em 0.125em 0 0;
 }
 
-.rs-list-tab > li > a
+.rs-list-tab > li
 {
 	background: rgba(50, 62, 76, 0.3);
 	padding: 0.25em 1em;
-	display: block;
 }
 
-.rs-list-tab > li > a:hover
+.rs-list-tab > li:hover
 {
 	background: linear-gradient(#699b3c, #659438);
 	color: #fff;
+	cursor: pointer;
 }
 
 /* @section 6. query */

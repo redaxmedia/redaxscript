@@ -3,7 +3,7 @@ namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $linkElement = new Html\Element();
 $linkElement
@@ -13,26 +13,26 @@ $linkElement
 	->text('link');
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => 'box_note'
+	'class' => 'rs-box-note'
 ));
 $fieldTextElement = new Html\Element();
 $fieldTextElement->init('input', array(
 	'type' => 'text',
-	'class' => 'field_text field_note',
+	'class' => 'rs-field-text rs-field-note',
 	'placeholder' => 'Placeholder text'
 ));
 $optionNative = '<option>Placeholder text</option>';
 $fieldSelectElement = new Html\Element();
 $fieldSelectElement
 	->init('select', array(
-		'class' => 'field_select field_note',
+		'class' => 'rs-field-select rs-field-note',
 	))
 	->html($optionNative . $optionNative . $optionNative);
 $noteArray = array(
-	'note_error',
-	'note_warning',
-	'note_success',
-	'note_info'
+	'rs-note-error',
+	'rs-note-warning',
+	'rs-note-success',
+	'rs-note-info'
 );
 ?>
 
@@ -40,7 +40,7 @@ $noteArray = array(
 
 <?php foreach ($noteArray as $value): ?>
 
-	<?php echo $titlePartialElement->text('.box_note.' . $value); ?>
+	<?php echo $titlePartialElement->text('.rs-box-note.' . $value); ?>
 	<?php echo $boxElement->copy()->addClass($value)->html('Placeholder text and ' . $linkElement . '.'); ?>
 
 <?php endforeach; ?>
@@ -51,7 +51,7 @@ $noteArray = array(
 
 	<?php foreach ($noteArray as $value): ?>
 
-		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
+		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
 		<?php echo $fieldTextElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
@@ -64,7 +64,7 @@ $noteArray = array(
 
 	<?php foreach ($noteArray as $value): ?>
 
-		<?php echo $titlePartialElement->text('.field_note.' . $value); ?>
+		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
 		<?php echo $fieldSelectElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>

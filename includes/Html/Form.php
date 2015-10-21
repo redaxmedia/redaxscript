@@ -84,7 +84,7 @@ class Form extends HtmlAbstract
 
 	protected $_attributeArray = array(
 		'form' => array(
-			'class' => 'rs-js-validate-form form-default',
+			'class' => 'rs-js-validate-form rs-form-default',
 			'method' => 'post'
 		),
 		'legend' => array(

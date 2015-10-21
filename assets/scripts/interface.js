@@ -50,13 +50,13 @@
 
 				/* toggle active class */
 
-				accordionSet.removeClass('rs-js-set-active set-active').filter(accordionSetActive).addClass('rs-js-set-active set-active');
-				accordionTitle.removeClass('rs-js-title-active title-active').filter(accordionTitleActive).addClass('rs-js-title-active title-active');
+				accordionSet.removeClass('rs-js-set-active rs-set-active').filter(accordionSetActive).addClass('rs-js-set-active rs-set-active');
+				accordionTitle.removeClass('rs-js-title-active rs-title-active').filter(accordionTitleActive).addClass('rs-js-title-active rs-title-active');
 
 				/* slide boxes */
 
-				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('rs-js-box-active box-active');
-				accordionBoxActive.slideDown(options.duration).addClass('rs-js-box-active box-active');
+				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('rs-js-box-active rs-box-active');
+				accordionBoxActive.slideDown(options.duration).addClass('rs-js-box-active rs-box-active');
 			});
 
 			/* show error */
@@ -150,8 +150,8 @@
 
 				/* toggle active class */
 
-				tabItem.removeClass('rs-js-item-active item-active').filter(tabItemActive).addClass('rs-js-item-active item-active');
-				tabSet.removeClass('rs-js-set-active set-active').filter(tabSetActive).addClass('rs-js-set-active set-active');
+				tabItem.removeClass('rs-js-item-active rs-item-active').filter(tabItemActive).addClass('rs-js-item-active rs-item-active');
+				tabSet.removeClass('rs-js-set-active rs-set-active').filter(tabSetActive).addClass('rs-js-set-active rs-set-active');
 				event.preventDefault();
 			});
 
