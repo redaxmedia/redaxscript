@@ -84,90 +84,90 @@ class Form extends HtmlAbstract
 
 	protected $_attributeArray = array(
 		'form' => array(
-			'class' => 'js-validate-form form-default',
+			'class' => 'rs-js-validate-form form-default',
 			'method' => 'post'
 		),
 		'legend' => array(
-			'class' => 'legend-default'
+			'class' => 'rs-legend-default'
 		),
 		'label' => array(
-			'class' => 'label-default'
+			'class' => 'rs-label-default'
 		),
 		'select' => array(
-			'class' => 'field-select'
+			'class' => 'rs-field-select'
 		),
 		'textarea' => array(
-			'class' => 'field-textarea',
+			'class' => 'rs-field-textarea',
 			'cols' => 100,
 			'row' => 5
 		),
 		'button' => array(
 			'button' => array(
-				'class' => 'js-button button-default',
+				'class' => 'rs-js-button rs-button-default',
 				'type' => 'button'
 			),
 			'reset' => array(
-				'class' => 'js-reset button-default',
+				'class' => 'rs-js-reset rs-button-default',
 				'type' => 'reset',
 				'value' => 'reset'
 			),
 			'submit' => array(
-				'class' => 'js-button button-default',
+				'class' => 'rs-js-button rs-button-default',
 				'type' => 'submit',
 				'value' => 'submit'
 			)
 		),
 		'input' => array(
 			'checkbox' => array(
-				'class' => 'field-checkbox',
+				'class' => 'rs-field-checkbox',
 				'type' => 'checkbox'
 			),
 			'datetime' => array(
-				'class' => 'field-default field-date',
+				'class' => 'rs-field-default rs-field-date',
 				'type' => 'datetime'
 			),
 			'email' => array(
-				'class' => 'field-default field-email',
+				'class' => 'rs-field-default rs-field-email',
 				'type' => 'email'
 			),
 			'file' => array(
-				'class' => 'field-file',
+				'class' => 'rs-field-file',
 				'type' => 'file'
 			),
 			'hidden' => array(
-				'class' => 'field-hidden',
+				'class' => 'rs-field-hidden',
 				'type' => 'hidden'
 			),
 			'number' => array(
-				'class' => 'field-default field-number',
+				'class' => 'rs-field-default rs-field-number',
 				'type' => 'number'
 			),
 			'password' => array(
-				'class' => 'field-default field-password',
+				'class' => 'rs-field-default rs-field-password',
 				'type' => 'password'
 			),
 			'radio' => array(
-				'class' => 'field-radio',
+				'class' => 'rs-field-radio',
 				'type' => 'radio'
 			),
 			'range' => array(
-				'class' => 'field-range',
+				'class' => 'rs-field-range',
 				'type' => 'range'
 			),
 			'search' => array(
-				'class' => 'field-search',
+				'class' => 'rs-field-search',
 				'type' => 'search'
 			),
 			'tel' => array(
-				'class' => 'field-default field-tel',
+				'class' => 'rs-field-default rs-field-tel',
 				'type' => 'tel'
 			),
 			'text' => array(
-				'class' => 'field-default field-text',
+				'class' => 'rs-field-default rs-field-text',
 				'type' => 'text'
 			),
 			'url' => array(
-				'class' => 'field-default field-url',
+				'class' => 'rs-field-default rs-field-url',
 				'type' => 'url'
 			)
 		)

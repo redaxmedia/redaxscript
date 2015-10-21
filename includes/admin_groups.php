@@ -164,26 +164,26 @@ function admin_groups_form()
 	/* collect output */
 
 	$output .= '<h2 class="rs-admin-title-content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'rs-admin-js-validate-form rs-admin-js-tab rs-admin-form rs-admin-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 
-	$output .= '<ul class="rs-admin-js-list-tab rs-admin-list-tab rs-admin-list-tab">';
-	$output .= '<li class="rs-admin-js-item-active rs-admin-item-first rs-admin-item-active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
 	if ($id == '' || $id > 1)
 	{
-		$output .= '<li class="rs-admin-item-second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
-		$output .= '<li class="rs-admin-item-last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
+		$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
+		$output .= '<li class="rs-item-last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
 	$output .= '</ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="rs-admin-js-box-tab rs-admin-box-tab rs-admin-box-tab">';
+	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
 
 	/* collect group set */
 
-	$output .= form_element('fieldset', 'tab-1', 'rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-tab rs-admin-set-active', '', '', l('group')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-admin-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '<li>' . form_element('text', 'alias', 'rs-admin-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
@@ -192,7 +192,7 @@ function admin_groups_form()
 	{
 		/* collect access set */
 
-		$output .= form_element('fieldset', 'tab-2', 'rs-admin-js-set-tab rs-admin-set-tab rs-admin-set-tab', '', '', l('acccess')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('acccess')) . '<ul>';
 		$output .= '<li>' . select_element('categories', 'rs-admin-field-select', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('articles', 'rs-admin-field-select', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('extras', 'rs-admin-field-select', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
@@ -208,7 +208,7 @@ function admin_groups_form()
 
 		/* collect customize set */
 
-		$output .= form_element('fieldset', 'tab-3', 'rs-admin-js-set-tab rs-admin-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-3', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
 		$output .= '<li>' . select_element('filter', 'rs-admin-field-select', 'filter', array(
 			l('enable') => 1,
 			l('disable') => 0

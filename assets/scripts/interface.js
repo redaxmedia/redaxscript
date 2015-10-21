@@ -38,7 +38,7 @@
 
 			/* show active box */
 
-			accordionBox.filter('.js_box_active').show();
+			accordionBox.filter('.rs-js-box-active').show();
 
 			/* listen for click */
 
@@ -50,20 +50,20 @@
 
 				/* toggle active class */
 
-				accordionSet.removeClass('js_set_active set_active').filter(accordionSetActive).addClass('js_set_active set_active');
-				accordionTitle.removeClass('js_title_active title_active').filter(accordionTitleActive).addClass('js_title_active title_active');
+				accordionSet.removeClass('rs-js-set-active set-active').filter(accordionSetActive).addClass('rs-js-set-active set-active');
+				accordionTitle.removeClass('rs-js-title-active title-active').filter(accordionTitleActive).addClass('rs-js-title-active title-active');
 
 				/* slide boxes */
 
-				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('js_box_active box_active');
-				accordionBoxActive.slideDown(options.duration).addClass('js_box_active box_active');
+				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('rs-js-box-active box-active');
+				accordionBoxActive.slideDown(options.duration).addClass('rs-js-box-active box-active');
 			});
 
 			/* show error */
 
 			accordion.on('error', function ()
 			{
-				var accordionSetError = accordionSet.has('.js_note_error').first(),
+				var accordionSetError = accordionSet.has('.rs-js-note-error').first(),
 					accordionTitleError = accordionSetError.find(accordionTitle);
 
 				accordionTitleError.click();
@@ -100,7 +100,7 @@
 
 				if (event.type === 'touchstart')
 				{
-					dropdownItem.addClass('item_touch');
+					dropdownItem.addClass('item-touch');
 				}
 
 				/* else timeout enhanced touchend */
@@ -110,7 +110,7 @@
 					clearTimeout(timeout);
 					timeout = setTimeout(function ()
 					{
-						dropdownItem.removeClass('item_touch');
+						dropdownItem.removeClass('item-touch');
 					}, options.duration);
 				}
 			});
@@ -138,7 +138,7 @@
 
 			/* show active set */
 
-			tabSet.filter('.js_set_active').show();
+			tabSet.filter('.rs-js-set-active').show();
 
 			/* listen for click */
 
@@ -150,8 +150,8 @@
 
 				/* toggle active class */
 
-				tabItem.removeClass('js_item_active item_active').filter(tabItemActive).addClass('js_item_active item_active');
-				tabSet.removeClass('js_set_active set_active').filter(tabSetActive).addClass('js_set_active set_active');
+				tabItem.removeClass('rs-js-item-active item-active').filter(tabItemActive).addClass('rs-js-item-active item-active');
+				tabSet.removeClass('rs-js-set-active set-active').filter(tabSetActive).addClass('rs-js-set-active set-active');
 				event.preventDefault();
 			});
 
@@ -159,7 +159,7 @@
 
 			tab.on('error', function ()
 			{
-				var tabNameError = tabSet.has('.js_note_error').first().attr('id'),
+				var tabNameError = tabSet.has('.rs-js-note-error').first().attr('id'),
 					tabItemError = tabItem.find('a[href*="' + tabNameError + '"]');
 
 				tabItemError.click();

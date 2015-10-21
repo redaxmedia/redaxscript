@@ -18,7 +18,7 @@
 
 /* @section 1. several admin boxes */
 
-.admin-box-accordion-admin, .admin-box-dialog-admin
+.rs-admin-box-accordion, .rs-admin-box-dialog
 {
 	background: #e2e2e2;
 	background: linear-gradient(#e2e2e2, #dadada);
@@ -27,37 +27,37 @@
 	padding: 1em 1.5em;
 }
 
-.admin-box-accordion-admin
+.rs-admin-box-accordion
 {
 	border-bottom-width: 0;
 }
 
 /* @section 1.1 last element */
 
-.admin-set-accordion-last .admin-box-accordion-admin
+.rs-admin-set-accordion-last .rs-admin-box-accordion
 {
 	border-bottom-width: 1px;
 }
 
 /* @section 2. box dock admin */
 
-.admin-box-dock-admin
+.rs-admin-box-dock
 {
-	background: url('templates/admin/assets/images/carbon.admin-png') #222;
+	background: url('templates/admin/assets/images/carbon.rs-admin-png') #222;
 	font-size: 0.875rem;
 	margin-bottom: 1em;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 }
 
-.admin-box-dock-admin, .admin-box-dock-admin a
+.rs-admin-box-dock, .rs-admin-box-dock a
 {
 	color: #b9b9b9;
 }
 
 /* @section 2.1 description dock admin */
 
-.admin-description-dock-admin
+.rs-admin-description-dock
 {
 	float: right;
 	font: bold 1.25em/2.5em 'open sans condensed', 'trebuchet ms', arial;
@@ -70,7 +70,7 @@
 
 /* @section 2.2 footer grid fix */
 
-.admin-footer .admin-box-dock-admin
+.rs-admin-footer .rs-admin-box-dock
 {
 	margin-left: 0.75rem;
 	margin-right: 0.75rem;
@@ -78,14 +78,14 @@
 
 /* @section 3. box panel admin */
 
-.admin-box-panel-admin
+.rs-admin-box-panel
 {
-	background: url('templates/admin/assets/images/carbon.admin-png') #222;
+	background: url('templates/admin/assets/images/carbon.rs-admin-png') #222;
 }
 
 /* @section 4. box tab admin */
 
-.admin-box-tab-admin
+.rs-admin-box-tab
 {
 	background: #e2e2e2;
 	background: linear-gradient(#e2e2e2, #dadada);
@@ -95,7 +95,7 @@
 
 /* @section 5. space between elements */
 
-.admin-form-admin .admin-box-note
+.rs-admin-form .rs-admin-box-note
 {
 	margin-top: 1em;
 }

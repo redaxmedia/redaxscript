@@ -31,14 +31,14 @@
 		accordion:
 		{
 			init: true,
-			selector: 'div.js_accordion, form.js_accordion',
+			selector: 'div.rs-js-accordion, form.rs-js-accordion',
 			options:
 			{
 				element:
 				{
-					accordionSet: 'div.js_set_accordion, fieldset.js_set_accordion',
-					accordionTitle: 'h3.js_title_accordion, legend.js_title_accordion',
-					accordionBox: 'div.js_box_accordion, ul.js_box_accordion'
+					accordionSet: 'div.rs-js-set-accordion, fieldset.rs-js-set-accordion',
+					accordionTitle: 'h3.rs-js-title-accordion, legend.rs-js-title-accordion',
+					accordionBox: 'div.rs-js-box-accordion, ul.rs-js-box-accordion'
 				},
 				duration: 600
 			}
@@ -46,7 +46,7 @@
 		autoResize:
 		{
 			init: true,
-			selector: 'form textarea.js_auto_resize',
+			selector: 'form textarea.rs-js-auto-resize',
 			options:
 			{
 				overflow: 'hidden',
@@ -58,7 +58,7 @@
 		confirmLink:
 		{
 			init: true,
-			selector: 'a.js_confirm'
+			selector: 'a.rs-js-confirm'
 		},
 		dialog:
 		{
@@ -66,18 +66,18 @@
 			{
 				className:
 				{
-					dialog: 'js_dialog dialog dialog',
-					dialogTitle: 'js_title_dialog title_dialog title_dialog',
-					dialogBox: 'js_box_dialog box_dialog box_dialog',
-					dialogOverlay: 'js_dialog_overlay dialog_overlay dialog_overlay',
-					buttonOk: 'js_ok button',
-					buttonCancel: 'js_cancel button',
-					fieldPrompt: 'js_prompt field_text'
+					dialog: 'rs-js-dialog rs-dialog rs-dialog',
+					dialogTitle: 'rs-js-title-dialog rs-title-dialog rs-title-dialog',
+					dialogBox: 'rs-js-box-dialog rs-box-dialog rs-box-dialog',
+					dialogOverlay: 'rs-js-dialog-overlay rs-dialog-overlay rs-dialog-overlay',
+					buttonOk: 'rs-js-ok rs-button',
+					buttonCancel: 'rs-js-cancel rs-button',
+					fieldPrompt: 'rs-js-prompt rs-field-text'
 				},
 				suffix:
 				{
-					backend: '_admin',
-					frontend: '_default'
+					backend: '-admin',
+					frontend: '-default'
 				},
 				type: 'alert',
 				message: '',
@@ -87,7 +87,7 @@
 		dropdown:
 		{
 			init: rs.support.touch,
-			selector: 'ul.js_dropdown',
+			selector: 'ul.rs-js-dropdown',
 			options:
 			{
 				element:
@@ -100,7 +100,7 @@
 		enableIndent:
 		{
 			init: true,
-			selector: 'form textarea.js_editor_textarea, form textarea.js_enable_indent',
+			selector: 'form textarea.rs-js-editor-textarea, form textarea.rs-js-enable-indent',
 			options:
 			{
 				eol: '\n',
@@ -110,7 +110,7 @@
 		forwardNotification:
 		{
 			init: true,
-			selector: 'a.js_forward_notification',
+			selector: 'a.rs-js-forward-notification',
 			options:
 			{
 				duration: 1000
@@ -119,24 +119,24 @@
 		generateAlias:
 		{
 			init: true,
-			selector: 'form input.js_generate_alias_input, form input.js_generate_alias_output',
+			selector: 'form input.rs-js-generate-alias-input, form input.rs-js-generate-alias-output',
 			options:
 			{
 				element:
 				{
-					related: 'input.js_generate_alias_output'
+					related: 'input.rs-js-generate-alias-output'
 				}
 			}
 		},
 		generateKeyword:
 		{
 			init: true,
-			selector: 'form textarea.js_generate_keyword_input',
+			selector: 'form textarea.rs-js-generate-keyword-input',
 			options:
 			{
 				element:
 				{
-					related: 'textarea.js_generate_keyword_output',
+					related: 'textarea.rs-js-generate-keyword-output',
 					target: 'h1, h2, h3, strong'
 				},
 				splitter:
@@ -156,8 +156,8 @@
 			{
 				element:
 				{
-					adminDock: 'div.admin-js-dock-admin',
-					adminPanel: 'nav.admin-js-panel-admin',
+					adminDock: 'div.rs-admin-js-dock',
+					adminPanel: 'nav.rs-admin-js-panel',
 					buttonSubmit: 'form button.rs-js-submit',
 					buttonOk: 'div a.rs-js-ok span span, form button.rs-js-ok',
 					buttonCancel: 'div a.rs-js-cancel span span, form button.rs-js-cancel'
@@ -181,44 +181,44 @@
 		preventUnload:
 		{
 			init: true,
-			selector: 'ul.js_box_accordion, div.js_box_tab',
+			selector: 'ul.rs-js-box-accordion, div.rs-js-box-tab',
 			options:
 			{
 				element:
 				{
-					not: 'ul.js_list_tab a'
+					not: 'ul.rs-js-list-tab a'
 				}
 			}
 		},
 		tab:
 		{
 			init: true,
-			selector: 'div.js_tab, form.js_tab',
+			selector: 'div.rs-js-tab, form.rs-js-tab',
 			options:
 			{
 				element:
 				{
-					tabBox: 'div.js_box_tab',
-					tabItem: 'ul.js_list_tab li',
-					tabSet: 'div.js_set_tab, fieldset.js_set_tab'
+					tabBox: 'div.rs-js-box-tab',
+					tabItem: 'ul.rs-js-list-tab li',
+					tabSet: 'div.rs-js-set-tab, fieldset.rs-js-set-tab'
 				}
 			}
 		},
 		unmaskPassword:
 		{
 			init: true,
-			selector: 'form input.js_unmask_password'
+			selector: 'form input.rs-js-unmask-password'
 		},
 		validateForm:
 		{
 			init: true,
-			selector: 'form.js_validate_form',
+			selector: 'form.rs-js-validate-form',
 			options:
 			{
 				element:
 				{
-					buttonSubmit: 'button.js_submit',
-					field: 'div.js_editor_preview, input, select, textarea'
+					buttonSubmit: 'button.rs-js-submit',
+					field: 'div.rs-js-editor-preview, input, select, textarea'
 				},
 				autoFocus: true,
 				message: true,
@@ -228,12 +228,12 @@
 		validateSearch:
 		{
 			init: rs.support.input && rs.support.input.placeholder,
-			selector: 'form.js_validate_search',
+			selector: 'form.rs-js-validate-search',
 			options:
 			{
 				element:
 				{
-					field: 'input.js_search'
+					field: 'input.rs-js-search'
 				},
 				duration: 1000
 			}
@@ -279,7 +279,7 @@
 				}
 				else
 				{
-					docElement.className += ' no_' + i.toLowerCase();
+					docElement.className += ' no-' + i.toLowerCase();
 				}
 			}
 		}

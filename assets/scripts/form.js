@@ -235,7 +235,7 @@
 						thatNative = that[0],
 						thatContenteditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
-						className = 'js_note_error field_note note_error',
+						className = 'rs-js-note-error rs-field-note rs-note-error',
 						validity = 'valid',
 						thatValue = '',
 						thatRequired = '',
@@ -287,7 +287,7 @@
 						that.addClass(className).trigger('invalid');
 						if (message && options.message)
 						{
-							thatLabel.addClass('label_message').attr('data-message', message);
+							thatLabel.addClass('rs-label-message').attr('data-message', message);
 						}
 					}
 
@@ -298,14 +298,14 @@
 						that.removeClass(className).trigger('valid');
 						if (options.message)
 						{
-							thatLabel.removeClass('label_message').removeAttr('data-message');
+							thatLabel.removeClass('rs-label-message').removeAttr('data-message');
 						}
 					}
 				});
 
 				/* trigger error and prevent submit */
 
-				if (fieldAll.hasClass('js_note_error'))
+				if (fieldAll.hasClass('rs-js-note-error'))
 				{
 					form.trigger('error');
 					buttonSubmit.attr('disabled', 'disabled');
@@ -314,7 +314,7 @@
 
 					if (event.type === 'submit' && options.autoFocus)
 					{
-						fieldAll.filter('.js_note_error').first().focus();
+						fieldAll.filter('.rs-js-note-error').first().focus();
 					}
 
 					/* vibrate feedback */

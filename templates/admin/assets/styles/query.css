@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 40em)
 {
-	.admin-item-control-admin.admin-item-future-posting
+	.rs-admin-item-control.rs-admin-item-future-posting
 	{
 		display: none;
 	}
@@ -27,23 +27,23 @@
 
 @media screen and (max-width: 29.999em)
 {
-	.admin-button-admin + .admin-button-admin
+	.rs-admin-button + .rs-admin-button
 	{
 		margin-top: 0.75em;
 	}
 
-	a.admin-button-admin
+	a.rs-admin-button
 	{
 		display: block;
 		text-align: center;
 	}
 
-	button.admin-button-admin, .admin-field-select-admin, .admin-field-text-admin, .admin-field-textarea-admin.admin-field-small-admin
+	button.rs-admin-button, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-admin-field-small
 	{
 		width: 100%;
 	}
 
-	.admin-description-dock-admin, .admin-item-control-admin.admin-item-enable, .admin-item-control-admin.admin-item-disable, .admin-item-control-admin.admin-item-publish, .admin-item-control-admin.admin-item-unpublish
+	.rs-admin-description-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
 	{
 		display: none;
 	}
@@ -53,66 +53,66 @@
 
 @media screen and (min-width: 50em)
 {
-	.admin-list-panel-admin a, .admin-list-panel-admin span
+	.rs-admin-list-panel a, .rs-admin-list-panel span
 	{
 		line-height: 3.5em;
 	}
 
-	.admin-list-panel-admin a:before, .admin-list-panel-admin span:before
+	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
 	{
 		font-size: 1.5em;
 	}
 
-	.admin-list-panel-admin .admin-item-panel-admin > span:after
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
 	{
 		content: '';
 	}
 
-	.admin-list-panel-admin > li
+	.rs-admin-list-panel > li
 	{
 		float: left;
 		position: relative;
 	}
 
-	.admin-list-panel-admin.admin-c1 > li
+	.rs-admin-list-panel.rs-admin-c1 > li
 	{
 		width: 100%;
 	}
 
-	.admin-list-panel-admin.admin-c2 > li
+	.rs-admin-list-panel.rs-admin-c2 > li
 	{
 		width: 50%;
 	}
 
-	.admin-list-panel-admin.admin-c3 > li
+	.rs-admin-list-panel.rs-admin-c3 > li
 	{
 		width: 33.33%;
 	}
 
-	.admin-list-panel-admin.admin-c4 > li
+	.rs-admin-list-panel.rs-admin-c4 > li
 	{
 		width: 25%;
 	}
 
-	.admin-list-panel-admin.admin-c5 > li
+	.rs-admin-list-panel.rs-admin-c5 > li
 	{
 		width: 20%;
 	}
 
-	.admin-list-panel-children-admin
+	.rs-admin-list-panel-children
 	{
-		background: url('templates/admin/assets/images/carbon.admin-png') #222;
+		background: url('templates/admin/assets/images/carbon.rs-admin-png') #222;
 		position: absolute;
 		width: 100%;
 	}
 
-	.admin-list-panel-children-admin ul
+	.rs-admin-list-panel-children ul
 	{
 		left: 100%;
 		top: 0;
 	}
 
-	.admin-sidebar .admin-description-dock-admin
+	.rs-admin-sidebar .rs-admin-description-dock
 	{
 		display: none;
 	}
@@ -122,17 +122,17 @@
 
 @media screen and (min-width: 30em)
 {
-	.admin-button-admin + .admin-button-admin
+	.rs-admin-button + .rs-admin-button
 	{
 		margin-left: 0.5em;
 	}
 
-	.admin-form-admin .admin-button-cancel-admin, .admin-form-admin .admin-button-delete-admin
+	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete
 	{
 		float: left;
 	}
 
-	.admin-form-admin .admin-button-submit-admin
+	.rs-admin-form .rs-admin-button-submit
 	{
 		float: right;
 	}
@@ -140,12 +140,12 @@
 
 /* @section 5. rtl direction */
 
-.admin-rtl .admin-description-dock-admin
+.rs-admin-rtl .rs-admin-description-dock
 {
 	float: left;
 }
 
-.admin-rtl .admin-table-admin .admin-column-move
+.rs-admin-rtl .rs-admin-table .rs-admin-column-move
 {
 	text-align: right;
 }

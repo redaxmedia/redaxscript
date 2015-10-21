@@ -1,9 +1,9 @@
 <?php use Redaxscript\Template as Template; ?>
 
 <?php if (Template::registry('loggedIn') === Template::registry('token') && Template::registry('firstParameter') !== 'logout'): ?>
-	<nav id="panel-admin" class="admin-js-panel-admin admin-panel-admin">
-		<div class="admin-box-panel-admin">
-			<section class="admin-wrapper rs-clearfix">
+	<nav id="panel-admin" class="rs-admin-js-panel rs-admin-panel">
+		<div class="rs-admin-box-panel">
+			<section class="rs-admin-wrapper rs-clearfix">
 				<?php echo Template::adminPanel(); ?>
 			</section>
 		</div>

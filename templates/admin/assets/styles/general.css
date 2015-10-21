@@ -12,30 +12,30 @@
 
 /* @section 1. panel admin */
 
-.admin-panel-admin
+.rs-admin-panel
 {
 	position: relative;
 	z-index: 900;
 }
 
-.admin-panel-admin a, .admin-panel-admin a:hover
+.rs-admin-panel a, .rs-admin-panel a:hover
 {
 	text-decoration: none;
 }
 
 /* @section 2. wrapper */
 
-.admin-wrapper-button-admin
+.rs-admin-wrapper-button
 {
 	margin-bottom: 1em;
 }
 
-.admin-wrapper-table-admin
+.rs-admin-wrapper-table
 {
 	overflow: hidden;
 }
 
-.admin-wrapper-table-admin > .admin-table-admin
+.rs-admin-wrapper-table > .rs-admin-table
 {
 	width: 100%;
 }
