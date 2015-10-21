@@ -71,7 +71,7 @@ class Module
 			/* create from sql */
 
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
-			if(is_dir($directory))
+			if (is_dir($directory))
 			{
 				$installer = new Installer(Config::getInstance());
 				$installer->init($directory);
@@ -95,7 +95,7 @@ class Module
 			/* drop from sql */
 
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
-			if(is_dir($directory))
+			if (is_dir($directory))
 			{
 				$installer = new Installer(Config::getInstance());
 				$installer->init($directory);

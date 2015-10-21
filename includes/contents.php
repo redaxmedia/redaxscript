@@ -58,7 +58,7 @@ function contents()
 
 	else if (CATEGORY)
 	{
-		if (empty($id_array))
+		if (!$id_array)
 		{
 			if ($sibling > 0)
 			{

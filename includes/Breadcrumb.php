@@ -206,7 +206,7 @@ class Breadcrumb
 
 		/* else home */
 
-		else if (empty($fullRoute))
+		else if (!$fullRoute)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('home');
 		}
@@ -232,7 +232,7 @@ class Breadcrumb
 
 		/* handle error */
 
-		else if (empty($lastId))
+		else if (!$lastId)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('error');
 		}

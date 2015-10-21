@@ -182,11 +182,11 @@ class Contact extends Module
 
 		/* validate post */
 
-		if (empty($postData['author']))
+		if (!$postData['author'])
 		{
 			$errorData['author'] = Language::get('author_empty');
 		}
-		if (empty($postData['email']))
+		if (!$postData['email'])
 		{
 			$errorData['email'] = Language::get('email_empty');
 		}
@@ -194,11 +194,11 @@ class Contact extends Module
 		{
 			$errorData['email'] = Language::get('email_incorrect');
 		}
-		if (isset($errorData['url']) && $urlValidator->validate($postData['url']) === Validator\ValidatorInterface::FAILED)
+		if ($errorData['url'] && $urlValidator->validate($postData['url']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorData['url'] = Language::get('url_incorrect');
 		}
-		if (empty($postData['text']))
+		if (!$postData['text'])
 		{
 			$errorData['text'] = Language::get('message_empty');
 		}

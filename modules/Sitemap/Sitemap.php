@@ -72,7 +72,7 @@ class Sitemap extends Config
 
 		/* process articles */
 
-		if (empty($articles))
+		if (!$articles)
 		{
 			$error = Language::get('article_no') . Language::get('point');
 		}

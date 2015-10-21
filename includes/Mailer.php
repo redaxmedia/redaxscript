@@ -126,9 +126,9 @@ class Mailer
 		$from = current($this->_fromArray);
 		$fromName = key($this->_fromArray);
 
-		/* name fallback */
+		/* from name fallback */
 
-		if (empty($fromName))
+		if (!$fromName)
 		{
 			$fromName = $from;
 		}
@@ -196,7 +196,7 @@ class Mailer
 
 		/* empty attachment */
 
-		if (empty($this->_attachmentArray))
+		if (!$this->_attachmentArray)
 		{
 			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
 		}
@@ -252,9 +252,9 @@ class Mailer
 		{
 			foreach ($this->_toArray as $toName => $to)
 			{
-				/* name fallback */
+				/* to name fallback */
 
-				if (empty($toName))
+				if (!$toName)
 				{
 					$toName = $to;
 				}

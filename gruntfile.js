@@ -251,7 +251,8 @@ module.exports = function (grunt)
 				bin: 'vendor/bin/phpunit',
 				bootstrap: './tests/bootstrap.php',
 				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
-				coverageHtml: grunt.option('html') ? grunt.option('html') : false
+				coverageHtml: grunt.option('html') ? grunt.option('html') : false,
+				verbose: true
 			}
 		},
 		autoprefixer:

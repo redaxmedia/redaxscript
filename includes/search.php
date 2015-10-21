@@ -110,7 +110,7 @@ function search_post()
 		/* process result */
 
 		$num_rows = count($result);
-		if (empty($result))
+		if (!$result)
 		{
 			$error = l('search_no');
 		}
