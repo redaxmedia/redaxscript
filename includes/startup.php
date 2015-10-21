@@ -41,7 +41,7 @@ function startup()
 
 	/* prevent session hijacking */
 
-	if (!$_SESSION[ROOT . '/regenerate_id'])
+	if (empty($_SESSION[ROOT . '/regenerate_id']))
 	{
 		session_regenerate_id();
 		$_SESSION[ROOT . '/regenerate_id'] = 1;

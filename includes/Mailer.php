@@ -128,7 +128,7 @@ class Mailer
 
 		/* name fallback */
 
-		if (!$fromName)
+		if (empty($fromName))
 		{
 			$fromName = $from;
 		}
@@ -254,7 +254,7 @@ class Mailer
 			{
 				/* name fallback */
 
-				if (!$toName)
+				if (empty($toName))
 				{
 					$toName = $to;
 				}

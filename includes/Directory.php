@@ -170,7 +170,7 @@ class Directory
 	{
 		/* handle parent directory */
 
-		if (!$directory)
+		if (is_null($directory))
 		{
 			$path = $this->_directory;
 			$directoryArray = $this->_directoryArray;
