@@ -248,7 +248,7 @@ module.exports = function (grunt)
 			},
 			options:
 			{
-				bin: 'vendor/bin/paratest',
+				bin: 'vendor/bin/phpunit',
 				bootstrap: './tests/bootstrap.php',
 				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
 				coverageHtml: grunt.option('html') ? grunt.option('html') : false
