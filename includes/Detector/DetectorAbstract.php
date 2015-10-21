@@ -91,25 +91,22 @@ abstract class DetectorAbstract
 	{
 		foreach ($setup as $key => $value)
 		{
-			if ($value)
+			$file = str_replace($this->_filePlaceholder, $value, $path);
+
+			/* file exists */
+
+			if (file_exists($file))
 			{
-				$file = str_replace($this->_filePlaceholder, $value, $path);
+				$this->_output = $value;
 
-				/* file exists */
+				/* store query to session */
 
-				if (file_exists($file))
+				if ($key === 'query')
 				{
-					$this->_output = $value;
-
-					/* store query to session */
-
-					if ($key === 'query')
-					{
-						$root = $this->_registry->get('root');
-						$this->_request->setSession($root . '/' . $type, $value);
-					}
-					break;
+					$root = $this->_registry->get('root');
+					$this->_request->setSession($root . '/' . $type, $value);
 				}
+				break;
 			}
 		}
 	}
