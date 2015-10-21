@@ -24,7 +24,7 @@ class Captcha
 	/**
 	 * captcha operator mode
 	 *
-	 * @var string
+	 * @var integer
 	 */
 
 	protected $_mode;
@@ -32,7 +32,7 @@ class Captcha
 	/**
 	 * task to be solved
 	 *
-	 * @var integer
+	 * @var string
 	 */
 
 	protected $_task;

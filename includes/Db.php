@@ -119,7 +119,7 @@ class Db extends ORM
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return integer
 	 */
 
 	public static function getStatus()
