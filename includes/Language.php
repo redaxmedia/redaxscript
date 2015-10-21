@@ -58,7 +58,7 @@ class Language extends Singleton
 
 		/* handle index */
 
-		if (isset($index) && isset(self::$_languageArray[$index]))
+		if (array_key_exists($index, self::$_languageArray))
 		{
 			$languageArray = self::$_languageArray[$index];
 		}
@@ -67,9 +67,9 @@ class Language extends Singleton
 			$languageArray = self::$_languageArray;
 		}
 
-		/* output as needed */
+		/* values as needed */
 
-		if (is_null($key))
+		if (!$key)
 		{
 			$output = $languageArray;
 		}

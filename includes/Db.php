@@ -279,7 +279,7 @@ class Db extends ORM
 		$output = array();
 		foreach ($this->findArray() as $value)
 		{
-			if (isset($value[$key]))
+			if (array_key_exists($key, $value))
 			{
 				$output[] = $value[$key];
 			}

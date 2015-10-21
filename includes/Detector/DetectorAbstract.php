@@ -91,7 +91,7 @@ abstract class DetectorAbstract
 	{
 		foreach ($setup as $key => $value)
 		{
-			if (isset($value))
+			if ($value)
 			{
 				$file = str_replace($this->_filePlaceholder, $value, $path);
 

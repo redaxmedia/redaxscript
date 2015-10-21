@@ -140,7 +140,7 @@ class Element extends HtmlAbstract
 
 	public function removeAttr($attribute = null)
 	{
-		if (isset($this->_attributeArray[$attribute]))
+		if (array_key_exists($attribute, $this->_attributeArray))
 		{
 			unset($this->_attributeArray[$attribute]);
 		}
@@ -193,7 +193,7 @@ class Element extends HtmlAbstract
 	protected function _editClass($className = null, $type = null)
 	{
 		$classArray = array_filter(explode(' ', $className));
-		if (isset($this->_attributeArray['class']))
+		if (array_key_exists('class', $this->_attributeArray))
 		{
 			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
 		}

@@ -43,7 +43,7 @@ class Module
 
 		/* load the language */
 
-		if (isset(static::$_moduleArray['alias']))
+		if (array_key_exists('alias', static::$_moduleArray))
 		{
 			$registry = Registry::getInstance();
 			$language = Language::getInstance();
@@ -62,7 +62,7 @@ class Module
 
 	public function install()
 	{
-		if (isset(static::$_moduleArray['name']) && isset(static::$_moduleArray['alias']))
+		if (array_key_exists('alias', static::$_moduleArray))
 		{
 			$module = Db::forTablePrefix('modules')->create();
 			$module->set(static::$_moduleArray);
@@ -88,7 +88,7 @@ class Module
 
 	public function uninstall()
 	{
-		if (isset(static::$_moduleArray['alias']))
+		if (array_key_exists('alias', static::$_moduleArray))
 		{
 			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
 

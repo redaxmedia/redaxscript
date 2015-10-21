@@ -84,7 +84,7 @@ class Breadcrumb
 		{
 			$this->_options = array_merge($this->_options, $options);
 		}
-		if (is_null($this->_options['divider']))
+		if (!$this->_options['divider'])
 		{
 			$this->_options['divider'] = Db::getSettings('divider');
 		}

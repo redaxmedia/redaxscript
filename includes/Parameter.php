@@ -71,7 +71,7 @@ class Parameter
 
 	public function getFirst()
 	{
-		if (isset($this->_parameterArray[0]) && !is_numeric($this->_parameterArray[0]))
+		if (array_key_exists(0, $this->_parameterArray) && !is_numeric($this->_parameterArray[0]))
 		{
 			return $this->_parameterArray[0];
 		}
@@ -87,7 +87,7 @@ class Parameter
 
 	public function getSecond()
 	{
-		if (isset($this->_parameterArray[1]) && !is_numeric($this->_parameterArray[1]))
+		if (array_key_exists(1, $this->_parameterArray) && !is_numeric($this->_parameterArray[1]))
 		{
 			return $this->_parameterArray[1];
 		}
@@ -103,7 +103,7 @@ class Parameter
 
 	public function getThird()
 	{
-		if (isset($this->_parameterArray[2]) && !is_numeric($this->_parameterArray[2]))
+		if (array_key_exists(2, $this->_parameterArray) && !is_numeric($this->_parameterArray[2]))
 		{
 			return $this->_parameterArray[2];
 		}
@@ -119,7 +119,7 @@ class Parameter
 
 	public function getFourth()
 	{
-		if (isset($this->_parameterArray[3]) && !is_numeric($this->_parameterArray[3]))
+		if (array_key_exists(3, $this->_parameterArray) && !is_numeric($this->_parameterArray[3]))
 		{
 			return $this->_parameterArray[3];
 		}

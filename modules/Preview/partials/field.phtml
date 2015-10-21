@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-$suffix = isset($admin) ? '_admin' : '';
+$suffix = $admin ? '_admin' : '';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'title_content_sub'

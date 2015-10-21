@@ -77,18 +77,15 @@ abstract class ClientAbstract
 		{
 			if (stristr($userAgent, $value))
 			{
+				/* general */
+
+				$this->_output = $value;
+
 				/* version */
 
 				if ($type === 'version')
 				{
 					$this->_output = floor(substr($userAgent, strpos($userAgent, $value) + strlen($value) + 1, 3));
-				}
-
-				/* default */
-
-				else
-				{
-					$this->_output = $value;
 				}
 			}
 		}

@@ -53,7 +53,7 @@ class Registry extends Singleton
 
 		/* values as needed */
 
-		if (is_null($key))
+		if (!$key)
 		{
 			$output = self::$_registryArray;
 		}

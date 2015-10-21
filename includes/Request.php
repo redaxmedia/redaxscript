@@ -30,11 +30,11 @@ class Request extends Singleton
 	public static function init()
 	{
 		self::$_requestArray = array(
-			'server' => isset($_SERVER) ? $_SERVER : array(),
-			'get' => isset($_GET) ? $_GET : array(),
-			'post' => isset($_POST) ? $_POST : array(),
-			'session' => isset($_SESSION) ? $_SESSION : array(),
-			'cookie' => isset($_COOKIE) ? $_COOKIE : array()
+			'server' => $_SERVER ? $_SERVER : array(),
+			'get' => $_GET ? $_GET : array(),
+			'post' => $_POST ? $_POST : array(),
+			'session' => $_SESSION ? $_SESSION : array(),
+			'cookie' => $_COOKIE ? $_COOKIE : array()
 		);
 	}
 
@@ -55,7 +55,7 @@ class Request extends Singleton
 
 		/* handle index */
 
-		if (isset($index) && isset(self::$_requestArray[$index]))
+		if (array_key_exists($index, self::$_requestArray))
 		{
 			$requestArray = self::$_requestArray[$index];
 		}
@@ -64,9 +64,9 @@ class Request extends Singleton
 			$requestArray = self::$_requestArray;
 		}
 
-		/* output as needed */
+		/* values as needed */
 
-		if (is_null($key))
+		if (!$key)
 		{
 			$output = $requestArray;
 		}

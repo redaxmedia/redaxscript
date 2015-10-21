@@ -39,8 +39,7 @@ class ModuleTest extends TestCase
 
 		$module = new Module();
 		$module->init(array(
-			'alias' => 'TestDummy',
-			'name' => 'Test dummy'
+			'alias' => 'TestDummy'
 		));
 
 		/* actual */
@@ -64,8 +63,7 @@ class ModuleTest extends TestCase
 
 		$module = new Module();
 		$module->init(array(
-			'alias' => 'TestDummy',
-			'name' => 'Test dummy'
+			'alias' => 'TestDummy'
 		));
 		$module->install();
 
@@ -92,8 +90,7 @@ class ModuleTest extends TestCase
 
 		$module = new Module();
 		$module->init(array(
-			'alias' => 'TestDummy',
-			'name' => 'Test dummy'
+			'alias' => 'TestDummy'
 		));
 		$module->uninstall();
 

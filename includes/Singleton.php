@@ -16,10 +16,10 @@ abstract class Singleton
 	/**
 	 * instance of the class
 	 *
-	 * @var object
+	 * @var array
 	 */
 
-	protected static $_instance = null;
+	protected static $_instance;
 
 	/**
 	 * constructor of the class
@@ -45,7 +45,7 @@ abstract class Singleton
 
 		/* instance by class */
 
-		if (!isset(static::$_instance[$className]))
+		if (!array_key_exists($className, static::$_instance))
 		{
 			static::$_instance[$className] = new static();
 		}
