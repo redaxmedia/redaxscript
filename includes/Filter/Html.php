@@ -215,7 +215,7 @@ class Html implements FilterInterface
 	/**
 	 * clean the document
 	 *
-	 * @since 2.4.0
+	 * @since 2.6.0
 	 *
 	 * @param DOMDocument $doc target document
 	 *
@@ -226,15 +226,15 @@ class Html implements FilterInterface
 	{
 		/* clean document */
 
-		if (isset($doc->firstChild) && $doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
+		if ($doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
 		{
 			/* remove doctype */
 
 			$doc->removeChild($doc->firstChild);
 
-			/* remove tags */
+			/* remove head and body */
 
-			if (isset($doc->firstChild->firstChild->firstChild) && $doc->firstChild->firstChild->tagName === 'body')
+			if ($doc->firstChild->firstChild->nodeName === 'head' || $doc->firstChild->firstChild->nodeName === 'body')
 			{
 				$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
 			}
