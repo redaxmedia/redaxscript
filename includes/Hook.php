@@ -80,7 +80,7 @@ class Hook
 		$modulesAvailable = $modulesDirectory->getArray();
 		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
-		/* proccess installed modules */
+		/* process installed modules */
 
 		foreach ($modulesInstalled as $module)
 		{
