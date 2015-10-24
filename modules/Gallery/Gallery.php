@@ -87,30 +87,30 @@ class Gallery extends Config
 		$galleryDirectory->init($directory, self::$_config['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
+		/* adjust order */
+
+		if ($options['order'] === 'desc')
+		{
+			$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
+		}
+
+		/* gallery data */
+
+		$galleryCounter = 0;
+		$galleryTotal = count($galleryDirectoryArray);
+		$galleryId = uniqid('gallery-');
+
 		/* remove thumbs */
 
-		if ($options['command'] === 'remove')
+		if ($options['command'] === 'remove' || !$galleryTotal)
 		{
 			$galleryDirectory->remove(self::$_config['thumbDirectory']);
 		}
 
-		/* else show thumbs */
+		/* else handle thumbs */
 
 		else
 		{
-			/* reverse order */
-
-			if ($options['order'] === 'desc')
-			{
-				$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
-			}
-
-			/* gallery */
-
-			$galleryCounter = 0;
-			$galleryTotal = count($galleryDirectoryArray);
-			$galleryId = uniqid('gallery-');
-
 			/* process directory */
 
 			foreach ($galleryDirectoryArray as $key => $value)
@@ -118,7 +118,7 @@ class Gallery extends Config
 				$imagePath = $directory . '/' . $value;
 				$thumbPath = $directory . '/' . self::$_config['thumbDirectory'] . '/' . $value;
 
-				/* create thumb as needed */
+				/* create thumbs */
 
 				if ($options['command'] === 'create' || !is_dir($thumbPath))
 				{
@@ -131,7 +131,7 @@ class Gallery extends Config
 				$outputItem .= $linkElement
 					->copy()
 					->attr(array(
-						'src' => $imagePath,
+						'href' => $imagePath,
 						'data-counter' => ++$galleryCounter,
 						'data-total' => $galleryTotal,
 						'data-id' => $galleryId,
@@ -140,6 +140,7 @@ class Gallery extends Config
 				$outputItem .= '</li>';
 			}
 			$output = $listElement->attr('id', $galleryId)->html($outputItem);
+
 		}
 		return $output;
 	}
