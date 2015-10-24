@@ -105,6 +105,12 @@ class Gallery extends Config
 				$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
 			}
 
+			/* gallery */
+
+			$galleryCounter = 0;
+			$galleryTotal = count($galleryDirectoryArray);
+			$galleryId = uniqid('gallery-');
+
 			/* process directory */
 
 			foreach ($galleryDirectoryArray as $key => $value)
@@ -124,11 +130,16 @@ class Gallery extends Config
 				$outputItem .= '<li>';
 				$outputItem .= $linkElement
 					->copy()
-					->attr('src', $imagePath)
+					->attr(array(
+						'src' => $imagePath,
+						'data-counter' => ++$galleryCounter,
+						'data-total' => $galleryTotal,
+						'data-id' => $galleryId,
+					))
 					->html($imageElement->copy()->attr('src', $thumbPath));
 				$outputItem .= '</li>';
 			}
-			$output = $listElement->html($outputItem);
+			$output = $listElement->attr('id', $galleryId)->html($outputItem);
 		}
 		return $output;
 	}
