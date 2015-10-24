@@ -41,13 +41,13 @@ $itemArray = array(
 
 	<?php $listContent .= $itemTabElement
 		->copy()
-		->addClass($key === 0 ? $itemActive : '')
+		->addClass($key === 0 ? $itemActive : null)
 		->addClass($value)
 		->html('<a href="' . Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id . '">' . Language::get($key + 1, '_number') . '</a>'); ?>
 
 	<?php $boxContent .= $setTabElement
 			->copy()
-			->addClass($key === 0 ? $setActive : '')
+			->addClass($key === 0 ? $setActive : null)
 			->attr('id', $id)
 			->text(Language::get($key + 1, '_number')); ?>
 

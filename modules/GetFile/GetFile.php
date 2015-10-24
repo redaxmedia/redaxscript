@@ -44,7 +44,7 @@ class GetFile extends Module
 
 	public static function render($file = null, $type = 'size', $unit = 'kb')
 	{
-		$output = '';
+		$output = null;
 
 		/* size */
 

@@ -59,8 +59,8 @@ class Gallery extends Config
 
 	public static function render($directory = null, $options = null)
 	{
-		$output = '';
-		$outputItem = '';
+		$output = null;
+		$outputItem = null;
 
 		/* html elements */
 

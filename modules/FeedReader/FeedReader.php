@@ -55,7 +55,7 @@ class FeedReader extends Config
 
 	public static function render($url = null, $options = array())
 	{
-		$output = '';
+		$output = null;
 		$counter = 0;
 
 		/* html elements */

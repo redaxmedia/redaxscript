@@ -72,7 +72,7 @@ class ShareThis extends Config
 
 	public static function render($url = null)
 	{
-		$output = '';
+		$output = null;
 		if ($url)
 		{
 			/* html elements */

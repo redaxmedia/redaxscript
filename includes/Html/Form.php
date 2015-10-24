@@ -522,7 +522,7 @@ class Form extends HtmlAbstract
 
 	protected function _createOption($optionArray = array(), $selected = null)
 	{
-		$output = '';
+		$output = null;
 		$optionElement = new Element();
 		$optionElement->init('option');
 

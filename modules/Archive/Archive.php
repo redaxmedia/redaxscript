@@ -43,8 +43,8 @@ class Archive extends Config
 
 	public static function render()
 	{
-		$output = '';
-		$outputItem = '';
+		$output = null;
+		$outputItem = null;
 
 		/* html elements */
 
@@ -95,7 +95,7 @@ class Archive extends Config
 						if ($lastDate > 0)
 						{
 							$output .= $listElement->html($outputItem);
-							$outputItem = '';
+							$outputItem = null;
 						}
 						$output .= $titleElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
 					}
@@ -114,7 +114,7 @@ class Archive extends Config
 					if (end($articles) === $value)
 					{
 						$output .= $listElement->html($outputItem);
-						$outputItem = '';
+						$outputItem = null;
 					}
 					$lastDate = $currentDate;
 				}

@@ -57,7 +57,7 @@ class LazyLoad extends Config
 
 	public static function render($src = null, $options = array())
 	{
-		$output = '';
+		$output = null;
 
 		/* device related images */
 

@@ -75,7 +75,7 @@ class Router extends Parameter
 
 	protected function _getRoute($type = 'lite')
 	{
-		$output = '';
+		$output = null;
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
 		$subArray = array(

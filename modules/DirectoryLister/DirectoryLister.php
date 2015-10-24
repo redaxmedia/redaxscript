@@ -60,9 +60,9 @@ class DirectoryLister extends Config
 
 	public static function render($directory = null, $options = null)
 	{
-		$output = '';
-		$outputDirectory = '';
-		$outputFile = '';
+		$output = null;
+		$outputDirectory = null;
+		$outputFile = null;
 
 		/* hash option */
 

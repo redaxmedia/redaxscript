@@ -63,14 +63,14 @@ class FeedGenerator extends Module
 
 	public static function render($table = 'articles')
 	{
-		$output = '';
+		$output = null;
 
 		/* fetch result */
 
 		$result = Db::forTablePrefix($table)
 			->where('status', 1)
 			->where('access', 0)
-			->where('language', Request::getQuery('l') ? Registry::get('language') : '')
+			->where('language', Request::getQuery('l') ? Registry::get('language') : null)
 			->orderGlobal('rank')
 			->limitGlobal()
 			->findArray();

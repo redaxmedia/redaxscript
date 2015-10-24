@@ -43,8 +43,8 @@ class Sitemap extends Config
 
 	public static function render()
 	{
-		$output = '';
-		$outputItem = '';
+		$output = null;
+		$outputItem = null;
 
 		/* html elements */
 
@@ -94,7 +94,7 @@ class Sitemap extends Config
 						if ($lastCategory > 0)
 						{
 							$output .= $listElement->html($outputItem);
-							$outputItem = '';
+							$outputItem = null;
 						}
 						$output .= $titleElement->text(
 							$currentCategory < 1 ? Language::get('uncategorized') : Db::forTablePrefix('categories')->whereIdIs($currentCategory)->findOne()->title
@@ -115,7 +115,7 @@ class Sitemap extends Config
 					if (end($articles) === $value)
 					{
 						$output .= $listElement->html($outputItem);
-						$outputItem = '';
+						$outputItem = null;
 					}
 					$lastCategory = $currentCategory;
 				}

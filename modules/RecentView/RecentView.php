@@ -43,7 +43,7 @@ class RecentView extends Config
 
 	public static function render($options = array())
 	{
-		$output = '';
+		$output = null;
 		$counter = 0;
 		$log = self::_log();
 
