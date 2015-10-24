@@ -165,13 +165,13 @@
 
 /* @section 8. gallery list */
 
-.item_gallery
+.list_gallery li
 {
 	margin: 0 1em 1em 0;
 	position: relative;
 }
 
-.item_gallery, .image_gallery
+.list_gallery li, .list_gallery img
 {
 	float: left;
 }

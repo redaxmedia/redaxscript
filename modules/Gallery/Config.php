@@ -22,10 +22,14 @@ class Config extends Module
 	 */
 
 	protected static $_config = array(
-		'height' => 100,
+		'className' => array(
+			'image' => 'image image_gallery',
+			'list' => 'js_list_gallery list_gallery'
+		),
+		'height' => 200,
 		'quality' => 80,
-		'thumbs' => 'thumbs',
-		'command' => array(
+		'thumbDirectory' => 'thumbs',
+		'allowedCommands' => array(
 			'create',
 			'remove'
 		)
