@@ -58,8 +58,8 @@
 
 .gallery_media, .gallery_meta, .gallery_overlay
 {
-	-webkit-animation: fade 0.4s;
-	animation: fade 0.4s;
+	-webkit-animation: fade 0.2s;
+	animation: fade 0.2s;
 }
 
 /* @section 5. gallery loader */

@@ -16,18 +16,7 @@
 {
 	background: #2c2c2c;
 	border-radius: 0.25em;
-}
-
-.image_default, .player_default
-{
-	max-width: 98%;
-	padding: 1%;
-}
-
-.image_gallery
-{
-	max-width: 94%;
-	padding: 3%;
+	padding: 0.5em;
 }
 
 /* @section 1.1 hover effect */
