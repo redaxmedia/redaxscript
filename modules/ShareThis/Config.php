@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'list' => 'list_share_this clearfix',
-			'link' => 'js_link_share_this link_share_this'
+			'link' => 'js_link_share_this link_share_this',
+			'list' => 'list_share_this clearfix'
 		),
 		'network' => array(
 			'facebook' => array(

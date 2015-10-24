@@ -35,14 +35,14 @@ class GetFile extends Module
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $fileName
+	 * @param string $file
 	 * @param string $type
 	 * @param string $unit
 	 *
 	 * @return string
 	 */
 
-	public static function render($fileName = null, $type = 'size', $unit = 'kb')
+	public static function render($file = null, $type = 'size', $unit = 'kb')
 	{
 		$output = '';
 
@@ -50,17 +50,17 @@ class GetFile extends Module
 
 		if ($type === 'size')
 		{
-			$output = filesize($fileName);
+			$output = filesize($file);
 
 			/* calculate output */
 
 			if ($unit === 'kb' || $unit === 'mb')
 			{
-				$output = $output / 1024;
+				$output /= 1024;
 			}
 			if ($unit === 'mb')
 			{
-				$output = $output / 1024;
+				$output /= 1024;
 			}
 			$output = ceil($output);
 		}
@@ -69,7 +69,7 @@ class GetFile extends Module
 
 		if ($type === 'date')
 		{
-			$output = date(Db::getSettings('date'), filectime($fileName));
+			$output = date(Db::getSettings('date'), filectime($file));
 		}
 		return $output;
 	}

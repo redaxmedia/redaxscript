@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'list' => 'list_directory_lister clearfix',
 			'link' => 'link_directory_lister',
+			'list' => 'list_directory_lister clearfix',
 			'textSize' => 'text_directory_lister text_size',
 			'textDate' => 'text_directory_lister text_date',
 			'types' => array(
