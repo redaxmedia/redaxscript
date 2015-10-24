@@ -59,9 +59,9 @@ class Gallery extends Config
 	{
 		$output = '';
 
-		/*  command fallback */
+		/* command fallback */
 
-		if ($options === 'create' || $options === 'remove')
+		if (in_array($options, self::$_config['command']))
 		{
 			$command = $options;
 		}
@@ -79,12 +79,34 @@ class Gallery extends Config
 			$galleryDirectory->remove(self::$_config['thumbs']);
 		}
 
-		/* process directory */
+		/* else show thumbs */
 
-		foreach ($galleryDirectoryArray as $key => $value)
+		else
 		{
-			$output .= $value;
+			/* reverse order */
+
+			if ($options['order'] === 'desc')
+			{
+				$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
+			}
+
+			/* process directory */
+
+			foreach ($galleryDirectoryArray as $key => $value)
+			{
+				$path = $directory . '/' . $value;
+				$thumbPath = $directory . '/' . self::$_config['thumbs'] . '/' . $value;
+
+				/* create thumbs */
+
+				if ($command === 'create' || !file_exists($thumbPath))
+				{
+					self::_createThumb($value, $directory, $options);
+				}
+				$output .= $path;
+			}
 		}
+		return $output;
 	}
 
 	/**

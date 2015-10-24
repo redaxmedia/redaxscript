@@ -24,6 +24,10 @@ class Config extends Module
 	protected static $_config = array(
 		'height' => 100,
 		'quality' => 80,
-		'thumbs' => 'thumbs'
+		'thumbs' => 'thumbs',
+		'command' => array(
+			'create',
+			'remove'
+		)
 	);
 }
