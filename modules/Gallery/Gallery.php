@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Gallery;
 
+use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Html;
 
@@ -125,6 +126,10 @@ class Gallery extends Config
 					self::_createThumb($value, $directory, $options);
 				}
 
+				/* image data */
+
+				$imageData = self::_getImageData($imagePath);
+
 				/* collect item output */
 
 				$outputItem .= '<li>';
@@ -135,12 +140,41 @@ class Gallery extends Config
 						'data-counter' => ++$galleryCounter,
 						'data-total' => $galleryTotal,
 						'data-id' => $galleryId,
+						'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
+						'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
+						'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
 					))
 					->html($imageElement->copy()->attr('src', $thumbPath));
 				$outputItem .= '</li>';
 			}
 			$output = $listElement->attr('id', $galleryId)->html($outputItem);
 
+		}
+		return $output;
+	}
+
+	/**
+	 * getImageData
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $file
+	 *
+	 * @return array
+	 */
+
+	public static function _getImageData($file = null)
+	{
+		$output = array();
+		$exifData = exif_read_data($file);
+
+		/* has image data */
+
+		if ($exifData)
+		{
+			$output['artist'] = $exifData['Artist'];
+			$output['date'] = $exifData['DateTime'] ? date(Db::getSettings('data'), strtotime($exifData['DateTime'])) : null;
+			$output['description'] = $exifData['ImageDescription'];
 		}
 		return $output;
 	}
