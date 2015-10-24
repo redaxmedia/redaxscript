@@ -87,24 +87,24 @@ class Autoloader
 	/**
 	 * load a class file
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.0
 	 *
 	 * @param string $className name of the class to load
 	 */
 
 	protected static function _load($className = null)
 	{
-		$fileName = str_replace(self::$_namespace, '', $className);
-		$fileName = str_replace(self::$_delimiter, '/', $fileName);
-		$filePath = $fileName . self::$_fileSuffix;
+		$file = str_replace(self::$_namespace, '', $className);
+		$file = str_replace(self::$_delimiter, '/', $file);
+		$file .= self::$_fileSuffix;
 
 		/* include files as needed */
 
 		foreach (self::$_directory as $directory)
 		{
-			if (file_exists($directory . '/' . $filePath))
+			if (file_exists($directory . '/' . $file))
 			{
-				include_once($directory . '/' . $filePath);
+				include_once($directory . '/' . $file);
 			}
 		}
 	}
