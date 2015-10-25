@@ -180,7 +180,6 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_options = array(
-		'blocker' => true,
 		'captcha' => true
 	);
 

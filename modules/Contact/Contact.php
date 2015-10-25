@@ -95,6 +95,8 @@ class Contact extends Module
 					'name' => get_class()
 				)
 			)
+		), array(
+			'captcha' => Db::getSettings('captcha') > 0
 		));
 
 		/* create the form */
@@ -143,10 +145,20 @@ class Contact extends Module
 				'required' => 'required',
 				'value' => Request::getPost('text')
 			))
-			->append('</li><li>')
-			->captcha('task')
-			->append('</li></ul></fieldset>')
-			->captcha('solution')
+			->append('</li>');
+		if (Db::getSettings('captcha') > 0)
+		{
+			$formElement
+				->append('<li>')
+				->captcha('task')
+				->append('</li>');
+		}
+		$formElement->append('</ul></fieldset>');
+		if (Db::getSettings('captcha') > 0)
+		{
+			$formElement->captcha('solution');
+		}
+		$formElement
 			->token()
 			->submit()
 			->reset();
