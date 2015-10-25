@@ -8,13 +8,13 @@
 		"options":
 		{
 			"quality": 80,
-			"height": 100
+			"height": 200
 		}
 	}
 }
 &lt;/module&gt;</pre>
 
-<p>Syntax to build thumbs on each page view with reversed order:</p>
+<p>Syntax to create thumbs on each page refresh with reversed order:</p>
 
 <pre class="js_code_quote box_code">&lt;module&gt;
 {
@@ -30,14 +30,17 @@
 }
 &lt;/module&gt;</pre>
 
-<p>Syntax to delete thumbs directory:</p>
+<p>Syntax to remove thumbs:</p>
 
 <pre class="js_code_quote box_code">&lt;module&gt;
 {
 	"Gallery":
 	{
 		"directory": "images/gallery",
-		"command": "remove"
+		"options":
+		{
+			"command": "remove"
+		}
 	}
 }
 &lt;/module&gt;</pre>

@@ -52,7 +52,7 @@ class Gallery extends Config
 	 * @since 2.6.0
 	 *
 	 * @param string $directory
-	 * @param mixed $options
+	 * @param array $options
 	 *
 	 * @return string
 	 */
@@ -74,13 +74,6 @@ class Gallery extends Config
 		$listElement->init('ul', array(
 			'class' => self::$_config['className']['list']
 		));
-
-		/* options fallback */
-
-		if (is_string($options) && in_array($options, self::$_config['allowedCommands']))
-		{
-			$options['command'] = $options;
-		}
 
 		/* gallery directory */
 
@@ -121,7 +114,7 @@ class Gallery extends Config
 
 				/* create thumbs */
 
-				if ($options['command'] === 'create' || !is_dir($thumbPath))
+				if ($options['command'] === 'create' || !is_file($thumbPath))
 				{
 					self::_createThumb($value, $directory, $options);
 				}
@@ -144,7 +137,14 @@ class Gallery extends Config
 						'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
 						'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
 					))
-					->html($imageElement->copy()->attr('src', $thumbPath));
+					->html(
+						$imageElement
+							->copy()
+							->attr(array(
+								'src' => $thumbPath,
+								'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : null
+							))
+					);
 				$outputItem .= '</li>';
 			}
 			$output = $listElement->attr('id', $galleryId)->html($outputItem);
@@ -186,7 +186,7 @@ class Gallery extends Config
 	 *
 	 * @param string $file
 	 * @param string $directory
-	 * @param mixed $options
+	 * @param array $options
 	 *
 	 * @return string
 	 */
@@ -195,8 +195,8 @@ class Gallery extends Config
 	{
 		/* options fallback */
 
-		$options['height'] = array_key_exists('height') ? $options['height'] : self::$_config['height'];
-		$options['quality'] = array_key_exists('quality') ? $options['quality'] : self::$_config['quality'];
+		$options['height'] = array_key_exists('height', $options) ? $options['height'] : self::$_config['height'];
+		$options['quality'] = array_key_exists('quality', $options) ? $options['quality'] : self::$_config['quality'];
 
 		/* get extension */
 
