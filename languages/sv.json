@@ -236,7 +236,6 @@
 	"security": "Säkerhet",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha är felaktigt",
-	"blocker": "Blockerare",
 	"operation_completed": "Operationen genomfördes",
 	"error_occurred": "Ett fel inträffade",
 	"something_wrong": "Something went wrong",

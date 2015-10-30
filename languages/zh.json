@@ -236,7 +236,6 @@
 	"security": "安全设置",
 	"captcha": "验证码",
 	"captcha_incorrect": "验证码有误",
-	"blocker": "拦截",
 	"operation_completed": "操作成功执行",
 	"error_occurred": "发生错误",
 	"something_wrong": "Something went wrong",

@@ -236,7 +236,6 @@
 	"security": "Biztonsági kód",
 	"captcha": "Captcha",
 	"captcha_incorrect": "a Captcha kód érvénytelen",
-	"blocker": "Blokkoló",
 	"operation_completed": "A folyamat sikeresen véget ért",
 	"error_occurred": "Egy hiba történt",
 	"something_wrong": "Something went wrong",

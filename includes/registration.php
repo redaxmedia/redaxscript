@@ -15,13 +15,6 @@ function registration_form()
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
-	/* disable fields if attack blocked */
-
-	if (ATTACK_BLOCKED > 9)
-	{
-		$code_disabled = ' disabled="disabled"';
-	}
-
 	/* captcha object */
 
 	if (s('captcha') > 0)
@@ -35,15 +28,15 @@ function registration_form()
 	$output .= '<h2 class="title_content">' . l('account_create') . '</h2>';
 	$output .= form_element('form', 'form_registration', 'js_validate_form form_default form_registration', '', '', '', 'action="' . REWRITE_ROUTE . 'registration" method="post"');
 	$output .= form_element('fieldset', '', 'set_registration', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'field_text field_note', 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', '* ' . l('user'), 'maxlength="50" required="required"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', '', '* ' . l('email'), 'maxlength="50" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'field_text field_note', 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', '', '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -63,7 +56,7 @@ function registration_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'registration_post', l('create'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'registration_post', l('create'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	$_SESSION[ROOT . '/registration'] = 'visited';
@@ -85,26 +78,23 @@ function registration_post()
 {
 	/* clean post */
 
-	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/registration'] == 'visited')
+	$name = $r['name'] = clean($_POST['name'], 0);
+	$user = $r['user'] = clean($_POST['user'], 0);
+	$email = $r['email'] = clean($_POST['email'], 3);
+	$password = substr(sha1(uniqid()), 0, 10);
+	$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+	$passwordHash->init($password);
+	$r['password'] = $passwordHash->getHash();
+	$r['description'] = '';
+	$r['language'] = Redaxscript\Registry::get('language');
+	$r['first'] = $r['last'] = NOW;
+	$r['groups'] = Redaxscript\Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
+	if ($r['groups'] == '')
 	{
-		$name = $r['name'] = clean($_POST['name'], 0);
-		$user = $r['user'] = clean($_POST['user'], 0);
-		$email = $r['email'] = clean($_POST['email'], 3);
-		$password = substr(sha1(uniqid()), 0, 10);
-		$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-		$passwordHash->init($password);
-		$r['password'] = $passwordHash->getHash();
-		$r['description'] = '';
-		$r['language'] = Redaxscript\Registry::get('language');
-		$r['first'] = $r['last'] = NOW;
-		$r['groups'] = Redaxscript\Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
-		if ($r['groups'] == '')
-		{
-			$r['groups'] = 0;
-		}
-		$task = $_POST['task'];
-		$solution = $_POST['solution'];
+		$r['groups'] = 0;
 	}
+	$task = $_POST['task'];
+	$solution = $_POST['solution'];
 
 	/* validate post */
 
@@ -196,10 +186,6 @@ function registration_post()
 
 	if ($error)
 	{
-		if (s('blocker') == 1)
-		{
-			$_SESSION[ROOT . '/attack_blocked']++;
-		}
 		notification(l('error_occurred'), $error, l('back'), 'registration');
 	}
 
@@ -209,5 +195,4 @@ function registration_post()
 	{
 		notification(l('operation_completed'), $success, l('login'), 'login');
 	}
-	$_SESSION[ROOT . '/registration'] = '';
 }

@@ -278,7 +278,6 @@
 	"security": "Security",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha is incorrect",
-	"blocker": "Blocker",
 	"operation_completed": "Operation completed successfully",
 	"error_occurred": "An error occurred",
 	"something_wrong": "Something went wrong",

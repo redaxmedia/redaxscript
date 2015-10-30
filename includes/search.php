@@ -33,24 +33,17 @@ function search_form($table = 'articles')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
-	/* disable fields if attack blocked */
-
-	if (ATTACK_BLOCKED > 9)
-	{
-		$code_disabled = ' disabled="disabled"';
-	}
-
 	/* collect output */
 
 	$output .= form_element('form', '', 'js_validate_search form_search', '', '', '', 'method="post"');
-	$output .= form_element('search', '', 'js_search field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"' . $code_disabled);
+	$output .= form_element('search', '', 'js_search field_search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"');
 
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'search_post');
 	$output .= form_element('hidden', '', '', 'table', $table);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'button_search', 'search_post', l('search'), '', $code_disabled);
+	$output .= form_element('button', '', 'button_search', 'search_post', l('search'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
 	echo $output;
@@ -71,11 +64,8 @@ function search_post()
 {
 	/* clean post */
 
-	if (ATTACK_BLOCKED < 10)
-	{
-		$search_terms = clean($_POST['search_terms'], 5);
-		$table = clean($_POST['table']);
-	}
+	$search_terms = clean($_POST['search_terms'], 5);
+	$table = clean($_POST['table']);
 
 	/* validate post */
 

@@ -236,7 +236,6 @@
 	"security": "Sécurité",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha est incorrect",
-	"blocker": "Bloqueur",
 	"operation_completed": "L'opération s'est terminée avec succès",
 	"error_occurred": "Une erreur s'est produite",
 	"something_wrong": "Quelque chose s'est mal passé",

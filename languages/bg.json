@@ -236,7 +236,6 @@
 	"security": "Безопасност",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Неправилна captcha",
-	"blocker": "Блокиране",
 	"operation_completed": "Операцията е изпълнена успешно",
 	"error_occurred": "Има грешка",
 	"something_wrong": "Нещо не се получи",

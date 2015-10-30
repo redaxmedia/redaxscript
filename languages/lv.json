@@ -236,7 +236,6 @@
 	"security": "Drošība",
 	"captcha": "Drošības attēls",
 	"captcha_incorrect": "Nekorekts kods no drošības attēls",
-	"blocker": "Bloķētājs",
 	"operation_completed": "Darbība veiksmīga",
 	"error_occurred": "Notika kļūda",
 	"something_wrong": "Something went wrong",

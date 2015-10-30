@@ -236,7 +236,6 @@
 	"security": "Güvenlik",
 	"captcha": "Resimdeki yazi",
 	"captcha_incorrect": "Resimdeki yazi hatali",
-	"blocker": "Önleyici",
 	"operation_completed": "Islem basariyla tamamlandi",
 	"error_occurred": "Hata olustu",
 	"something_wrong": "Something went wrong",

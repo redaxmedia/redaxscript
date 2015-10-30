@@ -841,7 +841,6 @@ function admin_update()
 		$r['verification'] = clean($_POST['verification'], 0);
 		$r['reminder'] = clean($_POST['reminder'], 0);
 		$r['captcha'] = clean($_POST['captcha'], 0);
-		$r['blocker'] = clean($_POST['blocker'], 0);
 
 		/* update settings */
 

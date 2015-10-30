@@ -15,13 +15,6 @@ function password_reset_form()
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
-	/* disable fields if attack blocked */
-
-	if (ATTACK_BLOCKED > 9)
-	{
-		$code_disabled = ' disabled="disabled"';
-	}
-
 	/* captcha object */
 
 	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
@@ -35,7 +28,7 @@ function password_reset_form()
 
 	/* collect captcha task output */
 
-	$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
@@ -49,10 +42,9 @@ function password_reset_form()
 	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
 	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'password_reset_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'password_reset_post', l('submit'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	$_SESSION[ROOT . '/password_reset'] = 'visited';
 	echo $output;
 }
 
@@ -73,14 +65,11 @@ function password_reset_post()
 
 	/* clean post */
 
-	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/password_reset'] == 'visited')
-	{
-		$post_id = clean($_POST['id'], 0);
-		$post_password = clean($_POST['password'], 0);
-		$password = substr(sha1(uniqid()), 0, 10);
-		$task = $_POST['task'];
-		$solution = $_POST['solution'];
-	}
+	$post_id = clean($_POST['id'], 0);
+	$post_password = clean($_POST['password'], 0);
+	$password = substr(sha1(uniqid()), 0, 10);
+	$task = $_POST['task'];
+	$solution = $_POST['solution'];
 
 	/* query user information */
 
@@ -157,10 +146,6 @@ function password_reset_post()
 
 	if ($error)
 	{
-		if (s('blocker') == 1)
-		{
-			$_SESSION[ROOT . '/attack_blocked']++;
-		}
 		if ($post_id && $post_password)
 		{
 			$back_route = 'password_reset/' . $post_id . '/' . $post_password;
@@ -178,5 +163,4 @@ function password_reset_post()
 	{
 		notification(l('operation_completed'), l('password_sent'), l('login'), 'login');
 	}
-	$_SESSION[ROOT . '/password_reset'] = '';
 }

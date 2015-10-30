@@ -236,7 +236,6 @@
 	"security": "Sikkerhet",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha er feil",
-	"blocker": "Blokkering",
 	"operation_completed": "Operasjonen ble fullført",
 	"error_occurred": "En feil oppsto",
 	"something_wrong": "Something went wrong",

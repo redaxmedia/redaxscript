@@ -236,7 +236,6 @@
 	"security": "Seguretat",
 	"captcha": "Captcha",
 	"captcha_incorrect": "El Captcha és incorrecte",
-	"blocker": "Bloquejador",
 	"operation_completed": "Operació completada correctament",
 	"error_occurred": "Sha produït un error",
 	"something_wrong": "Something went wrong",

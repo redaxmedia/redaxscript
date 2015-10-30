@@ -15,13 +15,6 @@ function login_form()
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
-	/* disable fields if attack blocked */
-
-	if (ATTACK_BLOCKED > 9)
-	{
-		$code_disabled = ' disabled="disabled"';
-	}
-
 	/* captcha object */
 
 	if (s('captcha') > 0)
@@ -46,14 +39,14 @@ function login_form()
 	$output .= '<h2 class="title_content">' . l('login') . '</h2>';
 	$output .= form_element('form', 'form_login', 'js_validate_form form_default form_login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
 	$output .= form_element('fieldset', '', 'set_login', '', '', $legend) . '<ul>';
-	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"') . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -73,10 +66,9 @@ function login_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'login_post', l('submit'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'login_post', l('submit'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	$_SESSION[ROOT . '/login'] = 'visited';
 	echo $output;
 }
 
@@ -100,33 +92,30 @@ function login_post()
 
 	/* clean post */
 
-	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/login'] == 'visited')
+	$post_user = $_POST['user'];
+	$post_password = $_POST['password'];
+	$task = $_POST['task'];
+	$solution = $_POST['solution'];
+	$login_by_email = 0;
+	$users = Redaxscript\Db::forTablePrefix('users');
+	if ($emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$post_user = $_POST['user'];
-		$post_password = $_POST['password'];
-		$task = $_POST['task'];
-		$solution = $_POST['solution'];
-		$login_by_email = 0;
-		$users = Redaxscript\Db::forTablePrefix('users');
-		if ($emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
+		$post_user = clean($post_user, 0);
+		$users->where('user', $post_user);
+	}
+	else
+	{
+		$post_user = clean($post_user, 3);
+		$login_by_email = 1;
+		$users->where('email', $post_user);
+	}
+	$users_result = $users->findArray();
+	foreach ($users_result as $r)
+	{
+		foreach ($r as $key => $value)
 		{
-			$post_user = clean($post_user, 0);
-			$users->where('user', $post_user);
-		}
-		else
-		{
-			$post_user = clean($post_user, 3);
-			$login_by_email = 1;
-			$users->where('email', $post_user);
-		}
-		$users_result = $users->findArray();
-		foreach ($users_result as $r)
-		{
-			foreach ($r as $key => $value)
-			{
-				$key = 'my_' . $key;
-				$$key = stripslashes($value);
-			}
+			$key = 'my_' . $key;
+			$$key = stripslashes($value);
 		}
 	}
 
@@ -267,10 +256,6 @@ function login_post()
 
 	if ($error)
 	{
-		if (s('blocker') == 1)
-		{
-			$_SESSION[ROOT . '/attack_blocked']++;
-		}
 		notification(l('error_occurred'), $error, l('back'), 'login');
 	}
 
@@ -280,7 +265,6 @@ function login_post()
 	{
 		notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
 	}
-	$_SESSION[ROOT . '/login'] = '';
 }
 
 /**

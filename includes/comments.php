@@ -161,16 +161,9 @@ function comment_form($article = '', $language = '')
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
 
-	/* disable fields if attack blocked */
-
-	if (ATTACK_BLOCKED > 9)
-	{
-		$code_readonly = $code_disabled = ' disabled="disabled"';
-	}
-
 	/* define fields if logged in */
 
-	else if (LOGGED_IN == TOKEN)
+	if (LOGGED_IN == TOKEN)
 	{
 		$author = MY_USER;
 		$email = MY_EMAIL;
@@ -192,14 +185,14 @@ function comment_form($article = '', $language = '')
 	$output .= form_element('fieldset', '', 'set_comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'field_text field_note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('url', 'url', 'field_text', 'url', '', l('url'), 'maxlength="50"' . $code_disabled) . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_editor_textarea field_textarea field_note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('url', 'url', 'field_text', 'url', '', l('url'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'text', 'js_auto_resize js_editor_textarea field_textarea field_note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"') . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"' . $code_disabled) . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -225,10 +218,9 @@ function comment_form($article = '', $language = '')
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'), '', $code_disabled);
+	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	$_SESSION[ROOT . '/comment'] = 'visited';
 	echo $output;
 }
 
@@ -251,26 +243,23 @@ function comment_post()
 
 	/* clean post */
 
-	if (ATTACK_BLOCKED < 10 && $_SESSION[ROOT . '/comment'] == 'visited')
+	$author = $r['author'] = clean($_POST['author'], 0);
+	$email = $r['email'] = clean($_POST['email'], 3);
+	$url = $r['url'] = clean($_POST['url'], 4);
+	$text = break_up($_POST['text']);
+	$text = $r['text'] = clean($text, 1);
+	$r['language'] = clean($_POST['language'], 0);
+	$r['date'] = clean($_POST['date'], 5);
+	$article = $r['article'] = clean($_POST['article'], 0);
+	$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
+	$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
+	if ($r['access'] == '')
 	{
-		$author = $r['author'] = clean($_POST['author'], 0);
-		$email = $r['email'] = clean($_POST['email'], 3);
-		$url = $r['url'] = clean($_POST['url'], 4);
-		$text = break_up($_POST['text']);
-		$text = $r['text'] = clean($text, 1);
-		$r['language'] = clean($_POST['language'], 0);
-		$r['date'] = clean($_POST['date'], 5);
-		$article = $r['article'] = clean($_POST['article'], 0);
-		$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
-		$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
-		if ($r['access'] == '')
-		{
-			$r['access'] = null;
-		}
-		$task = $_POST['task'];
-		$solution = $_POST['solution'];
-		$route = build_route('articles', $article);
+		$r['access'] = null;
 	}
+	$task = $_POST['task'];
+	$solution = $_POST['solution'];
+	$route = build_route('articles', $article);
 
 	/* validate post */
 
@@ -366,10 +355,6 @@ function comment_post()
 
 	if ($error)
 	{
-		if (s('blocker') == 1)
-		{
-			$_SESSION[ROOT . '/attack_blocked']++;
-		}
 		notification(l('error_occurred'), $error, l('back'), $route);
 	}
 
@@ -379,5 +364,4 @@ function comment_post()
 	{
 		notification(l('operation_completed'), $success, l('continue'), $route);
 	}
-	$_SESSION[ROOT . '/comment'] = '';
 }

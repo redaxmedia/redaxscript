@@ -236,7 +236,6 @@
 	"security": "Zabezpečenie",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha je neplatná",
-	"blocker": "Blokovač",
 	"operation_completed": "Operacia sa dokončila úspešne",
 	"error_occurred": "Nastala sa chyba",
 	"something_wrong": "Niečo sa pokazilo",

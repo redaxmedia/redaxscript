@@ -170,10 +170,6 @@ function admin_settings_form()
 		l('subtraction') => 3,
 		l('disable') => 0
 	), s('captcha'), l('captcha')) . '</li>';
-	$output .= '<li>' . select_element('blocker', 'field_select_admin', 'blocker', array(
-		l('enable') => 1,
-		l('disable') => 0
-	), s('blocker'), l('blocker')) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect hidden and button output */

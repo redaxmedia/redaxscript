@@ -233,7 +233,6 @@ class Installer
 			'verification' => '0',
 			'reminder' => '1',
 			'captcha' => '0',
-			'blocker' => '1',
 			'version' => $language->get('version', '_package')
 		);
 
