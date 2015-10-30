@@ -59,7 +59,6 @@ function registration_form()
 	$output .= form_element('button', '', 'js_submit button_default', 'registration_post', l('create'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	$_SESSION[ROOT . '/registration'] = 'visited';
 	echo $output;
 }
 

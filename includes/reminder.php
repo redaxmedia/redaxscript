@@ -44,7 +44,6 @@ function reminder_form()
 	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	$_SESSION[ROOT . '/reminder'] = 'visited';
 	echo $output;
 }
 
