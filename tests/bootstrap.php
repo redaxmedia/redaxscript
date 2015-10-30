@@ -5,7 +5,7 @@ namespace Redaxscript;
 
 error_reporting(E_STRICT || E_ERROR);
 
-/* include as needed */
+/* include files */
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');

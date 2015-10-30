@@ -293,6 +293,10 @@ module.exports = function (grunt)
 		},
 		shell:
 		{
+			phpbench:
+			{
+				command: 'vendor/bin/phpbench run benchs --report=default'
+			},
 			tocBase:
 			{
 				command: 'sh vendor/bin/tocgen.sh scripts .tocgen && sh vendor/bin/tocgen.sh styles .tocgen'
@@ -860,6 +864,10 @@ module.exports = function (grunt)
 		'htmlhint',
 		'phpcs',
 		'toclint'
+	]);
+	grunt.registerTask('phpbench',
+	[
+		'shell:phpbench'
 	]);
 	grunt.registerTask('toclint',
 	[

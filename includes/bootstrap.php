@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-/* include as needed */
+/* include files */
 
 include_once('includes/Autoloader.php');
 

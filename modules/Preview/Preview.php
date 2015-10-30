@@ -86,7 +86,7 @@ class Preview extends Module
 
 			$output = '<div class="preview clearfix">';
 
-			/* include as needed */
+			/* include single */
 
 			if ($secondParameter)
 			{

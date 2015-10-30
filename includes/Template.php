@@ -224,7 +224,7 @@ class Template
 			);
 		}
 
-		/* include as needed */
+		/* include files */
 
 		ob_start();
 		foreach ($file as $value)
