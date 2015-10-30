@@ -110,7 +110,7 @@ class InstallerTest extends TestCase
 		$this->assertEquals(1, $actualCategories);
 		$this->assertEquals(6, $actualExtras);
 		$this->assertEquals(2, $actualGroups);
-		$this->assertEquals(26, $actualSettings);
+		$this->assertEquals(25, $actualSettings);
 		if (is_dir('modules/CallHome'))
 		{
 			$this->assertEquals(1, $actualModules);
