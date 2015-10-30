@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Benchs;
 
-use PhpBench\Benchmark as Benchmark;
-
 /**
  * BenchCase
  *

@@ -58,10 +58,10 @@ class HashBench extends BenchCase
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchInit($raw = null)
+	public function benchInit($parameter = array())
 	{
 		$hash = new Hash($this->_config);
-		$hash->init($raw);
+		$hash->init($parameter[0]);
 	}
 
 	/**
@@ -72,15 +72,15 @@ class HashBench extends BenchCase
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchValidate($raw = null, $hashArray = array())
+	public function benchValidate($parameter = array())
 	{
 		/* setup */
 
 		$hash = new Hash($this->_config);
-		$hash->init($raw);
+		$hash->init($parameter[0]);
 
 		/* bench */
 
-		$hash->validate($raw, function_exists('password_verify') ? $hashArray[0][1] : $hashArray[1]);
+		$hash->validate($parameter[0], function_exists('password_verify') ? $parameter[1][0][1] : $parameter[1][1]);
 	}
 }
