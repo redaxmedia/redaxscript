@@ -51,6 +51,16 @@ function head($type = '')
 		}
 	}
 
+	/* undefine */
+
+	undefine(array(
+		'REFRESH_ROUTE',
+		'DESCRIPTION',
+		'KEYWORDS',
+		'ROBOTS',
+		'TITLE'
+	));
+
 	/* prepare title */
 
 	if (TITLE)
