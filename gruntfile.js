@@ -295,7 +295,7 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'vendor/bin/phpbench run benchs --report=default'
+				command: 'vendor/bin/phpbench run benchs --bootstrap=./benchs/bootstrap.php --report=default'
 			},
 			tocBase:
 			{
