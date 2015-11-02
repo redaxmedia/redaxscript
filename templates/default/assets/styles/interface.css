@@ -78,17 +78,16 @@ ul.rs-list-default li
 	margin-left: 0.125em;
 }
 
-.rs-list-tab > li:not(.rs-item-active)
-{
-	margin-bottom: 0.125em;
-}
-
 .rs-list-tab .rs-item-active
 {
 	background: #323e4c;
-	color: #fff;
 	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-list-tab .rs-item-active a
+{
+	color: #fff;
 }
 
 .rs-list-tab > li

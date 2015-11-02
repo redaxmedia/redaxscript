@@ -181,7 +181,7 @@ function admin_dock($table = '', $id = '')
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
+			$output .= anchor_element('internal', '', 'rs-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
 		}
 		$output .= '</div></div>';
 	}

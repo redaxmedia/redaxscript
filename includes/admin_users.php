@@ -220,10 +220,10 @@ function admin_users_form()
 	{
 		$output .= '<li>' . form_element('text', 'user', 'rs-admin-field-text rs-admin-field-note', 'user', $user, l('user'), 'maxlength="50" required="required"') . '</li>';
 	}
-	$output .= '<li>' . form_element('password', 'password', 'rs-admin-js-unmask-password rs-admin-field-text rs-admin-field-note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('password', 'password_confirm', 'rs-admin-js-unmask-password rs-admin-field-text rs-admin-field-note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-admin-field-text rs-admin-field-note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password_confirm', 'rs-js-unmask-password rs-admin-field-text rs-admin-field-note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-admin-field-note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
@@ -283,20 +283,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-admin-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-js-delete rs-admin-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'rs-admin-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

@@ -184,9 +184,9 @@ function admin_groups_form()
 	/* collect group set */
 
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'rs-admin-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'alias', 'rs-admin-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)
 	{
@@ -235,20 +235,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-admin-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-js-delete rs-admin-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-admin-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

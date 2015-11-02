@@ -526,17 +526,17 @@ function admin_contents_form()
 	}
 	else
 	{
-		$output .= '<li>' . form_element('text', 'title', 'rs-admin-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-		$output .= '<li>' . form_element('text', 'alias', 'rs-admin-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'title', 'rs-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+		$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	}
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
-		$output .= '<li>' . form_element('textarea', 'description', 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
-		$output .= '<li>' . form_element('textarea', 'keywords', 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'keywords', 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
 	}
 	if (TABLE_PARAMETER != 'categories')
 	{
-		$output .= '<li>' . form_element('textarea', 'text', 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-input rs-admin-js-editor-textarea rs-admin-field-textarea rs-admin-field-note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea rs-admin-field-note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -741,20 +741,20 @@ function admin_contents_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-admin-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (TABLE_DELETE == 1 && $id)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-js-delete rs-admin-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (TABLE_NEW == 1 || TABLE_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-admin-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

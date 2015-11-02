@@ -217,7 +217,7 @@ function admin_modules_form()
 
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-text rs-admin-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
@@ -272,20 +272,20 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-admin-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-js-delete rs-admin-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (MODULES_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-admin-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
