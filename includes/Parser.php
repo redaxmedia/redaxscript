@@ -2,12 +2,11 @@
 namespace Redaxscript;
 
 use Redaxscript\Html;
-use Redaxscript\Validator;
 
 /**
  * parent class to parse content for pseudo tags
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Parser
@@ -78,14 +77,6 @@ class Parser
 				'</registry>'
 			)
 		),
-		'function' => array(
-			'method' => '_parseFunction',
-			'position' => '',
-			'search' => array(
-				'<function>',
-				'</function>'
-			)
-		),
 		'module' => array(
 			'method' => '_parseModule',
 			'position' => '',
@@ -94,32 +85,6 @@ class Parser
 				'</module>'
 			)
 		)
-	);
-
-	/**
-	 * array of functions that will not be executed
-	 *
-	 * @var array
-	 */
-
-	protected $_forbiddenFunctions = array(
-		'curl',
-		'curl_exec',
-		'curl_multi_exec',
-		'exec',
-		'eval',
-		'fopen',
-		'include',
-		'include_once',
-		'mysql',
-		'passthru',
-		'popen',
-		'proc_open',
-		'shell',
-		'shell_exec',
-		'system',
-		'require',
-		'require_once'
 	);
 
 	/**
@@ -156,13 +121,13 @@ class Parser
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $input content to be parsed
+	 * @param string $content content to be parsed
 	 * @param array $options options of the parser
 	 */
 
-	public function init($input = null, $options = null)
+	public function init($content = null, $options = null)
 	{
-		$this->_output = $input;
+		$this->_output = $content;
 		if (is_array($options))
 		{
 			$this->_options = array_merge($this->_options, $options);
@@ -204,21 +169,20 @@ class Parser
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $input content be parsed
+	 * @param string $content content to be parsed
 	 *
 	 * @return string
 	 */
 
-	protected function _parseReadmore($input = null)
+	protected function _parseReadmore($content = null)
 	{
-		$aliasValidator = new Validator\Alias();
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 
 		/* collect output */
 
-		$output = str_replace($this->_tags['readmore']['search'], '', $input);
-		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute') || $aliasValidator->validate($this->_registry->get('firstParameter'), Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
+		$output = str_replace($this->_tags['readmore']['search'], '', $content);
+		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute'))
 		{
 			$output = substr($output, 0, $this->_tags['readmore']['position']);
 
@@ -244,21 +208,21 @@ class Parser
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $input content be parsed
+	 * @param string $content content to be parsed
 	 *
 	 * @return string
 	 */
 
-	protected function _parseCodequote($input = null)
+	protected function _parseCodequote($content = null)
 	{
-		$output = str_replace($this->_tags['codequote']['search'], $this->_options['delimiter'], $input);
+		$output = str_replace($this->_tags['codequote']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
 		$preElement = new Html\Element();
 		$preElement->init('pre', array(
 			'class' => $this->_options['className']['codequote']
 		));
 
-		/* parse needed parts */
+		/* parse as needed */
 
 		foreach ($parts as $key => $value)
 		{
@@ -276,17 +240,17 @@ class Parser
 	 *
 	 * @since 2.5.0
 	 *
-	 * @param string $input content be parsed
+	 * @param string $content content to be parsed
 	 *
 	 * @return string
 	 */
 
-	protected function _parseLanguage($input = null)
+	protected function _parseLanguage($content = null)
 	{
-		$output = str_replace($this->_tags['language']['search'], $this->_options['delimiter'], $input);
+		$output = str_replace($this->_tags['language']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
-		/* parse needed parts */
+		/* parse as needed */
 
 		foreach ($parts as $key => $value)
 		{
@@ -304,17 +268,17 @@ class Parser
 	 *
 	 * @since 2.5.0
 	 *
-	 * @param string $input content be parsed
+	 * @param string $content content to be parsed
 	 *
 	 * @return string
 	 */
 
-	protected function _parseRegistry($input = null)
+	protected function _parseRegistry($content = null)
 	{
-		$output = str_replace($this->_tags['registry']['search'], $this->_options['delimiter'], $input);
+		$output = str_replace($this->_tags['registry']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
-		/* parse needed parts */
+		/* parse as needed */
 
 		foreach ($parts as $key => $value)
 		{
@@ -328,86 +292,32 @@ class Parser
 	}
 
 	/**
-	 * parse the function tag
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $input content be parsed
-	 *
-	 * @return string
-	 */
-
-	protected function _parseFunction($input = null)
-	{
-		$output = str_replace($this->_tags['function']['search'], $this->_options['delimiter'], $input);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
-
-		/* parse needed parts */
-
-		foreach ($parts as $key => $value)
-		{
-			if ($key % 2)
-			{
-				/* decode to array */
-
-				$json = json_decode($value, true);
-				ob_start();
-
-				/* multiple calls with parameter */
-
-				if (is_array($json))
-				{
-					foreach ($json as $function => $parameter)
-					{
-						if (function_exists($function) && !in_array($function, $this->_forbiddenFunctions))
-						{
-							echo call_user_func_array($function, $parameter);
-						}
-					}
-				}
-
-				/* else single call */
-
-				else if (function_exists($value) && !in_array($value, $this->_forbiddenFunctions))
-				{
-					echo call_user_func($value);
-				}
-				$parts[$key] = ob_get_clean();
-			}
-		}
-		$output = implode($parts);
-		return $output;
-	}
-
-	/**
 	 * parse the module tag
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @param string $input content be parsed
+	 * @param string $content content to be parsed
 	 *
 	 * @return string
 	 */
 
-	protected function _parseModule($input = null)
+	protected function _parseModule($content = null)
 	{
 		$namespace = 'Redaxscript\Modules\\';
-		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $input);
+		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
 
-		/* parse needed parts */
+		/* parse as needed */
 
 		foreach ($parts as $key => $value)
 		{
 			$object = $namespace . $value . '\\' . $value;
 			if ($key % 2)
 			{
-				/* decode to array */
-
+				$parts[$key] = '';
 				$json = json_decode($value, true);
-				ob_start();
 
-				/* multiple calls with parameter */
+				/* call with parameter */
 
 				if (is_array($json))
 				{
@@ -416,18 +326,17 @@ class Parser
 						$object = $namespace . $module . '\\' . $module;
 						if (in_array($module, Hook::getModules()) && method_exists($object, 'render'))
 						{
-							echo call_user_func_array(array($object, 'render'), $parameter);
+							$parts[$key] = call_user_func_array(array($object, 'render'), $parameter);
 						}
 					}
 				}
 
-				/* else single call */
+				/* else simple call */
 
 				else if (in_array($value, Hook::getModules()) && method_exists($object, 'render'))
 				{
-					echo call_user_func(array($object, 'render'));
+					$parts[$key] = call_user_func(array($object, 'render'));
 				}
-				$parts[$key] = ob_get_clean();
 			}
 		}
 		$output = implode($parts);

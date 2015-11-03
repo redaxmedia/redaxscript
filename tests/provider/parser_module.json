@@ -10,5 +10,9 @@
 	[
 		"<module>Invalid<module>",
 		""
+	],
+	[
+		"<module>{\"Invalid\":{\"firstNumber\":\"1\",\"secondNumber\":\"1\"}}<module>",
+		""
 	]
 ]
