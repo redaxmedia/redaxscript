@@ -335,7 +335,6 @@ class Template
 		// @codeCoverageIgnoreEnd
 	}
 
-
 	/**
 	 * migrate
 	 *
