@@ -4,10 +4,10 @@ namespace Redaxscript\Html;
 /**
  * children class to generate a element
  *
- * @since 2.2.0
+ * @since 2.6.0
  *
  * @package Redaxscript
- * @category Element
+ * @category Html
  * @author Henry Ruhs
  */
 
