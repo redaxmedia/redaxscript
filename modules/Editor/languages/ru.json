@@ -28,7 +28,6 @@
 		"paste": "Вставить",
 		"insert_readmore": "Разрыв страницы",
 		"insert_codequote": "Вставить Цитату",
-		"insert_function": "Вставить PHP функцию",
 		"remove_format": "Удалить форматирование",
 		"select_text_first": "Сначала нужно выделить текст",
 		"browser_support_no": "Ваш браузер не поддерживает эту функцию"

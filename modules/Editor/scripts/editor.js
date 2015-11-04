@@ -203,13 +203,6 @@
 							editor.insertHTML('<a href="' + input + '" title="' + input + '">' + input + '</a>');
 						}
 
-						/* insert function */
-
-						else if (command === 'insertFunction')
-						{
-							editor.insertHTML('<function>' + input + '</function>');
-						}
-
 						/* else default behavior */
 
 						else

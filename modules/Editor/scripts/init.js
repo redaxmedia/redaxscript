@@ -66,7 +66,6 @@ rs.modules.editor =
 				'insert_image',
 				'insert_readmore',
 				'insert_codequote',
-				'insert_function',
 				'unformat'
 			],
 			frontend:
@@ -274,14 +273,6 @@ rs.modules.editor =
 		{
 			title: rs.language._editor.insert_codequote,
 			method: 'insertCodequote'
-		},
-		insert_function:
-		{
-			title: rs.language._editor.insert_function,
-			method: 'insert',
-			command: 'insertFunction',
-			message: rs.language._editor.insert_function,
-			value: ''
 		},
 		insert_readmore:
 		{

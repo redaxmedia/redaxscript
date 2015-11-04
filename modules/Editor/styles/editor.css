@@ -70,11 +70,11 @@
 
 .editor_control:before,
 .editor_preview codequote:before,
-.editor_preview function:before,
 .editor_preview language:before,
 .editor_preview module:before,
 .editor_preview readmore:before,
-.editor_preview registry:before
+.editor_preview registry:before,
+.editor_preview template:before
 {
 	font: 1.25em/2.5em 'icon editor';
 	left: 0;
@@ -252,11 +252,10 @@
 	content: '7';
 }
 
-.editor_control.insert_function:before,
-.editor_preview function:before,
 .editor_preview language:before,
 .editor_preview module:before,
-.editor_preview registry:before
+.editor_preview registry:before,
+.editor_preview template:before
 {
 	content: '8';
 }
@@ -280,11 +279,11 @@
 /* pseudo tags */
 
 .editor_preview codequote,
-.editor_preview function,
 .editor_preview language,
 .editor_preview module,
 .editor_preview readmore,
-.editor_preview registry
+.editor_preview registry,
+.editor_preview template
 {
 	border: 2px dashed;
 	color: #b9b9b9;

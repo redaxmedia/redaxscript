@@ -28,7 +28,6 @@
 		"paste": "Einfügen",
 		"insert_readmore": "Dokumentenumbruch einfügen",
 		"insert_codequote": "Code Zitat einfügen",
-		"insert_function": "PHP Funktion einfügen",
 		"remove_format": "Formatierung entfernen",
 		"select_text_first": "Sie müssen erst den Text auswählen",
 		"browser_support_no": "Ihr Browser unerstützt diese Funktion nicht"
