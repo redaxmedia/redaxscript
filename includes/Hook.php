@@ -122,7 +122,7 @@ class Hook
 	/**
 	 * trigger the module hook
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $event name of the module event
 	 * @param array $parameter parameter of the module hook
@@ -138,7 +138,6 @@ class Hook
 
 		foreach (self::$_modules as $module)
 		{
-			$function = $module . self::$_delimiter . $event;
 			$object = self::$_namespace . $module . '\\' . $module;
 			$method = str_replace(self::$_delimiter, '', mb_convert_case($event, MB_CASE_TITLE));
 
@@ -147,14 +146,6 @@ class Hook
 			if (method_exists($object, $method))
 			{
 				$output .= call_user_func_array(array($object, $method), $parameter);
-				self::$_events[$event][] = $module;
-			}
-
-			/* function exists */
-
-			else if (function_exists($function))
-			{
-				$output .= call_user_func_array($function, $parameter);
 				self::$_events[$event][] = $module;
 			}
 		}
