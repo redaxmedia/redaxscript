@@ -77,6 +77,14 @@ class Parser
 				'</registry>'
 			)
 		),
+		'template' => array(
+			'method' => '_parseTemplate',
+			'position' => '',
+			'search' => array(
+				'<template>',
+				'</template>'
+			)
+		),
 		'module' => array(
 			'method' => '_parseModule',
 			'position' => '',
@@ -292,6 +300,56 @@ class Parser
 	}
 
 	/**
+	 * parse the template tag
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $content content to be parsed
+	 *
+	 * @return string
+	 */
+
+	protected function _parseTemplate($content = null)
+	{
+		$object = 'Redaxscript\\Template';
+		$output = str_replace($this->_tags['template']['search'], $this->_options['delimiter'], $content);
+		$parts = array_filter(explode($this->_options['delimiter'], $output));
+
+		/* parse as needed */
+
+		foreach ($parts as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$parts[$key] = '';
+				$json = json_decode($value, true);
+
+				/* call with parameter */
+
+				if (is_array($json))
+				{
+					foreach ($json as $method => $parameter)
+					{
+						if (method_exists($object, $method))
+						{
+							$parts[$key] = call_user_func_array(array($object, $method), $parameter);
+						}
+					}
+				}
+
+				/* else simple call */
+
+				else if (method_exists($object, $value))
+				{
+					$parts[$key] = call_user_func(array($object, $value));
+				}
+			}
+		}
+		$output = implode($parts);
+		return $output;
+	}
+
+	/**
 	 * parse the module tag
 	 *
 	 * @since 3.0.0
@@ -306,6 +364,7 @@ class Parser
 		$namespace = 'Redaxscript\Modules\\';
 		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
+		$modulesLoaded = Hook::getModules();
 
 		/* parse as needed */
 
@@ -324,7 +383,7 @@ class Parser
 					foreach ($json as $module => $parameter)
 					{
 						$object = $namespace . $module . '\\' . $module;
-						if (in_array($module, Hook::getModules()) && method_exists($object, 'render'))
+						if (in_array($module, $modulesLoaded) && method_exists($object, 'render'))
 						{
 							$parts[$key] = call_user_func_array(array($object, 'render'), $parameter);
 						}
@@ -333,7 +392,7 @@ class Parser
 
 				/* else simple call */
 
-				else if (in_array($value, Hook::getModules()) && method_exists($object, 'render'))
+				else if (in_array($value, $modulesLoaded) && method_exists($object, 'render'))
 				{
 					$parts[$key] = call_user_func(array($object, 'render'));
 				}

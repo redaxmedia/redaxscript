@@ -196,6 +196,12 @@ class Template
 	public static function navigation($table = null, $options = null)
 	{
 		// @codeCoverageIgnoreStart
+		if ($table === 'languages' || $table === 'templates')
+		{
+			return self::_migrate($table . '_list', array(
+				$options
+			));
+		}
 		return self::_migrate('navigation_list', array(
 			$table,
 			$options
