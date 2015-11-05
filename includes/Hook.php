@@ -135,7 +135,7 @@ class Hook
 		$output = false;
 
 		/* trigger event */
-		echo '<div>' . $event . '</div>';
+
 		foreach (self::$_modules as $module)
 		{
 			$object = self::$_namespace . $module . '\\' . $module;
