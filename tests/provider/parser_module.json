@@ -12,7 +12,7 @@
 		""
 	],
 	[
-		"<module>{\"Invalid\":{\"firstNumber\":\"1\",\"secondNumber\":\"1\"}}<module>",
+		"<module>{\"Invalid\":{\"test\":\"test\"}}<module>",
 		""
 	]
 ]

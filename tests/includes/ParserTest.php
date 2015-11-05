@@ -97,6 +97,19 @@ class ParserTest extends TestCase
 	}
 
 	/**
+	 * providerTemplate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerTemplate()
+	{
+		return $this->getProvider('tests/provider/parser_template.json');
+	}
+
+	/**
 	 * providerModule
 	 *
 	 * @since 2.5.0
@@ -212,6 +225,33 @@ class ParserTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
+		$parser = new Parser($this->_registry, $this->_language);
+		$parser->init($input);
+
+		/* actual */
+
+		$actual = $parser->getOutput();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testTemplate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $input
+	 * @param string $expect
+	 *
+	 * @dataProvider providerTemplate
+	 */
+
+	public function testTemplate($input = null, $expect = null)
+	{
+		/* setup */
+
 		$parser = new Parser($this->_registry, $this->_language);
 		$parser->init($input);
 
