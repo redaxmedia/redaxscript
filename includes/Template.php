@@ -185,25 +185,25 @@ class Template
 	/**
 	 * navigation
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @param string $table
+	 * @param string $type
 	 * @param array $options
 	 *
 	 * @return string
 	 */
 
-	public static function navigation($table = null, $options = null)
+	public static function navigation($type = null, $options = null)
 	{
 		// @codeCoverageIgnoreStart
-		if ($table === 'languages' || $table === 'templates')
+		if ($type === 'languages' || $type === 'templates')
 		{
-			return self::_migrate($table . '_list', array(
+			return self::_migrate($type . '_list', array(
 				$options
 			));
 		}
 		return self::_migrate('navigation_list', array(
-			$table,
+			$type,
 			$options
 		));
 		// @codeCoverageIgnoreEnd
@@ -278,18 +278,18 @@ class Template
 	/**
 	 * search
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @param string $table
+	 * @param string $type
 	 *
 	 * @return string
 	 */
 
-	public static function search($table = 'articles')
+	public static function search($type = 'articles')
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('search', array(
-			$table
+			$type
 		));
 		// @codeCoverageIgnoreEnd
 	}
