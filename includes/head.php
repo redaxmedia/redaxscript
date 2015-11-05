@@ -15,7 +15,7 @@
 
 function head($type = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('headStart');
 	if (LAST_TABLE)
 	{
 		/* fetch result */
@@ -195,6 +195,6 @@ function head($type = '')
 		}
 		$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('headEnd');
 	echo $output;
 }

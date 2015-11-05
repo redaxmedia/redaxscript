@@ -13,7 +13,7 @@
 
 function registration_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('registrationFormStart');
 
 	/* captcha object */
 
@@ -58,7 +58,7 @@ function registration_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'registration_post', l('create'));
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('registrationFormEnd');
 	echo $output;
 }
 

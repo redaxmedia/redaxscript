@@ -467,14 +467,14 @@ class Form extends HtmlAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('form_start');
+		$output = Hook::trigger('formStart');
 		$formElement = new Element();
 		$formElement->init('form', $this->_attributeArray['form']);
 
 		/* collect output */
 
 		$output .= $formElement->html($this->_html);
-		$output .= Hook::trigger('form_end');
+		$output .= Hook::trigger('formEnd');
 		return $output;
 	}
 

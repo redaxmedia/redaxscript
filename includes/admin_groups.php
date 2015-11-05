@@ -13,7 +13,7 @@
 
 function admin_groups_list()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminGroupListStart');
 
 	/* query groups */
 
@@ -93,7 +93,7 @@ function admin_groups_list()
 		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminGroupListEnd');
 	echo $output;
 }
 
@@ -110,7 +110,7 @@ function admin_groups_list()
 
 function admin_groups_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminGroupFormStart');
 
 	/* define fields for existing group */
 
@@ -251,6 +251,6 @@ function admin_groups_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminGroupFormEnd');
 	echo $output;
 }

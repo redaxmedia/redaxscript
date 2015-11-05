@@ -55,17 +55,17 @@ class Disqus extends Config
 	{
 		if (Registry::get('article'))
 		{
-			Registry::set('commentsReplace', true);
+			Registry::set('commentReplace', true);
 		}
 	}
 
 	/**
-	 * commentsReplace
+	 * commentReplace
 	 *
 	 * @since 2.2.0
 	*/
 
-	public static function commentsReplace()
+	public static function commentReplace()
 	{
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(

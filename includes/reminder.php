@@ -13,7 +13,7 @@
 
 function reminder_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('reminderFormStart');
 
 	/* captcha object */
 
@@ -43,7 +43,7 @@ function reminder_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'));
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('reminderFormEnd');
 	echo $output;
 }
 

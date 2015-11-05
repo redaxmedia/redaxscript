@@ -78,7 +78,7 @@ class Template
 	public static function content($options = null)
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('center', array(
+		return self::_migrate('router', array(
 			$options
 		));
 		// @codeCoverageIgnoreEnd

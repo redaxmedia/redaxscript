@@ -38,16 +38,16 @@ class Contact extends Module
 	);
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Request::getPost(get_class()) === 'submit')
 		{
-			Registry::set('centerBreak', true);
+			Registry::set('routerBreak', true);
 			self::_process();
 		}
 	}

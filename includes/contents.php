@@ -13,7 +13,7 @@
 
 function contents()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('contentStart');
 	$aliasValidator = new Redaxscript\Validator\Alias();
 
 	/* query articles */
@@ -152,7 +152,7 @@ function contents()
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('article_start', $r);
+				$output .= Redaxscript\Hook::trigger('contentFragmentStart', $r);
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="title_content" id="article-' . $alias . '">';
@@ -172,7 +172,7 @@ function contents()
 				/* collect box output */
 
 				$output .= '<div class="box_content">' . $parser->getOutput();
-				$output .= '</div>' . Redaxscript\Hook::trigger('article_end', $r);
+				$output .= '</div>' . Redaxscript\Hook::trigger('contentFragmentEnd', $r);
 
 				/* prepend admin dock */
 
@@ -217,7 +217,7 @@ function contents()
 	}
 	else
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger('contentEnd');
 		echo $output;
 
 		/* call comments as needed */
@@ -226,9 +226,9 @@ function contents()
 		{
 			/* comments replace */
 
-			if ($comments == 1 && (COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentsReplace')))
+			if ($comments == 1 && (COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentReplace')))
 			{
-				Redaxscript\Hook::trigger('comments_replace');
+				Redaxscript\Hook::trigger('commentReplace');
 			}
 
 			/* else native comments */
@@ -274,7 +274,7 @@ function extras($filter = '')
 {
 	if ($filter == '')
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+		$output .= Redaxscript\Hook::trigger('extraStart');
 	}
 
 	/* query extras */
@@ -358,7 +358,7 @@ function extras($filter = '')
 
 					/* collect headline output */
 
-					$output .= Redaxscript\Hook::trigger('extra_start', $r);
+					$output .= Redaxscript\Hook::trigger('extraFragmentStart', $r);
 					if ($headline == 1)
 					{
 						$output .= '<h3 class="title_extra" id="extra-' . $alias . '">' . $title . '</h3>';
@@ -366,7 +366,7 @@ function extras($filter = '')
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $r);
+					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extraFragmentEnd', $r);
 
 					/* prepend admin dock */
 
@@ -380,7 +380,7 @@ function extras($filter = '')
 	}
 	if ($filter == '')
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger('extraEnd');
 	}
 	echo $output;
 }
@@ -405,7 +405,7 @@ function extras($filter = '')
 
 function infoline($table = '', $id = '', $author = '', $date = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('infolineStart');
 	$time = date(s('time'), strtotime($date));
 	$date = date(s('date'), strtotime($date));
 	if ($table == 'articles')
@@ -447,7 +447,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 		$output .= '</span>';
 	}
 	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('infolineEnd');
 	return $output;
 }
 
@@ -468,7 +468,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 function pagination($sub_active = '', $sub_maximum = '', $route = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('paginationStart');
 	$output .= '<ul class="list_pagination">';
 
 	/* collect first and previous output */
@@ -515,7 +515,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
 	}
 	$output .= '</ul>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('paginationEnd');
 	echo $output;
 }
 
@@ -537,7 +537,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 
 function notification($title = '', $text = '', $action = '', $route = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('notificationStart');
 
 	/* detect needed mode */
 
@@ -578,7 +578,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 		$output .= anchor_element('internal', '', 'js_forward_notification button' . $suffix, $action, $route);
 	}
 	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('notificationEnd');
 	echo $output;
 }
 

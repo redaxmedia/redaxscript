@@ -13,7 +13,7 @@
 
 function admin_users_list()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminUserListStart');
 
 	/* query users */
 
@@ -146,7 +146,7 @@ function admin_users_list()
 		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminUserListEnd');
 	echo $output;
 }
 
@@ -163,7 +163,7 @@ function admin_users_list()
 
 function admin_users_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminUserFormStart');
 
 	/* define fields for existing user */
 
@@ -299,6 +299,6 @@ function admin_users_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminUserFormEnd');
 	echo $output;
 }

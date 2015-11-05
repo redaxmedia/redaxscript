@@ -76,17 +76,17 @@ class Qunit extends Module
 		{
 			Registry::set('title', Language::get('qunit', '_qunit'));
 			Registry::set('description', Language::get('description', '_qunit'));
-			Registry::set('centerBreak', true);
+			Registry::set('routerBreak', true);
 		}
 	}
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{

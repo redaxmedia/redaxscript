@@ -494,7 +494,7 @@ function head()
 }
 
 /**
- * center
+ * router
  *
  * @since 1.2.1
  * @deprecated 2.0.0
@@ -504,7 +504,7 @@ function head()
  * @author Henry Ruhs
  */
 
-function center()
+function router()
 {
 	/* check token */
 
@@ -515,7 +515,7 @@ function center()
 		return;
 	}
 
-	/* routing */
+	/* router */
 
 	install_notification();
 	if (check_install() == 1)

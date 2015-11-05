@@ -330,9 +330,14 @@ class Parser
 				{
 					foreach ($json as $method => $parameter)
 					{
+						/* method exists */
+
 						if (method_exists($object, $method))
 						{
-							$parts[$key] = call_user_func_array(array($object, $method), $parameter);
+							$parts[$key] = call_user_func_array(array(
+								$object,
+								$method
+							), $parameter);
 						}
 					}
 				}
@@ -383,9 +388,15 @@ class Parser
 					foreach ($json as $module => $parameter)
 					{
 						$object = $namespace . $module . '\\' . $module;
+
+						/* method exists */
+
 						if (in_array($module, $modulesLoaded) && method_exists($object, 'render'))
 						{
-							$parts[$key] = call_user_func_array(array($object, 'render'), $parameter);
+							$parts[$key] = call_user_func_array(array(
+								$object,
+								'render'
+							), $parameter);
 						}
 					}
 				}

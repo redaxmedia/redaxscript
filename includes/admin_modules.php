@@ -13,7 +13,7 @@
 
 function admin_modules_list()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminModuleListStart');
 
 	/* query modules */
 
@@ -148,7 +148,7 @@ function admin_modules_list()
 		}
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminModuleListEnd');
 	echo $output;
 }
 
@@ -165,7 +165,7 @@ function admin_modules_list()
 
 function admin_modules_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminModuleFormStart');
 
 	/* define fields for existing user */
 
@@ -288,6 +288,6 @@ function admin_modules_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminModuleFormEnd');
 	echo $output;
 }

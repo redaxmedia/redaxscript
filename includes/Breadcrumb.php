@@ -114,7 +114,7 @@ class Breadcrumb
 
 	public function render()
 	{
-		$output = Hook::trigger('breadcrumb_start');
+		$output = Hook::trigger('breadcrumbStart');
 		$outputItem = null;
 
 		/* breadcrumb keys */
@@ -176,7 +176,7 @@ class Breadcrumb
 		{
 			$output = $listElement->html($outputItem);
 		}
-		$output .= Hook::trigger('breadcrumb_end');
+		$output .= Hook::trigger('breadcrumbEnd');
 		return $output;
 	}
 

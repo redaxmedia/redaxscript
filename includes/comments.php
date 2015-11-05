@@ -16,7 +16,7 @@
 
 function comments($article = '', $route = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('commentStart');
 
 	/* query comments */
 
@@ -89,7 +89,7 @@ function comments($article = '', $route = '')
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('comment_start', $r) . '<h3 id="comment-' . $id . '" class="title_comment">';
+				$output .= Redaxscript\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="title_comment">';
 				if ($url)
 				{
 					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
@@ -103,7 +103,7 @@ function comments($article = '', $route = '')
 				/* collect box output */
 
 				$output .= infoline('comments', $id, $author, $date);
-				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('comment_end', $r);
+				$output .= '<div class="box_comment">' . $text . '</div>' . Redaxscript\Hook::trigger('commentFragmentEnd', $r);
 
 				/* admin dock */
 
@@ -132,7 +132,7 @@ function comments($article = '', $route = '')
 	{
 		$output = '<div class="box_comment_error">' . $error . l('point') . '</div>';
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('commentEnd');
 	echo $output;
 
 	/* call pagination as needed */
@@ -159,7 +159,7 @@ function comments($article = '', $route = '')
 
 function comment_form($article = '', $language = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('commentFormStart');
 
 	/* define fields if logged in */
 
@@ -220,7 +220,7 @@ function comment_form($article = '', $language = '')
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'comment_post', l('create'));
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('commentFormEnd');
 	echo $output;
 }
 

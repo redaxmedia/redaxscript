@@ -13,7 +13,7 @@
 
 function admin_contents_list()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminContentListStart');
 
 	/* define access variables */
 
@@ -386,7 +386,7 @@ function admin_contents_list()
 		$output .= '<tbody><tr><td colspan="4">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminContentListEnd');
 	echo $output;
 }
 
@@ -403,7 +403,7 @@ function admin_contents_list()
 
 function admin_contents_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminContentFormStart');
 
 	/* switch table */
 
@@ -757,6 +757,6 @@ function admin_contents_form()
 		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminContentFormEnd');
 	echo $output;
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * admin routing
+ * admin router
  *
  * @since 1.2.1
  * @deprecated 2.0.0
@@ -11,8 +11,14 @@
  * @author Henry Ruhs
  */
 
-function admin_routing()
+function admin_router()
 {
+	Redaxscript\Hook::trigger('adminRouterStart');
+	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
+	{
+		return;
+	}
+
 	/* call last update */
 
 	if (FIRST_PARAMETER == 'admin' && ADMIN_PARAMETER == '' || ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'users' || UPDATE == '')
@@ -162,4 +168,5 @@ function admin_routing()
 			call_user_func('admin_' . ADMIN_PARAMETER);
 			return;
 	}
+	Redaxscript\Hook::trigger('adminRouterEnd');
 }

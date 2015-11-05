@@ -13,7 +13,7 @@
 
 function password_reset_form()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('passwordFormStart');
 
 	/* captcha object */
 
@@ -44,7 +44,7 @@ function password_reset_form()
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'js_submit button_default', 'password_reset_post', l('submit'));
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('passwordFormEnd');
 	echo $output;
 }
 

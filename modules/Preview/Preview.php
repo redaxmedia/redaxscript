@@ -61,17 +61,17 @@ class Preview extends Module
 		{
 			Registry::set('title', Language::get('preview', '_preview'));
 			Registry::set('description', Language::get('description', '_preview'));
-			Registry::set('centerBreak', true);
+			Registry::set('routerBreak', true);
 		}
 	}
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{

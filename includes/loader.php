@@ -17,7 +17,7 @@
 
 function loader($type = '', $mode = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('loaderStart');
 	if ($mode == 'inline' || $mode == 'outline')
 	{
 		/* get module scripts */
@@ -145,7 +145,7 @@ function loader($type = '', $mode = '')
 	ob_start();
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_start');
+		Redaxscript\Hook::trigger('loader' . ucfirst($type) . 'TransportStart');
 	}
 
 	/* collect include output */
@@ -164,7 +164,7 @@ function loader($type = '', $mode = '')
 
 	if ($mode == 'inline' || $mode == 'outline')
 	{
-		Redaxscript\Hook::trigger(__FUNCTION__ . '_' . $type . '_transport_end');
+		Redaxscript\Hook::trigger('loader' . ucfirst($type) . 'TransportEnd');
 	}
 	$output .= ob_get_clean() . PHP_EOL;
 
@@ -194,7 +194,7 @@ function loader($type = '', $mode = '')
 			$output = $minifier->styles($output);
 		}
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('loaderEnd');
 	return $output;
 }
 
@@ -211,7 +211,7 @@ function loader($type = '', $mode = '')
 
 function styles()
 {
-	$output = Redaxscript\Hook::trigger('style_start');
+	$output = Redaxscript\Hook::trigger('styleStart');
 
 	/* parse loader ini */
 
@@ -252,7 +252,7 @@ function styles()
 
 	/* collect output */
 
-	$output .= Redaxscript\Hook::trigger('link_start');
+	$output .= Redaxscript\Hook::trigger('linkStart');
 	if ($loader_include)
 	{
 		foreach ($loader_include as $value)
@@ -264,7 +264,7 @@ function styles()
 	{
 		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
-	$output .= Redaxscript\Hook::trigger('link_end');
+	$output .= Redaxscript\Hook::trigger('linkEnd');
 
 	/* inline deployment */
 
@@ -272,7 +272,7 @@ function styles()
 	{
 		$output .= '<style media="all"><!-- /* <![cdata[ */ ' . loader('styles', 'inline') . ' /* ]]> */ --></style>' . PHP_EOL;
 	}
-	$output .= Redaxscript\Hook::trigger('style_end');
+	$output .= Redaxscript\Hook::trigger('styleEnd');
 	echo $output;
 }
 
@@ -293,7 +293,7 @@ function scripts($mode = '')
 {
 	if ($mode == '')
 	{
-		$output = Redaxscript\Hook::trigger('script_start');
+		$output = Redaxscript\Hook::trigger('scriptStart');
 	}
 
 	/* parse loader ini */
@@ -371,7 +371,7 @@ function scripts($mode = '')
 	}
 	if ($mode == '')
 	{
-		$output .= Redaxscript\Hook::trigger('script_end');
+		$output .= Redaxscript\Hook::trigger('scriptEnd');
 	}
 	echo $output;
 }

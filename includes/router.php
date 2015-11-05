@@ -1,7 +1,7 @@
 <?php
 
 /**
- * center
+ * router
  *
  * @since 1.2.1
  * @deprecated 2.0.0
@@ -11,39 +11,14 @@
  * @author Henry Ruhs
  */
 
-function center()
+function router()
 {
-	Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-
-	/* center break */
-
-	if (Redaxscript\Registry::get('centerBreak') == 1)
+	Redaxscript\Hook::trigger('routerStart');
+	if (Redaxscript\Registry::get('routerBreak') == 1)
 	{
 		return;
 	}
 
-	/* else routing */
-
-	else
-	{
-		routing();
-	}
-	Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-}
-
-/**
- * routing
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Center
- * @author Henry Ruhs
- */
-
-function routing()
-{
 	/* check token */
 
 	if ($_POST && $_POST['token'] != TOKEN)
@@ -78,7 +53,7 @@ function routing()
 		case 'admin':
 			if (LOGGED_IN == TOKEN)
 			{
-				admin_routing();
+				admin_router();
 			}
 			else
 			{
@@ -132,4 +107,5 @@ function routing()
 			contents();
 			return;
 	}
+	Redaxscript\Hook::trigger('routerEnd');
 }

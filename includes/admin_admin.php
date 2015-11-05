@@ -13,7 +13,7 @@
 
 function admin_panel_list()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminPanelStart');
 
 	/* define access variables */
 
@@ -109,7 +109,7 @@ function admin_panel_list()
 
 			/* collect modules list */
 
-			$admin_panel_list_modules = Redaxscript\Hook::trigger('admin_panel_list_modules');
+			$admin_panel_list_modules = Redaxscript\Hook::trigger('adminPanelAddModule');
 			if ($admin_panel_list_modules)
 			{
 				$output .= '<ul class="js_list_panel_children_admin list_panel_children_admin">' . $admin_panel_list_modules . '</ul>';
@@ -141,7 +141,7 @@ function admin_panel_list()
 	{
 		$output = '<ul class="js_list_panel_admin list_panel_admin c' . $counter . '">' . $output . '</ul>';
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminPanelEnd');
 	echo $output;
 }
 
@@ -162,7 +162,7 @@ function admin_panel_list()
 
 function admin_dock($table = '', $id = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminDockStart');
 
 	/* define access variables */
 
@@ -185,7 +185,7 @@ function admin_dock($table = '', $id = '')
 		}
 		$output .= '</div></div>';
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminDockEnd');
 	return $output;
 }
 
@@ -202,7 +202,7 @@ function admin_dock($table = '', $id = '')
 
 function admin_notification()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminNotificationStart');
 
 	/* insecure file warning */
 
@@ -217,7 +217,7 @@ function admin_notification()
 			$output .= '<div class="box_note note_warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
 		}
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminNotificationEnd');
 	echo $output;
 }
 
@@ -244,7 +244,7 @@ function admin_notification()
 
 function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('adminControlStart');
 
 	/* define access variables */
 
@@ -323,6 +323,6 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		$output = '<ul class="list_control_admin">' . $output . '</ul>';
 	}
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('adminControlEnd');
 	return $output;
 }

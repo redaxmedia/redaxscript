@@ -49,7 +49,7 @@ class Demo extends Config
 			if (Registry::get('secondParameter') === 'login')
 			{
 				Registry::set('title', Language::get('login'));
-				Registry::set('centerBreak', true);
+				Registry::set('routerBreak', true);
 			}
 
 			/* handle reinstall */
@@ -63,12 +63,12 @@ class Demo extends Config
 	}
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Registry::get('firstParameter') === 'demo' && Registry::get('secondParameter') === 'login')
 		{

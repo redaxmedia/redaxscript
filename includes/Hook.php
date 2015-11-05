@@ -135,17 +135,19 @@ class Hook
 		$output = false;
 
 		/* trigger event */
-
+		echo '<div>' . $event . '</div>';
 		foreach (self::$_modules as $module)
 		{
 			$object = self::$_namespace . $module . '\\' . $module;
-			$method = str_replace(self::$_delimiter, '', mb_convert_case($event, MB_CASE_TITLE));
 
 			/* method exists */
 
-			if (method_exists($object, $method))
+			if (method_exists($object, $event))
 			{
-				$output .= call_user_func_array(array($object, $method), $parameter);
+				$output .= call_user_func_array(array(
+					$object,
+					$event
+				), $parameter);
 				self::$_events[$event][] = $module;
 			}
 		}

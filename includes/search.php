@@ -31,7 +31,7 @@ function search()
 
 function search_form($table = 'articles')
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('searchFormStart');
 
 	/* collect output */
 
@@ -45,7 +45,7 @@ function search_form($table = 'articles')
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
 	$output .= form_element('button', '', 'button_search', 'search_post', l('search'));
 	$output .= '</form>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('searchFormEnd');
 	echo $output;
 }
 

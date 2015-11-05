@@ -5,7 +5,6 @@ error_reporting(0);
 
 /* include files */
 
-include_once('includes/center.php');
 include_once('includes/contents.php');
 include_once('includes/generate.php');
 include_once('includes/head.php');
@@ -13,6 +12,7 @@ include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
+include_once('includes/router.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 include_once('includes/comments.php');
@@ -42,11 +42,11 @@ if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 if ($registry->get('loggedIn') === $registry->get('token'))
 {
 	include_once('includes/admin_admin.php');
-	include_once('includes/admin_center.php');
 	include_once('includes/admin_contents.php');
 	include_once('includes/admin_groups.php');
 	include_once('includes/admin_modules.php');
 	include_once('includes/admin_query.php');
+	include_once('includes/admin_router.php');
 	include_once('includes/admin_settings.php');
 	include_once('includes/admin_users.php');
 }
@@ -67,11 +67,11 @@ if ($registry->get('firstParameter') === 'loader' && ($registry->get('secondPara
 else
 {
 	Hook::trigger('renderStart');
-	if ($registry->get('renderBreak'))
+	if ($registry->get('renderBreak') === true)
 	{
 		return;
 	}
-	if ($registry->get('centerBreak'))
+	if ($registry->get('routerBreak'))
 	{
 		$registry->set('contentError', false);
 	}
