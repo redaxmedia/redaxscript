@@ -67,7 +67,7 @@ if ($registry->get('firstParameter') === 'loader' && ($registry->get('secondPara
 else
 {
 	Hook::trigger('renderStart');
-	if ($registry->get('renderBreak') === true)
+	if ($registry->get('renderBreak'))
 	{
 		return;
 	}
