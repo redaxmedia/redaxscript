@@ -676,24 +676,13 @@ function admin_install()
 			$module = Redaxscript\Db::forTablePrefix('modules')->where('alias', ALIAS_PARAMETER)->findOne()->id;
 			if ((ADMIN_PARAMETER == 'install' && $module == '') || (ADMIN_PARAMETER == 'uninstall' && $module))
 			{
-				include_once('modules/' . ALIAS_PARAMETER . '/install.php');
-				include_once('modules/' . ALIAS_PARAMETER . '/index.php');
-				$function = ALIAS_PARAMETER . '_' . ADMIN_PARAMETER;
 				$object = 'Redaxscript\Modules\\' . ALIAS_PARAMETER . '\\' . ALIAS_PARAMETER;
-				$method = ADMIN_PARAMETER;
 
 				/* method exists */
 
-				if (method_exists($object, $method))
+				if (method_exists($object, ADMIN_PARAMETER))
 				{
-					call_user_func(array($object, $method));
-				}
-
-				/* function exists */
-
-				else if (function_exists($function))
-				{
-					call_user_func($function);
+					call_user_func(array($object, ADMIN_PARAMETER));
 				}
 			}
 		}

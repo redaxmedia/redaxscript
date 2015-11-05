@@ -16,9 +16,6 @@ filter:
   - includes/reminder.php
   - includes/search.php
   - includes/startup.php
-  - modules/*/index.php
-  - modules/*/install.php
-  - index.php
   - install.php
 
 tools:
