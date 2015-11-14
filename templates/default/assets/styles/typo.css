@@ -26,8 +26,6 @@ body
 {
 	color: #323e4c;
 	font: 300 1.25em/1.75em 'Open Sans Condensed', arial, sans-serif;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
 }
 
 pre
@@ -38,22 +36,17 @@ pre
 
 /* @section 2. links */
 
-.rs-content p a
-{
-	color: #000;
-	border-bottom: 2px solid rgba(0, 0, 0, 0.10);
-	-webkit-transition: border 0.2s;
-	transition: border 0.2s;
-}
-
-.rs-content p a:hover
-{
-	border-color: #457ecd;
-}
-
 .rs-link-default
 {
 	text-decoration: underline;
+}
+
+.rs-link-default:hover
+{
+	background: rgba(0, 0, 0, 0.1);
+	box-shadow: -0.125em 0 rgba(0, 0, 0, 0.1), 0.125em 0 rgba(0, 0, 0, 0.1);
+	-webkit-transition: background 0.2s, box-shadow 0.2s;
+	transition: background 0.2s, box-shadow 0.2s;
 }
 
 /* @section 2.1 read more link */
@@ -74,7 +67,7 @@ pre
 	transition: transform 0.2s;
 }
 
-.rs-link-read-more::after
+.rs-link-read-more:after
 {
 	content: '\3009';
 	font: 0.75em/1em 'icon-redaxscript';
@@ -160,6 +153,11 @@ pre
 	color: #fff;
 }
 
+.rs-title-accordion:not(.rs-title-active)
+{
+	cursor: pointer;
+}
+
 .rs-title-active
 {
 	background: linear-gradient(#699b3c, #659438);
@@ -179,6 +177,13 @@ pre
 	padding-left: 0.25em;
 }
 
+.rs-title-comment,
+.rs-title-extra
+{
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
 /* @section 5. title website */
 
 .rs-title-website
@@ -190,10 +195,19 @@ pre
 	position: relative;
 }
 
-.rs-title-website a {
+.rs-title-website a
+{
 	display: block;
 	line-height: 1em;
+	opacity: 0.8;
 	white-space: nowrap;
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+
+.rs-title-website a:hover
+{
+	opacity: 1;
 }
 
 /* @section 6. description website */
@@ -206,17 +220,6 @@ pre
 	font-weight: 700;
 	left: 0;
 	margin-left: 0.125em;
-	opacity: 0;
-	position: absolute;
-	top: 20%;
-	-webkit-transition: opacity 0.2s, top 0.2s;
-	transition: opacity 0.2s, top 0.2s;
-}
-
-.rs-box-meta:hover .rs-description-website
-{
-	opacity: 1;
-	top: 100%;
 }
 
 /* @section 7. title teaser */

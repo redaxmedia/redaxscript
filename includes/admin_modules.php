@@ -23,7 +23,7 @@ function admin_modules_list()
 	/* collect listing output */
 
 	$output .= '<h2 class="rs-admin-title-content">' . l('modules') . '</h2>';
-	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table rs-admin-table">';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 

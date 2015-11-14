@@ -543,11 +543,11 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		$suffix = '-admin';
+		$button = 'rs-admin-button';
 	}
 	else
 	{
-		$suffix = '-default';
+		$button = 'rs-button-default';
 	}
 
 	/* collect output */
@@ -575,7 +575,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if ($action && $route)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-forward-notification rs-button' . $suffix, $action, $route);
+		$output .= anchor_element('internal', '', 'rs-js-forward-notification ' . $button, $action, $route);
 	}
 	$output .= '</div>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

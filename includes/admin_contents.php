@@ -66,7 +66,7 @@ function admin_contents_list()
 	{
 		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-sort', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead */
 

@@ -36,8 +36,7 @@
 .rs-field-text,
 .rs-field-textarea,
 .rs-button-default,
-.rs-button-custom,
-.rs-button-search
+.rs-button-custom
 {
 	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
 	border-radius: 0.125em;
@@ -48,15 +47,32 @@
 	padding-top: 0.375em;
 }
 
-/* @section 2. several buttons */
+/* @section 2. button search */
 
 .rs-button-search
 {
 	position: relative;
 	text-indent: -999em;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 20%;
+	height: 2em;
+	line-height: 1.25em;
+	font-size: 1em;
+	background: transparent;
+	cursor: pointer;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
 }
 
-.rs-button-search::after 
+.rs-button-search:hover
+{
+	color: #659438;
+}
+
+.rs-button-search:after
 {
 	content: '\2315';
 	font: 1em/1em 'icon-redaxscript';
@@ -69,8 +85,7 @@
 /* @section 2.1 button default, button custom, button search */
 
 .rs-button-default,
-.rs-button-custom,
-.rs-button-search
+.rs-button-custom
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	color: #fff;
@@ -80,14 +95,12 @@
 	cursor: pointer;
 }
 
-.rs-button-default,
-.rs-button-search
+.rs-button-default
 {
 	background: linear-gradient(#699b3c, #659438);
 }
 
-.rs-button-default:hover,
-.rs-button-search:hover
+.rs-button-default:hover
 {
 	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#699b3c, #659438);
 }
@@ -107,15 +120,6 @@
 {
 	padding-left: 2em;
 	padding-right: 2em;
-}
-
-.rs-button-default:active,
-.rs-button-custom:active,
-.rs-button-search:active
-{
-	-webkit-transform: translateY(2px);
-	transform: translateY(2px);
-	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 }
 
 /* @section 2.2 button large */
@@ -145,34 +149,61 @@
 	font: 1em/1em 'icon-redaxscript';
 }
 
+/* @section 2.4 buttons active state */
+
+.rs-button-default:active,
+.rs-button-custom:active,
+.rs-button-search:active
+{
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}
+
+.rs-button-default:active,
+.rs-button-custom:active
+{
+	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+}
+
 /* @section 3. several fields */
 
-.rs-field-search,
+.rs-field-select,
+.rs-field-text,
+.rs-field-textarea,
+.rs-field-search
+{
+	height: 2em;
+	padding: 0 0.5em;
+}
+
 .rs-field-select,
 .rs-field-text,
 .rs-field-textarea
 {
 	border: 2px solid #9c9c9c;
-	height: 2em;
-	padding: 0 0.5em;
-	-webkit-transition: box-shadow 0.2s, border 0.2s;
-	transition: box-shadow 0.2s, border 0.2s;
+	-webkit-transition: border 0.2s;
+	transition: border 0.2s;
 }
 
-.rs-field-search:hover,
 .rs-field-select:hover,
 .rs-field-text:hover,
 .rs-field-textarea:hover
 {
-	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+	border-color: #000;
 }
 
-.rs-field-search:focus,
 .rs-field-select:focus,
 .rs-field-text:focus,
 .rs-field-textarea:focus
 {
 	border-color: #3873B5;
+}
+
+.rs-field-search
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 80%;
 }
 
 /* @section 4. textarea */
@@ -205,14 +236,16 @@
 	pointer-events: none;
 }
 
-/* @section 6. form default */
+/* @section 6. forms */
+
+/* @section 6.1 form default */
 
 .rs-form-default li
 {
 	margin: 0.5em 0;
 }
 
-/* @section 6.1 label */
+/* @section 6.1.1 label */
 
 .rs-form-default .rs-label
 {
@@ -222,6 +255,14 @@
 .rs-form-default .rs-label-message:after
 {
 	content: ' ' attr(data-message);
+}
+
+/* @section 6.2 form search */
+
+.rs-form-search
+{
+	background: #fff;
+	border-radius: 0.125em;
 }
 
 /* @section 7. custom styles */
@@ -251,20 +292,24 @@
 
 /* @section 9. sidebar form elements */
 
-.rs-sidebar .rs-field-search,
 .rs-sidebar .rs-field-select,
 .rs-sidebar .rs-field-text,
 .rs-sidebar .rs-field-textarea
 {
 	border-color: transparent;
+	opacity: 0.8;
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
 }
 
-.rs-sidebar .rs-field-search:hover,
 .rs-sidebar .rs-field-select:hover,
 .rs-sidebar .rs-field-text:hover,
-.rs-sidebar .rs-field-textarea:hover
+.rs-sidebar .rs-field-textarea:hover,
+.rs-sidebar .rs-field-select:focus,
+.rs-sidebar .rs-field-text:focus,
+.rs-sidebar .rs-field-textarea:focus
 {
-	box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.15) inset;
+	opacity: 1;
 }
 
 /* @section 10. query */
@@ -273,20 +318,13 @@
 
 @media screen and (max-width: 49.999rem)
 {
-	.rs-field-search,
 	.rs-field-select,
 	.rs-field-text,
 	.rs-field-textarea,
 	.rs-button-default,
-	.rs-button-custom,
-	.rs-button-search
+	.rs-button-custom
 	{
 		width: 100%;
-	}
-
-	.rs-field-search
-	{
-		text-align: center;
 	}
 }
 
@@ -294,13 +332,11 @@
 
 @media screen and (min-width: 50rem)
 {
-	.rs-field-search,
 	.rs-field-select,
 	.rs-field-text,
 	.rs-field-textarea,
 	.rs-button-default,
-	.rs-button-custom,
-	.rs-button-search
+	.rs-button-custom
 	{
 		display: inline-block;
 		vertical-align: middle;
@@ -309,20 +345,6 @@
 	.rs-button-default + .rs-button-default
 	{
 		margin-left: 1em;
-	}
-
-	.rs-button-search
-	{
-		max-height: 2em;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		width: 20%;
-	}
-
-	.rs-field-search
-	{
-		margin-right: 3%;
-		width: 77%;
 	}
 
 	.rs-box-navibar .rs-button-default

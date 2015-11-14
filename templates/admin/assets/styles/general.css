@@ -25,11 +25,6 @@
 
 /* @section 2. wrapper */
 
-.rs-admin-wrapper-button
-{
-	margin-bottom: 1em;
-}
-
 .rs-admin-wrapper-table
 {
 	overflow: hidden;
@@ -38,4 +33,16 @@
 .rs-admin-wrapper-table > .rs-admin-table
 {
 	width: 100%;
+}
+
+/* @section 3. margins */
+
+.rs-admin-title-content
+{
+	margin: 1em 0;
+}
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
 }

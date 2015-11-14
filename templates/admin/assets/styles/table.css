@@ -87,7 +87,7 @@
 .rs-admin-table tbody .rs-admin-row-group td:before
 {
 	content: 's';
-	font: 1.5em 'icon admin';
+	font: 1.5rem 'icon admin';
 	margin-right: 0.5em;
 	text-transform: lowercase;
 	vertical-align: text-bottom;
@@ -154,7 +154,7 @@
 .rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
 {
 	display: block;
-	font: 1.5em 'icon admin';
+	font: 1.5rem 'icon admin';
 	position: absolute;
 	text-indent: 0;
 	right: 0.25em;
@@ -190,7 +190,7 @@
 {
 	background: url('templates/admin/assets/images/carbon.png') #222;
 	color: #ccc;
-	font: bold 1.25em 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }
 
@@ -216,7 +216,7 @@
 .rs-admin-table thead .rs-admin-column-move:before, .rs-admin-table tfoot .rs-admin-column-move:before
 {
 	content: 'a';
-	font: 1.25em/2em 'icon admin';
+	font: 1.25rem/2rem 'icon admin';
 	position: absolute;
 	right: 1.125em;
 	text-indent: 0;

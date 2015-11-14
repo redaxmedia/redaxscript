@@ -54,7 +54,7 @@ ul.rs-list-default li
 
 .rs-list-header li
 {
-	font: 300 1.125em/2em 'Open Sans Condensed', arial, sans-serif;
+	font: 1rem/3em arial, sans-serif;
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
@@ -64,6 +64,7 @@ ul.rs-list-default li
 .rs-list-header > li
 {
 	padding: 0 1em;
+	font-weight: bold;
 }
 
 /* @section 5. list tabs */
@@ -94,13 +95,20 @@ ul.rs-list-default li
 {
 	background: rgba(50, 62, 76, 0.3);
 	padding: 0.25em 1em;
+	-webkit-transition: background 0.2s, border 0.2s;
+	transition: background 0.2s, border 0.2s;
 }
 
 .rs-list-tab > li:hover
 {
-	background: linear-gradient(#699b3c, #659438);
-	color: #fff;
+	background: #699b3c;
+	border-color: #699b3c;
 	cursor: pointer;
+}
+
+.rs-list-tab > li:hover a
+{
+	color: #fff;
 }
 
 /* @section 6. query */
@@ -152,12 +160,16 @@ ul.rs-list-default li
 		color: rgba(255, 255, 255, 0.7);
 		cursor: pointer;
 		float: right;
-		font-size: 2em;
+		font: 1rem arial;
 		margin-top: 0.25em;
 		padding-top: 1.5em;
 		position: relative;
 		vertical-align: top;
 		z-index: 10;
+		-ms-user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
 	}
 
 	.rs-navigation-trigger:after,
@@ -229,7 +241,7 @@ ul.rs-list-default li
 		content: '';
 		left: 0;
 		position: absolute;
-		right: 0;
+		right: 100%;
 		top: 0;
 		-webkit-transition: background 0.2s;
 		transition: background 0.2s;
@@ -238,6 +250,7 @@ ul.rs-list-default li
 
 	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation:after {
 		background: rgba(0, 0, 0, 0.8);
+		right: 0;
 		z-index: 5;
 	}
 }

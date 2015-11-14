@@ -60,6 +60,11 @@ body
 
 /* @section 3. wrapper */
 
+.rs-main
+{
+	display: block;
+}
+
 .rs-wrapper
 {
 	margin-left: auto;
@@ -74,6 +79,11 @@ body
 .rs-wrapper-table-default > .rs-table-default
 {
 	width: 100%;
+}
+
+.rs-header + .rs-wrapper-content
+{
+	margin-top: 2em;
 }
 
 /* @section 4. header */
@@ -157,11 +167,6 @@ body
 	.rs-wrapper-content
 	{
 		padding: 1em;
-	}
-
-	.rs-field-search
-	{
-		margin-bottom: 1em;
 	}
 
 	.rs-content + .rs-sidebar

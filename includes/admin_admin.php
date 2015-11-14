@@ -210,11 +210,11 @@ function admin_notification()
 	{
 		if (file_exists('install.php'))
 		{
-			$output .= '<div class="rs-admin-box-note rs-admin-note-warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
+			$output .= '<div class="rs-box-note rs-note-warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
 		}
 		if (is_writable('config.php'))
 		{
-			$output .= '<div class="rs-admin-box-note rs-admin-note-warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
+			$output .= '<div class="rs-box-note rs-note-warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
 		}
 	}
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

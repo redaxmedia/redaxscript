@@ -31,15 +31,10 @@
 	color: #ccc;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875em/2.5em arial;
+	font: bold 0.875rem/2.5rem arial;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 	padding: 0 0.75em;
-}
-
-.rs-admin-button.rs-admin-button-large
-{
-	font-size: 1em;
 }
 
 /* @section 1.1 hover effect */
@@ -65,7 +60,7 @@
 
 .rs-admin-button.rs-admin-button-plus:before, .rs-admin-button.rs-admin-button-cancel:before, .rs-admin-button.rs-admin-button-submit:before
 {
-	font: 1em 'icon admin';
+	font: 1rem 'icon admin';
 	margin-right: 0.5em;
 	text-transform: lowercase;
 	vertical-align: text-bottom;
@@ -105,7 +100,7 @@
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
 	color: #6a6a6a;
-	font: 1em arial;
+	font: 1rem arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	transition: background 0.4s ease;
 	padding: 0.5em;
@@ -176,7 +171,7 @@
 .rs-admin-form .rs-admin-label
 {
 	color: #555;
-	font: bold 0.875em arial;
+	font: bold 0.875rem arial;
 	display: block;
 }
 

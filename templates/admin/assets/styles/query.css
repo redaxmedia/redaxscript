@@ -60,7 +60,7 @@
 
 	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
 	{
-		font-size: 1.5em;
+		font-size: 1.5rem;
 	}
 
 	.rs-admin-list-panel .rs-admin-item-panel > span:after

@@ -28,7 +28,7 @@ function admin_groups_list()
 	{
 		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-plus', l('group_new'), 'admin/new/groups');
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 
