@@ -11,7 +11,7 @@ install:
 - composer self-update
 - composer install --ignore-platform-reqs
 - npm install
-- npm install -g grunt-cli
+- npm install --global grunt-cli
 
 script:
 - npm test
