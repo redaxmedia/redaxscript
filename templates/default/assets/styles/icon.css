@@ -14,11 +14,7 @@
 @font-face
 {
     font-family: 'icon-redaxscript';
-    src:url('templates/default/assets/fonts/icon-redaxscript.eot?8u4sj4');
-    src:url('templates/default/assets/fonts/icon-redaxscript.eot?8u4sj4#iefix') format('embedded-opentype'),
-    url('templates/default/assets/fonts/icon-redaxscript.ttf?8u4sj4') format('truetype'),
-    url('templates/default/assets/fonts/icon-redaxscript.woff?8u4sj4') format('woff'),
-    url('templates/default/assets/fonts/icon-redaxscript.svg?8u4sj4#icon-redaxscript') format('svg');
+    src: url('templates/default/assets/fonts/icon-redaxscript.woff2') format('woff2'), url('templates/default/assets/fonts/icon-redaxscript.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

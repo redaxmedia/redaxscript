@@ -1,0 +1,63 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button default and button search
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 7. custom styles */
+
+.rs-box-navibar .rs-button-default
+{
+    display: inline-block;
+    font-size: 0.875em;
+    margin: 0 0.25em 1em;
+    width: 7.5em;
+}
+
+.rs-box-navibar .rs-button-default:before
+{
+    margin-left: -1.25em;
+    margin-right: 0.75em;
+}
+
+/* @section 10.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+    .rs-box-navibar .rs-button-default
+    {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .rs-box-navibar .rs-button-default
+    {
+        position: absolute;
+        right: 0;
+        margin-right: -4.75em;
+        min-width: 7em;
+        font-size: 1.5em;
+        -webkit-transition: margin-right 0.2s;
+        transition: margin-right 0.2s;
+    }
+
+    .rs-box-navibar .rs-button-default:hover
+    {
+        margin-right: 0;
+    }
+
+    .rs-box-navibar .rs-button-donate
+    {
+        top: 20vh;
+    }
+
+    .rs-box-navibar .rs-button-support
+    {
+        top: 30vh;
+    }
+}

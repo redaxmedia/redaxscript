@@ -1,0 +1,24 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several boxes
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 4. box navibar */
+
+.rs-box-navibar
+{
+    text-align: center;
+}
+
+.rs-title-content + .rs-box-content,
+.rs-box-wrapper-cta + .rs-box-wrapper-cta,
+.rs-title-teaser + .rs-box-navibar
+{
+    margin-top: 2em;
+}

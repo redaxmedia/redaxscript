@@ -65,7 +65,7 @@
 	text-align: right;
 	text-transform: uppercase;
 	white-space: nowrap;
-	font: bold 1rem/2.75rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
 	max-width: 10em;
 	overflow: hidden;
 	text-overflow: ellipsis;

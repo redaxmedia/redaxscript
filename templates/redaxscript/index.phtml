@@ -1,0 +1,56 @@
+<?php namespace Redaxscript; ?>
+
+<!DOCTYPE html>
+<html lang="<?php echo Registry::get('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+
+	<!-- head -->
+
+	<head>
+		<?php echo Template::partial(array(
+			'templates/default/head.phtml',
+			'templates/admin/head.phtml'
+		)); ?>
+	</head>
+
+	<!-- body -->
+
+	<body class="rs-wrapper_body">
+
+		<!-- admin panel and header -->
+
+		<?php echo Template::partial(array(
+			'templates/admin/panel.phtml',
+			'templates/default/header.phtml'
+		)); ?>
+
+		<!-- top -->
+
+		<?php echo Template::partial(array(
+			'templates/redaxscript/teaser.phtml',
+		)); ?>
+
+		<!-- main -->
+
+		<main class="rs-main rs-wrapper rs-wrapper-content rs-clearfix">
+
+			<!-- handle content error -->
+
+			<?php if (Registry::get('contentError')): ?>
+				<?php echo Template::partial('templates/default/error.phtml'); ?>
+
+			<!-- else content and sidebar -->
+
+			<?php else: ?>
+				<?php echo Template::partial(array(
+					'templates/default/content.phtml',
+					'templates/default/sidebar.phtml'
+				)); ?>
+			<?php endif; ?>
+		</main>
+
+		<!-- footer -->
+
+		<?php echo Template::partial('templates/default/footer.phtml'); ?>
+		<?php echo Template::script(); ?>
+	</body>
+</html>

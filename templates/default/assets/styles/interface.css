@@ -261,6 +261,11 @@ ul.rs-list-default li
 
 	/* @section 6.3.1 list header */
 
+	.rs-list-header li
+	{
+		font: 1.125em/2em 'Open Sans Condensed', arial, sans-serif;
+	}
+
 	.rs-list-header > li
 	{
 		display: inline-block;
