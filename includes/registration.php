@@ -32,7 +32,7 @@ function registration_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . l('account_create') . '</h2>';
+	$output .= '<h2 class="rs-title-content">' . l('account_create') . '</h2>';
 	$output .= form_element('form', 'form_registration', 'rs-js-validate-form rs-form-default rs-form-registration', '', '', '', 'action="' . REWRITE_ROUTE . 'registration" method="post"');
 	$output .= form_element('fieldset', '', 'rs-set-registration', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-field-text rs-field-note', 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_disabled) . '</li>';

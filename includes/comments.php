@@ -187,7 +187,7 @@ function comment_form($article = '', $language = '')
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . l('comment_new') . '</h2>';
+	$output .= '<h2 class="rs-title-content">' . l('comment_new') . '</h2>';
 	$output .= form_element('form', 'form_comment', 'rs-js-validate-form rs-form-default rs-form-comment', '', '', '', 'method="post"');
 	$output .= form_element('fieldset', '', 'rs-set-comment', '', '', l('fields_required') . l('point')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'author', 'rs-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';

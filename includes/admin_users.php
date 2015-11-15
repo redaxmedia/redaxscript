@@ -199,7 +199,7 @@ function admin_users_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="rs-title-content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
