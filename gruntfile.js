@@ -434,17 +434,6 @@ module.exports = function (grunt)
 
 			}
 		},
-		jsonmin:
-		{
-			dependency:
-			{
-				src:
-				[
-					'composer.lock'
-				],
-				dest: 'composer.lock'
-			}
-		},
 		img:
 		{
 			modules:
@@ -566,7 +555,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
-	grunt.loadNpmTasks('grunt-jsonmin');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
@@ -613,7 +601,6 @@ module.exports = function (grunt)
 	[
 		'autoprefixer',
 		'toc',
-		'jsonmin',
 		'img',
 		'smushit',
 		'svgmin'
