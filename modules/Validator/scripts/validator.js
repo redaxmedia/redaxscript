@@ -67,7 +67,7 @@
 
 						/* collect output */
 
-						output += '<ul class="box_note note_' + type + '">';
+						output += '<ul class="rs-box-note rs-note-' + type + '">';
 						output += '<li class="' + options.className.validatorMessage + '">' + message + '</li>';
 
 						/* lines and columns */

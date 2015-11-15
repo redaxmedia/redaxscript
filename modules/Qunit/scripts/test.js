@@ -152,7 +152,7 @@
 		{
 			win.test('validateSearch', function ()
 			{
-				var form = $('<form><input class="js_search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
+				var form = $('<form><input class="rs-js-search" placeholder="' + dummy + '" /></form>').validateSearch().appendTo(fixture),
 					input = form.children('input'),
 					expect = rs.language.input_incorrect + rs.language.exclamation_mark,
 					actual = input.attr('placeholder');

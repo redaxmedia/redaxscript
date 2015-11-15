@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'title' => 'title_content_sub title_sitemap',
-			'list' => 'list_default list_sitemap'
+			'title' => 'rs-title-content-sub rs-title-sitemap',
+			'list' => 'rs-list-default rs-list-sitemap'
 		)
 	);
 }

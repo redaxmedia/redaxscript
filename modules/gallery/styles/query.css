@@ -15,7 +15,7 @@
 
  @media screen and (orientation: landscape)
  {
-	.mobile .gallery_overlay
+	.rs-mobile .rs-gallery-overlay
 	{
 		background: #000;
 		background: rgba(0, 0, 0, 0.8);
@@ -26,7 +26,7 @@
 
 @media screen and (max-width: 50em)
 {
-	.gallery_control
+	.rs-gallery-control
 	{
 		font-size: 20vw;
 	}
@@ -36,7 +36,7 @@
 
 @media screen and (max-width: 40em)
 {
-	.gallery_meta
+	.rs-gallery-meta
 	{
 		display: none;
 	}

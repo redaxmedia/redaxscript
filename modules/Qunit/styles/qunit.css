@@ -18,19 +18,19 @@
 
 /* @section 1. banner qunit */
 
-.banner_qunit
+.rs-banner-qunit
 {
 	margin-top: 2em;
 }
 
-.banner_qunit, .user_agent_qunit
+.rs-banner-qunit, .rs-user-agent-qunit
 {
 	font-size: 0.875em;
 }
 
 /* @section 2. box qunit */
 
-.box_qunit
+.rs-box-qunit
 {
 	background: #e2e2e2;
 	border: 1px solid #cdcdcd;
@@ -38,14 +38,14 @@
 	padding: 1em;
 }
 
-.box_qunit + .box_qunit
+.rs-box-qunit + .rs-box-qunit
 {
 	border-top: 0;
 }
 
 /* @section 3. box fixture */
 
-.box_fixture
+.rs-box-fixture
 {
 	left: -999em;
 	position: absolute;
@@ -54,7 +54,7 @@
 
 /* @section 4. title qunit */
 
-.title_qunit
+.rs-title-qunit
 {
 	background: #b9b9b9;
 	background: linear-gradient(#ccc, #b9b9b9);
@@ -68,90 +68,90 @@
 
 /* @section 5. toolbar qunit */
 
-.toolbar_qunit input, .toolbar_qunit select
+.rs-toolbar-qunit input, .rs-toolbar-qunit select
 {
 	margin-right: 0.5em;
 }
 
-.toolbar_qunit input + label, .toolbar_qunit select + label
+.rs-toolbar-qunit input + label, .rs-toolbar-qunit select + label
 {
 	margin-right: 1.5em;
 }
 
-.toolbar_qunit input, .toolbar_qunit label, .toolbar_qunit select
+.rs-toolbar-qunit input, .rs-toolbar-qunit label, .rs-toolbar-qunit select
 {
 	vertical-align: middle;
 }
 
 /* @section 6. list qunit */
 
-.list_qunit
+.rs-list-qunit
 {
 	background: #e2e2e2;
 	border: 1px solid #cdcdcd;
 	color: #474747;
 }
 
-.list_qunit li
+.rs-list-qunit li
 {
 	padding: 1em;
 }
 
-.list_qunit > li
+.rs-list-qunit > li
 {
 	border-bottom: 1px solid #cdcdcd;
 	list-style: decimal inside;
 }
 
-.list_qunit > li:last-child
+.rs-list-qunit > li:last-child
 {
 	border-bottom: 0;
 }
 
-.list_qunit > li > a
+.rs-list-qunit > li > a
 {
 	margin-left: 1em;
 	text-decoration: underline;
 }
 
-.list_qunit > li > span
+.rs-list-qunit > li > span
 {
 	font: italic 1em monospace, arial;
 	float: right;
 }
 
-.list_qunit > li > strong
+.rs-list-qunit > li > strong
 {
 	cursor: pointer;
 }
 
 /* @section 6.1 list qunit assert */
 
-.list_qunit_assert
+.rs-list-qunit-assert
 {
 	margin-top: 1em;
 }
 
-.list_qunit_assert > li
+.rs-list-qunit-assert > li
 {
 	list-style: lower-alpha inside;
 }
 
 /* collapsed */
 
-.list_qunit_assert.qunit-collapsed
+.rs-list-qunit-assert.rs-qunit-collapsed
 {
 	margin-top: 0;
 }
 
-.list_qunit_assert.qunit-collapsed li
+.rs-list-qunit-assert.rs-qunit-collapsed li
 {
 	display: none;
 }
 
 /* @section 7. space between elements */
 
-.box_qunit + .title_qunit
+.rs-box-qunit + .rs-title-qunit
 {
 	margin-top: 2em;
 }

@@ -14,17 +14,17 @@
 rs.modules.fileManager =
 {
 	init: rs.registry.adminParameter === 'file-manager',
-	selector: 'form.js_form_file_manager',
+	selector: 'form.rs-js-form-file-manager',
 	options:
 	{
 		element:
 		{
-			fieldFile: 'input.js_file',
-			buttonUpload: 'button.js_upload'
+			fieldFile: 'input.rs-js-file',
+			buttonUpload: 'button.rs-js-upload'
 		},
 		className:
 		{
-			buttonBrowse: 'js_browse button_admin'
+			buttonBrowse: 'rs-js-browse rs-admin-button'
 		}
 	}
 };

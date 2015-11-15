@@ -23,41 +23,41 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'list' => 'list_share_this clearfix',
-			'link' => 'js_link_share_this link_share_this'
+			'list' => 'rs-list-share-this rs-clearfix',
+			'link' => 'rs-js-link-share-this rs-link-share-this'
 		),
 		'network' => array(
 			'facebook' => array(
 				'url' => 'http://facebook.com/sharer.php?u=',
-				'className' => 'link_facebook',
+				'className' => 'rs-link-facebook',
 				'attribute' => 'data-type="facebook"'
 			),
 			'googleplusone' => array(
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
-				'className' => 'link_googleplusone'
+				'className' => 'rs-link-googleplusone'
 			),
 			'twitter' => array(
 				'url' => 'http://twitter.com/share?url=',
-				'className' => 'link_twitter',
+				'className' => 'rs-link-twitter',
 				'height' => 340
 			),
 			'pinterest' => array(
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
-				'className' => 'link_pinterest'
+				'className' => 'rs-link-pinterest'
 			),
 			'linkedin' => array(
 				'url' => 'http://linkedin.com/shareArticle?url=',
-				'className' => 'link_linkedin',
+				'className' => 'rs-link-linkedin',
 				'height' => 490,
 				'width' => 850
 			),
 			'stumbleupon' => array(
 				'url' => 'http://stumbleupon.com/submit?url=',
-				'className' => 'link_stumbleupon'
+				'className' => 'rs-link-stumbleupon'
 			),
 			'delicious' => array(
 				'url' => 'http://del.icio.us/post?url=',
-				'className' => 'link_delicious',
+				'className' => 'rs-link-delicious',
 				'height' => 580
 			)
 		)

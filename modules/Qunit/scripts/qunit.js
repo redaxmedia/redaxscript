@@ -66,11 +66,11 @@
 
 			if (qunitBanner.hasClass('qunit-pass'))
 			{
-				qunitBanner.addClass('note_success').text(rs.language._qunit.test_passed + rs.language.point);
+				qunitBanner.addClass('rs-note-success').text(rs.language._qunit.test_passed + rs.language.point);
 			}
 			else if (qunitBanner.hasClass('qunit-fail'))
 			{
-				qunitBanner.addClass('note_error').text(rs.language._qunit.test_failed + rs.language.point);
+				qunitBanner.addClass('rs-note-error').text(rs.language._qunit.test_failed + rs.language.point);
 			}
 			qunitBanner.detach().insertAfter(qunitUserAgent);
 

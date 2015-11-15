@@ -49,12 +49,12 @@
 					{
 						if (data === dataOld)
 						{
-							liveReloadBox.html('<div class="box_note note_info">' + rs.language._live_reload.live_reload + '</div>').toggle();
+							liveReloadBox.html('<div class="rs-box-note rs-note-info">' + rs.language._live_reload.live_reload + '</div>').toggle();
 						}
 						else if (dataOld.length)
 						{
 							style.text('<!-- /* <![cdata[ */ ' + data + ' /* ]]> */ -->');
-							liveReloadBox.html('<div class="box_note note_success">' + rs.language._live_reload.updated + '</div>').show();
+							liveReloadBox.html('<div class="rs-box-note rs-note-success">' + rs.language._live_reload.updated + '</div>').show();
 						}
 						dataOld = data;
 					}

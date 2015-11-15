@@ -11,7 +11,7 @@
 
 /* @section 1. ace */
 
-.has_ace_editor .ace_editor
+.rs-has-ace-editor .rs-ace-editor
 {
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;

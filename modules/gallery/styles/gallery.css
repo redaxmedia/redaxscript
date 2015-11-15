@@ -26,7 +26,7 @@
 
 /* @section 2. gallery */
 
-.gallery
+.rs-gallery
 {
 	left: 50%;
 	position: fixed;
@@ -34,7 +34,7 @@
 	z-index: 1100;
 }
 
-.gallery_media
+.rs-gallery-media
 {
 	border-radius: 0.25em;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
@@ -42,7 +42,7 @@
 
 /* @section 3. gallery overlay */
 
-.gallery_overlay
+.rs-gallery-overlay
 {
 	background: #000;
 	background: rgba(0, 0, 0, 0.3);
@@ -56,7 +56,7 @@
 
 /* @section 4. fadein effect */
 
-.gallery_media, .gallery_meta, .gallery_overlay
+.rs-gallery-media, .rs-gallery-meta, .rs-gallery-overlay
 {
 	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
@@ -64,7 +64,7 @@
 
 /* @section 5. gallery loader */
 
-.gallery_loader:after
+.rs-gallery-loader:after
 {
 	-webkit-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
 	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
@@ -81,14 +81,14 @@
 	transform: scale(0);
 }
 
-.gallery.gallery_loader:after
+.rs-gallery.rs-gallery-loader:after
 {
 	font-size: 6em;
 }
 
 /* @section 6. gallery control */
 
-.gallery_control
+.rs-gallery-control
 {
 	color: #333;
 	color: rgba(0, 0, 0, 0.3);
@@ -100,13 +100,13 @@
 	z-index: 1200;
 }
 
-.gallery_control:hover
+.rs-gallery-control:hover
 {
 	color: #000;
 	color: rgba(0, 0, 0, 0.6);
 }
 
-.gallery_control:before, .gallery_control:after
+.rs-gallery-control:before, .rs-gallery-control:after
 {
 	position: absolute;
 	text-indent: 0;
@@ -114,12 +114,12 @@
 
 /* previous */
 
-.gallery_control_previous
+.rs-gallery-control-previous
 {
 	left: 5%;
 }
 
-.gallery_control_previous:before
+.rs-gallery-control-previous:before
 {
 	left: 0;
 	content: '<';
@@ -127,12 +127,12 @@
 
 /* next */
 
-.gallery_control_next
+.rs-gallery-control-next
 {
 	right: 5%;
 }
 
-.gallery_control_next:after
+.rs-gallery-control-next:after
 {
 	right: 0;
 	content: '>';
@@ -140,7 +140,7 @@
 
 /* @section 7. gallery meta */
 
-.gallery_meta
+.rs-gallery-meta
 {
 	color: #333;
 	color: rgba(0, 0, 0, 0.3);
@@ -153,30 +153,30 @@
 	text-align: center;
 }
 
-.gallery_artist
+.rs-gallery-artist
 {
 	font-size: 1.5em;
 }
 
-.gallery_description
+.rs-gallery-description
 {
 	font-size: 1.75em;
 }
 
-.gallery_pagination
+.rs-gallery-pagination
 {
 	margin-top: 0.5em;
 }
 
 /* @section 8. gallery list */
 
-.item_gallery
+.rs-item-gallery
 {
 	margin: 0 1em 1em 0;
 	position: relative;
 }
 
-.item_gallery, .image_gallery
+.rs-item-gallery, .rs-image-gallery
 {
 	float: left;
 }

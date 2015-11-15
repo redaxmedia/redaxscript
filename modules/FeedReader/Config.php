@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'title' => 'title_feed_reader clearfix',
-			'box' => 'box_feed_reader'
+			'title' => 'rs-title-feed-reader rs-clearfix',
+			'box' => 'rs-box-feed-reader'
 		)
 	);
 }

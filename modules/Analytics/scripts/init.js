@@ -15,7 +15,7 @@ rs.modules.analytics =
 {
 	init: rs.registry.loggedIn !== rs.registry.token,
 	dependency: typeof _gaq === 'object',
-	selector: 'a.js_track_click, button.js_track_click',
+	selector: 'a.rs-js-track-click, button.rs-js-track-click',
 	options:
 	{
 		id: 'UA-00000000-0',

@@ -13,7 +13,7 @@
 
 /* @section 1. box live reload */
 
-.box_live_reload
+.rs-box-live-reload
 {
 	bottom: 1em;
 	font: 0.875em arial;
@@ -26,7 +26,7 @@
 
 @media screen and (min-width: 50em)
 {
-	.box_live_reload
+	.rs-box-live-reload
 	{
 		width: 12.5em;
 	}
@@ -36,7 +36,7 @@
 
 @media screen and (max-width: 50em)
 {
-	.box_live_reload
+	.rs-box-live-reload
 	{
 		left: 1em;
 	}

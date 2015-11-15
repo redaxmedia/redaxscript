@@ -137,26 +137,26 @@ function file_manager($directory = '')
 	}
 	if (!is_dir($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('directory_create', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . l('directory_create', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 	else if (!is_writable($directory))
 	{
-		$output = '<div class="box_note note_error">' . l('directory_permission_grant', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . l('directory_permission_grant', '_file_manager') . l('colon') . ' ' . $directory . l('point') . '</div>';
 	}
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('file_manager', '_file_manager') . '</h2>';
-	$output .= form_element('form', 'form_file_manager', 'js_form_file_manager form_file_manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
-	$output .= form_element('file', '', 'js_file field_file hide_if_js', 'file', '', l('browse', '_file_manager'));
-	$output .= '<button type="submit" class="js_upload field_upload button_admin hide_if_js">' . l('upload', '_file_manager') . '</span></span></button>';
+	$output .= '<h2 class="rs-title-content">' . l('file_manager', '_file_manager') . '</h2>';
+	$output .= form_element('form', 'form_file_manager', 'rs-js-form-file-manager rs-form-file-manager', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/file-manager/upload" method="post" enctype="multipart/form-data"');
+	$output .= form_element('file', '', 'rs-js-file rs-field-file rs-hide-if-js', 'file', '', l('browse', '_file_manager'));
+	$output .= '<button type="submit" class="rs-js-upload rs-field-upload rs-admin-button rs-hide-if-js">' . l('upload', '_file_manager') . '</span></span></button>';
 	$output .= '</form>';
-	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('file_size', '_file_manager') . '</th><th class="s1o6 column_last">' . l('date') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('file_size', '_file_manager') . '</td><td class="column_last">' . l('date') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-s4o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('file_size', '_file_manager') . '</th><th class="rs-s1o6 rs-column-last">' . l('date') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('file_size', '_file_manager') . '</td><td class="rs-column-last">' . l('date') . '</td></tr></tfoot>';
 
 	/* file manager directory object */
 
@@ -171,7 +171,7 @@ function file_manager($directory = '')
 		$output .= '<tbody>';
 		foreach ($file_manager_directory_array as $key => $value)
 		{
-			$output .= '<tr><td class="column_first">';
+			$output .= '<tr><td class="rs-column-first">';
 			$path = $directory . '/' . $value;
 			if (function_exists('exif_imagetype') && exif_imagetype($path))
 			{
@@ -184,11 +184,11 @@ function file_manager($directory = '')
 
 			/* collect control output */
 
-			$output .= '<ul class="list_control_admin"><li class="item_delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/file-manager/delete/' . $key . '/' . TOKEN) . '</li></ul>';
+			$output .= '<ul class="rs-admin-list-control"><li class="rs-item-delete">' . anchor_element('internal', '', 'rs-js-confirm', l('delete'), 'admin/file-manager/delete/' . $key . '/' . TOKEN) . '</li></ul>';
 
 			/* collect filesize and filetime output */
 
-			$output .= '</td><td class="column_second">' . ceil(filesize($path) / 1024) . ' Kb</td><td class="column_last">' . date(s('date'), filectime($path)) . '</td></tr>';
+			$output .= '</td><td class="rs-column-second">' . ceil(filesize($path) / 1024) . ' Kb</td><td class="rs-column-last">' . date(s('date'), filectime($path)) . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
@@ -269,7 +269,7 @@ function file_manager_upload($directory = '')
 
 	if ($error)
 	{
-		$output = '<div class="box_note note_warning">' . $error . '</div>';
+		$output = '<div class="rs-box-note rs-note-warning">' . $error . '</div>';
 		echo $output;
 	}
 	else

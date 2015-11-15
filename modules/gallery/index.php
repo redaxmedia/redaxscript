@@ -141,8 +141,8 @@ function gallery($directory = '', $options = '', $command = '')
 
 					/* collect image output */
 
-					$image = '<img src="' . $thumb_route . '" class="image image_gallery"' . $alt_string . ' />';
-					$output .= '<li class="item_gallery">' . anchor_element('', '', 'link_gallery', $image, $path, $image_description, $data_string) . '</li>';
+					$image = '<img src="' . $thumb_route . '" class="rs-image rs-image-gallery"' . $alt_string . ' />';
+					$output .= '<li class="rs-item-gallery">' . anchor_element('', '', 'rs-link-gallery', $image, $path, $image_description, $data_string) . '</li>';
 				}
 			}
 
@@ -150,7 +150,7 @@ function gallery($directory = '', $options = '', $command = '')
 
 			if ($output)
 			{
-				$output = '<ul id="' . $gallery_id . '" class="js_list_gallery list_gallery ' . $gallery_id . ' clearfix">' . $output . '</ul>';
+				$output = '<ul id="' . $gallery_id . '" class="rs-js-list-gallery rs-list-gallery ' . $gallery_id . ' rs-clearfix">' . $output . '</ul>';
 				echo $output;
 			}
 		}

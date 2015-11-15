@@ -13,7 +13,7 @@
 
 /* @section 1. box validator */
 
-.box_validator
+.rs-box-validator
 {
 	bottom: 1em;
 	font: 0.875em arial;
@@ -24,7 +24,7 @@
 
 /* box note */
 
-.box_validator .box_note:before
+.rs-box-validator .rs-box-note:before
 {
 	float: left;
 }
@@ -33,7 +33,7 @@
 
 @media screen and (min-width: 50em)
 {
-	.box_validator
+	.rs-box-validator
 	{
 		width: 20em;
 	}
@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 50em)
 {
-	.box_validator
+	.rs-box-validator
 	{
 		left: 1em;
 	}

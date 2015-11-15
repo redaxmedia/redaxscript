@@ -14,7 +14,7 @@
 rs.modules.lazyLoad =
 {
 	init: true,
-	selector: 'img.js_lazy_load:visible',
+	selector: 'img.rs-js-lazy-load:visible',
 	options:
 	{
 		threshold: 200,
