@@ -7,7 +7,7 @@ namespace Redaxscript\Html;
  * @since 2.6.0
  *
  * @package Redaxscript
- * @category Form
+ * @category Html
  * @author Henry Ruhs
  */
 

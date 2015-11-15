@@ -436,318 +436,6 @@ module.exports = function (grunt)
 				ext: '.zip',
 				expand: true
 
-			},
-			distModulesAce:
-			{
-				src:
-				[
-					'modules/Ace/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/ace.zip'
-				}
-			},
-			distModulesAnalytics:
-			{
-				src:
-				[
-					'modules/Analytics/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/analytics.zip'
-				}
-			},
-			distModulesArchive:
-			{
-				src:
-				[
-					'modules/Archive/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/archive.zip'
-				}
-			},
-			distModulesCallHome:
-			{
-				src:
-				[
-					'modules/CallHome/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/call_home.zip'
-				}
-			},
-			distModulesContact:
-			{
-				src:
-				[
-					'modules/Contact/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/contact.zip'
-				}
-			},
-			distModulesDawanda:
-			{
-				src:
-				[
-					'modules/Dawanda/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/dawanda.zip'
-				}
-			},
-			distModulesDirectoryLister:
-			{
-				src:
-				[
-					'modules/DirectoryLister/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/directory_lister.zip'
-				}
-			},
-			distModulesDisqus:
-			{
-				src:
-				[
-					'modules/Disqus/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/disqus.zip'
-				}
-			},
-			distModulesEditor:
-			{
-				src:
-				[
-					'modules/Editor/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/editor.zip'
-				}
-			},
-			distModulesFeedGenerator:
-			{
-				src:
-				[
-					'modules/FeedGenerator/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/feed_generator.zip'
-				}
-			},
-			distModulesFeedReader:
-			{
-				src:
-				[
-					'modules/FeedReader/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/feed_reader.zip'
-				}
-			},
-			distModulesGallery:
-			{
-				src:
-				[
-					'modules/gallery/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/gallery.zip'
-				}
-			},
-			distModulesGetFile:
-			{
-				src:
-				[
-					'modules/GetFile/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/get_file.zip'
-				}
-			},
-			distModulesLazyLoad:
-			{
-				src:
-				[
-					'modules/LazyLoad/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/lazy_load.zip'
-				}
-			},
-			distModulesLiveReload:
-			{
-				src:
-				[
-					'modules/LiveReload/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/live_reload.zip'
-				}
-			},
-			distModulesMaps:
-			{
-				src:
-				[
-					'modules/Maps/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/maps.zip'
-				}
-			},
-			distModulesPreview:
-			{
-				src:
-				[
-					'modules/Preview/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/preview.zip'
-				}
-			},
-			distModulesQunit:
-			{
-				src:
-				[
-					'modules/Qunit/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/qunit.zip'
-				}
-			},
-			distModulesRecentView:
-			{
-				src:
-				[
-					'modules/RecentView/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/recent_view.zip'
-				}
-			},
-			distModulesShareThis:
-			{
-				src:
-				[
-					'modules/ShareThis/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/share_this.zip'
-				}
-			},
-			distModulesSitemap:
-			{
-				src:
-				[
-					'modules/Sitemap/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/sitemap.zip'
-				}
-			},
-			distModulesSitemapXml:
-			{
-				src:
-				[
-					'modules/SitemapXml/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/sitemap_xml.zip'
-				}
-			},
-			distModulesSyntaxHighlighter:
-			{
-				src:
-				[
-					'modules/SyntaxHighlighter/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/syntax_highlighter.zip'
-				}
-			},
-			distModulesValidator:
-			{
-				src:
-				[
-					'modules/Validator/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/modules/validator.zip'
-				}
-			},
-			distTemplatesCandy:
-			{
-				src:
-				[
-					'templates/candy/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/templates/candy.zip'
-				},
-				dot: true
-			},
-			distTemplatesScratch:
-			{
-				src:
-				[
-					'templates/scratch/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/templates/scratch.zip'
-				},
-				dot: true
-			},
-			distTemplatesTwitter:
-			{
-				src:
-				[
-					'templates/twitter/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/templates/twitter.zip'
-				},
-				dot: true
-			},
-			distTemplatesWide:
-			{
-				src:
-				[
-					'templates/wide/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-dist/files/templates/wide.zip'
-				},
-				dot: true
 			}
 		},
 		img:
@@ -833,6 +521,30 @@ module.exports = function (grunt)
 			}
 		}
 	});
+
+	/* dynamic dist */
+
+	grunt.dynamicDist = function (directory)
+	{
+		var target = grunt.file.expand(directory + '/*');
+
+		for (var i in target)
+		{
+			grunt.config.set('compress.' + target[i],
+			{
+				src:
+				[
+					target[i] + '/**'
+				],
+				options:
+				{
+					archive: '../redaxscript-dist/files/' + target[i].toLowerCase() + '.zip'
+				}
+			});
+		}
+	};
+	grunt.dynamicDist('modules');
+	grunt.dynamicDist('templates');
 
 	/* load tasks */
 

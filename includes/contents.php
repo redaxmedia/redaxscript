@@ -568,7 +568,10 @@ function notification($title = '', $text = '', $action = '', $route = '')
 	}
 	foreach ($text as $value)
 	{
-		$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
+		if ($value)
+		{
+			$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
+		}
 	}
 
 	/* collect button output */
