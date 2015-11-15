@@ -206,7 +206,7 @@ class Db extends ORM
 		}
 		if (self::$_config->get('dbType') === 'pgsql')
 		{
-			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('dbPrefix') . '%')->findMany()->count();
+			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('dbPrefix') . '%')->whereNotLike('tablename', '%pg_%')->whereNotLike('tablename', '%sql_%')->count();
 		}
 		if (self::$_config->get('dbType') === 'sqlite')
 		{
