@@ -14,7 +14,7 @@
 function admin_settings_form()
 {
 	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-	$output .= '<h2 class="rs-admin-title-content">' . l('settings') . '</h2>';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('settings') . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-accordion rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
@@ -64,8 +64,8 @@ function admin_settings_form()
 	$output .= '<li>' . form_element('text', 'title', 'rs-admin-field-text', 'title', s('title'), l('title'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-text', 'author', s('author'), l('author'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'copyright', 'rs-admin-field-text', 'copyright', s('copyright'), l('copyright'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'keywords', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', s('description'), l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'keywords', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'keywords', s('keywords'), l('keywords'), 'rows="1" cols="15"') . '</li>';
 	$output .= '<li>' . select_element('robots', 'rs-admin-field-select', 'robots', array(
 		l('index') => 'all',
 		l('index_no') => 'none'

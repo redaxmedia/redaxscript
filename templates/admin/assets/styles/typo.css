@@ -7,6 +7,7 @@
  *    2.2 last element
  * 3. several admin titles
  * 4. title dialog admin
+ * 5. title content admin
  *
  * @since 2.0.0
  *
@@ -66,7 +67,7 @@
 	border-bottom-width: 1px;
 }
 
-/* @section 3.rs-admin- several admin titles */
+/* @section 3. several admin titles */
 
 .rs-admin-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
@@ -79,7 +80,7 @@
 	color: #ccc;
 }
 
-/* @section 4.rs-admin- title dialog admin */
+/* @section 4. title dialog admin */
 
 .rs-admin-title-dialog
 {
@@ -87,4 +88,11 @@
 	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
 	text-transform: uppercase;
+}
+
+/* @section 5. title content admin */
+
+.rs-admin-title-content
+{
+	margin-bottom: 1em;
 }

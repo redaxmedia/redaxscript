@@ -56,7 +56,7 @@ function admin_contents_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . l(TABLE_PARAMETER) . '</h2>';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l(TABLE_PARAMETER) . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
@@ -70,16 +70,16 @@ function admin_contents_list()
 
 	/* collect thead */
 
-	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . l('title') . '</th><th class="';
+	$output .= '<thead><tr><th class="rs-s3o6 rs-column-first">' . l('title') . '</th><th class="';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= 'rs-admin-s1o6';
+		$output .= 'rs-s1o6';
 	}
 	else
 	{
-		$output .= 'rs-admin-s3o6';
+		$output .= 'rs-s3o6';
 	}
-	$output .= ' rs-admin-column-second">';
+	$output .= ' rs-column-second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= l('identifier');
@@ -91,13 +91,14 @@ function admin_contents_list()
 	$output .= '</th>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<th class="rs-admin-column-third">' . l($wording_parent) . '</th>';
+		$output .= '<th class="rs-column-third">' . l($wording_parent) . '</th>';
 	}
-	$output .= '<th class="rs-admin-column-move rs-admin-column-last">' . l('rank') . '</th></tr></thead>';
+	$output .= '<th class="rs-column-move rs-column-last">' . l('rank') . '</th></tr></thead>';
 
 	/* collect tfoot */
 
-	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('title') . '</td><td class="rs-admin-column-second">';
+	$output .= '<tfoot><tr><td class="rs-column-first">' . l('title') . '</td><td class="rs-column-second">';
+	if (TABLE_PARAMETER == 'comments')
 	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= l('identifier');
@@ -109,9 +110,9 @@ function admin_contents_list()
 	$output .= '</td>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<td class="rs-admin-column-third">' . l($wording_parent) . '</td>';
+		$output .= '<td class="rs-column-third">' . l($wording_parent) . '</td>';
 	}
-	$output .= '<td class="rs-admin-column-move rs-admin-column-last">' . l('rank') . '</td></tr></tfoot>';
+	$output .= '<td class="rs-column-move rs-column-last">' . l('rank') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l($wording_single . '_no') . l('point');
@@ -181,7 +182,7 @@ function admin_contents_list()
 				{
 					if ($before != $parent)
 					{
-						$output .= '<tbody><tr class="rs-admin-row-group"><td colspan="4">';
+						$output .= '<tbody><tr class="rs-row-group"><td colspan="4">';
 						if ($parent)
 						{
 							$output .= Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
@@ -198,7 +199,7 @@ function admin_contents_list()
 				{
 					if ($before != $category)
 					{
-						$output .= '<tbody><tr class="rs-admin-row-group"><td colspan="4">';
+						$output .= '<tbody><tr class="rs-row-group"><td colspan="4">';
 						if ($category)
 						{
 							$output .= Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
@@ -215,7 +216,7 @@ function admin_contents_list()
 				{
 					if ($before != $article)
 					{
-						$output .= '<tbody><tr class="rs-admin-row-group"><td colspan="4">';
+						$output .= '<tbody><tr class="rs-row-group"><td colspan="4">';
 						if ($article)
 						{
 							$output .= Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
@@ -240,14 +241,14 @@ function admin_contents_list()
 				{
 					$output .= ' class="' . $class_status . '"';
 				}
-				$output .= '><td class="rs-admin-column-first">';
+				$output .= '><td class="rs-column-first">';
 				if ($language)
 				{
-					$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+					$output .= '<span class="rs-icon-flag rs-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
 				}
 				if ($status == 1)
 				{
-					$output .= anchor_element('internal', '', 'rs-admin-link-view', $name, $route);
+					$output .= anchor_element('internal', '', 'rs-link-view', $name, $route);
 				}
 				else
 				{
@@ -260,7 +261,7 @@ function admin_contents_list()
 
 				/* collect alias and id output */
 
-				$output .= '</td><td class="rs-admin-column-second">';
+				$output .= '</td><td class="rs-column-second">';
 				if (TABLE_PARAMETER == 'comments')
 				{
 					$output .= $id;
@@ -275,7 +276,7 @@ function admin_contents_list()
 
 				if (TABLE_PARAMETER != 'extras')
 				{
-					$output .= '<td class="rs-admin-column-third">';
+					$output .= '<td class="rs-column-third">';
 					if (TABLE_PARAMETER == 'categories')
 					{
 						if ($parent)
@@ -314,7 +315,7 @@ function admin_contents_list()
 					}
 					$output .= '</td>';
 				}
-				$output .= '<td class="rs-admin-column-move rs-admin-column-last">';
+				$output .= '<td class="rs-column-move rs-column-last">';
 
 				/* collect control output */
 
@@ -323,19 +324,19 @@ function admin_contents_list()
 					$rank_desc = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
-						$output .= anchor_element('internal', '', 'rs-admin-move-up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= anchor_element('internal', '', 'rs-move-up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-up">' . l('up') . '</span>';
+						$output .= '<span class="rs-move-up">' . l('up') . '</span>';
 					}
 					if ($rank < $rank_desc)
 					{
-						$output .= anchor_element('internal', '', 'rs-admin-move-down', l('down'), 'admin/down/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= anchor_element('internal', '', 'rs-move-down', l('down'), 'admin/down/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-down">' . l('down') . '</span>';
+						$output .= '<span class="rs-move-down">' . l('down') . '</span>';
 					}
 					$output .= '</td>';
 				}
@@ -497,7 +498,7 @@ function admin_contents_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -520,23 +521,23 @@ function admin_contents_form()
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l($wording_single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-text rs-admin-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
-		$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-admin-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 		$output .= '<li>' . form_element('url', 'url', 'rs-admin-field-text', 'url', $url, l('url'), 'maxlength="50"') . '</li>';
 	}
 	else
 	{
-		$output .= '<li>' . form_element('text', 'title', 'rs-js-generate-alias-input rs-admin-field-text rs-admin-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-		$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-admin-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'title', 'rs-js-generate-alias-input rs-admin-field-text rs-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+		$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	}
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{
-		$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
-		$output .= '<li>' . form_element('textarea', 'keywords', 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'keywords', 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small', 'keywords', $keywords, l('keywords'), 'rows="1" cols="15"') . '</li>';
 	}
 	if (TABLE_PARAMETER != 'categories')
 	{
-		$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea rs-admin-field-note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
+		$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea rs-field-note', 'text', $text, l('text'), 'rows="5" cols="100" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -741,20 +742,20 @@ function admin_contents_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-admin-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (TABLE_DELETE == 1 && $id)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-admin-button-large rs-admin-button-delete', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (TABLE_NEW == 1 || TABLE_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-admin-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');

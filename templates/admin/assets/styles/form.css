@@ -83,7 +83,7 @@
 
 /* @section 2. several fields */
 
-.rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-admin-field-small
+.rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
 {
 	width: 40%;
 }
@@ -132,7 +132,7 @@
 	width: 100%;
 }
 
-.rs-admin-field-textarea.rs-admin-field-small
+.rs-admin-field-textarea.rs-field-small
 {
 	min-height: 5em;
 }
