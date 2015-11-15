@@ -166,7 +166,10 @@ class Gallery extends Config
 	public static function _getImageData($file = null)
 	{
 		$output = array();
-		$exifData = exif_read_data($file);
+		if (function_exists('exif_read_data'))
+		{
+			$exifData = exif_read_data($file);
+		}
 
 		/* has image data */
 
