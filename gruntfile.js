@@ -530,7 +530,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					directory + '/' + target[i] + '/**'
+					target[i] + '/**'
 				],
 				options:
 				{
