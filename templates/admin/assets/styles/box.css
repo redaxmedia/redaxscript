@@ -32,6 +32,17 @@
 	border-bottom-width: 0;
 }
 
+.rs-admin-title-accordion + .rs-admin-box-accordion
+{
+	border-top: 1px solid #b9b9b9;
+}
+
+/* TODO: delete, when admin css is independent from default template css */
+.rs-admin-set-accordion + .rs-admin-set-accordion
+{
+	margin-top: 0;
+}
+
 /* @section 1.1 last element */
 
 .rs-admin-set-accordion-last .rs-admin-box-accordion

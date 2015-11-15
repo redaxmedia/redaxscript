@@ -36,6 +36,16 @@
 	width: 100%;
 }
 
+.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+{
+	border-bottom: none;
+}
+
+.rs-admin-title-accordion:not(.rs-admin-title-active)
+{
+	cursor: pointer;
+}
+
 .rs-admin-title-accordion, .rs-admin-title-accordion a
 {
 	color: #444;
