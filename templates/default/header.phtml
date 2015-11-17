@@ -1,4 +1,4 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <!-- menu trigger -->
 
@@ -15,21 +15,21 @@
 
 			<!-- metadata -->
 
-			<?php if (Db::getSettings('title')): ?>
+			<?php if (Template::setting('title')): ?>
 
 				<!-- title -->
 
 				<h1 class="rs-title-website">
-					<a href="<?php echo Registry::get('root'); ?>">
-						<?php echo Db::getSettings('title'); ?>
+					<a href="<?php echo Template::registry('root'); ?>">
+						<?php echo Template::setting('title'); ?>
 					</a>
 				</h1>
 			<?php endif; ?>
 
 			<!-- description -->
 
-			<?php if (Db::getSettings('description')): ?>
-				<span class="rs-description-website"><?php echo Db::getSettings('description'); ?></span>
+			<?php if (Template::setting('description')): ?>
+				<span class="rs-description-website"><?php echo Template::setting('description'); ?></span>
 			<?php endif; ?>
 
 			<label class="rs-navigation-trigger" for="rs-navigaton">Menu</label>
@@ -42,7 +42,7 @@
 
 				<!-- categories -->
 
-				<li><?php echo Language::get('categories'); ?>
+				<li><?php echo Template::language('categories'); ?>
 					<?php echo Template::navigation('categories', array(
 						'children' => 1,
 						'class' => 'rs-list-header-children',
@@ -52,7 +52,7 @@
 
 				<!-- articles -->
 
-				<li><?php echo Language::get('articles'); ?>
+				<li><?php echo Template::language('articles'); ?>
 					<?php echo Template::navigation('articles', array(
 						'class' => 'rs-list-header-children',
 						'limit' => 5

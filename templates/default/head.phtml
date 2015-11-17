@@ -1,4 +1,4 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <!-- base and title -->
 
@@ -14,7 +14,7 @@
 
 <?php echo Template::link(); ?>
 <link href="templates/default/images/favicon.ico" rel="shortcut icon" />
-<?php if (!Registry::get('myMobile')): ?>
+<?php if (!Template::registry('myMobile')): ?>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
 <?php endif; ?>
 

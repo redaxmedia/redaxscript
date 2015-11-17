@@ -1,8 +1,8 @@
-<?php namespace Redaxscript; ?>
+<?php use Redaxscript\Template as Template; ?>
 
 <!-- footer -->
 
-<?php if (!Registry::get('myMobile')): ?>
+<?php if (!Template::registry('myMobile')): ?>
 	<footer id="rs-footer" class="rs-footer">
 		<section class="rs-wrapper rs-clearfix">
 			<?php echo Template::extra('footer'); ?>
@@ -12,9 +12,9 @@
 
 		<div id="rs-bottom" class="rs-bottom">
 			<section class="rs-wrapper">
-				<?php echo Language::get('powered_by'); ?>
-				<a href="<?php echo Language::get('homepage', '_package'); ?>" class="rs-link-custom rs-link-powered-by"><?php echo Language::get('name', '_package'); ?></a>
-				<?php echo Language::get('version', '_package'); ?>
+				<?php echo Template::language('powered_by'); ?>
+				<a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-custom rs-link-powered-by"><?php echo Template::language('name', '_package'); ?></a>
+				<?php echo Template::language('version', '_package'); ?>
 			</section>
 		</div>
 
