@@ -25,7 +25,7 @@
 
 		<!-- teaser -->
 
-		<?php if(Template::registry('fullRoute')): ?>
+		<?php if(!Template::registry('fullRoute')): ?>
 			<?php echo Template::partial('templates/default/teaser.phtml'); ?>
 		<?php endif; ?>
 
