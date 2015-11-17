@@ -23,7 +23,7 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'list' => 'list_recent_view'
+			'list' => 'rs-list-recent-view'
 		)
 	);
 }

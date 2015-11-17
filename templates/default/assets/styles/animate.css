@@ -1,0 +1,87 @@
+/**
+ * @tableofcontents
+ *
+ * 1. teaser title
+ * 2. pulse
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+
+/* @section 1. teaser title */
+
+@-webkit-keyframes rs-title-teaser
+{
+	from
+	{
+		margin-top: -5em;
+	}
+
+	to
+	{
+		margin-top: 0;
+	}
+}
+
+@keyframes rs-title-teaser
+{
+	from
+	{
+		margin-top: -5em;
+	}
+
+	to
+	{
+		margin-top: 0;
+	}
+}
+
+/* @section 2. pulse */
+
+@-webkit-keyframes rs-pulse
+{
+	0%
+	{
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+
+	50%
+	{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100%
+	{
+		-webkit-transform: scale(0.5);
+		transform: scale(0.7);
+	}
+}
+
+@keyframes rs-pulse
+{
+	0%
+	{
+		-webkit-transform: scale(0.5);
+		-ms-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+
+	50%
+	{
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
+
+	100%
+	{
+		-webkit-transform: scale(0.5);
+		-ms-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+}

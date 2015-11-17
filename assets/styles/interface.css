@@ -1,0 +1,120 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list dropdown
+ *    1.1 children elements
+ * 2. list tab
+ * 3. set tab
+ * 4. title accordion
+ * 5. tooltip
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. list dropdown */
+
+.rs-list-dropdown a
+{
+	display: block;
+	white-space: nowrap;
+}
+
+.rs-list-dropdown li
+{
+	cursor: pointer;
+	position: relative;
+}
+
+.rs-list-dropdown li:hover > ul,
+.rs-list-dropdown .rs-item-touch > ul
+{
+	left: 0;
+	opacity: 1;
+	top: 100%;
+}
+
+/* @section 2. list tab */
+
+.rs-list-tab li
+{
+	display: inline-block;
+}
+
+.rs-js .rs-list-tab .rs-item-active
+{
+	pointer-events: none;
+}
+
+/* @section 3. set tab */
+
+.rs-js .rs-set-tab
+{
+	display: none;
+}
+
+.rs-js .rs-set-tab.rs-set-active
+{
+	display: block;
+}
+
+/* @section 4. title accordion */
+
+.rs-js .rs-title-accordion-default.rs-title-active
+{
+	pointer-events: none;
+}
+
+/* @section 5. tooltip */
+
+.rs-tooltip
+{
+	cursor: help;
+	position: relative;
+}
+
+.rs-tooltip.rs-link-default
+{
+	cursor: pointer;
+}
+
+.rs-tooltip:after
+{
+	content: attr(data-tooltip);
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: 500;
+}
+
+.rs-tooltip:focus:after,
+.rs-tooltip:hover:after
+{
+	opacity: 1;
+}
+
+/* @section 5. query */
+
+/* @section 5.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-list-dropdown ul
+	{
+		left: -999em;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		transition: opacity 0.5s ease 0s, top 0.2s ease 0s;
+		z-index: 1;
+	}
+
+	.rs-list-dropdown ul ul
+	{
+		left: 100%;
+		top: 0;
+	}
+
+}

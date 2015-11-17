@@ -13,21 +13,21 @@
 
 /* @section 1. box feed reader */
 
-.box_feed_reader
+.rs-box-feed-reader
 {
 	background: #eee;
 	padding: 1em 1.5em;
 	white-space: pre-line;
 }
 
-.box_feed_reader a
+.rs-box-feed-reader a
 {
 	text-decoration: underline;
 }
 
 /* @section 2. title feed reader */
 
-.title_feed_reader
+.rs-title-feed-reader
 {
 	background: #b9b9b9;
 	background: linear-gradient(#ccc, #b9b9b9);
@@ -38,19 +38,19 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.title_feed_reader a:hover
+.rs-title-feed-reader a:hover
 {
 	text-decoration: underline;
 }
 
-.title_feed_reader .title_second
+.rs-title-feed-reader .rs-title-second
 {
 	float: right;
 }
 
 /* @section 3. space between elements */
 
-.box_feed_reader + .title_feed_reader
+.rs-box-feed-reader + .rs-title-feed-reader
 {
 	margin-top: 2em;
 }

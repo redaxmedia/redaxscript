@@ -51,7 +51,7 @@ function loader($type = '', $mode = '')
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/' . $type . '/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/assets/' . $type . '/.loader', 1);
 
 	/* inherit from other templates */
 
@@ -60,7 +60,7 @@ function loader($type = '', $mode = '')
 	{
 		foreach ($loader_inherit as $key => $template)
 		{
-			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/' . $type . '/.loader', 1);
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/assets/' . $type . '/.loader', 1);
 			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
 		}
 	}
@@ -215,7 +215,7 @@ function styles()
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/styles/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/assets/styles/.loader', 1);
 
 	/* inherit from other templates */
 
@@ -224,7 +224,7 @@ function styles()
 	{
 		foreach ($loader_inherit as $key => $template)
 		{
-			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/styles/.loader', 1);
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/assets/styles/.loader', 1);
 			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
 		}
 	}
@@ -298,7 +298,7 @@ function scripts($mode = '')
 
 	/* parse loader ini */
 
-	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/scripts/.loader', 1);
+	$loader_ini = parse_ini_file('templates/' . Redaxscript\Registry::get('template') . '/assets/scripts/.loader', 1);
 
 	/* inherit from other templates */
 
@@ -307,7 +307,7 @@ function scripts($mode = '')
 	{
 		foreach ($loader_inherit as $key => $template)
 		{
-			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/scripts/.loader', 1);
+			$loader_inherit_ini = parse_ini_file('templates/' . $template . '/assets/scripts/.loader', 1);
 			$loader_ini = array_merge_recursive($loader_inherit_ini, $loader_ini);
 		}
 	}

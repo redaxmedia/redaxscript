@@ -90,7 +90,7 @@ class Qunit extends Module
 	{
 		if (Registry::get('firstParameter') === 'qunit')
 		{
-			$output = '<div id="qunit" class="wrapper_qunit"></div><div id="qunit-fixture"></div>';
+			$output = '<div id="qunit" class="rs-wrapper-qunit"></div><div id="qunit-fixture"></div>';
 			echo $output;
 		}
 	}

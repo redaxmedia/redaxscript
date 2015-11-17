@@ -22,18 +22,18 @@ function admin_users_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('users') . '</h2>';
-	$output .= '<div class="wrapper_button_admin">';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('users') . '</h2>';
+	$output .= '<div class="rs-admin-wrapper-button">';
 	if (USERS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('user_new'), 'admin/new/users');
+		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-plus', l('user_new'), 'admin/new/users');
 	}
-	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s3o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('user') . '</th><th class="s1o6 column_third">' . l('groups') . '</th><th class="s1o6 column_last">' . l('session') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('user') . '</td><td class="column_third">' . l('groups') . '</td><td class="column_last">' . l('session') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-s3o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('user') . '</th><th class="rs-s1o6 rs-column-third">' . l('groups') . '</th><th class="rs-s1o6 rs-column-last">' . l('session') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('user') . '</td><td class="rs-column-third">' . l('groups') . '</td><td class="rs-column-last">' . l('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('user_no') . l('point');
@@ -73,10 +73,10 @@ function admin_users_list()
 			{
 				$output .= ' class="' . $class_status . '"';
 			}
-			$output .= '><td class="column_first">';
+			$output .= '><td class="rs-column-first">';
 			if ($language)
 			{
-				$output .= '<span class="icon_flag language_' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+				$output .= '<span class="rs-icon-flag rs-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
 			}
 			$output .= $name;
 
@@ -86,7 +86,7 @@ function admin_users_list()
 
 			/* collect user and parent output */
 
-			$output .= '</td><td class="column_second">' . $user . '</td><td class="column_third">';
+			$output .= '</td><td class="rs-column-second">' . $user . '</td><td class="rs-column-third">';
 			if ($groups)
 			{
 				$groups_array = explode(', ', $groups);
@@ -110,7 +110,7 @@ function admin_users_list()
 			{
 				$output .= l('none');
 			}
-			$output .= '</td><td class="column_last">';
+			$output .= '</td><td class="rs-column-last">';
 			if ($first == $last)
 			{
 				$output .= l('none');
@@ -199,36 +199,36 @@ function admin_users_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 
-	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l('user'), FULL_ROUTE . '#tab-1') . '</li>';
-	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
+	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('user'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
+	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
 
 	/* collect user set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab js_set_active set_tab set_tab_admin set_active', '', '', l('user')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-text rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	if ($id == '')
 	{
-		$output .= '<li>' . form_element('text', 'user', 'field_text_admin field_note', 'user', $user, l('user'), 'maxlength="50" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'user', 'rs-admin-field-text rs-field-note', 'user', $user, l('user'), 'maxlength="50" required="required"') . '</li>';
 	}
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text_admin field_note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('password', 'password_confirm', 'js_unmask_password field_text_admin field_note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'field_text_admin field_note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-admin-field-text rs-field-note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password_confirm', 'rs-js-unmask-password rs-admin-field-text rs-field-note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-field-note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
 
-	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
 
 	/* languages directory object */
 
@@ -244,10 +244,10 @@ function admin_users_form()
 		$value = substr($value, 0, 2);
 		$language_array[l($value, '_index')] = $value;
 	}
-	$output .= '<li>' . select_element('language', 'field_select_admin', 'language', $language_array, $language, l('language')) . '</li>';
+	$output .= '<li>' . select_element('language', 'rs-admin-field-select', 'language', $language_array, $language, l('language')) . '</li>';
 	if ($id == '' || $id > 1)
 	{
-		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+		$output .= '<li>' . select_element('status', 'rs-admin-field-select', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';
@@ -264,7 +264,7 @@ function admin_users_form()
 					$groups_array[$g['name']] = $g['id'];
 				}
 			}
-			$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+			$output .= '<li>' . select_element('groups', 'rs-admin-field-select', 'groups', $groups_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
 		}
 	}
 	$output .= '</ul></fieldset></div>';
@@ -283,20 +283,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large button_cancel_admin', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large button_delete_admin', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminUserFormEnd');

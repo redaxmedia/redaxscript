@@ -1,0 +1,98 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. title accordion admin
+ *    2.1 javascript enabled
+ *    2.2 last element
+ * 3. several admin titles
+ * 4. title dialog admin
+ * 5. title content admin
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+@font-face
+{
+	font-family: 'icon admin';
+	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. title accordion admin */
+
+.rs-admin-title-accordion
+{
+	background: #d5d5d5;
+	background: linear-gradient(#d5d5d5, #ccc);
+	border: 1px solid #b9b9b9;
+	box-sizing: border-box;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+{
+	border-bottom: none;
+}
+
+.rs-admin-title-accordion:not(.rs-admin-title-active)
+{
+	cursor: pointer;
+}
+
+.rs-admin-title-accordion, .rs-admin-title-accordion a
+{
+	color: #444;
+}
+
+/* @section 2.1 javascript enabled */
+
+.rs-admin-js .rs-admin-title-accordion
+{
+	border-bottom-width: 0;
+	cursor: pointer;
+}
+
+/* @section 2.2 last element*/
+
+.rs-admin-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+{
+	border-bottom-width: 1px;
+}
+
+/* @section 3. several admin titles */
+
+.rs-admin-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	border: 1px solid #222;
+}
+
+.rs-admin-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+{
+	color: #ccc;
+}
+
+/* @section 4. title dialog admin */
+
+.rs-admin-title-dialog
+{
+	border-radius: 0.25em 0.25em 0 0;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-transform: uppercase;
+}
+
+/* @section 5. title content admin */
+
+.rs-admin-title-content
+{
+	margin-bottom: 1em;
+}

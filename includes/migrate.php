@@ -16,7 +16,7 @@ function breadcrumb()
 	$breadcrumb = new Redaxscript\Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 	$breadcrumb->init(array(
 		'className' => array(
-			'list' => 'list_breadcrumb',
+			'list' => 'rs-list-breadcrumb',
 			'divider' => 'divider'
 		)
 	));

@@ -1,6 +1,6 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript; ?>
 
-<article id="content" class="content grid_space s1o1">
-	<h2 class="title_content"><?php echo Template::language('error'); ?></h2>
-	<p><?php echo Template::language('content_not_found'); ?></p>
+<article id="rs-content" class="rs-content">
+	<h2 class="rs-title-content"><?php echo Language::get('error'); ?></h2>
+	<p><?php echo Language::get('content_not_found'); ?></p>
 </article>

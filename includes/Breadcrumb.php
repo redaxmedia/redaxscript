@@ -49,8 +49,8 @@ class Breadcrumb
 
 	protected $_options = array(
 		'className' => array(
-			'list' => 'list-breadcrumb',
-			'divider' => 'item-divider'
+			'list' => 'rs-list-breadcrumb',
+			'divider' => 'rs-item-divider'
 		),
 		'divider' => null
 	);

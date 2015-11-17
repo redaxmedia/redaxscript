@@ -22,13 +22,13 @@ function admin_modules_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('modules') . '</h2>';
-	$output .= '<div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('modules') . '</h2>';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('version') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('version') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-s4o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('alias') . '</th><th class="rs-s1o6 rs-column-last">' . l('version') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('alias') . '</td><td class="rs-column-last">' . l('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('module_no') . l('point');
@@ -76,7 +76,7 @@ function admin_modules_list()
 				{
 					$output .= ' class="' . $class_status . '"';
 				}
-				$output .= '><td class="column_first">' . $name;
+				$output .= '><td class="column-first">' . $name;
 
 				/* collect control output */
 
@@ -84,7 +84,7 @@ function admin_modules_list()
 
 				/* collect alias and version output */
 
-				$output .= '</td><td class="column_second">' . $alias . '</td><td class="column_last">' . $version . '</td></tr>';
+				$output .= '</td><td class="column-second">' . $alias . '</td><td class="column-last">' . $version . '</td></tr>';
 			}
 			else
 			{
@@ -127,7 +127,7 @@ function admin_modules_list()
 		}
 		if ($modules_not_installed_array)
 		{
-			$output .= '<tbody><tr class="row_group"><td colspan="3">' . l('install') . '</td></tr>';
+			$output .= '<tbody><tr class="rs-row-group"><td colspan="3">' . l('install') . '</td></tr>';
 			foreach ($modules_not_installed_array as $alias)
 			{
 				/* collect table row */
@@ -195,35 +195,35 @@ function admin_modules_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 
-	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l('module'), FULL_ROUTE . '#tab-1') . '</li>';
-	$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
+	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('module'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
 	foreach ($docs_directory_array as $key => $value)
 	{
-		$output .= '<li class="item_third">' . anchor_element('internal', '', '', str_replace('.phtml', '', $value), FULL_ROUTE . '#tab-'. ($key + 3)) . '</li>';
+		$output .= '<li class="rs-item-third">' . anchor_element('internal', '', '', str_replace('.phtml', '', $value), FULL_ROUTE . '#tab-'. ($key + 3)) . '</li>';
 	}
 	$output .= '</ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
+	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
 
 	/* collect module set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab js_set_active set_tab set_tab_admin set_active', '', '', l('user')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-text rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
 
-	$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
-	$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+	$output .= '<li>' . select_element('status', 'rs-admin-field-select', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';
@@ -241,7 +241,7 @@ function admin_modules_form()
 				$access_array[$g['name']] = $g['id'];
 			}
 		}
-		$output .= '<li>' . select_element('access', 'field_select_admin', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
+		$output .= '<li>' . select_element('access', 'rs-admin-field-select', 'access', $access_array, $access, l('access'), 'multiple="multiple"') . '</li></ul></fieldset>';
 	}
 
 	/* template object */
@@ -252,7 +252,7 @@ function admin_modules_form()
 
 	foreach ($docs_directory_array as $key => $value)
 	{
-		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'js_set_tab set_tab set_tab_admin', '', '', 'docs') . '<ul>';
+		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', 'docs') . '<ul>';
 		$output .= '<li>' . $template->partial('modules/' . $alias . '/docs/' . $value) . '</li></ul></fieldset>';
 	}
 	$output .= '</div>';
@@ -272,20 +272,20 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large button_cancel_admin', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large button_uninstall_admin', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (MODULES_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminModuleFormEnd');

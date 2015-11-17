@@ -23,19 +23,19 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'link' => 'link_directory_lister',
-			'list' => 'list_directory_lister clearfix',
-			'textSize' => 'text_directory_lister text_size',
-			'textDate' => 'text_directory_lister text_date',
+			'list' => 'rs-list-directory-lister rs-clearfix',
+			'link' => 'rs-link-directory-lister',
+			'textSize' => 'rs-text-directory-lister rs-text-size',
+			'textDate' => 'rs-text-directory-lister rs-text-date',
 			'types' => array(
-				'directory' => 'directory',
-				'directoryParent' => 'directory_parent',
-				'fileBlank' => 'file_blank',
-				'fileText' => 'file_text',
-				'fileImage' => 'file_image',
-				'fileMusic' => 'file_music',
-				'fileVideo' => 'file_video',
-				'fileArchive' => 'file_archive'
+				'directory' => 'rs-directory',
+				'directoryParent' => 'rs-directory-parent',
+				'fileBlank' => 'rs-file-blank',
+				'fileText' => 'rs-file-text',
+				'fileImage' => 'rs-file-image',
+				'fileMusic' => 'rs-file-music',
+				'fileVideo' => 'rs-file-video',
+				'fileArchive' => 'rs-file-archive'
 			)
 		),
 		'size' => array(

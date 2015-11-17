@@ -133,41 +133,41 @@ function install_form()
 
 	/* collect output */
 
-	$output = '<h2 class="title_content">' . l('installation') . '</h2>';
-	$output .= form_element('form', 'form_install', 'js_validate_form js_accordion form_default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
+	$output = '<h2 class="rs-title-content">' . l('installation') . '</h2>';
+	$output .= form_element('form', 'form_install', 'rs-js-validate-form rs-js-accordion rs-form-default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
 
 	/* collect database set */
 
-	$output .= '<fieldset class="js_set_accordion js_set_active set_accordion set_accordion_default set_active">';
-	$output .= '<legend class="js_title_accordion js_title_active title_accordion title_accordion_default title_active">' . l('database_setup') . '</legend>';
-	$output .= '<ul class="js_box_accordion js_box_active box_accordion box_accordion_default box_active">';
+	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-accordion-default rs-set-active">';
+	$output .= '<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-accordion-default rs-title-active">' . l('database_setup') . '</legend>';
+	$output .= '<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-accordion-default rs-box-active">';
 	if ($typeArray)
 	{
 		$output .= '<li>' . select_element('type', 'field_select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
 	}
-	$output .= '<li>' . form_element('text', 'd_host', 'field_text field_note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'field_text field_note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'field_text field_note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'd_password', 'js_unmask_password field_text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_host', 'rs-field-text rs-field-note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_name', 'rs-field-text rs-field-note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_user', 'rs-field-text rs-field-note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'd_password', 'rs-js-unmask-password rs-field-text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'd_prefix', 'field_text', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect account set */
 
-	$output .= '<fieldset class="js_set_accordion js_set_accordion_last set_accordion set_accordion_default set_accordion_last">';
-	$output .= '<legend class="js_title_accordion title_accordion title_accordion_default">' . l('account_create') . '</legend>';
-	$output .= '<ul class="js_box_accordion box_accordion box_accordion_default">';
-	$output .= '<li>' . form_element('text', 'name', 'field_text field_note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-accordion-last rs-set-accordion rs-set-accordion-default rs-set-accordion-last">';
+	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-title-accordion-default">' . l('account_create') . '</legend>';
+	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-box-accordion-default">';
+	$output .= '<li>' . form_element('text', 'name', 'rs-field-text rs-field-note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'rs-field-text rs-field-note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-field-text rs-field-note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'd_salt', sha1(uniqid()));
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default button_large', 'install_post', l('install'));
+	$output .= form_element('button', '', 'rs-js-submit rs-button-default rs-button-large', 'install_post', l('install'));
 	$output .= '</form>';
 	echo $output;
 }
@@ -425,14 +425,14 @@ function install_notification()
 
 	if ($error)
 	{
-		$output = '<div class="box_note note_error">' . $error . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . $error . l('point') . '</div>';
 	}
 
 	/* handle success */
 
 	else if (check_install() == 1)
 	{
-		$output = '<div class="box_note note_success">' . l('installation_completed') . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-success">' . l('installation_completed') . l('point') . '</div>';
 	}
 	echo $output;
 }
@@ -510,7 +510,7 @@ function router()
 
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
-		$output = '<div class="box_note note_error">' . l('token_incorrect') . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . l('token_incorrect') . l('point') . '</div>';
 		echo $output;
 		return;
 	}

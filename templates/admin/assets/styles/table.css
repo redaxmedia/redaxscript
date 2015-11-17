@@ -1,0 +1,225 @@
+/**
+ * @tableofcontents
+ *
+ * 1. admin table
+ *    1.1 body
+ *    1.2 row group
+ *    1.3 several elements
+ *    1.4 list control admin
+ *    1.5 move control
+ *    1.6 head and foot
+ *    1.7 column move
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. admin table */
+
+.rs-admin-table
+{
+	color: #474747;
+}
+
+/* @section 1.1 body */
+
+.rs-admin-table tbody
+{
+	border: solid #b9b9b9;
+	border-width: 0 1px;
+}
+
+/* odd look */
+
+.rs-admin-table tbody:nth-child(odd) tr
+{
+	background: #e2e2e2;
+	background: linear-gradient(#e2e2e2, #dadada);
+}
+
+/* even look */
+
+.rs-admin-table tbody:nth-child(even) tr
+{
+	background: #ebebeb;
+	background: linear-gradient(#ebebeb, #e8e8e8);
+}
+
+.rs-admin-table tbody + tbody tr, .rs-admin-table tbody tr + tr
+{
+	border-top: 1px solid #b9b9b9;
+}
+
+.rs-admin-table caption + tbody tr:last-child
+{
+	border-bottom: 1px solid #b9b9b9;
+}
+
+.rs-admin-table tbody td
+{
+	padding: 1em;
+}
+
+/* row disabled */
+
+.rs-admin-table tbody .rs-admin-row-disabled
+{
+	background: #ddd;
+	color: #b9b9b9;
+}
+
+/* @section 1.2 row group */
+
+.rs-admin-table tbody .rs-admin-row-group
+{
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.rs-admin-table tbody .rs-admin-row-group td
+{
+	padding: 1.25em 0.75em;
+}
+
+.rs-admin-table tbody .rs-admin-row-group td:before
+{
+	content: 's';
+	font: 1.5rem 'icon admin';
+	margin-right: 0.5em;
+	text-transform: lowercase;
+	vertical-align: text-bottom;
+}
+
+/* @section 1.3 several elements */
+
+.rs-admin-table tbody .rs-admin-link-parent
+{
+	color: #666;
+	text-decoration: underline;
+}
+
+.rs-admin-table tbody .rs-admin-link-parent:hover
+{
+	color: #474747;
+}
+
+.rs-admin-table tbody .rs-admin-link-view
+{
+	color: #474747;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.rs-admin-table tbody .rs-admin-icon-flag
+{
+	margin-right: 1em;
+}
+
+/* @section 1.4 list control admin */
+
+.rs-admin-table tbody .rs-admin-list-control
+{
+	margin-top: 1.5em;
+}
+
+.rs-admin-desktop .rs-admin-table tbody .rs-admin-list-control
+{
+	visibility: hidden;
+}
+
+.rs-admin-desktop .rs-admin-table tbody tr:hover .rs-admin-list-control
+{
+	visibility: visible;
+}
+
+/* @section 1.5 move control */
+
+.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-admin-move-down
+{
+	color: #474747;
+	display: block;
+	min-height: 3em;
+	position: relative;
+	transition: color 0.4s ease;
+}
+
+.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover
+{
+	color: #0090db;
+}
+
+.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
+{
+	display: block;
+	font: 1.5rem 'icon admin';
+	position: absolute;
+	text-indent: 0;
+	right: 0.25em;
+}
+
+.rs-admin-table .rs-admin-move-up:before
+{
+	content: 'b';
+	top: 0.25em;
+}
+
+.rs-admin-table .rs-admin-move-down:before
+{
+	content: 'c';
+	bottom: 0.25em;
+}
+
+/* disabled move control */
+
+.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-admin-move-down:before
+{
+	color: #b9b9b9;
+}
+
+/* @section 1.6 head and foot */
+
+.rs-admin-table caption, .rs-admin-table thead, .rs-admin-table tfoot
+{
+	border: 1px solid #222;
+}
+
+.rs-admin-table caption, .rs-admin-table thead tr, .rs-admin-table tfoot tr
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	color: #ccc;
+	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
+	text-transform: uppercase;
+}
+
+.rs-admin-table caption, .rs-admin-table thead th, .rs-admin-table tfoot td
+{
+	padding: 0.5em 1em;
+}
+
+/* @section 1.7 column move */
+
+.rs-admin-table .rs-admin-column-move
+{
+	text-indent: -999em;
+	text-align: left;
+}
+
+.rs-admin-table thead .rs-admin-column-move, .rs-admin-table tfoot .rs-admin-column-move
+{
+	display: block;
+	position: relative;
+}
+
+.rs-admin-table thead .rs-admin-column-move:before, .rs-admin-table tfoot .rs-admin-column-move:before
+{
+	content: 'a';
+	font: 1.25rem/2rem 'icon admin';
+	position: absolute;
+	right: 1.125em;
+	text-indent: 0;
+	text-transform: lowercase;
+	top: 0;
+}

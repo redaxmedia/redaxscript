@@ -22,14 +22,14 @@ function reminder_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . l('reminder') . '</h2>';
-	$output .= form_element('form', 'form_reminder', 'js_validate_form form_default form_reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
-	$output .= form_element('fieldset', '', 'set_reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('email', 'email', 'field_text field_note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<h2 class="rs-title-content">' . l('reminder') . '</h2>';
+	$output .= form_element('form', 'form_reminder', 'rs-js-validate-form rs-form-default rs-form-reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
+	$output .= form_element('fieldset', '', 'rs-set-reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
+	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 
 	/* collect captcha task output */
 
-	$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
+	$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect captcha solution output */
@@ -41,7 +41,7 @@ function reminder_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'reminder_post', l('submit'));
+	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'reminder_post', l('submit'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('reminderFormEnd');
 	echo $output;

@@ -1,0 +1,43 @@
+/**
+ * @tableofcontents
+ *
+ * 1. box accordion
+ * 2. box code
+ * 3. several boxes
+ * 4. box tab
+ *
+ * @since 2.0.2
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. box accordion */
+
+.rs-js .rs-box-accordion
+{
+    display: none;
+}
+
+/* @section 2. box code */
+
+.rs-box-code
+{
+    white-space: pre-wrap;
+}
+
+/* @section 3. several boxes */
+
+.rs-box-comment,
+.rs-box-content,
+.rs-box-extra
+{
+    word-wrap: break-word;
+}
+
+/* @section 4. box tab */
+
+.rs-box-tab
+{
+    overflow: hidden;
+}

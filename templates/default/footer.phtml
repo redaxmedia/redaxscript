@@ -1,23 +1,22 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript; ?>
 
 <!-- footer -->
 
-<?php if (!Template::registry('myMobile')): ?>
-	<footer id="footer" class="footer">
-		<section class="wrapper clearfix">
-			<?php echo Template::extra(array(
-				'filter' => 'footer'
-			)); ?>
+<?php if (!Registry::get('myMobile')): ?>
+	<footer id="rs-footer" class="rs-footer">
+		<section class="rs-wrapper rs-clearfix">
+			<?php echo Template::extra('footer'); ?>
 		</section>
+
+		<!-- bottom -->
+
+		<div id="rs-bottom" class="rs-bottom">
+			<section class="rs-wrapper">
+				<?php echo Language::get('powered_by'); ?>
+				<a href="<?php echo Language::get('homepage', '_package'); ?>" class="rs-link-custom rs-link-powered-by"><?php echo Language::get('name', '_package'); ?></a>
+				<?php echo Language::get('version', '_package'); ?>
+			</section>
+		</div>
+
 	</footer>
 <?php endif; ?>
-
-<!-- bottom -->
-
-<div id="bottom" class="bottom">
-	<section class="wrapper">
-		<?php echo Template::language('powered_by'); ?>
-		<a href="<?php echo Template::language('homepage', '_package'); ?>" class="link_powered_by"><?php echo Template::language('name', '_package'); ?></a>
-		<?php echo Template::language('version', '_package'); ?>
-	</section>
-</div>

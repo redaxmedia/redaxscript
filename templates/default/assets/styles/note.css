@@ -1,0 +1,95 @@
+/**
+ * @tableofcontents
+ *
+ * 1. note
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. note error */
+
+.rs-note-error.rs-box-note,
+form .rs-note-error.rs-field-note
+{
+    background: #da4f49;
+    border-color: #802420;
+}
+
+form .rs-note-error.rs-field-note option
+{
+    background: #da4f49;
+}
+
+.rs-note-error.rs-box-note:before
+{
+    content: '\78';
+}
+
+/* @section 2. note info */
+
+.rs-note-info.rs-box-note,
+form .rs-note-info.rs-field-note
+{
+    background: #49afcd;
+    border-color: #1f6377;
+}
+
+form .rs-note-info.rs-field-note option
+{
+    background: #49afcd;
+}
+
+.rs-note-info.rs-box-note:before
+{
+    content: '\69';
+}
+
+/* @section 3. note success */
+
+.rs-note-success.rs-box-note,
+form .rs-note-success.rs-field-note
+{
+    background: #5bb75b;
+    border-color: #387038;
+}
+
+form .rs-note-success.rs-field-note option
+{
+    background: #5bb75b;
+}
+
+.rs-note-success.rs-box-note:before
+{
+    content: '\2713';
+}
+
+/* @section 4. note warning */
+
+.rs-note-warning.rs-box-note,
+form .rs-note-warning.rs-field-note
+{
+    background: #f3940e;
+    border-color: #ad6704;
+}
+
+form .rs-note-warning.rs-field-note option
+{
+    background: #f3940e;
+}
+
+.rs-note-warning.rs-box-note:before
+{
+    content: '\21';
+}
+
+/* @section 5. several notes */
+
+/*.rs-box-note,*/
+/*.rs-box-note a,*/
+/*.rs-field-note*/
+/*{*/
+    /*color: #fff;*/
+/*}*/

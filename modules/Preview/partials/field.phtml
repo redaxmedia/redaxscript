@@ -1,41 +1,41 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : null;
+$suffix = $admin ? '-admin' : '';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $fieldTextElement = new Html\Element();
 $fieldTextElement
 	->init('input', array(
-		'class' => 'field_text' . $suffix
+		'class' => 'rs-field-text' . $suffix
 	))
 	->val(Language::get('preview', '_preview'));
 $fieldTextareaElement = new Html\Element();
 $fieldTextareaElement
 	->init('textarea', array(
-		'class' => 'field_textarea' . $suffix
+		'class' => 'rs-field-textarea' . $suffix
 	))
 	->val(Language::get('preview', '_preview'));
 $optionNative = '<option>Placeholder text</option>';
 $fieldSelectElement = new Html\Element();
 $fieldSelectElement
 	->init('select', array(
-		'class' => 'field_select' . $suffix
+		'class' => 'rs-field-select' . $suffix
 	))
 	->html($optionNative . $optionNative . $optionNative);
 ?>
 
 <!-- field text -->
 
-<?php echo $titlePartialElement->text('.field_text' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-field-text' . $suffix); ?>
 
 <?php echo $fieldTextElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.field_text' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text('.rs-field-text' . $suffix . '[disabled]'); ?>
 
 <?php echo $fieldTextElement
 	->copy()
@@ -43,13 +43,13 @@ $fieldSelectElement
 
 <!-- field textarea -->
 
-<?php echo $titlePartialElement->text('.field_textarea' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix); ?>
 
 <?php echo $fieldTextareaElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.field_textarea' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix . '[disabled]'); ?>
 
 <?php echo $fieldTextareaElement
 	->copy()
@@ -57,21 +57,21 @@ $fieldSelectElement
 
 <!-- small -->
 
-<?php echo $titlePartialElement->text('.field_textarea' . $suffix . '.field_small'); ?>
+<?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix . '.rs-field-small'); ?>
 
 <?php echo $fieldTextareaElement
 	->copy()
-	->addClass('field_small'); ?>
+	->addClass('rs-field-small'); ?>
 
 <!-- field select -->
 
-<?php echo $titlePartialElement->text('.field_select' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-field-select' . $suffix); ?>
 
 <?php echo $fieldSelectElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.field_select' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text('.rs-field-select' . $suffix . '[disabled]'); ?>
 
 <?php echo $fieldSelectElement
 	->copy()

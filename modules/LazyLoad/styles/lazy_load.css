@@ -11,12 +11,12 @@
 
 /* @section 1. lazy load */
 
-.placeholder_lazy_load
+.rs-placeholder-lazy-load
 {
 	display: none;
 }
 
-.js .placeholder_lazy_load
+.rs-js .rs-placeholder-lazy-load
 {
 	display: block;
 	height: 0.5em;

@@ -1,0 +1,35 @@
+/**
+ * @tableofcontents
+ *
+ * 1. hide
+ * 2. clearfix
+ *
+ * @since 2.2.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. hide */
+
+.rs-js .rs-hide-if-js,
+.rs-hidden-legend legend,
+.rs-fn-hidden
+{
+	display: none;
+}
+
+/* @section 2. clearfix */
+
+.rs-clearfix
+{
+	clear: both;
+}
+
+.rs-clearfix:after
+{
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+}

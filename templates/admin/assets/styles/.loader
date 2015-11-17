@@ -1,0 +1,9 @@
+[admin]
+1 = templates/admin/assets/styles/box.css
+2 = templates/admin/assets/styles/dialog.css
+3 = templates/admin/assets/styles/form.css
+4 = templates/admin/assets/styles/general.css
+5 = templates/admin/assets/styles/interface.css
+6 = templates/admin/assets/styles/table.css
+7 = templates/admin/assets/styles/typo.css
+8 = templates/admin/assets/styles/query.css

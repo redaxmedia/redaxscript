@@ -23,12 +23,12 @@
 
 /* @section 2. list share this */
 
-.list_share_this
+.rs-list-share-this
 {
 	margin-top: 2em;
 }
 
-.list_share_this li
+.rs-list-share-this li
 {
 	float: left;
 	margin: 0 3.5em 2em 0;
@@ -36,7 +36,7 @@
 
 /* @section 3. link share this */
 
-.link_share_this
+.rs-link-share-this
 {
 	display: inline-block;
 	height: 2.75em;
@@ -46,7 +46,7 @@
 
 /* @section 3.1 icons */
 
-.link_share_this:before
+.rs-link-share-this:before
 {
 	background: #bbb;
 	background: rgba(0, 0, 0, 0.15);
@@ -65,91 +65,91 @@
 
 /* facebook */
 
-.link_share_this.link_facebook:before
+.rs-link-share-this.rs-link-facebook:before
 {
 	content: 'b';
 }
 
-.link_share_this.link_facebook:hover:before
+.rs-link-share-this.rs-link-facebook:hover:before
 {
 	background: #3b5998;
 }
 
 /* google plus one */
 
-.link_share_this.link_googleplusone:before
+.rs-link-share-this.rs-link-googleplusone:before
 {
 	content: 'c';
 }
 
-.link_share_this.link_googleplusone:hover:before
+.rs-link-share-this.rs-link-googleplusone:hover:before
 {
 	background: #d34836;
 }
 
 /* twitter */
 
-.link_share_this.link_twitter:before
+.rs-link-share-this.rs-link-twitter:before
 {
 	content: 'd';
 }
 
-.link_share_this.link_twitter:hover:before
+.rs-link-share-this.rs-link-twitter:hover:before
 {
 	background: #00aced;
 }
 
 /* pinterest */
 
-.link_share_this.link_pinterest:before
+.rs-link-share-this.rs-link-pinterest:before
 {
 	content: 'e';
 }
 
-.link_share_this.link_pinterest:hover:before
+.rs-link-share-this.rs-link-pinterest:hover:before
 {
 	background: #cb2027;
 }
 
 /* linkedin */
 
-.link_share_this.link_linkedin:before
+.rs-link-share-this.rs-link-linkedin:before
 {
 	content: 'f';
 }
 
-.link_share_this.link_linkedin:hover:before
+.rs-link-share-this.rs-link-linkedin:hover:before
 {
 	background: #007bb6;
 }
 
 /* stumbleupon */
 
-.link_share_this.link_stumbleupon:before
+.rs-link-share-this.rs-link-stumbleupon:before
 {
 	content: 'g';
 }
 
-.link_share_this.link_stumbleupon:hover:before
+.rs-link-share-this.rs-link-stumbleupon:hover:before
 {
 	background: #f74425;
 }
 
 /* delicious */
 
-.link_share_this.link_delicious:before
+.rs-link-share-this.rs-link-delicious:before
 {
 	content: 'h';
 }
 
-.link_share_this.link_delicious:hover:before
+.rs-link-share-this.rs-link-delicious:hover:before
 {
 	background: #205cc0;
 }
 
 /* @section 4. counter */
 
-.link_share_this:after
+.rs-link-share-this:after
 {
 	color: #bbb;
 	color: rgba(0, 0, 0, 0.15);

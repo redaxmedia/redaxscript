@@ -1,0 +1,115 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several admin boxes
+ *    1.1 last element
+ * 2. box dock admin
+ *    2.1 description dock admin
+ *    2.2 footer grid fix
+ * 3. box panel admin
+ * 4. box tab admin
+ * 5. space between elements
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several admin boxes */
+
+.rs-admin-box-accordion, .rs-admin-box-dialog
+{
+	background: #e2e2e2;
+	background: linear-gradient(#e2e2e2, #dadada);
+	border: 1px solid #b9b9b9;
+	border-top: 0;
+	padding: 1em 1.5em;
+}
+
+.rs-admin-box-accordion
+{
+	border-bottom-width: 0;
+}
+
+.rs-admin-title-accordion + .rs-admin-box-accordion
+{
+	border-top: 1px solid #b9b9b9;
+}
+
+/* TODO: delete, when admin css is independent from default template css */
+.rs-admin-set-accordion + .rs-admin-set-accordion
+{
+	margin-top: 0;
+}
+
+/* @section 1.1 last element */
+
+.rs-admin-set-accordion-last .rs-admin-box-accordion
+{
+	border-bottom-width: 1px;
+}
+
+/* @section 2. box dock admin */
+
+.rs-admin-box-dock
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	font-size: 0.875rem;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.rs-admin-box-dock, .rs-admin-box-dock a
+{
+	color: #b9b9b9;
+}
+
+/* @section 2.1 description dock admin */
+
+.rs-admin-description-dock
+{
+	float: right;
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+	text-align: right;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	max-width: 10em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* @section 2.2 footer grid fix */
+
+.rs-admin-footer .rs-admin-box-dock
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+/* @section 3. box panel admin */
+
+.rs-admin-box-panel
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+}
+
+/* @section 4. box tab admin */
+
+.rs-admin-box-tab
+{
+	background: #e2e2e2;
+	background: linear-gradient(#e2e2e2, #dadada);
+	border: 1px solid #b9b9b9;
+	padding: 1em 1.5em;
+}
+
+/* @section 5. space between elements */
+
+.rs-admin-form .rs-admin-box-note
+{
+	margin-top: 1em;
+}

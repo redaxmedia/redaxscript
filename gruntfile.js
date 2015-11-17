@@ -62,14 +62,14 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/*/scripts/*.js'
+					'modules/*/assets/scripts/*.js'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/scripts/*.js'
+					'templates/*/assets/scripts/*.js'
 				]
 			},
 			options:
@@ -126,21 +126,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'styles/*.css'
+					'assets/styles/*.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/styles/*.css'
+					'modules/*/assets/styles/*.css'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/styles/*.css'
+					'templates/*/assets/styles/*.css'
 				]
 			},
 			options:
@@ -192,16 +192,16 @@ module.exports = function (grunt)
 				[
 					'includes/*/*.php',
 					'includes/*.php',
-					'scripts/*.js',
-					'styles/*.css'
+					'assets/scripts/*.js',
+					'assets/styles/*.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/scripts/*.js',
-					'modules/*/styles/*.css',
+					'modules/*/assets/scripts/*.js',
+					'modules/*/assets/styles/*.css',
 					'modules/*/*.php'
 				]
 			},
@@ -209,8 +209,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/*/scripts/*.js',
-					'templates/*/styles/*.css'
+					'templates/*/assets/scripts/*.js',
+					'templates/*/assets/styles/*.css'
 				]
 			},
 			tests:
@@ -260,21 +260,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'styles/*.css'
+					'assets/styles/*.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/styles/*.css'
+					'modules/*/assets/styles/*.css'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/styles/*.css'
+					'templates/*/assets/styles/*.css'
 				]
 			},
 			options:
@@ -385,8 +385,8 @@ module.exports = function (grunt)
 					'languages/**',
 					'libraries/**',
 					'modules/**',
-					'scripts/**',
-					'styles/**',
+					'assets/scripts/**',
+					'assets/styles/**',
 					'templates/**',
 					'config.php',
 					'index.php',
@@ -409,8 +409,8 @@ module.exports = function (grunt)
 					'languages/en.json',
 					'libraries/**',
 					'modules/CallHome/**',
-					'scripts/**',
-					'styles/**',
+					'assets/scripts/**',
+					'assets/styles/**',
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',

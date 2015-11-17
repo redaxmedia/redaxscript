@@ -14,21 +14,21 @@
 rs.modules.editor =
 {
 	init: rs.registry.lastTable === 'articles' || rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit' && rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments',
-	selector: 'form textarea.js_editor_textarea',
+	selector: 'form textarea.rs-js-editor-textarea',
 	options:
 	{
 		className:
 		{
-			editor: 'js_editor editor',
-			editorPreview: 'js_editor_preview editor_preview',
-			editorToolbar: 'js_toolbar editor_toolbar clearfix',
-			editorControl: 'js_editor_control editor_control',
-			editorSourceCode: 'source_code',
-			editorWysiwyg: 'wysiwyg'
+			editor: 'rs-js-editor rs-editor',
+			editorPreview: 'rs-js-editor-preview rs-editor-preview',
+			editorToolbar: 'rs-js-toolbar rs-editor-toolbar rs-clearfix',
+			editorControl: 'rs-js-editor-control rs-editor-control',
+			editorSourceCode: 'rs-source-code',
+			editorWysiwyg: 'rs-wysiwyg'
 		},
 		element:
 		{
-			editorControl: 'a.js_editor_control'
+			editorControl: 'a.rs-js-editor-control'
 		},
 		toolbar:
 		{

@@ -18,7 +18,7 @@ rs.modules.liveReload =
 	{
 		className:
 		{
-			liveReloadBox: 'box_live_reload'
+			liveReloadBox: 'rs-box-live-reload'
 		},
 		url: 'loader/styles',
 		duration: 500
