@@ -8,16 +8,16 @@
 	],
 	[
 		[
-			"link",
+			"rs-link",
 			""
 		],
-		"<a class=\"link\"></a>"
+		"<a class=\"rs-link\"></a>"
 	],
 	[
 		[
-			"foo bar",
-			"bar"
+			"rs-foo rs-bar",
+			"rs-bar"
 		],
-		"<a class=\"foo\"></a>"
+		"<a class=\"rs-foo\"></a>"
 	]
 ]

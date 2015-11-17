@@ -10,15 +10,15 @@
 	[
 		[
 			"class",
-			"link",
+			"rs-link",
 			""
 		],
-		"<a class=\"link\"></a>"
+		"<a class=\"rs-link\"></a>"
 	],
 	[
 		[
 			"class",
-			"link",
+			"rs-link",
 			"class"
 		],
 		"<a></a>"

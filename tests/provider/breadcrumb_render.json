@@ -15,7 +15,7 @@
 			"lastTable": "categories",
 			"lastId": "1"
 		},
-		"<ul class=\"list-breadcrumb\"><li>Home</li></ul>"
+		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
 	],
 	[
 		{
@@ -33,6 +33,6 @@
 			"lastTable": "articles",
 			"lastId": "1"
 		},
-		"<ul class=\"list-breadcrumb\"><li><a href=\"home\" title=\"Home\">Home</a></li><li class=\"item-divider\"> - </li><li>Welcome</li></ul>"
+		"<ul class=\"rs-list-breadcrumb\"><li><a href=\"home\" title=\"Home\">Home</a></li><li class=\"rs-item-divider\"> - </li><li>Welcome</li></ul>"
 	]
 ]

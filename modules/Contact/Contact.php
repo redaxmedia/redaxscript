@@ -62,36 +62,14 @@ class Contact extends Module
 	{
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
-			'form' => array(
-				'class' => 'rs-js-validate-form rs-form-default'
-			),
-			'label' => array(
-				'class' => 'rs-label'
-			),
 			'textarea' => array(
-				'class' => 'rs-js-auto-resize js-editor-textarea field-textarea'
-			),
-			'input' => array(
-				'email' => array(
-					'class' => 'rs-field-text'
-				),
-				'number' => array(
-					'class' => 'rs-field-text'
-				),
-				'text' => array(
-					'class' => 'rs-field-text'
-				),
-				'url' => array(
-					'class' => 'rs-field-text'
-				)
+				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
 			),
 			'button' => array(
 				'submit' => array(
-					'class' => 'rs-js-submit rs-button-default',
 					'name' => get_class()
 				),
 				'reset' => array(
-					'class' => 'rs-js-reset rs-button-default',
 					'name' => get_class()
 				)
 			)
