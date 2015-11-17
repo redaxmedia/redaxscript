@@ -186,7 +186,7 @@ function comment_form($article = '', $language = '')
 	$output .= '<li>' . form_element('text', 'author', 'rs-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
 	$output .= '<li>' . form_element('url', 'url', 'rs-field-text', 'url', '', l('url'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea rs-field-note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"' . $code_disabled) . '</li>';
+	$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea rs-field-note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"') . '</li>';
 
 	/* collect captcha task output */
 

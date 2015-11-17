@@ -75,7 +75,7 @@
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1em/1em 'icon-redaxscript';
+	font: 1em/1em 'icon default';
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -89,10 +89,12 @@
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	color: #fff;
+	cursor: pointer;
+	padding-left: 2em;
+	padding-right: 2em;
 	text-align: center;
 	-webkit-transition: transform 0.1s, box-shadow 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s;
-	cursor: pointer;
 }
 
 .rs-button-default
@@ -115,13 +117,6 @@
 	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#457ECD, #3873B5);
 }
 
-.rs-button-default,
-.rs-button-custom
-{
-	padding-left: 2em;
-	padding-right: 2em;
-}
-
 /* @section 2.2 button large */
 
 .rs-button-large
@@ -140,13 +135,13 @@
 .rs-button-support:before
 {
 	content: '\2691';
-	font: 1em/1em 'icon-redaxscript';
+	font: 1em/1em 'icon default';
 }
 
 .rs-button-donate:before
 {
 	content: '\2665';
-	font: 1em/1em 'icon-redaxscript';
+	font: 1em/1em 'icon default';
 }
 
 /* @section 2.4 buttons active state */

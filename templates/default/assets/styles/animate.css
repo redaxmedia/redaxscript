@@ -17,12 +17,11 @@
 {
 	from
 	{
-		margin-top: -5em;
+		top: -5em;
 	}
-
 	to
 	{
-		margin-top: 0;
+		top: 0;
 	}
 }
 
@@ -30,12 +29,11 @@
 {
 	from
 	{
-		margin-top: -5em;
+		top: -5em;
 	}
-
 	to
 	{
-		margin-top: 0;
+		top: 0;
 	}
 }
 
@@ -48,13 +46,11 @@
 		-webkit-transform: scale(0.5);
 		transform: scale(0.5);
 	}
-
 	50%
 	{
 		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
-
 	100%
 	{
 		-webkit-transform: scale(0.5);
@@ -70,14 +66,12 @@
 		-ms-transform: scale(0.5);
 		transform: scale(0.5);
 	}
-
 	50%
 	{
 		-webkit-transform: scale(1);
 		-ms-transform: scale(1);
 		transform: scale(1);
 	}
-
 	100%
 	{
 		-webkit-transform: scale(0.5);

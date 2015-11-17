@@ -99,7 +99,6 @@ function admin_contents_list()
 
 	$output .= '<tfoot><tr><td class="rs-column-first">' . l('title') . '</td><td class="rs-column-second">';
 	if (TABLE_PARAMETER == 'comments')
-	if (TABLE_PARAMETER == 'comments')
 	{
 		$output .= l('identifier');
 	}

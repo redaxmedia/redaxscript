@@ -70,7 +70,7 @@ pre
 .rs-link-read-more:after
 {
 	content: '\3009';
-	font: 0.75em/1em 'icon-redaxscript';
+	font: 0.75em/1em 'icon default';
 	margin-left: 0.375em;
 }
 
@@ -84,65 +84,6 @@ pre
 	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
-
-/* @section 2.2 link custom */
-
-/*.rs-link-custom,*/
-/*.rs-sidebar a,*/
-/*.rs-box-note a*/
-/*{*/
-	/*position: relative;*/
-/*}*/
-
-/*.rs-link-custom:before,*/
-/*.rs-link-custom:after,*/
-/*.rs-sidebar a:before,*/
-/*.rs-sidebar a:after,*/
-/*.rs-box-note a:before,*/
-/*.rs-box-note a:after*/
-/*{*/
-	/*position: absolute;*/
-	/*content: '';*/
-	/*left: 0;*/
-	/*right: 0;*/
-	/*height: 2px;*/
-	/*-webkit-transition: opacity 0.2s, top 0.2s;*/
-	/*transition: opacity 0.2s, top 0.2s;*/
-/*}*/
-
-/*.rs-link-custom:before,*/
-/*.rs-sidebar a:before,*/
-/*.rs-box-note a:before*/
-/*{*/
-	/*top: 94%;*/
-	/*opacity: 1;*/
-	/*background: rgba(255, 255, 255, 0.3);*/
-/*}*/
-
-/*.rs-link-custom:hover:before,*/
-/*.rs-sidebar a:hover:before,*/
-/*.rs-box-note a:hover:before*/
-/*{*/
-	/*opacity: 0;*/
-	/*top: 200%;*/
-/*}*/
-
-/*.rs-link-custom:after,*/
-/*.rs-sidebar a:after,*/
-/*.rs-box-note a:after*/
-/*{*/
-	/*top: 50%;*/
-	/*background: rgba(0, 0, 0, 0.3);*/
-	/*opacity: 0;*/
-/*}*/
-
-/*.rs-link-custom:hover:after,*/
-/*.rs-sidebar a:hover:after,*/
-/*.rs-box-note a:hover:after*/
-/*{*/
-	/*opacity: 1;*/
-	/*top: 94%;*/
-/*}*/
 
 /* @section 3. several titles */
 

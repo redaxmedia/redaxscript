@@ -119,7 +119,7 @@
     position: absolute;
     top: 0.25em;
     left: 0.25em;
-    font: 1.5em/1em 'icon-redaxscript';
+    font: 1.5em/1em 'icon default';
     color: #000;
     opacity: 0.5;
 }
@@ -132,13 +132,13 @@
     padding-left: 2.5em;
 }
 
-.rs-box-comment:before 
+.rs-box-comment:before
 {
     content: '\25b6';
     position: absolute;
     left: 0;
     top: -0.125em;
-    font: 2em/1em 'icon-redaxscript';
+    font: 2em/1em 'icon default';
     opacity: 0.5;
 }
 

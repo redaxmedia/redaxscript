@@ -14,7 +14,6 @@
 2 = assets/scripts/form.js
 3 = assets/scripts/interface.js
 4 = assets/scripts/misc.js
-5 = templates/default/assets/scripts/temp.js
 
 [settings]
 deploy = inline

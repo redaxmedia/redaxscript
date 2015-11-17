@@ -263,7 +263,7 @@ function install_cli($argv = array())
 
 	/* write config */
 
-	if (isset($argv[1]))
+	if ($argv[1])
 	{
 		write_config();
 	}

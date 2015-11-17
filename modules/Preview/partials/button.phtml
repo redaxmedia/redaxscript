@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 $suffix = $admin ? '' : '-default';
-$prefix = $admin ? 'admin-' : '';
+$prefix = $admin ? 'rs-admin-' : 'rs';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
@@ -10,20 +10,20 @@ $titlePartialElement->init('h3', array(
 $buttonElement = new Html\Element();
 $buttonElement
 	->init('button', array(
-		'class' => 'rs-' . $prefix . 'button' . $suffix
+		'class' => '.' . $prefix . 'button' . $suffix
 	))
 	->text(Language::get('preview', '_preview'));
 ?>
 
 <!-- button -->
 
-<?php echo $titlePartialElement->text('.rs-' . $prefix . 'button' . $suffix); ?>
+<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix); ?>
 
 <?php echo $buttonElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.rs-' . $prefix . 'button' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '[disabled]'); ?>
 
 <?php echo $buttonElement
 	->copy()
@@ -31,7 +31,7 @@ $buttonElement
 
 <!-- large -->
 
-<?php echo $titlePartialElement->text('.rs-' . $prefix . 'button' . $suffix . '.button-large'); ?>
+<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '.button-large'); ?>
 
 <?php echo $buttonElement
 	->copy()
@@ -39,7 +39,7 @@ $buttonElement
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.rs-' . $prefix . 'button' . $suffix . '.rs-button-large[disabled]'); ?>
+<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '.rs-button-large[disabled]'); ?>
 
 <?php echo $buttonElement
 	->copy()

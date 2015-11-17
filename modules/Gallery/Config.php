@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'image' => 'image image_gallery',
-			'list' => 'js_list_gallery list_gallery'
+			'image' => 'rs-image rs-image-gallery',
+			'list' => 'rs-js-list-gallery rs-list-gallery'
 		),
 		'height' => 200,
 		'quality' => 80,

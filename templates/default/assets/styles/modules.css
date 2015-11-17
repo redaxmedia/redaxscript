@@ -69,17 +69,13 @@
     color: #000;
     display: block;
     padding: 0.25em 0.75em;
+    position: relative;
+    transition: all 0.2s ease 0s;
 }
 
 .rs-list-tab-modules li:not(.rs-item-active) a:hover
 {
     color: #fff;
-}
-
-.rs-list-tab-modules a
-{
-    position: relative;
-    transition: all 0.2s ease 0s;
 }
 
 .rs-list-tab-modules li:not(.rs-item-active) a:after
@@ -188,7 +184,7 @@ ul.rs-list-modules li
 
 .rs-fn-trigger-module-gallery:checked ~ h3 .rs-trigger-module-gallery
 {
-    border-color: #659438 #659438 rgba(99, 147, 56, 0) ;
+    border-color: #659438 #659438 rgba(99, 147, 56, 0);
 }
 
 .rs-trigger-module-gallery:hover
