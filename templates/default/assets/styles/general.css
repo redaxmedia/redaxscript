@@ -1,14 +1,25 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
+ * 1. general
  * 2. grid elements
  * 3. wrapper
+ * 4. header
+ * 5. top
+ * 6. sidebar
+ * 7. footer
+ * 8. bottom
+ * 9. logo website
+ * 10. query
+ *    10.1 print
+ *    10.2 max width 50rem
+ *    10.3 min width 50rem
+ *    10.4 min width 80rem
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. general */
@@ -203,7 +214,7 @@ body
 	}
 }
 
-/* @section 10.3 min width 80rem */
+/* @section 10.4 min width 80rem */
 
 @media screen and (min-width: 80rem)
 {

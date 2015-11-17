@@ -1,12 +1,15 @@
 /**
  * @tableofcontents
  *
- * 1. note
+ * 1. note error
+ * 2. note info
+ * 3. note success
+ * 4. note warning
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. note error */

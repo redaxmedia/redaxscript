@@ -1,14 +1,28 @@
 /**
  * @tableofcontents
  *
- * 1. list breadcrumb and list pagination
+ * 1. several lists
  * 2. list default
  * 3. tooltip
+ * 4. list header
+ * 5. list tabs
+ * 6. query
+ *    6.1 min width 30rem
+ *    6.2 max width 50rem
+ *       6.2.1 list header
+ *       6.2.2 nav trigger - hamburger icon
+ *       6.2.3 nav trigger - close icon
+ *       6.2.4 navigation
+ *       6.2.5 navigation dark layer
+ *    6.3 min width 50rem
+ *       6.3.1 list header
+ *       6.3.2 nav trigger - hamburger icon
+ *       6.3.3 list children
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. several lists */
@@ -26,11 +40,6 @@
 	list-style: inherit;
 	list-style-position: outside;
 	margin-left: 1em;
-}
-
-ul.rs-list-default li
-{
-	list-style-type: square;
 }
 
 /* @section 3. tooltip */

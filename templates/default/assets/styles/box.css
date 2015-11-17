@@ -2,11 +2,22 @@
  * @tableofcontents
  *
  * 1. several boxes
+ * 2. box meta
+ * 3. box quote
+ * 4. box navibar
+ * 5. box accordion
+ * 6. box tab
+ * 7. box note
+ * 8. box comment
+ * 9. space between elements
+ * 10. query
+ *    10.1 min width 50rem
+ *    10.2 min width 80rem
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. several boxes */

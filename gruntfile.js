@@ -299,7 +299,7 @@ module.exports = function (grunt)
 			},
 			tocBase:
 			{
-				command: 'sh vendor/bin/tocgen.sh scripts .tocgen && sh vendor/bin/tocgen.sh styles .tocgen'
+				command: 'sh vendor/bin/tocgen.sh assets .tocgen'
 			},
 			tocModules:
 			{
@@ -311,7 +311,7 @@ module.exports = function (grunt)
 			},
 			toclintBase:
 			{
-				command: 'sh vendor/bin/tocgen.sh scripts .tocgen -l && sh vendor/bin/tocgen.sh styles .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh assets .tocgen -l'
 			},
 			toclintModules:
 			{

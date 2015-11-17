@@ -1,23 +1,16 @@
 /**
  * @tableofcontents
  *
- * 1. remove inner focus
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Joerg Steinhauer
- */
-/**
- * @tableofcontents
- *
  * 1. reset
  * 2. normalize
+ *    2.1 remove firefox inner focus
+ *    2.2 remove webkit appearance
+ *    2.3 trident tooltip
  *
- * @since 2.0.2
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. reset */
