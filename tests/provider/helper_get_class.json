@@ -10,7 +10,7 @@
 			"category": 1,
 			"language": "en"
 		},
-		"firefox v27 gecko desktop windows category ltr"
+		"rs-firefox rs-version-27 rs-gecko rs-desktop rs-windows rs-category rs-ltr"
 	],
 	[
 		{
@@ -23,7 +23,7 @@
 			"article": 1,
 			"language": "ar"
 		},
-		"chrome v32 webkit mobile article rtl"
+		"rs-chrome rs-version-32 rs-webkit rs-mobile rs-article rs-rtl"
 	],
 	[
 		{
@@ -36,6 +36,6 @@
 			"category": 1,
 			"language": "ru"
 		},
-		"safari v6 webkit tablet category ltr"
+		"rs-safari rs-version-6 rs-webkit rs-tablet rs-category rs-ltr"
 	]
 ]
