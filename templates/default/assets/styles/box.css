@@ -40,6 +40,7 @@
 
 /* @section 2. box meta */
 
+/*TODO: what is box meta?*/
 .rs-box-meta
 {
     font-size: 0.5em;
@@ -86,6 +87,7 @@
     top: -0.125em;
 }
 
+/*TODO: Is there still a navibar? */
 /* @section 4. box navibar */
 
 .rs-box-navibar
@@ -183,7 +185,6 @@
     {
         float: right;
     }
-
 }
 
 /* @section 10.2 min width 80rem */

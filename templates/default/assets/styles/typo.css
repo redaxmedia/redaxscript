@@ -178,7 +178,7 @@ pre
 }
 
 /* @section 7. title teaser */
-
+/*TODO: Consider to put all the teaser styling into teaser.css */
 .rs-title-teaser
 {
 	opacity: 0;

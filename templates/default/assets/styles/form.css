@@ -41,6 +41,8 @@
 	width: 100%;
 }
 
+/*TODO: text-decoration on fields is just wrong - belongs to a button only collection
+ mixing fields and buttons is a bad idea, even if they have they share similar styling - this is very confusing*/
 .rs-field-default,
 .rs-field-search,
 .rs-field-select,
@@ -59,6 +61,7 @@
 
 /* @section 2. button search */
 
+/*TODO: lot of definitions here seem to be outdated */
 .rs-button-search
 {
 	position: relative;
@@ -159,8 +162,7 @@
 /* @section 2.4 buttons active state */
 
 .rs-button-default:active,
-.rs-button-custom:active,
-.rs-button-search:active
+.rs-button-custom:active
 {
 	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
@@ -174,6 +176,7 @@
 
 /* @section 3. several fields */
 
+/*TODO: don't use fixed height on field elements - textarea is never ever 2em only */
 .rs-field-default,
 .rs-field-select,
 .rs-field-textarea,

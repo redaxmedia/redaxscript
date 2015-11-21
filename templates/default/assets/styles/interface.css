@@ -26,6 +26,8 @@
  * @author Henry Ruhs
  */
 
+/*TODO: Split this file into list.css, tooltip.css and navigation.css (contains the css functions) */
+
 /* @section 1. several lists */
 
 .rs-list-breadcrumb li,
@@ -103,7 +105,6 @@
 }
 
 /* @section 5. list header */
-
 
 .rs-list-header li
 {
@@ -208,6 +209,7 @@
 
 	/* @section 7.2.2 nav trigger - hamburger icon */
 
+	/*TODO: you override way to much here - think about mobile first (min-width) to prevent the so called lavafluss */
 	.rs-navigation-trigger
 	{
 		color: rgba(255, 255, 255, 0.7);
@@ -225,6 +227,7 @@
 		user-select: none;
 	}
 
+	/*TODO: same here as above, you run into override issue that is causing some headache*/
 	.rs-navigation-trigger:after,
 	.rs-navigation-trigger:before
 	{
