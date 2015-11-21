@@ -15,35 +15,48 @@ function password_reset_form()
 {
 	$output = Redaxscript\Hook::trigger('passwordFormStart');
 
-	/* captcha object */
+	/* html elements */
 
-	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
-	$captcha->init();
+	$titleElement = new Redaxscript\Html\Element();
+	$titleElement->init('h2', array(
+			'class' => 'rs-title-content',
+	));
+	$titleElement->text(Redaxscript\Language::get('password_reset'));
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'form' => array(
+			'class' => 'rs-js-validate-form rs-form-default rs-form-password-reset'
+		),
+		'button' => array(
+			'submit' => array(
+					'name' => 'password_reset_post'
+			)
+		)
+	));
+
+	/* create the form */
+
+	$formElement
+		->append('<fieldset>')
+		->legend()
+		->append('<li><ul>')
+		->captcha('task')
+		->append('</li></ul></fieldset>')
+		->hidden(array(
+			'name' => 'id',
+			'value' => Redaxscript\Registry::get('firstSubParameter')
+		))
+		->hidden(array(
+			'name' => 'password',
+			'value' => Redaxscript\Registry::get('thirdParameter')
+		))
+		->captcha('solution')
+		->token()
+		->submit();
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content">' . l('password_reset') . '</h2>';
-	$output .= form_element('form', 'form_reset', 'rs-js-validate-form rs-form-default rs-form-reset', '', '', '', 'action="' . REWRITE_ROUTE . 'password_reset" method="post"');
-	$output .= form_element('fieldset', '', 'rs-set-reset', '', '', l('fields_request') . l('point')) . '<ul>';
-
-	/* collect captcha task output */
-
-	$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '</ul></fieldset>';
-
-	/* collect captcha solution output */
-
-	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-	$captchaHash->init($captcha->getSolution());
-	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'id', FIRST_SUB_PARAMETER);
-	$output .= form_element('hidden', '', '', 'password', THIRD_PARAMETER);
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'password_reset_post', l('submit'));
-	$output .= '</form>';
+	$output .= $titleElement . $formElement;
 	$output .= Redaxscript\Hook::trigger('passwordFormEnd');
 	echo $output;
 }

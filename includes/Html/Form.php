@@ -404,7 +404,7 @@ class Form extends HtmlAbstract
 
 		if ($type === 'task')
 		{
-			$this->label($this->_captcha->getTask(), array(
+			$this->label('* ' . $this->_captcha->getTask(), array(
 				'for' => 'task'
 			));
 
