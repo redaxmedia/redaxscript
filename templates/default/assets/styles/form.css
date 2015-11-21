@@ -164,14 +164,9 @@
 .rs-button-default:active,
 .rs-button-custom:active
 {
+	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
-}
-
-.rs-button-default:active,
-.rs-button-custom:active
-{
-	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 }
 
 /* @section 3. several fields */

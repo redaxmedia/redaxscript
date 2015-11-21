@@ -15,49 +15,77 @@ function registration_form()
 {
 	$output = Redaxscript\Hook::trigger('registrationFormStart');
 
-	/* captcha object */
+	/* html elements */
 
-	if (s('captcha') > 0)
+	$titleElement = new Redaxscript\Html\Element();
+	$titleElement->init('h2', array(
+		'class' => 'rs-title-content',
+	));
+	$titleElement->text(Redaxscript\Language::get('account_create'));
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'form' => array(
+			'class' => 'rs-js-validate-form rs-form-default rs-form-registration'
+		)
+	), array(
+		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
+	));
+
+	/* create the form */
+
+	$formElement
+		->append('<fieldset>')
+		->legend()
+		->append('<ul><li>')
+		->label('* ' . Redaxscript\Language::get('name'), array(
+			'for' => 'name'
+		))
+		->text(array(
+			'autofocus' => 'autofocus',
+			'id' => 'name',
+			'name' => 'name',
+			'required' => 'required'
+		))
+		->append('</li><li>')
+		->label('* ' . Redaxscript\Language::get('user'), array(
+			'for' => 'user'
+		))
+		->text(array(
+			'id' => 'user',
+			'name' => 'user',
+			'required' => 'required'
+		))
+		->append('</li><li>')
+		->label('* ' . Redaxscript\Language::get('email'), array(
+			'for' => 'email'
+		))
+		->email(array(
+			'id' => 'email',
+			'name' => 'email',
+			'required' => 'required'
+		))
+		->append('</li>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
 	{
-		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
-		$captcha->init();
+		$formElement
+			->append('<li>')
+			->captcha('task')
+			->append('</li>');
 	}
+	$formElement->append('</ul></fieldset>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
+	{
+		$formElement->captcha('solution');
+	}
+	$formElement
+		->token()
+		->submit(Redaxscript\Language::get('create'), array(
+			'name' => 'registration_post'
+		));
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content">' . l('account_create') . '</h2>';
-	$output .= form_element('form', 'form_registration', 'rs-js-validate-form rs-form-default rs-form-registration', '', '', '', 'action="' . REWRITE_ROUTE . 'registration" method="post"');
-	$output .= form_element('fieldset', '', 'rs-set-registration', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'rs-field-text rs-field-note', 'name', '', '* ' . l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'rs-field-text rs-field-note', 'user', '', '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', '', '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
-
-	/* collect captcha task output */
-
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
-	{
-		$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
-	}
-	$output .= '</ul></fieldset>';
-
-	/* collect captcha solution output */
-
-	if (s('captcha') > 0)
-	{
-		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-		$captchaHash->init($captcha->getSolution());
-		if (LOGGED_IN == TOKEN)
-		{
-			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
-		}
-		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
-	}
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'registration_post', l('create'));
-	$output .= '</form>';
+	$output .= $titleElement . $formElement;
 	$output .= Redaxscript\Hook::trigger('registrationFormEnd');
 	echo $output;
 }

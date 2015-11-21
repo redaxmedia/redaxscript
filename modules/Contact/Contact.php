@@ -91,7 +91,7 @@ class Contact extends Module
 				'name' => 'author',
 				'readonly' => Registry::get('myName') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myName') ? Registry::get('myName') : Request::getPost('author')
+				'value' => Registry::get('myName')
 			))
 			->append('</li><li>')
 			->label('* ' . Language::get('email'), array(
@@ -102,7 +102,7 @@ class Contact extends Module
 				'name' => 'email',
 				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myEmail') ? Registry::get('myEmail') : Request::getPost('email')
+				'value' => Registry::get('myEmail')
 			))
 			->append('</li><li>')
 			->label(Language::get('url'), array(
@@ -110,8 +110,7 @@ class Contact extends Module
 			))
 			->url(array(
 				'id' => 'url',
-				'name' => 'url',
-				'value' => Request::getPost('url')
+				'name' => 'url'
 			))
 			->append('</li><li>')
 			->label('* ' . Language::get('message'), array(
@@ -120,8 +119,7 @@ class Contact extends Module
 			->textarea(array(
 				'id' => 'text',
 				'name' => 'text',
-				'required' => 'required',
-				'value' => Request::getPost('text')
+				'required' => 'required'
 			))
 			->append('</li>');
 		if (Db::getSettings('captcha') > 0)

@@ -58,8 +58,7 @@ function login_form()
 			'autofocus' => 'autofocus',
 			'id' => 'user',
 			'name' => 'user',
-			'required' => 'required',
-			'value' => Redaxscript\Request::getPost('user')
+			'required' => 'required'
 		))
 		->append('</li><li>')
 		->label('* ' . Redaxscript\Language::get('password'), array(
@@ -69,8 +68,7 @@ function login_form()
 			'autocomplete' => 'off',
 			'id' => 'password',
 			'name' => 'password',
-			'required' => 'required',
-			'value' => Redaxscript\Request::getPost('password')
+			'required' => 'required'
 		))
 		->append('</li>');
 	if (Redaxscript\Db::getSettings('captcha') > 0)

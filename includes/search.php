@@ -126,7 +126,7 @@ function search_post()
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
 			$output = '<h2 class="rs-title-content title-search-result">' . l('search') . '</h2>';
-			$output .= form_element('fieldset', '', 'set_search_result', '', '', '') . '<ol class="rs-list-search-result">';
+			$output .= '<ol class="rs-list-search-result">';
 			foreach ($result as $r)
 			{
 				$access = $r['access'];

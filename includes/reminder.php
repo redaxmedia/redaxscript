@@ -29,7 +29,7 @@ function reminder_form()
 		),
 		'button' => array(
 			'submit' => array(
-					'name' => 'reminder_post'
+				'name' => 'reminder_post'
 			)
 		)
 	), array(
@@ -49,8 +49,7 @@ function reminder_form()
 			'autofocus' => 'autofocus',
 			'id' => 'email',
 			'name' => 'email',
-			'required' => 'required',
-			'value' => Redaxscript\Request::getPost('email')
+			'required' => 'required'
 		))
 		->append('</li>');
 	if (Redaxscript\Db::getSettings('captcha') > 0)
