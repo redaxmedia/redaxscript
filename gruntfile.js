@@ -539,7 +539,8 @@ module.exports = function (grunt)
 				options:
 				{
 					archive: '../redaxscript-dist/files/' + target[i].toLowerCase() + '.zip'
-				}
+				},
+				dot: true
 			});
 		}
 	};
