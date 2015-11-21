@@ -25,6 +25,7 @@
 
 /* @section 1. tag styling */
 
+/*TODO: tag styling like that (color, transition) will cause problems on the admin, better use .content a or .sidebar a */
 a
 {
 	text-decoration: none;
@@ -33,6 +34,8 @@ a
 	transition: color 0.2s;
 }
 
+/*TODO: maby the same problem with the color here - we have to override it everywhere then?
+do you need a helper class on the body tag like rs-frontend and rs-backend? */
 body
 {
 	color: #323e4c;

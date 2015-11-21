@@ -29,21 +29,21 @@
 
 /* @section 1. several form elements */
 
+.rs-field-default,
 .rs-field-select,
-.rs-field-text,
 .rs-field-textarea.rs-field-small
 {
 	width: 30%;
 }
 
-.rs-dialog .rs-field-text
+.rs-dialog .rs-field-default
 {
 	width: 100%;
 }
 
+.rs-field-default,
 .rs-field-search,
 .rs-field-select,
-.rs-field-text,
 .rs-field-textarea,
 .rs-button-default,
 .rs-button-custom
@@ -92,8 +92,9 @@
 	text-indent: 0;
 }
 
-/* @section 2.1 button default, button custom, button search */
+/* @section 2.1 button default, button custom */
 
+/*TODO: where is the button custom needed? */
 .rs-button-default,
 .rs-button-custom
 {
@@ -142,6 +143,7 @@
 
 /* @section 2.3 button misc */
 
+/*TODO: please remove support, donate and maby the custom buttons if not needed */
 .rs-button-support:before
 {
 	content: '\2691';
@@ -172,8 +174,8 @@
 
 /* @section 3. several fields */
 
+.rs-field-default,
 .rs-field-select,
-.rs-field-text,
 .rs-field-textarea,
 .rs-field-search
 {
@@ -181,8 +183,8 @@
 	padding: 0 0.5em;
 }
 
+.rs-field-default,
 .rs-field-select,
-.rs-field-text,
 .rs-field-textarea
 {
 	border: 2px solid #9c9c9c;
@@ -190,15 +192,15 @@
 	transition: border 0.2s;
 }
 
+.rs-field-default:hover,
 .rs-field-select:hover,
-.rs-field-text:hover,
 .rs-field-textarea:hover
 {
 	border-color: #000;
 }
 
+.rs-field-default:focus,
 .rs-field-select:focus,
-.rs-field-text:focus,
 .rs-field-textarea:focus
 {
 	border-color: #3873B5;
@@ -231,9 +233,10 @@
 
 .rs-button-default[disabled],
 .rs-button-custom[disabled],
+.rs-field-default[disabled],
+.rs-field-default[readonly],
 .rs-field-select[disabled],
-.rs-field-text[disabled],
-.rs-field-text[readonly],
+.rs-field-select[readonly],
 .rs-field-textarea[disabled],
 .rs-field-textarea[readonly]
 {
@@ -252,12 +255,12 @@
 
 /* @section 6.1.1 label */
 
-.rs-form-default .rs-label
+.rs-label-default
 {
 	display: block;
 }
 
-.rs-form-default .rs-label-message:after
+.rs-label-message:after
 {
 	content: ' ' attr(data-message);
 }
@@ -281,8 +284,9 @@
 
 /* @section 9. sidebar form elements */
 
+/*TODO: please use rs-field-search, rs-button-search etc. instead of the global naming */
+.rs-sidebar .rs-field-default,
 .rs-sidebar .rs-field-select,
-.rs-sidebar .rs-field-text,
 .rs-sidebar .rs-field-textarea
 {
 	border-color: transparent;
@@ -291,11 +295,12 @@
 	transition: opacity 0.2s;
 }
 
+/*TODO: please use a :not filter like rs-field-search:not(:focus) etc. for the opacity tweak */
+.rs-sidebar .rs-field-default:hover,
 .rs-sidebar .rs-field-select:hover,
-.rs-sidebar .rs-field-text:hover,
 .rs-sidebar .rs-field-textarea:hover,
+.rs-sidebar .rs-field-default:focus,
 .rs-sidebar .rs-field-select:focus,
-.rs-sidebar .rs-field-text:focus,
 .rs-sidebar .rs-field-textarea:focus
 {
 	opacity: 1;
@@ -307,8 +312,8 @@
 
 @media screen and (max-width: 49.999rem)
 {
+	.rs-field-default,
 	.rs-field-select,
-	.rs-field-text,
 	.rs-field-textarea,
 	.rs-button-default,
 	.rs-button-custom
@@ -321,8 +326,8 @@
 
 @media screen and (min-width: 50rem)
 {
+	.rs-field-default,
 	.rs-field-select,
-	.rs-field-text,
 	.rs-field-textarea,
 	.rs-button-default,
 	.rs-button-custom
