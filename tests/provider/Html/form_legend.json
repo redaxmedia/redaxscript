@@ -5,10 +5,10 @@
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><legend class=\"rs-legend-default\">Required fields are marked with an asterisk.</legend></form>"
 	],
 	[
-		"test",
+		"<span>test</span>",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><legend class=\"rs-test\">test.</legend></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><legend class=\"rs-test\"><span>test</span></legend></form>"
 	]
 ]

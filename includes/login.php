@@ -3,7 +3,7 @@
 /**
  * login form
  *
- * @since 1.2.1
+ * @since 3.0.0
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -15,59 +15,83 @@ function login_form()
 {
 	$output = Redaxscript\Hook::trigger('loginStart');
 
-	/* captcha object */
+	/* html elements */
 
-	if (s('captcha') > 0)
+	$titleElement = new Redaxscript\Html\Element();
+	$titleElement->init('h2', array(
+		'class' => 'rs-title-content',
+	));
+	$titleElement->text(Redaxscript\Language::get('login'));
+	if (Redaxscript\Db::getSettings('reminder'))
 	{
-		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
-		$captcha->init();
+		$linkElement = new Redaxscript\Html\Element();
+		$linkElement->init('a', array(
+			'href' => Redaxscript\Registry::get('rewriteRoute') . 'reminder',
+			'rel' => 'no-follow'
+		));
+		$legendHTML = $linkElement->text(Redaxscript\Language::get('reminder_question') . Redaxscript\Language::get('question_mark'));
 	}
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'form' => array(
+			'class' => 'rs-js-validate-form rs-form-default rs-form-login'
+		),
+		'button' => array(
+			'submit' => array(
+				'name' => 'login_post'
+			)
+		)
+	), array(
+		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
+	));
 
-	/* reminder question */
+	/* create the form */
 
-	if (s('reminder') == 1)
+	$formElement
+		->append('<fieldset>')
+		->legend($legendHTML)
+		->append('<ul><li>')
+		->label('* ' . Redaxscript\Language::get('user'), array(
+			'for' => 'user'
+		))
+		->text(array(
+			'autofocus' => 'autofocus',
+			'id' => 'user',
+			'name' => 'user',
+			'required' => 'required',
+			'value' => Redaxscript\Request::getPost('user')
+		))
+		->append('</li><li>')
+		->label('* ' . Redaxscript\Language::get('password'), array(
+			'for' => 'password'
+		))
+		->password(array(
+			'autocomplete' => 'off',
+			'id' => 'password',
+			'name' => 'password',
+			'required' => 'required',
+			'value' => Redaxscript\Request::getPost('password')
+		))
+		->append('</li>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
 	{
-		$legend = anchor_element('internal', '', 'rs-link-legend', l('reminder_question') . l('question_mark'), 'reminder', '', 'rel="nofollow"');
+		$formElement
+			->append('<li>')
+			->captcha('task')
+			->append('</li>');
 	}
-	else
+	$formElement->append('</ul></fieldset>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
 	{
-		$legend = l('fields_limited') . l('point');
+		$formElement->captcha('solution');
 	}
+	$formElement
+		->token()
+		->submit();
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content">' . l('login') . '</h2>';
-	$output .= form_element('form', 'form_login', 'rs-js-validate-form rs-form-default rs-form-login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
-	$output .= form_element('fieldset', '', 'rs-set-login', '', '', $legend) . '<ul>';
-	$output .= '<li>' . form_element('text', 'user', 'rs-field-text rs-field-note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password rs-field-text rs-field-note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"') . '</li>';
-
-	/* collect captcha task output */
-
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
-	{
-		$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
-	}
-	$output .= '</ul></fieldset>';
-
-	/* collect captcha solution output */
-
-	if (s('captcha') > 0)
-	{
-		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-		$captchaHash->init($captcha->getSolution());
-		if (LOGGED_IN == TOKEN)
-		{
-			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
-		}
-		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
-	}
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'login_post', l('submit'));
-	$output .= '</form>';
+	$output .= $titleElement . $formElement;
 	$output .= Redaxscript\Hook::trigger('loginEnd');
 	echo $output;
 }

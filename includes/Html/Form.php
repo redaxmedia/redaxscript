@@ -274,15 +274,15 @@ class Form extends HtmlAbstract
 	/**
 	 * append the legend
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param string $text text of the legend
+	 * @param string $html html of the legend
 	 * @param array $attributeArray attributes of the legend
 	 *
 	 * @return Form
 	 */
 
-	public function legend($text = null, $attributeArray = array())
+	public function legend($html = null, $attributeArray = array())
 	{
 		if (is_array($attributeArray))
 		{
@@ -292,26 +292,26 @@ class Form extends HtmlAbstract
 		{
 			$attributeArray = $this->_attributeArray['legend'];
 		}
-		$labelElement = new Element();
-		$labelElement
+		$legendElement = new Element();
+		$legendElement
 			->init('legend', $attributeArray)
-			->text($text ? $text . $this->_language->get('point') : $this->_language->get($this->_languageArray['legend']) . $this->_language->get('point'));
-		$this->append($labelElement);
+			->html($html ? $html : $this->_language->get($this->_languageArray['legend']) . $this->_language->get('point'));
+		$this->append($legendElement);
 		return $this;
 	}
 
 	/**
 	 * append the label
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param string $text text of the label
+	 * @param string $html html of the label
 	 * @param array $attributeArray attributes of the label
 	 *
 	 * @return Form
 	 */
 
-	public function label($text = null, $attributeArray = array())
+	public function label($html = null, $attributeArray = array())
 	{
 		if (is_array($attributeArray))
 		{
@@ -324,7 +324,7 @@ class Form extends HtmlAbstract
 		$labelElement = new Element();
 		$labelElement
 			->init('label', $attributeArray)
-			->text($text ? $text . $this->_language->get('colon') : null);
+			->html($html);
 		$this->append($labelElement);
 		return $this;
 	}

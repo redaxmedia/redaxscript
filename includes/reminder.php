@@ -3,7 +3,7 @@
 /**
  * reminder form
  *
- * @since 1.2.1
+ * @since 3.0.0
  * @deprecated 2.0.0
  *
  * @package Redaxscript
@@ -15,34 +15,63 @@ function reminder_form()
 {
 	$output = Redaxscript\Hook::trigger('reminderFormStart');
 
-	/* captcha object */
+	/* html elements */
 
-	$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
-	$captcha->init();
+	$titleElement = new Redaxscript\Html\Element();
+	$titleElement->init('h2', array(
+		'class' => 'rs-title-content',
+	));
+	$titleElement->text(Redaxscript\Language::get('reminder'));
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'form' => array(
+			'class' => 'rs-js-validate-form rs-form-default rs-form-reminder'
+		),
+		'button' => array(
+			'submit' => array(
+					'name' => 'reminder_post'
+			)
+		)
+	), array(
+		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
+	));
+
+	/* create the form */
+
+	$formElement
+		->append('<fieldset>')
+		->legend(Redaxscript\Language::get('reminder_request'))
+		->append('<ul><li>')
+		->label('* ' . Redaxscript\Language::get('email'), array(
+			'for' => 'email'
+		))
+		->email(array(
+			'autofocus' => 'autofocus',
+			'id' => 'email',
+			'name' => 'email',
+			'required' => 'required',
+			'value' => Redaxscript\Request::getPost('email')
+		))
+		->append('</li>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
+	{
+		$formElement
+			->append('<li>')
+			->captcha('task')
+			->append('</li>');
+	}
+	$formElement->append('</ul></fieldset>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
+	{
+		$formElement->captcha('solution');
+	}
+	$formElement
+		->token()
+		->submit();
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content">' . l('reminder') . '</h2>';
-	$output .= form_element('form', 'form_reminder', 'rs-js-validate-form rs-form-default rs-form-reminder', '', '', '', 'action="' . REWRITE_ROUTE . 'reminder" method="post"');
-	$output .= form_element('fieldset', '', 'rs-set-reminder', '', '', l('reminder_request') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', '', l('email'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-
-	/* collect captcha task output */
-
-	$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
-	$output .= '</ul></fieldset>';
-
-	/* collect captcha solution output */
-
-	$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-	$captchaHash->init($captcha->getSolution());
-	$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'reminder_post', l('submit'));
-	$output .= '</form>';
+	$output .= $titleElement . $formElement;
 	$output .= Redaxscript\Hook::trigger('reminderFormEnd');
 	echo $output;
 }

@@ -260,7 +260,7 @@
 	display: block;
 }
 
-.rs-label-message:after
+.rs-form-default .rs-label-message:after
 {
 	content: ' ' attr(data-message);
 }

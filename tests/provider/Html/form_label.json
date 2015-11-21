@@ -5,10 +5,10 @@
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-label-default\"></label></form>"
 	],
 	[
-		"test",
+		"<span>test</span>",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-test\">test:</label></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-test\"><span>test</span></label></form>"
 	]
 ]
