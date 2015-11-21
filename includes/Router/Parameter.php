@@ -1,5 +1,9 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Router;
+
+use Redaxscript\Filter;
+use Redaxscript\Server;
+use Redaxscript\Request;
 
 /**
  * parent class to get parameter

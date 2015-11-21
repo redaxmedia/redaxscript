@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Parameter;
 use Redaxscript\Request;
+use Redaxscript\Router;
 
 /**
  * ParameterTest
@@ -39,14 +39,14 @@ class ParameterTest extends TestCase
 	/**
 	 * providerParameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
 	public function providerParameter()
 	{
-		return $this->getProvider('tests/provider/parameter.json');
+		return $this->getProvider('tests/provider/Router/parameter.json');
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -93,7 +93,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -121,7 +121,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -149,7 +149,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -177,7 +177,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -205,7 +205,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -233,7 +233,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -261,7 +261,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -289,7 +289,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -317,7 +317,7 @@ class ParameterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */
@@ -348,7 +348,7 @@ class ParameterTest extends TestCase
 		$this->_request->setServer('REMOTE_ADDR', 'test');
 		$this->_request->setServer('HTTP_USER_AGENT', 'test');
 		$this->_request->setServer('HTTP_HOST', 'test');
-		$parameter = new Parameter($this->_request);
+		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 
 		/* actual */

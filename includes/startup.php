@@ -75,7 +75,7 @@ function startup()
 
 	/* define parameter */
 
-	$parameter = new Redaxscript\Parameter($request);
+	$parameter = new Redaxscript\Router\Parameter($request);
 	$parameter->init();
 	define('FIRST_PARAMETER', $parameter->getFirst());
 	define('FIRST_SUB_PARAMETER', $parameter->getSub());
@@ -105,7 +105,7 @@ function startup()
 
 	/* define routes */
 
-	$router = new Redaxscript\Router($request);
+	$router = new Redaxscript\Router\Resolver($request);
 	$router->init();
 	define('LITE_ROUTE', $router->getLite());
 	define('FULL_ROUTE', $router->getFull());

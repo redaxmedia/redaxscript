@@ -5,16 +5,16 @@ use Redaxscript\Request;
 use Redaxscript\Router;
 
 /**
- * RouterTest
+ * ResolverTest
  *
- * @since 2.4.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
  */
 
-class RouterTest extends TestCase
+class ResolverTest extends TestCase
 {
 	/**
 	 * instance of the request class
@@ -37,27 +37,27 @@ class RouterTest extends TestCase
 	}
 
 	/**
-	 * providerRouter
+	 * providerResolver
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerRouter()
+	public function providerResolver()
 	{
-		return $this->getProvider('tests/provider/router.json');
+		return $this->getProvider('tests/provider/Router/resolver.json');
 	}
 
 	/**
 	 * testGetLite
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param string $route
 	 * @param array $expect
 	 *
-	 * @dataProvider providerRouter
+	 * @dataProvider providerResolver
 	 */
 
 	public function testGetLite($route = null, $expect = array())
@@ -65,12 +65,12 @@ class RouterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$router = new Router($this->_request);
-		$router->init();
+		$resolver = new Router\Resolver($this->_request);
+		$resolver->init();
 
 		/* actual */
 
-		$actual = $router->getLite();
+		$actual = $resolver->getLite();
 
 		/* compare */
 
@@ -80,12 +80,12 @@ class RouterTest extends TestCase
 	/**
 	 * testGetFull
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param string $route
 	 * @param array $expect
 	 *
-	 * @dataProvider providerRouter
+	 * @dataProvider providerResolver
 	 */
 
 	public function testGetFull($route = null, $expect = array())
@@ -93,12 +93,12 @@ class RouterTest extends TestCase
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$router = new Router($this->_request);
-		$router->init();
+		$resolver = new Router\Resolver($this->_request);
+		$resolver->init();
 
 		/* actual */
 
-		$actual = $router->getFull();
+		$actual = $resolver->getFull();
 
 		/* compare */
 

@@ -1,17 +1,17 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Router;
 
 /**
  * parent class to build a router
  *
- * @since 2.4.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Router
  * @author Henry Ruhs
  */
 
-class Router extends Parameter
+class Resolver extends Parameter
 {
 	/**
 	 * array of the router
