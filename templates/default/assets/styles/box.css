@@ -162,8 +162,7 @@
 }
 
 .rs-title-content + .rs-box-content,
-.rs-box-wrapper-cta + .rs-box-wrapper-cta,
-.rs-title-teaser + .rs-box-navibar
+.rs-box-wrapper-cta + .rs-box-wrapper-cta
 {
     margin-top: 2em;
 }

@@ -190,10 +190,11 @@ pre
 	font-weight: 300;
 	line-height: 1.25em;
 	padding: 0.375em 0.75em;
-	margin-top: -5em;
+	position: relative;
+	top: -5em;
 	border-radius: 0 0.125em 0.125em 0;
-	-webkit-animation: rs-fade 1s ease 1.25s forwards, rs-title-teaser 1s ease 1s forwards;
-	animation: rs-fade 1s ease 1.25s forwards, rs-title-teaser 1s ease 1s forwards;
+	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
+	animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
 }
 
 .rs-title-teaser .rs-text-important
