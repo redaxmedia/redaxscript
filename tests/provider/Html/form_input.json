@@ -110,7 +110,7 @@
 	[
 		"search",
 		"",
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-search\" type=\"search\" /></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" /></form>"
 	],
 	[
 		"search",
