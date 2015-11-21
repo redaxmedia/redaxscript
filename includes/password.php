@@ -3,7 +3,7 @@
 /**
  * password reset form
  *
- * @since 1.2.1
+ * @since 3.0.0
  * @deprecated 2.0.0
  *
  * @package Redaxscript
