@@ -137,7 +137,7 @@
 
 /* @section 1.5 move control */
 
-.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-admin-move-down
+.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-move-down
 {
 	color: #474747;
 	display: block;
@@ -146,12 +146,12 @@
 	transition: color 0.4s ease;
 }
 
-.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover
+.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-move-down:hover
 {
 	color: #0090db;
 }
 
-.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
+.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-move-down:before
 {
 	display: block;
 	font: 1.5rem 'icon admin';
@@ -166,7 +166,7 @@
 	top: 0.25em;
 }
 
-.rs-admin-table .rs-admin-move-down:before
+.rs-admin-table .rs-move-down:before
 {
 	content: 'c';
 	bottom: 0.25em;
@@ -174,7 +174,7 @@
 
 /* disabled move control */
 
-.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-admin-move-down:before
+.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-move-down:before
 {
 	color: #b9b9b9;
 }
