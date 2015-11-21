@@ -2,22 +2,23 @@
  * @tableofcontents
  *
  * 1. several lists
- * 2. list default
- * 3. tooltip
- * 4. list header
- * 5. list tabs
- * 6. query
- *    6.1 min width 30rem
- *    6.2 max width 50rem
- *       6.2.1 list header
- *       6.2.2 nav trigger - hamburger icon
- *       6.2.3 nav trigger - close icon
- *       6.2.4 navigation
- *       6.2.5 navigation dark layer
- *    6.3 min width 50rem
- *       6.3.1 list header
- *       6.3.2 nav trigger - hamburger icon
- *       6.3.3 list children
+ * 2. list breadcrumb
+ * 3. list default
+ * 4. tooltip
+ * 5. list header
+ * 6. list tabs
+ * 7. query
+ *    7.1 min width 30rem
+ *    7.2 max width 50rem
+ *       7.2.1 list header
+ *       7.2.2 nav trigger - hamburger icon
+ *       7.2.3 nav trigger - close icon
+ *       7.2.4 navigation
+ *       7.2.5 navigation dark layer
+ *    7.3 min width 50rem
+ *       7.3.1 list header
+ *       7.3.2 nav trigger - hamburger icon
+ *       7.3.3 list children
  *
  * @since 3.0.0
  *
@@ -76,7 +77,7 @@
 	text-align: center;
 }
 
-/* @section 2. list default */
+/* @section 3. list default */
 
 .rs-list-default li
 {
@@ -85,7 +86,7 @@
 	margin-left: 1em;
 }
 
-/* @section 3. tooltip */
+/* @section 4. tooltip */
 
 .rs-tooltip:after
 {
@@ -101,7 +102,7 @@
 	transition: opacity 0.3s ease 0.1s;
 }
 
-/* @section 4. list header */
+/* @section 5. list header */
 
 
 .rs-list-header li
@@ -119,7 +120,7 @@
 	font-weight: bold;
 }
 
-/* @section 5. list tabs */
+/* @section 6. list tabs */
 
 .rs-list-tab > li
 {
@@ -163,9 +164,9 @@
 	color: #fff;
 }
 
-/* @section 6. query */
+/* @section 7. query */
 
-/* @section 6.1 min width 30rem */
+/* @section 7.1 min width 30rem */
 
 @media screen and (min-width: 30rem)
 {
@@ -180,12 +181,12 @@
 	}
 }
 
-/* @section 6.2 max width 50rem */
+/* @section 7.2 max width 50rem */
 
 @media screen and (max-width: 49.999rem)
 {
 
-	/* @section 6.2.1 list header */
+	/* @section 7.2.1 list header */
 
 	.rs-list-header
 	{
@@ -205,7 +206,7 @@
 		padding: 0 1.75em;
 	}
 
-	/* @section 6.2.2 nav trigger - hamburger icon */
+	/* @section 7.2.2 nav trigger - hamburger icon */
 
 	.rs-navigation-trigger
 	{
@@ -244,7 +245,7 @@
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
 
-	/* @section 6.2.3 nav trigger - close icon */
+	/* @section 7.2.3 nav trigger - close icon */
 
 	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:after,
 	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:before
@@ -264,7 +265,7 @@
 		transform: rotate(45deg);
 	}
 
-	/* @section 6.2.4 navigation */
+	/* @section 7.2.4 navigation */
 
 	.rs-fn-navigation
 	{
@@ -286,7 +287,7 @@
 		transform: translate3d(0, 0, 0);
 	}
 
-	/* @section 6.2.5 navigation dark layer */
+	/* @section 7.2.5 navigation dark layer */
 
 	.rs-fn-navigation-trigger ~ .rs-fn-has-navigation:after {
 		bottom: 0;
@@ -307,11 +308,11 @@
 	}
 }
 
-/* @section 6.3 min width 50rem */
+/* @section 7.3 min width 50rem */
 
 @media screen and (min-width: 50rem) {
 
-	/* @section 6.3.1 list header */
+	/* @section 7.3.1 list header */
 
 	.rs-list-header li
 	{
@@ -340,14 +341,14 @@
 		margin-left: 1em;
 	}
 
-	/* @section 6.3.2 nav trigger - hamburger icon */
+	/* @section 7.3.2 nav trigger - hamburger icon */
 
 	.rs-navigation-trigger
 	{
 		display: none;
 	}
 
-	/* @section 6.3.3 list children */
+	/* @section 7.3.3 list children */
 
 	.rs-list-header-children
 	{
