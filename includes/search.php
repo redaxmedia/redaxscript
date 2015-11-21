@@ -33,18 +33,36 @@ function search_form($table = 'articles')
 {
 	$output = Redaxscript\Hook::trigger('searchFormStart');
 
+	/* html elements */
+
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'form' => array(
+			'class' => 'rs-js-validate-search rs-form-search'
+		)
+	));
+
+	/* create the form */
+
+	$formElement
+		->search(array(
+			'name' => 'search_terms',
+			'placeholder' => Redaxscript\Language::get('search_terms'),
+			'tabindex' => '1'
+		))
+		->hidden(array(
+			'name' => 'table',
+			'value' => $table
+		))
+		->token()
+		->submit(Redaxscript\Language::get('search'), array(
+			'class' => 'rs-button-search',
+			'name' => 'search_post'
+		));
+
 	/* collect output */
 
-	$output .= form_element('form', '', 'rs-js-validate-search rs-form-search', '', '', '', 'method="post"');
-	$output .= form_element('search', '', 'rs-js-search rs-field-search', 'search_terms', '', '', 'maxlength="50" tabindex="1" placeholder="' . l('search_terms') . '"');
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'search_post');
-	$output .= form_element('hidden', '', '', 'table', $table);
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-button-search', 'search_post', l('search'));
-	$output .= '</form>';
+	$output .= $formElement;
 	$output .= Redaxscript\Hook::trigger('searchFormEnd');
 	echo $output;
 }

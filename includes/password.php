@@ -29,9 +29,11 @@ function password_reset_form()
 		),
 		'button' => array(
 			'submit' => array(
-					'name' => 'password_reset_post'
+				'name' => 'password_reset_post'
 			)
 		)
+	), array(
+		'captcha' => true
 	));
 
 	/* create the form */

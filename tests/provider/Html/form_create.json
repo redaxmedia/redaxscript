@@ -13,7 +13,7 @@
 			}
 		},
 		{
-			"captcha": false
+			"captcha": true
 		},
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"get\" name=\"test\"></form>"
 	]

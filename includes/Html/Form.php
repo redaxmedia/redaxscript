@@ -155,7 +155,7 @@ class Form extends HtmlAbstract
 				'type' => 'range'
 			),
 			'search' => array(
-				'class' => 'rs-field-search',
+				'class' => 'rs-js-search rs-field-search',
 				'type' => 'search'
 			),
 			'tel' => array(
@@ -180,7 +180,7 @@ class Form extends HtmlAbstract
 	 */
 
 	protected $_options = array(
-		'captcha' => true
+		'captcha' => false
 	);
 
 	/**
@@ -402,7 +402,7 @@ class Form extends HtmlAbstract
 	{
 		/* task */
 
-		if ($type === 'task')
+		if ($this->_options['captcha'] && $type === 'task')
 		{
 			$this->label('* ' . $this->_captcha->getTask(), array(
 				'for' => 'task'
@@ -421,7 +421,7 @@ class Form extends HtmlAbstract
 
 		/* solution */
 
-		if ($type === 'solution')
+		if ($this->_options['captcha'] && $type === 'solution')
 		{
 			$captchaHash = new Hash(Config::getInstance());
 			$captchaHash->init($this->_captcha->getSolution());
