@@ -158,14 +158,14 @@ class Helper
 
 		if ($this->_registry->get('myBrowser') && $this->_registry->get('myBrowserVersion'))
 		{
-			$output[] = $this->_registry->get('myBrowser') . ' v' . $this->_registry->get('myBrowserVersion');
+			$output[] = 'rs-' . $this->_registry->get('myBrowser') . ' rs-version-' . $this->_registry->get('myBrowserVersion');
 		}
 
 		/* engine */
 
 		if ($this->_registry->get('myEngine'))
 		{
-			$output[] = $this->_registry->get('myEngine');
+			$output[] = 'rs-' . $this->_registry->get('myEngine');
 		}
 		return $output;
 	}
@@ -188,10 +188,10 @@ class Helper
 		{
 			if ($this->_registry->get($value))
 			{
-				$output[] = $key;
+				$output[] = 'rs-' . $key;
 				if ($this->_registry->get($value) !== $key)
 				{
-					$output[] = $this->_registry->get($value);
+					$output[] = 'rs-' . $this->_registry->get($value);
 				}
 			}
 		}
@@ -214,14 +214,14 @@ class Helper
 
 		if ($this->_registry->get('category'))
 		{
-			$output[] = 'category';
+			$output[] = 'rs-category';
 		}
 
 		/* article */
 
 		else if ($this->_registry->get('article'))
 		{
-			$output[] = 'article';
+			$output[] = 'rs-article';
 		}
 		return $output;
 	}
@@ -237,7 +237,7 @@ class Helper
 	protected function _getDirectionArray()
 	{
 		$output = array();
-		$output[0] = $this->_directionDefault;
+		$output[0] = 'rs-' . $this->_directionDefault;
 
 		/* process direction */
 
@@ -245,7 +245,7 @@ class Helper
 		{
 			if (in_array($this->_registry->get('language'), $value))
 			{
-				$output[0] = $key;
+				$output[0] = 'rs-' . $key;
 			}
 		}
 		return $output;
