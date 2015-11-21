@@ -21,7 +21,7 @@
 
 /* @section 2. directory list */
 
-.link_directory_lister
+.rs-link-directory-lister
 {
 	display: block;
 	overflow: hidden;
@@ -29,18 +29,18 @@
 	white-space: nowrap;
 }
 
-.text_directory_lister
+.rs-text-directory-lister
 {
 	display: none;
 	width: 15%;
 }
 
-.text_directory_lister.text_size[data-unit]:after
+.rs-text-directory-lister.rs-text-size[data-unit]:after
 {
 	content: ' ' attr(data-unit);
 }
 
-.text_directory_lister:last-child
+.rs-text-directory-lister:last-child
 {
 	text-align: right;
 }
@@ -49,13 +49,13 @@
 
 @media screen and (min-width: 40em)
 {
-	.link_directory_lister
+	.rs-link-directory-lister
 	{
 		margin-right: 5%;
 		width: 65%;
 	}
 
-	.link_directory_lister, .text_directory_lister
+	.rs-link-directory-lister, .rs-text-directory-lister
 	{
 		display: inline-block;
 		vertical-align: top;
@@ -64,7 +64,7 @@
 
 /* @section 3. icons */
 
-.link_directory_lister:before
+.rs-link-directory-lister:before
 {
 	font: 1.125em/1.5em 'icon directory lister';
 	margin-right: 0.5em;
@@ -73,44 +73,44 @@
 
 /* directory */
 
-.link_directory_lister.directory:before
+.rs-link-directory-lister.rs-directory:before
 {
 	content: '\e606';
 }
 
-.link_directory_lister.directory_parent:before
+.rs-link-directory-lister.rs-directory-parent:before
 {
 	content: '\e604';
 }
 
 /* file */
 
-.link_directory_lister.file_blank:before
+.rs-link-directory-lister.rs-file-blank:before
 {
 	content: '\e600';
 }
 
-.link_directory_lister.file_text:before
+.rs-link-directory-lister.rs-file-text:before
 {
 	content: '\e601';
 }
 
-.link_directory_lister.file_image:before
+.rs-link-directory-lister.rs-file-image:before
 {
 	content: '\e602';
 }
 
-.link_directory_lister.file_music:before
+.rs-link-directory-lister.rs-file-music:before
 {
 	content: '\e603';
 }
 
-.link_directory_lister.file_video:before
+.rs-link-directory-lister.rs-file-video:before
 {
 	content: '\e605';
 }
 
-.link_directory_lister.file_archive:before
+.rs-link-directory-lister.rs-file-archive:before
 {
 	content: '\e607';
 }

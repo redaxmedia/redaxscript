@@ -1,44 +1,44 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
+$suffix = $admin ? '-admin' : '-default';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $setAccordionElement = new Html\Element();
 $setAccordionElement->init('div', array(
-	'class' => 'js_set_accordion set_accordion set_accordion' . $suffix
+	'class' => 'rs-js-set-accordion rs-set-accordion rs-set-accordion' . $suffix
 ));
 $titleAccordionElement = new Html\Element();
 $titleAccordionElement->init('h3', array(
-	'class' => 'js_title_accordion title_accordion title_accordion' . $suffix
+	'class' => 'rs-js-title-accordion rs-title-accordion rs-title-accordion' . $suffix
 ));
 $boxAccordionElement = new Html\Element();
 $boxAccordionElement->init('div', array(
-	'class' => 'js_box_accordion box_accordion box_accordion' . $suffix
+	'class' => 'rs-js-box-accordion rs-box-accordion rs-box-accordion' . $suffix
 ));
 ?>
 
 <!-- accordion -->
 
-<?php echo $titlePartialElement->text('.title_accordion' . $suffix . ' + box_accordion' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-title-accordion' . $suffix . ' + rs-box-accordion' . $suffix); ?>
 
-<div class="js_accordion accordion">
+<div class="rs-js-accordion rs-accordion">
 
 	<!-- first -->
 
 	<?php echo $setAccordionElement
 		->copy()
-		->addClass('js_set_active set_active')
+		->addClass('rs-js-set-active rs-set-active')
 		->html(
 			$titleAccordionElement
 				->copy()
-				->addClass('js_title_active title_active')
+				->addClass('rs-js-title-active rs-title-active')
 				->text(Language::get('first')) .
 			$boxAccordionElement
 				->copy()
-				->addClass('js_box_active box_active')
+				->addClass('rs-js-box-active rs-box-active')
 				->text(Language::get('first'))
 		); ?>
 
@@ -57,7 +57,7 @@ $boxAccordionElement->init('div', array(
 
 	<?php echo $setAccordionElement
 		->copy()
-		->addClass('js_set_accordion_last set_accordion_last')
+		->addClass('rs-js-set-accordion-last rs-set-accordion-last')
 		->html(
 			$titleAccordionElement->text(Language::get('last')) .
 			$boxAccordionElement->text(Language::get('last'))

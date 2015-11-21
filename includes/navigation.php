@@ -143,7 +143,7 @@ function navigation_list($table = '', $options = '')
 
 				if (LAST_PARAMETER == $alias && $table != 'comments')
 				{
-					$class_string = ' class="item_active"';
+					$class_string = ' class="rs-item-active"';
 				}
 				else
 				{
@@ -183,7 +183,7 @@ function navigation_list($table = '', $options = '')
 					ob_start();
 					navigation_list($table, array(
 						'parent' => $id,
-						'class' => 'list_children'
+						'class' => 'rs-list-children'
 					));
 					$output .= ob_get_clean();
 				}
@@ -218,7 +218,7 @@ function navigation_list($table = '', $options = '')
 	}
 	else
 	{
-		$class_string = ' class="list_' . $table . '"';
+		$class_string = ' class="rs-list-' . $table . '"';
 	}
 
 	/* handle error */
@@ -275,10 +275,10 @@ function languages_list($options = '')
 	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
-		$class_string = ' class="language_' . $value;
+		$class_string = ' class="rs-language-' . $value;
 		if ($value == Redaxscript\Registry::get('language'))
 		{
-			$class_string .= ' item_active';
+			$class_string .= ' rs-item-active';
 		}
 		$class_string .= '"';
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value, '_index'), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
@@ -299,7 +299,7 @@ function languages_list($options = '')
 	}
 	else
 	{
-		$class_string = ' class="list_languages"';
+		$class_string = ' class="rs-list-languages"';
 	}
 
 	/* collect list output */
@@ -350,10 +350,10 @@ function templates_list($options = '')
 
 	foreach ($templates_directory_array as $value)
 	{
-		$class_string = ' class="template_' . $value;
+		$class_string = ' class="rs-template-' . $value;
 		if ($value == Redaxscript\Registry::get('template'))
 		{
-			$class_string .= ' item_active';
+			$class_string .= ' rs-item-active';
 		}
 		$class_string .= '"';
 		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_ROUTE . TEMPLATE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
@@ -374,7 +374,7 @@ function templates_list($options = '')
 	}
 	else
 	{
-		$class_string = ' class="list_templates"';
+		$class_string = ' class="rs-list-templates"';
 	}
 
 	/* collect list output */

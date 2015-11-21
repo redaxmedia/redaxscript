@@ -3,17 +3,17 @@ namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $buttonElement = new Html\Element();
 $buttonElement->init('a', array(
-	'class' => 'js_confirm button_default'
+	'class' => 'rs-js-confirm rs-button-default'
 ));
 ?>
 
 <!-- confirm -->
 
-<?php echo $titlePartialElement->text('.js_confirm'); ?>
+<?php echo $titlePartialElement->text('.rs-js-confirm'); ?>
 
 <?php echo $buttonElement
 	->attr('href', Registry::get('rewriteRoute') . 'preview')

@@ -22,18 +22,18 @@ function admin_groups_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="title_content">' . l('groups') . '</h2>';
-	$output .= '<div class="wrapper_button_admin">';
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('groups') . '</h2>';
+	$output .= '<div class="rs-admin-wrapper-button">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'button_admin button_plus_admin', l('group_new'), 'admin/new/groups');
+		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-plus', l('group_new'), 'admin/new/groups');
 	}
-	$output .= '</div><div class="wrapper_table_admin"><table class="table table_admin">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="s4o6 column_first">' . l('name') . '</th><th class="s1o6 column_second">' . l('alias') . '</th><th class="s1o6 column_last">' . l('filter') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="column_first">' . l('name') . '</td><td class="column_second">' . l('alias') . '</td><td class="column_last">' . l('filter') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-s4o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('alias') . '</th><th class="rs-s1o6 rs-column-last">' . l('filter') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('alias') . '</td><td class="rs-column-last">' . l('filter') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('group_no') . l('point');
@@ -73,7 +73,7 @@ function admin_groups_list()
 			{
 				$output .= ' class="' . $class_status . '"';
 			}
-			$output .= '><td class="column_first">' . $name;
+			$output .= '><td class="rs-column-first">' . $name;
 
 			/* collect control output */
 
@@ -81,7 +81,7 @@ function admin_groups_list()
 
 			/* collect alias and filter output */
 
-			$output .= '</td><td class="column_second">' . $alias . '</td><td class="column_last">' . $filter . '</td></tr>';
+			$output .= '</td><td class="rs-column-second">' . $alias . '</td><td class="rs-column-last">' . $filter . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
@@ -163,44 +163,44 @@ function admin_groups_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'js_validate_form js_tab form_admin hidden_legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 
-	$output .= '<ul class="js_list_tab list_tab list_tab_admin">';
-	$output .= '<li class="js_item_active item_first item_active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
+	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
 	if ($id == '' || $id > 1)
 	{
-		$output .= '<li class="item_second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
+		$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('access'), FULL_ROUTE . '#tab-2') . '</li>';
+		$output .= '<li class="rs-item-last">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-3') . '</li>';
 	}
 	$output .= '</ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="js_box_tab box_tab box_tab_admin">';
+	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
 
 	/* collect group set */
 
-	$output .= form_element('fieldset', 'tab-1', 'js_set_tab js_set_active set_tab set_tab_admin set_active', '', '', l('group')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'js_generate_alias_input field_text_admin field_note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'alias', 'js_generate_alias_output field_text_admin field_note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'description', 'js_auto_resize field_textarea_admin field_small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-js-generate-alias-input rs-admin-field-text rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)
 	{
 		/* collect access set */
 
-		$output .= form_element('fieldset', 'tab-2', 'js_set_tab set_tab set_tab_admin', '', '', l('acccess')) . '<ul>';
-		$output .= '<li>' . select_element('categories', 'field_select_admin', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('articles', 'field_select_admin', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('extras', 'field_select_admin', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('comments', 'field_select_admin', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('groups', 'field_select_admin', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('users', 'field_select_admin', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('modules', 'field_select_admin', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
-		$output .= '<li>' . select_element('settings', 'field_select_admin', 'settings', array(
+		$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('acccess')) . '<ul>';
+		$output .= '<li>' . select_element('categories', 'rs-admin-field-select', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('articles', 'rs-admin-field-select', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('extras', 'rs-admin-field-select', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('comments', 'rs-admin-field-select', 'comments', $access_array, $comments, l('comments'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('groups', 'rs-admin-field-select', 'groups', $access_array, $groups, l('groups'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('users', 'rs-admin-field-select', 'users', $access_array, $users, l('users'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('modules', 'rs-admin-field-select', 'modules', $modules_access_array, $modules, l('modules'), 'multiple="multiple"') . '</li>';
+		$output .= '<li>' . select_element('settings', 'rs-admin-field-select', 'settings', array(
 			l('none') => 0,
 			l('edit') => 1
 		), $settings, l('settings')) . '</li>';
@@ -208,12 +208,12 @@ function admin_groups_form()
 
 		/* collect customize set */
 
-		$output .= form_element('fieldset', 'tab-3', 'js_set_tab set_tab set_tab_admin', '', '', l('customize')) . '<ul>';
-		$output .= '<li>' . select_element('filter', 'field_select_admin', 'filter', array(
+		$output .= form_element('fieldset', 'tab-3', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+		$output .= '<li>' . select_element('filter', 'rs-admin-field-select', 'filter', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $filter, l('filter')) . '</li>';
-		$output .= '<li>' . select_element('status', 'field_select_admin', 'status', array(
+		$output .= '<li>' . select_element('status', 'rs-admin-field-select', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
 		), $status, l('status')) . '</li>';
@@ -235,20 +235,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'js_cancel button_admin button_large button_cancel_admin', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'js_delete js_confirm button_admin button_large button_delete_admin', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'js_submit button_admin button_large button_submit_admin', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminGroupFormEnd');

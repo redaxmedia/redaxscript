@@ -1,44 +1,51 @@
 <?php use Redaxscript\Template as Template; ?>
 
-<header id="header" class="header">
-	<section class="wrapper clearfix">
+<!-- menu trigger -->
+
+<input class="rs-fn-navigation-trigger rs-fn-hidden" id="rs-navigaton" type="checkbox"/>
+
+<!-- header -->
+
+<header id="rs-header" class="rs-header rs-fn-has-navigation">
+	<section class="rs-wrapper rs-clearfix">
 
 		<!-- website branding -->
 
-		<div class="box_first grid_space s3o7">
-			<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
+		<div class="rs-box-meta rs-clearfix">
 
 			<!-- metadata -->
 
-			<div class="wrapper_metadata">
+			<?php if (Template::setting('title')): ?>
 
 				<!-- title -->
 
-				<?php if (Template::setting('title')): ?>
-					<h1 class="title_website">
-						<a href="<?php echo Template::registry('root'); ?>"><?php echo Template::setting('title'); ?></a>
-					</h1>
-				<?php endif; ?>
+				<h1 class="rs-title-website">
+					<a href="<?php echo Template::registry('root'); ?>">
+						<?php echo Template::setting('title'); ?>
+					</a>
+				</h1>
+			<?php endif; ?>
 
-				<!-- description -->
+			<!-- description -->
 
-				<?php if (Template::setting('description')): ?>
-					<p class="description_website"><?php echo Template::setting('description'); ?></p>
-				<?php endif; ?>
-			</div>
+			<?php if (Template::setting('description')): ?>
+				<span class="rs-description-website"><?php echo Template::setting('description'); ?></span>
+			<?php endif; ?>
+
+			<label class="rs-navigation-trigger" for="rs-navigaton">Menu</label>
 		</div>
 
 		<!-- dropdown -->
 
-		<div class="box_last grid_space s4o7">
-			<ul class="js_dropdown list_dropdown list_header">
+		<div class="rs-box-navigation">
+			<ul class="rs-js-dropdown rs-list-dropdown rs-list-header rs-fn-navigation">
 
 				<!-- categories -->
 
 				<li><?php echo Template::language('categories'); ?>
 					<?php echo Template::navigation('categories', array(
 						'children' => 1,
-						'class' => 'list_header_children',
+						'class' => 'rs-list-header-children',
 						'limit' => 5
 					)); ?>
 				</li>
@@ -47,7 +54,7 @@
 
 				<li><?php echo Template::language('articles'); ?>
 					<?php echo Template::navigation('articles', array(
-						'class' => 'list_header_children',
+						'class' => 'rs-list-header-children',
 						'limit' => 5
 					)); ?>
 				</li>

@@ -3,15 +3,15 @@ namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $listOrderedElement = new Html\Element();
 $listOrderedElement->init('ol', array(
-	'class' => 'list_default'
+	'class' => 'rs-list-default'
 ));
 $listUnorderedElement = new Html\Element();
 $listUnorderedElement->init('ul', array(
-	'class' => 'list_default'
+	'class' => 'rs-list-default'
 ));
 $itemElement = new Html\Element();
 $itemElement->init('li');
@@ -30,12 +30,12 @@ $listContent = '';
 
 <!-- list ordered -->
 
-<?php echo $titlePartialElement->text('ol.list_default'); ?>
+<?php echo $titlePartialElement->text('ol.rs-list-default'); ?>
 
 <?php echo $listOrderedElement->html($listContent); ?>
 
 <!-- list unordered -->
 
-<?php echo $titlePartialElement->text('ul.list_default'); ?>
+<?php echo $titlePartialElement->text('ul.rs-list-default'); ?>
 
 <?php echo $listUnorderedElement->html($listContent); ?>

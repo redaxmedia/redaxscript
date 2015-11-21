@@ -38,11 +38,12 @@
 	<rule ref="Squiz.CSS.DisallowMultipleStyleDefinitions" />
 	<rule ref="Squiz.CSS.DuplicateClassDefinition">
 		<exclude-pattern>animate.css</exclude-pattern>
-		<exclude-pattern>query.css</exclude-pattern>
+		<exclude-pattern>general.css</exclude-pattern>
+		<exclude-pattern>interface.css</exclude-pattern>
+		<exclude-pattern>typo.css</exclude-pattern>
 	</rule>
 	<rule ref="Squiz.CSS.EmptyClassDefinition" />
 	<rule ref="Squiz.CSS.EmptyStyleDefinition" />
-	<rule ref="Squiz.CSS.LowercaseStyleDefinition" />
 	<rule ref="Squiz.CSS.MissingColon" />
 	<rule ref="Squiz.CSS.SemicolonSpacing" />
 	<rule ref="Squiz.PHP.Eval" />

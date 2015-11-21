@@ -14,7 +14,7 @@
 
 	<!-- body -->
 
-	<body class="wrapper_body">
+	<body class="rs-wrapper-body">
 
 		<!-- admin panel and header -->
 
@@ -23,9 +23,15 @@
 			'templates/default/header.phtml'
 		)); ?>
 
+		<!-- teaser -->
+
+		<?php if(!Template::registry('fullRoute')): ?>
+			<?php echo Template::partial('templates/default/teaser.phtml'); ?>
+		<?php endif; ?>
+
 		<!-- main -->
 
-		<div class="wrapper clearfix">
+		<main class="rs-main rs-wrapper rs-wrapper-content rs-clearfix">
 
 			<!-- handle content error -->
 
@@ -36,12 +42,11 @@
 
 			<?php else: ?>
 				<?php echo Template::partial(array(
-					'templates/default/navibar.phtml',
 					'templates/default/content.phtml',
 					'templates/default/sidebar.phtml'
 				)); ?>
 			<?php endif; ?>
-		</div>
+		</main>
 
 		<!-- footer -->
 

@@ -18,9 +18,9 @@ rs.modules.validator =
 	{
 		className:
 		{
-			validatorBox: 'box_validator',
-			validatorDescription: 'description_validator',
-			validatorMessage: 'message_validator'
+			validatorBox: 'rs-box-validator',
+			validatorDescription: 'rs-description-validator',
+			validatorMessage: 'rs-message-validator'
 		},
 		url: 'http://validator.nu',
 		parser: 'html5',

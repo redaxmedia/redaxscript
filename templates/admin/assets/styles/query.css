@@ -1,0 +1,151 @@
+/**
+ * @tableofcontents
+ *
+ * 1. screen max 40em
+ * 2. screen max 30em
+ * 3. screen min 50em
+ * 4. screen min 30em
+ * 5. rtl direction
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. screen max 40em */
+
+@media screen and (max-width: 40em)
+{
+	.rs-admin-item-control.rs-admin-item-future-posting
+	{
+		display: none;
+	}
+}
+
+/* @section 2. screen max 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-admin-button + .rs-admin-button
+	{
+		margin-top: 0.75em;
+	}
+
+	a.rs-admin-button
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-admin-button, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	{
+		width: 100%;
+	}
+
+	.rs-admin-description-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
+	{
+		display: none;
+	}
+}
+
+/* @section 3. screen min 50em */
+
+@media screen and (min-width: 50em)
+{
+	.rs-admin-list-panel a, .rs-admin-list-panel span
+	{
+		line-height: 3.5em;
+	}
+
+	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
+	{
+		font-size: 1.5rem;
+	}
+
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	{
+		content: '';
+	}
+
+	.rs-admin-list-panel > li
+	{
+		float: left;
+		position: relative;
+	}
+
+	.rs-admin-list-panel.rs-admin-c1 > li
+	{
+		width: 100%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c2 > li
+	{
+		width: 50%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c3 > li
+	{
+		width: 33.33%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c4 > li
+	{
+		width: 25%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c5 > li
+	{
+		width: 20%;
+	}
+
+	.rs-admin-list-panel-children
+	{
+		background: url('templates/admin/assets/images/carbon.png') #222;
+		position: absolute;
+		width: 100%;
+	}
+
+	.rs-admin-list-panel-children ul
+	{
+		left: 100%;
+		top: 0;
+	}
+
+	.rs-admin-sidebar .rs-admin-description-dock
+	{
+		display: none;
+	}
+}
+
+/* @section 4. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-button + .rs-admin-button
+	{
+		margin-left: 0.5em;
+	}
+
+	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	.rs-admin-form .rs-admin-button-submit
+	{
+		float: right;
+	}
+}
+
+/* @section 5. rtl direction */
+
+.rs-admin-rtl .rs-admin-description-dock
+{
+	float: left;
+}
+
+.rs-admin-rtl .rs-admin-table .rs-admin-column-move
+{
+	text-align: right;
+}

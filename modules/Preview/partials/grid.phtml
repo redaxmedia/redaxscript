@@ -3,48 +3,48 @@ namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $clearfixElement = new Html\Element();
 $clearfixElement->init('div', array(
-	'class' => 'clearfix'
+	'class' => 'rs-clearfix'
 ));
 $gridElement = new Html\Element();
 $gridElement->init('div');
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => 'box_preview'
+	'class' => 'rs-box-preview'
 ));
 $gridArray = array(
 	array(
-		'.clearfix > .grid',
+		'.rs-clearfix > .rs-grid',
 		'',
-		'grid',
+		'rs-grid',
 	),
 	array(
-		'.clearfix > .grid_space',
+		'.rs-clearfix > .rs-grid-space',
 		'',
-		'grid_space',
+		'rs-grid-space',
 	),
 	array(
-		'.clearfix.line > .grid',
-		'line',
-		'grid',
+		'.rs-clearfix.line > .rs-grid',
+		'rs-line',
+		'rs-grid',
 	),
 	array(
-		'.clearfix.line > .grid_space',
-		'line',
-		'grid_space',
+		'.rs-clearfix.line > .rs-grid-space',
+		'rs-line',
+		'rs-grid-space',
 	),
 	array(
-		'.clearfix.line_space > .grid',
-		'line_space',
-		'grid'
+		'.rs-clearfix.rs-line-space > .rs-grid',
+		'rs-line-space',
+		'rs-grid'
 	),
 	array(
-		'.clearfix.line_space > .grid_space',
-		'line_space',
-		'grid_space'
+		'.rs-clearfix.rs-line-space > .rs-grid-space',
+		'rs-line-space',
+		'rs-grid-space'
 	)
 );
 ?>
@@ -58,15 +58,15 @@ $gridArray = array(
 	<!-- s1o2 -->
 
 	<?php echo $clearfixElement->addClass($value[1])->html(
-		$gridElement->copy()->addClass($value[2] . ' s1o2')->html($boxElement->text('s1o2')) .
-		$gridElement->copy()->addClass($value[2] . ' s1o2')->html($boxElement->text('s1o2'))
+		$gridElement->copy()->addClass($value[2] . ' rs-s1o2')->html($boxElement->text('s1o2')) .
+		$gridElement->copy()->addClass($value[2] . ' rs-s1o2')->html($boxElement->text('s1o2'))
 	); ?>
 
 	<!-- s1o3 -->
 
 	<?php echo $clearfixElement->addClass($value[1])->html(
-		$gridElement->copy()->addClass($value[2] . ' s1o3')->html($boxElement->text('s1o3')) .
-		$gridElement->copy()->addClass($value[2] . ' s2o3')->html($boxElement->text('s1o3'))
+		$gridElement->copy()->addClass($value[2] . ' rs-s1o3')->html($boxElement->text('s1o3')) .
+		$gridElement->copy()->addClass($value[2] . ' rs-s2o3')->html($boxElement->text('s1o3'))
 	); ?>
 
 <?php endforeach; ?>
@@ -75,18 +75,18 @@ $gridArray = array(
 
 <?php echo $titlePartialElement->text('grid sizes'); ?>
 
-<div class="line clearfix">
+<div class="rs-line rs-clearfix">
 
-	<?php echo $gridElement->copy()->addClass('grid_space s1o1')->html($boxElement->text('s1o1')); ?>
+	<?php echo $gridElement->copy()->addClass('rs-grid-space rs-s1o1')->html($boxElement->text('s1o1')); ?>
 
 </div>
 
 <?php for ($i = 2; $i < 9; $i++): ?>
 
-	<div class="line clearfix">
+	<div class="rs-line rs-clearfix">
 
-		<?php echo $gridElement->copy()->addClass('grid_space s1o' . $i)->html($boxElement->text('s1o' . $i)); ?>
-		<?php echo $gridElement->copy()->addClass('grid_space s' . ($i - 1) . 'o' . $i)->html($boxElement->text('s' . ($i - 1) . 'o' . $i)); ?>
+		<?php echo $gridElement->copy()->addClass('rs-grid-space rs-s1o' . $i)->html($boxElement->text('s1o' . $i)); ?>
+		<?php echo $gridElement->copy()->addClass('rs-grid-space rs-s' . ($i - 1) . 'o' . $i)->html($boxElement->text('s' . ($i - 1) . 'o' . $i)); ?>
 
 	</div>
 

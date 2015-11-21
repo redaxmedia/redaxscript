@@ -4,8 +4,9 @@
  * 1. box preview
  * 2. grid preview
  * 3. icon flag
+ * 4. title preview
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -13,7 +14,7 @@
 
 /* @section 1. box preview */
 
-.preview .box_preview
+.rs-preview .rs-box-preview
 {
 	background: #222;
 	color: #b9b9b9;
@@ -25,7 +26,7 @@
 
 /* @section 2. grid preview */
 
-.preview .grid:hover .box_preview, .preview .grid_space:hover .box_preview
+.rs-preview .rs-grid:hover .rs-box-preview, .rs-preview .rs-grid-space:hover .rs-box-preview
 {
 	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
@@ -35,8 +36,26 @@
 
 /* @section 3. icon flag */
 
-.preview .icon_flag
+.rs-preview .rs-icon-flag
 {
 	margin: 0.25em;
 	float: left;
+}
+
+/* @section 4. title preview */
+
+.rs-preview .rs-title-preview,
+.rs-preview .rs-title-preview-sub
+{
+	margin-top: 4em;
+	margin-bottom: 1em;
+	font-size: 2em;
+	background: rgba(0, 0, 0, 0.3);
+	padding: 0.25em;
+}
+
+.rs-preview .rs-title-preview-sub
+{
+	margin-top: 3em;
+	font-size: 1.25em;
 }

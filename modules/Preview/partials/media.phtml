@@ -3,26 +3,26 @@ namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $imageElement = new Html\Element();
 $imageElement->init('img', array(
-	'class' => 'image image_default'
+	'class' => 'rs-image rs-image-default'
 ));
 $playerElement = new Html\Element();
 $playerElement->init('iframe', array(
-	'class' => 'player player_default'
+	'class' => 'rs-player rs-player-default'
 ));
 ?>
 
 <!-- image -->
 
-<?php echo $titlePartialElement->text('.image.image_default'); ?>
+<?php echo $titlePartialElement->text('.rs-image.rs-image-default'); ?>
 
 <?php echo $imageElement->attr('src', '//i.imgur.com/SKpwO5M.jpg'); ?>
 
 <!-- player -->
 
-<?php echo $titlePartialElement->text('.player.player_default'); ?>
+<?php echo $titlePartialElement->text('.rs-player.rs-player-default'); ?>
 
 <?php echo $playerElement->attr('src', '//youtube.com/embed//FIA6F-XHCzk?vq=hd720'); ?>

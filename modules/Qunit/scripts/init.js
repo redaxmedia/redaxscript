@@ -25,19 +25,19 @@ rs.modules.qunit =
 			qunitUserAgent: '#qunit-userAgent',
 			qunitResult: '#qunit-testresult',
 			qunitTest: '#qunit-tests',
-			qunitAssert: 'ol.qunit-assert-list',
+			qunitAssert: 'ol.rs-qunit-assert-list',
 			qunitFixture: '#qunit-fixture'
 		},
 		className:
 		{
-			qunitHeader: 'title_qunit',
-			qunitBanner: 'box_note banner_qunit',
-			qunitToolbar: 'box_qunit toolbar_qunit',
-			qunitUserAgent: 'box_qunit user_agent_qunit',
-			qunitResult: 'title_qunit',
-			qunitTest: 'list_qunit',
-			qunitAssert: 'list_qunit_assert',
-			qunitFixture: 'box_fixture'
+			qunitHeader: 'rs-title-qunit',
+			qunitBanner: 'rs-box-note rs-banner-qunit',
+			qunitToolbar: 'rs-box-qunit rs-toolbar-qunit',
+			qunitUserAgent: 'rs-box-qunit rs-user-agent-qunit',
+			qunitResult: 'rs-title-qunit',
+			qunitTest: 'rs-list-qunit',
+			qunitAssert: 'rs-list-qunit-assert',
+			qunitFixture: 'rs-box-fixture'
 		},
 		duration: 500
 	}

@@ -1,0 +1,24 @@
+/**
+ * @tableofcontents
+ *
+ * 1. table
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. table */
+
+.rs-table caption,
+.rs-table td,
+.rs-table th
+{
+	text-align: left;
+}
+
+.rs-table .rs-column-last
+{
+	text-align: right;
+}

@@ -103,8 +103,8 @@ class Parser
 
 	protected $_options = array(
 		'className' => array(
-			'readmore' => 'link-readmore',
-			'codequote' => 'js-code-quote code-quote'
+			'readmore' => 'rs-link-readmore',
+			'codequote' => 'rs-js-code-quote rs-code-quote'
 		),
 		'delimiter' => '@@@'
 	);

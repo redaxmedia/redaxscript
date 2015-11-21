@@ -1,7 +1,7 @@
 [
 	[
 		"<template>breadcrumb<template>",
-		"<ul class=\"list_breadcrumb\"><li>Home</li></ul>"
+		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
 	],
 	[
 		"<template>{\"setting\":{\"key\":\"title\"}}<template>",

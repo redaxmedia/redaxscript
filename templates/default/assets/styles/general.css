@@ -1,0 +1,240 @@
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. grid elements
+ * 3. wrapper
+ * 4. header
+ * 5. top
+ * 6. sidebar
+ * 7. footer
+ * 8. bottom
+ * 9. logo website
+ * 10. query
+ *    10.1 print
+ *    10.2 max width 50rem
+ *    10.3 min width 50rem
+ *    10.4 min width 80rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+body
+{
+	background: #fff;
+	overflow-x: hidden;
+}
+
+.rs-fn-hidden
+{
+	display: none;
+}
+
+/* @section 2. grid elements */
+
+.rs-grid-space > a,
+.rs-grid-space > blockquote,
+.rs-grid-space > button,
+.rs-grid-space > code,
+.rs-grid-space > div,
+.rs-grid-space > dl,
+.rs-grid-space > fieldset,
+.rs-grid-space > form,
+.rs-grid-space > h1,
+.rs-grid-space > h2,
+.rs-grid-space > h3,
+.rs-grid-space > h4,
+.rs-grid-space > h5,
+.rs-grid-space > h6,
+.rs-grid-space > hr,
+.rs-grid-space > img,
+.rs-grid-space > ol,
+.rs-grid-space > p,
+.rs-grid-space > table,
+.rs-grid-space > ul,
+.rs-line-space
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+.rs-line, .rs-line-space
+{
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+/* @section 3. wrapper */
+
+.rs-main
+{
+	display: block;
+}
+
+.rs-wrapper
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rs-wrapper-table-default
+{
+	overflow: hidden;
+}
+
+.rs-wrapper-table-default > .rs-table-default
+{
+	width: 100%;
+}
+
+.rs-header + .rs-wrapper-content
+{
+	margin-top: 2em;
+}
+
+/* @section 4. header */
+
+.rs-header
+{
+	background: #323e4c;
+	padding: 2vh 1rem;
+	height: 15vh;
+}
+
+/* @section 5. top */
+
+.rs-teaser
+{
+	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
+	min-height: 86vh;
+	margin-bottom: 2em;
+	padding: 20vh 1em;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* @section 6. sidebar */
+
+.rs-sidebar
+{
+	background: #323e4c;
+	box-sizing: border-box;
+	color: #e8e8e8;
+	padding: 1em;
+}
+
+/* @section 7. footer */
+
+.rs-footer
+{
+	background: #323e4c;
+	padding: 1em;
+	margin-top: 2em;
+}
+
+/* @section 8. bottom */
+
+.rs-bottom
+{
+	margin-top: 1em;
+}
+
+/* @section 9. logo website */
+
+.rs-logo-website
+{
+	width: 0.75em;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 print */
+
+@media print
+{
+	.rs-footer,
+	.rs-header,
+	.rs-sidebar
+	{
+		display: none;
+	}
+}
+
+/* @section 10.2 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-wrapper-body
+	{
+		min-width: 0;
+	}
+
+	.rs-wrapper-content
+	{
+		padding: 1em;
+	}
+
+	.rs-content + .rs-sidebar
+	{
+		margin-top: 3em;
+	}
+}
+
+/* @section 10.3 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-wrapper
+	{
+		width: 48rem;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 50rem;
+	}
+
+	.rs-content
+	{
+		float: left;
+		width: 60%;
+	}
+
+	.rs-sidebar
+	{
+		float: right;
+		width: 38%;
+		margin-left: 2%;
+	}
+}
+
+/* @section 10.4 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-wrapper
+	{
+		width: 78rem;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 80rem;
+	}
+
+	.rs-content
+	{
+		width: 70%;
+	}
+
+	.rs-sidebar
+	{
+		width: 28%;
+	}
+}

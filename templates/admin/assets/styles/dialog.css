@@ -1,0 +1,27 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dialog overlay admin
+ * 2. fadein effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dialog overlay admin */
+
+.rs-admin-dialog-overlay
+{
+	background: #000;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+/* @section 2. fadein effect */
+
+.rs-admin-dialog, .rs-admin-dialog-overlay
+{
+	-webkit-animation: fade 0.4s;
+	animation: fade 0.4s;
+}

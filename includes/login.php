@@ -27,7 +27,7 @@ function login_form()
 
 	if (s('reminder') == 1)
 	{
-		$legend = anchor_element('internal', '', 'link_legend', l('reminder_question') . l('question_mark'), 'reminder', '', 'rel="nofollow"');
+		$legend = anchor_element('internal', '', 'rs-link-legend', l('reminder_question') . l('question_mark'), 'reminder', '', 'rel="nofollow"');
 	}
 	else
 	{
@@ -36,17 +36,17 @@ function login_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="title_content">' . l('login') . '</h2>';
-	$output .= form_element('form', 'form_login', 'js_validate_form form_default form_login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
-	$output .= form_element('fieldset', '', 'set_login', '', '', $legend) . '<ul>';
-	$output .= '<li>' . form_element('text', 'user', 'field_text field_note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password field_text field_note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"') . '</li>';
+	$output .= '<h2 class="rs-title-content">' . l('login') . '</h2>';
+	$output .= form_element('form', 'form_login', 'rs-js-validate-form rs-form-default rs-form-login', '', '', '', 'action="' . REWRITE_ROUTE . 'login" method="post"');
+	$output .= form_element('fieldset', '', 'rs-set-login', '', '', $legend) . '<ul>';
+	$output .= '<li>' . form_element('text', 'user', 'rs-field-text rs-field-note', 'user', '', l('user'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'js_unmask_password rs-field-text rs-field-note', 'password', '', l('password'), 'maxlength="50" required="required" autocomplete="off"') . '</li>';
 
 	/* collect captcha task output */
 
 	if (LOGGED_IN != TOKEN && s('captcha') > 0)
 	{
-		$output .= '<li>' . form_element('number', 'task', 'field_text field_note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
+		$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
 	}
 	$output .= '</ul></fieldset>';
 
@@ -66,7 +66,7 @@ function login_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'js_submit button_default', 'login_post', l('submit'));
+	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'login_post', l('submit'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('loginEnd');
 	echo $output;

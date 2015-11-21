@@ -23,8 +23,8 @@ class Config extends Module
 
 	protected static $_config = array(
 		'className' => array(
-			'title' => 'title_content_sub title_archive',
-			'list' => 'list_default list_archive'
+			'title' => 'rs-title-content-sub rs-title-archive',
+			'list' => 'rs-list-default rs-list-archive'
 		)
 	);
 }

@@ -1,14 +1,14 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
+$suffix = $admin ? '-admin' : '-default';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $tableElement = new Html\Element();
 $tableElement->init('table', array(
-	'class' => 'table table' . $suffix
+	'class' => 'rs-table rs-table' . $suffix
 ));
 $theadElement = new Html\Element();
 $theadElement->init('thead');
@@ -26,11 +26,11 @@ $theadContent = '';
 $tfootContent = '';
 $tbodyContent = '';
 $columnArray = array(
-	'column_first',
-	'column_second',
-	'column_third',
-	'column_fourth',
-	'column_last'
+	'rs-column-first',
+	'rs-column-second',
+	'rs-column-third',
+	'rs-column-fourth',
+	'rs-column-last'
 );
 ?>
 
@@ -40,7 +40,7 @@ $columnArray = array(
 
 	<?php $theadContent .= $thElement
 		->copy()
-		->addClass('s1o5 ' . $columnArray[$i])
+		->addClass('rs-s1o5 ' . $columnArray[$i])
 		->text(Language::get($i + 1, '_number')); ?>
 
 	<?php $tfootContent .= $tdElement
@@ -63,9 +63,9 @@ $columnArray = array(
 
 <!-- table -->
 
-<?php echo $titlePartialElement->text('.table.table' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-table.rs-table' . $suffix); ?>
 
-<div class="wrapper_table<?php echo $suffix; ?>">
+<div class="rs-wrapper-table<?php echo $suffix; ?>">
 
 	<?php echo $tableElement->html(
 		$theadElement->html($theadContent) .
@@ -81,9 +81,9 @@ $columnArray = array(
 
 <!-- table with caption -->
 
-<?php echo $titlePartialElement->text('.table.table' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-table.rs-table' . $suffix); ?>
 
-<div class="wrapper_table<?php echo $suffix; ?>">
+<div class="rs-wrapper-table<?php echo $suffix; ?>">
 
 	<?php echo $tableElement->html(
 		$captionElement->text('Caption') .

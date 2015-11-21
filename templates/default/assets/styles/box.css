@@ -1,0 +1,199 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several boxes
+ * 2. box meta
+ * 3. box quote
+ * 4. box navibar
+ * 5. box accordion
+ * 6. box tab
+ * 7. box note
+ * 8. box comment
+ * 9. space between elements
+ * 10. query
+ *    10.1 min width 50rem
+ *    10.2 min width 80rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several boxes */
+
+.rs-box-code
+{
+    font: 0.75em/1.25em monospace, arial;
+    white-space: pre-wrap;
+    background: rgba(50, 62, 77, 0.1);
+    border: 0.25em solid rgba(50, 62, 77, 0.3);
+    display: block;
+    padding: 1em;
+}
+
+.rs-box-line
+{
+    background: #323e4c;
+    height: 0.125em;
+}
+
+/* @section 2. box meta */
+
+.rs-box-meta
+{
+    font-size: 0.5em;
+    vertical-align: top;
+    position: relative;
+}
+
+.rs-box-meta a::-moz-selection
+{
+    background: #323e4c;
+    color: #fff;
+}
+
+.rs-box-meta span::selection,
+.rs-box-meta a::selection
+{
+    background: #323e4c;
+    color: #fff;
+}
+
+/* @section 3. box quote */
+
+.rs-box-quote
+{
+    font: italic 1.25em/1.75em 'Open Sans Condensed',arial,sans-serif;
+    margin: 1em 1em 1em 3em;
+    position: relative;
+}
+
+.rs-box-quote strong
+{
+    font-style: normal;
+    font-weight: bold;
+    display: block;
+}
+
+.rs-box-quote:before
+{
+    content: '\201D';
+    font: 7em/1em georgia;
+    opacity: 0.15;
+    position: absolute;
+    right: 101%;
+    top: -0.125em;
+}
+
+/* @section 4. box navibar */
+
+.rs-box-navibar
+{
+    text-align: center;
+}
+
+/* @section 5. box accordion */
+
+.rs-set-accordion + .rs-set-accordion
+{
+    margin-top: 0.125em;
+}
+
+.rs-box-accordion-default
+{
+    background: rgba(50, 62, 76, 0.3);
+    padding: 0.25em 0.5em;
+}
+
+/* @section 6. box tab */
+
+.rs-box-tab-default
+{
+    background: #323e4c;
+    padding: 0.25em 1em;
+    color: #fff;
+}
+
+/* @section 7. box note */
+
+.rs-box-note
+{
+    border-radius: 0 0.125em 0.125em 0;
+    box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+    padding: 0.25em 0.5em 0.25em 3em;
+    position: relative;
+}
+
+.rs-box-note:before
+{
+    position: absolute;
+    top: 0.25em;
+    left: 0.25em;
+    font: 1.5em/1em 'icon default';
+    color: #000;
+    opacity: 0.5;
+}
+
+/* @section 8. box comment */
+
+.rs-box-comment
+{
+    position: relative;
+    padding-left: 2.5em;
+}
+
+.rs-box-comment:before
+{
+    content: '\25b6';
+    position: absolute;
+    left: 0;
+    top: -0.125em;
+    font: 2em/1em 'icon default';
+    opacity: 0.5;
+}
+
+/* @section 9. space between elements */
+
+.rs-box-note + .rs-box-note
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.rs-title-content + .rs-box-content,
+.rs-box-wrapper-cta + .rs-box-wrapper-cta,
+.rs-title-teaser + .rs-box-navibar
+{
+    margin-top: 2em;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+    .rs-box-meta
+    {
+        font-size: 1em;
+        float: left;
+    }
+
+    .rs-box-navigation
+    {
+        float: right;
+    }
+
+}
+
+/* @section 10.2 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+    .rs-box-cta
+    {
+        float: left;
+        width: 50%;
+    }
+}

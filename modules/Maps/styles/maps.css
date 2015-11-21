@@ -11,14 +11,14 @@
 
 /* @section 1. map */
 
-.map
+.rs-map
 {
 	height: 30em;
 }
 
 /* mobile */
 
-.mobile .map
+.rs-mobile .rs-map
 {
 	height: 15em;
 }

@@ -1,0 +1,217 @@
+/**
+ * @tableofcontents
+ *
+ * 1. box modules
+ * 2. list tab modules
+ * 3. title modules
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box modules */
+
+.rs-box-modules
+{
+    background: rgba(50, 62, 77, 0.2);
+    border-radius: 0.125em;
+    position: relative;
+    margin: 1em 0;
+}
+
+.rs-fn-trigger-module-gallery:checked ~ .rs-box-modules-inner:after,
+.rs-fn-trigger-module-gallery:checked ~ .rs-box-modules-inner .rs-list-modules-title
+{
+    display: none;
+}
+
+.rs-box-modules .rs-button-download
+{
+    position: relative;
+    z-index: 1;
+}
+
+.rs-box-modules-inner
+{
+    padding: 1em;
+    position: relative;
+}
+
+.rs-box-tab-modules
+{
+    padding: 1em;
+    transition: opacity 0.2s;
+    min-height: 8em;
+}
+
+/* @section 2. list tab modules */
+
+.rs-list-tab-modules
+{
+    border-bottom: 0.25em solid rgba(50, 62, 77, 0.3);
+    transition: opacity 0.2s;
+}
+
+.rs-list-tab-modules > li
+{
+    background: rgba(50, 62, 77, 0.5);
+    vertical-align: bottom;
+}
+
+.rs-list-tab-modules .rs-item-active
+{
+    background: rgba(50, 62, 77, 0.3);
+    box-shadow: 0 0.25em #3873b5 inset;
+}
+
+.rs-list-tab-modules a
+{
+    color: #000;
+    display: block;
+    padding: 0.25em 0.75em;
+    position: relative;
+    transition: all 0.2s ease 0s;
+}
+
+.rs-list-tab-modules li:not(.rs-item-active) a:hover
+{
+    color: #fff;
+}
+
+.rs-list-tab-modules li:not(.rs-item-active) a:after
+{
+    background: #3873b5;
+    content: '';
+    height: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: height 0.2s, background 0.2s;
+    z-index: -1;
+}
+
+.rs-list-tab-modules li:not(.rs-item-active) a:hover:after
+{
+    height: 100%;
+}
+
+.rs-list-modules li
+{
+    list-style-type: inherit;
+    margin-left: 0.5em;
+}
+
+ul.rs-list-modules li
+{
+    list-style-type: square;
+}
+
+.rs-list-modules-title
+{
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.rs-box-modules:hover .rs-list-modules-title
+{
+    transition: margin 0s ease 0.2s, opacity 0s ease 0.2s;
+}
+
+.rs-list-modules-title li
+{
+    background: none repeat scroll 0 0 #fff;
+    border: 0.25em solid #323e4c;
+    display: table;
+    margin: 0.5em 0;
+    padding: 0 0.5em;
+    transition: margin 0.2s, opacity 0.2s;
+    opacity: 1;
+}
+
+.rs-list-modules-title li:nth-child(1)
+{
+    transition-delay: 0.1s;
+}
+
+.rs-list-modules-title li:nth-child(2)
+{
+    transition-delay: 0.15s;
+}
+
+.rs-list-modules-title li:nth-child(3)
+{
+    transition-delay: 0.2s;
+}
+
+.rs-list-modules-title li:nth-child(4)
+{
+    transition-delay: 0.25s;
+}
+
+.rs-box-modules:hover .rs-list-modules-title,
+.rs-box-modules:hover .rs-list-modules-title li
+{
+    margin-left: -100%;
+    opacity: 0.5;
+}
+
+/* @section 3. title modules */
+
+.rs-box-modules > h3
+{
+    background: linear-gradient(#457ecd, #3873b5);
+    border-radius: 0.125em 0.125em 0 0;
+    color: #fff;
+    padding: 0.5em 1em;
+    position: relative;
+    z-index: 1;
+}
+
+.rs-trigger-module-gallery
+{
+    border-color: #b50000 #b50000 rgba(119, 23, 23, 0);
+    border-style: solid;
+    border-width: 3em 1em 1em;
+    cursor: pointer;
+    float: right;
+    margin-top: -0.75em;
+    opacity: 0.8;
+    position: relative;
+    transition: opacity 0.2s ease 0s;
+}
+
+.rs-fn-trigger-module-gallery:checked ~ h3 .rs-trigger-module-gallery
+{
+    border-color: #659438 #659438 rgba(99, 147, 56, 0);
+}
+
+.rs-trigger-module-gallery:hover
+{
+    opacity: 1;
+}
+
+@media screen and (min-width: 50rem)
+{
+    .rs-box-modules-inner:after
+    {
+        background: url('templates/default/images/module_gallery2.svg') no-repeat scroll right center / contain #323e4c;
+        bottom: 0;
+        color: #fff;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: top 0.3s ease 0.2s;
+        border-radius: 0 0 0.125em 0.125em;
+    }
+
+    .rs-box-modules:hover .rs-box-modules-inner:after
+    {
+        top: 100%;
+    }
+}

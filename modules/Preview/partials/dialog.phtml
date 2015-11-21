@@ -1,32 +1,32 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
+$suffix = $admin ? '-admin' : '-default';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
+	'class' => 'rs-title-preview-sub'
 ));
 $titleDialogElement = new Html\Element();
 $titleDialogElement->init('h3', array(
-	'class' => 'title_dialog title_dialog' . $suffix
+	'class' => 'rs-title-dialog rs-title-dialog' . $suffix
 ));
 $boxDialogElement = new Html\Element();
 $boxDialogElement->init('div', array(
-	'class' => 'box_dialog' . $suffix
+	'class' => 'rs-box-dialog' . $suffix
 ));
 $textDialogElement = new Html\Element();
 $textDialogElement->init('p');
 $buttonDialogElement = new Html\Element();
 $buttonDialogElement->init('a', array(
-	'class' => 'button' . $suffix
+	'class' => 'rs-button' . $suffix
 ));
 ?>
 
 <!-- dialog -->
 
-<?php echo $titlePartialElement->text('.title_dialog' . $suffix . ' + .box_dialog' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-title-dialog' . $suffix . ' + .rs-box-dialog' . $suffix); ?>
 
-<div class="js_dialog dialog<?php echo $suffix; ?>">
+<div class="rs-js-dialog rs-dialog<?php echo $suffix; ?>">
 
 	<?php echo $titleDialogElement->text(Language::get('confirm')); ?>
 	<?php echo $boxDialogElement->html(

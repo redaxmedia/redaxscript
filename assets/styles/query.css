@@ -1,0 +1,104 @@
+/**
+ * @tableofcontents
+ *
+ * 1. print
+ * 2. max width 50em
+ * 3. max width 40em
+ * 4. max width 30em
+ * 5. max width 20em
+ * 6. rtl direction
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. print */
+
+@media print
+{
+	body
+	{
+		color: #000;
+		font-size: 1em;
+	}
+}
+
+/* @section 2. max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+	.rs-list-tab
+	{
+		display: none;
+	}
+
+	.rs-js .rs-set-tab
+	{
+		display: block;
+	}
+
+	.rs-tooltip:after
+	{
+		left: 1em;
+		position: fixed;
+		right: 1em;
+		top: 1em;
+	}
+}
+
+/* @section 3. max width 40em */
+
+@media screen and (max-width: 39.999em)
+{
+	.rs-player
+	{
+		font-size: 0.875em;
+	}
+}
+
+/* @section 4. max width 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	a.rs-button-default
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-button-default, .rs-field-select, .rs-field-text, .rs-field-textarea.rs-field-small
+	{
+		width: 100%;
+	}
+
+	.rs-dialog
+	{
+		margin: -5em 0 0 -40%;
+		width: 80%;
+	}
+
+	.rs-player
+	{
+		font-size: 0.75em;
+	}
+}
+
+/* @section 5. max width 20em */
+
+@media screen and (max-width: 19.999em)
+{
+	.rs-player
+	{
+		font-size: 0.5em;
+	}
+}
+
+/* @section 6. rtl direction */
+
+.rs-rtl
+{
+	direction: rtl;
+	text-align: right;
+}

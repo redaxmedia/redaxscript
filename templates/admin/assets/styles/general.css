@@ -1,0 +1,44 @@
+/**
+ * @tableofcontents
+ *
+ * 1. panel admin
+ * 2. wrapper
+ * 3. margins
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. panel admin */
+
+.rs-admin-panel
+{
+	position: relative;
+	z-index: 900;
+}
+
+.rs-admin-panel a, .rs-admin-panel a:hover
+{
+	text-decoration: none;
+}
+
+/* @section 2. wrapper */
+
+.rs-admin-wrapper-table
+{
+	overflow: hidden;
+}
+
+.rs-admin-wrapper-table > .rs-admin-table
+{
+	width: 100%;
+}
+
+/* @section 3. margins */
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
+}

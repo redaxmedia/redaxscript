@@ -14,7 +14,7 @@
 rs.modules.shareThis =
 {
 	init: true,
-	selector: 'a.js_link_share_this',
+	selector: 'a.rs-js-link-share-this',
 	options:
 	{
 		url: 'http://free.sharedcount.com',
