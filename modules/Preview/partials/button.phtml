@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 $suffix = $admin ? '' : '-default';
-$prefix = $admin ? 'rs-admin-' : 'rs';
+$prefix = $admin ? 'rs-admin-' : 'rs-';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
@@ -10,7 +10,7 @@ $titlePartialElement->init('h3', array(
 $buttonElement = new Html\Element();
 $buttonElement
 	->init('button', array(
-		'class' => '.' . $prefix . 'button' . $suffix
+		'class' => $prefix . 'button' . $suffix
 	))
 	->text(Language::get('preview', '_preview'));
 ?>

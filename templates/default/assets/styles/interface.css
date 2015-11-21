@@ -33,6 +33,49 @@
 	display: inline-block;
 }
 
+/* @section 2. list breadcrumb */
+
+.rs-list-breadcrumb
+{
+	margin-bottom: 1em;
+}
+
+.rs-list-breadcrumb li
+{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.rs-list-breadcrumb a
+{
+	opacity: 0.5;
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+
+.rs-list-breadcrumb a:hover
+{
+	opacity: 1;
+}
+
+.rs-list-breadcrumb .rs-divider
+{
+	text-indent: -999em;
+	width: 1em;
+}
+
+.rs-list-breadcrumb .rs-divider:before
+{
+	text-indent: 0;
+	content: '\3009';
+	font: 0.5em/4em 'icon default';
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
 /* @section 2. list default */
 
 .rs-list-default li

@@ -17,7 +17,7 @@ function breadcrumb()
 	$breadcrumb->init(array(
 		'className' => array(
 			'list' => 'rs-list-breadcrumb',
-			'divider' => 'divider'
+			'divider' => 'rs-divider'
 		)
 	));
 	echo $breadcrumb->render();

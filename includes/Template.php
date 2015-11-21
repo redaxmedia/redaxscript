@@ -59,7 +59,7 @@ class Template
 		$breadcrumb->init(array(
 			'className' => array(
 				'list' => 'rs-list-breadcrumb',
-				'divider' => 'divider'
+				'divider' => 'rs-divider'
 			)
 		));
 		return $breadcrumb->render();
