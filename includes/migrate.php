@@ -1,29 +1,6 @@
 <?php
 
 /**
- * breadcrumb
- *
- * @since 2.1.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Gary Aylward
- */
-
-function breadcrumb()
-{
-	$breadcrumb = new Redaxscript\Breadcrumb(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-	$breadcrumb->init(array(
-		'className' => array(
-			'list' => 'rs-list-breadcrumb',
-			'divider' => 'rs-divider'
-		)
-	));
-	echo $breadcrumb->render();
-}
-
-/**
  * clean
  *
  * @since 2.2.0
@@ -82,40 +59,6 @@ function clean($input = null, $mode = null)
 	}
 	$output = stripslashes($output);
 	return $output;
-}
-
-/**
- * helper class
- *
- * @since 2.1.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Kim Kha Nguyen
- */
-
-function helper_class()
-{
-	$helper = new Redaxscript\Helper(Redaxscript\Registry::getInstance());
-	echo $helper->getClass();
-}
-
-/**
- * helper subset
- *
- * @since 2.1.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Kim Kha Nguyen
- */
-
-function helper_subset()
-{
-	$helper = new Redaxscript\Helper(Redaxscript\Registry::getInstance());
-	echo $helper->getSubset();
 }
 
 /**

@@ -29,19 +29,19 @@
 
 /* @section 1. several form elements */
 
-.rs-field-text,
+.rs-field-default,
 .rs-field-select,
 .rs-field-textarea.rs-field-small
 {
 	width: 30%;
 }
 
-.rs-dialog .rs-field-text
+.rs-dialog .rs-field-default
 {
 	width: 100%;
 }
 
-.rs-field-text,
+.rs-field-default,
 .rs-field-search,
 .rs-field-select,
 .rs-field-textarea,
@@ -174,7 +174,7 @@
 
 /* @section 3. several fields */
 
-.rs-field-text,
+.rs-field-default,
 .rs-field-select,
 .rs-field-textarea,
 .rs-field-search
@@ -183,7 +183,7 @@
 	padding: 0 0.5em;
 }
 
-.rs-field-text,
+.rs-field-default,
 .rs-field-select,
 .rs-field-textarea
 {
@@ -192,14 +192,14 @@
 	transition: border 0.2s;
 }
 
-.rs-field-text:hover,
+.rs-field-default:hover,
 .rs-field-select:hover,
 .rs-field-textarea:hover
 {
 	border-color: #000;
 }
 
-.rs-field-text:focus,
+.rs-field-default:focus,
 .rs-field-select:focus,
 .rs-field-textarea:focus
 {
@@ -233,8 +233,8 @@
 
 .rs-button-default[disabled],
 .rs-button-custom[disabled],
-.rs-field-text[disabled],
-.rs-field-text[readonly],
+.rs-field-default[disabled],
+.rs-field-default[readonly],
 .rs-field-select[disabled],
 .rs-field-select[readonly],
 .rs-field-textarea[disabled],
@@ -285,7 +285,7 @@
 /* @section 9. sidebar form elements */
 
 /*TODO: please use rs-field-search, rs-button-search etc. instead of the global naming */
-.rs-sidebar .rs-field-text,
+.rs-sidebar .rs-field-default,
 .rs-sidebar .rs-field-select,
 .rs-sidebar .rs-field-textarea
 {
@@ -296,10 +296,10 @@
 }
 
 /*TODO: please use a :not filter like rs-field-search:not(:focus) etc. for the opacity tweak */
-.rs-sidebar .rs-field-text:hover,
+.rs-sidebar .rs-field-default:hover,
 .rs-sidebar .rs-field-select:hover,
 .rs-sidebar .rs-field-textarea:hover,
-.rs-sidebar .rs-field-text:focus,
+.rs-sidebar .rs-field-default:focus,
 .rs-sidebar .rs-field-select:focus,
 .rs-sidebar .rs-field-textarea:focus
 {
@@ -312,7 +312,7 @@
 
 @media screen and (max-width: 49.999rem)
 {
-	.rs-field-text,
+	.rs-field-default,
 	.rs-field-select,
 	.rs-field-textarea,
 	.rs-button-default,
@@ -326,7 +326,7 @@
 
 @media screen and (min-width: 50rem)
 {
-	.rs-field-text,
+	.rs-field-default,
 	.rs-field-select,
 	.rs-field-textarea,
 	.rs-button-default,
