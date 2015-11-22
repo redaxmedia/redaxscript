@@ -9,7 +9,7 @@ $titlePartialElement->init('h3', array(
 $fieldTextElement = new Html\Element();
 $fieldTextElement
 	->init('input', array(
-		'class' => 'rs-field-text' . $suffix
+		'class' => 'rs-field-default rs-field-text' . $suffix
 	))
 	->val(Language::get('preview', '_preview'));
 $fieldTextareaElement = new Html\Element();
@@ -29,13 +29,13 @@ $fieldSelectElement
 
 <!-- field text -->
 
-<?php echo $titlePartialElement->text('.rs-field-text' . $suffix); ?>
+<?php echo $titlePartialElement->text('.rs-field-text' . $suffix . ' + .rs-field-default'); ?>
 
 <?php echo $fieldTextElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.rs-field-text' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text('.rs-field-text' . $suffix . '[disabled] + .rs-field-default'); ?>
 
 <?php echo $fieldTextElement
 	->copy()
