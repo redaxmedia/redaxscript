@@ -24,12 +24,12 @@
 
 .rs-box-code
 {
-    font: 0.75em/1.25em monospace, arial;
-    white-space: pre-wrap;
     background: rgba(50, 62, 77, 0.1);
     border: 0.25em solid rgba(50, 62, 77, 0.3);
     display: block;
+    font: 0.75em/1.25em monospace, arial;
     padding: 1em;
+    white-space: pre-wrap;
 }
 
 .rs-box-line
@@ -113,8 +113,8 @@
 .rs-box-tab-default
 {
     background: #323e4c;
-    padding: 0.25em 1em;
     color: #fff;
+    padding: 0.25em 1em;
 }
 
 /* @section 7. box note */
@@ -129,29 +129,29 @@
 
 .rs-box-note:before
 {
+    color: #000;
+    font: 1.5em/1em 'icon default';
+    left: 0.25em;
+    opacity: 0.5;
     position: absolute;
     top: 0.25em;
-    left: 0.25em;
-    font: 1.5em/1em 'icon default';
-    color: #000;
-    opacity: 0.5;
 }
 
 /* @section 8. box comment */
 
 .rs-box-comment
 {
-    position: relative;
     padding-left: 2.5em;
+    position: relative;
 }
 
 .rs-box-comment:before
 {
     content: '\25b6';
+    font: 2em/1em 'icon default';
     position: absolute;
     left: 0;
     top: -0.125em;
-    font: 2em/1em 'icon default';
     opacity: 0.5;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .rs-title-content + .rs-box-content,
-.rs-box-wrapper-cta + .rs-box-wrapper-cta
+.rs-box-wrapper-action + .rs-box-wrapper-action
 {
     margin-top: 2em;
 }
@@ -191,7 +191,7 @@
 
 @media screen and (min-width: 80rem)
 {
-    .rs-box-cta
+    .rs-box-action
     {
         float: left;
         width: 50%;

@@ -9,7 +9,7 @@
  * @author Joerg Steinhauer
  */
 
-/* TODO: funktioniert noch nicht wegen translate3d(0px, 0px, 0px) auf body-tag (wird für menu gebraucht). nach lösung suchen */
+/* TODO: funktioniert noch nicht wegen translate3d(0px, 0px, 0px) auf body-tag (wird fï¿½r menu gebraucht). nach lï¿½sung suchen */
 
 /* @section 1. dialog overlay default */
 
@@ -21,7 +21,7 @@
 .rs-dialog-default,
 .rs-dialog-overlay-default
 {
-    animation: fade 0.4s;
+    animation: rs-fade 0.4s;
     border-radius: 0.25em;
 }
 

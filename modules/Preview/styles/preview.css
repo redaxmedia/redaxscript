@@ -28,7 +28,6 @@
 
 .rs-preview .rs-grid:hover .rs-box-preview, .rs-preview .rs-grid-space:hover .rs-box-preview
 {
-	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);

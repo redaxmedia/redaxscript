@@ -20,7 +20,6 @@
 
 .rs-admin-box-accordion, .rs-admin-box-dialog
 {
-	background: #e2e2e2;
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
@@ -101,7 +100,6 @@
 
 .rs-admin-box-tab
 {
-	background: #e2e2e2;
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;

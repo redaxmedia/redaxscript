@@ -35,7 +35,6 @@
 
 .rs-admin-table tbody:nth-child(odd) tr
 {
-	background: #e2e2e2;
 	background: linear-gradient(#e2e2e2, #dadada);
 }
 
@@ -43,7 +42,6 @@
 
 .rs-admin-table tbody:nth-child(even) tr
 {
-	background: #ebebeb;
 	background: linear-gradient(#ebebeb, #e8e8e8);
 }
 

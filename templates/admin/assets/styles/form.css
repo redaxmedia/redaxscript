@@ -24,7 +24,6 @@
 
 .rs-admin-button
 {
-	background: #3b3b3b;
 	background: linear-gradient(#3b3b3b, #303030);
 	border: 1px solid #151515;
 	border-radius: 0.25em;
@@ -41,7 +40,6 @@
 
 .rs-admin-button:hover
 {
-	background: #474747;
 	background: linear-gradient(#474747, #3b3b3b);
 	color: #eee;
 }
@@ -50,7 +48,6 @@
 
 .rs-admin-button:active
 {
-	background: #4cb4ff;
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
@@ -95,7 +92,6 @@
 
 .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea
 {
-	background: #f1f1f1;
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #c9c9c9;
 	border-radius: 0.25em;
@@ -117,7 +113,6 @@
 
 .rs-admin-field-select:focus, .rs-admin-field-text:focus, .rs-admin-field-textarea:focus
 {
-	background: #e2e2e2;
 	background: linear-gradient(#f1f1f1, #e2e2e2);
 	border-color: #ababab;
 	box-shadow: 0 0 3px #fff;
@@ -151,7 +146,6 @@
 
 .rs-admin-field-select[disabled], .rs-admin-field-text[disabled], .rs-admin-field-text[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
-	background: #d4d4d4;
 	background: linear-gradient(#d4d4d4, #e2e2e2);
 	border-color: #d5d5d5;
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);

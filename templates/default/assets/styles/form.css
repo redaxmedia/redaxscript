@@ -138,8 +138,8 @@
 	font-size: 1.75em;
 	padding: 0.5em 1em;
 }
-
-.rs-box-cta:first-child .rs-button-large
+/*TODO: bad selector - better use rs-button-action */
+.rs-box-action:first-child .rs-button-large
 {
 	display: block;
 }
@@ -344,7 +344,8 @@
 
 @media screen and (min-width: 80rem)
 {
-	.rs-box-cta:first-child .rs-button-large
+	/*TODO: bad selector - better use rs-button-action */
+	.rs-box-action:first-child .rs-button-large
 	{
 		margin: 1em auto 0;
 		max-width: 50%;

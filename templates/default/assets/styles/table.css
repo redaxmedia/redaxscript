@@ -17,8 +17,8 @@
 .rs-table-default td,
 .rs-table-default th
 {
-	padding: 0.5em 0.75em;
 	background: rgba(50, 62, 76, 0.3);
+	padding: 0.5em 0.75em;
 }
 
 /* @section 1.1 body */

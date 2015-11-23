@@ -31,7 +31,6 @@
 
 .rs-admin-link-dock:hover
 {
-	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
@@ -42,7 +41,6 @@
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: #d50000;
 	background: linear-gradient(#d50000, #a20000);
 }
 
@@ -86,7 +84,6 @@
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: #ddd;
 	background: linear-gradient(#ddd, #c6c6c6);
 	border: 1px solid #c6c6c6;
 	border-radius: 0.25em;
@@ -99,7 +96,6 @@
 
 .rs-admin-list-control a:hover
 {
-	background: #4cb4ff;
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
@@ -132,7 +128,6 @@
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
-	background: #3db1f1;
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
 	padding-left: 1.25em;
@@ -153,7 +148,6 @@
 
 .rs-admin-item-panel.rs-admin-item-logout a:hover
 {
-	background: #d50000;
 	background: linear-gradient(#d50000, #a20000);
 }
 
@@ -236,7 +230,6 @@
 
 .rs-js .rs-admin-list-tab .rs-item-active
 {
-	background: #e2e2e2;
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	border-bottom-color: #e2e2e2;

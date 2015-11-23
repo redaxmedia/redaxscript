@@ -169,7 +169,6 @@ pre
 
 .rs-description-website
 {
-	color: #9c9c9c;
 	color: rgba(255, 255, 255, 0.4);
 	display: none;
 	font-weight: 700;
@@ -181,9 +180,11 @@ pre
 /*TODO: Consider to put all the teaser styling into teaser.css */
 .rs-title-teaser
 {
-	opacity: 0;
+	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
+	animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
+	border-radius: 0 0.125em 0.125em 0;
 	color: #fff;
 	display: inline-block;
 	font-size: 1.5em;
@@ -191,10 +192,8 @@ pre
 	line-height: 1.25em;
 	padding: 0.375em 0.75em;
 	position: relative;
+	opacity: 0;
 	top: -5em;
-	border-radius: 0 0.125em 0.125em 0;
-	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
-	animation: rs-fade 1s ease 0.5s forwards, rs-title-teaser 1s ease 0.2s forwards;
 }
 
 .rs-title-teaser .rs-text-important
