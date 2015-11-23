@@ -12,13 +12,14 @@
 
 
 /* @section 1. teaser title */
-
+/*TODO: Rename to rs-slide-in-down */
 @-webkit-keyframes rs-title-teaser
 {
 	from
 	{
 		top: -5em;
 	}
+
 	to
 	{
 		top: 0;
@@ -31,6 +32,7 @@
 	{
 		top: -5em;
 	}
+
 	to
 	{
 		top: 0;
@@ -46,15 +48,17 @@
 		-webkit-transform: scale(0.5);
 		transform: scale(0.5);
 	}
+
 	50%
 	{
 		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
+
 	100%
 	{
 		-webkit-transform: scale(0.5);
-		transform: scale(0.7);
+		transform: scale(0.5);
 	}
 }
 
@@ -63,19 +67,18 @@
 	0%
 	{
 		-webkit-transform: scale(0.5);
-		-ms-transform: scale(0.5);
 		transform: scale(0.5);
 	}
+
 	50%
 	{
 		-webkit-transform: scale(1);
-		-ms-transform: scale(1);
 		transform: scale(1);
 	}
+
 	100%
 	{
 		-webkit-transform: scale(0.5);
-		-ms-transform: scale(0.5);
 		transform: scale(0.5);
 	}
 }
