@@ -36,12 +36,6 @@
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
 	<rule ref="Squiz.CSS.ColonSpacing" />
 	<rule ref="Squiz.CSS.DisallowMultipleStyleDefinitions" />
-	<rule ref="Squiz.CSS.DuplicateClassDefinition">
-		<exclude-pattern>animate.css</exclude-pattern>
-		<exclude-pattern>general.css</exclude-pattern>
-		<exclude-pattern>interface.css</exclude-pattern>
-		<exclude-pattern>typo.css</exclude-pattern>
-	</rule>
 	<rule ref="Squiz.CSS.EmptyClassDefinition" />
 	<rule ref="Squiz.CSS.EmptyStyleDefinition" />
 	<rule ref="Squiz.CSS.MissingColon" />
