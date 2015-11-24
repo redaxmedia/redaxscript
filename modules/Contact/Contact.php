@@ -68,9 +68,6 @@ class Contact extends Module
 			'button' => array(
 				'submit' => array(
 					'name' => get_class()
-				),
-				'reset' => array(
-					'name' => get_class()
 				)
 			)
 		), array(

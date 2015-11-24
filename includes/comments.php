@@ -161,65 +161,104 @@ function comment_form($article = '', $language = '')
 {
 	$output = Redaxscript\Hook::trigger('commentFormStart');
 
-	/* define fields if logged in */
+	/* html elements */
 
-	if (LOGGED_IN == TOKEN)
+	$titleElement = new Redaxscript\Html\Element();
+	$titleElement->init('h2', array(
+			'class' => 'rs-title-content',
+	));
+	$titleElement->text(Redaxscript\Language::get('comment_new'));
+	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+	$formElement->init(array(
+		'textarea' => array(
+			'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
+		),
+		'button' => array(
+			'submit' => array(
+				'name' => 'comment_post'
+			)
+		)
+	), array(
+		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
+	));
+
+	/* create the form */
+
+	$formElement
+		->append('<fieldset>')
+		->legend()
+		->append('<ul><li>')
+		->label('* ' . Redaxscript\Language::get('author'), array(
+			'for' => 'author'
+		))
+		->text(array(
+			'id' => 'author',
+			'name' => 'author',
+			'readonly' => Redaxscript\Registry::get('myName') ? 'readonly' : null,
+			'required' => 'required',
+			'value' => Redaxscript\Registry::get('myName')
+		))
+		->append('</li><li>')
+		->label('* ' . Redaxscript\Language::get('email'), array(
+			'for' => 'email'
+		))
+		->email(array(
+			'id' => 'email',
+			'name' => 'email',
+			'readonly' => Redaxscript\Registry::get('myEmail') ? 'readonly' : null,
+			'required' => 'required',
+			'value' => Redaxscript\Registry::get('myEmail')
+		))
+		->append('</li><li>')
+		->label(Redaxscript\Language::get('url'), array(
+			'for' => 'url'
+		))
+		->url(array(
+			'id' => 'url',
+			'name' => 'url'
+		))
+		->append('</li><li>')
+		->label('* ' . Redaxscript\Language::get('message'), array(
+			'for' => 'text'
+		))
+		->textarea(array(
+			'id' => 'text',
+			'name' => 'text',
+			'required' => 'required'
+		))
+		->append('</li>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
 	{
-		$author = MY_USER;
-		$email = MY_EMAIL;
-		$code_readonly = ' readonly="readonly"';
+		$formElement
+			->append('<li>')
+			->captcha('task')
+			->append('</li>');
 	}
-
-	/* captcha object */
-
-	if (s('captcha') > 0)
+	$formElement->append('</ul></fieldset>');
+	if (Redaxscript\Db::getSettings('captcha') > 0)
 	{
-		$captcha = new Redaxscript\Captcha(Redaxscript\Language::getInstance());
-		$captcha->init();
+		$formElement->captcha('solution');
 	}
+	$formElement
+		->hidden(array(
+			'name' => 'article',
+			'value' => $article
+		))
+		->hidden(array(
+			'name' => 'language',
+			'value' => $language
+		))
+		->hidden(array(
+			'name' => 'date',
+			'value' => Redaxscript\Registry::get('now')
+		))
+		->token()
+		->submit()
+		->reset();
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content">' . l('comment_new') . '</h2>';
-	$output .= form_element('form', 'form_comment', 'rs-js-validate-form rs-form-default rs-form-comment', '', '', '', 'method="post"');
-	$output .= form_element('fieldset', '', 'rs-set-comment', '', '', l('fields_required') . l('point')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'author', 'rs-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-	$output .= '<li>' . form_element('url', 'url', 'rs-field-text', 'url', '', l('url'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('textarea', 'text', 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea rs-field-note', 'text', '', '* ' . l('comment'), 'rows="5" cols="100" required="required"') . '</li>';
-
-	/* collect captcha task output */
-
-	if (LOGGED_IN != TOKEN && s('captcha') > 0)
-	{
-		$output .= '<li>' . form_element('number', 'task', 'rs-field-text rs-field-note', 'task', '', $captcha->getTask(), 'min="1" max="20" required="required"') . '</li>';
-	}
-	$output .= '</ul></fieldset>';
-
-	/* collect hidden output */
-
-	$output .= form_element('hidden', '', '', 'language', $language);
-	$output .= form_element('hidden', '', '', 'date', NOW);
-	$output .= form_element('hidden', '', '', 'article', $article);
-
-	/* collect captcha solution output */
-
-	if (s('captcha') > 0)
-	{
-		$captchaHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
-		$captchaHash->init($captcha->getSolution());
-		if (LOGGED_IN == TOKEN)
-		{
-			$output .= form_element('hidden', '', '', 'task', $captchaHash->getRaw());
-		}
-		$output .= form_element('hidden', '', '', 'solution', $captchaHash->getHash());
-	}
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default', 'comment_post', l('create'));
-	$output .= '</form>';
+	$output .= $titleElement . $formElement;
 	$output .= Redaxscript\Hook::trigger('commentFormEnd');
 	echo $output;
 }
