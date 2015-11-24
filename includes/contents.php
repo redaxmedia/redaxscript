@@ -143,10 +143,6 @@ function contents()
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				$parser->init($text, array(
-					'className' => array(
-						'readmore' => 'rs-link-read_more',
-						'codequote' => 'rs-js-code-quote rs-box-code'
-					),
 					'route' => $route
 				));
 
@@ -349,10 +345,6 @@ function extras($filter = '')
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					$parser->init($text, array(
-						'className' => array(
-							'readmore' => 'rs-link-read_more',
-							'codequote' => 'rs-js-code-quote rs-box-code'
-						),
 						'route' => $route
 					));
 

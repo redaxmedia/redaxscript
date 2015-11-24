@@ -233,7 +233,7 @@
 				{
 					var that = $(this),
 						thatNative = that[0],
-						thatContenteditable = that.attr('contenteditable'),
+						thatEditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
 						className = 'rs-js-note-error rs-field-note rs-note-error',
 						validity = 'valid',
@@ -241,9 +241,9 @@
 						thatRequired = '',
 						message = '';
 
-					/* contenteditable field */
+					/* editable content */
 
-					if (thatContenteditable)
+					if (thatEditable)
 					{
 						thatValue = that.html();
 
