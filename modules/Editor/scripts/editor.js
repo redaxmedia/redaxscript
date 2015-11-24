@@ -75,20 +75,20 @@
 				{
 					var name = options.toolbar[i],
 						data = rs.modules.editor.controls[name],
-						control = '';
+						control =  $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl);
 
 					/* append toggle */
 
 					if (name === 'toggle')
 					{
-						editor.controlToggle = control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + options.className.editorSourceCode).appendTo(editor.toolbar);
+						editor.controlToggle = control.addClass(options.className.editorSourceCode).appendTo(editor.toolbar);
 					}
 
 					/* append several controls */
 
 					else if (typeof data === 'object')
 					{
-						control = $('<a title="' + data.title + '"></a>').addClass(options.className.editorControl + ' ' + name).appendTo(editor.toolbar);
+						control.addClass(data.className).appendTo(editor.toolbar);
 					}
 
 					/* handle control events */

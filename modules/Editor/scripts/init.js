@@ -3,7 +3,7 @@
  *
  * 1. editor
  *
- * @since 2.0.2
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -48,24 +48,24 @@ rs.modules.editor =
 				'h4',
 				'h5',
 				'h6',
-				'ordered_list',
-				'unordered_list',
+				'orderedList',
+				'unorderedList',
 				'outdent',
 				'indent',
-				'align_left',
-				'align_center',
-				'align_right',
-				'align_justify',
+				'alignLeft',
+				'alignCenter',
+				'alignRight',
+				'alignJustify',
 				'undo',
 				'redo',
 				'cut',
 				'copy',
 				'paste',
-				'insert_link',
+				'insertLink',
 				'unlink',
-				'insert_image',
-				'insert_readmore',
-				'insert_codequote',
+				'insertImage',
+				'insertReadmore',
+				'insertCodequote',
 				'unformat'
 			],
 			frontend:
@@ -88,167 +88,195 @@ rs.modules.editor =
 	{
 		toggle:
 		{
+			className: 'rs-toggle',
 			title: rs.language._editor.source_code,
 			method: 'toggle'
 		},
 		bold:
 		{
+			className: 'rs-bold',
 			title: rs.language._editor.bold,
 			method: 'action',
 			command: 'bold'
 		},
 		italic:
 		{
+			className: 'rs-italic',
 			title: rs.language._editor.italic,
 			method: 'action',
 			command: 'italic'
 		},
 		underline:
 		{
+			className: 'rs-underline',
 			title: rs.language._editor.underline,
 			method: 'action',
 			command: 'underline'
 		},
 		strike:
 		{
+			className: 'rs-strike',
 			title: rs.language._editor.strike,
 			method: 'action',
 			command: 'strikeThrough'
 		},
 		superscript:
 		{
+			className: 'rs-superscript',
 			title: rs.language._editor.superscript,
 			method: 'action',
 			command: 'superscript'
 		},
 		subscript:
 		{
+			className: 'rs-subscript',
 			title: rs.language._editor.subscript,
 			method: 'action',
 			command: 'subscript'
 		},
 		paragraph:
 		{
+			className: 'rs-paragraph',
 			title: rs.language._editor.paragraph,
 			method: 'format',
 			command: 'p'
 		},
 		h1:
 		{
+			className: 'rs-h1',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h1'
 		},
 		h2:
 		{
+			className: 'rs-h2',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h2'
 		},
 		h3:
 		{
+			className: 'rs-h3',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h3'
 		},
 		h4:
 		{
+			className: 'rs-h4',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h4'
 		},
 		h5:
 		{
+			className: 'rs-h5',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h5'
 		},
 		h6:
 		{
+			className: 'rs-h6',
 			title: rs.language.headline,
 			method: 'format',
 			command: 'h6'
 		},
-		ordered_list:
+		orderedList:
 		{
+			className: 'rs-ordered-list',
 			title: rs.language._editor.ordered_list,
 			method: 'action',
 			command: 'insertOrderedList'
 		},
-		unordered_list:
+		unorderedList:
 		{
+			className: 'rs-unordered-list',
 			title: rs.language._editor.unordered_list,
 			method: 'action',
 			command: 'insertUnorderedList'
 		},
 		outdent:
 		{
+			className: 'rs-outdent',
 			title: rs.language._editor.outdent,
 			method: 'action',
 			command: 'outdent'
 		},
 		indent:
 		{
+			className: 'rs-indent',
 			title: rs.language._editor.indent,
 			method: 'action',
 			command: 'indent'
 		},
-		align_left:
+		alignLeft:
 		{
+			className: 'rs-align-left',
 			title: rs.language._editor.align_left,
 			method: 'action',
 			command: 'justifyLeft'
 		},
-		align_center:
+		alignCenter:
 		{
+			className: 'rs-align-center',
 			title: rs.language._editor.align_center,
 			method: 'action',
 			command: 'justifyCenter'
 		},
-		align_right:
+		alignRight:
 		{
+			className: 'rs-align-right',
 			title: rs.language._editor.align_right,
 			method: 'action',
 			command: 'justifyRight'
 		},
-		align_justify:
+		alignJustify:
 		{
+			className: 'rs-align-justify',
 			title: rs.language._editor.align_justify,
 			method: 'action',
 			command: 'justifyFull'
 		},
 		undo:
 		{
+			className: 'rs-undo',
 			title: rs.language._editor.undo,
 			method: 'action',
 			command: 'undo'
 		},
 		redo:
 		{
+			className: 'rs-redo',
 			title: rs.language._editor.redo,
 			method: 'action',
 			command: 'redo'
 		},
 		cut:
 		{
+			className: 'rs-cut',
 			title: rs.language._editor.cut,
 			method: 'action',
 			command: 'cut'
 		},
 		copy:
 		{
+			className: 'rs-copy',
 			title: rs.language._editor.copy,
 			method: 'action',
 			command: 'copy'
 		},
 		paste:
 		{
+			className: 'rs-paste',
 			title: rs.language._editor.paste,
 			method: 'action',
 			command: 'paste'
 		},
-		insert_link:
+		insertLink:
 		{
+			className: 'rs-insert-link',
 			title: rs.language._editor.insert_link,
 			method: 'insert',
 			command: 'createLink',
@@ -257,30 +285,35 @@ rs.modules.editor =
 		},
 		unlink:
 		{
+			className: 'rs-unlink',
 			title: rs.language._editor.remove_link,
 			method: 'action',
 			command: 'unlink'
 		},
-		insert_image:
+		insertImage:
 		{
+			className: 'rs-insert-image',
 			title: rs.language._editor.insert_image,
 			method: 'insert',
 			command: 'insertImage',
 			message: rs.language._editor.insert_image,
 			value: ''
 		},
-		insert_codequote:
+		insertCodequote:
 		{
+			className: 'rs-insert-codequote',
 			title: rs.language._editor.insert_codequote,
 			method: 'insertCodequote'
 		},
-		insert_readmore:
+		insertReadmore:
 		{
+			className: 'rs-insert-readmore',
 			title: rs.language._editor.insert_readmore,
 			method: 'insertReadmore'
 		},
 		unformat:
 		{
+			className: 'rs-unformat',
 			title: rs.language._editor.remove_format,
 			method: 'action',
 			command: 'removeFormat'
