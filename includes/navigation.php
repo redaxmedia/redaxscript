@@ -154,7 +154,7 @@ function navigation_list($table = '', $options = '')
 
 				if ($table == 'comments')
 				{
-					$description = $title = truncate($author . l('colon') . ' ' . strip_tags($text), 80, '...');
+					$description = $title = $author . l('colon') . ' ' . strip_tags($text);
 				}
 				if ($description == '')
 				{

@@ -139,7 +139,7 @@ function admin_contents_list()
 
 				if (TABLE_PARAMETER == 'comments')
 				{
-					$name = truncate($author . l('colon') . ' ' . strip_tags($text), 80, '...');
+					$name = $author . l('colon') . ' ' . strip_tags($text);
 				}
 				else
 				{

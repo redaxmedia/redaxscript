@@ -285,7 +285,7 @@ function comment_post()
 	$author = $r['author'] = clean($_POST['author'], 0);
 	$email = $r['email'] = clean($_POST['email'], 3);
 	$url = $r['url'] = clean($_POST['url'], 4);
-	$text = break_up($_POST['text']);
+	$text = nl2br($_POST['text']);
 	$text = $r['text'] = clean($text, 1);
 	$r['language'] = clean($_POST['language'], 0);
 	$r['date'] = clean($_POST['date'], 5);

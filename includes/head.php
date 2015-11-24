@@ -128,7 +128,7 @@ function head($type = '')
 		{
 			$divider = s('divider');
 		}
-		$output .= '<title>' . truncate($title . $divider . $description, 80) . '</title>' . PHP_EOL;
+		$output .= '<title>' . $title . $divider . $description . '</title>' . PHP_EOL;
 	}
 
 	/* collect meta */
