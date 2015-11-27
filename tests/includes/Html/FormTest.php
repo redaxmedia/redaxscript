@@ -125,6 +125,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerSelectRange
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerSelectRange()
+	{
+		return $this->getProvider('tests/provider/Html/form_select_range.json');
+	}
+
+	/**
 	 * providerCaptcha
 	 *
 	 * @since 2.6.0
@@ -325,6 +338,35 @@ class FormTest extends TestCase
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
 		$form->select($optionArray, $attributeArray);
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testSelectRange
+	 *
+	 * @param array $rangeArray
+	 * @param array $attributeArray
+	 * @param array $expect
+	 *
+	 * @dataProvider providerSelectRange
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSelectRange($rangeArray = array(), $attributeArray = array(), $expect = array())
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->selectRange($rangeArray, $attributeArray);
 
 		/* actual */
 

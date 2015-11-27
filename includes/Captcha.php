@@ -51,7 +51,7 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_range = array(
+	protected $_rangeArray = array(
 		'min' => 1,
 		'max' => 10
 	);
@@ -137,7 +137,7 @@ class Captcha
 
 	public function getMin()
 	{
-		return $this->_range['min'];
+		return $this->_rangeArray['min'];
 	}
 
 	/**
@@ -150,7 +150,7 @@ class Captcha
 
 	public function getMax()
 	{
-		return $this->_range['max'];
+		return $this->_rangeArray['max'];
 	}
 
 	/**

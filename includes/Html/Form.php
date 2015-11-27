@@ -389,6 +389,23 @@ class Form extends HtmlAbstract
 	}
 
 	/**
+	 * append the select range
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $rangeArray range of the select
+	 * @param array $attributeArray attributes of the select
+	 *
+	 * @return Form
+	 */
+
+	public function selectRange($rangeArray = array(), $attributeArray = array())
+	{
+		$this->select(range($rangeArray['min'], $rangeArray['max']), $attributeArray);
+		return $this;
+	}
+
+	/**
 	 * append the captcha
 	 *
 	 * @since 2.6.0
@@ -529,13 +546,16 @@ class Form extends HtmlAbstract
 
 		foreach ($optionArray as $key => $value)
 		{
-			$output .= $optionElement
-				->copy()
-				->attr(array(
-					'selected' => $value === $selected ? 'selected' : null,
-					'value' => $value
-				))
-				->text(is_string($key) ? $key : null);
+			if ($value)
+			{
+				$output .= $optionElement
+					->copy()
+					->attr(array(
+						'selected' => $value === $selected ? 'selected' : null,
+						'value' => $value
+					))
+					->text(is_string($key) ? $key : null);
+			}
 		}
 		return $output;
 	}
