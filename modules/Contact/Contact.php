@@ -56,6 +56,8 @@ class Contact extends Module
 	 * render
 	 *
 	 * @since 2.6.0
+	 *
+	 * return Form
 	 */
 
 	public static function render()
@@ -144,7 +146,7 @@ class Contact extends Module
 	 * @since 2.6.0
 	 */
 
-	public static function _process()
+	protected static function _process()
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -216,7 +218,7 @@ class Contact extends Module
 	 * @param array $postData
 	 */
 
-	public static function _send($postData = array())
+	protected static function _send($postData = array())
 	{
 		$toArray = array(
 			Db::getSettings('author') => Db::getSettings('email')

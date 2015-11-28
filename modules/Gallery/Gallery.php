@@ -163,7 +163,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	public static function _getImageData($file = null)
+	protected static function _getImageData($file = null)
 	{
 		$output = array();
 		if (function_exists('exif_read_data'))
@@ -194,7 +194,7 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public static function _createThumb($file = null, $directory = null, $options = null)
+	protected static function _createThumb($file = null, $directory = null, $options = null)
 	{
 		/* options fallback */
 
