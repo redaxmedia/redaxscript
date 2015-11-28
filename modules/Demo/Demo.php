@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Demo;
 
-use Redaxscript\Config as GlobalConfig;
+use Redaxscript\Config as BaseConfig;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
@@ -126,7 +126,7 @@ class Demo extends Config
 
 	protected static function _reinstall()
 	{
-		$installer = new Installer(GlobalConfig::getInstance());
+		$installer = new Installer(BaseConfig::getInstance());
 		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();

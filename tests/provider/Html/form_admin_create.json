@@ -1,0 +1,20 @@
+[
+	[
+		"",
+		"",
+		"<form class=\"rs-js-validate-form rs-admin-form-default\" method=\"post\"></form>"
+	],
+	[
+		{
+			"form":
+			{
+				"method": "get",
+				"name": "test"
+			}
+		},
+		{
+			"captcha": true
+		},
+		"<form class=\"rs-js-validate-form rs-admin-form-default\" method=\"get\" name=\"test\"></form>"
+	]
+]

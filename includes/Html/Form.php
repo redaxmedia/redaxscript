@@ -16,7 +16,7 @@ use Redaxscript\Registry;
  * @package Redaxscript
  * @category Html
  * @author Henry Ruhs
-*
+ *
  * @method button()
  * @method checkbox()
  * @method datetime()
