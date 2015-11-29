@@ -1,13 +1,13 @@
 <?php
-namespace Redaxscript\Tests\Html;
+namespace Redaxscript\Tests\Admin\Html;
 
-use Redaxscript\Html;
+use Redaxscript\Admin;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCase;
 
 /**
- * FormAdminTest
+ * FormTest
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\Tests\TestCase;
  * @author Henry Ruhs
  */
 
-class FormAdminTest extends TestCase
+class FormTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -56,7 +56,7 @@ class FormAdminTest extends TestCase
 
 	public function providerCreate()
 	{
-		return $this->getProvider('tests/provider/Html/form_admin_create.json');
+		return $this->getProvider('tests/provider/Admin/Html/form_create.json');
 	}
 
 	/**
@@ -75,7 +75,7 @@ class FormAdminTest extends TestCase
 	{
 		/* setup */
 
-		$form = new Html\FormAdmin($this->_registry, $this->_language);
+		$form = new Admin\Html\Form($this->_registry, $this->_language);
 		$form->init($attributeArray, $options);
 
 		/* actual */

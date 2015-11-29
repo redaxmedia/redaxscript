@@ -1,5 +1,7 @@
 <?php
-namespace Redaxscript\Html;
+namespace Redaxscript\Admin\Html;
+
+use Redaxscript\Html\Form as BaseForm;
 
 /**
  * children class to generate a form
@@ -11,9 +13,8 @@ namespace Redaxscript\Html;
  * @author Henry Ruhs
  */
 
-class FormAdmin extends Form
+class Form extends BaseForm
 {
-
 	/**
 	 * attributes of the form
 	 *
