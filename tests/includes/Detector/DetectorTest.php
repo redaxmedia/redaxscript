@@ -73,7 +73,7 @@ class DetectorTest extends TestCase
 	}
 
 	/**
-	 * testDetectorLanguage
+	 * testLanguage
 	 *
 	 * @since 2.1.0
 	 *
@@ -83,7 +83,7 @@ class DetectorTest extends TestCase
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testDetectorLanguage($registry = array(), $expect = null)
+	public function testLanguage($registry = array(), $expect = null)
 	{
 		/* setup */
 
@@ -100,7 +100,7 @@ class DetectorTest extends TestCase
 	}
 
 	/**
-	 * testDetectorTemplate
+	 * testTemplate
 	 *
 	 * @since 2.1.0
 	 *
@@ -110,7 +110,7 @@ class DetectorTest extends TestCase
 	 * @dataProvider providerTemplate
 	 */
 
-	public function testDetectorTemplate($registry = array(), $expect = null)
+	public function testTemplate($registry = array(), $expect = null)
 	{
 		/* setup */
 
@@ -127,12 +127,12 @@ class DetectorTest extends TestCase
 	}
 
 	/**
-	 * testDetectorTemplate
+	 * testQuery
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testDetectorQuery()
+	public function testQuery()
 	{
 		/* setup */
 

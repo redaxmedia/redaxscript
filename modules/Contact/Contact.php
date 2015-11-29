@@ -198,27 +198,26 @@ class Contact extends Module
 
 		if ($errorData)
 		{
-			notification(Language::get('error_occurred'), $errorData, Language::get('home'), Registry::get('root'));
+			self::_error($errorData);
 		}
 
 		/* handle success */
 
 		else
 		{
-			notification(Language::get('operation_completed'), Language::get('message_sent', '_contact'), Language::get('home'), Registry::get('root'));
-			self::_send($postData);
+			self::_success($postData);
 		}
 	}
 
 	/**
-	 * send
+	 * success
 	 *
 	 * @since 2.6.0
 	 *
 	 * @param array $postData
 	 */
 
-	protected static function _send($postData = array())
+	protected static function _success($postData = array())
 	{
 		$toArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
@@ -242,5 +241,22 @@ class Contact extends Module
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
+
+		/* notification */
+
+		notification(Language::get('operation_completed'), Language::get('message_sent', '_contact'), Language::get('home'), Registry::get('root'));
+	}
+
+	/**
+	 * error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorData
+	 */
+
+	protected static function _error($errorData = array())
+	{
+		notification(Language::get('error_occurred'), $errorData, Language::get('home'), Registry::get('root'));
 	}
 }

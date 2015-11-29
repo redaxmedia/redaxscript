@@ -61,7 +61,8 @@ function router()
 			}
 			return;
 		case 'login':
-			login_form();
+			$login = new Redaxscript\View\Login();
+			echo $login->render();
 			return;
 		case 'logout':
 			if (LOGGED_IN == TOKEN)

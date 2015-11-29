@@ -56,12 +56,7 @@ class Template
 	public static function breadcrumb()
 	{
 		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
-		$breadcrumb->init(array(
-			'className' => array(
-				'list' => 'rs-list-breadcrumb',
-				'divider' => 'rs-divider'
-			)
-		));
+		$breadcrumb->init();
 		return $breadcrumb->render();
 	}
 
