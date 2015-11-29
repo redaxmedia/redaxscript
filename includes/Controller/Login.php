@@ -13,37 +13,37 @@ namespace Redaxscript\Controller;
 
 class Login
 {
-    /**
-     * process the login
-     *
-     * @since 3.0.0
-     */
+	/**
+	 * process the login
+	 *
+	 * @since 3.0.0
+	 */
 
-    protected function _process()
-    {
-    }
+	protected function _process()
+	{
+	}
 
-    /**
-     * handle success
-     *
-     * @since 3.0.0
-     *
-     * @param array $postData
-     */
+	/**
+	 * handle success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postData
+	 */
 
-    protected function _success($postData = array())
-    {
-    }
+	protected function _success($postData = array())
+	{
+	}
 
-    /**
-     * handle error
-     *
-     * @since 3.0.0
-     *
-     * @param array $errorData
-     */
+	/**
+	 * handle error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorData
+	 */
 
-    protected function _error($errorData = array())
-    {
-    }
+	protected function _error($errorData = array())
+	{
+	}
 }

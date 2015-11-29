@@ -1,0 +1,2 @@
+<?php
+namespace Redaxscript\View;

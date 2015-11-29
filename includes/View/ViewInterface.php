@@ -13,13 +13,13 @@ namespace Redaxscript\View;
 
 interface ViewInterface
 {
-    /**
-     * render the view
-     *
-     * @since 3.0.0
-     *
-     * @return string
-     */
+	/**
+	 * render the view
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
 
-    public function render();
+	public function render();
 }
