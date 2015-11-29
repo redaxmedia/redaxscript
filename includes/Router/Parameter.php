@@ -11,7 +11,7 @@ use Redaxscript\Request;
  * @since 2.4.0
  *
  * @package Redaxscript
- * @category Parameter
+ * @category Router
  * @author Henry Ruhs
  */
 

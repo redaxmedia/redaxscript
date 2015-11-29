@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render a login
+ * children class to render the login view
  *
  * @since 3.0.0
  *
@@ -42,7 +42,7 @@ class Login implements ViewInterface
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => Registry::get('rewriteRoute') . 'reminder',
+				'href' => Registry::get('rewriteRoute') . 'recover',
 				'rel' => 'no-follow'
 			));
 			$legendHTML = $linkElement->text(Language::get('reminder_question') . Language::get('question_mark'));

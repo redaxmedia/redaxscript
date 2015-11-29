@@ -4,7 +4,7 @@ namespace Redaxscript\Client;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a client class
+ * abstract class to create a client class
  *
  * @since 2.4.0
  *

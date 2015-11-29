@@ -2,7 +2,7 @@
 namespace Redaxscript\Router;
 
 /**
- * parent class to build a router
+ * parent class to create a resolver
  *
  * @since 3.0.0
  *
@@ -14,12 +14,12 @@ namespace Redaxscript\Router;
 class Resolver extends Parameter
 {
 	/**
-	 * array of the router
+	 * array of the resolver
 	 *
 	 * @var array
 	 */
 
-	protected $_routerArray = array(
+	protected $_resolverArray = array(
 		'view' => array(
 			'up',
 			'down',
@@ -84,11 +84,11 @@ class Resolver extends Parameter
 
 		/* admin route */
 
-		if (in_array($adminParameter, $this->_routerArray['view']))
+		if (in_array($adminParameter, $this->_resolverArray['view']))
 		{
 			$output = 'admin/view/' . $tableParameter;
 		}
-		else if (in_array($adminParameter, $this->_routerArray['edit']))
+		else if (in_array($adminParameter, $this->_resolverArray['edit']))
 		{
 			$output = 'admin/edit/' . $tableParameter;
 		}

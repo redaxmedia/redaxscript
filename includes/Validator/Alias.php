@@ -41,11 +41,11 @@ class Alias implements ValidatorInterface
 		'loader',
 		'login',
 		'logout',
-		'password_reset',
 		'scripts',
 		'styles',
-		'registration',
-		'reminder'
+		'recover',
+		'register',
+		'reset'
 	);
 
 	/**

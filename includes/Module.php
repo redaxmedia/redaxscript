@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to build a module
+ * parent class to create a module
  *
  * @since 2.2.0
  *

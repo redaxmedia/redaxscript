@@ -30,18 +30,23 @@ function router()
 	/* call default post */
 
 	$post_list = array(
+		'Redaxscript\View\Login' => 'login_post',
+		'Redaxscript\View\Register' => 'registration_post',
 		'comment',
-		'login',
 		'password_reset',
-		'registration',
 		'reminder',
 		'search'
 	);
-	foreach ($post_list as $value)
+	foreach ($post_list as $key => $value)
 	{
 		if ($_POST[$value . '_post'] && function_exists($value . '_post'))
 		{
 			call_user_func($value . '_post');
+			return;
+		}
+		if ($_POST[$key] && function_exists($value))
+		{
+			call_user_func($value);
 			return;
 		}
 	}
@@ -74,7 +79,7 @@ function router()
 				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
 			}
 			return;
-		case 'password_reset':
+		case 'reset':
 			if (s('reminder') == 1 && FIRST_SUB_PARAMETER && THIRD_PARAMETER)
 			{
 				password_reset_form();
@@ -84,17 +89,19 @@ function router()
 				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			}
 			return;
-		case 'registration':
+		case 'register':
 			if (s('registration'))
 			{
-				registration_form();
+				$register = new Redaxscript\View\Register();
+				echo $register->render();
+				return;
 			}
 			else
 			{
 				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			}
 			return;
-		case 'reminder':
+		case 'recover':
 			if (s('reminder') == 1)
 			{
 				reminder_form();

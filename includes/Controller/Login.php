@@ -2,7 +2,7 @@
 namespace Redaxscript\Controller;
 
 /**
- * children class to process a login
+ * children class to process the login request
  *
  * @since 3.0.0
  *

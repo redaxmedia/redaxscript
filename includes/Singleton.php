@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * abstract class to build a singleton class
+ * abstract class to create a singleton class
  *
  * @since 2.2.0
  *

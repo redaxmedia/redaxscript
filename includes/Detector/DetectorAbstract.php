@@ -5,7 +5,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a detector class
+ * abstract class to create a detector class
  *
  * @since 2.0.0
  *
