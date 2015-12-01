@@ -1,69 +1,6 @@
 <?php
 
 /**
- * password reset form
- *
- * @since 3.0.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Password
- * @author Henry Ruhs
- */
-
-function password_reset_form()
-{
-	$output = Redaxscript\Hook::trigger('passwordFormStart');
-
-	/* html elements */
-
-	$titleElement = new Redaxscript\Html\Element();
-	$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-	));
-	$titleElement->text(Redaxscript\Language::get('password_reset'));
-	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-	$formElement->init(array(
-		'form' => array(
-			'class' => 'rs-js-validate-form rs-form-default rs-form-password-reset'
-		),
-		'button' => array(
-			'submit' => array(
-				'name' => 'password_reset_post'
-			)
-		)
-	), array(
-		'captcha' => true
-	));
-
-	/* create the form */
-
-	$formElement
-		->append('<fieldset>')
-		->legend()
-		->append('<li><ul>')
-		->captcha('task')
-		->append('</li></ul></fieldset>')
-		->hidden(array(
-			'name' => 'id',
-			'value' => Redaxscript\Registry::get('firstSubParameter')
-		))
-		->hidden(array(
-			'name' => 'password',
-			'value' => Redaxscript\Registry::get('thirdParameter')
-		))
-		->captcha('solution')
-		->token()
-		->submit();
-
-	/* collect output */
-
-	$output .= $titleElement . $formElement;
-	$output .= Redaxscript\Hook::trigger('passwordFormEnd');
-	echo $output;
-}
-
-/**
  * password reset post
  *
  * @since 1.2.1

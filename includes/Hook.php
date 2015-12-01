@@ -30,14 +30,6 @@ class Hook
 	protected static $_namespace = 'Redaxscript\Modules\\';
 
 	/**
-	 * hook delimiter
-	 *
-	 * @var string
-	 */
-
-	protected static $_delimiter = '_';
-
-	/**
 	 * array of installed and enabled modules
 	 *
 	 * @var array
