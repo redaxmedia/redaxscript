@@ -71,19 +71,25 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.2 remove webkit appearance */
 
-.rs-field-search, .rs-field-search::-webkit-search-cancel-button
+/*TODO: move to form.css */
+.rs-field-search,
+.rs-field-search::-webkit-search-cancel-button
 {
 	-webkit-appearance: none;
 }
 
 /* @section 2.3 trident tooltip */
 
+/*TODO: move to tooltip.css */
 .rs-msie9 .rs-tooltip:after, .rs-msie10 .rs-tooltip:after
 {
 	display: none;
 }
 
-.rs-msie9 .rs-tooltip:focus:after, .rs-msie9 .rs-tooltip:hover:after, .rs-msie10 .rs-tooltip:focus:after, .rs-msie10 .rs-tooltip:hover:after
+.rs-msie9 .rs-tooltip:focus:after,
+.rs-msie9 .rs-tooltip:hover:after,
+.rs-msie10 .rs-tooltip:focus:after,
+.rs-msie10 .rs-tooltip:hover:after
 {
 	display: inline-block;
 }

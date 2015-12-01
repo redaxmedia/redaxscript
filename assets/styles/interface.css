@@ -17,6 +17,7 @@
 
 /* @section 1. list dropdown */
 
+/*TODO: move to dropdown.css */
 .rs-list-dropdown a
 {
 	display: block;
@@ -70,6 +71,8 @@
 
 /* @section 5. tooltip */
 
+/*TODO: move to tooltip.css */
+
 .rs-tooltip
 {
 	cursor: help;
@@ -99,6 +102,7 @@
 /* @section 6. query */
 
 /* @section 6.1 min width 50rem */
+/*TODO: move to dropdown.css */
 
 @media screen and (min-width: 50rem)
 {
@@ -117,5 +121,4 @@
 		left: 100%;
 		top: 0;
 	}
-
 }

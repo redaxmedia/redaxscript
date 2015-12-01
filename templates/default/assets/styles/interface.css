@@ -216,7 +216,17 @@
 
 	/* @section 7.2.2 nav trigger - hamburger icon */
 
-	/*TODO: you override way to much here - think about mobile first (min-width) to prevent the so called lavafluss */
+	/*TODO: you override way to much here - think about mobile first (min-width) to prevent the so called lavafluss
+	 MOVE all the stuff into hamburger.css - split functionality from styling
+
+	 suggested naming, old naming is confusing - let's stick to types so everyone understands what element are affected
+
+	 rs-field-hamburger // trigger for the hamburger
+	 rs-has-hamburger // has / contains the hamburger element
+	 rs-label-hamburger // the hamburger element
+
+
+	 */
 	.rs-navigation-trigger
 	{
 		color: rgba(255, 255, 255, 0.7);
@@ -317,6 +327,8 @@
 		z-index: 5;
 	}
 }
+
+/* TODO: move to header.css */
 
 /* @section 7.3 min width 50rem */
 

@@ -29,6 +29,8 @@
 
 @media screen and (max-width: 49.999em)
 {
+	/*TODO: move to interface.css */
+
 	.rs-list-tab
 	{
 		display: none;
@@ -39,6 +41,7 @@
 		display: block;
 	}
 
+	/*TODO: move to tooltip.css */
 	.rs-tooltip:after
 	{
 		left: 1em;
@@ -52,6 +55,7 @@
 
 @media screen and (max-width: 39.999em)
 {
+	/*TODO: move to media.css */
 	.rs-player
 	{
 		font-size: 0.875em;
@@ -62,6 +66,7 @@
 
 @media screen and (max-width: 29.999em)
 {
+	/*TODO: move to form.css */
 	a.rs-button-default
 	{
 		display: block;
@@ -73,12 +78,14 @@
 		width: 100%;
 	}
 
+	/*TODO: move to dialog.css */
 	.rs-dialog
 	{
 		margin: -5em 0 0 -40%;
 		width: 80%;
 	}
 
+	/*TODO: move to media.css */
 	.rs-player
 	{
 		font-size: 0.75em;
@@ -89,6 +96,7 @@
 
 @media screen and (max-width: 19.999em)
 {
+	/*TODO: move to media.css */
 	.rs-player
 	{
 		font-size: 0.5em;
