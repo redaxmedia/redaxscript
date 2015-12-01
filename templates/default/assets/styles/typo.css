@@ -15,7 +15,6 @@
  * 11. footer
  * 12. query
  *    12.1 min width 50rem
- *    12.2 min width 80rem
  *
  * @since 3.0.0
  *
@@ -273,24 +272,5 @@ pre
 	{
 		display: inline-block;
 		vertical-align: middle;
-	}
-}
-
-/* @section 12.2 min width 80rem */
-
-@media screen and (min-width: 80rem)
-{
-	.rs-teaser:after
-	{
-		-webkit-animation: rs-pulse 7s ease-in-out infinite;
-		animation: rs-pulse 7s ease-in-out infinite;
-		border-radius: 50%;
-		box-shadow: 0 0 8em 3em #ffdc00;
-		content: '';
-		height: 0;
-		left: 65%;
-		position: absolute;
-		top: 3em;
-		width: 0;
 	}
 }

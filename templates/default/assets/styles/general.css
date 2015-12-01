@@ -8,13 +8,11 @@
  * 5. top
  * 6. sidebar
  * 7. footer
- * 8. bottom
- * 9. logo website
- * 10. query
- *    10.1 print
- *    10.2 max width 50rem
- *    10.3 min width 50rem
- *    10.4 min width 80rem
+ * 8. query
+ *    8.1 print
+ *    8.2 max width 50rem
+ *    8.3 min width 50rem
+ *    8.4 min width 80rem
  *
  * @since 3.0.0
  *
@@ -71,11 +69,6 @@ body
 
 /* @section 3. wrapper */
 
-.rs-main
-{
-	display: block;
-}
-
 .rs-wrapper
 {
 	margin-left: auto;
@@ -102,8 +95,7 @@ body
 .rs-header
 {
 	background: #323e4c;
-	padding: 2vh 1rem;
-	height: 15vh;
+	padding: 1em;
 }
 
 /* @section 5. top */
@@ -111,9 +103,9 @@ body
 .rs-teaser
 {
 	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
-	min-height: 86vh;
 	margin-bottom: 2em;
-	padding: 20vh 1em;
+	padding: 5em 2em;
+	padding: 10vw 4vw;
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
@@ -138,25 +130,9 @@ body
 	margin-top: 2em;
 }
 
-/*TODO: Is this still needed? We just need a footer - btw: bottom sections do not belong inside footer sections */
-/* @section 8. bottom */
+/* @section 8. query */
 
-.rs-bottom
-{
-	margin-top: 1em;
-}
-
-/*TODO: Is the logo class still needed? */
-/* @section 9. logo website */
-
-.rs-logo-website
-{
-	width: 0.75em;
-}
-
-/* @section 10. query */
-
-/* @section 10.1 print */
+/* @section 8.1 print */
 
 @media print
 {
@@ -168,7 +144,7 @@ body
 	}
 }
 
-/* @section 10.2 max width 50rem */
+/* @section 8.2 max width 50rem */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -188,7 +164,7 @@ body
 	}
 }
 
-/* @section 10.3 min width 50rem */
+/* @section 8.3 min width 50rem */
 
 @media screen and (min-width: 50rem)
 {
@@ -216,7 +192,7 @@ body
 	}
 }
 
-/* @section 10.4 min width 80rem */
+/* @section 8.4 min width 80rem */
 
 @media screen and (min-width: 80rem)
 {
