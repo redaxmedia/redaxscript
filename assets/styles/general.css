@@ -12,9 +12,8 @@
 
 /* @section 1. hide */
 
-.rs-js .rs-hide-if-js,
-.rs-hidden-legend legend,
-.rs-fn-hidden
+.rs-hide,
+.rs-js .rs-hide-if-js
 {
 	display: none;
 }

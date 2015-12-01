@@ -498,7 +498,7 @@ function admin_contents_form()
 	/* collect output */
 
 	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
-	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form rs-hidden-legend', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
+	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
 

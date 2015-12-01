@@ -28,11 +28,6 @@ body
 	overflow-x: hidden;
 }
 
-.rs-fn-hidden
-{
-	display: none;
-}
-
 /* @section 2. grid elements */
 
 .rs-grid-space > a,
