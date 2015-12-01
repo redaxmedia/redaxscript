@@ -39,9 +39,9 @@ class Ace extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/Ace/styles/ace.css';
-		$loader_modules_scripts[] = 'modules/Ace/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Ace/scripts/ace.js';
+		$loader_modules_styles[] = 'modules/Ace/assets/styles/ace.css';
+		$loader_modules_scripts[] = 'modules/Ace/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/Ace/assets/scripts/ace.js';
 	}
 
 	/**

@@ -41,9 +41,9 @@ class Maps extends Config
 		if (!Registry::get('adminParameter'))
 		{
 			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Maps/styles/maps.css';
-			$loader_modules_scripts[] = 'modules/Maps/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Maps/scripts/maps.js';
+			$loader_modules_styles[] = 'modules/Maps/assets/styles/maps.css';
+			$loader_modules_scripts[] = 'modules/Maps/assets/scripts/init.js';
+			$loader_modules_scripts[] = 'modules/Maps/assets/scripts/maps.js';
 		}
 	}
 

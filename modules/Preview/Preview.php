@@ -45,7 +45,7 @@ class Preview extends Module
 		if (Registry::get('firstParameter') === 'preview')
 		{
 			global $loader_modules_styles;
-			$loader_modules_styles[] = 'modules/Preview/styles/preview.css';
+			$loader_modules_styles[] = 'modules/Preview/assets/styles/preview.css';
 		}
 	}
 

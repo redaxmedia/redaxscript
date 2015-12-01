@@ -39,9 +39,9 @@ class LazyLoad extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/LazyLoad/styles/lazy_load.css';
-		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/lazy_load.js';
+		$loader_modules_styles[] = 'modules/LazyLoad/assets/styles/lazy_load.css';
+		$loader_modules_scripts[] = 'modules/LazyLoad/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/LazyLoad/assets/scripts/lazy_load.js';
 	}
 
 	/**

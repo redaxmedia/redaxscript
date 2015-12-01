@@ -38,8 +38,8 @@ class SyntaxHighlighter extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/scripts/syntax_highlighter.js';
+		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/assets/scripts/syntax_highlighter.js';
 	}
 
 	/**

@@ -42,9 +42,9 @@ class Validator extends Module
 		if (Registry::get('firstParameter') !== 'admin')
 		{
 			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Validator/styles/validator.css';
-			$loader_modules_scripts[] = 'modules/Validator/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Validator/scripts/validator.js';
+			$loader_modules_styles[] = 'modules/Validator/assets/styles/validator.css';
+			$loader_modules_scripts[] = 'modules/Validator/assets/scripts/init.js';
+			$loader_modules_scripts[] = 'modules/Validator/assets/scripts/validator.js';
 		}
 	}
 }

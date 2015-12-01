@@ -38,7 +38,7 @@ class Dawanda extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/Dawanda/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Dawanda/scripts/dawanda.js';
+		$loader_modules_scripts[] = 'modules/Dawanda/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/Dawanda/assets/scripts/dawanda.js';
 	}
 }

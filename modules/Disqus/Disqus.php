@@ -41,7 +41,7 @@ class Disqus extends Config
 		if (Registry::get('article'))
 		{
 			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Disqus/scripts/init.js';
+			$loader_modules_scripts[] = 'modules/Disqus/assets/scripts/init.js';
 		}
 	}
 

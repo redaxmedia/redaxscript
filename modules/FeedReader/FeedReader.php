@@ -39,7 +39,7 @@ class FeedReader extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/FeedReader/styles/feed_reader.css';
+		$loader_modules_styles[] = 'modules/FeedReader/assets/styles/feed_reader.css';
 	}
 
 	/**

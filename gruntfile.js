@@ -20,21 +20,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'scripts/*.js'
+					'assets/scripts/*.js'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/scripts/*.js'
+					'modules/*/assets/scripts/*.js'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/scripts/*.js'
+					'templates/*/assets/scripts/*.js'
 				]
 			},
 			options:

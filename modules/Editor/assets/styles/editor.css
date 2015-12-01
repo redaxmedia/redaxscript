@@ -18,14 +18,14 @@
  @font-face
 {
 	font-family: 'icon editor';
-	src: url('modules/Editor/fonts/icon.woff') format('woff'), url('modules/Editor/fonts/icon.ttf') format('truetype');
+	src: url('modules/Editor/assets/fonts/icon.woff') format('woff'), url('modules/Editor/assets/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. editor toolbar */
 
 .rs-editor-toolbar
 {
-	background: url('modules/Editor/images/carbon.png') #222;
+	background: url('modules/Editor/assets/images/carbon.png') #222;
 	font-size: 0.875rem;
 	margin-bottom: 1em;
 	margin-top: 1em;

@@ -40,10 +40,10 @@ class Gallery extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/Gallery/styles/gallery.css';
-		$loader_modules_styles[] = 'modules/Gallery/styles/query.css';
-		$loader_modules_scripts[] = 'modules/Gallery/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Gallery/scripts/gallery.js';
+		$loader_modules_styles[] = 'modules/Gallery/assets/styles/gallery.css';
+		$loader_modules_styles[] = 'modules/Gallery/assets/styles/query.css';
+		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/gallery.js';
 	}
 
 	/**

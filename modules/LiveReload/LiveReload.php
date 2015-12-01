@@ -39,8 +39,8 @@ class LiveReload extends Module
 	public static function loaderStart()
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/LiveReload/styles/live_reload.css';
-		$loader_modules_scripts[] = 'modules/LiveReload/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/LiveReload/scripts/live_reload.js';
+		$loader_modules_styles[] = 'modules/LiveReload/assets/styles/live_reload.css';
+		$loader_modules_scripts[] = 'modules/LiveReload/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/LiveReload/assets/scripts/live_reload.js';
 	}
 }

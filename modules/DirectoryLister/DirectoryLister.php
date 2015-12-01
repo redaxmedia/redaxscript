@@ -44,7 +44,7 @@ class DirectoryLister extends Config
 	public static function loaderStart()
 	{
 		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/DirectoryLister/styles/directory_lister.css';
+		$loader_modules_styles[] = 'modules/DirectoryLister/assets/styles/directory_lister.css';
 	}
 
 	/**
