@@ -20,7 +20,7 @@ use Redaxscript\Registry;
 class Login implements ViewInterface
 {
 	/**
-	 * render the login
+	 * render the view
 	 *
 	 * @since 3.0.0
 	 *

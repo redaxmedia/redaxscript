@@ -403,8 +403,8 @@ class FormTest extends TestCase
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['prefix'], $actual);
-		$this->assertStringEndsWith($expect['suffix'], $actual);
+		$this->assertStringStartsWith($expect['start'], $actual);
+		$this->assertStringEndsWith($expect['end'], $actual);
 	}
 
 	/**

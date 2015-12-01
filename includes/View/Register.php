@@ -20,7 +20,7 @@ use Redaxscript\Registry;
 class Register implements ViewInterface
 {
 	/**
-	 * render the register
+	 * render the view
 	 *
 	 * @since 3.0.0
 	 *
@@ -29,7 +29,7 @@ class Register implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('registrationFormStart');
+		$output = Hook::trigger('registerFormStart');
 
 		/* html elements */
 
@@ -105,7 +105,7 @@ class Register implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('registrationFormEnd');
+		$output .= Hook::trigger('registerFormEnd');
 		return $output;
 	}
 }

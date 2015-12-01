@@ -32,8 +32,8 @@ function router()
 	$post_list = array(
 		'Redaxscript\View\Login' => 'login_post',
 		'Redaxscript\View\Register' => 'registration_post',
+		'Redaxscript\View\Reset' => 'password_reset',
 		'comment',
-		'password_reset',
 		'reminder',
 		'search'
 	);
