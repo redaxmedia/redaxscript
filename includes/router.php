@@ -32,9 +32,9 @@ function router()
 	$post_list = array(
 		'Redaxscript\View\Login' => 'login_post',
 		'Redaxscript\View\Register' => 'registration_post',
-		'Redaxscript\View\Reset' => 'password_reset',
+		'Redaxscript\View\Reset' => 'password_reset_post',
+		'Redaxscript\View\Recover' => 'reminder_post',
 		'comment',
-		'reminder',
 		'search'
 	);
 	foreach ($post_list as $key => $value)
@@ -66,28 +66,36 @@ function router()
 			}
 			return;
 		case 'login':
-			$login = new Redaxscript\View\Login();
-			echo $login->render();
-			return;
+			switch (SECOND_PARAMETER)
+			{
+			case 'recover':
+				if (s('reminder') == 1)
+				{
+					$recover = new Redaxscript\View\Recover();
+					echo $recover->render();
+					return;
+				}
+			case 'reset':
+				if (s('reminder') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
+				{
+					$reset = new Redaxscript\View\Reset();
+					echo $reset->render();
+					return;
+				}
+				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
+				return;
+			default:
+				$login = new Redaxscript\View\Login();
+				echo $login->render();
+				return;
+			}
 		case 'logout':
 			if (LOGGED_IN == TOKEN)
 			{
 				logout();
+				return;
 			}
-			else
-			{
-				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
-			}
-			return;
-		case 'reset':
-			if (s('reminder') == 1 && FIRST_SUB_PARAMETER && THIRD_PARAMETER)
-			{
-				password_reset_form();
-			}
-			else
-			{
-				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
-			}
+			notification(l('error_occurred'), l('access_no'), l('login'), 'login');
 			return;
 		case 'register':
 			if (s('registration'))
@@ -96,20 +104,7 @@ function router()
 				echo $register->render();
 				return;
 			}
-			else
-			{
-				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
-			}
-			return;
-		case 'recover':
-			if (s('reminder') == 1)
-			{
-				reminder_form();
-			}
-			else
-			{
-				notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
-			}
+			notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
 			return;
 		default:
 			contents();

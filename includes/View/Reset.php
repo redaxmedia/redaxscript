@@ -60,12 +60,12 @@ class Reset implements ViewInterface
             ->captcha('task')
             ->append('</li></ul></fieldset>')
             ->hidden(array(
-                'name' => 'id',
-                'value' => Registry::get('firstSubParameter')
-            ))
-            ->hidden(array(
                 'name' => 'password',
                 'value' => Registry::get('thirdParameter')
+            ))
+            ->hidden(array(
+                'name' => 'id',
+                'value' => Registry::get('thirdSubParameter')
             ))
             ->captcha('solution')
             ->token()

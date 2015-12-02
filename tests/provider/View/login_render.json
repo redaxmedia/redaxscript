@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-title-content\">Login</h2><form class=\"rs-js-validate-form rs-form-default rs-form-login\" method=\"post\"><fieldset><legend class=\"rs-legend-default\"><a href=\"recover\" rel=\"no-follow\">Did you forget your user or password?</a></legend><ul><li><label class=\"rs-label-default\" for=\"user\">* User</label><input class=\"rs-field-default rs-field-text\" type=\"text\" autofocus=\"autofocus\" id=\"user\" name=\"user\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"password\">* Password</label><input class=\"rs-field-default rs-field-password\" type=\"password\" autocomplete=\"off\" id=\"password\" name=\"password\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"task\">",
+			"start": "<h2 class=\"rs-title-content\">Login</h2><form class=\"rs-js-validate-form rs-form-default rs-form-login\" method=\"post\"><fieldset><legend class=\"rs-legend-default\"><a href=\"login/recover\" rel=\"no-follow\">Did you forget your user or password?</a></legend><ul><li><label class=\"rs-label-default\" for=\"user\">* User</label><input class=\"rs-field-default rs-field-text\" type=\"text\" autofocus=\"autofocus\" id=\"user\" name=\"user\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"password\">* Password</label><input class=\"rs-field-default rs-field-password\" type=\"password\" autocomplete=\"off\" id=\"password\" name=\"password\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"task\">",
 			"end": "<button class=\"rs-js-button rs-button-default\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\Login\">Submit</button></form>"
 		}
 	]

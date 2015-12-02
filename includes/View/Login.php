@@ -42,7 +42,7 @@ class Login implements ViewInterface
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => Registry::get('rewriteRoute') . 'recover',
+				'href' => Registry::get('rewriteRoute') . 'login/recover',
 				'rel' => 'no-follow'
 			));
 			$legendHTML = $linkElement->text(Language::get('reminder_question') . Language::get('question_mark'));

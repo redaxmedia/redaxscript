@@ -1,7 +1,6 @@
 filter:
  excluded_paths:
   - includes/admin_*.php
-  - includes/center.php
   - includes/comments.php
   - includes/contents.php
   - includes/generate.php
@@ -14,6 +13,7 @@ filter:
   - includes/query.php
   - includes/registration.php
   - includes/reminder.php
+  - includes/router.php
   - includes/search.php
   - includes/startup.php
   - install.php

@@ -1,81 +1,6 @@
 <?php
 
 /**
- * reminder form
- *
- * @since 3.0.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Reminder
- * @author Henry Ruhs
- */
-
-function reminder_form()
-{
-	$output = Redaxscript\Hook::trigger('reminderFormStart');
-
-	/* html elements */
-
-	$titleElement = new Redaxscript\Html\Element();
-	$titleElement->init('h2', array(
-		'class' => 'rs-title-content',
-	));
-	$titleElement->text(Redaxscript\Language::get('reminder'));
-	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-	$formElement->init(array(
-		'form' => array(
-			'class' => 'rs-js-validate-form rs-form-default rs-form-reminder'
-		),
-		'button' => array(
-			'submit' => array(
-				'name' => 'reminder_post'
-			)
-		)
-	), array(
-		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
-	));
-
-	/* create the form */
-
-	$formElement
-		->append('<fieldset>')
-		->legend(Redaxscript\Language::get('reminder_request'))
-		->append('<ul><li>')
-		->label('* ' . Redaxscript\Language::get('email'), array(
-			'for' => 'email'
-		))
-		->email(array(
-			'autofocus' => 'autofocus',
-			'id' => 'email',
-			'name' => 'email',
-			'required' => 'required'
-		))
-		->append('</li>');
-	if (Redaxscript\Db::getSettings('captcha') > 0)
-	{
-		$formElement
-			->append('<li>')
-			->captcha('task')
-			->append('</li>');
-	}
-	$formElement->append('</ul></fieldset>');
-	if (Redaxscript\Db::getSettings('captcha') > 0)
-	{
-		$formElement->captcha('solution');
-	}
-	$formElement
-		->token()
-		->submit();
-
-	/* collect output */
-
-	$output .= $titleElement . $formElement;
-	$output .= Redaxscript\Hook::trigger('reminderFormEnd');
-	echo $output;
-}
-
-/**
  * reminder post
  *
  * @since 1.2.1
@@ -137,7 +62,7 @@ function reminder_post()
 
 				/* send reminder information */
 
-				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'password_reset/' . $id . '/' . sha1($password);
+				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'login/reset/' . sha1($password) . '/' . $id;
 				$passwordResetLink = anchor_element('external', '', '', $passwordResetRoute, $passwordResetRoute);
 				$toArray = array(
 					s('author') => s('email')

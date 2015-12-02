@@ -66,11 +66,11 @@ class RegisterTest extends TestCase
 	{
 		/* setup */
 
-		$login = new View\Register();
+		$register = new View\Register();
 
 		/* actual */
 
-		$actual = $login->render();
+		$actual = $register->render();
 
 		/* compare */
 

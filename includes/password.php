@@ -100,11 +100,11 @@ function password_reset_post()
 	{
 		if ($post_id && $post_password)
 		{
-			$back_route = 'password_reset/' . $post_id . '/' . $post_password;
+			$back_route = 'login/reset/' . $post_password . '/' . $post_id;
 		}
 		else
 		{
-			$back_route = 'reminder';
+			$back_route = 'login/recover';
 		}
 		notification(l('error_occurred'), $error, l('back'), $back_route);
 	}

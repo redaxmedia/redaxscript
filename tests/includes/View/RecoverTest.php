@@ -1,11 +1,12 @@
 <?php
 namespace Redaxscript\Tests\View;
 
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
 /**
- * ResetTest
+ * RecoverTest
  *
  * @since 3.0.0
  *
@@ -14,8 +15,30 @@ use Redaxscript\View;
  * @author Henry Ruhs
  */
 
-class ResetTest extends TestCase
+class RecoverTest extends TestCase
 {
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+	}
+
 	/**
 	 * providerRender
 	 *
@@ -26,7 +49,7 @@ class ResetTest extends TestCase
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/reset_render.json');
+		return $this->getProvider('tests/provider/View/recover_render.json');
 	}
 
 	/**
@@ -43,11 +66,11 @@ class ResetTest extends TestCase
 	{
 		/* setup */
 
-		$reset = new View\Reset();
+		$recover = new View\Recover();
 
 		/* actual */
 
-		$actual = $reset->render();
+		$actual = $recover->render();
 
 		/* compare */
 
