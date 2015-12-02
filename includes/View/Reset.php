@@ -23,7 +23,7 @@ class Reset implements ViewInterface
      *
      * @since 3.0.0
      *
-     * @return Form
+     * @return string
      */
 
     public function render()
