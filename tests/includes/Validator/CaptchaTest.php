@@ -18,7 +18,6 @@ use Redaxscript\Validator;
 
 class CaptchaTest extends TestCase
 {
-
 	/**
 	 * setUpBeforeClass
 	 *

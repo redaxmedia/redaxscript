@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\View;
 
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
@@ -16,6 +17,28 @@ use Redaxscript\View;
 
 class LoginTest extends TestCase
 {
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+	}
+
 	/**
 	 * providerRender
 	 *
@@ -34,12 +57,12 @@ class LoginTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $expect
+	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = null)
+	public function testRender($expect = array())
 	{
 		/* setup */
 
@@ -51,6 +74,7 @@ class LoginTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertStringStartsWith($expect['start'], $actual);
+		$this->assertStringEndsWith($expect['end'], $actual);
 	}
 }
