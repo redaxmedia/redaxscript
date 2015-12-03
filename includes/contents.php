@@ -32,7 +32,7 @@ function contents()
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix('articles')->whereIn('sibling', array(
+		$sibling_array = Redaxscript\Db::forTablePrefix(LAST_TABLE)->whereIn('sibling', array(
 			LAST_ID,
 			$sibling > 0 ? $sibling : null
 		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
