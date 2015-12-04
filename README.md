@@ -1,5 +1,5 @@
-![Try Redaxscript 3.0.0 now](https://dummyimage.com/1000x300/0090db/ffffff&text=Try+Redaxscript+3.0.0+now)
-![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+Content+Management+System)
+![Try Redaxscript 3.0.0 now](https://dummyimage.com/1000x300/323e4c/ffffff&text=Try+Redaxscript+3.0.0+now)
+![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/323e4c/ffffff&text=Ultra+lightweight+Content+Management+System)
 
 
 Redaxscript
