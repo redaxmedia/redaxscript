@@ -63,6 +63,9 @@ $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData();
+
+/* test dummy */
+
 if (is_dir('modules/TestDummy'))
 {
 	$testDummy = new Modules\TestDummy\TestDummy;
