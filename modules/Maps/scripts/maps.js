@@ -102,7 +102,7 @@
 
 	$(function ()
 	{
-		if (rs.modules.maps.init)
+		if (rs.modules.maps.init && rs.modules.maps.dependency)
 		{
 			$(rs.modules.maps.selector).maps(rs.modules.maps.options);
 		}
