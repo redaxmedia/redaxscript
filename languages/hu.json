@@ -112,7 +112,6 @@
 	"update": "Frissítés",
 	"select": "Select",
 	"title": "Cím",
-	"title_exists": "A cím már létezik",
 	"title_incorrect": "A cím érvénytelen",
 	"title_empty": "Üres cím mező",
 	"alias": "Alias cím",

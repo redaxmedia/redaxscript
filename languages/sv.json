@@ -112,7 +112,6 @@
 	"update": "Uppdatera",
 	"select": "Välj",
 	"title": "Titel",
-	"title_exists": "Titeln finns redan",
 	"title_incorrect": "Titeln är felaktigt",
 	"title_empty": "Titeln är tom",
 	"alias": "Alias",

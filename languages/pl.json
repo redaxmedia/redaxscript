@@ -112,7 +112,6 @@
 	"update": "Aktualizuj",
 	"select": "Wybierz",
 	"title": "Tytuł",
-	"title_exists": "Tytuł już istnieje",
 	"title_incorrect": "Niepoprawne pole Tytuł",
 	"title_empty": "Pole Tytuł jest puste",
 	"alias": "Alias",

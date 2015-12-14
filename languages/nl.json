@@ -112,7 +112,6 @@
 	"update": "Update",
 	"select": "Select",
 	"title": "Titel",
-	"title_exists": "De opgegeven titel bestaat al",
 	"title_incorrect": "De opgegeven titel is onjuist",
 	"title_empty": "Geen titel opgegeven",
 	"alias": "Alias",

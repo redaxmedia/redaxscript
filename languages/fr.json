@@ -112,7 +112,6 @@
 	"update": "Mettre à jour",
 	"select": "Sélectionner",
 	"title": "Titre",
-	"title_exists": "Le titre existe déjà",
 	"title_incorrect": "Titre est incorrect",
 	"title_empty": "Titre est vide",
 	"alias": "Alias",

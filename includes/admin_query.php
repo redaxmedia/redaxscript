@@ -233,15 +233,6 @@ function admin_process()
 			{
 				$error = l('title_empty');
 			}
-			else
-			{
-				$title_id = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->title;
-				$id_title = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('title', $title)->findOne()->id;
-			}
-			if ($id_title && strcasecmp($title_id, $title) < 0)
-			{
-				$error = l('title_exists');
-			}
 			if (TABLE_PARAMETER == 'categories')
 			{
 				$opponent_id = Redaxscript\Db::forTablePrefix('articles')->where('alias', $alias)->findOne()->id;
