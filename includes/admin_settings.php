@@ -114,7 +114,7 @@ function admin_settings_form()
 	{
 		foreach ($homepage_result as $r)
 		{
-			$homepage_array[$r['title']] = $r['id'];
+			$homepage_array[$r['title'] . ' (' . $r['id'] . ')'] = $r['id'];
 		}
 	}
 	$output .= '<li>' . select_element('homepage', 'rs-admin-field-select', 'homepage', $homepage_array, s('homepage'), l('homepage')) . '</li>';

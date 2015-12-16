@@ -112,7 +112,6 @@
 	"update": "Güncelle",
 	"select": "Select",
 	"title": "Baslik",
-	"title_exists": "Baslik zaten var",
 	"title_incorrect": "Baslik yanlis",
 	"title_empty": "Baslik bos birakilamaz",
 	"alias": "Alias",

@@ -592,7 +592,7 @@ function admin_contents_form()
 			{
 				if (ID_PARAMETER != $s['id'])
 				{
-					$sibling_array[$s['title']] = $s['id'];
+					$sibling_array[$s['title'] . ' (' . $s['id'] . ')'] = $s['id'];
 				}
 			}
 		}
@@ -618,11 +618,11 @@ function admin_contents_form()
 			{
 				if (TABLE_PARAMETER != 'categories')
 				{
-					$category_array[$c['title']] = $c['id'];
+					$category_array[$c['title'] . ' (' . $c['id'] . ')'] = $c['id'];
 				}
 				else if (ID_PARAMETER != $c['id'] && $c['parent'] == 0)
 				{
-					$category_array[$c['title']] = $c['id'];
+					$category_array[$c['title'] . ' (' . $c['id'] . ')'] = $c['id'];
 				}
 			}
 		}
@@ -654,7 +654,7 @@ function admin_contents_form()
 		{
 			foreach ($articles_result as $a)
 			{
-				$article_array[$a['title']] = $a['id'];
+				$article_array[$a['title'] . ' (' . $a['id'] . ')'] = $a['id'];
 			}
 		}
 		$output .= '<li>' . select_element('article', 'rs-admin-field-select', 'article', $article_array, $article, l('article')) . '</li>';

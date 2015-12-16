@@ -112,7 +112,6 @@
 	"update": "Atjaunot",
 	"select": "Select",
 	"title": "Sadaļa",
-	"title_exists": "Sadaļa jau eksistē",
 	"title_incorrect": "Nepareiza sadaļa",
 	"title_empty": "Sadaļa ir tukša",
 	"alias": "Segvārds",

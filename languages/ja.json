@@ -112,7 +112,6 @@
 	"update": "アップデート",
 	"select": "選択",
 	"title": "タイトル",
-	"title_exists": "すでに存在しているタイトルです",
 	"title_incorrect": "不正なタイトルです",
 	"title_empty": "タイトルが空です",
 	"alias": "別名",

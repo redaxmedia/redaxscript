@@ -154,7 +154,6 @@
 	"update": "Update",
 	"select": "Select",
 	"title": "Title",
-	"title_exists": "Title already exists",
 	"title_incorrect": "Title is incorrect",
 	"title_empty": "Title is empty",
 	"alias": "Alias",

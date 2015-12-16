@@ -112,7 +112,6 @@
 	"update": "Aggiorna",
 	"select": "Select",
 	"title": "Titolo",
-	"title_exists": "Titolo esistente",
 	"title_incorrect": "Titolo non corretto",
 	"title_empty": "Titolo non compliato",
 	"alias": "Alias",

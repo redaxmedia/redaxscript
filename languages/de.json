@@ -112,7 +112,6 @@
 	"update": "Aktualisieren",
 	"select": "Auswählen",
 	"title": "Titel",
-	"title_exists": "Titel existiert bereits",
 	"title_incorrect": "Titel ist fehlerhaft",
 	"title_empty": "Titel ist leer",
 	"alias": "Alias",

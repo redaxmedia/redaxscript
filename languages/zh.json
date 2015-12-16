@@ -112,7 +112,6 @@
 	"update": "更新",
 	"select": "选择",
 	"title": "标题",
-	"title_exists": "标题已经存在",
 	"title_incorrect": "标题有误",
 	"title_empty": "标题不能为空",
 	"alias": "页面名称",

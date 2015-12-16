@@ -159,7 +159,8 @@ class Html implements FilterInterface
 		'onuserproximity',
 		'onvolumechange',
 		'onwaiting',
-		'onwheel'
+		'onwheel',
+		'style'
 	);
 
 	/**

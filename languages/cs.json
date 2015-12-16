@@ -112,7 +112,6 @@
 	"update": "Aktualiyovat",
 	"select": "Select",
 	"title": "Titulek",
-	"title_exists": "Titulek již existuje",
 	"title_incorrect": "Titilek je neplatný",
 	"title_empty": "Titulek je prázdný",
 	"alias": "Alias",

@@ -243,26 +243,16 @@ class Mailer
 	/**
 	 * send the email
 	 *
-	 * @since 2.4.0
+	 * @since 2.6.2
 	 */
 
 	public function send()
 	{
 		if (function_exists('mail'))
 		{
-			foreach ($this->_toArray as $toName => $to)
+			foreach ($this->_toArray as $to)
 			{
-				/* to name fallback */
-
-				if (!$toName)
-				{
-					$toName = $to;
-				}
-				$toString = $toName . ' <' . $to . '>';
-
-				/* send mail */
-
-				mail($toString, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
 			}
 		}
 	}
