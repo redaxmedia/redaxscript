@@ -19,6 +19,6 @@ rs.modules.analytics =
 	options:
 	{
 		id: 'UA-00000000-0',
-		url: 'domain.com'
+		url: 'example.com'
 	}
 };
