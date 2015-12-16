@@ -1,16 +1,16 @@
 [
 	[
-		"smtp.gmail.com",
+		"redaxscript.com",
 		"MX",
 		true
 	],
 	[
-		"www.gmail.com",
+		"www.redaxscript.com",
 		"MX",
 		false
 	],
 	[
-		"www.gmail.com",
+		"www.redaxscript.com",
 		"A",
 		true
 	]

@@ -1,42 +1,42 @@
 [
 	[
-		"http://www.domain.com/",
+		"http://www.test.com/",
 		true
 	],
 	[
-		"http://www.domain.com/test/",
+		"http://www.test.com/test/",
 		true
 	],
 	[
-		"http://www.domain.com/test",
+		"http://www.test.com/test",
 		true
 	],
 	[
-		"http://www.domain.com",
+		"http://www.test.com",
 		true
 	],
 	[
-		"www.domain.com",
+		"www.test.com",
 		false
 	],
 	[
-		"http://domain",
+		"http://test",
 		false
 	],
 	[
-		"http://domain.com/",
+		"http://test.com/",
 		true
 	],
 	[
-		"http://domain.com/test/",
+		"http://test.com/test/",
 		true
 	],
 	[
-		"http://domain.com/test",
+		"http://test.com/test",
 		true
 	],
 	[
-		"http://domain.com",
+		"http://test.com",
 		true
 	],
 	[
