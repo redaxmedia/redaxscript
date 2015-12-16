@@ -5,17 +5,12 @@
 		true
 	],
 	[
-		"www.domain.com",
+		"www.gmail.com",
 		"MX",
 		false
 	],
 	[
-		"www.domain.com",
-		"A",
-		true
-	],
-	[
-		"redaxscript.com",
+		"www.gmail.com",
 		"A",
 		true
 	]
