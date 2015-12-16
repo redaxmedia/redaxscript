@@ -1,14 +1,14 @@
 [
 	[
-		"domain.com",
-		"domain.com"
+		"test.com",
+		"test.com"
 	],
 	[
-		"DOMAIN.COM",
-		"domain.com"
+		"TEST.COM",
+		"test.com"
 	],
 	[
-		" domain . com",
-		"domain.com"
+		" test . com",
+		"test.com"
 	]
 ]
