@@ -20,10 +20,11 @@ Request::init();
 $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
+$argv = $request->getServer('argv');
 
 /* mysql and pgsql */
 
-if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request->getServer('argv')))
+if (in_array('mysql', $argv) || in_array('pgsql', $argv))
 {
 	if (in_array('mysql', $request->getServer('argv')))
 	{
@@ -31,7 +32,7 @@ if (in_array('mysql', $request->getServer('argv')) || in_array('pgsql', $request
 		$config->set('dbType', 'mysql');
 		$config->set('dbUser', 'root');
 	}
-	if (in_array('pgsql', $request->getServer('argv')))
+	if (in_array('pgsql', $argv))
 	{
 		echo 'PostgreSQL - ';
 		$config->set('dbType', 'pgsql');

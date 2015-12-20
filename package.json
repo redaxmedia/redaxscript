@@ -21,14 +21,12 @@
 		"grunt-contrib-copy": "0.8.2",
 		"grunt-contrib-csslint": "0.5.0",
 		"grunt-contrib-jshint": "0.11.3",
-		"grunt-contrib-qunit": "0.7.0",
 		"grunt-contrib-watch": "0.6.1",
 		"grunt-htmlhint": "0.9.12-fix",
 		"grunt-img": "0.1.8",
 		"grunt-jscs": "2.3.0",
 		"grunt-jsonlint": "1.0.6",
 		"grunt-phpcs": "0.4.0",
-		"grunt-phpunit": "0.3.6",
 		"grunt-shell": "1.1.2",
 		"grunt-smushit": "1.3.0",
 		"grunt-svgmin": "3.1.0"
@@ -36,7 +34,7 @@
 	"scripts":
 	{
 		"test": "grunt --verbose",
-		"phpunit": "grunt phpunit --xml clover.xml"
+		"phpunit": "grunt phpunit --coverage clover.xml"
 	}
 }
 

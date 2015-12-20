@@ -227,19 +227,6 @@ module.exports = function (grunt)
 				standard: 'ruleset.xml'
 			}
 		},
-		qunit:
-		{
-			development:
-			{
-				options:
-				{
-					urls:
-					[
-						'http://develop.redaxscript.com/qunit'
-					]
-				}
-			}
-		},
 		phpunit:
 		{
 			development:
@@ -295,7 +282,11 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'vendor/bin/phpbench run benchs --bootstrap=./benchs/bootstrap.php --report=default'
+				command: 'vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php'
+			},
+			phpunit:
+			{
+				command: 'vendor/bin/phpunit tests --bootstrap=tests/bootstrap.php ' + grunt.option('db-type')
 			},
 			tocBase:
 			{
@@ -516,7 +507,7 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'phpunit:development'
+					'phpunit'
 				]
 			}
 		}
@@ -554,14 +545,12 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
-	grunt.loadNpmTasks('grunt-phpunit');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
@@ -581,6 +570,10 @@ module.exports = function (grunt)
 	grunt.registerTask('phpbench',
 	[
 		'shell:phpbench'
+	]);
+	grunt.registerTask('phpunit',
+	[
+		'shell:phpunit'
 	]);
 	grunt.registerTask('toclint',
 	[
