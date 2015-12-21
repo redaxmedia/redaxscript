@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="tests/bootstrap.php">
+	<testsuites>
+
+		<!-- admin -->
+
+		<testsuite name="admin">
+			<directory>tests/includes/Admin</directory>
+		</testsuite>
+
+		<!-- client -->
+
+		<testsuite name="client">
+			<directory>tests/includes/Client</directory>
+		</testsuite>
+
+		<!-- detector -->
+
+		<testsuite name="detector">
+			<directory>tests/includes/Detector</directory>
+		</testsuite>
+
+		<!-- filter -->
+
+		<testsuite name="filter">
+			<directory>tests/includes/Filter</directory>
+		</testsuite>
+
+		<!-- html -->
+
+		<testsuite name="html">
+			<directory>tests/includes/Html</directory>
+		</testsuite>
+
+		<!-- router -->
+
+		<testsuite name="router">
+			<directory>tests/includes/Router</directory>
+		</testsuite>
+
+		<!-- server -->
+
+		<testsuite name="server">
+			<directory>tests/includes/Server</directory>
+		</testsuite>
+
+		<!-- validator -->
+
+		<testsuite name="validator">
+			<directory>tests/includes/Validator</directory>
+		</testsuite>
+
+		<!-- view -->
+
+		<testsuite name="view">
+			<directory>tests/includes/View</directory>
+		</testsuite>
+
+		<!-- autoload -->
+
+		<testsuite name="autoload">
+			<file>tests/includes/AutoloaderTest.php</file>
+		</testsuite>
+
+		<!-- breadcrumb -->
+
+		<testsuite name="breadcrumb">
+			<file>tests/includes/BreadcrumbTest.php</file>
+		</testsuite>
+
+		<!-- captcha -->
+
+		<testsuite name="captcha">
+			<file>tests/includes/CaptchaTest.php</file>
+		</testsuite>
+
+		<!-- config -->
+
+		<testsuite name="config">
+			<file>tests/includes/ConfigTest.php</file>
+		</testsuite>
+
+		<!-- db -->
+
+		<testsuite name="db">
+			<file>tests/includes/DbTest.php</file>
+		</testsuite>
+
+		<!-- directory -->
+
+		<testsuite name="_directory">
+			<file>tests/includes/DirectoryTest.php</file>
+		</testsuite>
+
+		<!-- hash -->
+
+		<testsuite name="hash">
+			<file>tests/includes/HashTest.php</file>
+		</testsuite>
+
+		<!-- helper -->
+
+		<testsuite name="helper">
+			<file>tests/includes/HelperTest.php</file>
+		</testsuite>
+
+		<!-- hook -->
+
+		<testsuite name="hook">
+			<file>tests/includes/HookTest.php</file>
+		</testsuite>
+
+		<!-- installer -->
+
+		<testsuite name="installer">
+			<file>tests/includes/InstallerTest.php</file>
+		</testsuite>
+
+		<!-- language -->
+
+		<testsuite name="language">
+			<file>tests/includes/LanguageTest.php</file>
+		</testsuite>
+
+		<!-- mailer -->
+
+		<testsuite name="mailer">
+			<file>tests/includes/MailerTest.php</file>
+		</testsuite>
+
+		<!-- minifier -->
+
+		<testsuite name="minifier">
+			<file>tests/includes/MinifierTest.php</file>
+		</testsuite>
+
+		<!-- module -->
+
+		<testsuite name="module">
+			<file>tests/includes/ModuleTest.php</file>
+		</testsuite>
+
+		<!-- parser -->
+
+		<testsuite name="parser">
+			<file>tests/includes/ParserTest.php</file>
+		</testsuite>
+
+		<!-- registry -->
+
+		<testsuite name="registry">
+			<file>tests/includes/RegistryTest.php</file>
+		</testsuite>
+
+		<!-- request -->
+
+		<testsuite name="request">
+			<file>tests/includes/RequestTest.php</file>
+		</testsuite>
+
+		<!-- singleton -->
+
+		<testsuite name="singleton">
+			<file>tests/includes/SingletonTest.php</file>
+		</testsuite>
+
+		<!-- template -->
+
+		<testsuite name="template">
+			<file>tests/includes/TemplateTest.php</file>
+		</testsuite>
+	</testsuites>
+</phpunit>

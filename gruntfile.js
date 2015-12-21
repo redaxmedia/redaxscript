@@ -227,20 +227,6 @@ module.exports = function (grunt)
 				standard: 'ruleset.xml'
 			}
 		},
-		phpunit:
-		{
-			development:
-			{
-				dir: 'tests/includes'
-			},
-			options:
-			{
-				bin: 'vendor/bin/phpunit',
-				bootstrap: './tests/bootstrap.php',
-				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
-				coverageHtml: grunt.option('html') ? grunt.option('html') : false
-			}
-		},
 		autoprefixer:
 		{
 			base:
@@ -282,11 +268,11 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php'
+				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php'
 			},
 			phpunit:
 			{
-				command: 'vendor/bin/phpunit tests --bootstrap=tests/bootstrap.php ' + grunt.option('db-type')
+				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			tocBase:
 			{
