@@ -18,26 +18,27 @@ Request::init();
 /* get instance */
 
 $registry = Registry::getInstance();
-$request = Request::getInstance();
 $config = Config::getInstance();
-$argv = $request->getServer('argv');
+
+/* get environment */
+
+$dbType = getenv('DB_TYPE');
 
 /* mysql and pgsql */
 
-if (in_array('mysql', $argv) || in_array('pgsql', $argv))
+if ($dbType === 'mysql' || $dbType === 'pgsql')
 {
-	if (in_array('mysql', $request->getServer('argv')))
+	if ($dbType === 'mysql')
 	{
 		echo 'MySQL - ';
-		$config->set('dbType', 'mysql');
 		$config->set('dbUser', 'root');
 	}
-	if (in_array('pgsql', $argv))
+	else
 	{
 		echo 'PostgreSQL - ';
-		$config->set('dbType', 'pgsql');
 		$config->set('dbUser', 'postgres');
 	}
+	$config->set('dbType', $dbType);
 	$config->set('dbHost', '127.0.0.1');
 	$config->set('dbName', 'test');
 	$config->set('dbPassword', 'test');
