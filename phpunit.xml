@@ -1,5 +1,20 @@
 <?xml version="1.0"?>
-<phpunit bootstrap="tests/bootstrap.php">
+<phpunit bootstrap="tests/bootstrap.php" strict="true">
+
+	<!-- filter -->
+
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">includes</directory>
+		</whitelist>
+		<blacklist>
+			<directory suffix=".php">libraries</directory>
+			<directory suffix=".php">modules</directory>
+		</blacklist>
+	</filter>
+
+	<!-- testsuites -->
+
 	<testsuites>
 
 		<!-- admin -->
