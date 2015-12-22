@@ -1,6 +1,13 @@
 filter:
  excluded_paths:
-  - includes/admin_*.php
+  - includes/admin_admin.php
+  - includes/admin_contents.php
+  - includes/admin_groups.php
+  - includes/admin_modules.php
+  - includes/admin_query.php
+  - includes/admin_router.php
+  - includes/admin_settings.php
+  - includes/admin_users.php
   - includes/comments.php
   - includes/contents.php
   - includes/generate.php
