@@ -8,6 +8,7 @@
 			<directory suffix=".php">includes</directory>
 			<exclude>
 				<file>includes/admin_*.php</file>
+				<file>includes/boostrap.php</file>
 				<file>includes/comments.php</file>
 				<file>includes/contents.php</file>
 				<file>includes/generate.php</file>
@@ -23,6 +24,7 @@
 				<file>includes/router.php</file>
 				<file>includes/search.php</file>
 				<file>includes/startup.php</file>
+				<file>index.php</file>
 				<file>install.php</file>
 			</exclude>
 		</whitelist>
