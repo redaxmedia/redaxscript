@@ -5,7 +5,7 @@
  * 2. grid elements
  * 3. wrapper
  * 4. header
- * 5. top
+ * 5. teaser
  * 6. sidebar
  * 7. footer
  * 8. query
@@ -22,14 +22,19 @@
 
 /* @section 1. general */
 
-body
+.rs-body
 {
 	background: #fff;
 	overflow-x: hidden;
 }
 
-/* @section 2. grid elements */
+.rs-main
+{
+	min-height: 32em;
+}
 
+/* @section 2. grid elements */
+/*TODO: Move this to a grid.css for people who'd like to use a grid system */
 .rs-grid-space > a,
 .rs-grid-space > blockquote,
 .rs-grid-space > button,
@@ -93,7 +98,7 @@ body
 	padding: 1em;
 }
 
-/* @section 5. top */
+/* @section 5. teaser */
 
 .rs-teaser
 {
