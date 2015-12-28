@@ -62,13 +62,13 @@
 	opacity: 1;
 }
 
-.rs-list-breadcrumb .rs-divider
+.rs-list-breadcrumb .rs-item-divider
 {
 	text-indent: -999em;
 	width: 1em;
 }
 
-.rs-list-breadcrumb .rs-divider:before
+.rs-list-breadcrumb .rs-item-divider:before
 {
 	text-indent: 0;
 	content: '\3009';
