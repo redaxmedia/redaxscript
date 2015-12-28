@@ -35,6 +35,10 @@ if ($registry->get('dbStatus') === 2)
 	Hook::init();
 }
 
+/* refresh */
+
+Request::refreshSession();
+
 /* detector */
 
 $detectorLanguage = new Detector\Language($registry, $request);

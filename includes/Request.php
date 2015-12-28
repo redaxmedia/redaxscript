@@ -240,4 +240,26 @@ class Request extends Singleton
 	{
 		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
 	}
+
+	/**
+	 * refresh the session
+	 *
+	 * @since 2.6.2
+	 */
+
+	public static function refreshSession()
+	{
+		self::$_requestArray['session'] = $_SESSION ? $_SESSION : array();
+	}
+
+	/**
+	 * refresh the cookie
+	 *
+	 * @since 2.6.2
+	 */
+
+	public static function refreshCookie()
+	{
+		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : array();
+	}
 }

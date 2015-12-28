@@ -53,12 +53,12 @@ class RequestTest extends TestCase
 	}
 
 	/**
-	 * testGlobals
+	 * testGlobal
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGlobals()
+	public function testGlobal()
 	{
 		/* setup */
 
@@ -139,7 +139,7 @@ class RequestTest extends TestCase
 	/**
 	 * testSession
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.2
 	 */
 
 	public function testSession()
@@ -147,6 +147,7 @@ class RequestTest extends TestCase
 		/* setup */
 
 		$this->_request->setSession('testKey', 'testValue');
+		$this->_request->refreshSession();
 
 		/* actual */
 
@@ -160,7 +161,7 @@ class RequestTest extends TestCase
 	/**
 	 * testCookie
 	 *
-	 * @since 2.2.0
+	 * @since 2.6.2
 	 */
 
 	public function testCookie()
@@ -168,6 +169,7 @@ class RequestTest extends TestCase
 		/* setup */
 
 		$this->_request->setCookie('testKey', 'testValue');
+		$this->_request->refreshCookie();
 
 		/* actual */
 
