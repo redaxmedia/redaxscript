@@ -2,7 +2,7 @@
 namespace Redaxscript\Router;
 
 /**
- * parent class to create a resolver
+ * children class to resolve a route
  *
  * @since 3.0.0
  *
