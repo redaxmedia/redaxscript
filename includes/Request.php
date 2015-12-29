@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to request globals
+ * children class to request globals
  *
  * @since 2.2.0
  *

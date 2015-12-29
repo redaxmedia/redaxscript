@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Sitemap;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.2.0
  *

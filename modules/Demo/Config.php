@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Demo;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.4.0
  *

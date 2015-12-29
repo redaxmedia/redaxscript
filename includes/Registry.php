@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to store the registry
+ * children class to store the registry
  *
  * @since 2.1.0
  *
