@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the register view
+ * children class to render the login form
  *
  * @since 3.0.0
  *
@@ -17,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Register implements ViewInterface
+class LoginForm implements ViewInterface
 {
 	/**
 	 * render the view
@@ -29,19 +29,28 @@ class Register implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('registerFormStart');
+		$output = Hook::trigger('loginStart');
 
 		/* html elements */
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h2', array(
-				'class' => 'rs-title-content',
+			'class' => 'rs-title-content',
 		));
-		$titleElement->text(Language::get('account_create'));
+		$titleElement->text(Language::get('login'));
+		if (Db::getSettings('reminder'))
+		{
+			$linkElement = new Html\Element();
+			$linkElement->init('a', array(
+				'href' => Registry::get('rewriteRoute') . 'login/recover',
+				'rel' => 'no-follow'
+			));
+			$legendHTML = $linkElement->text(Language::get('reminder_question') . Language::get('question_mark'));
+		}
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-validate-form rs-form-default rs-form-register'
+				'class' => 'rs-js-validate-form rs-form-default rs-form-login'
 			),
 			'button' => array(
 				'submit' => array(
@@ -56,33 +65,25 @@ class Register implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend()
+			->legend($legendHTML)
 			->append('<ul><li>')
-			->label('* ' . Language::get('name'), array(
-				'for' => 'name'
-			))
-			->text(array(
-				'autofocus' => 'autofocus',
-				'id' => 'name',
-				'name' => 'name',
-				'required' => 'required'
-			))
-			->append('</li><li>')
 			->label('* ' . Language::get('user'), array(
 				'for' => 'user'
 			))
 			->text(array(
+				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
 				'required' => 'required'
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
-				'for' => 'email'
+			->label('* ' . Language::get('password'), array(
+				'for' => 'password'
 			))
-			->email(array(
-				'id' => 'email',
-				'name' => 'email',
+			->password(array(
+				'autocomplete' => 'off',
+				'id' => 'password',
+				'name' => 'password',
 				'required' => 'required'
 			))
 			->append('</li>');
@@ -100,12 +101,12 @@ class Register implements ViewInterface
 		}
 		$formElement
 			->token()
-			->submit(Language::get('create'));
+			->submit();
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('registerFormEnd');
+		$output .= Hook::trigger('loginEnd');
 		return $output;
 	}
 }

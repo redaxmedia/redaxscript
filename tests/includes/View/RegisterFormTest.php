@@ -6,7 +6,7 @@ use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
 /**
- * RegisterTest
+ * RegisterFormTest
  *
  * @since 3.0.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\View;
  * @author Henry Ruhs
  */
 
-class RegisterTest extends TestCase
+class RegisterFormTest extends TestCase
 {
 	/**
 	 * setUpBeforeClass
@@ -49,7 +49,7 @@ class RegisterTest extends TestCase
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/register_render.json');
+		return $this->getProvider('tests/provider/View/register_form_render.json');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class RegisterTest extends TestCase
 	{
 		/* setup */
 
-		$register = new View\Register();
+		$register = new View\RegisterForm();
 
 		/* actual */
 

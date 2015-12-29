@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the recover view
+ * children class to render the register form
  *
  * @since 3.0.0
  *
@@ -17,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Recover implements ViewInterface
+class RegisterForm implements ViewInterface
 {
 	/**
 	 * render the view
@@ -29,19 +29,19 @@ class Recover implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('recoverFormStart');
+		$output = Hook::trigger('registerFormStart');
 
 		/* html elements */
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
+				'class' => 'rs-title-content',
 		));
-		$titleElement->text(Language::get('reminder'));
+		$titleElement->text(Language::get('account_create'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-validate-form rs-form-default rs-form-recover'
+				'class' => 'rs-js-validate-form rs-form-default rs-form-register'
 			),
 			'button' => array(
 				'submit' => array(
@@ -56,13 +56,31 @@ class Recover implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend(Language::get('reminder_request'))
+			->legend()
 			->append('<ul><li>')
+			->label('* ' . Language::get('name'), array(
+				'for' => 'name'
+			))
+			->text(array(
+				'autofocus' => 'autofocus',
+				'id' => 'name',
+				'name' => 'name',
+				'required' => 'required'
+			))
+			->append('</li><li>')
+			->label('* ' . Language::get('user'), array(
+				'for' => 'user'
+			))
+			->text(array(
+				'id' => 'user',
+				'name' => 'user',
+				'required' => 'required'
+			))
+			->append('</li><li>')
 			->label('* ' . Language::get('email'), array(
 				'for' => 'email'
 			))
 			->email(array(
-				'autofocus' => 'autofocus',
 				'id' => 'email',
 				'name' => 'email',
 				'required' => 'required'
@@ -82,12 +100,12 @@ class Recover implements ViewInterface
 		}
 		$formElement
 			->token()
-			->submit();
+			->submit(Language::get('create'));
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('recoverFormEnd');
+		$output .= Hook::trigger('registerFormEnd');
 		return $output;
 	}
 }

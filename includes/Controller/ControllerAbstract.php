@@ -2,7 +2,7 @@
 namespace Redaxscript\Controller;
 
 /**
- * children class to process the login request
+ * abstract class to create a controller class
  *
  * @since 3.0.0
  *
@@ -11,10 +11,10 @@ namespace Redaxscript\Controller;
  * @author Henry Ruhs
  */
 
-class Login
+abstract class ControllerAbstract
 {
 	/**
-	 * process the login
+	 * process the class
 	 *
 	 * @since 3.0.0
 	 */

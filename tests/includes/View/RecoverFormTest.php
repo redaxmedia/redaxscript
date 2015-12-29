@@ -6,7 +6,7 @@ use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
 /**
- * LoginTest
+ * RecoverFormTest
  *
  * @since 3.0.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\View;
  * @author Henry Ruhs
  */
 
-class LoginTest extends TestCase
+class RecoverFormTest extends TestCase
 {
 	/**
 	 * setUpBeforeClass
@@ -49,7 +49,7 @@ class LoginTest extends TestCase
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/login_render.json');
+		return $this->getProvider('tests/provider/View/recover_form_render.json');
 	}
 
 	/**
@@ -66,11 +66,11 @@ class LoginTest extends TestCase
 	{
 		/* setup */
 
-		$login = new View\Login();
+		$recover = new View\RecoverForm();
 
 		/* actual */
 
-		$actual = $login->render();
+		$actual = $recover->render();
 
 		/* compare */
 

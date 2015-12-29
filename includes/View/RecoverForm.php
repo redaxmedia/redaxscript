@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the login view
+ * children class to render the recover form
  *
  * @since 3.0.0
  *
@@ -17,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Login implements ViewInterface
+class RecoverForm implements ViewInterface
 {
 	/**
 	 * render the view
@@ -29,7 +29,7 @@ class Login implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('loginStart');
+		$output = Hook::trigger('recoverFormStart');
 
 		/* html elements */
 
@@ -37,20 +37,11 @@ class Login implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-title-content',
 		));
-		$titleElement->text(Language::get('login'));
-		if (Db::getSettings('reminder'))
-		{
-			$linkElement = new Html\Element();
-			$linkElement->init('a', array(
-				'href' => Registry::get('rewriteRoute') . 'login/recover',
-				'rel' => 'no-follow'
-			));
-			$legendHTML = $linkElement->text(Language::get('reminder_question') . Language::get('question_mark'));
-		}
+		$titleElement->text(Language::get('reminder'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-validate-form rs-form-default rs-form-login'
+				'class' => 'rs-js-validate-form rs-form-default rs-form-recover'
 			),
 			'button' => array(
 				'submit' => array(
@@ -65,25 +56,15 @@ class Login implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend($legendHTML)
+			->legend(Language::get('reminder_request'))
 			->append('<ul><li>')
-			->label('* ' . Language::get('user'), array(
-				'for' => 'user'
+			->label('* ' . Language::get('email'), array(
+				'for' => 'email'
 			))
-			->text(array(
+			->email(array(
 				'autofocus' => 'autofocus',
-				'id' => 'user',
-				'name' => 'user',
-				'required' => 'required'
-			))
-			->append('</li><li>')
-			->label('* ' . Language::get('password'), array(
-				'for' => 'password'
-			))
-			->password(array(
-				'autocomplete' => 'off',
-				'id' => 'password',
-				'name' => 'password',
+				'id' => 'email',
+				'name' => 'email',
 				'required' => 'required'
 			))
 			->append('</li>');
@@ -106,7 +87,7 @@ class Login implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('loginEnd');
+		$output .= Hook::trigger('recoverFormEnd');
 		return $output;
 	}
 }

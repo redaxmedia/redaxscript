@@ -7,7 +7,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the reset view
+ * children class to render the reset form
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Reset implements ViewInterface
+class ResetForm implements ViewInterface
 {
     /**
      * render the view

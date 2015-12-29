@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\Html;
 use Redaxscript\Html\Form as BaseForm;
 
 /**
- * children class to generate a form
+ * children class to generate a admin form
  *
  * @since 3.0.0
  *
