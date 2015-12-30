@@ -376,6 +376,16 @@ function admin_process()
 		}
 	}
 
+	/* empty to null */
+
+	foreach ($r as $key => $value)
+	{
+		if ($value == '')
+		{
+			$r[$key] = null;
+		}
+	}
+
 	/* process */
 
 	switch (true)

@@ -97,9 +97,9 @@ function search_post()
 
 		$result = Redaxscript\Db::forTablePrefix($table)
 			->where('status', 1)
-			->whereIn('language', array(
+			->whereRaw('(language = ? OR language is ?)', array(
 				Redaxscript\Registry::get('language'),
-				''
+				null
 			))
 			->whereLikeMany(array(
 				'title',

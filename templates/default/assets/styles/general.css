@@ -85,7 +85,7 @@
 	width: 100%;
 }
 
-.rs-header + .rs-wrapper-content
+.rs-header + .rs-main
 {
 	margin-top: 2em;
 }
@@ -153,7 +153,7 @@
 		min-width: 0;
 	}
 
-	.rs-wrapper-content
+	.rs-main
 	{
 		padding: 1em;
 	}

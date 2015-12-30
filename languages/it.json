@@ -164,7 +164,7 @@
 	"registration_sent": "Registrazione completata con successo",
 	"registration_verification": "La registrazione deve essere validata dall amministratore",
 	"account_create": "Crea account",
-	"recovery": "Recovery",
+	"recovery": "Ripristino",
 	"recovery_question": "Utente o password dimenticati",
 	"recovery_request": "Inserisci la tua Email per ottenere le informazioni sull account",
 	"recovery_sent": "Le informazioni sul tuo account sono state inviate con successo",

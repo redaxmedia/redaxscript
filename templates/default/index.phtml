@@ -25,13 +25,13 @@
 
 		<!-- teaser -->
 
-		<?php if(!Template::registry('fullRoute')): ?>
-			<?php echo Template::partial('templates/default/teaser.phtml'); ?>
-		<?php endif; ?>
+		<?php echo Template::extra(array(
+			'filter' => 'teaser'
+		)); ?>
 
 		<!-- main -->
 
-		<main id=rs-main" class="rs-main rs-wrapper rs-wrapper-content rs-clearfix">
+		<main id=rs-main" class="rs-main rs-wrapper rs-clearfix">
 
 			<!-- handle content error -->
 

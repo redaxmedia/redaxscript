@@ -19,10 +19,11 @@ function contents()
 	/* query articles */
 
 	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
-	$articles->whereIn('language', array(
-		Redaxscript\Registry::get('language'),
-		''
-	));
+	$articles
+		->whereRaw('(language = ? OR language is ?)', array(
+			Redaxscript\Registry::get('language'),
+			null
+		));
 
 	/* handle sibling */
 
@@ -276,9 +277,9 @@ function extras($filter = '')
 	/* query extras */
 
 	$extras = Redaxscript\Db::forTablePrefix('extras')
-		->whereIn('language', array(
+		->whereRaw('(language = ? OR language is ?)', array(
 			Redaxscript\Registry::get('language'),
-			''
+			null
 		));
 
 	/* has filter */

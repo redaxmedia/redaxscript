@@ -64,9 +64,9 @@ class Archive extends Config
 		$articles = Db::forTablePrefix('articles')
 			->selectExpr('*, YEAR(date) as year, MONTH(date) as month')
 			->where('status', 1)
-			->whereIn('language', array(
+			->whereRaw('(language = ? OR language is ?)', array(
 				Registry::get('language'),
-				''
+				null
 			))
 			->orderByDesc('date')
 			->findArray();

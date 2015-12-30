@@ -201,21 +201,19 @@ a state classes always has to be connected with a context like .rs-title-accordi
 	top: -5em;
 }
 
-.rs-title-teaser .rs-text-important
-{
-	font-weight: 700;
-}
-
-.rs-title-teaser::-moz-selection,
-.rs-title-teaser span::-moz-selection
+.rs-title-teaser::-moz-selection
 {
 	background: #c77a46;
 }
 
-.rs-title-teaser::selection,
-.rs-title-teaser span::selection
+.rs-title-teaser::selection
 {
 	background: #c77a46;
+}
+
+.rs-title-teaser strong
+{
+	font-weight: bold;
 }
 
 /* @section 8. header */
@@ -269,8 +267,9 @@ a state classes always has to be connected with a context like .rs-title-accordi
 		font-size: 3em;
 	}
 
-	.rs-title-teaser .rs-text-first-line
+	.rs-title-teaser .rs-is-break:after
 	{
+		content: '';
 		display: block;
 	}
 

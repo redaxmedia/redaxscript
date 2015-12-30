@@ -4,12 +4,12 @@
 
 <?php if (!Template::registry('myMobile')): ?>
 	<footer id="rs-footer" class="rs-footer">
-
 		<section class="rs-wrapper">
 			<?php echo Template::language('powered_by'); ?>
-			<a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-custom rs-link-footer"><?php echo Template::language('name', '_package'); ?></a>
+			<a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-footer">
+				<?php echo Template::language('name', '_package'); ?>
+			</a>
 			<?php echo Template::language('version', '_package'); ?>
 		</section>
-
 	</footer>
 <?php endif; ?>

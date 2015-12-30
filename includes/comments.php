@@ -25,9 +25,9 @@ function comments($article = '', $route = '')
 			'status' => 1,
 			'article' => $article
 		))
-		->whereIn('language', array(
-			Redaxscript\Registry::get('language'),
-			''
+		->whereRaw('(language = ? OR language is ?)', array(
+				Redaxscript\Registry::get('language'),
+				null
 		))
 		->orderGlobal('rank');
 

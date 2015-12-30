@@ -63,9 +63,9 @@ class Sitemap extends Config
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
-			->whereIn('language', array(
+			->whereRaw('(language = ? OR language is ?)', array(
 				Registry::get('language'),
-				''
+				null
 			))
 			->orderByDesc('category')
 			->findArray();

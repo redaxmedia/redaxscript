@@ -107,7 +107,6 @@ class Installer
 				'alias' => 'welcome',
 				'author' => $options['adminUser'],
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
-				'language' => '',
 				'category' => 1,
 				'rank' => 1
 			))->save();
@@ -120,7 +119,6 @@ class Installer
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $options['adminUser'],
-				'language' => '',
 				'rank' => 1
 			))->save();
 
@@ -128,28 +126,34 @@ class Installer
 
 		$extrasArray = array(
 			'categories' => array(
-				'status' => 1,
-				'headline' => 1
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
 			),
 			'articles' => array(
-				'status' => 1,
-				'headline' => 1
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
 			),
 			'comments' => array(
-				'status' => 1,
-				'headline' => 1
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
 			),
 			'languages' => array(
-				'status' => 0,
-				'headline' => 1
+				'category' => 0,
+				'headline' => 1,
+				'status' => 0
 			),
 			'templates' => array(
-				'status' => 0,
-				'headline' => 1
+				'category' => 0,
+				'headline' => 1,
+				'status' => 0
 			),
-			'footer' => array(
-				'status' => 0,
-				'headline' => 0
+			'teaser' => array(
+				'category' => 1,
+				'headline' => 0,
+				'status' => 0
 			)
 		);
 		$extrasRank = 0;
@@ -165,7 +169,7 @@ class Installer
 					'alias' => $key,
 					'author' => $options['adminUser'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
-					'language' => '',
+					'category' => $value['category'],
 					'headline' => $value['headline'],
 					'status' => $value['status'],
 					'rank' => ++$extrasRank
@@ -260,7 +264,6 @@ class Installer
 				'password' => $passwordHash->getHash(),
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
-				'language' => '',
 				'groups' => 1
 			))->save();
 	}
