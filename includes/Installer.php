@@ -224,15 +224,15 @@ class Installer
 			'divider' => ' - ',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',
-			'homepage' => '0',
+			'homepage' => 0,
 			'limit' => 10,
 			'order' => 'asc',
-			'pagination' => '1',
-			'moderation' => '0',
-			'registration' => '1',
-			'verification' => '0',
-			'reminder' => '1',
-			'captcha' => '0',
+			'pagination' => 1,
+			'moderation' => 0,
+			'registration' => 1,
+			'verification' => 0,
+			'recovery' => 1,
+			'captcha' => 0,
 			'version' => $language->get('version', '_package')
 		);
 
@@ -261,7 +261,7 @@ class Installer
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
 				'language' => '',
-				'groups' => '1'
+				'groups' => 1
 			))->save();
 	}
 

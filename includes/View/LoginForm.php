@@ -38,14 +38,14 @@ class LoginForm implements ViewInterface
 			'class' => 'rs-title-content',
 		));
 		$titleElement->text(Language::get('login'));
-		if (Db::getSettings('reminder'))
+		if (Db::getSettings('recovery'))
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
 				'href' => Registry::get('rewriteRoute') . 'login/recover',
 				'rel' => 'no-follow'
 			));
-			$legendHTML = $linkElement->text(Language::get('reminder_question') . Language::get('question_mark'));
+			$legendHTML = $linkElement->text(Language::get('recovery_question') . Language::get('question_mark'));
 		}
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(

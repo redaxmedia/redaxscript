@@ -153,10 +153,10 @@ function admin_settings_form()
 			l('enable') => 1,
 			l('disable') => 0
 	), s('verification'), l('verification')) . '</li>';
-	$output .= '<li>' . select_element('reminder', 'rs-admin-field-select', 'reminder', array(
+	$output .= '<li>' . select_element('recovery', 'rs-admin-field-select', 'recovery', array(
 			l('enable') => 1,
 			l('disable') => 0
-	), s('reminder'), l('reminder')) . '</li>';
+	), s('recovery'), l('recovery')) . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect security set */

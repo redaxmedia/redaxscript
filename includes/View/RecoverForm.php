@@ -37,7 +37,7 @@ class RecoverForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-title-content',
 		));
-		$titleElement->text(Language::get('reminder'));
+		$titleElement->text(Language::get('recovery'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
@@ -56,7 +56,7 @@ class RecoverForm implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend(Language::get('reminder_request'))
+			->legend(Language::get('recovery_request'))
 			->append('<ul><li>')
 			->label('* ' . Language::get('email'), array(
 				'for' => 'email'

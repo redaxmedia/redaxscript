@@ -70,7 +70,7 @@ function reminder_post()
 				$fromArray = array(
 					$name => $email
 				);
-				$subject = l('reminder');
+				$subject = l('recovery');
 				$bodyArray = array(
 					'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
 					'<br />',
@@ -90,13 +90,13 @@ function reminder_post()
 
 	if ($error)
 	{
-		notification(l('error_occurred'), $error, l('back'), 'reminder');
+		notification(l('error_occurred'), $error, l('back'), 'recovery');
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('operation_completed'), l('reminder_sent'), l('login'), 'login');
+		notification(l('operation_completed'), l('recovery_sent'), l('login'), 'login');
 	}
 }

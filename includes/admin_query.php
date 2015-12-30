@@ -819,7 +819,7 @@ function admin_update()
 		$r['moderation'] = clean($_POST['moderation'], 0);
 		$r['registration'] = clean($_POST['registration'], 0);
 		$r['verification'] = clean($_POST['verification'], 0);
-		$r['reminder'] = clean($_POST['reminder'], 0);
+		$r['recovery'] = clean($_POST['recovery'], 0);
 		$r['captcha'] = clean($_POST['captcha'], 0);
 
 		/* update settings */

@@ -69,14 +69,14 @@ function router()
 			switch (SECOND_PARAMETER)
 			{
 			case 'recover':
-				if (s('reminder') == 1)
+				if (s('recovery') == 1)
 				{
 					$recover = new Redaxscript\View\RecoverForm();
 					echo $recover->render();
 					return;
 				}
 			case 'reset':
-				if (s('reminder') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
+				if (s('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
 				{
 					$reset = new Redaxscript\View\ResetForm();
 					echo $reset->render();

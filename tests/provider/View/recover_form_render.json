@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-title-content\">Reminder</h2><form class=\"rs-js-validate-form rs-form-default rs-form-recover\" method=\"post\"><fieldset><legend class=\"rs-legend-default\">Enter your Email to obtain corresponding account information</legend><ul><li><label class=\"rs-label-default\" for=\"email\">* Email</label><input class=\"rs-field-default rs-field-email\" type=\"email\" autofocus=\"autofocus\" id=\"email\" name=\"email\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"task\">",
+			"start": "<h2 class=\"rs-title-content\">Recovery</h2><form class=\"rs-js-validate-form rs-form-default rs-form-recover\" method=\"post\"><fieldset><legend class=\"rs-legend-default\">Enter your Email to obtain corresponding account information</legend><ul><li><label class=\"rs-label-default\" for=\"email\">* Email</label><input class=\"rs-field-default rs-field-email\" type=\"email\" autofocus=\"autofocus\" id=\"email\" name=\"email\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"task\">",
 			"end": "<button class=\"rs-js-button rs-button-default\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\RecoverForm\">Submit</button></form>"
 		}
 	]
