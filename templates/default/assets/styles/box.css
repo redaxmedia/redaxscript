@@ -163,6 +163,8 @@
 	margin-bottom: 1em;
 }
 
+/*TODO: What the hell is box-wrapper-action? a box and a wrapper at the same time? :-P
+however, I think this can be removed because I found it nowhere*/
 .rs-title-content + .rs-box-content,
 .rs-box-wrapper-action + .rs-box-wrapper-action
 {
@@ -188,7 +190,7 @@
 }
 
 /* @section 10.2 min width 80rem */
-
+/*TODO: where is box-action used? This can be removed I think */
 @media screen and (min-width: 80rem)
 {
 	.rs-box-action

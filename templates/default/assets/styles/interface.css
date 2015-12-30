@@ -38,11 +38,6 @@
 
 /* @section 2. list breadcrumb */
 
-.rs-list-breadcrumb
-{
-	margin-bottom: 1em;
-}
-
 .rs-list-breadcrumb li
 {
 	display: inline-block;

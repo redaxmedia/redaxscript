@@ -138,7 +138,8 @@
 	font-size: 1.75em;
 	padding: 0.5em 1em;
 }
-/*TODO: bad selector - better use rs-button-action */
+/*TODO: bad selector - better use rs-button-action
+ where is box-action used? This can be removed I think */
 .rs-box-action:first-child .rs-button-large
 {
 	display: block;
