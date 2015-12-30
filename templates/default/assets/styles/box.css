@@ -24,18 +24,18 @@
 
 .rs-box-code
 {
-    background: rgba(50, 62, 77, 0.1);
-    border: 0.25em solid rgba(50, 62, 77, 0.3);
-    display: block;
-    font: 0.75em/1.25em monospace, arial;
-    padding: 1em;
-    white-space: pre-wrap;
+	background: rgba(50, 62, 77, 0.1);
+	border: 0.25em solid rgba(50, 62, 77, 0.3);
+	display: block;
+	font: 0.75em/1.25em monospace, arial;
+	padding: 1em;
+	white-space: pre-wrap;
 }
 
 .rs-box-line
 {
-    background: #323e4c;
-    height: 0.125em;
+	background: #323e4c;
+	height: 0.125em;
 }
 
 /* @section 2. box meta */
@@ -43,48 +43,48 @@
 /*TODO: what is box meta?*/
 .rs-box-meta
 {
-    font-size: 0.5em;
-    vertical-align: top;
-    position: relative;
+	font-size: 0.5em;
+	vertical-align: top;
+	position: relative;
 }
 
 .rs-box-meta a::-moz-selection
 {
-    background: #323e4c;
-    color: #fff;
+	background: #323e4c;
+	color: #fff;
 }
 
 .rs-box-meta span::selection,
 .rs-box-meta a::selection
 {
-    background: #323e4c;
-    color: #fff;
+	background: #323e4c;
+	color: #fff;
 }
 
 /* @section 3. box quote */
 
 .rs-box-quote
 {
-    font: italic 1.25em/1.75em 'Open Sans Condensed',arial,sans-serif;
-    margin: 1em 1em 1em 3em;
-    position: relative;
+	font: italic 1.25em/1.75em 'Open Sans Condensed',arial,sans-serif;
+	margin: 1em 1em 1em 3em;
+	position: relative;
 }
 
 .rs-box-quote strong
 {
-    font-style: normal;
-    font-weight: bold;
-    display: block;
+	font-style: normal;
+	font-weight: bold;
+	display: block;
 }
 
 .rs-box-quote:before
 {
-    content: '\201D';
-    font: 7em/1em georgia;
-    opacity: 0.15;
-    position: absolute;
-    right: 101%;
-    top: -0.125em;
+	content: '\201D';
+	font: 7em/1em georgia;
+	opacity: 0.15;
+	position: absolute;
+	right: 101%;
+	top: -0.125em;
 }
 
 /*TODO: Is there still a navibar? */
@@ -92,81 +92,81 @@
 
 .rs-box-navibar
 {
-    text-align: center;
+	text-align: center;
 }
 
 /* @section 5. box accordion */
 
 .rs-set-accordion + .rs-set-accordion
 {
-    margin-top: 0.125em;
+	margin-top: 0.125em;
 }
 
 .rs-box-accordion-default
 {
-    background: rgba(50, 62, 76, 0.3);
-    padding: 0.25em 0.5em;
+	background: rgba(50, 62, 76, 0.3);
+	padding: 0.25em 0.5em;
 }
 
 /* @section 6. box tab */
 
 .rs-box-tab-default
 {
-    background: #323e4c;
-    color: #fff;
-    padding: 0.25em 1em;
+	background: #323e4c;
+	color: #fff;
+	padding: 0.25em 1em;
 }
 
 /* @section 7. box note */
 
 .rs-box-note
 {
-    border-radius: 0 0.125em 0.125em 0;
-    box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
-    padding: 0.25em 0.5em 0.25em 3em;
-    position: relative;
+	border-radius: 0 0.125em 0.125em 0;
+	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	padding: 0.25em 0.5em 0.25em 3em;
+	position: relative;
 }
 
 .rs-box-note:before
 {
-    color: #000;
-    font: 1.5em/1em 'icon default';
-    left: 0.25em;
-    opacity: 0.5;
-    position: absolute;
-    top: 0.25em;
+	color: #000;
+	font: 1.5em/1em 'icon default';
+	left: 0.25em;
+	opacity: 0.5;
+	position: absolute;
+	top: 0.25em;
 }
 
 /* @section 8. box comment */
 
 .rs-box-comment
 {
-    padding-left: 2.5em;
-    position: relative;
+	padding-left: 2.5em;
+	position: relative;
 }
 
 .rs-box-comment:before
 {
-    content: '\25b6';
-    font: 2em/1em 'icon default';
-    position: absolute;
-    left: 0;
-    top: -0.125em;
-    opacity: 0.5;
+	content: '\25b6';
+	font: 2em/1em 'icon default';
+	position: absolute;
+	left: 0;
+	top: -0.125em;
+	opacity: 0.5;
 }
 
 /* @section 9. space between elements */
 
 .rs-box-note + .rs-box-note
 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 .rs-title-content + .rs-box-content,
 .rs-box-wrapper-action + .rs-box-wrapper-action
 {
-    margin-top: 2em;
+	margin-top: 2em;
 }
 
 /* @section 10. query */
@@ -175,25 +175,25 @@
 
 @media screen and (min-width: 50rem)
 {
-    .rs-box-meta
-    {
-        font-size: 1em;
-        float: left;
-    }
+	.rs-box-meta
+	{
+		font-size: 1em;
+		float: left;
+	}
 
-    .rs-box-navigation
-    {
-        float: right;
-    }
+	.rs-box-navigation
+	{
+		float: right;
+	}
 }
 
 /* @section 10.2 min width 80rem */
 
 @media screen and (min-width: 80rem)
 {
-    .rs-box-action
-    {
-        float: left;
-        width: 50%;
-    }
+	.rs-box-action
+	{
+		float: left;
+		width: 50%;
+	}
 }

@@ -15,19 +15,19 @@
 .rs-image-gallery,
 .rs-player-default
 {
-    background: #323e4c;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	background: #323e4c;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 .rs-image-default,
 .rs-player-default
 {
-    max-width: 98%;
-    padding: 1%;
+	max-width: 98%;
+	padding: 1%;
 }
 
 .rs-image-gallery
 {
-    max-width: 94%;
-    padding: 3%;
+	max-width: 94%;
+	padding: 3%;
 }

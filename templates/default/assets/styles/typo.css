@@ -4,7 +4,7 @@
  * 1. tag styling
  * 2. links
  *    2.1 read more link
- * 3. several titles
+ * 3. title accordion
  * 4. title content
  * 5. title website
  * 6. description website
@@ -34,13 +34,15 @@ a
 }
 
 /*TODO: maby the same problem with the color here - we have to override it everywhere then?
-do you need a helper class on the body tag like rs-frontend and rs-backend? */
+do you need a helper class on the body tag like rs-frontend and rs-backend?
+please use .rs-body */
 body
 {
 	color: #323e4c;
 	font: 300 1.25em/1.75em 'Open Sans Condensed', arial, sans-serif;
 }
 
+/*TODO: please use boy_quotecode and not a general tag styling */
 pre
 {
 	font: 1em/1.5em monospace, arial;
@@ -98,13 +100,15 @@ pre
 	transform: translateY(2px);
 }
 
-/* @section 3. several titles */
+/* @section 3. title accordion */
 
 .rs-title-accordion
 {
 	background: #323e4c;
-	padding: 0.25em 0.5em;
+	box-sizing: border-box;
 	color: #fff;
+	padding: 0.25em 0.5em;
+	width: 100%;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -112,6 +116,8 @@ pre
 	cursor: pointer;
 }
 
+/*TODO: invalid definition
+a state classes always has to be connected with a context like .rs-title-accordion.rs-title-active */
 .rs-title-active
 {
 	background: linear-gradient(#699b3c, #659438);

@@ -14,19 +14,19 @@
 
 @font-face
 {
-    font-family: 'icon default';
-    src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
+	font-family: 'icon default';
+	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
 /* @section 2. icon flag */
 
 .rs-icon-flag
 {
-    background: #323e4c;
-    padding: 0.125em 0.5em;
-    color: #fff;
-    display: inline-block;
-    margin: 0.125em;
-    border-radius: 0.125em;
-    text-transform: uppercase;
+	background: #323e4c;
+	padding: 0.125em 0.5em;
+	color: #fff;
+	display: inline-block;
+	margin: 0.125em;
+	border-radius: 0.125em;
+	text-transform: uppercase;
 }

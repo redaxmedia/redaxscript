@@ -9,25 +9,27 @@
  * @author Joerg Steinhauer
  */
 
-/* TODO: funktioniert noch nicht wegen translate3d(0px, 0px, 0px) auf body-tag (wird f�r menu gebraucht). nach l�sung suchen */
+/* TODO: funktioniert noch nicht wegen translate3d(0px, 0px, 0px) auf body-tag (wird fuer menu gebraucht). nach loesung suchen
+please do not use german to comment todos
+*/
 
 /* @section 1. dialog overlay default */
 
 .rs-dialog-overlay-default
 {
-    background: rgba(50, 62, 76, 0.2);
+	background: rgba(50, 62, 76, 0.2);
 }
 
 .rs-dialog-default,
 .rs-dialog-overlay-default
 {
-    animation: rs-fade 0.4s;
-    border-radius: 0.25em;
+	animation: rs-fade 0.4s;
+	border-radius: 0.25em;
 }
 
 .rs-dialog-default
 {
-    background: #323e4c;
-    color: #fff;
-    padding: 1em;
+	background: #323e4c;
+	color: #fff;
+	padding: 1em;
 }
