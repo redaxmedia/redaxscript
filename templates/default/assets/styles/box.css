@@ -160,15 +160,6 @@
 .rs-box-note + .rs-box-note
 {
 	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-/*TODO: What the hell is box-wrapper-action? a box and a wrapper at the same time? :-P
-however, I think this can be removed because I found it nowhere*/
-.rs-title-content + .rs-box-content,
-.rs-box-wrapper-action + .rs-box-wrapper-action
-{
-	margin-top: 2em;
 }
 
 /* @section 10. query */

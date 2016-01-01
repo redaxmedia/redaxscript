@@ -56,7 +56,7 @@ class RecoverForm implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend(Language::get('recovery_request'))
+			->legend(Language::get('recovery_request') . Language::get('point'))
 			->append('<ul><li>')
 			->label('* ' . Language::get('email'), array(
 				'for' => 'email'
