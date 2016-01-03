@@ -14,7 +14,7 @@
 
 /* @section 1. general */
 
-.rs-fn-navigation-trigger
+.rs-fn-label-navigation
 {
 	display: none;
 }
@@ -41,7 +41,7 @@
 
 
 	 */
-	.rs-navigation-trigger
+	.rs-label-navigation
 	{
 		color: rgba(255, 255, 255, 0.7);
 		cursor: pointer;
@@ -59,8 +59,8 @@
 	}
 
 	/*TODO: same here as above, you run into override issue that is causing some headache*/
-	.rs-navigation-trigger:after,
-	.rs-navigation-trigger:before
+	.rs-label-navigation:after,
+	.rs-label-navigation:before
 	{
 		background: #3873b5;
 		bottom: 2.5em;
@@ -74,26 +74,26 @@
 		transition: transform 0.2s;
 	}
 
-	.rs-navigation-trigger:after
+	.rs-label-navigation:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
 
 	/* @section 7.2.3 nav trigger - close icon */
 
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:after,
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:before
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation .rs-label-navigation:after,
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation .rs-label-navigation:before
 	{
 		box-shadow: none;
 	}
 
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:after
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation .rs-label-navigation:after
 	{
 		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-navigation-trigger:before
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation .rs-label-navigation:before
 	{
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
@@ -115,7 +115,7 @@
 		z-index: 10;
 	}
 
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation .rs-fn-navigation
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation .rs-fn-navigation
 	{
 		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
@@ -123,7 +123,7 @@
 
 	/* @section 7.2.5 navigation dark layer */
 
-	.rs-fn-navigation-trigger ~ .rs-fn-has-navigation:after {
+	.rs-fn-label-navigation ~ .rs-fn-has-navigation:after {
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -135,7 +135,7 @@
 		z-index: 1;
 	}
 
-	.rs-fn-navigation-trigger:checked ~ .rs-fn-has-navigation:after {
+	.rs-fn-label-navigation:checked ~ .rs-fn-has-navigation:after {
 		background: rgba(0, 0, 0, 0.8);
 		right: 0;
 		z-index: 5;
@@ -148,7 +148,7 @@
 
 	/* @section 7.3.2 nav trigger - hamburger icon */
 
-	.rs-navigation-trigger
+	.rs-label-navigation
 	{
 		display: none;
 	}
