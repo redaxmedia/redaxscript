@@ -15,10 +15,9 @@
  *       6.1.1 label
  *    6.2 form search
  * 8. space between elements
- * 9. sidebar form elements
- * 10. query
- *    10.1 max width 50rem
- *    10.2 min width 50rem
+ * 9. query
+ *    9.1 max width 50rem
+ *    9.2 min width 50rem
  *
  * @since 3.0.0
  *
@@ -40,18 +39,13 @@
 	width: 100%;
 }
 
-/*TODO: text-decoration on fields is just wrong - belongs to a button only collection
- mixing fields and buttons is a bad idea, even if they have they share similar styling - this is very confusing*/
-/*JOERG: ? */
 .rs-field-default,
 .rs-field-search,
 .rs-field-select,
-.rs-field-textarea,
-.rs-button-default
+.rs-field-textarea
 {
 	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
 	border-radius: 0.125em;
-	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
 	padding-bottom: 0.375em;
@@ -64,6 +58,7 @@
 {
 	position: relative;
 	text-indent: -999em;
+	color: #323e4c;
 	display: inline-block;
 	vertical-align: middle;
 	width: 20%;
@@ -77,13 +72,13 @@
 
 .rs-button-search:hover
 {
-	color: #659438;
+	color: #000;
 }
 
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1em/1em 'icon default';
+	font: 1em/1.25em 'icon default';
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -94,12 +89,16 @@
 
 .rs-button-default
 {
+	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
 	color: #fff;
 	cursor: pointer;
-	padding-left: 2em;
-	padding-right: 2em;
+	display: block;
+	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
+	padding: 0.375em 2em;
 	text-align: center;
+	text-decoration: none;
 	-webkit-transition: transform 0.1s, box-shadow 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s;
 }
@@ -150,9 +149,9 @@
 /* @section 3. several fields */
 
 /*TODO: don't use fixed height on field elements - textarea is never ever 2em only */
+/*JOERG: we sure need fixed height to fields, try it out*/
 .rs-field-default,
 .rs-field-select,
-.rs-field-textarea,
 .rs-field-search
 {
 	height: 2em;
@@ -257,35 +256,9 @@
 	margin-top: 1em;
 }
 
-/* @section 9. sidebar form elements */
+/* @section 9. query */
 
-/*TODO: please use rs-field-search, rs-button-search etc. instead of the global naming */
-/*JOERG: this styling belongs not to search-stuff, but to default form elements */
-.rs-sidebar .rs-field-default,
-.rs-sidebar .rs-field-select,
-.rs-sidebar .rs-field-textarea
-{
-	border-color: transparent;
-	opacity: 0.8;
-	-webkit-transition: opacity 0.2s;
-	transition: opacity 0.2s;
-}
-
-/*TODO: please use a :not filter like rs-field-search:not(:focus) etc. for the opacity tweak */
-/*JOERG: ? */
-.rs-sidebar .rs-field-default:hover,
-.rs-sidebar .rs-field-select:hover,
-.rs-sidebar .rs-field-textarea:hover,
-.rs-sidebar .rs-field-default:focus,
-.rs-sidebar .rs-field-select:focus,
-.rs-sidebar .rs-field-textarea:focus
-{
-	opacity: 1;
-}
-
-/* @section 10. query */
-
-/* @section 10.1 max width 50rem */
+/* @section 9.1 max width 50rem */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -298,7 +271,7 @@
 	}
 }
 
-/* @section 10.2 min width 50rem */
+/* @section 9.2 min width 50rem */
 
 @media screen and (min-width: 50rem)
 {

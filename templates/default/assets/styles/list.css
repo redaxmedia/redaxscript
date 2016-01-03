@@ -244,11 +244,6 @@
         background: #457ecd;
     }
 
-    .rs-list-header > li:hover .rs-list-header-children li:hover a
-    {
-        color: #000;
-    }
-
     .rs-list-header .rs-list-header-children:after
     {
         border-radius: 0.25em;

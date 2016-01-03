@@ -23,8 +23,8 @@
 
 /* @section 1. tag styling */
 
-/*TODO: tag styling like that (color, transition) will cause problems on the admin, better use .content a or .sidebar a */
-a
+.rs-header a,
+.rs-main a
 {
 	text-decoration: none;
 	color: #323e4c;
@@ -32,20 +32,10 @@ a
 	transition: color 0.2s;
 }
 
-/*TODO: maby the same problem with the color here - we have to override it everywhere then?
-do you need a helper class on the body tag like rs-frontend and rs-backend?
-please use .rs-body */
-body
+.rs-body
 {
 	color: #323e4c;
 	font: 300 1.25em/1.75em 'Open Sans Condensed', arial, sans-serif;
-}
-
-/*TODO: please use boy_quotecode and not a general tag styling */
-pre
-{
-	font: 1em/1.5em monospace, arial;
-	white-space: pre-wrap;
 }
 
 /* @section 2. links */
@@ -115,9 +105,7 @@ pre
 	cursor: pointer;
 }
 
-/*TODO: invalid definition
-a state classes always has to be connected with a context like .rs-title-accordion.rs-title-active */
-.rs-title-active
+.rs-title-accordion.rs-title-active
 {
 	background: linear-gradient(#699b3c, #659438);
 }
@@ -161,6 +149,7 @@ a state classes always has to be connected with a context like .rs-title-accordi
 	display: block;
 	line-height: 1em;
 	opacity: 0.8;
+	text-decoration: none;
 	white-space: nowrap;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
