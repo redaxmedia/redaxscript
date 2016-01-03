@@ -2,17 +2,16 @@
  * @tableofcontents
  *
  * 1. general
- * 2. grid elements
- * 3. wrapper
- * 4. header
- * 5. teaser
- * 6. sidebar
- * 7. footer
- * 8. query
- *    8.1 print
- *    8.2 max width 50rem
- *    8.3 min width 50rem
- *    8.4 min width 80rem
+ * 2. wrapper
+ * 3. header
+ * 4. teaser
+ * 5. sidebar
+ * 6. footer
+ * 7. query
+ *    7.1 print
+ *    7.2 max width 50rem
+ *    7.3 min width 50rem
+ *    7.4 min width 80rem
  *
  * @since 3.0.0
  *
@@ -33,41 +32,7 @@
 	min-height: 32em;
 }
 
-/* @section 2. grid elements */
-/*TODO: Move this to a grid.css for people who'd like to use a grid system */
-.rs-grid-space > a,
-.rs-grid-space > blockquote,
-.rs-grid-space > button,
-.rs-grid-space > code,
-.rs-grid-space > div,
-.rs-grid-space > dl,
-.rs-grid-space > fieldset,
-.rs-grid-space > form,
-.rs-grid-space > h1,
-.rs-grid-space > h2,
-.rs-grid-space > h3,
-.rs-grid-space > h4,
-.rs-grid-space > h5,
-.rs-grid-space > h6,
-.rs-grid-space > hr,
-.rs-grid-space > img,
-.rs-grid-space > ol,
-.rs-grid-space > p,
-.rs-grid-space > table,
-.rs-grid-space > ul,
-.rs-line-space
-{
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
-}
-
-.rs-line, .rs-line-space
-{
-	margin-bottom: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-/* @section 3. wrapper */
+/* @section 2. wrapper */
 
 .rs-wrapper
 {
@@ -90,7 +55,7 @@
 	margin-top: 2em;
 }
 
-/* @section 4. header */
+/* @section 3. header */
 
 .rs-header
 {
@@ -98,7 +63,7 @@
 	padding: 1em;
 }
 
-/* @section 5. teaser */
+/* @section 4. teaser */
 
 .rs-teaser
 {
@@ -111,7 +76,7 @@
 	box-sizing: border-box;
 }
 
-/* @section 6. sidebar */
+/* @section 5. sidebar */
 
 .rs-sidebar
 {
@@ -121,7 +86,7 @@
 	padding: 1em;
 }
 
-/* @section 7. footer */
+/* @section 6. footer */
 
 .rs-footer
 {
@@ -130,9 +95,9 @@
 	margin-top: 2em;
 }
 
-/* @section 8. query */
+/* @section 7. query */
 
-/* @section 8.1 print */
+/* @section 7.1 print */
 
 @media print
 {
@@ -144,7 +109,7 @@
 	}
 }
 
-/* @section 8.2 max width 50rem */
+/* @section 7.2 max width 50rem */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -164,7 +129,7 @@
 	}
 }
 
-/* @section 8.3 min width 50rem */
+/* @section 7.3 min width 50rem */
 
 @media screen and (min-width: 50rem)
 {
@@ -192,7 +157,7 @@
 	}
 }
 
-/* @section 8.4 min width 80rem */
+/* @section 7.4 min width 80rem */
 
 @media screen and (min-width: 80rem)
 {

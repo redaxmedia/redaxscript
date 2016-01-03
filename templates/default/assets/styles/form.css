@@ -19,7 +19,6 @@
  * 10. query
  *    10.1 max width 50rem
  *    10.2 min width 50rem
- *    10.3 min width 80rem
  *
  * @since 3.0.0
  *
@@ -43,12 +42,12 @@
 
 /*TODO: text-decoration on fields is just wrong - belongs to a button only collection
  mixing fields and buttons is a bad idea, even if they have they share similar styling - this is very confusing*/
+/*JOERG: ? */
 .rs-field-default,
 .rs-field-search,
 .rs-field-select,
 .rs-field-textarea,
-.rs-button-default,
-.rs-button-custom
+.rs-button-default
 {
 	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
 	border-radius: 0.125em;
@@ -61,18 +60,14 @@
 
 /* @section 2. button search */
 
-/*TODO: lot of definitions here seem to be outdated */
 .rs-button-search
 {
 	position: relative;
 	text-indent: -999em;
 	display: inline-block;
 	vertical-align: middle;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	width: 20%;
 	height: 2em;
-	line-height: 1.25em;
 	font-size: 1em;
 	background: transparent;
 	cursor: pointer;
@@ -97,9 +92,7 @@
 
 /* @section 2.1 button default, button custom */
 
-/*TODO: where is the button custom needed? */
-.rs-button-default,
-.rs-button-custom
+.rs-button-default
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	color: #fff;
@@ -121,16 +114,6 @@
 	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#699b3c, #659438);
 }
 
-.rs-button-custom
-{
-	background: linear-gradient(#457ecd, #3873b5);
-}
-
-.rs-button-custom:hover
-{
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#457ECD, #3873B5);
-}
-
 /* @section 2.2 button large */
 
 .rs-button-large
@@ -138,16 +121,11 @@
 	font-size: 1.75em;
 	padding: 0.5em 1em;
 }
-/*TODO: bad selector - better use rs-button-action
- where is box-action used? This can be removed I think */
-.rs-box-action:first-child .rs-button-large
-{
-	display: block;
-}
 
 /* @section 2.3 button misc */
 
 /*TODO: please remove support, donate and maby the custom buttons if not needed */
+/*JOERG: we sure need this buttons, but we have to decide where to place them*/
 .rs-button-support:before
 {
 	content: '\2691';
@@ -162,8 +140,7 @@
 
 /* @section 2.4 buttons active state */
 
-.rs-button-default:active,
-.rs-button-custom:active
+.rs-button-default:active
 {
 	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	-webkit-transform: translateY(2px);
@@ -231,7 +208,6 @@
 /* @section 5. disabled and readonly */
 
 .rs-button-default[disabled],
-.rs-button-custom[disabled],
 .rs-field-default[disabled],
 .rs-field-default[readonly],
 .rs-field-select[disabled],
@@ -284,6 +260,7 @@
 /* @section 9. sidebar form elements */
 
 /*TODO: please use rs-field-search, rs-button-search etc. instead of the global naming */
+/*JOERG: this styling belongs not to search-stuff, but to default form elements */
 .rs-sidebar .rs-field-default,
 .rs-sidebar .rs-field-select,
 .rs-sidebar .rs-field-textarea
@@ -295,6 +272,7 @@
 }
 
 /*TODO: please use a :not filter like rs-field-search:not(:focus) etc. for the opacity tweak */
+/*JOERG: ? */
 .rs-sidebar .rs-field-default:hover,
 .rs-sidebar .rs-field-select:hover,
 .rs-sidebar .rs-field-textarea:hover,
@@ -314,8 +292,7 @@
 	.rs-field-default,
 	.rs-field-select,
 	.rs-field-textarea,
-	.rs-button-default,
-	.rs-button-custom
+	.rs-button-default
 	{
 		width: 100%;
 	}
@@ -328,8 +305,7 @@
 	.rs-field-default,
 	.rs-field-select,
 	.rs-field-textarea,
-	.rs-button-default,
-	.rs-button-custom
+	.rs-button-default
 	{
 		display: inline-block;
 		vertical-align: middle;
@@ -338,17 +314,5 @@
 	.rs-button-default + .rs-button-default
 	{
 		margin-left: 1em;
-	}
-}
-
-/* @section 10.3 min width 80rem */
-
-@media screen and (min-width: 80rem)
-{
-	/*TODO: bad selector - better use rs-button-action */
-	.rs-box-action:first-child .rs-button-large
-	{
-		margin: 1em auto 0;
-		max-width: 50%;
 	}
 }

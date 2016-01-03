@@ -3,6 +3,8 @@
  *
  * 1. dialog
  * 2. dialog overlay
+ * 3. query
+ *    3.1 max width 30em
  *
  * @since 2.0.0
  *
@@ -32,4 +34,17 @@
 	right: 0;
 	top: 0;
 	z-index: 1000;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-dialog
+	{
+		margin: -5em 0 0 -40%;
+		width: 80%;
+	}
 }

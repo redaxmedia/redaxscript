@@ -1,0 +1,57 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list dropdown
+ * 2. query
+ *    2.1 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list dropdown */
+
+.rs-list-dropdown a
+{
+    display: block;
+    white-space: nowrap;
+}
+
+.rs-list-dropdown li
+{
+    cursor: pointer;
+    position: relative;
+}
+
+.rs-list-dropdown li:hover > ul,
+.rs-list-dropdown .rs-item-touch > ul
+{
+    left: 0;
+    opacity: 1;
+    top: 100%;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+    .rs-list-dropdown ul
+    {
+        left: -999em;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transition: opacity 0.5s ease 0s, top 0.2s ease 0s;
+        z-index: 1;
+    }
+
+    .rs-list-dropdown ul ul
+    {
+        left: 100%;
+        top: 0;
+    }
+}

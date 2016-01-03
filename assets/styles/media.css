@@ -3,6 +3,9 @@
  *
  * 1. image
  * 2. player
+ * 3. query
+ *    3.1 max width 20em
+ *    3.2 max width 30em
  *
  * @since 2.0.0
  *
@@ -24,4 +27,31 @@
 	height: 30em;
 	max-width: 100%;
 	width: 40em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 20em */
+
+@media screen and (max-width: 19.999em)
+{
+	.rs-player
+	{
+		font-size: 0.5em;
+	}
+}
+
+/* @section 3.2 max width 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-player
+	{
+		font-size: 0.75em;
+	}
+
+	.rs-player
+	{
+		font-size: 0.75em;
+	}
 }

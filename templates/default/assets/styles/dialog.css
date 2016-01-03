@@ -9,9 +9,7 @@
  * @author Joerg Steinhauer
  */
 
-/* TODO: funktioniert noch nicht wegen translate3d(0px, 0px, 0px) auf body-tag (wird fuer menu gebraucht). nach loesung suchen
-please do not use german to comment todos
-*/
+/* TODO: dialog doesn't work because of translate3d(0px, 0px, 0px) on body-tag (this is needed for menu functionality). please search for a solition */
 
 /* @section 1. dialog overlay default */
 

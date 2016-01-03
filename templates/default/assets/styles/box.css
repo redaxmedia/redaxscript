@@ -4,15 +4,13 @@
  * 1. several boxes
  * 2. box meta
  * 3. box quote
- * 4. box navibar
- * 5. box accordion
- * 6. box tab
- * 7. box note
- * 8. box comment
- * 9. space between elements
- * 10. query
- *    10.1 min width 50rem
- *    10.2 min width 80rem
+ * 4. box accordion
+ * 5. box tab
+ * 6. box note
+ * 7. box comment
+ * 8. space between elements
+ * 9. query
+ *    9.1 min width 50rem
  *
  * @since 3.0.0
  *
@@ -41,6 +39,7 @@
 /* @section 2. box meta */
 
 /*TODO: what is box meta?*/
+/*JOERG: meta = stands for meta-informations (like meta-tags), but for header meta stuff like title, menu... */
 .rs-box-meta
 {
 	font-size: 0.5em;
@@ -87,15 +86,7 @@
 	top: -0.125em;
 }
 
-/*TODO: Is there still a navibar? */
-/* @section 4. box navibar */
-
-.rs-box-navibar
-{
-	text-align: center;
-}
-
-/* @section 5. box accordion */
+/* @section 4. box accordion */
 
 .rs-set-accordion + .rs-set-accordion
 {
@@ -108,7 +99,7 @@
 	padding: 0.25em 0.5em;
 }
 
-/* @section 6. box tab */
+/* @section 5. box tab */
 
 .rs-box-tab-default
 {
@@ -117,7 +108,7 @@
 	padding: 0.25em 1em;
 }
 
-/* @section 7. box note */
+/* @section 6. box note */
 
 .rs-box-note
 {
@@ -137,7 +128,7 @@
 	top: 0.25em;
 }
 
-/* @section 8. box comment */
+/* @section 7. box comment */
 
 .rs-box-comment
 {
@@ -155,16 +146,16 @@
 	opacity: 0.5;
 }
 
-/* @section 9. space between elements */
+/* @section 8. space between elements */
 
 .rs-box-note + .rs-box-note
 {
 	margin-top: 1em;
 }
 
-/* @section 10. query */
+/* @section 9. query */
 
-/* @section 10.1 min width 50rem */
+/* @section 9.1 min width 50rem */
 
 @media screen and (min-width: 50rem)
 {
@@ -177,16 +168,5 @@
 	.rs-box-navigation
 	{
 		float: right;
-	}
-}
-
-/* @section 10.2 min width 80rem */
-/*TODO: where is box-action used? This can be removed I think */
-@media screen and (min-width: 80rem)
-{
-	.rs-box-action
-	{
-		float: left;
-		width: 50%;
 	}
 }

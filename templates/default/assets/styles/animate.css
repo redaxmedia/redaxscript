@@ -2,7 +2,6 @@
  * @tableofcontents
  *
  * 1. teaser title
- * 2. pulse
  *
  * @since 2.1.0
  *
@@ -12,8 +11,7 @@
 
 
 /* @section 1. teaser title */
-/*TODO: Rename to rs-slide-in-down */
-@-webkit-keyframes rs-title-teaser
+@-webkit-keyframes rs-slide-in-down
 {
 	from
 	{
@@ -26,7 +24,7 @@
 	}
 }
 
-@keyframes rs-title-teaser
+@keyframes rs-slide-in-down
 {
 	from
 	{
@@ -36,49 +34,5 @@
 	to
 	{
 		top: 0;
-	}
-}
-
-/* @section 2. pulse */
-/*TODO: Is this still needed? please delete this if not! */
-@-webkit-keyframes rs-pulse
-{
-	0%
-	{
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
-	}
-
-	50%
-	{
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
-
-	100%
-	{
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
-	}
-}
-
-@keyframes rs-pulse
-{
-	0%
-	{
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
-	}
-
-	50%
-	{
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
-
-	100%
-	{
-		-webkit-transform: scale(0.5);
-		transform: scale(0.5);
 	}
 }

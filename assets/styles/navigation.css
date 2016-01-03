@@ -1,0 +1,28 @@
+/**
+ * @tableofcontents
+ *
+ * 1. query
+ *    1.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+
+/* @section 1.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+    .rs-list-tab
+    {
+        display: none;
+    }
+
+    .rs-js .rs-set-tab
+    {
+        display: block;
+    }
+}

@@ -1,0 +1,264 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several lists
+ * 2. list breadcrumb
+ * 3. list default
+ * 4. tooltip
+ * 5. list header
+ * 6. list tabs
+ * 7. query
+ *    7.1 min width 30rem
+ *    7.2 max width 50rem
+ *       7.2.1 list header
+ *       7.2.2 nav trigger - hamburger icon
+ *       7.2.3 nav trigger - close icon
+ *       7.2.4 navigation
+ *       7.2.5 navigation dark layer
+ *    7.3 min width 50rem
+ *       7.3.1 list header
+ *       7.3.2 nav trigger - hamburger icon
+ *       7.3.3 list children
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several lists */
+
+.rs-list-breadcrumb li,
+.rs-list-pagination li
+{
+    display: inline-block;
+}
+
+/* @section 2. list breadcrumb */
+
+.rs-list-breadcrumb li
+{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.rs-list-breadcrumb a
+{
+    opacity: 0.5;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+.rs-list-breadcrumb a:hover
+{
+    opacity: 1;
+}
+
+.rs-list-breadcrumb .rs-item-divider
+{
+    text-indent: -999em;
+    width: 1em;
+}
+
+.rs-list-breadcrumb .rs-item-divider:before
+{
+    text-indent: 0;
+    content: '\3009';
+    font: 0.5em/4em 'icon default';
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/* @section 3. list default */
+
+.rs-list-default li
+{
+    list-style: inherit;
+    list-style-position: outside;
+    margin-left: 1em;
+}
+
+/* @section 4. list header */
+
+.rs-list-header li
+{
+    font: 1rem/3em arial, sans-serif;
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.rs-list-header > li
+{
+    padding: 0 1em;
+    font-weight: bold;
+}
+
+/* @section 5. list tabs */
+
+.rs-list-tab > li
+{
+    vertical-align: bottom;
+}
+
+.rs-list-tab > li + li
+{
+    margin-left: 0.125em;
+}
+
+.rs-list-tab .rs-item-active
+{
+    background: #323e4c;
+    padding: 0.5em 1em;
+    border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-list-tab .rs-item-active a
+{
+    color: #fff;
+}
+
+.rs-list-tab > li
+{
+    background: rgba(50, 62, 76, 0.3);
+    padding: 0.25em 1em;
+    -webkit-transition: background 0.2s, border 0.2s;
+    transition: background 0.2s, border 0.2s;
+}
+
+.rs-list-tab > li:hover
+{
+    background: #699b3c;
+    border-color: #699b3c;
+    cursor: pointer;
+}
+
+.rs-list-tab > li:hover a
+{
+    color: #fff;
+}
+
+/* @section 6. query */
+
+/* @section 6.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+
+    /* @section 6.1.1 list header */
+
+    .rs-list-header
+    {
+        background: #3873b5;
+    }
+
+    .rs-list-header > li
+    {
+        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    .rs-list-header-children
+    {
+        box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.7);
+        font-size: 0.875em;
+        margin: 0 -1.125em;
+        padding: 0 1.75em;
+    }
+}
+
+/* @section 6.2 min width 50rem */
+
+@media screen and (min-width: 50rem) {
+
+    /* @section 6.2.1 list header */
+
+    .rs-list-header li
+    {
+        font: 1.125em/2em 'Open Sans Condensed', arial, sans-serif;
+    }
+
+    .rs-list-header > li
+    {
+        background: linear-gradient(#457ECD, #3873B5);
+        border-radius: 0.125em;
+        box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        margin: 1em 0;
+        padding: 0.25em 1em;
+    }
+
+    .rs-list-header > li:hover
+    {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#457ECD, #3873B5);
+        color: #000;
+        cursor: pointer;
+    }
+
+    .rs-list-header > li + li
+    {
+        margin-left: 1em;
+    }
+
+    /* @section 6.2.2 list header children */
+
+    .rs-list-header-children
+    {
+        font-size: 0.875em;
+    }
+
+    .rs-list-header > li:hover .rs-list-header-children
+    {
+        border-top: 0.5em solid transparent;
+        min-width: 90%;
+    }
+
+    .rs-list-header > li:hover .rs-list-header-children li
+    {
+        background: #3873B5;
+    }
+
+    .rs-list-header > li:hover .rs-list-header-children a
+    {
+        padding: 0 0.5em;
+    }
+
+    .rs-list-header .rs-list-header-children li:first-child
+    {
+        border-top-left-radius: 0.125em;
+        border-top-right-radius: 0.125em;
+    }
+
+    .rs-list-header .rs-list-header-children li:last-child
+    {
+        border-bottom-left-radius: 0.125em;
+        border-bottom-right-radius: 0.125em;
+        border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+    }
+
+    .rs-list-header > li:hover .rs-list-header-children li:hover
+    {
+        background: #457ecd;
+    }
+
+    .rs-list-header > li:hover .rs-list-header-children li:hover a
+    {
+        color: #000;
+    }
+
+    .rs-list-header .rs-list-header-children:after
+    {
+        border-radius: 0.25em;
+        bottom: 0;
+        box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+}

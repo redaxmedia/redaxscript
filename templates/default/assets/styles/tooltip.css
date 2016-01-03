@@ -1,0 +1,45 @@
+/**
+ * @tableofcontents
+ *
+ * 1. tooltip
+ * 2. query
+ *    2.1 min width 30rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. tooltip */
+
+.rs-tooltip:after
+{
+    background: #323e4c;
+    color: #fff;
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+    left: 110%;
+    top: -0.5em;
+    padding: 0.5em 1em;
+    font-size: 0.875em;
+    line-height: 1.5em;
+    transition: opacity 0.3s ease 0.1s;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 min width 30rem */
+
+@media screen and (min-width: 30rem)
+{
+    .rs-tooltip-alternative:after
+    {
+        white-space: nowrap;
+    }
+
+    .rs-tooltip-default:after
+    {
+        width: 20em;
+    }
+}
