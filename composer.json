@@ -6,7 +6,6 @@
 	"license": "GPL-3.0",
 	"require":
 	{
-		"ext-mbstring": "*",
 		"j4mie/idiorm": "v1.5.1",
 		"php": ">5.3.2"
 	},
