@@ -4,21 +4,14 @@
  * 1. several lists
  * 2. list breadcrumb
  * 3. list default
- * 4. tooltip
- * 5. list header
- * 6. list tabs
- * 7. query
- *    7.1 min width 30rem
- *    7.2 max width 50rem
- *       7.2.1 list header
- *       7.2.2 nav trigger - hamburger icon
- *       7.2.3 nav trigger - close icon
- *       7.2.4 navigation
- *       7.2.5 navigation dark layer
- *    7.3 min width 50rem
- *       7.3.1 list header
- *       7.3.2 nav trigger - hamburger icon
- *       7.3.3 list children
+ * 4. list header
+ * 5. list tabs
+ * 6. query
+ *    6.1 max width 50rem
+ *       6.1.1 list header
+ *    6.2 min width 50rem
+ *       6.2.1 list header
+ *       6.2.2 list header children
  *
  * @since 3.0.0
  *

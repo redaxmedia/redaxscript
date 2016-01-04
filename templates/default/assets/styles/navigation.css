@@ -4,7 +4,13 @@
  * 1. general
  * 2. query
  *    2.1 max width 50rem
- *    2.2 min width 50rem
+ *       7.2.1 list header
+ *       7.2.2 nav trigger - hamburger icon
+ *       7.2.3 nav trigger - close icon
+ *       7.2.4 navigation
+ *       7.2.5 navigation dark layer
+ *    7.3 min width 50rem
+ *       7.3.2 nav trigger - hamburger icon
  *
  * @since 3.0.0
  *
@@ -142,7 +148,7 @@
 	}
 }
 
-/* @section 7.2 min width 50rem */
+/* @section 7.3 min width 50rem */
 
 @media screen and (min-width: 50rem) {
 
