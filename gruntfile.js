@@ -268,7 +268,7 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php'
+				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots'
 			},
 			phpunit:
 			{
