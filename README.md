@@ -1,5 +1,5 @@
-![Deploy Redaxscript to Heroku](https://dummyimage.com/1000x300/79589f/ffffff&text=Deploy+Redaxscript+to+Heroku)
-![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/79589f/ffffff&text=Ultra+lightweight+Content+Management+System)
+![Try Redaxscript 2.6.2 now](https://dummyimage.com/1000x300/0090db/ffffff&text=Try+Redaxscript+2.6.2+now)
+![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+Content+Management+System)
 
 
 Redaxscript

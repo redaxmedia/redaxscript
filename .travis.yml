@@ -1,8 +1,14 @@
 language: php
 
 php:
+- 5.3
+- 5.4
+- 5.5
 - 5.6
 - 7.0
+
+before_install:
+- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require phpunit/phpunit 4.8.21 --no-update --dev; fi
 
 install:
 - composer self-update
@@ -18,14 +24,6 @@ after_script:
 - php vendor/bin/coveralls --verbose
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
-
-deploy:
- provider: heroku
- app: redaxscript
- api_key:
-  secure: CvUp6rO6I7+HZCj/kRGPnm/5P/Inwf4MXiaCdOnCoQ+2MTj8yZf6inzM9tybFmJHuaom2bB/lyxZw77DUalqRbF9wmj5haxa98Zp9SwwxvgY6NMOI2be3pMcFpgI9po9pO9Hc2Wltt6y144su1hBbKHavQXhy3IUV4o0DLfFW/k=
- run:
-  - php install.php pgsql --db-url DATABASE_URL --db-prefix rs_ --db-salt b66e42b397a215cec2ecb3d7a5bdae1b6738abc9 --admin-name Admin --admin-user admin --admin-password admin --admin-email admin@localhost
 
 notifications:
  irc:
