@@ -1,0 +1,28 @@
+{
+	"name": "Redaxscript",
+	"description": "Ultra lightweight Content Management System",
+	"logo": "https://rawgit.com/redaxmedia/redaxscript/master/templates/default/images/redaxscript.svg",
+	"website": "http://redaxscript.com",
+	"keywords":
+	[
+		"cms",
+		"content",
+		"management",
+		"system"
+	],
+	"addons":
+	[
+		"heroku-postgresql:hobby-dev"
+	],
+	"env":
+	{
+		"BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php"
+	},
+	"scripts":
+	{
+		"postdeploy":
+		[
+			"php install.php pgsql --db-url DATABASE_URL --db-prefix rs_ --db-salt b66e42b397a215cec2ecb3d7a5bdae1b6738abc9 --admin-name Admin --admin-user admin --admin-password admin --admin-email admin@localhost"
+		]
+	}
+}
