@@ -28,7 +28,7 @@ class SitemapXml extends Module
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap XML',
-		'version' => '2.6.2'
+		'version' => '3.0.0'
 	);
 
 	/**

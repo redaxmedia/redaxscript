@@ -26,7 +26,7 @@ class Editor extends Module
 		'alias' => 'Editor',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered WYSIWYG editor',
-		'version' => '2.6.2'
+		'version' => '3.0.0'
 	);
 
 	/**

@@ -15,7 +15,7 @@
 		"mikey179/vfsStream": "1.6.1",
 		"phpbench/phpbench": "0.9.0",
 		"phpunit/phpunit": "5.1.3",
-		"redaxmedia/tocgen": "4.1.0",
+		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "0.7.1",
 		"squizlabs/php_codesniffer": "2.5.0"
 	},
