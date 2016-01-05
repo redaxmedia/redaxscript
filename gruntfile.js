@@ -511,25 +511,27 @@ module.exports = function (grunt)
 
 	grunt.dynamicDist = function (path)
 	{
-		var target = grunt.file.expand(path);
+		var target = grunt.file.expand(path),
+			targetArray;
 
 		for (var i in target)
 		{
-			grunt.config.set('compress.' + target[i],
+			targetArray = target[i].split('.');
+			grunt.config.set('compress.' + targetArray[0],
 			{
 				src:
 				[
-					target[i] + '/**'
+					target[i] + (targetArray[1] ? '' : '/**')
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/' + target[i].toLowerCase() + '.zip'
+					archive: '../redaxscript-dist/files/' + targetArray[0].toLowerCase() + '.zip'
 				},
 				dot: true
 			});
 		}
 	};
-	grunt.dynamicDist('languages/*');
+	grunt.dynamicDist('languages/*.json');
 	grunt.dynamicDist('modules/*');
 	grunt.dynamicDist('templates/*');
 
