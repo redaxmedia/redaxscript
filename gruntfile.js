@@ -402,17 +402,6 @@ module.exports = function (grunt)
 					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
 				},
 				dot: true
-			},
-			distLanguages:
-			{
-				src:
-				[
-					'languages/*.json'
-				],
-				dest: '../redaxscript-dist/files',
-				ext: '.zip',
-				expand: true
-
 			}
 		},
 		img:
@@ -501,28 +490,31 @@ module.exports = function (grunt)
 
 	/* dynamic dist */
 
-	grunt.dynamicDist = function (directory)
+	grunt.dynamicDist = function (path)
 	{
-		var target = grunt.file.expand(directory + '/*');
+		var target = grunt.file.expand(path),
+			targetArray;
 
 		for (var i in target)
 		{
-			grunt.config.set('compress.' + target[i],
+			targetArray = target[i].split('.');
+			grunt.config.set('compress.' + targetArray[0],
 			{
 				src:
 				[
-					target[i] + '/**'
+					target[i] + (targetArray[1] ? '' : '/**')
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/' + target[i].toLowerCase() + '.zip'
+					archive: '../redaxscript-dist/files/' + targetArray[0].toLowerCase() + '.zip'
 				},
 				dot: true
 			});
 		}
 	};
-	grunt.dynamicDist('modules');
-	grunt.dynamicDist('templates');
+	grunt.dynamicDist('languages/*.json');
+	grunt.dynamicDist('modules/*');
+	grunt.dynamicDist('templates/*');
 
 	/* load tasks */
 
