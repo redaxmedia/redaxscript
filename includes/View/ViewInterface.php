@@ -6,8 +6,8 @@ namespace Redaxscript\View;
  *
  * @since 3.0.0
  *
- * @category Redaxscript
- * @package View
+ * @package Redaxscript
+ * @category View
  * @author Henry Ruhs
  */
 

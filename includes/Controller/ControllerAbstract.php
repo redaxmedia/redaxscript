@@ -6,8 +6,8 @@ namespace Redaxscript\Controller;
  *
  * @since 3.0.0
  *
- * @category Redaxscript
- * @package Controller
+ * @package Redaxscript
+ * @category Controller
  * @author Henry Ruhs
  */
 

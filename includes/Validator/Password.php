@@ -9,8 +9,8 @@ use Redaxscript\Hash;
  *
  * @since 2.6.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  */
 

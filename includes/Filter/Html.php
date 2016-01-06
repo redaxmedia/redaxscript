@@ -9,8 +9,8 @@ use Redaxscript\Db;
  *
  * @since 2.4.0
  *
- * @category Redaxscript
- * @package Filter
+ * @package Redaxscript
+ * @category Filter
  * @author Henry Ruhs
  */
 

@@ -14,7 +14,7 @@ use Redaxscript\Registry;
  * @since 2.6.0
  *
  * @package Redaxscript
- * @category Html
+ * @category Server
  * @author Henry Ruhs
  *
  * @method button()

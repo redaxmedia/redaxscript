@@ -9,7 +9,7 @@ use Redaxscript\Html\Form as BaseForm;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Html
+ * @category Admin
  * @author Henry Ruhs
  */
 
