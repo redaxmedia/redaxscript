@@ -6,24 +6,22 @@ $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
-$listTabElement = new Html\Element();
-$listTabElement->init('ul', array(
+$listElement = new Html\Element();
+$listElement->init('ul', array(
 	'class' => 'rs-js-list-tab rs-list-tab rs-list-tab' . $suffix
 ));
-$boxTabElement = new Html\Element();
-$boxTabElement->init('div', array(
+$boxElement = new Html\Element();
+$boxElement->init('div', array(
 	'class' => 'rs-js-box-tab rs-box-tab rs-box-tab' . $suffix
 ));
-$itemTabElement = new Html\Element();
-$itemTabElement->init('li');
-$setTabElement = new Html\Element();
-$setTabElement->init('div', array(
+$itemElement = new Html\Element();
+$itemElement->init('li');
+$setElement = new Html\Element();
+$setElement->init('div', array(
 	'class' => 'rs-js-set-tab rs-set-tab rs-set-tab' . $suffix
 ));
-$listContent = '';
-$boxContent = '';
-$itemActive = 'rs-js-item-active rs-item-active';
-$setActive = 'rs-js-set-active rs-set-active';
+$outputItem = null;
+$outputBox = null;
 $itemArray = array(
 	'rs-item-first',
 	'rs-item-second',
@@ -33,23 +31,23 @@ $itemArray = array(
 );
 ?>
 
-<!-- list and set content -->
+<!-- collect several output -->
 
 <?php foreach ($itemArray as $key => $value): ?>
 
 	<?php $id = 'tab' . $suffix . '-' . $key; ?>
 
-	<?php $listContent .= $itemTabElement
+	<?php $outputItem .= $itemElement
 		->copy()
-		->addClass($key === 0 ? $itemActive : null)
+		->addClass($key === 0 ? 'rs-js-item-active rs-item-active' : null)
 		->addClass($value)
 		->html('<a href="' . Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id . '">' . Language::get($key + 1, '_number') . '</a>'); ?>
 
-	<?php $boxContent .= $setTabElement
-			->copy()
-			->addClass($key === 0 ? $setActive : null)
-			->attr('id', $id)
-			->text(Language::get($key + 1, '_number')); ?>
+	<?php $outputBox .= $setElement
+		->copy()
+		->addClass($key === 0 ? 'rs-js-set-active rs-set-active' : null)
+		->attr('id', $id)
+		->text(Language::get($key + 1, '_number')); ?>
 
 <?php endforeach; ?>
 
@@ -59,7 +57,7 @@ $itemArray = array(
 
 <div class="rs-js-tab rs-tab">
 
-	<?php echo $listTabElement->copy()->html($listContent); ?>
-	<?php echo $boxTabElement->copy()->html($boxContent); ?>
+	<?php echo $listElement->copy()->html($outputItem); ?>
+	<?php echo $boxElement->copy()->html($outputBox); ?>
 
 </div>

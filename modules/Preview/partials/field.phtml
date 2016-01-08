@@ -6,21 +6,21 @@ $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
-$fieldTextElement = new Html\Element();
-$fieldTextElement
+$textElement = new Html\Element();
+$textElement
 	->init('input', array(
 		'class' => 'rs-field-default rs-field-text' . $suffix
 	))
 	->val(Language::get('preview', '_preview'));
-$fieldTextareaElement = new Html\Element();
-$fieldTextareaElement
+$textareaElement = new Html\Element();
+$textareaElement
 	->init('textarea', array(
 		'class' => 'rs-field-textarea' . $suffix
 	))
 	->val(Language::get('preview', '_preview'));
 $optionNative = '<option>Placeholder text</option>';
-$fieldSelectElement = new Html\Element();
-$fieldSelectElement
+$selectElement = new Html\Element();
+$selectElement
 	->init('select', array(
 		'class' => 'rs-field-select' . $suffix
 	))
@@ -31,13 +31,13 @@ $fieldSelectElement
 
 <?php echo $titlePartialElement->text('.rs-field-text' . $suffix . ' + .rs-field-default'); ?>
 
-<?php echo $fieldTextElement; ?>
+<?php echo $textElement; ?>
 
 <!-- disabled -->
 
 <?php echo $titlePartialElement->text('.rs-field-text' . $suffix . '[disabled] + .rs-field-default'); ?>
 
-<?php echo $fieldTextElement
+<?php echo $textElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>
 
@@ -45,13 +45,13 @@ $fieldSelectElement
 
 <?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix); ?>
 
-<?php echo $fieldTextareaElement; ?>
+<?php echo $textareaElement; ?>
 
 <!-- disabled -->
 
 <?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix . '[disabled]'); ?>
 
-<?php echo $fieldTextareaElement
+<?php echo $textareaElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>
 
@@ -59,7 +59,7 @@ $fieldSelectElement
 
 <?php echo $titlePartialElement->text('.rs-field-textarea' . $suffix . '.rs-field-small'); ?>
 
-<?php echo $fieldTextareaElement
+<?php echo $textareaElement
 	->copy()
 	->addClass('rs-field-small'); ?>
 
@@ -67,12 +67,12 @@ $fieldSelectElement
 
 <?php echo $titlePartialElement->text('.rs-field-select' . $suffix); ?>
 
-<?php echo $fieldSelectElement; ?>
+<?php echo $selectElement; ?>
 
 <!-- disabled -->
 
 <?php echo $titlePartialElement->text('.rs-field-select' . $suffix . '[disabled]'); ?>
 
-<?php echo $fieldSelectElement
+<?php echo $selectElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>

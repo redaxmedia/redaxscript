@@ -22,9 +22,9 @@ $thElement = new Html\Element();
 $thElement->init('th');
 $tdElement = new Html\Element();
 $tdElement->init('td');
-$theadContent = '';
-$tfootContent = '';
-$tbodyContent = '';
+$outputHead = null;
+$outputFoot = null;
+$outputBody = null;
 $columnArray = array(
 	'rs-column-first',
 	'rs-column-second',
@@ -38,12 +38,12 @@ $columnArray = array(
 
 <?php for ($i = 0; $i < 5; $i++): ?>
 
-	<?php $theadContent .= $thElement
+	<?php $outputHead .= $thElement
 		->copy()
 		->addClass('rs-s1o5 ' . $columnArray[$i])
 		->text(Language::get($i + 1, '_number')); ?>
 
-	<?php $tfootContent .= $tdElement
+	<?php $outputFoot .= $tdElement
 		->copy()
 		->addClass($columnArray[$i])
 		->text(Language::get($i + 1, '_number')); ?>
@@ -54,7 +54,7 @@ $columnArray = array(
 
 <?php foreach ($columnArray as $value): ?>
 
-	<?php $tbodyContent .= $tdElement
+	<?php $outputBody .= $tdElement
 		->copy()
 		->addClass($value)
 		->text(Language::get('preview', '_preview')); ?>
@@ -68,12 +68,12 @@ $columnArray = array(
 <div class="rs-wrapper-table<?php echo $suffix; ?>">
 
 	<?php echo $tableElement->html(
-		$theadElement->html($theadContent) .
-		$tfootElement->html($tfootContent) .
+		$theadElement->html($outputHead) .
+		$tfootElement->html($outputFoot) .
 		$tbodyElement->html(
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>'
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
 		)
 	); ?>
 
@@ -88,9 +88,9 @@ $columnArray = array(
 	<?php echo $tableElement->html(
 		$captionElement->text('Caption') .
 		$tbodyElement->html(
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>'
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
 		)
 	); ?>
 

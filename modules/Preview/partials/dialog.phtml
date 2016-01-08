@@ -6,18 +6,18 @@ $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
-$titleDialogElement = new Html\Element();
-$titleDialogElement->init('h3', array(
+$titleElement = new Html\Element();
+$titleElement->init('h3', array(
 	'class' => 'rs-title-dialog rs-title-dialog' . $suffix
 ));
-$boxDialogElement = new Html\Element();
-$boxDialogElement->init('div', array(
+$boxElement = new Html\Element();
+$boxElement->init('div', array(
 	'class' => 'rs-box-dialog' . $suffix
 ));
-$textDialogElement = new Html\Element();
-$textDialogElement->init('p');
-$buttonDialogElement = new Html\Element();
-$buttonDialogElement->init('a', array(
+$textElement = new Html\Element();
+$textElement->init('p');
+$buttonElement = new Html\Element();
+$buttonElement->init('a', array(
 	'class' => 'rs-button' . $suffix
 ));
 ?>
@@ -28,11 +28,11 @@ $buttonDialogElement->init('a', array(
 
 <div class="rs-js-dialog rs-dialog<?php echo $suffix; ?>">
 
-	<?php echo $titleDialogElement->text(Language::get('confirm')); ?>
-	<?php echo $boxDialogElement->html(
-		$textDialogElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
-		$buttonDialogElement->copy()->text(Language::get('ok')) .
-		$buttonDialogElement->copy()->text(Language::get('cancel'))
+	<?php echo $titleElement->text(Language::get('confirm')); ?>
+	<?php echo $boxElement->html(
+		$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
+		$buttonElement->copy()->text(Language::get('ok')) .
+		$buttonElement->copy()->text(Language::get('cancel'))
 	); ?>
 
 </div>

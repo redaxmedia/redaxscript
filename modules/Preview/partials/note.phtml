@@ -15,15 +15,15 @@ $boxElement = new Html\Element();
 $boxElement->init('div', array(
 	'class' => 'rs-box-note'
 ));
-$fieldTextElement = new Html\Element();
-$fieldTextElement->init('input', array(
+$textElement = new Html\Element();
+$textElement->init('input', array(
 	'type' => 'text',
 	'class' => 'rs-field-text rs-field-note',
 	'placeholder' => 'Placeholder text'
 ));
 $optionNative = '<option>Placeholder text</option>';
-$fieldSelectElement = new Html\Element();
-$fieldSelectElement
+$selectElement = new Html\Element();
+$selectElement
 	->init('select', array(
 		'class' => 'rs-field-select rs-field-note',
 	))
@@ -52,7 +52,7 @@ $noteArray = array(
 	<?php foreach ($noteArray as $value): ?>
 
 		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
-		<?php echo $fieldTextElement->copy()->addClass($value)->val($value); ?>
+		<?php echo $textElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
 
@@ -65,7 +65,7 @@ $noteArray = array(
 	<?php foreach ($noteArray as $value): ?>
 
 		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
-		<?php echo $fieldSelectElement->copy()->addClass($value)->val($value); ?>
+		<?php echo $selectElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
 

@@ -6,16 +6,16 @@ $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
-$setAccordionElement = new Html\Element();
-$setAccordionElement->init('div', array(
+$setElement = new Html\Element();
+$setElement->init('div', array(
 	'class' => 'rs-js-set-accordion rs-set-accordion rs-set-accordion' . $suffix
 ));
-$titleAccordionElement = new Html\Element();
-$titleAccordionElement->init('h3', array(
+$titleElement = new Html\Element();
+$titleElement->init('h3', array(
 	'class' => 'rs-js-title-accordion rs-title-accordion rs-title-accordion' . $suffix
 ));
-$boxAccordionElement = new Html\Element();
-$boxAccordionElement->init('div', array(
+$boxElement = new Html\Element();
+$boxElement->init('div', array(
 	'class' => 'rs-js-box-accordion rs-box-accordion rs-box-accordion' . $suffix
 ));
 ?>
@@ -28,15 +28,15 @@ $boxAccordionElement->init('div', array(
 
 	<!-- first -->
 
-	<?php echo $setAccordionElement
+	<?php echo $setElement
 		->copy()
 		->addClass('rs-js-set-active rs-set-active')
 		->html(
-			$titleAccordionElement
+			$titleElement
 				->copy()
 				->addClass('rs-js-title-active rs-title-active')
 				->text(Language::get('first')) .
-			$boxAccordionElement
+			$boxElement
 				->copy()
 				->addClass('rs-js-box-active rs-box-active')
 				->text(Language::get('first'))
@@ -46,20 +46,20 @@ $boxAccordionElement->init('div', array(
 
 	<?php for ($i = 2; $i < 5; $i++): ?>
 
-		<?php echo $setAccordionElement->html(
-			$titleAccordionElement->text(Language::get($i, '_number')) .
-			$boxAccordionElement->text(Language::get($i, '_number'))
+		<?php echo $setElement->html(
+			$titleElement->text(Language::get($i, '_number')) .
+			$boxElement->text(Language::get($i, '_number'))
 		); ?>
 
 	<?php endfor; ?>
 
 	<!-- last -->
 
-	<?php echo $setAccordionElement
+	<?php echo $setElement
 		->copy()
 		->addClass('rs-js-set-accordion-last rs-set-accordion-last')
 		->html(
-			$titleAccordionElement->text(Language::get('last')) .
-			$boxAccordionElement->text(Language::get('last'))
+			$titleElement->text(Language::get('last')) .
+			$boxElement->text(Language::get('last'))
 		); ?>
 </div>

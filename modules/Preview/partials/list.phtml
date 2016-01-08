@@ -15,14 +15,14 @@ $listUnorderedElement->init('ul', array(
 ));
 $itemElement = new Html\Element();
 $itemElement->init('li');
-$listContent = '';
+$outputItem = null;
 ?>
 
-<!-- list content -->
+<!-- collect item output -->
 
 <?php for ($i = 0; $i < 5; $i++): ?>
 
-	<?php $listContent .= $itemElement
+	<?php $outputItem .= $itemElement
 		->copy()
 		->text(Language::get($i + 1, '_number')); ?>
 
@@ -32,10 +32,10 @@ $listContent = '';
 
 <?php echo $titlePartialElement->text('ol.rs-list-default'); ?>
 
-<?php echo $listOrderedElement->html($listContent); ?>
+<?php echo $listOrderedElement->html($outputItem); ?>
 
 <!-- list unordered -->
 
 <?php echo $titlePartialElement->text('ul.rs-list-default'); ?>
 
-<?php echo $listUnorderedElement->html($listContent); ?>
+<?php echo $listUnorderedElement->html($outputItem); ?>
