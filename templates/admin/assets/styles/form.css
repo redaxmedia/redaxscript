@@ -21,8 +21,8 @@
  */
 
 /* @section 1. button admin */
-
-.rs-admin-button
+/* @TODO: rewrite all .rs-admin-button to .rs-admin-button-default */
+.rs-admin-button, .rs-admin-button-default
 {
 	background: linear-gradient(#3b3b3b, #303030);
 	border: 1px solid #151515;
@@ -38,7 +38,7 @@
 
 /* @section 1.1 hover effect */
 
-.rs-admin-button:hover
+.rs-admin-button:hover, .rs-admin-button-default:hover
 {
 	background: linear-gradient(#474747, #3b3b3b);
 	color: #eee;
@@ -46,7 +46,7 @@
 
 /* @section 1.2 active effect */
 
-.rs-admin-button:active
+.rs-admin-button:active, .rs-admin-button-default:active
 {
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
@@ -161,15 +161,15 @@
 }
 
 /* @section 5.1 label */
-
-.rs-admin-form .rs-admin-label
+/* @TODO: rewrite all .rs-admin-form .rs-admin-label to .rs-admin-label-default */
+.rs-admin-form .rs-admin-label, .rs-admin-label-default
 {
 	color: #555;
 	font: bold 0.875rem arial;
 	display: block;
 }
 
-.rs-admin-form .rs-admin-label-message:after
+.rs-admin-form .rs-admin-label-message:after, .rs-admin-label-default:after
 {
 	content: ' ' attr(data-message);
 }
@@ -180,3 +180,5 @@
 {
 	margin-top: 1em;
 }
+
+/*TODO: generate a note.css for the admin similar to default template */

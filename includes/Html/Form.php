@@ -546,7 +546,7 @@ class Form extends HtmlAbstract
 
 		foreach ($optionArray as $key => $value)
 		{
-			if ($value)
+			if ($key || $value)
 			{
 				$output .= $optionElement
 					->copy()
@@ -554,7 +554,7 @@ class Form extends HtmlAbstract
 						'selected' => $value === $selected ? 'selected' : null,
 						'value' => $value
 					))
-					->text(is_string($key) ? $key : null);
+					->text(is_string($key) ? $key : $value);
 			}
 		}
 		return $output;

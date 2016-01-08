@@ -125,6 +125,7 @@
 
 /*TODO: please remove support, donate and maby the custom buttons if not needed */
 /*JOERG: we sure need this buttons, but we have to decide where to place them*/
+/*HENRY: nope - there is no need for the default template - there will no buttons like that, maby on the website but another look */
 .rs-button-support:before
 {
 	content: '\2691';

@@ -17,7 +17,7 @@
 			"max": 3
 		},
 		"",
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\"></option><option value=\"2\"></option><option value=\"3\"></option></select></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	],
 	[
 		{
@@ -27,6 +27,6 @@
 		{
 			"value": 2
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\"></option><option selected=\"selected\" value=\"2\"></option><option value=\"3\"></option></select></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option selected=\"selected\" value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	]
 ]
