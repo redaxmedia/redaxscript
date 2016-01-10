@@ -12,6 +12,30 @@
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"checkbox\" /></form>"
 	],
 	[
+		"color",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-color\" type=\"color\" /></form>"
+	],
+	[
+		"color",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"color\" /></form>"
+	],
+	[
+		"date",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"date\" /></form>"
+	],
+	[
+		"date",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"date\" /></form>"
+	],
+	[
 		"datetime",
 		"",
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime\" /></form>"
@@ -132,6 +156,18 @@
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"tel\" /></form>"
 	],
 	[
+		"time",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"time\" /></form>"
+	],
+	[
+		"time",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"time\" /></form>"
+	],
+	[
 		"text",
 		"",
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-text\" type=\"text\" /></form>"
@@ -154,6 +190,18 @@
 			"class": "rs-test"
 		},
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"url\" /></form>"
+	],
+	[
+		"week",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"week\" /></form>"
+	],
+	[
+		"week",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"week\" /></form>"
 	],
 	[
 		"invalid",

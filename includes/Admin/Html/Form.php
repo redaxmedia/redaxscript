@@ -61,6 +61,14 @@ class Form extends BaseForm
 				'class' => 'rs-admin-field-checkbox',
 				'type' => 'checkbox'
 			),
+			'color' => array(
+				'class' => 'rs-admin-field-color',
+				'type' => 'color'
+			),
+			'date' => array(
+				'class' => 'rs-admin-field-default rs-admin-field-date',
+				'type' => 'date'
+			),
 			'datetime' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'datetime'
@@ -101,6 +109,10 @@ class Form extends BaseForm
 				'class' => 'rs-admin-field-default rs-admin-field-tel',
 				'type' => 'tel'
 			),
+			'time' => array(
+				'class' => 'rs-admin-field-default rs-admin-field-date',
+				'type' => 'time'
+			),
 			'text' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-text',
 				'type' => 'text'
@@ -108,6 +120,10 @@ class Form extends BaseForm
 			'url' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-url',
 				'type' => 'url'
+			),
+			'week' => array(
+				'class' => 'rs-admin-field-default rs-admin-field-date',
+				'type' => 'week'
 			)
 		)
 	);

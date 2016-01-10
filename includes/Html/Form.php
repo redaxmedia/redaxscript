@@ -19,6 +19,8 @@ use Redaxscript\Registry;
  *
  * @method button()
  * @method checkbox()
+ * @method color()
+ * @method date()
  * @method datetime()
  * @method email()
  * @method file()
@@ -30,9 +32,11 @@ use Redaxscript\Registry;
  * @method reset()
  * @method search()
  * @method submit()
+ * @method time()
  * @method tel()
  * @method text()
  * @method url()
+ * @method week()
  */
 
 class Form extends HtmlAbstract
@@ -122,6 +126,14 @@ class Form extends HtmlAbstract
 				'class' => 'rs-field-checkbox',
 				'type' => 'checkbox'
 			),
+			'color' => array(
+				'class' => 'rs-field-color',
+				'type' => 'color'
+			),
+			'date' => array(
+				'class' => 'rs-field-default rs-field-date',
+				'type' => 'date'
+			),
 			'datetime' => array(
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'datetime'
@@ -162,6 +174,10 @@ class Form extends HtmlAbstract
 				'class' => 'rs-field-default rs-field-tel',
 				'type' => 'tel'
 			),
+			'time' => array(
+				'class' => 'rs-field-default rs-field-date',
+				'type' => 'time'
+			),
 			'text' => array(
 				'class' => 'rs-field-default rs-field-text',
 				'type' => 'text'
@@ -169,6 +185,10 @@ class Form extends HtmlAbstract
 			'url' => array(
 				'class' => 'rs-field-default rs-field-url',
 				'type' => 'url'
+			),
+			'week' => array(
+				'class' => 'rs-field-default rs-field-date',
+				'type' => 'week'
 			)
 		)
 	);

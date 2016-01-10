@@ -71,10 +71,18 @@ class ArticleForm implements ViewInterface
 			);
 		$outputItem .= $itemElement
 			->copy()
-			->addClass('rs-item-last')
+			->addClass('rs-item-second')
 			->html($linkElement
 				->copy()
 				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-2')
+				->text(Language::get('general'))
+		);
+		$outputItem .= $itemElement
+			->copy()
+			->addClass('rs-item-last')
+			->html($linkElement
+				->copy()
+				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-3')
 				->text(Language::get('customize'))
 		);
 		$listElement->append($outputItem);
@@ -144,10 +152,109 @@ class ArticleForm implements ViewInterface
 				'for' => 'language'
 			))
 			->select(array(
-				Language::get('select') => null
+				Language::get('select') => 'select'
 			), array(
 				'id' => 'language',
 				'name' => 'language',
+			))
+			->append('</li><li>')
+			->label(Language::get('template'), array(
+				'for' => 'template'
+			))
+			->select(array(
+				Language::get('select') => 'select'
+			), array(
+				'id' => 'template',
+				'name' => 'template',
+			))
+			->append('</li><li>')
+			->label(Language::get('article_sibling'), array(
+				'for' => 'sibling'
+			))
+			->select(array(
+				Language::get('select') => 'select'
+			), array(
+				'id' => 'sibling',
+				'name' => 'sibling',
+			))
+			->append('</li><li>')
+			->label(Language::get('category'), array(
+				'for' => 'category'
+			))
+			->select(array(
+				Language::get('select') => 'select'
+			), array(
+				'id' => 'category',
+				'name' => 'category',
+			))
+			->append('</li></ul></fieldset>')
+
+			/* last tab */
+
+			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->label(Language::get('headline'), array(
+				'for' => 'headline'
+			))
+			->select(array(
+				Language::get('enable') => 1,
+				Language::get('disable') => 0
+			), array(
+				'id' => 'headline',
+				'name' => 'headline',
+			))
+			->append('</li><li>')
+			->label(Language::get('infoline'), array(
+				'for' => 'infoline'
+			))
+			->select(array(
+				Language::get('enable') => 1,
+				Language::get('disable') => 0
+			), array(
+				'id' => 'infoline',
+				'name' => 'infoline'
+			))
+			->append('</li><li>')
+			->label(Language::get('comments'), array(
+				'for' => 'comments'
+			))
+			->select(array(
+				Language::get('enable') => 1,
+				Language::get('freeze') => 2,
+				Language::get('restrict') => 3,
+				Language::get('disable') => 0
+			), array(
+				'id' => 'comments',
+				'name' => 'comments'
+			))
+			->append('</li><li>')
+			->label(Language::get('status'), array(
+				'for' => 'status'
+			))
+			->select(array(
+				Language::get('publish') => 1,
+				Language::get('unpublish') => 0
+			), array(
+				'id' => 'status',
+				'name' => 'status'
+			))
+			->append('</li><li>')
+			->label(Language::get('access'), array(
+				'for' => 'access'
+			))
+			->select(array(
+				Language::get('none') => 'none'
+			), array(
+				'id' => 'access',
+				'name' => 'access',
+				'multiple' => 'multiple'
+			))
+			->append('</li><li>')
+			->label(Language::get('date'), array(
+				'for' => 'date'
+			))
+			->datetime(array(
+				'id' => 'date',
+				'name' => 'date'
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
