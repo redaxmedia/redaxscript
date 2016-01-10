@@ -114,7 +114,7 @@ class Form extends BaseForm
 				'type' => 'time'
 			),
 			'text' => array(
-				'class' => 'rs-admin-field-default rs-admin-field-text',
+				'class' => 'rs-admin-field-default rs-admin-field-default',
 				'type' => 'text'
 			),
 			'url' => array(

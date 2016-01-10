@@ -1,0 +1,115 @@
+/**
+ * @tableofcontents
+ *
+ * 1. link dock admin
+ *    1.1 icons
+ * 2. list control admin
+ * 3. list panel admin
+ *    3.1 icons before
+ *    3.2 icons after
+ * 4. list tab admin
+ *    4.1 javascript enabled
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list control admin */
+
+.rs-admin-list-control a, .rs-admin-list-control span
+{
+	background: linear-gradient(#ddd, #c6c6c6);
+	border: 1px solid #c6c6c6;
+	border-radius: 0.25em;
+	color: #666;
+	display: inline-block;
+	line-height: 2.25em;
+	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.rs-admin-list-control a:hover
+{
+	background: linear-gradient(#4cb4ff, #0090db);
+	border-color: #005da2;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.rs-admin-list-control span
+{
+	color: #999;
+}
+
+/* @section 2. list panel admin */
+
+.rs-admin-list-panel
+{
+	font-size: 0.875rem;
+}
+
+.rs-admin-list-panel a, .rs-admin-list-panel span
+{
+	color: #b9b9b9;
+	cursor: pointer;
+	display: block;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	text-transform: uppercase;
+	transition: padding-left 0.3s ease;
+}
+
+.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
+{
+	background: linear-gradient(#3db1f1, #0090db);
+	color: #000;
+	padding-left: 1.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.rs-admin-list-panel-children
+{
+	display: none;
+}
+
+/* @section 3. list tab admin */
+
+.rs-admin-list-tab li
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	border: 1px solid #222;
+	border-radius: 0.25em 0.25em 0 0;
+	margin-bottom: -1px;
+	margin-right: 0.25em;
+	vertical-align: bottom;
+}
+
+.rs-admin-list-tab a
+{
+	color: #ccc;
+	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
+	text-transform: uppercase;
+}
+
+.rs-admin-list-tab a:hover
+{
+	text-decoration: none;
+}
+
+/* @section 3.1 javascript enabled */
+
+.rs-js .rs-admin-list-tab .rs-item-active
+{
+	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
+	border: 1px solid #b9b9b9;
+	border-bottom-color: #e2e2e2;
+}
+
+.rs-js .rs-admin-list-tab .rs-item-active a
+{
+	color: #474747;
+	line-height: 2.5em;
+}

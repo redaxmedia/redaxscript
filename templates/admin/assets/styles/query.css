@@ -27,18 +27,18 @@
 
 @media screen and (max-width: 29.999em)
 {
-	.rs-admin-button + .rs-admin-button
+	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-top: 0.75em;
 	}
 
-	a.rs-admin-button
+	a.rs-admin-button-default
 	{
 		display: block;
 		text-align: center;
 	}
 
-	button.rs-admin-button, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
@@ -122,7 +122,7 @@
 
 @media screen and (min-width: 30em)
 {
-	.rs-admin-button + .rs-admin-button
+	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-left: 0.5em;
 	}
