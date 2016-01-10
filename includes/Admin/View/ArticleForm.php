@@ -50,7 +50,7 @@ class ArticleForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => 'admin/process',
-				'class' => 'rs-js-validate-form rs-admin-form-default'
+				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
 				'submit' => array(
@@ -77,15 +77,17 @@ class ArticleForm implements ViewInterface
 				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-2')
 				->text(Language::get('customize'))
 		);
+		$listElement->append($outputItem);
 
 		/* create the form */
 
 		$formElement
+			->append($listElement)
 			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
+			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
 			->label(Language::get('title'), array(
 				'for' => 'title'
 			))
@@ -137,7 +139,7 @@ class ArticleForm implements ViewInterface
 
 			/* second tab */
 
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-admin-set-tab rs-hide-if-js"><ul><li>')
+			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
@@ -153,7 +155,7 @@ class ArticleForm implements ViewInterface
 
 		/* collect output */
 
-		$output .= $titleElement . $listElement->append($outputItem) . $formElement;
+		$output .= $titleElement . $formElement;
 		$output .= Hook::trigger('loginEnd');
 		return $output;
 	}

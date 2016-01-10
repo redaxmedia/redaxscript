@@ -25,7 +25,6 @@
 
 /* @section 2. set tab */
 
-/*TODO: replace all usages with rs-hide-if-js and delte this entry */
 .rs-js .rs-set-tab
 {
 	display: none;

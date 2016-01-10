@@ -13,7 +13,7 @@
 /* @section 1. query */
 
 /* @section 1.1 max width 50em */
-
+/* TODO: what about renaming this to tab.css? an put all tab related stuff into it - same with accordion.css maby */
 @media screen and (max-width: 49.999em)
 {
     .rs-list-tab
