@@ -3,19 +3,19 @@
 
 [template]
 1 = assets/styles/normalize.css
-2 = assets/styles/animate.css
-3 = assets/styles/box.css
-4 = assets/styles/dialog.css
-5 = assets/styles/dropdown.css
-6 = assets/styles/form.css
-7 = assets/styles/general.css
-8 = assets/styles/grid.css
-9 = assets/styles/interface.css
+2 = assets/styles/helper.css
+3 = assets/styles/animate.css
+4 = assets/styles/accordion.css
+5 = assets/styles/box.css
+6 = assets/styles/dialog.css
+7 = assets/styles/dropdown.css
+8 = assets/styles/form.css
+9 = assets/styles/grid.css
 10 = assets/styles/media.css
-11 = assets/styles/navigation.css
+11 = assets/styles/tab.css
 12 = assets/styles/table.css
 13 = assets/styles/tooltip.css
-14 = assets/styles/query.css
+14 = assets/styles/layout.css
 15 = templates/default/assets/styles/typo.css
 16 = templates/default/assets/styles/animate.css
 17 = templates/default/assets/styles/box.css

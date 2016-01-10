@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. title accordion
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. title accordion */
+
+.rs-js .rs-title-accordion-default.rs-title-active
+{
+	pointer-events: none;
+}

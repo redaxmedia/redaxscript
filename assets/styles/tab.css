@@ -3,7 +3,8 @@
  *
  * 1. list tab
  * 2. set tab
- * 3. title accordion
+ * 3. query
+ *    3.1 max width 50em
  *
  * @since 3.0.0
  *
@@ -12,8 +13,6 @@
  */
 
 /* @section 1. list tab */
-/*TODO: please rename that file to list.css and ??? */
-/*TODO: what about renaming this to tab.css? an put all tab related stuff into it - same with accordion.css maby */
 
 .rs-list-tab li
 {
@@ -37,9 +36,19 @@
 	display: block;
 }
 
-/* @section 3. title accordion */
+/* @section 3. query */
 
-.rs-js .rs-title-accordion-default.rs-title-active
+/* @section 3.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
 {
-	pointer-events: none;
+	.rs-list-tab
+	{
+		display: none;
+	}
+
+	.rs-js .rs-set-tab
+	{
+		display: block;
+	}
 }
