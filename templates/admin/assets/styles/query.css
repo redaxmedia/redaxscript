@@ -14,7 +14,7 @@
  */
 
 /* @section 1. screen max 40em */
-
+/*TODO: move the query to the files, please wait until we have SASS support */
 @media screen and (max-width: 40em)
 {
 	.rs-admin-item-control.rs-admin-item-future-posting

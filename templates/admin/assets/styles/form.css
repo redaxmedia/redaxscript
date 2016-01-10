@@ -20,6 +20,8 @@
  * @author Henry Ruhs
  */
 
+/*TODO: please split the file into button.css and field.css */
+
 /* @section 1. button admin */
 /* @TODO: rewrite all .rs-admin-button to .rs-admin-button-default */
 .rs-admin-button, .rs-admin-button-default
@@ -80,17 +82,25 @@
 
 /* @section 2. several fields */
 
-.rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+/*TODO: replace all field-text with field-default */
+.rs-admin-field-default,
+.rs-admin-field-select,
+.rs-admin-field-text,
+.rs-admin-field-textarea.rs-field-small
 {
 	width: 40%;
 }
 
+.rs-admin-dialog .rs-admin-field-default,
 .rs-admin-dialog .rs-admin-field-text
 {
 	width: 100%;
 }
 
-.rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea
+.rs-admin-field-default,
+.rs-admin-field-select,
+.rs-admin-field-text,
+.rs-admin-field-textarea
 {
 	background: linear-gradient(#e2e2e2, #f1f1f1);
 	border: 1px solid #c9c9c9;
@@ -104,14 +114,20 @@
 
 /* @section 2.1 hover effect */
 
-.rs-admin-field-select:hover, .rs-admin-field-text:hover, .rs-admin-field-textarea:hover
+.rs-admin-field-default:hover,
+.rs-admin-field-select:hover,
+.rs-admin-field-text:hover,
+.rs-admin-field-textarea:hover
 {
 	border-color: #adadad;
 }
 
 /* @section 2.2 focus effect */
 
-.rs-admin-field-select:focus, .rs-admin-field-text:focus, .rs-admin-field-textarea:focus
+.rs-admin-field-default:focus,
+.rs-admin-field-select:focus,
+.rs-admin-field-text:focus,
+.rs-admin-field-textarea:focus
 {
 	background: linear-gradient(#f1f1f1, #e2e2e2);
 	border-color: #ababab;
@@ -144,7 +160,14 @@
 	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
-.rs-admin-field-select[disabled], .rs-admin-field-text[disabled], .rs-admin-field-text[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
+.rs-admin-field-default[disabled],
+.rs-admin-field-default[readonly],
+.rs-admin-field-select[disabled],
+.rs-admin-field-text[disabled],
+.rs-admin-field-text[readonly],
+.rs-admin-field-text[readonly],
+.rs-admin-field-textarea[disabled],
+.rs-admin-field-textarea[readonly]
 {
 	background: linear-gradient(#d4d4d4, #e2e2e2);
 	border-color: #d5d5d5;

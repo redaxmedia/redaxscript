@@ -26,7 +26,7 @@
  */
 
 /* @section 1. several form elements */
-
+/*TODO: please split the file into button.css and field.css */
 .rs-field-default,
 .rs-field-select,
 .rs-field-textarea.rs-field-small
