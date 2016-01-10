@@ -184,8 +184,8 @@ function admin_groups_form()
 	/* collect group set */
 
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'rs-js-generate-alias-input rs-admin-field-text rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-	$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-js-generate-alias-input rs-admin-field-default rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-default rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 	if ($id == '' || $id > 1)

@@ -520,14 +520,14 @@ function admin_contents_form()
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l($wording_single)) . '<ul>';
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-text rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
-		$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
-		$output .= '<li>' . form_element('url', 'url', 'rs-admin-field-text', 'url', $url, l('url'), 'maxlength="50"') . '</li>';
+		$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-default rs-field-note', 'author', $author, '* ' . l('author'), 'maxlength="50" required="required" autofocus="autofocus"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-default rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"' . $code_readonly) . '</li>';
+		$output .= '<li>' . form_element('url', 'url', 'rs-admin-field-default', 'url', $url, l('url'), 'maxlength="50"') . '</li>';
 	}
 	else
 	{
-		$output .= '<li>' . form_element('text', 'title', 'rs-js-generate-alias-input rs-admin-field-text rs-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
-		$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-text rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'title', 'rs-js-generate-alias-input rs-admin-field-default rs-field-note', 'title', $title, l('title'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+		$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-default rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	}
 	if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles')
 	{

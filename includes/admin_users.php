@@ -215,14 +215,14 @@ function admin_users_form()
 	/* collect user set */
 
 	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
-	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-text rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-default rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	if ($id == '')
 	{
-		$output .= '<li>' . form_element('text', 'user', 'rs-admin-field-text rs-field-note', 'user', $user, l('user'), 'maxlength="50" required="required"') . '</li>';
+		$output .= '<li>' . form_element('text', 'user', 'rs-admin-field-default rs-field-note', 'user', $user, l('user'), 'maxlength="50" required="required"') . '</li>';
 	}
-	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-admin-field-text rs-field-note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('password', 'password_confirm', 'rs-js-unmask-password rs-admin-field-text rs-field-note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-text rs-field-note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-admin-field-default rs-field-note', 'password', '', l('password'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('password', 'password_confirm', 'rs-js-unmask-password rs-admin-field-default rs-field-note', 'password_confirm', '', l('password_confirm'), 'maxlength="50" autocomplete="off"' . $code_required) . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-default rs-field-note', 'email', $email, l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 

@@ -38,6 +38,7 @@
 
 .rs-list-breadcrumb a
 {
+    color: #323e4c;
     opacity: 0.5;
     -webkit-transition: opacity 0.2s;
     transition: opacity 0.2s;

@@ -22,24 +22,20 @@
 
 /* @section 1. several fields */
 
-/*TODO: replace all field-text with field-default */
 .rs-admin-field-default,
 .rs-admin-field-select,
-.rs-admin-field-text,
 .rs-admin-field-textarea.rs-field-small
 {
 	width: 40%;
 }
 
-.rs-admin-dialog .rs-admin-field-default,
-.rs-admin-dialog .rs-admin-field-text
+.rs-admin-dialog .rs-admin-field-default
 {
 	width: 100%;
 }
 
 .rs-admin-field-default,
 .rs-admin-field-select,
-.rs-admin-field-text,
 .rs-admin-field-textarea
 {
 	background: linear-gradient(#e2e2e2, #f1f1f1);
@@ -56,7 +52,6 @@
 
 .rs-admin-field-default:hover,
 .rs-admin-field-select:hover,
-.rs-admin-field-text:hover,
 .rs-admin-field-textarea:hover
 {
 	border-color: #adadad;
@@ -66,7 +61,6 @@
 
 .rs-admin-field-default:focus,
 .rs-admin-field-select:focus,
-.rs-admin-field-text:focus,
 .rs-admin-field-textarea:focus
 {
 	background: linear-gradient(#f1f1f1, #e2e2e2);
@@ -93,9 +87,7 @@
 .rs-admin-field-default[disabled],
 .rs-admin-field-default[readonly],
 .rs-admin-field-select[disabled],
-.rs-admin-field-text[disabled],
-.rs-admin-field-text[readonly],
-.rs-admin-field-text[readonly],
+.rs-admin-field-select[readonly],
 .rs-admin-field-textarea[disabled],
 .rs-admin-field-textarea[readonly]
 {

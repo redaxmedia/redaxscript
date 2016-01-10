@@ -101,7 +101,7 @@ class ArticleForm implements ViewInterface
 			))
 			->text(array(
 				'autofocus' => 'autofocus',
-				'class' => 'rs-js-generate-alias-input rs-admin-field-text',
+				'class' => 'rs-js-generate-alias-input rs-admin-field-default',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required'
@@ -111,7 +111,7 @@ class ArticleForm implements ViewInterface
 				'for' => 'alias'
 			))
 			->text(array(
-				'class' => 'rs-js-generate-alias-output rs-admin-field-text',
+				'class' => 'rs-js-generate-alias-output rs-admin-field-default',
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required'
