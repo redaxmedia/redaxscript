@@ -14,7 +14,7 @@
 function admin_settings_form()
 {
 	$output = Redaxscript\Hook::trigger('adminSettingFormStart');
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('settings') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . l('settings') . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-accordion rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . 'admin/update/settings" method="post"');
 
 	/* collect general set */
@@ -175,8 +175,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', 'update', l('save'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminSettingFormEnd');
 	echo $output;

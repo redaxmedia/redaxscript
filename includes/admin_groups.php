@@ -22,11 +22,11 @@ function admin_groups_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('groups') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . l('groups') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-plus', l('group_new'), 'admin/new/groups');
+		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('group_new'), 'admin/new/groups');
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
@@ -163,7 +163,7 @@ function admin_groups_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -235,20 +235,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminGroupFormEnd');

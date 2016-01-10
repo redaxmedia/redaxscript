@@ -22,7 +22,7 @@ function admin_modules_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('modules') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . l('modules') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
 	/* collect thead and tfoot */
@@ -195,7 +195,7 @@ function admin_modules_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -272,20 +272,20 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (MODULES_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminModuleFormEnd');

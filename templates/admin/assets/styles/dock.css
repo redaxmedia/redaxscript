@@ -1,0 +1,73 @@
+/**
+ * @tableofcontents
+ *
+ * 1. link dock admin
+ *    1.1 icons
+ * 2. list control admin
+ * 3. list panel admin
+ *    3.1 icons before
+ *    3.2 icons after
+ * 4. list tab admin
+ *    4.1 javascript enabled
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. link dock admin */
+
+.rs-admin-link-dock
+{
+	float: left;
+	height: 3.125em;
+	position: relative;
+	text-indent: -999em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	transition: padding 0.4s ease;
+	width: 3em;
+}
+
+.rs-admin-link-dock:hover
+{
+	background: linear-gradient(#3db1f1, #0090db);
+	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	padding: 0 0.25em;
+}
+
+/* link delete */
+
+.rs-admin-link-dock.rs-admin-link-delete:hover
+{
+	background: linear-gradient(#d50000, #a20000);
+}
+
+/* @section 1.1 icons */
+
+.rs-admin-link-dock:before
+{
+	font: 1.25rem/2.5rem 'icon admin';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+}
+
+.rs-admin-link-dock.rs-admin-link-unpublish:before
+{
+	content: 'p';
+}
+
+.rs-admin-link-dock.rs-admin-link-edit:before
+{
+	content: 'q';
+}
+
+.rs-admin-link-dock.rs-admin-link-delete:before
+{
+	content: 'r';
+}

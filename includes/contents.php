@@ -536,7 +536,7 @@ function notification($title = '', $text = '', $action = '', $route = '')
 
 	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
 	{
-		$button = 'rs-admin-button';
+		$button = 'rs-admin-button-default';
 	}
 	else
 	{

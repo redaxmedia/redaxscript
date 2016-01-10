@@ -22,11 +22,11 @@ function admin_users_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . l('users') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . l('users') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (USERS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button rs-admin-button-plus', l('user_new'), 'admin/new/users');
+		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('user_new'), 'admin/new/users');
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
 
@@ -199,7 +199,7 @@ function admin_users_form()
 
 	/* collect output */
 
-	$output .= '<h2 class="rs-title-content rs-admin-title-content">' . $wording_headline . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . $wording_headline . '</h2>';
 	$output .= form_element('form', 'form_admin', 'rs-js-validate-form rs-js-tab rs-admin-form', '', '', '', 'action="' . REWRITE_ROUTE . $route . '" method="post"');
 
 	/* collect tab list output */
@@ -283,20 +283,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminUserFormEnd');

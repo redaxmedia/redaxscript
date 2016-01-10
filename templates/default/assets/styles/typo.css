@@ -23,13 +23,17 @@
 
 /* @section 1. tag styling */
 
-.rs-header a,
-.rs-main a
+a
 {
 	text-decoration: none;
-	color: #323e4c;
 	-webkit-transition: color 0.2s;
 	transition: color 0.2s;
+}
+
+.rs-header a,
+.rs-box-content a
+{
+	color: #323e4c;
 }
 
 .rs-body
@@ -124,6 +128,11 @@
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 	padding-left: 0.25em;
+}
+
+.rs-title-content a
+{
+	color: #323e4c;
 }
 
 .rs-title-comment,

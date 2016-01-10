@@ -16,62 +16,6 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. link dock admin */
-/*TODO: please split that file into list.css and dock.css */
-.rs-admin-link-dock
-{
-	float: left;
-	height: 3.125em;
-	position: relative;
-	text-indent: -999em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s ease;
-	width: 3em;
-}
-
-.rs-admin-link-dock:hover
-{
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-	padding: 0 0.25em;
-}
-
-/* link delete */
-
-.rs-admin-link-dock.rs-admin-link-delete:hover
-{
-	background: linear-gradient(#d50000, #a20000);
-}
-
-/* @section 1.1 icons */
-
-.rs-admin-link-dock:before
-{
-	font: 1.25rem/2.5rem 'icon admin';
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-indent: 0;
-	top: 0;
-}
-
-.rs-admin-link-dock.rs-admin-link-unpublish:before
-{
-	content: 'p';
-}
-
-.rs-admin-link-dock.rs-admin-link-edit:before
-{
-	content: 'q';
-}
-
-.rs-admin-link-dock.rs-admin-link-delete:before
-{
-	content: 'r';
-}
-
 /* @section 2. list control admin */
 
 .rs-admin-item-control
@@ -80,63 +24,6 @@
 	font-size: 1rem;
 	margin-bottom: 0.5em;
 	margin-right: 0.5em;
-}
-
-.rs-admin-list-control a, .rs-admin-list-control span
-{
-	background: linear-gradient(#ddd, #c6c6c6);
-	border: 1px solid #c6c6c6;
-	border-radius: 0.25em;
-	color: #666;
-	display: inline-block;
-	line-height: 2.25em;
-	padding: 0 0.75em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-}
-
-.rs-admin-list-control a:hover
-{
-	background: linear-gradient(#4cb4ff, #0090db);
-	border-color: #005da2;
-	color: #fff;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-}
-
-.rs-admin-list-control span
-{
-	color: #999;
-}
-
-/* @section 3. list panel admin */
-
-.rs-admin-list-panel
-{
-	font-size: 0.875rem;
-}
-
-.rs-admin-list-panel a, .rs-admin-list-panel span
-{
-	color: #b9b9b9;
-	cursor: pointer;
-	display: block;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	text-transform: uppercase;
-	transition: padding-left 0.3s ease;
-}
-
-.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
-{
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	padding-left: 1.25em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.rs-admin-list-panel-children
-{
-	display: none;
 }
 
 .rs-admin-item-panel
@@ -200,43 +87,4 @@
 .rs-admin-item-panel.rs-admin-item-active > span:after
 {
 	content: '˅';
-}
-
-/* @section 4. list tab admin */
-
-.rs-admin-list-tab li
-{
-	background: url('templates/admin/assets/images/carbon.png') #222;
-	border: 1px solid #222;
-	border-radius: 0.25em 0.25em 0 0;
-	margin-bottom: -1px;
-	margin-right: 0.25em;
-	vertical-align: bottom;
-}
-
-.rs-admin-list-tab a
-{
-	color: #ccc;
-	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
-	text-transform: uppercase;
-}
-
-.rs-admin-list-tab a:hover
-{
-	text-decoration: none;
-}
-
-/* @section 4.1 javascript enabled */
-
-.rs-js .rs-admin-list-tab .rs-item-active
-{
-	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #b9b9b9;
-	border-bottom-color: #e2e2e2;
-}
-
-.rs-js .rs-admin-list-tab .rs-item-active a
-{
-	color: #474747;
-	line-height: 2.5em;
 }
