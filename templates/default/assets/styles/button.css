@@ -1,23 +1,14 @@
 /**
  * @tableofcontents
  *
- * 1. several form elements
+ * 1. button default
  * 2. button search
- *    2.1 button default, button custom
- *    2.2 button large
- *    2.3 button misc
- *    2.4 buttons active state
- * 3. several fields
- * 4. textarea
- * 5. disabled and readonly
- * 6. forms
- *    6.1 form default
- *       6.1.1 label
- *    6.2 form search
- * 8. space between elements
- * 9. query
- *    9.1 max width 50rem
- *    9.2 min width 50rem
+ * 3. button large
+ * 4. space between elements
+ * 5. disabled
+ * 6. query
+ *    6.1 max width 50rem
+ *    6.2 min width 50rem
  *
  * @since 3.0.0
  *

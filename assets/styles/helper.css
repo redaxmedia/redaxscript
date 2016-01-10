@@ -19,11 +19,13 @@
 
 /* @section 2. clearfix */
 
+.rs-admin-clearfix,
 .rs-clearfix
 {
 	clear: both;
 }
 
+.rs-admin-clearfix:after,
 .rs-clearfix:after
 {
 	content: '';

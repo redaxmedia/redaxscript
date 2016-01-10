@@ -173,7 +173,7 @@ function admin_dock($table = '', $id = '')
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-clearfix">';
+		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-admin-clearfix">';
 		if ($edit == 1)
 		{
 			$output .= anchor_element('internal', '', 'rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
@@ -181,7 +181,7 @@ function admin_dock($table = '', $id = '')
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'rs-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
+			$output .= anchor_element('internal', '', 'rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
 		}
 		$output .= '</div></div>';
 	}

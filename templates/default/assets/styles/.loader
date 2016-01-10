@@ -33,6 +33,7 @@
 29 = templates/default/assets/styles/tooltip.css
 30 = templates/default/assets/styles/note.css
 31 = assets/styles/query.css
+99 = templates/default/assets/styles/debug.css
 
 [settings]
 deploy = inline

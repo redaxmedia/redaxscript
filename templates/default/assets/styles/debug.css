@@ -1,0 +1,37 @@
+[class*="rs-b"][class*="rs-admin-"]:before,
+[class*="rs-c"][class*="rs-admin-"]:before,
+[class*="rs-d"][class*="rs-admin-"]:before,
+[class*="rs-e"][class*="rs-admin-"]:before,
+[class*="rs-f"][class*="rs-admin-"]:before,
+[class*="rs-g"][class*="rs-admin-"]:before,
+[class*="rs-h"][class*="rs-admin-"]:before,
+[class*="rs-i"][class*="rs-admin-"]:before,
+[class*="rs-j"][class*="rs-admin-"]:before,
+[class*="rs-k"][class*="rs-admin-"]:before,
+[class*="rs-l"][class*="rs-admin-"]:before,
+[class*="rs-m"][class*="rs-admin-"]:before,
+[class*="rs-n"][class*="rs-admin-"]:before,
+[class*="rs-o"][class*="rs-admin-"]:before,
+[class*="rs-p"][class*="rs-admin-"]:before,
+[class*="rs-q"][class*="rs-admin-"]:before,
+[class*="rs-r"][class*="rs-admin-"]:before,
+[class*="rs-s"][class*="rs-admin-"]:before,
+[class*="rs-t"][class*="rs-admin-"]:before,
+[class*="rs-u"][class*="rs-admin-"]:before,
+[class*="rs-v"][class*="rs-admin-"]:before,
+[class*="rs-w"][class*="rs-admin-"]:before,
+[class*="rs-x"][class*="rs-admin-"]:before,
+[class*="rs-y"][class*="rs-admin-"]:before,
+[class*="rs-z"][class*="rs-admin-"]:before
+{
+    background: orangered;
+    color: #fff;
+    content: 'namespace collision::' attr(class);
+    display: block;
+    font: bold 0.75rem arial;
+    min-width: 25em;
+    padding: 0.25rem 0.5rem;
+    text-align: left;
+    text-transform: lowercase;
+    text-shadow: none;
+}

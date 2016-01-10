@@ -58,7 +58,7 @@
 		confirmLink:
 		{
 			init: true,
-			selector: 'a.rs-js-confirm'
+			selector: 'a.rs-admin-js-confirm, a.rs-js-confirm'
 		},
 		dialog:
 		{

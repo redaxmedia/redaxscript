@@ -1,16 +1,16 @@
 /**
  * @tableofcontents
  *
- * 1. teaser title
+ * 1. slide in down
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
+/* @section 1. slide in down */
 
-/* @section 1. teaser title */
 @-webkit-keyframes rs-slide-in-down
 {
 	from
