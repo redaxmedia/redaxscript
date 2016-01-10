@@ -44,8 +44,6 @@
 
 /* @section 2. several fields */
 
-/*TODO: don't use fixed height on field elements - textarea is never ever 2em only */
-/*JOERG: we sure need fixed height to fields, try it out*/
 .rs-field-default,
 .rs-field-select,
 .rs-field-search
