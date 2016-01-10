@@ -1,0 +1,150 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several form elements
+ * 2. button search
+ *    2.1 button default, button custom
+ *    2.2 button large
+ *    2.3 button misc
+ *    2.4 buttons active state
+ * 3. several fields
+ * 4. textarea
+ * 5. disabled and readonly
+ * 6. forms
+ *    6.1 form default
+ *       6.1.1 label
+ *    6.2 form search
+ * 8. space between elements
+ * 9. query
+ *    9.1 max width 50rem
+ *    9.2 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several form elements */
+
+.rs-field-default,
+.rs-field-select,
+.rs-field-textarea.rs-field-small
+{
+	width: 30%;
+}
+
+.rs-dialog .rs-field-default
+{
+	width: 100%;
+}
+
+.rs-field-default,
+.rs-field-search,
+.rs-field-select,
+.rs-field-textarea
+{
+	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
+	border-radius: 0.125em;
+	display: block;
+	box-sizing: border-box;
+	padding-bottom: 0.375em;
+	padding-top: 0.375em;
+}
+
+/* @section 2. several fields */
+
+/*TODO: don't use fixed height on field elements - textarea is never ever 2em only */
+/*JOERG: we sure need fixed height to fields, try it out*/
+.rs-field-default,
+.rs-field-select,
+.rs-field-search
+{
+	height: 2em;
+	padding: 0 0.5em;
+}
+
+.rs-field-default,
+.rs-field-select,
+.rs-field-textarea
+{
+	border: 2px solid #9c9c9c;
+	-webkit-transition: border 0.2s;
+	transition: border 0.2s;
+}
+
+.rs-field-default:hover,
+.rs-field-select:hover,
+.rs-field-textarea:hover
+{
+	border-color: #000;
+}
+
+.rs-field-default:focus,
+.rs-field-select:focus,
+.rs-field-textarea:focus
+{
+	border-color: #3873B5;
+}
+
+.rs-field-search
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 80%;
+}
+
+/* @section 3. textarea */
+
+.rs-field-textarea
+{
+	min-height: 10em;
+	resize: vertical;
+	width: 100%;
+	padding: 0.5em;
+}
+
+.rs-field-textarea.rs-field-small
+{
+	min-height: 5em;
+}
+
+/* @section 4. disabled and readonly */
+
+.rs-field-default[disabled],
+.rs-field-default[readonly],
+.rs-field-select[disabled],
+.rs-field-select[readonly],
+.rs-field-textarea[disabled],
+.rs-field-textarea[readonly]
+{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* @section 5. query */
+
+/* @section 5.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-field-default,
+	.rs-field-select,
+	.rs-field-textarea
+	{
+		width: 100%;
+	}
+}
+
+/* @section 5.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-field-default,
+	.rs-field-select,
+	.rs-field-textarea
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

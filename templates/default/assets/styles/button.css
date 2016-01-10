@@ -1,0 +1,147 @@
+/**
+ * @tableofcontents
+ *
+ * 1. several form elements
+ * 2. button search
+ *    2.1 button default, button custom
+ *    2.2 button large
+ *    2.3 button misc
+ *    2.4 buttons active state
+ * 3. several fields
+ * 4. textarea
+ * 5. disabled and readonly
+ * 6. forms
+ *    6.1 form default
+ *       6.1.1 label
+ *    6.2 form search
+ * 8. space between elements
+ * 9. query
+ *    9.1 max width 50rem
+ *    9.2 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button default */
+
+.rs-button-default
+{
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font: 300 1em/1.25em 'Open Sans Condensed', arial, sans-serif;
+	padding: 0.375em 2em;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.rs-button-default
+{
+	background: linear-gradient(#699b3c, #659438);
+}
+
+.rs-button-default:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(#699b3c, #659438);
+}
+
+.rs-button-default:active
+{
+	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}
+
+/* @section 2. button search */
+
+.rs-button-search
+{
+	position: relative;
+	text-indent: -999em;
+	color: #323e4c;
+	display: inline-block;
+	vertical-align: middle;
+	width: 20%;
+	height: 2em;
+	font-size: 1em;
+	background: transparent;
+	cursor: pointer;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+}
+
+.rs-button-search:hover
+{
+	color: #000;
+}
+
+.rs-button-search:after
+{
+	content: '\2315';
+	font: 1em/1.25em 'icon default';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-indent: 0;
+}
+
+/* @section 3. button large */
+
+.rs-button-large
+{
+	font-size: 1.75em;
+	padding: 0.5em 1em;
+}
+
+/* @section 4. space between elements */
+
+.rs-box-dialog-default .rs-button-default,
+.rs-box-notification .rs-button-default,
+.rs-form-default .rs-button-default
+{
+	margin-top: 1em;
+}
+
+/* @section 5. disabled */
+
+.rs-button-default[disabled]
+{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* @section 6. query */
+
+/* @section 6.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-button-default
+	{
+		width: 100%;
+	}
+}
+
+/* @section 6.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-button-default
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.rs-button-default + .rs-button-default
+	{
+		margin-left: 1em;
+	}
+}

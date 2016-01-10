@@ -17,20 +17,22 @@
 13 = assets/styles/tooltip.css
 14 = assets/styles/layout.css
 15 = templates/default/assets/styles/typo.css
-16 = templates/default/assets/styles/animate.css
-17 = templates/default/assets/styles/box.css
-18 = templates/default/assets/styles/dialog.css
-19 = templates/default/assets/styles/form.css
-20 = templates/default/assets/styles/general.css
-21 = templates/default/assets/styles/icon.css
-22 = templates/default/assets/styles/list.css
-23 = templates/default/assets/styles/media.css
-24 = templates/default/assets/styles/navigation.css
-25 = templates/default/assets/styles/table.css
-26 = templates/default/assets/styles/teaser.css
-27 = templates/default/assets/styles/tooltip.css
-28 = templates/default/assets/styles/note.css
-29 = assets/styles/query.css
+16 = templates/default/assets/styles/layout.css
+17 = templates/default/assets/styles/animate.css
+18 = templates/default/assets/styles/box.css
+19 = templates/default/assets/styles/button.css
+20 = templates/default/assets/styles/dialog.css
+21 = templates/default/assets/styles/field.css
+22 = templates/default/assets/styles/form.css
+23 = templates/default/assets/styles/icon.css
+24 = templates/default/assets/styles/list.css
+25 = templates/default/assets/styles/media.css
+26 = templates/default/assets/styles/navigation.css
+27 = templates/default/assets/styles/table.css
+28 = templates/default/assets/styles/teaser.css
+29 = templates/default/assets/styles/tooltip.css
+30 = templates/default/assets/styles/note.css
+31 = assets/styles/query.css
 
 [settings]
 deploy = inline
