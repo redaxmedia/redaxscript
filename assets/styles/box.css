@@ -34,10 +34,3 @@
 {
     word-wrap: break-word;
 }
-
-/* @section 4. box tab */
-
-.rs-box-tab
-{
-    overflow: hidden;
-}

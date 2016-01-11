@@ -1,10 +1,11 @@
 /**
  * @tableofcontents
  *
- * 1. list tab
- * 2. set tab
- * 3. query
- *    3.1 max width 50em
+ * 1. box tab
+ * 2. list tab
+ * 3. set tab
+ * 4. query
+ *    4.1 max width 50em
  *
  * @since 3.0.0
  *
@@ -12,7 +13,14 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. list tab */
+/* @section 1. box tab */
+
+.rs-box-tab
+{
+	overflow: hidden;
+}
+
+/* @section 2. list tab */
 
 .rs-list-tab li
 {
@@ -24,7 +32,7 @@
 	pointer-events: none;
 }
 
-/* @section 2. set tab */
+/* @section 3. set tab */
 
 .rs-js .rs-set-tab
 {
@@ -36,9 +44,9 @@
 	display: block;
 }
 
-/* @section 3. query */
+/* @section 4. query */
 
-/* @section 3.1 max width 50em */
+/* @section 4.1 max width 50em */
 
 @media screen and (max-width: 49.999em)
 {

@@ -36,17 +36,7 @@
 
 	/* @section 7.2.2 nav trigger - hamburger icon */
 
-	/*TODO: you override way to much here - think about mobile first (min-width) to prevent the so called lavafluss
-	 MOVE all the stuff into hamburger.css - split functionality from styling
-
-	 suggested naming, old naming is confusing - let's stick to types so everyone understands what element are affected
-
-	 rs-field-hamburger // trigger for the hamburger
-	 rs-has-hamburger // has / contains the hamburger element
-	 rs-label-hamburger // the hamburger element
-
-
-	 */
+	/*TODO: split styling from functionality, improve the naming of classes and sections */
 	.rs-label-navigation
 	{
 		color: rgba(255, 255, 255, 0.7);
@@ -64,7 +54,6 @@
 		user-select: none;
 	}
 
-	/*TODO: same here as above, you run into override issue that is causing some headache*/
 	.rs-label-navigation:after,
 	.rs-label-navigation:before
 	{
