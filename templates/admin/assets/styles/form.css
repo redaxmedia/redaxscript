@@ -1,20 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. button admin
- *    1.1 hover effect
- *    1.2 active effect
- *    1.3 icons
- * 2. several fields
- *    2.1 hover effect
- *    2.2 focus effect
- * 3. textarea
- * 4. disabled and readonly
- * 5. form admin
- *    5.1 label
- * 6. space between elements
+ * 1. form admin
+ *    1.1 label
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs

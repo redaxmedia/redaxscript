@@ -1,3 +1,16 @@
+/**
+ * @tableofcontents
+ *
+ * 1. debug
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. debug */
+
 [class*="rs-b"][class*="rs-admin-"]:before,
 [class*="rs-c"][class*="rs-admin-"]:before,
 [class*="rs-d"][class*="rs-admin-"]:before,
