@@ -15,14 +15,19 @@
 
 /* @section 1.1 form default */
 
+.rs-label-default
+{
+	display: block;
+}
+
 .rs-form-default li
 {
 	margin: 0.5em 0;
 }
 
-.rs-label-default
+.rs-form-default a
 {
-	display: block;
+	color: #323e4c;
 }
 
 .rs-form-default .rs-label-message:after

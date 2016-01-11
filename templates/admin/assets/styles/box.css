@@ -36,7 +36,6 @@
 	border-top: 1px solid #b9b9b9;
 }
 
-/* TODO: delete, when admin css is independent from default template css */
 .rs-admin-set-accordion + .rs-admin-set-accordion
 {
 	margin-top: 0;
