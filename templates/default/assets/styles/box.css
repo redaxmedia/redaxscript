@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. several boxes
- * 2. box meta
+ * 2. box metadata
  * 3. box quote
  * 4. box accordion
  * 5. box tab
@@ -36,35 +36,33 @@
 	height: 0.125em;
 }
 
-/* @section 2. box meta */
+/* @section 2. box metadata */
 
-/*TODO: what is box meta?*/
-/*JOERG: meta = stands for meta-informations (like meta-tags), but for header meta stuff like title, menu... */
-.rs-box-meta
+.rs-box-metadata
 {
 	font-size: 0.5em;
-	vertical-align: top;
 	position: relative;
+	vertical-align: top;
 }
 
-.rs-box-meta a::-moz-selection
+.rs-box-metadata a::-moz-selection
 {
 	background: #323e4c;
 	color: #fff;
 }
 
-.rs-box-meta span::selection,
-.rs-box-meta a::selection
+.rs-box-metadata a::selection,
+.rs-box-metadata span::selection
 {
-	background: #323e4c;
 	color: #fff;
+	background: #323e4c;
 }
 
 /* @section 3. box quote */
 
 .rs-box-quote
 {
-	font: italic 1.25em/1.75em 'Open Sans Condensed',arial,sans-serif;
+	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
 	margin: 1em 1em 1em 3em;
 	position: relative;
 }
@@ -78,7 +76,7 @@
 
 .rs-box-quote:before
 {
-	content: '\201D';
+	content: '\201d';
 	font: 7em/1em georgia;
 	opacity: 0.15;
 	position: absolute;
