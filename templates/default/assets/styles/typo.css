@@ -30,7 +30,6 @@ a
 	transition: color 0.2s;
 }
 
-.rs-header a,
 .rs-box-content a
 {
 	color: #323e4c;
@@ -68,7 +67,7 @@ a
 	color: #fff;
 	cursor: pointer;
 	display: block;
-	font: 300 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.375em 0.5em;
 	text-decoration: none;
 	-webkit-transition: transform 0.2s;

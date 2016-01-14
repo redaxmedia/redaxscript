@@ -20,23 +20,24 @@
 
 .rs-button-default
 {
+	background: linear-gradient(#699b3c, #659438);
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	color: #fff;
 	cursor: pointer;
 	display: block;
-	font: 300 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.375em 2em;
 	text-align: center;
 	text-decoration: none;
-	-webkit-transition: transform 0.1s, box-shadow 0.1s;
-	transition: transform 0.1s, box-shadow 0.1s;
 }
 
-.rs-button-default
+.rs-button-default,
+.rs-button-default a
 {
-	background: linear-gradient(#699b3c, #659438);
+	color: #fff;
+	-webkit-transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .rs-button-default:hover
