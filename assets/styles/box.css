@@ -15,14 +15,14 @@
 
 .rs-js .rs-box-accordion
 {
-    display: none;
+	display: none;
 }
 
 /* @section 2. box code */
 
 .rs-box-code
 {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
 }
 
 /* @section 3. several boxes */
@@ -31,5 +31,5 @@
 .rs-box-content,
 .rs-box-extra
 {
-    word-wrap: break-word;
+	word-wrap: break-word;
 }

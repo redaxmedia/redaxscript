@@ -264,6 +264,29 @@ module.exports = function (grunt)
 				]
 			}
 		},
+		sass:
+		{
+			base:
+			{
+				files:
+				{
+					'assets/styles/base.css': 'assets/styles/*.scss'
+				}
+			},
+			template:
+			{
+				files:
+				{
+					'templates/admin/assets/styles/admin.css': 'templates/admin/assets/styles/*.scss',
+					'templates/default/assets/styles/default.css': 'templates/default/assets/styles/*.scss'
+				}
+			},
+			options:
+			{
+				sourcemap: 'none',
+				style: 'compact'
+			}
+		},
 		shell:
 		{
 			phpbench:
@@ -425,23 +448,6 @@ module.exports = function (grunt)
 				]
 			}
 		},
-		smushit:
-		{
-			modules:
-			{
-				src:
-				[
-					'<%=img.modules.src%>'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'<%=img.templates.src%>'
-				]
-			}
-		},
 		svgmin:
 		{
 			modules:
@@ -523,6 +529,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
@@ -530,7 +537,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
 
 	/* register tasks */
@@ -582,7 +588,6 @@ module.exports = function (grunt)
 		'autoprefixer',
 		'toc',
 		'img',
-		'smushit',
 		'svgmin'
 	]);
 	grunt.registerTask('dist',
