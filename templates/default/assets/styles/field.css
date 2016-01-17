@@ -57,7 +57,6 @@
 .rs-field-textarea
 {
 	border: 2px solid #9c9c9c;
-	-webkit-transition: border 0.2s;
 	transition: border 0.2s;
 }
 

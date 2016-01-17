@@ -40,7 +40,6 @@
 {
 	color: #323e4c;
 	opacity: 0.5;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 
@@ -120,7 +119,6 @@
 {
 	background: rgba(50, 62, 76, 0.3);
 	padding: 0.25em 1em;
-	-webkit-transition: background 0.2s, border 0.2s;
 	transition: background 0.2s, border 0.2s;
 }
 

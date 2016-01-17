@@ -65,7 +65,7 @@
 		position: absolute;
 		right: 0;
 		outline: medium none;
-		-webkit-transition: transform 0.2s;
+		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
 	}
 
@@ -102,7 +102,7 @@
 		bottom: 0;
 		position: absolute;
 		top: 0;
-		-webkit-transition: transform 0.2s;
+		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
 		width: 75%;
 		-webkit-transform: translate3d(-100%, 0, 0);
@@ -125,7 +125,6 @@
 		position: absolute;
 		right: 100%;
 		top: 0;
-		-webkit-transition: background 0.2s;
 		transition: background 0.2s;
 		z-index: 1;
 	}
