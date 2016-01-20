@@ -111,12 +111,12 @@ class Form extends HtmlAbstract
 				'type' => 'button'
 			),
 			'reset' => array(
-				'class' => 'rs-js-reset rs-button-default',
+				'class' => 'rs-js-reset rs-button-default rs-button-reset',
 				'type' => 'reset',
 				'value' => 'reset'
 			),
 			'submit' => array(
-				'class' => 'rs-js-button rs-button-default',
+				'class' => 'rs-js-button rs-button-default rs-button-submit',
 				'type' => 'submit',
 				'value' => 'submit'
 			)
@@ -546,6 +546,34 @@ class Form extends HtmlAbstract
 	}
 
 	/**
+	 * create the input
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $type type of the input
+	 * @param array $attributeArray attributes of the input
+	 *
+	 * @return Form
+	 */
+
+	protected function _createInput($type = 'text', $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+
+			$attributeArray = array_merge($this->_attributeArray['input'][$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['input'][$type];
+		}
+		$inputElement = new Element();
+		$inputElement->init('input', $attributeArray);
+		$this->append($inputElement);
+		return $this;
+	}
+
+	/**
 	 * create the option
 	 *
 	 * @since 2.6.0
@@ -578,33 +606,5 @@ class Form extends HtmlAbstract
 			}
 		}
 		return $output;
-	}
-
-	/**
-	 * create the input
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $type type of the input
-	 * @param array $attributeArray attributes of the input
-	 *
-	 * @return Form
-	 */
-
-	protected function _createInput($type = 'text', $attributeArray = array())
-	{
-		if (is_array($attributeArray))
-		{
-
-			$attributeArray = array_merge($this->_attributeArray['input'][$type], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['input'][$type];
-		}
-		$inputElement = new Element();
-		$inputElement->init('input', $attributeArray);
-		$this->append($inputElement);
-		return $this;
 	}
 }

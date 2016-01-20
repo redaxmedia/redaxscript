@@ -54,10 +54,25 @@ class ArticleForm implements ViewInterface
 			),
 			'button' => array(
 				'submit' => array(
-					'name' => get_class()
+					'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
+					'name' => Registry::get('adminParameter')
 				)
 			)
 		));
+		$linkCancel = new Html\Element();
+		$linkCancel
+			->init('a', array(
+				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
+				'href' => 'admin/view/articles'
+			))
+			->text(Language::get('cancel'));
+		$linkDelete = new Html\Element();
+		$linkDelete
+			->init('a', array(
+				'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
+				'href' => 'admin/delete/articles/' . Registry::get('idParameter') . '/' . Registry::get('token')
+			))
+			->text(Language::get('delete'));
 
 		/* collect item output */
 
@@ -101,7 +116,7 @@ class ArticleForm implements ViewInterface
 			))
 			->text(array(
 				'autofocus' => 'autofocus',
-				'class' => 'rs-js-generate-alias-input rs-admin-field-default',
+				'class' => 'rs-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required'
@@ -111,7 +126,7 @@ class ArticleForm implements ViewInterface
 				'for' => 'alias'
 			))
 			->text(array(
-				'class' => 'rs-js-generate-alias-output rs-admin-field-default',
+				'class' => 'rs-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required'
@@ -123,7 +138,7 @@ class ArticleForm implements ViewInterface
 			->textarea(array(
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
-				'name' => 'description',
+				'name' => 'description'
 			))
 			->append('</li><li>')
 			->label(Language::get('keywords'), array(
@@ -132,16 +147,17 @@ class ArticleForm implements ViewInterface
 			->textarea(array(
 				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
 				'id' => 'keywords',
-				'name' => 'keywords',
+				'name' => 'keywords'
 			))
 			->append('</li><li>')
 			->label(Language::get('text'), array(
 				'for' => 'text'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea rs-field-note',
+				'class' => 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
+				'required' => 'required'
 			))
 			->append('</li></ul></fieldset>')
 
@@ -155,7 +171,7 @@ class ArticleForm implements ViewInterface
 				Language::get('select') => 'select'
 			), array(
 				'id' => 'language',
-				'name' => 'language',
+				'name' => 'language'
 			))
 			->append('</li><li>')
 			->label(Language::get('template'), array(
@@ -165,7 +181,7 @@ class ArticleForm implements ViewInterface
 				Language::get('select') => 'select'
 			), array(
 				'id' => 'template',
-				'name' => 'template',
+				'name' => 'template'
 			))
 			->append('</li><li>')
 			->label(Language::get('article_sibling'), array(
@@ -175,7 +191,7 @@ class ArticleForm implements ViewInterface
 				Language::get('select') => 'select'
 			), array(
 				'id' => 'sibling',
-				'name' => 'sibling',
+				'name' => 'sibling'
 			))
 			->append('</li><li>')
 			->label(Language::get('category'), array(
@@ -185,7 +201,7 @@ class ArticleForm implements ViewInterface
 				Language::get('select') => 'select'
 			), array(
 				'id' => 'category',
-				'name' => 'category',
+				'name' => 'category'
 			))
 			->append('</li></ul></fieldset>')
 
@@ -200,7 +216,7 @@ class ArticleForm implements ViewInterface
 				Language::get('disable') => 0
 			), array(
 				'id' => 'headline',
-				'name' => 'headline',
+				'name' => 'headline'
 			))
 			->append('</li><li>')
 			->label(Language::get('infoline'), array(
@@ -257,8 +273,17 @@ class ArticleForm implements ViewInterface
 				'name' => 'date'
 			))
 			->append('</li></ul></fieldset></div>')
+			->hidden(array(
+				'name' => 'author',
+				'value' => Registry::get('myUser')
+			))
 			->token()
-			->submit();
+			->append($linkCancel);
+			if (Registry::get('idParameter'))
+			{
+				$formElement->append($linkDelete);
+			}
+			$formElement->submit();
 
 		/* collect output */
 

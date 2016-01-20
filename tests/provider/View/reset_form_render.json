@@ -2,7 +2,7 @@
 	[
 		{
 			"start": "<h2 class=\"rs-title-content\">Password reset</h2><form class=\"rs-js-validate-form rs-form-default rs-form-reset\" method=\"post\"><fieldset><legend class=\"rs-legend-default\">Required fields are marked with an asterisk.</legend><li><ul><label class=\"rs-label-default\" for=\"task\">",
-			"end": "<button class=\"rs-js-button rs-button-default\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\ResetForm\">Submit</button></form>"
+			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\ResetForm\">Submit</button></form>"
 		}
 	]
 ]
