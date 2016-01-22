@@ -35,7 +35,7 @@ class Hook
 	 * @var array
 	 */
 
-	protected static $_modules = array();
+	protected static $_moduleArray = array();
 
 	/**
 	 * array of triggered events
@@ -43,7 +43,7 @@ class Hook
 	 * @var array
 	 */
 
-	protected static $_events = array();
+	protected static $_eventArray = array();
 
 	/**
 	 * constructor of the class
@@ -80,35 +80,35 @@ class Hook
 
 			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, self::$_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
-				self::$_modules[$module->alias] = $module->alias;
+				self::$_moduleArray[$module->alias] = $module->alias;
 			}
 		}
 	}
 
 	/**
-	 * get the modules array
+	 * get the module array
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 
-	public static function getModules()
+	public static function getModuleArray()
 	{
-		return self::$_modules;
+		return self::$_moduleArray;
 	}
 
 	/**
-	 * get the events array
+	 * get the event array
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 
-	public static function getEvents()
+	public static function getEventArray()
 	{
-		return self::$_events;
+		return self::$_eventArray;
 	}
 
 	/**
@@ -128,19 +128,20 @@ class Hook
 
 		/* trigger event */
 
-		foreach (self::$_modules as $module)
+		foreach (self::$_moduleArray as $module)
 		{
 			$object = self::$_namespace . $module . '\\' . $module;
+			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */
 
 			if (method_exists($object, $event))
 			{
+				self::$_eventArray[$event][$module] = true;
 				$output .= call_user_func_array(array(
 					$object,
 					$event
 				), $parameter);
-				self::$_events[$event][] = $module;
 			}
 		}
 		return $output;

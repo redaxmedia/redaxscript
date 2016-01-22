@@ -36,12 +36,12 @@ class HookTest extends TestCase
 	}
 
 	/**
-	 * testGetModules
+	 * testGetModuleArray
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testGetModules()
+	public function testGetModuleArray()
 	{
 		/* setup */
 
@@ -50,7 +50,7 @@ class HookTest extends TestCase
 
 		/* actual */
 
-		$actual = Hook::getModules();
+		$actual = Hook::getModuleArray();
 
 		/* compare */
 
@@ -58,12 +58,12 @@ class HookTest extends TestCase
 	}
 
 	/**
-	 * testGetEvents
+	 * testGetEventArray
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testGetEvents()
+	public function testGetEventArray()
 	{
 		/* setup */
 
@@ -73,7 +73,7 @@ class HookTest extends TestCase
 
 		/* actual */
 
-		$actual = Hook::getEvents();
+		$actual = Hook::getEventArray();
 
 		/* compare */
 

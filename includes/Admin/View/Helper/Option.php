@@ -17,14 +17,14 @@ use Redaxscript\Language;
 class Option
 {
 	/**
-	 * get the toggle
+	 * get the toggle array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function getToggle()
+	public static function getToggleArray()
 	{
 		$toggleArray[Language::get('enable')] = 1;
 		$toggleArray[Language::get('disable')] = 0;
@@ -32,14 +32,14 @@ class Option
 	}
 
 	/**
-	 * get the status
+	 * get the status array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function getStatus()
+	public static function getStatusArray()
 	{
 		$statusArray[Language::get('publish')] = 1;
 		$statusArray[Language::get('unpublish')] = 0;
@@ -47,23 +47,23 @@ class Option
 	}
 
 	/**
-	 * get the language
+	 * get the language array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function getLanguage()
+	public static function getLanguageArray()
 	{
-		$directory = new Directory();
-		$directory->init('languages');
-		$directoryArray = $directory->getArray();
+		$languageDirectory = new Directory();
+		$languageDirectory->init('languages');
+		$languageDirectoryArray = $languageDirectory->getArray();
 
-		/* process directory array */
+		/* process directory */
 
 		$languageArray[Language::get('select')] = null;
-		foreach ($directoryArray as $value)
+		foreach ($languageDirectoryArray as $value)
 		{
 			$value = substr($value, 0, 2);
 			$languageArray[Language::get($value, '_index')] = $value;
@@ -72,26 +72,26 @@ class Option
 	}
 
 	/**
-	 * get the template
+	 * get the template array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function getTemplate()
+	public static function getTemplateArray()
 	{
-		$directory = new Directory();
-		$directory->init('templates', array(
+		$templateDirectory = new Directory();
+		$templateDirectory->init('templates', array(
 			'admin',
 			'install'
 		));
-		$directoryArray = $directory->getArray();
+		$templateDirectoryArray = $templateDirectory->getArray();
 
-		/* process directory array */
+		/* process directory */
 
 		$templateArray[Language::get('select')] = null;
-		$templateArray = array_merge($templateArray, $directoryArray);
+		$templateArray = array_merge($templateArray, $templateDirectoryArray);
 		return $templateArray;
 	}
 }

@@ -168,7 +168,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
-			->select(Helper\Option::getLanguage(), array(
+			->select(Helper\Option::getLanguageArray(), array(
 				'id' => 'language',
 				'name' => 'language'
 			))
@@ -176,7 +176,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('template'), array(
 				'for' => 'template'
 			))
-			->select(Helper\Option::getTemplate(), array(
+			->select(Helper\Option::getTemplateArray(), array(
 				'id' => 'template',
 				'name' => 'template'
 			))
@@ -208,7 +208,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('headline'), array(
 				'for' => 'headline'
 			))
-			->select(Helper\Option::getToggle(), array(
+			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
 				'name' => 'headline'
 			))
@@ -216,7 +216,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('infoline'), array(
 				'for' => 'infoline'
 			))
-			->select(Helper\Option::getToggle(), array(
+			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'infoline',
 				'name' => 'infoline'
 			))
@@ -237,7 +237,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
-			->select(Helper\Option::getStatus(), array(
+			->select(Helper\Option::getStatusArray(), array(
 				'id' => 'status',
 				'name' => 'status'
 			))

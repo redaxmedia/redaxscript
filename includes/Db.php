@@ -265,16 +265,16 @@ class Db extends ORM
 	}
 
 	/**
-	 * find a flatten array
+	 * find a flat array
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
 	 * @return array
 	 */
 
-	public function findArrayFlat($key = 'id')
+	public function findFlatArray($key = 'id')
 	{
 		$output = array();
 		foreach ($this->findArray() as $value)
