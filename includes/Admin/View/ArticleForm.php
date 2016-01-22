@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
+use Redaxscript\Admin\View\Helper;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;
@@ -167,9 +168,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
-			->select(array(
-				Language::get('select') => 'select'
-			), array(
+			->select(Helper\Option::getLanguage(), array(
 				'id' => 'language',
 				'name' => 'language'
 			))
@@ -177,9 +176,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('template'), array(
 				'for' => 'template'
 			))
-			->select(array(
-				Language::get('select') => 'select'
-			), array(
+			->select(Helper\Option::getTemplate(), array(
 				'id' => 'template',
 				'name' => 'template'
 			))
@@ -211,10 +208,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('headline'), array(
 				'for' => 'headline'
 			))
-			->select(array(
-				Language::get('enable') => 1,
-				Language::get('disable') => 0
-			), array(
+			->select(Helper\Option::getToggle(), array(
 				'id' => 'headline',
 				'name' => 'headline'
 			))
@@ -222,10 +216,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('infoline'), array(
 				'for' => 'infoline'
 			))
-			->select(array(
-				Language::get('enable') => 1,
-				Language::get('disable') => 0
-			), array(
+			->select(Helper\Option::getToggle(), array(
 				'id' => 'infoline',
 				'name' => 'infoline'
 			))
@@ -246,10 +237,7 @@ class ArticleForm implements ViewInterface
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
-			->select(array(
-				Language::get('publish') => 1,
-				Language::get('unpublish') => 0
-			), array(
+			->select(Helper\Option::getStatus(), array(
 				'id' => 'status',
 				'name' => 'status'
 			))
