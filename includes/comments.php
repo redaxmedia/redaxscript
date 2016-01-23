@@ -248,10 +248,6 @@ function comment_form($article = '', $language = '')
 			'name' => 'language',
 			'value' => $language
 		))
-		->hidden(array(
-			'name' => 'date',
-			'value' => Redaxscript\Registry::get('now')
-		))
 		->token()
 		->submit()
 		->reset();
@@ -292,6 +288,7 @@ function comment_post()
 	$article = $r['article'] = clean($_POST['article'], 0);
 	$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
 	$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
+	$r['date'] = Redaxscript\Registry::get('now');
 	if ($r['access'] == '')
 	{
 		$r['access'] = null;

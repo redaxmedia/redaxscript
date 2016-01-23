@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Admin\View\Helper;
+use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;
@@ -31,6 +32,7 @@ class ArticleForm implements ViewInterface
 	public function render()
 	{
 		$output = Hook::trigger('adminArticleFormStart');
+		$article = Db::forTablePrefix('articles')->whereIdIs(Registry::get('idParameter'))->findOne();
 
 		/* html elements */
 
@@ -120,7 +122,8 @@ class ArticleForm implements ViewInterface
 				'class' => 'rs-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => $article->title
 			))
 			->append('</li><li>')
 			->label(Language::get('alias'), array(
@@ -130,7 +133,8 @@ class ArticleForm implements ViewInterface
 				'class' => 'rs-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => $article->alias
 			))
 			->append('</li><li>')
 			->label(Language::get('description'), array(
@@ -139,7 +143,8 @@ class ArticleForm implements ViewInterface
 			->textarea(array(
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
-				'name' => 'description'
+				'name' => 'description',
+				'value' => $article->description
 			))
 			->append('</li><li>')
 			->label(Language::get('keywords'), array(
@@ -148,7 +153,8 @@ class ArticleForm implements ViewInterface
 			->textarea(array(
 				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
 				'id' => 'keywords',
-				'name' => 'keywords'
+				'name' => 'keywords',
+				'value' => $article->keywords
 			))
 			->append('</li><li>')
 			->label(Language::get('text'), array(
@@ -158,7 +164,8 @@ class ArticleForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
-				'required' => 'required'
+				'required' => 'required',
+				'value' => $article->text
 			))
 			->append('</li></ul></fieldset>')
 
@@ -170,7 +177,8 @@ class ArticleForm implements ViewInterface
 			))
 			->select(Helper\Option::getLanguageArray(), array(
 				'id' => 'language',
-				'name' => 'language'
+				'name' => 'language',
+				'value' => $article->language
 			))
 			->append('</li><li>')
 			->label(Language::get('template'), array(
@@ -178,27 +186,26 @@ class ArticleForm implements ViewInterface
 			))
 			->select(Helper\Option::getTemplateArray(), array(
 				'id' => 'template',
-				'name' => 'template'
+				'name' => 'template',
+				'value' => $article->template
 			))
 			->append('</li><li>')
 			->label(Language::get('article_sibling'), array(
 				'for' => 'sibling'
 			))
-			->select(array(
-				Language::get('select') => 'select'
-			), array(
+			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'sibling',
-				'name' => 'sibling'
+				'name' => 'sibling',
+				'value' => $article->sibling
 			))
 			->append('</li><li>')
 			->label(Language::get('category'), array(
 				'for' => 'category'
 			))
-			->select(array(
-				Language::get('select') => 'select'
-			), array(
+			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'category',
-				'name' => 'category'
+				'name' => 'category',
+				'value' => $article->category
 			))
 			->append('</li></ul></fieldset>')
 
@@ -210,7 +217,8 @@ class ArticleForm implements ViewInterface
 			))
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
-				'name' => 'headline'
+				'name' => 'headline',
+				'value' => $article->headline
 			))
 			->append('</li><li>')
 			->label(Language::get('infoline'), array(
@@ -218,20 +226,17 @@ class ArticleForm implements ViewInterface
 			))
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'infoline',
-				'name' => 'infoline'
+				'name' => 'infoline',
+				'value' => $article->infoline
 			))
 			->append('</li><li>')
 			->label(Language::get('comments'), array(
 				'for' => 'comments'
 			))
-			->select(array(
-				Language::get('enable') => 1,
-				Language::get('freeze') => 2,
-				Language::get('restrict') => 3,
-				Language::get('disable') => 0
-			), array(
+			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'comments',
-				'name' => 'comments'
+				'name' => 'comments',
+				'value' => $article->comments
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -239,18 +244,19 @@ class ArticleForm implements ViewInterface
 			))
 			->select(Helper\Option::getStatusArray(), array(
 				'id' => 'status',
-				'name' => 'status'
+				'name' => 'status',
+				'value' => $article->status
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
 				'for' => 'access'
 			))
-			->select(array(
-				Language::get('none') => 'none'
-			), array(
+			->select(Helper\Option::getAccessArray('groups'), array(
 				'id' => 'access',
 				'name' => 'access',
-				'multiple' => 'multiple'
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getAccessArray('groups')),
+				'value' => $article->access
 			))
 			->append('</li><li>')
 			->label(Language::get('date'), array(
@@ -258,13 +264,10 @@ class ArticleForm implements ViewInterface
 			))
 			->datetime(array(
 				'id' => 'date',
-				'name' => 'date'
+				'name' => 'date',
+				'value' => $article->date
 			))
 			->append('</li></ul></fieldset></div>')
-			->hidden(array(
-				'name' => 'author',
-				'value' => Registry::get('myUser')
-			))
 			->token()
 			->append($linkCancel);
 			if (Registry::get('idParameter'))

@@ -139,6 +139,11 @@ function admin_router()
 			}
 			return;
 		case 'edit':
+			if (TABLE_PARAMETER == 'articles')
+			{
+				$articleForm = new Redaxscript\Admin\View\ArticleForm();
+				echo $articleForm->render();
+			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();

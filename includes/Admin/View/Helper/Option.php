@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View\Helper;
 
+use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Language;
 
@@ -93,5 +94,53 @@ class Option
 		$templateArray[Language::get('select')] = null;
 		$templateArray = array_merge($templateArray, $templateDirectoryArray);
 		return $templateArray;
+	}
+
+	/**
+	 * get the content array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return array
+	 */
+
+	public static function getContentArray($table = null)
+	{
+		$content = Db::forTablePrefix($table)->orderByAsc('title')->findMany();
+
+		/* process content */
+
+		$contentArray[Language::get('select')] = null;
+		foreach ($content as $value)
+		{
+			$contentArray[$value->title . ' (' . $value->id . ')'] = $value->id;
+		}
+		return $contentArray;
+	}
+
+	/**
+	 * get the access array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return array
+	 */
+
+	public static function getAccessArray($table = null)
+	{
+		$access = Db::forTablePrefix($table)->orderByAsc('name')->findMany();
+
+		/* process access */
+
+		$accessArray[Language::get('all')] = null;
+		foreach ($access as $value)
+		{
+			$accessArray[$value->name] = $value->id;
+		}
+		return $accessArray;
 	}
 }
