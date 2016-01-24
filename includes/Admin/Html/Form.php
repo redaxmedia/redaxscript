@@ -71,7 +71,7 @@ class Form extends BaseForm
 			),
 			'datetime' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-date',
-				'type' => 'datetime'
+				'type' => 'datetime-local'
 			),
 			'email' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-email',

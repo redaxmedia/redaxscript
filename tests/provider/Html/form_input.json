@@ -38,14 +38,14 @@
 	[
 		"datetime",
 		"",
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime\" /></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime-local\" /></form>"
 	],
 	[
 		"datetime",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"datetime\" /></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"datetime-local\" /></form>"
 	],
 	[
 		"email",

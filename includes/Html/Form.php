@@ -136,7 +136,7 @@ class Form extends HtmlAbstract
 			),
 			'datetime' => array(
 				'class' => 'rs-field-default rs-field-date',
-				'type' => 'datetime'
+				'type' => 'datetime-local'
 			),
 			'email' => array(
 				'class' => 'rs-field-default rs-field-email',
