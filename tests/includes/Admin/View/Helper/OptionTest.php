@@ -89,7 +89,7 @@ class OptionTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals($expect['language'], $actual);
+		$this->assertTrue(!array_diff($expect['language'], $actual));
 	}
 
 	/**
@@ -110,7 +110,7 @@ class OptionTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals($expect['template'], $actual);
+		$this->assertTrue(!array_diff($expect['template'], $actual));
 	}
 
 	/**
