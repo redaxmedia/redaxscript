@@ -92,7 +92,10 @@ class Option
 		/* process directory */
 
 		$templateArray[Language::get('select')] = null;
-		$templateArray = array_merge($templateArray, $templateDirectoryArray);
+		foreach ($templateDirectoryArray as $value)
+		{
+			$templateArray[$value] = $value;
+		}
 		return $templateArray;
 	}
 

@@ -37,14 +37,14 @@
 [class*="rs-y"][class*="rs-admin-"]:before,
 [class*="rs-z"][class*="rs-admin-"]:before
 {
-	background: orangered;
-	color: #fff;
-	content: 'namespace collision::' attr(class);
-	display: block;
-	font: bold 0.75rem arial;
-	min-width: 25em;
+	background: #333;
+	border-left: 0.5rem solid #d50000;
+	color: #666;
+	content: 'namespace collision: ' attr(class);
+	font: bold 1rem monospace;
+	margin-top: -0.5rem;
 	padding: 0.25rem 0.5rem;
-	text-align: left;
-	text-transform: lowercase;
+	position: absolute;
 	text-shadow: none;
+	text-transform: lowercase;
 }

@@ -1,0 +1,68 @@
+[
+	[
+		{
+			"toggle":
+			{
+				"Enable": 1,
+				"Disable": 0
+			},
+			"status":
+			{
+				"Publish": 1,
+				"Unpublish": 0
+			},
+			"language":
+			{
+				"Select": null,
+				"العربية": "ar",
+				"Български": "bg",
+				"Bosanski": "bs",
+				"Català": "ca",
+				"Čeština": "cs",
+				"Deutsch": "de",
+				"ελληνικά": "el",
+				"English": "en",
+				"Español": "es",
+				"Eesti": "et",
+				"فارسی": "fa",
+				"Français": "fr",
+				"ქართული": "ge",
+				"עברית": "he",
+				"Magyar": "hu",
+				"Bahasa Indonesia": "id",
+				"Italiano": "it",
+				"日本語": "ja",
+				"Latviešu": "lv",
+				"Bahasa Melayu": "ms",
+				"Nederlands": "nl",
+				"Norsk": "no",
+				"Polski": "pl",
+				"Português": "pt",
+				"Română": "ro",
+				"Русский": "ru",
+				"Slovenčina": "sk",
+				"Cрпски": "sr",
+				"Svenska": "sv",
+				"Türkçe": "tr",
+				"Tiếng Việt": "vi",
+				"中文": "zh"
+			},
+			"template":
+			{
+				"Select": null,
+				"default": "default"
+			},
+			"content":
+			{
+				"Select": null,
+				"Welcome (1)": 1
+			},
+			"access":
+			{
+				"All": null,
+				"Administrators": 1,
+				"Members": 2
+			}
+		}
+	]
+]
