@@ -5,7 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Tests\TestCase;
 
 /**
- * ArticleFormTest
+ * CategoryFormTest
  *
  * @since 3.0.0
  *
@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCase;
  * @author Henry Ruhs
  */
 
-class ArticleFormTest extends TestCase
+class CategoryFormTest extends TestCase
 {
 	/**
 	 * providerRender
@@ -26,7 +26,7 @@ class ArticleFormTest extends TestCase
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/Admin/View/article_form_render.json');
+		return $this->getProvider('tests/provider/Admin/View/category_form_render.json');
 	}
 
 	/**
@@ -43,11 +43,11 @@ class ArticleFormTest extends TestCase
 	{
 		/* setup */
 
-		$articleForm = new Admin\View\ArticleForm();
+		$categoryForm = new Admin\View\CategoryForm();
 
 		/* actual */
 
-		$actual = $articleForm->render(1);
+		$actual = $categoryForm->render(1);
 
 		/* compare */
 

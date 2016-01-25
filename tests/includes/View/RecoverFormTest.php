@@ -66,11 +66,11 @@ class RecoverFormTest extends TestCase
 	{
 		/* setup */
 
-		$recover = new View\RecoverForm();
+		$recoverForm = new View\RecoverForm();
 
 		/* actual */
 
-		$actual = $recover->render();
+		$actual = $recoverForm->render();
 
 		/* compare */
 

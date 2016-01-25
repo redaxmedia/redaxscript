@@ -10,7 +10,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to generate the article form
+ * children class to generate the category form
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class ArticleForm implements ViewInterface
+class CategoryForm implements ViewInterface
 {
 	/**
 	 * stringify the view
@@ -39,15 +39,15 @@ class ArticleForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $articleId identifer of the article
+	 * @param integer $categoryId identifer of the category
 	 *
 	 * @return string
 	 */
 
-	public function render($articleId = null)
+	public function render($categoryId = null)
 	{
-		$output = Hook::trigger('adminArticleFormStart');
-		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
+		$output = Hook::trigger('adminCategoryFormStart');
+		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
 
 		/* html elements */
 
@@ -55,7 +55,7 @@ class ArticleForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($article->title ? $article->title : Language::get('article_new'));
+		$titleElement->text($category->title ? $category->title : Language::get('category_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -81,14 +81,14 @@ class ArticleForm implements ViewInterface
 		$linkCancel
 			->init('a', array(
 				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/articles'
+				'href' => 'admin/view/categories'
 			))
 			->text(Language::get('cancel'));
 		$linkDelete = new Html\Element();
 		$linkDelete
 			->init('a', array(
 				'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-				'href' => 'admin/delete/articles/' . $article->id . '/' . Registry::get('token')
+				'href' => 'admin/delete/categories/' . $category->id . '/' . Registry::get('token')
 			))
 			->text(Language::get('delete'));
 
@@ -100,7 +100,7 @@ class ArticleForm implements ViewInterface
 			->html($linkElement
 				->copy()
 				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-1')
-				->text(Language::get('article'))
+				->text(Language::get('category'))
 			);
 		$outputItem .= $itemElement
 			->copy()
@@ -138,7 +138,7 @@ class ArticleForm implements ViewInterface
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required',
-				'value' => $article->title
+				'value' => $category->title
 			))
 			->append('</li><li>')
 			->label(Language::get('alias'), array(
@@ -149,7 +149,7 @@ class ArticleForm implements ViewInterface
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required',
-				'value' => $article->alias
+				'value' => $category->alias
 			))
 			->append('</li><li>')
 			->label(Language::get('description'), array(
@@ -159,7 +159,7 @@ class ArticleForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
 				'name' => 'description',
-				'value' => $article->description
+				'value' => $category->description
 			))
 			->append('</li><li>')
 			->label(Language::get('keywords'), array(
@@ -169,18 +169,7 @@ class ArticleForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
-				'value' => $article->keywords
-			))
-			->append('</li><li>')
-			->label(Language::get('text'), array(
-				'for' => 'text'
-			))
-			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-js-generate-keyword-input rs-js-editor-textarea rs-admin-field-textarea',
-				'id' => 'text',
-				'name' => 'text',
-				'required' => 'required',
-				'value' => $article->text
+				'value' => $category->keywords
 			))
 			->append('</li></ul></fieldset>')
 
@@ -193,7 +182,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getLanguageArray(), array(
 				'id' => 'language',
 				'name' => 'language',
-				'value' => $article->language
+				'value' => $category->language
 			))
 			->append('</li><li>')
 			->label(Language::get('template'), array(
@@ -202,16 +191,16 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getTemplateArray(), array(
 				'id' => 'template',
 				'name' => 'template',
-				'value' => $article->template
+				'value' => $category->template
 			))
 			->append('</li><li>')
-			->label(Language::get('article_sibling'), array(
+			->label(Language::get('category_sibling'), array(
 				'for' => 'sibling'
 			))
-			->select(Helper\Option::getContentArray('articles'), array(
+			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'sibling',
 				'name' => 'sibling',
-				'value' => $article->sibling
+				'value' => $category->sibling
 			))
 			->append('</li><li>')
 			->label(Language::get('category'), array(
@@ -220,47 +209,20 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'category',
 				'name' => 'category',
-				'value' => $article->category
+				'value' => $category->category
 			))
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->label(Language::get('headline'), array(
-				'for' => 'headline'
-			))
-			->select(Helper\Option::getToggleArray(), array(
-				'id' => 'headline',
-				'name' => 'headline',
-				'value' => $article->headline
-			))
-			->append('</li><li>')
-			->label(Language::get('infoline'), array(
-				'for' => 'infoline'
-			))
-			->select(Helper\Option::getToggleArray(), array(
-				'id' => 'infoline',
-				'name' => 'infoline',
-				'value' => $article->infoline
-			))
-			->append('</li><li>')
-			->label(Language::get('comments'), array(
-				'for' => 'comments'
-			))
-			->select(Helper\Option::getToggleArray(), array(
-				'id' => 'comments',
-				'name' => 'comments',
-				'value' => $article->comments
-			))
-			->append('</li><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getStatusArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $article->status
+				'value' => $category->status
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -271,21 +233,12 @@ class ArticleForm implements ViewInterface
 				'name' => 'access',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $article->access
-			))
-			->append('</li><li>')
-			->label(Language::get('date'), array(
-				'for' => 'date'
-			))
-			->datetime(array(
-				'id' => 'date',
-				'name' => 'date',
-				'value' => $article->date
+				'value' => $category->access
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);
-			if ($article->id)
+			if ($category->id)
 			{
 				$formElement->append($linkDelete);
 			}
@@ -294,7 +247,7 @@ class ArticleForm implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminArticleFormEnd');
+		$output .= Hook::trigger('adminCategoryFormEnd');
 		return $output;
 	}
 }

@@ -55,6 +55,19 @@ class Element extends HtmlAbstract
 	protected $_attributeArray = array();
 
 	/**
+	 * stringify the element
+	 *
+	 * @since 2.2.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.2.0
@@ -76,19 +89,6 @@ class Element extends HtmlAbstract
 			$this->attr($attributeArray);
 		}
 		return $this;
-	}
-
-	/**
-	 * stringify the element
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString()
-	{
-		return $this->render();
 	}
 
 	/**

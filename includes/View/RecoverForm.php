@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the recover form
+ * children class to generate the recover form
  *
  * @since 3.0.0
  *
@@ -19,6 +19,19 @@ use Redaxscript\Registry;
 
 class RecoverForm implements ViewInterface
 {
+	/**
+	 * stringify the view
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
 	/**
 	 * render the view
 	 *

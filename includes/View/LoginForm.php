@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the login form
+ * children class to generate the login form
  *
  * @since 3.0.0
  *
@@ -20,6 +20,19 @@ use Redaxscript\Registry;
 class LoginForm implements ViewInterface
 {
 	/**
+	 * stringify the view
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
 	 * render the view
 	 *
 	 * @since 3.0.0
@@ -29,7 +42,7 @@ class LoginForm implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('loginStart');
+		$output = Hook::trigger('loginFormStart');
 
 		/* html elements */
 
@@ -106,7 +119,7 @@ class LoginForm implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('loginEnd');
+		$output .= Hook::trigger('loginFormEnd');
 		return $output;
 	}
 }

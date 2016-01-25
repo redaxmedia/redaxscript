@@ -43,11 +43,11 @@ class ResetFormTest extends TestCase
 	{
 		/* setup */
 
-		$reset = new View\ResetForm();
+		$resetForm = new View\ResetForm();
 
 		/* actual */
 
-		$actual = $reset->render();
+		$actual = $resetForm->render();
 
 		/* compare */
 

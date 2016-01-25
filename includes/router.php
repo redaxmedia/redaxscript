@@ -71,22 +71,22 @@ function router()
 			case 'recover':
 				if (s('recovery') == 1)
 				{
-					$recover = new Redaxscript\View\RecoverForm();
-					echo $recover->render();
+					$recoverForm = new Redaxscript\View\RecoverForm();
+					echo $recoverForm;
 					return;
 				}
 			case 'reset':
 				if (s('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
 				{
-					$reset = new Redaxscript\View\ResetForm();
-					echo $reset->render();
+					$resetForm = new Redaxscript\View\ResetForm();
+					echo $resetForm;
 					return;
 				}
 				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
 				return;
 			default:
-				$login = new Redaxscript\View\LoginForm();
-				echo $login->render();
+				$loginForm = new Redaxscript\View\LoginForm();
+				echo $loginForm;
 				return;
 			}
 		case 'logout':
@@ -100,8 +100,8 @@ function router()
 		case 'register':
 			if (s('registration'))
 			{
-				$register = new Redaxscript\View\RegisterForm();
-				echo $register->render();
+				$registerForm = new Redaxscript\View\RegisterForm();
+				echo $registerForm;
 				return;
 			}
 			notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
