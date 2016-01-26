@@ -114,10 +114,15 @@ function admin_router()
 	switch (ADMIN_PARAMETER)
 	{
 		case 'new':
+			if (TABLE_PARAMETER == 'categories')
+			{
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
+				echo $categoryForm;
+			}
 			if (TABLE_PARAMETER == 'articles')
 			{
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
-				echo $articleForm->render();
+				echo $articleForm;
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
@@ -139,6 +144,16 @@ function admin_router()
 			}
 			return;
 		case 'edit':
+			if (TABLE_PARAMETER == 'categories')
+			{
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
+				echo $categoryForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'articles')
+			{
+				$articleForm = new Redaxscript\Admin\View\ArticleForm();
+				echo $articleForm->render(ID_PARAMETER);
+			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();

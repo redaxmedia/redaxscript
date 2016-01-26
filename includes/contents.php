@@ -36,7 +36,7 @@ function contents()
 		$sibling_array = Redaxscript\Db::forTablePrefix(LAST_TABLE)->whereIn('sibling', array(
 			LAST_ID,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -297,7 +297,7 @@ function extras($filter = '')
 		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling', array(
 			$id,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -310,7 +310,7 @@ function extras($filter = '')
 	}
 	else
 	{
-		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findArrayFlat();
+		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findFlatArray();
 	}
 
 	/* query result */

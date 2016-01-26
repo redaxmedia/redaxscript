@@ -15,35 +15,35 @@
 
 .rs-title-teaser
 {
-    -webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
-    animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
-    background: rgba(50, 62, 77, 0.8);
-    border-left: 0.25em solid #c77a46;
-    border-radius: 0 0.125em 0.125em 0;
-    color: #fff;
-    display: inline-block;
-    font-size: 1.5em;
-    font-weight: 300;
-    line-height: 1.25em;
-    padding: 0.375em 0.75em;
-    position: relative;
-    opacity: 0;
-    top: -5em;
+	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	background: rgba(50, 62, 77, 0.8);
+	border-left: 0.25em solid #c77a46;
+	border-radius: 0 0.125em 0.125em 0;
+	color: #fff;
+	display: inline-block;
+	font-size: 1.5em;
+	font-weight: 300;
+	line-height: 1.25em;
+	padding: 0.375em 0.75em;
+	position: relative;
+	opacity: 0;
+	top: -5em;
 }
 
 .rs-title-teaser::-moz-selection
 {
-    background: #c77a46;
+	background: #c77a46;
 }
 
 .rs-title-teaser::selection
 {
-    background: #c77a46;
+	background: #c77a46;
 }
 
 .rs-title-teaser strong
 {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 /* @section 2. query */
@@ -52,14 +52,14 @@
 
 @media screen and (min-width: 50rem)
 {
-    .rs-title-teaser
-    {
-        font-size: 3em;
-    }
+	.rs-title-teaser
+	{
+		font-size: 3em;
+	}
 
-    .rs-title-teaser .rs-is-break:after
-    {
-        content: '';
-        display: block;
-    }
+	.rs-title-teaser .rs-is-break:after
+	{
+		content: '';
+		display: block;
+	}
 }

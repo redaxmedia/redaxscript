@@ -369,7 +369,7 @@ class Parser
 		$namespace = 'Redaxscript\Modules\\';
 		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $content);
 		$parts = array_filter(explode($this->_options['delimiter'], $output));
-		$modulesLoaded = Hook::getModules();
+		$modulesLoaded = Hook::getModuleArray();
 
 		/* parse as needed */
 

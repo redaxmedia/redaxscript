@@ -45,7 +45,7 @@ class RecentView extends Config
 	{
 		$output = null;
 		$counter = 0;
-		$log = self::_log();
+		$recentData = self::_recentData();
 
 		/* html elements */
 
@@ -56,9 +56,9 @@ class RecentView extends Config
 			'class' => self::$_config['className']['list']
 		));
 
-		/* process log */
+		/* process recent data */
 
-		foreach ($log as $value)
+		foreach ($recentData as $value)
 		{
 			/* break if limit reached */
 
@@ -84,14 +84,14 @@ class RecentView extends Config
 	}
 
 	/**
-	 * log
+	 * recentData
 	 *
 	 * @since 2.2.0
 	 *
 	 * @return array
 	 */
 
-	protected static function _log()
+	protected static function _recentData()
 	{
 		$root = Registry::get('root');
 		$fullRoute = Registry::get('fullRoute');

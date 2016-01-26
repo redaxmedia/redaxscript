@@ -414,11 +414,11 @@ function admin_process()
 			if (TABLE_PARAMETER == 'categories')
 			{
 				$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
-				$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+				$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
 					ID_PARAMETER
 				));
 				$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
-				$articleArray = $articleChildren->findArrayFlat();
+				$articleArray = $articleChildren->findFlatArray();
 				if (count($articleArray) > 0)
 				{
 					Redaxscript\Db::forTablePrefix('comments')
@@ -625,11 +625,11 @@ function admin_status($input = '')
 	if (TABLE_PARAMETER == 'categories')
 	{
 		$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
-		$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+		$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
 			ID_PARAMETER
 		));
 		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
-		$articleArray = $articleChildren->findArrayFlat();
+		$articleArray = $articleChildren->findFlatArray();
 		if (count($articleArray) > 0)
 		{
 			Redaxscript\Db::forTablePrefix('comments')
@@ -717,11 +717,11 @@ function admin_delete()
 	if (TABLE_PARAMETER == 'categories')
 	{
 		$categoryChildren = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('parent', ID_PARAMETER);
-		$categoryArray = array_merge($categoryChildren->findArrayFlat(), array(
+		$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
 			ID_PARAMETER
 		));
 		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
-		$articleArray = $articleChildren->findArrayFlat();
+		$articleArray = $articleChildren->findFlatArray();
 		if (count($articleArray) > 0)
 		{
 			Redaxscript\Db::forTablePrefix('comments')

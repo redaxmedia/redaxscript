@@ -228,20 +228,20 @@ class DbTest extends TestCase
 	}
 
 	/**
-	 * testFindArrayFlat
+	 * testFindFlatArray
 	 *
 	 * @since 2.4.0
 	 *
 	 */
 
-	public function testFindArrayFlat()
+	public function testFindFlatArray()
 	{
 		/* expect and actual */
 
 		$expect = array(
 			1
 		);
-		$actual = Db::forTablePrefix('articles')->findArrayFlat();
+		$actual = Db::forTablePrefix('articles')->findFlatArray();
 
 		/* compare */
 

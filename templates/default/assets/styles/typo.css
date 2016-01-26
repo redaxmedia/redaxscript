@@ -26,7 +26,6 @@
 a
 {
 	text-decoration: none;
-	-webkit-transition: color 0.2s;
 	transition: color 0.2s;
 }
 
@@ -52,7 +51,6 @@ a
 {
 	background: rgba(0, 0, 0, 0.1);
 	box-shadow: -0.125em 0 rgba(0, 0, 0, 0.1), 0.125em 0 rgba(0, 0, 0, 0.1);
-	-webkit-transition: background 0.2s, box-shadow 0.2s;
 	transition: background 0.2s, box-shadow 0.2s;
 }
 
@@ -70,7 +68,7 @@ a
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.375em 0.5em;
 	text-decoration: none;
-	-webkit-transition: transform 0.2s;
+	transition: -webkit-transform 0.2s;
 	transition: transform 0.2s;
 }
 
@@ -159,7 +157,6 @@ a
 	opacity: 0.8;
 	text-decoration: none;
 	white-space: nowrap;
-	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }
 

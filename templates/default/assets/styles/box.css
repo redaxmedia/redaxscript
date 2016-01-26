@@ -45,7 +45,8 @@
 	vertical-align: top;
 }
 
-.rs-box-metadata a::-moz-selection
+.rs-box-metadata a::-moz-selection,
+.rs-box-metadata span::-moz-selection
 {
 	background: #323e4c;
 	color: #fff;
@@ -54,8 +55,8 @@
 .rs-box-metadata a::selection,
 .rs-box-metadata span::selection
 {
-	color: #fff;
 	background: #323e4c;
+	color: #fff;
 }
 
 /* @section 3. box quote */

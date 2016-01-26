@@ -1,0 +1,38 @@
+[
+	[
+		{
+			"toggle":
+			{
+				"Enable": 1,
+				"Disable": 0
+			},
+			"status":
+			{
+				"Publish": 1,
+				"Unpublish": 0
+			},
+			"language":
+			{
+				"Select": null,
+				"English": "en",
+				"Deutsch": "de"
+			},
+			"template":
+			{
+				"Select": null,
+				"default": "default"
+			},
+			"content":
+			{
+				"Select": null,
+				"Welcome (1)": 1
+			},
+			"access":
+			{
+				"All": null,
+				"Administrators": 1,
+				"Members": 2
+			}
+		}
+	]
+]

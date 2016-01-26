@@ -21,6 +21,7 @@
 .rs-dialog-default,
 .rs-dialog-overlay-default
 {
+	-webkit-animation: rs-fade 0.4s;
 	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }

@@ -121,7 +121,7 @@ class Gallery extends Config
 
 				/* image data */
 
-				$imageData = self::_getImageData($imagePath);
+				$imageData = self::_imageData($imagePath);
 
 				/* collect item output */
 
@@ -154,7 +154,7 @@ class Gallery extends Config
 	}
 
 	/**
-	 * getImageData
+	 * imageData
 	 *
 	 * @since 2.6.0
 	 *
@@ -163,7 +163,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _getImageData($file = null)
+	protected static function _imageData($file = null)
 	{
 		$output = array();
 		if (function_exists('exif_read_data'))
@@ -212,6 +212,7 @@ class Gallery extends Config
 		{
 			case 'gif':
 				$image = imagecreatefromgif($imagePath);
+				break;
 			case 'jpg':
 				$image = imagecreatefromjpeg($imagePath);
 				break;

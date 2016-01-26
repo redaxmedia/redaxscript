@@ -257,11 +257,26 @@ module.exports = function (grunt)
 					'last 2 Android versions',
 					'last 2 iOS versions',
 					'last 2 Chrome versions',
-					'last 3 Explorer versions',
+					'last 2 Explorer versions',
 					'last 2 Firefox versions',
 					'last 2 Opera versions',
 					'last 2 Safari versions'
 				]
+			}
+		},
+		sass:
+		{
+			template:
+			{
+				files:
+				{
+					'templates/admin/assets/styles/admin.css': 'templates/admin/assets/styles/*.scss',
+					'templates/default/assets/styles/default.css': 'templates/default/assets/styles/*.scss'
+				}
+			},
+			options:
+			{
+				outputStyle: 'compact'
 			}
 		},
 		shell:
@@ -425,23 +440,6 @@ module.exports = function (grunt)
 				]
 			}
 		},
-		smushit:
-		{
-			modules:
-			{
-				src:
-				[
-					'<%=img.modules.src%>'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'<%=img.templates.src%>'
-				]
-			}
-		},
 		svgmin:
 		{
 			modules:
@@ -529,8 +527,8 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
 
 	/* register tasks */
@@ -582,7 +580,6 @@ module.exports = function (grunt)
 		'autoprefixer',
 		'toc',
 		'img',
-		'smushit',
 		'svgmin'
 	]);
 	grunt.registerTask('dist',

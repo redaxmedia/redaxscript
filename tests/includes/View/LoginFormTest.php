@@ -66,11 +66,11 @@ class LoginFormTest extends TestCase
 	{
 		/* setup */
 
-		$login = new View\LoginForm();
+		$loginForm = new View\LoginForm();
 
 		/* actual */
 
-		$actual = $login->render();
+		$actual = $loginForm->render();
 
 		/* compare */
 

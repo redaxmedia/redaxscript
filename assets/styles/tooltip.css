@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. tooltip
- * 2. trident tooltip
+ * 2. fallback
  * 3. query
  *    3.1 max width 50em
  *
@@ -16,44 +16,41 @@
 
 .rs-tooltip
 {
-    cursor: help;
-    position: relative;
+	cursor: help;
+	position: relative;
 }
 
 .rs-tooltip.rs-link-default
 {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .rs-tooltip:after
 {
-    content: attr(data-tooltip);
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    z-index: 500;
+	content: attr(data-tooltip);
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: 500;
 }
 
 .rs-tooltip:focus:after,
 .rs-tooltip:hover:after
 {
-    opacity: 1;
+	opacity: 1;
 }
 
-/* @section 2. trident tooltip */
+/* @section 2. fallback */
 
-.rs-msie9 .rs-tooltip:after,
 .rs-msie10 .rs-tooltip:after
 {
-    display: none;
+	display: none;
 }
 
-.rs-msie9 .rs-tooltip:focus:after,
-.rs-msie9 .rs-tooltip:hover:after,
 .rs-msie10 .rs-tooltip:focus:after,
 .rs-msie10 .rs-tooltip:hover:after
 {
-    display: inline-block;
+	display: inline-block;
 }
 
 /* @section 3. query */
@@ -62,11 +59,11 @@
 
 @media screen and (max-width: 49.999em)
 {
-    .rs-tooltip:after
-    {
-        left: 1em;
-        position: fixed;
-        right: 1em;
-        top: 1em;
-    }
+	.rs-tooltip:after
+	{
+		left: 1em;
+		position: fixed;
+		right: 1em;
+		top: 1em;
+	}
 }

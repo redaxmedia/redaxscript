@@ -46,12 +46,12 @@ class Form extends BaseForm
 				'type' => 'button'
 			),
 			'reset' => array(
-				'class' => 'rs-js-reset rs-admin-button-default',
+				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset',
 				'type' => 'reset',
 				'value' => 'reset'
 			),
 			'submit' => array(
-				'class' => 'rs-js-button rs-admin-button-default',
+				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit',
 				'type' => 'submit',
 				'value' => 'submit'
 			)
@@ -71,7 +71,7 @@ class Form extends BaseForm
 			),
 			'datetime' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-date',
-				'type' => 'datetime'
+				'type' => 'datetime-local'
 			),
 			'email' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-email',

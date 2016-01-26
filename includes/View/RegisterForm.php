@@ -8,7 +8,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to render the register form
+ * children class to generate the register form
  *
  * @since 3.0.0
  *
@@ -19,6 +19,19 @@ use Redaxscript\Registry;
 
 class RegisterForm implements ViewInterface
 {
+	/**
+	 * stringify the view
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
 	/**
 	 * render the view
 	 *
