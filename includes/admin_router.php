@@ -124,6 +124,11 @@ function admin_router()
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
 				echo $articleForm;
 			}
+			if (TABLE_PARAMETER == 'extras')
+			{
+				$extraForm = new Redaxscript\Admin\View\extraForm();
+				echo $extraForm;
+			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();
@@ -153,6 +158,11 @@ function admin_router()
 			{
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
 				echo $articleForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'extras')
+			{
+				$extraForm = new Redaxscript\Admin\View\ExtraForm();
+				echo $extraForm->render(ID_PARAMETER);
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
