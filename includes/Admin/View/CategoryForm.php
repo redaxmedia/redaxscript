@@ -235,6 +235,15 @@ class CategoryForm implements ViewInterface
 				'size' => count(Helper\Option::getAccessArray('groups')),
 				'value' => $category->access
 			))
+			->append('</li><li>')
+			->label(Language::get('date'), array(
+				'for' => 'date'
+			))
+			->datetime(array(
+				'id' => 'date',
+				'name' => 'date',
+				'value' => $category->date ? $category->date : Registry::get('now')
+			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);

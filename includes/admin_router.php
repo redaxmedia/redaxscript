@@ -126,8 +126,13 @@ function admin_router()
 			}
 			if (TABLE_PARAMETER == 'extras')
 			{
-				$extraForm = new Redaxscript\Admin\View\extraForm();
+				$extraForm = new Redaxscript\Admin\View\ExtraForm();
 				echo $extraForm;
+			}
+			if (TABLE_PARAMETER == 'comments')
+			{
+				$commentForm = new Redaxscript\Admin\View\CommentForm();
+				echo $commentForm;
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
@@ -163,6 +168,11 @@ function admin_router()
 			{
 				$extraForm = new Redaxscript\Admin\View\ExtraForm();
 				echo $extraForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'comments')
+			{
+				$commentForm = new Redaxscript\Admin\View\CommentForm();
+				echo $commentForm->render(ID_PARAMETER);
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{

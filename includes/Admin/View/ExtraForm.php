@@ -242,7 +242,7 @@ class ExtraForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $extra->date
+				'value' => $extra->date ? $extra->date : Registry::get('now')
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
