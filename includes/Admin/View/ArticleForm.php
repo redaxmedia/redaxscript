@@ -280,7 +280,7 @@ class ArticleForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $article->date ? $article->date : Registry::get('now')
+				'value' => $article->date
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

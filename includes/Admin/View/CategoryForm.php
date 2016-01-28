@@ -242,7 +242,7 @@ class CategoryForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $category->date ? $category->date : Registry::get('now')
+				'value' => $category->date
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

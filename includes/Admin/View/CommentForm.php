@@ -222,7 +222,7 @@ class CommentForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $comment->date ? $comment->date : Registry::get('now')
+				'value' => $comment->date
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
