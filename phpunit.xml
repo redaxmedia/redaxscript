@@ -208,5 +208,11 @@
 		<testsuite name="template">
 			<file>tests/includes/TemplateTest.php</file>
 		</testsuite>
+
+		<!-- messenger -->
+
+		<testsuite name="messenger">
+			<file>tests/includes/MessengerTest.php</file>
+		</testsuite>
 	</testsuites>
 </phpunit>
