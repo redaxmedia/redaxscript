@@ -84,38 +84,40 @@ class ArticleForm implements ViewInterface
 				'href' => 'admin/view/articles'
 			))
 			->text(Language::get('cancel'));
-		$linkDelete = new Html\Element();
-		$linkDelete
-			->init('a', array(
-				'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-				'href' => 'admin/delete/articles/' . $article->id . '/' . Registry::get('token')
-			))
-			->text(Language::get('delete'));
+		if ($article->id)
+		{
+			$linkDelete = new Html\Element();
+			$linkDelete
+				->init('a', array(
+					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
+					'href' => 'admin/delete/articles/' . $article->id . '/' . Registry::get('token')
+				))
+				->text(Language::get('delete'));
+		}
 
 		/* collect item output */
 
+		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-js-item-active rs-item-first rs-item-active')
+			->addClass('rs-js-item-active rs-item-active')
 			->html($linkElement
 				->copy()
-				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-1')
+				->attr('href', $tabRoute . '#tab-1')
 				->text(Language::get('article'))
 			);
 		$outputItem .= $itemElement
 			->copy()
-			->addClass('rs-item-second')
 			->html($linkElement
 				->copy()
-				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-2')
+				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('general'))
 		);
 		$outputItem .= $itemElement
 			->copy()
-			->addClass('rs-item-last')
 			->html($linkElement
 				->copy()
-				->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#tab-3')
+				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
 		);
 		$listElement->append($outputItem);
@@ -280,7 +282,7 @@ class ArticleForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $article->date
+				'value' => date('Y-m-d\TH:i:s', strtotime($article->date))
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
@@ -289,7 +291,7 @@ class ArticleForm implements ViewInterface
 			{
 				$formElement->append($linkDelete);
 			}
-			$formElement->submit();
+			$formElement->submit(Language::get('save'));
 
 		/* collect output */
 

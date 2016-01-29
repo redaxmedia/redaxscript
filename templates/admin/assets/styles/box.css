@@ -106,7 +106,9 @@
 
 /* @section 5. space between elements */
 
-.rs-admin-form .rs-admin-box-note
+/* TODO: remove outdated styles */
+.rs-admin-form .rs-admin-box-note,
+.rs-admin-form-default .rs-admin-box-note
 {
 	margin-top: 1em;
 }
