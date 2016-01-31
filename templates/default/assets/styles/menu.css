@@ -1,0 +1,63 @@
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. query
+ *    2.1 max width 50rem
+ *       7.2.1 list header
+ *       7.2.2 nav trigger - hamburger icon
+ *       7.2.3 nav trigger - close icon
+ *       7.2.4 navigation
+ *       7.2.5 navigation dark layer
+ *    7.3 min width 50rem
+ *       7.3.2 nav trigger - hamburger icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+
+/* @section 1.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+
+	/* @section 1.1.1 navigation trigger */
+
+	.rs-label-navigation
+	{
+		color: rgba(255, 255, 255, 0.7);
+		float: right;
+		font: 1rem arial;
+		margin-top: 0.25em;
+		padding-top: 1.5em;
+		vertical-align: top;
+	}
+
+	.rs-label-navigation:after,
+	.rs-label-navigation:before
+	{
+		background: #3873b5;
+	}
+
+	.rs-label-navigation:after
+	{
+		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+	}
+
+	/* @section 1.1.2 navigation */
+
+	.rs-fn-navigation
+	{
+		width: 75%;
+	}
+
+	/* @section 1.1.3 navigation layer */
+
+	.rs-fn-label-navigation:checked ~ .rs-has-navigation:after {
+		background: rgba(0, 0, 0, 0.8);
+	}
+}
