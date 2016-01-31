@@ -112,6 +112,11 @@ ul.rs-list-default li:before {
 	margin-left: 0.125em;
 }
 
+.rs-list-tab a
+{
+	color: #323e4c;
+}
+
 .rs-list-tab .rs-item-active
 {
 	background: #323e4c;

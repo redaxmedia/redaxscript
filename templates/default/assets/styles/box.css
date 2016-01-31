@@ -127,6 +127,11 @@
 	top: 0.25em;
 }
 
+.rs-box-note a
+{
+	color: #fff;
+}
+
 /* @section 7. box comment */
 
 .rs-box-comment
