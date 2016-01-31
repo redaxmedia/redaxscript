@@ -90,7 +90,18 @@ a
 	transform: translateY(2px);
 }
 
-/* @section 3. title accordion */
+/* @section 3. title */
+
+/* @section 3.1 several titles */
+
+.rs-title-comment,
+.rs-title-extra
+{
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+/* @section 3.2 title accordion */
 
 .rs-title-accordion
 {
@@ -116,13 +127,13 @@ a
 	margin-top: 1em;
 }
 
-/* @section 4. title content */
+/* @section 3.3 title content */
 
 .rs-title-content
 {
 	font-size: 2em;
 	border-left: 0.125em solid rgba(0, 0, 0, 0.3);
-	margin-bottom: 0.5em;
+	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
 }
@@ -132,14 +143,14 @@ a
 	color: #323e4c;
 }
 
-.rs-title-comment,
-.rs-title-extra
-{
+/* @section 3.4 title sub */
+
+.rs-title-sub {
 	font-size: 1.25em;
 	font-weight: bold;
 }
 
-/* @section 5. title website */
+/* @section 3.5 title website */
 
 .rs-title-website
 {
@@ -165,7 +176,7 @@ a
 	opacity: 1;
 }
 
-/* @section 6. description website */
+/* @section 4. description website */
 
 .rs-description-website
 {
@@ -176,7 +187,7 @@ a
 	margin-left: 0.125em;
 }
 
-/* @section 7. header */
+/* @section 5. header */
 
 .rs-header,
 .rs-header a
@@ -184,21 +195,21 @@ a
 	color: #fff;
 }
 
-/* @section 8. content */
+/* @section 6. content */
 
 .rs-box-content p
 {
-	margin: 1em 0;
+	margin: 0.5em 0;
 }
 
-/* @section 9. sidebar */
+/* @section 7. sidebar */
 
 .rs-sidebar a
 {
 	color: #fff;
 }
 
-/* @section 10. footer */
+/* @section 8. footer */
 
 .rs-footer,
 .rs-footer a
@@ -211,9 +222,9 @@ a
 	color: #fff;
 }
 
-/* @section 11. query */
+/* @section 9. query */
 
-/* @section 11.1 min width 50rem */
+/* @section 9.1 min width 50rem */
 
 @media screen and (min-width: 50rem)
 {

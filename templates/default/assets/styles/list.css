@@ -69,9 +69,24 @@
 
 .rs-list-default li
 {
+	margin-left: 1em;
+}
+
+ol.rs-list-default li
+{
 	list-style: inherit;
 	list-style-position: outside;
-	margin-left: 1em;
+}
+
+ul.rs-list-default li:before {
+	border-color: transparent transparent transparent #457ecd;
+	border-style: solid;
+	border-width: 0.375em;
+	content: '';
+	display: inline-block;
+	margin-left: -0.875em;
+	text-align: center;
+	width: 0.125em;
 }
 
 /* @section 4. list header */

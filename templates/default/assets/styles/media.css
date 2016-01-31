@@ -12,18 +12,10 @@
 /* @section 1. several media */
 
 .rs-image-default,
-.rs-image-gallery,
 .rs-player-default
 {
-	background: #323e4c;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-.rs-image-default,
-.rs-player-default
-{
-	max-width: 98%;
-	padding: 1%;
+	max-width: 100%;
+	border-radius: 0.25em;
 }
 
 .rs-image-gallery
