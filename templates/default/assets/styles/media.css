@@ -14,8 +14,10 @@
 .rs-image-default,
 .rs-player-default
 {
-	max-width: 100%;
 	border-radius: 0.25em;
+	display: block;
+	margin: 1em 0;
+	max-width: 100%;
 }
 
 .rs-image-gallery
