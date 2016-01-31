@@ -27,7 +27,7 @@
 
 	/* @section 1.1.1 navigation trigger */
 
-	.rs-label-navigation
+	.rs-trigger-navigation
 	{
 		color: rgba(255, 255, 255, 0.7);
 		float: right;
@@ -37,13 +37,13 @@
 		vertical-align: top;
 	}
 
-	.rs-label-navigation:after,
-	.rs-label-navigation:before
+	.rs-trigger-navigation:after,
+	.rs-trigger-navigation:before
 	{
 		background: #3873b5;
 	}
 
-	.rs-label-navigation:after
+	.rs-trigger-navigation:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
@@ -57,7 +57,7 @@
 
 	/* @section 1.1.3 navigation layer */
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation:after {
 		background: rgba(0, 0, 0, 0.8);
 	}
 }

@@ -20,7 +20,7 @@
 
 /* @section 1. general */
 
-.rs-fn-label-navigation
+.rs-fn-trigger-navigation
 {
 	display: none;
 }
@@ -34,8 +34,7 @@
 
 	/* @section 2.1.1 navigation trigger */
 
-	/*TODO: split styling from functionality, improve the naming of classes and sections */
-	.rs-label-navigation
+	.rs-trigger-navigation
 	{
 		cursor: pointer;
 		position: relative;
@@ -46,8 +45,8 @@
 		user-select: none;
 	}
 
-	.rs-label-navigation:after,
-	.rs-label-navigation:before
+	.rs-trigger-navigation:after,
+	.rs-trigger-navigation:before
 	{
 		bottom: 2.5em;
 		content: '';
@@ -62,19 +61,19 @@
 
 	/* @section 2.1.2 navigation trigger - icons */
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation .rs-label-navigation:after,
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation .rs-label-navigation:before
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:after,
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:before
 	{
 		box-shadow: none;
 	}
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation .rs-label-navigation:after
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:after
 	{
 		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation .rs-label-navigation:before
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:before
 	{
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
@@ -95,7 +94,7 @@
 		z-index: 10;
 	}
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
 		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
@@ -103,7 +102,7 @@
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-label-navigation ~ .rs-has-navigation:after {
+	.rs-fn-trigger-navigation ~ .rs-has-navigation:after {
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -115,7 +114,7 @@
 		z-index: 1;
 	}
 
-	.rs-fn-label-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation:after {
 		right: 0;
 		z-index: 5;
 	}
@@ -127,7 +126,7 @@
 
 	/* @section 2.2.1 navigation trigger */
 
-	.rs-label-navigation
+	.rs-trigger-navigation
 	{
 		display: none;
 	}
