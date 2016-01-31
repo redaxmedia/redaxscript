@@ -2,7 +2,7 @@
 
 <!-- menu trigger -->
 
-<input class="rs-fn-trigger-navigation" id="navigation" type="checkbox"/>
+<input class="rs-fn-trigger-navigation" id="rs-navigation" type="checkbox"/>
 
 <!-- header -->
 
@@ -39,7 +39,7 @@
 
 				<!-- categories -->
 
-				<li><?php echo Template::language('categories'); ?>
+				<li><span><?php echo Template::language('categories'); ?></span>
 					<?php echo Template::navigation('categories', array(
 						'children' => 1,
 						'class' => 'rs-list-header-children',
@@ -49,7 +49,7 @@
 
 				<!-- articles -->
 
-				<li><?php echo Template::language('articles'); ?>
+				<li><span><?php echo Template::language('articles'); ?></span>
 					<?php echo Template::navigation('articles', array(
 						'class' => 'rs-list-header-children',
 						'limit' => 5

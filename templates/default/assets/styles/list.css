@@ -100,12 +100,6 @@ ul.rs-list-default li:before {
 	color: #fff;
 }
 
-.rs-list-header > li
-{
-	padding: 0 1em;
-	font-weight: bold;
-}
-
 /* @section 5. list tabs */
 
 .rs-list-tab > li
@@ -163,17 +157,20 @@ ul.rs-list-default li:before {
 		background: #3873b5;
 	}
 
-	.rs-list-header > li
-	{
-		box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.7);
+	.rs-list-header > li > span {
+		background: rgba(0, 0, 0, 0.3);
 	}
 
-	.rs-list-header-children
+	.rs-list-header a,
+	.rs-list-header span
 	{
-		box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.7);
-		font-size: 0.875em;
-		margin: 0 -1.125em;
-		padding: 0 1.75em;
+		padding: 0 1em;
+		-webkit-transition: background 0.2s;
+		transition: background 0.2s;
+	}
+
+	.rs-list-header a:hover {
+		background: rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -220,7 +217,6 @@ ul.rs-list-default li:before {
 	.rs-list-header > li:hover .rs-list-header-children
 	{
 		border-top: 0.5em solid transparent;
-		min-width: 90%;
 	}
 
 	.rs-list-header > li:hover .rs-list-header-children li
@@ -230,7 +226,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover .rs-list-header-children a
 	{
-		padding: 0 0.5em;
+		padding: 0 1em;
 	}
 
 	.rs-list-header .rs-list-header-children li:first-child
