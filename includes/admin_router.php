@@ -134,6 +134,11 @@ function admin_router()
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
 				echo $commentForm;
 			}
+			if (TABLE_PARAMETER == 'users')
+			{
+				$userForm = new Redaxscript\Admin\View\UserForm();
+				echo $userForm;
+			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_form();
@@ -173,6 +178,11 @@ function admin_router()
 			{
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
 				echo $commentForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'users')
+			{
+				$userForm = new Redaxscript\Admin\View\UserForm();
+				echo $userForm->render(ID_PARAMETER);
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{

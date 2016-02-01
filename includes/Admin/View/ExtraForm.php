@@ -251,9 +251,14 @@ class ExtraForm implements ViewInterface
 			->append($linkCancel);
 			if ($extra->id)
 			{
-				$formElement->append($linkDelete);
+				$formElement
+					->append($linkDelete)
+					->submit(Language::get('save'));
 			}
-			$formElement->submit(Language::get('save'));
+			else
+			{
+				$formElement->submit(Language::get('create'));
+			}
 
 		/* collect output */
 
