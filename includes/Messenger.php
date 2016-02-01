@@ -8,240 +8,233 @@ namespace Redaxscript;
  *
  * @package Redaxscript
  * @category Messenger
- * @author JimMorrison723
+ * @author Balázs Szilágyi
  */
-
 class Messenger
 {
-    /**
-     * instance of the messenger class
-     *
-     * @var array
-     */
+	/**
+	 * redirect link
+	 *
+	 * @var array
+	 */
 
-    protected $_messenger;
+	protected $_action = array();
 
+	/**
+	 * options array
+	 *
+	 * @var array
+	 */
 
-    /**
-     * message title
-     *
-     * @var string
-     */
+	protected $_options = array();
 
-    protected $_title;
+	/**
+	 * init
+	 *
+	 * @since 3.0.0
+	 *
+	 */
 
-    /**
-     * message string
-     *
-     * @var array
-     */
+	protected $_registry = array();
 
-    protected $_message;
+	/**
+	 * init
+	 *
+	 * @since 3.0.0
+	 *
+	 */
 
-    /**
-     * redirect link
-     *
-     * @var array
-     */
+	public function init()
+	{
+		$this->_registry = Registry::getInstance();
+	}
 
-    protected $_action = array();
+	/**
+	 * setAction
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $name action name
+	 * @param string $route action route
+	 */
 
-    /**
-     * options array
-     *
-     * @var array
-     */
+	public function setAction($name = null, $route = null)
+	{
+		if (!empty($name))
+		{
+			$this->_action = [
+				'action' => $name,
+				'route' => $route,
+			];
+		}
+	}
 
-    protected $_options = array();
+	/**
+	 * success message
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $message message text
+	 * @param string $title message title
+	 *
+	 * @return string
+	 */
 
-    /**
-     * constructor of the class
-     *
-     * @since 3.0.0
-     *
-     */
+	public function success($message = null, $title = null)
+	{
+		return $this->render($message, 'success', $title);
+	}
 
-    public function __construct()
-    {
+	/**
+	 * warning message
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $message message text
+	 * @param string $title message title
+	 *
+	 * @return string
+	 */
 
-    }
+	public function warning($message = null, $title = null)
+	{
+		return $this->render($message, 'warning', $title);
+	}
 
-    /**
-     * init
-     *
-     * @since 3.0.0
-     *
-     */
+	/**
+	 * error message
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $message message text
+	 * @param string $title message title
+	 *
+	 * @return string
+	 */
 
-    public function init()
-    {
+	public function error($message = null, $title = null)
+	{
+		return $this->render($message, 'error', $title);
+	}
 
-    }
+	/**
+	 * info message
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $message message text
+	 * @param string $title message title
+	 *
+	 * @return string
+	 */
 
-    /**
-     * setAction
-     *
-     * @since 3.0.0
-     * @param string $name action name
-     * @param string $route action route
-     */
+	public function info($message = null, $title = null)
+	{
+		return $this->render($message, 'info', $title);
+	}
 
-    public function setAction($name, $route)
-    {
-        if (!empty($name))
-            $this->_action = [
-                "action" => $name,
-                "route" => $route,
-            ];
-    }
+	/**
+	 * redirect user
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $url
+	 * @param int $time
+	 *
+	 * @return string $redirect
+	 */
 
-    /**
-     * success message
-     *
-     * @since 3.0.0
-     *
-     * @param array $msg message text
-     * @param string $title message title
-     * @return string
-     */
+	public function redirect($url = null, $time = 4)
+	{
+		if (!$url)
+		{
+			$url = $this->_action['route'];
+		}
 
-    public function success($msg = null, $title = null)
-    {
-        return $this->render($msg, "success", $title);
-    }
+		$redirect = '<meta http-equiv="refresh" content="' . $time . ';url=' . $url . '">';
+		return $redirect;
+	}
 
-    /**
-     * warning message
-     *
-     * @since 3.0.0
-     *
-     * @param array $msg message text
-     * @param string $title message title
-     * @return string
-     */
+	/**
+	 * render
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $messageData
+	 * @param string $type
+	 * @param string $title
+	 *
+	 * @return string
+	 */
 
-    public function warning($msg = null, $title = null)
-    {
-        return $this->render($msg, "warning", $title);
-    }
+	public function render($messageData = null, $type = null, $title = null)
+	{
+		$output = Hook::trigger('messengerStart');
 
-    /**
-     * error message
-     *
-     * @since 3.0.0
-     *
-     * @param array $msg message text
-     * @param string $title message title
-     * @return string
-     */
+		if ($title)
+		{
+			/* html element */
 
-    public function error($msg = null, $title = null)
-    {
-        return $this->render($msg, "error", $title);
-    }
+			$headingElement = new Html\Element();
+			$headingElement->init('h2', array(
+				'class' => 'rs-title-note rs-note-' . $type
+			));
+			$headingElement->text($title);
+			$output .= $headingElement->render();
+		}
 
-    /**
-     * info message
-     *
-     * @since 3.0.0
-     *
-     * @param array $msg message text
-     * @param string $title message title
-     * @return string
-     */
+		/* html element */
 
-    public function info($msg = null, $title = null)
-    {
-        return $this->render($msg, "info", $title);
-    }
+		$divElement = new Html\Element();
+		$divElement->init('div', array(
+			'class' => 'rs-box-note rs-note-' . $type
+		));
 
-    /**
-     * redirect user
-     *
-     * @since 3.0.0
-     *
-     */
+		/* put messageData in a list */
 
-    public function redirect()
-    {
+		if (is_array($messageData))
+		{
+			/* html elements */
 
-    }
+			$itemElement = new Html\Element();
+			$itemElement->init('li');
+			$listElement = new Html\Element();
+			$listElement->init('ul', array(
+				'class' => $this->_options['className']['list']
+			));
+			$outputItem = null;
 
-    /**
-     * render
-     *
-     * @since 3.0.0
-     *
-     * @param array $messageData
-     * @param string $type
-     * @param string $title
-     * @return string
-     */
+			/* collect item output */
 
-    public function render($messageData = null, $type = null, $title = null)
-    {
-        $messageData ?: $this->_message;
-        $type ?: $this->_message;
+			foreach ($messageData as $value)
+			{
+				$outputItem .= '<li>' . $value . '</li>';
+			}
+			$divElement->html($listElement->html($outputItem));
 
-        $output = Hook::trigger('messageStart');
+		}
 
-        if ($title != null)
-        {
-            $headingElement = new Html\Element();
-            $headingElement->init('h2', array(
-                'class' => 'rs-title-note rs-note-' . $type
-            ));
-            $headingElement->text($title);
-            $output .= $headingElement->render();
-        }
+		/* if just one message, no need for list */
 
-        $divElement = new Html\Element();
-        $divElement->init('div', array(
-            'class' => 'rs-box-note rs-note-' . $type
-        ));
+		else
+		{
+			$divElement->text($messageData);
+		}
 
-        /* Put messageData in a list */
-        if (is_array($messageData))
-        {
+		$output .= $divElement->render();
 
-            $itemElement = new Html\Element();
-            $itemElement->init('li');
-            $listElement = new Html\Element();
-            $listElement->init('ul', array(
-                'class' => $this->_options['className']['list']
-            ));
-            $outputItem = null;
+		/* place action link */
 
-            /* collect item output */
+		if (!empty($this->_action))
+		{
+			$anchorElement = new Html\Element();
+			$anchorElement->init('a');
+			$anchorElement->attr('href', $this->_action['route'])->text($this->_action['action']);
 
-            foreach ($messageData as $value)
-            {
-                $outputItem .= '<li>' . $value . '</li>';
-            }
-            $divElement->html($listElement->html($outputItem));
+			$output .= $anchorElement->render();
+		}
+		$output .= Hook::trigger('messengerEnd');
 
-        }
-
-        /* If just one message, no need for list */
-
-        else
-        {
-            $divElement->text($messageData);
-        }
-
-        $output .= $divElement->render();
-
-        /* Place */
-        if (!empty($this->_action))
-        {
-            $anchorElement = new Html\Element();
-            $anchorElement->init('a');
-            $anchorElement->attr('href', $this->_action['route'])->text($this->_action['action']);
-
-            $output .= $anchorElement->render();
-        }
-        $output .= Hook::trigger('messageEnd');
-
-        return $output;
-    }
+		return $output;
+	}
 }
