@@ -134,6 +134,11 @@ function admin_router()
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
 				echo $commentForm;
 			}
+			if (TABLE_PARAMETER == 'groups')
+			{
+				$groupForm = new Redaxscript\Admin\View\GroupForm();
+				echo $groupForm;
+			}
 			if (TABLE_PARAMETER == 'users')
 			{
 				$userForm = new Redaxscript\Admin\View\UserForm();
@@ -179,10 +184,25 @@ function admin_router()
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
 				echo $commentForm->render(ID_PARAMETER);
 			}
+			if (TABLE_PARAMETER == 'groups')
+			{
+				$groupForm = new Redaxscript\Admin\View\GroupForm();
+				echo $groupForm->render(ID_PARAMETER);
+			}
 			if (TABLE_PARAMETER == 'users')
 			{
 				$userForm = new Redaxscript\Admin\View\UserForm();
 				echo $userForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'modules')
+			{
+				$moduleForm = new Redaxscript\Admin\View\ModuleForm();
+				echo $moduleForm->render(ID_PARAMETER);
+			}
+			if (TABLE_PARAMETER == 'settings')
+			{
+				$settingForm = new Redaxscript\Admin\View\SettingForm();
+				echo $settingForm->render(ID_PARAMETER);
 			}
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
 			{
