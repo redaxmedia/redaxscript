@@ -116,9 +116,17 @@ class MessengerTest extends TestCase
 
 	public function testRender($info = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
-		$actual = $messenger->render($info['data'], $info['type'], $info['title']);
+
+		/* actual */
+
+		$actual = $messenger->render($info['type'], $info['data'], $info['title']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -129,16 +137,24 @@ class MessengerTest extends TestCase
 	 *
 	 * @dataProvider providerSuccess
 	 *
-	 * @param array $info
+	 * @param array $success
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testSuccess($info = null, $action = null, $expect = null)
+	public function testSuccess($success = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
-		$actual = $messenger->success($info['data'], $info['title']);
+
+		/* actual */
+
+		$actual = $messenger->success($success['data'], $success['title']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -156,9 +172,17 @@ class MessengerTest extends TestCase
 
 	public function testInfo($info = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
+
+		/* actual */
+
 		$actual = $messenger->info($info['data'], $info['title']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -169,16 +193,24 @@ class MessengerTest extends TestCase
 	 *
 	 * @dataProvider providerWarning
 	 *
-	 * @param array $info
+	 * @param array $warning
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testWarning($info = null, $action = null, $expect = null)
+	public function testWarning($warning = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
-		$actual = $messenger->warning($info['data'], $info['title']);
+
+		/* actual */
+
+		$actual = $messenger->warning($warning['data'], $warning['title']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -189,16 +221,24 @@ class MessengerTest extends TestCase
 	 *
 	 * @dataProvider providerError
 	 *
-	 * @param array $info
+	 * @param array $error
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testError($info = null, $action = null, $expect = null)
+	public function testError($error = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
-		$actual = $messenger->error($info['data'], $info['title']);
+
+		/* actual */
+
+		$actual = $messenger->error($error['data'], $error['title']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -209,16 +249,24 @@ class MessengerTest extends TestCase
 	 *
 	 * @dataProvider providerRedirect
 	 *
-	 * @param array $datas
+	 * @param array $data
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testRedirect($datas = null, $action = null, $expect = null)
+	public function testRedirect($data = null, $action = null, $expect = null)
 	{
+		/* setup */
+
 		$messenger = new Messenger();
 		$messenger->setAction($action['action'], $action['route']);
-		$actual = $messenger->redirect($datas['url'], $datas['time']);
+
+		/* actual */
+
+		$actual = $messenger->redirect($data['url'], $data['time']);
+
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 }

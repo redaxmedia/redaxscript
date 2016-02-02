@@ -26,7 +26,13 @@ class Messenger
 	 * @var array
 	 */
 
-	protected $_options = array();
+	protected $_options = array(
+		'className' => array(
+			'list' => 'rs-list-messenger',
+			'divider' => 'rs-item-divider'
+		),
+		'divider' => null
+	);
 
 	/**
 	 * init
@@ -82,7 +88,7 @@ class Messenger
 
 	public function success($message = null, $title = null)
 	{
-		return $this->render($message, 'success', $title);
+		return $this->render('success', $message, $title);
 	}
 
 	/**
@@ -98,7 +104,7 @@ class Messenger
 
 	public function warning($message = null, $title = null)
 	{
-		return $this->render($message, 'warning', $title);
+		return $this->render('warning', $message, $title);
 	}
 
 	/**
@@ -114,7 +120,7 @@ class Messenger
 
 	public function error($message = null, $title = null)
 	{
-		return $this->render($message, 'error', $title);
+		return $this->render('error', $message, $title);
 	}
 
 	/**
@@ -130,29 +136,7 @@ class Messenger
 
 	public function info($message = null, $title = null)
 	{
-		return $this->render($message, 'info', $title);
-	}
-
-	/**
-	 * redirect user
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $url
-	 * @param int $time
-	 *
-	 * @return string $redirect
-	 */
-
-	public function redirect($url = null, $time = 4)
-	{
-		if (!$url)
-		{
-			$url = $this->_action['route'];
-		}
-
-		$redirect = '<meta http-equiv="refresh" content="' . $time . ';url=' . $url . '">';
-		return $redirect;
+		return $this->render('info', $message, $title);
 	}
 
 	/**
@@ -160,14 +144,14 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $messageData
 	 * @param string $type
+	 * @param array $messageData
 	 * @param string $title
 	 *
 	 * @return string
 	 */
 
-	public function render($messageData = null, $type = null, $title = null)
+	public function render($type = null, $messageData = null, $title = null)
 	{
 		$output = Hook::trigger('messengerStart');
 
@@ -175,18 +159,18 @@ class Messenger
 		{
 			/* html element */
 
-			$headingElement = new Html\Element();
-			$headingElement->init('h2', array(
+			$titleElement = new Html\Element();
+			$titleElement->init('h2', array(
 				'class' => 'rs-title-note rs-note-' . $type
 			));
-			$headingElement->text($title);
-			$output .= $headingElement->render();
+			$titleElement->text($title);
+			$output .= $titleElement->render();
 		}
 
 		/* html element */
 
-		$divElement = new Html\Element();
-		$divElement->init('div', array(
+		$boxElement = new Html\Element();
+		$boxElement->init('div', array(
 			'class' => 'rs-box-note rs-note-' . $type
 		));
 
@@ -210,7 +194,7 @@ class Messenger
 			{
 				$outputItem .= '<li>' . $value . '</li>';
 			}
-			$divElement->html($listElement->html($outputItem));
+			$boxElement->html($listElement->html($outputItem));
 
 		}
 
@@ -218,23 +202,48 @@ class Messenger
 
 		else
 		{
-			$divElement->text($messageData);
+			$boxElement->text($messageData);
 		}
 
-		$output .= $divElement->render();
+		$output .= $boxElement->render();
 
 		/* place action link */
 
-		if (!empty($this->_action))
+		if ($this->_action)
 		{
-			$anchorElement = new Html\Element();
-			$anchorElement->init('a');
-			$anchorElement->attr('href', $this->_action['route'])->text($this->_action['action']);
+			$linkElement = new Html\Element();
+			$linkElement
+				->init('a')
+				->attr('href', $this->_action['route'])
+				->text($this->_action['action']);
 
-			$output .= $anchorElement->render();
+			$output .= $linkElement;
 		}
+
 		$output .= Hook::trigger('messengerEnd');
 
 		return $output;
+	}
+
+	/**
+	 * redirect user
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $url
+	 * @param int $time
+	 *
+	 * @return string $redirect
+	 */
+
+	public function redirect($url = null, $time = 4)
+	{
+		if (!$url)
+		{
+			$url = $this->_action['route'];
+		}
+
+		$redirect = '<meta http-equiv="refresh" content="' . $time . ';url=' . $url . '">';
+		return $redirect;
 	}
 }

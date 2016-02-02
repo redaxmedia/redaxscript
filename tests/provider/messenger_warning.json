@@ -22,7 +22,7 @@
       "action": "",
       "route": ""
     },
-    "<div class=\"rs-box-note rs-note-warning\"><ul><li>test1</li><li>test2</li></ul></div>"
+    "<div class=\"rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div>"
   ],
   [
     {
@@ -36,6 +36,6 @@
       "action": "ok",
       "route": "hello/world"
     },
-    "<div class=\"rs-box-note rs-note-warning\"><ul><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\">ok</a>"
+    "<div class=\"rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\">ok</a>"
   ]
 ]
