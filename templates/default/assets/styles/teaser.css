@@ -25,6 +25,7 @@
 	font-size: 1.5em;
 	font-weight: 300;
 	line-height: 1.25em;
+	max-width: 80%;
 	padding: 0.375em 0.75em;
 	position: relative;
 	opacity: 0;
@@ -54,12 +55,22 @@
 {
 	.rs-title-teaser
 	{
-		font-size: 3em;
+		font-size: 2em;
 	}
 
 	.rs-title-teaser .rs-is-break:after
 	{
 		content: '';
 		display: block;
+	}
+}
+
+/* @section 2.2 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-title-teaser
+	{
+		font-size: 3em;
 	}
 }

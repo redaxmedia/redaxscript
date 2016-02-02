@@ -69,6 +69,7 @@
 {
 	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
 	margin-bottom: 2em;
+	max-height: 35em;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
 	position: relative;
@@ -135,7 +136,7 @@
 {
 	.rs-wrapper
 	{
-		width: 48rem;
+		width: 90%;
 	}
 
 	.rs-wrapper-body
@@ -146,13 +147,13 @@
 	.rs-content
 	{
 		float: left;
-		width: 60%;
+		width: 70%;
 	}
 
 	.rs-sidebar
 	{
 		float: right;
-		width: 38%;
+		width: 28%;
 		margin-left: 2%;
 	}
 }
