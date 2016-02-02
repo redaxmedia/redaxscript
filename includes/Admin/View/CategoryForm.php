@@ -126,7 +126,7 @@ class CategoryForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 

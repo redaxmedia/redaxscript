@@ -23,12 +23,12 @@ function admin_modules_list()
 	/* collect listing output */
 
 	$output .= '<h2 class="rs-admin-title-content">' . l('modules') . '</h2>';
-	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-s4o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('alias') . '</th><th class="rs-s1o6 rs-column-last">' . l('version') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('alias') . '</td><td class="rs-column-last">' . l('version') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('version') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('alias') . '</td><td class="rs-admin-column-last">' . l('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('module_no') . l('point');
@@ -211,18 +211,18 @@ function admin_modules_form()
 
 	/* collect tab box output */
 
-	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
+	$output .= '<div class="rs-js-box-tab rs-admin-box-tab">';
 
 	/* collect module set */
 
-	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-default rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect customize set */
 
-	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
 	$output .= '<li>' . select_element('status', 'rs-admin-field-select', 'status', array(
 			l('enable') => 1,
 			l('disable') => 0
@@ -252,7 +252,7 @@ function admin_modules_form()
 
 	foreach ($docs_directory_array as $key => $value)
 	{
-		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', 'docs') . '<ul>';
+		$output .= form_element('fieldset', 'tab-' . ($key + 3), 'rs-js-set-tab rs-admin-set-tab', '', '', 'docs') . '<ul>';
 		$output .= '<li>' . $template->partial('modules/' . $alias . '/docs/' . $value) . '</li></ul></fieldset>';
 	}
 	$output .= '</div>';
@@ -272,20 +272,20 @@ function admin_modules_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* uninstall button */
 
 	if (MODULES_UNINSTALL == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-uninstall', l('uninstall'), 'admin/uninstall/modules/' . $alias . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (MODULES_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminModuleFormEnd');

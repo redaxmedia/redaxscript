@@ -175,8 +175,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-admin-button-submit', 'update', l('save'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminSettingFormEnd');
 	echo $output;

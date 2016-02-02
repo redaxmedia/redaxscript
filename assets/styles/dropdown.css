@@ -35,6 +35,13 @@
 	top: 100%;
 }
 
+.rs-list-dropdown li:last-child:hover > ul,
+.rs-list-dropdown .rs-item-touch:last-child > ul
+{
+	right: 0;
+	left: auto;
+}
+
 /* @section 2. query */
 
 /* @section 2.1 min width 50rem */

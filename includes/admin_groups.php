@@ -28,12 +28,12 @@ function admin_groups_list()
 	{
 		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('group_new'), 'admin/new/groups');
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-s4o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('alias') . '</th><th class="rs-s1o6 rs-column-last">' . l('filter') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('alias') . '</td><td class="rs-column-last">' . l('filter') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('filter') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('alias') . '</td><td class="rs-admin-column-last">' . l('filter') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('group_no') . l('point');
@@ -73,7 +73,7 @@ function admin_groups_list()
 			{
 				$output .= ' class="' . $class_status . '"';
 			}
-			$output .= '><td class="rs-column-first">' . $name;
+			$output .= '><td class="rs-admin-column-first">' . $name;
 
 			/* collect control output */
 
@@ -81,7 +81,7 @@ function admin_groups_list()
 
 			/* collect alias and filter output */
 
-			$output .= '</td><td class="rs-column-second">' . $alias . '</td><td class="rs-column-last">' . $filter . '</td></tr>';
+			$output .= '</td><td class="rs-admin-column-second">' . $alias . '</td><td class="rs-admin-column-last">' . $filter . '</td></tr>';
 		}
 		$output .= '</tbody>';
 	}
@@ -179,11 +179,11 @@ function admin_groups_form()
 
 	/* collect tab box output */
 
-	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
+	$output .= '<div class="rs-js-box-tab rs-admin-box-tab">';
 
 	/* collect group set */
 
-	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-admin-set-tab rs-set-active', '', '', l('group')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-js-generate-alias-input rs-admin-field-default rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	$output .= '<li>' . form_element('text', 'alias', 'rs-js-generate-alias-output rs-admin-field-default rs-field-note', 'alias', $alias, l('alias'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('textarea', 'description', 'rs-js-auto-resize rs-admin-field-textarea rs-field-small', 'description', $description, l('description'), 'rows="1" cols="15"') . '</li>';
@@ -192,7 +192,7 @@ function admin_groups_form()
 	{
 		/* collect access set */
 
-		$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('acccess')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-admin-set-tab', '', '', l('acccess')) . '<ul>';
 		$output .= '<li>' . select_element('categories', 'rs-admin-field-select', 'categories', $access_array, $categories, l('categories'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('articles', 'rs-admin-field-select', 'articles', $access_array, $articles, l('articles'), 'multiple="multiple"') . '</li>';
 		$output .= '<li>' . select_element('extras', 'rs-admin-field-select', 'extras', $access_array, $extras, l('extras'), 'multiple="multiple"') . '</li>';
@@ -208,7 +208,7 @@ function admin_groups_form()
 
 		/* collect customize set */
 
-		$output .= form_element('fieldset', 'tab-3', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+		$output .= form_element('fieldset', 'tab-3', 'rs-js-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
 		$output .= '<li>' . select_element('filter', 'rs-admin-field-select', 'filter', array(
 			l('enable') => 1,
 			l('disable') => 0
@@ -235,20 +235,20 @@ function admin_groups_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if (GROUPS_DELETE == 1 && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete', l('delete'), 'admin/delete/groups/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminGroupFormEnd');

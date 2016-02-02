@@ -33,7 +33,7 @@
 }
 
 .rs-button-default,
-.rs-button-default a
+a.rs-button-default
 {
 	color: #fff;
 	transition: -webkit-transform 0.1s, box-shadow 0.1s;

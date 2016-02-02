@@ -23,7 +23,6 @@
 	display: inline-block;
 	line-height: 2.25em;
 	padding: 0 0.75em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
 .rs-admin-list-control a:hover
@@ -31,7 +30,6 @@
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
 .rs-admin-list-control span
