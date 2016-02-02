@@ -13,15 +13,17 @@
 
 /* @section 1. list dropdown */
 
-.rs-list-dropdown a
+.rs-list-dropdown a,
+.rs-list-dropdown span
 {
 	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
 .rs-list-dropdown li
 {
-	cursor: pointer;
 	position: relative;
 }
 

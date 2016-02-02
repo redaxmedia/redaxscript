@@ -218,7 +218,7 @@ function comment_form($article = '', $language = '')
 			'name' => 'url'
 		))
 		->append('</li><li>')
-		->label('* ' . Redaxscript\Language::get('message'), array(
+		->label('* ' . Redaxscript\Language::get('text'), array(
 			'for' => 'text'
 		))
 		->textarea(array(

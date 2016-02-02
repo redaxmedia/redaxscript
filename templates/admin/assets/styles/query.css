@@ -127,12 +127,16 @@
 		margin-left: 0.5em;
 	}
 
-	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete
+	/* TODO: remove outdated styles */
+	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete,
+	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
 	{
 		float: left;
 	}
 
-	.rs-admin-form .rs-admin-button-submit
+	/* TODO: remove outdated styles */
+	.rs-admin-form .rs-admin-button-submit,
+	.rs-admin-form-default .rs-admin-button-submit
 	{
 		float: right;
 	}

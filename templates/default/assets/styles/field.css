@@ -57,19 +57,19 @@
 .rs-field-textarea
 {
 	border: 2px solid #9c9c9c;
-	transition: border 0.2s;
+	transition: background 0.2s, border 0.2s;
 }
 
-.rs-field-default:hover,
-.rs-field-select:hover,
-.rs-field-textarea:hover
+.rs-field-default:not([class*='note']):hover,
+.rs-field-select:not([class*='note']):hover,
+.rs-field-textarea:not([class*='note']):hover
 {
 	border-color: #000;
 }
 
-.rs-field-default:focus,
-.rs-field-select:focus,
-.rs-field-textarea:focus
+.rs-field-default:not([class*='note']):focus,
+.rs-field-select:not([class*='note']):focus,
+.rs-field-textarea:not([class*='note']):focus
 {
 	border-color: #3873B5;
 }

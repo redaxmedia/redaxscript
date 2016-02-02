@@ -21,7 +21,6 @@
 		{
 			"route": "hello/world"
 		},
-		"hello<a href=\"hello/world\" class=\"rs-link-readmore\" title=\"Read more\">Read more</a>"
+		"hello<a class=\"rs-link-readmore\" title=\"Read more\" href=\"hello/world\">Read more</a>"
 	]
-
 ]

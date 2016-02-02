@@ -10,7 +10,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to generate the category form
+ * children class to generate the article form
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class CategoryForm implements ViewInterface
+class CommentForm implements ViewInterface
 {
 	/**
 	 * stringify the view
@@ -39,15 +39,15 @@ class CategoryForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $categoryId identifer of the category
+	 * @param integer $commentId identifer of the comment
 	 *
 	 * @return string
 	 */
 
-	public function render($categoryId = null)
+	public function render($commentId = null)
 	{
-		$output = Hook::trigger('adminCategoryFormStart');
-		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
+		$output = Hook::trigger('adminCommentFormStart');
+		$comment = Db::forTablePrefix('comments')->whereIdIs($commentId)->findOne();
 
 		/* html elements */
 
@@ -55,7 +55,7 @@ class CategoryForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($category->title ? $category->title : Language::get('category_new'));
+		$titleElement->text($comment->title ? $comment->title : Language::get('comment_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -81,16 +81,16 @@ class CategoryForm implements ViewInterface
 		$linkCancel
 			->init('a', array(
 				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/categories'
+				'href' => 'admin/view/comments'
 			))
 			->text(Language::get('cancel'));
-		if ($category->id)
+		if ($comment->id)
 		{
 			$linkDelete = new Html\Element();
 			$linkDelete
 				->init('a', array(
 					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/categories/' . $category->id . '/' . Registry::get('token')
+					'href' => 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token')
 				))
 				->text(Language::get('delete'));
 		}
@@ -104,7 +104,7 @@ class CategoryForm implements ViewInterface
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('category'))
+				->text(Language::get('comment'))
 			);
 		$outputItem .= $itemElement
 			->copy()
@@ -112,14 +112,14 @@ class CategoryForm implements ViewInterface
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('general'))
-		);
+			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
-		);
+			);
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -131,47 +131,45 @@ class CategoryForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
-			->label(Language::get('title'), array(
-				'for' => 'title'
+			->label('* ' . Language::get('author'), array(
+				'for' => 'author'
 			))
 			->text(array(
-				'autofocus' => 'autofocus',
-				'class' => 'rs-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
-				'id' => 'title',
-				'name' => 'title',
+				'id' => 'author',
+				'name' => 'author',
+				'readonly' => 'readonly',
 				'required' => 'required',
-				'value' => $category->title
+				'value' => $comment->author ? $comment->author : Registry::get('myName')
 			))
 			->append('</li><li>')
-			->label(Language::get('alias'), array(
-				'for' => 'alias'
+			->label('* ' . Language::get('email'), array(
+				'for' => 'email'
 			))
-			->text(array(
-				'class' => 'rs-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
-				'id' => 'alias',
-				'name' => 'alias',
+			->email(array(
+				'id' => 'email',
+				'name' => 'email',
+				'readonly' => 'readonly',
 				'required' => 'required',
-				'value' => $category->alias
+				'value' => $comment->email ? $comment->email : Registry::get('myEmail')
 			))
 			->append('</li><li>')
-			->label(Language::get('description'), array(
-				'for' => 'description'
+			->label(Language::get('url'), array(
+				'for' => 'url'
+			))
+			->url(array(
+				'id' => 'url',
+				'name' => 'url',
+				'value' => $comment->url
+			))
+			->append('</li><li>')
+			->label('* ' . Language::get('text'), array(
+				'for' => 'text'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
-				'id' => 'description',
-				'name' => 'description',
-				'value' => $category->description
-			))
-			->append('</li><li>')
-			->label(Language::get('keywords'), array(
-				'for' => 'keywords'
-			))
-			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
-				'id' => 'keywords',
-				'name' => 'keywords',
-				'value' => $category->keywords
+				'id' => 'text',
+				'name' => 'text',
+				'required' => 'required',
+				'value' => $comment->text
 			))
 			->append('</li></ul></fieldset>')
 
@@ -184,34 +182,16 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getLanguageArray(), array(
 				'id' => 'language',
 				'name' => 'language',
-				'value' => $category->language
+				'value' => $comment->language
 			))
 			->append('</li><li>')
-			->label(Language::get('template'), array(
-				'for' => 'template'
+			->label(Language::get('article'), array(
+				'for' => 'article'
 			))
-			->select(Helper\Option::getTemplateArray(), array(
-				'id' => 'template',
-				'name' => 'template',
-				'value' => $category->template
-			))
-			->append('</li><li>')
-			->label(Language::get('category_sibling'), array(
-				'for' => 'sibling'
-			))
-			->select(Helper\Option::getContentArray('categories'), array(
-				'id' => 'sibling',
-				'name' => 'sibling',
-				'value' => $category->sibling
-			))
-			->append('</li><li>')
-			->label(Language::get('category_parent'), array(
-				'for' => 'parent'
-			))
-			->select(Helper\Option::getContentArray('categories'), array(
-				'id' => 'parent',
-				'name' => 'parent',
-				'value' => $category->parent
+			->select(Helper\Option::getContentArray('articles'), array(
+				'id' => 'article',
+				'name' => 'article',
+				'value' => $comment->article
 			))
 			->append('</li></ul></fieldset>')
 
@@ -224,7 +204,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getStatusArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $category->status
+				'value' => $comment->status
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -235,7 +215,7 @@ class CategoryForm implements ViewInterface
 				'name' => 'access',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $category->access
+				'value' => $comment->access
 			))
 			->append('</li><li>')
 			->label(Language::get('date'), array(
@@ -244,26 +224,26 @@ class CategoryForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => date('Y-m-d\TH:i:s', strtotime($category->date))
+				'value' => date('Y-m-d\TH:i:s', strtotime($comment->date))
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);
-			if ($category->id)
-			{
-				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
-			}
-			else
-			{
-				$formElement->submit(Language::get('create'));
-			}
+		if ($comment->id)
+		{
+			$formElement
+				->append($linkDelete)
+				->submit(Language::get('save'));
+		}
+		else
+		{
+			$formElement->submit(Language::get('create'));
+		}
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminCategoryFormEnd');
+		$output .= Hook::trigger('adminCommentFormEnd');
 		return $output;
 	}
 }
