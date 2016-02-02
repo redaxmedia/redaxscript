@@ -12,7 +12,9 @@
 
 /* @section 1. form admin */
 
-.rs-admin-form li
+/* TODO: remove outdated styles */
+.rs-admin-form li,
+.rs-admin-form-default li
 {
 	margin: 0.5em 0;
 }
@@ -26,7 +28,9 @@
 	display: block;
 }
 
+/* TODO: remove outdated styles*/
 .rs-admin-form .rs-admin-label-message:after,
+.rs-admin-form-default .rs-admin-label-message:after,
 .rs-admin-label-default:after
 {
 	content: ' ' attr(data-message);

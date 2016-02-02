@@ -1,10 +1,10 @@
 <?php
 return array(
-	'dbType' => '',
-	'dbHost' => '',
-	'dbName' => '',
-	'dbUser' => '',
-	'dbPassword' => '',
-	'dbPrefix' => '',
-	'dbSalt' => ''
+	'dbType' => null,
+	'dbHost' => null,
+	'dbName' => null,
+	'dbUser' => null,
+	'dbPassword' => null,
+	'dbPrefix' => null,
+	'dbSalt' => null
 );

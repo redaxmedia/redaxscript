@@ -79,9 +79,9 @@
 {
 	content: '\201d';
 	font: 7em/1em georgia;
+	left: -0.5em;
 	opacity: 0.15;
 	position: absolute;
-	right: 101%;
 	top: -0.125em;
 }
 
@@ -125,6 +125,11 @@
 	opacity: 0.5;
 	position: absolute;
 	top: 0.25em;
+}
+
+.rs-box-note a
+{
+	color: #fff;
 }
 
 /* @section 7. box comment */

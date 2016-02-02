@@ -46,11 +46,16 @@
 .rs-preview .rs-title-preview,
 .rs-preview .rs-title-preview-sub
 {
-	margin-top: 4em;
-	margin-bottom: 1em;
+	margin: 1em 0;
 	font-size: 2em;
 	background: rgba(0, 0, 0, 0.3);
 	padding: 0.25em;
+}
+
+.rs-preview .rs-title-preview:not(:first-child),
+.rs-preview .rs-title-preview-sub:not(:first-child)
+{
+	margin-top: 4em;
 }
 
 .rs-preview .rs-title-preview a,
