@@ -39,7 +39,7 @@ class ArticleForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $articleId identifer of the article
+	 * @param integer $articleId identifier of the article
 	 *
 	 * @return string
 	 */

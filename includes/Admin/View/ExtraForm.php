@@ -39,7 +39,7 @@ class ExtraForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $extraId identifer of the extra
+	 * @param integer $extraId identifier of the extra
 	 *
 	 * @return string
 	 */

@@ -39,7 +39,7 @@ class UserForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $userId identifer of the user
+	 * @param integer $userId identifier of the user
 	 *
 	 * @return string
 	 */
