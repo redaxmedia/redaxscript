@@ -39,7 +39,7 @@ class CategoryForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $categoryId identifer of the category
+	 * @param integer $categoryId identifier of the category
 	 *
 	 * @return string
 	 */

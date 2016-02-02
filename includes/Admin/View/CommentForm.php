@@ -39,7 +39,7 @@ class CommentForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $commentId identifer of the comment
+	 * @param integer $commentId identifier of the comment
 	 *
 	 * @return string
 	 */
