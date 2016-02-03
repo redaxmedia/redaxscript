@@ -67,12 +67,11 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process',
+				'action' => 'admin/process/users',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
 				'submit' => array(
-					'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 					'name' => Registry::get('adminParameter')
 				)
 			)
@@ -208,7 +207,10 @@ class UserForm implements ViewInterface
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->select(Helper\Option::getStatusArray(), array(
+			->label(Language::get('status'), array(
+				'for' => 'status'
+			))
+			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $user->status
