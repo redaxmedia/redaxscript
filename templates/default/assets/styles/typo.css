@@ -26,12 +26,12 @@
 a
 {
 	text-decoration: none;
-	transition: color 0.2s;
 }
 
 .rs-box-content a
 {
 	color: #323e4c;
+	transition: color 0.2s;
 }
 
 .rs-body

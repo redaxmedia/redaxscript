@@ -69,7 +69,7 @@
 
 .rs-admin-table tbody td
 {
-	padding: 1em;
+	padding: 0.25em 0.5em;
 }
 
 /* row disabled */
@@ -132,7 +132,7 @@
 
 .rs-admin-table tbody .rs-admin-list-control
 {
-	margin-top: 1.5em;
+	margin-top: 0.5em;
 }
 
 .rs-admin-desktop .rs-admin-table tbody .rs-admin-list-control
@@ -151,7 +151,7 @@
 {
 	color: #474747;
 	display: block;
-	min-height: 3em;
+	min-height: 2.5em;
 	position: relative;
 	transition: color 0.4s ease;
 }
@@ -206,7 +206,7 @@
 
 .rs-admin-table caption, .rs-admin-table thead th, .rs-admin-table tfoot td
 {
-	padding: 0.5em 1em;
+	padding: 0.5em;
 }
 
 /* @section 1.7 column move */

@@ -502,7 +502,7 @@ function admin_contents_form()
 
 	/* collect tab list output */
 
-	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<ul class="rs-js-list-tab rs-admin-list-tab">';
 	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l($wording_single), FULL_ROUTE . '#tab-1') . '</li>';
 	$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li>';
 	if (TABLE_PARAMETER != 'categories')

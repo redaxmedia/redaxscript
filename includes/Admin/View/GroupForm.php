@@ -62,7 +62,7 @@ class GroupForm implements ViewInterface
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => 'rs-js-list-tab rs-list-tab rs-admin-list-tab'
+			'class' => 'rs-js-list-tab rs-admin-list-tab'
 		));
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(

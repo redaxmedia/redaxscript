@@ -168,7 +168,7 @@ function admin_groups_form()
 
 	/* collect tab list output */
 
-	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<ul class="rs-js-list-tab rs-admin-list-tab">';
 	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('group'), FULL_ROUTE . '#tab-1') . '</li>';
 	if ($id == '' || $id > 1)
 	{

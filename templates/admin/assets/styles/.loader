@@ -10,6 +10,7 @@
 9 = templates/admin/assets/styles/grid.css
 10 = templates/admin/assets/styles/interface.css
 11 = templates/admin/assets/styles/list.css
-12 = templates/admin/assets/styles/table.css
-13 = templates/admin/assets/styles/query.css
-14 = templates/admin/assets/styles/note.css
+12 = templates/admin/assets/styles/tab.css
+13 = templates/admin/assets/styles/table.css
+14 = templates/admin/assets/styles/query.css
+15 = templates/admin/assets/styles/note.css
