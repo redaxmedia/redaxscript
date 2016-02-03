@@ -170,7 +170,6 @@ ul.rs-list-default li:before {
 	.rs-list-header span
 	{
 		padding: 0 1em;
-		-webkit-transition: background 0.2s;
 		transition: background 0.2s;
 	}
 
