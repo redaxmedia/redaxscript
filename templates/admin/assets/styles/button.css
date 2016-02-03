@@ -21,13 +21,19 @@
 	background: linear-gradient(#3b3b3b, #303030);
 	border: 1px solid #151515;
 	border-radius: 0.25em;
-	color: #ccc;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875rem/2.5rem arial;
+	text-decoration: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 	padding: 0 0.75em;
+}
+
+.rs-admin-button-default,
+a.rs-admin-button-default
+{
+	color: #ccc;
 }
 
 /* @section 1.1 hover effect */

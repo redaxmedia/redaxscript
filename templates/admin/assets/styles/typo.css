@@ -23,6 +23,15 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
+.rs-link-view {
+	text-decoration: underline;
+	color: #666;
+}
+
+.rs-link-view:hover {
+	text-decoration: none;
+}
+
 /* @section 2. title accordion admin */
 
 .rs-admin-title-accordion
@@ -34,6 +43,11 @@
 	padding: 0 1em;
 	text-transform: uppercase;
 	width: 100%;
+}
+
+.rs-admin-title-accordion:not(.rs-admin-title-active)
+{
+	cursor: pointer;
 }
 
 .rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
@@ -53,7 +67,7 @@
 
 /* @section 2.1 javascript enabled */
 
-.rs-admin-js .rs-admin-title-accordion
+.rs-js .rs-admin-title-accordion
 {
 	border-bottom-width: 0;
 	cursor: pointer;
@@ -61,20 +75,20 @@
 
 /* @section 2.2 last element*/
 
-.rs-admin-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+.rs-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
 {
 	border-bottom-width: 1px;
 }
 
 /* @section 3. several admin titles */
 
-.rs-admin-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
 	background: url('templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
 }
 
-.rs-admin-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
 {
 	color: #ccc;
 }
