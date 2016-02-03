@@ -36,11 +36,6 @@
 	border-top: 1px solid #b9b9b9;
 }
 
-.rs-admin-set-accordion + .rs-admin-set-accordion
-{
-	margin-top: 0;
-}
-
 /* @section 1.1 last element */
 
 .rs-admin-set-accordion-last .rs-admin-box-accordion

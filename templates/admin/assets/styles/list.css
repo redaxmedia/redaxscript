@@ -16,19 +16,18 @@
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: linear-gradient(#ddd, #c6c6c6);
-	border: 1px solid #c6c6c6;
+	background: linear-gradient(#bbb, #b9b9b9);
 	border-radius: 0.25em;
 	color: #666;
 	display: inline-block;
-	line-height: 2.25em;
+	line-height: 2em;
 	padding: 0 0.75em;
+	text-decoration: none;
 }
 
 .rs-admin-list-control a:hover
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	border-color: #005da2;
 	color: #fff;
 }
 
@@ -136,5 +135,4 @@
 .rs-js .rs-admin-list-tab .rs-item-active a
 {
 	color: #474747;
-	line-height: 2.5em;
 }
