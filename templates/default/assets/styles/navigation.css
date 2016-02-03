@@ -20,9 +20,9 @@
 @media screen and (max-width: 49.999rem)
 {
 
-	/* @section 1.1.1 navigation trigger */
+	/* @section 1.1.1 navigation toggle */
 
-	.rs-trigger-navigation
+	.rs-fn-toggle-navigation
 	{
 		color: rgba(255, 255, 255, 0.7);
 		float: right;
@@ -32,13 +32,13 @@
 		vertical-align: top;
 	}
 
-	.rs-trigger-navigation:after,
-	.rs-trigger-navigation:before
+	.rs-fn-toggle-navigation:after,
+	.rs-fn-toggle-navigation:before
 	{
 		background: #3873b5;
 	}
 
-	.rs-fn-trigger-navigation:not(:checked) ~ .rs-has-navigation .rs-trigger-navigation:after
+	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
@@ -52,7 +52,7 @@
 
 	/* @section 1.1.3 navigation layer */
 
-	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation:after
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
 	{
 		background: rgba(0, 0, 0, 0.8);
 	}

@@ -19,7 +19,7 @@
 
 /* @section 1. general */
 
-.rs-fn-trigger-navigation
+.rs-fn-status-navigation
 {
 	display: none;
 }
@@ -31,9 +31,9 @@
 @media screen and (max-width: 49.999rem)
 {
 
-	/* @section 2.1.1 navigation trigger */
+	/* @section 2.1.1 navigation toggle */
 
-	.rs-trigger-navigation
+	.rs-fn-toggle-navigation
 	{
 		cursor: pointer;
 		position: relative;
@@ -44,8 +44,8 @@
 		z-index: 10;
 	}
 
-	.rs-trigger-navigation:after,
-	.rs-trigger-navigation:before
+	.rs-fn-toggle-navigation:after,
+	.rs-fn-toggle-navigation:before
 	{
 		bottom: 2.5em;
 		content: '';
@@ -60,13 +60,13 @@
 
 	/* @section 2.1.2 navigation icon */
 
-	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:after
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
 		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 
-	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-trigger-navigation:before
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
 	{
 		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
@@ -87,7 +87,7 @@
 		z-index: 10;
 	}
 
-	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
 		-webkit-transform: translateX(0);
 		transform: translateX(0);
@@ -95,7 +95,7 @@
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-trigger-navigation ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation ~ .rs-has-navigation:after {
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -106,7 +106,7 @@
 		z-index: 1;
 	}
 
-	.rs-fn-trigger-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after {
 		right: 0;
 		z-index: 5;
 	}
@@ -118,7 +118,7 @@
 
 	/* @section 2.2.1 navigation trigger */
 
-	.rs-trigger-navigation
+	.rs-fn-toggle-navigation
 	{
 		display: none;
 	}
