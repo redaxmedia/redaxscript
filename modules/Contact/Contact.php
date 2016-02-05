@@ -6,6 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Language;
 use Redaxscript\Mailer;
+use Redaxscript\Messenger;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Module;
@@ -20,7 +21,6 @@ use Redaxscript\Validator;
  * @category Modules
  * @author Henry Ruhs
  */
-
 class Contact extends Module
 {
 	/**
@@ -150,8 +150,8 @@ class Contact extends Module
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
-		$urlFilter  = new Filter\Url();
-		$htmlFilter  = new Filter\Html();
+		$urlFilter = new Filter\Url();
+		$htmlFilter = new Filter\Html();
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();
 		$captchaValidator = new Validator\Captcha();
@@ -244,7 +244,10 @@ class Contact extends Module
 
 		/* notification */
 
-		notification(Language::get('operation_completed'), Language::get('message_sent', '_contact'), Language::get('home'), Registry::get('root'));
+		$messenger = new Messenger();
+		$messenger->setAction(Language::get('home'), Registry::get('root'));
+		echo $messenger->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+		echo $messenger->redirect();
 	}
 
 	/**
@@ -257,6 +260,9 @@ class Contact extends Module
 
 	protected static function _error($errorData = array())
 	{
-		notification(Language::get('error_occurred'), $errorData, Language::get('home'), Registry::get('root'));
+		$messenger = new Messenger();
+		$messenger->setAction(Language::get('home'), Registry::get('root'));
+		echo $messenger->error($errorData, Language::get('error_occurred'));
+		echo $messenger->redirect();
 	}
 }

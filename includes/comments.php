@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * comments
@@ -389,15 +390,21 @@ function comment_post()
 
 	/* handle error */
 
+	$messenger = new Redaxscript\Messenger();
+
 	if ($error)
 	{
-		notification(l('error_occurred'), $error, l('back'), $route);
+		$messenger->setAction(Language::get('back'), $route);
+		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->redirect();
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('operation_completed'), $success, l('continue'), $route);
+		$messenger->setAction(Language::get('continue'), $route);
+		echo $messenger->success($success, Language::get('operation_completed'));
+		echo $messenger->redirect();
 	}
 }

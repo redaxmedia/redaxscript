@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * admin router
@@ -13,6 +14,7 @@
 
 function admin_router()
 {
+	$messenger = new \Redaxscript\Messenger();
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{
@@ -37,7 +39,9 @@ function admin_router()
 		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
 		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
 		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
-			notification(l('something_wrong'), '', l('back'), 'admin');
+			$messenger->setAction(Language::get('back'), 'admin');
+			echo $messenger->error(Language::get('something_wrong'));
+			echo $messenger->redirect();
 			return;
 	}
 
@@ -92,7 +96,9 @@ function admin_router()
 		case ADMIN_PARAMETER == 'update' && $edit == 0:
 		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
 		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:
-			notification(l('error_occurred'), l('access_no'), l('back'), 'admin');
+			$messenger->setAction(Language::get('back'), 'admin');
+			echo $messenger->error(Language::get('error_occurred'), Language::get('access_no'));
+			echo $messenger->redirect();
 			return;
 	}
 
@@ -100,7 +106,9 @@ function admin_router()
 
 	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
 	{
-		notification(l('error_occurred'), l('token_no'), l('back'), 'admin');
+		$messenger->setAction(Language::get('back'), 'admin');
+		echo $messenger->error(Language::get('error_occurred'), Language::get('token_no'));
+		echo $messenger->redirect();
 		return;
 	}
 

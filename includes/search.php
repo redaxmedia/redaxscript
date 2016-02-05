@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * search
@@ -186,7 +187,8 @@ function search_post()
 
 	if ($error)
 	{
-		notification(l('something_wrong'), $error);
+		$messenger = new \Redaxscript\Messenger();
+		echo $messenger->error($error, Language::get('something_wrong'));
 	}
 	else
 	{

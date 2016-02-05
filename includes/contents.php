@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * contents
@@ -197,12 +198,12 @@ function contents()
 		{
 			if ($num_rows_active == $counter)
 			{
-				$error = l('access_no');
+				$error = Language::get('access_no');
 			}
 		}
 		else if (LAST_TABLE == 'articles' && $counter == 1)
 		{
-			$error = l('access_no');
+			$error = Language::get('access_no');
 		}
 	}
 
@@ -210,7 +211,8 @@ function contents()
 
 	if ($error)
 	{
-		notification(l('something_wrong'), $error);
+		$messenger = new \Redaxscript\Messenger();
+		echo $messenger->error($error, Language::get('something_wrong'));
 	}
 	else
 	{
@@ -509,71 +511,5 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	}
 	$output .= '</ul>';
 	$output .= Redaxscript\Hook::trigger('paginationEnd');
-	echo $output;
-}
-
-/**
- * notification
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Contents
- * @author Henry Ruhs
- *
- * @param string $title
- * @param string $text
- * @param string $action
- * @param string $route
- */
-
-function notification($title = '', $text = '', $action = '', $route = '')
-{
-	$output = Redaxscript\Hook::trigger('notificationStart');
-
-	/* detect needed mode */
-
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
-	{
-		$button = 'rs-admin-button-default';
-	}
-	else
-	{
-		$button = 'rs-button-default';
-	}
-
-	/* collect output */
-
-	if ($title)
-	{
-		$output .= '<h2 class="rs-title-content rs-title-notification">' . $title . '</h2>';
-	}
-	$output .= '<div class="rs-box-content rs-box-notification">';
-
-	/* collect text output */
-
-	if (is_string($text))
-	{
-		$text = array(
-			$text
-		);
-	}
-	foreach ($text as $value)
-	{
-		if ($value)
-		{
-			$output .= '<p class="rs-text_notification">' . $value . l('point') . '</p>';
-		}
-	}
-
-	/* collect button output */
-
-	if ($action && $route)
-	{
-		$output .= anchor_element('internal', '', 'rs-js-forward-notification ' . $button, $action, $route);
-	}
-	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger('notificationEnd');
 	echo $output;
 }

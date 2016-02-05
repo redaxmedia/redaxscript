@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * router
@@ -19,11 +20,17 @@ function router()
 		return;
 	}
 
+	/* notification */
+
+	$messenger = new \Redaxscript\Messenger();
+
 	/* check token */
 
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
-		notification(l('error_occurred'), l('token_incorrect'), l('home'), ROOT);
+		$messenger->setAction(Language::get('home'), ROOT);
+		echo $messenger->error(Language::get('token_incorrect'), Language::get('error_occurred'));
+		echo $messenger->redirect();
 		return;
 	}
 
@@ -62,7 +69,9 @@ function router()
 			}
 			else
 			{
-				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
+				$messenger->setAction(Language::get('login'), 'login');
+				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->redirect();
 			}
 			return;
 		case 'login':
@@ -82,7 +91,9 @@ function router()
 					echo $resetForm;
 					return;
 				}
-				notification(l('error_occurred'), l('access_no'), l('login'), 'login');
+				$messenger->setAction(Language::get('login'), 'login');
+				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->redirect();
 				return;
 			default:
 				$loginForm = new Redaxscript\View\LoginForm();
@@ -95,7 +106,9 @@ function router()
 				logout();
 				return;
 			}
-			notification(l('error_occurred'), l('access_no'), l('login'), 'login');
+			$messenger->setAction(Language::get('login'), 'login');
+			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->redirect();
 			return;
 		case 'register':
 			if (s('registration'))
@@ -104,7 +117,9 @@ function router()
 				echo $registerForm;
 				return;
 			}
-			notification(l('error_occurred'), l('access_no'), l('home'), ROOT);
+			$messenger->setAction(Language::get('home'), ROOT);
+			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->redirect();
 			return;
 		default:
 			contents();
