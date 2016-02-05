@@ -111,14 +111,14 @@ class UserForm implements ViewInterface
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('general'))
-		);
+			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
-		);
+			);
 		$listElement->append($outputItem);
 
 		/* create the form */

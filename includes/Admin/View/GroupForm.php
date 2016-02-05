@@ -111,14 +111,14 @@ class GroupForm implements ViewInterface
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('access'))
-		);
+			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
-		);
+			);
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -150,6 +150,7 @@ class GroupForm implements ViewInterface
 				'required' => 'required',
 				'value' => $group->alias
 			))
+			->append('</li><li>')
 			->label(Language::get('description'), array(
 				'for' => 'description'
 			))
@@ -174,6 +175,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->categories
 			))
+			->append('</li><li>')
 			->label(Language::get('articles'), array(
 				'for' => 'articles'
 			))
@@ -184,6 +186,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->articles
 			))
+			->append('</li><li>')
 			->label(Language::get('extras'), array(
 				'for' => 'extras'
 			))
@@ -194,6 +197,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->extras
 			))
+			->append('</li><li>')
 			->label(Language::get('comments'), array(
 				'for' => 'comments'
 			))
@@ -204,6 +208,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->comments
 			))
+			->append('</li><li>')
 			->label(Language::get('groups'), array(
 				'for' => 'groups'
 			))
@@ -214,6 +219,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->groups
 			))
+			->append('</li><li>')
 			->label(Language::get('users'), array(
 				'for' => 'users'
 			))
@@ -224,6 +230,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->users
 			))
+			->append('</li><li>')
 			->label(Language::get('modules'), array(
 				'for' => 'modules'
 			))
@@ -234,6 +241,7 @@ class GroupForm implements ViewInterface
 				'size' => count(Helper\Option::getPermissionArray('modules')),
 				'value' => $group->modules
 			))
+			->append('</li><li>')
 			->label(Language::get('settings'), array(
 				'for' => 'settings'
 			))
@@ -257,6 +265,7 @@ class GroupForm implements ViewInterface
 				'name' => 'filter',
 				'value' => $group->filter
 			))
+			->append('</li><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
@@ -265,7 +274,6 @@ class GroupForm implements ViewInterface
 				'name' => 'status',
 				'value' => $group->status
 			))
-			->append('</li><li>')
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);

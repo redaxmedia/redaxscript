@@ -105,20 +105,22 @@ class ModuleForm implements ViewInterface
 				->attr('href', $tabRoute . '#tab-1')
 				->text(Language::get('module'))
 			);
+		/*
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
+				->text(Language::get('customize'))
 		);
+		*/
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
-		);
+			);
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -130,16 +132,60 @@ class ModuleForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
-			->append('</li></ul></fieldset>')
+			->label(Language::get('name'), array(
+				'for' => 'name'
+			))
+			->text(array(
+				'autofocus' => 'autofocus',
+				'id' => 'name',
+				'name' => 'name',
+				'required' => 'required',
+				'value' => $module->name
+			))
+			->append('</li><li>')
+			->label(Language::get('description'), array(
+				'for' => 'description'
+			))
+			->textarea(array(
+				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'id' => 'description',
+				'name' => 'description',
+				'value' => $module->description
+			))
+			->append('</li></ul></fieldset>');
 
 			/* second tab */
 
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->append('</li></ul></fieldset>')
+		/*
+		$formElement
+			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+
+			->append('</li></ul></fieldset>');
+		*/
 
 			/* last tab */
 
+		$formElement
 			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->label(Language::get('status'), array(
+				'for' => 'status'
+			))
+			->select(Helper\Option::getToggleArray(), array(
+				'id' => 'status',
+				'name' => 'status',
+				'value' => $module->status
+			))
+			->append('</li><li>')
+			->label(Language::get('access'), array(
+				'for' => 'access'
+			))
+			->select(Helper\Option::getAccessArray('groups'), array(
+				'id' => 'access',
+				'name' => 'access',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getAccessArray('groups')),
+				'value' => $module->access
+			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);
