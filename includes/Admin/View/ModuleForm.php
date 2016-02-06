@@ -4,10 +4,12 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
+use Redaxscript\Directory;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Template;
 
 /**
  * children class to generate the module form
@@ -94,44 +96,59 @@ class ModuleForm implements ViewInterface
 				->text(Language::get('delete'));
 		}
 
+		/* documentation directory */
+
+		$docDirectory = new Directory();
+		$docDirectory->init('modules/' . $module->alias . '/docs');
+		$docDirectoryArray = $docDirectory->getArray();
+
 		/* collect item output */
 
+		$tabCounter = 1;
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-js-item-active rs-item-active')
 			->html($linkElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-1')
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
 				->text(Language::get('module'))
 			);
-		/*
+
+		/* process directory */
+
+		foreach ($docDirectoryArray as $key => $value)
+		{
+			$outputItem .= $itemElement
+				->copy()
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+					->text(pathinfo($value, PATHINFO_FILENAME))
+				);
+		}
+
+		/* collect item output */
+
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('customize'))
-		);
-		*/
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
 				->text(Language::get('customize'))
 			);
 		$listElement->append($outputItem);
 
 		/* create the form */
 
+		$tabCounter = 1;
 		$formElement
 			->append($listElement)
 			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
@@ -156,17 +173,27 @@ class ModuleForm implements ViewInterface
 
 			/* second tab */
 
-		/*
-		$formElement
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			if ($docDirectoryArray)
+			{
+				/* template */
 
-			->append('</li></ul></fieldset>');
-		*/
+				$template = new Template;
+
+				/* process directory */
+
+				foreach ($docDirectoryArray as $key => $value)
+				{
+					$formElement
+						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-set-tab">')
+						->append($template->partial('modules/' . $module->alias . '/docs/' . $value))
+						->append('</fieldset>');
+				}
+			}
 
 			/* last tab */
 
 		$formElement
-			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))

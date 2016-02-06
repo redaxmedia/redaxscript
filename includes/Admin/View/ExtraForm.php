@@ -161,7 +161,7 @@ class ExtraForm implements ViewInterface
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => $extra->text
+				'value' => htmlspecialchars($extra->text)
 			))
 			->append('</li></ul></fieldset>')
 

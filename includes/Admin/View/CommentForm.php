@@ -168,7 +168,7 @@ class CommentForm implements ViewInterface
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => $comment->text
+				'value' => htmlspecialchars($comment->text)
 			))
 			->append('</li></ul></fieldset>')
 

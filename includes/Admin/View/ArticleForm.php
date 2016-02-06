@@ -181,7 +181,7 @@ class ArticleForm implements ViewInterface
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => $article->text
+				'value' => htmlspecialchars($article->text)
 			))
 			->append('</li></ul></fieldset>')
 
