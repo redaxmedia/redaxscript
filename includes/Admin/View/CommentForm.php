@@ -67,7 +67,7 @@ class CommentForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/comments',
+				'action' => $comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(

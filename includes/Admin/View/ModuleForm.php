@@ -175,17 +175,13 @@ class ModuleForm implements ViewInterface
 
 			if ($docDirectoryArray)
 			{
-				/* template */
-
-				$template = new Template;
-
 				/* process directory */
 
 				foreach ($docDirectoryArray as $key => $value)
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-set-tab">')
-						->append($template->partial('modules/' . $module->alias . '/docs/' . $value))
+						->append(Template::partial('modules/' . $module->alias . '/docs/' . $value))
 						->append('</fieldset>');
 				}
 			}

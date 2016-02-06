@@ -67,7 +67,7 @@ class ExtraForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/extras',
+				'action' => $extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(

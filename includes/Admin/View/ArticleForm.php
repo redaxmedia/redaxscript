@@ -67,7 +67,7 @@ class ArticleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/articles',
+				'action' => $article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(

@@ -67,7 +67,7 @@ class CategoryForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/categories',
+				'action' => $category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(

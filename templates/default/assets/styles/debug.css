@@ -41,10 +41,42 @@
 	border-left: 0.5rem solid #d50000;
 	color: #666;
 	content: 'namespace collision: ' attr(class);
-	font: bold 1rem monospace;
-	margin-top: -0.5rem;
+	font: bold 0.75rem monospace;
+	margin-top: -1rem;
 	padding: 0.25rem 0.5rem;
+	opacity: 0.1;
 	position: absolute;
 	text-shadow: none;
 	text-transform: lowercase;
+	transition: all 0.2s 0.6s ease;
+	white-space: nowrap;
+}
+
+[class*="rs-b"][class*="rs-admin-"]:active:before,
+[class*="rs-c"][class*="rs-admin-"]:active:before,
+[class*="rs-d"][class*="rs-admin-"]:active:before,
+[class*="rs-e"][class*="rs-admin-"]:active:before,
+[class*="rs-f"][class*="rs-admin-"]:active:before,
+[class*="rs-g"][class*="rs-admin-"]:active:before,
+[class*="rs-h"][class*="rs-admin-"]:active:before,
+[class*="rs-i"][class*="rs-admin-"]:active:before,
+[class*="rs-j"][class*="rs-admin-"]:active:before,
+[class*="rs-k"][class*="rs-admin-"]:active:before,
+[class*="rs-l"][class*="rs-admin-"]:active:before,
+[class*="rs-m"][class*="rs-admin-"]:active:before,
+[class*="rs-n"][class*="rs-admin-"]:active:before,
+[class*="rs-o"][class*="rs-admin-"]:active:before,
+[class*="rs-p"][class*="rs-admin-"]:active:before,
+[class*="rs-q"][class*="rs-admin-"]:active:before,
+[class*="rs-r"][class*="rs-admin-"]:active:before,
+[class*="rs-s"][class*="rs-admin-"]:active:before,
+[class*="rs-t"][class*="rs-admin-"]:active:before,
+[class*="rs-u"][class*="rs-admin-"]:active:before,
+[class*="rs-v"][class*="rs-admin-"]:active:before,
+[class*="rs-w"][class*="rs-admin-"]:active:before,
+[class*="rs-x"][class*="rs-admin-"]:active:before,
+[class*="rs-y"][class*="rs-admin-"]:active:before,
+[class*="rs-z"][class*="rs-admin-"]:active:before
+{
+	opacity: 0.9;
 }
