@@ -8,9 +8,10 @@
 7 = templates/admin/assets/styles/field.css
 8 = templates/admin/assets/styles/form.css
 9 = templates/admin/assets/styles/grid.css
-10 = templates/admin/assets/styles/interface.css
-11 = templates/admin/assets/styles/list.css
-12 = templates/admin/assets/styles/tab.css
-13 = templates/admin/assets/styles/table.css
-14 = templates/admin/assets/styles/query.css
-15 = templates/admin/assets/styles/note.css
+10 = templates/admin/assets/styles/icon.css
+11 = templates/admin/assets/styles/interface.css
+12 = templates/admin/assets/styles/list.css
+13 = templates/admin/assets/styles/tab.css
+14 = templates/admin/assets/styles/table.css
+15 = templates/admin/assets/styles/query.css
+16 = templates/admin/assets/styles/note.css

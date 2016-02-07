@@ -15,20 +15,14 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. font face */
+/* @section 1. links */
 
-@font-face
-{
-	font-family: 'icon admin';
-	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
-}
-
-.rs-link-view {
+.rs-admin-link-default {
 	text-decoration: underline;
 	color: #666;
 }
 
-.rs-link-view:hover {
+.rs-admin-link-default:hover {
 	text-decoration: none;
 }
 

@@ -76,7 +76,7 @@ function admin_users_list()
 			$output .= '><td class="rs-admin-column-first">';
 			if ($language)
 			{
-				$output .= '<span class="rs-icon-flag rs-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+				$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
 			}
 			$output .= $name;
 
@@ -98,7 +98,7 @@ function admin_users_list()
 					if ($group_alias)
 					{
 						$group_name = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->name;
-						$output .= anchor_element('internal', '', 'link_parent', $group_name, 'admin/edit/groups/' . $value);
+						$output .= anchor_element('internal', '', 'rs-admin-link-default', $group_name, 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{
 							$output .= ', ';

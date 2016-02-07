@@ -59,8 +59,6 @@
 {
 	background: #fff;
 	margin-bottom: 13em;
-	position: relative;
-	z-index: 1;
 }
 
 /* @section 3. header */
@@ -107,6 +105,7 @@
 	padding: 1em;
 	position: fixed;
 	right: 0;
+	z-index: -1;
 }
 
 /* @section 7. query */

@@ -243,11 +243,11 @@ function admin_contents_list()
 				$output .= '><td class="rs-admin-column-first">';
 				if ($language)
 				{
-					$output .= '<span class="rs-icon-flag rs-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+					$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . $language . '">' . $language . '</span>';
 				}
 				if ($status == 1)
 				{
-					$output .= anchor_element('internal', '', 'rs-link-view', $name, $route);
+					$output .= anchor_element('internal', '', 'rs-admin-link-default', $name, $route);
 				}
 				else
 				{
@@ -281,7 +281,7 @@ function admin_contents_list()
 						if ($parent)
 						{
 							$parent_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
-							$output .= anchor_element('internal', '', 'link_parent', $parent_title, 'admin/edit/categories/' . $parent);
+							$output .= anchor_element('internal', '', 'rs-admin-link-default', $parent_title, 'admin/edit/categories/' . $parent);
 						}
 						else
 						{
@@ -293,7 +293,7 @@ function admin_contents_list()
 						if ($category)
 						{
 							$category_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
-							$output .= anchor_element('internal', '', 'link_parent', $category_title, 'admin/edit/categories/' . $category);
+							$output .= anchor_element('internal', '', 'rs-admin-link-default', $category_title, 'admin/edit/categories/' . $category);
 						}
 						else
 						{
@@ -305,7 +305,7 @@ function admin_contents_list()
 						if ($article)
 						{
 							$article_title = Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
-							$output .= anchor_element('internal', '', 'link_parent', $article_title, 'admin/edit/articles/' . $article);
+							$output .= anchor_element('internal', '', 'rs-admin-link-default', $article_title, 'admin/edit/articles/' . $article);
 						}
 						else
 						{
