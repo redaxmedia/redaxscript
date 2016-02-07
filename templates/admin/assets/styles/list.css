@@ -130,6 +130,7 @@
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	border-bottom-color: #e2e2e2;
+	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-item-active a

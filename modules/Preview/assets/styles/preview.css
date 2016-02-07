@@ -14,6 +14,11 @@
 
 /* @section 1. box preview */
 
+.rs-preview
+{
+	margin-top: 2em;
+}
+
 .rs-preview .rs-box-preview
 {
 	background: #222;
@@ -46,26 +51,37 @@
 .rs-preview .rs-title-preview,
 .rs-preview .rs-title-preview-sub
 {
-	margin: 1em 0;
+	border-left: 0.25em solid #c77a46;
+	border-radius: 0 0.125em 0.125em 0;
+	color: #fff;
 	font-size: 2em;
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(0, 0, 0, 0.8);
 	padding: 0.25em;
 }
 
-.rs-preview .rs-title-preview:not(:first-child),
-.rs-preview .rs-title-preview-sub:not(:first-child)
+.rs-preview .rs-title-preview {
+	text-transform: uppercase;
+}
+
+.rs-preview .rs-title-preview:not(:first-child)
 {
-	margin-top: 4em;
+	margin-top: 2em;
 }
 
 .rs-preview .rs-title-preview a,
 .rs-preview .rs-title-preview-sub a
 {
-	color: #323e4c;
+	color: #fff;
 }
 
 .rs-preview .rs-title-preview-sub
 {
-	margin-top: 3em;
-	font-size: 1.25em;
+	font: 1.25em monospace;
+	margin-bottom: 2em;
+	margin-top: 7em;
+}
+
+.rs-preview .rs-title-preview + .rs-title-preview-sub
+{
+	margin-top: 2em;
 }
