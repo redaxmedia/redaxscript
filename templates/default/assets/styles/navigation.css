@@ -25,17 +25,22 @@
 	.rs-fn-toggle-navigation
 	{
 		color: rgba(255, 255, 255, 0.7);
-		float: right;
 		font: 1rem arial;
-		margin-top: 0.25em;
-		padding-top: 1.5em;
-		vertical-align: top;
+		padding-top: 2em;
+		position: absolute;
+		right: 0.5em;
+		top: 0;
 	}
 
 	.rs-fn-toggle-navigation:after,
 	.rs-fn-toggle-navigation:before
 	{
 		background: #3873b5;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation {
+		position: fixed;
+		margin: 1.25rem;
 	}
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
@@ -52,8 +57,8 @@
 
 	/* @section 1.1.3 navigation layer */
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		background: rgba(0, 0, 0, 0.8);
+		box-shadow: 10em 0 0 50em rgba(0, 0, 0, 0.8);
 	}
 }
