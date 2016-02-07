@@ -20,7 +20,14 @@
 @media screen and (max-width: 49.999rem)
 {
 
-	/* @section 1.1.1 navigation toggle */
+	/* @section 1.1.1 navigation */
+
+	.rs-fn-navigation
+	{
+		width: 75%;
+	}
+
+	/* @section 1.1.2 navigation toggle */
 
 	.rs-fn-toggle-navigation
 	{
@@ -38,7 +45,8 @@
 		background: #3873b5;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation {
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
+	{
 		position: fixed;
 		margin: 1.25rem;
 	}
@@ -46,13 +54,6 @@
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
-	}
-
-	/* @section 1.1.2 navigation */
-
-	.rs-fn-navigation
-	{
-		width: 75%;
 	}
 
 	/* @section 1.1.3 navigation layer */

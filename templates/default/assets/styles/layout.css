@@ -55,6 +55,14 @@
 	margin-top: 2em;
 }
 
+.rs-page
+{
+	background: #fff;
+	margin-bottom: 13em;
+	position: relative;
+	z-index: 1;
+}
+
 /* @section 3. header */
 
 .rs-header
@@ -92,8 +100,13 @@
 .rs-footer
 {
 	background: #323e4c;
-	padding: 1em;
+	bottom: 0;
+	height: 10em;
+	left: 0;
 	margin-top: 2em;
+	padding: 1em;
+	position: fixed;
+	right: 0;
 }
 
 /* @section 7. query */

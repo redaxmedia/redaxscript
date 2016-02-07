@@ -23,30 +23,33 @@
 			'templates/default/header.phtml'
 		)); ?>
 
-		<!-- teaser -->
+		<div class="rs-page">
 
-		<?php echo Template::extra(array(
-			'filter' => 'teaser'
-		)); ?>
+			<!-- teaser -->
 
-		<!-- main -->
+			<?php echo Template::extra(array(
+				'filter' => 'teaser'
+			)); ?>
 
-		<main id="main" class="rs-main rs-wrapper rs-clearfix">
+			<!-- main -->
 
-			<!-- handle content error -->
+			<main id="main" class="rs-main rs-wrapper rs-clearfix">
 
-			<?php if (Template::registry('contentError')): ?>
-				<?php echo Template::partial('templates/default/error.phtml'); ?>
+				<!-- handle content error -->
 
-			<!-- else content and sidebar -->
+				<?php if (Template::registry('contentError')): ?>
+					<?php echo Template::partial('templates/default/error.phtml'); ?>
 
-			<?php else: ?>
-				<?php echo Template::partial(array(
-					'templates/default/content.phtml',
-					'templates/default/sidebar.phtml'
-				)); ?>
-			<?php endif; ?>
-		</main>
+				<!-- else content and sidebar -->
+
+				<?php else: ?>
+					<?php echo Template::partial(array(
+						'templates/default/content.phtml',
+						'templates/default/sidebar.phtml'
+					)); ?>
+				<?php endif; ?>
+			</main>
+		</div>
 
 		<!-- footer -->
 
