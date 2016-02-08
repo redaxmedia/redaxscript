@@ -33,23 +33,23 @@
 			},
 			"language":
 			{
-				"Select": null,
+				"Select": "select",
 				"English": "en",
 				"Deutsch": "de"
 			},
 			"template":
 			{
-				"Select": null,
+				"Select": "select",
 				"default": "default"
 			},
 			"content":
 			{
-				"Select": null,
+				"Select": "select",
 				"Welcome (1)": 1
 			},
 			"access":
 			{
-				"All": null,
+				"All": "select",
 				"Administrators": 1,
 				"Members": 2
 			}
