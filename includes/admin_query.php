@@ -376,11 +376,11 @@ function admin_process()
 		}
 	}
 
-	/* empty to null */
+	/* empty and select to null */
 
 	foreach ($r as $key => $value)
 	{
-		if ($value == '')
+		if ($value == '' || $value == 'select')
 		{
 			$r[$key] = null;
 		}

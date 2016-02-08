@@ -95,7 +95,7 @@ class Option
 
 		/* process directory */
 
-		$languageArray[Language::get('select')] = null;
+		$languageArray[Language::get('select')] = 'select';
 		foreach ($languageDirectoryArray as $value)
 		{
 			$value = substr($value, 0, 2);
@@ -123,7 +123,7 @@ class Option
 
 		/* process directory */
 
-		$templateArray[Language::get('select')] = null;
+		$templateArray[Language::get('select')] = 'select';
 		foreach ($templateDirectoryArray as $value)
 		{
 			$templateArray[$value] = $value;
@@ -147,7 +147,7 @@ class Option
 
 		/* process content */
 
-		$contentArray[Language::get('select')] = null;
+		$contentArray[Language::get('select')] = 'select';
 		foreach ($content as $value)
 		{
 			$contentArray[$value->title . ' (' . $value->id . ')'] = $value->id;
@@ -171,7 +171,7 @@ class Option
 
 		/* process access */
 
-		$accessArray[Language::get('all')] = null;
+		$accessArray[Language::get('all')] = 'select';
 		foreach ($access as $value)
 		{
 			$accessArray[$value->name] = $value->id;

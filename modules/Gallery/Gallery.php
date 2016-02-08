@@ -148,7 +148,6 @@ class Gallery extends Config
 				$outputItem .= '</li>';
 			}
 			$output = $listElement->attr('id', $galleryId)->html($outputItem);
-
 		}
 		return $output;
 	}
