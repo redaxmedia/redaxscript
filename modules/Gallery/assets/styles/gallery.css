@@ -38,6 +38,8 @@
 {
 	border-radius: 0.25em;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+	display: block;
+	max-width: 100%;
 }
 
 /* @section 3. gallery overlay */
@@ -55,7 +57,9 @@
 
 /* @section 4. fadein effect */
 
-.rs-gallery-media, .rs-gallery-meta, .rs-gallery-overlay
+.rs-gallery-media,
+.rs-gallery-meta,
+.rs-gallery-overlay
 {
 	-webkit-animation: fade 0.2s;
 	animation: fade 0.2s;
@@ -82,36 +86,38 @@
 
 .rs-gallery-control
 {
-	color: rgba(0, 0, 0, 0.4);
+	bottom: 0;
 	cursor: pointer;
-	font: 12em/0 'icon gallery';
+	font: 1.5em/0 'icon gallery';
 	position: fixed;
 	text-indent: -999em;
-	top: 50%;
 	z-index: 1200;
+	transition: color 0.2s;
 }
 
 .rs-gallery-control:hover
 {
-	color: rgba(0, 0, 0, 0.6);
+	color: #fff;
 }
 
-.rs-gallery-control:before, .rs-gallery-control:after
+.rs-gallery-control:before,
+.rs-gallery-control:after
 {
 	position: absolute;
 	text-indent: 0;
+	top: 50%;
 }
 
 /* previous */
 
 .rs-gallery-control-previous
 {
-	left: 5%;
+	left: 0;
 }
 
 .rs-gallery-control-previous:before
 {
-	left: 0;
+	left: 1em;
 	content: '<';
 }
 
@@ -119,12 +125,12 @@
 
 .rs-gallery-control-next
 {
-	right: 5%;
+	right: 0;
 }
 
 .rs-gallery-control-next:after
 {
-	right: 0;
+	right: 1em;
 	content: '>';
 }
 
@@ -132,40 +138,102 @@
 
 .rs-gallery-meta
 {
-	color: rgba(0, 0, 0, 0.4);
+	color: rgba(0, 0, 0, 0.2);
 	bottom: 0;
-	font: bold 2em arial;
+	font: bold 0.875em arial;
 	left: 0;
 	padding: 2% 0;
 	position: absolute;
 	right: 0;
 	text-align: center;
+	transition: background 0.5s ease 0s, color 0.5s ease 0s;
 }
 
-.rs-gallery-artist
+.rs-gallery:hover .rs-gallery-meta
 {
-	font-size: 1.5em;
-}
-
-.rs-gallery-description
-{
-	font-size: 1.75em;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	transition: background 0.5s ease 2s, color 0.5s ease 2s;
 }
 
 .rs-gallery-pagination
 {
 	margin-top: 0.5em;
+	font-size: 0.75em;
 }
 
 /* @section 8. gallery list */
 
-.rs-list-gallery li
+.rs-list-gallery
 {
-	margin: 0 1em 1em 0;
-	position: relative;
+	margin: 1em 0;
 }
 
-.rs-list-gallery li, .rs-list-gallery img
+.rs-list-gallery li
 {
-	float: left;
+	position: relative;
+	max-width: 50%;
+}
+
+.rs-list-gallery li,
+.rs-list-gallery img
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* @section 9. gallery link */
+
+.rs-list-gallery a
+{
+	display: block;
+	margin: 0.25em;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 landscape */
+
+@media screen and (orientation: landscape)
+{
+	.rs-mobile .rs-gallery-overlay
+	{
+		background: rgba(0, 0, 0, 0.8);
+	}
+}
+
+/* @section 10.2 screen max 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-gallery-meta
+	{
+		display: none;
+	}
+
+	.rs-gallery-control
+	{
+		background: #000;
+		color: rgba(255, 255, 255, 0.5);
+		min-height: 2em;
+		width: 50%;
+	}
+}
+
+/* @section 10.3 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-list-gallery li
+	{
+		max-width: 33.33%;
+	}
+
+	.rs-gallery-control
+	{
+		bottom: 50%;
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 4em;
+		margin-bottom: -0.25em;
+	}
 }

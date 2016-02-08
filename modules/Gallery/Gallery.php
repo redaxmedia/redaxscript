@@ -41,7 +41,6 @@ class Gallery extends Config
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
 		$loader_modules_styles[] = 'modules/Gallery/assets/styles/gallery.css';
-		$loader_modules_styles[] = 'modules/Gallery/assets/styles/query.css';
 		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/gallery.js';
 	}
