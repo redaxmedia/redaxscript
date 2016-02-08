@@ -27,9 +27,11 @@
 
 			<!-- teaser -->
 
-			<?php echo Template::extra(array(
-				'filter' => 'teaser'
-			)); ?>
+			<?php if (!Template::registry('adminParameter')): ?>
+				<?php echo Template::extra(array(
+					'filter' => 'teaser'
+				)); ?>
+			<?php endif; ?>
 
 			<!-- main -->
 

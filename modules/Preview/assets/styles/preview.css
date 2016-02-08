@@ -51,11 +51,11 @@
 .rs-preview .rs-title-preview,
 .rs-preview .rs-title-preview-sub
 {
+	background: rgba(0, 0, 0, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
 	color: #fff;
 	font-size: 2em;
-	background: rgba(0, 0, 0, 0.8);
 	padding: 0.25em;
 }
 
