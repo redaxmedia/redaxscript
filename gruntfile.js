@@ -470,6 +470,18 @@ module.exports = function (grunt)
 		},
 		watch:
 		{
+			sass:
+			{
+				files:
+				[
+					'assets/**/*.scss',
+					'templates/**/*.scss'
+				],
+				tasks:
+				[
+					'sass'
+				]
+			},
 			phpunit:
 			{
 				files:
