@@ -43,6 +43,11 @@ a
 	font: 300 1.25em/1.75em 'open sans condensed', arial, sans-serif;
 }
 
+.rs-content strong
+{
+	font-weight: bold;
+}
+
 /* @section 2. links */
 
 .rs-link-default

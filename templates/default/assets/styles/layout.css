@@ -29,7 +29,15 @@
 
 .rs-main
 {
-	min-height: 32em;
+	background: #fff;
+	margin-bottom: 5em;
+	min-height: 20em;
+	padding-bottom: 2em;
+}
+
+.rs-page
+{
+	margin-top: 2em;
 }
 
 /* @section 2. wrapper */
@@ -48,18 +56,6 @@
 .rs-wrapper-table-default > .rs-table-default
 {
 	width: 100%;
-}
-
-.rs-header + .rs-main
-{
-	margin-top: 2em;
-}
-
-.rs-page
-{
-	background: #fff;
-	margin-bottom: 13em;
-	padding-bottom: 3em;
 }
 
 /* @section 3. header */
@@ -100,9 +96,8 @@
 {
 	background: #323e4c;
 	bottom: 0;
-	height: 10em;
+	min-height: 1.75em;
 	left: 0;
-	margin-top: 2em;
 	padding: 1em;
 	position: fixed;
 	right: 0;
@@ -137,7 +132,7 @@
 		min-height: 2.5em;
 	}
 
-	.rs-main
+	.rs-page
 	{
 		padding: 1em;
 	}

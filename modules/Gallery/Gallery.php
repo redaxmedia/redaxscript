@@ -174,7 +174,7 @@ class Gallery extends Config
 		if ($exifData)
 		{
 			$output['artist'] = $exifData['Artist'];
-			$output['date'] = $exifData['DateTime'] ? date(Db::getSettings('data'), strtotime($exifData['DateTime'])) : null;
+			$output['date'] = $exifData['DateTime'] ? date(Db::getSettings('date'), strtotime($exifData['DateTime'])) : null;
 			$output['description'] = $exifData['ImageDescription'];
 		}
 		return $output;

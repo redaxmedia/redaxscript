@@ -140,7 +140,7 @@
 {
 	color: rgba(0, 0, 0, 0.2);
 	bottom: 0;
-	font: bold 0.875em arial;
+	font: bold 0.75em arial;
 	left: 0;
 	padding: 2% 0;
 	position: absolute;
@@ -156,10 +156,14 @@
 	transition: background 0.5s ease 2s, color 0.5s ease 2s;
 }
 
-.rs-gallery-pagination
+.rs-gallery-description
+{
+	font-size: 1.25em;
+}
+
+.rs-gallery-meta div
 {
 	margin-top: 0.5em;
-	font-size: 0.75em;
 }
 
 /* @section 8. gallery list */
