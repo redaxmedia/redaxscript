@@ -121,7 +121,7 @@ class Element extends HtmlAbstract
 		{
 			$this->_attributeArray = array_merge($this->_attributeArray, array_map('trim', $attribute));
 		}
-		else if ($attribute && $value)
+		else if (strlen($attribute) && strlen($value))
 		{
 			$this->_attributeArray[$attribute] = trim($value);
 		}
@@ -268,7 +268,7 @@ class Element extends HtmlAbstract
 
 		foreach ($this->_attributeArray as $attribute => $value)
 		{
-			if ($attribute && $value)
+			if (strlen($attribute) && strlen($value))
 			{
 				$output .= ' ' . $attribute . '="' . $value . '"';
 			}
