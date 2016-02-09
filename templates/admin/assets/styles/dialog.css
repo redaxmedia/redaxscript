@@ -21,6 +21,5 @@
 
 .rs-admin-dialog, .rs-admin-dialog-overlay
 {
-	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }

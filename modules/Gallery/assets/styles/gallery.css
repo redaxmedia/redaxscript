@@ -61,7 +61,6 @@
 .rs-gallery-meta,
 .rs-gallery-overlay
 {
-	-webkit-animation: fade 0.2s;
 	animation: fade 0.2s;
 }
 
@@ -69,7 +68,6 @@
 
 .rs-gallery-loader:after
 {
-	-webkit-animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
 	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
 	color: rgba(0, 0, 0, 0.4);
 	content: '0';
@@ -78,7 +76,6 @@
 	margin: -1em 0 0 -0.5em;
 	position: absolute;
 	top: 50%;
-	-webkit-transform: scale(0);
 	transform: scale(0);
 }
 

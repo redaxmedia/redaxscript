@@ -76,7 +76,6 @@ a
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.375em 0.5em;
 	text-decoration: none;
-	transition: -webkit-transform 0.2s;
 	transition: transform 0.2s;
 }
 
@@ -94,7 +93,6 @@ a
 
 .rs-link-read-more:active
 {
-	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
 

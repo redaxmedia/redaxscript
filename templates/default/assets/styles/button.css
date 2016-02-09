@@ -36,7 +36,6 @@
 a.rs-button-default
 {
 	color: #fff;
-	transition: -webkit-transform 0.1s, box-shadow 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
@@ -48,7 +47,6 @@ a.rs-button-default
 .rs-button-default:active
 {
 	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
-	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
 

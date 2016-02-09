@@ -37,9 +37,6 @@
 	{
 		cursor: pointer;
 		position: relative;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
 		user-select: none;
 		z-index: 100;
 	}
@@ -54,7 +51,6 @@
 		position: absolute;
 		right: 0;
 		outline: none;
-		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
 	}
 
@@ -62,13 +58,11 @@
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
-		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
 	{
-		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
 	}
 
@@ -80,16 +74,13 @@
 		bottom: 0;
 		position: fixed;
 		top: 0;
-		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
-		-webkit-transform: translateX(-100%);
 		transform: translateX(-100%);
 		z-index: 10;
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		-webkit-transform: translateX(0);
 		transform: translateX(0);
 	}
 

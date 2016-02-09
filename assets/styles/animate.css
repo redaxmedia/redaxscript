@@ -13,19 +13,6 @@
 
 /* @section 1. fade */
 
-@-webkit-keyframes rs-fade
-{
-	from
-	{
-		opacity: 0;
-	}
-
-	to
-	{
-		opacity: 1;
-	}
-}
-
 @keyframes rs-fade
 {
 	from
@@ -41,64 +28,30 @@
 
 /* @section 2. rotate */
 
-@-webkit-keyframes rs-rotate
-{
-	from
-	{
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-
-	to
-	{
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
 @keyframes rs-rotate
 {
 	from
 	{
-		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
 
 	to
 	{
-		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
 
 /* @section 3. scale */
 
-@-webkit-keyframes rs-scale
-{
-	from
-	{
-		-webkit-transform: scale(0);
-		transform: scale(0);
-	}
-
-	to
-	{
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
-}
-
 @keyframes rs-scale
 {
 	from
 	{
-		-webkit-transform: scale(0);
 		transform: scale(0);
 	}
 
 	to
 	{
-		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
