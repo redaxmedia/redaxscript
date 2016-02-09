@@ -18,6 +18,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. several boxes */
 
 .rs-box-code
@@ -32,7 +35,7 @@
 
 .rs-box-line
 {
-	background: #323e4c;
+	background: var(--color-primary-dark);
 	height: 0.125em;
 }
 
@@ -48,15 +51,15 @@
 .rs-box-metadata a::-moz-selection,
 .rs-box-metadata span::-moz-selection
 {
-	background: #323e4c;
-	color: #fff;
+	background: var(--color-primary-dark);
+	color: var(--color-light);
 }
 
 .rs-box-metadata a::selection,
 .rs-box-metadata span::selection
 {
-	background: #323e4c;
-	color: #fff;
+	background: var(--color-primary-dark);
+	color: var(--color-light);
 }
 
 /* @section 3. box quote */
@@ -102,8 +105,8 @@
 
 .rs-box-tab-default
 {
-	background: #323e4c;
-	color: #fff;
+	background: var(--color-primary-dark);
+	color: var(--color-light);
 	padding: 0.25em 1em;
 }
 
@@ -129,7 +132,7 @@
 
 .rs-box-note a
 {
-	color: #fff;
+	color: var(--color-light);
 }
 
 /* @section 7. box comment */
@@ -161,7 +164,7 @@
 
 /* @section 9.1 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-box-metadata
 	{

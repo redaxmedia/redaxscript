@@ -16,6 +16,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. button default */
 
 .rs-button-default
@@ -35,7 +38,7 @@
 .rs-button-default,
 a.rs-button-default
 {
-	color: #fff;
+	color: var(--color-light);
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
@@ -56,7 +59,7 @@ a.rs-button-default
 {
 	position: relative;
 	text-indent: -999em;
-	color: #323e4c;
+	color: var(--color-primary-dark);
 	display: inline-block;
 	vertical-align: middle;
 	width: 20%;
@@ -111,7 +114,7 @@ a.rs-button-default
 
 /* @section 6.1 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media (--max-medium)
 {
 	.rs-button-default
 	{
@@ -121,7 +124,7 @@ a.rs-button-default
 
 /* @section 6.2 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-button-default
 	{

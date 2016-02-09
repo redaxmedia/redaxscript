@@ -19,6 +19,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. several lists */
 
 .rs-list-breadcrumb li,
@@ -38,7 +41,7 @@
 
 .rs-list-breadcrumb a
 {
-	color: #323e4c;
+	color: var(--color-primary-dark);
 	opacity: 0.5;
 	transition: opacity 0.2s;
 }
@@ -97,7 +100,7 @@ ul.rs-list-default li:before {
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
-	color: #fff;
+	color: var(--color-light);
 }
 
 /* @section 5. list tabs */
@@ -114,19 +117,19 @@ ul.rs-list-default li:before {
 
 .rs-list-tab a
 {
-	color: #323e4c;
+	color: var(--color-primary-dark);
 }
 
 .rs-list-tab .rs-item-active
 {
-	background: #323e4c;
+	background: var(--color-primary-dark);
 	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
 }
 
 .rs-list-tab .rs-item-active a
 {
-	color: #fff;
+	color: var(--color-light);
 }
 
 .rs-list-tab > li
@@ -145,14 +148,14 @@ ul.rs-list-default li:before {
 
 .rs-list-tab > li:hover a
 {
-	color: #fff;
+	color: var(--color-light);
 }
 
 /* @section 6. query */
 
 /* @section 6.1 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media (--max-medium)
 {
 
 	/* @section 6.1.1 list header */
@@ -180,7 +183,8 @@ ul.rs-list-default li:before {
 
 /* @section 6.2 min width 50rem */
 
-@media screen and (min-width: 50rem) {
+@media (--min-medium)
+{
 
 	/* @section 6.2.1 list header */
 

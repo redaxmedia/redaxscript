@@ -12,6 +12,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. title teaser */
 
 .rs-title-teaser
@@ -20,7 +23,7 @@
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
-	color: #fff;
+	color: var(--color-light);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
@@ -51,7 +54,7 @@
 
 /* @section 2.1 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-title-teaser
 	{
@@ -67,7 +70,7 @@
 
 /* @section 2.2 min width 80rem */
 
-@media screen and (min-width: 80rem)
+@media (--min-large)
 {
 	.rs-title-teaser
 	{
