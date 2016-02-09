@@ -36,7 +36,7 @@
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
-		right: -0.25em;
+		right: 0.25em;
 		top: -0.25em;
 	}
 
@@ -54,7 +54,7 @@
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
-		right: 1rem;
+		right: 1.5rem;
 		top: 1rem;
 	}
 
