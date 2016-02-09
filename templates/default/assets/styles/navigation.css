@@ -24,6 +24,7 @@
 
 	.rs-fn-navigation
 	{
+		max-width: 25em;
 		width: 75%;
 	}
 
@@ -33,10 +34,10 @@
 	{
 		color: rgba(255, 255, 255, 0.7);
 		font: 1rem arial;
-		padding-top: 2em;
+		padding-top: 2.5em;
 		position: absolute;
-		right: 0.5em;
-		top: 0;
+		right: -0.25em;
+		top: -0.25em;
 	}
 
 	.rs-fn-toggle-navigation:after,
@@ -53,7 +54,8 @@
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
-		margin: 1.25rem;
+		right: 1rem;
+		top: 1rem;
 	}
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
