@@ -36,8 +36,8 @@
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
-		right: 0.25em;
-		top: -0.25em;
+		right: 0.25rem;
+		top: -0.25rem;
 	}
 
 	.rs-fn-toggle-navigation:after,
