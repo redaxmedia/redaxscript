@@ -1,35 +1,35 @@
 [
 	[
 		{
-			"url": "hello/world",
-			"time": "5"
+			"route": "hello/world",
+			"timeout": "2"
 		},
 		{
-			"action": "",
+			"text": "",
 			"route": ""
 		},
-		"<meta http-equiv=\"refresh\" content=\"5;url=hello/world\">"
+		"<meta http-equiv=\"refresh\" content=\"2;url=hello/world\">"
 	],
 	[
 		{
-			"url": "",
-			"time": "3"
+			"route": "",
+			"timeout": "3"
 		},
 		{
-			"action": "test",
+			"text": "test",
 			"route": "hello/world"
 		},
 		"<meta http-equiv=\"refresh\" content=\"3;url=hello/world\">"
 	],
 	[
 		{
-			"url": "index.php",
-			"time": "2"
+			"route": "index.php",
+			"timeout": "4"
 		},
 		{
-			"action": "test",
+			"text": "test",
 			"route": "hello/world"
 		},
-		"<meta http-equiv=\"refresh\" content=\"2;url=index.php\">"
+		"<meta http-equiv=\"refresh\" content=\"4;url=index.php\">"
 	]
 ]

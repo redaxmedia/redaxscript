@@ -8,70 +8,62 @@ namespace Redaxscript;
  *
  * @package Redaxscript
  * @category Messenger
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class Messenger
 {
 	/**
-	 * redirect link
+	 * array of the action
 	 *
 	 * @var array
 	 */
 
-	protected $_action = array();
+	protected $_actionArray = array();
 
 	/**
-	 * options array
+	 * options of the messenger
 	 *
 	 * @var array
 	 */
 
 	protected $_options = array(
 		'className' => array(
-			'list' => 'rs-list-messenger',
-			'divider' => 'rs-item-divider'
-		),
-		'divider' => null
+			'list' => 'rs-list-messenger'
+		)
 	);
 
 	/**
-	 * init
+	 * stringify the messenger
 	 *
 	 * @since 3.0.0
 	 *
+	 * @return string
 	 */
 
-	protected $_registry = array();
-
-	/**
-	 * init
-	 *
-	 * @since 3.0.0
-	 *
-	 */
-
-	public function init()
+	public function __toString()
 	{
-		$this->_registry = Registry::getInstance();
+		return $this->render();
 	}
 
 	/**
-	 * setAction
+	 * set the action
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $name action name
-	 * @param string $route action route
+	 * @param string $text text of the action
+	 * @param string $route route of the action
 	 */
 
-	public function setAction($name = null, $route = null)
+	public function setAction($text = null, $route = null)
 	{
-		if (!empty($name))
+		if (strlen($text) && strlen($route))
 		{
-			$this->_action = [
-				'action' => $name,
-				'route' => $route,
-			];
+			$this->_actionArray = array(
+				'text' => $text,
+				'route' => $route
+			);
 		}
 	}
 
@@ -80,8 +72,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the success
+	 * @param string $title title of the success
 	 *
 	 * @return string
 	 */
@@ -96,8 +88,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the warning
+	 * @param string $title message title of the warning
 	 *
 	 * @return string
 	 */
@@ -112,8 +104,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the error
+	 * @param string $title title of the error
 	 *
 	 * @return string
 	 */
@@ -128,8 +120,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the info
+	 * @param string $title title of the info
 	 *
 	 * @return string
 	 */
@@ -144,17 +136,16 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type
-	 * @param array $messageData
-	 * @param string $title
+	 * @param string $type type of the flash
+	 * @param mixed $message message of the flash
+	 * @param string $title title of the flash
 	 *
 	 * @return string
 	 */
 
-	public function render($type = null, $messageData = null, $title = null)
+	public function render($type = null, $message = null, $title = null)
 	{
 		$output = Hook::trigger('messengerStart');
-
 		if ($title)
 		{
 			/* html element */
@@ -174,12 +165,10 @@ class Messenger
 			'class' => 'rs-box-note rs-note-' . $type
 		));
 
-		/* put messageData in a list */
+		/* build a list */
 
-		if (is_array($messageData))
+		if (is_array($message))
 		{
-			/* html elements */
-
 			$itemElement = new Html\Element();
 			$itemElement->init('li');
 			$listElement = new Html\Element();
@@ -190,60 +179,53 @@ class Messenger
 
 			/* collect item output */
 
-			foreach ($messageData as $value)
+			foreach ($message as $value)
 			{
 				$outputItem .= '<li>' . $value . '</li>';
 			}
 			$boxElement->html($listElement->html($outputItem));
-
 		}
 
-		/* if just one message, no need for list */
+		/* else plain text */
 
 		else
 		{
-			$boxElement->text($messageData);
+			$boxElement->text($message);
 		}
 
-		$output .= $boxElement->render();
+		/* collect output */
 
-		/* place action link */
-
-		if ($this->_action)
+		$output .= $boxElement;
+		if ($this->_actionArray)
 		{
 			$linkElement = new Html\Element();
-			$linkElement
+			$output .= $linkElement
 				->init('a')
-				->attr('href', $this->_action['route'])
-				->text($this->_action['action']);
-
-			$output .= $linkElement;
+				->attr('href', $this->_actionArray['route'])
+				->text($this->_actionArray['text']);
 		}
-
 		$output .= Hook::trigger('messengerEnd');
-
 		return $output;
 	}
 
 	/**
-	 * redirect user
+	 *  meta powered redirect
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $url
-	 * @param int $time
+	 * @param string $route route of the redirect
+	 * @param integer $timeout timeout of the redirect
 	 *
 	 * @return string $redirect
 	 */
 
-	public function redirect($url = null, $time = 4)
+	public function redirect($route = null, $timeout = 2)
 	{
-		if (!$url)
+		if (!$route)
 		{
-			$url = $this->_action['route'];
+			$route = $this->_actionArray['route'];
 		}
-
-		$redirect = '<meta http-equiv="refresh" content="' . $time . ';url=' . $url . '">';
-		return $redirect;
+		$output = '<meta http-equiv="refresh" content="' . $timeout . ';url=' . $route . '">';
+		return $output;
 	}
 }
