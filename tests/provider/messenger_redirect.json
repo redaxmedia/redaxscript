@@ -2,18 +2,18 @@
 	[
 		{
 			"route": "hello/world",
-			"time": "5"
+			"timeout": "2"
 		},
 		{
 			"text": "",
 			"route": ""
 		},
-		"<meta http-equiv=\"refresh\" content=\"5;url=hello/world\">"
+		"<meta http-equiv=\"refresh\" content=\"2;url=hello/world\">"
 	],
 	[
 		{
 			"route": "",
-			"time": "3"
+			"timeout": "3"
 		},
 		{
 			"text": "test",
@@ -24,12 +24,12 @@
 	[
 		{
 			"route": "index.php",
-			"time": "2"
+			"timeout": "4"
 		},
 		{
 			"text": "test",
 			"route": "hello/world"
 		},
-		"<meta http-equiv=\"refresh\" content=\"2;url=index.php\">"
+		"<meta http-equiv=\"refresh\" content=\"4;url=index.php\">"
 	]
 ]

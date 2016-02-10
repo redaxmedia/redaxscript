@@ -254,7 +254,7 @@ class MessengerTest extends TestCase
 
 		/* actual */
 
-		$actual = $messenger->redirect($redirect['route'], $redirect['time']);
+		$actual = $messenger->redirect($redirect['route'], $redirect['timeout']);
 
 		/* compare */
 

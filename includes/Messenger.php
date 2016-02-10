@@ -8,21 +8,22 @@ namespace Redaxscript;
  *
  * @package Redaxscript
  * @category Messenger
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
 class Messenger
 {
 	/**
-	 * action array
+	 * array of the action
 	 *
 	 * @var array
 	 */
 
-	protected $_action = array();
+	protected $_actionArray = array();
 
 	/**
-	 * options array
+	 * options of the messenger
 	 *
 	 * @var array
 	 */
@@ -35,7 +36,20 @@ class Messenger
 	);
 
 	/**
-	 * setAction
+	 * stringify the messenger
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
+	 * set the action
 	 *
 	 * @since 3.0.0
 	 *
@@ -45,12 +59,12 @@ class Messenger
 
 	public function setAction($text = null, $route = null)
 	{
-		if ($text)
+		if (strlen($text) && strlen($route))
 		{
-			$this->_action = [
+			$this->_actionArray = array(
 				'text' => $text,
-				'route' => $route,
-			];
+				'route' => $route
+			);
 		}
 	}
 
@@ -59,8 +73,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message text of the success message
-	 * @param string $title message title
+	 * @param mixed $message message of the success
+	 * @param string $title title of the success
 	 *
 	 * @return string
 	 */
@@ -75,8 +89,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the warning
+	 * @param string $title message title of the warning
 	 *
 	 * @return string
 	 */
@@ -91,8 +105,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the error
+	 * @param string $title title of the error
 	 *
 	 * @return string
 	 */
@@ -107,8 +121,8 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
-	 * @param string $title message title
+	 * @param mixed $message message of the info
+	 * @param string $title title of the info
 	 *
 	 * @return string
 	 */
@@ -123,14 +137,14 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type
-	 * @param array $messageData
-	 * @param string $title
+	 * @param string $type type of the flash
+	 * @param mixed $message message of the flash
+	 * @param string $title title of the flash
 	 *
 	 * @return string
 	 */
 
-	public function render($type = null, $messageData = null, $title = null)
+	public function render($type = null, $message = null, $title = null)
 	{
 		$output = Hook::trigger('messengerStart');
 		if ($title)
@@ -154,7 +168,7 @@ class Messenger
 
 		/* build a list */
 
-		if (is_array($messageData))
+		if (is_array($message))
 		{
 			$itemElement = new Html\Element();
 			$itemElement->init('li');
@@ -166,7 +180,7 @@ class Messenger
 
 			/* collect item output */
 
-			foreach ($messageData as $value)
+			foreach ($message as $value)
 			{
 				$outputItem .= '<li>' . $value . '</li>';
 			}
@@ -177,42 +191,42 @@ class Messenger
 
 		else
 		{
-			$boxElement->text($messageData);
+			$boxElement->text($message);
 		}
 
 		/* collect output */
 
 		$output .= $boxElement;
-		if ($this->_action)
+		if ($this->_actionArray)
 		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
 				->init('a')
-				->attr('href', $this->_action['route'])
-				->text($this->_action['text']);
+				->attr('href', $this->_actionArray['route'])
+				->text($this->_actionArray['text']);
 		}
 		$output .= Hook::trigger('messengerEnd');
 		return $output;
 	}
 
 	/**
-	 * redirect user
+	 *  meta tag powered redirect
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $route
-	 * @param int $time
+	 * @param string $route route of the redirect
+	 * @param integer $timeout timeout of the redirect
 	 *
 	 * @return string $redirect
 	 */
 
-	public function redirect($route = null, $time = 4)
+	public function redirect($route = null, $timeout = 4)
 	{
 		if (!$route)
 		{
-			$route = $this->_action['route'];
+			$route = $this->_actionArray['route'];
 		}
-		$output = '<meta http-equiv="refresh" content="' . $time . ';url=' . $route . '">';
+		$output = '<meta http-equiv="refresh" content="' . $timeout . ';url=' . $route . '">';
 		return $output;
 	}
 }
