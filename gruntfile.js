@@ -55,7 +55,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'scripts/*.js'
+					'assets/scripts/*.js'
 				]
 			},
 			modules:
@@ -264,17 +264,16 @@ module.exports = function (grunt)
 				processors:
 				[
 					require('postcss-import'),
-					require('postcss-custom-media'),
+					require('postcss-color-function'),
+					require('postcss-color-gray'),
 					require('postcss-css-variables'),
+					require('postcss-custom-media'),
+					require('postcss-extend'),
+					require('postcss-nested'),
 					require('autoprefixer')(
 					{
 						browsers: 'last 2 versions'
 					})
-					//https://github.com/travco/postcss-extend
-					//https://github.com/postcss/postcss-nested
-					//https://github.com/postcss/postcss-color-gray
-					//https://github.com/postcss/postcss-color-function
-					//https://github.com/Siilwyn/css-declaration-sorter
 				]
 			}
 		},
