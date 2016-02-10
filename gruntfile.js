@@ -2,6 +2,10 @@ module.exports = function (grunt)
 {
 	'use strict';
 
+	/* polyfill */
+
+	require('es6-promise').polyfill();
+
 	/* config grunt */
 
 	grunt.initConfig(
