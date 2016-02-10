@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * login post
@@ -182,16 +183,21 @@ function login_post()
 
 	/* handle error */
 
+	$messenger = new \Redaxscript\Messenger();
+
 	if ($error)
 	{
-		notification(l('error_occurred'), $error, l('back'), 'login');
+		$messenger->setAction(Language::get('back'), 'login');
+		$messenger->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('welcome'), l('logged_in'), l('continue'), 'admin');
+		$messenger->setAction(Language::get('continue'), 'admin');
+		echo $messenger->success(Language::get('logged_in'), Language::get('welcome'));
+		echo $messenger->redirect('', 0);
 	}
 }
 
@@ -209,5 +215,11 @@ function login_post()
 function logout()
 {
 	session_destroy();
-	notification(l('goodbye'), l('logged_out'), l('continue'), 'login');
+
+	/* notification */
+
+	$messenger = new \Redaxscript\Messenger();
+	$messenger->setAction(Language::get('continue'), 'login');
+	echo $messenger->error(Language::get('logged_out'), Language::get('goodbye'));
+	echo $messenger->redirect('', 0);
 }

@@ -1,0 +1,41 @@
+[
+	[
+		{
+			"data": "test",
+			"title": "title"
+		},
+		{
+			"action": "",
+			"route": ""
+		},
+		"<h2 class=\"rs-title-note rs-note-info\">title</h2><div class=\"rs-box-note rs-note-info\">test</div>"
+	],
+	[
+		{
+			"data": [
+				"test1",
+				"test2"
+			],
+			"title": ""
+		},
+		{
+			"action": "",
+			"route": ""
+		},
+		"<div class=\"rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div>"
+	],
+	[
+		{
+			"data": [
+				"test1",
+				"test2"
+			],
+			"title": ""
+		},
+		{
+			"action": "ok",
+			"route": "hello/world"
+		},
+		"<div class=\"rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\">ok</a>"
+	]
+]

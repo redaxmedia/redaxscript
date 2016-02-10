@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * password reset post
@@ -96,6 +97,8 @@ function password_reset_post()
 
 	/* handle error */
 
+	$messenger = new \Redaxscript\Messenger();
+
 	if ($error)
 	{
 		if ($post_id && $post_password)
@@ -106,13 +109,17 @@ function password_reset_post()
 		{
 			$back_route = 'login/recover';
 		}
-		notification(l('error_occurred'), $error, l('back'), $back_route);
+		$messenger->setAction(Language::get('back'), $back_route);
+		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->redirect();
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('operation_completed'), l('password_sent'), l('login'), 'login');
+		$messenger->setAction(Language::get('login'), 'login');
+		echo $messenger->success(Language::get('password_sent'), Language::get('operation_completed'));
+		echo $messenger->redirect();
 	}
 }

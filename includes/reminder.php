@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * reminder post
@@ -88,15 +89,21 @@ function reminder_post()
 
 	/* handle error */
 
+	$messenger = new \Redaxscript\Messenger();
+
 	if ($error)
 	{
-		notification(l('error_occurred'), $error, l('back'), 'recovery');
+		$messenger->setAction(Language::get('back'), 'recovery');
+		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->redirect();
 	}
 
 	/* handle success */
 
 	else
 	{
-		notification(l('operation_completed'), l('recovery_sent'), l('login'), 'login');
+		$messenger->setAction(Language::get('login'), 'login');
+		echo $messenger->success(Language::get('recovery_sent'), Language::get('operation_completed'));
+		echo $messenger->redirect();
 	}
 }

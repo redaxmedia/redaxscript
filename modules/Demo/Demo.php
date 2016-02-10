@@ -7,6 +7,7 @@ use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Messenger as Messenger;
 
 /**
  * enable anonymous login
@@ -17,7 +18,6 @@ use Redaxscript\Request;
  * @category Modules
  * @author Henry Ruhs
  */
-
 class Demo extends Config
 {
 	/**
@@ -115,7 +115,10 @@ class Demo extends Config
 
 		/* notification */
 
-		notification(Language::get('welcome'), Language::get('logged_in'), Language::get('continue'), 'admin');
+		$messenger = new Messenger();
+		$messenger->setAction(Language::get('continue'), 'admin');
+		echo $messenger->success(Language::get('logged_in'), Language::get('welcome'));
+		echo $messenger->redirect();
 	}
 
 	/**
