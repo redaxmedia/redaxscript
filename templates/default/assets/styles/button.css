@@ -16,6 +16,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. button default */
 
 .rs-button-default
@@ -33,10 +36,9 @@
 }
 
 .rs-button-default,
-.rs-button-default a
+a.rs-button-default
 {
-	color: #fff;
-	transition: -webkit-transform 0.1s, box-shadow 0.1s;
+	color: var(--color-light);
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
@@ -48,7 +50,6 @@
 .rs-button-default:active
 {
 	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
-	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
 
@@ -58,7 +59,7 @@
 {
 	position: relative;
 	text-indent: -999em;
-	color: #323e4c;
+	color: var(--color-primary-dark);
 	display: inline-block;
 	vertical-align: middle;
 	width: 20%;
@@ -113,7 +114,7 @@
 
 /* @section 6.1 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media (--max-medium)
 {
 	.rs-button-default
 	{
@@ -123,7 +124,7 @@
 
 /* @section 6.2 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-button-default
 	{

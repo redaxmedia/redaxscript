@@ -42,16 +42,16 @@ class Form extends BaseForm
 		),
 		'button' => array(
 			'button' => array(
-				'class' => 'rs-js-button rs-admin-button-default',
+				'class' => 'rs-js-button rs-admin-button-default rs-admin-button-large',
 				'type' => 'button'
 			),
 			'reset' => array(
-				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset',
+				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
 				'type' => 'reset',
 				'value' => 'reset'
 			),
 			'submit' => array(
-				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit',
+				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 				'type' => 'submit',
 				'value' => 'submit'
 			)

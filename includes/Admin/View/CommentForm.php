@@ -39,7 +39,7 @@ class CommentForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $commentId identifer of the comment
+	 * @param integer $commentId identifier of the comment
 	 *
 	 * @return string
 	 */
@@ -62,17 +62,16 @@ class CommentForm implements ViewInterface
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => 'rs-js-list-tab rs-list-tab rs-admin-list-tab'
+			'class' => 'rs-js-list-tab rs-admin-list-tab'
 		));
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process',
+				'action' => $comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
 				'submit' => array(
-					'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 					'name' => Registry::get('adminParameter')
 				)
 			)
@@ -126,7 +125,7 @@ class CommentForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
@@ -169,7 +168,7 @@ class CommentForm implements ViewInterface
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => $comment->text
+				'value' => htmlspecialchars($comment->text)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -201,7 +200,7 @@ class CommentForm implements ViewInterface
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
-			->select(Helper\Option::getStatusArray(), array(
+			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $comment->status

@@ -2,6 +2,10 @@ module.exports = function (grunt)
 {
 	'use strict';
 
+	/* polyfill */
+
+	require('es6-promise').polyfill();
+
 	/* config grunt */
 
 	grunt.initConfig(
@@ -55,7 +59,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'scripts/*.js'
+					'assets/scripts/*.js'
 				]
 			},
 			modules:
@@ -227,56 +231,54 @@ module.exports = function (grunt)
 				standard: 'ruleset.xml'
 			}
 		},
-		autoprefixer:
+		postcss:
 		{
 			base:
 			{
-				src:
-				[
-					'assets/styles/*.css'
-				]
+				files:
+				[{
+					expand: true,
+					cwd: 'assets/styles/',
+					src: '*.css',
+					dest: 'assets/styles/dist/'
+				}]
 			},
-			modules:
-			{
-				src:
-				[
-					'modules/*/assets/styles/*.css'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'templates/*/assets/styles/*.css'
-				]
-			},
-			options:
-			{
-				browsers:
-				[
-					'last 2 Android versions',
-					'last 2 iOS versions',
-					'last 2 Chrome versions',
-					'last 2 Explorer versions',
-					'last 2 Firefox versions',
-					'last 2 Opera versions',
-					'last 2 Safari versions'
-				]
-			}
-		},
-		sass:
-		{
-			template:
+			templateAdmin:
 			{
 				files:
-				{
-					'templates/admin/assets/styles/admin.css': 'templates/admin/assets/styles/*.scss',
-					'templates/default/assets/styles/default.css': 'templates/default/assets/styles/*.scss'
-				}
+				[{
+					expand: true,
+					cwd: 'templates/admin/assets/styles/',
+					src: '*.css',
+					dest: 'templates/admin/assets/styles/dist/'
+				}]
+			},
+			templateDefault:
+			{
+				files:
+				[{
+					expand: true,
+					cwd: 'templates/default/assets/styles/',
+					src: '*.css',
+					dest: 'templates/default/assets/styles/dist/'
+				}]
 			},
 			options:
 			{
-				outputStyle: 'compact'
+				processors:
+				[
+					require('postcss-import'),
+					require('postcss-color-function'),
+					require('postcss-color-gray'),
+					require('postcss-css-variables'),
+					require('postcss-custom-media'),
+					require('postcss-extend'),
+					require('postcss-nested'),
+					require('autoprefixer')(
+					{
+						browsers: 'last 2 versions'
+					})
+				]
 			}
 		},
 		shell:
@@ -516,7 +518,6 @@ module.exports = function (grunt)
 
 	/* load tasks */
 
-	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
@@ -527,7 +528,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-jscs');
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
-	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-svgmin');
 
@@ -538,7 +539,7 @@ module.exports = function (grunt)
 		'jscs',
 		'jshint',
 		'jsonlint',
-		'csslint',
+		//'csslint',
 		'htmlhint',
 		'phpcs',
 		'toclint'
@@ -577,7 +578,7 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('optimize',
 	[
-		'autoprefixer',
+		'postcss',
 		'toc',
 		'img',
 		'svgmin'

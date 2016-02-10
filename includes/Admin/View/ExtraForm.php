@@ -39,7 +39,7 @@ class ExtraForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $extraId identifer of the extra
+	 * @param integer $extraId identifier of the extra
 	 *
 	 * @return string
 	 */
@@ -62,17 +62,16 @@ class ExtraForm implements ViewInterface
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => 'rs-js-list-tab rs-list-tab rs-admin-list-tab'
+			'class' => 'rs-js-list-tab rs-admin-list-tab'
 		));
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process',
+				'action' => $extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
 				'submit' => array(
-					'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 					'name' => Registry::get('adminParameter')
 				)
 			)
@@ -112,21 +111,21 @@ class ExtraForm implements ViewInterface
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('general'))
-		);
+			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
 				->text(Language::get('customize'))
-		);
+			);
 		$listElement->append($outputItem);
 
 		/* create the form */
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
@@ -162,7 +161,7 @@ class ExtraForm implements ViewInterface
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => $extra->text
+				'value' => htmlspecialchars($extra->text)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -221,7 +220,7 @@ class ExtraForm implements ViewInterface
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
-			->select(Helper\Option::getStatusArray(), array(
+			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $extra->status

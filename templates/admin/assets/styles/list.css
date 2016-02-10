@@ -16,22 +16,19 @@
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: linear-gradient(#ddd, #c6c6c6);
-	border: 1px solid #c6c6c6;
+	background: linear-gradient(#bbb, #b9b9b9);
 	border-radius: 0.25em;
 	color: #666;
 	display: inline-block;
-	line-height: 2.25em;
+	line-height: 2em;
 	padding: 0 0.75em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+	text-decoration: none;
 }
 
 .rs-admin-list-control a:hover
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	border-color: #005da2;
 	color: #fff;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
 .rs-admin-list-control span
@@ -83,6 +80,11 @@
 	vertical-align: bottom;
 }
 
+.rs-admin-list-tab > li + li
+{
+	margin-left: 0.125em;
+}
+
 .rs-admin-list-tab a
 {
 	color: #ccc;
@@ -95,6 +97,32 @@
 	text-decoration: none;
 }
 
+.rs-admin-list-tab .rs-item-active
+{
+	padding: 0.5em 1em;
+	border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-admin-list-tab .rs-item-active a
+{
+	color: #fff;
+}
+
+.rs-admin-list-tab > li
+{
+	padding: 0.25em 1em;
+}
+
+.rs-admin-list-tab > li:hover
+{
+	cursor: pointer;
+}
+
+.rs-admin-list-tab > li:hover a
+{
+	color: #fff;
+}
+
 /* @section 3.1 javascript enabled */
 
 .rs-js .rs-admin-list-tab .rs-item-active
@@ -102,10 +130,10 @@
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
 	border-bottom-color: #e2e2e2;
+	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-item-active a
 {
 	color: #474747;
-	line-height: 2.5em;
 }

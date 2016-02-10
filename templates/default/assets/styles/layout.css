@@ -19,17 +19,28 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. general */
 
 .rs-body
 {
-	background: #fff;
+	background: var(--color-light);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	min-height: 32em;
+	background: var(--color-light);
+	margin-bottom: 5em;
+	min-height: 20em;
+	padding-bottom: 2em;
+}
+
+.rs-page
+{
+	margin-top: 2em;
 }
 
 /* @section 2. wrapper */
@@ -50,17 +61,12 @@
 	width: 100%;
 }
 
-.rs-header + .rs-main
-{
-	margin-top: 2em;
-}
-
 /* @section 3. header */
 
 .rs-header
 {
-	background: #323e4c;
-	padding: 1em;
+	background: var(--color-primary-dark);
+	padding: 1.25rem;
 }
 
 /* @section 4. teaser */
@@ -69,6 +75,7 @@
 {
 	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
 	margin-bottom: 2em;
+	max-height: 35em;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
 	position: relative;
@@ -80,7 +87,7 @@
 
 .rs-sidebar
 {
-	background: #323e4c;
+	background: var(--color-primary-dark);
 	box-sizing: border-box;
 	color: #e8e8e8;
 	padding: 1em;
@@ -90,9 +97,14 @@
 
 .rs-footer
 {
-	background: #323e4c;
+	background: var(--color-primary-dark);
+	bottom: 0;
+	min-height: 1.75em;
+	left: 0;
 	padding: 1em;
-	margin-top: 2em;
+	position: fixed;
+	right: 0;
+	z-index: -1;
 }
 
 /* @section 7. query */
@@ -111,14 +123,19 @@
 
 /* @section 7.2 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media (--max-medium)
 {
 	.rs-wrapper-body
 	{
 		min-width: 0;
 	}
 
-	.rs-main
+	.rs-header
+	{
+		min-height: 2.5em;
+	}
+
+	.rs-page
 	{
 		padding: 1em;
 	}
@@ -131,11 +148,11 @@
 
 /* @section 7.3 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-wrapper
 	{
-		width: 48rem;
+		width: 90%;
 	}
 
 	.rs-wrapper-body
@@ -146,20 +163,20 @@
 	.rs-content
 	{
 		float: left;
-		width: 60%;
+		width: 70%;
 	}
 
 	.rs-sidebar
 	{
 		float: right;
-		width: 38%;
+		width: 28%;
 		margin-left: 2%;
 	}
 }
 
 /* @section 7.4 min width 80rem */
 
-@media screen and (min-width: 80rem)
+@media (--min-large)
 {
 	.rs-wrapper
 	{

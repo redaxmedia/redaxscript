@@ -1,0 +1,22 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+    --color-light: #fff;
+}
+
+:root
+{
+    --color-primary-dark: #323e4c;
+}

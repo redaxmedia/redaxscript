@@ -51,7 +51,7 @@ class OptionTest extends TestCase
 	}
 
 	/**
-	 * testGetStatusArray
+	 * testGetVisibleArray
 	 *
 	 * @since 3.0.0
 	 *
@@ -60,15 +60,40 @@ class OptionTest extends TestCase
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetStatusArray($expect = array())
+	public function testGetVisibleArray($expect = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getStatusArray();
+		$actual = Helper\Option::getVisibleArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['status'], $actual);
+		$this->assertEquals($expect['visible'], $actual);
+	}
+
+	/**
+	 * testGetPermissionArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetPermissionArray($expect = array())
+	{
+		/* actual */
+
+		$actual['content'] = Helper\Option::getPermissionArray();
+		$actual['module'] = Helper\Option::getPermissionArray('modules');
+		$actual['setting'] = Helper\Option::getPermissionArray('settings');
+
+		/* compare */
+
+		$this->assertEquals($expect['permission']['content'], $actual['content']);
+		$this->assertEquals($expect['permission']['module'], $actual['module']);
+		$this->assertEquals($expect['permission']['setting'], $actual['setting']);
 	}
 
 	/**

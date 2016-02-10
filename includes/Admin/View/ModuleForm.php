@@ -4,13 +4,15 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
+use Redaxscript\Directory;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Template;
 
 /**
- * children class to generate the user form
+ * children class to generate the module form
  *
  * @since 3.0.0
  *
@@ -19,7 +21,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class UserForm implements ViewInterface
+class ModuleForm implements ViewInterface
 {
 	/**
 	 * stringify the view
@@ -39,15 +41,15 @@ class UserForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $userId identifier of the user
+	 * @param integer $moduleId identifier of the module
 	 *
 	 * @return string
 	 */
 
-	public function render($userId = null)
+	public function render($moduleId = null)
 	{
-		$output = Hook::trigger('adminUserFormStart');
-		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
+		$output = Hook::trigger('adminModuleFormStart');
+		$module = Db::forTablePrefix('modules')->whereIdIs($moduleId)->findOne();
 
 		/* html elements */
 
@@ -55,7 +57,7 @@ class UserForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($user->name ? $user->name : Language::get('user_new'));
+		$titleElement->text($module->name ? $module->name : Language::get('group_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -67,7 +69,7 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $user->id ? 'admin/process/users/' . $user->id : 'admin/process/users',
+				'action' => 'admin/process/modules',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -80,56 +82,73 @@ class UserForm implements ViewInterface
 		$linkCancel
 			->init('a', array(
 				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/users'
+				'href' => 'admin/view/modules'
 			))
 			->text(Language::get('cancel'));
-		if ($user->id)
+		if ($module->id)
 		{
 			$linkDelete = new Html\Element();
 			$linkDelete
 				->init('a', array(
 					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/users/' . $user->id . '/' . Registry::get('token')
+					'href' => 'admin/delete/modules/' . $module->id . '/' . Registry::get('token')
 				))
 				->text(Language::get('delete'));
 		}
 
+		/* documentation directory */
+
+		$docDirectory = new Directory();
+		$docDirectory->init('modules/' . $module->alias . '/docs');
+		$docDirectoryArray = $docDirectory->getArray();
+
 		/* collect item output */
 
+		$tabCounter = 1;
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-js-item-active rs-item-active')
 			->html($linkElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('user'))
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+				->text(Language::get('module'))
 			);
+
+		/* process directory */
+
+		foreach ($docDirectoryArray as $key => $value)
+		{
+			$outputItem .= $itemElement
+				->copy()
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+					->text(pathinfo($value, PATHINFO_FILENAME))
+				);
+		}
+
+		/* collect item output */
+
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
 				->text(Language::get('customize'))
 			);
 		$listElement->append($outputItem);
 
 		/* create the form */
 
+		$tabCounter = 1;
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
@@ -138,46 +157,7 @@ class UserForm implements ViewInterface
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
-				'value' => $user->name
-			))
-			->append('</li><li>')
-			->label(Language::get('user'), array(
-				'for' => 'user'
-			))
-			->text(array(
-				'id' => 'user',
-				'name' => 'user',
-				'required' => 'required',
-				'value' => $user->user
-			))
-			->append('</li><li>')
-			->label(Language::get('password'), array(
-				'for' => 'password'
-			))
-			->password(array(
-				'autocomplete' => 'off',
-				'id' => 'password',
-				'name' => 'password',
-				'value' => $user->password
-			))
-			->append('</li><li>')
-			->label(Language::get('password_confirm'), array(
-				'for' => 'password_confirm'
-			))
-			->password(array(
-				'autocomplete' => 'off',
-				'id' => 'password_confirm',
-				'name' => 'password_confirm'
-			))
-			->append('</li><li>')
-			->label(Language::get('email'), array(
-				'for' => 'email'
-			))
-			->email(array(
-				'id' => 'email',
-				'name' => 'email',
-				'required' => 'required',
-				'value' => $user->email
+				'value' => $module->name
 			))
 			->append('</li><li>')
 			->label(Language::get('description'), array(
@@ -187,49 +167,52 @@ class UserForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
 				'name' => 'description',
-				'value' => $user->description
+				'value' => $module->description
 			))
-			->append('</li></ul></fieldset>')
+			->append('</li></ul></fieldset>');
 
 			/* second tab */
 
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->label(Language::get('language'), array(
-				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
-				'id' => 'language',
-				'name' => 'language',
-				'value' => $user->language
-			))
-			->append('</li></ul></fieldset>')
+			if ($docDirectoryArray)
+			{
+				/* process directory */
+
+				foreach ($docDirectoryArray as $key => $value)
+				{
+					$formElement
+						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-set-tab">')
+						->append(Template::partial('modules/' . $module->alias . '/docs/' . $value))
+						->append('</fieldset>');
+				}
+			}
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+		$formElement
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $user->status
+				'value' => $module->status
 			))
 			->append('</li><li>')
-			->label(Language::get('groups'), array(
-				'for' => 'groups'
+			->label(Language::get('access'), array(
+				'for' => 'access'
 			))
 			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'groups',
-				'name' => 'groups',
+				'id' => 'access',
+				'name' => 'access',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $user->access
+				'value' => $module->access
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);
-			if ($user->id)
+			if ($module->id)
 			{
 				$formElement
 					->append($linkDelete)
@@ -243,7 +226,7 @@ class UserForm implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminUserFormEnd');
+		$output .= Hook::trigger('adminModuleFormEnd');
 		return $output;
 	}
 }

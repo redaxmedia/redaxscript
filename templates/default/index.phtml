@@ -23,29 +23,34 @@
 			'templates/default/header.phtml'
 		)); ?>
 
-		<!-- teaser -->
+		<main id="main" class="rs-main rs-clearfix">
 
-		<?php echo Template::extra(array(
-			'filter' => 'teaser'
-		)); ?>
+			<!-- teaser -->
 
-		<!-- main -->
-
-		<main id="main" class="rs-main rs-wrapper rs-clearfix">
-
-			<!-- handle content error -->
-
-			<?php if (Template::registry('contentError')): ?>
-				<?php echo Template::partial('templates/default/error.phtml'); ?>
-
-			<!-- else content and sidebar -->
-
-			<?php else: ?>
-				<?php echo Template::partial(array(
-					'templates/default/content.phtml',
-					'templates/default/sidebar.phtml'
+			<?php if (!Template::registry('adminParameter')): ?>
+				<?php echo Template::extra(array(
+					'filter' => 'teaser'
 				)); ?>
 			<?php endif; ?>
+
+			<!-- main -->
+
+			<div class="rs-page rs-wrapper rs-clearfix">
+
+				<!-- handle content error -->
+
+				<?php if (Template::registry('contentError')): ?>
+					<?php echo Template::partial('templates/default/error.phtml'); ?>
+
+				<!-- else content and sidebar -->
+
+				<?php else: ?>
+					<?php echo Template::partial(array(
+						'templates/default/content.phtml',
+						'templates/default/sidebar.phtml'
+					)); ?>
+				<?php endif; ?>
+			</div>
 		</main>
 
 		<!-- footer -->

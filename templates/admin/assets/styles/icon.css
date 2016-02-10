@@ -1,0 +1,34 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. icon flag
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+@font-face
+{
+	font-family: 'icon admin';
+	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. icon flag */
+
+.rs-admin-icon-flag
+{
+	background: #323e4c;
+	border-radius: 0.125em;
+	color: #fff;
+	display: inline-block;
+	font-size: 0.75em;
+	letter-spacing: 0.125em;
+	line-height: 1.25em;
+	padding: 0.5em;
+	text-transform: uppercase;
+}

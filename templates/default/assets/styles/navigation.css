@@ -1,0 +1,67 @@
+/**
+ * @tableofcontents
+ *
+ * 1. query
+ *    1.1 max width 50rem
+ *       1.1.1 navigation
+ *       1.1.2 navigation toggle and layer
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+@import '_query.css';
+@import '_variable.css';
+
+/* @section 1. query */
+
+/* @section 1.1 max width 50rem */
+
+@media (--max-medium)
+{
+
+	/* @section 1.1.1 navigation */
+
+	.rs-fn-navigation
+	{
+		max-width: 25em;
+		width: 75%;
+	}
+
+	/* @section 1.1.2 navigation toggle and layer */
+
+	.rs-fn-toggle-navigation
+	{
+		color: rgba(255, 255, 255, 0.7);
+		font: 1rem arial;
+		padding-top: 2.5em;
+		position: absolute;
+		right: 0.25rem;
+		top: -0.25rem;
+	}
+
+	.rs-fn-toggle-navigation:after,
+	.rs-fn-toggle-navigation:before
+	{
+		background: #3873b5;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	{
+		box-shadow: 10em 0 0 50em rgba(0, 0, 0, 0.8);
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
+	{
+		position: fixed;
+		right: 1.5rem;
+		top: 1rem;
+	}
+
+	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	{
+		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+	}
+}

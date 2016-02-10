@@ -28,12 +28,12 @@ function admin_users_list()
 	{
 		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('user_new'), 'admin/new/users');
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-table rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-s3o6 rs-column-first">' . l('name') . '</th><th class="rs-s1o6 rs-column-second">' . l('user') . '</th><th class="rs-s1o6 rs-column-third">' . l('groups') . '</th><th class="rs-s1o6 rs-column-last">' . l('session') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-column-first">' . l('name') . '</td><td class="rs-column-second">' . l('user') . '</td><td class="rs-column-third">' . l('groups') . '</td><td class="rs-column-last">' . l('session') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('user') . '</th><th class="rs-admin-s1o6 rs-admin-column-third">' . l('groups') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('session') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('user') . '</td><td class="rs-admin-column-third">' . l('groups') . '</td><td class="rs-admin-column-last">' . l('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
 		$error = l('user_no') . l('point');
@@ -73,10 +73,10 @@ function admin_users_list()
 			{
 				$output .= ' class="' . $class_status . '"';
 			}
-			$output .= '><td class="rs-column-first">';
+			$output .= '><td class="rs-admin-column-first">';
 			if ($language)
 			{
-				$output .= '<span class="rs-icon-flag rs-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+				$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
 			}
 			$output .= $name;
 
@@ -86,7 +86,7 @@ function admin_users_list()
 
 			/* collect user and parent output */
 
-			$output .= '</td><td class="rs-column-second">' . $user . '</td><td class="rs-column-third">';
+			$output .= '</td><td class="rs-admin-column-second">' . $user . '</td><td class="rs-admin-column-third">';
 			if ($groups)
 			{
 				$groups_array = explode(', ', $groups);
@@ -98,7 +98,7 @@ function admin_users_list()
 					if ($group_alias)
 					{
 						$group_name = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->name;
-						$output .= anchor_element('internal', '', 'link_parent', $group_name, 'admin/edit/groups/' . $value);
+						$output .= anchor_element('internal', '', 'rs-admin-link-default', $group_name, 'admin/edit/groups/' . $value);
 						if ($groups_array_last != $key)
 						{
 							$output .= ', ';
@@ -110,7 +110,7 @@ function admin_users_list()
 			{
 				$output .= l('none');
 			}
-			$output .= '</td><td class="rs-column-last">';
+			$output .= '</td><td class="rs-admin-column-last">';
 			if ($first == $last)
 			{
 				$output .= l('none');
@@ -204,17 +204,17 @@ function admin_users_form()
 
 	/* collect tab list output */
 
-	$output .= '<ul class="rs-js-list-tab rs-list-tab rs-admin-list-tab">';
+	$output .= '<ul class="rs-js-list-tab rs-admin-list-tab">';
 	$output .= '<li class="rs-js-item-active rs-item-first rs-item-active">' . anchor_element('internal', '', '', l('user'), FULL_ROUTE . '#tab-1') . '</li>';
 	$output .= '<li class="rs-item-second">' . anchor_element('internal', '', '', l('customize'), FULL_ROUTE . '#tab-2') . '</li></ul>';
 
 	/* collect tab box output */
 
-	$output .= '<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">';
+	$output .= '<div class="rs-js-box-tab rs-admin-box-tab">';
 
 	/* collect user set */
 
-	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-set-tab rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-1', 'rs-js-set-tab rs-js-set-active rs-admin-set-tab rs-set-active', '', '', l('user')) . '<ul>';
 	$output .= '<li>' . form_element('text', 'name', 'rs-admin-field-default rs-field-note', 'name', $name, l('name'), 'maxlength="50" required="required" autofocus="autofocus"') . '</li>';
 	if ($id == '')
 	{
@@ -228,7 +228,7 @@ function admin_users_form()
 
 	/* collect customize set */
 
-	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
+	$output .= form_element('fieldset', 'tab-2', 'rs-js-set-tab rs-admin-set-tab', '', '', l('customize')) . '<ul>';
 
 	/* languages directory object */
 
@@ -283,20 +283,20 @@ function admin_users_form()
 	{
 		$cancel_route = 'admin';
 	}
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), $cancel_route);
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel', l('cancel'), $cancel_route);
 
 	/* delete button */
 
 	if ((USERS_DELETE == 1 || USERS_EXCEPTION == 1) && $id > 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-button-large rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
+		$output .= anchor_element('internal', '', 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete', l('delete'), 'admin/delete/users/' . $id . '/' . TOKEN);
 	}
 
 	/* submit button */
 
 	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_EXCEPTION == 1)
 	{
-		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
+		$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-admin-button-submit', ADMIN_PARAMETER, $wording_submit);
 	}
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminUserFormEnd');

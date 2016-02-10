@@ -41,7 +41,6 @@ class Gallery extends Config
 	{
 		global $loader_modules_styles, $loader_modules_scripts;
 		$loader_modules_styles[] = 'modules/Gallery/assets/styles/gallery.css';
-		$loader_modules_styles[] = 'modules/Gallery/assets/styles/query.css';
 		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/init.js';
 		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/gallery.js';
 	}
@@ -148,7 +147,6 @@ class Gallery extends Config
 				$outputItem .= '</li>';
 			}
 			$output = $listElement->attr('id', $galleryId)->html($outputItem);
-
 		}
 		return $output;
 	}
@@ -176,7 +174,7 @@ class Gallery extends Config
 		if ($exifData)
 		{
 			$output['artist'] = $exifData['Artist'];
-			$output['date'] = $exifData['DateTime'] ? date(Db::getSettings('data'), strtotime($exifData['DateTime'])) : null;
+			$output['date'] = $exifData['DateTime'] ? date(Db::getSettings('date'), strtotime($exifData['DateTime'])) : null;
 			$output['description'] = $exifData['ImageDescription'];
 		}
 		return $output;

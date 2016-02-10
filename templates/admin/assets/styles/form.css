@@ -16,7 +16,8 @@
 .rs-admin-form li,
 .rs-admin-form-default li
 {
-	margin: 0.5em 0;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 /* @section 1.1 label */

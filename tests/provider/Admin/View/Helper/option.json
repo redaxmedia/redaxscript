@@ -6,30 +6,50 @@
 				"Enable": 1,
 				"Disable": 0
 			},
-			"status":
+			"visible":
 			{
 				"Publish": 1,
 				"Unpublish": 0
 			},
+			"permission":
+			{
+				"content":
+				{
+					"Create": 1,
+					"Edit": 2,
+					"Delete": 3
+				},
+				"module":
+				{
+					"Install": 1,
+					"Edit": 2,
+					"Uninstall": 3
+				},
+				"setting":
+				{
+					"None": 1,
+					"Edit": 2
+				}
+			},
 			"language":
 			{
-				"Select": null,
+				"Select": "select",
 				"English": "en",
 				"Deutsch": "de"
 			},
 			"template":
 			{
-				"Select": null,
+				"Select": "select",
 				"default": "default"
 			},
 			"content":
 			{
-				"Select": null,
+				"Select": "select",
 				"Welcome (1)": 1
 			},
 			"access":
 			{
-				"All": null,
+				"All": "select",
 				"Administrators": 1,
 				"Members": 2
 			}

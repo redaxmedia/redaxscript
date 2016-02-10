@@ -11,12 +11,15 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. tooltip */
 
 .rs-tooltip:after
 {
-	background: #323e4c;
-	color: #fff;
+	background: var(--color-primary-dark);
+	color: var(--color-light);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
 	left: 110%;
@@ -31,7 +34,7 @@
 
 /* @section 2.1 min width 30rem */
 
-@media screen and (min-width: 30rem)
+@media (--min-small)
 {
 	.rs-tooltip-alternative:after
 	{

@@ -19,8 +19,8 @@ function admin_settings_form()
 
 	/* collect general set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-admin-set-accordion rs-set-active">';
-	$output .= '<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-admin-title-accordion rs-title-active">' . l('general') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-active rs-admin-set-accordion rs-set-active">';
+	$output .= '<legend class="rs-js-title-accordion rs-js-title-active rs-admin-title-accordion rs-admin-title-active">' . l('general') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-admin-box-accordion rs-box-active">';
 
 	/* languages directory object */
@@ -58,8 +58,8 @@ function admin_settings_form()
 
 	/* collect metadata set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('metadata') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('metadata') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . form_element('text', 'title', 'rs-admin-field-default', 'title', s('title'), l('title'), 'maxlength="50"') . '</li>';
 	$output .= '<li>' . form_element('text', 'author', 'rs-admin-field-default', 'author', s('author'), l('author'), 'maxlength="50"') . '</li>';
@@ -74,8 +74,8 @@ function admin_settings_form()
 
 	/* collect contact set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('contact') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('contact') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . form_element('email', 'email', 'rs-admin-field-default rs-admin-field-note', 'email', s('email'), l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'subject', 'rs-admin-field-default', 'subject', s('subject'), l('subject'), 'maxlength="50"') . '</li>';
@@ -87,8 +87,8 @@ function admin_settings_form()
 
 	/* collect formatting set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('formatting') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('formatting') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . form_element('text', 'charset', 'rs-admin-field-default rs-admin-field-note', 'charset', s('charset'), l('charset'), 'maxlength="10" required="required"') . '</li>';
 	$output .= '<li>' . form_element('text', 'divider', 'rs-admin-field-default', 'divider', s('divider'), l('divider'), 'maxlength="10"') . '</li>';
@@ -105,8 +105,8 @@ function admin_settings_form()
 
 	/* collect contents set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('contents') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('contents') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$homepage_array[l('none')] = 0;
 	$homepage_result = Redaxscript\Db::forTablePrefix('articles')->orderByAsc('title')->findArray();
@@ -131,8 +131,8 @@ function admin_settings_form()
 
 	/* collect comments set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('comments') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('comments') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . select_element('moderation', 'rs-admin-field-select', 'moderation', array(
 			l('enable') => 1,
@@ -142,8 +142,8 @@ function admin_settings_form()
 
 	/* collect users set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-set-accordion rs-admin-set-accordion">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('users') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-admin-set-accordion">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('users') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . select_element('registration', 'rs-admin-field-select', 'registration', array(
 			l('enable') => 1,
@@ -161,8 +161,8 @@ function admin_settings_form()
 
 	/* collect security set */
 
-	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-accordion-last rs-set-accordion rs-admin-set-accordion rs-admin-set-accordion-last">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-admin-title-accordion">' . l('security') . '</legend>';
+	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-accordion-last rs-admin-set-accordion rs-admin-set-accordion-last">';
+	$output .= '<legend class="rs-js-title-accordion rs-admin-title-accordion">' . l('security') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion">';
 	$output .= '<li>' . select_element('captcha', 'rs-admin-field-select', 'captcha', array(
 			l('random') => 1,
@@ -175,8 +175,8 @@ function admin_settings_form()
 	/* collect hidden and button output */
 
 	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-button-large rs-admin-button-cancel', l('cancel'), 'admin');
-	$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-button-large rs-admin-button-submit', 'update', l('save'));
+	$output .= anchor_element('internal', '', 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel', l('cancel'), 'admin');
+	$output .= form_element('button', '', 'rs-js-submit rs-admin-button-default rs-admin-button-submit', 'update', l('save'));
 	$output .= '</form>';
 	$output .= Redaxscript\Hook::trigger('adminSettingFormEnd');
 	echo $output;

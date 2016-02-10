@@ -1,0 +1,62 @@
+/**
+ * @tableofcontents
+ *
+ * 1. box tab
+ * 2. list tab
+ * 3. set tab
+ * 4. query
+ *    4.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box tab */
+
+.rs-admin-box-tab
+{
+	overflow: hidden;
+}
+
+/* @section 2. list tab */
+
+.rs-admin-list-tab li
+{
+	display: inline-block;
+}
+
+.rs-js .rs-admin-list-tab .rs-admin-item-active
+{
+	pointer-events: none;
+}
+
+/* @section 3. set tab */
+
+.rs-js .rs-admin-set-tab
+{
+	display: none;
+}
+
+.rs-js .rs-admin-set-tab.rs-admin-set-active
+{
+	display: block;
+}
+
+/* @section 4. query */
+
+/* @section 4.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+	.rs-admin-list-tab
+	{
+		display: none;
+	}
+
+	.rs-js .rs-admin-set-tab
+	{
+		display: block;
+	}
+}

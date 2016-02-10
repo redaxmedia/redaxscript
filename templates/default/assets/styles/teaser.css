@@ -4,6 +4,7 @@
  * 1. title teaser
  * 2. query
  *    2.1 min width 50rem
+ *    2.2 min width 80rem
  *
  * @since 3.0.0
  *
@@ -11,20 +12,23 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. title teaser */
 
 .rs-title-teaser
 {
-	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
-	color: #fff;
+	color: var(--color-light);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
 	line-height: 1.25em;
+	max-width: 80%;
 	padding: 0.375em 0.75em;
 	position: relative;
 	opacity: 0;
@@ -50,16 +54,26 @@
 
 /* @section 2.1 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--min-medium)
 {
 	.rs-title-teaser
 	{
-		font-size: 3em;
+		font-size: 2em;
 	}
 
 	.rs-title-teaser .rs-is-break:after
 	{
 		content: '';
 		display: block;
+	}
+}
+
+/* @section 2.2 min width 80rem */
+
+@media (--min-large)
+{
+	.rs-title-teaser
+	{
+		font-size: 3em;
 	}
 }

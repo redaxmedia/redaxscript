@@ -23,6 +23,18 @@
 	color: #474747;
 }
 
+.rs-admin-table caption,
+.rs-admin-table td,
+.rs-admin-table th
+{
+	text-align: left;
+}
+
+.rs-admin-table .rs-column-last
+{
+	text-align: right;
+}
+
 /* @section 1.1 body */
 
 .rs-admin-table tbody
@@ -57,7 +69,7 @@
 
 .rs-admin-table tbody td
 {
-	padding: 1em;
+	padding: 0.25em 0.5em;
 }
 
 /* row disabled */
@@ -120,7 +132,7 @@
 
 .rs-admin-table tbody .rs-admin-list-control
 {
-	margin-top: 1.5em;
+	margin-top: 0.5em;
 }
 
 .rs-admin-desktop .rs-admin-table tbody .rs-admin-list-control
@@ -135,21 +147,21 @@
 
 /* @section 1.5 move control */
 
-.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-move-down
+.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-admin-move-down
 {
 	color: #474747;
 	display: block;
-	min-height: 3em;
+	min-height: 2.5em;
 	position: relative;
 	transition: color 0.4s ease;
 }
 
-.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-move-down:hover
+.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover
 {
 	color: #0090db;
 }
 
-.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-move-down:before
+.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
 {
 	display: block;
 	font: 1.5rem 'icon admin';
@@ -164,7 +176,7 @@
 	top: 0.25em;
 }
 
-.rs-admin-table .rs-move-down:before
+.rs-admin-table .rs-admin-move-down:before
 {
 	content: 'c';
 	bottom: 0.25em;
@@ -172,7 +184,7 @@
 
 /* disabled move control */
 
-.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-move-down:before
+.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-admin-move-down:before
 {
 	color: #b9b9b9;
 }
@@ -194,7 +206,7 @@
 
 .rs-admin-table caption, .rs-admin-table thead th, .rs-admin-table tfoot td
 {
-	padding: 0.5em 1em;
+	padding: 0.5em;
 }
 
 /* @section 1.7 column move */
@@ -214,7 +226,7 @@
 .rs-admin-table thead .rs-admin-column-move:before, .rs-admin-table tfoot .rs-admin-column-move:before
 {
 	content: 'a';
-	font: 1.25rem/2rem 'icon admin';
+	font: 1.25rem/3rem 'icon admin';
 	position: absolute;
 	right: 1.125em;
 	text-indent: 0;

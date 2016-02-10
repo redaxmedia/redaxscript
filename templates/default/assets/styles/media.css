@@ -9,6 +9,9 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. several media */
 
 .rs-image-default,
@@ -18,10 +21,4 @@
 	display: block;
 	margin: 1em 0;
 	max-width: 100%;
-}
-
-.rs-image-gallery
-{
-	max-width: 94%;
-	padding: 3%;
 }

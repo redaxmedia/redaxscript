@@ -9,20 +9,10 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. slide in down */
-
-@-webkit-keyframes rs-slide-in-down
-{
-	from
-	{
-		top: -5em;
-	}
-
-	to
-	{
-		top: 0;
-	}
-}
 
 @keyframes rs-slide-in-down
 {

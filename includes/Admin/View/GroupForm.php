@@ -10,7 +10,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to generate the user form
+ * children class to generate the group form
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class UserForm implements ViewInterface
+class GroupForm implements ViewInterface
 {
 	/**
 	 * stringify the view
@@ -39,15 +39,15 @@ class UserForm implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $userId identifier of the user
+	 * @param integer $groupId identifier of the group
 	 *
 	 * @return string
 	 */
 
-	public function render($userId = null)
+	public function render($groupId = null)
 	{
-		$output = Hook::trigger('adminUserFormStart');
-		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
+		$output = Hook::trigger('adminGroupFormStart');
+		$group = Db::forTablePrefix('groups')->whereIdIs($groupId)->findOne();
 
 		/* html elements */
 
@@ -55,7 +55,7 @@ class UserForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($user->name ? $user->name : Language::get('user_new'));
+		$titleElement->text($group->name ? $group->name : Language::get('group_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -67,7 +67,7 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $user->id ? 'admin/process/users/' . $user->id : 'admin/process/users',
+				'action' => $group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups',
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -80,16 +80,16 @@ class UserForm implements ViewInterface
 		$linkCancel
 			->init('a', array(
 				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/users'
+				'href' => 'admin/view/groups'
 			))
 			->text(Language::get('cancel'));
-		if ($user->id)
+		if ($group->id)
 		{
 			$linkDelete = new Html\Element();
 			$linkDelete
 				->init('a', array(
 					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/users/' . $user->id . '/' . Registry::get('token')
+					'href' => 'admin/delete/groups/' . $group->id . '/' . Registry::get('token')
 				))
 				->text(Language::get('delete'));
 		}
@@ -103,14 +103,14 @@ class UserForm implements ViewInterface
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('user'))
+				->text(Language::get('group'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
+				->text(Language::get('access'))
 			);
 		$outputItem .= $itemElement
 			->copy()
@@ -125,7 +125,7 @@ class UserForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
@@ -138,46 +138,17 @@ class UserForm implements ViewInterface
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
-				'value' => $user->name
+				'value' => $group->name
 			))
 			->append('</li><li>')
 			->label(Language::get('user'), array(
 				'for' => 'user'
 			))
 			->text(array(
-				'id' => 'user',
-				'name' => 'user',
+				'id' => 'alias',
+				'name' => 'alias',
 				'required' => 'required',
-				'value' => $user->user
-			))
-			->append('</li><li>')
-			->label(Language::get('password'), array(
-				'for' => 'password'
-			))
-			->password(array(
-				'autocomplete' => 'off',
-				'id' => 'password',
-				'name' => 'password',
-				'value' => $user->password
-			))
-			->append('</li><li>')
-			->label(Language::get('password_confirm'), array(
-				'for' => 'password_confirm'
-			))
-			->password(array(
-				'autocomplete' => 'off',
-				'id' => 'password_confirm',
-				'name' => 'password_confirm'
-			))
-			->append('</li><li>')
-			->label(Language::get('email'), array(
-				'for' => 'email'
-			))
-			->email(array(
-				'id' => 'email',
-				'name' => 'email',
-				'required' => 'required',
-				'value' => $user->email
+				'value' => $group->alias
 			))
 			->append('</li><li>')
 			->label(Language::get('description'), array(
@@ -187,49 +158,126 @@ class UserForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
 				'name' => 'description',
-				'value' => $user->description
+				'value' => $group->description
 			))
 			->append('</li></ul></fieldset>')
 
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->label(Language::get('language'), array(
-				'for' => 'language'
+			->label(Language::get('categories'), array(
+				'for' => 'categories'
 			))
-			->select(Helper\Option::getLanguageArray(), array(
-				'id' => 'language',
-				'name' => 'language',
-				'value' => $user->language
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'categories',
+				'name' => 'categories',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->categories
+			))
+			->append('</li><li>')
+			->label(Language::get('articles'), array(
+				'for' => 'articles'
+			))
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'articles',
+				'name' => 'articles',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->articles
+			))
+			->append('</li><li>')
+			->label(Language::get('extras'), array(
+				'for' => 'extras'
+			))
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'extras',
+				'name' => 'extras',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->extras
+			))
+			->append('</li><li>')
+			->label(Language::get('comments'), array(
+				'for' => 'comments'
+			))
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'comments',
+				'name' => 'comments',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->comments
+			))
+			->append('</li><li>')
+			->label(Language::get('groups'), array(
+				'for' => 'groups'
+			))
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'groups',
+				'name' => 'groups',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->groups
+			))
+			->append('</li><li>')
+			->label(Language::get('users'), array(
+				'for' => 'users'
+			))
+			->select(Helper\Option::getPermissionArray(), array(
+				'id' => 'users',
+				'name' => 'users',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray()),
+				'value' => $group->users
+			))
+			->append('</li><li>')
+			->label(Language::get('modules'), array(
+				'for' => 'modules'
+			))
+			->select(Helper\Option::getPermissionArray('modules'), array(
+				'id' => 'modules',
+				'name' => 'modules',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray('modules')),
+				'value' => $group->modules
+			))
+			->append('</li><li>')
+			->label(Language::get('settings'), array(
+				'for' => 'settings'
+			))
+			->select(Helper\Option::getPermissionArray('settings'), array(
+				'id' => 'settings',
+				'name' => 'settings',
+				'multiple' => 'multiple',
+				'size' => count(Helper\Option::getPermissionArray('settings')),
+				'value' => $group->settings
 			))
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->label(Language::get('filter'), array(
+				'for' => 'filter'
+			))
+			->select(Helper\Option::getToggleArray(), array(
+				'id' => 'filter',
+				'name' => 'filter',
+				'value' => $group->filter
+			))
+			->append('</li><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $user->status
-			))
-			->append('</li><li>')
-			->label(Language::get('groups'), array(
-				'for' => 'groups'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'groups',
-				'name' => 'groups',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $user->access
+				'value' => $group->status
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->append($linkCancel);
-			if ($user->id)
+			if ($group->id)
 			{
 				$formElement
 					->append($linkDelete)
@@ -243,7 +291,7 @@ class UserForm implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminUserFormEnd');
+		$output .= Hook::trigger('adminGroupFormEnd');
 		return $output;
 	}
 }

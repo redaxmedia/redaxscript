@@ -11,6 +11,9 @@
 
 /* TODO: dialog doesn't work because of translate3d(0px, 0px, 0px) on body-tag (this is needed for menu functionality). please search for a solition */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. dialog overlay default */
 
 .rs-dialog-overlay-default
@@ -21,14 +24,13 @@
 .rs-dialog-default,
 .rs-dialog-overlay-default
 {
-	-webkit-animation: rs-fade 0.4s;
 	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }
 
 .rs-dialog-default
 {
-	background: #323e4c;
-	color: #fff;
+	background: var(--color-primary-dark);
+	color: var(--color-light);
 	padding: 1em;
 }

@@ -9,7 +9,11 @@
  * @author Henry Ruhs
  */
 
+@import '_query.css';
+@import '_variable.css';
+
 /* @section 1. grid elements */
+
 .rs-grid-space > a,
 .rs-grid-space > blockquote,
 .rs-grid-space > button,

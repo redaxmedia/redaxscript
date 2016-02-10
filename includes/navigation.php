@@ -225,7 +225,7 @@ function navigation_list($table = '', $options = '')
 
 	if ($error && $option_parent == '')
 	{
-		$output = '<ul' . $id_string . $class_string . '><li>' . $error . '</li></ul>';
+		$output = '<ul' . $id_string . $class_string . '><li><span>' . $error . '</span></li></ul>';
 	}
 
 	/* else collect list output */

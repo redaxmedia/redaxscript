@@ -33,18 +33,50 @@ class Option
 	}
 
 	/**
-	 * get the status array
+	 * get the visible array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function getStatusArray()
+	public static function getVisibleArray()
 	{
 		$statusArray[Language::get('publish')] = 1;
 		$statusArray[Language::get('unpublish')] = 0;
 		return $statusArray;
+	}
+
+	/**
+	 * get the permission array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return array
+	 */
+
+	public static function getPermissionArray($table = null)
+	{
+		if ($table === 'modules')
+		{
+			$permissionArray[Language::get('install')] = 1;
+			$permissionArray[Language::get('edit')] = 2;
+			$permissionArray[Language::get('uninstall')] = 3;
+		}
+		else if ($table === 'settings')
+		{
+			$permissionArray[Language::get('none')] = 1;
+			$permissionArray[Language::get('edit')] = 2;
+		}
+		else
+		{
+			$permissionArray[Language::get('create')] = 1;
+			$permissionArray[Language::get('edit')] = 2;
+			$permissionArray[Language::get('delete')] = 3;
+		}
+		return $permissionArray;
 	}
 
 	/**
@@ -63,7 +95,7 @@ class Option
 
 		/* process directory */
 
-		$languageArray[Language::get('select')] = null;
+		$languageArray[Language::get('select')] = 'select';
 		foreach ($languageDirectoryArray as $value)
 		{
 			$value = substr($value, 0, 2);
@@ -91,7 +123,7 @@ class Option
 
 		/* process directory */
 
-		$templateArray[Language::get('select')] = null;
+		$templateArray[Language::get('select')] = 'select';
 		foreach ($templateDirectoryArray as $value)
 		{
 			$templateArray[$value] = $value;
@@ -115,7 +147,7 @@ class Option
 
 		/* process content */
 
-		$contentArray[Language::get('select')] = null;
+		$contentArray[Language::get('select')] = 'select';
 		foreach ($content as $value)
 		{
 			$contentArray[$value->title . ' (' . $value->id . ')'] = $value->id;
@@ -139,7 +171,7 @@ class Option
 
 		/* process access */
 
-		$accessArray[Language::get('all')] = null;
+		$accessArray[Language::get('all')] = 'select';
 		foreach ($access as $value)
 		{
 			$accessArray[$value->name] = $value->id;

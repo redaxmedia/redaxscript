@@ -28,7 +28,7 @@
 24 = templates/default/assets/styles/icon.css
 25 = templates/default/assets/styles/list.css
 26 = templates/default/assets/styles/media.css
-27 = templates/default/assets/styles/menu.css
+27 = templates/default/assets/styles/navigation.css
 28 = templates/default/assets/styles/table.css
 29 = templates/default/assets/styles/teaser.css
 30 = templates/default/assets/styles/tooltip.css

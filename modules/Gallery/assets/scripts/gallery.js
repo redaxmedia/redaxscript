@@ -79,7 +79,7 @@
 					counter: link.data('counter'),
 					total: link.data('total'),
 					id: link.data('id'),
-					artist: link.data('data-artist') || '',
+					artist: link.data('artist') || '',
 					date: link.data('date') || '',
 					description: link.data('description') || ''
 				};
@@ -240,6 +240,13 @@
 			{
 				gallery.meta = $('<div>').addClass(options.className.galleryMeta);
 
+				/* description */
+
+				if (gallery.data.description)
+				{
+					gallery.description = $('<div data-label="' + rs.language._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
+				}
+
 				/* artist */
 
 				if (gallery.data.artist)
@@ -252,13 +259,6 @@
 				if (gallery.data.date)
 				{
 					gallery.date = $('<div data-label="' + rs.language.date + '">' + gallery.data.date + '</div>').addClass(options.className.galleryDate).appendTo(gallery.meta);
-				}
-
-				/* description */
-
-				if (gallery.data.description)
-				{
-					gallery.description = $('<div data-label="' + rs.language._gallery.image_description + '">' + gallery.data.description + '</div>').addClass(options.className.galleryDescription).appendTo(gallery.meta);
 				}
 
 				/* pagination */
