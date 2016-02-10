@@ -30,8 +30,7 @@ class Messenger
 
 	protected $_options = array(
 		'className' => array(
-			'list' => 'rs-list-messenger',
-			'divider' => 'rs-item-divider'
+			'list' => 'rs-list-messenger'
 		)
 	);
 
@@ -210,7 +209,7 @@ class Messenger
 	}
 
 	/**
-	 *  meta tag powered redirect
+	 *  meta powered redirect
 	 *
 	 * @since 3.0.0
 	 *
@@ -220,7 +219,7 @@ class Messenger
 	 * @return string $redirect
 	 */
 
-	public function redirect($route = null, $timeout = 4)
+	public function redirect($route = null, $timeout = 2)
 	{
 		if (!$route)
 		{
