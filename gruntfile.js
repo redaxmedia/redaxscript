@@ -265,14 +265,17 @@ module.exports = function (grunt)
 				[
 					require('postcss-import'),
 					require('postcss-custom-media'),
+					require('postcss-css-variables'),
 					require('autoprefixer')(
 					{
 						browsers: 'last 2 versions'
-					}),
-					require('postcss-css-variables')
-					//https://github.com/hail2u/node-css-mqpacker
+					})
+					//https://github.com/travco/postcss-extend
+					//https://github.com/postcss/postcss-mixins
 					//https://github.com/postcss/postcss-color-gray
 					//https://github.com/postcss/postcss-color-function
+					//https://github.com/Siilwyn/css-declaration-sorter
+					//https://github.com/jedmao/postcss-triangle
 				]
 			}
 		},
