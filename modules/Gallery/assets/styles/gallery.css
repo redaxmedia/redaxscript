@@ -9,8 +9,13 @@
  * 6. gallery control
  * 7. gallery meta
  * 8. gallery list
+ * 9. gallery link
+ * 10. query
+ *    10.1 landscape
+ *    10.2 screen max 50rem
+ *    10.3 min width 50rem
  *
- * @since 2.5.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs

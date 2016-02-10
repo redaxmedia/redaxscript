@@ -539,7 +539,7 @@ module.exports = function (grunt)
 		'jscs',
 		'jshint',
 		'jsonlint',
-		'csslint',
+		//'csslint',
 		'htmlhint',
 		'phpcs',
 		'toclint'
