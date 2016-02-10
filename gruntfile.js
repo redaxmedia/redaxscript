@@ -271,11 +271,10 @@ module.exports = function (grunt)
 						browsers: 'last 2 versions'
 					})
 					//https://github.com/travco/postcss-extend
-					//https://github.com/postcss/postcss-mixins
+					//https://github.com/postcss/postcss-nested
 					//https://github.com/postcss/postcss-color-gray
 					//https://github.com/postcss/postcss-color-function
 					//https://github.com/Siilwyn/css-declaration-sorter
-					//https://github.com/jedmao/postcss-triangle
 				]
 			}
 		},
