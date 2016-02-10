@@ -12,6 +12,7 @@ use Redaxscript\Messenger;
  * @category Tests
  * @author Henry Ruhs
  */
+
 class MessengerTest extends TestCase
 {
 	/**
@@ -93,37 +94,27 @@ class MessengerTest extends TestCase
 	}
 
 	/**
-	 * testInit
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testInit()
-	{
-	}
-
-	/**
 	 * testRender
 	 *
 	 * @since 3.0.0
 	 *
 	 * @dataProvider providerRender
 	 *
-	 * @param array $info
+	 * @param array $message
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testRender($info = null, $action = null, $expect = null)
+	public function testRender($message = null, $action = null, $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->render($info['type'], $info['data'], $info['title']);
+		$actual = $messenger->render($message['type'], $message['data'], $message['title']);
 
 		/* compare */
 
@@ -147,7 +138,7 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
@@ -175,7 +166,7 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
@@ -203,7 +194,7 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
@@ -231,7 +222,7 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
@@ -243,27 +234,27 @@ class MessengerTest extends TestCase
 	}
 
 	/**
-	 * tesRedirect
+	 * testRedirect
 	 *
 	 * @since 3.0.0
 	 *
 	 * @dataProvider providerRedirect
 	 *
-	 * @param array $data
+	 * @param array $redirect
 	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testRedirect($data = null, $action = null, $expect = null)
+	public function testRedirect($redirect = null, $action = null, $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['action'], $action['route']);
+		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->redirect($data['url'], $data['time']);
+		$actual = $messenger->redirect($redirect['route'], $redirect['time']);
 
 		/* compare */
 

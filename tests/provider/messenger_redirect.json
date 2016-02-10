@@ -1,33 +1,33 @@
 [
 	[
 		{
-			"url": "hello/world",
+			"route": "hello/world",
 			"time": "5"
 		},
 		{
-			"action": "",
+			"text": "",
 			"route": ""
 		},
 		"<meta http-equiv=\"refresh\" content=\"5;url=hello/world\">"
 	],
 	[
 		{
-			"url": "",
+			"route": "",
 			"time": "3"
 		},
 		{
-			"action": "test",
+			"text": "test",
 			"route": "hello/world"
 		},
 		"<meta http-equiv=\"refresh\" content=\"3;url=hello/world\">"
 	],
 	[
 		{
-			"url": "index.php",
+			"route": "index.php",
 			"time": "2"
 		},
 		{
-			"action": "test",
+			"text": "test",
 			"route": "hello/world"
 		},
 		"<meta http-equiv=\"refresh\" content=\"2;url=index.php\">"

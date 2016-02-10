@@ -10,10 +10,11 @@ namespace Redaxscript;
  * @category Messenger
  * @author Balázs Szilágyi
  */
+
 class Messenger
 {
 	/**
-	 * redirect link
+	 * action array
 	 *
 	 * @var array
 	 */
@@ -30,46 +31,24 @@ class Messenger
 		'className' => array(
 			'list' => 'rs-list-messenger',
 			'divider' => 'rs-item-divider'
-		),
-		'divider' => null
+		)
 	);
-
-	/**
-	 * init
-	 *
-	 * @since 3.0.0
-	 *
-	 */
-
-	protected $_registry = array();
-
-	/**
-	 * init
-	 *
-	 * @since 3.0.0
-	 *
-	 */
-
-	public function init()
-	{
-		$this->_registry = Registry::getInstance();
-	}
 
 	/**
 	 * setAction
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $name action name
-	 * @param string $route action route
+	 * @param string $text text of the action
+	 * @param string $route route of the action
 	 */
 
-	public function setAction($name = null, $route = null)
+	public function setAction($text = null, $route = null)
 	{
-		if (!empty($name))
+		if ($text)
 		{
 			$this->_action = [
-				'action' => $name,
+				'text' => $text,
 				'route' => $route,
 			];
 		}
@@ -80,7 +59,7 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $message message text
+	 * @param array $message text of the success message
 	 * @param string $title message title
 	 *
 	 * @return string
@@ -154,7 +133,6 @@ class Messenger
 	public function render($type = null, $messageData = null, $title = null)
 	{
 		$output = Hook::trigger('messengerStart');
-
 		if ($title)
 		{
 			/* html element */
@@ -174,12 +152,10 @@ class Messenger
 			'class' => 'rs-box-note rs-note-' . $type
 		));
 
-		/* put messageData in a list */
+		/* build a list */
 
 		if (is_array($messageData))
 		{
-			/* html elements */
-
 			$itemElement = new Html\Element();
 			$itemElement->init('li');
 			$listElement = new Html\Element();
@@ -195,33 +171,27 @@ class Messenger
 				$outputItem .= '<li>' . $value . '</li>';
 			}
 			$boxElement->html($listElement->html($outputItem));
-
 		}
 
-		/* if just one message, no need for list */
+		/* else plain text */
 
 		else
 		{
 			$boxElement->text($messageData);
 		}
 
-		$output .= $boxElement->render();
+		/* collect output */
 
-		/* place action link */
-
+		$output .= $boxElement;
 		if ($this->_action)
 		{
 			$linkElement = new Html\Element();
-			$linkElement
+			$output .= $linkElement
 				->init('a')
 				->attr('href', $this->_action['route'])
-				->text($this->_action['action']);
-
-			$output .= $linkElement;
+				->text($this->_action['text']);
 		}
-
 		$output .= Hook::trigger('messengerEnd');
-
 		return $output;
 	}
 
@@ -230,20 +200,19 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $url
+	 * @param string $route
 	 * @param int $time
 	 *
 	 * @return string $redirect
 	 */
 
-	public function redirect($url = null, $time = 4)
+	public function redirect($route = null, $time = 4)
 	{
-		if (!$url)
+		if (!$route)
 		{
-			$url = $this->_action['route'];
+			$route = $this->_action['route'];
 		}
-
-		$redirect = '<meta http-equiv="refresh" content="' . $time . ';url=' . $url . '">';
-		return $redirect;
+		$output = '<meta http-equiv="refresh" content="' . $time . ';url=' . $route . '">';
+		return $output;
 	}
 }
