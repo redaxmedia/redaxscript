@@ -2,12 +2,13 @@
  * @tableofcontents
  *
  * 1. hide
- * 2. clearfix
+ * 2. redirect
+ * 3. clearfix
  *
- * @since 2.2.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. hide */
@@ -18,7 +19,21 @@
 	display: none;
 }
 
-/* @section 2. clearfix */
+/* @section 2. redirect */
+
+.rs-redirect-overlay
+{
+	background: #fff;
+	bottom:0;
+	display: block;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 10000;
+}
+
+/* @section 3. clearfix */
 
 .rs-admin-clearfix,
 .rs-clearfix

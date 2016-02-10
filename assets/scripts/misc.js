@@ -1,11 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. forward notification
- * 2. key shortcut
- * 3. init
+ * 1. key shortcut
+ * 2. init
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
