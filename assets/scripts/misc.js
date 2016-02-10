@@ -15,44 +15,7 @@
 {
 	'use strict';
 
-	/* @section 1. forward notification */
-
-	$.fn.forwardNotification = function (options)
-	{
-		/* extend options */
-
-		if (rs.plugins.forwardNotification.options !== options)
-		{
-			options = $.extend({}, rs.plugins.forwardNotification.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			var link = $(this),
-				url = link.attr('href');
-
-			/* timeout enhanced forward */
-
-			if (typeof url === 'string')
-			{
-				setTimeout(function ()
-				{
-					if (url.substr(0, 2) === '//' || url.substr(0, 7) === 'http://' || url.substr(0, 8) === 'https://')
-					{
-						window.location = url;
-					}
-					else
-					{
-						window.location = rs.baseURL + url;
-					}
-				}, options.duration);
-			}
-		});
-	};
-
-	/* @section 2. key shortcut */
+	/* @section 1. key shortcut */
 
 	$.fn.keyShortcut = function (options)
 	{
@@ -132,17 +95,13 @@
 		});
 	};
 
-	/* @section 3. init */
+	/* @section 2. init */
 
 	$(function ()
 	{
 		if (rs.plugins.keyShortcut.init)
 		{
 			$(rs.plugins.keyShortcut.selector).keyShortcut(rs.plugins.keyShortcut.options);
-		}
-		if (rs.plugins.forwardNotification.init)
-		{
-			$(rs.plugins.forwardNotification.selector).forwardNotification(rs.plugins.forwardNotification.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

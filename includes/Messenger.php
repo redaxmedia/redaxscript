@@ -30,7 +30,8 @@ class Messenger
 
 	protected $_options = array(
 		'className' => array(
-			'list' => 'rs-list-messenger'
+			'list' => 'rs-list-messenger',
+			'link' => 'rs-button-messenger'
 		)
 	);
 
@@ -200,8 +201,10 @@ class Messenger
 		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
-				->init('a')
-				->attr('href', $this->_actionArray['route'])
+				->init('a', array(
+					'href' => $this->_actionArray['route'],
+					'class' => $this->_options['className']['link']
+				))
 				->text($this->_actionArray['text']);
 		}
 		$output .= Hook::trigger('messengerEnd');
@@ -209,7 +212,7 @@ class Messenger
 	}
 
 	/**
-	 *  meta powered redirect
+	 * meta powered redirect
 	 *
 	 * @since 3.0.0
 	 *
