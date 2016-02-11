@@ -82,7 +82,7 @@ ol.rs-list-default li
 }
 
 ul.rs-list-default li:before {
-	border-color: transparent transparent transparent #457ecd;
+	border-color: transparent transparent transparent var(--color-primary-sub);
 	border-style: solid;
 	border-width: 0.375em;
 	content: '';
@@ -252,7 +252,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover .rs-list-header-children li:hover
 	{
-		background: #457ecd;
+		background: var(--color-primary-sub-light);
 	}
 
 	.rs-list-header .rs-list-header-children:after
