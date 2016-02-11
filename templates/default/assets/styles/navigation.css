@@ -45,7 +45,7 @@
 	.rs-fn-toggle-navigation:after,
 	.rs-fn-toggle-navigation:before
 	{
-		background: #3873b5;
+		background: var(--color-primary-sub);
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation

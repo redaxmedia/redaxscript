@@ -141,8 +141,8 @@ ul.rs-list-default li:before {
 
 .rs-list-tab > li:hover
 {
-	background: #699b3c;
-	border-color: #699b3c;
+	background: var(--color-secondary);
+	border-color: var(--color-secondary);
 	cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header
 	{
-		background: #3873b5;
+		background: var(--color-primary-sub);
 	}
 
 	.rs-list-header > li > span {
@@ -229,7 +229,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover .rs-list-header-children li
 	{
-		background: #3873B5;
+		background: var(--color-primary-sub);
 	}
 
 	.rs-list-header > li:hover .rs-list-header-children a

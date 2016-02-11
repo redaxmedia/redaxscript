@@ -14,9 +14,7 @@
 :root
 {
     --color-light: #fff;
-}
-
-:root
-{
     --color-primary: #323e4c;
+    --color-primary-sub: #3873b5;
+    --color-secondary: #699b3c;
 }
