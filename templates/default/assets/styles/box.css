@@ -35,7 +35,7 @@
 
 .rs-box-line
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	height: 0.125em;
 }
 
@@ -51,14 +51,14 @@
 .rs-box-metadata a::-moz-selection,
 .rs-box-metadata span::-moz-selection
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	color: var(--color-light);
 }
 
 .rs-box-metadata a::selection,
 .rs-box-metadata span::selection
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	color: var(--color-light);
 }
 
@@ -105,7 +105,7 @@
 
 .rs-box-tab-default
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	color: var(--color-light);
 	padding: 0.25em 1em;
 }

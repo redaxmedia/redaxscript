@@ -30,7 +30,7 @@
 
 .rs-dialog-default
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	color: var(--color-light);
 	padding: 1em;
 }

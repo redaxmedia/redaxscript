@@ -59,7 +59,7 @@ a.rs-button-default
 {
 	position: relative;
 	text-indent: -999em;
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 	display: inline-block;
 	vertical-align: middle;
 	width: 20%;

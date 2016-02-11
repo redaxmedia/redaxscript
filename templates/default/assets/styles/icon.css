@@ -25,7 +25,7 @@
 
 .rs-icon-flag
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	padding: 0.125em 0.5em;
 	color: var(--color-light);
 	display: inline-block;

@@ -36,13 +36,13 @@ a
 
 .rs-box-content a
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 	transition: color 0.2s;
 }
 
 .rs-body
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 	font: 300 1.25em/1.75em 'open sans condensed', arial, sans-serif;
 }
 
@@ -114,7 +114,7 @@ a
 
 .rs-title-accordion
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	box-sizing: border-box;
 	color: var(--color-light);
 	padding: 0.25em 0.5em;
@@ -149,7 +149,7 @@ a
 
 .rs-title-content a
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 }
 
 /* @section 3.4 title sub */

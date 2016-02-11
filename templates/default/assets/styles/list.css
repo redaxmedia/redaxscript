@@ -41,7 +41,7 @@
 
 .rs-list-breadcrumb a
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 	opacity: 0.5;
 	transition: opacity 0.2s;
 }
@@ -117,12 +117,12 @@ ul.rs-list-default li:before {
 
 .rs-list-tab a
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 }
 
 .rs-list-tab .rs-item-active
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
 }

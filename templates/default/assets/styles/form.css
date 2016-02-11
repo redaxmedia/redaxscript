@@ -30,7 +30,7 @@
 
 .rs-form-default a
 {
-	color: var(--color-primary-dark);
+	color: var(--color-primary);
 }
 
 .rs-form-default .rs-label-message:after

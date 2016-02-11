@@ -65,7 +65,7 @@
 
 .rs-header
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	padding: 1.25rem;
 }
 
@@ -87,7 +87,7 @@
 
 .rs-sidebar
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	box-sizing: border-box;
 	color: #e8e8e8;
 	padding: 1em;
@@ -97,7 +97,7 @@
 
 .rs-footer
 {
-	background: var(--color-primary-dark);
+	background: var(--color-primary);
 	bottom: 0;
 	min-height: 1.75em;
 	left: 0;
