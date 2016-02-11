@@ -17,4 +17,7 @@
     --color-primary: #323e4c;
     --color-primary-sub: #3873b5;
     --color-secondary: #699b3c;
+
+    --gradient-primary: linear-gradient(#457ecd, #3873b5);
+    --gradient-secondary: linear-gradient(#699b3c, #659438);
 }
