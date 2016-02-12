@@ -111,7 +111,7 @@ a.rs-button-default
 
 /* @section 6.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 	.rs-button-default
 	{
@@ -121,7 +121,7 @@ a.rs-button-default
 
 /* @section 6.2 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-button-default
 	{

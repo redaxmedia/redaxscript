@@ -51,7 +51,7 @@
 
 /* @section 2.1 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-title-teaser
 	{
@@ -67,7 +67,7 @@
 
 /* @section 2.2 min width 80rem */
 
-@media (--min-large)
+@media (--media-large-min)
 {
 	.rs-title-teaser
 	{

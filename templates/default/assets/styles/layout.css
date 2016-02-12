@@ -120,7 +120,7 @@
 
 /* @section 7.2 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 	.rs-wrapper-body
 	{
@@ -145,7 +145,7 @@
 
 /* @section 7.3 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-wrapper
 	{
@@ -173,7 +173,7 @@
 
 /* @section 7.4 min width 80rem */
 
-@media (--min-large)
+@media (--media-large-min)
 {
 	.rs-wrapper
 	{

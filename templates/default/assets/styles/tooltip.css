@@ -31,7 +31,7 @@
 
 /* @section 2.1 min width 30rem */
 
-@media (--min-small)
+@media (--media-small-min)
 {
 	.rs-tooltip-alternative:after
 	{

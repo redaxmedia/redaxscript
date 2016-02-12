@@ -234,7 +234,7 @@ a
 
 /* @section 9.1 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-description-website
 	{

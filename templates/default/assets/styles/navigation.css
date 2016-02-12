@@ -16,7 +16,7 @@
 
 /* @section 1.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 	/* @section 1.1.1 navigation */
 

@@ -152,7 +152,7 @@ ul.rs-list-default li:before {
 
 /* @section 6.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 
 	/* @section 6.1.1 list header */
@@ -180,7 +180,7 @@ ul.rs-list-default li:before {
 
 /* @section 6.2 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 
 	/* @section 6.2.1 list header */
