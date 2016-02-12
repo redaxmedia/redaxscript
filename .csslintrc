@@ -6,8 +6,8 @@
 	"compatible-vendor-prefixes": false,
 	"duplicate-background-images": false,
 	"fallback-colors": false,
+	"font-sizes": false,
 	"outline-none": false,
-	"qualified-headings": false,
 	"text-indent": false,
 	"unqualified-attributes": false
 }

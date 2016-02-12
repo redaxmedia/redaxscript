@@ -130,21 +130,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'assets/styles/*_min.css'
+					'dist/styles/*.min.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/assets/styles/*_min.css'
+					'modules/*/dist/styles/*.min.css'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/assets/styles/*_min.css'
+					'templates/*/dist/styles/*.min.css'
 				]
 			},
 			options:
@@ -369,7 +369,7 @@ module.exports = function (grunt)
 			},
 			toclintTemplates:
 			{
-				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh templates/admin/assets .tocgen -l && sh vendor/bin/tocgen.sh templates/default/assets .tocgen -l'
 			},
 			apiBase:
 			{
