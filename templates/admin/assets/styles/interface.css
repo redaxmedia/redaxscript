@@ -1,9 +1,10 @@
 /**
  * @tableofcontents
  *
- * 2. list control admin
- *    3.1 icons before
- *    3.2 icons after
+ * 1. list control admin
+ * 2. list panel admin
+ *    2.1 icons before
+ *    2.2 icons after
  *
  * @since 3.0.0
  *
@@ -11,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 2. list control admin */
+/* @section 1. list control admin */
 
 .rs-admin-item-control
 {
@@ -20,6 +21,8 @@
 	margin-bottom: 0.5em;
 	margin-right: 0.5em;
 }
+
+/* @section 2. list panel admin */
 
 .rs-admin-item-panel
 {
@@ -33,7 +36,7 @@
 	background: linear-gradient(#d50000, #a20000);
 }
 
-/* @section 3.1 icons before */
+/* @section 2.1 icons before */
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
@@ -68,7 +71,7 @@
 	content: 'n';
 }
 
-/* @section 3.2 icons after */
+/* @section 2.2 icons after */
 
 .rs-admin-item-panel > span:after
 {

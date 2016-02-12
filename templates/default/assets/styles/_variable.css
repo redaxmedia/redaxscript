@@ -13,12 +13,16 @@
 
 :root
 {
+    /* color */
+
     --color-light: #fff;
     --color-primary: #323e4c;
     --color-primary-sub: #3873b5;
     --color-primary-sub-light: color(#3873b5 l(50%));
     --color-secondary: #699b3c;
     --color-secondary-light: color(#699b3c l(50%));
+
+    /* gradient */
 
     --gradient-primary: linear-gradient(var(--color-primary-sub-light), var(--color-primary-sub));
     --gradient-secondary: linear-gradient(var(--color-secondary-light), var(--color-secondary));

@@ -11,6 +11,7 @@
 
 /* @section 1. query */
 
+/*@TODO: please rename to --media-small-min, --media-medium-max etc. */
 @custom-media --min-small screen and (min-width: 30rem);
 @custom-media --max-medium screen and (max-width: 49.999rem);
 @custom-media --min-medium screen and (min-width: 50rem);
