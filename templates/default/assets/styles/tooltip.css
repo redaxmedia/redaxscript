@@ -15,8 +15,8 @@
 
 .rs-tooltip:after
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
 	left: 110%;

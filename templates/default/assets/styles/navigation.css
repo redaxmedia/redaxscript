@@ -41,7 +41,7 @@
 	.rs-fn-toggle-navigation:after,
 	.rs-fn-toggle-navigation:before
 	{
-		background: var(--color-primary-sub);
+		background: var(--rs-color-primary);
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
@@ -58,6 +58,6 @@
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
-		box-shadow: 0 -0.5em 0 var(--color-primary-sub), 0 0.5em 0 var(--color-primary-sub);
+		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
 	}
 }

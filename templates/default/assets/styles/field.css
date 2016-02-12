@@ -71,7 +71,7 @@
 .rs-field-select:not([class*='note']):focus,
 .rs-field-textarea:not([class*='note']):focus
 {
-	border-color: var(--color-primary-sub);
+	border-color: var(--rs-color-primary);
 }
 
 .rs-field-search

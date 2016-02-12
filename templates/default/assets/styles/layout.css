@@ -23,13 +23,13 @@
 
 .rs-body
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	margin-bottom: 5em;
 	min-height: 20em;
 	padding-bottom: 2em;
@@ -62,7 +62,7 @@
 
 .rs-header
 {
-	background: var(--color-primary);
+	background: var(--rs-color-tertiary);
 	padding: 1.25rem;
 }
 
@@ -84,7 +84,7 @@
 
 .rs-sidebar
 {
-	background: var(--color-primary);
+	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
 	color: #e8e8e8;
 	padding: 1em;
@@ -94,7 +94,7 @@
 
 .rs-footer
 {
-	background: var(--color-primary);
+	background: var(--rs-color-tertiary);
 	bottom: 0;
 	min-height: 1.75em;
 	left: 0;

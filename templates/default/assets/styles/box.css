@@ -32,7 +32,7 @@
 
 .rs-box-line
 {
-	background: var(--color-primary);
+	background: var(--rs-color-tertiary);
 	height: 0.125em;
 }
 
@@ -48,15 +48,15 @@
 .rs-box-metadata a::-moz-selection,
 .rs-box-metadata span::-moz-selection
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 }
 
 .rs-box-metadata a::selection,
 .rs-box-metadata span::selection
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 }
 
 /* @section 3. box quote */
@@ -102,8 +102,8 @@
 
 .rs-box-tab-default
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 	padding: 0.25em 1em;
 }
 
@@ -129,7 +129,7 @@
 
 .rs-box-note a
 {
-	color: var(--color-light);
+	color: var(--rs-color-light);
 }
 
 /* @section 7. box comment */

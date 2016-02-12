@@ -27,13 +27,13 @@
 .rs-table-default tfoot td,
 .rs-table-default caption
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 }
 
 .rs-table-default tr
 {
-	border-bottom: 1px solid var(--color-primary);
+	border-bottom: 1px solid var(--rs-color-tertiary);
 }
 
 /* @section 1.2 head and foot */

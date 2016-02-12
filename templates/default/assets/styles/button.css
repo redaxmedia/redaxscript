@@ -20,7 +20,7 @@
 
 .rs-button-default
 {
-	background: var(--gradient-secondary);
+	background: var(--rs-gradient-secondary);
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
@@ -35,13 +35,13 @@
 .rs-button-default,
 a.rs-button-default
 {
-	color: var(--color-light);
+	color: var(--rs-color-light);
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .rs-button-default:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--gradient-secondary);
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-secondary);
 }
 
 .rs-button-default:active
@@ -56,7 +56,7 @@ a.rs-button-default
 {
 	position: relative;
 	text-indent: -999em;
-	color: var(--color-primary);
+	color: var(--rs-color-tertiary);
 	display: inline-block;
 	vertical-align: middle;
 	width: 20%;

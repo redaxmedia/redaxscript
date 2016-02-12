@@ -20,7 +20,7 @@
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
-	color: var(--color-light);
+	color: var(--rs-color-light);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
