@@ -11,9 +11,6 @@
 
 /* TODO: dialog doesn't work because of translate3d(0px, 0px, 0px) on body-tag (this is needed for menu functionality). please search for a solition */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. dialog overlay default */
 
 .rs-dialog-overlay-default

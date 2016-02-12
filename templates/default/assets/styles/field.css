@@ -15,9 +15,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. several form elements */
 
 .rs-field-default,

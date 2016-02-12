@@ -1,0 +1,1701 @@
+/**
+ * @tableofcontents
+ *
+ * 1. query
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+
+/*@TODO: please rename to --media-small-min, --media-medium-max etc. */
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+/**
+ * @tableofcontents
+ *
+ * 1. tag styling
+ * 2. links
+ *    2.1 read more link
+ * 3. title
+ *    3.1 several titles
+ *    3.2 title accordion
+ *    3.3 title content
+ *    3.4 title sub
+ *    3.5 title website
+ * 4. description website
+ * 5. header
+ * 6. content
+ * 7. sidebar
+ * 8. footer
+ * 9. query
+ *    9.1 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. tag styling */
+
+a
+{
+	text-decoration: none;
+}
+
+.rs-box-content a
+{
+	color: #323e4c;
+	transition: color 0.2s;
+}
+
+.rs-body
+{
+	color: #323e4c;
+	font: 300 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+}
+
+.rs-content strong
+{
+	font-weight: bold;
+}
+
+/* @section 2. links */
+
+.rs-link-default
+{
+	text-decoration: underline;
+}
+
+.rs-link-default:hover
+{
+	background: rgba(0, 0, 0, 0.1);
+	box-shadow: -0.125em 0 rgba(0, 0, 0, 0.1), 0.125em 0 rgba(0, 0, 0, 0.1);
+	transition: background 0.2s, box-shadow 0.2s;
+}
+
+/* @section 2.1 read more link */
+
+.rs-link-read-more
+{
+	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	padding: 0.375em 0.5em;
+	text-decoration: none;
+	transition: -webkit-transform 0.2s;
+	transition: transform 0.2s;
+	transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.rs-link-read-more:after
+{
+	content: '\3009';
+	font: 0.75em/1em 'icon default';
+	margin-left: 0.375em;
+}
+
+.rs-link-read-more:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(124, 184, 71), #699b3c);
+}
+
+.rs-link-read-more:active
+{
+	-webkit-transform: translateY(2px);
+	        transform: translateY(2px);
+}
+
+/* @section 3. title */
+
+/* @section 3.1 several titles */
+
+.rs-title-comment, .rs-title-extra
+{
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+/* @section 3.2 title accordion */
+
+.rs-title-accordion
+{
+	background: #323e4c;
+	box-sizing: border-box;
+	color: #fff;
+	padding: 0.25em 0.5em;
+	width: 100%;
+}
+
+.rs-title-accordion:not(.rs-title-active)
+{
+	cursor: pointer;
+}
+
+.rs-title-accordion.rs-title-active
+{
+	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+}
+
+.rs-title-extra
+{
+	margin-top: 1em;
+}
+
+/* @section 3.3 title content */
+
+.rs-title-content
+{
+	font-size: 2em;
+	border-left: 0.125em solid rgba(0, 0, 0, 0.3);
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
+}
+
+.rs-title-content a
+{
+	color: #323e4c;
+}
+
+/* @section 3.4 title sub */
+
+.rs-title-sub {
+	font-size: 1.25em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+/* @section 3.5 title website */
+
+.rs-title-website
+{
+	float: left;
+	font-size: 3.5em;
+	font-weight: normal;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.rs-title-website a
+{
+	display: block;
+	line-height: 1em;
+	opacity: 0.8;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: opacity 0.2s;
+}
+
+.rs-title-website a:hover
+{
+	opacity: 1;
+}
+
+/* @section 4. description website */
+
+.rs-description-website
+{
+	color: rgba(255, 255, 255, 0.4);
+	display: none;
+	font-weight: 700;
+	left: 0;
+	margin-left: 0.125em;
+}
+
+/* @section 5. header */
+
+.rs-header
+{
+	color: #fff;
+}
+
+.rs-header a
+{
+	color: #fff;
+}
+
+/* @section 6. content */
+
+.rs-box-content p
+{
+	margin: 0.5em 0;
+}
+
+/* @section 7. sidebar */
+
+.rs-sidebar a
+{
+	color: #fff;
+}
+
+/* @section 8. footer */
+
+.rs-footer, .rs-footer a
+{
+	color: #bbb;
+}
+
+.rs-footer a:hover
+{
+	color: #fff;
+}
+
+/* @section 9. query */
+
+/* @section 9.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-description-website
+	{
+		display: block;
+	}
+
+	.rs-link-read-more
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. wrapper
+ * 3. header
+ * 4. teaser
+ * 5. sidebar
+ * 6. footer
+ * 7. query
+ *    7.1 print
+ *    7.2 max width 50rem
+ *    7.3 min width 50rem
+ *    7.4 min width 80rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-body
+{
+	background: #fff;
+	overflow-x: hidden;
+}
+
+.rs-main
+{
+	background: #fff;
+	margin-bottom: 5em;
+	min-height: 20em;
+	padding-bottom: 2em;
+}
+
+.rs-page
+{
+	margin-top: 2em;
+}
+
+/* @section 2. wrapper */
+
+.rs-wrapper
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rs-wrapper-table-default
+{
+	overflow: hidden;
+}
+
+.rs-wrapper-table-default > .rs-table-default
+{
+	width: 100%;
+}
+
+/* @section 3. header */
+
+.rs-header
+{
+	background: #323e4c;
+	padding: 1.25rem;
+}
+
+/* @section 4. teaser */
+
+.rs-teaser
+{
+	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
+	margin-bottom: 2em;
+	max-height: 35em;
+	padding: 5em 2em;
+	padding: 10vw 4vw;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* @section 5. sidebar */
+
+.rs-sidebar
+{
+	background: #323e4c;
+	box-sizing: border-box;
+	color: #e8e8e8;
+	padding: 1em;
+}
+
+/* @section 6. footer */
+
+.rs-footer
+{
+	background: #323e4c;
+	bottom: 0;
+	min-height: 1.75em;
+	left: 0;
+	padding: 1em;
+	position: fixed;
+	right: 0;
+	z-index: -1;
+}
+
+/* @section 7. query */
+
+/* @section 7.1 print */
+
+@media print
+{
+	.rs-footer, .rs-header, .rs-sidebar
+	{
+		display: none;
+	}
+}
+
+/* @section 7.2 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-wrapper-body
+	{
+		min-width: 0;
+	}
+
+	.rs-header
+	{
+		min-height: 2.5em;
+	}
+
+	.rs-page
+	{
+		padding: 1em;
+	}
+
+	.rs-content + .rs-sidebar
+	{
+		margin-top: 3em;
+	}
+}
+
+/* @section 7.3 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-wrapper
+	{
+		width: 90%;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 50rem;
+	}
+
+	.rs-content
+	{
+		float: left;
+		width: 70%;
+	}
+
+	.rs-sidebar
+	{
+		float: right;
+		width: 28%;
+		margin-left: 2%;
+	}
+}
+
+/* @section 7.4 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-wrapper
+	{
+		width: 78rem;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 80rem;
+	}
+
+	.rs-content
+	{
+		width: 70%;
+	}
+
+	.rs-sidebar
+	{
+		width: 28%;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. slide in down
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. slide in down */
+
+@-webkit-keyframes rs-slide-in-down
+{
+	from
+	{
+		top: -5em;
+	}
+
+	to
+	{
+		top: 0;
+	}
+}
+
+@keyframes rs-slide-in-down
+{
+	from
+	{
+		top: -5em;
+	}
+
+	to
+	{
+		top: 0;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. several boxes
+ * 2. box metadata
+ * 3. box quote
+ * 4. box accordion
+ * 5. box tab
+ * 6. box note
+ * 7. box comment
+ * 8. space between elements
+ * 9. query
+ *    9.1 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several boxes */
+
+.rs-box-code
+{
+	background: rgba(50, 62, 77, 0.1);
+	border: 0.25em solid rgba(50, 62, 77, 0.3);
+	display: block;
+	font: 0.75em/1.25em monospace, arial;
+	padding: 1em;
+	white-space: pre-wrap;
+}
+
+.rs-box-line
+{
+	background: #323e4c;
+	height: 0.125em;
+}
+
+/* @section 2. box metadata */
+
+.rs-box-metadata
+{
+	font-size: 0.5em;
+	position: relative;
+	vertical-align: top;
+}
+
+.rs-box-metadata a::-moz-selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-box-metadata span::-moz-selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-box-metadata a::-moz-selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-box-metadata a::selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-box-metadata span::-moz-selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-box-metadata span::selection
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+/* @section 3. box quote */
+
+.rs-box-quote
+{
+	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+	margin: 1em 1em 1em 3em;
+	position: relative;
+}
+
+.rs-box-quote strong
+{
+	font-style: normal;
+	font-weight: bold;
+	display: block;
+}
+
+.rs-box-quote:before
+{
+	content: '\201d';
+	font: 7em/1em georgia;
+	left: -0.5em;
+	opacity: 0.15;
+	position: absolute;
+	top: -0.125em;
+}
+
+/* @section 4. box accordion */
+
+.rs-set-accordion + .rs-set-accordion
+{
+	margin-top: 0.125em;
+}
+
+.rs-box-accordion-default
+{
+	background: rgba(50, 62, 76, 0.3);
+	padding: 0.25em 0.5em;
+}
+
+/* @section 5. box tab */
+
+.rs-box-tab-default
+{
+	background: #323e4c;
+	color: #fff;
+	padding: 0.25em 1em;
+}
+
+/* @section 6. box note */
+
+.rs-box-note
+{
+	border-radius: 0 0.125em 0.125em 0;
+	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	padding: 0.25em 0.5em 0.25em 3em;
+	position: relative;
+}
+
+.rs-box-note:before
+{
+	color: #000;
+	font: 1.5em/1em 'icon default';
+	left: 0.25em;
+	opacity: 0.5;
+	position: absolute;
+	top: 0.25em;
+}
+
+.rs-box-note a
+{
+	color: #fff;
+}
+
+/* @section 7. box comment */
+
+.rs-box-comment
+{
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.rs-box-comment:before
+{
+	content: '\25b6';
+	font: 2em/1em 'icon default';
+	position: absolute;
+	left: 0;
+	top: -0.125em;
+	opacity: 0.5;
+}
+
+/* @section 8. space between elements */
+
+.rs-box-note + .rs-box-note
+{
+	margin-top: 1em;
+}
+
+/* @section 9. query */
+
+/* @section 9.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-box-metadata
+	{
+		font-size: 1em;
+		float: left;
+	}
+
+	.rs-box-navigation
+	{
+		float: right;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. button default
+ * 2. button search
+ * 3. button large
+ * 4. space between elements
+ * 5. disabled
+ * 6. query
+ *    6.1 max width 50rem
+ *    6.2 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button default */
+
+.rs-button-default
+{
+	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	padding: 0.375em 2em;
+	text-align: center;
+	text-decoration: none;
+}
+
+.rs-button-default
+{
+	color: #fff;
+	transition: box-shadow 0.1s, -webkit-transform 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s, -webkit-transform 0.1s;
+}
+
+a.rs-button-default
+{
+	color: #fff;
+	transition: box-shadow 0.1s, -webkit-transform 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s, -webkit-transform 0.1s;
+}
+
+.rs-button-default:hover
+{
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(124, 184, 71), #699b3c);
+}
+
+.rs-button-default:active
+{
+	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	-webkit-transform: translateY(2px);
+	        transform: translateY(2px);
+}
+
+/* @section 2. button search */
+
+.rs-button-search
+{
+	position: relative;
+	text-indent: -999em;
+	color: #323e4c;
+	display: inline-block;
+	vertical-align: middle;
+	width: 20%;
+	height: 2em;
+	font-size: 1em;
+	background: transparent;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+
+.rs-button-search:hover
+{
+	color: #000;
+}
+
+.rs-button-search:after
+{
+	content: '\2315';
+	font: 1em/1.25em 'icon default';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-indent: 0;
+}
+
+/* @section 3. button large */
+
+.rs-button-large
+{
+	font-size: 1.75em;
+	padding: 0.5em 1em;
+}
+
+/* @section 4. space between elements */
+
+.rs-box-dialog-default .rs-button-default, .rs-box-notification .rs-button-default, .rs-form-default .rs-button-default
+{
+	margin-top: 1em;
+}
+
+/* @section 5. disabled */
+
+.rs-button-default[disabled]
+{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* @section 6. query */
+
+/* @section 6.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-button-default
+	{
+		width: 100%;
+	}
+}
+
+/* @section 6.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-button-default
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.rs-button-default + .rs-button-default
+	{
+		margin-left: 1em;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. dialog overlay default
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* TODO: dialog doesn't work because of translate3d(0px, 0px, 0px) on body-tag (this is needed for menu functionality). please search for a solition */
+
+/* @section 1. dialog overlay default */
+
+.rs-dialog-overlay-default
+{
+	background: rgba(50, 62, 76, 0.2);
+}
+
+.rs-dialog-default, .rs-dialog-overlay-default
+{
+	-webkit-animation: rs-fade 0.4s;
+	        animation: rs-fade 0.4s;
+	border-radius: 0.25em;
+}
+
+.rs-dialog-default
+{
+	background: #323e4c;
+	color: #fff;
+	padding: 1em;
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. several form elements
+ * 2. several fields
+ * 3. textarea
+ * 4. disabled and readonly
+ * 5. query
+ *    5.1 max width 50rem
+ *    5.2 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several form elements */
+
+.rs-field-default, .rs-field-select, .rs-field-textarea.rs-field-small
+{
+	width: 30%;
+}
+
+.rs-dialog .rs-field-default
+{
+	width: 100%;
+}
+
+.rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
+{
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	border-radius: 0.125em;
+	display: block;
+	box-sizing: border-box;
+	padding-bottom: 0.375em;
+	padding-top: 0.375em;
+}
+
+/* @section 2. several fields */
+
+.rs-field-default, .rs-field-select, .rs-field-search
+{
+	height: 2em;
+	padding: 0 0.5em;
+}
+
+.rs-field-default, .rs-field-select, .rs-field-textarea
+{
+	border: 2px solid #9c9c9c;
+	transition: background 0.2s, border 0.2s;
+}
+
+.rs-field-default:not([class*='note']):hover, .rs-field-select:not([class*='note']):hover, .rs-field-textarea:not([class*='note']):hover
+{
+	border-color: #000;
+}
+
+.rs-field-default:not([class*='note']):focus
+{
+	border-color: #3873b5;
+}
+
+.rs-field-select:not([class*='note']):focus
+{
+	border-color: #3873b5;
+}
+
+.rs-field-textarea:not([class*='note']):focus
+{
+	border-color: #3873b5;
+}
+
+.rs-field-search
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 80%;
+}
+
+/* @section 3. textarea */
+
+.rs-field-textarea
+{
+	min-height: 10em;
+	resize: vertical;
+	width: 100%;
+	padding: 0.5em;
+}
+
+.rs-field-textarea.rs-field-small
+{
+	min-height: 5em;
+}
+
+/* @section 4. disabled and readonly */
+
+.rs-field-default[disabled], .rs-field-default[readonly], .rs-field-select[disabled], .rs-field-select[readonly], .rs-field-textarea[disabled], .rs-field-textarea[readonly]
+{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* @section 5. query */
+
+/* @section 5.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-field-default, .rs-field-select, .rs-field-textarea
+	{
+		width: 100%;
+	}
+}
+
+/* @section 5.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-field-default, .rs-field-select, .rs-field-textarea
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. forms
+ *    1.1 form default
+ *    1.2 form search
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. forms */
+
+/* @section 1.1 form default */
+
+.rs-label-default
+{
+	display: block;
+}
+
+.rs-form-default li
+{
+	margin: 0.5em 0;
+}
+
+.rs-form-default a
+{
+	color: #323e4c;
+}
+
+.rs-form-default .rs-label-message:after
+{
+	content: ' ' attr(data-message);
+}
+
+/* @section 1.2 form search */
+
+.rs-form-search
+{
+	background: #fff;
+	border-radius: 0.125em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. icon font
+ * 2. icon flag
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. icon font */
+
+@font-face
+{
+	font-family: 'icon default';
+	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. icon flag */
+
+.rs-icon-flag
+{
+	background: #323e4c;
+	padding: 0.125em 0.5em;
+	color: #fff;
+	display: inline-block;
+	margin: 0.125em;
+	border-radius: 0.125em;
+	text-transform: uppercase;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. several lists
+ * 2. list breadcrumb
+ * 3. list default
+ * 4. list header
+ * 5. list tabs
+ * 6. query
+ *    6.1 max width 50rem
+ *       6.1.1 list header
+ *    6.2 min width 50rem
+ *       6.2.1 list header
+ *       6.2.2 list header children
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several lists */
+
+.rs-list-breadcrumb li, .rs-list-pagination li
+{
+	display: inline-block;
+}
+
+/* @section 2. list breadcrumb */
+
+.rs-list-breadcrumb li
+{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.rs-list-breadcrumb a
+{
+	color: #323e4c;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+}
+
+.rs-list-breadcrumb a:hover
+{
+	opacity: 1;
+}
+
+.rs-list-breadcrumb .rs-item-divider
+{
+	text-indent: -999em;
+	width: 1em;
+}
+
+.rs-list-breadcrumb .rs-item-divider:before
+{
+	text-indent: 0;
+	content: '\3009';
+	font: 0.5em/4em 'icon default';
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+/* @section 3. list default */
+
+.rs-list-default li
+{
+	margin-left: 1em;
+}
+
+ol.rs-list-default li
+{
+	list-style: inherit;
+	list-style-position: outside;
+}
+
+ul.rs-list-default li:before {
+	border-color: transparent transparent transparent #3873b5;
+	border-style: solid;
+	border-width: 0.375em;
+	content: '';
+	display: inline-block;
+	margin-left: -0.875em;
+	text-align: center;
+	width: 0.125em;
+}
+
+/* @section 4. list header */
+
+.rs-list-header li
+{
+	font: 1rem/3em arial, sans-serif;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+/* @section 5. list tabs */
+
+.rs-list-tab > li
+{
+	vertical-align: bottom;
+}
+
+.rs-list-tab > li + li
+{
+	margin-left: 0.125em;
+}
+
+.rs-list-tab a
+{
+	color: #323e4c;
+}
+
+.rs-list-tab .rs-item-active
+{
+	background: #323e4c;
+	padding: 0.5em 1em;
+	border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-list-tab .rs-item-active a
+{
+	color: #fff;
+}
+
+.rs-list-tab > li
+{
+	background: rgba(50, 62, 76, 0.3);
+	padding: 0.25em 1em;
+	transition: background 0.2s, border 0.2s;
+}
+
+.rs-list-tab > li:hover
+{
+	background: #699b3c;
+	border-color: #699b3c;
+	cursor: pointer;
+}
+
+.rs-list-tab > li:hover a
+{
+	color: #fff;
+}
+
+/* @section 6. query */
+
+/* @section 6.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+
+	/* @section 6.1.1 list header */
+
+	.rs-list-header
+	{
+		background: #3873b5;
+	}
+
+	.rs-list-header > li > span {
+		background: rgba(0, 0, 0, 0.3);
+	}
+
+	.rs-list-header a, .rs-list-header span
+	{
+		padding: 0 1em;
+		transition: background 0.2s;
+	}
+
+	.rs-list-header a:hover {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* @section 6.2 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+
+	/* @section 6.2.1 list header */
+
+	.rs-list-header li
+	{
+		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
+	}
+
+	.rs-list-header > li
+	{
+		background: linear-gradient(rgb(60, 123, 195), #3873b5);
+		border-radius: 0.125em;
+		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
+		display: inline-block;
+		margin: 1em 0;
+		padding: 0.25em 1em;
+	}
+
+	.rs-list-header > li:hover
+	{
+		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(60, 123, 195), #3873b5);
+		color: #000;
+		cursor: pointer;
+	}
+
+	.rs-list-header > li + li
+	{
+		margin-left: 1em;
+	}
+
+	/* @section 6.2.2 list header children */
+
+	.rs-list-header-children
+	{
+		font-size: 0.875em;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children
+	{
+		border-top: 0.5em solid transparent;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li
+	{
+		background: #3873b5;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children a
+	{
+		padding: 0 1em;
+	}
+
+	.rs-list-header .rs-list-header-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-header .rs-list-header-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li:hover
+	{
+		background: rgb(60, 123, 195);
+	}
+
+	.rs-list-header .rs-list-header-children:after
+	{
+		border-radius: 0.25em;
+		bottom: 0;
+		box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: -1;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. several media
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several media */
+
+.rs-image-default, .rs-player-default
+{
+	border-radius: 0.25em;
+	display: block;
+	margin: 1em 0;
+	max-width: 100%;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. query
+ *    1.1 max width 50rem
+ *       1.1.1 navigation
+ *       1.1.2 navigation toggle and layer
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+
+/* @section 1.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	/* @section 1.1.1 navigation */
+
+	.rs-fn-navigation
+	{
+		max-width: 25em;
+		width: 75%;
+	}
+
+	/* @section 1.1.2 navigation toggle and layer */
+
+	.rs-fn-toggle-navigation
+	{
+		color: rgba(255, 255, 255, 0.7);
+		font: 1rem arial;
+		padding-top: 2.5em;
+		position: absolute;
+		right: 0.25rem;
+		top: -0.25rem;
+	}
+
+	.rs-fn-toggle-navigation:after
+{
+		background: #3873b5;
+	}
+
+	.rs-fn-toggle-navigation:before
+{
+		background: #3873b5;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	{
+		box-shadow: 10em 0 0 50em rgba(0, 0, 0, 0.8);
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
+	{
+		position: fixed;
+		right: 1.5rem;
+		top: 1rem;
+	}
+
+	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	{
+		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. table default
+ *    1.1 body
+ *    1.2 head and foot
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. table default */
+
+.rs-table-default caption, .rs-table-default td, .rs-table-default th
+{
+	background: rgba(50, 62, 76, 0.3);
+	padding: 0.5em 0.75em;
+}
+
+/* @section 1.1 body */
+
+.rs-table-default th
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-table-default tfoot td
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-table-default caption
+{
+	background: #323e4c;
+	color: #fff;
+}
+
+.rs-table-default tr
+{
+	border-bottom: 1px solid #323e4c;
+}
+
+/* @section 1.2 head and foot */
+
+.rs-table-default caption, .rs-table-default thead tr, .rs-table-default tfoot tr
+{
+	font-weight: bold;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. title teaser
+ * 2. query
+ *    2.1 min width 50rem
+ *    2.2 min width 80rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. title teaser */
+
+.rs-title-teaser
+{
+	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	        animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	background: rgba(50, 62, 77, 0.8);
+	border-left: 0.25em solid #c77a46;
+	border-radius: 0 0.125em 0.125em 0;
+	color: #fff;
+	display: inline-block;
+	font-size: 1.5em;
+	font-weight: 300;
+	line-height: 1.25em;
+	max-width: 80%;
+	padding: 0.375em 0.75em;
+	position: relative;
+	opacity: 0;
+	top: -5em;
+}
+
+.rs-title-teaser::-moz-selection
+{
+	background: #c77a46;
+}
+
+.rs-title-teaser::selection
+{
+	background: #c77a46;
+}
+
+.rs-title-teaser strong
+{
+	font-weight: bold;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-title-teaser
+	{
+		font-size: 2em;
+	}
+
+	.rs-title-teaser .rs-is-break:after
+	{
+		content: '';
+		display: block;
+	}
+}
+
+/* @section 2.2 min width 80rem */
+
+@media screen and (min-width: 80rem)
+{
+	.rs-title-teaser
+	{
+		font-size: 3em;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. tooltip
+ * 2. query
+ *    2.1 min width 30rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. tooltip */
+
+.rs-tooltip:after
+{
+	background: #323e4c;
+	color: #fff;
+	border-radius: 0.25em;
+	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+	left: 110%;
+	top: -0.5em;
+	padding: 0.5em 1em;
+	font-size: 0.875em;
+	line-height: 1.5em;
+	transition: opacity 0.3s ease 0.1s;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 min width 30rem */
+
+@media screen and (min-width: 30rem)
+{
+	.rs-tooltip-alternative:after
+	{
+		white-space: nowrap;
+	}
+
+	.rs-tooltip-default:after
+	{
+		width: 20em;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. note error
+ * 2. note info
+ * 3. note success
+ * 4. note warning
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note error */
+
+.rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
+{
+	background: #da4f49;
+	border-color: #802420;
+}
+
+.rs-note-error.rs-field-note option
+{
+	background: #da4f49;
+}
+
+.rs-note-error.rs-box-note:before
+{
+	content: '\78';
+}
+
+/* @section 2. note info */
+
+.rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
+{
+	background: #49afcd;
+	border-color: #1f6377;
+}
+
+.rs-note-info.rs-field-note option
+{
+	background: #49afcd;
+}
+
+.rs-note-info.rs-box-note:before
+{
+	content: '\69';
+}
+
+/* @section 3. note success */
+
+.rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
+{
+	background: #5bb75b;
+	border-color: #387038;
+}
+
+.rs-note-success.rs-field-note option
+{
+	background: #5bb75b;
+}
+
+.rs-note-success.rs-box-note:before
+{
+	content: '\2713';
+}
+
+/* @section 4. note warning */
+
+.rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
+{
+	background: #f3940e;
+	border-color: #ad6704;
+}
+
+.rs-note-warning.rs-field-note option
+{
+	background: #f3940e;
+}
+
+.rs-note-warning.rs-box-note:before
+{
+	content: '\21';
+}

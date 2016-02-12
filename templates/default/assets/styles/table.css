@@ -11,9 +11,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. table default */
 
 .rs-table-default caption,

@@ -1,0 +1,939 @@
+/**
+ * @tableofcontents
+ *
+ * 1. reset
+ * 2. normalize
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. reset */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, input, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, progress, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video
+{
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary
+{
+	display: block;
+}
+
+blockquote, q
+{
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after
+{
+	content: '';
+}
+
+legend
+{
+	max-width: 100%;
+}
+
+li
+{
+	list-style: none;
+}
+
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* @section 2. normalize */
+
+button, input, select, textarea
+{
+	box-sizing: border-box;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. hide
+ * 2. redirect
+ * 3. clearfix
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. hide */
+
+.rs-hide, .rs-js .rs-hide-if-js
+{
+	display: none;
+}
+
+/* @section 2. redirect */
+
+.rs-redirect-overlay
+{
+	background: #fff;
+	bottom: 0;
+	display: block;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 10000;
+}
+
+/* @section 3. clearfix */
+
+.rs-admin-clearfix, .rs-clearfix
+{
+	clear: both;
+}
+
+.rs-admin-clearfix:after, .rs-clearfix:after
+{
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. fade
+ * 2. rotate
+ * 3. scale
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. fade */
+
+@-webkit-keyframes rs-fade
+{
+	from
+	{
+		opacity: 0;
+	}
+
+	to
+	{
+		opacity: 1;
+	}
+}
+
+@keyframes rs-fade
+{
+	from
+	{
+		opacity: 0;
+	}
+
+	to
+	{
+		opacity: 1;
+	}
+}
+
+/* @section 2. rotate */
+
+@-webkit-keyframes rs-rotate
+{
+	from
+	{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+
+	to
+	{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+
+@keyframes rs-rotate
+{
+	from
+	{
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+
+	to
+	{
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+
+/* @section 3. scale */
+
+@-webkit-keyframes rs-scale
+{
+	from
+	{
+		-webkit-transform: scale(0);
+		        transform: scale(0);
+	}
+
+	to
+	{
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+	}
+}
+
+@keyframes rs-scale
+{
+	from
+	{
+		-webkit-transform: scale(0);
+		        transform: scale(0);
+	}
+
+	to
+	{
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. title accordion
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. title accordion */
+
+.rs-js .rs-title-accordion-default.rs-title-active
+{
+	pointer-events: none;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. box accordion
+ * 2. box code
+ * 3. several boxes
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box accordion */
+
+.rs-js .rs-box-accordion
+{
+	display: none;
+}
+
+/* @section 2. box code */
+
+.rs-box-code
+{
+	white-space: pre-wrap;
+}
+
+/* @section 3. several boxes */
+
+.rs-box-comment, .rs-box-content, .rs-box-extra
+{
+	word-wrap: break-word;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. dialog
+ * 2. dialog overlay
+ * 3. query
+ *    3.1 max width 30em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dialog */
+
+.rs-dialog
+{
+	left: 50%;
+	margin: -5em 0 0 -15em;
+	position: fixed;
+	top: 50%;
+	z-index: 1100;
+	width: 30em;
+}
+
+/* @section 2. dialog overlay */
+
+.rs-dialog-overlay
+{
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-dialog
+	{
+		margin: -5em 0 0 -40%;
+		width: 80%;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. list dropdown
+ * 2. query
+ *    2.1 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list dropdown */
+
+.rs-list-dropdown a, .rs-list-dropdown span
+{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.rs-list-dropdown li
+{
+	position: relative;
+}
+
+.rs-list-dropdown li:hover > ul, .rs-list-dropdown .rs-item-touch > ul
+{
+	left: 0;
+	opacity: 1;
+	top: 100%;
+}
+
+.rs-list-dropdown li:last-child:hover > ul, .rs-list-dropdown .rs-item-touch:last-child > ul
+{
+	right: 0;
+	left: auto;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-list-dropdown ul
+	{
+		left: -999em;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		transition: opacity 0.5s ease 0s, top 0.2s ease 0s;
+		z-index: 1;
+	}
+
+	.rs-list-dropdown ul ul
+	{
+		left: 100%;
+		top: 0;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. remove webkit appearance
+ * 2. remove firefox inner focus
+ * 3. query
+ *    3.1 max width 30em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. remove webkit appearance */
+
+.rs-field-search, .rs-field-search::-webkit-search-cancel-button
+{
+	-webkit-appearance: none;
+}
+
+/* @section 2. remove firefox inner focus */
+
+button::-moz-focus-inner, input::-moz-focus-inner
+{
+	border: 0;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 30em */
+
+@media screen and (max-width: 29.999em) {
+	a.rs-button-default
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-button-default, .rs-field-select, .rs-field-text, .rs-field-textarea.rs-field-small
+	{
+		width: 100%;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. grid
+ *    1.1 whole
+ *    1.2 halve
+ *    1.3 third
+ *    1.4 quarter
+ *    1.5 fifth
+ *    1.6 sixth
+ *    1.7 seventh
+ *    1.8 eighth
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. grid */
+
+.rs-grid, .rs-grid-space
+{
+	float: left;
+}
+
+.rs-grid + .rs-grid:last-child, .rs-grid-space + .rs-grid-space:last-child
+{
+	float: right;
+}
+
+/* @section 1.1 whole */
+
+.rs-s1o1
+{
+	width: 100%;
+}
+
+/* @section 1.2 halve */
+
+.rs-s1o2, .rs-s2o4, .rs-s3o6, .rs-s4o8
+{
+	width: 50%;
+}
+
+/* @section 1.3 third */
+
+.rs-s1o3, .rs-s2o6
+{
+	width: 33.33%;
+}
+
+.rs-s2o3, .rs-s4o6
+{
+	width: 66.66%;
+}
+
+/* @section 1.4 quarter */
+
+.rs-s1o4, .rs-s2o8
+{
+	width: 25%;
+}
+
+.rs-s3o4, .rs-s6o8
+{
+	width: 75%;
+}
+
+/* @section 1.5 fifth */
+
+.rs-s1o5
+{
+	width: 20%;
+}
+
+.rs-s2o5
+{
+	width: 40%;
+}
+
+.rs-s3o5
+{
+	width: 60%;
+}
+
+.rs-s4o5
+{
+	width: 80%;
+}
+
+/* @section 1.6 sixth */
+
+.rs-s1o6
+{
+	width: 16.66%;
+}
+
+.rs-s5o6
+{
+	width: 83.33%;
+}
+
+/* @section 1.7 seventh */
+
+.rs-s1o7
+{
+	width: 14.28%;
+}
+
+.rs-s2o7
+{
+	width: 28.58%;
+}
+
+.rs-s3o7
+{
+	width: 42.86%;
+}
+
+.rs-s4o7
+{
+	width: 57.14%;
+}
+
+.rs-s5o7
+{
+	width: 71.42%;
+}
+
+.rs-s6o7
+{
+	width: 85.72%;
+}
+
+/* @section 1.8 eighth */
+
+.rs-s1o8
+{
+	width: 12.5%;
+}
+
+.rs-s3o8
+{
+	width: 37.5%;
+}
+
+.rs-s5o8
+{
+	width: 62.5%;
+}
+
+.rs-s7o8
+{
+	width: 87.5%;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. image
+ * 2. player
+ * 3. query
+ *    3.1 max width 20em
+ *    3.2 max width 30em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. image */
+
+.rs-image
+{
+	max-width: 100%;
+}
+
+/* @section 2. player */
+
+.rs-player
+{
+	height: 30em;
+	max-width: 100%;
+	width: 40em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 20em */
+
+@media screen and (max-width: 19.999em)
+{
+	.rs-player
+	{
+		font-size: 0.5em;
+	}
+}
+
+/* @section 3.2 max width 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-player
+	{
+		font-size: 0.75em;
+	}
+
+	.rs-player
+	{
+		font-size: 0.75em;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. query
+ *    2.1 max width 50rem
+ *       2.1.1 navigation toggle
+ *       2.1.2 navigation icon
+ *       2.1.3 navigation
+ *       2.1.4 navigation layer
+ *    2.2 min width 50rem
+ *       2.2.1 navigation trigger
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-fn-status-navigation
+{
+	display: none;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 max width 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+
+	/* @section 2.1.1 navigation toggle */
+
+	.rs-fn-toggle-navigation
+	{
+		cursor: pointer;
+		position: relative;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
+		z-index: 100;
+	}
+
+	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
+	{
+		bottom: 2.5em;
+		content: '';
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		right: 0;
+		outline: none;
+		transition: -webkit-transform 0.2s;
+		transition: transform 0.2s;
+		transition: transform 0.2s, -webkit-transform 0.2s;
+	}
+
+	/* @section 2.1.2 navigation icon */
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	{
+		-webkit-transform: rotate(-45deg);
+		        transform: rotate(-45deg);
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
+	{
+		-webkit-transform: rotate(45deg);
+		        transform: rotate(45deg);
+	}
+
+	/* @section 2.1.3 navigation */
+
+	.rs-fn-navigation
+	{
+		left: 0;
+		bottom: 0;
+		position: fixed;
+		top: 0;
+		-webkit-transform: translateX(-100%);
+		        transform: translateX(-100%);
+		z-index: 10;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	{
+		transition: -webkit-transform 0.2s;
+		transition: transform 0.2s;
+		transition: transform 0.2s, -webkit-transform 0.2s;
+		-webkit-transform: translateX(0);
+		        transform: translateX(0);
+	}
+
+	/* @section 2.1.4 navigation layer */
+
+	.rs-fn-status-navigation ~ .rs-has-navigation:after {
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 100%;
+		top: 0;
+		transition: background 0.2s;
+		z-index: 1;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after {
+		right: 0;
+		z-index: 5;
+	}
+}
+
+/* @section 2.2 min width 50rem */
+
+@media screen and (min-width: 50rem) {
+
+	/* @section 2.2.1 navigation trigger */
+
+	.rs-fn-toggle-navigation
+	{
+		display: none;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. box tab
+ * 2. list tab
+ * 3. set tab
+ * 4. query
+ *    4.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box tab */
+
+.rs-box-tab
+{
+	overflow: hidden;
+}
+
+/* @section 2. list tab */
+
+.rs-list-tab li
+{
+	display: inline-block;
+}
+
+.rs-js .rs-list-tab .rs-item-active
+{
+	pointer-events: none;
+}
+
+/* @section 3. set tab */
+
+.rs-js .rs-set-tab
+{
+	display: none;
+}
+
+.rs-js .rs-set-tab.rs-set-active
+{
+	display: block;
+}
+
+/* @section 4. query */
+
+/* @section 4.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+	.rs-list-tab
+	{
+		display: none;
+	}
+
+	.rs-js .rs-set-tab
+	{
+		display: block;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. table
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Joerg Steinhauer
+ */
+
+/* @section 1. table */
+
+.rs-table caption, .rs-table td, .rs-table th
+{
+	text-align: left;
+}
+
+.rs-table .rs-column-last
+{
+	text-align: right;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. tooltip
+ * 2. fallback
+ * 3. query
+ *    3.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. tooltip */
+
+.rs-tooltip
+{
+	cursor: help;
+	position: relative;
+}
+
+.rs-tooltip.rs-link-default
+{
+	cursor: pointer;
+}
+
+.rs-tooltip:after
+{
+	content: attr(data-tooltip);
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	z-index: 500;
+}
+
+.rs-tooltip:focus:after, .rs-tooltip:hover:after
+{
+	opacity: 1;
+}
+
+/* @section 2. fallback */
+
+.rs-msie10 .rs-tooltip:after
+{
+	display: none;
+}
+
+.rs-msie10 .rs-tooltip:focus:after, .rs-msie10 .rs-tooltip:hover:after
+{
+	display: inline-block;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+	.rs-tooltip:after
+	{
+		left: 1em;
+		position: fixed;
+		right: 1em;
+		top: 1em;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. print
+ * 2. rtl direction
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. print */
+
+@media print
+{
+	body
+	{
+		color: #000;
+		font-size: 1em;
+	}
+}
+
+/* @section 2. rtl direction */
+
+.rs-rtl
+{
+	direction: rtl;
+	text-align: right;
+}

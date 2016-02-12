@@ -16,9 +16,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. button default */
 
 .rs-button-default
