@@ -235,7 +235,7 @@ class Messenger
 
 		$output = $metaElement->init('meta', array(
 			'class' => $timeout === 0 ? $this->_options['className']['redirect'] : null,
-			'content' => $timeout . ';url=' . $route,
+			'content' => $timeout . ';url=/' . Registry::get('rewriteRoute') . $route,
 			'http-equiv' => 'refresh'
 		));
 		return $output;

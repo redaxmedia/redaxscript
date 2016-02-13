@@ -8,7 +8,7 @@
 			"text": "",
 			"route": ""
 		},
-		"<meta class=\"rs-redirect-overlay\" content=\"0;url=hello/world\" http-equiv=\"refresh\" />"
+		"<meta class=\"rs-redirect-overlay\" content=\"0;url=/hello/world\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -19,7 +19,7 @@
 			"text": "test",
 			"route": "hello/world"
 		},
-		"<meta content=\"1;url=hello/world\" http-equiv=\"refresh\" />"
+		"<meta content=\"1;url=/hello/world\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -30,6 +30,6 @@
 			"text": "test",
 			"route": "hello/world"
 		},
-		"<meta content=\"2;url=index.php\" http-equiv=\"refresh\" />"
+		"<meta content=\"2;url=/index.php\" http-equiv=\"refresh\" />"
 	]
 ]
