@@ -143,13 +143,13 @@ function install_form()
 	$output .= '<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-accordion-default rs-box-active">';
 	if ($typeArray)
 	{
-		$output .= '<li>' . select_element('type', 'field_select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
+		$output .= '<li>' . select_element('type', 'rs-field-select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
 	}
-	$output .= '<li>' . form_element('text', 'd_host', 'rs-field-text rs-field-note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'rs-field-text rs-field-note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'rs-field-text rs-field-note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'd_password', 'rs-js-unmask-password rs-field-text', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_prefix', 'field_text', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_host', 'rs-field-default rs-field-note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_name', 'rs-field-default rs-field-note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_user', 'rs-field-default rs-field-note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'd_password', 'rs-js-unmask-password rs-field-default', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
+	$output .= '<li>' . form_element('text', 'd_prefix', 'rs-field-default', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect account set */
@@ -157,10 +157,10 @@ function install_form()
 	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-accordion-last rs-set-accordion rs-set-accordion-default rs-set-accordion-last">';
 	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-title-accordion-default">' . l('account_create') . '</legend>';
 	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-box-accordion-default">';
-	$output .= '<li>' . form_element('text', 'name', 'rs-field-text rs-field-note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'rs-field-text rs-field-note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-field-text rs-field-note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-field-text rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'name', 'rs-field-default rs-field-note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('text', 'user', 'rs-field-default rs-field-note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-field-default rs-field-note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
+	$output .= '<li>' . form_element('email', 'email', 'rs-field-default rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
 	$output .= '</ul></fieldset>';
 
 	/* collect hidden and button output */

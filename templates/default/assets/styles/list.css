@@ -38,7 +38,7 @@
 
 .rs-list-breadcrumb a
 {
-	color: var(--color-primary);
+	color: var(--rs-color-tertiary);
 	opacity: 0.5;
 	transition: opacity 0.2s;
 }
@@ -79,7 +79,7 @@ ol.rs-list-default li
 }
 
 ul.rs-list-default li:before {
-	border-color: transparent transparent transparent var(--color-primary-sub);
+	border-color: transparent transparent transparent var(--rs-color-primary);
 	border-style: solid;
 	border-width: 0.375em;
 	content: '';
@@ -97,7 +97,7 @@ ul.rs-list-default li:before {
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
-	color: var(--color-light);
+	color: var(--rs-color-light);
 }
 
 /* @section 5. list tabs */
@@ -114,19 +114,19 @@ ul.rs-list-default li:before {
 
 .rs-list-tab a
 {
-	color: var(--color-primary);
+	color: var(--rs-color-tertiary);
 }
 
 .rs-list-tab .rs-item-active
 {
-	background: var(--color-primary);
+	background: var(--rs-color-tertiary);
 	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
 }
 
 .rs-list-tab .rs-item-active a
 {
-	color: var(--color-light);
+	color: var(--rs-color-light);
 }
 
 .rs-list-tab > li
@@ -138,28 +138,28 @@ ul.rs-list-default li:before {
 
 .rs-list-tab > li:hover
 {
-	background: var(--color-secondary);
-	border-color: var(--color-secondary);
+	background: var(--rs-color-secondary);
+	border-color: var(--rs-color-secondary);
 	cursor: pointer;
 }
 
 .rs-list-tab > li:hover a
 {
-	color: var(--color-light);
+	color: var(--rs-color-light);
 }
 
 /* @section 6. query */
 
 /* @section 6.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 
 	/* @section 6.1.1 list header */
 
 	.rs-list-header
 	{
-		background: var(--color-primary-sub);
+		background: var(--rs-color-primary);
 	}
 
 	.rs-list-header > li > span {
@@ -180,7 +180,7 @@ ul.rs-list-default li:before {
 
 /* @section 6.2 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 
 	/* @section 6.2.1 list header */
@@ -192,7 +192,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li
 	{
-		background: var(--gradient-primary);
+		background: var(--rs-gradient-primary);
 		border-radius: 0.125em;
 		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
 		display: inline-block;
@@ -202,7 +202,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover
 	{
-		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--gradient-primary);
+		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-primary);
 		color: #000;
 		cursor: pointer;
 	}
@@ -226,7 +226,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover .rs-list-header-children li
 	{
-		background: var(--color-primary-sub);
+		background: var(--rs-color-primary);
 	}
 
 	.rs-list-header > li:hover .rs-list-header-children a
@@ -249,7 +249,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header > li:hover .rs-list-header-children li:hover
 	{
-		background: var(--color-primary-sub-light);
+		background: var(--rs-color-primary-light);
 	}
 
 	.rs-list-header .rs-list-header-children:after

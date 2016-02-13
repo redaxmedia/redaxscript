@@ -27,7 +27,7 @@
 
 .rs-form-default a
 {
-	color: var(--color-primary);
+	color: var(--rs-color-tertiary);
 }
 
 .rs-form-default .rs-label-message:after
@@ -39,6 +39,6 @@
 
 .rs-form-search
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	border-radius: 0.125em;
 }

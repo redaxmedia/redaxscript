@@ -27,7 +27,7 @@
 
 .rs-dialog-default
 {
-	background: var(--color-primary);
-	color: var(--color-light);
+	background: var(--rs-color-tertiary);
+	color: var(--rs-color-light);
 	padding: 1em;
 }
