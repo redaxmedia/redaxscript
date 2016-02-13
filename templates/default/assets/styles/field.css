@@ -60,16 +60,16 @@
 	transition: background 0.2s, border 0.2s;
 }
 
-.rs-field-default:not([class*='note']):hover,
-.rs-field-select:not([class*='note']):hover,
-.rs-field-textarea:not([class*='note']):hover
+.rs-field-default:hover,
+.rs-field-select:hover,
+.rs-field-textarea:hover
 {
 	border-color: #000;
 }
 
-.rs-field-default:not([class*='note']):focus,
-.rs-field-select:not([class*='note']):focus,
-.rs-field-textarea:not([class*='note']):focus
+.rs-field-default:not(.rs-field-note):focus,
+.rs-field-select:not(.rs-field-note):focus,
+.rs-field-textarea:not(.rs-field-note):focus
 {
 	border-color: var(--rs-color-primary);
 }
