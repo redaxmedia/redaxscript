@@ -188,24 +188,16 @@ a
 
 .rs-title-website
 {
-	float: left;
 	font-size: 3.5em;
 	font-weight: normal;
 	text-transform: uppercase;
-	position: relative;
-}
-
-.rs-title-website a
-{
-	display: block;
 	line-height: 1em;
 	opacity: 0.8;
-	text-decoration: none;
-	white-space: nowrap;
 	transition: opacity 0.2s;
+	white-space: nowrap;
 }
 
-.rs-title-website a:hover
+.rs-title-website:hover
 {
 	opacity: 1;
 }
@@ -217,7 +209,6 @@ a
 	color: rgba(255, 255, 255, 0.4);
 	display: none;
 	font-weight: 700;
-	left: 0;
 	margin-left: 0.125em;
 }
 
@@ -541,19 +532,12 @@ a
 	white-space: pre-wrap;
 }
 
-.rs-box-line
-{
-	background: #323e4c;
-	height: 0.125em;
-}
-
 /* @section 2. box metadata */
 
 .rs-box-metadata
 {
-	font-size: 0.5em;
+	font-size: 0.75em;
 	position: relative;
-	vertical-align: top;
 }
 
 .rs-box-metadata a::-moz-selection

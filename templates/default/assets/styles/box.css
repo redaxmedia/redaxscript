@@ -30,19 +30,12 @@
 	white-space: pre-wrap;
 }
 
-.rs-box-line
-{
-	background: var(--rs-color-tertiary);
-	height: 0.125em;
-}
-
 /* @section 2. box metadata */
 
 .rs-box-metadata
 {
-	font-size: 0.5em;
+	font-size: 0.75em;
 	position: relative;
-	vertical-align: top;
 }
 
 .rs-box-metadata a::-moz-selection,
