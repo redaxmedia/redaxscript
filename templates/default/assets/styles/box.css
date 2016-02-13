@@ -10,7 +10,7 @@
  * 7. box comment
  * 8. space between elements
  * 9. query
- *    9.1 min width 50rem
+ *    9.2 medium
  *
  * @since 3.0.0
  *
@@ -64,25 +64,6 @@
 .rs-box-quote
 {
 	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
-	margin: 1em 1em 1em 3em;
-	position: relative;
-}
-
-.rs-box-quote strong
-{
-	font-style: normal;
-	font-weight: bold;
-	display: block;
-}
-
-.rs-box-quote:before
-{
-	content: '\201d';
-	font: 7em/1em georgia;
-	left: -0.5em;
-	opacity: 0.15;
-	position: absolute;
-	top: -0.125em;
 }
 
 /* @section 4. box accordion */
@@ -159,7 +140,7 @@
 
 /* @section 9. query */
 
-/* @section 9.1 min width 50rem */
+/* @section 9.2 medium */
 
 @media (--media-medium-min)
 {
@@ -172,5 +153,21 @@
 	.rs-box-navigation
 	{
 		float: right;
+	}
+
+	.rs-box-quote
+	{
+		margin: 1em 1em 1em 3em;
+		position: relative;
+	}
+
+	.rs-box-quote:before
+	{
+		content: '\201d';
+		font: 7em/1em georgia;
+		left: -0.5em;
+		opacity: 0.15;
+		position: absolute;
+		top: -0.125em;
 	}
 }
