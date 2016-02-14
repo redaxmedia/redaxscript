@@ -203,7 +203,7 @@ ul.rs-list-default li:before {
 	.rs-list-header > li:hover
 	{
 		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-primary);
-		color: #000;
+		color: var(--rs-color-dark);
 		cursor: pointer;
 	}
 

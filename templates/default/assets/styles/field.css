@@ -64,7 +64,7 @@
 .rs-field-select:hover,
 .rs-field-textarea:hover
 {
-	border-color: #000;
+	border-color: var(--rs-color-dark);
 }
 
 .rs-field-default:not(.rs-field-note):focus,

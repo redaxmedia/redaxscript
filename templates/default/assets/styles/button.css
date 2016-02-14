@@ -69,7 +69,7 @@ a.rs-button-default
 
 .rs-button-search:hover
 {
-	color: #000;
+	color: var(--rs-color-dark);
 }
 
 .rs-button-search:after
