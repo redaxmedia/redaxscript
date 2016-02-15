@@ -93,7 +93,7 @@
 
 .rs-box-note:before
 {
-	color: #000;
+	color: var(--rs-color-dark);
 	font: 1.5em/1em 'icon default';
 	left: 0.25em;
 	opacity: 0.5;

@@ -18,7 +18,7 @@
 {
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	background: rgba(50, 62, 77, 0.8);
-	border-left: 0.25em solid #c77a46;
+	border-left: 0.25em solid var(--rs-color-special);
 	border-radius: 0 0.125em 0.125em 0;
 	color: var(--rs-color-light);
 	display: inline-block;
@@ -34,12 +34,12 @@
 
 .rs-title-teaser::-moz-selection
 {
-	background: #c77a46;
+	background: var(--rs-color-special);
 }
 
 .rs-title-teaser::selection
 {
-	background: #c77a46;
+	background: var(--rs-color-special);
 }
 
 .rs-title-teaser strong
