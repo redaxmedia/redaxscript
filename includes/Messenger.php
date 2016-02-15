@@ -30,7 +30,9 @@ class Messenger
 
 	protected $_options = array(
 		'className' => array(
-			'list' => 'rs-list-messenger'
+			'list' => 'rs-list-messenger',
+			'link' => 'rs-button-messenger',
+			'redirect' => 'rs-redirect-overlay'
 		)
 	);
 
@@ -146,24 +148,32 @@ class Messenger
 	public function render($type = null, $message = null, $title = null)
 	{
 		$output = Hook::trigger('messengerStart');
-		if ($title)
-		{
-			/* html element */
-
-			$titleElement = new Html\Element();
-			$titleElement->init('h2', array(
-				'class' => 'rs-title-note rs-note-' . $type
-			));
-			$titleElement->text($title);
-			$output .= $titleElement->render();
-		}
+		$outputItem = null;
 
 		/* html element */
 
+		if ($title)
+		{
+			$titleElement = new Html\Element();
+			$titleElement->init('h2', array(
+				'class' => 'rs-title-note rs-note-' . $type
+			))
+			->text($title);
+			$output .= $titleElement->render();
+		}
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
 			'class' => 'rs-box-note rs-note-' . $type
 		));
+		if ($this->_actionArray)
+		{
+			$linkElement = new Html\Element();
+			$linkElement->init('a', array(
+				'href' => $this->_actionArray['route'],
+				'class' => $this->_options['className']['link']
+			))
+			->text($this->_actionArray['text']);
+		}
 
 		/* build a list */
 
@@ -175,7 +185,6 @@ class Messenger
 			$listElement->init('ul', array(
 				'class' => $this->_options['className']['list']
 			));
-			$outputItem = null;
 
 			/* collect item output */
 
@@ -195,21 +204,13 @@ class Messenger
 
 		/* collect output */
 
-		$output .= $boxElement;
-		if ($this->_actionArray)
-		{
-			$linkElement = new Html\Element();
-			$output .= $linkElement
-				->init('a')
-				->attr('href', $this->_actionArray['route'])
-				->text($this->_actionArray['text']);
-		}
+		$output .= $boxElement . $linkElement;
 		$output .= Hook::trigger('messengerEnd');
 		return $output;
 	}
 
 	/**
-	 *  meta powered redirect
+	 * meta powered redirect
 	 *
 	 * @since 3.0.0
 	 *
@@ -221,11 +222,22 @@ class Messenger
 
 	public function redirect($route = null, $timeout = 2)
 	{
+		$metaElement = new Html\Element();
+
+		/* route fallback */
+
 		if (!$route)
 		{
 			$route = $this->_actionArray['route'];
 		}
-		$output = '<meta http-equiv="refresh" content="' . $timeout . ';url=' . $route . '">';
+
+		/* collect output */
+
+		$output = $metaElement->init('meta', array(
+			'class' => $timeout === 0 ? $this->_options['className']['redirect'] : null,
+			'content' => $timeout . ';url=/' . Registry::get('rewriteRoute') . $route,
+			'http-equiv' => 'refresh'
+		));
 		return $output;
 	}
 }

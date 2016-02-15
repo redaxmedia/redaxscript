@@ -15,9 +15,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. several form elements */
 
 .rs-field-default,
@@ -63,18 +60,18 @@
 	transition: background 0.2s, border 0.2s;
 }
 
-.rs-field-default:not([class*='note']):hover,
-.rs-field-select:not([class*='note']):hover,
-.rs-field-textarea:not([class*='note']):hover
+.rs-field-default:hover,
+.rs-field-select:hover,
+.rs-field-textarea:hover
 {
-	border-color: #000;
+	border-color: var(--rs-color-dark);
 }
 
-.rs-field-default:not([class*='note']):focus,
-.rs-field-select:not([class*='note']):focus,
-.rs-field-textarea:not([class*='note']):focus
+.rs-field-default:not(.rs-field-note):focus,
+.rs-field-select:not(.rs-field-note):focus,
+.rs-field-textarea:not(.rs-field-note):focus
 {
-	border-color: #3873B5;
+	border-color: var(--rs-color-primary);
 }
 
 .rs-field-search
@@ -116,7 +113,7 @@
 
 /* @section 5.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 	.rs-field-default,
 	.rs-field-select,
@@ -128,7 +125,7 @@
 
 /* @section 5.2 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-field-default,
 	.rs-field-select,

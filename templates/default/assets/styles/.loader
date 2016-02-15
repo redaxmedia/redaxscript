@@ -2,39 +2,9 @@
 1 = admin
 
 [template]
-1 = assets/styles/normalize.css
-2 = assets/styles/helper.css
-3 = assets/styles/animate.css
-4 = assets/styles/accordion.css
-5 = assets/styles/box.css
-6 = assets/styles/dialog.css
-7 = assets/styles/dropdown.css
-8 = assets/styles/form.css
-9 = assets/styles/grid.css
-10 = assets/styles/media.css
-11 = assets/styles/navigation.css
-12 = assets/styles/tab.css
-13 = assets/styles/table.css
-14 = assets/styles/tooltip.css
-15 = assets/styles/layout.css
-16 = templates/default/assets/styles/typo.css
-17 = templates/default/assets/styles/layout.css
-18 = templates/default/assets/styles/animate.css
-19 = templates/default/assets/styles/box.css
-20 = templates/default/assets/styles/button.css
-21 = templates/default/assets/styles/dialog.css
-22 = templates/default/assets/styles/field.css
-23 = templates/default/assets/styles/form.css
-24 = templates/default/assets/styles/icon.css
-25 = templates/default/assets/styles/list.css
-26 = templates/default/assets/styles/media.css
-27 = templates/default/assets/styles/navigation.css
-28 = templates/default/assets/styles/table.css
-29 = templates/default/assets/styles/teaser.css
-30 = templates/default/assets/styles/tooltip.css
-31 = templates/default/assets/styles/note.css
-32 = assets/styles/query.css
-99 = templates/default/assets/styles/debug.css
+1 = dist/styles/base.min.css
+2 = templates/default/dist/styles/default.min.css
+3 = templates/default/assets/styles/debug.css
 
 [settings]
 deploy = inline

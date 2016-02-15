@@ -11,9 +11,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. forms */
 
 /* @section 1.1 form default */
@@ -30,7 +27,7 @@
 
 .rs-form-default a
 {
-	color: var(--color-primary-dark);
+	color: var(--rs-color-tertiary);
 }
 
 .rs-form-default .rs-label-message:after
@@ -42,6 +39,6 @@
 
 .rs-form-search
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	border-radius: 0.125em;
 }

@@ -107,15 +107,6 @@
 				indent: '\t'
 			}
 		},
-		forwardNotification:
-		{
-			init: true,
-			selector: 'a.rs-js-forward-notification',
-			options:
-			{
-				duration: 1000
-			}
-		},
 		generateAlias:
 		{
 			init: true,

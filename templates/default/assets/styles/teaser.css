@@ -12,18 +12,15 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. title teaser */
 
 .rs-title-teaser
 {
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	background: rgba(50, 62, 77, 0.8);
-	border-left: 0.25em solid #c77a46;
+	border-left: 0.25em solid var(--rs-color-special);
 	border-radius: 0 0.125em 0.125em 0;
-	color: var(--color-light);
+	color: var(--rs-color-light);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
@@ -37,12 +34,12 @@
 
 .rs-title-teaser::-moz-selection
 {
-	background: #c77a46;
+	background: var(--rs-color-special);
 }
 
 .rs-title-teaser::selection
 {
-	background: #c77a46;
+	background: var(--rs-color-special);
 }
 
 .rs-title-teaser strong
@@ -54,7 +51,7 @@
 
 /* @section 2.1 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-title-teaser
 	{
@@ -70,7 +67,7 @@
 
 /* @section 2.2 min width 80rem */
 
-@media (--min-large)
+@media (--media-large-min)
 {
 	.rs-title-teaser
 	{

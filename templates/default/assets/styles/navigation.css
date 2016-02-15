@@ -12,16 +12,12 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. query */
 
 /* @section 1.1 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
-
 	/* @section 1.1.1 navigation */
 
 	.rs-fn-navigation
@@ -45,7 +41,7 @@
 	.rs-fn-toggle-navigation:after,
 	.rs-fn-toggle-navigation:before
 	{
-		background: #3873b5;
+		background: var(--rs-color-primary);
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
@@ -62,6 +58,6 @@
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
-		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
 	}
 }

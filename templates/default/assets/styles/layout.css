@@ -19,20 +19,17 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. general */
 
 .rs-body
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	background: var(--color-light);
+	background: var(--rs-color-light);
 	margin-bottom: 5em;
 	min-height: 20em;
 	padding-bottom: 2em;
@@ -65,7 +62,7 @@
 
 .rs-header
 {
-	background: var(--color-primary-dark);
+	background: var(--rs-color-tertiary);
 	padding: 1.25rem;
 }
 
@@ -87,7 +84,7 @@
 
 .rs-sidebar
 {
-	background: var(--color-primary-dark);
+	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
 	color: #e8e8e8;
 	padding: 1em;
@@ -97,7 +94,7 @@
 
 .rs-footer
 {
-	background: var(--color-primary-dark);
+	background: var(--rs-color-tertiary);
 	bottom: 0;
 	min-height: 1.75em;
 	left: 0;
@@ -123,7 +120,7 @@
 
 /* @section 7.2 max width 50rem */
 
-@media (--max-medium)
+@media (--media-medium-max)
 {
 	.rs-wrapper-body
 	{
@@ -148,7 +145,7 @@
 
 /* @section 7.3 min width 50rem */
 
-@media (--min-medium)
+@media (--media-medium-min)
 {
 	.rs-wrapper
 	{
@@ -176,7 +173,7 @@
 
 /* @section 7.4 min width 80rem */
 
-@media (--min-large)
+@media (--media-large-min)
 {
 	.rs-wrapper
 	{

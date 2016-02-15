@@ -1,0 +1,1519 @@
+/**
+ * @tableofcontents
+ *
+ * 1. links
+ * 2. title accordion admin
+ *    2.1 javascript enabled
+ *    2.2 last element
+ * 3. several admin titles
+ * 4. title dialog admin
+ * 5. title content admin
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. links */
+
+.rs-admin-link-default {
+	text-decoration: underline;
+	color: #666;
+}
+
+.rs-admin-link-default:hover {
+	text-decoration: none;
+}
+
+/* @section 2. title accordion admin */
+
+.rs-admin-title-accordion
+{
+	background: linear-gradient(#d5d5d5, #ccc);
+	border: 1px solid #b9b9b9;
+	box-sizing: border-box;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.rs-admin-title-accordion:not(.rs-admin-title-active)
+{
+	cursor: pointer;
+}
+
+.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+{
+	border-bottom: none;
+}
+
+.rs-admin-title-accordion:not(.rs-admin-title-active)
+{
+	cursor: pointer;
+}
+
+.rs-admin-title-accordion, .rs-admin-title-accordion a
+{
+	color: #444;
+}
+
+/* @section 2.1 javascript enabled */
+
+.rs-js .rs-admin-title-accordion
+{
+	border-bottom-width: 0;
+	cursor: pointer;
+}
+
+/* @section 2.2 last element*/
+
+.rs-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+{
+	border-bottom-width: 1px;
+}
+
+/* @section 3. several admin titles */
+
+.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	border: 1px solid #222;
+}
+
+.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+{
+	color: #ccc;
+}
+
+/* @section 4. title dialog admin */
+
+.rs-admin-title-dialog
+{
+	border-radius: 0.25em 0.25em 0 0;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-transform: uppercase;
+}
+
+/* @section 5. title content admin */
+
+.rs-admin-title-content
+{
+	font-size: 2em;
+	margin: 1em 0;
+}
+
+.rs-admin-title-content a
+{
+	color: #323e4c;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. panel admin
+ * 2. wrapper
+ * 3. margins
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. panel admin */
+
+.rs-admin-panel
+{
+	position: relative;
+	z-index: 900;
+}
+
+.rs-admin-panel a, .rs-admin-panel a:hover
+{
+	text-decoration: none;
+}
+
+/* @section 2. wrapper */
+
+.rs-admin-wrapper-table
+{
+	overflow: hidden;
+}
+
+.rs-admin-wrapper-table > .rs-admin-table
+{
+	width: 100%;
+}
+
+/* @section 3. margins */
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. several admin boxes
+ *    1.1 last element
+ * 2. box dock admin
+ *    2.1 description dock admin
+ *    2.2 footer grid fix
+ * 3. box panel admin
+ * 4. box tab admin
+ * 5. space between elements
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several admin boxes */
+
+.rs-admin-box-accordion, .rs-admin-box-dialog
+{
+	background: linear-gradient(#e2e2e2, #dadada);
+	border: 1px solid #b9b9b9;
+	border-top: 0;
+	padding: 1em 1.5em;
+}
+
+.rs-admin-box-accordion
+{
+	border-bottom-width: 0;
+}
+
+.rs-admin-title-accordion + .rs-admin-box-accordion
+{
+	border-top: 1px solid #b9b9b9;
+}
+
+/* @section 1.1 last element */
+
+.rs-admin-set-accordion-last .rs-admin-box-accordion
+{
+	border-bottom-width: 1px;
+}
+
+/* @section 2. box dock admin */
+
+.rs-admin-box-dock
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	font-size: 0.875rem;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.rs-admin-box-dock, .rs-admin-box-dock a
+{
+	color: #b9b9b9;
+}
+
+/* @section 2.1 description dock admin */
+
+.rs-admin-description-dock
+{
+	float: right;
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+	text-align: right;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	max-width: 10em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* @section 2.2 footer grid fix */
+
+.rs-admin-footer .rs-admin-box-dock
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+/* @section 3. box panel admin */
+
+.rs-admin-box-panel
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+}
+
+/* @section 4. box tab admin */
+
+.rs-admin-box-tab
+{
+	background: linear-gradient(#e2e2e2, #dadada);
+	border: 1px solid #b9b9b9;
+	padding: 1em 1.5em;
+}
+
+/* @section 5. space between elements */
+
+/* TODO: remove outdated styles */
+.rs-admin-form .rs-admin-box-note, .rs-admin-form-default .rs-admin-box-note
+{
+	margin-top: 1em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. button admin
+ *    1.1 hover effect
+ *    1.2 active effect
+ *    1.3 icons
+ * 2. disabled and readonly
+ * 3. space between elements
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button admin */
+
+.rs-admin-button-default
+{
+	background: linear-gradient(#3b3b3b, #303030);
+	border: 1px solid #151515;
+	border-radius: 0.25em;
+	cursor: pointer;
+	display: inline-block;
+	font: bold 0.875rem/2.5rem arial;
+	text-decoration: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	text-transform: uppercase;
+	padding: 0 0.75em;
+}
+
+.rs-admin-button-default, a.rs-admin-button-default
+{
+	color: #ccc;
+}
+
+/* @section 1.1 hover effect */
+
+.rs-admin-button-default:hover
+{
+	background: linear-gradient(#474747, #3b3b3b);
+	color: #eee;
+}
+
+/* @section 1.2 active effect */
+
+.rs-admin-button-default:active
+{
+	background: linear-gradient(#4cb4ff, #0090db);
+	border-color: #005da2;
+	color: #fff;
+}
+
+/* @section 1.3 icons */
+
+.rs-admin-button-default.rs-admin-button-plus:before, .rs-admin-button-default.rs-admin-button-cancel:before, .rs-admin-button-default.rs-admin-button-submit:before
+{
+	font: 1rem 'icon admin';
+	margin-right: 0.5em;
+	text-transform: lowercase;
+	vertical-align: text-bottom;
+}
+
+.rs-admin-button-default.rs-admin-button-plus:before
+{
+	content: 'f';
+}
+
+.rs-admin-button-default.rs-admin-button-cancel:before
+{
+	content: 'e';
+}
+
+.rs-admin-button-default.rs-admin-button-submit:before
+{
+	content: 'd';
+}
+
+/* @section 2. disabled and readonly */
+
+.rs-admin-button-default[disabled]
+{
+	background: #ccc;
+	border-color: #ababab;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+	color: #9e9e9e;
+	pointer-events: none;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+}
+
+/* @section 3. space between elements */
+
+.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-box-notification .rs-admin-button-default, .rs-admin-form .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default
+{
+	margin-top: 1em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. dialog overlay admin
+ * 2. fadein effect
+ *
+ * @since 2.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dialog overlay admin */
+
+.rs-admin-dialog-overlay
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+
+/* @section 2. fadein effect */
+
+.rs-admin-dialog, .rs-admin-dialog-overlay
+{
+	-webkit-animation: fade 0.4s;
+	        animation: fade 0.4s;
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. link dock admin
+ *    1.1 icons
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. link dock admin */
+
+.rs-admin-link-dock
+{
+	float: left;
+	height: 3.125em;
+	position: relative;
+	text-indent: -999em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	transition: padding 0.4s ease;
+	width: 3em;
+}
+
+.rs-admin-link-dock:hover
+{
+	background: linear-gradient(#3db1f1, #0090db);
+	color: #000;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	padding: 0 0.25em;
+}
+
+/* link delete */
+
+.rs-admin-link-dock.rs-admin-link-delete:hover
+{
+	background: linear-gradient(#d50000, #a20000);
+}
+
+/* @section 1.1 icons */
+
+.rs-admin-link-dock:before
+{
+	font: 1.25rem/2.5rem 'icon admin';
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+}
+
+.rs-admin-link-dock.rs-admin-link-unpublish:before
+{
+	content: 'p';
+}
+
+.rs-admin-link-dock.rs-admin-link-edit:before
+{
+	content: 'q';
+}
+
+.rs-admin-link-dock.rs-admin-link-delete:before
+{
+	content: 'r';
+}
+/**
+ * @tableofcontents
+ *
+ * 1. several fields
+ *    1.1 hover effect
+ *    1.2 focus effect
+ * 2. textarea
+ * 3. disabled and readonly
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. several fields */
+
+.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-field-small
+{
+	width: 40%;
+}
+
+.rs-admin-dialog .rs-admin-field-default
+{
+	width: 100%;
+}
+
+.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
+{
+	background: linear-gradient(#e2e2e2, #f1f1f1);
+	border: 1px solid #c9c9c9;
+	border-radius: 0.25em;
+	color: #6a6a6a;
+	font: 1rem arial;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	transition: background 0.4s ease;
+	padding: 0.5em;
+}
+
+/* @section 1.1 hover effect */
+
+.rs-admin-field-default:hover, .rs-admin-field-select:hover, .rs-admin-field-textarea:hover
+{
+	border-color: #adadad;
+}
+
+/* @section 1.2 focus effect */
+
+.rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
+{
+	background: linear-gradient(#f1f1f1, #e2e2e2);
+	border-color: #ababab;
+	box-shadow: 0 0 3px #fff;
+}
+
+/* @section 2. textarea */
+
+.rs-admin-field-textarea
+{
+	min-height: 20em;
+	resize: vertical;
+	width: 100%;
+}
+
+.rs-admin-field-textarea.rs-field-small
+{
+	min-height: 5em;
+}
+
+/* @section 3. disabled and readonly */
+
+.rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
+{
+	background: linear-gradient(#d4d4d4, #e2e2e2);
+	border-color: #d5d5d5;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);
+	color: #a4a4a4;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+}
+/**
+ * @tableofcontents
+ *
+ * 1. form admin
+ *    1.1 label
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. form admin */
+
+/* TODO: remove outdated styles */
+.rs-admin-form li, .rs-admin-form-default li
+{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/* @section 1.1 label */
+
+.rs-admin-label-default
+{
+	color: #555;
+	font: bold 0.875rem arial;
+	display: block;
+}
+
+/* TODO: remove outdated styles*/
+.rs-admin-form .rs-admin-label-message:after, .rs-admin-form-default .rs-admin-label-message:after, .rs-admin-label-default:after
+{
+	content: ' ' attr(data-message);
+}
+/**
+ * @tableofcontents
+ *
+ * 1. grid
+ *    1.1 whole
+ *    1.2 halve
+ *    1.3 third
+ *    1.4 quarter
+ *    1.5 fifth
+ *    1.6 sixth
+ *    1.7 seventh
+ *    1.8 eighth
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. grid */
+
+.rs-admin-grid, .rs-admin-grid-space
+{
+	float: left;
+}
+
+.rs-admin-grid + .rs-admin-grid:last-child, .rs-admin-grid-space + .rs-admin-grid-space:last-child
+{
+	float: right;
+}
+
+/* @section 1.1 whole */
+
+.rs-admin-s1o1
+{
+	width: 100%;
+}
+
+/* @section 1.2 halve */
+
+.rs-admin-s1o2, .rs-admin-s2o4, .rs-admin-s3o6, .rs-admin-s4o8
+{
+	width: 50%;
+}
+
+/* @section 1.3 third */
+
+.rs-admin-s1o3, .rs-admin-s2o6
+{
+	width: 33.33%;
+}
+
+.rs-admin-s2o3, .rs-admin-s4o6
+{
+	width: 66.66%;
+}
+
+/* @section 1.4 quarter */
+
+.rs-admin-s1o4, .rs-admin-s2o8
+{
+	width: 25%;
+}
+
+.rs-admin-s3o4, .rs-admin-s6o8
+{
+	width: 75%;
+}
+
+/* @section 1.5 fifth */
+
+.rs-admin-s1o5
+{
+	width: 20%;
+}
+
+.rs-admin-s2o5
+{
+	width: 40%;
+}
+
+.rs-admin-s3o5
+{
+	width: 60%;
+}
+
+.rs-admin-s4o5
+{
+	width: 80%;
+}
+
+/* @section 1.6 sixth */
+
+.rs-admin-s1o6
+{
+	width: 16.66%;
+}
+
+.rs-admin-s5o6
+{
+	width: 83.33%;
+}
+
+/* @section 1.7 seventh */
+
+.rs-admin-s1o7
+{
+	width: 14.28%;
+}
+
+.rs-admin-s2o7
+{
+	width: 28.58%;
+}
+
+.rs-admin-s3o7
+{
+	width: 42.86%;
+}
+
+.rs-admin-s4o7
+{
+	width: 57.14%;
+}
+
+.rs-admin-s5o7
+{
+	width: 71.42%;
+}
+
+.rs-admin-s6o7
+{
+	width: 85.72%;
+}
+
+/* @section 1.8 eighth */
+
+.rs-admin-s1o8
+{
+	width: 12.5%;
+}
+
+.rs-admin-s3o8
+{
+	width: 37.5%;
+}
+
+.rs-admin-s5o8
+{
+	width: 62.5%;
+}
+
+.rs-admin-s7o8
+{
+	width: 87.5%;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. icon flag
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+@font-face
+{
+	font-family: 'icon admin';
+	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
+}
+
+/* @section 2. icon flag */
+
+.rs-admin-icon-flag
+{
+	background: #323e4c;
+	border-radius: 0.125em;
+	color: #fff;
+	display: inline-block;
+	font-size: 0.75em;
+	letter-spacing: 0.125em;
+	line-height: 1.25em;
+	padding: 0.5em;
+	text-transform: uppercase;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. list control admin
+ * 2. list panel admin
+ *    2.1 icons before
+ *    2.2 icons after
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list control admin */
+
+.rs-admin-item-control
+{
+	display: inline-block;
+	font-size: 1rem;
+	margin-bottom: 0.5em;
+	margin-right: 0.5em;
+}
+
+/* @section 2. list panel admin */
+
+.rs-admin-item-panel
+{
+	position: relative;
+}
+
+/* link logout */
+
+.rs-admin-item-panel.rs-admin-item-logout a:hover
+{
+	background: linear-gradient(#d50000, #a20000);
+}
+
+/* @section 2.1 icons before */
+
+.rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
+{
+	font: 1.25rem/1.5rem 'icon admin';
+	margin-right: 1em;
+	vertical-align: middle;
+	text-transform: lowercase;
+}
+
+.rs-admin-item-panel.rs-admin-item-contents > span:before
+{
+	content: 'i';
+}
+
+.rs-admin-item-panel.rs-admin-item-access > span:before
+{
+	content: 'j';
+}
+
+.rs-admin-item-panel.rs-admin-item-system > span:before
+{
+	content: 'k';
+}
+
+.rs-admin-item-panel.rs-admin-item-profile > a:before, .rs-admin-item-panel.rs-admin-item-profile > span:before
+{
+	content: 'l';
+}
+
+.rs-admin-item-panel.rs-admin-item-logout > a:before
+{
+	content: 'n';
+}
+
+/* @section 2.2 icons after */
+
+.rs-admin-item-panel > span:after
+{
+	content: '˃';
+	font: 1.5rem/1.75rem 'icon admin';
+	position: absolute;
+	right: 0.75em;
+	top: 0;
+}
+
+.rs-admin-item-panel.rs-admin-item-active > span:after
+{
+	content: '˅';
+}
+/**
+ * @tableofcontents
+ *
+ * 1. list control admin
+ * 2. list panel admin
+ * 3. list tab admin
+ *    3.1 javascript enabled
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list control admin */
+
+.rs-admin-list-control a, .rs-admin-list-control span
+{
+	background: linear-gradient(#bbb, #b9b9b9);
+	border-radius: 0.25em;
+	color: #666;
+	display: inline-block;
+	line-height: 2em;
+	padding: 0 0.75em;
+	text-decoration: none;
+}
+
+.rs-admin-list-control a:hover
+{
+	background: linear-gradient(#4cb4ff, #0090db);
+	color: #fff;
+}
+
+.rs-admin-list-control span
+{
+	color: #999;
+}
+
+/* @section 2. list panel admin */
+
+.rs-admin-list-panel
+{
+	font-size: 0.875rem;
+}
+
+.rs-admin-list-panel a, .rs-admin-list-panel span
+{
+	color: #b9b9b9;
+	cursor: pointer;
+	display: block;
+	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	padding: 0 1em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	text-transform: uppercase;
+	transition: padding-left 0.3s ease;
+}
+
+.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
+{
+	background: linear-gradient(#3db1f1, #0090db);
+	color: #000;
+	padding-left: 1.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.rs-admin-list-panel-children
+{
+	display: none;
+}
+
+/* @section 3. list tab admin */
+
+.rs-admin-list-tab li
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	border: 1px solid #222;
+	border-radius: 0.25em 0.25em 0 0;
+	margin-bottom: -1px;
+	margin-right: 0.25em;
+	vertical-align: bottom;
+}
+
+.rs-admin-list-tab > li + li
+{
+	margin-left: 0.125em;
+}
+
+.rs-admin-list-tab a
+{
+	color: #ccc;
+	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
+	text-transform: uppercase;
+}
+
+.rs-admin-list-tab a:hover
+{
+	text-decoration: none;
+}
+
+.rs-admin-list-tab .rs-item-active
+{
+	padding: 0.5em 1em;
+	border-radius: 0.125em 0.125em 0 0;
+}
+
+.rs-admin-list-tab .rs-item-active a
+{
+	color: #fff;
+}
+
+.rs-admin-list-tab > li
+{
+	padding: 0.25em 1em;
+}
+
+.rs-admin-list-tab > li:hover
+{
+	cursor: pointer;
+}
+
+.rs-admin-list-tab > li:hover a
+{
+	color: #fff;
+}
+
+/* @section 3.1 javascript enabled */
+
+.rs-js .rs-admin-list-tab .rs-item-active
+{
+	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
+	border: 1px solid #b9b9b9;
+	border-bottom-color: #e2e2e2;
+	pointer-events: none;
+}
+
+.rs-js .rs-admin-list-tab .rs-item-active a
+{
+	color: #474747;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. box tab
+ * 2. list tab
+ * 3. set tab
+ * 4. query
+ *    4.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box tab */
+
+.rs-admin-box-tab
+{
+	overflow: hidden;
+}
+
+/* @section 2. list tab */
+
+.rs-admin-list-tab li
+{
+	display: inline-block;
+}
+
+.rs-js .rs-admin-list-tab .rs-admin-item-active
+{
+	pointer-events: none;
+}
+
+/* @section 3. set tab */
+
+.rs-js .rs-admin-set-tab
+{
+	display: none;
+}
+
+.rs-js .rs-admin-set-tab.rs-admin-set-active
+{
+	display: block;
+}
+
+/* @section 4. query */
+
+/* @section 4.1 max width 50em */
+
+@media screen and (max-width: 49.999em)
+{
+	.rs-admin-list-tab
+	{
+		display: none;
+	}
+
+	.rs-js .rs-admin-set-tab
+	{
+		display: block;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. admin table
+ *    1.1 body
+ *    1.2 row group
+ *    1.3 several elements
+ *    1.4 list control admin
+ *    1.5 move control
+ *    1.6 head and foot
+ *    1.7 column move
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. admin table */
+
+.rs-admin-table
+{
+	color: #474747;
+}
+
+.rs-admin-table caption, .rs-admin-table td, .rs-admin-table th
+{
+	text-align: left;
+}
+
+.rs-admin-table .rs-column-last
+{
+	text-align: right;
+}
+
+/* @section 1.1 body */
+
+.rs-admin-table tbody
+{
+	border: solid #b9b9b9;
+	border-width: 0 1px;
+}
+
+/* odd look */
+
+.rs-admin-table tbody:nth-child(odd) tr
+{
+	background: linear-gradient(#e2e2e2, #dadada);
+}
+
+/* even look */
+
+.rs-admin-table tbody:nth-child(even) tr
+{
+	background: linear-gradient(#ebebeb, #e8e8e8);
+}
+
+.rs-admin-table tbody + tbody tr, .rs-admin-table tbody tr + tr
+{
+	border-top: 1px solid #b9b9b9;
+}
+
+.rs-admin-table caption + tbody tr:last-child
+{
+	border-bottom: 1px solid #b9b9b9;
+}
+
+.rs-admin-table tbody td
+{
+	padding: 0.25em 0.5em;
+}
+
+/* row disabled */
+
+.rs-admin-table tbody .rs-admin-row-disabled
+{
+	background: #ddd;
+	color: #b9b9b9;
+}
+
+/* @section 1.2 row group */
+
+.rs-admin-table tbody .rs-admin-row-group
+{
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.rs-admin-table tbody .rs-admin-row-group td
+{
+	padding: 1.25em 0.75em;
+}
+
+.rs-admin-table tbody .rs-admin-row-group td:before
+{
+	content: 's';
+	font: 1.5rem 'icon admin';
+	margin-right: 0.5em;
+	text-transform: lowercase;
+	vertical-align: text-bottom;
+}
+
+/* @section 1.3 several elements */
+
+.rs-admin-table tbody .rs-admin-link-parent
+{
+	color: #666;
+	text-decoration: underline;
+}
+
+.rs-admin-table tbody .rs-admin-link-parent:hover
+{
+	color: #474747;
+}
+
+.rs-admin-table tbody .rs-admin-link-view
+{
+	color: #474747;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.rs-admin-table tbody .rs-admin-icon-flag
+{
+	margin-right: 1em;
+}
+
+/* @section 1.4 list control admin */
+
+.rs-admin-table tbody .rs-admin-list-control
+{
+	margin-top: 0.5em;
+}
+
+.rs-admin-desktop .rs-admin-table tbody .rs-admin-list-control
+{
+	visibility: hidden;
+}
+
+.rs-admin-desktop .rs-admin-table tbody tr:hover .rs-admin-list-control
+{
+	visibility: visible;
+}
+
+/* @section 1.5 move control */
+
+.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-admin-move-down
+{
+	color: #474747;
+	display: block;
+	min-height: 2.5em;
+	position: relative;
+	transition: color 0.4s ease;
+}
+
+.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover
+{
+	color: #0090db;
+}
+
+.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
+{
+	display: block;
+	font: 1.5rem 'icon admin';
+	position: absolute;
+	text-indent: 0;
+	right: 0.25em;
+}
+
+.rs-admin-table .rs-admin-move-up:before
+{
+	content: 'b';
+	top: 0.25em;
+}
+
+.rs-admin-table .rs-admin-move-down:before
+{
+	content: 'c';
+	bottom: 0.25em;
+}
+
+/* disabled move control */
+
+.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-admin-move-down:before
+{
+	color: #b9b9b9;
+}
+
+/* @section 1.6 head and foot */
+
+.rs-admin-table caption, .rs-admin-table thead, .rs-admin-table tfoot
+{
+	border: 1px solid #222;
+}
+
+.rs-admin-table caption, .rs-admin-table thead tr, .rs-admin-table tfoot tr
+{
+	background: url('templates/admin/assets/images/carbon.png') #222;
+	color: #ccc;
+	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
+	text-transform: uppercase;
+}
+
+.rs-admin-table caption, .rs-admin-table thead th, .rs-admin-table tfoot td
+{
+	padding: 0.5em;
+}
+
+/* @section 1.7 column move */
+
+.rs-admin-table .rs-admin-column-move
+{
+	text-indent: -999em;
+	text-align: left;
+}
+
+.rs-admin-table thead .rs-admin-column-move, .rs-admin-table tfoot .rs-admin-column-move
+{
+	display: block;
+	position: relative;
+}
+
+.rs-admin-table thead .rs-admin-column-move:before, .rs-admin-table tfoot .rs-admin-column-move:before
+{
+	content: 'a';
+	font: 1.25rem/3rem 'icon admin';
+	position: absolute;
+	right: 1.125em;
+	text-indent: 0;
+	text-transform: lowercase;
+	top: 0;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. screen max 40em
+ * 2. screen max 30em
+ * 3. screen min 50em
+ * 4. screen min 30em
+ * 5. rtl direction
+ *
+ * @since 2.1.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. screen max 40em */
+
+@media screen and (max-width: 40em)
+{
+	.rs-admin-item-control.rs-admin-item-future-posting
+	{
+		display: none;
+	}
+}
+
+/* @section 2. screen max 30em */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-top: 0.75em;
+	}
+
+	a.rs-admin-button-default
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	{
+		width: 100%;
+	}
+
+	.rs-admin-description-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
+	{
+		display: none;
+	}
+}
+
+/* @section 3. screen min 50em */
+
+@media screen and (min-width: 50em)
+{
+	.rs-admin-list-panel a, .rs-admin-list-panel span
+	{
+		line-height: 3.5em;
+	}
+
+	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
+	{
+		font-size: 1.5rem;
+	}
+
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	{
+		content: '';
+	}
+
+	.rs-admin-list-panel > li
+	{
+		float: left;
+		position: relative;
+	}
+
+	.rs-admin-list-panel.rs-admin-c1 > li
+	{
+		width: 100%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c2 > li
+	{
+		width: 50%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c3 > li
+	{
+		width: 33.33%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c4 > li
+	{
+		width: 25%;
+	}
+
+	.rs-admin-list-panel.rs-admin-c5 > li
+	{
+		width: 20%;
+	}
+
+	.rs-admin-list-panel-children
+	{
+		background: url('templates/admin/assets/images/carbon.png') #222;
+		position: absolute;
+		width: 100%;
+	}
+
+	.rs-admin-list-panel-children ul
+	{
+		left: 100%;
+		top: 0;
+	}
+
+	.rs-admin-sidebar .rs-admin-description-dock
+	{
+		display: none;
+	}
+}
+
+/* @section 4. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 0.5em;
+	}
+
+	/* TODO: remove outdated styles */
+	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete, .rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	/* TODO: remove outdated styles */
+	.rs-admin-form .rs-admin-button-submit, .rs-admin-form-default .rs-admin-button-submit
+	{
+		float: right;
+	}
+}
+
+/* @section 5. rtl direction */
+
+.rs-admin-rtl .rs-admin-description-dock
+{
+	float: left;
+}
+
+.rs-admin-rtl .rs-admin-table .rs-admin-column-move
+{
+	text-align: right;
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. note error
+ * 2. note info
+ * 3. note success
+ * 4. note warning
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note error */
+
+.rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
+{
+	background: #da4f49;
+	border-color: #802420;
+}
+
+.rs-admin-note-error.rs-admin-field-note option
+{
+	background: #da4f49;
+}
+
+.rs-admin-note-error.rs-admin-box-note:before
+{
+	content: '\78';
+}
+
+/* @section 2. note info */
+
+.rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
+{
+	background: #49afcd;
+	border-color: #1f6377;
+}
+
+.rs-admin-note-info.rs-admin-field-note option
+{
+	background: #49afcd;
+}
+
+.rs-admin-note-info.rs-admin-box-note:before
+{
+	content: '\69';
+}
+
+/* @section 3. note success */
+
+.rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
+{
+	background: #5bb75b;
+	border-color: #387038;
+}
+
+.rs-admin-note-success.rs-admin-field-note option
+{
+	background: #5bb75b;
+}
+
+.rs-admin-note-success.rs-admin-box-note:before
+{
+	content: '\2713';
+}
+
+/* @section 4. note warning */
+
+.rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
+{
+	background: #f3940e;
+	border-color: #ad6704;
+}
+
+.rs-admin-note-warning.rs-admin-field-note option
+{
+	background: #f3940e;
+}
+
+.rs-admin-note-warning.rs-admin-box-note:before
+{
+	content: '\21';
+}

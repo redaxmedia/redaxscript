@@ -130,21 +130,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'assets/styles/*.css'
+					'dist/styles/*.min.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/assets/styles/*.css'
+					'modules/*/dist/styles/*.min.css'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/assets/styles/*.css'
+					'templates/*/dist/styles/*.min.css'
 				]
 			},
 			options:
@@ -231,43 +231,99 @@ module.exports = function (grunt)
 				standard: 'ruleset.xml'
 			}
 		},
+		concat:
+		{
+			base:
+			{
+				src:
+				[
+					'assets/styles/normalize.css',
+					'assets/styles/helper.css',
+					'assets/styles/animate.css',
+					'assets/styles/accordion.css',
+					'assets/styles/box.css',
+					'assets/styles/dialog.css',
+					'assets/styles/dropdown.css',
+					'assets/styles/form.css',
+					'assets/styles/grid.css',
+					'assets/styles/media.css',
+					'assets/styles/navigation.css',
+					'assets/styles/tab.css',
+					'assets/styles/table.css',
+					'assets/styles/tooltip.css',
+					'assets/styles/layout.css'
+				],
+				dest: 'dist/styles/base.min.css'
+			},
+			templateAdmin:
+			{
+				src:
+				[
+					'templates/admin/assets/styles/typo.css',
+					'templates/admin/assets/styles/layout.css',
+					'templates/admin/assets/styles/box.css',
+					'templates/admin/assets/styles/button.css',
+					'templates/admin/assets/styles/dialog.css',
+					'templates/admin/assets/styles/dock.css',
+					'templates/admin/assets/styles/field.css',
+					'templates/admin/assets/styles/form.css',
+					'templates/admin/assets/styles/grid.css',
+					'templates/admin/assets/styles/icon.css',
+					'templates/admin/assets/styles/interface.css',
+					'templates/admin/assets/styles/list.css',
+					'templates/admin/assets/styles/tab.css',
+					'templates/admin/assets/styles/table.css',
+					'templates/admin/assets/styles/query.css',
+					'templates/admin/assets/styles/note.css'
+				],
+				dest: 'templates/admin/dist/styles/admin.min.css'
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_query.css',
+					'templates/default/assets/styles/_variable.css',
+					'templates/default/assets/styles/typo.css',
+					'templates/default/assets/styles/layout.css',
+					'templates/default/assets/styles/animate.css',
+					'templates/default/assets/styles/box.css',
+					'templates/default/assets/styles/button.css',
+					'templates/default/assets/styles/dialog.css',
+					'templates/default/assets/styles/field.css',
+					'templates/default/assets/styles/form.css',
+					'templates/default/assets/styles/icon.css',
+					'templates/default/assets/styles/list.css',
+					'templates/default/assets/styles/media.css',
+					'templates/default/assets/styles/navigation.css',
+					'templates/default/assets/styles/table.css',
+					'templates/default/assets/styles/teaser.css',
+					'templates/default/assets/styles/tooltip.css',
+					'templates/default/assets/styles/note.css'
+				],
+				dest: 'templates/default/dist/styles/default.min.css'
+			}
+		},
 		postcss:
 		{
 			base:
 			{
-				files:
-				[{
-					expand: true,
-					cwd: 'assets/styles/',
-					src: '*.css',
-					dest: 'assets/styles/dist/'
-				}]
+				src:
+				[
+					'dist/styles/*.min.css'
+				]
 			},
-			templateAdmin:
+			templates:
 			{
-				files:
-				[{
-					expand: true,
-					cwd: 'templates/admin/assets/styles/',
-					src: '*.css',
-					dest: 'templates/admin/assets/styles/dist/'
-				}]
-			},
-			templateDefault:
-			{
-				files:
-				[{
-					expand: true,
-					cwd: 'templates/default/assets/styles/',
-					src: '*.css',
-					dest: 'templates/default/assets/styles/dist/'
-				}]
+				src:
+				[
+					'templates/*/dist/styles/*.min.css'
+				]
 			},
 			options:
 			{
 				processors:
 				[
-					require('postcss-import'),
 					require('postcss-color-function'),
 					require('postcss-color-gray'),
 					require('postcss-css-variables'),
@@ -313,7 +369,7 @@ module.exports = function (grunt)
 			},
 			toclintTemplates:
 			{
-				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh templates/admin/assets .tocgen -l && sh vendor/bin/tocgen.sh templates/default/assets .tocgen -l'
 			},
 			apiBase:
 			{
@@ -353,7 +409,7 @@ module.exports = function (grunt)
 				[
 					'<%=compress.distFull.src%>'
 				],
-				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_full',
+				dest: '../redaxscript-export/redaxscript_<%= version %>_full',
 				dot: true,
 				expand: true
 			},
@@ -363,7 +419,7 @@ module.exports = function (grunt)
 				[
 					'<%=compress.distLite.src%>'
 				],
-				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
+				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
 				dot: true,
 				expand: true
 			}
@@ -390,7 +446,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_full.zip'
+					archive: '../redaxscript-files/releases/redaxscript_<%= version %>_full.zip'
 				},
 				dot: true
 			},
@@ -416,7 +472,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
+					archive: '../redaxscript-files/releases/redaxscript_<%= version %>_lite.zip'
 				},
 				dot: true
 			}
@@ -506,7 +562,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/' + targetArray[0].toLowerCase() + '.zip'
+					archive: '../redaxscript-files/' + targetArray[0].toLowerCase() + '.zip'
 				},
 				dot: true
 			});
@@ -519,6 +575,7 @@ module.exports = function (grunt)
 	/* load tasks */
 
 	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -539,7 +596,7 @@ module.exports = function (grunt)
 		'jscs',
 		'jshint',
 		'jsonlint',
-		//'csslint',
+		'csslint',
 		'htmlhint',
 		'phpcs',
 		'toclint'
@@ -578,10 +635,14 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('optimize',
 	[
-		'postcss',
 		'toc',
 		'img',
 		'svgmin'
+	]);
+	grunt.registerTask('build',
+	[
+		'concat',
+		'postcss'
 	]);
 	grunt.registerTask('dist',
 	[

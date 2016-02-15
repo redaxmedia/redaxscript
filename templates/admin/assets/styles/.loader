@@ -1,17 +1,2 @@
 [admin]
-1 = templates/admin/assets/styles/typo.css
-2 = templates/admin/assets/styles/layout.css
-3 = templates/admin/assets/styles/box.css
-4 = templates/admin/assets/styles/button.css
-5 = templates/admin/assets/styles/dialog.css
-6 = templates/admin/assets/styles/dock.css
-7 = templates/admin/assets/styles/field.css
-8 = templates/admin/assets/styles/form.css
-9 = templates/admin/assets/styles/grid.css
-10 = templates/admin/assets/styles/icon.css
-11 = templates/admin/assets/styles/interface.css
-12 = templates/admin/assets/styles/list.css
-13 = templates/admin/assets/styles/tab.css
-14 = templates/admin/assets/styles/table.css
-15 = templates/admin/assets/styles/query.css
-16 = templates/admin/assets/styles/note.css
+1 = templates/admin/dist/styles/admin.min.css

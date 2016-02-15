@@ -74,13 +74,13 @@
 		bottom: 0;
 		position: fixed;
 		top: 0;
-		transition: transform 0.2s;
 		transform: translateX(-100%);
 		z-index: 10;
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
+		transition: transform 0.2s;
 		transform: translateX(0);
 	}
 

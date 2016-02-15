@@ -10,9 +10,6 @@
  * @author Henry Ruhs
  */
 
-@import '_query.css';
-@import '_variable.css';
-
 /* @section 1. icon font */
 
 @font-face
@@ -25,9 +22,9 @@
 
 .rs-icon-flag
 {
-	background: var(--color-primary-dark);
+	background: var(--rs-color-tertiary);
 	padding: 0.125em 0.5em;
-	color: var(--color-light);
+	color: var(--rs-color-light);
 	display: inline-block;
 	margin: 0.125em;
 	border-radius: 0.125em;
