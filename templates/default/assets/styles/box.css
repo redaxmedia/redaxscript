@@ -87,6 +87,7 @@
 {
 	border-radius: 0 0.125em 0.125em 0;
 	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	color: var(--rs-color-light);
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
 }
@@ -103,7 +104,8 @@
 
 .rs-box-note a
 {
-	color: var(--rs-color-light);
+	color: var(--rs-color-tertiary);
+	text-decoration: underline;
 }
 
 /* @section 7. box comment */
