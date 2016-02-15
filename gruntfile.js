@@ -528,6 +528,18 @@ module.exports = function (grunt)
 		},
 		watch:
 		{
+			build:
+			{
+				files:
+				[
+					'assets/styles/*.css',
+					'templates/**/assets/styles/typo.css'
+				],
+				tasks:
+				[
+					'build'
+				]
+			},
 			phpunit:
 			{
 				files:
