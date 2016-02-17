@@ -54,7 +54,7 @@ class Ace extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>';
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>';
 			echo $output;
 		}
 	}
