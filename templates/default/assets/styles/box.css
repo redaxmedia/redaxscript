@@ -30,6 +30,13 @@
 	white-space: pre-wrap;
 }
 
+.rs-box-infoline
+{
+	font-size: 0.875em;
+	font-style: italic;
+	margin-top: 1em;
+}
+
 /* @section 2. box metadata */
 
 .rs-box-metadata
