@@ -67,7 +67,7 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $user->id ? 'admin/process/users/' . $user->id : 'admin/process/users',
+				'action' => Registry::get('rewriteRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -213,7 +213,7 @@ class UserForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $user->status
+				'value' => intval($user->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('groups'), array(

@@ -48,7 +48,7 @@ class ArticleForm implements ViewInterface
 	{
 		$output = Hook::trigger('adminArticleFormStart');
 		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
-
+var_dump($article);
 		/* html elements */
 
 		$titleElement = new Html\Element();
@@ -67,7 +67,7 @@ class ArticleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles',
+				'action' => Registry::get('rewriteRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -212,7 +212,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'sibling',
 				'name' => 'sibling',
-				'value' => $article->sibling
+				'value' => intval($article->sibling)
 			))
 			->append('</li><li>')
 			->label(Language::get('category'), array(
@@ -221,7 +221,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'category',
 				'name' => 'category',
-				'value' => $article->category
+				'value' => intval($article->category)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -234,7 +234,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
 				'name' => 'headline',
-				'value' => $article->headline
+				'value' => intval($article->headline)
 			))
 			->append('</li><li>')
 			->label(Language::get('infoline'), array(
@@ -243,7 +243,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'infoline',
 				'name' => 'infoline',
-				'value' => $article->infoline
+				'value' => intval($article->infoline)
 			))
 			->append('</li><li>')
 			->label(Language::get('comments'), array(
@@ -252,7 +252,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'comments',
 				'name' => 'comments',
-				'value' => $article->comments
+				'value' => intval($article->comments)
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -261,7 +261,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $article->status
+				'value' => intval($article->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(

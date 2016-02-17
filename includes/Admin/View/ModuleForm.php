@@ -69,7 +69,7 @@ class ModuleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/modules',
+				'action' => Registry::get('rewriteRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -196,7 +196,7 @@ class ModuleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $module->status
+				'value' => intval($module->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(

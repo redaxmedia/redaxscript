@@ -67,7 +67,7 @@ class CommentForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments',
+				'action' => Registry::get('rewriteRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -190,7 +190,7 @@ class CommentForm implements ViewInterface
 			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'article',
 				'name' => 'article',
-				'value' => $comment->article
+				'value' => intval($comment->article)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -203,7 +203,7 @@ class CommentForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $comment->status
+				'value' => intval($comment->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(

@@ -67,7 +67,7 @@ class CategoryForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories',
+				'action' => Registry::get('rewriteRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -201,7 +201,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'sibling',
 				'name' => 'sibling',
-				'value' => $category->sibling
+				'value' => intval($category->sibling)
 			))
 			->append('</li><li>')
 			->label(Language::get('category_parent'), array(
@@ -210,7 +210,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'parent',
 				'name' => 'parent',
-				'value' => $category->parent
+				'value' => intval($category->parent)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -223,7 +223,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $category->status
+				'value' => intval($category->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(

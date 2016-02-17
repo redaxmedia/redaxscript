@@ -67,7 +67,7 @@ class GroupForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups',
+				'action' => Registry::get('rewriteRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -250,7 +250,7 @@ class GroupForm implements ViewInterface
 				'name' => 'settings',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('settings')),
-				'value' => $group->settings
+				'value' => intval($group->settings)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -263,7 +263,7 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'filter',
 				'name' => 'filter',
-				'value' => $group->filter
+				'value' => intval($group->filter)
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -272,7 +272,7 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $group->status
+				'value' => intval($group->status)
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

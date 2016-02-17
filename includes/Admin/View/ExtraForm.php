@@ -67,7 +67,7 @@ class ExtraForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras',
+				'action' => Registry::get('rewriteRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
 			'button' => array(
@@ -183,7 +183,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getContentArray('extras'), array(
 				'id' => 'sibling',
 				'name' => 'sibling',
-				'value' => $extra->sibling
+				'value' => intval($extra->sibling)
 			))
 			->append('</li><li>')
 			->label(Language::get('category'), array(
@@ -192,7 +192,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'category',
 				'name' => 'category',
-				'value' => $extra->category
+				'value' => intval($extra->category)
 			))
 			->append('</li><li>')
 			->label(Language::get('article'), array(
@@ -201,7 +201,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'article',
 				'name' => 'article',
-				'value' => $extra->article
+				'value' => intval($extra->article)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -214,7 +214,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
 				'name' => 'headline',
-				'value' => $extra->headline
+				'value' => intval($extra->headline)
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -223,7 +223,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $extra->status
+				'value' => intval($extra->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
