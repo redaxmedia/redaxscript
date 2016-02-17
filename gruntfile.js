@@ -332,7 +332,8 @@ module.exports = function (grunt)
 					require('postcss-nested'),
 					require('autoprefixer')(
 					{
-						browsers: 'last 2 versions'
+						browsers: 'last 2 versions',
+						cascade: false
 					})
 				]
 			}
