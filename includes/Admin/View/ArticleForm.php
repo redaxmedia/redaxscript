@@ -48,7 +48,7 @@ class ArticleForm implements ViewInterface
 	{
 		$output = Hook::trigger('adminArticleFormStart');
 		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
-var_dump($article);
+
 		/* html elements */
 
 		$titleElement = new Html\Element();
