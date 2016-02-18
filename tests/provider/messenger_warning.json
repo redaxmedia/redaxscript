@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"data": "test",
+			"message": "test",
 			"title": "title"
 		},
 		{
@@ -12,7 +12,7 @@
 	],
 	[
 		{
-			"data":
+			"message":
 			[
 				"test1",
 				"test2"
@@ -27,7 +27,7 @@
 	],
 	[
 		{
-			"data":
+			"message":
 			[
 				"test1",
 				"test2"
