@@ -24,7 +24,7 @@ class Hash
 	/**
 	 * plain raw
 	 *
-	 * @var string|number
+	 * @var string
 	 */
 
 	protected $_raw;

@@ -579,7 +579,7 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param array $optionArray options of the select
-	 * @param string $selected option to be selected
+	 * @param mixed $selected option to be selected
 	 *
 	 * @return string
 	 */
@@ -590,6 +590,13 @@ class Form extends HtmlAbstract
 		$optionElement = new Element();
 		$optionElement->init('option');
 
+		/* handle selected */
+
+		if (is_string($selected))
+		{
+			$selected = explode(', ', $selected);
+		}
+
 		/* process option */
 
 		foreach ($optionArray as $key => $value)
@@ -599,7 +606,7 @@ class Form extends HtmlAbstract
 				$output .= $optionElement
 					->copy()
 					->attr(array(
-						'selected' => $value === $selected ? 'selected' : null,
+						'selected' => $value === $selected || in_array($value, $selected) ? 'selected' : null,
 						'value' => $value
 					))
 					->text(is_string($key) ? $key : $value);
