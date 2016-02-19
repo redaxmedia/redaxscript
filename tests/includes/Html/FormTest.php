@@ -177,6 +177,19 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * providerLink
+	 *
+	 * @since 2.6.0
+	 *
+	 * @return array
+	 */
+
+	public function providerLink()
+	{
+		return $this->getProvider('tests/provider/Html/form_link.json');
+	}
+
+	/**
 	 * testCreate
 	 *
 	 * @param array $attributeArray
@@ -450,6 +463,36 @@ class FormTest extends TestCase
 	 */
 
 	public function testButton($method = null, $text = null, $attributeArray = array(), $expect = null)
+	{
+		/* setup */
+
+		$form = new Html\Form($this->_registry, $this->_language);
+		$form->init();
+		$form->$method($text, $attributeArray);
+
+		/* actual */
+
+		$actual = $form;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testLink
+	 *
+	 * @param string $method
+	 * @param string $text
+	 * @param array $attributeArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerLink
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testLink($method = null, $text = null, $attributeArray = array(), $expect = null)
 	{
 		/* setup */
 

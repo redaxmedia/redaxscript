@@ -70,29 +70,15 @@ class CategoryForm implements ViewInterface
 				'action' => Registry::get('rewriteRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/categories'
+				),
+				'delete' => array(
+					'href' => $category->id ? Registry::get('rewriteRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/categories'
-			))
-			->text(Language::get('cancel'));
-		if ($category->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/categories/' . $category->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -247,16 +233,16 @@ class CategoryForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
+			->cancel();
 			if ($category->id)
 			{
 				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
+					->delete()
+					->save();
 			}
 			else
 			{
-				$formElement->submit(Language::get('create'));
+				$formElement->create();
 			}
 
 		/* collect output */

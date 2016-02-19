@@ -70,29 +70,15 @@ class GroupForm implements ViewInterface
 				'action' => Registry::get('rewriteRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/groups'
+				),
+				'delete' => array(
+					'href' => $group->id ? Registry::get('rewriteRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/groups'
-			))
-			->text(Language::get('cancel'));
-		if ($group->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/groups/' . $group->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -276,16 +262,16 @@ class GroupForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
+			->cancel();
 			if ($group->id)
 			{
 				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
+					->delete()
+					->save();
 			}
 			else
 			{
-				$formElement->submit(Language::get('create'));
+				$formElement->create();
 			}
 
 		/* collect output */

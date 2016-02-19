@@ -1,0 +1,16 @@
+[
+	[
+		"cancel",
+		"",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><a class=\"rs-js-cancel rs-button-default rs-button-cancel\" href=\"javascript:history.back()\">Cancel</a></form>"
+	],
+	[
+		"cancel",
+		"test",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><a class=\"rs-test\" href=\"javascript:history.back()\">test</a></form>"
+	]
+]

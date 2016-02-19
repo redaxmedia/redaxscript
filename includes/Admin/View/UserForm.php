@@ -70,29 +70,15 @@ class UserForm implements ViewInterface
 				'action' => Registry::get('rewriteRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/users'
+				),
+				'delete' => array(
+					'href' => $user->id ? Registry::get('rewriteRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/users'
-			))
-			->text(Language::get('cancel'));
-		if ($user->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/users/' . $user->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -228,16 +214,16 @@ class UserForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
+			->cancel();
 			if ($user->id)
 			{
 				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
+					->delete()
+					->save();
 			}
 			else
 			{
-				$formElement->submit(Language::get('create'));
+				$formElement->create();
 			}
 
 		/* collect output */
