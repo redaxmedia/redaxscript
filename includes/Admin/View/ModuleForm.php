@@ -76,8 +76,8 @@ class ModuleForm implements ViewInterface
 				'cancel' => array(
 					'href' => Registry::get('rewriteRoute') . 'admin/view/modules'
 				),
-				'delete' => array(
-					'href' => $module->id ? Registry::get('rewriteRoute') . 'admin/uninstall/modules/' . $module->id . '/' . Registry::get('token') : null
+				'uninstall' => array(
+					'href' => $module->alias ? Registry::get('rewriteRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
 				)
 			)
 		));
@@ -197,17 +197,9 @@ class ModuleForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->cancel();
-			if ($module->id)
-			{
-				$formElement
-					->delete()
-					->save();
-			}
-			else
-			{
-				$formElement->create();
-			}
+			->cancel()
+			->uninstall()
+			->save();
 
 		/* collect output */
 

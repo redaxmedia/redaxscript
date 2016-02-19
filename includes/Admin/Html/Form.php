@@ -15,6 +15,7 @@ use Redaxscript\Html\Form as BaseForm;
  * @method create()
  * @method delete()
  * @method save()
+ * @method uninstall()
  */
 
 class Form extends BaseForm
@@ -36,7 +37,8 @@ class Form extends BaseForm
 		),
 		'link' => array(
 			'cancel' => 'cancel',
-			'delete' => 'delete'
+			'delete' => 'delete',
+			'uninstall' => 'uninstall'
 		)
 	);
 
@@ -169,6 +171,9 @@ class Form extends BaseForm
 			),
 			'delete' => array(
 				'class' => 'rs-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
+			),
+			'uninstall' => array(
+				'class' => 'rs-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
 			)
 		)
 	);
