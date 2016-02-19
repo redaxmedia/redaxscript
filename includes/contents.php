@@ -211,6 +211,8 @@ function contents()
 
 	if ($error)
 	{
+		/* show error */
+
 		$messenger = new \Redaxscript\Messenger();
 		echo $messenger->error($error, Language::get('something_wrong'));
 	}

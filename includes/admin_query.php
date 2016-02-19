@@ -356,9 +356,12 @@ function admin_process()
 		{
 			$route .= '/edit/' . TABLE_PARAMETER . '/' . ID_PARAMETER;
 		}
+
+		/* show error */
+
 		$messenger->setAction(Language::get('back'), $route);
 		echo $messenger->error($error, Language::get('error_occurred'));
-		echo $messenger->redirect();
+
 		return;
 	}
 
@@ -401,6 +404,9 @@ function admin_process()
 				->create()
 				->set($r)
 				->save();
+
+			/* show success */
+
 			$messenger->setAction(Language::get('continue'), $route);
 			echo $messenger->success(Language::get('operation_completed'));
 			echo $messenger->redirect();
@@ -479,6 +485,9 @@ function admin_process()
 					$_SESSION[ROOT . '/language_selected'] = 1;
 				}
 			}
+
+			/* show success */
+
 			$messenger->setAction(Language::get('continue'), $route);
 			echo $messenger->success(Language::get('operation_completed'));
 			echo $messenger->redirect();
@@ -523,7 +532,7 @@ function admin_move()
 	Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', $id)->findOne()->set('rank', $rank_old)->save();
 	Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->set('rank', $rank_new)->save();
 
-	/* notification */
+	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
 	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
@@ -611,7 +620,7 @@ function admin_sort()
 		}
 	}
 
-	/* notification */
+	/* show success */
 
 	$messenger = new Redaxscript\Messenger();
 	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
@@ -673,7 +682,7 @@ function admin_status($input = '')
 			->save();
 	}
 
-	/* notification */
+	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
 	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
@@ -715,7 +724,7 @@ function admin_install()
 		}
 	}
 
-	/* notification */
+	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
 	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER);
@@ -819,7 +828,7 @@ function admin_delete()
 			$route .= '/view/' . TABLE_PARAMETER;
 		}
 
-		/* notification */
+		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
 		$messenger->setAction(Language::get('continue'), $route);
@@ -881,7 +890,7 @@ function admin_update()
 				->save();
 		}
 
-		/* notification */
+		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
 		$messenger->setAction(Language::get('continue'), 'admin/edit/settings');

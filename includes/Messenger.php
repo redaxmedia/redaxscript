@@ -32,7 +32,13 @@ class Messenger
 		'className' => array(
 			'list' => 'rs-list-messenger',
 			'link' => 'rs-button-messenger',
-			'redirect' => 'rs-redirect-overlay'
+			'redirect' => 'rs-redirect-overlay',
+			'note' => 'rs-title-note ',
+			'box' => 'rs-box-note ',
+			'success' => 'rs-note-success',
+			'warning' => 'rs-note-warning',
+			'error' => 'rs-note-error',
+			'info' => 'rs-note-info'
 		)
 	);
 
@@ -50,12 +56,35 @@ class Messenger
 	}
 
 	/**
+	 * init the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $options options of the messenger
+	 *
+	 * @return string $this
+	 */
+
+	public function init($options = array())
+	{
+		if (is_array($options))
+		{
+			$this->_options = array_merge($this->_options, $options);
+		}
+
+		return $this;
+	}
+
+
+	/**
 	 * set the action
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $text text of the action
 	 * @param string $route route of the action
+	 *
+	 * @return string
 	 */
 
 	public function setAction($text = null, $route = null)
@@ -67,6 +96,8 @@ class Messenger
 				'route' => $route
 			);
 		}
+
+		return $this;
 	}
 
 	/**
@@ -93,7 +124,7 @@ class Messenger
 	 * @param mixed $message message of the warning
 	 * @param string $title message title of the warning
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function warning($message = null, $title = null)
@@ -109,7 +140,7 @@ class Messenger
 	 * @param mixed $message message of the error
 	 * @param string $title title of the error
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function error($message = null, $title = null)
@@ -125,7 +156,7 @@ class Messenger
 	 * @param mixed $message message of the info
 	 * @param string $title title of the info
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function info($message = null, $title = null)
@@ -156,14 +187,15 @@ class Messenger
 		{
 			$titleElement = new Html\Element();
 			$titleElement->init('h2', array(
-				'class' => 'rs-title-note rs-note-' . $type
+				'class' =>
+					$this->_options['className']['note'] . $this->_options['className'][$type]
 			))
-			->text($title);
+				->text($title);
 			$output .= $titleElement->render();
 		}
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'class' => 'rs-box-note rs-note-' . $type
+			'class' => $this->_options['className']['box'] . $this->_options['className'][$type]
 		));
 		if ($this->_actionArray)
 		{
@@ -172,7 +204,7 @@ class Messenger
 				'href' => $this->_actionArray['route'],
 				'class' => $this->_options['className']['link']
 			))
-			->text($this->_actionArray['text']);
+				->text($this->_actionArray['text']);
 		}
 
 		/* build a list */

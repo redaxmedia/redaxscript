@@ -109,9 +109,11 @@ function password_reset_post()
 		{
 			$back_route = 'login/recover';
 		}
+
+		/* show error */
+
 		$messenger->setAction(Language::get('back'), $back_route);
 		echo $messenger->error($error, Language::get('error_occurred'));
-		echo $messenger->redirect();
 	}
 
 	/* handle success */

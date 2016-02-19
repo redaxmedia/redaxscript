@@ -38,10 +38,12 @@ function admin_router()
 		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
 		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
 		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
-		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
+		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefi1x(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
+
+			/* show error */
+
 			$messenger->setAction(Language::get('back'), 'admin');
 			echo $messenger->error(Language::get('something_wrong'));
-			echo $messenger->redirect();
 			return;
 	}
 
@@ -96,9 +98,11 @@ function admin_router()
 		case ADMIN_PARAMETER == 'update' && $edit == 0:
 		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
 		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:
+
+			/* show error */
+
 			$messenger->setAction(Language::get('back'), 'admin');
 			echo $messenger->error(Language::get('error_occurred'), Language::get('access_no'));
-			echo $messenger->redirect();
 			return;
 	}
 
@@ -106,9 +110,10 @@ function admin_router()
 
 	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
 	{
+		/* show error */
+
 		$messenger->setAction(Language::get('back'), 'admin');
 		echo $messenger->error(Language::get('error_occurred'), Language::get('token_no'));
-		echo $messenger->redirect();
 		return;
 	}
 
