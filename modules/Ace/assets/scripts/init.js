@@ -20,7 +20,8 @@ rs.modules.ace =
 	{
 		className:
 		{
-			hasAceEditor: 'rs-has-ace-editor'
+			hasAceEditor: 'rs-has-ace-editor',
+			aceEditor: 'rs-ace-editor'
 		},
 		mode: 'ace/mode/html',
 		theme: 'ace/theme/github'

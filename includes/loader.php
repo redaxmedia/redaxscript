@@ -386,7 +386,7 @@ function scripts($mode = '')
  * @category Loader
  * @author Henry Ruhs
  *
- * @param string|boolean $minify
+ * @param mixed $minify
  * @return string
  */
 

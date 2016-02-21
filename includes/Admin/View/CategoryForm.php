@@ -67,32 +67,18 @@ class CategoryForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories',
+				'action' => Registry::get('rewriteRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/categories'
+				),
+				'delete' => array(
+					'href' => $category->id ? Registry::get('rewriteRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/categories'
-			))
-			->text(Language::get('cancel'));
-		if ($category->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/categories/' . $category->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -201,7 +187,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'sibling',
 				'name' => 'sibling',
-				'value' => $category->sibling
+				'value' => intval($category->sibling)
 			))
 			->append('</li><li>')
 			->label(Language::get('category_parent'), array(
@@ -210,7 +196,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getContentArray('categories'), array(
 				'id' => 'parent',
 				'name' => 'parent',
-				'value' => $category->parent
+				'value' => intval($category->parent)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -223,7 +209,16 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $category->status
+				'value' => intval($category->status)
+			))
+			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($category->rank)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -247,17 +242,17 @@ class CategoryForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
-			if ($category->id)
-			{
-				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
-			}
-			else
-			{
-				$formElement->submit(Language::get('create'));
-			}
+			->cancel();
+		if ($category->id)
+		{
+			$formElement
+				->delete()
+				->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

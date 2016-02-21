@@ -67,32 +67,18 @@ class CommentForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments',
+				'action' => Registry::get('rewriteRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/comments'
+				),
+				'delete' => array(
+					'href' => $comment->id ? Registry::get('rewriteRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/comments'
-			))
-			->text(Language::get('cancel'));
-		if ($comment->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -190,7 +176,7 @@ class CommentForm implements ViewInterface
 			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'article',
 				'name' => 'article',
-				'value' => $comment->article
+				'value' => intval($comment->article)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -203,7 +189,16 @@ class CommentForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $comment->status
+				'value' => intval($comment->status)
+			))
+			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($comment->rank)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -227,16 +222,16 @@ class CommentForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
+			->cancel();
 		if ($comment->id)
 		{
 			$formElement
-				->append($linkDelete)
-				->submit(Language::get('save'));
+				->delete()
+				->save();
 		}
 		else
 		{
-			$formElement->submit(Language::get('create'));
+			$formElement->create();
 		}
 
 		/* collect output */

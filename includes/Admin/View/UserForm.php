@@ -67,32 +67,18 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $user->id ? 'admin/process/users/' . $user->id : 'admin/process/users',
+				'action' => Registry::get('rewriteRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/users'
+				),
+				'delete' => array(
+					'href' => $user->id ? Registry::get('rewriteRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/users'
-			))
-			->text(Language::get('cancel'));
-		if ($user->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/users/' . $user->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -112,13 +98,16 @@ class UserForm implements ViewInterface
 				->attr('href', $tabRoute . '#tab-2')
 				->text(Language::get('general'))
 			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
+		if (!$user->id || $user->id > 1)
+		{
+			$outputItem .= $itemElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text(Language::get('customize'))
-			);
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-3')
+					->text(Language::get('customize'))
+				);
+		}
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -140,17 +129,24 @@ class UserForm implements ViewInterface
 				'required' => 'required',
 				'value' => $user->name
 			))
-			->append('</li><li>')
-			->label(Language::get('user'), array(
-				'for' => 'user'
-			))
-			->text(array(
-				'id' => 'user',
-				'name' => 'user',
-				'required' => 'required',
-				'value' => $user->user
-			))
-			->append('</li><li>')
+			->append('</li>');
+		if (!$user->id)
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('user'), array(
+					'for' => 'user'
+				))
+				->text(array(
+					'id' => 'user',
+					'name' => 'user',
+					'required' => 'required',
+					'value' => $user->user
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label(Language::get('password'), array(
 				'for' => 'password'
 			))
@@ -202,43 +198,51 @@ class UserForm implements ViewInterface
 				'name' => 'language',
 				'value' => $user->language
 			))
-			->append('</li></ul></fieldset>')
+			->append('</li></ul></fieldset>');
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
-			->label(Language::get('status'), array(
-				'for' => 'status'
-			))
-			->select(Helper\Option::getToggleArray(), array(
-				'id' => 'status',
-				'name' => 'status',
-				'value' => $user->status
-			))
-			->append('</li><li>')
-			->label(Language::get('groups'), array(
-				'for' => 'groups'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'groups',
-				'name' => 'groups',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $user->access
-			))
-			->append('</li></ul></fieldset></div>')
+		if (!$user->id || $user->id > 1)
+		{
+			$formElement
+				->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+				->label(Language::get('status'), array(
+					'for' => 'status'
+				))
+				->select(Helper\Option::getToggleArray(), array(
+					'id' => 'status',
+					'name' => 'status',
+					'value' => intval($user->status)
+				))
+				->append('</li><li>')
+				->label(Language::get('groups'), array(
+					'for' => 'groups'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'groups',
+					'name' => 'groups',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $user->access
+				))
+				->append('</li></ul></fieldset>');
+		}
+		$formElement
+			->append('</div>')
 			->token()
-			->append($linkCancel);
-			if ($user->id)
-			{
-				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
-			}
-			else
-			{
-				$formElement->submit(Language::get('create'));
-			}
+			->cancel();
+		if ($user->id > 1)
+		{
+			$formElement->delete();
+		}
+		if ($user->id)
+		{
+			$formElement->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

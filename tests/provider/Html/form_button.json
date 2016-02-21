@@ -14,6 +14,20 @@
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"button\">test</button></form>"
 	],
 	[
+		"reset",
+		"",
+		"",
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
+	],
+	[
+		"reset",
+		"test",
+		{
+			"class": "rs-test"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"reset\">test</button></form>"
+	],
+	[
 		"submit",
 		"",
 		"",
@@ -26,20 +40,6 @@
 			"class": "rs-test"
 		},
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"submit\" value=\"submit\">test</button></form>"
-	],
-	[
-		"reset",
-		"",
-		"",
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\" value=\"reset\">Reset</button></form>"
-	],
-	[
-		"reset",
-		"test",
-		{
-			"class": "rs-test"
-		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"reset\" value=\"reset\">test</button></form>"
 	],
 	[
 		"invalid",

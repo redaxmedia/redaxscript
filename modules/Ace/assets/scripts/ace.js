@@ -34,7 +34,7 @@
 				editor = ace.edit('editor');
 
 			textarea.hide();
-			container.parent().addClass(options.className.hasAceEditor);
+			container.addClass(options.className.aceEditor).parent().addClass(options.className.hasAceEditor);
 
 			/* theme and mode */
 

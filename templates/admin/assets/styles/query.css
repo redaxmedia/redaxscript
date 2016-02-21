@@ -127,16 +127,14 @@
 		margin-left: 0.5em;
 	}
 
-	/* TODO: remove outdated styles */
-	.rs-admin-form .rs-admin-button-cancel, .rs-admin-form .rs-admin-button-delete,
-	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
+	.rs-admin-form-default .rs-admin-button-cancel,
+	.rs-admin-form-default .rs-admin-button-delete
 	{
 		float: left;
 	}
 
-	/* TODO: remove outdated styles */
-	.rs-admin-form .rs-admin-button-submit,
-	.rs-admin-form-default .rs-admin-button-submit
+	.rs-admin-form-default .rs-admin-button-save,
+	.rs-admin-form-default .rs-admin-button-create
 	{
 		float: right;
 	}

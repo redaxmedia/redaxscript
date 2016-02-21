@@ -69,32 +69,18 @@ class ModuleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => 'admin/process/modules',
+				'action' => Registry::get('rewriteRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/modules'
+				),
+				'uninstall' => array(
+					'href' => $module->alias ? Registry::get('rewriteRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/modules'
-			))
-			->text(Language::get('cancel'));
-		if ($module->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/modules/' . $module->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* documentation directory */
 
@@ -196,7 +182,7 @@ class ModuleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $module->status
+				'value' => intval($module->status)
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -211,17 +197,9 @@ class ModuleForm implements ViewInterface
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
-			->append($linkCancel);
-			if ($module->id)
-			{
-				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
-			}
-			else
-			{
-				$formElement->submit(Language::get('create'));
-			}
+			->cancel()
+			->uninstall()
+			->save();
 
 		/* collect output */
 

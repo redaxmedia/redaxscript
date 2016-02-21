@@ -120,7 +120,7 @@ a
 .rs-link-read-more:active
 {
 	-webkit-transform: translateY(2px);
-	        transform: translateY(2px);
+	transform: translateY(2px);
 }
 
 /* @section 3. title */
@@ -532,6 +532,13 @@ a
 	white-space: pre-wrap;
 }
 
+.rs-box-infoline
+{
+	font-size: 0.875em;
+	font-style: italic;
+	margin-top: 1em;
+}
+
 /* @section 2. box metadata */
 
 .rs-box-metadata
@@ -611,6 +618,7 @@ a
 {
 	border-radius: 0 0.125em 0.125em 0;
 	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	color: #fff;
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
 }
@@ -627,7 +635,8 @@ a
 
 .rs-box-note a
 {
-	color: #fff;
+	color: #323e4c;
+	text-decoration: underline;
 }
 
 /* @section 7. box comment */
@@ -747,7 +756,7 @@ a.rs-button-default
 {
 	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	-webkit-transform: translateY(2px);
-	        transform: translateY(2px);
+	transform: translateY(2px);
 }
 
 /* @section 2. button search */
@@ -855,7 +864,7 @@ a.rs-button-default
 .rs-dialog-default, .rs-dialog-overlay-default
 {
 	-webkit-animation: rs-fade 0.4s;
-	        animation: rs-fade 0.4s;
+	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }
 
@@ -919,7 +928,17 @@ a.rs-button-default
 	transition: background 0.2s, border 0.2s;
 }
 
-.rs-field-default:hover, .rs-field-select:hover, .rs-field-textarea:hover
+.rs-field-default:hover
+{
+	border-color: #000;
+}
+
+.rs-field-select:hover
+{
+	border-color: #000;
+}
+
+.rs-field-textarea:hover
 {
 	border-color: #000;
 }
@@ -1490,7 +1509,7 @@ ul.rs-list-default li:before {
 .rs-title-teaser
 {
 	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
-	        animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
@@ -1609,10 +1628,18 @@ ul.rs-list-default li:before {
 
 /* @section 1. note error */
 
-.rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
+.rs-note-error.rs-box-note
 {
 	background: #da4f49;
-	border-color: #802420;
+	border-color: rgb(148, 34, 30);
+	color: #fff;
+}
+
+.rs-note-error.rs-field-note:not(:focus)
+{
+	background: #da4f49;
+	border-color: rgb(148, 34, 30);
+	color: #fff;
 }
 
 .rs-note-error.rs-field-note option
@@ -1627,10 +1654,18 @@ ul.rs-list-default li:before {
 
 /* @section 2. note info */
 
-.rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
+.rs-note-info.rs-box-note
 {
 	background: #49afcd;
-	border-color: #1f6377;
+	border-color: rgb(30, 121, 148);
+	color: #fff;
+}
+
+.rs-note-info.rs-field-note:not(:focus)
+{
+	background: #49afcd;
+	border-color: rgb(30, 121, 148);
+	color: #fff;
 }
 
 .rs-note-info.rs-field-note option
@@ -1645,10 +1680,18 @@ ul.rs-list-default li:before {
 
 /* @section 3. note success */
 
-.rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
+.rs-note-success.rs-box-note
 {
 	background: #5bb75b;
-	border-color: #387038;
+	border-color: rgb(44, 150, 44);
+	color: #fff;
+}
+
+.rs-note-success.rs-field-note:not(:focus)
+{
+	background: #5bb75b;
+	border-color: rgb(44, 150, 44);
+	color: #fff;
 }
 
 .rs-note-success.rs-field-note option
@@ -1663,10 +1706,18 @@ ul.rs-list-default li:before {
 
 /* @section 4. note warning */
 
-.rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
+.rs-note-warning.rs-box-note
 {
 	background: #f3940e;
-	border-color: #ad6704;
+	border-color: rgb(117, 68, 0);
+	color: #fff;
+}
+
+.rs-note-warning.rs-field-note:not(:focus)
+{
+	background: #f3940e;
+	border-color: rgb(117, 68, 0);
+	color: #fff;
 }
 
 .rs-note-warning.rs-field-note option

@@ -11,10 +11,37 @@ use Redaxscript\Html\Form as BaseForm;
  * @package Redaxscript
  * @category Admin
  * @author Henry Ruhs
+ *
+ * @method create()
+ * @method delete()
+ * @method save()
+ * @method uninstall()
  */
 
 class Form extends BaseForm
 {
+	/**
+	 * languages of the form
+	 *
+	 * @var array
+	 */
+
+	protected $_languageArray = array(
+		'legend' => 'fields_required',
+		'button' => array(
+			'button' => 'ok',
+			'create' => 'create',
+			'reset' => 'reset',
+			'save' => 'save',
+			'submit' => 'submit'
+		),
+		'link' => array(
+			'cancel' => 'cancel',
+			'delete' => 'delete',
+			'uninstall' => 'uninstall'
+		)
+	);
+
 	/**
 	 * attributes of the form
 	 *
@@ -39,22 +66,6 @@ class Form extends BaseForm
 			'class' => 'rs-admin-field-textarea',
 			'cols' => 100,
 			'row' => 5
-		),
-		'button' => array(
-			'button' => array(
-				'class' => 'rs-js-button rs-admin-button-default rs-admin-button-large',
-				'type' => 'button'
-			),
-			'reset' => array(
-				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
-				'type' => 'reset',
-				'value' => 'reset'
-			),
-			'submit' => array(
-				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
-				'type' => 'submit',
-				'value' => 'submit'
-			)
 		),
 		'input' => array(
 			'checkbox' => array(
@@ -124,6 +135,45 @@ class Form extends BaseForm
 			'week' => array(
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'week'
+			)
+		),
+		'button' => array(
+			'button' => array(
+				'class' => 'rs-js-button rs-admin-button-default rs-admin-button-large',
+				'type' => 'button'
+			),
+			'reset' => array(
+				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
+				'type' => 'reset'
+			),
+			'submit' => array(
+				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
+				'type' => 'submit',
+				'value' => 'submit'
+			),
+			'save' => array(
+				'class' => 'rs-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
+				'name' => 'edit',
+				'type' => 'submit',
+				'value' => 'save'
+			),
+			'create' => array(
+				'class' => 'rs-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large',
+				'name' => 'new',
+				'type' => 'submit',
+				'value' => 'create'
+			)
+		),
+		'link' => array(
+			'cancel' => array(
+				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
+				'href' => 'javascript:history.back()'
+			),
+			'delete' => array(
+				'class' => 'rs-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
+			),
+			'uninstall' => array(
+				'class' => 'rs-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
 			)
 		)
 	);

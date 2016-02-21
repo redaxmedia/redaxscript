@@ -67,32 +67,18 @@ class GroupForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => $group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups',
+				'action' => Registry::get('rewriteRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
 			),
-			'button' => array(
-				'submit' => array(
-					'name' => Registry::get('adminParameter')
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin/view/groups'
+				),
+				'delete' => array(
+					'href' => $group->id ? Registry::get('rewriteRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
-		$linkCancel = new Html\Element();
-		$linkCancel
-			->init('a', array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
-				'href' => 'admin/view/groups'
-			))
-			->text(Language::get('cancel'));
-		if ($group->id)
-		{
-			$linkDelete = new Html\Element();
-			$linkDelete
-				->init('a', array(
-					'class' => 'rs-js-delete rs-js-confirm rs-admin-button-default rs-admin-button-delete rs-admin-button-large',
-					'href' => 'admin/delete/groups/' . $group->id . '/' . Registry::get('token')
-				))
-				->text(Language::get('delete'));
-		}
 
 		/* collect item output */
 
@@ -105,20 +91,23 @@ class GroupForm implements ViewInterface
 				->attr('href', $tabRoute . '#tab-1')
 				->text(Language::get('group'))
 			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
+		if (!$group->id || $group->id > 1)
+		{
+			$outputItem .= $itemElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('access'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-2')
+					->text(Language::get('access'))
+				);
+			$outputItem .= $itemElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text(Language::get('customize'))
-			);
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-3')
+					->text(Language::get('customize'))
+				);
+		}
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -160,10 +149,13 @@ class GroupForm implements ViewInterface
 				'name' => 'description',
 				'value' => $group->description
 			))
-			->append('</li></ul></fieldset>')
+			->append('</li></ul></fieldset>');
 
 			/* second tab */
 
+		if (!$group->id || $group->id > 1)
+		{
+			$formElement
 			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('categories'), array(
 				'for' => 'categories'
@@ -250,7 +242,7 @@ class GroupForm implements ViewInterface
 				'name' => 'settings',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('settings')),
-				'value' => $group->settings
+				'value' => intval($group->settings)
 			))
 			->append('</li></ul></fieldset>')
 
@@ -263,7 +255,7 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'filter',
 				'name' => 'filter',
-				'value' => $group->filter
+				'value' => intval($group->filter)
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -272,21 +264,26 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => $group->status
+				'value' => intval($group->status)
 			))
-			->append('</li></ul></fieldset></div>')
+			->append('</li></ul></fieldset>');
+		}
+		$formElement
+			->append('</div>')
 			->token()
-			->append($linkCancel);
-			if ($group->id)
-			{
-				$formElement
-					->append($linkDelete)
-					->submit(Language::get('save'));
-			}
-			else
-			{
-				$formElement->submit(Language::get('create'));
-			}
+			->cancel();
+		if ($group->id > 1)
+		{
+			$formElement->delete();
+		}
+		if ($group->id)
+		{
+			$formElement->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

@@ -45,7 +45,7 @@ class Config extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
 	public static function get($key = null)

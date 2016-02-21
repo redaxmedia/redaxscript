@@ -332,7 +332,8 @@ module.exports = function (grunt)
 					require('postcss-nested'),
 					require('autoprefixer')(
 					{
-						browsers: 'last 2 versions'
+						browsers: 'last 2 versions',
+						cascade: false
 					})
 				]
 			}
@@ -528,6 +529,18 @@ module.exports = function (grunt)
 		},
 		watch:
 		{
+			build:
+			{
+				files:
+				[
+					'assets/styles/*.css',
+					'templates/**/assets/styles/typo.css'
+				],
+				tasks:
+				[
+					'build'
+				]
+			},
 			phpunit:
 			{
 				files:

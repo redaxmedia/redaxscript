@@ -150,7 +150,7 @@ class Option
 		$contentArray[Language::get('select')] = 'select';
 		foreach ($content as $value)
 		{
-			$contentArray[$value->title . ' (' . $value->id . ')'] = $value->id;
+			$contentArray[$value->title . ' (' . $value->id . ')'] = intval($value->id);
 		}
 		return $contentArray;
 	}
@@ -174,7 +174,7 @@ class Option
 		$accessArray[Language::get('all')] = 'select';
 		foreach ($access as $value)
 		{
-			$accessArray[$value->name] = $value->id;
+			$accessArray[$value->name] = intval($value->id);
 		}
 		return $accessArray;
 	}

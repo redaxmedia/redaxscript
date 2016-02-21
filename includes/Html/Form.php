@@ -18,6 +18,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  *
  * @method button()
+ * @method cancel()
  * @method checkbox()
  * @method color()
  * @method date()
@@ -66,7 +67,7 @@ class Form extends HtmlAbstract
 	protected $_captcha;
 
 	/**
-	 * language of the form
+	 * languages of the form
 	 *
 	 * @var array
 	 */
@@ -75,8 +76,11 @@ class Form extends HtmlAbstract
 		'legend' => 'fields_required',
 		'button' => array(
 			'button' => 'ok',
-			'submit' => 'submit',
-			'reset' => 'reset'
+			'reset' => 'reset',
+			'submit' => 'submit'
+		),
+		'link' => array(
+			'cancel' => 'cancel'
 		)
 	);
 
@@ -104,22 +108,6 @@ class Form extends HtmlAbstract
 			'class' => 'rs-field-textarea',
 			'cols' => 100,
 			'row' => 5
-		),
-		'button' => array(
-			'button' => array(
-				'class' => 'rs-js-button rs-button-default',
-				'type' => 'button'
-			),
-			'reset' => array(
-				'class' => 'rs-js-reset rs-button-default rs-button-reset',
-				'type' => 'reset',
-				'value' => 'reset'
-			),
-			'submit' => array(
-				'class' => 'rs-js-button rs-button-default rs-button-submit',
-				'type' => 'submit',
-				'value' => 'submit'
-			)
 		),
 		'input' => array(
 			'checkbox' => array(
@@ -190,6 +178,27 @@ class Form extends HtmlAbstract
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'week'
 			)
+		),
+		'button' => array(
+			'button' => array(
+				'class' => 'rs-js-button rs-button-default',
+				'type' => 'button'
+			),
+			'reset' => array(
+				'class' => 'rs-js-reset rs-button-default rs-button-reset',
+				'type' => 'reset'
+			),
+			'submit' => array(
+				'class' => 'rs-js-button rs-button-default rs-button-submit',
+				'type' => 'submit',
+				'value' => 'submit'
+			)
+		),
+		'link' => array(
+			'cancel' => array(
+				'class' => 'rs-js-cancel rs-button-default rs-button-cancel',
+				'href' => 'javascript:history.back()'
+			)
 		)
 	);
 
@@ -231,6 +240,13 @@ class Form extends HtmlAbstract
 
 	public function __call($method = null, $arguments = array())
 	{
+		/* input */
+
+		if (array_key_exists($method, $this->_attributeArray['input']))
+		{
+			return $this->_createInput($method, $arguments[0]);
+		}
+
 		/* button */
 
 		if (array_key_exists($method, $this->_attributeArray['button']))
@@ -238,11 +254,11 @@ class Form extends HtmlAbstract
 			return $this->_createButton($method, $arguments[0], $arguments[1]);
 		}
 
-		/* input */
+		/* link */
 
-		if (array_key_exists($method, $this->_attributeArray['input']))
+		if (array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->_createInput($method, $arguments[0]);
+			return $this->_createLink($method, $arguments[0], $arguments[1]);
 		}
 	}
 
@@ -516,36 +532,6 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * create the button
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $type type of the button
-	 * @param string $text text of the button
-	 * @param array $attributeArray attributes of the button
-	 *
-	 * @return Form
-	 */
-
-	protected function _createButton($type = null, $text = null, $attributeArray = array())
-	{
-		if (is_array($attributeArray))
-		{
-			$attributeArray = array_merge($this->_attributeArray['button'][$type], $attributeArray);
-		}
-		else
-		{
-			$attributeArray = $this->_attributeArray['button'][$type];
-		}
-		$buttonElement = new Element();
-		$buttonElement
-			->init('button', $attributeArray)
-			->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
-		$this->append($buttonElement);
-		return $this;
-	}
-
-	/**
 	 * create the input
 	 *
 	 * @since 2.6.0
@@ -576,10 +562,10 @@ class Form extends HtmlAbstract
 	/**
 	 * create the option
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
 	 * @param array $optionArray options of the select
-	 * @param string $selected option to be selected
+	 * @param mixed $selected option to be selected
 	 *
 	 * @return string
 	 */
@@ -590,6 +576,13 @@ class Form extends HtmlAbstract
 		$optionElement = new Element();
 		$optionElement->init('option');
 
+		/* handle selected */
+
+		if (is_string($selected))
+		{
+			$selected = explode(', ', $selected);
+		}
+
 		/* process option */
 
 		foreach ($optionArray as $key => $value)
@@ -599,12 +592,72 @@ class Form extends HtmlAbstract
 				$output .= $optionElement
 					->copy()
 					->attr(array(
-						'selected' => $value === $selected ? 'selected' : null,
+						'selected' => $value === $selected || in_array($value, $selected) ? 'selected' : null,
 						'value' => $value
 					))
 					->text(is_string($key) ? $key : $value);
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * create the button
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $type type of the button
+	 * @param string $text text of the button
+	 * @param array $attributeArray attributes of the button
+	 *
+	 * @return Form
+	 */
+
+	protected function _createButton($type = null, $text = null, $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['button'][$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['button'][$type];
+		}
+		$buttonElement = new Element();
+		$buttonElement
+			->init('button', $attributeArray)
+			->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
+		$this->append($buttonElement);
+		return $this;
+	}
+
+	/**
+	 * create the link
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the link
+	 * @param string $text text of the link
+	 * @param array $attributeArray attributes of the link
+	 *
+	 * @return Form
+	 */
+
+	protected function _createLink($type = null, $text = null, $attributeArray = array())
+	{
+		if (is_array($attributeArray))
+		{
+			$attributeArray = array_merge($this->_attributeArray['link'][$type], $attributeArray);
+		}
+		else
+		{
+			$attributeArray = $this->_attributeArray['link'][$type];
+		}
+		$linkElement = new Element();
+		$linkElement
+			->init('a', $attributeArray)
+			->text($text ? $text : $this->_language->get($this->_languageArray['link'][$type]));
+		$this->append($linkElement);
+		return $this;
 	}
 }
