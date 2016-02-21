@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	status int(1) DEFAULT 1,
 	groups varchar(255) DEFAULT NULL,
 	first datetime DEFAULT NULL,
-    last datetime DEFAULT NULL
+	last datetime DEFAULT NULL
 );

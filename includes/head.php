@@ -102,9 +102,8 @@ function head($type = '')
 	}
 	else if (CONTENT_ERROR || LAST_PARAMETER && $check_access == 0)
 	{
-		$robots = 'none';
+		$robots = 0;
 	}
-	//TODO add check for robots of current category and article
 	else
 	{
 		$robots = s('robots');
@@ -156,7 +155,7 @@ function head($type = '')
 		if ($keywords) {
 			$output .= '<meta name="keywords" content="' . $keywords . '" />' . PHP_EOL;
 		}
-		$output .= '<meta name="robots" content="' . $robots . '" />' . PHP_EOL;
+		$output .= '<meta name="robots" content="' . $robots ? 'all' : 'none' . '" />' . PHP_EOL;
 	}
 
 	/* collect link */
