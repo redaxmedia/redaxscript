@@ -244,16 +244,20 @@ class Mailer
 	 * send the email
 	 *
 	 * @since 2.6.2
+	 *
+	 * @return boolean
 	 */
 
 	public function send()
 	{
+		$output = false;
 		if (function_exists('mail'))
 		{
 			foreach ($this->_toArray as $to)
 			{
-				mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				$output = mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
 			}
 		}
+		return $output;
 	}
 }

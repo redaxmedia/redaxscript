@@ -361,7 +361,6 @@ function admin_process()
 
 		$messenger->setAction(Language::get('back'), $route);
 		echo $messenger->error($error, Language::get('error_occurred'));
-
 		return;
 	}
 
