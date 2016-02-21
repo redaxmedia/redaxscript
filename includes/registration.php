@@ -128,7 +128,6 @@ function registration_post()
 	{
 		$messenger->setAction(Language::get('back'), 'registration');
 		echo $messenger->error($error, Language::get('error_occurred'));
-		echo $messenger->redirect();
 	}
 
 	/* handle success */

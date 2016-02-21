@@ -396,7 +396,6 @@ function comment_post()
 	{
 		$messenger->setAction(Language::get('back'), $route);
 		echo $messenger->error($error, Language::get('error_occurred'));
-		echo $messenger->redirect();
 	}
 
 	/* handle success */

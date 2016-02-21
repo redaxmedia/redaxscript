@@ -28,9 +28,10 @@ function router()
 
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
+		/* show error */
+
 		$messenger->setAction(Language::get('home'), ROOT);
 		echo $messenger->error(Language::get('token_incorrect'), Language::get('error_occurred'));
-		echo $messenger->redirect();
 		return;
 	}
 
@@ -69,9 +70,10 @@ function router()
 			}
 			else
 			{
+				/* show error */
+
 				$messenger->setAction(Language::get('login'), 'login');
 				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
-				echo $messenger->redirect();
 			}
 			return;
 		case 'login':
@@ -91,9 +93,12 @@ function router()
 					echo $resetForm;
 					return;
 				}
+
+				/* show error */
+
 				$messenger->setAction(Language::get('login'), 'login');
 				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
-				echo $messenger->redirect();
+
 				return;
 			default:
 				$loginForm = new Redaxscript\View\LoginForm();
@@ -106,9 +111,12 @@ function router()
 				logout();
 				return;
 			}
+
+			/* show error */
+
 			$messenger->setAction(Language::get('login'), 'login');
 			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
-			echo $messenger->redirect();
+
 			return;
 		case 'register':
 			if (s('registration'))
@@ -117,9 +125,12 @@ function router()
 				echo $registerForm;
 				return;
 			}
+
+			/* show error */
+
 			$messenger->setAction(Language::get('home'), ROOT);
 			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
-			echo $messenger->redirect();
+
 			return;
 		default:
 			contents();

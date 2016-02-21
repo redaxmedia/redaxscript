@@ -216,7 +216,7 @@ function logout()
 {
 	session_destroy();
 
-	/* messenger */
+	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
 	$messenger->setAction(Language::get('continue'), 'login');

@@ -95,7 +95,6 @@ function reminder_post()
 	{
 		$messenger->setAction(Language::get('back'), 'recovery');
 		echo $messenger->error($error, Language::get('error_occurred'));
-		echo $messenger->redirect();
 	}
 
 	/* handle success */
