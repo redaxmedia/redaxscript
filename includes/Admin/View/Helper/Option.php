@@ -171,7 +171,6 @@ class Option
 
 		/* process access */
 
-		$accessArray[Language::get('all')] = 'select';
 		foreach ($access as $value)
 		{
 			$accessArray[$value->name] = intval($value->id);
