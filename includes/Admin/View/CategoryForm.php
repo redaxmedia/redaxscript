@@ -209,7 +209,7 @@ class CategoryForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => intval($category->status)
+				'value' => $category->id ? intval($category->status) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('rank'), array(
@@ -218,7 +218,7 @@ class CategoryForm implements ViewInterface
 			->number(array(
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => intval($category->rank)
+				'value' => $category->id ? intval($category->rank) : Db::forTablePrefix('categories')->max('rank') + 1
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -238,7 +238,7 @@ class CategoryForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => date('Y-m-d\TH:i:s', strtotime($category->date))
+				'value' => $category->date ? $category->date : null
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

@@ -200,7 +200,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
 				'name' => 'headline',
-				'value' => intval($extra->headline)
+				'value' => $extra->id ? intval($extra->headline) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -209,7 +209,7 @@ class ExtraForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => intval($extra->status)
+				'value' => $extra->id ? intval($extra->status) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('rank'), array(
@@ -218,7 +218,7 @@ class ExtraForm implements ViewInterface
 			->number(array(
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => intval($extra->rank)
+				'value' => $extra->id ? intval($extra->rank) : Db::forTablePrefix('extras')->max('rank') + 1
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -238,7 +238,7 @@ class ExtraForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => date('Y-m-d\TH:i:s', strtotime($extra->date))
+				'value' => $extra->date ? $extra->date : null
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

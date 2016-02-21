@@ -255,7 +255,7 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'filter',
 				'name' => 'filter',
-				'value' => intval($group->filter)
+				'value' => $group->id ? $group->filter : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('status'), array(
@@ -264,7 +264,7 @@ class GroupForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => intval($group->status)
+				'value' => $group->id ? intval($group->status) : 1
 			))
 			->append('</li></ul></fieldset>');
 		}

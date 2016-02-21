@@ -212,7 +212,7 @@ class UserForm implements ViewInterface
 				->select(Helper\Option::getToggleArray(), array(
 					'id' => 'status',
 					'name' => 'status',
-					'value' => intval($user->status)
+					'value' => $user->id ? intval($user->status) : 1
 				))
 				->append('</li><li>')
 				->label(Language::get('groups'), array(

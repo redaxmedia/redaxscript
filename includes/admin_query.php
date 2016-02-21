@@ -1,5 +1,6 @@
 <?php
 use Redaxscript\Language;
+use Redaxscript\Messenger;
 
 /**
  * admin process
@@ -17,7 +18,7 @@ function admin_process()
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$specialFilter = new Redaxscript\Filter\Special;
-	$messenger = new \Redaxscript\Messenger();
+	$messenger = new Messenger();
 
 	/* clean post */
 
@@ -55,8 +56,7 @@ function admin_process()
 			if (TABLE_PARAMETER != 'categories')
 			{
 				$text = $r['text'] = clean($_POST['text'], 1);
-				$date = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'] . ' ' . $_POST['hour'] . ':' . $_POST['minute'] . ':00';
-				$date = $r['date'] = clean($date, 5);
+				$date = $r['date'] = clean($_POST['date'], 5);
 			}
 			$rank = $r['rank'] = clean($_POST['rank'], 0);
 

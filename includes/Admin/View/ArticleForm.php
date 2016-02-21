@@ -220,7 +220,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'headline',
 				'name' => 'headline',
-				'value' => intval($article->headline)
+				'value' => $article->id ? intval($article->headline) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('infoline'), array(
@@ -229,7 +229,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'infoline',
 				'name' => 'infoline',
-				'value' => intval($article->infoline)
+				'value' => $article->id ? intval($article->infoline) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('comments'), array(
@@ -247,7 +247,7 @@ class ArticleForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => intval($article->status)
+				'value' => $article->id ? intval($article->status) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('rank'), array(
@@ -256,7 +256,7 @@ class ArticleForm implements ViewInterface
 			->number(array(
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => intval($article->rank)
+				'value' => $article->id ? intval($article->rank) : Db::forTablePrefix('articles')->max('rank') + 1
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -276,7 +276,7 @@ class ArticleForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => date('Y-m-d\TH:i:s', strtotime($article->date))
+				'value' => $article->date ? $article->date : null
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()

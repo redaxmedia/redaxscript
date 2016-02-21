@@ -200,7 +200,7 @@ class Messenger
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => $this->_actionArray['route'],
+				'href' => Registry::get('rewriteRoute') . $this->_actionArray['route'],
 				'class' => $this->_options['className']['link']
 			))
 			->text($this->_actionArray['text']);

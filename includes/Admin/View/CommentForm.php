@@ -189,7 +189,7 @@ class CommentForm implements ViewInterface
 			->select(Helper\Option::getVisibleArray(), array(
 				'id' => 'status',
 				'name' => 'status',
-				'value' => intval($comment->status)
+				'value' => $comment->id ? intval($comment->status) : 1
 			))
 			->append('</li><li>')
 			->label(Language::get('rank'), array(
@@ -198,7 +198,7 @@ class CommentForm implements ViewInterface
 			->number(array(
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => intval($comment->rank)
+				'value' => $comment->id ? intval($comment->rank) : Db::forTablePrefix('comments')->max('rank') + 1
 			))
 			->append('</li><li>')
 			->label(Language::get('access'), array(
@@ -218,7 +218,7 @@ class CommentForm implements ViewInterface
 			->datetime(array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => date('Y-m-d\TH:i:s', strtotime($comment->date))
+				'value' => $comment->date ? $comment->date : null
 			))
 			->append('</li></ul></fieldset></div>')
 			->token()
