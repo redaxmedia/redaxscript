@@ -49,7 +49,6 @@
 			},
 			"access":
 			{
-				"All": "select",
 				"Administrators": 1,
 				"Members": 2
 			}

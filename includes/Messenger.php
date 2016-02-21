@@ -30,15 +30,17 @@ class Messenger
 
 	protected $_options = array(
 		'className' => array(
+			'box' => 'rs-box-messenger rs-box-note',
+			'title' => 'rs-title-messenger rs-title-note',
 			'list' => 'rs-list-messenger',
 			'link' => 'rs-button-messenger',
 			'redirect' => 'rs-redirect-overlay',
-			'note' => 'rs-title-note ',
-			'box' => 'rs-box-note ',
-			'success' => 'rs-note-success',
-			'warning' => 'rs-note-warning',
-			'error' => 'rs-note-error',
-			'info' => 'rs-note-info'
+			'notes' => array(
+				'success' => 'rs-note-success',
+				'warning' => 'rs-note-warning',
+				'error' => 'rs-note-error',
+				'info' => 'rs-note-info'
+			)
 		)
 	);
 
@@ -62,7 +64,7 @@ class Messenger
 	 *
 	 * @param array $options options of the messenger
 	 *
-	 * @return string $this
+	 * @return Messenger
 	 */
 
 	public function init($options = array())
@@ -71,7 +73,6 @@ class Messenger
 		{
 			$this->_options = array_merge($this->_options, $options);
 		}
-
 		return $this;
 	}
 
@@ -84,7 +85,7 @@ class Messenger
 	 * @param string $text text of the action
 	 * @param string $route route of the action
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function setAction($text = null, $route = null)
@@ -96,7 +97,6 @@ class Messenger
 				'route' => $route
 			);
 		}
-
 		return $this;
 	}
 
@@ -108,7 +108,7 @@ class Messenger
 	 * @param mixed $message message of the success
 	 * @param string $title title of the success
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function success($message = null, $title = null)
@@ -187,15 +187,14 @@ class Messenger
 		{
 			$titleElement = new Html\Element();
 			$titleElement->init('h2', array(
-				'class' =>
-					$this->_options['className']['note'] . $this->_options['className'][$type]
+				'class' => $this->_options['className']['title'] . ' ' . $this->_options['className']['notes'][$type]
 			))
-				->text($title);
+			->text($title);
 			$output .= $titleElement->render();
 		}
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'class' => $this->_options['className']['box'] . $this->_options['className'][$type]
+			'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
 		));
 		if ($this->_actionArray)
 		{
@@ -204,7 +203,7 @@ class Messenger
 				'href' => $this->_actionArray['route'],
 				'class' => $this->_options['className']['link']
 			))
-				->text($this->_actionArray['text']);
+			->text($this->_actionArray['text']);
 		}
 
 		/* build a list */
@@ -249,7 +248,7 @@ class Messenger
 	 * @param string $route route of the redirect
 	 * @param integer $timeout timeout of the redirect
 	 *
-	 * @return string $redirect
+	 * @return string
 	 */
 
 	public function redirect($route = null, $timeout = 2)

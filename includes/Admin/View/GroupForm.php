@@ -162,7 +162,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'categories',
-				'name' => 'categories',
+				'name' => 'categories[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->categories
@@ -173,7 +173,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'articles',
-				'name' => 'articles',
+				'name' => 'articles[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->articles
@@ -184,7 +184,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'extras',
-				'name' => 'extras',
+				'name' => 'extras[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->extras
@@ -195,7 +195,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'comments',
-				'name' => 'comments',
+				'name' => 'comments[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->comments
@@ -206,7 +206,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'groups',
-				'name' => 'groups',
+				'name' => 'groups[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->groups
@@ -217,7 +217,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray(), array(
 				'id' => 'users',
-				'name' => 'users',
+				'name' => 'users[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->users
@@ -228,7 +228,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray('modules'), array(
 				'id' => 'modules',
-				'name' => 'modules',
+				'name' => 'modules[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('modules')),
 				'value' => $group->modules
@@ -239,7 +239,7 @@ class GroupForm implements ViewInterface
 			))
 			->select(Helper\Option::getPermissionArray('settings'), array(
 				'id' => 'settings',
-				'name' => 'settings',
+				'name' => 'settings[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('settings')),
 				'value' => intval($group->settings)

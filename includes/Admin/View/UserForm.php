@@ -220,7 +220,7 @@ class UserForm implements ViewInterface
 				))
 				->select(Helper\Option::getAccessArray('groups'), array(
 					'id' => 'groups',
-					'name' => 'groups',
+					'name' => 'groups[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
 					'value' => $user->access

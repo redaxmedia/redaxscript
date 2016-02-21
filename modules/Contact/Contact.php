@@ -263,6 +263,5 @@ class Contact extends Module
 		$messenger = new Messenger();
 		$messenger->setAction(Language::get('home'), Registry::get('root'));
 		echo $messenger->error($errorData, Language::get('error_occurred'));
-		echo $messenger->redirect();
 	}
 }

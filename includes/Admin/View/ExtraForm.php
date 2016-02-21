@@ -226,7 +226,7 @@ class ExtraForm implements ViewInterface
 			))
 			->select(Helper\Option::getAccessArray('groups'), array(
 				'id' => 'access',
-				'name' => 'access',
+				'name' => 'access[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getAccessArray('groups')),
 				'value' => $extra->access
