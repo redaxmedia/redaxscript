@@ -38,7 +38,7 @@ function admin_router()
 		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
 		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
 		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
-		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefi1x(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
+		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
 
 			/* show error */
 
