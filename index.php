@@ -42,13 +42,10 @@ if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 if ($registry->get('loggedIn') === $registry->get('token'))
 {
 	include_once('includes/admin_admin.php');
-	include_once('includes/admin_contents.php');
-	include_once('includes/admin_groups.php');
-	include_once('includes/admin_modules.php');
+	include_once('includes/admin_list.php');
 	include_once('includes/admin_query.php');
 	include_once('includes/admin_router.php');
 	include_once('includes/admin_settings.php');
-	include_once('includes/admin_users.php');
 }
 
 /* trigger init */

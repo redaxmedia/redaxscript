@@ -159,6 +159,15 @@ class ArticleForm implements ViewInterface
 				'value' => $article->keywords
 			))
 			->append('</li><li>')
+			->label(Language::get('robots'), array(
+				'for' => 'robots'
+			))
+			->select(Helper\Option::getRobotArray(), array(
+				'id' => 'robots',
+				'name' => 'robots',
+				'value' => $article->id ? intval($article->robots) : 1
+			))
+			->append('</li><li>')
 			->label(Language::get('text'), array(
 				'for' => 'text'
 			))

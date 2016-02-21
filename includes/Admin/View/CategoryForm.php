@@ -158,6 +158,15 @@ class CategoryForm implements ViewInterface
 				'name' => 'keywords',
 				'value' => $category->keywords
 			))
+			->append('</li><li>')
+			->label(Language::get('robots'), array(
+				'for' => 'robots'
+			))
+			->select(Helper\Option::getRobotArray(), array(
+				'id' => 'robots',
+				'name' => 'robots',
+				'value' => $category->id ? intval($category->robots) : 1
+			))
 			->append('</li></ul></fieldset>')
 
 			/* second tab */

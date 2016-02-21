@@ -45,6 +45,22 @@ class Option
 		$statusArray[Language::get('publish')] = 1;
 		$statusArray[Language::get('unpublish')] = 0;
 		return $statusArray;
+
+	}
+
+	/**
+	 * get the robot array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function getRobotArray()
+	{
+		$statusArray[Language::get('index')] = 1;
+		$statusArray[Language::get('index_no')] = 0;
+		return $statusArray;
 	}
 
 	/**

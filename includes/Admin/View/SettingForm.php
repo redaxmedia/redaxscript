@@ -45,7 +45,156 @@ class SettingForm implements ViewInterface
 	public function render()
 	{
 		$output = Hook::trigger('adminSettingFormStart');
-		$output .= '<h2 class="rs-admin-title-content">Settings</h2><form></form>';
+
+		/* html elements */
+
+		$titleElement = new Html\Element();
+		$titleElement->init('h2', array(
+			'class' => 'rs-admin-title-content',
+		));
+		$titleElement->text(Language::get('settings'));
+		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement->init(array(
+			'form' => array(
+				'action' => Registry::get('rewriteRoute') . 'admin/update/settings',
+				'class' => 'rs-js-validate-form rs-js-accordion rs-admin-form-default'
+			),
+			'link' => array(
+				'cancel' => array(
+					'href' => Registry::get('rewriteRoute') . 'admin'
+				)
+			)
+		));
+
+		/* create the form */
+
+		$formElement
+
+			/* general set */
+
+			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-admin-set-accordion rs-set-active">')
+			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-admin-title-accordion rs-admin-title-active">' . Language::get('general') . '</legend>')
+			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-admin-box-accordion rs-box-active"><li>')
+			->label(Language::get('language'), array(
+				'for' => 'language'
+			))
+			->select(Helper\Option::getLanguageArray(), array(
+				'id' => 'language',
+				'name' => 'language',
+				'value' => Db::getSettings('language')
+			))
+			->append('</li><li>')
+			->label(Language::get('template'), array(
+				'for' => 'template'
+			))
+			->select(Helper\Option::getTemplateArray(), array(
+				'id' => 'template',
+				'name' => 'template',
+				'value' => Db::getSettings('template')
+			))
+			->append('</li></ul></fieldset>')
+
+			/* metadata set */
+
+			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('metadata') . '</legend>')
+			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->label(Language::get('title'), array(
+				'for' => 'title'
+			))
+			->text(array(
+				'id' => 'title',
+				'name' => 'title',
+				'value' => Db::getSettings('title')
+			))
+			->append('</li><li>')
+			->label(Language::get('author'), array(
+				'for' => 'author'
+			))
+			->text(array(
+				'id' => 'author',
+				'name' => 'author',
+				'value' => Db::getSettings('author')
+			))
+			->append('</li><li>')
+			->label(Language::get('copyright'), array(
+				'for' => 'copyright'
+			))
+			->text(array(
+				'id' => 'copyright',
+				'name' => 'copyright',
+				'value' => Db::getSettings('copyright')
+			))
+			->append('</li><li>')
+			->label(Language::get('description'), array(
+				'for' => 'description'
+			))
+			->textarea(array(
+				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'id' => 'description',
+				'name' => 'description',
+				'value' => Db::getSettings('description')
+			))
+			->append('</li><li>')
+			->label(Language::get('keywords'), array(
+				'for' => 'keywords'
+			))
+			->textarea(array(
+				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'id' => 'keywords',
+				'name' => 'keywords',
+				'value' => Db::getSettings('keywords')
+			))
+			->append('</li><li>')
+			->label(Language::get('robots'), array(
+				'for' => 'robots'
+			))
+			->select(Helper\Option::getRobotArray(), array(
+				'id' => 'robots',
+				'name' => 'robots',
+				'value' => Db::getSettings('robots')
+			))
+			->append('</li></ul></fieldset>')
+
+			/* contact set */
+
+			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('contact') . '</legend>')
+			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->label( Language::get('email'), array(
+				'for' => 'email'
+			))
+			->email(array(
+				'id' => 'email',
+				'name' => 'email',
+				'value' => Db::getSettings('email')
+			))
+			->append('</li><li>')
+			->label( Language::get('subject'), array(
+				'for' => 'subject'
+			))
+			->text(array(
+				'id' => 'subject',
+				'name' => 'subject',
+				'value' => Db::getSettings('subject')
+			))
+			->append('</li><li>')
+			->label( Language::get('notification'), array(
+				'for' => 'notification'
+			))
+			->select(Helper\Option::getToggleArray(), array(
+				'id' => 'notification',
+				'name' => 'notification',
+				'value' => Db::getSettings('notification')
+			))
+			->append('</li></ul></fieldset>')
+			->token()
+			->cancel()
+			->save();
+
+		/* collect output */
+
+		$output .= $titleElement . $formElement;
 		$output .= Hook::trigger('adminSettingFormEnd');
 		return $output;
 	}

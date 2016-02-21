@@ -157,14 +157,6 @@ function admin_router()
 				$userForm = new Redaxscript\Admin\View\UserForm();
 				echo $userForm;
 			}
-			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
-			{
-				admin_contents_form();
-			}
-			if (in_array(TABLE_PARAMETER, array('groups', 'users')))
-			{
-				call_user_func('admin_' . TABLE_PARAMETER . '_form');
-			}
 			return;
 		case 'view':
 			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
@@ -216,14 +208,7 @@ function admin_router()
 			{
 				$settingForm = new Redaxscript\Admin\View\SettingForm();
 				echo $settingForm->render(ID_PARAMETER);
-			}
-			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
-			{
-				admin_contents_form();
-			}
-			if (in_array(TABLE_PARAMETER, array('groups', 'users', 'modules', 'settings')))
-			{
-				call_user_func('admin_' . TABLE_PARAMETER . '_form');
+				admin_settings_form();
 			}
 			return;
 		case 'up':

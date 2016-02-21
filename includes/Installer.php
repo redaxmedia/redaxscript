@@ -106,6 +106,7 @@ class Installer
 				'title' => 'Welcome',
 				'alias' => 'welcome',
 				'author' => $options['adminUser'],
+				'robots' => 1,
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
 				'rank' => 1
@@ -119,6 +120,7 @@ class Installer
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $options['adminUser'],
+				'robots' => 1,
 				'rank' => 1
 			))->save();
 
@@ -220,7 +222,7 @@ class Installer
 			'copyright' => null,
 			'description' => $language->get('description', '_package'),
 			'keywords' => null,
-			'robots' => 'all',
+			'robots' => 1,
 			'email' => $options['adminEmail'],
 			'subject' => $language->get('name', '_package'),
 			'notification' => 0,

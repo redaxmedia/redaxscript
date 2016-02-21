@@ -104,6 +104,7 @@ function head($type = '')
 	{
 		$robots = 'none';
 	}
+	//TODO add check for robots of current category and article
 	else
 	{
 		$robots = s('robots');

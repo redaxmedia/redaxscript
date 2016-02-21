@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	email varchar(255) DEFAULT NULL,
 	description varchar(255) DEFAULT NULL,
 	language char(3) DEFAULT NULL,
-	first timestamp with time zone DEFAULT NULL,
-	last timestamp with time zone DEFAULT NULL,
 	status integer DEFAULT 1,
-	groups varchar(255) DEFAULT NULL
+	groups varchar(255) DEFAULT NULL,
+	first timestamp with time zone DEFAULT NULL,
+	last timestamp with time zone DEFAULT NULL
 );
