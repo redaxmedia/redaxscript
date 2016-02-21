@@ -212,6 +212,15 @@ class ExtraForm implements ViewInterface
 				'value' => intval($extra->status)
 			))
 			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($extra->rank)
+			))
+			->append('</li><li>')
 			->label(Language::get('access'), array(
 				'for' => 'access'
 			))
@@ -234,16 +243,16 @@ class ExtraForm implements ViewInterface
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();
-			if ($extra->id)
-			{
-				$formElement
-					->delete()
-					->save();
-			}
-			else
-			{
-				$formElement->create();
-			}
+		if ($extra->id)
+		{
+			$formElement
+				->delete()
+				->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

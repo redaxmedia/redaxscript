@@ -192,6 +192,15 @@ class CommentForm implements ViewInterface
 				'value' => intval($comment->status)
 			))
 			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($comment->rank)
+			))
+			->append('</li><li>')
 			->label(Language::get('access'), array(
 				'for' => 'access'
 			))

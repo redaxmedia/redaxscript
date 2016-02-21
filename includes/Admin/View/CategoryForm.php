@@ -212,6 +212,15 @@ class CategoryForm implements ViewInterface
 				'value' => intval($category->status)
 			))
 			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($category->rank)
+			))
+			->append('</li><li>')
 			->label(Language::get('access'), array(
 				'for' => 'access'
 			))
@@ -234,16 +243,16 @@ class CategoryForm implements ViewInterface
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();
-			if ($category->id)
-			{
-				$formElement
-					->delete()
-					->save();
-			}
-			else
-			{
-				$formElement->create();
-			}
+		if ($category->id)
+		{
+			$formElement
+				->delete()
+				->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

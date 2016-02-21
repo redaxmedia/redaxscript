@@ -91,20 +91,23 @@ class GroupForm implements ViewInterface
 				->attr('href', $tabRoute . '#tab-1')
 				->text(Language::get('group'))
 			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
+		if (!$group->id || $group->id > 1)
+		{
+			$outputItem .= $itemElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('access'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-2')
+					->text(Language::get('access'))
+				);
+			$outputItem .= $itemElement
 				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text(Language::get('customize'))
-			);
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-3')
+					->text(Language::get('customize'))
+				);
+		}
 		$listElement->append($outputItem);
 
 		/* create the form */
@@ -146,10 +149,13 @@ class GroupForm implements ViewInterface
 				'name' => 'description',
 				'value' => $group->description
 			))
-			->append('</li></ul></fieldset>')
+			->append('</li></ul></fieldset>');
 
 			/* second tab */
 
+		if (!$group->id || $group->id > 1)
+		{
+			$formElement
 			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('categories'), array(
 				'for' => 'categories'
@@ -260,19 +266,24 @@ class GroupForm implements ViewInterface
 				'name' => 'status',
 				'value' => intval($group->status)
 			))
-			->append('</li></ul></fieldset></div>')
+			->append('</li></ul></fieldset>');
+		}
+		$formElement
+			->append('</div>')
 			->token()
 			->cancel();
-			if ($group->id)
-			{
-				$formElement
-					->delete()
-					->save();
-			}
-			else
-			{
-				$formElement->create();
-			}
+		if ($group->id > 1)
+		{
+			$formElement->delete();
+		}
+		if ($group->id)
+		{
+			$formElement->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 

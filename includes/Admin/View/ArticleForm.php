@@ -250,6 +250,15 @@ class ArticleForm implements ViewInterface
 				'value' => intval($article->status)
 			))
 			->append('</li><li>')
+			->label(Language::get('rank'), array(
+				'for' => 'rank'
+			))
+			->number(array(
+				'id' => 'rank',
+				'name' => 'rank',
+				'value' => intval($article->rank)
+			))
+			->append('</li><li>')
 			->label(Language::get('access'), array(
 				'for' => 'access'
 			))
@@ -272,16 +281,16 @@ class ArticleForm implements ViewInterface
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();
-			if ($article->id)
-			{
-				$formElement
-					->delete()
-					->save();
-			}
-			else
-			{
-				$formElement->create();
-			}
+		if ($article->id)
+		{
+			$formElement
+				->delete()
+				->save();
+		}
+		else
+		{
+			$formElement->create();
+		}
 
 		/* collect output */
 
