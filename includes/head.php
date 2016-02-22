@@ -155,7 +155,7 @@ function head($type = '')
 		if ($keywords) {
 			$output .= '<meta name="keywords" content="' . $keywords . '" />' . PHP_EOL;
 		}
-		$output .= '<meta name="robots" content="' . $robots ? 'all' : 'none' . '" />' . PHP_EOL;
+		$output .= '<meta name="robots" content="' . ($robots ? 'all' : 'none') . '" />' . PHP_EOL;
 	}
 
 	/* collect link */

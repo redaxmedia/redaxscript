@@ -72,6 +72,69 @@ class OptionTest extends TestCase
 	}
 
 	/**
+	 * testGetRobotArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetRobotArray($expect = array())
+	{
+		/* actual */
+
+		$actual = Helper\Option::getRobotArray();
+
+		/* compare */
+
+		$this->assertEquals($expect['robot'], $actual);
+	}
+
+	/**
+	 * testGetOrderArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetOrderArray($expect = array())
+	{
+		/* actual */
+
+		$actual = Helper\Option::getOrderArray();
+
+		/* compare */
+
+		$this->assertEquals($expect['order'], $actual);
+	}
+
+	/**
+	 * testGetCaptchaArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetCaptchaArray($expect = array())
+	{
+		/* actual */
+
+		$actual = Helper\Option::getCaptchaArray();
+
+		/* compare */
+
+		$this->assertEquals($expect['captcha'], $actual);
+	}
+
+	/**
 	 * testGetPermissionArray
 	 *
 	 * @since 3.0.0

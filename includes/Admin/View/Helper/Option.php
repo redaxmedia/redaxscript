@@ -42,9 +42,9 @@ class Option
 
 	public static function getVisibleArray()
 	{
-		$statusArray[Language::get('publish')] = 1;
-		$statusArray[Language::get('unpublish')] = 0;
-		return $statusArray;
+		$visibleArray[Language::get('publish')] = 1;
+		$visibleArray[Language::get('unpublish')] = 0;
+		return $visibleArray;
 
 	}
 
@@ -58,9 +58,45 @@ class Option
 
 	public static function getRobotArray()
 	{
-		$statusArray[Language::get('index')] = 1;
-		$statusArray[Language::get('index_no')] = 0;
-		return $statusArray;
+		$robotArray[Language::get('all')] = 1;
+		$robotArray[Language::get('index')] = 2;
+		$robotArray[Language::get('follow')] = 3;
+		$robotArray[Language::get('index_no')] = 4;
+		$robotArray[Language::get('follow_no')] = 5;
+		$robotArray[Language::get('none')] = 0;
+		return $robotArray;
+	}
+
+	/**
+	 * get the order array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function getOrderArray()
+	{
+		$orderArray[Language::get('ascending')] = 'asc';
+		$orderArray[Language::get('descending')] = 'desc';
+		return $orderArray;
+	}
+
+	/**
+	 * get the captcha array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function getCaptchaArray()
+	{
+		$captchaArray[Language::get('random')] = 1;
+		$captchaArray[Language::get('addition')] = 2;
+		$captchaArray[Language::get('subtraction')] = 3;
+		$captchaArray[Language::get('disable')] = 0;
+		return $captchaArray;
 	}
 
 	/**
