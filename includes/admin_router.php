@@ -208,7 +208,6 @@ function admin_router()
 			{
 				$settingForm = new Redaxscript\Admin\View\SettingForm();
 				echo $settingForm->render(ID_PARAMETER);
-				admin_settings_form();
 			}
 			return;
 		case 'up':

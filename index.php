@@ -45,7 +45,6 @@ if ($registry->get('loggedIn') === $registry->get('token'))
 	include_once('includes/admin_list.php');
 	include_once('includes/admin_query.php');
 	include_once('includes/admin_router.php');
-	include_once('includes/admin_settings.php');
 }
 
 /* trigger init */

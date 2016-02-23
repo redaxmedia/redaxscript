@@ -234,10 +234,10 @@ class Installer
 			'limit' => 10,
 			'order' => 'asc',
 			'pagination' => 1,
-			'moderation' => 0,
 			'registration' => 1,
 			'verification' => 0,
 			'recovery' => 1,
+			'moderation' => 0,
 			'captcha' => 0,
 			'version' => $language->get('version', '_package')
 		);
