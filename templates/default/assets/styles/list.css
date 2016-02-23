@@ -7,17 +7,17 @@
  * 4. list header
  * 5. list tabs
  * 6. query
- *    6.1 max width 50rem
- *       6.1.1 list header
- *    6.2 min width 50rem
- *       6.2.1 list header
- *       6.2.2 list header children
+ *    6.1 medium max
+ *    6.2 medium min
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
+
+/* TODO: move list-header to header.css */
+/* TODO: move list-tab to tab.css */
 
 /* @section 1. several lists */
 
@@ -150,13 +150,10 @@ ul.rs-list-default li:before {
 
 /* @section 6. query */
 
-/* @section 6.1 max width 50rem */
+/* @section 6.1 medium max */
 
 @media (--media-medium-max)
 {
-
-	/* @section 6.1.1 list header */
-
 	.rs-list-header
 	{
 		background: var(--rs-color-primary);
@@ -178,13 +175,10 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 6.2 min width 50rem */
+/* @section 6.2 medium min */
 
 @media (--media-medium-min)
 {
-
-	/* @section 6.2.1 list header */
-
 	.rs-list-header li
 	{
 		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
@@ -212,7 +206,7 @@ ul.rs-list-default li:before {
 		margin-left: 1em;
 	}
 
-	/* @section 6.2.2 list header children */
+	/* children */
 
 	.rs-list-header-children
 	{
@@ -224,27 +218,14 @@ ul.rs-list-default li:before {
 		border-top: 0.5em solid transparent;
 	}
 
-	.rs-list-header > li:hover .rs-list-header-children li
-	{
-		background: var(--rs-color-primary);
-	}
-
 	.rs-list-header > li:hover .rs-list-header-children a
 	{
 		padding: 0 1em;
 	}
 
-	.rs-list-header .rs-list-header-children li:first-child
+	.rs-list-header > li:hover .rs-list-header-children li
 	{
-		border-top-left-radius: 0.125em;
-		border-top-right-radius: 0.125em;
-	}
-
-	.rs-list-header .rs-list-header-children li:last-child
-	{
-		border-bottom-left-radius: 0.125em;
-		border-bottom-right-radius: 0.125em;
-		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+		background: var(--rs-color-primary);
 	}
 
 	.rs-list-header > li:hover .rs-list-header-children li:hover
@@ -252,7 +233,20 @@ ul.rs-list-default li:before {
 		background: var(--rs-color-primary-light);
 	}
 
-	.rs-list-header .rs-list-header-children:after
+	.rs-list-header-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-header-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-list-header-children:after
 	{
 		border-radius: 0.25em;
 		bottom: 0;

@@ -40,7 +40,7 @@
  * 7. sidebar
  * 8. footer
  * 9. query
- *    9.1 min width 50rem
+ *    9.1 medium min
  *
  * @since 3.0.0
  *
@@ -252,7 +252,7 @@ a
 
 /* @section 9. query */
 
-/* @section 9.1 min width 50rem */
+/* @section 9.1 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -278,9 +278,9 @@ a
  * 6. footer
  * 7. query
  *    7.1 print
- *    7.2 max width 50rem
- *    7.3 min width 50rem
- *    7.4 min width 80rem
+ *    7.2 medium max
+ *    7.3 medium min
+ *    7.4 large min
  *
  * @since 3.0.0
  *
@@ -385,7 +385,7 @@ a
 	}
 }
 
-/* @section 7.2 max width 50rem */
+/* @section 7.2 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -410,7 +410,7 @@ a
 	}
 }
 
-/* @section 7.3 min width 50rem */
+/* @section 7.3 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -438,7 +438,7 @@ a
 	}
 }
 
-/* @section 7.4 min width 80rem */
+/* @section 7.4 large min */
 
 @media screen and (min-width: 80rem)
 {
@@ -512,7 +512,7 @@ a
  * 7. box comment
  * 8. space between elements
  * 9. query
- *    9.2 medium
+ *    9.2 medium min
  *
  * @since 3.0.0
  *
@@ -666,7 +666,7 @@ a
 
 /* @section 9. query */
 
-/* @section 9.2 medium */
+/* @section 9.2 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -706,8 +706,8 @@ a
  * 4. space between elements
  * 5. disabled
  * 6. query
- *    6.1 max width 50rem
- *    6.2 min width 50rem
+ *    6.1 medium max
+ *    6.2 medium min
  *
  * @since 3.0.0
  *
@@ -816,7 +816,7 @@ a.rs-button-default
 
 /* @section 6. query */
 
-/* @section 6.1 max width 50rem */
+/* @section 6.1 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -826,7 +826,7 @@ a.rs-button-default
 	}
 }
 
-/* @section 6.2 min width 50rem */
+/* @section 6.2 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -883,8 +883,8 @@ a.rs-button-default
  * 3. textarea
  * 4. disabled and readonly
  * 5. query
- *    5.1 max width 50rem
- *    5.2 min width 50rem
+ *    5.1 medium max
+ *    5.2 medium min
  *
  * @since 3.0.0
  *
@@ -990,7 +990,7 @@ a.rs-button-default
 
 /* @section 5. query */
 
-/* @section 5.1 max width 50rem */
+/* @section 5.1 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -1000,7 +1000,7 @@ a.rs-button-default
 	}
 }
 
-/* @section 5.2 min width 50rem */
+/* @section 5.2 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -1095,17 +1095,17 @@ a.rs-button-default
  * 4. list header
  * 5. list tabs
  * 6. query
- *    6.1 max width 50rem
- *       6.1.1 list header
- *    6.2 min width 50rem
- *       6.2.1 list header
- *       6.2.2 list header children
+ *    6.1 medium max
+ *    6.2 medium min
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
+
+/* TODO: move list-header to header.css */
+/* TODO: move list-tab to tab.css */
 
 /* @section 1. several lists */
 
@@ -1237,13 +1237,10 @@ ul.rs-list-default li:before {
 
 /* @section 6. query */
 
-/* @section 6.1 max width 50rem */
+/* @section 6.1 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
-
-	/* @section 6.1.1 list header */
-
 	.rs-list-header
 	{
 		background: #3873b5;
@@ -1264,13 +1261,10 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 6.2 min width 50rem */
+/* @section 6.2 medium min */
 
 @media screen and (min-width: 50rem)
 {
-
-	/* @section 6.2.1 list header */
-
 	.rs-list-header li
 	{
 		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
@@ -1298,7 +1292,7 @@ ul.rs-list-default li:before {
 		margin-left: 1em;
 	}
 
-	/* @section 6.2.2 list header children */
+	/* children */
 
 	.rs-list-header-children
 	{
@@ -1310,27 +1304,14 @@ ul.rs-list-default li:before {
 		border-top: 0.5em solid transparent;
 	}
 
-	.rs-list-header > li:hover .rs-list-header-children li
-	{
-		background: #3873b5;
-	}
-
 	.rs-list-header > li:hover .rs-list-header-children a
 	{
 		padding: 0 1em;
 	}
 
-	.rs-list-header .rs-list-header-children li:first-child
+	.rs-list-header > li:hover .rs-list-header-children li
 	{
-		border-top-left-radius: 0.125em;
-		border-top-right-radius: 0.125em;
-	}
-
-	.rs-list-header .rs-list-header-children li:last-child
-	{
-		border-bottom-left-radius: 0.125em;
-		border-bottom-right-radius: 0.125em;
-		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+		background: #3873b5;
 	}
 
 	.rs-list-header > li:hover .rs-list-header-children li:hover
@@ -1338,7 +1319,20 @@ ul.rs-list-default li:before {
 		background: rgb(60, 123, 195);
 	}
 
-	.rs-list-header .rs-list-header-children:after
+	.rs-list-header-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-header-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-list-header-children:after
 	{
 		border-radius: 0.25em;
 		bottom: 0;
@@ -1375,9 +1369,7 @@ ul.rs-list-default li:before {
  * @tableofcontents
  *
  * 1. query
- *    1.1 max width 50rem
- *       1.1.1 navigation
- *       1.1.2 navigation toggle and layer
+ *    1.1 medium max
  *
  * @since 3.0.0
  *
@@ -1387,19 +1379,17 @@ ul.rs-list-default li:before {
 
 /* @section 1. query */
 
-/* @section 1.1 max width 50rem */
+/* @section 1.1 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
-	/* @section 1.1.1 navigation */
-
 	.rs-fn-navigation
 	{
 		max-width: 25em;
 		width: 75%;
 	}
 
-	/* @section 1.1.2 navigation toggle and layer */
+	/* toggle and status */
 
 	.rs-fn-toggle-navigation
 	{
@@ -1495,8 +1485,8 @@ ul.rs-list-default li:before {
  *
  * 1. title teaser
  * 2. query
- *    2.1 min width 50rem
- *    2.2 min width 80rem
+ *    2.1 medium min
+ *    2.2 large min
  *
  * @since 3.0.0
  *
@@ -1542,7 +1532,7 @@ ul.rs-list-default li:before {
 
 /* @section 2. query */
 
-/* @section 2.1 min width 50rem */
+/* @section 2.1 medium min */
 
 @media screen and (min-width: 50rem)
 {
@@ -1558,7 +1548,7 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 2.2 min width 80rem */
+/* @section 2.2 large min */
 
 @media screen and (min-width: 80rem)
 {
@@ -1572,7 +1562,7 @@ ul.rs-list-default li:before {
  *
  * 1. tooltip
  * 2. query
- *    2.1 min width 30rem
+ *    2.1 small min
  *
  * @since 3.0.0
  *
@@ -1598,7 +1588,7 @@ ul.rs-list-default li:before {
 
 /* @section 2. query */
 
-/* @section 2.1 min width 30rem */
+/* @section 2.1 small min */
 
 @media screen and (min-width: 30rem)
 {

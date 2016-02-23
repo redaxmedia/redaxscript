@@ -10,7 +10,7 @@
  * 7. box comment
  * 8. space between elements
  * 9. query
- *    9.2 medium
+ *    9.2 medium min
  *
  * @since 3.0.0
  *
@@ -142,7 +142,7 @@
 
 /* @section 9. query */
 
-/* @section 9.2 medium */
+/* @section 9.2 medium min */
 
 @media (--media-medium-min)
 {

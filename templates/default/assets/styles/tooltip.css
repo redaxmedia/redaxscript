@@ -3,7 +3,7 @@
  *
  * 1. tooltip
  * 2. query
- *    2.1 min width 30rem
+ *    2.1 small min
  *
  * @since 3.0.0
  *
@@ -29,7 +29,7 @@
 
 /* @section 2. query */
 
-/* @section 2.1 min width 30rem */
+/* @section 2.1 small min */
 
 @media (--media-small-min)
 {

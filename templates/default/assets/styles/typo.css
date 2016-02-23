@@ -16,7 +16,7 @@
  * 7. sidebar
  * 8. footer
  * 9. query
- *    9.1 min width 50rem
+ *    9.1 medium min
  *
  * @since 3.0.0
  *
@@ -223,7 +223,7 @@ a
 
 /* @section 9. query */
 
-/* @section 9.1 min width 50rem */
+/* @section 9.1 medium min */
 
 @media (--media-medium-min)
 {

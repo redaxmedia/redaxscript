@@ -6,8 +6,8 @@
  * 3. textarea
  * 4. disabled and readonly
  * 5. query
- *    5.1 max width 50rem
- *    5.2 min width 50rem
+ *    5.1 medium max
+ *    5.2 medium min
  *
  * @since 3.0.0
  *
@@ -111,7 +111,7 @@
 
 /* @section 5. query */
 
-/* @section 5.1 max width 50rem */
+/* @section 5.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -123,7 +123,7 @@
 	}
 }
 
-/* @section 5.2 min width 50rem */
+/* @section 5.2 medium min */
 
 @media (--media-medium-min)
 {

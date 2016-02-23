@@ -2,9 +2,7 @@
  * @tableofcontents
  *
  * 1. query
- *    1.1 max width 50rem
- *       1.1.1 navigation
- *       1.1.2 navigation toggle and layer
+ *    1.1 medium max
  *
  * @since 3.0.0
  *
@@ -14,19 +12,17 @@
 
 /* @section 1. query */
 
-/* @section 1.1 max width 50rem */
+/* @section 1.1 medium max */
 
 @media (--media-medium-max)
 {
-	/* @section 1.1.1 navigation */
-
 	.rs-fn-navigation
 	{
 		max-width: 25em;
 		width: 75%;
 	}
 
-	/* @section 1.1.2 navigation toggle and layer */
+	/* toggle and status */
 
 	.rs-fn-toggle-navigation
 	{

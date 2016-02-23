@@ -7,8 +7,8 @@
  * 4. space between elements
  * 5. disabled
  * 6. query
- *    6.1 max width 50rem
- *    6.2 min width 50rem
+ *    6.1 medium max
+ *    6.2 medium min
  *
  * @since 3.0.0
  *
@@ -109,7 +109,7 @@ a.rs-button-default
 
 /* @section 6. query */
 
-/* @section 6.1 max width 50rem */
+/* @section 6.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -119,7 +119,7 @@ a.rs-button-default
 	}
 }
 
-/* @section 6.2 min width 50rem */
+/* @section 6.2 medium min */
 
 @media (--media-medium-min)
 {
