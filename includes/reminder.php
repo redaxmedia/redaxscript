@@ -93,16 +93,16 @@ function reminder_post()
 
 	if ($error)
 	{
-		$messenger->setAction(Language::get('back'), 'recovery');
-		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), 'recovery')
+			->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		$messenger->setAction(Language::get('login'), 'login');
-		echo $messenger->success(Language::get('recovery_sent'), Language::get('operation_completed'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('login'), 'login')
+			->redirect()
+			->success(Language::get('recovery_sent'), Language::get('operation_completed'));
 	}
 }

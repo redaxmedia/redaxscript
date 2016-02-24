@@ -245,9 +245,9 @@ class Contact extends Module
 		/* notification */
 
 		$messenger = new Messenger();
-		$messenger->setAction(Language::get('home'), Registry::get('root'));
-		echo $messenger->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('home'), Registry::get('root'))
+			->redirect()
+			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
 	/**
@@ -261,7 +261,7 @@ class Contact extends Module
 	protected static function _error($errorData = array())
 	{
 		$messenger = new Messenger();
-		$messenger->setAction(Language::get('home'), Registry::get('root'));
-		echo $messenger->error($errorData, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('home'), Registry::get('root'))
+			->error($errorData, Language::get('error_occurred'));
 	}
 }

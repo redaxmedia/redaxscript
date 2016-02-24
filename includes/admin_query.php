@@ -359,8 +359,8 @@ function admin_process()
 
 		/* show error */
 
-		$messenger->setAction(Language::get('back'), $route);
-		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), $route)
+			->error($error, Language::get('error_occurred'));
 		return;
 	}
 
@@ -406,9 +406,10 @@ function admin_process()
 
 			/* show success */
 
-			$messenger->setAction(Language::get('continue'), $route);
-			echo $messenger->success(Language::get('operation_completed'));
-			echo $messenger->redirect();
+			echo $messenger->setAction(Language::get('continue'), $route)
+				->redirect()
+				->success(Language::get('operation_completed'));
+
 			return;
 
 		/* query edit */
@@ -487,9 +488,9 @@ function admin_process()
 
 			/* show success */
 
-			$messenger->setAction(Language::get('continue'), $route);
-			echo $messenger->success(Language::get('operation_completed'));
-			echo $messenger->redirect();
+			echo $messenger->setAction(Language::get('continue'), $route)
+				->redirect()
+				->success(Language::get('operation_completed'));
 			return;
 	}
 }
@@ -534,9 +535,9 @@ function admin_move()
 	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
-	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
-	echo $messenger->success(Language::get('operation_completed'));
-	echo $messenger->redirect();
+	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)
+		->redirect()
+		->success(Language::get('operation_completed'));
 }
 
 /**
@@ -622,9 +623,9 @@ function admin_sort()
 	/* show success */
 
 	$messenger = new Redaxscript\Messenger();
-	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
-	echo $messenger->success(Language::get('operation_completed'));
-	echo $messenger->redirect();
+	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)
+		->redirect()
+		->success(Language::get('operation_completed'));
 }
 
 /**
@@ -684,9 +685,9 @@ function admin_status($input = '')
 	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
-	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER);
-	echo $messenger->success(Language::get('operation_completed'));
-	echo $messenger->redirect();
+	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)
+		->redirect()
+		->success(Language::get('operation_completed'));
 }
 
 /**
@@ -726,9 +727,9 @@ function admin_install()
 	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
-	$messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER);
-	echo $messenger->success(Language::get('operation_completed'));
-	echo $messenger->redirect();
+	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER)
+		->redirect()
+		->success(Language::get('operation_completed'));
 }
 
 /**
@@ -830,9 +831,10 @@ function admin_delete()
 		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
-		$messenger->setAction(Language::get('continue'), $route);
-		echo $messenger->success(Language::get('operation_completed'));
-		echo $messenger->redirect();
+		$messenger;
+		echo $messenger->setAction(Language::get('continue'), $route)
+			->redirect()
+			->success(Language::get('operation_completed'));
 	}
 }
 
@@ -892,9 +894,9 @@ function admin_update()
 		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
-		$messenger->setAction(Language::get('continue'), 'admin/edit/settings');
-		echo $messenger->success(Language::get('operation_completed'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('continue'), 'admin/edit/settings')
+			->redirect()
+			->success(Language::get('operation_completed'));
 	}
 }
 

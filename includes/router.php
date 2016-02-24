@@ -30,8 +30,8 @@ function router()
 	{
 		/* show error */
 
-		$messenger->setAction(Language::get('home'), ROOT);
-		echo $messenger->error(Language::get('token_incorrect'), Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('home'), ROOT)
+			->error(Language::get('token_incorrect'), Language::get('error_occurred'));
 		return;
 	}
 
@@ -72,8 +72,8 @@ function router()
 			{
 				/* show error */
 
-				$messenger->setAction(Language::get('login'), 'login');
-				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setAction(Language::get('login'), 'login')
+					->error(Language::get('access_no'), Language::get('error_occurred'));
 			}
 			return;
 		case 'login':
@@ -96,8 +96,8 @@ function router()
 
 				/* show error */
 
-				$messenger->setAction(Language::get('login'), 'login');
-				echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setAction(Language::get('login'), 'login')
+					->error(Language::get('access_no'), Language::get('error_occurred'));
 
 				return;
 			default:
@@ -114,8 +114,8 @@ function router()
 
 			/* show error */
 
-			$messenger->setAction(Language::get('login'), 'login');
-			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setAction(Language::get('login'), 'login')
+				->error(Language::get('access_no'), Language::get('error_occurred'));
 
 			return;
 		case 'register':
@@ -128,8 +128,8 @@ function router()
 
 			/* show error */
 
-			$messenger->setAction(Language::get('home'), ROOT);
-			echo $messenger->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setAction(Language::get('home'), ROOT)
+				->error(Language::get('access_no'), Language::get('error_occurred'));
 
 			return;
 		default:

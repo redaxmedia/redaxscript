@@ -23,6 +23,14 @@ class Messenger
 	protected $_actionArray = array();
 
 	/**
+	 * if not null redirect. timeout equals to it's value
+	 *
+	 * @var integer
+	 */
+
+	protected $_redirect = null;
+
+	/**
 	 * options of the messenger
 	 *
 	 * @var array
@@ -192,11 +200,18 @@ class Messenger
 			->text($title);
 			$output .= $titleElement->render();
 		}
-		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
-			'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
-		));
-		if ($this->_actionArray)
+
+		/* box element */
+
+		if ($message || $title)
+		{
+			$boxElement = new Html\Element();
+			$boxElement->init('div', array(
+				'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
+			));
+		}
+
+		if (($message || $title) && $this->_actionArray)
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
@@ -228,15 +243,29 @@ class Messenger
 
 		/* else plain text */
 
-		else
+		elseif ($message || $title)
 		{
 			$boxElement->text($message);
 		}
 
+		if (isset($this->_redirect))
+		{
+			$metaElement = new Html\Element();
+
+			/* collect output */
+
+			$metaElement = $metaElement->init('meta', array(
+				'class' => $this->_redirect == null ? $this->_options['className']['redirect'] : null,
+				'content' => $this->_redirect . ';url=/' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
+				'http-equiv' => 'refresh'
+			));
+		}
+
 		/* collect output */
 
-		$output .= $boxElement . $linkElement;
+		$output .= $boxElement . $linkElement . $metaElement;
 		$output .= Hook::trigger('messengerEnd');
+
 		return $output;
 	}
 
@@ -245,30 +274,21 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $route route of the redirect
 	 * @param integer $timeout timeout of the redirect
+	 * @param string $route route to redirect
 	 *
 	 * @return string
 	 */
 
-	public function redirect($route = null, $timeout = 2)
+	public function redirect($timeout = 2, $route = null)
 	{
-		$metaElement = new Html\Element();
+		$this->_redirect = $timeout;
 
-		/* route fallback */
-
-		if (!$route)
+		if($route)
 		{
-			$route = $this->_actionArray['route'];
+			$this->_actionArray['route'] = $route;
 		}
 
-		/* collect output */
-
-		$output = $metaElement->init('meta', array(
-			'class' => $timeout === 0 ? $this->_options['className']['redirect'] : null,
-			'content' => $timeout . ';url=/' . Registry::get('rewriteRoute') . $route,
-			'http-equiv' => 'refresh'
-		));
-		return $output;
+		return $this;
 	}
 }

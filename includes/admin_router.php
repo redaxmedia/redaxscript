@@ -42,8 +42,8 @@ function admin_router()
 
 			/* show error */
 
-			$messenger->setAction(Language::get('back'), 'admin');
-			echo $messenger->error(Language::get('something_wrong'));
+			echo $messenger->setAction(Language::get('back'), 'admin')
+				->error(Language::get('something_wrong'));
 			return;
 	}
 
@@ -101,8 +101,8 @@ function admin_router()
 
 			/* show error */
 
-			$messenger->setAction(Language::get('back'), 'admin');
-			echo $messenger->error(Language::get('error_occurred'), Language::get('access_no'));
+			echo $messenger->setAction(Language::get('back'), 'admin')
+				->error(Language::get('error_occurred'), Language::get('access_no'));
 			return;
 	}
 
@@ -112,8 +112,8 @@ function admin_router()
 	{
 		/* show error */
 
-		$messenger->setAction(Language::get('back'), 'admin');
-		echo $messenger->error(Language::get('error_occurred'), Language::get('token_no'));
+		echo $messenger->setAction(Language::get('back'), 'admin')
+			->error(Language::get('error_occurred'), Language::get('token_no'));
 		return;
 	}
 
