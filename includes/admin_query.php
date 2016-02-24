@@ -831,7 +831,6 @@ function admin_delete()
 		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
-		$messenger;
 		echo $messenger->setAction(Language::get('continue'), $route)
 			->redirect()
 			->success(Language::get('operation_completed'));

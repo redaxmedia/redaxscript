@@ -403,7 +403,7 @@ function comment_post()
 	else
 	{
 		echo $messenger->setAction(Language::get('continue'), $route)
+			$messenger->redirect()
 			->success($success, Language::get('operation_completed'));
-		echo $messenger->redirect();
 	}
 }
