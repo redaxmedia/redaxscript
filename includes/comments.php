@@ -394,16 +394,16 @@ function comment_post()
 
 	if ($error)
 	{
-		$messenger->setAction(Language::get('back'), $route);
-		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), $route)
+			->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		$messenger->setAction(Language::get('continue'), $route);
-		echo $messenger->success($success, Language::get('operation_completed'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('continue'), $route)
+			$messenger->redirect()
+			->success($success, Language::get('operation_completed'));
 	}
 }

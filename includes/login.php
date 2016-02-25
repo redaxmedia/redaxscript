@@ -187,17 +187,17 @@ function login_post()
 
 	if ($error)
 	{
-		$messenger->setAction(Language::get('back'), 'login');
-		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), 'login')
+			->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		$messenger->setAction(Language::get('continue'), 'admin');
-		echo $messenger->success(Language::get('logged_in'), Language::get('welcome'));
-		echo $messenger->redirect(null, 0);
+		echo $messenger->setAction(Language::get('continue'), 'admin')
+			->redirect(0, null)
+			->success(Language::get('logged_in'), Language::get('welcome'));
 	}
 }
 
@@ -219,7 +219,7 @@ function logout()
 	/* show success */
 
 	$messenger = new \Redaxscript\Messenger();
-	$messenger->setAction(Language::get('continue'), 'login');
-	echo $messenger->success(Language::get('logged_out'), Language::get('goodbye'));
-	echo $messenger->redirect(null, 0);
+	echo $messenger->setAction(Language::get('continue'), 'login')
+		->redirect(0, null)
+		->success(Language::get('logged_out'), Language::get('goodbye'));
 }

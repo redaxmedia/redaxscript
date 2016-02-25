@@ -1,34 +1,22 @@
 [
 	[
 		{
-			"route": "hello/world",
-			"timeout": 0
-		},
-		{
-			"text": "",
-			"route": ""
+			"timeout": 0,
+			"route": "hello/world"
 		},
 		"<meta class=\"rs-redirect-overlay\" content=\"0;url=/hello/world\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
-			"route": "",
-			"timeout": 1
-		},
-		{
-			"text": "test",
+			"timeout": 1,
 			"route": "hello/world"
 		},
 		"<meta content=\"1;url=/hello/world\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
-			"route": "index.php",
-			"timeout": 2
-		},
-		{
-			"text": "test",
-			"route": "hello/world"
+			"timeout": 2,
+			"route": "index.php"
 		},
 		"<meta content=\"2;url=/index.php\" http-equiv=\"refresh\" />"
 	]

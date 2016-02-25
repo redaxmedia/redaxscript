@@ -112,16 +112,16 @@ function password_reset_post()
 
 		/* show error */
 
-		$messenger->setAction(Language::get('back'), $back_route);
-		echo $messenger->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), $back_route)
+			->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		$messenger->setAction(Language::get('login'), 'login');
-		echo $messenger->success(Language::get('password_sent'), Language::get('operation_completed'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('login'), 'login')
+			->redirect()
+			->success(Language::get('password_sent'), Language::get('operation_completed'));
 	}
 }

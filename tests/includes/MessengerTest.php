@@ -110,11 +110,11 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->render($render['type'], $render['message'], $render['title']);
+		$actual = $messenger->setAction($action['text'], $action['route'])
+			->render($render['type'], $render['message'], $render['title']);
 
 		/* compare */
 
@@ -138,11 +138,11 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->success($success['message'], $success['title']);
+		$actual = $messenger->setAction($action['text'], $action['route'])
+			->success($success['message'], $success['title']);
 
 		/* compare */
 
@@ -194,11 +194,11 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->warning($warning['message'], $warning['title']);
+		$actual = $messenger->setAction($action['text'], $action['route'])
+			->warning($warning['message'], $warning['title']);
 
 		/* compare */
 
@@ -222,11 +222,11 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->error($error['message'], $error['title']);
+		$actual = $messenger->setAction($action['text'], $action['route'])
+			->error($error['message'], $error['title']);
 
 		/* compare */
 
@@ -241,20 +241,18 @@ class MessengerTest extends TestCase
 	 * @dataProvider providerRedirect
 	 *
 	 * @param array $redirect
-	 * @param array $action
 	 * @param string $expect
 	 */
 
-	public function testRedirect($redirect = null, $action = null, $expect = null)
+	public function testRedirect($redirect = null, $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger();
-		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
 
-		$actual = $messenger->redirect($redirect['route'], $redirect['timeout']);
+		$actual = $messenger->redirect($redirect['timeout'], $redirect['route']);
 
 		/* compare */
 
