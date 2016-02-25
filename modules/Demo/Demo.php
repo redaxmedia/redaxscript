@@ -113,12 +113,10 @@ class Demo extends Config
 		Request::setSession($root . '/settings_edit', 1);
 		Request::setSession($root . '/filter', 1);
 
-		/* notification */
+		/* show success */
 
 		$messenger = new Messenger();
-		$messenger->setAction(Language::get('continue'), 'admin');
-		echo $messenger->success(Language::get('logged_in'), Language::get('welcome'));
-		echo $messenger->redirect();
+		echo $messenger->setAction(Language::get('continue'), 'admin')->doRedirect()->success(Language::get('logged_in'), Language::get('welcome'));
 	}
 
 	/**

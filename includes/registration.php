@@ -123,19 +123,15 @@ function registration_post()
 	/* handle error */
 
 	$messenger = new \Redaxscript\Messenger();
-
 	if ($error)
 	{
-		echo $messenger->setAction(Language::get('back'), 'registration')
-			->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), 'registration')->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('login'), 'login')
-			->redirect()
-			->success($success, Language::get('operation_completed'));
+		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success($success, Language::get('operation_completed'));
 	}
 }

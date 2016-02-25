@@ -23,14 +23,6 @@ class Messenger
 	protected $_actionArray = array();
 
 	/**
-	 * if not null redirect. timeout equals to it's value
-	 *
-	 * @var integer
-	 */
-
-	protected $_redirect = null;
-
-	/**
 	 * options of the messenger
 	 *
 	 * @var array
@@ -105,6 +97,22 @@ class Messenger
 				'route' => $route
 			);
 		}
+		return $this;
+	}
+
+	/**
+	 * do the redirect
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param integer $timeout timeout of the redirect
+	 *
+	 * @return string
+	 */
+
+	public function doRedirect($timeout = 2)
+	{
+		$this->_actionArray['redirect'] = $timeout;
 		return $this;
 	}
 
@@ -198,35 +206,37 @@ class Messenger
 				'class' => $this->_options['className']['title'] . ' ' . $this->_options['className']['notes'][$type]
 			))
 			->text($title);
-			$output .= $titleElement->render();
 		}
-
-		/* box element */
-
-		if ($message || $title)
+		if ($message)
 		{
 			$boxElement = new Html\Element();
 			$boxElement->init('div', array(
 				'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
 			));
-		}
-
-		if (($message || $title) && $this->_actionArray)
-		{
-			$linkElement = new Html\Element();
-			$linkElement->init('a', array(
-				'href' => Registry::get('rewriteRoute') . $this->_actionArray['route'],
-				'class' => $this->_options['className']['link']
-			))
-			->text($this->_actionArray['text']);
+			if ($this->_actionArray['text'] && $this->_actionArray['route'])
+			{
+				$linkElement = new Html\Element();
+				$linkElement->init('a', array(
+					'href' => Registry::get('rewriteRoute') . $this->_actionArray['route'],
+					'class' => $this->_options['className']['link']
+				))
+				->text($this->_actionArray['text']);
+				if (is_numeric($this->_actionArray['redirect']))
+				{
+					$metaElement = new Html\Element();
+					$metaElement->init('meta', array(
+						'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
+						'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
+						'http-equiv' => 'refresh'
+					));
+				}
+			}
 		}
 
 		/* build a list */
 
 		if (is_array($message))
 		{
-			$itemElement = new Html\Element();
-			$itemElement->init('li');
 			$listElement = new Html\Element();
 			$listElement->init('ul', array(
 				'class' => $this->_options['className']['list']
@@ -243,52 +253,15 @@ class Messenger
 
 		/* else plain text */
 
-		elseif ($message || $title)
+		else if ($message)
 		{
 			$boxElement->text($message);
 		}
 
-		if (isset($this->_redirect))
-		{
-			$metaElement = new Html\Element();
-
-			/* collect output */
-
-			$metaElement = $metaElement->init('meta', array(
-				'class' => $this->_redirect == null ? $this->_options['className']['redirect'] : null,
-				'content' => $this->_redirect . ';url=/' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
-				'http-equiv' => 'refresh'
-			));
-		}
-
 		/* collect output */
 
-		$output .= $boxElement . $linkElement . $metaElement;
+		$output .= $titleElement . $boxElement . $linkElement . $metaElement;
 		$output .= Hook::trigger('messengerEnd');
-
 		return $output;
-	}
-
-	/**
-	 * meta powered redirect
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param integer $timeout timeout of the redirect
-	 * @param string $route route to redirect
-	 *
-	 * @return string
-	 */
-
-	public function redirect($timeout = 2, $route = null)
-	{
-		$this->_redirect = $timeout;
-
-		if($route)
-		{
-			$this->_actionArray['route'] = $route;
-		}
-
-		return $this;
 	}
 }

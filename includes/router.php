@@ -23,15 +23,11 @@ function router()
 	/* notification */
 
 	$messenger = new \Redaxscript\Messenger();
-
 	/* check token */
 
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
-		/* show error */
-
-		echo $messenger->setAction(Language::get('home'), ROOT)
-			->error(Language::get('token_incorrect'), Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('home'), ROOT)->error(Language::get('token_incorrect'), Language::get('error_occurred'));
 		return;
 	}
 
@@ -70,10 +66,7 @@ function router()
 			}
 			else
 			{
-				/* show error */
-
-				echo $messenger->setAction(Language::get('login'), 'login')
-					->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 			}
 			return;
 		case 'login':
@@ -96,9 +89,7 @@ function router()
 
 				/* show error */
 
-				echo $messenger->setAction(Language::get('login'), 'login')
-					->error(Language::get('access_no'), Language::get('error_occurred'));
-
+				echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 				return;
 			default:
 				$loginForm = new Redaxscript\View\LoginForm();
@@ -114,9 +105,7 @@ function router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('login'), 'login')
-				->error(Language::get('access_no'), Language::get('error_occurred'));
-
+			echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'register':
 			if (s('registration'))
@@ -128,9 +117,7 @@ function router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('home'), ROOT)
-				->error(Language::get('access_no'), Language::get('error_occurred'));
-
+			echo $messenger->setAction(Language::get('home'), ROOT)->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		default:
 			contents();

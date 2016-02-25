@@ -98,7 +98,6 @@ function password_reset_post()
 	/* handle error */
 
 	$messenger = new \Redaxscript\Messenger();
-
 	if ($error)
 	{
 		if ($post_id && $post_password)
@@ -112,16 +111,13 @@ function password_reset_post()
 
 		/* show error */
 
-		echo $messenger->setAction(Language::get('back'), $back_route)
-			->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('back'), $back_route)->error($error, Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('login'), 'login')
-			->redirect()
-			->success(Language::get('password_sent'), Language::get('operation_completed'));
+		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('password_sent'), Language::get('operation_completed'));
 	}
 }

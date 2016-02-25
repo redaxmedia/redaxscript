@@ -242,12 +242,10 @@ class Contact extends Module
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
-		/* notification */
+		/* show success */
 
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))
-			->redirect()
-			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
 	/**
@@ -261,7 +259,6 @@ class Contact extends Module
 	protected static function _error($errorData = array())
 	{
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))
-			->error($errorData, Language::get('error_occurred'));
+		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorData, Language::get('error_occurred'));
 	}
 }
