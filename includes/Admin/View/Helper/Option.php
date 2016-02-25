@@ -80,8 +80,8 @@ class Option
 	public static function getTimeArray()
 	{
 		return array(
-			'13:37' => 'H:i',
-			'01:37' => 'h:i'
+			'24h' => 'H:i',
+			'12h' => 'h:i a'
 		);
 	}
 
@@ -96,9 +96,9 @@ class Option
 	public static function getDateArray()
 	{
 		return array(
-			'31.12.2020' => 'd.m.Y',
-			'12.31.2020' => 'm.d.Y',
-			'2020.12.31' => 'Y.m.d'
+			'DD.MM.YYYY' => 'd.m.Y',
+			'MM.DD.YYYY' => 'm.d.Y',
+			'YYYY.MM.DD' => 'Y.m.d'
 		);
 	}
 
