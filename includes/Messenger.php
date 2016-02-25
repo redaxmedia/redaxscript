@@ -202,34 +202,36 @@ class Messenger
 		if ($title)
 		{
 			$titleElement = new Html\Element();
-			$titleElement->init('h2', array(
-				'class' => $this->_options['className']['title'] . ' ' . $this->_options['className']['notes'][$type]
-			))
-			->text($title);
+			$titleElement
+				->init('h2', array(
+					'class' => $this->_options['className']['title'] . ' ' . $this->_options['className']['notes'][$type]
+				))
+				->text($title);
 		}
-		if ($message)
+		$boxElement = new Html\Element();
+		$boxElement->init('div', array(
+			'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
+		));
+		if ($this->_actionArray['text'] && $this->_actionArray['route'])
 		{
-			$boxElement = new Html\Element();
-			$boxElement->init('div', array(
-				'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
-			));
-			if ($this->_actionArray['text'] && $this->_actionArray['route'])
-			{
-				$linkElement = new Html\Element();
-				$linkElement->init('a', array(
+			$linkElement = new Html\Element();
+			$linkElement
+				->init('a', array(
 					'href' => Registry::get('rewriteRoute') . $this->_actionArray['route'],
 					'class' => $this->_options['className']['link']
 				))
 				->text($this->_actionArray['text']);
-				if (is_numeric($this->_actionArray['redirect']))
-				{
-					$metaElement = new Html\Element();
-					$metaElement->init('meta', array(
-						'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
-						'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
-						'http-equiv' => 'refresh'
-					));
-				}
+
+			/* redirect is numeric */
+
+			if (is_numeric($this->_actionArray['redirect']))
+			{
+				$metaElement = new Html\Element();
+				$metaElement->init('meta', array(
+					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
+					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
+					'http-equiv' => 'refresh'
+				));
 			}
 		}
 
