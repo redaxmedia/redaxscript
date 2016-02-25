@@ -220,10 +220,7 @@ class SettingForm implements ViewInterface
 			->label(Language::get('time'), array(
 				'for' => 'time'
 			))
-			->select(array(
-				'H:i',
-				'h:i'
-			), array(
+			->select(Helper\Option::getTimeArray(), array(
 				'id' => 'time',
 				'name' => 'time',
 				'value' => Db::getSettings('time')
@@ -232,11 +229,7 @@ class SettingForm implements ViewInterface
 			->label(Language::get('date'), array(
 				'for' => 'date'
 			))
-			->select(array(
-				'd.m.Y',
-				'm.d.Y',
-				'Y.m.d'
-			), array(
+			->select(Helper\Option::getDateArray(), array(
 				'id' => 'date',
 				'name' => 'date',
 				'value' => Db::getSettings('date')

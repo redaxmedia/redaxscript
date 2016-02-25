@@ -27,9 +27,10 @@ class Option
 
 	public static function getToggleArray()
 	{
-		$toggleArray[Language::get('enable')] = 1;
-		$toggleArray[Language::get('disable')] = 0;
-		return $toggleArray;
+		return array(
+			Language::get('enable') => 1,
+			Language::get('disable') => 0
+		);
 	}
 
 	/**
@@ -42,10 +43,10 @@ class Option
 
 	public static function getVisibleArray()
 	{
-		$visibleArray[Language::get('publish')] = 1;
-		$visibleArray[Language::get('unpublish')] = 0;
-		return $visibleArray;
-
+		return array(
+			Language::get('publish') => 1,
+			Language::get('unpublish') => 0
+		);
 	}
 
 	/**
@@ -58,13 +59,47 @@ class Option
 
 	public static function getRobotArray()
 	{
-		$robotArray[Language::get('all')] = 1;
-		$robotArray[Language::get('index')] = 2;
-		$robotArray[Language::get('follow')] = 3;
-		$robotArray[Language::get('index_no')] = 4;
-		$robotArray[Language::get('follow_no')] = 5;
-		$robotArray[Language::get('none')] = 0;
-		return $robotArray;
+		return array(
+			Language::get('all') => 1,
+			Language::get('index') => 2,
+			Language::get('follow') => 3,
+			Language::get('index_no') => 4,
+			Language::get('follow_no') => 5,
+			Language::get('none') => 0
+		);
+	}
+
+	/**
+	 * get the time array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function getTimeArray()
+	{
+		return array(
+			'13:37' => 'H:i',
+			'01:37' => 'h:i'
+		);
+	}
+
+	/**
+	 * get the date array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function getDateArray()
+	{
+		return array(
+			'31.12.2020' => 'd.m.Y',
+			'12.31.2020' => 'm.d.Y',
+			'2020.12.31' => 'Y.m.d'
+		);
 	}
 
 	/**
@@ -77,9 +112,10 @@ class Option
 
 	public static function getOrderArray()
 	{
-		$orderArray[Language::get('ascending')] = 'asc';
-		$orderArray[Language::get('descending')] = 'desc';
-		return $orderArray;
+		return array(
+			Language::get('ascending') => 'asc',
+			Language::get('descending') => 'desc'
+		);
 	}
 
 	/**
@@ -92,11 +128,12 @@ class Option
 
 	public static function getCaptchaArray()
 	{
-		$captchaArray[Language::get('random')] = 1;
-		$captchaArray[Language::get('addition')] = 2;
-		$captchaArray[Language::get('subtraction')] = 3;
-		$captchaArray[Language::get('disable')] = 0;
-		return $captchaArray;
+		return array(
+			Language::get('random') => 1,
+			Language::get('addition') => 2,
+			Language::get('subtraction') => 3,
+			Language::get('disable') => 0
+		);
 	}
 
 	/**
@@ -113,22 +150,24 @@ class Option
 	{
 		if ($table === 'modules')
 		{
-			$permissionArray[Language::get('install')] = 1;
-			$permissionArray[Language::get('edit')] = 2;
-			$permissionArray[Language::get('uninstall')] = 3;
+			return array(
+				Language::get('install') => 1,
+				Language::get('edit') => 2,
+				Language::get('uninstall') => 3
+			);
 		}
-		else if ($table === 'settings')
+		if ($table === 'settings')
 		{
-			$permissionArray[Language::get('none')] = 1;
-			$permissionArray[Language::get('edit')] = 2;
+			return array(
+				Language::get('none') => 1,
+				Language::get('edit') => 2,
+			);
 		}
-		else
-		{
-			$permissionArray[Language::get('create')] = 1;
-			$permissionArray[Language::get('edit')] = 2;
-			$permissionArray[Language::get('delete')] = 3;
-		}
-		return $permissionArray;
+		return array(
+			Language::get('create') => 1,
+			Language::get('edit') => 2,
+			Language::get('delete') => 3
+		);
 	}
 
 	/**

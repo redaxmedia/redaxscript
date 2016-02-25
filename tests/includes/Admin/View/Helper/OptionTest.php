@@ -93,6 +93,48 @@ class OptionTest extends TestCase
 	}
 
 	/**
+	 * testGetTimeArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetTimeArray($expect = array())
+	{
+		/* actual */
+
+		$actual = Helper\Option::getTimeArray();
+
+		/* compare */
+
+		$this->assertEquals($expect['time'], $actual);
+	}
+
+	/**
+	 * testGetDateArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $expect
+	 *
+	 * @dataProvider providerOption
+	 */
+
+	public function testGetDateArray($expect = array())
+	{
+		/* actual */
+
+		$actual = Helper\Option::getDateArray();
+
+		/* compare */
+
+		$this->assertEquals($expect['date'], $actual);
+	}
+
+	/**
 	 * testGetOrderArray
 	 *
 	 * @since 3.0.0
