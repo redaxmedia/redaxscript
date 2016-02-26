@@ -214,12 +214,7 @@ a
 
 /* @section 5. header */
 
-.rs-header
-{
-	color: #fff;
-}
-
-.rs-header a
+.rs-header, .rs-header a
 {
 	color: #fff;
 }
@@ -547,37 +542,13 @@ a
 	position: relative;
 }
 
-.rs-box-metadata a::-moz-selection
+.rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
 {
 	background: #323e4c;
 	color: #fff;
 }
 
-.rs-box-metadata span::-moz-selection
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-box-metadata a::-moz-selection
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-box-metadata a::selection
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-box-metadata span::-moz-selection
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-box-metadata span::selection
+.rs-box-metadata a::selection, .rs-box-metadata span::selection
 {
 	background: #323e4c;
 	color: #fff;
@@ -731,15 +702,7 @@ a
 	text-decoration: none;
 }
 
-.rs-button-default
-{
-	color: #fff;
-	transition: box-shadow 0.1s, -webkit-transform 0.1s;
-	transition: transform 0.1s, box-shadow 0.1s;
-	transition: transform 0.1s, box-shadow 0.1s, -webkit-transform 0.1s;
-}
-
-a.rs-button-default
+.rs-button-default, a.rs-button-default
 {
 	color: #fff;
 	transition: box-shadow 0.1s, -webkit-transform 0.1s;
@@ -852,8 +815,6 @@ a.rs-button-default
  * @author Joerg Steinhauer
  */
 
-/* TODO: dialog doesn't work because of translate3d(0px, 0px, 0px) on body-tag (this is needed for menu functionality). please search for a solition */
-
 /* @section 1. dialog overlay default */
 
 .rs-dialog-overlay-default
@@ -928,32 +889,12 @@ a.rs-button-default
 	transition: background 0.2s, border 0.2s;
 }
 
-.rs-field-default:hover
+.rs-field-default:hover, .rs-field-select:hover, .rs-field-textarea:hover
 {
 	border-color: #000;
 }
 
-.rs-field-select:hover
-{
-	border-color: #000;
-}
-
-.rs-field-textarea:hover
-{
-	border-color: #000;
-}
-
-.rs-field-default:not(.rs-field-note):focus
-{
-	border-color: #3873b5;
-}
-
-.rs-field-select:not(.rs-field-note):focus
-{
-	border-color: #3873b5;
-}
-
-.rs-field-textarea:not(.rs-field-note):focus
+.rs-field-default:not(.rs-field-note):focus, .rs-field-select:not(.rs-field-note):focus, .rs-field-textarea:not(.rs-field-note):focus
 {
 	border-color: #3873b5;
 }
@@ -1401,13 +1342,8 @@ ul.rs-list-default li:before {
 		top: -0.25rem;
 	}
 
-	.rs-fn-toggle-navigation:after
-{
-		background: #3873b5;
-	}
-
-	.rs-fn-toggle-navigation:before
-{
+	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
+	{
 		background: #3873b5;
 	}
 
@@ -1451,19 +1387,7 @@ ul.rs-list-default li:before {
 
 /* @section 1.1 body */
 
-.rs-table-default th
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-table-default tfoot td
-{
-	background: #323e4c;
-	color: #fff;
-}
-
-.rs-table-default caption
+.rs-table-default th, .rs-table-default tfoot td, .rs-table-default caption
 {
 	background: #323e4c;
 	color: #fff;
@@ -1618,14 +1542,7 @@ ul.rs-list-default li:before {
 
 /* @section 1. success */
 
-.rs-note-success.rs-box-note
-{
-	background: #5bb75b;
-	border-color: rgb(44, 150, 44);
-	color: #fff;
-}
-
-.rs-note-success.rs-field-note:not(:focus)
+.rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
 {
 	background: #5bb75b;
 	border-color: rgb(44, 150, 44);
@@ -1644,14 +1561,7 @@ ul.rs-list-default li:before {
 
 /* @section 2. warning */
 
-.rs-note-warning.rs-box-note
-{
-	background: #f3940e;
-	border-color: rgb(117, 68, 0);
-	color: #fff;
-}
-
-.rs-note-warning.rs-field-note:not(:focus)
+.rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
 {
 	background: #f3940e;
 	border-color: rgb(117, 68, 0);
@@ -1670,14 +1580,7 @@ ul.rs-list-default li:before {
 
 /* @section 3. error */
 
-.rs-note-error.rs-box-note
-{
-	background: #da4f49;
-	border-color: rgb(148, 34, 30);
-	color: #fff;
-}
-
-.rs-note-error.rs-field-note:not(:focus)
+.rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
 {
 	background: #da4f49;
 	border-color: rgb(148, 34, 30);
@@ -1696,14 +1599,7 @@ ul.rs-list-default li:before {
 
 /* @section 4. info */
 
-.rs-note-info.rs-box-note
-{
-	background: #49afcd;
-	border-color: rgb(30, 121, 148);
-	color: #fff;
-}
-
-.rs-note-info.rs-field-note:not(:focus)
+.rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
 {
 	background: #49afcd;
 	border-color: rgb(30, 121, 148);

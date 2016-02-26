@@ -34,8 +34,8 @@
 		"grunt-svgmin": "3.1.0",
 		"postcss-color-function": "2.0.0",
 		"postcss-color-gray": "3.0.0",
-		"postcss-css-variables": "0.5.1",
 		"postcss-custom-media": "5.0.1",
+		"postcss-custom-properties": "5.0.0",
 		"postcss-extend": "1.0.1",
 		"postcss-nested": "1.0.0"
 	},

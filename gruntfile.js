@@ -324,10 +324,10 @@ module.exports = function (grunt)
 			{
 				processors:
 				[
+					require('postcss-custom-media'),
+					require('postcss-custom-properties'),
 					require('postcss-color-function'),
 					require('postcss-color-gray'),
-					require('postcss-css-variables'),
-					require('postcss-custom-media'),
 					require('postcss-extend'),
 					require('postcss-nested'),
 					require('autoprefixer')(
