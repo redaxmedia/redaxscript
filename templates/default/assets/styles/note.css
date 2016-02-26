@@ -1,10 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. note error
- * 2. note info
- * 3. note success
- * 4. note warning
+ * 1. success
+ * 2. warning
+ * 3. error
+ * 4. info
  *
  * @since 3.0.0
  *
@@ -12,47 +12,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. note error */
-
-.rs-note-error.rs-box-note,
-.rs-note-error.rs-field-note:not(:focus)
-{
-	background: var(--rs-color-error);
-	border-color: var(--rs-color-error-dark);
-	color: var(--rs-color-light);
-}
-
-.rs-note-error.rs-field-note option
-{
-	background: var(--rs-color-error);
-}
-
-.rs-note-error.rs-box-note:before
-{
-	content: '\78';
-}
-
-/* @section 2. note info */
-
-.rs-note-info.rs-box-note,
-.rs-note-info.rs-field-note:not(:focus)
-{
-	background: var(--rs-color-info);
-	border-color: var(--rs-color-info-dark);
-	color: var(--rs-color-light);
-}
-
-.rs-note-info.rs-field-note option
-{
-	background: var(--rs-color-info);
-}
-
-.rs-note-info.rs-box-note:before
-{
-	content: '\69';
-}
-
-/* @section 3. note success */
+/* @section 1. success */
 
 .rs-note-success.rs-box-note,
 .rs-note-success.rs-field-note:not(:focus)
@@ -72,7 +32,7 @@
 	content: '\2713';
 }
 
-/* @section 4. note warning */
+/* @section 2. warning */
 
 .rs-note-warning.rs-box-note,
 .rs-note-warning.rs-field-note:not(:focus)
@@ -90,4 +50,44 @@
 .rs-note-warning.rs-box-note:before
 {
 	content: '\21';
+}
+
+/* @section 3. error */
+
+.rs-note-error.rs-box-note,
+.rs-note-error.rs-field-note:not(:focus)
+{
+	background: var(--rs-color-error);
+	border-color: var(--rs-color-error-dark);
+	color: var(--rs-color-light);
+}
+
+.rs-note-error.rs-field-note option
+{
+	background: var(--rs-color-error);
+}
+
+.rs-note-error.rs-box-note:before
+{
+	content: '\78';
+}
+
+/* @section 4. info */
+
+.rs-note-info.rs-box-note,
+.rs-note-info.rs-field-note:not(:focus)
+{
+	background: var(--rs-color-info);
+	border-color: var(--rs-color-info-dark);
+	color: var(--rs-color-light);
+}
+
+.rs-note-info.rs-field-note option
+{
+	background: var(--rs-color-info);
+}
+
+.rs-note-info.rs-box-note:before
+{
+	content: '\69';
 }

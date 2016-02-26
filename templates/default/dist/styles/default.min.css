@@ -1605,10 +1605,10 @@ ul.rs-list-default li:before {
 /**
  * @tableofcontents
  *
- * 1. note error
- * 2. note info
- * 3. note success
- * 4. note warning
+ * 1. success
+ * 2. warning
+ * 3. error
+ * 4. info
  *
  * @since 3.0.0
  *
@@ -1616,59 +1616,7 @@ ul.rs-list-default li:before {
  * @author Henry Ruhs
  */
 
-/* @section 1. note error */
-
-.rs-note-error.rs-box-note
-{
-	background: #da4f49;
-	border-color: rgb(148, 34, 30);
-	color: #fff;
-}
-
-.rs-note-error.rs-field-note:not(:focus)
-{
-	background: #da4f49;
-	border-color: rgb(148, 34, 30);
-	color: #fff;
-}
-
-.rs-note-error.rs-field-note option
-{
-	background: #da4f49;
-}
-
-.rs-note-error.rs-box-note:before
-{
-	content: '\78';
-}
-
-/* @section 2. note info */
-
-.rs-note-info.rs-box-note
-{
-	background: #49afcd;
-	border-color: rgb(30, 121, 148);
-	color: #fff;
-}
-
-.rs-note-info.rs-field-note:not(:focus)
-{
-	background: #49afcd;
-	border-color: rgb(30, 121, 148);
-	color: #fff;
-}
-
-.rs-note-info.rs-field-note option
-{
-	background: #49afcd;
-}
-
-.rs-note-info.rs-box-note:before
-{
-	content: '\69';
-}
-
-/* @section 3. note success */
+/* @section 1. success */
 
 .rs-note-success.rs-box-note
 {
@@ -1694,7 +1642,7 @@ ul.rs-list-default li:before {
 	content: '\2713';
 }
 
-/* @section 4. note warning */
+/* @section 2. warning */
 
 .rs-note-warning.rs-box-note
 {
@@ -1718,4 +1666,56 @@ ul.rs-list-default li:before {
 .rs-note-warning.rs-box-note:before
 {
 	content: '\21';
+}
+
+/* @section 3. error */
+
+.rs-note-error.rs-box-note
+{
+	background: #da4f49;
+	border-color: rgb(148, 34, 30);
+	color: #fff;
+}
+
+.rs-note-error.rs-field-note:not(:focus)
+{
+	background: #da4f49;
+	border-color: rgb(148, 34, 30);
+	color: #fff;
+}
+
+.rs-note-error.rs-field-note option
+{
+	background: #da4f49;
+}
+
+.rs-note-error.rs-box-note:before
+{
+	content: '\78';
+}
+
+/* @section 4. info */
+
+.rs-note-info.rs-box-note
+{
+	background: #49afcd;
+	border-color: rgb(30, 121, 148);
+	color: #fff;
+}
+
+.rs-note-info.rs-field-note:not(:focus)
+{
+	background: #49afcd;
+	border-color: rgb(30, 121, 148);
+	color: #fff;
+}
+
+.rs-note-info.rs-field-note option
+{
+	background: #49afcd;
+}
+
+.rs-note-info.rs-box-note:before
+{
+	content: '\69';
 }

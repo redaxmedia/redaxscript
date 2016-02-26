@@ -1433,10 +1433,10 @@
 /**
  * @tableofcontents
  *
- * 1. note error
- * 2. note info
- * 3. note success
- * 4. note warning
+ * 1. success
+ * 2. warning
+ * 3. error
+ * 4. info
  *
  * @since 3.0.0
  *
@@ -1444,43 +1444,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. note error */
-
-.rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
-{
-	background: #da4f49;
-	border-color: #802420;
-}
-
-.rs-admin-note-error.rs-admin-field-note option
-{
-	background: #da4f49;
-}
-
-.rs-admin-note-error.rs-admin-box-note:before
-{
-	content: '\78';
-}
-
-/* @section 2. note info */
-
-.rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
-{
-	background: #49afcd;
-	border-color: #1f6377;
-}
-
-.rs-admin-note-info.rs-admin-field-note option
-{
-	background: #49afcd;
-}
-
-.rs-admin-note-info.rs-admin-box-note:before
-{
-	content: '\69';
-}
-
-/* @section 3. note success */
+/* @section 1. success */
 
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
@@ -1498,7 +1462,7 @@
 	content: '\2713';
 }
 
-/* @section 4. note warning */
+/* @section 2. warning */
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
@@ -1514,4 +1478,40 @@
 .rs-admin-note-warning.rs-admin-box-note:before
 {
 	content: '\21';
+}
+
+/* @section 3. error */
+
+.rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
+{
+	background: #da4f49;
+	border-color: #802420;
+}
+
+.rs-admin-note-error.rs-admin-field-note option
+{
+	background: #da4f49;
+}
+
+.rs-admin-note-error.rs-admin-box-note:before
+{
+	content: '\78';
+}
+
+/* @section 4. info */
+
+.rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
+{
+	background: #49afcd;
+	border-color: #1f6377;
+}
+
+.rs-admin-note-info.rs-admin-field-note option
+{
+	background: #49afcd;
+}
+
+.rs-admin-note-info.rs-admin-box-note:before
+{
+	content: '\69';
 }
