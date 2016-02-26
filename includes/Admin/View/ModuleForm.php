@@ -57,7 +57,7 @@ class ModuleForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($module->name ? $module->name : Language::get('group_new'));
+		$titleElement->text($module->name);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();

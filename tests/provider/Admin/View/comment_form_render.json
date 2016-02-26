@@ -1,7 +1,8 @@
 [
 	[
+		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">",
+			"start": "<h2 class=\"rs-admin-title-content\">New comment</h2>",
 			"end": "</form>"
 		}
 	]

@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 
 /**
@@ -34,12 +35,13 @@ class CommentFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $commentId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($commentId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +49,7 @@ class CommentFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $commentForm->render(1);
+		$actual = $commentForm->render($commentId);
 
 		/* compare */
 

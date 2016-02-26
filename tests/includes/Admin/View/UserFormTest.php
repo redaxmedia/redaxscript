@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 
 /**
@@ -34,12 +35,13 @@ class UserFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $userId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($userId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +49,7 @@ class UserFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $userForm->render(1);
+		$actual = $userForm->render($userId);
 
 		/* compare */
 

@@ -34,12 +34,13 @@ class ModuleFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $moduleId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($moduleId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +48,7 @@ class ModuleFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $moduleForm->render(1);
+		$actual = $moduleForm->render($moduleId);
 
 		/* compare */
 

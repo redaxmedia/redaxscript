@@ -34,12 +34,13 @@ class CategoryFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $categoryId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($categoryId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +48,7 @@ class CategoryFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $categoryForm->render(1);
+		$actual = $categoryForm->render($categoryId);
 
 		/* compare */
 

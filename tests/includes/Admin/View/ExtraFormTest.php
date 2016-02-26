@@ -34,12 +34,13 @@ class ExtraFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $extraId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($extraId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +48,7 @@ class ExtraFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $extraForm->render(1);
+		$actual = $extraForm->render($extraId);
 
 		/* compare */
 

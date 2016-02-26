@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">",
+			"start": "<h2 class=\"rs-admin-title-content\">Settings</h2>",
 			"end": "</form>"
 		}
 	]

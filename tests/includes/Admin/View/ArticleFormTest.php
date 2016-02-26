@@ -34,12 +34,13 @@ class ArticleFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $articleId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($articleId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +48,7 @@ class ArticleFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $articleForm->render(1);
+		$actual = $articleForm->render($articleId);
 
 		/* compare */
 

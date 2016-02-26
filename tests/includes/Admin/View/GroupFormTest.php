@@ -34,12 +34,13 @@ class GroupFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $groupId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($groupId = null, $expect = array())
 	{
 		/* setup */
 
@@ -47,7 +48,7 @@ class GroupFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $groupForm->render(1);
+		$actual = $groupForm->render($groupId);
 
 		/* compare */
 

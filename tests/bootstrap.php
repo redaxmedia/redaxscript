@@ -64,7 +64,12 @@ $installer = new Installer($config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
-$installer->insertData();
+$installer->insertData(array(
+	'adminName' => 'Admin',
+	'adminUser' => 'admin',
+	'adminPassword' => 'admin',
+	'adminEmail' => 'admin@localhost'
+));
 
 /* test dummy */
 

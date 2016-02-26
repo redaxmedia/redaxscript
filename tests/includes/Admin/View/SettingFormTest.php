@@ -47,7 +47,7 @@ class SettingFormTest extends TestCase
 
 		/* actual */
 
-		$actual = $settingForm->render(1);
+		$actual = $settingForm->render();
 
 		/* compare */
 
