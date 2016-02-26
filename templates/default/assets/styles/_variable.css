@@ -21,8 +21,8 @@
 	--rs-color-tertiary: #323e4c;
 	--rs-color-quaternary: #c77a46;
 
-	--rs-color-primary-light: color(#3873b5 l(50%));
-	--rs-color-secondary-light: color(#699b3c l(50%));
+	--rs-color-primary-light: color(var(--rs-color-primary) l(50%));
+	--rs-color-secondary-light: color(var(--rs-color-secondary) l(50%));
 
 	--rs-gradient-primary: linear-gradient(var(--rs-color-primary-light), var(--rs-color-primary));
 	--rs-gradient-secondary: linear-gradient(var(--rs-color-secondary-light), var(--rs-color-secondary));
@@ -32,8 +32,8 @@
 	--rs-color-error: #da4f49;
 	--rs-color-info: #49afcd;
 
-	--rs-color-success-dark: color(#5bb75b b(60%) saturation(+50%));
-	--rs-color-warning-dark: color(#f3940e b(60%) saturation(+50%));
-	--rs-color-error-dark: color(#da4f49 b(60%) saturation(+50%));
-	--rs-color-info-dark: color(#49afcd b(60%) saturation(+50%));
+	--rs-color-success-dark: color(var(--rs-color-success) b(60%) saturation(+50%));
+	--rs-color-warning-dark: color(var(--rs-color-warning) b(60%) saturation(+50%));
+	--rs-color-error-dark: color(var(--rs-color-error) b(60%) saturation(+50%));
+	--rs-color-info-dark: color(var(--rs-color-info) b(60%) saturation(+50%));
 }
