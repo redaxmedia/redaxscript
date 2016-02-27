@@ -17,10 +17,10 @@
 
 	$(function ()
 	{
-		var fieldType = $('#type'),
-			fieldRelated = $('#d_name, #d_user, #d_password'),
-			fieldRequired = $('#d_name, #d_user'),
-			fieldHost = $('#d_host');
+		var fieldType = $('#db_type'),
+			fieldRelated = $('#db_name, #db_user, #db_password'),
+			fieldRequired = $('#db_name, #db_user'),
+			fieldHost = $('#db_host');
 
 		/* listen for change */
 
@@ -28,7 +28,7 @@
 		{
 			var that = $(this),
 				type = that.val(),
-				host = fieldHost.attr('data-' + type) || fieldHost.attr('data-default');
+				host = fieldHost.attr('data-' + type);
 
 			fieldHost.val(host);
 

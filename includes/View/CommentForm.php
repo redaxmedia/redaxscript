@@ -50,14 +50,11 @@ class CommentForm implements ViewInterface
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h2', array(
-				'class' => 'rs-title-content',
+			'class' => 'rs-title-content',
 		));
 		$titleElement->text(Language::get('comment_new'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
-			'textarea' => array(
-				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
-			),
 			'button' => array(
 				'submit' => array(
 					'name' => get_class()
@@ -107,6 +104,7 @@ class CommentForm implements ViewInterface
 				'for' => 'text'
 			))
 			->textarea(array(
+				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'
@@ -136,7 +134,7 @@ class CommentForm implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('searchFormEnd');
+		$output .= Hook::trigger('commentFormEnd');
 		return $output;
 	}
 }

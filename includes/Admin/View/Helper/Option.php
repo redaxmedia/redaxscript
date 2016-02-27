@@ -15,7 +15,7 @@ use Redaxscript\Language;
  * @author Henry Ruhs
  */
 
-class Option
+abstract class Option
 {
 	/**
 	 * get the toggle array

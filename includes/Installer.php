@@ -90,7 +90,7 @@ class Installer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $options options of the data
+	 * @param array $options options of the installation
 	 */
 
 	public function insertData($options = null)

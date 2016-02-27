@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(E_ERROR || E_PARSE);
 
 /* include core files */
 
@@ -103,73 +103,6 @@ function install()
 	$mailer = new Redaxscript\Mailer();
 	$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 	$mailer->send();
-}
-
-/**
- * install form
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Install
- * @author Henry Ruhs
- */
-
-function install_form()
-{
-	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
-
-	/* build type array */
-
-	$typeArray = array();
-	foreach (PDO::getAvailableDrivers() as $driver)
-	{
-		if (is_dir('database/' . $driver))
-		{
-			$typeArray[$driver] = $driver;
-		}
-	};
-
-	/* collect output */
-
-	$output = '<h2 class="rs-title-content">' . l('installation') . '</h2>';
-	$output .= form_element('form', 'form_install', 'rs-js-validate-form rs-js-accordion rs-form-default', '', '', '', 'action="' . FILE . '" method="post" autocomplete="off"');
-
-	/* collect database set */
-
-	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-accordion-default rs-set-active">';
-	$output .= '<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-accordion-default rs-title-active">' . l('database_setup') . '</legend>';
-	$output .= '<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-accordion-default rs-box-active">';
-	if ($typeArray)
-	{
-		$output .= '<li>' . select_element('type', 'rs-field-select', 'd_type', $typeArray, $d_type, l('type')) . '</li>';
-	}
-	$output .= '<li>' . form_element('text', 'd_host', 'rs-field-default rs-field-note', 'd_host', $d_host, '* ' . l('host'), 'maxlength="50" required="required" autofocus="autofocus" data-default="localhost" data-sqlite="' . substr(sha1(uniqid()), 0, 10) . '.sqlite"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_name', 'rs-field-default rs-field-note', 'd_name', $d_name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_user', 'rs-field-default rs-field-note', 'd_user', $d_user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'd_password', 'rs-js-unmask-password rs-field-default', 'd_password', $d_password, l('password'), 'maxlength="50"') . '</li>';
-	$output .= '<li>' . form_element('text', 'd_prefix', 'rs-field-default', 'd_prefix', $d_prefix, l('prefix'), 'maxlength="50"') . '</li>';
-	$output .= '</ul></fieldset>';
-
-	/* collect account set */
-
-	$output .= '<fieldset class="rs-js-set-accordion rs-js-set-accordion-last rs-set-accordion rs-set-accordion-default rs-set-accordion-last">';
-	$output .= '<legend class="rs-js-title-accordion rs-title-accordion rs-title-accordion-default">' . l('account_create') . '</legend>';
-	$output .= '<ul class="rs-js-box-accordion rs-box-accordion rs-box-accordion-default">';
-	$output .= '<li>' . form_element('text', 'name', 'rs-field-default rs-field-note', 'name', $name, '* ' . l('name'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('text', 'user', 'rs-field-default rs-field-note', 'user', $user, '* ' . l('user'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('password', 'password', 'rs-js-unmask-password rs-field-default rs-field-note', 'password', $password, '* ' . l('password'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '<li>' . form_element('email', 'email', 'rs-field-default rs-field-note', 'email', $email, '* ' . l('email'), 'maxlength="50" required="required"') . '</li>';
-	$output .= '</ul></fieldset>';
-
-	/* collect hidden and button output */
-
-	$output .= form_element('hidden', '', '', 'd_salt', sha1(uniqid()));
-	$output .= form_element('hidden', '', '', 'token', TOKEN);
-	$output .= form_element('button', '', 'rs-js-submit rs-button-default rs-button-large', 'install_post', l('install'));
-	$output .= '</form>';
-	echo $output;
 }
 
 /**
@@ -290,17 +223,17 @@ function install_post()
 
 	/* clean post */
 
-	$d_type = stripslashes($_POST['d_type']);
-	$d_host = stripslashes($_POST['d_host']);
-	$d_name = stripslashes($_POST['d_name']);
-	$d_user = stripslashes($_POST['d_user']);
-	$d_password = stripslashes($_POST['d_password']);
-	$d_prefix = stripslashes($_POST['d_prefix']);
-	$d_salt = stripslashes($_POST['d_salt']);
-	$name = stripslashes($_POST['name']);
-	$user = stripslashes($_POST['user']);
-	$password = stripslashes($_POST['password']);
-	$email = stripslashes($_POST['email']);
+	$d_type = stripslashes($_POST['db_type']);
+	$d_host = stripslashes($_POST['db_host']);
+	$d_name = stripslashes($_POST['db_name']);
+	$d_user = stripslashes($_POST['db_user']);
+	$d_password = stripslashes($_POST['db_password']);
+	$d_prefix = stripslashes($_POST['db_prefix']);
+	$d_salt = stripslashes($_POST['db_salt']);
+	$name = stripslashes($_POST['admin_name']);
+	$user = stripslashes($_POST['admin_user']);
+	$password = stripslashes($_POST['admin_password']);
+	$email = stripslashes($_POST['admin_email']);
 
 	/* validate post */
 
@@ -323,7 +256,7 @@ function install_post()
 
 	/* write config */
 
-	if ($_POST['install_post'])
+	if ($_POST['Redaxscript\View\InstallForm'])
 	{
 		write_config();
 	}
@@ -387,7 +320,7 @@ function install_notification()
 
 	/* validate post */
 
-	else if ($_POST['install_post'])
+	else if ($_POST['Redaxscript\View\InstallForm'])
 	{
 		$loginValidator = new Redaxscript\Validator\Login();
 		$emailValidator = new Redaxscript\Validator\Email();
@@ -457,7 +390,7 @@ function check_install()
 	$registry = Redaxscript\Registry::getInstance();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
-	if ($_POST['install_post'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::PASSED)
+	if ($_POST['Redaxscript\View\InstallForm'] && $registry->get('dbStatus') && $name && $loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::PASSED && $loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::PASSED && $emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::PASSED)
 	{
 		$output = 1;
 	}
@@ -506,6 +439,8 @@ function head()
 
 function router()
 {
+	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $name, $user, $password, $email;
+
 	/* check token */
 
 	if ($_POST && $_POST['token'] != TOKEN)
@@ -524,6 +459,18 @@ function router()
 	}
 	else
 	{
-		install_form();
+		$installForm = new Redaxscript\View\InstallForm();
+		echo $installForm->render(array(
+			'dbType' => $d_type,
+			'dbHost' => $d_host,
+			'dbName' => $d_name,
+			'dbUser' => $d_user,
+			'dbPassword' => $d_password,
+			'dbPrefix' => $d_prefix,
+			'adminName' => $name,
+			'adminUser' => $user,
+			'adminPassword' => $password,
+			'adminEmail' => $email
+		));
 	}
 }
