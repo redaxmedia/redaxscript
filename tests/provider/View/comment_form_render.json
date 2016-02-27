@@ -1,0 +1,16 @@
+[
+	[
+		0,
+		{
+			"start": "<h2 class=\"rs-title-content\">New comment</h2><form class=\"rs-js-validate-form rs-form-default\" method=\"post\">",
+			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\CommentForm\">Submit</button><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
+		}
+	],
+	[
+		1,
+		{
+			"start": "<h2 class=\"rs-title-content\">New comment</h2><form class=\"rs-js-validate-form rs-form-default\" method=\"post\">",
+			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\CommentForm\">Submit</button><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
+		}
+	]
+]

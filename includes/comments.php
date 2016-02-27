@@ -145,122 +145,6 @@ function comments($article = '', $route = '')
 }
 
 /**
- * comment form
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Comments
- * @author Henry Ruhs
- *
- * @param integer $article
- * @param string $language
- */
-
-function comment_form($article = '', $language = '')
-{
-	$output = Redaxscript\Hook::trigger('commentFormStart');
-
-	/* html elements */
-
-	$titleElement = new Redaxscript\Html\Element();
-	$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-	));
-	$titleElement->text(Redaxscript\Language::get('comment_new'));
-	$formElement = new Redaxscript\Html\Form(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-	$formElement->init(array(
-		'textarea' => array(
-			'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
-		),
-		'button' => array(
-			'submit' => array(
-				'name' => 'comment_post'
-			)
-		)
-	), array(
-		'captcha' => Redaxscript\Db::getSettings('captcha') > 0
-	));
-
-	/* create the form */
-
-	$formElement
-		->append('<fieldset>')
-		->legend()
-		->append('<ul><li>')
-		->label('* ' . Redaxscript\Language::get('author'), array(
-			'for' => 'author'
-		))
-		->text(array(
-			'id' => 'author',
-			'name' => 'author',
-			'readonly' => Redaxscript\Registry::get('myName') ? 'readonly' : null,
-			'required' => 'required',
-			'value' => Redaxscript\Registry::get('myName')
-		))
-		->append('</li><li>')
-		->label('* ' . Redaxscript\Language::get('email'), array(
-			'for' => 'email'
-		))
-		->email(array(
-			'id' => 'email',
-			'name' => 'email',
-			'readonly' => Redaxscript\Registry::get('myEmail') ? 'readonly' : null,
-			'required' => 'required',
-			'value' => Redaxscript\Registry::get('myEmail')
-		))
-		->append('</li><li>')
-		->label(Redaxscript\Language::get('url'), array(
-			'for' => 'url'
-		))
-		->url(array(
-			'id' => 'url',
-			'name' => 'url'
-		))
-		->append('</li><li>')
-		->label('* ' . Redaxscript\Language::get('text'), array(
-			'for' => 'text'
-		))
-		->textarea(array(
-			'id' => 'text',
-			'name' => 'text',
-			'required' => 'required'
-		))
-		->append('</li>');
-	if (Redaxscript\Db::getSettings('captcha') > 0)
-	{
-		$formElement
-			->append('<li>')
-			->captcha('task')
-			->append('</li>');
-	}
-	$formElement->append('</ul></fieldset>');
-	if (Redaxscript\Db::getSettings('captcha') > 0)
-	{
-		$formElement->captcha('solution');
-	}
-	$formElement
-		->hidden(array(
-			'name' => 'article',
-			'value' => $article
-		))
-		->hidden(array(
-			'name' => 'language',
-			'value' => $language
-		))
-		->token()
-		->submit()
-		->reset();
-
-	/* collect output */
-
-	$output .= $titleElement . $formElement;
-	$output .= Redaxscript\Hook::trigger('commentFormEnd');
-	echo $output;
-}
-
-/**
  * comment post
  *
  * @since 1.2.1
@@ -279,14 +163,14 @@ function comment_post()
 
 	/* clean post */
 
+	$article = $r['article'] = clean($_POST['article'], 0);
 	$author = $r['author'] = clean($_POST['author'], 0);
 	$email = $r['email'] = clean($_POST['email'], 3);
 	$url = $r['url'] = clean($_POST['url'], 4);
 	$text = nl2br($_POST['text']);
 	$text = $r['text'] = clean($text, 1);
-	$r['language'] = clean($_POST['language'], 0);
+	$r['language'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->language;
 	$r['date'] = clean($_POST['date'], 5);
-	$article = $r['article'] = clean($_POST['article'], 0);
 	$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
 	$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
 	$r['date'] = Redaxscript\Registry::get('now');

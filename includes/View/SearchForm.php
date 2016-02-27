@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;

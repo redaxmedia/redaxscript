@@ -38,16 +38,11 @@ function router()
 		'Redaxscript\View\RegisterForm' => 'registration_post',
 		'Redaxscript\View\ResetForm' => 'password_reset_post',
 		'Redaxscript\View\RecoverForm' => 'reminder_post',
-		'comment',
+		'Redaxscript\View\CommentForm' => 'comment_post',
 		'Redaxscript\View\SearchForm' => 'search_post'
 	);
 	foreach ($post_list as $key => $value)
 	{
-		if ($_POST[$value . '_post'] && function_exists($value . '_post'))
-		{
-			call_user_func($value . '_post');
-			return;
-		}
 		if ($_POST[$key] && function_exists($value))
 		{
 			call_user_func($value);

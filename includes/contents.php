@@ -243,7 +243,8 @@ function contents()
 
 				if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
 				{
-					comment_form(ARTICLE, $language);
+					$commentForm = new Redaxscript\View\CommentForm();
+					echo $commentForm->render(ARTICLE);
 				}
 			}
 		}

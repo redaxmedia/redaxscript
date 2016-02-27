@@ -973,6 +973,11 @@ a
 	display: block;
 }
 
+.rs-label-default:after
+{
+	content: ':';
+}
+
 .rs-form-default li
 {
 	margin: 0.5em 0;
@@ -985,7 +990,7 @@ a
 
 .rs-form-default .rs-label-message:after
 {
-	content: ' ' attr(data-message);
+	content: ':\00a0' attr(data-message);
 }
 
 /* @section 1.2 form search */
