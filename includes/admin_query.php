@@ -44,6 +44,7 @@ function admin_process()
 				$r['headline'] = clean($_POST['headline'], 0);
 			}
 			$r['sibling'] = clean($_POST['sibling'], 0);
+			$author = $r['author'] = MY_USER;
 
 		/* comments */
 
@@ -51,8 +52,8 @@ function admin_process()
 			if (TABLE_PARAMETER == 'comments')
 			{
 				$r['url'] = clean($_POST['url'], 4);
+				$author = $r['author'] = clean($_POST['author'], 0);
 			}
-			$author = $r['author'] = clean($_POST['author'], 0);
 			if (TABLE_PARAMETER != 'categories')
 			{
 				$text = $r['text'] = clean($_POST['text'], 1);

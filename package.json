@@ -36,7 +36,9 @@
 		"postcss-color-gray": "3.0.0",
 		"postcss-custom-media": "5.0.1",
 		"postcss-custom-properties": "5.0.0",
+		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.1",
+		"postcss-pseudoelements": "1.0.0",
 		"postcss-nested": "1.0.0"
 	},
 	"scripts":
