@@ -8,13 +8,9 @@
 			<directory suffix=".php">includes</directory>
 			<exclude>
 				<file>includes/admin_admin.php</file>
-				<file>includes/admin_contents.php</file>
-				<file>includes/admin_groups.php</file>
-				<file>includes/admin_modules.php</file>
+				<file>includes/admin_list.php</file>
 				<file>includes/admin_query.php</file>
 				<file>includes/admin_router.php</file>
-				<file>includes/admin_settings.php</file>
-				<file>includes/admin_users.php</file>
 				<file>includes/bootstrap.php</file>
 				<file>includes/comments.php</file>
 				<file>includes/contents.php</file>

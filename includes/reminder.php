@@ -66,10 +66,10 @@ function reminder_post()
 				$passwordResetRoute = ROOT . '/' . REWRITE_ROUTE . 'login/reset/' . sha1($password) . '/' . $id;
 				$passwordResetLink = anchor_element('external', '', '', $passwordResetRoute, $passwordResetRoute);
 				$toArray = array(
-					s('author') => s('email')
+					$name => $email
 				);
 				$fromArray = array(
-					$name => $email
+					s('author') => s('email')
 				);
 				$subject = l('recovery');
 				$bodyArray = array(
