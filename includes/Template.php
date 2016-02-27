@@ -275,18 +275,15 @@ class Template
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type
+	 * @param string $table
 	 *
 	 * @return string
 	 */
 
-	public static function search($type = 'articles')
+	public static function search($table = 'articles')
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('search', array(
-			$type
-		));
-		// @codeCoverageIgnoreEnd
+		$searchForm = new View\SearchForm();
+		return $searchForm->render($table);
 	}
 
 	/**

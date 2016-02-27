@@ -39,7 +39,7 @@ function router()
 		'Redaxscript\View\ResetForm' => 'password_reset_post',
 		'Redaxscript\View\RecoverForm' => 'reminder_post',
 		'comment',
-		'search'
+		'Redaxscript\View\SearchForm' => 'search_post'
 	);
 	foreach ($post_list as $key => $value)
 	{

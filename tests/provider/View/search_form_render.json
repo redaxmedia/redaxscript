@@ -1,0 +1,16 @@
+[
+	[
+		"categories",
+		{
+			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" name=\"search_terms\" placeholder=\"Search terms\" tabindex=\"1\" /><input class=\"rs-field-hidden\" type=\"hidden\" name=\"table\" value=\"categories\" />",
+			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
+		}
+	],
+	[
+		"articles",
+		{
+			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" name=\"search_terms\" placeholder=\"Search terms\" tabindex=\"1\" /><input class=\"rs-field-hidden\" type=\"hidden\" name=\"table\" value=\"articles\" />",
+			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
+		}
+	]
+]
