@@ -3,7 +3,7 @@
  *
  * 1. panel admin
  * 2. wrapper
- * 3. margins
+ * 3. space between elements
  *
  * @since 3.0.0
  *
@@ -36,7 +36,7 @@
 	width: 100%;
 }
 
-/* @section 3. margins */
+/* @section 3. space between elements */
 
 .rs-admin-wrapper-button
 {

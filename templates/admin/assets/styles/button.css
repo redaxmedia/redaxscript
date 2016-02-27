@@ -96,8 +96,6 @@ a.rs-admin-button-default
 
 .rs-admin-box-dialog .rs-admin-button-default,
 .rs-admin-box-notification .rs-admin-button-default,
-/* TODO: remove outdated styles */
-.rs-admin-form .rs-admin-button-default,
 .rs-admin-form-default .rs-admin-button-default
 {
 	margin-top: 1em;

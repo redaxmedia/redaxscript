@@ -3,6 +3,7 @@
  *
  * 1. form admin
  *    1.1 label
+ * 2. space between elements
  *
  * @since 3.0.0
  *
@@ -12,8 +13,6 @@
 
 /* @section 1. form admin */
 
-/* TODO: remove outdated styles */
-.rs-admin-form li,
 .rs-admin-form-default li
 {
 	margin-top: 0.5em;
@@ -29,10 +28,14 @@
 	display: block;
 }
 
-/* TODO: remove outdated styles*/
-.rs-admin-form .rs-admin-label-message:after,
-.rs-admin-form-default .rs-admin-label-message:after,
-.rs-admin-label-default:after
+.rs-admin-form-default .rs-admin-label-message:after
 {
 	content: ' ' attr(data-message);
+}
+
+/* @section 2. space between elements */
+
+.rs-admin-form-default .rs-admin-box-note
+{
+	margin-top: 1em;
 }

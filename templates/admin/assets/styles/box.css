@@ -8,7 +8,6 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
- * 5. space between elements
  *
  * @since 3.0.0
  *
@@ -97,13 +96,4 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
-}
-
-/* @section 5. space between elements */
-
-/* TODO: remove outdated styles */
-.rs-admin-form .rs-admin-box-note,
-.rs-admin-form-default .rs-admin-box-note
-{
-	margin-top: 1em;
 }

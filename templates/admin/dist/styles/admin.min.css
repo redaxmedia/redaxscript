@@ -114,7 +114,7 @@
  *
  * 1. panel admin
  * 2. wrapper
- * 3. margins
+ * 3. space between elements
  *
  * @since 3.0.0
  *
@@ -147,7 +147,7 @@
 	width: 100%;
 }
 
-/* @section 3. margins */
+/* @section 3. space between elements */
 
 .rs-admin-wrapper-button
 {
@@ -163,7 +163,6 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
- * 5. space between elements
  *
  * @since 3.0.0
  *
@@ -252,14 +251,6 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
-}
-
-/* @section 5. space between elements */
-
-/* TODO: remove outdated styles */
-.rs-admin-form .rs-admin-box-note, .rs-admin-form-default .rs-admin-box-note
-{
-	margin-top: 1em;
 }
 /**
  * @tableofcontents
@@ -354,7 +345,7 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-box-notification .rs-admin-button-default, .rs-admin-form .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default
+.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-box-notification .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default
 {
 	margin-top: 1em;
 }
@@ -536,6 +527,7 @@
  *
  * 1. form admin
  *    1.1 label
+ * 2. space between elements
  *
  * @since 3.0.0
  *
@@ -545,8 +537,7 @@
 
 /* @section 1. form admin */
 
-/* TODO: remove outdated styles */
-.rs-admin-form li, .rs-admin-form-default li
+.rs-admin-form-default li
 {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -561,10 +552,16 @@
 	display: block;
 }
 
-/* TODO: remove outdated styles*/
-.rs-admin-form .rs-admin-label-message:after, .rs-admin-form-default .rs-admin-label-message:after, .rs-admin-label-default:after
+.rs-admin-form-default .rs-admin-label-message:after
 {
 	content: ' ' attr(data-message);
+}
+
+/* @section 2. space between elements */
+
+.rs-admin-form-default .rs-admin-box-note
+{
+	margin-top: 1em;
 }
 /**
  * @tableofcontents
