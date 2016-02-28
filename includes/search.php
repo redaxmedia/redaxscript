@@ -59,8 +59,8 @@ function search_post()
 		else if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
-			$output = '<h2 class="rs-title-content title-search-result">' . l('search') . '</h2>';
-			$output .= '<ol class="rs-list-search-result">';
+			$output = '<h2 class="rs-title-content rs-title-result">' . l('search') . '</h2>';
+			$output .= '<ol class="rs-list-result">';
 			foreach ($result as $r)
 			{
 				$access = $r['access'];
@@ -98,7 +98,7 @@ function search_post()
 
 					/* collect item output */
 
-					$output .= '<li class="rs-item-search-result">' . anchor_element('internal', '', 'link_search_result', $title, $route, $description) . '<span class="rs-date-search-result">' . $date . '</span></li>';
+					$output .= '<li class="rs-item-result"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="link-result">' . $title . '</a><span class="rs-date-search-result">' . $date . '</span></li>';
 				}
 				else
 				{

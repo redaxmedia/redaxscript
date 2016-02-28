@@ -6,7 +6,6 @@ error_reporting(E_ERROR || E_PARSE);
 /* include files */
 
 include_once('includes/contents.php');
-include_once('includes/generate.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');

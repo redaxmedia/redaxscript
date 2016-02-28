@@ -60,11 +60,11 @@ function admin_contents_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l($wording_single . '_new'), 'admin/new/' . TABLE_PARAMETER);
+		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
 	}
 	if (TABLE_EDIT == 1 && $num_rows)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-sort', l('sort'), 'admin/sort/' . TABLE_PARAMETER . '/' . TOKEN);
+		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default rs-admin-button-sort">' . Redaxscript\Language::get('sort') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
@@ -247,7 +247,7 @@ function admin_contents_list()
 				}
 				if ($status == 1)
 				{
-					$output .= anchor_element('internal', '', 'rs-admin-link-default', $name, $route);
+					$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="rs-admin-link-default">' . $name . '</a>';
 				}
 				else
 				{
@@ -281,7 +281,7 @@ function admin_contents_list()
 						if ($parent)
 						{
 							$parent_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
-							$output .= anchor_element('internal', '', 'rs-admin-link-default', $parent_title, 'admin/edit/categories/' . $parent);
+							$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/categories/' . $parent . '" class="rs-admin-link-default">' . $parent_title . '</a>';
 						}
 						else
 						{
@@ -293,7 +293,7 @@ function admin_contents_list()
 						if ($category)
 						{
 							$category_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
-							$output .= anchor_element('internal', '', 'rs-admin-link-default', $category_title, 'admin/edit/categories/' . $category);
+							$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/categories/' . $category . '" class="rs-admin-link-default">' . $category_title . '</a>';
 						}
 						else
 						{
@@ -305,7 +305,7 @@ function admin_contents_list()
 						if ($article)
 						{
 							$article_title = Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
-							$output .= anchor_element('internal', '', 'rs-admin-link-default', $article_title, 'admin/edit/articles/' . $article);
+							$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/articles/' . $article . '" class="rs-admin-link-default">' . $article_title . '</a>';
 						}
 						else
 						{
@@ -323,7 +323,7 @@ function admin_contents_list()
 					$rank_desc = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->max('rank');
 					if ($rank > 1)
 					{
-						$output .= anchor_element('internal', '', 'rs-admin-move-up', l('up'), 'admin/up/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/up/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-move-up">' . Redaxscript\Language::get('up') . '</a>';
 					}
 					else
 					{
@@ -331,7 +331,7 @@ function admin_contents_list()
 					}
 					if ($rank < $rank_desc)
 					{
-						$output .= anchor_element('internal', '', 'rs-admin-move-down', l('down'), 'admin/down/' . TABLE_PARAMETER . '/' . $id . '/' . TOKEN);
+						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/down/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-move-down">' . Redaxscript\Language::get('down') . '</a>';
 					}
 					else
 					{
@@ -416,7 +416,7 @@ function admin_groups_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (GROUPS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('group_new'), 'admin/new/groups');
+		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('group_new') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
@@ -513,7 +513,7 @@ function admin_users_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (USERS_NEW == 1)
 	{
-		$output .= anchor_element('internal', '', 'rs-admin-button-default rs-admin-button-plus', l('user_new'), 'admin/new/users');
+		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('user_new') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
@@ -585,7 +585,7 @@ function admin_users_list()
 					if ($group_alias)
 					{
 						$group_name = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->name;
-						$output .= anchor_element('internal', '', 'rs-admin-link-default', $group_name, 'admin/edit/groups/' . $value);
+						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/groups/' . $value . '" class="rs-admin-link-default">' . $group_name . '</a>';
 						if ($groups_array_last != $key)
 						{
 							$output .= ', ';

@@ -160,7 +160,7 @@ class InstallForm implements ViewInterface
 				'value' => $options['adminUser']
 			))
 			->append('</li><li>')
-			->label(Language::get('name'), array(
+			->label(Language::get('password'), array(
 				'for' => 'admin_password'
 			))
 			->password(array(

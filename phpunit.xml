@@ -14,7 +14,6 @@
 				<file>includes/bootstrap.php</file>
 				<file>includes/comments.php</file>
 				<file>includes/contents.php</file>
-				<file>includes/generate.php</file>
 				<file>includes/head.php</file>
 				<file>includes/loader.php</file>
 				<file>includes/login.php</file>

@@ -6,7 +6,6 @@ filter:
   - includes/admin_router.php
   - includes/comments.php
   - includes/contents.php
-  - includes/generate.php
   - includes/head.php
   - includes/loader.php
   - includes/login.php

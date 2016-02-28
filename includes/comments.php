@@ -93,7 +93,7 @@ function comments($article = '', $route = '')
 				$output .= Redaxscript\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
 				if ($url)
 				{
-					$output .= anchor_element('external', '', '', $author, $url, '', 'rel="nofollow"');
+					$output .= '<a href="' . $url . '" class="rs-admin-link-default" rel="nofollow">' . $author . '</a>';
 				}
 				else
 				{
@@ -227,13 +227,13 @@ function comment_post()
 		{
 			/* prepare body parts */
 
-			$emailLink = anchor_element('email', '', '', $email);
+			$emailLink = '<a href="mailto:' . $email . '">' . $email . '</a>';
 			if ($url)
 			{
-				$urlLink = anchor_element('external', '', '', $url);
+				$urlLink = '<a href="' . $url . '">' . $url . '</a>';
 			}
 			$articleRoute = ROOT . '/' . REWRITE_ROUTE . $route;
-			$articleLink = anchor_element('external', '', '', $articleRoute, $articleRoute);
+			$articleLink = '<a href="' . $articleRoute . '">' . $articleRoute . '</a>';
 
 			/* prepare mail inputs */
 

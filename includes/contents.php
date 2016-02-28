@@ -154,11 +154,10 @@ function contents()
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="rs-title-content" id="article-' . $alias . '">';
-					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
+					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
 					{
-						$output .= anchor_element('internal', '', '', $title, $route);
+						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '">' . $title . '</a>';
 					}
 					else
 					{
@@ -475,8 +474,8 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$first_route = $route;
 		$previous_route = $route . '/' . ($sub_active - 1);
-		$output .= '<li class="rs-item-first">' . anchor_element('internal', '', '', l('first'), $first_route) . '</li>';
-		$output .= '<li class="rs-item-previous">' . anchor_element('internal', '', '', l('previous'), $previous_route, '', 'rel="previous"') . '</li>';
+		$output .= '<li class="rs-item-first"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $first_route . '">' . Redaxscript\Language::get('first') . '</a></li>';
+		$output .= '<li class="rs-item-previous"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $previous_route . '" rel="previous">' . Redaxscript\Language::get('previous') . '</a></li>';
 	}
 
 	/* collect center output */
@@ -499,7 +498,7 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 		}
 		else if ($i > 0 && $i < $sub_maximum + 1)
 		{
-			$output .= '<li class="rs-item-number">' . anchor_element('internal', '', '', $i, $route . '/' . $i) . '</li>';
+			$output .= '<li class="rs-item-number"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '/' . $i . '">' . $i . '</a></li>';
 		}
 	}
 
@@ -509,8 +508,8 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$next_route = $route . '/' . ($sub_active + 1);
 		$last_route = $route . '/' . $sub_maximum;
-		$output .= '<li class="rs-item-next">' . anchor_element('internal', '', '', l('next'), $next_route, '', 'rel="next"') . '</li>';
-		$output .= '<li class="rs-item-last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
+		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $next_route . '" rel="next">' . Redaxscript\Language::get('next') . '</a></li>';
+		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
 	}
 	$output .= '</ul>';
 	$output .= Redaxscript\Hook::trigger('paginationEnd');

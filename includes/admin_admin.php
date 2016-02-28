@@ -59,19 +59,19 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span>' . l('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('categories'), 'admin/view/categories') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/categories">' . Redaxscript\Language::get('categories') . '</a></li>';
 		}
 		if ($articles_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('articles'), 'admin/view/articles') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/articles">' . Redaxscript\Language::get('articles') . '</a></li>';
 		}
 		if ($extras_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('extras'), 'admin/view/extras') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/extras">' . Redaxscript\Language::get('extras') . '</a></li>';
 		}
 		if ($comments_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('comments'), 'admin/view/comments') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/comments">' . Redaxscript\Language::get('comments') . '</a></li>';
 		}
 		$output .= '</ul></li>';
 	}
@@ -84,15 +84,15 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span>' . l('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
 		if (MY_ID)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
 		}
 		if ($users_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('users'), 'admin/view/users') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/users">' . Redaxscript\Language::get('users') . '</a></li>';
 		}
 		if ($groups_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('groups'), 'admin/view/groups') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/groups">' . Redaxscript\Language::get('groups') . '</a></li>';
 		}
 		$output .= '</ul></li>';
 	}
@@ -105,7 +105,7 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span>' . l('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
 		if ($modules_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('modules'), 'admin/view/modules');
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/modules">' . Redaxscript\Language::get('modules') . '</a></li>';
 
 			/* collect modules list */
 
@@ -118,7 +118,7 @@ function admin_panel_list()
 		}
 		if ($settings_access == 1)
 		{
-			$output .= '<li>' . anchor_element('internal', '', '', l('settings'), 'admin/edit/settings') . '</li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/settings">' . Redaxscript\Language::get('settings') . '</a></li>';
 		}
 		$output .= '</ul></li>';
 	}
@@ -128,12 +128,12 @@ function admin_panel_list()
 	if (MY_USER && MY_ID)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile">' . anchor_element('internal', '', '', l('profile'), 'admin/edit/users/' . MY_ID) . '</li>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
 	}
 
 	/* collect logout */
 
-	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-logout">' . anchor_element('internal', '', '', l('logout'), 'logout') . '</li>';
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-logout"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'logout">' . Redaxscript\Language::get('logout') . '</a></li>';
 
 	/* collect list output */
 
@@ -176,12 +176,12 @@ function admin_dock($table = '', $id = '')
 		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-admin-clearfix">';
 		if ($edit == 1)
 		{
-			$output .= anchor_element('internal', '', 'rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN, l('unpublish'));
-			$output .= anchor_element('internal', '', 'rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-edit', l('edit'), 'admin/edit/' . $table . '/' . $id, l('edit'));
+			$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/unpublish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish">' . Redaxscript\Language::get('unpublish') . '</a>';
+			$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/' . $table . '/' . $id . '" class="rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-edit">' . Redaxscript\Language::get('edit') . '</a>';
 		}
 		if ($delete == 1)
 		{
-			$output .= anchor_element('internal', '', 'rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN, l('delete'));
+			$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete">' . Redaxscript\Language::get('delete') . '</a>';
 		}
 		$output .= '</div></div>';
 	}
@@ -261,7 +261,7 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($new == 1 && $type == 'modules_not_installed')
 	{
-		$output .= '<li class="rs-admin-item-control rs-admin-link-install">' . anchor_element('internal', '', 'install', l('install'), 'admin/install/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+		$output .= '<li class="rs-admin-item-control rs-admin-link-install"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/install/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('install') . '</a></li>';
 	}
 
 	/* collect contents output */
@@ -270,17 +270,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 2)
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-future-posting"><span>' . l('future_posting') . '</span></li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-future-posting"><span>' . Redaxscript\Language::get('future_posting') . '</span></li>';
 		}
 		if ($edit == 1)
 		{
 			if ($status == 1)
 			{
-				$output .= '<li class="rs-admin-item-control rs-admin-item-unpublish">' . anchor_element('internal', '', '', l('unpublish'), 'admin/unpublish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="rs-admin-item-control rs-admin-item-unpublish"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/unpublish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('unpublish') . '</a></li>';
 			}
 			else if ($status == 0)
 			{
-				$output .= '<li class="rs-admin-item-control rs-admin-item-publish">' . anchor_element('internal', '', '', l('publish'), 'admin/publish/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+				$output .= '<li class="rs-admin-item-control rs-admin-item-publish"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/publish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('publish') . '</a></li>';
 			}
 		}
 	}
@@ -291,11 +291,11 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 	{
 		if ($status == 1)
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-disable">' . anchor_element('internal', '', '', l('disable'), 'admin/disable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-disable"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/disable/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('disable') . '</a></li>';
 		}
 		else if ($status == 0)
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-enable">' . anchor_element('internal', '', '', l('enable'), 'admin/enable/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/enable/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('enable') . '</a></li>';
 		}
 	}
 
@@ -303,17 +303,17 @@ function admin_control($type = '', $table = '', $id = '', $alias = '', $status =
 
 	if ($edit == 1)
 	{
-		$output .= '<li class="rs-admin-item-control rs-admin-item-edit">' . anchor_element('internal', '', '', l('edit'), 'admin/edit/' . $table . '/' . $id) . '</li>';
+		$output .= '<li class="rs-admin-item-control rs-admin-item-edit"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/' . $table . '/' . $id . '">' . Redaxscript\Language::get('edit') . '</a></li>';
 	}
 	if ($delete == 1)
 	{
 		if ($type == 'modules_installed')
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-uninstall">' . anchor_element('internal', '', 'js_confirm', l('uninstall'), 'admin/uninstall/' . $table . '/' . $alias . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/uninstall/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '" class="rs-js-confirm">' . Redaxscript\Language::get('uninstall') . '</a></li>';
 		}
 		else
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-delete">' . anchor_element('internal', '', 'js_confirm', l('delete'), 'admin/delete/' . $table . '/' . $id . '/' . TOKEN) . '</li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-js-confirm">' . Redaxscript\Language::get('delete') . '</a></li>';
 		}
 	}
 

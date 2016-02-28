@@ -3,7 +3,6 @@ error_reporting(E_ERROR || E_PARSE);
 
 /* include core files */
 
-include_once('includes/generate.php');
 include_once('includes/loader.php');
 include_once('includes/migrate.php');
 include_once('includes/startup.php');
@@ -85,7 +84,7 @@ function install()
 
 	/* send login information */
 
-	$urlLink = anchor_element('external', '', '', ROOT, ROOT);
+	$urlLink = '<a href="' . Redaxscript\Registry::get('root') . '"/>' . Redaxscript\Registry::get('root') . '</a>';
 	$toArray = $fromArray = array(
 		$name => $email
 	);

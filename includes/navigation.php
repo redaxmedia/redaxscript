@@ -174,7 +174,7 @@ function navigation_list($table = '', $options = '')
 
 				/* collect item output */
 
-				$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $title, $route, $description);
+				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="rs-admin-link-default">' . $title . '</a>';
 
 				/* collect children list output */
 
@@ -281,7 +281,7 @@ function languages_list($options = '')
 			$class_string .= ' rs-item-active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', l($value, '_index'), FULL_ROUTE . LANGUAGE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
+		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('languageRoute') . $value . '" rel="nofollow">' . Redaxscript\Language::get($value, '_index') . '</a>';
 	}
 
 	/* build id string */
@@ -356,7 +356,7 @@ function templates_list($options = '')
 			$class_string .= ' rs-item-active';
 		}
 		$class_string .= '"';
-		$output .= '<li' . $class_string . '>' . anchor_element('internal', '', '', $value, FULL_ROUTE . TEMPLATE_ROUTE . $value, '', 'rel="nofollow"') . '</li>';
+		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('templateRoute') . $value . '" rel="nofollow">' . $value . '</a>';
 	}
 
 	/* build id string */
