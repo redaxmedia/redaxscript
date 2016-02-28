@@ -35,13 +35,13 @@ function admin_process()
 		/* articles */
 
 		case 'articles':
-			$r['keywords'] = $filter ? $htmlFilter->sanitize($_POST['keywords']) : $_POST['keywords'];
+			$r['keywords'] = $_POST['keywords'];
 			$r['template'] = $specialFilter->sanitize($_POST['template']);
 
 		/* extras */
 
 		case 'extras':
-			$title = $r['title'] = $filter ? $htmlFilter->sanitize($_POST['title']) : $_POST['title'];;
+			$title = $r['title'] = $_POST['title'];
 			if (TABLE_PARAMETER != 'categories')
 			{
 				$r['headline'] = $specialFilter->sanitize($_POST['headline']);
@@ -55,7 +55,7 @@ function admin_process()
 			if (TABLE_PARAMETER == 'comments')
 			{
 				$r['url'] = $urlFilter->sanitize($_POST['url']);
-				$author = $r['author'] = $filter ? $htmlFilter->sanitize($_POST['author']) : $_POST['author'];;
+				$author = $r['author'] = $_POST['author'];
 			}
 			if (TABLE_PARAMETER != 'categories')
 			{
@@ -97,7 +97,7 @@ function admin_process()
 			}
 			if (TABLE_PARAMETER != 'extras' && TABLE_PARAMETER != 'comments')
 			{
-				$r['description'] = $filter ? $htmlFilter->sanitize($_POST['description']) : $_POST['description'];
+				$r['description'] = $_POST['description'];
 			}
 			$token = $_POST['token'];
 			break;
@@ -841,30 +841,26 @@ function admin_update()
 	{
 		$specialFilter = new Redaxscript\Filter\Special();
 		$emailFilter = new Redaxscript\Filter\Email();
-		$htmlFilter = new Redaxscript\Filter\Html();
-		$filter = Redaxscript\Registry::get('filter');
 
 		/* clean post */
 
 		$r['language'] = $specialFilter->sanitize($_POST['language']);
 		$r['template'] = $specialFilter->sanitize($_POST['template']);
-		$r['title'] = $filter ? $htmlFilter->sanitize($_POST['title']) : $_POST['title'];
-		$r['author'] = $filter ? $htmlFilter->sanitize($_POST['author']) : $_POST['author'];
-		$r['copyright'] = $filter ? $htmlFilter->sanitize($_POST['copyright']) : $_POST['copyright'];
-		$r['description'] = $filter ? $htmlFilter->sanitize($_POST['description']) : $_POST['description'];
-		$r['keywords'] = $filter ? $htmlFilter->sanitize($_POST['keywords']) : $_POST['keywords'];
+		$r['title'] = $_POST['title'];
+		$r['author'] = $_POST['author'];
+		$r['copyright'] = $_POST['copyright'];
+		$r['description'] = $_POST['description'];
+		$r['keywords'] = $_POST['keywords'];
 		$r['robots'] = $specialFilter->sanitize($_POST['robots']);
 		$r['email'] = $emailFilter->sanitize($_POST['email']);
-		$r['subject'] = $filter ? $htmlFilter->sanitize($_POST['subject']) : $_POST['subject'];
+		$r['subject'] = $_POST['subject'];
 		$r['notification'] = $specialFilter->sanitize($_POST['notification']);
-		$r['charset'] = $filter ? $htmlFilter->sanitize($_POST['charset']) : $_POST['charset'];
 		$r['charset'] = !$r['charset'] ? 'utf-8' : $r['charset'];
-		$r['divider'] = $filter ? $htmlFilter->sanitize($_POST['divider']) : $_POST['divider'];
-		$r['time'] = $filter ? $htmlFilter->sanitize($_POST['time']) : $_POST['time'];
-		$r['date'] = $filter ? $htmlFilter->sanitize($_POST['date']) : $_POST['date'];
+		$r['divider'] = $_POST['divider'];
+		$r['time'] = $_POST['time'];
+		$r['date'] =  $_POST['date'];
 		$r['homepage'] = $specialFilter->sanitize($_POST['homepage'], 0);
-		$r['limit'] = $specialFilter->sanitize($_POST['limit']);
-		$r['limit'] = !$r['limit'] ? 10 : $r['limit'];
+		$r['limit'] = !$specialFilter->sanitize($_POST['limit']) ? 10 : $specialFilter->sanitize($_POST['limit']);
 		$r['order'] = $specialFilter->sanitize($_POST['order']);
 		$r['pagination'] = $specialFilter->sanitize($_POST['pagination']);
 		$r['moderation'] = $specialFilter->sanitize($_POST['moderation']);
