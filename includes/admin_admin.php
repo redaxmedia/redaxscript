@@ -118,7 +118,7 @@ function admin_panel_list()
 		}
 		if ($settings_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/settings">' . Redaxscript\Language::get('settings') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/settings">' . Redaxscript\Language::get('settings') . '</a></li>';
 		}
 		$output .= '</ul></li>';
 	}
