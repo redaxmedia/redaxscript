@@ -56,7 +56,7 @@ function admin_contents_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . l(TABLE_PARAMETER) . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get(TABLE_PARAMETER) . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
@@ -70,7 +70,7 @@ function admin_contents_list()
 
 	/* collect thead */
 
-	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . l('title') . '</th><th class="';
+	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . Redaxscript\Language::get('title') . '</th><th class="';
 	if (TABLE_PARAMETER != 'extras')
 	{
 		$output .= 'rs-admin-s1o6';
@@ -82,39 +82,39 @@ function admin_contents_list()
 	$output .= ' rs-admin-column-second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$output .= l('identifier');
+		$output .= Redaxscript\Language::get('identifier');
 	}
 	else
 	{
-		$output .= l('alias');
+		$output .= Redaxscript\Language::get('alias');
 	}
 	$output .= '</th>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<th class="rs-admin-column-third">' . l($wording_parent) . '</th>';
+		$output .= '<th class="rs-admin-column-third">' . Redaxscript\Language::get($wording_parent) . '</th>';
 	}
-	$output .= '<th class="rs-admin-column-move rs-admin-column-last">' . l('rank') . '</th></tr></thead>';
+	$output .= '<th class="rs-admin-column-move rs-admin-column-last">' . Redaxscript\Language::get('rank') . '</th></tr></thead>';
 
 	/* collect tfoot */
 
-	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('title') . '</td><td class="rs-admin-column-second">';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('title') . '</td><td class="rs-admin-column-second">';
 	if (TABLE_PARAMETER == 'comments')
 	{
-		$output .= l('identifier');
+		$output .= Redaxscript\Language::get('identifier');
 	}
 	else
 	{
-		$output .= l('alias');
+		$output .= Redaxscript\Language::get('alias');
 	}
 	$output .= '</td>';
 	if (TABLE_PARAMETER != 'extras')
 	{
-		$output .= '<td class="rs-admin-column-third">' . l($wording_parent) . '</td>';
+		$output .= '<td class="rs-admin-column-third">' . Redaxscript\Language::get($wording_parent) . '</td>';
 	}
-	$output .= '<td class="rs-admin-column-move rs-admin-column-last">' . l('rank') . '</td></tr></tfoot>';
+	$output .= '<td class="rs-admin-column-move rs-admin-column-last">' . Redaxscript\Language::get('rank') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l($wording_single . '_no') . l('point');
+		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
 	}
 	else if ($result)
 	{
@@ -139,7 +139,7 @@ function admin_contents_list()
 
 				if (TABLE_PARAMETER == 'comments')
 				{
-					$name = $author . l('colon') . ' ' . strip_tags($text);
+					$name = $author . Redaxscript\Language::get('colon') . ' ' . strip_tags($text);
 				}
 				else
 				{
@@ -188,7 +188,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('none');
+							$output .= Redaxscript\Language::get('none');
 						}
 						$output .= '</td></tr>';
 					}
@@ -205,7 +205,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('uncategorized');
+							$output .= Redaxscript\Language::get('uncategorized');
 						}
 						$output .= '</td></tr>';
 					}
@@ -222,7 +222,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('none');
+							$output .= Redaxscript\Language::get('none');
 						}
 						$output .= '</td></tr>';
 					}
@@ -285,7 +285,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('none');
+							$output .= Redaxscript\Language::get('none');
 						}
 					}
 					if (TABLE_PARAMETER == 'articles')
@@ -297,7 +297,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('uncategorized');
+							$output .= Redaxscript\Language::get('uncategorized');
 						}
 					}
 					if (TABLE_PARAMETER == 'comments')
@@ -309,7 +309,7 @@ function admin_contents_list()
 						}
 						else
 						{
-							$output .= l('none');
+							$output .= Redaxscript\Language::get('none');
 						}
 					}
 					$output .= '</td>';
@@ -327,7 +327,7 @@ function admin_contents_list()
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-up">' . l('up') . '</span>';
+						$output .= '<span class="rs-admin-move-up">' . Redaxscript\Language::get('up') . '</span>';
 					}
 					if ($rank < $rank_desc)
 					{
@@ -335,7 +335,7 @@ function admin_contents_list()
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-down">' . l('down') . '</span>';
+						$output .= '<span class="rs-admin-move-down">' . Redaxscript\Language::get('down') . '</span>';
 					}
 					$output .= '</td>';
 				}
@@ -375,7 +375,7 @@ function admin_contents_list()
 
 		if ($num_rows == $counter)
 		{
-			$error = l('access_no') . l('point');
+			$error = Redaxscript\Language::get('access_no') . Redaxscript\Language::get('point');
 		}
 	}
 
@@ -412,7 +412,7 @@ function admin_groups_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . l('groups') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('groups') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (GROUPS_NEW == 1)
 	{
@@ -422,11 +422,11 @@ function admin_groups_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('filter') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('alias') . '</td><td class="rs-admin-column-last">' . l('filter') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</td><td class="rs-admin-column-last">' . Redaxscript\Language::get('filter') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l('group_no') . l('point');
+		$error = Redaxscript\Language::get('group_no') . Redaxscript\Language::get('point');
 	}
 	else if ($result)
 	{
@@ -509,7 +509,7 @@ function admin_users_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . l('users') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('users') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (USERS_NEW == 1)
 	{
@@ -519,11 +519,11 @@ function admin_users_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('user') . '</th><th class="rs-admin-s1o6 rs-admin-column-third">' . l('groups') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('session') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('user') . '</td><td class="rs-admin-column-third">' . l('groups') . '</td><td class="rs-admin-column-last">' . l('session') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('user') . '</th><th class="rs-admin-s1o6 rs-admin-column-third">' . Redaxscript\Language::get('groups') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . Redaxscript\Language::get('session') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('user') . '</td><td class="rs-admin-column-third">' . Redaxscript\Language::get('groups') . '</td><td class="rs-admin-column-last">' . Redaxscript\Language::get('session') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l('user_no') . l('point');
+		$error = Redaxscript\Language::get('user_no') . Redaxscript\Language::get('point');
 	}
 	else if ($result)
 	{
@@ -563,7 +563,7 @@ function admin_users_list()
 			$output .= '><td class="rs-admin-column-first">';
 			if ($language)
 			{
-				$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . l($language) . '">' . $language . '</span>';
+				$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . Redaxscript\Language::get($language) . '">' . $language . '</span>';
 			}
 			$output .= $name;
 
@@ -595,12 +595,12 @@ function admin_users_list()
 			}
 			else
 			{
-				$output .= l('none');
+				$output .= Redaxscript\Language::get('none');
 			}
 			$output .= '</td><td class="rs-admin-column-last">';
 			if ($first == $last)
 			{
-				$output .= l('none');
+				$output .= Redaxscript\Language::get('none');
 			}
 			else
 			{
@@ -608,12 +608,12 @@ function admin_users_list()
 				$day_ago = date('Y-m-d H:i:s', strtotime('-1 day'));
 				if ($last > $minute_ago)
 				{
-					$output .= l('online');
+					$output .= Redaxscript\Language::get('online');
 				}
 				else if ($last > $day_ago)
 				{
 					$time = date(s('time'), strtotime($last));
-					$output .= l('today') . ' ' . l('at') . ' ' . $time;
+					$output .= Redaxscript\Language::get('today') . ' ' . Redaxscript\Language::get('at') . ' ' . $time;
 				}
 				else
 				{
@@ -659,16 +659,16 @@ function admin_modules_list()
 
 	/* collect listing output */
 
-	$output .= '<h2 class="rs-admin-title-content">' . l('modules') . '</h2>';
+	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('modules') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . l('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . l('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . l('version') . '</th></tr></thead>';
-	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . l('name') . '</td><td class="rs-admin-column-second">' . l('alias') . '</td><td class="rs-admin-column-last">' . l('version') . '</td></tr></tfoot>';
+	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-s1o6 rs-admin-column-last">' . Redaxscript\Language::get('version') . '</th></tr></thead>';
+	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</td><td class="rs-admin-column-last">' . Redaxscript\Language::get('version') . '</td></tr></tfoot>';
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l('module_no') . l('point');
+		$error = Redaxscript\Language::get('module_no') . Redaxscript\Language::get('point');
 	}
 	else if ($result)
 	{
@@ -734,7 +734,7 @@ function admin_modules_list()
 
 		if ($num_rows == $counter)
 		{
-			$error = l('access_no') . l('point');
+			$error = Redaxscript\Language::get('access_no') . Redaxscript\Language::get('point');
 		}
 	}
 
@@ -764,7 +764,7 @@ function admin_modules_list()
 		}
 		if ($modules_not_installed_array)
 		{
-			$output .= '<tbody><tr class="rs-row-group"><td colspan="3">' . l('install') . '</td></tr>';
+			$output .= '<tbody><tr class="rs-row-group"><td colspan="3">' . Redaxscript\Language::get('install') . '</td></tr>';
 			foreach ($modules_not_installed_array as $alias)
 			{
 				/* collect table row */

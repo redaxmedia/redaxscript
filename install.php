@@ -35,7 +35,7 @@ else
 
 	/* define meta */
 
-	define('TITLE', l('installation'));
+	define('TITLE', Redaxscript\Language::get('installation'));
 	define('ROBOTS', 'none');
 
 	/* module init */
@@ -88,13 +88,13 @@ function install()
 	$toArray = $fromArray = array(
 		$name => $email
 	);
-	$subject = l('installation');
+	$subject = Redaxscript\Language::get('installation');
 	$bodyArray = array(
-		'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+		'<strong>' . Redaxscript\Language::get('user') . Redaxscript\Language::get('colon') . '</strong> ' . $user,
 		'<br />',
-		'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
+		'<strong>' . Redaxscript\Language::get('password') . Redaxscript\Language::get('colon') . '</strong> ' . $password,
 		'<br />',
-		'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink
+		'<strong>' . Redaxscript\Language::get('url') . Redaxscript\Language::get('colon') . '</strong> ' . $urlLink
 	);
 
 	/* mailer object */
@@ -306,14 +306,14 @@ function install_notification()
 
 	if (is_writable('config.php') == '')
 	{
-		$error = l('file_permission_grant') . l('colon') . ' config.php';
+		$error = Redaxscript\Language::get('file_permission_grant') . Redaxscript\Language::get('colon') . ' config.php';
 	}
 	else if (!$registry->get('dbStatus'))
 	{
-		$error = l('database_failed');
+		$error = Redaxscript\Language::get('database_failed');
 		if ($registry->get('dbException'))
 		{
-			$error .= l('colon') . ' ' . $registry->get('dbException');
+			$error .= Redaxscript\Language::get('colon') . ' ' . $registry->get('dbException');
 		}
 	}
 
@@ -325,31 +325,31 @@ function install_notification()
 		$emailValidator = new Redaxscript\Validator\Email();
 		if ($d_type != 'sqlite' && $name == '')
 		{
-			$error = l('name_empty');
+			$error = Redaxscript\Language::get('name_empty');
 		}
 		else if ($d_type != 'sqlite' && $user == '')
 		{
-			$error = l('user_empty');
+			$error = Redaxscript\Language::get('user_empty');
 		}
 		else if ($d_type != 'sqlite' && $password == '')
 		{
-			$error = l('password_empty');
+			$error = Redaxscript\Language::get('password_empty');
 		}
 		else if ($email == '')
 		{
-			$error = l('email_empty');
+			$error = Redaxscript\Language::get('email_empty');
 		}
 		else if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
-			$error = l('user_incorrect');
+			$error = Redaxscript\Language::get('user_incorrect');
 		}
 		else if ($loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
-			$error = l('password_incorrect');
+			$error = Redaxscript\Language::get('password_incorrect');
 		}
 		else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
-			$error = l('email_incorrect');
+			$error = Redaxscript\Language::get('email_incorrect');
 		}
 	}
 
@@ -357,14 +357,14 @@ function install_notification()
 
 	if ($error)
 	{
-		$output = '<div class="rs-box-note rs-note-error">' . $error . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . $error . Redaxscript\Language::get('point') . '</div>';
 	}
 
 	/* handle success */
 
 	else if (check_install() == 1)
 	{
-		$output = '<div class="rs-box-note rs-note-success">' . l('installation_completed') . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-success">' . Redaxscript\Language::get('installation_completed') . Redaxscript\Language::get('point') . '</div>';
 	}
 	echo $output;
 }
@@ -420,7 +420,7 @@ function head()
 	{
 		$output .= '<meta http-equiv="refresh" content="2; url=' . ROOT . '" />' . PHP_EOL;
 	}
-	$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
+	$output .= '<meta name="generator" content="' . Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . '" />' . PHP_EOL;
 	$output .= '<meta name="robots" content="' . ROBOTS . '" />' . PHP_EOL;
 	echo $output;
 }
@@ -444,7 +444,7 @@ function router()
 
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
-		$output = '<div class="rs-box-note rs-note-error">' . l('token_incorrect') . l('point') . '</div>';
+		$output = '<div class="rs-box-note rs-note-error">' . Redaxscript\Language::get('token_incorrect') . Redaxscript\Language::get('point') . '</div>';
 		echo $output;
 		return;
 	}

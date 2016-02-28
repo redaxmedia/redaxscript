@@ -46,15 +46,15 @@ function password_reset_post()
 
 	if ($post_id == '' || $post_password == '')
 	{
-		$error = l('input_incorrect');
+		$error = Redaxscript\Language::get('input_incorrect');
 	}
 	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('captcha_incorrect');
+		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
 	else if ($my_id == '' || sha1($my_password) != $post_password)
 	{
-		$error = l('access_no');
+		$error = Redaxscript\Language::get('access_no');
 	}
 	else
 	{
@@ -68,11 +68,11 @@ function password_reset_post()
 		$fromArray = array(
 			s('author') => s('email')
 		);
-		$subject = l('password_new');
+		$subject = Redaxscript\Language::get('password_new');
 		$bodyArray = array(
-			'<strong>' . l('password_new') . l('colon') . '</strong> ' . $password,
+			'<strong>' . Redaxscript\Language::get('password_new') . Redaxscript\Language::get('colon') . '</strong> ' . $password,
 			'<br />',
-			'<strong>' . l('login') . l('colon') . '</strong> ' . $loginLink
+			'<strong>' . Redaxscript\Language::get('login') . Redaxscript\Language::get('colon') . '</strong> ' . $loginLink
 		);
 
 		/* mailer object */

@@ -52,35 +52,35 @@ function login_post()
 
 	if ($post_user == '')
 	{
-		$error = l('user_empty');
+		$error = Redaxscript\Language::get('user_empty');
 	}
 	else if ($post_password == '')
 	{
-		$error = l('password_empty');
+		$error = Redaxscript\Language::get('password_empty');
 	}
 	else if ($login_by_email == 0 && $loginValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('user_incorrect');
+		$error = Redaxscript\Language::get('user_incorrect');
 	}
 	else if ($login_by_email == 1 && $emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('email_incorrect');
+		$error = Redaxscript\Language::get('email_incorrect');
 	}
 	else if ($passwordValidator->validate($post_password, $my_password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('password_incorrect');
+		$error = Redaxscript\Language::get('password_incorrect');
 	}
 	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('captcha_incorrect');
+		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
 	else if ($my_id == '')
 	{
-		$error = l('login_incorrect');
+		$error = Redaxscript\Language::get('login_incorrect');
 	}
 	else if ($my_status == 0)
 	{
-		$error = l('access_no');
+		$error = Redaxscript\Language::get('access_no');
 	}
 	else
 	{

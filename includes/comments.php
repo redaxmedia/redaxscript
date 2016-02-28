@@ -63,7 +63,7 @@ function comments($article = '', $route = '')
 
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l('comment_no');
+		$error = Redaxscript\Language::get('comment_no');
 	}
 
 	/* collect output */
@@ -123,7 +123,7 @@ function comments($article = '', $route = '')
 
 		if ($num_rows_active == $counter)
 		{
-			$error = l('access_no');
+			$error = Redaxscript\Language::get('access_no');
 		}
 	}
 
@@ -131,7 +131,7 @@ function comments($article = '', $route = '')
 
 	if ($error)
 	{
-		$output = '<div class="rs-box-comment-error">' . $error . l('point') . '</div>';
+		$output = '<div class="rs-box-comment-error">' . $error . Redaxscript\Language::get('point') . '</div>';
 	}
 	$output .= Redaxscript\Hook::trigger('commentEnd');
 	echo $output;
@@ -186,39 +186,39 @@ function comment_post()
 
 	if ($author == '')
 	{
-		$error = l('author_empty');
+		$error = Redaxscript\Language::get('author_empty');
 	}
 	else if ($email == '')
 	{
-		$error = l('email_empty');
+		$error = Redaxscript\Language::get('email_empty');
 	}
 	else if ($text == '')
 	{
-		$error = l('comment_empty');
+		$error = Redaxscript\Language::get('comment_empty');
 	}
 	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('email_incorrect');
+		$error = Redaxscript\Language::get('email_incorrect');
 	}
 	else if ($url && $urlValidator->validate($url) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('url_incorrect');
+		$error = Redaxscript\Language::get('url_incorrect');
 	}
 	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('captcha_incorrect');
+		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
 	else
 	{
 		if (COMMENTS_NEW == 0 && s('moderation') == 1)
 		{
 			$r['status'] = 0;
-			$success = l('comment_moderation');
+			$success = Redaxscript\Language::get('comment_moderation');
 		}
 		else
 		{
 			$r['status'] = 1;
-			$success = l('comment_sent');
+			$success = Redaxscript\Language::get('comment_sent');
 		}
 
 		/* send comment notification */
@@ -243,18 +243,18 @@ function comment_post()
 			$fromArray = array(
 				$author => $email
 			);
-			$subject = l('comment_new');
+			$subject = Redaxscript\Language::get('comment_new');
 			$bodyArray = array(
-				'<strong>' . l('author') . l('colon') . '</strong> ' . $author,
+				'<strong>' . Redaxscript\Language::get('author') . Redaxscript\Language::get('colon') . '</strong> ' . $author,
 				'<br />',
-				'<strong>' . l('email') . l('colon') . '</strong> ' . $emailLink,
+				'<strong>' . Redaxscript\Language::get('email') . Redaxscript\Language::get('colon') . '</strong> ' . $emailLink,
 				'<br />',
-				'<strong>' . l('url') . l('colon') . '</strong> ' . $urlLink,
+				'<strong>' . Redaxscript\Language::get('url') . Redaxscript\Language::get('colon') . '</strong> ' . $urlLink,
 				'<br />',
-				'<strong>' . l('article') . l('colon') . '</strong> ' . $articleLink,
+				'<strong>' . Redaxscript\Language::get('article') . Redaxscript\Language::get('colon') . '</strong> ' . $articleLink,
 				'<br />',
 				'<br />',
-				'<strong>' . l('comment') . l('colon') . '</strong> ' . $text
+				'<strong>' . Redaxscript\Language::get('comment') . Redaxscript\Language::get('colon') . '</strong> ' . $text
 			);
 
 			/* mailer object */

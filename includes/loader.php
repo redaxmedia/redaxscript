@@ -453,8 +453,8 @@ function scripts_transport($minify = '')
 
 	/* generator and version */
 
-	$output .= 'rs.generator = \'' . l('name', '_package') . ' ' . l('version', '_package') . '\';' . PHP_EOL;
-	$output .= 'rs.version = \'' . l('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rs.generator = \'' . Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . '\';' . PHP_EOL;
+	$output .= 'rs.version = \'' . Redaxscript\Language::get('version', '_package') . '\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* minify */

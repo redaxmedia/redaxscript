@@ -234,7 +234,7 @@ function admin_process()
 		case 'extras':
 			if ($title == '')
 			{
-				$error = l('title_empty');
+				$error = Redaxscript\Language::get('title_empty');
 			}
 			if (TABLE_PARAMETER == 'categories')
 			{
@@ -246,11 +246,11 @@ function admin_process()
 			}
 			if ($opponent_id)
 			{
-				$error = l('alias_exists');
+				$error = Redaxscript\Language::get('alias_exists');
 			}
 			if (TABLE_PARAMETER != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript\Validator\ValidatorInterface::PASSED || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
-				$error = l('alias_incorrect');
+				$error = Redaxscript\Language::get('alias_incorrect');
 			}
 
 		/* groups */
@@ -258,7 +258,7 @@ function admin_process()
 		case 'groups':
 			if ($alias == '')
 			{
-				$error = l('alias_empty');
+				$error = Redaxscript\Language::get('alias_empty');
 			}
 			else
 			{
@@ -267,7 +267,7 @@ function admin_process()
 			}
 			if ($id_alias && strcasecmp($alias_id, $alias) < 0)
 			{
-				$error = l('alias_exists');
+				$error = Redaxscript\Language::get('alias_exists');
 			}
 	}
 
@@ -280,7 +280,7 @@ function admin_process()
 		case 'comments':
 			if ($text == '')
 			{
-				$error = l('text_empty');
+				$error = Redaxscript\Language::get('text_empty');
 			}
 			break;
 		case 'groups':
@@ -288,7 +288,7 @@ function admin_process()
 		case 'modules':
 			if ($name == '')
 			{
-				$error = l('name_empty');
+				$error = Redaxscript\Language::get('name_empty');
 			}
 			break;
 	}
@@ -299,7 +299,7 @@ function admin_process()
 	{
 		if ($user == '')
 		{
-			$error = l('user_incorrect');
+			$error = Redaxscript\Language::get('user_incorrect');
 		}
 		else
 		{
@@ -308,21 +308,21 @@ function admin_process()
 		}
 		if ($id_user && strcasecmp($user_id, $user) < 0)
 		{
-			$error = l('user_exists');
+			$error = Redaxscript\Language::get('user_exists');
 		}
 		if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
-			$error = l('user_incorrect');
+			$error = Redaxscript\Language::get('user_incorrect');
 		}
 		if ($password_check == 1)
 		{
 			if ($password == '')
 			{
-				$error = l('password_empty');
+				$error = Redaxscript\Language::get('password_empty');
 			}
 			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 			{
-				$error = l('password_incorrect');
+				$error = Redaxscript\Language::get('password_incorrect');
 			}
 		}
 	}
@@ -335,12 +335,12 @@ function admin_process()
 		case 'comments':
 			if ($author == '')
 			{
-				$error = l('author_empty');
+				$error = Redaxscript\Language::get('author_empty');
 			}
 		case 'users':
 			if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 			{
-				$error = l('email_incorrect');
+				$error = Redaxscript\Language::get('email_incorrect');
 			}
 	}
 	$route = 'admin';

@@ -21,9 +21,9 @@ function search_post()
 
 	/* validate post */
 
-	if (strlen($search_terms) < 3 || $search_terms == l('search_terms'))
+	if (strlen($search_terms) < 3 || $search_terms == Redaxscript\Language::get('search_terms'))
 	{
-		$error = l('input_incorrect');
+		$error = Redaxscript\Language::get('input_incorrect');
 	}
 	else
 	{
@@ -54,12 +54,12 @@ function search_post()
 		$num_rows = count($result);
 		if (!$result)
 		{
-			$error = l('search_no');
+			$error = Redaxscript\Language::get('search_no');
 		}
 		else if ($result)
 		{
 			$accessValidator = new Redaxscript\Validator\Access();
-			$output = '<h2 class="rs-title-content rs-title-result">' . l('search') . '</h2>';
+			$output = '<h2 class="rs-title-content rs-title-result">' . Redaxscript\Language::get('search') . '</h2>';
 			$output .= '<ol class="rs-list-result">';
 			foreach ($result as $r)
 			{
@@ -111,7 +111,7 @@ function search_post()
 
 			if ($num_rows == $counter)
 			{
-				$error = l('access_no');
+				$error = Redaxscript\Language::get('access_no');
 			}
 		}
 	}

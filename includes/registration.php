@@ -42,43 +42,43 @@ function registration_post()
 
 	if ($name == '')
 	{
-		$error = l('name_empty');
+		$error = Redaxscript\Language::get('name_empty');
 	}
 	else if ($user == '')
 	{
-		$error = l('user_empty');
+		$error = Redaxscript\Language::get('user_empty');
 	}
 	else if ($email == '')
 	{
-		$error = l('email_empty');
+		$error = Redaxscript\Language::get('email_empty');
 	}
 	else if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('user_incorrect');
+		$error = Redaxscript\Language::get('user_incorrect');
 	}
 	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('email_incorrect');
+		$error = Redaxscript\Language::get('email_incorrect');
 	}
 	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('captcha_incorrect');
+		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
 	else if (Redaxscript\Db::forTablePrefix('users')->where('user', $user)->findOne()->id)
 	{
-		$error = l('user_exists');
+		$error = Redaxscript\Language::get('user_exists');
 	}
 	else
 	{
 		if (USERS_NEW == 0 && s('verification') == 1)
 		{
 			$r['status'] = 0;
-			$success = l('registration_verification');
+			$success = Redaxscript\Language::get('registration_verification');
 		}
 		else
 		{
 			$r['status'] = 1;
-			$success = l('registration_sent');
+			$success = Redaxscript\Language::get('registration_sent');
 		}
 
 		/* send login information */
@@ -95,15 +95,15 @@ function registration_post()
 		$fromArray = array(
 			$author => $email
 		);
-		$subject = l('registration');
+		$subject = Redaxscript\Language::get('registration');
 		$bodyArray = array(
-			'<strong>' . l('name') . l('colon') . '</strong> ' . $name,
+			'<strong>' . Redaxscript\Language::get('name') . Redaxscript\Language::get('colon') . '</strong> ' . $name,
 			'<br />',
-			'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+			'<strong>' . Redaxscript\Language::get('user') . Redaxscript\Language::get('colon') . '</strong> ' . $user,
 			'<br />',
-			'<strong>' . l('password') . l('colon') . '</strong> ' . $password,
+			'<strong>' . Redaxscript\Language::get('password') . Redaxscript\Language::get('colon') . '</strong> ' . $password,
 			'<br />',
-			'<strong>' . l('login') . l('colon') . '<strong> ' . $loginLink
+			'<strong>' . Redaxscript\Language::get('login') . Redaxscript\Language::get('colon') . '<strong> ' . $loginLink
 		);
 
 		/* mailer object */

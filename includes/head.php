@@ -148,7 +148,7 @@ function head($type = '')
 
 		/* collect metadata */
 
-		$output .= '<meta name="generator" content="' . l('name', '_package') . ' ' . l('version', '_package') . '" />' . PHP_EOL;
+		$output .= '<meta name="generator" content="' . Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . '" />' . PHP_EOL;
 		if ($description) {
 			$output .= '<meta name="description" content="' . $description . '" />' . PHP_EOL;
 		}

@@ -62,29 +62,6 @@ function clean($input = null, $mode = null)
 }
 
 /**
- * language shortcut
- *
- * @since 2.2.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Henry Ruhs
- *
- * @param string $key
- * @param string $index
- *
- * @return string
- */
-
-function l($key = null, $index = null)
-{
-	$language = Redaxscript\Language::getInstance();
-	$output = $language->get($key, $index);
-	return $output;
-}
-
-/**
  * settings shortcut
  *
  * @since 2.2.0

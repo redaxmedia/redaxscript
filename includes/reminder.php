@@ -27,19 +27,19 @@ function reminder_post()
 
 	if ($email == '')
 	{
-		$error = l('email_empty');
+		$error = Redaxscript\Language::get('email_empty');
 	}
 	else if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('email_incorrect');
+		$error = Redaxscript\Language::get('email_incorrect');
 	}
 	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$error = l('captcha_incorrect');
+		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
 	else if (Redaxscript\Db::forTablePrefix('users')->where('email', $email)->findOne()->id == '')
 	{
-		$error = l('email_unknown');
+		$error = Redaxscript\Language::get('email_unknown');
 	}
 	else
 	{
@@ -71,11 +71,11 @@ function reminder_post()
 				$fromArray = array(
 					s('author') => s('email')
 				);
-				$subject = l('recovery');
+				$subject = Redaxscript\Language::get('recovery');
 				$bodyArray = array(
-					'<strong>' . l('user') . l('colon') . '</strong> ' . $user,
+					'<strong>' . Redaxscript\Language::get('user') . Redaxscript\Language::get('colon') . '</strong> ' . $user,
 					'<br />',
-					'<strong>' . l('password_reset') . l('colon') . '</strong> ' . $passwordResetLink
+					'<strong>' . Redaxscript\Language::get('password_reset') . Redaxscript\Language::get('colon') . '</strong> ' . $passwordResetLink
 				);
 
 				/* mailer object */

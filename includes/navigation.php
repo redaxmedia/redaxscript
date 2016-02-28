@@ -118,7 +118,7 @@ function navigation_list($table = '', $options = '')
 	$num_rows = count($result);
 	if ($result == '' || $num_rows == '')
 	{
-		$error = l($wording_single . '_no') . l('point');
+		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
 	}
 	else if ($result)
 	{
@@ -154,7 +154,7 @@ function navigation_list($table = '', $options = '')
 
 				if ($table == 'comments')
 				{
-					$description = $title = $author . l('colon') . ' ' . strip_tags($text);
+					$description = $title = $author . Redaxscript\Language::get('colon') . ' ' . strip_tags($text);
 				}
 				if ($description == '')
 				{
@@ -199,7 +199,7 @@ function navigation_list($table = '', $options = '')
 
 		if ($num_rows == $counter)
 		{
-			$error = l('access_no') . l('point');
+			$error = Redaxscript\Language::get('access_no') . Redaxscript\Language::get('point');
 		}
 	}
 

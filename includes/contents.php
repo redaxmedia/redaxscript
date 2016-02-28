@@ -109,11 +109,11 @@ function contents()
 
 	if (CATEGORY && $num_rows == '')
 	{
-		$error = l('article_no');
+		$error = Redaxscript\Language::get('article_no');
 	}
 	else if ($result == '' || $num_rows_active == '' || CONTENT_ERROR)
 	{
-		$error = l('content_not_found');
+		$error = Redaxscript\Language::get('content_not_found');
 	}
 
 	/* collect output */
@@ -418,14 +418,14 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	if ($table == 'articles')
 	{
-		$output .= '<span class="rs-infoline-posted-by">' . l('posted_by') . ' ' . $author . '</span>';
-		$output .= '<span class="rs-infoline-on"> ' . l('on') . ' </span>';
+		$output .= '<span class="rs-infoline-posted-by">' . Redaxscript\Language::get('posted_by') . ' ' . $author . '</span>';
+		$output .= '<span class="rs-infoline-on"> ' . Redaxscript\Language::get('on') . ' </span>';
 	}
 
 	/* collect date and time output */
 
 	$output .= '<span class="rs-infoline-date">' . $date . '</span>';
-	$output .= '<span class="rs-infoline-at"> ' . l('at') . ' </span>';
+	$output .= '<span class="rs-infoline-at"> ' . Redaxscript\Language::get('at') . ' </span>';
 	$output .= '<span class="rs-infoline-time">' . $time . '</span>';
 
 	/* collect comment output */
@@ -435,11 +435,11 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 		$output .= '<span class="rs-divider">' . s('divider') . '</span><span class="rs-infoline-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
-			$output .= l('comment');
+			$output .= Redaxscript\Language::get('comment');
 		}
 		else
 		{
-			$output .= l('comments');
+			$output .= Redaxscript\Language::get('comments');
 		}
 		$output .= '</span>';
 	}

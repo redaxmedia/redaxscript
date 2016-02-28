@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span>' . l('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span>' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/categories">' . Redaxscript\Language::get('categories') . '</a></li>';
@@ -81,7 +81,7 @@ function admin_panel_list()
 	if ($access_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span>' . l('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span>' . Redaxscript\Language::get('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
 		if (MY_ID)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
@@ -102,7 +102,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span>' . l('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span>' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/modules">' . Redaxscript\Language::get('modules') . '</a></li>';
@@ -210,11 +210,11 @@ function admin_notification()
 	{
 		if (file_exists('install.php'))
 		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . l('file_remove') . l('colon') . ' install.php' . l('point') . '</div>';
+			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</div>';
 		}
 		if (is_writable('config.php'))
 		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . l('file_permission_revoke') . l('colon') . ' config.php' . l('point') . '</div>';
+			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_permission_revoke') . Redaxscript\Language::get('colon') . ' config.php' . Redaxscript\Language::get('point') . '</div>';
 		}
 	}
 	$output .= Redaxscript\Hook::trigger('adminNotificationEnd');
