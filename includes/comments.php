@@ -38,7 +38,7 @@ function comments($article = '', $route = '')
 	if ($result)
 	{
 		$num_rows = count($result);
-		$sub_maximum = ceil($num_rows / s('limit'));
+		$sub_maximum = ceil($num_rows / Redaxscript\Db::getSettings('limit'));
 		$sub_active = LAST_SUB_PARAMETER;
 
 		/* sub parameter */
@@ -49,10 +49,10 @@ function comments($article = '', $route = '')
 		}
 		else
 		{
-			$offset_string = ($sub_active - 1) * s('limit') . ', ';
+			$offset_string = ($sub_active - 1) * Redaxscript\Db::getSettings('limit') . ', ';
 		}
 	}
-	$comments->limit($offset_string . s('limit'));
+	$comments->limit($offset_string . Redaxscript\Db::getSettings('limit'));
 
 	/* query result */
 
@@ -138,7 +138,7 @@ function comments($article = '', $route = '')
 
 	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && s('pagination') == 1)
+	if ($sub_maximum > 1 && Redaxscript\Db::getSettings('pagination') == 1)
 	{
 		pagination($sub_active, $sub_maximum, $route);
 	}
@@ -210,7 +210,7 @@ function comment_post()
 	}
 	else
 	{
-		if (COMMENTS_NEW == 0 && s('moderation') == 1)
+		if (COMMENTS_NEW == 0 && Redaxscript\Db::getSettings('moderation') == 1)
 		{
 			$r['status'] = 0;
 			$success = Redaxscript\Language::get('comment_moderation');
@@ -223,7 +223,7 @@ function comment_post()
 
 		/* send comment notification */
 
-		if (s('notification') == 1)
+		if (Redaxscript\Db::getSettings('notification') == 1)
 		{
 			/* prepare body parts */
 
@@ -238,7 +238,7 @@ function comment_post()
 			/* prepare mail inputs */
 
 			$toArray = array(
-				s('author') => s('email')
+				s('author') => Redaxscript\Db::getSettings('email')
 			);
 			$fromArray = array(
 				$author => $email

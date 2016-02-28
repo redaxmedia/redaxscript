@@ -70,7 +70,7 @@ function registration_post()
 	}
 	else
 	{
-		if (USERS_NEW == 0 && s('verification') == 1)
+		if (USERS_NEW == 0 && Redaxscript\Db::getSettings('verification') == 1)
 		{
 			$r['status'] = 0;
 			$success = Redaxscript\Language::get('registration_verification');
@@ -88,9 +88,9 @@ function registration_post()
 		$toArray = array(
 			$name => $email
 		);
-		if (s('notification') == 1)
+		if (Redaxscript\Db::getSettings('notification') == 1)
 		{
-			$toArray[s('author')] = s('email');
+			$toArray[Redaxscript\Db::getSettings('author')] = Redaxscript\Db::getSettings('email');
 		}
 		$fromArray = array(
 			$author => $email

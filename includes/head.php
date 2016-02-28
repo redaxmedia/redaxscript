@@ -69,7 +69,7 @@ function head($type = '')
 	}
 	else if ($title == '')
 	{
-		$title = s('title');
+		$title = Redaxscript\Db::getSettings('title');
 	}
 
 	/* prepare description */
@@ -80,7 +80,7 @@ function head($type = '')
 	}
 	else if ($description == '')
 	{
-		$description = s('description');
+		$description = Redaxscript\Db::getSettings('description');
 	}
 
 	/* prepare keywords */
@@ -91,7 +91,7 @@ function head($type = '')
 	}
 	else if ($keywords == '')
 	{
-		$keywords = s('keywords');
+		$keywords = Redaxscript\Db::getSettings('keywords');
 	}
 
 	/* prepare robots */
@@ -106,7 +106,7 @@ function head($type = '')
 	}
 	else
 	{
-		$robots = s('robots');
+		$robots = Redaxscript\Db::getSettings('robots');
 	}
 
 	/* collect meta output */
@@ -117,7 +117,7 @@ function head($type = '')
 	}
 	if ($type == '' || $type == 'meta')
 	{
-		$output .= '<meta charset="' . s('charset') . '" />' . PHP_EOL;
+		$output .= '<meta charset="' . Redaxscript\Db::getSettings('charset') . '" />' . PHP_EOL;
 	}
 
 	/* collect title */
@@ -126,7 +126,7 @@ function head($type = '')
 	{
 		if ($title && $description)
 		{
-			$divider = s('divider');
+			$divider = Redaxscript\Db::getSettings('divider');
 		}
 		$output .= '<title>' . $title . $divider . $description . '</title>' . PHP_EOL;
 	}
@@ -142,8 +142,8 @@ function head($type = '')
 
 		/* collect author */
 
-		if (s('author')) {
-			$output .= '<meta name="author" content="' . s('author') . '" />' . PHP_EOL;
+		if (Redaxscript\Db::getSettings('author')) {
+			$output .= '<meta name="author" content="' . Redaxscript\Db::getSettings('author') . '" />' . PHP_EOL;
 		}
 
 		/* collect metadata */

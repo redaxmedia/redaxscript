@@ -612,12 +612,12 @@ function admin_users_list()
 				}
 				else if ($last > $day_ago)
 				{
-					$time = date(s('time'), strtotime($last));
+					$time = date(Redaxscript\Db::getSettings('time'), strtotime($last));
 					$output .= Redaxscript\Language::get('today') . ' ' . Redaxscript\Language::get('at') . ' ' . $time;
 				}
 				else
 				{
-					$date = date(s('date'), strtotime($last));
+					$date = date(Redaxscript\Db::getSettings('date'), strtotime($last));
 					$output .= $date;
 				}
 			}

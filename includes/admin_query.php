@@ -789,7 +789,7 @@ function admin_delete()
 
 		/* reset homepage */
 
-		if (ID_PARAMETER == s('homepage'))
+		if (ID_PARAMETER == Redaxscript\Db::getSettings('homepage'))
 		{
 			Redaxscript\Db::forTablePrefix('settings')
 				->where('name', 'homepage')

@@ -60,24 +60,3 @@ function clean($input = null, $mode = null)
 	$output = stripslashes($output);
 	return $output;
 }
-
-/**
- * settings shortcut
- *
- * @since 2.2.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Henry Ruhs
- *
- * @param string $key
- *
- * @return string
- */
-
-function s($key = null)
-{
-	$output = Redaxscript\Db::getSettings($key);
-	return $output;
-}

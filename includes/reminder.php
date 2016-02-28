@@ -69,7 +69,7 @@ function reminder_post()
 					$name => $email
 				);
 				$fromArray = array(
-					s('author') => s('email')
+					s('author') => Redaxscript\Db::getSettings('email')
 				);
 				$subject = Redaxscript\Language::get('recovery');
 				$bodyArray = array(

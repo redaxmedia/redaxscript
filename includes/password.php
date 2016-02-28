@@ -66,7 +66,7 @@ function password_reset_post()
 			$my_name => $my_email
 		);
 		$fromArray = array(
-			s('author') => s('email')
+			s('author') => Redaxscript\Db::getSettings('email')
 		);
 		$subject = Redaxscript\Language::get('password_new');
 		$bodyArray = array(

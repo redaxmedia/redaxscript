@@ -70,7 +70,7 @@ function startup()
 
 	if (function_exists('ini_set') && Redaxscript\Registry::get('dbStatus') === 2)
 	{
-		ini_set('default_charset', s('charset'));
+		ini_set('default_charset', Redaxscript\Db::getSettings('charset'));
 	}
 
 	/* define parameter */
@@ -130,10 +130,10 @@ function startup()
 		{
 			/* check for homepage */
 
-			if (s('homepage') > 0)
+			if (Redaxscript\Db::getSettings('homepage') > 0)
 			{
 				$table = 'articles';
-				$id = s('homepage');
+				$id = Redaxscript\Db::getSettings('homepage');
 			}
 
 			/* else fallback */
@@ -145,11 +145,11 @@ function startup()
 
 				/* check order */
 
-				if (s('order') == 'asc')
+				if (Redaxscript\Db::getSettings('order') == 'asc')
 				{
 					$rank = Redaxscript\Db::forTablePrefix($table)->min('rank');
 				}
-				else if (s('order') == 'desc')
+				else if (Redaxscript\Db::getSettings('order') == 'desc')
 				{
 					$rank = Redaxscript\Db::forTablePrefix($table)->max('rank');
 				}
