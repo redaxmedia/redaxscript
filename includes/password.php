@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * password reset post
@@ -14,13 +13,14 @@ use Redaxscript\Language;
 
 function password_reset_post()
 {
+	$specialFilter = new Redaxscript\Filter\Special();
 	$captchaValidator = new Redaxscript\Validator\Captcha();
 
 	/* clean post */
 
-	$post_id = clean($_POST['id'], 0);
-	$post_password = clean($_POST['password'], 0);
-	$password = substr(sha1(uniqid()), 0, 10);
+	$post_id = $specialFilter->sanitize($_POST['id']);
+	$post_password = $specialFilter->sanitize($_POST['password']);
+	$password = uniqid();
 	$task = $_POST['task'];
 	$solution = $_POST['solution'];
 
@@ -97,7 +97,7 @@ function password_reset_post()
 
 	/* handle error */
 
-	$messenger = new \Redaxscript\Messenger();
+	$messenger = new Redaxscript\Messenger();
 	if ($error)
 	{
 		if ($post_id && $post_password)
@@ -111,13 +111,13 @@ function password_reset_post()
 
 		/* show error */
 
-		echo $messenger->setAction(Language::get('back'), $back_route)->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), $back_route)->error($error, Redaxscript\Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('password_sent'), Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('login'), 'login')->doRedirect()->success(Redaxscript\Language::get('password_sent'), Redaxscript\Language::get('operation_completed'));
 	}
 }

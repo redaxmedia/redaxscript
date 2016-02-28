@@ -9,7 +9,6 @@ filter:
   - includes/head.php
   - includes/loader.php
   - includes/login.php
-  - includes/migrate.php
   - includes/navigation.php
   - includes/password.php
   - includes/query.php

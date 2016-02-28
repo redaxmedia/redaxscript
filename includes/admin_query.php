@@ -1,6 +1,4 @@
 <?php
-use Redaxscript\Language;
-use Redaxscript\Messenger;
 
 /**
  * admin process
@@ -15,10 +13,15 @@ use Redaxscript\Messenger;
 
 function admin_process()
 {
+	$aliasFilter = new Redaxscript\Filter\Alias();
+	$emailFilter = new Redaxscript\Filter\Email();
+	$urlFilter = new Redaxscript\Filter\Url();
+	$htmlFilter = new Redaxscript\Filter\Html();
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$specialFilter = new Redaxscript\Filter\Special;
-	$messenger = new Messenger();
+	$messenger = new Redaxscript\Messenger();
+	$filter = Redaxscript\Registry::get('filter');
 
 	/* clean post */
 
@@ -27,23 +30,23 @@ function admin_process()
 		/* categories */
 
 		case 'categories':
-			$parent = $r['parent'] = clean($_POST['parent'], 0);
+			$parent = $r['parent'] = $specialFilter->sanitize($_POST['parent']);
 
 		/* articles */
 
 		case 'articles':
-			$r['keywords'] = clean($_POST['keywords'], 5);
-			$r['template'] = clean($_POST['template'], 0);
+			$r['keywords'] = $filter ? $htmlFilter->sanitize($_POST['keywords']) : $_POST['keywords'];
+			$r['template'] = $specialFilter->sanitize($_POST['template']);
 
 		/* extras */
 
 		case 'extras':
-			$title = $r['title'] = clean($_POST['title'], 5);
+			$title = $r['title'] = $filter ? $htmlFilter->sanitize($_POST['title']) : $_POST['title'];;
 			if (TABLE_PARAMETER != 'categories')
 			{
-				$r['headline'] = clean($_POST['headline'], 0);
+				$r['headline'] = $specialFilter->sanitize($_POST['headline']);
 			}
-			$r['sibling'] = clean($_POST['sibling'], 0);
+			$r['sibling'] = $specialFilter->sanitize($_POST['sibling']);
 			$author = $r['author'] = MY_USER;
 
 		/* comments */
@@ -51,22 +54,22 @@ function admin_process()
 		case 'comments':
 			if (TABLE_PARAMETER == 'comments')
 			{
-				$r['url'] = clean($_POST['url'], 4);
-				$author = $r['author'] = clean($_POST['author'], 0);
+				$r['url'] = $urlFilter->sanitize($_POST['url']);
+				$author = $r['author'] = $filter ? $htmlFilter->sanitize($_POST['author']) : $_POST['author'];;
 			}
 			if (TABLE_PARAMETER != 'categories')
 			{
-				$text = $r['text'] = clean($_POST['text'], 1);
-				$date = $r['date'] = clean($_POST['date'], 5);
+				$text = $r['text'] = $filter ? $htmlFilter->sanitize($_POST['text']) : $_POST['text'];
+				$date = $r['date'] = $_POST['date'];
 			}
-			$rank = $r['rank'] = clean($_POST['rank'], 0);
+			$rank = $r['rank'] = $specialFilter->sanitize($_POST['rank']);
 
 		/* groups */
 
 		case 'groups';
 			if (TABLE_PARAMETER != 'comments')
 			{
-				$alias = $r['alias'] = clean($_POST['alias'], 2);
+				$alias = $r['alias'] = $aliasFilter->sanitize($_POST['alias']);
 			}
 
 		/* users */
@@ -74,18 +77,17 @@ function admin_process()
 		case 'users':
 			if (TABLE_PARAMETER != 'groups')
 			{
-				$language = $r['language'] = clean($_POST['language'], 0);
+				$language = $r['language'] = $specialFilter->sanitize($_POST['language']);
 			}
 
 		/* modules */
 
 		case 'modules';
-			$alias = clean($_POST['alias'], 2);
-			$status = $r['status'] = clean($_POST['status'], 0);
+			$alias = $aliasFilter->sanitize($_POST['alias']);
+			$status = $r['status'] = $specialFilter->sanitize($_POST['status']);
 			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
 			{
 				$access = array_map(array($specialFilter, 'sanitize'), $_POST['access']);
-				$access = array_map('clean', $access);
 				$access_string = implode(', ', $access);
 				if ($access_string == '')
 				{
@@ -95,7 +97,7 @@ function admin_process()
 			}
 			if (TABLE_PARAMETER != 'extras' && TABLE_PARAMETER != 'comments')
 			{
-				$r['description'] = clean($_POST['description'], 5);
+				$r['description'] = $filter ? $htmlFilter->sanitize($_POST['description']) : $_POST['description'];
 			}
 			$token = $_POST['token'];
 			break;
@@ -105,8 +107,8 @@ function admin_process()
 
 	if (TABLE_PARAMETER == 'articles')
 	{
-		$r['infoline'] = clean($_POST['infoline'], 0);
-		$comments = $r['comments'] = clean($_POST['comments'], 0);
+		$r['infoline'] = $specialFilter->sanitize($_POST['infoline']);
+		$comments = $r['comments'] = $specialFilter->sanitize($_POST['comments']);
 		if ($category && ID_PARAMETER == '')
 		{
 			$status = $r['status'] = Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->status;
@@ -114,7 +116,7 @@ function admin_process()
 	}
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras')
 	{
-		$category = $r['category'] = clean($_POST['category'], 0);
+		$category = $r['category'] = $specialFilter->sanitize($_POST['category']);
 	}
 	if (TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 	{
@@ -129,7 +131,7 @@ function admin_process()
 	}
 	if (TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
 	{
-		$article = $r['article'] = clean($_POST['article'], 0);
+		$article = $r['article'] = $specialFilter->sanitize($_POST['article']);
 	}
 	if (TABLE_PARAMETER == 'comments' && ID_PARAMETER == '')
 	{
@@ -137,7 +139,7 @@ function admin_process()
 	}
 	if (TABLE_PARAMETER == 'comments' || TABLE_PARAMETER == 'users')
 	{
-		$email = $r['email'] = clean($_POST['email'], 3);
+		$email = $r['email'] = $emailFilter->sanitize($_POST['email']);
 	}
 
 	/* clean groups post */
@@ -156,7 +158,6 @@ function admin_process()
 		foreach ($groups_array as $value)
 		{
 			$$value = array_map(array($specialFilter, 'sanitize'), $_POST[$value]);
-			$$value = array_map('clean', $$value);
 			$groups_string = implode(', ', $$value);
 			if ($groups_string == '')
 			{
@@ -164,8 +165,8 @@ function admin_process()
 			}
 			$r[$value] = $groups_string;
 		}
-		$r['settings'] = clean($_POST['settings'], 0);
-		$r['filter'] = clean($_POST['filter'], 0);
+		$r['settings'] = $specialFilter->sanitize($_POST['settings']);
+		$r['filter'] =  $specialFilter->sanitize($_POST['filter']);
 	}
 	if ((TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users') && ID_PARAMETER == 1)
 	{
@@ -173,7 +174,7 @@ function admin_process()
 	}
 	if (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users' || TABLE_PARAMETER == 'modules')
 	{
-		$name = $r['name'] = clean($_POST['name'], 0);
+		$name = $r['name'] = $specialFilter->sanitize($_POST['name']);
 	}
 
 	/* clean users post */
@@ -182,7 +183,7 @@ function admin_process()
 	{
 		if ($_POST['user'])
 		{
-			$user = $r['user'] = clean($_POST['user'], 0);
+			$user = $r['user'] = $specialFilter->sanitize($_POST['user']);
 		}
 		else
 		{
@@ -197,7 +198,7 @@ function admin_process()
 		{
 			$password_confirm = 0;
 		}
-		$password = clean($_POST['password'], 0);
+		$password = $specialFilter->sanitize($_POST['password']);
 		if ($password_check == 1 && $password_confirm == 1)
 		{
 			$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
@@ -360,7 +361,7 @@ function admin_process()
 
 		/* show error */
 
-		echo $messenger->setAction(Language::get('back'), $route)->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), $route)->error($error, Redaxscript\Language::get('error_occurred'));
 		return;
 	}
 
@@ -406,7 +407,7 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setAction(Language::get('continue'), $route)->doRedirect()->success(Language::get('operation_completed'));
+			echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 
 			return;
 
@@ -486,7 +487,7 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setAction(Language::get('continue'), $route)->doRedirect()->success(Language::get('operation_completed'));
+			echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 			return;
 	}
 }
@@ -530,8 +531,8 @@ function admin_move()
 
 	/* show success */
 
-	$messenger = new \Redaxscript\Messenger();
-	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Language::get('operation_completed'));
+	$messenger = new Redaxscript\Messenger();
+	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -617,7 +618,7 @@ function admin_sort()
 	/* show success */
 
 	$messenger = new Redaxscript\Messenger();
-	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Language::get('operation_completed'));
+	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -676,8 +677,8 @@ function admin_status($input = '')
 
 	/* show success */
 
-	$messenger = new \Redaxscript\Messenger();
-	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Language::get('operation_completed'));
+	$messenger = new Redaxscript\Messenger();
+	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . TABLE_PARAMETER)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -716,8 +717,8 @@ function admin_install()
 
 	/* show success */
 
-	$messenger = new \Redaxscript\Messenger();
-	echo $messenger->setAction(Language::get('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER)->doRedirect()->success(Language::get('operation_completed'));
+	$messenger = new Redaxscript\Messenger();
+	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . TABLE_PARAMETER . '#' . ALIAS_PARAMETER)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -819,7 +820,7 @@ function admin_delete()
 		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
-		echo $messenger->setAction(Language::get('continue'), $route)->doRedirect()->success(Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
 
@@ -838,32 +839,39 @@ function admin_update()
 {
 	if (TABLE_PARAMETER == 'settings')
 	{
+		$specialFilter = new Redaxscript\Filter\Special();
+		$emailFilter = new Redaxscript\Filter\Email();
+		$htmlFilter = new Redaxscript\Filter\Html();
+		$filter = Redaxscript\Registry::get('filter');
+
 		/* clean post */
 
-		$r['language'] = clean($_POST['language'], 0);
-		$r['template'] = clean($_POST['template'], 0);
-		$r['title'] = clean($_POST['title'], 5);
-		$r['author'] = clean($_POST['author'], 5);
-		$r['copyright'] = clean($_POST['copyright'], 5);
-		$r['description'] = clean($_POST['description'], 5);
-		$r['keywords'] = clean($_POST['keywords'], 5);
-		$r['robots'] = clean($_POST['robots'], 0);
-		$r['email'] = clean($_POST['email'], 3);
-		$r['subject'] = clean($_POST['subject'], 5);
-		$r['notification'] = clean($_POST['notification'], 0);
-		$r['charset'] = clean($_POST['charset'], 5) == '' ? 'utf-8' : clean($_POST['charset'], 5);
-		$r['divider'] = clean($_POST['divider'], 5);
-		$r['time'] = clean($_POST['time'], 5);
-		$r['date'] = clean($_POST['date'], 5);
-		$r['homepage'] = clean($_POST['homepage'], 0);
-		$r['limit'] = clean($_POST['limit'], 0) == '' ? 10 : clean($_POST['limit'], 0);
-		$r['order'] = clean($_POST['order'], 0);
-		$r['pagination'] = clean($_POST['pagination'], 0);
-		$r['moderation'] = clean($_POST['moderation'], 0);
-		$r['registration'] = clean($_POST['registration'], 0);
-		$r['verification'] = clean($_POST['verification'], 0);
-		$r['recovery'] = clean($_POST['recovery'], 0);
-		$r['captcha'] = clean($_POST['captcha'], 0);
+		$r['language'] = $specialFilter->sanitize($_POST['language']);
+		$r['template'] = $specialFilter->sanitize($_POST['template']);
+		$r['title'] = $filter ? $htmlFilter->sanitize($_POST['title']) : $_POST['title'];
+		$r['author'] = $filter ? $htmlFilter->sanitize($_POST['author']) : $_POST['author'];
+		$r['copyright'] = $filter ? $htmlFilter->sanitize($_POST['copyright']) : $_POST['copyright'];
+		$r['description'] = $filter ? $htmlFilter->sanitize($_POST['description']) : $_POST['description'];
+		$r['keywords'] = $filter ? $htmlFilter->sanitize($_POST['keywords']) : $_POST['keywords'];
+		$r['robots'] = $specialFilter->sanitize($_POST['robots']);
+		$r['email'] = $emailFilter->sanitize($_POST['email']);
+		$r['subject'] = $filter ? $htmlFilter->sanitize($_POST['subject']) : $_POST['subject'];
+		$r['notification'] = $specialFilter->sanitize($_POST['notification']);
+		$r['charset'] = $filter ? $htmlFilter->sanitize($_POST['charset']) : $_POST['charset'];
+		$r['charset'] = !$r['charset'] ? 'utf-8' : $r['charset'];
+		$r['divider'] = $filter ? $htmlFilter->sanitize($_POST['divider']) : $_POST['divider'];
+		$r['time'] = $filter ? $htmlFilter->sanitize($_POST['time']) : $_POST['time'];
+		$r['date'] = $filter ? $htmlFilter->sanitize($_POST['date']) : $_POST['date'];
+		$r['homepage'] = $specialFilter->sanitize($_POST['homepage'], 0);
+		$r['limit'] = $specialFilter->sanitize($_POST['limit']);
+		$r['limit'] = !$r['limit'] ? 10 : $r['limit'];
+		$r['order'] = $specialFilter->sanitize($_POST['order']);
+		$r['pagination'] = $specialFilter->sanitize($_POST['pagination']);
+		$r['moderation'] = $specialFilter->sanitize($_POST['moderation']);
+		$r['registration'] = $specialFilter->sanitize($_POST['registration']);
+		$r['verification'] = $specialFilter->sanitize($_POST['verification']);
+		$r['recovery'] = $specialFilter->sanitize($_POST['recovery']);
+		$r['captcha'] = $specialFilter->sanitize($_POST['captcha']);
 
 		/* update settings */
 
@@ -879,7 +887,7 @@ function admin_update()
 		/* show success */
 
 		$messenger = new Redaxscript\Messenger();
-		echo $messenger->setAction(Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
 

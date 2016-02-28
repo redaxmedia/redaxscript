@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * reminder post
@@ -14,12 +13,13 @@ use Redaxscript\Language;
 
 function reminder_post()
 {
+	$emailFilter = new Redaxscript\Filter\Email();
 	$emailValidator = new Redaxscript\Validator\Email();
 	$captchaValidator = new Redaxscript\Validator\Captcha();
 
 	/* clean post */
 
-	$email = clean($_POST['email'], 3);
+	$email = $emailFilter->sanitize($_POST['email']);
 	$task = $_POST['task'];
 	$solution = $_POST['solution'];
 
@@ -89,16 +89,16 @@ function reminder_post()
 
 	/* handle error */
 
-	$messenger = new \Redaxscript\Messenger();
+	$messenger = new Redaxscript\Messenger();
 	if ($error)
 	{
-		echo $messenger->setAction(Language::get('back'), 'recovery')->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), 'recovery')->error($error, Redaxscript\Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('recovery_sent'), Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('login'), 'login')->doRedirect()->success(Redaxscript\Language::get('recovery_sent'), Redaxscript\Language::get('operation_completed'));
 	}
 }

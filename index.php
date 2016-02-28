@@ -8,7 +8,6 @@ error_reporting(E_ERROR || E_PARSE);
 include_once('includes/contents.php');
 include_once('includes/head.php');
 include_once('includes/loader.php');
-include_once('includes/migrate.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/router.php');

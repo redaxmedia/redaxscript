@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * contents
@@ -212,8 +211,8 @@ function contents()
 	{
 		/* show error */
 
-		$messenger = new \Redaxscript\Messenger();
-		echo $messenger->error($error, Language::get('something_wrong'));
+		$messenger = new Redaxscript\Messenger();
+		echo $messenger->error($error, Redaxscript\Language::get('something_wrong'));
 	}
 	else
 	{

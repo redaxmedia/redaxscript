@@ -17,7 +17,6 @@
 				<file>includes/head.php</file>
 				<file>includes/loader.php</file>
 				<file>includes/login.php</file>
-				<file>includes/migrate.php</file>
 				<file>includes/navigation.php</file>
 				<file>includes/password.php</file>
 				<file>includes/query.php</file>

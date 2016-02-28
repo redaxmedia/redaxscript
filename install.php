@@ -4,7 +4,6 @@ error_reporting(E_ERROR || E_PARSE);
 /* include core files */
 
 include_once('includes/loader.php');
-include_once('includes/migrate.php');
 include_once('includes/startup.php');
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
@@ -222,17 +221,17 @@ function install_post()
 
 	/* clean post */
 
-	$d_type = stripslashes($_POST['db_type']);
-	$d_host = stripslashes($_POST['db_host']);
-	$d_name = stripslashes($_POST['db_name']);
-	$d_user = stripslashes($_POST['db_user']);
-	$d_password = stripslashes($_POST['db_password']);
-	$d_prefix = stripslashes($_POST['db_prefix']);
-	$d_salt = stripslashes($_POST['db_salt']);
-	$name = stripslashes($_POST['admin_name']);
-	$user = stripslashes($_POST['admin_user']);
-	$password = stripslashes($_POST['admin_password']);
-	$email = stripslashes($_POST['admin_email']);
+	$d_type = $_POST['db_type'];
+	$d_host = $_POST['db_host'];
+	$d_name = $_POST['db_name'];
+	$d_user = $_POST['db_user'];
+	$d_password = $_POST['db_password'];
+	$d_prefix = $_POST['db_prefix'];
+	$d_salt = $_POST['db_salt'];
+	$name = $_POST['admin_name'];
+	$user = $_POST['admin_user'];
+	$password = $_POST['admin_password'];
+	$email = $_POST['admin_email'];
 
 	/* validate post */
 
@@ -250,7 +249,7 @@ function install_post()
 	}
 	if ($password == '')
 	{
-		$password = substr(sha1(uniqid()), 0, 10);
+		$password = uniqid();
 	}
 
 	/* write config */

@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * comments
@@ -157,20 +156,24 @@ function comments($article = '', $route = '')
 
 function comment_post()
 {
+	$specialFilter = new Redaxscript\Filter\Special();
+	$emailFilter = new Redaxscript\Filter\Email();
+	$urlFilter = new Redaxscript\Filter\Url();
+	$htmlFilter = new Redaxscript\Filter\Html();
 	$emailValidator = new Redaxscript\Validator\Email();
 	$captchaValidator = new Redaxscript\Validator\Captcha();
 	$urlValidator = new Redaxscript\Validator\Url();
 
 	/* clean post */
 
-	$article = $r['article'] = clean($_POST['article'], 0);
-	$author = $r['author'] = clean($_POST['author'], 0);
-	$email = $r['email'] = clean($_POST['email'], 3);
-	$url = $r['url'] = clean($_POST['url'], 4);
+	$article = $r['article'] = $specialFilter->sanitize($_POST['article']);
+	$author = $r['author'] = $specialFilter->sanitize($_POST['author']);
+	$email = $r['email'] = $emailFilter->sanitize($_POST['email']);
+	$url = $r['url'] = $urlFilter->sanitize($_POST['url']);
 	$text = nl2br($_POST['text']);
-	$text = $r['text'] = clean($text, 1);
+	$text = $r['text'] = $htmlFilter->sanitize($text);
 	$r['language'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->language;
-	$r['date'] = clean($_POST['date'], 5);
+	$r['date'] = $_POST['date'];
 	$r['rank'] = Redaxscript\Db::forTablePrefix('comments')->max('rank') + 1;
 	$r['access'] = Redaxscript\Db::forTablePrefix('articles')->whereIdIs($article)->access;
 	$r['date'] = Redaxscript\Registry::get('now');
@@ -277,13 +280,13 @@ function comment_post()
 	$messenger = new Redaxscript\Messenger();
 	if ($error)
 	{
-		echo $messenger->setAction(Language::get('back'), $route)->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), $route)->error($error, Redaxscript\Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('continue'), $route)->doRedirect()->success($success, Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success($success, Redaxscript\Language::get('operation_completed'));
 	}
 }

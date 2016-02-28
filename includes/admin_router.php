@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * admin router
@@ -14,7 +13,7 @@ use Redaxscript\Language;
 
 function admin_router()
 {
-	$messenger = new \Redaxscript\Messenger();
+	$messenger = new Redaxscript\Messenger();
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{
@@ -110,7 +109,7 @@ function admin_router()
 	{
 		/* show error */
 
-		echo $messenger->setAction(Language::get('back'), 'admin')->error(Language::get('error_occurred'), Language::get('token_no'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('error_occurred'), Redaxscript\Language::get('token_no'));
 		return;
 	}
 

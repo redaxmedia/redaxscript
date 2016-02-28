@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * router
@@ -20,14 +19,12 @@ function router()
 		return;
 	}
 
-	/* notification */
-
-	$messenger = new \Redaxscript\Messenger();
 	/* check token */
 
+	$messenger = new Redaxscript\Messenger();
 	if ($_POST && $_POST['token'] != TOKEN)
 	{
-		echo $messenger->setAction(Language::get('home'), ROOT)->error(Language::get('token_incorrect'), Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('home'), ROOT)->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
 		return;
 	}
 

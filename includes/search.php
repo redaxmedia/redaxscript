@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * search post
@@ -14,10 +13,12 @@ use Redaxscript\Language;
 
 function search_post()
 {
+	$specialFilter = new Redaxscript\Filter\Special();
+
 	/* clean post */
 
-	$search_terms = clean($_POST['search_terms'], 5);
-	$table = clean($_POST['table']);
+	$search_terms = $_POST['search_terms'];
+	$table = $specialFilter->sanitize($_POST['table']);
 
 	/* validate post */
 
@@ -120,8 +121,8 @@ function search_post()
 
 	if ($error)
 	{
-		$messenger = new \Redaxscript\Messenger();
-		echo $messenger->error($error, Language::get('something_wrong'));
+		$messenger = new Redaxscript\Messenger();
+		echo $messenger->error($error, Redaxscript\Language::get('something_wrong'));
 	}
 	else
 	{

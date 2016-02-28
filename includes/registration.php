@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * registration post
@@ -14,16 +13,18 @@ use Redaxscript\Language;
 
 function registration_post()
 {
+	$specialFilter = new Redaxscript\Filter\Special();
+	$emailFilter = new Redaxscript\Filter\Email();
+
 	/* clean post */
 
-	$name = $r['name'] = clean($_POST['name'], 0);
-	$user = $r['user'] = clean($_POST['user'], 0);
-	$email = $r['email'] = clean($_POST['email'], 3);
-	$password = substr(sha1(uniqid()), 0, 10);
+	$name = $r['name'] = $specialFilter->sanitize($_POST['name']);
+	$user = $r['user'] = $specialFilter->sanitize($_POST['user']);
+	$email = $r['email'] = $emailFilter->sanitize($_POST['email']);
+	$password = uniqid();
 	$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
 	$passwordHash->init($password);
 	$r['password'] = $passwordHash->getHash();
-	$r['description'] = '';
 	$r['language'] = Redaxscript\Registry::get('language');
 	$r['first'] = $r['last'] = NOW;
 	$r['groups'] = Redaxscript\Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
@@ -122,16 +123,16 @@ function registration_post()
 
 	/* handle error */
 
-	$messenger = new \Redaxscript\Messenger();
+	$messenger = new Redaxscript\Messenger();
 	if ($error)
 	{
-		echo $messenger->setAction(Language::get('back'), 'registration')->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), 'registration')->error($error, Redaxscript\Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success($success, Language::get('operation_completed'));
+		echo $messenger->setAction(Redaxscript\Language::get('login'), 'login')->doRedirect()->success($success, Redaxscript\Language::get('operation_completed'));
 	}
 }

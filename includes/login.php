@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * login post
@@ -14,6 +13,8 @@ use Redaxscript\Language;
 
 function login_post()
 {
+	$specialFilter = new Redaxscript\Filter\Special();
+	$emailFilter = new Redaxscript\Filter\Email();
 	$passwordValidator = new Redaxscript\Validator\Password();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$emailValidator = new Redaxscript\Validator\Email();
@@ -25,16 +26,16 @@ function login_post()
 	$post_password = $_POST['password'];
 	$task = $_POST['task'];
 	$solution = $_POST['solution'];
-	$login_by_email = 0;
 	$users = Redaxscript\Db::forTablePrefix('users');
 	if ($emailValidator->validate($post_user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		$post_user = clean($post_user, 0);
+		$post_user = $specialFilter->sanitize($post_user);
+		$login_by_email = 0;
 		$users->where('user', $post_user);
 	}
 	else
 	{
-		$post_user = clean($post_user, 3);
+		$post_user = $emailFilter->sanitize($post_user);
 		$login_by_email = 1;
 		$users->where('email', $post_user);
 	}
@@ -186,14 +187,14 @@ function login_post()
 	$messenger = new Redaxscript\Messenger();
 	if ($error)
 	{
-		echo $messenger->setAction(Language::get('back'), 'login')->error($error, Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('back'), 'login')->error($error, Redaxscript\Language::get('error_occurred'));
 	}
 
 	/* handle success */
 
 	else
 	{
-		echo $messenger->setAction(Language::get('continue'), 'admin')->doRedirect(0)->success(Language::get('logged_in'), Language::get('welcome'));
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin')->doRedirect(0)->success(Redaxscript\Language::get('logged_in'), Redaxscript\Language::get('welcome'));
 	}
 }
 
@@ -214,6 +215,6 @@ function logout()
 
 	/* show success */
 
-	$messenger = new \Redaxscript\Messenger();
-	echo $messenger->setAction(Language::get('continue'), 'login')->doRedirect(0)->success(Language::get('logged_out'), Language::get('goodbye'));
+	$messenger = new Redaxscript\Messenger();
+	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'login')->doRedirect(0)->success(Redaxscript\Language::get('logged_out'), Redaxscript\Language::get('goodbye'));
 }
