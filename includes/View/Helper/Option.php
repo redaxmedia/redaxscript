@@ -4,7 +4,7 @@ namespace Redaxscript\View\Helper;
 use PDO;
 
 /**
- * abstract class to provide various options
+ * helper class to provide various options
  *
  * @since 3.0.0
  *
@@ -13,7 +13,7 @@ use PDO;
  * @author Henry Ruhs
  */
 
-abstract class Option
+class Option
 {
 	/**
 	 * get the database array

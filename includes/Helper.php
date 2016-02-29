@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to provide required helper for templates
+ * helper class to provide required helper for templates
  *
  * @since 2.1.0
  *

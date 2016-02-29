@@ -6,7 +6,7 @@ use Redaxscript\Directory;
 use Redaxscript\Language;
 
 /**
- * abstract class to provide various options
+ * helper class to provide various options
  *
  * @since 3.0.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\Language;
  * @author Henry Ruhs
  */
 
-abstract class Option
+class Option
 {
 	/**
 	 * get the toggle array
