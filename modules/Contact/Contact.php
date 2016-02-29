@@ -205,7 +205,12 @@ class Contact extends Module
 
 		else
 		{
-			self::_success($postData);
+			self::_success(array(
+				'author' => $postData['author'],
+				'email' => $postData['email'],
+				'url' => $postData['url'],
+				'text' => $postData['text']
+			));
 		}
 	}
 
@@ -214,26 +219,26 @@ class Contact extends Module
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $postData
+	 * @param array $successData
 	 */
 
-	protected static function _success($postData = array())
+	protected static function _success($successData = array())
 	{
 		$toArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
 		);
 		$fromArray = array(
-			$postData['author'] => $postData['email']
+			$successData['author'] => $successData['email']
 		);
 		$subject = Language::get('contact');
 		$bodyArray = array(
-			Language::get('author') . Language::get('colon') . ' ' . $postData['author'],
+			Language::get('author') . Language::get('colon') . ' ' . $successData['author'],
 			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $postData['email'] . '">' . $postData['email'] .'</a>',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $successData['email'] . '">' . $successData['email'] .'</a>',
 			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $postData['url'] . '">' . $postData['url'] .'</a>',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $successData['url'] . '">' . $successData['url'] .'</a>',
 			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $postData['text']
+			Language::get('message') . Language::get('colon') . ' ' . $successData['text']
 		);
 
 		/* send message */

@@ -2,7 +2,7 @@
 namespace Redaxscript\Controller;
 
 /**
- * abstract class to create a controller class
+ * interface to define a view
  *
  * @since 3.0.0
  *
@@ -11,7 +11,7 @@ namespace Redaxscript\Controller;
  * @author Henry Ruhs
  */
 
-abstract class ControllerAbstract
+interface ControllerAbstract
 {
 	/**
 	 * process the class
@@ -19,21 +19,17 @@ abstract class ControllerAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function _process()
-	{
-	}
+	public function _process();
 
 	/**
 	 * handle success
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $postData
+	 * @param array $successData
 	 */
 
-	protected function _success($postData = array())
-	{
-	}
+	public function _success($successData = array());
 
 	/**
 	 * handle error
@@ -43,7 +39,5 @@ abstract class ControllerAbstract
 	 * @param array $errorData
 	 */
 
-	protected function _error($errorData = array())
-	{
-	}
+	public function _error($errorData = array());
 }
