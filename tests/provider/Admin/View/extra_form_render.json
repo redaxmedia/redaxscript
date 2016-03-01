@@ -1,9 +1,16 @@
 [
 	[
+		0,
+		{
+			"start": "<h2 class=\"rs-admin-title-content\">New extra</h2><form class=\"rs-js-tab rs-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/extras\">",
+			"end": "<a class=\"rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/extras\">Cancel</a><button class=\"rs-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
+		}
+	],
+	[
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Categories</h2>",
-			"end": "</form>"
+			"start": "<h2 class=\"rs-admin-title-content\">Categories</h2><form class=\"rs-js-tab rs-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/extras/1\">",
+			"end": "<a class=\"rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/extras\">Cancel</a><a class=\"rs-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/extras/1/\">Delete</a><button class=\"rs-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	]
 ]
