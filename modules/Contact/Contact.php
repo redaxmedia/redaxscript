@@ -48,7 +48,7 @@ class Contact extends Module
 		if (Request::getPost(get_class()) === 'submit')
 		{
 			Registry::set('routerBreak', true);
-			self::_process();
+			echo self::process();
 		}
 	}
 
@@ -146,7 +146,7 @@ class Contact extends Module
 	 * @since 2.6.0
 	 */
 
-	protected static function _process()
+	public static function process()
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -198,14 +198,14 @@ class Contact extends Module
 
 		if ($errorData)
 		{
-			self::_error($errorData);
+			return self::error($errorData);
 		}
 
 		/* handle success */
 
 		else
 		{
-			self::_success(array(
+			return self::success(array(
 				'author' => $postData['author'],
 				'email' => $postData['email'],
 				'url' => $postData['url'],
@@ -220,9 +220,11 @@ class Contact extends Module
 	 * @since 2.6.0
 	 *
 	 * @param array $successData
+	 *
+	 * @return string
 	 */
 
-	protected static function _success($successData = array())
+	public static function success($successData = array())
 	{
 		$toArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
@@ -250,7 +252,7 @@ class Contact extends Module
 		/* show success */
 
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
 	/**
@@ -259,11 +261,13 @@ class Contact extends Module
 	 * @since 3.0.0
 	 *
 	 * @param array $errorData
+	 *
+	 * @return string
 	 */
 
-	protected static function _error($errorData = array())
+	public static function error($errorData = array())
 	{
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorData, Language::get('error_occurred'));
+		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorData, Language::get('error_occurred'));
 	}
 }

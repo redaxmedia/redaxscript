@@ -2,7 +2,7 @@
 namespace Redaxscript\Controller;
 
 /**
- * interface to define a view
+ * interface to define a controller
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ interface ControllerInterface
 	 * @since 3.0.0
 	 */
 
-	public function _process();
+	public function process();
 
 	/**
 	 * handle success
@@ -29,7 +29,7 @@ interface ControllerInterface
 	 * @param array $successData
 	 */
 
-	public function _success($successData = array());
+	public function success($successData = array());
 
 	/**
 	 * handle error
@@ -39,5 +39,5 @@ interface ControllerInterface
 	 * @param array $errorData
 	 */
 
-	public function _error($errorData = array());
+	public function error($errorData = array());
 }

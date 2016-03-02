@@ -46,7 +46,7 @@ function router()
 		}
 		else
 		{
-			call_user_func_array(array($value, '_process'));
+			echo call_user_func_array(array($value, 'process'), Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 		}
 		return;
 	}

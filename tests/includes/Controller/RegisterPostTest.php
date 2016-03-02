@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Controller\RegisterPost;
-use Redaxscript\Db;
+use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -14,18 +13,12 @@ use Redaxscript\Request;
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class RegisterPostTest extends TestCase
 {
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
 	/**
 	 * instance of the registry class
 	 *
@@ -43,6 +36,14 @@ class RegisterPostTest extends TestCase
 	protected $_language;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -50,46 +51,45 @@ class RegisterPostTest extends TestCase
 
 	protected function setUp()
 	{
-		$this->_request = Request::getInstance();
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+		$this->_request = Request::getInstance();
 	}
 
 	/**
-	 * providerGetArray
+	 * providerProcess
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerGetArray()
+	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/register_post_array.json');
+		return $this->getProvider('tests/provider/Controller/register_post_process.json');
 	}
 
 	/**
-	 * test registerPost
+	 * testProcess
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $request
-	 * @param array $registry
+	 * @param array $post
 	 * @param array $expect
 	 *
-	 * @dataProvider providerGetArray
+	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($request = array(), $registry = array(), $expect = null)
+	public function testProcess($post = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_request->init($request);
-		$this->_registry->init($registry);
+		$this->_request->set('post', $post);
+		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
-		$register = new RegisterPost($this->_request, $this->_registry, $this->_language);
-		$actual = $register->_process();
+
+		$actual = $registerPost->process();
 
 		/* compare */
 
