@@ -3,20 +3,18 @@ namespace Redaxscript\Controller;
 
 use Redaxscript\Config;
 use Redaxscript\Db;
-use Redaxscript\Filter\Email;
-use Redaxscript\Filter\Special;
+use Redaxscript\Filter;
 use Redaxscript\Hash;
-use Redaxscript\Html\Element;
+use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
 use Redaxscript\Registry;
-use Redaxscript\Validator\Captcha;
-use Redaxscript\Validator\Login;
-use Redaxscript\Validator\ValidatorInterface;
+use Redaxscript\Request;
+use Redaxscript\Validator;
 
 /**
- * children class for register post
+ * children class to process a register post request
  *
  * @since 3.0.0
  *
@@ -25,8 +23,7 @@ use Redaxscript\Validator\ValidatorInterface;
  * @author Henry Ruhs
  * @author Szilágyi Balázs
  */
-
-class RegisterPost implements ControllerAbstract
+class RegisterPost implements ControllerInterface
 {
 	/**
 	 * process
@@ -36,118 +33,84 @@ class RegisterPost implements ControllerAbstract
 
 	public function _process()
 	{
-		$specialFilter = new Special();
-		$emailFilter = new Email();
+		$specialFilter = new Filter\Special();
+		$emailFilter = new Filter\Email();
+		$loginValidator = new Validator\Login();
+		$emailValidator = new Validator\Email();
+		$captchaValidator = new Validator\Captcha();
 
-		/* clean post */
-
-		$name = $r['name'] = $specialFilter->sanitize($_POST['name']);
-		$user = $r['user'] = $specialFilter->sanitize($_POST['user']);
-		$email = $r['email'] = $emailFilter->sanitize($_POST['email']);
 		$password = uniqid();
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init($password);
-		$r['password'] = $passwordHash->getHash();
-		$r['language'] = Registry::get('language');
-		$r['first'] = $r['last'] = NOW;
-		$r['groups'] = Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id;
-		if ($r['groups'] == '')
-		{
-			$r['groups'] = 0;
-		}
-		$task = $_POST['task'];
-		$solution = $_POST['solution'];
+
+		/* process post */
+
+		$postData = array(
+			'name' => $specialFilter->sanitize(Request::getPost('name')),
+			'user' => $specialFilter->sanitize(Request::getPost('user')),
+			'email' => $emailFilter->sanitize(Request::getPost('email')),
+			'password' => $passwordHash->getHash(),
+			'language' => Registry::get('language'),
+			'first' => Registry::get('NOW'),
+			'last' => Registry::get('NOW'),
+			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id != '' ?: 0,
+		);
+
+		$task = Request::getPost('task');
+		$solution = Request::getPost('solution');
 
 		/* validate post */
 
-		$loginValidator = new Login();
-		$emailValidator = new Email();
-		$captchaValidator = new Captcha();
+		if (!$postData['name'])
+		{
+			$errorData = Language::get('name_empty');
+		}
+		if (!$postData['user'])
+		{
+			$errorData = Language::get('user_empty');
+		}
+		if (!$postData['email'])
+		{
+			$errorData = Language::get('email_empty');
+		}
+		else if ($emailValidator->validate($postData['email']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorData = Language::get('email_incorrect');
+		}
+		if ($loginValidator->validate($postData['user']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorData = Language::get('user_incorrect');
+		}
+		if ($captchaValidator->validate($task, $solution) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorData = Language::get('captcha_incorrect');
+		}
+		if (Db::forTablePrefix('users')->where('user', $postData['user'])->findOne()->id)
+		{
+			$errorData = Language::get('user_exists');
+		}
 
-		if ($name == '')
+		/* handle error */
+
+		if ($errorData)
 		{
-			$error = Language::get('name_empty');
+			self::_error($errorData);
 		}
-		else if ($user == '')
-		{
-			$error = Language::get('user_empty');
-		}
-		else if ($email == '')
-		{
-			$error = Language::get('email_empty');
-		}
-		else if ($loginValidator->validate($user) == ValidatorInterface::FAILED)
-		{
-			$error = Language::get('user_incorrect');
-		}
-		else if ($emailValidator->validate($email) == ValidatorInterface::FAILED)
-		{
-			$error = Language::get('email_incorrect');
-		}
-		else if ($captchaValidator->validate($task, $solution) == ValidatorInterface::FAILED)
-		{
-			$error = Language::get('captcha_incorrect');
-		}
-		else if (Db::forTablePrefix('users')->where('user', $user)->findOne()->id)
-		{
-			$error = Language::get('user_exists');
-		}
+
+		/* handle success */
+
 		else
 		{
-			if (USERS_NEW == 0 && Db::getSettings('verification') == 1)
-			{
-				$r['status'] = 0;
-				$success = Language::get('registration_verification');
-			}
-			else
-			{
-				$r['status'] = 1;
-				$success = Language::get('registration_sent');
-			}
-
-			/* send login information */
-
-			$loginRoute = ROOT . '/' . REWRITE_ROUTE . 'login';
-			$linkElement = new Element();
-			$linkElement
-				->init('a', array(
-					'href' => $loginRoute
-				))
-				->text($loginRoute);
-
-			$toArray = array(
-				$name => $email
-			);
-			if (Db::getSettings('notification') == 1)
-			{
-				$toArray[Db::getSettings('author')] = Db::getSettings('email');
-			}
-			$fromArray = array(
-				$author => $email
-			);
-			$subject = Language::get('registration');
-			$bodyArray = array(
-				'<strong>' . Language::get('name') . Language::get('colon') . '</strong> ' . $name,
-				'<br />',
-				'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $user,
-				'<br />',
-				'<strong>' . Language::get('password') . Language::get('colon') . '</strong> ' . $password,
-				'<br />',
-				'<strong>' . Language::get('login') . Language::get('colon') . '<strong> ' . $linkElement
-			);
-
-			/* mailer object */
-
-			$mailer = new Mailer();
-			$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-			$mailer->send();
-
-			/* create user */
-
-			Db::forTablePrefix('users')
-				->create()
-				->set($r)
-				->save();
+			self::_success(array(
+				'name' => $postData['name'],
+				'user' => $postData['user'],
+				'email' => $postData['email'],
+				'password' => $postData['password'],
+				'language' => $postData['language'],
+				'first' => $postData['first'],
+				'last' => $postData['last'],
+				'groups' => $postData['groups']
+			));
 		}
 	}
 
@@ -161,6 +124,74 @@ class RegisterPost implements ControllerAbstract
 
 	public function _success($successData = array())
 	{
+		if (Registry::get('usersNew') == 0 && Db::getSettings('verification') == 1)
+		{
+			$successData['status'] = 0;
+			$successData = Language::get('registration_verification');
+		}
+		else
+		{
+			$successData['status'] = 1;
+			$successData = Language::get('registration_sent');
+		}
+
+		/* send login information */
+
+		$routeLogin = Registry::get('root') . '/' . Registry::get('rewriteRoute') . 'login';
+
+		/* html element */
+
+		$linkElement = new Html\Element();
+		$linkElement
+			->init('a', array(
+				'href' => $routeLogin
+			))
+			->text($routeLogin);
+
+		$toArray = array(
+			$successData['name'] => $successData['email']
+		);
+		if (Db::getSettings('notification') == 1)
+		{
+			$toArray[Db::getSettings('author')] = Db::getSettings('email');
+		}
+		$fromArray = array(
+			$author => $successData['email']
+		);
+		$subject = Language::get('registration');
+		$bodyArray = array(
+			'<strong>' . Language::get('name') . Language::get('colon') . '</strong> ' . $successData['name'],
+			'<br />',
+			'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $successData['user'],
+			'<br />',
+			'<strong>' . Language::get('password') . Language::get('colon') . '</strong> ' . $successData['password'],
+			'<br />',
+			'<strong>' . Language::get('login') . Language::get('colon') . '<strong> ' . $linkElement
+		);
+
+		/* mailer object */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		$mailer->send();
+
+		/* create user */
+
+		Db::forTablePrefix('users')
+			->create()
+			->set(array(
+				'name' => $successData['name'],
+				'user' => $successData['user'],
+				'email' => $successData['email'],
+				'password' => $successData['password'],
+				'language' => $successData['language'],
+				'first' => $successData['first'],
+				'last' => $successData['last'],
+				'groups' => $successData['groups'],
+				'status' => $successData['status']
+			))
+			->save();
+
 		$messenger = new Messenger();
 		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success($successData, Language::get('operation_completed'));
 	}
