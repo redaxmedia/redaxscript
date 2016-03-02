@@ -161,12 +161,12 @@ class RegisterPost implements ControllerInterface
 		if (!$this->_registry->get('usersNew') && Db::getSettings('verification'))
 		{
 			$successData['status'] = 0;
-			$successData = $this->_language->get('registration_verification');
+			$successTitle = $this->_language->get('registration_verification');
 		}
 		else
 		{
 			$successData['status'] = 1;
-			$successData = $this->_language->get('registration_sent');
+			$successTitle = $this->_language->get('registration_sent');
 		}
 		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
@@ -226,7 +226,7 @@ class RegisterPost implements ControllerInterface
 		/* show success */
 
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successData, $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successData, $successTitle);
 	}
 
 	/**
