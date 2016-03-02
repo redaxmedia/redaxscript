@@ -11,7 +11,7 @@ namespace Redaxscript\Controller;
  * @author Henry Ruhs
  */
 
-interface ControllerAbstract
+interface ControllerInterface
 {
 	/**
 	 * process the class
