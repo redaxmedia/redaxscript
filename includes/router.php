@@ -32,7 +32,7 @@ function router()
 
 	$post_list = array(
 		'Redaxscript\View\LoginForm' => 'login_post',
-		'Redaxscript\View\RegisterForm' => 'registration_post',
+		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\RegisterPost',
 		'Redaxscript\View\ResetForm' => 'password_reset_post',
 		'Redaxscript\View\RecoverForm' => 'reminder_post',
 		'Redaxscript\View\CommentForm' => 'comment_post',
@@ -43,8 +43,12 @@ function router()
 		if ($_POST[$key] && function_exists($value))
 		{
 			call_user_func($value);
-			return;
 		}
+		else
+		{
+			call_user_func_array(array($value, '_process'));
+		}
+		return;
 	}
 
 	/* general routing */

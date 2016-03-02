@@ -21,10 +21,51 @@ use Redaxscript\Validator;
  * @package Redaxscript
  * @category Controller
  * @author Henry Ruhs
- * @author Szilágyi Balázs
+ * @author Balázs Szilágyi
  */
 class RegisterPost implements ControllerInterface
 {
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * constructor of the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param Request $request instance of the registry class
+	 * @param Registry $registry instance of the registry class
+	 * @param Language $language instance of the language class
+	 */
+
+	public function __construct(Request $request, Registry $registry, Language $language)
+	{
+		$this->_request = $request;
+		$this->_registry = $registry;
+		$this->_language = $language;
+	}
+
 	/**
 	 * process
 	 *
@@ -50,10 +91,10 @@ class RegisterPost implements ControllerInterface
 			'user' => $specialFilter->sanitize(Request::getPost('user')),
 			'email' => $emailFilter->sanitize(Request::getPost('email')),
 			'password' => $passwordHash->getHash(),
-			'language' => Registry::get('language'),
-			'first' => Registry::get('NOW'),
-			'last' => Registry::get('NOW'),
-			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id != '' ?: 0,
+			'language' => $this->_registry->get('language'),
+			'first' => $this->_registry->get('now'),
+			'last' => $this->_registry->get('now'),
+			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
 		);
 
 		$task = Request::getPost('task');
@@ -63,31 +104,31 @@ class RegisterPost implements ControllerInterface
 
 		if (!$postData['name'])
 		{
-			$errorData = Language::get('name_empty');
+			$errorData = $this->_language->get('name_empty');
 		}
 		if (!$postData['user'])
 		{
-			$errorData = Language::get('user_empty');
+			$errorData = $this->_language->get('user_empty');
 		}
 		if (!$postData['email'])
 		{
-			$errorData = Language::get('email_empty');
+			$errorData = $this->_language->get('email_empty');
 		}
 		else if ($emailValidator->validate($postData['email']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorData = Language::get('email_incorrect');
+			$errorData = $this->_language->get('email_incorrect');
 		}
 		if ($loginValidator->validate($postData['user']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorData = Language::get('user_incorrect');
+			$errorData = $this->_language->get('user_incorrect');
 		}
 		if ($captchaValidator->validate($task, $solution) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorData = Language::get('captcha_incorrect');
+			$errorData = $this->_language->get('captcha_incorrect');
 		}
 		if (Db::forTablePrefix('users')->where('user', $postData['user'])->findOne()->id)
 		{
-			$errorData = Language::get('user_exists');
+			$errorData = $this->_language->get('user_exists');
 		}
 
 		/* handle error */
@@ -124,20 +165,20 @@ class RegisterPost implements ControllerInterface
 
 	public function _success($successData = array())
 	{
-		if (Registry::get('usersNew') == 0 && Db::getSettings('verification') == 1)
+		if ($this->_registry->get('usersNew') == 0 && Db::getSettings('verification') == 1)
 		{
 			$successData['status'] = 0;
-			$successData = Language::get('registration_verification');
+			$successData = $this->_language->get('registration_verification');
 		}
 		else
 		{
 			$successData['status'] = 1;
-			$successData = Language::get('registration_sent');
+			$successData = $this->_language->get('registration_sent');
 		}
 
 		/* send login information */
 
-		$routeLogin = Registry::get('root') . '/' . Registry::get('rewriteRoute') . 'login';
+		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
 		/* html element */
 
@@ -158,15 +199,15 @@ class RegisterPost implements ControllerInterface
 		$fromArray = array(
 			$author => $successData['email']
 		);
-		$subject = Language::get('registration');
+		$subject = $this->_language->get('registration');
 		$bodyArray = array(
-			'<strong>' . Language::get('name') . Language::get('colon') . '</strong> ' . $successData['name'],
+			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $successData['name'],
 			'<br />',
-			'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $successData['user'],
+			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $successData['user'],
 			'<br />',
-			'<strong>' . Language::get('password') . Language::get('colon') . '</strong> ' . $successData['password'],
+			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $successData['password'],
 			'<br />',
-			'<strong>' . Language::get('login') . Language::get('colon') . '<strong> ' . $linkElement
+			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
 		);
 
 		/* mailer object */
@@ -193,7 +234,7 @@ class RegisterPost implements ControllerInterface
 			->save();
 
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success($successData, Language::get('operation_completed'));
+		echo $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successData, $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -207,6 +248,6 @@ class RegisterPost implements ControllerInterface
 	public function _error($errorData = array())
 	{
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('back'), 'registration')->error($errorData, Language::get('error_occurred'));
+		echo $messenger->setAction($this->_language->get('back'), 'registration')->error($errorData, $this->_language->get('error_occurred'));
 	}
 }
