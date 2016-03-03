@@ -83,7 +83,7 @@ class RegisterPost implements ControllerInterface
 
 		/* process post */
 
-		$postData = array(
+		$postArray = array(
 			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
@@ -93,40 +93,40 @@ class RegisterPost implements ControllerInterface
 
 		/* validate post */
 
-		if (!$postData['name'])
+		if (!$postArray['name'])
 		{
-			$errorData[] = $this->_language->get('name_empty');
+			$errorArray[] = $this->_language->get('name_empty');
 		}
-		if (!$postData['user'])
+		if (!$postArray['user'])
 		{
-			$errorData[] = $this->_language->get('user_empty');
+			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else if ($loginValidator->validate($postData['user']) == Validator\ValidatorInterface::FAILED)
+		else if ($loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData[] = $this->_language->get('user_incorrect');
+			$errorArray[] = $this->_language->get('user_incorrect');
 		}
-		else if (Db::forTablePrefix('users')->where('user', $postData['user'])->findOne()->id)
+		else if (Db::forTablePrefix('users')->where('user', $postArray['user'])->findOne()->id)
 		{
-			$errorData[] = $this->_language->get('user_exists');
+			$errorArray[] = $this->_language->get('user_exists');
 		}
-		if (!$postData['email'])
+		if (!$postArray['email'])
 		{
-			$errorData[] = $this->_language->get('email_empty');
+			$errorArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($postData['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData[] = $this->_language->get('email_incorrect');
+			$errorArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($captchaValidator->validate($postData['task'], $postData['solution']) == Validator\ValidatorInterface::FAILED)
+		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData[] = $this->_language->get('captcha_incorrect');
+			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
 		/* handle error */
 
-		if ($errorData)
+		if ($errorArray)
 		{
-			return self::error($errorData);
+			return self::error($errorArray);
 		}
 
 		/* handle success */
@@ -136,12 +136,13 @@ class RegisterPost implements ControllerInterface
 			$passwordHash = new Hash(Config::getInstance());
 			$passwordHash->init(uniqid());
 			return self::success(array(
-				'name' => $postData['name'],
-				'user' => $postData['user'],
-				'email' => $postData['email'],
+				'name' => $postArray['name'],
+				'user' => $postArray['user'],
+				'email' => $postArray['email'],
 				'password' => $passwordHash->getHash(),
 				'language' => $this->_registry->get('language'),
-				'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id
+				'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
+				'status' => Db::getSettings('verification') ? 0 : 1
 			));
 		}
 	}
@@ -151,23 +152,13 @@ class RegisterPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successData
+	 * @param array $successArray
 	 *
 	 * @return string
 	 */
 
-	public function success($successData = array())
+	public function success($successArray = array())
 	{
-		if (!$this->_registry->get('usersNew') && Db::getSettings('verification'))
-		{
-			$successData['status'] = 0;
-			$successTitle = $this->_language->get('registration_verification');
-		}
-		else
-		{
-			$successData['status'] = 1;
-			$successTitle = $this->_language->get('registration_sent');
-		}
 		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
 		/* html elements */
@@ -182,22 +173,22 @@ class RegisterPost implements ControllerInterface
 		/* prepare message */
 
 		$toArray = array(
-			$successData['name'] => $successData['email']
+			$successArray['name'] => $successArray['email']
 		);
-		if (Db::getSettings('notification') == 1)
+		if (Db::getSettings('notification'))
 		{
 			$toArray[Db::getSettings('author')] = Db::getSettings('email');
 		}
 		$fromArray = array(
-			$successData['author'] => $successData['email']
+			$successArray['author'] => $successArray['email']
 		);
 		$subject = $this->_language->get('registration');
 		$bodyArray = array(
-			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $successData['name'],
+			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $successArray['name'],
 			'<br />',
-			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $successData['user'],
+			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $successArray['user'],
 			'<br />',
-			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $successData['password'],
+			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $successArray['password'],
 			'<br />',
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
 		);
@@ -213,20 +204,20 @@ class RegisterPost implements ControllerInterface
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
-				'name' => $successData['name'],
-				'user' => $successData['user'],
-				'email' => $successData['email'],
-				'password' => $successData['password'],
-				'language' => $successData['language'],
-				'groups' => $successData['groups'],
-				'status' => $successData['status']
+				'name' => $successArray['name'],
+				'user' => $successArray['user'],
+				'email' => $successArray['email'],
+				'password' => $successArray['password'],
+				'language' => $successArray['language'],
+				'groups' => $successArray['groups'],
+				'status' => $successArray['status']
 			))
 			->save();
 
 		/* show success */
 
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successData, $successTitle);
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSettings('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -234,14 +225,14 @@ class RegisterPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorData
+	 * @param array $errorArray
 	 *
 	 * @return string
 	 */
 
-	public function error($errorData = array())
+	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'registration')->error($errorData, $this->_language->get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'registration')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 }

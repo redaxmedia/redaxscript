@@ -26,18 +26,18 @@ interface ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successData
+	 * @param array $successArray
 	 */
 
-	public function success($successData = array());
+	public function success($successArray = array());
 
 	/**
 	 * handle error
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorData
+	 * @param array $errorArray
 	 */
 
-	public function error($errorData = array());
+	public function error($errorArray = array());
 }
