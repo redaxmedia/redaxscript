@@ -126,32 +126,32 @@ function admin_router()
 			if (TABLE_PARAMETER == 'categories')
 			{
 				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
-				echo $categoryForm;
+				echo $categoryForm->render();
 			}
 			if (TABLE_PARAMETER == 'articles')
 			{
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
-				echo $articleForm;
+				echo $articleForm->render();
 			}
 			if (TABLE_PARAMETER == 'extras')
 			{
 				$extraForm = new Redaxscript\Admin\View\ExtraForm();
-				echo $extraForm;
+				echo $extraForm->render();
 			}
 			if (TABLE_PARAMETER == 'comments')
 			{
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
-				echo $commentForm;
+				echo $commentForm->render();
 			}
 			if (TABLE_PARAMETER == 'groups')
 			{
 				$groupForm = new Redaxscript\Admin\View\GroupForm();
-				echo $groupForm;
+				echo $groupForm->render();
 			}
 			if (TABLE_PARAMETER == 'users')
 			{
 				$userForm = new Redaxscript\Admin\View\UserForm();
-				echo $userForm;
+				echo $userForm->render();
 			}
 			return;
 		case 'view':

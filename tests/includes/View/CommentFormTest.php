@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\View;
 
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
@@ -16,6 +17,28 @@ use Redaxscript\View;
 
 class CommentFormTest extends TestCase
 {
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+	}
+
 	/**
 	 * providerRender
 	 *
