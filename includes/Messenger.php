@@ -45,19 +45,6 @@ class Messenger
 	);
 
 	/**
-	 * stringify the messenger
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString()
-	{
-		return $this->render();
-	}
-
-	/**
 	 * init the class
 	 *
 	 * @since 3.0.0

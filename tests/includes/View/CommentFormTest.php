@@ -44,11 +44,11 @@ class CommentFormTest extends TestCase
 	{
 		/* setup */
 
-		$searchForm = new View\CommentForm();
+		$commentForm = new View\CommentForm();
 
 		/* actual */
 
-		$actual = $searchForm->render($articleId);
+		$actual = $commentForm->render($articleId);
 
 		/* compare */
 

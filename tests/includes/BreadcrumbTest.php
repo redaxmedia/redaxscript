@@ -174,7 +174,7 @@ class BreadcrumbTest extends TestCase
 
 		/* actual */
 
-		$actual = $breadcrumb->render();
+		$actual = $breadcrumb;
 
 		/* compare */
 

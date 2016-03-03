@@ -165,6 +165,23 @@ class TemplateTest extends TestCase
 	}
 
 	/**
+	 * testSearch
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSearch()
+	{
+		/* actual */
+
+		$actual = Template::search();
+
+		/* compare */
+
+		$this->assertTrue(is_string($actual));
+	}
+
+	/**
 	 * testSetting
 	 *
 	 * @since 2.6.0
