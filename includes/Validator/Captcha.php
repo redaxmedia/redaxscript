@@ -8,7 +8,7 @@ use Redaxscript\Hash;
 /**
  * children class to validate captcha
  *
- * @since 2.2.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Validator
@@ -20,7 +20,7 @@ class Captcha implements ValidatorInterface
 	/**
 	 * validate the captcha
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $task plain task
 	 * @param string $solution hashed solution
