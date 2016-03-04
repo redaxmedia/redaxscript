@@ -47,8 +47,8 @@ function router()
 		}
 		elseif ($_POST[$key])
 		{
-			$func = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-			echo $func->process();
+			$controller  = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $controller ->process();
 		}
 	}
 

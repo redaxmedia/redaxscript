@@ -12,9 +12,9 @@
 	],
 	[
 		{
-			"name": "test",
-			"user": "foobar",
-			"email": "test@redaxscript.com",
+			"name": "name",
+			"user": "username",
+			"email": "test@test.com",
 			"password": "",
 			"task": "",
 			"solution": ""
@@ -23,9 +23,9 @@
 	],
 	[
 		{
-			"name": "test",
-			"user": "test",
-			"email": "test@redaxscript.com",
+			"name": "name",
+			"user": "user",
+			"email": "test@test.com",
 			"password": "",
 			"task": "",
 			"solution": ""
@@ -34,8 +34,8 @@
 	],
 	[
 		{
-			"name": "test",
-			"user": "foobar",
+			"name": "name",
+			"user": "username",
 			"email": "",
 			"password": "",
 			"task": "",
