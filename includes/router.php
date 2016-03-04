@@ -43,12 +43,13 @@ function router()
 		if ($_POST[$key] && function_exists($value))
 		{
 			call_user_func($value);
+			return;
 		}
-		else
+		elseif ($_POST[$key])
 		{
-			echo call_user_func_array(array($value, 'process'), Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			$func = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $func->process();
 		}
-		return;
 	}
 
 	/* general routing */

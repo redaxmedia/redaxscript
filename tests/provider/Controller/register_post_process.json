@@ -9,5 +9,38 @@
 			"solution": ""
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Email is empty</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+	],
+	[
+		{
+			"name": "test",
+			"user": "foobar",
+			"email": "test@redaxscript.com",
+			"password": "",
+			"task": "",
+			"solution": ""
+		},
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your registration information has been successfully sent</div><a href=\"login\" class=\"rs-button-messenger\">Login</a><meta content=\"2;url=login\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"name": "test",
+			"user": "test",
+			"email": "test@redaxscript.com",
+			"password": "",
+			"task": "",
+			"solution": ""
+		},
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+	],
+	[
+		{
+			"name": "test",
+			"user": "foobar",
+			"email": "",
+			"password": "",
+			"task": "",
+			"solution": ""
+		},
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User already exists</li><li>Email is empty</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
 	]
 ]
