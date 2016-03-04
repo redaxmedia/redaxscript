@@ -23,19 +23,19 @@ class Captcha implements ValidatorInterface
 	 * @since 2.2.0
 	 *
 	 * @param string $task plain task
-	 * @param string $hash hashed solution
+	 * @param string $solution hashed solution
 	 *
 	 * @return integer
 	 */
 
-	public function validate($task = null, $hash = null)
+	public function validate($task = null, $solution = null)
 	{
 		$output = ValidatorInterface::FAILED;
 		$captchaHash = new Hash(Config::getInstance());
 
 		/* validate captcha */
 
-		if ($task && $captchaHash->validate($task, $hash) || Db::getSettings('captcha') < 1)
+		if ($task && $captchaHash->validate($task, $solution) || Db::getSettings('captcha') < 1)
 		{
 			$output = ValidatorInterface::PASSED;
 		}
