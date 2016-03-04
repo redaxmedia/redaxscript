@@ -2,8 +2,8 @@
 	[
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New comment</h2>",
-			"end": "</form>"
+			"start": "<h2 class=\"rs-admin-title-content\">New comment</h2><form class=\"rs-js-tab rs-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/comments\">",
+			"end": "<a class=\"rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/comments\">Cancel</a><button class=\"rs-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
 		}
 	]
 ]

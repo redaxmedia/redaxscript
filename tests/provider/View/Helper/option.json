@@ -1,0 +1,12 @@
+[
+	[
+		{
+			"database":
+			{
+				"mysql": "mysql",
+				"pqsql": "pqsql",
+				"sqlite": "sqlite"
+			}
+		}
+	]
+]

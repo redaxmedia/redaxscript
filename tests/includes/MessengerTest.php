@@ -209,6 +209,7 @@ class MessengerTest extends TestCase
 		/* setup */
 
 		$messenger = new Messenger();
+		$messenger->init();
 		$messenger->setAction($action['text'], $action['route'])->doRedirect($action['timeout']);
 
 		/* actual */

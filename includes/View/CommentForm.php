@@ -20,19 +20,6 @@ use Redaxscript\Registry;
 class CommentForm implements ViewInterface
 {
 	/**
-	 * stringify the view
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString()
-	{
-		return $this->render();
-	}
-
-	/**
 	 * render the view
 	 *
 	 * @param integer $articleId identifier of the article

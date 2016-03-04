@@ -14,16 +14,6 @@ namespace Redaxscript\View;
 interface ViewInterface
 {
 	/**
-	 * stringify the view
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString();
-
-	/**
 	 * render the view
 	 *
 	 * @since 3.0.0

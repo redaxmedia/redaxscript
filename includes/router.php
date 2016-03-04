@@ -72,14 +72,14 @@ function router()
 				if (Redaxscript\Db::getSettings('recovery') == 1)
 				{
 					$recoverForm = new Redaxscript\View\RecoverForm();
-					echo $recoverForm;
+					echo $recoverForm->render();
 					return;
 				}
 			case 'reset':
 				if (Redaxscript\Db::getSettings('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
 				{
 					$resetForm = new Redaxscript\View\ResetForm();
-					echo $resetForm;
+					echo $resetForm->render();
 					return;
 				}
 
@@ -89,7 +89,7 @@ function router()
 				return;
 			default:
 				$loginForm = new Redaxscript\View\LoginForm();
-				echo $loginForm;
+				echo $loginForm->render();
 				return;
 			}
 		case 'logout':
@@ -107,7 +107,7 @@ function router()
 			if (Redaxscript\Db::getSettings('registration'))
 			{
 				$registerForm = new Redaxscript\View\RegisterForm();
-				echo $registerForm;
+				echo $registerForm->render();
 				return;
 			}
 

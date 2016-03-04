@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-title-content\">Create your account</h2><form class=\"rs-js-validate-form rs-form-default rs-form-register\" method=\"post\"><fieldset><legend class=\"rs-legend-default\">Required fields are marked with an asterisk.</legend><ul><li><label class=\"rs-label-default\" for=\"name\">* Name</label><input class=\"rs-field-default rs-field-text\" type=\"text\" autofocus=\"autofocus\" id=\"name\" name=\"name\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"user\">* User</label><input class=\"rs-field-default rs-field-text\" type=\"text\" id=\"user\" name=\"user\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"email\">* Email</label><input class=\"rs-field-default rs-field-email\" type=\"email\" id=\"email\" name=\"email\" required=\"required\" /></li><li><label class=\"rs-label-default\" for=\"task\">",
+			"start": "<h2 class=\"rs-title-content\">Create your account</h2><form class=\"rs-js-validate-form rs-form-default rs-form-register\" method=\"post\">",
 			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\RegisterForm\">Create</button></form>"
 		}
 	]
