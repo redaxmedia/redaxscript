@@ -1,7 +1,9 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Validator;
 use Redaxscript\Controller;
+use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -57,6 +59,27 @@ class RegisterPostTest extends TestCase
 	}
 
 	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+	public static function setUpBeforeClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('users')->where('name', 'name')->deleteMany();
+	}
+
+	/**
 	 * providerProcess
 	 *
 	 * @since 3.0.0
@@ -84,8 +107,13 @@ class RegisterPostTest extends TestCase
 	{
 		/* setup */
 
-		$this->_request->set('post', $post);
 		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
+		$validator = new Validator\Captcha();
+		$captcha = $validator->validate($post['task'], function_exists('password_verify') ? $post['solution'][0] : $post['solution'][1]);
+
+		// TODO: fix captcha in post
+		/* $this->_request->setPost('solution', function_exists('password_verify') ? $post['solution'][0] : $post['solution'][1]); */
+		$this->_request->set('post', $post);
 
 		/* actual */
 

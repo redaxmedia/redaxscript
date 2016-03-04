@@ -5,10 +5,14 @@
 			"user": "",
 			"email": "",
 			"password": "",
-			"task": "",
-			"solution": ""
+			"task": "1",
+			"solution":
+			[
+				"",
+				""
+			]
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Email is empty</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Email is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -16,31 +20,58 @@
 			"user": "username",
 			"email": "test@test.com",
 			"password": "",
-			"task": "",
-			"solution": ""
+			"task": "1",
+			"solution":
+			[
+				"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+				"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+			]
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your registration information has been successfully sent</div><a href=\"login\" class=\"rs-button-messenger\">Login</a><meta content=\"2;url=login\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
 			"name": "name",
-			"user": "user",
+			"user": "username",
 			"email": "test@test.com",
 			"password": "",
-			"task": "",
-			"solution": ""
+			"task": "1",
+			"solution":
+			[
+				"",
+				""
+			]
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Captcha is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
 	],
 	[
 		{
 			"name": "name",
-			"user": "username",
-			"email": "",
+			"user": "user",
+			"email": "test@test",
 			"password": "",
-			"task": "",
-			"solution": ""
+			"task": "1",
+			"solution":
+			[
+				"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+				"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+			]
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User already exists</li><li>Email is empty</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
+	],
+	[
+		{
+			"name": "name",
+			"user": "admin",
+			"email": "test@test.com",
+			"password": "",
+			"task": "1",
+			"solution":
+			[
+				"",
+				""
+			]
+		},
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User already exists</li><li>Captcha is incorrect</li></ul></div><a href=\"registration\" class=\"rs-button-messenger\">Back</a>"
 	]
 ]
