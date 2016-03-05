@@ -18,7 +18,6 @@
 				<file>includes/loader.php</file>
 				<file>includes/login.php</file>
 				<file>includes/navigation.php</file>
-				<file>includes/password.php</file>
 				<file>includes/query.php</file>
 				<file>includes/registration.php</file>
 				<file>includes/reminder.php</file>
