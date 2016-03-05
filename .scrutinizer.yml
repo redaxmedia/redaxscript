@@ -11,8 +11,6 @@ filter:
   - includes/login.php
   - includes/navigation.php
   - includes/query.php
-  - includes/registration.php
-  - includes/reminder.php
   - includes/router.php
   - includes/search.php
   - includes/startup.php

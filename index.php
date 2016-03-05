@@ -15,10 +15,6 @@ include_once('includes/search.php');
 include_once('includes/startup.php');
 include_once('includes/comments.php');
 include_once('includes/login.php');
-include_once('includes/password.php');
-include_once('includes/reminder.php');
-include_once('includes/password.php');
-include_once('includes/registration.php');
 
 /* bootstrap */
 

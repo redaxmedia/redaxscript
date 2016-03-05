@@ -116,12 +116,7 @@ class RecoverPost implements ControllerInterface
 		else
 		{
 			return self::success(array(
-				'name' => $postArray['name'],
-				'user' => $postArray['user'],
-				'email' => $postArray['email'],
-				'language' => $this->_registry->get('language'),
-				'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
-				'status' => Db::getSettings('verification') ? 0 : 1
+				'email' => $postArray['email']
 			));
 		}
 	}
@@ -138,41 +133,47 @@ class RecoverPost implements ControllerInterface
 
 	public function success($successArray = array())
 	{
-		$user = Db::forTablePrefix('users')->where(array(
+		$users = Db::forTablePrefix('users')->where(array(
 			'email' => $successArray['email'],
 			'status' => 1
-		))->findArray();
-		$routeReset = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($user->password) . '/' . $user->id;
+		))->findMany();
 
-		/* html elements */
+		/* process users */
 
-		$linkElement = new Html\Element();
-		$linkElement
-			->init('a', array(
-				'href' => $routeReset
-			))
-			->text($routeReset);
+		foreach ($users as $user)
+		{
+			$routeReset = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($user->password) . '/' . $user->id;
 
-		/* prepare message */
+			/* html elements */
 
-		$toArray = array(
-			$user->name => $user->email
-		);
-		$fromArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
-		);
-		$subject = Language::get('recovery');
-		$bodyArray = array(
-			'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $user->user,
-			'<br />',
-			'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $routeReset
-		);
+			$linkElement = new Html\Element();
+			$linkElement
+				->init('a', array(
+					'href' => $routeReset
+				))
+				->text($routeReset);
 
-		/* send message */
+			/* prepare message */
 
-		$mailer = new Mailer();
-		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		$mailer->send();
+			$toArray = array(
+				$user->name => $user->email
+			);
+			$fromArray = array(
+				Db::getSettings('author') => Db::getSettings('email')
+			);
+			$subject = Language::get('recovery');
+			$bodyArray = array(
+				'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $user->user,
+				'<br />',
+				'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $routeReset
+			);
+
+			/* send message */
+
+			$mailer = new Mailer();
+			$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+			$mailer->send();
+		}
 
 		/* show success */
 
