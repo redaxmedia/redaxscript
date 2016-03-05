@@ -199,11 +199,11 @@
 			"third": "articles",
 			"fourth": "",
 			"last": "articles",
-			"sub": "1",
+			"sub": 1,
 			"admin": "edit",
 			"table": "articles",
 			"alias": "",
-			"id": "1",
+			"id": 1,
 			"token": ""
 		}
 	],
@@ -215,11 +215,11 @@
 			"third": "articles",
 			"fourth": "",
 			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
-			"sub": "1",
+			"sub": 1,
 			"admin": "delete",
 			"table": "articles",
 			"alias": "",
-			"id": "1",
+			"id": 1,
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		}
 	],
@@ -231,11 +231,11 @@
 			"third": "articles",
 			"fourth": "",
 			"last": "articles",
-			"sub": "1",
+			"sub": 1,
 			"admin": "process",
 			"table": "articles",
 			"alias": "",
-			"id": "1",
+			"id": 1,
 			"token": ""
 		}
 	],

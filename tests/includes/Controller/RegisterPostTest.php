@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Validator;
 use Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
@@ -66,6 +65,7 @@ class RegisterPostTest extends TestCase
 	public static function setUpBeforeClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
 	}
 
 	/**
@@ -76,7 +76,8 @@ class RegisterPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('users')->where('name', 'name')->deleteMany();
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('users')->where('user', 'test')->deleteMany();
 	}
 
 	/**
@@ -98,22 +99,19 @@ class RegisterPostTest extends TestCase
 	 * @since 3.0.0
 	 *
 	 * @param array $post
+	 * @param array $hashArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($post = array(), $expect = null)
+	public function testProcess($post = array(), $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
-		$validator = new Validator\Captcha();
-		$captcha = $validator->validate($post['task'], function_exists('password_verify') ? $post['solution'][0] : $post['solution'][1]);
-
-		// TODO: fix captcha in post
-		/* $this->_request->setPost('solution', function_exists('password_verify') ? $post['solution'][0] : $post['solution'][1]); */
 		$this->_request->set('post', $post);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
@@ -121,7 +119,7 @@ class RegisterPostTest extends TestCase
 
 		/* compare */
 
-		/*$this->assertEquals($expect, $actual);*/
+		$this->assertEquals($expect, $actual);
 	}
 
 }

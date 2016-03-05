@@ -7,7 +7,7 @@
 			"engine": "webkit",
 			"mobile": "android",
 			"tablet": "android",
-			"version": "4"
+			"version": 4
 		}
 	],
 	[
@@ -18,7 +18,7 @@
 			"engine": "webkit",
 			"mobile": "",
 			"tablet": "",
-			"version": "15"
+			"version": 15
 		}
 	],
 	[
@@ -29,7 +29,7 @@
 			"engine": "webkit",
 			"mobile": "",
 			"tablet": "",
-			"version": "41"
+			"version": 41
 		}
 	],
 	[
@@ -40,7 +40,7 @@
 			"engine": "gecko",
 			"mobile": "",
 			"tablet": "",
-			"version": "33"
+			"version": 33
 		}
 	],
 	[
@@ -51,7 +51,7 @@
 			"engine": "edge",
 			"mobile": "",
 			"tablet": "",
-			"version": "12"
+			"version": 12
 		}
 	],
 	[
@@ -62,7 +62,7 @@
 			"engine": "trident",
 			"mobile": "",
 			"tablet": "",
-			"version": "11"
+			"version": 11
 		}
 	],
 	[
@@ -73,7 +73,7 @@
 			"engine": "trident",
 			"mobile": "",
 			"tablet": "",
-			"version": "10"
+			"version": 10
 		}
 	],
 	[
@@ -84,7 +84,7 @@
 			"engine": "trident",
 			"mobile": "",
 			"tablet": "",
-			"version": "9"
+			"version": 9
 		}
 	],
 	[
@@ -95,7 +95,7 @@
 			"engine": "gecko",
 			"mobile": "",
 			"tablet": "",
-			"version": "4"
+			"version": 4
 		}
 	],
 	[
@@ -106,7 +106,7 @@
 			"engine": "presto",
 			"mobile": "",
 			"tablet": "",
-			"version": "12"
+			"version": 12
 		}
 	],
 	[
@@ -117,7 +117,7 @@
 			"engine": "webkit",
 			"mobile": "",
 			"tablet": "",
-			"version": "7"
+			"version": 7
 		}
 	],
 	[
@@ -128,7 +128,7 @@
 			"engine": "webkit",
 			"mobile": "mobile",
 			"tablet": "ipad",
-			"version": "6"
+			"version": 6
 		}
 	],
 	[
@@ -139,7 +139,7 @@
 			"engine": "webkit",
 			"mobile": "iphone",
 			"tablet": "",
-			"version": "5"
+			"version": 5
 		}
 	]
 ]

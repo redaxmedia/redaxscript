@@ -21,8 +21,8 @@ class Login implements ValidatorInterface
 	 */
 
 	protected $_range = array(
-		'min' => 5,
-		'max' => 50
+		'min' => 1,
+		'max' => 30
 	);
 
 	/**
