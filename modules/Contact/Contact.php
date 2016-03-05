@@ -48,7 +48,7 @@ class Contact extends Module
 		if (Request::getPost(get_class()) === 'submit')
 		{
 			Registry::set('routerBreak', true);
-			self::_process();
+			echo self::process();
 		}
 	}
 
@@ -143,10 +143,10 @@ class Contact extends Module
 	/**
 	 * process
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	protected static function _process()
+	public static function process()
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -158,7 +158,7 @@ class Contact extends Module
 
 		/* process post */
 
-		$postData = array(
+		$postArray = array(
 			'author' => $specialFilter->sanitize(Request::getPost('author')),
 			'email' => $emailFilter->sanitize(Request::getPost('email')),
 			'url' => $urlFilter->sanitize(Request::getPost('url')),
@@ -169,47 +169,47 @@ class Contact extends Module
 
 		/* validate post */
 
-		if (!$postData['author'])
+		if (!$postArray['author'])
 		{
-			$errorData['author'] = Language::get('author_empty');
+			$errorArray[] = Language::get('author_empty');
 		}
-		if (!$postData['email'])
+		if (!$postArray['email'])
 		{
-			$errorData['email'] = Language::get('email_empty');
+			$errorArray[] = Language::get('email_empty');
 		}
-		else if ($emailValidator->validate($postData['email']) === Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData['email'] = Language::get('email_incorrect');
+			$errorArray['email'] = Language::get('email_incorrect');
 		}
-		if ($errorData['url'] && $urlValidator->validate($postData['url']) === Validator\ValidatorInterface::FAILED)
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData['url'] = Language::get('url_incorrect');
+			$errorArray[] = Language::get('url_incorrect');
 		}
-		if (!$postData['text'])
+		if (!$postArray['text'])
 		{
-			$errorData['text'] = Language::get('message_empty');
+			$errorArray[] = Language::get('message_empty');
 		}
-		if ($captchaValidator->validate($postData['task'], $postData['solution']) === Validator\ValidatorInterface::FAILED)
+		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorData['captcha'] = Language::get('captcha_incorrect');
+			$errorArray[] = Language::get('captcha_incorrect');
 		}
 
 		/* handle error */
 
-		if ($errorData)
+		if ($errorArray)
 		{
-			self::_error($errorData);
+			return self::error($errorArray);
 		}
 
 		/* handle success */
 
 		else
 		{
-			self::_success(array(
-				'author' => $postData['author'],
-				'email' => $postData['email'],
-				'url' => $postData['url'],
-				'text' => $postData['text']
+			return self::success(array(
+				'author' => $postArray['author'],
+				'email' => $postArray['email'],
+				'url' => $postArray['url'],
+				'text' => $postArray['text']
 			));
 		}
 	}
@@ -217,28 +217,30 @@ class Contact extends Module
 	/**
 	 * success
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param array $successData
+	 * @param array $successArray
+	 *
+	 * @return string
 	 */
 
-	protected static function _success($successData = array())
+	public static function success($successArray = array())
 	{
 		$toArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
 		);
 		$fromArray = array(
-			$successData['author'] => $successData['email']
+			$successArray['author'] => $successArray['email']
 		);
 		$subject = Language::get('contact');
 		$bodyArray = array(
-			Language::get('author') . Language::get('colon') . ' ' . $successData['author'],
+			Language::get('author') . Language::get('colon') . ' ' . $successArray['author'],
 			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $successData['email'] . '">' . $successData['email'] .'</a>',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $successArray['email'] . '">' . $successArray['email'] .'</a>',
 			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $successData['url'] . '">' . $successData['url'] .'</a>',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $successArray['url'] . '">' . $successArray['url'] .'</a>',
 			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $successData['text']
+			Language::get('message') . Language::get('colon') . ' ' . $successArray['text']
 		);
 
 		/* send message */
@@ -250,7 +252,7 @@ class Contact extends Module
 		/* show success */
 
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
 	/**
@@ -258,12 +260,14 @@ class Contact extends Module
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorData
+	 * @param array $errorArray
+	 *
+	 * @return string
 	 */
 
-	protected static function _error($errorData = array())
+	public static function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorData, Language::get('error_occurred'));
+		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));
 	}
 }

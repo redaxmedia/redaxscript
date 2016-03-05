@@ -1,4 +1,5 @@
 <?php
+use Redaxscript\Language;
 
 /**
  * router
@@ -32,7 +33,7 @@ function router()
 
 	$post_list = array(
 		'Redaxscript\View\LoginForm' => 'login_post',
-		'Redaxscript\View\RegisterForm' => 'registration_post',
+		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\RegisterPost',
 		'Redaxscript\View\ResetForm' => 'password_reset_post',
 		'Redaxscript\View\RecoverForm' => 'reminder_post',
 		'Redaxscript\View\CommentForm' => 'comment_post',
@@ -44,6 +45,11 @@ function router()
 		{
 			call_user_func($value);
 			return;
+		}
+		elseif ($_POST[$key])
+		{
+			$controller  = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $controller ->process();
 		}
 	}
 
