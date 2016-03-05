@@ -34,7 +34,7 @@ function router()
 	$post_list = array(
 		'Redaxscript\View\LoginForm' => 'login_post',
 		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\RegisterPost',
-		'Redaxscript\View\ResetForm' => 'password_reset_post',
+		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\ResetPost',
 		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\RecoverPost',
 		'Redaxscript\View\CommentForm' => 'comment_post',
 		'Redaxscript\View\SearchForm' => 'search_post'
