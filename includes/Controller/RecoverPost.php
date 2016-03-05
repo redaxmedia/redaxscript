@@ -94,58 +94,13 @@ class RecoverPost implements ControllerInterface
 		{
 			$errorArray[] = Language::get('email_incorrect');
 		}
-		else if ($captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = Language::get('captcha_incorrect');
-		}
-		else if (Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id == '')
+		else if (!Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id)
 		{
 			$errorArray[] = Language::get('email_unknown');
 		}
-		else
+		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			/* query users */
-
-			$result = Db::forTablePrefix('users')->where(array(
-				'email' => $postArray['email'],
-				'status' => 1
-			))->findArray();
-			if ($result)
-			{
-				foreach ($result as $r)
-				{
-					if ($r)
-					{
-						foreach ($r as $key => $value)
-						{
-							$userData[$key] = stripslashes($value);
-						}
-					}
-
-					/* send reminder information */
-
-					$passwordResetRoute = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($userData['password']) . '/' . $userData['id'];
-					$passwordResetLink = '<a href="' . $passwordResetRoute . '">' . $passwordResetRoute . '</a>';
-					$toArray = array(
-						$userData['name'] => $userData['email']
-					);
-					$fromArray = array(
-						Db::getSettings('author') => Db::getSettings('email')
-					);
-					$subject = Language::get('recovery');
-					$bodyArray = array(
-						'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $userData['user'],
-						'<br />',
-						'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $passwordResetLink
-					);
-
-					/* mailer object */
-
-					$mailer = new Mailer();
-					$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-					$mailer->send();
-				}
-			}
+			$errorArray[] = Language::get('captcha_incorrect');
 		}
 
 		/* handle error */
@@ -159,7 +114,14 @@ class RecoverPost implements ControllerInterface
 
 		else
 		{
-			return self::success();
+			return self::success(array(
+				'name' => $postArray['name'],
+				'user' => $postArray['user'],
+				'email' => $postArray['email'],
+				'language' => $this->_registry->get('language'),
+				'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
+				'status' => Db::getSettings('verification') ? 0 : 1
+			));
 		}
 	}
 
@@ -175,6 +137,38 @@ class RecoverPost implements ControllerInterface
 
 	public function success($successArray = array())
 	{
+		/* query users */
+
+		$user = Db::forTablePrefix('users')->where(array(
+			'email' => $successArray['email'],
+			'status' => 1
+		))->findArray();
+		if ($user)
+		{
+			/* send reminder information */
+
+			$passwordResetRoute = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($user->password) . '/' . $user->id;
+			$passwordResetLink = '<a href="' . $passwordResetRoute . '">' . $passwordResetRoute . '</a>';
+			$toArray = array(
+				$user->name => $user->email
+			);
+			$fromArray = array(
+				Db::getSettings('author') => Db::getSettings('email')
+			);
+			$subject = Language::get('recovery');
+			$bodyArray = array(
+				'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $user->user,
+				'<br />',
+				'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $passwordResetLink
+			);
+
+			/* mailer object */
+
+			$mailer = new Mailer();
+			$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+			$mailer->send();
+		}
+
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('recovery_sent'), Language::get('operation_completed'));
 	}
