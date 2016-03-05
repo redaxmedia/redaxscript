@@ -15,6 +15,7 @@ use Redaxscript\Request;
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
@@ -66,18 +67,12 @@ class RecoverPostTest extends TestCase
 	public static function setUpBeforeClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-
-		/* create test user */
-
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
 				'name' => 'test',
-				'user' => 'user',
-				'email' => 'test@test.com',
-				'password' => 'password',
-				'groups' => 1,
-				'status' => 1
+				'user' => 'test',
+				'email' => 'test@test.com'
 			))
 			->save();
 	}
@@ -135,5 +130,4 @@ class RecoverPostTest extends TestCase
 
 		$this->assertEquals($expect, $actual);
 	}
-
 }

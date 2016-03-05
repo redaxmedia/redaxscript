@@ -2,7 +2,7 @@
 	[
 		{
 			"email": "",
-			"task": "1"
+			"task": 1
 		},
 		[
 			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
@@ -13,7 +13,7 @@
 	[
 		{
 			"email": "test@test",
-			"task": "1"
+			"task": 1
 		},
 		[
 			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
@@ -23,30 +23,19 @@
 	],
 	[
 		{
-			"email": "name@test.com",
-			"task": "1"
-		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Email is unknown</li></ul></div><a href=\"recovery\" class=\"rs-button-messenger\">Back</a>"
-	],
-	[
-		{
-			"email": "test@test.com",
-			"task": "1"
+			"email": "invalid@test.com",
+			"task": 1
 		},
 		[
 			"",
 			""
 		],
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Captcha is incorrect</li></ul></div><a href=\"recovery\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Email is unknown</li><li>Captcha is incorrect</li></ul></div><a href=\"recovery\" class=\"rs-button-messenger\">Back</a>"
 	],
 	[
 		{
 			"email": "test@test.com",
-			"task": "1"
+			"task": 1
 		},
 		[
 			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",

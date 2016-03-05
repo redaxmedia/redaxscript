@@ -115,7 +115,7 @@ class InstallForm implements ViewInterface
 			->label(Language::get('prefix'), array(
 				'for' => 'db_prefix'
 			))
-			->password(array(
+			->text(array(
 				'id' => 'db_prefix',
 				'name' => 'db_prefix',
 				'value' => $options['dbPrefix']

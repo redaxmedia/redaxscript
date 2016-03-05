@@ -201,7 +201,7 @@ function contents()
 		}
 		else if (LAST_TABLE == 'articles' && $counter == 1)
 		{
-			$error = Language::get('access_no');
+			$error = Redaxscript\Language::get('access_no');
 		}
 	}
 
