@@ -18,7 +18,6 @@ install:
 
 before_script:
 - gem install mailcatcher
-- php -d sendmail_path = /usr/bin/env catchmail -f test@test.com
 - mailcatcher
 
 script:
