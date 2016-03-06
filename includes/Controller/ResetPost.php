@@ -119,34 +119,58 @@ class ResetPost implements ControllerInterface
 
 		/* handle success */
 
-		else
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init(uniqid());
+		$resetArray = array(
+			'id' => $user->id,
+			'password' => $passwordHash->getHash()
+		);
+		$mailArray = array(
+			'name' => $user->name,
+			'email' => $user->email,
+			'password' => $passwordHash->getRaw()
+		);
+
+		/* reset and mail */
+
+		if ($this->_reset($resetArray) && $this->_mail($mailArray))
 		{
-			$password = uniqid();
-			$resetArray = array(
-				'id' => $user->id,
-				'password' => $password
-			);
-			$mailArray = array(
-				'name' => $user->name,
-				'email' => $user->email,
-				'password' => $password
-			);
-
-			/* reset and mail */
-
-			if ($this->reset($resetArray) && $this->mail($mailArray))
-			{
-				return $this->success();
-			}
-			else
-			{
-				return self::error($this->_language->get('something_wrong'));
-			}
+			return $this->success();
 		}
+		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
+	 * show the success
 	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function success()
+	{
+		$messenger = new Messenger();
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
+	}
+
+	/**
+	 * show the error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorArray
+	 *
+	 * @return string
+	 */
+
+	public function error($errorArray = array())
+	{
+		$messenger = new Messenger();
+		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
+	}
+
+	/**
 	 * reset the password
 	 *
 	 * @since 3.0.0
@@ -156,20 +180,15 @@ class ResetPost implements ControllerInterface
 	 * @return boolean
 	 */
 
-	public function reset($resetArray = array())
+	protected function _reset($resetArray = array())
 	{
-		$passwordHash = new Hash(Config::getInstance());
-		$passwordHash->init($resetArray['password']);
-
-		/* reset password */
-
 		return Db::forTablePrefix('users')
 			->where(array(
 				'id' => $resetArray['id'],
 				'status' => 1
 			))
 			->findOne()
-			->set('password', $passwordHash->getHash())
+			->set('password', $resetArray['password'])
 			->save();
 	}
 
@@ -183,21 +202,21 @@ class ResetPost implements ControllerInterface
 	 * @return boolean
 	 */
 
-	public function mail($mailArray = array())
+	protected function _mail($mailArray = array())
 	{
-		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
 		/* html elements */
 
 		$linkElement = new Element();
 		$linkElement
 			->init('a', array(
-				'href' => Registry::get('rewriteRoute') . $routeLogin,
+				'href' => Registry::get('rewriteRoute') . $urlLogin,
 				'class' => 'link-result'
 			))
-			->text($routeLogin);
+			->text($urlLogin);
 
-		/* prepare message */
+		/* prepare mail */
 
 		$toArray = array(
 			$mailArray['name'] => $mailArray['email']
@@ -212,42 +231,10 @@ class ResetPost implements ControllerInterface
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '</strong> ' . $linkElement
 		);
 
-		/* send message */
+		/* send mail */
 
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		return $mailer->send();
-	}
-
-	/**
-	 * handle success
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $successArray
-	 *
-	 * @return string
-	 */
-
-	public function success($successArray = array())
-	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
-	}
-
-	/**
-	 * handle error
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $errorArray
-	 *
-	 * @return string
-	 */
-
-	public function error($errorArray = array())
-	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 }

@@ -133,26 +133,31 @@ function head($type = '')
 
 	/* collect meta */
 
-	if ($type == '' || $type == 'meta') {
+	if ($type == '' || $type == 'meta')
+	{
 		/* collect refresh route */
 
-		if (REFRESH_ROUTE) {
+		if (REFRESH_ROUTE)
+		{
 			$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
 		}
 
 		/* collect author */
 
-		if (Redaxscript\Db::getSettings('author')) {
+		if (Redaxscript\Db::getSettings('author'))
+		{
 			$output .= '<meta name="author" content="' . Redaxscript\Db::getSettings('author') . '" />' . PHP_EOL;
 		}
 
 		/* collect metadata */
 
 		$output .= '<meta name="generator" content="' . Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . '" />' . PHP_EOL;
-		if ($description) {
+		if ($description)
+		{
 			$output .= '<meta name="description" content="' . $description . '" />' . PHP_EOL;
 		}
-		if ($keywords) {
+		if ($keywords)
+		{
 			$output .= '<meta name="keywords" content="' . $keywords . '" />' . PHP_EOL;
 		}
 		$output .= '<meta name="robots" content="' . ($robots ? 'all' : 'none') . '" />' . PHP_EOL;
@@ -168,8 +173,10 @@ function head($type = '')
 
 		/* article in category */
 
-		if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles') {
-			if (SECOND_TABLE == 'categories') {
+		if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles')
+		{
+			if (SECOND_TABLE == 'categories')
+			{
 				$category = Redaxscript\Db::forTablePrefix(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
 			} else {
 				$category = Redaxscript\Db::forTablePrefix(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
@@ -178,9 +185,11 @@ function head($type = '')
 			/* total articles of category */
 
 			$articles_total = Redaxscript\Db::forTablePrefix('articles')->where('category', $category)->count();
-			if ($articles_total == 1) {
+			if ($articles_total == 1)
+			{
 				$canonical_route = FIRST_PARAMETER;
-				if (SECOND_TABLE == 'categories') {
+				if (SECOND_TABLE == 'categories')
+				{
 					$canonical_route .= '/' . SECOND_PARAMETER;
 				}
 			}
@@ -188,7 +197,8 @@ function head($type = '')
 
 		/* extend canonical url */
 
-		if ($canonical_route) {
+		if ($canonical_route)
+		{
 			$canonical_url .= $canonical_route;
 		} else {
 			$canonical_url .= FULL_ROUTE;

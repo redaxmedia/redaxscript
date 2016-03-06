@@ -242,7 +242,7 @@ class Messenger
 
 		/* else plain text */
 
-		else if ($message)
+		else
 		{
 			$boxElement->text($message);
 		}

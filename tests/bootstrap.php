@@ -68,7 +68,7 @@ $installer->insertData(array(
 	'adminName' => 'Admin',
 	'adminUser' => 'admin',
 	'adminPassword' => 'admin',
-	'adminEmail' => 'admin@localhost'
+	'adminEmail' => 'admin@admin.com'
 ));
 
 /* test dummy */

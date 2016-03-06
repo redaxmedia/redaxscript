@@ -205,62 +205,20 @@ class Contact extends Module
 
 		/* handle success */
 
-		else
+		$mailArray = array(
+			'author' => $postArray['author'],
+			'email' => $postArray['email'],
+			'url' => $postArray['url'],
+			'text' => $postArray['text']
+		);
+
+		/* mail */
+
+		if (self::_mail($mailArray))
 		{
-			$mailArray = array(
-				'author' => $postArray['author'],
-				'email' => $postArray['email'],
-				'url' => $postArray['url'],
-				'text' => $postArray['text']
-			);
-
-			/* mail */
-
-			if (self::mail($mailArray))
-			{
-				return self::success();
-			}
-			else
-			{
-				return self::error(Language::get('something_wrong'));
-			}
+			return self::success();
 		}
-	}
-
-	/**
-	 * mail
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $mailArray
-	 *
-	 * @return boolean
-	 */
-
-	public static function mail($mailArray = array())
-	{
-		$toArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
-		);
-		$fromArray = array(
-			$mailArray['author'] => $mailArray['email']
-		);
-		$subject = Language::get('contact');
-		$bodyArray = array(
-			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
-			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
-			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
-			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
-		);
-
-		/* send message */
-
-		$mailer = new Mailer();
-		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		return $mailer->send();
+		return self::error(Language::get('something_wrong'));
 	}
 
 	/**
@@ -291,5 +249,41 @@ class Contact extends Module
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));
+	}
+
+	/**
+	 * mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	protected static function _mail($mailArray = array())
+	{
+		$toArray = array(
+			Db::getSettings('author') => Db::getSettings('email')
+		);
+		$fromArray = array(
+			$mailArray['author'] => $mailArray['email']
+		);
+		$subject = Language::get('contact');
+		$bodyArray = array(
+			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
+			'<br />',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
+			'<br />',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
+			'<br />',
+			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
+		);
+
+		/* send mail */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		return $mailer->send();
 	}
 }

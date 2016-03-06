@@ -131,24 +131,35 @@ class RegisterPost implements ControllerInterface
 
 		/* handle success */
 
-		else
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init(uniqid());
+		$createArray = array(
+			'name' => $postArray['name'],
+			'user' => $postArray['user'],
+			'password' => $passwordHash->getHash(),
+			'email' => $postArray['email'],
+			'language' => $this->_registry->get('language'),
+			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
+			'status' => Db::getSettings('verification') ? 0 : 1
+		);
+		$mailArray = array(
+			'name' => $postArray['name'],
+			'user' => $postArray['user'],
+			'password' => $passwordHash->getRaw(),
+			'email' => $postArray['email']
+		);
+
+		/* create and mail */
+
+		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			$passwordHash = new Hash(Config::getInstance());
-			$passwordHash->init(uniqid());
-			return self::success(array(
-				'name' => $postArray['name'],
-				'user' => $postArray['user'],
-				'email' => $postArray['email'],
-				'password' => $passwordHash->getHash(),
-				'language' => $this->_registry->get('language'),
-				'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
-				'status' => Db::getSettings('verification') ? 0 : 1
-			));
+			return $this->success();
 		}
+		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
-	 * handle success
+	 * show the success
 	 *
 	 * @since 3.0.0
 	 *
@@ -159,69 +170,12 @@ class RegisterPost implements ControllerInterface
 
 	public function success($successArray = array())
 	{
-		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
-
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement
-			->init('a', array(
-				'href' => $routeLogin
-			))
-			->text($routeLogin);
-
-		/* prepare message */
-
-		$toArray = array(
-			$successArray['name'] => $successArray['email']
-		);
-		if (Db::getSettings('notification'))
-		{
-			$toArray[Db::getSettings('author')] = Db::getSettings('email');
-		}
-		$fromArray = array(
-			$successArray['author'] => $successArray['email']
-		);
-		$subject = $this->_language->get('registration');
-		$bodyArray = array(
-			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $successArray['name'],
-			'<br />',
-			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $successArray['user'],
-			'<br />',
-			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $successArray['password'],
-			'<br />',
-			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
-		);
-
-		/* send message */
-
-		$mailer = new Mailer();
-		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		$mailer->send();
-
-		/* create user */
-
-		Db::forTablePrefix('users')
-			->create()
-			->set(array(
-				'name' => $successArray['name'],
-				'user' => $successArray['user'],
-				'email' => $successArray['email'],
-				'password' => $successArray['password'],
-				'language' => $successArray['language'],
-				'groups' => $successArray['groups'],
-				'status' => $successArray['status']
-			))
-			->save();
-
-		/* show success */
-
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSettings('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
-	 * handle error
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *
@@ -234,5 +188,81 @@ class RegisterPost implements ControllerInterface
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'registration')->error($errorArray, $this->_language->get('error_occurred'));
+	}
+
+	/**
+	 * reset the password
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $createArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _create($createArray = array())
+	{
+		return Db::forTablePrefix('users')
+			->create()
+			->set(array(
+				'name' => $createArray['name'],
+				'user' => $createArray['user'],
+				'email' => $createArray['email'],
+				'password' => $createArray['password'],
+				'language' => $createArray['language'],
+				'groups' => $createArray['groups'],
+				'status' => $createArray['status']
+			))
+			->save();
+	}
+
+	/**
+	 * send the mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _mail($mailArray = array())
+	{
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement
+			->init('a', array(
+				'href' => $urlLogin
+			))
+			->text($urlLogin);
+
+		/* prepare mail */
+
+		$toArray = array(
+			$mailArray['name'] => $mailArray['email'],
+			Db::getSettings('author') => Db::getSettings('notification') ? Db::getSettings('email') : null
+		);
+		$fromArray = array(
+			$mailArray['name'] => $mailArray['email']
+		);
+		$subject = $this->_language->get('registration');
+		$bodyArray = array(
+			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $mailArray['name'],
+			'<br />',
+			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
+			'<br />',
+			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
+			'<br />',
+			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
+		);
+
+		/* send mail */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		return $mailer->send();
 	}
 }

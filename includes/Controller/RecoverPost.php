@@ -113,76 +113,50 @@ class RecoverPost implements ControllerInterface
 
 		/* handle success */
 
-		else
-		{
-			return self::success(array(
-				'email' => $postArray['email']
-			));
-		}
-	}
-
-	/**
-	 * handle success
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $successArray
-	 *
-	 * @return string
-	 */
-
-	public function success($successArray = array())
-	{
 		$users = Db::forTablePrefix('users')->where(array(
-			'email' => $successArray['email'],
+			'email' => $postArray['email'],
 			'status' => 1
-		))->findMany();
+		))->findArray();
 
 		/* process users */
 
 		foreach ($users as $user)
 		{
-			$routeReset = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($user->password) . '/' . $user->id;
-
-			/* html elements */
-
-			$linkElement = new Html\Element();
-			$linkElement
-				->init('a', array(
-					'href' => $routeReset
-				))
-				->text($routeReset);
-
-			/* prepare message */
-
-			$toArray = array(
-				$user->name => $user->email
+			$mailArray = array(
+				'id' => $user->id,
+				'name' => $user->name,
+				'user' => $user->user,
+				'password' => $user->password,
+				'email' => $user->email
 			);
-			$fromArray = array(
-				Db::getSettings('author') => Db::getSettings('email')
-			);
-			$subject = Language::get('recovery');
-			$bodyArray = array(
-				'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $user->user,
-				'<br />',
-				'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $routeReset
-			);
-
-			/* send message */
-
-			$mailer = new Mailer();
-			$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-			$mailer->send();
+			if ($this->_mail($mailArray))
+			{
+				$successArray[] = Language::get('recovery_sent');
+			}
 		}
+		if ($successArray)
+		{
+			return self::success();
+		}
+		return $this->error($this->_language->get('something_wrong'));
+	}
 
-		/* show success */
+	/**
+	 * show success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
 
+	public function success()
+	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('recovery_sent'), Language::get('operation_completed'));
 	}
 
 	/**
-	 * handle error
+	 * show error
 	 *
 	 * @since 3.0.0
 	 *
@@ -195,5 +169,50 @@ class RecoverPost implements ControllerInterface
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('back'), 'recovery')->error($errorArray, Language::get('error_occurred'));
+	}
+
+	/**
+	 * send the mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _mail($mailArray = array())
+	{
+		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($mailArray['password']) . '/' . $mailArray['id'];
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement
+			->init('a', array(
+				'href' => $urlReset
+			))
+			->text($urlReset);
+
+		/* prepare mail */
+
+		$toArray = array(
+			$mailArray['name'] => $mailArray['email']
+		);
+		$fromArray = array(
+			Db::getSettings('author') => Db::getSettings('email')
+		);
+		$subject = Language::get('recovery');
+		$bodyArray = array(
+			'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $mailArray['user'],
+			'<br />',
+			'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $linkElement
+		);
+
+		/* send mail */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		return $mailer->send();
 	}
 }

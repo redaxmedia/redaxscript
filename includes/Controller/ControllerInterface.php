@@ -22,22 +22,18 @@ interface ControllerInterface
 	public function process();
 
 	/**
-	 * handle success
+	 * show the success
 	 *
 	 * @since 3.0.0
-	 *
-	 * @param array $successArray
 	 */
 
-	public function success($successArray = array());
+	public function success();
 
 	/**
-	 * handle error
+	 * show the error
 	 *
 	 * @since 3.0.0
-	 *
-	 * @param array $errorArray
 	 */
 
-	public function error($errorArray = array());
+	public function error();
 }
