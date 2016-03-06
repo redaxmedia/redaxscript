@@ -23,6 +23,7 @@ use Redaxscript\Validator;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class ResetPost implements ControllerInterface
 {
 	/**
@@ -103,14 +104,13 @@ class ResetPost implements ControllerInterface
 		{
 			$errorArray[] = Language::get('input_incorrect');
 		}
+		else if (!$user['id'])
+		{
+			$errorArray[] = Language::get('user_incorrect');
+		}
 		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = Language::get('captcha_incorrect');
-		}
-		// TODO: sha1($user->password) !== $postArray['password']
-		if (!$user->id || $user->password !== $postArray['password'])
-		{
-			$errorArray[] = Language::get('access_no');
 		}
 
 		/* handle error */
@@ -213,7 +213,7 @@ class ResetPost implements ControllerInterface
 
 		if ($errorArray['id'] && $errorArray['password'])
 		{
-			$back_route = 'login/reset/' . $errorArray['password'] . '/' . $errorArray['post_id'];
+			$back_route = 'login/reset/' . $errorArray['password'] . '/' . $errorArray['id'];
 		}
 		else
 		{

@@ -75,6 +75,7 @@ class ResetPostTest extends TestCase
 				'status' => 1
 			))
 			->save();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
 	}
 
 	/**
@@ -85,6 +86,7 @@ class ResetPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
