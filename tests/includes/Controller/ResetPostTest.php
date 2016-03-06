@@ -76,6 +76,7 @@ class ResetPostTest extends TestCase
 			))
 			->save();
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
 	}
 
 	/**
@@ -85,8 +86,9 @@ class ResetPostTest extends TestCase
 	 */
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
@@ -121,8 +123,6 @@ class ResetPostTest extends TestCase
 		$this->_request->set('post', $post);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$resetPost = new Controller\ResetPost($this->_registry, $this->_language, $this->_request);
-
-		$this->_request->set('post', $post);
 
 		/* actual */
 

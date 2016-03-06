@@ -22,7 +22,6 @@ use Redaxscript\Validator;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
-
 class ResetPost implements ControllerInterface
 {
 	/**
@@ -89,17 +88,17 @@ class ResetPost implements ControllerInterface
 
 		/* query user information */
 
-		if ($postArray['id'] && $postArray['post_password'])
+		if ($postArray['id'] && $postArray['password'])
 		{
 			$user = Db::forTablePrefix('users')->where(array(
 				'id' => $postArray['id'],
 				'status' => 1
-			))->findArray();
+			))->findOne();
 		}
 
 		/* validate post */
 
-		if (!$postArray['id'] || !$postArray['post_password'])
+		if (!$postArray['id'] || !$postArray['password'])
 		{
 			$errorArray[] = Language::get('input_incorrect');
 		}
@@ -107,18 +106,17 @@ class ResetPost implements ControllerInterface
 		{
 			$errorArray[] = Language::get('captcha_incorrect');
 		}
-		if (!$user->id || sha1($user->password) != $postArray['post_password'])
+		if (!$user->id || sha1($user->password) != $postArray['password'])
 		{
 			$errorArray[] = Language::get('access_no');
 		}
-
 
 		/* handle error */
 
 		if ($errorArray)
 		{
 			$errorArray['post_id'] = $postArray['id'];
-			$errorArray['post_password'] = $postArray['post_password'];
+			$errorArray['password'] = $postArray['password'];
 			return self::error($errorArray);
 		}
 
@@ -221,7 +219,7 @@ class ResetPost implements ControllerInterface
 		}
 
 		unset($errorArray['post_id']);
-		unset($errorArray['post_password']);
+		unset($errorArray['password']);
 
 		/* show error */
 
