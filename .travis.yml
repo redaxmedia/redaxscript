@@ -13,15 +13,15 @@ before_install:
 install:
 - composer self-update
 - composer install --ignore-platform-reqs
+- gem install mailcatcher
 - npm install
 - npm install --global grunt-cli
 
 before_script:
-- gem install mailcatcher
-- echo sendmail_path = /usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- mailcatcher
+- echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
+- mailcatcher
 - npm test
 - npm run phpunit
 
