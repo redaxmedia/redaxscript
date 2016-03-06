@@ -8,7 +8,7 @@ php:
 - 7.0
 
 before_install:
-- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require phpunit/phpunit 4.8.21 --no-update --dev; fi
+- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require phpunit/phpunit 4.8.23 --no-update --dev; fi
 
 install:
 - composer self-update
@@ -18,7 +18,7 @@ install:
 
 before_script:
 - gem install mailcatcher
-- sendmail_path = /usr/bin/env catchmail -f test@test.com
+- php -d sendmail_path = /usr/bin/env catchmail -f test@test.com
 - mailcatcher
 
 script:
