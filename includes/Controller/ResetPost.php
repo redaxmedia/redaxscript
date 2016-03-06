@@ -87,38 +87,33 @@ class ResetPost implements ControllerInterface
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* query user information */
+		/* fetch user */
 
-		if ($postArray['id'] && $postArray['password'])
-		{
-			$user = Db::forTablePrefix('users')->where(array(
-				'id' => $postArray['id'],
-				'password' => $postArray['password'],
-				'status' => 1
-			))->findOne();
-		}
+		$user = Db::forTablePrefix('users')->where(array(
+			'id' => $postArray['id'],
+			'password' => $postArray['password'],
+			'status' => 1
+		))->findOne();
 
 		/* validate post */
 
 		if (!$postArray['id'] || !$postArray['password'])
 		{
-			$errorArray[] = Language::get('input_incorrect');
+			$errorArray[] = $this->_language->get('input_incorrect');
 		}
-		else if (!$user['id'])
+		else if (!$user->id)
 		{
-			$errorArray[] = Language::get('user_incorrect');
+			$errorArray[] = $this->_language->get('access_no');
 		}
-		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('captcha_incorrect');
+			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
 		/* handle error */
 
 		if ($errorArray)
 		{
-			$errorArray['id'] = $postArray['id'];
-			$errorArray['password'] = $postArray['password'];
 			return self::error($errorArray);
 		}
 
@@ -127,10 +122,10 @@ class ResetPost implements ControllerInterface
 		else
 		{
 			return self::success(array(
-				'id' => $postArray['id'],
-				'password' => uniqid(),
+				'id' => $user->id,
 				'name' => $user->name,
-				'email' => $user->email
+				'email' => $user->email,
+				'password' => uniqid()
 			));
 		}
 	}
@@ -147,19 +142,19 @@ class ResetPost implements ControllerInterface
 
 	public function success($successArray = array())
 	{
-		/* send new password */
+		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
-		$loginRoute = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
-
-		/* html element */
+		/* html elements */
 
 		$linkElement = new Element();
 		$linkElement
 			->init('a', array(
-				'href' => Registry::get('rewriteRoute') . $loginRoute,
+				'href' => Registry::get('rewriteRoute') . $routeLogin,
 				'class' => 'link-result'
 			))
-			->text($loginRoute);
+			->text($routeLogin);
+
+		/* prepare message */
 
 		$toArray = array(
 			$successArray['name'] => $successArray['email']
@@ -167,23 +162,23 @@ class ResetPost implements ControllerInterface
 		$fromArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
 		);
-		$subject = Language::get('password_new');
+		$subject = $this->_language->get('password_new');
 		$bodyArray = array(
-			'<strong>' . Language::get('password_new') . Language::get('colon') . '</strong> ' . $successArray['password'],
+			'<strong>' . $this->_language->get('password_new') . $this->_language->get('colon') . '</strong> ' . $successArray['password'],
 			'<br />',
-			'<strong>' . Language::get('login') . Language::get('colon') . '</strong> ' . $linkElement
+			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '</strong> ' . $linkElement
 		);
 
-		/* mailer object */
+		/* send message */
 
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		$mailer->send();
 
-		/* update password */
+		/* reset password */
 
 		$passwordHash = new Hash(Config::getInstance());
-		$passwordHash->init($successArray['new_password']);
+		$passwordHash->init($successArray['password']);
 		Db::forTablePrefix('users')
 			->where(array(
 				'id' => $successArray['id'],
@@ -193,8 +188,10 @@ class ResetPost implements ControllerInterface
 			->set('password', $passwordHash->getHash())
 			->save();
 
+		/* show success */
+
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('password_sent'), Language::get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -210,22 +207,6 @@ class ResetPost implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-
-		if ($errorArray['id'] && $errorArray['password'])
-		{
-			$back_route = 'login/reset/' . $errorArray['password'] . '/' . $errorArray['id'];
-		}
-		else
-		{
-			$back_route = 'login/recover';
-		}
-
-		unset($errorArray['id']);
-		unset($errorArray['password']);
-
-		/* show error */
-
-		return $messenger->setAction(Language::get('back'), $back_route)->error($errorArray, Language::get('error_occurred'));
-
+		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 }

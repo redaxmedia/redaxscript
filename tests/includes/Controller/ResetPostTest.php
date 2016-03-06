@@ -15,6 +15,7 @@ use Redaxscript\Request;
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
@@ -62,20 +63,20 @@ class ResetPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 */
+
 	public static function setUpBeforeClass()
 	{
+		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
 				'name' => 'test',
-				'user' => 'user',
+				'user' => 'test',
 				'email' => 'test@test.com',
 				'password' => 'test',
-				'groups' => 1,
 				'status' => 1
 			))
 			->save();
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
 	}
 
 	/**
@@ -83,10 +84,11 @@ class ResetPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 */
+
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
 	}
 
 	/**
@@ -130,5 +132,4 @@ class ResetPostTest extends TestCase
 
 		$this->assertEquals($expect, $actual);
 	}
-
 }

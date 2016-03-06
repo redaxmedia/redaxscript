@@ -148,7 +148,7 @@ class RegisterPost implements ControllerInterface
 	}
 
 	/**
-	 * success
+	 * handle success
 	 *
 	 * @since 3.0.0
 	 *
@@ -221,7 +221,7 @@ class RegisterPost implements ControllerInterface
 	}
 
 	/**
-	 * error
+	 * handle error
 	 *
 	 * @since 3.0.0
 	 *

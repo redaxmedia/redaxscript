@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Tests\View\Helper;
 
-use Redaxscript\View\Helper;
 use Redaxscript\Tests\TestCase;
+use Redaxscript\View\Helper;
 
 /**
  * OptionTest
