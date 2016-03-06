@@ -116,7 +116,7 @@ class RecoverPost implements ControllerInterface
 		$users = Db::forTablePrefix('users')->where(array(
 			'email' => $postArray['email'],
 			'status' => 1
-		))->findArray();
+		))->findMany();
 
 		/* process users */
 

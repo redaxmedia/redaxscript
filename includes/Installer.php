@@ -218,7 +218,7 @@ class Installer
 			'language' => 'detect',
 			'template' => 'default',
 			'title' => $language->get('name', '_package'),
-			'author' => null,
+			'author' => $options['adminName'],
 			'copyright' => null,
 			'description' => $language->get('description', '_package'),
 			'keywords' => null,

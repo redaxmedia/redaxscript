@@ -18,7 +18,7 @@ install:
 
 before_script:
 - gem install mailcatcher
-- echo sendmail_path = /usr/bin/env catchmail -f test@test.com --smtp-ip 127.0.0.1 --smtp-port 1025 >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo sendmail_path = /usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - mailcatcher
 
 script:

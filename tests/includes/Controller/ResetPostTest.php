@@ -73,8 +73,7 @@ class ResetPostTest extends TestCase
 				'name' => 'test',
 				'user' => 'test',
 				'email' => 'test@test.com',
-				'password' => 'test',
-				'status' => 1
+				'password' => 'test'
 			))
 			->save();
 	}

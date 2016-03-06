@@ -255,7 +255,10 @@ class Mailer
 		{
 			foreach ($this->_toArray as $to)
 			{
-				$output = mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				if ($to)
+				{
+					$output = mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				}
 			}
 		}
 		return $output;
