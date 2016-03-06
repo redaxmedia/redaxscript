@@ -4,6 +4,7 @@ namespace Redaxscript\Controller;
 use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Hash;
+use Redaxscript\Html\Element;
 use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
@@ -82,8 +83,7 @@ class ResetPost implements ControllerInterface
 			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
-			'solution' => $this->_request->getPost('solution'),
-			'new_password' => uniqid()
+			'solution' => $this->_request->getPost('solution')
 		);
 
 		/* query user information */
@@ -92,6 +92,7 @@ class ResetPost implements ControllerInterface
 		{
 			$user = Db::forTablePrefix('users')->where(array(
 				'id' => $postArray['id'],
+				'password' => $postArray['password'],
 				'status' => 1
 			))->findOne();
 		}
@@ -106,7 +107,8 @@ class ResetPost implements ControllerInterface
 		{
 			$errorArray[] = Language::get('captcha_incorrect');
 		}
-		if (!$user->id || sha1($user->password) != $postArray['password'])
+		// TODO: sha1($user->password) !== $postArray['password']
+		if (!$user->id || $user->password !== $postArray['password'])
 		{
 			$errorArray[] = Language::get('access_no');
 		}
@@ -115,7 +117,7 @@ class ResetPost implements ControllerInterface
 
 		if ($errorArray)
 		{
-			$errorArray['post_id'] = $postArray['id'];
+			$errorArray['id'] = $postArray['id'];
 			$errorArray['password'] = $postArray['password'];
 			return self::error($errorArray);
 		}
@@ -126,7 +128,7 @@ class ResetPost implements ControllerInterface
 		{
 			return self::success(array(
 				'id' => $postArray['id'],
-				'password' => $postArray['password'],
+				'password' => uniqid(),
 				'name' => $user->name,
 				'email' => $user->email
 			));
@@ -209,16 +211,16 @@ class ResetPost implements ControllerInterface
 	{
 		$messenger = new Messenger();
 
-		if ($errorArray['post_id'] && $errorArray['$post_password'])
+		if ($errorArray['id'] && $errorArray['password'])
 		{
-			$back_route = 'login/reset/' . $errorArray['$post_password'] . '/' . $errorArray['post_id'];
+			$back_route = 'login/reset/' . $errorArray['password'] . '/' . $errorArray['post_id'];
 		}
 		else
 		{
 			$back_route = 'login/recover';
 		}
 
-		unset($errorArray['post_id']);
+		unset($errorArray['id']);
 		unset($errorArray['password']);
 
 		/* show error */

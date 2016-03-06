@@ -70,13 +70,11 @@ class ResetPostTest extends TestCase
 				'name' => 'test',
 				'user' => 'user',
 				'email' => 'test@test.com',
-				'password' => '$2y$10$vOKzs3Z9NzJbLxgnhnQU7ej.L1jkteBprlzZ5jdbP/.kZsnv0hQn6',
+				'password' => 'test',
 				'groups' => 1,
 				'status' => 1
 			))
 			->save();
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
 	}
 
 	/**
@@ -87,8 +85,6 @@ class ResetPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 	}
 
 	/**
