@@ -114,33 +114,76 @@ class ResetPost implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return self::error($errorArray);
+			return $this->error($errorArray);
 		}
 
 		/* handle success */
 
 		else
 		{
-			return self::success(array(
+			$password = uniqid();
+			$resetArray = array(
 				'id' => $user->id,
+				'password' => $password
+			);
+			$mailArray = array(
 				'name' => $user->name,
 				'email' => $user->email,
-				'password' => uniqid()
-			));
+				'password' => $password
+			);
+
+			/* reset and mail */
+
+			if ($this->reset($resetArray) && $this->mail($mailArray))
+			{
+				return $this->success();
+			}
+			else
+			{
+				return self::error($this->_language->get('something_wrong'));
+			}
 		}
 	}
 
 	/**
-	 * handle success
+	 *
+	 * reset the password
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray
+	 * @param $resetArray
 	 *
-	 * @return string
+	 * @return boolean
 	 */
 
-	public function success($successArray = array())
+	public function reset($resetArray = array())
+	{
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init($resetArray['password']);
+
+		/* reset password */
+
+		return Db::forTablePrefix('users')
+			->where(array(
+				'id' => $resetArray['id'],
+				'status' => 1
+			))
+			->findOne()
+			->set('password', $passwordHash->getHash())
+			->save();
+	}
+
+	/**
+	 * send the mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	public function mail($mailArray = array())
 	{
 		$routeLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
 
@@ -157,14 +200,14 @@ class ResetPost implements ControllerInterface
 		/* prepare message */
 
 		$toArray = array(
-			$successArray['name'] => $successArray['email']
+			$mailArray['name'] => $mailArray['email']
 		);
 		$fromArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
 		);
 		$subject = $this->_language->get('password_new');
 		$bodyArray = array(
-			'<strong>' . $this->_language->get('password_new') . $this->_language->get('colon') . '</strong> ' . $successArray['password'],
+			'<strong>' . $this->_language->get('password_new') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
 			'<br />',
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '</strong> ' . $linkElement
 		);
@@ -173,23 +216,21 @@ class ResetPost implements ControllerInterface
 
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		$mailer->send();
+		return $mailer->send();
+	}
 
-		/* reset password */
+	/**
+	 * handle success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $successArray
+	 *
+	 * @return string
+	 */
 
-		$passwordHash = new Hash(Config::getInstance());
-		$passwordHash->init($successArray['password']);
-		Db::forTablePrefix('users')
-			->where(array(
-				'id' => $successArray['id'],
-				'status' => 1
-			))
-			->findOne()
-			->set('password', $passwordHash->getHash())
-			->save();
-
-		/* show success */
-
+	public function success($successArray = array())
+	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
 	}

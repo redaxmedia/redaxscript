@@ -144,6 +144,8 @@ class Contact extends Module
 	 * process
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	public static function process()
@@ -205,13 +207,60 @@ class Contact extends Module
 
 		else
 		{
-			return self::success(array(
+			$mailArray = array(
 				'author' => $postArray['author'],
 				'email' => $postArray['email'],
 				'url' => $postArray['url'],
 				'text' => $postArray['text']
-			));
+			);
+
+			/* mail */
+
+			if (self::mail($mailArray))
+			{
+				return self::success();
+			}
+			else
+			{
+				return self::error(Language::get('something_wrong'));
+			}
 		}
+	}
+
+	/**
+	 * mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	public static function mail($mailArray = array())
+	{
+		$toArray = array(
+			Db::getSettings('author') => Db::getSettings('email')
+		);
+		$fromArray = array(
+			$mailArray['author'] => $mailArray['email']
+		);
+		$subject = Language::get('contact');
+		$bodyArray = array(
+			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
+			'<br />',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
+			'<br />',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
+			'<br />',
+			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
+		);
+
+		/* send message */
+
+		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
+		return $mailer->send();
 	}
 
 	/**
@@ -219,38 +268,11 @@ class Contact extends Module
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray
-	 *
 	 * @return string
 	 */
 
-	public static function success($successArray = array())
+	public static function success()
 	{
-		$toArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
-		);
-		$fromArray = array(
-			$successArray['author'] => $successArray['email']
-		);
-		$subject = Language::get('contact');
-		$bodyArray = array(
-			Language::get('author') . Language::get('colon') . ' ' . $successArray['author'],
-			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $successArray['email'] . '">' . $successArray['email'] .'</a>',
-			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $successArray['url'] . '">' . $successArray['url'] .'</a>',
-			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $successArray['text']
-		);
-
-		/* send message */
-
-		$mailer = new Mailer();
-		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		$mailer->send();
-
-		/* show success */
-
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
