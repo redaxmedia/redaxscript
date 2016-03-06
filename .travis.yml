@@ -16,6 +16,11 @@ install:
 - npm install
 - npm install --global grunt-cli
 
+before_script:
+- gem install mailcatcher
+- sendmail_path = /usr/bin/env catchmail -f test@test.com
+- mailcatcher
+
 script:
 - npm test
 - npm run phpunit
