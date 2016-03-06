@@ -49,12 +49,8 @@ class MailerTest extends TestCase
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $body, $attachmentArray);
 
-		/* actual */
-
-		$mailer->send();
-
 		/*compare */
 
-		$this->assertTrue(true);
+		$this->assertTrue(is_bool($mailer->send()));
 	}
 }
