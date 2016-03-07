@@ -34,7 +34,6 @@ class ServerTest extends TestCase
 	protected function setUp()
 	{
 		$this->_request = Request::getInstance();
-		$this->_request->init();
 		$this->_request->set('server', array(
 			'HTTP_HOST' => 'localhost',
 			'HTTPS' => 'off',

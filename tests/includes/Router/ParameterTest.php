@@ -33,7 +33,6 @@ class ParameterTest extends TestCase
 	protected function setUp()
 	{
 		$this->_request = Request::getInstance();
-		$this->_request->init();
 	}
 
 	/**

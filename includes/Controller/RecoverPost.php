@@ -89,19 +89,19 @@ class RecoverPost implements ControllerInterface
 
 		if (!$postArray['email'])
 		{
-			$errorArray[] = Language::get('email_empty');
+			$errorArray[] = $this->_language->get('email_empty');
 		}
 		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('email_incorrect');
+			$errorArray[] = $this->_language->get('email_incorrect');
 		}
 		else if (!Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id)
 		{
-			$errorArray[] = Language::get('email_unknown');
+			$errorArray[] = $this->_language->get('email_unknown');
 		}
 		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('captcha_incorrect');
+			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
 		/* handle error */
@@ -131,7 +131,7 @@ class RecoverPost implements ControllerInterface
 			);
 			if ($this->_mail($mailArray))
 			{
-				$successArray[] = Language::get('recovery_sent');
+				$successArray[] = $this->_language->get('recovery_sent');
 			}
 		}
 		if ($successArray)
@@ -152,7 +152,7 @@ class RecoverPost implements ControllerInterface
 	public function success()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('login'), 'login')->doRedirect()->success(Language::get('recovery_sent'), Language::get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('recovery_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -168,7 +168,7 @@ class RecoverPost implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('back'), 'recovery')->error($errorArray, Language::get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'recovery')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -202,11 +202,11 @@ class RecoverPost implements ControllerInterface
 		$fromArray = array(
 			Db::getSettings('author') => Db::getSettings('email')
 		);
-		$subject = Language::get('recovery');
+		$subject = $this->_language->get('recovery');
 		$bodyArray = array(
-			'<strong>' . Language::get('user') . Language::get('colon') . '</strong> ' . $mailArray['user'],
+			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
 			'<br />',
-			'<strong>' . Language::get('password_reset') . Language::get('colon') . '</strong> ' . $linkElement
+			'<strong>' . $this->_language->get('password_reset') . $this->_language->get('colon') . '</strong> ' . $linkElement
 		);
 
 		/* send mail */

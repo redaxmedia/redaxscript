@@ -136,7 +136,6 @@ class DetectorTest extends TestCase
 	{
 		/* setup */
 
-		$this->_registry->init();
 		$this->_request->setQuery('l', 'en');
 		$this->_request->setQuery('t', 'default');
 		$detectorLanguage = new Detector\Language($this->_registry, $this->_request);
