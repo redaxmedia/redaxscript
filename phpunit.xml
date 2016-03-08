@@ -92,6 +92,12 @@
 			<directory>tests/includes/View</directory>
 		</testsuite>
 
+		<!-- auth -->
+
+		<testsuite name="auth">
+			<file>tests/includes/AuthTest.php</file>
+		</testsuite>
+
 		<!-- autoload -->
 
 		<testsuite name="autoload">

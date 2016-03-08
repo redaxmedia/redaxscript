@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Auth;
+use Redaxscript\Request;
 
 /**
  * AuthTest
@@ -15,22 +16,44 @@ use Redaxscript\Auth;
 
 class AuthTest extends TestCase
 {
-    /**
-     * instance of the request class
-     *
-     * @var object
-     */
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
 
-    protected $_request;
+	protected $_request;
 
-    /**
-     * setUp
-     *
-     * @since 3.0.0
-     */
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
 
-    protected function setUp()
-    {
-        $this->_request = Request::getInstance();
-    }
+	protected function setUp()
+	{
+		$this->_request = Request::getInstance();
+	}
+
+	/**
+	 * testInit
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
+		$auth = new Auth($this->_request);
+		$auth->init();
+
+		/* actual */
+
+		$actual = $auth;
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Auth', $actual);
+	}
 }

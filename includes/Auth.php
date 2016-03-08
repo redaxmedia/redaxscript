@@ -33,4 +33,34 @@ class Auth
     {
         $this->_request = $request;
     }
+
+    /**
+     * init the class
+     *
+     * @since 3.0.0
+     */
+
+    public function init()
+    {
+    }
+
+    /**
+     * login the user
+     *
+     * @since 3.0.0
+     */
+
+    public function login()
+    {
+    }
+
+    /**
+     * logout the user
+     *
+     * @since 3.0.0
+     */
+
+    public function logout()
+    {
+    }
 }

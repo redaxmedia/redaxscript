@@ -34,18 +34,28 @@ class LanguageTest extends TestCase
 	protected function setUp()
 	{
 		$this->_language = Language::getInstance();
-		$this->_language->init('de');
 	}
 
 	/**
-	 * tearDown
+	 * testInit
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function testInit()
 	{
+		/* setup */
+
+		$this->_language->init('de');
 		$this->_language->init('en');
+
+		/* actual */
+
+		$actual = $this->_language;
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Language', $actual);
 	}
 
 	/**
@@ -117,6 +127,6 @@ class LanguageTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(null, $actual);
+		$this->assertFalse($actual);
 	}
 }
