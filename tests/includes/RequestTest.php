@@ -199,4 +199,21 @@ class RequestTest extends TestCase
 
 		$this->assertEquals('testValue', $actual);
 	}
+
+	/**
+	 * testGetInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetInvalid()
+	{
+		/* actual */
+
+		$actual = $this->_request->get('invalidKey');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
 }

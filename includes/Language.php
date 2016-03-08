@@ -44,18 +44,16 @@ class Language extends Singleton
 	/**
 	 * get item from language
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the key array
+	 * @param string $index index of the array
 	 *
 	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = false;
-
 		/* handle index */
 
 		if (array_key_exists($index, self::$_languageArray))
@@ -71,13 +69,13 @@ class Language extends Singleton
 
 		if (!$key)
 		{
-			$output = $languageArray;
+			return $languageArray;
 		}
 		else if (array_key_exists($key, $languageArray))
 		{
-			$output = $languageArray[$key];
+			return $languageArray[$key];
 		}
-		return $output;
+		return false;
 	}
 
 	/**

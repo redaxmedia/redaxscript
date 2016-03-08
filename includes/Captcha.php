@@ -132,7 +132,7 @@ class Captcha
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @return integer
 	 */
 
 	public function getMin()
@@ -145,7 +145,7 @@ class Captcha
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @return integer
 	 */
 
 	public function getMax()
