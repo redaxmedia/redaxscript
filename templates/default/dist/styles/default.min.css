@@ -74,16 +74,16 @@ a
 
 /* @section 2. links */
 
-.rs-link-default
+.rs-link-default, .rs-link-result
 {
-	text-decoration: underline;
+	color: #323e4c;
+	cursor: pointer;
+	position: relative;
 }
 
-.rs-link-default:hover
+.rs-link-result
 {
-	background: rgba(0, 0, 0, 0.1);
-	box-shadow: -0.125em 0 rgba(0, 0, 0, 0.1), 0.125em 0 rgba(0, 0, 0, 0.1);
-	transition: background 0.2s, box-shadow 0.2s;
+	font-size: 1.5em;
 }
 
 /* @section 2.1 read more link */
@@ -119,6 +119,7 @@ a
 
 .rs-link-read-more:active
 {
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
 	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
@@ -717,7 +718,7 @@ a
 
 .rs-button-default:active
 {
-	box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
 	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
@@ -1050,9 +1051,6 @@ a
  * @author Henry Ruhs
  */
 
-/* TODO: move list-header to header.css */
-/* TODO: move list-tab to tab.css */
-
 /* @section 1. several lists */
 
 .rs-list-breadcrumb li, .rs-list-pagination li
@@ -1181,9 +1179,57 @@ ul.rs-list-default li:before {
 	color: #fff;
 }
 
-/* @section 6. query */
+/* @section 6. list result */
 
-/* @section 6.1 medium max */
+.rs-list-result
+{
+	counter-reset: result;
+}
+
+.rs-list-result li
+{
+	padding-left: 3em;
+	position: relative;
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em;
+}
+
+.rs-list-result li:before
+{
+	background: #323e4c;
+	border-radius: 0.125em;
+	color: #fff;
+	content: counter(result, decimal);
+	counter-increment: result;
+	height: 2em;
+	left: 0;
+	line-height: 2em;
+	position: absolute;
+	text-align: center;
+	top: 0.625em;
+	width: 2em;
+}
+
+.rs-list-result li:hover:before
+{
+	background: #3873b5;
+	transition: background 0.4s;
+}
+
+.rs-text-result-date
+{
+	display: block;
+	font-size: 0.875em;
+	font-style: italic;
+	line-height: 1.5em;
+}
+
+/* @section 7. query */
+
+/* @section 7.1 medium max */
 
 @media screen and (max-width: 49.999rem)
 {
@@ -1207,7 +1253,7 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 6.2 medium min */
+/* @section 7.2 medium min */
 
 @media screen and (min-width: 50rem)
 {

@@ -51,34 +51,16 @@ a
 /* @section 2. links */
 
 .rs-link-default,
-.link-result
+.rs-link-result
 {
-	border-bottom: 1px solid rgba(50, 62, 77, 0.2);
-	color: #323e4c;
+	color: var(--rs-color-tertiary);
 	cursor: pointer;
 	position: relative;
 }
 
-.rs-link-default:before,
-.link-result:before
+.rs-link-result
 {
-	border-top: 3px solid #699b3c;
-	content: '';
-	height: 0.25em;
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 100%;
-	transform: rotateY(90deg);
-	transform-origin: 0 0 0;
-	transition: transform 0.2s;
-}
-
-
-.rs-link-default:hover:before,
-.link-result:hover:before
-{
-	transform: rotateY(0deg);
+	font-size: 1.5em;
 }
 
 /* @section 2.1 read more link */
