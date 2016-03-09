@@ -2,12 +2,14 @@
 	[
 		[
 			"",
+			"",
 			""
 		],
 		"<a></a>"
 	],
 	[
 		[
+			"rs-link",
 			"rs-link",
 			""
 		],
@@ -16,6 +18,7 @@
 	[
 		[
 			"rs-foo rs-bar",
+			"rs-bar",
 			"rs-bar"
 		],
 		"<a class=\"rs-foo\"></a>"

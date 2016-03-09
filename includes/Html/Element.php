@@ -192,10 +192,10 @@ class Element extends HtmlAbstract
 
 	protected function _editClass($className = null, $type = null)
 	{
-		$classArray = array_filter(explode(' ', $className));
+		$classArray = explode(' ', $className);
 		if (array_key_exists('class', $this->_attributeArray))
 		{
-			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
+			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
 		}
 		else
 		{
@@ -208,12 +208,13 @@ class Element extends HtmlAbstract
 		{
 			if ($type === 'add')
 			{
-				$this->_attributeArray['class'] = implode(' ', array_merge($attributeClassArray, $classArray));
+				$attributeClassArray = array_merge($attributeClassArray, $classArray);
 			}
 			else if ($type === 'remove')
 			{
-				$this->_attributeArray['class'] = implode(' ', array_diff($attributeClassArray, $classArray));
+				$attributeClassArray = array_diff($attributeClassArray, $classArray);
 			}
+			$this->_attributeArray['class'] = implode(' ', array_unique($attributeClassArray));
 		}
 	}
 
