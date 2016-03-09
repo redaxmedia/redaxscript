@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
 use Redaxscript\Language;
@@ -49,21 +48,17 @@ class ResetForm implements ViewInterface
 				)
 			)
 		), array(
-			'captcha' => Db::getSettings('captcha') > 0
+			'captcha' => true
 		));
 
 		/* create the form */
 
-		if (Db::getSettings('captcha') > 0)
-		{
-			$formElement
-				->append('<fieldset>')
-				->legend()
-				->append('<ul><li>')
-				->captcha('task')
-				->append('</li></ul></fieldset>');
-		}
 		$formElement
+			->append('<fieldset>')
+			->legend()
+			->append('<li><ul>')
+			->captcha('task')
+			->append('</li></ul></fieldset>')
 			->hidden(array(
 				'name' => 'password',
 				'value' => Registry::get('thirdParameter')
@@ -71,12 +66,8 @@ class ResetForm implements ViewInterface
 			->hidden(array(
 				'name' => 'id',
 				'value' => Registry::get('thirdSubParameter')
-			));
-		if (Db::getSettings('captcha') > 0)
-		{
-			$formElement->captcha('solution');
-		}
-		$formElement
+			))
+			->captcha('solution')
 			->token()
 			->submit();
 

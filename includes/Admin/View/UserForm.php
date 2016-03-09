@@ -140,8 +140,7 @@ class UserForm implements ViewInterface
 			->password(array(
 				'autocomplete' => 'off',
 				'id' => 'password',
-				'name' => 'password',
-				'value' => $user->password
+				'name' => 'password'
 			))
 			->append('</li><li>')
 			->label(Language::get('password_confirm'), array(

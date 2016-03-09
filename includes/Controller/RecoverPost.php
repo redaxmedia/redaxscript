@@ -168,7 +168,7 @@ class RecoverPost implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'recovery')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 
 	/**
