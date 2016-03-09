@@ -78,7 +78,13 @@ a
 {
 	color: #323e4c;
 	cursor: pointer;
-	position: relative;
+	border-bottom: 1px solid rgba(50, 62, 76, 0.3);
+	transition: border 0.1s;
+}
+
+.rs-link-default:hover, .rs-link-result:hover
+{
+	border-bottom: 3px solid #699b3c;
 }
 
 .rs-link-result

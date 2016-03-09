@@ -55,7 +55,14 @@ a
 {
 	color: var(--rs-color-tertiary);
 	cursor: pointer;
-	position: relative;
+	border-bottom: 1px solid color(var(--rs-color-tertiary) a(30%));
+	transition: border 0.1s;
+}
+
+.rs-link-default:hover,
+.rs-link-result:hover
+{
+	border-bottom: 3px solid var(--rs-color-secondary);
 }
 
 .rs-link-result
