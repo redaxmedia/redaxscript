@@ -2,7 +2,6 @@
 namespace Redaxscript\Validator;
 
 use Redaxscript\Config;
-use Redaxscript\Db;
 use Redaxscript\Hash;
 
 /**
