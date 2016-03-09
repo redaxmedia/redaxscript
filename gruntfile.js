@@ -535,7 +535,7 @@ module.exports = function (grunt)
 				files:
 				[
 					'assets/styles/*.css',
-					'templates/**/assets/styles/typo.css'
+					'templates/**/assets/styles/*.css'
 				],
 				tasks:
 				[
