@@ -207,7 +207,7 @@ function comment_post()
 	{
 		$error = Redaxscript\Language::get('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	else if (Redaxscript\Db::getSettings('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
