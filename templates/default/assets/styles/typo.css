@@ -109,6 +109,11 @@ a
 
 /* @section 3.1 several titles */
 
+.rs-box-comment + .rs-title-comment
+{
+	margin-top: 4em;
+}
+
 .rs-title-comment,
 .rs-title-extra
 {

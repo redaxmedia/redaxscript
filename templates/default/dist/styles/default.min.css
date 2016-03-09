@@ -134,6 +134,11 @@ a
 
 /* @section 3.1 several titles */
 
+.rs-box-comment + .rs-title-comment
+{
+	margin-top: 4em;
+}
+
 .rs-title-comment, .rs-title-extra
 {
 	font-size: 1.25em;
@@ -538,7 +543,15 @@ a
 {
 	font-size: 0.875em;
 	font-style: italic;
+	margin-bottom: 2em;
 	margin-top: 1em;
+}
+
+.rs-box-line
+{
+	background: #323e4c;
+	height: 0.125em;
+	margin: 2em 0;
 }
 
 /* @section 2. box metadata */

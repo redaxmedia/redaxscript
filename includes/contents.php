@@ -411,7 +411,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	/* collect output */
 
-	$output .= '<div class="rs-box-infoline rs-box-infoline_' . $table . '">';
+	$output .= '<div class="rs-box-infoline rs-box-infoline-' . $table . '">';
 
 	/* collect author output */
 
