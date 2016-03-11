@@ -214,7 +214,7 @@ class ResetPost implements ControllerInterface
 				'href' => Registry::get('rewriteRoute') . $urlLogin,
 				'class' => 'link-result'
 			))
-			->text($urlLogin);
+			->text($this->_language->get('login'));
 
 		/* prepare mail */
 
