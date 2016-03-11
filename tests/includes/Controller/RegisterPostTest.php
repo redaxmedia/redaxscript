@@ -79,7 +79,6 @@ class RegisterPostTest extends TestCase
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
 		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('users')->where('user', 'test')->deleteMany();
 	}
 
 	/**
