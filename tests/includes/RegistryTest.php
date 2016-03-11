@@ -33,7 +33,27 @@ class RegistryTest extends TestCase
 	protected function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+	}
+
+	/**
+	 * testInit
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
 		$this->_registry->init();
+
+		/* actual */
+
+		$actual = $this->_registry;
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Registry', $actual);
 	}
 
 	/**
@@ -92,6 +112,6 @@ class RegistryTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(null, $actual);
+		$this->assertFalse($actual);
 	}
 }

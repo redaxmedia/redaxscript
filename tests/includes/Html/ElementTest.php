@@ -180,7 +180,7 @@ class ElementTest extends TestCase
 
 		/* actual */
 
-		$actual = $element->addClass($className[0])->removeClass($className[1])->render();
+		$actual = $element->addClass($className[0])->addClass($className[1])->removeClass($className[2])->render();
 
 		/* compare */
 

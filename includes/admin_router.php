@@ -41,7 +41,7 @@ function admin_router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('back'), 'admin')->error(Language::get('something_wrong'));
+			echo $messenger->setAction(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('something_wrong'));
 			return;
 	}
 
@@ -99,7 +99,7 @@ function admin_router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('back'), 'admin')->error(Language::get('error_occurred'), Language::get('access_no'));
+			echo $messenger->setAction(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('error_occurred'), Redaxscript\Language::get('access_no'));
 			return;
 	}
 

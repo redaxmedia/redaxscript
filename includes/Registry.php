@@ -40,7 +40,7 @@ class Registry extends Singleton
 	/**
 	 * get item from registry
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
@@ -49,19 +49,15 @@ class Registry extends Singleton
 
 	public static function get($key = null)
 	{
-		$output = false;
-
-		/* values as needed */
-
 		if (!$key)
 		{
-			$output = self::$_registryArray;
+			return self::$_registryArray;
 		}
 		else if (array_key_exists($key, self::$_registryArray))
 		{
-			$output = self::$_registryArray[$key];
+			return self::$_registryArray[$key];
 		}
-		return $output;
+		return false;
 	}
 
 	/**

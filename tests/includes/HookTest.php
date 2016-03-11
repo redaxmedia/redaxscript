@@ -121,6 +121,6 @@ class HookTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals(false, $actual);
+		$this->assertFalse($actual);
 	}
 }

@@ -145,9 +145,57 @@ ul.rs-list-default li:before {
 	color: var(--rs-color-light);
 }
 
-/* @section 6. query */
+/* @section 6. list result */
 
-/* @section 6.1 medium max */
+.rs-list-result
+{
+	counter-reset: result;
+}
+
+.rs-list-result li
+{
+	padding-left: 3em;
+	position: relative;
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em;
+}
+
+.rs-list-result li:before
+{
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	color: var(--rs-color-light);
+	content: counter(result, decimal);
+	counter-increment: result;
+	height: 2em;
+	left: 0;
+	line-height: 2em;
+	position: absolute;
+	text-align: center;
+	top: 0.625em;
+	width: 2em;
+}
+
+.rs-list-result li:hover:before
+{
+	background: var(--rs-color-primary);
+	transition: background 0.4s;
+}
+
+.rs-text-result-date
+{
+	display: block;
+	font-size: 0.875em;
+	font-style: italic;
+	line-height: 1.5em;
+}
+
+/* @section 7. query */
+
+/* @section 7.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -172,7 +220,7 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 6.2 medium min */
+/* @section 7.2 medium min */
 
 @media (--media-medium-min)
 {

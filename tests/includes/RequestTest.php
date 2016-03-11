@@ -32,7 +32,27 @@ class RequestTest extends TestCase
 	protected function setUp()
 	{
 		$this->_request = Request::getInstance();
+	}
+
+	/**
+	 * testInit
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
 		$this->_request->init();
+
+		/* actual */
+
+		$actual = $this->_request;
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Request', $actual);
 	}
 
 	/**
@@ -178,5 +198,22 @@ class RequestTest extends TestCase
 		/* compare */
 
 		$this->assertEquals('testValue', $actual);
+	}
+
+	/**
+	 * testGetInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetInvalid()
+	{
+		/* actual */
+
+		$actual = $this->_request->get('invalidKey');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 }

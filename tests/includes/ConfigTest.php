@@ -36,6 +36,27 @@ class ConfigTest extends TestCase
 	}
 
 	/**
+	 * testInit
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testInit()
+	{
+		/* setup */
+
+		$this->_config->init(Stream::url('root/config.php'));
+
+		/* actual */
+
+		$actual = $this->_config->get('dbType');
+
+		/* compare */
+
+		$this->assertNotEmpty($actual);
+	}
+
+	/**
 	 * testSetAndGet
 	 *
 	 * @since 2.2.0
@@ -92,26 +113,5 @@ class ConfigTest extends TestCase
 		/* compare */
 
 		$this->assertNotFalse($actual);
-	}
-
-	/**
-	 * testInit
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testInit()
-	{
-		/* setup */
-
-		$this->_config->init(Stream::url('root/config.php'));
-
-		/* actual */
-
-		$actual = $this->_config->get('dbType');
-
-		/* compare */
-
-		$this->assertNotEmpty($actual);
 	}
 }

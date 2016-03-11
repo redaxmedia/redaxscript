@@ -41,18 +41,16 @@ class Request extends Singleton
 	/**
 	 * get item from globals
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the key array
+	 * @param string $index index of the array
 	 *
 	 * @return mixed
 	 */
 
 	public static function get($key = null, $index = null)
 	{
-		$output = false;
-
 		/* handle index */
 
 		if (array_key_exists($index, self::$_requestArray))
@@ -68,13 +66,13 @@ class Request extends Singleton
 
 		if (!$key)
 		{
-			$output = $requestArray;
+			return $requestArray;
 		}
 		else if (array_key_exists($key, $requestArray))
 		{
-			$output = $requestArray[$key];
+			return $requestArray[$key];
 		}
-		return $output;
+		return false;
 	}
 
 	/**
@@ -89,8 +87,7 @@ class Request extends Singleton
 
 	public static function getServer($key = null)
 	{
-		$output = self::get($key, 'server');
-		return $output;
+		return self::get($key, 'server');
 	}
 
 	/**
@@ -105,8 +102,7 @@ class Request extends Singleton
 
 	public static function getQuery($key = null)
 	{
-		$output = self::get($key, 'get');
-		return $output;
+		return self::get($key, 'get');
 	}
 
 	/**
@@ -121,8 +117,7 @@ class Request extends Singleton
 
 	public static function getPost($key = null)
 	{
-		$output = self::get($key, 'post');
-		return $output;
+		return self::get($key, 'post');
 	}
 
 	/**
@@ -137,8 +132,7 @@ class Request extends Singleton
 
 	public static function getSession($key = null)
 	{
-		$output = self::get($key, 'session');
-		return $output;
+		return self::get($key, 'session');
 	}
 
 	/**
@@ -153,8 +147,7 @@ class Request extends Singleton
 
 	public static function getCookie($key = null)
 	{
-		$output = self::get($key, 'cookie');
-		return $output;
+		return self::get($key, 'cookie');
 	}
 
 	/**

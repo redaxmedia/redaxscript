@@ -92,7 +92,7 @@ function comments($article = '', $route = '')
 				$output .= Redaxscript\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
 				if ($url)
 				{
-					$output .= '<a href="' . $url . '" class="rs-admin-link-default" rel="nofollow">' . $author . '</a>';
+					$output .= '<a href="' . $url . '" class="rs-link-default" rel="nofollow">' . $author . '</a>';
 				}
 				else
 				{
@@ -207,7 +207,7 @@ function comment_post()
 	{
 		$error = Redaxscript\Language::get('url_incorrect');
 	}
-	else if ($captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	else if (Redaxscript\Db::getSettings('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = Redaxscript\Language::get('captcha_incorrect');
 	}

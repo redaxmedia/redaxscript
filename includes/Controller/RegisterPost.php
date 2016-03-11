@@ -117,7 +117,7 @@ class RegisterPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if (Db::getSettings('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -187,7 +187,7 @@ class RegisterPost implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'registration')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'register')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 
 	/**

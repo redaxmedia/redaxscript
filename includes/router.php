@@ -50,6 +50,7 @@ function router()
 		{
 			$controller  = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 			echo $controller ->process();
+			return;
 		}
 	}
 

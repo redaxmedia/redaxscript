@@ -222,7 +222,7 @@ class Messenger
 			}
 		}
 
-		/* build a list */
+		/* create a list */
 
 		if (is_array($message))
 		{
