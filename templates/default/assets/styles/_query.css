@@ -17,3 +17,4 @@
 @custom-media --media-medium-min screen and (min-width: 50rem);
 @custom-media --media-large-max screen and (max-width: 79.999rem);
 @custom-media --media-large-min screen and (min-width: 80rem);
+@custom-media --media-retina screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi);
