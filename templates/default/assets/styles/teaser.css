@@ -4,8 +4,9 @@
  * 1. teaser
  * 2. title teaser
  * 3. query
- *    3.1 medium min
- *    3.2 large min
+ *    3.1 medium
+ *    3.2 large
+ *    3.3 ultra
  *
  * @since 3.0.0
  *
@@ -64,15 +65,10 @@
 
 /* @section 3. query */
 
-/* @section 3.1 medium min */
+/* @section 3.1 medium */
 
 @media (--media-medium-min)
 {
-	.rs-teaser
-	{
-		background-image: var(--rs-url-teaser-medium);
-	}
-
 	.rs-title-teaser
 	{
 		font-size: 2em;
@@ -85,17 +81,38 @@
 	}
 }
 
-/* @section 3.2 large min */
+@media (--media-medium-min), (--media-small-min) and (--media-retina)
+{
+	.rs-teaser
+	{
+		background-image: var(--rs-url-teaser-medium);
+	}
+}
+
+/* @section 3.2 large */
 
 @media (--media-large-min)
+{
+	.rs-title-teaser
+	{
+		font-size: 3em;
+	}
+}
+
+@media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
 	.rs-teaser
 	{
 		background-image: var(--rs-url-teaser-large);
 	}
+}
 
-	.rs-title-teaser
+/* @section 3.3 ultra */
+
+@media (--media-large-min) and (--media-retina)
+{
+	.rs-teaser
 	{
-		font-size: 3em;
+		background-image: var(--rs-url-teaser-ultra);
 	}
 }
