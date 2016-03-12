@@ -1,10 +1,11 @@
 /**
  * @tableofcontents
  *
- * 1. title teaser
- * 2. query
- *    2.1 medium min
- *    2.2 large min
+ * 1. teaser
+ * 2. title teaser
+ * 3. query
+ *    3.1 medium min
+ *    3.2 large min
  *
  * @since 3.0.0
  *
@@ -12,7 +13,21 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. title teaser */
+/* @section 1. teaser */
+
+.rs-teaser
+{
+	background: var(--rs-url-teaser-small) no-repeat center top / cover;
+	margin-bottom: 2em;
+	max-height: 35em;
+	padding: 5em 2em;
+	padding: 10vw 4vw;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* @section 2. title teaser */
 
 .rs-title-teaser
 {
@@ -47,12 +62,17 @@
 	font-weight: bold;
 }
 
-/* @section 2. query */
+/* @section 3. query */
 
-/* @section 2.1 medium min */
+/* @section 3.1 medium min */
 
 @media (--media-medium-min)
 {
+	.rs-teaser
+	{
+		background-image: var(--rs-url-teaser-medium);
+	}
+
 	.rs-title-teaser
 	{
 		font-size: 2em;
@@ -65,10 +85,15 @@
 	}
 }
 
-/* @section 2.2 large min */
+/* @section 3.2 large min */
 
 @media (--media-large-min)
 {
+	.rs-teaser
+	{
+		background-image: var(--rs-url-teaser-large);
+	}
+
 	.rs-title-teaser
 	{
 		font-size: 3em;
