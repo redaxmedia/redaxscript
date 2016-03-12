@@ -81,7 +81,7 @@
 	}
 }
 
-@media (--media-medium-min), (--media-small-min) and (--media-retina)
+@media (--media-medium-min), (--media-retina)
 {
 	.rs-teaser
 	{

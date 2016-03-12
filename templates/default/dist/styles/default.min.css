@@ -1544,7 +1544,7 @@ ul.rs-list-default li:before {
 	}
 }
 
-@media screen and (min-width: 50em), screen and (min-width: 30em) and screen and (-webkit-min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)
+@media screen and (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
 {
 	.rs-teaser
 	{
@@ -1562,7 +1562,7 @@ ul.rs-list-default li:before {
 	}
 }
 
-@media screen and (min-width: 80em), screen and (min-width: 50em) and screen and (-webkit-min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)
+@media screen and (min-width: 80em), screen and (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 50em) and (min-resolution: 192dpi)
 {
 	.rs-teaser
 	{
@@ -1572,12 +1572,11 @@ ul.rs-list-default li:before {
 
 /* @section 3.3 ultra */
 
-@media screen and (min-width: 80em) and screen and (-webkit-min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)
+@media screen and (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 80em) and (min-resolution: 192dpi)
 {
 	.rs-teaser
 	{
 		background-image: url('//unsplash.it/5000/2000?image=817&gravity=south');
-		border: 3px dashed red;
 	}
 }
 /**
