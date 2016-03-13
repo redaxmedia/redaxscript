@@ -123,7 +123,7 @@ class Auth
 	 *
 	 * @param string $table name of the table
 	 * @param string $type type of the permission
-	 * 
+	 *
 	 * @return mixed
 	 */
 
