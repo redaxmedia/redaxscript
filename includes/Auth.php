@@ -13,54 +13,145 @@ namespace Redaxscript;
 
 class Auth
 {
-    /**
-     * instance of the request class
-     *
-     * @var object
-     */
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
 
-    protected $_request;
+	protected $_request;
 
-    /**
-     * constructor of the class
-     *
-     * @since 3.0.0
-     *
-     * @param Request $request instance of the request class
-     */
+	/**
+	 * array of the user
+	 *
+	 * @var object
+	 */
 
-    public function __construct(Request $request)
-    {
-        $this->_request = $request;
-    }
+	protected $_user;
 
-    /**
-     * init the class
-     *
-     * @since 3.0.0
-     */
+	/**
+	 * array of the permission
+	 *
+	 * @var array
+	 */
 
-    public function init()
-    {
-    }
+	protected $_permissionArray = array();
 
-    /**
-     * login the user
-     *
-     * @since 3.0.0
-     */
+	/**
+	 * constructor of the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param Request $request instance of the request class
+	 */
 
-    public function login()
-    {
-    }
+	public function __construct(Request $request)
+	{
+		$this->_request = $request;
+	}
 
-    /**
-     * logout the user
-     *
-     * @since 3.0.0
-     */
+	/**
+	 * call method as needed
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $method name of the method
+	 *
+	 * @return integer
+	 */
 
-    public function logout()
-    {
-    }
+	public function __call($method = null)
+	{
+		if ($method === 'getNewInArticles')
+		{
+			return $this->getPermission('articles', 'new');
+		}
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function init()
+	{
+		//fetch and set the stored user and permission from the session
+	}
+
+	/**
+	 * login the user
+	 *
+	 * @param string $user
+	 * @param string $password
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function login($user = null, $password = null)
+	{
+	}
+
+	/**
+	 * logout the user
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function logout()
+	{
+		//destroy user and permission in the session
+	}
+
+	/**
+	 * get the user
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return object
+	 */
+
+	public function getUser()
+	{
+		return $this->_user;
+	}
+
+	/**
+	 * get the permission
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param string $type type of the permission
+	 * 
+	 * @return mixed
+	 */
+
+	public function getPermission($table = null, $type = null)
+	{
+		if (!$table)
+		{
+			return $this->_permissionArray;
+		}
+		else if (array_key_exists($type, $this->_permissionArray[$table]))
+		{
+			return $this->_permissionArray[$table][$type];
+		}
+		return false;
+	}
+
+	/**
+	 * set the permission
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param string $type type of the permission
+	 * @param integer $value value of the permission
+	 */
+
+	protected function _setPermission($table = null, $type = null, $value = null)
+	{
+		$this->_permissionArray[$table][$type] = $value;
+	}
 }
