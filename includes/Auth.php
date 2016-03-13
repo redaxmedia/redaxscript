@@ -56,11 +56,12 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $method name of the method
+	 * @param array $arguments arguments of the method
 	 *
 	 * @return integer
 	 */
 
-	public function __call($method = null)
+	public function __call($method = null, $arguments = array())
 	{
 		if ($method === 'getNewInArticles')
 		{
