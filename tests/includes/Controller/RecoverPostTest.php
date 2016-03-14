@@ -67,14 +67,6 @@ class RecoverPostTest extends TestCase
 	public static function setUpBeforeClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		Db::forTablePrefix('users')
-			->create()
-			->set(array(
-				'name' => 'test',
-				'user' => 'test',
-				'email' => 'test@test.com'
-			))
-			->save();
 	}
 
 	/**
@@ -86,7 +78,6 @@ class RecoverPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('users')->where('name', 'test')->deleteMany();
 	}
 
 	/**

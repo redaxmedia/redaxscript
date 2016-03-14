@@ -261,7 +261,7 @@ a
 
 /* @section 9.1 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-description-website
 	{
@@ -280,14 +280,13 @@ a
  * 1. general
  * 2. wrapper
  * 3. header
- * 4. teaser
- * 5. sidebar
- * 6. footer
- * 7. query
- *    7.1 print
- *    7.2 medium max
- *    7.3 medium min
- *    7.4 large min
+ * 4. sidebar
+ * 5. footer
+ * 6. query
+ *    6.1 print
+ *    6.2 medium max
+ *    6.3 medium min
+ *    6.4 large min
  *
  * @since 3.0.0
  *
@@ -342,21 +341,7 @@ a
 	padding: 1.25rem;
 }
 
-/* @section 4. teaser */
-
-.rs-teaser
-{
-	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
-	margin-bottom: 2em;
-	max-height: 35em;
-	padding: 5em 2em;
-	padding: 10vw 4vw;
-	position: relative;
-	overflow: hidden;
-	box-sizing: border-box;
-}
-
-/* @section 5. sidebar */
+/* @section 4. sidebar */
 
 .rs-sidebar
 {
@@ -366,7 +351,7 @@ a
 	padding: 1em;
 }
 
-/* @section 6. footer */
+/* @section 5. footer */
 
 .rs-footer
 {
@@ -380,9 +365,9 @@ a
 	z-index: -1;
 }
 
-/* @section 7. query */
+/* @section 6. query */
 
-/* @section 7.1 print */
+/* @section 6.1 print */
 
 @media print
 {
@@ -392,9 +377,9 @@ a
 	}
 }
 
-/* @section 7.2 medium max */
+/* @section 6.2 medium max */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 	.rs-wrapper-body
 	{
@@ -417,9 +402,9 @@ a
 	}
 }
 
-/* @section 7.3 medium min */
+/* @section 6.3 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-wrapper
 	{
@@ -445,9 +430,9 @@ a
 	}
 }
 
-/* @section 7.4 large min */
+/* @section 6.4 large min */
 
-@media screen and (min-width: 80rem)
+@media screen and (min-width: 80em)
 {
 	.rs-wrapper
 	{
@@ -659,7 +644,7 @@ a
 
 /* @section 9.2 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-box-metadata
 	{
@@ -801,7 +786,7 @@ a
 
 /* @section 6.1 medium max */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 	.rs-button-default
 	{
@@ -811,7 +796,7 @@ a
 
 /* @section 6.2 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-button-default
 	{
@@ -953,7 +938,7 @@ a
 
 /* @section 5.1 medium max */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 	.rs-field-default, .rs-field-select, .rs-field-textarea
 	{
@@ -963,7 +948,7 @@ a
 
 /* @section 5.2 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-field-default, .rs-field-select, .rs-field-textarea
 	{
@@ -1060,9 +1045,10 @@ a
  * 3. list default
  * 4. list header
  * 5. list tabs
- * 6. query
- *    6.1 medium max
- *    6.2 medium min
+ * 6. list result
+ * 7. query
+ *    7.1 medium max
+ *    7.2 medium min
  *
  * @since 3.0.0
  *
@@ -1250,7 +1236,7 @@ ul.rs-list-default li:before {
 
 /* @section 7.1 medium max */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 	.rs-list-header
 	{
@@ -1274,7 +1260,7 @@ ul.rs-list-default li:before {
 
 /* @section 7.2 medium min */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-list-header li
 	{
@@ -1392,7 +1378,7 @@ ul.rs-list-default li:before {
 
 /* @section 1.1 medium max */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 	.rs-fn-navigation
 	{
@@ -1477,10 +1463,12 @@ ul.rs-list-default li:before {
 /**
  * @tableofcontents
  *
- * 1. title teaser
- * 2. query
- *    2.1 medium min
- *    2.2 large min
+ * 1. teaser
+ * 2. title teaser
+ * 3. query
+ *    3.1 medium
+ *    3.2 large
+ *    3.3 ultra
  *
  * @since 3.0.0
  *
@@ -1488,7 +1476,21 @@ ul.rs-list-default li:before {
  * @author Henry Ruhs
  */
 
-/* @section 1. title teaser */
+/* @section 1. teaser */
+
+.rs-teaser
+{
+	background: url('//unsplash.it/625/250?image=817&gravity=south') no-repeat center top / cover;
+	margin-bottom: 2em;
+	max-height: 35em;
+	padding: 5em 2em;
+	padding: 10vw 4vw;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* @section 2. title teaser */
 
 .rs-title-teaser
 {
@@ -1524,11 +1526,11 @@ ul.rs-list-default li:before {
 	font-weight: bold;
 }
 
-/* @section 2. query */
+/* @section 3. query */
 
-/* @section 2.1 medium min */
+/* @section 3.1 medium */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-title-teaser
 	{
@@ -1542,13 +1544,39 @@ ul.rs-list-default li:before {
 	}
 }
 
-/* @section 2.2 large min */
+@media screen and (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+{
+	.rs-teaser
+	{
+		background-image: url('//unsplash.it/1250/500?image=817&gravity=south');
+	}
+}
 
-@media screen and (min-width: 80rem)
+/* @section 3.2 large */
+
+@media screen and (min-width: 80em)
 {
 	.rs-title-teaser
 	{
 		font-size: 3em;
+	}
+}
+
+@media screen and (min-width: 80em), screen and (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 50em) and (min-resolution: 192dpi)
+{
+	.rs-teaser
+	{
+		background-image: url('//unsplash.it/2500/1000?image=817&gravity=south');
+	}
+}
+
+/* @section 3.3 ultra */
+
+@media screen and (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 80em) and (min-resolution: 192dpi)
+{
+	.rs-teaser
+	{
+		background-image: url('//unsplash.it/5000/2000?image=817&gravity=south');
 	}
 }
 /**
@@ -1584,7 +1612,7 @@ ul.rs-list-default li:before {
 
 /* @section 2.1 small min */
 
-@media screen and (min-width: 30rem)
+@media screen and (min-width: 30em)
 {
 	.rs-tooltip-alternative:after
 	{

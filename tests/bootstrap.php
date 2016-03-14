@@ -71,19 +71,19 @@ $installer->insertData(array(
 	'adminEmail' => 'admin@admin.com'
 ));
 
-/* insert test user */
+/* test user */
 
 Db::forTablePrefix('users')
 	->create()
 	->set(array(
-		'name' => 'test_user',
-		'user' => 'test_user',
+		'name' => 'test',
+		'user' => 'test',
 		'email' => 'test@test.com',
 		'password' => 'test'
 	))
 	->save();
 
-/* test dummy */
+/* test module */
 
 if (is_dir('modules/TestDummy'))
 {

@@ -4,7 +4,6 @@
 			"name": "",
 			"user": "",
 			"email": "",
-			"password": "",
 			"task": 1
 		},
 		[
@@ -18,7 +17,6 @@
 			"name": "test",
 			"user": "_",
 			"email": "test@test",
-			"password": "",
 			"task": 1
 		},
 		[
@@ -32,7 +30,6 @@
 			"name": "admin",
 			"user": "admin",
 			"email": "test@test.com",
-			"password": "",
 			"task": 1
 		},
 		[
@@ -43,10 +40,9 @@
 	],
 	[
 		{
-			"name": "test",
-			"user": "test",
+			"name": "new",
+			"user": "new",
 			"email": "test@test.com",
-			"password": "",
 			"task": 1
 		},
 		[

@@ -4,14 +4,13 @@
  * 1. general
  * 2. wrapper
  * 3. header
- * 4. teaser
- * 5. sidebar
- * 6. footer
- * 7. query
- *    7.1 print
- *    7.2 medium max
- *    7.3 medium min
- *    7.4 large min
+ * 4. sidebar
+ * 5. footer
+ * 6. query
+ *    6.1 print
+ *    6.2 medium max
+ *    6.3 medium min
+ *    6.4 large min
  *
  * @since 3.0.0
  *
@@ -66,21 +65,7 @@
 	padding: 1.25rem;
 }
 
-/* @section 4. teaser */
-
-.rs-teaser
-{
-	background: url('templates/default/assets/images/bg.jpg') no-repeat center top / cover;
-	margin-bottom: 2em;
-	max-height: 35em;
-	padding: 5em 2em;
-	padding: 10vw 4vw;
-	position: relative;
-	overflow: hidden;
-	box-sizing: border-box;
-}
-
-/* @section 5. sidebar */
+/* @section 4. sidebar */
 
 .rs-sidebar
 {
@@ -90,7 +75,7 @@
 	padding: 1em;
 }
 
-/* @section 6. footer */
+/* @section 5. footer */
 
 .rs-footer
 {
@@ -104,9 +89,9 @@
 	z-index: -1;
 }
 
-/* @section 7. query */
+/* @section 6. query */
 
-/* @section 7.1 print */
+/* @section 6.1 print */
 
 @media print
 {
@@ -118,7 +103,7 @@
 	}
 }
 
-/* @section 7.2 medium max */
+/* @section 6.2 medium max */
 
 @media (--media-medium-max)
 {
@@ -143,7 +128,7 @@
 	}
 }
 
-/* @section 7.3 medium min */
+/* @section 6.3 medium min */
 
 @media (--media-medium-min)
 {
@@ -171,7 +156,7 @@
 	}
 }
 
-/* @section 7.4 large min */
+/* @section 6.4 large min */
 
 @media (--media-large-min)
 {

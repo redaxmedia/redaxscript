@@ -19,7 +19,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_toArray;
+	protected $_toArray = array();
 
 	/**
 	 * array of sender
@@ -27,7 +27,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_fromArray;
+	protected $_fromArray = array();
 
 	/**
 	 * subject of the email
@@ -51,7 +51,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_attachmentArray;
+	protected $_attachmentArray = array();
 
 	/**
 	 * built recipient contents
