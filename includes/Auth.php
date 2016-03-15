@@ -24,10 +24,10 @@ class Auth
 	/**
 	 * array of the user
 	 *
-	 * @var object
+	 * @var array
 	 */
 
-	protected $_user;
+	protected $_userArray = array();
 
 	/**
 	 * array of the permission
@@ -36,6 +36,24 @@ class Auth
 	 */
 
 	protected $_permissionArray = array();
+
+	/**
+	 * array of the select
+	 *
+	 * @var array
+	 */
+
+	protected $_selectArray = array(
+		'categories',
+		'articles',
+		'extras',
+		'comments',
+		'groups',
+		'users',
+		'modules',
+		'settings',
+		'filter'
+	);
 
 	/**
 	 * constructor of the class
@@ -77,20 +95,55 @@ class Auth
 
 	public function init()
 	{
-		//fetch and set the stored user and permission from the session
+		$authArray = $this->_request->getSession('auth');
+		if (array_key_exists('user', $authArray['user']))
+		{
+			$this->_userArray = $authArray['user'];
+		}
+		if (array_key_exists('permission', $authArray['permission']))
+		{
+			$this->_userArray = $authArray['permission'];
+		}
 	}
 
 	/**
 	 * login the user
 	 *
-	 * @param string $user
-	 * @param string $password
+	 * @param integer $id id of the user
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function login($user = null, $password = null)
+	public function login($id = null)
 	{
+		$user = Db::forTablePrefix('users')->whereIdIs($id)->findOne();
+		$groupArray = array_map('intval', explode(',', $user->groups));
+		$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_selectArray)->findArray();
+
+		/* process group */
+
+		foreach ($group as $key => $value)
+		{
+			foreach ($value as $keySub => $valueSub)
+			{
+				$valueArray = array_map('intval', explode(',', $valueSub));
+				$this->_setPermission($keySub, $valueArray);
+			}
+		}
+
+		/* set to session */
+
+		$this->_request->setSession('auth', array(
+			'user' => array(
+				'id' => $user->id,
+				'name' => $user->name,
+				'user' => $user->user,
+				'email' => $user->email,
+				'user' => $user->user,
+				'groups' => $user->groups
+			),
+			'permission' => $this->_permissionArray
+		));
 	}
 
 	/**
@@ -101,7 +154,7 @@ class Auth
 
 	public function logout()
 	{
-		//destroy user and permission in the session
+		$this->_request->setSession('auth', null);
 	}
 
 	/**
@@ -109,12 +162,36 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return object
+	 * @param string $key key of the user
+	 *
+	 * @return mixed
 	 */
 
-	public function getUser()
+	public function getUser($key = null)
 	{
-		return $this->_user;
+		if (!$key)
+		{
+			return $this->_userArray;
+		}
+		else if (array_key_exists($key, $this->_userArray))
+		{
+			return $this->_userArray[$key];
+		}
+		return false;
+	}
+
+	/**
+	 * set the user
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the user
+	 * @param string $value value of the user
+	 */
+
+	protected function _setUser($key = null, $value = null)
+	{
+		$this->_userArray[$key] = $value;
 	}
 
 	/**
@@ -123,20 +200,19 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $table name of the table
-	 * @param string $type type of the permission
 	 *
 	 * @return mixed
 	 */
 
-	public function getPermission($table = null, $type = null)
+	public function getPermission($table = null)
 	{
 		if (!$table)
 		{
 			return $this->_permissionArray;
 		}
-		else if (array_key_exists($type, $this->_permissionArray[$table]))
+		else if (array_key_exists($table, $this->_permissionArray))
 		{
-			return $this->_permissionArray[$table][$type];
+			return $this->_permissionArray[$table];
 		}
 		return false;
 	}
@@ -147,12 +223,11 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $table name of the table
-	 * @param string $type type of the permission
 	 * @param integer $value value of the permission
 	 */
 
-	protected function _setPermission($table = null, $type = null, $value = null)
+	protected function _setPermission($table = null, $value = null)
 	{
-		$this->_permissionArray[$table][$type] = $value;
+		$this->_permissionArray[$table] = $value;
 	}
 }
