@@ -12,12 +12,14 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to reset password post request
+ * class to handle comment post
  *
  * @since 3.0.0
  *
  * @package Redaxscript
+ *
  * @category Controller
+ *
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
@@ -89,22 +91,16 @@ class CommentPost implements ControllerInterface
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),
-			'route' => build_route('articles', $this->_request->getPost('article')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* data array */
-
-		$dataArray = array(
-			'language' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->language,
-			'date' => Registry::get('now'),
-			'rank' => Db::forTablePrefix('comments')->max('rank') + 1,
-			'access' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->access
-		);
-
 		/* validate post */
 
+		if (!$postArray['article'] || intval($postArray['article']) === 0)
+		{
+			$errorArray[] = $this->_language->get('article_no');
+		}
 		if (!$postArray['author'])
 		{
 			$errorArray[] = $this->_language->get('author_empty');
@@ -137,56 +133,36 @@ class CommentPost implements ControllerInterface
 			return self::error($errorArray);
 		}
 
-		if ($this->_registry->get('comments_new') == 0 && Db::getSettings('moderation') == 1)
-		{
-			$postArray['status'] = 0;
-			$successMessage = $this->_language->get('comment_moderation');
-		}
-		else
-		{
-			$postArray['status'] = 1;
-			$successMessage = $this->_language->get('comment_sent');
-		}
-
 		/* send comment notification */
+		$route = build_route('articles', $postArray['article']);
 
 		$createArray = array(
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
 			'text' => $postArray['text'],
-			'language' => $dataArray['language'],
+			'language' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->language,
 			'article' => $postArray['article'],
-			'status' => $postArray['status']
+			'status' => Db::getSettings('verification') ? 0 : 1
 		);
 		$mailArray = array(
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
-			'route' => $postArray['route'],
+			'route' => $route,
 			'author' => $postArray['author'],
-			'text' => $postArray['text']
+			'text' => $postArray['text'],
+			'article' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->title
 		);
 
 		/* send comment and mail */
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			if (Db::getSettings('notification') == 1)
-			{
-				return $this->success(array(
-					'route' => $postArray['route'],
-					'message' => $successMessage,
-					'timeout' => 2
-				));
-			}
-			else
-			{
-				return $this->success(array(
-					'route' => $postArray['route'],
-					'message' => $successMessage,
-					'timeout' => 0
-				));
-			}
+			return $this->success(array(
+				'route' => $route,
+				'timeout' => Db::getSettings('notification') ? 2 : 0
+			));
+
 		}
 		else
 		{
@@ -207,7 +183,7 @@ class CommentPost implements ControllerInterface
 	public function success($successData = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), $successData['route'])->doRedirect($successData['timeout'])->success($successData['message'], $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('continue'), $successData['route'])->doRedirect($successData['timeout'])->success(Db::getSettings('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -285,7 +261,7 @@ class CommentPost implements ControllerInterface
 		$articleLink = $linkElement
 			->copy()
 			->attr('href', $articleRoute)
-			->text($articleRoute);
+			->text($mailArray['article']);
 
 		/* prepare mail inputs */
 
@@ -302,10 +278,8 @@ class CommentPost implements ControllerInterface
 			'<br />',
 			'<strong>' . $this->_language->get('email') . $this->_language->get('colon') . '</strong> ' . $linkElement,
 			'<br />',
-			'<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $urlLink,
-			'<br />',
+			(!$urlLink) ? '' : '<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $urlLink . '<br />',
 			'<strong>' . $this->_language->get('article') . $this->_language->get('colon') . '</strong> ' . $articleLink,
-			'<br />',
 			'<br />',
 			'<strong>' . $this->_language->get('comment') . $this->_language->get('colon') . '</strong> ' . $mailArray['text']
 		);

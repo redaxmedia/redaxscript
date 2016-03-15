@@ -1,6 +1,7 @@
 [
 	[
 		{
+			"article": 0,
 			"author": "",
 			"email": "",
 			"url": "test",
@@ -15,10 +16,11 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Email is incorrect</li><li>URL is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>No article present</li><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Email is incorrect</li><li>URL is incorrect</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{
+			"article": 0,
 			"author": "test",
 			"email": "",
 			"url": "test",
@@ -33,10 +35,11 @@
 			"notification": 1,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Email is empty</li><li>Comment is empty</li><li>Email is incorrect</li><li>URL is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>No article present</li><li>Email is empty</li><li>Comment is empty</li><li>Email is incorrect</li><li>URL is incorrect</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{
+			"article": 1,
 			"author": "",
 			"email": "test@test.com",
 			"url": "",
@@ -55,6 +58,7 @@
 	],
 	[
 		{
+			"article": 1,
 			"author": "test",
 			"email": "test@test.com",
 			"url": "",
@@ -69,13 +73,14 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your comment has been successfully sent</div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your comment has been successfully sent</div><a href=\"home/welcome\" class=\"rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=home/welcome\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
+			"article": 1,
 			"author": "admin",
 			"email": "admin@localhost.hu",
-			"url": "",
+			"url": "http://test.com",
 			"text": "test",
 			"task": 1
 		},
@@ -87,6 +92,6 @@
 			"notification": 0,
 			"moderation": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your comment will be approved by a moderator</div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">Your comment will be approved by a moderator</div><a href=\"home/welcome\" class=\"rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=home/welcome\" http-equiv=\"refresh\" />"
 	]
 ]
