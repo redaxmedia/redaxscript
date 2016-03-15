@@ -159,7 +159,7 @@ class ResetPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */
@@ -175,7 +175,7 @@ class ResetPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $resetArray
+	 * @param $resetArray array of the reset
 	 *
 	 * @return boolean
 	 */
@@ -197,7 +197,7 @@ class ResetPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $mailArray
+	 * @param array $mailArray array of the mail
 	 *
 	 * @return boolean
 	 */

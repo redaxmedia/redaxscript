@@ -86,21 +86,17 @@ class CommentPost implements ControllerInterface
 		/* process post */
 
 		$postArray = array(
-			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
 			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),
+			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
 		);
 
 		/* validate post */
 
-		if (!$postArray['article'] || intval($postArray['article']) === 0)
-		{
-			$errorArray[] = $this->_language->get('article_no');
-		}
 		if (!$postArray['author'])
 		{
 			$errorArray[] = $this->_language->get('author_empty');
@@ -109,17 +105,21 @@ class CommentPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('email_empty');
 		}
-		if (!$postArray['text'])
-		{
-			$errorArray[] = $this->_language->get('comment_empty');
-		}
-		if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
 		}
 		if ($postArray['url'] && $urlValidator->validate($postArray['url']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('url_incorrect');
+		}
+		if (!$postArray['text'])
+		{
+			$errorArray[] = $this->_language->get('comment_empty');
+		}
+		if (!$postArray['article'])
+		{
+			$errorArray[] = $this->_language->get('input_incorrect');
 		}
 		if (Db::getSettings('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
@@ -171,15 +171,15 @@ class CommentPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successData
+	 * @param array $successArray array of the success
 	 *
 	 * @return string
 	 */
 
-	public function success($successData = array())
+	public function success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), $successData['route'])->doRedirect($successData['timeout'])->success(Db::getSettings('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSettings('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -187,7 +187,7 @@ class CommentPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */
@@ -203,7 +203,7 @@ class CommentPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $createArray
+	 * @param $createArray array of the create
 	 *
 	 * @return boolean
 	 */
@@ -228,7 +228,7 @@ class CommentPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $mailArray
+	 * @param array $mailArray array of the mail
 	 *
 	 * @return boolean
 	 */
@@ -239,8 +239,8 @@ class CommentPost implements ControllerInterface
 
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
-		$linkMail = $linkElement->copy();
-		$linkMail
+		$linkEmail = $linkElement->copy();
+		$linkEmail
 			->attr(array(
 				'href' => 'mailto:' . $mailArray['email']
 			))
