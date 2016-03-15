@@ -133,9 +133,9 @@ class CommentPost implements ControllerInterface
 			return self::error($errorArray);
 		}
 
-		/* send comment notification */
-		$route = build_route('articles', $postArray['article']);
+		/* handle success */
 
+		$route = build_route('articles', $postArray['article']);
 		$createArray = array(
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
@@ -154,7 +154,7 @@ class CommentPost implements ControllerInterface
 			'article' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->title
 		);
 
-		/* send comment and mail */
+		/* create and mail */
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
@@ -162,12 +162,8 @@ class CommentPost implements ControllerInterface
 				'route' => $route,
 				'timeout' => Db::getSettings('notification') ? 2 : 0
 			));
-
 		}
-		else
-		{
-			return $this->error($this->_language->get('something_wrong'));
-		}
+		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -242,28 +238,28 @@ class CommentPost implements ControllerInterface
 		/* html elements */
 
 		$linkElement = new Html\Element();
-		$linkElement
-			->init('a', array(
+		$linkElement->init('a');
+		$linkMail = $linkElement->copy();
+		$linkMail
+			->attr(array(
 				'href' => 'mailto:' . $mailArray['email']
 			))
 			->text($mailArray['email']);
+		$linkUrl = $linkElement->copy();
+		$linkUrl
+			->attr(array(
+				'href' => $mailArray['url']
+			))
+			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
+		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('rewrite_route') . $mailArray['route'];
+		$linkArticle = $linkElement->copy();
+		$linkArticle
+			->attr(array(
+				'href' => $urlArticle
+			))
+			->text($urlArticle);
 
-		/* prepare body parts */
-
-		if ($mailArray['url'])
-		{
-			$urlLink = $linkElement
-				->copy()
-				->attr('href', $mailArray['url'])
-				->text($mailArray['url']);
-		}
-		$articleRoute = $this->_registry->get('root') . '/' . $this->_registry->get('rewrite_route') . $mailArray['route'];
-		$articleLink = $linkElement
-			->copy()
-			->attr('href', $articleRoute)
-			->text($mailArray['article']);
-
-		/* prepare mail inputs */
+		/* prepare mail */
 
 		$toArray = array(
 			$this->_language->get('author') => Db::getSettings('email')
@@ -271,15 +267,15 @@ class CommentPost implements ControllerInterface
 		$fromArray = array(
 			$mailArray['author'] => $mailArray['email']
 		);
-
 		$subject = $this->_language->get('comment_new');
 		$bodyArray = array(
 			'<strong>' . $this->_language->get('author') . $this->_language->get('colon') . '</strong> ' . $mailArray['author'],
 			'<br />',
-			'<strong>' . $this->_language->get('email') . $this->_language->get('colon') . '</strong> ' . $linkElement,
+			'<strong>' . $this->_language->get('email') . $this->_language->get('colon') . '</strong> ' . $linkEmail,
 			'<br />',
-			(!$urlLink) ? '' : '<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $urlLink . '<br />',
-			'<strong>' . $this->_language->get('article') . $this->_language->get('colon') . '</strong> ' . $articleLink,
+			'<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $linkUrl . '<br />',
+			'<br />',
+			'<strong>' . $this->_language->get('article') . $this->_language->get('colon') . '</strong> ' . $linkArticle,
 			'<br />',
 			'<strong>' . $this->_language->get('comment') . $this->_language->get('colon') . '</strong> ' . $mailArray['text']
 		);

@@ -67,7 +67,6 @@ class CommentPostTest extends TestCase
 	public static function setUpBeforeClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		include_once('includes/query.php');
 	}
 
 	/**
@@ -79,8 +78,9 @@ class CommentPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('comments')->where('text', 'test')->deleteMany();
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
 		Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 0)->save();
+		Db::forTablePrefix('comments')->deleteMany();
 	}
 
 	/**
@@ -115,25 +115,9 @@ class CommentPostTest extends TestCase
 
 		$this->_request->set('post', $post);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', $settings['notification'])->save();
+		Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', $settings['moderation'])->save();
 		$commentPost = new Controller\CommentPost($this->_registry, $this->_language, $this->_request);
-
-		if ($settings['notification'] == 1)
-		{
-			Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
-		}
-		else
-		{
-			Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
-		}
-
-		if ($settings['moderation'] == 1)
-		{
-			Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 1)->save();
-		}
-		else
-		{
-			Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 0)->save();
-		}
 
 		/* actual */
 

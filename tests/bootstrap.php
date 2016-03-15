@@ -9,6 +9,7 @@ error_reporting(E_STRICT || E_ERROR);
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');
+include_once('includes/query.php');
 
 /* init */
 
