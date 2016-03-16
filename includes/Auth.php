@@ -10,14 +10,11 @@ namespace Redaxscript;
  * @category Auth
  * @author Henry Ruhs
  *
- * @method getCategories
- * @method getArticles
- * @method getExtras
- * @method getComments
- * @method getGroups
- * @method getUsers
- * @method getModules
- * @method getSettings
+ * @method getPermissionNewFor
+ * @method getPermissionInstallFor
+ * @method getPermissionEditFor
+ * @method getPermissionDeleteFor
+ * @method getPermissionUninstallFor
  * @method getFilter
  */
 
@@ -169,7 +166,6 @@ class Auth
 		$this->setUser('name', $user->name);
 		$this->setUser('user', $user->user);
 		$this->setUser('email', $user->email);
-		$this->setUser('user', $user->user);
 		$this->setUser('groups', $user->groups);
 
 		/* set to session */
