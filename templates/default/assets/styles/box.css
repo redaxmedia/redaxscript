@@ -34,7 +34,7 @@
 {
 	font-size: 0.875em;
 	font-style: italic;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 	margin-top: 1em;
 }
 
@@ -50,6 +50,7 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
+	max-width: 100%;
 	position: relative;
 }
 
@@ -158,6 +159,7 @@
 	{
 		font-size: 1em;
 		float: left;
+		max-width: 50%;
 	}
 
 	.rs-box-navigation
