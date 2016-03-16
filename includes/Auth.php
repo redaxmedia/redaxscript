@@ -10,11 +10,11 @@ namespace Redaxscript;
  * @category Auth
  * @author Henry Ruhs
  *
- * @method getPermissionNewFor
- * @method getPermissionInstallFor
- * @method getPermissionEditFor
- * @method getPermissionDeleteFor
- * @method getPermissionUninstallFor
+ * @method getPermissionNew
+ * @method getPermissionInstall
+ * @method getPermissionEdit
+ * @method getPermissionDelete
+ * @method getPermissionUninstall
  * @method getFilter
  */
 
@@ -69,11 +69,11 @@ class Auth
 	 */
 
 	protected $_callArray = array(
-		'getPermissionNewFor' => 1,
-		'getPermissionInstallFor' => 1,
-		'getPermissionEditFor' => 2,
-		'getPermissionDeleteFor' => 3,
-		'getPermissionUninstallFor' => 3,
+		'getPermissionNew' => 1,
+		'getPermissionInstall' => 1,
+		'getPermissionEdit' => 2,
+		'getPermissionDelete' => 3,
+		'getPermissionUninstall' => 3,
 		'getFilter' => 1
 	);
 

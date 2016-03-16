@@ -94,7 +94,7 @@ class AuthTest extends TestCase
 
 		/* actual */
 
-		$actual = $auth->getPermissionNewFor('articles');
+		$actual = $auth->getPermissionNew('articles');
 
 		/* compare */
 

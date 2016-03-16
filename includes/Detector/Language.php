@@ -24,7 +24,6 @@ class Language extends DetectorAbstract
 
 	protected function _autorun()
 	{
-		$root = $this->_registry->get('root');
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
@@ -33,7 +32,7 @@ class Language extends DetectorAbstract
 
 		$this->_detect(array(
 			'query' => $this->_request->getQuery('l'),
-			'session' => $this->_request->getSession($root . '/language'),
+			'session' => $this->_request->getSession('language'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->language : null,
 			'settings' => $dbStatus === 2 ? Db::getSettings('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
