@@ -78,4 +78,26 @@ class AuthTest extends TestCase
 
 		$this->assertInstanceOf('Redaxscript\Auth', $actual);
 	}
+
+	/**
+	 * testGetPermissionNewFor
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetPermissionNewFor()
+	{
+		/* setup */
+
+		$auth = new Auth($this->_request);
+		$auth->login(1);
+
+		/* actual */
+
+		$actual = $auth->getPermissionNewFor('articles');
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
 }

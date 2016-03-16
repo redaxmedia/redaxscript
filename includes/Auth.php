@@ -9,6 +9,16 @@ namespace Redaxscript;
  * @package Redaxscript
  * @category Auth
  * @author Henry Ruhs
+ *
+ * @method getCategories
+ * @method getArticles
+ * @method getExtras
+ * @method getComments
+ * @method getGroups
+ * @method getUsers
+ * @method getModules
+ * @method getSettings
+ * @method getFilter
  */
 
 class Auth
@@ -43,7 +53,7 @@ class Auth
 	 * @var array
 	 */
 
-	protected $_selectArray = array(
+	protected $_typeArray = array(
 		'categories',
 		'articles',
 		'extras',
@@ -53,6 +63,21 @@ class Auth
 		'modules',
 		'settings',
 		'filter'
+	);
+
+	/**
+	 * array of the call
+	 *
+	 * @var array
+	 */
+
+	protected $_callArray = array(
+		'getPermissionNewFor' => 1,
+		'getPermissionInstallFor' => 1,
+		'getPermissionEditFor' => 2,
+		'getPermissionDeleteFor' => 3,
+		'getPermissionUninstallFor' => 3,
+		'getFilter' => 1
 	);
 
 	/**
@@ -76,15 +101,20 @@ class Auth
 	 * @param string $method name of the method
 	 * @param array $arguments arguments of the method
 	 *
-	 * @return integer
+	 * @return mixed
 	 */
 
 	public function __call($method = null, $arguments = array())
 	{
-		if ($method === 'getNewInArticles')
+		if (array_key_exists($method, $this->_callArray))
 		{
-			return $this->getPermission('articles', 'new');
+			$permissionArray = $this->getPermission($arguments[0]);
+			if (array_key_exists($this->_callArray[$method], $permissionArray))
+			{
+				return true;
+			}
 		}
+		return false;
 	}
 
 	/**
@@ -109,16 +139,18 @@ class Auth
 	/**
 	 * login the user
 	 *
-	 * @param integer $id id of the user
+	 * @param integer $userId identifier of the user
+	 *
+	 * @return mixed
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function login($id = null)
+	public function login($userId = null)
 	{
-		$user = Db::forTablePrefix('users')->whereIdIs($id)->findOne();
+		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
 		$groupArray = array_map('intval', explode(',', $user->groups));
-		$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_selectArray)->findArray();
+		$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_typeArray)->findArray();
 
 		/* process group */
 
@@ -127,22 +159,24 @@ class Auth
 			foreach ($value as $keySub => $valueSub)
 			{
 				$valueArray = array_map('intval', explode(',', $valueSub));
-				$this->_setPermission($keySub, $valueArray);
+				$this->setPermission($keySub, $valueArray);
 			}
 		}
+
+		/* set user */
+
+		$this->setUser('id', $user->id);
+		$this->setUser('name', $user->name);
+		$this->setUser('user', $user->user);
+		$this->setUser('email', $user->email);
+		$this->setUser('user', $user->user);
+		$this->setUser('groups', $user->groups);
 
 		/* set to session */
 
 		$this->_request->setSession('auth', array(
-			'user' => array(
-				'id' => $user->id,
-				'name' => $user->name,
-				'user' => $user->user,
-				'email' => $user->email,
-				'user' => $user->user,
-				'groups' => $user->groups
-			),
-			'permission' => $this->_permissionArray
+			'user' => $this->getUser(),
+			'permission' => $this->getPermission()
 		));
 	}
 
@@ -189,7 +223,7 @@ class Auth
 	 * @param string $value value of the user
 	 */
 
-	protected function _setUser($key = null, $value = null)
+	public function setUser($key = null, $value = null)
 	{
 		$this->_userArray[$key] = $value;
 	}
@@ -199,20 +233,20 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $table name of the table
+	 * @param string $key key of the permission
 	 *
 	 * @return mixed
 	 */
 
-	public function getPermission($table = null)
+	public function getPermission($key = null)
 	{
-		if (!$table)
+		if (!$key)
 		{
 			return $this->_permissionArray;
 		}
-		else if (array_key_exists($table, $this->_permissionArray))
+		else if (array_key_exists($key, $this->_permissionArray))
 		{
-			return $this->_permissionArray[$table];
+			return $this->_permissionArray[$key];
 		}
 		return false;
 	}
@@ -222,12 +256,12 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $table name of the table
+	 * @param string $key key of the permission
 	 * @param integer $value value of the permission
 	 */
 
-	protected function _setPermission($table = null, $value = null)
+	public function setPermission($key = null, $value = null)
 	{
-		$this->_permissionArray[$table] = $value;
+		$this->_permissionArray[$key] = $value;
 	}
 }
