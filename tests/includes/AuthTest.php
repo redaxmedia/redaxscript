@@ -68,15 +68,14 @@ class AuthTest extends TestCase
 		/* setup */
 
 		$auth = new Auth($this->_request);
-		$auth->login(1);
 
 		/* actual */
 
-		$actual = $auth;
+		$actual = $auth->login(1);
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Auth', $actual);
+		$this->assertTrue($actual);
 	}
 
 	/**

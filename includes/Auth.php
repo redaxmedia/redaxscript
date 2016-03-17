@@ -45,7 +45,7 @@ class Auth
 	protected $_permissionArray = array();
 
 	/**
-	 * array of the select
+	 * array of the type
 	 *
 	 * @var array
 	 */
@@ -138,7 +138,7 @@ class Auth
 	 *
 	 * @param integer $userId identifier of the user
 	 *
-	 * @return mixed
+	 * @return boolean
 	 *
 	 * @since 3.0.0
 	 */
@@ -168,12 +168,9 @@ class Auth
 		$this->setUser('email', $user->email);
 		$this->setUser('groups', $user->groups);
 
-		/* set to session */
+		/* save user and permission */
 
-		$this->_request->setSession('auth', array(
-			'user' => $this->getUser(),
-			'permission' => $this->getPermission()
-		));
+		return $this->_save();
 	}
 
 	/**
@@ -259,5 +256,31 @@ class Auth
 	public function setPermission($key = null, $value = null)
 	{
 		$this->_permissionArray[$key] = $value;
+	}
+
+	/**
+	 * save user and permission
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	protected function _save()
+	{
+		$userArray = $this->getUser();
+		$permissionArray = $this->getPermission();
+
+		/* set to session */
+
+		if (count($userArray) && count($permissionArray))
+		{
+			$this->_request->setSession('auth', array(
+				'user' => $userArray,
+				'permission' => $permissionArray
+			));
+			return true;
+		}
+		return false;
 	}
 }
