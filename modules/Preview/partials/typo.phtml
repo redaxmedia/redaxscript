@@ -7,8 +7,10 @@ $titlePartialElement->init('h3', array(
 ));
 $linkElement = new Html\Element();
 $linkElement
-	->init('a')
-	->addClass('rs-link-default')
+	->init('a', array(
+		'class' => 'rs-link-default',
+		'href' => Language::get('homepage', '_package')
+	))
 	->text(Language::get('preview', '_preview'));
 $paragraphElement = new Html\Element();
 $paragraphElement

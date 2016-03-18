@@ -74,21 +74,21 @@ a
 
 /* @section 2. links */
 
-.rs-link-default, .rs-link-result
+.rs-link-default
 {
 	color: #323e4c;
-	cursor: pointer;
-	border-bottom: 1px solid rgba(50, 62, 76, 0.3);
-	transition: border 0.1s;
+	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
+	transition: border-color 0.3s;
 }
 
-.rs-link-default:hover, .rs-link-result:hover
+.rs-link-default:hover
 {
-	border-bottom: 3px solid #699b3c;
+	border-color: #699b3c;
 }
 
 .rs-link-result
 {
+	color: #323e4c;
 	font-size: 1.5em;
 }
 
@@ -134,15 +134,11 @@ a
 
 /* @section 3.1 several titles */
 
-.rs-box-comment + [class*='rs-title-']
+.rs-title-comment
 {
-	margin-top: 4em;
-}
-
-.rs-title-comment, .rs-title-extra
-{
-	font-size: 1.25em;
+	font-size: 1.5em;
 	font-weight: bold;
+	margin-top: 1em;
 }
 
 /* @section 3.2 title accordion */
@@ -168,6 +164,8 @@ a
 
 .rs-title-extra
 {
+	font-size: 1.25em;
+	font-weight: bold;
 	margin-top: 1em;
 }
 
@@ -557,7 +555,6 @@ a
 	font-size: 0.875em;
 	font-style: italic;
 	margin-bottom: 1em;
-	margin-top: 1em;
 }
 
 .rs-box-line
@@ -648,6 +645,7 @@ a
 
 .rs-box-comment
 {
+	margin-bottom: 3em;
 	padding-left: 2.5em;
 	position: relative;
 }
@@ -1159,7 +1157,7 @@ ul.rs-list-default li:before {
 
 .rs-list-header li
 {
-	font: 1rem/2.875em arial, sans-serif;
+	font: 1em/2.25em arial, sans-serif;
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
@@ -1248,12 +1246,6 @@ ul.rs-list-default li:before {
 	width: 2em;
 }
 
-.rs-list-result li:hover:before
-{
-	background: #3873b5;
-	transition: background 0.4s;
-}
-
 .rs-text-result-date
 {
 	display: block;
@@ -1279,6 +1271,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header a, .rs-list-header span
 	{
+		font-size: 0.875em;
 		padding: 0 1em;
 		transition: background 0.2s;
 	}

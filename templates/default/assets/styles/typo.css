@@ -50,23 +50,21 @@ a
 
 /* @section 2. links */
 
-.rs-link-default,
+.rs-link-default
+{
+	color: var(--rs-color-tertiary);
+	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
+	transition: border-color 0.3s;
+}
+
+.rs-link-default:hover
+{
+	border-color: var(--rs-color-secondary);
+}
+
 .rs-link-result
 {
 	color: var(--rs-color-tertiary);
-	cursor: pointer;
-	border-bottom: 1px solid color(var(--rs-color-tertiary) a(30%));
-	transition: border 0.1s;
-}
-
-.rs-link-default:hover,
-.rs-link-result:hover
-{
-	border-bottom: 3px solid var(--rs-color-secondary);
-}
-
-.rs-link-result
-{
 	font-size: 1.5em;
 }
 
@@ -109,16 +107,11 @@ a
 
 /* @section 3.1 several titles */
 
-.rs-box-comment + [class*='rs-title-']
+.rs-title-comment
 {
-	margin-top: 4em;
-}
-
-.rs-title-comment,
-.rs-title-extra
-{
-	font-size: 1.25em;
+	font-size: 1.5em;
 	font-weight: bold;
+	margin-top: 1em;
 }
 
 /* @section 3.2 title accordion */
@@ -144,6 +137,8 @@ a
 
 .rs-title-extra
 {
+	font-size: 1.25em;
+	font-weight: bold;
 	margin-top: 1em;
 }
 
