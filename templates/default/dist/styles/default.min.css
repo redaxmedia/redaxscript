@@ -210,7 +210,7 @@ a
 	position: relative;
 	text-transform: uppercase;
 	transition: opacity 0.2s;
-	white-space: nowrap;
+	white-space: nowrap
 }
 
 .rs-title-website:after
@@ -1159,7 +1159,7 @@ ul.rs-list-default li:before {
 
 .rs-list-header li
 {
-	font: 1rem/3em arial, sans-serif;
+	font: 1rem/2.875em arial, sans-serif;
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
