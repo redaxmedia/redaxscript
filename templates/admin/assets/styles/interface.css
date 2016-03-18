@@ -76,7 +76,7 @@
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
-	font: 1.5rem/1.75rem 'icon admin';
+	font: 1.5rem/2.5rem 'icon admin';
 	position: absolute;
 	right: 0.75em;
 	top: 0;

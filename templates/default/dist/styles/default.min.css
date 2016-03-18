@@ -1246,6 +1246,12 @@ ul.rs-list-default li:before {
 	width: 2em;
 }
 
+.rs-list-result li:hover:before
+{
+	background: #3873b5;
+	transition: background 0.4s;
+}
+
 .rs-text-result-date
 {
 	display: block;

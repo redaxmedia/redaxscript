@@ -41,7 +41,7 @@ rs.plugins.adminPanel =
 			panelItem: 'li.rs-admin-js-item-panel'
 		},
 		timeout: 1000,
-		duration: 300,
+		duration: 200,
 		vibrate: 100
 	}
 };
