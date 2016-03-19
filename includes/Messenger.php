@@ -94,7 +94,7 @@ class Messenger
 	 *
 	 * @param integer $timeout timeout of the redirect
 	 *
-	 * @return string
+	 * @return Messenger
 	 */
 
 	public function doRedirect($timeout = 2)
