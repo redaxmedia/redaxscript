@@ -266,7 +266,7 @@ class Installer
 				'password' => $passwordHash->getHash(),
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
-				'groups' => 1
+				'groups' => '1'
 			))->save();
 	}
 

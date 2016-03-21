@@ -74,7 +74,7 @@ class Auth
 		'getPermissionEdit' => 2,
 		'getPermissionDelete' => 3,
 		'getPermissionUninstall' => 3,
-		'getFilter' => 1
+		'getFilter' => '0'
 	);
 
 	/**
@@ -105,11 +105,8 @@ class Auth
 	{
 		if (array_key_exists($method, $this->_callArray))
 		{
-			$permissionArray = $this->getPermission($arguments[0]);
-			if (array_key_exists($this->_callArray[$method], $permissionArray))
-			{
-				return true;
-			}
+			$permissionArray = $method === 'getFilter' ? $this->getPermission('filter') : $this->getPermission($arguments[0]);
+			return in_array($this->_callArray[$method], $permissionArray);
 		}
 		return false;
 	}
