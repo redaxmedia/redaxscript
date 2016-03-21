@@ -85,10 +85,10 @@ class InstallerTest extends TestCase
 		$installer = new Installer($this->_config);
 		$installer->init();
 		$installer->insertData(array(
-			'adminName' => 'Admin',
-			'adminUser' => 'admin',
-			'adminPassword' => 'admin',
-			'adminEmail' => 'admin@localhost'
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
 		));
 
 		/* actual */

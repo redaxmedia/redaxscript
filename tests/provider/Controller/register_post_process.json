@@ -27,8 +27,8 @@
 	],
 	[
 		{
-			"name": "admin",
-			"user": "admin",
+			"name": "test",
+			"user": "test",
 			"email": "test@test.com",
 			"task": 1
 		},
