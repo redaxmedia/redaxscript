@@ -156,9 +156,9 @@ a
 .rs-title-accordion:after
 {
 	content: '+';
-	font: 1.25em/1.5em 'icon default';
+	font: 1.25rem/2.25rem 'icon default';
 	position: absolute;
-	right: 0.5em;
+	right: 1rem;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -619,8 +619,7 @@ a
 
 .rs-box-note
 {
-	border-radius: 0 0.125em 0.125em 0;
-	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	border-radius: 0.125em 0.125em;
 	color: #fff;
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
@@ -630,7 +629,7 @@ a
 {
 	color: #000;
 	font: 1.5em/1em 'icon default';
-	left: 0.25em;
+	left: 0.5em;
 	opacity: 0.5;
 	position: absolute;
 	top: 0.25em;
@@ -1687,7 +1686,7 @@ ul.rs-list-default li:before {
 
 .rs-note-success.rs-box-note:before
 {
-	content: '\2713';
+	content: '\2714';
 }
 
 /* @section 2. warning */
@@ -1707,6 +1706,7 @@ ul.rs-list-default li:before {
 .rs-note-warning.rs-box-note:before
 {
 	content: '\21';
+	left: 0.875em;
 }
 
 /* @section 3. error */
@@ -1725,7 +1725,7 @@ ul.rs-list-default li:before {
 
 .rs-note-error.rs-box-note:before
 {
-	content: '\78';
+	content: '\d7';
 }
 
 /* @section 4. info */
@@ -1745,4 +1745,5 @@ ul.rs-list-default li:before {
 .rs-note-info.rs-box-note:before
 {
 	content: '\69';
+	left: 0.875em;
 }

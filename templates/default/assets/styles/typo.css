@@ -129,9 +129,9 @@ a
 .rs-title-accordion:after
 {
 	content: '+';
-	font: 1.25em/1.5em 'icon default';
+	font: 1.25rem/2.25rem 'icon default';
 	position: absolute;
-	right: 0.5em;
+	right: 1rem;
 }
 
 .rs-title-accordion:not(.rs-title-active)

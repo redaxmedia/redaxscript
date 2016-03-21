@@ -29,7 +29,7 @@
 
 .rs-note-success.rs-box-note:before
 {
-	content: '\2713';
+	content: '\2714';
 }
 
 /* @section 2. warning */
@@ -50,6 +50,7 @@
 .rs-note-warning.rs-box-note:before
 {
 	content: '\21';
+	left: 0.875em;
 }
 
 /* @section 3. error */
@@ -69,7 +70,7 @@
 
 .rs-note-error.rs-box-note:before
 {
-	content: '\78';
+	content: '\d7';
 }
 
 /* @section 4. info */
@@ -90,4 +91,5 @@
 .rs-note-info.rs-box-note:before
 {
 	content: '\69';
+	left: 0.875em;
 }

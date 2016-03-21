@@ -113,8 +113,7 @@
 
 .rs-box-note
 {
-	border-radius: 0 0.125em 0.125em 0;
-	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
+	border-radius: 0.125em 0.125em;
 	color: var(--rs-color-light);
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
@@ -124,7 +123,7 @@
 {
 	color: var(--rs-color-dark);
 	font: 1.5em/1em 'icon default';
-	left: 0.25em;
+	left: 0.5em;
 	opacity: 0.5;
 	position: absolute;
 	top: 0.25em;
