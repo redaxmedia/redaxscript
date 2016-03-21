@@ -73,7 +73,7 @@ class Contact extends Module
 				)
 			)
 		), array(
-			'captcha' => Db::getSettings('captcha') > 0
+			'captcha' => Db::getSetting('captcha') > 0
 		));
 
 		/* create the form */
@@ -121,7 +121,7 @@ class Contact extends Module
 				'required' => 'required'
 			))
 			->append('</li>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -129,7 +129,7 @@ class Contact extends Module
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}
@@ -264,7 +264,7 @@ class Contact extends Module
 	protected static function _mail($mailArray = array())
 	{
 		$toArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
+			Db::getSetting('author') => Db::getSetting('email')
 		);
 		$fromArray = array(
 			$mailArray['author'] => $mailArray['email']

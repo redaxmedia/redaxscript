@@ -36,7 +36,7 @@ class Template extends DetectorAbstract
 			'query' => $this->_request->getQuery('t'),
 			'session' => $this->_request->getSession('template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
-			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
+			'settings' => $dbStatus === 2 ? Db::getSetting('template') : null,
 			'install' => $fileInstall ? 'install' : null,
 			'fallback' => 'default'
 		), 'template', 'templates/' . $this->_filePlaceholder . '/' . $partial);

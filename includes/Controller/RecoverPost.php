@@ -99,7 +99,7 @@ class RecoverPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('email_unknown');
 		}
-		if (Db::getSettings('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -200,7 +200,7 @@ class RecoverPost implements ControllerInterface
 			$mailArray['name'] => $mailArray['email']
 		);
 		$fromArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
+			Db::getSetting('author') => Db::getSetting('email')
 		);
 		$subject = $this->_language->get('recovery');
 		$bodyArray = array(

@@ -84,7 +84,7 @@ function search_post()
 					{
 						$description = $title;
 					}
-					$date = date(Redaxscript\Db::getSettings('date'), strtotime($date));
+					$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 
 					/* build route */
 

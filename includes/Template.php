@@ -298,7 +298,7 @@ class Template
 
 	public static function setting($key = null)
 	{
-		return Db::getSettings($key);
+		return Db::getSetting($key);
 	}
 
 	/**

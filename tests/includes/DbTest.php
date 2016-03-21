@@ -116,7 +116,7 @@ class DbTest extends TestCase
 	{
 		/* actual */
 
-		$actual = Db::getSettings('charset');
+		$actual = Db::getSetting('charset');
 
 		/* compare */
 

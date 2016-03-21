@@ -65,8 +65,8 @@ class RegisterPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
+		Db::setSetting('captcha', 1);
+		Db::setSetting('notification', 1);
 	}
 
 	/**
@@ -77,8 +77,8 @@ class RegisterPostTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
+		Db::setSetting('captcha', 0);
+		Db::setSetting('notification', 0);
 	}
 
 	/**

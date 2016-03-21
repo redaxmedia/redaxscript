@@ -121,7 +121,7 @@ class CommentPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('input_incorrect');
 		}
-		if (Db::getSettings('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -143,7 +143,7 @@ class CommentPost implements ControllerInterface
 			'text' => $postArray['text'],
 			'language' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->language,
 			'article' => $postArray['article'],
-			'status' => Db::getSettings('verification') ? 0 : 1
+			'status' => Db::getSetting('verification') ? 0 : 1
 		);
 		$mailArray = array(
 			'email' => $postArray['email'],
@@ -160,7 +160,7 @@ class CommentPost implements ControllerInterface
 		{
 			return $this->success(array(
 				'route' => $route,
-				'timeout' => Db::getSettings('notification') ? 2 : 0
+				'timeout' => Db::getSetting('notification') ? 2 : 0
 			));
 		}
 		return $this->error($this->_language->get('something_wrong'));
@@ -179,7 +179,7 @@ class CommentPost implements ControllerInterface
 	public function success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSettings('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -262,7 +262,7 @@ class CommentPost implements ControllerInterface
 		/* prepare mail */
 
 		$toArray = array(
-			$this->_language->get('author') => Db::getSettings('email')
+			$this->_language->get('author') => Db::getSetting('email')
 		);
 		$fromArray = array(
 			$mailArray['author'] => $mailArray['email']

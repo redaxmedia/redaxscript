@@ -33,11 +33,11 @@ function navigation_list($table = '', $options = '')
 
 	if ($option_order == '')
 	{
-		$option_order = Redaxscript\Db::getSettings('order');
+		$option_order = Redaxscript\Db::getSetting('order');
 	}
 	if ($option_limit == '')
 	{
-		$option_limit = Redaxscript\Db::getSettings('limit');
+		$option_limit = Redaxscript\Db::getSetting('limit');
 	}
 
 	/* switch table */

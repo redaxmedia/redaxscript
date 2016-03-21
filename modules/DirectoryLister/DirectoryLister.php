@@ -112,7 +112,7 @@ class DirectoryLister extends Config
 
 			/* date format */
 
-			$dateFormat = Db::getSettings('date');
+			$dateFormat = Db::getSetting('date');
 
 			/* parent directory */
 

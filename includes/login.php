@@ -71,7 +71,7 @@ function login_post()
 	{
 		$error = Redaxscript\Language::get('password_incorrect');
 	}
-	else if (Redaxscript\Db::getSettings('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	else if (Redaxscript\Db::getSetting('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = Redaxscript\Language::get('captcha_incorrect');
 	}

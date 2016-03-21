@@ -222,7 +222,7 @@ class ResetPost implements ControllerInterface
 			$mailArray['name'] => $mailArray['email']
 		);
 		$fromArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
+			Db::getSetting('author') => Db::getSetting('email')
 		);
 		$subject = $this->_language->get('password_new');
 		$bodyArray = array(

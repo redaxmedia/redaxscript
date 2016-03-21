@@ -122,7 +122,7 @@ class RegisterPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('url_incorrect');
 		}
-		if (Db::getSettings('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -145,7 +145,7 @@ class RegisterPost implements ControllerInterface
 			'email' => $postArray['email'],
 			'language' => $this->_registry->get('language'),
 			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
-			'status' => Db::getSettings('verification') ? 0 : 1
+			'status' => Db::getSetting('verification') ? 0 : 1
 		);
 		$mailArray = array(
 			'name' => $postArray['name'],
@@ -176,7 +176,7 @@ class RegisterPost implements ControllerInterface
 	public function success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSettings('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -248,7 +248,7 @@ class RegisterPost implements ControllerInterface
 
 		$toArray = array(
 			$mailArray['name'] => $mailArray['email'],
-			Db::getSettings('author') => Db::getSettings('notification') ? Db::getSettings('email') : null
+			Db::getSetting('author') => Db::getSetting('notification') ? Db::getSetting('email') : null
 		);
 		$fromArray = array(
 			$mailArray['name'] => $mailArray['email']
