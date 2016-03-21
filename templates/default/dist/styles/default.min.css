@@ -149,7 +149,16 @@ a
 	box-sizing: border-box;
 	color: #fff;
 	padding: 0.25em 0.5em;
+	position: relative;
 	width: 100%;
+}
+
+.rs-title-accordion:after
+{
+	content: '+';
+	font: 1.25em/1.5em 'icon default';
+	position: absolute;
+	right: 0.5em;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -160,6 +169,11 @@ a
 .rs-title-accordion.rs-title-active
 {
 	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+}
+
+.rs-title-accordion.rs-title-active:after
+{
+	content: '-';
 }
 
 .rs-title-extra
@@ -259,7 +273,7 @@ a
 /* @section 9. query */
 
 
-/* @section 9.2 medium min */
+/* @section 9.1 medium min */
 
 @media screen and (min-width: 50em)
 {
@@ -774,12 +788,17 @@ a
 	text-indent: 0;
 }
 
-/* @section 3. button large */
+/* @section 3. button large and full */
 
 .rs-button-large
 {
-	font-size: 1.75em;
+	font-size: 1.5em;
 	padding: 0.5em 1em;
+}
+
+.rs-button-full
+{
+	width: 100%;
 }
 
 /* @section 4. space between elements */

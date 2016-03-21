@@ -74,7 +74,7 @@ a
 {
 	background: var(--rs-gradient-secondary);
 	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-shadow: var(--rs-style-shadow-inner), var(--rs-style-shadow-outer);
 	box-sizing: border-box;
 	color: var(--rs-color-light);
 	cursor: pointer;
@@ -99,7 +99,7 @@ a
 
 .rs-link-read-more:active
 {
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	box-shadow: var(--rs-style-shadow-inner);
 	transform: translateY(2px);
 }
 
@@ -122,7 +122,16 @@ a
 	box-sizing: border-box;
 	color: var(--rs-color-light);
 	padding: 0.25em 0.5em;
+	position: relative;
 	width: 100%;
+}
+
+.rs-title-accordion:after
+{
+	content: '+';
+	font: 1.25em/1.5em 'icon default';
+	position: absolute;
+	right: 0.5em;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -133,6 +142,11 @@ a
 .rs-title-accordion.rs-title-active
 {
 	background: var(--rs-gradient-secondary);
+}
+
+.rs-title-accordion.rs-title-active:after
+{
+	content: '-';
 }
 
 .rs-title-extra

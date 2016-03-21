@@ -302,6 +302,16 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/note.css'
 				],
 				dest: 'templates/default/dist/styles/default.min.css'
+			},
+			templateInstall:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_query.css',
+					'templates/default/assets/styles/_variable.css',
+					'templates/install/assets/styles/layout.css'
+				],
+				dest: 'templates/install/dist/styles/default.min.css'
 			}
 		},
 		postcss:
