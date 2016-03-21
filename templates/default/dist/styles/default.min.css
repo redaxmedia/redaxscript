@@ -203,23 +203,9 @@ a
 	font-weight: normal;
 	line-height: 1em;
 	opacity: 0.8;
-	overflow: hidden;
-	padding-right: 0.5em;
 	position: relative;
 	text-transform: uppercase;
 	transition: opacity 0.2s;
-	white-space: nowrap
-}
-
-.rs-title-website:after
-{
-	background: linear-gradient(to left, #323e4c, transparent);
-	bottom: 0;
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 0.5em;
 }
 
 .rs-title-website:hover
@@ -235,9 +221,6 @@ a
 	display: none;
 	font-weight: 700;
 	margin-left: 0.125em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 /* @section 5. header */
@@ -275,15 +258,6 @@ a
 
 /* @section 9. query */
 
-/* @section 9.1 medium max */
-
-@media screen and (max-width: 49.999em)
-{
-	.rs-title-website
-	{
-		max-width: 65vw;
-	}
-}
 
 /* @section 9.2 medium min */
 
@@ -569,8 +543,21 @@ a
 .rs-box-metadata
 {
 	font-size: 0.75em;
-	max-width: 100%;
+	max-width: 80%;
+	overflow: hidden;
 	position: relative;
+	white-space: nowrap;
+}
+
+.rs-box-metadata:before
+{
+	background: linear-gradient(to left, #323e4c, transparent);
+	bottom: 0;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
 }
 
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
@@ -1423,8 +1410,8 @@ ul.rs-list-default li:before {
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
-		right: 0.25rem;
-		top: -0.25rem;
+		right: 1.5rem;
+		top: 1rem;
 	}
 
 	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
@@ -1440,8 +1427,6 @@ ul.rs-list-default li:before {
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
-		right: 1.5rem;
-		top: 1rem;
 	}
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after

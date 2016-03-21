@@ -49,8 +49,21 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
-	max-width: 100%;
+	max-width: 80%;
+	overflow: hidden;
 	position: relative;
+	white-space: nowrap;
+}
+
+.rs-box-metadata:before
+{
+	background: linear-gradient(to left, var(--rs-color-tertiary), transparent);
+	bottom: 0;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
 }
 
 .rs-box-metadata a::-moz-selection,
