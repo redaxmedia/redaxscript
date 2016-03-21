@@ -96,7 +96,7 @@ class Captcha
 		}
 		else
 		{
-			$this->_mode = Db::getSettings('captcha');
+			$this->_mode = Db::getSetting('captcha');
 		}
 		$this->_create();
 	}

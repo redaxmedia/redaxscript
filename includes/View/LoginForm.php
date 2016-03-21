@@ -38,7 +38,7 @@ class LoginForm implements ViewInterface
 			'class' => 'rs-title-content',
 		));
 		$titleElement->text(Language::get('login'));
-		if (Db::getSettings('recovery'))
+		if (Db::getSetting('recovery'))
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
@@ -58,7 +58,7 @@ class LoginForm implements ViewInterface
 				)
 			)
 		), array(
-			'captcha' => Db::getSettings('captcha') > 0
+			'captcha' => Db::getSetting('captcha') > 0
 		));
 
 		/* create the form */
@@ -87,7 +87,7 @@ class LoginForm implements ViewInterface
 				'required' => 'required'
 			))
 			->append('</li>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -95,7 +95,7 @@ class LoginForm implements ViewInterface
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}

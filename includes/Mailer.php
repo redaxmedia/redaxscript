@@ -145,7 +145,7 @@ class Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = Db::getSettings('subject');
+		$settingsSubject = Db::getSetting('subject');
 
 		/* extended subject string */
 
@@ -154,7 +154,7 @@ class Mailer
 			$this->_subjectString = $settingsSubject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= Db::getSettings('divider');
+				$this->_subjectString .= Db::getSetting('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -198,7 +198,7 @@ class Mailer
 
 		if (!$this->_attachmentArray)
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
 		}
 
 		/* else handle attachment */
@@ -216,7 +216,7 @@ class Mailer
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . $boundary . PHP_EOL;

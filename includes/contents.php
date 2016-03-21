@@ -78,7 +78,7 @@ function contents()
 		if ($result)
 		{
 			$num_rows = count($result);
-			$sub_maximum = ceil($num_rows / Redaxscript\Db::getSettings('limit'));
+			$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
 			$sub_active = LAST_SUB_PARAMETER;
 
 			/* sub parameter */
@@ -89,10 +89,10 @@ function contents()
 			}
 			else
 			{
-				$offset_string = ($sub_active - 1) * Redaxscript\Db::getSettings('limit') . ', ';
+				$offset_string = ($sub_active - 1) * Redaxscript\Db::getSetting('limit') . ', ';
 			}
 		}
-		$articles->limit($offset_string . Redaxscript\Db::getSettings('limit'));
+		$articles->limit($offset_string . Redaxscript\Db::getSetting('limit'));
 	}
 	else
 	{
@@ -250,7 +250,7 @@ function contents()
 
 	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && Redaxscript\Db::getSettings('pagination') == 1)
+	if ($sub_maximum > 1 && Redaxscript\Db::getSetting('pagination') == 1)
 	{
 		$route = build_route('categories', CATEGORY);
 		pagination($sub_active, $sub_maximum, $route);
@@ -402,8 +402,8 @@ function extras($filter = '')
 function infoline($table = '', $id = '', $author = '', $date = '')
 {
 	$output = Redaxscript\Hook::trigger('infolineStart');
-	$time = date(Redaxscript\Db::getSettings('time'), strtotime($date));
-	$date = date(Redaxscript\Db::getSettings('date'), strtotime($date));
+	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
+	$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 	if ($table == 'articles')
 	{
 		$comments_total = Redaxscript\Db::forTablePrefix('comments')->where('article', $id)->count();
@@ -431,7 +431,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	if ($comments_total)
 	{
-		$output .= '<span class="rs-divider">' . Redaxscript\Db::getSettings('divider') . '</span><span class="rs-infoline-total">' . $comments_total . ' ';
+		$output .= '<span class="rs-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-infoline-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= Redaxscript\Language::get('comment');

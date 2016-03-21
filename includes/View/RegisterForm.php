@@ -49,7 +49,7 @@ class RegisterForm implements ViewInterface
 				)
 			)
 		), array(
-			'captcha' => Db::getSettings('captcha') > 0
+			'captcha' => Db::getSetting('captcha') > 0
 		));
 
 		/* create the form */
@@ -86,7 +86,7 @@ class RegisterForm implements ViewInterface
 				'required' => 'required'
 			))
 			->append('</li>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -94,7 +94,7 @@ class RegisterForm implements ViewInterface
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}

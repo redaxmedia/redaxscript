@@ -91,19 +91,26 @@ class ResetPost implements ControllerInterface
 
 		$user = Db::forTablePrefix('users')->where(array(
 			'id' => $postArray['id'],
-			'password' => $postArray['password'],
 			'status' => 1
 		))->findOne();
 
 		/* validate post */
 
-		if (!$postArray['id'] || !$postArray['password'])
+		if (!$postArray['id'])
 		{
-			$errorArray[] = $this->_language->get('input_incorrect');
+			$errorArray[] = $this->_language->get('user_empty');
 		}
 		else if (!$user->id)
 		{
-			$errorArray[] = $this->_language->get('access_no');
+			$errorArray[] = $this->_language->get('user_incorrect');
+		}
+		if (!$postArray['password'])
+		{
+			$errorArray[] = $this->_language->get('password_empty');
+		}
+		else if (sha1($user->password) !== $postArray['password'])
+		{
+			$errorArray[] = $this->_language->get('password_incorrect');
 		}
 		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
@@ -222,7 +229,7 @@ class ResetPost implements ControllerInterface
 			$mailArray['name'] => $mailArray['email']
 		);
 		$fromArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
+			Db::getSetting('author') => Db::getSetting('email')
 		);
 		$subject = $this->_language->get('password_new');
 		$bodyArray = array(
