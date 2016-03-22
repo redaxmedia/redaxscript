@@ -126,6 +126,11 @@ a
 	width: 100%;
 }
 
+.rs-title-accordion:hover
+{
+	background: var(--rs-color-primary);
+}
+
 .rs-title-accordion:after
 {
 	content: '+';

@@ -89,11 +89,6 @@
 
 /* @section 4. box accordion */
 
-.rs-set-accordion + .rs-set-accordion
-{
-	margin-top: 0.125em;
-}
-
 .rs-box-accordion-default
 {
 	background: rgba(50, 62, 76, 0.3);

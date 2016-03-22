@@ -153,6 +153,11 @@ a
 	width: 100%;
 }
 
+.rs-title-accordion:hover
+{
+	background: #3873b5;
+}
+
 .rs-title-accordion:after
 {
 	content: '+';
@@ -594,11 +599,6 @@ a
 }
 
 /* @section 4. box accordion */
-
-.rs-set-accordion + .rs-set-accordion
-{
-	margin-top: 0.125em;
-}
 
 .rs-box-accordion-default
 {
