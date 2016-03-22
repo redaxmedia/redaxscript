@@ -47,6 +47,7 @@
 	.rs-install-title
 	{
 		font-size: 3.25em;
+		text-indent: 0.375em;
 	}
 
 	.rs-install-title:before
@@ -54,7 +55,7 @@
 		content: url('templates/install/assets/images/redaxscript.svg');
 		display: inline-block;
 		transform: scale(2);
-		transform-origin: 125% 75% 0;
+		transform-origin: 1em 0.75em 0;
 	}
 }
 

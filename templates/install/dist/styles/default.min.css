@@ -71,6 +71,7 @@
 	.rs-install-title
 	{
 		font-size: 3.25em;
+		text-indent: 0.375em;
 	}
 
 	.rs-install-title:before
@@ -79,8 +80,8 @@
 		display: inline-block;
 		-webkit-transform: scale(2);
 		transform: scale(2);
-		-webkit-transform-origin: 125% 75% 0;
-		transform-origin: 125% 75% 0;
+		-webkit-transform-origin: 1em 0.75em 0;
+		transform-origin: 1em 0.75em 0;
 	}
 }
 
