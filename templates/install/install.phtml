@@ -15,10 +15,8 @@
 
 		<!-- main -->
 
-		<main id="main" class="rs-install-main rs-wrapper rs-clearfix">
-			<h1 class="rs-install-title">
-				<img src="templates/install/assets/images/redaxscript.svg" width="32" height="31" alt="Redaxscript"/>Redaxscript
-			</h1>
+		<main id="main" class="rs-install-main rs-install-wrapper rs-clearfix">
+			<h1 class="rs-install-title"><?php echo Template::language('name', '_package'); ?></h1>
 			<?php echo Template::partial('templates/install/content.phtml'); ?>
 		</main>
 

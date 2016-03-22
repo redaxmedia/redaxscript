@@ -38,46 +38,67 @@
 .rs-install-body
 {
 	background: #323e4c;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
 }
 
-.rs-install-main
+.rs-install-wrapper
 {
-	box-sizing: border-box;
-	margin: 2em 1em;
-	max-width: 50em;
-	position: relative;
-	width: 100%;
+	margin: 0 5%;
+	width: 90%;
 }
 
 .rs-install-content
 {
 	background: #fff;
 	border-radius: 0.125em;
-	padding: 0.125em 1.5em 1.5em;
+	padding: 0.25em 1em 2em;
 }
 
 .rs-install-title
 {
 	color: #fff;
-	font-size: 3.25em;
+	font-size: 2.5em;
 	font-weight: normal;
 	line-height: 1em;
-	margin-bottom: 1em;
+	margin: 0.75em 0;
 	text-align: center;
 	text-transform: uppercase;
 }
 
-.rs-install-title img
+
+/* @section 2. query */
+
+@media screen and (min-width: 30em)
 {
-	margin-right: 0.375em;
-	-webkit-transform: scale(1.75);
-	transform: scale(1.75);
-	-webkit-transform-origin: 50% 70% 0;
-	transform-origin: 50% 70% 0;
+	.rs-install-title
+	{
+		font-size: 3.25em;
+	}
+
+	.rs-install-title:before
+	{
+		content: url('templates/install/assets/images/redaxscript.svg');
+		display: inline-block;
+		-webkit-transform: scale(2);
+		transform: scale(2);
+		-webkit-transform-origin: 125% 75% 0;
+		transform-origin: 125% 75% 0;
+	}
+}
+
+/* @section 2.1 large min */
+
+@media screen and (min-width: 80em)
+{
+	.rs-install-wrapper
+	{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 50em;
+	}
+
+	.rs-install-content
+	{
+		padding-left: 1.5em;
+		padding-right: 1.5em;
+	}
 }

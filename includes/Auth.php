@@ -74,7 +74,7 @@ class Auth
 		'getPermissionEdit' => 2,
 		'getPermissionDelete' => 3,
 		'getPermissionUninstall' => 3,
-		'getFilter' => '0'
+		'getFilter' => 0
 	);
 
 	/**
