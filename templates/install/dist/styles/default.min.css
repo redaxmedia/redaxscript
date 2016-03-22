@@ -1,0 +1,103 @@
+/**
+ * @tableofcontents
+ *
+ * 1. query
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. query
+ *    2.1 medium min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-body-install
+{
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+.rs-main-install
+{
+	background: #fff;
+	border-radius: 0.25em;
+	box-sizing: border-box;
+	margin: 5em 0;
+	padding: 0 2em 2em;
+	position: relative;
+	width: 100%;
+}
+
+.rs-main-install:before
+{
+	background: url('templates/install/assets/images/redaxscript.svg') no-repeat left center / contain;
+	bottom: 100%;
+	content: 'Redaxscript';
+	font-size: 2.25em;
+	height: 1em;
+	left: 2.125em;
+	line-height: 0.875em;
+	margin-bottom: 0.25em;
+	padding-left: 1.25em;
+	position: absolute;
+	text-transform: uppercase;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 1em;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
+
+@media screen and (min-width: 50em)
+{
+	.rs-body-install
+	{
+		background: #323e4c;
+	}
+
+	.rs-main-install
+	{
+		width: 70%;
+		box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-main-install:before
+	{
+		color: #fff;
+	}
+}
