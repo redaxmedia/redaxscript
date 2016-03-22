@@ -54,8 +54,8 @@
 	{
 		content: url('templates/install/assets/images/redaxscript.svg');
 		display: inline-block;
-		transform: scale(2);
-		transform-origin: 1em 0.75em 0;
+		margin-right: 0.125em;
+		vertical-align: middle;
 	}
 }
 
