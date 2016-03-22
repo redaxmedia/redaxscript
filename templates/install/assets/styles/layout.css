@@ -18,7 +18,7 @@
 
 .rs-install-wrapper
 {
-	margin: 0 5%;
+	margin: 2em 5% 5%;
 	width: 90%;
 }
 
@@ -35,11 +35,10 @@
 	font-size: 2.5em;
 	font-weight: normal;
 	line-height: 1em;
-	margin: 0.75em 0;
+	margin-bottom: 0.75em;
 	text-align: center;
 	text-transform: uppercase;
 }
-
 
 /* @section 2. query */
 
