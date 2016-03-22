@@ -26,8 +26,6 @@
  * @tableofcontents
  *
  * 1. general
- * 2. query
- *    2.1 medium min
  *
  * @since 3.0.0
  *
@@ -37,11 +35,9 @@
 
 /* @section 1. general */
 
-.rs-body-install
+.rs-install-body
 {
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
+	background: #323e4c;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -50,54 +46,38 @@
 	justify-content: center;
 }
 
-.rs-main-install
+.rs-install-main
 {
-	background: #fff;
-	border-radius: 0.25em;
 	box-sizing: border-box;
-	margin: 5em 0;
-	padding: 0 2em 2em;
+	margin: 2em 1em;
+	max-width: 50em;
 	position: relative;
 	width: 100%;
 }
 
-.rs-main-install:before
+.rs-install-content
 {
-	background: url('templates/install/assets/images/redaxscript.svg') no-repeat left center / contain;
-	bottom: 100%;
-	content: 'Redaxscript';
-	font-size: 2.25em;
-	height: 1em;
-	left: 2.125em;
-	line-height: 0.875em;
-	margin-bottom: 0.25em;
-	padding-left: 1.25em;
-	position: absolute;
-	text-transform: uppercase;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
-	width: 1em;
+	background: #fff;
+	border-radius: 0.125em;
+	padding: 0.125em 1.5em 1.5em;
 }
 
-/* @section 2. query */
-
-/* @section 2.1 medium min */
-
-@media screen and (min-width: 50em)
+.rs-install-title
 {
-	.rs-body-install
-	{
-		background: #323e4c;
-	}
+	color: #fff;
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+	text-transform: uppercase;
+}
 
-	.rs-main-install
-	{
-		width: 70%;
-		box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
-	}
-
-	.rs-main-install:before
-	{
-		color: #fff;
-	}
+.rs-install-title img
+{
+	margin-right: 0.375em;
+	-webkit-transform: scale(1.75);
+	transform: scale(1.75);
+	-webkit-transform-origin: 50% 70% 0;
+	transform-origin: 50% 70% 0;
 }
