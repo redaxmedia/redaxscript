@@ -14,12 +14,16 @@
 
 /* @section 1. success */
 
+.rs-note-success
+{
+	color: var(--rs-color-success-dark);
+}
+
 .rs-note-success.rs-box-note,
 .rs-note-success.rs-field-note:not(:focus)
 {
 	background: var(--rs-color-success);
 	border-color: var(--rs-color-success-dark);
-	color: var(--rs-color-light);
 }
 
 .rs-note-success.rs-field-note option
@@ -34,12 +38,16 @@
 
 /* @section 2. warning */
 
+.rs-note-warning
+{
+	color: var(--rs-color-warning-dark);
+}
+
 .rs-note-warning.rs-box-note,
 .rs-note-warning.rs-field-note:not(:focus)
 {
 	background: var(--rs-color-warning);
 	border-color: var(--rs-color-warning-dark);
-	color: var(--rs-color-light);
 }
 
 .rs-note-warning.rs-field-note option
@@ -55,12 +63,16 @@
 
 /* @section 3. error */
 
+.rs-note-error
+{
+	color: var(--rs-color-error-dark);
+}
+
 .rs-note-error.rs-box-note,
 .rs-note-error.rs-field-note:not(:focus)
 {
 	background: var(--rs-color-error);
 	border-color: var(--rs-color-error-dark);
-	color: var(--rs-color-light);
 }
 
 .rs-note-error.rs-field-note option
@@ -75,12 +87,16 @@
 
 /* @section 4. info */
 
+.rs-note-info
+{
+	color: var(--rs-color-info-dark);
+}
+
 .rs-note-info.rs-box-note,
 .rs-note-info.rs-field-note:not(:focus)
 {
 	background: var(--rs-color-info);
 	border-color: var(--rs-color-info-dark);
-	color: var(--rs-color-light);
 }
 
 .rs-note-info.rs-field-note option
@@ -92,4 +108,11 @@
 {
 	content: '\69';
 	left: 0.875em;
+}
+
+/* @section 5. dimensions */
+
+.rs-title-note + .rs-box-note
+{
+	margin-top: 1em;
 }

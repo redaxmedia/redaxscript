@@ -114,7 +114,7 @@
 .rs-box-note
 {
 	border-radius: 0.125em 0.125em;
-	color: var(--rs-color-light);
+	font-weight: bold;
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
 }
@@ -124,15 +124,21 @@
 	color: var(--rs-color-dark);
 	font: 1.5em/1em 'icon default';
 	left: 0.5em;
-	opacity: 0.5;
+	opacity: 0.6;
 	position: absolute;
 	top: 0.25em;
 }
 
 .rs-box-note a
 {
-	color: var(--rs-color-tertiary);
+	color: color(var(--rs-color-dark) a(50%));
 	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-box-note a:hover
+{
+	color: var(--rs-color-dark);
 }
 
 /* @section 7. box comment */

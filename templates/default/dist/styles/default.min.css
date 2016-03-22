@@ -2,93 +2,6 @@
  * @tableofcontents
  *
  * 1. query
- * 1. variable
- * 1. tag styling
- * 2. links
- *    2.1 read more link
- * 3. title
- *    3.1 several titles
- *    3.2 title accordion
- *    3.3 title content
- *    3.4 title sub
- *    3.5 title website
- * 4. description website
- * 5. header
- * 6. content
- * 7. sidebar
- * 8. footer
- * 9. query
- *    9.1 medium min
- * 1. general
- * 2. wrapper
- * 3. header
- * 4. sidebar
- * 5. footer
- * 6. query
- *    6.1 print
- *    6.2 medium max
- *    6.3 medium min
- *    6.4 large min
- * 1. slide in down
- * 1. several boxes
- * 2. box metadata
- * 3. box quote
- * 4. box accordion
- * 5. box tab
- * 6. box note
- * 7. box comment
- * 8. space between elements
- * 9. query
- *    9.2 medium min
- * 1. button default
- * 2. button search
- * 3. button large and full
- * 4. space between elements
- * 5. disabled
- * 6. query
- *    6.1 medium max
- *    6.2 medium min
- * 1. dialog overlay default
- * 1. several form elements
- * 2. several fields
- * 3. textarea
- * 4. disabled and readonly
- * 5. query
- *    5.1 medium max
- *    5.2 medium min
- * 1. forms
- *    1.1 form default
- *    1.2 form search
- * 1. icon font
- * 2. icon flag
- * 1. several lists
- * 2. list breadcrumb
- * 3. list default
- * 4. list header
- * 5. list tabs
- * 6. list result
- * 7. query
- *    7.1 medium max
- *    7.2 medium min
- * 1. several media
- * 1. query
- *    1.1 medium max
- * 1. table default
- *    1.1 body
- *    1.2 head and foot
- * 1. teaser
- * 2. title teaser
- * 3. query
- *    3.1 medium
- *    3.2 large
- *    3.3 ultra
- * 1. tooltip
- * 2. query
- *    2.1 small min
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
  *
  * @since 3.0.0
  *
@@ -707,7 +620,7 @@ a
 .rs-box-note
 {
 	border-radius: 0.125em 0.125em;
-	color: #fff;
+	font-weight: bold;
 	padding: 0.25em 0.5em 0.25em 3em;
 	position: relative;
 }
@@ -717,15 +630,21 @@ a
 	color: #000;
 	font: 1.5em/1em 'icon default';
 	left: 0.5em;
-	opacity: 0.5;
+	opacity: 0.6;
 	position: absolute;
 	top: 0.25em;
 }
 
 .rs-box-note a
 {
-	color: #323e4c;
+	color: rgba(0, 0, 0, 0.5);
 	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-box-note a:hover
+{
+	color: #000;
 }
 
 /* @section 7. box comment */
@@ -793,7 +712,7 @@ a
  *
  * 1. button default
  * 2. button search
- * 3. button large
+ * 3. button large and full
  * 4. space between elements
  * 5. disabled
  * 6. query
@@ -1184,6 +1103,11 @@ a
 }
 
 /* @section 2. list breadcrumb */
+
+.rs-list-breadcrumb
+{
+	margin-bottom: 1em;
+}
 
 .rs-list-breadcrumb li
 {
@@ -1759,11 +1683,15 @@ ul.rs-list-default li:before {
 
 /* @section 1. success */
 
+.rs-note-success
+{
+	color: rgb(44, 150, 44);
+}
+
 .rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
 {
 	background: #5bb75b;
 	border-color: rgb(44, 150, 44);
-	color: #fff;
 }
 
 .rs-note-success.rs-field-note option
@@ -1778,11 +1706,15 @@ ul.rs-list-default li:before {
 
 /* @section 2. warning */
 
+.rs-note-warning
+{
+	color: rgb(117, 68, 0);
+}
+
 .rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
 {
 	background: #f3940e;
 	border-color: rgb(117, 68, 0);
-	color: #fff;
 }
 
 .rs-note-warning.rs-field-note option
@@ -1798,11 +1730,15 @@ ul.rs-list-default li:before {
 
 /* @section 3. error */
 
+.rs-note-error
+{
+	color: rgb(148, 34, 30);
+}
+
 .rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
 {
 	background: #da4f49;
 	border-color: rgb(148, 34, 30);
-	color: #fff;
 }
 
 .rs-note-error.rs-field-note option
@@ -1817,11 +1753,15 @@ ul.rs-list-default li:before {
 
 /* @section 4. info */
 
+.rs-note-info
+{
+	color: rgb(30, 121, 148);
+}
+
 .rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
 {
 	background: #49afcd;
 	border-color: rgb(30, 121, 148);
-	color: #fff;
 }
 
 .rs-note-info.rs-field-note option
@@ -1833,4 +1773,11 @@ ul.rs-list-default li:before {
 {
 	content: '\69';
 	left: 0.875em;
+}
+
+/* @section 5. dimensions */
+
+.rs-title-note + .rs-box-note
+{
+	margin-top: 1em;
 }
