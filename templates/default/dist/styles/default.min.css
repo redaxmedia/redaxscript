@@ -627,16 +627,14 @@ a
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 3em;
+	padding: 0.5em 0.5em 0.5em 2.5em;
 	position: relative;
 }
 
 .rs-box-note:before
 {
-	color: #000;
 	font: 1.5em/1.25em 'icon default';
 	left: 0.5em;
-	opacity: 0.6;
 	position: absolute;
 	top: 0.25em;
 }
