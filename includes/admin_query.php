@@ -85,7 +85,7 @@ function admin_process()
 		case 'modules';
 			$alias = $aliasFilter->sanitize($_POST['alias']);
 			$status = $r['status'] = $specialFilter->sanitize($_POST['status']);
-			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
+			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && Redaxscript\Registry::get('groupsEdit'))
 			{
 				$access = array_map(array($specialFilter, 'sanitize'), $_POST['access']);
 				$access_string = implode(', ', $access);
@@ -474,15 +474,17 @@ function admin_process()
 					))
 					->save();
 			}
-			if (USERS_EXCEPTION == 1)
+			if (Redaxscript\Registry::get('usersException'))
 			{
-				$_SESSION[ROOT . '/my_name'] = $name;
-				$_SESSION[ROOT . '/my_email'] = $email;
+				$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+				$auth->setUser('name', $name);
+				$auth->setUser('email', $email);
 				if (file_exists('languages/' . $language . '.php'))
 				{
-					$_SESSION[ROOT . '/language'] = $language;
+					$auth->setUser('language', $language);
 					$_SESSION[ROOT . '/language_selected'] = 1;
 				}
+				$auth->save();
 			}
 
 			/* show success */
@@ -802,7 +804,7 @@ function admin_delete()
 
 	/* handle exception */
 
-	if (USERS_EXCEPTION == 1)
+	if (Redaxscript\Registry::get('usersException'))
 	{
 		logout();
 	}

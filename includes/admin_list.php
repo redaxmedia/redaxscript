@@ -414,7 +414,7 @@ function admin_groups_list()
 
 	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('groups') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
-	if (GROUPS_NEW == 1)
+	if (Redaxscript\Registry::get('groupsNew'))
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('group_new') . '</a>';
 	}
@@ -511,7 +511,7 @@ function admin_users_list()
 
 	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('users') . '</h2>';
 	$output .= '<div class="rs-admin-wrapper-button">';
-	if (USERS_NEW == 1)
+	if (Redaxscript\Registry::get('usersNew'))
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('user_new') . '</a>';
 	}

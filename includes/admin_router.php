@@ -85,17 +85,17 @@ function admin_router()
 		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'settings':
 		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
-		case ADMIN_PARAMETER == 'edit' && $edit == 0 && USERS_EXCEPTION == 0:
+		case ADMIN_PARAMETER == 'edit' && $edit == 0 && !Redaxscript\Registry::get('usersException'):
 		case in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
 		case ADMIN_PARAMETER == 'install' && $install == 0:
 		case ADMIN_PARAMETER == 'uninstall' && $uninstall == 0:
-		case ADMIN_PARAMETER == 'delete' && $delete == 0 && USERS_EXCEPTION == 0:
+		case ADMIN_PARAMETER == 'delete' && $delete == 0 && !Redaxscript\Registry::get('usersException'):
 		case ADMIN_PARAMETER == 'process' && $_POST['new'] && $new == 0:
-		case ADMIN_PARAMETER == 'process' && $_POST['edit'] && $edit == 0 && USERS_EXCEPTION == 0:
-		case ADMIN_PARAMETER == 'process' && $_POST['groups'] && GROUPS_EDIT == 0:
+		case ADMIN_PARAMETER == 'process' && $_POST['edit'] && $edit == 0 && !Redaxscript\Registry::get('usersException'):
+		case ADMIN_PARAMETER == 'process' && $_POST['groups'] && !Redaxscript\Registry::get('groupsEdit'):
 		case ADMIN_PARAMETER == 'update' && $edit == 0:
 		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
-		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && USERS_EXCEPTION == 0:
+		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && !Redaxscript\Registry::get('usersException'):
 
 			/* show error */
 

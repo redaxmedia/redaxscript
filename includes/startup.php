@@ -290,6 +290,7 @@ function startup()
 		Redaxscript\Registry::set('myName', $auth->getUser('name'));
 		Redaxscript\Registry::set('myUser', $auth->getUser('user'));
 		Redaxscript\Registry::set('myEmail', $auth->getUser('email'));
+		Redaxscript\Registry::set('myLanguage', $auth->getUser('language'));
 		Redaxscript\Registry::set('myGroups', $auth->getUser('groups'));
 		Redaxscript\Registry::set('categoriesNew', $auth->getPermissionNew('categories'));
 		Redaxscript\Registry::set('categoriesEdit', $auth->getPermissionEdit('categories'));

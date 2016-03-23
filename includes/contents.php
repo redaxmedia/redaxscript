@@ -239,7 +239,7 @@ function contents()
 
 				/* comment form */
 
-				if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
+				if ($comments == 1 || (Redaxscript\Registry::get('commentNew') && $comments == 3))
 				{
 					$commentForm = new Redaxscript\View\CommentForm();
 					echo $commentForm->render(ARTICLE);

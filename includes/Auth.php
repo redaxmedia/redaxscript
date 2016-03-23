@@ -199,11 +199,12 @@ class Auth
 		$this->setUser('name', $user->name);
 		$this->setUser('user', $user->user);
 		$this->setUser('email', $user->email);
+		$this->setUser('language', $user->language);
 		$this->setUser('groups', $user->groups);
 
 		/* save user and permission */
 
-		$this->_save();
+		$this->save();
 		return $this->getStatus();
 	}
 
@@ -321,7 +322,7 @@ class Auth
 	 * @return boolean
 	 */
 
-	protected function _save()
+	public function save()
 	{
 		$userArray = $this->getUser();
 		$permissionArray = $this->getPermission();
