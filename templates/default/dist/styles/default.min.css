@@ -577,7 +577,7 @@ a
 	right: 0;
 	top: 0;
 	width: 1em;
-	z-index: 100;
+	z-index: 1;
 }
 
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
