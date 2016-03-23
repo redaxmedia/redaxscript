@@ -101,7 +101,7 @@ class AuthTest extends TestCase
 	 * @since 3.0.0
 	 */
 
-	public function testLogin()
+	public function testLoginAndLogout()
 	{
 		/* setup */
 
@@ -109,11 +109,18 @@ class AuthTest extends TestCase
 
 		/* actual */
 
-		$actual = $auth->login(1);
+		$auth->login();
+		$actualInvalid = $auth->getStatus();
+		$auth->login(1);
+		$actualLogin = $auth->getStatus();
+		$auth->logout();
+		$actualLogout = $auth->getStatus();
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertFalse($actualInvalid);
+		$this->assertTrue($actualLogin);
+		$this->assertFalse($actualLogout);
 	}
 
 	/**
@@ -121,14 +128,14 @@ class AuthTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $table
+	 * @param string $method
+	 * @param array $typeArray
 	 * @param string $groups
-	 * @param boolean $expect
 	 *
 	 * @dataProvider providerGetPermission
 	 */
 
-	public function testGetPermission($table = null, $groups = null, $expect = null)
+	public function testGetPermission($method = null, $typeArray = array(), $groups = null)
 	{
 		/* setup */
 
@@ -136,13 +143,12 @@ class AuthTest extends TestCase
 		$auth = new Auth($this->_request);
 		$auth->login(1);
 
-		/* actual */
+		/* compare  */
 
-		$actual = $auth->getPermissionNew($table);
-
-		/* compare */
-
-		$this->assertEquals($actual, $expect);
+		foreach ($typeArray as $key => $value)
+		{
+			$this->assertEquals($auth->$method($key), $value);
+		}
 	}
 
 	/**

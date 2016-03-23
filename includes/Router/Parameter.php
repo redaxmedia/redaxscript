@@ -143,10 +143,7 @@ class Parameter
 		{
 			return end($this->_parameterArray);
 		}
-		else
-		{
-			return prev($this->_parameterArray);
-		}
+		return prev($this->_parameterArray);
 	}
 
 	/**

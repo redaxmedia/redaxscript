@@ -1,22 +1,302 @@
 [
 	[
-		"",
-		"",
-		false
+		"getPermissionNew",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		""
 	],
 	[
-		"articles",
-		"",
-		false
+		"getPermissionNew",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		"2"
 	],
 	[
-		"articles",
-		"2",
-		false
+		"getPermissionNew",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": false,
+			"settings": false
+		},
+		"1"
 	],
 	[
-		"articles",
-		"1",
-		true
+		"getPermissionNew",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": false,
+			"settings": false
+		},
+		"1, 2"
+	],
+	[
+		"getPermissionInstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		""
+	],
+	[
+		"getPermissionInstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		"2"
+	],
+	[
+		"getPermissionInstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": true,
+			"settings": false
+		},
+		"1"
+	],
+	[
+		"getPermissionInstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": true,
+			"settings": false
+		},
+		"1, 2"
+	],
+	[
+		"getPermissionEdit",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		""
+	],
+	[
+		"getPermissionEdit",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		"2"
+	],
+	[
+		"getPermissionEdit",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": true,
+			"settings": true
+		},
+		"1"
+	],
+	[
+		"getPermissionEdit",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": true,
+			"settings": true
+		},
+		"1, 2"
+	],
+	[
+		"getPermissionDelete",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		""
+	],
+	[
+		"getPermissionDelete",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		"2"
+	],
+	[
+		"getPermissionDelete",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": false,
+			"settings": false
+		},
+		"1"
+	],
+	[
+		"getPermissionDelete",
+		{
+			"invalid": false,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": false,
+			"settings": false
+		},
+		"1, 2"
+	],
+	[
+		"getPermissionUninstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		""
+	],
+	[
+		"getPermissionUninstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": false,
+			"settings": false
+		},
+		"2"
+	],
+	[
+		"getPermissionUninstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": true,
+			"settings": false
+		},
+		"1"
+	],
+	[
+		"getPermissionUninstall",
+		{
+			"invalid": false,
+			"categories": false,
+			"articles": false,
+			"extras": false,
+			"comments": false,
+			"groups": false,
+			"users": false,
+			"modules": true,
+			"settings": false
+		},
+		"1, 2"
 	]
 ]

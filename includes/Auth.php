@@ -69,12 +69,47 @@ class Auth
 	 */
 
 	protected $_callArray = array(
-		'getPermissionNew' => 1,
-		'getPermissionInstall' => 1,
-		'getPermissionEdit' => 2,
-		'getPermissionDelete' => 3,
-		'getPermissionUninstall' => 3,
-		'getFilter' => 0
+		'categories' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'articles' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'extras' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'comments' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'groups' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'users' => array(
+			'getPermissionNew' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionDelete' => 3
+		),
+		'modules' => array(
+			'getPermissionInstall' => 1,
+			'getPermissionEdit' => 2,
+			'getPermissionUninstall' => 3
+		),
+		'settings' => array(
+			'getPermissionEdit' => 1
+		),
+		'filter' => array(
+			'getFilter' => 0
+		)
 	);
 
 	/**
@@ -103,10 +138,11 @@ class Auth
 
 	public function __call($method = null, $arguments = array())
 	{
-		if (array_key_exists($method, $this->_callArray))
+		$key = $method === 'getFilter' ? 'filter' : $arguments[0];
+		if (array_key_exists($method, $this->_callArray[$key]))
 		{
-			$permissionArray = $method === 'getFilter' ? $this->getPermission('filter') : $this->getPermission($arguments[0]);
-			return in_array($this->_callArray[$method], $permissionArray);
+			$permissionArray = $this->getPermission($key);
+			return in_array($this->_callArray[$key][$method], $permissionArray);
 		}
 		return false;
 	}
@@ -252,7 +288,25 @@ class Auth
 
 	public function setPermission($key = null, $value = null)
 	{
+		if (is_array($this->_permissionArray[$key]))
+		{
+			$value = array_merge($this->_permissionArray[$key], $value);
+		}
 		$this->_permissionArray[$key] = $value;
+	}
+
+	/**
+	 * get the auth status
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	public function getStatus()
+	{
+		$authArray = $this->_request->getSession('auth');
+		return array_key_exists('user', $authArray) && array_key_exists('permission', $authArray);
 	}
 
 	/**
@@ -270,14 +324,13 @@ class Auth
 
 		/* set to session */
 
-		if (count($userArray) && count($permissionArray))
+		if ($userArray && $permissionArray)
 		{
 			$this->_request->setSession('auth', array(
 				'user' => $userArray,
 				'permission' => $permissionArray
 			));
-			return true;
 		}
-		return false;
+		return $this->getStatus();
 	}
 }
