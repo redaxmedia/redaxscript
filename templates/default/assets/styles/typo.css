@@ -114,6 +114,11 @@ a
 	margin-top: 1em;
 }
 
+.rs-title-comment a
+{
+	color: var(--rs-color-tertiary);
+}
+
 /* @section 3.2 title accordion */
 
 .rs-title-accordion

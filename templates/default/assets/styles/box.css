@@ -111,14 +111,14 @@
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.25em 0.5em 0.25em 3em;
+	padding: 0.5em 0.5em 0.5em 3em;
 	position: relative;
 }
 
 .rs-box-note:before
 {
 	color: var(--rs-color-dark);
-	font: 1.5em/1em 'icon default';
+	font: 1.5em/1.25em 'icon default';
 	left: 0.5em;
 	opacity: 0.6;
 	position: absolute;

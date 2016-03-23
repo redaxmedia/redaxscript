@@ -92,7 +92,7 @@ function comments($article = '', $route = '')
 				$output .= Redaxscript\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
 				if ($url)
 				{
-					$output .= '<a href="' . $url . '" class="rs-link-default" rel="nofollow">' . $author . '</a>';
+					$output .= '<a href="' . $url . '" rel="nofollow">' . $author . '</a>';
 				}
 				else
 				{
