@@ -49,7 +49,7 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
-	max-width: 80%;
+	max-width: 70%;
 	overflow: hidden;
 	position: relative;
 	white-space: nowrap;
@@ -64,6 +64,7 @@
 	right: 0;
 	top: 0;
 	width: 1em;
+	z-index: 100;
 }
 
 .rs-box-metadata a::-moz-selection,
