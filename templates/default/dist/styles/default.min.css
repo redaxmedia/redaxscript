@@ -226,17 +226,19 @@ a
 	font-size: 3.25em;
 	font-weight: normal;
 	line-height: 1em;
-	opacity: 0.8;
 	position: relative;
 	text-transform: uppercase;
-	transition: opacity 0.2s;
-	-webkit-transform: translateY(0);
-	transform: translateY(0);
 }
 
-.rs-title-website:hover
+.rs-header .rs-title-website a
 {
-	opacity: 1;
+	color: rgba(255, 255, 255, 0.8);
+	transition: color 0.2s;
+}
+
+.rs-header .rs-title-website:hover a
+{
+	color: #fff;
 }
 
 /* @section 4. description website */
@@ -1517,7 +1519,6 @@ ul.rs-list-default li:before {
 .rs-teaser
 {
 	background: url('//unsplash.it/625/250?image=817&gravity=south') no-repeat center top / cover;
-	margin-bottom: 2em;
 	max-height: 35em;
 	padding: 5em 2em;
 	padding: 10vw 4vw;

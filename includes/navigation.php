@@ -174,7 +174,7 @@ function navigation_list($table = '', $options = '')
 
 				/* collect item output */
 
-				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="rs-admin-link-default">' . $title . '</a>';
+				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '">' . $title . '</a>';
 
 				/* collect children list output */
 
