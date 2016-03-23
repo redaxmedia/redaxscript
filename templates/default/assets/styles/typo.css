@@ -203,6 +203,7 @@ a
 	position: relative;
 	text-transform: uppercase;
 	transition: opacity 0.2s;
+	transform: translateY(0);
 }
 
 .rs-title-website:hover

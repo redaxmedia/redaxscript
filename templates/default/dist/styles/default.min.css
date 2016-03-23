@@ -230,6 +230,8 @@ a
 	position: relative;
 	text-transform: uppercase;
 	transition: opacity 0.2s;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
 }
 
 .rs-title-website:hover
@@ -567,9 +569,9 @@ a
 .rs-box-metadata
 {
 	font-size: 0.75em;
+	max-width: 70%;
 	overflow: hidden;
 	white-space: nowrap;
-	width: 70%;
 }
 
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
@@ -674,7 +676,7 @@ a
 	{
 		font-size: 1em;
 		float: left;
-		width: 60%;
+		max-width: 60%;
 	}
 
 	.rs-box-navigation

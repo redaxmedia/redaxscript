@@ -49,9 +49,9 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
+	max-width: 70%;
 	overflow: hidden;
 	white-space: nowrap;
-	width: 70%;
 }
 
 .rs-box-metadata a::selection,
@@ -151,7 +151,7 @@
 	{
 		font-size: 1em;
 		float: left;
-		width: 60%;
+		max-width: 60%;
 	}
 
 	.rs-box-navigation
