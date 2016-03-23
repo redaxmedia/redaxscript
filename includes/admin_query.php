@@ -47,7 +47,7 @@ function admin_process()
 				$r['headline'] = $specialFilter->sanitize($_POST['headline']);
 			}
 			$r['sibling'] = $specialFilter->sanitize($_POST['sibling']);
-			$author = $r['author'] = MY_USER;
+			$author = $r['author'] = Redaxscript\Registry::get('myUser');
 
 		/* comments */
 
@@ -900,12 +900,12 @@ function admin_update()
 
 function admin_last_update()
 {
-	if (MY_ID)
+	if (Redaxscript\Registry::get('myId'))
 	{
 		Redaxscript\Db::forTablePrefix('users')
-			->where('id', MY_ID)
+			->where('id', Redaxscript\Registry::get('myId'))
 			->findOne()
-			->set('last', NOW)
+			->set('last', Redaxscript\Registry::get('now'))
 			->save();
 	}
 }

@@ -17,35 +17,35 @@ function admin_panel_list()
 
 	/* define access variables */
 
-	if (CATEGORIES_NEW == 1 || CATEGORIES_EDIT == 1 || CATEGORIES_DELETE == 1)
+	if (Redaxscript\Registry::get('categoriesNew') || Redaxscript\Registry::get('categoriesEdit') || Redaxscript\Registry::get('categoriesDelete'))
 	{
 		$categories_access = $contents_access = 1;
 	}
-	if (ARTICLES_NEW == 1 || ARTICLES_EDIT == 1 || ARTICLES_DELETE == 1)
+	if (Redaxscript\Registry::get('articlesNew') || Redaxscript\Registry::get('articlesEdit') || Redaxscript\Registry::get('articlesDelete'))
 	{
 		$articles_access = $contents_access = 1;
 	}
-	if (EXTRAS_NEW == 1 || EXTRAS_EDIT == 1 || EXTRAS_DELETE == 1)
+	if (Redaxscript\Registry::get('extrasNew') || Redaxscript\Registry::get('extrasEdit') || Redaxscript\Registry::get('extrasDelete'))
 	{
 		$extras_access = $contents_access = 1;
 	}
-	if (COMMENTS_NEW == 1 || COMMENTS_EDIT == 1 || COMMENTS_DELETE == 1)
+	if (Redaxscript\Registry::get('commentsNew') || Redaxscript\Registry::get('commentsEdit') || Redaxscript\Registry::get('commentsDelete'))
 	{
 		$comments_access = $contents_access = 1;
 	}
-	if (USERS_NEW == 1 || USERS_EDIT == 1 || USERS_DELETE == 1)
+	if (Redaxscript\Registry::get('usersNew') || Redaxscript\Registry::get('usersEdit') || Redaxscript\Registry::get('usersDelete'))
 	{
 		$users_access = $access_access = 1;
 	}
-	if (GROUPS_NEW == 1 || GROUPS_EDIT == 1 || GROUPS_DELETE == 1)
+	if (Redaxscript\Registry::get('groupsNew') || Redaxscript\Registry::get('groupsEdit') || Redaxscript\Registry::get('groupsDelete'))
 	{
 		$groups_access = $access_access = 1;
 	}
-	if (MODULES_INSTALL == 1 || MODULES_EDIT == 1 || MODULES_UNINSTALL == 1)
+	if (Redaxscript\Registry::get('modulesInstall') || Redaxscript\Registry::get('modulesEdit') || Redaxscript\Registry::get('modulesUninstall'))
 	{
 		$modules_access = $system_access = 1;
 	}
-	if (SETTINGS_EDIT == 1)
+	if (Redaxscript\Registry::get('settingsEdit'))
 	{
 		$settings_access = $system_access = 1;
 	}
@@ -82,9 +82,9 @@ function admin_panel_list()
 	{
 		$counter++;
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span>' . Redaxscript\Language::get('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
-		if (MY_ID)
+		if (Redaxscript\Registry::get('myId'))
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/view/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
 		}
 		if ($users_access == 1)
 		{
@@ -125,7 +125,7 @@ function admin_panel_list()
 
 	/* collect profile */
 
-	if (MY_USER && MY_ID)
+	if (Redaxscript\Registry::get('myId'))
 	{
 		$counter++;
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '">' . Redaxscript\Language::get('profile') . '</a></li>';
@@ -166,8 +166,8 @@ function admin_dock($table = '', $id = '')
 
 	/* define access variables */
 
-	$edit = constant(strtoupper($table) . '_EDIT');
-	$delete = constant(strtoupper($table) . '_DELETE');
+	$edit = Redaxscript\Registry::get($table . 'Edit');
+	$delete = Redaxscript\Registry::get($table . 'Delete');
 
 	/* collect output */
 
@@ -206,7 +206,7 @@ function admin_notification()
 
 	/* insecure file warning */
 
-	if (MY_ID == 1)
+	if (Redaxscript\Registry::get('myId') == 1)
 	{
 		if (file_exists('install.php'))
 		{

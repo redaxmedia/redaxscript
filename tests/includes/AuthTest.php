@@ -83,16 +83,21 @@ class AuthTest extends TestCase
 	{
 		/* setup */
 
+		$this->_request->setSession('auth', array(
+			'user' => array(
+				'test' => 'test'
+			),
+			'permission' => array(
+				'test' => 'test'
+			)
+		));
 		$auth = new Auth($this->_request);
 		$auth->init();
 
-		/* actual */
-
-		$actual = $auth;
-
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Auth', $actual);
+		$this->assertEquals('test', $auth->getUser('test'));
+		$this->assertEquals('test', $auth->getPermission('test'));
 	}
 
 	/**
@@ -106,21 +111,13 @@ class AuthTest extends TestCase
 		/* setup */
 
 		$auth = new Auth($this->_request);
-
-		/* actual */
-
-		$auth->login();
-		$actualInvalid = $auth->getStatus();
-		$auth->login(1);
-		$actualLogin = $auth->getStatus();
 		$auth->logout();
-		$actualLogout = $auth->getStatus();
 
 		/* compare */
 
-		$this->assertFalse($actualInvalid);
-		$this->assertTrue($actualLogin);
-		$this->assertFalse($actualLogout);
+		$this->assertFalse($auth->login());
+		$this->assertTrue($auth->login(1));
+		$this->assertTrue($auth->logout());
 	}
 
 	/**
@@ -176,6 +173,6 @@ class AuthTest extends TestCase
 
 		/* compare */
 
-		$this->assertEquals($actual, $expect);
+		$this->assertEquals($expect, $actual);
 	}
 }

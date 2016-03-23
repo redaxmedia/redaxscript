@@ -125,7 +125,7 @@ function admin_contents_list()
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -467,7 +467,7 @@ function admin_groups_list()
 
 			/* collect control output */
 
-			$output .= admin_control('access', 'groups', $id, $alias, $status, GROUPS_NEW, GROUPS_EDIT, GROUPS_DELETE);
+			$output .= admin_control('access', 'groups', $id, $alias, $status, TABLE_NEW, TABLE_EDIT, TABLE_DELETE);
 
 			/* collect alias and filter output */
 
@@ -569,7 +569,7 @@ function admin_users_list()
 
 			/* collect control output */
 
-			$output .= admin_control('access', 'users', $id, $alias, $status, USERS_NEW, USERS_EDIT, USERS_DELETE);
+			$output .= admin_control('access', 'users', $id, $alias, $status, TABLE_NEW, TABLE_EDIT, TABLE_DELETE);
 
 			/* collect user and parent output */
 
@@ -680,7 +680,7 @@ function admin_modules_list()
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -717,7 +717,7 @@ function admin_modules_list()
 
 				/* collect control output */
 
-				$output .= admin_control('modules_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
+				$output .= admin_control('modules_installed', 'modules', $id, $alias, $status, TABLE_INSTALL, TABLE_EDIT, TABLE_UNINSTALL);
 
 				/* collect alias and version output */
 
@@ -747,7 +747,7 @@ function admin_modules_list()
 
 	/* modules not installed */
 
-	if (MODULES_INSTALL == 1)
+	if (Redaxscript\Registry::get('modulesInstall') == 1)
 	{
 		/* modules directory object */
 
@@ -778,7 +778,7 @@ function admin_modules_list()
 
 				/* collect control output */
 
-				$output .= admin_control('modules_not_installed', 'modules', $id, $alias, $status, MODULES_INSTALL, MODULES_EDIT, MODULES_UNINSTALL);
+				$output .= admin_control('modules_not_installed', 'modules', $id, $alias, $status, TABLE_INSTALL, TABLE_EDIT, TABLE_UNINSTALL);
 				$output .= '</td></tr>';
 			}
 			$output .= '</tbody>';

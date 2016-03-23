@@ -51,8 +51,8 @@ function admin_router()
 	{
 		if (TABLE_PARAMETER == 'modules')
 		{
-			$install = MODULES_INSTALL;
-			$uninstall = MODULES_UNINSTALL;
+			$install = Redaxscript\Registry::get('modulesInstall');
+			$uninstall = Redaxscript\Registry::get('modulesUninstall');
 		}
 		else if (TABLE_PARAMETER != 'settings')
 		{
@@ -74,7 +74,7 @@ function admin_router()
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
 		$access = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->access;
-		$check_access = $accessValidator->validate($access, MY_GROUPS);
+		$check_access = $accessValidator->validate($access, Redaxscript\Registry::get('myGroups'));
 	}
 
 	/* validate access */

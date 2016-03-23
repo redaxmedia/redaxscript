@@ -156,13 +156,13 @@ class Auth
 	public function init()
 	{
 		$authArray = $this->_request->getSession('auth');
-		if (array_key_exists('user', $authArray['user']))
+		if (array_key_exists('user', $authArray))
 		{
 			$this->_userArray = $authArray['user'];
 		}
-		if (array_key_exists('permission', $authArray['permission']))
+		if (array_key_exists('permission', $authArray))
 		{
-			$this->_userArray = $authArray['permission'];
+			$this->_permissionArray = $authArray['permission'];
 		}
 	}
 
@@ -203,11 +203,14 @@ class Auth
 
 		/* save user and permission */
 
-		return $this->_save();
+		$this->_save();
+		return $this->getStatus();
 	}
 
 	/**
 	 * logout the user
+	 *
+	 * @return boolean
 	 *
 	 * @since 3.0.0
 	 */
@@ -215,6 +218,7 @@ class Auth
 	public function logout()
 	{
 		$this->_request->setSession('auth', null);
+		return !$this->getStatus();
 	}
 
 	/**
@@ -331,6 +335,5 @@ class Auth
 				'permission' => $permissionArray
 			));
 		}
-		return $this->getStatus();
 	}
 }
