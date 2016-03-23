@@ -13,6 +13,7 @@ before_install:
 install:
 - composer self-update
 - composer install --ignore-platform-reqs
+- gem install mime-types -v 2.6.2
 - gem install mailcatcher
 - npm install
 - npm install --global grunt-cli
