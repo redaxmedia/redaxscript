@@ -74,21 +74,21 @@ a
 
 /* @section 2. links */
 
-.rs-link-default, .rs-link-result
+.rs-link-default
 {
 	color: #323e4c;
-	cursor: pointer;
-	border-bottom: 1px solid rgba(50, 62, 76, 0.3);
-	transition: border 0.1s;
+	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
+	transition: border-color 0.3s;
 }
 
-.rs-link-default:hover, .rs-link-result:hover
+.rs-link-default:hover
 {
-	border-bottom: 3px solid #699b3c;
+	border-color: #699b3c;
 }
 
 .rs-link-result
 {
+	color: #323e4c;
 	font-size: 1.5em;
 }
 
@@ -134,15 +134,16 @@ a
 
 /* @section 3.1 several titles */
 
-.rs-box-comment + .rs-title-comment
+.rs-title-comment
 {
-	margin-top: 4em;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 1em;
 }
 
-.rs-title-comment, .rs-title-extra
+.rs-title-comment a
 {
-	font-size: 1.25em;
-	font-weight: bold;
+	color: #323e4c;
 }
 
 /* @section 3.2 title accordion */
@@ -153,7 +154,21 @@ a
 	box-sizing: border-box;
 	color: #fff;
 	padding: 0.25em 0.5em;
+	position: relative;
 	width: 100%;
+}
+
+.rs-title-accordion:hover
+{
+	background: #3873b5;
+}
+
+.rs-title-accordion:after
+{
+	content: '+';
+	font: 1.25rem/2.25rem 'icon default';
+	position: absolute;
+	right: 1rem;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -166,8 +181,15 @@ a
 	background: linear-gradient(rgb(124, 184, 71), #699b3c);
 }
 
+.rs-title-accordion.rs-title-active:after
+{
+	content: '-';
+}
+
 .rs-title-extra
 {
+	font-size: 1.25em;
+	font-weight: bold;
 	margin-top: 1em;
 }
 
@@ -189,7 +211,8 @@ a
 
 /* @section 3.4 title sub */
 
-.rs-title-sub {
+.rs-title-sub
+{
 	font-size: 1.25em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
@@ -200,13 +223,13 @@ a
 
 .rs-title-website
 {
-	font-size: 3.5em;
+	font-size: 3.25em;
 	font-weight: normal;
-	text-transform: uppercase;
 	line-height: 1em;
 	opacity: 0.8;
+	position: relative;
+	text-transform: uppercase;
 	transition: opacity 0.2s;
-	white-space: nowrap;
 }
 
 .rs-title-website:hover
@@ -258,6 +281,7 @@ a
 }
 
 /* @section 9. query */
+
 
 /* @section 9.1 medium min */
 
@@ -528,8 +552,7 @@ a
 {
 	font-size: 0.875em;
 	font-style: italic;
-	margin-bottom: 2em;
-	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 .rs-box-line
@@ -544,7 +567,22 @@ a
 .rs-box-metadata
 {
 	font-size: 0.75em;
+	max-width: 70%;
+	overflow: hidden;
 	position: relative;
+	white-space: nowrap;
+}
+
+.rs-box-metadata:before
+{
+	background: linear-gradient(to left, #323e4c, transparent);
+	bottom: 0;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
+	z-index: 1;
 }
 
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
@@ -568,11 +606,6 @@ a
 
 /* @section 4. box accordion */
 
-.rs-set-accordion + .rs-set-accordion
-{
-	margin-top: 0.125em;
-}
-
 .rs-box-accordion-default
 {
 	background: rgba(50, 62, 76, 0.3);
@@ -592,33 +625,37 @@ a
 
 .rs-box-note
 {
-	border-radius: 0 0.125em 0.125em 0;
-	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
-	color: #fff;
-	padding: 0.25em 0.5em 0.25em 3em;
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 2.5em;
 	position: relative;
 }
 
 .rs-box-note:before
 {
-	color: #000;
-	font: 1.5em/1em 'icon default';
-	left: 0.25em;
-	opacity: 0.5;
+	font: 1.5em/1.25em 'icon default';
+	left: 0.5em;
 	position: absolute;
 	top: 0.25em;
 }
 
 .rs-box-note a
 {
-	color: #323e4c;
+	color: rgba(0, 0, 0, 0.5);
 	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-box-note a:hover
+{
+	color: #000;
 }
 
 /* @section 7. box comment */
 
 .rs-box-comment
 {
+	margin-bottom: 3em;
 	padding-left: 2.5em;
 	position: relative;
 }
@@ -650,6 +687,7 @@ a
 	{
 		font-size: 1em;
 		float: left;
+		max-width: 50%;
 	}
 
 	.rs-box-navigation
@@ -678,7 +716,7 @@ a
  *
  * 1. button default
  * 2. button search
- * 3. button large
+ * 3. button large and full
  * 4. space between elements
  * 5. disabled
  * 6. query
@@ -759,12 +797,17 @@ a
 	text-indent: 0;
 }
 
-/* @section 3. button large */
+/* @section 3. button large and full */
 
 .rs-button-large
 {
-	font-size: 1.75em;
+	font-size: 1.5em;
 	padding: 0.5em 1em;
+}
+
+.rs-button-full
+{
+	width: 100%;
 }
 
 /* @section 4. space between elements */
@@ -1065,6 +1108,11 @@ a
 
 /* @section 2. list breadcrumb */
 
+.rs-list-breadcrumb
+{
+	margin-bottom: 1em;
+}
+
 .rs-list-breadcrumb li
 {
 	display: inline-block;
@@ -1129,7 +1177,7 @@ ul.rs-list-default li:before {
 
 .rs-list-header li
 {
-	font: 1rem/3em arial, sans-serif;
+	font: 1em/2.25em arial, sans-serif;
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
@@ -1249,6 +1297,7 @@ ul.rs-list-default li:before {
 
 	.rs-list-header a, .rs-list-header span
 	{
+		font-size: 0.875em;
 		padding: 0 1em;
 		transition: background 0.2s;
 	}
@@ -1394,8 +1443,8 @@ ul.rs-list-default li:before {
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
-		right: 0.25rem;
-		top: -0.25rem;
+		right: 1.5rem;
+		top: 1rem;
 	}
 
 	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
@@ -1411,8 +1460,6 @@ ul.rs-list-default li:before {
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
-		right: 1.5rem;
-		top: 1rem;
 	}
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
@@ -1631,6 +1678,7 @@ ul.rs-list-default li:before {
  * 2. warning
  * 3. error
  * 4. info
+ * 5. dimensions
  *
  * @since 3.0.0
  *
@@ -1640,11 +1688,15 @@ ul.rs-list-default li:before {
 
 /* @section 1. success */
 
+.rs-note-success
+{
+	color: rgb(44, 150, 44);
+}
+
 .rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
 {
 	background: #5bb75b;
 	border-color: rgb(44, 150, 44);
-	color: #fff;
 }
 
 .rs-note-success.rs-field-note option
@@ -1654,16 +1706,20 @@ ul.rs-list-default li:before {
 
 .rs-note-success.rs-box-note:before
 {
-	content: '\2713';
+	content: '\2714';
 }
 
 /* @section 2. warning */
+
+.rs-note-warning
+{
+	color: rgb(117, 68, 0);
+}
 
 .rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
 {
 	background: #f3940e;
 	border-color: rgb(117, 68, 0);
-	color: #fff;
 }
 
 .rs-note-warning.rs-field-note option
@@ -1674,15 +1730,20 @@ ul.rs-list-default li:before {
 .rs-note-warning.rs-box-note:before
 {
 	content: '\21';
+	left: 0.875em;
 }
 
 /* @section 3. error */
+
+.rs-note-error
+{
+	color: rgb(148, 34, 30);
+}
 
 .rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
 {
 	background: #da4f49;
 	border-color: rgb(148, 34, 30);
-	color: #fff;
 }
 
 .rs-note-error.rs-field-note option
@@ -1692,16 +1753,20 @@ ul.rs-list-default li:before {
 
 .rs-note-error.rs-box-note:before
 {
-	content: '\78';
+	content: '\d7';
 }
 
 /* @section 4. info */
+
+.rs-note-info
+{
+	color: rgb(30, 121, 148);
+}
 
 .rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
 {
 	background: #49afcd;
 	border-color: rgb(30, 121, 148);
-	color: #fff;
 }
 
 .rs-note-info.rs-field-note option
@@ -1712,4 +1777,12 @@ ul.rs-list-default li:before {
 .rs-note-info.rs-box-note:before
 {
 	content: '\69';
+	left: 0.875em;
+}
+
+/* @section 5. dimensions */
+
+.rs-title-note + .rs-box-note
+{
+	margin-top: 1em;
 }

@@ -34,12 +34,10 @@
 	<!-- inherit from squiz -->
 
 	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
-	<rule ref="Squiz.CSS.ColonSpacing" />
 	<rule ref="Squiz.CSS.DisallowMultipleStyleDefinitions" />
 	<rule ref="Squiz.CSS.EmptyClassDefinition" />
 	<rule ref="Squiz.CSS.EmptyStyleDefinition" />
 	<rule ref="Squiz.CSS.MissingColon" />
-	<rule ref="Squiz.CSS.SemicolonSpacing" />
 	<rule ref="Squiz.PHP.Eval" />
 	<rule ref="Squiz.PHP.NonExecutableCode" />
 	<rule ref="Squiz.Scope.MemberVarScope" />

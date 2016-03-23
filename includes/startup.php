@@ -64,13 +64,12 @@ function startup()
 	/* define session */
 
 	define('LOGGED_IN', $_SESSION[ROOT . '/logged_in']);
-	define('ATTACK_BLOCKED', $_SESSION[ROOT . '/attack_blocked']);
 
 	/* setup charset */
 
 	if (function_exists('ini_set') && Redaxscript\Registry::get('dbStatus') === 2)
 	{
-		ini_set('default_charset', Redaxscript\Db::getSettings('charset'));
+		ini_set('default_charset', Redaxscript\Db::getSetting('charset'));
 	}
 
 	/* define parameter */
@@ -130,10 +129,10 @@ function startup()
 		{
 			/* check for homepage */
 
-			if (Redaxscript\Db::getSettings('homepage') > 0)
+			if (Redaxscript\Db::getSetting('homepage') > 0)
 			{
 				$table = 'articles';
-				$id = Redaxscript\Db::getSettings('homepage');
+				$id = Redaxscript\Db::getSetting('homepage');
 			}
 
 			/* else fallback */
@@ -145,11 +144,11 @@ function startup()
 
 				/* check order */
 
-				if (Redaxscript\Db::getSettings('order') == 'asc')
+				if (Redaxscript\Db::getSetting('order') == 'asc')
 				{
 					$rank = Redaxscript\Db::forTablePrefix($table)->min('rank');
 				}
-				else if (Redaxscript\Db::getSettings('order') == 'desc')
+				else if (Redaxscript\Db::getSetting('order') == 'desc')
 				{
 					$rank = Redaxscript\Db::forTablePrefix($table)->max('rank');
 				}
@@ -280,58 +279,63 @@ function startup()
 		define('MY_DESKTOP', $desktop->getOutput());
 	}
 
-	/* logged in */
+	/* auth */
 
-	if (LOGGED_IN == TOKEN)
+	Redaxscript\Request::refreshSession();
+	$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+	$auth->init();
+	if ($auth->getStatus())
 	{
-		define('MY_ID', $_SESSION[ROOT . '/my_id']);
-		define('MY_NAME', $_SESSION[ROOT . '/my_name']);
-		define('MY_USER', $_SESSION[ROOT . '/my_user']);
-		define('MY_EMAIL', $_SESSION[ROOT . '/my_email']);
-		define('MY_GROUPS', $_SESSION[ROOT . '/my_groups']);
-
-		/* define access */
-
-		$access_array = array(
-			'categories',
-			'articles',
-			'extras',
-			'comments',
-			'groups',
-			'users'
-		);
-		foreach ($access_array as $value)
+		Redaxscript\Registry::set('myId', $auth->getUser('id'));
+		Redaxscript\Registry::set('myName', $auth->getUser('name'));
+		Redaxscript\Registry::set('myUser', $auth->getUser('user'));
+		Redaxscript\Registry::set('myEmail', $auth->getUser('email'));
+		Redaxscript\Registry::set('myLanguage', $auth->getUser('language'));
+		Redaxscript\Registry::set('myGroups', $auth->getUser('groups'));
+		Redaxscript\Registry::set('categoriesNew', $auth->getPermissionNew('categories'));
+		Redaxscript\Registry::set('categoriesEdit', $auth->getPermissionEdit('categories'));
+		Redaxscript\Registry::set('categoriesDelete', $auth->getPermissionDelete('categories'));
+		Redaxscript\Registry::set('articlesNew', $auth->getPermissionNew('articles'));
+		Redaxscript\Registry::set('articlesEdit', $auth->getPermissionEdit('articles'));
+		Redaxscript\Registry::set('articlesDelete', $auth->getPermissionDelete('articles'));
+		Redaxscript\Registry::set('extrasNew', $auth->getPermissionNew('extras'));
+		Redaxscript\Registry::set('extrasEdit', $auth->getPermissionEdit('extras'));
+		Redaxscript\Registry::set('extrasDelete', $auth->getPermissionDelete('extras'));
+		Redaxscript\Registry::set('commentsNew', $auth->getPermissionNew('comments'));
+		Redaxscript\Registry::set('commentsEdit', $auth->getPermissionEdit('comments'));
+		Redaxscript\Registry::set('commentsDelete', $auth->getPermissionDelete('comments'));
+		Redaxscript\Registry::set('groupsNew', $auth->getPermissionNew('groups'));
+		Redaxscript\Registry::set('groupsEdit', $auth->getPermissionEdit('groups'));
+		Redaxscript\Registry::set('groupsDelete', $auth->getPermissionDelete('groups'));
+		Redaxscript\Registry::set('usersNew', $auth->getPermissionNew('users'));
+		Redaxscript\Registry::set('usersEdit', $auth->getPermissionEdit('users'));
+		Redaxscript\Registry::set('usersDelete', $auth->getPermissionDelete('users'));
+		if (TABLE_PARAMETER == 'users' && ID_PARAMETER == Redaxscript\Registry::get('myId'))
 		{
-			define(strtoupper($value) . '_NEW', $_SESSION[ROOT . '/' . $value . '_new']);
-			define(strtoupper($value) . '_EDIT', $_SESSION[ROOT . '/' . $value . '_edit']);
-			define(strtoupper($value) . '_DELETE', $_SESSION[ROOT . '/' . $value . '_delete']);
-			if (TABLE_PARAMETER == 'users' && ID_PARAMETER == MY_ID && $value == 'users')
-			{
-				define('USERS_EXCEPTION', 1);
-			}
-			else if ($value == 'users')
-			{
-				define('USERS_EXCEPTION', 0);
-			}
+			Redaxscript\Registry::set('usersException', 1);
 		}
-		define('MODULES_INSTALL', $_SESSION[ROOT . '/modules_install']);
-		define('MODULES_EDIT', $_SESSION[ROOT . '/modules_edit']);
-		define('MODULES_UNINSTALL', $_SESSION[ROOT . '/modules_uninstall']);
-		define('SETTINGS_EDIT', $_SESSION[ROOT . '/settings_edit']);
-		define('FILTER', $_SESSION[ROOT . '/filter']);
+		else
+		{
+			Redaxscript\Registry::set('usersException', 0);
+		}
+		Redaxscript\Registry::set('modulesInstall', $auth->getPermissionInstall('modules'));
+		Redaxscript\Registry::set('modulesEdit', $auth->getPermissionEdit('modules'));
+		Redaxscript\Registry::set('modulesUninstall', $auth->getPermissionUninstall('modules'));
+		Redaxscript\Registry::set('settingsEdit', $auth->getPermissionEdit('settings'));
+		Redaxscript\Registry::set('filter', $auth->getFilter());
 	}
 	else
 	{
-		define('FILTER', 1);
+		Redaxscript\Registry::set('filter', true);
 	}
 
 	/* define table access */
 
-	define('TABLE_NEW', constant(strtoupper(TABLE_PARAMETER) . '_NEW'));
-	define('TABLE_INSTALL', constant(strtoupper(TABLE_PARAMETER) . '_INSTALL'));
-	define('TABLE_EDIT', constant(strtoupper(TABLE_PARAMETER) . '_EDIT'));
-	define('TABLE_DELETE', constant(strtoupper(TABLE_PARAMETER) . '_DELETE'));
-	define('TABLE_UNINSTALL', constant(strtoupper(TABLE_PARAMETER) . '_UNINSTALL'));
+	define('TABLE_NEW', Redaxscript\Registry::get(TABLE_PARAMETER . 'New'));
+	define('TABLE_INSTALL', Redaxscript\Registry::get(TABLE_PARAMETER . 'Install'));
+	define('TABLE_EDIT', Redaxscript\Registry::get(TABLE_PARAMETER . 'Edit'));
+	define('TABLE_DELETE', Redaxscript\Registry::get(TABLE_PARAMETER . 'Delete'));
+	define('TABLE_UNINSTALL', Redaxscript\Registry::get(TABLE_PARAMETER . 'Uninstall'));
 
 	/* define time */
 

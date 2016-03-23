@@ -30,8 +30,8 @@
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
-		right: 0.25rem;
-		top: -0.25rem;
+		right: 1.5rem;
+		top: 1rem;
 	}
 
 	.rs-fn-toggle-navigation:after,
@@ -48,8 +48,6 @@
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
-		right: 1.5rem;
-		top: 1rem;
 	}
 
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after

@@ -72,14 +72,14 @@ function router()
 			switch (SECOND_PARAMETER)
 			{
 			case 'recover':
-				if (Redaxscript\Db::getSettings('recovery') == 1)
+				if (Redaxscript\Db::getSetting('recovery') == 1)
 				{
 					$recoverForm = new Redaxscript\View\RecoverForm();
 					echo $recoverForm->render();
 					return;
 				}
 			case 'reset':
-				if (Redaxscript\Db::getSettings('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
+				if (Redaxscript\Db::getSetting('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
 				{
 					$resetForm = new Redaxscript\View\ResetForm();
 					echo $resetForm->render();
@@ -107,7 +107,7 @@ function router()
 			echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'register':
-			if (Redaxscript\Db::getSettings('registration'))
+			if (Redaxscript\Db::getSetting('registration'))
 			{
 				$registerForm = new Redaxscript\View\RegisterForm();
 				echo $registerForm->render();

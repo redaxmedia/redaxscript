@@ -75,7 +75,7 @@ class SitemapXml extends Module
 
 		/* collect output */
 
-		$output = '<?xml version="1.0" encoding="' . Db::getSettings('charset') . '"?>' . PHP_EOL;
+		$output = '<?xml version="1.0" encoding="' . Db::getSetting('charset') . '"?>' . PHP_EOL;
 		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
 		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>' . PHP_EOL;
 

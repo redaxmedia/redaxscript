@@ -132,46 +132,12 @@ class Db extends ORM
 		{
 			if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 			{
-				$output = 1;
-
-				/* has tables */
-
-				if (self::countTablePrefix() > 7)
-				{
-					$output = 2;
-				}
+				$output = self::countTablePrefix() > 7 ? 2 : 1;
 			}
 		}
 		catch (PDOException $exception)
 		{
 			$output = 0;
-		}
-		return $output;
-	}
-
-	/**
-	 * get item from settings
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string
-	 */
-
-	public static function getSettings($key = null)
-	{
-		$output = false;
-		$settings = self::forTablePrefix('settings')->findMany();
-
-		/* process settings */
-
-		foreach ($settings as $value)
-		{
-			if ($value->name === $key)
-			{
-				$output = $value->value;
-			}
 		}
 		return $output;
 	}
@@ -288,7 +254,36 @@ class Db extends ORM
 	}
 
 	/**
-	 * order according to settings
+	 * get the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public function getSetting($key = null)
+	{
+		return self::forTablePrefix('settings')->where('name', $key)->findOne()->value;
+	}
+
+	/**
+	 * set the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 * @param string $value value of the item
+	 */
+
+	public function setSetting($key = null, $value = null)
+	{
+		self::forTablePrefix('settings')->where('name', $key)->findOne()->set('value', $value)->save();
+	}
+
+	/**
+	 * order according to global setting
 	 *
 	 * @since 2.2.0
 	 *
@@ -299,11 +294,11 @@ class Db extends ORM
 
 	public function orderGlobal($column = null)
 	{
-		return $this->_addOrderBy($column, self::getSettings('order'));
+		return $this->_addOrderBy($column, $this->getSetting('order'));
 	}
 
 	/**
-	 * limit according to settings
+	 * limit according to global setting
 	 *
 	 * @since 2.2.0
 	 *
@@ -312,7 +307,7 @@ class Db extends ORM
 
 	public function limitGlobal()
 	{
-		$this->_limit = self::getSettings('limit');
+		$this->_limit = $this->getSetting('limit');
 		return $this;
 	}
 }

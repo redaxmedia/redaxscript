@@ -73,7 +73,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getLanguageArray(), array(
 				'id' => 'language',
 				'name' => 'language',
-				'value' => Db::getSettings('language')
+				'value' => Db::getSetting('language')
 			))
 			->append('</li><li>')
 			->label(Language::get('template'), array(
@@ -82,7 +82,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getTemplateArray(), array(
 				'id' => 'template',
 				'name' => 'template',
-				'value' => Db::getSettings('template')
+				'value' => Db::getSetting('template')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -97,7 +97,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'title',
 				'name' => 'title',
-				'value' => Db::getSettings('title')
+				'value' => Db::getSetting('title')
 			))
 			->append('</li><li>')
 			->label(Language::get('author'), array(
@@ -106,7 +106,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'author',
 				'name' => 'author',
-				'value' => Db::getSettings('author')
+				'value' => Db::getSetting('author')
 			))
 			->append('</li><li>')
 			->label(Language::get('copyright'), array(
@@ -115,7 +115,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'copyright',
 				'name' => 'copyright',
-				'value' => Db::getSettings('copyright')
+				'value' => Db::getSetting('copyright')
 			))
 			->append('</li><li>')
 			->label(Language::get('description'), array(
@@ -125,7 +125,7 @@ class SettingForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'description',
 				'name' => 'description',
-				'value' => Db::getSettings('description')
+				'value' => Db::getSetting('description')
 			))
 			->append('</li><li>')
 			->label(Language::get('keywords'), array(
@@ -135,7 +135,7 @@ class SettingForm implements ViewInterface
 				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
-				'value' => Db::getSettings('keywords')
+				'value' => Db::getSetting('keywords')
 			))
 			->append('</li><li>')
 			->label(Language::get('robots'), array(
@@ -144,7 +144,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getRobotArray(), array(
 				'id' => 'robots',
 				'name' => 'robots',
-				'value' => Db::getSettings('robots')
+				'value' => Db::getSetting('robots')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -159,7 +159,7 @@ class SettingForm implements ViewInterface
 			->email(array(
 				'id' => 'email',
 				'name' => 'email',
-				'value' => Db::getSettings('email')
+				'value' => Db::getSetting('email')
 			))
 			->append('</li><li>')
 			->label(Language::get('subject'), array(
@@ -168,7 +168,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'subject',
 				'name' => 'subject',
-				'value' => Db::getSettings('subject')
+				'value' => Db::getSetting('subject')
 			))
 			->append('</li><li>')
 			->label(Language::get('notification'), array(
@@ -177,7 +177,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'notification',
 				'name' => 'notification',
-				'value' => Db::getSettings('notification')
+				'value' => Db::getSetting('notification')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -192,7 +192,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'charset',
 				'name' => 'charset',
-				'value' => Db::getSettings('charset')
+				'value' => Db::getSetting('charset')
 			))
 			->append('</li><li>')
 			->label(Language::get('divider'), array(
@@ -201,7 +201,7 @@ class SettingForm implements ViewInterface
 			->text(array(
 				'id' => 'divider',
 				'name' => 'divider',
-				'value' => Db::getSettings('divider')
+				'value' => Db::getSetting('divider')
 			))
 			->append('</li><li>')
 			->label(Language::get('time'), array(
@@ -210,7 +210,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getTimeArray(), array(
 				'id' => 'time',
 				'name' => 'time',
-				'value' => Db::getSettings('time')
+				'value' => Db::getSetting('time')
 			))
 			->append('</li><li>')
 			->label(Language::get('date'), array(
@@ -219,7 +219,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getDateArray(), array(
 				'id' => 'date',
 				'name' => 'date',
-				'value' => Db::getSettings('date')
+				'value' => Db::getSetting('date')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -234,7 +234,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getContentArray('articles'), array(
 				'id' => 'homepage',
 				'name' => 'homepage',
-				'value' => Db::getSettings('homepage')
+				'value' => Db::getSetting('homepage')
 			))
 			->append('</li><li>')
 			->label(Language::get('limit'), array(
@@ -243,7 +243,7 @@ class SettingForm implements ViewInterface
 			->number(array(
 				'id' => 'limit',
 				'name' => 'limit',
-				'value' => Db::getSettings('limit')
+				'value' => Db::getSetting('limit')
 			))
 			->append('</li><li>')
 			->label(Language::get('order'), array(
@@ -252,7 +252,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getOrderArray(), array(
 				'id' => 'order',
 				'name' => 'order',
-				'value' => Db::getSettings('order')
+				'value' => Db::getSetting('order')
 			))
 			->append('</li><li>')
 			->label(Language::get('pagination'), array(
@@ -261,7 +261,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'pagination',
 				'name' => 'pagination',
-				'value' => Db::getSettings('pagination')
+				'value' => Db::getSetting('pagination')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -276,7 +276,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'registration',
 				'name' => 'registration',
-				'value' => Db::getSettings('registration')
+				'value' => Db::getSetting('registration')
 			))
 			->append('</li><li>')
 			->label(Language::get('verification'), array(
@@ -285,7 +285,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'verification',
 				'name' => 'verification',
-				'value' => Db::getSettings('verification')
+				'value' => Db::getSetting('verification')
 			))
 			->append('</li><li>')
 			->label(Language::get('recovery'), array(
@@ -294,7 +294,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'recovery',
 				'name' => 'recovery',
-				'value' => Db::getSettings('recovery')
+				'value' => Db::getSetting('recovery')
 			))
 			->append('</li></ul></fieldset>')
 
@@ -309,7 +309,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getToggleArray(), array(
 				'id' => 'moderation',
 				'name' => 'moderation',
-				'value' => Db::getSettings('moderation')
+				'value' => Db::getSetting('moderation')
 			))
 			->append('</li><li>')
 			->label(Language::get('captcha'), array(
@@ -318,7 +318,7 @@ class SettingForm implements ViewInterface
 			->select(Helper\Option::getCaptchaArray(), array(
 				'id' => 'captcha',
 				'name' => 'captcha',
-				'value' => Db::getSettings('captcha')
+				'value' => Db::getSetting('captcha')
 			))
 			->append('</li></ul></fieldset>')
 			->token()

@@ -50,23 +50,21 @@ a
 
 /* @section 2. links */
 
-.rs-link-default,
+.rs-link-default
+{
+	color: var(--rs-color-tertiary);
+	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
+	transition: border-color 0.3s;
+}
+
+.rs-link-default:hover
+{
+	border-color: var(--rs-color-secondary);
+}
+
 .rs-link-result
 {
 	color: var(--rs-color-tertiary);
-	cursor: pointer;
-	border-bottom: 1px solid color(var(--rs-color-tertiary) a(30%));
-	transition: border 0.1s;
-}
-
-.rs-link-default:hover,
-.rs-link-result:hover
-{
-	border-bottom: 3px solid var(--rs-color-secondary);
-}
-
-.rs-link-result
-{
 	font-size: 1.5em;
 }
 
@@ -76,7 +74,7 @@ a
 {
 	background: var(--rs-gradient-secondary);
 	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-shadow: var(--rs-style-shadow-inner), var(--rs-style-shadow-outer);
 	box-sizing: border-box;
 	color: var(--rs-color-light);
 	cursor: pointer;
@@ -101,7 +99,7 @@ a
 
 .rs-link-read-more:active
 {
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	box-shadow: var(--rs-style-shadow-inner);
 	transform: translateY(2px);
 }
 
@@ -109,16 +107,16 @@ a
 
 /* @section 3.1 several titles */
 
-.rs-box-comment + .rs-title-comment
+.rs-title-comment
 {
-	margin-top: 4em;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 1em;
 }
 
-.rs-title-comment,
-.rs-title-extra
+.rs-title-comment a
 {
-	font-size: 1.25em;
-	font-weight: bold;
+	color: var(--rs-color-tertiary);
 }
 
 /* @section 3.2 title accordion */
@@ -129,7 +127,21 @@ a
 	box-sizing: border-box;
 	color: var(--rs-color-light);
 	padding: 0.25em 0.5em;
+	position: relative;
 	width: 100%;
+}
+
+.rs-title-accordion:hover
+{
+	background: var(--rs-color-primary);
+}
+
+.rs-title-accordion:after
+{
+	content: '+';
+	font: 1.25rem/2.25rem 'icon default';
+	position: absolute;
+	right: 1rem;
 }
 
 .rs-title-accordion:not(.rs-title-active)
@@ -142,8 +154,15 @@ a
 	background: var(--rs-gradient-secondary);
 }
 
+.rs-title-accordion.rs-title-active:after
+{
+	content: '-';
+}
+
 .rs-title-extra
 {
+	font-size: 1.25em;
+	font-weight: bold;
 	margin-top: 1em;
 }
 
@@ -165,7 +184,8 @@ a
 
 /* @section 3.4 title sub */
 
-.rs-title-sub {
+.rs-title-sub
+{
 	font-size: 1.25em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
@@ -176,13 +196,13 @@ a
 
 .rs-title-website
 {
-	font-size: 3.5em;
+	font-size: 3.25em;
 	font-weight: normal;
-	text-transform: uppercase;
 	line-height: 1em;
 	opacity: 0.8;
+	position: relative;
+	text-transform: uppercase;
 	transition: opacity 0.2s;
-	white-space: nowrap;
 }
 
 .rs-title-website:hover
@@ -194,7 +214,7 @@ a
 
 .rs-description-website
 {
-	color: rgba(255, 255, 255, 0.4);
+	color: color(var(--rs-color-light) a(40%));
 	display: none;
 	font-weight: 700;
 	margin-left: 0.125em;
@@ -236,6 +256,7 @@ a
 }
 
 /* @section 9. query */
+
 
 /* @section 9.1 medium min */
 

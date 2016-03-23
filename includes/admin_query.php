@@ -47,7 +47,7 @@ function admin_process()
 				$r['headline'] = $specialFilter->sanitize($_POST['headline']);
 			}
 			$r['sibling'] = $specialFilter->sanitize($_POST['sibling']);
-			$author = $r['author'] = MY_USER;
+			$author = $r['author'] = Redaxscript\Registry::get('myUser');
 
 		/* comments */
 
@@ -85,7 +85,7 @@ function admin_process()
 		case 'modules';
 			$alias = $aliasFilter->sanitize($_POST['alias']);
 			$status = $r['status'] = $specialFilter->sanitize($_POST['status']);
-			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && GROUPS_EDIT == 1)
+			if (TABLE_PARAMETER != 'groups' && TABLE_PARAMETER != 'users' && Redaxscript\Registry::get('groupsEdit'))
 			{
 				$access = array_map(array($specialFilter, 'sanitize'), $_POST['access']);
 				$access_string = implode(', ', $access);
@@ -474,15 +474,17 @@ function admin_process()
 					))
 					->save();
 			}
-			if (USERS_EXCEPTION == 1)
+			if (Redaxscript\Registry::get('usersException'))
 			{
-				$_SESSION[ROOT . '/my_name'] = $name;
-				$_SESSION[ROOT . '/my_email'] = $email;
+				$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+				$auth->setUser('name', $name);
+				$auth->setUser('email', $email);
 				if (file_exists('languages/' . $language . '.php'))
 				{
-					$_SESSION[ROOT . '/language'] = $language;
+					$auth->setUser('language', $language);
 					$_SESSION[ROOT . '/language_selected'] = 1;
 				}
+				$auth->save();
 			}
 
 			/* show success */
@@ -790,7 +792,7 @@ function admin_delete()
 
 		/* reset homepage */
 
-		if (ID_PARAMETER == Redaxscript\Db::getSettings('homepage'))
+		if (ID_PARAMETER == Redaxscript\Db::getSetting('homepage'))
 		{
 			Redaxscript\Db::forTablePrefix('settings')
 				->where('name', 'homepage')
@@ -802,7 +804,7 @@ function admin_delete()
 
 	/* handle exception */
 
-	if (USERS_EXCEPTION == 1)
+	if (Redaxscript\Registry::get('usersException'))
 	{
 		logout();
 	}
@@ -900,12 +902,12 @@ function admin_update()
 
 function admin_last_update()
 {
-	if (MY_ID)
+	if (Redaxscript\Registry::get('myId'))
 	{
 		Redaxscript\Db::forTablePrefix('users')
-			->where('id', MY_ID)
+			->where('id', Redaxscript\Registry::get('myId'))
 			->findOne()
-			->set('last', NOW)
+			->set('last', Redaxscript\Registry::get('now'))
 			->save();
 	}
 }

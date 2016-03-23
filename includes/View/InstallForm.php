@@ -46,7 +46,7 @@ class InstallForm implements ViewInterface
 			),
 			'button' => array(
 				'submit' => array(
-					'class' => 'rs-js-submit rs-button-default rs-button-large',
+					'class' => 'rs-js-submit rs-button-default rs-button-large rs-button-full',
 					'name' => get_class()
 				)
 			)

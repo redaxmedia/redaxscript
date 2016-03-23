@@ -84,14 +84,14 @@ class FeedGenerator extends Module
 			{
 				$route .= Registry::get('languageRoute') . Registry::get('language');
 			}
-			$title = Db::getSettings('title');
-			$description = Db::getSettings('description');
-			$author = Db::getSettings('author');
-			$copyright = Db::getSettings('copyright');
+			$title = Db::getSetting('title');
+			$description = Db::getSetting('description');
+			$author = Db::getSetting('author');
+			$copyright = Db::getSetting('copyright');
 
 			/* collect output */
 
-			$output = '<?xml version="1.0" encoding="' . Db::getSettings('charset') . '"?>';
+			$output = '<?xml version="1.0" encoding="' . Db::getSetting('charset') . '"?>';
 			$output .= '<feed xmlns="http://www.w3.org/2005/Atom">';
 			$output .= '<id>' . $route . '</id>';
 			$output .= '<link type="application/atom+xml" href="' . $route . '" rel="self" />';

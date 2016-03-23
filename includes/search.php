@@ -68,7 +68,7 @@ function search_post()
 
 				/* access granted */
 
-				if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					if ($r)
 					{
@@ -84,7 +84,7 @@ function search_post()
 					{
 						$description = $title;
 					}
-					$date = date(Redaxscript\Db::getSettings('date'), strtotime($date));
+					$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 
 					/* build route */
 

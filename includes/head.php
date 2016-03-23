@@ -37,7 +37,7 @@ function head($type = '')
 
 				/* access granted */
 
-				if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					if ($r)
 					{
@@ -69,7 +69,7 @@ function head($type = '')
 	}
 	else if ($title == '')
 	{
-		$title = Redaxscript\Db::getSettings('title');
+		$title = Redaxscript\Db::getSetting('title');
 	}
 
 	/* prepare description */
@@ -80,7 +80,7 @@ function head($type = '')
 	}
 	else if ($description == '')
 	{
-		$description = Redaxscript\Db::getSettings('description');
+		$description = Redaxscript\Db::getSetting('description');
 	}
 
 	/* prepare keywords */
@@ -91,7 +91,7 @@ function head($type = '')
 	}
 	else if ($keywords == '')
 	{
-		$keywords = Redaxscript\Db::getSettings('keywords');
+		$keywords = Redaxscript\Db::getSetting('keywords');
 	}
 
 	/* prepare robots */
@@ -106,7 +106,7 @@ function head($type = '')
 	}
 	else
 	{
-		$robots = Redaxscript\Db::getSettings('robots');
+		$robots = Redaxscript\Db::getSetting('robots');
 	}
 
 	/* collect meta output */
@@ -117,7 +117,7 @@ function head($type = '')
 	}
 	if ($type == '' || $type == 'meta')
 	{
-		$output .= '<meta charset="' . Redaxscript\Db::getSettings('charset') . '" />' . PHP_EOL;
+		$output .= '<meta charset="' . Redaxscript\Db::getSetting('charset') . '" />' . PHP_EOL;
 	}
 
 	/* collect title */
@@ -126,7 +126,7 @@ function head($type = '')
 	{
 		if ($title && $description)
 		{
-			$divider = Redaxscript\Db::getSettings('divider');
+			$divider = Redaxscript\Db::getSetting('divider');
 		}
 		$output .= '<title>' . $title . $divider . $description . '</title>' . PHP_EOL;
 	}
@@ -144,9 +144,9 @@ function head($type = '')
 
 		/* collect author */
 
-		if (Redaxscript\Db::getSettings('author'))
+		if (Redaxscript\Db::getSetting('author'))
 		{
-			$output .= '<meta name="author" content="' . Redaxscript\Db::getSettings('author') . '" />' . PHP_EOL;
+			$output .= '<meta name="author" content="' . Redaxscript\Db::getSetting('author') . '" />' . PHP_EOL;
 		}
 
 		/* collect metadata */

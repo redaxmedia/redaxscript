@@ -71,7 +71,7 @@ function login_post()
 	{
 		$error = Redaxscript\Language::get('password_incorrect');
 	}
-	else if (Redaxscript\Db::getSettings('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	else if (Redaxscript\Db::getSetting('captcha') > 0 && $captchaValidator->validate($task, $solution) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
@@ -85,99 +85,13 @@ function login_post()
 	}
 	else
 	{
-		/* setup login session */
-
+		$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+		$auth->login($my_id);
 		$_SESSION[ROOT . '/logged_in'] = TOKEN;
-		$_SESSION[ROOT . '/my_id'] = $my_id;
-		$_SESSION[ROOT . '/my_name'] = $my_name;
-		$_SESSION[ROOT . '/my_user'] = $my_user;
-		$_SESSION[ROOT . '/my_email'] = $my_email;
 		if (file_exists('languages/' . $my_language . '.php'))
 		{
 			$_SESSION[ROOT . '/language'] = $my_language;
 			$_SESSION[ROOT . '/language_selected'] = 1;
-		}
-		$_SESSION[ROOT . '/my_groups'] = $my_groups;
-
-		/* query groups */
-
-		$groups_result = Redaxscript\Db::forTablePrefix('groups')->whereIdIn(explode(',', $my_groups))->where('status', 1)->findArray();
-		if ($groups_result)
-		{
-			$num_rows = count($groups_result);
-			foreach ($groups_result as $r)
-			{
-				if ($r)
-				{
-					foreach ($r as $key => $value)
-					{
-						$key = 'groups_' . $key;
-						$$key .= stripslashes($value);
-						if (++$counter < $num_rows)
-						{
-							$$key .= ', ';
-						}
-					}
-				}
-			}
-		}
-
-		/* setup access session */
-
-		$access_array = array(
-			'categories',
-			'articles',
-			'extras',
-			'comments',
-			'groups',
-			'users'
-		);
-		foreach ($access_array as $value)
-		{
-			$groups_value = 'groups_' . $value;
-			$position_new = strpos($$groups_value, '1');
-			$position_edit = strpos($$groups_value, '2');
-			$position_delete = strpos($$groups_value, '3');
-			$_SESSION[ROOT . '/' . $value . '_delete'] = $_SESSION[ROOT . '/' . $value . '_edit'] = $_SESSION[ROOT . '/' . $value . '_new'] = 0;
-			if ($position_new > -1)
-			{
-				$_SESSION[ROOT . '/' . $value . '_new'] = 1;
-			}
-			if ($position_edit > -1)
-			{
-				$_SESSION[ROOT . '/' . $value . '_edit'] = 1;
-			}
-			if ($position_delete > -1)
-			{
-				$_SESSION[ROOT . '/' . $value . '_delete'] = 1;
-			}
-		}
-		$position_modules_install = strpos($groups_modules, '1');
-		$position_modules_edit = strpos($groups_modules, '2');
-		$position_modules_uninstall = strpos($groups_modules, '3');
-		$position_settings_edit = strpos($groups_settings, '1');
-		$position_filter = strpos($groups_filter, '0');
-		$_SESSION[ROOT . '/filter'] = 1;
-		$_SESSION[ROOT . '/settings_edit'] = $_SESSION[ROOT . '/modules_uninstall'] = $_SESSION[ROOT . '/modules_edit'] = $_SESSION[ROOT . '/modules_install'] = 0;
-		if ($position_modules_install > -1)
-		{
-			$_SESSION[ROOT . '/modules_install'] = 1;
-		}
-		if ($position_modules_edit > -1)
-		{
-			$_SESSION[ROOT . '/modules_edit'] = 1;
-		}
-		if ($position_modules_uninstall > -1)
-		{
-			$_SESSION[ROOT . '/modules_uninstall'] = 1;
-		}
-		if ($position_settings_edit > -1)
-		{
-			$_SESSION[ROOT . '/settings_edit'] = 1;
-		}
-		if ($position_filter > -1)
-		{
-			$_SESSION[ROOT . '/filter'] = 0;
 		}
 		$_SESSION[ROOT . '/update'] = NOW;
 	}
@@ -211,7 +125,9 @@ function login_post()
 
 function logout()
 {
-	session_destroy();
+	$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+	$auth->logout();
+	$_SESSION[ROOT . '/logged_in'] = null;
 
 	/* show success */
 

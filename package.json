@@ -38,7 +38,7 @@
 		"postcss-custom-properties": "5.0.0",
 		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.1",
-		"postcss-nested": "1.0.0"
+		"postcss-nesting": "2.3.1"
 	},
 	"scripts":
 	{

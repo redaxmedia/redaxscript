@@ -103,8 +103,7 @@ abstract class DetectorAbstract
 
 				if ($key === 'query')
 				{
-					$root = $this->_registry->get('root');
-					$this->_request->setSession($root . '/' . $type, $value);
+					$this->_request->setSession($type, $value);
 				}
 				break;
 			}

@@ -7,8 +7,9 @@ $titlePartialElement->init('h3', array(
 ));
 $linkElement = new Html\Element();
 $linkElement
-	->init('a')
-	->addClass('rs-link-default')
+	->init('a', array(
+		'href' => Language::get('homepage', '_package')
+	))
 	->text(Language::get('preview', '_preview'));
 $paragraphElement = new Html\Element();
 $paragraphElement
@@ -31,11 +32,6 @@ $titleArray = array(
 $paragraphContent = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua';
 ?>
 
-<!-- placeholder text with link -->
-
-<?php echo $titlePartialElement->text(Language::get('content')); ?>
-<?php echo $paragraphElement->copy()->html($paragraphContent . ' ' . $linkElement . ' ' . $paragraphContent); ?>
-
 <!-- several links -->
 
 <?php foreach ($linkArray as $value): ?>
@@ -44,6 +40,11 @@ $paragraphContent = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, se
 	<?php echo $linkElement->copy()->addClass($value); ?>
 
 <?php endforeach; ?>
+
+<!-- placeholder text with link -->
+
+<?php echo $titlePartialElement->text(Language::get('content')); ?>
+<?php echo $paragraphElement->copy()->html($paragraphContent . ' ' . $linkElement->addClass('rs-link-default') . ' ' . $paragraphContent); ?>
 
 <!-- several titles -->
 

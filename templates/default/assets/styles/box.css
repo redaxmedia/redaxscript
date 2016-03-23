@@ -34,8 +34,7 @@
 {
 	font-size: 0.875em;
 	font-style: italic;
-	margin-bottom: 2em;
-	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 .rs-box-line
@@ -50,7 +49,22 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
+	max-width: 70%;
+	overflow: hidden;
 	position: relative;
+	white-space: nowrap;
+}
+
+.rs-box-metadata:before
+{
+	background: linear-gradient(to left, var(--rs-color-tertiary), transparent);
+	bottom: 0;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
+	z-index: 1;
 }
 
 .rs-box-metadata a::-moz-selection,
@@ -76,11 +90,6 @@
 
 /* @section 4. box accordion */
 
-.rs-set-accordion + .rs-set-accordion
-{
-	margin-top: 0.125em;
-}
-
 .rs-box-accordion-default
 {
 	background: rgba(50, 62, 76, 0.3);
@@ -100,33 +109,37 @@
 
 .rs-box-note
 {
-	border-radius: 0 0.125em 0.125em 0;
-	box-shadow: 2.125em 0 rgba(0, 0, 0, 0.3) inset;
-	color: var(--rs-color-light);
-	padding: 0.25em 0.5em 0.25em 3em;
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 2.5em;
 	position: relative;
 }
 
 .rs-box-note:before
 {
-	color: var(--rs-color-dark);
-	font: 1.5em/1em 'icon default';
-	left: 0.25em;
-	opacity: 0.5;
+	font: 1.5em/1.25em 'icon default';
+	left: 0.5em;
 	position: absolute;
 	top: 0.25em;
 }
 
 .rs-box-note a
 {
-	color: var(--rs-color-tertiary);
+	color: color(var(--rs-color-dark) a(50%));
 	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-box-note a:hover
+{
+	color: var(--rs-color-dark);
 }
 
 /* @section 7. box comment */
 
 .rs-box-comment
 {
+	margin-bottom: 3em;
 	padding-left: 2.5em;
 	position: relative;
 }
@@ -158,6 +171,7 @@
 	{
 		font-size: 1em;
 		float: left;
+		max-width: 50%;
 	}
 
 	.rs-box-navigation

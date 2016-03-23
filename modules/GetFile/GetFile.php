@@ -69,7 +69,7 @@ class GetFile extends Module
 
 		if ($type === 'date')
 		{
-			$output = date(Db::getSettings('date'), filectime($file));
+			$output = date(Db::getSetting('date'), filectime($file));
 		}
 		return $output;
 	}

@@ -9,6 +9,7 @@ error_reporting(E_STRICT || E_ERROR);
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');
+include_once('includes/query.php');
 
 /* init */
 
@@ -65,23 +66,12 @@ $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
 $installer->insertData(array(
-	'adminName' => 'Admin',
-	'adminUser' => 'admin',
-	'adminPassword' => 'admin',
-	'adminEmail' => 'admin@admin.com'
+	'adminName' => 'Test',
+	'adminUser' => 'test',
+	'adminPassword' => 'test',
+	'adminEmail' => 'test@test.com'
 ));
-
-/* test user */
-
-Db::forTablePrefix('users')
-	->create()
-	->set(array(
-		'name' => 'test',
-		'user' => 'test',
-		'email' => 'test@test.com',
-		'password' => 'test'
-	))
-	->save();
+Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
 
 /* test module */
 

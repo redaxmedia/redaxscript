@@ -194,7 +194,7 @@ class Installer
 				'users' => '1, 2, 3',
 				'modules' => '1, 2, 3',
 				'settings' => 1,
-				'filter' => 0,
+				'filter' => 0
 			))->save();
 		Db::forTablePrefix('groups')
 			->create()
@@ -266,7 +266,7 @@ class Installer
 				'password' => $passwordHash->getHash(),
 				'email' => $options['adminEmail'],
 				'description' => 'God admin',
-				'groups' => 1
+				'groups' => '1'
 			))->save();
 	}
 

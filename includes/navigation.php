@@ -33,11 +33,11 @@ function navigation_list($table = '', $options = '')
 
 	if ($option_order == '')
 	{
-		$option_order = Redaxscript\Db::getSettings('order');
+		$option_order = Redaxscript\Db::getSetting('order');
 	}
 	if ($option_limit == '')
 	{
-		$option_limit = Redaxscript\Db::getSettings('limit');
+		$option_limit = Redaxscript\Db::getSetting('limit');
 	}
 
 	/* switch table */
@@ -129,7 +129,7 @@ function navigation_list($table = '', $options = '')
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{

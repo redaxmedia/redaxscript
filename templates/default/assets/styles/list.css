@@ -27,6 +27,11 @@
 
 /* @section 2. list breadcrumb */
 
+.rs-list-breadcrumb
+{
+	margin-bottom: 1em;
+}
+
 .rs-list-breadcrumb li
 {
 	display: inline-block;
@@ -91,7 +96,7 @@ ul.rs-list-default li:before {
 
 .rs-list-header li
 {
-	font: 1rem/3em arial, sans-serif;
+	font: 1em/2.25em arial, sans-serif;
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
@@ -212,6 +217,7 @@ ul.rs-list-default li:before {
 	.rs-list-header a,
 	.rs-list-header span
 	{
+		font-size: 0.875em;
 		padding: 0 1em;
 		transition: background 0.2s;
 	}

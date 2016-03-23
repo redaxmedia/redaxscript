@@ -99,7 +99,7 @@ class Breadcrumb
 		}
 		if (!$this->_options['divider'])
 		{
-			$this->_options['divider'] = Db::getSettings('divider');
+			$this->_options['divider'] = Db::getSetting('divider');
 		}
 		$this->_create();
 	}

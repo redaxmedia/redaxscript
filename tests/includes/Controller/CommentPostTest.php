@@ -66,8 +66,7 @@ class CommentPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		include_once('includes/query.php');
+		Db::setSetting('captcha', 1);
 	}
 
 	/**
@@ -78,9 +77,10 @@ class CommentPostTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('comments')->where('text', 'test')->deleteMany();
-		Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 0)->save();
+		Db::setSetting('captcha', 0);
+		Db::setSetting('notification', 0);
+		Db::setSetting('moderation', 0);
+		Db::forTablePrefix('comments')->deleteMany();
 	}
 
 	/**
@@ -103,37 +103,21 @@ class CommentPostTest extends TestCase
 	 *
 	 * @param array $post
 	 * @param array $hashArray
-	 * @param array $settings
+	 * @param array $settingsArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($post = array(), $hashArray = array(), $settings = array(), $expect = null)
+	public function testProcess($post = array(), $hashArray = array(), $settingsArray = array(), $expect = null)
 	{
 		/* setup */
 
+		Db::setSetting('notification', $settingsArray['notification']);
+		Db::setSetting('moderation', $settingsArray['moderation']);
 		$this->_request->set('post', $post);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$commentPost = new Controller\CommentPost($this->_registry, $this->_language, $this->_request);
-
-		if ($settings['notification'] == 1)
-		{
-			Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
-		}
-		else
-		{
-			Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
-		}
-
-		if ($settings['moderation'] == 1)
-		{
-			Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 1)->save();
-		}
-		else
-		{
-			Db::forTablePrefix('settings')->where('name', 'moderation')->findOne()->set('value', 0)->save();
-		}
 
 		/* actual */
 

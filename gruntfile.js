@@ -302,6 +302,16 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/note.css'
 				],
 				dest: 'templates/default/dist/styles/default.min.css'
+			},
+			templateInstall:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_query.css',
+					'templates/default/assets/styles/_variable.css',
+					'templates/install/assets/styles/layout.css'
+				],
+				dest: 'templates/install/dist/styles/default.min.css'
 			}
 		},
 		postcss:
@@ -328,7 +338,7 @@ module.exports = function (grunt)
 					require('postcss-custom-media'),
 					require('postcss-custom-selectors'),
 					require('postcss-extend'),
-					require('postcss-nested'),
+					require('postcss-nesting'),
 					require('postcss-color-gray'),
 					require('postcss-color-function'),
 					require('autoprefixer')(
