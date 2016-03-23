@@ -50,7 +50,7 @@
 {
 	background: #fff;
 	border-radius: 0.125em;
-	padding: 0.25em 1em 2em;
+	padding: 1em;
 }
 
 .rs-install-title
@@ -96,7 +96,6 @@
 
 	.rs-install-content
 	{
-		padding-left: 1.5em;
-		padding-right: 1.5em;
+		padding: 1.5em;
 	}
 }

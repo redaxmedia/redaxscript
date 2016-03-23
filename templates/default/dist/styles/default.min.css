@@ -567,22 +567,9 @@ a
 .rs-box-metadata
 {
 	font-size: 0.75em;
-	max-width: 70%;
 	overflow: hidden;
-	position: relative;
 	white-space: nowrap;
-}
-
-.rs-box-metadata:before
-{
-	background: linear-gradient(to left, #323e4c, transparent);
-	bottom: 0;
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 1em;
-	z-index: 1;
+	width: 70%;
 }
 
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
@@ -687,7 +674,7 @@ a
 	{
 		font-size: 1em;
 		float: left;
-		max-width: 50%;
+		width: 60%;
 	}
 
 	.rs-box-navigation
@@ -790,7 +777,7 @@ a
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1em/1.25em 'icon default';
+	font: 1.125em/1em 'icon default';
 	left: 0;
 	position: absolute;
 	right: 0;

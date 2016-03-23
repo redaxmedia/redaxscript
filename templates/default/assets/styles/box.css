@@ -49,29 +49,9 @@
 .rs-box-metadata
 {
 	font-size: 0.75em;
-	max-width: 70%;
 	overflow: hidden;
-	position: relative;
 	white-space: nowrap;
-}
-
-.rs-box-metadata:before
-{
-	background: linear-gradient(to left, var(--rs-color-tertiary), transparent);
-	bottom: 0;
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 1em;
-	z-index: 1;
-}
-
-.rs-box-metadata a::-moz-selection,
-.rs-box-metadata span::-moz-selection
-{
-	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	width: 70%;
 }
 
 .rs-box-metadata a::selection,
@@ -171,7 +151,7 @@
 	{
 		font-size: 1em;
 		float: left;
-		max-width: 50%;
+		width: 60%;
 	}
 
 	.rs-box-navigation

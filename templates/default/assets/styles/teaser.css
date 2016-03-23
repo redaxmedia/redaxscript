@@ -48,11 +48,6 @@
 	top: -5em;
 }
 
-.rs-title-teaser::-moz-selection
-{
-	background: var(--rs-color-quaternary);
-}
-
 .rs-title-teaser::selection
 {
 	background: var(--rs-color-quaternary);
