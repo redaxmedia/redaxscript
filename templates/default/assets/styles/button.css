@@ -5,7 +5,7 @@
  * 2. button search
  * 3. button large and full
  * 4. space between elements
- * 5. disabled
+ * 5. disabled and reset
  * 6. query
  *    6.1 medium max
  *    6.2 medium min
@@ -104,12 +104,23 @@ a.rs-button-default
 	margin-top: 1em;
 }
 
-/* @section 5. disabled */
+/* @section 5. disabled and reset */
 
 .rs-button-default[disabled]
 {
 	opacity: 0.5;
 	pointer-events: none;
+}
+
+.rs-button-reset
+{
+	background: var(--rs-color-gray);
+	color: var(--rs-color-tertiary);
+}
+
+.rs-button-reset:hover
+{
+	background: color(var(--rs-color-gray) b(30%));
 }
 
 /* @section 6. query */

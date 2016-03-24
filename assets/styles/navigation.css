@@ -75,7 +75,7 @@
 		position: fixed;
 		top: 0;
 		transform: translateX(-100%);
-		z-index: 10;
+		z-index: 20;
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation

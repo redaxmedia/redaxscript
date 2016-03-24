@@ -814,12 +814,23 @@ a
 	margin-top: 1em;
 }
 
-/* @section 5. disabled */
+/* @section 5. disabled and reset */
 
 .rs-button-default[disabled]
 {
 	opacity: 0.5;
 	pointer-events: none;
+}
+
+.rs-button-reset
+{
+	background: #c1c5c9;
+	color: #323e4c;
+}
+
+.rs-button-reset:hover
+{
+	background: rgb(183, 183, 183);
 }
 
 /* @section 6. query */
@@ -1449,11 +1460,6 @@ ul.rs-list-default li:before {
 		background: #3873b5;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
-	{
-		box-shadow: 10em 0 0 50em rgba(0, 0, 0, 0.8);
-	}
-
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
 	{
 		position: fixed;
@@ -1462,6 +1468,26 @@ ul.rs-list-default li:before {
 	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
+	}
+
+	.rs-fn-close-navigation
+	{
+		background: rgba(0, 0, 0, 0.8);
+		bottom: 0;
+		left: 0;
+		opacity: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		visibility: hidden;
+		transition: visibility 0s, opacity 0.2s ease 0.05s;
+		z-index: 10;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-close-navigation
+	{
+		opacity: 1;
+		visibility: visible;
 	}
 }
 /**
@@ -1684,7 +1710,7 @@ ul.rs-list-default li:before {
 
 /* @section 1. success */
 
-.rs-note-success
+.rs-note-success:not(:focus)
 {
 	color: rgb(40, 119, 40);
 }
@@ -1707,7 +1733,7 @@ ul.rs-list-default li:before {
 
 /* @section 2. warning */
 
-.rs-note-warning
+.rs-note-warning:not(:focus)
 {
 	color: rgb(117, 68, 0);
 }
@@ -1731,7 +1757,7 @@ ul.rs-list-default li:before {
 
 /* @section 3. error */
 
-.rs-note-error
+.rs-note-error:not(:focus)
 {
 	color: rgb(116, 39, 37);
 }
@@ -1754,7 +1780,7 @@ ul.rs-list-default li:before {
 
 /* @section 4. info */
 
-.rs-note-info
+.rs-note-info:not(:focus)
 {
 	color: rgb(37, 98, 116);
 }

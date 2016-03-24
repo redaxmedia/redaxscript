@@ -15,7 +15,7 @@
 
 /* @section 1. success */
 
-.rs-note-success
+.rs-note-success:not(:focus)
 {
 	color: var(--rs-color-success-dark);
 }
@@ -39,7 +39,7 @@
 
 /* @section 2. warning */
 
-.rs-note-warning
+.rs-note-warning:not(:focus)
 {
 	color: var(--rs-color-warning-dark);
 }
@@ -64,7 +64,7 @@
 
 /* @section 3. error */
 
-.rs-note-error
+.rs-note-error:not(:focus)
 {
 	color: var(--rs-color-error-dark);
 }
@@ -88,7 +88,7 @@
 
 /* @section 4. info */
 
-.rs-note-info
+.rs-note-info:not(:focus)
 {
 	color: var(--rs-color-info-dark);
 }
