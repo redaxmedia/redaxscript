@@ -35,16 +35,17 @@ function startup()
 	Redaxscript\Registry::set('file', $file->getOutput());
 	Redaxscript\Registry::set('root', $root->getOutput());
 
-	/* handle session */
+	/* session */
 
 	session_start();
 
 	/* prevent session hijacking */
 
-	if (!$_SESSION['regenerate_id'])
+	Redaxscript\Request::refreshSession();
+	if (!Redaxscript\Request::getSession('regenerateId'))
 	{
 		session_regenerate_id();
-		$_SESSION['regenerate_id'] = 1;
+		Redaxscript\Request::setSession('regenerateId', true);
 	}
 
 	/* database status */
@@ -55,10 +56,6 @@ function startup()
 
 	$token = new Redaxscript\Server\Token($request);
 	Redaxscript\Registry::set('token', $token->getOutput());
-
-	/* define session */
-
-	Redaxscript\Registry::set('loggedIn', $_SESSION['logged_in']);
 
 	/* setup charset */
 
@@ -227,6 +224,7 @@ function startup()
 	$auth->init();
 	if ($auth->getStatus())
 	{
+		Redaxscript\Registry::set('loggedIn', $token->getOutput());
 		Redaxscript\Registry::set('myId', $auth->getUser('id'));
 		Redaxscript\Registry::set('myName', $auth->getUser('name'));
 		Redaxscript\Registry::set('myUser', $auth->getUser('user'));
@@ -286,16 +284,16 @@ function startup()
 
 	/* future update */
 
-	Redaxscript\Registry::set('update', $_SESSION['update']);
+	Redaxscript\Registry::set('update', Redaxscript\Request::getSession('update'));
 	if (!Redaxscript\Registry::get('update') && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
 	{
 		future_update('articles');
 		future_update('comments');
 		future_update('extras');
-		$_SESSION['update'] = Redaxscript\Registry::get('delay');
+		Redaxscript\Registry::set('update', Redaxscript\Registry::get('delay'));
 	}
 	else if (Redaxscript\Registry::get('update') < Redaxscript\Registry::get('now'))
 	{
-		$_SESSION['update'] = null;
+		Redaxscript\Registry::set('update', null);
 	}
 }

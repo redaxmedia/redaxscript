@@ -485,7 +485,7 @@ function admin_process()
 				if (file_exists('languages/' . $language . '.php'))
 				{
 					$auth->setUser('language', $language);
-					$_SESSION['language_selected'] = 1;
+					Redaxscript\Request::setSession('language', $language);
 				}
 				$auth->save();
 			}

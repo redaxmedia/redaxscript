@@ -87,13 +87,11 @@ function login_post()
 	{
 		$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 		$auth->login($my_id);
-		$_SESSION['logged_in'] = Redaxscript\Registry::get('token');
 		if (file_exists('languages/' . $my_language . '.php'))
 		{
-			$_SESSION['language'] = $my_language;
-			$_SESSION['language_selected'] = 1;
+			Redaxscript\Request::setSession('language', $my_language);
 		}
-		$_SESSION['update'] = NOW;
+		Redaxscript\Request::setSession('update', Redaxscript\Registry::get('now'));
 	}
 
 	/* handle error */
@@ -127,7 +125,6 @@ function logout()
 {
 	$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 	$auth->logout();
-	$_SESSION['logged_in'] = null;
 
 	/* show success */
 
