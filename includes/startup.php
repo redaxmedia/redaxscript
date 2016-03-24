@@ -223,21 +223,21 @@ function startup()
 
 	if (LAST_TABLE == 'categories')
 	{
-		define('CATEGORY', $id);
-		define('ARTICLE', '');
+		define('CATEGORY_ID', $id);
+		define('ARTICLE_ID', '');
 		define('LAST_ID', $id);
 	}
 	else if (LAST_TABLE == 'articles')
 	{
-		define('CATEGORY', '');
-		define('ARTICLE', $id);
+		define('CATEGORY_ID', '');
+		define('ARTICLE_ID', $id);
 		define('LAST_ID', $id);
 	}
 	else
 	{
 		undefine(array(
-			'CATEGORY',
-			'ARTICLE',
+			'CATEGORY_ID',
+			'ARTICLE_ID',
 			'LAST_ID'
 		));
 	}

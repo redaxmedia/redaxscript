@@ -59,8 +59,8 @@ class Preview extends Module
 	{
 		if (Registry::get('firstParameter') === 'preview')
 		{
-			Registry::set('title', Language::get('preview', '_preview'));
-			Registry::set('description', Language::get('description', '_preview'));
+			Registry::set('metaTitle', Language::get('preview', '_preview'));
+			Registry::set('metaDescription', Language::get('description', '_preview'));
 			Registry::set('routerBreak', true);
 		}
 	}

@@ -31,11 +31,11 @@ function navigation_list($table = '', $options = '')
 
 	/* fallback */
 
-	if ($option_order == '')
+	if (!$option_order)
 	{
 		$option_order = Redaxscript\Db::getSetting('order');
 	}
-	if ($option_limit == '')
+	if (!$option_limit)
 	{
 		$option_limit = Redaxscript\Db::getSetting('limit');
 	}
@@ -116,7 +116,7 @@ function navigation_list($table = '', $options = '')
 
 	$result = $contents->findArray();
 	$num_rows = count($result);
-	if ($result == '' || $num_rows == '')
+	if (!$result || !$num_rows)
 	{
 		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
 	}
@@ -141,7 +141,7 @@ function navigation_list($table = '', $options = '')
 
 				/* build class string */
 
-				if (LAST_PARAMETER == $alias && $table != 'comments')
+				if (Redaxscript\Registry::get('lastParameter') == $alias && $table != 'comments')
 				{
 					$class_string = ' class="rs-item-active"';
 				}
@@ -156,7 +156,7 @@ function navigation_list($table = '', $options = '')
 				{
 					$description = $title = $author . Redaxscript\Language::get('colon') . ' ' . strip_tags($text);
 				}
-				if ($description == '')
+				if (!$description)
 				{
 					$description = $title;
 				}
@@ -223,7 +223,7 @@ function navigation_list($table = '', $options = '')
 
 	/* handle error */
 
-	if ($error && $option_parent == '')
+	if ($error && !$option_parent)
 	{
 		$output = '<ul' . $id_string . $class_string . '><li><span>' . $error . '</span></li></ul>';
 	}

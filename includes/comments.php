@@ -14,7 +14,7 @@
  * @param string $route
  */
 
-function comments($article = '', $route = '')
+function comments($article, $route)
 {
 	$output = Redaxscript\Hook::trigger('commentStart');
 
@@ -38,11 +38,11 @@ function comments($article = '', $route = '')
 	{
 		$num_rows = count($result);
 		$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
-		$sub_active = LAST_SUB_PARAMETER;
+		$sub_active = Redaxscript\Registry::get('lastSubParameter');
 
 		/* sub parameter */
 
-		if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
+		if (Redaxscript\Registry::get('lastSubParameter') > $sub_maximum || !Redaxscript\Registry::get('lastSubParameter'))
 		{
 			$sub_active = 1;
 		}
@@ -60,7 +60,7 @@ function comments($article = '', $route = '')
 
 	/* handle error */
 
-	if ($result == '' || $num_rows == '')
+	if (!$result || !$num_rows)
 	{
 		$error = Redaxscript\Language::get('comment_no');
 	}
@@ -107,7 +107,7 @@ function comments($article = '', $route = '')
 
 				/* admin dock */
 
-				if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
+				if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && Redaxscript\Registry::get('firstParameter') != 'logout')
 				{
 					$output .= admin_dock('comments', $id);
 				}

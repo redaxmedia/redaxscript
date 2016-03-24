@@ -48,7 +48,7 @@ class Demo extends Config
 
 			if (Registry::get('secondParameter') === 'login')
 			{
-				Registry::set('title', Language::get('login'));
+				Registry::set('metaTitle', Language::get('login'));
 				Registry::set('routerBreak', true);
 			}
 
