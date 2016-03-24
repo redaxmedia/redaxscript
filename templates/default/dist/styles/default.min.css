@@ -96,7 +96,7 @@ a
 
 .rs-link-read-more
 {
-	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+	background: linear-gradient(rgb(196, 114, 59), #c77a46);
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
@@ -104,7 +104,7 @@ a
 	cursor: pointer;
 	display: block;
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
-	padding: 0.375em 0.5em;
+	padding: 0.5em;
 	text-decoration: none;
 	transition: -webkit-transform 0.2s;
 	transition: transform 0.2s;
@@ -120,7 +120,7 @@ a
 
 .rs-link-read-more:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(124, 184, 71), #699b3c);
+	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(196, 114, 59), #c77a46);
 }
 
 .rs-link-read-more:active
@@ -138,7 +138,19 @@ a
 {
 	font-size: 1.5em;
 	font-weight: bold;
+	margin-bottom: 1em;
 	margin-top: 1em;
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.rs-title-comment:before
+{
+	content: '\25b6';
+	font: 2em/1em 'icon default';
+	position: absolute;
+	left: 0;
+	top: -0.25em;
 }
 
 .rs-title-comment a
@@ -153,9 +165,10 @@ a
 	background: #323e4c;
 	box-sizing: border-box;
 	color: #fff;
-	padding: 0.25em 0.5em;
+	padding: 0.25em 1em;
 	position: relative;
 	width: 100%;
+	transition: background 0.2s;
 }
 
 .rs-title-accordion:hover
@@ -178,7 +191,7 @@ a
 
 .rs-title-accordion.rs-title-active
 {
-	background: linear-gradient(rgb(124, 184, 71), #699b3c);
+	background: #699b3c;
 }
 
 .rs-title-accordion.rs-title-active:after
@@ -276,7 +289,7 @@ a
 
 .rs-footer, .rs-footer a
 {
-	color: #bbb;
+	color: #c1c5c9;
 }
 
 .rs-footer a:hover
@@ -375,7 +388,7 @@ a
 {
 	background: #323e4c;
 	box-sizing: border-box;
-	color: #e8e8e8;
+	color: #c1c5c9;
 	padding: 1em;
 }
 
@@ -544,8 +557,8 @@ a
 
 .rs-box-code
 {
-	background: rgba(50, 62, 77, 0.1);
-	border: 0.25em solid rgba(50, 62, 77, 0.3);
+	background: rgba(193, 197, 201, 0.7);
+	border: 0.25em solid #c1c5c9;
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -599,8 +612,13 @@ a
 
 .rs-box-accordion-default
 {
-	background: rgba(50, 62, 76, 0.3);
-	padding: 0.25em 0.5em;
+	background: #c1c5c9;
+	padding: 0.25em 1em;
+}
+
+.rs-set-accordion + .rs-set-accordion
+{
+	margin-top: 0.125rem;
 }
 
 /* @section 5. box tab */
@@ -647,23 +665,11 @@ a
 .rs-box-comment
 {
 	margin-bottom: 3em;
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.rs-box-comment:before
-{
-	content: '\25b6';
-	font: 2em/1em 'icon default';
-	position: absolute;
-	left: 0;
-	top: -0.125em;
-	opacity: 0.5;
 }
 
 /* @section 8. space between elements */
 
-.rs-box-note + .rs-box-note
+.rs-box-note + .rs-box-note, .rs-box-note + .rs-title-note
 {
 	margin-top: 1em;
 }
@@ -858,7 +864,7 @@ a
 
 .rs-dialog-overlay-default
 {
-	background: rgba(50, 62, 76, 0.2);
+	background: rgba(193, 197, 201, 0.9);
 }
 
 .rs-dialog-default, .rs-dialog-overlay-default
@@ -924,13 +930,13 @@ a
 
 .rs-field-default, .rs-field-select, .rs-field-textarea
 {
-	border: 2px solid #9c9c9c;
+	border: 2px solid #c1c5c9;
 	transition: background 0.2s, border 0.2s;
 }
 
 .rs-field-default:hover, .rs-field-select:hover, .rs-field-textarea:hover
 {
-	border-color: #000;
+	border-color: rgb(154, 154, 154);
 }
 
 .rs-field-default:not(.rs-field-note):focus, .rs-field-select:not(.rs-field-note):focus, .rs-field-textarea:not(.rs-field-note):focus
@@ -1184,7 +1190,7 @@ ul.rs-list-default li:before {
 
 .rs-list-tab > li + li
 {
-	margin-left: 0.125em;
+	margin-left: 0.125rem;
 }
 
 .rs-list-tab a
@@ -1206,7 +1212,7 @@ ul.rs-list-default li:before {
 
 .rs-list-tab > li
 {
-	background: rgba(50, 62, 76, 0.3);
+	background: #c1c5c9;
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
@@ -1475,7 +1481,7 @@ ul.rs-list-default li:before {
 
 .rs-table-default caption, .rs-table-default td, .rs-table-default th
 {
-	background: rgba(50, 62, 76, 0.3);
+	background: #c1c5c9;
 	padding: 0.5em 0.75em;
 }
 
@@ -1636,7 +1642,7 @@ ul.rs-list-default li:before {
 	background: #323e4c;
 	color: #fff;
 	border-radius: 0.25em;
-	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
 	left: 110%;
 	top: -0.5em;
 	padding: 0.5em 1em;
@@ -1680,13 +1686,13 @@ ul.rs-list-default li:before {
 
 .rs-note-success
 {
-	color: rgb(44, 150, 44);
+	color: rgb(40, 119, 40);
 }
 
 .rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
 {
 	background: #5bb75b;
-	border-color: rgb(44, 150, 44);
+	border-color: rgb(40, 119, 40);
 }
 
 .rs-note-success.rs-field-note option
@@ -1727,13 +1733,13 @@ ul.rs-list-default li:before {
 
 .rs-note-error
 {
-	color: rgb(148, 34, 30);
+	color: rgb(116, 39, 37);
 }
 
 .rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
 {
 	background: #da4f49;
-	border-color: rgb(148, 34, 30);
+	border-color: rgb(116, 39, 37);
 }
 
 .rs-note-error.rs-field-note option
@@ -1750,13 +1756,13 @@ ul.rs-list-default li:before {
 
 .rs-note-info
 {
-	color: rgb(30, 121, 148);
+	color: rgb(37, 98, 116);
 }
 
 .rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
 {
 	background: #49afcd;
-	border-color: rgb(30, 121, 148);
+	border-color: rgb(37, 98, 116);
 }
 
 .rs-note-info.rs-field-note option

@@ -71,7 +71,7 @@
 {
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
-	color: #e8e8e8;
+	color: var(--rs-color-gray);
 	padding: 1em;
 }
 

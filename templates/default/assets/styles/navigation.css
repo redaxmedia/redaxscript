@@ -26,7 +26,7 @@
 
 	.rs-fn-toggle-navigation
 	{
-		color: rgba(255, 255, 255, 0.7);
+		color: color(var(--rs-color-light) a(70%));
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
@@ -42,7 +42,7 @@
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		box-shadow: 10em 0 0 50em rgba(0, 0, 0, 0.8);
+		box-shadow: 10em 0 0 50em color(var(--rs-color-dark) a(80%));
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation

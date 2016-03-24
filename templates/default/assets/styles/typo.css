@@ -72,7 +72,7 @@ a
 
 .rs-link-read-more
 {
-	background: var(--rs-gradient-secondary);
+	background: var(--rs-gradient-quaternary);
 	border-radius: 0.125em;
 	box-shadow: var(--rs-style-shadow-inner), var(--rs-style-shadow-outer);
 	box-sizing: border-box;
@@ -80,7 +80,7 @@ a
 	cursor: pointer;
 	display: block;
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
-	padding: 0.375em 0.5em;
+	padding: 0.5em;
 	text-decoration: none;
 	transition: transform 0.2s;
 }
@@ -94,7 +94,7 @@ a
 
 .rs-link-read-more:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-secondary);
+	background-image: linear-gradient(color(var(--rs-color-light) a(15%)), color(var(--rs-color-light) a(10%))), var(--rs-gradient-quaternary);
 }
 
 .rs-link-read-more:active
@@ -111,7 +111,19 @@ a
 {
 	font-size: 1.5em;
 	font-weight: bold;
+	margin-bottom: 1em;
 	margin-top: 1em;
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.rs-title-comment:before
+{
+	content: '\25b6';
+	font: 2em/1em 'icon default';
+	position: absolute;
+	left: 0;
+	top: -0.25em;
 }
 
 .rs-title-comment a
@@ -126,9 +138,10 @@ a
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
 	color: var(--rs-color-light);
-	padding: 0.25em 0.5em;
+	padding: 0.25em 1em;
 	position: relative;
 	width: 100%;
+	transition: background 0.2s;
 }
 
 .rs-title-accordion:hover
@@ -151,7 +164,7 @@ a
 
 .rs-title-accordion.rs-title-active
 {
-	background: var(--rs-gradient-secondary);
+	background: var(--rs-color-secondary);
 }
 
 .rs-title-accordion.rs-title-active:after
@@ -251,7 +264,7 @@ a
 .rs-footer,
 .rs-footer a
 {
-	color: #bbb;
+	color: var(--rs-color-gray);
 }
 
 .rs-footer a:hover

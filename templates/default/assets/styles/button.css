@@ -41,7 +41,7 @@ a.rs-button-default
 
 .rs-button-default:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-secondary);
+	background-image: linear-gradient(color(var(--rs-color-light) a(15%)), color(var(--rs-color-light) a(10%))), var(--rs-gradient-secondary);
 }
 
 .rs-button-default:active

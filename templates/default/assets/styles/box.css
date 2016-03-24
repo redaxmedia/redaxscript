@@ -22,8 +22,8 @@
 
 .rs-box-code
 {
-	background: rgba(50, 62, 77, 0.1);
-	border: 0.25em solid rgba(50, 62, 77, 0.3);
+	background: color(var(--rs-color-gray) a(70%));
+	border: 0.25em solid var(--rs-color-gray);
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -72,8 +72,13 @@
 
 .rs-box-accordion-default
 {
-	background: rgba(50, 62, 76, 0.3);
-	padding: 0.25em 0.5em;
+	background: var(--rs-color-gray);
+	padding: 0.25em 1em;
+}
+
+.rs-set-accordion + .rs-set-accordion
+{
+	margin-top: 0.125rem;
 }
 
 /* @section 5. box tab */
@@ -120,23 +125,12 @@
 .rs-box-comment
 {
 	margin-bottom: 3em;
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.rs-box-comment:before
-{
-	content: '\25b6';
-	font: 2em/1em 'icon default';
-	position: absolute;
-	left: 0;
-	top: -0.125em;
-	opacity: 0.5;
 }
 
 /* @section 8. space between elements */
 
-.rs-box-note + .rs-box-note
+.rs-box-note + .rs-box-note,
+.rs-box-note + .rs-title-note
 {
 	margin-top: 1em;
 }

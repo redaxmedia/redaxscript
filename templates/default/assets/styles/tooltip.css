@@ -18,7 +18,7 @@
 	background: var(--rs-color-tertiary);
 	color: var(--rs-color-light);
 	border-radius: 0.25em;
-	box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0.25em color(var(--rs-color-dark) a(30%));
 	left: 110%;
 	top: -0.5em;
 	padding: 0.5em 1em;
