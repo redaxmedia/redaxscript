@@ -81,7 +81,8 @@ ol.rs-list-default li
 	list-style-position: outside;
 }
 
-ul.rs-list-default li:before {
+ul.rs-list-default li:before
+{
 	border-color: transparent transparent transparent var(--rs-color-primary);
 	border-style: solid;
 	border-width: 0.375em;
@@ -210,7 +211,8 @@ ul.rs-list-default li:before {
 		background: var(--rs-color-primary);
 	}
 
-	.rs-list-header > li > span {
+	.rs-list-header > li > span
+	{
 		background: color(var(--rs-color-dark) a(30%));
 	}
 
@@ -222,7 +224,8 @@ ul.rs-list-default li:before {
 		transition: background 0.2s;
 	}
 
-	.rs-list-header a:hover {
+	.rs-list-header a:hover
+	{
 		background: color(var(--rs-color-light) a(10%));
 	}
 }

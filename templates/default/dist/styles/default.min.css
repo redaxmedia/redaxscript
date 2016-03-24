@@ -715,7 +715,7 @@ a
  * 2. button search
  * 3. button large and full
  * 4. space between elements
- * 5. disabled
+ * 5. disabled and reset
  * 6. query
  *    6.1 medium max
  *    6.2 medium min
@@ -1170,7 +1170,8 @@ ol.rs-list-default li
 	list-style-position: outside;
 }
 
-ul.rs-list-default li:before {
+ul.rs-list-default li:before
+{
 	border-color: transparent transparent transparent #3873b5;
 	border-style: solid;
 	border-width: 0.375em;
@@ -1299,7 +1300,8 @@ ul.rs-list-default li:before {
 		background: #3873b5;
 	}
 
-	.rs-list-header > li > span {
+	.rs-list-header > li > span
+	{
 		background: rgba(0, 0, 0, 0.3);
 	}
 
@@ -1310,7 +1312,8 @@ ul.rs-list-default li:before {
 		transition: background 0.2s;
 	}
 
-	.rs-list-header a:hover {
+	.rs-list-header a:hover
+	{
 		background: rgba(255, 255, 255, 0.1);
 	}
 }

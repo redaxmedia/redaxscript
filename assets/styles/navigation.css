@@ -86,7 +86,8 @@
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-status-navigation ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	{
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -97,7 +98,8 @@
 		z-index: 1;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	{
 		right: 0;
 		z-index: 5;
 	}
@@ -105,7 +107,8 @@
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 50rem)
+{
 
 	/* @section 2.2.1 navigation trigger */
 
