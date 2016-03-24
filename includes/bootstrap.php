@@ -25,7 +25,7 @@ Db::init();
 /* startup and registry */
 
 startup();
-$registry->init(migrate_constants());
+$registry->init();
 
 /* hook */
 

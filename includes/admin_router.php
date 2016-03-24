@@ -62,7 +62,7 @@ function admin_router()
 		}
 		else if ($tableParameter != 'settings')
 		{
-			$new = TABLE_NEW;
+			$new = Redaxscript\Registry::get('tableNew');
 			if ($tableParameter == 'comments')
 			{
 				$articles_total = Redaxscript\Db::forTablePrefix('articles')->count();
@@ -72,9 +72,9 @@ function admin_router()
 					$new = 0;
 				}
 			}
-			$delete = TABLE_DELETE;
+			$delete = Redaxscript\Registry::get('tableDelete');
 		}
-		$edit = TABLE_EDIT;
+		$edit = Redaxscript\Registry::get('tableEdit');
 	}
 	if ($edit == 1 || $delete == 1)
 	{

@@ -32,19 +32,19 @@ function startup()
 	$request = Redaxscript\Request::getInstance();
 	$file = new Redaxscript\Server\File($request);
 	$root = new Redaxscript\Server\Root($request);
-	define('FILE', $file->getOutput());
-	define('ROOT', $root->getOutput());
+	Redaxscript\Registry::set('file', $file->getOutput());
+	Redaxscript\Registry::set('root', $root->getOutput());
 
-	/* session start */
+	/* handle session */
 
 	session_start();
 
 	/* prevent session hijacking */
 
-	if (!$_SESSION[ROOT . '/regenerate_id'])
+	if (!$_SESSION['regenerate_id'])
 	{
 		session_regenerate_id();
-		$_SESSION[ROOT . '/regenerate_id'] = 1;
+		$_SESSION['regenerate_id'] = 1;
 	}
 
 	/* database status */
@@ -54,16 +54,11 @@ function startup()
 	/* define token */
 
 	$token = new Redaxscript\Server\Token($request);
-	define('TOKEN', $token->getOutput());
-
-	/* prefix and salt */
-
-	define('PREFIX', Redaxscript\Config::get('dbPrefix'));
-	define('SALT', Redaxscript\Config::get('dbSalt'));
+	Redaxscript\Registry::set('token', $token->getOutput());
 
 	/* define session */
 
-	define('LOGGED_IN', $_SESSION[ROOT . '/logged_in']);
+	Redaxscript\Registry::set('loggedIn', $_SESSION['logged_in']);
 
 	/* setup charset */
 
@@ -76,56 +71,46 @@ function startup()
 
 	$parameter = new Redaxscript\Router\Parameter($request);
 	$parameter->init();
-	define('FIRST_PARAMETER', $parameter->getFirst());
-	define('FIRST_SUB_PARAMETER', $parameter->getSub());
-	define('SECOND_PARAMETER', $parameter->getSecond());
-	define('SECOND_SUB_PARAMETER', $parameter->getSub());
-	define('THIRD_PARAMETER', $parameter->getThird());
-	define('THIRD_SUB_PARAMETER', $parameter->getSub());
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
+	Redaxscript\Registry::set('firstParameter', $parameter->getFirst());
+	Redaxscript\Registry::set('firstSubParameter', $parameter->getSub());
+	Redaxscript\Registry::set('secondParameter', $parameter->getSecond());
+	Redaxscript\Registry::set('secondSubParameter', $parameter->getSub());
+	Redaxscript\Registry::set('thirdParameter', $parameter->getThird());
+	Redaxscript\Registry::set('thirdSubParameter', $parameter->getSub());
+	if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && Redaxscript\Registry::get('firstParameter') == 'admin')
 	{
-		define('ADMIN_PARAMETER', $parameter->getAdmin());
-		define('TABLE_PARAMETER', $parameter->getTable());
-		define('ID_PARAMETER', $parameter->getId());
-		define('ALIAS_PARAMETER', $parameter->getAlias());
+		Redaxscript\Registry::set('adminParameter', $parameter->getAdmin());
+		Redaxscript\Registry::set('tableParameter', $parameter->getTable());
+		Redaxscript\Registry::set('idParameter', $parameter->getId());
+		Redaxscript\Registry::set('aliasParameter', $parameter->getAlias());
 	}
-	else
-	{
-		undefine(array(
-			'ADMIN_PARAMETER',
-			'TABLE_PARAMETER',
-			'ID_PARAMETER',
-			'ALIAS_PARAMETER'
-		));
-	}
-	define('LAST_PARAMETER', $parameter->getLast());
-	define('LAST_SUB_PARAMETER', $parameter->getSub());
-	define('TOKEN_PARAMETER', $parameter->getToken());
+	Redaxscript\Registry::set('lastParameter', $parameter->getLast());
+	Redaxscript\Registry::set('lastSubParameter', $parameter->getSub());
+	Redaxscript\Registry::set('tokenParameter', $parameter->getToken());
 
 	/* define routes */
 
 	$router = new Redaxscript\Router\Resolver($request);
 	$router->init();
-	define('LITE_ROUTE', $router->getLite());
-	define('FULL_ROUTE', $router->getFull());
-	if (function_exists('apache_get_modules') && in_array('mod_rewrite', apache_get_modules()) == '' || file_exists('.htaccess') == '' || FILE == 'install.php')
+	Redaxscript\Registry::set('liteRoute', $router->getLite());
+	Redaxscript\Registry::set('fullRoute', $router->getFull());
+	if (function_exists('apache_get_modules') && !in_array('mod_rewrite', apache_get_modules()) || !file_exists('.htaccess') || Redaxscript\Registry::get('file') == 'install.php')
 	{
-		define('REWRITE_ROUTE', '?p=');
-		define('LANGUAGE_ROUTE', '&amp;l=');
-		define('TEMPLATE_ROUTE', '&amp;t=');
+		Redaxscript\Registry::set('rewriteRoute', '?p=');
+		Redaxscript\Registry::set('languageRoute', '&amp;l=');
+		Redaxscript\Registry::set('templateRoute', '&amp;t=');
 	}
 	else
 	{
-		define('REWRITE_ROUTE', '');
-		define('LANGUAGE_ROUTE', '.');
-		define('TEMPLATE_ROUTE', '.');
+		Redaxscript\Registry::set('languageRoute', '.');
+		Redaxscript\Registry::set('templateRoute', '.');
 	}
 
 	/* define tables */
 
 	if (Redaxscript\Registry::get('dbStatus') === 2)
 	{
-		if (FULL_ROUTE == '' || (FIRST_PARAMETER == 'admin' && SECOND_PARAMETER == ''))
+		if (!Redaxscript\Registry::get('fullRoute') || (Redaxscript\Registry::get('firstParameter') == 'admin' && !Redaxscript\Registry::get('secondParameter')))
 		{
 			/* check for homepage */
 
@@ -164,94 +149,57 @@ function startup()
 					}
 				}
 			}
-			define('FIRST_TABLE', $table);
-			define('SECOND_TABLE', '');
-			define('THIRD_TABLE', '');
-			define('LAST_TABLE', $table);
+			Redaxscript\Registry::set('firstTable', $table);
+			Redaxscript\Registry::set('lastTable', $table);
 		}
 		else
 		{
-			if (FIRST_PARAMETER)
+			if (Redaxscript\Registry::get('firstParameter'))
 			{
-				define('FIRST_TABLE', query_table(FIRST_PARAMETER));
+				Redaxscript\Registry::set('firstTable', query_table(Redaxscript\Registry::get('firstParameter')));
 			}
-			else
+			if (Redaxscript\Registry::get('firstTable'))
 			{
-				define('FIRST_TABLE', '');
+				Redaxscript\Registry::set('secondTable', query_table(Redaxscript\Registry::get('secondParameter')));
 			}
-			if (FIRST_TABLE)
+			if (Redaxscript\Registry::get('secondTable'))
 			{
-				define('SECOND_TABLE', query_table(SECOND_PARAMETER));
+				Redaxscript\Registry::set('thirdTable', query_table(Redaxscript\Registry::get('thirdParameter')));
 			}
-			else
+			if (Redaxscript\Registry::get('lastParameter'))
 			{
-				define('SECOND_TABLE', '');
+				Redaxscript\Registry::set('lastTable', query_table(Redaxscript\Registry::get('lastParameter')));
 			}
-			if (SECOND_TABLE)
+			if (Redaxscript\Registry::get('lastTable'))
 			{
-				define('THIRD_TABLE', query_table(THIRD_PARAMETER));
-			}
-			else
-			{
-				define('THIRD_TABLE', '');
-			}
-			if (LAST_PARAMETER)
-			{
-				define('LAST_TABLE', query_table(LAST_PARAMETER));
-			}
-			else
-			{
-				define('LAST_TABLE', '');
-			}
-			if (LAST_TABLE)
-			{
-				$id = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('alias', LAST_PARAMETER)->findOne()->id;
+				$id = Redaxscript\Db::forTablePrefix(Redaxscript\Registry::get('lastTable'))->where('alias', Redaxscript\Registry::get('lastParameter'))->findOne()->id;
 			}
 		}
-	}
-	else
-	{
-		undefine(array(
-			'FIRST_TABLE',
-			'SECOND_TABLE',
-			'THIRD_TABLE',
-			'LAST_TABLE'
-		));
 	}
 
 	/* define ids */
 
-	if (LAST_TABLE == 'categories')
+	if (Redaxscript\Registry::get('lastTable') == 'categories')
 	{
-		define('CATEGORY_ID', $id);
-		define('ARTICLE_ID', '');
-		define('LAST_ID', $id);
+		Redaxscript\Registry::set('categoryId', $id);
+		Redaxscript\Registry::set('lastId', $id);
 	}
-	else if (LAST_TABLE == 'articles')
+	else if (Redaxscript\Registry::get('lastTable') == 'articles')
 	{
-		define('CATEGORY_ID', '');
-		define('ARTICLE_ID', $id);
-		define('LAST_ID', $id);
-	}
-	else
-	{
-		undefine(array(
-			'CATEGORY_ID',
-			'ARTICLE_ID',
-			'LAST_ID'
-		));
+		Redaxscript\Registry::set('articleId', $id);
+		Redaxscript\Registry::set('lastId', $id);
 	}
 
 	/* define content error */
 
 	$aliasValidator = new Redaxscript\Validator\Alias();
-	if (LAST_ID == '' && $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
+	if (!Redaxscript\Registry::get('lastId') && $aliasValidator->validate(Redaxscript\Registry::get('firstParameter'), Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		define('CONTENT_ERROR', 1);
+		Redaxscript\Registry::set('contentError', 1);
 	}
 	else
 	{
-		define('CONTENT_ERROR', 0);
+		Redaxscript\Registry::set('contentError', 0);
 	}
 
 	/* define user */
@@ -261,22 +209,15 @@ function startup()
 	$engine = new Redaxscript\Client\Engine($request);
 	$mobile = new Redaxscript\Client\Mobile($request);
 	$tablet = new Redaxscript\Client\Tablet($request);
-	define('MY_BROWSER', $browser->getOutput());
-	define('MY_BROWSER_VERSION', $version->getOutput());
-	define('MY_ENGINE', $engine->getOutput());
-	define('MY_MOBILE', $mobile->getOutput());
-	define('MY_TABLET', $tablet->getOutput());
-
-	/* mobile or tablet */
-
-	if (MY_MOBILE || MY_TABLET)
+	$desktop = new Redaxscript\Client\Desktop($request);
+	Redaxscript\Registry::set('myBrowser', $browser->getOutput());
+	Redaxscript\Registry::set('myBrowserVersion', $version->getOutput());
+	Redaxscript\Registry::set('myEngine', $engine->getOutput());
+	Redaxscript\Registry::set('myMobile', $mobile->getOutput());
+	Redaxscript\Registry::set('myTablet', $tablet->getOutput());
+	if (!Redaxscript\Registry::get('myMobile') || !Redaxscript\Registry::get('myTablet'))
 	{
-		define('MY_DESKTOP', '');
-	}
-	else
-	{
-		$desktop = new Redaxscript\Client\Desktop($request);
-		define('MY_DESKTOP', $desktop->getOutput());
+		Redaxscript\Registry::set('myDesktop', $desktop->getOutput());
 	}
 
 	/* auth */
@@ -310,7 +251,7 @@ function startup()
 		Redaxscript\Registry::set('usersNew', $auth->getPermissionNew('users'));
 		Redaxscript\Registry::set('usersEdit', $auth->getPermissionEdit('users'));
 		Redaxscript\Registry::set('usersDelete', $auth->getPermissionDelete('users'));
-		if (TABLE_PARAMETER == 'users' && ID_PARAMETER == Redaxscript\Registry::get('myId'))
+		if (Redaxscript\Registry::get('tableParameter') == 'users' && Redaxscript\Registry::get('idParameter') == Redaxscript\Registry::get('myId'))
 		{
 			Redaxscript\Registry::set('usersException', 1);
 		}
@@ -331,100 +272,30 @@ function startup()
 
 	/* define table access */
 
-	define('TABLE_NEW', Redaxscript\Registry::get(TABLE_PARAMETER . 'New'));
-	define('TABLE_INSTALL', Redaxscript\Registry::get(TABLE_PARAMETER . 'Install'));
-	define('TABLE_EDIT', Redaxscript\Registry::get(TABLE_PARAMETER . 'Edit'));
-	define('TABLE_DELETE', Redaxscript\Registry::get(TABLE_PARAMETER . 'Delete'));
-	define('TABLE_UNINSTALL', Redaxscript\Registry::get(TABLE_PARAMETER . 'Uninstall'));
+	$tableParameter = Redaxscript\Registry::get('tableParameter');
+	Redaxscript\Registry::set('tableNew', Redaxscript\Registry::get($tableParameter . 'New'));
+	Redaxscript\Registry::set('tableInstall', Redaxscript\Registry::get($tableParameter . 'Install'));
+	Redaxscript\Registry::set('tableEdit', Redaxscript\Registry::get($tableParameter . 'Edit'));
+	Redaxscript\Registry::set('tableDelete', Redaxscript\Registry::get($tableParameter . 'Delete'));
+	Redaxscript\Registry::set('tableUninstall', Redaxscript\Registry::get($tableParameter . 'Uninstall'));
 
 	/* define time */
 
-	define('GMDATE', gmdate('D, d M Y H:i:s') . ' GMT');
-	define('GMDATE_PLUS_WEEK', gmdate('D, d M Y H:i:s', strtotime('+1 week')) . ' GMT');
-	define('GMDATE_PLUS_YEAR', gmdate('D, d M Y H:i:s', strtotime('+1 year')) . ' GMT');
-	define('NOW', date('Y-m-d H:i:s'));
-	Redaxscript\Registry::set('now', NOW);
-	define('DELAY', date('Y-m-d H:i:s', strtotime('+1 minute')));
-	define('TODAY', date('Y-m-d'));
+	Redaxscript\Registry::set('now', date('Y-m-d H:i:s'));
+	Redaxscript\Registry::set('delay', date('Y-m-d H:i:s', strtotime('+1 minute')));
 
 	/* future update */
 
-	define('UPDATE', $_SESSION[ROOT . '/update']);
-	if (UPDATE == '' && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
+	Redaxscript\Registry::set('update', $_SESSION['update']);
+	if (!Redaxscript\Registry::get('update') && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
 	{
 		future_update('articles');
 		future_update('comments');
 		future_update('extras');
-		$_SESSION[ROOT . '/update'] = DELAY;
+		$_SESSION['update'] = Redaxscript\Registry::get('delay');
 	}
-	else if (UPDATE < NOW)
+	else if (Redaxscript\Registry::get('update') < Redaxscript\Registry::get('now'))
 	{
-		$_SESSION[ROOT . '/update'] = '';
+		$_SESSION['update'] = null;
 	}
-}
-
-/**
- * undefine
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Startup
- * @author Henry Ruhs
- *
- * @param string $input
- */
-
-function undefine($input = '')
-{
-	if ($input)
-	{
-		foreach ($input as $value)
-		{
-			define($value, '');
-		}
-	}
-}
-
-/**
- * migrate constants
- *
- * @since 2.1.0
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Migrate
- * @author Henry Ruhs
- * @author Gary Aylward
- *
- * @return array
- */
-
-function migrate_constants()
-{
-	/* get user constants */
-
-	$constants = get_defined_constants(true);
-	$constants_user = $constants['user'];
-
-	/* process constants user */
-
-	foreach ($constants_user as $key => $value)
-	{
-		/* transform to camelcase */
-
-		$key = mb_convert_case($key, MB_CASE_TITLE);
-		$key[0] = strtolower($key[0]);
-
-		/* remove underline */
-
-		$key = str_replace('_', '', $key);
-
-		/* store in array */
-
-		$output[$key] = $value;
-	}
-	$output = array_merge($output, Redaxscript\Registry::get());
-	return $output;
 }

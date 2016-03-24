@@ -7,7 +7,8 @@
 			"myBrowser": "firefox",
 			"myBrowserVersion": 27,
 			"myEngine": "gecko",
-			"category": 1,
+			"categoryId": 1,
+			"articleId": "",
 			"language": "en"
 		},
 		"rs-firefox rs-version-27 rs-gecko rs-desktop rs-windows rs-category rs-ltr"
@@ -20,7 +21,8 @@
 			"myBrowser": "chrome",
 			"myBrowserVersion": 32,
 			"myEngine": "webkit",
-			"article": 1,
+			"categoryId": "",
+			"articleId": 1,
 			"language": "ar"
 		},
 		"rs-chrome rs-version-32 rs-webkit rs-mobile rs-article rs-rtl"
@@ -33,7 +35,8 @@
 			"myBrowser": "safari",
 			"myBrowserVersion": 6,
 			"myEngine": "webkit",
-			"category": 1,
+			"categoryId": 1,
+			"articleId": "",
 			"language": "ru"
 		},
 		"rs-safari rs-version-6 rs-webkit rs-tablet rs-category rs-ltr"
