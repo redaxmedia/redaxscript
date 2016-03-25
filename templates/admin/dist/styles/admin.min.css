@@ -149,7 +149,7 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-wrapper-button
+.rs-admin-wrapper-button, .rs-box-messenger
 {
 	margin-bottom: 1em;
 }
@@ -1071,7 +1071,7 @@
 	text-align: left;
 }
 
-.rs-admin-table td ~ th:last-child, .rs-admin-table td ~ td:last-child
+.rs-admin-table th ~ th:last-child, .rs-admin-table td ~ td:last-child
 {
 	text-align: right;
 }
@@ -1252,7 +1252,7 @@
 
 /* @section 1.7 column move */
 
-.rs-admin-table .rs-admin-column-move
+.rs-admin-table tr td.rs-admin-column-move, .rs-admin-table tr th.rs-admin-column-move
 {
 	text-indent: -999em;
 	text-align: left;

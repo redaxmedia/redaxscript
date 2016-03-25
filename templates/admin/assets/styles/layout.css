@@ -38,7 +38,8 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-wrapper-button
+.rs-admin-wrapper-button,
+.rs-box-messenger
 {
 	margin-bottom: 1em;
 }
