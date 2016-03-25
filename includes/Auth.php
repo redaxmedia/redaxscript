@@ -138,11 +138,15 @@ class Auth
 
 	public function __call($method = null, $arguments = array())
 	{
-		$key = $method === 'getFilter' ? 'filter' : $arguments[0];
-		if (array_key_exists($method, $this->_callArray[$key]))
+		$type = $arguments[0];
+		$permissionArray = $this->getPermission();
+		if ($method === 'getFilter')
 		{
-			$permissionArray = $this->getPermission($key);
-			return in_array($this->_callArray[$key][$method], $permissionArray);
+			return !in_array($this->_callArray['filter'][$method], $permissionArray['filter']);
+		}
+		if (array_key_exists($method, $this->_callArray[$type]))
+		{
+			return in_array($this->_callArray[$type][$method], $permissionArray[$type]);
 		}
 		return false;
 	}

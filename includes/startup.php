@@ -264,12 +264,8 @@ function startup()
 		Redaxscript\Registry::set('modulesEdit', $auth->getPermissionEdit('modules'));
 		Redaxscript\Registry::set('modulesUninstall', $auth->getPermissionUninstall('modules'));
 		Redaxscript\Registry::set('settingsEdit', $auth->getPermissionEdit('settings'));
-		Redaxscript\Registry::set('filter', $auth->getFilter());
 	}
-	else
-	{
-		Redaxscript\Registry::set('filter', 1);
-	}
+	Redaxscript\Registry::set('filter', $auth->getFilter());
 
 	/* define table access */
 
