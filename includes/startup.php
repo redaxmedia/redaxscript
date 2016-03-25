@@ -45,7 +45,7 @@ function startup()
 	if (!Redaxscript\Request::getSession('regenerateId'))
 	{
 		session_regenerate_id();
-		Redaxscript\Request::setSession('regenerateId', true);
+		Redaxscript\Request::setSession('regenerateId', 1);
 	}
 
 	/* database status */
@@ -55,7 +55,12 @@ function startup()
 	/* define token */
 
 	$token = new Redaxscript\Server\Token($request);
+	$auth = new Redaxscript\Auth($request);
 	Redaxscript\Registry::set('token', $token->getOutput());
+	if ($auth->getStatus())
+	{
+		Redaxscript\Registry::set('loggedIn', $token->getOutput());
+	}
 
 	/* setup charset */
 
@@ -220,11 +225,9 @@ function startup()
 	/* auth */
 
 	Redaxscript\Request::refreshSession();
-	$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 	$auth->init();
 	if ($auth->getStatus())
 	{
-		Redaxscript\Registry::set('loggedIn', $token->getOutput());
 		Redaxscript\Registry::set('myId', $auth->getUser('id'));
 		Redaxscript\Registry::set('myName', $auth->getUser('name'));
 		Redaxscript\Registry::set('myUser', $auth->getUser('user'));
@@ -265,7 +268,7 @@ function startup()
 	}
 	else
 	{
-		Redaxscript\Registry::set('filter', true);
+		Redaxscript\Registry::set('filter', 1);
 	}
 
 	/* define table access */
