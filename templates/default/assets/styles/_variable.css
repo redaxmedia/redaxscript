@@ -40,10 +40,10 @@
 	--rs-color-error-dark: color(var(--rs-color-error) b(70%) saturation(+50%));
 	--rs-color-info-dark: color(var(--rs-color-info) b(70%) saturation(+50%));
 
-	--rs-url-teaser-small: url('//unsplash.it/625/250?image=817&gravity=south');
-	--rs-url-teaser-medium: url('//unsplash.it/1250/500?image=817&gravity=south');
-	--rs-url-teaser-large: url('//unsplash.it/2500/1000?image=817&gravity=south');
-	--rs-url-teaser-ultra: url('//unsplash.it/5000/2000?image=817&gravity=south');
+	--rs-url-teaser-small: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg');
+	--rs-url-teaser-medium: url('//cdn.redaxscript.com/unsplash/817/1250x500.jpg');
+	--rs-url-teaser-large: url('//cdn.redaxscript.com/unsplash/817/2500x1000.jpg');
+	--rs-url-teaser-ultra: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 
 	--rs-style-shadow-inner: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
 	--rs-style-shadow-outer: 0 0.125em 0.125em rgba(0, 0, 0, 0.2);

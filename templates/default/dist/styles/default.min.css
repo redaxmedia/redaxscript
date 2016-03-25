@@ -1553,7 +1553,7 @@ ul.rs-list-default li:before
 
 .rs-teaser
 {
-	background: url('//unsplash.it/625/250?image=817&gravity=south') no-repeat center top / cover;
+	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') no-repeat center top / cover;
 	max-height: 35em;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
@@ -1620,7 +1620,7 @@ ul.rs-list-default li:before
 {
 	.rs-teaser
 	{
-		background-image: url('//unsplash.it/1250/500?image=817&gravity=south');
+		background-image: url('//cdn.redaxscript.com/unsplash/817/1250x500.jpg');
 	}
 }
 
@@ -1638,7 +1638,7 @@ ul.rs-list-default li:before
 {
 	.rs-teaser
 	{
-		background-image: url('//unsplash.it/2500/1000?image=817&gravity=south');
+		background-image: url('//cdn.redaxscript.com/unsplash/817/2500x1000.jpg');
 	}
 }
 
@@ -1648,7 +1648,7 @@ ul.rs-list-default li:before
 {
 	.rs-teaser
 	{
-		background-image: url('//unsplash.it/5000/2000?image=817&gravity=south');
+		background-image: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 	}
 }
 /**
