@@ -311,7 +311,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/_variable.css',
 					'templates/install/assets/styles/layout.css'
 				],
-				dest: 'templates/install/dist/styles/default.min.css'
+				dest: 'templates/install/dist/styles/install.min.css'
 			}
 		},
 		postcss:

@@ -60,7 +60,7 @@
 		right: 0;
 		top: 0;
 		visibility: hidden;
-		transition: visibility 0s, opacity 0.2s ease 0.05s;
+		transition: opacity 0.2s ease 0.05s;
 		z-index: 10;
 	}
 
