@@ -30,7 +30,8 @@
 	text-align: left;
 }
 
-.rs-admin-table .rs-column-last
+.rs-admin-table th:last-child,
+.rs-admin-table td:last-child
 {
 	text-align: right;
 }

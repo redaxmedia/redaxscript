@@ -44,7 +44,7 @@
 	cursor: pointer;
 }
 
-.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+.rs-admin-set-accordion:not(:last-child) .rs-admin-title-accordion
 {
 	border-bottom: none;
 }
@@ -69,7 +69,7 @@
 
 /* @section 2.2 last element*/
 
-.rs-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+.rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
 	border-bottom-width: 1px;
 }

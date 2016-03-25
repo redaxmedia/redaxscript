@@ -18,7 +18,8 @@
 	text-align: left;
 }
 
-.rs-table .rs-column-last
+.rs-table th:last-child,
+.rs-table td:last-child
 {
 	text-align: right;
 }

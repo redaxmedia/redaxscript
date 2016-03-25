@@ -405,7 +405,8 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 3.1 max width 30em */
 
-@media screen and (max-width: 29.999em) {
+@media screen and (max-width: 29.999em)
+{
 	a.rs-button-default
 	{
 		display: block;
@@ -728,7 +729,8 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-status-navigation ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	{
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -739,7 +741,8 @@ button::-moz-focus-inner, input::-moz-focus-inner
 		z-index: 1;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	{
 		right: 0;
 		z-index: 5;
 	}
@@ -747,7 +750,8 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 50rem)
+{
 
 	/* @section 2.2.1 navigation trigger */
 
@@ -836,7 +840,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 	text-align: left;
 }
 
-.rs-table .rs-column-last
+.rs-table th:last-child, .rs-table td:last-child
 {
 	text-align: right;
 }
