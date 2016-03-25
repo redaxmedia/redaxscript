@@ -18,8 +18,8 @@
 	text-align: left;
 }
 
-.rs-table th:last-child,
-.rs-table td:last-child
+.rs-table th ~ th:last-child,
+.rs-table td ~ td:last-child
 {
 	text-align: right;
 }

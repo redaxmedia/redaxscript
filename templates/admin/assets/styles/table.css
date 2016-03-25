@@ -30,8 +30,8 @@
 	text-align: left;
 }
 
-.rs-admin-table th:last-child,
-.rs-admin-table td:last-child
+.rs-admin-table td ~ th:last-child,
+.rs-admin-table td ~ td:last-child
 {
 	text-align: right;
 }
