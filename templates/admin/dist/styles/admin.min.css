@@ -396,7 +396,7 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s ease;
+	transition: padding 0.4s;
 	width: 3em;
 }
 
@@ -477,7 +477,7 @@
 	color: #6a6a6a;
 	font: 1rem arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	transition: background 0.4s ease;
+	transition: background 0.4s;
 	padding: 0.5em;
 }
 
@@ -894,7 +894,7 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s ease;
+	transition: padding-left 0.3s;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
@@ -1194,7 +1194,7 @@
 	display: block;
 	min-height: 2.5em;
 	position: relative;
-	transition: color 0.4s ease;
+	transition: color 0.4s;
 }
 
 .rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover

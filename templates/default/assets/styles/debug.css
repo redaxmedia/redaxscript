@@ -49,6 +49,6 @@
 	text-shadow: none;
 	text-transform: lowercase;
 	text-overflow: ellipsis;
-	transition: all 0.2s 0.6s ease;
+	transition: all 0.2s ease 0.6s;
 	white-space: nowrap;
 }

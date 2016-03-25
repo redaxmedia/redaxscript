@@ -37,7 +37,7 @@
 	color: #6a6a6a;
 	font: 1rem arial;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	transition: background 0.4s ease;
+	transition: background 0.4s;
 	padding: 0.5em;
 }
 

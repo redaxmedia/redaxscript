@@ -154,7 +154,7 @@
 	display: block;
 	min-height: 2.5em;
 	position: relative;
-	transition: color 0.4s ease;
+	transition: color 0.4s;
 }
 
 .rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover

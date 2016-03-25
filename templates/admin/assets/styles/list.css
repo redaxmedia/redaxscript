@@ -52,7 +52,7 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s ease;
+	transition: padding-left 0.3s;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover

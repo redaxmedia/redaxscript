@@ -342,7 +342,8 @@ button, input, select, textarea
 {
 	left: 0;
 	opacity: 1;
-	top: 100%;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
 }
 
 .rs-list-dropdown li:last-child:hover > ul, .rs-list-dropdown .rs-item-touch:last-child > ul
@@ -362,8 +363,12 @@ button, input, select, textarea
 		left: -999em;
 		opacity: 0;
 		position: absolute;
-		top: 50%;
-		transition: opacity 0.5s ease 0s, top 0.2s ease 0s;
+		top: 100%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+		transition: opacity 0.5s, -webkit-transform 0.2s;
+		transition: opacity 0.5s, transform 0.2s;
+		transition: opacity 0.5s, transform 0.2s, -webkit-transform 0.2s;
 		z-index: 1;
 	}
 
