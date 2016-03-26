@@ -353,7 +353,7 @@ a
 
 .rs-page
 {
-	margin-top: 1em;
+	padding: 1em;
 }
 
 /* @section 2. wrapper */
@@ -430,11 +430,6 @@ a
 	.rs-header
 	{
 		min-height: 2.5em;
-	}
-
-	.rs-page
-	{
-		padding: 1em;
 	}
 
 	.rs-content + .rs-sidebar
