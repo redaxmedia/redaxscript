@@ -136,6 +136,11 @@
 		min-width: 50rem;
 	}
 
+	.rs-page
+	{
+		padding: 2em;
+	}
+
 	.rs-content
 	{
 		float: left;
