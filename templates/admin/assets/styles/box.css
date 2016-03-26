@@ -8,6 +8,7 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
+ * 5. box note admin
  *
  * @since 3.0.0
  *
@@ -95,4 +96,34 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
+}
+
+/* @section 5. box note admin */
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 2.75em;
+	position: relative;
+}
+
+.rs-admin-box-note:before
+{
+	font: 1.5em/1.25em 'icon admin';
+	left: 0.5em;
+	position: absolute;
+	top: 0.25em;
+}
+
+.rs-admin-box-note a
+{
+	color: rgba(0, 0, 0, 0.65);
+	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-admin-box-note a:hover
+{
+	color: #000;
 }

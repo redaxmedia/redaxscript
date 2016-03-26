@@ -163,6 +163,7 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
+ * 5. box note admin
  *
  * @since 3.0.0
  *
@@ -251,6 +252,37 @@
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
 }
+
+/* @section 5. box note admin */
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 2.75em;
+	position: relative;
+}
+
+.rs-admin-box-note:before
+{
+	font: 1.5em/1.25em 'icon admin';
+	left: 0.5em;
+	position: absolute;
+	top: 0.25em;
+}
+
+.rs-admin-box-note a
+{
+	color: rgba(0, 0, 0, 0.65);
+	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-admin-box-note a:hover
+{
+	color: #000;
+}
+
 /**
  * @tableofcontents
  *
@@ -322,12 +354,12 @@
 
 .rs-admin-button-default.rs-admin-button-cancel:before
 {
-	content: 'e';
+	content: '\78';
 }
 
 .rs-admin-button-default.rs-admin-button-submit:before
 {
-	content: 'd';
+	content: '\2713';
 }
 
 /* @section 2. disabled and readonly */
@@ -1442,6 +1474,11 @@
 
 /* @section 1. success */
 
+.rs-admin-note-success:not(:focus)
+{
+	color: #387038;
+}
+
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
 	background: #5bb75b;
@@ -1459,6 +1496,11 @@
 }
 
 /* @section 2. warning */
+
+.rs-admin-note-warning:not(:focus)
+{
+	color: #ad6704;
+}
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
@@ -1478,6 +1520,11 @@
 
 /* @section 3. error */
 
+.rs-admin-note-error:not(:focus)
+{
+	color: #802420;
+}
+
 .rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
 	background: #da4f49;
@@ -1495,6 +1542,11 @@
 }
 
 /* @section 4. info */
+
+.rs-admin-note-info:not(:focus)
+{
+	color: #1f6377;
+}
 
 .rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {

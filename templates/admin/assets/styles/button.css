@@ -72,12 +72,12 @@ a.rs-admin-button-default
 
 .rs-admin-button-default.rs-admin-button-cancel:before
 {
-	content: 'e';
+	content: '\78';
 }
 
 .rs-admin-button-default.rs-admin-button-submit:before
 {
-	content: 'd';
+	content: '\2713';
 }
 
 /* @section 2. disabled and readonly */
