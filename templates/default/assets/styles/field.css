@@ -34,7 +34,7 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: 1em/1.25em var(--rs-font-primary);
 	border-radius: 0.125em;
 	display: block;
 	box-sizing: border-box;

@@ -236,7 +236,7 @@ ul.rs-list-default li:before
 {
 	.rs-list-header li
 	{
-		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
+		font: 1.125em/2em var(--rs-font-primary);
 	}
 
 	.rs-list-header > li

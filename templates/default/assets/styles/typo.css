@@ -40,7 +40,7 @@ a
 .rs-body
 {
 	color: var(--rs-color-tertiary);
-	font: 300 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+	font: 300 1.25em/1.75em var(--rs-font-primary);
 }
 
 .rs-content strong
@@ -79,7 +79,7 @@ a
 	color: var(--rs-color-light);
 	cursor: pointer;
 	display: block;
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: 1em/1.25em var(--rs-font-primary);
 	padding: 0.5em;
 	text-decoration: none;
 	transition: transform 0.2s;

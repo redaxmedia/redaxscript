@@ -65,7 +65,7 @@
 
 .rs-box-quote
 {
-	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+	font: italic 1.25em/1.75em var(--rs-font-primary);
 }
 
 /* @section 4. box accordion */
