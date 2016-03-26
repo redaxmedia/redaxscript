@@ -98,8 +98,8 @@ a.rs-button-default
 /* @section 4. space between elements */
 
 .rs-box-dialog-default .rs-button-default,
-.rs-box-notification .rs-button-default,
-.rs-form-default .rs-button-default
+.rs-form-default .rs-button-default,
+.rs-box-messenger + .rs-button-messenger
 {
 	margin-top: 1em;
 }
