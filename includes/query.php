@@ -61,7 +61,7 @@ function query_table($input)
  * @return string
  */
 
-function build_route($table , $id)
+function build_route($table, $id)
 {
 	if ($table && $id)
 	{

@@ -15,7 +15,7 @@
  * @return string
  */
 
-function loader($type , $mode)
+function loader($type, $mode)
 {
 	$output = Redaxscript\Hook::trigger('loaderStart');
 	if ($mode == 'inline' || $mode == 'outline')

@@ -22,7 +22,6 @@
 	max-height: 35em;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
-	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
 }
@@ -42,9 +41,7 @@
 	line-height: 1.25em;
 	max-width: 80%;
 	padding: 0.375em 0.75em;
-	position: relative;
 	opacity: 0;
-	top: -5em;
 }
 
 .rs-title-teaser::selection
