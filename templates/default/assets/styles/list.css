@@ -135,7 +135,7 @@ ul.rs-list-default li:before
 
 .rs-list-tab > li
 {
-	background: var(--rs-color-gray);
+	background: var(--rs-color-gray-1);
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }

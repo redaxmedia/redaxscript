@@ -14,7 +14,8 @@
 :root
 {
 	--rs-color-light: #fff;
-	--rs-color-gray: #c1c5c9;
+	--rs-color-gray-1: #c6c6c6;
+	--rs-color-gray-2: #aaaaaa;
 	--rs-color-dark: #000;
 
 	--rs-color-primary: #3873b5;

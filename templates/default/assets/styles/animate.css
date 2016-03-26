@@ -15,11 +15,11 @@
 {
 	from
 	{
-		top: -5em;
+		transform: translateY(-5em);
 	}
 
 	to
 	{
-		top: 0;
+		transform: translateY(0);
 	}
 }

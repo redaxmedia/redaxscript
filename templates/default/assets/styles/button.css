@@ -114,13 +114,13 @@ a.rs-button-default
 
 .rs-button-reset
 {
-	background: var(--rs-color-gray);
+	background: var(--rs-color-gray-1);
 	color: var(--rs-color-tertiary);
 }
 
 .rs-button-reset:hover
 {
-	background: color(var(--rs-color-gray) b(30%));
+	background: var(--rs-color-gray-2);
 }
 
 /* @section 6. query */

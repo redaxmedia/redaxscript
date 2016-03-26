@@ -22,8 +22,8 @@
 
 .rs-box-code
 {
-	background: color(var(--rs-color-gray) a(70%));
-	border: 0.25em solid var(--rs-color-gray);
+	background: var(--rs-color-gray-1);
+	border: 0.25em solid var(--rs-color-gray-2);
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -72,7 +72,7 @@
 
 .rs-box-accordion-default
 {
-	background: var(--rs-color-gray);
+	background: var(--rs-color-gray-1);
 	padding: 0.25em 1em;
 }
 

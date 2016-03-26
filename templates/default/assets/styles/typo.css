@@ -264,7 +264,7 @@ a
 .rs-footer,
 .rs-footer a
 {
-	color: var(--rs-color-gray);
+	color: var(--rs-color-gray-1);
 }
 
 .rs-footer a:hover

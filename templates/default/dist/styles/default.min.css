@@ -289,7 +289,7 @@ a
 
 .rs-footer, .rs-footer a
 {
-	color: #c1c5c9;
+	color: #c6c6c6;
 }
 
 .rs-footer a:hover
@@ -387,7 +387,7 @@ a
 {
 	background: #323e4c;
 	box-sizing: border-box;
-	color: #c1c5c9;
+	color: #c6c6c6;
 	padding: 1em;
 }
 
@@ -511,12 +511,14 @@ a
 {
 	from
 	{
-		top: -5em;
+		-webkit-transform: translateY(-5em);
+		transform: translateY(-5em);
 	}
 
 	to
 	{
-		top: 0;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
 	}
 }
 
@@ -524,12 +526,14 @@ a
 {
 	from
 	{
-		top: -5em;
+		-webkit-transform: translateY(-5em);
+		transform: translateY(-5em);
 	}
 
 	to
 	{
-		top: 0;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
 	}
 }
 /**
@@ -556,8 +560,8 @@ a
 
 .rs-box-code
 {
-	background: rgba(193, 197, 201, 0.7);
-	border: 0.25em solid #c1c5c9;
+	background: #c6c6c6;
+	border: 0.25em solid #aaaaaa;
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -611,7 +615,7 @@ a
 
 .rs-box-accordion-default
 {
-	background: #c1c5c9;
+	background: #c6c6c6;
 	padding: 0.25em 1em;
 }
 
@@ -823,13 +827,13 @@ a
 
 .rs-button-reset
 {
-	background: #c1c5c9;
+	background: #c6c6c6;
 	color: #323e4c;
 }
 
 .rs-button-reset:hover
 {
-	background: rgb(183, 183, 183);
+	background: #aaaaaa;
 }
 
 /* @section 6. query */
@@ -874,7 +878,7 @@ a
 
 .rs-dialog-overlay-default
 {
-	background: rgba(193, 197, 201, 0.9);
+	background: rgba(170, 170, 170, 0.9);
 }
 
 .rs-dialog-default, .rs-dialog-overlay-default
@@ -940,13 +944,13 @@ a
 
 .rs-field-default, .rs-field-select, .rs-field-textarea
 {
-	border: 2px solid #c1c5c9;
+	border: 2px solid #c6c6c6;
 	transition: background 0.2s, border 0.2s;
 }
 
 .rs-field-default:hover, .rs-field-select:hover, .rs-field-textarea:hover
 {
-	border-color: rgb(154, 154, 154);
+	border-color: #aaaaaa;
 }
 
 .rs-field-default:not(.rs-field-note):focus, .rs-field-select:not(.rs-field-note):focus, .rs-field-textarea:not(.rs-field-note):focus
@@ -1223,7 +1227,7 @@ ul.rs-list-default li:before
 
 .rs-list-tab > li
 {
-	background: #c1c5c9;
+	background: #c6c6c6;
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
@@ -1509,7 +1513,7 @@ ul.rs-list-default li:before
 
 .rs-table-default caption, .rs-table-default td, .rs-table-default th
 {
-	background: #c1c5c9;
+	background: #c6c6c6;
 	padding: 0.5em 0.75em;
 }
 
