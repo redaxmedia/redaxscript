@@ -70,7 +70,7 @@
 {
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
-	color: var(--rs-color-gray-1);
+	color: var(--rs-color-gray-primary);
 	padding: 1em;
 }
 

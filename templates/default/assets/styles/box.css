@@ -22,8 +22,8 @@
 
 .rs-box-code
 {
-	background: var(--rs-color-gray-1);
-	border: 0.25em solid var(--rs-color-gray-2);
+	background: var(--rs-color-gray-primary);
+	border: 0.25em solid var(--rs-color-gray-secondary);
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -72,7 +72,7 @@
 
 .rs-box-accordion-default
 {
-	background: var(--rs-color-gray-1);
+	background: var(--rs-color-gray-primary);
 	padding: 0.25em 1em;
 }
 
@@ -110,7 +110,7 @@
 
 .rs-box-note a
 {
-	color: color(var(--rs-color-dark) a(50%));
+	color: color(var(--rs-color-dark) a(65%));
 	text-decoration: underline;
 	transition: color 0.2s;
 }

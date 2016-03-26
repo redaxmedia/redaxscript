@@ -14,8 +14,8 @@
 :root
 {
 	--rs-color-light: #fff;
-	--rs-color-gray-1: #c6c6c6;
-	--rs-color-gray-2: #aaaaaa;
+	--rs-color-gray-primary: #c6c6c6;
+	--rs-color-gray-secondary: #aaaaaa;
 	--rs-color-dark: #000;
 
 	--rs-color-primary: #3873b5;
@@ -24,12 +24,16 @@
 	--rs-color-quaternary: #c77a46;
 
 	--rs-color-primary-light: color(var(--rs-color-primary) l(50%));
+	--rs-color-primary-dark: color(var(--rs-color-primary) l(40%));
 	--rs-color-secondary-light: color(var(--rs-color-secondary) l(50%));
 	--rs-color-quaternary-light: color(var(--rs-color-quaternary) l(50%));
 
 	--rs-gradient-primary: linear-gradient(var(--rs-color-primary-light), var(--rs-color-primary));
+	--rs-gradient-primary-light: linear-gradient(color(var(--rs-color-primary-light) l(55%)), color(var(--rs-color-primary) l(55%)));
 	--rs-gradient-secondary: linear-gradient(var(--rs-color-secondary-light), var(--rs-color-secondary));
+	--rs-gradient-secondary-light: linear-gradient(color(var(--rs-color-secondary-light) l(55%)), color(var(--rs-color-secondary) l(55%)));
 	--rs-gradient-quaternary: linear-gradient(var(--rs-color-quaternary-light), var(--rs-color-quaternary));
+	--rs-gradient-quaternary-light: linear-gradient(color(var(--rs-color-quaternary-light) l(55%)), color(var(--rs-color-quaternary) l(55%)));
 
 	--rs-color-success: #5bb75b;
 	--rs-color-warning: #f3940e;

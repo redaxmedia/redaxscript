@@ -94,7 +94,7 @@ a
 
 .rs-link-read-more:hover
 {
-	background-image: linear-gradient(color(var(--rs-color-light) a(15%)), color(var(--rs-color-light) a(10%))), var(--rs-gradient-quaternary);
+	background: var(--rs-gradient-quaternary-light);
 }
 
 .rs-link-read-more:active
@@ -218,7 +218,7 @@ a
 
 .rs-header .rs-title-website a
 {
-	color: color(var(--rs-color-light) a(80%));
+	color: var(--rs-color-gray-primary);
 	transition: color 0.2s;
 }
 
@@ -231,7 +231,7 @@ a
 
 .rs-description-website
 {
-	color: color(var(--rs-color-light) a(40%));
+	color: var(--rs-color-gray-secondary);
 	display: none;
 	font-weight: 700;
 	margin-left: 0.125em;
@@ -264,7 +264,7 @@ a
 .rs-footer,
 .rs-footer a
 {
-	color: var(--rs-color-gray-1);
+	color: var(--rs-color-gray-primary);
 }
 
 .rs-footer a:hover

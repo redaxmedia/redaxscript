@@ -56,7 +56,7 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	border: 2px solid var(--rs-color-gray-1);
+	border: 2px solid var(--rs-color-gray-primary);
 	transition: background 0.2s, border 0.2s;
 }
 
@@ -64,7 +64,7 @@
 .rs-field-select:hover,
 .rs-field-textarea:hover
 {
-	border-color: var(--rs-color-gray-2);
+	border-color: var(--rs-color-gray-secondary);
 }
 
 .rs-field-default:not(.rs-field-note):focus,

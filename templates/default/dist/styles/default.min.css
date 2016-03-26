@@ -120,7 +120,7 @@ a
 
 .rs-link-read-more:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(196, 114, 59), #c77a46);
+	background: linear-gradient(rgb(202, 128, 78), rgb(202, 128, 78));
 }
 
 .rs-link-read-more:active
@@ -245,7 +245,7 @@ a
 
 .rs-header .rs-title-website a
 {
-	color: rgba(255, 255, 255, 0.8);
+	color: #c6c6c6;
 	transition: color 0.2s;
 }
 
@@ -258,7 +258,7 @@ a
 
 .rs-description-website
 {
-	color: rgba(255, 255, 255, 0.4);
+	color: #aaaaaa;
 	display: none;
 	font-weight: 700;
 	margin-left: 0.125em;
@@ -653,7 +653,7 @@ a
 
 .rs-box-note a
 {
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.65);
 	text-decoration: underline;
 	transition: color 0.2s;
 }
@@ -755,7 +755,7 @@ a
 
 .rs-button-default:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(124, 184, 71), #699b3c);
+	background: linear-gradient(rgb(137, 191, 90), rgb(137, 191, 90));
 }
 
 .rs-button-default:active
@@ -1305,7 +1305,7 @@ ul.rs-list-default li:before
 
 	.rs-list-header > li > span
 	{
-		background: rgba(0, 0, 0, 0.3);
+		background: rgb(48, 98, 156);
 	}
 
 	.rs-list-header a, .rs-list-header span
@@ -1317,7 +1317,7 @@ ul.rs-list-default li:before
 
 	.rs-list-header a:hover
 	{
-		background: rgba(255, 255, 255, 0.1);
+		background: rgb(60, 123, 195);
 	}
 }
 
@@ -1334,7 +1334,7 @@ ul.rs-list-default li:before
 	{
 		background: linear-gradient(rgb(60, 123, 195), #3873b5);
 		border-radius: 0.125em;
-		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
+		box-shadow: inset 0 -0.125em 0 0 rgb(48, 98, 156);
 		display: inline-block;
 		margin: 1em 0;
 		padding: 0.25em 1em;
@@ -1342,7 +1342,7 @@ ul.rs-list-default li:before
 
 	.rs-list-header > li:hover
 	{
-		background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), linear-gradient(rgb(60, 123, 195), #3873b5);
+		background: linear-gradient(rgb(79, 136, 201), rgb(79, 136, 201));
 		color: #000;
 		cursor: pointer;
 	}
@@ -1389,7 +1389,7 @@ ul.rs-list-default li:before
 	{
 		border-bottom-left-radius: 0.125em;
 		border-bottom-right-radius: 0.125em;
-		border-bottom: 0.125em solid rgba(0, 0, 0, 0.2);
+		border-bottom: 0.125em solid rgb(48, 98, 156);
 	}
 
 	.rs-list-header-children:after
@@ -1453,7 +1453,7 @@ ul.rs-list-default li:before
 
 	.rs-fn-toggle-navigation
 	{
-		color: rgba(255, 255, 255, 0.7);
+		color: #c6c6c6;
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;

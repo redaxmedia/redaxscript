@@ -41,7 +41,7 @@ a.rs-button-default
 
 .rs-button-default:hover
 {
-	background-image: linear-gradient(color(var(--rs-color-light) a(15%)), color(var(--rs-color-light) a(10%))), var(--rs-gradient-secondary);
+	background: var(--rs-gradient-secondary-light);
 }
 
 .rs-button-default:active
@@ -115,14 +115,14 @@ a.rs-button-default
 .rs-button-reset,
 .rs-button-messenger
 {
-	background: var(--rs-color-gray-1);
+	background: var(--rs-color-gray-primary);
 	color: var(--rs-color-tertiary);
 }
 
 .rs-button-reset:hover,
 .rs-button-messenger:hover
 {
-	background: var(--rs-color-gray-2);
+	background: var(--rs-color-gray-secondary);
 }
 
 /* @section 6. query */

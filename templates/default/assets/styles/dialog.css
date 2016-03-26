@@ -13,7 +13,7 @@
 
 .rs-dialog-overlay-default
 {
-	background: color(var(--rs-color-gray-2) a(90%));
+	background: color(var(--rs-color-gray-secondary) a(90%));
 }
 
 .rs-dialog-default,

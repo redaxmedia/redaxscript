@@ -17,7 +17,7 @@
 .rs-table-default td,
 .rs-table-default th
 {
-	background: var(--rs-color-gray-1);
+	background: var(--rs-color-gray-primary);
 	padding: 0.5em 0.75em;
 }
 

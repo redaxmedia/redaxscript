@@ -26,7 +26,7 @@
 
 	.rs-fn-toggle-navigation
 	{
-		color: color(var(--rs-color-light) a(70%));
+		color: var(--rs-color-gray-primary);
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
