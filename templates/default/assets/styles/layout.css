@@ -29,9 +29,8 @@
 .rs-main
 {
 	background: var(--rs-color-light);
-	margin-bottom: 5em;
+	margin-bottom: 4em;
 	min-height: 20em;
-	padding-bottom: 2em;
 }
 
 .rs-page
