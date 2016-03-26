@@ -26,7 +26,7 @@
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
-	font: 1em/1.25em var(--rs-font-primary);
+	font: bold 1em/1.25em var(--rs-font-primary);
 	padding: 0.375em 2em;
 	text-align: center;
 	text-decoration: none;

@@ -353,7 +353,7 @@ a
 
 .rs-page
 {
-	margin-top: 2em;
+	margin-top: 1em;
 }
 
 /* @section 2. wrapper */
@@ -736,7 +736,7 @@ a
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: bold 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.375em 2em;
 	text-align: center;
 	text-decoration: none;
