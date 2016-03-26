@@ -10,6 +10,7 @@
 			""
 		],
 		{
+			"id": 1,
 			"status": 1
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is empty</li><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
@@ -25,6 +26,7 @@
 			""
 		],
 		{
+			"id": 1,
 			"status": 1
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
@@ -40,9 +42,10 @@
 			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
 		],
 		{
+			"id": 1,
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Login is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>No user present</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -55,6 +58,7 @@
 			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
 		],
 		{
+			"id": 1,
 			"status": 0
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Access denied</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
@@ -70,6 +74,7 @@
 			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
 		],
 		{
+			"id": 1,
 			"status": 1
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=admin\" http-equiv=\"refresh\" />"

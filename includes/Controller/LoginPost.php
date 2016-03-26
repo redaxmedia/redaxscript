@@ -80,7 +80,6 @@ class LoginPost implements ControllerInterface
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
-		$passwordHash = new Hash(Config::getInstance());
 
 		$auth = new Auth($this->_request);
 
@@ -113,23 +112,23 @@ class LoginPost implements ControllerInterface
 
 		if (!$postArray['user'])
 		{
-			$errorArray[] = Language::get('user_empty');
+			$errorArray[] = $this->_language->get('user_empty');
 		}
 		else if ($login_by_email == 0 && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('user_incorrect');
+			$errorArray[] = $this->_language->get('user_incorrect');
 		}
 		if (!$postArray['password'])
 		{
-			$errorArray[] = Language::get('password_empty');
+			$errorArray[] = $this->_language->get('password_empty');
 		}
 		if ($login_by_email == 1 && $emailValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('email_incorrect');
+			$errorArray[] = $this->_language->get('email_incorrect');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('captcha_incorrect');
+			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
 		/* handle error */
@@ -148,20 +147,17 @@ class LoginPost implements ControllerInterface
 
 		/* handle error */
 
-		$passwordHash->init($user->password);
-		$passwordHash = $passwordHash->getHash();
-
-		if (!$user)
+		if (!$user->id)
 		{
-			$errorArray[] = Language::get('login_incorrect');
+			$errorArray[] = $this->_language->get('user_no');
 		}
 		else if ($passwordValidator->validate($postArray['password'], $user->password) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('password_incorrect');
+			$errorArray[] = $this->_language->get('password_incorrect');
 		}
 		else if (intval($user->status) === 0)
 		{
-			$errorArray[] = Language::get('access_no');
+			$errorArray[] = $this->_language->get('access_no');
 		}
 
 		if ($errorArray)
@@ -185,7 +181,7 @@ class LoginPost implements ControllerInterface
 	public function success()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('continue'), 'admin')->doRedirect(0)->success(Language::get('logged_in'), Language::get('welcome'));
+		return $messenger->setAction($this->_language->get('continue'), 'admin')->doRedirect(0)->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
 	}
 
 	/**
@@ -201,6 +197,6 @@ class LoginPost implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('back'), 'login')->error($errorArray, Language::get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'login')->error($errorArray, $this->_language->get('error_occurred'));
 	}
 }

@@ -67,8 +67,12 @@ class LoginPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 1)->save();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
+		Db::setSetting('captcha', 1);
+		Db::setSetting('notification', 1);
+
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init('test');
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', $passwordHash->getHash())->save();
 	}
 
 	/**
@@ -79,8 +83,9 @@ class LoginPostTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'captcha')->findOne()->set('value', 0)->save();
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
+		Db::setSetting('captcha', 0);
+		Db::setSetting('notification', 0);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
 	}
 
 	/**
@@ -116,23 +121,10 @@ class LoginPostTest extends TestCase
 		$this->_request->set('post', $post);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 
-		/* login by name */
-
 		$user = Db::forTablePrefix('users')->where('user', $post['user'])->findOne();
-		if ($user->id)
+		if ($user)
 		{
-			Db::forTablePrefix('users')->where('user', $post['user'])->findOne()->set('status', $settings['status'])->save();
-		}
-
-		/* login by email */
-
-		else
-		{
-			$user = Db::forTablePrefix('users')->where('email', $post['user'])->findOne();
-			if ($user->id)
-			{
-				Db::forTablePrefix('users')->where('email', $post['user'])->findOne()->set('status', $settings['status'])->save();
-			}
+			Db::forTablePrefix('users')->whereIdIs($settings['id'])->findOne()->set('status', $settings['status'])->save();
 		}
 
 		$loginPost = new Controller\LoginPost($this->_registry, $this->_language, $this->_request);
