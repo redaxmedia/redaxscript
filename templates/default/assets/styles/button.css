@@ -22,7 +22,7 @@
 {
 	background: var(--rs-gradient-secondary);
 	border-radius: 0.125em;
-	box-shadow: var(--rs-style-shadow-inner), var(--rs-style-shadow-outer);
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
@@ -46,7 +46,7 @@ a.rs-button-default
 
 .rs-button-default:active
 {
-	box-shadow: var(--rs-style-shadow-inner);
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
 	transform: translateY(2px);
 }
 
