@@ -14,7 +14,7 @@
  * @param array $options
  */
 
-function navigation_list($table = '', $options = '')
+function navigation_list($table, $options)
 {
 	$output = Redaxscript\Hook::trigger('navigationStart');
 
@@ -147,7 +147,7 @@ function navigation_list($table = '', $options = '')
 				}
 				else
 				{
-					$class_string = '';
+					$class_string = null;
 				}
 
 				/* prepare metadata */
@@ -251,7 +251,7 @@ function navigation_list($table = '', $options = '')
  * @param array $options
  */
 
-function languages_list($options = '')
+function languages_list($options)
 {
 	/* define option variables */
 
@@ -324,7 +324,7 @@ function languages_list($options = '')
  * @param array $options
  */
 
-function templates_list($options = '')
+function templates_list($options)
 {
 	/* define option variables */
 

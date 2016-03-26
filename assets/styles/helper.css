@@ -21,6 +21,7 @@
 
 /* @section 2. redirect */
 
+.rs-admin-redirect-overlay,
 .rs-redirect-overlay
 {
 	background: #fff;

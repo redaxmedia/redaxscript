@@ -151,7 +151,7 @@ function admin_contents_list()
 
 				if ($status == 1)
 				{
-					$class_status = '';
+					$class_status = null;
 				}
 				else
 				{
@@ -173,7 +173,7 @@ function admin_contents_list()
 				}
 				else
 				{
-					$route = '';
+					$route = null;
 				}
 
 				/* collect tbody output */
@@ -446,7 +446,7 @@ function admin_groups_list()
 
 			if ($status == 1)
 			{
-				$class_status = '';
+				$class_status = null;
 			}
 			else
 			{
@@ -543,7 +543,7 @@ function admin_users_list()
 
 			if ($status == 1)
 			{
-				$class_status = '';
+				$class_status = null;
 			}
 			else
 			{
@@ -697,7 +697,7 @@ function admin_modules_list()
 
 				if ($status == 1)
 				{
-					$class_status = '';
+					$class_status = null;
 				}
 				else
 				{

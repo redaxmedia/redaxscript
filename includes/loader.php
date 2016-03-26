@@ -15,7 +15,7 @@
  * @return string
  */
 
-function loader($type = '', $mode = '')
+function loader($type , $mode)
 {
 	$output = Redaxscript\Hook::trigger('loaderStart');
 	if ($mode == 'inline' || $mode == 'outline')
@@ -292,7 +292,7 @@ function styles()
  * @param string $mode
  */
 
-function scripts($mode = '')
+function scripts($mode)
 {
 	if (!$mode)
 	{
@@ -393,7 +393,7 @@ function scripts($mode = '')
  * @return string
  */
 
-function scripts_transport($minify = '')
+function scripts_transport($minify)
 {
 	/* extend redaxscript object */
 

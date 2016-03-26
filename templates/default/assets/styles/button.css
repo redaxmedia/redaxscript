@@ -112,13 +112,15 @@ a.rs-button-default
 	pointer-events: none;
 }
 
-.rs-button-reset
+.rs-button-reset,
+.rs-button-messenger
 {
 	background: var(--rs-color-gray-1);
 	color: var(--rs-color-tertiary);
 }
 
-.rs-button-reset:hover
+.rs-button-reset:hover,
+.rs-button-messenger:hover
 {
 	background: var(--rs-color-gray-2);
 }

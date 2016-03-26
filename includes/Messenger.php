@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to generate a flash message
+ * parent class to generate a message
  *
  * @since 3.0.0
  *
@@ -33,7 +33,7 @@ class Messenger
 			'box' => 'rs-box-messenger rs-box-note',
 			'title' => 'rs-title-messenger rs-title-note',
 			'list' => 'rs-list-messenger',
-			'link' => 'rs-button-messenger',
+			'link' => 'rs-button-default rs-button-messenger',
 			'redirect' => 'rs-redirect-overlay',
 			'notes' => array(
 				'success' => 'rs-note-success',

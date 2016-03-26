@@ -160,7 +160,7 @@ function admin_panel_list()
  * @return string
  */
 
-function admin_dock($table = '', $id = '')
+function admin_dock($table, $id)
 {
 	$output = Redaxscript\Hook::trigger('adminDockStart');
 
@@ -242,7 +242,7 @@ function admin_notification()
  * @return string
  */
 
-function admin_control($type = '', $table = '', $id = '', $alias = '', $status = '', $new = '', $edit = '', $delete = '')
+function admin_control($type, $table, $id, $alias, $status, $new, $edit, $delete)
 {
 	$output = Redaxscript\Hook::trigger('adminControlStart');
 

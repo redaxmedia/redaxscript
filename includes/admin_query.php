@@ -20,7 +20,7 @@ function admin_process()
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$specialFilter = new Redaxscript\Filter\Special;
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	$filter = Redaxscript\Registry::get('filter');
 	$tableParameter = Redaxscript\Registry::get('tableParameter');
 	$idParameter = Redaxscript\Registry::get('idParameter');
@@ -540,7 +540,7 @@ function admin_move()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -587,11 +587,11 @@ function admin_sort()
 				}
 				if ($parent)
 				{
-					$select_array[$parent][$id] = '';
+					$select_array[$parent][$id] = null;
 				}
 				else
 				{
-					$select_array[][$id] = '';
+					$select_array[][$id] = null;
 				}
 			}
 		}
@@ -627,7 +627,7 @@ function admin_sort()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -689,7 +689,7 @@ function admin_status($input)
 
 	/* show success */
 
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -732,7 +732,7 @@ function admin_install()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -836,7 +836,7 @@ function admin_delete()
 
 		/* show success */
 
-		$messenger = new Redaxscript\Messenger();
+		$messenger = new Redaxscript\Admin\Messenger();
 		echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
@@ -900,7 +900,7 @@ function admin_update()
 
 		/* show success */
 
-		$messenger = new Redaxscript\Messenger();
+		$messenger = new Redaxscript\Admin\Messenger();
 		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }

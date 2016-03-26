@@ -19,7 +19,7 @@ function admin_router()
 	$idParameter = Redaxscript\Registry::get('idParameter');
 	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
 	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger();
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{

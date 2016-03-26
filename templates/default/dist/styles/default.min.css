@@ -825,13 +825,13 @@ a
 	pointer-events: none;
 }
 
-.rs-button-reset
+.rs-button-reset, .rs-button-messenger
 {
 	background: #c6c6c6;
 	color: #323e4c;
 }
 
-.rs-button-reset:hover
+.rs-button-reset:hover, .rs-button-messenger:hover
 {
 	background: #aaaaaa;
 }

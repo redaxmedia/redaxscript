@@ -80,7 +80,7 @@ button, input, select, textarea
 
 /* @section 2. redirect */
 
-.rs-redirect-overlay
+.rs-admin-redirect-overlay, .rs-redirect-overlay
 {
 	background: #fff;
 	bottom: 0;
