@@ -2,10 +2,8 @@
 namespace Redaxscript\Controller;
 
 use Redaxscript\Auth;
-use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Filter;
-use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Messenger;
 use Redaxscript\Registry;
@@ -13,7 +11,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to process logout request
+ * children class to process login request
  *
  * @since 3.0.0
  *
