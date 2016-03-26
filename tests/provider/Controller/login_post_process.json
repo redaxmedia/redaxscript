@@ -13,7 +13,7 @@
 			"id": 1,
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is empty</li><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User is empty</li><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"id": 1,
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Password is empty</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -45,7 +45,7 @@
 			"id": 1,
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>No user present</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>No user present</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -61,7 +61,7 @@
 			"id": 1,
 			"status": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Access denied</li></ul></div><a href=\"login\" class=\"rs-button-messenger\">Back</a>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Access denied</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Back</a>"
 	],
 	[
 		{
@@ -77,6 +77,6 @@
 			"id": 1,
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=admin\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=admin\" http-equiv=\"refresh\" />"
 	]
 ]
