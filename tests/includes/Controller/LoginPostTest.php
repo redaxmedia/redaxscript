@@ -1,8 +1,10 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Config;
 use Redaxscript\Controller;
 use Redaxscript\Db;
+use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -114,17 +116,30 @@ class LoginPostTest extends TestCase
 		$this->_request->set('post', $post);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 
-		$user = Db::forTablePrefix('users')->where('user', $post['user'])->findArray();
+		/* login by name */
+
+		$user = Db::forTablePrefix('users')->where('user', $post['user'])->findOne();
 		if ($user->id)
 		{
-			Db::forTablePrefix('users')->where('name', $post['user'])->findOne()->set('status', $settings['status'])->save();
+			Db::forTablePrefix('users')->where('user', $post['user'])->findOne()->set('status', $settings['status'])->save();
 		}
-		
-		$registerPost = new Controller\LoginPost($this->_registry, $this->_language, $this->_request);
+
+		/* login by email */
+
+		else
+		{
+			$user = Db::forTablePrefix('users')->where('email', $post['user'])->findOne();
+			if ($user->id)
+			{
+				Db::forTablePrefix('users')->where('email', $post['user'])->findOne()->set('status', $settings['status'])->save();
+			}
+		}
+
+		$loginPost = new Controller\LoginPost($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $registerPost->process();
+		$actual = $loginPost->process();
 
 		/* compare */
 

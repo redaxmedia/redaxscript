@@ -93,9 +93,6 @@ class LoginPost implements ControllerInterface
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		$passwordHash->init($postArray['password']);
-		/*$passwordHash = $passwordHash->getHash();*/
-
 		/* find user */
 
 		$users = Db::forTablePrefix('users');
@@ -146,6 +143,14 @@ class LoginPost implements ControllerInterface
 
 		$user = $users->findOne();
 
+		$auth->init();
+		$auth->login($user->id);
+
+		/* handle error */
+
+		$passwordHash->init($user->password);
+		$passwordHash = $passwordHash->getHash();
+
 		if (!$user)
 		{
 			$errorArray[] = Language::get('login_incorrect');
@@ -154,20 +159,15 @@ class LoginPost implements ControllerInterface
 		{
 			$errorArray[] = Language::get('password_incorrect');
 		}
-		else if ($user->status === 0)
+		else if (intval($user->status) === 0)
 		{
 			$errorArray[] = Language::get('access_no');
 		}
-
-		/* handle error */
 
 		if ($errorArray)
 		{
 			return $this->error($errorArray);
 		}
-
-		$auth->init();
-		$auth->login($user->id);
 
 		/* handle success */
 
