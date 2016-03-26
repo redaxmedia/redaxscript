@@ -278,12 +278,13 @@ button, input, select, textarea
 
 .rs-dialog
 {
+	box-sizing: border-box;
 	left: 50%;
-	margin: -5em 0 0 -15em;
 	position: fixed;
 	top: 50%;
 	z-index: 1100;
-	width: 30em;
+	margin: -5em 0 0 -40%;
+	width: 80%;
 }
 
 /* @section 2. dialog overlay */
@@ -302,12 +303,12 @@ button, input, select, textarea
 
 /* @section 3.1 max width 30em */
 
-@media screen and (max-width: 29.999em)
+@media screen and (min-width: 50em)
 {
 	.rs-dialog
 	{
-		margin: -5em 0 0 -40%;
-		width: 80%;
+		margin-left: -15em;
+		width: 30em;
 	}
 }
 /**
