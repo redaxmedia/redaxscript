@@ -33,7 +33,7 @@ class Messenger
 			'box' => 'rs-box-messenger rs-box-note',
 			'title' => 'rs-title-messenger rs-title-note',
 			'list' => 'rs-list-messenger',
-			'link' => 'rs-admin-button-default rs-button-messenger',
+			'link' => 'rs-button-messenger',
 			'redirect' => 'rs-redirect-overlay',
 			'notes' => array(
 				'success' => 'rs-note-success',
