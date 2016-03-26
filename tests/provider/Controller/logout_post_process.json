@@ -1,5 +1,5 @@
 [
 	[
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Goodbye</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged out by the system</div><a href=\"login\" class=\"rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=login\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Goodbye</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged out by the system</div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=login\" http-equiv=\"refresh\" />"
 	]
 ]
