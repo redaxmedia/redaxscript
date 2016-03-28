@@ -259,16 +259,8 @@
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 2.75em;
+	padding: 0.5em 1em;
 	position: relative;
-}
-
-.rs-admin-box-note:before
-{
-	font: 1.5em/1.25em 'icon admin';
-	left: 0.5em;
-	position: absolute;
-	top: 0.25em;
 }
 
 .rs-admin-box-note a
@@ -1490,11 +1482,6 @@
 	background: #5bb75b;
 }
 
-.rs-admin-note-success.rs-admin-box-note:before
-{
-	content: '\2713';
-}
-
 /* @section 2. warning */
 
 .rs-admin-note-warning:not(:focus)
@@ -1511,11 +1498,6 @@
 .rs-admin-note-warning.rs-admin-field-note option
 {
 	background: #f3940e;
-}
-
-.rs-admin-note-warning.rs-admin-box-note:before
-{
-	content: '\21';
 }
 
 /* @section 3. error */
@@ -1536,11 +1518,6 @@
 	background: #da4f49;
 }
 
-.rs-admin-note-error.rs-admin-box-note:before
-{
-	content: '\78';
-}
-
 /* @section 4. info */
 
 .rs-admin-note-info:not(:focus)
@@ -1557,9 +1534,4 @@
 .rs-admin-note-info.rs-admin-field-note option
 {
 	background: #49afcd;
-}
-
-.rs-admin-note-info.rs-admin-box-note:before
-{
-	content: '\69';
 }

@@ -31,11 +31,6 @@
 	background: #5bb75b;
 }
 
-.rs-admin-note-success.rs-admin-box-note:before
-{
-	content: '\2713';
-}
-
 /* @section 2. warning */
 
 .rs-admin-note-warning:not(:focus)
@@ -53,11 +48,6 @@
 .rs-admin-note-warning.rs-admin-field-note option
 {
 	background: #f3940e;
-}
-
-.rs-admin-note-warning.rs-admin-box-note:before
-{
-	content: '\21';
 }
 
 /* @section 3. error */
@@ -79,11 +69,6 @@
 	background: #da4f49;
 }
 
-.rs-admin-note-error.rs-admin-box-note:before
-{
-	content: '\78';
-}
-
 /* @section 4. info */
 
 .rs-admin-note-info:not(:focus)
@@ -101,9 +86,4 @@
 .rs-admin-note-info.rs-admin-field-note option
 {
 	background: #49afcd;
-}
-
-.rs-admin-note-info.rs-admin-box-note:before
-{
-	content: '\69';
 }

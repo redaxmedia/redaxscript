@@ -104,16 +104,8 @@
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 2.75em;
+	padding: 0.5em 1em;
 	position: relative;
-}
-
-.rs-admin-box-note:before
-{
-	font: 1.5em/1.25em 'icon admin';
-	left: 0.5em;
-	position: absolute;
-	top: 0.25em;
 }
 
 .rs-admin-box-note a
