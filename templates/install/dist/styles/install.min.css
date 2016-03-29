@@ -48,14 +48,14 @@
 
 .rs-install-content
 {
-	background: #fff;
+	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
 	padding: 1em;
 }
 
 .rs-install-title
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 	font-size: 2.5em;
 	font-weight: normal;
 	line-height: 1em;

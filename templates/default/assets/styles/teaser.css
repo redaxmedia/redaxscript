@@ -34,7 +34,7 @@
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid var(--rs-color-quaternary);
 	border-radius: 0 0.125em 0.125em 0;
-	color: var(--rs-color-light);
+	color: gray(255);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;

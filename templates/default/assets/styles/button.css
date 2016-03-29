@@ -35,7 +35,7 @@
 .rs-button-default,
 a.rs-button-default
 {
-	color: var(--rs-color-light);
+	color: gray(255);
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
@@ -69,7 +69,7 @@ a.rs-button-default
 
 .rs-button-search:hover
 {
-	color: var(--rs-color-dark);
+	color: gray(0);
 }
 
 .rs-button-search:after
@@ -115,14 +115,14 @@ a.rs-button-default
 .rs-button-reset,
 .rs-button-messenger
 {
-	background: var(--rs-color-gray-primary);
-	color: var(--rs-color-tertiary);
+	background: gray(200);
+	color: gray(70);
 }
 
 .rs-button-reset:hover,
 .rs-button-messenger:hover
 {
-	background: var(--rs-color-gray-secondary);
+	background: gray(180);
 }
 
 /* @section 6. query */

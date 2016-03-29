@@ -22,13 +22,13 @@
 
 .rs-body
 {
-	background: var(--rs-color-light);
+	background: gray(255);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	background: var(--rs-color-light);
+	background: gray(255);
 	margin-bottom: 4em;
 	min-height: 20em;
 }
@@ -70,7 +70,7 @@
 {
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
-	color: var(--rs-color-gray-primary);
+	color: gray(200);
 	padding: 1em;
 }
 

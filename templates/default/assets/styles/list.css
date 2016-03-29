@@ -101,7 +101,7 @@ ul.rs-list-default li:before
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 /* @section 5. list tabs */
@@ -130,12 +130,12 @@ ul.rs-list-default li:before
 
 .rs-list-tab .rs-item-active a
 {
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 .rs-list-tab > li
 {
-	background: var(--rs-color-gray-primary);
+	background: gray(200);
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
@@ -149,7 +149,7 @@ ul.rs-list-default li:before
 
 .rs-list-tab > li:hover a
 {
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 /* @section 6. list result */
@@ -174,7 +174,7 @@ ul.rs-list-default li:before
 {
 	background: var(--rs-color-tertiary);
 	border-radius: 0.125em;
-	color: var(--rs-color-light);
+	color: gray(255);
 	content: counter(result, decimal);
 	counter-increment: result;
 	height: 2em;
@@ -252,7 +252,7 @@ ul.rs-list-default li:before
 	.rs-list-header > li:hover
 	{
 		background: var(--rs-gradient-primary-light);
-		color: var(--rs-color-dark);
+		color: gray(0);
 		cursor: pointer;
 	}
 
@@ -305,7 +305,7 @@ ul.rs-list-default li:before
 	{
 		border-radius: 0.25em;
 		bottom: 0;
-		box-shadow: 0 0.1em 0.2em color(var(--rs-color-dark) a(50%));
+		box-shadow: 0 0.1em 0.2em gray(0, 0.5);
 		content: '';
 		left: 0;
 		position: absolute;

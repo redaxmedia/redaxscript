@@ -22,8 +22,8 @@
 
 .rs-box-code
 {
-	background: var(--rs-color-gray-primary);
-	border: 0.25em solid var(--rs-color-gray-secondary);
+	background: gray(200);
+	border: 0.25em solid gray(170);
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -58,7 +58,7 @@
 .rs-box-metadata span::selection
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 /* @section 3. box quote */
@@ -72,7 +72,7 @@
 
 .rs-box-accordion-default
 {
-	background: var(--rs-color-gray-primary);
+	background: gray(200);
 	padding: 0.25em 1em;
 }
 
@@ -86,7 +86,7 @@
 .rs-box-tab-default
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 	padding: 0.25em 1em;
 }
 
@@ -110,14 +110,14 @@
 
 .rs-box-note a
 {
-	color: color(var(--rs-color-dark) a(65%));
+	color: gray(0, 0.65);
 	text-decoration: underline;
 	transition: color 0.2s;
 }
 
 .rs-box-note a:hover
 {
-	color: var(--rs-color-dark);
+	color: gray(0);
 }
 
 /* @section 7. box comment */

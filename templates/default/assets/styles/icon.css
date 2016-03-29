@@ -24,7 +24,7 @@
 {
 	background: var(--rs-color-tertiary);
 	padding: 0.125em 0.5em;
-	color: var(--rs-color-light);
+	color: gray(255);
 	display: inline-block;
 	margin: 0.125em;
 	border-radius: 0.125em;

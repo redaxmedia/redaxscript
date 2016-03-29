@@ -100,7 +100,7 @@ a
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	cursor: pointer;
 	display: block;
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
@@ -164,7 +164,7 @@ a
 {
 	background: #323e4c;
 	box-sizing: border-box;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	padding: 0.25em 1em;
 	position: relative;
 	width: 100%;
@@ -245,20 +245,20 @@ a
 
 .rs-header .rs-title-website a
 {
-	color: #c6c6c6;
+	color: rgb(200, 200, 200);
 	transition: color 0.2s;
 }
 
 .rs-header .rs-title-website:hover a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 4. description website */
 
 .rs-description-website
 {
-	color: #aaaaaa;
+	color: rgb(170, 170, 170);
 	display: none;
 	font-weight: 700;
 	margin-left: 0.125em;
@@ -268,7 +268,7 @@ a
 
 .rs-header, .rs-header a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 6. content */
@@ -282,23 +282,22 @@ a
 
 .rs-sidebar a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 8. footer */
 
 .rs-footer, .rs-footer a
 {
-	color: #c6c6c6;
+	color: rgb(200, 200, 200);
 }
 
 .rs-footer a:hover
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 9. query */
-
 
 /* @section 9.1 medium min */
 
@@ -339,13 +338,13 @@ a
 
 .rs-body
 {
-	background: #fff;
+	background: rgb(255, 255, 255);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	background: #fff;
+	background: rgb(255, 255, 255);
 	margin-bottom: 4em;
 	min-height: 20em;
 }
@@ -387,7 +386,7 @@ a
 {
 	background: #323e4c;
 	box-sizing: border-box;
-	color: #c6c6c6;
+	color: rgb(200, 200, 200);
 	padding: 1em;
 }
 
@@ -560,8 +559,8 @@ a
 
 .rs-box-code
 {
-	background: #c6c6c6;
-	border: 0.25em solid #aaaaaa;
+	background: rgb(200, 200, 200);
+	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
 	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
@@ -595,13 +594,13 @@ a
 .rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-box-metadata a::selection, .rs-box-metadata span::selection
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 3. box quote */
@@ -615,7 +614,7 @@ a
 
 .rs-box-accordion-default
 {
-	background: #c6c6c6;
+	background: rgb(200, 200, 200);
 	padding: 0.25em 1em;
 }
 
@@ -629,7 +628,7 @@ a
 .rs-box-tab-default
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	padding: 0.25em 1em;
 }
 
@@ -660,7 +659,7 @@ a
 
 .rs-box-note a:hover
 {
-	color: #000;
+	color: rgb(0, 0, 0);
 }
 
 /* @section 7. box comment */
@@ -747,7 +746,7 @@ a
 
 .rs-button-default, a.rs-button-default
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 	transition: box-shadow 0.1s, -webkit-transform 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s, -webkit-transform 0.1s;
@@ -784,7 +783,7 @@ a
 
 .rs-button-search:hover
 {
-	color: #000;
+	color: rgb(0, 0, 0);
 }
 
 .rs-button-search:after
@@ -827,13 +826,13 @@ a
 
 .rs-button-reset, .rs-button-messenger
 {
-	background: #c6c6c6;
-	color: #323e4c;
+	background: rgb(200, 200, 200);
+	color: rgb(70, 70, 70);
 }
 
 .rs-button-reset:hover, .rs-button-messenger:hover
 {
-	background: #aaaaaa;
+	background: rgb(180, 180, 180);
 }
 
 /* @section 6. query */
@@ -891,7 +890,7 @@ a
 .rs-dialog-default
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	padding: 1em;
 }
 
@@ -944,13 +943,13 @@ a
 
 .rs-field-default, .rs-field-select, .rs-field-textarea
 {
-	border: 2px solid #c6c6c6;
+	border: 2px solid rgb(200, 200, 200);
 	transition: background 0.2s, border 0.2s;
 }
 
 .rs-field-default:hover, .rs-field-select:hover, .rs-field-textarea:hover
 {
-	border-color: #aaaaaa;
+	border-color: rgb(170, 170, 170);
 }
 
 .rs-field-default:not(.rs-field-note):focus, .rs-field-select:not(.rs-field-note):focus, .rs-field-textarea:not(.rs-field-note):focus
@@ -1056,7 +1055,7 @@ a
 
 .rs-form-search
 {
-	background: #fff;
+	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
 }
 /**
@@ -1085,7 +1084,7 @@ a
 {
 	background: #323e4c;
 	padding: 0.125em 0.5em;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	display: inline-block;
 	margin: 0.125em;
 	border-radius: 0.125em;
@@ -1193,7 +1192,7 @@ ul.rs-list-default li:before
 	text-decoration: none;
 	display: block;
 	box-sizing: border-box;
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 5. list tabs */
@@ -1222,12 +1221,12 @@ ul.rs-list-default li:before
 
 .rs-list-tab .rs-item-active a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-list-tab > li
 {
-	background: #c6c6c6;
+	background: rgb(200, 200, 200);
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
@@ -1241,7 +1240,7 @@ ul.rs-list-default li:before
 
 .rs-list-tab > li:hover a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 6. list result */
@@ -1266,7 +1265,7 @@ ul.rs-list-default li:before
 {
 	background: #323e4c;
 	border-radius: 0.125em;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	content: counter(result, decimal);
 	counter-increment: result;
 	height: 2em;
@@ -1343,7 +1342,7 @@ ul.rs-list-default li:before
 	.rs-list-header > li:hover
 	{
 		background: linear-gradient(rgb(79, 136, 201), rgb(79, 136, 201));
-		color: #000;
+		color: rgb(0, 0, 0);
 		cursor: pointer;
 	}
 
@@ -1453,7 +1452,7 @@ ul.rs-list-default li:before
 
 	.rs-fn-toggle-navigation
 	{
-		color: #c6c6c6;
+		color: rgb(200, 200, 200);
 		font: 1rem arial;
 		padding-top: 2.5em;
 		position: absolute;
@@ -1513,7 +1512,7 @@ ul.rs-list-default li:before
 
 .rs-table-default caption, .rs-table-default td, .rs-table-default th
 {
-	background: #c6c6c6;
+	background: rgb(200, 200, 200);
 	padding: 0.5em 0.75em;
 }
 
@@ -1522,7 +1521,7 @@ ul.rs-list-default li:before
 .rs-table-default th, .rs-table-default tfoot td, .rs-table-default caption
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-table-default tr
@@ -1573,7 +1572,7 @@ ul.rs-list-default li:before
 	background: rgba(50, 62, 77, 0.8);
 	border-left: 0.25em solid #c77a46;
 	border-radius: 0 0.125em 0.125em 0;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
@@ -1669,7 +1668,7 @@ ul.rs-list-default li:before
 .rs-tooltip:after
 {
 	background: #323e4c;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
 	left: 110%;
