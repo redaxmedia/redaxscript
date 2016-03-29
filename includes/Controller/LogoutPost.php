@@ -8,7 +8,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * children class to process logout request
+ * children class to process logout
  *
  * @since 3.0.0
  *
@@ -71,19 +71,13 @@ class LogoutPost implements ControllerInterface
 		$auth = new Auth($this->_request);
 		$auth->init();
 
+		/* handle error and success */
+
 		if ($auth->logout())
 		{
-			/* handle success */
-
 			return $this->success();
 		}
-		else
-		{
-			/* handle error */
-
-			return $this->error();
-		}
-
+		return $this->error();
 	}
 
 	/**

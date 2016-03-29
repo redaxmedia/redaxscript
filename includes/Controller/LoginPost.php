@@ -11,7 +11,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to process login request
+ * children class to process login
  *
  * @since 3.0.0
  *
@@ -122,14 +122,10 @@ class LoginPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else
+		else if (!$loginByEmail && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
-			if ($loginByEmail === 0 && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
-			{
-				$errorArray[] = $this->_language->get('user_incorrect');
-			}
+			$errorArray[] = $this->_language->get('user_incorrect');
 		}
-
 		if (!$postArray['password'])
 		{
 			$errorArray[] = $this->_language->get('password_empty');
@@ -147,18 +143,20 @@ class LoginPost implements ControllerInterface
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
+		/* handle error */
+
 		if ($errorArray)
 		{
 			return $this->error($errorArray);
 		}
+
+		/* handle success */
+
 		else if ($auth->login($user->id))
 		{
-			/* handle success */
-
 			return $this->success();
 		}
-
-		return $this->error($errorArray);
+		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
