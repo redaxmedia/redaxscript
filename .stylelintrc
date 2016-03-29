@@ -5,6 +5,14 @@
 		"color-no-invalid-hex": true,
 		"block-no-empty": true,
 		"declaration-no-important": true,
-		"max-empty-lines": 1
+		"indentation": "tab",
+		"max-empty-lines": 1,
+		"max-nesting-depth": 1,
+		"no-browser-hacks": true,
+		"number-zero-length-no-unit": true,
+		"selector-no-id": true,
+		"selector-no-universal": true,
+		"selector-no-vendor-prefix": true,
+		"selector-type-case": "lower"
 	}
 }
