@@ -61,7 +61,7 @@
 {
 	text-indent: 0;
 	content: '\3009';
-	font: 0.5em/4em 'icon default';
+	font: 0.5em/4em var(--rs-font-icon);
 	position: absolute;
 	left: 0;
 	right: 0;

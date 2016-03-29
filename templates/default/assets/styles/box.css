@@ -102,7 +102,7 @@
 
 .rs-box-note:before
 {
-	font: 1.5em/1.25em 'icon default';
+	font: 1.5em/1.25em var(--rs-font-icon);
 	left: 0.5em;
 	position: absolute;
 	top: 0.25em;

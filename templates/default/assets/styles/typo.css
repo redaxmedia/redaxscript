@@ -88,7 +88,7 @@ a
 .rs-link-read-more:after
 {
 	content: '\3009';
-	font: 0.75em/1em 'icon default';
+	font: 0.75em/1em var(--rs-font-icon);
 	margin-left: 0.375em;
 }
 
@@ -120,7 +120,7 @@ a
 .rs-title-comment:before
 {
 	content: '\25b6';
-	font: 2em/1em 'icon default';
+	font: 2em/1em var(--rs-font-icon);
 	position: absolute;
 	left: 0;
 	top: -0.25em;
@@ -152,7 +152,7 @@ a
 .rs-title-accordion:after
 {
 	content: '+';
-	font: 1.25rem/2.25rem 'icon default';
+	font: 1.25rem/2.25rem var(--rs-font-icon);
 	position: absolute;
 	right: 1rem;
 }
