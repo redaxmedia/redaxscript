@@ -1,0 +1,10 @@
+{
+	"rules":
+	{
+		"color-named": "never",
+		"color-no-invalid-hex": true,
+		"block-no-empty": true,
+		"declaration-no-important": true,
+		"max-empty-lines": 1
+	}
+}
