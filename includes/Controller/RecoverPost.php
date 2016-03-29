@@ -108,7 +108,7 @@ class RecoverPost implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return self::error($errorArray);
+			return $this->error($errorArray);
 		}
 
 		/* handle success */
@@ -136,7 +136,7 @@ class RecoverPost implements ControllerInterface
 		}
 		if ($successArray)
 		{
-			return self::success();
+			return $this->success();
 		}
 		return $this->error($this->_language->get('something_wrong'));
 	}

@@ -690,7 +690,8 @@ module.exports = function (grunt)
 	grunt.registerTask('build',
 	[
 		'concat',
-		'postcss'
+		'postcss:base',
+		'postcss:templates'
 	]);
 	grunt.registerTask('dist',
 	[

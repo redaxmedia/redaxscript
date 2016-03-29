@@ -131,7 +131,7 @@ class RegisterPost implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return self::error($errorArray);
+			return $this->error($errorArray);
 		}
 
 		/* handle success */
