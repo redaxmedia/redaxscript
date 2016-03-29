@@ -14,7 +14,6 @@ include_once('includes/router.php');
 include_once('includes/search.php');
 include_once('includes/startup.php');
 include_once('includes/comments.php');
-include_once('includes/login.php');
 
 /* bootstrap */
 
