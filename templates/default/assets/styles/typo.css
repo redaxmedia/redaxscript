@@ -74,7 +74,7 @@ a
 {
 	background: var(--rs-gradient-quaternary);
 	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
 	box-sizing: border-box;
 	color: gray(255);
 	cursor: pointer;
@@ -99,7 +99,7 @@ a
 
 .rs-link-read-more:active
 {
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
 	transform: translateY(2px);
 }
 
@@ -184,7 +184,7 @@ a
 .rs-title-content
 {
 	font-size: 2em;
-	border-left: 0.125em solid rgba(0, 0, 0, 0.3);
+	border-left: 0.125em solid gray(0, 0.2);
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;

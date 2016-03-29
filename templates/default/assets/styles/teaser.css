@@ -31,7 +31,7 @@
 .rs-title-teaser
 {
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
-	background: rgba(50, 62, 77, 0.8);
+	background: color(var(--rs-color-tertiary) a(80%));
 	border-left: 0.25em solid var(--rs-color-quaternary);
 	border-radius: 0 0.125em 0.125em 0;
 	color: gray(255);
