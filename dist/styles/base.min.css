@@ -631,11 +631,6 @@ button::-moz-focus-inner, input::-moz-focus-inner
 	{
 		font-size: 0.75em;
 	}
-
-	.rs-player
-	{
-		font-size: 0.75em;
-	}
 }
 /**
  * @tableofcontents

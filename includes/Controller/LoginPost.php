@@ -78,7 +78,6 @@ class LoginPost implements ControllerInterface
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
-
 		$auth = new Auth($this->_request);
 
 		/* process post */
