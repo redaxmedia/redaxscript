@@ -124,7 +124,7 @@ class LoginPostTest extends TestCase
 		$user = Db::forTablePrefix('users')->where('user', $post['user'])->findOne();
 		if ($user)
 		{
-			Db::forTablePrefix('users')->whereIdIs($settings['id'])->findOne()->set('status', $settings['status'])->save();
+			Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $settings['status'])->save();
 		}
 
 		$loginPost = new Controller\LoginPost($this->_registry, $this->_language, $this->_request);

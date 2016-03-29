@@ -97,12 +97,13 @@ class LogoutPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $settings
 	 * @param array $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($expect)
+	public function testProcess($settings, $expect)
 	{
 		/* setup */
 
@@ -113,7 +114,14 @@ class LogoutPostTest extends TestCase
 
 		/* actual */
 
-		$actual = $logoutController->process();
+		if ($settings['session'] === 0)
+		{
+			$actual = $logoutController->error();
+		}
+		else
+		{
+			$actual = $logoutController->process();
+		}
 
 		/* compare */
 

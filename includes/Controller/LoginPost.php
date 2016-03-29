@@ -96,15 +96,25 @@ class LoginPost implements ControllerInterface
 		if ($emailValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
 			$postArray['user'] = $specialFilter->sanitize($postArray['user']);
-			$login_by_email = 0;
-			$users->where('user', $postArray['user']);
+			$loginByEmail = 0;
+			$users->where(array(
+				'user' => $postArray['user'],
+				'status' => 1
+			));
 		}
 		else
 		{
 			$postArray['user'] = $emailFilter->sanitize($postArray['user']);
-			$login_by_email = 1;
-			$users->where('email', $postArray['user']);
+			$loginByEmail = 1;
+			$users->where(array(
+				'email' => $postArray['user'],
+				'status' => 1
+			));
 		}
+
+		/* fetch user */
+
+		$user = $users->findOne();
 
 		/* validate post */
 
@@ -112,40 +122,19 @@ class LoginPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else if ($login_by_email == 0 && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
+		else
 		{
-			$errorArray[] = $this->_language->get('user_incorrect');
+			if ($loginByEmail === 0 && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
+			{
+				$errorArray[] = $this->_language->get('user_incorrect');
+			}
 		}
+
 		if (!$postArray['password'])
 		{
 			$errorArray[] = $this->_language->get('password_empty');
 		}
-		if ($login_by_email == 1 && $emailValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('email_incorrect');
-		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
-		}
-
-		/* handle error */
-
-		if ($errorArray)
-		{
-			return $this->error($errorArray);
-		}
-
-		/* fetch user */
-
-		$user = $users->findOne();
-
-		$auth->init();
-		$auth->login($user->id);
-
-		/* handle error */
-
-		if (!$user->id)
+		else if (!$user->password)
 		{
 			$errorArray[] = $this->_language->get('user_no');
 		}
@@ -153,19 +142,23 @@ class LoginPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('password_incorrect');
 		}
-		else if (intval($user->status) === 0)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('access_no');
+			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
 		if ($errorArray)
 		{
 			return $this->error($errorArray);
 		}
+		else if ($auth->login($user->id))
+		{
+			/* handle success */
 
-		/* handle success */
+			return $this->success();
+		}
 
-		return $this->success();
+		return $this->error($errorArray);
 	}
 
 	/**

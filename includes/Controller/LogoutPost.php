@@ -71,11 +71,19 @@ class LogoutPost implements ControllerInterface
 		$auth = new Auth($this->_request);
 		$auth->init();
 
-		$auth->logout();
+		if ($auth->logout())
+		{
+			/* handle success */
 
-		/* handle success */
+			return $this->success();
+		}
+		else
+		{
+			/* handle error */
 
-		return $this->success();
+			return $this->error();
+		}
+
 	}
 
 	/**
@@ -104,6 +112,7 @@ class LogoutPost implements ControllerInterface
 
 	public function error($errorArray = array())
 	{
-
+		$messenger = new Messenger();
+		return $messenger->setAction(Language::get('continue'), 'login')->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 }
