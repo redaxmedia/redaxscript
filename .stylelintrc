@@ -1,7 +1,7 @@
 {
 	"rules":
 	{
-	    "color-hex-case": "lower",
+		"color-hex-case": "lower",
 		"color-named": "never",
 		"color-no-invalid-hex": true,
 		"comment-empty-line-before": "always",
@@ -23,7 +23,7 @@
 		"font-weight-notation": "named-where-possible",
 		"function-blacklist":
 		[
-		    "calc"
+			"calc"
 		],
 		"function-url-quotes": "single",
 		"indentation": "tab",
