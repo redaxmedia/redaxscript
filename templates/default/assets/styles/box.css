@@ -25,7 +25,7 @@
 	background: gray(200);
 	border: 0.25em solid gray(170);
 	display: block;
-	font: 0.75em/1.25em monospace, arial;
+	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
 }

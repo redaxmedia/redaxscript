@@ -260,7 +260,7 @@ a
 {
 	color: rgb(170, 170, 170);
 	display: none;
-	font-weight: 700;
+	font-weight: bold;
 	margin-left: 0.125em;
 }
 
@@ -562,7 +562,7 @@ a
 	background: rgb(200, 200, 200);
 	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
-	font: 0.75em/1.25em monospace, arial;
+	font: 0.75em/1.25em monospace2, arial;
 	padding: 1em;
 	white-space: pre-wrap;
 }

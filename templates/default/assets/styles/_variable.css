@@ -46,5 +46,6 @@
 	--rs-url-teaser-ultra: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 
 	--rs-font-primary: 'open sans condensed', arial, sans-serif;
+	--rs-font-code: monospace, arial;
 	--rs-font-icon: 'icon default';
 }
