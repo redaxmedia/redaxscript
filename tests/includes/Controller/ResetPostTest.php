@@ -98,18 +98,18 @@ class ResetPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $post
+	 * @param array $postArray
 	 * @param array $hashArray
-	 * @param array $expect
+	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($post = array(), $hashArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_request->set('post', $post);
+		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$resetPost = new Controller\ResetPost($this->_registry, $this->_language, $this->_request);
 

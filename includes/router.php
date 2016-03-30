@@ -102,8 +102,8 @@ function router()
 		case 'logout':
 			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 			{
-				$LogoutController = new Redaxscript\Controller\LogoutPost(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-				echo $LogoutController->process();
+				$logoutPost = new Redaxscript\Controller\LogoutPost(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+				echo $logoutPost->process();
 				return;
 			}
 

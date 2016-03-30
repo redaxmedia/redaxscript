@@ -18,6 +18,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class LogoutPostTest extends TestCase
 {
 	/**
@@ -58,28 +59,6 @@ class LogoutPostTest extends TestCase
 	}
 
 	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
-	}
-
-	/**
 	 * providerProcess
 	 *
 	 * @since 3.0.0
@@ -97,35 +76,23 @@ class LogoutPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $settings
-	 * @param array $expect
+	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($settings, $expect)
+	public function testProcess($expect = null)
 	{
 		/* setup */
 
-		$auth = new Auth($this->_request);
-		$auth->login(2);
-
-		$logoutController = new Controller\LogoutPost($this->_registry, $this->_language, $this->_request);
+		$logoutPost = new Controller\LogoutPost($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		if ($settings['session'] === 0)
-		{
-			$actual = $logoutController->error();
-		}
-		else
-		{
-			$actual = $logoutController->process();
-		}
+		$actual = $logoutPost->process();
 
 		/* compare */
 
 		$this->assertEquals($actual, $expect);
 	}
-
 }

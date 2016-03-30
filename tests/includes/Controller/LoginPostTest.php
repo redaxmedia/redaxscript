@@ -67,11 +67,9 @@ class LoginPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		Db::setSetting('captcha', 1);
-		Db::setSetting('notification', 1);
-
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init('test');
+		Db::setSetting('captcha', 1);
 		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', $passwordHash->getHash())->save();
 	}
 
@@ -84,7 +82,6 @@ class LoginPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::setSetting('captcha', 0);
-		Db::setSetting('notification', 0);
 		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
 	}
 
@@ -106,27 +103,21 @@ class LoginPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $post
+	 * @param array $postArray
 	 * @param array $hashArray
-	 * @param array $settings
-	 * @param array $expect
+	 * @param array $userArray
+	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($post = array(), $hashArray = array(), $settings = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $userArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_request->set('post', $post);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $userArray['status'])->save();
+		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-
-		$user = Db::forTablePrefix('users')->where('user', $post['user'])->findOne();
-		if ($user)
-		{
-			Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $settings['status'])->save();
-		}
-
 		$loginPost = new Controller\LoginPost($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
@@ -137,5 +128,4 @@ class LoginPostTest extends TestCase
 
 		$this->assertEquals($expect, $actual);
 	}
-
 }

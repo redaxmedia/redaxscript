@@ -99,14 +99,12 @@ class LogoutPost implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray array of the error
-	 *
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	public function error()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('continue'), 'login')->error(Language::get('something_wrong'), Language::get('error_occurred'));
+		return $messenger->setAction(Language::get('back'), 'admin')->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 }
