@@ -131,32 +131,34 @@ class Recover implements ControllerInterface
 			);
 			if ($this->_mail($mailArray))
 			{
-				$successArray[] = $this->_language->get('recovery_sent');
+				$successArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
 			}
 		}
 		if ($successArray)
 		{
-			return $this->success();
+			return $this->success($successArray);
 		}
 		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
-	 * show success
+	 * show the success
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param array $successArray
 	 *
 	 * @return string
 	 */
 
-	public function success()
+	public function success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('recovery_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successArray, $this->_language->get('operation_completed'));
 	}
 
 	/**
-	 * show error
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *

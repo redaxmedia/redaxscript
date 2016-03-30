@@ -82,7 +82,7 @@ class Logout implements ControllerInterface
 	}
 
 	/**
-	 * show success
+	 * show the success
 	 *
 	 * @since 3.0.0
 	 *
@@ -96,7 +96,7 @@ class Logout implements ControllerInterface
 	}
 
 	/**
-	 * show error
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *
