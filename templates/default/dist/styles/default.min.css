@@ -76,8 +76,8 @@ a
 
 .rs-link-default
 {
-	color: #323e4c;
 	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
+	color: #323e4c;
 	transition: border-color 0.3s;
 }
 
@@ -148,8 +148,8 @@ a
 {
 	content: '\25b6';
 	font: 2em/1em 'icon default';
-	position: absolute;
 	left: 0;
+	position: absolute;
 	top: -0.25em;
 }
 
@@ -167,8 +167,8 @@ a
 	color: rgb(255, 255, 255);
 	padding: 0.25em 1em;
 	position: relative;
-	width: 100%;
 	transition: background 0.2s;
+	width: 100%;
 }
 
 .rs-title-accordion:hover
@@ -210,8 +210,8 @@ a
 
 .rs-title-content
 {
-	font-size: 2em;
 	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
+	font-size: 2em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
@@ -396,8 +396,8 @@ a
 {
 	background: #323e4c;
 	bottom: 0;
-	min-height: 1.75em;
 	left: 0;
+	min-height: 1.75em;
 	padding: 1em;
 	position: fixed;
 	right: 0;
@@ -464,8 +464,8 @@ a
 	.rs-sidebar
 	{
 		float: right;
-		width: 28%;
 		margin-left: 2%;
+		width: 28%;
 	}
 }
 
@@ -684,8 +684,8 @@ a
 {
 	.rs-box-metadata
 	{
-		font-size: 1em;
 		float: left;
+		font-size: 1em;
 		max-width: 60%;
 	}
 
@@ -768,17 +768,17 @@ a
 
 .rs-button-search
 {
+	background: transparent;
+	color: #323e4c;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1em;
+	height: 2em;
 	position: relative;
 	text-indent: -999em;
-	color: #323e4c;
-	display: inline-block;
+	transition: color 0.2s;
 	vertical-align: middle;
 	width: 20%;
-	height: 2em;
-	font-size: 1em;
-	background: transparent;
-	cursor: pointer;
-	transition: color 0.2s;
 }
 
 .rs-button-search:hover
@@ -925,10 +925,10 @@ a
 
 .rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
 {
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	border-radius: 0.125em;
-	display: block;
 	box-sizing: border-box;
+	display: block;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding-bottom: 0.375em;
 	padding-top: 0.375em;
 }
@@ -969,9 +969,9 @@ a
 .rs-field-textarea
 {
 	min-height: 10em;
+	padding: 0.5em;
 	resize: vertical;
 	width: 100%;
-	padding: 0.5em;
 }
 
 .rs-field-textarea.rs-field-small
@@ -1083,11 +1083,11 @@ a
 .rs-icon-flag
 {
 	background: #323e4c;
-	padding: 0.125em 0.5em;
+	border-radius: 0.125em;
 	color: rgb(255, 255, 255);
 	display: inline-block;
 	margin: 0.125em;
-	border-radius: 0.125em;
+	padding: 0.125em 0.5em;
 	text-transform: uppercase;
 }
 /**
@@ -1126,8 +1126,8 @@ a
 .rs-list-breadcrumb li
 {
 	display: inline-block;
-	vertical-align: middle;
 	position: relative;
+	vertical-align: middle;
 }
 
 .rs-list-breadcrumb a
@@ -1150,13 +1150,13 @@ a
 
 .rs-list-breadcrumb .rs-item-divider:before
 {
-	text-indent: 0;
 	content: '\3009';
 	font: 0.5em/4em 'icon default';
-	position: absolute;
 	left: 0;
+	position: absolute;
 	right: 0;
 	text-align: center;
+	text-indent: 0;
 }
 
 /* @section 3. list default */
@@ -1188,11 +1188,11 @@ ul.rs-list-default li:before
 
 .rs-list-header li
 {
-	font: 1em/2.25em arial, sans-serif;
-	text-decoration: none;
-	display: block;
 	box-sizing: border-box;
 	color: rgb(255, 255, 255);
+	display: block;
+	font: 1em/2.25em arial, sans-serif;
+	text-decoration: none;
 }
 
 /* @section 5. list tabs */
@@ -1215,8 +1215,8 @@ ul.rs-list-default li:before
 .rs-list-tab .rs-item-active
 {
 	background: #323e4c;
-	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
 }
 
 .rs-list-tab .rs-item-active a
@@ -1386,9 +1386,9 @@ ul.rs-list-default li:before
 
 	.rs-list-header-children li:last-child
 	{
+		border-bottom: 0.125em solid rgb(48, 98, 156);
 		border-bottom-left-radius: 0.125em;
 		border-bottom-right-radius: 0.125em;
-		border-bottom: 0.125em solid rgb(48, 98, 156);
 	}
 
 	.rs-list-header-children:after
@@ -1484,8 +1484,8 @@ ul.rs-list-default li:before
 		position: fixed;
 		right: 0;
 		top: 0;
-		visibility: hidden;
 		transition: opacity 0.2s ease;
+		visibility: hidden;
 		z-index: 10;
 	}
 
@@ -1556,11 +1556,11 @@ ul.rs-list-default li:before
 .rs-teaser
 {
 	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') no-repeat center top / cover;
+	box-sizing: border-box;
 	max-height: 35em;
+	overflow: hidden;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
-	overflow: hidden;
-	box-sizing: border-box;
 }
 
 /* @section 2. title teaser */
@@ -1578,8 +1578,8 @@ ul.rs-list-default li:before
 	font-weight: 300;
 	line-height: 1.25em;
 	max-width: 80%;
-	padding: 0.375em 0.75em;
 	opacity: 0;
+	padding: 0.375em 0.75em;
 }
 
 .rs-title-teaser::-moz-selection
@@ -1668,14 +1668,14 @@ ul.rs-list-default li:before
 .rs-tooltip:after
 {
 	background: #323e4c;
-	color: rgb(255, 255, 255);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
-	left: 110%;
-	top: -0.5em;
-	padding: 0.5em 1em;
+	color: rgb(255, 255, 255);
 	font-size: 0.875em;
+	left: 110%;
 	line-height: 1.5em;
+	padding: 0.5em 1em;
+	top: -0.5em;
 	transition: opacity 0.3s ease 0.1s;
 }
 

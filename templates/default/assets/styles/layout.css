@@ -80,8 +80,8 @@
 {
 	background: var(--rs-color-tertiary);
 	bottom: 0;
-	min-height: 1.75em;
 	left: 0;
+	min-height: 1.75em;
 	padding: 1em;
 	position: fixed;
 	right: 0;
@@ -150,8 +150,8 @@
 	.rs-sidebar
 	{
 		float: right;
-		width: 28%;
 		margin-left: 2%;
+		width: 28%;
 	}
 }
 

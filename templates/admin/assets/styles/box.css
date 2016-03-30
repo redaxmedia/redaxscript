@@ -63,15 +63,15 @@
 .rs-admin-description-dock
 {
 	float: right;
-	margin-right: 0.5em;
-	margin-left: 0.5em;
-	text-align: right;
-	text-transform: uppercase;
-	white-space: nowrap;
 	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 	max-width: 10em;
 	overflow: hidden;
+	text-align: right;
 	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 
 /* @section 2.2 footer grid fix */

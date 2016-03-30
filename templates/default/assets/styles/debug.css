@@ -46,9 +46,9 @@
 	max-width: 20em;
 	padding: 0.25rem 0.5rem;
 	position: absolute;
+	text-overflow: ellipsis;
 	text-shadow: none;
 	text-transform: lowercase;
-	text-overflow: ellipsis;
 	transition: all 0.2s ease 0.6s;
 	white-space: nowrap;
 }

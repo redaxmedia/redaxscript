@@ -17,9 +17,10 @@
 
 /* @section 1. links */
 
-.rs-admin-link-default {
-	text-decoration: underline;
+.rs-admin-link-default
+{
 	color: #666;
+	text-decoration: underline;
 }
 
 .rs-admin-link-default:hover {
@@ -218,15 +219,15 @@
 .rs-admin-description-dock
 {
 	float: right;
-	margin-right: 0.5em;
-	margin-left: 0.5em;
-	text-align: right;
-	text-transform: uppercase;
-	white-space: nowrap;
 	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 	max-width: 10em;
 	overflow: hidden;
+	text-align: right;
 	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 
 /* @section 2.2 footer grid fix */
@@ -301,10 +302,10 @@
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875rem/2.5rem arial;
+	padding: 0 0.75em;
 	text-decoration: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	padding: 0 0.75em;
 }
 
 .rs-admin-button-default, a.rs-admin-button-default
@@ -428,8 +429,8 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link delete */
@@ -500,9 +501,9 @@
 	border-radius: 0.25em;
 	color: #6a6a6a;
 	font: 1rem arial;
+	padding: 0.5em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	transition: background 0.4s;
-	padding: 0.5em;
 }
 
 /* @section 1.1 hover effect */
@@ -562,8 +563,8 @@
 
 .rs-admin-form-default li
 {
-	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 /* @section 1.1 label */
@@ -571,8 +572,9 @@
 .rs-admin-label-default
 {
 	color: #555;
-	font: bold 0.875rem arial;
 	display: block;
+	font-size: 0.875rem;
+	font-weight: bold;
 }
 
 .rs-admin-form-default .rs-admin-label-message:after
@@ -820,8 +822,8 @@
 {
 	font: 1.25rem/1.5rem 'icon admin';
 	margin-right: 1em;
-	vertical-align: middle;
 	text-transform: lowercase;
+	vertical-align: middle;
 }
 
 .rs-admin-item-panel.rs-admin-item-contents > span:before
@@ -965,8 +967,8 @@
 
 .rs-admin-list-tab .rs-item-active
 {
-	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-list-tab .rs-item-active a
@@ -1231,8 +1233,8 @@
 	display: block;
 	font: 1.5rem 'icon admin';
 	position: absolute;
-	text-indent: 0;
 	right: 0.25em;
+	text-indent: 0;
 }
 
 .rs-admin-table .rs-admin-move-up:before
@@ -1243,8 +1245,8 @@
 
 .rs-admin-table .rs-admin-move-down:before
 {
-	content: 'c';
 	bottom: 0.25em;
+	content: 'c';
 }
 
 /* disabled move control */
@@ -1278,8 +1280,8 @@
 
 .rs-admin-table tr td.rs-admin-column-move, .rs-admin-table tr th.rs-admin-column-move
 {
-	text-indent: -999em;
 	text-align: left;
+	text-indent: -999em;
 }
 
 .rs-admin-table thead .rs-admin-column-move, .rs-admin-table tfoot .rs-admin-column-move

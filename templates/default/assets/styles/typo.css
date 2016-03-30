@@ -52,8 +52,8 @@ a
 
 .rs-link-default
 {
-	color: var(--rs-color-tertiary);
 	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
+	color: var(--rs-color-tertiary);
 	transition: border-color 0.3s;
 }
 
@@ -121,8 +121,8 @@ a
 {
 	content: '\25b6';
 	font: 2em/1em var(--rs-font-icon);
-	position: absolute;
 	left: 0;
+	position: absolute;
 	top: -0.25em;
 }
 
@@ -140,8 +140,8 @@ a
 	color: gray(255);
 	padding: 0.25em 1em;
 	position: relative;
-	width: 100%;
 	transition: background 0.2s;
+	width: 100%;
 }
 
 .rs-title-accordion:hover
@@ -183,8 +183,8 @@ a
 
 .rs-title-content
 {
-	font-size: 2em;
 	border-left: 0.125em solid gray(0, 0.2);
+	font-size: 2em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
@@ -233,7 +233,7 @@ a
 {
 	color: gray(170);
 	display: none;
-	font-weight: 700;
+	font-weight: bold;
 	margin-left: 0.125em;
 }
 

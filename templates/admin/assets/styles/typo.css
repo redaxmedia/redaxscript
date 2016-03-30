@@ -17,12 +17,14 @@
 
 /* @section 1. links */
 
-.rs-admin-link-default {
-	text-decoration: underline;
+.rs-admin-link-default
+{
 	color: #666;
+	text-decoration: underline;
 }
 
-.rs-admin-link-default:hover {
+.rs-admin-link-default:hover
+{
 	text-decoration: none;
 }
 
@@ -67,7 +69,7 @@
 	cursor: pointer;
 }
 
-/* @section 2.2 last element*/
+/* @section 2.2 last element */
 
 .rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {

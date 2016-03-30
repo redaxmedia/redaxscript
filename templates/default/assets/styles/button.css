@@ -54,17 +54,17 @@ a.rs-button-default
 
 .rs-button-search
 {
+	background: transparent;
+	color: var(--rs-color-tertiary);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1em;
+	height: 2em;
 	position: relative;
 	text-indent: -999em;
-	color: var(--rs-color-tertiary);
-	display: inline-block;
+	transition: color 0.2s;
 	vertical-align: middle;
 	width: 20%;
-	height: 2em;
-	font-size: 1em;
-	background: transparent;
-	cursor: pointer;
-	transition: color 0.2s;
 }
 
 .rs-button-search:hover

@@ -34,10 +34,10 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	font: 1em/1.25em var(--rs-font-primary);
 	border-radius: 0.125em;
-	display: block;
 	box-sizing: border-box;
+	display: block;
+	font: 1em/1.25em var(--rs-font-primary);
 	padding-bottom: 0.375em;
 	padding-top: 0.375em;
 }
@@ -86,9 +86,9 @@
 .rs-field-textarea
 {
 	min-height: 10em;
+	padding: 0.5em;
 	resize: vertical;
 	width: 100%;
-	padding: 0.5em;
 }
 
 .rs-field-textarea.rs-field-small

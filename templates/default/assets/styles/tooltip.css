@@ -16,14 +16,14 @@
 .rs-tooltip:after
 {
 	background: var(--rs-color-tertiary);
-	color: gray(255);
 	border-radius: 0.25em;
 	box-shadow: 0 0 0.25em gray(0, 0.3);
-	left: 110%;
-	top: -0.5em;
-	padding: 0.5em 1em;
+	color: gray(255);
 	font-size: 0.875em;
+	left: 110%;
 	line-height: 1.5em;
+	padding: 0.5em 1em;
+	top: -0.5em;
 	transition: opacity 0.3s ease 0.1s;
 }
 

@@ -35,8 +35,8 @@
 .rs-list-breadcrumb li
 {
 	display: inline-block;
-	vertical-align: middle;
 	position: relative;
+	vertical-align: middle;
 }
 
 .rs-list-breadcrumb a
@@ -59,13 +59,13 @@
 
 .rs-list-breadcrumb .rs-item-divider:before
 {
-	text-indent: 0;
 	content: '\3009';
 	font: 0.5em/4em var(--rs-font-icon);
-	position: absolute;
 	left: 0;
+	position: absolute;
 	right: 0;
 	text-align: center;
+	text-indent: 0;
 }
 
 /* @section 3. list default */
@@ -97,11 +97,11 @@ ul.rs-list-default li:before
 
 .rs-list-header li
 {
-	font: 1em/2.25em arial, sans-serif;
-	text-decoration: none;
-	display: block;
 	box-sizing: border-box;
 	color: gray(255);
+	display: block;
+	font: 1em/2.25em arial, sans-serif;
+	text-decoration: none;
 }
 
 /* @section 5. list tabs */
@@ -124,8 +124,8 @@ ul.rs-list-default li:before
 .rs-list-tab .rs-item-active
 {
 	background: var(--rs-color-tertiary);
-	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
 }
 
 .rs-list-tab .rs-item-active a
@@ -296,9 +296,9 @@ ul.rs-list-default li:before
 
 	.rs-list-header-children li:last-child
 	{
+		border-bottom: 0.125em solid var(--rs-color-primary-dark);
 		border-bottom-left-radius: 0.125em;
 		border-bottom-right-radius: 0.125em;
-		border-bottom: 0.125em solid var(--rs-color-primary-dark);
 	}
 
 	.rs-list-header-children:after

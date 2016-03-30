@@ -101,10 +101,10 @@ button, input, select, textarea
 
 .rs-admin-clearfix:after, .rs-clearfix:after
 {
+	clear: both;
 	content: '';
 	display: block;
 	height: 0;
-	clear: both;
 }
 /**
  * @tableofcontents
@@ -280,11 +280,11 @@ button, input, select, textarea
 {
 	box-sizing: border-box;
 	left: 50%;
+	margin: -5em 0 0 -40%;
 	position: fixed;
 	top: 50%;
-	z-index: 1100;
-	margin: -5em 0 0 -40%;
 	width: 80%;
+	z-index: 1100;
 }
 
 /* @section 2. dialog overlay */
@@ -349,8 +349,8 @@ button, input, select, textarea
 
 .rs-list-dropdown li:last-child:hover > ul, .rs-list-dropdown .rs-item-touch:last-child > ul
 {
-	right: 0;
 	left: auto;
+	right: 0;
 }
 
 /* @section 2. query */
@@ -684,9 +684,9 @@ button::-moz-focus-inner, input::-moz-focus-inner
 		content: '';
 		height: 0.25em;
 		left: 0;
+		outline: none;
 		position: absolute;
 		right: 0;
-		outline: none;
 		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
 		transition: transform 0.2s, -webkit-transform 0.2s;
@@ -710,8 +710,8 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 	.rs-fn-navigation
 	{
-		left: 0;
 		bottom: 0;
+		left: 0;
 		position: fixed;
 		top: 0;
 		-webkit-transform: translateX(-100%);
@@ -721,11 +721,11 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
 		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
 		transition: transform 0.2s, -webkit-transform 0.2s;
-		-webkit-transform: translateX(0);
-		transform: translateX(0);
 	}
 
 	/* @section 2.1.4 navigation layer */

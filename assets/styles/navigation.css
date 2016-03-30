@@ -48,9 +48,9 @@
 		content: '';
 		height: 0.25em;
 		left: 0;
+		outline: none;
 		position: absolute;
 		right: 0;
-		outline: none;
 		transition: transform 0.2s;
 	}
 
@@ -70,8 +70,8 @@
 
 	.rs-fn-navigation
 	{
-		left: 0;
 		bottom: 0;
+		left: 0;
 		position: fixed;
 		top: 0;
 		transform: translateX(-100%);
@@ -80,8 +80,8 @@
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		transition: transform 0.2s;
 		transform: translateX(0);
+		transition: transform 0.2s;
 	}
 
 	/* @section 2.1.4 navigation layer */

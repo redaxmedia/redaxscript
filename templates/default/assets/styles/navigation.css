@@ -59,8 +59,8 @@
 		position: fixed;
 		right: 0;
 		top: 0;
-		visibility: hidden;
 		transition: opacity 0.2s ease;
+		visibility: hidden;
 		z-index: 10;
 	}
 

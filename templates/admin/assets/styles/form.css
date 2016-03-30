@@ -15,8 +15,8 @@
 
 .rs-admin-form-default li
 {
-	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 /* @section 1.1 label */
@@ -24,8 +24,9 @@
 .rs-admin-label-default
 {
 	color: #555;
-	font: bold 0.875rem arial;
 	display: block;
+	font-size: 0.875rem;
+	font-weight: bold;
 }
 
 .rs-admin-form-default .rs-admin-label-message:after

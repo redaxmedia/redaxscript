@@ -167,8 +167,8 @@
 	display: block;
 	font: 1.5rem 'icon admin';
 	position: absolute;
-	text-indent: 0;
 	right: 0.25em;
+	text-indent: 0;
 }
 
 .rs-admin-table .rs-admin-move-up:before
@@ -179,8 +179,8 @@
 
 .rs-admin-table .rs-admin-move-down:before
 {
-	content: 'c';
 	bottom: 0.25em;
+	content: 'c';
 }
 
 /* disabled move control */
@@ -215,8 +215,8 @@
 .rs-admin-table tr td.rs-admin-column-move,
 .rs-admin-table tr th.rs-admin-column-move
 {
-	text-indent: -999em;
 	text-align: left;
+	text-indent: -999em;
 }
 
 .rs-admin-table thead .rs-admin-column-move, .rs-admin-table tfoot .rs-admin-column-move

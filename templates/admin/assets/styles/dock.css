@@ -27,8 +27,8 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link delete */

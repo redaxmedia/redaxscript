@@ -19,11 +19,11 @@
 .rs-teaser
 {
 	background: var(--rs-url-teaser-small) no-repeat center top / cover;
+	box-sizing: border-box;
 	max-height: 35em;
+	overflow: hidden;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
-	overflow: hidden;
-	box-sizing: border-box;
 }
 
 /* @section 2. title teaser */
@@ -40,8 +40,8 @@
 	font-weight: 300;
 	line-height: 1.25em;
 	max-width: 80%;
-	padding: 0.375em 0.75em;
 	opacity: 0;
+	padding: 0.375em 0.75em;
 }
 
 .rs-title-teaser::selection

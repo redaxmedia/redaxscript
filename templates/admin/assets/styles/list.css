@@ -99,8 +99,8 @@
 
 .rs-admin-list-tab .rs-item-active
 {
-	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-list-tab .rs-item-active a

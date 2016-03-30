@@ -38,8 +38,8 @@
 .rs-list-dropdown li:last-child:hover > ul,
 .rs-list-dropdown .rs-item-touch:last-child > ul
 {
-	right: 0;
 	left: auto;
+	right: 0;
 }
 
 /* @section 2. query */

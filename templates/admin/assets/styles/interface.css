@@ -42,8 +42,8 @@
 {
 	font: 1.25rem/1.5rem 'icon admin';
 	margin-right: 1em;
-	vertical-align: middle;
 	text-transform: lowercase;
+	vertical-align: middle;
 }
 
 .rs-admin-item-panel.rs-admin-item-contents > span:before
