@@ -9,7 +9,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * RegisterPostTest
+ * CommentTest
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ use Redaxscript\Request;
  * @author Balázs Szilágyi
  */
 
-class ResetPostTest extends TestCase
+class CommentTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -78,6 +78,9 @@ class ResetPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::setSetting('captcha', 0);
+		Db::setSetting('notification', 0);
+		Db::setSetting('moderation', 0);
+		Db::forTablePrefix('comments')->deleteMany();
 	}
 
 	/**
@@ -90,7 +93,7 @@ class ResetPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/reset_post_process.json');
+		return $this->getProvider('tests/provider/Controller/comment_process.json');
 	}
 
 	/**
@@ -100,22 +103,25 @@ class ResetPostTest extends TestCase
 	 *
 	 * @param array $postArray
 	 * @param array $hashArray
+	 * @param array $settingsArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $settingsArray = array(), $expect = null)
 	{
 		/* setup */
 
+		Db::setSetting('notification', $settingsArray['notification']);
+		Db::setSetting('moderation', $settingsArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$resetPost = new Controller\ResetPost($this->_registry, $this->_language, $this->_request);
+		$commentController = new Controller\Comment($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $resetPost->process();
+		$actual = $commentController->process();
 
 		/* compare */
 

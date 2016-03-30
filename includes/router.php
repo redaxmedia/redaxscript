@@ -36,11 +36,11 @@ function router()
 	/* call default post */
 
 	$post_list = array(
-		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\LoginPost',
-		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\RegisterPost',
-		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\ResetPost',
-		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\RecoverPost',
-		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\CommentPost',
+		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\Login',
+		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
+		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
+		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
+		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment',
 		'Redaxscript\View\SearchForm' => 'search_post'
 	);
 	foreach ($post_list as $key => $value)
@@ -102,8 +102,8 @@ function router()
 		case 'logout':
 			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 			{
-				$logoutPost = new Redaxscript\Controller\LogoutPost(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-				echo $logoutPost->process();
+				$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+				echo $logoutController->process();
 				return;
 			}
 

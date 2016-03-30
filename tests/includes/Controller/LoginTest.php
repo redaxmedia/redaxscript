@@ -1,15 +1,16 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Db;
-use Redaxscript\Validator;
+use Redaxscript\Config;
 use Redaxscript\Controller;
+use Redaxscript\Db;
+use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * RegisterPostTest
+ * LoginTest
  *
  * @since 3.0.0
  *
@@ -19,7 +20,7 @@ use Redaxscript\Request;
  * @author Balázs Szilágyi
  */
 
-class RecoverPostTest extends TestCase
+class LoginTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -66,7 +67,10 @@ class RecoverPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init('test');
 		Db::setSetting('captcha', 1);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', $passwordHash->getHash())->save();
 	}
 
 	/**
@@ -78,6 +82,7 @@ class RecoverPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::setSetting('captcha', 0);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
 	}
 
 	/**
@@ -90,7 +95,7 @@ class RecoverPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/recover_post_process.json');
+		return $this->getProvider('tests/provider/Controller/login_process.json');
 	}
 
 	/**
@@ -100,22 +105,24 @@ class RecoverPostTest extends TestCase
 	 *
 	 * @param array $postArray
 	 * @param array $hashArray
+	 * @param array $userArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $userArray = array(), $expect = null)
 	{
 		/* setup */
 
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $userArray['status'])->save();
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$recoverPost = new Controller\RecoverPost($this->_registry, $this->_language, $this->_request);
+		$loginController = new Controller\Login($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $recoverPost->process();
+		$actual = $loginController->process();
 
 		/* compare */
 

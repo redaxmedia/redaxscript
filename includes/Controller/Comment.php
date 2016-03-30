@@ -12,19 +12,17 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * class to handle comment post
+ * children class to process the comment request
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- *
  * @category Controller
- *
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
-class CommentPost implements ControllerInterface
+class Comment implements ControllerInterface
 {
 	/**
 	 * instance of the registry class

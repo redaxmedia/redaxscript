@@ -8,7 +8,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * RegisterPostTest
+ * RegisterTest
  *
  * @since 3.0.0
  *
@@ -18,7 +18,7 @@ use Redaxscript\Request;
  * @author Balázs Szilágyi
  */
 
-class RegisterPostTest extends TestCase
+class RegisterTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -91,7 +91,7 @@ class RegisterPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/register_post_process.json');
+		return $this->getProvider('tests/provider/Controller/register_process.json');
 	}
 
 	/**
@@ -112,11 +112,11 @@ class RegisterPostTest extends TestCase
 
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
+		$registerController = new Controller\Register($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $registerPost->process();
+		$actual = $registerController->process();
 
 		/* compare */
 

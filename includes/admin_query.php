@@ -821,8 +821,8 @@ function admin_delete()
 
 	if (Redaxscript\Registry::get('usersException'))
 	{
-		$LogoutController = new Redaxscript\Controller\LogoutPost(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-		echo $LogoutController->process();
+		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+		echo $logoutController->process();
 	}
 
 	/* handle success */

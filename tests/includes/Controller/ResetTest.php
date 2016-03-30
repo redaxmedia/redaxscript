@@ -1,15 +1,15 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Auth;
-use Redaxscript\Controller;
 use Redaxscript\Db;
+use Redaxscript\Validator;
+use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * LogoutPostTest
+ * ResetTest
  *
  * @since 3.0.0
  *
@@ -19,7 +19,7 @@ use Redaxscript\Request;
  * @author Balázs Szilágyi
  */
 
-class LogoutPostTest extends TestCase
+class ResetTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -59,6 +59,28 @@ class LogoutPostTest extends TestCase
 	}
 
 	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::setSetting('captcha', 1);
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::setSetting('captcha', 0);
+	}
+
+	/**
 	 * providerProcess
 	 *
 	 * @since 3.0.0
@@ -68,7 +90,7 @@ class LogoutPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/logout_post_process.json');
+		return $this->getProvider('tests/provider/Controller/reset_process.json');
 	}
 
 	/**
@@ -76,23 +98,27 @@ class LogoutPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $postArray
+	 * @param array $hashArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$logoutPost = new Controller\LogoutPost($this->_registry, $this->_language, $this->_request);
+		$this->_request->set('post', $postArray);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$resetController = new Controller\Reset($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $logoutPost->process();
+		$actual = $resetController->process();
 
 		/* compare */
 
-		$this->assertEquals($actual, $expect);
+		$this->assertEquals($expect, $actual);
 	}
 }

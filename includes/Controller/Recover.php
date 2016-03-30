@@ -12,7 +12,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to reset password post request
+ * children class to process the recover request
  *
  * @since 3.0.0
  *
@@ -22,7 +22,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class RecoverPost implements ControllerInterface
+class Recover implements ControllerInterface
 {
 	/**
 	 * instance of the registry class

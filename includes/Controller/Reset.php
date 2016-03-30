@@ -14,7 +14,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to reset password post request
+ * children class to process the reset request
  *
  * @since 3.0.0
  *
@@ -24,7 +24,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class ResetPost implements ControllerInterface
+class Reset implements ControllerInterface
 {
 	/**
 	 * instance of the registry class

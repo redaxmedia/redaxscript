@@ -14,7 +14,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to process a register post request
+ * children class to process the register request
  *
  * @since 3.0.0
  *
@@ -24,7 +24,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class RegisterPost implements ControllerInterface
+class Register implements ControllerInterface
 {
 	/**
 	 * instance of the registry class
