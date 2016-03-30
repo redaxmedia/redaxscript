@@ -4,10 +4,7 @@ module.exports = function (grunt)
 
 	/* polyfill */
 
-	require('es6-promise').polyfill();
-	require('es6-map/implement');
-	require('es6-set/implement');
-	require('es6-symbol/implement');
+	require('babel-polyfill');
 
 	/* config grunt */
 
