@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "",
 			"firstParameter": "",
 			"secondParameter": "",
@@ -23,7 +23,7 @@
 	],
 	[
 		{
-			"title": "Title",
+			"metaTitle": "Title",
 			"fullRoute": "",
 			"firstParameter": "",
 			"secondParameter": "",
@@ -45,7 +45,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "admin",
 			"firstParameter": "admin",
 			"secondParameter": "",
@@ -67,7 +67,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "admin/view/categories",
 			"firstParameter": "admin",
 			"secondParameter": "view",
@@ -97,7 +97,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "login",
 			"firstParameter": "login",
 			"secondParameter": "",
@@ -119,7 +119,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "invalid",
 			"firstParameter": "invalid",
 			"secondParameter": "",
@@ -141,7 +141,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "home",
 			"firstParameter": "home",
 			"secondParameter": "",
@@ -163,7 +163,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "home/welcome",
 			"firstParameter": "home",
 			"secondParameter": "welcome",
@@ -189,7 +189,7 @@
 	],
 	[
 		{
-			"title": "",
+			"metaTitle": "",
 			"fullRoute": "ultra/lightweight/cms",
 			"firstParameter": "ultra",
 			"secondParameter": "lightweight",
