@@ -302,7 +302,7 @@
 	border-radius: 0.25em;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875rem/2.5rem arial;
+	font: bold 0.875rem/2.5em arial;
 	padding: 0 0.75em;
 	text-decoration: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
@@ -329,6 +329,13 @@
 	background: linear-gradient(#4cb4ff, #0090db);
 	border-color: #005da2;
 	color: #fff;
+}
+
+/* large */
+
+.rs-admin-button-large
+{
+	font-size: 1.25em;
 }
 
 /* @section 1.3 icons */

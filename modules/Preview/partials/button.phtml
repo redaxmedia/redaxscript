@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '' : '-default';
-$prefix = $admin ? 'rs-admin-' : 'rs-';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
@@ -10,20 +8,20 @@ $titlePartialElement->init('h3', array(
 $buttonElement = new Html\Element();
 $buttonElement
 	->init('button', array(
-		'class' => $prefix . 'button' . $suffix
+		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
 	))
 	->text(Language::get('preview', '_preview'));
 ?>
 
 <!-- button -->
 
-<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-button-default' : '.rs-button-default'); ?>
 
 <?php echo $buttonElement; ?>
 
 <!-- disabled -->
 
-<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '[disabled]'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-button-default[disabled]' : '.rs-button-default[disabled]'); ?>
 
 <?php echo $buttonElement
 	->copy()
@@ -31,17 +29,17 @@ $buttonElement
 
 <!-- large -->
 
-<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '.button-large'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-button-default.rs-admin-button-large' : '.rs-button-default.rs-button-large'); ?>
 
 <?php echo $buttonElement
 	->copy()
-	->addClass('rs-button-large'); ?>
+	->addClass($admin ? 'rs-admin-button-large' : 'rs-button-large'); ?>
 
-<!-- disabled -->
+<!-- large disabled -->
 
-<?php echo $titlePartialElement->text('.' . $prefix . 'button' . $suffix . '.rs-button-large[disabled]'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-button-default.rs-admin-button-large[disabled]' : '.rs-button-default.rs-button-large[disabled]'); ?>
 
 <?php echo $buttonElement
 	->copy()
-	->addClass('rs-button-large')
+	->addClass($admin ? 'rs-admin-button-large' : 'rs-button-large')
 	->attr('disabled', 'disabled'); ?>

@@ -1,44 +1,44 @@
 <?php
 namespace Redaxscript;
 
-$prefix = $admin ? 'rs-admin-' : 'rs-';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
 $setElement = new Html\Element();
 $setElement->init('div', array(
-	'class' => $prefix . 'js-set-accordion ' . $prefix . 'set-accordion'
+		'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
 ));
+
 $titleElement = new Html\Element();
 $titleElement->init('h3', array(
-	'class' => $prefix . 'js-title-accordion ' . $prefix . 'title-accordion'
+	'class' =>  $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
 ));
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => $prefix . 'js-box-accordion ' . $prefix . 'box-accordion'
+	'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
 ));
 ?>
 
 <!-- accordion -->
 
-<?php echo $titlePartialElement->text('.' . $prefix . 'title-accordion + .' . $prefix . 'box-accordion'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-accordion + .rs-admin-box-accordion' : '.rs-title-accordion + .rs-box-accordion'); ?>
 
-<div class="<?php echo $prefix . 'js-accordion ' . $prefix . 'accordion'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-js-accordion rs-accordion' : 'rs-admin-js-accordion rs-accordion'; ?>">
 
 	<!-- first -->
 
 	<?php echo $setElement
 		->copy()
-		->addClass($prefix . 'js-set-active ' . $prefix . 'set-active')
+		->addClass($admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active')
 		->html(
 			$titleElement
 				->copy()
-				->addClass($prefix . 'js-title-active ' . $prefix . 'title-active')
+				->addClass($admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active')
 				->text(Language::get('first')) .
 			$boxElement
 				->copy()
-				->addClass($prefix . 'js-box-active ' . $prefix . 'box-active')
+				->addClass($admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active')
 				->text(Language::get('first'))
 		); ?>
 
