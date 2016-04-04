@@ -811,7 +811,7 @@ a
 
 /* @section 4. space between elements */
 
-.rs-box-dialog-default .rs-button-default, .rs-form-default .rs-button-default, .rs-box-messenger + .rs-button-messenger
+.rs-box-dialog .rs-button-default, .rs-form-default .rs-button-default, .rs-box-messenger + .rs-button-messenger
 {
 	margin-top: 1em;
 }
@@ -875,19 +875,19 @@ a
 
 /* @section 1. dialog overlay default */
 
-.rs-dialog-overlay-default
+.rs-dialog-overlay
 {
 	background: rgba(170, 170, 170, 0.9);
 }
 
-.rs-dialog-default, .rs-dialog-overlay-default
+.rs-dialog, .rs-dialog-overlay
 {
 	-webkit-animation: rs-fade 0.4s;
 	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }
 
-.rs-dialog-default
+.rs-dialog
 {
 	background: #323e4c;
 	color: rgb(255, 255, 255);
