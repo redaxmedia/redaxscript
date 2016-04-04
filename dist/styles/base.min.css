@@ -223,7 +223,7 @@ button, input, select, textarea
 
 /* @section 1. title accordion */
 
-.rs-js .rs-title-accordion-default.rs-title-active
+.rs-js .rs-title-accordion.rs-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	pointer-events: none;
 }
@@ -242,7 +242,7 @@ button, input, select, textarea
 
 /* @section 1. box accordion */
 
-.rs-js .rs-box-accordion
+.rs-js .rs-box-accordion, .rs-js .rs-admin-box-accordion
 {
 	display: none;
 }

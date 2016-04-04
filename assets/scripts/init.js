@@ -31,16 +31,16 @@
 		accordion:
 		{
 			init: true,
-			selector: 'div.rs-js-accordion, form.rs-js-accordion',
+			selector: 'div.rs-admin-js-accordion, form.rs-admin-js-accordion, div.rs-js-accordion, form.rs-js-accordion',
 			options:
 			{
 				element:
 				{
-					accordionSet: 'div.rs-js-set-accordion, fieldset.rs-js-set-accordion',
-					accordionTitle: 'h3.rs-js-title-accordion, legend.rs-js-title-accordion',
-					accordionBox: 'div.rs-js-box-accordion, ul.rs-js-box-accordion'
+					accordionSet: 'div.rs-admin-js-set-accordion, fieldset.rs-admin-js-set-accordion, div.rs-js-set-accordion, fieldset.rs-js-set-accordion',
+					accordionTitle: 'h3.rs-admin-js-title-accordion, legend.rs-admin-js-title-accordion, h3.rs-js-title-accordion, legend.rs-js-title-accordion',
+					accordionBox: 'div.rs-admin-js-box-accordion, ul.rs-admin-js-box-accordion, div.rs-js-box-accordion, ul.rs-js-box-accordion'
 				},
-				duration: 600
+				duration: 300
 			}
 		},
 		autoResize:

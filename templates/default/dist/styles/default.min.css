@@ -562,7 +562,7 @@ a
 	background: rgb(200, 200, 200);
 	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
-	font: 0.75em/1.25em monospace2, arial;
+	font: 0.75em/1.25em monospace, arial;
 	padding: 1em;
 	white-space: pre-wrap;
 }
@@ -612,7 +612,7 @@ a
 
 /* @section 4. box accordion */
 
-.rs-box-accordion-default
+.rs-box-accordion
 {
 	background: rgb(200, 200, 200);
 	padding: 0.25em 1em;

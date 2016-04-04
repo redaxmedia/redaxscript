@@ -1,44 +1,44 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '-admin' : '-default';
+$prefix = $admin ? 'rs-admin-' : 'rs-';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
 $setElement = new Html\Element();
 $setElement->init('div', array(
-	'class' => 'rs-js-set-accordion rs-set-accordion rs-set-accordion' . $suffix
+	'class' => $prefix . 'js-set-accordion ' . $prefix . 'set-accordion'
 ));
 $titleElement = new Html\Element();
 $titleElement->init('h3', array(
-	'class' => 'rs-js-title-accordion rs-title-accordion rs-title-accordion' . $suffix
+	'class' => $prefix . 'js-title-accordion ' . $prefix . 'title-accordion'
 ));
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => 'rs-js-box-accordion rs-box-accordion rs-box-accordion' . $suffix
+	'class' => $prefix . 'js-box-accordion ' . $prefix . 'box-accordion'
 ));
 ?>
 
 <!-- accordion -->
 
-<?php echo $titlePartialElement->text('.rs-title-accordion' . $suffix . ' + .rs-box-accordion' . $suffix); ?>
+<?php echo $titlePartialElement->text('.' . $prefix . 'title-accordion + .' . $prefix . 'box-accordion'); ?>
 
-<div class="rs-js-accordion rs-accordion">
+<div class="<?php echo $prefix . 'js-accordion ' . $prefix . 'accordion'; ?>">
 
 	<!-- first -->
 
 	<?php echo $setElement
 		->copy()
-		->addClass('rs-js-set-active rs-set-active')
+		->addClass($prefix . 'js-set-active ' . $prefix . 'set-active')
 		->html(
 			$titleElement
 				->copy()
-				->addClass('rs-js-title-active rs-title-active')
+				->addClass($prefix . 'js-title-active ' . $prefix . 'title-active')
 				->text(Language::get('first')) .
 			$boxElement
 				->copy()
-				->addClass('rs-js-box-active rs-box-active')
+				->addClass($prefix . 'js-box-active ' . $prefix . 'box-active')
 				->text(Language::get('first'))
 		); ?>
 

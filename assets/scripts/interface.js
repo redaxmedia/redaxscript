@@ -34,11 +34,12 @@
 			var accordion = $(this),
 				accordionSet = accordion.find(options.element.accordionSet),
 				accordionTitle = accordion.find(options.element.accordionTitle),
-				accordionBox = accordion.find(options.element.accordionBox);
+				accordionBox = accordion.find(options.element.accordionBox),
+				prefix = accordionSet.filter('[class^="rs-admin"]').length ? 'rs-admin-' : 'rs-';
 
 			/* show active box */
 
-			accordionBox.filter('.rs-js-box-active').show();
+			accordionBox.filter('.' + prefix + 'js-box-active').show();
 
 			/* listen for click */
 
@@ -50,20 +51,20 @@
 
 				/* toggle active class */
 
-				accordionSet.removeClass('rs-js-set-active rs-set-active').filter(accordionSetActive).addClass('rs-js-set-active rs-set-active');
-				accordionTitle.removeClass('rs-js-title-active rs-title-active').filter(accordionTitleActive).addClass('rs-js-title-active rs-title-active');
+				accordionSet.removeClass(prefix + 'js-set-active ' + prefix + 'set-active').filter(accordionSetActive).addClass(prefix + 'js-set-active ' + prefix + 'set-active');
+				accordionTitle.removeClass(prefix + 'js-title-active ' + prefix +  'title-active').filter(accordionTitleActive).addClass(prefix + 'js-title-active ' + prefix + 'title-active');
 
 				/* slide boxes */
 
-				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('rs-js-box-active rs-box-active');
-				accordionBoxActive.slideDown(options.duration).addClass('rs-js-box-active rs-box-active');
+				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass(prefix + 'js-box-active  ' + prefix + 'box-active');
+				accordionBoxActive.slideDown(options.duration).addClass(prefix + 'js-box-active  ' + prefix + 'box-active');
 			});
 
 			/* show error */
 
 			accordion.on('error', function ()
 			{
-				var accordionSetError = accordionSet.has('.rs-js-note-error').first(),
+				var accordionSetError = accordionSet.has('.' + prefix + 'js-note-error').first(),
 					accordionTitleError = accordionSetError.find(accordionTitle);
 
 				accordionTitleError.click();

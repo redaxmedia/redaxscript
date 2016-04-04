@@ -60,7 +60,7 @@ class InstallForm implements ViewInterface
 
 			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-active">')
 			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . Language::get('database_setup') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-accordion-default rs-box-active"><li>')
+			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-active"><li>')
 			->label(Language::get('type'), array(
 				'for' => 'db_type'
 			))
@@ -126,7 +126,7 @@ class InstallForm implements ViewInterface
 
 			->append('<fieldset class="rs-js-set-accordion rs-set-accordion">')
 			->append('<legend class="rs-js-title-accordion rs-title-accordion">' . Language::get('account_create') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-box-accordion-default"><li>')
+			->append('<ul class="rs-js-box-accordion rs-box-accordion"><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
