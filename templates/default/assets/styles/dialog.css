@@ -11,21 +11,21 @@
 
 /* @section 1. dialog overlay default */
 
-.rs-dialog-overlay-default
+.rs-dialog-overlay
 {
-	background: rgba(50, 62, 76, 0.2);
+	background: gray(170, 0.9);
 }
 
-.rs-dialog-default,
-.rs-dialog-overlay-default
+.rs-dialog,
+.rs-dialog-overlay
 {
 	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }
 
-.rs-dialog-default
+.rs-dialog
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 	padding: 1em;
 }

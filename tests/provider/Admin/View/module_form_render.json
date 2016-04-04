@@ -2,8 +2,8 @@
 	[
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Call home</h2><form class=\"rs-js-tab rs-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/modules/1\">",
-			"end": "<a class=\"rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/modules\">Cancel</a><a class=\"rs-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large\" href=\"admin/uninstall/modules/CallHome/\">Uninstall</a><button class=\"rs-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">Call home</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/modules/1\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/modules\">Cancel</a><a class=\"rs-admin-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large\" href=\"admin/uninstall/modules/CallHome/\">Uninstall</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	]
 ]

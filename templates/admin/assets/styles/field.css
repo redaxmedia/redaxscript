@@ -17,7 +17,7 @@
 
 .rs-admin-field-default,
 .rs-admin-field-select,
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	width: 40%;
 }
@@ -36,9 +36,9 @@
 	border-radius: 0.25em;
 	color: #6a6a6a;
 	font: 1rem arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	transition: background 0.4s ease;
 	padding: 0.5em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	transition: background 0.4s;
 }
 
 /* @section 1.1 hover effect */
@@ -70,7 +70,7 @@
 	width: 100%;
 }
 
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	min-height: 5em;
 }

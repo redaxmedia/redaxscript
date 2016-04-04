@@ -80,7 +80,7 @@ function search_post()
 
 					/* prepare metadata */
 
-					if ($description == '')
+					if (!$description)
 					{
 						$description = $title;
 					}

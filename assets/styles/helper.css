@@ -21,6 +21,7 @@
 
 /* @section 2. redirect */
 
+.rs-admin-redirect-overlay,
 .rs-redirect-overlay
 {
 	background: #fff;
@@ -44,8 +45,8 @@
 .rs-admin-clearfix:after,
 .rs-clearfix:after
 {
+	clear: both;
 	content: '';
 	display: block;
 	height: 0;
-	clear: both;
 }

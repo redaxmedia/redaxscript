@@ -2,7 +2,7 @@
 	[
 		"getPermissionNew",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -17,7 +17,7 @@
 	[
 		"getPermissionNew",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -32,7 +32,7 @@
 	[
 		"getPermissionNew",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -47,7 +47,7 @@
 	[
 		"getPermissionNew",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -62,7 +62,7 @@
 	[
 		"getPermissionInstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -77,7 +77,7 @@
 	[
 		"getPermissionInstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -92,7 +92,7 @@
 	[
 		"getPermissionInstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -107,7 +107,7 @@
 	[
 		"getPermissionInstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -122,7 +122,7 @@
 	[
 		"getPermissionEdit",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -137,7 +137,7 @@
 	[
 		"getPermissionEdit",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -152,7 +152,7 @@
 	[
 		"getPermissionEdit",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -167,7 +167,7 @@
 	[
 		"getPermissionEdit",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -182,7 +182,7 @@
 	[
 		"getPermissionDelete",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -197,7 +197,7 @@
 	[
 		"getPermissionDelete",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -212,7 +212,7 @@
 	[
 		"getPermissionDelete",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -227,7 +227,7 @@
 	[
 		"getPermissionDelete",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": true,
 			"articles": true,
 			"extras": true,
@@ -242,7 +242,7 @@
 	[
 		"getPermissionUninstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -257,7 +257,7 @@
 	[
 		"getPermissionUninstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -272,7 +272,7 @@
 	[
 		"getPermissionUninstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,
@@ -287,7 +287,7 @@
 	[
 		"getPermissionUninstall",
 		{
-			"invalid": false,
+			"invalid": null,
 			"categories": false,
 			"articles": false,
 			"extras": false,

@@ -44,6 +44,6 @@
 
 .rs-form-search
 {
-	background: var(--rs-color-light);
+	background: gray(255);
 	border-radius: 0.125em;
 }

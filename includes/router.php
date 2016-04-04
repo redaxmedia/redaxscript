@@ -14,6 +14,10 @@ use Redaxscript\Language;
 
 function router()
 {
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
+	$secondParameter = Redaxscript\Registry::get('secondParameter');
+	$thirdParameter = Redaxscript\Registry::get('thirdParameter');
+	$thirdSubParameter = Redaxscript\Registry::get('thirdSubParameter');
 	Redaxscript\Hook::trigger('routerStart');
 	if (Redaxscript\Registry::get('routerBreak') == 1)
 	{
@@ -23,20 +27,20 @@ function router()
 	/* check token */
 
 	$messenger = new Redaxscript\Messenger();
-	if ($_POST && $_POST['token'] != TOKEN)
+	if ($_POST && $_POST['token'] != Redaxscript\Registry::get('token'))
 	{
-		echo $messenger->setAction(Redaxscript\Language::get('home'), ROOT)->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
+		echo $messenger->setAction(Redaxscript\Language::get('home'), Redaxscript\Registry::get('root'))->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
 		return;
 	}
 
 	/* call default post */
 
 	$post_list = array(
-		'Redaxscript\View\LoginForm' => 'login_post',
-		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\RegisterPost',
-		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\ResetPost',
-		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\RecoverPost',
-		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\CommentPost',
+		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\Login',
+		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
+		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
+		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
+		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment',
 		'Redaxscript\View\SearchForm' => 'search_post'
 	);
 	foreach ($post_list as $key => $value)
@@ -56,10 +60,10 @@ function router()
 
 	/* general routing */
 
-	switch (FIRST_PARAMETER)
+	switch ($firstParameter)
 	{
 		case 'admin':
-			if (LOGGED_IN == TOKEN)
+			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 			{
 				admin_router();
 			}
@@ -69,7 +73,7 @@ function router()
 			}
 			return;
 		case 'login':
-			switch (SECOND_PARAMETER)
+			switch ($secondParameter)
 			{
 			case 'recover':
 				if (Redaxscript\Db::getSetting('recovery') == 1)
@@ -79,7 +83,7 @@ function router()
 					return;
 				}
 			case 'reset':
-				if (Redaxscript\Db::getSetting('recovery') == 1 && THIRD_PARAMETER && THIRD_PARAMETER_SUB)
+				if (Redaxscript\Db::getSetting('recovery') == 1 && $thirdParameter && $thirdSubParameter)
 				{
 					$resetForm = new Redaxscript\View\ResetForm();
 					echo $resetForm->render();
@@ -96,9 +100,10 @@ function router()
 				return;
 			}
 		case 'logout':
-			if (LOGGED_IN == TOKEN)
+			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 			{
-				logout();
+				$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+				echo $logoutController->process();
 				return;
 			}
 
@@ -116,7 +121,7 @@ function router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('home'), ROOT)->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setAction(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		default:
 			contents();

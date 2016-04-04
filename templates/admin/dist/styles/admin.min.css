@@ -17,12 +17,14 @@
 
 /* @section 1. links */
 
-.rs-admin-link-default {
-	text-decoration: underline;
+.rs-admin-link-default
+{
 	color: #666;
+	text-decoration: underline;
 }
 
-.rs-admin-link-default:hover {
+.rs-admin-link-default:hover
+{
 	text-decoration: none;
 }
 
@@ -44,7 +46,7 @@
 	cursor: pointer;
 }
 
-.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+.rs-admin-set-accordion:not(:last-child) .rs-admin-title-accordion
 {
 	border-bottom: none;
 }
@@ -67,9 +69,9 @@
 	cursor: pointer;
 }
 
-/* @section 2.2 last element*/
+/* @section 2.2 last element */
 
-.rs-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+.rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
 	border-bottom-width: 1px;
 }
@@ -142,7 +144,7 @@
 	overflow: hidden;
 }
 
-.rs-admin-wrapper-table > .rs-admin-table
+.rs-admin-wrapper-table > table
 {
 	width: 100%;
 }
@@ -163,6 +165,7 @@
  *    2.2 footer grid fix
  * 3. box panel admin
  * 4. box tab admin
+ * 5. box note admin
  *
  * @since 3.0.0
  *
@@ -177,7 +180,7 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
-	padding: 1em 1.5em;
+	padding: 0.25em 1em;
 }
 
 .rs-admin-box-accordion
@@ -192,7 +195,7 @@
 
 /* @section 1.1 last element */
 
-.rs-admin-set-accordion-last .rs-admin-box-accordion
+.rs-admin-set-accordion:last-child .rs-admin-box-accordion
 {
 	border-bottom-width: 1px;
 }
@@ -203,7 +206,6 @@
 {
 	background: url('templates/admin/assets/images/carbon.png') #222;
 	font-size: 0.875rem;
-	margin-bottom: 1em;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 }
@@ -218,15 +220,15 @@
 .rs-admin-description-dock
 {
 	float: right;
-	margin-right: 0.5em;
-	margin-left: 0.5em;
-	text-align: right;
-	text-transform: uppercase;
-	white-space: nowrap;
 	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 	max-width: 10em;
 	overflow: hidden;
+	text-align: right;
 	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 
 /* @section 2.2 footer grid fix */
@@ -252,6 +254,29 @@
 	border: 1px solid #b9b9b9;
 	padding: 1em 1.5em;
 }
+
+/* @section 5. box note admin */
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 1em;
+	position: relative;
+}
+
+.rs-admin-box-note a
+{
+	color: rgba(0, 0, 0, 0.65);
+	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.rs-admin-box-note a:hover
+{
+	color: #000;
+}
+
 /**
  * @tableofcontents
  *
@@ -277,11 +302,11 @@
 	border-radius: 0.25em;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875rem/2.5rem arial;
+	font: bold 0.875rem/2.5em arial;
+	padding: 0 0.75em;
 	text-decoration: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	padding: 0 0.75em;
 }
 
 .rs-admin-button-default, a.rs-admin-button-default
@@ -306,6 +331,13 @@
 	color: #fff;
 }
 
+/* large */
+
+.rs-admin-button-large
+{
+	font-size: 1.125rem;
+}
+
 /* @section 1.3 icons */
 
 .rs-admin-button-default.rs-admin-button-plus:before, .rs-admin-button-default.rs-admin-button-cancel:before, .rs-admin-button-default.rs-admin-button-submit:before
@@ -323,12 +355,12 @@
 
 .rs-admin-button-default.rs-admin-button-cancel:before
 {
-	content: 'e';
+	content: '\78';
 }
 
 .rs-admin-button-default.rs-admin-button-submit:before
 {
-	content: 'd';
+	content: '\2713';
 }
 
 /* @section 2. disabled and readonly */
@@ -345,7 +377,7 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-box-notification .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default
+.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default, .rs-admin-box-messenger + .rs-admin-button-messenger
 {
 	margin-top: 1em;
 }
@@ -397,7 +429,7 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s ease;
+	transition: padding 0.4s;
 	width: 3em;
 }
 
@@ -405,8 +437,8 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link delete */
@@ -420,7 +452,7 @@
 
 .rs-admin-link-dock:before
 {
-	font: 1.25rem/2.5rem 'icon admin';
+	font: 1.25rem/2.75rem 'icon admin';
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -460,7 +492,7 @@
 
 /* @section 1. several fields */
 
-.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-field-small
+.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
 {
 	width: 40%;
 }
@@ -477,9 +509,9 @@
 	border-radius: 0.25em;
 	color: #6a6a6a;
 	font: 1rem arial;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-	transition: background 0.4s ease;
 	padding: 0.5em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+	transition: background 0.4s;
 }
 
 /* @section 1.1 hover effect */
@@ -507,7 +539,7 @@
 	width: 100%;
 }
 
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	min-height: 5em;
 }
@@ -539,8 +571,8 @@
 
 .rs-admin-form-default li
 {
-	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 /* @section 1.1 label */
@@ -548,8 +580,9 @@
 .rs-admin-label-default
 {
 	color: #555;
-	font: bold 0.875rem arial;
 	display: block;
+	font-size: 0.875rem;
+	font-weight: bold;
 }
 
 .rs-admin-form-default .rs-admin-label-message:after
@@ -797,8 +830,8 @@
 {
 	font: 1.25rem/1.5rem 'icon admin';
 	margin-right: 1em;
-	vertical-align: middle;
 	text-transform: lowercase;
+	vertical-align: middle;
 }
 
 .rs-admin-item-panel.rs-admin-item-contents > span:before
@@ -895,7 +928,7 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s ease;
+	transition: padding-left 0.3s;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
@@ -940,13 +973,13 @@
 	text-decoration: none;
 }
 
-.rs-admin-list-tab .rs-item-active
+.rs-admin-list-tab .rs-admin-item-active
 {
-	padding: 0.5em 1em;
 	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
 }
 
-.rs-admin-list-tab .rs-item-active a
+.rs-admin-list-tab .rs-admin-item-active a
 {
 	color: #fff;
 }
@@ -968,7 +1001,7 @@
 
 /* @section 3.1 javascript enabled */
 
-.rs-js .rs-admin-list-tab .rs-item-active
+.rs-js .rs-admin-list-tab .rs-admin-item-active
 {
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
@@ -976,7 +1009,7 @@
 	pointer-events: none;
 }
 
-.rs-js .rs-admin-list-tab .rs-item-active a
+.rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
 	color: #474747;
 }
@@ -1062,24 +1095,24 @@
 
 /* @section 1. admin table */
 
-.rs-admin-table
+.rs-admin-table-default
 {
 	color: #474747;
 }
 
-.rs-admin-table caption, .rs-admin-table td, .rs-admin-table th
+.rs-admin-table-default caption, .rs-admin-table-default td, .rs-admin-table-default th
 {
 	text-align: left;
 }
 
-.rs-admin-table .rs-column-last
+.rs-admin-table-default th ~ th:last-child, .rs-admin-table-default td ~ td:last-child
 {
 	text-align: right;
 }
 
 /* @section 1.1 body */
 
-.rs-admin-table tbody
+.rs-admin-table-default tbody
 {
 	border: solid #b9b9b9;
 	border-width: 0 1px;
@@ -1087,36 +1120,36 @@
 
 /* odd look */
 
-.rs-admin-table tbody:nth-child(odd) tr
+.rs-admin-table-default tbody:nth-child(odd) tr
 {
 	background: linear-gradient(#e2e2e2, #dadada);
 }
 
 /* even look */
 
-.rs-admin-table tbody:nth-child(even) tr
+.rs-admin-table-default tbody:nth-child(even) tr
 {
 	background: linear-gradient(#ebebeb, #e8e8e8);
 }
 
-.rs-admin-table tbody + tbody tr, .rs-admin-table tbody tr + tr
+.rs-admin-table-default tbody + tbody tr, .rs-admin-table-default tbody tr + tr
 {
 	border-top: 1px solid #b9b9b9;
 }
 
-.rs-admin-table caption + tbody tr:last-child
+.rs-admin-table-default caption + tbody tr:last-child
 {
 	border-bottom: 1px solid #b9b9b9;
 }
 
-.rs-admin-table tbody td
+.rs-admin-table-default tbody td
 {
 	padding: 0.25em 0.5em;
 }
 
 /* row disabled */
 
-.rs-admin-table tbody .rs-admin-row-disabled
+.rs-admin-table-default tbody .rs-admin-row-disabled
 {
 	background: #ddd;
 	color: #b9b9b9;
@@ -1124,19 +1157,19 @@
 
 /* @section 1.2 row group */
 
-.rs-admin-table tbody .rs-admin-row-group
+.rs-admin-table-default tbody .rs-admin-row-group
 {
 	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-.rs-admin-table tbody .rs-admin-row-group td
+.rs-admin-table-default tbody .rs-admin-row-group td
 {
 	padding: 1.25em 0.75em;
 }
 
-.rs-admin-table tbody .rs-admin-row-group td:before
+.rs-admin-table-default tbody .rs-admin-row-group td:before
 {
 	content: 's';
 	font: 1.5rem 'icon admin';
@@ -1147,98 +1180,98 @@
 
 /* @section 1.3 several elements */
 
-.rs-admin-table tbody .rs-admin-link-parent
+.rs-admin-table-default tbody .rs-admin-link-parent
 {
 	color: #666;
 	text-decoration: underline;
 }
 
-.rs-admin-table tbody .rs-admin-link-parent:hover
+.rs-admin-table-default tbody .rs-admin-link-parent:hover
 {
 	color: #474747;
 }
 
-.rs-admin-table tbody .rs-admin-link-view
+.rs-admin-table-default tbody .rs-admin-link-view
 {
 	color: #474747;
 	font-weight: bold;
 	text-decoration: underline;
 }
 
-.rs-admin-table tbody .rs-admin-icon-flag
+.rs-admin-table-default tbody .rs-admin-icon-flag
 {
 	margin-right: 1em;
 }
 
 /* @section 1.4 list control admin */
 
-.rs-admin-table tbody .rs-admin-list-control
+.rs-admin-table-default tbody .rs-admin-list-control
 {
 	margin-top: 0.5em;
 }
 
-.rs-admin-desktop .rs-admin-table tbody .rs-admin-list-control
+.rs-admin-desktop .rs-admin-table-default tbody .rs-admin-list-control
 {
 	visibility: hidden;
 }
 
-.rs-admin-desktop .rs-admin-table tbody tr:hover .rs-admin-list-control
+.rs-admin-desktop .rs-admin-table-default tbody tr:hover .rs-admin-list-control
 {
 	visibility: visible;
 }
 
 /* @section 1.5 move control */
 
-.rs-admin-table .rs-admin-move-up, .rs-admin-table .rs-admin-move-down
+.rs-admin-table-default .rs-admin-move-up, .rs-admin-table-default .rs-admin-move-down
 {
 	color: #474747;
 	display: block;
 	min-height: 2.5em;
 	position: relative;
-	transition: color 0.4s ease;
+	transition: color 0.4s;
 }
 
-.rs-admin-table .rs-admin-move-up:hover, .rs-admin-table .rs-admin-move-down:hover
+.rs-admin-table-default .rs-admin-move-up:hover, .rs-admin-table-default .rs-admin-move-down:hover
 {
 	color: #0090db;
 }
 
-.rs-admin-table .rs-admin-move-up:before, .rs-admin-table .rs-admin-move-down:before
+.rs-admin-table-default .rs-admin-move-up:before, .rs-admin-table-default .rs-admin-move-down:before
 {
 	display: block;
 	font: 1.5rem 'icon admin';
 	position: absolute;
-	text-indent: 0;
 	right: 0.25em;
+	text-indent: 0;
 }
 
-.rs-admin-table .rs-admin-move-up:before
+.rs-admin-table-default .rs-admin-move-up:before
 {
 	content: 'b';
 	top: 0.25em;
 }
 
-.rs-admin-table .rs-admin-move-down:before
+.rs-admin-table-default .rs-admin-move-down:before
 {
-	content: 'c';
 	bottom: 0.25em;
+	content: 'c';
 }
 
 /* disabled move control */
 
-.rs-admin-table span.rs-admin-move-up:before, .rs-admin-table span.rs-admin-move-down:before
+.rs-admin-table-default span.rs-admin-move-up:before, .rs-admin-table-default span.rs-admin-move-down:before
 {
 	color: #b9b9b9;
 }
 
 /* @section 1.6 head and foot */
 
-.rs-admin-table caption, .rs-admin-table thead, .rs-admin-table tfoot
+.rs-admin-table-default caption, .rs-admin-table-default thead, .rs-admin-table-default tfoot
 {
 	border: 1px solid #222;
 }
 
-.rs-admin-table caption, .rs-admin-table thead tr, .rs-admin-table tfoot tr
+.rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
 	background: url('templates/admin/assets/images/carbon.png') #222;
 	color: #ccc;
@@ -1246,26 +1279,26 @@
 	text-transform: uppercase;
 }
 
-.rs-admin-table caption, .rs-admin-table thead th, .rs-admin-table tfoot td
+.rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
 {
 	padding: 0.5em;
 }
 
 /* @section 1.7 column move */
 
-.rs-admin-table .rs-admin-column-move
+.rs-admin-table-default tr td.rs-admin-column-move, .rs-admin-table-default tr th.rs-admin-column-move
 {
-	text-indent: -999em;
 	text-align: left;
+	text-indent: -999em;
 }
 
-.rs-admin-table thead .rs-admin-column-move, .rs-admin-table tfoot .rs-admin-column-move
+.rs-admin-table-default thead .rs-admin-column-move, .rs-admin-table-default tfoot .rs-admin-column-move
 {
 	display: block;
 	position: relative;
 }
 
-.rs-admin-table thead .rs-admin-column-move:before, .rs-admin-table tfoot .rs-admin-column-move:before
+.rs-admin-table-default thead .rs-admin-column-move:before, .rs-admin-table-default tfoot .rs-admin-column-move:before
 {
 	content: 'a';
 	font: 1.25rem/3rem 'icon admin';
@@ -1422,7 +1455,7 @@
 	float: left;
 }
 
-.rs-admin-rtl .rs-admin-table .rs-admin-column-move
+.rs-admin-rtl .rs-admin-table-default .rs-admin-column-move
 {
 	text-align: right;
 }
@@ -1443,6 +1476,11 @@
 
 /* @section 1. success */
 
+.rs-admin-note-success:not(:focus)
+{
+	color: #387038;
+}
+
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
 	background: #5bb75b;
@@ -1454,12 +1492,12 @@
 	background: #5bb75b;
 }
 
-.rs-admin-note-success.rs-admin-box-note:before
-{
-	content: '\2713';
-}
-
 /* @section 2. warning */
+
+.rs-admin-note-warning:not(:focus)
+{
+	color: #ad6704;
+}
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
@@ -1472,12 +1510,12 @@
 	background: #f3940e;
 }
 
-.rs-admin-note-warning.rs-admin-box-note:before
-{
-	content: '\21';
-}
-
 /* @section 3. error */
+
+.rs-admin-note-error:not(:focus)
+{
+	color: #802420;
+}
 
 .rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
@@ -1490,12 +1528,12 @@
 	background: #da4f49;
 }
 
-.rs-admin-note-error.rs-admin-box-note:before
-{
-	content: '\78';
-}
-
 /* @section 4. info */
+
+.rs-admin-note-info:not(:focus)
+{
+	color: #1f6377;
+}
 
 .rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {
@@ -1506,9 +1544,4 @@
 .rs-admin-note-info.rs-admin-field-note option
 {
 	background: #49afcd;
-}
-
-.rs-admin-note-info.rs-admin-box-note:before
-{
-	content: '\69';
 }

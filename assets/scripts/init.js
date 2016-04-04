@@ -31,22 +31,22 @@
 		accordion:
 		{
 			init: true,
-			selector: 'div.rs-js-accordion, form.rs-js-accordion',
+			selector: 'div.rs-admin-js-accordion, form.rs-admin-js-accordion, div.rs-js-accordion, form.rs-js-accordion',
 			options:
 			{
 				element:
 				{
-					accordionSet: 'div.rs-js-set-accordion, fieldset.rs-js-set-accordion',
-					accordionTitle: 'h3.rs-js-title-accordion, legend.rs-js-title-accordion',
-					accordionBox: 'div.rs-js-box-accordion, ul.rs-js-box-accordion'
+					accordionSet: 'div.rs-admin-js-set-accordion, fieldset.rs-admin-js-set-accordion, div.rs-js-set-accordion, fieldset.rs-js-set-accordion',
+					accordionTitle: 'h3.rs-admin-js-title-accordion, legend.rs-admin-js-title-accordion, h3.rs-js-title-accordion, legend.rs-js-title-accordion',
+					accordionBox: 'div.rs-admin-js-box-accordion, ul.rs-admin-js-box-accordion, div.rs-js-box-accordion, ul.rs-js-box-accordion'
 				},
-				duration: 600
+				duration: 300
 			}
 		},
 		autoResize:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-auto-resize',
+			selector: 'form textarea.rs-admin-js-auto-resize, form textarea.rs-js-auto-resize',
 			options:
 			{
 				overflow: 'hidden',
@@ -110,24 +110,24 @@
 		generateAlias:
 		{
 			init: true,
-			selector: 'form input.rs-js-generate-alias-input, form input.rs-js-generate-alias-output',
+			selector: 'form input.rs-admin-js-generate-alias-input, form input.rs-admin-js-generate-alias-output',
 			options:
 			{
 				element:
 				{
-					related: 'input.rs-js-generate-alias-output'
+					related: 'input.rs-admin-js-generate-alias-output'
 				}
 			}
 		},
 		generateKeyword:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-generate-keyword-input',
+			selector: 'form textarea.rs-admin-js-generate-keyword-input',
 			options:
 			{
 				element:
 				{
-					related: 'textarea.rs-js-generate-keyword-output',
+					related: 'textarea.rs-admin-js-generate-keyword-output',
 					target: 'h1, h2, h3, strong'
 				},
 				splitter:
@@ -149,9 +149,9 @@
 				{
 					adminDock: 'div.rs-admin-js-dock',
 					adminPanel: 'nav.rs-admin-js-panel',
-					buttonSubmit: 'form button.rs-js-submit',
-					buttonOk: 'div a.rs-js-ok span span, form button.rs-js-ok',
-					buttonCancel: 'div a.rs-js-cancel span span, form button.rs-js-cancel'
+					buttonSubmit: 'form button.rs-admin-js-submit',
+					buttonOk: 'div a.rs-admin-js-ok, form button.rs-admin-js-ok',
+					buttonCancel: 'div a.rs-admin-js-cancel, form button.rs-admin-js-cancel'
 				},
 				keyCode:
 				{
@@ -172,26 +172,26 @@
 		preventUnload:
 		{
 			init: true,
-			selector: 'ul.rs-js-box-accordion, div.rs-js-box-tab',
+			selector: 'ul.rs-admin-js-box-accordion, div.rs-admin-js-box-tab, ul.rs-js-box-accordion, div.rs-js-box-tab',
 			options:
 			{
 				element:
 				{
-					not: 'ul.rs-js-list-tab a'
+					not: 'ul.rs-admin-js-list-tab a, ul.rs-js-list-tab a'
 				}
 			}
 		},
 		tab:
 		{
 			init: true,
-			selector: 'div.rs-js-tab, form.rs-js-tab',
+			selector: 'div.rs-admin-js-tab, form.rs-admin-js-tab, div.rs-js-tab, form.rs-js-tab',
 			options:
 			{
 				element:
 				{
-					tabBox: 'div.rs-js-box-tab',
-					tabItem: 'ul.rs-js-list-tab li',
-					tabSet: 'div.rs-js-set-tab, fieldset.rs-js-set-tab'
+					tabBox: 'div.rs-admin-js-box-tab, div.rs-js-box-tab',
+					tabItem: 'ul.rs-admin-js-list-tab li, ul.rs-js-list-tab li',
+					tabSet: 'div.rs-admin-js-set-tab, fieldset.rs-admin-js-set-tab, div.rs-js-set-tab, fieldset.rs-js-set-tab'
 				}
 			}
 		},
@@ -203,13 +203,13 @@
 		validateForm:
 		{
 			init: true,
-			selector: 'form.rs-js-validate-form',
+			selector: 'form.rs-admin-js-validate-form, form.rs-js-validate-form',
 			options:
 			{
 				element:
 				{
-					buttonSubmit: 'button.rs-js-submit',
-					field: 'div.rs-js-editor-preview, input, select, textarea'
+					buttonSubmit: 'button.rs-admin-js-submit, button.rs-js-submit',
+					field: 'div.rs-admin-js-editor-preview, div.rs-js-editor-preview, input, select, textarea'
 				},
 				autoFocus: true,
 				message: true,

@@ -13,7 +13,13 @@
 
 function admin_router()
 {
-	$messenger = new Redaxscript\Messenger();
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
+	$adminParameter = Redaxscript\Registry::get('adminParameter');
+	$tableParameter = Redaxscript\Registry::get('tableParameter');
+	$idParameter = Redaxscript\Registry::get('idParameter');
+	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
+	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
+	$messenger = new Redaxscript\Admin\Messenger();
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{
@@ -22,7 +28,7 @@ function admin_router()
 
 	/* call last update */
 
-	if (FIRST_PARAMETER == 'admin' && ADMIN_PARAMETER == '' || ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'users' || UPDATE == '')
+	if ($firstParameter == 'admin' && !$adminParameter || $adminParameter == 'view' && $tableParameter == 'users' || !Redaxscript\Registry::get('update'))
 	{
 		admin_last_update();
 	}
@@ -31,13 +37,13 @@ function admin_router()
 
 	switch (true)
 	{
-		case ADMIN_PARAMETER && in_array(ADMIN_PARAMETER, array('new', 'view', 'edit', 'up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')) == '':
-		case ADMIN_PARAMETER == 'process' && $_POST['new'] == '' && $_POST['edit'] == '':
-		case ADMIN_PARAMETER == 'update' && $_POST['update'] == '';
-		case ADMIN_PARAMETER && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')) == '':
-		case ALIAS_PARAMETER == '' && (ADMIN_PARAMETER == 'install' || ADMIN_PARAMETER == 'uninstall'):
-		case ID_PARAMETER == '' && in_array(ADMIN_PARAMETER, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && TABLE_PARAMETER != 'settings':
-		case is_numeric(ID_PARAMETER) && Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->id == '':
+		case $adminParameter && !in_array($adminParameter, array('new', 'view', 'edit', 'up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')):
+		case $adminParameter == 'process' && !$_POST['new'] && !$_POST['edit']:
+		case $adminParameter == 'update' && !$_POST['update'];
+		case $adminParameter && !in_array($tableParameter, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')):
+		case !$aliasParameter && ($adminParameter == 'install' || $adminParameter == 'uninstall'):
+		case !$idParameter && in_array($adminParameter, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && $tableParameter != 'settings':
+		case is_numeric($idParameter) && !Redaxscript\Db::forTablePrefix($tableParameter)->where('id', $idParameter)->findOne()->id:
 
 			/* show error */
 
@@ -47,17 +53,17 @@ function admin_router()
 
 	/* define access variables */
 
-	if (ADMIN_PARAMETER && TABLE_PARAMETER)
+	if ($adminParameter && $tableParameter)
 	{
-		if (TABLE_PARAMETER == 'modules')
+		if ($tableParameter == 'modules')
 		{
 			$install = Redaxscript\Registry::get('modulesInstall');
 			$uninstall = Redaxscript\Registry::get('modulesUninstall');
 		}
-		else if (TABLE_PARAMETER != 'settings')
+		else if ($tableParameter != 'settings')
 		{
-			$new = TABLE_NEW;
-			if (TABLE_PARAMETER == 'comments')
+			$new = Redaxscript\Registry::get('tableNew');
+			if ($tableParameter == 'comments')
 			{
 				$articles_total = Redaxscript\Db::forTablePrefix('articles')->count();
 				$articles_comments_disable = Redaxscript\Db::forTablePrefix('articles')->where('comments', 0)->count();
@@ -66,14 +72,14 @@ function admin_router()
 					$new = 0;
 				}
 			}
-			$delete = TABLE_DELETE;
+			$delete = Redaxscript\Registry::get('tableDelete');
 		}
-		$edit = TABLE_EDIT;
+		$edit = Redaxscript\Registry::get('tableEdit');
 	}
 	if ($edit == 1 || $delete == 1)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		$access = Redaxscript\Db::forTablePrefix(TABLE_PARAMETER)->where('id', ID_PARAMETER)->findOne()->access;
+		$access = Redaxscript\Db::forTablePrefix($tableParameter)->where('id', $idParameter)->findOne()->access;
 		$check_access = $accessValidator->validate($access, Redaxscript\Registry::get('myGroups'));
 	}
 
@@ -81,21 +87,21 @@ function admin_router()
 
 	switch (true)
 	{
-		case ADMIN_PARAMETER == 'new' && $new == 0:
-		case ADMIN_PARAMETER == 'view' && in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
-		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'settings':
-		case ADMIN_PARAMETER == 'view' && TABLE_PARAMETER == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
-		case ADMIN_PARAMETER == 'edit' && $edit == 0 && !Redaxscript\Registry::get('usersException'):
-		case in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
-		case ADMIN_PARAMETER == 'install' && $install == 0:
-		case ADMIN_PARAMETER == 'uninstall' && $uninstall == 0:
-		case ADMIN_PARAMETER == 'delete' && $delete == 0 && !Redaxscript\Registry::get('usersException'):
-		case ADMIN_PARAMETER == 'process' && $_POST['new'] && $new == 0:
-		case ADMIN_PARAMETER == 'process' && $_POST['edit'] && $edit == 0 && !Redaxscript\Registry::get('usersException'):
-		case ADMIN_PARAMETER == 'process' && $_POST['groups'] && !Redaxscript\Registry::get('groupsEdit'):
-		case ADMIN_PARAMETER == 'update' && $edit == 0:
-		case ID_PARAMETER == 1 && (ADMIN_PARAMETER == 'disable' || ADMIN_PARAMETER == 'delete') && (TABLE_PARAMETER == 'groups' || TABLE_PARAMETER == 'users'):
-		case is_numeric(ID_PARAMETER) && TABLE_PARAMETER && $check_access == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'new' && $new == 0:
+		case $adminParameter == 'view' && in_array($tableParameter, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
+		case $adminParameter == 'view' && $tableParameter == 'settings':
+		case $adminParameter == 'view' && $tableParameter == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
+		case $adminParameter == 'edit' && $edit == 0 && !Redaxscript\Registry::get('usersException'):
+		case in_array($adminParameter, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
+		case $adminParameter == 'install' && $install == 0:
+		case $adminParameter == 'uninstall' && $uninstall == 0:
+		case $adminParameter == 'delete' && $delete == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'process' && $_POST['new'] && $new == 0:
+		case $adminParameter == 'process' && $_POST['edit'] && $edit == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'process' && $_POST['groups'] && !Redaxscript\Registry::get('groupsEdit'):
+		case $adminParameter == 'update' && $edit == 0:
+		case $idParameter == 1 && ($adminParameter == 'disable' || $adminParameter == 'delete') && ($tableParameter == 'groups' || $tableParameter == 'users'):
+		case is_numeric($idParameter) && $tableParameter && $check_access == 0 && !Redaxscript\Registry::get('usersException'):
 
 			/* show error */
 
@@ -105,7 +111,7 @@ function admin_router()
 
 	/* check token */
 
-	if (in_array(ADMIN_PARAMETER, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && TOKEN_PARAMETER == '')
+	if (in_array($adminParameter, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && !$tokenParameter)
 	{
 		/* show error */
 
@@ -115,95 +121,95 @@ function admin_router()
 
 	/* admin routing */
 
-	if (FIRST_PARAMETER == 'admin' && ADMIN_PARAMETER == '')
+	if ($firstParameter == 'admin' && !$adminParameter)
 	{
 		admin_notification();
 		contents();
 	}
-	switch (ADMIN_PARAMETER)
+	switch ($adminParameter)
 	{
 		case 'new':
-			if (TABLE_PARAMETER == 'categories')
+			if ($tableParameter == 'categories')
 			{
 				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
 				echo $categoryForm->render();
 			}
-			if (TABLE_PARAMETER == 'articles')
+			if ($tableParameter == 'articles')
 			{
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
 				echo $articleForm->render();
 			}
-			if (TABLE_PARAMETER == 'extras')
+			if ($tableParameter == 'extras')
 			{
 				$extraForm = new Redaxscript\Admin\View\ExtraForm();
 				echo $extraForm->render();
 			}
-			if (TABLE_PARAMETER == 'comments')
+			if ($tableParameter == 'comments')
 			{
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
 				echo $commentForm->render();
 			}
-			if (TABLE_PARAMETER == 'groups')
+			if ($tableParameter == 'groups')
 			{
 				$groupForm = new Redaxscript\Admin\View\GroupForm();
 				echo $groupForm->render();
 			}
-			if (TABLE_PARAMETER == 'users')
+			if ($tableParameter == 'users')
 			{
 				$userForm = new Redaxscript\Admin\View\UserForm();
 				echo $userForm->render();
 			}
 			return;
 		case 'view':
-			if (in_array(TABLE_PARAMETER, array('categories', 'articles', 'extras', 'comments')))
+			if (in_array($tableParameter, array('categories', 'articles', 'extras', 'comments')))
 			{
 				admin_contents_list();
 			}
-			if (in_array(TABLE_PARAMETER, array('groups', 'users', 'modules')))
+			if (in_array($tableParameter, array('groups', 'users', 'modules')))
 			{
-				call_user_func('admin_' . TABLE_PARAMETER . '_list');
+				call_user_func('admin_' . $tableParameter . '_list');
 			}
 			return;
 		case 'edit':
-			if (TABLE_PARAMETER == 'categories')
+			if ($tableParameter == 'categories')
 			{
 				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
-				echo $categoryForm->render(ID_PARAMETER);
+				echo $categoryForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'articles')
+			if ($tableParameter == 'articles')
 			{
 				$articleForm = new Redaxscript\Admin\View\ArticleForm();
-				echo $articleForm->render(ID_PARAMETER);
+				echo $articleForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'extras')
+			if ($tableParameter == 'extras')
 			{
 				$extraForm = new Redaxscript\Admin\View\ExtraForm();
-				echo $extraForm->render(ID_PARAMETER);
+				echo $extraForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'comments')
+			if ($tableParameter == 'comments')
 			{
 				$commentForm = new Redaxscript\Admin\View\CommentForm();
-				echo $commentForm->render(ID_PARAMETER);
+				echo $commentForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'groups')
+			if ($tableParameter == 'groups')
 			{
 				$groupForm = new Redaxscript\Admin\View\GroupForm();
-				echo $groupForm->render(ID_PARAMETER);
+				echo $groupForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'users')
+			if ($tableParameter == 'users')
 			{
 				$userForm = new Redaxscript\Admin\View\UserForm();
-				echo $userForm->render(ID_PARAMETER);
+				echo $userForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'modules')
+			if ($tableParameter == 'modules')
 			{
 				$moduleForm = new Redaxscript\Admin\View\ModuleForm();
-				echo $moduleForm->render(ID_PARAMETER);
+				echo $moduleForm->render($idParameter);
 			}
-			if (TABLE_PARAMETER == 'settings')
+			if ($tableParameter == 'settings')
 			{
 				$settingForm = new Redaxscript\Admin\View\SettingForm();
-				echo $settingForm->render(ID_PARAMETER);
+				echo $settingForm->render($idParameter);
 			}
 			return;
 		case 'up':
@@ -228,7 +234,7 @@ function admin_router()
 		case 'delete':
 		case 'process':
 		case 'update':
-			call_user_func('admin_' . ADMIN_PARAMETER);
+			call_user_func('admin_' . $adminParameter);
 			return;
 	}
 	Redaxscript\Hook::trigger('adminRouterEnd');

@@ -22,21 +22,20 @@
 
 .rs-body
 {
-	background: var(--rs-color-light);
+	background: gray(255);
 	overflow-x: hidden;
 }
 
 .rs-main
 {
-	background: var(--rs-color-light);
-	margin-bottom: 5em;
+	background: gray(255);
+	margin-bottom: 4em;
 	min-height: 20em;
-	padding-bottom: 2em;
 }
 
 .rs-page
 {
-	margin-top: 2em;
+	padding: 1em;
 }
 
 /* @section 2. wrapper */
@@ -47,12 +46,12 @@
 	margin-right: auto;
 }
 
-.rs-wrapper-table-default
+.rs-wrapper-table
 {
 	overflow: hidden;
 }
 
-.rs-wrapper-table-default > .rs-table-default
+.rs-wrapper-table > table
 {
 	width: 100%;
 }
@@ -71,7 +70,7 @@
 {
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
-	color: #e8e8e8;
+	color: gray(200);
 	padding: 1em;
 }
 
@@ -81,8 +80,8 @@
 {
 	background: var(--rs-color-tertiary);
 	bottom: 0;
-	min-height: 1.75em;
 	left: 0;
+	min-height: 1.75em;
 	padding: 1em;
 	position: fixed;
 	right: 0;
@@ -117,11 +116,6 @@
 		min-height: 2.5em;
 	}
 
-	.rs-page
-	{
-		padding: 1em;
-	}
-
 	.rs-content + .rs-sidebar
 	{
 		margin-top: 3em;
@@ -142,6 +136,11 @@
 		min-width: 50rem;
 	}
 
+	.rs-page
+	{
+		padding: 2em;
+	}
+
 	.rs-content
 	{
 		float: left;
@@ -151,8 +150,8 @@
 	.rs-sidebar
 	{
 		float: right;
-		width: 28%;
 		margin-left: 2%;
+		width: 28%;
 	}
 }
 

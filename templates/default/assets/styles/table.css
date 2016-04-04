@@ -17,7 +17,7 @@
 .rs-table-default td,
 .rs-table-default th
 {
-	background: rgba(50, 62, 76, 0.3);
+	background: gray(200);
 	padding: 0.5em 0.75em;
 }
 
@@ -28,7 +28,7 @@
 .rs-table-default caption
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 .rs-table-default tr

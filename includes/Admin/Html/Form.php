@@ -50,7 +50,7 @@ class Form extends BaseForm
 
 	protected $_attributeArray = array(
 		'form' => array(
-			'class' => 'rs-js-validate-form rs-admin-form-default',
+			'class' => 'rs-admin-js-validate-form rs-admin-form-default',
 			'method' => 'post'
 		),
 		'legend' => array(
@@ -113,7 +113,7 @@ class Form extends BaseForm
 				'type' => 'range'
 			),
 			'search' => array(
-				'class' => 'rs-js-search rs-admin-field-search',
+				'class' => 'rs-admin-js-search rs-admin-field-search',
 				'type' => 'search'
 			),
 			'tel' => array(
@@ -139,26 +139,26 @@ class Form extends BaseForm
 		),
 		'button' => array(
 			'button' => array(
-				'class' => 'rs-js-button rs-admin-button-default rs-admin-button-large',
+				'class' => 'rs-admin-js-button rs-admin-button-default rs-admin-button-large',
 				'type' => 'button'
 			),
 			'reset' => array(
-				'class' => 'rs-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
+				'class' => 'rs-admin-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
 				'type' => 'reset'
 			),
 			'submit' => array(
-				'class' => 'rs-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
+				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 				'type' => 'submit',
 				'value' => 'submit'
 			),
 			'save' => array(
-				'class' => 'rs-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
+				'class' => 'rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
 				'name' => 'edit',
 				'type' => 'submit',
 				'value' => 'save'
 			),
 			'create' => array(
-				'class' => 'rs-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large',
+				'class' => 'rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large',
 				'name' => 'new',
 				'type' => 'submit',
 				'value' => 'create'
@@ -166,14 +166,14 @@ class Form extends BaseForm
 		),
 		'link' => array(
 			'cancel' => array(
-				'class' => 'rs-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
+				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
 				'href' => 'javascript:history.back()'
 			),
 			'delete' => array(
-				'class' => 'rs-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
+				'class' => 'rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
 			),
 			'uninstall' => array(
-				'class' => 'rs-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
+				'class' => 'rs-admin-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
 			)
 		)
 	);

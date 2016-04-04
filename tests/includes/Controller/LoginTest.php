@@ -1,14 +1,16 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Config;
 use Redaxscript\Controller;
 use Redaxscript\Db;
+use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * RegisterPostTest
+ * LoginTest
  *
  * @since 3.0.0
  *
@@ -18,7 +20,7 @@ use Redaxscript\Request;
  * @author Balázs Szilágyi
  */
 
-class RegisterPostTest extends TestCase
+class LoginTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -65,8 +67,10 @@ class RegisterPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
+		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash->init('test');
 		Db::setSetting('captcha', 1);
-		Db::setSetting('notification', 1);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', $passwordHash->getHash())->save();
 	}
 
 	/**
@@ -78,7 +82,7 @@ class RegisterPostTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::setSetting('captcha', 0);
-		Db::setSetting('notification', 0);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
 	}
 
 	/**
@@ -91,7 +95,7 @@ class RegisterPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/register_post_process.json');
+		return $this->getProvider('tests/provider/Controller/login_process.json');
 	}
 
 	/**
@@ -99,28 +103,29 @@ class RegisterPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $post
+	 * @param array $postArray
 	 * @param array $hashArray
-	 * @param array $expect
+	 * @param array $userArray
+	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($post = array(), $hashArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $userArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_request->set('post', $post);
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $userArray['status'])->save();
+		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$registerPost = new Controller\RegisterPost($this->_registry, $this->_language, $this->_request);
+		$loginController = new Controller\Login($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		$actual = $registerPost->process();
+		$actual = $loginController->process();
 
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
 	}
-
 }

@@ -11,7 +11,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to process login request
+ * children class to process the login request
  *
  * @since 3.0.0
  *
@@ -21,7 +21,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class LoginPost implements ControllerInterface
+class Login implements ControllerInterface
 {
 	/**
 	 * instance of the registry class
@@ -75,46 +75,32 @@ class LoginPost implements ControllerInterface
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$passwordValidator = new Validator\Password();
-		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
-
 		$auth = new Auth($this->_request);
 
 		/* process post */
 
 		$postArray = array(
-			'user' => $this->_request->getPost('user'),
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* find user */
+		/* user and email */
 
 		$users = Db::forTablePrefix('users');
-		if ($emailValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
+		if ($emailValidator->validate($this->_request->getPost('user')) === Validator\ValidatorInterface::PASSED)
 		{
-			$postArray['user'] = $specialFilter->sanitize($postArray['user']);
-			$loginByEmail = 0;
-			$users->where(array(
-				'user' => $postArray['user'],
-				'status' => 1
-			));
+			$postArray['user'] = $emailFilter->sanitize($this->_request->getPost('user'));
+			$users->where('email', $postArray['user']);
 		}
 		else
 		{
-			$postArray['user'] = $emailFilter->sanitize($postArray['user']);
-			$loginByEmail = 1;
-			$users->where(array(
-				'email' => $postArray['user'],
-				'status' => 1
-			));
+			$postArray['user'] = $specialFilter->sanitize($this->_request->getPost('user'));
+			$users->where('user', $postArray['user']);
 		}
-
-		/* fetch user */
-
-		$user = $users->findOne();
+		$user = $users->where('status', 1)->findOne();
 
 		/* validate post */
 
@@ -122,23 +108,15 @@ class LoginPost implements ControllerInterface
 		{
 			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else
+		else if (!$user->id)
 		{
-			if ($loginByEmail === 0 && $loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
-			{
-				$errorArray[] = $this->_language->get('user_incorrect');
-			}
+			$errorArray[] = $this->_language->get('user_incorrect');
 		}
-
 		if (!$postArray['password'])
 		{
 			$errorArray[] = $this->_language->get('password_empty');
 		}
-		else if (!$user->password)
-		{
-			$errorArray[] = $this->_language->get('user_no');
-		}
-		else if ($passwordValidator->validate($postArray['password'], $user->password) === Validator\ValidatorInterface::FAILED)
+		else if ($user->password && $passwordValidator->validate($postArray['password'], $user->password) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('password_incorrect');
 		}
@@ -147,22 +125,24 @@ class LoginPost implements ControllerInterface
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
 
+		/* handle error */
+
 		if ($errorArray)
 		{
 			return $this->error($errorArray);
 		}
+
+		/* handle success */
+
 		else if ($auth->login($user->id))
 		{
-			/* handle success */
-
 			return $this->success();
 		}
-
-		return $this->error($errorArray);
+		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
-	 * show success
+	 * show the success
 	 *
 	 * @since 3.0.0
 	 *
@@ -176,7 +156,7 @@ class LoginPost implements ControllerInterface
 	}
 
 	/**
-	 * show error
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *

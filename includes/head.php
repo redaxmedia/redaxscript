@@ -13,16 +13,18 @@
  * @param string $type
  */
 
-function head($type = '')
+function head($type = 'all')
 {
 	$output = Redaxscript\Hook::trigger('headStart');
-	if (LAST_TABLE)
+	$lastTable = Redaxscript\Registry::get('lastTable');
+	$lastParameter = Redaxscript\Registry::get('lastParameter');
+	if ($lastTable)
 	{
 		/* fetch result */
 
-		$result = Redaxscript\Db::forTablePrefix(LAST_TABLE)
+		$result = Redaxscript\Db::forTablePrefix($lastTable)
 			->where(array(
-				'alias' => LAST_PARAMETER,
+				'alias' => $lastParameter,
 				'status' => 1
 			))->findArray();
 
@@ -51,56 +53,46 @@ function head($type = '')
 		}
 	}
 
-	/* undefine */
-
-	undefine(array(
-		'REFRESH_ROUTE',
-		'DESCRIPTION',
-		'KEYWORDS',
-		'ROBOTS',
-		'TITLE'
-	));
-
 	/* prepare title */
 
-	if (TITLE)
+	if (Redaxscript\Registry::get('metaTitle'))
 	{
-		$title = TITLE;
+		$title = Redaxscript\Registry::get('metaTitle');
 	}
-	else if ($title == '')
+	else if (!$title)
 	{
 		$title = Redaxscript\Db::getSetting('title');
 	}
 
 	/* prepare description */
 
-	if (DESCRIPTION)
+	if (Redaxscript\Registry::get('metaDescription'))
 	{
-		$description = DESCRIPTION;
+		$description = Redaxscript\Registry::get('metaDescription');
 	}
-	else if ($description == '')
+	else if (!$description)
 	{
 		$description = Redaxscript\Db::getSetting('description');
 	}
 
 	/* prepare keywords */
 
-	if (KEYWORDS)
+	if (Redaxscript\Registry::get('metaKeywords'))
 	{
-		$keywords = KEYWORDS;
+		$keywords = Redaxscript\Registry::get('metaKeywords');
 	}
-	else if ($keywords == '')
+	else if (!$keywords)
 	{
 		$keywords = Redaxscript\Db::getSetting('keywords');
 	}
 
 	/* prepare robots */
 
-	if (ROBOTS)
+	if (Redaxscript\Registry::get('metaRobots'))
 	{
-		$robots = ROBOTS;
+		$robots = Redaxscript\Registry::get('metaRobots');
 	}
-	else if (CONTENT_ERROR || LAST_PARAMETER && $check_access == 0)
+	else if (Redaxscript\Registry::get('contentError') || Redaxscript\Registry::get('lastParameter') && $check_access == 0)
 	{
 		$robots = 0;
 	}
@@ -111,18 +103,18 @@ function head($type = '')
 
 	/* collect meta output */
 
-	if ($type == '' || $type == 'base')
+	if ($type == 'all' || $type == 'base')
 	{
-		$output .= '<base href="' . ROOT . '/" />' . PHP_EOL;
+		$output .= '<base href="' . Redaxscript\Registry::get('root') . '/" />' . PHP_EOL;
 	}
-	if ($type == '' || $type == 'meta')
+	if ($type == 'all' || $type == 'meta')
 	{
 		$output .= '<meta charset="' . Redaxscript\Db::getSetting('charset') . '" />' . PHP_EOL;
 	}
 
 	/* collect title */
 
-	if (($type == '' || $type == 'title') && ($title || $description))
+	if (($type == 'all' || $type == 'title') && ($title || $description))
 	{
 		if ($title && $description)
 		{
@@ -133,13 +125,13 @@ function head($type = '')
 
 	/* collect meta */
 
-	if ($type == '' || $type == 'meta')
+	if ($type == 'all' || $type == 'meta')
 	{
 		/* collect refresh route */
 
-		if (REFRESH_ROUTE)
+		if (Redaxscript\Registry::get('refreshRoute'))
 		{
-			$output .= '<meta http-equiv="refresh" content="2; url=' . REFRESH_ROUTE . '" />' . PHP_EOL;
+			$output .= '<meta http-equiv="refresh" content="2; url=' . Redaxscript\Registry::get('refreshRoute') . '" />' . PHP_EOL;
 		}
 
 		/* collect author */
@@ -165,21 +157,27 @@ function head($type = '')
 
 	/* collect link */
 
-	if ($type == '' || $type == 'link')
+	if ($type == 'all' || $type == 'link')
 	{
 		/* build canonical url */
 
-		$canonical_url = ROOT . '/' . REWRITE_ROUTE;
+		$canonical_url = Redaxscript\Registry::get('root') . '/' . Redaxscript\Registry::get('rewriteRoute');
 
 		/* article in category */
 
-		if (FIRST_TABLE == 'categories' && LAST_TABLE == 'articles')
+		$firstTable = Redaxscript\Registry::get('firstTable');
+		$secondTable = Redaxscript\Registry::get('secondTable');
+		$lastTable = Redaxscript\Registry::get('lastTable');
+		$firstParameter = Redaxscript\Registry::get('firstParameter');
+		$secondParameter = Redaxscript\Registry::get('secondParameter');
+		$fullRoute = Redaxscript\Registry::get('fullRoute');
+		if ($firstTable == 'categories' && $lastTable == 'articles')
 		{
-			if (SECOND_TABLE == 'categories')
+			if ($secondTable == 'categories')
 			{
-				$category = Redaxscript\Db::forTablePrefix(SECOND_TABLE)->where('alias', SECOND_PARAMETER)->findOne()->id;
+				$category = Redaxscript\Db::forTablePrefix($secondTable)->where('alias', $secondParameter)->findOne()->id;
 			} else {
-				$category = Redaxscript\Db::forTablePrefix(FIRST_TABLE)->where('alias', FIRST_PARAMETER)->findOne()->id;
+				$category = Redaxscript\Db::forTablePrefix($firstTable)->where('alias', $firstParameter)->findOne()->id;
 			}
 
 			/* total articles of category */
@@ -187,10 +185,10 @@ function head($type = '')
 			$articles_total = Redaxscript\Db::forTablePrefix('articles')->where('category', $category)->count();
 			if ($articles_total == 1)
 			{
-				$canonical_route = FIRST_PARAMETER;
-				if (SECOND_TABLE == 'categories')
+				$canonical_route = $firstParameter;
+				if ($secondTable == 'categories')
 				{
-					$canonical_route .= '/' . SECOND_PARAMETER;
+					$canonical_route .= '/' . $secondParameter;
 				}
 			}
 		}
@@ -201,7 +199,7 @@ function head($type = '')
 		{
 			$canonical_url .= $canonical_route;
 		} else {
-			$canonical_url .= FULL_ROUTE;
+			$canonical_url .= $fullRoute;
 		}
 		$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;
 	}

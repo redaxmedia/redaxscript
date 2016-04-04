@@ -19,7 +19,7 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s ease;
+	transition: padding 0.4s;
 	width: 3em;
 }
 
@@ -27,8 +27,8 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 	padding: 0 0.25em;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link delete */
@@ -42,7 +42,7 @@
 
 .rs-admin-link-dock:before
 {
-	font: 1.25rem/2.5rem 'icon admin';
+	font: 1.25rem/2.75rem 'icon admin';
 	left: 0;
 	position: absolute;
 	right: 0;

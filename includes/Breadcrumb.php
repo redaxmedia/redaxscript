@@ -204,7 +204,7 @@ class Breadcrumb
 	protected function _create($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
-		$title = $this->_registry->get('title');
+		$title = $this->_registry->get('metaTitle');
 		$firstParameter = $this->_registry->get('firstParameter');
 		$firstTable = $this->_registry->get('firstTable');
 		$fullRoute = $this->_registry->get('fullRoute');

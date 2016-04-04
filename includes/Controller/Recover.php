@@ -12,7 +12,7 @@ use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
- * children class to reset password post request
+ * children class to process the recover request
  *
  * @since 3.0.0
  *
@@ -22,7 +22,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class RecoverPost implements ControllerInterface
+class Recover implements ControllerInterface
 {
 	/**
 	 * instance of the registry class
@@ -108,7 +108,7 @@ class RecoverPost implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return self::error($errorArray);
+			return $this->error($errorArray);
 		}
 
 		/* handle success */
@@ -131,32 +131,34 @@ class RecoverPost implements ControllerInterface
 			);
 			if ($this->_mail($mailArray))
 			{
-				$successArray[] = $this->_language->get('recovery_sent');
+				$successArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
 			}
 		}
 		if ($successArray)
 		{
-			return self::success();
+			return $this->success($successArray);
 		}
 		return $this->error($this->_language->get('something_wrong'));
 	}
 
 	/**
-	 * show success
+	 * show the success
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param array $successArray
 	 *
 	 * @return string
 	 */
 
-	public function success()
+	public function success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('recovery_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successArray, $this->_language->get('operation_completed'));
 	}
 
 	/**
-	 * show error
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *

@@ -13,26 +13,26 @@ $linkElement
 	->text('link');
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => 'rs-box-note'
+	'class' => $admin ? 'rs-admin-box-note' : 'rs-box-note'
 ));
 $textElement = new Html\Element();
 $textElement->init('input', array(
 	'type' => 'text',
-	'class' => 'rs-field-default rs-field-text rs-field-note',
+	'class' => $admin ? 'rs-admin-field-default rs-admin-field-text rs-admin-field-note' : 'rs-field-default rs-field-text rs-field-note',
 	'placeholder' => 'Placeholder text'
 ));
 $optionNative = '<option>Placeholder text</option>';
 $selectElement = new Html\Element();
 $selectElement
 	->init('select', array(
-		'class' => 'rs-field-select rs-field-note',
+		'class' => $admin ? 'rs-admin-field-select rs-admin-field-note' : 'rs-field-select rs-field-note',
 	))
 	->html($optionNative . $optionNative . $optionNative);
 $noteArray = array(
-	'rs-note-error',
-	'rs-note-warning',
-	'rs-note-success',
-	'rs-note-info'
+	$admin ? 'rs-admin-note-error' : 'rs-note-error',
+	$admin ? 'rs-admin-note-warning' : 'rs-note-warning',
+	$admin ? 'rs-admin-note-success' : 'rs-note-success',
+	$admin ? 'rs-admin-note-info' : 'rs-note-info'
 );
 ?>
 
@@ -40,7 +40,7 @@ $noteArray = array(
 
 <?php foreach ($noteArray as $value): ?>
 
-	<?php echo $titlePartialElement->text('.rs-box-note.' . $value); ?>
+	<?php echo $titlePartialElement->text($admin ? '.rs-admin-box-note.' : '.rs-box-note.')->append($value); ?>
 	<?php echo $boxElement->copy()->addClass($value)->html('Placeholder text and ' . $linkElement . '.'); ?>
 
 <?php endforeach; ?>
@@ -51,7 +51,7 @@ $noteArray = array(
 
 	<?php foreach ($noteArray as $value): ?>
 
-		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
+		<?php echo $titlePartialElement->text($admin ? '.rs-admin-field-note.' : '.rs-field-note.')->append($value); ?>
 		<?php echo $textElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>
@@ -64,7 +64,7 @@ $noteArray = array(
 
 	<?php foreach ($noteArray as $value): ?>
 
-		<?php echo $titlePartialElement->text('.rs-field-note.' . $value); ?>
+		<?php echo $titlePartialElement->text($admin ? '.rs-admin-field-note.' : '.rs-field-note.')->append($value); ?>
 		<?php echo $selectElement->copy()->addClass($value)->val($value); ?>
 
 	<?php endforeach; ?>

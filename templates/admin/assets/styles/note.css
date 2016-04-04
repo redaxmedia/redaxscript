@@ -14,6 +14,11 @@
 
 /* @section 1. success */
 
+.rs-admin-note-success:not(:focus)
+{
+	color: #387038;
+}
+
 .rs-admin-note-success.rs-admin-box-note,
 .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
@@ -26,12 +31,12 @@
 	background: #5bb75b;
 }
 
-.rs-admin-note-success.rs-admin-box-note:before
-{
-	content: '\2713';
-}
-
 /* @section 2. warning */
+
+.rs-admin-note-warning:not(:focus)
+{
+	color: #ad6704;
+}
 
 .rs-admin-note-warning.rs-admin-box-note,
 .rs-admin-note-warning.rs-admin-field-note:not(:focus)
@@ -45,12 +50,12 @@
 	background: #f3940e;
 }
 
-.rs-admin-note-warning.rs-admin-box-note:before
-{
-	content: '\21';
-}
-
 /* @section 3. error */
+
+.rs-admin-note-error:not(:focus)
+{
+	color: #802420;
+}
 
 .rs-admin-note-error.rs-admin-box-note,
 .rs-admin-note-error.rs-admin-field-note:not(:focus)
@@ -64,12 +69,12 @@
 	background: #da4f49;
 }
 
-.rs-admin-note-error.rs-admin-box-note:before
-{
-	content: '\78';
-}
-
 /* @section 4. info */
+
+.rs-admin-note-info:not(:focus)
+{
+	color: #1f6377;
+}
 
 .rs-admin-note-info.rs-admin-box-note,
 .rs-admin-note-info.rs-admin-field-note:not(:focus)
@@ -81,9 +86,4 @@
 .rs-admin-note-info.rs-admin-field-note option
 {
 	background: #49afcd;
-}
-
-.rs-admin-note-info.rs-admin-box-note:before
-{
-	content: '\69';
 }

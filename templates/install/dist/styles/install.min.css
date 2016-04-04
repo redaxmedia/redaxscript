@@ -26,6 +26,7 @@
  * @tableofcontents
  *
  * 1. general
+ * 2. query
  *
  * @since 3.0.0
  *
@@ -48,14 +49,14 @@
 
 .rs-install-content
 {
-	background: #fff;
+	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
-	padding: 0.25em 1em 2em;
+	padding: 1em;
 }
 
 .rs-install-title
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 	font-size: 2.5em;
 	font-weight: normal;
 	line-height: 1em;
@@ -83,8 +84,6 @@
 	}
 }
 
-/* @section 2.1 large min */
-
 @media screen and (min-width: 80em)
 {
 	.rs-install-wrapper
@@ -96,7 +95,6 @@
 
 	.rs-install-content
 	{
-		padding-left: 1.5em;
-		padding-right: 1.5em;
+		padding: 1.5em;
 	}
 }

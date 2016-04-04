@@ -5,7 +5,7 @@
  * 2. button search
  * 3. button large and full
  * 4. space between elements
- * 5. disabled
+ * 5. disabled and reset
  * 6. query
  *    6.1 medium max
  *    6.2 medium min
@@ -22,11 +22,11 @@
 {
 	background: var(--rs-gradient-secondary);
 	border-radius: 0.125em;
-	box-shadow: var(--rs-style-shadow-inner), var(--rs-style-shadow-outer);
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	font: bold 1em/1.25em var(--rs-font-primary);
 	padding: 0.375em 2em;
 	text-align: center;
 	text-decoration: none;
@@ -35,18 +35,18 @@
 .rs-button-default,
 a.rs-button-default
 {
-	color: var(--rs-color-light);
+	color: gray(255);
 	transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .rs-button-default:hover
 {
-	background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)), var(--rs-gradient-secondary);
+	background: var(--rs-gradient-secondary-light);
 }
 
 .rs-button-default:active
 {
-	box-shadow: var(--rs-style-shadow-inner);
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
 	transform: translateY(2px);
 }
 
@@ -54,28 +54,28 @@ a.rs-button-default
 
 .rs-button-search
 {
+	background: transparent;
+	color: var(--rs-color-tertiary);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1em;
+	height: 2em;
 	position: relative;
 	text-indent: -999em;
-	color: var(--rs-color-tertiary);
-	display: inline-block;
+	transition: color 0.2s;
 	vertical-align: middle;
 	width: 20%;
-	height: 2em;
-	font-size: 1em;
-	background: transparent;
-	cursor: pointer;
-	transition: color 0.2s;
 }
 
 .rs-button-search:hover
 {
-	color: var(--rs-color-dark);
+	color: gray(0);
 }
 
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1em/1.25em 'icon default';
+	font: 1.125em/1em var(--rs-font-icon);
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -97,19 +97,32 @@ a.rs-button-default
 
 /* @section 4. space between elements */
 
-.rs-box-dialog-default .rs-button-default,
-.rs-box-notification .rs-button-default,
-.rs-form-default .rs-button-default
+.rs-box-dialog .rs-button-default,
+.rs-form-default .rs-button-default,
+.rs-box-messenger + .rs-button-messenger
 {
 	margin-top: 1em;
 }
 
-/* @section 5. disabled */
+/* @section 5. disabled and reset */
 
 .rs-button-default[disabled]
 {
 	opacity: 0.5;
 	pointer-events: none;
+}
+
+.rs-button-reset,
+.rs-button-messenger
+{
+	background: gray(200);
+	color: gray(70);
+}
+
+.rs-button-reset:hover,
+.rs-button-messenger:hover
+{
+	background: gray(180);
 }
 
 /* @section 6. query */

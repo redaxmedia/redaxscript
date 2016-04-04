@@ -11,14 +11,20 @@
 
 /* @section 1. table */
 
-.rs-table caption,
-.rs-table td,
-.rs-table th
+.rs-table-default caption,
+.rs-table-default td,
+.rs-table-default th,
+.rs-admin-table-default caption,
+.rs-admin-table-default td,
+.rs-admin-table-default th
 {
 	text-align: left;
 }
 
-.rs-table .rs-column-last
+.rs-table-default th ~ th:last-child,
+.rs-table-default td ~ td:last-child,
+.rs-admin-table-default th ~ th:last-child,
+.rs-admin-table-default td ~ td:last-child
 {
 	text-align: right;
 }

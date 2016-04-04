@@ -19,13 +19,11 @@
 .rs-teaser
 {
 	background: var(--rs-url-teaser-small) no-repeat center top / cover;
-	margin-bottom: 2em;
+	box-sizing: border-box;
 	max-height: 35em;
+	overflow: hidden;
 	padding: 5em 2em;
 	padding: 10vw 4vw;
-	position: relative;
-	overflow: hidden;
-	box-sizing: border-box;
 }
 
 /* @section 2. title teaser */
@@ -33,24 +31,17 @@
 .rs-title-teaser
 {
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
-	background: rgba(50, 62, 77, 0.8);
+	background: color(var(--rs-color-tertiary) a(80%));
 	border-left: 0.25em solid var(--rs-color-quaternary);
 	border-radius: 0 0.125em 0.125em 0;
-	color: var(--rs-color-light);
+	color: gray(255);
 	display: inline-block;
 	font-size: 1.5em;
 	font-weight: 300;
 	line-height: 1.25em;
 	max-width: 80%;
-	padding: 0.375em 0.75em;
-	position: relative;
 	opacity: 0;
-	top: -5em;
-}
-
-.rs-title-teaser::-moz-selection
-{
-	background: var(--rs-color-quaternary);
+	padding: 0.375em 0.75em;
 }
 
 .rs-title-teaser::selection

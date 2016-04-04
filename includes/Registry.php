@@ -33,7 +33,7 @@ class Registry extends Singleton
 	{
 		if (is_array($registryArray))
 		{
-			self::$_registryArray = $registryArray;
+			self::$_registryArray = array_merge(self::$_registryArray, $registryArray);
 		}
 	}
 

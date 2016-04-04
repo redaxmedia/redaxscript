@@ -34,11 +34,12 @@
 			var accordion = $(this),
 				accordionSet = accordion.find(options.element.accordionSet),
 				accordionTitle = accordion.find(options.element.accordionTitle),
-				accordionBox = accordion.find(options.element.accordionBox);
+				accordionBox = accordion.find(options.element.accordionBox),
+				prefix = accordion.filter('[class^="rs-admin"]').length ? 'rs-admin-' : 'rs-';
 
 			/* show active box */
 
-			accordionBox.filter('.rs-js-box-active').show();
+			accordionBox.filter('.' + prefix + 'js-box-active').show();
 
 			/* listen for click */
 
@@ -50,20 +51,20 @@
 
 				/* toggle active class */
 
-				accordionSet.removeClass('rs-js-set-active rs-set-active').filter(accordionSetActive).addClass('rs-js-set-active rs-set-active');
-				accordionTitle.removeClass('rs-js-title-active rs-title-active').filter(accordionTitleActive).addClass('rs-js-title-active rs-title-active');
+				accordionSet.removeClass(prefix + 'js-set-active ' + prefix + 'set-active').filter(accordionSetActive).addClass(prefix + 'js-set-active ' + prefix + 'set-active');
+				accordionTitle.removeClass(prefix + 'js-title-active ' + prefix +  'title-active').filter(accordionTitleActive).addClass(prefix + 'js-title-active ' + prefix + 'title-active');
 
 				/* slide boxes */
 
-				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass('rs-js-box-active rs-box-active');
-				accordionBoxActive.slideDown(options.duration).addClass('rs-js-box-active rs-box-active');
+				accordionBox.stop(1).not(accordionBoxActive).slideUp(options.duration).removeClass(prefix + 'js-box-active  ' + prefix + 'box-active');
+				accordionBoxActive.slideDown(options.duration).addClass(prefix + 'js-box-active  ' + prefix + 'box-active');
 			});
 
 			/* show error */
 
 			accordion.on('error', function ()
 			{
-				var accordionSetError = accordionSet.has('.rs-js-note-error').first(),
+				var accordionSetError = accordionSet.has('.' + prefix + 'js-note-error').first(),
 					accordionTitleError = accordionSetError.find(accordionTitle);
 
 				accordionTitleError.click();
@@ -134,11 +135,12 @@
 		{
 			var tab = $(this),
 				tabItem = tab.find(options.element.tabItem),
-				tabSet = tab.find(options.element.tabSet);
+				tabSet = tab.find(options.element.tabSet),
+				prefix = tab.filter('[class^="rs-admin"]').length ? 'rs-admin-' : 'rs-';
 
 			/* show active set */
 
-			tabSet.filter('.rs-js-set-active').show();
+			tabSet.filter('.' + prefix + 'js-set-active').show();
 
 			/* listen for click */
 
@@ -150,8 +152,8 @@
 
 				/* toggle active class */
 
-				tabItem.removeClass('rs-js-item-active rs-item-active').filter(tabItemActive).addClass('rs-js-item-active rs-item-active');
-				tabSet.removeClass('rs-js-set-active rs-set-active').filter(tabSetActive).addClass('rs-js-set-active rs-set-active');
+				tabItem.removeClass(prefix + 'js-item-active ' + prefix + 'item-active').filter(tabItemActive).addClass(prefix + 'js-item-active ' + prefix + 'item-active');
+				tabSet.removeClass(prefix + 'js-set-active ' + prefix + 'set-active').filter(tabSetActive).addClass(prefix + 'js-set-active ' + prefix + 'set-active');
 				event.preventDefault();
 			});
 
@@ -159,7 +161,7 @@
 
 			tab.on('error', function ()
 			{
-				var tabNameError = tabSet.has('.rs-js-note-error').first().attr('id'),
+				var tabNameError = tabSet.has('.' + prefix + 'js-note-error').first().attr('id'),
 					tabItemError = tabItem.find('a[href*="' + tabNameError + '"]');
 
 				tabItemError.click();

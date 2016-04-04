@@ -15,6 +15,11 @@ function contents()
 {
 	$output = Redaxscript\Hook::trigger('contentStart');
 	$aliasValidator = new Redaxscript\Validator\Alias();
+	$lastId = Redaxscript\Registry::get('lastId');
+	$lastTable = Redaxscript\Registry::get('lastTable');
+	$categoryId = Redaxscript\Registry::get('categoryId');
+	$articleId = Redaxscript\Registry::get('articleId');
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
 
 	/* query articles */
 
@@ -27,14 +32,14 @@ function contents()
 
 	/* handle sibling */
 
-	if (LAST_ID)
+	if ($lastId)
 	{
-		$sibling = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('id', LAST_ID)->findOne()->sibling;
+		$sibling = Redaxscript\Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->sibling;
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix(LAST_TABLE)->whereIn('sibling', array(
-			LAST_ID,
+		$sibling_array = Redaxscript\Db::forTablePrefix($lastTable)->whereIn('sibling', array(
+			$lastId,
 			$sibling > 0 ? $sibling : null
 		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
@@ -48,16 +53,16 @@ function contents()
 
 	/* handle article */
 
-	if (ARTICLE)
+	if ($articleId)
 	{
 		$id_array[] = $sibling;
-		$id_array[] = ARTICLE;
+		$id_array[] = $articleId;
 		$articles->whereIn('id', $id_array);
 	}
 
 	/* else handle category */
 
-	else if (CATEGORY)
+	else if ($categoryId)
 	{
 		if (!$id_array)
 		{
@@ -67,7 +72,7 @@ function contents()
 			}
 			else
 			{
-				$id_array[] = CATEGORY;
+				$id_array[] = $categoryId;
 			}
 		}
 		$articles->whereIn('category', $id_array)->orderGlobal('rank');
@@ -79,11 +84,11 @@ function contents()
 		{
 			$num_rows = count($result);
 			$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
-			$sub_active = LAST_SUB_PARAMETER;
+			$sub_active = Redaxscript\Registry::get('lastSubParameter');
 
 			/* sub parameter */
 
-			if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
+			if (Redaxscript\Registry::get('lastSubParameter') > $sub_maximum || !Redaxscript\Registry::get('lastSubParameter'))
 			{
 				$sub_active = 1;
 			}
@@ -106,11 +111,11 @@ function contents()
 
 	/* handle error */
 
-	if (CATEGORY && $num_rows == '')
+	if ($categoryId && !$num_rows)
 	{
 		$error = Redaxscript\Language::get('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || CONTENT_ERROR)
+	else if (!$result || !$num_rows_active || Redaxscript\Registry::get('contentError'))
 	{
 		$error = Redaxscript\Language::get('content_not_found');
 	}
@@ -135,7 +140,7 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
+				if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					$route = build_route('articles', $id);
 				}
@@ -153,7 +158,7 @@ function contents()
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="rs-title-content" id="article-' . $alias . '">';
-					if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
+					if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
 					{
 						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '">' . $title . '</a>';
@@ -172,7 +177,7 @@ function contents()
 
 				/* prepend admin dock */
 
-				if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
+				if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && $firstParameter != 'logout')
 				{
 					$output .= admin_dock('articles', $id);
 				}
@@ -192,14 +197,14 @@ function contents()
 
 		/* handle access */
 
-		if (LAST_TABLE == 'categories')
+		if ($lastTable == 'categories')
 		{
 			if ($num_rows_active == $counter)
 			{
 				$error = Language::get('access_no');
 			}
 		}
-		else if (LAST_TABLE == 'articles' && $counter == 1)
+		else if ($lastTable == 'articles' && $counter == 1)
 		{
 			$error = Redaxscript\Language::get('access_no');
 		}
@@ -221,11 +226,11 @@ function contents()
 
 		/* call comments as needed */
 
-		if (ARTICLE)
+		if ($articleId)
 		{
 			/* comments replace */
 
-			if ($comments == 1 && (COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentReplace')))
+			if ($comments == 1 && Redaxscript\Registry::get('commentReplace'))
 			{
 				Redaxscript\Hook::trigger('commentReplace');
 			}
@@ -234,15 +239,15 @@ function contents()
 
 			else if ($comments > 0)
 			{
-				$route = build_route('articles', ARTICLE);
-				comments(ARTICLE, $route);
+				$route = build_route('articles', $articleId);
+				comments($articleId, $route);
 
 				/* comment form */
 
 				if ($comments == 1 || (Redaxscript\Registry::get('commentNew') && $comments == 3))
 				{
 					$commentForm = new Redaxscript\View\CommentForm();
-					echo $commentForm->render(ARTICLE);
+					echo $commentForm->render($articleId);
 				}
 			}
 		}
@@ -252,7 +257,7 @@ function contents()
 
 	if ($sub_maximum > 1 && Redaxscript\Db::getSetting('pagination') == 1)
 	{
-		$route = build_route('categories', CATEGORY);
+		$route = build_route('categories', $categoryId);
 		pagination($sub_active, $sub_maximum, $route);
 	}
 }
@@ -270,12 +275,15 @@ function contents()
  * @param mixed $filter
  */
 
-function extras($filter = '')
+function extras($filter)
 {
-	if ($filter == '')
+	if (!$filter)
 	{
 		$output .= Redaxscript\Hook::trigger('extraStart');
 	}
+	$categoryId = Redaxscript\Registry::get('categoryId');
+	$articleId = Redaxscript\Registry::get('articleId');
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
 
 	/* query extras */
 
@@ -341,9 +349,9 @@ function extras($filter = '')
 					}
 				}
 
-				/* show if cagegory or article matched */
+				/* show if category or article matched */
 
-				if ($category == CATEGORY || $article == ARTICLE || ($category == 0 && $article == 0))
+				if ($category == $categoryId || $article == $articleId || ($category == 0 && $article == 0))
 				{
 					/* parser object */
 
@@ -366,7 +374,7 @@ function extras($filter = '')
 
 					/* prepend admin dock */
 
-					if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
+					if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && $firstParameter != 'logout')
 					{
 						$output .= admin_dock('extras', $id);
 					}
@@ -374,7 +382,7 @@ function extras($filter = '')
 			}
 		}
 	}
-	if ($filter == '')
+	if (!$filter)
 	{
 		$output .= Redaxscript\Hook::trigger('extraEnd');
 	}
@@ -399,7 +407,7 @@ function extras($filter = '')
  * @return string
  */
 
-function infoline($table = '', $id = '', $author = '', $date = '')
+function infoline($table, $id, $author, $date)
 {
 	$output = Redaxscript\Hook::trigger('infolineStart');
 	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
@@ -462,7 +470,7 @@ function infoline($table = '', $id = '', $author = '', $date = '')
  * @param string $route
  */
 
-function pagination($sub_active = '', $sub_maximum = '', $route = '')
+function pagination($sub_active, $sub_maximum, $route)
 {
 	$output = Redaxscript\Hook::trigger('paginationStart');
 	$output .= '<ul class="rs-list-pagination">';

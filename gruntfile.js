@@ -4,7 +4,7 @@ module.exports = function (grunt)
 
 	/* polyfill */
 
-	require('es6-promise').polyfill();
+	require('babel-polyfill');
 
 	/* config grunt */
 
@@ -95,10 +95,10 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'.csslintrc',
 					'.htmlhintrc',
 					'.jscsrc',
 					'.jshintrc',
+					'.stylelintrc',
 					'.tocgen'
 				]
 			},
@@ -122,34 +122,6 @@ module.exports = function (grunt)
 				[
 					'tests/provider/*.json'
 				]
-			}
-		},
-		csslint:
-		{
-			base:
-			{
-				src:
-				[
-					'dist/styles/*.min.css'
-				]
-			},
-			modules:
-			{
-				src:
-				[
-					'modules/*/dist/styles/*.min.css'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'templates/*/dist/styles/*.min.css'
-				]
-			},
-			options:
-			{
-				csslintrc: '.csslintrc'
 			}
 		},
 		htmlhint:
@@ -311,7 +283,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/_variable.css',
 					'templates/install/assets/styles/layout.css'
 				],
-				dest: 'templates/install/dist/styles/default.min.css'
+				dest: 'templates/install/dist/styles/install.min.css'
 			}
 		},
 		postcss:
@@ -321,32 +293,78 @@ module.exports = function (grunt)
 				src:
 				[
 					'dist/styles/*.min.css'
-				]
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-extend'),
+						require('postcss-nesting'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions',
+							cascade: false
+						})
+					]
+				}
 			},
 			templates:
 			{
 				src:
 				[
 					'templates/*/dist/styles/*.min.css'
-				]
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-extend'),
+						require('postcss-nesting'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions',
+							cascade: false
+						})
+					]
+				}
 			},
-			options:
+			stylelintBase:
 			{
-				processors:
+				src:
 				[
-					require('postcss-custom-properties'),
-					require('postcss-custom-media'),
-					require('postcss-custom-selectors'),
-					require('postcss-extend'),
-					require('postcss-nesting'),
-					require('postcss-color-gray'),
-					require('postcss-color-function'),
-					require('autoprefixer')(
-					{
-						browsers: 'last 2 versions',
-						cascade: false
-					})
-				]
+					'assets/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('stylelint')
+					]
+				}
+			},
+			stylelintTemplate:
+			{
+				src:
+				[
+					'templates/*/assets/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('stylelint')
+					]
+				}
 			}
 		},
 		shell:
@@ -601,7 +619,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-htmlhint');
@@ -620,10 +637,15 @@ module.exports = function (grunt)
 		'jscs',
 		'jshint',
 		'jsonlint',
-		'csslint',
+		'stylelint',
 		'htmlhint',
 		'phpcs',
 		'toclint'
+	]);
+	grunt.registerTask('stylelint',
+	[
+		'postcss:stylelintBase',
+		'postcss:stylelintTemplate'
 	]);
 	grunt.registerTask('phpbench',
 	[
@@ -666,7 +688,8 @@ module.exports = function (grunt)
 	grunt.registerTask('build',
 	[
 		'concat',
-		'postcss'
+		'postcss:base',
+		'postcss:templates'
 	]);
 	grunt.registerTask('dist',
 	[

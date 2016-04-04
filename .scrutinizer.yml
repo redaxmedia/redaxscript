@@ -8,7 +8,6 @@ filter:
   - includes/contents.php
   - includes/head.php
   - includes/loader.php
-  - includes/login.php
   - includes/navigation.php
   - includes/query.php
   - includes/router.php

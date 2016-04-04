@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Auth;
 use Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
@@ -9,7 +8,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * LogoutPostTest
+ * RegisterTest
  *
  * @since 3.0.0
  *
@@ -18,7 +17,8 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
-class LogoutPostTest extends TestCase
+
+class RegisterTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -65,7 +65,8 @@ class LogoutPostTest extends TestCase
 
 	public static function setUpBeforeClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 1)->save();
+		Db::setSetting('captcha', 1);
+		Db::setSetting('notification', 1);
 	}
 
 	/**
@@ -76,7 +77,8 @@ class LogoutPostTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('settings')->where('name', 'notification')->findOne()->set('value', 0)->save();
+		Db::setSetting('captcha', 0);
+		Db::setSetting('notification', 0);
 	}
 
 	/**
@@ -89,7 +91,7 @@ class LogoutPostTest extends TestCase
 
 	public function providerProcess()
 	{
-		return $this->getProvider('tests/provider/Controller/logout_post_process.json');
+		return $this->getProvider('tests/provider/Controller/register_process.json');
 	}
 
 	/**
@@ -97,35 +99,27 @@ class LogoutPostTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $settings
-	 * @param array $expect
+	 * @param array $postArray
+	 * @param array $hashArray
+	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($settings, $expect)
+	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$auth = new Auth($this->_request);
-		$auth->login(2);
-
-		$logoutController = new Controller\LogoutPost($this->_registry, $this->_language, $this->_request);
+		$this->_request->set('post', $postArray);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$registerController = new Controller\Register($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 
-		if ($settings['session'] === 0)
-		{
-			$actual = $logoutController->error();
-		}
-		else
-		{
-			$actual = $logoutController->process();
-		}
+		$actual = $registerController->process();
 
 		/* compare */
 
-		$this->assertEquals($actual, $expect);
+		$this->assertEquals($expect, $actual);
 	}
-
 }

@@ -48,9 +48,9 @@
 		content: '';
 		height: 0.25em;
 		left: 0;
+		outline: none;
 		position: absolute;
 		right: 0;
-		outline: none;
 		transition: transform 0.2s;
 	}
 
@@ -70,23 +70,24 @@
 
 	.rs-fn-navigation
 	{
-		left: 0;
 		bottom: 0;
+		left: 0;
 		position: fixed;
 		top: 0;
 		transform: translateX(-100%);
-		z-index: 10;
+		z-index: 20;
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		transition: transform 0.2s;
 		transform: translateX(0);
+		transition: transform 0.2s;
 	}
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-status-navigation ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	{
 		bottom: 0;
 		content: '';
 		left: 0;
@@ -97,7 +98,8 @@
 		z-index: 1;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after {
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	{
 		right: 0;
 		z-index: 5;
 	}
@@ -105,7 +107,8 @@
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 50rem)
+{
 
 	/* @section 2.2.1 navigation trigger */
 

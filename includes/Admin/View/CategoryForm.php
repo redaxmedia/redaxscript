@@ -49,13 +49,13 @@ class CategoryForm implements ViewInterface
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => 'rs-js-list-tab rs-admin-list-tab'
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('rewriteRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
-				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
@@ -72,7 +72,7 @@ class CategoryForm implements ViewInterface
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-js-item-active rs-item-active')
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
@@ -98,17 +98,17 @@ class CategoryForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
 			->label(Language::get('title'), array(
 				'for' => 'title'
 			))
 			->text(array(
 				'autofocus' => 'autofocus',
-				'class' => 'rs-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
+				'class' => 'rs-admin-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required',
@@ -119,7 +119,7 @@ class CategoryForm implements ViewInterface
 				'for' => 'alias'
 			))
 			->text(array(
-				'class' => 'rs-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
+				'class' => 'rs-admin-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required',
@@ -130,7 +130,7 @@ class CategoryForm implements ViewInterface
 				'for' => 'description'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $category->description
@@ -140,7 +140,7 @@ class CategoryForm implements ViewInterface
 				'for' => 'keywords'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'value' => $category->keywords
@@ -158,7 +158,7 @@ class CategoryForm implements ViewInterface
 
 			/* second tab */
 
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
@@ -198,7 +198,7 @@ class CategoryForm implements ViewInterface
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))

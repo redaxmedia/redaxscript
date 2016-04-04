@@ -201,7 +201,7 @@ class Helper
 	/**
 	 * get the content array
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
@@ -212,14 +212,14 @@ class Helper
 
 		/* category */
 
-		if ($this->_registry->get('category'))
+		if ($this->_registry->get('categoryId'))
 		{
 			$output[] = 'rs-category';
 		}
 
 		/* article */
 
-		else if ($this->_registry->get('article'))
+		else if ($this->_registry->get('articleId'))
 		{
 			$output[] = 'rs-article';
 		}

@@ -51,11 +51,11 @@ function login_post()
 
 	/* validate post */
 
-	if ($post_user == '')
+	if (!$post_user)
 	{
 		$error = Redaxscript\Language::get('user_empty');
 	}
-	else if ($post_password == '')
+	else if (!$post_password)
 	{
 		$error = Redaxscript\Language::get('password_empty');
 	}
@@ -75,7 +75,7 @@ function login_post()
 	{
 		$error = Redaxscript\Language::get('captcha_incorrect');
 	}
-	else if ($my_id == '')
+	else if (!$my_id)
 	{
 		$error = Redaxscript\Language::get('login_incorrect');
 	}
@@ -87,13 +87,11 @@ function login_post()
 	{
 		$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 		$auth->login($my_id);
-		$_SESSION[ROOT . '/logged_in'] = TOKEN;
 		if (file_exists('languages/' . $my_language . '.php'))
 		{
-			$_SESSION[ROOT . '/language'] = $my_language;
-			$_SESSION[ROOT . '/language_selected'] = 1;
+			Redaxscript\Request::setSession('language', $my_language);
 		}
-		$_SESSION[ROOT . '/update'] = NOW;
+		Redaxscript\Request::setSession('update', Redaxscript\Registry::get('now'));
 	}
 
 	/* handle error */
@@ -127,7 +125,6 @@ function logout()
 {
 	$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 	$auth->logout();
-	$_SESSION[ROOT . '/logged_in'] = null;
 
 	/* show success */
 

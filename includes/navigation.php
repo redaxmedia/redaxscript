@@ -14,7 +14,7 @@
  * @param array $options
  */
 
-function navigation_list($table = '', $options = '')
+function navigation_list($table, $options)
 {
 	$output = Redaxscript\Hook::trigger('navigationStart');
 
@@ -31,11 +31,11 @@ function navigation_list($table = '', $options = '')
 
 	/* fallback */
 
-	if ($option_order == '')
+	if (!$option_order)
 	{
 		$option_order = Redaxscript\Db::getSetting('order');
 	}
-	if ($option_limit == '')
+	if (!$option_limit)
 	{
 		$option_limit = Redaxscript\Db::getSetting('limit');
 	}
@@ -116,7 +116,7 @@ function navigation_list($table = '', $options = '')
 
 	$result = $contents->findArray();
 	$num_rows = count($result);
-	if ($result == '' || $num_rows == '')
+	if (!$result || !$num_rows)
 	{
 		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
 	}
@@ -141,13 +141,13 @@ function navigation_list($table = '', $options = '')
 
 				/* build class string */
 
-				if (LAST_PARAMETER == $alias && $table != 'comments')
+				if (Redaxscript\Registry::get('lastParameter') == $alias && $table != 'comments')
 				{
 					$class_string = ' class="rs-item-active"';
 				}
 				else
 				{
-					$class_string = '';
+					$class_string = null;
 				}
 
 				/* prepare metadata */
@@ -156,7 +156,7 @@ function navigation_list($table = '', $options = '')
 				{
 					$description = $title = $author . Redaxscript\Language::get('colon') . ' ' . strip_tags($text);
 				}
-				if ($description == '')
+				if (!$description)
 				{
 					$description = $title;
 				}
@@ -174,7 +174,7 @@ function navigation_list($table = '', $options = '')
 
 				/* collect item output */
 
-				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="rs-admin-link-default">' . $title . '</a>';
+				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '">' . $title . '</a>';
 
 				/* collect children list output */
 
@@ -223,7 +223,7 @@ function navigation_list($table = '', $options = '')
 
 	/* handle error */
 
-	if ($error && $option_parent == '')
+	if ($error && !$option_parent)
 	{
 		$output = '<ul' . $id_string . $class_string . '><li><span>' . $error . '</span></li></ul>';
 	}
@@ -251,7 +251,7 @@ function navigation_list($table = '', $options = '')
  * @param array $options
  */
 
-function languages_list($options = '')
+function languages_list($options)
 {
 	/* define option variables */
 
@@ -324,7 +324,7 @@ function languages_list($options = '')
  * @param array $options
  */
 
-function templates_list($options = '')
+function templates_list($options)
 {
 	/* define option variables */
 

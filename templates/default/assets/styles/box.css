@@ -22,10 +22,10 @@
 
 .rs-box-code
 {
-	background: rgba(50, 62, 77, 0.1);
-	border: 0.25em solid rgba(50, 62, 77, 0.3);
+	background: gray(200);
+	border: 0.25em solid gray(170);
 	display: block;
-	font: 0.75em/1.25em monospace, arial;
+	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
 }
@@ -51,57 +51,42 @@
 	font-size: 0.75em;
 	max-width: 70%;
 	overflow: hidden;
-	position: relative;
 	white-space: nowrap;
-}
-
-.rs-box-metadata:before
-{
-	background: linear-gradient(to left, var(--rs-color-tertiary), transparent);
-	bottom: 0;
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 1em;
-	z-index: 1;
-}
-
-.rs-box-metadata a::-moz-selection,
-.rs-box-metadata span::-moz-selection
-{
-	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
 }
 
 .rs-box-metadata a::selection,
 .rs-box-metadata span::selection
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 }
 
 /* @section 3. box quote */
 
 .rs-box-quote
 {
-	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+	font: italic 1.25em/1.75em var(--rs-font-primary);
 }
 
 /* @section 4. box accordion */
 
-.rs-box-accordion-default
+.rs-box-accordion
 {
-	background: rgba(50, 62, 76, 0.3);
-	padding: 0.25em 0.5em;
+	background: gray(200);
+	padding: 0.25em 1em;
+}
+
+.rs-set-accordion + .rs-set-accordion
+{
+	margin-top: 0.125rem;
 }
 
 /* @section 5. box tab */
 
-.rs-box-tab-default
+.rs-box-tab
 {
 	background: var(--rs-color-tertiary);
-	color: var(--rs-color-light);
+	color: gray(255);
 	padding: 0.25em 1em;
 }
 
@@ -111,13 +96,13 @@
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 2.5em;
+	padding: 0.5em 0.5em 0.5em 2.75em;
 	position: relative;
 }
 
 .rs-box-note:before
 {
-	font: 1.5em/1.25em 'icon default';
+	font: 1.5em/1.25em var(--rs-font-icon);
 	left: 0.5em;
 	position: absolute;
 	top: 0.25em;
@@ -125,14 +110,14 @@
 
 .rs-box-note a
 {
-	color: color(var(--rs-color-dark) a(50%));
+	color: gray(0, 0.65);
 	text-decoration: underline;
 	transition: color 0.2s;
 }
 
 .rs-box-note a:hover
 {
-	color: var(--rs-color-dark);
+	color: gray(0);
 }
 
 /* @section 7. box comment */
@@ -140,23 +125,12 @@
 .rs-box-comment
 {
 	margin-bottom: 3em;
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.rs-box-comment:before
-{
-	content: '\25b6';
-	font: 2em/1em 'icon default';
-	position: absolute;
-	left: 0;
-	top: -0.125em;
-	opacity: 0.5;
 }
 
 /* @section 8. space between elements */
 
-.rs-box-note + .rs-box-note
+.rs-box-note + .rs-box-note,
+.rs-box-note + .rs-title-note
 {
 	margin-top: 1em;
 }
@@ -169,9 +143,9 @@
 {
 	.rs-box-metadata
 	{
-		font-size: 1em;
 		float: left;
-		max-width: 50%;
+		font-size: 1em;
+		max-width: 60%;
 	}
 
 	.rs-box-navigation

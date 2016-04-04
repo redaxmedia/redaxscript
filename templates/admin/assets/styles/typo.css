@@ -17,12 +17,14 @@
 
 /* @section 1. links */
 
-.rs-admin-link-default {
-	text-decoration: underline;
+.rs-admin-link-default
+{
 	color: #666;
+	text-decoration: underline;
 }
 
-.rs-admin-link-default:hover {
+.rs-admin-link-default:hover
+{
 	text-decoration: none;
 }
 
@@ -44,7 +46,7 @@
 	cursor: pointer;
 }
 
-.rs-admin-set-accordion:not(.rs-admin-set-accordion-last) .rs-admin-title-accordion
+.rs-admin-set-accordion:not(:last-child) .rs-admin-title-accordion
 {
 	border-bottom: none;
 }
@@ -67,9 +69,9 @@
 	cursor: pointer;
 }
 
-/* @section 2.2 last element*/
+/* @section 2.2 last element */
 
-.rs-js .rs-admin-set-accordion.rs-admin-set-accordion-last .rs-admin-title-accordion
+.rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
 	border-bottom-width: 1px;
 }

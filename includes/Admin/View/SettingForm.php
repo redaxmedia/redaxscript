@@ -44,7 +44,7 @@ class SettingForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('rewriteRoute') . 'admin/update/settings',
-				'class' => 'rs-js-validate-form rs-js-accordion rs-admin-form-default'
+				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-form-default'
 			),
 			'button' => array(
 				'save' => array(
@@ -64,9 +64,9 @@ class SettingForm implements ViewInterface
 
 			/* general set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-admin-set-accordion rs-set-active">')
-			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-admin-title-accordion rs-admin-title-active">' . Language::get('general') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-admin-box-accordion rs-box-active"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-js-set-active rs-admin-set-accordion rs-admin-set-active">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-js-title-active rs-admin-title-accordion rs-admin-title-active">' . Language::get('general') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-js-box-active rs-admin-box-accordion rs-admin-box-accordion rs-admin-box-active"><li>')
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
@@ -88,9 +88,9 @@ class SettingForm implements ViewInterface
 
 			/* metadata set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('metadata') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('metadata') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('title'), array(
 				'for' => 'title'
 			))
@@ -122,7 +122,7 @@ class SettingForm implements ViewInterface
 				'for' => 'description'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => Db::getSetting('description')
@@ -132,7 +132,7 @@ class SettingForm implements ViewInterface
 				'for' => 'keywords'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'value' => Db::getSetting('keywords')
@@ -150,9 +150,9 @@ class SettingForm implements ViewInterface
 
 			/* contact set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('contact') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('contact') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('email'), array(
 				'for' => 'email'
 			))
@@ -183,9 +183,9 @@ class SettingForm implements ViewInterface
 
 			/* formatting set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('formatting') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('formatting') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('charset'), array(
 				'for' => 'charset'
 			))
@@ -225,9 +225,9 @@ class SettingForm implements ViewInterface
 
 			/* contents set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('contents') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('contents') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('homepage'), array(
 				'for' => 'homepage'
 			))
@@ -267,9 +267,9 @@ class SettingForm implements ViewInterface
 
 			/* users set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('users') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('users') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('registration'), array(
 				'for' => 'registration'
 			))
@@ -300,9 +300,9 @@ class SettingForm implements ViewInterface
 
 			/* security set */
 
-			->append('<fieldset class="rs-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-admin-title-accordion">' . Language::get('security') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion rs-admin-box-accordion"><li>')
+			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
+			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . Language::get('security') . '</legend>')
+			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
 			->label(Language::get('moderation'), array(
 				'for' => 'moderation'
 			))

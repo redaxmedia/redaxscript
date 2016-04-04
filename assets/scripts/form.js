@@ -115,7 +115,7 @@
 								}).replace(indent, function ()
 								{
 									counter++;
-									return '';
+									return false;
 								}) + selectionAfter;
 								textarea.selectionEnd = selectionEnd - (counter * indent.length);
 								textarea.selectionStart = selectionStart;
@@ -211,7 +211,8 @@
 				var form = $(this),
 					buttonSubmit = form.find(options.element.buttonSubmit),
 					field = form.find(options.element.field),
-					fieldAll = field;
+					fieldAll = field,
+					prefix = form.filter('[class^="rs-admin"]').length ? 'rs-admin-' : 'rs-';
 
 				/* filter related fields */
 
@@ -235,7 +236,7 @@
 						thatNative = that[0],
 						thatEditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
-						className = 'rs-js-note-error rs-field-note rs-note-error',
+						className = prefix + 'js-note-error ' + prefix + 'field-note ' + prefix + 'note-error',
 						validity = 'valid',
 						thatValue = '',
 						thatRequired = '',
@@ -287,7 +288,7 @@
 						that.addClass(className).trigger('invalid');
 						if (message && options.message)
 						{
-							thatLabel.addClass('rs-label-message').attr('data-message', message);
+							thatLabel.addClass(prefix + 'label-message').attr('data-message', message);
 						}
 					}
 
@@ -298,14 +299,14 @@
 						that.removeClass(className).trigger('valid');
 						if (options.message)
 						{
-							thatLabel.removeClass('rs-label-message').removeAttr('data-message');
+							thatLabel.removeClass(prefix + 'label-message').removeAttr('data-message');
 						}
 					}
 				});
 
 				/* trigger error and prevent submit */
 
-				if (fieldAll.hasClass('rs-js-note-error'))
+				if (fieldAll.hasClass(prefix + 'js-note-error'))
 				{
 					form.trigger('error');
 					buttonSubmit.attr('disabled', 'disabled');
@@ -314,7 +315,7 @@
 
 					if (event.type === 'submit' && options.autoFocus)
 					{
-						fieldAll.filter('.rs-js-note-error').first().focus();
+						fieldAll.filter('.' + prefix + 'js-note-error').first().focus();
 					}
 
 					/* vibrate feedback */

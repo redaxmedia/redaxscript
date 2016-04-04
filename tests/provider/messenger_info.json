@@ -38,6 +38,6 @@
 			"text": "ok",
 			"route": "hello/world"
 		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-messenger\">ok</a>"
+		"<div class=\"rs-box-messenger rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-default rs-button-messenger\">ok</a>"
 	]
 ]

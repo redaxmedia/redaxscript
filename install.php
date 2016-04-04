@@ -32,20 +32,15 @@ else
 
 	include_once('includes/bootstrap.php');
 
-	/* define meta */
-
-	define('TITLE', Redaxscript\Language::get('installation'));
-	define('ROBOTS', 'none');
-
 	/* module init */
 
 	Redaxscript\Hook::trigger('init');
 
 	/* call loader else render template */
 
-	if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
+	if (Redaxscript\Registry::get('firstParameter') == 'loader' && (Redaxscript\Registry::get('secondParameter') == 'styles' || Redaxscript\Registry::get('secondParameter') == 'scripts'))
 	{
-		echo loader(SECOND_PARAMETER, 'outline');
+		echo loader(Redaxscript\Registry::get('secondParameter'), 'outline');
 	}
 	else
 	{
@@ -120,7 +115,7 @@ function install_cli($argv = array())
 {
 	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
 
-	$output = '';
+	$output = Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . PHP_EOL . PHP_EOL;
 	$typeArray = array();
 	foreach (PDO::getAvailableDrivers() as $driver)
 	{
@@ -235,19 +230,19 @@ function install_post()
 
 	/* validate post */
 
-	if ($d_type == '')
+	if (!$d_type)
 	{
 		$d_type = 'mysql';
 	}
-	if ($d_host == '')
+	if (!$d_host)
 	{
 		$d_host = 'localhost';
 	}
-	if ($user == '')
+	if (!$user)
 	{
 		$user = 'admin';
 	}
-	if ($password == '')
+	if (!$password)
 	{
 		$password = uniqid();
 	}
@@ -303,7 +298,7 @@ function install_notification()
 
 	$registry = Redaxscript\Registry::getInstance();
 
-	if (is_writable('config.php') == '')
+	if (!is_writable('config.php'))
 	{
 		$error = Redaxscript\Language::get('file_permission_grant') . Redaxscript\Language::get('colon') . ' config.php';
 	}
@@ -322,19 +317,19 @@ function install_notification()
 	{
 		$loginValidator = new Redaxscript\Validator\Login();
 		$emailValidator = new Redaxscript\Validator\Email();
-		if ($d_type != 'sqlite' && $name == '')
+		if ($d_type != 'sqlite' && !$name)
 		{
 			$error = Redaxscript\Language::get('name_empty');
 		}
-		else if ($d_type != 'sqlite' && $user == '')
+		else if ($d_type != 'sqlite' && !$user)
 		{
 			$error = Redaxscript\Language::get('user_empty');
 		}
-		else if ($d_type != 'sqlite' && $password == '')
+		else if ($d_type != 'sqlite' && !$password)
 		{
 			$error = Redaxscript\Language::get('password_empty');
 		}
-		else if ($email == '')
+		else if (!$email)
 		{
 			$error = Redaxscript\Language::get('email_empty');
 		}
@@ -412,15 +407,15 @@ function check_install()
 
 function head()
 {
-	$output = '<base href="' . ROOT . '/" />' . PHP_EOL;
-	$output .= '<title>' . TITLE . '</title>' . PHP_EOL;
+	$output = '<base href="' . Redaxscript\Registry::get('root') . '/" />' . PHP_EOL;
+	$output .= '<title>' . Redaxscript\Language::get('installation') . '</title>' . PHP_EOL;
 	$output .= '<meta http-equiv="content-type" content="text/html; charset=utf-8" />' . PHP_EOL;
 	if (check_install() == 1)
 	{
-		$output .= '<meta http-equiv="refresh" content="2; url=' . ROOT . '" />' . PHP_EOL;
+		$output .= '<meta http-equiv="refresh" content="2; url=' . Redaxscript\Registry::get('root') . '" />' . PHP_EOL;
 	}
 	$output .= '<meta name="generator" content="' . Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . '" />' . PHP_EOL;
-	$output .= '<meta name="robots" content="' . ROBOTS . '" />' . PHP_EOL;
+	$output .= '<meta name="robots" content="none" />' . PHP_EOL;
 	echo $output;
 }
 
@@ -441,7 +436,7 @@ function router()
 
 	/* check token */
 
-	if ($_POST && $_POST['token'] != TOKEN)
+	if ($_POST && $_POST['token'] != Redaxscript\Registry::get('token'))
 	{
 		$output = '<div class="rs-box-note rs-note-error">' . Redaxscript\Language::get('token_incorrect') . Redaxscript\Language::get('point') . '</div>';
 		echo $output;

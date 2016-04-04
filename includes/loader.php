@@ -15,7 +15,7 @@
  * @return string
  */
 
-function loader($type = '', $mode = '')
+function loader($type, $mode)
 {
 	$output = Redaxscript\Hook::trigger('loaderStart');
 	if ($mode == 'inline' || $mode == 'outline')
@@ -45,7 +45,7 @@ function loader($type = '', $mode = '')
 		}
 		if ($mode == 'outline')
 		{
-			header('expires: ' . GMDATE_PLUS_WEEK);
+			header('expires: ' . gmdate('D, d M Y H:i:s', strtotime('+1 week')) . ' GMT');
 		}
 	}
 
@@ -74,7 +74,7 @@ function loader($type = '', $mode = '')
 	if ($mode == 'init')
 	{
 		$loader_template_init = $loader_ini['template_init'];
-		if (LOGGED_IN == TOKEN)
+		if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 		{
 			$loader_admin_init = $loader_ini['admin_init'];
 		}
@@ -84,17 +84,19 @@ function loader($type = '', $mode = '')
 
 	else
 	{
+		$myBrowser = Redaxscript\Registry::get('myMobile');
+		$myEngine = Redaxscript\Registry::get('myEngine');
 		$loader_template = $loader_ini['template'];
-		$loader_browser = $loader_ini[MY_BROWSER];
-		$loader_engine = $loader_ini[MY_ENGINE];
+		$loader_browser = $loader_ini[$myBrowser];
+		$loader_engine = $loader_ini[$myEngine];
 
 		/* logged in */
 
-		if (LOGGED_IN == TOKEN)
+		if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 		{
 			$loader_admin = $loader_ini['admin'];
-			$loader_admin_browser = $loader_ini['admin_' . MY_BROWSER];
-			$loader_admin_engine = $loader_ini['admin_' . MY_ENGINE];
+			$loader_admin_browser = $loader_ini['admin_' . $myBrowser];
+			$loader_admin_engine = $loader_ini['admin_' . $myEngine];
 		}
 		$loader_rewrite = $loader_ini['settings']['rewrite'];
 	}
@@ -172,12 +174,13 @@ function loader($type = '', $mode = '')
 
 	if ($loader_rewrite)
 	{
-		$output = preg_replace('/templates\/'. $template . '/', ROOT . '/templates/' . $template, $output);
-		if (LOGGED_IN == TOKEN)
+		$root = Redaxscript\Registry::get('root');
+		$output = preg_replace('/templates\/'. $template . '/', $root . '/templates/' . $template, $output);
+		if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 		{
-			$output = preg_replace('/templates\/admin/', ROOT . '/templates/admin', $output);
+			$output = preg_replace('/templates\/admin/', $root . '/templates/admin', $output);
 		}
-		$output = preg_replace('/modules/', ROOT . '/modules', $output);
+		$output = preg_replace('/modules/', $root . '/modules', $output);
 	}
 
 	/* minify output */
@@ -232,7 +235,7 @@ function styles()
 
 	/* logged in */
 
-	if (LOGGED_IN == TOKEN)
+	if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 	{
 		$loader_admin_single = $loader_ini['admin_single'];
 	}
@@ -262,7 +265,7 @@ function styles()
 	}
 	if ($loader_deploy != 'inline')
 	{
-		$output .= '<link type="text/css" href="' . REWRITE_ROUTE . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
+		$output .= '<link type="text/css" href="' . Redaxscript\Registry::get('rewriteRoute') . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
 	$output .= Redaxscript\Hook::trigger('linkEnd');
 
@@ -289,9 +292,9 @@ function styles()
  * @param string $mode
  */
 
-function scripts($mode = '')
+function scripts($mode)
 {
-	if ($mode == '')
+	if (!$mode)
 	{
 		$output = Redaxscript\Hook::trigger('scriptStart');
 	}
@@ -328,7 +331,7 @@ function scripts($mode = '')
 
 		/* logged in */
 
-		if (LOGGED_IN == TOKEN)
+		if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 		{
 			$loader_admin_single = $loader_ini['admin_single'];
 		}
@@ -366,10 +369,10 @@ function scripts($mode = '')
 		else
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
-			$output .= '<script src="' . REWRITE_ROUTE . 'loader/scripts"></script>' . PHP_EOL;
+			$output .= '<script src="' . Redaxscript\Registry::get('rewriteRoute') . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
-	if ($mode == '')
+	if (!$mode)
 	{
 		$output .= Redaxscript\Hook::trigger('scriptEnd');
 	}
@@ -390,7 +393,7 @@ function scripts($mode = '')
  * @return string
  */
 
-function scripts_transport($minify = '')
+function scripts_transport($minify)
 {
 	/* extend redaxscript object */
 
@@ -448,7 +451,7 @@ function scripts_transport($minify = '')
 
 	$output .= 'if (rs.baseURL === \'\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
-	$output .= 'rs.baseURL = \'' . ROOT . '\/\';' . PHP_EOL;
+	$output .= 'rs.baseURL = \'' . Redaxscript\Registry::get('root') . '\/\';' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 
 	/* generator and version */

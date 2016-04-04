@@ -34,10 +34,10 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	border-radius: 0.125em;
-	display: block;
 	box-sizing: border-box;
+	display: block;
+	font: 1em/1.25em var(--rs-font-primary);
 	padding-bottom: 0.375em;
 	padding-top: 0.375em;
 }
@@ -56,7 +56,7 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	border: 2px solid #9c9c9c;
+	border: 2px solid gray(200);
 	transition: background 0.2s, border 0.2s;
 }
 
@@ -64,7 +64,7 @@
 .rs-field-select:hover,
 .rs-field-textarea:hover
 {
-	border-color: var(--rs-color-dark);
+	border-color: gray(170);
 }
 
 .rs-field-default:not(.rs-field-note):focus,
@@ -86,9 +86,9 @@
 .rs-field-textarea
 {
 	min-height: 10em;
+	padding: 0.5em;
 	resize: vertical;
 	width: 100%;
-	padding: 0.5em;
 }
 
 .rs-field-textarea.rs-field-small

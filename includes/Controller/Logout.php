@@ -8,16 +8,17 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * children class to process logout request
+ * children class to process the logout request
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @category Controller
  * @author Henry Ruhs
+ * @author Balázs Szilágyi
  */
 
-class LogoutPost implements ControllerInterface
+class Logout implements ControllerInterface
 {
 	/**
 	 * instance of the registry class
@@ -71,23 +72,17 @@ class LogoutPost implements ControllerInterface
 		$auth = new Auth($this->_request);
 		$auth->init();
 
+		/* handle success */
+
 		if ($auth->logout())
 		{
-			/* handle success */
-
 			return $this->success();
 		}
-		else
-		{
-			/* handle error */
-
-			return $this->error();
-		}
-
+		return $this->error();
 	}
 
 	/**
-	 * show success
+	 * show the success
 	 *
 	 * @since 3.0.0
 	 *
@@ -101,18 +96,16 @@ class LogoutPost implements ControllerInterface
 	}
 
 	/**
-	 * show error
+	 * show the error
 	 *
 	 * @since 3.0.0
-	 *
-	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	public function error()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction(Language::get('continue'), 'login')->error(Language::get('something_wrong'), Language::get('error_occurred'));
+		return $messenger->setAction(Language::get('back'), 'admin')->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 }

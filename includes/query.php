@@ -14,7 +14,7 @@
  * @return string
  */
 
-function query_table($input = '')
+function query_table($input)
 {
 	static $table;
 
@@ -61,7 +61,7 @@ function query_table($input = '')
  * @return string
  */
 
-function build_route($table = '', $id = '')
+function build_route($table, $id)
 {
 	if ($table && $id)
 	{
@@ -138,7 +138,7 @@ function build_route($table = '', $id = '')
  * @param string $table
  */
 
-function future_update($table = '')
+function future_update($table)
 {
 	Redaxscript\Db::forTablePrefix($table)
 		->where('status', 2)

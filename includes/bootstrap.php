@@ -22,10 +22,10 @@ $config->init();
 Db::construct($config);
 Db::init();
 
-/* startup and migrate */
+/* startup and registry */
 
 startup();
-$registry->init(migrate_constants());
+$registry->init();
 
 /* hook */
 

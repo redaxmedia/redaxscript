@@ -14,7 +14,7 @@
 
 @font-face
 {
-	font-family: 'icon default';
+	font-family: var(--rs-font-icon);
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
@@ -23,10 +23,10 @@
 .rs-icon-flag
 {
 	background: var(--rs-color-tertiary);
-	padding: 0.125em 0.5em;
-	color: var(--rs-color-light);
+	border-radius: 0.125em;
+	color: gray(255);
 	display: inline-block;
 	margin: 0.125em;
-	border-radius: 0.125em;
+	padding: 0.125em 0.5em;
 	text-transform: uppercase;
 }
