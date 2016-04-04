@@ -46,12 +46,12 @@
 	margin-right: auto;
 }
 
-.rs-wrapper-table-default
+.rs-wrapper-table
 {
 	overflow: hidden;
 }
 
-.rs-wrapper-table-default > .rs-table-default
+.rs-wrapper-table > table
 {
 	width: 100%;
 }

@@ -31,7 +31,7 @@
 	overflow: hidden;
 }
 
-.rs-admin-wrapper-table > .rs-admin-table
+.rs-admin-wrapper-table > table
 {
 	width: 100%;
 }

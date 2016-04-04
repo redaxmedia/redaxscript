@@ -1,14 +1,13 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '-admin' : '-default';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
 $tableElement = new Html\Element();
 $tableElement->init('table', array(
-	'class' => 'rs-table rs-table' . $suffix
+	'class' => $admin ? 'rs-admin-table-default' : 'rs-table-default'
 ));
 $theadElement = new Html\Element();
 $theadElement->init('thead');
@@ -63,9 +62,9 @@ $columnArray = array(
 
 <!-- table -->
 
-<?php echo $titlePartialElement->text('.rs-table.rs-table' . $suffix); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-wrapper-table > .rs-admin-table-default' : '.rs-wrapper-table > .rs-table-default'); ?>
 
-<div class="rs-wrapper-table<?php echo $suffix; ?>">
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
 		$theadElement->html($outputHead) .
@@ -81,9 +80,9 @@ $columnArray = array(
 
 <!-- table with caption -->
 
-<?php echo $titlePartialElement->text('.rs-table.rs-table' . $suffix); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-wrapper-table > .rs-admin-table-default' : '.rs-wrapper-table > .rs-table-default'); ?>
 
-<div class="rs-wrapper-table<?php echo $suffix; ?>">
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
 		$captionElement->text('Caption') .

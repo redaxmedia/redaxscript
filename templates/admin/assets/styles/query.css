@@ -147,7 +147,7 @@
 	float: left;
 }
 
-.rs-admin-rtl .rs-admin-table .rs-admin-column-move
+.rs-admin-rtl .rs-admin-table-default .rs-admin-column-move
 {
 	text-align: right;
 }

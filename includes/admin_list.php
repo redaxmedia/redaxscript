@@ -67,7 +67,7 @@ function admin_contents_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default rs-admin-button-sort">' . Redaxscript\Language::get('sort') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
 
 	/* collect thead */
 
@@ -419,7 +419,7 @@ function admin_groups_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('group_new') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
 
 	/* collect thead and tfoot */
 
@@ -516,7 +516,7 @@ function admin_users_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('user_new') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
 
 	/* collect thead and tfoot */
 
@@ -662,7 +662,7 @@ function admin_modules_list()
 	/* collect listing output */
 
 	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('modules') . '</h2>';
-	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table">';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
 
 	/* collect thead and tfoot */
 
