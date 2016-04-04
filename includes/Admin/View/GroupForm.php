@@ -49,13 +49,13 @@ class GroupForm implements ViewInterface
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => 'rs-js-list-tab rs-admin-list-tab'
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('rewriteRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
-				'class' => 'rs-js-tab rs-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
@@ -72,7 +72,7 @@ class GroupForm implements ViewInterface
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-js-item-active rs-item-active')
+			->addClass('rs-admin-js-item-active rs-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
@@ -101,11 +101,11 @@ class GroupForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-admin-js-box-tab rs-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-js-set-tab rs-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-set-tab rs-set-active"><ul><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
@@ -131,7 +131,7 @@ class GroupForm implements ViewInterface
 				'for' => 'description'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $group->description
@@ -143,7 +143,7 @@ class GroupForm implements ViewInterface
 		if (!$group->id || $group->id > 1)
 		{
 			$formElement
-			->append('<fieldset id="tab-2" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('categories'), array(
 				'for' => 'categories'
 			))
@@ -235,7 +235,7 @@ class GroupForm implements ViewInterface
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
 			->label(Language::get('filter'), array(
 				'for' => 'filter'
 			))
