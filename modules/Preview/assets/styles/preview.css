@@ -82,7 +82,8 @@
 
 .rs-preview .rs-title-preview-sub
 {
-	font: 1.25em monospace;
+	font: 1em monospace;
 	margin-bottom: 2em;
 	margin-top: 2em;
+	padding: 0.75em;
 }
