@@ -46,7 +46,7 @@
 		autoResize:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-auto-resize',
+			selector: 'form textarea.rs-admin-js-auto-resize, form textarea.rs-js-auto-resize',
 			options:
 			{
 				overflow: 'hidden',
@@ -110,24 +110,24 @@
 		generateAlias:
 		{
 			init: true,
-			selector: 'form input.rs-js-generate-alias-input, form input.rs-js-generate-alias-output',
+			selector: 'form input.rs-admin-js-generate-alias-input, form input.rs-admin-js-generate-alias-output',
 			options:
 			{
 				element:
 				{
-					related: 'input.rs-js-generate-alias-output'
+					related: 'input.rs-admin-js-generate-alias-output'
 				}
 			}
 		},
 		generateKeyword:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-generate-keyword-input',
+			selector: 'form textarea.rs-admin-js-generate-keyword-input',
 			options:
 			{
 				element:
 				{
-					related: 'textarea.rs-js-generate-keyword-output',
+					related: 'textarea.rs-admin-js-generate-keyword-output',
 					target: 'h1, h2, h3, strong'
 				},
 				splitter:
@@ -184,14 +184,14 @@
 		tab:
 		{
 			init: true,
-			selector: 'div.rs-js-tab, form.rs-js-tab',
+			selector: 'div.rs-admin-js-tab, form.rs-admin-js-tab, div.rs-js-tab, form.rs-js-tab',
 			options:
 			{
 				element:
 				{
-					tabBox: 'div.rs-js-box-tab',
-					tabItem: 'ul.rs-js-list-tab li',
-					tabSet: 'div.rs-js-set-tab, fieldset.rs-js-set-tab'
+					tabBox: 'div.rs-admin-js-box-tab, div.rs-js-box-tab',
+					tabItem: 'ul.rs-admin-js-list-tab li, ul.rs-js-list-tab li',
+					tabSet: 'div.rs-admin-js-set-tab, fieldset.rs-admin-js-set-tab, div.rs-js-set-tab, fieldset.rs-js-set-tab'
 				}
 			}
 		},

@@ -1,51 +1,60 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '-admin' : '-default';
 $titlePartialElement = new Html\Element();
 $titlePartialElement->init('h3', array(
 	'class' => 'rs-title-preview-sub'
 ));
 $listElement = new Html\Element();
 $listElement->init('ul', array(
-	'class' => 'rs-js-list-tab rs-list-tab rs-list-tab' . $suffix
+	'class' => $admin ? 'rs-admin-js-list-tab rs-admin-list-tab' : 'rs-js-list-tab rs-list-tab'
 ));
 $boxElement = new Html\Element();
 $boxElement->init('div', array(
-	'class' => 'rs-js-box-tab rs-box-tab rs-box-tab' . $suffix
+	'class' => $admin ? 'rs-admin-js-box-tab rs-admin-box-tab' : 'rs-js-box-tab rs-box-tab'
 ));
 $itemElement = new Html\Element();
 $itemElement->init('li');
 $setElement = new Html\Element();
 $setElement->init('div', array(
-	'class' => 'rs-js-set-tab rs-set-tab rs-set-tab' . $suffix
+	'class' => $admin ? 'rs-admin-js-set-tab rs-admin-set-tab' : 'rs-js-set-tab rs-set-tab'
 ));
 $outputItem = null;
 $outputBox = null;
-$itemArray = array(
-	'rs-item-first',
-	'rs-item-second',
-	'rs-item-third',
-	'rs-item-fourth',
-	'rs-item-fifth'
+$tabArray = array(
+	array(
+		'item' => $admin ? 'rs-admin-js-item-active rs-admin-item-active rs-admin-item-first' : 'rs-js-item-active rs-item-active rs-item-first',
+		'set' => $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active'
+	),
+	array(
+		'item' => $admin ? 'rs-admin-item-second' : 'rs-item-second'
+	),
+	array(
+		'item' => $admin ? 'rs-admin-item-third' : 'rs-item-third'
+	),
+	array(
+		'item' => $admin ? 'rs-admin-item-fourth' : 'rs-item-fourth'
+	),
+	array(
+		'item' => $admin ? 'rs-admin-item-fifth' : 'rs-item-fifth'
+	)
 );
 ?>
 
-<!-- collect several output -->
+<!-- collect output -->
 
-<?php foreach ($itemArray as $key => $value): ?>
+<?php foreach ($tabArray as $key => $value): ?>
 
-	<?php $id = 'tab' . $suffix . '-' . $key; ?>
+	<?php $id = uniqid(); ?>
 
 	<?php $outputItem .= $itemElement
 		->copy()
-		->addClass($key === 0 ? 'rs-js-item-active rs-item-active' : null)
-		->addClass($value)
+		->addClass($value['item'])
 		->html('<a href="' . Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id . '">' . Language::get($key + 1, '_number') . '</a>'); ?>
 
 	<?php $outputBox .= $setElement
 		->copy()
-		->addClass($key === 0 ? 'rs-js-set-active rs-set-active' : null)
+		->addClass($value['set'])
 		->attr('id', $id)
 		->text(Language::get($key + 1, '_number')); ?>
 
@@ -53,9 +62,9 @@ $itemArray = array(
 
 <!-- tab -->
 
-<?php echo $titlePartialElement->text('.rs-list-accordion' . $suffix . ' + .rs-box-tab' . $suffix); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-list-tab + .rs-admin-box-tab' : '.rs-list-tab + .rs-box-tab'); ?>
 
-<div class="rs-js-tab rs-tab">
+<div class="<?php echo $admin ? 'rs-admin-js-tab rs-admin-tab' : 'rs-js-tab rs-tab'; ?>">
 
 	<?php echo $listElement->copy()->html($outputItem); ?>
 	<?php echo $boxElement->copy()->html($outputBox); ?>

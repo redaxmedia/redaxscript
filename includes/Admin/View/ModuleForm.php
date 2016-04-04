@@ -81,7 +81,7 @@ class ModuleForm implements ViewInterface
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-admin-js-item-active rs-item-active')
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
@@ -117,11 +117,11 @@ class ModuleForm implements ViewInterface
 		$tabCounter = 1;
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-admin-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
@@ -153,7 +153,7 @@ class ModuleForm implements ViewInterface
 				foreach ($docDirectoryArray as $key => $value)
 				{
 					$formElement
-						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-set-tab">')
+						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
 						->append(Template::partial('modules/' . $module->alias . '/docs/' . $value))
 						->append('</fieldset>');
 				}
@@ -162,7 +162,7 @@ class ModuleForm implements ViewInterface
 			/* last tab */
 
 		$formElement
-			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('status'), array(
 				'for' => 'status'
 			))

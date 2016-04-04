@@ -72,7 +72,7 @@ class GroupForm implements ViewInterface
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-admin-js-item-active rs-item-active')
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
@@ -101,11 +101,11 @@ class GroupForm implements ViewInterface
 
 		$formElement
 			->append($listElement)
-			->append('<div class="rs-admin-js-box-tab rs-box-tab rs-admin-box-tab">')
+			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab rs-admin-box-tab">')
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
 			->label(Language::get('name'), array(
 				'for' => 'name'
 			))
@@ -143,7 +143,7 @@ class GroupForm implements ViewInterface
 		if (!$group->id || $group->id > 1)
 		{
 			$formElement
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('categories'), array(
 				'for' => 'categories'
 			))
@@ -235,7 +235,7 @@ class GroupForm implements ViewInterface
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('filter'), array(
 				'for' => 'filter'
 			))

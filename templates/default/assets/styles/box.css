@@ -83,7 +83,7 @@
 
 /* @section 5. box tab */
 
-.rs-box-tab-default
+.rs-box-tab
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);

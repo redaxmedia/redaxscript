@@ -72,7 +72,7 @@ class ArticleForm implements ViewInterface
 		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
-			->addClass('rs-admin-js-item-active rs-item-active')
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
@@ -102,7 +102,7 @@ class ArticleForm implements ViewInterface
 
 			/* first tab */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-set-tab rs-set-active"><ul><li>')
+			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
 			->label(Language::get('title'), array(
 				'for' => 'title'
 			))
@@ -169,7 +169,7 @@ class ArticleForm implements ViewInterface
 
 			/* second tab */
 
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('language'), array(
 				'for' => 'language'
 			))
@@ -209,7 +209,7 @@ class ArticleForm implements ViewInterface
 
 			/* last tab */
 
-			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-set-tab"><ul><li>')
+			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
 			->label(Language::get('headline'), array(
 				'for' => 'headline'
 			))

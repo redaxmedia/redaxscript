@@ -973,13 +973,13 @@
 	text-decoration: none;
 }
 
-.rs-admin-list-tab .rs-item-active
+.rs-admin-list-tab .rs-admin-item-active
 {
 	border-radius: 0.125em 0.125em 0 0;
 	padding: 0.5em 1em;
 }
 
-.rs-admin-list-tab .rs-item-active a
+.rs-admin-list-tab .rs-admin-item-active a
 {
 	color: #fff;
 }
@@ -1001,7 +1001,7 @@
 
 /* @section 3.1 javascript enabled */
 
-.rs-js .rs-admin-list-tab .rs-item-active
+.rs-js .rs-admin-list-tab .rs-admin-item-active
 {
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
 	border: 1px solid #b9b9b9;
@@ -1009,7 +1009,7 @@
 	pointer-events: none;
 }
 
-.rs-js .rs-admin-list-tab .rs-item-active a
+.rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
 	color: #474747;
 }
