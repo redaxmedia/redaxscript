@@ -2,6 +2,9 @@
  * @tableofcontents
  *
  * 1. query
+ * 1. variable
+ * 1. general
+ * 2. query
  *
  * @since 3.0.0
  *
@@ -26,6 +29,7 @@
  * @tableofcontents
  *
  * 1. general
+ * 2. query
  *
  * @since 3.0.0
  *
@@ -82,8 +86,6 @@
 		vertical-align: middle;
 	}
 }
-
-/* @section 2.1 large min */
 
 @media screen and (min-width: 80em)
 {
