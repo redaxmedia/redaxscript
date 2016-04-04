@@ -137,7 +137,7 @@ class ModuleForm implements ViewInterface
 				'for' => 'description'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $module->description

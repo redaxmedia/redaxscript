@@ -17,7 +17,7 @@
 
 .rs-admin-field-default,
 .rs-admin-field-select,
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	width: 40%;
 }
@@ -70,7 +70,7 @@
 	width: 100%;
 }
 
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	min-height: 5em;
 }

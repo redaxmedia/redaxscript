@@ -149,9 +149,9 @@
 				{
 					adminDock: 'div.rs-admin-js-dock',
 					adminPanel: 'nav.rs-admin-js-panel',
-					buttonSubmit: 'form button.rs-js-submit',
-					buttonOk: 'div a.rs-js-ok span span, form button.rs-js-ok',
-					buttonCancel: 'div a.rs-js-cancel span span, form button.rs-js-cancel'
+					buttonSubmit: 'form button.rs-admin-js-submit',
+					buttonOk: 'div a.rs-admin-js-ok, form button.rs-admin-js-ok',
+					buttonCancel: 'div a.rs-admin-js-cancel, form button.rs-admin-js-cancel'
 				},
 				keyCode:
 				{
@@ -172,12 +172,12 @@
 		preventUnload:
 		{
 			init: true,
-			selector: 'ul.rs-js-box-accordion, div.rs-js-box-tab',
+			selector: 'ul.rs-admin-js-box-accordion, div.rs-admin-js-box-tab, ul.rs-js-box-accordion, div.rs-js-box-tab',
 			options:
 			{
 				element:
 				{
-					not: 'ul.rs-js-list-tab a'
+					not: 'ul.rs-admin-js-list-tab a, ul.rs-js-list-tab a'
 				}
 			}
 		},
@@ -203,13 +203,13 @@
 		validateForm:
 		{
 			init: true,
-			selector: 'form.rs-js-validate-form',
+			selector: 'form.rs-admin-js-validate-form, form.rs-js-validate-form',
 			options:
 			{
 				element:
 				{
-					buttonSubmit: 'button.rs-js-submit',
-					field: 'div.rs-js-editor-preview, input, select, textarea'
+					buttonSubmit: 'button.rs-admin-js-submit, button.rs-js-submit',
+					field: 'div.rs-admin-js-editor-preview, div.rs-js-editor-preview, input, select, textarea'
 				},
 				autoFocus: true,
 				message: true,

@@ -130,7 +130,7 @@ class CategoryForm implements ViewInterface
 				'for' => 'description'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $category->description
@@ -140,7 +140,7 @@ class CategoryForm implements ViewInterface
 				'for' => 'keywords'
 			))
 			->textarea(array(
-				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-field-small',
+				'class' => 'rs-js-auto-resize rs-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'value' => $category->keywords

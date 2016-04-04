@@ -8,76 +8,6 @@
  * 3. several admin titles
  * 4. title dialog admin
  * 5. title content admin
- * 1. panel admin
- * 2. wrapper
- * 3. space between elements
- * 1. several admin boxes
- *    1.1 last element
- * 2. box dock admin
- *    2.1 description dock admin
- *    2.2 footer grid fix
- * 3. box panel admin
- * 4. box tab admin
- * 5. box note admin
- * 1. button admin
- *    1.1 hover effect
- *    1.2 active effect
- *    1.3 icons
- * 2. disabled and readonly
- * 3. space between elements
- * 1. dialog overlay admin
- * 2. fadein effect
- * 1. link dock admin
- *    1.1 icons
- * 1. several fields
- *    1.1 hover effect
- *    1.2 focus effect
- * 2. textarea
- * 3. disabled and readonly
- * 1. form admin
- *    1.1 label
- * 2. space between elements
- * 1. grid
- *    1.1 whole
- *    1.2 halve
- *    1.3 third
- *    1.4 quarter
- *    1.5 fifth
- *    1.6 sixth
- *    1.7 seventh
- *    1.8 eighth
- * 1. font face
- * 2. icon flag
- * 1. list control admin
- * 2. list panel admin
- *    2.1 icons before
- *    2.2 icons after
- * 1. list control admin
- * 2. list panel admin
- * 3. list tab admin
- *    3.1 javascript enabled
- * 1. box tab
- * 2. list tab
- * 3. set tab
- * 4. query
- *    4.1 max width 50em
- * 1. admin table
- *    1.1 body
- *    1.2 row group
- *    1.3 several elements
- *    1.4 list control admin
- *    1.5 move control
- *    1.6 head and foot
- *    1.7 column move
- * 1. screen max 40em
- * 2. screen max 30em
- * 3. screen min 50em
- * 4. screen min 30em
- * 5. rtl direction
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
  *
  * @since 3.0.0
  *
@@ -405,7 +335,7 @@
 
 .rs-admin-button-large
 {
-	font-size: 1.25em;
+	font-size: 1.125rem;
 }
 
 /* @section 1.3 icons */
@@ -562,7 +492,7 @@
 
 /* @section 1. several fields */
 
-.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-field-small
+.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
 {
 	width: 40%;
 }
@@ -609,7 +539,7 @@
 	width: 100%;
 }
 
-.rs-admin-field-textarea.rs-field-small
+.rs-admin-field-textarea.rs-admin-field-small
 {
 	min-height: 5em;
 }
