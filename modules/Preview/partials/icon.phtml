@@ -9,7 +9,8 @@ $iconElement = new Html\Element();
 $iconElement->init('span', array(
 	'class' => 'rs-icon-flag'
 ));
-$languagesDirectory = new Directory('languages');
+$languagesDirectory = new Directory();
+$languagesDirectory->init('languages');
 $languagesDirectoryArray = $languagesDirectory->getArray();
 ?>
 

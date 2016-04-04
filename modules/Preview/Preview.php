@@ -124,12 +124,11 @@ class Preview extends Module
 		$titleElement = new Html\Element();
 		$titleElement->init('h2', array(
 			'class' => 'rs-title-preview',
-			'title' => $alias
+			'id' => $alias
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a', array(
-			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias,
-			'title' => $alias
+			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias
 		));
 
 		/* collect output */

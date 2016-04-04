@@ -244,7 +244,7 @@ class Messenger
 
 		else
 		{
-			$boxElement->text($message);
+			$boxElement->html($message);
 		}
 
 		/* collect output */
