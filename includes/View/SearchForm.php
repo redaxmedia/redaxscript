@@ -37,12 +37,16 @@ class SearchForm implements ViewInterface
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-validate-search rs-form-search'
+				'class' => 'rs-js-validate-search rs-form-search',
+				'method' => 'get',
+				'action' => '/search/',
+				'onsubmit' => 'return false;'
 			),
 			'button' => array(
 				'submit' => array(
 					'class' => 'rs-button-search',
-					'name' => get_class()
+					'name' => get_class(),
+					'onclick' => 'window.location.href=this.form.action + this.form.search_terms.value;'
 				)
 			)
 		));
@@ -59,7 +63,6 @@ class SearchForm implements ViewInterface
 				'name' => 'table',
 				'value' => $table
 			))
-			->token()
 			->submit(Language::get('search'));
 
 		/* collect output */

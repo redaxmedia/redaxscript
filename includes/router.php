@@ -41,7 +41,7 @@ function router()
 		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
 		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
 		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment',
-		'Redaxscript\View\SearchForm' => 'search_post'
+		'Redaxscript\View\SearchForm' => 'Redaxscript\Controller\Search'
 	);
 	foreach ($post_list as $key => $value)
 	{
@@ -122,6 +122,12 @@ function router()
 			/* show error */
 
 			echo $messenger->setAction(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
+			return;
+		case 'search':
+
+			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $searchController->process();
+
 			return;
 		default:
 			contents();
