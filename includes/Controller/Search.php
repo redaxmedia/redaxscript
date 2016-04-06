@@ -81,13 +81,13 @@ class Search implements ControllerInterface
 
 		if (!$this->_registry->get('thirdParameter'))
 		{
-			$getArray = array(
+			$queryArray = array(
 				'search_terms' => $this->_registry->get('secondParameter')
 			);
 		}
 		else if (in_array($specialFilter->sanitize($this->_registry->get('secondParameter')), $tables))
 		{
-			$getArray = array(
+			$queryArray = array(
 				'table' => $specialFilter->sanitize($this->_registry->get('secondParameter')),
 				'search_terms' => $this->_registry->get('thirdParameter')
 			);
@@ -98,43 +98,42 @@ class Search implements ControllerInterface
 		}
 
 		/* validate search terms */
-		if (strlen($getArray['search_terms']) < 3 || $getArray['search_terms'] == $this->_language->get('search_terms'))
+		if (strlen($queryArray['search_terms']) < 3 || $queryArray['search_terms'] == $this->_language->get('search_terms'))
 		{
 			return $this->error($this->_language->get('input_incorrect'));
 		}
 
 		/* get search query */
 
-		$result = $this->_search($getArray);
+		$result = $this->_search($queryArray);
 		if (!$result)
 		{
-			echo $getArray['table'];
+			echo $queryArray['table'];
 			return $this->error($this->_language->get('search_no'));
 		}
 
 		$listForm = new View\SearchList($this->_registry, $this->_language);
 
-		return $listForm->render($getArray, $result);
+		return $listForm->render($queryArray, $result);
 	}
 
 	/**
 	 * Method for getting the search result
 	 *
-	 * @param array $getArray
+	 * @param array $queryArray
 	 *
 	 * @return array
 	 */
 
-	private function _search($getArray = array())
+	private function _search($queryArray = array())
 	{
-		if (!$getArray['table'])
+		if (!$queryArray['table'])
 		{
-			// TODO: search in every table
 			$query = Db::forTablePrefix('articles');
 		}
 		else
 		{
-			$query = Db::forTablePrefix($getArray['table']);
+			$query = Db::forTablePrefix($queryArray['table']);
 		}
 
 		return $query->where('status', 1)
@@ -148,10 +147,10 @@ class Search implements ControllerInterface
 				'keywords',
 				'text'
 			), array(
-				'%' . $getArray['search_terms'] . '%',
-				'%' . $getArray['search_terms'] . '%',
-				'%' . $getArray['search_terms'] . '%',
-				'%' . $getArray['search_terms'] . '%'
+				'%' . $queryArray['search_terms'] . '%',
+				'%' . $queryArray['search_terms'] . '%',
+				'%' . $queryArray['search_terms'] . '%',
+				'%' . $queryArray['search_terms'] . '%'
 			))
 			->orderByDesc('date')
 			->findArray();

@@ -55,7 +55,7 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $getArray
+	 * @param array $queryArray
 	 * @param array $resultArray
 	 *
 	 * @since 3.0.0
@@ -63,17 +63,16 @@ class SearchList implements ViewInterface
 	 * @return string
 	 */
 
-	public function render($getArray = array(), $resultArray = array())
+	public function render($queryArray = array(), $resultArray = array())
 	{
 		$output = Hook::trigger('searchListStart');
 
 		$accessValidator = new Validator\Access();
 		$listItem = null;
 
-		// TODO: this ain't good. it's just a temporary workaround.
-		if (!$getArray['table'])
+		if (!$queryArray['table'])
 		{
-			$getArray['table'] = 'articles';
+			$queryArray['table'] = 'articles';
 		}
 
 		/* title element */
@@ -111,13 +110,13 @@ class SearchList implements ViewInterface
 
 				/* build route */
 
-				if ($getArray['table'] == 'categories' && $result['parent'] == 0 || $result['table'] == 'articles' && $result['category'] == 0)
+				if ($queryArray['table'] == 'categories' && $result['parent'] == 0 || $result['table'] == 'articles' && $result['category'] == 0)
 				{
 					$route = $result['alias'];
 				}
 				else
 				{
-					$route = build_route($getArray['table'], $result['id']);
+					$route = build_route($queryArray['table'], $result['id']);
 				}
 
 				/* collect item output */
