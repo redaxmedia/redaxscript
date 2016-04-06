@@ -113,7 +113,7 @@ class SearchTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('title', 'title')->deleteMany();
+		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
 		Db::forTablePrefix('articles')->where('title', 'test article')->deleteMany();
 		Db::forTablePrefix('articles')->where('title', 'article')->deleteMany();
 	}
