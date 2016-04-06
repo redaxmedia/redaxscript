@@ -70,10 +70,10 @@ class SearchTest extends TestCase
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test',
-				'alias' => 'test',
+				'title' => 'test search',
+				'alias' => 'test-one',
 				'author' => 'admin',
-				'text' => 'test text',
+				'text' => 'test',
 				'category' => 1,
 				'access' => NULL,
 				'date' => '2016-04-04 04:00:00'
@@ -82,10 +82,10 @@ class SearchTest extends TestCase
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test article',
-				'alias' => 'test_article',
+				'title' => 'test search',
+				'alias' => 'test-two',
 				'author' => 'admin',
-				'text' => 'test text',
+				'text' => 'test',
 				'category' => 1,
 				'access' => NULL,
 				'date' => '2016-04-04 04:00:00'
@@ -94,10 +94,10 @@ class SearchTest extends TestCase
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'article',
-				'alias' => 'article',
+				'title' => 'test search',
+				'alias' => 'test-three',
 				'author' => 'admin',
-				'text' => 'test text',
+				'text' => 'test',
 				'category' => 1,
 				'access' => 1,
 				'date' => '2016-04-04 04:00:00'
@@ -113,9 +113,7 @@ class SearchTest extends TestCase
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
-		Db::forTablePrefix('articles')->where('title', 'test article')->deleteMany();
-		Db::forTablePrefix('articles')->where('title', 'article')->deleteMany();
+		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
 	}
 
 	/**

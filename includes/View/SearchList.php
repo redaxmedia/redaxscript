@@ -55,22 +55,21 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $queryArray
-	 * @param array $resultArray
+	 * @param array $result
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render($queryArray = array(), $resultArray = array())
+	public function render($result = null)
 	{
 		$output = Hook::trigger('searchListStart');
 
 		$accessValidator = new Validator\Access();
 		$listItem = null;
 
-		if (!$queryArray['table'])
+		if (!$result['table'])
 		{
 			$queryArray['table'] = 'articles';
 		}
@@ -92,7 +91,7 @@ class SearchList implements ViewInterface
 				'class' => 'rs-list-result'
 			));
 
-		foreach ($resultArray as $result)
+		foreach ($result as $result)
 		{
 			$access = $result['access'];
 

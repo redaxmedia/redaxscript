@@ -4,6 +4,7 @@ namespace Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Messenger;
+use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -48,6 +49,14 @@ class Search implements ControllerInterface
 	protected $_request;
 
 	/**
+	 * array for searchable tables
+	 *
+	 * @var object
+	 */
+
+	protected $tableArray = array('articles', 'comments', 'users');
+
+	/**
 	 * constructor of the class
 	 *
 	 * @since 3.0.0
@@ -75,32 +84,28 @@ class Search implements ControllerInterface
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
-		$tables = array('articles', 'comments', 'users');
 
 		/* process search parameters */
 
 		if (!$this->_registry->get('thirdParameter'))
 		{
 			$queryArray = array(
-				'search_terms' => $this->_registry->get('secondParameter')
+				'search' => $this->_registry->get('secondParameter')
 			);
 		}
-		else if (in_array($specialFilter->sanitize($this->_registry->get('secondParameter')), $tables))
+		else if (in_array($specialFilter->sanitize($this->_registry->get('secondParameter')), $this->tableArray))
 		{
 			$queryArray = array(
 				'table' => $specialFilter->sanitize($this->_registry->get('secondParameter')),
-				'search_terms' => $this->_registry->get('thirdParameter')
+				'search' => $this->_registry->get('thirdParameter')
 			);
-		}
-		else
-		{
-			return $this->error($this->_language->get('something_wrong'));
 		}
 
 		/* validate search terms */
-		if (strlen($queryArray['search_terms']) < 3 || $queryArray['search_terms'] == $this->_language->get('search_terms'))
+
+		if (strlen($queryArray['search']) < 3 || $queryArray['search'] == $this->_language->get('search'))
 		{
-			return $this->error($this->_language->get('input_incorrect'));
+			$errorArray[] = $this->error($this->_language->get('input_incorrect'));
 		}
 
 		/* get search query */
@@ -108,17 +113,21 @@ class Search implements ControllerInterface
 		$result = $this->_search($queryArray);
 		if (!$result)
 		{
-			echo $queryArray['table'];
-			return $this->error($this->_language->get('search_no'));
+			$errorArray[] = $this->error($this->_language->get('search_no'));
 		}
 
-		$listForm = new View\SearchList($this->_registry, $this->_language);
+		/* handle error */
 
-		return $listForm->render($queryArray, $result);
+		if ($errorArray)
+		{
+			return $this->error($errorArray);
+		}
+
+		return $this->success($result);
 	}
 
 	/**
-	 * Method for getting the search result
+	 * method for getting the search result
 	 *
 	 * @param array $queryArray
 	 *
@@ -127,16 +136,10 @@ class Search implements ControllerInterface
 
 	private function _search($queryArray = array())
 	{
-		if (!$queryArray['table'])
-		{
-			$query = Db::forTablePrefix('articles');
-		}
-		else
-		{
-			$query = Db::forTablePrefix($queryArray['table']);
-		}
+		$table = $queryArray['table'] ? $queryArray['table'] : 'articles';
+		$search = $queryArray['search'];
 
-		return $query->where('status', 1)
+		return Db::forTablePrefix($table)->where('status', 1)
 			->whereRaw('(language = ? OR language is ?)', array(
 				$this->_registry->get('language'),
 				null
@@ -147,10 +150,10 @@ class Search implements ControllerInterface
 				'keywords',
 				'text'
 			), array(
-				'%' . $queryArray['search_terms'] . '%',
-				'%' . $queryArray['search_terms'] . '%',
-				'%' . $queryArray['search_terms'] . '%',
-				'%' . $queryArray['search_terms'] . '%'
+				'%' . $search . '%',
+				'%' . $search . '%',
+				'%' . $search . '%',
+				'%' . $search . '%'
 			))
 			->orderByDesc('date')
 			->findArray();
@@ -161,13 +164,15 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $result
+	 *
 	 * @return string
 	 */
 
-	public function success()
+	public function success($result = array())
 	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), 'login')->doRedirect(0)->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
+		$listSearch = new View\SearchList($this->_registry, $this->_language);
+		return $listSearch->render($result);
 	}
 
 	/**

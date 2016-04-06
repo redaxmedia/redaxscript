@@ -63,6 +63,7 @@ class SearchForm implements ViewInterface
 				'name' => 'table',
 				'value' => $table
 			))
+			->token()
 			->submit(Language::get('search'));
 
 		/* collect output */
