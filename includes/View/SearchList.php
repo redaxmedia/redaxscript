@@ -55,21 +55,21 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $result
+	 * @param array $resultArray
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render($result = null)
+	public function render($resultArray = null)
 	{
 		$output = Hook::trigger('searchListStart');
 
 		$accessValidator = new Validator\Access();
-		$listItem = null;
+		$itemOutput = null;
 
-		if (!$result['table'])
+		if (!$resultArray['table'])
 		{
 			$queryArray['table'] = 'articles';
 		}
@@ -91,7 +91,7 @@ class SearchList implements ViewInterface
 				'class' => 'rs-list-result'
 			));
 
-		foreach ($result as $result)
+		foreach ($resultArray as $result)
 		{
 			$access = $result['access'];
 
@@ -118,13 +118,37 @@ class SearchList implements ViewInterface
 					$route = build_route($queryArray['table'], $result['id']);
 				}
 
+				/* html element */
+
+				$linkElement = new Html\Element();
+				$linkElement
+					->init('a', array(
+						'href' => $this->_registry->get('rewriteRoute') . $route,
+						'class' => 'rs-link-result'
+					))
+					->text($result['title']);
+
+				$textElement = new Html\Element();
+				$textElement
+					->init('span', array(
+							'class' => 'rs-text-result-date'
+						))
+					->text($date);
+
+				$itemElement = new Html\Element();
+				$itemElement
+					->init('li', array(
+						'class' => 'rs-item-result'
+					))
+					->html($linkElement . $textElement);
+
 				/* collect item output */
 
-				$listItem .= '<li class="rs-item-result"><a href="' . $this->_registry->get('rewriteRoute') . $route . '" class="rs-link-result">' . $result['title'] . '</a><span class="rs-text-result-date">' . $date . '</span></li>';
+				$itemOutput .= $itemElement;
 			}
 		}
 
-		$listElement->html($listItem);
+		$listElement->html($itemOutput);
 
 		$output .= $titleElement . $listElement;
 		$output .= Hook::trigger('searchListEnd');

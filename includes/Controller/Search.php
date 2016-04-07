@@ -51,10 +51,14 @@ class Search implements ControllerInterface
 	/**
 	 * array for searchable tables
 	 *
-	 * @var object
+	 * @var array
 	 */
 
-	protected $tableArray = array('articles', 'comments', 'users');
+	protected $tableArray = array(
+		'categories',
+		'articles',
+		'comments'
+	);
 
 	/**
 	 * constructor of the class
