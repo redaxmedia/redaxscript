@@ -34,7 +34,6 @@ $noteArray = array(
 	$admin ? 'rs-admin-note-success' : 'rs-note-success',
 	$admin ? 'rs-admin-note-info' : 'rs-note-info'
 );
-$message = 'Plain text and ' . $linkElement . '.';
 $messenger = $admin ? new Admin\Messenger() : new Messenger();
 $messenger->setAction(Language::get('preview', '_preview'), 'preview#note');
 ?>
@@ -42,16 +41,16 @@ $messenger->setAction(Language::get('preview', '_preview'), 'preview#note');
 <!--messenger -->
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-success + .rs-admin-box-note.rs-admin-note-success' : '.rs-title-note.rs-note-success + .rs-box-note.rs-note-success'); ?>
-<?php echo $messenger->success($message, 'Success'); ?>
+<?php echo $messenger->success('Plain success message with ' . $linkElement . ' element', 'Success'); ?>
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-warning + .rs-admin-box-note.rs-admin-note-warning' : '.rs-title-note.rs-note-warning + .rs-box-note.rs-note-warning'); ?>
-<?php echo $messenger->warning($message, 'Warning'); ?>
+<?php echo $messenger->warning('Plain warning message with ' . $linkElement . ' element', 'Warning'); ?>
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-error + .rs-admin-box-note.rs-admin-note-error' : '.rs-title-note.rs-note-error + .rs-box-note.rs-note-error'); ?>
-<?php echo $messenger->error($message, 'Error'); ?>
+<?php echo $messenger->error('Plain error message with ' . $linkElement . ' element', 'Error'); ?>
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-info + .rs-admin-box-note.rs-admin-note-info' : '.rs-title-note.rs-note-info + .rs-box-note.rs-note-info'); ?>
-<?php echo $messenger->info($message, 'Info'); ?>
+<?php echo $messenger->info('Plain info message with ' . $linkElement . ' element', 'Info'); ?>
 
 <!-- text field -->
 

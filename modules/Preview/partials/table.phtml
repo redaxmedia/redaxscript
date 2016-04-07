@@ -24,41 +24,24 @@ $tdElement->init('td');
 $outputHead = null;
 $outputFoot = null;
 $outputBody = null;
-$columnArray = array(
-	'rs-column-first',
-	'rs-column-second',
-	'rs-column-third',
-	'rs-column-fourth',
-	'rs-column-fifth'
-);
 ?>
 
-<!-- thead and tfoot content -->
+<!-- content -->
 
-<?php for ($i = 0; $i < 5; $i++): ?>
+<?php for ($i = 1; $i < 6; $i++): ?>
 
 	<?php $outputHead .= $thElement
 		->copy()
-		->addClass('rs-s1o5 ' . $columnArray[$i])
-		->text(Language::get($i + 1, '_number')); ?>
+		->addClass($admin ? 'rs-admin-s1o5' : 'rs-s1o5')
+		->text(Language::get($i, '_number')); ?>
 
 	<?php $outputFoot .= $tdElement
-		->copy()
-		->addClass($columnArray[$i])
-		->text(Language::get($i + 1, '_number')); ?>
-
-<?php endfor; ?>
-
-<!-- tbody content -->
-
-<?php foreach ($columnArray as $value): ?>
+		->text(Language::get($i, '_number')); ?>
 
 	<?php $outputBody .= $tdElement
-		->copy()
-		->addClass($value)
 		->text(Language::get('preview', '_preview')); ?>
 
-<?php endforeach; ?>
+<?php endfor; ?>
 
 <!-- table -->
 
