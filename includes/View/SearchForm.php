@@ -46,7 +46,7 @@ class SearchForm implements ViewInterface
 				'submit' => array(
 					'class' => 'rs-button-search',
 					'name' => get_class(),
-					'onclick' => 'window.location.href=this.form.action + this.form.search_terms.value;'
+					'onclick' => 'window.location.href=this.form.action + this.form.search.value;'
 				)
 			)
 		));
@@ -55,8 +55,8 @@ class SearchForm implements ViewInterface
 
 		$formElement
 			->search(array(
-				'name' => 'search_terms',
-				'placeholder' => Language::get('search_terms'),
+				'name' => 'search',
+				'placeholder' => Language::get('search'),
 				'tabindex' => '1'
 			))
 			->hidden(array(
