@@ -79,7 +79,7 @@ class FeedGenerator extends Module
 
 		if ($result)
 		{
-			$route = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+			$route = Registry::get('root') . Registry::get('parameterRoute') . Registry::get('fullRoute');
 			if (Request::getQuery('l'))
 			{
 				$route .= Registry::get('languageRoute') . Registry::get('language');
@@ -133,7 +133,7 @@ class FeedGenerator extends Module
 
 			foreach ($result as $value)
 			{
-				$route = Registry::get('root') . '/' . Registry::get('parameterRoute');
+				$route = Registry::get('root') . Registry::get('parameterRoute');
 				$route .= $value['category'] < 1 ? $value['alias'] : build_route($table, $value['id']);
 
 				/* collect entry output */
