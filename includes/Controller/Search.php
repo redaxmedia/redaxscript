@@ -89,6 +89,14 @@ class Search implements ControllerInterface
 	{
 		$specialFilter = new Filter\Special();
 
+		/* if post query, redirect to user friendly url */
+
+		if ($this->_request->getPost('search'))
+		{
+			$messenger = new Messenger();
+			return $messenger->setAction($this->_language->get('continue'), 'search/' . $this->_request->getPost('table') . '/' . $this->_request->getPost('search'))->doRedirect(0)->success($this->_language->get('search') . '...');
+		}
+
 		/* process search parameters */
 
 		if (!$this->_registry->get('thirdParameter'))

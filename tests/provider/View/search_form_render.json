@@ -2,15 +2,15 @@
 	[
 		"categories",
 		{
-			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"get\" action=\"/search/\" onsubmit=\"return false;\">",
-			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\" onclick=\"window.location.href=this.form.action + this.form.search.value;\">Search</button></form>"
+			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\">",
+			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
 		}
 	],
 	[
 		"articles",
 		{
-			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"get\" action=\"/search/\" onsubmit=\"return false;\">",
-			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\" onclick=\"window.location.href=this.form.action + this.form.search.value;\">Search</button></form>"
+			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\">",
+			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
 		}
 	]
 ]

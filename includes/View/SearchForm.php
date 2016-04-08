@@ -38,15 +38,12 @@ class SearchForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-search rs-form-search',
-				'method' => 'get',
-				'action' => '/search/',
-				'onsubmit' => 'return false;'
+				'action' => ''
 			),
 			'button' => array(
 				'submit' => array(
 					'class' => 'rs-button-search',
-					'name' => get_class(),
-					'onclick' => 'window.location.href=this.form.action + this.form.search.value;'
+					'name' => get_class()
 				)
 			)
 		));
