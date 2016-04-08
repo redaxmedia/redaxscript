@@ -54,22 +54,22 @@ class ExtraForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
+				'action' => Registry::get('parameterRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/extras'
+					'href' => Registry::get('parameterRoute') . 'admin/view/extras'
 				),
 				'delete' => array(
-					'href' => $extra->id ? Registry::get('rewriteRoute') . 'admin/delete/extras/' . $extra->id . '/' . Registry::get('token') : null
+					'href' => $extra->id ? Registry::get('parameterRoute') . 'admin/delete/extras/' . $extra->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

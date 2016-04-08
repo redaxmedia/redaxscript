@@ -44,7 +44,7 @@
 			{
 				$.ajax(
 				{
-					url: rs.registry.rewriteRoute + options.url,
+					url: rs.registry.parameterRoute + options.url,
 					success: function (data)
 					{
 						if (data === dataOld)

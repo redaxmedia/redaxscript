@@ -54,22 +54,22 @@ class ArticleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
+				'action' => Registry::get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/articles'
+					'href' => Registry::get('parameterRoute') . 'admin/view/articles'
 				),
 				'delete' => array(
-					'href' => $article->id ? Registry::get('rewriteRoute') . 'admin/delete/articles/' . $article->id . '/' . Registry::get('token') : null
+					'href' => $article->id ? Registry::get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

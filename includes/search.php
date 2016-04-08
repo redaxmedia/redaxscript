@@ -99,7 +99,7 @@ function search_post()
 
 					/* collect item output */
 
-					$output .= '<li class="rs-item-result"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '" class="rs-link-result">' . $title . '</a><span class="rs-text-result-date">' . $date . '</span></li>';
+					$output .= '<li class="rs-item-result"><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '" class="rs-link-result">' . $title . '</a><span class="rs-text-result-date">' . $date . '</span></li>';
 				}
 				else
 				{

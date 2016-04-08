@@ -98,7 +98,7 @@ function startup()
 	Redaxscript\Registry::set('fullRoute', $router->getFull());
 	if (function_exists('apache_get_modules') && !in_array('mod_rewrite', apache_get_modules()) || !file_exists('.htaccess') || Redaxscript\Registry::get('file') == 'install.php')
 	{
-		Redaxscript\Registry::set('rewriteRoute', '?p=');
+		Redaxscript\Registry::set('parameterRoute', '?p=');
 		Redaxscript\Registry::set('languageRoute', '&amp;l=');
 		Redaxscript\Registry::set('templateRoute', '&amp;t=');
 	}

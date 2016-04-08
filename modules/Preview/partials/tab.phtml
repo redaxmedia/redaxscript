@@ -40,7 +40,7 @@ $outputBox = null;
 				->addClass($i === 2 ? $admin ? 'rs-admin-js-item-active rs-admin-item-active' : 'rs-js-item-active rs-item-active' : null)
 				->html(
 					$linkElement
-						->attr('href', Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id)
+						->attr('href', Registry::get('parameterRoute') . Registry::get('fullRoute') . '#' . $id)
 						->text(Language::get($i, '_number'))
 				); ?>
 

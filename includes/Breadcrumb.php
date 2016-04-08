@@ -161,7 +161,7 @@ class Breadcrumb
 				if ($route)
 				{
 					$outputItem .= $linkElement->attr(array(
-						'href' => $this->_registry->get('rewriteRoute') . $route,
+						'href' => $this->_registry->get('parameterRoute') . $route,
 						'title' => $title
 					))->text($title);
 				}

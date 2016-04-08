@@ -249,7 +249,7 @@ class Comment implements ControllerInterface
 				'href' => $mailArray['url']
 			))
 			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
-		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('rewrite_route') . $mailArray['route'];
+		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
 		$linkArticle = $linkElement->copy();
 		$linkArticle
 			->attr(array(

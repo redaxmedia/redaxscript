@@ -185,7 +185,7 @@ class Recover implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
-		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login/reset/' . sha1($mailArray['password']) . '/' . $mailArray['id'];
+		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login/reset/' . sha1($mailArray['password']) . '/' . $mailArray['id'];
 
 		/* html elements */
 

@@ -54,7 +54,7 @@ class ShareThis extends Config
 	{
 		if (Registry::get('lastTable') === 'articles')
 		{
-			$url = Registry::get('root') . '/' . Registry::get('rewriteRoute') . Registry::get('fullRoute');
+			$url = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
 			$output = self::render($url);
 			return $output;
 		}

@@ -56,15 +56,15 @@ class ModuleForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
+				'action' => Registry::get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/modules'
+					'href' => Registry::get('parameterRoute') . 'admin/view/modules'
 				),
 				'uninstall' => array(
-					'href' => $module->alias ? Registry::get('rewriteRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
+					'href' => $module->alias ? Registry::get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
 				)
 			)
 		));
@@ -78,7 +78,7 @@ class ModuleForm implements ViewInterface
 		/* collect item output */
 
 		$tabCounter = 1;
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

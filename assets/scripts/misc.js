@@ -61,11 +61,11 @@
 					{
 						if (rs.registry.loggedIn === rs.registry.token)
 						{
-							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.logout;
+							window.location = rs.baseURL + rs.registry.parameterRoute + rs.plugins.keyShortcut.routes.logout;
 						}
 						else
 						{
-							window.location = rs.baseURL + rs.registry.rewriteRoute + rs.plugins.keyShortcut.routes.login;
+							window.location = rs.baseURL + rs.registry.parameterRoute + rs.plugins.keyShortcut.routes.login;
 						}
 					}
 

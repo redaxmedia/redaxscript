@@ -54,22 +54,22 @@ class CategoryForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
+				'action' => Registry::get('parameterRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/categories'
+					'href' => Registry::get('parameterRoute') . 'admin/view/categories'
 				),
 				'delete' => array(
-					'href' => $category->id ? Registry::get('rewriteRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
+					'href' => $category->id ? Registry::get('parameterRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
