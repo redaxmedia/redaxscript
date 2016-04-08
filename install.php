@@ -8,7 +8,7 @@ include_once('includes/startup.php');
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
 
-if (is_array($argv))
+if ($argv)
 {
 	/* install cli */
 
