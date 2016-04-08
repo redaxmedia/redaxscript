@@ -199,7 +199,7 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	color: #ccc;
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;

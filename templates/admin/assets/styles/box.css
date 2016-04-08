@@ -47,7 +47,7 @@
 
 .rs-admin-box-dock
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -86,7 +86,7 @@
 
 .rs-admin-box-panel
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 }
 
 /* @section 4. box tab admin */
