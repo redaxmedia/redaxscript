@@ -54,22 +54,22 @@ class UserForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
+				'action' => Registry::get('parameterRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/users'
+					'href' => Registry::get('parameterRoute') . 'admin/view/users'
 				),
 				'delete' => array(
-					'href' => $user->id ? Registry::get('rewriteRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
+					'href' => $user->id ? Registry::get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

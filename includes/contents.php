@@ -161,7 +161,7 @@ function contents()
 					if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
 					{
-						$output .= '<a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '">' . $title . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '">' . $title . '</a>';
 					}
 					else
 					{
@@ -481,8 +481,8 @@ function pagination($sub_active, $sub_maximum, $route)
 	{
 		$first_route = $route;
 		$previous_route = $route . '/' . ($sub_active - 1);
-		$output .= '<li class="rs-item-first"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $first_route . '">' . Redaxscript\Language::get('first') . '</a></li>';
-		$output .= '<li class="rs-item-previous"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $previous_route . '" rel="previous">' . Redaxscript\Language::get('previous') . '</a></li>';
+		$output .= '<li class="rs-item-first"><a href="' . Redaxscript\Registry::get('parameterRoute') . $first_route . '">' . Redaxscript\Language::get('first') . '</a></li>';
+		$output .= '<li class="rs-item-previous"><a href="' . Redaxscript\Registry::get('parameterRoute') . $previous_route . '" rel="previous">' . Redaxscript\Language::get('previous') . '</a></li>';
 	}
 
 	/* collect center output */
@@ -505,7 +505,7 @@ function pagination($sub_active, $sub_maximum, $route)
 		}
 		else if ($i > 0 && $i < $sub_maximum + 1)
 		{
-			$output .= '<li class="rs-item-number"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $route . '/' . $i . '">' . $i . '</a></li>';
+			$output .= '<li class="rs-item-number"><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '/' . $i . '">' . $i . '</a></li>';
 		}
 	}
 
@@ -515,8 +515,8 @@ function pagination($sub_active, $sub_maximum, $route)
 	{
 		$next_route = $route . '/' . ($sub_active + 1);
 		$last_route = $route . '/' . $sub_maximum;
-		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $next_route . '" rel="next">' . Redaxscript\Language::get('next') . '</a></li>';
-		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('rewriteRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
+		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('parameterRoute') . $next_route . '" rel="next">' . Redaxscript\Language::get('next') . '</a></li>';
+		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('parameterRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
 	}
 	$output .= '</ul>';
 	$output .= Redaxscript\Hook::trigger('paginationEnd');

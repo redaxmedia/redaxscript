@@ -80,7 +80,7 @@
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
 }
 
@@ -204,7 +204,7 @@
 
 .rs-admin-box-dock
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -243,7 +243,7 @@
 
 .rs-admin-box-panel
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 }
 
 /* @section 4. box tab admin */
@@ -769,7 +769,7 @@
 @font-face
 {
 	font-family: 'icon admin';
-	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
+	src: url('/templates/admin/assets/fonts/icon.woff2') format('woff2'), url('/templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
 /* @section 2. icon flag */
@@ -948,7 +948,7 @@
 
 .rs-admin-list-tab li
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
@@ -1273,7 +1273,7 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	color: #ccc;
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
@@ -1411,7 +1411,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background: url('templates/admin/assets/images/carbon.png') #222;
+		background: url('/templates/admin/assets/images/carbon.png') #222;
 		position: absolute;
 		width: 100%;
 	}

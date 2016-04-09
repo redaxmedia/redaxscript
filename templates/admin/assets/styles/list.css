@@ -72,7 +72,7 @@
 
 .rs-admin-list-tab li
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('/templates/admin/assets/images/carbon.png') #222;
 	border: 1px solid #222;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;

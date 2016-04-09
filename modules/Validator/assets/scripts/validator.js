@@ -25,7 +25,7 @@
 			options = $.extend({}, rs.modules.validator.options, options || {});
 		}
 
-		var urlParameter = '?doc=' + rs.baseURL + rs.registry.rewriteRoute + rs.registry.fullRoute + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
+		var urlParameter = '?doc=' + rs.baseURL + rs.registry.parameterRoute + rs.registry.fullRoute + '&parser=' + options.parser + '&level=' + options.level + '&out=json';
 
 		/* request data */
 

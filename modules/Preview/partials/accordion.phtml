@@ -7,9 +7,8 @@ $titlePartialElement->init('h3', array(
 ));
 $setElement = new Html\Element();
 $setElement->init('div', array(
-		'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
+	'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
 ));
-
 $titleElement = new Html\Element();
 $titleElement->init('h3', array(
 	'class' =>  $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
@@ -24,41 +23,24 @@ $boxElement->init('div', array(
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-accordion + .rs-admin-box-accordion' : '.rs-title-accordion + .rs-box-accordion'); ?>
 
-<div class="<?php echo $admin ? 'rs-admin-js-accordion rs-accordion' : 'rs-admin-js-accordion rs-accordion'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-js-accordion rs-accordion' : 'rs-js-accordion rs-accordion'; ?>">
 
-	<!-- first -->
+	<?php for ($i = 1; $i < 6; $i++): ?>
 
-	<?php echo $setElement
-		->copy()
-		->addClass($admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active')
-		->html(
-			$titleElement
+		<?php echo $setElement
 				->copy()
-				->addClass($admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active')
-				->text(Language::get('first')) .
-			$boxElement
-				->copy()
-				->addClass($admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active')
-				->text(Language::get('first'))
-		); ?>
-
-	<!-- number -->
-
-	<?php for ($i = 2; $i < 5; $i++): ?>
-
-		<?php echo $setElement->html(
-			$titleElement->text(Language::get($i, '_number')) .
-			$boxElement->text(Language::get($i, '_number'))
+				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
+				->html(
+					$titleElement
+						->copy()
+						->addClass($i === 2 ? $admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active' : null)
+						->text(Language::get($i, '_number')) .
+					$boxElement
+						->copy()
+						->addClass($i === 2 ? $admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active' : null)
+						->text(Language::get($i, '_number'))
 		); ?>
 
 	<?php endfor; ?>
 
-	<!-- last -->
-
-	<?php echo $setElement
-		->copy()
-		->html(
-			$titleElement->text(Language::get('last')) .
-			$boxElement->text(Language::get('last'))
-		); ?>
 </div>

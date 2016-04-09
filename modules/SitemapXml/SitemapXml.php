@@ -84,7 +84,7 @@ class SitemapXml extends Module
 		foreach ($categories as $value)
 		{
 			$route = $value['parent'] < 1 ? $value['alias'] : build_route('categories', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
+			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 
 		/* process articles */
@@ -92,7 +92,7 @@ class SitemapXml extends Module
 		foreach ($articles as $value)
 		{
 			$route = $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
+			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 		$output .= '</urlset>';
 		return $output;

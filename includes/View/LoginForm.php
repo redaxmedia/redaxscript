@@ -42,7 +42,7 @@ class LoginForm implements ViewInterface
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => Registry::get('rewriteRoute') . 'login/recover',
+				'href' => Registry::get('parameterRoute') . 'login/recover',
 				'rel' => 'no-follow'
 			));
 			$legendHTML = $linkElement->text(Language::get('recovery_question') . Language::get('question_mark'));

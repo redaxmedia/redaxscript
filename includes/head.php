@@ -103,10 +103,6 @@ function head($type = 'all')
 
 	/* collect meta output */
 
-	if ($type == 'all' || $type == 'base')
-	{
-		$output .= '<base href="' . Redaxscript\Registry::get('root') . '/" />' . PHP_EOL;
-	}
 	if ($type == 'all' || $type == 'meta')
 	{
 		$output .= '<meta charset="' . Redaxscript\Db::getSetting('charset') . '" />' . PHP_EOL;
@@ -161,7 +157,7 @@ function head($type = 'all')
 	{
 		/* build canonical url */
 
-		$canonical_url = Redaxscript\Registry::get('root') . '/' . Redaxscript\Registry::get('rewriteRoute');
+		$canonical_url = Redaxscript\Registry::get('root') . Redaxscript\Registry::get('parameterRoute');
 
 		/* article in category */
 

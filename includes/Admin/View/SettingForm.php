@@ -43,7 +43,7 @@ class SettingForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . 'admin/update/settings',
+				'action' => Registry::get('parameterRoute') . 'admin/update/settings',
 				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-form-default'
 			),
 			'button' => array(
@@ -53,7 +53,7 @@ class SettingForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin'
+					'href' => Registry::get('parameterRoute') . 'admin'
 				)
 			)
 		));

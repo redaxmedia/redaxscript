@@ -122,7 +122,7 @@ class DirectoryLister extends Config
 				$outputDirectory .= $linkElement
 					->copy()
 					->attr(array(
-						'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
+						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
 						'title' => Language::get('directory_parent', '_directory_lister')
 					))
 					->addClass(self::$_config['className']['types']['directoryParent'])
@@ -160,7 +160,7 @@ class DirectoryLister extends Config
 					$outputDirectory .= $linkElement
 						->copy()
 						->attr(array(
-							'href' => Registry::get('rewriteRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
+							'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
 							'title' => Language::get('directory', '_directory_lister')
 						))
 						->addClass(self::$_config['className']['types']['directory'])

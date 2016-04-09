@@ -14,23 +14,6 @@ namespace Redaxscript;
 class Template
 {
 	/**
-	 * base
-	 *
-	 * @since 2.3.0
-	 *
-	 * @return string
-	 */
-
-	public static function base()
-	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head', array(
-			'base'
-		));
-		// @codeCoverageIgnoreEnd
-	}
-
-	/**
 	 * admin panel
 	 *
 	 * @since 2.3.0

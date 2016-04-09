@@ -15,56 +15,42 @@ $boxElement->init('div', array(
 ));
 $itemElement = new Html\Element();
 $itemElement->init('li');
+$linkElement = new Html\Element();
+$linkElement->init('a');
 $setElement = new Html\Element();
 $setElement->init('div', array(
 	'class' => $admin ? 'rs-admin-js-set-tab rs-admin-set-tab' : 'rs-js-set-tab rs-set-tab'
 ));
 $outputItem = null;
 $outputBox = null;
-$tabArray = array(
-	array(
-		'item' => $admin ? 'rs-admin-js-item-active rs-admin-item-active rs-admin-item-first' : 'rs-js-item-active rs-item-active rs-item-first',
-		'set' => $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active'
-	),
-	array(
-		'item' => $admin ? 'rs-admin-item-second' : 'rs-item-second'
-	),
-	array(
-		'item' => $admin ? 'rs-admin-item-third' : 'rs-item-third'
-	),
-	array(
-		'item' => $admin ? 'rs-admin-item-fourth' : 'rs-item-fourth'
-	),
-	array(
-		'item' => $admin ? 'rs-admin-item-fifth' : 'rs-item-fifth'
-	)
-);
 ?>
-
-<!-- collect output -->
-
-<?php foreach ($tabArray as $key => $value): ?>
-
-	<?php $id = uniqid(); ?>
-
-	<?php $outputItem .= $itemElement
-		->copy()
-		->addClass($value['item'])
-		->html('<a href="' . Registry::get('rewriteRoute') . Registry::get('fullRoute') . '#' . $id . '">' . Language::get($key + 1, '_number') . '</a>'); ?>
-
-	<?php $outputBox .= $setElement
-		->copy()
-		->addClass($value['set'])
-		->attr('id', $id)
-		->text(Language::get($key + 1, '_number')); ?>
-
-<?php endforeach; ?>
 
 <!-- tab -->
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-list-tab + .rs-admin-box-tab' : '.rs-list-tab + .rs-box-tab'); ?>
 
 <div class="<?php echo $admin ? 'rs-admin-js-tab rs-admin-tab' : 'rs-js-tab rs-tab'; ?>">
+
+	<?php for ($i = 1; $i < 6; $i++): ?>
+
+		<?php $id = uniqid('tab-'); ?>
+
+		<?php $outputItem .= $itemElement
+				->copy()
+				->addClass($i === 2 ? $admin ? 'rs-admin-js-item-active rs-admin-item-active' : 'rs-js-item-active rs-item-active' : null)
+				->html(
+					$linkElement
+						->attr('href', Registry::get('parameterRoute') . Registry::get('fullRoute') . '#' . $id)
+						->text(Language::get($i, '_number'))
+				); ?>
+
+		<?php $outputBox .= $setElement
+				->copy()
+				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
+				->attr('id', $id)
+				->text(Language::get($i, '_number')); ?>
+
+	<?php endfor; ?>
 
 	<?php echo $listElement->copy()->html($outputItem); ?>
 	<?php echo $boxElement->copy()->html($outputBox); ?>

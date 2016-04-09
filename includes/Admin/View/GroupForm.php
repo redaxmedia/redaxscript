@@ -54,22 +54,22 @@ class GroupForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
+				'action' => Registry::get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/groups'
+					'href' => Registry::get('parameterRoute') . 'admin/view/groups'
 				),
 				'delete' => array(
-					'href' => $group->id ? Registry::get('rewriteRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
+					'href' => $group->id ? Registry::get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

@@ -128,7 +128,7 @@ class Preview extends Module
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a', array(
-			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('rewriteRoute') . 'preview/' . $alias
+			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('parameterRoute') . 'preview/' . $alias
 		));
 
 		/* collect output */

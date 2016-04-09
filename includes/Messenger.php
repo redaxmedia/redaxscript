@@ -204,7 +204,7 @@ class Messenger
 			$linkElement = new Html\Element();
 			$linkElement
 				->init('a', array(
-					'href' => Registry::get('rewriteRoute') . $this->_actionArray['route'],
+					'href' => Registry::get('parameterRoute') . $this->_actionArray['route'],
 					'class' => $this->_options['className']['link']
 				))
 				->text($this->_actionArray['text']);
@@ -216,7 +216,7 @@ class Messenger
 				$metaElement = new Html\Element();
 				$metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('rewriteRoute') . $this->_actionArray['route'],
+					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('parameterRoute') . $this->_actionArray['route'],
 					'http-equiv' => 'refresh'
 				));
 			}

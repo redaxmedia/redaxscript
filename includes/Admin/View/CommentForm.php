@@ -54,22 +54,22 @@ class CommentForm implements ViewInterface
 		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('rewriteRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
+				'action' => Registry::get('parameterRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('rewriteRoute') . 'admin/view/comments'
+					'href' => Registry::get('parameterRoute') . 'admin/view/comments'
 				),
 				'delete' => array(
-					'href' => $comment->id ? Registry::get('rewriteRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null
+					'href' => $comment->id ? Registry::get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('rewriteRoute') . Registry::get('fullRoute');
+		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')

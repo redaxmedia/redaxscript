@@ -211,14 +211,14 @@ class Reset implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
-		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('rewriteRoute') . 'login';
+		$urlLogin = $this->_registry->get('root') . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html elements */
 
 		$linkElement = new Element();
 		$linkElement
 			->init('a', array(
-				'href' => Registry::get('rewriteRoute') . $urlLogin,
+				'href' => Registry::get('parameterRoute') . $urlLogin,
 				'class' => 'link-result'
 			))
 			->text($this->_language->get('login'));

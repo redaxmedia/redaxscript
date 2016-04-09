@@ -203,7 +203,7 @@ class Parser
 			{
 				$output .= $linkElement
 					->copy()
-					->attr('href', $this->_registry->get('rewriteRoute') . $this->_options['route'])
+					->attr('href', $this->_registry->get('parameterRoute') . $this->_options['route'])
 					->text($this->_language->get('readmore'));
 			}
 		}

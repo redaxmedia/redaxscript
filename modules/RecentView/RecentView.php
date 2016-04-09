@@ -68,7 +68,7 @@ class RecentView extends Config
 			}
 			$output .= '<li>';
 			$output .= $linkElement->attr(array(
-				'href' => Registry::get('rewriteRoute') . $value,
+				'href' => Registry::get('parameterRoute') . $value,
 				'title' => $value
 			))->text($value);
 			$output .= '</li>';

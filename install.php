@@ -8,7 +8,7 @@ include_once('includes/startup.php');
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
 
-if (is_array($argv))
+if ($argv)
 {
 	/* install cli */
 
@@ -78,7 +78,7 @@ function install()
 
 	/* send login information */
 
-	$urlLink = '<a href="' . Redaxscript\Registry::get('root') . '"/>' . Redaxscript\Registry::get('root') . '</a>';
+	$urlLink = '<a href="' . Redaxscript\Registry::get('root') . '">' . Redaxscript\Registry::get('root') . '</a>';
 	$toArray = $fromArray = array(
 		$name => $email
 	);
@@ -407,7 +407,6 @@ function check_install()
 
 function head()
 {
-	$output = '<base href="' . Redaxscript\Registry::get('root') . '/" />' . PHP_EOL;
 	$output .= '<title>' . Redaxscript\Language::get('installation') . '</title>' . PHP_EOL;
 	$output .= '<meta http-equiv="content-type" content="text/html; charset=utf-8" />' . PHP_EOL;
 	if (check_install() == 1)

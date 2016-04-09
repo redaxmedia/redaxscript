@@ -265,7 +265,7 @@ function styles()
 	}
 	if ($loader_deploy != 'inline')
 	{
-		$output .= '<link type="text/css" href="' . Redaxscript\Registry::get('rewriteRoute') . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
+		$output .= '<link type="text/css" href="' . Redaxscript\Registry::get('parameterRoute') . 'loader/styles" media="all" rel="stylesheet" />' . PHP_EOL;
 	}
 	$output .= Redaxscript\Hook::trigger('linkEnd');
 
@@ -369,7 +369,7 @@ function scripts($mode)
 		else
 		{
 			$output .= ' /* ]]> */ </script>' . PHP_EOL;
-			$output .= '<script src="' . Redaxscript\Registry::get('rewriteRoute') . 'loader/scripts"></script>' . PHP_EOL;
+			$output .= '<script src="' . Redaxscript\Registry::get('parameterRoute') . 'loader/scripts"></script>' . PHP_EOL;
 		}
 	}
 	if (!$mode)
@@ -414,7 +414,7 @@ function scripts_transport($minify)
 		'lastTable',
 		'fullRoute',
 		'fullTopRoute',
-		'rewriteRoute',
+		'parameterRoute',
 		'languageRoute',
 		'templateRoute',
 		'refreshRoute',
