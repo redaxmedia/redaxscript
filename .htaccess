@@ -1,4 +1,4 @@
-<filesmatch \.(mysql|sqlite|pgsql|php|phtml)$>
+<filesmatch \.(mysql|pgsql|sqlite|php|phtml)$>
 	deny from all
 </filesmatch>
 <filesmatch (index.php|install.php)>
