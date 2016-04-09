@@ -135,25 +135,16 @@ class SearchTest extends TestCase
 	 * @since 3.0.0
 	 *
 	 * @param string $registry
-	 * @param array $postArray
-	 * @param array $settings
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($registry = null, $postArray = array(), $settings = array(), $expect = null)
+	public function testProcess($registry = null, $expect = null)
 	{
 		/* setup */
 
-		if ($settings['method'] === 'post')
-		{
-			$this->_request->set('post', $postArray);
-		}
-		else
-		{
-			$this->_registry->init($registry);
-		}
+		$this->_registry->init($registry);
 
 		$searchController = new Controller\Search($this->_registry, $this->_language, $this->_request);
 

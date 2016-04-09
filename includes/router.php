@@ -40,8 +40,7 @@ function router()
 		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
 		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
 		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
-		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment',
-		'Redaxscript\View\SearchForm' => 'Redaxscript\Controller\Search'
+		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment'
 	);
 	foreach ($post_list as $key => $value)
 	{
@@ -56,6 +55,11 @@ function router()
 			echo $controller->process();
 			return;
 		}
+	}
+	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
+	{
+		$messenger = new Redaxscript\Messenger();
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), Redaxscript\Registry::get('rewriteRoute') . '/search/' . Redaxscript\Request::getPost('table') . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search') . '...');
 	}
 
 	/* general routing */

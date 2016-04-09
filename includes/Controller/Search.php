@@ -89,14 +89,6 @@ class Search implements ControllerInterface
 	{
 		$specialFilter = new Filter\Special();
 
-		/* if post query, redirect to user friendly url */
-
-		if ($this->_request->getPost('search'))
-		{
-			$messenger = new Messenger();
-			return $messenger->setAction($this->_language->get('continue'), 'search/' . $this->_request->getPost('table') . '/' . $this->_request->getPost('search'))->doRedirect(0)->success($this->_language->get('search') . '...');
-		}
-
 		/* process search parameters */
 
 		if (!$this->_registry->get('thirdParameter'))
@@ -117,7 +109,7 @@ class Search implements ControllerInterface
 
 		if (strlen($queryArray['search']) < 3 || $queryArray['search'] == $this->_language->get('search'))
 		{
-			$errorArray[] = $this->error($this->_language->get('input_incorrect'));
+			$errorArray[] = $this->_language->get('input_incorrect');
 		}
 
 		/* get search query */
@@ -125,7 +117,7 @@ class Search implements ControllerInterface
 		$result = $this->_search($queryArray);
 		if (!$result)
 		{
-			$errorArray[] = $this->error($this->_language->get('search_no'));
+			$errorArray[] = $this->_language->get('search_no');
 		}
 
 		/* handle error */
@@ -200,6 +192,6 @@ class Search implements ControllerInterface
 	public function error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'home')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger->setAction($this->_language->get('back'), 'home')->info($errorArray, $this->_language->get('error_occurred'));
 	}
 }
