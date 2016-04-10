@@ -123,7 +123,7 @@ class SearchList implements ViewInterface
 				$linkElement = new Html\Element();
 				$linkElement
 					->init('a', array(
-						'href' => $this->_registry->get('rewriteRoute') . $route,
+						'href' => $this->_registry->get('parameterRoute') . $route,
 						'class' => 'rs-link-result'
 					))
 					->text($result['title']);
