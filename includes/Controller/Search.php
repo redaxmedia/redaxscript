@@ -128,7 +128,16 @@ class Search implements ControllerInterface
 			return $this->error($errorArray);
 		}
 
-		return $this->success($result, $queryArray);
+		$output = $this->success($result, $queryArray);
+
+		if ($output)
+		{
+			return $output;
+		}
+		else
+		{
+			return $this->error($this->_language->get('search_no'));
+		}
 	}
 
 	/**
@@ -147,7 +156,8 @@ class Search implements ControllerInterface
 
 		if (is_array($table))
 		{
-			foreach ($table as $value) {
+			foreach ($table as $value)
+			{
 
 				$query = Db::forTablePrefix($value)->where('status', 1)
 					->whereRaw('(language = ? OR language is ?)', array(
@@ -155,55 +165,8 @@ class Search implements ControllerInterface
 						null
 					));
 
-				switch ($value) {
-					case 'articles':
-						$query->whereLikeMany(array(
-							'title',
-							'description',
-							'keywords',
-							'text'
-						), array(
-							'%' . $search . '%',
-							'%' . $search . '%',
-							'%' . $search . '%',
-							'%' . $search . '%'
-						));
-						break;
-					case 'categories':
-						$query->whereLikeMany(array(
-							'title',
-							'description',
-							'keywords'
-						), array(
-							'%' . $search . '%',
-							'%' . $search . '%',
-							'%' . $search . '%'
-						));
-						break;
-					case 'comments':
-						$query->whereLikeMany(array(
-							'text'
-						), array(
-							'%' . $search . '%'
-						));
-						break;
-					}
-
-				$result[$value] = $query->orderByDesc('date')
-					->findArray();
-			}
-		}
-		else
-		{
-			$query = Db::forTablePrefix($table)->where(array(
-					'status' => 1
-				))
-				->whereRaw('(language = ? OR language is ?)', array(
-					$this->_registry->get('language'),
-					null
-				));
-
-				switch ($table) {
+				switch ($value)
+				{
 					case 'articles':
 						$query->whereLikeMany(array(
 							'title',
@@ -236,6 +199,55 @@ class Search implements ControllerInterface
 						));
 						break;
 				}
+
+				$result[$value] = $query->orderByDesc('date')
+					->findArray();
+			}
+		}
+		else
+		{
+			$query = Db::forTablePrefix($table)->where(array(
+				'status' => 1
+			))
+				->whereRaw('(language = ? OR language is ?)', array(
+					$this->_registry->get('language'),
+					null
+				));
+
+			switch ($table)
+			{
+				case 'articles':
+					$query->whereLikeMany(array(
+						'title',
+						'description',
+						'keywords',
+						'text'
+					), array(
+						'%' . $search . '%',
+						'%' . $search . '%',
+						'%' . $search . '%',
+						'%' . $search . '%'
+					));
+					break;
+				case 'categories':
+					$query->whereLikeMany(array(
+						'title',
+						'description',
+						'keywords'
+					), array(
+						'%' . $search . '%',
+						'%' . $search . '%',
+						'%' . $search . '%'
+					));
+					break;
+				case 'comments':
+					$query->whereLikeMany(array(
+						'text'
+					), array(
+						'%' . $search . '%'
+					));
+					break;
+			}
 
 			$result = $query->orderByDesc('date')
 				->findArray();
