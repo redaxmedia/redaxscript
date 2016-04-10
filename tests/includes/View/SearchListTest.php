@@ -89,12 +89,13 @@ class SearchListTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $parameters
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($parameters = array(), $expect = array())
 	{
 		/* setup */
 
@@ -102,7 +103,7 @@ class SearchListTest extends TestCase
 
 		/* actual */
 
-		$actual = $searchList->render(Db::forTablePrefix('articles')->where('title', 'test search')->findArray());
+		$actual = $searchList->render(Db::forTablePrefix($parameters['table'])->where('title', $parameters['search'])->findArray(), $parameters);
 
 		/* compare */
 

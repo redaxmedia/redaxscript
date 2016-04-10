@@ -115,6 +115,7 @@ class Search implements ControllerInterface
 		/* get search query */
 
 		$result = $this->_search($queryArray);
+
 		if (!$result)
 		{
 			$errorArray[] = $this->_language->get('search_no');
@@ -127,7 +128,7 @@ class Search implements ControllerInterface
 			return $this->error($errorArray);
 		}
 
-		return $this->success($result);
+		return $this->success($result, $queryArray);
 	}
 
 	/**
@@ -140,27 +141,107 @@ class Search implements ControllerInterface
 
 	private function _search($queryArray = array())
 	{
-		$table = $queryArray['table'] ? $queryArray['table'] : 'articles';
+		$table = $queryArray['table'] ? $queryArray['table'] : $this->tableArray;
 		$search = $queryArray['search'];
+		$result = null;
 
-		return Db::forTablePrefix($table)->where('status', 1)
-			->whereRaw('(language = ? OR language is ?)', array(
-				$this->_registry->get('language'),
-				null
-			))
-			->whereLikeMany(array(
-				'title',
-				'description',
-				'keywords',
-				'text'
-			), array(
-				'%' . $search . '%',
-				'%' . $search . '%',
-				'%' . $search . '%',
-				'%' . $search . '%'
-			))
-			->orderByDesc('date')
-			->findArray();
+		if (is_array($table))
+		{
+			foreach ($table as $value) {
+
+				$query = Db::forTablePrefix($value)->where('status', 1)
+					->whereRaw('(language = ? OR language is ?)', array(
+						$this->_registry->get('language'),
+						null
+					));
+
+				switch ($value) {
+					case 'articles':
+						$query->whereLikeMany(array(
+							'title',
+							'description',
+							'keywords',
+							'text'
+						), array(
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%'
+						));
+						break;
+					case 'categories':
+						$query->whereLikeMany(array(
+							'title',
+							'description',
+							'keywords'
+						), array(
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%'
+						));
+						break;
+					case 'comments':
+						$query->whereLikeMany(array(
+							'text'
+						), array(
+							'%' . $search . '%'
+						));
+						break;
+					}
+
+				$result[$value] = $query->orderByDesc('date')
+					->findArray();
+			}
+		}
+		else
+		{
+			$query = Db::forTablePrefix($table)->where(array(
+					'status' => 1
+				))
+				->whereRaw('(language = ? OR language is ?)', array(
+					$this->_registry->get('language'),
+					null
+				));
+
+				switch ($table) {
+					case 'articles':
+						$query->whereLikeMany(array(
+							'title',
+							'description',
+							'keywords',
+							'text'
+						), array(
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%'
+						));
+						break;
+					case 'categories':
+						$query->whereLikeMany(array(
+							'title',
+							'description',
+							'keywords'
+						), array(
+							'%' . $search . '%',
+							'%' . $search . '%',
+							'%' . $search . '%'
+						));
+						break;
+					case 'comments':
+						$query->whereLikeMany(array(
+							'text'
+						), array(
+							'%' . $search . '%'
+						));
+						break;
+				}
+
+			$result = $query->orderByDesc('date')
+				->findArray();
+		}
+
+		return $result;
 	}
 
 	/**
@@ -169,14 +250,15 @@ class Search implements ControllerInterface
 	 * @since 3.0.0
 	 *
 	 * @param array $result
+	 * @param array $queryArray
 	 *
 	 * @return string
 	 */
 
-	public function success($result = array())
+	public function success($result = array(), $queryArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
-		return $listSearch->render($result);
+		return $listSearch->render($result, $queryArray);
 	}
 
 	/**

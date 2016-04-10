@@ -91,16 +91,15 @@ class SearchTest extends TestCase
 				'date' => '2016-04-04 04:00:00'
 			))
 			->save();
-		Db::forTablePrefix('articles')
+		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
-				'title' => 'test search',
-				'alias' => 'test-three',
-				'author' => 'admin',
+				'id' => 3,
+				'author' => 'test',
+				'email' => 'test@test.com',
 				'text' => 'test',
-				'category' => 1,
-				'access' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'article' => 1,
+				'status' => 1
 			))
 			->save();
 	}
@@ -114,6 +113,7 @@ class SearchTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
+		Db::forTablePrefix('comments')->where('text', 'test')->deleteMany();
 	}
 
 	/**
