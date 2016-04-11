@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Demo;
 
+use Redaxscript\Auth;
 use Redaxscript\Config as BaseConfig;
 use Redaxscript\Db;
 use Redaxscript\Installer;
@@ -72,20 +73,21 @@ class Demo extends Config
 	{
 		if (Registry::get('firstParameter') === 'demo' && Registry::get('secondParameter') === 'login')
 		{
-			self::_login();
+			echo self::process();
 		}
 	}
 
 	/**
-	 * login
+	 * process
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
-	protected static function _login()
+	public static function process()
 	{
-		$root = Registry::get('root');
-		$token = Registry::get('token');
+		$auth = new Auth(Request::getInstance());
 		$tableArray = array(
 			'categories',
 			'articles',
@@ -95,28 +97,65 @@ class Demo extends Config
 			'users'
 		);
 
-		/* session values */
+		/* set user */
 
-		Request::setSession($root . '/logged_in', $token);
-		Request::setSession($root . '/my_name', 'Demo');
-		Request::setSession($root . '/my_user', 'demo');
-		Request::setSession($root . '/my_email', 'demo@localhost');
+		$auth->setUser('myName', 'Demo');
+		$auth->setUser('myUser', 'demo');
+		$auth->setUser('myEmail', 'demo@localhost');
+
+		/* set permission */
+
 		foreach ($tableArray as $value)
 		{
-			Request::setSession($root . '/' . $value . '_new', 1);
-			Request::setSession($root . '/' . $value . '_edit', 1);
-			Request::setSession($root . '/' . $value . '_delete', 1);
+			$auth->setPermission($value, array(
+				1,
+				2,
+				3
+			));
 		}
-		Request::setSession($root . '/modules_install', 0);
-		Request::setSession($root . '/modules_edit', 0);
-		Request::setSession($root . '/modules_uninstall', 0);
-		Request::setSession($root . '/settings_edit', 1);
-		Request::setSession($root . '/filter', 1);
+		$auth->setPermission('settings', array(
+			1
+		));
 
-		/* show success */
+		/* save user and permission */
 
+		$auth->save();
+
+		/* handle success */
+
+		if ($auth->getStatus())
+		{
+			return self::success();
+		}
+		return self::error();
+	}
+
+	/**
+	 * success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function success()
+	{
 		$messenger = new Messenger();
-		echo $messenger->setAction(Language::get('continue'), 'admin')->doRedirect()->success(Language::get('logged_in'), Language::get('welcome'));
+		return $messenger->setAction(Language::get('continue'), 'admin')->doRedirect(0)->success(Language::get('logged_in'), Language::get('welcome'));
+	}
+
+	/**
+	 * error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function error()
+	{
+		$messenger = new Messenger();
+		return $messenger->setAction(Language::get('back'), 'login')->doRedirect()->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 
 	/**
