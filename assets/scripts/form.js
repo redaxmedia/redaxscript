@@ -165,8 +165,15 @@
 
 	/* @section 3. unmask password */
 
-	$.fn.unmaskPassword = function ()
+	$.fn.unmaskPassword = function (options)
 	{
+		/* extend options */
+
+		if (rs.plugins.unmaskPassword.options !== options)
+		{
+			options = $.extend({}, rs.plugins.unmaskPassword.options, options || {});
+		}
+
 		/* return this */
 
 		return this.each(function ()
@@ -177,7 +184,7 @@
 			{
 				var field = this;
 
-				if (event.ctrlKey && event.altKey)
+				if (event.ctrlKey && event.altKey && event.which === options.keyCode.unmask)
 				{
 					field.type = 'text';
 				}
@@ -401,7 +408,7 @@
 		}
 		if (rs.plugins.unmaskPassword.init)
 		{
-			$(rs.plugins.unmaskPassword.selector).unmaskPassword();
+			$(rs.plugins.unmaskPassword.selector).unmaskPassword(rs.plugins.unmaskPassword.options);
 		}
 		if (rs.plugins.validateForm.init)
 		{

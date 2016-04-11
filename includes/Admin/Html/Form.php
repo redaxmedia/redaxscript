@@ -101,7 +101,7 @@ class Form extends BaseForm
 				'type' => 'number'
 			),
 			'password' => array(
-				'class' => 'rs-admin-field-default rs-admin-field-password',
+				'class' => 'rs-admin-js-unmask-password rs-admin-field-default rs-admin-field-password',
 				'type' => 'password'
 			),
 			'radio' => array(

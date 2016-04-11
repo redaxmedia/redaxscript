@@ -198,7 +198,14 @@
 		unmaskPassword:
 		{
 			init: true,
-			selector: 'form input.rs-js-unmask-password'
+			selector: 'form input.rs-admin-js-unmask-password, form input.rs-js-unmask-password',
+			options:
+			{
+				keyCode:
+				{
+					unmask: 85
+				}
+			}
 		},
 		validateForm:
 		{
