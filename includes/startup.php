@@ -45,7 +45,7 @@ function startup()
 	if (!Redaxscript\Request::getSession('regenerateId'))
 	{
 		session_regenerate_id();
-		Redaxscript\Request::setSession('regenerateId', 1);
+		Redaxscript\Request::setSession('regenerateId', true);
 	}
 
 	/* database status */
@@ -198,11 +198,11 @@ function startup()
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	if (!Redaxscript\Registry::get('lastId') && $aliasValidator->validate(Redaxscript\Registry::get('firstParameter'), Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		Redaxscript\Registry::set('contentError', 1);
+		Redaxscript\Registry::set('contentError', true);
 	}
 	else
 	{
-		Redaxscript\Registry::set('contentError', 0);
+		Redaxscript\Registry::set('contentError', false);
 	}
 
 	/* define user */
@@ -255,11 +255,11 @@ function startup()
 		Redaxscript\Registry::set('usersDelete', $auth->getPermissionDelete('users'));
 		if (Redaxscript\Registry::get('tableParameter') == 'users' && Redaxscript\Registry::get('idParameter') == Redaxscript\Registry::get('myId'))
 		{
-			Redaxscript\Registry::set('usersException', 1);
+			Redaxscript\Registry::set('usersException', true);
 		}
 		else
 		{
-			Redaxscript\Registry::set('usersException', 0);
+			Redaxscript\Registry::set('usersException', false);
 		}
 		Redaxscript\Registry::set('modulesInstall', $auth->getPermissionInstall('modules'));
 		Redaxscript\Registry::set('modulesEdit', $auth->getPermissionEdit('modules'));
@@ -294,6 +294,6 @@ function startup()
 	}
 	else if (Redaxscript\Registry::get('update') < Redaxscript\Registry::get('now'))
 	{
-		Redaxscript\Registry::set('update', null);
+		Redaxscript\Registry::set('update', false);
 	}
 }
