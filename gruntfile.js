@@ -507,6 +507,25 @@ module.exports = function (grunt)
 				dot: true
 			}
 		},
+		'ftp-deploy':
+		{
+			develop:
+			{
+				src:
+				[
+					'../redaxscript-files'
+				],
+				dest: 'files',
+				auth:
+				{
+					host: 'develop.redaxscript.com',
+					port: 21,
+					authKey: 'develop',
+					authPath: '../credentials/.redaxscript'
+				},
+				forceVerbose: true
+			}
+		},
 		img:
 		{
 			modules:
@@ -586,12 +605,14 @@ module.exports = function (grunt)
 		}
 	});
 
-	/* dynamic dist */
+	/* dynamic compress */
 
-	grunt.dynamicDist = function (path)
+	grunt.dynamicCompress = function (path)
 	{
 		var target = grunt.file.expand(path),
 			targetArray;
+
+		/* process target */
 
 		for (var i in target)
 		{
@@ -600,19 +621,19 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					target[i] + (targetArray[1] ? '' : '/**')
+					targetArray[1] ? target[i] : target[i] + '/**'
 				],
 				options:
 				{
-					archive: '../redaxscript-files/' + targetArray[0].toLowerCase() + '.zip'
+					archive: '../redaxscript-files/' + targetArray[0] + '.zip'
 				},
 				dot: true
 			});
 		}
 	};
-	grunt.dynamicDist('languages/*.json');
-	grunt.dynamicDist('modules/*');
-	grunt.dynamicDist('templates/*');
+	grunt.dynamicCompress('languages/*.json');
+	grunt.dynamicCompress('modules/*');
+	grunt.dynamicCompress('templates/*');
 
 	/* load tasks */
 
@@ -621,6 +642,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jscs');
@@ -696,5 +718,9 @@ module.exports = function (grunt)
 		'copy:distFull',
 		'copy:distLite',
 		'compress'
+	]);
+	grunt.registerTask('deploy',
+	[
+		'ftp-deploy'
 	]);
 };
