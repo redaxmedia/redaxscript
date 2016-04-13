@@ -612,8 +612,6 @@ module.exports = function (grunt)
 		var target = grunt.file.expand(path),
 			targetArray;
 
-		/* process target */
-
 		for (var i in target)
 		{
 			targetArray = target[i].split('.');
