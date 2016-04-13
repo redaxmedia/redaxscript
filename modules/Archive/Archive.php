@@ -62,7 +62,6 @@ class Archive extends Config
 		/* fetch articles */
 
 		$articles = Db::forTablePrefix('articles')
-			->selectExpr('*, YEAR(date) as year, MONTH(date) as month')
 			->where('status', 1)
 			->whereRaw('(language = ? OR language is ?)', array(
 				Registry::get('language'),
@@ -86,7 +85,9 @@ class Archive extends Config
 			{
 				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
-					$currentDate = $value['month'] + $value['year'];
+					$month = date('n', strtotime($value['date']));
+					$year = date('Y', strtotime($value['date']));
+					$currentDate = $month + $year;
 
 					/* collect output */
 
@@ -97,7 +98,7 @@ class Archive extends Config
 							$output .= $listElement->html($outputItem);
 							$outputItem = null;
 						}
-						$output .= $titleElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
+						$output .= $titleElement->text(Language::get($month - 1, '_month') . ' ' . $year);
 					}
 
 					/* collect item output */
