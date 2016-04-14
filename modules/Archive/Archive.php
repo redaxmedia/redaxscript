@@ -68,7 +68,7 @@ class Archive extends Config
 				null
 			))
 			->orderByDesc('date')
-			->findArray();
+			->findMany();
 
 		/* process articles */
 
@@ -83,41 +83,34 @@ class Archive extends Config
 			$lastDate = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($value->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
-					$month = date('n', strtotime($value['date']));
-					$year = date('Y', strtotime($value['date']));
+					$month = date('n', strtotime($value->date));
+					$year = date('Y', strtotime($value->date));
 					$currentDate = $month + $year;
 
 					/* collect output */
 
 					if ($lastDate <> $currentDate)
 					{
-						if ($lastDate > 0)
-						{
-							$output .= $listElement->html($outputItem);
-							$outputItem = null;
-						}
 						$output .= $titleElement->text(Language::get($month - 1, '_month') . ' ' . $year);
 					}
+					$lastDate = $currentDate;
 
 					/* collect item output */
 
-					$outputItem .= '<li>';
-					$outputItem .= $linkElement->attr(array(
-						'href' => $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']),
-						'title' => $value['description'] ? $value['description'] : $value['title']
-					))->text($value['title']);
+					$outputItem = '<li>';
+					$outputItem .= $linkElement
+						->attr(array(
+							'href' => $value->category < 1 ? $value->alias : build_route('articles', $value->id),
+							'title' => $value->description ? $value->description : $value->title
+						))
+						->text($value->title);
 					$outputItem .= '</li>';
 
 					/* collect list output */
 
-					if (end($articles) === $value)
-					{
-						$output .= $listElement->html($outputItem);
-						$outputItem = null;
-					}
-					$lastDate = $currentDate;
+					$output .= $listElement->html($outputItem);
 				}
 				else
 				{

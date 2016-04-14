@@ -64,13 +64,13 @@ class Request extends Singleton
 
 		/* values as needed */
 
-		if (!$key)
-		{
-			return $requestArray;
-		}
-		else if (array_key_exists($key, $requestArray))
+		if (array_key_exists($key, $requestArray))
 		{
 			return $requestArray[$key];
+		}
+		else if (!$key)
+		{
+			return $requestArray;
 		}
 		return false;
 	}

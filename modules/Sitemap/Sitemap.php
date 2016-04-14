@@ -68,7 +68,7 @@ class Sitemap extends Config
 				null
 			))
 			->orderByDesc('category')
-			->findArray();
+			->findMany();
 
 		/* process articles */
 
@@ -83,41 +83,32 @@ class Sitemap extends Config
 			$lastCategory = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($value->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
-					$currentCategory = $value['category'];
+					$currentCategory = $value->category;
 
 					/* collect output */
 
 					if ($lastCategory <> $currentCategory)
 					{
-						if ($lastCategory > 0)
-						{
-							$output .= $listElement->html($outputItem);
-							$outputItem = null;
-						}
 						$output .= $titleElement->text(
 							$currentCategory < 1 ? Language::get('uncategorized') : Db::forTablePrefix('categories')->whereIdIs($currentCategory)->findOne()->title
 						);
 					}
+					$lastCategory = $currentCategory;
 
 					/* collect item output */
 
-					$outputItem .= '<li>';
+					$outputItem = '<li>';
 					$outputItem .= $linkElement->attr(array(
-						'href' => $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']),
-						'title' => $value['description'] ? $value['description'] : $value['title']
-					))->text($value['title']);
+						'href' => $value->category < 1 ? $value->alias : build_route('articles', $value->id),
+						'title' => $value->description ? $value->description : $value->title
+					))->text($value->title);
 					$outputItem .= '</li>';
 
 					/* collect list output */
 
-					if (end($articles) === $value)
-					{
-						$output .= $listElement->html($outputItem);
-						$outputItem = null;
-					}
-					$lastCategory = $currentCategory;
+					$output .= $listElement->html($outputItem);
 				}
 				else
 				{

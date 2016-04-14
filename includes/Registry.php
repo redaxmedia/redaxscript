@@ -49,13 +49,13 @@ class Registry extends Singleton
 
 	public static function get($key = null)
 	{
-		if (!$key)
-		{
-			return self::$_registryArray;
-		}
-		else if (array_key_exists($key, self::$_registryArray))
+		if (array_key_exists($key, self::$_registryArray))
 		{
 			return self::$_registryArray[$key];
+		}
+		else if (!$key)
+		{
+			return self::$_registryArray;
 		}
 		return false;
 	}

@@ -63,7 +63,7 @@ class SitemapXml extends Module
 			->where('status', 1)
 			->whereNull('access')
 			->orderByAsc('rank')
-			->findArray();
+			->findMany();
 
 		/* fetch articles */
 
@@ -71,7 +71,7 @@ class SitemapXml extends Module
 			->where('status', 1)
 			->whereNull('access')
 			->orderByAsc('rank')
-			->findArray();
+			->findMany();
 
 		/* collect output */
 
@@ -83,7 +83,7 @@ class SitemapXml extends Module
 
 		foreach ($categories as $value)
 		{
-			$route = $value['parent'] < 1 ? $value['alias'] : build_route('categories', $value['id']);
+			$route = $value->parent < 1 ? $value->alias : build_route('categories', $value->id);
 			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 
@@ -91,7 +91,7 @@ class SitemapXml extends Module
 
 		foreach ($articles as $value)
 		{
-			$route = $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']);
+			$route = $value->category < 1 ? $value->alias : build_route('articles', $value->id);
 			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
 		}
 		$output .= '</urlset>';

@@ -126,9 +126,9 @@ function admin_process()
 		{
 			$status = $r['status'] = 2;
 		}
-		else
+		if (!$date)
 		{
-			$date = $r['date'] = Redaxscript\Registry::get('now');
+			$r['date'] = Redaxscript\Registry::get('now');
 		}
 	}
 	if ($tableParameter == 'extras' || $tableParameter == 'comments')
