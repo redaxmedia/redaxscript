@@ -143,7 +143,7 @@ class Form extends HtmlAbstract
 				'type' => 'number'
 			),
 			'password' => array(
-				'class' => 'rs-field-default rs-field-password',
+				'class' => 'rs-js-unmask-password rs-field-default rs-field-password',
 				'type' => 'password'
 			),
 			'radio' => array(

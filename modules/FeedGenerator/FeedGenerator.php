@@ -46,7 +46,7 @@ class FeedGenerator extends Module
 		if ($firstParamter === 'feed' && ($secondParameter === 'articles' || $secondParameter === 'comments'))
 		{
 			header('content-type: application/atom+xml');
-			echo self::render(SECOND_PARAMETER);
+			echo self::render($secondParameter);
 			Registry::set('renderBreak', true);
 		}
 	}
@@ -69,11 +69,13 @@ class FeedGenerator extends Module
 
 		$result = Db::forTablePrefix($table)
 			->where('status', 1)
-			->where('access', 0)
-			->where('language', Request::getQuery('l') ? Registry::get('language') : null)
+			->whereNull('access')
+			->whereRaw('(language = ? OR language is ?)', array(
+				Registry::get('language'),
+				null
+			))
 			->orderGlobal('rank')
-			->limitGlobal()
-			->findArray();
+			->findMany();
 
 		/* process result */
 
@@ -134,35 +136,35 @@ class FeedGenerator extends Module
 			foreach ($result as $value)
 			{
 				$route = Registry::get('root') . Registry::get('parameterRoute');
-				$route .= $value['category'] < 1 ? $value['alias'] : build_route($table, $value['id']);
+				$route .= $value->category < 1 ? $value->alias : build_route($table, $value->id);
 
 				/* collect entry output */
 
 				$output .= '<entry>';
 				$output .= '<id>' . $route . '</id>';
 				$output .= '<link href="' . $route . '" />';
-				$output .= '<updated>' . date('c', strtotime($value['date'])) . '</updated>';
+				$output .= '<updated>' . date('c', strtotime($value->date)) . '</updated>';
 
 				/* title */
 
-				$output .= '<title>' . ($table === 'comments' ? $value['author'] : $value['title']) . '</title>';
+				$output .= '<title>' . ($table === 'comments' ? $value->author : $value->title) . '</title>';
 
 				/* description */
 
-				if ($value['description'])
+				if ($value->description)
 				{
-					$output .= '<summary>' . $value['description'] . '</summary>';
+					$output .= '<summary>' . $value->description . '</summary>';
 				}
 
 				/* text */
 
-				$output .= '<content>' . strip_tags($value['text']) . '</content>';
+				$output .= '<content>' . strip_tags($value->text) . '</content>';
 
 				/* author */
 
-				if ($value['author'])
+				if ($value->author)
 				{
-					$output .= '<author><name>' . $value['author'] . '</name></author>';
+					$output .= '<author><name>' . $value->author . '</name></author>';
 				}
 				$output .= '</entry>';
 			}

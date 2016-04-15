@@ -183,7 +183,7 @@ class DirectoryLister extends Config
 						$outputFile .= $linkElement
 							->copy()
 							->attr(array(
-								'href' => $path,
+								'href' => Registry::get('root') . '/' . $path,
 								'target' => '_blank',
 								'title' => Language::get('file', '_directory_lister')
 							))

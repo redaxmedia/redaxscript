@@ -29,7 +29,6 @@ use PDOException;
  * @method rawQuery()
  * @method orderByAsc()
  * @method orderByDesc()
- * @method selectExpr()
  * @method tableAlias()
  * @method whereGt()
  * @method whereIdIn()

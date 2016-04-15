@@ -67,13 +67,13 @@ class Language extends Singleton
 
 		/* values as needed */
 
-		if (!$key)
-		{
-			return $languageArray;
-		}
-		else if (array_key_exists($key, $languageArray))
+		if (array_key_exists($key, $languageArray))
 		{
 			return $languageArray[$key];
+		}
+		else if (!$key)
+		{
+			return $languageArray;
 		}
 		return false;
 	}

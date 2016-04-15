@@ -23,6 +23,7 @@
 		"grunt-contrib-copy": "0.8.2",
 		"grunt-contrib-jshint": "0.11.3",
 		"grunt-contrib-watch": "0.6.1",
+		"grunt-ftp-deploy": "0.1.10",
 		"grunt-htmlhint": "0.9.12-fix",
 		"grunt-img": "0.1.8",
 		"grunt-jscs": "2.5.0",

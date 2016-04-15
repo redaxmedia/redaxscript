@@ -50,13 +50,13 @@ class Config extends Singleton
 
 	public static function get($key = null)
 	{
-		if (!$key)
-		{
-			return self::$_configArray;
-		}
-		else if (array_key_exists($key, self::$_configArray))
+		if (array_key_exists($key, self::$_configArray))
 		{
 			return self::$_configArray[$key];
+		}
+		else if (!$key)
+		{
+			return self::$_configArray;
 		}
 		return false;
 	}

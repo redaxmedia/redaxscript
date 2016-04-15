@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(E_ERROR || E_PARSE);
+error_reporting(0);
 
 /* include files */
 
@@ -26,7 +26,8 @@ $registry = Registry::getInstance();
 
 if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 {
-	echo '<meta http-equiv="refresh" content="2; url=install.php" />' . PHP_EOL;
+	header('location: install.php');
+	exit;
 }
 
 /* include admin files */

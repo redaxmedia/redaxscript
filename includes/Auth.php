@@ -236,13 +236,13 @@ class Auth
 
 	public function getUser($key = null)
 	{
-		if (!$key)
-		{
-			return $this->_userArray;
-		}
-		else if (array_key_exists($key, $this->_userArray))
+		if (array_key_exists($key, $this->_userArray))
 		{
 			return $this->_userArray[$key];
+		}
+		else if (!$key)
+		{
+			return $this->_userArray;
 		}
 		return false;
 	}
@@ -273,13 +273,13 @@ class Auth
 
 	public function getPermission($key = null)
 	{
-		if (!$key)
-		{
-			return $this->_permissionArray;
-		}
-		else if (array_key_exists($key, $this->_permissionArray))
+		if (array_key_exists($key, $this->_permissionArray))
 		{
 			return $this->_permissionArray[$key];
+		}
+		else if (!$key)
+		{
+			return $this->_permissionArray;
 		}
 		return false;
 	}
