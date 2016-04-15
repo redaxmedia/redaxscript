@@ -25,7 +25,7 @@ class SearchTest extends TestCase
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var \Redaxscript\Registry
 	 */
 
 	protected $_registry;
@@ -33,7 +33,7 @@ class SearchTest extends TestCase
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var \Redaxscript\Language
 	 */
 
 	protected $_language;
@@ -41,7 +41,7 @@ class SearchTest extends TestCase
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var \Redaxscript\Request
 	 */
 
 	protected $_request;
@@ -75,7 +75,6 @@ class SearchTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'access' => NULL,
 				'date' => '2016-04-04 04:00:00'
 			))
 			->save();
@@ -87,7 +86,6 @@ class SearchTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'access' => NULL,
 				'date' => '2016-04-04 04:00:00'
 			))
 			->save();

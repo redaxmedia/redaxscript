@@ -23,7 +23,7 @@ class SearchListTest extends TestCase
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var \Redaxscript\Registry
 	 */
 
 	protected $_registry;
@@ -31,7 +31,7 @@ class SearchListTest extends TestCase
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var \Redaxscript\Language
 	 */
 
 	protected $_language;
@@ -54,7 +54,6 @@ class SearchListTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'access' => null,
 				'date' => '2016-04-04 04:00:00'
 			))
 			->save();
@@ -103,14 +102,12 @@ class SearchListTest extends TestCase
 		$searchList = new View\SearchList($this->_registry, $this->_language);
 
 		/* actual */
+
 		$query = Db::forTablePrefix($table[0])
 				->where('title', $search)
-				->findArray();
+				->findMany();
 
-		$actual = $searchList->render(array($query), array(
-				"table" => $table,
-				"search" => $search
-			));
+		$actual = $searchList->render(array($query), $table);
 
 		/* compare */
 

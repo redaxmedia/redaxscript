@@ -55,17 +55,16 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $resultArray
-	 * @param null $queryArray
+	 * @param array $resultArray array for the db query results
+	 * @param array $tableArray array for the tables
 	 *
 	 * @return string
 	 * @since 3.0.0
 	 *
 	 */
 
-	public function render($resultArray = null, $queryArray = null)
+	public function render($resultArray = null, $tableArray = null)
 	{
-		$accessValidator = new Validator\Access();
 		$i = 0;
 
 		$output = Hook::trigger('searchListStart');
@@ -74,7 +73,7 @@ class SearchList implements ViewInterface
 		{
 			$itemOutput = null;
 
-			if ($item && $accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+			if ($item)
 			{
 				/* title element */
 
@@ -83,7 +82,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
-					->text($this->_language->get(count($queryArray['table']) != 1 ? $queryArray['table'][$i] : 'search'));
+					->text($this->_language->get(count($tableArray) != 1 ? $tableArray[$i] : 'search'));
 
 				/* list element */
 
@@ -97,7 +96,7 @@ class SearchList implements ViewInterface
 
 				foreach ($item as $value)
 				{
-					$itemOutput .= $this->renderList($value, $queryArray['table'][$i]);
+					$itemOutput .= $this->_renderItem($value, $tableArray[$i]);
 				}
 
 				/* only show a category's results, when the user can access at least 1 result */
@@ -117,35 +116,33 @@ class SearchList implements ViewInterface
 	}
 
 	/**
-	 * method for rendering list
+	 * method for rendering a list item
 	 *
-	 * @param array $item
-	 * @param string $table
+	 * @param array $item a single db row the $resultArray
+	 * @param string $table to know which table the current $item from
 	 *
 	 * @return string
 	 */
 
-	private function renderList($item, $table)
+	protected function _renderItem($item = array(), $table = null)
 	{
 		$accessValidator = new Validator\Access();
 
-		/* access granted */
-
-		if ($item && $item['status'] == 1 && $accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+		if ($accessValidator->validate($item->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 		{
 			/* prepare metadata */
 
-			$date = date(Db::getSetting('date'), strtotime($item['date']));
+			$date = date(Db::getSetting('date'), strtotime($item->date));
 
 			/* build route */
 
-			if ($table == 'categories' && $item['parent'] == 0 || $item['table'] == 'articles' && $item['category'] == 0)
+			if ($table === 'categories' && $item->parent === 0 || $item === 'articles' && $item->category === 0)
 			{
-				$route = $item['alias'];
+				$route = $item->alias;
 			}
 			else
 			{
-				$route = build_route($table, $item['id']);
+				$route = build_route($table, $item->id);
 			}
 
 			/* html element */
@@ -156,7 +153,7 @@ class SearchList implements ViewInterface
 					'href' => $this->_registry->get('parameterRoute') . $route,
 					'class' => 'rs-link-result'
 				))
-				->text($table != 'comments' ? $item['title'] : substr($item['text'], 0, 20));
+				->text($table != 'comments' ? $item->title : substr($item->text, 0, 20));
 
 			$textElement = new Html\Element();
 			$textElement
@@ -176,7 +173,6 @@ class SearchList implements ViewInterface
 
 			return $itemElement;
 		}
-
 		return null;
 	}
 }

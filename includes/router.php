@@ -59,7 +59,12 @@ function router()
 	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
 	{
 		$messenger = new Redaxscript\Messenger();
-		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search/' . Redaxscript\Request::getPost('table') . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search') . '...');
+		$table = Redaxscript\Request::getPost('table');
+		if($table)
+		{
+			$table = '/' . $table;
+		}
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search') . '...');
 	}
 
 	/* general routing */

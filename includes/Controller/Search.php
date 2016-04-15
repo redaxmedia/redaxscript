@@ -21,6 +21,7 @@ use Redaxscript\View;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class Search implements ControllerInterface
 {
 	/**
@@ -87,6 +88,7 @@ class Search implements ControllerInterface
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
+		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 
 		/* process search parameters */
 
@@ -97,17 +99,17 @@ class Search implements ControllerInterface
 				'search' => $this->_registry->get('secondParameter')
 			);
 		}
-		else if (in_array($specialFilter->sanitize($this->_registry->get('secondParameter')), $this->tableArray))
+		else if (in_array($secondParameter, $this->tableArray))
 		{
 			$queryArray = array(
-				'table' => array($specialFilter->sanitize($this->_registry->get('secondParameter'))),
+				'table' => array($secondParameter),
 				'search' => $this->_registry->get('thirdParameter')
 			);
 		}
 
 		/* validate search terms */
 
-		if (strlen($queryArray['search']) < 3 || $queryArray['search'] == $this->_language->get('search'))
+		if (strlen($queryArray['search']) < 3 || $queryArray['search'] === $this->_language->get('search'))
 		{
 			$errorArray[] = $this->_language->get('input_incorrect');
 		}
@@ -119,7 +121,7 @@ class Search implements ControllerInterface
 			$result[] = $this->_search($table, $queryArray['search']);
 		}
 
-		if (empty($result))
+		if (!$result)
 		{
 			$errorArray[] = $this->_language->get('search_no');
 		}
@@ -146,29 +148,33 @@ class Search implements ControllerInterface
 	/**
 	 * method for getting the search result
 	 *
-	 * @param array $table
-	 * @param array $search
+	 * @param array $table array of the tables we can search in
+	 * @param array $search array of the strings we are looking for
 	 *
 	 * @return array
 	 */
 
 	private function _search($table = null, $search = array())
 	{
+		$columnArray = array(
+			$table != 'comments' ? 'title' : null,
+			$table != 'comments' ? 'description' : null,
+			$table != 'comments' ? 'keywords' : null,
+			$table != 'categories' ? 'text' : null
+		);
+		$likeArray = array(
+			$table != 'comments' ? '%' . $search . '%' : null,
+			$table != 'comments' ? '%' . $search . '%' : null,
+			$table != 'comments' ? '%' . $search . '%' : null,
+			$table != 'categories' ? '%' . $search . '%' : null
+		);
+
+		// TODO: find the bug. removing one the status=1 will result in a bad query
 		$query = Db::forTablePrefix($table)
-			->whereLikeMany(array(
-				$table != 'comments' ? 'title' : null,
-				$table != 'comments' ? 'description' : null,
-				$table != 'comments' ? 'keywords' : null,
-				$table != 'categories' ? 'text' : null
-			), array(
-				$table != 'comments' ? '%' . $search . '%' : null,
-				$table != 'comments' ? '%' . $search . '%' : null,
-				$table != 'comments' ? '%' . $search . '%' : null,
-				$table != 'categories' ? '%' . $search . '%' : null
-			))
+			->whereRaw('status=1 AND ' . implode(array_filter($columnArray), ' LIKE ? OR ') . ' LIKE ?', array_filter($likeArray))
 			->where('status', 1)
 			->orderByDesc('date')
-			->findArray();
+			->findMany();
 
 		return $query;
 	}
@@ -178,16 +184,16 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $result
-	 * @param array $queryArray
+	 * @param array $result array of the db query
+	 * @param array $queryArray array of the tables and
 	 *
 	 * @return string
 	 */
 
 	public function success($result = array(), $queryArray = array())
 	{
-			$listSearch = new View\SearchList($this->_registry, $this->_language);
-			return $listSearch->render($result, $queryArray);
+		$listSearch = new View\SearchList($this->_registry, $this->_language);
+		return $listSearch->render($result, $queryArray['table']);
 	}
 
 	/**
@@ -195,7 +201,7 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */
