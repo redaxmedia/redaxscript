@@ -38,18 +38,6 @@ class SearchList implements ViewInterface
 	protected $_language;
 
 	/**
-	 * array for searchable tables
-	 *
-	 * @var array
-	 */
-
-	protected $tableArray = array(
-		'categories',
-		'articles',
-		'comments'
-	);
-
-	/**
 	 * constructor of the class
 	 *
 	 * @since 3.0.0
@@ -78,19 +66,15 @@ class SearchList implements ViewInterface
 	public function render($resultArray = null, $queryArray = null)
 	{
 		$accessValidator = new Validator\Access();
+		$i = 0;
 
 		$output = Hook::trigger('searchListStart');
 
-		$itemOutput = null;
-
-		if (!$queryArray['table'])
+		foreach ($resultArray as $item)
 		{
-			$queryArray['table'] = $this->tableArray;
-		}
+			$itemOutput = null;
 
-		foreach ($resultArray as $result => $item)
-		{
-			if ($item != null && $accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+			if ($item && $accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
 				/* title element */
 
@@ -99,7 +83,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
-					->text($this->_language->get(is_array($queryArray['table']) ? $result : 'search'));
+					->text($this->_language->get(count($queryArray['table']) != 1 ? $queryArray['table'][$i] : 'search'));
 
 				/* list element */
 
@@ -109,23 +93,26 @@ class SearchList implements ViewInterface
 						'class' => 'rs-list-result'
 					));
 
-				if (is_array($queryArray['table']) && $item != null)
-				{
-					$itemOutput = $this->renderMultiple($result, $item);
-				}
-				else if (!is_array($queryArray['table']))
-				{
-					$itemOutput = $this->renderSingle($item, $queryArray['table']);
-				}
-				$listElement->html($itemOutput);
+				/* generate category's list */
 
-				$output .= $titleElement . $listElement;
+				foreach ($item as $value)
+				{
+					$itemOutput .= $this->renderList($value, $queryArray['table'][$i]);
+				}
 
-				$itemOutput = null;
+				/* only show a category's results, when the user can access at least 1 result */
+
+				if ($itemOutput)
+				{
+					$listElement->html($itemOutput);
+
+					$output .= $titleElement . $listElement;
+				}
 			}
+			$i++;
 		}
-
 		$output .= Hook::trigger('searchListEnd');
+
 		return $output;
 	}
 
@@ -138,13 +125,13 @@ class SearchList implements ViewInterface
 	 * @return string
 	 */
 
-	private function renderSingle($item, $table)
+	private function renderList($item, $table)
 	{
 		$accessValidator = new Validator\Access();
 
 		/* access granted */
 
-		if ($accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+		if ($item && $item['status'] == 1 && $accessValidator->validate($item['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 		{
 			/* prepare metadata */
 
@@ -189,78 +176,7 @@ class SearchList implements ViewInterface
 
 			return $itemElement;
 		}
+
 		return null;
-	}
-
-	/**
-	 * method for rendering multiple category list
-	 *
-	 * @param string $table
-	 * @param array $row
-	 *
-	 * @return string
-	 */
-
-	private function renderMultiple($table, $row)
-	{
-		$accessValidator = new Validator\Access();
-		$itemOutput = null;
-
-		foreach ($row as $item)
-		{
-			/* access granted */
-
-			if ($accessValidator->validate($item->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
-			{
-				/* prepare metadata */
-
-				if (!$item['title'])
-				{
-					$item['title'] = substr($item['text'], 0, 20);
-				}
-
-				$date = date(Db::getSetting('date'), strtotime($item['date']));
-
-				/* build route */
-
-				if ($table === 'categories' && $item['parent'] === 0 || $item['table'] === 'articles' && $item['category'] === 0)
-				{
-					$route = $item['alias'];
-				}
-				else
-				{
-					$route = build_route($table, $item['id']);
-				}
-
-				/* html element */
-
-				$linkElement = new Html\Element();
-				$linkElement
-					->init('a', array(
-						'href' => $this->_registry->get('parameterRoute') . $route,
-						'class' => 'rs-link-result'
-					))
-					->text($item['title']);
-
-				$textElement = new Html\Element();
-				$textElement
-					->init('span', array(
-						'class' => 'rs-text-result-date'
-					))
-					->text($date);
-
-				$itemElement = new Html\Element();
-				$itemElement
-					->init('li', array(
-						'class' => 'rs-item-result'
-					))
-					->html($linkElement . $textElement);
-
-				/* return output */
-
-				$itemOutput .= $itemElement;
-			}
-		}
-		return $itemOutput;
 	}
 }

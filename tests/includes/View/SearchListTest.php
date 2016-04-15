@@ -54,7 +54,7 @@ class SearchListTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'access' => NULL,
+				'access' => null,
 				'date' => '2016-04-04 04:00:00'
 			))
 			->save();
@@ -89,21 +89,28 @@ class SearchListTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $parameters
+	 * @param array $table
+	 * @param array $search
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($parameters = array(), $expect = array())
+	public function testRender($table = array(), $search = array(), $expect = array())
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
 
 		/* actual */
+		$query = Db::forTablePrefix($table[0])
+				->where('title', $search)
+				->findArray();
 
-		$actual = $searchList->render(Db::forTablePrefix($parameters['table'])->where('title', $parameters['search'])->findArray(), $parameters);
+		$actual = $searchList->render(array($query), array(
+				"table" => $table,
+				"search" => $search
+			));
 
 		/* compare */
 

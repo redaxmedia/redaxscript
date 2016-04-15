@@ -99,7 +99,8 @@ class SearchTest extends TestCase
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
-				'status' => 1
+				'status' => 1,
+				'date' => '2016-04-04 04:00:00'
 			))
 			->save();
 	}
