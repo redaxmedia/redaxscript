@@ -19,7 +19,6 @@
 				<file>includes/navigation.php</file>
 				<file>includes/query.php</file>
 				<file>includes/router.php</file>
-				<file>includes/search.php</file>
 				<file>includes/startup.php</file>
 				<file>index.php</file>
 				<file>install.php</file>
