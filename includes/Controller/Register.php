@@ -79,7 +79,6 @@ class Register implements ControllerInterface
 		$emailFilter = new Filter\Email();
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
-		$urlValidator = new Validator\url();
 		$captchaValidator = new Validator\Captcha();
 
 		/* process post */
@@ -117,10 +116,6 @@ class Register implements ControllerInterface
 		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
-		}
-		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('url_incorrect');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
