@@ -33,7 +33,7 @@ $outputBox = null;
 
 	<?php for ($i = 1; $i < 6; $i++): ?>
 
-		<?php $id = uniqid('tab-'); ?>
+		<?php $id = uniqid('tab-') . $i; ?>
 
 		<?php $outputItem .= $itemElement
 				->copy()
