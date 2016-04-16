@@ -138,7 +138,6 @@ class UserForm implements ViewInterface
 				'for' => 'password'
 			))
 			->password(array(
-				'autocomplete' => 'off',
 				'id' => 'password',
 				'name' => 'password'
 			))
@@ -147,7 +146,6 @@ class UserForm implements ViewInterface
 				'for' => 'password_confirm'
 			))
 			->password(array(
-				'autocomplete' => 'off',
 				'id' => 'password_confirm',
 				'name' => 'password_confirm'
 			))
