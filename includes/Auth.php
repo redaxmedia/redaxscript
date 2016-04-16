@@ -180,33 +180,42 @@ class Auth
 
 	public function login($userId = null)
 	{
-		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
-		$groupArray = array_map('intval', explode(',', $user->groups));
-		$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_typeArray)->findArray();
-
-		/* process group */
-
-		foreach ($group as $key => $value)
+		$user = Db::forTablePrefix('users')->whereIdIs($userId)->where('status', 1)->findOne();
+		if ($user)
 		{
-			foreach ($value as $keySub => $valueSub)
+			$groupArray = array_map('intval', explode(',', $user->groups));
+			$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_typeArray)->findArray();
+
+			/* set filter */
+
+			$this->setPermission('filter', array(
+				1
+			));
+
+			/* process group */
+
+			foreach ($group as $key => $value)
 			{
-				$valueArray = array_map('intval', explode(',', $valueSub));
-				$this->setPermission($keySub, $valueArray);
+				foreach ($value as $keySub => $valueSub)
+				{
+					$valueArray = array_map('intval', explode(',', $valueSub));
+					$this->setPermission($keySub, $valueArray);
+				}
 			}
+
+			/* set user */
+
+			$this->setUser('id', $user->id);
+			$this->setUser('name', $user->name);
+			$this->setUser('user', $user->user);
+			$this->setUser('email', $user->email);
+			$this->setUser('language', $user->language);
+			$this->setUser('groups', $user->groups);
+
+			/* save user and permission */
+
+			$this->save();
 		}
-
-		/* set user */
-
-		$this->setUser('id', $user->id);
-		$this->setUser('name', $user->name);
-		$this->setUser('user', $user->user);
-		$this->setUser('email', $user->email);
-		$this->setUser('language', $user->language);
-		$this->setUser('groups', $user->groups);
-
-		/* save user and permission */
-
-		$this->save();
 		return $this->getStatus();
 	}
 
