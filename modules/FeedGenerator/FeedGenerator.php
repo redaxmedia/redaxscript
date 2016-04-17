@@ -135,8 +135,7 @@ class FeedGenerator extends Module
 
 			foreach ($result as $value)
 			{
-				$route = Registry::get('root') . Registry::get('parameterRoute');
-				$route .= $value->category < 1 ? $value->alias : build_route($table, $value->id);
+				$route = Registry::get('root') . Registry::get('parameterRoute') . build_route($table, $value->id);
 
 				/* collect entry output */
 

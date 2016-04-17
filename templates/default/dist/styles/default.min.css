@@ -1075,7 +1075,7 @@ a
 @font-face
 {
 	font-family: 'icon default';
-	src: url('/templates/default/assets/fonts/icon.woff2') format('woff2'), url('/templates/default/assets/fonts/icon.woff') format('woff');
+	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
 /* @section 2. icon flag */

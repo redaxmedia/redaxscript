@@ -77,7 +77,7 @@
 
 	.rs-install-title:before
 	{
-		content: url('/templates/install/assets/images/redaxscript.svg');
+		content: url('templates/install/assets/images/redaxscript.svg');
 		display: inline-block;
 		margin-right: 0.125em;
 		vertical-align: middle;

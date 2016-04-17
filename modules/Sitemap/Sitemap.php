@@ -101,7 +101,7 @@ class Sitemap extends Config
 
 					$outputItem = '<li>';
 					$outputItem .= $linkElement->attr(array(
-						'href' => $value->category < 1 ? $value->alias : build_route('articles', $value->id),
+						'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
 						'title' => $value->description ? $value->description : $value->title
 					))->text($value->title);
 					$outputItem .= '</li>';

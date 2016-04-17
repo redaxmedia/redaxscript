@@ -461,6 +461,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/**',
 					'libraries/**',
@@ -485,6 +486,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/en.json',
 					'libraries/**',

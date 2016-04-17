@@ -18,7 +18,7 @@
  @font-face
 {
 	font-family: 'icon share this';
-	src: url('/modules/ShareThis/fonts/icon.woff') format('woff'), url('/modules/ShareThis/fonts/icon.ttf') format('truetype');
+	src: url('modules/ShareThis/fonts/icon.woff') format('woff'), url('modules/ShareThis/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. list share this */
