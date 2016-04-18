@@ -7,7 +7,6 @@ use Redaxscript\Messenger;
 use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Validator;
 use Redaxscript\View;
 
@@ -41,14 +40,6 @@ class Search implements ControllerInterface
 	protected $_language;
 
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * array of tables
 	 *
 	 * @var array
@@ -67,14 +58,12 @@ class Search implements ControllerInterface
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the registry class
 	 */
 
-	public function __construct(Registry $registry, Language $language, Request $request)
+	public function __construct(Registry $registry, Language $language)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
-		$this->_request = $request;
 	}
 
 	/**
