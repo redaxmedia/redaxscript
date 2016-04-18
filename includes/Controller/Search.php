@@ -49,7 +49,7 @@ class Search implements ControllerInterface
 	protected $_request;
 
 	/**
-	 * array for searchable tables
+	 * array of tables
 	 *
 	 * @var array
 	 */
@@ -90,7 +90,7 @@ class Search implements ControllerInterface
 		$specialFilter = new Filter\Special();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 
-		/* process search parameters */
+		/* set search parameter */
 
 		if (!$this->_registry->get('thirdParameter'))
 		{
@@ -102,12 +102,14 @@ class Search implements ControllerInterface
 		else if (in_array($secondParameter, $this->tableArray))
 		{
 			$queryArray = array(
-				'table' => array($secondParameter),
+				'table' => array(
+						$secondParameter
+				),
 				'search' => $this->_registry->get('thirdParameter')
 			);
 		}
 
-		/* validate search terms */
+		/* validate search */
 
 		if (strlen($queryArray['search']) < 3 || $queryArray['search'] === $this->_language->get('search'))
 		{
@@ -146,37 +148,36 @@ class Search implements ControllerInterface
 	}
 
 	/**
-	 * method for getting the search result
+	 * fetch the search result
 	 *
-	 * @param array $table array of the tables we can search in
-	 * @param array $search array of the strings we are looking for
+	 * @param string $table name of the table
+	 * @param string $search value of the search
 	 *
-	 * @return array
+	 * @return Db
 	 */
 
-	private function _search($table = null, $search = array())
+	private function _search($table = null, $search = null)
 	{
-		$columnArray = array(
-			$table != 'comments' ? 'title' : null,
-			$table != 'comments' ? 'description' : null,
-			$table != 'comments' ? 'keywords' : null,
-			$table != 'categories' ? 'text' : null
-		);
-		$likeArray = array(
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'categories' ? '%' . $search . '%' : null
-		);
+		$columnArray = array_filter(array(
+			$table === 'categories' || $table === 'articles' ? 'title' : null,
+			$table === 'categories' || $table === 'articles' ? 'description' : null,
+			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
+			$table === 'articles' || $table === 'comments' ? 'text' : null
+		));
+		$likeArray = array_filter(array(
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+		));
 
-		// TODO: find the bug. removing one the status=1 will result in a bad query
-		$query = Db::forTablePrefix($table)
-			->whereRaw('status=1 AND ' . implode(array_filter($columnArray), ' LIKE ? OR ') . ' LIKE ?', array_filter($likeArray))
+		/* fetch result */
+
+		return Db::forTablePrefix($table)
+			->whereLikeMany($columnArray, $likeArray)
 			->where('status', 1)
 			->orderByDesc('date')
 			->findMany();
-
-		return $query;
 	}
 
 	/**

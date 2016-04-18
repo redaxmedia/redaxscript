@@ -226,7 +226,7 @@ class Db extends ORM
 
 	public function whereLikeMany($columnArray = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode(array_filter($columnArray), ' LIKE ? OR ') . ' LIKE ?', array_filter($likeArray));
+		return $this->whereRaw(implode($columnArray, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
 	}
 
 	/**
