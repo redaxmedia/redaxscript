@@ -199,28 +199,6 @@ class Messenger
 		$boxElement->init('div', array(
 			'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
 		));
-		if ($this->_actionArray['text'] && $this->_actionArray['route'])
-		{
-			$linkElement = new Html\Element();
-			$linkElement
-				->init('a', array(
-					'href' => Registry::get('parameterRoute') . $this->_actionArray['route'],
-					'class' => $this->_options['className']['link']
-				))
-				->text($this->_actionArray['text']);
-
-			/* redirect is numeric */
-
-			if (is_numeric($this->_actionArray['redirect']))
-			{
-				$metaElement = new Html\Element();
-				$metaElement->init('meta', array(
-					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('parameterRoute') . $this->_actionArray['route'],
-					'http-equiv' => 'refresh'
-				));
-			}
-		}
 
 		/* create a list */
 
@@ -249,8 +227,42 @@ class Messenger
 
 		/* collect output */
 
-		$output .= $titleElement . $boxElement . $linkElement . $metaElement;
+		$output .= $titleElement . $boxElement . $this->_renderAction();
 		$output .= Hook::trigger('messengerEnd');
+		return $output;
+	}
+
+	/**
+	 * render action
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	protected function _renderAction()
+	{
+		$output = null;
+		if ($this->_actionArray['text'] && $this->_actionArray['route']) {
+			$linkElement = new Html\Element();
+			$output .= $linkElement
+					->init('a', array(
+						'href' => Registry::get('parameterRoute') . $this->_actionArray['route'],
+						'class' => $this->_options['className']['link']
+					))
+					->text($this->_actionArray['text']);
+
+			/* redirect is numeric */
+
+			if (is_numeric($this->_actionArray['redirect'])) {
+				$metaElement = new Html\Element();
+				$output .= $metaElement->init('meta', array(
+					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
+					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('root') . '/' . Registry::get('parameterRoute') . $this->_actionArray['route'],
+					'http-equiv' => 'refresh'
+				));
+			}
+		}
 		return $output;
 	}
 }

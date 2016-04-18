@@ -15,8 +15,6 @@
 </ifmodule>
 <ifmodule mod_rewrite.c>
 	rewriteengine on
-	rewritecond %{request_filename} !-d
-	rewriterule ^(.*)/$ /$1 [r=301,l]
 	rewritecond %{request_filename} -f
 	rewriterule ^(.*) $1 [l]
 	rewritecond %{request_filename} !-d

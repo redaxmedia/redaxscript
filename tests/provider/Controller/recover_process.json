@@ -41,6 +41,6 @@
 			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
 			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
 		],
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\"><ul class=\"rs-list-messenger\"><li>Test: Your account information has been successfully sent</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Login</a><meta content=\"2;url=login\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Operation completed successfully</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\"><ul class=\"rs-list-messenger\"><li>Test: Your account information has been successfully sent</li></ul></div><a href=\"login\" class=\"rs-button-default rs-button-messenger\">Login</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
 	]
 ]
