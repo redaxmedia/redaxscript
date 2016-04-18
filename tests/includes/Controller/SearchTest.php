@@ -90,6 +90,17 @@ class SearchTest extends TestCase
 				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(array(
+				'author' => 'test search',
+				'email' => 'test@test.com',
+				'text' => 'test',
+				'article' => 1,
+				'status' => 0,
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
 	}
 
 	/**

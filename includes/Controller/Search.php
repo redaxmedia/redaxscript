@@ -163,8 +163,8 @@ class Search implements ControllerInterface
 		/* fetch result */
 
 		return Db::forTablePrefix($table)
-			->whereLikeMany($columnArray, $likeArray)
 			->where('status', 1)
+			->whereLikeMany($columnArray, $likeArray)
 			->orderByDesc('date')
 			->findMany();
 	}
