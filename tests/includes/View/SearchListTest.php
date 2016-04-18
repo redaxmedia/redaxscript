@@ -98,16 +98,19 @@ class SearchListTest extends TestCase
 	public function testRender($table = array(), $search = array(), $expect = array())
 	{
 		/* setup */
-
+		//TODO: Remove the language stuff from the whole test case
 		$searchList = new View\SearchList($this->_registry, $this->_language);
+		//TODO: you passed an array but only used the fist key? Well, time to pass $tableArray with MOOORE test cases!
+		//also more testing for the where(...)
+		$result = array(
+				Db::forTablePrefix($table[0])
+				->where('title', $search)
+				->findMany()
+		);
 
 		/* actual */
 
-		$query = Db::forTablePrefix($table[0])
-				->where('title', $search)
-				->findMany();
-
-		$actual = $searchList->render(array($query), $table);
+		$actual = $searchList->render($result, $table);
 
 		/* compare */
 

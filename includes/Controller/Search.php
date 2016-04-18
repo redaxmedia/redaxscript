@@ -77,9 +77,10 @@ class Search implements ControllerInterface
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
+		$searchValidator = new Validator\Search();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 
-		/* set search parameter */
+		/* process query */
 
 		if (!$this->_registry->get('thirdParameter'))
 		{
@@ -92,7 +93,7 @@ class Search implements ControllerInterface
 		{
 			$queryArray = array(
 				'table' => array(
-						$secondParameter
+					$secondParameter
 				),
 				'search' => $this->_registry->get('thirdParameter')
 			);
@@ -100,18 +101,19 @@ class Search implements ControllerInterface
 
 		/* validate search */
 
-		if (strlen($queryArray['search']) < 3 || $queryArray['search'] === $this->_language->get('search'))
+		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('input_incorrect');
 		}
 
-		/* get search query */
+		/* process search */
 
+		//TODO: pass the whole $queryArray to _search and let it do the processing
+		//$result = $this->_search($queryArray);
 		foreach ($queryArray['table'] as $table)
 		{
 			$result[] = $this->_search($table, $queryArray['search']);
 		}
-
 		if (!$result)
 		{
 			$errorArray[] = $this->_language->get('search_no');
@@ -123,17 +125,16 @@ class Search implements ControllerInterface
 		{
 			return $this->error($errorArray);
 		}
-
+		//TODO: The check for $output does not "feel right" to me - can't we check for $result
+		//and if that is present we run $this->success($result) ... we don't need the $queryArray because each
+		//DB object contains the tablename inside! What about renaming it to $successArray like in other controllers?
+		//because it is a set of result objects and not a single result
 		$output = $this->success($result, $queryArray);
-
 		if ($output)
 		{
 			return $output;
 		}
-		else
-		{
-			return $this->error($this->_language->get('search_no'));
-		}
+		return $this->error($this->_language->get('search_no'));
 	}
 
 	/**
@@ -179,7 +180,7 @@ class Search implements ControllerInterface
 	 *
 	 * @return string
 	 */
-
+	//TODO: Rewrite to use $successArray
 	public function success($result = array(), $queryArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);

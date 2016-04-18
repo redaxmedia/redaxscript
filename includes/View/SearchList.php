@@ -28,7 +28,7 @@ class SearchList implements ViewInterface
 	 */
 
 	protected $_registry;
-
+	//TODO: language never was use, remove it here + use statement and inside the test suite
 	/**
 	 * instance of the language class
 	 *
@@ -62,17 +62,15 @@ class SearchList implements ViewInterface
 	 * @since 3.0.0
 	 *
 	 */
-
+	//Todo: Don't call it $result that time and $resultArray the other time :-)
 	public function render($resultArray = null, $tableArray = null)
 	{
-		$i = 0;
-
 		$output = Hook::trigger('searchListStart');
-
+		$i = 0;
+		//TODO: Please get rid of the $i construct here and try to check for the current $tablename in the DB objects
 		foreach ($resultArray as $item)
 		{
 			$itemOutput = null;
-
 			if ($item)
 			{
 				/* title element */
@@ -82,6 +80,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
+					//TODO: More elegant to me... count($tableArray) > 1 ? ... : ... btw. always use type safe !==
 					->text($this->_language->get(count($tableArray) != 1 ? $tableArray[$i] : 'search'));
 
 				/* list element */
@@ -100,18 +99,17 @@ class SearchList implements ViewInterface
 				}
 
 				/* only show a category's results, when the user can access at least 1 result */
-
+				//TODO: do we really need this if? The Element class can handle empty values :-) and is made
+				//to work with null objects
 				if ($itemOutput)
 				{
 					$listElement->html($itemOutput);
-
 					$output .= $titleElement . $listElement;
 				}
 			}
 			$i++;
 		}
 		$output .= Hook::trigger('searchListEnd');
-
 		return $output;
 	}
 
@@ -126,8 +124,8 @@ class SearchList implements ViewInterface
 
 	protected function _renderItem($item = array(), $table = null)
 	{
+		$output = null;
 		$accessValidator = new Validator\Access();
-
 		if ($accessValidator->validate($item->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 		{
 			/* prepare metadata */
@@ -135,7 +133,9 @@ class SearchList implements ViewInterface
 			$date = date(Db::getSetting('date'), strtotime($item->date));
 
 			/* build route */
-
+			//TODO: Just use $route = build_route($table, $item->id); the refactored buildrout is going to be
+			//clever enough not to lookup a name and just use the alias - we can life with less performance fo now
+			//and have cleaner code
 			if ($table === 'categories' && $item->parent === 0 || $item === 'articles' && $item->category === 0)
 			{
 				$route = $item->alias;
@@ -153,26 +153,23 @@ class SearchList implements ViewInterface
 					'href' => $this->_registry->get('parameterRoute') . $route,
 					'class' => 'rs-link-result'
 				))
+				//TODO: do not use negativ checks like that - it fails once the tableArray extends
+				//Please use $item->auhtor for comments and $item->title for the rest - do not truncate
 				->text($table != 'comments' ? $item->title : substr($item->text, 0, 20));
-
 			$textElement = new Html\Element();
 			$textElement
 				->init('span', array(
 					'class' => 'rs-text-result-date'
 				))
 				->text($date);
-
 			$itemElement = new Html\Element();
 			$itemElement
 				->init('li', array(
 					'class' => 'rs-item-result'
 				))
 				->html($linkElement . $textElement);
-
-			/* return output */
-
-			return $itemElement;
+			$output = $itemElement;
 		}
-		return null;
+		return $output;
 	}
 }
