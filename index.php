@@ -11,7 +11,6 @@ include_once('includes/loader.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/router.php');
-include_once('includes/search.php');
 include_once('includes/startup.php');
 include_once('includes/comments.php');
 

@@ -51,13 +51,9 @@ class SearchForm implements ViewInterface
 
 		$formElement
 			->search(array(
-				'name' => 'search_terms',
-				'placeholder' => Language::get('search_terms'),
+				'name' => 'search',
+				'placeholder' => Language::get('search'),
 				'tabindex' => '1'
-			))
-			->hidden(array(
-				'name' => 'table',
-				'value' => $table
 			))
 			->token()
 			->submit(Language::get('search'));

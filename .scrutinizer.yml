@@ -11,7 +11,6 @@ filter:
   - includes/navigation.php
   - includes/query.php
   - includes/router.php
-  - includes/search.php
   - includes/startup.php
   - install.php
 

@@ -40,8 +40,7 @@ function router()
 		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
 		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
 		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
-		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment',
-		'Redaxscript\View\SearchForm' => 'search_post'
+		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment'
 	);
 	foreach ($post_list as $key => $value)
 	{
@@ -52,10 +51,20 @@ function router()
 		}
 		elseif ($_POST[$key])
 		{
-			$controller  = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-			echo $controller ->process();
+			$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $controller->process();
 			return;
 		}
+	}
+	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
+	{
+		$messenger = new Redaxscript\Messenger();
+		$table = Redaxscript\Request::getPost('table');
+		if($table)
+		{
+			$table = '/' . $table;
+		}
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search') . '...');
 	}
 
 	/* general routing */
@@ -122,6 +131,12 @@ function router()
 			/* show error */
 
 			echo $messenger->setAction(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
+			return;
+		case 'search':
+
+			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			echo $searchController->process();
+
 			return;
 		default:
 			contents();

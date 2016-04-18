@@ -42,6 +42,7 @@ class Alias implements ValidatorInterface
 		'login',
 		'logout',
 		'scripts',
+		'search',
 		'styles',
 		'recover',
 		'register',
