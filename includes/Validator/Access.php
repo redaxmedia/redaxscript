@@ -22,7 +22,7 @@ class Access implements ValidatorInterface
 	 * @param string $access content related access restriction
 	 * @param string $groups groups the user is a member of
 	 *
-	 * @return integer
+	 * @return boolean
 	 */
 
 	public function validate($access = null, $groups = null)
@@ -31,7 +31,7 @@ class Access implements ValidatorInterface
 		$accessArray = array_filter(explode(',', $access));
 		$groupsArray = array_filter(explode(',', $groups));
 
-		/* validate access again group */
+		/* validate access */
 
 		if (!$access || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
 		{
