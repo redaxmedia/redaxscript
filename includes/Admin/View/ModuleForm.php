@@ -171,18 +171,25 @@ class ModuleForm implements ViewInterface
 				'name' => 'status',
 				'value' => intval($module->status)
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $module->access
-			))
-			->append('</li></ul></fieldset></div>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $module->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('</ul></fieldset></div>')
 			->token()
 			->cancel()
 			->uninstall()

@@ -198,18 +198,24 @@ class UserForm implements ViewInterface
 					'name' => 'status',
 					'value' => $user->id ? intval($user->status) : 1
 				))
-				->append('</li><li>')
-				->label(Language::get('groups'), array(
-					'for' => 'groups'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
-					'id' => 'groups',
-					'name' => 'groups[]',
-					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $user->groups
-				))
-				->append('</li></ul></fieldset>');
+				->append('</li>');
+			if (Registry::get('groupsEdit'))
+			{
+				$formElement
+					->append('<li>')
+					->label(Language::get('groups'), array(
+						'for' => 'groups'
+					))
+					->select(Helper\Option::getAccessArray('groups'), array(
+						'id' => 'groups',
+						'name' => 'groups[]',
+						'multiple' => 'multiple',
+						'size' => count(Helper\Option::getAccessArray('groups')),
+						'value' => $user->groups
+					))
+					->append('</li>');
+			}
+			$formElement->append('</ul></fieldset>');
 		}
 		$formElement
 			->append('</div>')
