@@ -213,8 +213,10 @@ function admin_process()
 		}
 		if (!$idParameter || $idParameter > 1)
 		{
-			$groups = array_map(array($specialFilter, 'sanitize'), $_POST['groups']);
-			$groups = array_map('clean', $groups);
+			$groups = array_map(array(
+					$specialFilter,
+					'sanitize'
+			), $_POST['groups']);
 			$groups_string = implode(', ', $groups);
 			if (!$groups_string)
 			{

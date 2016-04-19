@@ -207,7 +207,7 @@ class UserForm implements ViewInterface
 					'name' => 'groups[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $user->access
+					'value' => $user->groups
 				))
 				->append('</li></ul></fieldset>');
 		}
