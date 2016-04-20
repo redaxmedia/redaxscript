@@ -259,15 +259,18 @@ class GroupForm implements ViewInterface
 			->append('</div>')
 			->token()
 			->cancel();
-		if ($group->id > 1)
-		{
-			$formElement->delete();
-		}
 		if ($group->id)
 		{
-			$formElement->save();
+			if (Registry::get('groupsDelete') && $group->id > 1)
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('groupsEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('groupsNew'))
 		{
 			$formElement->create();
 		}

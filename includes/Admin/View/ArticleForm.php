@@ -286,11 +286,16 @@ class ArticleForm implements ViewInterface
 			->cancel();
 		if ($article->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('articlesDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('articlesEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('articlesNew'))
 		{
 			$formElement->create();
 		}

@@ -253,14 +253,6 @@ function startup()
 		Redaxscript\Registry::set('usersNew', $auth->getPermissionNew('users'));
 		Redaxscript\Registry::set('usersEdit', $auth->getPermissionEdit('users'));
 		Redaxscript\Registry::set('usersDelete', $auth->getPermissionDelete('users'));
-		if (Redaxscript\Registry::get('tableParameter') == 'users' && Redaxscript\Registry::get('idParameter') == Redaxscript\Registry::get('myId'))
-		{
-			Redaxscript\Registry::set('usersException', true);
-		}
-		else
-		{
-			Redaxscript\Registry::set('usersException', false);
-		}
 		Redaxscript\Registry::set('modulesInstall', $auth->getPermissionInstall('modules'));
 		Redaxscript\Registry::set('modulesEdit', $auth->getPermissionEdit('modules'));
 		Redaxscript\Registry::set('modulesUninstall', $auth->getPermissionUninstall('modules'));

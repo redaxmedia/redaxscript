@@ -219,11 +219,16 @@ class CommentForm implements ViewInterface
 			->cancel();
 		if ($comment->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('commentsDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('commentsEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('commentsNew'))
 		{
 			$formElement->create();
 		}

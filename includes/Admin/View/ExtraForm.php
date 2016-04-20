@@ -239,11 +239,16 @@ class ExtraForm implements ViewInterface
 			->cancel();
 		if ($extra->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('extrasDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('extrasEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('extrasNew'))
 		{
 			$formElement->create();
 		}

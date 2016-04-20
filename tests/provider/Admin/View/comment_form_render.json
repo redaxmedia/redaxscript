@@ -3,7 +3,7 @@
 		0,
 		{
 			"start": "<h2 class=\"rs-admin-title-content\">New comment</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/comments\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
 		}
 	]
 ]

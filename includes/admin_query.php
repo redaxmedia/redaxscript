@@ -478,7 +478,8 @@ function admin_process()
 					))
 					->save();
 			}
-			if (Redaxscript\Registry::get('usersException'))
+
+			if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
 			{
 				$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 				$auth->init();
@@ -821,7 +822,7 @@ function admin_delete()
 
 	/* handle exception */
 
-	if (Redaxscript\Registry::get('usersException'))
+	if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
 	{
 		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 		echo $logoutController->process();

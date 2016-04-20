@@ -19,6 +19,7 @@ function admin_router()
 	$idParameter = Redaxscript\Registry::get('idParameter');
 	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
 	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
+	$usersException = $tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId');
 	$messenger = new Redaxscript\Admin\Messenger();
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
@@ -91,17 +92,17 @@ function admin_router()
 		case $adminParameter == 'view' && in_array($tableParameter, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
 		case $adminParameter == 'view' && $tableParameter == 'settings':
 		case $adminParameter == 'view' && $tableParameter == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
-		case $adminParameter == 'edit' && $edit == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'edit' && $edit == 0 && !$usersException:
 		case in_array($adminParameter, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
 		case $adminParameter == 'install' && $install == 0:
 		case $adminParameter == 'uninstall' && $uninstall == 0:
-		case $adminParameter == 'delete' && $delete == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'delete' && $delete == 0 && !$usersException:
 		case $adminParameter == 'process' && $_POST['new'] && $new == 0:
-		case $adminParameter == 'process' && $_POST['edit'] && $edit == 0 && !Redaxscript\Registry::get('usersException'):
+		case $adminParameter == 'process' && $_POST['edit'] && $edit == 0 && !$usersException:
 		case $adminParameter == 'process' && $_POST['groups'] && !Redaxscript\Registry::get('groupsEdit'):
 		case $adminParameter == 'update' && $edit == 0:
 		case $idParameter == 1 && ($adminParameter == 'disable' || $adminParameter == 'delete') && ($tableParameter == 'groups' || $tableParameter == 'users'):
-		case is_numeric($idParameter) && $tableParameter && $check_access == 0 && !Redaxscript\Registry::get('usersException'):
+		case is_numeric($idParameter) && $tableParameter && $check_access == 0 && !$usersException:
 
 			/* show error */
 

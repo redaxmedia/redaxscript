@@ -221,15 +221,18 @@ class UserForm implements ViewInterface
 			->append('</div>')
 			->token()
 			->cancel();
-		if ($user->id > 1)
-		{
-			$formElement->delete();
-		}
 		if ($user->id)
 		{
-			$formElement->save();
+			if ((Registry::get('usersDelete') || Registry::get('myId') === $user->id) && $user->id > 1)
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('usersEdit') || Registry::get('myId') === $user->id)
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('usersNew'))
 		{
 			$formElement->create();
 		}

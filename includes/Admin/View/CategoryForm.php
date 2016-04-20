@@ -248,11 +248,16 @@ class CategoryForm implements ViewInterface
 			->cancel();
 		if ($category->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('categoriesDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('categoriesEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('categoriesNew'))
 		{
 			$formElement->create();
 		}
