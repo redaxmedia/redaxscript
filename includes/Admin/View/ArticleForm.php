@@ -59,7 +59,7 @@ class ArticleForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/articles'
+					'href' => Registry::get('articlesEdit') && Registry::get('articlesDelete') ? Registry::get('parameterRoute') . 'admin/view/articles' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $article->id ? Registry::get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . Registry::get('token') : null
@@ -258,7 +258,7 @@ class ArticleForm implements ViewInterface
 		if (Registry::get('groupsEdit'))
 		{
 			$formElement
-					->append('<li>')
+				->append('<li>')
 				->label(Language::get('access'), array(
 					'for' => 'access'
 				))

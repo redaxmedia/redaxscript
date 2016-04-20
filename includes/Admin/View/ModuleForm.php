@@ -61,7 +61,7 @@ class ModuleForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/modules'
+					'href' => Registry::get('modulesEdit') && Registry::get('modulesDelete') ? Registry::get('parameterRoute') . 'admin/view/modules' : Registry::get('parameterRoute') . 'admin'
 				),
 				'uninstall' => array(
 					'href' => $module->alias ? Registry::get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null

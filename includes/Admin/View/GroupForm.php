@@ -59,7 +59,7 @@ class GroupForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/groups'
+					'href' => Registry::get('groupsEdit') && Registry::get('groupsDelete') ? Registry::get('parameterRoute') . 'admin/view/groups' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $group->id ? Registry::get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null

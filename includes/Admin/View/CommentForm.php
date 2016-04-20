@@ -59,7 +59,7 @@ class CommentForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/comments'
+					'href' => Registry::get('commentsEdit') && Registry::get('commentsDelete') ? Registry::get('parameterRoute') . 'admin/view/comments' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $comment->id ? Registry::get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null

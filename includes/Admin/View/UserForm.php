@@ -59,7 +59,7 @@ class UserForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/users'
+					'href' => Registry::get('usersEdit') && Registry::get('usersDelete') ? Registry::get('parameterRoute') . 'admin/view/users' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $user->id ? Registry::get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
