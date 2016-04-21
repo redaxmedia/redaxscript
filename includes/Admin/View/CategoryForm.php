@@ -59,7 +59,7 @@ class CategoryForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/categories'
+					'href' => Registry::get('categoriesEdit') && Registry::get('categoriesDelete') ? Registry::get('parameterRoute') . 'admin/view/categories' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $category->id ? Registry::get('parameterRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
@@ -248,11 +248,16 @@ class CategoryForm implements ViewInterface
 			->cancel();
 		if ($category->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('categoriesDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('categoriesEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('categoriesNew'))
 		{
 			$formElement->create();
 		}

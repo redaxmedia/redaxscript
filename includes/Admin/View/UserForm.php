@@ -59,7 +59,7 @@ class UserForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/users'
+					'href' => Registry::get('usersEdit') && Registry::get('usersDelete') ? Registry::get('parameterRoute') . 'admin/view/users' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $user->id ? Registry::get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
@@ -221,15 +221,18 @@ class UserForm implements ViewInterface
 			->append('</div>')
 			->token()
 			->cancel();
-		if ($user->id > 1)
-		{
-			$formElement->delete();
-		}
 		if ($user->id)
 		{
-			$formElement->save();
+			if ((Registry::get('usersDelete') || Registry::get('myId') === $user->id) && $user->id > 1)
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('usersEdit') || Registry::get('myId') === $user->id)
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('usersNew'))
 		{
 			$formElement->create();
 		}

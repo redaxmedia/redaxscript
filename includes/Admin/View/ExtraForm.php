@@ -59,7 +59,7 @@ class ExtraForm implements ViewInterface
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/extras'
+					'href' => Registry::get('extrasEdit') && Registry::get('extrasDelete') ? Registry::get('parameterRoute') . 'admin/view/extras' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $extra->id ? Registry::get('parameterRoute') . 'admin/delete/extras/' . $extra->id . '/' . Registry::get('token') : null
@@ -239,11 +239,16 @@ class ExtraForm implements ViewInterface
 			->cancel();
 		if ($extra->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('extrasDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('extrasEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('extrasNew'))
 		{
 			$formElement->create();
 		}
