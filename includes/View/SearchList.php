@@ -55,20 +55,19 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $resultArray array for the db query results
+	 * @param array $result array for the db query results
 	 * @param array $tableArray array for the tables
 	 *
 	 * @return string
 	 * @since 3.0.0
 	 *
 	 */
-	//Todo: Don't call it $result that time and $resultArray the other time :-)
-	public function render($resultArray = null, $tableArray = null)
+	public function render($result = null, $tableArray = null)
 	{
 		$output = Hook::trigger('searchListStart');
 		$i = 0;
 		//TODO: Please get rid of the $i construct here and try to check for the current $tablename in the DB objects
-		foreach ($resultArray as $item)
+		foreach ($result as $item)
 		{
 			$itemOutput = null;
 			if ($item)
@@ -80,8 +79,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
-					//TODO: More elegant to me... count($tableArray) > 1 ? ... : ... btw. always use type safe !==
-					->text($this->_language->get(count($tableArray) != 1 ? $tableArray[$i] : 'search'));
+					->text($this->_language->get(count($tableArray) > 1 ? $tableArray[$i] : 'search'));
 
 				/* list element */
 
@@ -153,9 +151,7 @@ class SearchList implements ViewInterface
 					'href' => $this->_registry->get('parameterRoute') . $route,
 					'class' => 'rs-link-result'
 				))
-				//TODO: do not use negativ checks like that - it fails once the tableArray extends
-				//Please use $item->auhtor for comments and $item->title for the rest - do not truncate
-				->text($table != 'comments' ? $item->title : substr($item->text, 0, 20));
+				->text($table === 'comments' ? $item->author : $item->title);
 			$textElement = new Html\Element();
 			$textElement
 				->init('span', array(

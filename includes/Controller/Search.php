@@ -176,15 +176,14 @@ class Search implements ControllerInterface
 	 * @since 3.0.0
 	 *
 	 * @param array $result array of the db query
-	 * @param array $queryArray array of the tables and
+	 * @param array $successArray array of the tables and search
 	 *
 	 * @return string
 	 */
-	//TODO: Rewrite to use $successArray
-	public function success($result = array(), $queryArray = array())
+	public function success($result = array(), $successArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
-		return $listSearch->render($result, $queryArray['table']);
+		return $listSearch->render($result, $successArray['table']);
 	}
 
 	/**

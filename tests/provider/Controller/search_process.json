@@ -21,7 +21,7 @@
 			"secondParameter": "test",
 			"thirdParameter": ""
 		},
-		"<h2 class=\"rs-title-content rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/test-one\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li><li class=\"rs-item-result\"><a href=\"home/test-two\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol><h2 class=\"rs-title-content rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/welcome#comment-3\" class=\"rs-link-result\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+		"<h2 class=\"rs-title-content rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/test-one\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li><li class=\"rs-item-result\"><a href=\"home/test-two\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol><h2 class=\"rs-title-content rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/welcome#comment-3\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
 	],
 	[
 		{
@@ -37,6 +37,6 @@
 			"secondParameter": "comments",
 			"thirdParameter": "test"
 		},
-		"<h2 class=\"rs-title-content rs-title-result\">Search</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/welcome#comment-3\" class=\"rs-link-result\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+		"<h2 class=\"rs-title-content rs-title-result\">Search</h2><ol class=\"rs-list-result\"><li class=\"rs-item-result\"><a href=\"home/welcome#comment-3\" class=\"rs-link-result\">test search</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
 	]
 ]
