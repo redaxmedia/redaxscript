@@ -180,6 +180,7 @@ class Search implements ControllerInterface
 	 *
 	 * @return string
 	 */
+
 	public function success($result = array(), $successArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);

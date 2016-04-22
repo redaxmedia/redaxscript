@@ -1,6 +1,8 @@
 [
 	[
-		"",
+		{
+			"token": ""
+		},
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"></form>"
 	],
 	[

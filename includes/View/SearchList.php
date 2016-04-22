@@ -62,6 +62,7 @@ class SearchList implements ViewInterface
 	 * @since 3.0.0
 	 *
 	 */
+
 	public function render($result = null, $tableArray = null)
 	{
 		$output = Hook::trigger('searchListStart');

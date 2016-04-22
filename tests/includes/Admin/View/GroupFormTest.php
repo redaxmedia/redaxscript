@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
 use Redaxscript\Tests\TestCase;
+use Redaxscript\Registry;
 
 /**
  * GroupFormTest
@@ -16,6 +17,25 @@ use Redaxscript\Tests\TestCase;
 
 class GroupFormTest extends TestCase
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_registry = Registry::getInstance();
+	}
+
 	/**
 	 * providerRender
 	 *
@@ -34,16 +54,18 @@ class GroupFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registry
 	 * @param integer $groupId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($groupId = null, $expect = array())
+	public function testRender($registry = array(), $groupId = null, $expect = array())
 	{
 		/* setup */
 
+		$this->_registry->init($registry);
 		$groupForm = new Admin\View\GroupForm();
 
 		/* actual */
