@@ -1066,6 +1066,30 @@ a
 /**
  * @tableofcontents
  *
+ * 1. grid elements
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. grid elements */
+
+.rs-grid-space > a, .rs-grid-space > blockquote, .rs-grid-space > button, .rs-grid-space > code, .rs-grid-space > div, .rs-grid-space > dl, .rs-grid-space > fieldset, .rs-grid-space > form, .rs-grid-space > h1, .rs-grid-space > h2, .rs-grid-space > h3, .rs-grid-space > h4, .rs-grid-space > h5, .rs-grid-space > h6, .rs-grid-space > hr, .rs-grid-space > img, .rs-grid-space > ol, .rs-grid-space > p, .rs-grid-space > table, .rs-grid-space > ul, .rs-line-space
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+.rs-line, .rs-line-space
+{
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+/**
+ * @tableofcontents
+ *
  * 1. icon font
  * 2. icon flag
  *

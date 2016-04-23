@@ -23,7 +23,7 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
-	padding: 0.25em 1em;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-box-accordion
@@ -47,7 +47,7 @@
 
 .rs-admin-box-dock
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -99,6 +99,11 @@
 }
 
 /* @section 5. box note admin */
+
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
 
 .rs-admin-box-note
 {

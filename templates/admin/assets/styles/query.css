@@ -101,7 +101,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background: url('templates/admin/assets/images/carbon.png') #222;
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 		position: absolute;
 		width: 100%;
 	}

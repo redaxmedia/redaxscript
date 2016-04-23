@@ -31,9 +31,9 @@
 .rs-admin-field-select,
 .rs-admin-field-textarea
 {
-	background: linear-gradient(#e2e2e2, #f1f1f1);
+	background: #f1f1f1;
 	border: 1px solid #c9c9c9;
-	border-radius: 0.25em;
+	border-radius: 0.125em;
 	color: #6a6a6a;
 	font: 1rem arial;
 	padding: 0.5em;
@@ -55,9 +55,8 @@
 .rs-admin-field-select:focus,
 .rs-admin-field-textarea:focus
 {
-	background: linear-gradient(#f1f1f1, #e2e2e2);
+	background: #e2e2e2;
 	border-color: #ababab;
-	box-shadow: 0 0 3px #fff;
 }
 
 /* @section 2. textarea */
@@ -83,9 +82,7 @@
 .rs-admin-field-textarea[disabled],
 .rs-admin-field-textarea[readonly]
 {
-	background: linear-gradient(#d4d4d4, #e2e2e2);
+	background: #d4d4d4;
 	border-color: #d5d5d5;
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);
 	color: #a4a4a4;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }

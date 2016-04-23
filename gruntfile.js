@@ -264,6 +264,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/dialog.css',
 					'templates/default/assets/styles/field.css',
 					'templates/default/assets/styles/form.css',
+					'templates/default/assets/styles/grid.css',
 					'templates/default/assets/styles/icon.css',
 					'templates/default/assets/styles/list.css',
 					'templates/default/assets/styles/media.css',

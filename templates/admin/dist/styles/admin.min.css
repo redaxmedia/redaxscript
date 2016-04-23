@@ -72,14 +72,14 @@
 
 .rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
-	border-bottom-width: 1px;
+	border-bottom-width: 0;
 }
 
 /* @section 3. several admin titles */
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
 }
 
@@ -179,7 +179,7 @@
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
 	border-top: 0;
-	padding: 0.25em 1em;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-box-accordion
@@ -203,7 +203,7 @@
 
 .rs-admin-box-dock
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -256,6 +256,11 @@
 
 /* @section 5. box note admin */
 
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
+
 .rs-admin-box-note
 {
 	border-radius: 0.125em 0.125em;
@@ -297,14 +302,12 @@
 .rs-admin-button-default
 {
 	background: linear-gradient(#3b3b3b, #303030);
-	border: 1px solid #151515;
-	border-radius: 0.25em;
+	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875rem/2.5em arial;
-	padding: 0 0.75em;
+	padding: 0 1em;
 	text-decoration: none;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 }
 
@@ -326,7 +329,6 @@
 .rs-admin-button-default:active
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	border-color: #005da2;
 	color: #fff;
 }
 
@@ -334,7 +336,7 @@
 
 .rs-admin-button-large
 {
-	font-size: 1.125rem;
+	font-size: 1rem;
 }
 
 /* @section 1.3 icons */
@@ -367,11 +369,8 @@
 .rs-admin-button-default[disabled]
 {
 	background: #ccc;
-	border-color: #ababab;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 	color: #9e9e9e;
 	pointer-events: none;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
 /* @section 3. space between elements */
@@ -503,9 +502,9 @@
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
-	background: linear-gradient(#e2e2e2, #f1f1f1);
+	background: #f1f1f1;
 	border: 1px solid #c9c9c9;
-	border-radius: 0.25em;
+	border-radius: 0.125em;
 	color: #6a6a6a;
 	font: 1rem arial;
 	padding: 0.5em;
@@ -523,9 +522,8 @@
 
 .rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
 {
-	background: linear-gradient(#f1f1f1, #e2e2e2);
+	background: #e2e2e2;
 	border-color: #ababab;
-	box-shadow: 0 0 3px #fff;
 }
 
 /* @section 2. textarea */
@@ -546,11 +544,9 @@
 
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
-	background: linear-gradient(#d4d4d4, #e2e2e2);
+	background: #d4d4d4;
 	border-color: #d5d5d5;
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);
 	color: #a4a4a4;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 /**
  * @tableofcontents
@@ -946,17 +942,12 @@
 
 .rs-admin-list-tab li
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
-	margin-right: 0.25em;
+	margin-right: 0.125rem;
 	vertical-align: bottom;
-}
-
-.rs-admin-list-tab > li + li
-{
-	margin-left: 0.125em;
 }
 
 .rs-admin-list-tab a
@@ -1157,7 +1148,6 @@
 
 .rs-admin-table-default tbody .rs-admin-row-group
 {
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -1271,7 +1261,7 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	color: #ccc;
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
@@ -1279,7 +1269,7 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
 {
-	padding: 0.5em;
+	padding: 0.25em 0.5em;
 }
 
 /* @section 1.7 column move */
@@ -1409,7 +1399,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background: url('templates/admin/assets/images/carbon.png') #222;
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 		position: absolute;
 		width: 100%;
 	}
@@ -1476,70 +1466,70 @@
 
 .rs-admin-note-success:not(:focus)
 {
-	color: #387038;
+	color: #356216;
 }
 
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
-	background: #5bb75b;
-	border-color: #387038;
+	background: #87C473;
+	border-color: #356216;
 }
 
 .rs-admin-note-success.rs-admin-field-note option
 {
-	background: #5bb75b;
+	background: #87C473;
 }
 
 /* @section 2. warning */
 
 .rs-admin-note-warning:not(:focus)
 {
-	color: #ad6704;
+	color: #a6770c;
 }
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
-	background: #f3940e;
-	border-color: #ad6704;
+	background: #e6c56e;
+	border-color: #a6770c;
 }
 
 .rs-admin-note-warning.rs-admin-field-note option
 {
-	background: #f3940e;
+	background: #e6c56e;
 }
 
 /* @section 3. error */
 
 .rs-admin-note-error:not(:focus)
 {
-	color: #802420;
+	color: #c62e3d;
 }
 
 .rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
-	background: #da4f49;
-	border-color: #802420;
+	background: #e3a2a7;
+	border-color: #c62e3d;
 }
 
 .rs-admin-note-error.rs-admin-field-note option
 {
-	background: #da4f49;
+	background: #e3a2a7;
 }
 
 /* @section 4. info */
 
 .rs-admin-note-info:not(:focus)
 {
-	color: #1f6377;
+	color: #286596;
 }
 
 .rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {
-	background: #49afcd;
-	border-color: #1f6377;
+	background: #7cb4e1;
+	border-color: #286596;
 }
 
 .rs-admin-note-info.rs-admin-field-note option
 {
-	background: #49afcd;
+	background: #7cb4e1;
 }

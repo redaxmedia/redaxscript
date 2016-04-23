@@ -72,14 +72,14 @@
 
 .rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
-	border-bottom-width: 1px;
+	border-bottom-width: 0;
 }
 
 /* @section 3. several admin titles */
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
 }
 

@@ -72,17 +72,12 @@
 
 .rs-admin-list-tab li
 {
-	background: url('templates/admin/assets/images/carbon.png') #222;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
 	border-radius: 0.25em 0.25em 0 0;
 	margin-bottom: -1px;
-	margin-right: 0.25em;
+	margin-right: 0.125rem;
 	vertical-align: bottom;
-}
-
-.rs-admin-list-tab > li + li
-{
-	margin-left: 0.125em;
 }
 
 .rs-admin-list-tab a
