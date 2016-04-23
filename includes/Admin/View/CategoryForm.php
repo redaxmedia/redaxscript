@@ -55,7 +55,7 @@ class CategoryForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-clearfix'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
 			),
 			'link' => array(
 				'cancel' => array(

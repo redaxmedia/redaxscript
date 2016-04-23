@@ -50,7 +50,7 @@ class Form extends BaseForm
 
 	protected $_attributeArray = array(
 		'form' => array(
-			'class' => 'rs-admin-js-validate-form rs-admin-form-default rs-clearfix',
+			'class' => 'rs-admin-js-validate-form rs-admin-form-default',
 			'method' => 'post'
 		),
 		'legend' => array(

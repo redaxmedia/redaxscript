@@ -44,7 +44,7 @@ class SettingForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . 'admin/update/settings',
-				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-form-default rs-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-form-default'
 			),
 			'button' => array(
 				'save' => array(
