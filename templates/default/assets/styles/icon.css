@@ -18,6 +18,16 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
+.rs-icon:before
+{
+	font: 1em/1em var(--rs-font-icon);
+}
+
+.rs-icon-login:before
+{
+	content: '\2731';
+}
+
 /* @section 2. icon flag */
 
 .rs-icon-flag

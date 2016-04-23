@@ -92,6 +92,11 @@ a
 	font-size: 1.5em;
 }
 
+.rs-link-login
+{
+	float: right;
+}
+
 /* @section 2.1 read more link */
 
 .rs-link-read-more
@@ -1076,6 +1081,16 @@ a
 {
 	font-family: 'icon default';
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
+}
+
+.rs-icon:before
+{
+	font: 1em/1em 'icon default';
+}
+
+.rs-icon-login:before
+{
+	content: '\2731';
 }
 
 /* @section 2. icon flag */

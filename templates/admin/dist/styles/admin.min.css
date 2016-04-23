@@ -65,7 +65,6 @@
 
 .rs-js .rs-admin-title-accordion
 {
-	border-bottom-width: 0;
 	cursor: pointer;
 }
 
@@ -195,9 +194,9 @@
 
 /* @section 1.1 last element */
 
-.rs-admin-set-accordion:last-child .rs-admin-box-accordion
+.rs-admin-set-accordion:last-of-type
 {
-	border-bottom-width: 1px;
+	border-bottom: 1px solid #b9b9b9;
 }
 
 /* @section 2. box dock admin */

@@ -68,6 +68,11 @@ a
 	font-size: 1.5em;
 }
 
+.rs-link-login
+{
+	float: right;
+}
+
 /* @section 2.1 read more link */
 
 .rs-link-read-more

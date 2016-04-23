@@ -32,7 +32,7 @@
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 }
 
-.rs-editor-toolbar, .rs-editor-toolbar a
+.rs-editor-toolbar, .rs-editor-toolbar .rs-editor-control
 {
 	color: #b9b9b9;
 }
