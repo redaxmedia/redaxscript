@@ -155,7 +155,7 @@ function admin_contents_list()
 				}
 				else
 				{
-					$class_status = 'row_disabled';
+					$class_status = 'rs-admin-row-disabled';
 				}
 
 				/* build route */
@@ -450,7 +450,7 @@ function admin_groups_list()
 			}
 			else
 			{
-				$class_status = 'row_disabled';
+				$class_status = 'rs-admin-row-disabled';
 			}
 
 			/* collect table row */
@@ -547,7 +547,7 @@ function admin_users_list()
 			}
 			else
 			{
-				$class_status = 'row_disabled';
+				$class_status = 'rs-admin-row-disabled';
 			}
 
 			/* collect table row */
@@ -701,7 +701,7 @@ function admin_modules_list()
 				}
 				else
 				{
-					$class_status = 'row_disabled';
+					$class_status = 'rs-admin-row-disabled';
 				}
 
 				/* collect table row */
