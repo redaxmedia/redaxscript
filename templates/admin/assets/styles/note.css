@@ -22,13 +22,13 @@
 .rs-admin-note-success.rs-admin-box-note,
 .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
-	background: #87C473;
+	background: #87c473;
 	border-color: #356216;
 }
 
 .rs-admin-note-success.rs-admin-field-note option
 {
-	background: #87C473;
+	background: #87c473;
 }
 
 /* @section 2. warning */
