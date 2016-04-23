@@ -15,13 +15,6 @@
 
 /* @section 1. several fields */
 
-.rs-admin-field-default,
-.rs-admin-field-select,
-.rs-admin-field-textarea.rs-admin-field-small
-{
-	width: 40%;
-}
-
 .rs-admin-dialog .rs-admin-field-default
 {
 	width: 100%;
@@ -85,4 +78,19 @@
 	background: #d4d4d4;
 	border-color: #d5d5d5;
 	color: #a4a4a4;
+}
+
+
+/* @section 4. query */
+
+/* @section 4.1 min width 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-field-default,
+	.rs-admin-field-select,
+	.rs-admin-field-textarea.rs-admin-field-small
+	{
+		width: 60%;
+	}
 }

@@ -251,7 +251,7 @@
 {
 	background: linear-gradient(#e2e2e2, #dadada);
 	border: 1px solid #b9b9b9;
-	padding: 1em 1.5em;
+	padding: 1em;
 }
 
 /* @section 5. box note admin */
@@ -427,7 +427,6 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s;
 	width: 3em;
 }
 
@@ -435,7 +434,6 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	padding: 0 0.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -490,11 +488,6 @@
 
 /* @section 1. several fields */
 
-.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
-{
-	width: 40%;
-}
-
 .rs-admin-dialog .rs-admin-field-default
 {
 	width: 100%;
@@ -547,6 +540,19 @@
 	background: #d4d4d4;
 	border-color: #d5d5d5;
 	color: #a4a4a4;
+}
+
+
+/* @section 4. query */
+
+/* @section 4.1 min width 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
+	{
+		width: 60%;
+	}
 }
 /**
  * @tableofcontents
@@ -922,14 +928,12 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	padding-left: 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -944,7 +948,7 @@
 {
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
-	border-radius: 0.25em 0.25em 0 0;
+	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.125rem;
 	vertical-align: bottom;
@@ -964,8 +968,7 @@
 
 .rs-admin-list-tab .rs-admin-item-active
 {
-	border-radius: 0.125em 0.125em 0 0;
-	padding: 0.5em 1em;
+	padding: 0.25em 0.75em;
 }
 
 .rs-admin-list-tab .rs-admin-item-active a
@@ -975,7 +978,7 @@
 
 .rs-admin-list-tab > li
 {
-	padding: 0.25em 1em;
+	padding: 0.125em 0.75em;
 }
 
 .rs-admin-list-tab > li:hover
@@ -1336,7 +1339,7 @@
 		text-align: center;
 	}
 
-	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	button.rs-admin-button-default, .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
@@ -1471,13 +1474,13 @@
 
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
-	background: #87C473;
+	background: #87c473;
 	border-color: #356216;
 }
 
 .rs-admin-note-success.rs-admin-field-note option
 {
-	background: #87C473;
+	background: #87c473;
 }
 
 /* @section 2. warning */

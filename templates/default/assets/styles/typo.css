@@ -15,8 +15,9 @@
  * 6. content
  * 7. sidebar
  * 8. footer
- * 9. query
- *    9.1 medium min
+ * 9. text
+ * 10. query
+ *    10.1 medium min
  *
  * @since 3.0.0
  *
@@ -277,9 +278,24 @@ a
 	color: gray(255);
 }
 
-/* @section 9. query */
+/* @section 9. text */
 
-/* @section 9.1 medium min */
+.rs-text-about
+{
+	float: left;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 medium min */
+
+@media (--media-small-max)
+{
+	.rs-text-powered-by
+	{
+		display: none;
+	}
+}
 
 @media (--media-medium-min)
 {

@@ -52,14 +52,12 @@
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	padding-left: 1.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -74,7 +72,7 @@
 {
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQI12NgYGDgBeHa2lowZoAJeHt7gzEDkgwEw2WgAgByFwoxsYQfLwAAAABJRU5ErkJggg==') #222;
 	border: 1px solid #222;
-	border-radius: 0.25em 0.25em 0 0;
+	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.125rem;
 	vertical-align: bottom;
@@ -94,8 +92,7 @@
 
 .rs-admin-list-tab .rs-admin-item-active
 {
-	border-radius: 0.125em 0.125em 0 0;
-	padding: 0.5em 1em;
+	padding: 0.25em 0.75em;
 }
 
 .rs-admin-list-tab .rs-admin-item-active a
@@ -105,7 +102,7 @@
 
 .rs-admin-list-tab > li
 {
-	padding: 0.25em 1em;
+	padding: 0.125em 0.75em;
 }
 
 .rs-admin-list-tab > li:hover

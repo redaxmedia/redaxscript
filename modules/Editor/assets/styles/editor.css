@@ -47,7 +47,6 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s;
 	width: 3.375em;
 }
 
@@ -55,7 +54,6 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	padding: 0 0.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 

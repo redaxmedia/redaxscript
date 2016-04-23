@@ -38,7 +38,11 @@
 		text-align: center;
 	}
 
-	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	button.rs-admin-button-default,
+	.rs-admin-field-default,
+	.rs-admin-field-select,
+	.rs-admin-field-text,
+	.rs-admin-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}

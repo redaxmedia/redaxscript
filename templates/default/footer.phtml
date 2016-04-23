@@ -4,11 +4,15 @@
 
 <footer id="footer" class="rs-footer">
 	<section class="rs-wrapper rs-clearfix">
-		<?php echo Template::language('powered_by'); ?>
-		<a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-footer">
-			<?php echo Template::language('name', '_package'); ?>
-		</a>
-		<?php echo Template::language('version', '_package'); ?>
-		<a class="rs-icon rs-icon-login rs-link-login" href="<?php echo Template::registry('root'); ?>/login">Login</a>
+		<span class="rs-text-about">
+            <span class="rs-text-powered-by">
+                <?php echo Template::language('powered_by'); ?>
+            </span>
+            <a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-footer">
+				<?php echo Template::language('name', '_package'); ?>
+			</a>
+			<?php echo Template::language('version', '_package'); ?>
+        </span>
+		<a class="rs-link-login" href="<?php echo Template::registry('parameterRoute'); ?>login">Login</a>
 	</section>
 </footer>
