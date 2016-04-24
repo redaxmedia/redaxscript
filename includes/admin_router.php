@@ -27,9 +27,9 @@ function admin_router()
 		return;
 	}
 
-	/* call last update */
+	/* last seen update */
 
-	if ($firstParameter == 'admin' && !$adminParameter || $adminParameter == 'view' && $tableParameter == 'users' || !Redaxscript\Registry::get('update'))
+	if (($firstParameter == 'admin' && !$adminParameter) || ($adminParameter == 'view' && $tableParameter == 'users') || Redaxscript\Registry::get('cronUpdate'))
 	{
 		admin_last_update();
 	}

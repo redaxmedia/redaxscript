@@ -272,20 +272,28 @@ function startup()
 	/* define time */
 
 	Redaxscript\Registry::set('now', date('Y-m-d H:i:s'));
-	Redaxscript\Registry::set('delay', date('Y-m-d H:i:s', strtotime('+1 minute')));
+
+	/* cron update */
+
+	Redaxscript\Registry::set('cronUpdate', false);
+	if (!Redaxscript\Request::getSession('timerUpdate') && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
+	{
+		Redaxscript\Request::setSession('timerUpdate', date('Y-m-d H:i:s', strtotime('+1 minute')));
+		Redaxscript\Registry::set('cronUpdate', true);
+	}
+	else if (Redaxscript\Request::getSession('timerUpdate') < Redaxscript\Registry::get('now'))
+	{
+		Redaxscript\Request::setSession('timerUpdate', false);
+	}
 
 	/* future update */
 
-	Redaxscript\Registry::set('update', Redaxscript\Request::getSession('update'));
-	if (!Redaxscript\Registry::get('update') && Redaxscript\Registry::get('dbStatus') === 2 && function_exists('future_update'))
+	if (Redaxscript\Registry::get('cronUpdate'))
 	{
+		Redaxscript\Hook::trigger('cronUpdate');
+		future_update('categories');
 		future_update('articles');
 		future_update('comments');
 		future_update('extras');
-		Redaxscript\Registry::set('update', Redaxscript\Registry::get('delay'));
-	}
-	else if (Redaxscript\Registry::get('update') < Redaxscript\Registry::get('now'))
-	{
-		Redaxscript\Registry::set('update', false);
 	}
 }
