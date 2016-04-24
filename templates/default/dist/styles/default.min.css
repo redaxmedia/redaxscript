@@ -673,14 +673,9 @@ a
 
 .rs-box-note a
 {
-	color: rgba(0, 0, 0, 0.65);
+	color: inherit;
 	text-decoration: underline;
 	transition: color 0.2s;
-}
-
-.rs-box-note a:hover
-{
-	color: rgb(0, 0, 0);
 }
 
 /* @section 7. box comment */

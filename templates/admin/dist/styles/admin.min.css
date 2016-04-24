@@ -271,16 +271,10 @@
 
 .rs-admin-box-note a
 {
-	color: rgba(0, 0, 0, 0.65);
+	color: inherit;
 	text-decoration: underline;
 	transition: color 0.2s;
 }
-
-.rs-admin-box-note a:hover
-{
-	color: #000;
-}
-
 /**
  * @tableofcontents
  *
@@ -313,7 +307,17 @@
 
 .rs-admin-button-default, a.rs-admin-button-default
 {
-	color: #ccc;
+	color: #fff;
+}
+
+.rs-admin-button-save
+{
+	background: linear-gradient(#5dab00, #458000);
+}
+
+.rs-admin-button-delete
+{
+	background: linear-gradient(#d50000, #a20000);
 }
 
 /* @section 1.1 hover effect */
@@ -322,6 +326,16 @@
 {
 	background: linear-gradient(#474747, #3b3b3b);
 	color: #eee;
+}
+
+.rs-admin-button-save:hover
+{
+	background: linear-gradient(#61b400, #4c8c00);
+}
+
+.rs-admin-button-delete:hover
+{
+	background: linear-gradient(#e30000, #bb0000);
 }
 
 /* @section 1.2 active effect */
