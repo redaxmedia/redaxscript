@@ -35,12 +35,11 @@
 
 		if (rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin')
 		{
-			options.suffix = options.suffix.backend;
-			rs.flags.backend = true;
+			options.className = options.className.backend;
 		}
 		else
 		{
-			options.suffix = options.suffix.frontend;
+			options.className = options.className.frontend;
 		}
 
 		var dialog = {};
@@ -64,7 +63,7 @@
 
 			if (options.type === 'prompt')
 			{
-				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.className.fieldPrompt + (rs.flags.backend ? options.suffix : '')).appendTo(dialog.box);
+				dialog.fieldPrompt = $('<input type="text" value="' + options.value + '" />').addClass(options.className.fieldPrompt).appendTo(dialog.box);
 			}
 
 			/* ok button */
@@ -142,12 +141,12 @@
 		{
 			/* create dialog elements */
 
-			dialog.overlay = $('<div>').addClass(options.className.dialogOverlay + options.suffix);
-			dialog.container = $('<div>').addClass(options.className.dialog + options.suffix);
-			dialog.title = $('<h3>' + rs.language[options.type] + '</h3>').addClass(options.className.dialogTitle + options.suffix);
+			dialog.overlay = $('<div>').addClass(options.className.dialogOverlay);
+			dialog.container = $('<div>').addClass(options.className.dialog);
+			dialog.title = $('<h3>' + rs.language[options.type] + '</h3>').addClass(options.className.dialogTitle);
 			dialog.box = $('<div>').addClass(options.className.dialogBox + options.suffix);
-			dialog.buttonOk = $('<a>' + rs.language.ok + '</a>').addClass(options.className.buttonOk + options.suffix);
-			dialog.buttonCancel = $('<a>' + rs.language.cancel + '</a>').addClass(options.className.buttonCancel + options.suffix);
+			dialog.buttonOk = $('<a>' + rs.language.ok + '</a>').addClass(options.className.buttonOk);
+			dialog.buttonCancel = $('<a>' + rs.language.cancel + '</a>').addClass(options.className.buttonCancel);
 
 			/* open and listen */
 

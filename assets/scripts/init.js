@@ -66,18 +66,26 @@
 			{
 				className:
 				{
-					dialog: 'rs-js-dialog rs-dialog rs-dialog',
-					dialogTitle: 'rs-js-title-dialog rs-title-dialog rs-title-dialog',
-					dialogBox: 'rs-js-box-dialog rs-box-dialog rs-box-dialog',
-					dialogOverlay: 'rs-js-dialog-overlay rs-dialog-overlay rs-dialog-overlay',
-					buttonOk: 'rs-js-ok rs-button',
-					buttonCancel: 'rs-js-cancel rs-button',
-					fieldPrompt: 'rs-js-prompt rs-field-text'
-				},
-				suffix:
-				{
-					backend: '-admin',
-					frontend: '-default'
+					backend:
+					{
+						dialog: 'rs-admin-js-dialog rs-admin-dialog rs-admin-dialog',
+						dialogTitle: 'rs-admin-js-title-dialog rs-admin-title-dialog rs-admin-title-dialog',
+						dialogBox: 'rs-admin-js-box-dialog rs-admin-box-dialog rs-admin-box-dialog',
+						dialogOverlay: 'rs-admin-js-dialog-overlay rs-admin-dialog-overlay rs-admin-dialog-overlay',
+						buttonOk: 'rs-admin-js-ok rs-admin-button-default',
+						buttonCancel: 'rs-admin-js-cancel rs-admin-button-default',
+						fieldPrompt: 'rs-admin-js-prompt rs-admin-field-text'
+					},
+					frontend:
+					{
+						dialog: 'rs-js-dialog rs-dialog rs-dialog',
+						dialogTitle: 'rs-js-title-dialog rs-title-dialog rs-title-dialog',
+						dialogBox: 'rs-js-box-dialog rs-box-dialog rs-box-dialog',
+						dialogOverlay: 'rs-js-dialog-overlay rs-dialog-overlay rs-dialog-overlay',
+						buttonOk: 'rs-js-ok rs-button-default',
+						buttonCancel: 'rs-js-cancel rs-button-default',
+						fieldPrompt: 'rs-js-prompt rs-field-text'
+					}
 				},
 				type: 'alert',
 				message: '',

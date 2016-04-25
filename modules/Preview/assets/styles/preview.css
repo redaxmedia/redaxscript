@@ -28,7 +28,8 @@
 
 /* @section 2. dialog */
 
-.rs-preview .rs-dialog
+.rs-preview .rs-dialog,
+.rs-preview .rs-admin-dialog
 {
 	margin: unset;
 	position: unset;
