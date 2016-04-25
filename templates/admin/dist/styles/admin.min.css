@@ -81,8 +81,8 @@
 {
 	background-color: #202020;
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-size: 6px 6px, 6px 6px, 6px 3px;
-	background-position: 0 0, 3px 3px, 0 0;
+	background-position: 0 0, 2px 2px, 0 0;
+	background-size: 4px 4px, 4px 4px, 4px 2px;
 	border: 1px solid #222;
 }
 
@@ -208,8 +208,8 @@
 {
 	background-color: #202020;
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-size: 6px 6px, 6px 6px, 6px 3px;
-	background-position: 0 0, 3px 3px, 0 0;
+	background-position: 0 0, 2px 2px, 0 0;
+	background-size: 4px 4px, 4px 4px, 4px 2px;
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -250,8 +250,8 @@
 {
 	background-color: #202020;
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-size: 6px 6px, 6px 6px, 6px 3px;
-	background-position: 0 0, 3px 3px, 0 0;
+	background-position: 0 0, 2px 2px, 0 0;
+	background-size: 4px 4px, 4px 4px, 4px 2px;
 }
 
 /* @section 4. box tab admin */
@@ -318,7 +318,7 @@
 	color: #fff;
 }
 
-.rs-admin-button-save
+.rs-admin-button-plus
 {
 	background: linear-gradient(#5dab00, #458000);
 }
@@ -333,10 +333,9 @@
 .rs-admin-button-default:hover
 {
 	background: linear-gradient(#474747, #3b3b3b);
-	color: #eee;
 }
 
-.rs-admin-button-save:hover
+.rs-admin-button-plus:hover
 {
 	background: linear-gradient(#61b400, #4c8c00);
 }
@@ -972,8 +971,8 @@
 {
 	background-color: #202020;
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-size: 6px 6px, 6px 6px, 6px 3px;
-	background-position: 0 0, 3px 3px, 0 0;
+	background-position: 0 0, 2px 2px, 0 0;
+	background-size: 4px 4px, 4px 4px, 4px 2px;
 	border: 1px solid #222;
 	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
@@ -1293,8 +1292,8 @@
 {
 	background-color: #202020;
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-size: 6px 6px, 6px 6px, 6px 3px;
-	background-position: 0 0, 3px 3px, 0 0;
+	background-position: 0 0, 2px 2px, 0 0;
+	background-size: 4px 4px, 4px 4px, 4px 2px;
 	color: #ccc;
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
@@ -1434,8 +1433,8 @@
 	{
 		background-color: #202020;
 		background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-		background-size: 6px 6px, 6px 6px, 6px 3px;
-		background-position: 0 0, 3px 3px, 0 0;
+		background-position: 0 0, 2px 2px, 0 0;
+		background-size: 4px 4px, 4px 4px, 4px 2px;
 		position: absolute;
 		width: 100%;
 	}
