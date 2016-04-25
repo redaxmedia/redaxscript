@@ -163,6 +163,8 @@ class Search implements ControllerInterface
 
 		/* fetch result */
 
+		//TODO: missing check for language - if you switched manually with /xxx.hu you should not find a article set to
+		//a language like .en or .de
 		return Db::forTablePrefix($table)
 			->whereLikeMany($columnArray, $likeArray)
 			->where('status', 1)

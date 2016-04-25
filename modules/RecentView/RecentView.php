@@ -93,9 +93,8 @@ class RecentView extends Config
 
 	protected static function _recentData()
 	{
-		$root = Registry::get('root');
 		$fullRoute = Registry::get('fullRoute');
-		$recentView = Request::getSession($root . '/recent_view');
+		$recentView = Request::getSession('recentView');
 
 		/* handle recent view */
 
@@ -106,7 +105,7 @@ class RecentView extends Config
 				$recentView = array();
 			}
 			array_unshift($recentView, $fullRoute);
-			Request::setSession($root . '/recent_view', $recentView);
+			Request::setSession('recentView', $recentView);
 		}
 		$output = $recentView;
 		return $output;

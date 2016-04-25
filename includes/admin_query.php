@@ -485,12 +485,9 @@ function admin_process()
 				$auth->init();
 				$auth->setUser('name', $name);
 				$auth->setUser('email', $email);
-				if (file_exists('languages/' . $language . '.php'))
-				{
-					$auth->setUser('language', $language);
-					Redaxscript\Request::setSession('language', $language);
-				}
+				$auth->setUser('language', $language);
 				$auth->save();
+				Redaxscript\Request::setSession('language', $language);
 			}
 
 			/* show success */

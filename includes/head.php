@@ -157,7 +157,7 @@ function head($type = 'all')
 	{
 		/* build canonical url */
 
-		$canonical_url = Redaxscript\Registry::get('root') . Redaxscript\Registry::get('parameterRoute');
+		$canonical_url = Redaxscript\Registry::get('root') . '/' . Redaxscript\Registry::get('parameterRoute');
 
 		/* article in category */
 

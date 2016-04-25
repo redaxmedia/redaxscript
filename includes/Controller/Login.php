@@ -136,6 +136,7 @@ class Login implements ControllerInterface
 
 		else if ($auth->login($user->id))
 		{
+			$this->_request->setSession('language', $user->language);
 			return $this->success();
 		}
 		return $this->error($this->_language->get('something_wrong'));

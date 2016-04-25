@@ -233,6 +233,8 @@ class Comment implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
+		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
+
 		/* html elements */
 
 		$linkElement = new Html\Element();
@@ -249,7 +251,6 @@ class Comment implements ControllerInterface
 				'href' => $mailArray['url']
 			))
 			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
-		$urlArticle = $this->_registry->get('root') . $this->_registry->get('parameterRoute') . $mailArray['route'];
 		$linkArticle = $linkElement->copy();
 		$linkArticle
 			->attr(array(

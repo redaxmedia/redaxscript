@@ -228,7 +228,7 @@ class Register implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
-		$urlLogin = $this->_registry->get('root') . $this->_registry->get('parameterRoute') . 'login';
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html elements */
 
