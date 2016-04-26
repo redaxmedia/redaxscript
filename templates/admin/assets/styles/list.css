@@ -18,7 +18,7 @@
 {
 	background: linear-gradient(#bbb, #b9b9b9);
 	border-radius: 0.25em;
-	color: #666;
+	color: gray(102);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -28,12 +28,12 @@
 .rs-admin-list-control a:hover
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	color: gray(255);
 }
 
 .rs-admin-list-control span
 {
-	color: #999;
+	color: gray(153);
 }
 
 /* @section 2. list panel admin */
@@ -45,20 +45,20 @@
 
 .rs-admin-list-panel a, .rs-admin-list-panel span
 {
-	color: #b9b9b9;
+	color: gray(185);
 	cursor: pointer;
 	display: block;
 	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	text-shadow: 0 1px gray(0, 0.6);
 	text-transform: uppercase;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
 	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	color: gray(0);
+	text-shadow: 0 1px gray(255, 0.2);
 }
 
 .rs-admin-list-panel-children
@@ -70,11 +70,11 @@
 
 .rs-admin-list-tab li
 {
-	background-color: #202020;
+	background-color: gray(32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
-	border: 1px solid #222;
+	border: 1px solid gray(34);
 	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.125rem;
@@ -83,7 +83,7 @@
 
 .rs-admin-list-tab a
 {
-	color: #ccc;
+	color: gray(204);
 	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }
@@ -100,7 +100,7 @@
 
 .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #fff;
+	color: gray(255);
 }
 
 .rs-admin-list-tab > li
@@ -115,7 +115,7 @@
 
 .rs-admin-list-tab > li:hover a
 {
-	color: #fff;
+	color: gray(255);
 }
 
 /* @section 3.1 javascript enabled */
@@ -123,12 +123,12 @@
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #b9b9b9;
-	border-bottom-color: #e2e2e2;
+	border: 1px solid gray(185);
+	border-bottom-color: gray(226);
 	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #474747;
+	color: gray(71);
 }

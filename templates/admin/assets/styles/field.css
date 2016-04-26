@@ -26,10 +26,10 @@
 .rs-admin-field-select,
 .rs-admin-field-textarea
 {
-	background: #f1f1f1;
-	border: 1px solid #c9c9c9;
+	background: gray(241);
+	border: 1px solid gray(201);
 	border-radius: 0.125em;
-	color: #6a6a6a;
+	color: gray(106);
 	font: 1rem arial;
 	padding: 0.5em;
 	transition: background 0.4s;
@@ -41,7 +41,7 @@
 .rs-admin-field-select:hover,
 .rs-admin-field-textarea:hover
 {
-	border-color: #adadad;
+	border-color: gray(173);
 }
 
 /* @section 1.2 focus effect */
@@ -50,8 +50,8 @@
 .rs-admin-field-select:focus,
 .rs-admin-field-textarea:focus
 {
-	background: #e2e2e2;
-	border-color: #ababab;
+	background: gray(226);
+	border-color: gray(171);
 }
 
 /* @section 2. textarea */
@@ -77,9 +77,9 @@
 .rs-admin-field-textarea[disabled],
 .rs-admin-field-textarea[readonly]
 {
-	background: #d4d4d4;
-	border-color: #d5d5d5;
-	color: #a4a4a4;
+	background: gray(212);
+	border-color:gray(213);
+	color: gray(164);
 }
 
 

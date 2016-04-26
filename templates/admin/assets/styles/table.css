@@ -20,7 +20,7 @@
 
 .rs-admin-table-default
 {
-	color: #474747;
+	color: gray(71);
 }
 
 .rs-admin-table-default caption,
@@ -40,7 +40,7 @@
 
 .rs-admin-table-default tbody
 {
-	border: solid #b9b9b9;
+	border: solid gray(185);
 	border-width: 0 1px;
 }
 
@@ -61,12 +61,12 @@
 .rs-admin-table-default tbody + tbody tr,
 .rs-admin-table-default tbody tr + tr
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid gray(185);
 }
 
 .rs-admin-table-default caption + tbody tr:last-child
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid gray(185);
 }
 
 .rs-admin-table-default tbody td
@@ -78,8 +78,8 @@
 
 .rs-admin-table-default tbody .rs-admin-row-disabled
 {
-	background: #ddd;
-	color: #b9b9b9;
+	background: gray(221);
+	color: gray(185);
 }
 
 /* @section 1.2 row group */
@@ -108,18 +108,18 @@
 
 .rs-admin-table-default tbody .rs-admin-link-parent
 {
-	color: #666;
+	color: gray(102);
 	text-decoration: underline;
 }
 
 .rs-admin-table-default tbody .rs-admin-link-parent:hover
 {
-	color: #474747;
+	color: gray(71);
 }
 
 .rs-admin-table-default tbody .rs-admin-link-view
 {
-	color: #474747;
+	color: gray(71);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -151,7 +151,7 @@
 .rs-admin-table-default .rs-admin-move-up,
 .rs-admin-table-default .rs-admin-move-down
 {
-	color: #474747;
+	color: gray(71);
 	display: block;
 	min-height: 2.5em;
 	position: relative;
@@ -191,7 +191,7 @@
 .rs-admin-table-default span.rs-admin-move-up:before,
 .rs-admin-table-default span.rs-admin-move-down:before
 {
-	color: #b9b9b9;
+	color: gray(185);
 }
 
 /* @section 1.6 head and foot */
@@ -200,18 +200,18 @@
 .rs-admin-table-default thead,
 .rs-admin-table-default tfoot
 {
-	border: 1px solid #222;
+	border: 1px solid gray(34);
 }
 
 .rs-admin-table-default caption,
 .rs-admin-table-default thead tr,
 .rs-admin-table-default tfoot tr
 {
-	background-color: #202020;
+	background-color: gray(32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
-	color: #ccc;
+	color: gray(204);
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }

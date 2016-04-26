@@ -31,7 +31,7 @@
 .rs-admin-button-default,
 a.rs-admin-button-default
 {
-	color: #fff;
+	color: gray(255);
 }
 
 .rs-admin-button-create
@@ -66,7 +66,7 @@ a.rs-admin-button-default
 .rs-admin-button-default:active
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	color: gray(255);
 }
 
 /* large */
@@ -107,8 +107,8 @@ a.rs-admin-button-default
 
 .rs-admin-button-default[disabled]
 {
-	background: #ccc;
-	color: #9e9e9e;
+	background: gray(204);
+	color: gray(158);
 	pointer-events: none;
 }
 

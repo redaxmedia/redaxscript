@@ -18,10 +18,11 @@
 
 /* @section 1. several admin boxes */
 
-.rs-admin-box-accordion, .rs-admin-box-dialog
+.rs-admin-box-accordion,
+.rs-admin-box-dialog
 {
 	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	border: 1px solid gray(185);
 	border-top: 0;
 	padding: 0.5em 1em;
 }
@@ -33,32 +34,33 @@
 
 .rs-admin-title-accordion + .rs-admin-box-accordion
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid gray(185);
 }
 
 /* @section 1.1 last element */
 
 .rs-admin-set-accordion:last-of-type
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid gray(185);
 }
 
 /* @section 2. box dock admin */
 
 .rs-admin-box-dock
 {
-	background-color: #202020;
+	background-color: gray(32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
 	font-size: 0.875rem;
 	margin-top: 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px gray(0, 0.8);
 }
 
-.rs-admin-box-dock, .rs-admin-box-dock a
+.rs-admin-box-dock,
+.rs-admin-box-dock a
 {
-	color: #b9b9b9;
+	color: gray(185);
 }
 
 /* @section 2.1 description dock admin */
@@ -89,7 +91,7 @@
 
 .rs-admin-box-panel
 {
-	background-color: #202020;
+	background-color: gray(32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
@@ -100,7 +102,7 @@
 .rs-admin-box-tab
 {
 	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	border: 1px solid gray(185);
 	padding: 1em;
 }
 

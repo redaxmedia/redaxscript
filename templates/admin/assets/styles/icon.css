@@ -24,7 +24,7 @@
 {
 	background: #323e4c;
 	border-radius: 0.125em;
-	color: #fff;
+	color: gray(255);
 	display: inline-block;
 	font-size: 0.75em;
 	letter-spacing: 0.125em;

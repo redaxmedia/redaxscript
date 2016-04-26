@@ -1,6 +1,18 @@
 /**
  * @tableofcontents
  *
+ * 1. variable
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+/**
+ * @tableofcontents
+ *
  * 1. links
  * 2. title accordion admin
  *    2.1 javascript enabled
@@ -19,7 +31,7 @@
 
 .rs-admin-link-default
 {
-	color: #666;
+	color: rgb(102, 102, 102);
 	text-decoration: underline;
 }
 
@@ -33,7 +45,7 @@
 .rs-admin-title-accordion
 {
 	background: linear-gradient(#d5d5d5, #ccc);
-	border: 1px solid #b9b9b9;
+	border: 1px solid rgb(185, 185, 185);
 	box-sizing: border-box;
 	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
 	padding: 0 1em;
@@ -58,7 +70,7 @@
 
 .rs-admin-title-accordion, .rs-admin-title-accordion a
 {
-	color: #444;
+	color: rgb(68, 68, 68);
 }
 
 /* @section 2.1 javascript enabled */
@@ -79,16 +91,16 @@
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background-color: #202020;
+	background-color: rgb(32, 32, 32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
-	border: 1px solid #222;
+	border: 1px solid rgb(34, 34, 34);
 }
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
 {
-	color: #ccc;
+	color: rgb(204, 204, 204);
 }
 
 /* @section 4. title dialog admin */
@@ -180,7 +192,7 @@
 .rs-admin-box-accordion, .rs-admin-box-dialog
 {
 	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	border: 1px solid rgb(185, 185, 185);
 	border-top: 0;
 	padding: 0.5em 1em;
 }
@@ -192,21 +204,21 @@
 
 .rs-admin-title-accordion + .rs-admin-box-accordion
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid rgb(185, 185, 185);
 }
 
 /* @section 1.1 last element */
 
 .rs-admin-set-accordion:last-of-type
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid rgb(185, 185, 185);
 }
 
 /* @section 2. box dock admin */
 
 .rs-admin-box-dock
 {
-	background-color: #202020;
+	background-color: rgb(32, 32, 32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
@@ -217,7 +229,7 @@
 
 .rs-admin-box-dock, .rs-admin-box-dock a
 {
-	color: #b9b9b9;
+	color: rgb(185, 185, 185);
 }
 
 /* @section 2.1 description dock admin */
@@ -248,7 +260,7 @@
 
 .rs-admin-box-panel
 {
-	background-color: #202020;
+	background-color: rgb(32, 32, 32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
@@ -259,7 +271,7 @@
 .rs-admin-box-tab
 {
 	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	border: 1px solid rgb(185, 185, 185);
 	padding: 1em;
 }
 
@@ -315,7 +327,7 @@
 
 .rs-admin-button-default, a.rs-admin-button-default
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-button-create
@@ -350,7 +362,7 @@
 .rs-admin-button-default:active
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* large */
@@ -389,8 +401,8 @@
 
 .rs-admin-button-default[disabled]
 {
-	background: #ccc;
-	color: #9e9e9e;
+	background: rgb(204, 204, 204);
+	color: rgb(158, 158, 158);
 	pointer-events: none;
 }
 
@@ -454,7 +466,7 @@
 .rs-admin-link-dock:hover
 {
 	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
+	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -518,10 +530,10 @@
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
-	background: #f1f1f1;
-	border: 1px solid #c9c9c9;
+	background: rgb(241, 241, 241);
+	border: 1px solid rgb(201, 201, 201);
 	border-radius: 0.125em;
-	color: #6a6a6a;
+	color: rgb(106, 106, 106);
 	font: 1rem arial;
 	padding: 0.5em;
 	transition: background 0.4s;
@@ -531,15 +543,15 @@
 
 .rs-admin-field-default:hover, .rs-admin-field-select:hover, .rs-admin-field-textarea:hover
 {
-	border-color: #adadad;
+	border-color: rgb(173, 173, 173);
 }
 
 /* @section 1.2 focus effect */
 
 .rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
 {
-	background: #e2e2e2;
-	border-color: #ababab;
+	background: rgb(226, 226, 226);
+	border-color: rgb(171, 171, 171);
 }
 
 /* @section 2. textarea */
@@ -560,9 +572,9 @@
 
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
-	background: #d4d4d4;
-	border-color: #d5d5d5;
-	color: #a4a4a4;
+	background: rgb(212, 212, 212);
+	border-color:rgb(213, 213, 213);
+	color: rgb(164, 164, 164);
 }
 
 
@@ -602,7 +614,7 @@
 
 .rs-admin-label-default
 {
-	color: #555;
+	color: rgb(85, 85, 85);
 	display: block;
 	font-size: 0.875rem;
 	font-weight: bold;
@@ -801,7 +813,7 @@
 {
 	background: #323e4c;
 	border-radius: 0.125em;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	display: inline-block;
 	font-size: 0.75em;
 	letter-spacing: 0.125em;
@@ -917,7 +929,7 @@
 {
 	background: linear-gradient(#bbb, #b9b9b9);
 	border-radius: 0.25em;
-	color: #666;
+	color: rgb(102, 102, 102);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -927,12 +939,12 @@
 .rs-admin-list-control a:hover
 {
 	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-list-control span
 {
-	color: #999;
+	color: rgb(153, 153, 153);
 }
 
 /* @section 2. list panel admin */
@@ -944,7 +956,7 @@
 
 .rs-admin-list-panel a, .rs-admin-list-panel span
 {
-	color: #b9b9b9;
+	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
 	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
@@ -956,7 +968,7 @@
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
 	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
+	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -969,11 +981,11 @@
 
 .rs-admin-list-tab li
 {
-	background-color: #202020;
+	background-color: rgb(32, 32, 32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
-	border: 1px solid #222;
+	border: 1px solid rgb(34, 34, 34);
 	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.125rem;
@@ -982,7 +994,7 @@
 
 .rs-admin-list-tab a
 {
-	color: #ccc;
+	color: rgb(204, 204, 204);
 	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }
@@ -999,7 +1011,7 @@
 
 .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-list-tab > li
@@ -1014,7 +1026,7 @@
 
 .rs-admin-list-tab > li:hover a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 3.1 javascript enabled */
@@ -1022,14 +1034,14 @@
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
 	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #b9b9b9;
-	border-bottom-color: #e2e2e2;
+	border: 1px solid rgb(185, 185, 185);
+	border-bottom-color: rgb(226, 226, 226);
 	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 /**
  * @tableofcontents
@@ -1115,7 +1127,7 @@
 
 .rs-admin-table-default
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default td, .rs-admin-table-default th
@@ -1132,7 +1144,7 @@
 
 .rs-admin-table-default tbody
 {
-	border: solid #b9b9b9;
+	border: solid rgb(185, 185, 185);
 	border-width: 0 1px;
 }
 
@@ -1152,12 +1164,12 @@
 
 .rs-admin-table-default tbody + tbody tr, .rs-admin-table-default tbody tr + tr
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid rgb(185, 185, 185);
 }
 
 .rs-admin-table-default caption + tbody tr:last-child
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid rgb(185, 185, 185);
 }
 
 .rs-admin-table-default tbody td
@@ -1169,8 +1181,8 @@
 
 .rs-admin-table-default tbody .rs-admin-row-disabled
 {
-	background: #ddd;
-	color: #b9b9b9;
+	background: rgb(221, 221, 221);
+	color: rgb(185, 185, 185);
 }
 
 /* @section 1.2 row group */
@@ -1199,18 +1211,18 @@
 
 .rs-admin-table-default tbody .rs-admin-link-parent
 {
-	color: #666;
+	color: rgb(102, 102, 102);
 	text-decoration: underline;
 }
 
 .rs-admin-table-default tbody .rs-admin-link-parent:hover
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 
 .rs-admin-table-default tbody .rs-admin-link-view
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -1241,7 +1253,7 @@
 
 .rs-admin-table-default .rs-admin-move-up, .rs-admin-table-default .rs-admin-move-down
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 	display: block;
 	min-height: 2.5em;
 	position: relative;
@@ -1278,23 +1290,23 @@
 
 .rs-admin-table-default span.rs-admin-move-up:before, .rs-admin-table-default span.rs-admin-move-down:before
 {
-	color: #b9b9b9;
+	color: rgb(185, 185, 185);
 }
 
 /* @section 1.6 head and foot */
 
 .rs-admin-table-default caption, .rs-admin-table-default thead, .rs-admin-table-default tfoot
 {
-	border: 1px solid #222;
+	border: 1px solid rgb(34, 34, 34);
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background-color: #202020;
+	background-color: rgb(32, 32, 32);
 	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
-	color: #ccc;
+	color: rgb(204, 204, 204);
 	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
 	text-transform: uppercase;
 }
@@ -1431,7 +1443,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background-color: #202020;
+		background-color: rgb(32, 32, 32);
 		background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
 		background-position: 0 0, 2px 2px, 0 0;
 		background-size: 4px 4px, 4px 4px, 4px 2px;

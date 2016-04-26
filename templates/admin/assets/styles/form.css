@@ -23,7 +23,7 @@
 
 .rs-admin-label-default
 {
-	color: #555;
+	color: gray(85);
 	display: block;
 	font-size: 0.875rem;
 	font-weight: bold;
