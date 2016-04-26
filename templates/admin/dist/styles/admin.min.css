@@ -318,7 +318,7 @@
 	color: #fff;
 }
 
-.rs-admin-button-plus
+.rs-admin-button-create
 {
 	background: linear-gradient(#5dab00, #458000);
 }
@@ -335,7 +335,7 @@
 	background: linear-gradient(#474747, #3b3b3b);
 }
 
-.rs-admin-button-plus:hover
+.rs-admin-button-create:hover
 {
 	background: linear-gradient(#61b400, #4c8c00);
 }
