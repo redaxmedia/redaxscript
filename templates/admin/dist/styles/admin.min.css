@@ -1385,7 +1385,7 @@
 {
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 	{
-		line-height: 3.5em;
+		line-height: 4.25rem;
 	}
 
 	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
