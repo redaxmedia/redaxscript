@@ -65,7 +65,7 @@ a.rs-admin-button-default
 
 .rs-admin-button-default:active
 {
-	background: linear-gradient(#4cb4ff, #0090db);
+	background: var(--rs-admin-gradient-primary);
 	color: gray(255);
 }
 

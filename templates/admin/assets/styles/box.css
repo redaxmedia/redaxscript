@@ -49,9 +49,9 @@
 .rs-admin-box-dock
 {
 	background-color: gray(32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background-image: var(--rs-admin-carbon-image);
+	background-position: var(--rs-admin-carbon-position);
+	background-size: var(--rs-admin-carbon-size);
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px gray(0, 0.8);
@@ -68,7 +68,7 @@
 .rs-admin-description-dock
 {
 	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1rem/2.625rem var(--rs-admin-font-primary);
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	max-width: 10em;
@@ -92,9 +92,9 @@
 .rs-admin-box-panel
 {
 	background-color: gray(32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background-image: var(--rs-admin-carbon-image);
+	background-position: var(--rs-admin-carbon-position);
+	background-size: var(--rs-admin-carbon-size);
 }
 
 /* @section 4. box tab admin */

@@ -24,7 +24,7 @@
 
 .rs-admin-link-dock:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
+	background: var(--rs-admin-gradient-primary);
 	color: gray(0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
@@ -33,14 +33,14 @@
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: linear-gradient(#d50000, #a20000);
+	background: var(--rs-admin-gradient-secondary);
 }
 
 /* @section 1.1 icons */
 
 .rs-admin-link-dock:before
 {
-	font: 1.25rem/2.75rem 'icon admin';
+	font: 1.25rem/2.75rem var(--rs-admin-font-icon);
 	left: 0;
 	position: absolute;
 	right: 0;
