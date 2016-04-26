@@ -1,0 +1,36 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+    --rs-admin-color-primary: #0090db;
+
+    --rs-admin-gradient-primary: linear-gradient(#4cb4ff, var(--rs-admin-color-primary));
+
+    --rs-admin-carbon-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
+    --rs-admin-carbon-position: 0 0, 2px 2px, 0 0;
+    --rs-admin-carbon-size: 4px 4px, 4px 4px, 4px 2px;
+
+    --rs-admin-color-success: #87c473;
+    --rs-admin-color-warning: #e0b951;
+    --rs-admin-color-error: #e3a2a7;
+    --rs-admin-color-info: #63a7dd;
+
+    --rs-admin-color-success-dark: color(var(--rs-admin-color-success) b(65%) saturation(+30%));
+    --rs-admin-color-warning-dark: color(var(--rs-admin-color-warning) b(50%) saturation(+20%));
+    --rs-admin-color-error-dark: color(var(--rs-admin-color-error) b(65%) saturation(+40%));
+    --rs-admin-color-info-dark: color(var(--rs-admin-color-info) b(60%) saturation(+40%));
+
+    --rs-admin-font-primary: 'open sans condensed', arial, sans-serif;
+    --rs-admin-font-icon: 'icon default';
+}
