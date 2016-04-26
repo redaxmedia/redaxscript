@@ -59,19 +59,39 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span>' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories">' . Redaxscript\Language::get('categories') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('categories') . '</a>';
+			if (Redaxscript\Registry::get('categoriesNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/categories" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('category_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		if ($articles_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/articles">' . Redaxscript\Language::get('articles') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/articles" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('articles') . '</a>';
+			if (Redaxscript\Registry::get('articlesNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/articles" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('article_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		if ($extras_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/extras">' . Redaxscript\Language::get('extras') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/extras" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('extras') . '</a>';
+			if (Redaxscript\Registry::get('extrasNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/extras" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('extra_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		if ($comments_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/comments">' . Redaxscript\Language::get('comments') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/comments" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('comments') . '</a>';
+			if (Redaxscript\Registry::get('commentsNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/comments" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('comment_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		$output .= '</ul></li>';
 	}
@@ -88,11 +108,21 @@ function admin_panel_list()
 		}
 		if ($users_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/users">' . Redaxscript\Language::get('users') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/users" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('users') . '</a>';
+			if (Redaxscript\Registry::get('usersNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/users" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('user_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		if ($groups_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/groups">' . Redaxscript\Language::get('groups') . '</a></li>';
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/groups" class="rs-admin-link-panel rs-admin-link-view">' . Redaxscript\Language::get('groups') . '</a>';
+			if (Redaxscript\Registry::get('groupsNew'))
+			{
+				$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/groups" class="rs-admin-link-panel rs-admin-link-new">' . Redaxscript\Language::get('group_new') . '</a>';
+			}
+			$output .= '</li>';
 		}
 		$output .= '</ul></li>';
 	}
