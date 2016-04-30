@@ -231,6 +231,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/layout.css',
 					'templates/admin/assets/styles/box.css',

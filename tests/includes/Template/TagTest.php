@@ -1,15 +1,16 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Template;
 
 use Redaxscript\Language;
-use Redaxscript\Template;
 use Redaxscript\Registry;
+use Redaxscript\Template;
+use Redaxscript\Tests\TestCase;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 
 /**
- * TemplateTest
+ * TagTest
  *
  * @since 2.3.0
  *
@@ -18,7 +19,7 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @author Henry Ruhs
  */
 
-class TemplateTest extends TestCase
+class TagTest extends TestCase
 {
 	/**
 	 * instance of the registry class
@@ -58,7 +59,7 @@ class TemplateTest extends TestCase
 	{
 		/* actual */
 
-		$actual = Template::breadcrumb();
+		$actual = Template\Tag::breadcrumb();
 
 		/* compare */
 
@@ -66,58 +67,20 @@ class TemplateTest extends TestCase
 	}
 
 	/**
-	 * testHelperClass
+	 * testSearch
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 */
 
-	public function testHelperClass()
+	public function testSearch()
 	{
 		/* actual */
 
-		$actual = Template::helperClass();
+		$actual = Template\Tag::search();
 
 		/* compare */
 
 		$this->assertTrue(is_string($actual));
-	}
-
-	/**
-	 * testHelperSubset
-	 *
-	 * @since 2.3.0
-	 */
-
-	public function testHelperSubset()
-	{
-		/* actual */
-
-		$actual = Template::HelperSubset();
-
-		/* compare */
-
-		$this->assertTrue(is_string($actual));
-	}
-
-	/**
-	 * testLanguage
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testLanguage()
-	{
-		/* setup */
-
-		$this->_language->set('testKey', 'testValue');
-
-		/* actual */
-
-		$actual = Template::language('testKey');
-
-		/* compare */
-
-		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -136,7 +99,7 @@ class TemplateTest extends TestCase
 
 		/* actual */
 
-		$actual = Template::partial(Stream::url('root/partial.phtml'));
+		$actual = Template\Tag::partial(Stream::url('root/partial.phtml'));
 
 		/* compare */
 
@@ -157,7 +120,7 @@ class TemplateTest extends TestCase
 
 		/* actual */
 
-		$actual = Template::registry('testKey');
+		$actual = Template\Tag::registry('testKey');
 
 		/* compare */
 
@@ -165,20 +128,24 @@ class TemplateTest extends TestCase
 	}
 
 	/**
-	 * testSearch
+	 * testLanguage
 	 *
-	 * @since 3.0.0
+	 * @since 2.6.0
 	 */
 
-	public function testSearch()
+	public function testLanguage()
 	{
+		/* setup */
+
+		$this->_language->set('testKey', 'testValue');
+
 		/* actual */
 
-		$actual = Template::search();
+		$actual = Template\Tag::language('testKey');
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertEquals('testValue', $actual);
 	}
 
 	/**
@@ -191,7 +158,7 @@ class TemplateTest extends TestCase
 	{
 		/* actual */
 
-		$actual = Template::setting('charset');
+		$actual = Template\Tag::setting('charset');
 
 		/* compare */
 

@@ -79,7 +79,7 @@ class Parser
 		),
 		'template' => array(
 			'method' => '_parseTemplate',
-			'namespace' => 'Redaxscript\Template',
+			'namespace' => 'Redaxscript\Template\Tag',
 			'position' => null,
 			'search' => array(
 				'<template>',

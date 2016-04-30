@@ -78,10 +78,9 @@
 .rs-admin-field-textarea[readonly]
 {
 	background: gray(212);
-	border-color:gray(213);
+	border-color: gray(213);
 	color: gray(164);
 }
-
 
 /* @section 4. query */
 

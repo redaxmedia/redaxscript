@@ -10,6 +10,7 @@
  */
 
 /* @section 1. variable */
+
 /**
  * @tableofcontents
  *
@@ -47,7 +48,7 @@
 	background: linear-gradient(#d5d5d5, #ccc);
 	border: 1px solid rgb(185, 185, 185);
 	box-sizing: border-box;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-transform: uppercase;
 	width: 100%;
@@ -108,7 +109,7 @@
 .rs-admin-title-dialog
 {
 	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-transform: uppercase;
 }
@@ -237,7 +238,7 @@
 .rs-admin-description-dock
 {
 	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1rem/2.625rem 'open sans condensed', arial, sans-serif;
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	max-width: 10em;
@@ -465,7 +466,7 @@
 
 .rs-admin-link-dock:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
+	background: linear-gradient(#4cb4ff, #0090db);
 	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
@@ -573,10 +574,9 @@
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
 	background: rgb(212, 212, 212);
-	border-color:rgb(213, 213, 213);
+	border-color: rgb(213, 213, 213);
 	color: rgb(164, 164, 164);
 }
-
 
 /* @section 4. query */
 
@@ -811,7 +811,7 @@
 
 .rs-admin-icon-flag
 {
-	background: #323e4c;
+	background: #0090db;
 	border-radius: 0.125em;
 	color: rgb(255, 255, 255);
 	display: inline-block;
@@ -899,7 +899,7 @@
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
-	font: 1.5rem/2.5rem 'icon admin';
+	font: 1.25rem/1.5rem 'icon admin';
 	position: absolute;
 	right: 0.75em;
 	top: 0;
@@ -959,7 +959,7 @@
 	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
@@ -967,7 +967,7 @@
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
+	background: linear-gradient(#4cb4ff, #0090db);
 	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
@@ -995,7 +995,7 @@
 .rs-admin-list-tab a
 {
 	color: rgb(204, 204, 204);
-	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
 }
 
@@ -1307,7 +1307,7 @@
 	background-position: 0 0, 2px 2px, 0 0;
 	background-size: 4px 4px, 4px 4px, 4px 2px;
 	color: rgb(204, 204, 204);
-	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
 }
 
@@ -1513,13 +1513,13 @@
 
 .rs-admin-note-success:not(:focus)
 {
-	color: #356216;
+	color: rgb(73, 136, 73);
 }
 
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
 	background: #87c473;
-	border-color: #356216;
+	border-color: rgb(73, 136, 73);
 }
 
 .rs-admin-note-success.rs-admin-field-note option
@@ -1531,31 +1531,31 @@
 
 .rs-admin-note-warning:not(:focus)
 {
-	color: #a6770c;
+	color: rgb(148, 125, 61);
 }
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
-	background: #e6c56e;
-	border-color: #a6770c;
+	background: #e0b951;
+	border-color: rgb(148, 125, 61);
 }
 
 .rs-admin-note-warning.rs-admin-field-note option
 {
-	background: #e6c56e;
+	background: #e0b951;
 }
 
 /* @section 3. error */
 
 .rs-admin-note-error:not(:focus)
 {
-	color: #c62e3d;
+	color: rgb(179, 77, 77);
 }
 
 .rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
 	background: #e3a2a7;
-	border-color: #c62e3d;
+	border-color: rgb(179, 77, 77);
 }
 
 .rs-admin-note-error.rs-admin-field-note option
@@ -1567,16 +1567,16 @@
 
 .rs-admin-note-info:not(:focus)
 {
-	color: #286596;
+	color: rgb(60, 106, 144);
 }
 
 .rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {
-	background: #7cb4e1;
-	border-color: #286596;
+	background: #63a7dd;
+	border-color: rgb(60, 106, 144);
 }
 
 .rs-admin-note-info.rs-admin-field-note option
 {
-	background: #7cb4e1;
+	background: #63a7dd;
 }

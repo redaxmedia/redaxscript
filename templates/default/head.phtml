@@ -1,26 +1,26 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!-- title -->
 
-<?php echo Template::title(); ?>
+<?php echo Tag::title(); ?>
 
 <!-- base -->
 
-<base href="<?php echo Template::registry('root'); ?>/" />
+<base href="<?php echo Tag::registry('root'); ?>/" />
 
 <!-- meta -->
 
-<?php echo Template::meta(); ?>
+<?php echo Tag::meta(); ?>
 <meta name="viewport" content="width=device-width" />
 
 <!-- link -->
 
-<?php echo Template::link(); ?>
+<?php echo Tag::link(); ?>
 <link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
 <link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
-<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
 
 <!-- style and script -->
 
-<?php echo Template::style(); ?>
-<?php echo Template::script('init'); ?>
+<?php echo Tag::style(); ?>
+<?php echo Tag::script('init'); ?>

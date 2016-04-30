@@ -174,6 +174,12 @@
 			<file>tests/includes/MailerTest.php</file>
 		</testsuite>
 
+		<!-- messenger -->
+
+		<testsuite name="messenger">
+			<file>tests/includes/MessengerTest.php</file>
+		</testsuite>
+
 		<!-- minifier -->
 
 		<testsuite name="minifier">
@@ -213,13 +219,8 @@
 		<!-- template -->
 
 		<testsuite name="template">
-			<file>tests/includes/TemplateTest.php</file>
-		</testsuite>
-
-		<!-- messenger -->
-
-		<testsuite name="messenger">
-			<file>tests/includes/MessengerTest.php</file>
+			<file>tests/includes/Template/HelperTest.php</file>
+			<file>tests/includes/Template/TagTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

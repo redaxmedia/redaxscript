@@ -1,4 +1,4 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!-- navigation status -->
 
@@ -15,18 +15,18 @@
 
 			<!-- title -->
 
-			<?php if (Template::setting('title')): ?>
+			<?php if (Tag::setting('title')): ?>
 				<h1 class="rs-title-website">
-					<a href="<?php echo Template::registry('root'); ?>">
-						<?php echo Template::setting('title'); ?>
+					<a href="<?php echo Tag::registry('root'); ?>">
+						<?php echo Tag::setting('title'); ?>
 					</a>
 				</h1>
 			<?php endif; ?>
 
 			<!-- description -->
 
-			<?php if (Template::setting('description')): ?>
-				<span class="rs-description-website" title="<?php echo Template::setting('description'); ?>"><?php echo Template::setting('description'); ?></span>
+			<?php if (Tag::setting('description')): ?>
+				<span class="rs-description-website" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
 			<?php endif; ?>
 		</div>
 
@@ -38,23 +38,17 @@
 
 		<div class="rs-box-navigation">
 			<ul class="rs-js-dropdown rs-list-dropdown rs-fn-navigation rs-list-header">
-
-				<!-- categories -->
-
 				<li>
-					<span><?php echo Template::language('categories'); ?></span>
-					<?php echo Template::navigation('categories', array(
+					<span><?php echo Tag::language('categories'); ?></span>
+					<?php echo Tag::navigation('categories', array(
 						'children' => 1,
 						'class' => 'rs-list-header-children',
 						'limit' => 5
 					)); ?>
-				</li>
-
-				<!-- articles -->
-
-				<li>
-					<span><?php echo Template::language('articles'); ?></span>
-					<?php echo Template::navigation('articles', array(
+				</li><!---
+			---><li>
+					<span><?php echo Tag::language('articles'); ?></span>
+					<?php echo Tag::navigation('articles', array(
 						'class' => 'rs-list-header-children',
 						'limit' => 5
 					)); ?>

@@ -1,4 +1,4 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!-- footer -->
 
@@ -6,13 +6,13 @@
 	<section class="rs-wrapper rs-clearfix">
 		<span class="rs-text-about">
             <span class="rs-text-powered-by">
-                <?php echo Template::language('powered_by'); ?>
+                <?php echo Tag::language('powered_by'); ?>
             </span>
-            <a href="<?php echo Template::language('homepage', '_package'); ?>" class="rs-link-footer">
-				<?php echo Template::language('name', '_package'); ?>
+            <a href="<?php echo Tag::language('homepage', '_package'); ?>" class="rs-link-footer">
+				<?php echo Tag::language('name', '_package'); ?>
 			</a>
-			<?php echo Template::language('version', '_package'); ?>
+			<?php echo Tag::language('version', '_package'); ?>
         </span>
-		<a class="rs-link-login" href="<?php echo Template::registry('parameterRoute'); ?>login">Login</a>
+		<a class="rs-link-login" href="<?php echo Tag::registry('parameterRoute'); ?>login">Login</a>
 	</section>
 </footer>

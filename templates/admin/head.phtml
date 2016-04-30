@@ -1,5 +1,5 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Admin\Template; ?>
 
-<?php if (Template::registry('loggedIn') === Template::registry('token') && Template::registry('firstParameter') !== 'logout' && !Template::registry('myMobile')): ?>
-	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
+<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
+	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700&amp;subset=--><?php //echo Tag::getSubset(); ?><!--" rel="stylesheet" />
 <?php endif; ?>
