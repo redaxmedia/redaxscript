@@ -147,6 +147,23 @@ class Tag
 	}
 
 	/**
+	 * base
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return string
+	 */
+
+	public static function base()
+	{
+		// @codeCoverageIgnoreStart
+		return self::_migrate('head', array(
+			'base'
+		));
+		// @codeCoverageIgnoreEnd
+	}
+
+	/**
 	 * title
 	 *
 	 * @since 2.3.0

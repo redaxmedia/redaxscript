@@ -108,6 +108,13 @@ function head($type = 'all')
 		$output .= '<meta charset="' . Redaxscript\Db::getSetting('charset') . '" />' . PHP_EOL;
 	}
 
+	/* collect base */
+
+	if ($type == 'all' || $type == 'base')
+	{
+		$output .= '<base href="' . Redaxscript\Registry::get('root') . '/" />' . PHP_EOL;
+	}
+
 	/* collect title */
 
 	if (($type == 'all' || $type == 'title') && ($title || $description))
