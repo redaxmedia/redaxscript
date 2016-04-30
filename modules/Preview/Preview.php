@@ -134,7 +134,7 @@ class Preview extends Module
 		/* collect output */
 
 		$output = $titleElement->html($linkElement->text($alias));
-		$output .= Template::partial($path);
+		$output .= Template\Tag::partial($path);
 		return $output;
 	}
 }

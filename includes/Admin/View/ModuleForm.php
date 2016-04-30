@@ -154,7 +154,7 @@ class ModuleForm implements ViewInterface
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
-						->append(Template::partial('modules/' . $module->alias . '/docs/' . $value))
+						->append(Template\Tag::partial('modules/' . $module->alias . '/docs/' . $value))
 						->append('</fieldset>');
 				}
 			}

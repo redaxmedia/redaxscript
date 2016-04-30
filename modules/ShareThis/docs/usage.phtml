@@ -1,4 +1,4 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <p>Syntax for your content:</p>
 
@@ -6,7 +6,7 @@
 {
 	"ShareThis":
 	{
-		"url": "<?php echo Template::registry('root'); ?>"
+		"url": "<?php echo Tag::registry('root'); ?>"
 	}
 }
 &lt;/module&gt;</pre>
