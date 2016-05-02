@@ -79,8 +79,10 @@ class SitemapXml extends Module
 		$writer = new XMLWriter();
 		$writer->openMemory();
 		$writer->setIndent(true);
+		$writer->setIndentString('	');
 		$writer->startDocument('1.0', Db::getSetting('charset'));
-		$writer->startElementNS(null, 'urlset', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+		$writer->startElement('urlset');
+		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 		$writer->startElement('url');
 		$writer->writeElement('loc', Registry::get('root'));
 		$writer->endElement();
@@ -91,7 +93,7 @@ class SitemapXml extends Module
 		{
 			$writer->startElement('url');
 			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('categories', $value->id));
-			$writer->writeElement('lastmod', $value->date);
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}
 
@@ -101,11 +103,11 @@ class SitemapXml extends Module
 		{
 			$writer->startElement('url');
 			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('articles', $value->id));
-			$writer->writeElement('lastmod', $value->date);
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}
 		$writer->endElement();
 		$writer->endDocument();
-		return $writer->outputMemory();
+		return $writer->outputMemory(true);
 	}
 }
