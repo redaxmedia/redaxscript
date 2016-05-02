@@ -1,13 +1,14 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
+use DOMDocument;
 use Redaxscript\Html;
-use SimpleXMLElement;
+use XMLReader;
 
 /**
  * read external rss and atom feeds
  *
- * @since 2.3.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -45,7 +46,7 @@ class FeedReader extends Config
 	/**
 	 * render
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @param string $url
 	 * @param array $options
@@ -55,8 +56,8 @@ class FeedReader extends Config
 
 	public static function render($url = null, $options = array())
 	{
-		$output = null;
 		$counter = 0;
+		$output = null;
 
 		/* html elements */
 
@@ -75,42 +76,39 @@ class FeedReader extends Config
 
 		/* get contents */
 
-		$contents = file_get_contents($url);
-		if ($contents)
+		$doc = new DOMDocument();
+		$reader = new XMLReader();
+		$reader->open($url);
+
+		/* process reader */
+
+		while ($reader->read())
 		{
-			$feed = new SimpleXMLElement($contents);
-			$result = $feed->entry ? $feed->entry : $feed->channel->item;
-
-			/* process result */
-
-			foreach ($result as $value)
+			if ($reader->nodeType === XMLReader::ELEMENT)
 			{
-				/* break if limit reached */
+				$doc->appendChild($doc->importNode($reader->expand(), true));
+			}
+		}
+		$reader->close();
 
-				if (++$counter > $options['limit'])
-				{
-					break;
-				}
+		/* handle feed type */
 
-				/* handle feed type */
+		$xml = simplexml_import_dom($doc);
+		$feed = $xml->entry ? $xml->entry : $xml->channel->item;
 
-				$url = $value->link['href'] ? (string)$value->link['href'] : (string)$value->link;
-				$text = $value->summary ? $value->summary : $value->description;
+		/* process feed */
 
-				/* url */
-
-				if ($url)
-				{
-					$linkElement->attr('href', $url)->text($value->title);
-				}
-				else
-				{
-					$linkElement = $value->title;
-				}
+		foreach ($feed as $value)
+		{
+			if ($counter++ < $options['limit'])
+			{
+				$linkElement
+						->attr('href', $value->link['href'] ? $value->link['href'] : $value->link)
+						->text($value->title);
 
 				/* collect output */
 
-				$output .= $titleElement->html($linkElement) . $boxElement->text($text);
+				$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? $value->summary : $value->description);
 			}
 		}
 		return $output;

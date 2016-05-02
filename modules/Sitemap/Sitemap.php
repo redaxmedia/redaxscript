@@ -8,7 +8,7 @@ use Redaxscript\Registry;
 use Redaxscript\Validator;
 
 /**
- * generate a sitemap xml
+ * generate a sitemap
  *
  * @since 2.2.0
  *
