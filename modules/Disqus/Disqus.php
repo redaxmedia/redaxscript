@@ -38,7 +38,7 @@ class Disqus extends Config
 
 	public static function loaderStart()
 	{
-		if (Registry::get('article'))
+		if (Registry::get('articleId'))
 		{
 			global $loader_modules_scripts;
 			$loader_modules_scripts[] = 'modules/Disqus/assets/scripts/init.js';
@@ -53,7 +53,7 @@ class Disqus extends Config
 
 	public static function renderStart()
 	{
-		if (Registry::get('article'))
+		if (Registry::get('articleId'))
 		{
 			Registry::set('commentReplace', true);
 		}
