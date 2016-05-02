@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($, _gaq)
+(function ($, ga)
 {
 	'use strict';
 
@@ -27,23 +27,14 @@
 
 		/* create tracker */
 
-		if (options.id && options.url)
+		if (options.id && options.cookieDomain)
 		{
-			_gaq.push(
-			[
-				'_setAccount',
-				options.id
-			],
-			[
-				'_setDomainName',
-				options.url
-			],
-			[
-				'_gat._anonymizeIp'
-			],
-			[
-				'_trackPageview'
-			]);
+			ga('create', options.id,
+			{
+				cookieDomain: options.cookieDomain,
+				anonymizeIp: options.anonymizeIp
+			});
+			ga('send', 'pageview');
 		}
 
 		/* return this */
@@ -54,22 +45,22 @@
 
 			$(this).one('click', function ()
 			{
-				var trigger = $(this),
-					category = trigger.data('category'),
-					action = trigger.data('action'),
-					label = trigger.data('label');
+				var target = $(this),
+					category = String(target.data('category')),
+					action = String(target.data('action')),
+					label = String(target.data('label'));
 
 				/* track event */
 
 				if (category && action && label)
 				{
-					_gaq.push(
-					[
-						'_trackEvent',
-						String(category),
-						String(action),
-						String(label)
-					]);
+					ga('send',
+					{
+						hitType: 'event',
+						eventCategory: category,
+						eventAction: action,
+						eventLabel: label
+					});
 				}
 			});
 		});
@@ -84,4 +75,4 @@
 			$(rs.modules.analytics.selector).analytics(rs.modules.analytics.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window._gaq);
+})(window.jQuery || window.Zepto, window.ga);

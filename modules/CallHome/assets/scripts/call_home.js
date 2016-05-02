@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($, _gaq)
+(function ($, ga)
 {
 	'use strict';
 
@@ -27,30 +27,21 @@
 
 		/* create tracker */
 
-		if (options.id && options.url)
+		if (options.id && options.cookieDomain)
 		{
-			_gaq.push(
-			[
-				'_setAccount',
-				options.id
-			],
-			[
-				'_setDomainName',
-				options.url
-			],
-			[
-				'_trackPageview'
-			]);
-
-			/* track event */
-
-			_gaq.push(
-			[
-				'_trackEvent',
-				String('call-home'),
-				String(rs.version),
-				String(rs.baseURL)
-			]);
+			ga('create', options.id,
+			{
+				cookieDomain: options.cookieDomain,
+				anonymizeIp: options.anonymizeIp
+			});
+			ga('send', 'pageview');
+			ga('send',
+			{
+				hitType: 'event',
+				eventCategory: 'call-home',
+				eventAction: rs.version,
+				eventLabel: rs.baseURL
+			});
 		}
 	};
 
@@ -63,4 +54,4 @@
 			$.fn.callHome(rs.modules.callHome.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window._gaq);
+})(window.jQuery || window.Zepto, window.ga);

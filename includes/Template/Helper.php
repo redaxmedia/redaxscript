@@ -4,7 +4,7 @@ namespace Redaxscript\Template;
 use Redaxscript\Registry;
 
 /**
- * helper class to provide required helper for templates
+ * helper class to provide template helpers
  *
  * @since 3.0.0
  *
