@@ -4,7 +4,7 @@ namespace Redaxscript;
 /**
  * parent class to handle a directory in the filesystem
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @category Directory
  * @package Redaxscript
@@ -31,7 +31,15 @@ class Directory
 	protected $_directoryArray = array();
 
 	/**
-	 * array of the files to exclude
+	 * static directory cache
+	 *
+	 * @var array
+	 */
+
+	protected static $_directoryCache = null;
+
+	/**
+	 * files to be excluded
 	 *
 	 * @var mixed
 	 */
@@ -41,13 +49,6 @@ class Directory
 		'..'
 	);
 
-	/**
-	 * array of the static cache
-	 *
-	 * @var array
-	 */
-
-	protected static $_cache = array();
 
 	/**
 	 * init the class
@@ -94,7 +95,7 @@ class Directory
 	}
 
 	/**
-	 * flush the static cache
+	 * flush the static directory cache
 	 *
 	 * @since 3.0.0
 	 *
@@ -103,72 +104,25 @@ class Directory
 
 	public function flush()
 	{
-		self::$_cache = array();
-	}
-
-	/**
-	 * scan the directory
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $directory name of the directory
-	 *
-	 * @return array
-	 */
-
-	protected function _scan($directory = null)
-	{
-		/* use from static cache */
-
-		if (array_key_exists($directory, self::$_cache))
-		{
-			$directoryArray = self::$_cache[$directory];
-		}
-
-		/* else scan directory */
-
-		else
-		{
-			$directoryArray = scandir($directory);
-
-			/* save to static cache */
-
-			self::$_cache[$directory] = $directoryArray;
-		}
-		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
-		return $directoryArray;
+		self::$_directoryCache = null;
 	}
 
 	/**
 	 * create the directory
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
 	 * @param string $directory name of the directory
 	 * @param integer $mode file access mode
-	 *
-	 * @return boolean
 	 */
 
 	public function create($directory = null, $mode = 0777)
 	{
-		$output = false;
 		$path = $this->_directory . '/' . $directory;
-
-		/* directory does not exist */
-
 		if (!is_dir($path))
 		{
 			mkdir($path, $mode);
-
-			/* validate directory was created */
-
-			if (is_dir($path))
-			{
-				$output = true;
-			}
 		}
-		return $output;
 	}
 
 	/**
@@ -181,7 +135,17 @@ class Directory
 
 	public function remove($directory = null)
 	{
-		if ($directory)
+		/* handle parent directory */
+
+		if (!$directory)
+		{
+			$path = $this->_directory;
+			$directoryArray = array();
+		}
+
+		/* else handle children */
+
+		else
 		{
 			$path = $this->_directory . '/' . $directory;
 			if (is_dir($path))
@@ -228,5 +192,35 @@ class Directory
 		{
 			unlink($path);
 		}
+	}
+
+	/**
+	 * scan the directory
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $directory name of the directory
+	 *
+	 * @return array
+	 */
+
+	protected function _scan($directory = null)
+	{
+		/* use from static cache */
+
+		if (array_key_exists($directory, self::$_directoryCache))
+		{
+			$directoryArray = self::$_directoryCache[$directory];
+		}
+
+		/* else scan directory */
+
+		else
+		{
+			$directoryArray = scandir($directory);
+			self::$_directoryCache[$directory] = $directoryArray;
+		}
+		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
+		return $directoryArray;
 	}
 }
