@@ -45,10 +45,9 @@ class Directory
 	 */
 
 	protected $_exclude = array(
-		'.',
-		'..'
+			'.',
+			'..'
 	);
-
 
 	/**
 	 * init the class
@@ -68,7 +67,7 @@ class Directory
 		if (is_string($exclude))
 		{
 			$exclude = array(
-				$exclude
+					$exclude
 			);
 		}
 		if (is_array($exclude))
@@ -95,19 +94,6 @@ class Directory
 	}
 
 	/**
-	 * flush the static directory cache
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function flush()
-	{
-		self::$_directoryCache = null;
-	}
-
-	/**
 	 * create the directory
 	 *
 	 * @since 3.0.0
@@ -128,66 +114,23 @@ class Directory
 	/**
 	 * remove the directory
 	 *
-	 * @since 2.0.0
+	 * @since 3.0.0
 	 *
 	 * @param string $directory name of the directory
 	 */
 
 	public function remove($directory = null)
 	{
-		/* handle parent directory */
-
-		if (!$directory)
-		{
-			$path = $this->_directory;
-			$directoryArray = array();
-		}
-
-		/* else handle children */
-
-		else
-		{
-			$path = $this->_directory . '/' . $directory;
-			if (is_dir($path))
-			{
-				$directoryArray = $this->_scan($path);
-			}
-			else
-			{
-				$directoryArray = array();
-			}
-		}
-
-		/* walk directory array */
-
-		foreach ($directoryArray as $children)
-		{
-			$childrenPath = $path . '/' . $children;
-
-			/* remove directory */
-
-			if (is_dir($childrenPath))
-			{
-				$this->remove($directory . '/' . $children);
-			}
-
-			/* else unlink file */
-
-			else if (is_file($childrenPath))
-			{
-				unlink($childrenPath);
-			}
-		}
-
-		/* remove directory */
-
+		$path = $this->_directory . '/' . $directory;
 		if (is_dir($path))
 		{
+			$files = array_diff(scandir($path), $this->_exclude);
+			foreach ($files as $file)
+			{
+				$this->remove(realpath($path) . '/' . $file);
+			}
 			rmdir($path);
 		}
-
-		/* else unlink file */
-
 		else if (is_file($path))
 		{
 			unlink($path);
@@ -206,7 +149,7 @@ class Directory
 
 	protected function _scan($directory = null)
 	{
-		/* use from static cache */
+		/* use static cache */
 
 		if (array_key_exists($directory, self::$_directoryCache))
 		{
