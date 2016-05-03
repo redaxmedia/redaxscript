@@ -95,7 +95,7 @@ class Gallery extends Config
 
 		/* remove thumbs */
 
-		if ($options['command'] === 'remove' || !$galleryTotal)
+		if (!$galleryTotal || $options['command'] === 'remove')
 		{
 			$galleryDirectory->remove(self::$_config['thumbDirectory']);
 		}
@@ -239,12 +239,9 @@ class Gallery extends Config
 
 		/* create thumb directory */
 
-		$thumbDirectory = $directory . '/' . self::$_config['thumbDirectory'];
-
-		if (!is_dir($thumbDirectory))
-		{
-			mkdir($thumbDirectory, 0755);
-		}
+		$galleryDirectory = new Directory();
+		$galleryDirectory->init($directory);
+		$galleryDirectory->create(self::$_config['thumbDirectory']);
 
 		/* create thumb */
 

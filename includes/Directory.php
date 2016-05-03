@@ -94,6 +94,51 @@ class Directory
 	}
 
 	/**
+	 * create the directory
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $directory name of the directory
+	 */
+
+	public function create($directory = null, $mode = 0777)
+	{
+		$path = $this->_directory . '/' . $directory;
+		if (!is_dir($path))
+		{
+			mkdir($path, $mode);
+		}
+	}
+
+	/**
+	 * remove the directory
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $directory name of the directory
+	 */
+
+	public function remove($directory = null)
+	{
+		$path = $this->_directory . '/' . $directory;
+		if (is_dir($path))
+		{
+			foreach ($this->_scan($path) as $file)
+			{
+				if (is_dir($path . '/' . $file))
+				{
+					$this->remove($directory . '/' . $file);
+				}
+				else
+				{
+					unlink($path . '/' . $file);
+				}
+			}
+			rmdir($path);
+		}
+	}
+
+	/**
 	 * scan the directory
 	 *
 	 * @since 2.0.0
@@ -105,11 +150,13 @@ class Directory
 
 	protected function _scan($directory = null)
 	{
+		$realpath = realpath($directory);
+
 		/* use static cache */
 
-		if (array_key_exists($directory, self::$_directoryCache))
+		if (array_key_exists($realpath, self::$_directoryCache))
 		{
-			$directoryArray = self::$_directoryCache[$directory];
+			$directoryArray = self::$_directoryCache[$realpath];
 		}
 
 		/* else scan directory */
@@ -117,7 +164,7 @@ class Directory
 		else
 		{
 			$directoryArray = scandir($directory);
-			self::$_directoryCache[$directory] = $directoryArray;
+			self::$_directoryCache[$realpath] = $directoryArray;
 		}
 		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
 		return $directoryArray;
