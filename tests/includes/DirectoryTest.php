@@ -42,32 +42,6 @@ class DirectoryTest extends TestCase
 	}
 
 	/**
-	 * providerCreate
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCreate()
-	{
-		return $this->getProvider('tests/provider/directory_create.json');
-	}
-
-	/**
-	 * providerRemove
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRemove()
-	{
-		return $this->getProvider('tests/provider/directory_remove.json');
-	}
-
-	/**
 	 * testGetArray
 	 *
 	 * @since 2.1.0
@@ -89,64 +63,6 @@ class DirectoryTest extends TestCase
 		/* actual */
 
 		$actual = $directory->getArray();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testCreate
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $path
-	 * @param string $create
-	 * @param array $expect
-	 *
-	 * @dataProvider providerCreate
-	 */
-
-	public function testCreate($path = null, $create = null, $expect = array())
-	{
-		/* setup */
-
-		$directory = new Directory();
-		$directory->init(Stream::url($path));
-		$directory->create($create, 511);
-
-		/* actual */
-
-		$actual = scandir(Stream::url($path));
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testRemove
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $path
-	 * @param string $remove
-	 * @param array $expect
-	 *
-	 * @dataProvider providerRemove
-	 */
-
-	public function testRemove($path = null, $remove = null, $expect = array())
-	{
-		/* setup */
-
-		$directory = new Directory();
-		$directory->init(Stream::url($path));
-		$directory->remove($remove);
-
-		/* actual */
-
-		$actual = scandir(Stream::url($path));
 
 		/* compare */
 

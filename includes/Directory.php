@@ -45,8 +45,8 @@ class Directory
 	 */
 
 	protected $_exclude = array(
-			'.',
-			'..'
+		'.',
+		'..'
 	);
 
 	/**
@@ -91,50 +91,6 @@ class Directory
 	public function getArray()
 	{
 		return $this->_directoryArray;
-	}
-
-	/**
-	 * create the directory
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $directory name of the directory
-	 * @param integer $mode file access mode
-	 */
-
-	public function create($directory = null, $mode = 0777)
-	{
-		$path = $this->_directory . '/' . $directory;
-		if (!is_dir($path))
-		{
-			mkdir($path, $mode);
-		}
-	}
-
-	/**
-	 * remove the directory
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $directory name of the directory
-	 */
-
-	public function remove($directory = null)
-	{
-		$path = $this->_directory . '/' . $directory;
-		if (is_dir($path))
-		{
-			$files = array_diff(scandir($path), $this->_exclude);
-			foreach ($files as $file)
-			{
-				$this->remove(realpath($path) . '/' . $file);
-			}
-			rmdir($path);
-		}
-		else if (is_file($path))
-		{
-			unlink($path);
-		}
 	}
 
 	/**
