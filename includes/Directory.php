@@ -33,7 +33,7 @@ class Directory
 	/**
 	 * array of the files to exclude
 	 *
-	 * @var array
+	 * @var mixed
 	 */
 
 	protected $_exclude = array(
@@ -42,7 +42,7 @@ class Directory
 	);
 
 	/**
-	 * array of the local cache
+	 * array of the static cache
 	 *
 	 * @var array
 	 */
@@ -55,7 +55,7 @@ class Directory
 	 * @since 2.4.0
 	 *
 	 * @param string $directory name of the directory
-	 * @param mixed $exclude files to exclude
+	 * @param mixed $exclude files to be excluded
 	 */
 
 	public function init($directory = null, $exclude = null)
@@ -81,7 +81,7 @@ class Directory
 	}
 
 	/**
-	 * get the directory array for further processing
+	 * get the directory array
 	 *
 	 * @since 2.0.0
 	 *
@@ -91,6 +91,19 @@ class Directory
 	public function getArray()
 	{
 		return $this->_directoryArray;
+	}
+
+	/**
+	 * flush the static cache
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function flush()
+	{
+		self::$_cache = array();
 	}
 
 	/**
@@ -168,17 +181,7 @@ class Directory
 
 	public function remove($directory = null)
 	{
-		/* handle parent directory */
-
-		if (!$directory)
-		{
-			$path = $this->_directory;
-			$directoryArray = $this->_directoryArray;
-		}
-
-		/* else handle children */
-
-		else
+		if ($directory)
 		{
 			$path = $this->_directory . '/' . $directory;
 			if (is_dir($path))

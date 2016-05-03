@@ -98,25 +98,26 @@ class DirectoryTest extends TestCase
 	/**
 	 * testCreate
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
-	 * @param array $path
+	 * @param string $path
+	 * @param string $create
 	 * @param array $expect
 	 *
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($path = array(), $expect = array())
+	public function testCreate($path = null, $create = null, $expect = array())
 	{
 		/* setup */
 
 		$directory = new Directory();
-		$directory->init(Stream::url($path[1]));
-		$directory->create($path[0], 511);
+		$directory->init(Stream::url($path));
+		$directory->create($create, 511);
 
 		/* actual */
 
-		$actual = scandir(Stream::url($path[2]));
+		$actual = scandir(Stream::url($path));
 
 		/* compare */
 
@@ -126,25 +127,26 @@ class DirectoryTest extends TestCase
 	/**
 	 * testRemove
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
-	 * @param array $path
+	 * @param string $path
+	 * @param string $remove
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($path = array(), $expect = array())
+	public function testRemove($path = null, $remove = null, $expect = array())
 	{
 		/* setup */
 
 		$directory = new Directory();
-		$directory->init(Stream::url($path[1]));
-		$directory->remove($path[0]);
+		$directory->init(Stream::url($path));
+		$directory->remove($remove);
 
 		/* actual */
 
-		$actual = scandir(Stream::url($path[2]));
+		$actual = scandir(Stream::url($path));
 
 		/* compare */
 
