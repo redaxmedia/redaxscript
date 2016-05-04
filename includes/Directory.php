@@ -36,7 +36,7 @@ class Directory
 	 * @var array
 	 */
 
-	protected static $_directoryCache = null;
+	protected static $_directoryCache = array();
 
 	/**
 	 * files to be excluded
@@ -67,7 +67,7 @@ class Directory
 		if (is_string($exclude))
 		{
 			$exclude = array(
-					$exclude
+				$exclude
 			);
 		}
 		if (is_array($exclude))
@@ -99,6 +99,7 @@ class Directory
 	 * @since 3.0.0
 	 *
 	 * @param string $directory name of the directory
+	 * @param integer $mode file access mode
 	 */
 
 	public function create($directory = null, $mode = 0777)
@@ -120,21 +121,34 @@ class Directory
 
 	public function remove($directory = null)
 	{
-		$path = $this->_directory . '/' . $directory;
+		if ($directory)
+		{
+			$path = $this->_directory . '/' . $directory;
+			$this->_remove($path);
+		}
+	}
+
+	/**
+	 * remove the path
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $path name of the path
+	 */
+
+	public function _remove($path = null)
+	{
 		if (is_dir($path))
 		{
-			foreach ($this->_scan($path) as $file)
+			foreach ($this->_scan($path) as $value)
 			{
-				if (is_dir($path . '/' . $file))
-				{
-					$this->remove($directory . '/' . $file);
-				}
-				else
-				{
-					unlink($path . '/' . $file);
-				}
+				$this->_remove($path . '/' . $value);
 			}
 			rmdir($path);
+		}
+		else if (is_file($path))
+		{
+			unlink($path);
 		}
 	}
 

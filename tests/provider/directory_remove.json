@@ -12,12 +12,12 @@
 	],
 	[
 		"root",
-		"includes",
+		"languages",
 		[
 			".",
 			"..",
-			"index.php",
-			"languages"
+			"includes",
+			"index.php"
 		]
 	],
 	[
