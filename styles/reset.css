@@ -21,7 +21,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 	vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, menu, nav, section, summary
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary
 {
 	display: block;
 }
