@@ -79,10 +79,7 @@
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background-color: gray(32);
-	background-image: var(--rs-admin-carbon-image);
-	background-position: var(--rs-admin-carbon-position);
-	background-size: var(--rs-admin-carbon-size);
+	background: gray(32);
 	border: 1px solid gray(34);
 }
 

@@ -48,10 +48,7 @@
 
 .rs-admin-box-dock
 {
-	background-color: gray(32);
-	background-image: var(--rs-admin-carbon-image);
-	background-position: var(--rs-admin-carbon-position);
-	background-size: var(--rs-admin-carbon-size);
+	background: gray(32);
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px gray(0, 0.8);
@@ -91,10 +88,7 @@
 
 .rs-admin-box-panel
 {
-	background-color: gray(32);
-	background-image: var(--rs-admin-carbon-image);
-	background-position: var(--rs-admin-carbon-position);
-	background-size: var(--rs-admin-carbon-size);
+	background: gray(32);
 }
 
 /* @section 4. box tab admin */

@@ -92,10 +92,7 @@
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background-color: rgb(32, 32, 32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background: rgb(32, 32, 32);
 	border: 1px solid rgb(34, 34, 34);
 }
 
@@ -219,10 +216,7 @@
 
 .rs-admin-box-dock
 {
-	background-color: rgb(32, 32, 32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background: rgb(32, 32, 32);
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -261,10 +255,7 @@
 
 .rs-admin-box-panel
 {
-	background-color: rgb(32, 32, 32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background: rgb(32, 32, 32);
 }
 
 /* @section 4. box tab admin */
@@ -956,6 +947,7 @@
 
 .rs-admin-list-panel a, .rs-admin-list-panel span
 {
+	box-sizing: border-box;
 	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
@@ -977,15 +969,39 @@
 	display: none;
 }
 
+.rs-admin-list-panel .rs-admin-link-view
+{
+	display: inline-block;
+	width: 80%;
+}
+
+.rs-admin-list-panel .rs-admin-link-new
+{
+	display: inline-block;
+	position: relative;
+	text-indent: -999em;
+	width: 20%;
+}
+
+.rs-admin-list-panel .rs-admin-link-new:after
+{
+	content: 'f';
+	font: 1.25rem/1rem 'icon admin';
+	left: 0;
+	margin-top: -0.5rem;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	text-transform: none;
+	top: 50%;
+}
+
 /* @section 3. list tab admin */
 
 .rs-admin-list-tab li
 {
-	background-color: rgb(32, 32, 32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
-	border: 1px solid rgb(34, 34, 34);
+	background: rgb(32, 32, 32);
 	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
 	margin-right: 0.125rem;
@@ -1302,10 +1318,7 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background-color: rgb(32, 32, 32);
-	background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-	background-position: 0 0, 2px 2px, 0 0;
-	background-size: 4px 4px, 4px 4px, 4px 2px;
+	background: rgb(32, 32, 32);
 	color: rgb(204, 204, 204);
 	font: bold 1.25rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
@@ -1443,10 +1456,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background-color: rgb(32, 32, 32);
-		background-image: linear-gradient(45deg, #151515  25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(45deg, #151515 25%, transparent 25%, transparent 75%, #151515 75%, #151515), linear-gradient(to bottom, #090909, #111111);
-		background-position: 0 0, 2px 2px, 0 0;
-		background-size: 4px 4px, 4px 4px, 4px 2px;
+		background: rgb(32, 32, 32);
 		position: absolute;
 		width: 100%;
 	}

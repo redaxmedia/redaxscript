@@ -207,10 +207,7 @@
 .rs-admin-table-default thead tr,
 .rs-admin-table-default tfoot tr
 {
-	background-color: gray(32);
-	background-image: var(--rs-admin-carbon-image);
-	background-position: var(--rs-admin-carbon-position);
-	background-size: var(--rs-admin-carbon-size);
+	background: gray(32);
 	color: gray(204);
 	font: bold 1.25rem var(--rs-admin-font-primary);
 	text-transform: uppercase;
