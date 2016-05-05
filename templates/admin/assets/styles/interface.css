@@ -79,7 +79,7 @@
 	font: 1.25rem/1.5rem var(--rs-admin-font-icon);
 	position: absolute;
 	right: 0.75em;
-	top: 0;
+	top: 0.375em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after

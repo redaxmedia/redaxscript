@@ -50,7 +50,7 @@
 	color: gray(185);
 	cursor: pointer;
 	display: block;
-	font: bold 1.25rem/2.5rem var(--rs-admin-font-primary);
+	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
 	padding: 0 1em;
 	text-shadow: 0 1px gray(0, 0.6);
 	text-transform: uppercase;
@@ -72,7 +72,7 @@
 .rs-admin-list-panel .rs-admin-link-view
 {
 	display: inline-block;
-	width: 80%;
+	width: 75%;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
@@ -80,18 +80,16 @@
 	display: inline-block;
 	position: relative;
 	text-indent: -999em;
-	width: 20%;
+	width: 25%;
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
-	font: 1.25rem/1rem 'icon admin';
-	left: 0;
+	font: 1rem/1rem 'icon admin';
 	margin-top: -0.5rem;
 	position: absolute;
-	right: 0;
-	text-align: center;
+	right: 0.75em;
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;

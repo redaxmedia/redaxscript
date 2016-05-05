@@ -893,7 +893,7 @@
 	font: 1.25rem/1.5rem 'icon admin';
 	position: absolute;
 	right: 0.75em;
-	top: 0;
+	top: 0.375em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after
@@ -951,7 +951,7 @@
 	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
-	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
+	font: bold 1rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
@@ -972,7 +972,7 @@
 .rs-admin-list-panel .rs-admin-link-view
 {
 	display: inline-block;
-	width: 80%;
+	width: 75%;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
@@ -980,18 +980,16 @@
 	display: inline-block;
 	position: relative;
 	text-indent: -999em;
-	width: 20%;
+	width: 25%;
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
-	font: 1.25rem/1rem 'icon admin';
-	left: 0;
+	font: 1rem/1rem 'icon admin';
 	margin-top: -0.5rem;
 	position: absolute;
-	right: 0;
-	text-align: center;
+	right: 0.75em;
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;
@@ -1358,9 +1356,10 @@
  *
  * 1. screen max 40em
  * 2. screen max 30em
- * 3. screen min 50em
- * 4. screen min 30em
- * 5. rtl direction
+ * 3. screen min 30em
+ * 4. screen min 50em
+ * 5. screen min 70em
+ * 6. rtl direction
  *
  * @since 2.1.0
  *
@@ -1404,7 +1403,27 @@
 	}
 }
 
-/* @section 3. screen min 50em */
+/* @section 3. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 0.5em;
+	}
+
+	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
+	{
+		float: right;
+	}
+}
+
+/* @section 4. screen min 50em */
 
 @media screen and (min-width: 50em)
 {
@@ -1454,6 +1473,13 @@
 		width: 20%;
 	}
 
+	.rs-admin-list-panel .rs-admin-link-new:after
+	{
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+
 	.rs-admin-list-panel-children
 	{
 		background: rgb(32, 32, 32);
@@ -1473,27 +1499,17 @@
 	}
 }
 
-/* @section 4. screen min 30em */
+/* @section 5. screen min 70em */
 
-@media screen and (min-width: 30em)
+@media screen and (min-width: 70em)
 {
-	.rs-admin-button-default + .rs-admin-button-default
+	.rs-admin-list-panel a, .rs-admin-list-panel span, .rs-admin-list-panel .rs-admin-link-new:after
 	{
-		margin-left: 0.5em;
-	}
-
-	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
-	{
-		float: left;
-	}
-
-	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
-	{
-		float: right;
+		font-size: 1.25rem;
 	}
 }
 
-/* @section 5. rtl direction */
+/* @section 6. rtl direction */
 
 .rs-admin-rtl .rs-admin-description-dock
 {
