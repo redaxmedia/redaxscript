@@ -51,17 +51,26 @@
 	cursor: pointer;
 	display: block;
 	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
-	padding: 0 1em;
+	padding: 0 0.75em;
 	text-shadow: 0 1px gray(0, 0.6);
 	text-transform: uppercase;
 }
 
-.rs-admin-list-panel a:hover,
-.rs-admin-list-panel span:hover
+.rs-admin-list-panel li:hover
 {
 	background: var(--rs-admin-gradient-primary);
+}
+
+.rs-admin-list-panel li:hover > a,
+.rs-admin-list-panel li:hover > span
+{
 	color: gray(0);
 	text-shadow: 0 1px gray(255, 0.2);
+}
+
+.rs-admin-list-panel li:hover .rs-admin-list-panel-children
+{
+	background: gray(32);
 }
 
 .rs-admin-list-panel-children
@@ -69,27 +78,40 @@
 	display: none;
 }
 
+.rs-admin-list-panel-children > li
+{
+	display: flex;
+	justify-content: space-between;
+}
+
 .rs-admin-list-panel .rs-admin-link-view
 {
-	display: inline-block;
-	width: 75%;
+	flex: 1 1 0;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
 {
-	display: inline-block;
+	border-left: 1px solid gray(32);
+	padding: 0;
 	position: relative;
 	text-indent: -999em;
-	width: 25%;
+	width: 2.75em;
+}
+
+.rs-admin-list-panel .rs-admin-link-new:hover
+{
+	background: gray(255, 0.3);
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
-	font: 1rem/1rem 'icon admin';
+	font: 0.75rem/1rem 'icon admin';
+	left: 0;
 	margin-top: -0.5rem;
 	position: absolute;
-	right: 0.75em;
+	right: 0;
+	text-align: center;
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;

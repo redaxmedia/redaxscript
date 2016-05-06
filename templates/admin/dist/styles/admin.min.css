@@ -892,7 +892,7 @@
 	content: '˃';
 	font: 1.25rem/1.5rem 'icon admin';
 	position: absolute;
-	right: 0.75em;
+	right: 0.875em;
 	top: 0.375em;
 }
 
@@ -952,16 +952,25 @@
 	cursor: pointer;
 	display: block;
 	font: bold 1rem/2.5rem 'open sans condensed', arial, sans-serif;
-	padding: 0 1em;
+	padding: 0 0.75em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 }
 
-.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
+.rs-admin-list-panel li:hover
 {
 	background: linear-gradient(#4cb4ff, #0090db);
+}
+
+.rs-admin-list-panel li:hover > a, .rs-admin-list-panel li:hover > span
+{
 	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.rs-admin-list-panel li:hover .rs-admin-list-panel-children
+{
+	background: rgb(32, 32, 32);
 }
 
 .rs-admin-list-panel-children
@@ -969,27 +978,46 @@
 	display: none;
 }
 
+.rs-admin-list-panel-children > li
+{
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
 .rs-admin-list-panel .rs-admin-link-view
 {
-	display: inline-block;
-	width: 75%;
+	-webkit-flex: 1 1 0;
+	-ms-flex: 1 1 0;
+	flex: 1 1 0;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
 {
-	display: inline-block;
+	border-left: 1px solid rgb(32, 32, 32);
+	padding: 0;
 	position: relative;
 	text-indent: -999em;
-	width: 25%;
+	width: 2.75em;
+}
+
+.rs-admin-list-panel .rs-admin-link-new:hover
+{
+	background: rgba(255, 255, 255, 0.3);
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
-	font: 1rem/1rem 'icon admin';
+	font: 0.75rem/1rem 'icon admin';
+	left: 0;
 	margin-top: -0.5rem;
 	position: absolute;
-	right: 0.75em;
+	right: 0;
+	text-align: center;
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;
@@ -1429,12 +1457,7 @@
 {
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 	{
-		line-height: 4.25rem;
-	}
-
-	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
-	{
-		font-size: 1.5rem;
+		line-height: 3.5rem;
 	}
 
 	.rs-admin-list-panel .rs-admin-item-panel > span:after
@@ -1473,13 +1496,6 @@
 		width: 20%;
 	}
 
-	.rs-admin-list-panel .rs-admin-link-new:after
-	{
-		left: 0;
-		right: 0;
-		text-align: center;
-	}
-
 	.rs-admin-list-panel-children
 	{
 		background: rgb(32, 32, 32);
@@ -1499,17 +1515,8 @@
 	}
 }
 
-/* @section 5. screen min 70em */
 
-@media screen and (min-width: 70em)
-{
-	.rs-admin-list-panel a, .rs-admin-list-panel span, .rs-admin-list-panel .rs-admin-link-new:after
-	{
-		font-size: 1.25rem;
-	}
-}
-
-/* @section 6. rtl direction */
+/* @section 5. rtl direction */
 
 .rs-admin-rtl .rs-admin-description-dock
 {
