@@ -108,12 +108,8 @@ class Search implements ControllerInterface
 
 		/* process search */
 
-		//TODO: pass the whole $queryArray to _search and let it do the processing
-		//$result = $this->_search($queryArray);
-		foreach ($queryArray['table'] as $table)
-		{
-			$result[] = $this->_search($table, $queryArray['search']);
-		}
+		$result = $this->_search($queryArray);
+
 		if (!$result)
 		{
 			$errorArray[] = $this->_language->get('search_no');
@@ -126,10 +122,9 @@ class Search implements ControllerInterface
 			return $this->error($errorArray);
 		}
 		//TODO: The check for $output does not "feel right" to me - can't we check for $result
-		//and if that is present we run $this->success($result) ... we don't need the $queryArray because each
-		//DB object contains the tablename inside! What about renaming it to $successArray like in other controllers?
+		//and if that is present we run $this->success($result)... What about renaming it to $successArray like in other controllers?
 		//because it is a set of result objects and not a single result
-		$output = $this->success($result, $queryArray);
+		$output = $this->success($result);
 		if ($output)
 		{
 			return $output;
@@ -140,36 +135,45 @@ class Search implements ControllerInterface
 	/**
 	 * fetch the search result
 	 *
-	 * @param string $table name of the table
-	 * @param string $search value of the search
+	 * @param array $queryArray array of query parameters
 	 *
 	 * @return Db
 	 */
 
-	private function _search($table = null, $search = null)
+	private function _search($queryArray = array())
 	{
-		$columnArray = array_filter(array(
-			$table === 'categories' || $table === 'articles' ? 'title' : null,
-			$table === 'categories' || $table === 'articles' ? 'description' : null,
-			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
-			$table === 'articles' || $table === 'comments' ? 'text' : null
-		));
-		$likeArray = array_filter(array(
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
-		));
+		$search = $queryArray['search'];
 
-		/* fetch result */
+		foreach ($queryArray['table'] as $table)
+		{
+			$columnArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? 'title' : null,
+				$table === 'categories' || $table === 'articles' ? 'description' : null,
+				$table === 'categories' || $table === 'articles' ? 'keywords' : null,
+				$table === 'articles' || $table === 'comments' ? 'text' : null
+			));
+			$likeArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+			));
 
-		//TODO: missing check for language - if you switched manually with /xxx.hu you should not find a article set to
-		//a language like .en or .de
-		return Db::forTablePrefix($table)
-			->whereLikeMany($columnArray, $likeArray)
-			->where('status', 1)
-			->orderByDesc('date')
-			->findMany();
+			/* fetch result */
+
+			//TODO: missing check for language - if you switched manually with /xxx.hu you should not find a article set to
+			//a language like .en or .de
+			$result[$table] = Db::forTablePrefix($table)
+				->whereLikeMany($columnArray, $likeArray)
+				->where('status', 1)
+				->whereRaw('(language = ? OR language is ?)', array(
+					$this->_registry->get('language'),
+					null
+				))
+				->orderByDesc('date')
+				->findMany();
+		}
+		return $result;
 	}
 
 	/**
@@ -177,16 +181,15 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $result array of the db query
-	 * @param array $successArray array of the tables and search
+	 * @param array $successArray array of the search query results
 	 *
 	 * @return string
 	 */
 
-	public function success($result = array(), $successArray = array())
+	public function success($successArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
-		return $listSearch->render($result, $successArray['table']);
+		return $listSearch->render($successArray);
 	}
 
 	/**

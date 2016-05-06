@@ -28,7 +28,7 @@ class SearchList implements ViewInterface
 	 */
 
 	protected $_registry;
-	//TODO: language never was use, remove it here + use statement and inside the test suite
+
 	/**
 	 * instance of the language class
 	 *
@@ -56,22 +56,20 @@ class SearchList implements ViewInterface
 	 * render the view
 	 *
 	 * @param array $result array for the db query results
-	 * @param array $tableArray array for the tables
 	 *
 	 * @return string
 	 * @since 3.0.0
 	 *
 	 */
 
-	public function render($result = null, $tableArray = null)
+	public function render($result = null)
 	{
 		$output = Hook::trigger('searchListStart');
-		$i = 0;
-		//TODO: Please get rid of the $i construct here and try to check for the current $tablename in the DB objects
-		foreach ($result as $item)
+
+		foreach ($result as $item => $data)
 		{
 			$itemOutput = null;
-			if ($item)
+			if ($data)
 			{
 				/* title element */
 
@@ -80,7 +78,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
-					->text($this->_language->get(count($tableArray) > 1 ? $tableArray[$i] : 'search'));
+					->text($this->_language->get($item));
 
 				/* list element */
 
@@ -92,23 +90,22 @@ class SearchList implements ViewInterface
 
 				/* generate category's list */
 
-				foreach ($item as $value)
+				foreach ($data as $value)
 				{
-					$itemOutput .= $this->_renderItem($value, $tableArray[$i]);
+					$itemOutput .= $this->_renderItem($value, $item);
 				}
 
 				/* only show a category's results, when the user can access at least 1 result */
-				//TODO: do we really need this if? The Element class can handle empty values :-) and is made
-				//to work with null objects
+
 				if ($itemOutput)
 				{
 					$listElement->html($itemOutput);
 					$output .= $titleElement . $listElement;
 				}
 			}
-			$i++;
 		}
 		$output .= Hook::trigger('searchListEnd');
+
 		return $output;
 	}
 
@@ -132,17 +129,8 @@ class SearchList implements ViewInterface
 			$date = date(Db::getSetting('date'), strtotime($item->date));
 
 			/* build route */
-			//TODO: Just use $route = build_route($table, $item->id); the refactored buildrout is going to be
-			//clever enough not to lookup a name and just use the alias - we can life with less performance fo now
-			//and have cleaner code
-			if ($table === 'categories' && $item->parent === 0 || $item === 'articles' && $item->category === 0)
-			{
-				$route = $item->alias;
-			}
-			else
-			{
-				$route = build_route($table, $item->id);
-			}
+
+			$route = build_route($table, $item->id);
 
 			/* html element */
 
