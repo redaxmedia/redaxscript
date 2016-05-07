@@ -209,6 +209,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'assets/styles/_query.css',
 					'assets/styles/normalize.css',
 					'assets/styles/helper.css',
 					'assets/styles/animate.css',
@@ -231,6 +232,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'assets/styles/_query.css',
 					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/layout.css',
@@ -255,7 +257,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/default/assets/styles/_query.css',
+					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/layout.css',
@@ -281,7 +283,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/default/assets/styles/_query.css',
+					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/install/assets/styles/layout.css'
 				],

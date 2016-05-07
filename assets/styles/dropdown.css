@@ -46,7 +46,7 @@
 
 /* @section 2.1 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--media-medium-min)
 {
 	.rs-list-dropdown ul
 	{

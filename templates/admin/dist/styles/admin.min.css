@@ -1,6 +1,18 @@
 /**
  * @tableofcontents
  *
+ * 1. query
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+/**
+ * @tableofcontents
+ *
  * 1. variable
  *
  * @since 3.0.0
@@ -1385,9 +1397,8 @@
  * 1. screen max 40em
  * 2. screen max 30em
  * 3. screen min 30em
- * 4. screen min 50em
- * 5. screen min 70em
- * 6. rtl direction
+ * 4. screen min
+ * 5. rtl direction
  *
  * @since 2.1.0
  *
@@ -1395,9 +1406,9 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
+/* @section 1. screen max 50em */
 
-@media screen and (max-width: 40em)
+@media screen and (max-width: 49.999em)
 {
 	.rs-admin-item-control.rs-admin-item-future-posting
 	{

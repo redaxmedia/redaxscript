@@ -28,7 +28,7 @@
 
 /* @section 2.1 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media (--media-medium-max)
 {
 
 	/* @section 2.1.1 navigation toggle */
@@ -107,7 +107,7 @@
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media (--media-medium-min)
 {
 
 	/* @section 2.2.1 navigation trigger */

@@ -48,7 +48,7 @@
 
 /* @section 4.1 max width 50em */
 
-@media screen and (max-width: 49.999em)
+@media (--media-medium-max)
 {
 	.rs-admin-list-tab
 	{

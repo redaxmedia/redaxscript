@@ -86,7 +86,7 @@
 
 /* @section 4.1 min width 30em */
 
-@media screen and (min-width: 30em)
+@media (--media-small-min)
 {
 	.rs-admin-field-default,
 	.rs-admin-field-select,
