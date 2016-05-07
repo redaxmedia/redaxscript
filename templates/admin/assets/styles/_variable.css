@@ -14,19 +14,17 @@
 :root
 {
 	--rs-admin-color-primary: #0090db;
+	--rs-admin-color-success: #4c8c00;
+	--rs-admin-color-warning: #e08400;
+	--rs-admin-color-error: #a20000;
 
-	--rs-admin-gradient-primary: linear-gradient(#4cb4ff, var(--rs-admin-color-primary));
-	--rs-admin-gradient-secondary: linear-gradient(#d50000, #a20000);
+	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) w(35%) saturation(+20%));
+	--rs-admin-color-success-light: color(var(--rs-admin-color-success) w(35%) saturation(+20%));
+	--rs-admin-color-warning-light: color(var(--rs-admin-color-warning) w(35%) saturation(+20%));
+	--rs-admin-color-error-light: color(var(--rs-admin-color-error) w(35%) saturation(+20%));
 
-	--rs-admin-color-success: #87c473;
-	--rs-admin-color-warning: #e0b951;
-	--rs-admin-color-error: #e3a2a7;
-	--rs-admin-color-info: #63a7dd;
-
-	--rs-admin-color-success-dark: color(var(--rs-admin-color-success) b(65%) saturation(+30%));
-	--rs-admin-color-warning-dark: color(var(--rs-admin-color-warning) b(50%) saturation(+20%));
-	--rs-admin-color-error-dark: color(var(--rs-admin-color-error) b(65%) saturation(+40%));
-	--rs-admin-color-info-dark: color(var(--rs-admin-color-info) b(60%) saturation(+40%));
+	--rs-admin-gradient-primary: linear-gradient(var(--rs-admin-color-primary-light), var(--rs-admin-color-primary));
+	--rs-admin-gradient-secondary: linear-gradient(var(--rs-admin-color-error-light), var(--rs-admin-color-error));
 
 	--rs-admin-font-primary: 'open sans condensed', arial, sans-serif;
 	--rs-admin-font-icon: 'icon admin';

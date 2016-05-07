@@ -16,74 +16,106 @@
 
 .rs-admin-note-success:not(:focus)
 {
-	color: var(--rs-admin-color-success-dark);
+	color: var(--rs-admin-color-success);
 }
 
 .rs-admin-note-success.rs-admin-box-note,
 .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
-	background: var(--rs-admin-color-success);
-	border-color: var(--rs-admin-color-success-dark);
+	background: var(--rs-admin-color-success-light);
+	border-color: var(--rs-admin-color-success);
+}
+
+.rs-admin-note-success.rs-admin-box-note,
+.rs-admin-note-success.rs-admin-field-note:not(:focus),
+.rs-admin-note-success.rs-admin-field-select:not(:focus)
+{
+	color: gray(255);
 }
 
 .rs-admin-note-success.rs-admin-field-note option
 {
-	background: var(--rs-admin-color-success);
+	background: var(--rs-admin-color-success-light);
+	color: gray(255);
 }
 
 /* @section 2. warning */
 
 .rs-admin-note-warning:not(:focus)
 {
-	color: var(--rs-admin-color-warning-dark);
+	color: var(--rs-admin-color-warning);
 }
 
 .rs-admin-note-warning.rs-admin-box-note,
 .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
-	background: var(--rs-admin-color-warning);
-	border-color: var(--rs-admin-color-warning-dark);
+	background: var(--rs-admin-color-warning-light);
+	border-color: var(--rs-admin-color-warning);
+}
+
+.rs-admin-note-warning.rs-admin-box-note,
+.rs-admin-note-warning.rs-admin-field-note:not(:focus),
+.rs-admin-note-warning.rs-admin-field-select:not(:focus)
+{
+	color: gray(255);
 }
 
 .rs-admin-note-warning.rs-admin-field-note option
 {
-	background: var(--rs-admin-color-warning);
+	background: var(--rs-admin-color-warning-light);
+	color: gray(255);
 }
 
 /* @section 3. error */
 
 .rs-admin-note-error:not(:focus)
 {
-	color: var(--rs-admin-color-error-dark);
+	color: var(--rs-admin-color-error);
 }
 
 .rs-admin-note-error.rs-admin-box-note,
 .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
-	background: var(--rs-admin-color-error);
-	border-color: var(--rs-admin-color-error-dark);
+	background: var(--rs-admin-color-error-light);
+	border-color: var(--rs-admin-color-error);
+}
+
+.rs-admin-note-error.rs-admin-box-note,
+.rs-admin-note-error.rs-admin-field-note:not(:focus),
+.rs-admin-note-error.rs-admin-field-select:not(:focus)
+{
+	color: gray(255);
 }
 
 .rs-admin-note-error.rs-admin-field-note option
 {
-	background: var(--rs-admin-color-error);
+	background: var(--rs-admin-color-error-light);
+	color: gray(255);
 }
 
 /* @section 4. info */
 
 .rs-admin-note-info:not(:focus)
 {
-	color: var(--rs-admin-color-info-dark);
+	color: var(--rs-admin-color-primary);
 }
 
 .rs-admin-note-info.rs-admin-box-note,
 .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {
-	background: var(--rs-admin-color-info);
-	border-color: var(--rs-admin-color-info-dark);
+	background: var(--rs-admin-color-primary-light);
+	border-color: var(--rs-admin-color-primary);
+}
+
+.rs-admin-note-info.rs-admin-box-note,
+.rs-admin-note-info.rs-admin-field-note:not(:focus),
+.rs-admin-note-info.rs-admin-field-select:not(:focus)
+{
+	color: gray(255);
 }
 
 .rs-admin-note-info.rs-admin-field-note option
 {
-	background: var(--rs-admin-color-info);
+	background: var(--rs-admin-color-primary-light);
+	color: gray(255);
 }
