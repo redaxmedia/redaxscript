@@ -21,7 +21,7 @@
 .rs-admin-box-accordion,
 .rs-admin-box-dialog
 {
-	background: linear-gradient(#e2e2e2, #dadada);
+	background: var(--rs-admin-gradient-quaternary);
 	border: 1px solid gray(185);
 	border-top: 0;
 	padding: 0.5em 1em;
@@ -95,7 +95,7 @@
 
 .rs-admin-box-tab
 {
-	background: linear-gradient(#e2e2e2, #dadada);
+	background: var(--rs-admin-gradient-quaternary);
 	border: 1px solid gray(185);
 	padding: 1em;
 }

@@ -48,14 +48,14 @@
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
-	background: linear-gradient(#e2e2e2, #dadada);
+	background: gray(226);
 }
 
 /* even look */
 
 .rs-admin-table-default tbody:nth-child(even) tr
 {
-	background: linear-gradient(#ebebeb, #e8e8e8);
+	background: gray(218);
 }
 
 .rs-admin-table-default tbody + tbody tr,

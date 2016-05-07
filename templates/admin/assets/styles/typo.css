@@ -32,13 +32,18 @@
 
 .rs-admin-title-accordion
 {
-	background: linear-gradient(#d5d5d5, #ccc);
+	background: var(--rs-admin-gradient-quaternary);
 	border: 1px solid gray(185);
 	box-sizing: border-box;
 	font: bold 1.25rem/2.5rem var(--rs-admin-font-primary);
 	padding: 0 1em;
 	text-transform: uppercase;
 	width: 100%;
+}
+
+.rs-admin-title-accordion:hover
+{
+	background: gray(240);
 }
 
 .rs-admin-title-accordion:not(.rs-admin-title-active)
@@ -56,7 +61,8 @@
 	cursor: pointer;
 }
 
-.rs-admin-title-accordion, .rs-admin-title-accordion a
+.rs-admin-title-accordion,
+.rs-admin-title-accordion a
 {
 	color: gray(68);
 }
@@ -77,13 +83,17 @@
 
 /* @section 3. several admin titles */
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+.rs-js .rs-admin-title-accordion.rs-admin-title-active,
+.rs-admin-title-dialog
 {
 	background: gray(32);
 	border: 1px solid gray(34);
 }
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+.rs-js .rs-admin-title-accordion.rs-admin-title-active,
+.rs-js .rs-admin-title-accordion.rs-admin-title-active a,
+.rs-admin-title-dialog,
+.rs-admin-title-dialog a
 {
 	color: gray(204);
 }
@@ -108,5 +118,5 @@
 
 .rs-admin-title-content a
 {
-	color: #323e4c;
+	color: gray(32);
 }

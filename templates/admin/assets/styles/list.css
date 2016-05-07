@@ -14,9 +14,10 @@
 
 /* @section 1. list control admin */
 
-.rs-admin-list-control a, .rs-admin-list-control span
+.rs-admin-list-control a,
+.rs-admin-list-control span
 {
-	background: linear-gradient(#bbb, #b9b9b9);
+	background: var(--rs-admin-gradient-quinary);
 	border-radius: 0.25em;
 	color: gray(102);
 	display: inline-block;
@@ -169,7 +170,7 @@
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
-	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
+	background: gray(226);
 	border: 1px solid gray(185);
 	border-bottom-color: gray(226);
 	pointer-events: none;
