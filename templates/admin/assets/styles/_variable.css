@@ -13,18 +13,26 @@
 
 :root
 {
+	/* @section 1.1 base color */
+
 	--rs-admin-color-primary: #0090db;
+	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) w(35%) saturation(+20%));
+
+	/* @section 1.2 note color */
+
 	--rs-admin-color-success: #4c8c00;
 	--rs-admin-color-warning: #e08400;
 	--rs-admin-color-error: #a20000;
-
-	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) w(35%) saturation(+20%));
 	--rs-admin-color-success-light: color(var(--rs-admin-color-success) w(35%) saturation(+20%));
 	--rs-admin-color-warning-light: color(var(--rs-admin-color-warning) w(35%) saturation(+20%));
 	--rs-admin-color-error-light: color(var(--rs-admin-color-error) w(35%) saturation(+20%));
 
+	/* @section 1.3 gradient */
+
 	--rs-admin-gradient-primary: linear-gradient(var(--rs-admin-color-primary-light), var(--rs-admin-color-primary));
 	--rs-admin-gradient-secondary: linear-gradient(var(--rs-admin-color-error-light), var(--rs-admin-color-error));
+
+	/* @section 1.4 font */
 
 	--rs-admin-font-primary: 'open sans condensed', arial, sans-serif;
 	--rs-admin-font-icon: 'icon admin';
