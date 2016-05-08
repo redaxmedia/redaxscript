@@ -22,7 +22,7 @@ class Parser
 	 */
 
 	protected $_request;
-	
+
 	/**
 	 * array of parsed arguments
 	 *
