@@ -48,6 +48,12 @@
 			<directory>tests/includes/Client</directory>
 		</testsuite>
 
+		<!-- console -->
+
+		<testsuite name="console">
+			<directory>tests/includes/Console</directory>
+		</testsuite>
+
 		<!-- controller -->
 
 		<testsuite name="controller">
