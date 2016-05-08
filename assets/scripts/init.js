@@ -105,7 +105,7 @@
 					dockDescriptionHTML: '<span class="rs-admin-js-description-dock rs-admin-description-dock"></span>'
 				},
 				vibrate: 100
-			}	
+			}
 		},
 		dropdown:
 		{
@@ -205,7 +205,7 @@
 				timeout: 1000,
 				duration: 200,
 				vibrate: 100
-			}	
+			}
 		},
 		preventUnload:
 		{
