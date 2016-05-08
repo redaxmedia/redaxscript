@@ -92,6 +92,21 @@
 				callback: ''
 			}
 		},
+		dock:
+		{
+			init: true,
+			selector: 'div.rs-admin-js-dock',
+			options:
+			{
+				element:
+				{
+					dockLink: 'a.rs-admin-js-link-dock',
+					dockDescription: 'span.rs-admin-js-description-dock',
+					dockDescriptionHTML: '<span class="rs-admin-js-description-dock rs-admin-description-dock"></span>'
+				},
+				vibrate: 100
+			}	
+		},
 		dropdown:
 		{
 			init: rs.support.touch,
@@ -176,6 +191,21 @@
 				login: 'login',
 				logout: 'logout'
 			}
+		},
+		panel:
+		{
+			init: true,
+			selector: 'ul.rs-admin-js-list-panel',
+			options:
+			{
+				element:
+				{
+					panelItem: 'li.rs-admin-js-item-panel'
+				},
+				timeout: 1000,
+				duration: 200,
+				vibrate: 100
+			}	
 		},
 		preventUnload:
 		{

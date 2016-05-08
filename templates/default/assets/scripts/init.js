@@ -3,7 +3,7 @@
  *
  * 1. init
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs

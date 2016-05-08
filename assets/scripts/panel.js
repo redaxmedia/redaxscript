@@ -1,9 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. admin dock
- * 2. admin panel
- * 3. init
+ * 1. panel
+ * 2. init
  *
  * @since 2.0.0
  *
@@ -15,72 +14,15 @@
 {
 	'use strict';
 
-	/* @section 1. admin dock */
+	/* @section 1. panel */
 
-	$.fn.adminDock = function (options)
+	$.fn.panel = function (options)
 	{
 		/* extend options */
 
-		if (rs.plugins.adminDock.options !== options)
+		if (rs.plugins.panel.options !== options)
 		{
-			options = $.extend({}, rs.plugins.adminDock.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			var dock = $(this),
-				dockLink = dock.find(options.element.dockLink);
-
-			/* append description to docks */
-
-			dock.append(options.element.dockDescriptionHTML);
-
-			/* setup dock links */
-
-			dockLink.each(function ()
-			{
-				var dockLink = $(this),
-					dockText = dockLink.text(),
-					dockDescription = dockLink.siblings(options.element.dockDescription);
-
-				dockLink.on('mouseenter mouseleave touchstart touchend', function (event)
-				{
-					/* handle mouseenter and touchstart */
-
-					if (event.type === 'mouseenter' || event.type === 'touchstart')
-					{
-						dockDescription.text(dockText);
-					}
-
-					/* else handle mouseleave and touchend */
-
-					else
-					{
-						dockDescription.empty();
-					}
-
-					/* haptic feedback */
-
-					if (event.type === 'touchstart' && rs.support.vibrate && typeof options.vibrate === 'number')
-					{
-						window.navigator.vibrate(options.vibrate);
-					}
-				});
-			});
-		});
-	};
-
-	/* @section 2. admin panel */
-
-	$.fn.adminPanel = function (options)
-	{
-		/* extend options */
-
-		if (rs.plugins.adminPanel.options !== options)
-		{
-			options = $.extend({}, rs.plugins.adminPanel.options, options || {});
+			options = $.extend({}, rs.plugins.panel.options, options || {});
 		}
 
 		/* return this */
@@ -180,17 +122,13 @@
 		});
 	};
 
-	/* @section 3. init */
+	/* @section 2. init */
 
 	$(function ()
 	{
-		if (rs.plugins.adminDock.init)
+		if (rs.plugins.panel.init)
 		{
-			$(rs.plugins.adminDock.selector).adminDock(rs.plugins.adminDock.options);
-		}
-		if (rs.plugins.adminPanel.init)
-		{
-			$(rs.plugins.adminPanel.selector).adminPanel(rs.plugins.adminPanel.options);
+			$(rs.plugins.panel.selector).panel(rs.plugins.panel.options);
 		}
 	});
 })(window.jQuery || window.Zepto);

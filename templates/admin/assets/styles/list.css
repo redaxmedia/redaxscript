@@ -92,16 +92,9 @@
 
 .rs-admin-list-panel .rs-admin-link-new
 {
-	border-left: 1px solid gray(32);
-	padding: 0;
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
-}
-
-.rs-admin-list-panel .rs-admin-link-new:hover
-{
-	background: gray(255, 0.3);
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
