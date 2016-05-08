@@ -58,7 +58,7 @@ class Parser
 	 * @since 3.0.0
 	 */
 
-	public function init ()
+	public function init()
 	{
 		$this->_parseArguments($this->_request->getServer('argv'));
 	}
