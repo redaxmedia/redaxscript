@@ -154,12 +154,6 @@
 			<file>tests/includes/HashTest.php</file>
 		</testsuite>
 
-		<!-- helper -->
-
-		<testsuite name="helper">
-			<file>tests/includes/HelperTest.php</file>
-		</testsuite>
-
 		<!-- hook -->
 
 		<testsuite name="hook">

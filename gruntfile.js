@@ -381,6 +381,10 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
+			phpunitParallel:
+			{
+				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+			},
 			tocBase:
 			{
 				command: 'sh vendor/bin/tocgen.sh assets .tocgen'
@@ -681,6 +685,10 @@ module.exports = function (grunt)
 	[
 		'shell:phpunit'
 	]);
+	grunt.registerTask('phpunitParallel',
+	[
+		'shell:phpunitParallel'
+	]);	
 	grunt.registerTask('toclint',
 	[
 		'shell:toclintBase',
