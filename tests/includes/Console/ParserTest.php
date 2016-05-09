@@ -81,6 +81,50 @@ class ParserTest extends TestCase
 	}
 
 	/**
+	 * testSetAndGetArgument
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSetAndGetArgument()
+	{
+		/* setup */
+
+		$console = new Console\Parser($this->_request);
+		$console->setArgument('test', 'test');
+
+		/* actual */
+
+		$actual = $console->getArgument('test');
+
+		/* compare */
+		
+		$this->assertEquals('test', $actual);
+	}
+	
+	/**
+	 * testSetAndGetOption
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSetAndGetOption()
+	{
+		/* setup */
+
+		$console = new Console\Parser($this->_request);
+		$console->setOption('test', 'test');
+
+		/* actual */
+
+		$actual = $console->getOption('test');
+
+		/* compare */
+
+		$this->assertEquals('test', $actual);
+	}
+	
+	/**
 	 * testGetArgument
 	 *
 	 * @since 3.0.0
