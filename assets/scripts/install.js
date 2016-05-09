@@ -2,8 +2,9 @@
  * @tableofcontents
  *
  * 1. install
+ * 2. init
  *
- * @since 2.4.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
