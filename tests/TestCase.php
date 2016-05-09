@@ -3,6 +3,8 @@ namespace Redaxscript\Tests;
 
 use PHPUnit_Framework_TestCase;
 
+error_reporting(E_ERROR || E_PARSE);
+
 /**
  * TestCase
  *

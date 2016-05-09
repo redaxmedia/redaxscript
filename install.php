@@ -1,7 +1,7 @@
 <?php
-error_reporting(0);
+error_reporting(E_ERROR || E_PARSE);
 
-/* include core files */
+/* deprecated */
 
 include_once('includes/loader.php');
 include_once('includes/startup.php');

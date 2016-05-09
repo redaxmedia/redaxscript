@@ -1,14 +1,32 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(0);
+use Redaxscript\Console;
 
-/* include files */
+error_reporting(E_ERROR || E_PARSE);
 
-include_once('includes/Autoloader.php');
+/* bootstrap */
 
-/* init */
+include_once('includes/bootstrap.php');
 
-Autoloader::init();
+/* language */
 
-echo Language::get('name', '_package');
+$language = Language::getInstance();
+$language::init();
+
+/* parser */
+
+$parser = new Console\Parser(Request::getInstance());
+$parser->init();
+
+/* console */
+
+echo PHP_EOL . $language->get('name', '_package') . ' ' . $language->get('version', '_package') . PHP_EOL . PHP_EOL;
+
+/* verbose */
+
+if ($parser->getOption('verbose'))
+{
+	print_r($parser->getArgument());
+	print_r($parser->getOption());
+}

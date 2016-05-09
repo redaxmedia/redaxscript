@@ -72,12 +72,12 @@ class ParserTest extends TestCase
 	{
 		/* setup */
 
-		$console = new Console\Parser($this->_request);
-		$console->init();
+		$parser = new Console\Parser($this->_request);
+		$parser->init();
 
 		/* compare */
 
-		$this->assertArrayHasKey(0, $console->getArgument());
+		$this->assertArrayHasKey(0, $parser->getArgument());
 	}
 
 	/**
@@ -90,12 +90,12 @@ class ParserTest extends TestCase
 	{
 		/* setup */
 
-		$console = new Console\Parser($this->_request);
-		$console->setArgument('test', 'test');
+		$parser = new Console\Parser($this->_request);
+		$parser->setArgument('test', 'test');
 
 		/* actual */
 
-		$actual = $console->getArgument('test');
+		$actual = $parser->getArgument('test');
 
 		/* compare */
 		
@@ -112,12 +112,12 @@ class ParserTest extends TestCase
 	{
 		/* setup */
 
-		$console = new Console\Parser($this->_request);
-		$console->setOption('test', 'test');
+		$parser = new Console\Parser($this->_request);
+		$parser->setOption('test', 'test');
 
 		/* actual */
 
-		$actual = $console->getOption('test');
+		$actual = $parser->getOption('test');
 
 		/* compare */
 
@@ -140,12 +140,12 @@ class ParserTest extends TestCase
 		/* setup */
 
 		$this->_request->setServer('argv', $arguments);
-		$console = new Console\Parser($this->_request);
-		$console->init();
+		$parser = new Console\Parser($this->_request);
+		$parser->init();
 
 		/* actual */
 
-		$actual = $console->getArgument();
+		$actual = $parser->getArgument();
 
 		/* compare */
 
@@ -168,12 +168,12 @@ class ParserTest extends TestCase
 		/* setup */
 
 		$this->_request->setServer('argv', $arguments);
-		$console = new Console\Parser($this->_request);
-		$console->init();
+		$parser = new Console\Parser($this->_request);
+		$parser->init();
 
 		/* actual */
 
-		$actual = $console->getOption();
+		$actual = $parser->getOption();
 
 		/* compare */
 

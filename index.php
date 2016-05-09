@@ -1,18 +1,7 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(0);
-
-/* include files */
-
-include_once('includes/contents.php');
-include_once('includes/head.php');
-include_once('includes/loader.php');
-include_once('includes/navigation.php');
-include_once('includes/query.php');
-include_once('includes/router.php');
-include_once('includes/startup.php');
-include_once('includes/comments.php');
+error_reporting(E_ERROR || E_PARSE);
 
 /* bootstrap */
 
@@ -28,16 +17,6 @@ if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 {
 	header('location: install.php');
 	exit;
-}
-
-/* include admin files */
-
-if ($registry->get('loggedIn') === $registry->get('token'))
-{
-	include_once('includes/admin_admin.php');
-	include_once('includes/admin_list.php');
-	include_once('includes/admin_query.php');
-	include_once('includes/admin_router.php');
 }
 
 /* trigger init */
