@@ -162,6 +162,21 @@
 				limit: 10
 			}
 		},
+		install:
+		{
+			init: false,
+			selector: 'form.rs-js-install',
+			options:
+			{
+				element:
+				{
+					fieldType: '#db-type',
+					fieldRelated: '#db-name, #db-user, #db-password',
+					fieldRequired: '#db-name, #db-user',
+					fieldHost: '#db-host'
+				}
+			}
+		},
 		keyShortcut:
 		{
 			init: true,

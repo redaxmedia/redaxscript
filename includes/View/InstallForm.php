@@ -42,7 +42,7 @@ class InstallForm implements ViewInterface
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-validate-form rs-js-accordion rs-form-default rs-form-install'
+				'class' => 'rs-js-install rs-js-accordion rs-js-validate-form rs-form-default rs-form-install'
 			),
 			'button' => array(
 				'submit' => array(
@@ -62,11 +62,11 @@ class InstallForm implements ViewInterface
 			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . Language::get('database_setup') . '</legend>')
 			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-active"><li>')
 			->label(Language::get('type'), array(
-				'for' => 'db_type'
+				'for' => 'db-type'
 			))
 			->select(Helper\Option::getDatabaseArray(), array(
-				'id' => 'db_type',
-				'name' => 'db_type',
+				'id' => 'db-type',
+				'name' => 'db-type',
 				'value' => $options['dbType']
 			))
 			->append('</li><li>')
@@ -77,8 +77,8 @@ class InstallForm implements ViewInterface
 				'data-sqlite' => uniqid() . '.sqlite',
 				'data-mysql' => 'localhost',
 				'data-pgsql' => 'localhost',
-				'id' => 'db_host',
-				'name' => 'db_host',
+				'id' => 'db-host',
+				'name' => 'db-host',
 				'required' => 'required',
 				'value' => $options['dbHost']
 			))
@@ -87,8 +87,8 @@ class InstallForm implements ViewInterface
 				'for' => 'db_name'
 			))
 			->text(array(
-				'id' => 'db_name',
-				'name' => 'db_name',
+				'id' => 'db-name',
+				'name' => 'db-name',
 				'required' => 'required',
 				'value' => $options['dbName']
 			))
@@ -97,27 +97,27 @@ class InstallForm implements ViewInterface
 				'for' => 'db_user'
 			))
 			->text(array(
-				'id' => 'db_user',
-				'name' => 'db_user',
+				'id' => 'db-user',
+				'name' => 'db-user',
 				'required' => 'required',
 				'value' => $options['dbUser']
 			))
 			->append('</li><li>')
 			->label(Language::get('password'), array(
-				'for' => 'db_password'
+				'for' => 'db-password'
 			))
 			->password(array(
-				'id' => 'db_password',
-				'name' => 'db_password',
+				'id' => 'db-password',
+				'name' => 'db-password',
 				'value' => $options['dbPassword']
 			))
 			->append('</li><li>')
 			->label(Language::get('prefix'), array(
-				'for' => 'db_prefix'
+				'for' => 'db-prefix'
 			))
 			->text(array(
-				'id' => 'db_prefix',
-				'name' => 'db_prefix',
+				'id' => 'db-prefix',
+				'name' => 'db-prefix',
 				'value' => $options['dbPrefix']
 			))
 			->append('</li></ul></fieldset>')
@@ -131,18 +131,18 @@ class InstallForm implements ViewInterface
 				'for' => 'name'
 			))
 			->text(array(
-				'id' => 'admin_name',
-				'name' => 'admin_name',
+				'id' => 'admin-name',
+				'name' => 'admin-name',
 				'required' => 'required',
 				'value' => $options['adminName']
 			))
 			->append('</li><li>')
 			->label(Language::get('name'), array(
-				'for' => 'admin_user'
+				'for' => 'admin-user'
 			))
 			->text(array(
-				'id' => 'admin_user',
-				'name' => 'admin_user',
+				'id' => 'admin-user',
+				'name' => 'admin-user',
 				'required' => 'required',
 				'value' => $options['adminUser']
 			))
@@ -151,24 +151,24 @@ class InstallForm implements ViewInterface
 				'for' => 'admin_password'
 			))
 			->password(array(
-				'id' => 'admin_password',
-				'name' => 'admin_password',
+				'id' => 'admin-password',
+				'name' => 'admin-password',
 				'required' => 'required',
 				'value' => $options['adminPassword']
 			))
 			->append('</li><li>')
 			->label(Language::get('email'), array(
-				'for' => 'admin_email'
+				'for' => 'admin-email'
 			))
 			->email(array(
-				'id' => 'admin_email',
-				'name' => 'admin_email',
+				'id' => 'admin-email',
+				'name' => 'admin-email',
 				'required' => 'required',
 				'value' => $options['adminEmail']
 			))
 			->append('</li></ul></fieldset>')
 			->hidden(array(
-				'name' => 'db_salt',
+				'name' => 'db-salt',
 				'value' => sha1(uniqid())
 			))
 			->token()

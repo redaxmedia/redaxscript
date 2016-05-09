@@ -15,12 +15,19 @@
 
 	/* @section 1. install */
 
-	$(function ()
+	$.fn.install = function (options)
 	{
-		var fieldType = $('#db_type'),
-			fieldRelated = $('#db_name, #db_user, #db_password'),
-			fieldRequired = $('#db_name, #db_user'),
-			fieldHost = $('#db_host');
+		/* extend options */
+
+		if (rs.plugins.install.options !== options)
+		{
+			options = $.extend({}, rs.plugins.install.options, options || {});
+		}
+
+		var fieldType = $(options.element.fieldType),
+			fieldRelated = $(options.element.fieldRelated),
+			fieldRequired = $(options.element.fieldRequired),
+			fieldHost = $(options.element.fieldTfieldHostype);
 
 		/* listen for change */
 
@@ -48,5 +55,15 @@
 				fieldRelated.parent().show();
 			}
 		}).trigger('change');
+	};
+
+	/* @section 2. init */
+
+	$(function ()
+	{
+		if (rs.plugins.install.init)
+		{
+			$(rs.plugins.install.selector).install(rs.plugins.install.options);
+		}
 	});
 })(window.jQuery || window.Zepto);

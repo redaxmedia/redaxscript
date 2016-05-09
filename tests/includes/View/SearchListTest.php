@@ -129,7 +129,6 @@ class SearchListTest extends TestCase
 
 		foreach ($tableArray as $table)
 		{
-			echo $table . "@@@@@\n";
 			$columnArray = array_filter(array(
 				$table === 'categories' || $table === 'articles' ? 'title' : null,
 				$table === 'categories' || $table === 'articles' ? 'description' : null,
