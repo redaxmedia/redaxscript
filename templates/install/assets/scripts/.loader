@@ -2,4 +2,4 @@
 1 = default
 
 [template]
-1 = templates/install/assets/scripts/install.js
+1 = assets/scripts/install.js

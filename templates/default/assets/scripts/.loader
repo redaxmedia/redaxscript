@@ -12,7 +12,7 @@
 [template]
 1 = assets/scripts/dialog.js
 2 = assets/scripts/form.js
-3 = assets/scripts/panel.js
+3 = assets/scripts/interface.js
 4 = assets/scripts/misc.js
 
 [settings]
