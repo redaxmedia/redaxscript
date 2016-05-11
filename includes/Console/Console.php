@@ -35,7 +35,8 @@ class Console
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',
 		'status' => 'Redaxscript\Console\Command\Status',
-		'setting' => 'Redaxscript\Console\Command\Setting'
+		'setting' => 'Redaxscript\Console\Command\Setting',
+		'uninstall' => 'Redaxscript\Console\Command\Uninstall',
 	);
 
 	/**
