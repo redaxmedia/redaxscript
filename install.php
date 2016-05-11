@@ -1,13 +1,6 @@
 <?php
 error_reporting(E_ERROR || E_PARSE);
 
-/* deprecated */
-
-include_once('includes/loader.php');
-include_once('includes/startup.php');
-include_once('includes/Singleton.php');
-include_once('includes/Config.php');
-
 if ($argv)
 {
 	/* install cli */
