@@ -44,7 +44,7 @@ class Parser
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param Request $request instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
 	public function __construct(Request $request)

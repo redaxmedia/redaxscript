@@ -9,7 +9,7 @@ error_reporting(E_ERROR || E_PARSE);
 
 include_once('includes/bootstrap.php');
 
-/* command */
+/* console */
 
-$command = new Console\Command(Request::getInstance());
-$command->init();
+$console = new Console\Console(Request::getInstance());
+echo $console->init();

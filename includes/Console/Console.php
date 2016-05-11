@@ -13,7 +13,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class Command
+class Console
 {
 	/**
 	 * instance of the request class
@@ -29,12 +29,11 @@ class Command
 	 * @var string
 	 */
 
-	protected static $_commandArray = array(
+	protected $_commandArray = array(
 		'backup' => 'Redaxscript\Console\Command\Backup',
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',
-		'list' => 'Redaxscript\Console\Command\List',
 		'status' => 'Redaxscript\Console\Command\Status',
 		'setting' => 'Redaxscript\Console\Command\Setting'
 	);
@@ -44,20 +43,20 @@ class Command
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param Request $request instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
 	public function __construct(Request $request)
 	{
 		$this->_request = $request;
 	}
-	
+
 	/**
 	 * init the class
 	 *
 	 * @since 3.0.0
 	 */
-	
+
 	public function init()
 	{
 		/* parser */
@@ -65,12 +64,13 @@ class Command
 		$parser = new Parser(Request::getInstance());
 		$parser->init();
 
-		/* verbose */
+		/* run command */
 
-		if ($parser->getOption('verbose'))
+		$commandArgument = $parser->getArgument(1);
+		if (array_key_exists($commandArgument, $this->_commandArray))
 		{
-			print_r($parser->getArgument());
-			print_r($parser->getOption());
+			$command = new $this->_commandArray[$commandArgument]($parser);
+			return $command->run();
 		}
 	}
 }
