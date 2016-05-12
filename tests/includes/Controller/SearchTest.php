@@ -6,7 +6,6 @@ use Redaxscript\Validator;
 use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Router;
 
 /**

@@ -121,9 +121,8 @@ class Search implements ControllerInterface
 		{
 			return $this->error($errorArray);
 		}
-		//TODO: The check for $output does not "feel right" to me - can't we check for $result
-		//and if that is present we run $this->success($result)... What about renaming it to $successArray like in other controllers?
-		//because it is a set of result objects and not a single result
+
+		//TODO: The check for $output does not "feel right" to me
 		$output = $this->success($result);
 		if ($output)
 		{
@@ -161,8 +160,6 @@ class Search implements ControllerInterface
 
 			/* fetch result */
 
-			//TODO: missing check for language - if you switched manually with /xxx.hu you should not find a article set to
-			//a language like .en or .de
 			$result[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
 				->where('status', 1)

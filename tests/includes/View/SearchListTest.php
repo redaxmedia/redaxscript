@@ -54,7 +54,7 @@ class SearchListTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
 		Db::forTablePrefix('articles')
@@ -65,7 +65,6 @@ class SearchListTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'status' => 0,
 				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
@@ -87,7 +86,7 @@ class SearchListTest extends TestCase
 	 * @since 3.0.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
 		Db::forTablePrefix('comments')->where('author', 'test search')->deleteMany();
@@ -112,32 +111,26 @@ class SearchListTest extends TestCase
 	 * @since 3.0.0
 	 *
 	 * @param array $tableArray array of query tables
-	 * @param string $searchParameter
+	 * @param array $searchParameter
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($tableArray = array(), $searchParameter = null, $expect = array())
+	public function testRender($tableArray = array(), $searchParameter = array(), $expect = array())
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
 		$search = $searchParameter['search'];
 
-		//TODO: More test cases
-
 		foreach ($tableArray as $table)
 		{
 			$columnArray = array_filter(array(
 				$table === 'categories' || $table === 'articles' ? 'title' : null,
-				$table === 'categories' || $table === 'articles' ? 'description' : null,
-				$table === 'categories' || $table === 'articles' ? 'keywords' : null,
 				$table === 'articles' || $table === 'comments' ? 'text' : null
 			));
 			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
 				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
 				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
 			));
@@ -146,12 +139,6 @@ class SearchListTest extends TestCase
 
 			$result[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
-				->where('status', 1)
-				->whereRaw('(language = ? OR language is ?)', array(
-					$this->_registry->get('language'),
-					null
-				))
-				->orderByDesc('date')
 				->findMany();
 		}
 
