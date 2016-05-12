@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ERROR || E_PARSE);
 
+include_once('includes/Singleton.php');
+include_once('includes/Config.php');
 if ($argv)
 {
 	/* install cli */

@@ -69,11 +69,11 @@ class Disqus extends Config
 	{
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'id' => self::$_config['id']
+			'id' => self::$_configArray['id']
 		));
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script', array(
-			'src' => self::$_config['url']
+			'src' => self::$_configArray['url']
 		));
 
 		/* collect output */

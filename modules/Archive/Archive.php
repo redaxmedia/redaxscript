@@ -50,13 +50,13 @@ class Archive extends Config
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h3', array(
-			'class' => self::$_config['className']['title']
+			'class' => self::$_configArray['className']['title']
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => self::$_config['className']['list']
+			'class' => self::$_configArray['className']['list']
 		));
 
 		/* fetch articles */

@@ -63,7 +63,7 @@ class FeedReader extends Config
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h3', array(
-			'class' => self::$_config['className']['title']
+			'class' => self::$_configArray['className']['title']
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a', array(
@@ -71,7 +71,7 @@ class FeedReader extends Config
 		));
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'class' => self::$_config['className']['box']
+			'class' => self::$_configArray['className']['box']
 		));
 
 		/* get contents */

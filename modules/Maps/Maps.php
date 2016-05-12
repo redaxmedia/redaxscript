@@ -57,7 +57,7 @@ class Maps extends Config
 	{
 		if (!Registry::get('adminParameter'))
 		{
-			$output = '<script src="' . self::$_config['apiUrl'] . '?key=' . self::$_config['apiKey'] . '&amp;sensor=' . self::$_config['sensor'] . '"></script>';
+			$output = '<script src="' . self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor'] . '"></script>';
 			echo $output;
 		}
 	}
@@ -78,7 +78,7 @@ class Maps extends Config
 	{
 		$mapElement = new Html\Element();
 		$mapElement->init('div', array(
-			'class' => self::$_config['className'],
+			'class' => self::$_configArray['className'],
 			'data-lat' => is_numeric($lat) ? $lat : null,
 			'data-lng' => is_numeric($lng) ? $lng : null,
 			'data-zoom' => is_numeric($zoom) ? $zoom : null

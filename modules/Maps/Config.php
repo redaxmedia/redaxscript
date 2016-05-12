@@ -16,12 +16,12 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
+	protected static $_configArray = array(
 		'className' => 'rs-js-map rs-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
 		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM',

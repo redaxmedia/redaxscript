@@ -67,7 +67,7 @@ class LazyLoad extends Config
 
 			foreach ($src as $key => $value)
 			{
-				if (in_array($key, self::$_config['device']) && Registry::get('my' . ucfirst($key)))
+				if (in_array($key, self::$_configArray['device']) && Registry::get('my' . ucfirst($key)))
 				{
 					$src = $value;
 				}
@@ -81,8 +81,8 @@ class LazyLoad extends Config
 			$imageElement = new Html\Element();
 			$imageElement->init('img', array(
 				'alt' => $options['alt'],
-				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
-				'src' => self::$_config['placeholder']
+				'class' => self::$_configArray['className']['image'] . ' ' . $options['className'],
+				'src' => self::$_configArray['placeholder']
 			));
 
 			/* collect output */
@@ -91,7 +91,7 @@ class LazyLoad extends Config
 
 			/* placeholder */
 
-			if (self::$_config['placeholder'])
+			if (self::$_configArray['placeholder'])
 			{
 				/* calculate image ratio */
 
@@ -102,7 +102,7 @@ class LazyLoad extends Config
 
 				$placeholderElement = new Html\Element();
 				$placeholderElement->init('div', array(
-					'class' => self::$_config['className']['placeholder'],
+					'class' => self::$_configArray['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
 				));
 
