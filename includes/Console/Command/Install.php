@@ -16,6 +16,20 @@ use Redaxscript\Console\CommandAbstract;
 class Install extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Install',
+		'command' => 'install',
+		'author' => 'Redaxmedia',
+		'description' => 'Install the database',
+		'version' => '3.0.0'
+	);
+	
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0

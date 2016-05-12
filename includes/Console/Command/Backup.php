@@ -16,6 +16,20 @@ use Redaxscript\Console\CommandAbstract;
 class Backup extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Backup',
+		'command' => 'backup',
+		'author' => 'Redaxmedia',
+		'description' => 'Create a database backup',
+		'version' => '3.0.0'
+	);
+
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0

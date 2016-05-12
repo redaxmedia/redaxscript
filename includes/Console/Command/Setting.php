@@ -17,6 +17,20 @@ use Redaxscript\Console\CommandAbstract;
 class Setting extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Setting',
+		'command' => 'setting',
+		'author' => 'Redaxmedia',
+		'description' => 'Handle the settings',
+		'version' => '3.0.0'
+	);
+	
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0
@@ -28,7 +42,7 @@ class Setting extends CommandAbstract
 		if ($commandArgument)
 		{
 			return Db::getSetting($commandArgument) . PHP_EOL;
-		}		
+		}
 		//php console setting show
 		//php console setting set --name=value
 	}

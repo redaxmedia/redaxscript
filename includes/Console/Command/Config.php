@@ -16,6 +16,20 @@ use Redaxscript\Console\CommandAbstract;
 class Config extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Config',
+		'command' => 'config',
+		'author' => 'Redaxmedia',
+		'description' => 'Handle the configuration file',
+		'version' => '3.0.0'
+	);
+	
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0

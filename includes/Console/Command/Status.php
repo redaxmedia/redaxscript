@@ -17,6 +17,20 @@ use Redaxscript\Console\CommandAbstract;
 class Status extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Status',
+		'command' => 'status',
+		'author' => 'Redaxmedia',
+		'description' => 'Database status information',
+		'version' => '3.0.0'
+	);
+	
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0

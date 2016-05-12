@@ -16,6 +16,20 @@ use Redaxscript\Console\CommandAbstract;
 class Uninstall extends CommandAbstract
 {
 	/**
+	 * array of the command
+	 *
+	 * @var array
+	 */
+
+	protected $_commandArray = array(
+		'name' => 'Uninstall',
+		'command' => 'uninstall',
+		'author' => 'Redaxmedia',
+		'description' => 'Uninstall the database',
+		'version' => '3.0.0'
+	);
+
+	/**
 	 * run the command
 	 *
 	 * @since 3.0.0

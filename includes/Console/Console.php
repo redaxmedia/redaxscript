@@ -24,19 +24,19 @@ class Console
 	protected $_request;
 
 	/**
-	 * array of commands
+	 * array of namespaces
 	 *
 	 * @var string
 	 */
 
-	protected $_commandArray = array(
+	protected $_namespaceArray = array(
 		'backup' => 'Redaxscript\Console\Command\Backup',
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',
 		'status' => 'Redaxscript\Console\Command\Status',
 		'setting' => 'Redaxscript\Console\Command\Setting',
-		'uninstall' => 'Redaxscript\Console\Command\Uninstall',
+		'uninstall' => 'Redaxscript\Console\Command\Uninstall'
 	);
 
 	/**
@@ -62,16 +62,18 @@ class Console
 	{
 		/* parser */
 
-		$parser = new Parser(Request::getInstance());
+		$parser = new Parser($this->_request);
 		$parser->init();
 
 		/* run command */
 
-		$commandArgument = $parser->getArgument(1);
-		if (array_key_exists($commandArgument, $this->_commandArray))
+		$commandKey = $parser->getArgument(1);
+		if (!array_key_exists($commandKey, $this->_namespaceArray))
 		{
-			$command = new $this->_commandArray[$commandArgument]($parser);
-			return $command->run();
+			$commandKey = 'help';
 		}
+		$commandClass = $this->_namespaceArray[$commandKey];
+		$command = new $commandClass($parser);
+		return $command->run();
 	}
 }
