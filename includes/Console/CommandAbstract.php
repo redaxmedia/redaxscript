@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Console;
 
+use Redaxscript\Config as BaseConfig;
+use Redaxscript\Request as BaseRequest;
+
 /**
  * abstract class to create a command class
  *
@@ -14,24 +17,34 @@ namespace Redaxscript\Console;
 abstract class CommandAbstract
 {
 	/**
-	 * instance of the parser class
+	 * instance of the config class
 	 *
 	 * @var object
 	 */
 
-	protected $_parser;
+	protected $_config;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
 
 	/**
 	 * constructor of the class
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param Parser $parser instance of the parser class
+	 * @param BaseConfig $config instance of the config class
+	 * @param BaseRequest $request instance of the request class
 	 */
 
-	public function __construct(Parser $parser)
+	public function __construct(BaseConfig $config, BaseRequest $request)
 	{
-		$this->_parser = $parser;
+		$this->_config = $config;
+		$this->_request = $request;
 	}
 
 	/**
@@ -49,7 +62,7 @@ abstract class CommandAbstract
 		}
 		if (array_key_exists('command', $this->_commandArray))
 		{
-			$output .= '  Usage: php console.php ' . $this->_commandArray['command'] . PHP_EOL;
+			$output .= $this->_commandArray['command'] . PHP_EOL;
 		}
 		return $output;
 	}

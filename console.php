@@ -11,5 +11,5 @@ include_once('includes/bootstrap.php');
 
 /* console */
 
-$console = new Console\Console(Request::getInstance());
+$console = new Console\Console(Config::getInstance(), Request::getInstance());
 echo $console->init();

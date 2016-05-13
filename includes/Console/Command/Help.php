@@ -2,6 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\CommandAbstract;
+use Redaxscript\Console\Parser;
 
 /**
  * children class to execute the help command
@@ -55,17 +56,35 @@ class Help extends CommandAbstract
 
 	public function run()
 	{
-		$output = null;
-		$commandKey = $this->_parser->getArgument(2);
+		$parser = new Parser($this->_request);
+		$parser->init();
 
-		/* collect each help */
+		/* run command */
+
+		$commandKey = $parser->getArgument(2);
+		return $this->_help($commandKey);
+	}
+
+	/**
+	 * show the help
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $commandKey
+	 * @return string
+	 */
+
+	protected function _help($commandKey = null)
+	{
+		$output = PHP_EOL;
+
+		/* collect multiple help */
 
 		if (!array_key_exists($commandKey, $this->_namespaceArray))
 		{
-			$output = PHP_EOL;
 			foreach ($this->_namespaceArray as $commandClass)
 			{
-				$command = new $commandClass($this->_parser);
+				$command = new $commandClass($this->_config, $this->_request);
 				$output .= $command->getHelp() . PHP_EOL;
 			}
 		}
@@ -74,9 +93,8 @@ class Help extends CommandAbstract
 
 		else
 		{
-			$output .= PHP_EOL;
 			$commandClass = $this->_namespaceArray[$commandKey];
-			$command = new $commandClass($this->_parser);
+			$command = new $commandClass($this->_config, $this->_request);
 			$output .= $command->getHelp() . PHP_EOL;
 		}
 		return $output;

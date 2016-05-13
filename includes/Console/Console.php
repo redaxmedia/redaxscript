@@ -1,7 +1,8 @@
 <?php
 namespace Redaxscript\Console;
 
-use Redaxscript\Request;
+use Redaxscript\Config as BaseConfig;
+use Redaxscript\Request as BaseRequest;
 
 /**
  * parent class to handle the command line interface
@@ -15,6 +16,14 @@ use Redaxscript\Request;
 
 class Console
 {
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
 	/**
 	 * instance of the request class
 	 *
@@ -44,11 +53,13 @@ class Console
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param Request $request instance of the request class
+	 * @param BaseConfig $config instance of the config class
+	 * @param BaseRequest $request instance of the request class
 	 */
 
-	public function __construct(Request $request)
+	public function __construct(BaseConfig $config, BaseRequest $request)
 	{
+		$this->_config = $config;
 		$this->_request = $request;
 	}
 
@@ -60,8 +71,6 @@ class Console
 
 	public function init()
 	{
-		/* parser */
-
 		$parser = new Parser($this->_request);
 		$parser->init();
 
@@ -73,7 +82,7 @@ class Console
 			$commandKey = 'help';
 		}
 		$commandClass = $this->_namespaceArray[$commandKey];
-		$command = new $commandClass($parser);
+		$command = new $commandClass($this->_config, $this->_request);
 		return $command->run();
 	}
 }
