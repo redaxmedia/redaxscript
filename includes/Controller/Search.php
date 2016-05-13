@@ -136,12 +136,14 @@ class Search implements ControllerInterface
 	 *
 	 * @param array $queryArray array of query parameters
 	 *
-	 * @return Db
+	 * @return array
 	 */
 
 	private function _search($queryArray = array())
 	{
-		$search = $queryArray['search'];
+		$resultArray = array();
+
+		/* process tables */
 
 		foreach ($queryArray['table'] as $table)
 		{
@@ -152,15 +154,15 @@ class Search implements ControllerInterface
 				$table === 'articles' || $table === 'comments' ? 'text' : null
 			));
 			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+				$table === 'categories' || $table === 'articles' ? '%' . $queryArray['search'] . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $queryArray['search'] . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $queryArray['search'] . '%' : null,
+				$table === 'articles' || $table === 'comments' ? '%' . $queryArray['search'] . '%' : null
 			));
 
 			/* fetch result */
 
-			$result[$table] = Db::forTablePrefix($table)
+			$resultArray[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
 				->where('status', 1)
 				->whereRaw('(language = ? OR language is ?)', array(
@@ -170,7 +172,7 @@ class Search implements ControllerInterface
 				->orderByDesc('date')
 				->findMany();
 		}
-		return $result;
+		return $resultArray;
 	}
 
 	/**
@@ -178,7 +180,7 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray array of the search query results
+	 * @param array $successArray array of the success
 	 *
 	 * @return string
 	 */
