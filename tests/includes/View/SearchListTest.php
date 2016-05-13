@@ -122,8 +122,8 @@ class SearchListTest extends TestCase
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
-		$search = $searchParameter['search'];
 
+		//TODO: find another way to create a resultArray - why not with the _search method from the controller
 		foreach ($tableArray as $table)
 		{
 			$columnArray = array_filter(array(
@@ -131,8 +131,8 @@ class SearchListTest extends TestCase
 				$table === 'articles' || $table === 'comments' ? 'text' : null
 			));
 			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+				$table === 'categories' || $table === 'articles' ? '%' . $searchParameter['search'] . '%' : null,
+				$table === 'articles' || $table === 'comments' ? '%' . $searchParameter['search'] . '%' : null
 			));
 
 			/* fetch result */

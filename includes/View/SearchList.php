@@ -55,13 +55,14 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
+	 * @since 3.0.0
+	 * 
 	 * @param array $result array for the db query results
 	 *
 	 * @return string
-	 * @since 3.0.0
-	 *
 	 */
 
+	//TODO: rename to $resultArray
 	public function render($result = null)
 	{
 		$output = Hook::trigger('searchListStart');
@@ -72,7 +73,7 @@ class SearchList implements ViewInterface
 			if ($data)
 			{
 				/* title element */
-
+				//TODO: move the element building out - bad performance inside a foreach
 				$titleElement = new Html\Element();
 				$titleElement
 					->init('h2', array(
@@ -92,6 +93,7 @@ class SearchList implements ViewInterface
 
 				foreach ($data as $value)
 				{
+					//TODO: what about the access check on this position
 					$itemOutput .= $this->_renderItem($value, $item);
 				}
 
@@ -111,6 +113,8 @@ class SearchList implements ViewInterface
 
 	/**
 	 * method for rendering a list item
+	 *
+	 * @sind 3.0.0
 	 *
 	 * @param array $item a single db row the $resultArray
 	 * @param string $table to know which table the current $item from
@@ -133,7 +137,7 @@ class SearchList implements ViewInterface
 			$route = build_route($table, $item->id);
 
 			/* html element */
-
+			//TODO: move the element building outside of the access check
 			$linkElement = new Html\Element();
 			$linkElement
 				->init('a', array(

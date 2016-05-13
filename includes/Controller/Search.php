@@ -108,9 +108,8 @@ class Search implements ControllerInterface
 
 		/* process search */
 
-		$result = $this->_search($queryArray);
-
-		if (!$result)
+		$resultArray = $this->_search($queryArray);
+		if (!$resultArray)
 		{
 			$errorArray[] = $this->_language->get('search_no');
 		}
@@ -121,9 +120,8 @@ class Search implements ControllerInterface
 		{
 			return $this->error($errorArray);
 		}
-
-		//TODO: The check for $output does not "feel right" to me
-		$output = $this->success($result);
+		//TODO: do the access  check before rendering
+		$output = $this->success($resultArray);
 		if ($output)
 		{
 			return $output;
