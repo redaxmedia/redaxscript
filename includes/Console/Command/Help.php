@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Console\CommandAbstract;
 use Redaxscript\Console\Parser;
 
 /**
@@ -28,23 +27,6 @@ class Help extends CommandAbstract
 		'author' => 'Redaxmedia',
 		'description' => 'Help for the console',
 		'version' => '3.0.0'
-	);
-
-	/**
-	 * array of namespaces
-	 *
-	 * @var string
-	 */
-
-	protected $_namespaceArray = array(
-		'backup' => 'Redaxscript\Console\Command\Backup',
-		'config' => 'Redaxscript\Console\Command\Config',
-		'help' => 'Redaxscript\Console\Command\Help',
-		'install' => 'Redaxscript\Console\Command\Install',
-		'reinstall' => 'Redaxscript\Console\Command\Reinstall',		
-		'setting' => 'Redaxscript\Console\Command\Setting',
-		'status' => 'Redaxscript\Console\Command\Status',
-		'uninstall' => 'Redaxscript\Console\Command\Uninstall'
 	);
 
 	/**

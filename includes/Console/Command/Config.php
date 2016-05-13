@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Console\CommandAbstract;
 use Redaxscript\Console\Parser;
 
 /**
@@ -89,7 +88,7 @@ class Config extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return boolean
+	 * @return string
 	 */
 
 	public function _write()

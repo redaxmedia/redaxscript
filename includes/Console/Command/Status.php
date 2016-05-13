@@ -2,7 +2,6 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Db;
-use Redaxscript\Console\CommandAbstract;
 
 /**
  * children class to execute the status command

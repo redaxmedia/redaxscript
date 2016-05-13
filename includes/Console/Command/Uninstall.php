@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Console\CommandAbstract;
-
 /**
  * children class to execute the uninstall command
  *
