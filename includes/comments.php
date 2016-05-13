@@ -130,7 +130,7 @@ function comments($article, $route)
 
 	if ($error)
 	{
-		$output = '<div class="rs-box-comment-error">' . $error . Redaxscript\Language::get('point') . '</div>';
+		$output = '<div class="rs-box-comment">' . $error . Redaxscript\Language::get('point') . '</div>';
 	}
 	$output .= Redaxscript\Hook::trigger('commentEnd');
 	echo $output;

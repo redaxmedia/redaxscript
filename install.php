@@ -1,13 +1,8 @@
 <?php
-error_reporting(0);
+error_reporting(E_ERROR || E_PARSE);
 
-/* include core files */
-
-include_once('includes/loader.php');
-include_once('includes/startup.php');
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
-
 if ($argv)
 {
 	/* install cli */
@@ -216,17 +211,17 @@ function install_post()
 
 	/* clean post */
 
-	$d_type = $_POST['db_type'];
-	$d_host = $_POST['db_host'];
-	$d_name = $_POST['db_name'];
-	$d_user = $_POST['db_user'];
-	$d_password = $_POST['db_password'];
-	$d_prefix = $_POST['db_prefix'];
-	$d_salt = $_POST['db_salt'];
-	$name = $_POST['admin_name'];
-	$user = $_POST['admin_user'];
-	$password = $_POST['admin_password'];
-	$email = $_POST['admin_email'];
+	$d_type = $_POST['db-type'];
+	$d_host = $_POST['db-host'];
+	$d_name = $_POST['db-name'];
+	$d_user = $_POST['db-user'];
+	$d_password = $_POST['db-password'];
+	$d_prefix = $_POST['db-prefix'];
+	$d_salt = $_POST['db-salt'];
+	$name = $_POST['admin-name'];
+	$user = $_POST['admin-user'];
+	$password = $_POST['admin-password'];
+	$email = $_POST['admin-email'];
 
 	/* validate post */
 

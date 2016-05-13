@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\SitemapXml;
 use Redaxscript\Db;
 use Redaxscript\Module;
 use Redaxscript\Registry;
+use XMLWriter;
 
 /**
  * generate a sitemap xml
@@ -39,7 +40,7 @@ class SitemapXml extends Module
 
 	public static function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'sitemap_xml')
+		if (Registry::get('firstParameter') === 'sitemap-xml')
 		{
 			header('content-type: application/xml');
 			echo self::render();
@@ -73,28 +74,40 @@ class SitemapXml extends Module
 			->orderByAsc('rank')
 			->findMany();
 
-		/* collect output */
+		/* writer */
 
-		$output = '<?xml version="1.0" encoding="' . Db::getSetting('charset') . '"?>' . PHP_EOL;
-		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
-		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>' . PHP_EOL;
+		$writer = new XMLWriter();
+		$writer->openMemory();
+		$writer->setIndent(true);
+		$writer->setIndentString('	');
+		$writer->startDocument('1.0', Db::getSetting('charset'));
+		$writer->startElement('urlset');
+		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+		$writer->startElement('url');
+		$writer->writeElement('loc', Registry::get('root'));
+		$writer->endElement();
 
 		/* process categories */
 
 		foreach ($categories as $value)
 		{
-			$route = $value->parent < 1 ? $value->alias : build_route('categories', $value->id);
-			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
+			$writer->startElement('url');
+			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('categories', $value->id));
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->endElement();
 		}
 
 		/* process articles */
 
 		foreach ($articles as $value)
 		{
-			$route = $value->category < 1 ? $value->alias : build_route('articles', $value->id);
-			$output .= '<url><loc>' . Registry::get('root') . Registry::get('parameterRoute') . $route . '</loc></url>' . PHP_EOL;
+			$writer->startElement('url');
+			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('articles', $value->id));
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->endElement();
 		}
-		$output .= '</urlset>';
-		return $output;
+		$writer->endElement();
+		$writer->endDocument();
+		return $writer->outputMemory(true);
 	}
 }

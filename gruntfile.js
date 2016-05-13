@@ -209,6 +209,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'assets/styles/_query.css',
 					'assets/styles/normalize.css',
 					'assets/styles/helper.css',
 					'assets/styles/animate.css',
@@ -231,6 +232,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'assets/styles/_query.css',
+					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/layout.css',
 					'templates/admin/assets/styles/box.css',
@@ -254,7 +257,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/default/assets/styles/_query.css',
+					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/layout.css',
@@ -264,6 +267,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/dialog.css',
 					'templates/default/assets/styles/field.css',
 					'templates/default/assets/styles/form.css',
+					'templates/default/assets/styles/grid.css',
 					'templates/default/assets/styles/icon.css',
 					'templates/default/assets/styles/list.css',
 					'templates/default/assets/styles/media.css',
@@ -279,7 +283,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/default/assets/styles/_query.css',
+					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/install/assets/styles/layout.css'
 				],
@@ -377,6 +381,10 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
+			phpunitParallel:
+			{
+				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+			},
 			tocBase:
 			{
 				command: 'sh vendor/bin/tocgen.sh assets .tocgen'
@@ -461,6 +469,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/**',
 					'libraries/**',
@@ -485,6 +494,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/en.json',
 					'libraries/**',
@@ -675,6 +685,10 @@ module.exports = function (grunt)
 	[
 		'shell:phpunit'
 	]);
+	grunt.registerTask('phpunitParallel',
+	[
+		'shell:phpunitParallel'
+	]);	
 	grunt.registerTask('toclint',
 	[
 		'shell:toclintBase',

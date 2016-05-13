@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
-<phpunit bootstrap="tests/bootstrap.php" strict="true">
+<phpunit bootstrap="tests/bootstrap.php">
+
+	<!-- listeners -->
+
+	<listeners>
+		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener" />
+	</listeners>
 
 	<!-- filter -->
 
@@ -7,11 +13,17 @@
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">includes</directory>
 			<exclude>
+				<file>includes/bootstrap.php</file>
+				<file>console.php</file>
+				<file>index.php</file>
+				<file>install.php</file>
+
+				<!-- deprecated -->
+
 				<file>includes/admin_admin.php</file>
 				<file>includes/admin_list.php</file>
 				<file>includes/admin_query.php</file>
 				<file>includes/admin_router.php</file>
-				<file>includes/bootstrap.php</file>
 				<file>includes/comments.php</file>
 				<file>includes/contents.php</file>
 				<file>includes/head.php</file>
@@ -20,8 +32,6 @@
 				<file>includes/query.php</file>
 				<file>includes/router.php</file>
 				<file>includes/startup.php</file>
-				<file>index.php</file>
-				<file>install.php</file>
 			</exclude>
 		</whitelist>
 	</filter>
@@ -40,6 +50,12 @@
 
 		<testsuite name="client">
 			<directory>tests/includes/Client</directory>
+		</testsuite>
+
+		<!-- console -->
+
+		<testsuite name="console">
+			<directory>tests/includes/Console</directory>
 		</testsuite>
 
 		<!-- controller -->
@@ -138,12 +154,6 @@
 			<file>tests/includes/HashTest.php</file>
 		</testsuite>
 
-		<!-- helper -->
-
-		<testsuite name="helper">
-			<file>tests/includes/HelperTest.php</file>
-		</testsuite>
-
 		<!-- hook -->
 
 		<testsuite name="hook">
@@ -166,6 +176,12 @@
 
 		<testsuite name="mailer">
 			<file>tests/includes/MailerTest.php</file>
+		</testsuite>
+
+		<!-- messenger -->
+
+		<testsuite name="messenger">
+			<file>tests/includes/MessengerTest.php</file>
 		</testsuite>
 
 		<!-- minifier -->
@@ -207,13 +223,8 @@
 		<!-- template -->
 
 		<testsuite name="template">
-			<file>tests/includes/TemplateTest.php</file>
-		</testsuite>
-
-		<!-- messenger -->
-
-		<testsuite name="messenger">
-			<file>tests/includes/MessengerTest.php</file>
+			<file>tests/includes/Template/HelperTest.php</file>
+			<file>tests/includes/Template/TagTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

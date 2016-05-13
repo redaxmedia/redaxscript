@@ -1,14 +1,13 @@
 <?php
 namespace Redaxscript;
 
-/* strict reporting */
-
-error_reporting(E_STRICT || E_ERROR);
-
-/* include files */
+/* autoload */
 
 include_once('includes/Autoloader.php');
 include_once('TestCase.php');
+
+/* deprecated */
+
 include_once('includes/query.php');
 
 /* init */
@@ -89,4 +88,4 @@ Hook::init();
 /* language */
 
 $language = Language::getInstance();
-$language::init('en');
+$language::init();

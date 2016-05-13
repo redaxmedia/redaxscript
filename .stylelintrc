@@ -4,7 +4,6 @@
 		"color-hex-case": "lower",
 		"color-named": "never",
 		"color-no-invalid-hex": true,
-		"comment-empty-line-before": "always",
 		"comment-whitespace-inside": "always",
 		"block-closing-brace-newline-after": "always",
 		"block-closing-brace-newline-before": "always",

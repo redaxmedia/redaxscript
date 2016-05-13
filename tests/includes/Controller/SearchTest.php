@@ -6,7 +6,6 @@ use Redaxscript\Validator;
 use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Router;
 
 /**
@@ -25,7 +24,7 @@ class SearchTest extends TestCase
 	/**
 	 * instance of the registry class
 	 *
-	 * @var \Redaxscript\Registry
+	 * @var object
 	 */
 
 	protected $_registry;
@@ -33,18 +32,10 @@ class SearchTest extends TestCase
 	/**
 	 * instance of the language class
 	 *
-	 * @var \Redaxscript\Language
+	 * @var object
 	 */
 
 	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var \Redaxscript\Request
-	 */
-
-	protected $_request;
 
 	/**
 	 * setUp
@@ -56,7 +47,6 @@ class SearchTest extends TestCase
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
 	}
 
 	/**
@@ -75,7 +65,7 @@ class SearchTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
 		Db::forTablePrefix('articles')
@@ -86,19 +76,40 @@ class SearchTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(array(
+				'title' => 'test search',
+				'alias' => 'test-three',
+				'author' => 'admin',
+				'text' => 'test',
+				'category' => 1,
+				'status' => 0,
+				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
-				'id' => 3,
-				'author' => 'test',
+				'author' => 'test search',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
-				'status' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(array(
+				'author' => 'test search',
+				'email' => 'test@test.com',
+				'text' => 'test',
+				'article' => 1,
+				'status' => 0,
+				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
 	}
@@ -112,7 +123,7 @@ class SearchTest extends TestCase
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
-		Db::forTablePrefix('comments')->where('text', 'test')->deleteMany();
+		Db::forTablePrefix('comments')->where('author', 'test search')->deleteMany();
 	}
 
 	/**
@@ -133,19 +144,18 @@ class SearchTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $registry
+	 * @param array $registry
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($registry = null, $expect = null)
+	public function testProcess($registry = array(), $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registry);
-
-		$searchController = new Controller\Search($this->_registry, $this->_language, $this->_request);
+		$searchController = new Controller\Search($this->_registry, $this->_language);
 
 		/* actual */
 

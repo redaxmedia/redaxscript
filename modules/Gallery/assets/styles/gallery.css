@@ -26,7 +26,7 @@
  @font-face
 {
 	font-family: 'icon gallery';
-	src: url('/modules/Gallery/assets/fonts/icon.woff') format('woff'), url('/modules/Gallery/assets/fonts/icon.ttf') format('truetype');
+	src: url('modules/Gallery/assets/fonts/icon.woff') format('woff'), url('modules/Gallery/assets/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. gallery */

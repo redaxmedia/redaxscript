@@ -14,11 +14,12 @@
 
 /* @section 1. list control admin */
 
-.rs-admin-list-control a, .rs-admin-list-control span
+.rs-admin-list-control a,
+.rs-admin-list-control span
 {
-	background: linear-gradient(#bbb, #b9b9b9);
+	background: var(--rs-admin-gradient-quinary);
 	border-radius: 0.25em;
-	color: #666;
+	color: gray(102);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -27,13 +28,13 @@
 
 .rs-admin-list-control a:hover
 {
-	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	background: var(--rs-admin-gradient-primary);
+	color: gray(255);
 }
 
 .rs-admin-list-control span
 {
-	color: #999;
+	color: gray(153);
 }
 
 /* @section 2. list panel admin */
@@ -43,24 +44,34 @@
 	font-size: 0.875rem;
 }
 
-.rs-admin-list-panel a, .rs-admin-list-panel span
+.rs-admin-list-panel a,
+.rs-admin-list-panel span
 {
-	color: #b9b9b9;
+	box-sizing: border-box;
+	color: gray(185);
 	cursor: pointer;
 	display: block;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
+	padding: 0 0.75em;
+	text-shadow: 0 1px gray(0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s;
 }
 
-.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
+.rs-admin-list-panel li:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	padding-left: 1.25em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	background: var(--rs-admin-gradient-primary);
+}
+
+.rs-admin-list-panel li:hover > a,
+.rs-admin-list-panel li:hover > span
+{
+	color: gray(0);
+	text-shadow: 0 1px gray(255, 0.2);
+}
+
+.rs-admin-list-panel li:hover .rs-admin-list-panel-children
+{
+	background: gray(32);
 }
 
 .rs-admin-list-panel-children
@@ -68,27 +79,53 @@
 	display: none;
 }
 
+.rs-admin-list-panel-children > li
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+.rs-admin-list-panel .rs-admin-link-view
+{
+	flex: 1 1 0;
+}
+
+.rs-admin-list-panel .rs-admin-link-new
+{
+	position: relative;
+	text-indent: -999em;
+	width: 2.75em;
+}
+
+.rs-admin-list-panel .rs-admin-link-new:after
+{
+	content: 'f';
+	font: 0.75rem/1rem 'icon admin';
+	left: 0;
+	margin-top: -0.5rem;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	text-transform: none;
+	top: 50%;
+}
+
 /* @section 3. list tab admin */
 
 .rs-admin-list-tab li
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
-	border: 1px solid #222;
-	border-radius: 0.25em 0.25em 0 0;
+	background: gray(32);
+	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
-	margin-right: 0.25em;
+	margin-right: 0.125rem;
 	vertical-align: bottom;
-}
-
-.rs-admin-list-tab > li + li
-{
-	margin-left: 0.125em;
 }
 
 .rs-admin-list-tab a
 {
-	color: #ccc;
-	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
+	color: gray(204);
+	font: bold 1.25rem/2rem var(--rs-admin-font-primary);
 	text-transform: uppercase;
 }
 
@@ -99,18 +136,17 @@
 
 .rs-admin-list-tab .rs-admin-item-active
 {
-	border-radius: 0.125em 0.125em 0 0;
-	padding: 0.5em 1em;
+	padding: 0.25em 0.75em;
 }
 
 .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #fff;
+	color: gray(255);
 }
 
 .rs-admin-list-tab > li
 {
-	padding: 0.25em 1em;
+	padding: 0.125em 0.75em;
 }
 
 .rs-admin-list-tab > li:hover
@@ -120,20 +156,20 @@
 
 .rs-admin-list-tab > li:hover a
 {
-	color: #fff;
+	color: gray(255);
 }
 
 /* @section 3.1 javascript enabled */
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
-	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #b9b9b9;
-	border-bottom-color: #e2e2e2;
+	background: gray(226);
+	border: 1px solid gray(185);
+	border-bottom-color: gray(226);
 	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #474747;
+	color: gray(71);
 }

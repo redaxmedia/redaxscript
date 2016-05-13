@@ -55,11 +55,11 @@ class CategoryForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/categories'
+					'href' => Registry::get('categoriesEdit') && Registry::get('categoriesDelete') ? Registry::get('parameterRoute') . 'admin/view/categories' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $category->id ? Registry::get('parameterRoute') . 'admin/delete/categories/' . $category->id . '/' . Registry::get('token') : null
@@ -216,18 +216,25 @@ class CategoryForm implements ViewInterface
 				'name' => 'rank',
 				'value' => $category->id ? intval($category->rank) : Db::forTablePrefix('categories')->max('rank') + 1
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $category->access
-			))
-			->append('</li><li>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $category->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label(Language::get('date'), array(
 				'for' => 'date'
 			))
@@ -241,11 +248,16 @@ class CategoryForm implements ViewInterface
 			->cancel();
 		if ($category->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('categoriesDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('categoriesEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('categoriesNew'))
 		{
 			$formElement->create();
 		}

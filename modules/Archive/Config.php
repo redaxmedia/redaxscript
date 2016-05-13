@@ -16,12 +16,12 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
+	protected static $_configArray = array(
 		'className' => array(
 			'title' => 'rs-title-content-sub rs-title-archive',
 			'list' => 'rs-list-default rs-list-archive'

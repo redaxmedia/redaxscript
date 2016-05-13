@@ -89,19 +89,19 @@ class DirectoryLister extends Config
 
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'class' => self::$_config['className']['link']
+				'class' => self::$_configArray['className']['link']
 			));
 			$textSizeElement = new Html\Element();
 			$textSizeElement->init('span', array(
-				'class' => self::$_config['className']['textSize']
+				'class' => self::$_configArray['className']['textSize']
 			));
 			$textDateElement = new Html\Element();
 			$textDateElement->init('span', array(
-				'class' => self::$_config['className']['textDate']
+				'class' => self::$_configArray['className']['textDate']
 			));
 			$listElement = new Html\Element();
 			$listElement->init('ul', array(
-				'class' => self::$_config['className']['list']
+				'class' => self::$_configArray['className']['list']
 			));
 
 			/* list directory object */
@@ -125,7 +125,7 @@ class DirectoryLister extends Config
 						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
 						'title' => Language::get('directory_parent', '_directory_lister')
 					))
-					->addClass(self::$_config['className']['types']['directoryParent'])
+					->addClass(self::$_configArray['className']['types']['directoryParent'])
 					->text(Language::get('directory_parent', '_directory_lister'));
 				$outputDirectory .= '</li>';
 			}
@@ -144,7 +144,7 @@ class DirectoryLister extends Config
 				{
 					foreach ($options['replace'] as $replaceKey => $replaceValue)
 					{
-						if ($replaceKey === self::$_config['replaceKey']['extension'])
+						if ($replaceKey === self::$_configArray['replaceKey']['extension'])
 						{
 							$replaceKey = $fileExtension;
 						}
@@ -163,7 +163,7 @@ class DirectoryLister extends Config
 							'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
 							'title' => Language::get('directory', '_directory_lister')
 						))
-						->addClass(self::$_config['className']['types']['directory'])
+						->addClass(self::$_configArray['className']['types']['directory'])
 						->text($text);
 					$outputDirectory .= $textSizeElement->copy();
 					$outputDirectory .= $textDateElement
@@ -176,9 +176,9 @@ class DirectoryLister extends Config
 
 				else if (is_file($path))
 				{
-					if (array_key_exists($fileExtension, self::$_config['extension']))
+					if (array_key_exists($fileExtension, self::$_configArray['extension']))
 					{
-						$fileType = self::$_config['extension'][$fileExtension];
+						$fileType = self::$_configArray['extension'][$fileExtension];
 						$outputFile .= '<li>';
 						$outputFile .= $linkElement
 							->copy()
@@ -187,12 +187,12 @@ class DirectoryLister extends Config
 								'target' => '_blank',
 								'title' => Language::get('file', '_directory_lister')
 							))
-							->addClass(self::$_config['className']['types'][$fileType])
+							->addClass(self::$_configArray['className']['types'][$fileType])
 							->text($text);
 						$outputFile .= $textSizeElement
 							->copy()
-							->attr('data-unit', self::$_config['size']['unit'])
-							->html(ceil(filesize($path) / self::$_config['size']['divider']));
+							->attr('data-unit', self::$_configArray['size']['unit'])
+							->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
 						$outputFile .= $textDateElement
 							->copy()
 							->html(date($dateFormat, filectime($path)));

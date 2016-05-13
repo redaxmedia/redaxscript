@@ -81,7 +81,6 @@ class LoginForm implements ViewInterface
 				'for' => 'password'
 			))
 			->password(array(
-				'autocomplete' => 'off',
 				'id' => 'password',
 				'name' => 'password',
 				'required' => 'required'

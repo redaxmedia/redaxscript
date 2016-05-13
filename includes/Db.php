@@ -16,6 +16,7 @@ use PDOException;
  *
  * @method _addJoinSource()
  * @method _addOrderBy()
+ * @method _addWhere()
  * @method _setupDb()
  * @method clearCache()
  * @method deleteMany()
@@ -216,7 +217,7 @@ class Db extends ORM
 	/**
 	 * where like with many
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param array $columnArray array of column names
 	 * @param array $likeArray array of the like
@@ -226,7 +227,7 @@ class Db extends ORM
 
 	public function whereLikeMany($columnArray = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode(array_filter($columnArray), ' LIKE ? OR ') . ' LIKE ?', array_filter($likeArray));
+		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ? )', $likeArray);
 	}
 
 	/**
@@ -264,7 +265,18 @@ class Db extends ORM
 
 	public function getSetting($key = null)
 	{
-		return self::forTablePrefix('settings')->where('name', $key)->findOne()->value;
+		$settings = self::forTablePrefix('settings')->findMany();
+
+		/* process settings */
+
+		foreach ($settings as $value)
+		{
+			if ($value->name === $key)
+			{
+				return $value->value;
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -4,4 +4,5 @@
 [admin]
 1 = assets/scripts/alias.js
 2 = assets/scripts/keyword.js
-3 = templates/admin/assets/scripts/interface.js
+3 = assets/scripts/dock.js
+4 = assets/scripts/panel.js

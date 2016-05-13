@@ -57,7 +57,7 @@ class Register implements ControllerInterface
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
 	public function __construct(Registry $registry, Language $language, Request $request)
@@ -79,7 +79,6 @@ class Register implements ControllerInterface
 		$emailFilter = new Filter\Email();
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
-		$urlValidator = new Validator\url();
 		$captchaValidator = new Validator\Captcha();
 
 		/* process post */
@@ -117,10 +116,6 @@ class Register implements ControllerInterface
 		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
-		}
-		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('url_incorrect');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
@@ -233,7 +228,7 @@ class Register implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
-		$urlLogin = $this->_registry->get('root') . $this->_registry->get('parameterRoute') . 'login';
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html elements */
 

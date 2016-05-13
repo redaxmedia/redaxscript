@@ -54,7 +54,28 @@ class SearchListTest extends TestCase
 				'author' => 'admin',
 				'text' => 'test',
 				'category' => 1,
-				'date' => '2016-04-04 04:00:00'
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(array(
+				'title' => 'test search',
+				'alias' => 'test-two',
+				'author' => 'admin',
+				'text' => 'test',
+				'category' => 1,
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(array(
+				'author' => 'test search',
+				'email' => 'test@test.com',
+				'text' => 'test',
+				'article' => 1,
+				'date' => '2016-01-01 00:00:00'
 			))
 			->save();
 	}
@@ -65,9 +86,10 @@ class SearchListTest extends TestCase
 	 * @since 3.0.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
+		Db::forTablePrefix('comments')->where('author', 'test search')->deleteMany();
 	}
 
 	/**
@@ -88,26 +110,41 @@ class SearchListTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $table
-	 * @param array $search
+	 * @param array $tableArray array of query tables
+	 * @param array $searchParameter
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($table = array(), $search = array(), $expect = array())
+	public function testRender($tableArray = array(), $searchParameter = array(), $expect = array())
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
+		$search = $searchParameter['search'];
+
+		foreach ($tableArray as $table)
+		{
+			$columnArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? 'title' : null,
+				$table === 'articles' || $table === 'comments' ? 'text' : null
+			));
+			$likeArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+			));
+
+			/* fetch result */
+
+			$result[$table] = Db::forTablePrefix($table)
+				->whereLikeMany($columnArray, $likeArray)
+				->findMany();
+		}
 
 		/* actual */
 
-		$query = Db::forTablePrefix($table[0])
-				->where('title', $search)
-				->findMany();
-
-		$actual = $searchList->render(array($query), $table);
+		$actual = $searchList->render($result);
 
 		/* compare */
 

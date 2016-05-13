@@ -83,16 +83,16 @@ class ShareThis extends Config
 			));
 			$listElement = new Html\Element();
 			$listElement->init('ul', array(
-				'class' => self::$_config['className']['list']
+				'class' => self::$_configArray['className']['list']
 			));
 
 			/* process network */
 
-			foreach (self::$_config['network'] as $key => $value)
+			foreach (self::$_configArray['network'] as $key => $value)
 			{
 				$output .= '<li>';
 				$output .= $linkElement->attr(array(
-					'class' => self::$_config['className']['link'] . ' ' . $value['className'],
+					'class' => self::$_configArray['className']['link'] . ' ' . $value['className'],
 					'data-height' => $value['height'],
 					'data-type' => $key,
 					'data-width' => $value['width'],

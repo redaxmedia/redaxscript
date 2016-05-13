@@ -1,10 +1,18 @@
 [
 	[
+		"root",
+		"",
 		[
-			"test",
-			"root",
-			"root"
-		],
+			".",
+			"..",
+			"includes",
+			"index.php",
+			"languages"
+		]
+	],
+	[
+		"root",
+		"test",
 		[
 			".",
 			"..",
@@ -15,26 +23,20 @@
 		]
 	],
 	[
-		[
-			"test*",
-			"root",
-			"root"
-		],
+		"root",
+		"test-test",
 		[
 			".",
 			"..",
 			"includes",
 			"index.php",
 			"languages",
-			"test*"
+			"test-test"
 		]
 	],
 	[
-		[
-			"test/test",
-			"root",
-			"root"
-		],
+		"root",
+		"test/test",
 		[
 			".",
 			"..",
@@ -44,11 +46,8 @@
 		]
 	],
 	[
-		[
-			"includes",
-			"root",
-			"root"
-		],
+		"root",
+		"includes",
 		[
 			".",
 			"..",

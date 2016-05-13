@@ -19,7 +19,7 @@ function router()
 	$thirdParameter = Redaxscript\Registry::get('thirdParameter');
 	$thirdSubParameter = Redaxscript\Registry::get('thirdSubParameter');
 	Redaxscript\Hook::trigger('routerStart');
-	if (Redaxscript\Registry::get('routerBreak') == 1)
+	if (Redaxscript\Registry::get('routerBreak'))
 	{
 		return;
 	}
@@ -44,12 +44,7 @@ function router()
 	);
 	foreach ($post_list as $key => $value)
 	{
-		if ($_POST[$key] && function_exists($value))
-		{
-			call_user_func($value);
-			return;
-		}
-		elseif ($_POST[$key])
+		if ($_POST[$key])
 		{
 			$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 			echo $controller->process();
@@ -64,7 +59,7 @@ function router()
 		{
 			$table = '/' . $table;
 		}
-		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search') . '...');
+		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search'));
 	}
 
 	/* general routing */

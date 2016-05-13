@@ -1,12 +1,12 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Template::registry('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
 
 	<!-- head -->
 
 	<head>
-		<?php echo Template::partial('templates/default/head.phtml'); ?>
+		<?php echo Tag::partial('templates/default/head.phtml'); ?>
 	</head>
 
 	<!-- body -->
@@ -16,12 +16,12 @@
 		<!-- main -->
 
 		<main id="main" class="rs-install-main rs-install-wrapper rs-clearfix">
-			<h1 class="rs-install-title"><?php echo Template::language('name', '_package'); ?></h1>
-			<?php echo Template::partial('templates/install/content.phtml'); ?>
+			<h1 class="rs-install-title"><?php echo Tag::language('name', '_package'); ?></h1>
+			<?php echo Tag::partial('templates/install/content.phtml'); ?>
 		</main>
 
 		<!-- footer -->
 
-		<?php echo Template::script(); ?>
+		<?php echo Tag::script(); ?>
 	</body>
 </html>

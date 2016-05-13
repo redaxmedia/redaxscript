@@ -20,7 +20,7 @@
 
 .rs-admin-table-default
 {
-	color: #474747;
+	color: gray(71);
 }
 
 .rs-admin-table-default caption,
@@ -40,7 +40,7 @@
 
 .rs-admin-table-default tbody
 {
-	border: solid #b9b9b9;
+	border: solid gray(185);
 	border-width: 0 1px;
 }
 
@@ -48,24 +48,25 @@
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
-	background: linear-gradient(#e2e2e2, #dadada);
+	background: gray(226);
 }
 
 /* even look */
 
 .rs-admin-table-default tbody:nth-child(even) tr
 {
-	background: linear-gradient(#ebebeb, #e8e8e8);
+	background: gray(218);
 }
 
-.rs-admin-table-default tbody + tbody tr, .rs-admin-table-default tbody tr + tr
+.rs-admin-table-default tbody + tbody tr,
+.rs-admin-table-default tbody tr + tr
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid gray(185);
 }
 
 .rs-admin-table-default caption + tbody tr:last-child
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid gray(185);
 }
 
 .rs-admin-table-default tbody td
@@ -77,15 +78,14 @@
 
 .rs-admin-table-default tbody .rs-admin-row-disabled
 {
-	background: #ddd;
-	color: #b9b9b9;
+	background: gray(221);
+	color: gray(185);
 }
 
 /* @section 1.2 row group */
 
 .rs-admin-table-default tbody .rs-admin-row-group
 {
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -98,7 +98,7 @@
 .rs-admin-table-default tbody .rs-admin-row-group td:before
 {
 	content: 's';
-	font: 1.5rem 'icon admin';
+	font: 1.5rem var(--rs-admin-font-icon);
 	margin-right: 0.5em;
 	text-transform: lowercase;
 	vertical-align: text-bottom;
@@ -108,18 +108,18 @@
 
 .rs-admin-table-default tbody .rs-admin-link-parent
 {
-	color: #666;
+	color: gray(102);
 	text-decoration: underline;
 }
 
 .rs-admin-table-default tbody .rs-admin-link-parent:hover
 {
-	color: #474747;
+	color: gray(71);
 }
 
 .rs-admin-table-default tbody .rs-admin-link-view
 {
-	color: #474747;
+	color: gray(71);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -148,24 +148,27 @@
 
 /* @section 1.5 move control */
 
-.rs-admin-table-default .rs-admin-move-up, .rs-admin-table-default .rs-admin-move-down
+.rs-admin-table-default .rs-admin-move-up,
+.rs-admin-table-default .rs-admin-move-down
 {
-	color: #474747;
+	color: gray(71);
 	display: block;
 	min-height: 2.5em;
 	position: relative;
 	transition: color 0.4s;
 }
 
-.rs-admin-table-default .rs-admin-move-up:hover, .rs-admin-table-default .rs-admin-move-down:hover
+.rs-admin-table-default .rs-admin-move-up:hover,
+.rs-admin-table-default .rs-admin-move-down:hover
 {
-	color: #0090db;
+	color: var(--rs-admin-color-primary);
 }
 
-.rs-admin-table-default .rs-admin-move-up:before, .rs-admin-table-default .rs-admin-move-down:before
+.rs-admin-table-default .rs-admin-move-up:before,
+.rs-admin-table-default .rs-admin-move-down:before
 {
 	display: block;
-	font: 1.5rem 'icon admin';
+	font: 1.5rem var(--rs-admin-font-icon);
 	position: absolute;
 	right: 0.25em;
 	text-indent: 0;
@@ -185,29 +188,36 @@
 
 /* disabled move control */
 
-.rs-admin-table-default span.rs-admin-move-up:before, .rs-admin-table-default span.rs-admin-move-down:before
+.rs-admin-table-default span.rs-admin-move-up:before,
+.rs-admin-table-default span.rs-admin-move-down:before
 {
-	color: #b9b9b9;
+	color: gray(185);
 }
 
 /* @section 1.6 head and foot */
 
-.rs-admin-table-default caption, .rs-admin-table-default thead, .rs-admin-table-default tfoot
+.rs-admin-table-default caption,
+.rs-admin-table-default thead,
+.rs-admin-table-default tfoot
 {
-	border: 1px solid #222;
+	border: 1px solid gray(34);
 }
 
-.rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
+.rs-admin-table-default caption,
+.rs-admin-table-default thead tr,
+.rs-admin-table-default tfoot tr
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
-	color: #ccc;
-	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
+	background: gray(32);
+	color: gray(204);
+	font: bold 1.25rem var(--rs-admin-font-primary);
 	text-transform: uppercase;
 }
 
-.rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
+.rs-admin-table-default caption,
+.rs-admin-table-default thead th,
+.rs-admin-table-default tfoot td
 {
-	padding: 0.5em;
+	padding: 0.25em 0.5em;
 }
 
 /* @section 1.7 column move */
@@ -219,16 +229,18 @@
 	text-indent: -999em;
 }
 
-.rs-admin-table-default thead .rs-admin-column-move, .rs-admin-table-default tfoot .rs-admin-column-move
+.rs-admin-table-default thead .rs-admin-column-move,
+.rs-admin-table-default tfoot .rs-admin-column-move
 {
 	display: block;
 	position: relative;
 }
 
-.rs-admin-table-default thead .rs-admin-column-move:before, .rs-admin-table-default tfoot .rs-admin-column-move:before
+.rs-admin-table-default thead .rs-admin-column-move:before,
+.rs-admin-table-default tfoot .rs-admin-column-move:before
 {
 	content: 'a';
-	font: 1.25rem/3rem 'icon admin';
+	font: 1.25rem/2.375rem var(--rs-admin-font-icon);
 	position: absolute;
 	right: 1.125em;
 	text-indent: 0;

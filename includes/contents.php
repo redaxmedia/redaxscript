@@ -351,7 +351,7 @@ function extras($filter)
 
 				/* show if category or article matched */
 
-				if ($category == $categoryId || $article == $articleId || ($category == 0 && $article == 0))
+				if ($category === $categoryId || $article === $articleId || (!$category && !$article))
 				{
 					/* parser object */
 

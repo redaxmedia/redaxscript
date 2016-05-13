@@ -54,7 +54,7 @@ class Login implements ControllerInterface
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
 	public function __construct(Registry $registry, Language $language, Request $request)
@@ -136,6 +136,7 @@ class Login implements ControllerInterface
 
 		else if ($auth->login($user->id))
 		{
+			$this->_request->setSession('language', $user->language);
 			return $this->success();
 		}
 		return $this->error($this->_language->get('something_wrong'));

@@ -1,21 +1,21 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 40em
+ * 1. screen max 50em
  * 2. screen max 30em
- * 3. screen min 50em
- * 4. screen min 30em
+ * 3. screen min 30em
+ * 4. screen min 50em
  * 5. rtl direction
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
+/* @section 1. screen max 50em */
 
-@media screen and (max-width: 40em)
+@media (--media-medium-max)
 {
 	.rs-admin-item-control.rs-admin-item-future-posting
 	{
@@ -25,7 +25,7 @@
 
 /* @section 2. screen max 30em */
 
-@media screen and (max-width: 29.999em)
+@media (--media-small-max)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
@@ -38,7 +38,11 @@
 		text-align: center;
 	}
 
-	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	button.rs-admin-button-default,
+	.rs-admin-field-default,
+	.rs-admin-field-select,
+	.rs-admin-field-text,
+	.rs-admin-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
@@ -49,18 +53,36 @@
 	}
 }
 
-/* @section 3. screen min 50em */
+/* @section 3. screen min 30em */
 
-@media screen and (min-width: 50em)
+@media (--media-small-min)
 {
-	.rs-admin-list-panel a, .rs-admin-list-panel span
+	.rs-admin-button-default + .rs-admin-button-default
 	{
-		line-height: 3.5em;
+		margin-left: 0.5em;
 	}
 
-	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
+	.rs-admin-form-default .rs-admin-button-cancel,
+	.rs-admin-form-default .rs-admin-button-delete
 	{
-		font-size: 1.5rem;
+		float: left;
+	}
+
+	.rs-admin-form-default .rs-admin-button-save,
+	.rs-admin-form-default .rs-admin-button-create
+	{
+		float: right;
+	}
+}
+
+/* @section 4. screen min 50em */
+
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel a,
+	.rs-admin-list-panel span
+	{
+		line-height: 3.5rem;
 	}
 
 	.rs-admin-list-panel .rs-admin-item-panel > span:after
@@ -101,7 +123,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background: url('/templates/admin/assets/images/carbon.png') #222;
+		background: gray(32);
 		position: absolute;
 		width: 100%;
 	}
@@ -115,28 +137,6 @@
 	.rs-admin-sidebar .rs-admin-description-dock
 	{
 		display: none;
-	}
-}
-
-/* @section 4. screen min 30em */
-
-@media screen and (min-width: 30em)
-{
-	.rs-admin-button-default + .rs-admin-button-default
-	{
-		margin-left: 0.5em;
-	}
-
-	.rs-admin-form-default .rs-admin-button-cancel,
-	.rs-admin-form-default .rs-admin-button-delete
-	{
-		float: left;
-	}
-
-	.rs-admin-form-default .rs-admin-button-save,
-	.rs-admin-form-default .rs-admin-button-create
-	{
-		float: right;
 	}
 }
 

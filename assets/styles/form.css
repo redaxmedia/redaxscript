@@ -32,7 +32,7 @@ input::-moz-focus-inner
 
 /* @section 3.1 max width 30em */
 
-@media screen and (max-width: 29.999em)
+@media (--media-small-max)
 {
 	a.rs-button-default
 	{

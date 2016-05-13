@@ -55,11 +55,11 @@ class CommentForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/comments'
+					'href' => Registry::get('commentsEdit') && Registry::get('commentsDelete') ? Registry::get('parameterRoute') . 'admin/view/comments' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $comment->id ? Registry::get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null
@@ -187,18 +187,25 @@ class CommentForm implements ViewInterface
 				'name' => 'rank',
 				'value' => $comment->id ? intval($comment->rank) : Db::forTablePrefix('comments')->max('rank') + 1
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $comment->access
-			))
-			->append('</li><li>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $comment->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label(Language::get('date'), array(
 				'for' => 'date'
 			))
@@ -212,11 +219,16 @@ class CommentForm implements ViewInterface
 			->cancel();
 		if ($comment->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('commentsDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('commentsEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('commentsNew'))
 		{
 			$formElement->create();
 		}

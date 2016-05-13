@@ -2,8 +2,8 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Db;
 use Redaxscript\Tests\TestCase;
+use Redaxscript\Registry;
 
 /**
  * CommentFormTest
@@ -17,6 +17,25 @@ use Redaxscript\Tests\TestCase;
 
 class CommentFormTest extends TestCase
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_registry = Registry::getInstance();
+	}
+
 	/**
 	 * providerRender
 	 *
@@ -35,16 +54,18 @@ class CommentFormTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registry
 	 * @param integer $commentId
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($commentId = null, $expect = array())
+	public function testRender($registry = array(), $commentId = null, $expect = array())
 	{
 		/* setup */
 
+		$this->_registry->init($registry);
 		$commentForm = new Admin\View\CommentForm();
 
 		/* actual */

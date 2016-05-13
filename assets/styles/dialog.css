@@ -14,7 +14,8 @@
 
 /* @section 1. dialog */
 
-.rs-dialog
+.rs-dialog,
+.rs-admin-dialog
 {
 	box-sizing: border-box;
 	left: 50%;
@@ -27,7 +28,8 @@
 
 /* @section 2. dialog overlay */
 
-.rs-dialog-overlay
+.rs-dialog-overlay,
+.rs-admin-dialog-overlay
 {
 	bottom: 0;
 	left: 0;
@@ -41,9 +43,10 @@
 
 /* @section 3.1 max width 30em */
 
-@media screen and (min-width: 50em)
+@media (--media-medium-min)
 {
-	.rs-dialog
+	.rs-dialog,
+	.rs-admin-dialog
 	{
 		margin-left: -15em;
 		width: 30em;

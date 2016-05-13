@@ -57,11 +57,11 @@ class ModuleForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/modules'
+					'href' => Registry::get('modulesEdit') && Registry::get('modulesUninstall') ? Registry::get('parameterRoute') . 'admin/view/modules' : Registry::get('parameterRoute') . 'admin'
 				),
 				'uninstall' => array(
 					'href' => $module->alias ? Registry::get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
@@ -154,7 +154,7 @@ class ModuleForm implements ViewInterface
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
-						->append(Template::partial('modules/' . $module->alias . '/docs/' . $value))
+						->append(Template\Tag::partial('modules/' . $module->alias . '/docs/' . $value))
 						->append('</fieldset>');
 				}
 			}
@@ -171,22 +171,35 @@ class ModuleForm implements ViewInterface
 				'name' => 'status',
 				'value' => intval($module->status)
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $module->access
-			))
-			->append('</li></ul></fieldset></div>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $module->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('</ul></fieldset></div>')
 			->token()
-			->cancel()
-			->uninstall()
-			->save();
+			->cancel();
+		if (Registry::get('modulesUninstall'))
+		{
+			$formElement->uninstall();
+		}
+		if (Registry::get('modulesEdit'))
+		{
+			$formElement->save();
+		}
 
 		/* collect output */
 

@@ -18,21 +18,21 @@
  @font-face
 {
 	font-family: 'icon editor';
-	src: url('/modules/Editor/assets/fonts/icon.woff') format('woff'), url('/modules/Editor/assets/fonts/icon.ttf') format('truetype');
+	src: url('modules/Editor/assets/fonts/icon.woff') format('woff'), url('modules/Editor/assets/fonts/icon.ttf') format('truetype');
 }
 
 /* @section 2. editor toolbar */
 
 .rs-editor-toolbar
 {
-	background: url('/modules/Editor/assets/images/carbon.png') #222;
+	background: #212121;
 	font-size: 0.875rem;
 	margin-bottom: 1em;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
 }
 
-.rs-editor-toolbar, .rs-editor-toolbar a
+.rs-editor-toolbar, .rs-editor-toolbar .rs-editor-control
 {
 	color: #b9b9b9;
 }
@@ -47,7 +47,6 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s;
 	width: 3.375em;
 }
 
@@ -55,7 +54,6 @@
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
-	padding: 0 0.25em;
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 

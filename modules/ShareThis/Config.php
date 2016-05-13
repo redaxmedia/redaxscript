@@ -16,12 +16,12 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
+	protected static $_configArray = array(
 		'className' => array(
 			'link' => 'rs-js-link-share-this rs-link-share-this',
 			'list' => 'rs-list-share-this rs-clearfix'

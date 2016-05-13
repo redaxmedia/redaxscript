@@ -55,11 +55,11 @@ class UserForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/users'
+					'href' => Registry::get('usersEdit') && Registry::get('usersDelete') ? Registry::get('parameterRoute') . 'admin/view/users' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $user->id ? Registry::get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
@@ -138,7 +138,6 @@ class UserForm implements ViewInterface
 				'for' => 'password'
 			))
 			->password(array(
-				'autocomplete' => 'off',
 				'id' => 'password',
 				'name' => 'password'
 			))
@@ -147,7 +146,6 @@ class UserForm implements ViewInterface
 				'for' => 'password_confirm'
 			))
 			->password(array(
-				'autocomplete' => 'off',
 				'id' => 'password_confirm',
 				'name' => 'password_confirm'
 			))
@@ -200,32 +198,41 @@ class UserForm implements ViewInterface
 					'name' => 'status',
 					'value' => $user->id ? intval($user->status) : 1
 				))
-				->append('</li><li>')
-				->label(Language::get('groups'), array(
-					'for' => 'groups'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
-					'id' => 'groups',
-					'name' => 'groups[]',
-					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $user->access
-				))
-				->append('</li></ul></fieldset>');
+				->append('</li>');
+			if (Registry::get('groupsEdit'))
+			{
+				$formElement
+					->append('<li>')
+					->label(Language::get('groups'), array(
+						'for' => 'groups'
+					))
+					->select(Helper\Option::getAccessArray('groups'), array(
+						'id' => 'groups',
+						'name' => 'groups[]',
+						'multiple' => 'multiple',
+						'size' => count(Helper\Option::getAccessArray('groups')),
+						'value' => $user->groups
+					))
+					->append('</li>');
+			}
+			$formElement->append('</ul></fieldset>');
 		}
 		$formElement
 			->append('</div>')
 			->token()
 			->cancel();
-		if ($user->id > 1)
-		{
-			$formElement->delete();
-		}
 		if ($user->id)
 		{
-			$formElement->save();
+			if ((Registry::get('usersDelete') || Registry::get('myId') === $user->id) && $user->id > 1)
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('usersEdit') || Registry::get('myId') === $user->id)
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('usersNew'))
 		{
 			$formElement->create();
 		}

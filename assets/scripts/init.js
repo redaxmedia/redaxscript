@@ -66,22 +66,45 @@
 			{
 				className:
 				{
-					dialog: 'rs-js-dialog rs-dialog rs-dialog',
-					dialogTitle: 'rs-js-title-dialog rs-title-dialog rs-title-dialog',
-					dialogBox: 'rs-js-box-dialog rs-box-dialog rs-box-dialog',
-					dialogOverlay: 'rs-js-dialog-overlay rs-dialog-overlay rs-dialog-overlay',
-					buttonOk: 'rs-js-ok rs-button',
-					buttonCancel: 'rs-js-cancel rs-button',
-					fieldPrompt: 'rs-js-prompt rs-field-text'
-				},
-				suffix:
-				{
-					backend: '-admin',
-					frontend: '-default'
+					backend:
+					{
+						dialog: 'rs-admin-js-dialog rs-admin-dialog rs-admin-dialog',
+						dialogTitle: 'rs-admin-js-title-dialog rs-admin-title-dialog rs-admin-title-dialog',
+						dialogBox: 'rs-admin-js-box-dialog rs-admin-box-dialog rs-admin-box-dialog',
+						dialogOverlay: 'rs-admin-js-dialog-overlay rs-admin-dialog-overlay rs-admin-dialog-overlay',
+						buttonOk: 'rs-admin-js-ok rs-admin-button-default',
+						buttonCancel: 'rs-admin-js-cancel rs-admin-button-default',
+						fieldPrompt: 'rs-admin-js-prompt rs-admin-field-text'
+					},
+					frontend:
+					{
+						dialog: 'rs-js-dialog rs-dialog rs-dialog',
+						dialogTitle: 'rs-js-title-dialog rs-title-dialog rs-title-dialog',
+						dialogBox: 'rs-js-box-dialog rs-box-dialog rs-box-dialog',
+						dialogOverlay: 'rs-js-dialog-overlay rs-dialog-overlay rs-dialog-overlay',
+						buttonOk: 'rs-js-ok rs-button-default',
+						buttonCancel: 'rs-js-cancel rs-button-default',
+						fieldPrompt: 'rs-js-prompt rs-field-text'
+					}
 				},
 				type: 'alert',
 				message: '',
 				callback: ''
+			}
+		},
+		dock:
+		{
+			init: true,
+			selector: 'div.rs-admin-js-dock',
+			options:
+			{
+				element:
+				{
+					dockLink: 'a.rs-admin-js-link-dock',
+					dockDescription: 'span.rs-admin-js-description-dock',
+					dockDescriptionHTML: '<span class="rs-admin-js-description-dock rs-admin-description-dock"></span>'
+				},
+				vibrate: 100
 			}
 		},
 		dropdown:
@@ -139,6 +162,21 @@
 				limit: 10
 			}
 		},
+		install:
+		{
+			init: false,
+			selector: 'form.rs-js-install',
+			options:
+			{
+				element:
+				{
+					fieldType: '#db-type',
+					fieldRelated: '#db-name, #db-user, #db-password',
+					fieldRequired: '#db-name, #db-user',
+					fieldHost: '#db-host'
+				}
+			}
+		},
 		keyShortcut:
 		{
 			init: true,
@@ -167,6 +205,21 @@
 			{
 				login: 'login',
 				logout: 'logout'
+			}
+		},
+		panel:
+		{
+			init: true,
+			selector: 'ul.rs-admin-js-list-panel',
+			options:
+			{
+				element:
+				{
+					panelItem: 'li.rs-admin-js-item-panel'
+				},
+				timeout: 1000,
+				duration: 200,
+				vibrate: 100
 			}
 		},
 		preventUnload:

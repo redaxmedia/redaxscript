@@ -1,6 +1,18 @@
 /**
  * @tableofcontents
  *
+ * 1. query
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+/**
+ * @tableofcontents
+ *
  * 1. reset
  * 2. normalize
  *
@@ -276,7 +288,7 @@ button, input, select, textarea
 
 /* @section 1. dialog */
 
-.rs-dialog
+.rs-dialog, .rs-admin-dialog
 {
 	box-sizing: border-box;
 	left: 50%;
@@ -289,7 +301,7 @@ button, input, select, textarea
 
 /* @section 2. dialog overlay */
 
-.rs-dialog-overlay
+.rs-dialog-overlay, .rs-admin-dialog-overlay
 {
 	bottom: 0;
 	left: 0;
@@ -305,7 +317,7 @@ button, input, select, textarea
 
 @media screen and (min-width: 50em)
 {
-	.rs-dialog
+	.rs-dialog, .rs-admin-dialog
 	{
 		margin-left: -15em;
 		width: 30em;
@@ -357,7 +369,7 @@ button, input, select, textarea
 
 /* @section 2.1 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 	.rs-list-dropdown ul
 	{
@@ -586,8 +598,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
  * 1. image
  * 2. player
  * 3. query
- *    3.1 max width 20em
- *    3.2 max width 30em
+ *    3.1 max width 30em
  *
  * @since 3.0.0
  *
@@ -613,17 +624,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 3. query */
 
-/* @section 3.1 max width 20em */
-
-@media screen and (max-width: 19.999em)
-{
-	.rs-player
-	{
-		font-size: 0.5em;
-	}
-}
-
-/* @section 3.2 max width 30em */
+/* @section 3.1 max width 30em */
 
 @media screen and (max-width: 29.999em)
 {
@@ -662,7 +663,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.1 max width 50rem */
 
-@media screen and (max-width: 49.999rem)
+@media screen and (max-width: 49.999em)
 {
 
 	/* @section 2.1.1 navigation toggle */
@@ -751,7 +752,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50rem)
+@media screen and (min-width: 50em)
 {
 
 	/* @section 2.2.1 navigation trigger */

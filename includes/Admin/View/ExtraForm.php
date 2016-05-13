@@ -55,11 +55,11 @@ class ExtraForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/extras'
+					'href' => Registry::get('extrasEdit') && Registry::get('extrasDelete') ? Registry::get('parameterRoute') . 'admin/view/extras' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $extra->id ? Registry::get('parameterRoute') . 'admin/delete/extras/' . $extra->id . '/' . Registry::get('token') : null
@@ -207,18 +207,25 @@ class ExtraForm implements ViewInterface
 				'name' => 'rank',
 				'value' => $extra->id ? intval($extra->rank) : Db::forTablePrefix('extras')->max('rank') + 1
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $extra->access
-			))
-			->append('</li><li>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $extra->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label(Language::get('date'), array(
 				'for' => 'date'
 			))
@@ -232,11 +239,16 @@ class ExtraForm implements ViewInterface
 			->cancel();
 		if ($extra->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('extrasDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('extrasEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('extrasNew'))
 		{
 			$formElement->create();
 		}

@@ -55,25 +55,21 @@ class SearchList implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $resultArray array for the db query results
-	 * @param array $tableArray array for the tables
+	 * @param array $result array for the db query results
 	 *
 	 * @return string
 	 * @since 3.0.0
 	 *
 	 */
 
-	public function render($resultArray = null, $tableArray = null)
+	public function render($result = null)
 	{
-		$i = 0;
-
 		$output = Hook::trigger('searchListStart');
 
-		foreach ($resultArray as $item)
+		foreach ($result as $item => $data)
 		{
 			$itemOutput = null;
-
-			if ($item)
+			if ($data)
 			{
 				/* title element */
 
@@ -82,7 +78,7 @@ class SearchList implements ViewInterface
 					->init('h2', array(
 						'class' => 'rs-title-content rs-title-result'
 					))
-					->text($this->_language->get(count($tableArray) != 1 ? $tableArray[$i] : 'search'));
+					->text($this->_language->get($item));
 
 				/* list element */
 
@@ -94,9 +90,9 @@ class SearchList implements ViewInterface
 
 				/* generate category's list */
 
-				foreach ($item as $value)
+				foreach ($data as $value)
 				{
-					$itemOutput .= $this->_renderItem($value, $tableArray[$i]);
+					$itemOutput .= $this->_renderItem($value, $item);
 				}
 
 				/* only show a category's results, when the user can access at least 1 result */
@@ -104,11 +100,9 @@ class SearchList implements ViewInterface
 				if ($itemOutput)
 				{
 					$listElement->html($itemOutput);
-
 					$output .= $titleElement . $listElement;
 				}
 			}
-			$i++;
 		}
 		$output .= Hook::trigger('searchListEnd');
 
@@ -126,8 +120,8 @@ class SearchList implements ViewInterface
 
 	protected function _renderItem($item = array(), $table = null)
 	{
+		$output = null;
 		$accessValidator = new Validator\Access();
-
 		if ($accessValidator->validate($item->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 		{
 			/* prepare metadata */
@@ -136,14 +130,7 @@ class SearchList implements ViewInterface
 
 			/* build route */
 
-			if ($table === 'categories' && $item->parent === 0 || $item === 'articles' && $item->category === 0)
-			{
-				$route = $item->alias;
-			}
-			else
-			{
-				$route = build_route($table, $item->id);
-			}
+			$route = build_route($table, $item->id);
 
 			/* html element */
 
@@ -153,26 +140,21 @@ class SearchList implements ViewInterface
 					'href' => $this->_registry->get('parameterRoute') . $route,
 					'class' => 'rs-link-result'
 				))
-				->text($table != 'comments' ? $item->title : substr($item->text, 0, 20));
-
+				->text($table === 'comments' ? $item->author : $item->title);
 			$textElement = new Html\Element();
 			$textElement
 				->init('span', array(
 					'class' => 'rs-text-result-date'
 				))
 				->text($date);
-
 			$itemElement = new Html\Element();
 			$itemElement
 				->init('li', array(
 					'class' => 'rs-item-result'
 				))
 				->html($linkElement . $textElement);
-
-			/* return output */
-
-			return $itemElement;
+			$output = $itemElement;
 		}
-		return null;
+		return $output;
 	}
 }

@@ -1,6 +1,45 @@
 /**
  * @tableofcontents
  *
+ * 1. query
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. query */
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 base color
+ *    1.2 note color
+ *    1.3 gradient
+ *    1.4 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 base color */
+
+	/* @section 1.2 note color */
+
+	/* @section 1.3 gradient */
+
+	/* @section 1.4 font */
+}
+/**
+ * @tableofcontents
+ *
  * 1. links
  * 2. title accordion admin
  *    2.1 javascript enabled
@@ -19,7 +58,7 @@
 
 .rs-admin-link-default
 {
-	color: #666;
+	color: rgb(102, 102, 102);
 	text-decoration: underline;
 }
 
@@ -32,13 +71,18 @@
 
 .rs-admin-title-accordion
 {
-	background: linear-gradient(#d5d5d5, #ccc);
-	border: 1px solid #b9b9b9;
+	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	border: 1px solid rgb(185, 185, 185);
 	box-sizing: border-box;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-transform: uppercase;
 	width: 100%;
+}
+
+.rs-admin-title-accordion:hover
+{
+	background: rgb(240, 240, 240);
 }
 
 .rs-admin-title-accordion:not(.rs-admin-title-active)
@@ -58,14 +102,13 @@
 
 .rs-admin-title-accordion, .rs-admin-title-accordion a
 {
-	color: #444;
+	color: rgb(68, 68, 68);
 }
 
 /* @section 2.1 javascript enabled */
 
 .rs-js .rs-admin-title-accordion
 {
-	border-bottom-width: 0;
 	cursor: pointer;
 }
 
@@ -73,20 +116,20 @@
 
 .rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
-	border-bottom-width: 1px;
+	border-bottom-width: 0;
 }
 
 /* @section 3. several admin titles */
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
-	border: 1px solid #222;
+	background: rgb(32, 32, 32);
+	border: 1px solid rgb(34, 34, 34);
 }
 
 .rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
 {
-	color: #ccc;
+	color: rgb(204, 204, 204);
 }
 
 /* @section 4. title dialog admin */
@@ -94,7 +137,7 @@
 .rs-admin-title-dialog
 {
 	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 1em;
 	text-transform: uppercase;
 }
@@ -109,7 +152,7 @@
 
 .rs-admin-title-content a
 {
-	color: #323e4c;
+	color: rgb(32, 32, 32);
 }
 /**
  * @tableofcontents
@@ -177,10 +220,10 @@
 
 .rs-admin-box-accordion, .rs-admin-box-dialog
 {
-	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	border: 1px solid rgb(185, 185, 185);
 	border-top: 0;
-	padding: 0.25em 1em;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-box-accordion
@@ -190,21 +233,21 @@
 
 .rs-admin-title-accordion + .rs-admin-box-accordion
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid rgb(185, 185, 185);
 }
 
 /* @section 1.1 last element */
 
-.rs-admin-set-accordion:last-child .rs-admin-box-accordion
+.rs-admin-set-accordion:last-of-type
 {
-	border-bottom-width: 1px;
+	border-bottom: 1px solid rgb(185, 185, 185);
 }
 
 /* @section 2. box dock admin */
 
 .rs-admin-box-dock
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
+	background: rgb(32, 32, 32);
 	font-size: 0.875rem;
 	margin-top: 1em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
@@ -212,7 +255,7 @@
 
 .rs-admin-box-dock, .rs-admin-box-dock a
 {
-	color: #b9b9b9;
+	color: rgb(185, 185, 185);
 }
 
 /* @section 2.1 description dock admin */
@@ -220,7 +263,7 @@
 .rs-admin-description-dock
 {
 	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1rem/2.625rem 'open sans condensed', arial, sans-serif;
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	max-width: 10em;
@@ -243,19 +286,24 @@
 
 .rs-admin-box-panel
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
+	background: rgb(32, 32, 32);
 }
 
 /* @section 4. box tab admin */
 
 .rs-admin-box-tab
 {
-	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
-	padding: 1em 1.5em;
+	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	border: 1px solid rgb(185, 185, 185);
+	padding: 1em;
 }
 
 /* @section 5. box note admin */
+
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
 
 .rs-admin-box-note
 {
@@ -267,16 +315,9 @@
 
 .rs-admin-box-note a
 {
-	color: rgba(0, 0, 0, 0.65);
+	color: inherit;
 	text-decoration: underline;
-	transition: color 0.2s;
 }
-
-.rs-admin-box-note a:hover
-{
-	color: #000;
-}
-
 /**
  * @tableofcontents
  *
@@ -297,45 +338,61 @@
 
 .rs-admin-button-default
 {
-	background: linear-gradient(#3b3b3b, #303030);
-	border: 1px solid #151515;
-	border-radius: 0.25em;
+	background: linear-gradient(rgb(60, 60, 60), rgb(48, 48, 48));
+	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875rem/2.5em arial;
-	padding: 0 0.75em;
+	padding: 0 1em;
 	text-decoration: none;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 }
 
 .rs-admin-button-default, a.rs-admin-button-default
 {
-	color: #ccc;
+	color: rgb(255, 255, 255);
+}
+
+.rs-admin-button-create
+{
+	background: linear-gradient(rgb(116, 174, 45), #4c8c00);
+}
+
+.rs-admin-button-delete
+{
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
 /* @section 1.1 hover effect */
 
 .rs-admin-button-default:hover
 {
-	background: linear-gradient(#474747, #3b3b3b);
-	color: #eee;
+	background: rgb(48, 48, 48);
+}
+
+.rs-admin-button-create:hover
+{
+	background: #4c8c00;
+}
+
+.rs-admin-button-delete:hover
+{
+	background: #a20000;
 }
 
 /* @section 1.2 active effect */
 
 .rs-admin-button-default:active
 {
-	background: linear-gradient(#4cb4ff, #0090db);
-	border-color: #005da2;
-	color: #fff;
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	color: rgb(255, 255, 255);
 }
 
 /* large */
 
 .rs-admin-button-large
 {
-	font-size: 1.125rem;
+	font-size: 1rem;
 }
 
 /* @section 1.3 icons */
@@ -367,12 +424,9 @@
 
 .rs-admin-button-default[disabled]
 {
-	background: #ccc;
-	border-color: #ababab;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-	color: #9e9e9e;
+	background: rgb(204, 204, 204);
+	color: rgb(158, 158, 158);
 	pointer-events: none;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
 }
 
 /* @section 3. space between elements */
@@ -429,15 +483,13 @@
 	position: relative;
 	text-indent: -999em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-	transition: padding 0.4s;
 	width: 3em;
 }
 
 .rs-admin-link-dock:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	padding: 0 0.25em;
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -445,7 +497,7 @@
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: linear-gradient(#d50000, #a20000);
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
 /* @section 1.1 icons */
@@ -483,6 +535,8 @@
  *    1.2 focus effect
  * 2. textarea
  * 3. disabled and readonly
+ * 4. query
+ *    4.1 min width 30em
  *
  * @since 3.0.0
  *
@@ -492,11 +546,6 @@
 
 /* @section 1. several fields */
 
-.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
-{
-	width: 40%;
-}
-
 .rs-admin-dialog .rs-admin-field-default
 {
 	width: 100%;
@@ -504,13 +553,12 @@
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
-	background: linear-gradient(#e2e2e2, #f1f1f1);
-	border: 1px solid #c9c9c9;
-	border-radius: 0.25em;
-	color: #6a6a6a;
+	background: rgb(240, 240, 240);
+	border: 1px solid rgb(201, 201, 201);
+	border-radius: 0.125em;
+	color: rgb(106, 106, 106);
 	font: 1rem arial;
 	padding: 0.5em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 	transition: background 0.4s;
 }
 
@@ -518,16 +566,15 @@
 
 .rs-admin-field-default:hover, .rs-admin-field-select:hover, .rs-admin-field-textarea:hover
 {
-	border-color: #adadad;
+	border-color: rgb(173, 173, 173);
 }
 
 /* @section 1.2 focus effect */
 
 .rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
 {
-	background: linear-gradient(#f1f1f1, #e2e2e2);
-	border-color: #ababab;
-	box-shadow: 0 0 3px #fff;
+	background: rgb(226, 226, 226);
+	border-color: rgb(171, 171, 171);
 }
 
 /* @section 2. textarea */
@@ -548,11 +595,21 @@
 
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
-	background: linear-gradient(#d4d4d4, #e2e2e2);
-	border-color: #d5d5d5;
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.6);
-	color: #a4a4a4;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+	background: rgb(212, 212, 212);
+	border-color: rgb(213, 213, 213);
+	color: rgb(164, 164, 164);
+}
+
+/* @section 4. query */
+
+/* @section 4.1 min width 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
+	{
+		width: 60%;
+	}
 }
 /**
  * @tableofcontents
@@ -579,7 +636,7 @@
 
 .rs-admin-label-default
 {
-	color: #555;
+	color: rgb(85, 85, 85);
 	display: block;
 	font-size: 0.875rem;
 	font-weight: bold;
@@ -769,16 +826,16 @@
 @font-face
 {
 	font-family: 'icon admin';
-	src: url('/templates/admin/assets/fonts/icon.woff2') format('woff2'), url('/templates/admin/assets/fonts/icon.woff') format('woff');
+	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
 /* @section 2. icon flag */
 
 .rs-admin-icon-flag
 {
-	background: #323e4c;
+	background: #0090db;
 	border-radius: 0.125em;
-	color: #fff;
+	color: rgb(255, 255, 255);
 	display: inline-block;
 	font-size: 0.75em;
 	letter-spacing: 0.125em;
@@ -821,7 +878,7 @@
 
 .rs-admin-item-panel.rs-admin-item-logout a:hover
 {
-	background: linear-gradient(#d50000, #a20000);
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
 /* @section 2.1 icons before */
@@ -864,10 +921,10 @@
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
-	font: 1.5rem/2.5rem 'icon admin';
+	font: 1.25rem/1.5rem 'icon admin';
 	position: absolute;
-	right: 0.75em;
-	top: 0;
+	right: 0.875em;
+	top: 0.375em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after
@@ -892,9 +949,9 @@
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: linear-gradient(#bbb, #b9b9b9);
+	background: linear-gradient(rgb(187, 187, 187), rgb(185, 185, 185));
 	border-radius: 0.25em;
-	color: #666;
+	color: rgb(102, 102, 102);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -903,13 +960,13 @@
 
 .rs-admin-list-control a:hover
 {
-	background: linear-gradient(#4cb4ff, #0090db);
-	color: #fff;
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-list-control span
 {
-	color: #999;
+	color: rgb(153, 153, 153);
 }
 
 /* @section 2. list panel admin */
@@ -921,22 +978,30 @@
 
 .rs-admin-list-panel a, .rs-admin-list-panel span
 {
-	color: #b9b9b9;
+	box-sizing: border-box;
+	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
-	font: bold 1.25rem/2.5rem 'open sans condensed', 'trebuchet ms', arial;
-	padding: 0 1em;
+	font: bold 1rem/2.5rem 'open sans condensed', arial, sans-serif;
+	padding: 0 0.75em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
-	transition: padding-left 0.3s;
 }
 
-.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
+.rs-admin-list-panel li:hover
 {
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	padding-left: 1.25em;
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+}
+
+.rs-admin-list-panel li:hover > a, .rs-admin-list-panel li:hover > span
+{
+	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.rs-admin-list-panel li:hover .rs-admin-list-panel-children
+{
+	background: rgb(32, 32, 32);
 }
 
 .rs-admin-list-panel-children
@@ -944,27 +1009,59 @@
 	display: none;
 }
 
+.rs-admin-list-panel-children > li
+{
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.rs-admin-list-panel .rs-admin-link-view
+{
+	-webkit-flex: 1 1 0;
+	-ms-flex: 1 1 0;
+	flex: 1 1 0;
+}
+
+.rs-admin-list-panel .rs-admin-link-new
+{
+	position: relative;
+	text-indent: -999em;
+	width: 2.75em;
+}
+
+.rs-admin-list-panel .rs-admin-link-new:after
+{
+	content: 'f';
+	font: 0.75rem/1rem 'icon admin';
+	left: 0;
+	margin-top: -0.5rem;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	text-transform: none;
+	top: 50%;
+}
+
 /* @section 3. list tab admin */
 
 .rs-admin-list-tab li
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
-	border: 1px solid #222;
-	border-radius: 0.25em 0.25em 0 0;
+	background: rgb(32, 32, 32);
+	border-radius: 0.125em 0.125em 0 0;
 	margin-bottom: -1px;
-	margin-right: 0.25em;
+	margin-right: 0.125rem;
 	vertical-align: bottom;
-}
-
-.rs-admin-list-tab > li + li
-{
-	margin-left: 0.125em;
 }
 
 .rs-admin-list-tab a
 {
-	color: #ccc;
-	font: bold 1.25rem/2rem 'open sans condensed', 'trebuchet ms', arial;
+	color: rgb(204, 204, 204);
+	font: bold 1.25rem/2rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
 }
 
@@ -975,18 +1072,17 @@
 
 .rs-admin-list-tab .rs-admin-item-active
 {
-	border-radius: 0.125em 0.125em 0 0;
-	padding: 0.5em 1em;
+	padding: 0.25em 0.75em;
 }
 
 .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-list-tab > li
 {
-	padding: 0.25em 1em;
+	padding: 0.125em 0.75em;
 }
 
 .rs-admin-list-tab > li:hover
@@ -996,22 +1092,22 @@
 
 .rs-admin-list-tab > li:hover a
 {
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 /* @section 3.1 javascript enabled */
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
-	background: linear-gradient(#dadada, #e2e2e2 40%, #e2e2e2);
-	border: 1px solid #b9b9b9;
-	border-bottom-color: #e2e2e2;
+	background: rgb(226, 226, 226);
+	border: 1px solid rgb(185, 185, 185);
+	border-bottom-color: rgb(226, 226, 226);
 	pointer-events: none;
 }
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active a
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 /**
  * @tableofcontents
@@ -1097,7 +1193,7 @@
 
 .rs-admin-table-default
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default td, .rs-admin-table-default th
@@ -1114,7 +1210,7 @@
 
 .rs-admin-table-default tbody
 {
-	border: solid #b9b9b9;
+	border: solid rgb(185, 185, 185);
 	border-width: 0 1px;
 }
 
@@ -1122,24 +1218,24 @@
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
-	background: linear-gradient(#e2e2e2, #dadada);
+	background: rgb(226, 226, 226);
 }
 
 /* even look */
 
 .rs-admin-table-default tbody:nth-child(even) tr
 {
-	background: linear-gradient(#ebebeb, #e8e8e8);
+	background: rgb(218, 218, 218);
 }
 
 .rs-admin-table-default tbody + tbody tr, .rs-admin-table-default tbody tr + tr
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid rgb(185, 185, 185);
 }
 
 .rs-admin-table-default caption + tbody tr:last-child
 {
-	border-bottom: 1px solid #b9b9b9;
+	border-bottom: 1px solid rgb(185, 185, 185);
 }
 
 .rs-admin-table-default tbody td
@@ -1151,15 +1247,14 @@
 
 .rs-admin-table-default tbody .rs-admin-row-disabled
 {
-	background: #ddd;
-	color: #b9b9b9;
+	background: rgb(221, 221, 221);
+	color: rgb(185, 185, 185);
 }
 
 /* @section 1.2 row group */
 
 .rs-admin-table-default tbody .rs-admin-row-group
 {
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -1182,18 +1277,18 @@
 
 .rs-admin-table-default tbody .rs-admin-link-parent
 {
-	color: #666;
+	color: rgb(102, 102, 102);
 	text-decoration: underline;
 }
 
 .rs-admin-table-default tbody .rs-admin-link-parent:hover
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 }
 
 .rs-admin-table-default tbody .rs-admin-link-view
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -1224,7 +1319,7 @@
 
 .rs-admin-table-default .rs-admin-move-up, .rs-admin-table-default .rs-admin-move-down
 {
-	color: #474747;
+	color: rgb(71, 71, 71);
 	display: block;
 	min-height: 2.5em;
 	position: relative;
@@ -1261,27 +1356,27 @@
 
 .rs-admin-table-default span.rs-admin-move-up:before, .rs-admin-table-default span.rs-admin-move-down:before
 {
-	color: #b9b9b9;
+	color: rgb(185, 185, 185);
 }
 
 /* @section 1.6 head and foot */
 
 .rs-admin-table-default caption, .rs-admin-table-default thead, .rs-admin-table-default tfoot
 {
-	border: 1px solid #222;
+	border: 1px solid rgb(34, 34, 34);
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
-	color: #ccc;
-	font: bold 1.25rem 'open sans condensed', 'trebuchet ms', arial;
+	background: rgb(32, 32, 32);
+	color: rgb(204, 204, 204);
+	font: bold 1.25rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
 {
-	padding: 0.5em;
+	padding: 0.25em 0.5em;
 }
 
 /* @section 1.7 column move */
@@ -1301,7 +1396,7 @@
 .rs-admin-table-default thead .rs-admin-column-move:before, .rs-admin-table-default tfoot .rs-admin-column-move:before
 {
 	content: 'a';
-	font: 1.25rem/3rem 'icon admin';
+	font: 1.25rem/2.375rem 'icon admin';
 	position: absolute;
 	right: 1.125em;
 	text-indent: 0;
@@ -1311,21 +1406,21 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 40em
+ * 1. screen max 50em
  * 2. screen max 30em
- * 3. screen min 50em
- * 4. screen min 30em
+ * 3. screen min 30em
+ * 4. screen min 50em
  * 5. rtl direction
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 40em */
+/* @section 1. screen max 50em */
 
-@media screen and (max-width: 40em)
+@media screen and (max-width: 49.999em)
 {
 	.rs-admin-item-control.rs-admin-item-future-posting
 	{
@@ -1348,7 +1443,7 @@
 		text-align: center;
 	}
 
-	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
+	button.rs-admin-button-default, .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
@@ -1359,18 +1454,33 @@
 	}
 }
 
-/* @section 3. screen min 50em */
+/* @section 3. screen min 30em */
+
+@media screen and (min-width: 30em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 0.5em;
+	}
+
+	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
+	{
+		float: right;
+	}
+}
+
+/* @section 4. screen min 50em */
 
 @media screen and (min-width: 50em)
 {
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 	{
-		line-height: 3.5em;
-	}
-
-	.rs-admin-list-panel a:before, .rs-admin-list-panel span:before
-	{
-		font-size: 1.5rem;
+		line-height: 3.5rem;
 	}
 
 	.rs-admin-list-panel .rs-admin-item-panel > span:after
@@ -1411,7 +1521,7 @@
 
 	.rs-admin-list-panel-children
 	{
-		background: url('/templates/admin/assets/images/carbon.png') #222;
+		background: rgb(32, 32, 32);
 		position: absolute;
 		width: 100%;
 	}
@@ -1425,26 +1535,6 @@
 	.rs-admin-sidebar .rs-admin-description-dock
 	{
 		display: none;
-	}
-}
-
-/* @section 4. screen min 30em */
-
-@media screen and (min-width: 30em)
-{
-	.rs-admin-button-default + .rs-admin-button-default
-	{
-		margin-left: 0.5em;
-	}
-
-	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
-	{
-		float: left;
-	}
-
-	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
-	{
-		float: right;
 	}
 }
 
@@ -1478,70 +1568,94 @@
 
 .rs-admin-note-success:not(:focus)
 {
-	color: #387038;
+	color: #4c8c00;
 }
 
 .rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus)
 {
-	background: #5bb75b;
-	border-color: #387038;
+	background: rgb(116, 174, 45);
+	border-color: #4c8c00;
+}
+
+.rs-admin-note-success.rs-admin-box-note, .rs-admin-note-success.rs-admin-field-note:not(:focus), .rs-admin-note-success.rs-admin-field-select:not(:focus)
+{
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-note-success.rs-admin-field-note option
 {
-	background: #5bb75b;
+	background: rgb(116, 174, 45);
+	color: rgb(255, 255, 255);
 }
 
 /* @section 2. warning */
 
 .rs-admin-note-warning:not(:focus)
 {
-	color: #ad6704;
+	color: #e08400;
 }
 
 .rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus)
 {
-	background: #f3940e;
-	border-color: #ad6704;
+	background: rgb(255, 168, 46);
+	border-color: #e08400;
+}
+
+.rs-admin-note-warning.rs-admin-box-note, .rs-admin-note-warning.rs-admin-field-note:not(:focus), .rs-admin-note-warning.rs-admin-field-select:not(:focus)
+{
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-note-warning.rs-admin-field-note option
 {
-	background: #f3940e;
+	background: rgb(255, 168, 46);
+	color: rgb(255, 255, 255);
 }
 
 /* @section 3. error */
 
 .rs-admin-note-error:not(:focus)
 {
-	color: #802420;
+	color: #a20000;
 }
 
 .rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus)
 {
-	background: #da4f49;
-	border-color: #802420;
+	background: rgb(199, 41, 41);
+	border-color: #a20000;
+}
+
+.rs-admin-note-error.rs-admin-box-note, .rs-admin-note-error.rs-admin-field-note:not(:focus), .rs-admin-note-error.rs-admin-field-select:not(:focus)
+{
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-note-error.rs-admin-field-note option
 {
-	background: #da4f49;
+	background: rgb(199, 41, 41);
+	color: rgb(255, 255, 255);
 }
 
 /* @section 4. info */
 
 .rs-admin-note-info:not(:focus)
 {
-	color: #1f6377;
+	color: #0090db;
 }
 
 .rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus)
 {
-	background: #49afcd;
-	border-color: #1f6377;
+	background: rgb(44, 179, 252);
+	border-color: #0090db;
+}
+
+.rs-admin-note-info.rs-admin-box-note, .rs-admin-note-info.rs-admin-field-note:not(:focus), .rs-admin-note-info.rs-admin-field-select:not(:focus)
+{
+	color: rgb(255, 255, 255);
 }
 
 .rs-admin-note-info.rs-admin-field-note option
 {
-	background: #49afcd;
+	background: rgb(44, 179, 252);
+	color: rgb(255, 255, 255);
 }

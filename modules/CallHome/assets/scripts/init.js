@@ -13,11 +13,12 @@
 
 rs.modules.callHome =
 {
-	init: rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin' && !rs.registry.adminParameter,
-	dependency: typeof _gaq === 'object',
+	init: rs.registry.loggedIn === rs.registry.token && rs.registry.firstParameter === 'admin',
+	dependency: typeof ga === 'function',
 	options:
 	{
 		id: 'UA-16122280-10',
-		url: 'none'
+		cookieDomain: 'auto',
+		anonymizeIp: true
 	}
 };

@@ -14,11 +14,12 @@
 rs.modules.analytics =
 {
 	init: rs.registry.loggedIn !== rs.registry.token,
-	dependency: typeof _gaq === 'object',
+	dependency: typeof ga === 'function',
 	selector: 'a.rs-js-track-click, button.rs-js-track-click',
 	options:
 	{
 		id: 'UA-00000000-0',
-		url: 'example.com'
+		cookieDomain: 'auto',
+		anonymizeIp: true
 	}
 };

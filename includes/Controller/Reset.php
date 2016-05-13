@@ -57,7 +57,7 @@ class Reset implements ControllerInterface
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the registry class
+	 * @param Request $request instance of the request class
 	 */
 
 	public function __construct(Registry $registry, Language $language, Request $request)
@@ -211,17 +211,17 @@ class Reset implements ControllerInterface
 
 	protected function _mail($mailArray = array())
 	{
-		$urlLogin = $this->_registry->get('root') . $this->_registry->get('parameterRoute') . 'login';
+		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html elements */
 
 		$linkElement = new Element();
 		$linkElement
 			->init('a', array(
-				'href' => Registry::get('parameterRoute') . $urlLogin,
+				'href' => $urlReset,
 				'class' => 'link-result'
 			))
-			->text($this->_language->get('login'));
+			->text($urlReset);
 
 		/* prepare mail */
 

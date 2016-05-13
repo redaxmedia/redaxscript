@@ -38,7 +38,7 @@ class Disqus extends Config
 
 	public static function loaderStart()
 	{
-		if (Registry::get('article'))
+		if (Registry::get('articleId'))
 		{
 			global $loader_modules_scripts;
 			$loader_modules_scripts[] = 'modules/Disqus/assets/scripts/init.js';
@@ -53,7 +53,7 @@ class Disqus extends Config
 
 	public static function renderStart()
 	{
-		if (Registry::get('article'))
+		if (Registry::get('articleId'))
 		{
 			Registry::set('commentReplace', true);
 		}
@@ -69,11 +69,11 @@ class Disqus extends Config
 	{
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'id' => self::$_config['id']
+			'id' => self::$_configArray['id']
 		));
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script', array(
-			'src' => self::$_config['url']
+			'src' => self::$_configArray['url']
 		));
 
 		/* collect output */

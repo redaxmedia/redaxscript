@@ -1,0 +1,44 @@
+[
+	[
+		[
+			""
+		],
+		[
+		]
+	],
+	[
+		[
+			"test"
+		],
+		[
+		]
+	],
+	[
+		[
+			"test1",
+			"-a",
+			"-b test",
+			"-c=test",
+			"test2"
+		],
+		{
+			"a": true,
+			"b": "test",
+			"c": "test"
+		}
+	],
+	[
+		[
+			"test1",
+			"--a-long",
+			"--b-long test",
+			"--c-long=test",
+			"test2"
+		],
+		{
+			"a-long": true,
+			"b-long": "test",
+			"c-long": "test"
+		}
+	]
+]

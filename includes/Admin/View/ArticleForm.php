@@ -55,11 +55,11 @@ class ArticleForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/articles'
+					'href' => Registry::get('articlesEdit') && Registry::get('articlesDelete') ? Registry::get('parameterRoute') . 'admin/view/articles' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $article->id ? Registry::get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . Registry::get('token') : null
@@ -254,18 +254,25 @@ class ArticleForm implements ViewInterface
 				'name' => 'rank',
 				'value' => $article->id ? intval($article->rank) : Db::forTablePrefix('articles')->max('rank') + 1
 			))
-			->append('</li><li>')
-			->label(Language::get('access'), array(
-				'for' => 'access'
-			))
-			->select(Helper\Option::getAccessArray('groups'), array(
-				'id' => 'access',
-				'name' => 'access[]',
-				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getAccessArray('groups')),
-				'value' => $article->access
-			))
-			->append('</li><li>')
+			->append('</li>');
+		if (Registry::get('groupsEdit'))
+		{
+			$formElement
+				->append('<li>')
+				->label(Language::get('access'), array(
+					'for' => 'access'
+				))
+				->select(Helper\Option::getAccessArray('groups'), array(
+					'id' => 'access',
+					'name' => 'access[]',
+					'multiple' => 'multiple',
+					'size' => count(Helper\Option::getAccessArray('groups')),
+					'value' => $article->access
+				))
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label(Language::get('date'), array(
 				'for' => 'date'
 			))
@@ -279,11 +286,16 @@ class ArticleForm implements ViewInterface
 			->cancel();
 		if ($article->id)
 		{
-			$formElement
-				->delete()
-				->save();
+			if (Registry::get('articlesDelete'))
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('articlesEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('articlesNew'))
 		{
 			$formElement->create();
 		}

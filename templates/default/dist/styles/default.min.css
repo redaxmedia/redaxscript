@@ -14,6 +14,11 @@
  * @tableofcontents
  *
  * 1. variable
+ *    1.1 base color
+ *    1.2 note color
+ *    1.3 gradient
+ *    1.4 url
+ *    1.5 font
  *
  * @since 3.0.0
  *
@@ -22,6 +27,19 @@
  */
 
 /* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 base color */
+
+	/* @section 1.2 note color */
+
+	/* @section 1.3 gradient */
+
+	/* @section 1.4 url */
+
+	/* @section 1.5 font */
+}
 /**
  * @tableofcontents
  *
@@ -39,8 +57,9 @@
  * 6. content
  * 7. sidebar
  * 8. footer
- * 9. query
- *    9.1 medium min
+ * 9. text
+ * 10. query
+ *    10.1 medium min
  *
  * @since 3.0.0
  *
@@ -90,6 +109,11 @@ a
 {
 	color: #323e4c;
 	font-size: 1.5em;
+}
+
+.rs-link-login
+{
+	float: right;
 }
 
 /* @section 2.1 read more link */
@@ -297,9 +321,24 @@ a
 	color: rgb(255, 255, 255);
 }
 
-/* @section 9. query */
+/* @section 9. text */
 
-/* @section 9.1 medium min */
+.rs-text-about
+{
+	float: left;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 medium min */
+
+@media screen and (max-width: 29.999em)
+{
+	.rs-text-powered-by
+	{
+		display: none;
+	}
+}
 
 @media screen and (min-width: 50em)
 {
@@ -627,8 +666,8 @@ a
 
 .rs-box-tab
 {
-	background: #323e4c;
-	color: rgb(255, 255, 255);
+	background: rgb(200, 200, 200);
+	color: rgb(0, 0, 0);
 	padding: 0.25em 1em;
 }
 
@@ -652,21 +691,16 @@ a
 
 .rs-box-note a
 {
-	color: rgba(0, 0, 0, 0.65);
+	color: inherit;
 	text-decoration: underline;
-	transition: color 0.2s;
-}
-
-.rs-box-note a:hover
-{
-	color: rgb(0, 0, 0);
 }
 
 /* @section 7. box comment */
 
 .rs-box-comment
 {
-	margin-bottom: 3em;
+	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 /* @section 8. space between elements */
@@ -1061,6 +1095,30 @@ a
 /**
  * @tableofcontents
  *
+ * 1. grid elements
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. grid elements */
+
+.rs-grid-space > a, .rs-grid-space > blockquote, .rs-grid-space > button, .rs-grid-space > code, .rs-grid-space > div, .rs-grid-space > dl, .rs-grid-space > fieldset, .rs-grid-space > form, .rs-grid-space > h1, .rs-grid-space > h2, .rs-grid-space > h3, .rs-grid-space > h4, .rs-grid-space > h5, .rs-grid-space > h6, .rs-grid-space > hr, .rs-grid-space > img, .rs-grid-space > ol, .rs-grid-space > p, .rs-grid-space > table, .rs-grid-space > ul, .rs-line-space
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
+.rs-line, .rs-line-space
+{
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+/**
+ * @tableofcontents
+ *
  * 1. icon font
  * 2. icon flag
  *
@@ -1075,7 +1133,17 @@ a
 @font-face
 {
 	font-family: 'icon default';
-	src: url('/templates/default/assets/fonts/icon.woff2') format('woff2'), url('/templates/default/assets/fonts/icon.woff') format('woff');
+	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
+}
+
+.rs-icon:before
+{
+	font: 1em/1em 'icon default';
+}
+
+.rs-icon-login:before
+{
+	content: '\2731';
 }
 
 /* @section 2. icon flag */
@@ -1209,38 +1277,32 @@ ul.rs-list-default li:before
 
 .rs-list-tab a
 {
-	color: #323e4c;
+	color: rgb(255, 255, 255);
 }
 
 .rs-list-tab .rs-item-active
 {
-	background: #323e4c;
+	background: rgb(200, 200, 200);
 	border-radius: 0.125em 0.125em 0 0;
 	padding: 0.5em 1em;
 }
 
 .rs-list-tab .rs-item-active a
 {
-	color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
 }
 
 .rs-list-tab > li
 {
-	background: rgb(200, 200, 200);
+	background: #323e4c;
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
 
 .rs-list-tab > li:hover
 {
-	background: #699b3c;
-	border-color: #699b3c;
+	background: #3873b5;
 	cursor: pointer;
-}
-
-.rs-list-tab > li:hover a
-{
-	color: rgb(255, 255, 255);
 }
 
 /* @section 6. list result */

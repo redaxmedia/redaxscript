@@ -2,10 +2,10 @@
 namespace Redaxscript\Modules\FeedGenerator;
 
 use Redaxscript\Db;
-use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use XMLWriter;
 
 /**
  * generate atom feeds from content
@@ -63,8 +63,6 @@ class FeedGenerator extends Module
 
 	public static function render($table = 'articles')
 	{
-		$output = null;
-
 		/* fetch result */
 
 		$result = Db::forTablePrefix($table)
@@ -77,99 +75,48 @@ class FeedGenerator extends Module
 			->orderGlobal('rank')
 			->findMany();
 
+		/* route */
+
+		$route = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+		if (Request::getQuery('l'))
+		{
+			$route .= Registry::get('languageRoute') . Registry::get('language');
+		}
+
+		/* writer */
+
+		$writer = new XMLWriter();
+		$writer->openMemory();
+		$writer->setIndent(true);
+		$writer->setIndentString('	');
+		$writer->startDocument('1.0', Db::getSetting('charset'));
+		$writer->startElement('feed');
+		$writer->writeAttribute('xmlns', 'http://www.w3.org/2005/Atom');
+		$writer->startElement('link');
+		$writer->writeAttribute('type', 'application/atom+xml');
+		$writer->writeAttribute('href', $route);
+		$writer->writeAttribute('rel', 'self');
+		$writer->endElement();
+		$writer->writeElement('id', $route);
+		$writer->writeElement('title', Db::getSetting('title'));
+		$writer->writeElement('updated', date('c', strtotime(Registry::get('now'))));
+		$writer->startElement('author');
+		$writer->writeElement('name', Db::getSetting('author'));
+		$writer->endElement();
+
 		/* process result */
 
-		if ($result)
+		foreach ($result as $value)
 		{
-			$route = Registry::get('root') . Registry::get('parameterRoute') . Registry::get('fullRoute');
-			if (Request::getQuery('l'))
-			{
-				$route .= Registry::get('languageRoute') . Registry::get('language');
-			}
-			$title = Db::getSetting('title');
-			$description = Db::getSetting('description');
-			$author = Db::getSetting('author');
-			$copyright = Db::getSetting('copyright');
-
-			/* collect output */
-
-			$output = '<?xml version="1.0" encoding="' . Db::getSetting('charset') . '"?>';
-			$output .= '<feed xmlns="http://www.w3.org/2005/Atom">';
-			$output .= '<id>' . $route . '</id>';
-			$output .= '<link type="application/atom+xml" href="' . $route . '" rel="self" />';
-			$output .= '<updated>' . date('c', strtotime(Registry::get('now'))) . '</updated>';
-
-			/* title */
-
-			if ($title)
-			{
-				$output .= '<title>' . $title . '</title>';
-			}
-
-			/* description */
-
-			if ($description)
-			{
-				$output .= '<subtitle>' . $description . '</subtitle>';
-			}
-
-			/* author */
-
-			if ($author)
-			{
-				$output .= '<author><name>' . $author . '</name></author>';
-			}
-
-			/* copyright */
-
-			if ($copyright)
-			{
-				$output .= '<rights>' . $copyright . '</rights>';
-			}
-
-			/* generator */
-
-			$output .= '<generator>' . Language::get('name', '_package') . ' ' . Language::get('version', '_package') . '</generator>';
-
-			/* collect body output */
-
-			foreach ($result as $value)
-			{
-				$route = Registry::get('root') . Registry::get('parameterRoute');
-				$route .= $value->category < 1 ? $value->alias : build_route($table, $value->id);
-
-				/* collect entry output */
-
-				$output .= '<entry>';
-				$output .= '<id>' . $route . '</id>';
-				$output .= '<link href="' . $route . '" />';
-				$output .= '<updated>' . date('c', strtotime($value->date)) . '</updated>';
-
-				/* title */
-
-				$output .= '<title>' . ($table === 'comments' ? $value->author : $value->title) . '</title>';
-
-				/* description */
-
-				if ($value->description)
-				{
-					$output .= '<summary>' . $value->description . '</summary>';
-				}
-
-				/* text */
-
-				$output .= '<content>' . strip_tags($value->text) . '</content>';
-
-				/* author */
-
-				if ($value->author)
-				{
-					$output .= '<author><name>' . $value->author . '</name></author>';
-				}
-				$output .= '</entry>';
-			}
-			$output .= '</feed>';
+			$writer->startElement('entry');
+			$writer->writeElement('id', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route($table, $value->id));
+			$writer->writeElement('title', $value->title);
+			$writer->writeElement('updated', date('c', strtotime($value->date)));
+			$writer->writeElement('content', strip_tags($value->text));
+			$writer->endElement();
 		}
-		return $output;
+		$writer->endElement();
+		$writer->endDocument();
+		return $writer->outputMemory(true);
 	}
 }

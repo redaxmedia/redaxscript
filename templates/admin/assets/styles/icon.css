@@ -14,17 +14,17 @@
 
 @font-face
 {
-	font-family: 'icon admin';
-	src: url('/templates/admin/assets/fonts/icon.woff2') format('woff2'), url('/templates/admin/assets/fonts/icon.woff') format('woff');
+	font-family: var(--rs-admin-font-icon);
+	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
 /* @section 2. icon flag */
 
 .rs-admin-icon-flag
 {
-	background: #323e4c;
+	background: var(--rs-admin-color-primary);
 	border-radius: 0.125em;
-	color: #fff;
+	color: gray(255);
 	display: inline-block;
 	font-size: 0.75em;
 	letter-spacing: 0.125em;

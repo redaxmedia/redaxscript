@@ -1,0 +1,35 @@
+[
+	[
+		{
+			"myBrowser": "firefox",
+			"myBrowserVersion": 27,
+			"myEngine": "gecko",
+			"myMobile": "",
+			"myTablet": "",
+			"myDesktop": "windows"
+		},
+		"rs-firefox rs-27 rs-gecko rs-desktop rs-windows"
+	],
+	[
+		{
+			"myBrowser": "chrome",
+			"myBrowserVersion": 32,
+			"myEngine": "webkit",
+			"myMobile": "android",
+			"myTablet": "",
+			"myDesktop": ""
+		},
+		"rs-chrome rs-32 rs-webkit rs-mobile rs-android"
+	],
+	[
+		{
+			"myBrowser": "safari",
+			"myBrowserVersion": 6,
+			"myEngine": "webkit",
+			"myMobile": "",
+			"myTablet": "tablet",
+			"myDesktop": ""
+		},
+		"rs-safari rs-6 rs-webkit rs-tablet"
+	]
+]

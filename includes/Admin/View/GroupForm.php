@@ -55,11 +55,11 @@ class GroupForm implements ViewInterface
 		$formElement->init(array(
 			'form' => array(
 				'action' => Registry::get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('parameterRoute') . 'admin/view/groups'
+					'href' => Registry::get('groupsEdit') && Registry::get('groupsDelete') ? Registry::get('parameterRoute') . 'admin/view/groups' : Registry::get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
 					'href' => $group->id ? Registry::get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
@@ -259,15 +259,18 @@ class GroupForm implements ViewInterface
 			->append('</div>')
 			->token()
 			->cancel();
-		if ($group->id > 1)
-		{
-			$formElement->delete();
-		}
 		if ($group->id)
 		{
-			$formElement->save();
+			if (Registry::get('groupsDelete') && $group->id > 1)
+			{
+				$formElement->delete();
+			}
+			if (Registry::get('groupsEdit'))
+			{
+				$formElement->save();
+			}
 		}
-		else
+		else if (Registry::get('groupsNew'))
 		{
 			$formElement->create();
 		}

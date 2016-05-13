@@ -179,7 +179,7 @@ class Demo extends Config
 
 		/* process modules */
 
-		foreach (self::$_config['modules'] as $key => $value)
+		foreach (self::$_configArray['modules'] as $key => $value)
 		{
 			if (is_dir('modules/' . $key))
 			{

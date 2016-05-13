@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-title-content\">Installation</h2><form class=\"rs-js-validate-form rs-js-accordion rs-form-default rs-form-install\" method=\"post\">",
+			"start": "<h2 class=\"rs-title-content\">Installation</h2><form class=\"rs-js-install rs-js-accordion rs-js-validate-form rs-form-default rs-form-install\" method=\"post\">",
 			"end": "<button class=\"rs-js-submit rs-button-default rs-button-large rs-button-full\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\InstallForm\">Install</button></form>"
 		}
 	]

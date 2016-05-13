@@ -65,19 +65,19 @@ class Gallery extends Config
 
 		$imageElement = new Html\Element();
 		$imageElement->init('img', array(
-			'class' => self::$_config['className']['image']
+			'class' => self::$_configArray['className']['image']
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => self::$_config['className']['list']
+			'class' => self::$_configArray['className']['list']
 		));
 
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory, self::$_config['thumbDirectory']);
+		$galleryDirectory->init($directory, self::$_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
 		/* adjust order */
@@ -95,9 +95,9 @@ class Gallery extends Config
 
 		/* remove thumbs */
 
-		if ($options['command'] === 'remove' || !$galleryTotal)
+		if (!$galleryTotal || $options['command'] === 'remove')
 		{
-			$galleryDirectory->remove(self::$_config['thumbDirectory']);
+			$galleryDirectory->remove(self::$_configArray['thumbDirectory']);
 		}
 
 		/* else handle thumbs */
@@ -109,7 +109,7 @@ class Gallery extends Config
 			foreach ($galleryDirectoryArray as $key => $value)
 			{
 				$imagePath = $directory . '/' . $value;
-				$thumbPath = $directory . '/' . self::$_config['thumbDirectory'] . '/' . $value;
+				$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
 
 				/* create thumbs */
 
@@ -196,8 +196,8 @@ class Gallery extends Config
 	{
 		/* options fallback */
 
-		$options['height'] = array_key_exists('height', $options) ? $options['height'] : self::$_config['height'];
-		$options['quality'] = array_key_exists('quality', $options) ? $options['quality'] : self::$_config['quality'];
+		$options['height'] = array_key_exists('height', $options) ? $options['height'] : self::$_configArray['height'];
+		$options['quality'] = array_key_exists('quality', $options) ? $options['quality'] : self::$_configArray['quality'];
 
 		/* get extension */
 
@@ -239,12 +239,9 @@ class Gallery extends Config
 
 		/* create thumb directory */
 
-		$thumbDirectory = $directory . '/' . self::$_config['thumbDirectory'];
-
-		if (!is_dir($thumbDirectory))
-		{
-			mkdir($thumbDirectory, 0755);
-		}
+		$galleryDirectory = new Directory();
+		$galleryDirectory->init($directory);
+		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
 
 		/* create thumb */
 

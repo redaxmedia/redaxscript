@@ -8,7 +8,7 @@ use Redaxscript\Registry;
 use Redaxscript\Validator;
 
 /**
- * generate a sitemap xml
+ * generate a sitemap
  *
  * @since 2.2.0
  *
@@ -50,13 +50,13 @@ class Sitemap extends Config
 
 		$titleElement = new Html\Element();
 		$titleElement->init('h3', array(
-			'class' => self::$_config['className']['title']
+			'class' => self::$_configArray['className']['title']
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => self::$_config['className']['list']
+			'class' => self::$_configArray['className']['list']
 		));
 
 		/* fetch articles */
@@ -101,7 +101,7 @@ class Sitemap extends Config
 
 					$outputItem = '<li>';
 					$outputItem .= $linkElement->attr(array(
-						'href' => $value->category < 1 ? $value->alias : build_route('articles', $value->id),
+						'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
 						'title' => $value->description ? $value->description : $value->title
 					))->text($value->title);
 					$outputItem .= '</li>';

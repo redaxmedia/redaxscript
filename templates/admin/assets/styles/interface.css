@@ -33,14 +33,14 @@
 
 .rs-admin-item-panel.rs-admin-item-logout a:hover
 {
-	background: linear-gradient(#d50000, #a20000);
+	background: var(--rs-admin-gradient-secondary);
 }
 
 /* @section 2.1 icons before */
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
-	font: 1.25rem/1.5rem 'icon admin';
+	font: 1.25rem/1.5rem var(--rs-admin-font-icon);
 	margin-right: 1em;
 	text-transform: lowercase;
 	vertical-align: middle;
@@ -76,10 +76,10 @@
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
-	font: 1.5rem/2.5rem 'icon admin';
+	font: 1.25rem/1.5rem var(--rs-admin-font-icon);
 	position: absolute;
-	right: 0.75em;
-	top: 0;
+	right: 0.875em;
+	top: 0.375em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after

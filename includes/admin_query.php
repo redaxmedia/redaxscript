@@ -213,8 +213,10 @@ function admin_process()
 		}
 		if (!$idParameter || $idParameter > 1)
 		{
-			$groups = array_map(array($specialFilter, 'sanitize'), $_POST['groups']);
-			$groups = array_map('clean', $groups);
+			$groups = array_map(array(
+					$specialFilter,
+					'sanitize'
+			), $_POST['groups']);
 			$groups_string = implode(', ', $groups);
 			if (!$groups_string)
 			{
@@ -476,18 +478,16 @@ function admin_process()
 					))
 					->save();
 			}
-			if (Redaxscript\Registry::get('usersException'))
+
+			if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
 			{
 				$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
 				$auth->init();
 				$auth->setUser('name', $name);
 				$auth->setUser('email', $email);
-				if (file_exists('languages/' . $language . '.php'))
-				{
-					$auth->setUser('language', $language);
-					Redaxscript\Request::setSession('language', $language);
-				}
+				$auth->setUser('language', $language);
 				$auth->save();
+				Redaxscript\Request::setSession('language', $language);
 			}
 
 			/* show success */
@@ -819,7 +819,7 @@ function admin_delete()
 
 	/* handle exception */
 
-	if (Redaxscript\Registry::get('usersException'))
+	if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
 	{
 		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 		echo $logoutController->process();

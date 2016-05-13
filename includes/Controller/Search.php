@@ -7,7 +7,6 @@ use Redaxscript\Messenger;
 use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Validator;
 use Redaxscript\View;
 
@@ -41,15 +40,7 @@ class Search implements ControllerInterface
 	protected $_language;
 
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * array for searchable tables
+	 * array of tables
 	 *
 	 * @var array
 	 */
@@ -67,14 +58,12 @@ class Search implements ControllerInterface
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the registry class
 	 */
 
-	public function __construct(Registry $registry, Language $language, Request $request)
+	public function __construct(Registry $registry, Language $language)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
-		$this->_request = $request;
 	}
 
 	/**
@@ -88,9 +77,10 @@ class Search implements ControllerInterface
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
+		$searchValidator = new Validator\Search();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 
-		/* process search parameters */
+		/* process query */
 
 		if (!$this->_registry->get('thirdParameter'))
 		{
@@ -102,24 +92,23 @@ class Search implements ControllerInterface
 		else if (in_array($secondParameter, $this->tableArray))
 		{
 			$queryArray = array(
-				'table' => array($secondParameter),
+				'table' => array(
+					$secondParameter
+				),
 				'search' => $this->_registry->get('thirdParameter')
 			);
 		}
 
-		/* validate search terms */
+		/* validate search */
 
-		if (strlen($queryArray['search']) < 3 || $queryArray['search'] === $this->_language->get('search'))
+		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('input_incorrect');
 		}
 
-		/* get search query */
+		/* process search */
 
-		foreach ($queryArray['table'] as $table)
-		{
-			$result[] = $this->_search($table, $queryArray['search']);
-		}
+		$result = $this->_search($queryArray);
 
 		if (!$result)
 		{
@@ -133,50 +122,55 @@ class Search implements ControllerInterface
 			return $this->error($errorArray);
 		}
 
-		$output = $this->success($result, $queryArray);
-
+		//TODO: The check for $output does not "feel right" to me
+		$output = $this->success($result);
 		if ($output)
 		{
 			return $output;
 		}
-		else
-		{
-			return $this->error($this->_language->get('search_no'));
-		}
+		return $this->error($this->_language->get('search_no'));
 	}
 
 	/**
-	 * method for getting the search result
+	 * fetch the search result
 	 *
-	 * @param array $table array of the tables we can search in
-	 * @param array $search array of the strings we are looking for
+	 * @param array $queryArray array of query parameters
 	 *
-	 * @return array
+	 * @return Db
 	 */
 
-	private function _search($table = null, $search = array())
+	private function _search($queryArray = array())
 	{
-		$columnArray = array(
-			$table != 'comments' ? 'title' : null,
-			$table != 'comments' ? 'description' : null,
-			$table != 'comments' ? 'keywords' : null,
-			$table != 'categories' ? 'text' : null
-		);
-		$likeArray = array(
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'comments' ? '%' . $search . '%' : null,
-			$table != 'categories' ? '%' . $search . '%' : null
-		);
+		$search = $queryArray['search'];
 
-		// TODO: find the bug. removing one the status=1 will result in a bad query
-		$query = Db::forTablePrefix($table)
-			->whereRaw('status=1 AND ' . implode(array_filter($columnArray), ' LIKE ? OR ') . ' LIKE ?', array_filter($likeArray))
-			->where('status', 1)
-			->orderByDesc('date')
-			->findMany();
+		foreach ($queryArray['table'] as $table)
+		{
+			$columnArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? 'title' : null,
+				$table === 'categories' || $table === 'articles' ? 'description' : null,
+				$table === 'categories' || $table === 'articles' ? 'keywords' : null,
+				$table === 'articles' || $table === 'comments' ? 'text' : null
+			));
+			$likeArray = array_filter(array(
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
+			));
 
-		return $query;
+			/* fetch result */
+
+			$result[$table] = Db::forTablePrefix($table)
+				->whereLikeMany($columnArray, $likeArray)
+				->where('status', 1)
+				->whereRaw('(language = ? OR language is ?)', array(
+					$this->_registry->get('language'),
+					null
+				))
+				->orderByDesc('date')
+				->findMany();
+		}
+		return $result;
 	}
 
 	/**
@@ -184,16 +178,15 @@ class Search implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $result array of the db query
-	 * @param array $queryArray array of the tables and
+	 * @param array $successArray array of the search query results
 	 *
 	 * @return string
 	 */
 
-	public function success($result = array(), $queryArray = array())
+	public function success($successArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
-		return $listSearch->render($result, $queryArray['table']);
+		return $listSearch->render($successArray);
 	}
 
 	/**

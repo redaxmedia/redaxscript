@@ -4,7 +4,7 @@ namespace Redaxscript;
 /**
  * parent class to handle a directory in the filesystem
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @category Directory
  * @package Redaxscript
@@ -31,9 +31,17 @@ class Directory
 	protected $_directoryArray = array();
 
 	/**
-	 * array of the files to exclude
+	 * static directory cache
 	 *
 	 * @var array
+	 */
+
+	protected static $_directoryCache = array();
+
+	/**
+	 * files to be excluded
+	 *
+	 * @var mixed
 	 */
 
 	protected $_exclude = array(
@@ -42,20 +50,12 @@ class Directory
 	);
 
 	/**
-	 * array of the local cache
-	 *
-	 * @var array
-	 */
-
-	protected static $_cache = array();
-
-	/**
 	 * init the class
 	 *
 	 * @since 2.4.0
 	 *
 	 * @param string $directory name of the directory
-	 * @param mixed $exclude files to exclude
+	 * @param mixed $exclude files to be excluded
 	 */
 
 	public function init($directory = null, $exclude = null)
@@ -81,7 +81,7 @@ class Directory
 	}
 
 	/**
-	 * get the directory array for further processing
+	 * get the directory array
 	 *
 	 * @since 2.0.0
 	 *
@@ -91,6 +91,65 @@ class Directory
 	public function getArray()
 	{
 		return $this->_directoryArray;
+	}
+
+	/**
+	 * create the directory
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $directory name of the directory
+	 * @param integer $mode file access mode
+	 */
+
+	public function create($directory = null, $mode = 0777)
+	{
+		$path = $this->_directory . '/' . $directory;
+		if (!is_dir($path))
+		{
+			mkdir($path, $mode);
+		}
+	}
+
+	/**
+	 * remove the directory
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $directory name of the directory
+	 */
+
+	public function remove($directory = null)
+	{
+		if ($directory)
+		{
+			$path = $this->_directory . '/' . $directory;
+			$this->_remove($path);
+		}
+	}
+
+	/**
+	 * remove the path
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $path name of the path
+	 */
+
+	public function _remove($path = null)
+	{
+		if (is_dir($path))
+		{
+			foreach ($this->_scan($path) as $value)
+			{
+				$this->_remove($path . '/' . $value);
+			}
+			rmdir($path);
+		}
+		else if (is_file($path))
+		{
+			unlink($path);
+		}
 	}
 
 	/**
@@ -105,11 +164,13 @@ class Directory
 
 	protected function _scan($directory = null)
 	{
-		/* use from static cache */
+		$realpath = realpath($directory);
 
-		if (array_key_exists($directory, self::$_cache))
+		/* use static cache */
+
+		if (array_key_exists($realpath, self::$_directoryCache))
 		{
-			$directoryArray = self::$_cache[$directory];
+			$directoryArray = self::$_directoryCache[$realpath];
 		}
 
 		/* else scan directory */
@@ -117,113 +178,9 @@ class Directory
 		else
 		{
 			$directoryArray = scandir($directory);
-
-			/* save to static cache */
-
-			self::$_cache[$directory] = $directoryArray;
+			self::$_directoryCache[$realpath] = $directoryArray;
 		}
 		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
 		return $directoryArray;
-	}
-
-	/**
-	 * create the directory
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param string $directory name of the directory
-	 * @param integer $mode file access mode
-	 *
-	 * @return boolean
-	 */
-
-	public function create($directory = null, $mode = 0777)
-	{
-		$output = false;
-		$path = $this->_directory . '/' . $directory;
-
-		/* directory does not exist */
-
-		if (!is_dir($path))
-		{
-			mkdir($path, $mode);
-
-			/* validate directory was created */
-
-			if (is_dir($path))
-			{
-				$output = true;
-			}
-		}
-		return $output;
-	}
-
-	/**
-	 * remove the directory
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $directory name of the directory
-	 */
-
-	public function remove($directory = null)
-	{
-		/* handle parent directory */
-
-		if (!$directory)
-		{
-			$path = $this->_directory;
-			$directoryArray = $this->_directoryArray;
-		}
-
-		/* else handle children */
-
-		else
-		{
-			$path = $this->_directory . '/' . $directory;
-			if (is_dir($path))
-			{
-				$directoryArray = $this->_scan($path);
-			}
-			else
-			{
-				$directoryArray = array();
-			}
-		}
-
-		/* walk directory array */
-
-		foreach ($directoryArray as $children)
-		{
-			$childrenPath = $path . '/' . $children;
-
-			/* remove directory */
-
-			if (is_dir($childrenPath))
-			{
-				$this->remove($directory . '/' . $children);
-			}
-
-			/* else unlink file */
-
-			else if (is_file($childrenPath))
-			{
-				unlink($childrenPath);
-			}
-		}
-
-		/* remove directory */
-
-		if (is_dir($path))
-		{
-			rmdir($path);
-		}
-
-		/* else unlink file */
-
-		else if (is_file($path))
-		{
-			unlink($path);
-		}
 	}
 }

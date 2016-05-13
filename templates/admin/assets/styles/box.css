@@ -18,12 +18,13 @@
 
 /* @section 1. several admin boxes */
 
-.rs-admin-box-accordion, .rs-admin-box-dialog
+.rs-admin-box-accordion,
+.rs-admin-box-dialog
 {
-	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
+	background: var(--rs-admin-gradient-quaternary);
+	border: 1px solid gray(185);
 	border-top: 0;
-	padding: 0.25em 1em;
+	padding: 0.5em 1em;
 }
 
 .rs-admin-box-accordion
@@ -33,29 +34,30 @@
 
 .rs-admin-title-accordion + .rs-admin-box-accordion
 {
-	border-top: 1px solid #b9b9b9;
+	border-top: 1px solid gray(185);
 }
 
 /* @section 1.1 last element */
 
-.rs-admin-set-accordion:last-child .rs-admin-box-accordion
+.rs-admin-set-accordion:last-of-type
 {
-	border-bottom-width: 1px;
+	border-bottom: 1px solid gray(185);
 }
 
 /* @section 2. box dock admin */
 
 .rs-admin-box-dock
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
+	background: gray(32);
 	font-size: 0.875rem;
 	margin-top: 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px gray(0, 0.8);
 }
 
-.rs-admin-box-dock, .rs-admin-box-dock a
+.rs-admin-box-dock,
+.rs-admin-box-dock a
 {
-	color: #b9b9b9;
+	color: gray(185);
 }
 
 /* @section 2.1 description dock admin */
@@ -63,7 +65,7 @@
 .rs-admin-description-dock
 {
 	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', 'trebuchet ms', arial;
+	font: bold 1rem/2.625rem var(--rs-admin-font-primary);
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	max-width: 10em;
@@ -86,19 +88,24 @@
 
 .rs-admin-box-panel
 {
-	background: url('/templates/admin/assets/images/carbon.png') #222;
+	background: gray(32);
 }
 
 /* @section 4. box tab admin */
 
 .rs-admin-box-tab
 {
-	background: linear-gradient(#e2e2e2, #dadada);
-	border: 1px solid #b9b9b9;
-	padding: 1em 1.5em;
+	background: var(--rs-admin-gradient-quaternary);
+	border: 1px solid gray(185);
+	padding: 1em;
 }
 
 /* @section 5. box note admin */
+
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
 
 .rs-admin-box-note
 {
@@ -110,12 +117,6 @@
 
 .rs-admin-box-note a
 {
-	color: rgba(0, 0, 0, 0.65);
+	color: inherit;
 	text-decoration: underline;
-	transition: color 0.2s;
-}
-
-.rs-admin-box-note a:hover
-{
-	color: #000;
 }

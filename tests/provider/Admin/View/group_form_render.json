@@ -1,23 +1,67 @@
 [
 	[
+		{
+			"groupsNew": false
+		},
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New group</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/groups\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/groups\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">New group</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
 		}
 	],
 	[
+		{
+			"groupsNew": true
+		},
+		0,
+		{
+			"start": "<h2 class=\"rs-admin-title-content\">New group</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
+		}
+	],
+	[
+		{
+			"groupsEdit": false,
+			"groupsDelete": false
+		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Administrators</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/groups/1\">",
+			"start": "<h2 class=\"rs-admin-title-content\">Administrators</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups/1\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
+		}
+	],
+	[
+		{
+			"groupsEdit": true,
+			"groupsDelete": true
+		},
+		1,
+		{
+			"start": "<h2 class=\"rs-admin-title-content\">Administrators</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups/1\">",
 			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/groups\">Cancel</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	],
 	[
+		{
+			"groupsEdit": false,
+			"groupsDelete": false
+		},
 		2,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Members</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default\" method=\"post\" action=\"admin/process/groups/2\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/groups\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/groups/2/\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">Members</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups/2\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
+		}
+	],
+	[
+		{
+			"groupsEdit": true,
+			"groupsDelete": true,
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		},
+		2,
+		{
+			"start": "<h2 class=\"rs-admin-title-content\">Members</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix\" method=\"post\" action=\"admin/process/groups/2\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/groups\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/groups/2/0071877d20a65c02d9a1654f109b97dc61416d1a\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	]
 ]

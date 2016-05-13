@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. variable
+ *    1.1 base color
+ *    1.2 note color
+ *    1.3 gradient
+ *    1.4 url
+ *    1.5 font
  *
  * @since 3.0.0
  *
@@ -13,15 +18,29 @@
 
 :root
 {
+	/* @section 1.1 base color */
+
 	--rs-color-primary: #3873b5;
 	--rs-color-secondary: #699b3c;
 	--rs-color-tertiary: #323e4c;
 	--rs-color-quaternary: #c77a46;
-
 	--rs-color-primary-light: color(var(--rs-color-primary) l(50%));
 	--rs-color-primary-dark: color(var(--rs-color-primary) l(40%));
 	--rs-color-secondary-light: color(var(--rs-color-secondary) l(50%));
 	--rs-color-quaternary-light: color(var(--rs-color-quaternary) l(50%));
+
+	/* @section 1.2 note color */
+
+	--rs-color-success: #5bb75b;
+	--rs-color-warning: #f3940e;
+	--rs-color-error: #da4f49;
+	--rs-color-info: #49afcd;
+	--rs-color-success-dark: color(var(--rs-color-success) b(80%) saturation(+50%));
+	--rs-color-warning-dark: color(var(--rs-color-warning) b(60%) saturation(+50%));
+	--rs-color-error-dark: color(var(--rs-color-error) b(70%) saturation(+50%));
+	--rs-color-info-dark: color(var(--rs-color-info) b(70%) saturation(+50%));
+
+	/* @section 1.3 gradient */
 
 	--rs-gradient-primary: linear-gradient(var(--rs-color-primary-light), var(--rs-color-primary));
 	--rs-gradient-primary-light: linear-gradient(color(var(--rs-color-primary-light) l(55%)), color(var(--rs-color-primary) l(55%)));
@@ -30,20 +49,14 @@
 	--rs-gradient-quaternary: linear-gradient(var(--rs-color-quaternary-light), var(--rs-color-quaternary));
 	--rs-gradient-quaternary-light: linear-gradient(color(var(--rs-color-quaternary-light) l(55%)), color(var(--rs-color-quaternary) l(55%)));
 
-	--rs-color-success: #5bb75b;
-	--rs-color-warning: #f3940e;
-	--rs-color-error: #da4f49;
-	--rs-color-info: #49afcd;
-
-	--rs-color-success-dark: color(var(--rs-color-success) b(80%) saturation(+50%));
-	--rs-color-warning-dark: color(var(--rs-color-warning) b(60%) saturation(+50%));
-	--rs-color-error-dark: color(var(--rs-color-error) b(70%) saturation(+50%));
-	--rs-color-info-dark: color(var(--rs-color-info) b(70%) saturation(+50%));
+	/* @section 1.4 url */
 
 	--rs-url-teaser-small: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg');
 	--rs-url-teaser-medium: url('//cdn.redaxscript.com/unsplash/817/1250x500.jpg');
 	--rs-url-teaser-large: url('//cdn.redaxscript.com/unsplash/817/2500x1000.jpg');
 	--rs-url-teaser-ultra: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
+
+	/* @section 1.5 font */
 
 	--rs-font-primary: 'open sans condensed', arial, sans-serif;
 	--rs-font-code: monospace, arial;

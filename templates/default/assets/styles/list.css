@@ -118,38 +118,32 @@ ul.rs-list-default li:before
 
 .rs-list-tab a
 {
-	color: var(--rs-color-tertiary);
+	color: gray(255);
 }
 
 .rs-list-tab .rs-item-active
 {
-	background: var(--rs-color-tertiary);
+	background: gray(200);
 	border-radius: 0.125em 0.125em 0 0;
 	padding: 0.5em 1em;
 }
 
 .rs-list-tab .rs-item-active a
 {
-	color: gray(255);
+	color: gray(0);
 }
 
 .rs-list-tab > li
 {
-	background: gray(200);
+	background: var(--rs-color-tertiary);
 	padding: 0.25em 1em;
 	transition: background 0.2s, border 0.2s;
 }
 
 .rs-list-tab > li:hover
 {
-	background: var(--rs-color-secondary);
-	border-color: var(--rs-color-secondary);
+	background: var(--rs-color-primary);
 	cursor: pointer;
-}
-
-.rs-list-tab > li:hover a
-{
-	color: gray(255);
 }
 
 /* @section 6. list result */
