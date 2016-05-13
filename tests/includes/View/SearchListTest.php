@@ -137,14 +137,14 @@ class SearchListTest extends TestCase
 
 			/* fetch result */
 
-			$result[$table] = Db::forTablePrefix($table)
+			$resultArray[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
 				->findMany();
 		}
 
 		/* actual */
 
-		$actual = $searchList->render($result);
+		$actual = $searchList->render($resultArray);
 
 		/* compare */
 

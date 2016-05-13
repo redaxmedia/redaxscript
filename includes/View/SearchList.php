@@ -66,7 +66,7 @@ class SearchList implements ViewInterface
 	public function render($result = null)
 	{
 		$output = Hook::trigger('searchListStart');
-
+		//Todo: debug if item is an array or a instance of Db, if so rename it to $result as it is a single result set
 		foreach ($result as $item => $data)
 		{
 			$itemOutput = null;
@@ -93,7 +93,7 @@ class SearchList implements ViewInterface
 
 				foreach ($data as $value)
 				{
-					//TODO: what about the access check on this position
+					//TODO: what about the access check on this position - we save multiple new Validator\Access
 					$itemOutput .= $this->_renderItem($value, $item);
 				}
 
@@ -121,7 +121,7 @@ class SearchList implements ViewInterface
 	 *
 	 * @return string
 	 */
-
+	//Todo: debug if item is an array or a instance of Db, if so rename it to $result as it is a single result set
 	protected function _renderItem($item = array(), $table = null)
 	{
 		$output = null;
