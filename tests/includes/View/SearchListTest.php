@@ -112,20 +112,20 @@ class SearchListTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $queryArray
+	 * @param array $searchArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($queryArray = array(), $expect = array())
+	public function testRender($searchArray = array(), $expect = array())
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
 		$controllerSearch = new Controller\Search($this->_registry, $this->_language);
 		$resultArray = $this->callMethod($controllerSearch, '_search', array(
-			$queryArray
+			$searchArray
 		));
 
 		/* actual */
