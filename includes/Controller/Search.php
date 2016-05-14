@@ -137,7 +137,7 @@ class Search implements ControllerInterface
 	 * @return array
 	 */
 
-	private function _search($queryArray = array())
+	protected function _search($queryArray = array())
 	{
 		$resultArray = array();
 

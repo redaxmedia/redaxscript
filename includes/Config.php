@@ -19,7 +19,7 @@ class Config extends Singleton
 	 * @var array
 	 */
 
-	private static $_configArray = array();
+	protected static $_configArray = array();
 
 	/**
 	 * init the class
