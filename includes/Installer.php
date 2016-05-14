@@ -285,7 +285,7 @@ class Installer
 		$sqlDirectory->init($this->_directory . '/' . $type . '/' . $action);
 		$sqlArray = $sqlDirectory->getArray();
 
-		/* process sql files */
+		/* process sql */
 
 		foreach ($sqlArray as $file)
 		{

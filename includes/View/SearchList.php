@@ -57,108 +57,70 @@ class SearchList implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $result array for the db query results
+	 * @param array $resultArray array for the result
 	 *
 	 * @return string
 	 */
 
-	//TODO: rename to $resultArray
-	public function render($result = null)
+	public function render($resultArray = array())
 	{
 		$output = Hook::trigger('searchListStart');
-		//Todo: debug if item is an array or a instance of Db, if so rename it to $result as it is a single result set
-		foreach ($result as $item => $data)
+		$accessValidator = new Validator\Access();
+		
+		/* html elements */
+
+		$titleElement = new Html\Element();
+		$titleElement->init('h2', array(
+			'class' => 'rs-title-content rs-title-result'
+		));
+		$listElement = new Html\Element();
+		$listElement->init('ol', array(
+			'class' => 'rs-list-result'
+		));
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
+			'class' => 'rs-link-result'
+		));
+		$textElement = new Html\Element();
+		$textElement->init('span', array(
+			'class' => 'rs-text-result-date'
+		));
+			
+		/* process results */
+
+		foreach ($resultArray as $table => $result)
 		{
-			$itemOutput = null;
-			if ($data)
+			$outputItem = null;
+			if ($result)
 			{
-				/* title element */
-				//TODO: move the element building out - bad performance inside a foreach
-				$titleElement = new Html\Element();
-				$titleElement
-					->init('h2', array(
-						'class' => 'rs-title-content rs-title-result'
-					))
-					->text($this->_language->get($item));
+				/* collect item output */
 
-				/* list element */
-
-				$listElement = new Html\Element();
-				$listElement
-					->init('ol', array(
-						'class' => 'rs-list-result'
-					));
-
-				/* generate category's list */
-
-				foreach ($data as $value)
+				foreach ($result as $value)
 				{
-					//TODO: what about the access check on this position - we save multiple new Validator\Access
-					$itemOutput .= $this->_renderItem($value, $item);
+					if ($accessValidator->validate($result->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+					{
+						$textDate = date(Db::getSetting('date'), strtotime($value->date));
+						$linkElement
+							->attr('href', build_route($table, $value->id))
+							->text($value->title ? $value->title : $value->author);
+						$textElement->text($textDate);
+						$outputItem .= $itemElement->html($linkElement . $textElement);
+					}					
 				}
 
-				/* only show a category's results, when the user can access at least 1 result */
+				/* collect output */
 
-				if ($itemOutput)
+				if ($outputItem)
 				{
-					$listElement->html($itemOutput);
+					$titleElement->text($this->_language->get($table));
+					$listElement->html($outputItem);
 					$output .= $titleElement . $listElement;
 				}
 			}
 		}
 		$output .= Hook::trigger('searchListEnd');
-
-		return $output;
-	}
-
-	/**
-	 * method for rendering a list item
-	 *
-	 * @sind 3.0.0
-	 *
-	 * @param array $item a single db row the $resultArray
-	 * @param string $table to know which table the current $item from
-	 *
-	 * @return string
-	 */
-	//Todo: debug if item is an array or a instance of Db, if so rename it to $result as it is a single result set
-	protected function _renderItem($item = array(), $table = null)
-	{
-		$output = null;
-		$accessValidator = new Validator\Access();
-		if ($accessValidator->validate($item->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
-		{
-			/* prepare metadata */
-
-			$date = date(Db::getSetting('date'), strtotime($item->date));
-
-			/* build route */
-
-			$route = build_route($table, $item->id);
-
-			/* html element */
-			//TODO: move the element building outside of the access check
-			$linkElement = new Html\Element();
-			$linkElement
-				->init('a', array(
-					'href' => $this->_registry->get('parameterRoute') . $route,
-					'class' => 'rs-link-result'
-				))
-				->text($table === 'comments' ? $item->author : $item->title);
-			$textElement = new Html\Element();
-			$textElement
-				->init('span', array(
-					'class' => 'rs-text-result-date'
-				))
-				->text($date);
-			$itemElement = new Html\Element();
-			$itemElement
-				->init('li', array(
-					'class' => 'rs-item-result'
-				))
-				->html($linkElement . $textElement);
-			$output = $itemElement;
-		}
 		return $output;
 	}
 }

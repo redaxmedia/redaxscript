@@ -192,7 +192,7 @@ class Auth
 				1
 			));
 
-			/* process group */
+			/* process groups */
 
 			foreach ($group as $key => $value)
 			{
