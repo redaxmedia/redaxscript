@@ -79,7 +79,7 @@ class Search implements ControllerInterface
 		$specialFilter = new Filter\Special();
 		$searchValidator = new Validator\Search();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
-		$thirdParameter = $this->_registry->get('thirdParameter');
+		$thirdParameter = $specialFilter->sanitize($this->_registry->get('thirdParameter'));
 
 		/* process query */
 
