@@ -346,6 +346,7 @@ class Auth
 				'user' => $userArray,
 				'permission' => $permissionArray
 			));
+			$this->_request->setSession('language', $userArray['language']);
 		}
 	}
 }
