@@ -56,7 +56,7 @@ class SearchList implements ViewInterface
 	 * render the view
 	 *
 	 * @since 3.0.0
-	 * 
+	 *
 	 * @param array $result array for the db query results
 	 *
 	 * @return string

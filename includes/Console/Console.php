@@ -17,7 +17,7 @@ class Console extends ConsoleAbstract
 	 * init the class
 	 *
 	 * @since 3.0.0
-	 * 
+	 *
 	 * @return string
 	 */
 

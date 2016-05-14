@@ -48,7 +48,8 @@ class TestCase extends PHPUnit_Framework_TestCase
 	 * @return mixed
 	 */
 
-	protected function callMethod($object = null, $method = null, $argumentArray = array()) {
+	protected function callMethod($object = null, $method = null, $argumentArray = array())
+	{
 		$reflectionObject = new ReflectionClass($object);
 		$reflectionMethod = $reflectionObject->getMethod($method);
 		$reflectionMethod->setAccessible(true);
