@@ -182,20 +182,23 @@ function startup()
 
 	/* define ids */
 
-	if (Redaxscript\Registry::get('lastTable') == 'categories')
+	$aliasValidator = new Redaxscript\Validator\Alias();
+	if (Redaxscript\Registry::get('firstParameter') === 'admin' || $aliasValidator->validate(Redaxscript\Registry::get('firstParameter'), Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
-		Redaxscript\Registry::set('categoryId', $id);
-		Redaxscript\Registry::set('lastId', $id);
-	}
-	else if (Redaxscript\Registry::get('lastTable') == 'articles')
-	{
-		Redaxscript\Registry::set('articleId', $id);
-		Redaxscript\Registry::set('lastId', $id);
+		if (Redaxscript\Registry::get('lastTable') == 'categories')
+		{
+			Redaxscript\Registry::set('categoryId', $id);
+			Redaxscript\Registry::set('lastId', $id);
+		}
+		else if (Redaxscript\Registry::get('lastTable') == 'articles')
+		{
+			Redaxscript\Registry::set('articleId', $id);
+			Redaxscript\Registry::set('lastId', $id);
+		}
 	}
 
 	/* define content error */
 
-	$aliasValidator = new Redaxscript\Validator\Alias();
 	if (!Redaxscript\Registry::get('lastId') && $aliasValidator->validate(Redaxscript\Registry::get('firstParameter'), Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::FAILED)
 	{
 		Redaxscript\Registry::set('contentError', true);
