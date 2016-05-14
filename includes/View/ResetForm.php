@@ -33,10 +33,11 @@ class ResetForm implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-		));
-		$titleElement->text(Language::get('password_reset'));
+		$titleElement
+			->init('h2', array(			
+				'class' => 'rs-title-content'
+			))
+			->text(Language::get('password_reset'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(

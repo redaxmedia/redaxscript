@@ -243,7 +243,8 @@ class Messenger
 	protected function _renderAction()
 	{
 		$output = null;
-		if ($this->_actionArray['text'] && $this->_actionArray['route']) {
+		if ($this->_actionArray['text'] && $this->_actionArray['route'])
+		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
 				->init('a', array(
@@ -254,7 +255,8 @@ class Messenger
 
 			/* meta redirect */
 
-			if (is_numeric($this->_actionArray['redirect'])) {
+			if (is_numeric($this->_actionArray['redirect']))
+			{
 				$metaElement = new Html\Element();
 				$output .= $metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,

@@ -103,7 +103,7 @@ class SearchList implements ViewInterface
 					{
 						$textDate = date(Db::getSetting('date'), strtotime($value->date));
 						$linkElement
-							->attr('href', build_route($table, $value->id))
+							->attr('href', $this->_registry->get('parameterRoute') . build_route($table, $value->id))
 							->text($value->title ? $value->title : $value->author);
 						$textElement->text($textDate);
 						$outputItem .= $itemElement->html($linkElement . $textElement);
