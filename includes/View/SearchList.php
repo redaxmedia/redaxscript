@@ -66,7 +66,7 @@ class SearchList implements ViewInterface
 	{
 		$output = Hook::trigger('searchListStart');
 		$accessValidator = new Validator\Access();
-		
+
 		/* html elements */
 
 		$titleElement = new Html\Element();
@@ -87,7 +87,7 @@ class SearchList implements ViewInterface
 		$textElement->init('span', array(
 			'class' => 'rs-text-result-date'
 		));
-			
+
 		/* process results */
 
 		foreach ($resultArray as $table => $result)
@@ -107,7 +107,7 @@ class SearchList implements ViewInterface
 							->text($value->title ? $value->title : $value->author);
 						$textElement->text($textDate);
 						$outputItem .= $itemElement->html($linkElement . $textElement);
-					}					
+					}
 				}
 
 				/* collect output */

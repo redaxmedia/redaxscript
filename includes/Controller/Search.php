@@ -126,7 +126,7 @@ class Search implements ControllerInterface
 		}
 
 		/* handle result */
-		
+
 		$output = $this->result($resultArray);
 		if ($output)
 		{

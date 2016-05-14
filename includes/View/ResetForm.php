@@ -34,7 +34,7 @@ class ResetForm implements ViewInterface
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(			
+			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
 			->text(Language::get('password_reset'));
