@@ -26,13 +26,17 @@ abstract class CommandAbstract extends ConsoleAbstract
 	public function getHelp()
 	{
 		$output = null;
-		if (array_key_exists('description', $this->_commandArray))
+		foreach ($this->_commandArray as $commandKey => $commandValue)
 		{
-			$output .= $this->_commandArray['description'] . PHP_EOL;
-		}
-		if (array_key_exists('command', $this->_commandArray))
-		{
-			$output .= $this->_commandArray['command'] . PHP_EOL;
+			$output .= str_pad($commandKey, 30) . $commandValue['description'] . PHP_EOL;
+			foreach ($commandValue['argumentArray'] as $argumentKey => $argumentValue)
+			{
+				$output .= '  ' . str_pad($argumentKey, 30) . $argumentValue['description'] . PHP_EOL;
+				foreach ($argumentValue['optionArray'] as $optionKey => $optionValue)
+				{
+					$output .= '    --' . str_pad($optionKey, 28) . $optionValue['description'] . PHP_EOL;
+				}
+			}
 		}
 		return $output;
 	}

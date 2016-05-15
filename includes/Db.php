@@ -269,12 +269,19 @@ class Db extends ORM
 
 		/* process settings */
 
-		foreach ($settings as $value)
+		if ($key)
 		{
-			if ($value->name === $key)
+			foreach ($settings as $setting)
 			{
-				return $value->value;
+				if ($setting->name === $key)
+				{
+					return $setting->value;
+				}
 			}
+		}
+		else if (!$key)
+		{
+			return $settings;
 		}
 		return false;
 	}

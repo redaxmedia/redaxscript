@@ -22,11 +22,51 @@ class Config extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Config',
-		'command' => 'config',
-		'author' => 'Redaxmedia',
-		'description' => 'Handle the configuration file',
-		'version' => '3.0.0'
+		'config' => array(
+			'description' => 'Config command',
+			'argumentArray' => array(
+				'list' => array(
+					'description' => 'List the configuration'
+				),
+				'set' => array(
+					'description' => 'Set the configuration',
+					'optionArray' => array(
+						'db-type' => array(
+							'description' => 'Required database type',
+							'required' => 'required'
+						),
+						'db-host' => array(
+							'description' => 'Required database host or file',
+							'required' => 'required'
+						),
+						'db-name' => array(
+							'description' => 'Optional database name'
+						),
+						'db-user' => array(
+							'description' => 'Optional database user'
+						),
+						'db-password' => array(
+							'description' => 'Optional database password'
+						),
+						'db-prefix' => array(
+							'description' => 'Optional database prefix'
+						)
+					)
+				),
+				'parse' => array(
+					'description' => 'Parse the configuration',
+					'optionArray' => array(
+						'db-url' => array(
+							'description' => 'Required database url from ENV variable',
+							'required' => 'required'
+						)
+					)
+				),
+				'write' => array(
+					'description' => 'Write to the configuration file'
+				)
+			)
+		)
 	);
 
 	/**
@@ -44,32 +84,34 @@ class Config extends CommandAbstract
 
 		/* run command */
 
-		$commandKey = $parser->getArgument(2);
-		if ($commandKey === 'show')
+		$argumentKey = $parser->getArgument(2);
+		if ($argumentKey === 'list')
 		{
-			return $this->_show();
+			return $this->_list();
 		}
-		if ($commandKey === 'write')
+		if ($argumentKey === 'write')
 		{
 			return $this->_write();
 		}
+		return $this->getHelp();
 	}
 
 	/**
-	 * show the config
+	 * list the config
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function _show()
+	public function _list()
 	{
 		$output = null;
+		$configArray = $this->_config->get();
 
 		/* process config */
 
-		foreach ($this->_config->get() as $key => $value)
+		foreach ($configArray as $key => $value)
 		{
 			if ($key === 'dbPassword' || $key === 'dbSalt')
 			{
@@ -77,7 +119,7 @@ class Config extends CommandAbstract
 			}
 			if ($value)
 			{
-				$output .= $key . ': ' . $value . PHP_EOL;
+				$output .= str_pad($key, 20) . $value . PHP_EOL;
 			}
 		}
 		return $output;
@@ -93,6 +135,6 @@ class Config extends CommandAbstract
 
 	public function _write()
 	{
-		return PHP_EOL;
+		return $this->_config->write();
 	}
 }

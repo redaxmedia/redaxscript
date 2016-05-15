@@ -22,11 +22,14 @@ class Help extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Help',
-		'command' => 'help',
-		'author' => 'Redaxmedia',
-		'description' => 'Help for the console',
-		'version' => '3.0.0'
+		'help' => array(
+			'description' => 'Help command',
+			'argumentArray' => array(
+				'<command>' => array(
+					'description' => 'Show help for the <command>'
+				)
+			)
+		)
 	);
 
 	/**

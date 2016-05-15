@@ -20,13 +20,43 @@ class Install extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Install',
-		'command' => 'install',
-		'author' => 'Redaxmedia',
-		'description' => 'Install the database',
-		'version' => '3.0.0'
+		'install' => array(
+			'description' => 'Install command',
+			'argumentArray' => array(
+				'database' => array(
+					'description' => 'Install the database',
+					'optionArray' => array(
+						'admin-name' => array(
+							'description' => 'Required admin name',
+							'required' => 'required'
+						),
+						'admin-user' => array(
+							'description' => 'Required admin user',
+							'required' => 'required'
+						),
+						'admin-password' => array(
+							'description' => 'Required admin password',
+							'required' => 'required'
+						),
+						'admin-email' => array(
+							'description' => 'Required admin email',
+							'required' => 'required'
+						)
+					)
+				),
+				'module' => array(
+					'description' => 'Install the module',
+					'optionArray' => array(
+						'<name>' => array(
+							'description' => 'Required module <name>',
+							'required' => 'required'
+						)
+					)
+				)
+			)
+		)
 	);
-	
+
 	/**
 	 * run the command
 	 *
@@ -35,7 +65,6 @@ class Install extends CommandAbstract
 
 	public function run()
 	{
-		//php console install
-		//php console install --module=HelloWorld
+		return $this->getHelp();
 	}
 }

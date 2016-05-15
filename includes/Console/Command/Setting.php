@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use Redaxscript\Console\Parser;
 use Redaxscript\Db;
 
 /**
@@ -22,11 +23,22 @@ class Setting extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Setting',
-		'command' => 'setting',
-		'author' => 'Redaxmedia',
-		'description' => 'Handle the settings',
-		'version' => '3.0.0'
+		'setting' => array(
+			'description' => 'Setting command',
+			'argumentArray' => array(
+				'list' => array(
+					'description' => 'List the settings'
+				),
+				'set' => array(
+					'description' => 'Set the setting',
+					'optionArray' => array(
+						'<name>' => array(
+							'description' => 'Required setting <name>'
+						)
+					)
+				)
+			)
+		)
 	);
 	
 	/**
@@ -37,12 +49,41 @@ class Setting extends CommandAbstract
 
 	public function run()
 	{
-		$commandArgument = $this->_parser->getArgument(2);
-		if ($commandArgument)
+		$parser = new Parser($this->_request);
+		$parser->init();
+
+		/* run command */
+
+		$argumentKey = $parser->getArgument(2);
+		if ($argumentKey === 'list')
 		{
-			return Db::getSetting($commandArgument) . PHP_EOL;
+			return $this->_list();
 		}
-		//php console setting show
-		//php console setting set --name=value
+		return $this->getHelp();
+	}
+
+	/**
+	 * list the config
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function _list()
+	{
+		$output = null;
+		$settings = DB::getSetting();
+
+		/* process settings */
+
+		foreach ($settings as $setting)
+		{
+			if ($setting->value)
+			{
+				$output .= str_pad($setting->name, 20) . $setting->value . PHP_EOL;
+			}
+		}
+		return $output;
 	}
 }
