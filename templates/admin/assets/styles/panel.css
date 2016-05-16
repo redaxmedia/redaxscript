@@ -56,7 +56,7 @@
 .rs-admin-item-panel > a:before,
 .rs-admin-item-panel > span:before
 {
-    font: 1.25rem/1.5rem var(--rs-admin-font-icon);
+    font: 1.25em/1.5em var(--rs-admin-font-icon);
     margin-right: 1em;
     text-transform: lowercase;
     vertical-align: middle;
@@ -93,7 +93,7 @@
 .rs-admin-item-panel > span:after
 {
     content: '˃';
-    font: 1.25rem/1.5rem var(--rs-admin-font-icon);
+    font: 1.25em/1.5em var(--rs-admin-font-icon);
     position: absolute;
     right: 0.875em;
     top: 0.375em;
@@ -118,7 +118,7 @@
     color: gray(185);
     cursor: pointer;
     display: block;
-    font: bold 1rem/2.5rem var(--rs-admin-font-primary);
+    font: bold 1.125em/2.75em var(--rs-admin-font-primary);
     padding: 0 0.75em;
     text-shadow: 0 1px gray(0, 0.6);
     text-transform: uppercase;
@@ -164,9 +164,9 @@
 .rs-admin-list-panel .rs-admin-link-new:after
 {
     content: 'f';
-    font: 0.75rem/1rem 'icon admin';
+    font: 0.75em/1em 'icon admin';
     left: 0;
-    margin-top: -0.5rem;
+    margin-top: -0.5em;
     position: absolute;
     right: 0;
     text-align: center;
@@ -184,7 +184,7 @@
     .rs-admin-list-panel a,
     .rs-admin-list-panel > li > span
     {
-        line-height: 3.5rem;
+        line-height: 3.625em;
     }
 
     .rs-admin-list-panel .rs-admin-item-panel > span:after
