@@ -358,9 +358,10 @@
 	background: linear-gradient(rgb(116, 174, 45), #4c8c00);
 }
 
-.rs-admin-button-delete
+.rs-admin-button-delete, :root .rs-admin-button-delete
 {
 	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	color: rgb(255, 255, 255);
 }
 
 /* @section 1.1 hover effect */
@@ -375,7 +376,7 @@
 	background: #4c8c00;
 }
 
-.rs-admin-button-delete:hover
+.rs-admin-button-delete:hover, :root .rs-admin-button-delete:hover
 {
 	background: #a20000;
 }

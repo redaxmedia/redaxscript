@@ -39,9 +39,11 @@ a.rs-admin-button-default
 	background: var(--rs-admin-gradient-tertiary);
 }
 
-.rs-admin-button-delete
+.rs-admin-button-delete,
+:root .rs-admin-button-delete
 {
 	background: var(--rs-admin-gradient-secondary);
+	color: gray(255);
 }
 
 /* @section 1.1 hover effect */
@@ -56,7 +58,8 @@ a.rs-admin-button-default
 	background: var(--rs-admin-color-success);
 }
 
-.rs-admin-button-delete:hover
+.rs-admin-button-delete:hover,
+:root .rs-admin-button-delete:hover
 {
 	background: var(--rs-admin-color-error);
 }

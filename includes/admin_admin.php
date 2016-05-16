@@ -339,11 +339,11 @@ function admin_control($type, $table, $id, $alias, $status, $new, $edit, $delete
 	{
 		if ($type == 'modules_installed')
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/uninstall/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-confirm">' . Redaxscript\Language::get('uninstall') . '</a></li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/uninstall/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-delete rs-admin-js-confirm">' . Redaxscript\Language::get('uninstall') . '</a></li>';
 		}
 		else
 		{
-			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-confirm">' . Redaxscript\Language::get('delete') . '</a></li>';
+			$output .= '<li class="rs-admin-item-control rs-admin-item-enable"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-delete rs-admin-confirm">' . Redaxscript\Language::get('delete') . '</a></li>';
 		}
 	}
 
