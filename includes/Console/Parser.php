@@ -60,7 +60,7 @@ class Parser
 
 	public function init()
 	{
-		$this->_parseArguments($this->_request->getServer('argv'));
+		$this->_parseArgument($this->_request->getServer('argv'));
 	}
 
 	/**
@@ -138,54 +138,90 @@ class Parser
 	}
 
 	/**
-	 * parse raw arguments
+	 * parse raw argument
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $arguments raw arguments to be parsed
+	 * @param array $argumentArray raw argument to be parsed
 	 */
 
-	protected function _parseArguments($arguments = array())
+	protected function _parseArgument($argumentArray = array())
 	{
 		$argumentKey = 0;
-		foreach($arguments as $value)
+		$i = 0;
+		foreach ($argumentArray as $key => $value)
 		{
-			if(substr($value, 0, 2) === '--')
+			$value = $argumentArray[$i];
+			if (substr($value, 0, 2) === '--')
 			{
-				$this->_parseOptions($value, 'long');
+				$equalPosition = strpos($value, '=');
+				$modeOffset = 2;
+				if ($equalPosition)
+				{
+					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
+					$optionValue = substr($value, $equalPosition + 1);
+				}
+				else
+				{
+					$optionKey = substr($value, 2);
+					$optionValue = true;
+					if ($argumentArray[$key + 1][0] !== '-')
+					{
+						$optionValue = $argumentArray[$key + 1];
+						$i++;
+					}
+				}
+				$this->setOption($optionKey, $optionValue);
 			}
-			else if(substr($value, 0, 1) === '-')
+			else if (substr($value, 0, 1) === '-')
 			{
-				$this->_parseOptions($value, 'short');
+				$equalPosition = strpos($value, '=');
+				$modeOffset = 1;
+				if ($equalPosition)
+				{
+					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
+					$optionValue = substr($value, $equalPosition + 1);
+				}
+				else
+				{
+					$optionKey = substr($value, 1);
+					$optionValue = true;
+					if ($argumentArray[$key + 1][0] !== '-')
+					{
+						$optionValue = $argumentArray[$key + 1];
+						$i++;
+					}
+				}
+				$this->setOption($optionKey, $optionValue);
 			}
 			else if ($value)
 			{
 				$this->setArgument($argumentKey++, $value);
 			}
+			$i++;
 		}
 	}
 
 	/**
-	 * parse raw options
+	 * parse raw option
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $value value of the options
-	 * @param string $mode mode of the options
+	 * @param string $option raw option to be parsed
+	 * @param integer $modeOffset offset of the mode
 	 */
 
-	protected function _parseOptions($value = null, $mode = 'short')
+	protected function _parseOption($option = null, $modeOffset = null)
 	{
-		$modePosition = $mode === 'short' ? 1 : 2;
-		$equalPosition = strpos($value, '=') ? strpos($value, '=') : strpos($value, ' ');
+		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
 		{
-			$optionKey = substr($value, $modePosition, $equalPosition - $modePosition);
-			$optionValue = substr($value, $equalPosition + 1);
+			$optionKey = substr($option, $modeOffset, $equalPosition - $modeOffset);
+			$optionValue = substr($option, $equalPosition + 1);
 		}
 		else
 		{
-			$optionKey = substr($value, $modePosition);
+			$optionKey = substr($option, $modeOffset);
 			$optionValue = true;
 		}
 		$this->setOption($optionKey, $optionValue);
