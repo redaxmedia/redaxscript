@@ -976,25 +976,24 @@
 	font-size: 0.875rem;
 }
 
-.rs-admin-list-panel a, .rs-admin-list-panel span
+.rs-admin-list-panel a, .rs-admin-list-panel > li > span
 {
 	box-sizing: border-box;
 	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
+	-webkit-flex: 1 0 0;
+	-ms-flex: 1 0 0;
+	flex: 1 0 0;
 	font: bold 1rem/2.5rem 'open sans condensed', arial, sans-serif;
 	padding: 0 0.75em;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 	text-transform: uppercase;
 }
 
-.rs-admin-list-panel li:hover
+.rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover
 {
 	background: linear-gradient(rgb(44, 179, 252), #0090db);
-}
-
-.rs-admin-list-panel li:hover > a, .rs-admin-list-panel li:hover > span
-{
 	color: rgb(0, 0, 0);
 	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
@@ -1019,21 +1018,21 @@
 	justify-content: space-between;
 }
 
-.rs-admin-list-panel .rs-admin-link-view
+.rs-admin-list-panel .rs-admin-item-view
 {
 	-webkit-flex: 1 1 0;
 	-ms-flex: 1 1 0;
 	flex: 1 1 0;
 }
 
-.rs-admin-list-panel .rs-admin-link-new
+.rs-admin-list-panel .rs-admin-item-new a
 {
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
 }
 
-.rs-admin-list-panel .rs-admin-link-new:after
+.rs-admin-list-panel .rs-admin-item-new a:after
 {
 	content: 'f';
 	font: 0.75rem/1rem 'icon admin';
@@ -1478,7 +1477,7 @@
 
 @media screen and (min-width: 50em)
 {
-	.rs-admin-list-panel a, .rs-admin-list-panel span
+	.rs-admin-list-panel a, .rs-admin-list-panel > li > span
 	{
 		line-height: 3.5rem;
 	}

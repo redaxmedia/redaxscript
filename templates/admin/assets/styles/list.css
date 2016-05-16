@@ -45,26 +45,23 @@
 }
 
 .rs-admin-list-panel a,
-.rs-admin-list-panel span
+.rs-admin-list-panel > li > span
 {
 	box-sizing: border-box;
 	color: gray(185);
 	cursor: pointer;
 	display: block;
+	flex: 1 0 0;
 	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
 	padding: 0 0.75em;
 	text-shadow: 0 1px gray(0, 0.6);
 	text-transform: uppercase;
 }
 
-.rs-admin-list-panel li:hover
+.rs-admin-list-panel a:hover,
+.rs-admin-list-panel span:hover
 {
 	background: var(--rs-admin-gradient-primary);
-}
-
-.rs-admin-list-panel li:hover > a,
-.rs-admin-list-panel li:hover > span
-{
 	color: gray(0);
 	text-shadow: 0 1px gray(255, 0.2);
 }
@@ -85,19 +82,19 @@
 	justify-content: space-between;
 }
 
-.rs-admin-list-panel .rs-admin-link-view
+.rs-admin-list-panel .rs-admin-item-view
 {
 	flex: 1 1 0;
 }
 
-.rs-admin-list-panel .rs-admin-link-new
+.rs-admin-list-panel .rs-admin-item-new a
 {
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
 }
 
-.rs-admin-list-panel .rs-admin-link-new:after
+.rs-admin-list-panel .rs-admin-item-new a:after
 {
 	content: 'f';
 	font: 0.75rem/1rem 'icon admin';

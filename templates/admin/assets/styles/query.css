@@ -80,7 +80,7 @@
 @media (--media-medium-min)
 {
 	.rs-admin-list-panel a,
-	.rs-admin-list-panel span
+	.rs-admin-list-panel > li > span
 	{
 		line-height: 3.5rem;
 	}
