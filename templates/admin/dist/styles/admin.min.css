@@ -157,9 +157,8 @@
 /**
  * @tableofcontents
  *
- * 1. panel admin
- * 2. wrapper
- * 3. space between elements
+ * 1. wrapper
+ * 2. space between elements
  *
  * @since 3.0.0
  *
@@ -168,7 +167,7 @@
  */
 
 
-/* @section 2. wrapper */
+/* @section 1. wrapper */
 
 .rs-admin-wrapper-table
 {
@@ -180,7 +179,7 @@
 	width: 100%;
 }
 
-/* @section 3. space between elements */
+/* @section 2. space between elements */
 
 .rs-admin-wrapper-button
 {
@@ -848,9 +847,8 @@
  * @tableofcontents
  *
  * 1. list control admin
- * 2. list panel admin
- * 3. list tab admin
- *    3.1 javascript enabled
+ * 2. list tab admin
+ *    2.1 javascript enabled
  *
  * @since 3.0.0
  *
@@ -882,7 +880,7 @@
 	color: rgb(153, 153, 153);
 }
 
-/* @section 3. list tab admin */
+/* @section 2. list tab admin */
 
 .rs-admin-list-tab li
 {
@@ -947,10 +945,14 @@
 /**
  * @tableofcontents
  *
- * 1. box panel admin
- * 2. list panel admin
- *    2.1 icons before
- *    2.2 icons after
+ * 1. panel admin
+ * 2. box panel admin
+ * 3. item panel admin
+ *    3.1 icons before
+ *    3.2 icons after
+ * 4. list panel admin
+ * 5. query
+ *    5.1 medium min
  *
  * @since 3.0.0
  *
@@ -971,14 +973,14 @@
     text-decoration: none;
 }
 
-/* @section 3. box panel admin */
+/* @section 2. box panel admin */
 
 .rs-admin-box-panel
 {
     background: rgb(32, 32, 32);
 }
 
-/* @section 2. list panel admin */
+/* @section 3. item panel admin */
 
 .rs-admin-item-panel
 {
@@ -992,7 +994,7 @@
     background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
-/* @section 2.1 icons before */
+/* @section 3.1 icons before */
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
@@ -1027,7 +1029,7 @@
     content: 'n';
 }
 
-/* @section 2.2 icons after */
+/* @section 3.2 icons after */
 
 .rs-admin-item-panel > span:after
 {
@@ -1043,7 +1045,7 @@
     content: '˅';
 }
 
-/* @section 2. list panel admin */
+/* @section 4. list panel admin */
 
 .rs-admin-list-panel
 {
@@ -1116,6 +1118,10 @@
     text-transform: none;
     top: 50%;
 }
+
+/* @section 5. query */
+
+/* @section 5.1 medium min */
 
 @media screen and (min-width: 50em)
 {
@@ -1470,10 +1476,10 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 50em
- * 2. screen max 30em
- * 3. screen min 30em
- * 4. screen min 50em
+ * 1. medium max 50em
+ * 2. small max 30em
+ * 3. medium min 30em
+ * 4. small min 50em
  * 5. rtl direction
  *
  * @since 3.0.0
