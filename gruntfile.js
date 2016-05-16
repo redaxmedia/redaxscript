@@ -246,6 +246,7 @@ module.exports = function (grunt)
 					'templates/admin/assets/styles/icon.css',
 					'templates/admin/assets/styles/interface.css',
 					'templates/admin/assets/styles/list.css',
+					'templates/admin/assets/styles/panel.css',
 					'templates/admin/assets/styles/tab.css',
 					'templates/admin/assets/styles/table.css',
 					'templates/admin/assets/styles/query.css',

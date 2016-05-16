@@ -79,61 +79,6 @@
 
 @media (--media-medium-min)
 {
-	.rs-admin-list-panel a,
-	.rs-admin-list-panel > li > span
-	{
-		line-height: 3.5rem;
-	}
-
-	.rs-admin-list-panel .rs-admin-item-panel > span:after
-	{
-		content: '';
-	}
-
-	.rs-admin-list-panel > li
-	{
-		float: left;
-		position: relative;
-	}
-
-	.rs-admin-list-panel.rs-admin-c1 > li
-	{
-		width: 100%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c2 > li
-	{
-		width: 50%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c3 > li
-	{
-		width: 33.33%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c4 > li
-	{
-		width: 25%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c5 > li
-	{
-		width: 20%;
-	}
-
-	.rs-admin-list-panel-children
-	{
-		background: gray(32);
-		position: absolute;
-		width: 100%;
-	}
-
-	.rs-admin-list-panel-children ul
-	{
-		left: 100%;
-		top: 0;
-	}
-
 	.rs-admin-sidebar .rs-admin-description-dock
 	{
 		display: none;

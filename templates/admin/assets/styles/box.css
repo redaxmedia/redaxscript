@@ -6,9 +6,8 @@
  * 2. box dock admin
  *    2.1 description dock admin
  *    2.2 footer grid fix
- * 3. box panel admin
- * 4. box tab admin
- * 5. box note admin
+ * 3. box tab admin
+ * 4. box note admin
  *
  * @since 3.0.0
  *
@@ -84,14 +83,7 @@
 	margin-right: 0.75rem;
 }
 
-/* @section 3. box panel admin */
-
-.rs-admin-box-panel
-{
-	background: gray(32);
-}
-
-/* @section 4. box tab admin */
+/* @section 3. box tab admin */
 
 .rs-admin-box-tab
 {
@@ -100,7 +92,7 @@
 	padding: 1em;
 }
 
-/* @section 5. box note admin */
+/* @section 4. box note admin */
 
 .rs-admin-title-note + .rs-admin-box-note
 {

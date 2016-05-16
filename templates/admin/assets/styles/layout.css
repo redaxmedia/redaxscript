@@ -1,9 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. panel admin
- * 2. wrapper
- * 3. space between elements
+ * 1. wrapper
+ * 2. space between elements
  *
  * @since 3.0.0
  *
@@ -11,20 +10,8 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. panel admin */
 
-.rs-admin-panel
-{
-	position: relative;
-	z-index: 900;
-}
-
-.rs-admin-panel a, .rs-admin-panel a:hover
-{
-	text-decoration: none;
-}
-
-/* @section 2. wrapper */
+/* @section 1. wrapper */
 
 .rs-admin-wrapper-table
 {
@@ -36,7 +23,7 @@
 	width: 100%;
 }
 
-/* @section 3. space between elements */
+/* @section 2. space between elements */
 
 .rs-admin-wrapper-button
 {
