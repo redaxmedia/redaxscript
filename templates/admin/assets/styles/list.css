@@ -51,7 +51,6 @@
 	color: gray(185);
 	cursor: pointer;
 	display: block;
-	flex: 1 0 0;
 	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
 	padding: 0 0.75em;
 	text-shadow: 0 1px gray(0, 0.6);
@@ -59,7 +58,8 @@
 }
 
 .rs-admin-list-panel a:hover,
-.rs-admin-list-panel span:hover
+.rs-admin-list-panel span:hover,
+.rs-admin-list-panel span:hover a
 {
 	background: var(--rs-admin-gradient-primary);
 	color: gray(0);
@@ -76,25 +76,25 @@
 	display: none;
 }
 
-.rs-admin-list-panel-children > li
+.rs-admin-list-panel-children > li > span
 {
 	display: flex;
 	justify-content: space-between;
 }
 
-.rs-admin-list-panel .rs-admin-item-view
+.rs-admin-list-panel .rs-admin-link-view
 {
 	flex: 1 1 0;
 }
 
-.rs-admin-list-panel .rs-admin-item-new a
+.rs-admin-list-panel .rs-admin-link-new
 {
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
 }
 
-.rs-admin-list-panel .rs-admin-item-new a:after
+.rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
 	font: 0.75rem/1rem 'icon admin';
