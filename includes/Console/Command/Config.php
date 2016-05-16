@@ -32,12 +32,10 @@ class Config extends CommandAbstract
 					'description' => 'Set the configuration',
 					'optionArray' => array(
 						'db-type' => array(
-							'description' => 'Required database type',
-							'required' => 'required'
+							'description' => 'Required database type'
 						),
 						'db-host' => array(
-							'description' => 'Required database host or file',
-							'required' => 'required'
+							'description' => 'Required database host or file'
 						),
 						'db-name' => array(
 							'description' => 'Optional database name'
@@ -56,14 +54,13 @@ class Config extends CommandAbstract
 				'parse' => array(
 					'description' => 'Parse the configuration',
 					'optionArray' => array(
+						'db-type' => array(
+							'description' => 'Required database type'
+						),
 						'db-url' => array(
-							'description' => 'Required database url from ENV variable',
-							'required' => 'required'
+							'description' => 'Required database url from ENV variable'
 						)
 					)
-				),
-				'write' => array(
-					'description' => 'Write to the configuration file'
 				)
 			)
 		)
@@ -89,9 +86,13 @@ class Config extends CommandAbstract
 		{
 			return $this->_list();
 		}
-		if ($argumentKey === 'write')
+		if ($argumentKey === 'set')
 		{
-			return $this->_write();
+			return $this->_set($parser->getOption());
+		}
+		if ($argumentKey === 'parse')
+		{
+			return $this->_parse($parser->getOption());
 		}
 		return $this->getHelp();
 	}
@@ -119,22 +120,52 @@ class Config extends CommandAbstract
 			}
 			if ($value)
 			{
-				$output .= str_pad($key, 20) . $value . PHP_EOL;
+				$output .= str_pad($key, 30) . $value . PHP_EOL;
 			}
 		}
 		return $output;
 	}
 
 	/**
-	 * write the config
+	 * set the config
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 * 
+	 * @return string
+	 */
+
+	public function _set($optionArray = array())
+	{
+		$this->_config->set('dbType', $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:'));
+		$this->_config->set('dbHost', $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:'));
+		$this->_config->set('dbName', $optionArray['db-name']);
+		$this->_config->set('dbUser', $optionArray['db-user']);
+		$this->_config->set('dbPassword', $optionArray['db-password']);
+		$this->_config->set('dbPrefix', $optionArray['db-prefix']);
+		$this->_config->set('dbSalt', sha1(uniqid()));												
+		$this->_config->write();
+	}
+
+	/**
+	 * parse the config
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public function _write()
+	public function _parse($optionArray = array())
 	{
-		return $this->_config->write();
+		$dbUrl = parse_url(getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:')));
+		$this->_set(array(
+			'db-host' => $dbUrl['host'],
+			'db-name' => trim($dbUrl['path'], '/'),
+			'db-user' => $dbUrl['user'],
+			'db-pass' => $dbUrl['pass']
+		));
 	}
 }

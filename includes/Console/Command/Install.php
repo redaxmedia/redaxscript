@@ -27,20 +27,16 @@ class Install extends CommandAbstract
 					'description' => 'Install the database',
 					'optionArray' => array(
 						'admin-name' => array(
-							'description' => 'Required admin name',
-							'required' => 'required'
+							'description' => 'Required admin name'
 						),
 						'admin-user' => array(
-							'description' => 'Required admin user',
-							'required' => 'required'
+							'description' => 'Required admin user'
 						),
 						'admin-password' => array(
-							'description' => 'Required admin password',
-							'required' => 'required'
+							'description' => 'Required admin password'
 						),
 						'admin-email' => array(
-							'description' => 'Required admin email',
-							'required' => 'required'
+							'description' => 'Required admin email'
 						)
 					)
 				),
@@ -48,8 +44,7 @@ class Install extends CommandAbstract
 					'description' => 'Install the module',
 					'optionArray' => array(
 						'<name>' => array(
-							'description' => 'Required module <name>',
-							'required' => 'required'
+							'description' => 'Required module <name>'
 						)
 					)
 				)

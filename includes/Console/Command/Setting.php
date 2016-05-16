@@ -63,7 +63,7 @@ class Setting extends CommandAbstract
 	}
 
 	/**
-	 * list the config
+	 * list the settings
 	 *
 	 * @since 3.0.0
 	 *
@@ -81,7 +81,7 @@ class Setting extends CommandAbstract
 		{
 			if ($setting->value)
 			{
-				$output .= str_pad($setting->name, 20) . $setting->value . PHP_EOL;
+				$output .= str_pad($setting->name, 30) . $setting->value . PHP_EOL;
 			}
 		}
 		return $output;

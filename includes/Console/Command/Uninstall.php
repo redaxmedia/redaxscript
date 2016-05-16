@@ -30,8 +30,7 @@ class Uninstall extends CommandAbstract
 					'description' => 'Uninstall the module',
 					'optionArray' => array(
 						'<name>' => array(
-							'description' => 'Required module <name>',
-							'required' => 'required'
+							'description' => 'Required module <name>'
 						)
 					)
 				)
