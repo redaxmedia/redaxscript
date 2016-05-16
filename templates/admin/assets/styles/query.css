@@ -13,7 +13,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 50em */
+/* @section 1. medium max */
 
 @media (--media-medium-max)
 {
@@ -23,7 +23,7 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 2. small max */
 
 @media (--media-small-max)
 {
@@ -53,7 +53,7 @@
 	}
 }
 
-/* @section 3. screen min 30em */
+/* @section 3. small min */
 
 @media (--media-small-min)
 {
@@ -75,7 +75,7 @@
 	}
 }
 
-/* @section 4. screen min 50em */
+/* @section 4. medium min */
 
 @media (--media-medium-min)
 {

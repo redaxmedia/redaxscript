@@ -603,7 +603,7 @@
 
 /* @section 4. query */
 
-/* @section 4.1 min width 30em */
+/* @section 4.1 small min */
 
 @media screen and (min-width: 30em)
 {
@@ -1154,7 +1154,7 @@
 
 /* @section 4. query */
 
-/* @section 4.1 max width 50em */
+/* @section 4.1 medium max */
 
 @media screen and (max-width: 49.999em)
 {
@@ -1415,7 +1415,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 50em */
+/* @section 1. medium max */
 
 @media screen and (max-width: 49.999em)
 {
@@ -1425,7 +1425,7 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 2. small max */
 
 @media screen and (max-width: 29.999em)
 {
@@ -1451,7 +1451,7 @@
 	}
 }
 
-/* @section 3. screen min 30em */
+/* @section 3. small min */
 
 @media screen and (min-width: 30em)
 {
@@ -1471,7 +1471,7 @@
 	}
 }
 
-/* @section 4. screen min 50em */
+/* @section 4. medium min */
 
 @media screen and (min-width: 50em)
 {
