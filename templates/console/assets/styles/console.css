@@ -1,0 +1,42 @@
+.rs-body
+{
+	background: #222;
+	color: #00ff00;
+	font: 1rem monospace;
+	margin: 0.5rem;
+}
+
+pre
+{
+	margin: 0;
+	overflow: hidden;
+	white-space: pre-wrap;
+}
+
+label
+{
+	float: left;
+	margin-right: 0.5em;
+}
+
+pre::selection,
+label::selection
+{
+	background: #00ff00;
+	color: #222;
+}
+
+input
+{
+	background: transparent;
+	border: 0;
+	color: inherit;
+	float: left;
+	font: 1rem monospace;
+	max-width: 100%;
+}
+
+input:focus
+{
+	outline: none;
+}

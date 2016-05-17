@@ -29,12 +29,11 @@ class Console extends ConsoleAbstract
 		/* run command */
 
 		$commandKey = $parser->getArgument(1);
-		if (!array_key_exists($commandKey, $this->_namespaceArray))
+		if (array_key_exists($commandKey, $this->_namespaceArray))
 		{
-			$commandKey = 'help';
+			$commandClass = $this->_namespaceArray[$commandKey];
+			$command = new $commandClass($this->_config, $this->_request);
+			return $command->run();
 		}
-		$commandClass = $this->_namespaceArray[$commandKey];
-		$command = new $commandClass($this->_config, $this->_request);
-		return $command->run();
 	}
 }

@@ -1,0 +1,16 @@
+<?php namespace Redaxscript\Template; ?>
+
+<article id="content" class="rs-install-content">
+	<?php
+		filter_var_array($_POST, FILTER_SANITIZE_STRING);
+		$command = trim($_POST['command']);
+		exec('php console.php ' . $command . " 2>&1", $execArray);
+	?>
+
+	<pre><?php echo htmlentities(implode($execArray, PHP_EOL)); ?></pre>
+
+	<form method="post">
+		<label for="prompt"><?php echo $_SERVER['HTTP_HOST']; ?>:~$</label>
+		<input autofocus="autofocus" id="prompt" size="60" name="command" />
+	</form>
+</article>

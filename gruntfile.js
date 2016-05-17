@@ -254,6 +254,14 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/admin/dist/styles/admin.min.css'
 			},
+			templateConsole:
+			{
+				src:
+				[
+					'templates/console/assets/styles/console.css'
+				],
+				dest: 'templates/console/dist/styles/console.min.css'
+			},
 			templateDefault:
 			{
 				src:

@@ -342,6 +342,7 @@ function templates_list($options)
 	$templates_directory = new Redaxscript\Directory();
 	$templates_directory->init('templates', array(
 		'admin',
+		'console',
 		'install'
 	));
 	$templates_directory_array = $templates_directory->getArray();
