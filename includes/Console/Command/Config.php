@@ -54,9 +54,6 @@ class Config extends CommandAbstract
 				'parse' => array(
 					'description' => 'Parse the configuration',
 					'optionArray' => array(
-						'db-type' => array(
-							'description' => 'Required database type'
-						),
 						'db-url' => array(
 							'description' => 'Required database url from ENV variable'
 						)
@@ -132,8 +129,6 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
-	 * 
-	 * @return string
 	 */
 
 	public function _set($optionArray = array())
@@ -154,18 +149,12 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
-	 *
-	 * @return string
 	 */
 
 	public function _parse($optionArray = array())
 	{
-		$dbUrl = parse_url(getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:')));
-		$this->_set(array(
-			'db-host' => $dbUrl['host'],
-			'db-name' => trim($dbUrl['path'], '/'),
-			'db-user' => $dbUrl['user'],
-			'db-pass' => $dbUrl['pass']
-		));
+		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
+		$this->_config->parse($dbUrl);
+		$this->_config->write();
 	}
 }

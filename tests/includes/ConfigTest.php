@@ -95,6 +95,16 @@ class ConfigTest extends TestCase
 	}
 
 	/**
+	 * testParse
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testParse()
+	{
+	}
+
+	/**
 	 * testWrite
 	 *
 	 * @since 2.4.0

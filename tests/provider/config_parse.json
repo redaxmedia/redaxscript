@@ -1,0 +1,29 @@
+[
+	[
+		"mysql://user:password@host:port/name",
+		{
+			"dbType": "mysql",
+		  	"dbHost": "host",
+			"dbName": "name",
+			"dbUser": "user",
+			"dbPassword": "password"
+		}
+	],
+	[
+		"postgres://user:password@host:port/name",
+		{
+			"dbType": "pgsql",
+			"dbHost": "host",
+			"dbName": "name",
+			"dbUser": "user",
+			"dbPassword": "password"
+		}
+	],
+	[
+		"sqlite://file",
+		{
+			"dbType": "sqlite",
+			"dbHost": "file"
+		}
+	]
+]
