@@ -147,31 +147,23 @@ class Parser
 
 	protected function _parseArgument($argumentArray = array())
 	{
+		$skipValue = null;
 		$argumentKey = 0;
-		$i = 0;
 		foreach ($argumentArray as $key => $value)
 		{
-			$value = $argumentArray[$i];
-			$next = $argumentArray[$key + 1];		
+			$next = next($argumentArray);		
 			if (substr($value, 0, 2) === '--')
 			{
-				if ($next === $this->_parseOption($value, $next, 2))
-				{
-					$i++;
-				}
+				$skipValue = $this->_parseOption($value, $next, 2) ? $next : null;
 			}
 			else if (substr($value, 0, 1) === '-')
 			{
-				if ($next === $this->_parseOption($value, $next, 1))
-				{
-					$i++;
-				}
+				$skipValue = $this->_parseOption($value, $next, 1) ? $next : null;
 			}
-			else if ($value)
+			else if ($value && $value !== $skipValue)
 			{
 				$this->setArgument($argumentKey++, $value);
 			}
-			$i++;
 		}
 	}
 
@@ -184,7 +176,7 @@ class Parser
 	 * @param string $next raw next to be parsed
 	 * @param integer $modeOffset offset of the mode
 	 *
-	 * @return mixed
+	 * @return boolean
 	 */
 
 	protected function _parseOption($option = null, $next = null, $modeOffset = null)
@@ -201,6 +193,6 @@ class Parser
 			$optionValue = substr($next, 0, 1) === '-' ? true : $next;
 		}
 		$this->setOption($optionKey, $optionValue);
-		return $optionValue;
+		return $optionValue === $next;
 	}
 }
