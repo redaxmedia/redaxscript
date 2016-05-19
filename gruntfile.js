@@ -688,7 +688,7 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('test',
 	[
-		'shell:phpunitParallel'
+		'shell:phpunit'
 	]);
 	grunt.registerTask('phpbench',
 	[
