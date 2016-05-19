@@ -151,7 +151,7 @@ class Parser
 		$argumentKey = 0;
 		foreach ($argumentArray as $key => $value)
 		{
-			$next = next($argumentArray);		
+			$next = next($argumentArray);
 			if (substr($value, 0, 2) === '--')
 			{
 				$skipValue = $this->_parseOption($value, $next, 2) ? $next : null;
