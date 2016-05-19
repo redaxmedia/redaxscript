@@ -36,10 +36,11 @@ class CommentForm implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-		));
-		$titleElement->text(Language::get('comment_new'));
+		$titleElement
+			->init('h2', array(
+				'class' => 'rs-title-content'
+			))
+			->text(Language::get('comment_new'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'button' => array(

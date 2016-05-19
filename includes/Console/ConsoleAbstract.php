@@ -43,7 +43,6 @@ abstract class ConsoleAbstract
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',
-		'reinstall' => 'Redaxscript\Console\Command\Reinstall',
 		'setting' => 'Redaxscript\Console\Command\Setting',
 		'status' => 'Redaxscript\Console\Command\Status',
 		'uninstall' => 'Redaxscript\Console\Command\Uninstall'

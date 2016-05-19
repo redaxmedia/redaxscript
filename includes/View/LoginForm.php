@@ -34,10 +34,11 @@ class LoginForm implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-		));
-		$titleElement->text(Language::get('login'));
+		$titleElement
+			->init('h2', array(
+				'class' => 'rs-title-content'
+			))
+			->text(Language::get('login'));
 		if (Db::getSetting('recovery'))
 		{
 			$linkElement = new Html\Element();

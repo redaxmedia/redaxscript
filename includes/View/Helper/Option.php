@@ -27,7 +27,7 @@ class Option
 	{
 		$databaseArray = array();
 
-		/* process driver */
+		/* process drivers */
 
 		foreach (PDO::getAvailableDrivers() as $driver)
 		{

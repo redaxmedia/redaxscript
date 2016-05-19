@@ -1,10 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. screen max 50em
- * 2. screen max 30em
- * 3. screen min 30em
- * 4. screen min 50em
+ * 1. medium max
+ * 2. small max
+ * 3. small min
+ * 4. medium min
  * 5. rtl direction
  *
  * @since 3.0.0
@@ -13,7 +13,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. screen max 50em */
+/* @section 1. medium max */
 
 @media (--media-medium-max)
 {
@@ -23,7 +23,7 @@
 	}
 }
 
-/* @section 2. screen max 30em */
+/* @section 2. small max */
 
 @media (--media-small-max)
 {
@@ -53,7 +53,7 @@
 	}
 }
 
-/* @section 3. screen min 30em */
+/* @section 3. small min */
 
 @media (--media-small-min)
 {
@@ -75,65 +75,10 @@
 	}
 }
 
-/* @section 4. screen min 50em */
+/* @section 4. medium min */
 
 @media (--media-medium-min)
 {
-	.rs-admin-list-panel a,
-	.rs-admin-list-panel span
-	{
-		line-height: 3.5rem;
-	}
-
-	.rs-admin-list-panel .rs-admin-item-panel > span:after
-	{
-		content: '';
-	}
-
-	.rs-admin-list-panel > li
-	{
-		float: left;
-		position: relative;
-	}
-
-	.rs-admin-list-panel.rs-admin-c1 > li
-	{
-		width: 100%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c2 > li
-	{
-		width: 50%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c3 > li
-	{
-		width: 33.33%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c4 > li
-	{
-		width: 25%;
-	}
-
-	.rs-admin-list-panel.rs-admin-c5 > li
-	{
-		width: 20%;
-	}
-
-	.rs-admin-list-panel-children
-	{
-		background: gray(32);
-		position: absolute;
-		width: 100%;
-	}
-
-	.rs-admin-list-panel-children ul
-	{
-		left: 100%;
-		top: 0;
-	}
-
 	.rs-admin-sidebar .rs-admin-description-dock
 	{
 		display: none;

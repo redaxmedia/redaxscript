@@ -2,9 +2,6 @@
  * @tableofcontents
  *
  * 1. list control admin
- * 2. list panel admin
- *    2.1 icons before
- *    2.2 icons after
  *
  * @since 3.0.0
  *
@@ -20,69 +17,4 @@
 	font-size: 1rem;
 	margin-bottom: 0.5em;
 	margin-right: 0.5em;
-}
-
-/* @section 2. list panel admin */
-
-.rs-admin-item-panel
-{
-	position: relative;
-}
-
-/* link logout */
-
-.rs-admin-item-panel.rs-admin-item-logout a:hover
-{
-	background: var(--rs-admin-gradient-secondary);
-}
-
-/* @section 2.1 icons before */
-
-.rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
-{
-	font: 1.25rem/1.5rem var(--rs-admin-font-icon);
-	margin-right: 1em;
-	text-transform: lowercase;
-	vertical-align: middle;
-}
-
-.rs-admin-item-panel.rs-admin-item-contents > span:before
-{
-	content: 'i';
-}
-
-.rs-admin-item-panel.rs-admin-item-access > span:before
-{
-	content: 'j';
-}
-
-.rs-admin-item-panel.rs-admin-item-system > span:before
-{
-	content: 'k';
-}
-
-.rs-admin-item-panel.rs-admin-item-profile > a:before, .rs-admin-item-panel.rs-admin-item-profile > span:before
-{
-	content: 'l';
-}
-
-.rs-admin-item-panel.rs-admin-item-logout > a:before
-{
-	content: 'n';
-}
-
-/* @section 2.2 icons after */
-
-.rs-admin-item-panel > span:after
-{
-	content: '˃';
-	font: 1.25rem/1.5rem var(--rs-admin-font-icon);
-	position: absolute;
-	right: 0.875em;
-	top: 0.375em;
-}
-
-.rs-admin-item-panel.rs-admin-item-active > span:after
-{
-	content: '˅';
 }

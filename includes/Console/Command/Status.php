@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Db;
-
 /**
  * children class to execute the status command
  *
@@ -22,11 +20,17 @@ class Status extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Status',
-		'command' => 'status',
-		'author' => 'Redaxmedia',
-		'description' => 'Database status information',
-		'version' => '3.0.0'
+		'status' => array(
+			'description' => 'Status command',
+			'argumentArray' => array(
+				'database' => array(
+					'description' => 'Show database status'
+				),
+				'system' => array(
+					'description' => 'Show system requirements'
+				)
+			)
+		)
 	);
 	
 	/**
@@ -37,6 +41,6 @@ class Status extends CommandAbstract
 
 	public function run()
 	{
-		return Db::getStatus() . PHP_EOL;
+		return $this->getHelp();
 	}
 }

@@ -583,7 +583,7 @@ class Form extends HtmlAbstract
 			$selected = explode(', ', $selected);
 		}
 
-		/* process option */
+		/* process options */
 
 		foreach ($optionArray as $key => $value)
 		{

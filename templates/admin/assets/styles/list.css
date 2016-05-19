@@ -2,9 +2,8 @@
  * @tableofcontents
  *
  * 1. list control admin
- * 2. list panel admin
- * 3. list tab admin
- *    3.1 javascript enabled
+ * 2. list tab admin
+ *    2.1 javascript enabled
  *
  * @since 3.0.0
  *
@@ -37,81 +36,7 @@
 	color: gray(153);
 }
 
-/* @section 2. list panel admin */
-
-.rs-admin-list-panel
-{
-	font-size: 0.875rem;
-}
-
-.rs-admin-list-panel a,
-.rs-admin-list-panel span
-{
-	box-sizing: border-box;
-	color: gray(185);
-	cursor: pointer;
-	display: block;
-	font: bold 1rem/2.5rem var(--rs-admin-font-primary);
-	padding: 0 0.75em;
-	text-shadow: 0 1px gray(0, 0.6);
-	text-transform: uppercase;
-}
-
-.rs-admin-list-panel li:hover
-{
-	background: var(--rs-admin-gradient-primary);
-}
-
-.rs-admin-list-panel li:hover > a,
-.rs-admin-list-panel li:hover > span
-{
-	color: gray(0);
-	text-shadow: 0 1px gray(255, 0.2);
-}
-
-.rs-admin-list-panel li:hover .rs-admin-list-panel-children
-{
-	background: gray(32);
-}
-
-.rs-admin-list-panel-children
-{
-	display: none;
-}
-
-.rs-admin-list-panel-children > li
-{
-	display: flex;
-	justify-content: space-between;
-}
-
-.rs-admin-list-panel .rs-admin-link-view
-{
-	flex: 1 1 0;
-}
-
-.rs-admin-list-panel .rs-admin-link-new
-{
-	position: relative;
-	text-indent: -999em;
-	width: 2.75em;
-}
-
-.rs-admin-list-panel .rs-admin-link-new:after
-{
-	content: 'f';
-	font: 0.75rem/1rem 'icon admin';
-	left: 0;
-	margin-top: -0.5rem;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-indent: 0;
-	text-transform: none;
-	top: 50%;
-}
-
-/* @section 3. list tab admin */
+/* @section 2. list tab admin */
 
 .rs-admin-list-tab li
 {
@@ -159,7 +84,7 @@
 	color: gray(255);
 }
 
-/* @section 3.1 javascript enabled */
+/* @section 2.1 javascript enabled */
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {

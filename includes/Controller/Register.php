@@ -163,12 +163,10 @@ class Register implements ControllerInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray
-	 *
 	 * @return string
 	 */
 
-	public function success($successArray = array())
+	public function success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));

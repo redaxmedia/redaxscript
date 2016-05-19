@@ -192,7 +192,7 @@ class Auth
 				1
 			));
 
-			/* process group */
+			/* process groups */
 
 			foreach ($group as $key => $value)
 			{
@@ -346,6 +346,7 @@ class Auth
 				'user' => $userArray,
 				'permission' => $permissionArray
 			));
+			$this->_request->setSession('language', $userArray['language']);
 		}
 	}
 }

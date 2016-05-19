@@ -5,7 +5,7 @@
  * 2. list tab
  * 3. set tab
  * 4. query
- *    4.1 max width 50em
+ *    4.1 medium max
  *
  * @since 3.0.0
  *
@@ -46,7 +46,7 @@
 
 /* @section 4. query */
 
-/* @section 4.1 max width 50em */
+/* @section 4.1 medium max */
 
 @media (--media-medium-max)
 {

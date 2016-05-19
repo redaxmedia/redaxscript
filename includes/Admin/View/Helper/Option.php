@@ -208,6 +208,7 @@ class Option
 		$templateDirectory = new Directory();
 		$templateDirectory->init('templates', array(
 			'admin',
+			'console',
 			'install'
 		));
 		$templateDirectoryArray = $templateDirectory->getArray();

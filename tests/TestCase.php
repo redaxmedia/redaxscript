@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests;
 
 use PHPUnit_Framework_TestCase;
+use ReflectionClass;
 
 error_reporting(E_ERROR || E_PARSE);
 
@@ -33,5 +34,25 @@ class TestCase extends PHPUnit_Framework_TestCase
 		$contents = file_get_contents($json);
 		$output = json_decode($contents, $assoc);
 		return $output;
+	}
+
+	/**
+	 * callMethod
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param object $object
+	 * @param string $method
+	 * @param array $argumentArray
+	 *
+	 * @return mixed
+	 */
+
+	protected function callMethod($object = null, $method = null, $argumentArray = array())
+	{
+		$reflectionObject = new ReflectionClass($object);
+		$reflectionMethod = $reflectionObject->getMethod($method);
+		$reflectionMethod->setAccessible(true);
+		return $reflectionMethod->invokeArgs($object, $argumentArray);
 	}
 }

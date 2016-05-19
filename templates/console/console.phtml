@@ -1,0 +1,23 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!DOCTYPE html>
+<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
+
+	<!-- head -->
+
+	<head>
+		<title>Redaxscript Console</title>
+		<link href="<?echo Tag::registry('root'); ?>/templates/console/dist/styles/console.min.css" rel="stylesheet" />
+	</head>
+
+	<!-- body -->
+
+	<body class="rs-body rs-console-body">
+
+		<!-- main -->
+
+		<main id="main" class="rs-console-main">
+			<?php echo Tag::partial('templates/console/content.phtml'); ?>
+		</main>
+	</body>
+</html>

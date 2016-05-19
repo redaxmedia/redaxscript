@@ -20,11 +20,22 @@ class Uninstall extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Uninstall',
-		'command' => 'uninstall',
-		'author' => 'Redaxmedia',
-		'description' => 'Uninstall the database',
-		'version' => '3.0.0'
+		'uninstall' => array(
+			'description' => 'Uninstall command',
+			'argumentArray' => array(
+				'database' => array(
+					'description' => 'Uninstall the database'
+				),
+				'module' => array(
+					'description' => 'Uninstall the module',
+					'optionArray' => array(
+						'<name>' => array(
+							'description' => 'Required module <name>'
+						)
+					)
+				)
+			)
+		)
 	);
 
 	/**
@@ -35,7 +46,6 @@ class Uninstall extends CommandAbstract
 
 	public function run()
 	{
-		//php console uninstall
-		//php console uninstall --module=HelloWorld
+		return $this->getHelp();
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\View;
 
+use Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -23,7 +24,7 @@ class SearchListTest extends TestCase
 	/**
 	 * instance of the registry class
 	 *
-	 * @var \Redaxscript\Registry
+	 * @var object
 	 */
 
 	protected $_registry;
@@ -31,7 +32,7 @@ class SearchListTest extends TestCase
 	/**
 	 * instance of the language class
 	 *
-	 * @var \Redaxscript\Language
+	 * @var object
 	 */
 
 	protected $_language;
@@ -71,6 +72,7 @@ class SearchListTest extends TestCase
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
+				'id' => 1,
 				'author' => 'test search',
 				'email' => 'test@test.com',
 				'text' => 'test',
@@ -110,41 +112,25 @@ class SearchListTest extends TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $tableArray array of query tables
-	 * @param array $searchParameter
+	 * @param array $searchArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($tableArray = array(), $searchParameter = array(), $expect = array())
+	public function testRender($searchArray = array(), $expect = array())
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
-		$search = $searchParameter['search'];
-
-		foreach ($tableArray as $table)
-		{
-			$columnArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? 'title' : null,
-				$table === 'articles' || $table === 'comments' ? 'text' : null
-			));
-			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-				$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
-			));
-
-			/* fetch result */
-
-			$result[$table] = Db::forTablePrefix($table)
-				->whereLikeMany($columnArray, $likeArray)
-				->findMany();
-		}
+		$controllerSearch = new Controller\Search($this->_registry, $this->_language);
+		$resultArray = $this->callMethod($controllerSearch, '_search', array(
+			$searchArray
+		));
 
 		/* actual */
 
-		$actual = $searchList->render($result);
+		$actual = $searchList->render($resultArray);
 
 		/* compare */
 

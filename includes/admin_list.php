@@ -598,7 +598,6 @@ function admin_users_list()
 			{
 				$output .= Redaxscript\Language::get('none');
 			}
-			/* TODO Henry: please rename the last-class. I cannot do it, because admin doesn't work*/
 			$output .= '</td><td class="rs-admin-column-last">';
 			if ($first == $last)
 			{

@@ -28,7 +28,7 @@ function head($type = 'all')
 				'status' => 1
 			))->findArray();
 
-		/* process result */
+		/* process results */
 
 		if ($result)
 		{
@@ -179,7 +179,9 @@ function head($type = 'all')
 			if ($secondTable == 'categories')
 			{
 				$category = Redaxscript\Db::forTablePrefix($secondTable)->where('alias', $secondParameter)->findOne()->id;
-			} else {
+			}
+			else
+			{
 				$category = Redaxscript\Db::forTablePrefix($firstTable)->where('alias', $firstParameter)->findOne()->id;
 			}
 
@@ -201,7 +203,9 @@ function head($type = 'all')
 		if ($canonical_route)
 		{
 			$canonical_url .= $canonical_route;
-		} else {
+		}
+		else
+		{
 			$canonical_url .= $fullRoute;
 		}
 		$output .= '<link href="' . $canonical_url . '" rel="canonical" />' . PHP_EOL;

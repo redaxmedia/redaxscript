@@ -7,7 +7,7 @@
  * 2. textarea
  * 3. disabled and readonly
  * 4. query
- *    4.1 min width 30em
+ *    4.1 small min
  *
  * @since 3.0.0
  *
@@ -84,7 +84,7 @@
 
 /* @section 4. query */
 
-/* @section 4.1 min width 30em */
+/* @section 4.1 small min */
 
 @media (--media-small-min)
 {

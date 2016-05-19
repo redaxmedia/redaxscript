@@ -34,10 +34,11 @@ class RegisterForm implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
-				'class' => 'rs-title-content',
-		));
-		$titleElement->text(Language::get('account_create'));
+		$titleElement
+			->init('h2', array(
+				'class' => 'rs-title-content'
+			))
+			->text(Language::get('account_create'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(

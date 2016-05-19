@@ -35,10 +35,10 @@ class InstallForm implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
-			'class' => 'rs-title-content',
-		));
-		$titleElement->text(Language::get('installation'));
+		$titleElement
+			->init('h2', array(
+				'class' => 'rs-title-content'
+			))->text(Language::get('installation'));
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
 		$formElement->init(array(
 			'form' => array(

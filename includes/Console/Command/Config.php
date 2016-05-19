@@ -22,11 +22,45 @@ class Config extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Config',
-		'command' => 'config',
-		'author' => 'Redaxmedia',
-		'description' => 'Handle the configuration file',
-		'version' => '3.0.0'
+		'config' => array(
+			'description' => 'Config command',
+			'argumentArray' => array(
+				'list' => array(
+					'description' => 'List the configuration'
+				),
+				'set' => array(
+					'description' => 'Set the configuration',
+					'optionArray' => array(
+						'db-type' => array(
+							'description' => 'Required database type'
+						),
+						'db-host' => array(
+							'description' => 'Required database host or file'
+						),
+						'db-name' => array(
+							'description' => 'Optional database name'
+						),
+						'db-user' => array(
+							'description' => 'Optional database user'
+						),
+						'db-password' => array(
+							'description' => 'Optional database password'
+						),
+						'db-prefix' => array(
+							'description' => 'Optional database prefix'
+						)
+					)
+				),
+				'parse' => array(
+					'description' => 'Parse the configuration',
+					'optionArray' => array(
+						'db-url' => array(
+							'description' => 'Required database url from ENV variable'
+						)
+					)
+				)
+			)
+		)
 	);
 
 	/**
@@ -44,32 +78,38 @@ class Config extends CommandAbstract
 
 		/* run command */
 
-		$commandKey = $parser->getArgument(2);
-		if ($commandKey === 'show')
+		$argumentKey = $parser->getArgument(2);
+		if ($argumentKey === 'list')
 		{
-			return $this->_show();
+			return $this->_list();
 		}
-		if ($commandKey === 'write')
+		if ($argumentKey === 'set')
 		{
-			return $this->_write();
+			return $this->_set($parser->getOption());
 		}
+		if ($argumentKey === 'parse')
+		{
+			return $this->_parse($parser->getOption());
+		}
+		return $this->getHelp();
 	}
 
 	/**
-	 * show the config
+	 * list the config
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function _show()
+	public function _list()
 	{
 		$output = null;
+		$configArray = $this->_config->get();
 
 		/* process config */
 
-		foreach ($this->_config->get() as $key => $value)
+		foreach ($configArray as $key => $value)
 		{
 			if ($key === 'dbPassword' || $key === 'dbSalt')
 			{
@@ -77,22 +117,44 @@ class Config extends CommandAbstract
 			}
 			if ($value)
 			{
-				$output .= $key . ': ' . $value . PHP_EOL;
+				$output .= str_pad($key, 30) . $value . PHP_EOL;
 			}
 		}
 		return $output;
 	}
 
 	/**
-	 * write the config
+	 * set the config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @param array $optionArray
 	 */
 
-	public function _write()
+	public function _set($optionArray = array())
 	{
-		return PHP_EOL;
+		$this->_config->set('dbType', $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:'));
+		$this->_config->set('dbHost', $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:'));
+		$this->_config->set('dbName', $optionArray['db-name']);
+		$this->_config->set('dbUser', $optionArray['db-user']);
+		$this->_config->set('dbPassword', $optionArray['db-password']);
+		$this->_config->set('dbPrefix', $optionArray['db-prefix']);
+		$this->_config->set('dbSalt', sha1(uniqid()));												
+		$this->_config->write();
+	}
+
+	/**
+	 * parse the config
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 */
+
+	public function _parse($optionArray = array())
+	{
+		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
+		$this->_config->parse($dbUrl);
+		$this->_config->write();
 	}
 }

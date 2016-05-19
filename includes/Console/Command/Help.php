@@ -22,11 +22,14 @@ class Help extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Help',
-		'command' => 'help',
-		'author' => 'Redaxmedia',
-		'description' => 'Help for the console',
-		'version' => '3.0.0'
+		'help' => array(
+			'description' => 'Help command',
+			'argumentArray' => array(
+				'<command>' => array(
+					'description' => 'Show help for the <command>'
+				)
+			)
+		)
 	);
 
 	/**
@@ -44,22 +47,23 @@ class Help extends CommandAbstract
 
 		/* run command */
 
-		$commandKey = $parser->getArgument(2);
-		return $this->_help($commandKey);
+		return $this->_list($parser->getArgument());
 	}
 
 	/**
-	 * show the help
+	 * list the help
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $commandKey
+	 * @param array $argumentArray
+	 *
 	 * @return string
 	 */
 
-	protected function _help($commandKey = null)
+	protected function _list($argumentArray = array())
 	{
 		$output = PHP_EOL;
+		$commandKey = $argumentArray[2];
 
 		/* collect multiple help */
 

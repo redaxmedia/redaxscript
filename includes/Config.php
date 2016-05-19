@@ -19,7 +19,7 @@ class Config extends Singleton
 	 * @var array
 	 */
 
-	private static $_configArray = array();
+	protected static $_configArray = array();
 
 	/**
 	 * init the class
@@ -76,6 +76,24 @@ class Config extends Singleton
 	}
 
 	/**
+	 * parse from database url
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $dbUrl database url to be parsed
+	 */
+
+	public static function parse($dbUrl = null)
+	{
+		$dbUrl = parse_url($dbUrl);
+		self::set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
+		self::set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
+		self::set('dbName', trim($dbUrl['path'], '/'));
+		self::set('dbUser', $dbUrl['user']);
+		self::set('dbPassword', $dbUrl['pass']);
+	}
+
+	/**
 	 * write config to file
 	 *
 	 * @since 2.4.0
@@ -87,8 +105,8 @@ class Config extends Singleton
 
 	public static function write($file = 'config.php')
 	{
-		$configKeys = array_keys(self::$_configArray);
-		$lastKey = end($configKeys);
+		$keys = array_keys(self::$_configArray);
+		$lastKey = end($keys);
 
 		/* process config */
 

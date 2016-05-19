@@ -20,11 +20,19 @@ class Backup extends CommandAbstract
 	 */
 
 	protected $_commandArray = array(
-		'name' => 'Backup',
-		'command' => 'backup',
-		'author' => 'Redaxmedia',
-		'description' => 'Create a database backup',
-		'version' => '3.0.0'
+		'backup' => array(
+			'description' => 'Backup command',
+			'argumentArray' => array(
+				'database' => array(
+					'description' => 'Backup the database',
+					'optionArray' => array(
+						'email' => array(
+							'description' => 'Required email to send the backup file'
+						)
+					)
+				)
+			)
+		)
 	);
 
 	/**
@@ -35,8 +43,6 @@ class Backup extends CommandAbstract
 
 	public function run()
 	{
-		//php console.php backup
-		//php console.php backup --email=alternative@email.com
-		//php console.php backup --path=path/to/store/backup
+		return $this->getHelp();
 	}
 }

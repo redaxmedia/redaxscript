@@ -20,20 +20,4 @@ interface ControllerInterface
 	 */
 
 	public function process();
-
-	/**
-	 * show the success
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function success();
-
-	/**
-	 * show the error
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function error();
 }
