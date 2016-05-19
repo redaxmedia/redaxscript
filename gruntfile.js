@@ -384,7 +384,7 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots ' + grunt.option.flags()
+				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots'
 			},
 			phpunit:
 			{
@@ -396,7 +396,7 @@ module.exports = function (grunt)
 			},
 			phpcpd:
 			{
-				command: 'php vendor/bin/phpcpd includes ' + grunt.option.flags(),
+				command: 'php vendor/bin/phpcpd includes',
 				options:
 				{
 					failOnError: false
