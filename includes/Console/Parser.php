@@ -152,47 +152,14 @@ class Parser
 		foreach ($argumentArray as $key => $value)
 		{
 			$value = $argumentArray[$i];
+			$next = $argumentArray[$key + 1];
 			if (substr($value, 0, 2) === '--')
 			{
-				$equalPosition = strpos($value, '=');
-				$modeOffset = 2;
-				if ($equalPosition)
-				{
-					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
-					$optionValue = substr($value, $equalPosition + 1);
-				}
-				else
-				{
-					$optionKey = substr($value, 2);
-					$optionValue = true;
-					if ($argumentArray[$key + 1][0] !== '-')
-					{
-						$optionValue = $argumentArray[$key + 1];
-						$i++;
-					}
-				}
-				$this->setOption($optionKey, $optionValue);
+				$i = $this->_parseOption($value, $next, 2, $i);
 			}
 			else if (substr($value, 0, 1) === '-')
 			{
-				$equalPosition = strpos($value, '=');
-				$modeOffset = 1;
-				if ($equalPosition)
-				{
-					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
-					$optionValue = substr($value, $equalPosition + 1);
-				}
-				else
-				{
-					$optionKey = substr($value, 1);
-					$optionValue = true;
-					if ($argumentArray[$key + 1][0] !== '-')
-					{
-						$optionValue = $argumentArray[$key + 1];
-						$i++;
-					}
-				}
-				$this->setOption($optionKey, $optionValue);
+				$i = $this->_parseOption($value, $next, 1, $i);
 			}
 			else if ($value)
 			{
@@ -208,10 +175,13 @@ class Parser
 	 * @since 3.0.0
 	 *
 	 * @param string $option raw option to be parsed
+	 * @param string $next
 	 * @param integer $modeOffset offset of the mode
+	 * @param integer $i
+	 *
+	 * @return integer
 	 */
-
-	protected function _parseOption($option = null, $modeOffset = null)
+	protected function _parseOption($option = null, $next = null, $modeOffset = null, $i = null)
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
@@ -223,7 +193,13 @@ class Parser
 		{
 			$optionKey = substr($option, $modeOffset);
 			$optionValue = true;
+			if ($next[0] !== '-')
+			{
+				$optionValue = $next;
+				$i++;
+			}
 		}
 		$this->setOption($optionKey, $optionValue);
+		return $i;
 	}
 }
