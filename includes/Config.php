@@ -86,11 +86,11 @@ class Config extends Singleton
 	public static function parse($dbUrl = null)
 	{
 		$dbUrl = parse_url($dbUrl);
-		self::set('db-type', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
-		self::set('db-host', $dbUrl['host']);
-		self::set('db-name', trim($dbUrl['path'], '/'));
-		self::set('db-user', $dbUrl['user']);
-		self::set('db-pass', $dbUrl['pass']);
+		self::set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
+		self::set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
+		self::set('dbName', trim($dbUrl['path'], '/'));
+		self::set('dbUser', $dbUrl['user']);
+		self::set('dbPassword', $dbUrl['pass']);
 	}
 
 	/**

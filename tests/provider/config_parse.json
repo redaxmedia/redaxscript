@@ -1,6 +1,6 @@
 [
 	[
-		"mysql://user:password@host:port/name",
+		"mysql://user:password@host/name",
 		{
 			"dbType": "mysql",
 		  	"dbHost": "host",
@@ -10,10 +10,10 @@
 		}
 	],
 	[
-		"postgres://user:password@host:port/name",
+		"postgres://user:password@host:5432/name",
 		{
 			"dbType": "pgsql",
-			"dbHost": "host",
+			"dbHost": "host:5432",
 			"dbName": "name",
 			"dbUser": "user",
 			"dbPassword": "password"
@@ -23,7 +23,10 @@
 		"sqlite://file",
 		{
 			"dbType": "sqlite",
-			"dbHost": "file"
+			"dbHost": "file",
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null
 		}
 	]
 ]

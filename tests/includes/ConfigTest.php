@@ -36,6 +36,19 @@ class ConfigTest extends TestCase
 	}
 
 	/**
+	 * providerParse
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerParse()
+	{
+		return $this->getProvider('tests/provider/config_parse.json');
+	}
+
+	/**
 	 * testInit
 	 *
 	 * @since 2.4.0
@@ -98,10 +111,26 @@ class ConfigTest extends TestCase
 	 * testParse
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param string $dbUrl
+	 * @param array $configArray
+	 *
+	 * @dataProvider providerParse
 	 */
 
-	public function testParse()
+	public function testParse($dbUrl = null, $configArray = array())
 	{
+		/* setup */
+
+		$this->_config->parse($dbUrl);
+
+		/* actual */
+
+		$actual = $this->_config->get();
+
+		/* compare */
+
+		$this->assertEquals($configArray, $actual);
 	}
 
 	/**
