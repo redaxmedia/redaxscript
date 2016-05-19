@@ -43,7 +43,7 @@
 	},
 	"scripts":
 	{
-		"test": "grunt --verbose",
-		"phpunit": "grunt phpunit --coverage-clover clover.xml"
+		"test": "grunt test && grunt",
+		"test-integration": "grunt test --integration && grunt --integration"
 	}
 }

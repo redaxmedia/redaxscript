@@ -388,11 +388,11 @@ module.exports = function (grunt)
 			},
 			phpunit:
 			{
-				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+			command: grunt.option('integration') ? 'php vendor/bin/phpunit --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpunitParallel:
 			{
-				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+				command: grunt.option('integration') ? 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			tocBase:
 			{
@@ -685,6 +685,10 @@ module.exports = function (grunt)
 	[
 		'postcss:stylelintBase',
 		'postcss:stylelintTemplate'
+	]);
+	grunt.registerTask('test',
+	[
+		'shell:phpunitParallel'
 	]);
 	grunt.registerTask('phpbench',
 	[

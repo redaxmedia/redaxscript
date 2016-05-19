@@ -24,8 +24,7 @@ before_script:
 
 script:
 - mailcatcher
-- npm test
-- npm run phpunit
+- npm test-integration
 
 after_script:
 - php vendor/bin/coveralls --verbose
