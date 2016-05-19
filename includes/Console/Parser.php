@@ -152,14 +152,20 @@ class Parser
 		foreach ($argumentArray as $key => $value)
 		{
 			$value = $argumentArray[$i];
-			$next = $argumentArray[$key + 1];
+			$next = $argumentArray[$key + 1];		
 			if (substr($value, 0, 2) === '--')
 			{
-				$i = $this->_parseOption($value, $next, 2, $i);
+				if ($next === $this->_parseOption($value, $next, 2))
+				{
+					$i++;
+				}
 			}
 			else if (substr($value, 0, 1) === '-')
 			{
-				$i = $this->_parseOption($value, $next, 1, $i);
+				if ($next === $this->_parseOption($value, $next, 1))
+				{
+					$i++;
+				}
 			}
 			else if ($value)
 			{
@@ -175,13 +181,13 @@ class Parser
 	 * @since 3.0.0
 	 *
 	 * @param string $option raw option to be parsed
-	 * @param string $next
+	 * @param string $next raw next to be parsed
 	 * @param integer $modeOffset offset of the mode
-	 * @param integer $i
 	 *
-	 * @return integer
+	 * @return mixed
 	 */
-	protected function _parseOption($option = null, $next = null, $modeOffset = null, $i = null)
+
+	protected function _parseOption($option = null, $next = null, $modeOffset = null)
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
@@ -192,14 +198,9 @@ class Parser
 		else
 		{
 			$optionKey = substr($option, $modeOffset);
-			$optionValue = true;
-			if ($next[0] !== '-')
-			{
-				$optionValue = $next;
-				$i++;
-			}
+			$optionValue = substr($next, 0, 1) === '-' ? true : $next;
 		}
 		$this->setOption($optionKey, $optionValue);
-		return $i;
+		return $optionValue;
 	}
 }
