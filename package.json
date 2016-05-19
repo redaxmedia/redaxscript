@@ -44,6 +44,6 @@
 	"scripts":
 	{
 		"test": "grunt --verbose",
-		"phpunit": "grunt phpunitParallel --coverage-clover clover.xml"
+		"phpunit": "grunt phpunit --coverage-clover clover.xml"
 	}
 }
