@@ -384,15 +384,23 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots'
+				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots ' + grunt.option.flags()
 			},
 			phpunit:
 			{
-			command: grunt.option('integration') ? 'php vendor/bin/phpunit --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+				command: grunt.option('integration') ? 'php vendor/bin/phpunit --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpunitParallel:
 			{
 				command: grunt.option('integration') ? 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+			},
+			phpcpd:
+			{
+				command: 'php vendor/bin/phpcpd includes ' + grunt.option.flags(),
+				options:
+				{
+					failOnError: false
+				}
 			},
 			tocBase:
 			{
@@ -679,6 +687,7 @@ module.exports = function (grunt)
 		'stylelint',
 		'htmlhint',
 		'phpcs',
+		'phpcpd',
 		'toclint'
 	]);
 	grunt.registerTask('stylelint',
@@ -686,9 +695,15 @@ module.exports = function (grunt)
 		'postcss:stylelintBase',
 		'postcss:stylelintTemplate'
 	]);
+	grunt.registerTask('toclint',
+	[
+		'shell:toclintBase',
+		'shell:toclintModules',
+		'shell:toclintTemplates'
+	]);
 	grunt.registerTask('test',
 	[
-		'shell:phpunit'
+		'phpunit'
 	]);
 	grunt.registerTask('phpbench',
 	[
@@ -701,12 +716,10 @@ module.exports = function (grunt)
 	grunt.registerTask('phpunitParallel',
 	[
 		'shell:phpunitParallel'
-	]);	
-	grunt.registerTask('toclint',
+	]);
+	grunt.registerTask('phpcpd',
 	[
-		'shell:toclintBase',
-		'shell:toclintModules',
-		'shell:toclintTemplates'
+		'shell:phpcpd'
 	]);
 	grunt.registerTask('toc',
 	[

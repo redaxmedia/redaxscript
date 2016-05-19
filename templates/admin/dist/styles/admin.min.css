@@ -516,7 +516,7 @@
  * 2. textarea
  * 3. disabled and readonly
  * 4. query
- *    4.1 min width 30em
+ *    4.1 small min
  *
  * @since 3.0.0
  *
@@ -848,7 +848,7 @@
  *
  * 1. list control admin
  * 2. list tab admin
- *    2.1 javascript enabled
+ *    3.1 javascript enabled
  *
  * @since 3.0.0
  *
@@ -1186,7 +1186,7 @@
  * 2. list tab
  * 3. set tab
  * 4. query
- *    4.1 max width 50em
+ *    4.1 medium max
  *
  * @since 3.0.0
  *
@@ -1476,10 +1476,10 @@
 /**
  * @tableofcontents
  *
- * 1. medium max 50em
- * 2. small max 30em
- * 3. medium min 30em
- * 4. small min 50em
+ * 1. medium max
+ * 2. small max
+ * 3. small min
+ * 4. medium min
  * 5. rtl direction
  *
  * @since 3.0.0
@@ -1565,7 +1565,6 @@
 {
 	text-align: right;
 }
-
 /**
  * @tableofcontents
  *
