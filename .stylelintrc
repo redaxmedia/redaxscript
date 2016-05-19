@@ -36,7 +36,6 @@
 		"selector-no-universal": true,
 		"selector-no-vendor-prefix": true,
 		"selector-pseudo-element-colon-notation": "single",
-		"selector-root-no-composition": true,
 		"selector-type-case": "lower",
 		"value-no-vendor-prefix": true
 	}

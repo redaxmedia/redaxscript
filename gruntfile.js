@@ -361,7 +361,11 @@ module.exports = function (grunt)
 				{
 					processors:
 					[
-						require('stylelint')
+						require('stylelint'),
+						require('postcss-reporter')(
+						{
+							throwError: true
+						})
 					]
 				}
 			},
@@ -375,7 +379,11 @@ module.exports = function (grunt)
 				{
 					processors:
 					[
-						require('stylelint')
+						require('stylelint'),
+						require('postcss-reporter')(
+						{
+							throwError: true
+						})
 					]
 				}
 			}
