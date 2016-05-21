@@ -1,32 +1,51 @@
-.rs-body
+/**
+ * @tableofcontents
+ *
+ * 1. global
+ * 2. output
+ * 3. form
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. global */
+
+.rs-console-body
 {
 	background: #222;
-	color: #00ff00;
+	color: #3d4;
 	font: 1rem monospace;
 	margin: 0.5rem;
 }
 
-pre
+.rs-console-output::selection,
+.rs-console-label::selection
+{
+	background: #3d4;
+	color: #222;
+}
+
+/* @section 2. output */
+
+.rs-console-output
 {
 	margin: 0;
 	overflow: hidden;
 	white-space: pre-wrap;
 }
 
-label
+/* @section 3. form */
+
+.rs-console-label
 {
 	float: left;
 	margin-right: 0.5em;
 }
 
-pre::selection,
-label::selection
-{
-	background: #00ff00;
-	color: #222;
-}
-
-input
+.rs-console-field-text
 {
 	background: transparent;
 	border: 0;
@@ -36,7 +55,7 @@ input
 	max-width: 100%;
 }
 
-input:focus
+.rs-console-field-text:focus
 {
 	outline: none;
 }
