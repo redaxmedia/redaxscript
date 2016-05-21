@@ -258,6 +258,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'templates/console/assets/styles/_variable.css',
+					'assets/styles/normalize.css',
 					'templates/console/assets/styles/console.css'
 				],
 				dest: 'templates/console/dist/styles/console.min.css'

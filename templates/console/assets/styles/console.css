@@ -15,25 +15,23 @@
 
 .rs-console-body
 {
-	background: #222;
-	color: #3d4;
-	font: 1rem monospace;
+	background: var(--rs-console-color-secondary);
+	color: var(--rs-console-color-primary);
+	font: 1rem var(--rs-console-font-primary);
 	margin: 0.5rem;
 }
 
 .rs-console-output::selection,
 .rs-console-label::selection
 {
-	background: #3d4;
-	color: #222;
+	background: var(--rs-console-color-primary);
+	color: var(--rs-console-color-secondary);
 }
 
-/* @section 2. output */
+/* @section 2. code */
 
-.rs-console-output
+.rs-console-code
 {
-	margin: 0;
-	overflow: hidden;
 	white-space: pre-wrap;
 }
 
@@ -48,14 +46,8 @@
 .rs-console-field-text
 {
 	background: transparent;
-	border: 0;
 	color: inherit;
 	float: left;
-	font: 1rem monospace;
+	font: 1rem var(--rs-console-font-primary);
 	max-width: 100%;
-}
-
-.rs-console-field-text:focus
-{
-	outline: none;
 }
