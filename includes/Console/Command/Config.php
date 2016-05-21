@@ -133,13 +133,15 @@ class Config extends CommandAbstract
 
 	public function _set($optionArray = array())
 	{
-		$this->_config->set('dbType', $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:'));
-		$this->_config->set('dbHost', $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:'));
+		$dbType = $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:');
+		$dbHost = $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:');
+		$this->_config->set('dbType', $dbType);
+		$this->_config->set('dbHost', $dbHost);
 		$this->_config->set('dbName', $optionArray['db-name']);
 		$this->_config->set('dbUser', $optionArray['db-user']);
 		$this->_config->set('dbPassword', $optionArray['db-password']);
 		$this->_config->set('dbPrefix', $optionArray['db-prefix']);
-		$this->_config->set('dbSalt', sha1(uniqid()));												
+		$this->_config->set('dbSalt', sha1(uniqid()));
 		$this->_config->write();
 	}
 

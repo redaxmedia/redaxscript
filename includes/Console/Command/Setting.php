@@ -32,8 +32,11 @@ class Setting extends CommandAbstract
 				'set' => array(
 					'description' => 'Set the setting',
 					'optionArray' => array(
-						'<name>' => array(
-							'description' => 'Required setting <name>'
+						'<key>' => array(
+							'description' => 'Required setting <key>'
+						),
+						'<value>' => array(
+							'description' => 'Required setting <value>'
 						)
 					)
 				)
@@ -59,7 +62,29 @@ class Setting extends CommandAbstract
 		{
 			return $this->_list();
 		}
+		if ($argumentKey === 'set')
+		{
+			return $this->_set($parser->getOption());
+		}
 		return $this->getHelp();
+	}
+
+	/**
+	 * set the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 */
+
+	public function _set($optionArray = array())
+	{
+		$key = $optionArray['key'] ? $optionArray['key'] : readline('key:');
+		$value = $optionArray['value'] ? $optionArray['value'] : readline('value:');
+		if ($key && $value)
+		{
+			Db::setSetting($key, $value);
+		}		
 	}
 
 	/**
@@ -73,7 +98,7 @@ class Setting extends CommandAbstract
 	public function _list()
 	{
 		$output = null;
-		$settings = DB::getSetting();
+		$settings = Db::getSetting();
 
 		/* process settings */
 
