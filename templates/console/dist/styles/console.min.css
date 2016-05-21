@@ -102,13 +102,13 @@ button, input, select, textarea
 	margin: 0.5rem;
 }
 
-.rs-console-output::-moz-selection, .rs-console-label::-moz-selection
+.rs-console-code::-moz-selection, .rs-console-label::-moz-selection
 {
 	background: #00ff00;
 	color: #222;
 }
 
-.rs-console-output::selection, .rs-console-label::selection
+.rs-console-code::selection, .rs-console-label::selection
 {
 	background: #00ff00;
 	color: #222;
@@ -134,6 +134,6 @@ button, input, select, textarea
 	background: transparent;
 	color: inherit;
 	float: left;
-	font: 1rem monospace, arial, sans-serif;
+	font: inherit;
 	max-width: 100%;
 }

@@ -21,7 +21,7 @@
 	margin: 0.5rem;
 }
 
-.rs-console-output::selection,
+.rs-console-code::selection,
 .rs-console-label::selection
 {
 	background: var(--rs-console-color-primary);
@@ -48,6 +48,6 @@
 	background: transparent;
 	color: inherit;
 	float: left;
-	font: 1rem var(--rs-console-font-primary);
+	font: inherit;
 	max-width: 100%;
 }
