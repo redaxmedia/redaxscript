@@ -1,7 +1,7 @@
 <?php
 return array(
-	'dbType' => 'sqlite',
-	'dbHost' => '571e1dc9ed439.sqlite',
+	'dbType' => null,
+	'dbHost' => null,
 	'dbName' => null,
 	'dbUser' => null,
 	'dbPassword' => null,
