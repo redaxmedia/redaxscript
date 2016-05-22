@@ -48,16 +48,29 @@ class DbTest extends TestCase
 	}
 
 	/**
-	 * providerDb
+	 * providerInit
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDb()
+	public function providerInit()
 	{
-		return $this->getProvider('tests/provider/db.json');
+		return $this->getProvider('tests/provider/db_init.json');
+	}
+
+	/**
+	 * providerLanguage
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerLanguage()
+	{
+		return $this->getProvider('tests/provider/db_language.json');
 	}
 
 	/**
@@ -67,7 +80,7 @@ class DbTest extends TestCase
 	 *
 	 * @param string $dbType
 	 *
-	 * @dataProvider providerDb
+	 * @dataProvider providerInit
 	 */
 
 	public function testInit($dbType = null)
@@ -91,7 +104,6 @@ class DbTest extends TestCase
 	 * testGetStatus
 	 *
 	 * @since 2.4.0
-	 *
 	 */
 
 	public function testGetStatus()
@@ -109,7 +121,6 @@ class DbTest extends TestCase
 	 * testGetSettings
 	 *
 	 * @since 2.2.0
-	 *
 	 */
 
 	public function testGetSettings()
@@ -127,7 +138,6 @@ class DbTest extends TestCase
 	 * testRawInstance
 	 *
 	 * @since 2.4.0
-	 *
 	 */
 
 	public function testRawInstance()
@@ -144,7 +154,6 @@ class DbTest extends TestCase
 	 * testCountTablePrefix
 	 *
 	 * @since 2.4.0
-	 *
 	 */
 
 	public function testCountTablePrefix()
@@ -162,7 +171,6 @@ class DbTest extends TestCase
 	 * testForTablePrefix
 	 *
 	 * @since 2.2.0
-	 *
 	 */
 
 	public function testForTablePrefix()
@@ -180,7 +188,6 @@ class DbTest extends TestCase
 	 * testLeftJoinPrefix
 	 *
 	 * @since 2.2.0
-	 *
 	 */
 
 	public function testLeftJoinPrefix()
@@ -209,7 +216,6 @@ class DbTest extends TestCase
 	 * testWhereLikeMany
 	 *
 	 * @since 2.3.0
-	 *
 	 */
 
 	public function testWhereLikeMany()
@@ -228,10 +234,35 @@ class DbTest extends TestCase
 	}
 
 	/**
+	 * testWhereLanguageIs
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $language
+	 * @param string $expect
+	 *
+	 * @dataProvider providerLanguage
+	 */
+
+	public function testWhereLanguageIs($language = null, $expect = null)
+	{
+		/* setup */
+
+		Db::forTablePrefix('articles')->where('alias', 'welcome')->findOne()->set('language', $language)->save();
+
+		/* actual */
+
+		$actual = Db::forTablePrefix('articles')->whereLanguageIs('en')->findOne()->alias;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
 	 * testFindFlatArray
 	 *
 	 * @since 2.4.0
-	 *
 	 */
 
 	public function testFindFlatArray()
@@ -252,7 +283,6 @@ class DbTest extends TestCase
 	 * testOrderGlobal
 	 *
 	 * @since 2.2.0
-	 *
 	 */
 
 	public function testOrderGlobal()
@@ -270,7 +300,6 @@ class DbTest extends TestCase
 	 * testLimitGlobal
 	 *
 	 * @since 2.2.0
-	 *
 	 */
 
 	public function testLimitGlobal()

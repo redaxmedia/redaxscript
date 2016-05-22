@@ -32,10 +32,6 @@ else
 	$config->set('dbType', 'sqlite');
 }
 
-/* print config */
-
-print_r($config->get());
-
 /* database */
 
 Db::construct($config);
