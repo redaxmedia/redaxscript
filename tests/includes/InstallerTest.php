@@ -26,14 +26,23 @@ class InstallerTest extends TestCase
 	protected $_config;
 
 	/**
+	 * array to restore config
+	 *
+	 * @var array
+	 */
+
+	protected $_configArray = array();
+
+	/**
 	 * setUp
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
+		$this->_configArray['dbPrefix'] = $this->_config->get('dbPrefix');
 		$this->_config->set('dbPrefix', 'installer_');
 		Db::clearCache();
 	}
@@ -41,12 +50,12 @@ class InstallerTest extends TestCase
 	/**
 	 * tearDown
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 
 	public function tearDown()
 	{
-		$this->_config->set('dbPrefix', '');
+		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
 	}
 
 	/**

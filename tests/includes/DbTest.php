@@ -25,26 +25,34 @@ class DbTest extends TestCase
 	protected $_config;
 
 	/**
+	 * array to restore config
+	 *
+	 * @var array
+	 */
+
+	protected $_configArray = array();
+
+	/**
 	 * setUp
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-		$this->_config->set('dbRestore', $this->_config->get('dbType'));
+		$this->_configArray['dbType'] = $this->_config->get('dbType');
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 
 	public function tearDown()
 	{
-		$this->_config->set('dbType', $this->_config->get('dbRestore'));
+		$this->_config->set('dbType', $this->_configArray['dbType']);
 	}
 
 	/**

@@ -10,13 +10,13 @@
 		}
 	],
 	[
-		"postgres://user:password@host:5432/name",
+		"postgres://postgres:test@127.0.0.1/test",
 		{
 			"dbType": "pgsql",
-			"dbHost": "host:5432",
-			"dbName": "name",
-			"dbUser": "user",
-			"dbPassword": "password"
+			"dbHost": "127.0.0.1",
+			"dbName": "test",
+			"dbUser": "postgres",
+			"dbPassword": "test"
 		}
 	],
 	[
