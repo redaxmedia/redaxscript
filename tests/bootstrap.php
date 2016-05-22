@@ -30,12 +30,12 @@ if ($dbType === 'mysql' || $dbType === 'pgsql')
 {
 	if ($dbType === 'mysql')
 	{
-		echo 'MySQL - ';
+		echo 'MySQL' . PHP_EOL;
 		$config->set('dbUser', 'root');
 	}
 	else
 	{
-		echo 'PostgreSQL - ';
+		echo 'PostgreSQL' . PHP_EOL;
 		$config->set('dbUser', 'postgres');
 	}
 	$config->set('dbType', $dbType);
@@ -49,7 +49,7 @@ if ($dbType === 'mysql' || $dbType === 'pgsql')
 
 else
 {
-	echo 'SQLite - ';
+	echo 'SQLite' . PHP_EOL;
 	$config->set('dbType', 'sqlite');
 }
 

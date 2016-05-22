@@ -47,6 +47,6 @@ class OptionTest extends TestCase
 
 		/* compare */
 
-		$this->assertArrayHasKey(key($actual), $expect['database']);
+		$this->assertArraySubset($actual, $expect['database']);
 	}
 }
