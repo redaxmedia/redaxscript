@@ -68,10 +68,7 @@ class FeedGenerator extends Module
 		$result = Db::forTablePrefix($table)
 			->where('status', 1)
 			->whereNull('access')
-			->whereRaw('(language = ? OR language is ?)', array(
-				Registry::get('language'),
-				null
-			))
+			->whereLanguageIs(Registry::get('language'))
 			->orderGlobal('rank')
 			->findMany();
 
