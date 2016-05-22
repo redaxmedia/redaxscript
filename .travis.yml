@@ -25,10 +25,10 @@ install:
 
 before_script:
 - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- mysql -u root -e 'create database test'
 - mysqladmin -u root password test
-- mysql -u root -ptest -e 'create database test'
-- psql -c 'alter user postgres with password '\'test\' -u postgres
-- psql -c 'create database test' -u postgres
+- psql -c 'create database test' -U postgres
+- psql -c 'alter user postgres with password '\'test\' -U postgres
 
 script:
 - mailcatcher

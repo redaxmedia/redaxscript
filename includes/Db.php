@@ -231,6 +231,21 @@ class Db extends ORM
 	}
 
 	/**
+	 * where language is
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $language value of the language
+	 *
+	 * @return Db
+	 */
+
+	public function whereLanguageIs($language = null)
+	{
+		return $this->_addWhere('(language = \'' . $language . '\' OR language IS NULL)');
+	}
+
+	/**
 	 * find a flat array
 	 *
 	 * @since 3.0.0

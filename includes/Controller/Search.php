@@ -202,10 +202,7 @@ class Search implements ControllerInterface
 			$resultArray[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
 				->where('status', 1)
-				->whereRaw('(language = ? OR language is ?)', array(
-					$this->_registry->get('language'),
-					null
-				))
+				->whereLanguageIs($this->_registry->get('language'))
 				->orderByDesc('date')
 				->findMany();
 		}
