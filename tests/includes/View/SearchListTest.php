@@ -50,20 +50,20 @@ class SearchListTest extends TestCase
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test search',
+				'title' => 'test',
 				'alias' => 'test-one',
-				'author' => 'admin',
+				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
-				'date' => '2016-01-01 00:00:00'
+				'date' => '2017-01-01 00:00:00'
 			))
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test search',
+				'title' => 'test',
 				'alias' => 'test-two',
-				'author' => 'admin',
+				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
@@ -73,7 +73,7 @@ class SearchListTest extends TestCase
 			->create()
 			->set(array(
 				'id' => 1,
-				'author' => 'test search',
+				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
@@ -90,8 +90,9 @@ class SearchListTest extends TestCase
 
 	public function tearDown()
 	{
-		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
-		Db::forTablePrefix('comments')->where('author', 'test search')->deleteMany();
+		Db::forTablePrefix('articles')->where('alias', 'test-one')->deleteMany();
+		Db::forTablePrefix('articles')->where('alias', 'test-two')->deleteMany();
+		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 
 	/**

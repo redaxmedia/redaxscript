@@ -20,38 +20,21 @@ Request::init();
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* get environment */
+/* set config */
 
-$dbType = getenv('DB_TYPE');
-
-/* mysql and pgsql */
-
-if ($dbType === 'mysql' || $dbType === 'pgsql')
+$dbUrl = getenv('DB_URL');
+if ($dbUrl)
 {
-	if ($dbType === 'mysql')
-	{
-		echo 'MySQL' . PHP_EOL;
-		$config->set('dbUser', 'root');
-	}
-	else
-	{
-		echo 'PostgreSQL' . PHP_EOL;
-		$config->set('dbUser', 'postgres');
-	}
-	$config->set('dbType', $dbType);
-	$config->set('dbHost', '127.0.0.1');
-	$config->set('dbName', 'test');
-	$config->set('dbPassword', 'test');
-	$config->set('dbSalt', 'test');
+	$config->parse($dbUrl);
 }
-
-/* sqlite */
-
 else
 {
-	echo 'SQLite' . PHP_EOL;
 	$config->set('dbType', 'sqlite');
 }
+
+/* print config */
+
+print_r($config->get());
 
 /* database */
 

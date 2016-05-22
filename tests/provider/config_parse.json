@@ -1,12 +1,12 @@
 [
 	[
-		"mysql://user:password@host/name",
+		"mysql://root:test@127.0.0.1/test",
 		{
 			"dbType": "mysql",
-		  	"dbHost": "host",
-			"dbName": "name",
-			"dbUser": "user",
-			"dbPassword": "password"
+		  	"dbHost": "127.0.0.1",
+			"dbName": "test",
+			"dbUser": "root",
+			"dbPassword": "test"
 		}
 	],
 	[
