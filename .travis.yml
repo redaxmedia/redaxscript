@@ -2,6 +2,7 @@ language: php
 
 services:
  - mysql
+ - postgresql
 
 php:
 - 5.3
@@ -26,9 +27,13 @@ before_script:
 - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - mysqladmin -u root password test
 - mysql -u root -ptest -e 'create database test'
+- psql -c 'alter user postgres with password '\'test\' -u postgres
+- psql -c 'create database test' -u postgres
 
 script:
 - mailcatcher
+- npm run test-mysql
+- npm run test-pgsql
 - npm run test-integration
 
 after_script:

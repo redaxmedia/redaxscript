@@ -45,6 +45,8 @@
 	"scripts":
 	{
 		"test": "grunt test && grunt",
-		"test-integration": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit && grunt test --integration && grunt --integration"
+	  	"test-mysql": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit",
+	  	"test-pgsql": "DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit",
+		"test-integration": "grunt test --integration && grunt --integration"
 	}
 }
