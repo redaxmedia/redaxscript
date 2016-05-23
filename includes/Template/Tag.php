@@ -48,7 +48,7 @@ class Tag
 	public static function console()
 	{
 		$console = new Console\Console(Config::getInstance(), Request::getInstance());
-		return $console->init(php_sapi_name());
+		return $console->init('template');
 	}
 
 	/**
