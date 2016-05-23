@@ -151,15 +151,15 @@ class Parser
 		$argumentKey = 0;
 		foreach ($argumentArray as $key => $value)
 		{
-			$next = next($argumentArray);			
+			$next = next($argumentArray);
 			if (substr($value, 0, 1) === '-')
 			{
 				$offset = substr($value, 0, 2) === '--' ? 2 : 1;
 				$optionArray = $this->_parseOption($value, $next, $offset);
-				$skip = $optionArray['value'] === $next;				
+				$skip = $optionArray['value'] === $next;
 				$this->setOption($optionArray['key'], $optionArray['value']);
 			}
-			else if ($value && !$skip)				
+			else if ($value && !$skip)
 			{
 				$this->setArgument($argumentKey++, $value);
 			}
