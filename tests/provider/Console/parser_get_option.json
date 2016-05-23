@@ -1,6 +1,7 @@
 [
 	[
 		[
+			"console.php",
 			""
 		],
 		[
@@ -8,6 +9,7 @@
 	],
 	[
 		[
+			"console.php",
 			"test"
 		],
 		[
@@ -15,6 +17,7 @@
 	],
 	[
 		[
+			"console.php",
 			"test1",
 			"test2",
 			"-a",
@@ -31,6 +34,7 @@
 	],
 	[
 		[
+			"console.php",
 			"test1",
 			"test2",
 			"--a-long",

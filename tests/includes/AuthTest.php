@@ -140,7 +140,7 @@ class AuthTest extends TestCase
 		$auth = new Auth($this->_request);
 		$auth->login(1);
 
-		/* compare  */
+		/* compare */
 
 		foreach ($typeArray as $key => $value)
 		{

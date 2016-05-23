@@ -2,8 +2,11 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Db;
+use Redaxscript\Config;
+use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 use Redaxscript\Language;
 use Redaxscript\View;
 
@@ -32,6 +35,20 @@ class Tag
 		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
 		$breadcrumb->init();
 		return $breadcrumb->render();
+	}
+
+	/**
+	 * console
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function console()
+	{
+		$console = new Console\Console(Config::getInstance(), Request::getInstance());
+		return $console->init(php_sapi_name());
 	}
 
 	/**
@@ -76,9 +93,60 @@ class Tag
 		ob_start();
 		foreach ($file as $value)
 		{
-			include($value);
+			if (file_exists($value))
+			{
+				include($value);
+			}
 		}
 		return ob_get_clean();
+	}
+
+	/**
+	 * registry
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+
+	public static function registry($key = null)
+	{
+		$registry = Registry::getInstance();
+		return $registry->get($key);
+	}
+
+	/**
+	 * language
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 * @param string $index
+	 *
+	 * @return string
+	 */
+
+	public static function language($key = null, $index = null)
+	{
+		$language = Language::getInstance();
+		return $language->get($key, $index);
+	}
+
+	/**
+	 * setting
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+
+	public static function setting($key = null)
+	{
+		return Db::getSetting($key);
 	}
 
 	/**
@@ -246,54 +314,6 @@ class Tag
 			$mode
 		));
 		// @codeCoverageIgnoreEnd
-	}
-
-	/**
-	 * registry
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string
-	 */
-
-	public static function registry($key = null)
-	{
-		$registry = Registry::getInstance();
-		return $registry->get($key);
-	}
-
-	/**
-	 * language
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 * @param string $index
-	 *
-	 * @return string
-	 */
-
-	public static function language($key = null, $index = null)
-	{
-		$language = Language::getInstance();
-		return $language->get($key, $index);
-	}
-
-	/**
-	 * setting
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string
-	 */
-
-	public static function setting($key = null)
-	{
-		return Db::getSetting($key);
 	}
 
 	/**

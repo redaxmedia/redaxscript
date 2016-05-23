@@ -41,7 +41,7 @@
 				"Random": 1,
 				"Addition": 2,
 				"Subtraction": 3,
-				"Disable":  0
+				"Disable": 0
 			},
 			"permission":
 			{

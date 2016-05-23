@@ -43,7 +43,7 @@ class Help extends CommandAbstract
 	public function run()
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init(php_sapi_name());
 
 		/* run command */
 
@@ -63,7 +63,7 @@ class Help extends CommandAbstract
 	protected function _list($argumentArray = array())
 	{
 		$output = PHP_EOL;
-		$commandKey = $argumentArray[2];
+		$commandKey = $argumentArray[1];
 
 		/* collect multiple help */
 

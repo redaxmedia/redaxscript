@@ -73,11 +73,11 @@ class ParserTest extends TestCase
 		/* setup */
 
 		$parser = new Console\Parser($this->_request);
-		$parser->init();
+		$parser->init('cli');
 
 		/* compare */
 
-		$this->assertArrayHasKey(0, $parser->getArgument());
+		$this->assertEmpty($parser->getArgument());
 	}
 
 	/**
@@ -141,7 +141,7 @@ class ParserTest extends TestCase
 
 		$this->_request->setServer('argv', $arguments);
 		$parser = new Console\Parser($this->_request);
-		$parser->init();
+		$parser->init('cli');
 
 		/* actual */
 
@@ -169,7 +169,7 @@ class ParserTest extends TestCase
 
 		$this->_request->setServer('argv', $arguments);
 		$parser = new Console\Parser($this->_request);
-		$parser->init();
+		$parser->init('cli');
 
 		/* actual */
 

@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Template;
 
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 use Redaxscript\Template;
 use Redaxscript\Tests\TestCase;
 use org\bovigo\vfs\vfsStream as Stream;
@@ -38,6 +39,14 @@ class TagTest extends TestCase
 	protected $_language;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
 	 * @since 2.6.0
@@ -47,6 +56,7 @@ class TagTest extends TestCase
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+		$this->_request = Request::getInstance();
 	}
 
 	/**
@@ -66,6 +76,27 @@ class TagTest extends TestCase
 		$this->assertTrue(is_string($actual));
 	}
 
+	/**
+	 * testConsole
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConsole()
+	{
+		/* setup */
+
+		$this->_request->setPost('argv', 'help');
+
+		/* actual */
+
+		$actual = Template\Tag::console();
+
+		/* compare */
+
+		$this->assertTrue(is_string($actual));
+	}
+	
 	/**
 	 * testSearch
 	 *

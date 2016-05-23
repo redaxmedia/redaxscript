@@ -55,12 +55,23 @@ class Parser
 	/**
 	 * init the class
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @since 3.0.0
 	 */
 
-	public function init()
+	public function init($mode = null)
 	{
-		$this->_parseArgument($this->_request->getServer('argv'));
+		if ($mode === 'cli')
+		{
+			$argumentArray = $this->_request->getServer('argv');
+			unset($argumentArray[0]);
+		}
+		else
+		{
+			$argumentArray = explode(' ', $this->_request->getPost('argv'));
+		}
+		$this->_parseArgument($argumentArray);
 	}
 
 	/**

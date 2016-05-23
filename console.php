@@ -14,7 +14,7 @@ include_once('includes/bootstrap.php');
 if (php_sapi_name() === 'cli')
 {
 	$console = new Console\Console(Config::getInstance(), Request::getInstance());
-	echo $console->init();
+	echo $console->init('cli');
 }
 
 /* else web */

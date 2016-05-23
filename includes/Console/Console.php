@@ -18,22 +18,28 @@ class Console extends ConsoleAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @return string
 	 */
 
-	public function init()
+	public function init($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init($mode);
 
 		/* run command */
 
-		$commandKey = $parser->getArgument(1);
+		$commandKey = $parser->getArgument(0);
 		if (array_key_exists($commandKey, $this->_namespaceArray))
 		{
 			$commandClass = $this->_namespaceArray[$commandKey];
 			$command = new $commandClass($this->_config, $this->_request);
-			return $command->run();
+			if ($mode === 'cli')
+			{
+				return $command->run();
+			}
+			return htmlentities($command->run());
 		}
 	}
 }

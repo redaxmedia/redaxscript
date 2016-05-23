@@ -74,11 +74,11 @@ class Config extends CommandAbstract
 	public function run()
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init(php_sapi_name());
 
 		/* run command */
 
-		$argumentKey = $parser->getArgument(2);
+		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();

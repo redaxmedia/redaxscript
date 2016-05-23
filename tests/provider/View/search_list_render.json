@@ -1,9 +1,9 @@
 [
 	[
 		{
-		  	"table":
+			"table":
 			[
-			  "articles"
+				"articles"
 			],
 			"search": "test"
 		},
@@ -12,7 +12,7 @@
 	[
 
 		{
-		  	"table":
+			"table":
 			[
 				"comments"
 			],

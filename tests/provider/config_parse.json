@@ -3,7 +3,7 @@
 		"mysql://root:test@127.0.0.1/test",
 		{
 			"dbType": "mysql",
-		  	"dbHost": "127.0.0.1",
+			"dbHost": "127.0.0.1",
 			"dbName": "test",
 			"dbUser": "root",
 			"dbPassword": "test"
