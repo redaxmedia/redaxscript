@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use PDO;
+use Redaxscript\Console\Parser;
+use Redaxscript\Db;
+
 /**
  * children class to execute the status command
  *
@@ -24,10 +28,19 @@ class Status extends CommandAbstract
 			'description' => 'Status command',
 			'argumentArray' => array(
 				'database' => array(
-					'description' => 'Show database status'
+					'description' => 'Show database status',
+					'wordingArray' => array(
+						'No connection found',
+						'Database tables missing',
+						'Connection established'
+					)
 				),
 				'system' => array(
-					'description' => 'Show system requirements'
+					'description' => 'Show system requirements',
+					'wordingArray' => array(
+						'Failed',
+						'Passed'
+					)
 				)
 			)
 		)
@@ -41,6 +54,74 @@ class Status extends CommandAbstract
 
 	public function run()
 	{
+		$parser = new Parser($this->_request);
+		$parser->init(php_sapi_name());
+
+		/* run command */
+
+		$argumentKey = $parser->getArgument(1);
+		if ($argumentKey === 'database')
+		{
+			return $this->_database();
+		}
+		if ($argumentKey === 'system')
+		{
+			return $this->_system();
+		}
 		return $this->getHelp();
+	}
+
+	/**
+	 * database status
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function _database()
+	{
+		$status = Db::getStatus();
+		$wordingArray = $this->_commandArray['status']['argumentArray']['database']['wordingArray'];
+		if (array_key_exists($status, $wordingArray))
+		{			
+			return $wordingArray[$status] . PHP_EOL;
+		}
+	}
+
+	/**
+	 * system status
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function _system()
+	{
+		$output = null;
+		$driverArray = PDO::getAvailableDrivers();
+		$statusArray = array(
+			'OS' => array(
+				'value' => strtolower(php_uname('s')),
+				'status' => strtolower(php_uname('s')) === 'linux' ? 1 : 0
+			),
+			'PHP' => array(
+				'value' => phpversion(),
+				'status' => version_compare(phpversion(), '5.3', '>') ? 1 : 0
+			),
+			'PDO' => array(
+				'value' => implode($driverArray, ', '),
+				'status' => count($driverArray) ? 1 : 0
+			)
+		);
+		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
+
+		/* process status */
+
+		foreach ($statusArray as $key => $valueArray)
+		{
+			if (array_key_exists($valueArray['status'], $wordingArray))
+			{
+				$output .= str_pad($key, 30) . str_pad($valueArray['value'], 60) . $wordingArray[$valueArray['status']] . PHP_EOL;
+			}
+		}
+		return $output;
 	}
 }
