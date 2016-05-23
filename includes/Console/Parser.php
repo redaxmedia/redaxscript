@@ -147,20 +147,19 @@ class Parser
 
 	protected function _parseArgument($argumentArray = array())
 	{
-		$skipValue = null;
+		$skip = false;
 		$argumentKey = 0;
 		foreach ($argumentArray as $key => $value)
 		{
-			$next = next($argumentArray);
-			if (substr($value, 0, 2) === '--')
+			$next = next($argumentArray);			
+			if (substr($value, 0, 1) === '-')
 			{
-				$skipValue = $this->_parseOption($value, $next, 2) ? $next : null;
+				$offset = substr($value, 0, 2) === '--' ? 2 : 1;
+				$optionArray = $this->_parseOption($value, $next, $offset);
+				$skip = $optionArray['value'] === $next;				
+				$this->setOption($optionArray['key'], $optionArray['value']);
 			}
-			else if (substr($value, 0, 1) === '-')
-			{
-				$skipValue = $this->_parseOption($value, $next, 1) ? $next : null;
-			}
-			else if ($value && $value !== $skipValue)
+			else if ($value && !$skip)				
 			{
 				$this->setArgument($argumentKey++, $value);
 			}
@@ -174,25 +173,24 @@ class Parser
 	 *
 	 * @param string $option raw option to be parsed
 	 * @param string $next raw next to be parsed
-	 * @param integer $modeOffset offset of the mode
+	 * @param integer $offset offset of the raw option
 	 *
 	 * @return boolean
 	 */
 
-	protected function _parseOption($option = null, $next = null, $modeOffset = null)
+	protected function _parseOption($option = null, $next = null, $offset = null)
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
 		{
-			$optionKey = substr($option, $modeOffset, $equalPosition - $modeOffset);
-			$optionValue = substr($option, $equalPosition + 1);
+			return array(
+				'key' => substr($option, $offset, $equalPosition - $offset),
+				'value' => substr($option, $equalPosition + 1)
+			);
 		}
-		else
-		{
-			$optionKey = substr($option, $modeOffset);
-			$optionValue = substr($next, 0, 1) === '-' ? true : $next;
-		}
-		$this->setOption($optionKey, $optionValue);
-		return $optionValue === $next;
+		return array(
+			'key' => $optionKey = substr($option, $offset),
+			'value' => $optionValue = substr($next, 0, 1) === '-' ? true : $next
+		);
 	}
 }
