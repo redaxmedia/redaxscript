@@ -27,7 +27,7 @@ class Register extends ControllerAbstract implements ControllerInterface
 	 * process
 	 *
 	 * @since 3.0.0
-	 * 
+	 *
 	 * @return string
 	 */
 

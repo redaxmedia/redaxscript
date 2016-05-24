@@ -27,7 +27,7 @@ class Reset extends ControllerAbstract implements ControllerInterface
 	 * process the class
 	 *
 	 * @since 3.0.0
-	 * 
+	 *
 	 * @return string
 	 */
 
