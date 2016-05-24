@@ -6,8 +6,6 @@ use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the article form
@@ -19,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class CommentForm implements ViewInterface
+class CommentForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -42,7 +40,7 @@ class CommentForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($comment->title ? $comment->title : Language::get('comment_new'));
+		$titleElement->text($comment->title ? $comment->title : $this->_language->get('comment_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -51,46 +49,46 @@ class CommentForm implements ViewInterface
 		$listElement->init('ul', array(
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
-		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('parameterRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
+				'action' => $this->_registry->get('parameterRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('commentsEdit') && Registry::get('commentsDelete') ? Registry::get('parameterRoute') . 'admin/view/comments' : Registry::get('parameterRoute') . 'admin'
+					'href' => $this->_registry->get('commentsEdit') && $this->_registry->get('commentsDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/comments' : $this->_registry->get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
-					'href' => $comment->id ? Registry::get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . Registry::get('token') : null
+					'href' => $comment->id ? $this->_registry->get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . $this->_registry->get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('comment'))
+				->text($this->_language->get('comment'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
+				->text($this->_language->get('general'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
-				->text(Language::get('customize'))
+				->text($this->_language->get('customize'))
 			);
 		$listElement->append($outputItem);
 
@@ -103,7 +101,7 @@ class CommentForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label('* ' . Language::get('author'), array(
+			->label('* ' . $this->_language->get('author'), array(
 				'for' => 'author'
 			))
 			->text(array(
@@ -111,10 +109,10 @@ class CommentForm implements ViewInterface
 				'name' => 'author',
 				'readonly' => 'readonly',
 				'required' => 'required',
-				'value' => $comment->author ? $comment->author : Registry::get('myName')
+				'value' => $comment->author ? $comment->author : $this->_registry->get('myName')
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . $this->_language->get('email'), array(
 				'for' => 'email'
 			))
 			->email(array(
@@ -122,10 +120,10 @@ class CommentForm implements ViewInterface
 				'name' => 'email',
 				'readonly' => 'readonly',
 				'required' => 'required',
-				'value' => $comment->email ? $comment->email : Registry::get('myEmail')
+				'value' => $comment->email ? $comment->email : $this->_registry->get('myEmail')
 			))
 			->append('</li><li>')
-			->label(Language::get('url'), array(
+			->label($this->_language->get('url'), array(
 				'for' => 'url'
 			))
 			->url(array(
@@ -134,7 +132,7 @@ class CommentForm implements ViewInterface
 				'value' => $comment->url
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('text'), array(
+			->label('* ' . $this->_language->get('text'), array(
 				'for' => 'text'
 			))
 			->textarea(array(
@@ -148,7 +146,7 @@ class CommentForm implements ViewInterface
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('language'), array(
+			->label($this->_language->get('language'), array(
 				'for' => 'language'
 			))
 			->select(Helper\Option::getLanguageArray(), array(
@@ -157,7 +155,7 @@ class CommentForm implements ViewInterface
 				'value' => $comment->language
 			))
 			->append('</li><li>')
-			->label(Language::get('article'), array(
+			->label($this->_language->get('article'), array(
 				'for' => 'article'
 			))
 			->select(Helper\Option::getContentArray('articles'), array(
@@ -170,7 +168,7 @@ class CommentForm implements ViewInterface
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('status'), array(
+			->label($this->_language->get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getVisibleArray(), array(
@@ -179,7 +177,7 @@ class CommentForm implements ViewInterface
 				'value' => $comment->id ? intval($comment->status) : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('rank'), array(
+			->label($this->_language->get('rank'), array(
 				'for' => 'rank'
 			))
 			->number(array(
@@ -188,11 +186,11 @@ class CommentForm implements ViewInterface
 				'value' => $comment->id ? intval($comment->rank) : Db::forTablePrefix('comments')->max('rank') + 1
 			))
 			->append('</li>');
-		if (Registry::get('groupsEdit'))
+		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label(Language::get('access'), array(
+				->label($this->_language->get('access'), array(
 					'for' => 'access'
 				))
 				->select(Helper\Option::getAccessArray('groups'), array(
@@ -206,7 +204,7 @@ class CommentForm implements ViewInterface
 		}
 		$formElement
 			->append('<li>')
-			->label(Language::get('date'), array(
+			->label($this->_language->get('date'), array(
 				'for' => 'date'
 			))
 			->datetime(array(
@@ -219,16 +217,16 @@ class CommentForm implements ViewInterface
 			->cancel();
 		if ($comment->id)
 		{
-			if (Registry::get('commentsDelete'))
+			if ($this->_registry->get('commentsDelete'))
 			{
 				$formElement->delete();
 			}
-			if (Registry::get('commentsEdit'))
+			if ($this->_registry->get('commentsEdit'))
 			{
 				$formElement->save();
 			}
 		}
-		else if (Registry::get('commentsNew'))
+		else if ($this->_registry->get('commentsNew'))
 		{
 			$formElement->create();
 		}

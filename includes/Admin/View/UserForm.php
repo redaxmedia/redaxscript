@@ -6,8 +6,6 @@ use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the user form
@@ -19,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class UserForm implements ViewInterface
+class UserForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -42,7 +40,7 @@ class UserForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($user->name ? $user->name : Language::get('user_new'));
+		$titleElement->text($user->name ? $user->name : $this->_language->get('user_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -51,39 +49,39 @@ class UserForm implements ViewInterface
 		$listElement->init('ul', array(
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
-		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('parameterRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
+				'action' => $this->_registry->get('parameterRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('usersEdit') && Registry::get('usersDelete') ? Registry::get('parameterRoute') . 'admin/view/users' : Registry::get('parameterRoute') . 'admin'
+					'href' => $this->_registry->get('usersEdit') && $this->_registry->get('usersDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/users' : $this->_registry->get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
-					'href' => $user->id ? Registry::get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . Registry::get('token') : null
+					'href' => $user->id ? $this->_registry->get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . $this->_registry->get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('user'))
+				->text($this->_language->get('user'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
+				->text($this->_language->get('general'))
 			);
 		if (!$user->id || $user->id > 1)
 		{
@@ -92,7 +90,7 @@ class UserForm implements ViewInterface
 				->html($linkElement
 					->copy()
 					->attr('href', $tabRoute . '#tab-3')
-					->text(Language::get('customize'))
+					->text($this->_language->get('customize'))
 				);
 		}
 		$listElement->append($outputItem);
@@ -106,7 +104,7 @@ class UserForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'name'
 			))
 			->text(array(
@@ -121,7 +119,7 @@ class UserForm implements ViewInterface
 		{
 			$formElement
 				->append('<li>')
-				->label(Language::get('user'), array(
+				->label($this->_language->get('user'), array(
 					'for' => 'user'
 				))
 				->text(array(
@@ -134,7 +132,7 @@ class UserForm implements ViewInterface
 		}
 		$formElement
 			->append('<li>')
-			->label(Language::get('password'), array(
+			->label($this->_language->get('password'), array(
 				'for' => 'password'
 			))
 			->password(array(
@@ -142,7 +140,7 @@ class UserForm implements ViewInterface
 				'name' => 'password'
 			))
 			->append('</li><li>')
-			->label(Language::get('password_confirm'), array(
+			->label($this->_language->get('password_confirm'), array(
 				'for' => 'password_confirm'
 			))
 			->password(array(
@@ -150,7 +148,7 @@ class UserForm implements ViewInterface
 				'name' => 'password_confirm'
 			))
 			->append('</li><li>')
-			->label(Language::get('email'), array(
+			->label($this->_language->get('email'), array(
 				'for' => 'email'
 			))
 			->email(array(
@@ -160,7 +158,7 @@ class UserForm implements ViewInterface
 				'value' => $user->email
 			))
 			->append('</li><li>')
-			->label(Language::get('description'), array(
+			->label($this->_language->get('description'), array(
 				'for' => 'description'
 			))
 			->textarea(array(
@@ -174,7 +172,7 @@ class UserForm implements ViewInterface
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('language'), array(
+			->label($this->_language->get('language'), array(
 				'for' => 'language'
 			))
 			->select(Helper\Option::getLanguageArray(), array(
@@ -190,7 +188,7 @@ class UserForm implements ViewInterface
 		{
 			$formElement
 				->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-				->label(Language::get('status'), array(
+				->label($this->_language->get('status'), array(
 					'for' => 'status'
 				))
 				->select(Helper\Option::getToggleArray(), array(
@@ -199,11 +197,11 @@ class UserForm implements ViewInterface
 					'value' => $user->id ? intval($user->status) : 1
 				))
 				->append('</li>');
-			if (Registry::get('groupsEdit'))
+			if ($this->_registry->get('groupsEdit'))
 			{
 				$formElement
 					->append('<li>')
-					->label(Language::get('groups'), array(
+					->label($this->_language->get('groups'), array(
 						'for' => 'groups'
 					))
 					->select(Helper\Option::getAccessArray('groups'), array(
@@ -223,16 +221,16 @@ class UserForm implements ViewInterface
 			->cancel();
 		if ($user->id)
 		{
-			if ((Registry::get('usersDelete') || Registry::get('myId') === $user->id) && $user->id > 1)
+			if (($this->_registry->get('usersDelete') || $this->_registry->get('myId') === $user->id) && $user->id > 1)
 			{
 				$formElement->delete();
 			}
-			if (Registry::get('usersEdit') || Registry::get('myId') === $user->id)
+			if ($this->_registry->get('usersEdit') || $this->_registry->get('myId') === $user->id)
 			{
 				$formElement->save();
 			}
 		}
-		else if (Registry::get('usersNew'))
+		else if ($this->_registry->get('usersNew'))
 		{
 			$formElement->create();
 		}

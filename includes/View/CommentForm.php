@@ -23,7 +23,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 	 * @since 3.0.0
 	 *
 	 * @param integer $articleId identifier of the article
-	 * 
+	 *
 	 * @return string
 	 */
 

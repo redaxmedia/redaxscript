@@ -7,8 +7,6 @@ use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Template;
 
 /**
@@ -21,7 +19,7 @@ use Redaxscript\Template;
  * @author Henry Ruhs
  */
 
-class ModuleForm implements ViewInterface
+class ModuleForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -53,18 +51,18 @@ class ModuleForm implements ViewInterface
 		$listElement->init('ul', array(
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
-		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
+				'action' => $this->_registry->get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('modulesEdit') && Registry::get('modulesUninstall') ? Registry::get('parameterRoute') . 'admin/view/modules' : Registry::get('parameterRoute') . 'admin'
+					'href' => $this->_registry->get('modulesEdit') && $this->_registry->get('modulesUninstall') ? $this->_registry->get('parameterRoute') . 'admin/view/modules' : $this->_registry->get('parameterRoute') . 'admin'
 				),
 				'uninstall' => array(
-					'href' => $module->alias ? Registry::get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . Registry::get('token') : null
+					'href' => $module->alias ? $this->_registry->get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . $this->_registry->get('token') : null
 				)
 			)
 		));
@@ -78,14 +76,14 @@ class ModuleForm implements ViewInterface
 		/* collect item output */
 
 		$tabCounter = 1;
-		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
-				->text(Language::get('module'))
+				->text($this->_language->get('module'))
 			);
 
 		/* process directory */
@@ -108,7 +106,7 @@ class ModuleForm implements ViewInterface
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
-				->text(Language::get('customize'))
+				->text($this->_language->get('customize'))
 			);
 		$listElement->append($outputItem);
 
@@ -122,7 +120,7 @@ class ModuleForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'name'
 			))
 			->text(array(
@@ -133,7 +131,7 @@ class ModuleForm implements ViewInterface
 				'value' => $module->name
 			))
 			->append('</li><li>')
-			->label(Language::get('description'), array(
+			->label($this->_language->get('description'), array(
 				'for' => 'description'
 			))
 			->textarea(array(
@@ -163,7 +161,7 @@ class ModuleForm implements ViewInterface
 
 		$formElement
 			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('status'), array(
+			->label($this->_language->get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -172,11 +170,11 @@ class ModuleForm implements ViewInterface
 				'value' => intval($module->status)
 			))
 			->append('</li>');
-		if (Registry::get('groupsEdit'))
+		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label(Language::get('access'), array(
+				->label($this->_language->get('access'), array(
 					'for' => 'access'
 				))
 				->select(Helper\Option::getAccessArray('groups'), array(
@@ -192,11 +190,11 @@ class ModuleForm implements ViewInterface
 			->append('</ul></fieldset></div>')
 			->token()
 			->cancel();
-		if (Registry::get('modulesUninstall'))
+		if ($this->_registry->get('modulesUninstall'))
 		{
 			$formElement->uninstall();
 		}
-		if (Registry::get('modulesEdit'))
+		if ($this->_registry->get('modulesEdit'))
 		{
 			$formElement->save();
 		}

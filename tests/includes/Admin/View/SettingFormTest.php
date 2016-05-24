@@ -2,6 +2,8 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Language;
+use Redaxscript\Registry;
 use Redaxscript\Tests\TestCase;
 
 /**
@@ -16,6 +18,34 @@ use Redaxscript\Tests\TestCase;
 
 class SettingFormTest extends TestCase
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
+	}
+	
 	/**
 	 * providerRender
 	 *
@@ -43,7 +73,7 @@ class SettingFormTest extends TestCase
 	{
 		/* setup */
 
-		$settingForm = new Admin\View\SettingForm();
+		$settingForm = new Admin\View\SettingForm($this->_registry, $this->_language);
 
 		/* actual */
 

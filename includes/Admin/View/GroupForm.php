@@ -6,8 +6,6 @@ use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the group form
@@ -19,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class GroupForm implements ViewInterface
+class GroupForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -42,7 +40,7 @@ class GroupForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($group->name ? $group->name : Language::get('group_new'));
+		$titleElement->text($group->name ? $group->name : $this->_language->get('group_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -51,32 +49,32 @@ class GroupForm implements ViewInterface
 		$listElement->init('ul', array(
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
-		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
+				'action' => $this->_registry->get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('groupsEdit') && Registry::get('groupsDelete') ? Registry::get('parameterRoute') . 'admin/view/groups' : Registry::get('parameterRoute') . 'admin'
+					'href' => $this->_registry->get('groupsEdit') && $this->_registry->get('groupsDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/groups' : $this->_registry->get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
-					'href' => $group->id ? Registry::get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . Registry::get('token') : null
+					'href' => $group->id ? $this->_registry->get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . $this->_registry->get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('group'))
+				->text($this->_language->get('group'))
 			);
 		if (!$group->id || $group->id > 1)
 		{
@@ -85,14 +83,14 @@ class GroupForm implements ViewInterface
 				->html($linkElement
 					->copy()
 					->attr('href', $tabRoute . '#tab-2')
-					->text(Language::get('access'))
+					->text($this->_language->get('access'))
 				);
 			$outputItem .= $itemElement
 				->copy()
 				->html($linkElement
 					->copy()
 					->attr('href', $tabRoute . '#tab-3')
-					->text(Language::get('customize'))
+					->text($this->_language->get('customize'))
 				);
 		}
 		$listElement->append($outputItem);
@@ -106,7 +104,7 @@ class GroupForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'name'
 			))
 			->text(array(
@@ -117,7 +115,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->name
 			))
 			->append('</li><li>')
-			->label(Language::get('user'), array(
+			->label($this->_language->get('user'), array(
 				'for' => 'user'
 			))
 			->text(array(
@@ -127,7 +125,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->alias
 			))
 			->append('</li><li>')
-			->label(Language::get('description'), array(
+			->label($this->_language->get('description'), array(
 				'for' => 'description'
 			))
 			->textarea(array(
@@ -144,7 +142,7 @@ class GroupForm implements ViewInterface
 		{
 			$formElement
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('categories'), array(
+			->label($this->_language->get('categories'), array(
 				'for' => 'categories'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -155,7 +153,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->categories
 			))
 			->append('</li><li>')
-			->label(Language::get('articles'), array(
+			->label($this->_language->get('articles'), array(
 				'for' => 'articles'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -166,7 +164,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->articles
 			))
 			->append('</li><li>')
-			->label(Language::get('extras'), array(
+			->label($this->_language->get('extras'), array(
 				'for' => 'extras'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -177,7 +175,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->extras
 			))
 			->append('</li><li>')
-			->label(Language::get('comments'), array(
+			->label($this->_language->get('comments'), array(
 				'for' => 'comments'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -188,7 +186,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->comments
 			))
 			->append('</li><li>')
-			->label(Language::get('groups'), array(
+			->label($this->_language->get('groups'), array(
 				'for' => 'groups'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -199,7 +197,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->groups
 			))
 			->append('</li><li>')
-			->label(Language::get('users'), array(
+			->label($this->_language->get('users'), array(
 				'for' => 'users'
 			))
 			->select(Helper\Option::getPermissionArray(), array(
@@ -210,7 +208,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->users
 			))
 			->append('</li><li>')
-			->label(Language::get('modules'), array(
+			->label($this->_language->get('modules'), array(
 				'for' => 'modules'
 			))
 			->select(Helper\Option::getPermissionArray('modules'), array(
@@ -221,7 +219,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->modules
 			))
 			->append('</li><li>')
-			->label(Language::get('settings'), array(
+			->label($this->_language->get('settings'), array(
 				'for' => 'settings'
 			))
 			->select(Helper\Option::getPermissionArray('settings'), array(
@@ -236,7 +234,7 @@ class GroupForm implements ViewInterface
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('filter'), array(
+			->label($this->_language->get('filter'), array(
 				'for' => 'filter'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -245,7 +243,7 @@ class GroupForm implements ViewInterface
 				'value' => $group->id ? $group->filter : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('status'), array(
+			->label($this->_language->get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -261,16 +259,16 @@ class GroupForm implements ViewInterface
 			->cancel();
 		if ($group->id)
 		{
-			if (Registry::get('groupsDelete') && $group->id > 1)
+			if ($this->_registry->get('groupsDelete') && $group->id > 1)
 			{
 				$formElement->delete();
 			}
-			if (Registry::get('groupsEdit'))
+			if ($this->_registry->get('groupsEdit'))
 			{
 				$formElement->save();
 			}
 		}
-		else if (Registry::get('groupsNew'))
+		else if ($this->_registry->get('groupsNew'))
 		{
 			$formElement->create();
 		}

@@ -2,8 +2,9 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Tests\TestCase;
+use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Tests\TestCase;
 
 /**
  * ExtraFormTest
@@ -26,6 +27,14 @@ class ExtraFormTest extends TestCase
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -34,6 +43,7 @@ class ExtraFormTest extends TestCase
 	protected function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
@@ -66,7 +76,7 @@ class ExtraFormTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$extraForm = new Admin\View\ExtraForm();
+		$extraForm = new Admin\View\ExtraForm($this->_registry, $this->_language);
 
 		/* actual */
 
