@@ -63,7 +63,7 @@ class Tag
 
 	public static function search($table = 'articles')
 	{
-		$searchForm = new View\SearchForm();
+		$searchForm = new View\SearchForm(Registry::getInstance(), Language::getInstance());
 		return $searchForm->render($table);
 	}
 

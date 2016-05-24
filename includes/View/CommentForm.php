@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the comment form
@@ -17,15 +15,15 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class CommentForm implements ViewInterface
+class CommentForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
 	 *
-	 * @param integer $articleId identifier of the article
-	 *
 	 * @since 3.0.0
 	 *
+	 * @param integer $articleId identifier of the article
+	 * 
 	 * @return string
 	 */
 
@@ -40,8 +38,8 @@ class CommentForm implements ViewInterface
 			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
-			->text(Language::get('comment_new'));
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+			->text($this->_language->get('comment_new'));
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'button' => array(
 				'submit' => array(
@@ -58,29 +56,29 @@ class CommentForm implements ViewInterface
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . Language::get('author'), array(
+			->label('* ' . $this->_language->get('author'), array(
 				'for' => 'author'
 			))
 			->text(array(
 				'id' => 'author',
 				'name' => 'author',
-				'readonly' => Registry::get('myName') ? 'readonly' : null,
+				'readonly' => $this->_registry->get('myName') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myName')
+				'value' => $this->_registry->get('myName')
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . $this->_language->get('email'), array(
 					'for' => 'email'
 			))
 			->email(array(
 				'id' => 'email',
 				'name' => 'email',
-				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
+				'readonly' => $this->_registry->get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myEmail')
+				'value' => $this->_registry->get('myEmail')
 			))
 			->append('</li><li>')
-			->label(Language::get('url'), array(
+			->label($this->_language->get('url'), array(
 				'for' => 'url'
 			))
 			->url(array(
@@ -88,7 +86,7 @@ class CommentForm implements ViewInterface
 				'name' => 'url'
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('text'), array(
+			->label('* ' . $this->_language->get('text'), array(
 				'for' => 'text'
 			))
 			->textarea(array(

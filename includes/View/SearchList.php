@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Validator;
 
 /**
@@ -19,39 +17,8 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class SearchList implements ViewInterface
+class SearchList extends ViewAbstract implements ViewInterface
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 */
-
-	public function __construct(Registry $registry, Language $language)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-	}
-
 	/**
 	 * render the view
 	 *
@@ -99,7 +66,7 @@ class SearchList implements ViewInterface
 
 				foreach ($result as $value)
 				{
-					if ($accessValidator->validate($result->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+					if ($accessValidator->validate($result->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 					{
 						$textDate = date(Db::getSetting('date'), strtotime($value->date));
 						$linkElement

@@ -5,6 +5,7 @@ use Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
@@ -36,7 +37,15 @@ class SearchListTest extends TestCase
 	 */
 
 	protected $_language;
+	
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
 
+	protected $_request;
+	
 	/**
 	 * setUp
 	 *
@@ -47,6 +56,7 @@ class SearchListTest extends TestCase
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+		$this->_request = Request::getInstance();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
@@ -124,7 +134,7 @@ class SearchListTest extends TestCase
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
-		$controllerSearch = new Controller\Search($this->_registry, $this->_language);
+		$controllerSearch = new Controller\Search($this->_registry, $this->_language, $this->_request);
 		$resultArray = $this->callMethod($controllerSearch, '_search', array(
 			$searchArray
 		));

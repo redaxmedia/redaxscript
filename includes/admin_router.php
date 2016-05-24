@@ -132,32 +132,32 @@ function admin_router()
 		case 'new':
 			if ($tableParameter == 'categories')
 			{
-				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $categoryForm->render();
 			}
 			if ($tableParameter == 'articles')
 			{
-				$articleForm = new Redaxscript\Admin\View\ArticleForm();
+				$articleForm = new Redaxscript\Admin\View\ArticleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $articleForm->render();
 			}
 			if ($tableParameter == 'extras')
 			{
-				$extraForm = new Redaxscript\Admin\View\ExtraForm();
+				$extraForm = new Redaxscript\Admin\View\ExtraForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $extraForm->render();
 			}
 			if ($tableParameter == 'comments')
 			{
-				$commentForm = new Redaxscript\Admin\View\CommentForm();
+				$commentForm = new Redaxscript\Admin\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $commentForm->render();
 			}
 			if ($tableParameter == 'groups')
 			{
-				$groupForm = new Redaxscript\Admin\View\GroupForm();
+				$groupForm = new Redaxscript\Admin\View\GroupForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $groupForm->render();
 			}
 			if ($tableParameter == 'users')
 			{
-				$userForm = new Redaxscript\Admin\View\UserForm();
+				$userForm = new Redaxscript\Admin\View\UserForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $userForm->render();
 			}
 			return;
@@ -174,42 +174,42 @@ function admin_router()
 		case 'edit':
 			if ($tableParameter == 'categories')
 			{
-				$categoryForm = new Redaxscript\Admin\View\CategoryForm();
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $categoryForm->render($idParameter);
 			}
 			if ($tableParameter == 'articles')
 			{
-				$articleForm = new Redaxscript\Admin\View\ArticleForm();
+				$articleForm = new Redaxscript\Admin\View\ArticleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $articleForm->render($idParameter);
 			}
 			if ($tableParameter == 'extras')
 			{
-				$extraForm = new Redaxscript\Admin\View\ExtraForm();
+				$extraForm = new Redaxscript\Admin\View\ExtraForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $extraForm->render($idParameter);
 			}
 			if ($tableParameter == 'comments')
 			{
-				$commentForm = new Redaxscript\Admin\View\CommentForm();
+				$commentForm = new Redaxscript\Admin\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $commentForm->render($idParameter);
 			}
 			if ($tableParameter == 'groups')
 			{
-				$groupForm = new Redaxscript\Admin\View\GroupForm();
+				$groupForm = new Redaxscript\Admin\View\GroupForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $groupForm->render($idParameter);
 			}
 			if ($tableParameter == 'users')
 			{
-				$userForm = new Redaxscript\Admin\View\UserForm();
+				$userForm = new Redaxscript\Admin\View\UserForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $userForm->render($idParameter);
 			}
 			if ($tableParameter == 'modules')
 			{
-				$moduleForm = new Redaxscript\Admin\View\ModuleForm();
+				$moduleForm = new Redaxscript\Admin\View\ModuleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $moduleForm->render($idParameter);
 			}
 			if ($tableParameter == 'settings')
 			{
-				$settingForm = new Redaxscript\Admin\View\SettingForm();
+				$settingForm = new Redaxscript\Admin\View\SettingForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $settingForm->render($idParameter);
 			}
 			return;

@@ -1,21 +1,20 @@
 <?php
-namespace Redaxscript\Controller;
+namespace Redaxscript\View;
 
 use Redaxscript\Language;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 
 /**
- * abstract class to create a controller class
+ * abstract class to create a view class
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category View
  * @author Henry Ruhs
  */
 
-abstract class ControllerAbstract
+abstract class ViewAbstract
 {
 	/**
 	 * instance of the registry class
@@ -34,27 +33,17 @@ abstract class ControllerAbstract
 	protected $_language;
 
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * constructor of the class
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the request class
 	 */
 
-	public function __construct(Registry $registry, Language $language, Request $request)
+	public function __construct(Registry $registry, Language $language)
 	{
 		$this->_registry = $registry;
 		$this->_language = $language;
-		$this->_request = $request;
 	}
 }

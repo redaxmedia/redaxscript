@@ -2,6 +2,8 @@
 namespace Redaxscript\Tests\View;
 
 use Redaxscript\Db;
+use Redaxscript\Language;
+use Redaxscript\Registry;
 use Redaxscript\Tests\TestCase;
 use Redaxscript\View;
 
@@ -17,6 +19,34 @@ use Redaxscript\View;
 
 class CommentFormTest extends TestCase
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	protected function setUp()
+	{
+		$this->_registry = Registry::getInstance();
+		$this->_language = Language::getInstance();
+	}
+
 	/**
 	 * setUpBeforeClass
 	 *
@@ -67,7 +97,7 @@ class CommentFormTest extends TestCase
 	{
 		/* setup */
 
-		$commentForm = new View\CommentForm();
+		$commentForm = new View\CommentForm($this->_registry, $this->_language);
 
 		/* actual */
 

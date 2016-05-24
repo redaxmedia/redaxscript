@@ -82,14 +82,14 @@ function router()
 			case 'recover':
 				if (Redaxscript\Db::getSetting('recovery') == 1)
 				{
-					$recoverForm = new Redaxscript\View\RecoverForm();
+					$recoverForm = new Redaxscript\View\RecoverForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					echo $recoverForm->render();
 					return;
 				}
 			case 'reset':
 				if (Redaxscript\Db::getSetting('recovery') == 1 && $thirdParameter && $thirdSubParameter)
 				{
-					$resetForm = new Redaxscript\View\ResetForm();
+					$resetForm = new Redaxscript\View\ResetForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					echo $resetForm->render();
 					return;
 				}
@@ -99,7 +99,7 @@ function router()
 				echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 				return;
 			default:
-				$loginForm = new Redaxscript\View\LoginForm();
+				$loginForm = new Redaxscript\View\LoginForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $loginForm->render();
 				return;
 			}
@@ -118,7 +118,7 @@ function router()
 		case 'register':
 			if (Redaxscript\Db::getSetting('registration'))
 			{
-				$registerForm = new Redaxscript\View\RegisterForm();
+				$registerForm = new Redaxscript\View\RegisterForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				echo $registerForm->render();
 				return;
 			}

@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the login form
@@ -17,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class LoginForm implements ViewInterface
+class LoginForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -38,17 +36,17 @@ class LoginForm implements ViewInterface
 			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
-			->text(Language::get('login'));
+			->text($this->_language->get('login'));
 		if (Db::getSetting('recovery'))
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => Registry::get('parameterRoute') . 'login/recover',
+				'href' => $this->_registry->get('parameterRoute') . 'login/recover',
 				'rel' => 'no-follow'
 			));
-			$legendHTML = $linkElement->text(Language::get('recovery_question') . Language::get('question_mark'));
+			$legendHTML = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-form rs-form-default rs-form-login'
@@ -68,7 +66,7 @@ class LoginForm implements ViewInterface
 			->append('<fieldset>')
 			->legend($legendHTML)
 			->append('<ul><li>')
-			->label('* ' . Language::get('user'), array(
+			->label('* ' . $this->_language->get('user'), array(
 				'for' => 'user'
 			))
 			->text(array(
@@ -78,7 +76,7 @@ class LoginForm implements ViewInterface
 				'required' => 'required'
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('password'), array(
+			->label('* ' . $this->_language->get('password'), array(
 				'for' => 'password'
 			))
 			->password(array(

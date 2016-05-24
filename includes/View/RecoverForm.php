@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the recover form
@@ -17,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class RecoverForm implements ViewInterface
+class RecoverForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -38,8 +36,8 @@ class RecoverForm implements ViewInterface
 			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
-			->text(Language::get('recovery'));
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+			->text($this->_language->get('recovery'));
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-form rs-form-default rs-form-recover'
@@ -57,9 +55,9 @@ class RecoverForm implements ViewInterface
 
 		$formElement
 			->append('<fieldset>')
-			->legend(Language::get('recovery_request') . Language::get('point'))
+			->legend($this->_language->get('recovery_request') . $this->_language->get('point'))
 			->append('<ul><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . $this->_language->get('email'), array(
 				'for' => 'email'
 			))
 			->email(array(
