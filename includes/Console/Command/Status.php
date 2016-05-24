@@ -45,17 +45,21 @@ class Status extends CommandAbstract
 			)
 		)
 	);
-	
+
 	/**
 	 * run the command
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param string $mode name of the mode
+	 *
+	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init(php_sapi_name());
+		$parser->init($mode);
 
 		/* run command */
 

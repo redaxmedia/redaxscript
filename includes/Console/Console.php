@@ -37,9 +37,9 @@ class Console extends ConsoleAbstract
 			$command = new $commandClass($this->_config, $this->_request);
 			if ($mode === 'cli')
 			{
-				return $command->run();
+				return $command->run($mode);
 			}
-			return htmlentities($command->run());
+			return htmlentities($command->run($mode));
 		}
 	}
 }

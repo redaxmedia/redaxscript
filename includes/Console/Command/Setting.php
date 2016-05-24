@@ -47,13 +47,17 @@ class Setting extends CommandAbstract
 	/**
 	 * run the command
 	 *
+	 * @param string $mode name of the mode
+	 * 
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init(php_sapi_name());
+		$parser->init($mode);
 
 		/* run command */
 

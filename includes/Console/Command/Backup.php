@@ -39,6 +39,8 @@ class Backup extends CommandAbstract
 	 * run the command
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	public function run()
