@@ -128,10 +128,8 @@ function router()
 			echo $messenger->setAction(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'search':
-
 			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 			echo $searchController->process();
-
 			return;
 		default:
 			contents();

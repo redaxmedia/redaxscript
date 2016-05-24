@@ -6,6 +6,7 @@ use Redaxscript\Validator;
 use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 use Redaxscript\Router;
 
 /**
@@ -38,6 +39,14 @@ class SearchTest extends TestCase
 	protected $_language;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -47,6 +56,7 @@ class SearchTest extends TestCase
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+		$this->_request = Request::getInstance();
 	}
 
 	/**
@@ -157,7 +167,7 @@ class SearchTest extends TestCase
 		/* setup */
 
 		$this->_registry->init($registry);
-		$searchController = new Controller\Search($this->_registry, $this->_language);
+		$searchController = new Controller\Search($this->_registry, $this->_language, $this->_request);
 
 		/* actual */
 

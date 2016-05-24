@@ -2,11 +2,9 @@
 namespace Redaxscript\Controller;
 
 use Redaxscript\Db;
-use Redaxscript\Language;
 use Redaxscript\Messenger;
 use Redaxscript\Html;
 use Redaxscript\Filter;
-use Redaxscript\Registry;
 use Redaxscript\Validator;
 use Redaxscript\View;
 
@@ -21,50 +19,13 @@ use Redaxscript\View;
  * @author Balázs Szilágyi
  */
 
-class Search implements ControllerInterface
+class Search extends ControllerAbstract implements ControllerInterface
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * array of tables
-	 *
-	 * @var array
-	 */
-
 	protected $tableArray = array(
 		'categories',
 		'articles',
 		'comments'
 	);
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 */
-
-	public function __construct(Registry $registry, Language $language)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-	}
 
 	/**
 	 * process the class

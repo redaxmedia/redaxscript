@@ -6,11 +6,8 @@ use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Hash;
 use Redaxscript\Html;
-use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
@@ -24,53 +21,14 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Register implements ControllerInterface
+class Register extends ControllerAbstract implements ControllerInterface
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the request class
-	 */
-
-	public function __construct(Registry $registry, Language $language, Request $request)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-		$this->_request = $request;
-	}
-
 	/**
 	 * process
 	 *
 	 * @since 3.0.0
+	 * 
+	 * @return string
 	 */
 
 	public function process()
