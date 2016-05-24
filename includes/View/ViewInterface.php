@@ -2,7 +2,7 @@
 namespace Redaxscript\View;
 
 /**
- * interface to define a view
+ * interface to define a view class
  *
  * @since 3.0.0
  *

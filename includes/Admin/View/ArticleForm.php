@@ -6,8 +6,6 @@ use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the article form
@@ -19,7 +17,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class ArticleForm implements ViewInterface
+class ArticleForm extends ViewAbstract implements ViewInterface
 {
 	/**
 	 * render the view
@@ -42,7 +40,7 @@ class ArticleForm implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($article->title ? $article->title : Language::get('article_new'));
+		$titleElement->text($article->title ? $article->title : $this->_language->get('article_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
@@ -51,46 +49,46 @@ class ArticleForm implements ViewInterface
 		$listElement->init('ul', array(
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
 		));
-		$formElement = new AdminForm(Registry::getInstance(), Language::getInstance());
+		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'action' => Registry::get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
+				'action' => $this->_registry->get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-clearfix'
 			),
 			'link' => array(
 				'cancel' => array(
-					'href' => Registry::get('articlesEdit') && Registry::get('articlesDelete') ? Registry::get('parameterRoute') . 'admin/view/articles' : Registry::get('parameterRoute') . 'admin'
+					'href' => $this->_registry->get('articlesEdit') && $this->_registry->get('articlesDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/articles' : $this->_registry->get('parameterRoute') . 'admin'
 				),
 				'delete' => array(
-					'href' => $article->id ? Registry::get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . Registry::get('token') : null
+					'href' => $article->id ? $this->_registry->get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . $this->_registry->get('token') : null
 				)
 			)
 		));
 
 		/* collect item output */
 
-		$tabRoute = Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$outputItem = $itemElement
 			->copy()
 			->addClass('rs-admin-js-item-active rs-admin-item-active')
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-1')
-				->text(Language::get('article'))
+				->text($this->_language->get('article'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-2')
-				->text(Language::get('general'))
+				->text($this->_language->get('general'))
 			);
 		$outputItem .= $itemElement
 			->copy()
 			->html($linkElement
 				->copy()
 				->attr('href', $tabRoute . '#tab-3')
-				->text(Language::get('customize'))
+				->text($this->_language->get('customize'))
 			);
 		$listElement->append($outputItem);
 
@@ -103,7 +101,7 @@ class ArticleForm implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label(Language::get('title'), array(
+			->label($this->_language->get('title'), array(
 				'for' => 'title'
 			))
 			->text(array(
@@ -115,7 +113,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->title
 			))
 			->append('</li><li>')
-			->label(Language::get('alias'), array(
+			->label($this->_language->get('alias'), array(
 				'for' => 'alias'
 			))
 			->text(array(
@@ -126,7 +124,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->alias
 			))
 			->append('</li><li>')
-			->label(Language::get('description'), array(
+			->label($this->_language->get('description'), array(
 				'for' => 'description'
 			))
 			->textarea(array(
@@ -136,7 +134,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->description
 			))
 			->append('</li><li>')
-			->label(Language::get('keywords'), array(
+			->label($this->_language->get('keywords'), array(
 				'for' => 'keywords'
 			))
 			->textarea(array(
@@ -146,7 +144,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->keywords
 			))
 			->append('</li><li>')
-			->label(Language::get('robots'), array(
+			->label($this->_language->get('robots'), array(
 				'for' => 'robots'
 			))
 			->select(Helper\Option::getRobotArray(), array(
@@ -155,7 +153,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->id ? intval($article->robots) : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('text'), array(
+			->label($this->_language->get('text'), array(
 				'for' => 'text'
 			))
 			->textarea(array(
@@ -170,7 +168,7 @@ class ArticleForm implements ViewInterface
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('language'), array(
+			->label($this->_language->get('language'), array(
 				'for' => 'language'
 			))
 			->select(Helper\Option::getLanguageArray(), array(
@@ -179,7 +177,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->language
 			))
 			->append('</li><li>')
-			->label(Language::get('template'), array(
+			->label($this->_language->get('template'), array(
 				'for' => 'template'
 			))
 			->select(Helper\Option::getTemplateArray(), array(
@@ -188,7 +186,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->template
 			))
 			->append('</li><li>')
-			->label(Language::get('article_sibling'), array(
+			->label($this->_language->get('article_sibling'), array(
 				'for' => 'sibling'
 			))
 			->select(Helper\Option::getContentArray('articles'), array(
@@ -197,7 +195,7 @@ class ArticleForm implements ViewInterface
 				'value' => intval($article->sibling)
 			))
 			->append('</li><li>')
-			->label(Language::get('category'), array(
+			->label($this->_language->get('category'), array(
 				'for' => 'category'
 			))
 			->select(Helper\Option::getContentArray('categories'), array(
@@ -210,7 +208,7 @@ class ArticleForm implements ViewInterface
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label(Language::get('headline'), array(
+			->label($this->_language->get('headline'), array(
 				'for' => 'headline'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -219,7 +217,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->id ? intval($article->headline) : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('infoline'), array(
+			->label($this->_language->get('infoline'), array(
 				'for' => 'infoline'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -228,7 +226,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->id ? intval($article->infoline) : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('comments'), array(
+			->label($this->_language->get('comments'), array(
 				'for' => 'comments'
 			))
 			->select(Helper\Option::getToggleArray(), array(
@@ -237,7 +235,7 @@ class ArticleForm implements ViewInterface
 				'value' => intval($article->comments)
 			))
 			->append('</li><li>')
-			->label(Language::get('status'), array(
+			->label($this->_language->get('status'), array(
 				'for' => 'status'
 			))
 			->select(Helper\Option::getVisibleArray(), array(
@@ -246,7 +244,7 @@ class ArticleForm implements ViewInterface
 				'value' => $article->id ? intval($article->status) : 1
 			))
 			->append('</li><li>')
-			->label(Language::get('rank'), array(
+			->label($this->_language->get('rank'), array(
 				'for' => 'rank'
 			))
 			->number(array(
@@ -255,11 +253,11 @@ class ArticleForm implements ViewInterface
 				'value' => $article->id ? intval($article->rank) : Db::forTablePrefix('articles')->max('rank') + 1
 			))
 			->append('</li>');
-		if (Registry::get('groupsEdit'))
+		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label(Language::get('access'), array(
+				->label($this->_language->get('access'), array(
 					'for' => 'access'
 				))
 				->select(Helper\Option::getAccessArray('groups'), array(
@@ -273,7 +271,7 @@ class ArticleForm implements ViewInterface
 		}
 		$formElement
 			->append('<li>')
-			->label(Language::get('date'), array(
+			->label($this->_language->get('date'), array(
 				'for' => 'date'
 			))
 			->datetime(array(
@@ -286,16 +284,16 @@ class ArticleForm implements ViewInterface
 			->cancel();
 		if ($article->id)
 		{
-			if (Registry::get('articlesDelete'))
+			if ($this->_registry->get('articlesDelete'))
 			{
 				$formElement->delete();
 			}
-			if (Registry::get('articlesEdit'))
+			if ($this->_registry->get('articlesEdit'))
 			{
 				$formElement->save();
 			}
 		}
-		else if (Registry::get('articlesNew'))
+		else if ($this->_registry->get('articlesNew'))
 		{
 			$formElement->create();
 		}

@@ -2,7 +2,7 @@
 namespace Redaxscript\Controller;
 
 /**
- * interface to define a controller
+ * interface to define a controller class
  *
  * @since 3.0.0
  *

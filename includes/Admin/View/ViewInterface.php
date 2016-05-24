@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\View\ViewInterface as BaseViewInterface;
 
 /**
- * interface to define a admin view
+ * interface to define a admin view class
  *
  * @since 3.0.0
  *
