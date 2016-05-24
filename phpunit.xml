@@ -94,6 +94,12 @@
 			<directory>tests/includes/Server</directory>
 		</testsuite>
 
+		<!-- template -->
+
+		<testsuite name="template">
+			<directory>tests/includes/Template</directory>
+		</testsuite>
+
 		<!-- validator -->
 
 		<testsuite name="validator">
@@ -218,13 +224,6 @@
 
 		<testsuite name="singleton">
 			<file>tests/includes/SingletonTest.php</file>
-		</testsuite>
-
-		<!-- template -->
-
-		<testsuite name="template">
-			<file>tests/includes/Template/HelperTest.php</file>
-			<file>tests/includes/Template/TagTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>
