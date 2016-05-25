@@ -320,7 +320,7 @@
 	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875rem/2.5em arial;
+	font: bold 0.875rem/2.5em arial, sans-serif;
 	padding: 0 1em;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -536,7 +536,7 @@
 	border: 1px solid rgb(201, 201, 201);
 	border-radius: 0.125em;
 	color: rgb(106, 106, 106);
-	font: 1rem arial;
+	font: 1rem arial, sans-serif;
 	padding: 0.5em;
 	transition: background 0.4s;
 }
