@@ -6,8 +6,10 @@
 
 	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
 	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
+	<rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
 	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
 	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
 	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
 	<rule ref="Generic.Files.ByteOrderMark" />
@@ -18,7 +20,9 @@
 	<rule ref="Generic.NamingConventions.UpperCaseConstantName" />
 	<rule ref="Generic.PHP.DeprecatedFunctions" />
 	<rule ref="Generic.PHP.DisallowShortOpenTag" />
+	<rule ref="Generic.PHP.ForbiddenFunctions" />
 	<rule ref="Generic.PHP.LowerCaseConstant" />
+	<rule ref="Generic.PHP.NoSilencedErrors" />
 	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 
 	<!-- inherit from psr1 -->
