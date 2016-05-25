@@ -7,6 +7,7 @@
 	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
 	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
 	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
 	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
 	<rule ref="Generic.Files.ByteOrderMark" />

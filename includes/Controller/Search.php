@@ -21,6 +21,12 @@ use Redaxscript\View;
 
 class Search extends ControllerAbstract implements ControllerInterface
 {
+	/**
+	 * array of tables
+	 *
+	 * @var array
+	 */
+
 	protected $tableArray = array(
 		'categories',
 		'articles',

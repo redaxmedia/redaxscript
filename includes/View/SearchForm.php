@@ -26,7 +26,7 @@ class SearchForm extends ViewAbstract implements ViewInterface
 	 * @return string
 	 */
 
-	public function render($table = 'articles')
+	public function render($table = null)
 	{
 		$output = Hook::trigger('searchFormStart');
 
@@ -52,6 +52,10 @@ class SearchForm extends ViewAbstract implements ViewInterface
 				'name' => 'search',
 				'placeholder' => $this->_language->get('search'),
 				'tabindex' => '1'
+			))
+			->hidden(array(
+				'name' => 'table',
+				'value' => $table
 			))
 			->token()
 			->submit($this->_language->get('search'));
