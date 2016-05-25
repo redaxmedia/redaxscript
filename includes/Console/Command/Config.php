@@ -69,7 +69,7 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $mode name of the mode
-	 * 
+	 *
 	 * @return string
 	 */
 

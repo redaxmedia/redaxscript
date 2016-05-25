@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<ruleset name="Redaxscript">
+<ruleset name="Redaxscript" show_progress="1">
 	<description>Redaxscript coding standards</description>
+
+	<!-- show progress -->
+
+	<arg value="p" />
 
 	<!-- inherit from generic -->
 

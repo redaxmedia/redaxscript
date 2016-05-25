@@ -46,7 +46,7 @@ class RegisterFormTestAbstract extends TestCaseAbstract
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
 	}
-	
+
 	/**
 	 * setUpBeforeClass
 	 *

@@ -86,7 +86,7 @@ class Status extends CommandAbstract
 		$status = Db::getStatus();
 		$wordingArray = $this->_commandArray['status']['argumentArray']['database']['wordingArray'];
 		if (array_key_exists($status, $wordingArray))
-		{			
+		{
 			return $wordingArray[$status] . PHP_EOL;
 		}
 	}

@@ -166,8 +166,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'includes/*/*.php',
-					'includes/*.php',
+					'includes/**/*.php',
 					'assets/scripts/*.js',
 					'assets/styles/*.css'
 				]
@@ -178,7 +177,7 @@ module.exports = function (grunt)
 				[
 					'modules/*/assets/scripts/*.js',
 					'modules/*/assets/styles/*.css',
-					'modules/*/*.php'
+					'modules/**/*.php'
 				]
 			},
 			templates:
@@ -193,14 +192,13 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'tests/*/*.php',
-					'tests/*.php'
+					'tests/**/*.php'
 				]
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpcs',
-				standard: 'ruleset.xml'
+				bin: 'vendor/bin/phpcs',				
+				standard: 'phpcs.xml'
 			}
 		},
 		concat:

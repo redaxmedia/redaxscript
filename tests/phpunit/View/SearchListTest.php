@@ -37,7 +37,7 @@ class SearchListTestAbstract extends TestCaseAbstract
 	 */
 
 	protected $_language;
-	
+
 	/**
 	 * instance of the request class
 	 *
@@ -45,7 +45,7 @@ class SearchListTestAbstract extends TestCaseAbstract
 	 */
 
 	protected $_request;
-	
+
 	/**
 	 * setUp
 	 *

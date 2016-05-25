@@ -98,10 +98,10 @@ class ParserTestAbstract extends TestCaseAbstract
 		$actual = $parser->getArgument('test');
 
 		/* compare */
-		
+
 		$this->assertEquals('test', $actual);
 	}
-	
+
 	/**
 	 * testSetAndGetOption
 	 *
@@ -123,7 +123,7 @@ class ParserTestAbstract extends TestCaseAbstract
 
 		$this->assertEquals('test', $actual);
 	}
-	
+
 	/**
 	 * testGetArgument
 	 *

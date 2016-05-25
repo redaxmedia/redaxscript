@@ -97,7 +97,7 @@ class FormTestAbstract extends TestCaseAbstract
 	{
 		return $this->getProvider('tests/provider/Html/form_input.json');
 	}
-	
+
 	/**
 	 * providerTextarea
 	 *

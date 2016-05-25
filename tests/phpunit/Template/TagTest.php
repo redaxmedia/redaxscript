@@ -96,7 +96,7 @@ class TagTestAbstract extends TestCaseAbstract
 
 		$this->assertTrue(is_string($actual));
 	}
-	
+
 	/**
 	 * testSearch
 	 *
