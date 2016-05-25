@@ -1,8 +1,9 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Router;
 
 use Redaxscript\Request;
 use Redaxscript\Router;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * ResolverTest

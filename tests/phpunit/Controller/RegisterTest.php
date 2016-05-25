@@ -1,11 +1,12 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Controller;
 use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * RegisterTest

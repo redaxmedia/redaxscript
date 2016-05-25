@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Config;
 use Redaxscript\Controller;
@@ -8,6 +8,7 @@ use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * LoginTest

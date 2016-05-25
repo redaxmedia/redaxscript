@@ -2,8 +2,8 @@
 namespace Redaxscript\Tests\Console;
 
 use Redaxscript\Console;
-use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * ParserTest
