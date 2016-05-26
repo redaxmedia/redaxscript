@@ -9,7 +9,7 @@
 	<!-- form -->
 
 	<form method="post" class="rs-console-form">
-		<label for="prompt" class="rs-console-label"><?php echo Tag::registry('host'); ?>:~$</label>
+		<label for="prompt" class="rs-console-label"><?php echo Tag::registry('myUser') ? Tag::registry('myUser') . '@' . Tag::registry('host') : Tag::registry('host'); ?>:~$</label>
 		<input autofocus="autofocus" autocomplete="off" spellcheck="false" id="prompt" class="rs-console-field-text" size="60" name="argv" />
 	</form>
 </article>

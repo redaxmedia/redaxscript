@@ -212,7 +212,7 @@ class ParserTest extends TestCaseAbstract
 
 		$this->assertFalse($actual);
 	}
-	
+
 	/**
 	 * testGetOptionInvalid
 	 *

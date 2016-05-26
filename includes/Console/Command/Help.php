@@ -64,26 +64,32 @@ class Help extends CommandAbstract
 
 	protected function _list($argumentKey = null)
 	{
-		$output = PHP_EOL;
+		$output = null;
 
 		/* collect each help */
 
 		if (!array_key_exists($argumentKey, $this->_namespaceArray))
 		{
-			foreach ($this->_namespaceArray as $commandClass)
+			$namespaceKeys = array_keys($this->_namespaceArray);
+			$lastKey = end($namespaceKeys);
+			foreach ($this->_namespaceArray as $commandKey => $commandClass)
 			{
 				$command = new $commandClass($this->_config, $this->_request);
-				$output .= $command->getHelp() . PHP_EOL;
+				$output .= $command->getHelp();
+				if ($commandKey !== $lastKey)
+				{
+					$output .= PHP_EOL;
+				}
 			}
 		}
 
-		/* else specified help */
+		/* else single help */
 
 		else
 		{
 			$commandClass = $this->_namespaceArray[$argumentKey];
 			$command = new $commandClass($this->_config, $this->_request);
-			$output .= $command->getHelp() . PHP_EOL;
+			$output .= $command->getHelp();
 		}
 		return $output;
 	}
