@@ -37,6 +37,17 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
+	 * tearDown
+	 *
+	 * @since 3.0.0
+	 */
+
+	protected function tearDown()
+	{
+		$this->_request->setServer('argv', null);
+	}
+
+	/**
 	 * providerGetArgument
 	 *
 	 * @since 3.0.0
@@ -178,5 +189,49 @@ class ParserTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
+	 * testGetArgumentInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetArgumentInvalid()
+	{
+		/* setup */
+
+		$parser = new Console\Parser($this->_request);
+		$parser->init('cli');
+
+		/* actual */
+
+		$actual = $parser->getArgument('invalid');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+	
+	/**
+	 * testGetOptionInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetOptionInvalid()
+	{
+		/* setup */
+
+		$parser = new Console\Parser($this->_request);
+		$parser->init('cli');
+
+		/* actual */
+
+		$actual = $parser->getOption('invalid');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 }

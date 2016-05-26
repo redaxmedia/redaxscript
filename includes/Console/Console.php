@@ -20,7 +20,7 @@ class Console extends ConsoleAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public function init($mode = null)
@@ -41,5 +41,6 @@ class Console extends ConsoleAbstract
 			}
 			return htmlentities($command->run($mode));
 		}
+		return false;
 	}
 }
