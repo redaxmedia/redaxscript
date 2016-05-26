@@ -79,7 +79,7 @@ class HelpTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCommand
+	 * testArgument
 	 *
 	 * @since 3.0.0
 	 */
