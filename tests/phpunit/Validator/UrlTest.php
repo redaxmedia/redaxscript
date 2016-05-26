@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class UrlTestAbstract extends TestCaseAbstract
+class UrlTest extends TestCaseAbstract
 {
 	/**
 	 * providerUrl

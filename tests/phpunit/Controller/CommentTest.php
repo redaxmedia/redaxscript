@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Balázs Szilágyi
  */
 
-class CommentTestAbstract extends TestCaseAbstract
+class CommentTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

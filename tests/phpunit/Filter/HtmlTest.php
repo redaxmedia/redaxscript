@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class HtmlTestAbstract extends TestCaseAbstract
+class HtmlTest extends TestCaseAbstract
 {
 	/**
 	 * providerHtml

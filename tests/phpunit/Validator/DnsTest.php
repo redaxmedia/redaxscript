@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class DnsTestAbstract extends TestCaseAbstract
+class DnsTest extends TestCaseAbstract
 {
 	/**
 	 * providerDns

@@ -16,7 +16,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class CaptchaTestAbstract extends TestCaseAbstract
+class CaptchaTest extends TestCaseAbstract
 {
 	/**
 	 * setUpBeforeClass

@@ -15,7 +15,7 @@ use Redaxscript\Installer;
  * @author Henry Ruhs
  */
 
-class InstallerTestAbstract extends TestCaseAbstract
+class InstallerTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the config class

@@ -18,7 +18,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Balázs Szilágyi
  */
 
-class LogoutTestAbstract extends TestCaseAbstract
+class LogoutTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

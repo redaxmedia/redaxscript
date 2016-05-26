@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Balázs Szilágyi
  */
 
-class SearchTestAbstract extends TestCaseAbstract
+class SearchTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

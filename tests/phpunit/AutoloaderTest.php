@@ -14,7 +14,7 @@ use Redaxscript\Autoloader;
  * @author Sven Weingartner
  */
 
-class AutoloaderTestAbstract extends TestCaseAbstract
+class AutoloaderTest extends TestCaseAbstract
 {
 	/**
 	 * providerFilePath

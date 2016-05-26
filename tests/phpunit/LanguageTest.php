@@ -13,7 +13,7 @@ use Redaxscript\Language;
  * @author Henry Ruhs
  */
 
-class LanguageTestAbstract extends TestCaseAbstract
+class LanguageTest extends TestCaseAbstract
 {
 	/**
 	 * language

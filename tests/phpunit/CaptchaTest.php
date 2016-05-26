@@ -15,7 +15,7 @@ use Redaxscript\Language;
  * @author Gary Aylward
  */
 
-class CaptchaTestAbstract extends TestCaseAbstract
+class CaptchaTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the language class
@@ -55,7 +55,7 @@ class CaptchaTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_string($task));
+		$this->assertString($task);
 	}
 
 	/**

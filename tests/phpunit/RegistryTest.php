@@ -14,7 +14,7 @@ use Redaxscript\Registry;
  * @author Gary Aylward
  */
 
-class RegistryTestAbstract extends TestCaseAbstract
+class RegistryTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

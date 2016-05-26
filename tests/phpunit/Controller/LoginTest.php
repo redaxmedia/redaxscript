@@ -21,7 +21,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Balázs Szilágyi
  */
 
-class LoginTestAbstract extends TestCaseAbstract
+class LoginTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

@@ -13,7 +13,7 @@ use Redaxscript\Mailer;
  * @author Henry Ruhs
  */
 
-class MailerTestAbstract extends TestCaseAbstract
+class MailerTest extends TestCaseAbstract
 {
 	/**
 	 * providerMailer

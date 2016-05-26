@@ -20,7 +20,7 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @author Henry Ruhs
  */
 
-class TagTestAbstract extends TestCaseAbstract
+class TagTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class
@@ -73,7 +73,7 @@ class TagTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertString($actual);
 	}
 
 	/**
@@ -94,7 +94,7 @@ class TagTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertString($actual);
 	}
 
 	/**
@@ -111,7 +111,7 @@ class TagTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertString($actual);
 	}
 
 	/**
@@ -134,7 +134,7 @@ class TagTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_string($actual));
+		$this->assertString($actual);
 	}
 
 	/**

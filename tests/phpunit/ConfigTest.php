@@ -14,7 +14,7 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @author Henry Ruhs
  */
 
-class ConfigTestAbstract extends TestCaseAbstract
+class ConfigTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the config class

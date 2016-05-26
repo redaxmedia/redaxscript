@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class LoginTestAbstract extends TestCaseAbstract
+class LoginTest extends TestCaseAbstract
 {
 	/**
 	 * providerLogin

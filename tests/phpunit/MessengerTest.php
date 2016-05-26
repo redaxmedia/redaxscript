@@ -13,7 +13,7 @@ use Redaxscript\Messenger;
  * @author Henry Ruhs
  */
 
-class MessengerTestAbstract extends TestCaseAbstract
+class MessengerTest extends TestCaseAbstract
 {
 	/**
 	 * providerSuccess

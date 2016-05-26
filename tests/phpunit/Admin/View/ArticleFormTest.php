@@ -16,7 +16,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class ArticleFormTestAbstract extends TestCaseAbstract
+class ArticleFormTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

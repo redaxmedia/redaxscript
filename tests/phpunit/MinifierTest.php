@@ -13,7 +13,7 @@ use Redaxscript\Minifier;
  * @author Henry Ruhs
  */
 
-class MinifierTestAbstract extends TestCaseAbstract
+class MinifierTest extends TestCaseAbstract
 {
 	/**
 	 * providerStyles

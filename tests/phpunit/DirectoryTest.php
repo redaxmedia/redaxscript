@@ -15,7 +15,7 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @author Gary Aylward
  */
 
-class DirectoryTestAbstract extends TestCaseAbstract
+class DirectoryTest extends TestCaseAbstract
 {
 	/**
 	 * setUp

@@ -15,7 +15,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class AuthTestAbstract extends TestCaseAbstract
+class AuthTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the request class

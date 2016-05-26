@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class EmailTestAbstract extends TestCaseAbstract
+class EmailTest extends TestCaseAbstract
 {
 	/**
 	 * providerEmail

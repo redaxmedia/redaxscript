@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class AliasTestAbstract extends TestCaseAbstract
+class AliasTest extends TestCaseAbstract
 {
 	/**
 	 * providerAlias

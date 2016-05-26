@@ -14,7 +14,7 @@ use Redaxscript\Hash;
  * @author Henry Ruhs
  */
 
-class HashTestAbstract extends TestCaseAbstract
+class HashTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the config class

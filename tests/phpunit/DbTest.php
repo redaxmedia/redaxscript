@@ -14,7 +14,7 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class DbTestAbstract extends TestCaseAbstract
+class DbTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the config class

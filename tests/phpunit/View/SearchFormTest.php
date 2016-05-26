@@ -16,7 +16,7 @@ use Redaxscript\View;
  * @author Henry Ruhs
  */
 
-class SearchFormTestAbstract extends TestCaseAbstract
+class SearchFormTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Balázs Szilágyi
  */
 
-class RecoverTestAbstract extends TestCaseAbstract
+class RecoverTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

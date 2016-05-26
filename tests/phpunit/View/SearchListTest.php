@@ -20,7 +20,7 @@ use Redaxscript\View;
  * @author Balázs Szilágyi
  */
 
-class SearchListTestAbstract extends TestCaseAbstract
+class SearchListTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

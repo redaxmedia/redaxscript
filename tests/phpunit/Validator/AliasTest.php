@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class AliasTestAbstract extends TestCaseAbstract
+class AliasTest extends TestCaseAbstract
 {
 	/**
 	 * providerAlias

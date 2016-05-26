@@ -13,7 +13,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-class RequestTestAbstract extends TestCaseAbstract
+class RequestTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the request class

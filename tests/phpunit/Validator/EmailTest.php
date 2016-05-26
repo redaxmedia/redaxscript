@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @author Sven Weingartner
  */
 
-class EmailTestAbstract extends TestCaseAbstract
+class EmailTest extends TestCaseAbstract
 {
 	/**
 	 * providerEmail

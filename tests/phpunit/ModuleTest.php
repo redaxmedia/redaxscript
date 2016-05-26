@@ -14,7 +14,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class ModuleTestAbstract extends TestCaseAbstract
+class ModuleTest extends TestCaseAbstract
 {
 	/**
 	 * setUp

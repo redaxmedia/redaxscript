@@ -15,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class ParserTestAbstract extends TestCaseAbstract
+class ParserTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class

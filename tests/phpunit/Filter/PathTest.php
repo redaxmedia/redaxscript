@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class PathTestAbstract extends TestCaseAbstract
+class PathTest extends TestCaseAbstract
 {
 	/**
 	 * providerPath

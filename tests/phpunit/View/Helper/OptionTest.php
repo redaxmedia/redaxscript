@@ -14,7 +14,7 @@ use Redaxscript\View\Helper;
  * @author Henry Ruhs
  */
 
-class OptionTestAbstract extends TestCaseAbstract
+class OptionTest extends TestCaseAbstract
 {
 	/**
 	 * providerOption

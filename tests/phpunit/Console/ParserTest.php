@@ -15,7 +15,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class ParserTestAbstract extends TestCaseAbstract
+class ParserTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the request class

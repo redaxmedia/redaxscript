@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class ElementTestAbstract extends TestCaseAbstract
+class ElementTest extends TestCaseAbstract
 {
 	/**
 	 * providerCreate

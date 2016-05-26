@@ -14,7 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class OptionTestAbstract extends TestCaseAbstract
+class OptionTest extends TestCaseAbstract
 {
 	/**
 	 * providerOption

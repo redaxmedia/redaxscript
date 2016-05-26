@@ -11,7 +11,7 @@ namespace Redaxscript\Tests;
  * @author Henry Ruhs
  */
 
-class SingletonTestAbstract extends TestCaseAbstract
+class SingletonTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the stub class
