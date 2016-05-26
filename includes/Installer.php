@@ -90,10 +90,10 @@ class Installer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $options options of the installation
+	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertData($options = null)
+	public function insertData($optionArray = null)
 	{
 		$language = Language::getInstance();
 		$language->init();
@@ -105,7 +105,7 @@ class Installer
 			->set(array(
 				'title' => 'Welcome',
 				'alias' => 'welcome',
-				'author' => $options['adminUser'],
+				'author' => $optionArray['adminUser'],
 				'robots' => 1,
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
@@ -119,7 +119,7 @@ class Installer
 			->set(array(
 				'title' => 'Home',
 				'alias' => 'home',
-				'author' => $options['adminUser'],
+				'author' => $optionArray['adminUser'],
 				'robots' => 1,
 				'rank' => 1
 			))->save();
@@ -169,7 +169,7 @@ class Installer
 				->set(array(
 					'title' => ucfirst($key),
 					'alias' => $key,
-					'author' => $options['adminUser'],
+					'author' => $optionArray['adminUser'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
 					'category' => $value['category'],
 					'headline' => $value['headline'],
@@ -214,16 +214,16 @@ class Installer
 
 		/* settings */
 
-		$settingsArray = array(
+		$settingArray = array(
 			'language' => 'detect',
 			'template' => 'default',
 			'title' => $language->get('name', '_package'),
-			'author' => $options['adminName'],
+			'author' => $optionArray['adminName'],
 			'copyright' => null,
 			'description' => $language->get('description', '_package'),
 			'keywords' => null,
 			'robots' => 1,
-			'email' => $options['adminEmail'],
+			'email' => $optionArray['adminEmail'],
 			'subject' => $language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
@@ -244,7 +244,7 @@ class Installer
 
 		/* process settings array */
 
-		foreach ($settingsArray as $name => $value)
+		foreach ($settingArray as $name => $value)
 		{
 			Db::forTablePrefix('settings')
 				->create()
@@ -257,14 +257,14 @@ class Installer
 		/* users */
 
 		$passwordHash = new Hash(Config::getInstance());
-		$passwordHash->init($options['adminPassword']);
+		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()
 			->set(array(
-				'name' => $options['adminName'],
-				'user' => $options['adminUser'],
+				'name' => $optionArray['adminName'],
+				'user' => $optionArray['adminUser'],
 				'password' => $passwordHash->getHash(),
-				'email' => $options['adminEmail'],
+				'email' => $optionArray['adminEmail'],
 				'description' => 'God admin',
 				'groups' => '1'
 			))->save();

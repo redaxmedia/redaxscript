@@ -82,14 +82,14 @@ abstract class DetectorAbstract
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $setup array of detector setup
+	 * @param array $setupArray array of detector setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 */
 
-	protected function _detect($setup = array(), $type = null, $path = null)
+	protected function _detect($setupArray = array(), $type = null, $path = null)
 	{
-		foreach ($setup as $key => $value)
+		foreach ($setupArray as $key => $value)
 		{
 			$file = str_replace($this->_filePlaceholder, $value, $path);
 

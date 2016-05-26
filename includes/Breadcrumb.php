@@ -47,7 +47,7 @@ class Breadcrumb
 	 * @var array
 	 */
 
-	protected $_options = array(
+	protected $_optionArray = array(
 		'className' => array(
 			'list' => 'rs-list-breadcrumb',
 			'divider' => 'rs-item-divider'
@@ -88,18 +88,18 @@ class Breadcrumb
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $options options of the breadcrumb
+	 * @param array $optionArray options of the breadcrumb
 	 */
 
-	public function init($options = array())
+	public function init($optionArray = array())
 	{
-		if (is_array($options))
+		if (is_array($optionArray))
 		{
-			$this->_options = array_merge($this->_options, $options);
+			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
-		if (!$this->_options['divider'])
+		if (!$this->_optionArray['divider'])
 		{
-			$this->_options['divider'] = Db::getSetting('divider');
+			$this->_optionArray['divider'] = Db::getSetting('divider');
 		}
 		$this->_create();
 	}
@@ -143,7 +143,7 @@ class Breadcrumb
 		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
-			'class' => $this->_options['className']['list']
+			'class' => $this->_optionArray['className']['list']
 		));
 
 		/* collect item output */
@@ -178,7 +178,7 @@ class Breadcrumb
 
 				if ($key !== $lastKey)
 				{
-					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text($this->_options['divider']);
+					$outputItem .= $itemElement->addClass($this->_optionArray['className']['divider'])->text($this->_optionArray['divider']);
 				}
 			}
 		}

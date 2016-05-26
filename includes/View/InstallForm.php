@@ -19,14 +19,14 @@ class InstallForm extends ViewAbstract implements ViewInterface
 	/**
 	 * render the view
 	 *
-	 * @param array $options options of the installation
+	 * @param array $optionArray options of the installation
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render($options = null)
+	public function render($optionArray = array())
 	{
 		$output = Hook::trigger('installFormStart');
 
@@ -65,7 +65,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 			->select(Helper\Option::getDatabaseArray(), array(
 				'id' => 'db-type',
 				'name' => 'db-type',
-				'value' => $options['dbType']
+				'value' => $optionArray['dbType']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('host'), array(
@@ -78,7 +78,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'db-host',
 				'name' => 'db-host',
 				'required' => 'required',
-				'value' => $options['dbHost']
+				'value' => $optionArray['dbHost']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('name'), array(
@@ -88,7 +88,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
-				'value' => $options['dbName']
+				'value' => $optionArray['dbName']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('user'), array(
@@ -98,7 +98,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
-				'value' => $options['dbUser']
+				'value' => $optionArray['dbUser']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('password'), array(
@@ -107,7 +107,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 			->password(array(
 				'id' => 'db-password',
 				'name' => 'db-password',
-				'value' => $options['dbPassword']
+				'value' => $optionArray['dbPassword']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('prefix'), array(
@@ -116,7 +116,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 			->text(array(
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
-				'value' => $options['dbPrefix']
+				'value' => $optionArray['dbPrefix']
 			))
 			->append('</li></ul></fieldset>')
 
@@ -132,7 +132,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'admin-name',
 				'name' => 'admin-name',
 				'required' => 'required',
-				'value' => $options['adminName']
+				'value' => $optionArray['adminName']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('name'), array(
@@ -142,7 +142,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'admin-user',
 				'name' => 'admin-user',
 				'required' => 'required',
-				'value' => $options['adminUser']
+				'value' => $optionArray['adminUser']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('password'), array(
@@ -152,7 +152,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'admin-password',
 				'name' => 'admin-password',
 				'required' => 'required',
-				'value' => $options['adminPassword']
+				'value' => $optionArray['adminPassword']
 			))
 			->append('</li><li>')
 			->label($this->_language->get('email'), array(
@@ -162,7 +162,7 @@ class InstallForm extends ViewAbstract implements ViewInterface
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
-				'value' => $options['adminEmail']
+				'value' => $optionArray['adminEmail']
 			))
 			->append('</li></ul></fieldset>')
 			->hidden(array(

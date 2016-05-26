@@ -41,10 +41,10 @@ class Directory
 	/**
 	 * files to be excluded
 	 *
-	 * @var mixed
+	 * @var array
 	 */
 
-	protected $_exclude = array(
+	protected $_excludeArray = array(
 		'.',
 		'..'
 	);
@@ -55,24 +55,18 @@ class Directory
 	 * @since 2.4.0
 	 *
 	 * @param string $directory name of the directory
-	 * @param mixed $exclude files to be excluded
+	 * @param array $excludeArray files to be excluded
 	 */
 
-	public function init($directory = null, $exclude = null)
+	public function init($directory = null, $excludeArray = array())
 	{
 		$this->_directory = $directory;
 
 		/* handle exclude */
 
-		if (is_string($exclude))
+		if (is_array($excludeArray))
 		{
-			$exclude = array(
-				$exclude
-			);
-		}
-		if (is_array($exclude))
-		{
-			$this->_exclude = array_merge($this->_exclude, $exclude);
+			$this->_excludeArray = array_merge($this->_excludeArray, $excludeArray);
 		}
 
 		/* scan directory */
@@ -180,7 +174,7 @@ class Directory
 			$directoryArray = scandir($directory);
 			self::$_directoryCache[$realpath] = $directoryArray;
 		}
-		$directoryArray = array_values(array_diff($directoryArray, $this->_exclude));
+		$directoryArray = array_values(array_diff($directoryArray, $this->_excludeArray));
 		return $directoryArray;
 	}
 }

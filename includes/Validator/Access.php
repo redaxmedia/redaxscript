@@ -29,11 +29,11 @@ class Access implements ValidatorInterface
 	{
 		$output = ValidatorInterface::FAILED;
 		$accessArray = array_filter(explode(',', $access));
-		$groupsArray = array_filter(explode(',', $groups));
+		$groupArray = array_filter(explode(',', $groups));
 
 		/* validate access */
 
-		if (!$access || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
+		if (!$access || in_array(1, $groupArray) || array_intersect($accessArray, $groupArray))
 		{
 			$output = ValidatorInterface::PASSED;
 		}

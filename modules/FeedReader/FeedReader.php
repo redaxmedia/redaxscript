@@ -49,12 +49,12 @@ class FeedReader extends Config
 	 * @since 3.0.0
 	 *
 	 * @param string $url
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($url = null, $options = array())
+	public static function render($url = null, $optionArray = array())
 	{
 		$counter = 0;
 		$output = null;
@@ -100,7 +100,7 @@ class FeedReader extends Config
 
 		foreach ($feed as $value)
 		{
-			if ($counter++ < $options['limit'])
+			if ($counter++ < $optionArray['limit'])
 			{
 				$linkElement
 						->attr('href', $value->link['href'] ? $value->link['href'] : $value->link)

@@ -45,7 +45,7 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_tags = array(
+	protected $_tagArray = array(
 		'readmore' => array(
 			'method' => '_parseReadmore',
 			'position' => null,
@@ -103,7 +103,7 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_options = array(
+	protected $_optionArray = array(
 		'className' => array(
 			'readmore' => 'rs-link-readmore',
 			'codequote' => 'rs-js-code-quote rs-code-quote'
@@ -132,26 +132,26 @@ class Parser
 	 * @since 2.4.0
 	 *
 	 * @param string $content content to be parsed
-	 * @param array $options options of the parser
+	 * @param array $optionArray options of the parser
 	 */
 
-	public function init($content = null, $options = null)
+	public function init($content = null, $optionArray = null)
 	{
 		$this->_output = $content;
-		if (is_array($options))
+		if (is_array($optionArray))
 		{
-			$this->_options = array_merge($this->_options, $options);
+			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
 
 		/* process tags */
 
-		foreach ($this->_tags as $key => $value)
+		foreach ($this->_tagArray as $key => $value)
 		{
-			 $this->_tags[$key]['position'] = strpos($this->_output, '<' . $key . '>');
+			 $this->_tagArray[$key]['position'] = strpos($this->_output, '<' . $key . '>');
 
 			/* call related method */
 
-			if ($this->_tags[$key]['position'] > -1)
+			if ($this->_tagArray[$key]['position'] > -1)
 			{
 				$method = $value['method'];
 				$this->_output = $this->$method($this->_output);
@@ -184,13 +184,13 @@ class Parser
 
 	protected function _parseReadmore($content = null)
 	{
-		$output = str_replace($this->_tags['readmore']['search'], '', $content);
+		$output = str_replace($this->_tagArray['readmore']['search'], '', $content);
 
 		/* html elements */
 
 		$linkElement = new Html\Element();
 		$linkElement->init('a', array(
-			'class' => $this->_options['className']['readmore'],
+			'class' => $this->_optionArray['className']['readmore'],
 			'title' => $this->_language->get('readmore')
 		));
 
@@ -198,12 +198,12 @@ class Parser
 
 		if ($this->_registry->get('lastTable') === 'categories' || !$this->_registry->get('fullRoute'))
 		{
-			$output = substr($output, 0, $this->_tags['readmore']['position']);
-			if ($this->_options['route'])
+			$output = substr($output, 0, $this->_tagArray['readmore']['position']);
+			if ($this->_optionArray['route'])
 			{
 				$output .= $linkElement
 					->copy()
-					->attr('href', $this->_registry->get('parameterRoute') . $this->_options['route'])
+					->attr('href', $this->_registry->get('parameterRoute') . $this->_optionArray['route'])
 					->text($this->_language->get('readmore'));
 			}
 		}
@@ -222,14 +222,14 @@ class Parser
 
 	protected function _parseCodequote($content = null)
 	{
-		$output = str_replace($this->_tags['codequote']['search'], $this->_options['delimiter'], $content);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
+		$output = str_replace($this->_tagArray['codequote']['search'], $this->_optionArray['delimiter'], $content);
+		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* html elements */
 
 		$preElement = new Html\Element();
 		$preElement->init('pre', array(
-			'class' => $this->_options['className']['codequote']
+			'class' => $this->_optionArray['className']['codequote']
 		));
 
 		/* parse as needed */
@@ -257,8 +257,8 @@ class Parser
 
 	protected function _parseLanguage($content = null)
 	{
-		$output = str_replace($this->_tags['language']['search'], $this->_options['delimiter'], $content);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
+		$output = str_replace($this->_tagArray['language']['search'], $this->_optionArray['delimiter'], $content);
+		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* parse as needed */
 
@@ -285,8 +285,8 @@ class Parser
 
 	protected function _parseRegistry($content = null)
 	{
-		$output = str_replace($this->_tags['registry']['search'], $this->_options['delimiter'], $content);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
+		$output = str_replace($this->_tagArray['registry']['search'], $this->_optionArray['delimiter'], $content);
+		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* parse as needed */
 
@@ -313,9 +313,9 @@ class Parser
 
 	protected function _parseTemplate($content = null)
 	{
-		$output = str_replace($this->_tags['template']['search'], $this->_options['delimiter'], $content);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
-		$object = $this->_tags['template']['namespace'];
+		$output = str_replace($this->_tagArray['template']['search'], $this->_optionArray['delimiter'], $content);
+		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$object = $this->_tagArray['template']['namespace'];
 
 		/* parse as needed */
 
@@ -330,7 +330,7 @@ class Parser
 
 				if (is_array($json))
 				{
-					foreach ($json as $method => $parameter)
+					foreach ($json as $method => $parameterArray)
 					{
 						/* method exists */
 
@@ -339,7 +339,7 @@ class Parser
 							$parts[$key] = call_user_func_array(array(
 								$object,
 								$method
-							), $parameter);
+							), $parameterArray);
 						}
 					}
 				}
@@ -371,15 +371,15 @@ class Parser
 
 	protected function _parseModule($content = null)
 	{
-		$output = str_replace($this->_tags['module']['search'], $this->_options['delimiter'], $content);
-		$parts = array_filter(explode($this->_options['delimiter'], $output));
+		$output = str_replace($this->_tagArray['module']['search'], $this->_optionArray['delimiter'], $content);
+		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
 		$modulesLoaded = Hook::getModuleArray();
 
 		/* parse as needed */
 
 		foreach ($parts as $key => $value)
 		{
-			$object = $this->_tags['module']['namespace'] . $value . '\\' . $value;
+			$object = $this->_tagArray['module']['namespace'] . $value . '\\' . $value;
 			if ($key % 2)
 			{
 				$parts[$key] = null;
@@ -389,9 +389,9 @@ class Parser
 
 				if (is_array($json))
 				{
-					foreach ($json as $module => $parameter)
+					foreach ($json as $module => $parameterArray)
 					{
-						$object = $this->_tags['module']['namespace'] . $module . '\\' . $module;
+						$object = $this->_tagArray['module']['namespace'] . $module . '\\' . $module;
 
 						/* method exists */
 
@@ -400,7 +400,7 @@ class Parser
 							$parts[$key] = call_user_func_array(array(
 								$object,
 								'render'
-							), $parameter);
+							), $parameterArray);
 						}
 					}
 				}
@@ -420,4 +420,3 @@ class Parser
 		return $output;
 	}
 }
-

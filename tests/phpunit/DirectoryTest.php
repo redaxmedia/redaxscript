@@ -73,18 +73,18 @@ class DirectoryTestAbstract extends TestCaseAbstract
 	 * @since 2.1.0
 	 *
 	 * @param string $path
-	 * @param mixed $exclude
+	 * @param array $excludeArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($path = null, $exclude = null, $expectArray = array())
+	public function testGetArray($path = null, $excludeArray = array(), $expectArray = array())
 	{
 		/* setup */
 
 		$directory = new Directory();
-		$directory->init(Stream::url($path), $exclude);
+		$directory->init(Stream::url($path), $excludeArray);
 
 		/* actual */
 

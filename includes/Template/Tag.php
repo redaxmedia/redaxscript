@@ -173,16 +173,16 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function extra($options = null)
+	public static function extra($optionArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('extras', array(
-			$options['filter']
+			$optionArray['filter']
 		));
 		// @codeCoverageIgnoreEnd
 	}
@@ -193,23 +193,23 @@ class Tag
 	 * @since 3.0.0
 	 *
 	 * @param string $type
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function navigation($type = null, $options = null)
+	public static function navigation($type = null, $optionArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		if ($type === 'languages' || $type === 'templates')
 		{
 			return self::_migrate($type . '_list', array(
-				$options
+				$optionArray
 			));
 		}
 		return self::_migrate('navigation_list', array(
 			$type,
-			$options
+			$optionArray
 		));
 		// @codeCoverageIgnoreEnd
 	}
@@ -322,21 +322,21 @@ class Tag
 	 * @since 2.3.0
 	 *
 	 * @param string $function
-	 * @param array $parameter
+	 * @param array $parameterArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _migrate($function = null, $parameter = null)
+	protected static function _migrate($function = null, $parameterArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		ob_start();
 
 		/* call with parameter */
 
-		if ($parameter)
+		if (is_array($parameterArray))
 		{
-			call_user_func_array($function, $parameter);
+			call_user_func_array($function, $parameterArray);
 		}
 
 		/* else simple call */
