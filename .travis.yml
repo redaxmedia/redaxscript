@@ -1,8 +1,8 @@
 language: php
 
 services:
- - mysql
- - postgresql
+- mysql
+- postgresql
 
 php:
 - 5.3
@@ -42,7 +42,9 @@ after_script:
 - php ocular.phar code-coverage:upload --format=php-clover clover.xml
 
 notifications:
+ email:
+ - team@redaxscript.com
  irc:
-  - chat.freenode.net#redaxscript
+ - chat.freenode.net#redaxscript
  webhooks:
-  - https://webhooks.gitter.im/e/ff9acda2e5faf42e3182
+ - https://webhooks.gitter.im/e/ff9acda2e5faf42e3182
