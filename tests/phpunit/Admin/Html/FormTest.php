@@ -63,7 +63,7 @@ class FormTestAbstract extends TestCaseAbstract
 	 * testCreate
 	 *
 	 * @param array $attributeArray
-	 * @param array $options
+	 * @param array $optionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerCreate
@@ -71,12 +71,12 @@ class FormTestAbstract extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testCreate($attributeArray = array(), $options = array(), $expect = null)
+	public function testCreate($attributeArray = array(), $optionArray = array(), $expect = null)
 	{
 		/* setup */
 
 		$form = new Admin\Html\Form($this->_registry, $this->_language);
-		$form->init($attributeArray, $options);
+		$form->init($attributeArray, $optionArray);
 
 		/* actual */
 

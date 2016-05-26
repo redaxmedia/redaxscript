@@ -77,17 +77,17 @@ class DetectorTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testLanguage($registry = array(), $expect = null)
+	public function testLanguage($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$detector = new Detector\Language($this->_registry, $this->_request);
 
 		/* actual */
@@ -104,17 +104,17 @@ class DetectorTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerTemplate
 	 */
 
-	public function testTemplate($registry = array(), $expect = null)
+	public function testTemplate($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$detector = new Detector\Template($this->_registry, $this->_request);
 
 		/* actual */

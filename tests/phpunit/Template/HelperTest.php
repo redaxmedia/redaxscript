@@ -80,17 +80,17 @@ class HelperTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerGetSubset
 	 */
 
-	public function testGetSubset($registry = array(), $expect = null)
+	public function testGetSubset($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 
 		/* actual */
 
@@ -106,17 +106,17 @@ class HelperTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerGetDirection
 	 */
 
-	public function testGetDirection($registry = array(), $expect = null)
+	public function testGetDirection($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 
 		/* actual */
 
@@ -132,17 +132,17 @@ class HelperTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerGetClass
 	 */
 
-	public function testGetClass($registry = array(), $expect = null)
+	public function testGetClass($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 
 		/* actual */
 

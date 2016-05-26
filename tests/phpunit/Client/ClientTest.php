@@ -55,12 +55,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testBrowser($userAgent = null, $expect = array())
+	public function testBrowser($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -73,7 +73,7 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['browser'], $actual);
+		$this->assertEquals($expectArray['browser'], $actual);
 	}
 
 	/**
@@ -82,12 +82,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testDesktop($userAgent = null, $expect = array())
+	public function testDesktop($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -100,7 +100,7 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['desktop'], $actual);
+		$this->assertEquals($expectArray['desktop'], $actual);
 	}
 
 	/**
@@ -109,12 +109,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testEngine($userAgent = null, $expect = array())
+	public function testEngine($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -127,7 +127,7 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['engine'], $actual);
+		$this->assertEquals($expectArray['engine'], $actual);
 	}
 
 	/**
@@ -136,12 +136,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testMobile($userAgent = null, $expect = array())
+	public function testMobile($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -154,7 +154,7 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['mobile'], $actual);
+		$this->assertEquals($expectArray['mobile'], $actual);
 	}
 
 	/**
@@ -163,12 +163,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testTablet($userAgent = null, $expect = array())
+	public function testTablet($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -181,7 +181,7 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['tablet'], $actual);
+		$this->assertEquals($expectArray['tablet'], $actual);
 	}
 
 	/**
@@ -190,12 +190,12 @@ class ClientTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $userAgent
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClient
 	 */
 
-	public function testVersion($userAgent = null, $expect = array())
+	public function testVersion($userAgent = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -208,6 +208,6 @@ class ClientTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['version'], $actual);
+		$this->assertEquals($expectArray['version'], $actual);
 	}
 }

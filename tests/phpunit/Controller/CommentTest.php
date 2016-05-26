@@ -103,18 +103,18 @@ class CommentTestAbstract extends TestCaseAbstract
 	 *
 	 * @param array $postArray
 	 * @param array $hashArray
-	 * @param array $settingsArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $hashArray = array(), $settingsArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $hashArray = array(), $settingArray = array(), $expect = null)
 	{
 		/* setup */
 
-		Db::setSetting('notification', $settingsArray['notification']);
-		Db::setSetting('moderation', $settingsArray['moderation']);
+		Db::setSetting('notification', $settingArray['notification']);
+		Db::setSetting('moderation', $settingArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$commentController = new Controller\Comment($this->_registry, $this->_language, $this->_request);

@@ -74,12 +74,12 @@ class DirectoryTestAbstract extends TestCaseAbstract
 	 *
 	 * @param string $path
 	 * @param mixed $exclude
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($path = null, $exclude = null, $expect = array())
+	public function testGetArray($path = null, $exclude = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -88,11 +88,11 @@ class DirectoryTestAbstract extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $directory->getArray();
+		$actualArray = $directory->getArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
@@ -102,12 +102,12 @@ class DirectoryTestAbstract extends TestCaseAbstract
 	 *
 	 * @param string $path
 	 * @param string $create
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($path = null, $create = null, $expect = array())
+	public function testCreate($path = null, $create = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -117,11 +117,11 @@ class DirectoryTestAbstract extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = scandir(Stream::url($path));
+		$actualArray = scandir(Stream::url($path));
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
@@ -131,12 +131,12 @@ class DirectoryTestAbstract extends TestCaseAbstract
 	 *
 	 * @param string $path
 	 * @param string $remove
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($path = null, $remove = null, $expect = array())
+	public function testRemove($path = null, $remove = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -146,10 +146,10 @@ class DirectoryTestAbstract extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = scandir(Stream::url($path));
+		$actualArray = scandir(Stream::url($path));
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 }

@@ -124,12 +124,12 @@ class SearchListTestAbstract extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $searchArray
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($searchArray = array(), $expect = array())
+	public function testRender($searchArray = array(), $expectArray = array())
 	{
 		/* setup */
 
@@ -141,10 +141,10 @@ class SearchListTestAbstract extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $searchList->render($resultArray);
+		$actualArray = $searchList->render($resultArray);
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 }

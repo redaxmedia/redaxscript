@@ -64,12 +64,12 @@ class SettingFormTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expect = array())
+	public function testRender($expectArray = array())
 	{
 		/* setup */
 
@@ -81,7 +81,7 @@ class SettingFormTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['start'], $actual);
-		$this->assertStringEndsWith($expect['end'], $actual);
+		$this->assertStringStartsWith($expectArray['start'], $actual);
+		$this->assertStringEndsWith($expectArray['end'], $actual);
 	}
 }

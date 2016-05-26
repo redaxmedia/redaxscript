@@ -130,27 +130,27 @@ class BreadcrumbTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $registry
-	 * @param array $expect
+	 * @param array $registryArray
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($registry = array(), $expect = array())
+	public function testGetArray($registryArray = array(), $expectArray = array())
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
 		$breadcrumb->init();
 
 		/* actual */
 
-		$actual = $breadcrumb->getArray();
+		$actualArray = $breadcrumb->getArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
@@ -158,17 +158,17 @@ class BreadcrumbTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registry = array(), $expect = null)
+	public function testRender($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$breadcrumb = new Breadcrumb($this->_registry, $this->_language);
 		$breadcrumb->init();
 

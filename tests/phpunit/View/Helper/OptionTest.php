@@ -34,12 +34,12 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetDatabaseArray($expect = array())
+	public function testGetDatabaseArray($expectArray = array())
 	{
 		/* actual */
 
@@ -47,6 +47,6 @@ class OptionTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertArraySubset($actual, $expect['database']);
+		$this->assertArraySubset($expectArray['database'], $actual);
 	}
 }

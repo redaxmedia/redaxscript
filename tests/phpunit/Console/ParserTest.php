@@ -129,27 +129,27 @@ class ParserTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $arguments
-	 * @param array $expect
+	 * @param array $argumentArray
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetArgument
 	 */
 
-	public function testGetArgument($arguments = array(), $expect = array())
+	public function testGetArgument($argumentArray = array(), $expectArray = array())
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', $arguments);
+		$this->_request->setServer('argv', $argumentArray);
 		$parser = new Console\Parser($this->_request);
 		$parser->init('cli');
 
 		/* actual */
 
-		$actual = $parser->getArgument();
+		$actualArray = $parser->getArgument();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
@@ -157,26 +157,26 @@ class ParserTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $arguments
-	 * @param array $expect
+	 * @param array $argumentArray
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetOption
 	 */
 
-	public function testGetOption($arguments = array(), $expect = array())
+	public function testGetOption($argumentArray = array(), $expectArray = array())
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', $arguments);
+		$this->_request->setServer('argv', $argumentArray);
 		$parser = new Console\Parser($this->_request);
 		$parser->init('cli');
 
 		/* actual */
 
-		$actual = $parser->getOption();
+		$actualArray = $parser->getOption();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 }

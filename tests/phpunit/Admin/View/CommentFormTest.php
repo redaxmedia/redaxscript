@@ -64,18 +64,18 @@ class CommentFormTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param integer $commentId
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registry = array(), $commentId = null, $expect = array())
+	public function testRender($registryArray = array(), $commentId = null, $expectArray = array())
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$commentForm = new Admin\View\CommentForm($this->_registry, $this->_language);
 
 		/* actual */
@@ -84,7 +84,7 @@ class CommentFormTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['start'], $actual);
-		$this->assertStringEndsWith($expect['end'], $actual);
+		$this->assertStringStartsWith($expectArray['start'], $actual);
+		$this->assertStringEndsWith($expectArray['end'], $actual);
 	}
 }

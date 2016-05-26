@@ -92,6 +92,6 @@ class LogoutTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($actual, $expect);
+		$this->assertEquals($expect, $actual);
 	}
 }

@@ -155,17 +155,17 @@ class SearchTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($registry = array(), $expect = null)
+	public function testProcess($registryArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$searchController = new Controller\Search($this->_registry, $this->_language, $this->_request);
 
 		/* actual */

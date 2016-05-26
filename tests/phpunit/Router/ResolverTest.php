@@ -55,12 +55,12 @@ class ResolverTestAbstract extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerResolver
 	 */
 
-	public function testGetLite($route = null, $expect = array())
+	public function testGetLite($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -74,7 +74,7 @@ class ResolverTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['lite'], $actual);
+		$this->assertEquals($expectArray['lite'], $actual);
 	}
 
 	/**
@@ -83,12 +83,12 @@ class ResolverTestAbstract extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerResolver
 	 */
 
-	public function testGetFull($route = null, $expect = array())
+	public function testGetFull($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -102,6 +102,6 @@ class ResolverTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['full'], $actual);
+		$this->assertEquals($expectArray['full'], $actual);
 	}
 }

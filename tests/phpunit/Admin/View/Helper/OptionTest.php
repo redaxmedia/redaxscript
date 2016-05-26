@@ -34,20 +34,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetToggleArray($expect = array())
+	public function testGetToggleArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getToggleArray();
+		$actualArray = Helper\Option::getToggleArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['toggle'], $actual);
+		$this->assertEquals($expectArray['toggle'], $actualArray);
 	}
 
 	/**
@@ -55,20 +55,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetVisibleArray($expect = array())
+	public function testGetVisibleArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getVisibleArray();
+		$actualArray = Helper\Option::getVisibleArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['visible'], $actual);
+		$this->assertEquals($expectArray['visible'], $actualArray);
 	}
 
 	/**
@@ -76,20 +76,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetRobotArray($expect = array())
+	public function testGetRobotArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getRobotArray();
+		$actualArray = Helper\Option::getRobotArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['robot'], $actual);
+		$this->assertEquals($expectArray['robot'], $actualArray);
 	}
 
 	/**
@@ -97,20 +97,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTimeArray($expect = array())
+	public function testGetTimeArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getTimeArray();
+		$actualArray = Helper\Option::getTimeArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['time'], $actual);
+		$this->assertEquals($expectArray['time'], $actualArray);
 	}
 
 	/**
@@ -118,20 +118,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetDateArray($expect = array())
+	public function testGetDateArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getDateArray();
+		$actualArray = Helper\Option::getDateArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['date'], $actual);
+		$this->assertEquals($expectArray['date'], $actualArray);
 	}
 
 	/**
@@ -139,20 +139,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetOrderArray($expect = array())
+	public function testGetOrderArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getOrderArray();
+		$actualArray = Helper\Option::getOrderArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['order'], $actual);
+		$this->assertEquals($expectArray['order'], $actualArray);
 	}
 
 	/**
@@ -160,20 +160,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetCaptchaArray($expect = array())
+	public function testGetCaptchaArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getCaptchaArray();
+		$actualArray = Helper\Option::getCaptchaArray();
 
 		/* compare */
 
-		$this->assertEquals($expect['captcha'], $actual);
+		$this->assertEquals($expectArray['captcha'], $actualArray);
 	}
 
 	/**
@@ -181,24 +181,26 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetPermissionArray($expect = array())
+	public function testGetPermissionArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual['content'] = Helper\Option::getPermissionArray();
-		$actual['module'] = Helper\Option::getPermissionArray('modules');
-		$actual['setting'] = Helper\Option::getPermissionArray('settings');
+		$actualArray = array(
+			'content' => Helper\Option::getPermissionArray(),
+			'module' => Helper\Option::getPermissionArray('modules'),
+			'setting' => Helper\Option::getPermissionArray('settings')
+		);
 
 		/* compare */
 
-		$this->assertEquals($expect['permission']['content'], $actual['content']);
-		$this->assertEquals($expect['permission']['module'], $actual['module']);
-		$this->assertEquals($expect['permission']['setting'], $actual['setting']);
+		$this->assertEquals($expectArray['permission']['content'], $actualArray['content']);
+		$this->assertEquals($expectArray['permission']['module'], $actualArray['module']);
+		$this->assertEquals($expectArray['permission']['setting'], $actualArray['setting']);
 	}
 
 	/**
@@ -206,20 +208,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetLanguageArray($expect = array())
+	public function testGetLanguageArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getLanguageArray();
+		$actualArray = Helper\Option::getLanguageArray();
 
 		/* compare */
 
-		$this->assertTrue(!array_diff($expect['language'], $actual));
+		$this->assertTrue(!array_diff($expectArray['language'], $actualArray));
 	}
 
 	/**
@@ -227,20 +229,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTemplateArray($expect = array())
+	public function testGetTemplateArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getTemplateArray();
+		$actualArray = Helper\Option::getTemplateArray();
 
 		/* compare */
 
-		$this->assertTrue(!array_diff($expect['template'], $actual));
+		$this->assertTrue(!array_diff($expectArray['template'], $actualArray));
 	}
 
 	/**
@@ -248,20 +250,20 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetContentArray($expect = array())
+	public function testGetContentArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getContentArray('articles');
+		$actualArray = Helper\Option::getContentArray('articles');
 
 		/* compare */
 
-		$this->assertEquals($expect['content'], $actual);
+		$this->assertEquals($expectArray['content'], $actualArray);
 	}
 
 	/**
@@ -269,19 +271,19 @@ class OptionTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetAccessArray($expect = array())
+	public function testGetAccessArray($expectArray = array())
 	{
 		/* actual */
 
-		$actual = Helper\Option::getAccessArray('groups');
+		$actualArray = Helper\Option::getAccessArray('groups');
 
 		/* compare */
 
-		$this->assertEquals($expect['access'], $actual);
+		$this->assertEquals($expectArray['access'], $actualArray);
 	}
 }

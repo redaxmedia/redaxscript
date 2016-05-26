@@ -88,12 +88,12 @@ class CommentFormTestAbstract extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $articleId
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($articleId = null, $expect = array())
+	public function testRender($articleId = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -105,7 +105,7 @@ class CommentFormTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['start'], $actual);
-		$this->assertStringEndsWith($expect['end'], $actual);
+		$this->assertStringStartsWith($expectArray['start'], $actual);
+		$this->assertStringEndsWith($expectArray['end'], $actual);
 	}
 }

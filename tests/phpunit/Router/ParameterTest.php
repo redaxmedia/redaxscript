@@ -55,12 +55,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetFirst($route = null, $expect = array())
+	public function testGetFirst($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -74,7 +74,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['first'], $actual);
+		$this->assertEquals($expectArray['first'], $actual);
 	}
 
 	/**
@@ -83,12 +83,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetSecond($route = null, $expect = array())
+	public function testGetSecond($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -102,7 +102,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['second'], $actual);
+		$this->assertEquals($expectArray['second'], $actual);
 	}
 
 	/**
@@ -111,12 +111,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetThird($route = null, $expect = array())
+	public function testGetThird($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -130,7 +130,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['third'], $actual);
+		$this->assertEquals($expectArray['third'], $actual);
 	}
 
 	/**
@@ -139,12 +139,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetFourth($route = null, $expect = array())
+	public function testGetFourth($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -158,7 +158,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['fourth'], $actual);
+		$this->assertEquals($expectArray['fourth'], $actual);
 	}
 
 	/**
@@ -167,12 +167,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetLast($route = null, $expect = array())
+	public function testGetLast($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -186,7 +186,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['last'], $actual);
+		$this->assertEquals($expectArray['last'], $actual);
 	}
 
 	/**
@@ -195,12 +195,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetSub($route = null, $expect = array())
+	public function testGetSub($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -214,7 +214,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['sub'], $actual);
+		$this->assertEquals($expectArray['sub'], $actual);
 	}
 
 	/**
@@ -223,12 +223,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetAdmin($route = null, $expect = array())
+	public function testGetAdmin($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -242,7 +242,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['admin'], $actual);
+		$this->assertEquals($expectArray['admin'], $actual);
 	}
 
 	/**
@@ -251,12 +251,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetTable($route = null, $expect = array())
+	public function testGetTable($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -270,7 +270,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['table'], $actual);
+		$this->assertEquals($expectArray['table'], $actual);
 	}
 
 	/**
@@ -279,12 +279,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetAlias($route = null, $expect = array())
+	public function testGetAlias($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -298,7 +298,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['alias'], $actual);
+		$this->assertEquals($expectArray['alias'], $actual);
 	}
 
 	/**
@@ -307,12 +307,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetId($route = null, $expect = array())
+	public function testGetId($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -326,7 +326,7 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['id'], $actual);
+		$this->assertEquals($expectArray['id'], $actual);
 	}
 
 	/**
@@ -335,12 +335,12 @@ class ParameterTestAbstract extends TestCaseAbstract
 	 * @since 2.4.0
 	 *
 	 * @param string $route
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerParameter
 	 */
 
-	public function testGetToken($route = null, $expect = array())
+	public function testGetToken($route = null, $expectArray = array())
 	{
 		/* setup */
 
@@ -357,6 +357,6 @@ class ParameterTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect['token'], $actual);
+		$this->assertEquals($expectArray['token'], $actual);
 	}
 }

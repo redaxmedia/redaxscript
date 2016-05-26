@@ -127,21 +127,21 @@ class ParserTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.5.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $content
-	 * @param array $options
+	 * @param array $optionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerReadmore
 	 */
 
-	public function testReadmore($registry = array(), $content = null, $options = array(), $expect = null)
+	public function testReadmore($registryArray = array(), $content = null, $optionArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$parser = new Parser($this->_registry, $this->_language);
-		$parser->init($content, $options);
+		$parser->init($content, $optionArray);
 
 		/* actual */
 
@@ -213,18 +213,18 @@ class ParserTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 2.5.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param string $content
 	 * @param string $expect
 	 *
 	 * @dataProvider providerRegistry
 	 */
 
-	public function testRegistry($registry = array(), $content = null, $expect = null)
+	public function testRegistry($registryArray = array(), $content = null, $expect = null)
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$parser = new Parser($this->_registry, $this->_language);
 		$parser->init($content);
 

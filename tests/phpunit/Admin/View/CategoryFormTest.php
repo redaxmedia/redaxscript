@@ -64,18 +64,18 @@ class CategoryFormTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param integer $categoryId
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registry = array(), $categoryId = null, $expect = array())
+	public function testRender($registryArray = array(), $categoryId = null, $expectArray = array())
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$categoryForm = new Admin\View\CategoryForm($this->_registry, $this->_language);
 
 		/* actual */
@@ -84,7 +84,7 @@ class CategoryFormTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['start'], $actual);
-		$this->assertStringEndsWith($expect['end'], $actual);
+		$this->assertStringStartsWith($expectArray['start'], $actual);
+		$this->assertStringEndsWith($expectArray['end'], $actual);
 	}
 }

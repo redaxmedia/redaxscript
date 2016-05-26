@@ -64,18 +64,18 @@ class GroupFormTestAbstract extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $registry
+	 * @param array $registryArray
 	 * @param integer $groupId
-	 * @param array $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registry = array(), $groupId = null, $expect = array())
+	public function testRender($registryArray = array(), $groupId = null, $expectArray = array())
 	{
 		/* setup */
 
-		$this->_registry->init($registry);
+		$this->_registry->init($registryArray);
 		$groupForm = new Admin\View\GroupForm($this->_registry, $this->_language);
 
 		/* actual */
@@ -84,7 +84,7 @@ class GroupFormTestAbstract extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertStringStartsWith($expect['start'], $actual);
-		$this->assertStringEndsWith($expect['end'], $actual);
+		$this->assertStringStartsWith($expectArray['start'], $actual);
+		$this->assertStringEndsWith($expectArray['end'], $actual);
 	}
 }
