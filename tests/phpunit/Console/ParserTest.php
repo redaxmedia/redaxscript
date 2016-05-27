@@ -92,12 +92,12 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSetAndGetArgument
+	 * testGetAndSetArgument
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testSetAndGetArgument()
+	public function testGetAndSetArgument()
 	{
 		/* setup */
 
@@ -114,12 +114,12 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSetAndGetOption
+	 * testGetAndSetOption
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testSetAndGetOption()
+	public function testGetAndSetOption()
 	{
 		/* setup */
 

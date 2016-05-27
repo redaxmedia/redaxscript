@@ -105,12 +105,12 @@ class ConfigTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSetAndGet
+	 * testGetAndSet
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testSetAndGet()
+	public function testGetAndSet()
 	{
 		/* setup */
 

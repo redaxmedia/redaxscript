@@ -126,23 +126,6 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetSettings
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetSettings()
-	{
-		/* actual */
-
-		$actual = Db::getSetting('charset');
-
-		/* compare */
-
-		$this->assertEquals('utf-8', $actual);
-	}
-
-	/**
 	 * testRawInstance
 	 *
 	 * @since 2.4.0
@@ -158,6 +141,7 @@ class DbTest extends TestCaseAbstract
 
 		$this->assertInstanceOf('PDO', $actual);
 	}
+
 	/**
 	 * testCountTablePrefix
 	 *
@@ -285,6 +269,44 @@ class DbTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testGetAndSetSetting
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetAndSetSetting()
+	{
+		/* setup */
+
+		Db::setSetting('charset', 'utf-8');
+
+		/* actual */
+
+		$actual = Db::getSetting('charset');
+
+		/* compare */
+
+		$this->assertEquals('utf-8', $actual);
+	}
+
+	/**
+	 * testGetSettingInvalid
+	 *
+	 * @since 2.2.0
+	 */
+
+	public function testGetSettingInvalid()
+	{
+		/* actual */
+
+		$actual = Db::getSetting('invalidKey');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 
 	/**
