@@ -55,7 +55,6 @@ class CommentFormTest extends TestCaseAbstract
 
 	public static function setUpBeforeClass()
 	{
-		Db::setSetting('captcha', 1);
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(

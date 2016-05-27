@@ -80,6 +80,7 @@ class CommentTest extends TestCaseAbstract
 		Db::setSetting('captcha', 0);
 		Db::setSetting('notification', 0);
 		Db::setSetting('moderation', 0);
+		Db::forTablePrefix('comments')->deleteMany();
 	}
 
 	/**
