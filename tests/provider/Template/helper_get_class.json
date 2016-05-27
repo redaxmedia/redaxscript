@@ -1,6 +1,17 @@
 [
 	[
 		{
+			"myBrowser": "",
+			"myBrowserVersion": "",
+			"myEngine": "",
+			"myMobile": "",
+			"myTablet": "",
+			"myDesktop": ""
+		},
+		""
+	],
+	[
+		{
 			"myBrowser": "firefox",
 			"myBrowserVersion": 27,
 			"myEngine": "gecko",
