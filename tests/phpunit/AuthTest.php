@@ -135,7 +135,7 @@ class AuthTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $auth->getUser('invalid');
+		$actual = $auth->getUser('invalidKey');
 
 		/* compare */
 

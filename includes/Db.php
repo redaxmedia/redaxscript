@@ -275,7 +275,7 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public function getSetting($key = null)
@@ -308,11 +308,13 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 * @param string $value value of the item
+	 *
+	 * @return boolean
 	 */
 
 	public function setSetting($key = null, $value = null)
 	{
-		self::forTablePrefix('settings')->where('name', $key)->findOne()->set('value', $value)->save();
+		return self::forTablePrefix('settings')->where('name', $key)->findOne()->set('value', $value)->save();
 	}
 
 	/**

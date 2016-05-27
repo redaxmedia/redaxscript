@@ -78,4 +78,56 @@ class StatusTest extends TestCaseAbstract
 
 		$this->assertEquals($expect, $actual);
 	}
+
+	/**
+	 * testDatabase
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testDatabase()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'status',
+			'database'
+		));
+		$configCommand = new Command\Status($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testSystem
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSystem()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'status',
+			'system'
+		));
+		$configCommand = new Command\Status($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
 }

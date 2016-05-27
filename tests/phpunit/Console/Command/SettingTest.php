@@ -78,4 +78,60 @@ class SettingTest extends TestCaseAbstract
 
 		$this->assertEquals($expect, $actual);
 	}
+
+	/**
+	 * testList
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testList()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'setting',
+			'list'
+		));
+		$configCommand = new Command\Setting($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testSet
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSet()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'setting',
+			'set',
+			'--key',
+			'copyright',
+			'--value',
+			'Redaxscript'
+		));
+		$configCommand = new Command\Setting($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
 }

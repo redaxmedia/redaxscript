@@ -79,12 +79,12 @@ class HelpTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testArgument
+	 * testHelp
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testArgument()
+	public function testHelp()
 	{
 		/* setup */
 

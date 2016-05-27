@@ -74,24 +74,6 @@ class Setting extends CommandAbstract
 	}
 
 	/**
-	 * set the setting
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $optionArray
-	 */
-
-	public function _set($optionArray = array())
-	{
-		$key = $optionArray['key'] ? $optionArray['key'] : readline('key:');
-		$value = $optionArray['value'] ? $optionArray['value'] : readline('value:');
-		if ($key && $value)
-		{
-			Db::setSetting($key, $value);
-		}
-	}
-
-	/**
 	 * list the settings
 	 *
 	 * @since 3.0.0
@@ -111,5 +93,22 @@ class Setting extends CommandAbstract
 			$output .= str_pad($setting->name, 30) . $setting->value . PHP_EOL;
 		}
 		return $output;
+	}
+
+	/**
+	 * set the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	public function _set($optionArray = array())
+	{
+		$key = $optionArray['key'] ? $optionArray['key'] : readline('key:');
+		$value = $optionArray['value'] ? $optionArray['value'] : readline('value:');
+		return Db::setSetting($key, $value);
 	}
 }
