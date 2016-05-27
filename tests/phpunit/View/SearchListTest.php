@@ -58,7 +58,7 @@ class SearchListTest extends TestCaseAbstract
 		$this->_language = Language::getInstance();
 		$this->_request = Request::getInstance();
 	}
-	
+
 	/**
 	 * setUpBeforeClass
 	 *
@@ -92,6 +92,7 @@ class SearchListTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
+				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',

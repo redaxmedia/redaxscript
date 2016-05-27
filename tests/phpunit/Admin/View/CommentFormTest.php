@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -44,6 +45,39 @@ class CommentFormTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+	}
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Db::setSetting('captcha', 1);
+		Db::forTablePrefix('comments')
+			->create()
+			->set(array(
+				'id' => 1,
+				'author' => 'test',
+				'email' => 'test@test.com',
+				'text' => 'test',
+				'article' => 1,
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 
 	/**

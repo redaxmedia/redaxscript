@@ -40,7 +40,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		$titleElement->init('h2', array(
 			'class' => 'rs-admin-title-content',
 		));
-		$titleElement->text($comment->title ? $comment->title : $this->_language->get('comment_new'));
+		$titleElement->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();

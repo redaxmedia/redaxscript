@@ -71,7 +71,7 @@ class SearchTest extends TestCaseAbstract
 			->set(array(
 				'title' => 'test',
 				'alias' => 'test-one',
-				'author' => 'admin',
+				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
@@ -82,7 +82,7 @@ class SearchTest extends TestCaseAbstract
 			->set(array(
 				'title' => 'test',
 				'alias' => 'test-two',
-				'author' => 'admin',
+				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
@@ -93,7 +93,7 @@ class SearchTest extends TestCaseAbstract
 			->set(array(
 				'title' => 'test',
 				'alias' => 'test-three',
-				'author' => 'admin',
+				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'status' => 0,
@@ -103,6 +103,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
+				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
@@ -113,6 +114,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
+				'id' => 2,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',

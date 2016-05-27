@@ -67,16 +67,6 @@ class CommentTest extends TestCaseAbstract
 	public static function setUpBeforeClass()
 	{
 		Db::setSetting('captcha', 1);
-		Db::forTablePrefix('comments')
-			->create()
-			->set(array(
-				'author' => 'test',
-				'email' => 'test@test.com',
-				'text' => 'test',
-				'article' => 1,
-				'date' => '2016-01-01 00:00:00'
-			))
-			->save();
 	}
 
 	/**
@@ -90,7 +80,6 @@ class CommentTest extends TestCaseAbstract
 		Db::setSetting('captcha', 0);
 		Db::setSetting('notification', 0);
 		Db::setSetting('moderation', 0);
-		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 
 	/**
