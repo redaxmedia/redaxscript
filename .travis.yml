@@ -19,7 +19,7 @@ install:
 - composer install --ignore-platform-reqs
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
-- npm install --global ied
+- npm install --global ied@1.1.1
 - npm install --global grunt-cli
 - ied install
 
