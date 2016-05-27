@@ -131,6 +131,8 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
+	 *
+	 * @return boolean
 	 */
 
 	public function _set($optionArray = array())
@@ -144,7 +146,7 @@ class Config extends CommandAbstract
 		$this->_config->set('dbPassword', $optionArray['db-password']);
 		$this->_config->set('dbPrefix', $optionArray['db-prefix']);
 		$this->_config->set('dbSalt', sha1(uniqid()));
-		$this->_config->write();
+		return $this->_config->write();
 	}
 
 	/**
@@ -153,12 +155,14 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
+	 *
+	 * @return boolean
 	 */
 
 	public function _parse($optionArray = array())
 	{
 		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
 		$this->_config->parse($dbUrl);
-		$this->_config->write();
+		return $this->_config->write();
 	}
 }

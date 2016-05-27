@@ -41,7 +41,7 @@ class DbTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-		$this->_configArray['dbType'] = $this->_config->get('dbType');
+		$this->_configArray = $this->_config->get();
 	}
 
 	/**

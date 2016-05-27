@@ -3,6 +3,8 @@ namespace Redaxscript\Tests;
 
 use Redaxscript\Config;
 use org\bovigo\vfs\vfsStream as Stream;
+use org\bovigo\vfs\vfsStreamFile as StreamFile;
+use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 
 /**
  * ConfigTest
@@ -41,7 +43,20 @@ class ConfigTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_config = Config::getInstance();
-		$this->_configArray['dbType'] = $this->_config->get('dbType');
+		$this->_configArray = $this->_config->get();
+	}
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Stream::setup('root');
+		$file = new StreamFile('config.php');
+		StreamWrapper::getRoot()->addChild($file);
 	}
 
 	/**
@@ -78,15 +93,15 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init('config.php');
 
 		/* actual */
 
-		$actual = $this->_config->get('dbType');
+		$actualArray = $this->_config->get();
 
 		/* compare */
 
-		$this->assertNotEmpty($actual);
+		$this->assertArrayHasKey('dbType', $actualArray);
 	}
 
 	/**
@@ -142,6 +157,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$this->_config->init(Stream::url('root/config.php'));
 		$this->_config->parse($dbUrl);
 
 		/* actual */
@@ -163,11 +179,11 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Stream::setup('root');
+		$this->_config->init(Stream::url('root/config.php'));
 
 		/* actual */
 
-		$actual = $this->_config->write(Stream::url('root/config.php'));
+		$actual = $this->_config->write();
 
 		/* compare */
 

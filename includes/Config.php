@@ -14,6 +14,14 @@ namespace Redaxscript;
 class Config extends Singleton
 {
 	/**
+	 * path to config file
+	 *
+	 * @var string
+	 */
+
+	protected static $_configFile = 'config.php';
+
+	/**
 	 * array of the config
 	 *
 	 * @var array
@@ -26,12 +34,19 @@ class Config extends Singleton
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $file file with config
+	 * @param string $configFile file with config
 	 */
 
-	public static function init($file = 'config.php')
+	public static function init($configFile = null)
 	{
-		$configArray = include($file);
+		if (file_exists($configFile))
+		{
+			self::$_configFile = $configFile;
+		}
+
+		/* load config */
+
+		$configArray = include(self::$_configFile);
 		if (is_array($configArray))
 		{
 			self::$_configArray = $configArray;
@@ -86,6 +101,7 @@ class Config extends Singleton
 	public static function parse($dbUrl = null)
 	{
 		$dbUrl = parse_url($dbUrl);
+		self::reset();
 		self::set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
 		self::set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
 		self::set('dbName', trim($dbUrl['path'], '/'));
@@ -98,15 +114,13 @@ class Config extends Singleton
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $file file with config
-	 *
 	 * @return boolean
 	 */
 
-	public static function write($file = 'config.php')
+	public static function write()
 	{
-		$keys = array_keys(self::$_configArray);
-		$lastKey = end($keys);
+		$configKeys = array_keys(self::$_configArray);
+		$lastKey = end($configKeys);
 
 		/* process config */
 
@@ -125,7 +139,18 @@ class Config extends Singleton
 
 		/* write to file */
 
-		$output = file_put_contents($file, $contents) > 0 ? true : false;
+		$output = file_put_contents(self::$_configFile, $contents) > 0 ? true : false;
 		return $output;
+	}
+
+	/**
+	 * reset the config
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function reset()
+	{
+		self::$_configArray = array();
 	}
 }

@@ -121,6 +121,28 @@ class AuthTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testGetUserInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetUserInvalid()
+	{
+		/* setup */
+
+		$auth = new Auth($this->_request);
+		$auth->login(1);
+
+		/* actual */
+
+		$actual = $auth->getUser('invalid');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
 	 * testGetPermission
 	 *
 	 * @since 3.0.0
