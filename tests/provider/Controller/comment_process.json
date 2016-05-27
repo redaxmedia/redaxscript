@@ -3,7 +3,7 @@
 		{
 			"author": "",
 			"email": "",
-			"url": "test",
+			"url": "",
 			"text": "",
 			"article": "",
 			"task": 1
@@ -16,13 +16,13 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Author is empty</li><li>Email is empty</li><li>URL is incorrect</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{
 			"author": "test",
-			"email": "",
-			"url": "test",
+			"email": "invalid",
+			"url": "invalid",
 			"text": "",
 			"article": 0,
 			"task": 1
@@ -35,7 +35,7 @@
 			"notification": 1,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Email is empty</li><li>URL is incorrect</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Email is incorrect</li><li>URL is incorrect</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{
