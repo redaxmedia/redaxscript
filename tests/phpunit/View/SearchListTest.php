@@ -57,6 +57,16 @@ class SearchListTest extends TestCaseAbstract
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
 		$this->_request = Request::getInstance();
+	}
+	
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
@@ -82,7 +92,6 @@ class SearchListTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
-				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
@@ -98,10 +107,9 @@ class SearchListTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('alias', 'test-one')->deleteMany();
-		Db::forTablePrefix('articles')->where('alias', 'test-two')->deleteMany();
+		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
 		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 

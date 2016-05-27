@@ -31,7 +31,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
 	}

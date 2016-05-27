@@ -51,7 +51,7 @@ class SearchTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
@@ -69,7 +69,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test search',
+				'title' => 'test',
 				'alias' => 'test-one',
 				'author' => 'admin',
 				'text' => 'test',
@@ -80,7 +80,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test search',
+				'title' => 'test',
 				'alias' => 'test-two',
 				'author' => 'admin',
 				'text' => 'test',
@@ -91,7 +91,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('articles')
 			->create()
 			->set(array(
-				'title' => 'test search',
+				'title' => 'test',
 				'alias' => 'test-three',
 				'author' => 'admin',
 				'text' => 'test',
@@ -103,8 +103,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
-				'id' => 1,
-				'author' => 'test search',
+				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
@@ -114,8 +113,7 @@ class SearchTest extends TestCaseAbstract
 		Db::forTablePrefix('comments')
 			->create()
 			->set(array(
-				'id' => 2,
-				'author' => 'test search',
+				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
@@ -133,8 +131,8 @@ class SearchTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('title', 'test search')->deleteMany();
-		Db::forTablePrefix('comments')->where('author', 'test search')->deleteMany();
+		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
+		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 
 	/**

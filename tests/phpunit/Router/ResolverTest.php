@@ -31,7 +31,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_request = Request::getInstance();
 	}

@@ -41,7 +41,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @since 2.1.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();

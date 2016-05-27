@@ -51,7 +51,7 @@ class CommentTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
@@ -67,6 +67,16 @@ class CommentTest extends TestCaseAbstract
 	public static function setUpBeforeClass()
 	{
 		Db::setSetting('captcha', 1);
+		Db::forTablePrefix('comments')
+			->create()
+			->set(array(
+				'author' => 'test',
+				'email' => 'test@test.com',
+				'text' => 'test',
+				'article' => 1,
+				'date' => '2016-01-01 00:00:00'
+			))
+			->save();
 	}
 
 	/**
@@ -80,7 +90,7 @@ class CommentTest extends TestCaseAbstract
 		Db::setSetting('captcha', 0);
 		Db::setSetting('notification', 0);
 		Db::setSetting('moderation', 0);
-		Db::forTablePrefix('comments')->deleteMany();
+		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
 	}
 
 	/**

@@ -31,7 +31,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_language = Language::getInstance();
 	}

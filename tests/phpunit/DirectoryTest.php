@@ -23,7 +23,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @since 2.1.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		Stream::setup('root', 0777, $this->getProvider('tests/provider/directory_set_up.json'));
 	}

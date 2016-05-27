@@ -51,7 +51,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function setUp()
+	public function setUp()
 	{
 		$this->_config = Config::getInstance();
 		$this->_request = Request::getInstance();
@@ -77,7 +77,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function tearDown()
+	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
 		$this->_config->set('dbType', $this->_configArray['dbType']);
