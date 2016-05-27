@@ -130,7 +130,7 @@ class Directory
 	 * @param string $path name of the path
 	 */
 
-	public function _remove($path = null)
+	protected function _remove($path = null)
 	{
 		if (is_dir($path))
 		{

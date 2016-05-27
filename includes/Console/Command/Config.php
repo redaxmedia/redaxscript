@@ -104,7 +104,7 @@ class Config extends CommandAbstract
 	 * @return string
 	 */
 
-	public function _list()
+	protected function _list()
 	{
 		$output = null;
 		$configArray = $this->_config->get();
@@ -135,7 +135,7 @@ class Config extends CommandAbstract
 	 * @return boolean
 	 */
 
-	public function _set($optionArray = array())
+	protected function _set($optionArray = array())
 	{
 		$dbType = $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:');
 		$dbHost = $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:');
@@ -159,7 +159,7 @@ class Config extends CommandAbstract
 	 * @return boolean
 	 */
 
-	public function _parse($optionArray = array())
+	protected function _parse($optionArray = array())
 	{
 		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
 		$this->_config->parse($dbUrl);

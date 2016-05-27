@@ -87,16 +87,16 @@ class Login extends ControllerAbstract implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
 
 		else if ($auth->login($user->id))
 		{
-			return $this->success();
+			return $this->_success();
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Login extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success()
+	protected function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('continue'), 'admin')->doRedirect(0)->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
@@ -123,7 +123,7 @@ class Login extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login')->error($errorArray, $this->_language->get('error_occurred'));

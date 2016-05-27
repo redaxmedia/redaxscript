@@ -34,9 +34,9 @@ class Logout extends ControllerAbstract implements ControllerInterface
 
 		if ($auth->logout())
 		{
-			return $this->success();
+			return $this->_success();
 		}
-		return $this->error();
+		return $this->_error();
 	}
 
 	/**
@@ -47,7 +47,7 @@ class Logout extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success()
+	protected function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('continue'), 'login')->doRedirect(0)->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
@@ -61,7 +61,7 @@ class Logout extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error()
+	protected function _error()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'admin')->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));

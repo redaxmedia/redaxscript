@@ -86,7 +86,7 @@ class Comment extends ControllerAbstract implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
@@ -114,12 +114,12 @@ class Comment extends ControllerAbstract implements ControllerInterface
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			return $this->success(array(
+			return $this->_success(array(
 				'route' => $route,
 				'timeout' => Db::getSetting('notification') ? 2 : 0
 			));
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -132,7 +132,7 @@ class Comment extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success($successArray = array())
+	protected function _success($successArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
@@ -148,7 +148,7 @@ class Comment extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), $errorArray['route'])->error($errorArray, $this->_language->get('error_occurred'));

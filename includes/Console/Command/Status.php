@@ -81,7 +81,7 @@ class Status extends CommandAbstract
 	 * @since 3.0.0
 	 */
 
-	public function _database()
+	protected function _database()
 	{
 		$status = Db::getStatus();
 		$wordingArray = $this->_commandArray['status']['argumentArray']['database']['wordingArray'];
@@ -97,7 +97,7 @@ class Status extends CommandAbstract
 	 * @since 3.0.0
 	 */
 
-	public function _system()
+	protected function _system()
 	{
 		$output = null;
 		$driverArray = PDO::getAvailableDrivers();

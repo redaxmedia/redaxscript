@@ -79,7 +79,7 @@ class Reset extends ControllerAbstract implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
@@ -100,9 +100,9 @@ class Reset extends ControllerAbstract implements ControllerInterface
 
 		if ($this->_reset($resetArray) && $this->_mail($mailArray))
 		{
-			return $this->success();
+			return $this->_success();
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Reset extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success()
+	protected function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
@@ -129,7 +129,7 @@ class Reset extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));

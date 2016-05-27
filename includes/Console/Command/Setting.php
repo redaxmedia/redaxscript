@@ -81,7 +81,7 @@ class Setting extends CommandAbstract
 	 * @return string
 	 */
 
-	public function _list()
+	protected function _list()
 	{
 		$output = null;
 		$settings = Db::getSetting();
@@ -105,7 +105,7 @@ class Setting extends CommandAbstract
 	 * @return boolean
 	 */
 
-	public function _set($optionArray = array())
+	protected function _set($optionArray = array())
 	{
 		$key = $optionArray['key'] ? $optionArray['key'] : readline('key:');
 		$value = $optionArray['value'] ? $optionArray['value'] : readline('value:');

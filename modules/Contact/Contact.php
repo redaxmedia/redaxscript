@@ -200,7 +200,7 @@ class Contact extends Module
 
 		if ($errorArray)
 		{
-			return self::error($errorArray);
+			return self::_error($errorArray);
 		}
 
 		/* handle success */
@@ -216,9 +216,9 @@ class Contact extends Module
 
 		if (self::_mail($mailArray))
 		{
-			return self::success();
+			return self::_success();
 		}
-		return self::error(Language::get('something_wrong'));
+		return self::_error(Language::get('something_wrong'));
 	}
 
 	/**
@@ -229,7 +229,7 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	public static function success()
+	protected static function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
@@ -245,7 +245,7 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	public static function error($errorArray = array())
+	protected static function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));

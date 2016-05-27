@@ -89,17 +89,17 @@ class Search extends ControllerAbstract implements ControllerInterface
 
 		if ($infoArray)
 		{
-			return $this->info($infoArray);
+			return $this->_info($infoArray);
 		}
 
 		/* handle result */
 
-		$output = $this->result($resultArray);
+		$output = $this->_result($resultArray);
 		if ($output)
 		{
 			return $output;
 		}
-		return $this->info($this->_language->get('search_no'));
+		return $this->_info($this->_language->get('search_no'));
 	}
 
 	/**
@@ -112,7 +112,7 @@ class Search extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function result($resultArray = array())
+	protected function _result($resultArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
 		return $listSearch->render($resultArray);
@@ -128,12 +128,11 @@ class Search extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function info($infoArray = array())
+	protected function _info($infoArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'home')->info($infoArray, $this->_language->get('error_occurred'));
 	}
-
 
 	/**
 	 * search in tables

@@ -66,7 +66,7 @@ class Recover extends ControllerAbstract implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
@@ -94,9 +94,9 @@ class Recover extends ControllerAbstract implements ControllerInterface
 		}
 		if ($successArray)
 		{
-			return $this->success($successArray);
+			return $this->_success($successArray);
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -109,7 +109,7 @@ class Recover extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success($successArray = array())
+	protected function _success($successArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successArray, $this->_language->get('operation_completed'));
@@ -125,7 +125,7 @@ class Recover extends ControllerAbstract implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
