@@ -11,7 +11,8 @@
 	],
 	[
 		{
-			"commentsNew": true
+			"commentsNew": true,
+			"groupsEdit": true
 		},
 		0,
 		{
