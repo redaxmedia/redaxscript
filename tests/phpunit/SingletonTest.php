@@ -14,26 +14,6 @@ namespace Redaxscript\Tests;
 class SingletonTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the stub class
-	 *
-	 * @var object
-	 */
-
-	protected $_stub;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.2.0
-	 */
-
-	protected function setUp()
-	{
-		$stub = $this->getMockBuilder('Redaxscript\Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
-		$this->_stub = $stub->getInstance();
-	}
-
-	/**
 	 * testReset
 	 *
 	 * @since 2.2.0
@@ -43,11 +23,12 @@ class SingletonTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_stub->reset();
+		$stub = $this->getMockBuilder('Redaxscript\Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
+		$stub->reset();
 
 		/* actual */
 
-		$actual = $this->_stub->getInstance();
+		$actual = $stub->getInstance();
 
 		/* compare */
 
