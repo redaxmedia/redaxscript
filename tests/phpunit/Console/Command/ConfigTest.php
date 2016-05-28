@@ -81,6 +81,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		$this->_request->setServer('argv', null);
 		$this->_config->set('dbType', $this->_configArray['dbType']);
+		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
 	}
 
 	/**
@@ -115,6 +116,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$this->_config->set('dbPassword', 'test');
 		$this->_request->setServer('argv', array(
 			'console.php',
 			'config',
@@ -163,6 +165,34 @@ class ConfigTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testSetInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSetInvalid()
+	{
+		/* setup */
+
+		$this->_config->init(Stream::url('root/config.php'));
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'config',
+			'set',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Config($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
 	 * testParse
 	 *
 	 * @since 3.0.0
@@ -189,5 +219,33 @@ class ConfigTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testParseInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testParseInvalid()
+	{
+		/* setup */
+
+		$this->_config->init(Stream::url('root/config.php'));
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'config',
+			'parse',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Config($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 }

@@ -25,7 +25,8 @@
 			"-b",
 			"test3",
 			"-c=test4",
-			"test5"
+			"test5",
+			"-d"
 		],
 		[
 			"test1",
@@ -42,7 +43,8 @@
 			"--b-long",
 			"test3",
 			"--c-long=test4",
-			"test5"
+			"test5",
+			"--d-long"
 		],
 		[
 			"test1",

@@ -200,8 +200,8 @@ class Parser
 			);
 		}
 		return array(
-			'key' => $optionKey = substr($option, $offset),
-			'value' => $optionValue = substr($next, 0, 1) === '-' ? true : $next
+			'key' => substr($option, $offset),
+			'value' => !$next || substr($next, 0, 1) === '-' ? true : $next
 		);
 	}
 }

@@ -93,19 +93,23 @@ class Install extends CommandAbstract
 
 	protected function _database($optionArray = array())
 	{
-		$adminName = $optionArray['admin-name'] ? $optionArray['admin-name'] : $this->readline('admin-name:');
-		$adminUser = $optionArray['admin-user'] ? $optionArray['admin-user'] : $this->readline('admin-user:');
-		$adminPassword = $optionArray['admin-password'] ? $optionArray['admin-password'] : $this->readline('admin-password:');
-		$adminEmail = $optionArray['admin-email'] ? $optionArray['admin-email'] : $this->readline('admin-email:');
-		$installer = new Installer($this->_config);
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertData(array(
-			'adminName' => $adminName,
-			'adminUser' => $adminUser,
-			'adminPassword' => $adminPassword,
-			'adminEmail' => $adminEmail
-		));
-		return Db::getStatus() === 2;
+		$adminName = $optionArray['admin-name'] || $optionArray['no-interaction'] ? $optionArray['admin-name'] : readline('admin-name:');
+		$adminUser = $optionArray['admin-user'] || $optionArray['no-interaction'] ? $optionArray['admin-user'] : readline('admin-user:');
+		$adminPassword = $optionArray['admin-password'] || $optionArray['no-interaction'] ? $optionArray['admin-password'] : readline('admin-password:');
+		$adminEmail = $optionArray['admin-email'] || $optionArray['no-interaction'] ? $optionArray['admin-email'] : readline('admin-email:');
+		if ($adminName && $adminUser && $adminPassword && $adminEmail)
+		{
+			$installer = new Installer($this->_config);
+			$installer->init();
+			$installer->rawCreate();
+			$installer->insertData(array(
+				'adminName' => $adminName,
+				'adminUser' => $adminUser,
+				'adminPassword' => $adminPassword,
+				'adminEmail' => $adminEmail
+			));
+			return Db::getStatus() === 2;
+		}
+		return false;
 	}
 }

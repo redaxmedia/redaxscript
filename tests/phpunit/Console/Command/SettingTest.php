@@ -134,4 +134,31 @@ class SettingTest extends TestCaseAbstract
 
 		$this->assertTrue($actual);
 	}
+
+	/**
+	 * testSetInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSetInvalid()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'setting',
+			'set',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Setting($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
 }

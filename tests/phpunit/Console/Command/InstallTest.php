@@ -123,4 +123,31 @@ class InstallTest extends TestCaseAbstract
 
 		$this->assertTrue($actual);
 	}
+
+	/**
+	 * testDatabaseInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testDatabaseInvalid()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'install',
+			'database',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Install($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
 }

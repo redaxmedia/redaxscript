@@ -16,24 +16,6 @@ use Redaxscript\Console\ConsoleAbstract;
 abstract class CommandAbstract extends ConsoleAbstract
 {
 	/**
-	 * readline
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $prompt
-	 *
-	 * @return string
-	 */
-
-	public function readline($prompt = null)
-	{
-		if (function_exists('readline'))
-		{
-			return readline($prompt);
-		}
-	}
-
-	/**
 	 * get the help
 	 *
 	 * @since 3.0.0
