@@ -111,7 +111,7 @@ class Messenger
 	 * @param mixed $message message of the success
 	 * @param string $title title of the success
 	 *
-	 * @return Messenger
+	 * @return string
 	 */
 
 	public function success($message = null, $title = null)
@@ -127,7 +127,7 @@ class Messenger
 	 * @param mixed $message message of the warning
 	 * @param string $title message title of the warning
 	 *
-	 * @return Messenger
+	 * @return string
 	 */
 
 	public function warning($message = null, $title = null)
@@ -143,7 +143,7 @@ class Messenger
 	 * @param mixed $message message of the error
 	 * @param string $title title of the error
 	 *
-	 * @return Messenger
+	 * @return string
 	 */
 
 	public function error($message = null, $title = null)
@@ -159,7 +159,7 @@ class Messenger
 	 * @param mixed $message message of the info
 	 * @param string $title title of the info
 	 *
-	 * @return Messenger
+	 * @return string
 	 */
 
 	public function info($message = null, $title = null)
