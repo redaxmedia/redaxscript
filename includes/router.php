@@ -44,7 +44,7 @@ function router()
 	);
 	foreach ($post_list as $key => $value)
 	{
-		if ($_POST[$key])
+		if (Redaxscript\Request::getPost($key))
 		{
 			$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
 			echo $controller->process();
