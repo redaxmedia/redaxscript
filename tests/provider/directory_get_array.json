@@ -9,14 +9,18 @@
 	],
 	[
 		"root/languages",
-		"de.json",
+		[
+			"de.json"
+		],
 		[
 			"en.json"
 		]
 	],
 	[
 		"root/languages",
-		"en.json",
+		[
+			"en.json"
+		],
 		[
 			"de.json"
 		]

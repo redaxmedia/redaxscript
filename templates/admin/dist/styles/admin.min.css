@@ -166,7 +166,6 @@
  * @author Henry Ruhs
  */
 
-
 /* @section 1. wrapper */
 
 .rs-admin-wrapper-table
@@ -321,7 +320,7 @@
 	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875rem/2.5em arial;
+	font: bold 0.875rem/2.5em arial, sans-serif;
 	padding: 0 1em;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -537,7 +536,7 @@
 	border: 1px solid rgb(201, 201, 201);
 	border-radius: 0.125em;
 	color: rgb(106, 106, 106);
-	font: 1rem arial;
+	font: 1rem arial, sans-serif;
 	padding: 0.5em;
 	transition: background 0.4s;
 }
@@ -848,7 +847,7 @@
  *
  * 1. list control admin
  * 2. list tab admin
- *    3.1 javascript enabled
+ *    2.1 javascript enabled
  *
  * @since 3.0.0
  *
@@ -928,7 +927,7 @@
 	color: rgb(255, 255, 255);
 }
 
-/* @section 3.1 javascript enabled */
+/* @section 2.1 javascript enabled */
 
 .rs-js .rs-admin-list-tab .rs-admin-item-active
 {
@@ -964,159 +963,159 @@
 
 .rs-admin-panel
 {
-    position: relative;
-    z-index: 900;
+	position: relative;
+	z-index: 900;
 }
 
 .rs-admin-panel a, .rs-admin-panel a:hover
 {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 /* @section 2. box panel admin */
 
 .rs-admin-box-panel
 {
-    background: rgb(32, 32, 32);
+	background: rgb(32, 32, 32);
 }
 
 /* @section 3. item panel admin */
 
 .rs-admin-item-panel
 {
-    position: relative;
+	position: relative;
 }
 
 /* link logout */
 
 .rs-admin-item-panel.rs-admin-item-logout a:hover
 {
-    background: linear-gradient(rgb(199, 41, 41), #a20000);
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
 /* @section 3.1 icons before */
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
-    font: 1.25em/1.5em 'icon admin';
-    margin-right: 1em;
-    text-transform: lowercase;
-    vertical-align: middle;
+	font: 1.25em/1.5em 'icon admin';
+	margin-right: 1em;
+	text-transform: lowercase;
+	vertical-align: middle;
 }
 
 .rs-admin-item-panel.rs-admin-item-contents > span:before
 {
-    content: 'i';
+	content: 'i';
 }
 
 .rs-admin-item-panel.rs-admin-item-access > span:before
 {
-    content: 'j';
+	content: 'j';
 }
 
 .rs-admin-item-panel.rs-admin-item-system > span:before
 {
-    content: 'k';
+	content: 'k';
 }
 
 .rs-admin-item-panel.rs-admin-item-profile > a:before, .rs-admin-item-panel.rs-admin-item-profile > span:before
 {
-    content: 'l';
+	content: 'l';
 }
 
 .rs-admin-item-panel.rs-admin-item-logout > a:before
 {
-    content: 'n';
+	content: 'n';
 }
 
 /* @section 3.2 icons after */
 
 .rs-admin-item-panel > span:after
 {
-    content: '˃';
-    font: 1.25em/1.5em 'icon admin';
-    position: absolute;
-    right: 0.875em;
-    top: 0.375em;
+	content: '˃';
+	font: 1.25em/1.5em 'icon admin';
+	position: absolute;
+	right: 0.875em;
+	top: 0.375em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after
 {
-    content: '˅';
+	content: '˅';
 }
 
 /* @section 4. list panel admin */
 
 .rs-admin-list-panel
 {
-    font-size: 0.875rem;
+	font-size: 0.875rem;
 }
 
 .rs-admin-list-panel a, .rs-admin-list-panel > li > span
 {
-    box-sizing: border-box;
-    color: rgb(185, 185, 185);
-    cursor: pointer;
-    display: block;
-    font: bold 1.125em/2.75em 'open sans condensed', arial, sans-serif;
-    padding: 0 0.75em;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-    text-transform: uppercase;
+	box-sizing: border-box;
+	color: rgb(185, 185, 185);
+	cursor: pointer;
+	display: block;
+	font: bold 1.125em/2.75em 'open sans condensed', arial, sans-serif;
+	padding: 0 0.75em;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+	text-transform: uppercase;
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover, .rs-admin-list-panel span:hover a
 {
-    background: linear-gradient(rgb(44, 179, 252), #0090db);
-    color: rgb(0, 0, 0);
-    text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	color: rgb(0, 0, 0);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .rs-admin-list-panel li:hover .rs-admin-list-panel-children
 {
-    background: rgb(32, 32, 32);
+	background: rgb(32, 32, 32);
 }
 
 .rs-admin-list-panel-children
 {
-    display: none;
+	display: none;
 }
 
 .rs-admin-list-panel-children > li > span
 {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 }
 
 .rs-admin-list-panel .rs-admin-link-view
 {
-    -webkit-flex: 1 1 0;
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+	-webkit-flex: 1 1 0;
+	-ms-flex: 1 1 0;
+	flex: 1 1 0;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
 {
-    position: relative;
-    text-indent: -999em;
-    width: 2.75em;
+	position: relative;
+	text-indent: -999em;
+	width: 2.75em;
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
-    content: 'f';
-    font: 0.75em/1em 'icon admin';
-    left: 0;
-    margin-top: -0.5em;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    text-indent: 0;
-    text-transform: none;
-    top: 50%;
+	content: 'f';
+	font: 0.75em/1em 'icon admin';
+	left: 0;
+	margin-top: -0.5em;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	text-transform: none;
+	top: 50%;
 }
 
 /* @section 5. query */
@@ -1125,59 +1124,59 @@
 
 @media screen and (min-width: 50em)
 {
-    .rs-admin-list-panel a, .rs-admin-list-panel > li > span
-    {
-        line-height: 3.625em;
-    }
+	.rs-admin-list-panel a, .rs-admin-list-panel > li > span
+	{
+		line-height: 3.625em;
+	}
 
-    .rs-admin-list-panel .rs-admin-item-panel > span:after
-    {
-        content: '';
-    }
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	{
+		content: '';
+	}
 
-    .rs-admin-list-panel > li
-    {
-        float: left;
-        position: relative;
-    }
+	.rs-admin-list-panel > li
+	{
+		float: left;
+		position: relative;
+	}
 
-    .rs-admin-list-panel.rs-admin-c1 > li
-    {
-        width: 100%;
-    }
+	.rs-admin-list-panel.rs-admin-c1 > li
+	{
+		width: 100%;
+	}
 
-    .rs-admin-list-panel.rs-admin-c2 > li
-    {
-        width: 50%;
-    }
+	.rs-admin-list-panel.rs-admin-c2 > li
+	{
+		width: 50%;
+	}
 
-    .rs-admin-list-panel.rs-admin-c3 > li
-    {
-        width: 33.33%;
-    }
+	.rs-admin-list-panel.rs-admin-c3 > li
+	{
+		width: 33.33%;
+	}
 
-    .rs-admin-list-panel.rs-admin-c4 > li
-    {
-        width: 25%;
-    }
+	.rs-admin-list-panel.rs-admin-c4 > li
+	{
+		width: 25%;
+	}
 
-    .rs-admin-list-panel.rs-admin-c5 > li
-    {
-        width: 20%;
-    }
+	.rs-admin-list-panel.rs-admin-c5 > li
+	{
+		width: 20%;
+	}
 
-    .rs-admin-list-panel-children
-    {
-        background: rgb(32, 32, 32);
-        position: absolute;
-        width: 100%;
-    }
+	.rs-admin-list-panel-children
+	{
+		background: rgb(32, 32, 32);
+		position: absolute;
+		width: 100%;
+	}
 
-    .rs-admin-list-panel-children ul
-    {
-        left: 100%;
-        top: 0;
-    }
+	.rs-admin-list-panel-children ul
+	{
+		left: 100%;
+		top: 0;
+	}
 }
 /**
  * @tableofcontents
@@ -1565,6 +1564,7 @@
 {
 	text-align: right;
 }
+
 /**
  * @tableofcontents
  *

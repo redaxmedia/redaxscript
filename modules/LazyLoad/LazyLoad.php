@@ -50,12 +50,12 @@ class LazyLoad extends Config
 	 * @since 2.2.0
 	 *
 	 * @param mixed $src
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($src = null, $options = array())
+	public static function render($src = null, $optionArray = array())
 	{
 		$output = null;
 
@@ -80,8 +80,8 @@ class LazyLoad extends Config
 		{
 			$imageElement = new Html\Element();
 			$imageElement->init('img', array(
-				'alt' => $options['alt'],
-				'class' => self::$_configArray['className']['image'] . ' ' . $options['className'],
+				'alt' => $optionArray['alt'],
+				'class' => self::$_configArray['className']['image'] . ' ' . $optionArray['className'],
 				'src' => self::$_configArray['placeholder']
 			));
 

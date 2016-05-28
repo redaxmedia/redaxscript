@@ -62,10 +62,7 @@ function navigation_list($table, $options)
 
 	$contents = Redaxscript\Db::forTablePrefix($table)
 		->where('status', 1)
-		->whereRaw('(language = ? OR language is ?)', array(
-			Redaxscript\Registry::get('language'),
-			null
-		));
+		->whereLanguageIs(Redaxscript\Registry::get('language'));
 
 	/* setup parent */
 

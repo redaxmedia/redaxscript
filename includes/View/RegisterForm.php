@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the register form
@@ -17,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class RegisterForm implements ViewInterface
+class RegisterForm extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -38,8 +36,8 @@ class RegisterForm implements ViewInterface
 			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
-			->text(Language::get('account_create'));
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+			->text($this->_language->get('account_create'));
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-form rs-form-default rs-form-register'
@@ -59,7 +57,7 @@ class RegisterForm implements ViewInterface
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . Language::get('name'), array(
+			->label('* ' . $this->_language->get('name'), array(
 				'for' => 'name'
 			))
 			->text(array(
@@ -69,7 +67,7 @@ class RegisterForm implements ViewInterface
 				'required' => 'required'
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('user'), array(
+			->label('* ' . $this->_language->get('user'), array(
 				'for' => 'user'
 			))
 			->text(array(
@@ -78,7 +76,7 @@ class RegisterForm implements ViewInterface
 				'required' => 'required'
 			))
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . $this->_language->get('email'), array(
 				'for' => 'email'
 			))
 			->email(array(
@@ -101,7 +99,7 @@ class RegisterForm implements ViewInterface
 		}
 		$formElement
 			->token()
-			->submit(Language::get('create'));
+			->submit($this->_language->get('create'));
 
 		/* collect output */
 

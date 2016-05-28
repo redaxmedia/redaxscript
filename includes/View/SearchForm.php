@@ -3,8 +3,6 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the search form
@@ -16,7 +14,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class SearchForm implements ViewInterface
+class SearchForm extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -28,13 +26,13 @@ class SearchForm implements ViewInterface
 	 * @return string
 	 */
 
-	public function render($table = 'articles')
+	public function render($table = null)
 	{
 		$output = Hook::trigger('searchFormStart');
 
 		/* html elements */
 
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-search rs-form-search'
@@ -52,11 +50,15 @@ class SearchForm implements ViewInterface
 		$formElement
 			->search(array(
 				'name' => 'search',
-				'placeholder' => Language::get('search'),
+				'placeholder' => $this->_language->get('search'),
 				'tabindex' => '1'
 			))
+			->hidden(array(
+				'name' => 'table',
+				'value' => $table
+			))
 			->token()
-			->submit(Language::get('search'));
+			->submit($this->_language->get('search'));
 
 		/* collect output */
 

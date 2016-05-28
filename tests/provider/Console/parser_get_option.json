@@ -1,6 +1,7 @@
 [
 	[
 		[
+			"console.php",
 			""
 		],
 		[
@@ -8,6 +9,7 @@
 	],
 	[
 		[
+			"console.php",
 			"test"
 		],
 		[
@@ -15,34 +17,40 @@
 	],
 	[
 		[
+			"console.php",
 			"test1",
 			"test2",
 			"-a",
 			"-b",
 			"test3",
 			"-c=test4",
-			"test5"
+			"test5",
+			"-d"
 		],
 		{
 			"a": true,
 			"b": "test3",
-			"c": "test4"
+			"c": "test4",
+			"d": true
 		}
 	],
 	[
 		[
+			"console.php",
 			"test1",
 			"test2",
 			"--a-long",
 			"--b-long",
 			"test3",
 			"--c-long=test4",
-			"test5"
+			"test5",
+			"--d-long"
 		],
 		{
 			"a-long": true,
 			"b-long": "test3",
-			"c-long": "test4"
+			"c-long": "test4",
+			"d-long": true
 		}
 	]
 ]

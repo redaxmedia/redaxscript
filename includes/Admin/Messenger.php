@@ -22,7 +22,7 @@ class Messenger extends BaseMessenger
 	 * @var array
 	 */
 
-	protected $_options = array(
+	protected $_optionArray = array(
 		'className' => array(
 			'box' => 'rs-admin-box-messenger rs-admin-box-note',
 			'title' => 'rs-admin-title-messenger rs-admin-title-note',

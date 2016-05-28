@@ -4,10 +4,7 @@ namespace Redaxscript\Controller;
 use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Filter;
-use Redaxscript\Language;
 use Redaxscript\Messenger;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
@@ -21,53 +18,14 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Login implements ControllerInterface
+class Login extends ControllerAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the request class
-	 */
-
-	public function __construct(Registry $registry, Language $language, Request $request)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-		$this->_request = $request;
-	}
-
 	/**
 	 * process the class
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	public function process()
@@ -129,16 +87,16 @@ class Login implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
 
 		else if ($auth->login($user->id))
 		{
-			return $this->success();
+			return $this->_success();
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -149,7 +107,7 @@ class Login implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success()
+	protected function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('continue'), 'admin')->doRedirect(0)->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
@@ -165,7 +123,7 @@ class Login implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login')->error($errorArray, $this->_language->get('error_occurred'));

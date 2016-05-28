@@ -2,11 +2,9 @@
 namespace Redaxscript\Controller;
 
 use Redaxscript\Db;
-use Redaxscript\Language;
 use Redaxscript\Messenger;
 use Redaxscript\Html;
 use Redaxscript\Filter;
-use Redaxscript\Registry;
 use Redaxscript\Validator;
 use Redaxscript\View;
 
@@ -21,24 +19,8 @@ use Redaxscript\View;
  * @author Balázs Szilágyi
  */
 
-class Search implements ControllerInterface
+class Search extends ControllerAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
 	/**
 	 * array of tables
 	 *
@@ -50,21 +32,6 @@ class Search implements ControllerInterface
 		'articles',
 		'comments'
 	);
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 */
-
-	public function __construct(Registry $registry, Language $language)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-	}
 
 	/**
 	 * process the class
@@ -122,17 +89,17 @@ class Search implements ControllerInterface
 
 		if ($infoArray)
 		{
-			return $this->info($infoArray);
+			return $this->_info($infoArray);
 		}
 
 		/* handle result */
 
-		$output = $this->result($resultArray);
+		$output = $this->_result($resultArray);
 		if ($output)
 		{
 			return $output;
 		}
-		return $this->info($this->_language->get('search_no'));
+		return $this->_info($this->_language->get('search_no'));
 	}
 
 	/**
@@ -145,7 +112,7 @@ class Search implements ControllerInterface
 	 * @return string
 	 */
 
-	public function result($resultArray = array())
+	protected function _result($resultArray = array())
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
 		return $listSearch->render($resultArray);
@@ -161,12 +128,11 @@ class Search implements ControllerInterface
 	 * @return string
 	 */
 
-	public function info($infoArray = array())
+	protected function _info($infoArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'home')->info($infoArray, $this->_language->get('error_occurred'));
 	}
-
 
 	/**
 	 * search in tables
@@ -202,10 +168,7 @@ class Search implements ControllerInterface
 			$resultArray[$table] = Db::forTablePrefix($table)
 				->whereLikeMany($columnArray, $likeArray)
 				->where('status', 1)
-				->whereRaw('(language = ? OR language is ?)', array(
-					$this->_registry->get('language'),
-					null
-				))
+				->whereLanguageIs($this->_registry->get('language'))
 				->orderByDesc('date')
 				->findMany();
 		}

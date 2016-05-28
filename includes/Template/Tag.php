@@ -2,8 +2,11 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Db;
+use Redaxscript\Config;
+use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
 use Redaxscript\Registry;
+use Redaxscript\Request;
 use Redaxscript\Language;
 use Redaxscript\View;
 
@@ -35,6 +38,20 @@ class Tag
 	}
 
 	/**
+	 * console
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function console()
+	{
+		$console = new Console\Console(Config::getInstance(), Request::getInstance());
+		return $console->init('template');
+	}
+
+	/**
 	 * search
 	 *
 	 * @since 3.0.0
@@ -44,9 +61,9 @@ class Tag
 	 * @return string
 	 */
 
-	public static function search($table = 'articles')
+	public static function search($table = null)
 	{
-		$searchForm = new View\SearchForm();
+		$searchForm = new View\SearchForm(Registry::getInstance(), Language::getInstance());
 		return $searchForm->render($table);
 	}
 
@@ -76,9 +93,60 @@ class Tag
 		ob_start();
 		foreach ($file as $value)
 		{
-			include($value);
+			if (file_exists($value))
+			{
+				include($value);
+			}
 		}
 		return ob_get_clean();
+	}
+
+	/**
+	 * registry
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+
+	public static function registry($key = null)
+	{
+		$registry = Registry::getInstance();
+		return $registry->get($key);
+	}
+
+	/**
+	 * language
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 * @param string $index
+	 *
+	 * @return string
+	 */
+
+	public static function language($key = null, $index = null)
+	{
+		$language = Language::getInstance();
+		return $language->get($key, $index);
+	}
+
+	/**
+	 * setting
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string
+	 */
+
+	public static function setting($key = null)
+	{
+		return Db::getSetting($key);
 	}
 
 	/**
@@ -105,16 +173,16 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function extra($options = null)
+	public static function extra($optionArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('extras', array(
-			$options['filter']
+			$optionArray['filter']
 		));
 		// @codeCoverageIgnoreEnd
 	}
@@ -125,23 +193,23 @@ class Tag
 	 * @since 3.0.0
 	 *
 	 * @param string $type
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function navigation($type = null, $options = null)
+	public static function navigation($type = null, $optionArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		if ($type === 'languages' || $type === 'templates')
 		{
 			return self::_migrate($type . '_list', array(
-				$options
+				$optionArray
 			));
 		}
 		return self::_migrate('navigation_list', array(
 			$type,
-			$options
+			$optionArray
 		));
 		// @codeCoverageIgnoreEnd
 	}
@@ -249,74 +317,26 @@ class Tag
 	}
 
 	/**
-	 * registry
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string
-	 */
-
-	public static function registry($key = null)
-	{
-		$registry = Registry::getInstance();
-		return $registry->get($key);
-	}
-
-	/**
-	 * language
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 * @param string $index
-	 *
-	 * @return string
-	 */
-
-	public static function language($key = null, $index = null)
-	{
-		$language = Language::getInstance();
-		return $language->get($key, $index);
-	}
-
-	/**
-	 * setting
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string
-	 */
-
-	public static function setting($key = null)
-	{
-		return Db::getSetting($key);
-	}
-
-	/**
 	 * migrate
 	 *
 	 * @since 2.3.0
 	 *
 	 * @param string $function
-	 * @param array $parameter
+	 * @param array $parameterArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _migrate($function = null, $parameter = null)
+	protected static function _migrate($function = null, $parameterArray = array())
 	{
 		// @codeCoverageIgnoreStart
 		ob_start();
 
 		/* call with parameter */
 
-		if ($parameter)
+		if (is_array($parameterArray))
 		{
-			call_user_func_array($function, $parameter);
+			call_user_func_array($function, $parameterArray);
 		}
 
 		/* else simple call */

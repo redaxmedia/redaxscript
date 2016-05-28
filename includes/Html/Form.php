@@ -208,7 +208,7 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_options = array(
+	protected $_optionArray = array(
 		'captcha' => false
 	);
 
@@ -281,25 +281,25 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param array $attributeArray attributes of the form
-	 * @param array $options options of the form
+	 * @param array $optionArray options of the form
 	 *
 	 * @return Form
 	 */
 
-	public function init($attributeArray = array(), $options = null)
+	public function init($attributeArray = array(), $optionArray = array())
 	{
 		if (is_array($attributeArray))
 		{
 			$this->_attributeArray = array_replace_recursive($this->_attributeArray, $attributeArray);
 		}
-		if (is_array($options))
+		if (is_array($optionArray))
 		{
-			$this->_options = array_merge($this->_options, $options);
+			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
 
 		/* captcha */
 
-		if ($this->_options['captcha'])
+		if ($this->_optionArray['captcha'])
 		{
 			$this->_captcha = new Captcha($this->_language->getInstance());
 			$this->_captcha->init();
@@ -455,7 +455,7 @@ class Form extends HtmlAbstract
 	{
 		/* task */
 
-		if ($this->_options['captcha'] && $type === 'task')
+		if ($this->_optionArray['captcha'] && $type === 'task')
 		{
 			$this->label('* ' . $this->_captcha->getTask(), array(
 				'for' => 'task'
@@ -474,7 +474,7 @@ class Form extends HtmlAbstract
 
 		/* solution */
 
-		if ($this->_options['captcha'] && $type === 'solution')
+		if ($this->_optionArray['captcha'] && $type === 'solution')
 		{
 			$captchaHash = new Hash(Config::getInstance());
 			$captchaHash->init($this->_captcha->getSolution());

@@ -1,47 +1,139 @@
-.rs-body
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 base color
+ *    1.2 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 base color */
+
+	/* @section 1.2 font */
+}
+/**
+ * @tableofcontents
+ *
+ * 1. reset
+ * 2. normalize
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. reset */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, input, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, progress, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video
+{
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary
+{
+	display: block;
+}
+
+blockquote, q
+{
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after
+{
+	content: '';
+}
+
+legend
+{
+	max-width: 100%;
+}
+
+li
+{
+	list-style: none;
+}
+
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* @section 2. normalize */
+
+button, input, select, textarea
+{
+	box-sizing: border-box;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. code
+ * 3. form
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-console-body
 {
 	background: #222;
 	color: #00ff00;
-	font: 1rem monospace;
+	font: 1rem monospace, arial, sans-serif;
 	margin: 0.5rem;
 }
 
-pre
+.rs-console-code::-moz-selection, .rs-console-label::-moz-selection
 {
-	margin: 0;
-	overflow: hidden;
+	background: #00ff00;
+	color: #222;
+}
+
+.rs-console-code::selection, .rs-console-label::selection
+{
+	background: #00ff00;
+	color: #222;
+}
+
+/* @section 2. code */
+
+.rs-console-code
+{
 	white-space: pre-wrap;
 }
 
-label
+/* @section 3. form */
+
+.rs-console-label
 {
 	float: left;
 	margin-right: 0.5em;
 }
 
-pre::-moz-selection, label::-moz-selection
-{
-	background: #00ff00;
-	color: #222;
-}
-
-pre::selection, label::selection
-{
-	background: #00ff00;
-	color: #222;
-}
-
-input
+.rs-console-field-text
 {
 	background: transparent;
-	border: 0;
 	color: inherit;
 	float: left;
-	font: 1rem monospace;
+	font: inherit;
 	max-width: 100%;
-}
-
-input:focus
-{
-	outline: none;
 }

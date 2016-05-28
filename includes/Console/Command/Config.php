@@ -55,7 +55,10 @@ class Config extends CommandAbstract
 					'description' => 'Parse the configuration',
 					'optionArray' => array(
 						'db-url' => array(
-							'description' => 'Required database url from ENV variable'
+							'description' => 'Required database url'
+						),
+						'db-env' => array(
+							'description' => 'Get variable from ENV'
 						)
 					)
 				)
@@ -68,17 +71,19 @@ class Config extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init($mode);
 
 		/* run command */
 
-		$argumentKey = $parser->getArgument(2);
+		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();
@@ -102,7 +107,7 @@ class Config extends CommandAbstract
 	 * @return string
 	 */
 
-	public function _list()
+	protected function _list()
 	{
 		$output = null;
 		$configArray = $this->_config->get();
@@ -129,18 +134,26 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
+	 *
+	 * @return boolean
 	 */
 
-	public function _set($optionArray = array())
+	protected function _set($optionArray = array())
 	{
-		$this->_config->set('dbType', $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:'));
-		$this->_config->set('dbHost', $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:'));
-		$this->_config->set('dbName', $optionArray['db-name']);
-		$this->_config->set('dbUser', $optionArray['db-user']);
-		$this->_config->set('dbPassword', $optionArray['db-password']);
-		$this->_config->set('dbPrefix', $optionArray['db-prefix']);
-		$this->_config->set('dbSalt', sha1(uniqid()));												
-		$this->_config->write();
+		$dbType = $optionArray['db-type'] || $optionArray['no-interaction'] ? $optionArray['db-type'] : readline('db-type:');
+		$dbHost = $optionArray['db-host'] || $optionArray['no-interaction'] ? $optionArray['db-host'] : readline('db-host:');
+		if ($dbType && $dbHost)
+		{
+			$this->_config->set('dbType', $dbType);
+			$this->_config->set('dbHost', $dbHost);
+			$this->_config->set('dbName', $optionArray['db-name']);
+			$this->_config->set('dbUser', $optionArray['db-user']);
+			$this->_config->set('dbPassword', $optionArray['db-password']);
+			$this->_config->set('dbPrefix', $optionArray['db-prefix']);
+			$this->_config->set('dbSalt', sha1(uniqid()));
+			return $this->_config->write();
+		}
+		return false;
 	}
 
 	/**
@@ -149,12 +162,19 @@ class Config extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
+	 *
+	 * @return boolean
 	 */
 
-	public function _parse($optionArray = array())
+	protected function _parse($optionArray = array())
 	{
-		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
-		$this->_config->parse($dbUrl);
-		$this->_config->write();
+		$dbUrl = $optionArray['db-url'] || optionArray['no-interaction'] ? $optionArray['db-url'] : readline('db-url:');
+		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
+		if ($dbUrl)
+		{
+			$this->_config->parse($dbUrl);
+			return $this->_config->write();
+		}
+		return false;
 	}
 }

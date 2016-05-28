@@ -164,7 +164,7 @@
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
-	font: 0.75em/1em 'icon admin';
+	font: 0.75em/1em var(--rs-admin-font-icon);
 	left: 0;
 	margin-top: -0.5em;
 	position: absolute;

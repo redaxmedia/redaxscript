@@ -34,6 +34,7 @@
 		{
 			"categoriesEdit": true,
 			"categoriesDelete": true,
+			"groupsEdit": true,
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		},
 		1,

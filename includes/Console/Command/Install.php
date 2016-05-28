@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use Redaxscript\Db;
+use Redaxscript\Console\Parser;
+use Redaxscript\Installer;
+
 /**
  * children class to execute the install command
  *
@@ -43,8 +47,8 @@ class Install extends CommandAbstract
 				'module' => array(
 					'description' => 'Install the module',
 					'optionArray' => array(
-						'<name>' => array(
-							'description' => 'Required module <name>'
+						'<alias>' => array(
+							'description' => 'Required module <alias>'
 						)
 					)
 				)
@@ -56,10 +60,56 @@ class Install extends CommandAbstract
 	 * run the command
 	 *
 	 * @since 3.0.0
+	 *
+	 * @param string $mode name of the mode
+	 *
+	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
+		$parser = new Parser($this->_request);
+		$parser->init($mode);
+
+		/* run command */
+
+		$argumentKey = $parser->getArgument(1);
+		if ($argumentKey === 'database')
+		{
+			return $this->_database($parser->getOption());
+		}
 		return $this->getHelp();
+	}
+
+	/**
+	 * install the database
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _database($optionArray = array())
+	{
+		$adminName = $optionArray['admin-name'] || $optionArray['no-interaction'] ? $optionArray['admin-name'] : readline('admin-name:');
+		$adminUser = $optionArray['admin-user'] || $optionArray['no-interaction'] ? $optionArray['admin-user'] : readline('admin-user:');
+		$adminPassword = $optionArray['admin-password'] || $optionArray['no-interaction'] ? $optionArray['admin-password'] : readline('admin-password:');
+		$adminEmail = $optionArray['admin-email'] || $optionArray['no-interaction'] ? $optionArray['admin-email'] : readline('admin-email:');
+		if ($adminName && $adminUser && $adminPassword && $adminEmail)
+		{
+			$installer = new Installer($this->_config);
+			$installer->init();
+			$installer->rawCreate();
+			$installer->insertData(array(
+				'adminName' => $adminName,
+				'adminUser' => $adminUser,
+				'adminPassword' => $adminPassword,
+				'adminEmail' => $adminEmail
+			));
+			return Db::getStatus() === 2;
+		}
+		return false;
 	}
 }

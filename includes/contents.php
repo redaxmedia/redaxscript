@@ -24,11 +24,7 @@ function contents()
 	/* query articles */
 
 	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
-	$articles
-		->whereRaw('(language = ? OR language is ?)', array(
-			Redaxscript\Registry::get('language'),
-			null
-		));
+	$articles->whereLanguageIs(Redaxscript\Registry::get('language'));
 
 	/* handle sibling */
 
@@ -246,7 +242,7 @@ function contents()
 
 				if ($comments == 1 || (Redaxscript\Registry::get('commentNew') && $comments == 3))
 				{
-					$commentForm = new Redaxscript\View\CommentForm();
+					$commentForm = new Redaxscript\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					echo $commentForm->render($articleId);
 				}
 			}
@@ -288,10 +284,7 @@ function extras($filter)
 	/* query extras */
 
 	$extras = Redaxscript\Db::forTablePrefix('extras')
-		->whereRaw('(language = ? OR language is ?)', array(
-			Redaxscript\Registry::get('language'),
-			null
-		));
+		->whereLanguageIs(Redaxscript\Registry::get('language'));
 
 	/* has filter */
 

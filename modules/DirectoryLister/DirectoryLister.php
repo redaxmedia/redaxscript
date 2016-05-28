@@ -53,12 +53,12 @@ class DirectoryLister extends Config
 	 * @since 2.6.0
 	 *
 	 * @param string $directory
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($directory = null, $options = null)
+	public static function render($directory = null, $optionArray = array())
 	{
 		$output = null;
 		$outputDirectory = null;
@@ -66,9 +66,9 @@ class DirectoryLister extends Config
 
 		/* hash option */
 
-		if ($options['hash'])
+		if ($optionArray['hash'])
 		{
-			$hashString = '#' . $options['hash'];
+			$hashString = '#' . $optionArray['hash'];
 		}
 
 		/* handle query */
@@ -140,9 +140,9 @@ class DirectoryLister extends Config
 
 				/* replace option */
 
-				if ($options['replace'])
+				if ($optionArray['replace'])
 				{
-					foreach ($options['replace'] as $replaceKey => $replaceValue)
+					foreach ($optionArray['replace'] as $replaceKey => $replaceValue)
 					{
 						if ($replaceKey === self::$_configArray['replaceKey']['extension'])
 						{

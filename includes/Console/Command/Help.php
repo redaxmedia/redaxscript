@@ -37,17 +37,19 @@ class Help extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init($mode);
 
 		/* run command */
 
-		return $this->_list($parser->getArgument());
+		return $this->_list($parser->getArgument(1));
 	}
 
 	/**
@@ -55,34 +57,39 @@ class Help extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $argumentArray
+	 * @param string $argumentKey
 	 *
 	 * @return string
 	 */
 
-	protected function _list($argumentArray = array())
+	protected function _list($argumentKey = null)
 	{
-		$output = PHP_EOL;
-		$commandKey = $argumentArray[2];
+		$output = null;
 
-		/* collect multiple help */
+		/* collect each help */
 
-		if (!array_key_exists($commandKey, $this->_namespaceArray))
+		if (!array_key_exists($argumentKey, $this->_namespaceArray))
 		{
-			foreach ($this->_namespaceArray as $commandClass)
+			$namespaceKeys = array_keys($this->_namespaceArray);
+			$lastKey = end($namespaceKeys);
+			foreach ($this->_namespaceArray as $commandKey => $commandClass)
 			{
 				$command = new $commandClass($this->_config, $this->_request);
-				$output .= $command->getHelp() . PHP_EOL;
+				$output .= $command->getHelp();
+				if ($commandKey !== $lastKey)
+				{
+					$output .= PHP_EOL;
+				}
 			}
 		}
 
-		/* else specified help */
+		/* else single help */
 
 		else
 		{
-			$commandClass = $this->_namespaceArray[$commandKey];
+			$commandClass = $this->_namespaceArray[$argumentKey];
 			$command = new $commandClass($this->_config, $this->_request);
-			$output .= $command->getHelp() . PHP_EOL;
+			$output .= $command->getHelp();
 		}
 		return $output;
 	}

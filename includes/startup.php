@@ -32,8 +32,10 @@ function startup()
 	$request = Redaxscript\Request::getInstance();
 	$file = new Redaxscript\Server\File($request);
 	$root = new Redaxscript\Server\Root($request);
+	$host = new Redaxscript\Server\Host($request);
 	Redaxscript\Registry::set('file', $file->getOutput());
 	Redaxscript\Registry::set('root', $root->getOutput());
+	Redaxscript\Registry::set('host', $host->getOutput());
 
 	/* session */
 

@@ -30,7 +30,7 @@
 	border: 1px solid gray(201);
 	border-radius: 0.125em;
 	color: gray(106);
-	font: 1rem arial;
+	font: 1rem var(--rs-admin-font-secondary);
 	padding: 0.5em;
 	transition: background 0.4s;
 }

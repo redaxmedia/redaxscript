@@ -131,14 +131,14 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $method name of the method
-	 * @param array $arguments arguments of the method
+	 * @param array $argumentArray arguments of the method
 	 *
 	 * @return mixed
 	 */
 
-	public function __call($method = null, $arguments = array())
+	public function __call($method = null, $argumentArray = array())
 	{
-		$type = $arguments[0];
+		$type = $argumentArray[0];
 		if (array_key_exists($method, $this->_callArray[$type]))
 		{
 			return in_array($this->_callArray[$type][$method], $this->getPermission($type));

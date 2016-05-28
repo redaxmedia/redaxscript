@@ -63,10 +63,7 @@ class Archive extends Config
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
-			->whereRaw('(language = ? OR language is ?)', array(
-				Registry::get('language'),
-				null
-			))
+			->whereLanguageIs(Registry::get('language'))
 			->orderByDesc('date')
 			->findMany();
 

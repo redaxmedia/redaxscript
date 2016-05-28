@@ -32,32 +32,43 @@ class Setting extends CommandAbstract
 				'set' => array(
 					'description' => 'Set the setting',
 					'optionArray' => array(
-						'<name>' => array(
-							'description' => 'Required setting <name>'
+						'<key>' => array(
+							'description' => 'Required setting <key>'
+						),
+						'<value>' => array(
+							'description' => 'Required setting <value>'
 						)
 					)
 				)
 			)
 		)
 	);
-	
+
 	/**
 	 * run the command
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
 		$parser = new Parser($this->_request);
-		$parser->init();
+		$parser->init($mode);
 
 		/* run command */
 
-		$argumentKey = $parser->getArgument(2);
+		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();
+		}
+		if ($argumentKey === 'set')
+		{
+			return $this->_set($parser->getOption());
 		}
 		return $this->getHelp();
 	}
@@ -70,20 +81,38 @@ class Setting extends CommandAbstract
 	 * @return string
 	 */
 
-	public function _list()
+	protected function _list()
 	{
 		$output = null;
-		$settings = DB::getSetting();
+		$settings = Db::getSetting();
 
 		/* process settings */
 
 		foreach ($settings as $setting)
 		{
-			if ($setting->value)
-			{
-				$output .= str_pad($setting->name, 30) . $setting->value . PHP_EOL;
-			}
+			$output .= str_pad($setting->name, 30) . $setting->value . PHP_EOL;
 		}
 		return $output;
+	}
+
+	/**
+	 * set the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _set($optionArray = array())
+	{
+		$key = $optionArray['key'] || $optionArray['no-interaction'] ? $optionArray['key'] : readline('key:');
+		$value = $optionArray['value'] || $optionArray['no-interaction'] ? $optionArray['value'] : readline('value:');
+		if ($key && $value)
+		{
+			return Db::setSetting($key, $value);
+		}
+		return false;
 	}
 }

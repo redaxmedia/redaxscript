@@ -5,12 +5,9 @@ use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Hash;
 use Redaxscript\Html\Element;
-use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
 use Redaxscript\Filter;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
@@ -24,53 +21,14 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Reset implements ControllerInterface
+class Reset extends ControllerAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 * @param Request $request instance of the request class
-	 */
-
-	public function __construct(Registry $registry, Language $language, Request $request)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-		$this->_request = $request;
-	}
-
 	/**
 	 * process the class
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	public function process()
@@ -121,7 +79,7 @@ class Reset implements ControllerInterface
 
 		if ($errorArray)
 		{
-			return $this->error($errorArray);
+			return $this->_error($errorArray);
 		}
 
 		/* handle success */
@@ -142,9 +100,9 @@ class Reset implements ControllerInterface
 
 		if ($this->_reset($resetArray) && $this->_mail($mailArray))
 		{
-			return $this->success();
+			return $this->_success();
 		}
-		return $this->error($this->_language->get('something_wrong'));
+		return $this->_error($this->_language->get('something_wrong'));
 	}
 
 	/**
@@ -155,7 +113,7 @@ class Reset implements ControllerInterface
 	 * @return string
 	 */
 
-	public function success()
+	protected function _success()
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
@@ -171,7 +129,7 @@ class Reset implements ControllerInterface
 	 * @return string
 	 */
 
-	public function error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));

@@ -3,8 +3,6 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the reset form
@@ -16,7 +14,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class ResetForm implements ViewInterface
+class ResetForm extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -37,8 +35,8 @@ class ResetForm implements ViewInterface
 			->init('h2', array(
 				'class' => 'rs-title-content'
 			))
-			->text(Language::get('password_reset'));
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+			->text($this->_language->get('password_reset'));
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-validate-form rs-form-default rs-form-reset'
@@ -62,11 +60,11 @@ class ResetForm implements ViewInterface
 			->append('</li></ul></fieldset>')
 			->hidden(array(
 				'name' => 'password',
-				'value' => Registry::get('thirdParameter')
+				'value' => $this->_registry->get('thirdParameter')
 			))
 			->hidden(array(
 				'name' => 'id',
-				'value' => Registry::get('thirdSubParameter')
+				'value' => $this->_registry->get('thirdSubParameter')
 			))
 			->captcha('solution')
 			->token()

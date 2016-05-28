@@ -117,12 +117,12 @@ class Hook
 	 * @since 3.0.0
 	 *
 	 * @param string $event name of the module event
-	 * @param array $parameter parameter of the module hook
+	 * @param array $parameterArray parameter of the module hook
 	 *
 	 * @return string $output
 	 */
 
-	public static function trigger($event = null, $parameter = array())
+	public static function trigger($event = null, $parameterArray = array())
 	{
 		$output = false;
 
@@ -141,7 +141,7 @@ class Hook
 				$output .= call_user_func_array(array(
 					$object,
 					$event
-				), $parameter);
+				), $parameterArray);
 			}
 		}
 		return $output;

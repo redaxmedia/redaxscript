@@ -55,12 +55,23 @@ class Parser
 	/**
 	 * init the class
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @since 3.0.0
 	 */
 
-	public function init()
+	public function init($mode = null)
 	{
-		$this->_parseArgument($this->_request->getServer('argv'));
+		if ($mode === 'cli')
+		{
+			$argumentArray = $this->_request->getServer('argv');
+			unset($argumentArray[0]);
+		}
+		else
+		{
+			$argumentArray = explode(' ', $this->_request->getPost('argv'));
+		}
+		$this->_parseArgument($argumentArray);
 	}
 
 	/**
@@ -147,58 +158,22 @@ class Parser
 
 	protected function _parseArgument($argumentArray = array())
 	{
+		$skip = false;
 		$argumentKey = 0;
-		$i = 0;
 		foreach ($argumentArray as $key => $value)
 		{
-			$value = $argumentArray[$i];
-			if (substr($value, 0, 2) === '--')
+			$next = next($argumentArray);
+			if (substr($value, 0, 1) === '-')
 			{
-				$equalPosition = strpos($value, '=');
-				$modeOffset = 2;
-				if ($equalPosition)
-				{
-					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
-					$optionValue = substr($value, $equalPosition + 1);
-				}
-				else
-				{
-					$optionKey = substr($value, 2);
-					$optionValue = true;
-					if ($argumentArray[$key + 1][0] !== '-')
-					{
-						$optionValue = $argumentArray[$key + 1];
-						$i++;
-					}
-				}
-				$this->setOption($optionKey, $optionValue);
+				$offset = substr($value, 0, 2) === '--' ? 2 : 1;
+				$optionArray = $this->_parseOption($value, $next, $offset);
+				$skip = $optionArray['value'] === $next;
+				$this->setOption($optionArray['key'], $optionArray['value']);
 			}
-			else if (substr($value, 0, 1) === '-')
-			{
-				$equalPosition = strpos($value, '=');
-				$modeOffset = 1;
-				if ($equalPosition)
-				{
-					$optionKey = substr($value, $modeOffset, $equalPosition - $modeOffset);
-					$optionValue = substr($value, $equalPosition + 1);
-				}
-				else
-				{
-					$optionKey = substr($value, 1);
-					$optionValue = true;
-					if ($argumentArray[$key + 1][0] !== '-')
-					{
-						$optionValue = $argumentArray[$key + 1];
-						$i++;
-					}
-				}
-				$this->setOption($optionKey, $optionValue);
-			}
-			else if ($value)
+			else if ($value && !$skip)
 			{
 				$this->setArgument($argumentKey++, $value);
 			}
-			$i++;
 		}
 	}
 
@@ -208,22 +183,25 @@ class Parser
 	 * @since 3.0.0
 	 *
 	 * @param string $option raw option to be parsed
-	 * @param integer $modeOffset offset of the mode
+	 * @param string $next raw next to be parsed
+	 * @param integer $offset offset of the raw option
+	 *
+	 * @return boolean
 	 */
 
-	protected function _parseOption($option = null, $modeOffset = null)
+	protected function _parseOption($option = null, $next = null, $offset = null)
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
 		{
-			$optionKey = substr($option, $modeOffset, $equalPosition - $modeOffset);
-			$optionValue = substr($option, $equalPosition + 1);
+			return array(
+				'key' => substr($option, $offset, $equalPosition - $offset),
+				'value' => substr($option, $equalPosition + 1)
+			);
 		}
-		else
-		{
-			$optionKey = substr($option, $modeOffset);
-			$optionValue = true;
-		}
-		$this->setOption($optionKey, $optionValue);
+		return array(
+			'key' => substr($option, $offset),
+			'value' => !$next || substr($next, 0, 1) === '-' ? true : $next
+		);
 	}
 }

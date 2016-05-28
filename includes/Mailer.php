@@ -145,13 +145,13 @@ class Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = Db::getSetting('subject');
+		$subject = Db::getSetting('subject');
 
 		/* extended subject string */
 
-		if ($settingsSubject)
+		if ($subject)
 		{
-			$this->_subjectString = $settingsSubject;
+			$this->_subjectString = $subject;
 			if ($this->_subject)
 			{
 				$this->_subjectString .= Db::getSetting('divider');

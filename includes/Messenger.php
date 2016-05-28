@@ -28,7 +28,7 @@ class Messenger
 	 * @var array
 	 */
 
-	protected $_options = array(
+	protected $_optionArray = array(
 		'className' => array(
 			'box' => 'rs-box-messenger rs-box-note',
 			'title' => 'rs-title-messenger rs-title-note',
@@ -49,16 +49,16 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $options options of the messenger
+	 * @param array $optionArray options of the messenger
 	 *
 	 * @return Messenger
 	 */
 
-	public function init($options = array())
+	public function init($optionArray = array())
 	{
-		if (is_array($options))
+		if (is_array($optionArray))
 		{
-			$this->_options = array_merge($this->_options, $options);
+			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
 		return $this;
 	}
@@ -191,13 +191,13 @@ class Messenger
 			$titleElement = new Html\Element();
 			$titleElement
 				->init('h2', array(
-					'class' => $this->_options['className']['title'] . ' ' . $this->_options['className']['notes'][$type]
+					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['notes'][$type]
 				))
 				->text($title);
 		}
 		$boxElement = new Html\Element();
 		$boxElement->init('div', array(
-			'class' => $this->_options['className']['box'] . ' ' . $this->_options['className']['notes'][$type]
+			'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['notes'][$type]
 		));
 
 		/* create a list */
@@ -206,7 +206,7 @@ class Messenger
 		{
 			$listElement = new Html\Element();
 			$listElement->init('ul', array(
-				'class' => $this->_options['className']['list']
+				'class' => $this->_optionArray['className']['list']
 			));
 
 			/* collect item output */
@@ -249,7 +249,7 @@ class Messenger
 			$output .= $linkElement
 				->init('a', array(
 					'href' => Registry::get('parameterRoute') . $this->_actionArray['route'],
-					'class' => $this->_options['className']['link']
+					'class' => $this->_optionArray['className']['link']
 				))
 				->text($this->_actionArray['text']);
 
@@ -259,7 +259,7 @@ class Messenger
 			{
 				$metaElement = new Html\Element();
 				$output .= $metaElement->init('meta', array(
-					'class' => $this->_actionArray['redirect'] === 0 ? $this->_options['className']['redirect'] : null,
+					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
 					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('root') . '/' . Registry::get('parameterRoute') . $this->_actionArray['route'],
 					'http-equiv' => 'refresh'
 				));

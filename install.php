@@ -3,45 +3,30 @@ error_reporting(E_ERROR || E_PARSE);
 
 include_once('includes/Singleton.php');
 include_once('includes/Config.php');
-if ($argv)
+
+/* install post */
+
+install_post();
+
+/* bootstrap */
+
+include_once('includes/bootstrap.php');
+
+/* module init */
+
+Redaxscript\Hook::trigger('init');
+
+/* call loader else render template */
+
+if (Redaxscript\Registry::get('firstParameter') == 'loader' && (Redaxscript\Registry::get('secondParameter') == 'styles' || Redaxscript\Registry::get('secondParameter') == 'scripts'))
 {
-	/* install cli */
-
-	install_cli($argv);
-
-	/* bootstrap */
-
-	include_once('includes/bootstrap.php');
-
-	/* install */
-
-	install();
+	echo loader(Redaxscript\Registry::get('secondParameter'), 'outline');
 }
 else
 {
-	/* install post */
-
-	install_post();
-
-	/* bootstrap */
-
-	include_once('includes/bootstrap.php');
-
-	/* module init */
-
-	Redaxscript\Hook::trigger('init');
-
-	/* call loader else render template */
-
-	if (Redaxscript\Registry::get('firstParameter') == 'loader' && (Redaxscript\Registry::get('secondParameter') == 'styles' || Redaxscript\Registry::get('secondParameter') == 'scripts'))
-	{
-		echo loader(Redaxscript\Registry::get('secondParameter'), 'outline');
-	}
-	else
-	{
-		include_once('templates/install/install.phtml');
-	}
+	include_once('templates/install/install.phtml');
 }
+
 
 /**
  * install
@@ -91,107 +76,6 @@ function install()
 	$mailer = new Redaxscript\Mailer();
 	$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 	$mailer->send();
-}
-
-/**
- * install cli
- *
- * @since 2.4.0
- * @deprecated 2.4.0
- *
- * @package Redaxscript
- * @category Install
- * @author Henry Ruhs
- *
- * @param array $argv
- */
-
-function install_cli($argv = array())
-{
-	global $d_type, $d_host, $d_name, $d_user, $d_password, $d_prefix, $d_salt, $name, $user, $password, $email;
-
-	$output = Redaxscript\Language::get('name', '_package') . ' ' . Redaxscript\Language::get('version', '_package') . PHP_EOL . PHP_EOL;
-	$typeArray = array();
-	foreach (PDO::getAvailableDrivers() as $driver)
-	{
-		if (is_dir('database/' . $driver))
-		{
-			$typeArray[$driver] = $driver;
-		}
-	};
-	$dbUrlOption = '--db-url';
-	$dbArray = array(
-		'--db-host',
-		'--db-name',
-		'--db-user',
-		'--db-password',
-		'--db-prefix',
-		'--db-salt'
-	);
-	$adminArray = array(
-		'--admin-name',
-		'--admin-user',
-		'--admin-password',
-		'--admin-email'
-	);
-
-	/* type */
-
-	if (in_array($argv[1], $typeArray))
-	{
-		$d_type = $argv[1];
-		$output .= 'Type: ' . $argv[1] . PHP_EOL;
-	}
-
-	/* parse url options */
-
-	if ($argv[2] === $dbUrlOption)
-	{
-		$dbUrl = parse_url(getenv($argv[3]));
-		$d_host = $dbUrl['host'];
-		$d_name = trim($dbUrl['path'], '/');
-		$d_user = $dbUrl['user'];
-		$d_password = $dbUrl['pass'];
-		$output .= 'Database host: ' . $d_host . PHP_EOL;
-		$output .= 'Database name: ' . $d_name . PHP_EOL;
-		$output .= 'Database user: ' . $d_user . PHP_EOL;
-		$output .= 'Database password: ' . str_repeat('*', strlen($d_password)) . PHP_EOL;
-	}
-
-	/* handle db options */
-
-	foreach ($argv as $key => $value)
-	{
-		if (in_array($value, $dbArray))
-		{
-			$suffix = str_replace('--db-', 'd_', $value);
-			$$suffix = $argv[$key + 1];
-			$output .= str_replace('--db-', 'Database ', $value) . ': ' . ($value === '--db-password' ? str_repeat('*', strlen($argv[$key + 1])) : $argv[$key + 1]) . PHP_EOL;
-		}
-	}
-
-	/* handle admin options */
-
-	foreach ($argv as $key => $value)
-	{
-		if (in_array($value, $adminArray))
-		{
-			$suffix = str_replace('--admin-', '', $value);
-			$$suffix = $argv[$key + 1];
-			$output .= str_replace('--admin-', 'Admin ', $value) . ': ' . ($value === '--admin-password' ? str_repeat('*', strlen($argv[$key + 1])) : $argv[$key + 1]) . PHP_EOL;
-		}
-	}
-
-	/* write config */
-
-	if ($argv[1])
-	{
-		write_config();
-	}
-
-	/* print output */
-
-	echo $output;
 }
 
 /**
@@ -446,7 +330,7 @@ function router()
 	}
 	else
 	{
-		$installForm = new Redaxscript\View\InstallForm();
+		$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 		echo $installForm->render(array(
 			'dbType' => $d_type,
 			'dbHost' => $d_host,

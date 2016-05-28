@@ -3,8 +3,6 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Hook;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * children class to generate the install form
@@ -16,19 +14,19 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class InstallForm implements ViewInterface
+class InstallForm extends ViewAbstract
 {
 	/**
 	 * render the view
 	 *
-	 * @param array $options options of the installation
+	 * @param array $optionArray options of the installation
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render($options = null)
+	public function render($optionArray = array())
 	{
 		$output = Hook::trigger('installFormStart');
 
@@ -38,8 +36,8 @@ class InstallForm implements ViewInterface
 		$titleElement
 			->init('h2', array(
 				'class' => 'rs-title-content'
-			))->text(Language::get('installation'));
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+			))->text($this->_language->get('installation'));
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
 				'class' => 'rs-js-install rs-js-accordion rs-js-validate-form rs-form-default rs-form-install'
@@ -59,18 +57,18 @@ class InstallForm implements ViewInterface
 			/* database set */
 
 			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-active">')
-			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . Language::get('database_setup') . '</legend>')
+			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . $this->_language->get('database_setup') . '</legend>')
 			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-active"><li>')
-			->label(Language::get('type'), array(
+			->label($this->_language->get('type'), array(
 				'for' => 'db-type'
 			))
 			->select(Helper\Option::getDatabaseArray(), array(
 				'id' => 'db-type',
 				'name' => 'db-type',
-				'value' => $options['dbType']
+				'value' => $optionArray['dbType']
 			))
 			->append('</li><li>')
-			->label(Language::get('host'), array(
+			->label($this->_language->get('host'), array(
 				'for' => 'db_host'
 			))
 			->text(array(
@@ -80,91 +78,91 @@ class InstallForm implements ViewInterface
 				'id' => 'db-host',
 				'name' => 'db-host',
 				'required' => 'required',
-				'value' => $options['dbHost']
+				'value' => $optionArray['dbHost']
 			))
 			->append('</li><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'db_name'
 			))
 			->text(array(
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
-				'value' => $options['dbName']
+				'value' => $optionArray['dbName']
 			))
 			->append('</li><li>')
-			->label(Language::get('user'), array(
+			->label($this->_language->get('user'), array(
 				'for' => 'db_user'
 			))
 			->text(array(
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
-				'value' => $options['dbUser']
+				'value' => $optionArray['dbUser']
 			))
 			->append('</li><li>')
-			->label(Language::get('password'), array(
+			->label($this->_language->get('password'), array(
 				'for' => 'db-password'
 			))
 			->password(array(
 				'id' => 'db-password',
 				'name' => 'db-password',
-				'value' => $options['dbPassword']
+				'value' => $optionArray['dbPassword']
 			))
 			->append('</li><li>')
-			->label(Language::get('prefix'), array(
+			->label($this->_language->get('prefix'), array(
 				'for' => 'db-prefix'
 			))
 			->text(array(
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
-				'value' => $options['dbPrefix']
+				'value' => $optionArray['dbPrefix']
 			))
 			->append('</li></ul></fieldset>')
 
 			/* account set */
 
 			->append('<fieldset class="rs-js-set-accordion rs-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-title-accordion">' . Language::get('account_create') . '</legend>')
+			->append('<legend class="rs-js-title-accordion rs-title-accordion">' . $this->_language->get('account_create') . '</legend>')
 			->append('<ul class="rs-js-box-accordion rs-box-accordion"><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'name'
 			))
 			->text(array(
 				'id' => 'admin-name',
 				'name' => 'admin-name',
 				'required' => 'required',
-				'value' => $options['adminName']
+				'value' => $optionArray['adminName']
 			))
 			->append('</li><li>')
-			->label(Language::get('name'), array(
+			->label($this->_language->get('name'), array(
 				'for' => 'admin-user'
 			))
 			->text(array(
 				'id' => 'admin-user',
 				'name' => 'admin-user',
 				'required' => 'required',
-				'value' => $options['adminUser']
+				'value' => $optionArray['adminUser']
 			))
 			->append('</li><li>')
-			->label(Language::get('password'), array(
+			->label($this->_language->get('password'), array(
 				'for' => 'admin_password'
 			))
 			->password(array(
 				'id' => 'admin-password',
 				'name' => 'admin-password',
 				'required' => 'required',
-				'value' => $options['adminPassword']
+				'value' => $optionArray['adminPassword']
 			))
 			->append('</li><li>')
-			->label(Language::get('email'), array(
+			->label($this->_language->get('email'), array(
 				'for' => 'admin-email'
 			))
 			->email(array(
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
-				'value' => $options['adminEmail']
+				'value' => $optionArray['adminEmail']
 			))
 			->append('</li></ul></fieldset>')
 			->hidden(array(
@@ -172,7 +170,7 @@ class InstallForm implements ViewInterface
 				'value' => sha1(uniqid())
 			))
 			->token()
-			->submit(Language::get('install'));
+			->submit($this->_language->get('install'));
 
 		/* collect output */
 

@@ -22,7 +22,7 @@
 	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
-	font: bold 0.875rem/2.5em arial;
+	font: bold 0.875rem/2.5em var(--rs-admin-font-secondary);
 	padding: 0 1em;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -85,7 +85,7 @@ a.rs-admin-button-default
 .rs-admin-button-default.rs-admin-button-cancel:before,
 .rs-admin-button-default.rs-admin-button-submit:before
 {
-	font: 1rem 'icon admin';
+	font: 1rem var(--rs-admin-font-icon);
 	margin-right: 0.5em;
 	text-transform: lowercase;
 	vertical-align: text-bottom;

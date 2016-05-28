@@ -51,12 +51,12 @@ class Gallery extends Config
 	 * @since 2.6.0
 	 *
 	 * @param string $directory
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($directory = null, $options = null)
+	public static function render($directory = null, $optionArray = array())
 	{
 		$output = null;
 		$outputItem = null;
@@ -82,7 +82,7 @@ class Gallery extends Config
 
 		/* adjust order */
 
-		if ($options['order'] === 'desc')
+		if ($optionArray['order'] === 'desc')
 		{
 			$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
 		}
@@ -95,7 +95,7 @@ class Gallery extends Config
 
 		/* remove thumbs */
 
-		if (!$galleryTotal || $options['command'] === 'remove')
+		if (!$galleryTotal || $optionArray['command'] === 'remove')
 		{
 			$galleryDirectory->remove(self::$_configArray['thumbDirectory']);
 		}
@@ -113,9 +113,9 @@ class Gallery extends Config
 
 				/* create thumbs */
 
-				if ($options['command'] === 'create' || !is_file($thumbPath))
+				if ($optionArray['command'] === 'create' || !is_file($thumbPath))
 				{
-					self::_createThumb($value, $directory, $options);
+					self::_createThumb($value, $directory, $optionArray);
 				}
 
 				/* image data */
@@ -187,17 +187,17 @@ class Gallery extends Config
 	 *
 	 * @param string $file
 	 * @param string $directory
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _createThumb($file = null, $directory = null, $options = null)
+	protected static function _createThumb($file = null, $directory = null, $optionArray = array())
 	{
 		/* options fallback */
 
-		$options['height'] = array_key_exists('height', $options) ? $options['height'] : self::$_configArray['height'];
-		$options['quality'] = array_key_exists('quality', $options) ? $options['quality'] : self::$_configArray['quality'];
+		$optionArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : self::$_configArray['height'];
+		$optionArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : self::$_configArray['quality'];
 
 		/* get extension */
 
@@ -227,15 +227,15 @@ class Gallery extends Config
 
 		/* calculate dimensions */
 
-		if ($options['height'])
+		if ($optionArray['height'])
 		{
-			$options['scaling'] = $options['height'] / $original['height'] * 100;
+			$optionArray['scaling'] = $optionArray['height'] / $original['height'] * 100;
 		}
 		else
 		{
-			$options['height'] = round($options['scaling'] / 100 * $original['height']);
+			$optionArray['height'] = round($optionArray['scaling'] / 100 * $original['height']);
 		}
-		$options['width'] = round($options['scaling'] / 100 * $original['width']);
+		$optionArray['width'] = round($optionArray['scaling'] / 100 * $original['width']);
 
 		/* create thumb directory */
 
@@ -245,9 +245,9 @@ class Gallery extends Config
 
 		/* create thumb */
 
-		$thumb = imagecreatetruecolor($options['width'], $options['height']);
-		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $options['width'], $options['height'], $original['width'], $original['height']);
-		imagejpeg($thumb, $thumbDirectory . '/' . $file, $options['quality']);
+		$thumb = imagecreatetruecolor($optionArray['width'], $optionArray['height']);
+		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $optionArray['width'], $optionArray['height'], $original['width'], $original['height']);
+		imagejpeg($thumb, $thumbDirectory . '/' . $file, $optionArray['quality']);
 
 		/* destroy images */
 

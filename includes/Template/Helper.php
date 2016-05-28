@@ -17,20 +17,28 @@ use Redaxscript\Registry;
 class Helper
 {
 	/**
-	 * default subset
+	 * prefix for the class
 	 *
 	 * @var string
 	 */
 
-	protected static $_subsetDefault = 'latin';
+	protected static $_prefix = 'rs-';
 
 	/**
-	 * default direction
+	 * subset
 	 *
 	 * @var string
 	 */
 
-	protected static $_directionDefault = 'ltr';
+	protected static $_subset = 'latin';
+
+	/**
+	 * direction
+	 *
+	 * @var string
+	 */
+
+	protected static $_direction = 'ltr';
 
 	/**
 	 * array of subsets
@@ -75,14 +83,6 @@ class Helper
 	);
 
 	/**
-	 * prefix for the class
-	 *
-	 * @var string
-	 */
-
-	protected static $_prefix = 'rs-';
-
-	/**
 	 * get the subset
 	 *
 	 * @since 3.0.0
@@ -99,7 +99,7 @@ class Helper
 				return $subset;
 			}
 		}
-		return self::$_subsetDefault;
+		return self::$_subset;
 	}
 
 	/**
@@ -119,7 +119,7 @@ class Helper
 				return $direction;
 			}
 		}
-		return self::$_directionDefault;
+		return self::$_direction;
 	}
 
 	/**
@@ -136,7 +136,14 @@ class Helper
 			self::_getBrowserArray(),
 			self::_getDeviceArray()
 		));
-		return self::$_prefix . implode(' ' . self::$_prefix, $classArray);
+
+		/* process class */
+
+		foreach ($classArray as $key => $value)
+		{
+			$classArray[$key] = self::$_prefix . $value;
+		}
+		return implode(' ', $classArray);
 	}
 
 	/**
@@ -164,7 +171,7 @@ class Helper
 	 * @return array
 	 */
 
-	protected static function _getDeviceArray()
+	protected function _getDeviceArray()
 	{
 		foreach (self::$_deviceArray as $system => $value)
 		{
