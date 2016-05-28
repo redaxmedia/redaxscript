@@ -168,7 +168,7 @@ class Config extends CommandAbstract
 
 	protected function _parse($optionArray = array())
 	{
-		$dbUrl = $optionArray['db-url'] || optionArray['no-interaction'] ? $optionArray['db-url'] : readline('db-url:');
+		$dbUrl = $optionArray['db-url'] || $optionArray['no-interaction'] ? $optionArray['db-url'] : readline('db-url:');
 		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
 		if ($dbUrl)
 		{
