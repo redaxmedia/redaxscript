@@ -78,6 +78,10 @@ class Install extends CommandAbstract
 		{
 			return $this->_database($parser->getOption());
 		}
+		if ($argumentKey === 'module')
+		{
+			return $this->_module($parser->getOption());
+		}
 		return $this->getHelp();
 	}
 
@@ -109,6 +113,29 @@ class Install extends CommandAbstract
 				'adminEmail' => $adminEmail
 			));
 			return Db::getStatus() === 2;
+		}
+		return false;
+	}
+
+	/**
+	 * install the module
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _module($optionArray = array())
+	{
+		$alias = $optionArray['alias'] || $optionArray['no-interaction'] ? $optionArray['alias'] : readline('alias:');
+		if ($alias)
+		{
+			$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+			$module = new $moduleClass;
+			$module->install();
+			return Db::forTablePrefix('modules')->where('alias', $alias)->count() > 0;
 		}
 		return false;
 	}
