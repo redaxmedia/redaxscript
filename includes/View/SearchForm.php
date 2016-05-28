@@ -14,7 +14,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class SearchForm extends ViewAbstract implements ViewInterface
+class SearchForm extends ViewAbstract
 {
 	/**
 	 * render the view

@@ -21,7 +21,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Register extends ControllerAbstract implements ControllerInterface
+class Register extends ControllerAbstract
 {
 	/**
 	 * process

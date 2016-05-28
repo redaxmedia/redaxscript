@@ -15,7 +15,7 @@ use Redaxscript\Messenger;
  * @author Balázs Szilágyi
  */
 
-class Logout extends ControllerAbstract implements ControllerInterface
+class Logout extends ControllerAbstract
 {
 	/**
 	 * process the class

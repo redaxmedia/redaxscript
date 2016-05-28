@@ -14,7 +14,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class InstallForm extends ViewAbstract implements ViewInterface
+class InstallForm extends ViewAbstract
 {
 	/**
 	 * render the view

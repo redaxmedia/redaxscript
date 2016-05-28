@@ -15,7 +15,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class RegisterForm extends ViewAbstract implements ViewInterface
+class RegisterForm extends ViewAbstract
 {
 	/**
 	 * render the view

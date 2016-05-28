@@ -14,7 +14,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-abstract class ViewAbstract
+abstract class ViewAbstract implements ViewInterface
 {
 	/**
 	 * instance of the registry class

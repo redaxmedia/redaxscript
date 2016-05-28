@@ -19,7 +19,7 @@ use Redaxscript\View;
  * @author Balázs Szilágyi
  */
 
-class Search extends ControllerAbstract implements ControllerInterface
+class Search extends ControllerAbstract
 {
 	/**
 	 * array of tables

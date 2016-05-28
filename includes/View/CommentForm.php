@@ -15,7 +15,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class CommentForm extends ViewAbstract implements ViewInterface
+class CommentForm extends ViewAbstract
 {
 	/**
 	 * render the view

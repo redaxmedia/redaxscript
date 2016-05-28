@@ -15,7 +15,7 @@ use Redaxscript\Request;
  * @author Henry Ruhs
  */
 
-abstract class ControllerAbstract
+abstract class ControllerAbstract implements ControllerInterface
 {
 	/**
 	 * instance of the registry class

@@ -19,7 +19,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Comment extends ControllerAbstract implements ControllerInterface
+class Comment extends ControllerAbstract
 {
 	/**
 	 * process the class

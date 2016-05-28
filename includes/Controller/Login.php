@@ -18,7 +18,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Login extends ControllerAbstract implements ControllerInterface
+class Login extends ControllerAbstract
 {
 	/**
 	 * process the class

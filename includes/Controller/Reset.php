@@ -21,7 +21,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class Reset extends ControllerAbstract implements ControllerInterface
+class Reset extends ControllerAbstract
 {
 	/**
 	 * process the class

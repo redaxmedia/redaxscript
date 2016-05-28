@@ -17,7 +17,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class SearchList extends ViewAbstract implements ViewInterface
+class SearchList extends ViewAbstract
 {
 	/**
 	 * render the view

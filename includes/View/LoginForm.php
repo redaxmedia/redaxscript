@@ -15,7 +15,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class LoginForm extends ViewAbstract implements ViewInterface
+class LoginForm extends ViewAbstract
 {
 	/**
 	 * render the view

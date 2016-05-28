@@ -15,7 +15,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class RecoverForm extends ViewAbstract implements ViewInterface
+class RecoverForm extends ViewAbstract
 {
 	/**
 	 * render the view

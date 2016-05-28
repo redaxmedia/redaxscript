@@ -14,7 +14,7 @@ use Redaxscript\Hook;
  * @author Henry Ruhs
  */
 
-class ResetForm extends ViewAbstract implements ViewInterface
+class ResetForm extends ViewAbstract
 {
 	/**
 	 * render the view
