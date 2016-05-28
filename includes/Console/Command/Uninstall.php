@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use Redaxscript\Db;
+use Redaxscript\Console\Parser;
+use Redaxscript\Installer;
+
 /**
  * children class to execute the uninstall command
  *
@@ -43,11 +47,39 @@ class Uninstall extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $mode name of the mode
+	 *
 	 * @return string
 	 */
 
-	public function run()
+	public function run($mode = null)
 	{
+		$parser = new Parser($this->_request);
+		$parser->init($mode);
+
+		/* run command */
+
+		$argumentKey = $parser->getArgument(1);
+		if ($argumentKey === 'database')
+		{
+			return $this->_database();
+		}
 		return $this->getHelp();
+	}
+
+	/**
+	 * install the database
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	protected function _database()
+	{
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawDrop();
+		return Db::getStatus() === 1;
 	}
 }

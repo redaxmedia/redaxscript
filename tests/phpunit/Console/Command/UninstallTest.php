@@ -35,6 +35,14 @@ class UninstallTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * array to restore config
+	 *
+	 * @var array
+	 */
+
+	protected $_configArray = array();
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -44,6 +52,8 @@ class UninstallTest extends TestCaseAbstract
 	{
 		$this->_config = Config::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_configArray = $this->_config->get();
+		$this->_config->set('dbPrefix', 'console_');
 	}
 
 	/**
@@ -55,6 +65,7 @@ class UninstallTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
+		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
 	}
 
 	/**
@@ -77,5 +88,31 @@ class UninstallTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testDatabase
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testDatabase()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'uninstall',
+			'database'
+		));
+		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertTrue($actual);
 	}
 }

@@ -137,8 +137,8 @@ class Config extends CommandAbstract
 
 	protected function _set($optionArray = array())
 	{
-		$dbType = $optionArray['db-type'] ? $optionArray['db-type'] : readline('db-type:');
-		$dbHost = $optionArray['db-host'] ? $optionArray['db-host'] : readline('db-host:');
+		$dbType = $optionArray['db-type'] ? $optionArray['db-type'] : $this->readline('db-type:');
+		$dbHost = $optionArray['db-host'] ? $optionArray['db-host'] : $this->readline('db-host:');
 		$this->_config->set('dbType', $dbType);
 		$this->_config->set('dbHost', $dbHost);
 		$this->_config->set('dbName', $optionArray['db-name']);
@@ -161,7 +161,7 @@ class Config extends CommandAbstract
 
 	protected function _parse($optionArray = array())
 	{
-		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : readline('db-url:'));
+		$dbUrl = getenv($optionArray['db-url'] ? $optionArray['db-url'] : $this->readline('db-url:'));
 		$this->_config->parse($dbUrl);
 		return $this->_config->write();
 	}
