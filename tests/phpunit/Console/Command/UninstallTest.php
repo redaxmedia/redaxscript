@@ -116,7 +116,7 @@ class UninstallTest extends TestCaseAbstract
 
 		$this->assertTrue($actual);
 	}
-	
+
 	/**
 	 * testModule
 	 *
