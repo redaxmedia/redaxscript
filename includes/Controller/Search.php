@@ -3,7 +3,6 @@ namespace Redaxscript\Controller;
 
 use Redaxscript\Db;
 use Redaxscript\Messenger;
-use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
 use Redaxscript\View;
