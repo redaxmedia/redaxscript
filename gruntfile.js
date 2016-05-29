@@ -402,9 +402,17 @@ module.exports = function (grunt)
 			{
 				command: grunt.option('integration') ? 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 			},
-			phpcpd:
+			phpcpdBase:
 			{
 				command: 'php vendor/bin/phpcpd includes',
+				options:
+				{
+					failOnError: false
+				}
+			},
+			phpcpdModules:
+			{
+				command: 'php vendor/bin/phpcpd modules',
 				options:
 				{
 					failOnError: false
@@ -727,7 +735,8 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('phpcpd',
 	[
-		'shell:phpcpd'
+		'shell:phpcpdBase',
+		'shell:phpcpdModules'
 	]);
 	grunt.registerTask('toc',
 	[
