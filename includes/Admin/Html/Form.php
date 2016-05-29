@@ -12,10 +12,10 @@ use Redaxscript\Html\Form as BaseForm;
  * @category Admin
  * @author Henry Ruhs
  *
- * @method create(string $text, array $attributeArray)
- * @method delete(string $text, array $attributeArray)
- * @method save(string $text, array $attributeArray)
- * @method uninstall(string $text, array $attributeArray)
+ * @method create(string $text = null, array $attributeArray = array())
+ * @method delete(string $text = null, array $attributeArray = array())
+ * @method save(string $text = null, array $attributeArray = array())
+ * @method uninstall(string $text = null, array $attributeArray = array())
  */
 
 class Form extends BaseForm
