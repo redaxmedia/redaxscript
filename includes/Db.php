@@ -257,15 +257,15 @@ class Db extends ORM
 
 	public function findFlatArray($key = 'id')
 	{
-		$output = array();
+		$flatArray = array();
 		foreach ($this->findArray() as $value)
 		{
 			if (array_key_exists($key, $value))
 			{
-				$output[] = $value[$key];
+				$flatArray[] = $value[$key];
 			}
 		}
-		return $output;
+		return $flatArray;
 	}
 
 	/**
