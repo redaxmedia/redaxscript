@@ -10,12 +10,12 @@ namespace Redaxscript;
  * @category Auth
  * @author Henry Ruhs
  *
- * @method getPermissionNew
- * @method getPermissionInstall
- * @method getPermissionEdit
- * @method getPermissionDelete
- * @method getPermissionUninstall
- * @method getFilter
+ * @method getPermissionNew(string $type)
+ * @method getPermissionInstall(string $type)
+ * @method getPermissionEdit(string $type)
+ * @method getPermissionDelete(string $type)
+ * @method getPermissionUninstall(string $type)
+ * @method getFilter()
  */
 
 class Auth

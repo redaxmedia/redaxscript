@@ -17,27 +17,27 @@ use Redaxscript\Registry;
  * @category Server
  * @author Henry Ruhs
  *
- * @method button()
- * @method cancel()
- * @method checkbox()
- * @method color()
- * @method date()
- * @method datetime()
- * @method email()
- * @method file()
- * @method hidden()
- * @method number()
- * @method password()
- * @method radio()
- * @method range()
- * @method reset()
- * @method search()
- * @method submit()
- * @method time()
- * @method tel()
- * @method text()
- * @method url()
- * @method week()
+ * @method button(string $text, array $attributeArray)
+ * @method cancel(string $text, array $attributeArray)
+ * @method checkbox(array $attributeArray)
+ * @method color(array $attributeArray)
+ * @method date(array $attributeArray)
+ * @method datetime(array $attributeArray)
+ * @method email(array $attributeArray)
+ * @method file(array $attributeArray)
+ * @method hidden(array $attributeArray)
+ * @method number(array $attributeArray)
+ * @method password(array $attributeArray)
+ * @method radio(array $attributeArray)
+ * @method range(array $attributeArray)
+ * @method reset(string $text, array $attributeArray)
+ * @method search(array $attributeArray)
+ * @method submit(string $text, array $attributeArray)
+ * @method time(array $attributeArray)
+ * @method tel(array $attributeArray)
+ * @method text(array $attributeArray)
+ * @method url(array $attributeArray)
+ * @method week(array $attributeArray)
  */
 
 class Form extends HtmlAbstract
@@ -233,32 +233,32 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $method name of the method
-	 * @param array $arguments arguments of the method
+	 * @param array $argumentArray arguments of the method
 	 *
 	 * @return Form
 	 */
 
-	public function __call($method = null, $arguments = array())
+	public function __call($method = null, $argumentArray = array())
 	{
 		/* input */
 
 		if (array_key_exists($method, $this->_attributeArray['input']))
 		{
-			return $this->_createInput($method, $arguments[0]);
+			return $this->_createInput($method, $argumentArray[0]);
 		}
 
 		/* button */
 
 		if (array_key_exists($method, $this->_attributeArray['button']))
 		{
-			return $this->_createButton($method, $arguments[0], $arguments[1]);
+			return $this->_createButton($method, $argumentArray[0], $argumentArray[1]);
 		}
 
 		/* link */
 
 		if (array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->_createLink($method, $arguments[0], $arguments[1]);
+			return $this->_createLink($method, $argumentArray[0], $argumentArray[1]);
 		}
 	}
 
