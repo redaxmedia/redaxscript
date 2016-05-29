@@ -118,9 +118,9 @@ class Gallery extends Config
 					self::_createThumb($value, $directory, $optionArray);
 				}
 
-				/* image data */
+				/* get image data */
 
-				$imageData = self::_imageData($imagePath);
+				$imageData = self::_getData($imagePath);
 
 				/* collect item output */
 
@@ -152,7 +152,7 @@ class Gallery extends Config
 	}
 
 	/**
-	 * imageData
+	 * getData
 	 *
 	 * @since 2.6.0
 	 *
@@ -161,23 +161,27 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _imageData($file = null)
+	protected static function _getData($file = null)
 	{
-		$output = array();
+		$dataArray = array();
+		$exifArray = array();
+
+		/* function exists */
+
 		if (function_exists('exif_read_data'))
 		{
-			$exifData = exif_read_data($file);
+			$exifArray = exif_read_data($file);
 		}
 
 		/* has image data */
 
-		if ($exifData)
+		if ($exifArray)
 		{
-			$output['artist'] = $exifData['Artist'];
-			$output['date'] = $exifData['DateTime'] ? date(Db::getSetting('date'), strtotime($exifData['DateTime'])) : null;
-			$output['description'] = $exifData['ImageDescription'];
+			$dataArray['artist'] = $exifArray['Artist'];
+			$dataArray['date'] = $exifArray['DateTime'] ? date(Db::getSetting('date'), strtotime($exifArray['DateTime'])) : null;
+			$dataArray['description'] = $exifArray['ImageDescription'];
 		}
-		return $output;
+		return $dataArray;
 	}
 
 	/**

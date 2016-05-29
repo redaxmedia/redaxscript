@@ -22,7 +22,7 @@ use PDOException;
  * @method deleteMany()
  * @method findArray()
  * @method findMany()
- * @method findOne()
+ * @method findOne(integer $id = null)
  * @method forTable(string $table, string $connection = null)
  * @method getDb(string $connection = null)
  * @method rawExecute(string $query, array $parameterArray = array(), string $connection = null)

@@ -53,6 +53,7 @@ class Comment extends ControllerAbstract
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['author'])
 		{
 			$errorArray[] = $this->_language->get('author_empty');

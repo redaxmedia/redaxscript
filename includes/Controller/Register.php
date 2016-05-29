@@ -51,6 +51,7 @@ class Register extends ControllerAbstract
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['name'])
 		{
 			$errorArray[] = $this->_language->get('name_empty');

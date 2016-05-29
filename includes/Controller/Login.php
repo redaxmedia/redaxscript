@@ -62,6 +62,7 @@ class Login extends ControllerAbstract
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['user'])
 		{
 			$errorArray[] = $this->_language->get('user_empty');

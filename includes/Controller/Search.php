@@ -49,6 +49,7 @@ class Search extends ControllerAbstract
 
 		/* process query */
 
+		$queryArray = array();
 		if (!$thirdParameter)
 		{
 			$queryArray = array(
@@ -68,6 +69,7 @@ class Search extends ControllerAbstract
 
 		/* validate search */
 
+		$infoArray = array();
 		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
 		{
 			$infoArray[] = $this->_language->get('input_incorrect');
