@@ -140,8 +140,8 @@ class Config extends CommandAbstract
 
 	protected function _set($optionArray = array())
 	{
-		$dbType = $optionArray['db-type'] || $optionArray['no-interaction'] ? $optionArray['db-type'] : readline('db-type:');
-		$dbHost = $optionArray['db-host'] || $optionArray['no-interaction'] ? $optionArray['db-host'] : readline('db-host:');
+		$dbType = $this->prompt('db-type', $optionArray);
+		$dbHost = $this->prompt('db-host', $optionArray);
 		if ($dbType && $dbHost)
 		{
 			$this->_config->set('dbType', $dbType);
@@ -168,7 +168,7 @@ class Config extends CommandAbstract
 
 	protected function _parse($optionArray = array())
 	{
-		$dbUrl = $optionArray['db-url'] || $optionArray['no-interaction'] ? $optionArray['db-url'] : readline('db-url:');
+		$dbUrl = $this->prompt('db-url', $optionArray);
 		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
 		if ($dbUrl)
 		{

@@ -107,8 +107,8 @@ class Setting extends CommandAbstract
 
 	protected function _set($optionArray = array())
 	{
-		$key = $optionArray['key'] || $optionArray['no-interaction'] ? $optionArray['key'] : readline('key:');
-		$value = $optionArray['value'] || $optionArray['no-interaction'] ? $optionArray['value'] : readline('value:');
+		$key = $this->prompt('key', $optionArray);
+		$value = $this->prompt('value', $optionArray);
 		if ($key && $value)
 		{
 			return Db::setSetting($key, $value);

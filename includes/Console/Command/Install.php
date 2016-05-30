@@ -97,10 +97,10 @@ class Install extends CommandAbstract
 
 	protected function _database($optionArray = array())
 	{
-		$adminName = $optionArray['admin-name'] || $optionArray['no-interaction'] ? $optionArray['admin-name'] : readline('admin-name:');
-		$adminUser = $optionArray['admin-user'] || $optionArray['no-interaction'] ? $optionArray['admin-user'] : readline('admin-user:');
-		$adminPassword = $optionArray['admin-password'] || $optionArray['no-interaction'] ? $optionArray['admin-password'] : readline('admin-password:');
-		$adminEmail = $optionArray['admin-email'] || $optionArray['no-interaction'] ? $optionArray['admin-email'] : readline('admin-email:');
+		$adminName = $this->prompt('admin-name', $optionArray);
+		$adminUser = $this->prompt('admin-user', $optionArray);
+		$adminPassword = $this->prompt('admin-password', $optionArray);
+		$adminEmail = $this->prompt('admin-email', $optionArray);
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
 			$installer = new Installer($this->_config);
@@ -129,7 +129,7 @@ class Install extends CommandAbstract
 
 	protected function _module($optionArray = array())
 	{
-		$alias = $optionArray['alias'] || $optionArray['no-interaction'] ? $optionArray['alias'] : readline('alias:');
+		$alias = $this->prompt('alias', $optionArray);
 		if ($alias)
 		{
 			$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;

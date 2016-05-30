@@ -124,16 +124,12 @@ class Status extends CommandAbstract
 
 		/* optional */
 
-		if ($moduleArray)
+		foreach ($optionalArray as $value)
 		{
-			foreach ($optionalArray as $value)
-			{
-				$statusArray[$value] = array(
-					'value' => null,
-					'status' => in_array($value, $moduleArray) ? 1 : 0
-				);
-
-			}
+			$statusArray[$value] = array(
+				'value' => null,
+				'status' => in_array($value, $moduleArray) ? 1 : 0
+			);
 		}
 		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
 
