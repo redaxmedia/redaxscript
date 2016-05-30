@@ -79,6 +79,8 @@ class Status extends CommandAbstract
 	 * database status
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	protected function _database()
@@ -95,6 +97,8 @@ class Status extends CommandAbstract
 	 * system status
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	protected function _system()
