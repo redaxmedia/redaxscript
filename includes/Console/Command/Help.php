@@ -74,11 +74,14 @@ class Help extends CommandAbstract
 			$lastKey = end($namespaceKeys);
 			foreach ($this->_namespaceArray as $commandKey => $commandClass)
 			{
-				$command = new $commandClass($this->_config, $this->_request);
-				$output .= $command->getHelp();
-				if ($commandKey !== $lastKey)
+				if (class_exists($commandClass))
 				{
-					$output .= PHP_EOL;
+					$command = new $commandClass($this->_config, $this->_request);
+					$output .= $command->getHelp();
+					if ($commandKey !== $lastKey)
+					{
+						$output .= PHP_EOL;
+					}
 				}
 			}
 		}
@@ -88,8 +91,11 @@ class Help extends CommandAbstract
 		else
 		{
 			$commandClass = $this->_namespaceArray[$argumentKey];
-			$command = new $commandClass($this->_config, $this->_request);
-			$output .= $command->getHelp();
+			if (class_exists($commandClass))
+			{
+				$command = new $commandClass($this->_config, $this->_request);
+				$output .= $command->getHelp();
+			}
 		}
 		return $output;
 	}

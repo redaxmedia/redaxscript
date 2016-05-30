@@ -48,7 +48,11 @@ class Tag
 	public static function console()
 	{
 		$console = new Console\Console(Config::getInstance(), Request::getInstance());
-		return $console->init('template');
+		$output = $console->init('template');
+		if (is_string($output))
+		{
+			return htmlentities($output);
+		}
 	}
 
 	/**

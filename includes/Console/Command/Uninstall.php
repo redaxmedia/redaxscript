@@ -100,9 +100,9 @@ class Uninstall extends CommandAbstract
 	protected function _module($optionArray = array())
 	{
 		$alias = $this->prompt('alias', $optionArray);
-		if ($alias)
+		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+		if (class_exists($moduleClass))
 		{
-			$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
 			$module = new $moduleClass;
 			$module->uninstall();
 			return !Db::forTablePrefix('modules')->where('alias', $alias)->count();
