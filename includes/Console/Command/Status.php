@@ -101,7 +101,12 @@ class Status extends CommandAbstract
 	{
 		$output = null;
 		$driverArray = PDO::getAvailableDrivers();
-		$modulesArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
+		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
+		$optionalArray = array(
+			'mod_deflate',
+			'mod_headers',
+			'mod_rewrite'
+		);
 		$statusArray = array(
 			'OS' => array(
 				'value' => strtolower(php_uname('s')),
@@ -114,16 +119,22 @@ class Status extends CommandAbstract
 			'PDO' => array(
 				'value' => implode($driverArray, ', '),
 				'status' => count($driverArray) ? 1 : 0
-			),
-			'mod_rewrite' => array(
-				'value' => in_array('mod_rewrite', $modulesArray),
-				'status' => in_array('mod_rewrite', $modulesArray) ? 1 : 0
-			),
-			'mod_deflate' => array(
-				'value' => in_array('mod_deflate', $modulesArray),
-				'status' => in_array('mod_deflate', $modulesArray) ? 1 : 0
 			)
 		);
+
+		/* optional */
+
+		if ($moduleArray)
+		{
+			foreach ($optionalArray as $value)
+			{
+				$statusArray[$value] = array(
+					'value' => null,
+					'status' => in_array($value, $moduleArray) ? 1 : 0
+				);
+
+			}
+		}
 		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
 
 		/* process status */

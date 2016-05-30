@@ -3,7 +3,7 @@ namespace Redaxscript;
 
 use Redaxscript\Console;
 
-error_reporting(0);
+error_reporting(E_ERROR || E_PARSE);
 
 /* bootstrap */
 
