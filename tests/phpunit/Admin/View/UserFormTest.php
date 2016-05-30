@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Db;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -44,6 +45,34 @@ class UserFormTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_language = Language::getInstance();
+	}
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		$test = Db::forTablePrefix('users')->create();
+		$test->set(array(
+			'name' => 'Test',
+			'user' => 'test',
+			'groups' => '1'
+		));
+		$test->save();
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('users')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

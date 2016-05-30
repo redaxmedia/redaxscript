@@ -98,6 +98,27 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testConsoleInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConsoleInvalid()
+	{
+		/* setup */
+
+		$this->_request->setPost('argv', 'invalid');
+
+		/* actual */
+
+		$actual = Template\Tag::console();
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
 	 * testSearch
 	 *
 	 * @since 3.0.0
