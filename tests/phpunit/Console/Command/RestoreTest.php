@@ -106,7 +106,7 @@ class RestoreTest extends TestCaseAbstract
 
 		$this->assertTrue($actual);
 	}
-	
+
 	/**
 	 * testDatabaseInvalid
 	 *

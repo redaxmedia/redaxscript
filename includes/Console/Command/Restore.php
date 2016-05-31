@@ -70,7 +70,7 @@ class Restore extends CommandAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
-	 * 
+	 *
 	 * @return string
 	 */
 

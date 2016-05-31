@@ -106,7 +106,7 @@ class BackupTest extends TestCaseAbstract
 
 		$this->assertTrue($actual);
 	}
-	
+
 	/**
 	 * testDatabaseInvalid
 	 *
