@@ -14,29 +14,30 @@ use PDOException;
  * @category Db
  * @author Henry Ruhs
  *
- * @method _addJoinSource()
- * @method _addOrderBy()
- * @method _addWhere()
- * @method _setupDb()
- * @method clearCache()
+ * @method _addJoinSource(string $operator, string $table, mixed $constraint, string $tableAlias)
+ * @method _addOrderBy(string $column, string $value)
+ * @method _addWhere(string $clause, array $valueArray)
+ * @method _setupDb(string $connection = null)
+ * @method clearCache(string $table, string $connection)
  * @method deleteMany()
- * @method deleteOne()
  * @method findArray()
  * @method findMany()
- * @method findOne()
- * @method forTable()
- * @method getDb()
- * @method rawExecute()
- * @method rawQuery()
- * @method orderByAsc()
- * @method orderByDesc()
- * @method tableAlias()
- * @method whereGt()
- * @method whereIdIn()
- * @method whereIdIs()
- * @method whereIn()
- * @method whereLt()
- * @method whereRaw()
+ * @method findOne(integer $id = null)
+ * @method forTable(string $table, string $connection = null)
+ * @method getDb(string $connection = null)
+ * @method rawExecute(string $query, array $parameterArray = array(), string $connection = null)
+ * @method rawQuery(string $query, array $parameterArray = array())
+ * @method orderByAsc(string $column)
+ * @method orderByDesc(string $column)
+ * @method tableAlias(string $tableAlias)
+ * @method whereGt(string $column, string $value)
+ * @method whereIdIn(array $idArray)
+ * @method whereIdIs(integer $id)
+ * @method whereIn(string $column, string $value)
+ * @method whereLike(string $column, string $value)
+ * @method whereLt(string $column, string $value)
+ * @method whereNotEqual(string $column, string $value)
+ * @method whereRaw(string $clause, array $parameterArray = array())
  */
 
 class Db extends ORM
@@ -257,15 +258,15 @@ class Db extends ORM
 
 	public function findFlatArray($key = 'id')
 	{
-		$output = array();
+		$flatArray = array();
 		foreach ($this->findArray() as $value)
 		{
 			if (array_key_exists($key, $value))
 			{
-				$output[] = $value[$key];
+				$flatArray[] = $value[$key];
 			}
 		}
-		return $output;
+		return $flatArray;
 	}
 
 	/**

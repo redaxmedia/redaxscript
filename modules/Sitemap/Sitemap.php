@@ -44,7 +44,6 @@ class Sitemap extends Config
 	public static function render()
 	{
 		$output = null;
-		$outputItem = null;
 
 		/* html elements */
 

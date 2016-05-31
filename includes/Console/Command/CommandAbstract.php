@@ -16,6 +16,22 @@ use Redaxscript\Console\ConsoleAbstract;
 abstract class CommandAbstract extends ConsoleAbstract
 {
 	/**
+	 * prompt
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key
+	 * @param array $promptArray
+	 *
+	 * @return string
+	 */
+
+	public function prompt($key = null, $promptArray = array())
+	{
+		return $promptArray[$key] || $promptArray['no-interaction'] || !function_exists('readline') ? $promptArray[$key] : readline($key . ':');
+	}
+
+	/**
 	 * get the help
 	 *
 	 * @since 3.0.0

@@ -28,6 +28,7 @@ class LoginForm extends ViewAbstract
 	public function render()
 	{
 		$output = Hook::trigger('loginFormStart');
+		$outputLegend = null;
 
 		/* html elements */
 
@@ -44,7 +45,7 @@ class LoginForm extends ViewAbstract
 				'href' => $this->_registry->get('parameterRoute') . 'login/recover',
 				'rel' => 'no-follow'
 			));
-			$legendHTML = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
+			$outputLegend = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
@@ -64,7 +65,7 @@ class LoginForm extends ViewAbstract
 
 		$formElement
 			->append('<fieldset>')
-			->legend($legendHTML)
+			->legend($outputLegend)
 			->append('<ul><li>')
 			->label('* ' . $this->_language->get('user'), array(
 				'for' => 'user'

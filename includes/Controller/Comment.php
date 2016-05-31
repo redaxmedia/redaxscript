@@ -35,9 +35,6 @@ class Comment extends ControllerAbstract
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
 		$htmlFilter = new Filter\Html();
-		$emailValidator = new Validator\Email();
-		$captchaValidator = new Validator\Captcha();
-		$urlValidator = new Validator\Url();
 
 		/* process post */
 
@@ -51,39 +48,9 @@ class Comment extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* validate post */
-
-		if (!$postArray['author'])
-		{
-			$errorArray[] = $this->_language->get('author_empty');
-		}
-		if (!$postArray['email'])
-		{
-			$errorArray[] = $this->_language->get('email_empty');
-		}
-		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('email_incorrect');
-		}
-		if ($postArray['url'] && $urlValidator->validate($postArray['url']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('url_incorrect');
-		}
-		if (!$postArray['text'])
-		{
-			$errorArray[] = $this->_language->get('comment_empty');
-		}
-		if (!$postArray['article'])
-		{
-			$errorArray[] = $this->_language->get('input_incorrect');
-		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
-		}
-
 		/* handle error */
 
+		$errorArray = $this->_validate($postArray);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -155,7 +122,57 @@ class Comment extends ControllerAbstract
 	}
 
 	/**
-	 * create comment
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $validateArray array to be validated
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($validateArray = array())
+	{
+		$emailValidator = new Validator\Email();
+		$captchaValidator = new Validator\Captcha();
+		$urlValidator = new Validator\Url();
+
+		/* validate post */
+
+		$errorArray = array();
+		if (!$validateArray['author'])
+		{
+			$errorArray[] = $this->_language->get('author_empty');
+		}
+		if (!$validateArray['email'])
+		{
+			$errorArray[] = $this->_language->get('email_empty');
+		}
+		else if ($emailValidator->validate($validateArray['email']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('email_incorrect');
+		}
+		if ($validateArray['url'] && $urlValidator->validate($validateArray['url']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('url_incorrect');
+		}
+		if (!$validateArray['text'])
+		{
+			$errorArray[] = $this->_language->get('comment_empty');
+		}
+		if (!$validateArray['article'])
+		{
+			$errorArray[] = $this->_language->get('input_incorrect');
+		}
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($validateArray['task'], $validateArray['solution']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('captcha_incorrect');
+		}
+		return $errorArray;
+	}
+
+	/**
+	 * create the comment
 	 *
 	 * @since 3.0.0
 	 *

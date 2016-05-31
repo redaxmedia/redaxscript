@@ -44,7 +44,6 @@ class InstallerTest extends TestCaseAbstract
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'installer_');
-		Db::clearCache();
 	}
 
 	/**

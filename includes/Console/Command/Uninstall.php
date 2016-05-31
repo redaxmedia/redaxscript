@@ -64,6 +64,10 @@ class Uninstall extends CommandAbstract
 		{
 			return $this->_database();
 		}
+		if ($argumentKey === 'module')
+		{
+			return $this->_module($parser->getOption());
+		}
 		return $this->getHelp();
 	}
 
@@ -81,5 +85,28 @@ class Uninstall extends CommandAbstract
 		$installer->init();
 		$installer->rawDrop();
 		return Db::getStatus() === 1;
+	}
+
+	/**
+	 * uninstall the module
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _module($optionArray = array())
+	{
+		$alias = $this->prompt('alias', $optionArray);
+		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+		if (class_exists($moduleClass))
+		{
+			$module = new $moduleClass;
+			$module->uninstall();
+			return !Db::forTablePrefix('modules')->where('alias', $alias)->count();
+		}
+		return false;
 	}
 }

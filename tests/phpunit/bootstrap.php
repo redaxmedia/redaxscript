@@ -49,7 +49,11 @@ $installer->insertData(array(
 	'adminPassword' => 'test',
 	'adminEmail' => 'test@test.com'
 ));
-Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('password', 'test')->save();
+Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set(array(
+	'password' => 'test',
+	'description' => 'test',
+	'language' => 'en'
+))->save();
 
 /* test module */
 

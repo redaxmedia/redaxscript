@@ -336,7 +336,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->limitGlobal('rank')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->limitGlobal()->findOne()->alias;
 
 		/* compare */
 

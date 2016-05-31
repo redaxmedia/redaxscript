@@ -79,6 +79,8 @@ class Status extends CommandAbstract
 	 * database status
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	protected function _database()
@@ -95,12 +97,20 @@ class Status extends CommandAbstract
 	 * system status
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	protected function _system()
 	{
 		$output = null;
 		$driverArray = PDO::getAvailableDrivers();
+		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
+		$optionalArray = array(
+			'mod_deflate',
+			'mod_headers',
+			'mod_rewrite'
+		);
 		$statusArray = array(
 			'OS' => array(
 				'value' => strtolower(php_uname('s')),
@@ -115,6 +125,16 @@ class Status extends CommandAbstract
 				'status' => count($driverArray) ? 1 : 0
 			)
 		);
+
+		/* optional */
+
+		foreach ($optionalArray as $value)
+		{
+			$statusArray[$value] = array(
+				'value' => null,
+				'status' => in_array($value, $moduleArray) ? 1 : 0
+			);
+		}
 		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
 
 		/* process status */

@@ -78,6 +78,10 @@ class Install extends CommandAbstract
 		{
 			return $this->_database($parser->getOption());
 		}
+		if ($argumentKey === 'module')
+		{
+			return $this->_module($parser->getOption());
+		}
 		return $this->getHelp();
 	}
 
@@ -93,10 +97,10 @@ class Install extends CommandAbstract
 
 	protected function _database($optionArray = array())
 	{
-		$adminName = $optionArray['admin-name'] || $optionArray['no-interaction'] ? $optionArray['admin-name'] : readline('admin-name:');
-		$adminUser = $optionArray['admin-user'] || $optionArray['no-interaction'] ? $optionArray['admin-user'] : readline('admin-user:');
-		$adminPassword = $optionArray['admin-password'] || $optionArray['no-interaction'] ? $optionArray['admin-password'] : readline('admin-password:');
-		$adminEmail = $optionArray['admin-email'] || $optionArray['no-interaction'] ? $optionArray['admin-email'] : readline('admin-email:');
+		$adminName = $this->prompt('admin-name', $optionArray);
+		$adminUser = $this->prompt('admin-user', $optionArray);
+		$adminPassword = $this->prompt('admin-password', $optionArray);
+		$adminEmail = $this->prompt('admin-email', $optionArray);
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
 			$installer = new Installer($this->_config);
@@ -109,6 +113,29 @@ class Install extends CommandAbstract
 				'adminEmail' => $adminEmail
 			));
 			return Db::getStatus() === 2;
+		}
+		return false;
+	}
+
+	/**
+	 * install the module
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _module($optionArray = array())
+	{
+		$alias = $this->prompt('alias', $optionArray);
+		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+		if (class_exists($moduleClass))
+		{
+			$module = new $moduleClass;
+			$module->install();
+			return Db::forTablePrefix('modules')->where('alias', $alias)->count() > 0;
 		}
 		return false;
 	}

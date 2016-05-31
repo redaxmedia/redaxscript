@@ -171,6 +171,7 @@ class Contact extends Module
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['author'])
 		{
 			$errorArray[] = Language::get('author_empty');

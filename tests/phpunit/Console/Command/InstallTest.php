@@ -150,4 +150,59 @@ class InstallTest extends TestCaseAbstract
 
 		$this->assertFalse($actual);
 	}
+
+	/**
+	 * testModule
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testModule()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'install',
+			'module',
+			'--alias',
+			'TestDummy'
+		));
+		$configCommand = new Command\Install($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testModule
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testModuleInvalid()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'install',
+			'module',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Install($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
 }

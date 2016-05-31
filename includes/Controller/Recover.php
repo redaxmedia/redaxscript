@@ -45,6 +45,7 @@ class Recover extends ControllerAbstract
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['email'])
 		{
 			$errorArray[] = $this->_language->get('email_empty');
@@ -71,6 +72,7 @@ class Recover extends ControllerAbstract
 
 		/* handle success */
 
+		$successArray = array();
 		$users = Db::forTablePrefix('users')->where(array(
 			'email' => $postArray['email'],
 			'status' => 1

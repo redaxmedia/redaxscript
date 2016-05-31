@@ -118,9 +118,9 @@ class Gallery extends Config
 					self::_createThumb($value, $directory, $optionArray);
 				}
 
-				/* image data */
+				/* get image data */
 
-				$imageData = self::_imageData($imagePath);
+				$imageData = self::_getData($imagePath);
 
 				/* collect item output */
 
@@ -152,7 +152,7 @@ class Gallery extends Config
 	}
 
 	/**
-	 * imageData
+	 * getData
 	 *
 	 * @since 2.6.0
 	 *
@@ -161,23 +161,27 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _imageData($file = null)
+	protected static function _getData($file = null)
 	{
-		$output = array();
+		$dataArray = array();
+		$exifArray = array();
+
+		/* function exists */
+
 		if (function_exists('exif_read_data'))
 		{
-			$exifData = exif_read_data($file);
+			$exifArray = exif_read_data($file);
 		}
 
 		/* has image data */
 
-		if ($exifData)
+		if ($exifArray)
 		{
-			$output['artist'] = $exifData['Artist'];
-			$output['date'] = $exifData['DateTime'] ? date(Db::getSetting('date'), strtotime($exifData['DateTime'])) : null;
-			$output['description'] = $exifData['ImageDescription'];
+			$dataArray['artist'] = $exifArray['Artist'];
+			$dataArray['date'] = $exifArray['DateTime'] ? date(Db::getSetting('date'), strtotime($exifArray['DateTime'])) : null;
+			$dataArray['description'] = $exifArray['ImageDescription'];
 		}
-		return $output;
+		return $dataArray;
 	}
 
 	/**
@@ -221,33 +225,33 @@ class Gallery extends Config
 
 		/* original image */
 
-		$original['dimensions'] = getimagesize($imagePath);
-		$original['height'] = $original['dimensions'][1];
-		$original['width'] = $original['dimensions'][0];
+		$originalArray['dimensions'] = getimagesize($imagePath);
+		$originalArray['height'] = $originalArray['dimensions'][1];
+		$originalArray['width'] = $originalArray['dimensions'][0];
 
 		/* calculate dimensions */
 
 		if ($optionArray['height'])
 		{
-			$optionArray['scaling'] = $optionArray['height'] / $original['height'] * 100;
+			$optionArray['scaling'] = $optionArray['height'] / $originalArray['height'] * 100;
 		}
 		else
 		{
-			$optionArray['height'] = round($optionArray['scaling'] / 100 * $original['height']);
+			$optionArray['height'] = round($optionArray['scaling'] / 100 * $originalArray['height']);
 		}
-		$optionArray['width'] = round($optionArray['scaling'] / 100 * $original['width']);
+		$optionArray['width'] = round($optionArray['scaling'] / 100 * $originalArray['width']);
 
 		/* create thumb directory */
 
-		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory);
-		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
+		$thumbDirectory = new Directory();
+		$thumbDirectory->init($directory);
+		$thumbDirectory->create(self::$_configArray['thumbDirectory']);
 
 		/* create thumb */
 
 		$thumb = imagecreatetruecolor($optionArray['width'], $optionArray['height']);
-		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $optionArray['width'], $optionArray['height'], $original['width'], $original['height']);
-		imagejpeg($thumb, $thumbDirectory . '/' . $file, $optionArray['quality']);
+		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $optionArray['width'], $optionArray['height'], $originalArray['width'], $originalArray['height']);
+		imagejpeg($thumb, $thumbDirectory, $optionArray['quality']);
 
 		/* destroy images */
 

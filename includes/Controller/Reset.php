@@ -54,6 +54,7 @@ class Reset extends ControllerAbstract
 
 		/* validate post */
 
+		$errorArray = array();
 		if (!$postArray['id'])
 		{
 			$errorArray[] = $this->_language->get('user_empty');

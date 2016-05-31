@@ -34,12 +34,11 @@ class Console extends ConsoleAbstract
 		if (array_key_exists($commandKey, $this->_namespaceArray))
 		{
 			$commandClass = $this->_namespaceArray[$commandKey];
-			$command = new $commandClass($this->_config, $this->_request);
-			if ($mode === 'cli')
+			if (class_exists($commandClass))
 			{
+				$command = new $commandClass($this->_config, $this->_request);
 				return $command->run($mode);
 			}
-			return htmlentities($command->run($mode));
 		}
 		return false;
 	}

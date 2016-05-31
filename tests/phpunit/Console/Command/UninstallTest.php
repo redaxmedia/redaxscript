@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Installer;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -114,5 +115,67 @@ class UninstallTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testModule
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testModule()
+	{
+		/* setup */
+
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawCreate();
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'uninstall',
+			'module',
+			'--alias',
+			'TestDummy'
+		));
+		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* teardown */
+
+		$installer->rawDrop();
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testModule
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testModuleInvalid()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'uninstall',
+			'module',
+			'--no-interaction'
+		));
+		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 }

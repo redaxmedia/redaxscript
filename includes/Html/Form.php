@@ -17,27 +17,27 @@ use Redaxscript\Registry;
  * @category Server
  * @author Henry Ruhs
  *
- * @method button()
- * @method cancel()
- * @method checkbox()
- * @method color()
- * @method date()
- * @method datetime()
- * @method email()
- * @method file()
- * @method hidden()
- * @method number()
- * @method password()
- * @method radio()
- * @method range()
- * @method reset()
- * @method search()
- * @method submit()
- * @method time()
- * @method tel()
- * @method text()
- * @method url()
- * @method week()
+ * @method button(string $text = null, array $attributeArray = array())
+ * @method cancel(string $text = null, array $attributeArray = array())
+ * @method checkbox(array $attributeArray = array())
+ * @method color(array $attributeArray = array())
+ * @method date(array $attributeArray = array())
+ * @method datetime(array $attributeArray = array())
+ * @method email(array $attributeArray = array())
+ * @method file(array $attributeArray = array())
+ * @method hidden(array $attributeArray = array())
+ * @method number(array $attributeArray = array())
+ * @method password(array $attributeArray = array())
+ * @method radio(array $attributeArray = array())
+ * @method range(array $attributeArray = array())
+ * @method reset(string $text = null, array $attributeArray = array())
+ * @method search(array $attributeArray = array())
+ * @method submit(string $text = null, array $attributeArray = array())
+ * @method time(array $attributeArray = array())
+ * @method tel(array $attributeArray = array())
+ * @method text(array $attributeArray = array())
+ * @method url(array $attributeArray = array())
+ * @method week(array $attributeArray = array())
  */
 
 class Form extends HtmlAbstract
@@ -233,32 +233,32 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $method name of the method
-	 * @param array $arguments arguments of the method
+	 * @param array $argumentArray arguments of the method
 	 *
 	 * @return Form
 	 */
 
-	public function __call($method = null, $arguments = array())
+	public function __call($method = null, $argumentArray = array())
 	{
 		/* input */
 
 		if (array_key_exists($method, $this->_attributeArray['input']))
 		{
-			return $this->_createInput($method, $arguments[0]);
+			return $this->_createInput($method, $argumentArray[0]);
 		}
 
 		/* button */
 
 		if (array_key_exists($method, $this->_attributeArray['button']))
 		{
-			return $this->_createButton($method, $arguments[0], $arguments[1]);
+			return $this->_createButton($method, $argumentArray[0], $argumentArray[1]);
 		}
 
 		/* link */
 
 		if (array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->_createLink($method, $arguments[0], $arguments[1]);
+			return $this->_createLink($method, $argumentArray[0], $argumentArray[1]);
 		}
 	}
 
