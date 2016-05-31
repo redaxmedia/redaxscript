@@ -94,11 +94,11 @@ class StatusTest extends TestCaseAbstract
 			'status',
 			'database'
 		));
-		$configCommand = new Command\Status($this->_config, $this->_request);
+		$statusCommand = new Command\Status($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $statusCommand->run('cli');
 
 		/* compare */
 
@@ -120,11 +120,11 @@ class StatusTest extends TestCaseAbstract
 			'status',
 			'system'
 		));
-		$configCommand = new Command\Status($this->_config, $this->_request);
+		$statusCommand = new Command\Status($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $statusCommand->run('cli');
 
 		/* compare */
 

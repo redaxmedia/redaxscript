@@ -113,11 +113,11 @@ class InstallTest extends TestCaseAbstract
 			'--admin-email',
 			'test@test.com'
 		));
-		$configCommand = new Command\Install($this->_config, $this->_request);
+		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $installCommand->run('cli');
 
 		/* compare */
 
@@ -140,11 +140,11 @@ class InstallTest extends TestCaseAbstract
 			'database',
 			'--no-interaction'
 		));
-		$configCommand = new Command\Install($this->_config, $this->_request);
+		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $installCommand->run('cli');
 
 		/* compare */
 
@@ -168,11 +168,11 @@ class InstallTest extends TestCaseAbstract
 			'--alias',
 			'TestDummy'
 		));
-		$configCommand = new Command\Install($this->_config, $this->_request);
+		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $installCommand->run('cli');
 
 		/* compare */
 
@@ -195,11 +195,11 @@ class InstallTest extends TestCaseAbstract
 			'module',
 			'--no-interaction'
 		));
-		$configCommand = new Command\Install($this->_config, $this->_request);
+		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $installCommand->run('cli');
 
 		/* compare */
 
