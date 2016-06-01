@@ -104,7 +104,7 @@ class BackupTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertNull($actual);
 	}
 
 	/**

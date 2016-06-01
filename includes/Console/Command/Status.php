@@ -123,6 +123,10 @@ class Status extends CommandAbstract
 			'PDO' => array(
 				'value' => implode($driverArray, ', '),
 				'status' => count($driverArray) ? 1 : 0
+			),
+			'shell_exec' => array(
+				'value' => null,
+				'status' => function_exists('shell_exec') ? 1 : 0
 			)
 		);
 

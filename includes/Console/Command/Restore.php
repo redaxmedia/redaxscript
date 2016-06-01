@@ -1,9 +1,7 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use PDO;
 use Redaxscript\Console\Parser;
-use Redaxscript\Db;
 
 /**
  * children class to execute the restore command
@@ -65,7 +63,7 @@ class Restore extends CommandAbstract
 	}
 
 	/**
-	 * restore database
+	 * restore the database
 	 *
 	 * @since 3.0.0
 	 *
@@ -76,13 +74,29 @@ class Restore extends CommandAbstract
 
 	protected function _database($optionArray = array())
 	{
+		$dbType = $this->_config->get('dbType');
+		$dbHost = $this->_config->get('dbHost');
+		$dbName = $this->_config->get('dbName');
+		$dbUser = $this->_config->get('dbUser');
+		$dbPassword = $this->_config->get('password');
 		$path = $this->prompt('path', $optionArray);
 		if (is_dir($path))
 		{
-			//exec('cp backup.sql test.sql');
-			//exec('mysqldump -u root -ptest test < backup.mysql');
-			//exec('pg_dump test > backup.pgsql');
-			return true;
+			$command = null;
+			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
+			{
+				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName;
+			}
+			if ($dbType === 'pgsql' && $dbName)
+			{
+				$command = 'pg_dump ' . $dbName;
+			}
+			if ($dbType === 'sqlite' && $dbHost)
+			{
+				$command = 'sqlite3 ' . $dbHost . ' .dump';
+			}
+			$command .= ' < ' . $path . '/backup.' . $dbType;
+			return shell_exec($command);
 		}
 		return false;
 	}
