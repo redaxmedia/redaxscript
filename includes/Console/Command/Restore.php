@@ -96,7 +96,7 @@ class Restore extends CommandAbstract
 				$command = 'sqlite3 ' . $dbHost . ' .dump';
 			}
 			$command .= ' < ' . $path . '/backup.' . $dbType;
-			return shell_exec($command);
+			return shell_exec(escapeshellcmd($command));
 		}
 		return false;
 	}
