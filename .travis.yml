@@ -34,15 +34,12 @@ script:
 - grunt
 - mailcatcher
 - mkdir build
-- DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-php build/mysql.cov
-- DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-php build/pgsql.cov
-- grunt phpunit --coverage-php build/sqlite.cov
-- php vendor/bin/phpcov merge build --clover build/clover.xml
+- DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover build/mysql.xml
+- DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover build/pgsql.xml
+- grunt phpunit --coverage-clover build/sqlite.xml
 
 after_script:
-- php vendor/bin/coveralls --coverage_clover build/clover.xml
-- wget https://scrutinizer-ci.com/ocular.phar
-- php ocular.phar code-coverage:upload --format=php-clover build/clover.xml
+- php vendor/bin/coveralls
 
 notifications:
  email:
