@@ -96,7 +96,8 @@ class Backup extends CommandAbstract
 				$command = 'sqlite3 ' . $dbHost . ' .dump';
 			}
 			$command .= ' > ' . $path . '/backup.' . $dbType;
-			return shell_exec(escapeshellcmd($command));
+			//return shell_exec(escapeshellcmd($command));
+			return;
 		}
 		return false;
 	}
