@@ -40,7 +40,11 @@
 .rs-console-label-default
 {
 	float: left;
-	margin-right: 0.5em;
+}
+
+.rs-console-label-default:after
+{
+	content: '\00a0';
 }
 
 .rs-console-field-text
