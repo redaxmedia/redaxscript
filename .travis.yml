@@ -36,10 +36,12 @@ script:
 - mkdir build
 - DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover build/mysql.xml
 - DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover build/pgsql.xml
-- grunt phpunit --coverage-clover build/sqlite.xml
+- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover build/sqlite.xml
 
 after_script:
 - php vendor/bin/coveralls
+- wget https://scrutinizer-ci.com/ocular.phar
+- php ocular.phar code-coverage:upload --format=php-clover build/sqlite.xml
 
 notifications:
  email:
