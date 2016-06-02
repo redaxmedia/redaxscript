@@ -83,7 +83,7 @@ button, input, select, textarea
  * @tableofcontents
  *
  * 1. general
- * 2. code
+ * 2. box
  * 3. form
  *
  * @since 3.0.0
@@ -96,34 +96,34 @@ button, input, select, textarea
 
 .rs-console-body
 {
-	background: #222;
-	color: #00ff00;
+	background: #300a24;
+	color: rgb(255, 255, 255);
 	font: 1rem monospace, arial, sans-serif;
 	margin: 0.5rem;
 }
 
-.rs-console-code::-moz-selection, .rs-console-label::-moz-selection
+.rs-console-box-default::-moz-selection, .rs-console-label-default::-moz-selection
 {
-	background: #00ff00;
-	color: #222;
+	background: rgb(255, 255, 255);
+	color: #300a24;
 }
 
-.rs-console-code::selection, .rs-console-label::selection
+.rs-console-box-default::selection, .rs-console-label-default::selection
 {
-	background: #00ff00;
-	color: #222;
+	background: rgb(255, 255, 255);
+	color: #300a24;
 }
 
-/* @section 2. code */
+/* @section 2. box */
 
-.rs-console-code
+.rs-console-box-default
 {
 	white-space: pre-wrap;
 }
 
 /* @section 3. form */
 
-.rs-console-label
+.rs-console-label-default
 {
 	float: left;
 	margin-right: 0.5em;

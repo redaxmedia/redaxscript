@@ -1,15 +1,15 @@
 <?php namespace Redaxscript\Template; ?>
 
-<article id="content" class="rs-console-install-content">
+<article id="content" class="rs-console-content">
 
 	<!-- code -->
 
-	<pre class="rs-console-code"><?php echo Tag::console(); ?></pre>
+	<div class="rs-console-box-default"><?php echo Tag::console(); ?></div>
 
 	<!-- form -->
 
-	<form method="post" class="rs-console-form">
-		<label for="prompt" class="rs-console-label"><?php echo Tag::registry('myUser') ? Tag::registry('myUser') . '@' . Tag::registry('host') : Tag::registry('host'); ?>:~$</label>
+	<form method="post" class="rs-console-form-default">
+		<label for="prompt" class="rs-console-label-default"><?php echo Tag::registry('myUser') ? Tag::registry('myUser') . '@' . Tag::registry('host') : Tag::registry('host'); ?>:~$</label>
 		<input autofocus="autofocus" autocomplete="off" spellcheck="false" id="prompt" class="rs-console-field-text" size="60" name="argv" />
 	</form>
 </article>

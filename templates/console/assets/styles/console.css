@@ -2,7 +2,7 @@
  * @tableofcontents
  *
  * 1. general
- * 2. code
+ * 2. box
  * 3. form
  *
  * @since 3.0.0
@@ -15,29 +15,29 @@
 
 .rs-console-body
 {
-	background: var(--rs-console-color-secondary);
-	color: var(--rs-console-color-primary);
+	background: var(--rs-console-color-primary);
+	color: gray(255);
 	font: 1rem var(--rs-console-font-primary);
 	margin: 0.5rem;
 }
 
-.rs-console-code::selection,
-.rs-console-label::selection
+.rs-console-box-default::selection,
+.rs-console-label-default::selection
 {
-	background: var(--rs-console-color-primary);
-	color: var(--rs-console-color-secondary);
+	background: gray(255);
+	color: var(--rs-console-color-primary);
 }
 
-/* @section 2. code */
+/* @section 2. box */
 
-.rs-console-code
+.rs-console-box-default
 {
 	white-space: pre-wrap;
 }
 
 /* @section 3. form */
 
-.rs-console-label
+.rs-console-label-default
 {
 	float: left;
 	margin-right: 0.5em;
