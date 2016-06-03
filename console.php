@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Console;
-
 error_reporting(E_ERROR || E_PARSE);
 
 /* bootstrap */
@@ -27,7 +25,7 @@ if (php_sapi_name() === 'cli')
 else if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 {
 	$console = new Console\Console($config, $request);
-	echo $console->init('ajax');
+	echo htmlentities($console->init('ajax'));
 }
 
 /* else web */

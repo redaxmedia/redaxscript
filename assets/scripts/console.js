@@ -18,41 +18,44 @@
 
 	$.fn.console = function ()
 	{
-		$(window).on('resize', function ()
-		{
-			var stuff = $('div.rs-console-box-default').width() - $('label.rs-console-label-default').width() - 1;
+		var box = $('div.rs-console-box-default'),
+			label = $('label.rs-console-label-default'),
+			field = $('input.rs-console-field-text');
 
-			$('html, body').scrollTop($(document).height() - $(window).height());
-			$('input.rs-console-field-text').width(stuff);
-		}).trigger('resize');
-		$('form.rs-console-form-default').on('submit', function (event)
+		$(this).on('submit', function (event)
 		{
 			$.post(location.href,
 			{
-				argv: $('input.rs-console-field-text').val()
+				argv: field.val()
 			})
 			.done(function (response)
 			{
-				$('div.rs-console-box-default').append(response);
+				box.append(response);
 			})
 			.always(function ()
 			{
-				var stuff = $('label.rs-console-label-default').text(),
-					argv = $('input.rs-console-field-text').val();
+				var stuff = label.text(),
+					argv = field.val();
 
-				$('div.rs-console-box-default').append(stuff + ' ' + argv + '\r\n');
-				$('input.rs-console-field-text').val('');
-				$('html, body').scrollTop($(document).height() - $(window).height());
+				box.append(stuff + ' ' + argv + '\r\n');
+				field.val('');
 				$(window).trigger('resize');
 			});
 			event.preventDefault();
 		});
+		$(window).on('resize', function ()
+		{
+			var stuff = box.width() - label.width() - 1;
+
+			$('html, body').scrollTop($(document).height() - $(window).height());
+			field.width(stuff);
+		}).trigger('resize');
 	};
 
 	/* @section 2. init */
 
 	$(function ()
 	{
-		$.fn.console();
+		$('form.rs-console-form-default').console();
 	});
 })(window.jQuery || window.Zepto);

@@ -16,7 +16,7 @@
 		"johnkary/phpunit-speedtrap": "1.0.1",
 		"mikey179/vfsStream": "1.6.3",
 		"phpbench/phpbench": "0.9.0",
-		"phpunit/phpunit": "5.3.4",
+		"phpunit/phpunit": "5.4.2",
 		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "1.0.1",
 		"sebastian/phpcpd": "2.0.4",
