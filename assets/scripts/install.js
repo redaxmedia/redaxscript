@@ -44,17 +44,17 @@
 					host = fieldHost.attr('data-' + type);
 
 				fieldHost.val(host);
-	
+
 				/* hide related */
-	
+
 				if (type === 'sqlite')
 				{
 					fieldRequired.removeAttr('required').removeClass('js_note_error note_error');
 					fieldRelated.parent().hide();
 				}
-	
+
 				/* else show related */
-	
+
 				else
 				{
 					fieldRequired.attr('required', 'required');
