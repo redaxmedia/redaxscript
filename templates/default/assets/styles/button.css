@@ -75,7 +75,7 @@ a.rs-button-default
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1.125em/1em var(--rs-font-icon);
+	font: 1em/1em var(--rs-font-icon);
 	left: 0;
 	position: absolute;
 	right: 0;
