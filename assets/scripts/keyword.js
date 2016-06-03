@@ -24,7 +24,7 @@
 			keywordArray = [],
 			output = '';
 
-		/* proccess target elements */
+		/* process target elements */
 
 		target.each(function ()
 		{
@@ -83,7 +83,7 @@
 
 				else
 				{
-					related.val('');
+					related.val(null);
 				}
 			});
 		});

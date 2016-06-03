@@ -383,7 +383,7 @@
 
 				else if (fieldValue.length < 3)
 				{
-					field.val('').attr('placeholder', message);
+					field.val(null).attr('placeholder', message);
 					timeout = setTimeout(function ()
 					{
 						field.attr('placeholder', fieldPlaceholder).focus();

@@ -28,6 +28,22 @@
 
 	rs.plugins =
 	{
+		console:
+		{
+			init: true,
+			selector: 'form.rs-console-js-form',
+			options:
+			{
+				element:
+				{
+					consoleBox: 'div.rs-console-js-box',
+					consoleLabel: 'label.rs-console-js-label',
+					consoleField: 'input.rs-console-js-field',
+					root: 'html, body'
+				},
+				eol: '\n'
+			}
+		},
 		accordion:
 		{
 			init: true,
@@ -87,9 +103,7 @@
 						fieldPrompt: 'rs-js-prompt rs-field-text'
 					}
 				},
-				type: 'alert',
-				message: '',
-				callback: ''
+				type: 'alert'
 			}
 		},
 		dock:
@@ -165,7 +179,7 @@
 		install:
 		{
 			init: false,
-			selector: 'form.rs-js-install',
+			selector: 'form.rs-install-js-form',
 			options:
 			{
 				element:
@@ -297,7 +311,7 @@
 	{
 		var base = doc.getElementsByTagName('base'),
 			checkBase = base.length,
-			output = '';
+			output = null;
 
 		if (checkBase)
 		{

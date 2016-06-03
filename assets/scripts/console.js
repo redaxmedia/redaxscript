@@ -14,48 +14,74 @@
 {
 	'use strict';
 
-	/* @section 1. install */
+	/* @section 1. console */
 
-	$.fn.console = function ()
+	$.fn.console = function (options)
 	{
-		var box = $('div.rs-console-box-default'),
-			label = $('label.rs-console-label-default'),
-			field = $('input.rs-console-field-text');
+		/* extend options */
 
-		$(this).on('submit', function (event)
+		if (rs.plugins.console.options !== options)
 		{
-			$.post(location.href,
-			{
-				argv: field.val()
-			})
-			.done(function (response)
-			{
-				box.append(response);
-			})
-			.always(function ()
-			{
-				var stuff = label.text(),
-					argv = field.val();
+			options = $.extend({}, rs.plugins.console.options, options || {});
+		}
 
-				box.append(stuff + ' ' + argv + '\r\n');
-				field.val('');
-				$(window).trigger('resize');
+		/* return this */
+
+		return this.each(function ()
+		{
+			var form = $(this),
+				box = $(options.element.consoleBox),
+				label = form.find(options.element.consoleLabel),
+				field = form.find(options.element.consoleField),
+				root = $(options.element.scroll);
+
+			/* listen for submit */
+
+			form.on('submit', function (event)
+			{
+				$.post(location.href,
+				{
+					argv: field.val()
+				})
+				.done(function (response)
+				{
+					if (typeof response === 'string')
+					{
+						box.append(response);
+					}
+				})
+				.always(function ()
+				{
+					var labelText = label.text(),
+						fieldValue = field.val();
+
+					box.append(labelText + ' ' + fieldValue + options.eol);
+					field.val(null);
+					$(window).trigger('resize');
+				});
+				event.preventDefault();
 			});
-			event.preventDefault();
-		});
-		$(window).on('resize', function ()
-		{
-			var stuff = box.width() - label.width() - 1;
 
-			$('html, body').scrollTop($(document).height() - $(window).height());
-			field.width(stuff);
-		}).trigger('resize');
+			/* listen for resize */
+
+			$(window).on('resize', function ()
+			{
+				var fieldWidth = box.width() - label.width() - 1,
+					scrollHeight = $(document).height() - $(window).height();
+
+				root.scrollTop(scrollHeight);
+				field.width(fieldWidth);
+			}).trigger('resize');
+		});
 	};
 
 	/* @section 2. init */
 
 	$(function ()
 	{
-		$('form.rs-console-form-default').console();
+		if (rs.plugins.console.init)
+		{
+			$(rs.plugins.console.selector).console(rs.plugins.console.options);
+		}
 	});
 })(window.jQuery || window.Zepto);

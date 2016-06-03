@@ -194,7 +194,7 @@
 
 				else
 				{
-					related.val('');
+					related.val(null);
 				}
 			});
 		});

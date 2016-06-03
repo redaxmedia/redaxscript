@@ -4,12 +4,12 @@
 
 	<!-- code -->
 
-	<div class="rs-console-box-default"><?php echo Tag::console(); ?></div>
+	<div class="rs-console-js-box rs-console-box-default"><?php echo Tag::console(); ?></div>
 
 	<!-- form -->
 
-	<form method="post" class="rs-console-form-default">
-		<label for="prompt" class="rs-console-label-default"><?php echo Tag::registry('myUser') ? Tag::registry('myUser') . '@' . Tag::registry('host') : Tag::registry('host'); ?>:~$</label>
-		<input autocapitalize="off" autofocus="autofocus" autocomplete="off" spellcheck="false" id="prompt" class="rs-console-field-text" name="argv" />
+	<form method="post" class="rs-console-js-form rs-console-form-default">
+		<label for="prompt" class="rs-console-js-label rs-console-label-default"><?php echo Tag::registry('myUser') ? Tag::registry('myUser') . '@' . Tag::registry('host') : Tag::registry('host'); ?>:~$</label>
+		<input autocapitalize="off" autofocus="autofocus" autocomplete="off" spellcheck="false" id="prompt" class="rs-console-js-field rs-console-field-text" name="argv" />
 	</form>
 </article>
