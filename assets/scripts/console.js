@@ -33,7 +33,7 @@
 				box = $(options.element.consoleBox),
 				label = form.find(options.element.consoleLabel),
 				field = form.find(options.element.consoleField),
-				root = $(options.element.scroll);
+				root = $(options.element.root);
 
 			/* listen for submit */
 
