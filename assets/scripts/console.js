@@ -20,7 +20,7 @@
 	{
 		$(window).on('resize', function ()
 		{
-			var stuff = $('div.rs-console-box-default').width() - $('label.rs-console-label-default').width();
+			var stuff = $('div.rs-console-box-default').width() - $('label.rs-console-label-default').width() - 1;
 
 			$('html, body').scrollTop($(document).height() - $(window).height());
 			$('input.rs-console-field-text').width(stuff);
@@ -33,9 +33,7 @@
 			})
 			.done(function (response)
 			{
-				var stuff = $(response).find('div.rs-console-box-default').text();
-
-				$('div.rs-console-box-default').append(stuff);
+				$('div.rs-console-box-default').append(response);
 			})
 			.always(function ()
 			{
@@ -45,6 +43,7 @@
 				$('div.rs-console-box-default').append(stuff + ' ' + argv + '\r\n');
 				$('input.rs-console-field-text').val('');
 				$('html, body').scrollTop($(document).height() - $(window).height());
+				$(window).trigger('resize');
 			});
 			event.preventDefault();
 		});
