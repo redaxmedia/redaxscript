@@ -20,8 +20,11 @@
 	{
 		$(window).on('resize', function ()
 		{
+			var stuff = $('div.rs-console-box-default').width() - $('label.rs-console-label-default').width();
+
 			$('html, body').scrollTop($(document).height() - $(window).height());
-		});
+			$('input.rs-console-field-text').width(stuff);
+		}).trigger('resize');
 		$('form.rs-console-form-default').on('submit', function (event)
 		{
 			$.post(location.href,
@@ -39,7 +42,7 @@
 				var stuff = $('label.rs-console-label-default').text(),
 					argv = $('input.rs-console-field-text').val();
 
-				$('div.rs-console-box-default').append('<p>' + stuff + ' ' + argv + '</p>');
+				$('div.rs-console-box-default').append(stuff + ' ' + argv + '\r\n');
 				$('input.rs-console-field-text').val('');
 				$('html, body').scrollTop($(document).height() - $(window).height());
 			});
