@@ -106,11 +106,11 @@ class UninstallTest extends TestCaseAbstract
 			'uninstall',
 			'database'
 		));
-		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $uninstallCommand->run('cli');
 
 		/* compare */
 
@@ -137,11 +137,11 @@ class UninstallTest extends TestCaseAbstract
 			'--alias',
 			'TestDummy'
 		));
-		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $uninstallCommand->run('cli');
 
 		/* teardown */
 
@@ -168,11 +168,11 @@ class UninstallTest extends TestCaseAbstract
 			'module',
 			'--no-interaction'
 		));
-		$configCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $configCommand->run('cli');
+		$actual = $uninstallCommand->run('cli');
 
 		/* compare */
 

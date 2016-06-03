@@ -7,7 +7,7 @@ use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * SettingTest
+ * RestoreTest
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class SettingTest extends TestCaseAbstract
+class RestoreTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the config class
@@ -67,12 +67,12 @@ class SettingTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$settingCommand = new Command\Setting($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
 		/* expect and actual */
 
-		$expect = $settingCommand->getHelp();
-		$actual = $settingCommand->run('cli');
+		$expect = $restoreCommand->getHelp();
+		$actual = $restoreCommand->run('cli');
 
 		/* compare */
 
@@ -80,82 +80,54 @@ class SettingTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testList
+	 * testDatabase
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testList()
+	public function testDatabase()
 	{
 		/* setup */
 
 		$this->_request->setServer('argv', array(
 			'console.php',
-			'setting',
-			'list'
+			'restore',
+			'database',
+			'--path',
+			'/'
 		));
-		$settingCommand = new Command\Setting($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $settingCommand->run('cli');
+		$actual = $restoreCommand->run('cli');
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertNull($actual);
 	}
 
 	/**
-	 * testSet
+	 * testDatabaseInvalid
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testSet()
+	public function testDatabaseInvalid()
 	{
 		/* setup */
 
 		$this->_request->setServer('argv', array(
 			'console.php',
-			'setting',
-			'set',
-			'--key',
-			'copyright',
-			'--value',
-			'Redaxscript'
-		));
-		$settingCommand = new Command\Setting($this->_config, $this->_request);
-
-		/* actual */
-
-		$actual = $settingCommand->run('cli');
-
-		/* compare */
-
-		$this->assertTrue($actual);
-	}
-
-	/**
-	 * testSetInvalid
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testSetInvalid()
-	{
-		/* setup */
-
-		$this->_request->setServer('argv', array(
-			'console.php',
-			'setting',
-			'set',
+			'restore',
+			'database',
 			'--no-interaction'
 		));
-		$settingCommand = new Command\Setting($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
 		/* actual */
 
-		$actual = $settingCommand->run('cli');
+		$actual = $restoreCommand->run('cli');
 
 		/* compare */
 

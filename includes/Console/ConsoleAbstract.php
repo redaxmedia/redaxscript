@@ -39,9 +39,11 @@ abstract class ConsoleAbstract
 	 */
 
 	protected $_namespaceArray = array(
+		'backup' => 'Redaxscript\Console\Command\Backup',
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',
+		'restore' => 'Redaxscript\Console\Command\Restore',
 		'setting' => 'Redaxscript\Console\Command\Setting',
 		'status' => 'Redaxscript\Console\Command\Status',
 		'uninstall' => 'Redaxscript\Console\Command\Uninstall'

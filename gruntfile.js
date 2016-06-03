@@ -396,11 +396,11 @@ module.exports = function (grunt)
 			},
 			phpunit:
 			{
-				command: grunt.option('integration') ? 'php vendor/bin/phpunit --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpunitParallel:
 			{
-				command: grunt.option('integration') ? 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml --coverage-clover=clover.xml' : 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpcpdBase:
 			{

@@ -47,8 +47,8 @@ class Install extends CommandAbstract
 				'module' => array(
 					'description' => 'Install the module',
 					'optionArray' => array(
-						'<alias>' => array(
-							'description' => 'Required module <alias>'
+						'alias' => array(
+							'description' => 'Required module alias'
 						)
 					)
 				)

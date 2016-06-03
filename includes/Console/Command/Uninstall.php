@@ -33,8 +33,8 @@ class Uninstall extends CommandAbstract
 				'module' => array(
 					'description' => 'Uninstall the module',
 					'optionArray' => array(
-						'<alias>' => array(
-							'description' => 'Required module <alias>'
+						'alias' => array(
+							'description' => 'Required module alias'
 						)
 					)
 				)

@@ -32,11 +32,11 @@ class Setting extends CommandAbstract
 				'set' => array(
 					'description' => 'Set the setting',
 					'optionArray' => array(
-						'<key>' => array(
-							'description' => 'Required setting <key>'
+						'key' => array(
+							'description' => 'Required setting key'
 						),
-						'<value>' => array(
-							'description' => 'Required setting <value>'
+						'value' => array(
+							'description' => 'Required setting value'
 						)
 					)
 				)
