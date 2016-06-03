@@ -10,7 +10,7 @@ include_once('includes/bootstrap.php');
 /* get instance */
 
 $config = Config::getInstance();
-$request =  Request::getInstance();
+$request = Request::getInstance();
 
 /* command line */
 
@@ -28,7 +28,7 @@ else if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 	echo htmlentities($console->init('ajax'));
 }
 
-/* else web */
+/* else template */
 
 else
 {

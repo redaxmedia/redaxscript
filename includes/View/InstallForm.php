@@ -40,7 +40,7 @@ class InstallForm extends ViewAbstract
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-js-install rs-js-accordion rs-js-validate-form rs-form-default rs-form-install'
+				'class' => 'rs-install-js-form rs-js-accordion rs-js-validate-form rs-install-form-default rs-form-default'
 			),
 			'button' => array(
 				'submit' => array(
