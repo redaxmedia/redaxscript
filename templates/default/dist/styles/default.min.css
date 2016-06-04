@@ -823,7 +823,7 @@ a
 .rs-button-search:after
 {
 	content: '\2315';
-	font: 1.125em/1em 'icon default';
+	font: 1em/1em 'icon default';
 	left: 0;
 	position: absolute;
 	right: 0;
