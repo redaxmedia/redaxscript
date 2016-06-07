@@ -17,7 +17,11 @@ $request = Request::getInstance();
 if (php_sapi_name() === 'cli')
 {
 	$console = new Console\Console($config, $request);
-	echo $console->init('cli');
+	$output = $console->init('cli');
+	if (is_string($output))
+	{
+		echo $output;
+	}
 }
 
 /* ajax request */
@@ -25,7 +29,11 @@ if (php_sapi_name() === 'cli')
 else if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 {
 	$console = new Console\Console($config, $request);
-	echo htmlentities($console->init('ajax'));
+	$output = $console->init('xhr');
+	if (is_string($output))
+	{
+		echo htmlentities($output);
+	}
 }
 
 /* else template */
