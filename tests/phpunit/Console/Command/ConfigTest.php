@@ -222,6 +222,37 @@ class ConfigTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testParse
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testParseEnv()
+	{
+		/* setup */
+
+		putenv('DB_URL=mysql://root:test@127.0.0.1/test');
+		$this->_config->init(Stream::url('root/config.php'));
+		$this->_request->setServer('argv', array(
+			'console.php',
+			'config',
+			'parse',
+			'--db-url',
+			'DB_URL',
+			'--db-env'
+		));
+		$configCommand = new Command\Config($this->_config, $this->_request);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
+
+	/**
 	 * testParseInvalid
 	 *
 	 * @since 3.0.0
