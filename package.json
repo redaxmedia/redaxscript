@@ -46,6 +46,6 @@
 	{
 		"phpunit-mysql": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit",
 		"phpunit-pgsql": "DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit",
-		"phpunit-sqlite": "grunt phpunit"
+		"phpunit-sqlite": "DB_URL=sqlite://test.sqlite grunt phpunit"
 	}
 }

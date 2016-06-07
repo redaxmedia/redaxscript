@@ -28,8 +28,11 @@ class Restore extends CommandAbstract
 				'database' => array(
 					'description' => 'Restore the database',
 					'optionArray' => array(
-						'path' => array(
-							'description' => 'Path of the backup'
+						'directory' => array(
+							'description' => 'Required directory'
+						),
+						'file' => array(
+							'description' => 'Required file'
 						)
 					)
 				)
@@ -79,24 +82,9 @@ class Restore extends CommandAbstract
 		$dbName = $this->_config->get('dbName');
 		$dbUser = $this->_config->get('dbUser');
 		$dbPassword = $this->_config->get('password');
-		$path = $this->prompt('path', $optionArray);
-		if (is_dir($path))
+		$directory = $this->prompt('path', $optionArray);
+		if (is_dir($directory))
 		{
-			$command = null;
-			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
-			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName;
-			}
-			if ($dbType === 'pgsql' && $dbName)
-			{
-				$command = 'pg_dump ' . $dbName;
-			}
-			if ($dbType === 'sqlite' && $dbHost)
-			{
-				$command = 'sqlite3 ' . $dbHost . ' .dump';
-			}
-			$command .= ' < ' . $path . '/backup.' . $dbType;
-			//return shell_exec(escapeshellcmd($command));
 			return;
 		}
 		return false;

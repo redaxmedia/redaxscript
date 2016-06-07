@@ -30,6 +30,7 @@ if ($dbUrl)
 else
 {
 	$config->set('dbType', 'sqlite');
+	$config->set('dbHost', ':memory:');
 }
 
 /* database */

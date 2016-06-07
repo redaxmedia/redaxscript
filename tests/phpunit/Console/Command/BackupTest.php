@@ -93,8 +93,8 @@ class BackupTest extends TestCaseAbstract
 			'console.php',
 			'backup',
 			'database',
-			'--path',
-			'/'
+			'--directory',
+			'backup'
 		));
 		$backupCommand = new Command\Backup($this->_config, $this->_request);
 
@@ -104,7 +104,7 @@ class BackupTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNull($actual);
+		$this->assertTrue($actual);
 	}
 
 	/**
