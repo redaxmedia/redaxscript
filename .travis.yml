@@ -36,7 +36,7 @@ script:
 - mkdir build
 - DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover build/mysql.xml
 - DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover build/pgsql.xml
-- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover build/sqlite.xml
+- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover build/sqlite.xml --debug --verbose
 
 after_script:
 - php vendor/bin/coveralls
