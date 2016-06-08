@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Directory;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -55,6 +56,19 @@ class BackupTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		$rootDirectory = new Directory();
+		$rootDirectory->init('.');
+		$rootDirectory->remove('backup');
 	}
 
 	/**
