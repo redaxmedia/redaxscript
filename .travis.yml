@@ -16,7 +16,7 @@ before_install:
 
 install:
 - composer self-update
-- composer install --ignore-platform-reqs
+- composer install
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
 - npm install --global ied@1.1.1
@@ -34,9 +34,9 @@ script:
 - grunt
 - mailcatcher
 - mkdir build
-- DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover build/mysql.xml
+- DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit
 - DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover build/pgsql.xml
-- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover build/sqlite.xml --debug --verbose
+- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover build/sqlite.xml
 
 after_script:
 - php vendor/bin/coveralls
