@@ -93,8 +93,10 @@ class RestoreTest extends TestCaseAbstract
 			'console.php',
 			'restore',
 			'database',
-			'--path',
-			'/'
+			'--directory',
+			'backup',
+			'--file',
+			'test.sql'
 		));
 		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
@@ -104,7 +106,7 @@ class RestoreTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNull($actual);
+		$this->assertTrue($actual);
 	}
 
 	/**

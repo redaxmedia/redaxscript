@@ -96,8 +96,8 @@ class Backup extends CommandAbstract
 			{
 				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $directory . '/' . $file . ' 2>/dev/null';
 			}
-			shell_exec($command);
-			return filesize($directory . '/' . $file) > 0;
+			exec($command, $output , $error);
+			return $error === 0;
 		}
 		return false;
 	}

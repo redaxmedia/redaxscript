@@ -81,11 +81,25 @@ class Restore extends CommandAbstract
 		$dbHost = $this->_config->get('dbHost');
 		$dbName = $this->_config->get('dbName');
 		$dbUser = $this->_config->get('dbUser');
-		$dbPassword = $this->_config->get('password');
-		$directory = $this->prompt('path', $optionArray);
+		$dbPassword = $this->_config->get('dbPassword');
+		$directory = $this->prompt('directory', $optionArray);
+		$file = $this->prompt('file', $optionArray);
 		if (is_dir($directory))
 		{
-			return;
+			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
+			{
+				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' < ' . $directory . '/' . $file . ' 2>/dev/null';
+			}
+			if ($dbType === 'pgsql' && $dbName)
+			{
+				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName . ' 2>/dev/null';
+			}
+			if ($dbType === 'sqlite' && $dbHost)
+			{
+				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file . ' 2>/dev/null';
+			}
+			exec($command, $output , $error);
+			return $error === 0;
 		}
 		return false;
 	}
