@@ -1,0 +1,26 @@
+[
+	[
+		"root",
+		[
+			"test.php",
+			""
+		],
+		""
+	],
+	[
+		"root",
+		[
+			"test.php",
+			"test"
+	 	],
+		"test"
+	],
+	[
+		"root",
+		[
+			"invalid/test.php",
+			"invalid"
+	 	],
+		""
+	]
+]

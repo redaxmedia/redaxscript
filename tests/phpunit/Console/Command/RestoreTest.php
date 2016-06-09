@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Directory;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -47,6 +48,20 @@ class RestoreTest extends TestCaseAbstract
 	}
 
 	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		$rootDirectory = new Directory();
+		$rootDirectory->init('.');
+		$rootDirectory->create('restore');
+		$rootDirectory->put('restore/test.sql');
+	}
+
+	/**
 	 * tearDown
 	 *
 	 * @since 3.0.0
@@ -56,7 +71,20 @@ class RestoreTest extends TestCaseAbstract
 	{
 		$this->_request->setServer('argv', null);
 	}
+	
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
 
+	public static function tearDownAfterClass()
+	{
+		$rootDirectory = new Directory();
+		$rootDirectory->init('.');
+		$rootDirectory->remove('restore');
+	}
+	
 	/**
 	 * testNoArgument
 	 *
@@ -94,7 +122,7 @@ class RestoreTest extends TestCaseAbstract
 			'restore',
 			'database',
 			'--directory',
-			'backup',
+			'restore',
 			'--file',
 			'test.sql'
 		));
