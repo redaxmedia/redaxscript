@@ -86,15 +86,15 @@ class Backup extends CommandAbstract
 		{
 			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
 			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' > ' . $directory . '/' . $file . ' 2>/dev/null';
+				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' > ' . $directory . '/' . $file;
 			}
 			if ($dbType === 'pgsql' && $dbName)
 			{
-				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . '/' . $file . ' 2>/dev/null';
+				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . '/' . $file;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $directory . '/' . $file . ' 2>/dev/null';
+				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $directory . '/' . $file;
 			}
 			exec($command, $output, $error);
 			return $error === 0;

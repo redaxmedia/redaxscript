@@ -88,15 +88,15 @@ class Restore extends CommandAbstract
 		{
 			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
 			{
-				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' < ' . $directory . '/' . $file . ' 2>/dev/null';
+				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' < ' . $directory . '/' . $file;
 			}
 			if ($dbType === 'pgsql' && $dbName)
 			{
-				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName . ' 2>/dev/null';
+				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file . ' 2>/dev/null';
+				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file;
 			}
 			exec($command, $output, $error);
 			return $error === 0;

@@ -68,7 +68,7 @@ class BackupTest extends TestCaseAbstract
 	{
 		$rootDirectory = new Directory();
 		$rootDirectory->init('.');
-		$rootDirectory->remove('backup');
+		$rootDirectory->remove('.backup');
 	}
 
 	/**
@@ -108,7 +108,7 @@ class BackupTest extends TestCaseAbstract
 			'backup',
 			'database',
 			'--directory',
-			'backup'
+			'.backup'
 		));
 		$backupCommand = new Command\Backup($this->_config, $this->_request);
 

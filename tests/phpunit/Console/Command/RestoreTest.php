@@ -57,8 +57,8 @@ class RestoreTest extends TestCaseAbstract
 	{
 		$rootDirectory = new Directory();
 		$rootDirectory->init('.');
-		$rootDirectory->create('restore');
-		$rootDirectory->put('restore/test.sql');
+		$rootDirectory->create('.restore');
+		$rootDirectory->put('.restore/test.sql');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class RestoreTest extends TestCaseAbstract
 	{
 		$rootDirectory = new Directory();
 		$rootDirectory->init('.');
-		$rootDirectory->remove('restore');
+		$rootDirectory->remove('.restore');
 	}
 
 	/**
@@ -122,7 +122,7 @@ class RestoreTest extends TestCaseAbstract
 			'restore',
 			'database',
 			'--directory',
-			'restore',
+			'.restore',
 			'--file',
 			'test.sql'
 		));
