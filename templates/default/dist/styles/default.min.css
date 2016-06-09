@@ -1774,12 +1774,12 @@ ul.rs-list-default li:before
 
 /* @section 1. success */
 
-.rs-note-success:not(:focus)
+.rs-note-success
 {
 	color: rgb(40, 119, 40);
 }
 
-.rs-note-success.rs-box-note, .rs-note-success.rs-field-note:not(:focus)
+.rs-note-success.rs-box-note, .rs-note-success.rs-field-note
 {
 	background: #5bb75b;
 	border-color: rgb(40, 119, 40);
@@ -1797,12 +1797,12 @@ ul.rs-list-default li:before
 
 /* @section 2. warning */
 
-.rs-note-warning:not(:focus)
+.rs-note-warning
 {
 	color: rgb(117, 68, 0);
 }
 
-.rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note:not(:focus)
+.rs-note-warning.rs-box-note, .rs-note-warning.rs-field-note
 {
 	background: #f3940e;
 	border-color: rgb(117, 68, 0);
@@ -1821,12 +1821,12 @@ ul.rs-list-default li:before
 
 /* @section 3. error */
 
-.rs-note-error:not(:focus)
+.rs-note-error
 {
 	color: rgb(116, 39, 37);
 }
 
-.rs-note-error.rs-box-note, .rs-note-error.rs-field-note:not(:focus)
+.rs-note-error.rs-box-note, .rs-note-error.rs-field-note
 {
 	background: #da4f49;
 	border-color: rgb(116, 39, 37);
@@ -1844,12 +1844,12 @@ ul.rs-list-default li:before
 
 /* @section 4. info */
 
-.rs-note-info:not(:focus)
+.rs-note-info
 {
 	color: rgb(37, 98, 116);
 }
 
-.rs-note-info.rs-box-note, .rs-note-info.rs-field-note:not(:focus)
+.rs-note-info.rs-box-note, .rs-note-info.rs-field-note
 {
 	background: #49afcd;
 	border-color: rgb(37, 98, 116);
