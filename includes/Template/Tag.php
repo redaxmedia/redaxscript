@@ -38,14 +38,14 @@ class Tag
 	}
 
 	/**
-	 * console
+	 * console line
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public static function console()
+	public static function consoleLine()
 	{
 		$console = new Console\Console(Config::getInstance(), Request::getInstance());
 		$output = $console->init('template');
@@ -56,7 +56,21 @@ class Tag
 	}
 
 	/**
-	 * search
+	 * console form
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function consoleForm()
+	{
+		$consoleForm = new View\ConsoleForm(Registry::getInstance(), Language::getInstance());
+		return $consoleForm->render();
+	}
+
+	/**
+	 * search form
 	 *
 	 * @since 3.0.0
 	 *
@@ -65,7 +79,7 @@ class Tag
 	 * @return string
 	 */
 
-	public static function search($table = null)
+	public static function searchForm($table = null)
 	{
 		$searchForm = new View\SearchForm(Registry::getInstance(), Language::getInstance());
 		return $searchForm->render($table);

@@ -40,7 +40,7 @@ class InstallForm extends ViewAbstract
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(array(
 			'form' => array(
-				'class' => 'rs-install-js-form rs-js-accordion rs-js-validate-form rs-install-form-default rs-form-default'
+				'class' => 'rs-install-js-form rs-js-accordion rs-js-validate-form rs-form-default rs-install-form-default'
 			),
 			'button' => array(
 				'submit' => array(
@@ -69,7 +69,7 @@ class InstallForm extends ViewAbstract
 			))
 			->append('</li><li>')
 			->label($this->_language->get('host'), array(
-				'for' => 'db_host'
+				'for' => 'db-host'
 			))
 			->text(array(
 				'data-sqlite' => uniqid() . '.sqlite',
@@ -82,7 +82,7 @@ class InstallForm extends ViewAbstract
 			))
 			->append('</li><li>')
 			->label($this->_language->get('name'), array(
-				'for' => 'db_name'
+				'for' => 'db-name'
 			))
 			->text(array(
 				'id' => 'db-name',
@@ -92,7 +92,7 @@ class InstallForm extends ViewAbstract
 			))
 			->append('</li><li>')
 			->label($this->_language->get('user'), array(
-				'for' => 'db_user'
+				'for' => 'db-user'
 			))
 			->text(array(
 				'id' => 'db-user',
