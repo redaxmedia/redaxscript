@@ -84,7 +84,7 @@ class Restore extends CommandAbstract
 		$dbPassword = $this->_config->get('dbPassword');
 		$directory = $this->prompt('directory', $optionArray);
 		$file = $this->prompt('file', $optionArray);
-		if (is_dir($directory))
+		if (is_file($directory . '/' . $file))
 		{
 			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
 			{
