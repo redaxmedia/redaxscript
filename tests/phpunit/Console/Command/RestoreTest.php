@@ -71,7 +71,7 @@ class RestoreTest extends TestCaseAbstract
 	{
 		$this->_request->setServer('argv', null);
 	}
-	
+
 	/**
 	 * tearDownAfterClass
 	 *
@@ -84,7 +84,7 @@ class RestoreTest extends TestCaseAbstract
 		$rootDirectory->init('.');
 		$rootDirectory->remove('restore');
 	}
-	
+
 	/**
 	 * testNoArgument
 	 *
