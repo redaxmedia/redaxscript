@@ -98,7 +98,7 @@ class Restore extends CommandAbstract
 			{
 				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file . ' 2>/dev/null';
 			}
-			exec($command, $output , $error);
+			exec($command, $output, $error);
 			return $error === 0;
 		}
 		return false;
