@@ -14,6 +14,7 @@ services:
 before_install:
 - if [ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ]; then composer remove apigen/apigen brianium/paratest phpbench/phpbench --dev --no-update; fi
 - if [ ${TRAVIS_PHP_VERSION:0:3} == "5.3" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require phpunit/phpunit 4.8.26 phpunit/phpcov 2.0.2 --dev --no-update; fi
+- composer global require hirak/prestissimo
 
 install:
 - composer self-update
