@@ -879,6 +879,14 @@
 	color: rgb(153, 153, 153);
 }
 
+/* delete and uninstall */
+
+.rs-admin-item-delete a:hover, .rs-admin-item-uninstall a:hover
+{
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	color: rgb(255, 255, 255);
+}
+
 /* @section 2. list tab admin */
 
 .rs-admin-list-tab li
