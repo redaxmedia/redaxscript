@@ -35,7 +35,6 @@ Links
 **General**
 
 * [Website](http://redaxscript.com)
-* [Download](http://redaxscript.com/download)
 * [Forum](http://forum.redaxscript.com)
 * [Wiki](http://wiki.redaxscript.com)
 * [License](http://redaxscript.com/general/about/license)
