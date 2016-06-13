@@ -50,7 +50,15 @@ class Comment extends ControllerAbstract
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray);
+		$errorArray = $this->_validate(array(
+			'author' => $postArray['author'],
+			'email' => $postArray['email'],
+			'url' => $postArray['url'],
+			'text' => $postArray['text'],
+			'article' => $postArray['article'],
+			'task' => $postArray['task'],
+			'solution' => $postArray['solution']
+		));
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -83,7 +91,8 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_success(array(
 				'route' => $route,
-				'timeout' => Db::getSetting('notification') ? 2 : 0
+				'timeout' => Db::getSetting('notification') ? 2 : 0,
+				'moderation' => Db::getSetting('moderation')
 			));
 		}
 		return $this->_error($this->_language->get('something_wrong'));
@@ -102,7 +111,7 @@ class Comment extends ControllerAbstract
 	protected function _success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
+		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success($successArray['moderation'] ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**

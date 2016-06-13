@@ -48,7 +48,13 @@ class Register extends ControllerAbstract
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray);
+		$errorArray = $this->_validate(array(
+			'name' => $postArray['name'],
+			'user' => $postArray['user'],
+			'email' => $postArray['email'],
+			'task' => $postArray['task'],
+			'solution' => $postArray['solution'],
+		));
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
