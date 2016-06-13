@@ -59,7 +59,7 @@ class Login extends ControllerAbstract
 		$user = $users->where('status', 1)->findOne();
 
 		/* handle error */
-		
+
 		$messageArray = $this->_validate($postArray, $user);
 		if ($messageArray)
 		{

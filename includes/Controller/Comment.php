@@ -61,7 +61,7 @@ class Comment extends ControllerAbstract
 		}
 
 		/* handle success */
-		
+
 		$createArray = array(
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
