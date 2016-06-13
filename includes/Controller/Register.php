@@ -46,7 +46,7 @@ class Register extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* handle error */
+		/* validate */
 
 		$errorArray = $this->_validate(array(
 			'name' => $postArray['name'],

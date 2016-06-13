@@ -48,7 +48,7 @@ class Comment extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* handle error */
+		/* validate */
 
 		$errorArray = $this->_validate(array(
 			'author' => $postArray['author'],

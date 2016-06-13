@@ -43,7 +43,6 @@ class Search extends ControllerAbstract
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
-		$searchValidator = new Validator\Search();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 		$thirdParameter = $specialFilter->sanitize($this->_registry->get('thirdParameter'));
 
@@ -67,24 +66,19 @@ class Search extends ControllerAbstract
 			);
 		}
 
-		/* validate search */
-
-		$infoArray = array();
-		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
-		{
-			$infoArray[] = $this->_language->get('input_incorrect');
-		}
-
 		/* process search */
 
 		$resultArray = $this->_search(array(
 			'table' => $queryArray['table'],
 			'search' => $queryArray['search']
 		));
-		if (!$resultArray)
-		{
-			$infoArray[] = $this->_language->get('search_no');
-		}
+
+		/* validate */
+
+		$infoArray = $this->_validate(array(
+			'search' => $queryArray['search'],
+			'result' => $resultArray
+		));
 
 		/* handle info */
 
@@ -133,6 +127,33 @@ class Search extends ControllerAbstract
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'home')->info($infoArray, $this->_language->get('error_occurred'));
+	}
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $validateArray array to be validated
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($validateArray = array())
+	{
+		$searchValidator = new Validator\Search();
+
+		/* validate query */
+
+		$infoArray = array();
+		if ($searchValidator->validate($validateArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
+		{
+			$infoArray[] = $this->_language->get('input_incorrect');
+		}
+		if (!$validateArray['result'])
+		{
+			$infoArray[] = $this->_language->get('search_no');
+		}
+		return $infoArray;
 	}
 
 	/**
