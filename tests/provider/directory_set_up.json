@@ -3,7 +3,7 @@
 	{
 		"Detector":
 		{
-			"Detector.php": "",
+			"DetectorAbstract.php": "",
 			"Language.php": "",
 			"Template.php": ""
 		},

@@ -77,12 +77,12 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testConsole
+	 * testConsoleLine
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testConsole()
+	public function testConsoleLine()
 	{
 		/* setup */
 
@@ -90,7 +90,7 @@ class TagTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Tag::console();
+		$actual = Template\Tag::consoleLine();
 
 		/* compare */
 
@@ -98,12 +98,12 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testConsoleInvalid
+	 * testConsoleLineInvalid
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testConsoleInvalid()
+	public function testConsoleLineInvalid()
 	{
 		/* setup */
 
@@ -111,7 +111,7 @@ class TagTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Tag::console();
+		$actual = Template\Tag::consoleLine();
 
 		/* compare */
 
@@ -119,16 +119,33 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSearch
+	 * testConsoleForm
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function testSearch()
+	public function testConsoleForm()
 	{
 		/* actual */
 
-		$actual = Template\Tag::search();
+		$actual = Template\Tag::consoleForm();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testSearchForm
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSearchForm()
+	{
+		/* actual */
+
+		$actual = Template\Tag::searchForm();
 
 		/* compare */
 

@@ -55,6 +55,19 @@ class DirectoryTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerPut
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerPut()
+	{
+		return $this->getProvider('tests/provider/directory_put.json');
+	}
+
+	/**
 	 * providerRemove
 	 *
 	 * @since 2.1.0
@@ -122,6 +135,35 @@ class DirectoryTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
+	 * testPut
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $path
+	 * @param array $putArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerPut
+	 */
+
+	public function testPut($path = null, $putArray = array(), $expect = null)
+	{
+		/* setup */
+
+		$directory = new Directory();
+		$directory->init(Stream::url($path));
+		$directory->put($putArray[0], $putArray[1]);
+
+		/* actual */
+
+		$actual = file_get_contents(Stream::url($path . '/' . $putArray[0]));
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**

@@ -28,8 +28,11 @@ class Restore extends CommandAbstract
 				'database' => array(
 					'description' => 'Restore the database',
 					'optionArray' => array(
-						'path' => array(
-							'description' => 'Path of the backup'
+						'directory' => array(
+							'description' => 'Required directory'
+						),
+						'file' => array(
+							'description' => 'Required file'
 						)
 					)
 				)
@@ -78,26 +81,25 @@ class Restore extends CommandAbstract
 		$dbHost = $this->_config->get('dbHost');
 		$dbName = $this->_config->get('dbName');
 		$dbUser = $this->_config->get('dbUser');
-		$dbPassword = $this->_config->get('password');
-		$path = $this->prompt('path', $optionArray);
-		if (is_dir($path))
+		$dbPassword = $this->_config->get('dbPassword');
+		$directory = $this->prompt('directory', $optionArray);
+		$file = $this->prompt('file', $optionArray);
+		if (is_file($directory . '/' . $file))
 		{
-			$command = null;
 			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
 			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName;
+				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' < ' . $directory . '/' . $file;
 			}
 			if ($dbType === 'pgsql' && $dbName)
 			{
-				$command = 'pg_dump ' . $dbName;
+				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' .dump';
+				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file;
 			}
-			$command .= ' < ' . $path . '/backup.' . $dbType;
-			//return shell_exec(escapeshellcmd($command));
-			return;
+			exec($command, $output, $error);
+			return $error === 0;
 		}
 		return false;
 	}

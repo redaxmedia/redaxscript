@@ -106,6 +106,23 @@ class Directory
 	}
 
 	/**
+	 * put content to file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $path name of the path
+	 * @param string $content content of the file
+	 */
+
+	public function put($path = null, $content = null)
+	{
+		if ($path)
+		{
+			file_put_contents($this->_directory . '/' . $path, $content);
+		}
+	}
+
+	/**
 	 * remove the directory
 	 *
 	 * @since 3.0.0
@@ -117,8 +134,7 @@ class Directory
 	{
 		if ($directory)
 		{
-			$path = $this->_directory . '/' . $directory;
-			$this->_remove($path);
+			$this->_remove($this->_directory . '/' . $directory);
 		}
 	}
 

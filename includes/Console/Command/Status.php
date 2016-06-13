@@ -124,9 +124,9 @@ class Status extends CommandAbstract
 				'value' => implode($driverArray, ', '),
 				'status' => count($driverArray) ? 1 : 0
 			),
-			'shell_exec' => array(
+			'shell' => array(
 				'value' => null,
-				'status' => function_exists('shell_exec') ? 1 : 0
+				'status' => function_exists('shell') ? 1 : 0
 			)
 		);
 

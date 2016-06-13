@@ -36,6 +36,15 @@
 	color: gray(153);
 }
 
+/* delete and uninstall */
+
+.rs-admin-item-delete a:hover,
+.rs-admin-item-uninstall a:hover
+{
+	background: var(--rs-admin-gradient-secondary);
+	color: gray(255);
+}
+
 /* @section 2. list tab admin */
 
 .rs-admin-list-tab li

@@ -197,7 +197,7 @@ module.exports = function (grunt)
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpcs',				
+				bin: grunt.option('fix') ? 'vendor/bin/phpcbf' : 'vendor/bin/phpcs',
 				standard: 'phpcs.xml'
 			}
 		},

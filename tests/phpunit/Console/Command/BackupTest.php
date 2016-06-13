@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Directory;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -58,6 +59,19 @@ class BackupTest extends TestCaseAbstract
 	}
 
 	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		$rootDirectory = new Directory();
+		$rootDirectory->init('.');
+		$rootDirectory->remove('.backup');
+	}
+
+	/**
 	 * testNoArgument
 	 *
 	 * @since 3.0.0
@@ -93,8 +107,8 @@ class BackupTest extends TestCaseAbstract
 			'console.php',
 			'backup',
 			'database',
-			'--path',
-			'/'
+			'--directory',
+			'.backup'
 		));
 		$backupCommand = new Command\Backup($this->_config, $this->_request);
 
@@ -104,7 +118,7 @@ class BackupTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNull($actual);
+		$this->assertTrue($actual);
 	}
 
 	/**
