@@ -32,8 +32,6 @@ class Recover extends ControllerAbstract
 	public function process()
 	{
 		$emailFilter = new Filter\Email();
-		$emailValidator = new Validator\Email();
-		$captchaValidator = new Validator\Captcha();
 
 		/* process post */
 
@@ -43,28 +41,9 @@ class Recover extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* validate post */
-
-		$errorArray = array();
-		if (!$postArray['email'])
-		{
-			$errorArray[] = $this->_language->get('email_empty');
-		}
-		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('email_incorrect');
-		}
-		else if (!Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id)
-		{
-			$errorArray[] = $this->_language->get('email_unknown');
-		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
-		}
-
 		/* handle error */
 
+		$errorArray = $this->_validate($postArray);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -131,6 +110,43 @@ class Recover extends ControllerAbstract
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($postArray = array())
+	{
+		$emailValidator = new Validator\Email();
+		$captchaValidator = new Validator\Captcha();
+
+		/* validate post */
+
+		$errorArray = array();
+		if (!$postArray['email'])
+		{
+			$errorArray[] = $this->_language->get('email_empty');
+		}
+		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('email_incorrect');
+		}
+		else if (!Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id)
+		{
+			$errorArray[] = $this->_language->get('email_unknown');
+		}
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('captcha_incorrect');
+		}
+		return $errorArray;
 	}
 
 	/**

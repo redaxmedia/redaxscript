@@ -46,15 +46,9 @@ class Register extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* validate */
+		/* handle error */
 
-		$errorArray = $this->_validate(array(
-			'name' => $postArray['name'],
-			'user' => $postArray['user'],
-			'email' => $postArray['email'],
-			'task' => $postArray['task'],
-			'solution' => $postArray['solution'],
-		));
+		$errorArray = $this->_validate($postArray);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -124,12 +118,12 @@ class Register extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $validateArray array to be validated
+	 * @param array $postArray array of the post
 	 *
 	 * @return array
 	 */
 
-	protected function _validate($validateArray = array())
+	protected function _validate($postArray = array())
 	{
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
@@ -138,31 +132,31 @@ class Register extends ControllerAbstract
 		/* validate post */
 
 		$errorArray = array();
-		if (!$validateArray['name'])
+		if (!$postArray['name'])
 		{
 			$errorArray[] = $this->_language->get('name_empty');
 		}
-		if (!$validateArray['user'])
+		if (!$postArray['user'])
 		{
 			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else if ($loginValidator->validate($validateArray['user']) === Validator\ValidatorInterface::FAILED)
+		else if ($loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('user_incorrect');
 		}
-		else if (Db::forTablePrefix('users')->where('user', $validateArray['user'])->findOne()->id)
+		else if (Db::forTablePrefix('users')->where('user', $postArray['user'])->findOne()->id)
 		{
 			$errorArray[] = $this->_language->get('user_exists');
 		}
-		if (!$validateArray['email'])
+		if (!$postArray['email'])
 		{
 			$errorArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($validateArray['email']) === Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($validateArray['task'], $validateArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}

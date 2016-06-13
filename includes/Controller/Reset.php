@@ -34,7 +34,6 @@ class Reset extends ControllerAbstract
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
-		$captchaValidator = new Validator\Captcha();
 
 		/* process post */
 
@@ -52,32 +51,9 @@ class Reset extends ControllerAbstract
 			'status' => 1
 		))->findOne();
 
-		/* validate post */
-
-		$errorArray = array();
-		if (!$postArray['id'])
-		{
-			$errorArray[] = $this->_language->get('user_empty');
-		}
-		else if (!$user->id)
-		{
-			$errorArray[] = $this->_language->get('user_incorrect');
-		}
-		if (!$postArray['password'])
-		{
-			$errorArray[] = $this->_language->get('password_empty');
-		}
-		else if (sha1($user->password) !== $postArray['password'])
-		{
-			$errorArray[] = $this->_language->get('password_incorrect');
-		}
-		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
-		}
-
 		/* handle error */
 
+		$errorArray = $this->_validate($postArray, $user);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -134,6 +110,47 @@ class Reset extends ControllerAbstract
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array of the post
+	 * @param object $user object of the user
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($postArray = array(), $user = null)
+	{
+		$captchaValidator = new Validator\Captcha();
+
+		/* validate post */
+
+		$errorArray = array();
+		if (!$postArray['id'])
+		{
+			$errorArray[] = $this->_language->get('user_empty');
+		}
+		else if (!$user->id)
+		{
+			$errorArray[] = $this->_language->get('user_incorrect');
+		}
+		if (!$postArray['password'])
+		{
+			$errorArray[] = $this->_language->get('password_empty');
+		}
+		else if (sha1($user->password) !== $postArray['password'])
+		{
+			$errorArray[] = $this->_language->get('password_incorrect');
+		}
+		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('captcha_incorrect');
+		}
+		return $errorArray;
 	}
 
 	/**

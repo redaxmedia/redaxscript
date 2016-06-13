@@ -32,9 +32,7 @@ class Login extends ControllerAbstract
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
-		$passwordValidator = new Validator\Password();
 		$emailValidator = new Validator\Email();
-		$captchaValidator = new Validator\Captcha();
 		$auth = new Auth($this->_request);
 
 		/* process post */
@@ -60,32 +58,9 @@ class Login extends ControllerAbstract
 		}
 		$user = $users->where('status', 1)->findOne();
 
-		/* validate post */
-
-		$errorArray = array();
-		if (!$postArray['user'])
-		{
-			$errorArray[] = $this->_language->get('user_empty');
-		}
-		else if (!$user->id)
-		{
-			$errorArray[] = $this->_language->get('user_incorrect');
-		}
-		if (!$postArray['password'])
-		{
-			$errorArray[] = $this->_language->get('password_empty');
-		}
-		else if ($user->password && $passwordValidator->validate($postArray['password'], $user->password) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('password_incorrect');
-		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
-		}
-
 		/* handle error */
 
+		$errorArray = $this->_validate($postArray, $user);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -93,7 +68,7 @@ class Login extends ControllerAbstract
 
 		/* handle success */
 
-		else if ($auth->login($user->id))
+		if ($auth->login($user->id))
 		{
 			return $this->_success();
 		}
@@ -128,5 +103,47 @@ class Login extends ControllerAbstract
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction($this->_language->get('back'), 'login')->error($errorArray, $this->_language->get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array of the post
+	 * @param object $user object of the user
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($postArray = array(), $user = null)
+	{
+		$passwordValidator = new Validator\Password();
+		$captchaValidator = new Validator\Captcha();
+
+		/* validate post */
+
+		$errorArray = array();
+		if (!$postArray['user'])
+		{
+			$errorArray[] = $this->_language->get('user_empty');
+		}
+		else if (!$user->id)
+		{
+			$errorArray[] = $this->_language->get('user_incorrect');
+		}
+		if (!$postArray['password'])
+		{
+			$errorArray[] = $this->_language->get('password_empty');
+		}
+		else if ($user->password && $passwordValidator->validate($postArray['password'], $user->password) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('password_incorrect');
+		}
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = $this->_language->get('captcha_incorrect');
+		}
+		return $errorArray;
 	}
 }

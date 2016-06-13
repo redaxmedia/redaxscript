@@ -154,9 +154,6 @@ class Contact extends Module
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
 		$htmlFilter = new Filter\Html();
-		$emailValidator = new Validator\Email();
-		$urlValidator = new Validator\Url();
-		$captchaValidator = new Validator\Captcha();
 
 		/* process post */
 
@@ -169,36 +166,9 @@ class Contact extends Module
 			'solution' => Request::getPost('solution')
 		);
 
-		/* validate post */
-
-		$errorArray = array();
-		if (!$postArray['author'])
-		{
-			$errorArray[] = Language::get('author_empty');
-		}
-		if (!$postArray['email'])
-		{
-			$errorArray[] = Language::get('email_empty');
-		}
-		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray['email'] = Language::get('email_incorrect');
-		}
-		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = Language::get('url_incorrect');
-		}
-		if (!$postArray['text'])
-		{
-			$errorArray[] = Language::get('message_empty');
-		}
-		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorArray[] = Language::get('captcha_incorrect');
-		}
-
 		/* handle error */
 
+		$errorArray = self::_validate($postArray);
 		if ($errorArray)
 		{
 			return self::_error($errorArray);
@@ -250,6 +220,52 @@ class Contact extends Module
 	{
 		$messenger = new Messenger();
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($postArray = array())
+	{
+		$emailValidator = new Validator\Email();
+		$urlValidator = new Validator\Url();
+		$captchaValidator = new Validator\Captcha();
+
+		/* validate post */
+
+		$errorArray = array();
+		if (!$postArray['author'])
+		{
+			$errorArray[] = Language::get('author_empty');
+		}
+		if (!$postArray['email'])
+		{
+			$errorArray[] = Language::get('email_empty');
+		}
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray['email'] = Language::get('email_incorrect');
+		}
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = Language::get('url_incorrect');
+		}
+		if (!$postArray['text'])
+		{
+			$errorArray[] = Language::get('message_empty');
+		}
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		{
+			$errorArray[] = Language::get('captcha_incorrect');
+		}
+		return $errorArray;
 	}
 
 	/**

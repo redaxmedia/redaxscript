@@ -48,17 +48,9 @@ class Comment extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* validate */
+		/* handle error */
 
-		$errorArray = $this->_validate(array(
-			'author' => $postArray['author'],
-			'email' => $postArray['email'],
-			'url' => $postArray['url'],
-			'text' => $postArray['text'],
-			'article' => $postArray['article'],
-			'task' => $postArray['task'],
-			'solution' => $postArray['solution']
-		));
+		$errorArray = $this->_validate($postArray);
 		if ($errorArray)
 		{
 			return $this->_error($errorArray);
@@ -135,12 +127,12 @@ class Comment extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $validateArray array to be validated
+	 * @param array $postArray array of the post
 	 *
 	 * @return array
 	 */
 
-	protected function _validate($validateArray = array())
+	protected function _validate($postArray = array())
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
@@ -149,31 +141,31 @@ class Comment extends ControllerAbstract
 		/* validate post */
 
 		$errorArray = array();
-		if (!$validateArray['author'])
+		if (!$postArray['author'])
 		{
 			$errorArray[] = $this->_language->get('author_empty');
 		}
-		if (!$validateArray['email'])
+		if (!$postArray['email'])
 		{
 			$errorArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($validateArray['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($validateArray['url'] && $urlValidator->validate($validateArray['url']) == Validator\ValidatorInterface::FAILED)
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('url_incorrect');
 		}
-		if (!$validateArray['text'])
+		if (!$postArray['text'])
 		{
 			$errorArray[] = $this->_language->get('comment_empty');
 		}
-		if (!$validateArray['article'])
+		if (!$postArray['article'])
 		{
 			$errorArray[] = $this->_language->get('input_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($validateArray['task'], $validateArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
 			$errorArray[] = $this->_language->get('captcha_incorrect');
 		}
