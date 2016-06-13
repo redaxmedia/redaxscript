@@ -20,6 +20,7 @@ use Redaxscript\Validator;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class Install extends ControllerAbstract
 {
 	/**
@@ -38,20 +39,18 @@ class Install extends ControllerAbstract
 		/* process post */
 
 		$postArray = array(
-			'd_type' => $specialFilter->sanitize($this->_request->getPost('db-type')),
-			'd_host' => $specialFilter->sanitize($this->_request->getPost('db-host')),
-			'd_name' => $specialFilter->sanitize($this->_request->getPost('db-name')),
-			'd_user' => $specialFilter->sanitize($this->_request->getPost('db-user')),
-			'd_password' => $specialFilter->sanitize($this->_request->getPost('db-password')),
-			'd_prefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
-			'd_salt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
+			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
+			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
+			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
+			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
+			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
+			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
+			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
 			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
 		);
-
-		$postArray = $this->_checkPost($postArray);
 
 		/* handle error */
 
@@ -96,39 +95,6 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * check the postArray
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray array to be validated
-	 *
-	 * @return array
-	 */
-
-
-	protected function _checkPost($postArray = array())
-	{
-		if (!$postArray['d_type'])
-		{
-			$postArray['d_type'] = 'mysql';
-		}
-		if (!$postArray['d_host'])
-		{
-			$postArray['d_host'] = 'localhost';
-		}
-		if (!$postArray['user'])
-		{
-			$postArray['user'] = 'admin';
-		}
-		if (!$postArray['password'])
-		{
-			$postArray['password'] = uniqid();
-		}
-
-		return $postArray;
-	}
-
-	/**
 	 * validate the postArray
 	 *
 	 * @since 3.0.0
@@ -147,15 +113,15 @@ class Install extends ControllerAbstract
 
 		$errorArray = array();
 
-		if ($postArray['d_type'] != 'sqlite' && !$postArray['name'])
+		if ($postArray['dType'] != 'sqlite' && !$postArray['name'])
 		{
 			$errorArray[] = $this->_language->get('name_empty');
 		}
-		else if ($postArray['d_type'] != 'sqlite' && !$postArray['user'])
+		else if ($postArray['dType'] != 'sqlite' && !$postArray['user'])
 		{
 			$errorArray[] = $this->_language->get('user_empty');
 		}
-		else if ($postArray['d_type'] != 'sqlite' && !$postArray['password'])
+		else if ($postArray['dType'] != 'sqlite' && !$postArray['password'])
 		{
 			$errorArray[] = $this->_language->get('password_empty');
 		}
@@ -192,40 +158,14 @@ class Install extends ControllerAbstract
 	protected function _write($writeArray = array())
 	{
 		$config = Config::getInstance();
-		$config->set('dbType', $writeArray['d_type']);
-		$config->set('dbHost', $writeArray['d_host']);
-		$config->set('dbName', $writeArray['d_name']);
-		$config->set('dbUser', $writeArray['d_user']);
-		$config->set('dbPassword', $writeArray['d_password']);
-		$config->set('dbPrefix', $writeArray['d_prefix']);
-		$config->set('dbSalt', $writeArray['d_salt']);
+		$config->set('dbType', $writeArray['dType']);
+		$config->set('dbHost', $writeArray['dHost']);
+		$config->set('dbName', $writeArray['dName']);
+		$config->set('dbUser', $writeArray['dUser']);
+		$config->set('dbPassword', $writeArray['dPassword']);
+		$config->set('dbPrefix', $writeArray['dPrefix']);
+		$config->set('dbSalt', $writeArray['dSalt']);
 		$config->write();
-	}
-
-	/**
-	 * write config
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param $postArray
-	 *
-	 * @return array
-	 */
-
-	protected function _check($postArray)
-	{
-		$loginValidator = new Validator\Login();
-		$emailValidator = new Validator\Email();
-		if ($_POST['Redaxscript\View\InstallForm'] && $this->_registry->get('dbStatus') && $postArray['name']
-			&& $loginValidator->validate($postArray['user']) == Validator\ValidatorInterface::PASSED
-			&& $loginValidator->validate($postArray['password']) == Validator\ValidatorInterface::PASSED
-			&& $emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::PASSED)
-		{
-			return 1;
-		} else
-		{
-			return 0;
-		}
 	}
 
 	/**

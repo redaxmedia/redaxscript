@@ -13,7 +13,6 @@ use Redaxscript\Messenger;
  * @package Redaxscript
  * @category View
  *
- * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
@@ -22,96 +21,127 @@ class InstallNote extends ViewAbstract
 	/**
 	 * render the view
 	 *
-	 * @param array $optionArray options of the installation
-	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render($optionArray = array())
+	public function render()
 	{
 		$output = Hook::trigger('installNoteStart');
 
-		/*Not running under Linux
-		No .htaccess file
-		No mod_deflate
-		No mod_rewrite
-		*/
-
-		$errorArray = $this->_errors();
-		$warningArray = $this->_warnings();
-
-		$messenger = new Messenger();
-
-		$output .= $messenger->error($errorArray, $this->_language->get('alert'));
-		$output .= $messenger->warning($warningArray, $this->_language->get('error_occurred'));
+		if ($errorArray = $this->_validate())
+		{
+			$output .= $this->_errors($errorArray);
+		}
+		if ($warningArray = $this->_check())
+		{
+			$output .= $this->_warnings($warningArray);
+		}
 
 		$output .= Hook::trigger('installNoteEnd');
 		return $output;
 	}
 
 	/**
-	 * search for errors
+	 * error messenger
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorArray
+	 *
+	 * @return array
+	 */
+
+	private function _errors($errorArray = array())
+	{
+		$messenger = new Messenger();
+		return $messenger->error($errorArray);
+	}
+
+	/**
+	 * warning messenger
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $warningArray
+	 *
+	 * @return array
+	 */
+
+	private function _warnings($warningArray = array())
+	{
+		$messenger = new Messenger();
+		return $messenger->warning($warningArray);
+	}
+
+	/**
+	 * validate server requirements
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	private function _errors()
+	private function _validate()
 	{
 		$errorArray = array();
 
+		if (!$this->_registry->get('dbStatus'))
+		{
+			$errorArray[] = $this->_language->get('database_failed');
+		}
 		if (!is_writable('config.php'))
 		{
-			$errorArray[] =  $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
+			$errorArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
 		}
 		if (version_compare(phpversion(), '5.3.10', '<'))
 		{
-			$errorArray[] =  "PHP version is not high enough!";
+			$errorArray[] = 'PHP version is not high enough!';
 		}
-		if (!in_array("mysql", PDO::getAvailableDrivers(), TRUE))
+		if (!class_exists('PDO'))
 		{
-			$errorArray[] =  "No MySQL driver installed";
+			$errorArray[] = 'PDO is not enabled!';
 		}
-		if (!in_array("sqlite", PDO::getAvailableDrivers(), TRUE))
-		{
-			$errorArray[] =  "No MySQL driver installed";
-		}
-		if (!in_array("postresql", PDO::getAvailableDrivers(), TRUE))
-		{
-			$errorArray[] =  "No MySQL driver installed";
-		}
-
 		return $errorArray;
 	}
 
 	/**
-	 * search for warnings
+	 * check for warnings
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	private function _warnings()
+	private function _check()
 	{
 		$warningArray = array();
 
 		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 		{
-			array_push($warningArray, "Not running on linux!"); //$this->_language->get('server_not_linux')
+			$warningArray[] = 'Not running on linux!'; //$this->_language->get('server_not_linux')
 		}
 		if (!file_exists('.htaccess'))
 		{
-			array_push($warningArray, "There is no .htaccess file present!");
+			$warningArray[] = 'There is no .htaccess file present!';
 		}
-		if (in_array('mod_rewrite', apache_get_modules()))
+		if (!in_array('mod_rewrite', apache_get_modules()))
 		{
-			array_push($warningArray, "mod_rewrite is not enabled!");
+			$warningArray[] = 'mod_rewrite is not enabled!';
 		}
-
+		if (!extension_loaded('pdo_mysql'))
+		{
+			$warningArray[] = 'No MySQL driver installed';
+		}
+		if (!extension_loaded('pdo_sqlite'))
+		{
+			$warningArray[] = 'No SQLite driver installed';
+		}
+		if (!extension_loaded('pdo_pgsql'))
+		{
+			$warningArray[] = 'No postgresql driver installed';
+		}
 		return $warningArray;
 	}
 }
