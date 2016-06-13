@@ -43,15 +43,17 @@ class Recover extends ControllerAbstract
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray);
-		if ($errorArray)
+		$messageArray = $this->_validate($postArray);
+		if ($messageArray)
 		{
-			return $this->_error($errorArray);
+			return $this->_error(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle success */
 
-		$successArray = array();
+		$messageArray = array();
 		$users = Db::forTablePrefix('users')->where(array(
 			'email' => $postArray['email'],
 			'status' => 1
@@ -70,14 +72,18 @@ class Recover extends ControllerAbstract
 			);
 			if ($this->_mail($mailArray))
 			{
-				$successArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
+				$messageArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
 			}
 		}
-		if ($successArray)
+		if ($messageArray)
 		{
-			return $this->_success($successArray);
+			return $this->_success(array(
+				'message' => $messageArray
+			));
 		}
-		return $this->_error($this->_language->get('something_wrong'));
+		return $this->_error(array(
+			'message' => $this->_language->get('something_wrong')
+		));
 	}
 
 	/**
@@ -93,7 +99,10 @@ class Recover extends ControllerAbstract
 	protected function _success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($successArray, $this->_language->get('operation_completed'));
+		return $messenger
+			->setAction($this->_language->get('login'), 'login')
+			->doRedirect()
+			->success($successArray['message'], $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -109,7 +118,9 @@ class Recover extends ControllerAbstract
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger
+			->setAction($this->_language->get('back'), 'login/recover')
+			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -129,24 +140,24 @@ class Recover extends ControllerAbstract
 
 		/* validate post */
 
-		$errorArray = array();
+		$messageArray = array();
 		if (!$postArray['email'])
 		{
-			$errorArray[] = $this->_language->get('email_empty');
+			$messageArray[] = $this->_language->get('email_empty');
 		}
 		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('email_incorrect');
+			$messageArray[] = $this->_language->get('email_incorrect');
 		}
 		else if (!Db::forTablePrefix('users')->where('email', $postArray['email'])->findOne()->id)
 		{
-			$errorArray[] = $this->_language->get('email_unknown');
+			$messageArray[] = $this->_language->get('email_unknown');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
+			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**

@@ -75,10 +75,12 @@ class Search extends ControllerAbstract
 
 		/* handle info */
 
-		$infoArray = $this->_validate($queryArray, $resultArray);
-		if ($infoArray)
+		$messageArray = $this->_validate($queryArray, $resultArray);
+		if ($messageArray)
 		{
-			return $this->_info($infoArray);
+			return $this->_info(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle result */
@@ -88,7 +90,9 @@ class Search extends ControllerAbstract
 		{
 			return $output;
 		}
-		return $this->_info($this->_language->get('search_no'));
+		return $this->_info(array(
+			'message' => $this->_language->get('search_no')
+		));
 	}
 
 	/**
@@ -120,7 +124,9 @@ class Search extends ControllerAbstract
 	protected function _info($infoArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'home')->info($infoArray, $this->_language->get('error_occurred'));
+		return $messenger
+			->setAction($this->_language->get('back'), 'home')
+			->info($infoArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -140,16 +146,19 @@ class Search extends ControllerAbstract
 
 		/* validate query */
 
-		$infoArray = array();
+		$messageArray = array();
 		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
 		{
-			$infoArray[] = $this->_language->get('input_incorrect');
+			$messageArray[] = $this->_language->get('input_incorrect');
 		}
+
+		/* validate result */
+
 		if (!$resultArray)
 		{
-			$infoArray[] = $this->_language->get('search_no');
+			$messageArray[] = $this->_language->get('search_no');
 		}
-		return $infoArray;
+		return $messageArray;
 	}
 
 	/**

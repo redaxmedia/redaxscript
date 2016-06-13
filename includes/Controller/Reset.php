@@ -53,10 +53,12 @@ class Reset extends ControllerAbstract
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray, $user);
-		if ($errorArray)
+		$messageArray = $this->_validate($postArray, $user);
+		if ($messageArray)
 		{
-			return $this->_error($errorArray);
+			return $this->_error(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle success */
@@ -79,7 +81,9 @@ class Reset extends ControllerAbstract
 		{
 			return $this->_success();
 		}
-		return $this->_error($this->_language->get('something_wrong'));
+		return $this->_error(array(
+			'message' => $this->_language->get('something_wrong')
+		));
 	}
 
 	/**
@@ -93,7 +97,10 @@ class Reset extends ControllerAbstract
 	protected function _success()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
+		return $messenger
+			->setAction($this->_language->get('login'), 'login')
+			->doRedirect()
+			->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -109,7 +116,9 @@ class Reset extends ControllerAbstract
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'login/recover')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger
+			->setAction($this->_language->get('back'), 'login/recover')
+			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -129,28 +138,28 @@ class Reset extends ControllerAbstract
 
 		/* validate post */
 
-		$errorArray = array();
+		$messageArray = array();
 		if (!$postArray['id'])
 		{
-			$errorArray[] = $this->_language->get('user_empty');
+			$messageArray[] = $this->_language->get('user_empty');
 		}
 		else if (!$user->id)
 		{
-			$errorArray[] = $this->_language->get('user_incorrect');
+			$messageArray[] = $this->_language->get('user_incorrect');
 		}
 		if (!$postArray['password'])
 		{
-			$errorArray[] = $this->_language->get('password_empty');
+			$messageArray[] = $this->_language->get('password_empty');
 		}
 		else if (sha1($user->password) !== $postArray['password'])
 		{
-			$errorArray[] = $this->_language->get('password_incorrect');
+			$messageArray[] = $this->_language->get('password_incorrect');
 		}
 		if ($captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
+			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**

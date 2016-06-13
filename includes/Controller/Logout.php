@@ -50,7 +50,10 @@ class Logout extends ControllerAbstract
 	protected function _success()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), 'login')->doRedirect(0)->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
+		return $messenger
+			->setAction($this->_language->get('continue'), 'login')
+			->doRedirect(0)
+			->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
 	}
 
 	/**
@@ -64,6 +67,8 @@ class Logout extends ControllerAbstract
 	protected function _error()
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'admin')->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
+		return $messenger
+			->setAction($this->_language->get('back'), 'admin')
+			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
 	}
 }

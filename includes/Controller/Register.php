@@ -48,10 +48,12 @@ class Register extends ControllerAbstract
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray);
-		if ($errorArray)
+		$messageArray = $this->_validate($postArray);
+		if ($messageArray)
 		{
-			return $this->_error($errorArray);
+			return $this->_error(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle success */
@@ -78,9 +80,13 @@ class Register extends ControllerAbstract
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			return $this->_success();
+			return $this->_success(array(
+				'message' => Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
+			));
 		}
-		return $this->_error($this->_language->get('something_wrong'));
+		return $this->_error(array(
+			'message' => $this->_language->get('something_wrong')
+		));
 	}
 
 	/**
@@ -88,13 +94,18 @@ class Register extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $successArray array of the success
+	 *
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success($successArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('login'), 'login')->doRedirect()->success(Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent'), $this->_language->get('operation_completed'));
+		return $messenger
+			->setAction($this->_language->get('login'), 'login')
+			->doRedirect()
+			->success($successArray['message'], $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -110,7 +121,9 @@ class Register extends ControllerAbstract
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'register')->error($errorArray, $this->_language->get('error_occurred'));
+		return $messenger
+			->setAction($this->_language->get('back'), 'register')
+			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -131,36 +144,36 @@ class Register extends ControllerAbstract
 
 		/* validate post */
 
-		$errorArray = array();
+		$messageArray = array();
 		if (!$postArray['name'])
 		{
-			$errorArray[] = $this->_language->get('name_empty');
+			$messageArray[] = $this->_language->get('name_empty');
 		}
 		if (!$postArray['user'])
 		{
-			$errorArray[] = $this->_language->get('user_empty');
+			$messageArray[] = $this->_language->get('user_empty');
 		}
 		else if ($loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('user_incorrect');
+			$messageArray[] = $this->_language->get('user_incorrect');
 		}
 		else if (Db::forTablePrefix('users')->where('user', $postArray['user'])->findOne()->id)
 		{
-			$errorArray[] = $this->_language->get('user_exists');
+			$messageArray[] = $this->_language->get('user_exists');
 		}
 		if (!$postArray['email'])
 		{
-			$errorArray[] = $this->_language->get('email_empty');
+			$messageArray[] = $this->_language->get('email_empty');
 		}
 		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('email_incorrect');
+			$messageArray[] = $this->_language->get('email_incorrect');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
+			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**
