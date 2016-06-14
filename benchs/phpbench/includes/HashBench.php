@@ -16,7 +16,7 @@ use Redaxscript\Hash;
  * @BeforeMethods({"setUp"})
  */
 
-class HashBench extends BenchCase
+class HashBench extends BenchCaseAbstract
 {
 	/**
 	 * instance of the config class
@@ -55,13 +55,15 @@ class HashBench extends BenchCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $parameterArray
+	 *
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchInit($parameter = array())
+	public function benchInit($parameterArray = array())
 	{
 		$hash = new Hash($this->_config);
-		$hash->init($parameter[0]);
+		$hash->init($parameterArray[0]);
 	}
 
 	/**
@@ -69,18 +71,20 @@ class HashBench extends BenchCase
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $parameterArray
+	 * 
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchValidate($parameter = array())
+	public function benchValidate($parameterArray = array())
 	{
 		/* setup */
 
 		$hash = new Hash($this->_config);
-		$hash->init($parameter[0]);
+		$hash->init($parameterArray[0]);
 
 		/* bench */
 
-		$hash->validate($parameter[0], function_exists('password_verify') ? $parameter[1][0][1] : $parameter[1][1]);
+		$hash->validate($parameterArray[0], function_exists('password_verify') ? $parameterArray[1][0][1] : $parameterArray[1][1]);
 	}
 }

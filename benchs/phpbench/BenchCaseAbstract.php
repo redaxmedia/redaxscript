@@ -1,8 +1,10 @@
 <?php
 namespace Redaxscript\Benchs;
 
+error_reporting(E_ERROR || E_PARSE);
+
 /**
- * BenchCase
+ * BenchCaseAbstract
  *
  * @since 3.0.0
  *
@@ -11,7 +13,7 @@ namespace Redaxscript\Benchs;
  * @author Henry Ruhs
  */
 
-class BenchCase
+abstract class BenchCaseAbstract
 {
 	/**
 	 * getProvider
@@ -27,7 +29,6 @@ class BenchCase
 	public function getProvider($json = null, $assoc = true)
 	{
 		$contents = file_get_contents($json);
-		$output = json_decode($contents, $assoc);
-		return $output;
+		return json_decode($contents, $assoc);
 	}
 }

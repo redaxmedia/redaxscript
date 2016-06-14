@@ -4,7 +4,7 @@ namespace Redaxscript;
 /* autoload */
 
 include_once('includes/Autoloader.php');
-include_once('tests/phpunit/TestCaseAbstract.php');
+include_once('TestCaseAbstract.php');
 
 /* deprecated */
 
@@ -50,6 +50,9 @@ $installer->insertData(array(
 	'adminPassword' => 'test',
 	'adminEmail' => 'test@test.com'
 ));
+
+/* test user */
+
 Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set(array(
 	'password' => 'test',
 	'description' => 'test',

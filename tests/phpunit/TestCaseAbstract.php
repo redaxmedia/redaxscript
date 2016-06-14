@@ -7,7 +7,7 @@ use ReflectionClass;
 error_reporting(E_ERROR || E_PARSE);
 
 /**
- * TestCase
+ * TestCaseAbstract
  *
  * @since 2.2.0
  *
@@ -32,8 +32,7 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	public function getProvider($json = null, $assoc = true)
 	{
 		$contents = file_get_contents($json);
-		$output = json_decode($contents, $assoc);
-		return $output;
+		return json_decode($contents, $assoc);
 	}
 
 	/**
