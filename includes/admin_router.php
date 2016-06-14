@@ -210,7 +210,7 @@ function admin_router()
 			if ($tableParameter == 'settings')
 			{
 				$settingForm = new Redaxscript\Admin\View\SettingForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				echo $settingForm->render($idParameter);
+				echo $settingForm->render();
 			}
 			return;
 		case 'up':

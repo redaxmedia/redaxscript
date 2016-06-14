@@ -878,7 +878,7 @@ function admin_update()
 		$r['divider'] = $_POST['divider'];
 		$r['time'] = $_POST['time'];
 		$r['date'] =  $_POST['date'];
-		$r['homepage'] = $specialFilter->sanitize($_POST['homepage'], 0);
+		$r['homepage'] = $specialFilter->sanitize($_POST['homepage']);
 		$r['limit'] = !$specialFilter->sanitize($_POST['limit']) ? 10 : $specialFilter->sanitize($_POST['limit']);
 		$r['order'] = $specialFilter->sanitize($_POST['order']);
 		$r['pagination'] = $specialFilter->sanitize($_POST['pagination']);
