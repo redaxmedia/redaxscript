@@ -104,6 +104,31 @@ class Status extends CommandAbstract
 	protected function _system()
 	{
 		$output = null;
+		$statusArray = $this->_getStatusArray();
+		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
+
+		/* process status */
+
+		foreach ($statusArray as $key => $valueArray)
+		{
+			if (array_key_exists($valueArray['status'], $wordingArray))
+			{
+				$output .= str_pad($key, 30) . str_pad($valueArray['value'], 60) . $wordingArray[$valueArray['status']] . PHP_EOL;
+			}
+		}
+		return $output;
+	}
+
+	/**
+	 * get the status array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected function _getStatusArray()
+	{
 		$driverArray = PDO::getAvailableDrivers();
 		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
 		$optionalArray = array(
@@ -130,7 +155,7 @@ class Status extends CommandAbstract
 			)
 		);
 
-		/* optional */
+		/* process optional */
 
 		foreach ($optionalArray as $value)
 		{
@@ -139,17 +164,6 @@ class Status extends CommandAbstract
 				'status' => in_array($value, $moduleArray) ? 1 : 0
 			);
 		}
-		$wordingArray = $this->_commandArray['status']['argumentArray']['system']['wordingArray'];
-
-		/* process status */
-
-		foreach ($statusArray as $key => $valueArray)
-		{
-			if (array_key_exists($valueArray['status'], $wordingArray))
-			{
-				$output .= str_pad($key, 30) . str_pad($valueArray['value'], 60) . $wordingArray[$valueArray['status']] . PHP_EOL;
-			}
-		}
-		return $output;
+		return $statusArray;
 	}
 }

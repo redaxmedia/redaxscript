@@ -164,6 +164,8 @@ class Search extends ControllerAbstract
 	/**
 	 * search in tables
 	 *
+	 * @since 3.0.0
+	 *
 	 * @param array $searchArray array of the search
 	 *
 	 * @return array
@@ -177,28 +179,54 @@ class Search extends ControllerAbstract
 
 		foreach ($searchArray['table'] as $table)
 		{
-			$columnArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? 'title' : null,
-				$table === 'categories' || $table === 'articles' ? 'description' : null,
-				$table === 'categories' || $table === 'articles' ? 'keywords' : null,
-				$table === 'articles' || $table === 'comments' ? 'text' : null
-			));
-			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
-			));
-
-			/* fetch result */
-
 			$resultArray[$table] = Db::forTablePrefix($table)
-				->whereLikeMany($columnArray, $likeArray)
+				->whereLikeMany($this->_getColumnArray($table), $this->_getLikeArray($table, $searchArray))
 				->where('status', 1)
 				->whereLanguageIs($this->_registry->get('language'))
 				->orderByDesc('date')
 				->findMany();
 		}
 		return $resultArray;
+	}
+
+	/**
+	 * get the column array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return array
+	 */
+
+	protected function _getColumnArray($table = null)
+	{
+		return array_filter(array(
+			$table === 'categories' || $table === 'articles' ? 'title' : null,
+			$table === 'categories' || $table === 'articles' ? 'description' : null,
+			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
+			$table === 'articles' || $table === 'comments' ? 'text' : null
+		));
+	}
+
+	/**
+	 * get the like array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param array $searchArray array of the search
+	 *
+	 * @return array
+	 */
+
+	protected function _getLikeArray($table = null, $searchArray = array())
+	{
+		return array_filter(array(
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
+		));
 	}
 }
