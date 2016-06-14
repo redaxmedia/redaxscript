@@ -72,7 +72,7 @@ class HashBench extends BenchCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $parameterArray
-	 * 
+	 *
 	 * @ParamProviders({"providerHash"})
 	 */
 

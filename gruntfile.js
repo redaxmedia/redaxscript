@@ -188,6 +188,13 @@ module.exports = function (grunt)
 					'templates/*/assets/styles/*.css'
 				]
 			},
+			benchs:
+			{
+				src:
+				[
+					'benchs/**/*.php'
+				]
+			},
 			tests:
 			{
 				src:
