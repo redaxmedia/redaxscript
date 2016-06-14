@@ -15,6 +15,14 @@ namespace Redaxscript;
 class Messenger
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
 	 * array of the action
 	 *
 	 * @var array
@@ -43,6 +51,19 @@ class Messenger
 			)
 		)
 	);
+	
+	/**
+	 * constructor of the class
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param Registry $registry instance of the registry class
+	 */
+
+	public function __construct(Registry $registry)
+	{
+		$this->_registry = $registry;
+	}
 
 	/**
 	 * init the class
@@ -242,13 +263,13 @@ class Messenger
 
 	protected function _renderAction()
 	{
-		$output = null;
+		$output = null;		
 		if ($this->_actionArray['text'] && $this->_actionArray['route'])
 		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
 				->init('a', array(
-					'href' => Registry::get('parameterRoute') . $this->_actionArray['route'],
+					'href' => $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
 					'class' => $this->_optionArray['className']['link']
 				))
 				->text($this->_actionArray['text']);
@@ -260,7 +281,7 @@ class Messenger
 				$metaElement = new Html\Element();
 				$output .= $metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . Registry::get('root') . '/' . Registry::get('parameterRoute') . $this->_actionArray['route'],
+					'content' => $this->_actionArray['redirect'] . ';url=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
 					'http-equiv' => 'refresh'
 				));
 			}

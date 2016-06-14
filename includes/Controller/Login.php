@@ -89,7 +89,7 @@ class Login extends ControllerAbstract
 
 	protected function _success()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('continue'), 'admin')
 			->doRedirect(0)
@@ -108,7 +108,7 @@ class Login extends ControllerAbstract
 
 	protected function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('back'), 'login')
 			->error($errorArray['message'], $this->_language->get('error_occurred'));

@@ -202,7 +202,7 @@ class Contact extends Module
 
 	protected static function _success()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger(Registry::getInstance());
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
@@ -218,7 +218,7 @@ class Contact extends Module
 
 	protected static function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger(Registry::getInstance());
 		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));
 	}
 
@@ -232,7 +232,7 @@ class Contact extends Module
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array())
+	protected static function _validate($postArray = array())
 	{
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();

@@ -20,7 +20,7 @@ function admin_router()
 	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
 	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
 	$usersException = $tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId');
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{

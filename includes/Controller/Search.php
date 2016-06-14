@@ -123,7 +123,7 @@ class Search extends ControllerAbstract
 
 	protected function _info($infoArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('back'), 'home')
 			->info($infoArray['message'], $this->_language->get('error_occurred'));

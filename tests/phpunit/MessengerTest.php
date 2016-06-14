@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Messenger;
+use Redaxscript\Registry;
 
 /**
  * MessengerTest
@@ -15,6 +16,25 @@ use Redaxscript\Messenger;
 
 class MessengerTest extends TestCaseAbstract
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * setUp
+	 *
+	 * @since 2.1.0
+	 */
+
+	public function setUp()
+	{
+		$this->_registry = Registry::getInstance();
+	}
+
 	/**
 	 * providerSuccess
 	 *
@@ -96,7 +116,7 @@ class MessengerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
@@ -124,7 +144,7 @@ class MessengerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
@@ -152,7 +172,7 @@ class MessengerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
@@ -180,7 +200,7 @@ class MessengerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		$messenger->setAction($action['text'], $action['route']);
 
 		/* actual */
@@ -208,7 +228,7 @@ class MessengerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		$messenger->init();
 		$messenger->setAction($action['text'], $action['route'])->doRedirect($action['timeout']);
 

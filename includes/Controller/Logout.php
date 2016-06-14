@@ -3,6 +3,7 @@ namespace Redaxscript\Controller;
 
 use Redaxscript\Auth;
 use Redaxscript\Messenger;
+use Redaxscript\Registry;
 
 /**
  * children class to process the logout request
@@ -49,7 +50,7 @@ class Logout extends ControllerAbstract
 
 	protected function _success()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('continue'), 'login')
 			->doRedirect(0)
@@ -66,7 +67,7 @@ class Logout extends ControllerAbstract
 
 	protected function _error()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('back'), 'admin')
 			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));

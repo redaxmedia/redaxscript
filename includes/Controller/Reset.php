@@ -96,7 +96,7 @@ class Reset extends ControllerAbstract
 
 	protected function _success()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('login'), 'login')
 			->doRedirect()
@@ -115,7 +115,7 @@ class Reset extends ControllerAbstract
 
 	protected function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('back'), 'login/recover')
 			->error($errorArray['message'], $this->_language->get('error_occurred'));

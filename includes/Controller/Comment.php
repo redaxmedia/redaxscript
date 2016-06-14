@@ -108,7 +108,7 @@ class Comment extends ControllerAbstract
 
 	protected function _success($successArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('continue'), $successArray['route'])
 			->doRedirect($successArray['timeout'])
@@ -127,7 +127,7 @@ class Comment extends ControllerAbstract
 
 	protected function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('back'), $errorArray['route'])
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
