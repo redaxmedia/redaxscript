@@ -51,7 +51,7 @@ class Messenger
 			)
 		)
 	);
-	
+
 	/**
 	 * constructor of the class
 	 *
@@ -263,7 +263,7 @@ class Messenger
 
 	protected function _renderAction()
 	{
-		$output = null;		
+		$output = null;
 		if ($this->_actionArray['text'] && $this->_actionArray['route'])
 		{
 			$linkElement = new Html\Element();
