@@ -2,7 +2,7 @@
 1 = templates/admin/assets/scripts/init.js
 
 [admin]
-1 = assets/scripts/alias.js
-2 = assets/scripts/keyword.js
-3 = assets/scripts/dock.js
-4 = assets/scripts/panel.js
+1 = templates/admin/assets/scripts/alias.js
+2 = templates/admin/assets/scripts/keyword.js
+3 = templates/admin/assets/scripts/dock.js
+4 = templates/admin/assets/scripts/panel.js
