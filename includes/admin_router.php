@@ -20,7 +20,7 @@ function admin_router()
 	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
 	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
 	$usersException = $tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId');
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	Redaxscript\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{
@@ -210,7 +210,7 @@ function admin_router()
 			if ($tableParameter == 'settings')
 			{
 				$settingForm = new Redaxscript\Admin\View\SettingForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				echo $settingForm->render($idParameter);
+				echo $settingForm->render();
 			}
 			return;
 		case 'up':

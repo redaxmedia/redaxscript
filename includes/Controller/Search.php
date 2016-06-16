@@ -43,7 +43,6 @@ class Search extends ControllerAbstract
 	public function process()
 	{
 		$specialFilter = new Filter\Special();
-		$searchValidator = new Validator\Search();
 		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
 		$thirdParameter = $specialFilter->sanitize($this->_registry->get('thirdParameter'));
 
@@ -67,30 +66,21 @@ class Search extends ControllerAbstract
 			);
 		}
 
-		/* validate search */
-
-		$infoArray = array();
-		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
-		{
-			$infoArray[] = $this->_language->get('input_incorrect');
-		}
-
 		/* process search */
 
 		$resultArray = $this->_search(array(
 			'table' => $queryArray['table'],
 			'search' => $queryArray['search']
 		));
-		if (!$resultArray)
-		{
-			$infoArray[] = $this->_language->get('search_no');
-		}
 
 		/* handle info */
 
-		if ($infoArray)
+		$messageArray = $this->_validate($queryArray, $resultArray);
+		if ($messageArray)
 		{
-			return $this->_info($infoArray);
+			return $this->_info(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle result */
@@ -100,7 +90,9 @@ class Search extends ControllerAbstract
 		{
 			return $output;
 		}
-		return $this->_info($this->_language->get('search_no'));
+		return $this->_info(array(
+			'message' => $this->_language->get('search_no')
+		));
 	}
 
 	/**
@@ -131,12 +123,48 @@ class Search extends ControllerAbstract
 
 	protected function _info($infoArray = array())
 	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), 'home')->info($infoArray, $this->_language->get('error_occurred'));
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setAction($this->_language->get('back'), 'home')
+			->info($infoArray['message'], $this->_language->get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $queryArray array of the query
+	 * @param array $resultArray array of the result
+	 *
+	 * @return array
+	 */
+
+	protected function _validate($queryArray = array(), $resultArray = array())
+	{
+		$searchValidator = new Validator\Search();
+
+		/* validate query */
+
+		$messageArray = array();
+		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
+		{
+			$messageArray[] = $this->_language->get('input_incorrect');
+		}
+
+		/* validate result */
+
+		if (!$resultArray)
+		{
+			$messageArray[] = $this->_language->get('search_no');
+		}
+		return $messageArray;
 	}
 
 	/**
 	 * search in tables
+	 *
+	 * @since 3.0.0
 	 *
 	 * @param array $searchArray array of the search
 	 *
@@ -151,28 +179,54 @@ class Search extends ControllerAbstract
 
 		foreach ($searchArray['table'] as $table)
 		{
-			$columnArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? 'title' : null,
-				$table === 'categories' || $table === 'articles' ? 'description' : null,
-				$table === 'categories' || $table === 'articles' ? 'keywords' : null,
-				$table === 'articles' || $table === 'comments' ? 'text' : null
-			));
-			$likeArray = array_filter(array(
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-				$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
-			));
-
-			/* fetch result */
-
 			$resultArray[$table] = Db::forTablePrefix($table)
-				->whereLikeMany($columnArray, $likeArray)
+				->whereLikeMany($this->_getColumnArray($table), $this->_getLikeArray($table, $searchArray))
 				->where('status', 1)
 				->whereLanguageIs($this->_registry->get('language'))
 				->orderByDesc('date')
 				->findMany();
 		}
 		return $resultArray;
+	}
+
+	/**
+	 * get the column array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return array
+	 */
+
+	protected function _getColumnArray($table = null)
+	{
+		return array_filter(array(
+			$table === 'categories' || $table === 'articles' ? 'title' : null,
+			$table === 'categories' || $table === 'articles' ? 'description' : null,
+			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
+			$table === 'articles' || $table === 'comments' ? 'text' : null
+		));
+	}
+
+	/**
+	 * get the like array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param array $searchArray array of the search
+	 *
+	 * @return array
+	 */
+
+	protected function _getLikeArray($table = null, $searchArray = array())
+	{
+		return array_filter(array(
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
+			$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
+		));
 	}
 }

@@ -188,6 +188,13 @@ module.exports = function (grunt)
 					'templates/*/assets/styles/*.css'
 				]
 			},
+			benchs:
+			{
+				src:
+				[
+					'benchs/**/*.php'
+				]
+			},
 			tests:
 			{
 				src:
@@ -392,7 +399,7 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'php vendor/bin/phpbench run benchs --bootstrap=benchs/bootstrap.php --progress=dots'
+				command: 'php vendor/bin/phpbench run benchs/phpbench --bootstrap=benchs/phpbench/bootstrap.php --progress=dots'
 			},
 			phpunit:
 			{

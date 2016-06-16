@@ -20,7 +20,7 @@ function admin_process()
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$specialFilter = new Redaxscript\Filter\Special;
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	$filter = Redaxscript\Registry::get('filter');
 	$tableParameter = Redaxscript\Registry::get('tableParameter');
 	$idParameter = Redaxscript\Registry::get('idParameter');
@@ -540,7 +540,7 @@ function admin_move()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -627,7 +627,7 @@ function admin_sort()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -689,7 +689,7 @@ function admin_status($input)
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -732,7 +732,7 @@ function admin_install()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger();
+	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 	echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
@@ -837,7 +837,7 @@ function admin_delete()
 
 		/* show success */
 
-		$messenger = new Redaxscript\Admin\Messenger();
+		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 		echo $messenger->setAction(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
@@ -878,7 +878,7 @@ function admin_update()
 		$r['divider'] = $_POST['divider'];
 		$r['time'] = $_POST['time'];
 		$r['date'] =  $_POST['date'];
-		$r['homepage'] = $specialFilter->sanitize($_POST['homepage'], 0);
+		$r['homepage'] = $specialFilter->sanitize($_POST['homepage']);
 		$r['limit'] = !$specialFilter->sanitize($_POST['limit']) ? 10 : $specialFilter->sanitize($_POST['limit']);
 		$r['order'] = $specialFilter->sanitize($_POST['order']);
 		$r['pagination'] = $specialFilter->sanitize($_POST['pagination']);
@@ -901,7 +901,7 @@ function admin_update()
 
 		/* show success */
 
-		$messenger = new Redaxscript\Admin\Messenger();
+		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
 		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }

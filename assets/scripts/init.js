@@ -28,22 +28,6 @@
 
 	rs.plugins =
 	{
-		console:
-		{
-			init: true,
-			selector: 'form.rs-console-js-form',
-			options:
-			{
-				element:
-				{
-					consoleBox: 'div.rs-console-js-box',
-					consoleLabel: 'label.rs-console-js-label',
-					consoleField: 'input.rs-console-js-field',
-					root: 'html, body'
-				},
-				eol: '\n'
-			}
-		},
 		accordion:
 		{
 			init: true,
@@ -106,21 +90,6 @@
 				type: 'alert'
 			}
 		},
-		dock:
-		{
-			init: true,
-			selector: 'div.rs-admin-js-dock',
-			options:
-			{
-				element:
-				{
-					dockLink: 'a.rs-admin-js-link-dock',
-					dockDescription: 'span.rs-admin-js-description-dock',
-					dockDescriptionHTML: '<span class="rs-admin-js-description-dock rs-admin-description-dock"></span>'
-				},
-				vibrate: 100
-			}
-		},
 		dropdown:
 		{
 			init: rs.support.touch,
@@ -142,53 +111,6 @@
 			{
 				eol: '\n',
 				indent: '\t'
-			}
-		},
-		generateAlias:
-		{
-			init: true,
-			selector: 'form input.rs-admin-js-generate-alias-input, form input.rs-admin-js-generate-alias-output',
-			options:
-			{
-				element:
-				{
-					related: 'input.rs-admin-js-generate-alias-output'
-				}
-			}
-		},
-		generateKeyword:
-		{
-			init: true,
-			selector: 'form textarea.rs-admin-js-generate-keyword-input',
-			options:
-			{
-				element:
-				{
-					related: 'textarea.rs-admin-js-generate-keyword-output',
-					target: 'h1, h2, h3, strong'
-				},
-				splitter:
-				{
-					text: '\n',
-					keyword: ' '
-				},
-				delimiter: ' ',
-				limit: 10
-			}
-		},
-		install:
-		{
-			init: false,
-			selector: 'form.rs-install-js-form',
-			options:
-			{
-				element:
-				{
-					fieldType: '#db-type',
-					fieldRelated: '#db-name, #db-user, #db-password',
-					fieldRequired: '#db-name, #db-user',
-					fieldHost: '#db-host'
-				}
 			}
 		},
 		keyShortcut:
@@ -219,21 +141,6 @@
 			{
 				login: 'login',
 				logout: 'logout'
-			}
-		},
-		panel:
-		{
-			init: true,
-			selector: 'ul.rs-admin-js-list-panel',
-			options:
-			{
-				element:
-				{
-					panelItem: 'li.rs-admin-js-item-panel'
-				},
-				timeout: 1000,
-				duration: 200,
-				vibrate: 100
 			}
 		},
 		preventUnload:

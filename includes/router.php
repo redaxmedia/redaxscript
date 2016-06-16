@@ -26,7 +26,7 @@ function router()
 
 	/* check token */
 
-	$messenger = new Redaxscript\Messenger();
+	$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
 	if ($_POST && $_POST['token'] != Redaxscript\Registry::get('token'))
 	{
 		echo $messenger->setAction(Redaxscript\Language::get('home'), Redaxscript\Registry::get('root'))->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
@@ -56,7 +56,7 @@ function router()
 	}
 	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
 	{
-		$messenger = new Redaxscript\Messenger();
+		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
 		$table = Redaxscript\Request::getPost('table');
 		if($table)
 		{

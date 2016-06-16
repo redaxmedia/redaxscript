@@ -47,18 +47,21 @@ class Comment extends ControllerAbstract
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
 		);
+		$route = build_route('articles', $postArray['article']);
 
 		/* handle error */
 
-		$errorArray = $this->_validate($postArray);
-		if ($errorArray)
+		$messageArray = $this->_validate($postArray);
+		if ($messageArray)
 		{
-			return $this->_error($errorArray);
+			return $this->_error(array(
+				'route' => $route,
+				'message' => $messageArray
+			));
 		}
 
 		/* handle success */
 
-		$route = build_route('articles', $postArray['article']);
 		$createArray = array(
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
@@ -83,10 +86,14 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_success(array(
 				'route' => $route,
-				'timeout' => Db::getSetting('notification') ? 2 : 0
+				'timeout' => Db::getSetting('notification') ? 2 : 0,
+				'message' => Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
 			));
 		}
-		return $this->_error($this->_language->get('something_wrong'));
+		return $this->_error(array(
+			'route' => $route,
+			'message' => $this->_language->get('something_wrong')
+		));
 	}
 
 	/**
@@ -101,8 +108,11 @@ class Comment extends ControllerAbstract
 
 	protected function _success($successArray = array())
 	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('continue'), $successArray['route'])->doRedirect($successArray['timeout'])->success(Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent'), $this->_language->get('operation_completed'));
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setAction($this->_language->get('continue'), $successArray['route'])
+			->doRedirect($successArray['timeout'])
+			->success($successArray['message'], $this->_language->get('operation_completed'));
 	}
 
 	/**
@@ -117,8 +127,10 @@ class Comment extends ControllerAbstract
 
 	protected function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_language->get('back'), $errorArray['route'])->error($errorArray, $this->_language->get('error_occurred'));
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setAction($this->_language->get('back'), $errorArray['route'])
+			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -126,12 +138,12 @@ class Comment extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $validateArray array to be validated
+	 * @param array $postArray array of the post
 	 *
 	 * @return array
 	 */
 
-	protected function _validate($validateArray = array())
+	protected function _validate($postArray = array())
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
@@ -139,36 +151,36 @@ class Comment extends ControllerAbstract
 
 		/* validate post */
 
-		$errorArray = array();
-		if (!$validateArray['author'])
+		$messageArray = array();
+		if (!$postArray['author'])
 		{
-			$errorArray[] = $this->_language->get('author_empty');
+			$messageArray[] = $this->_language->get('author_empty');
 		}
-		if (!$validateArray['email'])
+		if (!$postArray['email'])
 		{
-			$errorArray[] = $this->_language->get('email_empty');
+			$messageArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($validateArray['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('email_incorrect');
+			$messageArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($validateArray['url'] && $urlValidator->validate($validateArray['url']) == Validator\ValidatorInterface::FAILED)
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('url_incorrect');
+			$messageArray[] = $this->_language->get('url_incorrect');
 		}
-		if (!$validateArray['text'])
+		if (!$postArray['text'])
 		{
-			$errorArray[] = $this->_language->get('comment_empty');
+			$messageArray[] = $this->_language->get('comment_empty');
 		}
-		if (!$validateArray['article'])
+		if (!$postArray['article'])
 		{
-			$errorArray[] = $this->_language->get('input_incorrect');
+			$messageArray[] = $this->_language->get('input_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($validateArray['task'], $validateArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('captcha_incorrect');
+			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**

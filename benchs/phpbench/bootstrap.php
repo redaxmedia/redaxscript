@@ -1,14 +1,10 @@
 <?php
 namespace Redaxscript;
 
-/* strict reporting */
-
-error_reporting(E_STRICT || E_ERROR);
-
 /* include files */
 
 include_once('includes/Autoloader.php');
-include_once('BenchCase.php');
+include_once('BenchCaseAbstract.php');
 
 /* init */
 
@@ -20,9 +16,10 @@ Request::init();
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* sqlite */
+/* set config */
 
 $config->set('dbType', 'sqlite');
+$config->set('dbHost', ':memory:');
 
 /* database */
 
@@ -35,7 +32,12 @@ $installer = new Installer($config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
-$installer->insertData();
+$installer->insertData(array(
+	'adminName' => 'Test',
+	'adminUser' => 'test',
+	'adminPassword' => 'test',
+	'adminEmail' => 'test@test.com'
+));
 
 /* hook */
 
@@ -45,4 +47,4 @@ Hook::init();
 /* language */
 
 $language = Language::getInstance();
-$language::init('en');
+$language::init();

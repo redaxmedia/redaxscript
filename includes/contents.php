@@ -212,7 +212,7 @@ function contents()
 	{
 		/* show error */
 
-		$messenger = new Redaxscript\Messenger();
+		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
 		echo $messenger->error($error, Redaxscript\Language::get('something_wrong'));
 	}
 	else

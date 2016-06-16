@@ -140,7 +140,7 @@ class Demo extends Config
 
 	public static function success()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger(Registry::getInstance());
 		return $messenger->setAction(Language::get('continue'), 'admin')->doRedirect(0)->success(Language::get('logged_in'), Language::get('welcome'));
 	}
 
@@ -154,7 +154,7 @@ class Demo extends Config
 
 	public static function error()
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger(Registry::getInstance());
 		return $messenger->setAction(Language::get('back'), 'login')->doRedirect()->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 

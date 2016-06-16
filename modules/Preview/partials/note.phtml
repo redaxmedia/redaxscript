@@ -34,7 +34,8 @@ $noteArray = array(
 	$admin ? 'rs-admin-note-success' : 'rs-note-success',
 	$admin ? 'rs-admin-note-info' : 'rs-note-info'
 );
-$messenger = $admin ? new Admin\Messenger() : new Messenger();
+$registry = Registry::getInstance();
+$messenger = $admin ? new Admin\Messenger($registry) : new Messenger($registry);
 $messenger->setAction(Language::get('preview', '_preview'), 'preview#note');
 ?>
 
