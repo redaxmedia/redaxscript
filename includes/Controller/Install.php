@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Controller;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Html;
@@ -51,7 +50,8 @@ class Install extends ControllerAbstract
 		{
 			return $this->_success(array(
 				'redirect' => $this->_registry->get('root'),
-				'time' => 5
+				'time' => 2,
+				'title' => $this->_language->get('installation_completed')
 			));
 		}
 		else if ($this->_request->getPost('Redaxscript\View\InstallForm'))
@@ -86,44 +86,11 @@ class Install extends ControllerAbstract
 		}
 		else
 		{
-			$view = new View\InstallNote($this->_registry, $this->_language);
-			return $view->render() . $this->_installForm($postArray);
+			$installNote = new View\InstallNote($this->_registry, $this->_language);
+			return $installNote->render() . $this->_installForm($postArray);
 		}
 
 		return $this->_error($errorArray);
-	}
-
-	/**
-	 * show the success
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $successArray
-	 *
-	 * @return string
-	 */
-
-	protected function _success($successArray = array())
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger->setAction($this->_language->get('home'), $successArray['redirect'])->doRedirect($successArray['time'])->success($successArray['title']);
-		// ->setAction($this->_registry->get('root'))->success($this->_language->get('installation_completed'))
-	}
-
-	/**
-	 * show the error
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param $errorArray
-	 *
-	 * @return string
-	 */
-
-	protected function _error($errorArray = array())
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger->error($errorArray, $this->_language->get('alert'));
 	}
 
 	/**
@@ -178,29 +145,6 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * write config
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $writeArray
-	 *
-	 * @return array
-	 */
-
-	protected function _write($writeArray = array())
-	{
-		$config = $this->_config;
-		$config->set('dbType', $writeArray['dType']);
-		$config->set('dbHost', $writeArray['dHost']);
-		$config->set('dbName', $writeArray['dName']);
-		$config->set('dbUser', $writeArray['dUser']);
-		$config->set('dbPassword', $writeArray['dPassword']);
-		$config->set('dbPrefix', $writeArray['dPrefix']);
-		$config->set('dbSalt', $writeArray['dSalt']);
-		$config->write();
-	}
-
-	/**
 	 * send login information
 	 *
 	 * @since 3.0.0
@@ -247,34 +191,6 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * return post parameters as array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	private function _processPost()
-	{
-		$specialFilter = new Filter\Special();
-		$emailFilter = new Filter\Email();
-
-		return array(
-			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
-			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
-			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
-			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
-			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
-			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
-			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
-			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
-			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
-			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
-			'email' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
-		);
-	}
-
-	/**
 	 * check if redaxscript is already install
 	 *
 	 * @since 3.0.0
@@ -304,7 +220,54 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * check if redaxscript is already install
+	 * insert user into database via installer class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $postArray
+	 *
+	 * @return array
+	 */
+
+	private function _install($postArray)
+	{
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawDrop();
+		$installer->rawCreate();
+		$installer->insertData(array(
+			'adminName' => $postArray['name'],
+			'adminUser' => $postArray['user'],
+			'adminPassword' => $postArray['password'],
+			'adminEmail' => $postArray['email']
+		));
+	}
+
+	/**
+	 * write config file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $writeArray
+	 *
+	 * @return array
+	 */
+
+	protected function _write($writeArray = array())
+	{
+		$config = $this->_config;
+		$config->set('dbType', $writeArray['dType']);
+		$config->set('dbHost', $writeArray['dHost']);
+		$config->set('dbName', $writeArray['dName']);
+		$config->set('dbUser', $writeArray['dUser']);
+		$config->set('dbPassword', $writeArray['dPassword']);
+		$config->set('dbPrefix', $writeArray['dPrefix']);
+		$config->set('dbSalt', $writeArray['dSalt']);
+		$config->write();
+	}
+
+	/**
+	 * show InstallForm
 	 *
 	 * @since 3.0.0
 	 *
@@ -331,26 +294,63 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * insert user into database via installer class
+	 * return post parameters as array
 	 *
 	 * @since 3.0.0
-	 *
-	 * @param $postArray
 	 *
 	 * @return array
 	 */
 
-	private function _install($postArray)
+	private function _processPost()
 	{
-		$installer = new Installer($this->_config);
-		$installer->init();
-		$installer->rawDrop();
-		$installer->rawCreate();
-		$installer->insertData(array(
-			'adminName' => $postArray['name'],
-			'adminUser' => $postArray['user'],
-			'adminPassword' => $postArray['password'],
-			'adminEmail' => $postArray['email']
-		));
+		$specialFilter = new Filter\Special();
+		$emailFilter = new Filter\Email();
+
+		return array(
+			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
+			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
+			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
+			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
+			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
+			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
+			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
+			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
+			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
+			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
+			'email' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
+		);
+	}
+
+	/**
+	 * show the success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $successArray
+	 *
+	 * @return string
+	 */
+
+	protected function _success($successArray = array())
+	{
+		$messenger = new Messenger($this->_registry);
+		return $messenger->setAction($this->_language->get('home'), $successArray['redirect'])->doRedirect($successArray['time'])->success($successArray['title']);
+		// ->setAction($this->_registry->get('root'))->success($this->_language->get('installation_completed'))
+	}
+
+	/**
+	 * show the error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $errorArray
+	 *
+	 * @return string
+	 */
+
+	protected function _error($errorArray = array())
+	{
+		$messenger = new Messenger($this->_registry);
+		return $messenger->error($errorArray, $this->_language->get('alert'));
 	}
 }
