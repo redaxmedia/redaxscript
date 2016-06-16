@@ -5,9 +5,11 @@ use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Html;
+use Redaxscript\Installer;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
 use Redaxscript\Validator;
+use Redaxscript\View;
 
 /**
  * children class to process install
@@ -24,6 +26,14 @@ use Redaxscript\Validator;
 class Install extends ControllerAbstract
 {
 	/**
+	 * instance of the config
+	 *
+	 * @var object
+	 */
+
+	public $_config;
+
+	/**
 	 * process the class
 	 *
 	 * @since 3.0.0
@@ -33,35 +43,54 @@ class Install extends ControllerAbstract
 
 	public function process()
 	{
-		$specialFilter = new Filter\Special();
-		$emailFilter = new Filter\Email();
-
 		/* process post */
 
-		$postArray = array(
-			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
-			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
-			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
-			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
-			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
-			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
-			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
-			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
-			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
-			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
-			'email' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
-		);
+		$postArray = $this->_processPost();
 
-		/* handle error */
-
-		if (!($errorArray = !$this->_validate($postArray)))
+		if ($this->_checkInstall($postArray) === 1)
 		{
-			return $this->_error($errorArray);
+			return $this->_success(array(
+				'redirect' => $this->_registry->get('root'),
+				'time' => 5
+			));
+		}
+		else if ($this->_request->getPost('Redaxscript\View\InstallForm'))
+		{
+			if (!$this->_validate($postArray))
+			{
+				$errorArray[] = $this->_language->get('something_wrong');
+			}
+
+			/* process error */
+
+			if (!$errorArray)
+			{
+				return $this->_error($errorArray);
+			}
+
+			$this->_write($postArray);
+			$this->_install($postArray);
+
+			if ($this->_mail($postArray))
+			{
+				return $this->_success(array(
+					'redirect' => $this->_registry->get('root'),
+					'time' => 2,
+					'title' => $this->_language->get('installation_completed')
+				));
+			}
+			else
+			{
+				$errorArray[] = $this->_language->get('something_wrong');
+			}
+		}
+		else
+		{
+			$view = new View\InstallNote($this->_registry, $this->_language);
+			return $view->render() . $this->_installForm($postArray);
 		}
 
-		$this->_mail($postArray);
-
-		return $this->_write($postArray);
+		return $this->_error($errorArray);
 	}
 
 	/**
@@ -69,13 +98,16 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $successArray
+	 *
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success($successArray = array())
 	{
-		$messenger = new Messenger();
-		return $messenger->setAction($this->_registry->get('root'))->success($this->_language->get('installation_completed'));
+		$messenger = new Messenger($this->_registry);
+		return $messenger->setAction($this->_language->get('home'), $successArray['redirect'])->doRedirect($successArray['time'])->success($successArray['title']);
+		// ->setAction($this->_registry->get('root'))->success($this->_language->get('installation_completed'))
 	}
 
 	/**
@@ -90,7 +122,7 @@ class Install extends ControllerAbstract
 
 	protected function _error($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray, $this->_language->get('alert'));
 	}
 
@@ -157,7 +189,7 @@ class Install extends ControllerAbstract
 
 	protected function _write($writeArray = array())
 	{
-		$config = Config::getInstance();
+		$config = $this->_config;
 		$config->set('dbType', $writeArray['dType']);
 		$config->set('dbHost', $writeArray['dHost']);
 		$config->set('dbName', $writeArray['dName']);
@@ -178,7 +210,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	private function _mail($mailArray)
+	private function _mail($mailArray = array())
 	{
 		$mailer = new Mailer();
 
@@ -212,5 +244,113 @@ class Install extends ControllerAbstract
 
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		return $mailer->send();
+	}
+
+	/**
+	 * return post parameters as array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	private function _processPost()
+	{
+		$specialFilter = new Filter\Special();
+		$emailFilter = new Filter\Email();
+
+		return array(
+			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
+			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
+			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
+			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
+			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
+			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
+			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
+			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
+			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
+			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
+			'email' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
+		);
+	}
+
+	/**
+	 * check if redaxscript is already install
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $postArray
+	 *
+	 * @return array
+	 */
+
+	private function _checkInstall($postArray = array())
+	{
+		$loginValidator = new Validator\Login();
+		$emailValidator = new Validator\Email();
+
+		if ($this->_request->getPost('Redaxscript\View\InstallForm') && $this->_registry->get('dbStatus') && $postArray['name']
+			&& $loginValidator->validate($postArray['user']) == Validator\ValidatorInterface::PASSED
+			&& $loginValidator->validate($postArray['password']) == Validator\ValidatorInterface::PASSED
+			&& $emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::PASSED
+		)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	/**
+	 * check if redaxscript is already install
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $postArray
+	 *
+	 * @return array
+	 */
+
+	private function _installForm($postArray = array())
+	{
+		$installForm = new View\InstallForm($this->_registry, $this->_language);
+		return $installForm->render(array(
+			'dbType' => $postArray['dType'],
+			'dbHost' => $postArray['dHost'],
+			'dbName' => $postArray['dName'],
+			'dbUser' => $postArray['dUser'],
+			'dbPassword' => $postArray['dPassword'],
+			'dbPrefix' => $postArray['dPrefix'],
+			'adminName' => $postArray['name'],
+			'adminUser' => $postArray['user'],
+			'adminPassword' => $postArray['password'],
+			'adminEmail' => $postArray['email']
+		));
+	}
+
+	/**
+	 * insert user into database via installer class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param $postArray
+	 *
+	 * @return array
+	 */
+
+	private function _install($postArray)
+	{
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawDrop();
+		$installer->rawCreate();
+		$installer->insertData(array(
+			'adminName' => $postArray['name'],
+			'adminUser' => $postArray['user'],
+			'adminPassword' => $postArray['password'],
+			'adminEmail' => $postArray['email']
+		));
 	}
 }

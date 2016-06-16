@@ -55,7 +55,7 @@ class InstallNote extends ViewAbstract
 
 	private function _errors($errorArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray);
 	}
 
@@ -71,7 +71,7 @@ class InstallNote extends ViewAbstract
 
 	private function _warnings($warningArray = array())
 	{
-		$messenger = new Messenger();
+		$messenger = new Messenger($this->_registry);
 		return $messenger->warning($warningArray);
 	}
 
