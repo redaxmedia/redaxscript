@@ -73,8 +73,9 @@ class CallHome extends Module
 	{
 		$output = null;
 		$aliasFilter = new Filter\Alias();
-		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(Language::get('version', '_package'));
-		$urlNews = 'http://service.redaxscript.com/news';
+		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
+		$urlVersion = 'http://service.redaxscript.com/version/' . $version;
+		$urlNews = 'http://service.redaxscript.com/news/' . $version;
 
 		/* get contents */
 

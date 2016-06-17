@@ -124,7 +124,6 @@ function admin_router()
 
 	if ($firstParameter == 'admin' && !$adminParameter)
 	{
-		admin_notification();
 		contents();
 	}
 	switch ($adminParameter)
