@@ -243,6 +243,7 @@ module.exports = function (grunt)
 					'templates/admin/assets/styles/layout.css',
 					'templates/admin/assets/styles/box.css',
 					'templates/admin/assets/styles/button.css',
+					'templates/admin/assets/styles/dashboard.css',
 					'templates/admin/assets/styles/dialog.css',
 					'templates/admin/assets/styles/dock.css',
 					'templates/admin/assets/styles/field.css',

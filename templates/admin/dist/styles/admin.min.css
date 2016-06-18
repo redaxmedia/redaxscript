@@ -417,6 +417,24 @@
 /**
  * @tableofcontents
  *
+ * 1. dashboard
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dashboard */
+
+.rs-admin-dashboard
+{
+	background: rgb(255, 255, 255);
+	padding: 1em;
+}
+/**
+ * @tableofcontents
+ *
  * 1. dialog overlay admin
  * 2. fadein effect
  *
@@ -952,12 +970,11 @@
 /**
  * @tableofcontents
  *
- * 1. panel admin
- * 2. box panel admin
- * 3. item panel admin
- *    3.1 icons before
- *    3.2 icons after
- * 4. list panel admin
+ * 1. panel
+ * 2. item panel
+ *    2.1 icons before
+ *    2.2 icons after
+ * 3. list panel
  * 5. query
  *    5.1 medium min
  *
@@ -967,10 +984,11 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. panel admin */
+/* @section 1. panel */
 
 .rs-admin-panel
 {
+	background: rgb(32, 32, 32);
 	position: relative;
 	z-index: 900;
 }
@@ -980,14 +998,7 @@
 	text-decoration: none;
 }
 
-/* @section 2. box panel admin */
-
-.rs-admin-box-panel
-{
-	background: rgb(32, 32, 32);
-}
-
-/* @section 3. item panel admin */
+/* @section 2. item panel */
 
 .rs-admin-item-panel
 {
@@ -1001,7 +1012,7 @@
 	background: linear-gradient(rgb(199, 41, 41), #a20000);
 }
 
-/* @section 3.1 icons before */
+/* @section 2.1 icons before */
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
@@ -1036,7 +1047,7 @@
 	content: 'n';
 }
 
-/* @section 3.2 icons after */
+/* @section 2.2 icons after */
 
 .rs-admin-item-panel > span:after
 {
@@ -1052,7 +1063,7 @@
 	content: '˅';
 }
 
-/* @section 4. list panel admin */
+/* @section 3. list panel */
 
 .rs-admin-list-panel
 {

@@ -31,14 +31,14 @@ class Tag extends BaseTag
 	}
 
 	/**
-	 * notification
+	 * note
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public static function notification()
+	public static function note()
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('admin_notification');
