@@ -16,3 +16,8 @@
 	background: gray(255);
 	padding: 1em;
 }
+
+.rs-admin-dashboard:empty
+{
+	display: none;
+}

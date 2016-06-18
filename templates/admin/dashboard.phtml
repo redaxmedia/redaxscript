@@ -1,7 +1,9 @@
 <?php namespace Redaxscript\Admin\Template; ?>
 
 <?php if (Tag::registry('loggedIn') === Tag::registry('token')): ?>
-	<div id="admin-dashboard" class="rs-admin-js-dashboard rs-admin-dashboard">
-		<?php echo Tag::note(); ?>
-	</div>
+	<div id="admin-dashboard" class="rs-admin-js-dashboard rs-admin-dashboard"><!---
+		---><?php if (!Tag::registry('adminParameter')): ?><!---
+			---><?php echo Tag::note(); ?><!---
+		---><?php endif; ?><!---
+	---></div>
 <?php endif; ?>
