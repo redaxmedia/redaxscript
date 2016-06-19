@@ -23,7 +23,7 @@ class Config extends Module
 
 	protected static $_configArray = array(
 		'className' => array(
-			'list' => 'rs-list-directory-lister rs-clearfix',
+			'list' => 'rs-list-directory-lister rs-is-clearfix',
 			'link' => 'rs-link-directory-lister',
 			'textSize' => 'rs-text-directory-lister rs-text-size',
 			'textDate' => 'rs-text-directory-lister rs-text-date',

@@ -76,7 +76,7 @@ a
 
 /* @section 2.1 read more link */
 
-.rs-link-read-more
+.rs-link-readmore
 {
 	background: var(--rs-gradient-quaternary);
 	border-radius: 0.125em;
@@ -91,19 +91,19 @@ a
 	transition: transform 0.2s;
 }
 
-.rs-link-read-more:after
+.rs-link-readmore:after
 {
 	content: '\3009';
 	font: 0.75em/1em var(--rs-font-icon);
 	margin-left: 0.375em;
 }
 
-.rs-link-read-more:hover
+.rs-link-readmore:hover
 {
 	background: var(--rs-gradient-quaternary-light);
 }
 
-.rs-link-read-more:active
+.rs-link-readmore:active
 {
 	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
 	transform: translateY(2px);
@@ -304,7 +304,7 @@ a
 		display: block;
 	}
 
-	.rs-link-read-more
+	.rs-link-readmore
 	{
 		display: inline-block;
 		vertical-align: middle;

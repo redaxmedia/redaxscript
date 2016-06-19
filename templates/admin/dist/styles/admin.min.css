@@ -991,14 +991,14 @@
 
 /* @section 1. panel */
 
-.rs-admin-panel
+.rs-admin-component-panel
 {
 	background: rgb(32, 32, 32);
 	position: relative;
 	z-index: 900;
 }
 
-.rs-admin-panel a, .rs-admin-panel a:hover
+.rs-admin-component-panel a, .rs-admin-component-panel a:hover
 {
 	text-decoration: none;
 }

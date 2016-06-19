@@ -21,7 +21,7 @@ rs.modules.editor =
 		{
 			editor: 'rs-js-editor rs-editor',
 			editorPreview: 'rs-js-editor-preview rs-editor-preview',
-			editorToolbar: 'rs-js-toolbar rs-editor-toolbar rs-clearfix',
+			editorToolbar: 'rs-js-toolbar rs-editor-toolbar rs-is-clearfix',
 			editorControl: 'rs-js-editor-control rs-editor-control',
 			editorSourceCode: 'rs-source-code',
 			editorWysiwyg: 'rs-wysiwyg'

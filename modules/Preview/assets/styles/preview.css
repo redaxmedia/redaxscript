@@ -37,8 +37,8 @@
 
 /* @section 3. grid */
 
-.rs-preview .rs-grid:hover .rs-box-preview,
-.rs-preview .rs-grid-space:hover .rs-box-preview
+.rs-preview .rs-fn-grid:hover .rs-box-preview,
+.rs-preview .rs-fn-grid-space:hover .rs-box-preview
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
