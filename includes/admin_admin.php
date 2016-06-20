@@ -238,6 +238,10 @@ function admin_notification()
 
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
+		if (file_exists('console.php'))
+		{
+			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' console.php' . Redaxscript\Language::get('point') . '</div>';
+		}
 		if (file_exists('install.php'))
 		{
 			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</div>';

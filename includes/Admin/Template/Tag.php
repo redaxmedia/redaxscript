@@ -29,4 +29,19 @@ class Tag extends BaseTag
 		return self::_migrate('admin_panel_list');
 		// @codeCoverageIgnoreEnd
 	}
+
+	/**
+	 * note
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function note()
+	{
+		// @codeCoverageIgnoreStart
+		return self::_migrate('admin_notification');
+		// @codeCoverageIgnoreEnd
+	}
 }

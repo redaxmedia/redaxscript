@@ -118,7 +118,7 @@ a
 
 /* @section 2.1 read more link */
 
-.rs-link-read-more
+.rs-link-readmore
 {
 	background: linear-gradient(rgb(196, 114, 59), #c77a46);
 	border-radius: 0.125em;
@@ -135,19 +135,19 @@ a
 	transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
-.rs-link-read-more:after
+.rs-link-readmore:after
 {
 	content: '\3009';
 	font: 0.75em/1em 'icon default';
 	margin-left: 0.375em;
 }
 
-.rs-link-read-more:hover
+.rs-link-readmore:hover
 {
 	background: linear-gradient(rgb(202, 128, 78), rgb(202, 128, 78));
 }
 
-.rs-link-read-more:active
+.rs-link-readmore:active
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
 	-webkit-transform: translateY(2px);
@@ -347,7 +347,7 @@ a
 		display: block;
 	}
 
-	.rs-link-read-more
+	.rs-link-readmore
 	{
 		display: inline-block;
 		vertical-align: middle;
@@ -1105,7 +1105,7 @@ a
 
 /* @section 1. grid elements */
 
-.rs-grid-space > a, .rs-grid-space > blockquote, .rs-grid-space > button, .rs-grid-space > code, .rs-grid-space > div, .rs-grid-space > dl, .rs-grid-space > fieldset, .rs-grid-space > form, .rs-grid-space > h1, .rs-grid-space > h2, .rs-grid-space > h3, .rs-grid-space > h4, .rs-grid-space > h5, .rs-grid-space > h6, .rs-grid-space > hr, .rs-grid-space > img, .rs-grid-space > ol, .rs-grid-space > p, .rs-grid-space > table, .rs-grid-space > ul, .rs-line-space
+.rs-fn-grid-space > a, .rs-fn-grid-space > blockquote, .rs-fn-grid-space > button, .rs-fn-grid-space > code, .rs-fn-grid-space > div, .rs-fn-grid-space > dl, .rs-fn-grid-space > fieldset, .rs-fn-grid-space > form, .rs-fn-grid-space > h1, .rs-fn-grid-space > h2, .rs-fn-grid-space > h3, .rs-fn-grid-space > h4, .rs-fn-grid-space > h5, .rs-fn-grid-space > h6, .rs-fn-grid-space > hr, .rs-fn-grid-space > img, .rs-fn-grid-space > ol, .rs-fn-grid-space > p, .rs-fn-grid-space > table, .rs-fn-grid-space > ul, .rs-line-space
 {
 	margin-left: 0.75rem;
 	margin-right: 0.75rem;

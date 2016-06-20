@@ -19,7 +19,7 @@
 			"myTablet": "",
 			"myDesktop": "windows"
 		},
-		"rs-firefox rs-27 rs-gecko rs-desktop rs-windows"
+		"rs-is-firefox rs-is-27 rs-is-gecko rs-is-desktop rs-is-windows"
 	],
 	[
 		{
@@ -30,7 +30,7 @@
 			"myTablet": "",
 			"myDesktop": ""
 		},
-		"rs-chrome rs-32 rs-webkit rs-mobile rs-android"
+		"rs-is-chrome rs-is-32 rs-is-webkit rs-is-mobile rs-is-android"
 	],
 	[
 		{
@@ -41,6 +41,6 @@
 			"myTablet": "tablet",
 			"myDesktop": ""
 		},
-		"rs-safari rs-6 rs-webkit rs-tablet"
+		"rs-is-safari rs-is-6 rs-is-webkit rs-is-tablet"
 	]
 ]

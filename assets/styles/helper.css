@@ -13,8 +13,8 @@
 
 /* @section 1. hide */
 
-.rs-hide,
-.rs-js .rs-hide-if-js
+.rs-fn-hide,
+.rs-js .rs-hideifjs
 {
 	display: none;
 }
@@ -37,13 +37,13 @@
 /* @section 3. clearfix */
 
 .rs-admin-clearfix,
-.rs-clearfix
+.rs-is-clearfix
 {
 	clear: both;
 }
 
 .rs-admin-clearfix:after,
-.rs-clearfix:after
+.rs-is-clearfix:after
 {
 	clear: both;
 	content: '';
