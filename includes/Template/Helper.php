@@ -141,7 +141,7 @@ class Helper
 
 		foreach ($classArray as $key => $value)
 		{
-			$classArray[$key] = self::$_prefix . $value;
+			$classArray[$key] = self::$_prefix . 'is-' . $value;
 		}
 		return implode(' ', $classArray);
 	}
@@ -171,7 +171,7 @@ class Helper
 	 * @return array
 	 */
 
-	protected function _getDeviceArray()
+	protected static function _getDeviceArray()
 	{
 		foreach (self::$_deviceArray as $system => $value)
 		{

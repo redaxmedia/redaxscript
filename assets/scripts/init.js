@@ -237,7 +237,7 @@
 		{
 			docElement.className += ' ';
 		}
-		docElement.className += 'rs-js';
+		docElement.className += 'rs-is-js';
 
 		/* support classes */
 
@@ -247,7 +247,7 @@
 			{
 				if (rs.support[i])
 				{
-					docElement.className += ' rs-' + i.toLowerCase();
+					docElement.className += ' rs-has-' + i.toLowerCase();
 				}
 				else
 				{
