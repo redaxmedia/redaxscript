@@ -132,7 +132,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-system">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a></li>';
@@ -153,13 +153,37 @@ function admin_panel_list()
 		$output .= '</ul></li>';
 	}
 
-	/* collect profile */
+	/* collect profile output */
 
 	if (Redaxscript\Registry::get('myId'))
 	{
 		$counter++;
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel">' . Redaxscript\Language::get('profile') . '</a></li>';
 	}
+
+	/* collect notes output */
+
+	/*TODO: let's find the right wording - "notes, alerts, todo, messages" and then replace the hard coded text with language value */
+	$counter++;
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-messages"><span>Messages</span><ul class="rs-admin-js-panel-message rs-admin-list-panel-children rs-admin-list-message">';
+	if (Redaxscript\Registry::get('myId') == 1)
+	{
+		//TODO: style a tags and span tags - both are possible
+		if (file_exists('console.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+		if (file_exists('install.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+		if (is_writable('config.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . Redaxscript\Language::get('colon') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+	}
+	$output .= Redaxscript\Hook::trigger('adminPanelAddNote');
+	$output .= '</ul></li>';
 
 	/* collect logout */
 
@@ -169,7 +193,7 @@ function admin_panel_list()
 
 	if ($output)
 	{
-		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-c' . $counter . '">' . $output . '</ul>';
+		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-has-column' . $counter . '">' . $output . '</ul>';
 	}
 	$output .= Redaxscript\Hook::trigger('adminPanelEnd');
 	echo $output;
@@ -217,42 +241,6 @@ function admin_dock($table, $id)
 	}
 	$output .= Redaxscript\Hook::trigger('adminDockEnd');
 	return $output;
-}
-
-/**
- * admin notification
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Admin
- * @author Henry Ruhs
- */
-
-function admin_notification()
-{
-	$output = Redaxscript\Hook::trigger('adminNotificationStart');
-
-	/* insecure file warning */
-
-	if (Redaxscript\Registry::get('myId') == 1)
-	{
-		if (file_exists('console.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' console.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-		if (file_exists('install.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-		if (is_writable('config.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_permission_revoke') . Redaxscript\Language::get('colon') . ' config.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-	}
-	$output .= Redaxscript\Hook::trigger('adminNotificationEnd');
-	echo $output;
 }
 
 /**

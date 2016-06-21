@@ -1164,29 +1164,34 @@
 		position: relative;
 	}
 
-	.rs-admin-list-panel.rs-admin-c1 > li
+	.rs-admin-list-panel.rs-admin-has-column1 > li
 	{
 		width: 100%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c2 > li
+	.rs-admin-list-panel.rs-admin-has-column2 > li
 	{
 		width: 50%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c3 > li
+	.rs-admin-list-panel.rs-admin-has-column3 > li
 	{
 		width: 33.33%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c4 > li
+	.rs-admin-list-panel.rs-admin-has-column4 > li
 	{
 		width: 25%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c5 > li
+	.rs-admin-list-panel.rs-admin-has-column5 > li
 	{
 		width: 20%;
+	}
+
+	.rs-admin-list-panel.rs-admin-has-column6 > li
+	{
+		width: 16.66%;
 	}
 
 	.rs-admin-list-panel-children
