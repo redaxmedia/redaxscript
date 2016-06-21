@@ -107,27 +107,27 @@
 
 /* @section 2.1 javascript enabled */
 
-.rs-js .rs-admin-title-accordion
+.rs-is-js .rs-admin-title-accordion
 {
 	cursor: pointer;
 }
 
 /* @section 2.2 last element */
 
-.rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
+.rs-is-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
 	border-bottom-width: 0;
 }
 
 /* @section 3. several admin titles */
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
 {
 	background: rgb(32, 32, 32);
 	border: 1px solid rgb(34, 34, 34);
 }
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active, .rs-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active, .rs-is-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
 {
 	color: rgb(204, 204, 204);
 }
@@ -960,7 +960,7 @@
 
 /* @section 2.1 javascript enabled */
 
-.rs-js .rs-admin-list-tab .rs-admin-item-active
+.rs-is-js .rs-admin-list-tab .rs-admin-item-active
 {
 	background: rgb(226, 226, 226);
 	border: 1px solid rgb(185, 185, 185);
@@ -968,7 +968,7 @@
 	pointer-events: none;
 }
 
-.rs-js .rs-admin-list-tab .rs-admin-item-active a
+.rs-is-js .rs-admin-list-tab .rs-admin-item-active a
 {
 	color: rgb(71, 71, 71);
 }
@@ -1236,19 +1236,19 @@
 	display: inline-block;
 }
 
-.rs-js .rs-admin-list-tab .rs-admin-item-active
+.rs-is-js .rs-admin-list-tab .rs-admin-item-active
 {
 	pointer-events: none;
 }
 
 /* @section 3. set tab */
 
-.rs-js .rs-admin-set-tab
+.rs-is-js .rs-admin-set-tab
 {
 	display: none;
 }
 
-.rs-js .rs-admin-set-tab.rs-admin-set-active
+.rs-is-js .rs-admin-set-tab.rs-admin-set-active
 {
 	display: block;
 }
@@ -1264,7 +1264,7 @@
 		display: none;
 	}
 
-	.rs-js .rs-admin-set-tab
+	.rs-is-js .rs-admin-set-tab
 	{
 		display: block;
 	}

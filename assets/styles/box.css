@@ -13,8 +13,8 @@
 
 /* @section 1. box accordion */
 
-.rs-js .rs-box-accordion,
-.rs-js .rs-admin-box-accordion
+.rs-is-js .rs-box-accordion,
+.rs-is-js .rs-admin-box-accordion
 {
 	display: none;
 }

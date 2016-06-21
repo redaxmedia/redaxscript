@@ -69,29 +69,29 @@
 
 /* @section 2.1 javascript enabled */
 
-.rs-js .rs-admin-title-accordion
+.rs-is-js .rs-admin-title-accordion
 {
 	cursor: pointer;
 }
 
 /* @section 2.2 last element */
 
-.rs-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
+.rs-is-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
 {
 	border-bottom-width: 0;
 }
 
 /* @section 3. several admin titles */
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active,
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active,
 .rs-admin-title-dialog
 {
 	background: gray(32);
 	border: 1px solid gray(34);
 }
 
-.rs-js .rs-admin-title-accordion.rs-admin-title-active,
-.rs-js .rs-admin-title-accordion.rs-admin-title-active a,
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active,
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active a,
 .rs-admin-title-dialog,
 .rs-admin-title-dialog a
 {

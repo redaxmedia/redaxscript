@@ -16,7 +16,7 @@
 	display: none;
 }
 
-.rs-js .rs-placeholder-lazy-load
+.rs-is-js .rs-placeholder-lazy-load
 {
 	display: block;
 	height: 0.5em;

@@ -27,19 +27,19 @@
 	display: inline-block;
 }
 
-.rs-js .rs-list-tab .rs-item-active
+.rs-is-js .rs-list-tab .rs-item-active
 {
 	pointer-events: none;
 }
 
 /* @section 3. set tab */
 
-.rs-js .rs-set-tab
+.rs-is-js .rs-set-tab
 {
 	display: none;
 }
 
-.rs-js .rs-set-tab.rs-set-active
+.rs-is-js .rs-set-tab.rs-set-active
 {
 	display: block;
 }
@@ -55,7 +55,7 @@
 		display: none;
 	}
 
-	.rs-js .rs-set-tab
+	.rs-is-js .rs-set-tab
 	{
 		display: block;
 	}
