@@ -92,7 +92,7 @@ button, input, select, textarea
 
 /* @section 2. redirect */
 
-.rs-admin-redirect-overlay, .rs-redirect-overlay
+.rs-admin-redirect-overlay, .rs-meta-redirect-overlay
 {
 	background: #fff;
 	bottom: 0;
@@ -288,7 +288,7 @@ button, input, select, textarea
 
 /* @section 1. dialog */
 
-.rs-dialog, .rs-admin-dialog
+.rs-dialog, .rs-admin-component-dialog
 {
 	box-sizing: border-box;
 	left: 50%;
@@ -317,7 +317,7 @@ button, input, select, textarea
 
 @media screen and (min-width: 50em)
 {
-	.rs-dialog, .rs-admin-dialog
+	.rs-dialog, .rs-admin-component-dialog
 	{
 		margin-left: -15em;
 		width: 30em;
@@ -862,18 +862,18 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 1. tooltip */
 
-.rs-tooltip
+.rs-has-tooltip
 {
 	cursor: help;
 	position: relative;
 }
 
-.rs-tooltip.rs-link-default
+.rs-has-tooltip.rs-link-default
 {
 	cursor: pointer;
 }
 
-.rs-tooltip:after
+.rs-has-tooltip:after
 {
 	content: attr(data-tooltip);
 	opacity: 0;
@@ -882,19 +882,19 @@ button::-moz-focus-inner, input::-moz-focus-inner
 	z-index: 500;
 }
 
-.rs-tooltip:focus:after, .rs-tooltip:hover:after
+.rs-has-tooltip:focus:after, .rs-has-tooltip:hover:after
 {
 	opacity: 1;
 }
 
 /* @section 2. fallback */
 
-.rs-msie10 .rs-tooltip:after
+.rs-msie10 .rs-has-tooltip:after
 {
 	display: none;
 }
 
-.rs-msie10 .rs-tooltip:focus:after, .rs-msie10 .rs-tooltip:hover:after
+.rs-msie10 .rs-has-tooltip:focus:after, .rs-msie10 .rs-has-tooltip:hover:after
 {
 	display: inline-block;
 }
@@ -905,7 +905,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 @media screen and (max-width: 49.999em)
 {
-	.rs-tooltip:after
+	.rs-has-tooltip:after
 	{
 		left: 1em;
 		position: fixed;

@@ -458,7 +458,7 @@
 
 /* @section 2. fadein effect */
 
-.rs-admin-dialog, .rs-admin-dialog-overlay
+.rs-admin-component-dialog, .rs-admin-dialog-overlay
 {
 	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
@@ -548,7 +548,7 @@
 
 /* @section 1. several fields */
 
-.rs-admin-dialog .rs-admin-field-default
+.rs-admin-component-dialog .rs-admin-field-default
 {
 	width: 100%;
 }

@@ -42,7 +42,7 @@ class Messenger
 			'title' => 'rs-title-messenger rs-title-note',
 			'list' => 'rs-list-messenger',
 			'link' => 'rs-button-default rs-button-messenger',
-			'redirect' => 'rs-redirect-overlay',
+			'redirect' => 'rs-meta-redirect-overlay',
 			'notes' => array(
 				'success' => 'rs-note-success',
 				'warning' => 'rs-note-warning',

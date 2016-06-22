@@ -68,7 +68,7 @@
 				{
 					backend:
 					{
-						dialog: 'rs-admin-js-dialog rs-admin-dialog rs-admin-dialog',
+						dialog: 'rs-admin-js-dialog rs-admin-component-dialog rs-admin-component-dialog',
 						dialogTitle: 'rs-admin-js-title-dialog rs-admin-title-dialog rs-admin-title-dialog',
 						dialogBox: 'rs-admin-js-box-dialog rs-admin-box-dialog rs-admin-box-dialog',
 						dialogOverlay: 'rs-admin-js-dialog-overlay rs-admin-dialog-overlay rs-admin-dialog-overlay',

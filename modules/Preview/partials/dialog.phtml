@@ -25,7 +25,7 @@ $buttonElement->init('a', array(
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-dialog + .rs-admin-box-dialog' : '.rs-title-dialog + .rs-box-dialog'); ?>
 
-<div class="<?php echo $admin ? 'rs-admin-dialog' : 'rs-dialog'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-dialog'; ?>">
 
 	<?php echo $titleElement->text(Language::get('confirm')); ?>
 	<?php echo $boxElement->html(
