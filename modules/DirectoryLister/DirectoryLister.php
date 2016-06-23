@@ -104,11 +104,11 @@ class DirectoryLister extends Config
 				'class' => self::$_configArray['className']['list']
 			));
 
-			/* list directory object */
+			/* lister directory object */
 
-			$listDirectory = new Directory();
-			$listDirectory->init($directory);
-			$listDirectoryArray = $listDirectory->getArray();
+			$listerDirectory = new Directory();
+			$listerDirectory->init($directory);
+			$listerDirectoryArray = $listerDirectory->getArray();
 
 			/* date format */
 
@@ -132,7 +132,7 @@ class DirectoryLister extends Config
 
 			/* process directory */
 
-			foreach ($listDirectoryArray as $key => $value)
+			foreach ($listerDirectoryArray as $key => $value)
 			{
 				$path = $directory . '/' . $value;
 				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
@@ -174,30 +174,27 @@ class DirectoryLister extends Config
 
 				/* else handle file */
 
-				else if (is_file($path))
+				else if (is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']))
 				{
-					if (array_key_exists($fileExtension, self::$_configArray['extension']))
-					{
-						$fileType = self::$_configArray['extension'][$fileExtension];
-						$outputFile .= '<li>';
-						$outputFile .= $linkElement
-							->copy()
-							->attr(array(
-								'href' => Registry::get('root') . '/' . $path,
-								'target' => '_blank',
-								'title' => Language::get('file', '_directory_lister')
-							))
-							->addClass(self::$_configArray['className']['types'][$fileType])
-							->text($text);
-						$outputFile .= $textSizeElement
-							->copy()
-							->attr('data-unit', self::$_configArray['size']['unit'])
-							->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
-						$outputFile .= $textDateElement
-							->copy()
-							->html(date($dateFormat, filectime($path)));
-						$outputFile .= '</li>';
-					}
+					$fileType = self::$_configArray['extension'][$fileExtension];
+					$outputFile .= '<li>';
+					$outputFile .= $linkElement
+						->copy()
+						->attr(array(
+							'href' => Registry::get('root') . '/' . $path,
+							'target' => '_blank',
+							'title' => Language::get('file', '_directory_lister')
+						))
+						->addClass(self::$_configArray['className']['types'][$fileType])
+						->text($text);
+					$outputFile .= $textSizeElement
+						->copy()
+						->attr('data-unit', self::$_configArray['size']['unit'])
+						->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
+					$outputFile .= $textDateElement
+						->copy()
+						->html(date($dateFormat, filectime($path)));
+					$outputFile .= '</li>';
 				}
 			}
 

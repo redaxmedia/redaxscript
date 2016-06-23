@@ -67,11 +67,11 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			)
 		));
 
-		/* documentation directory */
+		/* docs directory */
 
-		$docDirectory = new Directory();
-		$docDirectory->init('modules/' . $module->alias . '/docs');
-		$docDirectoryArray = $docDirectory->getArray();
+		$docsDirectory = new Directory();
+		$docsDirectory->init('modules/' . $module->alias . '/docs');
+		$docsDirectoryArray = $docsDirectory->getArray();
 
 		/* collect item output */
 
@@ -88,7 +88,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 
 		/* process directory */
 
-		foreach ($docDirectoryArray as $key => $value)
+		foreach ($docsDirectoryArray as $key => $value)
 		{
 			$outputItem .= $itemElement
 				->copy()
@@ -144,11 +144,11 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 
 			/* second tab */
 
-			if ($docDirectoryArray)
+			if ($docsDirectoryArray)
 			{
 				/* process directory */
 
-				foreach ($docDirectoryArray as $key => $value)
+				foreach ($docsDirectoryArray as $key => $value)
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
