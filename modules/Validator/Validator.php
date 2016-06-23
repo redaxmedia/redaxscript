@@ -1,7 +1,9 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use Redaxscript\Module;
+use DOMDocument;
+use XMLReader;
+use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
@@ -14,7 +16,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Validator extends Module
+class Validator extends Config
 {
 	/**
 	 * array of the module
@@ -32,19 +34,57 @@ class Validator extends Module
 	);
 
 	/**
-	 * loaderStart
+	 * adminPanelAddNote
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public static function adminPanelAddNote()
 	{
-		if (Registry::get('firstParameter') !== 'admin')
+		$output = null;
+
+		/* html elements */
+
+		$textElement = new Html\Element();
+		$textElement->init('span', array(
+			'class' => self::$_configArray['className']['text']
+		));
+
+		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
+
+		/* get contents */
+
+		$doc = new DOMDocument();
+		$reader = new XMLReader();
+		$reader->open($url);
+
+		/* process reader */
+
+		while ($reader->read())
 		{
-			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Validator/assets/styles/validator.css';
-			$loader_modules_scripts[] = 'modules/Validator/assets/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Validator/assets/scripts/validator.js';
+			if ($reader->nodeType === XMLReader::ELEMENT)
+			{
+				$doc->appendChild($doc->importNode($reader->expand(), true));
+			}
 		}
+		$reader->close();
+		$xml = simplexml_import_dom($doc);
+
+		/* process xml */
+
+		foreach ($xml as $value)
+		{
+			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
+			if (in_array($type, self::$_configArray['typeArray']))
+			{
+				$output .= '<li>';
+				$output .= $textElement
+					->copy()
+					->addClass(self::$_configArray['className'][$type])
+					->text($value->message);
+				$output .= '</li>';
+			}
+		}
+		return $output;
 	}
 }

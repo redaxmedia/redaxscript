@@ -171,15 +171,15 @@ function admin_panel_list()
 		//TODO: style a tags and span tags - both are possible
 		if (file_exists('console.php'))
 		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';
 		}
 		if (file_exists('install.php'))
 		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</span></li>';
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') . '</span></li>';
 		}
 		if (is_writable('config.php'))
 		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . Redaxscript\Language::get('colon') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
 		}
 	}
 	$output .= Redaxscript\Hook::trigger('adminPanelAddNote');

@@ -1,9 +1,0 @@
-{
-	"_validator":
-	{
-		"from": "From",
-		"to": "To",
-		"line": "Line",
-		"column": "Column"
-	}
-}

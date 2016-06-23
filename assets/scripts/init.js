@@ -106,7 +106,7 @@
 		enableIndent:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-editor-textarea, form textarea.rs-js-enable-indent',
+			selector: 'form textarea.rs-admin-js-editor-textarea, form textarea.rs-admin-js-editor-textarea',
 			options:
 			{
 				eol: '\n',
