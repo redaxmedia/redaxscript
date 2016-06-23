@@ -106,12 +106,12 @@ button, input, select, textarea
 
 /* @section 3. clearfix */
 
-.rs-admin-clearfix, .rs-is-clearfix
+.rs-admin-fn-clearfix, .rs-fn-clearfix
 {
 	clear: both;
 }
 
-.rs-admin-clearfix:after, .rs-is-clearfix:after
+.rs-admin-fn-clearfix:after, .rs-fn-clearfix:after
 {
 	clear: both;
 	content: '';
