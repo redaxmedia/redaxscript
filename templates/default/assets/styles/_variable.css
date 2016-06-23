@@ -59,6 +59,6 @@
 	/* @section 1.5 font */
 
 	--rs-font-primary: 'open sans condensed', arial, sans-serif;
-	--rs-font-code: monospace, arial;
+	--rs-font-code: monospace, arial, sans-serif;
 	--rs-font-icon: 'icon default';
 }
