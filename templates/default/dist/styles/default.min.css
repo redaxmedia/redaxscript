@@ -40,6 +40,7 @@
 
 	/* @section 1.5 font */
 }
+
 /**
  * @tableofcontents
  *
@@ -601,7 +602,7 @@ a
 	background: rgb(200, 200, 200);
 	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
-	font: 0.75em/1.25em monospace, arial;
+	font: 0.75em/1.25em monospace, arial, sans-serif;
 	padding: 1em;
 	white-space: pre-wrap;
 }

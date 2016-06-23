@@ -92,7 +92,7 @@ button, input, select, textarea
 
 /* @section 2. redirect */
 
-.rs-admin-redirect-overlay, .rs-meta-redirect-overlay
+.rs-admin-meta-redirect, .rs-meta-redirect
 {
 	background: #fff;
 	bottom: 0;
