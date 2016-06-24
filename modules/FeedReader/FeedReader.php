@@ -14,7 +14,7 @@ use XMLReader;
  * @category Modules
  * @author Henry Ruhs
  */
-
+/* TODO: add admin notification */
 class FeedReader extends Config
 {
 	/**
@@ -73,7 +73,7 @@ class FeedReader extends Config
 		$boxElement->init('div', array(
 			'class' => self::$_configArray['className']['box']
 		));
-
+		/* TODO: split up to a fetchXML method */
 		/* get contents */
 
 		$doc = new DOMDocument();

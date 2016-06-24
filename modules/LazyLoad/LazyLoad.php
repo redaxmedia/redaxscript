@@ -13,7 +13,7 @@ use Redaxscript\Registry;
  * @category Modules
  * @author Henry Ruhs
  */
-
+/* TODO: add admin notification */
 class LazyLoad extends Config
 {
 	/**

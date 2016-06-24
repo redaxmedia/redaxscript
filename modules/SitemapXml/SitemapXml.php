@@ -73,7 +73,7 @@ class SitemapXml extends Module
 			->whereNull('access')
 			->orderByAsc('rank')
 			->findMany();
-
+		/*TODO: split up to a writeXML method */
 		/* writer */
 
 		$writer = new XMLWriter();

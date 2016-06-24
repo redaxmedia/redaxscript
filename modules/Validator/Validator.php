@@ -54,6 +54,8 @@ class Validator extends Config
 			'class' => self::$_configArray['className']['code']
 		));
 
+		/* TODO: split up to a fetchXML method & add module name to output */
+
 		/* url */
 
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
@@ -84,6 +86,7 @@ class Validator extends Config
 			if (in_array($type, self::$_configArray['typeArray']))
 			{
 				$output .= '<li>';
+				$output .= '<h3>' . self::$_moduleArray['name'] . '</h3>';
 				$output .= $textElement
 					->copy()
 					->addClass(self::$_configArray['className'][$type])

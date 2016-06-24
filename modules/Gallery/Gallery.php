@@ -14,7 +14,7 @@ use Redaxscript\Html;
  * @category Modules
  * @author Henry Ruhs
  */
-
+/* TODO: add admin notification */
 class Gallery extends Config
 {
 	/**

@@ -79,7 +79,7 @@ class FeedGenerator extends Module
 		{
 			$route .= Registry::get('languageRoute') . Registry::get('language');
 		}
-
+		/*TODO: split up to a writeXML method */
 		/* writer */
 
 		$writer = new XMLWriter();

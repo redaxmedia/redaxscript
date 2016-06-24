@@ -36,6 +36,14 @@ class DirectoryLister extends Config
 	);
 
 	/**
+	 * array of notes
+	 *
+	 * @var array
+	 */
+
+	protected static $_noteArray = array();
+
+	/**
 	 * loaderStart
 	 *
 	 * @since 2.6.0
@@ -45,6 +53,22 @@ class DirectoryLister extends Config
 	{
 		global $loader_modules_styles;
 		$loader_modules_styles[] = 'modules/DirectoryLister/assets/styles/directory_lister.css';
+	}
+
+	/**
+	 * adminPanelAddNote
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function adminPanelAddNote()
+	{
+		$output = null;
+		foreach (self::$_noteArray as $note)
+		{
+			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span>' . $note . '</span></li>';
+		}
+		return $output;
 	}
 
 	/**
@@ -81,8 +105,8 @@ class DirectoryLister extends Config
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
 		}
 
-		/* has directory */
-
+		/* hash directory */
+		/*TODO: split up the following big ball of mud */
 		if (is_dir($directory))
 		{
 			/* html elements */
@@ -204,6 +228,13 @@ class DirectoryLister extends Config
 			{
 				$output = $listElement->html($outputDirectory . $outputFile);
 			}
+		}
+
+		/* else handle note */
+
+		else
+		{
+			self::$_noteArray[] = Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point');
 		}
 		return $output;
 	}

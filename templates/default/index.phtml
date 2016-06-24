@@ -15,49 +15,8 @@
 	<!-- body -->
 
 	<body class="rs-body rs-wrapper-body">
-
-		<!-- admin panel and header -->
-
-		<?php echo Tag::partial(array(
-			'templates/admin/panel.phtml',
-			'templates/default/header.phtml'
-		)); ?>
-
-		<!-- main -->
-
-		<main id="main" class="rs-main rs-fn-clearfix">
-
-			<!-- teaser -->
-
-			<?php if (!Tag::registry('adminParameter')): ?>
-				<?php echo Tag::extra(array(
-					'filter' => 'teaser'
-				)); ?>
-			<?php endif; ?>
-
-			<!-- page -->
-
-			<div class="rs-page rs-wrapper rs-fn-clearfix">
-
-				<!-- handle content error -->
-
-				<?php if (Tag::registry('contentError')): ?>
-					<?php echo Tag::partial('templates/default/error.phtml'); ?>
-
-				<!-- else content and sidebar -->
-
-				<?php else: ?>
-					<?php echo Tag::partial(array(
-						'templates/default/content.phtml',
-						'templates/default/sidebar.phtml'
-					)); ?>
-				<?php endif; ?>
-			</div>
-		</main>
-
-		<!-- footer -->
-
-		<?php echo Tag::partial('templates/default/footer.phtml'); ?>
-		<?php echo Tag::script(); ?>
+		<?php $body = Tag::partial('templates/default/body.phtml'); ?>
+		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
+		<?php echo $body; ?>
 	</body>
 </html>

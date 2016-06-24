@@ -19,6 +19,9 @@ use Redaxscript\Messenger as Messenger;
  * @category Modules
  * @author Henry Ruhs
  */
+
+/*TODO: add admin notification */
+
 class Demo extends Config
 {
 	/**
@@ -141,7 +144,10 @@ class Demo extends Config
 	public static function success()
 	{
 		$messenger = new Messenger(Registry::getInstance());
-		return $messenger->setAction(Language::get('continue'), 'admin')->doRedirect(0)->success(Language::get('logged_in'), Language::get('welcome'));
+		return $messenger
+			->setAction(Language::get('continue'), 'admin')
+			->doRedirect(0)
+			->success(Language::get('logged_in'), Language::get('welcome'));
 	}
 
 	/**
@@ -155,7 +161,10 @@ class Demo extends Config
 	public static function error()
 	{
 		$messenger = new Messenger(Registry::getInstance());
-		return $messenger->setAction(Language::get('back'), 'login')->doRedirect()->error(Language::get('something_wrong'), Language::get('error_occurred'));
+		return $messenger
+			->setAction(Language::get('back'), 'login')
+			->doRedirect()
+			->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 
 	/**
