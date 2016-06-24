@@ -24,6 +24,7 @@ class Config extends Module
 	protected static $_configArray = array(
 		'className' => array(
 			'text' => 'rs-admin-text-panel',
+			'code' => 'rs-admin-code-panel',
 			'warning' => 'rs-admin-is-warning',
 			'error' => 'rs-admin-is-error'
 		),

@@ -49,6 +49,12 @@ class Validator extends Config
 		$textElement->init('span', array(
 			'class' => self::$_configArray['className']['text']
 		));
+		$codeElement = new Html\Element();
+		$codeElement->init('code', array(
+			'class' => self::$_configArray['className']['code']
+		));
+
+		/* url */
 
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
 
@@ -82,6 +88,9 @@ class Validator extends Config
 					->copy()
 					->addClass(self::$_configArray['className'][$type])
 					->text($value->message);
+				$output .= $codeElement
+					->copy()
+					->text($value->extract);
 				$output .= '</li>';
 			}
 		}
