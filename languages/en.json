@@ -1,10 +1,10 @@
 {
 	"_package":
 	{
-	  "name": "Redaxscript",
-	  "description": "Ultra lightweight Content Management System",
-	  "version": "3.0.0",
-	  "homepage": "http://redaxscript.com"
+		"name": "Redaxscript",
+		"description": "Ultra lightweight Content Management System",
+		"version": "3.0.0",
+		"homepage": "http://redaxscript.com"
 	},
 	"_index":
 	{
@@ -73,7 +73,6 @@
 	"home": "Home",
 	"administration": "Administration",
 	"system": "System",
-	"error": "Error",
 	"content": "Content",
 	"contents": "Contents",
 	"content_not_found": "Content could not be found",
@@ -279,6 +278,10 @@
 	"security": "Security",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha is incorrect",
+	"success": "Success",
+	"warning": "Warning",
+	"error": "Error",
+	"info": "Info",
 	"operation_completed": "Operation completed successfully",
 	"error_occurred": "An error occurred",
 	"something_wrong": "Something went wrong",
