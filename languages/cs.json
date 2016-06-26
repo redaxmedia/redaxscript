@@ -235,6 +235,7 @@
 	"verification": "Verifikace",
 	"security": "Zabezpečení",
 	"captcha": "Captcha",
+	"captcha_incorrect": "Captcha je neplatná",
 	"success": "Success",
 	"warning": "Warning",
 	"error": "Chyba",
