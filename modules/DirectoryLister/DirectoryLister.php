@@ -66,7 +66,7 @@ class DirectoryLister extends Config
 		$output = null;
 		foreach (self::$_noteArray as $note)
 		{
-			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span>' . $note . '</span></li>';
+			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span class="rs-admin-text-panel rs-admin-is-error">' . $note . '</span></li>';
 		}
 		return $output;
 	}

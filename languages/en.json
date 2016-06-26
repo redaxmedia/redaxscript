@@ -1,4 +1,11 @@
 {
+	"_package":
+	{
+	  "name": "Redaxscript",
+	  "description": "Ultra lightweight Content Management System",
+	  "version": "3.0.0",
+	  "homepage": "http://redaxscript.com"
+	},
 	"_index":
 	{
 		"ar": "العربية",
@@ -63,20 +70,10 @@
 		"November",
 		"December"
 	],
-	"_package":
-	{
-		"name": "Redaxscript",
-		"description": "Ultra lightweight CMS",
-		"version": "3.0.0",
-		"homepage": "http://redaxscript.com"
-	},
 	"home": "Home",
 	"administration": "Administration",
 	"system": "System",
-  	"note": "Note",
-  	"notes": "Notes",
 	"error": "Error",
-  	"errors": "Errors",
 	"content": "Content",
 	"contents": "Contents",
 	"content_not_found": "Content could not be found",

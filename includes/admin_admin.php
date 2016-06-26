@@ -132,7 +132,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-system">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a></li>';
@@ -163,12 +163,10 @@ function admin_panel_list()
 
 	/* collect notes output */
 
-	/*TODO: let's find the right wording - "notes, alerts, todo, messages" and then replace the hard coded text with language value */
 	$counter++;
-	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-messages"><span>Messages</span><ul class="rs-admin-js-panel-message rs-admin-list-panel-children rs-admin-list-message">';
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
-		//TODO: style a tags and span tags - both are possible
 		if (file_exists('console.php'))
 		{
 			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';

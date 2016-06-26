@@ -1057,7 +1057,7 @@
 	content: 'l';
 }
 
-.rs-admin-item-panel.rs-admin-item-messages > span:before
+.rs-admin-item-panel.rs-admin-item-notification > span:before
 {
 	content: 'U';
 }
@@ -1114,7 +1114,7 @@
 	background: rgb(32, 32, 32);
 }
 
-.rs-admin-item-panel:not(.rs-admin-item-messages) .rs-admin-list-panel-children
+.rs-admin-item-panel:not(.rs-admin-item-notification) .rs-admin-list-panel-children
 {
 	text-transform: uppercase;
 }
@@ -1124,7 +1124,7 @@
 	display: none;
 }
 
-/*TODO HENRY: passt der name so?*/
+/* TODO HENRY: passt der name so? */
 
 /* @section 3.3 panel children link */
 
@@ -1167,23 +1167,23 @@
 	top: 50%;
 }
 
-/*TODO HENRY: was machen wir mit dem hover? er liegt auf li's, also eine eben zu hoch.*/
-/*entweder wir verlinken alle admin notes irgendwohin (z.b. eine FAQ seite wo alle fehler meldungen beschrieben werden) oder der hover muss weg vom li auf a-tags*/
+/* TODO HENRY: was machen wir mit dem hover? er liegt auf li's, also eine eben zu hoch. */
+/* entweder wir verlinken alle admin notes irgendwohin (z.b. eine FAQ seite wo alle fehler meldungen beschrieben werden) oder der hover muss weg vom li auf a-tags */
 
 /* @section 3.4 list message */
 
-.rs-admin-item-panel .rs-admin-list-message a, .rs-admin-item-panel .rs-admin-list-message span
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a, .rs-admin-item-panel .rs-admin-list-panel-children-notification span
 {
 	line-height: 1.75em;
 	padding: 0.5em 0.75em 0.5em 3em;
 	position: relative
 }
 
-.rs-admin-item-panel .rs-admin-list-message a:before, .rs-admin-item-panel .rs-admin-list-message span:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span:before
 {
 	background: #c56161;
 	border-radius: 50%;
-	color: rgb(0, 0, 0);/*TODO: heir brauchen wir die icons im admin icon font, müsste noch gemacht werden*/
+	color: rgb(0, 0, 0);/* TODO: heir brauchen wir die icons im admin icon font, müsste noch gemacht werden */
 	font: 1em/1.75em 'icon default';
 	height: 1.75em;
 	left: 0.625em;
@@ -1193,25 +1193,25 @@
 	width: 1.75em;
 }
 
-.rs-admin-item-panel .rs-admin-list-message a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-message span.rs-admin-is-success:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
 	background: #4c8c00;
 	content: '\2714';
 }
 
-.rs-admin-item-panel .rs-admin-list-message a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-message span.rs-admin-is-warning:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
 {
 	background: #e08400;
 	content: '\21';
 }
 
-.rs-admin-item-panel .rs-admin-list-message a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-message span.rs-admin-is-error:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
 	background: #a20000;
 	content: '\d7';
 }
 
-.rs-admin-item-panel .rs-admin-list-message a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-message span.rs-admin-is-info:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
 	background: #0090db;
 	content: '\69';
