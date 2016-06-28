@@ -69,6 +69,8 @@
 	vertical-align: middle;
 }
 
+/* TODO: let's get rid of the long selectors and just use a class .rs-admin-text-contents:before */
+
 .rs-admin-item-panel.rs-admin-item-contents > span:before
 {
 	content: 'i';
@@ -160,7 +162,7 @@
 	display: none;
 }
 
-/* TODO HENRY: passt der name so? */
+/* TODO: try the selector .rs-admin-wrapper-panel over .rs-admin-list-panel .rs-admin-wrapper-panel-link */
 
 /* @section 3.3 panel children link */
 
@@ -170,6 +172,8 @@
 	justify-content: space-between;
 	padding: 0 0.75em;
 }
+
+/* TODO: stay in the context of the wrapper using .rs-admin-wrapper-panel .rs-admin-link-view */
 
 .rs-admin-list-panel .rs-admin-link-view
 {
@@ -197,10 +201,11 @@
 	top: 50%;
 }
 
-/* TODO HENRY: was machen wir mit dem hover? er liegt auf li's, also eine eben zu hoch. */
-/* entweder wir verlinken alle admin notes irgendwohin (z.b. eine FAQ seite wo alle fehler meldungen beschrieben werden) oder der hover muss weg vom li auf a-tags */
+/* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
+/* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
+/* TODO: add styling for module's headline and the <code> block of the validator module */
 
-/* @section 3.4 list message */
+/* @section 3.4 list notification */
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a,
 .rs-admin-item-panel .rs-admin-list-panel-children-notification span
@@ -215,7 +220,7 @@
 		border-radius: 50%;
 		color: gray(0);
 
-		/* TODO: heir brauchen wir die icons im admin icon font, müsste noch gemacht werden */
+		/* TODO: add the needed icons to the admin icon font */
 
 		font: 1em/1.75em 'icon default';
 		height: 1.75em;
@@ -254,6 +259,8 @@
 /* @section 5. query */
 
 /* @section 5.1 medium min */
+
+/* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
 
 @media (--media-medium-min)
 {
