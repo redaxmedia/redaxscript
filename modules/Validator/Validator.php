@@ -54,10 +54,38 @@ class Validator extends Config
 			'class' => self::$_configArray['className']['code']
 		));
 
-		/* TODO: split up to a fetchXML method & add module name to output */
+		/* process xml */
 
-		/* url */
+		foreach (self::_fetchXML() as $value)
+		{
+			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
+			if (in_array($type, self::$_configArray['typeArray']))
+			{
+				$output .= '<li>';
+				$output .= '<h3>' . self::$_moduleArray['name'] . '</h3>';
+				$output .= $textElement
+					->copy()
+					->addClass(self::$_configArray['className'][$type])
+					->text($value->message);
+				$output .= $codeElement
+					->copy()
+					->text($value->extract);
+				$output .= '</li>';
+			}
+		}
+		return $output;
+	}
 
+	/**
+	 * fetchXML
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected static function _fetchXML()
+	{
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
 
 		/* get contents */
@@ -77,26 +105,6 @@ class Validator extends Config
 		}
 		$reader->close();
 		$xml = simplexml_import_dom($doc);
-
-		/* process xml */
-
-		foreach ($xml as $value)
-		{
-			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
-			if (in_array($type, self::$_configArray['typeArray']))
-			{
-				$output .= '<li>';
-				$output .= '<h3>' . self::$_moduleArray['name'] . '</h3>';
-				$output .= $textElement
-					->copy()
-					->addClass(self::$_configArray['className'][$type])
-					->text($value->message);
-				$output .= $codeElement
-					->copy()
-					->text($value->extract);
-				$output .= '</li>';
-			}
-		}
-		return $output;
+		return $xml;
 	}
 }

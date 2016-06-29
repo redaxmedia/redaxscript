@@ -128,9 +128,9 @@ class Demo extends Config
 
 		if ($auth->getStatus())
 		{
-			return self::success();
+			return self::_success();
 		}
-		return self::error();
+		return self::_error();
 	}
 
 	/**
@@ -141,7 +141,7 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	public static function success()
+	protected static function _success()
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
@@ -158,7 +158,7 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	public static function error()
+	protected static function _error()
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
