@@ -141,7 +141,7 @@ function contents()
 					$route = build_route('articles', $id);
 				}
 
-				/* parser object */
+				/* parser */
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 				$parser->init($text, array(
@@ -346,7 +346,7 @@ function extras($filter)
 
 				if ($category === $categoryId || $article === $articleId || (!$category && !$article))
 				{
-					/* parser object */
+					/* parser */
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 					$parser->init($text, array(

@@ -261,7 +261,7 @@ function languages_list($options)
 		}
 	}
 
-	/* languages directory object */
+	/* languages directory */
 
 	$languages_directory = new Redaxscript\Directory();
 	$languages_directory->init('languages');
@@ -334,7 +334,7 @@ function templates_list($options)
 		}
 	}
 
-	/* templates directory object */
+	/* templates directory */
 
 	$templates_directory = new Redaxscript\Directory();
 	$templates_directory->init('templates', array(

@@ -19,7 +19,8 @@
 
 /* @section 2. fadein effect */
 
-.rs-admin-dialog, .rs-admin-dialog-overlay
+.rs-admin-component-dialog,
+.rs-admin-dialog-overlay
 {
 	animation: fade 0.4s;
 }

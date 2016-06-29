@@ -395,7 +395,7 @@ function scripts($mode)
 
 function scripts_transport($minify)
 {
-	/* extend redaxscript object */
+	/* extend redaxscript */
 
 	$public_registry = array(
 		'token',
@@ -431,7 +431,7 @@ function scripts_transport($minify)
 	$output = 'if (typeof rs === \'object\')' . PHP_EOL;
 	$output .= '{' . PHP_EOL;
 
-	/* languages object */
+	/* languages */
 
 	$language = Redaxscript\Language::getInstance();
 

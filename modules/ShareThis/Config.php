@@ -24,7 +24,7 @@ class Config extends Module
 	protected static $_configArray = array(
 		'className' => array(
 			'link' => 'rs-js-link-share-this rs-link-share-this',
-			'list' => 'rs-list-share-this rs-is-clearfix'
+			'list' => 'rs-list-share-this rs-fn-clearfix'
 		),
 		'network' => array(
 			'facebook' => array(

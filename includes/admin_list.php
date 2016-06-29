@@ -750,7 +750,7 @@ function admin_modules_list()
 
 	if (Redaxscript\Registry::get('modulesInstall') == 1)
 	{
-		/* modules directory object */
+		/* modules directory */
 
 		$modules_directory = new Redaxscript\Directory();
 		$modules_directory->init('modules');

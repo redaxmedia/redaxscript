@@ -57,6 +57,6 @@
 			"route": "hello/world",
 			"timeout": 0
 		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-default rs-button-messenger\">ok</a><meta class=\"rs-redirect-overlay\" content=\"0;url=/hello/world\" http-equiv=\"refresh\" />"
+		"<div class=\"rs-box-messenger rs-box-note rs-note-info\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-default rs-button-messenger\">ok</a><meta class=\"rs-meta-redirect\" content=\"0;url=/hello/world\" http-equiv=\"refresh\" />"
 	]
 ]

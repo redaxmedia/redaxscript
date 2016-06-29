@@ -74,7 +74,7 @@ class ModuleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals(3, $actualModules);
+		$this->assertEquals(4, $actualModules);
 		$this->assertEquals(9, $actualTables);
 	}
 
@@ -101,7 +101,7 @@ class ModuleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals(1, $actualModules);
+		$this->assertEquals(2, $actualModules);
 		$this->assertEquals(8, $actualTables);
 	}
 }

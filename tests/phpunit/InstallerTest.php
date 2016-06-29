@@ -119,9 +119,9 @@ class InstallerTest extends TestCaseAbstract
 		$this->assertEquals(6, $actualExtras);
 		$this->assertEquals(2, $actualGroups);
 		$this->assertEquals(25, $actualSettings);
-		if (is_dir('modules/CallHome'))
+		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
 		{
-			$this->assertEquals(1, $actualModules);
+			$this->assertEquals(2, $actualModules);
 		}
 		$this->assertEquals(1, $actualUsers);
 	}

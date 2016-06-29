@@ -16,7 +16,7 @@
 
 /* @section 1. teaser */
 
-.rs-teaser
+.rs-component-teaser
 {
 	background: var(--rs-url-teaser-small) no-repeat center top / cover;
 	box-sizing: border-box;
@@ -74,7 +74,7 @@
 
 @media (--media-medium-min), (--media-retina)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: var(--rs-url-teaser-medium);
 	}
@@ -92,7 +92,7 @@
 
 @media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: var(--rs-url-teaser-large);
 	}
@@ -102,7 +102,7 @@
 
 @media (--media-large-min) and (--media-retina)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: var(--rs-url-teaser-ultra);
 	}

@@ -68,7 +68,7 @@
 				{
 					backend:
 					{
-						dialog: 'rs-admin-js-dialog rs-admin-dialog rs-admin-dialog',
+						dialog: 'rs-admin-js-dialog rs-admin-component-dialog rs-admin-component-dialog',
 						dialogTitle: 'rs-admin-js-title-dialog rs-admin-title-dialog rs-admin-title-dialog',
 						dialogBox: 'rs-admin-js-box-dialog rs-admin-box-dialog rs-admin-box-dialog',
 						dialogOverlay: 'rs-admin-js-dialog-overlay rs-admin-dialog-overlay rs-admin-dialog-overlay',
@@ -106,7 +106,7 @@
 		enableIndent:
 		{
 			init: true,
-			selector: 'form textarea.rs-js-editor-textarea, form textarea.rs-js-enable-indent',
+			selector: 'form textarea.rs-admin-js-editor-textarea, form textarea.rs-admin-js-editor-textarea',
 			options:
 			{
 				eol: '\n',
@@ -237,7 +237,7 @@
 		{
 			docElement.className += ' ';
 		}
-		docElement.className += 'rs-js';
+		docElement.className += 'rs-is-js';
 
 		/* support classes */
 
@@ -247,7 +247,7 @@
 			{
 				if (rs.support[i])
 				{
-					docElement.className += ' rs-' + i.toLowerCase();
+					docElement.className += ' rs-has-' + i.toLowerCase();
 				}
 				else
 				{

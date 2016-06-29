@@ -540,6 +540,7 @@ module.exports = function (grunt)
 					'languages/en.json',
 					'libraries/**',
 					'modules/CallHome/**',
+					'modules/Validator/**',
 					'assets/scripts/**',
 					'assets/styles/**',
 					'templates/admin/**',

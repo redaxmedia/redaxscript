@@ -28,7 +28,7 @@ class Messenger extends BaseMessenger
 			'title' => 'rs-admin-title-messenger rs-admin-title-note',
 			'list' => 'rs-admin-list-messenger',
 			'link' => 'rs-admin-button-default rs-admin-button-messenger',
-			'redirect' => 'rs-admin-redirect-overlay',
+			'redirect' => 'rs-admin-meta-redirect',
 			'notes' => array(
 				'success' => 'rs-admin-note-success',
 				'warning' => 'rs-admin-note-warning',

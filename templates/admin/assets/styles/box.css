@@ -50,7 +50,6 @@
 	background: gray(32);
 	font-size: 0.875rem;
 	margin-top: 1em;
-	text-shadow: 0 1px gray(0, 0.8);
 }
 
 .rs-admin-box-dock,

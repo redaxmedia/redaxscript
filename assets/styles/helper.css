@@ -14,15 +14,15 @@
 /* @section 1. hide */
 
 .rs-fn-hide,
-.rs-js .rs-hideifjs
+.rs-is-js .rs-hideifjs
 {
 	display: none;
 }
 
 /* @section 2. redirect */
 
-.rs-admin-redirect-overlay,
-.rs-redirect-overlay
+.rs-admin-meta-redirect,
+.rs-meta-redirect
 {
 	background: #fff;
 	bottom: 0;
@@ -36,14 +36,14 @@
 
 /* @section 3. clearfix */
 
-.rs-admin-clearfix,
-.rs-is-clearfix
+.rs-admin-fn-clearfix,
+.rs-fn-clearfix
 {
 	clear: both;
 }
 
-.rs-admin-clearfix:after,
-.rs-is-clearfix:after
+.rs-admin-fn-clearfix:after,
+.rs-fn-clearfix:after
 {
 	clear: both;
 	content: '';

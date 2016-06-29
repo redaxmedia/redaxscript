@@ -59,7 +59,7 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories" class="rs-admin-link-panel' . (Redaxscript\Registry::get('categoriesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('categories') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories" class="rs-admin-link-panel' . (Redaxscript\Registry::get('categoriesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('categories') . '</a>';
 			if (Redaxscript\Registry::get('categoriesNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('category_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/categories" class="rs-admin-link-panel' . (Redaxscript\Registry::get('categoriesNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('category_new') . '</a>';
@@ -68,7 +68,7 @@ function admin_panel_list()
 		}
 		if ($articles_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/articles" class="rs-admin-link-panel' . (Redaxscript\Registry::get('articlesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('articles') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/articles" class="rs-admin-link-panel' . (Redaxscript\Registry::get('articlesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('articles') . '</a>';
 			if (Redaxscript\Registry::get('articlesNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('article_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/articles" class="rs-admin-link-panel' . (Redaxscript\Registry::get('articlesNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('article_new') . '</a>';
@@ -77,7 +77,7 @@ function admin_panel_list()
 		}
 		if ($extras_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/extras" class="rs-admin-link-panel' . (Redaxscript\Registry::get('extrasNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('extras') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/extras" class="rs-admin-link-panel' . (Redaxscript\Registry::get('extrasNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('extras') . '</a>';
 			if (Redaxscript\Registry::get('extrasNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('extra_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/extras" class="rs-admin-link-panel' . (Redaxscript\Registry::get('extrasNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('extra_new') . '</a>';
@@ -86,7 +86,7 @@ function admin_panel_list()
 		}
 		if ($comments_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/comments" class="rs-admin-link-panel' . (Redaxscript\Registry::get('commentsNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('comments') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/comments" class="rs-admin-link-panel' . (Redaxscript\Registry::get('commentsNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('comments') . '</a>';
 			if (Redaxscript\Registry::get('commentsNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('comment_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/comments" class="rs-admin-link-panel' . (Redaxscript\Registry::get('commentsNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('comment_new') . '</a>';
@@ -108,7 +108,7 @@ function admin_panel_list()
 		}
 		if ($users_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/users" class="rs-admin-link-panel' . (Redaxscript\Registry::get('usersNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('users') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/users" class="rs-admin-link-panel' . (Redaxscript\Registry::get('usersNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('users') . '</a>';
 			if (Redaxscript\Registry::get('usersNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('user_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/users" class="rs-admin-link-panel' . (Redaxscript\Registry::get('usersNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('user_new') . '</a>';
@@ -117,7 +117,7 @@ function admin_panel_list()
 		}
 		if ($groups_access == 1)
 		{
-			$output .= '<li><span><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/groups" class="rs-admin-link-panel' . (Redaxscript\Registry::get('groupsNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('groups') . '</a>';
+			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/groups" class="rs-admin-link-panel' . (Redaxscript\Registry::get('groupsNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('groups') . '</a>';
 			if (Redaxscript\Registry::get('groupsNew'))
 			{
 				$output .= '<a title="' . Redaxscript\Language::get('group_new') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/groups" class="rs-admin-link-panel' . (Redaxscript\Registry::get('groupsNew') ? ' rs-admin-link-new' : null) . '">' . Redaxscript\Language::get('group_new') . '</a>';
@@ -132,7 +132,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-stystem">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a></li>';
@@ -153,13 +153,35 @@ function admin_panel_list()
 		$output .= '</ul></li>';
 	}
 
-	/* collect profile */
+	/* collect profile output */
 
 	if (Redaxscript\Registry::get('myId'))
 	{
 		$counter++;
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel">' . Redaxscript\Language::get('profile') . '</a></li>';
 	}
+
+	/* collect notes output */
+
+	$counter++;
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
+	if (Redaxscript\Registry::get('myId') == 1)
+	{
+		if (file_exists('console.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+		if (file_exists('install.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+		if (is_writable('config.php'))
+		{
+			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
+		}
+	}
+	$output .= Redaxscript\Hook::trigger('adminPanelAddNote');
+	$output .= '</ul></li>';
 
 	/* collect logout */
 
@@ -169,7 +191,7 @@ function admin_panel_list()
 
 	if ($output)
 	{
-		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-c' . $counter . '">' . $output . '</ul>';
+		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-has-column' . $counter . '">' . $output . '</ul>';
 	}
 	$output .= Redaxscript\Hook::trigger('adminPanelEnd');
 	echo $output;
@@ -203,7 +225,7 @@ function admin_dock($table, $id)
 
 	if ($edit == 1 || $delete == 1)
 	{
-		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-admin-clearfix">';
+		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-admin-fn-clearfix">';
 		if ($edit == 1)
 		{
 			$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/unpublish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish">' . Redaxscript\Language::get('unpublish') . '</a>';
@@ -217,42 +239,6 @@ function admin_dock($table, $id)
 	}
 	$output .= Redaxscript\Hook::trigger('adminDockEnd');
 	return $output;
-}
-
-/**
- * admin notification
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Admin
- * @author Henry Ruhs
- */
-
-function admin_notification()
-{
-	$output = Redaxscript\Hook::trigger('adminNotificationStart');
-
-	/* insecure file warning */
-
-	if (Redaxscript\Registry::get('myId') == 1)
-	{
-		if (file_exists('console.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' console.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-		if (file_exists('install.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_remove') . Redaxscript\Language::get('colon') . ' install.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-		if (is_writable('config.php'))
-		{
-			$output .= '<div class="rs-box-note rs-note-warning">' . Redaxscript\Language::get('file_permission_revoke') . Redaxscript\Language::get('colon') . ' config.php' . Redaxscript\Language::get('point') . '</div>';
-		}
-	}
-	$output .= Redaxscript\Hook::trigger('adminNotificationEnd');
-	echo $output;
 }
 
 /**

@@ -211,6 +211,11 @@ class Installer
 			$callHome = new Modules\CallHome\CallHome;
 			$callHome->install();
 		}
+		if (is_dir('modules/Validator'))
+		{
+			$validator = new Modules\Validator\Validator;
+			$validator->install();
+		}
 
 		/* settings */
 

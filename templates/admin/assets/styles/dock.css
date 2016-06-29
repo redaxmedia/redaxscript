@@ -18,7 +18,6 @@
 	height: 3.125em;
 	position: relative;
 	text-indent: -999em;
-	text-shadow: 0 1px gray(0, 0.6);
 	width: 3em;
 }
 
@@ -26,7 +25,6 @@
 {
 	background: var(--rs-admin-gradient-primary);
 	color: gray(0);
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* link delete */

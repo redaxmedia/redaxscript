@@ -36,6 +36,14 @@ class DirectoryLister extends Config
 	);
 
 	/**
+	 * array of notes
+	 *
+	 * @var array
+	 */
+
+	protected static $_noteArray = array();
+
+	/**
 	 * loaderStart
 	 *
 	 * @since 2.6.0
@@ -45,6 +53,22 @@ class DirectoryLister extends Config
 	{
 		global $loader_modules_styles;
 		$loader_modules_styles[] = 'modules/DirectoryLister/assets/styles/directory_lister.css';
+	}
+
+	/**
+	 * adminPanelAddNote
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function adminPanelAddNote()
+	{
+		$output = null;
+		foreach (self::$_noteArray as $note)
+		{
+			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span class="rs-admin-text-panel rs-admin-is-error">' . $note . '</span></li>';
+		}
+		return $output;
 	}
 
 	/**
@@ -81,8 +105,8 @@ class DirectoryLister extends Config
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
 		}
 
-		/* has directory */
-
+		/* hash directory */
+		/*TODO: split up the following big ball of mud */
 		if (is_dir($directory))
 		{
 			/* html elements */
@@ -104,11 +128,11 @@ class DirectoryLister extends Config
 				'class' => self::$_configArray['className']['list']
 			));
 
-			/* list directory object */
+			/* lister directory object */
 
-			$listDirectory = new Directory();
-			$listDirectory->init($directory);
-			$listDirectoryArray = $listDirectory->getArray();
+			$listerDirectory = new Directory();
+			$listerDirectory->init($directory);
+			$listerDirectoryArray = $listerDirectory->getArray();
 
 			/* date format */
 
@@ -132,7 +156,7 @@ class DirectoryLister extends Config
 
 			/* process directory */
 
-			foreach ($listDirectoryArray as $key => $value)
+			foreach ($listerDirectoryArray as $key => $value)
 			{
 				$path = $directory . '/' . $value;
 				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
@@ -174,30 +198,27 @@ class DirectoryLister extends Config
 
 				/* else handle file */
 
-				else if (is_file($path))
+				else if (is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']))
 				{
-					if (array_key_exists($fileExtension, self::$_configArray['extension']))
-					{
-						$fileType = self::$_configArray['extension'][$fileExtension];
-						$outputFile .= '<li>';
-						$outputFile .= $linkElement
-							->copy()
-							->attr(array(
-								'href' => Registry::get('root') . '/' . $path,
-								'target' => '_blank',
-								'title' => Language::get('file', '_directory_lister')
-							))
-							->addClass(self::$_configArray['className']['types'][$fileType])
-							->text($text);
-						$outputFile .= $textSizeElement
-							->copy()
-							->attr('data-unit', self::$_configArray['size']['unit'])
-							->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
-						$outputFile .= $textDateElement
-							->copy()
-							->html(date($dateFormat, filectime($path)));
-						$outputFile .= '</li>';
-					}
+					$fileType = self::$_configArray['extension'][$fileExtension];
+					$outputFile .= '<li>';
+					$outputFile .= $linkElement
+						->copy()
+						->attr(array(
+							'href' => Registry::get('root') . '/' . $path,
+							'target' => '_blank',
+							'title' => Language::get('file', '_directory_lister')
+						))
+						->addClass(self::$_configArray['className']['types'][$fileType])
+						->text($text);
+					$outputFile .= $textSizeElement
+						->copy()
+						->attr('data-unit', self::$_configArray['size']['unit'])
+						->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
+					$outputFile .= $textDateElement
+						->copy()
+						->html(date($dateFormat, filectime($path)));
+					$outputFile .= '</li>';
 				}
 			}
 
@@ -207,6 +228,13 @@ class DirectoryLister extends Config
 			{
 				$output = $listElement->html($outputDirectory . $outputFile);
 			}
+		}
+
+		/* else handle note */
+
+		else
+		{
+			self::$_noteArray[] = Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point');
 		}
 		return $output;
 	}

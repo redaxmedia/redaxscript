@@ -1,4 +1,11 @@
 {
+	"_package":
+	{
+		"name": "Redaxscript",
+		"description": "Ultra lightweight Content Management System",
+		"version": "3.0.0",
+		"homepage": "http://redaxscript.com"
+	},
 	"_index":
 	{
 		"ar": "العربية",
@@ -63,17 +70,9 @@
 		"November",
 		"December"
 	],
-	"_package":
-	{
-		"name": "Redaxscript",
-		"description": "Ultra lightweight CMS",
-		"version": "3.0.0",
-		"homepage": "http://redaxscript.com"
-	},
 	"home": "Home",
 	"administration": "Administration",
 	"system": "System",
-	"error": "Error",
 	"content": "Content",
 	"contents": "Contents",
 	"content_not_found": "Content could not be found",
@@ -279,6 +278,10 @@
 	"security": "Security",
 	"captcha": "Captcha",
 	"captcha_incorrect": "Captcha is incorrect",
+	"success": "Success",
+	"warning": "Warning",
+	"error": "Error",
+	"info": "Info",
 	"operation_completed": "Operation completed successfully",
 	"error_occurred": "An error occurred",
 	"something_wrong": "Something went wrong",
@@ -291,6 +294,10 @@
 	"file_permission_grant": "Grant write permission on file",
 	"file_permission_revoke": "Revoke write permission on file",
 	"file_not_found": "File could not be found",
+	"directory_remove": "Remove the directory",
+	"directory_permission_grant": "Grant write permission on directory",
+	"directory_permission_revoke": "Revoke write permission on directory",
+	"directory_not_found": "Directory could not be found",
 	"powered_by": "Powered by",
 	"point": ".",
 	"comma": ",",

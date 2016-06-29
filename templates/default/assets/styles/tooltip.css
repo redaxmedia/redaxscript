@@ -13,7 +13,7 @@
 
 /* @section 1. tooltip */
 
-.rs-tooltip:after
+.rs-has-tooltip:after
 {
 	background: var(--rs-color-tertiary);
 	border-radius: 0.25em;

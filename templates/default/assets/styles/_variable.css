@@ -43,10 +43,10 @@
 	/* @section 1.3 gradient */
 
 	--rs-gradient-primary: linear-gradient(var(--rs-color-primary-light), var(--rs-color-primary));
-	--rs-gradient-primary-light: linear-gradient(color(var(--rs-color-primary-light) l(55%)), color(var(--rs-color-primary) l(55%)));
 	--rs-gradient-secondary: linear-gradient(var(--rs-color-secondary-light), var(--rs-color-secondary));
-	--rs-gradient-secondary-light: linear-gradient(color(var(--rs-color-secondary-light) l(55%)), color(var(--rs-color-secondary) l(55%)));
 	--rs-gradient-quaternary: linear-gradient(var(--rs-color-quaternary-light), var(--rs-color-quaternary));
+	--rs-gradient-primary-light: linear-gradient(color(var(--rs-color-primary-light) l(55%)), color(var(--rs-color-primary) l(55%)));
+	--rs-gradient-secondary-light: linear-gradient(color(var(--rs-color-secondary-light) l(55%)), color(var(--rs-color-secondary) l(55%)));
 	--rs-gradient-quaternary-light: linear-gradient(color(var(--rs-color-quaternary-light) l(55%)), color(var(--rs-color-quaternary) l(55%)));
 
 	/* @section 1.4 url */
@@ -59,6 +59,6 @@
 	/* @section 1.5 font */
 
 	--rs-font-primary: 'open sans condensed', arial, sans-serif;
-	--rs-font-code: monospace, arial;
+	--rs-font-code: monospace, arial, sans-serif;
 	--rs-font-icon: 'icon default';
 }

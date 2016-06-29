@@ -22,12 +22,12 @@
 	background: gray(32);
 	position: relative;
 	z-index: 900;
-}
 
-.rs-admin-component-panel a,
-.rs-admin-component-panel a:hover
-{
-	text-decoration: none;
+	& a,
+	& a:hover
+	{
+		text-decoration: none;
+	}
 }
 
 /* @section 2. item panel */
@@ -35,6 +35,13 @@
 .rs-admin-item-panel
 {
 	position: relative;
+
+	& > a,
+	& > span
+	{
+		padding: 0 0.75em;
+		text-transform: uppercase;
+	}
 }
 
 /* link logout */
@@ -44,7 +51,14 @@
 	background: var(--rs-admin-gradient-secondary);
 }
 
-/* @section 2.1 icons before */
+/* @section 2.1 link panel */
+
+.rs-admin-list-panel-children > li > .rs-admin-link-panel
+{
+	padding: 0 0.75em;
+}
+
+/* @section 2.2 icons before */
 
 .rs-admin-item-panel > a:before,
 .rs-admin-item-panel > span:before
@@ -54,6 +68,8 @@
 	text-transform: lowercase;
 	vertical-align: middle;
 }
+
+/* TODO: let's get rid of the long selectors and just use a class .rs-admin-text-contents:before */
 
 .rs-admin-item-panel.rs-admin-item-contents > span:before
 {
@@ -76,19 +92,24 @@
 	content: 'l';
 }
 
+.rs-admin-item-panel.rs-admin-item-notification > span:before
+{
+	content: 'U';
+}
+
 .rs-admin-item-panel.rs-admin-item-logout > a:before
 {
 	content: 'n';
 }
 
-/* @section 2.2 icons after */
+/* @section 2.3 icons after */
 
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
 	font: 1.25em/1.5em var(--rs-admin-font-icon);
 	position: absolute;
-	right: 0.875em;
+	right: 1.625em;
 	top: 0.375em;
 }
 
@@ -99,22 +120,21 @@
 
 /* @section 3. list panel */
 
+/* @section 3.1 general */
+
 .rs-admin-list-panel
 {
 	font-size: 0.875rem;
-}
 
-.rs-admin-list-panel a,
-.rs-admin-list-panel > li > span
-{
-	box-sizing: border-box;
-	color: gray(185);
-	cursor: pointer;
-	display: block;
-	font: bold 1.125em/2.75em var(--rs-admin-font-primary);
-	padding: 0 0.75em;
-	text-shadow: 0 1px gray(0, 0.6);
-	text-transform: uppercase;
+	& a,
+	& span
+	{
+		box-sizing: border-box;
+		color: gray(185);
+		cursor: pointer;
+		display: block;
+		font: bold 1.125em/2.75em var(--rs-admin-font-primary);
+	}
 }
 
 .rs-admin-list-panel a:hover,
@@ -123,12 +143,18 @@
 {
 	background: var(--rs-admin-gradient-primary);
 	color: gray(0);
-	text-shadow: 0 1px gray(255, 0.2);
 }
+
+/* @section 3.2 panel children */
 
 .rs-admin-list-panel li:hover .rs-admin-list-panel-children
 {
 	background: gray(32);
+}
+
+.rs-admin-item-panel:not(.rs-admin-item-notification) .rs-admin-list-panel-children
+{
+	text-transform: uppercase;
 }
 
 .rs-admin-list-panel-children
@@ -136,11 +162,18 @@
 	display: none;
 }
 
-.rs-admin-list-panel-children > li > span
+/* TODO: try the selector .rs-admin-wrapper-panel over .rs-admin-list-panel .rs-admin-wrapper-panel-link */
+
+/* @section 3.3 panel children link */
+
+.rs-admin-list-panel .rs-admin-wrapper-panel-link
 {
 	display: flex;
 	justify-content: space-between;
+	padding: 0 0.75em;
 }
+
+/* TODO: stay in the context of the wrapper using .rs-admin-wrapper-panel .rs-admin-link-view */
 
 .rs-admin-list-panel .rs-admin-link-view
 {
@@ -168,14 +201,71 @@
 	top: 50%;
 }
 
+/* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
+/* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
+/* TODO: add styling for module's headline and the <code> block of the validator module */
+
+/* @section 3.4 list notification */
+
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a,
+.rs-admin-item-panel .rs-admin-list-panel-children-notification span
+{
+	line-height: 1.75em;
+	padding: 0.5em 0.75em 0.5em 3em;
+	position: relative;
+
+	&:before
+	{
+		background: #c56161;
+		border-radius: 50%;
+		color: gray(0);
+
+		/* TODO: add the needed icons to the admin icon font */
+
+		font: 1em/1.75em 'icon default';
+		height: 1.75em;
+		left: 0.625em;
+		position: absolute;
+		text-align: center;
+		top: 0.625em;
+		width: 1.75em;
+	}
+
+	&.rs-admin-is-success:before
+	{
+		background: var(--rs-admin-color-success);
+		content: '\2714';
+	}
+
+	&.rs-admin-is-warning:before
+	{
+		background: var(--rs-admin-color-warning);
+		content: '\21';
+	}
+
+	&.rs-admin-is-error:before
+	{
+		background: var(--rs-admin-color-error);
+		content: '\d7';
+	}
+
+	&.rs-admin-is-info:before
+	{
+		background: var(--rs-admin-color-primary);
+		content: '\69';
+	}
+}
+
 /* @section 5. query */
 
 /* @section 5.1 medium min */
 
+/* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
+
 @media (--media-medium-min)
 {
 	.rs-admin-list-panel a,
-	.rs-admin-list-panel > li > span
+	.rs-admin-list-panel span
 	{
 		line-height: 3.625em;
 	}
@@ -191,29 +281,34 @@
 		position: relative;
 	}
 
-	.rs-admin-list-panel.rs-admin-c1 > li
+	.rs-admin-list-panel.rs-admin-has-column1 > li
 	{
 		width: 100%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c2 > li
+	.rs-admin-list-panel.rs-admin-has-column2 > li
 	{
 		width: 50%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c3 > li
+	.rs-admin-list-panel.rs-admin-has-column3 > li
 	{
 		width: 33.33%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c4 > li
+	.rs-admin-list-panel.rs-admin-has-column4 > li
 	{
 		width: 25%;
 	}
 
-	.rs-admin-list-panel.rs-admin-c5 > li
+	.rs-admin-list-panel.rs-admin-has-column5 > li
 	{
 		width: 20%;
+	}
+
+	.rs-admin-list-panel.rs-admin-has-column6 > li
+	{
+		width: 16.66%;
 	}
 
 	.rs-admin-list-panel-children

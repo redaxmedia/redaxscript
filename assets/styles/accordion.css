@@ -11,8 +11,8 @@
 
 /* @section 1. title accordion */
 
-.rs-js .rs-title-accordion.rs-title-active,
-.rs-js .rs-admin-title-accordion.rs-admin-title-active
+.rs-is-js .rs-title-accordion.rs-title-active,
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	pointer-events: none;
 }

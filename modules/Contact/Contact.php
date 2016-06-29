@@ -168,10 +168,12 @@ class Contact extends Module
 
 		/* handle error */
 
-		$errorArray = self::_validate($postArray);
-		if ($errorArray)
+		$messageArray = self::_validate($postArray);
+		if ($messageArray)
 		{
-			return self::_error($errorArray);
+			return self::_error(array(
+				'message' => $messageArray
+			));
 		}
 
 		/* handle success */
@@ -189,7 +191,9 @@ class Contact extends Module
 		{
 			return self::_success();
 		}
-		return self::_error(Language::get('something_wrong'));
+		return self::_error(array(
+			'message' => Language::get('something_wrong')
+		));
 	}
 
 	/**
@@ -203,7 +207,10 @@ class Contact extends Module
 	protected static function _success()
 	{
 		$messenger = new Messenger(Registry::getInstance());
-		return $messenger->setAction(Language::get('home'), Registry::get('root'))->doRedirect()->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+		return $messenger
+			->setAction(Language::get('home'), Registry::get('root'))
+			->doRedirect()
+			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
 
 	/**
@@ -211,7 +218,7 @@ class Contact extends Module
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */
@@ -219,7 +226,9 @@ class Contact extends Module
 	protected static function _error($errorArray = array())
 	{
 		$messenger = new Messenger(Registry::getInstance());
-		return $messenger->setAction(Language::get('home'), Registry::get('root'))->error($errorArray, Language::get('error_occurred'));
+		return $messenger
+			->setAction(Language::get('home'), Registry::get('root'))
+			->error($errorArray['message'], Language::get('error_occurred'));
 	}
 
 	/**
@@ -240,32 +249,32 @@ class Contact extends Module
 
 		/* validate post */
 
-		$errorArray = array();
+		$messageArray = array();
 		if (!$postArray['author'])
 		{
-			$errorArray[] = Language::get('author_empty');
+			$messageArray[] = Language::get('author_empty');
 		}
 		if (!$postArray['email'])
 		{
-			$errorArray[] = Language::get('email_empty');
+			$messageArray[] = Language::get('email_empty');
 		}
 		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray['email'] = Language::get('email_incorrect');
+			$messageArray['email'] = Language::get('email_incorrect');
 		}
 		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('url_incorrect');
+			$messageArray[] = Language::get('url_incorrect');
 		}
 		if (!$postArray['text'])
 		{
-			$errorArray[] = Language::get('message_empty');
+			$messageArray[] = Language::get('message_empty');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = Language::get('captcha_incorrect');
+			$messageArray[] = Language::get('captcha_incorrect');
 		}
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**

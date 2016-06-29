@@ -15,4 +15,11 @@ use Redaxscript\Template\Helper as BaseHelper;
 
 class Helper extends BaseHelper
 {
+	/**
+	 * prefix for the class
+	 *
+	 * @var string
+	 */
+
+	protected static $_prefix = 'rs-admin-';
 }

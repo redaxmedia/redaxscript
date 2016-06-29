@@ -7,7 +7,7 @@ $titlePartialElement->init('h3', array(
 ));
 $clearfixElement = new Html\Element();
 $clearfixElement->init('div', array(
-	'class' => 'rs-is-clearfix'
+	'class' => 'rs-fn-clearfix'
 ));
 $gridElement = new Html\Element();
 $gridElement->init('div');
@@ -17,32 +17,32 @@ $boxElement->init('div', array(
 ));
 $gridArray = array(
 	array(
-		'.rs-is-clearfix > .rs-fn-grid',
+		'.rs-fn-clearfix > .rs-fn-grid',
 		'',
 		'rs-fn-grid',
 	),
 	array(
-		'.rs-is-clearfix > .rs-fn-grid-space',
+		'.rs-fn-clearfix > .rs-fn-grid-space',
 		'',
 		'rs-fn-grid-space',
 	),
 	array(
-		'.rs-is-clearfix.line > .rs-fn-grid',
+		'.rs-fn-clearfix.line > .rs-fn-grid',
 		'rs-line',
 		'rs-fn-grid',
 	),
 	array(
-		'.rs-is-clearfix.line > .rs-fn-grid-space',
+		'.rs-fn-clearfix.line > .rs-fn-grid-space',
 		'rs-line',
 		'rs-fn-grid-space',
 	),
 	array(
-		'.rs-is-clearfix.rs-line-space > .rs-fn-grid',
+		'.rs-fn-clearfix.rs-line-space > .rs-fn-grid',
 		'rs-line-space',
 		'rs-fn-grid'
 	),
 	array(
-		'.rs-is-clearfix.rs-line-space > .rs-fn-grid-space',
+		'.rs-fn-clearfix.rs-line-space > .rs-fn-grid-space',
 		'rs-line-space',
 		'rs-fn-grid-space'
 	)
@@ -75,7 +75,7 @@ $gridArray = array(
 
 <?php echo $titlePartialElement->text('grid sizes'); ?>
 
-<div class="rs-line rs-is-clearfix">
+<div class="rs-line rs-fn-clearfix">
 
 	<?php echo $gridElement->copy()->addClass('rs-fn-grid-space rs-is-size1of1')->html($boxElement->text('s1o1')); ?>
 
@@ -83,7 +83,7 @@ $gridArray = array(
 
 <?php for ($i = 2; $i < 9; $i++): ?>
 
-	<div class="rs-line rs-is-clearfix">
+	<div class="rs-line rs-fn-clearfix">
 
 		<?php echo $gridElement->copy()->addClass('rs-fn-grid-space rs-s1o' . $i)->html($boxElement->text('s1o' . $i)); ?>
 		<?php echo $gridElement->copy()->addClass('rs-fn-grid-space rs-s' . ($i - 1) . 'o' . $i)->html($boxElement->text('s' . ($i - 1) . 'o' . $i)); ?>

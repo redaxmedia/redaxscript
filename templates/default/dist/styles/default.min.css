@@ -40,6 +40,7 @@
 
 	/* @section 1.5 font */
 }
+
 /**
  * @tableofcontents
  *
@@ -601,7 +602,7 @@ a
 	background: rgb(200, 200, 200);
 	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
-	font: 0.75em/1.25em monospace, arial;
+	font: 0.75em/1.25em monospace, arial, sans-serif;
 	padding: 1em;
 	white-space: pre-wrap;
 }
@@ -1615,7 +1616,7 @@ ul.rs-list-default li:before
 
 /* @section 1. teaser */
 
-.rs-teaser
+.rs-component-teaser
 {
 	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') no-repeat center top / cover;
 	box-sizing: border-box;
@@ -1679,7 +1680,7 @@ ul.rs-list-default li:before
 
 @media screen and (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: url('//cdn.redaxscript.com/unsplash/817/1250x500.jpg');
 	}
@@ -1697,7 +1698,7 @@ ul.rs-list-default li:before
 
 @media screen and (min-width: 80em), screen and (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 50em) and (min-resolution: 192dpi)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: url('//cdn.redaxscript.com/unsplash/817/2500x1000.jpg');
 	}
@@ -1707,7 +1708,7 @@ ul.rs-list-default li:before
 
 @media screen and (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 80em) and (min-resolution: 192dpi)
 {
-	.rs-teaser
+	.rs-component-teaser
 	{
 		background-image: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 	}
@@ -1727,7 +1728,7 @@ ul.rs-list-default li:before
 
 /* @section 1. tooltip */
 
-.rs-tooltip:after
+.rs-has-tooltip:after
 {
 	background: #323e4c;
 	border-radius: 0.25em;

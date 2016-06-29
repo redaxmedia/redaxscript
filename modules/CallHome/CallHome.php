@@ -64,12 +64,12 @@ class CallHome extends Module
 	}
 
 	/**
-	 * adminNotificationStart
+	 * adminPanelAddNote
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function adminNotificationStart()
+	public static function adminPanelAddNote()
 	{
 		$output = null;
 		$aliasFilter = new Filter\Alias();
@@ -95,6 +95,6 @@ class CallHome extends Module
 		{
 			$output .= $contentsNews;
 		}
-		echo $output;
+		return $output;
 	}
 }

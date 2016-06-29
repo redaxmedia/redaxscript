@@ -72,7 +72,7 @@
 		{
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=/admin\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/admin\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -87,6 +87,6 @@
 		{
 			"status": 1
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-redirect-overlay\" content=\"0;url=/admin\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">Welcome</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-default rs-button-messenger\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/admin\" http-equiv=\"refresh\" />"
 	]
 ]

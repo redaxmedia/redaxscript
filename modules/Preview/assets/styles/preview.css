@@ -25,11 +25,10 @@
 	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
 }
 
-
 /* @section 2. dialog */
 
 .rs-preview .rs-dialog,
-.rs-preview .rs-admin-dialog
+.rs-preview .rs-admin-component-dialog
 {
 	margin: unset;
 	position: unset;

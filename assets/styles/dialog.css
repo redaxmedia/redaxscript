@@ -15,7 +15,7 @@
 /* @section 1. dialog */
 
 .rs-dialog,
-.rs-admin-dialog
+.rs-admin-component-dialog
 {
 	box-sizing: border-box;
 	left: 50%;
@@ -46,7 +46,7 @@
 @media (--media-medium-min)
 {
 	.rs-dialog,
-	.rs-admin-dialog
+	.rs-admin-component-dialog
 	{
 		margin-left: -15em;
 		width: 30em;
