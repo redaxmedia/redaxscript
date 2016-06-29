@@ -1,9 +1,8 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
-use DOMDocument;
 use Redaxscript\Html;
-use XMLReader;
+use Redaxscript\Reader;
 
 /**
  * read external rss and atom feeds
@@ -73,32 +72,16 @@ class FeedReader extends Config
 		$boxElement->init('div', array(
 			'class' => self::$_configArray['className']['box']
 		));
-		/* TODO: split up to a fetchXML method */
-		/* get contents */
 
-		$doc = new DOMDocument();
-		$reader = new XMLReader();
-		$reader->open($url);
+		/* fetch result */
 
-		/* process reader */
+		$reader = new Reader();
+		$resultArray = $reader->fetchXML($url)->getArray();
+		$resultArray = $resultArray->entry ? $resultArray->entry : $resultArray->channel->item;
 
-		while ($reader->read())
-		{
-			if ($reader->nodeType === XMLReader::ELEMENT)
-			{
-				$doc->appendChild($doc->importNode($reader->expand(), true));
-			}
-		}
-		$reader->close();
+		/* process result */
 
-		/* handle feed type */
-
-		$xml = simplexml_import_dom($doc);
-		$feed = $xml->entry ? $xml->entry : $xml->channel->item;
-
-		/* process feed */
-
-		foreach ($feed as $value)
+		foreach ($resultArray as $value)
 		{
 			if ($counter++ < $optionArray['limit'])
 			{

@@ -1,9 +1,8 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use DOMDocument;
-use XMLReader;
 use Redaxscript\Html;
+use Redaxscript\Reader;
 use Redaxscript\Registry;
 
 /**
@@ -54,9 +53,15 @@ class Validator extends Config
 			'class' => self::$_configArray['className']['code']
 		));
 
-		/* process xml */
+		/* fetch result */
 
-		foreach (self::_fetchXML() as $value)
+		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
+		$reader = new Reader();
+		$resultArray = $reader->fetchXML($url)->getArray();
+
+		/* process result */
+
+		foreach ($resultArray as $value)
 		{
 			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
 			if (in_array($type, self::$_configArray['typeArray']))
@@ -74,37 +79,5 @@ class Validator extends Config
 			}
 		}
 		return $output;
-	}
-
-	/**
-	 * fetchXML
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	protected static function _fetchXML()
-	{
-		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
-
-		/* get contents */
-
-		$doc = new DOMDocument();
-		$reader = new XMLReader();
-		$reader->open($url);
-
-		/* process reader */
-
-		while ($reader->read())
-		{
-			if ($reader->nodeType === XMLReader::ELEMENT)
-			{
-				$doc->appendChild($doc->importNode($reader->expand(), true));
-			}
-		}
-		$reader->close();
-		$xml = simplexml_import_dom($doc);
-		return $xml;
 	}
 }
