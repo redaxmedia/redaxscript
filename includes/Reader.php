@@ -4,7 +4,7 @@ namespace Redaxscript;
 use SimpleXMLElement;
 
 /**
- * parent class to read data from url
+ * parent class to fetch and convert data
  *
  * @since 3.0.0
  *
