@@ -63,7 +63,7 @@ class FeedGenerator extends Module
 
 	public static function render($table = 'articles')
 	{
-		/* fetch result */
+		/* query result */
 
 		$result = Db::forTablePrefix($table)
 			->where('status', 1)

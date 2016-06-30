@@ -58,7 +58,7 @@ class SitemapXml extends Module
 
 	public static function render()
 	{
-		/* fetch categories */
+		/* query categories */
 
 		$categories = Db::forTablePrefix('categories')
 			->where('status', 1)
@@ -66,7 +66,7 @@ class SitemapXml extends Module
 			->orderByAsc('rank')
 			->findMany();
 
-		/* fetch articles */
+		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)

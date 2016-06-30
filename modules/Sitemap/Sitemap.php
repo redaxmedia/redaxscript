@@ -58,7 +58,7 @@ class Sitemap extends Config
 			'class' => self::$_configArray['className']['list']
 		));
 
-		/* fetch articles */
+		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)

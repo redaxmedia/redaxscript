@@ -4,7 +4,7 @@ namespace Redaxscript;
 use SimpleXMLElement;
 
 /**
- * parent class to fetch and convert data
+ * parent class to load and convert data
  *
  * @since 3.0.0
  *
@@ -60,7 +60,7 @@ class Reader
 	public function getXML()
 	{
 		$element = new SimpleXMLElement('<root>');
-		array_walk_recursive($this->_dataArray, array (
+		array_walk_recursive($this->_dataArray, array(
 			$element,
 			'addChild'
 		));
@@ -68,7 +68,7 @@ class Reader
 	}
 
 	/**
-	 * fetch json from url
+	 * load json from url
 	 *
 	 * @since 3.0.0
 	 *
@@ -78,7 +78,7 @@ class Reader
 	 * @return Reader
 	 */
 
-	public function fetchJSON($url = null, $assoc = true)
+	public function loadJSON($url = null, $assoc = true)
 	{
 		$contents = file_get_contents($url);
 		$this->_dataArray = json_decode($contents, $assoc);
@@ -86,19 +86,21 @@ class Reader
 	}
 
 	/**
-	 * fetch xml from url
+	 * load xml from url
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $url
+	 * @param boolean $assoc
 	 *
 	 * @return Reader
 	 */
 
-	public function fetchXML($url = null)
+	public function loadXML($url = null, $assoc = true)
 	{
 		$contents = file_get_contents($url);
-		$this->_dataArray = simplexml_load_string($contents);
+		$xml = simplexml_load_string($contents);
+		$this->_dataArray = json_decode(json_encode($xml), $assoc);
 		return $this;
 	}
 }

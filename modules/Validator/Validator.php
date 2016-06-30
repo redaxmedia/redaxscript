@@ -53,15 +53,15 @@ class Validator extends Config
 			'class' => self::$_configArray['className']['code']
 		));
 
-		/* fetch result */
+		/* load result */
 
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
 		$reader = new Reader();
-		$resultArray = $reader->fetchXML($url)->getArray();
+		$result = $reader->loadXML($url)->getXML();
 
 		/* process result */
 
-		foreach ($resultArray as $value)
+		foreach ($result as $value)
 		{
 			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
 			if (in_array($type, self::$_configArray['typeArray']))

@@ -20,7 +20,7 @@ function head($type = 'all')
 	$lastParameter = Redaxscript\Registry::get('lastParameter');
 	if ($lastTable)
 	{
-		/* fetch result */
+		/* query result */
 
 		$result = Redaxscript\Db::forTablePrefix($lastTable)
 			->where(array(

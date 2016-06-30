@@ -93,32 +93,33 @@ class Language extends Singleton
 	}
 
 	/**
-	 * load from language files
+	 * load from language path
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @param mixed $json single or multiple language paths
+	 * @param mixed $path single or multiple language path
 	 */
 
-	public static function load($json = null)
+	public static function load($path = null)
 	{
+		$reader = new Reader();
+
 		/* handle json */
 
-		if (is_string($json))
+		if (is_string($path))
 		{
-			$json = array(
-				$json
+			$path = array(
+				$path
 			);
 		}
 
-		/* merge language files */
+		/* load and merge files */
 
-		foreach ($json as $file)
+		foreach ($path as $file)
 		{
 			if (file_exists($file))
 			{
-				$contents = file_get_contents($file);
-				$languageArray = json_decode($contents, true);
+				$languageArray = $reader->loadJSON($file)->getArray();
 				if (is_array($languageArray))
 				{
 					self::$_languageArray = array_merge(self::$_languageArray, $languageArray);

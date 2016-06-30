@@ -18,7 +18,7 @@ function query_table($input)
 {
 	static $table;
 
-	/* fetch from cache */
+	/* load from cache */
 
 	if ($table[$input])
 	{

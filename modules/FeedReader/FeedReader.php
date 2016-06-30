@@ -73,15 +73,15 @@ class FeedReader extends Config
 			'class' => self::$_configArray['className']['box']
 		));
 
-		/* fetch result */
+		/* load result */
 
 		$reader = new Reader();
-		$resultArray = $reader->fetchXML($url)->getArray();
-		$resultArray = $resultArray->entry ? $resultArray->entry : $resultArray->channel->item;
+		$result = $reader->loadXML($url)->getXML();
+		$result = $result->entry ? $result->entry : $result->channel->item;
 
 		/* process result */
 
-		foreach ($resultArray as $value)
+		foreach ($result as $value)
 		{
 			if ($counter++ < $optionArray['limit'])
 			{

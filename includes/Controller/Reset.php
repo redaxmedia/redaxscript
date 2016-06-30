@@ -44,7 +44,7 @@ class Reset extends ControllerAbstract
 			'solution' => $this->_request->getPost('solution')
 		);
 
-		/* fetch user */
+		/* query user */
 
 		$user = Db::forTablePrefix('users')->where(array(
 			'id' => $postArray['id'],
