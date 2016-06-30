@@ -58,7 +58,7 @@ class ReaderTest extends TestCaseAbstract
 
 		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
 	}
-	
+
 	/**
 	 * testConvertToArray
 	 *
@@ -80,7 +80,7 @@ class ReaderTest extends TestCaseAbstract
 
 		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
 	}
-	
+
 	/**
 	 * testConvertToObject
 	 *

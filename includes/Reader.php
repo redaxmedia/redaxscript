@@ -30,7 +30,7 @@ class Reader
 	 */
 
 	protected $_dataArray = array();
-	
+
 	/**
 	 * assoc
 	 *
@@ -144,7 +144,7 @@ class Reader
 	 *
 	 * @return object
 	 */
-	
+
 	protected function _convertToObject()
 	{
 		$dataObject = new SimpleXMLElement('<root />');
