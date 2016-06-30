@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Controller;
 
+use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Html;
@@ -44,53 +45,94 @@ class Install extends ControllerAbstract
 	{
 		/* process post */
 
+		$this->_config = Config::getInstance();
 		$postArray = $this->_processPost();
 
-		if ($this->_checkInstall($postArray) === 1)
+		/* install */
+
+		// if redaxscript has been installed already, redirect the use to the home page
+		if (Db::getStatus() === 2) // 1 === db connect, 2 === tables installed
 		{
+			// without the extra meta tag, it will redirect to root/?p=
 			return $this->_success(array(
-				'redirect' => $this->_registry->get('root'),
-				'time' => 2,
 				'title' => $this->_language->get('installation_completed')
-			));
+			)) . "<meta http-equiv=\"refresh\" content=\"2; url=" . $this->_registry->get('root') . "\" />";
 		}
-		else if ($this->_request->getPost('Redaxscript\View\InstallForm'))
+
+		// config file is written, but not the db
+		if (Db::getStatus() === 1)
 		{
-			if (!$this->_validate($postArray))
+			// get the saved post data from session
+			if (!$_SESSION['install'])
 			{
-				$errorArray[] = $this->_language->get('something_wrong');
-			}
-
-			/* process error */
-
-			if (!$errorArray)
-			{
-				return $this->_error($errorArray);
-			}
-
-			$this->_write($postArray);
-			$this->_install($postArray);
-
-			if ($this->_mail($postArray))
-			{
-				return $this->_success(array(
-					'redirect' => $this->_registry->get('root'),
-					'time' => 2,
-					'title' => $this->_language->get('installation_completed')
-				));
+				$messageArray[] = $this->_language->get('something_wrong');
 			}
 			else
 			{
-				$errorArray[] = $this->_language->get('something_wrong');
+				$postArray = $_SESSION['install'];
+
+				if ($this->_install($postArray))
+				{
+					return $this->_error(array(
+						'description' => $this->_language->get('something_wrong'),
+						'redirect' => '/'
+					));
+				}
+
+				if ($this->_mail($postArray))
+				{
+					unset($_SESSION['install']);
+					return "<meta http-equiv=\"refresh\" content=\"0; url=" . $this->_registry->get('root') . "\" />";
+				}
+				else
+				{
+					return $this->_error(array(
+						'description' => $this->_language->get('something_wrong') . " - couldn't send Email"
+					)) . "<meta http-equiv=\"refresh\" content=\"0; url=\" />";
+				}
 			}
-		}
-		else
-		{
-			$installNote = new View\InstallNote($this->_registry, $this->_language);
-			return $installNote->render() . $this->_installForm($postArray);
+
+			if (!$messageArray)
+			{
+				return "<meta http-equiv=\"refresh\" content=\"0; url=" . $this->_registry->get('root') . "\" />";
+			}
+
+			return $this->_error(array(
+				'description' => $messageArray,
+				'redirect' => '/'
+			));
 		}
 
-		return $this->_error($errorArray);
+		if (Db::getStatus() === 0 && $this->_request->getPost('Redaxscript\View\InstallForm'))
+		{
+			/* handle error */
+
+			$messageArray = $this->_validate($postArray);
+			if ($messageArray)
+			{
+				return $this->_error($messageArray);
+			}
+
+			if ($this->_write($postArray))
+			{
+				// TODO: make $this->install work here. Current solution is temporary
+
+				$_SESSION['install'] = $postArray;
+
+				// $this->_install($postArray);
+				return $this->_success(array(
+					'redirect' => '/install.php',
+					'time' => 0
+				));
+			}
+
+			return $this->_error(array(
+				'description' => $this->_language->get('something_wrong')
+			));
+		}
+
+		$installNote = new View\InstallNote($this->_registry, $this->_language);
+		return $installNote->render() . $this->_installForm($postArray);
 	}
 
 	/**
@@ -110,38 +152,38 @@ class Install extends ControllerAbstract
 
 		/* validate post */
 
-		$errorArray = array();
+		$messageArray = array();
 
 		if ($postArray['dType'] != 'sqlite' && !$postArray['name'])
 		{
-			$errorArray[] = $this->_language->get('name_empty');
+			$messageArray[] = $this->_language->get('name_empty');
 		}
 		else if ($postArray['dType'] != 'sqlite' && !$postArray['user'])
 		{
-			$errorArray[] = $this->_language->get('user_empty');
+			$messageArray[] = $this->_language->get('user_empty');
 		}
 		else if ($postArray['dType'] != 'sqlite' && !$postArray['password'])
 		{
-			$errorArray[] = $this->_language->get('password_empty');
+			$messageArray[] = $this->_language->get('password_empty');
 		}
 		else if (!$postArray['email'])
 		{
-			$errorArray[] = $this->_language->get('email_empty');
+			$messageArray[] = $this->_language->get('email_empty');
 		}
 		else if ($loginValidator->validate($postArray['user']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('user_incorrect');
+			$messageArray[] = $this->_language->get('user_incorrect');
 		}
 		else if ($loginValidator->validate($postArray['password']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('password_incorrect');
+			$messageArray[] = $this->_language->get('password_incorrect');
 		}
 		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
 		{
-			$errorArray[] = $this->_language->get('email_incorrect');
+			$messageArray[] = $this->_language->get('email_incorrect');
 		}
 
-		return $errorArray;
+		return $messageArray;
 	}
 
 	/**
@@ -191,35 +233,6 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * check if redaxscript is already install
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param $postArray
-	 *
-	 * @return array
-	 */
-
-	private function _checkInstall($postArray = array())
-	{
-		$loginValidator = new Validator\Login();
-		$emailValidator = new Validator\Email();
-
-		if ($this->_request->getPost('Redaxscript\View\InstallForm') && $this->_registry->get('dbStatus') && $postArray['name']
-			&& $loginValidator->validate($postArray['user']) == Validator\ValidatorInterface::PASSED
-			&& $loginValidator->validate($postArray['password']) == Validator\ValidatorInterface::PASSED
-			&& $emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::PASSED
-		)
-		{
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
-	}
-
-	/**
 	 * insert user into database via installer class
 	 *
 	 * @since 3.0.0
@@ -255,15 +268,14 @@ class Install extends ControllerAbstract
 
 	protected function _write($writeArray = array())
 	{
-		$config = $this->_config;
-		$config->set('dbType', $writeArray['dType']);
-		$config->set('dbHost', $writeArray['dHost']);
-		$config->set('dbName', $writeArray['dName']);
-		$config->set('dbUser', $writeArray['dUser']);
-		$config->set('dbPassword', $writeArray['dPassword']);
-		$config->set('dbPrefix', $writeArray['dPrefix']);
-		$config->set('dbSalt', $writeArray['dSalt']);
-		$config->write();
+		$this->_config->set('dbType', $writeArray['dbType']);
+		$this->_config->set('dbHost', $writeArray['dbHost']);
+		$this->_config->set('dbName', $writeArray['dbName']);
+		$this->_config->set('dbUser', $writeArray['dbUser']);
+		$this->_config->set('dbPassword', $writeArray['dbPassword']);
+		$this->_config->set('dbPrefix', $writeArray['dbPrefix']);
+		$this->_config->set('dbSalt', $writeArray['dbSalt']);
+		return $this->_config->write();
 	}
 
 	/**
@@ -280,12 +292,12 @@ class Install extends ControllerAbstract
 	{
 		$installForm = new View\InstallForm($this->_registry, $this->_language);
 		return $installForm->render(array(
-			'dbType' => $postArray['dType'],
-			'dbHost' => $postArray['dHost'],
-			'dbName' => $postArray['dName'],
-			'dbUser' => $postArray['dUser'],
-			'dbPassword' => $postArray['dPassword'],
-			'dbPrefix' => $postArray['dPrefix'],
+			'dbType' => $postArray['dbType'],
+			'dbHost' => $postArray['dbHost'],
+			'dbName' => $postArray['dbName'],
+			'dbUser' => $postArray['dbUser'],
+			'dbPassword' => $postArray['dbPassword'],
+			'dbPrefix' => $postArray['dbPrefix'],
 			'adminName' => $postArray['name'],
 			'adminUser' => $postArray['user'],
 			'adminPassword' => $postArray['password'],
@@ -307,13 +319,13 @@ class Install extends ControllerAbstract
 		$emailFilter = new Filter\Email();
 
 		return array(
-			'dType' => $specialFilter->sanitize($this->_request->getPost('db-type')),
-			'dHost' => $specialFilter->sanitize($this->_request->getPost('db-host')),
-			'dName' => $specialFilter->sanitize($this->_request->getPost('db-name')),
-			'dUser' => $specialFilter->sanitize($this->_request->getPost('db-user')),
-			'dPassword' => $specialFilter->sanitize($this->_request->getPost('db-password')),
-			'dPrefix' => $specialFilter->sanitize($this->_request->getPost('db-prefix')),
-			'dSalt' => $specialFilter->sanitize($this->_request->getPost('db-salt')),
+			'dbType' => $this->_request->getPost('db-type'),
+			'dbHost' => $this->_request->getPost('db-host'),
+			'dbName' => $this->_request->getPost('db-name'),
+			'dbUser' => $this->_request->getPost('db-user'),
+			'dbPassword' => $this->_request->getPost('db-password'),
+			'dbPrefix' => $this->_request->getPost('db-prefix'),
+			'dbSalt' => $this->_request->getPost('db-salt'),
 			'name' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
@@ -335,7 +347,6 @@ class Install extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->setAction($this->_language->get('home'), $successArray['redirect'])->doRedirect($successArray['time'])->success($successArray['title']);
-		// ->setAction($this->_registry->get('root'))->success($this->_language->get('installation_completed'))
 	}
 
 	/**
@@ -351,6 +362,6 @@ class Install extends ControllerAbstract
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
-		return $messenger->error($errorArray, $this->_language->get('alert'));
+		return $messenger->setAction($this->_language->get('home'), $errorArray['redirect'])->error($errorArray['description'], $this->_language->get('alert'));
 	}
 }
