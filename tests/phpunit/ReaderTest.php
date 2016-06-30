@@ -52,10 +52,10 @@ class ReaderTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $reader->getArray()['@attributes'];
+		$actual = $reader->getArray();
 
 		/* compare */
 
-		$this->assertArrayHasKey('url', $actual);
+		$this->assertArrayHasKey('url', $actual['@attributes']);
 	}
 }
