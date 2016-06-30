@@ -18,7 +18,7 @@ class Reader
 	/**
 	 * data object
 	 *
-	 * @var array
+	 * @var object
 	 */
 
 	protected $_dataObject = array();

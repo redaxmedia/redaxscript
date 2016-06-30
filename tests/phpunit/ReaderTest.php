@@ -26,7 +26,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
-		$reader->loadJSON('https://validator.nu/?doc=http://redaxscript.com&out=json');
+		$reader->loadJSON('tests/provider/reader.json');
 
 		/* actual */
 
@@ -34,7 +34,7 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('http://redaxscript.com', $actual['url']);
+		$this->assertEquals('4', $actual['two']['@attributes']['id']);
 	}
 
 	/**
@@ -48,15 +48,15 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
-		$reader->loadXML('https://validator.nu/?doc=http://redaxscript.com&out=xml');
+		$reader->loadXML('tests/provider/reader.xml');
 
 		/* actual */
 
-		$actual = $reader->getArray();
+		$actual = $reader->getObject();
 
 		/* compare */
 
-		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
+		$this->assertEquals('4', $actual->two->attributes()->id);
 	}
 
 	/**
@@ -70,7 +70,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
-		$reader->loadXML('https://validator.nu/?doc=http://redaxscript.com&out=xml');
+		$reader->loadXML('tests/provider/reader.xml');
 
 		/* actual */
 
@@ -78,7 +78,7 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
+		$this->assertEquals('1', $actual['@attributes']['id']);
 	}
 
 	/**
@@ -92,7 +92,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
-		$reader->loadJSON('https://validator.nu/?doc=http://redaxscript.com&out=json');
+		$reader->loadJSON('tests/provider/reader.json');
 
 		/* actual */
 
@@ -100,6 +100,50 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('http://redaxscript.com', $actual->url);
+		$this->assertEquals('1', $actual->id);
+	}
+
+	/**
+	 * testConvertToJSON
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConvertToJSON()
+	{
+		/* setup */
+
+		$reader = new Reader();
+		$reader->loadXML('tests/provider/reader.xml');
+
+		/* actual */
+
+		$actual = $reader->getJSON();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testConvertToJSON
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConvertToXML()
+	{
+		/* setup */
+
+		$reader = new Reader();
+		$reader->loadJSON('tests/provider/reader.json');
+
+		/* actual */
+
+		$actual = $reader->getXML();
+
+		/* compare */
+
+		$this->assertString($actual);
 	}
 }
