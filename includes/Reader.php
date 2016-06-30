@@ -16,12 +16,45 @@ use SimpleXMLElement;
 class Reader
 {
 	/**
+	 * data object
+	 *
+	 * @var array
+	 */
+
+	protected $_dataObject = array();
+
+	/**
 	 * data array
 	 *
 	 * @var array
 	 */
 
 	protected $_dataArray = array();
+	
+	/**
+	 * assoc
+	 *
+	 * @var boolean
+	 */
+
+	protected $_assoc = true;
+
+	/**
+	 * get the object
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getObject()
+	{
+		if (!$this->_dataObject && $this->_dataArray)
+		{
+			$this->_dataObject = $this->_convertToObject();
+		}
+		return $this->_dataObject;
+	}
 
 	/**
 	 * get the array
@@ -33,6 +66,10 @@ class Reader
 
 	public function getArray()
 	{
+		if (!$this->_dataArray && $this->_dataObject)
+		{
+			$this->_dataArray = $this->_convertToArray();
+		}
 		return $this->_dataArray;
 	}
 
@@ -46,7 +83,7 @@ class Reader
 
 	public function getJSON()
 	{
-		return json_encode($this->_dataArray);
+		return json_encode($this->getArray());
 	}
 
 	/**
@@ -59,12 +96,7 @@ class Reader
 
 	public function getXML()
 	{
-		$element = new SimpleXMLElement('<root>');
-		array_walk_recursive($this->_dataArray, array(
-			$element,
-			'addChild'
-		));
-		return $element->asXML();
+		return $this->getObject()->asXML();
 	}
 
 	/**
@@ -81,7 +113,8 @@ class Reader
 	public function loadJSON($url = null, $assoc = true)
 	{
 		$contents = file_get_contents($url);
-		$this->_dataArray = json_decode($contents, $assoc);
+		$this->_assoc = $assoc;
+		$this->_dataArray = json_decode($contents, $this->_assoc);
 		return $this;
 	}
 
@@ -99,8 +132,39 @@ class Reader
 	public function loadXML($url = null, $assoc = true)
 	{
 		$contents = file_get_contents($url);
-		$xml = simplexml_load_string($contents);
-		$this->_dataArray = json_decode(json_encode($xml), $assoc);
+		$this->_assoc = $assoc;
+		$this->_dataObject = simplexml_load_string($contents);
 		return $this;
+	}
+
+	/**
+	 * convert to object
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return object
+	 */
+	
+	protected function _convertToObject()
+	{
+		$dataObject = new SimpleXMLElement('<root />');
+		array_walk_recursive($this->_dataArray, function($value, $key) use ($dataObject)
+		{
+			$dataObject->addChild($key, $value);
+		});
+		return $dataObject;
+	}
+
+	/**
+	 * convert to array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected function _convertToArray()
+	{
+		return json_decode(json_encode($this->_dataObject), $this->_assoc);
 	}
 }

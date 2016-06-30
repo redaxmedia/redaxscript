@@ -34,7 +34,7 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertArrayHasKey('url', $actual);
+		$this->assertEquals('http://redaxscript.com', $actual['url']);
 	}
 
 	/**
@@ -56,6 +56,50 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertArrayHasKey('url', $actual['@attributes']);
+		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
+	}
+	
+	/**
+	 * testConvertToArray
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConvertToArray()
+	{
+		/* setup */
+
+		$reader = new Reader();
+		$reader->loadXML('https://validator.nu/?doc=http://redaxscript.com&out=xml');
+
+		/* actual */
+
+		$actual = $reader->getArray();
+
+		/* compare */
+
+		$this->assertEquals('http://redaxscript.com', $actual['@attributes']['url']);
+	}
+	
+	/**
+	 * testConvertToObject
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConvertToObject()
+	{
+		/* setup */
+
+		$reader = new Reader();
+		$reader->loadJSON('https://validator.nu/?doc=http://redaxscript.com&out=json');
+
+		/* actual */
+
+		$actual = $reader->getObject();
+
+		/* compare */
+
+		$this->assertEquals('http://redaxscript.com', $actual->url);
 	}
 }

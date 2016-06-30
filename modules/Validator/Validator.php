@@ -57,7 +57,7 @@ class Validator extends Config
 
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
 		$reader = new Reader();
-		$result = $reader->loadXML($url)->getXML();
+		$result = $reader->loadXML($url)->getObject();
 
 		/* process result */
 
