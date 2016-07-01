@@ -159,7 +159,7 @@ class DirectoryLister extends Config
 			{
 				$path = $directory . '/' . $value;
 				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
-				$text = self::_replace($value, $fileExtension, $optionArray['replace']);;
+				$text = self::_replace($value, $fileExtension, $optionArray['replace']);
 				$isDir = is_dir($path);
 				$isFile = is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']);
 
