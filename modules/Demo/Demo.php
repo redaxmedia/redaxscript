@@ -60,8 +60,8 @@ class Demo extends Config
 
 			if (Registry::get('secondParameter') === 'reinstall')
 			{
-				self::_reinstall();
 				Registry::set('renderBreak', true);
+				self::_reinstall();
 			}
 		}
 	}

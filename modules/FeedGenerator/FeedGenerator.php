@@ -45,9 +45,9 @@ class FeedGenerator extends Module
 		$secondParameter = Registry::get('secondParameter');
 		if ($firstParamter === 'feed' && ($secondParameter === 'articles' || $secondParameter === 'comments'))
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/atom+xml');
 			echo self::render($secondParameter);
-			Registry::set('renderBreak', true);
 		}
 	}
 
@@ -65,22 +65,35 @@ class FeedGenerator extends Module
 	{
 		/* query result */
 
-		$result = Db::forTablePrefix($table)
+		$resultArray[$table] = Db::forTablePrefix($table)
 			->where('status', 1)
 			->whereNull('access')
 			->whereLanguageIs(Registry::get('language'))
 			->orderGlobal('rank')
 			->findMany();
 
-		/* route */
+		/* write xml */
 
-		$route = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+		return self::_writeXML($resultArray);
+	}
+
+	/**
+	 * @param array $resultArray
+	 *
+	 * @return string
+	 */
+
+	protected static function _writeXML($resultArray = array())
+	{
+		/* prepare href */
+
+		$href = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
 		if (Request::getQuery('l'))
 		{
-			$route .= Registry::get('languageRoute') . Registry::get('language');
+			$href .= Registry::get('languageRoute') . Registry::get('language');
 		}
-		/*TODO: split up to a writeXML method */
-		/* writer */
+
+		/* write xml */
 
 		$writer = new XMLWriter();
 		$writer->openMemory();
@@ -91,10 +104,10 @@ class FeedGenerator extends Module
 		$writer->writeAttribute('xmlns', 'http://www.w3.org/2005/Atom');
 		$writer->startElement('link');
 		$writer->writeAttribute('type', 'application/atom+xml');
-		$writer->writeAttribute('href', $route);
+		$writer->writeAttribute('href', $href);
 		$writer->writeAttribute('rel', 'self');
 		$writer->endElement();
-		$writer->writeElement('id', $route);
+		$writer->writeElement('id', $href);
 		$writer->writeElement('title', Db::getSetting('title'));
 		$writer->writeElement('updated', date('c', strtotime(Registry::get('now'))));
 		$writer->startElement('author');
@@ -103,14 +116,17 @@ class FeedGenerator extends Module
 
 		/* process result */
 
-		foreach ($result as $value)
+		foreach ($resultArray as $table => $result)
 		{
-			$writer->startElement('entry');
-			$writer->writeElement('id', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route($table, $value->id));
-			$writer->writeElement('title', $value->title);
-			$writer->writeElement('updated', date('c', strtotime($value->date)));
-			$writer->writeElement('content', strip_tags($value->text));
-			$writer->endElement();
+			foreach ($result as $value)
+			{
+				$writer->startElement('entry');
+				$writer->writeElement('id', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route($table, $value->id));
+				$writer->writeElement('title', $value->title);
+				$writer->writeElement('updated', date('c', strtotime($value->date)));
+				$writer->writeElement('content', strip_tags($value->text));
+				$writer->endElement();
+			}
 		}
 		$writer->endElement();
 		$writer->endDocument();

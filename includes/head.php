@@ -28,7 +28,7 @@ function head($type = 'all')
 				'status' => 1
 			))->findArray();
 
-		/* process results */
+		/* process result */
 
 		if ($result)
 		{

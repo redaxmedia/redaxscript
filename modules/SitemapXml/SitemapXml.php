@@ -42,9 +42,9 @@ class SitemapXml extends Module
 	{
 		if (Registry::get('firstParameter') === 'sitemap-xml')
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/xml');
 			echo self::render();
-			Registry::set('renderBreak', true);
 		}
 	}
 
@@ -73,9 +73,21 @@ class SitemapXml extends Module
 			->whereNull('access')
 			->orderByAsc('rank')
 			->findMany();
-		/*TODO: split up to a writeXML method */
-		/* writer */
 
+		/* write xml */
+
+		return self::_writeXML($categories, $articles);
+	}
+
+	/**
+	 * @param object $categories
+	 * @param object $articles
+	 *
+	 * @return string
+	 */
+
+	protected static function _writeXML($categories = null, $articles = null)
+	{
 		$writer = new XMLWriter();
 		$writer->openMemory();
 		$writer->setIndent(true);
