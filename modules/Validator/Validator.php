@@ -33,12 +33,12 @@ class Validator extends Config
 	);
 
 	/**
-	 * adminPanelAddNote
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 */
 
-	public static function adminPanelAddNote()
+	public static function adminPanelNotification()
 	{
 		$output = null;
 

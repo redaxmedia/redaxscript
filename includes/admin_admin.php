@@ -139,7 +139,7 @@ function admin_panel_list()
 
 			/* collect modules list */
 
-			$admin_panel_list_modules = Redaxscript\Hook::trigger('adminPanelAddModule');
+			$admin_panel_list_modules = Redaxscript\Hook::trigger('adminPanelModule');
 			if ($admin_panel_list_modules)
 			{
 				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">' . $admin_panel_list_modules . '</ul>';
@@ -180,7 +180,7 @@ function admin_panel_list()
 			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
 		}
 	}
-	$output .= Redaxscript\Hook::trigger('adminPanelAddNote');
+	$output .= Redaxscript\Hook::trigger('adminPanelNotification');
 	$output .= '</ul></li>';
 
 	/* collect logout */

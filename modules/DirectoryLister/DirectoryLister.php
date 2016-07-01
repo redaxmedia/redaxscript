@@ -36,12 +36,12 @@ class DirectoryLister extends Config
 	);
 
 	/**
-	 * array of notes
+	 * array of notifications
 	 *
 	 * @var array
 	 */
 
-	protected static $_noteArray = array();
+	protected static $_notificationArray = array();
 
 	/**
 	 * loaderStart
@@ -56,17 +56,17 @@ class DirectoryLister extends Config
 	}
 
 	/**
-	 * adminPanelAddNote
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 */
 
-	public static function adminPanelAddNote()
+	public static function adminPanelNotification()
 	{
 		$output = null;
-		foreach (self::$_noteArray as $note)
+		foreach (self::$_notificationArray as $value)
 		{
-			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span class="rs-admin-text-panel rs-admin-is-error">' . $note . '</span></li>';
+			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span class="rs-admin-text-panel rs-admin-is-error">' . $value . '</span></li>';
 		}
 		return $output;
 	}
@@ -85,8 +85,26 @@ class DirectoryLister extends Config
 	public static function render($directory = null, $optionArray = array())
 	{
 		$output = null;
-		$outputDirectory = null;
-		$outputFile = null;
+		$outputItem = null;
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
+			'class' => self::$_configArray['className']['link']
+		));
+		$textSizeElement = new Html\Element();
+		$textSizeElement->init('span', array(
+			'class' => self::$_configArray['className']['textSize']
+		));
+		$textDateElement = new Html\Element();
+		$textDateElement->init('span', array(
+			'class' => self::$_configArray['className']['textDate']
+		));
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_configArray['className']['list']
+		));
 
 		/* hash option */
 
@@ -105,30 +123,11 @@ class DirectoryLister extends Config
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
 		}
 
-		/* hash directory */
-		/*TODO: split up the following big ball of mud */
+		/* directory */
+
 		if (is_dir($directory))
 		{
-			/* html elements */
-
-			$linkElement = new Html\Element();
-			$linkElement->init('a', array(
-				'class' => self::$_configArray['className']['link']
-			));
-			$textSizeElement = new Html\Element();
-			$textSizeElement->init('span', array(
-				'class' => self::$_configArray['className']['textSize']
-			));
-			$textDateElement = new Html\Element();
-			$textDateElement->init('span', array(
-				'class' => self::$_configArray['className']['textDate']
-			));
-			$listElement = new Html\Element();
-			$listElement->init('ul', array(
-				'class' => self::$_configArray['className']['list']
-			));
-
-			/* lister directory object */
+			/* lister directory */
 
 			$listerDirectory = new Directory();
 			$listerDirectory->init($directory);
@@ -142,8 +141,8 @@ class DirectoryLister extends Config
 
 			if (is_dir($parentDirectory))
 			{
-				$outputDirectory .= '<li>';
-				$outputDirectory .= $linkElement
+				$outputItem .= '<li>';
+				$outputItem .= $linkElement
 					->copy()
 					->attr(array(
 						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
@@ -151,7 +150,7 @@ class DirectoryLister extends Config
 					))
 					->addClass(self::$_configArray['className']['types']['directoryParent'])
 					->text(Language::get('directory_parent', '_directory_lister'));
-				$outputDirectory .= '</li>';
+				$outputItem .= '</li>';
 			}
 
 			/* process directory */
@@ -160,28 +159,19 @@ class DirectoryLister extends Config
 			{
 				$path = $directory . '/' . $value;
 				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
-				$text = $value;
-
-				/* replace option */
-
-				if ($optionArray['replace'])
-				{
-					foreach ($optionArray['replace'] as $replaceKey => $replaceValue)
-					{
-						if ($replaceKey === self::$_configArray['replaceKey']['extension'])
-						{
-							$replaceKey = $fileExtension;
-						}
-						$text = str_replace($replaceKey, $replaceValue, $text);
-					}
-				}
+				$text = self::_replace($value, $fileExtension, $optionArray['replace']);;
+				$isDir = is_dir($path);
+				$isFile = is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']);
 
 				/* handle directory */
 
-				if (is_dir($path))
+				if ($isDir || $isFile)
 				{
-					$outputDirectory .= '<li>';
-					$outputDirectory .= $linkElement
+					$outputItem .= '<li>';
+				}
+				if ($isDir)
+				{
+					$outputItem .= $linkElement
 						->copy()
 						->attr(array(
 							'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
@@ -189,20 +179,15 @@ class DirectoryLister extends Config
 						))
 						->addClass(self::$_configArray['className']['types']['directory'])
 						->text($text);
-					$outputDirectory .= $textSizeElement->copy();
-					$outputDirectory .= $textDateElement
-						->copy()
-						->text(date($dateFormat, filectime($path)));
-					$outputDirectory .= '</li>';
+					$outputItem .= $textSizeElement->copy();
 				}
 
 				/* else handle file */
 
-				else if (is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']))
+				else if ($isFile)
 				{
 					$fileType = self::$_configArray['extension'][$fileExtension];
-					$outputFile .= '<li>';
-					$outputFile .= $linkElement
+					$outputItem .= $linkElement
 						->copy()
 						->attr(array(
 							'href' => Registry::get('root') . '/' . $path,
@@ -211,31 +196,55 @@ class DirectoryLister extends Config
 						))
 						->addClass(self::$_configArray['className']['types'][$fileType])
 						->text($text);
-					$outputFile .= $textSizeElement
+					$outputItem .= $textSizeElement
 						->copy()
 						->attr('data-unit', self::$_configArray['size']['unit'])
 						->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
-					$outputFile .= $textDateElement
+				}
+				if ($isDir || $isFile)
+				{
+					$outputItem .= $textDateElement
 						->copy()
 						->html(date($dateFormat, filectime($path)));
-					$outputFile .= '</li>';
+					$outputItem .= '</li>';
 				}
 			}
 
 			/* collect list output */
 
-			if ($outputDirectory || $outputFile)
+			if ($outputItem)
 			{
-				$output = $listElement->html($outputDirectory . $outputFile);
+				$output = $listElement->html($outputItem);
 			}
 		}
 
-		/* else handle note */
+		/* else handle notification */
 
 		else
 		{
-			self::$_noteArray[] = Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point');
+			self::$_notificationArray[] = Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point');
 		}
 		return $output;
+	}
+
+	/**
+	 * @param string $text
+	 * @param string $fileExtension
+	 * @param array $replaceArray
+	 *
+	 * @return string
+	 */
+
+	protected static function _replace($text, $fileExtension, $replaceArray)
+	{
+		foreach ($replaceArray as $replaceKey => $replaceValue)
+		{
+			if ($replaceKey === self::$_configArray['replaceKey']['extension'])
+			{
+				$replaceKey = $fileExtension;
+			}
+			$text = str_replace($replaceKey, $replaceValue, $text);
+		}
+		return $text;
 	}
 }

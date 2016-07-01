@@ -64,12 +64,12 @@ class CallHome extends Module
 	}
 
 	/**
-	 * adminPanelAddNote
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 */
 
-	public static function adminPanelAddNote()
+	public static function adminPanelNotification()
 	{
 		$output = null;
 		$aliasFilter = new Filter\Alias();
