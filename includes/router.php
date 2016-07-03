@@ -33,7 +33,26 @@ function router()
 		return;
 	}
 
-	/* call default post */
+	/* install routing */
+
+	if (Redaxscript\Registry::get('file') === 'install.php')
+	{
+		if (Redaxscript\Request::getPost('Redaxscript\View\InstallForm'))
+		{
+			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			$installController->_config = \Redaxscript\Config::getInstance();
+			echo $installController->process();
+			return;
+		}
+		else
+		{
+			$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+			echo $installForm->render();
+			return;
+		}
+	}
+
+	/* general routing */
 
 	$post_list = array(
 		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\Login',
@@ -54,6 +73,9 @@ function router()
 			return;
 		}
 	}
+
+	/* search routing */
+
 	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
 	{
 		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
@@ -65,7 +87,7 @@ function router()
 		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search'));
 	}
 
-	/* general routing */
+	/* parameter routing */
 
 	switch ($firstParameter)
 	{

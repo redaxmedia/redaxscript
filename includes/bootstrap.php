@@ -11,12 +11,14 @@ include_once('includes/admin_admin.php');
 include_once('includes/admin_list.php');
 include_once('includes/admin_query.php');
 include_once('includes/admin_router.php');
+include_once('includes/comments.php');
 include_once('includes/contents.php');
+include_once('includes/head.php');
 include_once('includes/loader.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
+include_once('includes/router.php');
 include_once('includes/startup.php');
-include_once('includes/comments.php');
 
 /* init */
 
