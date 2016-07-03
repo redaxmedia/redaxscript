@@ -21,14 +21,14 @@ class InstallNoteTest extends TestCaseAbstract
 	/**
 	 * instance of the registry class
 	 *
-	 * @var Registry
+	 * @var object
 	 */
 
 	protected $_registry;
 	/**
 	 * instance of the language class
 	 *
-	 * @var Language
+	 * @var object
 	 */
 
 	protected $_language;

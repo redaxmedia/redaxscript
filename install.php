@@ -18,7 +18,7 @@ if ($registry->get('firstParameter') === 'loader' && ($registry->get('secondPara
 	echo loader(Registry::get('secondParameter'), 'outline');
 }
 
-/* else render template */
+/* else template */
 
 else
 {

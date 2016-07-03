@@ -22,14 +22,15 @@ class InstallTest extends TestCaseAbstract
 	/**
 	 * instance of the registry class
 	 *
-	 * @var Registry
+	 * @var object
 	 */
 
 	protected $_registry;
+
 	/**
 	 * instance of the language class
 	 *
-	 * @var Language
+	 * @var object
 	 */
 
 	protected $_language;
@@ -54,7 +55,6 @@ class InstallTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-
 	}
 
 	/**
@@ -75,15 +75,10 @@ class InstallTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $optionArray
-	 * @param array $hashArray
-	 * @param string $expect
-	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($optionArray = array(), $hashArray = array(), $expect = null)
+	public function testRender()
 	{
-		// TODO: Henry / Balázs: create unit tests
 	}
 }
