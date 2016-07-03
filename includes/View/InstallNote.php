@@ -116,6 +116,7 @@ class InstallNote extends ViewAbstract
 
 	private function _check()
 	{
+		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
 		$warningArray = array();
 
 		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
@@ -126,7 +127,7 @@ class InstallNote extends ViewAbstract
 		{
 			$warningArray[] = 'There is no .htaccess file present!';
 		}
-		if (!in_array('mod_rewrite', apache_get_modules()))
+		if ($moduleArray && !in_array('mod_rewrite', $moduleArray))
 		{
 			$warningArray[] = 'mod_rewrite is not enabled!';
 		}

@@ -54,9 +54,9 @@ class Install extends ControllerAbstract
 		if (Db::getStatus() === 2) // 1 === db connect, 2 === tables installed
 		{
 			// without the extra meta tag, it will redirect to root/?p=
-			return $this->_success(array(
-				'title' => $this->_language->get('installation_completed')
-			)) . "<meta http-equiv=\"refresh\" content=\"2; url=" . $this->_registry->get('root') . "\" />";
+			//return $this->_success(array(
+			//	'title' => $this->_language->get('installation_completed')
+			//)) . '<meta http-equiv="refresh" content="2; url="' . $this->_registry->get('root') . ' />';
 		}
 
 		// config file is written, but not the db
@@ -82,19 +82,19 @@ class Install extends ControllerAbstract
 				if ($this->_mail($postArray))
 				{
 					unset($_SESSION['install']);
-					return "<meta http-equiv=\"refresh\" content=\"0; url=" . $this->_registry->get('root') . "\" />";
+					return '<meta http-equiv="refresh" content="0; url="' . $this->_registry->get('root') . ' />';
 				}
 				else
 				{
 					return $this->_error(array(
 						'description' => $this->_language->get('something_wrong') . " - couldn't send Email"
-					)) . "<meta http-equiv=\"refresh\" content=\"0; url=\" />";
+					)) . '<meta http-equiv="refresh" content="0; />';
 				}
 			}
 
 			if (!$messageArray)
 			{
-				return "<meta http-equiv=\"refresh\" content=\"0; url=" . $this->_registry->get('root') . "\" />";
+				return '<meta http-equiv="refresh" content="0; url="' . $this->_registry->get('root') . ' />';
 			}
 
 			return $this->_error(array(
