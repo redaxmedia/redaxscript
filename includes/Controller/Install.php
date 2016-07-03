@@ -54,9 +54,9 @@ class Install extends ControllerAbstract
 		if (Db::getStatus() === 2) // 1 === db connect, 2 === tables installed
 		{
 			// without the extra meta tag, it will redirect to root/?p=
-			//return $this->_success(array(
-			//	'title' => $this->_language->get('installation_completed')
-			//)) . '<meta http-equiv="refresh" content="2; url="' . $this->_registry->get('root') . ' />';
+			return $this->_success(array(
+				'title' => $this->_language->get('installation_completed')
+			)) . '<meta http-equiv="refresh" content="2; url="' . $this->_registry->get('root') . ' />';
 		}
 
 		// config file is written, but not the db
