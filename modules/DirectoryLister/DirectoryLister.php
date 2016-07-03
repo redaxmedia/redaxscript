@@ -36,14 +36,6 @@ class DirectoryLister extends Config
 	);
 
 	/**
-	 * array of notifications
-	 *
-	 * @var array
-	 */
-
-	protected static $_notificationArray = array();
-
-	/**
 	 * loaderStart
 	 *
 	 * @since 2.6.0
@@ -63,12 +55,7 @@ class DirectoryLister extends Config
 
 	public static function adminPanelNotification()
 	{
-		$output = null;
-		foreach (self::$_notificationArray as $value)
-		{
-			$output .= '<li><h3>' . self::$_moduleArray['name'] . '</h3><span class="rs-admin-text-panel rs-admin-is-error">' . $value . '</span></li>';
-		}
-		return $output;
+		return self::getNotification();
 	}
 
 	/**
@@ -222,7 +209,7 @@ class DirectoryLister extends Config
 
 		else
 		{
-			self::$_notificationArray[] = Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point');
+			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point'));
 		}
 		return $output;
 	}

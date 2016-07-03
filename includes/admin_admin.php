@@ -139,6 +139,7 @@ function admin_panel_list()
 
 			/* collect modules list */
 
+			/* @TODO: render module listing from array like notification does */
 			$admin_panel_list_modules = Redaxscript\Hook::trigger('adminPanelModule');
 			if ($admin_panel_list_modules)
 			{
@@ -167,20 +168,28 @@ function admin_panel_list()
 	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
-		if (file_exists('console.php'))
+		$notificationSystemArray = array(
+			'warning' => array(
+				Redaxscript\Language::get('system') => array(
+					file_exists('console.php') ? Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') : null,
+					file_exists('install.php') ? Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') : null,
+					is_writable('config.php') ? Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') : null
+				)
+			)
+		);
+	}
+	$notificationModuleArray = Redaxscript\Hook::trigger('adminPanelNotification');
+	$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
+	foreach ($notificationArray as $typeKey => $typeValue)
+	{
+		foreach ($typeValue as $moduleKey => $moduleValue)
 		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') . '</span></li>';
-		}
-		if (file_exists('install.php'))
-		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') . '</span></li>';
-		}
-		if (is_writable('config.php'))
-		{
-			$output .= '<li><span class="rs-admin-text-panel rs-admin-is-warning">' . Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') . '</span></li>';
+			foreach ($moduleValue as $value)
+			{
+				$output .= '<li><h3 class="rs-admin-title-panel">' . $moduleKey . '</h3><span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span></li>';
+			}
 		}
 	}
-	$output .= Redaxscript\Hook::trigger('adminPanelNotification');
 	$output .= '</ul></li>';
 
 	/* collect logout */

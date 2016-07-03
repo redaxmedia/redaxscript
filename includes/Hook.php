@@ -119,13 +119,11 @@ class Hook
 	 * @param string $event name of the module event
 	 * @param array $parameterArray parameter of the module hook
 	 *
-	 * @return string $output
+	 * @return mixed
 	 */
 
 	public static function trigger($event = null, $parameterArray = array())
 	{
-		$output = false;
-
 		/* trigger event */
 
 		foreach (self::$_moduleArray as $module)
@@ -138,12 +136,11 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				$output .= call_user_func_array(array(
+				return call_user_func_array(array(
 					$object,
 					$event
 				), $parameterArray);
 			}
 		}
-		return $output;
 	}
 }

@@ -25,6 +25,14 @@ class Module
 	);
 
 	/**
+	 * array of the notification
+	 *
+	 * @var array
+	 */
+
+	protected static $_notificationArray = array();
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.4.0
@@ -52,6 +60,44 @@ class Module
 				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
 			));
 		}
+	}
+
+	/**
+	 * get message from notification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the notification
+	 *
+	 * @return array
+	 */
+
+	public function getNotification($type = null)
+	{
+		if (array_key_exists($type, self::$_notificationArray))
+		{
+			return self::$_notificationArray[$type];
+		}
+		else if (!$type)
+		{
+			return self::$_notificationArray;
+		}
+		return false;
+	}
+
+	/**
+	 * set message to notification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the notification
+	 * @param string $message message of the notification
+	 */
+
+	public function setNotification($type = null, $message = null)
+	{
+		$moduleName = static::$_moduleArray['name'];
+		static::$_notificationArray[$type][$moduleName][] = $message;
 	}
 
 	/**
