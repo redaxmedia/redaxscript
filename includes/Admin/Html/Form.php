@@ -65,7 +65,7 @@ class Form extends BaseForm
 		'textarea' => array(
 			'class' => 'rs-admin-field-textarea',
 			'cols' => 100,
-			'row' => 5
+			'rows' => 5
 		),
 		'input' => array(
 			'checkbox' => array(

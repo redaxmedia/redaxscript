@@ -29,7 +29,6 @@ class Config extends Module
 			'error' => 'rs-admin-is-error'
 		),
 		'url' => 'https://validator.nu/?doc=',
-		'parser' => 'html5',
 		'typeArray' => array(
 			'warning',
 			'error'

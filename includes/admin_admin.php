@@ -132,6 +132,7 @@ function admin_panel_list()
 	if ($system_access == 1)
 	{
 		$counter++;
+		$outputModule = null;
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
 		if ($modules_access == 1)
 		{
@@ -139,12 +140,11 @@ function admin_panel_list()
 			$moduleArray = Redaxscript\Hook::trigger('adminPanelModule');
 			if ($moduleArray)
 			{
-				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">';
 				foreach ($moduleArray as $key => $value)
 				{
-					$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . $value . '" class="rs-admin-link-panel">' . $key. '</a></li>';
+					$outputModule .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . $value . '" class="rs-admin-link-panel">' . $key. '</a></li>';
 				}
-				$output .= '</ul>';
+				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">' . $outputModule . '</ul>';
 			}
 			$output .= '</li>';
 		}
@@ -165,8 +165,9 @@ function admin_panel_list()
 
 	/* collect notification output */
 
-	$counter++;
-	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
+	$outputNotification = null;
+	$counterNotification = 0;
+	$moduleLastKey = null;
 	$notificationSystemArray = array();
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
@@ -195,25 +196,31 @@ function admin_panel_list()
 		{
 			foreach ($moduleValue as $value)
 			{
-				$output .= '<li>';
-				if ($lastKey !== $moduleKey)
+				$outputNotification .= '<li>';
+				if ($moduleLastKey !== $moduleKey)
 				{
-					$output .= '<h3 class="rs-admin-title-panel">' . $moduleKey . '</h3>';
+					$outputNotification .= '<h3 class="rs-admin-title-panel">' . $moduleKey . '</h3>';
 				}
-				$lastKey = $moduleKey;
+				$moduleLastKey = $moduleKey;
 				if (array_key_exists('text', $value) && array_key_exists('attr', $value))
 				{
-					$output .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
+					$outputNotification .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
 				}
 				else
 				{
-					$output .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
+					$outputNotification .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
 				}
-				$output .= '</li>';
+				$outputNotification .= '</li>';
+				$counterNotification++;
 			}
 		}
 	}
-	$output .= '</ul></li>';
+	if ($counterNotification)
+	{
+		$counter++;
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . ($counterNotification ? ' (' . $counterNotification . ')' : null) . '</span>';
+		$output .= '<ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">' . $outputNotification . '</ul></li>';
+	}
 
 	/* collect logout */
 

@@ -210,7 +210,9 @@
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
 /* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
+
 /* TODO: add styling for the <h3> headline  */
+/* TODO: add styling to show the amount of notifications - the current number needs no-wrap to prevent ugly breaks */
 
 /* @section 3.4 list notification */
 

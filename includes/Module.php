@@ -91,7 +91,7 @@ class Module
 	 * @since 3.0.0
 	 *
 	 * @param string $type type of the notification
-	 * @param string $message message of the notification
+	 * @param mixed $message message of the notification
 	 */
 
 	public function setNotification($type = null, $message = null)

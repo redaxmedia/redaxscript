@@ -42,9 +42,10 @@ class Validator extends Config
 	{
 		/* load result */
 
-		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
+		$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$urlXML = $urlBase . '&out=xml';
 		$reader = new Reader();
-		$result = $reader->loadXML($url)->getObject();
+		$result = $reader->loadXML($urlXML)->getObject();
 
 		/* process result */
 
@@ -53,7 +54,14 @@ class Validator extends Config
 			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
 			if (in_array($type, self::$_configArray['typeArray']))
 			{
-				self::setNotification($type, $value->message);
+				$message = array(
+					'text' => $value->message,
+					'attr' => array(
+						'href' => $urlBase,
+						'target' => '_blank'
+					)
+				);
+				self::setNotification($type, $message);
 			}
 		}
 		return self::getNotification();
