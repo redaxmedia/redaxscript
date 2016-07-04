@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\CallHome;
 use Redaxscript\Filter;
 use Redaxscript\Language;
 use Redaxscript\Module;
+use Redaxscript\Reader;
 use Redaxscript\Registry;
 
 /**
@@ -71,29 +72,27 @@ class CallHome extends Module
 
 	public static function adminPanelNotification()
 	{
-		$output = null;
+		$output = array();
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
+
+		/* load result */
+
 		$urlVersion = 'http://service.redaxscript.com/version/' . $version;
 		$urlNews = 'http://service.redaxscript.com/news/' . $version;
+		$reader = new Reader();
+		$resultVersion = $reader->loadJSON($urlVersion)->getArray();
+		$resultNews = $reader->loadJSON($urlNews)->getArray();
 
-		/* get contents */
+		/* merge as needed */
 
-		$contentsVersion = file_get_contents($urlVersion);
-		$contentsNews = file_get_contents($urlNews);
-
-		/* collect version output */
-
-		if ($contentsVersion)
+		if (is_array($resultVersion))
 		{
-			$output = $contentsVersion;
+			$output = array_merge_recursive($output, $resultVersion);
 		}
-
-		/* collect news output */
-
-		if ($contentsNews)
+		if (is_array($resultNews))
 		{
-			$output .= $contentsNews;
+			$output = array_merge_recursive($output, $resultNews);
 		}
 		return $output;
 	}

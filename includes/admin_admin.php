@@ -182,7 +182,7 @@ function admin_panel_list()
 	$notificationModuleArray = Redaxscript\Hook::trigger('adminPanelNotification');
 	if ($notificationModuleArray)
 	{
-		$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
+		$notificationArray = array_merge_recursive($notificationModuleArray, $notificationSystemArray);
 	}
 	else
 	{
@@ -194,7 +194,16 @@ function admin_panel_list()
 		{
 			foreach ($moduleValue as $value)
 			{
-				$output .= '<li><h3 class="rs-admin-title-panel">' . $moduleKey . '</h3><span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span></li>';
+				$output .= '<li><h3 class="rs-admin-title-panel">' . $moduleKey . '</h3>';
+				if (array_key_exists('text', $value) && array_key_exists('attr', $value))
+				{
+					$output .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
+				}
+				else
+				{
+					$output .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
+				}
+				$output .= '</li>';
 			}
 		}
 	}
