@@ -75,7 +75,7 @@ class InstallStatus extends ViewAbstract
 	}
 
 	/**
-	 * validate server requirements
+	 * validate error
 	 *
 	 * @since 3.0.0
 	 *
@@ -85,6 +85,8 @@ class InstallStatus extends ViewAbstract
 	/* TODO: why not protected? Rename it to validateError */
 	private function _validate()
 	{
+		/* TODO: No language (en.json etc.) used, hard coded text is not allowed */
+		/*TODO: Rename $errorArray to $messageArray */
 		$errorArray = array();
 
 		if (!$this->_registry->get('dbStatus'))
@@ -107,7 +109,7 @@ class InstallStatus extends ViewAbstract
 	}
 
 	/**
-	 * check for warnings
+	 * validate warning
 	 *
 	 * @since 3.0.0
 	 *
@@ -121,6 +123,7 @@ class InstallStatus extends ViewAbstract
 		$warningArray = array();
 
 		/* TODO: No language (en.json etc.) used, hard coded text is not allowed */
+		/* TODO: Rename $errorArray to $messageArray */
 		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 		{
 			$warningArray[] = 'Not running on linux!';
