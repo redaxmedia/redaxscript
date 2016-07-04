@@ -603,7 +603,7 @@
 
 /* @section 4.1 small min */
 
-@media screen and (min-width: 30em)
+@media (min-width: 30em)
 {
 	.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
 	{
@@ -1235,7 +1235,7 @@
 
 /* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 	{
@@ -1296,6 +1296,13 @@
 		top: 0;
 	}
 }
+
+@media (min-width: 50em) and (max-width: 79.999em)
+{
+	.rs-admin-list-panel-children-notification {
+		width: 200%;
+	}
+}
 /**
  * @tableofcontents
  *
@@ -1346,7 +1353,7 @@
 
 /* @section 4.1 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-admin-list-tab
 	{
@@ -1607,7 +1614,7 @@
 
 /* @section 1. medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-admin-item-control.rs-admin-item-future-posting
 	{
@@ -1617,7 +1624,7 @@
 
 /* @section 2. small max */
 
-@media screen and (max-width: 29.999em)
+@media (max-width: 29.999em)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
@@ -1643,7 +1650,7 @@
 
 /* @section 3. small min */
 
-@media screen and (min-width: 30em)
+@media (min-width: 30em)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
@@ -1663,7 +1670,7 @@
 
 /* @section 4. medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-admin-sidebar .rs-admin-description-dock
 	{

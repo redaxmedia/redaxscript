@@ -315,7 +315,7 @@ button, input, select, textarea
 
 /* @section 3.1 max width 30em */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-dialog, .rs-admin-component-dialog
 	{
@@ -369,7 +369,7 @@ button, input, select, textarea
 
 /* @section 2.1 min width 50rem */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-list-dropdown ul
 	{
@@ -423,7 +423,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 3.1 max width 30em */
 
-@media screen and (max-width: 29.999em)
+@media (max-width: 29.999em)
 {
 	a.rs-button-default
 	{
@@ -626,7 +626,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 3.1 max width 30em */
 
-@media screen and (max-width: 29.999em)
+@media (max-width: 29.999em)
 {
 	.rs-player
 	{
@@ -663,7 +663,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.1 max width 50rem */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 
 	/* @section 2.1.1 navigation toggle */
@@ -752,7 +752,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 2.2 min width 50rem */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 
 	/* @section 2.2.1 navigation trigger */
@@ -812,7 +812,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 4.1 max width 50em */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-list-tab
 	{
@@ -903,7 +903,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 3.1 max width 50em */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-has-tooltip:after
 	{

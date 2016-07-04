@@ -86,7 +86,7 @@
 
 /* @section 2. query */
 
-@media screen and (min-width: 30em)
+@media (min-width: 30em)
 {
 	.rs-install-title
 	{
@@ -103,7 +103,7 @@
 	}
 }
 
-@media screen and (min-width: 80em)
+@media (min-width: 80em)
 {
 	.rs-install-wrapper
 	{

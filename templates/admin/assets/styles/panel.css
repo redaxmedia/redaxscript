@@ -210,7 +210,7 @@
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
 /* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
-/* TODO: add styling for module's headline and the <code> block of the validator module */
+/* TODO: add styling for the <h3> headline  */
 
 /* @section 3.4 list notification */
 
@@ -329,5 +329,13 @@
 	{
 		left: 100%;
 		top: 0;
+	}
+}
+
+@media (--media-medium-min) and (--media-large-max)
+{
+	.rs-admin-list-panel-children-notification
+	{
+		width: 200%;
 	}
 }

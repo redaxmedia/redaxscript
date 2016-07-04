@@ -333,7 +333,7 @@ a
 
 /* @section 10.1 medium min */
 
-@media screen and (max-width: 29.999em)
+@media (max-width: 29.999em)
 {
 	.rs-text-powered-by
 	{
@@ -341,7 +341,7 @@ a
 	}
 }
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-description-website
 	{
@@ -458,7 +458,7 @@ a
 
 /* @section 6.2 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-wrapper-body
 	{
@@ -478,7 +478,7 @@ a
 
 /* @section 6.3 medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-wrapper
 	{
@@ -511,7 +511,7 @@ a
 
 /* @section 6.4 large min */
 
-@media screen and (min-width: 80em)
+@media (min-width: 80em)
 {
 	.rs-wrapper
 	{
@@ -715,7 +715,7 @@ a
 
 /* @section 9.2 medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-box-metadata
 	{
@@ -874,7 +874,7 @@ a
 
 /* @section 6.1 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-button-default
 	{
@@ -884,7 +884,7 @@ a
 
 /* @section 6.2 medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-button-default
 	{
@@ -1026,7 +1026,7 @@ a
 
 /* @section 5.1 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-field-default, .rs-field-select, .rs-field-textarea
 	{
@@ -1036,7 +1036,7 @@ a
 
 /* @section 5.2 medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-field-default, .rs-field-select, .rs-field-textarea
 	{
@@ -1358,7 +1358,7 @@ ul.rs-list-default li:before
 
 /* @section 7.1 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-list-header
 	{
@@ -1385,7 +1385,7 @@ ul.rs-list-default li:before
 
 /* @section 7.2 medium min */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-list-header li
 	{
@@ -1503,7 +1503,7 @@ ul.rs-list-default li:before
 
 /* @section 1.1 medium max */
 
-@media screen and (max-width: 49.999em)
+@media (max-width: 49.999em)
 {
 	.rs-fn-navigation
 	{
@@ -1664,7 +1664,7 @@ ul.rs-list-default li:before
 
 /* @section 3.1 medium */
 
-@media screen and (min-width: 50em)
+@media (min-width: 50em)
 {
 	.rs-title-teaser
 	{
@@ -1678,7 +1678,7 @@ ul.rs-list-default li:before
 	}
 }
 
-@media screen and (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+@media (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
 {
 	.rs-component-teaser
 	{
@@ -1688,7 +1688,7 @@ ul.rs-list-default li:before
 
 /* @section 3.2 large */
 
-@media screen and (min-width: 80em)
+@media (min-width: 80em)
 {
 	.rs-title-teaser
 	{
@@ -1696,7 +1696,7 @@ ul.rs-list-default li:before
 	}
 }
 
-@media screen and (min-width: 80em), screen and (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 50em) and (min-resolution: 192dpi)
+@media (min-width: 80em), (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 50em) and (min-resolution: 192dpi)
 {
 	.rs-component-teaser
 	{
@@ -1706,7 +1706,7 @@ ul.rs-list-default li:before
 
 /* @section 3.3 ultra */
 
-@media screen and (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 80em) and (min-resolution: 192dpi)
+@media (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 80em) and (min-resolution: 192dpi)
 {
 	.rs-component-teaser
 	{
@@ -1746,7 +1746,7 @@ ul.rs-list-default li:before
 
 /* @section 2.1 small min */
 
-@media screen and (min-width: 30em)
+@media (min-width: 30em)
 {
 	.rs-tooltip-alternative:after
 	{
