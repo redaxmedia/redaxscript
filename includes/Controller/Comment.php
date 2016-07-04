@@ -188,7 +188,7 @@ class Comment extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $createArray array of the create
+	 * @param array $createArray array of the create
 	 *
 	 * @return boolean
 	 */

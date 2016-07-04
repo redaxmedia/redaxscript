@@ -182,7 +182,7 @@ function admin_panel_list()
 	$notificationModuleArray = Redaxscript\Hook::trigger('adminPanelNotification');
 	if ($notificationModuleArray)
 	{
-		$notificationArray = array_merge_recursive($notificationModuleArray, $notificationSystemArray);
+		$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
 	}
 	else
 	{

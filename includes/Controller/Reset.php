@@ -167,7 +167,7 @@ class Reset extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $resetArray array of the reset
+	 * @param array $resetArray array of the reset
 	 *
 	 * @return boolean
 	 */

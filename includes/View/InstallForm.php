@@ -26,6 +26,7 @@ class InstallForm extends ViewAbstract
 	 * @return string
 	 */
 
+	/*TODO: remove the optionArray and just use the post data from the request object $this->request-get('{name}') */
 	public function render($optionArray = array())
 	{
 		$output = Hook::trigger('installFormStart');

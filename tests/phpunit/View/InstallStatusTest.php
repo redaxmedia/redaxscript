@@ -7,16 +7,16 @@ use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
 /**
- * InstallNoteTest
+ * InstallStatusTest
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @category Tests
- * @author Balázs Szilágyi
+ * @author Henry Ruhs
  */
 
-class InstallNoteTest extends TestCaseAbstract
+class InstallStatusTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class
@@ -25,6 +25,7 @@ class InstallNoteTest extends TestCaseAbstract
 	 */
 
 	protected $_registry;
+
 	/**
 	 * instance of the language class
 	 *
@@ -55,7 +56,7 @@ class InstallNoteTest extends TestCaseAbstract
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/install_note_render.json');
+		return $this->getProvider('tests/provider/View/install_status_render.json');
 	}
 
 	/**
@@ -63,26 +64,10 @@ class InstallNoteTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $optionArray
-	 * @param string $expect
-	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($optionArray = array(), $expect = null)
+	public function testRender()
 	{
-		/* setup */
-
-		$installNoteForm = new View\InstallNote($this->_registry, $this->_language);
-		chmod('./config.php', $optionArray['configPermission']);
-
-		/* actual */
-
-		$actual = $installNoteForm->render();
-
-		/* compare */
-
-		$expect; //does not match actual
-		//$this->assertEquals($expect, $actual);
 	}
 }

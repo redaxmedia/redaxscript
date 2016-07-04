@@ -22,9 +22,10 @@ use Redaxscript\View;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
-
+/*TODO: I would empty the process method and start from scratch via TDD - refactoring it is hopeless at that point */
 class Install extends ControllerAbstract
 {
+	/* TODO: Remove this bad coding style, use dependency injection instead */
 	/**
 	 * instance of the config
 	 *
@@ -53,7 +54,7 @@ class Install extends ControllerAbstract
 		// if redaxscript has been installed already, redirect the use to the home page
 		if (Db::getStatus() === 2) // 1 === db connect, 2 === tables installed
 		{
-			// without the extra meta tag, it will redirect to root/?p=
+			/* TODO: Remove this redirect, I want to view the installForm even if the DB ist ready */
 			return $this->_success(array(
 				'title' => $this->_language->get('installation_completed')
 			)) . '<meta http-equiv="refresh" content="2; url="' . $this->_registry->get('root') . ' />';
@@ -62,7 +63,7 @@ class Install extends ControllerAbstract
 		// config file is written, but not the db
 		if (Db::getStatus() === 1)
 		{
-			// get the saved post data from session
+			// @TODO: remove the $_SESSION and raw HTML meta redirects
 			if (!$_SESSION['install'])
 			{
 				$messageArray[] = $this->_language->get('something_wrong');
@@ -73,6 +74,7 @@ class Install extends ControllerAbstract
 
 				if ($this->_install($postArray))
 				{
+					/*TODO: key should be called message and not description */
 					return $this->_error(array(
 						'description' => $this->_language->get('something_wrong'),
 						'redirect' => '/'
@@ -86,6 +88,7 @@ class Install extends ControllerAbstract
 				}
 				else
 				{
+					/*TODO: key should be called message and not description */
 					return $this->_error(array(
 						'description' => $this->_language->get('something_wrong') . " - couldn't send Email"
 					)) . '<meta http-equiv="refresh" content="0; />';
@@ -96,7 +99,7 @@ class Install extends ControllerAbstract
 			{
 				return '<meta http-equiv="refresh" content="0; url="' . $this->_registry->get('root') . ' />';
 			}
-
+			/*TODO: key should be called message and not description */
 			return $this->_error(array(
 				'description' => $messageArray,
 				'redirect' => '/'
@@ -131,12 +134,13 @@ class Install extends ControllerAbstract
 			));
 		}
 
-		$installNote = new View\InstallNote($this->_registry, $this->_language);
+		/* TODO: Move installNote / installStatus rendering to the router.php */
+		$installNote = new View\InstallStatus($this->_registry, $this->_language);
 		return $installNote->render() . $this->_installForm($postArray);
 	}
 
 	/**
-	 * validate the postArray
+	 * validate
 	 *
 	 * @since 3.0.0
 	 *
@@ -153,7 +157,7 @@ class Install extends ControllerAbstract
 		/* validate post */
 
 		$messageArray = array();
-
+		/*TODO: mixed usage of dType vs dbType etc. */
 		if ($postArray['dType'] != 'sqlite' && !$postArray['name'])
 		{
 			$messageArray[] = $this->_language->get('name_empty');
@@ -187,15 +191,16 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * send login information
+	 * send the mail
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $mailArray
+	 * @param array $mailArray
 	 *
-	 * @return array
+	 * @return boolean
 	 */
 
+	/* TODO: Why private again? */
 	private function _mail($mailArray = array())
 	{
 		$mailer = new Mailer();
@@ -233,26 +238,27 @@ class Install extends ControllerAbstract
 	}
 
 	/**
-	 * insert user into database via installer class
+	 * install the database
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $postArray
+	 * @param array $installArray
 	 *
 	 * @return array
 	 */
 
-	private function _install($postArray)
+	/* TODO: Why private again? I think this method should also handle the reinit of the Db class to use the latest Config instance */
+	private function _install($installArray = array())
 	{
 		$installer = new Installer($this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();
 		$installer->insertData(array(
-			'adminName' => $postArray['name'],
-			'adminUser' => $postArray['user'],
-			'adminPassword' => $postArray['password'],
-			'adminEmail' => $postArray['email']
+			'adminName' => $installArray['name'],
+			'adminUser' => $installArray['user'],
+			'adminPassword' => $installArray['password'],
+			'adminEmail' => $installArray['email']
 		));
 	}
 
@@ -283,11 +289,12 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $postArray
+	 * @param array $postArray
 	 *
 	 * @return array
 	 */
 
+	/*TODO: Why private again? that whole function is not needed because the router does the job of displaying a form */
 	private function _installForm($postArray = array())
 	{
 		$installForm = new View\InstallForm($this->_registry, $this->_language);
@@ -313,6 +320,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
+	/* TODO: Why private again? Move this to the top of the process method, as this is the common way we did it in each controller */
 	private function _processPost()
 	{
 		$specialFilter = new Filter\Special();
@@ -354,7 +362,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $errorArray
+	 * @param array $errorArray
 	 *
 	 * @return string
 	 */

@@ -147,7 +147,7 @@ class Hook
 
 				if (is_array($temp))
 				{
-					$output = array_merge_recursive(is_array($output) ? $output : array(), $temp);
+					$output = array_merge(is_array($output) ? $output : array(), $temp);
 				}
 				else
 				{

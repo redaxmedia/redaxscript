@@ -181,7 +181,7 @@ class Register extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param $createArray
+	 * @param array $createArray
 	 *
 	 * @return boolean
 	 */

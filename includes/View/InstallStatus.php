@@ -6,7 +6,7 @@ use Redaxscript\Hook;
 use Redaxscript\Messenger;
 
 /**
- * children class to generate the install note
+ * children class to create the install status
  *
  * @since 3.0.0
  *
@@ -16,7 +16,8 @@ use Redaxscript\Messenger;
  * @author Balázs Szilágyi
  */
 
-class InstallNote extends ViewAbstract
+/*TODO: the whole class does not work for unit testing, i would uncomment everything and start it from scratch via TDD */
+class InstallStatus extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -28,23 +29,21 @@ class InstallNote extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('installNoteStart');
-
+		$output = null;
+		/* TODO: Wrong coding style ... follow the other controllers: $messageArray = $this->_validate(); */
 		if ($errorArray = $this->_validate())
 		{
-			$output .= $this->_errors($errorArray);
+			$output .= $this->_error($errorArray);
 		}
 		if ($warningArray = $this->_check())
 		{
-			$output .= $this->_warnings($warningArray);
+			$output .= $this->_warning($warningArray);
 		}
-
-		$output .= Hook::trigger('installNoteEnd');
 		return $output;
 	}
 
 	/**
-	 * error messenger
+	 * show the error
 	 *
 	 * @since 3.0.0
 	 *
@@ -52,15 +51,15 @@ class InstallNote extends ViewAbstract
 	 *
 	 * @return array
 	 */
-
-	private function _errors($errorArray = array())
+	/* TODO: Why private again? */
+	private function _error($errorArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray);
 	}
 
 	/**
-	 * warning messenger
+	 * show the warning
 	 *
 	 * @since 3.0.0
 	 *
@@ -68,8 +67,8 @@ class InstallNote extends ViewAbstract
 	 *
 	 * @return array
 	 */
-
-	private function _warnings($warningArray = array())
+	/* TODO: Why private again? */
+	private function _warning($warningArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->warning($warningArray);
@@ -83,6 +82,7 @@ class InstallNote extends ViewAbstract
 	 * @return array
 	 */
 
+	/* TODO: why not protected? Rename it to validateError */
 	private function _validate()
 	{
 		$errorArray = array();
@@ -114,14 +114,16 @@ class InstallNote extends ViewAbstract
 	 * @return array
 	 */
 
+	/* TODO: why not protected? Rename it to validateWarning */
 	private function _check()
 	{
 		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
 		$warningArray = array();
 
+		/* TODO: No language (en.json etc.) used, hard coded text is not allowed */
 		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
 		{
-			$warningArray[] = 'Not running on linux!'; //$this->_language->get('server_not_linux')
+			$warningArray[] = 'Not running on linux!';
 		}
 		if (!file_exists('.htaccess'))
 		{
