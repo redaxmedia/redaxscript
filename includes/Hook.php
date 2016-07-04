@@ -124,6 +124,8 @@ class Hook
 
 	public static function trigger($event = null, $parameterArray = array())
 	{
+		$output = null;
+
 		/* trigger event */
 
 		foreach (self::$_moduleArray as $module)
@@ -136,11 +138,23 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				return call_user_func_array(array(
+				$temp = call_user_func_array(array(
 					$object,
 					$event
 				), $parameterArray);
+
+				/* merge or concat */
+
+				if (is_array($temp))
+				{
+					$output = array_merge(is_array($output) ? $output : array(), $temp);
+				}
+				else
+				{
+					$output .= $temp;
+				}
 			}
 		}
+		return $output;
 	}
 }

@@ -40,19 +40,6 @@ class Validator extends Config
 
 	public static function adminPanelNotification()
 	{
-		$output = null;
-
-		/* html elements */
-
-		$textElement = new Html\Element();
-		$textElement->init('span', array(
-			'class' => self::$_configArray['className']['text']
-		));
-		$codeElement = new Html\Element();
-		$codeElement->init('code', array(
-			'class' => self::$_configArray['className']['code']
-		));
-
 		/* load result */
 
 		$url = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute') . '&parser=' . self::$_configArray['parser'] . '&out=xml';
@@ -66,18 +53,9 @@ class Validator extends Config
 			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
 			if (in_array($type, self::$_configArray['typeArray']))
 			{
-				$output .= '<li>';
-				$output .= '<h3>' . self::$_moduleArray['name'] . '</h3>';
-				$output .= $textElement
-					->copy()
-					->addClass(self::$_configArray['className'][$type])
-					->text($value->message);
-				$output .= $codeElement
-					->copy()
-					->text($value->extract);
-				$output .= '</li>';
+				self::setNotification($type, $value->message);
 			}
 		}
-		return $output;
+		return self::getNotification();
 	}
 }

@@ -180,7 +180,14 @@ function admin_panel_list()
 		);
 	}
 	$notificationModuleArray = Redaxscript\Hook::trigger('adminPanelNotification');
-	$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
+	if ($notificationModuleArray)
+	{
+		$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
+	}
+	else
+	{
+		$notificationArray = $notificationSystemArray;
+	}
 	foreach ($notificationArray as $typeKey => $typeValue)
 	{
 		foreach ($typeValue as $moduleKey => $moduleValue)
