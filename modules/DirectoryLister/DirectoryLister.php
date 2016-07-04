@@ -142,6 +142,7 @@ class DirectoryLister extends Config
 
 			/* process directory */
 
+			/* TODO: Extract the foreach to a renderItem method */
 			foreach ($listerDirectoryArray as $key => $value)
 			{
 				$path = $directory . '/' . $value;

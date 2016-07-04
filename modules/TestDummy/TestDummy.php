@@ -44,4 +44,5 @@ class TestDummy extends Module
 	{
 		return $firstNumber + $secondNumber;
 	}
+	/* TODO: add notification stuff for unit testing */
 }

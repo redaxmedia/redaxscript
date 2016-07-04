@@ -74,6 +74,8 @@ class Gallery extends Config
 			'class' => self::$_configArray['className']['list']
 		));
 
+		/* TODO: add panel notification via is_dir() */
+
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
@@ -106,6 +108,7 @@ class Gallery extends Config
 		{
 			/* process directory */
 
+			/* TODO: Extract the foreach to a renderItem method */
 			foreach ($galleryDirectoryArray as $key => $value)
 			{
 				$imagePath = $directory . '/' . $value;
@@ -225,6 +228,7 @@ class Gallery extends Config
 
 		/* original image */
 
+		/* TODO: Extract the dimension calc to method */
 		$originalArray['dimensions'] = getimagesize($imagePath);
 		$originalArray['height'] = $originalArray['dimensions'][1];
 		$originalArray['width'] = $originalArray['dimensions'][0];
@@ -242,7 +246,7 @@ class Gallery extends Config
 		$optionArray['width'] = round($optionArray['scaling'] / 100 * $originalArray['width']);
 
 		/* create thumb directory */
-
+		/* TODO: add panel notification once thumb could not be created */
 		$thumbDirectory = new Directory();
 		$thumbDirectory->init($directory);
 		$thumbDirectory->create(self::$_configArray['thumbDirectory']);
@@ -253,7 +257,7 @@ class Gallery extends Config
 		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $optionArray['width'], $optionArray['height'], $originalArray['width'], $originalArray['height']);
 		imagejpeg($thumb, $thumbDirectory, $optionArray['quality']);
 
-		/* destroy images */
+		/* destroy image */
 
 		imagedestroy($thumb);
 		imagedestroy($image);

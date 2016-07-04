@@ -80,7 +80,7 @@ class FeedReader extends Config
 		$result = $result->entry ? $result->entry : $result->channel->item;
 
 		/* process result */
-
+		/* TODO: panel notification if the result is empty */
 		foreach ($result as $value)
 		{
 			if ($counter++ < $optionArray['limit'])

@@ -52,11 +52,11 @@ class ShareThis extends Config
 
 	public static function articleEnd()
 	{
+		/* TODO: test if the module is being echoed */
 		if (Registry::get('lastTable') === 'articles')
 		{
 			$url = Registry::get('root') . Registry::get('parameterRoute') . Registry::get('fullRoute');
-			$output = self::render($url);
-			return $output;
+			return self::render($url);
 		}
 	}
 
