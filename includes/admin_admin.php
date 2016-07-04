@@ -135,15 +135,16 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
 		if ($modules_access == 1)
 		{
-			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a></li>';
-
-			/* collect modules list */
-
-			/* @TODO: render module listing from array like notification does */
-			$admin_panel_list_modules = Redaxscript\Hook::trigger('adminPanelModule');
-			if ($admin_panel_list_modules)
+			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a>';
+			$moduleArray = Redaxscript\Hook::trigger('adminPanelModule');
+			if ($moduleArray)
 			{
-				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">' . $admin_panel_list_modules . '</ul>';
+				$output .= '<ul class="rs-admin-js-list-panel-children rs-admin-list-panel-children">';
+				foreach ($moduleArray as $key => $value)
+				{
+					$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . $value . '" class="rs-admin-link-panel">' . $key. '</a></li>';
+				}
+				$output .= '</ul>';
 			}
 			$output .= '</li>';
 		}
@@ -162,7 +163,7 @@ function admin_panel_list()
 		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel">' . Redaxscript\Language::get('profile') . '</a></li>';
 	}
 
-	/* collect notes output */
+	/* collect notification output */
 
 	$counter++;
 	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
