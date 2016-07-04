@@ -13,7 +13,7 @@ use Redaxscript\Reader;
  * @category Modules
  * @author Henry Ruhs
  */
-/* TODO: add admin notification */
+
 class FeedReader extends Config
 {
 	/**

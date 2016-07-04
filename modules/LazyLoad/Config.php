@@ -23,7 +23,7 @@ class Config extends Module
 
 	protected static $_configArray = array(
 		'className' => array(
-			'image' => 'rs-js-lazy-load rs-lazy-load',
+			'image' => 'rs-js-lazy-load rs-image-default',
 			'placeholder' => 'rs-placeholder-lazy-load'
 		),
 		'placeholder' => 'modules/LazyLoad/images/placeholder.png',

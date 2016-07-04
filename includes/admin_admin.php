@@ -167,6 +167,7 @@ function admin_panel_list()
 
 	$counter++;
 	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">';
+	$notificationSystemArray = array();
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
 		$notificationSystemArray = array(

@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\LazyLoad;
 
 use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
@@ -13,7 +14,7 @@ use Redaxscript\Registry;
  * @category Modules
  * @author Henry Ruhs
  */
-/* TODO: add admin notification */
+
 class LazyLoad extends Config
 {
 	/**
@@ -45,49 +46,63 @@ class LazyLoad extends Config
 	}
 
 	/**
+	 * adminPanelNotification
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function adminPanelNotification()
+	{
+		return self::getNotification();
+	}
+
+	/**
 	 * render
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param mixed $src
+	 * @param mixed $file
 	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($src = null, $optionArray = array())
+	public static function render($file = null, $optionArray = array())
 	{
 		$output = null;
 
 		/* device related images */
 
-		if (is_array($src))
+		if (is_array($file))
 		{
 			/* process source */
 
-			foreach ($src as $key => $value)
+			foreach ($file as $key => $value)
 			{
 				if (in_array($key, self::$_configArray['device']) && Registry::get('my' . ucfirst($key)))
 				{
-					$src = $value;
+					$file = $value;
 				}
 			}
 		}
 
 		/* collect output */
 
-		if (file_exists($src))
+		if (file_exists($file))
 		{
 			$imageElement = new Html\Element();
 			$imageElement->init('img', array(
 				'alt' => $optionArray['alt'],
-				'class' => self::$_configArray['className']['image'] . ' ' . $optionArray['className'],
+				'class' => self::$_configArray['className']['image'],
 				'src' => self::$_configArray['placeholder']
 			));
 
-			/* collect output */
+			/* collect image output */
 
-			$output = $imageElement->copy()->attr('data-src', $src);
+			$output = $imageElement
+				->copy()
+				->addClass($optionArray['className'])
+				->attr('data-src', $file);
 
 			/* placeholder */
 
@@ -95,7 +110,7 @@ class LazyLoad extends Config
 			{
 				/* calculate image ratio */
 
-				$imageDimensions = getimagesize($src);
+				$imageDimensions = getimagesize($file);
 				$imageRatio = $imageDimensions[1] / $imageDimensions[0] * 100;
 
 				/* placeholder */
@@ -114,6 +129,13 @@ class LazyLoad extends Config
 			/* noscript fallback */
 
 			$output .= '<noscript>' . $imageElement . '</noscript>';
+		}
+
+		/* else handle notification */
+
+		else
+		{
+			self::setNotification('error', Language::get('file_not_found') . Language::get('colon') . ' ' . $file . Language::get('point'));
 		}
 		return $output;
 	}

@@ -20,8 +20,6 @@ use Redaxscript\Messenger as Messenger;
  * @author Henry Ruhs
  */
 
-/*TODO: add admin notification */
-
 class Demo extends Config
 {
 	/**
@@ -81,6 +79,26 @@ class Demo extends Config
 	}
 
 	/**
+	 * adminPanelNotification
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function adminPanelNotification()
+	{
+		$auth = new Auth(Request::getInstance());
+		$auth->init();
+
+		/* demo user */
+
+		if ($auth->getUser('user') === 'demo')
+		{
+			self::setNotification('success', Language::get('logged_in') . Language::get('point'));
+		}
+		return self::getNotification();
+	}
+
+	/**
 	 * process
 	 *
 	 * @since 3.0.0
@@ -102,9 +120,9 @@ class Demo extends Config
 
 		/* set user */
 
-		$auth->setUser('myName', 'Demo');
-		$auth->setUser('myUser', 'demo');
-		$auth->setUser('myEmail', 'demo@localhost');
+		$auth->setUser('name', 'Demo');
+		$auth->setUser('user', 'demo');
+		$auth->setUser('email', 'demo@localhost');
 
 		/* set permission */
 
