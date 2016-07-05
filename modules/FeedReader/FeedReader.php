@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\FeedReader;
 
 use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Reader;
 
 /**
@@ -43,6 +44,17 @@ class FeedReader extends Config
 	}
 
 	/**
+	 * adminPanelNotification
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function adminPanelNotification()
+	{
+		return self::getNotification();
+	}
+
+	/**
 	 * render
 	 *
 	 * @since 3.0.0
@@ -80,19 +92,29 @@ class FeedReader extends Config
 		$result = $result->entry ? $result->entry : $result->channel->item;
 
 		/* process result */
-		/* TODO: panel notification if the result is empty */
-		foreach ($result as $value)
+
+		if ($result)
 		{
-			if ($counter++ < $optionArray['limit'])
+			foreach ($result as $value)
 			{
-				$linkElement
-						->attr('href', $value->link['href'] ? $value->link['href'] : $value->link)
-						->text($value->title);
+				if ($counter++ < $optionArray['limit'])
+				{
+					$linkElement
+							->attr('href', $value->link->attributes()->href ? $value->link->attributes()->href : $value->link)
+							->text($value->title);
 
-				/* collect output */
+					/* collect output */
 
-				$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? $value->summary : $value->description);
+					$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? $value->summary : $value->description);
+				}
 			}
+		}
+
+		/* else handle notification */
+
+		else
+		{
+			self::setNotification('error', Language::get('url_incorrect') . Language::get('point'));
 		}
 		return $output;
 	}
