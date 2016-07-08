@@ -194,6 +194,8 @@
 	width: 2.75em;
 }
 
+/* TODO: adjust the font-size and position (to the right) of the plus icon, same font-size like the arrows in mobile */
+
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
@@ -270,6 +272,15 @@
 /* @section 5.1 medium min */
 
 /* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
+
+/* TODO: fix too long text in panel like https://snag.gy/AHCThL.jpg
+
+.rs-admin-list-panel a, .rs-admin-list-panel span
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+*/
 
 @media (--media-medium-min)
 {
