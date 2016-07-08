@@ -225,6 +225,8 @@
 	padding: 0.5em 0.75em 0.5em 3em;
 	position: relative;
 
+	/* TODO: the notification icons look a bit too large compared to the rest - try font-size: 0.875em */
+
 	&:before
 	{
 		background: #c56161;
