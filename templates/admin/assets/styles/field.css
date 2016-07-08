@@ -50,7 +50,7 @@
 .rs-admin-field-select:focus,
 .rs-admin-field-textarea:focus
 {
-	background: gray(226);
+	background: gray(255);
 	border-color: gray(171);
 }
 
