@@ -71,7 +71,7 @@
 
 /* TODO: let's get rid of the long selectors and just use a class .rs-admin-text-contents:before */
 
-.rs-admin-item-panel.rs-admin-item-contents > span:before
+.rs-admin-item-panel.rs-admin-item-content > span:before
 {
 	content: 'i';
 }

@@ -477,6 +477,9 @@
 
 /* @section 1. link dock admin */
 
+/* TODO: add a dock.css to the default template to fix too long text issues like https://snag.gy/zGZ6Lt.jpg */
+/* TODO: optional: icon only view with width: 33% / flexbox instead of width: 3em https://snag.gy/hkD8W4.jpg */
+
 .rs-admin-link-dock
 {
 	float: left;
@@ -526,6 +529,7 @@
 {
 	content: 'r';
 }
+
 /**
  * @tableofcontents
  *
@@ -572,7 +576,7 @@
 
 .rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
 {
-	background: rgb(226, 226, 226);
+	background: rgb(255, 255, 255);
 	border-color: rgb(171, 171, 171);
 }
 
@@ -610,6 +614,7 @@
 		width: 60%;
 	}
 }
+
 /**
  * @tableofcontents
  *
@@ -1039,7 +1044,7 @@
 
 /* TODO: let's get rid of the long selectors and just use a class .rs-admin-text-contents:before */
 
-.rs-admin-item-panel.rs-admin-item-contents > span:before
+.rs-admin-item-panel.rs-admin-item-content > span:before
 {
 	content: 'i';
 }
@@ -1164,6 +1169,8 @@
 	width: 2.75em;
 }
 
+/* TODO: adjust the font-size and position (to the right) of the plus icon, same font-size like the arrows in mobile */
+
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: 'f';
@@ -1180,7 +1187,9 @@
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
 /* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
-/* TODO: add styling for module's headline and the <code> block of the validator module */
+
+/* TODO: add styling for the <h3> headline  */
+/* TODO: add styling to show the amount of notifications - the current number needs no-wrap to prevent ugly breaks */
 
 /* @section 3.4 list notification */
 
@@ -1189,6 +1198,8 @@
 	line-height: 1.75em;
 	padding: 0.5em 0.75em 0.5em 3em;
 	position: relative
+
+	/* TODO: the notification icons look a bit too large compared to the rest - try font-size: 0.875em */
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span:before
@@ -1234,6 +1245,15 @@
 /* @section 5.1 medium min */
 
 /* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
+
+/* TODO: fix too long text in panel like https://snag.gy/AHCThL.jpg
+
+.rs-admin-list-panel a, .rs-admin-list-panel span
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+*/
 
 @media (min-width: 50em)
 {
@@ -1299,10 +1319,12 @@
 
 @media (min-width: 50em) and (max-width: 79.999em)
 {
-	.rs-admin-list-panel-children-notification {
+	.rs-admin-list-panel-children-notification
+	{
 		width: 200%;
 	}
 }
+
 /**
  * @tableofcontents
  *

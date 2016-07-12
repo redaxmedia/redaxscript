@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-contents"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-content"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories" class="rs-admin-link-panel' . (Redaxscript\Registry::get('categoriesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('categories') . '</a>';
@@ -169,6 +169,13 @@ function admin_panel_list()
 	$counterNotification = 0;
 	$moduleLastKey = null;
 	$notificationSystemArray = array();
+	$notificationHasArray = array();
+	$orderArray = array(
+		'success',
+		'info',
+		'warning',
+		'error'
+	);
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
 		$notificationSystemArray = array(
@@ -208,6 +215,7 @@ function admin_panel_list()
 				}
 				else
 				{
+					$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
 					$outputNotification .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
 				}
 				$outputNotification .= '</li>';
@@ -215,10 +223,14 @@ function admin_panel_list()
 			}
 		}
 	}
+	uksort($notificationHasArray, function($key1, $key2) use ($orderArray)
+	{
+		return (array_search($key1, $orderArray) > array_search($key2, $orderArray));
+	});
 	if ($counterNotification)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification"><span>' . Redaxscript\Language::get('notification') . ($counterNotification ? ' (' . $counterNotification . ')' : null) . '</span>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification ' . implode(' ', $notificationHasArray) . '"><span>' . Redaxscript\Language::get('notifications') . ($counterNotification ? '<small class="rs-admin-text-notification-counter">' . $counterNotification . '</small>' : null) . '</span>';
 		$output .= '<ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">' . $outputNotification . '</ul></li>';
 	}
 
