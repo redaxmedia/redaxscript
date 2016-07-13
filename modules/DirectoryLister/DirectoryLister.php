@@ -98,9 +98,10 @@ class DirectoryLister extends Config
 		if ($directoryQueryArray[0] === $directory && $directory !== $directoryQuery)
 		{
 			$pathFilter = new Filter\Path();
+			$rootDirectory = $directory;
 			$directory = $pathFilter->sanitize($directoryQuery);
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
-			$outputItem .= self::_renderParent($parentDirectory, $optionArray);
+			$outputItem .= self::_renderParent($rootDirectory, $parentDirectory, $optionArray);
 		}
 
 		/* directory */
@@ -127,15 +128,17 @@ class DirectoryLister extends Config
 	}
 
 	/**
+	 * @param string $rootDirectory
 	 * @param string $parentDirectory
 	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _renderParent($parentDirectory = null, $optionArray = array())
+	protected static function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = array())
 	{
 		$outputItem = null;
+		$queryString = $rootDirectory !== $parentDirectory ? '&d=' . $parentDirectory : null;
 
 		/* html elements */
 
@@ -149,7 +152,7 @@ class DirectoryLister extends Config
 		$outputItem .= '<li>';
 		$outputItem .= $linkElement
 			->attr(array(
-				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $optionArray['hash'],
+				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . $queryString. $optionArray['hash'],
 				'title' => Language::get('directory_parent', '_directory_lister')
 			))
 			->addClass(self::$_configArray['className']['types']['directoryParent'])
