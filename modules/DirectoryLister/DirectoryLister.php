@@ -76,127 +76,38 @@ class DirectoryLister extends Config
 
 		/* html elements */
 
-		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
-			'class' => self::$_configArray['className']['link']
-		));
-		$textSizeElement = new Html\Element();
-		$textSizeElement->init('span', array(
-			'class' => self::$_configArray['className']['textSize']
-		));
-		$textDateElement = new Html\Element();
-		$textDateElement->init('span', array(
-			'class' => self::$_configArray['className']['textDate']
-		));
 		$listElement = new Html\Element();
 		$listElement->init('ul', array(
 			'class' => self::$_configArray['className']['list']
 		));
 
-		/* hash option */
+		/* handle option */
 
 		if ($optionArray['hash'])
 		{
-			$hashString = '#' . $optionArray['hash'];
+			$optionArray['hash'] = '#' . $optionArray['hash'];
 		}
 
 		/* handle query */
 
 		$directoryQuery = Request::getQuery('d');
-		if ($directoryQuery && $directory !== $directoryQuery)
+		$directoryQueryArray = explode('/', $directoryQuery);
+
+		/* parent directory */
+
+		if ($directoryQueryArray[0] === $directory && $directory !== $directoryQuery)
 		{
 			$pathFilter = new Filter\Path();
 			$directory = $pathFilter->sanitize($directoryQuery);
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
+			$outputItem .= self::_renderParent($parentDirectory, $optionArray);
 		}
 
 		/* directory */
 
 		if (is_dir($directory))
 		{
-			/* lister directory */
-
-			$listerDirectory = new Directory();
-			$listerDirectory->init($directory);
-			$listerDirectoryArray = $listerDirectory->getArray();
-
-			/* date format */
-
-			$dateFormat = Db::getSetting('date');
-
-			/* parent directory */
-
-			if (is_dir($parentDirectory))
-			{
-				$outputItem .= '<li>';
-				$outputItem .= $linkElement
-					->copy()
-					->attr(array(
-						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $hashString,
-						'title' => Language::get('directory_parent', '_directory_lister')
-					))
-					->addClass(self::$_configArray['className']['types']['directoryParent'])
-					->text(Language::get('directory_parent', '_directory_lister'));
-				$outputItem .= '</li>';
-			}
-
-			/* process directory */
-
-			/* TODO: Extract the foreach to a renderItem method */
-			foreach ($listerDirectoryArray as $key => $value)
-			{
-				$path = $directory . '/' . $value;
-				$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
-				$text = self::_replace($value, $fileExtension, $optionArray['replace']);
-				$isDir = is_dir($path);
-				$isFile = is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']);
-
-				/* handle directory */
-
-				if ($isDir || $isFile)
-				{
-					$outputItem .= '<li>';
-				}
-				if ($isDir)
-				{
-					$outputItem .= $linkElement
-						->copy()
-						->attr(array(
-							'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $hashString,
-							'title' => Language::get('directory', '_directory_lister')
-						))
-						->addClass(self::$_configArray['className']['types']['directory'])
-						->text($text);
-					$outputItem .= $textSizeElement->copy();
-				}
-
-				/* else handle file */
-
-				else if ($isFile)
-				{
-					$fileType = self::$_configArray['extension'][$fileExtension];
-					$outputItem .= $linkElement
-						->copy()
-						->attr(array(
-							'href' => Registry::get('root') . '/' . $path,
-							'target' => '_blank',
-							'title' => Language::get('file', '_directory_lister')
-						))
-						->addClass(self::$_configArray['className']['types'][$fileType])
-						->text($text);
-					$outputItem .= $textSizeElement
-						->copy()
-						->attr('data-unit', self::$_configArray['size']['unit'])
-						->html(ceil(filesize($path) / self::$_configArray['size']['divider']));
-				}
-				if ($isDir || $isFile)
-				{
-					$outputItem .= $textDateElement
-						->copy()
-						->html(date($dateFormat, filectime($path)));
-					$outputItem .= '</li>';
-				}
-			}
+			$outputItem .= self::_renderItem($directory, $optionArray);
 
 			/* collect list output */
 
@@ -213,6 +124,131 @@ class DirectoryLister extends Config
 			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point'));
 		}
 		return $output;
+	}
+
+	/**
+	 * @param string $parentDirectory
+	 * @param array $optionArray
+	 *
+	 * @return string
+	 */
+
+	protected static function _renderParent($parentDirectory = null, $optionArray = array())
+	{
+		$outputItem = null;
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
+			'class' => self::$_configArray['className']['link']
+		));
+
+		/* collect item output */
+
+		$outputItem .= '<li>';
+		$outputItem .= $linkElement
+			->attr(array(
+				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $parentDirectory . $optionArray['hash'],
+				'title' => Language::get('directory_parent', '_directory_lister')
+			))
+			->addClass(self::$_configArray['className']['types']['directoryParent'])
+			->text(Language::get('directory_parent', '_directory_lister'));
+		$outputItem .= '</li>';
+		return $outputItem;
+	}
+
+	/**
+	 * @param string $directory
+	 * @param array $optionArray
+	 *
+	 * @return string
+	 */
+
+	protected static function _renderItem($directory = null, $optionArray = array())
+	{
+		$outputItem = null;
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a', array(
+			'class' => self::$_configArray['className']['link']
+		));
+		$textSizeElement = new Html\Element();
+		$textSizeElement->init('span', array(
+			'class' => self::$_configArray['className']['textSize']
+		));
+		$textDateElement = new Html\Element();
+		$textDateElement->init('span', array(
+			'class' => self::$_configArray['className']['textDate']
+		));
+
+		/* lister directory */
+
+		$listerDirectory = new Directory();
+		$listerDirectory->init($directory);
+		$listerDirectoryArray = $listerDirectory->getArray();
+
+		/* process directory */
+
+		foreach ($listerDirectoryArray as $key => $value)
+		{
+			$path = $directory . '/' . $value;
+			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
+			$text = self::_replace($value, $fileExtension, $optionArray['replace']);
+			$textDate = date(Db::getSetting('date'), filectime($path));
+			$isDir = is_dir($path);
+			$isFile = is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']);
+
+			/* handle directory */
+
+			if ($isDir || $isFile)
+			{
+				$outputItem .= '<li>';
+			}
+			if ($isDir)
+			{
+				$outputItem .= $linkElement
+					->copy()
+					->attr(array(
+						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $optionArray['hash'],
+						'title' => Language::get('directory', '_directory_lister')
+					))
+					->addClass(self::$_configArray['className']['types']['directory'])
+					->text($text);
+				$outputItem .= $textSizeElement->copy();
+			}
+
+			/* else handle file */
+
+			else if ($isFile)
+			{
+				$fileType = self::$_configArray['extension'][$fileExtension];
+				$textSize = ceil(filesize($path) / self::$_configArray['size']['divider']);
+				$outputItem .= $linkElement
+					->copy()
+					->attr(array(
+						'href' => Registry::get('root') . '/' . $path,
+						'target' => '_blank',
+						'title' => Language::get('file', '_directory_lister')
+					))
+					->addClass(self::$_configArray['className']['types'][$fileType])
+					->text($text);
+				$outputItem .= $textSizeElement
+					->copy()
+					->attr('data-unit', self::$_configArray['size']['unit'])
+					->text($textSize);
+			}
+			if ($isDir || $isFile)
+			{
+				$outputItem .= $textDateElement
+					->copy()
+					->text($textDate);
+				$outputItem .= '</li>';
+			}
+		}
+		return $outputItem;
 	}
 
 	/**
