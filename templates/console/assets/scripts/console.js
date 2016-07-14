@@ -10,7 +10,7 @@
  * @author Henry Ruhs
  */
 
-(function ($)
+(function (doc, win, $)
 {
 	'use strict';
 
@@ -57,21 +57,28 @@
 
 					box.append(labelText + ' ' + fieldValue + options.eol);
 					field.val(null);
-					$(window).trigger('resize');
+					$(win).trigger('resize');
 				});
 				event.preventDefault();
 			});
 
-			/* listen for resize */
+			/* listen for resize and click */
 
-			$(window).on('resize', function ()
-			{
-				var fieldWidth = box.width() - label.width() - 1,
-					scrollHeight = $(document).height() - $(window).height();
+			$(win)
+				.on('resize', function ()
+				{
+					var fieldWidth = box.width() - label.width() - 1,
+						scrollHeight = $(doc).height() - $(win).height();
 
-				root.scrollTop(scrollHeight);
-				field.width(fieldWidth);
-			}).trigger('resize');
+					root.scrollTop(scrollHeight);
+					field.width(fieldWidth);
+				})
+				.on('click', function ()
+				{
+					field.focus();
+				})
+				.trigger('resize');
+
 		});
 	};
 
@@ -84,4 +91,4 @@
 			$(rs.plugins.console.selector).console(rs.plugins.console.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(document, window, window.jQuery || window.Zepto);
