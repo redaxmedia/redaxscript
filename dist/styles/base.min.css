@@ -133,19 +133,6 @@ button, input, select, textarea
 
 /* @section 1. fade */
 
-@-webkit-keyframes rs-fade
-{
-	from
-	{
-		opacity: 0;
-	}
-
-	to
-	{
-		opacity: 1;
-	}
-}
-
 @keyframes rs-fade
 {
 	from
@@ -161,64 +148,30 @@ button, input, select, textarea
 
 /* @section 2. rotate */
 
-@-webkit-keyframes rs-rotate
-{
-	from
-	{
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-
-	to
-	{
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
-}
-
 @keyframes rs-rotate
 {
 	from
 	{
-		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
 
 	to
 	{
-		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
 
 /* @section 3. scale */
 
-@-webkit-keyframes rs-scale
-{
-	from
-	{
-		-webkit-transform: scale(0);
-		transform: scale(0);
-	}
-
-	to
-	{
-		-webkit-transform: scale(1);
-		transform: scale(1);
-	}
-}
-
 @keyframes rs-scale
 {
 	from
 	{
-		-webkit-transform: scale(0);
 		transform: scale(0);
 	}
 
 	to
 	{
-		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
 }
@@ -355,7 +308,6 @@ button, input, select, textarea
 {
 	left: 0;
 	opacity: 1;
-	-webkit-transform: translateY(0);
 	transform: translateY(0);
 }
 
@@ -377,11 +329,8 @@ button, input, select, textarea
 		opacity: 0;
 		position: absolute;
 		top: 100%;
-		-webkit-transform: translateY(-50%);
 		transform: translateY(-50%);
-		transition: opacity 0.5s, -webkit-transform 0.2s;
 		transition: opacity 0.5s, transform 0.2s;
-		transition: opacity 0.5s, transform 0.2s, -webkit-transform 0.2s;
 		z-index: 1;
 	}
 
@@ -688,22 +637,18 @@ button::-moz-focus-inner, input::-moz-focus-inner
 		outline: none;
 		position: absolute;
 		right: 0;
-		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
-		transition: transform 0.2s, -webkit-transform 0.2s;
 	}
 
 	/* @section 2.1.2 navigation icon */
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
 	{
-		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
 	{
-		-webkit-transform: rotate(45deg);
 		transform: rotate(45deg);
 	}
 
@@ -715,18 +660,14 @@ button::-moz-focus-inner, input::-moz-focus-inner
 		left: 0;
 		position: fixed;
 		top: 0;
-		-webkit-transform: translateX(-100%);
 		transform: translateX(-100%);
 		z-index: 20;
 	}
 
 	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
 	{
-		-webkit-transform: translateX(0);
 		transform: translateX(0);
-		transition: -webkit-transform 0.2s;
 		transition: transform 0.2s;
-		transition: transform 0.2s, -webkit-transform 0.2s;
 	}
 
 	/* @section 2.1.4 navigation layer */

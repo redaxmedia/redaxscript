@@ -18,18 +18,18 @@
 		"declaration-block-trailing-semicolon": "always",
 		"declaration-block-semicolon-newline-after": "always",
 		"declaration-no-important": true,
-		"font-family-name-quotes": "single-where-recommended",
+		"font-family-name-quotes": "always-where-recommended",
 		"font-weight-notation": "named-where-possible",
 		"function-blacklist":
 		[
 			"calc"
 		],
-		"function-url-quotes": "single",
+		"function-url-quotes": "always",
 		"indentation": "tab",
+		"length-zero-no-unit": true,
 		"max-empty-lines": 1,
 		"max-nesting-depth": 1,
 		"no-browser-hacks": true,
-		"number-zero-length-no-unit": true,
 		"selector-combinator-space-after": "always",
 		"selector-combinator-space-before": "always",
 		"selector-no-id": true,

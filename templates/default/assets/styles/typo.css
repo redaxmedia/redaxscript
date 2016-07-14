@@ -41,7 +41,7 @@ a
 .rs-body
 {
 	color: var(--rs-color-tertiary);
-	font: 300 1.25em/1.75em var(--rs-font-primary);
+	font: 1.25em/1.75em var(--rs-font-primary);
 }
 
 .rs-content strong
