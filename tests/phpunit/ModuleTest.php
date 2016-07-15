@@ -52,6 +52,81 @@ class ModuleTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testGetAndSetNotification
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetAndSetNotification()
+	{
+		/* setup */
+
+		$module = new Module();
+		$module->init(array(
+			'name' => 'Test dummy',
+			'alias' => 'TestDummy'
+		));
+		$module->setNotification('error', 'testValue');
+
+		/* actual */
+
+		$actual = $module->getNotification('error');
+
+		/* compare */
+
+		$this->assertEquals('testValue', $actual['Test dummy'][0]);
+	}
+
+	/**
+	 * testGetAll
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetAll()
+	{
+		/* setup */
+
+		$module = new Module();
+		$module->init(array(
+			'name' => 'Test dummy',
+			'alias' => 'TestDummy'
+		));
+		$module->setNotification('success', 'testValue');
+		$module->setNotification('error', 'testValue');
+
+		/* actual */
+
+		$actual = $module->getNotification();
+
+		/* compare */
+
+		$this->assertArrayHasKey('success', $actual);
+		$this->assertArrayHasKey('error', $actual);
+	}
+
+	/**
+	 * testGetInvalid
+	 *
+	 * @since 2.1.0
+	 */
+
+	public function testGetInvalid()
+	{
+		/* setup */
+
+		$module = new Module();
+
+		/* actual */
+
+		$actual = $module->getNotification('invalidKey');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
 	 * testInstall
 	 *
 	 * @since 2.6.0

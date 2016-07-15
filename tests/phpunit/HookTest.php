@@ -81,12 +81,56 @@ class HookTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testTriggerMethod
+	 * testCollect
 	 *
 	 * @since 2.4.0
 	 */
 
-	public function testTriggerMethod()
+	public function testCollect()
+	{
+		/* setup */
+
+		Hook::construct($this->_registry);
+		Hook::init();
+
+		/* actual */
+
+		$actual = Hook::collect('adminPanelNotification');
+
+		/* compare */
+
+		$this->assertArrayHasKey('success', $actual);
+	}
+
+	/**
+	 * testCollectInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testCollectInvalid()
+	{
+		/* setup */
+
+		Hook::construct($this->_registry);
+		Hook::init();
+
+		/* actual */
+
+		$actual = Hook::collect('invalidMethod');
+
+		/* compare */
+
+		$this->assertEmpty($actual);
+	}
+
+	/**
+	 * testTrigger
+	 *
+	 * @since 2.4.0
+	 */
+
+	public function testTrigger()
 	{
 		/* setup */
 
@@ -117,7 +161,7 @@ class HookTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Hook::trigger('invalid');
+		$actual = Hook::trigger('invalidMethod');
 
 		/* compare */
 

@@ -107,7 +107,7 @@ class TagTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setPost('argv', 'invalid');
+		$this->_request->setPost('argv', 'invalidCommand');
 
 		/* actual */
 

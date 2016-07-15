@@ -114,28 +114,6 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetAndSetOption
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testGetAndSetOption()
-	{
-		/* setup */
-
-		$parser = new Console\Parser($this->_request);
-		$parser->setOption('test', 'test');
-
-		/* actual */
-
-		$actual = $parser->getOption('test');
-
-		/* compare */
-
-		$this->assertEquals('test', $actual);
-	}
-
-	/**
 	 * testGetArgument
 	 *
 	 * @since 3.0.0
@@ -161,6 +139,50 @@ class ParserTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
+	 * testGetArgumentInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetArgumentInvalid()
+	{
+		/* setup */
+
+		$parser = new Console\Parser($this->_request);
+		$parser->init('cli');
+
+		/* actual */
+
+		$actual = $parser->getArgument('invalidArgument');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
+	 * testGetAndSetOption
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetAndSetOption()
+	{
+		/* setup */
+
+		$parser = new Console\Parser($this->_request);
+		$parser->setOption('test', 'test');
+
+		/* actual */
+
+		$actual = $parser->getOption('test');
+
+		/* compare */
+
+		$this->assertEquals('test', $actual);
 	}
 
 	/**
@@ -192,28 +214,6 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetArgumentInvalid
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testGetArgumentInvalid()
-	{
-		/* setup */
-
-		$parser = new Console\Parser($this->_request);
-		$parser->init('cli');
-
-		/* actual */
-
-		$actual = $parser->getArgument('invalid');
-
-		/* compare */
-
-		$this->assertFalse($actual);
-	}
-
-	/**
 	 * testGetOptionInvalid
 	 *
 	 * @since 3.0.0
@@ -228,7 +228,7 @@ class ParserTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parser->getOption('invalid');
+		$actual = $parser->getOption('invalidOption');
 
 		/* compare */
 

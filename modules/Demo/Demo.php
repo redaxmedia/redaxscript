@@ -82,6 +82,8 @@ class Demo extends Config
 	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
+	 *
+	 * return array
 	 */
 
 	public static function adminPanelNotification()

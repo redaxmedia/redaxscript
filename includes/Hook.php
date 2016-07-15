@@ -112,6 +112,43 @@ class Hook
 	}
 
 	/**
+	 * collect from module hook
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $event name of the module event
+	 * @param array $parameterArray parameter of the module hook
+	 *
+	 * @return array
+	 */
+
+	public static function collect($event = null, $parameterArray = array())
+	{
+		$output = array();
+
+		/* trigger event */
+
+		foreach (self::$_moduleArray as $module)
+		{
+			$object = self::$_namespace . $module . '\\' . $module;
+			self::$_eventArray[$event][$module] = false;
+
+			/* method exists */
+
+			if (method_exists($object, $event))
+			{
+				self::$_eventArray[$event][$module] = true;
+				/*TODO: fix performance issue with array_merge in loop */
+				$output = array_merge($output, call_user_func_array(array(
+					$object,
+					$event
+				), $parameterArray));
+			}
+		}
+		return $output;
+	}
+
+	/**
 	 * trigger the module hook
 	 *
 	 * @since 3.0.0
@@ -138,21 +175,10 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				$temp = call_user_func_array(array(
+				$output .= call_user_func_array(array(
 					$object,
 					$event
 				), $parameterArray);
-
-				/* merge or concat */
-
-				if (is_array($temp))
-				{
-					$output = array_merge(is_array($output) ? $output : array(), $temp);
-				}
-				else
-				{
-					$output .= $temp;
-				}
 			}
 		}
 		return $output;
