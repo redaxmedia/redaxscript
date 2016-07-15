@@ -138,8 +138,7 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				/*TODO: fix performance issue with array_merge in loop */
-				$output = array_merge($output, call_user_func_array(array(
+				$output = array_merge_recursive($output, call_user_func_array(array(
 					$object,
 					$event
 				), $parameterArray));

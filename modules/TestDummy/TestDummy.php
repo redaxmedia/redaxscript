@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Modules\TestDummy;
 
-use Redaxscript\Language;
 use Redaxscript\Module;
 
 /**
@@ -29,20 +28,6 @@ class TestDummy extends Module
 		'description' => 'Made for testing',
 		'version' => '3.0.0'
 	);
-
-	/**
-	 * adminPanelNotification
-	 *
-	 * @since 3.0.0
-	 *
-	 * return array
-	 */
-
-	public static function adminPanelNotification()
-	{
-		self::setNotification('success', Language::get('name', '_package') . Language::get('point'));
-		return self::getNotification();
-	}
 
 	/**
 	 * render

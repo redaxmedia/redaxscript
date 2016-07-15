@@ -112,7 +112,7 @@ class Reader
 
 	public function loadJSON($url = null, $assoc = true)
 	{
-		$contents = file_get_contents($url);
+		$contents = $this->_load($url);
 		$this->_assoc = $assoc;
 		$this->_dataArray = json_decode($contents, $this->_assoc);
 		return $this;
@@ -131,10 +131,47 @@ class Reader
 
 	public function loadXML($url = null, $assoc = true)
 	{
-		$contents = file_get_contents($url);
+		$contents = $this->_load($url);
 		$this->_assoc = $assoc;
 		$this->_dataObject = simplexml_load_string($contents);
 		return $this;
+	}
+
+	/**
+	 * load from url
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $url
+	 *
+	 * @return Reader
+	 */
+
+	protected function _load($url = null)
+	{
+		$output = null;
+
+		/* curl */
+
+		if (function_exists('curl_version') && !file_exists($url))
+		{
+			$curl = curl_init();
+			curl_setopt_array($curl, array(
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_URL => $url
+			));
+			$output = curl_exec($curl);
+			curl_close($curl);
+		}
+
+		/* else fallback */
+
+		else
+		{
+			$output = file_get_contents($url);
+		}
+		return $output;
 	}
 
 	/**

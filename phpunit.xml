@@ -4,7 +4,15 @@
 	<!-- listeners -->
 
 	<listeners>
-		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener" />
+		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
+			<arguments>
+				<array>
+					<element key="slowThreshold">
+						<integer>200</integer>
+					</element>
+				</array>
+			</arguments>
+		</listener>
 	</listeners>
 
 	<!-- filter -->

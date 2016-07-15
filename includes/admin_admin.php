@@ -137,7 +137,7 @@ function admin_panel_list()
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a>';
-			$moduleArray = Redaxscript\Hook::trigger('adminPanelModule');
+			$moduleArray = Redaxscript\Hook::collect('adminPanelModule');
 			if ($moduleArray)
 			{
 				foreach ($moduleArray as $key => $value)
