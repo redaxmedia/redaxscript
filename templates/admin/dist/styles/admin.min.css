@@ -1044,34 +1044,32 @@
 	vertical-align: middle;
 }
 
-/* TODO: let's get rid of the long selectors and just use a class .rs-admin-text-contents:before */
-
-.rs-admin-item-panel.rs-admin-item-content > span:before
+.rs-admin-text-content:before
 {
 	content: 'i';
 }
 
-.rs-admin-item-panel.rs-admin-item-access > span:before
+.rs-admin-text-access:before
 {
 	content: 'j';
 }
 
-.rs-admin-item-panel.rs-admin-item-system > span:before
+.rs-admin-text-system:before
 {
 	content: 'k';
 }
 
-.rs-admin-item-panel.rs-admin-item-profile > a:before, .rs-admin-item-panel.rs-admin-item-profile > span:before
+.rs-admin-link-profile:before
 {
 	content: 'l';
 }
 
-.rs-admin-item-panel.rs-admin-item-notification > span:before
+.rs-admin-text-notification:before
 {
 	content: 'U';
 }
 
-.rs-admin-item-panel.rs-admin-item-logout > a:before
+.rs-admin-link-logout:before
 {
 	content: 'n';
 }
@@ -1147,6 +1145,7 @@
 }
 
 /* TODO: try the selector .rs-admin-wrapper-panel over .rs-admin-list-panel .rs-admin-wrapper-panel-link */
+/* bad idea: cascade is not high enough (would be overridden by ".rs-admin-list-panel a" */
 
 /* @section 3.3 panel children link */
 
@@ -1160,6 +1159,7 @@
 }
 
 /* TODO: stay in the context of the wrapper using .rs-admin-wrapper-panel .rs-admin-link-view */
+/* look above */
 
 .rs-admin-list-panel .rs-admin-link-view
 {
@@ -1173,8 +1173,6 @@
 	text-indent: -999em;
 	width: 2.75em;
 }
-
-/* TODO: adjust the font-size and position (to the right) of the plus icon, same font-size like the arrows in mobile */
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
@@ -1192,9 +1190,6 @@
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
 /* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
-
-/* TODO: add styling for the <h3> headline  */
-/* TODO: add styling to show the amount of notifications - the current number needs no-wrap to prevent ugly breaks */
 
 /* @section 3.4 list notification */
 
@@ -1237,8 +1232,6 @@
 	line-height: 1.75em;
 	padding: 0.5em 0.75em 0.5em 3em;
 	position: relative
-
-	/* TODO: the notification icons look a bit too large compared to the rest - try font-size: 0.875em */
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span:before
@@ -1246,12 +1239,12 @@
 	background: #c56161;
 	border-radius: 50%;
 	color: rgb(0, 0, 0);/* TODO: add the needed icons to the admin icon font */
-	font: 1em/1.75em 'icon default';
+	font: 0.875em/1.75em 'icon default';
 	height: 1.75em;
 	left: 0.625em;
 	position: absolute;
 	text-align: center;
-	top: 0.625em;
+	top: 0.75em;
 	width: 1.75em;
 }
 
@@ -1284,15 +1277,6 @@
 /* @section 5.1 medium min */
 
 /* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
-
-/* TODO: fix too long text in panel like https://snag.gy/AHCThL.jpg
-
-.rs-admin-list-panel a, .rs-admin-list-panel span
-{
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-*/
 
 @media (min-width: 50em)
 {

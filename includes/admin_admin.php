@@ -56,7 +56,7 @@ function admin_panel_list()
 	if ($contents_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-content"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-content"><span class="rs-admin-text-panel rs-admin-text-content">' . Redaxscript\Language::get('contents') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-contents">';
 		if ($categories_access == 1)
 		{
 			$output .= '<li><span class="rs-admin-wrapper-panel-link"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/categories" class="rs-admin-link-panel' . (Redaxscript\Registry::get('categoriesNew') ? ' rs-admin-link-view' : null) . '">' . Redaxscript\Language::get('categories') . '</a>';
@@ -101,7 +101,7 @@ function admin_panel_list()
 	if ($access_access == 1)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-access"><span class="rs-admin-text-panel rs-admin-text-access">' . Redaxscript\Language::get('access') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-access">';
 		if (Redaxscript\Registry::get('myId'))
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel">' . Redaxscript\Language::get('profile') . '</a></li>';
@@ -133,7 +133,7 @@ function admin_panel_list()
 	{
 		$counter++;
 		$outputModule = null;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-system"><span class="rs-admin-text-panel rs-admin-text-system">' . Redaxscript\Language::get('system') . '</span><ul class="rs-admin-list-panel-children rs-admin-list-panel-children-system">';
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a>';
@@ -160,7 +160,7 @@ function admin_panel_list()
 	if (Redaxscript\Registry::get('myId'))
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel">' . Redaxscript\Language::get('profile') . '</a></li>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-profile"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/users/' . Redaxscript\Registry::get('myId') . '" class="rs-admin-link-panel rs-admin-link-profile">' . Redaxscript\Language::get('profile') . '</a></li>';
 	}
 
 	/* collect notification output */
@@ -233,13 +233,13 @@ function admin_panel_list()
 	if ($counterNotification)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification ' . implode(' ', $notificationHasArray) . '"><span>' . Redaxscript\Language::get('notifications') . ($counterNotification ? '<small class="rs-admin-text-notification-counter">' . $counterNotification . '</small>' : null) . '</span>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification ' . implode(' ', $notificationHasArray) . '"><span class="rs-admin-text-notification">' . Redaxscript\Language::get('notifications') . ($counterNotification ? '<small class="rs-admin-text-notification-counter">' . $counterNotification . '</small>' : null) . '</span>';
 		$output .= '<ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">' . $outputNotification . '</ul></li>';
 	}
 
 	/* collect logout */
 
-	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-logout"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'logout" class="rs-admin-link-panel">' . Redaxscript\Language::get('logout') . '</a></li>';
+	$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-logout"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'logout" class="rs-admin-link-panel rs-admin-link-logout">' . Redaxscript\Language::get('logout') . '</a></li>';
 
 	/* collect list output */
 
