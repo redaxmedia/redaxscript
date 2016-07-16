@@ -39,8 +39,11 @@
 	& > a,
 	& > span
 	{
+		overflow: hidden;
 		padding: 0 0.75em;
+		text-overflow: ellipsis;
 		text-transform: uppercase;
+		white-space: nowrap;
 	}
 }
 
@@ -107,9 +110,9 @@
 .rs-admin-item-panel > span:after
 {
 	content: '˃';
-	font: 1.25em/1.5em var(--rs-admin-font-icon);
+	font: 1.375em/1.25em var(--rs-admin-font-icon);
 	position: absolute;
-	right: 1.625em;
+	right: 1.5em;
 	top: 0.375em;
 }
 
@@ -135,13 +138,6 @@
 		display: block;
 		font: bold 1.125em/2.75em var(--rs-admin-font-primary);
 	}
-
-	& h3
-	{
-		color: gray(185);
-		font: bold 1.25em/2.5em var(--rs-admin-font-primary);
-		padding: 0 0.5em;
-	}
 }
 
 .rs-admin-list-panel a:hover,
@@ -153,6 +149,19 @@
 }
 
 /* @section 3.2 panel children */
+
+.rs-admin-title-panel
+{
+	color: gray(185);
+	font: bold 1.25em/2em var(--rs-admin-font-primary);
+	padding: 0 0.5em;
+	text-transform: uppercase;
+}
+
+.rs-admin-list-panel-children li + li .rs-admin-title-panel
+{
+	border-top: 1px solid gray(71);
+}
 
 .rs-admin-list-panel li:hover .rs-admin-list-panel-children
 {
@@ -217,6 +226,40 @@
 /* TODO: add styling to show the amount of notifications - the current number needs no-wrap to prevent ugly breaks */
 
 /* @section 3.4 list notification */
+
+.rs-admin-text-notification-counter
+{
+	border-radius: 50%;
+	color: gray(32);
+	display: inline-block;
+	font-size: 0.75em;
+	height: 2em;
+	line-height: 1.875em;
+	margin-left: 0.5em;
+	text-align: center;
+	vertical-align: middle;
+	width: 2em;
+}
+
+.rs-admin-has-info .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-primary);
+}
+
+.rs-admin-has-success .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-success);
+}
+
+.rs-admin-has-warning .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-warning);
+}
+
+.rs-admin-has-error .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-error);
+}
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a,
 .rs-admin-item-panel .rs-admin-list-panel-children-notification span
@@ -301,6 +344,11 @@
 	{
 		float: left;
 		position: relative;
+	}
+
+	.rs-admin-list-panel .rs-admin-link-new:after
+	{
+		text-align: right;
 	}
 
 	.rs-admin-list-panel.rs-admin-has-column1 > li
