@@ -459,7 +459,6 @@
 
 .rs-admin-component-dialog, .rs-admin-dialog-overlay
 {
-	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }
 
@@ -1153,10 +1152,8 @@
 
 .rs-admin-list-panel .rs-admin-wrapper-panel-link
 {
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 	padding: 0 0.75em;
@@ -1166,7 +1163,6 @@
 
 .rs-admin-list-panel .rs-admin-link-view
 {
-	-webkit-flex: 1 1 0;
 	-ms-flex: 1 1 0;
 	flex: 1 1 0;
 }
