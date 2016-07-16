@@ -45,14 +45,13 @@ class ShareThis extends Config
 	}
 
 	/**
-	 * articleEnd
+	 * contentFragmentEnd
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function articleEnd()
+	public static function contentFragmentEnd()
 	{
-		/* TODO: test if the module is being echoed */
 		if (Registry::get('lastTable') === 'articles')
 		{
 			$url = Registry::get('root') . Registry::get('parameterRoute') . Registry::get('fullRoute');
