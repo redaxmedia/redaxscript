@@ -14,7 +14,7 @@
 /* @section 1. hide */
 
 .rs-fn-hide,
-.rs-is-js .rs-hideifjs
+.rs-is-js .rs-fn-hideifjs
 {
 	display: none;
 }

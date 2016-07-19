@@ -42,13 +42,13 @@
 
 /* @section 2. fallback */
 
-.rs-msie10 .rs-has-tooltip:after
+.rs-is-msie.rs-is-10 .rs-has-tooltip:after
 {
 	display: none;
 }
 
-.rs-msie10 .rs-has-tooltip:focus:after,
-.rs-msie10 .rs-has-tooltip:hover:after
+.rs-is-msie.rs-is-10 .rs-has-tooltip:focus:after,
+.rs-is-msie.rs-is-10 .rs-has-tooltip:hover:after
 {
 	display: inline-block;
 }
