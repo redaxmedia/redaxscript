@@ -332,7 +332,7 @@ function admin_control($type, $table, $id, $alias, $status, $new, $edit, $delete
 
 	if ($new == 1 && $type == 'modules_not_installed')
 	{
-		$output .= '<li class="rs-admin-item-control rs-admin-link-install"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/install/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('install') . '</a></li>';
+		$output .= '<li class="rs-admin-item-control rs-admin-item-install"><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/install/' . $table . '/' . $alias . '/' . Redaxscript\Registry::get('token') . '">' . Redaxscript\Language::get('install') . '</a></li>';
 	}
 
 	/* collect contents output */
