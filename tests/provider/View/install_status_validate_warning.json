@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"osServer": "WINNT",
+			"osServer": "winnt",
 			"htaccess": 0,
 			"modDeflate": 0,
 			"modRewrite": 0,
@@ -21,7 +21,7 @@
 	],
 	[
 		{
-			"osServer": "WINNT"
+			"osServer": "winnt"
 		},
 		[
 			"Not running on Linux",
@@ -35,7 +35,7 @@
 	],
 	[
 		{
-			"osServer": "WINNT",
+			"osServer": "winnt",
 			"htaccess": 0,
 			"modDeflate": 1,
 			"modRewrite": 1,
@@ -50,7 +50,7 @@
 	],
 	[
 		{
-			"osServer": "LINUX",
+			"osServer": "linux",
 			"htaccess": 1,
 			"modDeflate": 1,
 			"modRewrite": 1,

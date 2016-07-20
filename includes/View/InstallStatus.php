@@ -128,7 +128,7 @@ class InstallStatus extends ViewAbstract
 	protected function _validateWarning()
 	{
 		$messageArray = array();
-		if ($this->_registry->get('osServer') != 'LINUX')
+		if ($this->_registry->get('osServer') != 'linux')
 		{
 			$messageArray[] = $this->_language->get('linux_no', '_installation');
 		}

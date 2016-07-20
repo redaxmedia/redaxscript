@@ -146,8 +146,6 @@ class InstallStatusTest extends TestCaseAbstract
 	 *
 	 * @param array $registryArray
 	 * @param string $expect
-	 *
-	 * @dataProvider providerWarning
 	 */
 
 	public function testValidateWarning($registryArray = array(), $expect = null)
