@@ -29,7 +29,7 @@ class InstallStatus extends ViewAbstract
 		$output = null;
 
 		/* validate error */
-		
+
 		$messageArray = $this->_validateError();
 		if ($messageArray)
 		{
@@ -39,7 +39,7 @@ class InstallStatus extends ViewAbstract
 		}
 
 		/* validate warning */
-		
+
 		$messageArray = $this->_validateWarning();
 		if ($messageArray)
 		{
