@@ -1,0 +1,64 @@
+[
+	[
+		{
+			"osServer": "WINNT",
+			"htaccess": 0,
+			"modDeflate": 0,
+			"modRewrite": 0,
+			"pdoMysql": 0,
+			"pdoSqlite": 0,
+			"pdoPgsql": 0
+		},
+		[
+			"Not running on Linux",
+			"File .htaccess is not present",
+			"mod_deflate is not enabled",
+			"mod_rewrite is not enabled",
+			"No MySQL driver installed",
+			"No SQLite driver installed",
+			"No PostgreSQL driver installed"
+		]
+	],
+	[
+		{
+			"osServer": "WINNT"
+		},
+		[
+			"Not running on Linux",
+			"File .htaccess is not present",
+			"mod_deflate is not enabled",
+			"mod_rewrite is not enabled",
+			"No MySQL driver installed",
+			"No SQLite driver installed",
+			"No PostgreSQL driver installed"
+		]
+	],
+	[
+		{
+			"osServer": "WINNT",
+			"htaccess": 0,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoSqlite": 1,
+			"pdoPgsql": 1
+		},
+		[
+			"Not running on Linux",
+			"File .htaccess is not present",
+			"No MySQL driver installed"
+		]
+	],
+	[
+		{
+			"osServer": "LINUX",
+			"htaccess": 1,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoMysql": 1,
+			"pdoSqlite": 1,
+			"pdoPgsql": 1
+		},
+		[
+		]
+	]
+]

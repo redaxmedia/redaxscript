@@ -2,7 +2,6 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Html;
-use Redaxscript\Hook;
 use Redaxscript\Messenger;
 
 /**
@@ -16,7 +15,6 @@ use Redaxscript\Messenger;
  * @author Balázs Szilágyi
  */
 
-/*TODO: the whole class does not work for unit testing, i would uncomment everything and start it from scratch via TDD */
 class InstallStatus extends ViewAbstract
 {
 	/**
@@ -30,15 +28,23 @@ class InstallStatus extends ViewAbstract
 	public function render()
 	{
 		$output = null;
-		/* TODO: Wrong coding style ... follow the other controllers: $messageArray = $this->_validate(); */
-		if ($errorArray = $this->_validate())
+
+		$messageArray = $this->_validateError();
+		if ($messageArray)
 		{
-			$output .= $this->_error($errorArray);
+			$output .= $this->_error(array(
+				'message' => $messageArray
+			));
 		}
-		if ($warningArray = $this->_check())
+
+		$messageArray = $this->_validateWarning();
+		if ($messageArray)
 		{
-			$output .= $this->_warning($warningArray);
+			$output .= $this->_warning(array(
+				'message' => $messageArray
+			));
 		}
+
 		return $output;
 	}
 
@@ -51,11 +57,10 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
-	/* TODO: Why private again? */
-	private function _error($errorArray = array())
+	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
-		return $messenger->error($errorArray);
+		return $messenger->error($errorArray['message']);
 	}
 
 	/**
@@ -67,11 +72,10 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
-	/* TODO: Why private again? */
-	private function _warning($warningArray = array())
+	protected function _warning($warningArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
-		return $messenger->warning($warningArray);
+		return $messenger->warning($warningArray['message']);
 	}
 
 	/**
@@ -81,31 +85,31 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
-
-	/* TODO: why not protected? Rename it to validateError */
-	private function _validate()
+	protected function _validateError()
 	{
-		/* TODO: No language (en.json etc.) used, hard coded text is not allowed */
-		/*TODO: Rename $errorArray to $messageArray */
-		$errorArray = array();
+		$messageArray = array();
 
 		if (!$this->_registry->get('dbStatus'))
 		{
-			$errorArray[] = $this->_language->get('database_failed');
+			$messageArray[] = $this->_language->get('database_failed');
 		}
-		if (!is_writable('config.php'))
+		if (!$this->_registry->get('config'))
 		{
-			$errorArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
+			$messageArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
 		}
-		if (version_compare(phpversion(), '5.3.10', '<'))
+		if (version_compare($this->_registry->get('phpVersion'), '5.3.10', '<'))
 		{
-			$errorArray[] = 'PHP version is not high enough!';
+			$messageArray[] = $this->_language->get('php_version_no', '_installation');
 		}
-		if (!class_exists('PDO'))
+		if (!$this->_registry->get('pdoDriver'))
 		{
-			$errorArray[] = 'PDO is not enabled!';
+			$messageArray[] = $this->_language->get('pdo_no', '_installation');
 		}
-		return $errorArray;
+		if (!$this->_registry->get('sessionStatus'))
+		{
+			$messageArray[] = $this->_language->get('session_status_no', '_installation');
+		}
+		return $messageArray;
 	}
 
 	/**
@@ -115,39 +119,37 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
-
-	/* TODO: why not protected? Rename it to validateWarning */
-	private function _check()
+	protected function _validateWarning()
 	{
-		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
-		$warningArray = array();
-
-		/* TODO: No language (en.json etc.) used, hard coded text is not allowed */
-		/* TODO: Rename $errorArray to $messageArray */
-		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+		$messageArray = array();
+		if ($this->_registry->get('osServer') != 'LINUX')
 		{
-			$warningArray[] = 'Not running on linux!';
+			$messageArray[] = $this->_language->get('linux_no', '_installation');
 		}
-		if (!file_exists('.htaccess'))
+		if (!$this->_registry->get('htaccess'))
 		{
-			$warningArray[] = 'There is no .htaccess file present!';
+			$messageArray[] = $this->_language->get('htaccess_no', '_installation');
 		}
-		if ($moduleArray && !in_array('mod_rewrite', $moduleArray))
+		if (!$this->_registry->get('modDeflate'))
 		{
-			$warningArray[] = 'mod_rewrite is not enabled!';
+			$messageArray[] = $this->_language->get('mod_deflate_no', '_installation');
 		}
-		if (!extension_loaded('pdo_mysql'))
+		if (!$this->_registry->get('modRewrite'))
 		{
-			$warningArray[] = 'No MySQL driver installed';
+			$messageArray[] = $this->_language->get('mod_rewrite_no', '_installation');
 		}
-		if (!extension_loaded('pdo_sqlite'))
+		if (!$this->_registry->get('pdoMysql'))
 		{
-			$warningArray[] = 'No SQLite driver installed';
+			$messageArray[] = $this->_language->get('pdo_mysql_no', '_installation');
 		}
-		if (!extension_loaded('pdo_pgsql'))
+		if (!$this->_registry->get('pdoSqlite'))
 		{
-			$warningArray[] = 'No postgresql driver installed';
+			$messageArray[] = $this->_language->get('pdo_sqlite_no', '_installation');
 		}
-		return $warningArray;
+		if (!$this->_registry->get('pdoPgsql'))
+		{
+			$messageArray[] = $this->_language->get('pdo_pgsql_no', '_installation');
+		}
+		return $messageArray;
 	}
 }

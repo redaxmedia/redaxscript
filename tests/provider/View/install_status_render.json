@@ -1,2 +1,87 @@
 [
+	[
+		{
+			"dbStatus": 0,
+			"config": 0,
+			"phpVersion": "4.0.4",
+			"pdoDriver": 0,
+			"osServer": "WINNT",
+			"htaccess": 0,
+			"modDeflate": 0,
+			"modRewrite": 0,
+			"pdoMysql": 0,
+			"pdoSqlite": 0,
+			"pdoPgsql": 0,
+			"sessionStatus": 0
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Connection to database failed</li><li>Grant write permission on file: config.php</li><li>PHP version is not supported</li><li>PDO is not enabled</li><li>Sessions are disabled</li></ul></div><div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>Not running on Linux</li><li>File .htaccess is not present</li><li>mod_deflate is not enabled</li><li>mod_rewrite is not enabled</li><li>No MySQL driver installed</li><li>No SQLite driver installed</li><li>No PostgreSQL driver installed</li></ul></div>"
+	],
+	[
+		{
+			"dbStatus": 2,
+			"config": 1,
+			"phpVersion": "5.5.36",
+			"pdoDriver": 1,
+			"osServer": "LINUX",
+			"htaccess": 1,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoMysql": 1,
+			"pdoSqlite": 1,
+			"pdoPgsql": 1,
+			"sessionStatus": 1
+		},
+		""
+	],
+	[
+		{
+			"dbStatus": 2,
+			"config": 1,
+			"phpVersion": "4.0.4",
+			"pdoDriver": 1,
+			"osServer": "LINUX",
+			"htaccess": 1,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoMysql": 1,
+			"pdoSqlite": 1,
+			"pdoPgsql": 1,
+			"sessionStatus": 1
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>PHP version is not supported</li></ul></div>"
+	],
+	[
+		{
+			"dbStatus": 2,
+			"config": 1,
+			"phpVersion": "5.5.36",
+			"pdoDriver": 1,
+			"osServer": "LINUX",
+			"htaccess": 1,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoMysql": 1,
+			"pdoSqlite": 0,
+			"pdoPgsql": 0,
+			"sessionStatus": 1
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>No SQLite driver installed</li><li>No PostgreSQL driver installed</li></ul></div>"
+	],
+	[
+		{
+			"dbStatus": 2,
+			"config": 1,
+			"phpVersion": "5.5.36",
+			"pdoDriver": 1,
+			"osServer": "LINUX",
+			"htaccess": 1,
+			"modDeflate": 1,
+			"modRewrite": 1,
+			"pdoMysql": 1,
+			"pdoSqlite": 1,
+			"pdoPgsql": 1,
+			"sessionStatus": 1
+		},
+		""
+	]
 ]
