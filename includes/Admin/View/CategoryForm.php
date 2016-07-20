@@ -8,7 +8,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the category form
+ * children class to create the category form
  *
  * @since 3.0.0
  *

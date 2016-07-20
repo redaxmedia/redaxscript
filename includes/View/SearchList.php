@@ -7,7 +7,7 @@ use Redaxscript\Hook;
 use Redaxscript\Validator;
 
 /**
- * children class to generate the search list
+ * children class to create the search list
  *
  * @since 3.0.0
  *

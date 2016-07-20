@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
- * parent class to generate a breadcrumb navigation
+ * parent class to create a breadcrumb navigation
  *
  * @since 2.1.0
  *

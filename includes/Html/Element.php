@@ -2,7 +2,7 @@
 namespace Redaxscript\Html;
 
 /**
- * children class to generate a element
+ * children class to create a element
  *
  * @since 2.6.0
  *

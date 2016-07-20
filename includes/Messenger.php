@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to generate a message
+ * parent class to create a message
  *
  * @since 3.0.0
  *

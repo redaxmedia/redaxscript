@@ -8,7 +8,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the article form
+ * children class to create the article form
  *
  * @since 3.0.0
  *

@@ -4,7 +4,7 @@ namespace Redaxscript\Admin;
 use Redaxscript\Messenger as BaseMessenger;
 
 /**
- * parent class to generate a admin message
+ * parent class to create a admin message
  *
  * @since 3.0.0
  *

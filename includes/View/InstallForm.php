@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the install form
+ * children class to create the install form
  *
  * @since 3.0.0
  *

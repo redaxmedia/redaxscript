@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to generate a salted hash
+ * parent class to create a salted hash
  *
  * @since 2.6.0
  *

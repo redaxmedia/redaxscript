@@ -10,8 +10,7 @@ use Redaxscript\Messenger;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category View
- *
+ * @category View *
  * @author Balázs Szilágyi
  */
 
@@ -29,6 +28,8 @@ class InstallStatus extends ViewAbstract
 	{
 		$output = null;
 
+		/* validate error */
+		
 		$messageArray = $this->_validateError();
 		if ($messageArray)
 		{
@@ -37,6 +38,8 @@ class InstallStatus extends ViewAbstract
 			));
 		}
 
+		/* validate warning */
+		
 		$messageArray = $this->_validateWarning();
 		if ($messageArray)
 		{
@@ -44,7 +47,6 @@ class InstallStatus extends ViewAbstract
 				'message' => $messageArray
 			));
 		}
-
 		return $output;
 	}
 
@@ -57,6 +59,7 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
+
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
@@ -72,6 +75,7 @@ class InstallStatus extends ViewAbstract
 	 *
 	 * @return array
 	 */
+
 	protected function _warning($warningArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
@@ -79,12 +83,13 @@ class InstallStatus extends ViewAbstract
 	}
 
 	/**
-	 * validate error
+	 * validate the error
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
+
 	protected function _validateError()
 	{
 		$messageArray = array();
@@ -113,12 +118,13 @@ class InstallStatus extends ViewAbstract
 	}
 
 	/**
-	 * validate warning
+	 * validate the warning
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
+
 	protected function _validateWarning()
 	{
 		$messageArray = array();

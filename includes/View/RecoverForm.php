@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the recover form
+ * children class to create the recover form
  *
  * @since 3.0.0
  *

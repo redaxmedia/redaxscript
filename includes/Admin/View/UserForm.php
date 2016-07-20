@@ -8,7 +8,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the user form
+ * children class to create the user form
  *
  * @since 3.0.0
  *

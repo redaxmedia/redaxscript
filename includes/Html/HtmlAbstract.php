@@ -2,7 +2,7 @@
 namespace Redaxscript\Html;
 
 /**
- * abstract class to generate html
+ * abstract class to create html
  *
  * @since 2.6.0
  *

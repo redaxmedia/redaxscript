@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the reset form
+ * children class to create the reset form
  *
  * @since 3.0.0
  *

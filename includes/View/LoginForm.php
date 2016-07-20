@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the login form
+ * children class to create the login form
  *
  * @since 3.0.0
  *

@@ -25,6 +25,7 @@ class InstallStatusTest extends TestCaseAbstract
 	 */
 
 	protected $_registry;
+
 	/**
 	 * instance of the language class
 	 *
@@ -89,14 +90,16 @@ class InstallStatusTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRender
-	 *
 	 * @param array $registryArray
-	 * @param null $expect
+	 * @param string $expect
+	 *
+	 * @dataProvider providerRender
 	 */
 
 	public function testRender($registryArray = array(), $expect = null)
 	{
+		/* setup */
+
 		$this->_registry->init($registryArray);
 		$installForm = new View\InstallStatus($this->_registry, $this->_language);
 
@@ -104,6 +107,8 @@ class InstallStatusTest extends TestCaseAbstract
 
 		$actual = $installForm->render();
 
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -112,24 +117,25 @@ class InstallStatusTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerError
-	 *
 	 * @param array $registryArray
-	 * @param null $expect
+	 * @param string $expect
 	 *
-	 * @internal param null $dbStatus
+	 * @dataProvider providerError
 	 */
 
 	public function testValidateError($registryArray = array(), $expect = null)
 	{
-		$this->_registry->init($registryArray);
+		/* setup */
 
-		$installStatus = new View\InstallStatus ($this->_registry, $this->_language, $this->_request);
+		$this->_registry->init($registryArray);
+		$installStatus = new View\InstallStatus($this->_registry, $this->_language);
 
 		/* actual */
 
 		$actual = $this->callMethod($installStatus, '_validateError');
 
+		/* compare */
+
 		$this->assertEquals($expect, $actual);
 	}
 
@@ -138,21 +144,24 @@ class InstallStatusTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerWarning
-	 *
 	 * @param array $registryArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerWarning
 	 */
 
 	public function testValidateWarning($registryArray = array(), $expect = null)
 	{
-		$this->_registry->init($registryArray);
+		/* setup */
 
-		$installStatus = new View\InstallStatus ($this->_registry, $this->_language, $this->_request);
+		$this->_registry->init($registryArray);
+		$installStatus = new View\InstallStatus($this->_registry, $this->_language);
 
 		/* actual */
 
 		$actual = $this->callMethod($installStatus, '_validateWarning');
+
+		/* compare */
 
 		$this->assertEquals($expect, $actual);
 	}

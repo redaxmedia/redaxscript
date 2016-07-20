@@ -10,7 +10,7 @@ use Redaxscript\Hook;
 use Redaxscript\Template;
 
 /**
- * children class to generate the module form
+ * children class to create the module form
  *
  * @since 3.0.0
  *

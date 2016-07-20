@@ -8,7 +8,7 @@ use Redaxscript\Html;
 use Redaxscript\Hook;
 
 /**
- * children class to generate the extra form
+ * children class to create the extra form
  *
  * @since 3.0.0
  *

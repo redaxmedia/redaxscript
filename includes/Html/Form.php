@@ -9,7 +9,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * children class to generate a form
+ * children class to create a form
  *
  * @since 2.6.0
  *
