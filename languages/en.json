@@ -41,7 +41,8 @@
 		"vi": "Tiếng Việt",
 		"zh": "中文"
 	},
-	"_installation": {
+	"_installation":
+	{
 		"installation": "Installation",
 		"installation_completed": "Installation completed successfully",
 		"htaccess_no": "File .htaccess is not present",
