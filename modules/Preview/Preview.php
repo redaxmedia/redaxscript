@@ -97,10 +97,10 @@ class Preview extends Module
 
 			else
 			{
-				foreach ($partialsDirectoryArray as $partial)
+				foreach ($partialsDirectoryArray as $value)
 				{
-					$alias = str_replace($partialExtension, '', $partial);
-					$output .= self::render($alias, $partialsPath . '/' . $partial);
+					$alias = str_replace($partialExtension, '', $value);
+					$output .= self::render($alias, $partialsPath . '/' . $value);
 				}
 			}
 			$output .= '</div>';

@@ -130,6 +130,8 @@ class DirectoryLister extends Config
 	}
 
 	/**
+	 * renderParent
+	 *
 	 * @param string $rootDirectory
 	 * @param string $parentDirectory
 	 * @param array $optionArray
@@ -164,6 +166,8 @@ class DirectoryLister extends Config
 	}
 
 	/**
+	 * renderItem
+	 *
 	 * @param string $directory
 	 * @param array $optionArray
 	 *
@@ -197,7 +201,7 @@ class DirectoryLister extends Config
 
 		/* process directory */
 
-		foreach ($listerDirectoryArray as $key => $value)
+		foreach ($listerDirectoryArray as $value)
 		{
 			$path = $directory . '/' . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
@@ -257,6 +261,8 @@ class DirectoryLister extends Config
 	}
 
 	/**
+	 * replace
+	 *
 	 * @param string $text
 	 * @param string $fileExtension
 	 * @param array $replaceArray

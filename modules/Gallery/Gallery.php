@@ -46,9 +46,22 @@ class Gallery extends Config
 	}
 
 	/**
+	 * adminPanelNotification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function adminPanelNotification()
+	{
+		return self::getNotification();
+	}
+
+	/**
 	 * render
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
 	 * @param string $directory
 	 * @param array $optionArray
@@ -63,18 +76,73 @@ class Gallery extends Config
 
 		/* html elements */
 
+		$listElement = new Html\Element();
+		$listElement->init('ul', array(
+			'class' => self::$_configArray['className']['list']
+		));
+
+		/* directory */
+
+		if (is_dir($directory))
+		{
+			/* remove as needed */
+
+			/* TODO: call _removeThumb if $directory is empty */
+			if ($optionArray['command'] === 'remove')
+			{
+				self::_removeThumb($directory);
+			}
+
+			/* create as needed */
+
+			/* TODO: call _createThumb if thumbs folder does not exist */
+			if ($optionArray['command'] === 'create')
+			{
+				self::_createThumb($directory);
+			}
+
+			$outputItem .= self::_renderItem($directory, $optionArray);
+
+			/* collect list output */
+
+			if ($outputItem)
+			{
+				$output = $listElement->html($outputItem);
+			}
+		}
+
+		/* else handle notification */
+
+		else
+		{
+			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point'));
+		}
+		return $output;
+	}
+
+	/**
+	 * renderItem
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $directory
+	 * @param array $optionArray
+	 *
+	 * @return string
+	 */
+
+	public static function _renderItem($directory = null, $optionArray = array())
+	{
+		$outputItem = null;
+
+		/* html elements */
+
 		$imageElement = new Html\Element();
 		$imageElement->init('img', array(
 			'class' => self::$_configArray['className']['image']
 		));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
-		$listElement = new Html\Element();
-		$listElement->init('ul', array(
-			'class' => self::$_configArray['className']['list']
-		));
-
-		/* TODO: add panel notification via is_dir() */
 
 		/* gallery directory */
 
@@ -95,63 +163,42 @@ class Gallery extends Config
 		$galleryTotal = count($galleryDirectoryArray);
 		$galleryId = uniqid('gallery-');
 
-		/* remove thumbs */
+		/* process directory */
 
-		if (!$galleryTotal || $optionArray['command'] === 'remove')
+		foreach ($galleryDirectoryArray as $value)
 		{
-			$galleryDirectory->remove(self::$_configArray['thumbDirectory']);
+			$imagePath = $directory . '/' . $value;
+			$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
+
+			/* get image data */
+
+			$imageData = self::_getExifData($imagePath);
+
+			/* collect item output */
+
+			$outputItem .= '<li>';
+			$outputItem .= $linkElement
+				->copy()
+				->attr(array(
+					'href' => $imagePath,
+					'data-counter' => ++$galleryCounter,
+					'data-total' => $galleryTotal,
+					'data-id' => $galleryId,
+					'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
+					'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
+					'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
+				))
+				->html(
+					$imageElement
+						->copy()
+						->attr(array(
+							'src' => $thumbPath,
+							'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : $value
+						))
+				);
+			$outputItem .= '</li>';
 		}
-
-		/* else handle thumbs */
-
-		else
-		{
-			/* process directory */
-
-			/* TODO: Extract the foreach to a renderItem method */
-			foreach ($galleryDirectoryArray as $key => $value)
-			{
-				$imagePath = $directory . '/' . $value;
-				$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
-
-				/* create thumbs */
-
-				if ($optionArray['command'] === 'create' || !is_file($thumbPath))
-				{
-					self::_createThumb($directory, $value, $optionArray);
-				}
-
-				/* get image data */
-
-				$imageData = self::_getExifData($imagePath);
-
-				/* collect item output */
-
-				$outputItem .= '<li>';
-				$outputItem .= $linkElement
-					->copy()
-					->attr(array(
-						'href' => $imagePath,
-						'data-counter' => ++$galleryCounter,
-						'data-total' => $galleryTotal,
-						'data-id' => $galleryId,
-						'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
-						'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
-						'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
-					))
-					->html(
-						$imageElement
-							->copy()
-							->attr(array(
-								'src' => $thumbPath,
-								'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : $value
-							))
-					);
-				$outputItem .= '</li>';
-			}
-			$output = $listElement->attr('id', $galleryId)->html($outputItem);
-		}
-		return $output;
+		return $outputItem;
 	}
 
 	/**
@@ -181,66 +228,83 @@ class Gallery extends Config
 	}
 
 	/**
+	 * removeThumb
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $directory
+	 */
+
+	protected static function _removeThumb($directory = null)
+	{
+		$galleryDirectory = new Directory();
+		$galleryDirectory->init($directory);
+		$galleryDirectory->remove(self::$_configArray['thumbDirectory']);
+	}
+
+	/**
 	 * createThumb
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $directory
-	 * @param string $file
 	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _createThumb($directory = null, $file = null, $optionArray = array())
+	protected static function _createThumb($directory = null, $optionArray = array())
 	{
-		/* get extension */
+		/* gallery directory */
 
-		$imagePath = $directory . '/' . $file;
-		$extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+		$galleryDirectory = new Directory();
+		$galleryDirectory->init($directory, self::$_configArray['thumbDirectory']);
+		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
+		$galleryDirectoryArray = $galleryDirectory->getArray();
 
-		/* switch extension */
+		/* process directory */
 
-		switch ($extension)
+		foreach ($galleryDirectoryArray as $value)
 		{
-			case 'gif':
-				$image = imagecreatefromgif($imagePath);
-				break;
-			case 'jpg':
-				$image = imagecreatefromjpeg($imagePath);
-				break;
-			case 'png':
-				$image = imagecreatefrompng($imagePath);
-				break;
-			default:
-				$image = null;
+			$imagePath = $directory . '/' . $value;
+			$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
+			$extension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
+
+			/* switch extension */
+
+			switch ($extension)
+			{
+				case 'gif':
+					$image = imagecreatefromgif($imagePath);
+					break;
+				case 'jpg':
+					$image = imagecreatefromjpeg($imagePath);
+					break;
+				case 'png':
+					$image = imagecreatefrompng($imagePath);
+					break;
+				default:
+					$image = null;
+			}
+
+			/* source and dist */
+
+			$sourceArray = self::_calcSource();
+			/* TODO: height and width in distArray are empty */
+			$distArray = self::_calcDist($sourceArray, $optionArray);
+
+			/* create thumb files */
+
+			$thumb = imagecreatetruecolor($distArray['width'], $distArray['height']);
+			imagecopyresampled($thumb, $image, 0, 0, 0, 0, $distArray['width'], $distArray['height'], $sourceArray['width'], $sourceArray['height']);
+			imagejpeg($thumb, $thumbPath, $distArray['quality']);
+			/* TODO: add a notification if the file could not be created */
+
+			/* destroy image */
+
+			imagedestroy($thumb);
+			imagedestroy($image);
 		}
-
-		/* source and dist */
-
-		$sourceArray = self::_calcSource();
-		$distArray = self::_calcDist($sourceArray, $optionArray);
-
-		/* create thumb directory */
-
-		$thumbDirectory = new Directory();
-		$thumbDirectory->init($directory);
-		$thumbDirectory->create(self::$_configArray['thumbDirectory']);
-
-		/* create thumb */
-
-		$thumb = imagecreatetruecolor($distArray['width'], $distArray['height']);
-		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $distArray['width'], $distArray['height'], $sourceArray['width'], $sourceArray['height']);
-		imagejpeg($thumb, $thumbDirectory, $distArray['quality']);
-
-		/*TODO: add notification here, if image cannot be create */
-
-		var_dump($thumb); // this is false... because width and height are empty
-
-		/* destroy image */
-
-		imagedestroy($thumb);
-		imagedestroy($image);
 	}
 
 	/**

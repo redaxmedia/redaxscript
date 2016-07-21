@@ -88,7 +88,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 
 		/* process directory */
 
-		foreach ($docsDirectoryArray as $key => $value)
+		foreach ($docsDirectoryArray as $value)
 		{
 			$outputItem .= $itemElement
 				->copy()
@@ -148,7 +148,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			{
 				/* process directory */
 
-				foreach ($docsDirectoryArray as $key => $value)
+				foreach ($docsDirectoryArray as $value)
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
