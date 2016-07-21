@@ -47,13 +47,13 @@
 		"installation_completed": "Installation completed successfully",
 		"htaccess_no": "File .htaccess is not present",
 		"linux_no": "Not running on Linux",
+		"php_version_no": "PHP version is not supported",
 		"mod_deflate_no": "mod_deflate is not enabled",
 		"mod_rewrite_no": "mod_rewrite is not enabled",
-		"pdo_no": "PDO is not enabled",
+		"pdo_driver_no": "No PDO driver installed",
 		"pdo_mysql_no": "No MySQL driver installed",
 		"pdo_pgsql_no": "No PostgreSQL driver installed",
 		"pdo_sqlite_no": "No SQLite driver installed",
-		"php_version_no": "PHP version is not supported",
 		"session_status_no": "Sessions are disabled"
 	},
 	"_number":

@@ -157,12 +157,15 @@ class Status extends CommandAbstract
 
 		/* process optional */
 
-		foreach ($optionalArray as $value)
+		if ($moduleArray)
 		{
-			$statusArray[$value] = array(
-				'value' => null,
-				'status' => in_array($value, $moduleArray) ? 1 : 0
-			);
+			foreach ($optionalArray as $value)
+			{
+				$statusArray[$value] = array(
+					'value' => null,
+					'status' => in_array($value, $moduleArray) ? 1 : 0
+				);
+			}
 		}
 		return $statusArray;
 	}

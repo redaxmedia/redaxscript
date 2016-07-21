@@ -102,13 +102,13 @@ class InstallStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
 		}
-		if (version_compare($this->_registry->get('phpVersion'), '5.3.10', '<'))
+		if (version_compare($this->_registry->get('phpVersion'), '5.3', '<'))
 		{
 			$messageArray[] = $this->_language->get('php_version_no', '_installation');
 		}
 		if (!$this->_registry->get('pdoDriver'))
 		{
-			$messageArray[] = $this->_language->get('pdo_no', '_installation');
+			$messageArray[] = $this->_language->get('pdo_driver_no', '_installation');
 		}
 		if (!$this->_registry->get('sessionStatus'))
 		{
@@ -148,13 +148,13 @@ class InstallStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('pdo_mysql_no', '_installation');
 		}
-		if (!$this->_registry->get('pdoSqlite'))
-		{
-			$messageArray[] = $this->_language->get('pdo_sqlite_no', '_installation');
-		}
 		if (!$this->_registry->get('pdoPgsql'))
 		{
 			$messageArray[] = $this->_language->get('pdo_pgsql_no', '_installation');
+		}
+		if (!$this->_registry->get('pdoSqlite'))
+		{
+			$messageArray[] = $this->_language->get('pdo_sqlite_no', '_installation');
 		}
 		return $messageArray;
 	}

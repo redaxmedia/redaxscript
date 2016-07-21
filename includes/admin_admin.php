@@ -203,23 +203,26 @@ function admin_panel_list()
 		{
 			foreach ($moduleValue as $value)
 			{
-				$outputNotification .= '<li>';
-				if ($moduleLastKey !== $moduleKey)
+				if ($value)
 				{
-					$outputNotification .= '<h3 class="rs-admin-title-panel">' . $moduleKey . '</h3>';
+					$outputNotification .= '<li>';
+					if ($moduleLastKey !== $moduleKey)
+					{
+						$outputNotification .= '<h3 class="rs-admin-title-panel">' . $moduleKey . '</h3>';
+					}
+					$moduleLastKey = $moduleKey;
+					if (array_key_exists('text', $value) && array_key_exists('attr', $value))
+					{
+						$outputNotification .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
+					}
+					else
+					{
+						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
+						$outputNotification .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
+					}
+					$outputNotification .= '</li>';
+					$counterNotification++;
 				}
-				$moduleLastKey = $moduleKey;
-				if (array_key_exists('text', $value) && array_key_exists('attr', $value))
-				{
-					$outputNotification .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
-				}
-				else
-				{
-					$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
-					$outputNotification .= '<span class="rs-admin-text-panel rs-admin-is-' . $typeKey . '">' . $value . '</span>';
-				}
-				$outputNotification .= '</li>';
-				$counterNotification++;
 			}
 		}
 	}

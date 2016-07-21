@@ -2,38 +2,38 @@
 	[
 		{
 			"dbStatus": 0,
-			"config": 0,
-			"phpVersion": "4.0.4",
-			"pdoDriver": 0,
-			"sessionStatus": 0
+			"config": false,
+			"phpVersion": "5.0.0",
+			"pdoDriver": false,
+			"sessionStatus": false
 		},
 		[
 			"Connection to database failed",
 			"Grant write permission on file: config.php",
 			"PHP version is not supported",
-			"PDO is not enabled",
+			"No PDO driver installed",
 			"Sessions are disabled"
 		]
 	],
 	[
 		{
 			"dbStatus": 0,
-			"phpVersion": "4.0.4"
+			"phpVersion": "5.0.0"
 		},
 		[
 			"Connection to database failed",
 			"Grant write permission on file: config.php",
 			"PHP version is not supported",
-			"PDO is not enabled",
+			"No PDO driver installed",
 			"Sessions are disabled"
 		]
 	],
 	[
 		{
 			"dbStatus": 1,
-			"phpVersion": "5.5.36",
-			"pdoDriver": 1,
-			"sessionStatus": 1
+			"phpVersion": "5.3.2",
+			"pdoDriver": true,
+			"sessionStatus": true
 		},
 		[
 			"Grant write permission on file: config.php"
@@ -42,10 +42,10 @@
 	[
 		{
 			"dbStatus": 2,
-			"config": 1,
-			"phpVersion": "5.5.36",
-			"pdoDriver": 1,
-			"sessionStatus": 1
+			"config": true,
+			"phpVersion": "5.5.0",
+			"pdoDriver": true,
+			"sessionStatus": true
 		},
 		[
 		]

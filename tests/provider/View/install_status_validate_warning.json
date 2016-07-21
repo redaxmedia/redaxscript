@@ -2,12 +2,12 @@
 	[
 		{
 			"osServer": "winnt",
-			"htaccess": 0,
-			"modDeflate": 0,
-			"modRewrite": 0,
-			"pdoMysql": 0,
-			"pdoSqlite": 0,
-			"pdoPgsql": 0
+			"htaccess": false,
+			"modDeflate": false,
+			"modRewrite": false,
+			"pdoMysql": false,
+			"pdoPgsql": false,
+			"pdoSqlite": false
 		},
 		[
 			"Not running on Linux",
@@ -15,8 +15,8 @@
 			"mod_deflate is not enabled",
 			"mod_rewrite is not enabled",
 			"No MySQL driver installed",
-			"No SQLite driver installed",
-			"No PostgreSQL driver installed"
+			"No PostgreSQL driver installed",
+			"No SQLite driver installed"
 		]
 	],
 	[
@@ -29,18 +29,19 @@
 			"mod_deflate is not enabled",
 			"mod_rewrite is not enabled",
 			"No MySQL driver installed",
-			"No SQLite driver installed",
-			"No PostgreSQL driver installed"
+			"No PostgreSQL driver installed",
+			"No SQLite driver installed"
 		]
 	],
 	[
 		{
 			"osServer": "winnt",
-			"htaccess": 0,
-			"modDeflate": 1,
-			"modRewrite": 1,
-			"pdoSqlite": 1,
-			"pdoPgsql": 1
+			"htaccess": false,
+			"modDeflate": true,
+			"modRewrite": true,
+		 	"pdoMysql": false,
+			"pdoPgsql": true,
+			"pdoSqlite": true
 		},
 		[
 			"Not running on Linux",
@@ -51,12 +52,12 @@
 	[
 		{
 			"osServer": "linux",
-			"htaccess": 1,
-			"modDeflate": 1,
-			"modRewrite": 1,
-			"pdoMysql": 1,
-			"pdoSqlite": 1,
-			"pdoPgsql": 1
+			"htaccess": true,
+			"modDeflate": true,
+			"modRewrite": true,
+			"pdoMysql": true,
+			"pdoPgsql": true,
+			"pdoSqlite": true
 		},
 		[
 		]

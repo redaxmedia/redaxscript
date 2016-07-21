@@ -118,12 +118,12 @@ class Gallery extends Config
 
 				if ($optionArray['command'] === 'create' || !is_file($thumbPath))
 				{
-					self::_createThumb($value, $directory, $optionArray);
+					self::_createThumb($directory, $value, $optionArray);
 				}
 
 				/* get image data */
 
-				$imageData = self::_getData($imagePath);
+				$imageData = self::_getExifData($imagePath);
 
 				/* collect item output */
 
@@ -144,7 +144,7 @@ class Gallery extends Config
 							->copy()
 							->attr(array(
 								'src' => $thumbPath,
-								'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : null
+								'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : $value
 							))
 					);
 				$outputItem .= '</li>';
@@ -155,28 +155,21 @@ class Gallery extends Config
 	}
 
 	/**
-	 * getData
+	 * getExifData
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
 	 * @param string $file
 	 *
 	 * @return array
 	 */
 
-	protected static function _getData($file = null)
+	protected static function _getExifData($file = null)
 	{
 		$dataArray = array();
-		$exifArray = array();
+		$exifArray = function_exists('exif_read_data') ? exif_read_data($file) : array();
 
-		/* function exists */
-
-		if (function_exists('exif_read_data'))
-		{
-			$exifArray = exif_read_data($file);
-		}
-
-		/* has image data */
+		/* handle data */
 
 		if ($exifArray)
 		{
@@ -190,28 +183,23 @@ class Gallery extends Config
 	/**
 	 * createThumb
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param string $file
 	 * @param string $directory
+	 * @param string $file
 	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	protected static function _createThumb($file = null, $directory = null, $optionArray = array())
+	protected static function _createThumb($directory = null, $file = null, $optionArray = array())
 	{
-		/* options fallback */
-
-		$optionArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : self::$_configArray['height'];
-		$optionArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : self::$_configArray['quality'];
-
 		/* get extension */
 
 		$imagePath = $directory . '/' . $file;
 		$extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
-		/* generate image */
+		/* switch extension */
 
 		switch ($extension)
 		{
@@ -224,42 +212,78 @@ class Gallery extends Config
 			case 'png':
 				$image = imagecreatefrompng($imagePath);
 				break;
+			default:
+				$image = null;
 		}
 
-		/* original image */
+		/* source and dist */
 
-		/* TODO: Extract the dimension calc to method */
-		$originalArray['dimensions'] = getimagesize($imagePath);
-		$originalArray['height'] = $originalArray['dimensions'][1];
-		$originalArray['width'] = $originalArray['dimensions'][0];
-
-		/* calculate dimensions */
-
-		if ($optionArray['height'])
-		{
-			$optionArray['scaling'] = $optionArray['height'] / $originalArray['height'] * 100;
-		}
-		else
-		{
-			$optionArray['height'] = round($optionArray['scaling'] / 100 * $originalArray['height']);
-		}
-		$optionArray['width'] = round($optionArray['scaling'] / 100 * $originalArray['width']);
+		$sourceArray = self::_calcSource();
+		$distArray = self::_calcDist($sourceArray, $optionArray);
 
 		/* create thumb directory */
-		/* TODO: add panel notification once thumb could not be created */
+
 		$thumbDirectory = new Directory();
 		$thumbDirectory->init($directory);
 		$thumbDirectory->create(self::$_configArray['thumbDirectory']);
 
 		/* create thumb */
 
-		$thumb = imagecreatetruecolor($optionArray['width'], $optionArray['height']);
-		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $optionArray['width'], $optionArray['height'], $originalArray['width'], $originalArray['height']);
-		imagejpeg($thumb, $thumbDirectory, $optionArray['quality']);
+		$thumb = imagecreatetruecolor($distArray['width'], $distArray['height']);
+		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $distArray['width'], $distArray['height'], $sourceArray['width'], $sourceArray['height']);
+		imagejpeg($thumb, $thumbDirectory, $distArray['quality']);
+
+		/*TODO: add notification here, if image cannot be create */
+
+		var_dump($thumb); // this is false... because width and height are empty
 
 		/* destroy image */
 
 		imagedestroy($thumb);
 		imagedestroy($image);
+	}
+
+	/**
+	 * calcSource
+	 *
+	 * @param string $imagePath
+	 *
+	 * @return array
+	 */
+
+	protected static function _calcSource($imagePath = null)
+	{
+		$sourceArray['dimensions'] = getimagesize($imagePath);
+		$sourceArray['height'] = $sourceArray['dimensions'][1];
+		$sourceArray['width'] = $sourceArray['dimensions'][0];
+		return $sourceArray;
+	}
+
+	/**
+	 * calcDist
+	 *
+	 * @param array $sourceArray
+	 * @param array $optionArray
+	 *
+	 * @return array
+	 */
+
+	protected static function _calcDist($sourceArray = array(), $optionArray = array())
+	{
+		$distArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : self::$_configArray['height'];
+		$distArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : self::$_configArray['quality'];
+
+		/* calculate */
+
+		if ($distArray['height'])
+		{
+			$distArray['scaling'] = $distArray['height'] / $sourceArray['height'] * 100;
+		}
+		else
+		{
+			$distArray['height'] = round($distArray['scaling'] / 100 * $sourceArray['height']);
+		}
+		$distArray['width'] = round($distArray['scaling'] / 100 * $sourceArray['width']);
+		return $distArray;
 	}
 }
