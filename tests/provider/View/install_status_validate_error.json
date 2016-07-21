@@ -17,30 +17,6 @@
 	],
 	[
 		{
-			"dbStatus": 0,
-			"phpVersion": "5.0.0"
-		},
-		[
-			"Connection to database failed",
-			"Grant write permission on file: config.php",
-			"Unsupported PHP version found",
-			"No PDO driver installed",
-			"Session is disabled"
-		]
-	],
-	[
-		{
-			"dbStatus": 1,
-			"phpVersion": "5.3.2",
-			"pdoDriver": true,
-			"sessionStatus": true
-		},
-		[
-			"Grant write permission on file: config.php"
-		]
-	],
-	[
-		{
 			"dbStatus": 2,
 			"configPermission": true,
 			"phpVersion": "5.5.0",

@@ -2,34 +2,19 @@
 	[
 		{
 			"dbStatus": 0,
-			"configPermission": false,
-			"phpVersion": "5.0.0",
-			"pdoDriver": false,
-			"phpOs": "winnt",
-			"modDeflate": false,
-			"modRewrite": false,
-			"pdoMysql": false,
-			"pdoSqlite": false,
-			"pdoPgsql": false,
-			"sessionStatus": false
-		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Connection to database failed</li><li>Grant write permission on file: config.php</li><li>Unsupported PHP version found</li><li>No PDO driver installed</li><li>Session is disabled</li></ul></div><div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>Unsupported operation system found</li><li>Deflate module is disabled</li><li>Rewrite module is disabled</li><li>No MySQL driver installed</li><li>No PostgreSQL driver installed</li><li>No SQLite driver installed</li></ul></div>"
-	],
-	[
-		{
-			"dbStatus": 2,
 			"configPermission": true,
-			"phpVersion": "5.5.0",
-			"pdoDriver": true,
 			"phpOs": "linux",
+			"phpVersion": "5.5.0",
 			"modDeflate": true,
+			"modHeaders": true,
 			"modRewrite": true,
+			"pdoDriver": true,
 			"pdoMysql": true,
-			"pdoSqlite": true,
 			"pdoPgsql": true,
+			"pdoSqlite": true,
 			"sessionStatus": true
 		},
-		""
+		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Connection to database failed</li></ul></div>"
 	],
 	[
 		{
@@ -51,30 +36,15 @@
 		{
 			"dbStatus": 2,
 			"configPermission": true,
-			"phpVersion": "5.3.0",
 			"phpOs": "linux",
-			"modDeflate": true,
-			"modRewrite": true,
-	 	 	"pdoDriver": true,
-			"pdoMysql": true,
-			"pdoPgsql": false,
-			"pdoSqlite": false,
-			"sessionStatus": true
-		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>No PostgreSQL driver installed</li><li>No SQLite driver installed</li></ul></div>"
-	],
-	[
-		{
-			"dbStatus": 2,
-			"configPermission": true,
 			"phpVersion": "5.5.0",
-			"phpOs": "linux",
 			"modDeflate": true,
+			"modHeaders": true,
 			"modRewrite": true,
 			"pdoDriver": true,
 			"pdoMysql": true,
-			"pdoSqlite": true,
 			"pdoPgsql": true,
+			"pdoSqlite": true,
 			"sessionStatus": true
 		},
 		""

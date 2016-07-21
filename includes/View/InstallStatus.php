@@ -135,6 +135,10 @@ class InstallStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('mod_deflate_no', '_installation');
 		}
+		if (!$this->_registry->get('modHeaders'))
+		{
+			$messageArray[] = $this->_language->get('mod_headers_no', '_installation');
+		}
 		if (!$this->_registry->get('modRewrite'))
 		{
 			$messageArray[] = $this->_language->get('mod_rewrite_no', '_installation');
