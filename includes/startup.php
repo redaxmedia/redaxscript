@@ -71,6 +71,23 @@ function startup()
 		ini_set('default_charset', Redaxscript\Db::getSetting('charset'));
 	}
 
+	/* define server */
+
+	$driverArray = PDO::getAvailableDrivers();
+	$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
+	Redaxscript\Registry::set('config', is_writable('config.php'));
+	Redaxscript\Registry::set('file_permission_grant', 0);
+	Redaxscript\Registry::set('phpVersion', phpversion());
+	Redaxscript\Registry::set('pdoDriver', class_exists('PDO') ? 1 : 0);
+	Redaxscript\Registry::set('sessionStatus', session_status() === PHP_SESSION_ACTIVE ? 1 : 0);
+	Redaxscript\Registry::set('osServer', strtolower(php_uname('s')));
+	Redaxscript\Registry::set('htaccess', file_exists('.htaccess'));
+	Redaxscript\Registry::set('modDeflate', in_array('mod_deflate', $moduleArray) ? 1 : 0);
+	Redaxscript\Registry::set('modRewrite', in_array('mod_rewrite', $moduleArray) ? 1 : 0);
+	Redaxscript\Registry::set('pdoMysql', in_array('mysql', $driverArray) ? 1 : 0);
+	Redaxscript\Registry::set('pdoSqlite', in_array('sqlite', $driverArray) ? 1 : 0);
+	Redaxscript\Registry::set('pdoPgsql', in_array('pgsql', $driverArray) ? 1 : 0);
+
 	/* define parameter */
 
 	$parameter = new Redaxscript\Router\Parameter($request);

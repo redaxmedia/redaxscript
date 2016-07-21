@@ -46,6 +46,8 @@ function router()
 		}
 		else
 		{
+			$installStatus = new Redaxscript\View\InstallStatus(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+			echo $installStatus->render();
 			$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 			echo $installForm->render();
 			return;
