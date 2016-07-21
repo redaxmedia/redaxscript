@@ -2,7 +2,7 @@
 	[
 		{
 			"dbStatus": 0,
-			"config": false,
+			"configPermission": false,
 			"phpVersion": "5.0.0",
 			"pdoDriver": false,
 			"sessionStatus": false
@@ -10,9 +10,9 @@
 		[
 			"Connection to database failed",
 			"Grant write permission on file: config.php",
-			"PHP version is not supported",
+			"Unsupported PHP version found",
 			"No PDO driver installed",
-			"Sessions are disabled"
+			"Session is disabled"
 		]
 	],
 	[
@@ -23,9 +23,9 @@
 		[
 			"Connection to database failed",
 			"Grant write permission on file: config.php",
-			"PHP version is not supported",
+			"Unsupported PHP version found",
 			"No PDO driver installed",
-			"Sessions are disabled"
+			"Session is disabled"
 		]
 	],
 	[
@@ -42,7 +42,7 @@
 	[
 		{
 			"dbStatus": 2,
-			"config": true,
+			"configPermission": true,
 			"phpVersion": "5.5.0",
 			"pdoDriver": true,
 			"sessionStatus": true

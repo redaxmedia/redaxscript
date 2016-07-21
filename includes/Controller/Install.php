@@ -174,15 +174,15 @@ class Install extends ControllerAbstract
 		{
 			$messageArray[] = $this->_language->get('email_empty');
 		}
-		else if ($loginValidator->validate($postArray['user']) == Validator\ValidatorInterface::FAILED)
+		else if ($loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('user_incorrect');
 		}
-		else if ($loginValidator->validate($postArray['password']) == Validator\ValidatorInterface::FAILED)
+		else if ($loginValidator->validate($postArray['password']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('password_incorrect');
 		}
-		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('email_incorrect');
 		}

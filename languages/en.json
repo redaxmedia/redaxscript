@@ -45,16 +45,16 @@
 	{
 		"installation": "Installation",
 		"installation_completed": "Installation completed successfully",
-		"htaccess_no": "File .htaccess is not present",
-		"linux_no": "Not running on Linux",
-		"php_version_no": "PHP version is not supported",
-		"mod_deflate_no": "mod_deflate is not enabled",
-		"mod_rewrite_no": "mod_rewrite is not enabled",
+		"php_os_no": "Unsupported operation system found",
+		"php_version_no": "Unsupported PHP version found",
+		"mod_deflate_no": "Deflate module is disabled",
+		"mod_headers_no": "Headers module is disabled",
+		"mod_rewrite_no": "Rewrite module is disabled",
 		"pdo_driver_no": "No PDO driver installed",
 		"pdo_mysql_no": "No MySQL driver installed",
 		"pdo_pgsql_no": "No PostgreSQL driver installed",
 		"pdo_sqlite_no": "No SQLite driver installed",
-		"session_status_no": "Sessions are disabled"
+		"session_status_no": "Session is disabled"
 	},
 	"_number":
 	[

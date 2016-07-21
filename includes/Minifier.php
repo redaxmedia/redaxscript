@@ -93,7 +93,7 @@ class Minifier
 
 		/* scripts */
 
-		if ($type == 'scripts')
+		if ($type === 'scripts')
 		{
 			$output = str_replace(array(
 				' (',

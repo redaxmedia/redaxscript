@@ -73,13 +73,10 @@ function startup()
 
 	/* define server */
 
-	/*TODO: config and htaccess are not needed inside the registry - the filesystem can be faked using vfsStream */
-	Redaxscript\Registry::set('config', is_writable('config.php'));
-	Redaxscript\Registry::set('htaccess', file_exists('.htaccess'));
-	/* END OF TODO */
 	$driverArray = PDO::getAvailableDrivers();
 	$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
-	Redaxscript\Registry::set('osServer', strtolower(php_uname('s')));
+	Redaxscript\Registry::set('configPermission', is_writable('config.php'));
+	Redaxscript\Registry::set('phpOs', strtolower(php_uname('s')));
 	Redaxscript\Registry::set('phpVersion', phpversion());
 	if (function_exists('session_status'))
 	{
@@ -103,8 +100,8 @@ function startup()
 	}
 	Redaxscript\Registry::set('pdoDriver', count($driverArray) ? true : false);
 	Redaxscript\Registry::set('pdoMysql', in_array('mysql', $driverArray));
-	Redaxscript\Registry::set('pdoSqlite', in_array('sqlite', $driverArray));
 	Redaxscript\Registry::set('pdoPgsql', in_array('pgsql', $driverArray));
+	Redaxscript\Registry::set('pdoSqlite', in_array('sqlite', $driverArray));
 
 	/* define parameter */
 

@@ -160,11 +160,11 @@ class Comment extends ControllerAbstract
 		{
 			$messageArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($postArray['email']) == Validator\ValidatorInterface::FAILED)
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($postArray['url'] && $urlValidator->validate($postArray['url']) == Validator\ValidatorInterface::FAILED)
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('url_incorrect');
 		}
@@ -176,7 +176,7 @@ class Comment extends ControllerAbstract
 		{
 			$messageArray[] = $this->_language->get('input_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) == Validator\ValidatorInterface::FAILED)
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}

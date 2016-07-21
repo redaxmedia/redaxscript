@@ -28,7 +28,7 @@ class InstallStatus extends ViewAbstract
 	{
 		$output = null;
 
-		/* validate error */
+		/* handle error */
 
 		$messageArray = $this->_validateError();
 		if ($messageArray)
@@ -38,7 +38,7 @@ class InstallStatus extends ViewAbstract
 			));
 		}
 
-		/* validate warning */
+		/* handle warning */
 
 		$messageArray = $this->_validateWarning();
 		if ($messageArray)
@@ -93,12 +93,11 @@ class InstallStatus extends ViewAbstract
 	protected function _validateError()
 	{
 		$messageArray = array();
-
 		if (!$this->_registry->get('dbStatus'))
 		{
 			$messageArray[] = $this->_language->get('database_failed');
 		}
-		if (!$this->_registry->get('config'))
+		if (!$this->_registry->get('configPermission'))
 		{
 			$messageArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
 		}
@@ -128,13 +127,9 @@ class InstallStatus extends ViewAbstract
 	protected function _validateWarning()
 	{
 		$messageArray = array();
-		if ($this->_registry->get('osServer') != 'linux')
+		if ($this->_registry->get('phpOs') !== 'linux')
 		{
-			$messageArray[] = $this->_language->get('linux_no', '_installation');
-		}
-		if (!$this->_registry->get('htaccess'))
-		{
-			$messageArray[] = $this->_language->get('htaccess_no', '_installation');
+			$messageArray[] = $this->_language->get('php_os_no', '_installation');
 		}
 		if (!$this->_registry->get('modDeflate'))
 		{
