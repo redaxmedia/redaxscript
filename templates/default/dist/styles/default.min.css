@@ -131,7 +131,9 @@ a
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
 	padding: 0.5em;
 	text-decoration: none;
+	transition: -webkit-transform 0.2s;
 	transition: transform 0.2s;
+	transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .rs-link-readmore:after
@@ -149,6 +151,7 @@ a
 .rs-link-readmore:active
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
 
@@ -543,15 +546,32 @@ a
 
 /* @section 1. slide in down */
 
-@keyframes rs-slide-in-down
+@-webkit-keyframes rs-slide-in-down
 {
 	from
 	{
+		-webkit-transform: translateY(-5em);
 		transform: translateY(-5em);
 	}
 
 	to
 	{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+@keyframes rs-slide-in-down
+{
+	from
+	{
+		-webkit-transform: translateY(-5em);
+		transform: translateY(-5em);
+	}
+
+	to
+	{
+		-webkit-transform: translateY(0);
 		transform: translateY(0);
 	}
 }
@@ -762,7 +782,9 @@ a
 .rs-button-default, a.rs-button-default
 {
 	color: rgb(255, 255, 255);
+	transition: box-shadow 0.1s, -webkit-transform 0.1s;
 	transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s, -webkit-transform 0.1s;
 }
 
 .rs-button-default:hover
@@ -773,6 +795,7 @@ a
 .rs-button-default:active
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	-webkit-transform: translateY(2px);
 	transform: translateY(2px);
 }
 
@@ -894,6 +917,7 @@ a
 
 .rs-dialog, .rs-dialog-overlay
 {
+	-webkit-animation: rs-fade 0.4s;
 	animation: rs-fade 0.4s;
 	border-radius: 0.25em;
 }
@@ -1606,6 +1630,7 @@ ul.rs-list-default li:before
 
 .rs-title-teaser
 {
+	-webkit-animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
 	background: rgba(50, 62, 76, 0.8);
 	border-left: 0.25em solid #c77a46;

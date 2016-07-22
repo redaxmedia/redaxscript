@@ -459,6 +459,7 @@
 
 .rs-admin-component-dialog, .rs-admin-dialog-overlay
 {
+	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }
 
@@ -1090,6 +1091,14 @@
 	content: '˅';
 }
 
+@media (min-width: 50em)
+{
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	{
+		content: '';
+	}
+}
+
 /* @section 3. list panel */
 
 /* @section 3.1 general */
@@ -1106,6 +1115,22 @@
 	cursor: pointer;
 	display: block;
 	font: bold 1.125em/2.75em 'open sans condensed', arial, sans-serif;
+}
+
+@media (min-width: 50em)
+{
+	.rs-admin-list-panel
+	{
+	}
+	.rs-admin-list-panel a, .rs-admin-list-panel span
+{
+		line-height: 3.625em;
+	}
+	.rs-admin-list-panel > li
+{
+		float: left;
+		position: relative;
+	}
 }
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover, .rs-admin-list-panel span:hover a
@@ -1144,25 +1169,37 @@
 	display: none;
 }
 
-/* TODO: try the selector .rs-admin-wrapper-panel over .rs-admin-list-panel .rs-admin-wrapper-panel-link */
-/* bad idea: cascade is not high enough (would be overridden by ".rs-admin-list-panel a" */
+@media (min-width: 50em)
+{
+	.rs-admin-list-panel-children
+	{
+		background: rgb(32, 32, 32);
+		position: absolute;
+		width: 100%
+	}
+	.rs-admin-list-panel-children ul
+{
+		left: 100%;
+		top: 0;
+	}
+}
 
 /* @section 3.3 panel children link */
 
 .rs-admin-list-panel .rs-admin-wrapper-panel-link
 {
+	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 	padding: 0 0.75em;
 }
 
-/* TODO: stay in the context of the wrapper using .rs-admin-wrapper-panel .rs-admin-link-view */
-/* look above */
-
-.rs-admin-list-panel .rs-admin-link-view
+.rs-admin-wrapper-panel-link .rs-admin-link-view
 {
+	-webkit-flex: 1 1 0;
 	-ms-flex: 1 1 0;
 	flex: 1 1 0;
 }
@@ -1186,6 +1223,14 @@
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;
+}
+
+@media (min-width: 50em)
+{
+	.rs-admin-list-panel .rs-admin-link-new:after
+	{
+		text-align: right;
+	}
 }
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
@@ -1280,27 +1325,6 @@
 
 @media (min-width: 50em)
 {
-	.rs-admin-list-panel a, .rs-admin-list-panel span
-	{
-		line-height: 3.625em;
-	}
-
-	.rs-admin-list-panel .rs-admin-item-panel > span:after
-	{
-		content: '';
-	}
-
-	.rs-admin-list-panel > li
-	{
-		float: left;
-		position: relative;
-	}
-
-	.rs-admin-list-panel .rs-admin-link-new:after
-	{
-		text-align: right;
-	}
-
 	.rs-admin-list-panel.rs-admin-has-column1 > li
 	{
 		width: 100%;
@@ -1329,19 +1353,6 @@
 	.rs-admin-list-panel.rs-admin-has-column6 > li
 	{
 		width: 16.66%;
-	}
-
-	.rs-admin-list-panel-children
-	{
-		background: rgb(32, 32, 32);
-		position: absolute;
-		width: 100%;
-	}
-
-	.rs-admin-list-panel-children ul
-	{
-		left: 100%;
-		top: 0;
 	}
 }
 

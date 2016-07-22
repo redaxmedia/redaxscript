@@ -118,6 +118,14 @@
 	content: '˅';
 }
 
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	{
+		content: '';
+	}
+}
+
 /* @section 3. list panel */
 
 /* @section 3.1 general */
@@ -134,6 +142,24 @@
 		cursor: pointer;
 		display: block;
 		font: bold 1.125em/2.75em var(--rs-admin-font-primary);
+	}
+}
+
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel
+	{
+		& a,
+		& span
+		{
+			line-height: 3.625em;
+		}
+
+		& > li
+		{
+			float: left;
+			position: relative;
+		}
 	}
 }
 
@@ -175,8 +201,21 @@
 	display: none;
 }
 
-/* TODO: try the selector .rs-admin-wrapper-panel over .rs-admin-list-panel .rs-admin-wrapper-panel-link */
-/* bad idea: cascade is not high enough (would be overridden by ".rs-admin-list-panel a" */
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel-children
+	{
+		background: gray(32);
+		position: absolute;
+		width: 100%;
+
+		& ul
+		{
+			left: 100%;
+			top: 0;
+		}
+	}
+}
 
 /* @section 3.3 panel children link */
 
@@ -187,10 +226,7 @@
 	padding: 0 0.75em;
 }
 
-/* TODO: stay in the context of the wrapper using .rs-admin-wrapper-panel .rs-admin-link-view */
-/* look above */
-
-.rs-admin-list-panel .rs-admin-link-view
+.rs-admin-wrapper-panel-link .rs-admin-link-view
 {
 	flex: 1 1 0;
 }
@@ -214,6 +250,14 @@
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;
+}
+
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel .rs-admin-link-new:after
+	{
+		text-align: right;
+	}
 }
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
@@ -308,32 +352,8 @@
 
 /* @section 5.1 medium min */
 
-/* TODO: move the query to the related declaration accept a @section 5. columns with .rs-admin-has-column* > li */
-
 @media (--media-medium-min)
 {
-	.rs-admin-list-panel a,
-	.rs-admin-list-panel span
-	{
-		line-height: 3.625em;
-	}
-
-	.rs-admin-list-panel .rs-admin-item-panel > span:after
-	{
-		content: '';
-	}
-
-	.rs-admin-list-panel > li
-	{
-		float: left;
-		position: relative;
-	}
-
-	.rs-admin-list-panel .rs-admin-link-new:after
-	{
-		text-align: right;
-	}
-
 	.rs-admin-list-panel.rs-admin-has-column1 > li
 	{
 		width: 100%;
@@ -362,19 +382,6 @@
 	.rs-admin-list-panel.rs-admin-has-column6 > li
 	{
 		width: 16.66%;
-	}
-
-	.rs-admin-list-panel-children
-	{
-		background: gray(32);
-		position: absolute;
-		width: 100%;
-	}
-
-	.rs-admin-list-panel-children ul
-	{
-		left: 100%;
-		top: 0;
 	}
 }
 
