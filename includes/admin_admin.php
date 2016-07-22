@@ -233,7 +233,7 @@ function admin_panel_list()
 	if ($counterNotification)
 	{
 		$counter++;
-		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification ' . implode(' ', $notificationHasArray) . '"><span class="rs-admin-text-notification">' . Redaxscript\Language::get('notifications') . ($counterNotification ? '<small class="rs-admin-text-notification-counter">' . $counterNotification . '</small>' : null) . '</span>';
+		$output .= '<li class="rs-admin-js-item-panel rs-admin-item-panel rs-admin-item-notification ' . implode(' ', $notificationHasArray) . '"><span class="rs-admin-text-notification">' . ($counterNotification ? '<small class="rs-admin-text-notification-counter">' . $counterNotification . '</small>' : null) . Redaxscript\Language::get('notifications') . '</span>';
 		$output .= '<ul class="rs-admin-list-panel-children rs-admin-list-panel-children-notification">' . $outputNotification . '</ul></li>';
 	}
 

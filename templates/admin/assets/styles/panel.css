@@ -275,16 +275,17 @@
 
 .rs-admin-text-notification-counter
 {
+	border: 0.25em solid gray(32);
 	border-radius: 50%;
 	color: gray(32);
-	display: inline-block;
 	font-size: 0.75em;
-	height: 2em;
-	line-height: 1.875em;
-	margin-left: 0.5em;
+	height: 1.5em;
+	left: 1.75em;
+	line-height: 1.5em;
+	position: absolute;
 	text-align: center;
-	vertical-align: middle;
-	width: 2em;
+	top: 0.75em;
+	width: 1.5em;
 }
 
 .rs-admin-has-info .rs-admin-text-notification-counter
