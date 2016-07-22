@@ -943,34 +943,30 @@ a
 
 /* @section 1. link dock admin */
 
-/* TODO: add a dock.css to the default template to fix too long text issues like https://snag.gy/zGZ6Lt.jpg */
-/* TODO: optional: icon only view with width: 33% / flexbox instead of width: 3em https://snag.gy/hkD8W4.jpg */
-
-.rs-sidebar
+@media (min-width: 50em)
 {
-
-}
-
-.rs-sidebar .rs-admin-description-dock
+	.rs-sidebar
+	{
+	}
+	.rs-sidebar .rs-admin-description-dock
 {
-	display: none;
-}
-
-.rs-sidebar .rs-admin-box-dock
+		display: none;
+	}
+	.rs-sidebar .rs-admin-box-dock
 {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
-
-.rs-sidebar .rs-admin-link-dock
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	.rs-sidebar .rs-admin-link-dock
 {
-	-webkit-flex: 1 1 0;
-	-ms-flex: 1 1 0;
-	flex: 1 1 0;
+		-webkit-flex: 1 1 0;
+		-ms-flex: 1 1 0;
+		flex: 1 1 0;
+	}
 }
 /**
  * @tableofcontents

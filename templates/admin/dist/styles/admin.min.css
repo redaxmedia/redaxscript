@@ -477,9 +477,6 @@
 
 /* @section 1. link dock admin */
 
-/* TODO: add a dock.css to the default template to fix too long text issues like https://snag.gy/zGZ6Lt.jpg */
-/* TODO: optional: icon only view with width: 33% / flexbox instead of width: 3em https://snag.gy/hkD8W4.jpg */
-
 .rs-admin-link-dock
 {
 	float: left;

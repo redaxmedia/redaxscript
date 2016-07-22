@@ -12,24 +12,23 @@
 
 /* @section 1. link dock admin */
 
-/* TODO: add a dock.css to the default template to fix too long text issues like https://snag.gy/zGZ6Lt.jpg */
-/* TODO: optional: icon only view with width: 33% / flexbox instead of width: 3em https://snag.gy/hkD8W4.jpg */
-
-.rs-sidebar
+@media (--media-medium-min)
 {
-	& .rs-admin-description-dock
+	.rs-sidebar
 	{
-		display: none;
-	}
+		& .rs-admin-description-dock
+		{
+			display: none;
+		}
 
-	& .rs-admin-box-dock
-	{
-		display: flex;
-		justify-content: space-between;
-	}
+		& .rs-admin-box-dock
+		{
+			display: flex;
+			justify-content: space-between;
+		}
 
-	& .rs-admin-link-dock {
-		flex: 1 1 0;
+		& .rs-admin-link-dock {
+			flex: 1 1 0;
+		}
 	}
-
 }
