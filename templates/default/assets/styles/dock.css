@@ -1,0 +1,35 @@
+/**
+ * @tableofcontents
+ *
+ * 1. link dock admin
+ *    1.1 icons
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. link dock admin */
+
+/* TODO: add a dock.css to the default template to fix too long text issues like https://snag.gy/zGZ6Lt.jpg */
+/* TODO: optional: icon only view with width: 33% / flexbox instead of width: 3em https://snag.gy/hkD8W4.jpg */
+
+.rs-sidebar
+{
+	& .rs-admin-description-dock
+	{
+		display: none;
+	}
+
+	& .rs-admin-box-dock
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	& .rs-admin-link-dock {
+		flex: 1 1 0;
+	}
+
+}
