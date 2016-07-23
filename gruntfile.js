@@ -395,6 +395,28 @@ module.exports = function (grunt)
 						})
 					]
 				}
+			},
+			colorguardTemplate:
+			{
+				src:
+				[
+					'templates/*/dist/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('colorguard')(
+						{
+							threshold: 0.5,
+							allowEquivalentNotation: true
+						}),
+						require('postcss-reporter')(
+						{
+							throwError: true
+						})
+					]
+				}
 			}
 		},
 		shell:
@@ -711,6 +733,7 @@ module.exports = function (grunt)
 		'jshint',
 		'jsonlint',
 		'stylelint',
+		'colorguard',
 		'htmlhint',
 		'phpcs',
 		'phpcpd',
@@ -720,6 +743,10 @@ module.exports = function (grunt)
 	[
 		'postcss:stylelintBase',
 		'postcss:stylelintTemplate'
+	]);
+	grunt.registerTask('colorguard',
+	[
+		'postcss:colorguardTemplate'
 	]);
 	grunt.registerTask('toclint',
 	[

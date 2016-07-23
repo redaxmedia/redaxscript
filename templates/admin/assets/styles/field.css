@@ -27,7 +27,7 @@
 .rs-admin-field-textarea
 {
 	background: gray(240);
-	border: 1px solid gray(201);
+	border: 1px solid gray(200);
 	border-radius: 0.125em;
 	color: gray(106);
 	font: 1rem var(--rs-admin-font-secondary);
@@ -78,7 +78,7 @@
 .rs-admin-field-textarea[readonly]
 {
 	background: gray(212);
-	border-color: gray(213);
+	border-color: gray(200);
 	color: gray(164);
 }
 

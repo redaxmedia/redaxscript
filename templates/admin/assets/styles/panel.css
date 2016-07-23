@@ -357,6 +357,14 @@
 	}
 }
 
+@media (--media-medium-min) and (--media-large-max)
+{
+	.rs-admin-list-panel-children-notification
+	{
+		width: 200%;
+	}
+}
+
 /* @section 5. query */
 
 /* @section 5.1 medium min */
@@ -391,13 +399,5 @@
 	.rs-admin-list-panel.rs-admin-has-column6 > li
 	{
 		width: 16.66%;
-	}
-}
-
-@media (--media-medium-min) and (--media-large-max)
-{
-	.rs-admin-list-panel-children-notification
-	{
-		width: 200%;
 	}
 }

@@ -17,6 +17,7 @@
 	{
 		"autoprefixer": "6.3.7",
 		"babel-polyfill": "6.9.1",
+		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-compress": "1.3.0",
 		"grunt-contrib-concat": "1.0.1",

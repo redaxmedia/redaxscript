@@ -459,7 +459,6 @@
 
 .rs-admin-component-dialog, .rs-admin-dialog-overlay
 {
-	-webkit-animation: fade 0.4s;
 	animation: fade 0.4s;
 }
 
@@ -554,7 +553,7 @@
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
 	background: rgb(240, 240, 240);
-	border: 1px solid rgb(201, 201, 201);
+	border: 1px solid rgb(200, 200, 200);
 	border-radius: 0.125em;
 	color: rgb(106, 106, 106);
 	font: 1rem arial, sans-serif;
@@ -596,7 +595,7 @@
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
 {
 	background: rgb(212, 212, 212);
-	border-color: rgb(213, 213, 213);
+	border-color: rgb(200, 200, 200);
 	color: rgb(164, 164, 164);
 }
 
@@ -1192,10 +1191,8 @@
 
 .rs-admin-list-panel .rs-admin-wrapper-panel-link
 {
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-justify-content: space-between;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 	padding: 0 0.75em;
@@ -1203,7 +1200,6 @@
 
 .rs-admin-wrapper-panel-link .rs-admin-link-view
 {
-	-webkit-flex: 1 1 0;
 	-ms-flex: 1 1 0;
 	flex: 1 1 0;
 }
@@ -1322,6 +1318,14 @@
 	content: '\69';
 }
 
+@media (min-width: 50em) and (max-width: 79.999em)
+{
+	.rs-admin-list-panel-children-notification
+	{
+		width: 200%;
+	}
+}
+
 /* @section 5. query */
 
 /* @section 5.1 medium min */
@@ -1358,15 +1362,6 @@
 		width: 16.66%;
 	}
 }
-
-@media (min-width: 50em) and (max-width: 79.999em)
-{
-	.rs-admin-list-panel-children-notification
-	{
-		width: 200%;
-	}
-}
-
 /**
  * @tableofcontents
  *
