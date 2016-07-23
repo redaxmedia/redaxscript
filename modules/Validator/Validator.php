@@ -57,7 +57,7 @@ class Validator extends Config
 			if (in_array($type, self::$_configArray['typeArray']))
 			{
 				$message = array(
-					'text' => $value->message,
+					'text' => (string)$value->message,
 					'attr' => array(
 						'href' => $urlBase,
 						'target' => '_blank'

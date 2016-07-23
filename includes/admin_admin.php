@@ -213,6 +213,7 @@ function admin_panel_list()
 					$moduleLastKey = $moduleKey;
 					if (array_key_exists('text', $value) && array_key_exists('attr', $value))
 					{
+						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
 						$outputNotification .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel rs-admin-is-' . $typeKey . '">' . $value['text'] . '</a>';
 					}
 					else

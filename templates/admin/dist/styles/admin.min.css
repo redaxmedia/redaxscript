@@ -1282,7 +1282,6 @@
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span:before
 {
-	background: #c56161;
 	border-radius: 50%;
 	color: rgb(0, 0, 0);/* TODO: add the needed icons to the admin icon font */
 	font: 0.875em/1.75em 'icon default';
