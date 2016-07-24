@@ -141,6 +141,7 @@
 .rs-gallery-meta
 {
 	color: rgba(0, 0, 0, 0.2);
+	border-radius: 0 0 0.25em 0.25em;
 	bottom: 0;
 	font: bold 0.75em arial;
 	left: 0;

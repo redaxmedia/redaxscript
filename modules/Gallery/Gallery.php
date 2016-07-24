@@ -162,7 +162,6 @@ class Gallery extends Config
 
 		$galleryCounter = 0;
 		$galleryTotal = count($galleryDirectoryArray);
-		$galleryId = uniqid('gallery-');
 
 		/* process directory */
 
@@ -184,7 +183,6 @@ class Gallery extends Config
 					'href' => $imagePath,
 					'data-counter' => ++$galleryCounter,
 					'data-total' => $galleryTotal,
-					'data-id' => $galleryId,
 					'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
 					'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
 					'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null

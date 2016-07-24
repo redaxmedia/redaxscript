@@ -78,7 +78,6 @@
 				{
 					counter: link.data('counter'),
 					total: link.data('total'),
-					id: link.data('id'),
 					artist: link.data('artist') || '',
 					date: link.data('date') || '',
 					description: link.data('description') || ''
@@ -86,7 +85,7 @@
 
 				/* gallery related */
 
-				gallery.related = $('#' + gallery.data.id);
+				gallery.related = link.closest('ul');
 
 				/* add loader */
 
