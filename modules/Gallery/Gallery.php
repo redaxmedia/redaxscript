@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\Gallery;
 use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Html;
+use Redaxscript\Language;
 
 /**
  * lightbox enhanced image gallery
@@ -87,7 +88,6 @@ class Gallery extends Config
 		{
 			/* remove as needed */
 
-			/* TODO: call _removeThumb if $directory is empty */
 			if ($optionArray['command'] === 'remove')
 			{
 				self::_removeThumb($directory);
@@ -95,10 +95,9 @@ class Gallery extends Config
 
 			/* create as needed */
 
-			/* TODO: call _createThumb if thumbs folder does not exist */
-			if ($optionArray['command'] === 'create')
+			if ($optionArray['command'] === 'create' || !is_dir($directory . '/' . self::$_configArray['thumbDirectory']))
 			{
-				self::_createThumb($directory);
+				self::_createThumb($directory, $optionArray);
 			}
 
 			$outputItem .= self::_renderItem($directory, $optionArray);
@@ -147,7 +146,9 @@ class Gallery extends Config
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory, self::$_configArray['thumbDirectory']);
+		$galleryDirectory->init($directory, array(
+			self::$_configArray['thumbDirectory']
+		));
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
 		/* adjust order */
@@ -224,6 +225,7 @@ class Gallery extends Config
 			$dataArray['date'] = $exifArray['DateTime'] ? date(Db::getSetting('date'), strtotime($exifArray['DateTime'])) : null;
 			$dataArray['description'] = $exifArray['ImageDescription'];
 		}
+		$dataArray = array_filter($dataArray);
 		return $dataArray;
 	}
 
@@ -258,52 +260,62 @@ class Gallery extends Config
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory, self::$_configArray['thumbDirectory']);
+		$galleryDirectory->init($directory, array(
+			self::$_configArray['thumbDirectory']
+		));
 		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
 		/* process directory */
 
-		foreach ($galleryDirectoryArray as $value)
+		if (chmod($directory . '/' . self::$_configArray['thumbDirectory'], 0777))
 		{
-			$imagePath = $directory . '/' . $value;
-			$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
-			$extension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-
-			/* switch extension */
-
-			switch ($extension)
+			foreach ($galleryDirectoryArray as $value)
 			{
-				case 'gif':
-					$image = imagecreatefromgif($imagePath);
-					break;
-				case 'jpg':
-					$image = imagecreatefromjpeg($imagePath);
-					break;
-				case 'png':
-					$image = imagecreatefrompng($imagePath);
-					break;
-				default:
-					$image = null;
+				$imagePath = $directory . '/' . $value;
+				$imageExtension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
+				$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
+
+				/* switch extension */
+
+				switch ($imageExtension)
+				{
+					case 'gif':
+						$image = imagecreatefromgif($imagePath);
+						break;
+					case 'jpg':
+						$image = imagecreatefromjpeg($imagePath);
+						break;
+					case 'png':
+						$image = imagecreatefrompng($imagePath);
+						break;
+					default:
+						$image = null;
+				}
+
+				/* source and dist */
+
+				$sourceArray = self::_calcSource($imagePath);
+				$distArray = self::_calcDist($sourceArray, $optionArray);
+
+				/* create thumb files */
+
+				$thumb = imagecreatetruecolor($distArray['width'], $distArray['height']);
+				imagecopyresampled($thumb, $image, 0, 0, 0, 0, $distArray['width'], $distArray['height'], $sourceArray['width'], $sourceArray['height']);
+				imagejpeg($thumb, $thumbPath, $distArray['quality']);
+
+				/* destroy image */
+
+				imagedestroy($thumb);
+				imagedestroy($image);
 			}
+		}
 
-			/* source and dist */
+		/* handle notification */
 
-			$sourceArray = self::_calcSource();
-			/* TODO: height and width in distArray are empty */
-			$distArray = self::_calcDist($sourceArray, $optionArray);
-
-			/* create thumb files */
-
-			$thumb = imagecreatetruecolor($distArray['width'], $distArray['height']);
-			imagecopyresampled($thumb, $image, 0, 0, 0, 0, $distArray['width'], $distArray['height'], $sourceArray['width'], $sourceArray['height']);
-			imagejpeg($thumb, $thumbPath, $distArray['quality']);
-			/* TODO: add a notification if the file could not be created */
-
-			/* destroy image */
-
-			imagedestroy($thumb);
-			imagedestroy($image);
+		else
+		{
+			self::setNotification('error', Language::get('directory_permission_grant') . Language::get('colon') . ' ' . $directory . '/' . self::$_configArray['thumbDirectory']  . Language::get('point'));
 		}
 	}
 
