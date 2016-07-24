@@ -39,8 +39,7 @@ function router()
 	{
 		if (Redaxscript\Request::getPost('Redaxscript\View\InstallForm'))
 		{
-			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
-			$installController->_config = \Redaxscript\Config::getInstance();
+			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Config::getInstance());
 			echo $installController->process();
 			return;
 		}

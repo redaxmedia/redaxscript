@@ -1,0 +1,13 @@
+[
+	[
+		{
+			"dbType": "sqlite",
+			"dbHost": "localhost",
+			"dbName": "test",
+			"dbUser": "test",
+			"dbPassword": "test",
+			"dbPrefix": "test_",
+			"dbSalt": "1"
+		}
+	]
+]

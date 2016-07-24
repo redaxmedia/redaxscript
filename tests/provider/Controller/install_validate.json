@@ -1,0 +1,61 @@
+[
+	[
+		{
+			"dbType": "",
+			"dbHost": "",
+			"dbName": "",
+			"dbUser": "",
+			"dbPassworda": "",
+			"dbPrefix": "",
+			"dbSalt": "",
+			"name": "",
+			"user": "",
+			"email": "",
+			"password": ""
+		},
+		[
+			"Name is empty",
+			"User is empty",
+			"Password is empty",
+			"Email is empty"
+		]
+	],
+	[
+		{
+			"dbType": "",
+			"dbHost": "",
+			"dbName": "",
+			"dbUser": "",
+			"dbPassworda": "",
+			"dbPrefix": "",
+			"dbSalt": "",
+			"name": "",
+			"user": "!",
+			"email": "!",
+			"password": "!"
+		},
+		[
+			"Name is empty",
+			"User is incorrect",
+			"Password is incorrect",
+			"Email is incorrect"
+		]
+	],
+	[
+		{
+			"dbType": "sqlite",
+			"dbHost": ":memory:",
+			"dbName": "",
+			"dbUser": "",
+			"dbPassworda": "test",
+			"dbPrefix": "",
+			"dbSalt": "",
+			"name": "Test",
+			"user": "test",
+			"email": "test@test.com",
+			"password": "test"
+		},
+		[
+		]
+	]
+]
