@@ -27,6 +27,7 @@ use PDOException;
  * @method getDb(string $connection = null)
  * @method rawExecute(string $query, array $parameterArray = array(), string $connection = null)
  * @method rawQuery(string $query, array $parameterArray = array())
+ * @method resetDb()
  * @method orderByAsc(string $column)
  * @method orderByDesc(string $column)
  * @method tableAlias(string $tableAlias)
@@ -153,7 +154,7 @@ class Db extends ORM
 
 	public static function rawInstance()
 	{
-		self::_setup_db();
+		self::_setupDb();
 		return new self(null);
 	}
 

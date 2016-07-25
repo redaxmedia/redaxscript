@@ -139,7 +139,7 @@ class Config extends Singleton
 
 		/* write to file */
 
-		$output = file_put_contents(self::$_configFile, $contents) > 0 ? true : false;
+		$output = file_put_contents(self::$_configFile, $contents) > 0;
 		return $output;
 	}
 

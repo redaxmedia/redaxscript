@@ -123,6 +123,10 @@ class Install extends ControllerAbstract
 			));
 		}
 
+		/* refresh connection */
+
+		$this->_refresh();
+
 		/* install and mail */
 
 		if (!$this->_install($adminArray) && !$this->_mail($adminArray))
@@ -277,6 +281,20 @@ class Install extends ControllerAbstract
 		$this->_config->set('dbPrefix', $configArray['dbPrefix']);
 		$this->_config->set('dbSalt', $configArray['dbSalt']);
 		return $this->_config->write();
+	}
+
+	/**
+	 * refresh the connection
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected function _refresh()
+	{
+		Db::init();
+		Db::resetDb();
 	}
 
 	/**

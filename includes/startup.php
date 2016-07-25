@@ -97,7 +97,7 @@ function startup()
 		Redaxscript\Registry::set('modHeaders', true);
 		Redaxscript\Registry::set('modRewrite', true);
 	}
-	Redaxscript\Registry::set('pdoDriver', count($driverArray) ? true : false);
+	Redaxscript\Registry::set('pdoDriver', count($driverArray) > 0);
 	Redaxscript\Registry::set('pdoMysql', in_array('mysql', $driverArray));
 	Redaxscript\Registry::set('pdoPgsql', in_array('pgsql', $driverArray));
 	Redaxscript\Registry::set('pdoSqlite', in_array('sqlite', $driverArray));
