@@ -120,7 +120,7 @@ class Install extends ControllerAbstract
 		if (!$this->_write($dbArray))
 		{
 			return $this->_error(array(
-				'message' => $this->_language->get('something_wrong')
+				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php'
 			));
 		}
 
@@ -144,7 +144,7 @@ class Install extends ControllerAbstract
 			));
 		}
 		return $this->_success(array(
-				'message' => $this->_language->get('_installation', 'installation_completed'),
+				'message' => $this->_language->get('installation_completed', '_installation'),
 				'redirect' => $this->_registry->get('root'),
 				'timeout' => 5
 			)

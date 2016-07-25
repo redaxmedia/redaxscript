@@ -1,0 +1,23 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- title -->
+
+<title><?php echo Tag::language('installation', '_installation'); ?></title>
+
+<!-- meta -->
+
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#323e4c" />
+<meta name="msapplication-navbutton-color" content="#323e4c" />
+<meta name="apple-mobile-web-app-status-bar-stylecontent" content="#323e4c" />
+
+<!-- link -->
+
+<link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
+<link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
+
+<!-- style and script -->
+
+<?php echo Tag::style(); ?>
+<?php echo Tag::script('init'); ?>

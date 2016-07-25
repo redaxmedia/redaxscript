@@ -45,10 +45,9 @@ function router()
 		}
 		else
 		{
-			$installStatus = new Redaxscript\View\InstallStatus(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-			echo $installStatus->render();
+			$systemStatus = new Redaxscript\View\SystemStatus(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 			$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-			echo $installForm->render();
+			echo $systemStatus->render() . $installForm->render();
 			return;
 		}
 	}

@@ -7,7 +7,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
 /**
- * InstallStatusTest
+ * SystemStatusTest
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\View;
  * @author Henry Ruhs
  */
 
-class InstallStatusTest extends TestCaseAbstract
+class SystemStatusTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class
@@ -56,7 +56,7 @@ class InstallStatusTest extends TestCaseAbstract
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/install_status_render.json');
+		return $this->getProvider('tests/provider/View/system_status_render.json');
 	}
 
 	/**
@@ -69,7 +69,7 @@ class InstallStatusTest extends TestCaseAbstract
 
 	public function providerError()
 	{
-		return $this->getProvider('tests/provider/View/install_status_validate_error.json');
+		return $this->getProvider('tests/provider/View/system_status_validate_error.json');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class InstallStatusTest extends TestCaseAbstract
 
 	public function providerWarning()
 	{
-		return $this->getProvider('tests/provider/View/install_status_validate_warning.json');
+		return $this->getProvider('tests/provider/View/system_status_validate_warning.json');
 	}
 
 	/**
@@ -101,11 +101,11 @@ class InstallStatusTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$installForm = new View\InstallStatus($this->_registry, $this->_language);
+		$systemStatus = new View\SystemStatus($this->_registry, $this->_language);
 
 		/* actual */
 
-		$actual = $installForm->render();
+		$actual = $systemStatus->render();
 
 		/* compare */
 
@@ -128,11 +128,11 @@ class InstallStatusTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$installStatus = new View\InstallStatus($this->_registry, $this->_language);
+		$systemStatus = new View\SystemStatus($this->_registry, $this->_language);
 
 		/* actual */
 
-		$actual = $this->callMethod($installStatus, '_validateError');
+		$actual = $this->callMethod($systemStatus, '_validateError');
 
 		/* compare */
 
@@ -155,11 +155,11 @@ class InstallStatusTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$installStatus = new View\InstallStatus($this->_registry, $this->_language);
+		$systemStatus = new View\SystemStatus($this->_registry, $this->_language);
 
 		/* actual */
 
-		$actual = $this->callMethod($installStatus, '_validateWarning');
+		$actual = $this->callMethod($systemStatus, '_validateWarning');
 
 		/* compare */
 

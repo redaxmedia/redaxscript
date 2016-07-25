@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Messenger;
 
 /**
- * children class to create the install status
+ * children class to create the system status
  *
  * @since 3.0.0
  *
@@ -14,7 +14,7 @@ use Redaxscript\Messenger;
  * @author Balázs Szilágyi
  */
 
-class InstallStatus extends ViewAbstract
+class SystemStatus extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -96,10 +96,6 @@ class InstallStatus extends ViewAbstract
 		if (!$this->_registry->get('dbStatus'))
 		{
 			$messageArray[] = $this->_language->get('database_failed');
-		}
-		if (!$this->_registry->get('configPermission'))
-		{
-			$messageArray[] = $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php';
 		}
 		if (version_compare($this->_registry->get('phpVersion'), '5.3', '<'))
 		{

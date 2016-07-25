@@ -75,7 +75,6 @@ function startup()
 
 	$driverArray = PDO::getAvailableDrivers();
 	$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
-	Redaxscript\Registry::set('configPermission', is_writable('config.php'));
 	Redaxscript\Registry::set('phpOs', strtolower(php_uname('s')));
 	Redaxscript\Registry::set('phpVersion', phpversion());
 	if (function_exists('session_status'))
