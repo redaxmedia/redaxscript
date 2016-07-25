@@ -1,12 +1,13 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
-use Redaxscript\Tests\TestCaseAbstract;
-use Redaxscript\Registry;
-use Redaxscript\Language;
-use Redaxscript\Request;
 use Redaxscript\Config;
 use Redaxscript\Controller;
+use Redaxscript\Installer;
+use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * InstallTest
@@ -74,7 +75,7 @@ class InstallTest extends TestCaseAbstract
 		$this->_request = Request::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'installer_');
+		$this->_config->set('dbPrefix', 'controller_');
 	}
 
 	/**
@@ -115,14 +116,27 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerInstall
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerInstall()
+	{
+		return $this->getProvider('tests/provider/Controller/install_install.json');
+	}
+
+	/**
 	 * testValidateDatabase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerValidateDatabase
-	 *
 	 * @param array $postArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerValidateDatabase
 	 */
 
 	public function testValidateDatabase($postArray = array(), $expect = null)
@@ -147,10 +161,10 @@ class InstallTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerValidateAccount
-	 *
 	 * @param array $postArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerValidateAccount
 	 */
 
 	public function testValidateAccount($postArray = array(), $expect = null)
@@ -168,5 +182,39 @@ class InstallTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testInstall
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $installArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerInstall
+	 */
+
+	public function testInstall($installArray = array(), $expect = null)
+	{
+		/* setup */
+
+		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+
+		/* actual */
+
+		$actual = $this->callMethod($controllerInstall, '_install', array(
+			$installArray
+		));
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+
+		/* teardown */
+
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawDrop();
 	}
 }

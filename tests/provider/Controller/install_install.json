@@ -1,0 +1,20 @@
+[
+	[
+		{
+			"adminName": "",
+			"adminUser": "",
+			"adminPassword": "",
+			"adminEmail": ""
+		},
+		false
+	],
+	[
+		{
+			"adminName": "Test",
+			"adminUser": "test",
+			"adminPassword": "test",
+			"adminEmail": "test@test.com"
+		},
+		true
+	]
+]

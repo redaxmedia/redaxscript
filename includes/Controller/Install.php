@@ -20,7 +20,6 @@ use Redaxscript\Validator;
  *
  * @package Redaxscript
  * @category Controller
- *
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
@@ -87,7 +86,7 @@ class Install extends ControllerAbstract
 		if ($messageArray)
 		{
 			return $this->_error(array(
-				'title' => Language::get('database'),
+				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			));
 		}
@@ -95,18 +94,18 @@ class Install extends ControllerAbstract
 		if ($messageArray)
 		{
 			return $this->_error(array(
-				'title' => Language::get('account'),
+				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			));
 		}
-		$dbArray = array(
-			'dbType' => $postArray['db-type'],
-			'dbHost' => $postArray['db-host'],
-			'dbName' => $postArray['db-name'],
-			'dbUser' => $postArray['db-user'],
-			'dbPassword' => $postArray['db-password'],
-			'dbPrefix' => $postArray['db-prefix'],
-			'dbSalt' => $postArray['db-salt']
+		$configArray = array(
+			'dbType' => $postArray['dbType'],
+			'dbHost' => $postArray['dbHost'],
+			'dbName' => $postArray['dbName'],
+			'dbUser' => $postArray['dbUser'],
+			'dbPassword' => $postArray['dbPassword'],
+			'dbPrefix' => $postArray['dbPrefix'],
+			'dbSalt' => $postArray['dbSalt']
 		);
 		$adminArray = array(
 			'adminUser' => $postArray['adminUser'],
@@ -117,38 +116,24 @@ class Install extends ControllerAbstract
 
 		/* write config */
 
-		if (!$this->_write($dbArray))
+		if (!$this->_write($configArray))
 		{
 			return $this->_error(array(
 				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php'
 			));
 		}
 
-		/* install database */
+		/* install and mail */
 
-		if (!$this->_install($adminArray))
+		if (!$this->_install($adminArray) && !$this->_mail($adminArray))
 		{
 			return $this->_error(array(
 				'message' => $this->_language->get('something_wrong')
 			));
 		}
-
-		/* handle success */
-
-		if (!$this->_mail($adminArray))
-		{
-			return $this->_error(array(
-				'message' => $this->_language->get('something_wrong'),
-				'redirect' => $this->_registry->get('root'),
-				'timeout' => 5
-			));
-		}
 		return $this->_success(array(
-				'message' => $this->_language->get('installation_completed', '_installation'),
-				'redirect' => $this->_registry->get('root'),
-				'timeout' => 5
-			)
-		);
+			'message' => $this->_language->get('installation_completed', '_installation')
+		));
 	}
 
 	/**
@@ -277,20 +262,20 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $writeArray
+	 * @param array $configArray
 	 *
 	 * @return array
 	 */
 
-	protected function _write($writeArray = array())
+	protected function _write($configArray = array())
 	{
-		$this->_config->set('dbType', $writeArray['dbType']);
-		$this->_config->set('dbHost', $writeArray['dbHost']);
-		$this->_config->set('dbName', $writeArray['dbName']);
-		$this->_config->set('dbUser', $writeArray['dbUser']);
-		$this->_config->set('dbPassword', $writeArray['dbPassword']);
-		$this->_config->set('dbPrefix', $writeArray['dbPrefix']);
-		$this->_config->set('dbSalt', $writeArray['dbSalt']);
+		$this->_config->set('dbType', $configArray['dbType']);
+		$this->_config->set('dbHost', $configArray['dbHost']);
+		$this->_config->set('dbName', $configArray['dbName']);
+		$this->_config->set('dbUser', $configArray['dbUser']);
+		$this->_config->set('dbPassword', $configArray['dbPassword']);
+		$this->_config->set('dbPrefix', $configArray['dbPrefix']);
+		$this->_config->set('dbSalt', $configArray['dbSalt']);
 		return $this->_config->write();
 	}
 
@@ -306,22 +291,21 @@ class Install extends ControllerAbstract
 
 	protected function _install($installArray = array())
 	{
-		Db::construct($this->_config);
-		Db::init();
-
-		/* installer */
-
-		$installer = new Installer($this->_config);
-		$installer->init();
-		$installer->rawDrop();
-		$installer->rawCreate();
-		if ($installArray)
+		$adminName = $installArray['adminName'];
+		$adminUser = $installArray['adminUser'];
+		$adminPassword = $installArray['adminPassword'];
+		$adminEmail = $installArray['adminEmail'];
+		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
+			$installer = new Installer($this->_config);
+			$installer->init();
+			$installer->rawDrop();
+			$installer->rawCreate();
 			$installer->insertData(array(
-				'adminName' => $installArray['name'],
-				'adminUser' => $installArray['user'],
-				'adminPassword' => $installArray['password'],
-				'adminEmail' => $installArray['email']
+				'adminName' => $installArray['adminName'],
+				'adminUser' => $installArray['adminUser'],
+				'adminPassword' => $installArray['adminPassword'],
+				'adminEmail' => $installArray['adminEmail']
 			));
 			return Db::getStatus() === 2;
 		}
@@ -352,12 +336,12 @@ class Install extends ControllerAbstract
 		/* prepare mail */
 
 		$toArray = array(
-			$mailArray['name'] => $mailArray['email']
+			$mailArray['adminName'] => $mailArray['adminEmail']
 		);
 		$fromArray = array(
 			Db::getSetting('author') => Db::getSetting('email')
 		);
-		$subject = $this->_language->get('installation');
+		$subject = $this->_language->get('installation', '_installation');
 		$bodyArray = array(
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminUser'],
 			'<br />',
