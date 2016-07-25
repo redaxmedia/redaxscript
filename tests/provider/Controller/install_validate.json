@@ -8,10 +8,10 @@
 			"dbPassword": "",
 			"dbPrefix": "",
 			"dbSalt": "",
-			"name": "",
-			"user": "",
-			"email": "",
-			"password": ""
+			"adminName": "",
+			"adminUser": "",
+			"adminPassword": "",
+			"adminEmail": ""
 		},
 		[
 			"Name is empty",
@@ -29,10 +29,10 @@
 			"dbPassword": "",
 			"dbPrefix": "",
 			"dbSalt": "",
-			"name": "",
-			"user": "!",
-			"email": "!",
-			"password": "!"
+			"adminName": "",
+			"adminUser": "_",
+			"adminPassword": "_",
+			"adminEmail": "test@test"
 		},
 		[
 			"Name is empty",
@@ -50,10 +50,10 @@
 			"dbPassword": "test",
 			"dbPrefix": "",
 			"dbSalt": "",
-			"name": "Test",
-			"user": "test",
-			"email": "test@test.com",
-			"password": "test"
+			"adminName": "Test",
+			"adminUser": "test",
+			"adminPassword": "test",
+			"adminEmail": "test@test.com"
 		},
 		[
 		]

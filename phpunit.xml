@@ -177,6 +177,7 @@
 		<!-- installer -->
 
 		<testsuite name="installer">
+			<file>tests/phpunit/Controller/InstallTest.php</file>
 			<file>tests/phpunit/InstallerTest.php</file>
 		</testsuite>
 

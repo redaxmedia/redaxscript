@@ -54,6 +54,14 @@ class InstallTest extends TestCaseAbstract
 	protected $_config;
 
 	/**
+	 * array to restore config
+	 *
+	 * @var array
+	 */
+
+	protected $_configArray = array();
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -65,32 +73,32 @@ class InstallTest extends TestCaseAbstract
 		$this->_language = Language::getInstance();
 		$this->_request = Request::getInstance();
 		$this->_config = Config::getInstance();
+		$this->_configArray = $this->_config->get();
+		$this->_config->set('dbPrefix', 'installer_controller_');
 	}
 
 	/**
-	 * providerRender
+	 * tearDown
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function tearDown()
+	{
+		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
+	}
+
+	/**
+	 * providerProcess
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerProcess()
 	{
 		return $this->getProvider('tests/provider/Controller/install_process.json');
-	}
-
-	/**
-	 * providerInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInstall()
-	{
-		return $this->getProvider('tests/provider/Controller/install_install.json');
 	}
 
 	/**
@@ -120,17 +128,30 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRender
+	 * providerInstall
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRender
+	 * @return array
+	 */
+
+	public function providerInstall()
+	{
+		return $this->getProvider('tests/provider/Controller/install_install.json');
+	}
+
+	/**
+	 * testProcess
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerProcess
 	 *
 	 * @param array $postArray
 	 * @param string $expect
 	 */
 
-	public function testRender($postArray = array(), $expect = null)
+	public function testProcess($postArray = array(), $expect = null)
 	{
 		/* setup */
 		// TODO: use vfsStream
@@ -144,6 +165,62 @@ class InstallTest extends TestCaseAbstract
 		/* compare */
 
 		//$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testValidate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerValidate
+	 *
+	 * @param array $postArray
+	 * @param string $expect
+	 */
+
+	public function testValidate($postArray = array(), $expect = null)
+	{
+		/* setup */
+
+		$installValidate = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+
+		/* actual */
+
+		$actual = $this->callMethod($installValidate, '_validate', array(
+			$postArray
+		));
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testWrite
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerWrite
+	 *
+	 * @param array $writeArray
+	 * @param string $expect
+	 */
+
+	public function testWrite($writeArray = array(), $expect = null)
+	{
+		/* setup */
+		// TODO: make this test work (vfsStream?)
+//		$installWrite = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+
+		/* actual */
+
+//		$actual = $this->callMethod($installWrite, '_write', array(
+//			$writeArray
+//		));
+
+		/* compare */
+
+//		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -172,61 +249,5 @@ class InstallTest extends TestCaseAbstract
 		/* compare */
 
 		//$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerValidate
-	 *
-	 * @param array $postArray
-	 * @param string $expect
-	 */
-
-	public function testValidate($postArray = array(), $expect = null)
-	{
-		/* setup */
-
-		$installValidate = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
-
-		/* actual */
-
-		$actual = $this->callMethod($installValidate, '_validate', array(
-			$postArray
-		));
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerWrite
-	 *
-	 * @param array $writeArray
-	 * @param string $expect
-	 */
-
-	public function testWrite($writeArray = array(), $expect = null)
-	{
-		/* setup */
-		// TODO: make this test work (vfsStream?)
-//		$installWrite = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
-
-		/* actual */
-
-//		$actual = $this->callMethod($installWrite, '_write', array(
-//			$writeArray
-//		));
-
-		/* compare */
-
-//		$this->assertEquals($expect, $actual);
 	}
 }

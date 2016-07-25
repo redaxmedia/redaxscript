@@ -10,7 +10,7 @@ use Redaxscript\Messenger;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category View *
+ * @category View
  * @author Balázs Szilágyi
  */
 
