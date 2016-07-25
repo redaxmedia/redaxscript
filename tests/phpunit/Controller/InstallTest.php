@@ -74,7 +74,7 @@ class InstallTest extends TestCaseAbstract
 		$this->_request = Request::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'installer_controller_');
+		$this->_config->set('dbPrefix', 'installer_');
 	}
 
 	/**
@@ -89,104 +89,51 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerProcess
+	 * providerValidateDatabase
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerValidateDatabase()
 	{
-		return $this->getProvider('tests/provider/Controller/install_process.json');
+		return $this->getProvider('tests/provider/Controller/install_validate_database.json');
 	}
 
 	/**
-	 * providerValidate
+	 * providerValidateAccount
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerValidate()
+	public function providerValidateAccount()
 	{
-		return $this->getProvider('tests/provider/Controller/install_validate.json');
+		return $this->getProvider('tests/provider/Controller/install_validate_account.json');
 	}
 
 	/**
-	 * providerWrite
+	 * testValidateDatabase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
-	 */
-
-	public function providerWrite()
-	{
-		return $this->getProvider('tests/provider/Controller/install_write.json');
-	}
-
-	/**
-	 * providerInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInstall()
-	{
-		return $this->getProvider('tests/provider/Controller/install_install.json');
-	}
-
-	/**
-	 * testProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerValidateDatabase
 	 *
 	 * @param array $postArray
 	 * @param string $expect
 	 */
 
-	public function testProcess($postArray = array(), $expect = null)
-	{
-		/* setup */
-		// TODO: use vfsStream
-		//$this->_request->set('post', $postArray);
-		//$installController= new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
-
-		/* actual */
-
-		//$actual = $installController->process();
-
-		/* compare */
-
-		//$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testValidate
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerValidate
-	 *
-	 * @param array $postArray
-	 * @param string $expect
-	 */
-
-	public function testValidate($postArray = array(), $expect = null)
+	public function testValidateDatabase($postArray = array(), $expect = null)
 	{
 		/* setup */
 
-		$installValidate = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
 
 		/* actual */
 
-		$actual = $this->callMethod($installValidate, '_validate', array(
+		$actual = $this->callMethod($controllerInstall, '_validateDatabase', array(
 			$postArray
 		));
 
@@ -196,58 +143,30 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testWrite
+	 * testValidateAccount
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerWrite
+	 * @dataProvider providerValidateAccount
 	 *
-	 * @param array $writeArray
+	 * @param array $postArray
 	 * @param string $expect
 	 */
 
-	public function testWrite($writeArray = array(), $expect = null)
-	{
-		/* setup */
-		// TODO: make this test work (vfsStream?)
-//		$installWrite = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
-
-		/* actual */
-
-//		$actual = $this->callMethod($installWrite, '_write', array(
-//			$writeArray
-//		));
-
-		/* compare */
-
-//		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerInstall
-	 *
-	 * @param array $installArray
-	 * @param string $expect
-	 */
-
-	public function testInstall($installArray = array(), $expect = null)
+	public function testValidateAccount($postArray = array(), $expect = null)
 	{
 		/* setup */
 
-		//$installInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
 
 		/* actual */
 
-		//$actual = $this->callMethod($installInstall, '_install', array(
-		//	$installArray
-		//));
+		$actual = $this->callMethod($controllerInstall, '_validateAccount', array(
+			$postArray
+		));
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

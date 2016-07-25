@@ -83,52 +83,70 @@ class Install extends ControllerAbstract
 
 		/* handle error */
 
-		$messageArray = $this->_validate($postArray);
+		$messageArray = $this->_validateDatabase($postArray);
 		if ($messageArray)
 		{
 			return $this->_error(array(
+				'title' => Language::get('database'),
 				'message' => $messageArray
 			));
 		}
+		$messageArray = $this->_validateAccount($postArray);
+		if ($messageArray)
+		{
+			return $this->_error(array(
+				'title' => Language::get('account'),
+				'message' => $messageArray
+			));
+		}
+		$dbArray = array(
+			'dbType' => $postArray['db-type'],
+			'dbHost' => $postArray['db-host'],
+			'dbName' => $postArray['db-name'],
+			'dbUser' => $postArray['db-user'],
+			'dbPassword' => $postArray['db-password'],
+			'dbPrefix' => $postArray['db-prefix'],
+			'dbSalt' => $postArray['db-salt']
+		);
+		$adminArray = array(
+			'adminUser' => $postArray['adminUser'],
+			'adminName' => $postArray['adminName'],
+			'adminEmail' => $postArray['adminEmail'],
+			'adminPassword' => $postArray['adminPassword']
+		);
 
-		/* write config file */
+		/* write config */
 
-//		if (!$this->_write($postArray))
-//		{
-//			return $this->_error(array(
-//				'message' => $this->_language->get('something_wrong')
-//			));
-//		}
+		if (!$this->_write($dbArray))
+		{
+			return $this->_error(array(
+				'message' => $this->_language->get('something_wrong')
+			));
+		}
 
-		/* write database */
+		/* install database */
 
-//		if (!$this->_install($postArray))
-//		{
-//			return $this->_error(array(
-//				'message' => $this->_language->get('something_wrong')
-//			));
-//		}
+		if (!$this->_install($adminArray))
+		{
+			return $this->_error(array(
+				'message' => $this->_language->get('something_wrong')
+			));
+		}
 
-//		$mailArray = array(
-//			'user' => $postArray['user'],
-//			'name' => $postArray['name'],
-//			'email' => $postArray['email'],
-//			'password' => $postArray['password']
-//		);
-//
-//		/* send mail */
-//
-//		if (!$this->_mail($mailArray))
-//		{
-//			return $this->_error(array(
-//				'message' => $this->_language->get('something_wrong'),
-//				'redirect' => $this->_registry->get('root'),
-//				'timeout' => 5
-//			));
-//		}
-		return $this->_success(array(
+		/* handle success */
+
+		if (!$this->_mail($adminArray))
+		{
+			return $this->_error(array(
+				'message' => $this->_language->get('something_wrong'),
 				'redirect' => $this->_registry->get('root'),
-				'timeout' => 0
+				'timeout' => 5
+			));
+		}
+		return $this->_success(array(
+				'message' => $this->_language->get('_installation', 'installation_completed'),
+				'redirect' => $this->_registry->get('root'),
+				'timeout' => 5
 			)
 		);
 	}
@@ -149,7 +167,7 @@ class Install extends ControllerAbstract
 		return $messenger
 			->setAction($this->_language->get('home'), $successArray['redirect'])
 			->doRedirect($successArray['timeout'])
-			->success($successArray['title']);
+			->success($successArray['message'], $successArray['title']);
 	}
 
 	/**
@@ -167,11 +185,11 @@ class Install extends ControllerAbstract
 		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setAction($this->_language->get('home'), $errorArray['redirect'])
-			->error($errorArray['message'], $this->_language->get('alert'));
+			->error($errorArray['message'], $errorArray['title']);
 	}
 
 	/**
-	 * validate
+	 * validate the database
 	 *
 	 * @since 3.0.0
 	 *
@@ -180,7 +198,42 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array())
+	protected function _validateDatabase($postArray = array())
+	{
+		$messageArray = array();
+		if (!$postArray['dbType'])
+		{
+			$messageArray[] = $this->_language->get('type_empty');
+		}
+		if (!$postArray['dbHost'])
+		{
+			$messageArray[] = $this->_language->get('host_empty');
+		}
+		if ($postArray['dbType'] !== 'sqlite')
+		{
+			if (!$postArray['dbName'])
+			{
+				$messageArray[] = $this->_language->get('name_empty');
+			}
+			if (!$postArray['dbUser'])
+			{
+				$messageArray[] = $this->_language->get('user_empty');
+			}
+		}
+		return $messageArray;
+	}
+
+	/**
+	 * validate the account
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array to be validated
+	 *
+	 * @return array
+	 */
+
+	protected function _validateAccount($postArray = array())
 	{
 		$emailValidator = new Validator\Email();
 		$loginValidator = new Validator\Login();

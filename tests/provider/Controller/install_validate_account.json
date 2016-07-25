@@ -1,13 +1,6 @@
 [
 	[
 		{
-			"dbType": "",
-			"dbHost": "",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "",
-			"dbPrefix": "",
-			"dbSalt": "",
 			"adminName": "",
 			"adminUser": "",
 			"adminPassword": "",
@@ -22,13 +15,6 @@
 	],
 	[
 		{
-			"dbType": "",
-			"dbHost": "",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "",
-			"dbPrefix": "",
-			"dbSalt": "",
 			"adminName": "",
 			"adminUser": "_",
 			"adminPassword": "_",
@@ -43,13 +29,6 @@
 	],
 	[
 		{
-			"dbType": "sqlite",
-			"dbHost": ":memory:",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "test",
-			"dbPrefix": "",
-			"dbSalt": "",
 			"adminName": "Test",
 			"adminUser": "test",
 			"adminPassword": "test",
