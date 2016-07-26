@@ -1,0 +1,46 @@
+[
+	[
+		{
+			"root": "http://localhost"
+		},
+		{
+			"config": false
+		},
+		{
+			"db-type": "sqlite",
+			"db-host": ":memory:",
+			"db-name": "test",
+			"db-user": "root",
+			"db-password": "",
+			"db-prefix": "test_",
+			"db-salt": "",
+			"admin-name": "test",
+			"admin-user": "Test",
+			"admin-email": "test@test.com",
+			"admin-password": "test"
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-error\">Grant write permission on file: config.php</div>"
+	],
+	[
+		{
+			"root": "http://localhost"
+		},
+		{
+			"config": true
+		},
+		{
+			"db-type": "sqlite",
+			"db-host": ":memory:",
+			"db-name": "test",
+			"db-user": "root",
+			"db-password": "",
+			"db-prefix": "test_",
+			"db-salt": "",
+			"admin-name": "test",
+			"admin-user": "Test",
+			"admin-email": "test@test.com",
+			"admin-password": "test"
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-success\">Installation completed successfully</div><a href=\"http://localhost\" class=\"rs-button-default rs-button-messenger\">Home</a><meta content=\"3;url=http://localhost\" http-equiv=\"refresh\" />"
+	]
+]

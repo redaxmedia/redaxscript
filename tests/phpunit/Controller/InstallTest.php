@@ -87,6 +87,20 @@ class InstallTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
+//		chmod('config.php', 0777);
+	}
+
+	/**
+	 * providerProcess
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerProcess()
+	{
+		return $this->getProvider('tests/provider/Controller/install_process.json');
 	}
 
 	/**
@@ -126,6 +140,43 @@ class InstallTest extends TestCaseAbstract
 	public function providerInstall()
 	{
 		return $this->getProvider('tests/provider/Controller/install_install.json');
+	}
+
+	/**
+	 * testProcess
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param array $extra
+	 * @param array $postArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerProcess
+	 */
+
+	public function testProcess($registryArray = array(), $extra = array(), $postArray = array(), $expect = null)
+	{
+		/* setup */
+
+//		$this->_request->set('post', $postArray);
+//		$this->_registry->init($registryArray);
+
+//		if (!$extra['config'])
+//		{
+//			chmod('config.php', 0444);
+//		}
+//		$this->_config->set('dbPassword', $extra['dbPassword']);
+
+//		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+
+		/* actual */
+
+//		$actual = $controllerInstall->process();
+
+		/* compare */
+
+//		$this->assertEquals($expect, $actual);
 	}
 
 	/**

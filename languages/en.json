@@ -45,6 +45,7 @@
 	{
 		"installation": "Installation",
 		"installation_completed": "Installation completed successfully",
+		"installation_failed": "Installation failed",
 		"php_os_no": "Unsupported operation system found",
 		"php_version_no": "Unsupported PHP version found",
 		"mod_deflate_no": "Deflate module is disabled",

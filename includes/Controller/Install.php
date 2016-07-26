@@ -129,12 +129,20 @@ class Install extends ControllerAbstract
 
 		/* install and mail */
 
-		if (!$this->_install($adminArray) && !$this->_mail($adminArray))
+		if (!$this->_install($adminArray))
+		{
+			return $this->_error(array(
+				'message' => $this->_language->get('installation_failed')
+			));
+		}
+
+		if (!$this->_mail($adminArray))
 		{
 			return $this->_error(array(
 				'message' => $this->_language->get('something_wrong')
 			));
 		}
+
 		return $this->_success(array(
 			'message' => $this->_language->get('installation_completed', '_installation'),
 			'timeout' => 3,
