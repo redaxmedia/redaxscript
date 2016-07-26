@@ -28,7 +28,11 @@ class Messenger
 	 * @var array
 	 */
 
-	protected $_actionArray = array();
+	protected $_actionArray = array(
+		'text' => null,
+		'router' => null,
+		'absolute' => false
+	);
 
 	/**
 	 * options of the messenger
@@ -84,9 +88,8 @@ class Messenger
 		return $this;
 	}
 
-
 	/**
-	 * set the action
+	 * set the redirect url
 	 *
 	 * @since 3.0.0
 	 *
@@ -96,16 +99,32 @@ class Messenger
 	 * @return Messenger
 	 */
 
-	public function setAction($text = null, $route = null)
+	public function setUrl($text = null, $route = null)
 	{
 		if (strlen($text) && strlen($route))
 		{
-			$this->_actionArray = array(
-				'text' => $text,
-				'route' => $route
-			);
+			$this->_actionArray['text'] = $text;
+			$this->_actionArray['route'] = $route;
 		}
 		return $this;
+	}
+
+	/**
+	 * set redirect url route to absolute
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $absolute use absolute path
+	 *
+	 * @return Messenger
+	 */
+
+	public function setRoute($absolute = null)
+	{
+		{
+			$this->_actionArray['absolute'] = $absolute;
+			return $this;
+		}
 	}
 
 	/**
@@ -279,9 +298,10 @@ class Messenger
 			if (is_numeric($this->_actionArray['redirect']))
 			{
 				$metaElement = new Html\Element();
+				$route = $this->_actionArray['absolute'] ? $this->_actionArray['route'] : $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'];
 				$output .= $metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
+					'content' => $this->_actionArray['redirect'] . ';url=' . $route,
 					'http-equiv' => 'refresh'
 				));
 			}

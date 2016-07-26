@@ -117,7 +117,7 @@ class MessengerTest extends TestCaseAbstract
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setAction($action['text'], $action['route']);
+		$messenger->setUrl($action['text'], $action['route']);
 
 		/* actual */
 
@@ -145,7 +145,7 @@ class MessengerTest extends TestCaseAbstract
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setAction($action['text'], $action['route']);
+		$messenger->setUrl($action['text'], $action['route']);
 
 		/* actual */
 
@@ -173,7 +173,7 @@ class MessengerTest extends TestCaseAbstract
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setAction($action['text'], $action['route']);
+		$messenger->setUrl($action['text'], $action['route']);
 
 		/* actual */
 
@@ -201,7 +201,8 @@ class MessengerTest extends TestCaseAbstract
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setAction($action['text'], $action['route']);
+		$messenger->setUrl($action['text'], $action['route']);
+		$messenger->setRoute($action['absolute']);
 
 		/* actual */
 
@@ -230,7 +231,7 @@ class MessengerTest extends TestCaseAbstract
 
 		$messenger = new Messenger($this->_registry);
 		$messenger->init();
-		$messenger->setAction($action['text'], $action['route'])->doRedirect($action['timeout']);
+		$messenger->setUrl($action['text'], $action['route'])->doRedirect($action['timeout']);
 
 		/* actual */
 

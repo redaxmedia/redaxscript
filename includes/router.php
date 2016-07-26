@@ -29,7 +29,7 @@ function router()
 	$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
 	if ($_POST && $_POST['token'] != Redaxscript\Registry::get('token'))
 	{
-		echo $messenger->setAction(Redaxscript\Language::get('home'), Redaxscript\Registry::get('root'))->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
+		echo $messenger->setUrl(Redaxscript\Language::get('home'), Redaxscript\Registry::get('root'))->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
 		return;
 	}
 
@@ -84,7 +84,7 @@ function router()
 		{
 			$table = '/' . $table;
 		}
-		echo $messenger->setAction(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search'));
+		echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search'));
 	}
 
 	/* parameter routing */
@@ -98,7 +98,7 @@ function router()
 			}
 			else
 			{
-				echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setUrl(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 			}
 			return;
 		case 'login':
@@ -121,7 +121,7 @@ function router()
 
 				/* show error */
 
-				echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setUrl(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 				return;
 			default:
 				$loginForm = new Redaxscript\View\LoginForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
@@ -138,7 +138,7 @@ function router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setUrl(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'register':
 			if (Redaxscript\Db::getSetting('registration'))
@@ -150,7 +150,7 @@ function router()
 
 			/* show error */
 
-			echo $messenger->setAction(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setUrl(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'search':
 			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());

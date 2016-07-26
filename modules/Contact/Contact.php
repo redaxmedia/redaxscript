@@ -208,7 +208,7 @@ class Contact extends Module
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
-			->setAction(Language::get('home'), Registry::get('root'))
+			->setUrl(Language::get('home'), Registry::get('root'))
 			->doRedirect()
 			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
 	}
@@ -227,7 +227,7 @@ class Contact extends Module
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
-			->setAction(Language::get('home'), Registry::get('root'))
+			->setUrl(Language::get('home'), Registry::get('root'))
 			->error($errorArray['message'], Language::get('error_occurred'));
 	}
 

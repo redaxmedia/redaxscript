@@ -125,7 +125,7 @@ class Search extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setAction($this->_language->get('back'), 'home')
+			->setUrl($this->_language->get('back'), 'home')
 			->info($infoArray['message'], $this->_language->get('error_occurred'));
 	}
 

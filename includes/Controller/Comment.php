@@ -110,7 +110,7 @@ class Comment extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setAction($this->_language->get('continue'), $successArray['route'])
+			->setUrl($this->_language->get('continue'), $successArray['route'])
 			->doRedirect($successArray['timeout'])
 			->success($successArray['message'], $this->_language->get('operation_completed'));
 	}
@@ -129,7 +129,7 @@ class Comment extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setAction($this->_language->get('back'), $errorArray['route'])
+			->setUrl($this->_language->get('back'), $errorArray['route'])
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 

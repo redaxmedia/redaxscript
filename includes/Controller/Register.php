@@ -103,7 +103,7 @@ class Register extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setAction($this->_language->get('login'), 'login')
+			->setUrl($this->_language->get('login'), 'login')
 			->doRedirect()
 			->success($successArray['message'], $this->_language->get('operation_completed'));
 	}
@@ -122,7 +122,7 @@ class Register extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setAction($this->_language->get('back'), 'register')
+			->setUrl($this->_language->get('back'), 'register')
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 

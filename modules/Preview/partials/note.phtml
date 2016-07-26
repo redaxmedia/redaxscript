@@ -36,7 +36,7 @@ $noteArray = array(
 );
 $registry = Registry::getInstance();
 $messenger = $admin ? new Admin\Messenger($registry) : new Messenger($registry);
-$messenger->setAction(Language::get('preview', '_preview'), 'preview#note');
+$messenger->setUrl(Language::get('preview', '_preview'), 'preview#note');
 ?>
 
 <!--messenger -->
