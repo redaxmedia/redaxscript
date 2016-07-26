@@ -31,8 +31,7 @@ class Messenger
 	protected $_actionArray = array(
 		'text' => null,
 		'route' => null,
-		'url' => null,
-		'absolute' => false
+		'url' => null
 	);
 
 	/**
@@ -95,7 +94,7 @@ class Messenger
 	 * @since 3.0.0
 	 *
 	 * @param string $text text of the action
-	 * @param string $url absolute redirect url
+	 * @param string $url absolute url of the action
 	 *
 	 * @return Messenger
 	 */
@@ -105,6 +104,7 @@ class Messenger
 		if (strlen($text) && strlen($url))
 		{
 			$this->_actionArray['text'] = $text;
+			$this->_actionArray['route'] = false;
 			$this->_actionArray['url'] = $url;
 		}
 		return $this;
@@ -116,7 +116,7 @@ class Messenger
 	 * @since 3.0.0
 	 *
 	 * @param string $text text of the action
-	 * @param string $route relative redirect url
+	 * @param string $route relative route of the action
 	 *
 	 * @return Messenger
 	 */
@@ -127,6 +127,7 @@ class Messenger
 		{
 			$this->_actionArray['text'] = $text;
 			$this->_actionArray['route'] = $route;
+			$this->_actionArray['url'] = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'];
 		}
 		return $this;
 	}
@@ -292,7 +293,7 @@ class Messenger
 			$linkElement = new Html\Element();
 			$output .= $linkElement
 				->init('a', array(
-					'href' => $this->_actionArray['url'] ? $this->_actionArray['url'] : $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
+					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
 					'class' => $this->_optionArray['className']['link']
 				))
 				->text($this->_actionArray['text']);
@@ -302,10 +303,9 @@ class Messenger
 			if (is_numeric($this->_actionArray['redirect']))
 			{
 				$metaElement = new Html\Element();
-				$route = $this->_actionArray['url'] ? $this->_actionArray['url'] : $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'];
 				$output .= $metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . $route,
+					'content' => $this->_actionArray['redirect'] . ';url=' . $this->_actionArray['url'] ,
 					'http-equiv' => 'refresh'
 				));
 			}

@@ -108,16 +108,16 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerSuccess
 	 *
 	 * @param array $success
-	 * @param array $action
+	 * @param array $actionArray
 	 * @param string $expect
 	 */
 
-	public function testSuccess($success = null, $action = null, $expect = null)
+	public function testSuccess($success = null, $actionArray = array(), $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setRoute($action['text'], $action['route']);
+		$messenger->setRoute($actionArray['text'], $actionArray['route']);
 
 		/* actual */
 
@@ -136,16 +136,16 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerWarning
 	 *
 	 * @param array $warning
-	 * @param array $action
+	 * @param array $actionArray
 	 * @param string $expect
 	 */
 
-	public function testWarning($warning = null, $action = null, $expect = null)
+	public function testWarning($warning = null, $actionArray = array(), $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setRoute($action['text'], $action['route']);
+		$messenger->setRoute($actionArray['text'], $actionArray['route']);
 
 		/* actual */
 
@@ -164,16 +164,16 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerError
 	 *
 	 * @param array $error
-	 * @param array $action
+	 * @param array $actionArray
 	 * @param string $expect
 	 */
 
-	public function testError($error = null, $action = null, $expect = null)
+	public function testError($error = null, $actionArray = null, $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-		$messenger->setRoute($action['text'], $action['route']);
+		$messenger->setRoute($actionArray['text'], $actionArray['route']);
 
 		/* actual */
 
@@ -192,24 +192,16 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerInfo
 	 *
 	 * @param array $info
-	 * @param array $action
+	 * @param array $actionArray
 	 * @param string $expect
 	 */
 
-	public function testInfo($info = null, $action = null, $expect = null)
+	public function testInfo($info = null, $actionArray = array(), $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
-
-		if ($action['absolute'])
-		{
-			$messenger->setUrl($action['text'], $action['route']);
-		}
-		else
-		{
-			$messenger->setRoute($action['text'], $action['route']);
-		}
+		$messenger->setRoute($actionArray['text'], $actionArray['route']);
 
 		/* actual */
 
@@ -228,17 +220,17 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 *
 	 * @param array $render
-	 * @param array $action
+	 * @param array $actionArray
 	 * @param string $expect
 	 */
 
-	public function testRender($render = null, $action = null, $expect = null)
+	public function testRender($render = null, $actionArray = null, $expect = null)
 	{
 		/* setup */
 
 		$messenger = new Messenger($this->_registry);
 		$messenger->init();
-		$messenger->setRoute($action['text'], $action['route'])->doRedirect($action['timeout']);
+		$messenger->setUrl($actionArray['text'], $actionArray['url'])->doRedirect($actionArray['timeout']);
 
 		/* actual */
 

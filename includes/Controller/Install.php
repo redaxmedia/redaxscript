@@ -138,8 +138,7 @@ class Install extends ControllerAbstract
 		return $this->_success(array(
 			'message' => $this->_language->get('installation_completed', '_installation'),
 			'timeout' => 3,
-			'redirect' => $this->_registry->get('root'),
-			'absolute' => true
+			'redirect' => $this->_registry->get('root')
 		));
 	}
 
