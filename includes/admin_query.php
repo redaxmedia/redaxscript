@@ -365,7 +365,7 @@ function admin_process()
 
 		/* show error */
 
-		echo $messenger->setUrl(Redaxscript\Language::get('back'), $route)->error($error, Redaxscript\Language::get('error_occurred'));
+		echo $messenger->setRoute(Redaxscript\Language::get('back'), $route)->error($error, Redaxscript\Language::get('error_occurred'));
 		return;
 	}
 
@@ -411,7 +411,7 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setUrl(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+			echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 
 			return;
 
@@ -492,7 +492,7 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setUrl(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+			echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 			return;
 	}
 }
@@ -541,7 +541,7 @@ function admin_move()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -628,7 +628,7 @@ function admin_sort()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -690,7 +690,7 @@ function admin_status($input)
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -733,7 +733,7 @@ function admin_install()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 }
 
 /**
@@ -838,7 +838,7 @@ function admin_delete()
 		/* show success */
 
 		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-		echo $messenger->setUrl(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+		echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
 
@@ -902,7 +902,7 @@ function admin_update()
 		/* show success */
 
 		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-		echo $messenger->setUrl(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
 	}
 }
 

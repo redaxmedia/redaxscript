@@ -98,7 +98,7 @@ class Reset extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('login'), 'login')
+			->setRoute($this->_language->get('login'), 'login')
 			->doRedirect()
 			->success($this->_language->get('password_sent'), $this->_language->get('operation_completed'));
 	}
@@ -117,7 +117,7 @@ class Reset extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('back'), 'login/recover')
+			->setRoute($this->_language->get('back'), 'login/recover')
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 

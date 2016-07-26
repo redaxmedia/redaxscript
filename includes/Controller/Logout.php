@@ -52,7 +52,7 @@ class Logout extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('continue'), 'login')
+			->setRoute($this->_language->get('continue'), 'login')
 			->doRedirect(0)
 			->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
 	}
@@ -69,7 +69,7 @@ class Logout extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('back'), 'admin')
+			->setRoute($this->_language->get('back'), 'admin')
 			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
 	}
 }

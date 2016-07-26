@@ -165,7 +165,7 @@ class Demo extends Config
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
-			->setUrl(Language::get('continue'), 'admin')
+			->setRoute(Language::get('continue'), 'admin')
 			->doRedirect(0)
 			->success(Language::get('logged_in'), Language::get('welcome'));
 	}
@@ -182,7 +182,7 @@ class Demo extends Config
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
-			->setUrl(Language::get('back'), 'login')
+			->setRoute(Language::get('back'), 'login')
 			->doRedirect()
 			->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}

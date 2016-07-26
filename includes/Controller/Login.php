@@ -91,7 +91,7 @@ class Login extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('continue'), 'admin')
+			->setRoute($this->_language->get('continue'), 'admin')
 			->doRedirect(0)
 			->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
 	}
@@ -110,7 +110,7 @@ class Login extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('back'), 'login')
+			->setRoute($this->_language->get('back'), 'login')
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 

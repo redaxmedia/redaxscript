@@ -158,7 +158,6 @@ class Install extends ControllerAbstract
 		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setUrl($this->_language->get('home'), $successArray['redirect'])
-			->setRoute($successArray['absolute'])
 			->doRedirect($successArray['timeout'])
 			->success($successArray['message'], $successArray['title']);
 	}
@@ -177,7 +176,7 @@ class Install extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('home'), $errorArray['redirect'])
+			->setRoute($this->_language->get('home'), $errorArray['redirect'])
 			->error($errorArray['message'], $errorArray['title']);
 	}
 

@@ -30,7 +30,8 @@ class Messenger
 
 	protected $_actionArray = array(
 		'text' => null,
-		'router' => null,
+		'route' => null,
+		'url' => null,
 		'absolute' => false
 	);
 
@@ -89,17 +90,38 @@ class Messenger
 	}
 
 	/**
-	 * set the redirect url
+	 * set the absolute redirect url
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $text text of the action
-	 * @param string $route route of the action
+	 * @param string $url absolute redirect url
 	 *
 	 * @return Messenger
 	 */
 
-	public function setUrl($text = null, $route = null)
+	public function setUrl($text = null, $url = null)
+	{
+		if (strlen($text) && strlen($url))
+		{
+			$this->_actionArray['text'] = $text;
+			$this->_actionArray['url'] = $url;
+		}
+		return $this;
+	}
+
+	/**
+	 * set the relative redirect url
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $text text of the action
+	 * @param string $route relative redirect url
+	 *
+	 * @return Messenger
+	 */
+
+	public function setRoute($text = null, $route = null)
 	{
 		if (strlen($text) && strlen($route))
 		{
@@ -107,24 +129,6 @@ class Messenger
 			$this->_actionArray['route'] = $route;
 		}
 		return $this;
-	}
-
-	/**
-	 * set redirect url route to absolute
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $absolute use absolute path
-	 *
-	 * @return Messenger
-	 */
-
-	public function setRoute($absolute = null)
-	{
-		{
-			$this->_actionArray['absolute'] = $absolute;
-			return $this;
-		}
 	}
 
 	/**
@@ -283,12 +287,12 @@ class Messenger
 	protected function _renderAction()
 	{
 		$output = null;
-		if ($this->_actionArray['text'] && $this->_actionArray['route'])
+		if ($this->_actionArray['text'] && ($this->_actionArray['route'] || $this->_actionArray['url']))
 		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
 				->init('a', array(
-					'href' => $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
+					'href' => $this->_actionArray['url'] ? $this->_actionArray['url'] : $this->_registry->get('parameterRoute') . $this->_actionArray['route'],
 					'class' => $this->_optionArray['className']['link']
 				))
 				->text($this->_actionArray['text']);
@@ -298,7 +302,7 @@ class Messenger
 			if (is_numeric($this->_actionArray['redirect']))
 			{
 				$metaElement = new Html\Element();
-				$route = $this->_actionArray['absolute'] ? $this->_actionArray['route'] : $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'];
+				$route = $this->_actionArray['url'] ? $this->_actionArray['url'] : $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'];
 				$output .= $metaElement->init('meta', array(
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
 					'content' => $this->_actionArray['redirect'] . ';url=' . $route,
