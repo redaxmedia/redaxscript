@@ -65,6 +65,9 @@ class UninstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
+		$installer = new Installer($this->_config);
+		$installer->init();
+		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
 		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
 	}
@@ -142,10 +145,6 @@ class UninstallTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $uninstallCommand->run('cli');
-
-		/* teardown */
-
-		$installer->rawDrop();
 
 		/* compare */
 
