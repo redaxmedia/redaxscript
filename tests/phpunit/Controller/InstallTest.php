@@ -145,7 +145,7 @@ class InstallTest extends TestCaseAbstract
 	 * testProcess
 	 *
 	 * @since 3.0.0
-	 * 
+	 *
 	 * @param array $postArray
 	 * @param string $expect
 	 *
