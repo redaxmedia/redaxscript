@@ -127,7 +127,7 @@ class Install extends ControllerAbstract
 
 		$this->_refresh();
 
-		/* install and mail */
+		/* install database */
 
 		if (!$this->_install($adminArray))
 		{
@@ -136,6 +136,8 @@ class Install extends ControllerAbstract
 			));
 		}
 
+		/* send mail */
+
 		if (!$this->_mail($adminArray))
 		{
 			return $this->_error(array(
@@ -143,10 +145,11 @@ class Install extends ControllerAbstract
 			));
 		}
 
+		/* handle success */
+
 		return $this->_success(array(
-			'message' => $this->_language->get('installation_completed', '_installation'),
-			'timeout' => 3,
-			'redirect' => $this->_registry->get('root')
+			'url' => $this->_registry->get('root'),
+			'message' => $this->_language->get('installation_completed', '_installation')
 		));
 	}
 
@@ -164,8 +167,8 @@ class Install extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setUrl($this->_language->get('home'), $successArray['redirect'])
-			->doRedirect($successArray['timeout'])
+			->setUrl($this->_language->get('home'), $successArray['url'])
+			->doRedirect()
 			->success($successArray['message'], $successArray['title']);
 	}
 
@@ -182,9 +185,7 @@ class Install extends ControllerAbstract
 	protected function _error($errorArray = array())
 	{
 		$messenger = new Messenger($this->_registry);
-		return $messenger
-			->setRoute($this->_language->get('home'), $errorArray['redirect'])
-			->error($errorArray['message'], $errorArray['title']);
+		return $messenger->error($errorArray['message'], $errorArray['title']);
 	}
 
 	/**
