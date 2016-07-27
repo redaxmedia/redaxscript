@@ -8,6 +8,9 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
+use org\bovigo\vfs\vfsStream as Stream;
+use org\bovigo\vfs\vfsStreamFile as StreamFile;
+use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 
 /**
  * InstallTest
@@ -90,6 +93,19 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		Stream::setup('root');
+		$file = new StreamFile('config.php');
+		StreamWrapper::getRoot()->addChild($file);
+	}
+
+	/**
 	 * providerProcess
 	 *
 	 * @since 3.0.0
@@ -156,7 +172,14 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$postArray['db-type'] = $postArray['db-type'] ? $this->_config->get('dbType') : null;
+		$postArray['db-host'] = $postArray['db-host'] ? $this->_config->get('dbHost') : null;
+		$postArray['db-name'] = $postArray['db-name'] ? $this->_config->get('dbName') : null;
+		$postArray['db-user'] = $postArray['db-user'] ? $this->_config->get('dbUser') : null;
+		$postArray['db-password'] = $postArray['db-password'] ? $this->_config->get('dbPassword') : null;
+		$postArray['db-prefix'] = $postArray['db-prefix'] ? $this->_config->get('dbPrefix') : null;
 		$this->_request->set('post', $postArray);
+		$this->_config->init(Stream::url('root/config.php'));
 		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
 
 		/* actual */

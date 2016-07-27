@@ -1,34 +1,50 @@
 [
 	[
 		{
-			"db-type": "",
-			"db-host": "",
-			"db-name": "",
-			"db-user": "",
-			"db-password": "",
-			"db-prefix": "",
-			"db-salt": "",
-			"admin-name": "",
-			"admin-user": "",
-			"admin-email": "",
-			"admin-password": ""
+			"db-type": null,
+			"db-host": null,
+			"db-name": null,
+			"db-user": null,
+			"db-password": null,
+			"db-prefix": null,
+			"db-salt": null,
+			"admin-name": null,
+			"admin-user": null,
+			"admin-email": null,
+			"admin-password": null
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">Database</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div>"
 	],
 	[
 		{
-			"db-type": "sqlite",
-			"db-host": "::memory::",
-			"db-name": "",
-			"db-user": "",
-			"db-password": "",
-			"db-prefix": "",
-			"db-salt": "",
-			"admin-name": "",
-			"admin-user": "",
-			"admin-email": "",
-			"admin-password": ""
+			"db-type": "{db-type}",
+			"db-host": "{db-host}",
+			"db-name": "{db-name}",
+			"db-user": "{db-user}",
+			"db-password": "{db-password}",
+			"db-prefix": "{db-prefix}",
+			"db-salt": null,
+			"admin-name": null,
+			"admin-user": null,
+			"admin-email": null,
+			"admin-password": null
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">Account</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div>"
+	],
+	[
+		{
+			"db-type": "{db-type}",
+			"db-host": "{db-host}",
+			"db-name": "{db-name}",
+			"db-user": "{db-user}",
+			"db-password": "{db-password}",
+			"db-prefix": "{db-prefix}",
+			"db-salt": null,
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"<div class=\"rs-box-messenger rs-box-note rs-note-success\">Installation completed successfully</div>"
 	]
 ]

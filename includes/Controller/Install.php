@@ -77,7 +77,8 @@ class Install extends ControllerAbstract
 			'adminName' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
 			'adminUser' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
 			'adminPassword' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
-			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email'))
+			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email')),
+			'refreshConnection' => $this->_request->getPost('refresh-connection')
 		);
 
 		/* handle error */
@@ -98,6 +99,9 @@ class Install extends ControllerAbstract
 				'message' => $messageArray
 			));
 		}
+
+		/* handle success */
+
 		$configArray = array(
 			'dbType' => $postArray['dbType'],
 			'dbHost' => $postArray['dbHost'],
@@ -125,31 +129,22 @@ class Install extends ControllerAbstract
 
 		/* refresh connection */
 
-		$this->_refresh();
-
-		/* install database */
-
-		if (!$this->_install($adminArray))
+		if ($postArray['refreshConnection'])
 		{
-			return $this->_error(array(
-				'message' => $this->_language->get('installation_failed')
-			));
+			$this->_refresh();
 		}
 
-		/* send mail */
+		/* install and mail */
 
-		if (!$this->_mail($adminArray))
+		if ($this->_install($adminArray) && $this->_mail($adminArray))
 		{
-			return $this->_error(array(
-				'message' => $this->_language->get('something_wrong')
+			return $this->_success(array(
+				'url' => $this->_registry->get('root'),
+				'message' => $this->_language->get('installation_completed', '_installation')
 			));
 		}
-
-		/* handle success */
-
-		return $this->_success(array(
-			'url' => $this->_registry->get('root'),
-			'message' => $this->_language->get('installation_completed', '_installation')
+		return $this->_error(array(
+			'message' => $this->_language->get('installation_failed')
 		));
 	}
 

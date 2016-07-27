@@ -169,6 +169,10 @@ class InstallForm extends ViewAbstract
 				'name' => 'db-salt',
 				'value' => sha1(uniqid())
 			))
+			->hidden(array(
+				'name' => 'refresh-connection',
+				'value' => 1
+			))
 			->token()
 			->submit($this->_language->get('install'));
 

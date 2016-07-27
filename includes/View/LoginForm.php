@@ -42,8 +42,7 @@ class LoginForm extends ViewAbstract
 		{
 			$linkElement = new Html\Element();
 			$linkElement->init('a', array(
-				'href' => $this->_registry->get('parameterRoute') . 'login/recover',
-				'rel' => 'no-follow'
+				'href' => $this->_registry->get('parameterRoute') . 'login/recover'
 			));
 			$outputLegend = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
