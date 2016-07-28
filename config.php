@@ -1,9 +1,9 @@
 <?php
 return
 [
-	'dbType' => 'sqlite',
-	'dbHost' => ':memory:',
-	'dbPrefix' => 'controller_',
+	'dbType' => null,
+	'dbHost' => null,
+	'dbPrefix' => null,
 	'dbName' => null,
 	'dbUser' => null,
 	'dbPassword' => null,
