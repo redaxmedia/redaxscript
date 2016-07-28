@@ -143,7 +143,7 @@ class Status extends CommandAbstract
 			),
 			'PHP' => array(
 				'value' => phpversion(),
-				'status' => version_compare(phpversion(), '5.3', '>') ? 1 : 0
+				'status' => version_compare(phpversion(), '5.4', '>') ? 1 : 0
 			),
 			'PDO' => array(
 				'value' => implode($driverArray, ', '),

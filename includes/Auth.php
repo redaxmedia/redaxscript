@@ -34,7 +34,7 @@ class Auth
 	 * @var array
 	 */
 
-	protected $_userArray = array();
+	protected $_userArray = [];
 
 	/**
 	 * array of the permission
@@ -42,7 +42,7 @@ class Auth
 	 * @var array
 	 */
 
-	protected $_permissionArray = array();
+	protected $_permissionArray = [];
 
 	/**
 	 * array of the type
@@ -50,7 +50,8 @@ class Auth
 	 * @var array
 	 */
 
-	protected $_typeArray = array(
+	protected $_typeArray =
+	[
 		'categories',
 		'articles',
 		'extras',
@@ -60,7 +61,7 @@ class Auth
 		'modules',
 		'settings',
 		'filter'
-	);
+	];
 
 	/**
 	 * array of the call
@@ -68,49 +69,59 @@ class Auth
 	 * @var array
 	 */
 
-	protected $_callArray = array(
-		'categories' => array(
+	protected $_callArray =
+	[
+		'categories' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'articles' => array(
+		],
+		'articles' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'extras' => array(
+		],
+		'extras' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'comments' => array(
+		],
+		'comments' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'groups' => array(
+		],
+		'groups' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'users' => array(
+		],
+		'users' =>
+		[
 			'getPermissionNew' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionDelete' => 3
-		),
-		'modules' => array(
+		],
+		'modules' =>
+		[
 			'getPermissionInstall' => 1,
 			'getPermissionEdit' => 2,
 			'getPermissionUninstall' => 3
-		),
-		'settings' => array(
+		],
+		'settings' =>
+		[
 			'getPermissionEdit' => 1
-		),
-		'filter' => array(
+		],
+		'filter' =>
+		[
 			'getFilter' => 0
-		)
-	);
+		]
+	];
 
 	/**
 	 * constructor of the class
@@ -136,7 +147,7 @@ class Auth
 	 * @return mixed
 	 */
 
-	public function __call($method = null, $argumentArray = array())
+	public function __call($method = null, $argumentArray = [])
 	{
 		$type = $argumentArray[0];
 		if (array_key_exists($method, $this->_callArray[$type]))
@@ -188,9 +199,10 @@ class Auth
 
 			/* set filter */
 
-			$this->setPermission('filter', array(
+			$this->setPermission('filter',
+			[
 				1
-			));
+			]);
 
 			/* process groups */
 
@@ -342,10 +354,11 @@ class Auth
 
 		if ($userArray && $permissionArray)
 		{
-			$this->_request->setSession('auth', array(
+			$this->_request->setSession('auth',
+			[
 				'user' => $userArray,
 				'permission' => $permissionArray
-			));
+			]);
 			if ($userArray['language'])
 			{
 				$this->_request->setSession('language', $userArray['language']);
