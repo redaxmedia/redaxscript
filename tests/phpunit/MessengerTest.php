@@ -230,7 +230,9 @@ class MessengerTest extends TestCaseAbstract
 
 		$messenger = new Messenger($this->_registry);
 		$messenger->init();
-		$messenger->setUrl($actionArray['text'], $actionArray['url'])->doRedirect($actionArray['timeout']);
+		$messenger
+			->setUrl($actionArray['text'], $actionArray['url'])
+			->doRedirect($actionArray['timeout']);
 
 		/* actual */
 

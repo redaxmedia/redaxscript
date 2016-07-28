@@ -239,7 +239,7 @@ class Parser
 	protected function _parseCodequote($content = null)
 	{
 		$output = str_replace($this->_tagArray['codequote']['search'], $this->_optionArray['delimiter'], $content);
-		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* html elements */
 
@@ -251,14 +251,14 @@ class Parser
 
 		/* parse as needed */
 
-		foreach ($parts as $key => $value)
+		foreach ($partArray as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $preElement->copy()->html(htmlspecialchars($value));
+				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value));
 			}
 		}
-		$output = implode($parts);
+		$output = implode($partArray);
 		return $output;
 	}
 
@@ -275,18 +275,18 @@ class Parser
 	protected function _parseLanguage($content = null)
 	{
 		$output = str_replace($this->_tagArray['language']['search'], $this->_optionArray['delimiter'], $content);
-		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* parse as needed */
 
-		foreach ($parts as $key => $value)
+		foreach ($partArray as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $this->_language->get($value);
+				$partArray[$key] = $this->_language->get($value);
 			}
 		}
-		$output = implode($parts);
+		$output = implode($partArray);
 		return $output;
 	}
 
@@ -303,18 +303,18 @@ class Parser
 	protected function _parseRegistry($content = null)
 	{
 		$output = str_replace($this->_tagArray['registry']['search'], $this->_optionArray['delimiter'], $content);
-		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* parse as needed */
 
-		foreach ($parts as $key => $value)
+		foreach ($partArray as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = $this->_registry->get($value);
+				$partArray[$key] = $this->_registry->get($value);
 			}
 		}
-		$output = implode($parts);
+		$output = implode($partArray);
 		return $output;
 	}
 
@@ -331,16 +331,16 @@ class Parser
 	protected function _parseTemplate($content = null)
 	{
 		$output = str_replace($this->_tagArray['template']['search'], $this->_optionArray['delimiter'], $content);
-		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 		$object = $this->_tagArray['template']['namespace'];
 
 		/* parse as needed */
 
-		foreach ($parts as $key => $value)
+		foreach ($partArray as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$parts[$key] = null;
+				$partArray[$key] = null;
 				$json = json_decode($value, true);
 
 				/* call with parameter */
@@ -353,7 +353,7 @@ class Parser
 
 						if (method_exists($object, $method))
 						{
-							$parts[$key] = call_user_func_array(
+							$partArray[$key] = call_user_func_array(
 							[
 								$object,
 								$method
@@ -366,7 +366,7 @@ class Parser
 
 				else if (method_exists($object, $value))
 				{
-					$parts[$key] = call_user_func(
+					$partArray[$key] = call_user_func(
 					[
 						$object,
 						$value
@@ -374,7 +374,7 @@ class Parser
 				}
 			}
 		}
-		$output = implode($parts);
+		$output = implode($partArray);
 		return $output;
 	}
 
@@ -391,17 +391,17 @@ class Parser
 	protected function _parseModule($content = null)
 	{
 		$output = str_replace($this->_tagArray['module']['search'], $this->_optionArray['delimiter'], $content);
-		$parts = array_filter(explode($this->_optionArray['delimiter'], $output));
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 		$modulesLoaded = Hook::getModuleArray();
 
 		/* parse as needed */
 
-		foreach ($parts as $key => $value)
+		foreach ($partArray as $key => $value)
 		{
 			$object = $this->_tagArray['module']['namespace'] . $value . '\\' . $value;
 			if ($key % 2)
 			{
-				$parts[$key] = null;
+				$partArray[$key] = null;
 				$json = json_decode($value, true);
 
 				/* call with parameter */
@@ -416,7 +416,7 @@ class Parser
 
 						if (in_array($module, $modulesLoaded) && method_exists($object, 'render'))
 						{
-							$parts[$key] = call_user_func_array(
+							$partArray[$key] = call_user_func_array(
 							[
 								$object,
 								'render'
@@ -429,7 +429,7 @@ class Parser
 
 				else if (in_array($value, $modulesLoaded) && method_exists($object, 'render'))
 				{
-					$parts[$key] = call_user_func(
+					$partArray[$key] = call_user_func(
 					[
 						$object,
 						'render'
@@ -437,7 +437,7 @@ class Parser
 				}
 			}
 		}
-		$output = implode($parts);
+		$output = implode($partArray);
 		return $output;
 	}
 }

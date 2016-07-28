@@ -51,7 +51,8 @@ class Reset extends ControllerAbstract
 		[
 			'id' => $postArray['id'],
 			'status' => 1
-		])->findOne();
+		])
+		->findOne();
 
 		/* handle error */
 

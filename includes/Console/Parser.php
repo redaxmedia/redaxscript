@@ -194,12 +194,14 @@ class Parser
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
 		{
-			return [
+			return
+			[
 				'key' => substr($option, $offset, $equalPosition - $offset),
 				'value' => substr($option, $equalPosition + 1)
 			];
 		}
-		return [
+		return
+		[
 			'key' => substr($option, $offset),
 			'value' => !$next || substr($next, 0, 1) === '-' ? true : $next
 		];

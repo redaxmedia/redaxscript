@@ -162,7 +162,8 @@ class Helper
 
 	protected static function _getBrowserArray()
 	{
-		return [
+		return
+		[
 			Registry::get('myBrowser'),
 			Registry::get('myBrowserVersion'),
 			Registry::get('myEngine')
@@ -184,7 +185,8 @@ class Helper
 			$device = Registry::get($value);
 			if ($device)
 			{
-				return [
+				return
+				[
 					$system,
 					$device
 				];

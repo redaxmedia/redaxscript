@@ -60,7 +60,8 @@ class Recover extends ControllerAbstract
 		[
 			'email' => $postArray['email'],
 			'status' => 1
-		])->findMany();
+		])
+		->findMany();
 
 		/* process users */
 

@@ -167,7 +167,8 @@ class Breadcrumb
 					[
 						'href' => $this->_registry->get('parameterRoute') . $route,
 						'title' => $title
-					])->text($title);
+					])
+					->text($title);
 				}
 
 				/* else plain text */

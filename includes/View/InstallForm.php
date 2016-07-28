@@ -37,7 +37,8 @@ class InstallForm extends ViewAbstract
 			->init('h2',
 			[
 				'class' => 'rs-title-content'
-			])->text($this->_language->get('installation', '_installation'));
+			])
+			->text($this->_language->get('installation', '_installation'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
