@@ -22,7 +22,8 @@ class ShareThis extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Share this',
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',

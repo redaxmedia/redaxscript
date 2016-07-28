@@ -19,7 +19,8 @@ class Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'status' => 1,
 		'access' => null
 	];

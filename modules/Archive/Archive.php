@@ -25,7 +25,8 @@ class Archive extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Archive',
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',

@@ -20,7 +20,8 @@ class Autoloader
 	 * @var string
 	 */
 
-	protected static $_namespace = [
+	protected static $_namespace =
+	[
 		'Redaxscript\Modules\\',
 		'Redaxscript\\'
 	];
@@ -47,7 +48,8 @@ class Autoloader
 	 * @var array
 	 */
 
-	protected static $_directory = [
+	protected static $_directory =
+	[
 		'includes',
 		'libraries',
 		'modules'
@@ -71,7 +73,8 @@ class Autoloader
 		}
 		else if (is_string($directory))
 		{
-			self::$_directory = [
+			self::$_directory =
+			[
 				$directory
 			];
 		}

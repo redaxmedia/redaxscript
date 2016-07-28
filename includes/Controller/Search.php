@@ -26,7 +26,8 @@ class Search extends ControllerAbstract
 	 * @var array
 	 */
 
-	protected $tableArray = [
+	protected $tableArray =
+	[
 		'categories',
 		'articles',
 		'comments'
@@ -51,7 +52,8 @@ class Search extends ControllerAbstract
 		$queryArray = [];
 		if (!$thirdParameter)
 		{
-			$queryArray = [
+			$queryArray =
+			[
 				'table' => $this->tableArray,
 				'search' => $secondParameter
 			];

@@ -186,27 +186,22 @@ class DbTest extends TestCaseAbstract
 	{
 		/* expect and actual */
 
-		$expect = [
+		$expectArray =
+		[
 			'category_alias' => 'home',
 			'article_alias' => 'welcome'
 		];
-		$actual = Db::forTablePrefix('articles')
+		$actualArray = Db::forTablePrefix('articles')
 			->tableAlias('a')
-			->leftJoinPrefix('categories',
-			[
-				'a.category',
-				'=',
-				'c.id'
-			], 'c')
+			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
 			->where('a.alias', 'welcome')
 			->findArray();
-		$actual = $actual[0];
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray[0]);
 	}
 
 	/**
@@ -269,14 +264,15 @@ class DbTest extends TestCaseAbstract
 	{
 		/* expect and actual */
 
-		$expect = [
+		$expectArray =
+		[
 			1
 		];
-		$actual = Db::forTablePrefix('articles')->findFlatArray();
+		$actualArray = Db::forTablePrefix('articles')->findFlatArray();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**

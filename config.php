@@ -1,10 +1,11 @@
 <?php
-return array(
-	'dbType' => null,
-	'dbHost' => null,
+return
+[
+	'dbType' => 'sqlite',
+	'dbHost' => ':memory:',
+	'dbPrefix' => 'controller_',
 	'dbName' => null,
 	'dbUser' => null,
 	'dbPassword' => null,
-	'dbPrefix' => null,
 	'dbSalt' => null
-);
+];

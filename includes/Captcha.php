@@ -51,7 +51,8 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_rangeArray = [
+	protected $_rangeArray =
+	[
 		'min' => 1,
 		'max' => 10
 	];
@@ -62,7 +63,8 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_operators = [
+	protected $_operatorArray =
+	[
 		1 => 'plus',
 		-1 => 'minus'
 	];
@@ -201,7 +203,7 @@ class Captcha
 		/* operator */
 
 		$c = $this->_getOperator();
-		$operator = $this->_operators[$c];
+		$operator = $this->_operatorArray[$c];
 
 		/* solution and task */
 

@@ -170,7 +170,8 @@ function admin_panel_list()
 	$moduleLastKey = null;
 	$notificationSystemArray = [];
 	$notificationHasArray = [];
-	$orderArray = [
+	$orderArray =
+	[
 		'success',
 		'info',
 		'warning',

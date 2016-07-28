@@ -36,7 +36,8 @@ class Alias implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_defaultArray = [
+	protected $_defaultArray =
+	[
 		'admin',
 		'loader',
 		'login',

@@ -81,7 +81,8 @@ class Helper
 	 * @var array
 	 */
 
-	protected static $_deviceArray = [
+	protected static $_deviceArray =
+	[
 		'mobile' => 'myMobile',
 		'tablet' => 'myTablet',
 		'desktop' => 'myDesktop'

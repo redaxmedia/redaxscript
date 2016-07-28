@@ -19,7 +19,8 @@ class Search implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_range = [
+	protected $_rangeArray =
+	[
 		'min' => 3,
 		'max' => 100
 	];
@@ -42,7 +43,7 @@ class Search implements ValidatorInterface
 
 		/* validate search */
 
-		if ($search !== $placeholder && $length >= $this->_range['min'] && $length <= $this->_range['max'])
+		if ($search !== $placeholder && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'])
 		{
 			$output = ValidatorInterface::PASSED;
 		}

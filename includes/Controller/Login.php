@@ -37,7 +37,8 @@ class Login extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')

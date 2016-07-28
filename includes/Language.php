@@ -108,7 +108,8 @@ class Language extends Singleton
 
 		if (is_string($path))
 		{
-			$path = [
+			$path =
+			[
 				$path
 			];
 		}

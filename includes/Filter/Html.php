@@ -22,7 +22,8 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_allowedTags = [
+	protected $_allowedTags =
+	[
 		'br',
 		'caption',
 		'div',
@@ -63,7 +64,8 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_allowedAttributes = [
+	protected $_allowedAttributes =
+	[
 		'class',
 		'colspan',
 		'id',
@@ -77,7 +79,8 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_forbiddenValues = [
+	protected $_forbiddenValues =
+	[
 		'onabort',
 		'onafterprint',
 		'onautocomplete',

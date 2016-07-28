@@ -26,7 +26,8 @@ class Form extends BaseForm
 	 * @var array
 	 */
 
-	protected $_languageArray = [
+	protected $_languageArray =
+	[
 		'legend' => 'fields_required',
 		'button' =>
 		[

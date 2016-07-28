@@ -182,7 +182,7 @@ class InstallTest extends TestCaseAbstract
 		$postArray['db-password'] = $postArray['db-password'] ? $this->_config->get('dbPassword') : null;
 		$postArray['db-prefix'] = $postArray['db-prefix'] ? $this->_config->get('dbPrefix') : null;
 		$this->_request->set('post', $postArray);
-		$this->_config->init(Stream::url('root/config.php'));
+		//$this->_config->init(Stream::url('root/config.php'));
 		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
 
 		/* actual */

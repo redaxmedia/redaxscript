@@ -54,7 +54,8 @@ function router()
 
 	/* general routing */
 
-	$post_list = [
+	$post_list =
+	[
 		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\Login',
 		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
 		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',

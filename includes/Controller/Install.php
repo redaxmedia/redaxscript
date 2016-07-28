@@ -66,7 +66,8 @@ class Install extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'dbType' => $this->_request->getPost('db-type'),
 			'dbHost' => $this->_request->getPost('db-host'),
 			'dbName' => $this->_request->getPost('db-name'),
@@ -104,7 +105,8 @@ class Install extends ControllerAbstract
 
 		/* handle success */
 
-		$configArray = [
+		$configArray =
+		[
 			'dbType' => $postArray['dbType'],
 			'dbHost' => $postArray['dbHost'],
 			'dbName' => $postArray['dbName'],
@@ -113,7 +115,8 @@ class Install extends ControllerAbstract
 			'dbPrefix' => $postArray['dbPrefix'],
 			'dbSalt' => $postArray['dbSalt']
 		];
-		$adminArray = [
+		$adminArray =
+		[
 			'adminUser' => $postArray['adminUser'],
 			'adminName' => $postArray['adminName'],
 			'adminEmail' => $postArray['adminEmail'],
@@ -366,14 +369,17 @@ class Install extends ControllerAbstract
 
 		/* prepare mail */
 
-		$toArray = [
+		$toArray =
+		[
 			$mailArray['adminName'] => $mailArray['adminEmail']
 		];
-		$fromArray = [
+		$fromArray =
+		[
 			Db::getSetting('author') => Db::getSetting('email')
 		];
 		$subject = $this->_language->get('installation', '_installation');
-		$bodyArray = [
+		$bodyArray =
+		[
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminUser'],
 			'<br />',
 			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminPassword'],

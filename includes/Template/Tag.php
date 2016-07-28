@@ -101,7 +101,8 @@ class Tag
 
 		if (is_string($file))
 		{
-			$file = [
+			$file =
+			[
 				$file
 			];
 		}

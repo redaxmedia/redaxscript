@@ -152,7 +152,8 @@ function admin_process()
 
 	if ($tableParameter == 'groups' && (!$idParameter || $idParameter > 1))
 	{
-		$groups_array = [
+		$groups_array =
+		[
 			'categories',
 			'articles',
 			'extras',

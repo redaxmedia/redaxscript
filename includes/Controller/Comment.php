@@ -38,7 +38,8 @@ class Comment extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),

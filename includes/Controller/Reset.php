@@ -37,7 +37,8 @@ class Reset extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
@@ -67,11 +68,13 @@ class Reset extends ControllerAbstract
 
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init(uniqid());
-		$resetArray = [
+		$resetArray =
+		[
 			'id' => $user->id,
 			'password' => $passwordHash->getHash()
 		];
-		$mailArray = [
+		$mailArray =
+		[
 			'name' => $user->name,
 			'email' => $user->email,
 			'password' => $passwordHash->getRaw()
@@ -215,14 +218,17 @@ class Reset extends ControllerAbstract
 
 		/* prepare mail */
 
-		$toArray = [
+		$toArray =
+		[
 			$mailArray['name'] => $mailArray['email']
 		];
-		$fromArray = [
+		$fromArray =
+		[
 			Db::getSetting('author') => Db::getSetting('email')
 		];
 		$subject = $this->_language->get('password_new');
-		$bodyArray = [
+		$bodyArray =
+		[
 			'<strong>' . $this->_language->get('password_new') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
 			'<br />',
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '</strong> ' . $linkElement

@@ -23,7 +23,8 @@ class Validator extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Validator',
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',

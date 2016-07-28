@@ -23,7 +23,8 @@ class LazyLoad extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Lazy load',
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',

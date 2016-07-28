@@ -24,7 +24,8 @@ class Gallery extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Gallery',
 		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',

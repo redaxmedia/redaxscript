@@ -21,7 +21,8 @@ class Editor extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Editor',
 		'alias' => 'Editor',
 		'author' => 'Redaxmedia',

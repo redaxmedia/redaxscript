@@ -22,7 +22,8 @@ class Maps extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Maps',
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',

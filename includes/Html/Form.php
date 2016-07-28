@@ -72,7 +72,8 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_languageArray = [
+	protected $_languageArray =
+	[
 		'legend' => 'fields_required',
 		'button' =>
 		[
@@ -92,7 +93,8 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_attributeArray = [
+	protected $_attributeArray =
+	[
 		'form' =>
 		[
 			'class' => 'rs-js-validate-form rs-form-default',

@@ -21,7 +21,8 @@ class SyntaxHighlighter extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Syntax highlighter',
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',

@@ -22,7 +22,8 @@ class Ace extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Ace',
 		'alias' => 'Ace',
 		'author' => 'Redaxmedia',

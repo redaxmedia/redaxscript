@@ -44,7 +44,8 @@ class Directory
 	 * @var array
 	 */
 
-	protected $_excludeArray = [
+	protected $_excludeArray =
+	[
 		'.',
 		'..'
 	];

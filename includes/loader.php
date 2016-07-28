@@ -397,7 +397,8 @@ function scripts_transport($minify)
 {
 	/* extend redaxscript */
 
-	$public_registry = [
+	$public_registry =
+	[
 		'token',
 		'loggedIn',
 		'firstParameter',

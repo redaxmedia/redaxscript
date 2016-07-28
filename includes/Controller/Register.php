@@ -38,7 +38,8 @@ class Register extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
@@ -61,7 +62,8 @@ class Register extends ControllerAbstract
 
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init(uniqid());
-		$createArray = [
+		$createArray =
+		[
 			'name' => $postArray['name'],
 			'user' => $postArray['user'],
 			'password' => $passwordHash->getHash(),
@@ -70,7 +72,8 @@ class Register extends ControllerAbstract
 			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
 			'status' => Db::getSetting('verification') ? 0 : 1
 		];
-		$mailArray = [
+		$mailArray =
+		[
 			'name' => $postArray['name'],
 			'user' => $postArray['user'],
 			'password' => $passwordHash->getRaw(),
@@ -232,15 +235,18 @@ class Register extends ControllerAbstract
 
 		/* prepare mail */
 
-		$toArray = [
+		$toArray =
+		[
 			$mailArray['name'] => $mailArray['email'],
 			Db::getSetting('author') => Db::getSetting('notification') ? Db::getSetting('email') : null
 		];
-		$fromArray = [
+		$fromArray =
+		[
 			$mailArray['name'] => $mailArray['email']
 		];
 		$subject = $this->_language->get('registration');
-		$bodyArray = [
+		$bodyArray =
+		[
 			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $mailArray['name'],
 			'<br />',
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],

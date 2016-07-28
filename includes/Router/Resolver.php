@@ -81,7 +81,8 @@ class Resolver extends Parameter
 		$output = null;
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
-		$subArray = [
+		$subArray =
+		[
 			$this->getSub()
 		];
 

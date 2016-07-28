@@ -25,7 +25,8 @@ class FeedGenerator extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Feed generator',
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',

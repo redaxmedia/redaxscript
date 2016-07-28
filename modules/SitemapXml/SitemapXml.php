@@ -24,7 +24,8 @@ class SitemapXml extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',

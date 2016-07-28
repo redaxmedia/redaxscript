@@ -27,7 +27,8 @@ class DirectoryLister extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Directory lister',
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',

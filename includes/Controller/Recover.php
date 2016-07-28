@@ -35,7 +35,8 @@ class Recover extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = [
+		$postArray =
+		[
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
@@ -65,7 +66,8 @@ class Recover extends ControllerAbstract
 
 		foreach ($users as $user)
 		{
-			$mailArray = [
+			$mailArray =
+			[
 				'id' => $user->id,
 				'name' => $user->name,
 				'user' => $user->user,
@@ -190,14 +192,17 @@ class Recover extends ControllerAbstract
 
 		/* prepare mail */
 
-		$toArray = [
+		$toArray =
+		[
 			$mailArray['name'] => $mailArray['email']
 		];
-		$fromArray = [
+		$fromArray =
+		[
 			Db::getSetting('author') => Db::getSetting('email')
 		];
 		$subject = $this->_language->get('recovery');
-		$bodyArray = [
+		$bodyArray =
+		[
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
 			'<br />',
 			'<strong>' . $this->_language->get('password_reset') . $this->_language->get('colon') . '</strong> ' . $linkElement

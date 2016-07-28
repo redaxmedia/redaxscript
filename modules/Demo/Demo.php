@@ -28,7 +28,8 @@ class Demo extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
@@ -111,7 +112,8 @@ class Demo extends Config
 	public static function process()
 	{
 		$auth = new Auth(Request::getInstance());
-		$tableArray = [
+		$tableArray =
+		[
 			'categories',
 			'articles',
 			'extras',

@@ -20,7 +20,8 @@ class Login implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_range = [
+	protected $_rangeArray =
+	[
 		'min' => 1,
 		'max' => 30
 	];
@@ -42,7 +43,7 @@ class Login implements ValidatorInterface
 
 		/* validate login */
 
-		if (ctype_alnum($login) && $length >= $this->_range['min'] && $length <= $this->_range['max'])
+		if (ctype_alnum($login) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'])
 		{
 			$output = ValidatorInterface::PASSED;
 		}

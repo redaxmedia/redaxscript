@@ -26,7 +26,8 @@ class Preview extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Preview',
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',

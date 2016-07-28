@@ -23,7 +23,8 @@ class FeedReader extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Feed reader',
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',

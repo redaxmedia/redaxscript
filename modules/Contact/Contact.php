@@ -29,7 +29,8 @@ class Contact extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Contact',
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
@@ -306,14 +307,17 @@ class Contact extends Module
 
 	protected static function _mail($mailArray = [])
 	{
-		$toArray = [
+		$toArray =
+		[
 			Db::getSetting('author') => Db::getSetting('email')
 		];
-		$fromArray = [
+		$fromArray =
+		[
 			$mailArray['author'] => $mailArray['email']
 		];
 		$subject = Language::get('contact');
-		$bodyArray = [
+		$bodyArray =
+		[
 			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
 			'<br />',
 			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',

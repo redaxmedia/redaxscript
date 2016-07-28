@@ -190,7 +190,8 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actualArray = [
+		$actualArray =
+		[
 			'content' => Helper\Option::getPermissionArray(),
 			'module' => Helper\Option::getPermissionArray('modules'),
 			'setting' => Helper\Option::getPermissionArray('settings')

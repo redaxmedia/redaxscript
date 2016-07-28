@@ -22,7 +22,8 @@ class Ckeditor extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Ckeditor',
 		'alias' => 'Ckeditor',
 		'author' => 'Redaxmedia',

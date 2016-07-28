@@ -21,7 +21,8 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = [
+	protected static $_configArray =
+	[
 		'id' => 'disqus_thread',
 		'url' => '//example.disqus.com/embed.js'
 	];

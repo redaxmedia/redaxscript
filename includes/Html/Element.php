@@ -27,7 +27,8 @@ class Element extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_singletonTags = [
+	protected $_singletonTags =
+	[
 		'area',
 		'base',
 		'br',

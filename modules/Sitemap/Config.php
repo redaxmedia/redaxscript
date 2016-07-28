@@ -21,7 +21,8 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = [
+	protected static $_configArray =
+	[
 		'className' =>
 		[
 			'title' => 'rs-title-content-sub rs-title-sitemap',

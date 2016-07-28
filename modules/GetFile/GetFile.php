@@ -22,7 +22,8 @@ class GetFile extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = [
+	protected static $_moduleArray =
+	[
 		'name' => 'Get file',
 		'alias' => 'GetFile',
 		'author' => 'Redaxmedia',
