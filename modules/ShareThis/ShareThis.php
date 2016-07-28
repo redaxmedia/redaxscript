@@ -22,13 +22,13 @@ class ShareThis extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Share this',
 		'alias' => 'ShareThis',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social networks',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -77,26 +77,30 @@ class ShareThis extends Config
 			/* html elements */
 
 			$linkElement = new Html\Element();
-			$linkElement->init('a', array(
+			$linkElement->init('a',
+			[
 				'target' => '_blank'
-			));
+			]);
 			$listElement = new Html\Element();
-			$listElement->init('ul', array(
+			$listElement->init('ul',
+			[
 				'class' => self::$_configArray['className']['list']
-			));
+			]);
 
 			/* process network */
 
 			foreach (self::$_configArray['network'] as $key => $value)
 			{
 				$output .= '<li>';
-				$output .= $linkElement->attr(array(
+				$output .= $linkElement->attr(
+				[
 					'class' => self::$_configArray['className']['link'] . ' ' . $value['className'],
 					'data-height' => $value['height'],
 					'data-type' => $key,
 					'data-width' => $value['width'],
 					'href' => $value['url'] . $url,
-				))->text($key);
+				])
+				->text($key);
 				$output .= '</li>';
 			}
 

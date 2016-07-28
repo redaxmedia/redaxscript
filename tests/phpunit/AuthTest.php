@@ -83,14 +83,17 @@ class AuthTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setSession('auth', array(
-			'user' => array(
+		$this->_request->setSession('auth',
+		[
+			'user' =>
+			[
 				'test' => 'test'
-			),
-			'permission' => array(
+			],
+			'permission' =>
+			[
 				'test' => 'test'
-			)
-		));
+			]
+		]);
 		$auth = new Auth($this->_request);
 		$auth->init();
 
@@ -154,7 +157,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerGetPermission
 	 */
 
-	public function testGetPermission($method = null, $typeArray = array(), $groups = null)
+	public function testGetPermission($method = null, $typeArray = [], $groups = null)
 	{
 		/* setup */
 

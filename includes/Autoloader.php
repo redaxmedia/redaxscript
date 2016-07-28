@@ -20,10 +20,10 @@ class Autoloader
 	 * @var string
 	 */
 
-	protected static $_namespace = array(
+	protected static $_namespace = [
 		'Redaxscript\Modules\\',
 		'Redaxscript\\'
-	);
+	];
 
 	/**
 	 * project class delimiter
@@ -47,11 +47,11 @@ class Autoloader
 	 * @var array
 	 */
 
-	protected static $_directory = array(
+	protected static $_directory = [
 		'includes',
 		'libraries',
 		'modules'
-	);
+	];
 
 	/**
 	 * init the class
@@ -71,17 +71,18 @@ class Autoloader
 		}
 		else if (is_string($directory))
 		{
-			self::$_directory = array(
+			self::$_directory = [
 				$directory
-			);
+			];
 		}
 
 		/* register autoload */
 
-		spl_autoload_register(array(
+		spl_autoload_register(
+		[
 			__CLASS__,
 			'_load'
-		));
+		]);
 	}
 
 	/**

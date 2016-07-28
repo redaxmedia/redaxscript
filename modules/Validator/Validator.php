@@ -23,14 +23,14 @@ class Validator extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Validator',
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
 		'version' => '3.0.0',
 		'access' => '1'
-	);
+	];
 
 	/**
 	 * adminPanelNotification
@@ -56,13 +56,15 @@ class Validator extends Config
 			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
 			if (in_array($type, self::$_configArray['typeArray']))
 			{
-				$message = array(
+				$message =
+				[
 					'text' => (string)$value->message,
-					'attr' => array(
+					'attr' =>
+					[
 						'href' => $urlBase,
 						'target' => '_blank'
-					)
-				);
+					]
+				];
 				self::setNotification($type, $message);
 			}
 		}

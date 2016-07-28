@@ -37,33 +37,40 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($article->title ? $article->title : $this->_language->get('article_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('articlesEdit') && $this->_registry->get('articlesDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/articles' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'delete' => array(
+				],
+				'delete' =>
+				[
 					'href' => $article->id ? $this->_registry->get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* collect item output */
 
@@ -101,184 +108,218 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label($this->_language->get('title'), array(
+			->label($this->_language->get('title'),
+			[
 				'for' => 'title'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'class' => 'rs-admin-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required',
 				'value' => $article->title
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('alias'), array(
+			->label($this->_language->get('alias'),
+			[
 				'for' => 'alias'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'class' => 'rs-admin-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required',
 				'value' => $article->alias
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('description'), array(
+			->label($this->_language->get('description'),
+			[
 				'for' => 'description'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $article->description
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('keywords'), array(
+			->label($this->_language->get('keywords'),
+			[
 				'for' => 'keywords'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'value' => $article->keywords
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('robots'), array(
+			->label($this->_language->get('robots'),
+			[
 				'for' => 'robots'
-			))
-			->select(Helper\Option::getRobotArray(), array(
+			])
+			->select(Helper\Option::getRobotArray(),
+			[
 				'id' => 'robots',
 				'name' => 'robots',
 				'value' => $article->id ? intval($article->robots) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('text'), array(
+			->label($this->_language->get('text'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-input rs-admin-js-editor-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
 				'value' => htmlspecialchars($article->text)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('language'), array(
+			->label($this->_language->get('language'),
+			[
 				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
+			])
+			->select(Helper\Option::getLanguageArray(),
+			[
 				'id' => 'language',
 				'name' => 'language',
 				'value' => $article->language
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('template'), array(
+			->label($this->_language->get('template'),
+			[
 				'for' => 'template'
-			))
-			->select(Helper\Option::getTemplateArray(), array(
+			])
+			->select(Helper\Option::getTemplateArray(),
+			[
 				'id' => 'template',
 				'name' => 'template',
 				'value' => $article->template
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('article_sibling'), array(
+			->label($this->_language->get('article_sibling'),
+			[
 				'for' => 'sibling'
-			))
-			->select(Helper\Option::getContentArray('articles'), array(
+			])
+			->select(Helper\Option::getContentArray('articles'),
+			[
 				'id' => 'sibling',
 				'name' => 'sibling',
 				'value' => intval($article->sibling)
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('category'), array(
+			->label($this->_language->get('category'),
+			[
 				'for' => 'category'
-			))
-			->select(Helper\Option::getContentArray('categories'), array(
+			])
+			->select(Helper\Option::getContentArray('categories'),
+			[
 				'id' => 'category',
 				'name' => 'category',
 				'value' => intval($article->category)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('headline'), array(
+			->label($this->_language->get('headline'),
+			[
 				'for' => 'headline'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'headline',
 				'name' => 'headline',
 				'value' => $article->id ? intval($article->headline) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('infoline'), array(
+			->label($this->_language->get('infoline'),
+			[
 				'for' => 'infoline'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'infoline',
 				'name' => 'infoline',
 				'value' => $article->id ? intval($article->infoline) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('comments'), array(
+			->label($this->_language->get('comments'),
+			[
 				'for' => 'comments'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'comments',
 				'name' => 'comments',
 				'value' => intval($article->comments)
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('status'), array(
+			->label($this->_language->get('status'),
+			[
 				'for' => 'status'
-			))
-			->select(Helper\Option::getVisibleArray(), array(
+			])
+			->select(Helper\Option::getVisibleArray(),
+			[
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $article->id ? intval($article->status) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('rank'), array(
+			->label($this->_language->get('rank'),
+			[
 				'for' => 'rank'
-			))
-			->number(array(
+			])
+			->number(
+			[
 				'id' => 'rank',
 				'name' => 'rank',
 				'value' => $article->id ? intval($article->rank) : Db::forTablePrefix('articles')->max('rank') + 1
-			))
+			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label($this->_language->get('access'), array(
+				->label($this->_language->get('access'),
+				[
 					'for' => 'access'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
+				])
+				->select(Helper\Option::getAccessArray('groups'),
+				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
 					'value' => $article->access
-				))
+				])
 				->append('</li>');
 		}
 		$formElement
 			->append('<li>')
-			->label($this->_language->get('date'), array(
+			->label($this->_language->get('date'),
+			[
 				'for' => 'date'
-			))
-			->datetime(array(
+			])
+			->datetime(
+			[
 				'id' => 'date',
 				'name' => 'date',
 				'value' => $article->date ? $article->date : null
-			))
+			])
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();

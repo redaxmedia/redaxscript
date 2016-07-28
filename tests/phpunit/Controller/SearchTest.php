@@ -68,29 +68,32 @@ class SearchTest extends TestCaseAbstract
 	{
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'test',
 				'alias' => 'test-one',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'test',
 				'alias' => 'test-two',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'test',
 				'alias' => 'test-three',
 				'author' => 'test',
@@ -98,22 +101,24 @@ class SearchTest extends TestCaseAbstract
 				'category' => 1,
 				'status' => 0,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
-			->set(array(
+			->set(
+			[
 				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
-			->set(array(
+			->set(
+			[
 				'id' => 2,
 				'author' => 'test',
 				'email' => 'test@test.com',
@@ -121,7 +126,7 @@ class SearchTest extends TestCaseAbstract
 				'article' => 1,
 				'status' => 0,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 	}
 
@@ -161,7 +166,7 @@ class SearchTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($registryArray = array(), $expect = null)
+	public function testProcess($registryArray = [], $expect = null)
 	{
 		/* setup */
 

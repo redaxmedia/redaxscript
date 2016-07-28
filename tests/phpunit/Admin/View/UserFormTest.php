@@ -55,13 +55,15 @@ class UserFormTest extends TestCaseAbstract
 
 	public static function setUpBeforeClass()
 	{
-		$test = Db::forTablePrefix('users')->create();
-		$test->set(array(
-			'name' => 'Test',
-			'user' => 'test',
-			'groups' => '1'
-		));
-		$test->save();
+		Db::forTablePrefix('users')
+			->create()
+			->set(
+			[
+				'name' => 'Test',
+				'user' => 'test',
+				'groups' => '1'
+			])
+			->save();
 	}
 
 	/**
@@ -100,7 +102,7 @@ class UserFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $userId = null, $expectArray = array())
+	public function testRender($registryArray = [], $userId = null, $expectArray = [])
 	{
 		/* setup */
 

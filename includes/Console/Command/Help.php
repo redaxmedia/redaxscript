@@ -21,16 +21,20 @@ class Help extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'help' => array(
+	protected $_commandArray =
+	[
+		'help' =>
+		[
 			'description' => 'Help command',
-			'argumentArray' => array(
-				'<command>' => array(
+			'argumentArray' =>
+			[
+				'<command>' =>
+				[
 					'description' => 'Show help for the <command>'
-				)
-			)
-		)
-	);
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command

@@ -21,10 +21,11 @@ function comments($article, $route)
 	/* query comments */
 
 	$comments = Redaxscript\Db::forTablePrefix('comments')
-		->where(array(
+		->where(
+		[
 			'status' => 1,
 			'article' => $article
-		))
+		])
 		->whereLanguageIs(Redaxscript\Registry::get('language'))
 		->orderGlobal('rank');
 

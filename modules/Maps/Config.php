@@ -21,10 +21,10 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
+	protected static $_configArray = [
 		'className' => 'rs-js-map rs-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
 		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM',
 		'sensor' => true
-	);
+	];
 }

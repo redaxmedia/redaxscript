@@ -23,24 +23,31 @@ class Uninstall extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'uninstall' => array(
+	protected $_commandArray =
+	[
+		'uninstall' =>
+		[
 			'description' => 'Uninstall command',
-			'argumentArray' => array(
-				'database' => array(
+			'argumentArray' =>
+			[
+				'database' =>
+				[
 					'description' => 'Uninstall the database'
-				),
-				'module' => array(
+				],
+				'module' =>
+				[
 					'description' => 'Uninstall the module',
-					'optionArray' => array(
-						'alias' => array(
+					'optionArray' =>
+					[
+						'alias' =>
+						[
 							'description' => 'Required module alias'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -97,7 +104,7 @@ class Uninstall extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _module($optionArray = array())
+	protected function _module($optionArray = [])
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;

@@ -2,13 +2,15 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $tableElement = new Html\Element();
-$tableElement->init('table', array(
+$tableElement->init('table',
+[
 	'class' => $admin ? 'rs-admin-table-default' : 'rs-table-default'
-));
+]);
 $theadElement = new Html\Element();
 $theadElement->init('thead');
 $tfootElement = new Html\Element();

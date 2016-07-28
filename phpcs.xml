@@ -8,6 +8,7 @@
 
 	<!-- inherit from generic -->
 
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
 	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
 	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
 	<rule ref="Generic.CodeAnalysis.JumbledIncrementer" />

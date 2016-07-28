@@ -19,10 +19,10 @@ class Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'status' => 1,
 		'access' => null
-	);
+	];
 
 	/**
 	 * array of the notification
@@ -30,7 +30,7 @@ class Module
 	 * @var array
 	 */
 
-	protected static $_notificationArray = array();
+	protected static $_notificationArray = [];
 
 	/**
 	 * init the class
@@ -40,7 +40,7 @@ class Module
 	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init($moduleArray = array())
+	public function init($moduleArray = [])
 	{
 		/* merge module setup */
 
@@ -55,10 +55,11 @@ class Module
 		{
 			$registry = Registry::getInstance();
 			$language = Language::getInstance();
-			$language->load(array(
+			$language->load(
+			[
 				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
 				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
-			));
+			]);
 		}
 	}
 

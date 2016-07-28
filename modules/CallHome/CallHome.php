@@ -25,13 +25,13 @@ class CallHome extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Call home',
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -74,7 +74,7 @@ class CallHome extends Module
 
 	public static function adminPanelNotification()
 	{
-		$output = array();
+		$output = [];
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
 

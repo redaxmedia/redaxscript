@@ -43,7 +43,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -117,11 +117,12 @@ class ConfigTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_config->set('dbPassword', 'test');
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'list'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */
@@ -144,7 +145,8 @@ class ConfigTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_config->init(Stream::url('root/config.php'));
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'set',
@@ -152,7 +154,7 @@ class ConfigTest extends TestCaseAbstract
 			'sqlite',
 			'--db-host',
 			'127.0.0.1'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */
@@ -175,12 +177,13 @@ class ConfigTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_config->init(Stream::url('root/config.php'));
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'set',
 			'--no-interaction'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */
@@ -203,13 +206,14 @@ class ConfigTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_config->init(Stream::url('root/config.php'));
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'parse',
 			'--db-url',
 			'mysql://root:test@127.0.0.1/test'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */
@@ -233,14 +237,15 @@ class ConfigTest extends TestCaseAbstract
 
 		putenv('DB_URL=mysql://root:test@127.0.0.1/test');
 		$this->_config->init(Stream::url('root/config.php'));
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'parse',
 			'--db-url',
 			'DB_URL',
 			'--db-env'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */
@@ -263,12 +268,13 @@ class ConfigTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_config->init(Stream::url('root/config.php'));
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'config',
 			'parse',
 			'--no-interaction'
-		));
+		]);
 		$configCommand = new Command\Config($this->_config, $this->_request);
 
 		/* actual */

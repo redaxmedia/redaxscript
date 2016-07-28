@@ -87,7 +87,7 @@ abstract class DetectorAbstract
 	 * @param string $path path to the required file
 	 */
 
-	protected function _detect($setupArray = array(), $type = null, $path = null)
+	protected function _detect($setupArray = [], $type = null, $path = null)
 	{
 		foreach ($setupArray as $key => $value)
 		{

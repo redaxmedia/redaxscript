@@ -21,10 +21,11 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray = [
+		'className' =>
+		[
 			'title' => 'rs-title-content-sub rs-title-sitemap',
 			'list' => 'rs-list-default rs-list-sitemap'
-		)
-	);
+		]
+	];
 }

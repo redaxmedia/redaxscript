@@ -27,10 +27,11 @@ class Option
 
 	public static function getToggleArray()
 	{
-		return array(
+		return
+		[
 			Language::get('enable') => 1,
 			Language::get('disable') => 0
-		);
+		];
 	}
 
 	/**
@@ -43,10 +44,11 @@ class Option
 
 	public static function getVisibleArray()
 	{
-		return array(
+		return
+		[
 			Language::get('publish') => 1,
 			Language::get('unpublish') => 0
-		);
+		];
 	}
 
 	/**
@@ -59,14 +61,15 @@ class Option
 
 	public static function getRobotArray()
 	{
-		return array(
+		return
+		[
 			Language::get('all') => 1,
 			Language::get('index') => 2,
 			Language::get('follow') => 3,
 			Language::get('index_no') => 4,
 			Language::get('follow_no') => 5,
 			Language::get('none') => 0
-		);
+		];
 	}
 
 	/**
@@ -79,10 +82,11 @@ class Option
 
 	public static function getTimeArray()
 	{
-		return array(
+		return
+		[
 			'24h' => 'H:i',
 			'12h' => 'h:i a'
-		);
+		];
 	}
 
 	/**
@@ -95,11 +99,12 @@ class Option
 
 	public static function getDateArray()
 	{
-		return array(
+		return
+		[
 			'DD.MM.YYYY' => 'd.m.Y',
 			'MM.DD.YYYY' => 'm.d.Y',
 			'YYYY.MM.DD' => 'Y.m.d'
-		);
+		];
 	}
 
 	/**
@@ -112,10 +117,11 @@ class Option
 
 	public static function getOrderArray()
 	{
-		return array(
+		return
+		[
 			Language::get('ascending') => 'asc',
 			Language::get('descending') => 'desc'
-		);
+		];
 	}
 
 	/**
@@ -128,12 +134,13 @@ class Option
 
 	public static function getCaptchaArray()
 	{
-		return array(
+		return
+		[
 			Language::get('random') => 1,
 			Language::get('addition') => 2,
 			Language::get('subtraction') => 3,
 			Language::get('disable') => 0
-		);
+		];
 	}
 
 	/**
@@ -150,24 +157,27 @@ class Option
 	{
 		if ($table === 'modules')
 		{
-			return array(
+			return
+			[
 				Language::get('install') => 1,
 				Language::get('edit') => 2,
 				Language::get('uninstall') => 3
-			);
+			];
 		}
 		if ($table === 'settings')
 		{
-			return array(
+			return
+			[
 				Language::get('none') => 1,
 				Language::get('edit') => 2,
-			);
+			];
 		}
-		return array(
+		return
+		[
 			Language::get('create') => 1,
 			Language::get('edit') => 2,
 			Language::get('delete') => 3
-		);
+		];
 	}
 
 	/**
@@ -206,11 +216,12 @@ class Option
 	public static function getTemplateArray()
 	{
 		$templateDirectory = new Directory();
-		$templateDirectory->init('templates', array(
+		$templateDirectory->init('templates',
+		[
 			'admin',
 			'console',
 			'install'
-		));
+		]);
 		$templateDirectoryArray = $templateDirectory->getArray();
 
 		/* process directory */
@@ -242,7 +253,8 @@ class Option
 		$contentArray[Language::get('select')] = 'select';
 		foreach ($content as $value)
 		{
-			$contentArray[$value->title . ' (' . $value->id . ')'] = intval($value->id);
+			$contentKey = $value->title . ' (' . $value->id . ')';
+			$contentArray[$contentKey] = intval($value->id);
 		}
 		return $contentArray;
 	}

@@ -35,7 +35,7 @@ class Hook
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array();
+	protected static $_moduleArray = [];
 
 	/**
 	 * array of triggered events
@@ -43,7 +43,7 @@ class Hook
 	 * @var array
 	 */
 
-	protected static $_eventArray = array();
+	protected static $_eventArray = [];
 
 	/**
 	 * constructor of the class
@@ -122,9 +122,9 @@ class Hook
 	 * @return array
 	 */
 
-	public static function collect($event = null, $parameterArray = array())
+	public static function collect($event = null, $parameterArray = [])
 	{
-		$output = array();
+		$output = [];
 
 		/* trigger event */
 
@@ -138,10 +138,11 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				$output = array_merge($output, call_user_func_array(array(
+				$output = array_merge($output, call_user_func_array(
+				[
 					$object,
 					$event
-				), $parameterArray));
+				], $parameterArray));
 			}
 		}
 		return $output;
@@ -158,7 +159,7 @@ class Hook
 	 * @return mixed
 	 */
 
-	public static function trigger($event = null, $parameterArray = array())
+	public static function trigger($event = null, $parameterArray = [])
 	{
 		$output = null;
 
@@ -174,10 +175,11 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				$output .= call_user_func_array(array(
+				$output .= call_user_func_array(
+				[
 					$object,
 					$event
-				), $parameterArray);
+				], $parameterArray);
 			}
 		}
 		return $output;

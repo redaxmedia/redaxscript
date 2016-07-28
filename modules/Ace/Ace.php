@@ -22,13 +22,13 @@ class Ace extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Ace',
 		'alias' => 'Ace',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered code editor',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart

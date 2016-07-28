@@ -21,13 +21,13 @@ class SyntaxHighlighter extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Syntax highlighter',
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered syntax highlighter',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart

@@ -34,27 +34,34 @@ class SettingForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($this->_language->get('settings'));
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . 'admin/update/settings',
 				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'button' => array(
-				'save' => array(
+			],
+			'button' =>
+			[
+				'save' =>
+				[
 					'name' => 'update'
-				)
-			),
-			'link' => array(
-				'cancel' => array(
+				]
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('parameterRoute') . 'admin'
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* create the form */
 
@@ -65,23 +72,27 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-js-set-active rs-admin-set-accordion rs-admin-set-active">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-js-title-active rs-admin-title-accordion rs-admin-title-active">' . $this->_language->get('general') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-js-box-active rs-admin-box-accordion rs-admin-box-accordion rs-admin-box-active"><li>')
-			->label($this->_language->get('language'), array(
+			->label($this->_language->get('language'),
+			[
 				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
+			])
+			->select(Helper\Option::getLanguageArray(),
+			[
 				'id' => 'language',
 				'name' => 'language',
 				'value' => Db::getSetting('language')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('template'), array(
+			->label($this->_language->get('template'),
+			[
 				'for' => 'template'
-			))
-			->select(Helper\Option::getTemplateArray(), array(
+			])
+			->select(Helper\Option::getTemplateArray(),
+			[
 				'id' => 'template',
 				'name' => 'template',
 				'value' => Db::getSetting('template')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* metadata set */
@@ -89,61 +100,73 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('metadata') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('title'), array(
+			->label($this->_language->get('title'),
+			[
 				'for' => 'title'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'title',
 				'name' => 'title',
 				'value' => Db::getSetting('title')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('author'), array(
+			->label($this->_language->get('author'),
+			[
 				'for' => 'author'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'author',
 				'name' => 'author',
 				'value' => Db::getSetting('author')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('copyright'), array(
+			->label($this->_language->get('copyright'),
+			[
 				'for' => 'copyright'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'copyright',
 				'name' => 'copyright',
 				'value' => Db::getSetting('copyright')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('description'), array(
+			->label($this->_language->get('description'),
+			[
 				'for' => 'description'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => Db::getSetting('description')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('keywords'), array(
+			->label($this->_language->get('keywords'),
+			[
 				'for' => 'keywords'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'value' => Db::getSetting('keywords')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('robots'), array(
+			->label($this->_language->get('robots'),
+			[
 				'for' => 'robots'
-			))
-			->select(Helper\Option::getRobotArray(), array(
+			])
+			->select(Helper\Option::getRobotArray(),
+			[
 				'id' => 'robots',
 				'name' => 'robots',
 				'value' => Db::getSetting('robots')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* contact set */
@@ -151,32 +174,38 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contact') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('email'), array(
+			->label($this->_language->get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'value' => Db::getSetting('email')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('subject'), array(
+			->label($this->_language->get('subject'),
+			[
 				'for' => 'subject'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'subject',
 				'name' => 'subject',
 				'value' => Db::getSetting('subject')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('notification'), array(
+			->label($this->_language->get('notification'),
+			[
 				'for' => 'notification'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'notification',
 				'name' => 'notification',
 				'value' => Db::getSetting('notification')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* formatting set */
@@ -184,41 +213,49 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('formatting') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('charset'), array(
+			->label($this->_language->get('charset'),
+			[
 				'for' => 'charset'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'charset',
 				'name' => 'charset',
 				'value' => Db::getSetting('charset')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('divider'), array(
+			->label($this->_language->get('divider'),
+			[
 				'for' => 'divider'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'divider',
 				'name' => 'divider',
 				'value' => Db::getSetting('divider')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('time'), array(
+			->label($this->_language->get('time'),
+			[
 				'for' => 'time'
-			))
-			->select(Helper\Option::getTimeArray(), array(
+			])
+			->select(Helper\Option::getTimeArray(),
+			[
 				'id' => 'time',
 				'name' => 'time',
 				'value' => Db::getSetting('time')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('date'), array(
+			->label($this->_language->get('date'),
+			[
 				'for' => 'date'
-			))
-			->select(Helper\Option::getDateArray(), array(
+			])
+			->select(Helper\Option::getDateArray(),
+			[
 				'id' => 'date',
 				'name' => 'date',
 				'value' => Db::getSetting('date')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* contents set */
@@ -226,41 +263,49 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contents') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('homepage'), array(
+			->label($this->_language->get('homepage'),
+			[
 				'for' => 'homepage'
-			))
-			->select(Helper\Option::getContentArray('articles'), array(
+			])
+			->select(Helper\Option::getContentArray('articles'),
+			[
 				'id' => 'homepage',
 				'name' => 'homepage',
 				'value' => Db::getSetting('homepage')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('limit'), array(
+			->label($this->_language->get('limit'),
+			[
 				'for' => 'limit'
-			))
-			->number(array(
+			])
+			->number(
+			[
 				'id' => 'limit',
 				'name' => 'limit',
 				'value' => Db::getSetting('limit')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('order'), array(
+			->label($this->_language->get('order'),
+			[
 				'for' => 'order'
-			))
-			->select(Helper\Option::getOrderArray(), array(
+			])
+			->select(Helper\Option::getOrderArray(),
+			[
 				'id' => 'order',
 				'name' => 'order',
 				'value' => Db::getSetting('order')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('pagination'), array(
+			->label($this->_language->get('pagination'),
+			[
 				'for' => 'pagination'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'pagination',
 				'name' => 'pagination',
 				'value' => Db::getSetting('pagination')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* users set */
@@ -268,32 +313,38 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('users') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('registration'), array(
+			->label($this->_language->get('registration'),
+			[
 				'for' => 'registration'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'registration',
 				'name' => 'registration',
 				'value' => Db::getSetting('registration')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('verification'), array(
+			->label($this->_language->get('verification'),
+			[
 				'for' => 'verification'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'verification',
 				'name' => 'verification',
 				'value' => Db::getSetting('verification')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('recovery'), array(
+			->label($this->_language->get('recovery'),
+			[
 				'for' => 'recovery'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'recovery',
 				'name' => 'recovery',
 				'value' => Db::getSetting('recovery')
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* security set */
@@ -301,23 +352,27 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('security') . '</legend>')
 			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
-			->label($this->_language->get('moderation'), array(
+			->label($this->_language->get('moderation'),
+			[
 				'for' => 'moderation'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'moderation',
 				'name' => 'moderation',
 				'value' => Db::getSetting('moderation')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('captcha'), array(
+			->label($this->_language->get('captcha'),
+			[
 				'for' => 'captcha'
-			))
-			->select(Helper\Option::getCaptchaArray(), array(
+			])
+			->select(Helper\Option::getCaptchaArray(),
+			[
 				'id' => 'captcha',
 				'name' => 'captcha',
 				'value' => Db::getSetting('captcha')
-			))
+			])
 			->append('</li></ul></fieldset>')
 			->token()
 			->cancel()

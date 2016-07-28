@@ -24,13 +24,13 @@ class SitemapXml extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap XML',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * renderStart

@@ -2,51 +2,55 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $clearfixElement = new Html\Element();
-$clearfixElement->init('div', array(
+$clearfixElement->init('div',
+[
 	'class' => 'rs-fn-clearfix'
-));
+]);
 $gridElement = new Html\Element();
 $gridElement->init('div');
 $boxElement = new Html\Element();
-$boxElement->init('div', array(
+$boxElement->init('div',
+[
 	'class' => 'rs-box-preview'
-));
-$gridArray = array(
-	array(
+]);
+$gridArray =
+[
+	[
 		'.rs-fn-clearfix > .rs-fn-grid',
 		'',
-		'rs-fn-grid',
-	),
-	array(
+		'rs-fn-grid'
+	],
+	[
 		'.rs-fn-clearfix > .rs-fn-grid-space',
 		'',
-		'rs-fn-grid-space',
-	),
-	array(
+		'rs-fn-grid-space'
+	],
+	[
 		'.rs-fn-clearfix.line > .rs-fn-grid',
 		'rs-line',
-		'rs-fn-grid',
-	),
-	array(
+		'rs-fn-grid'
+	],
+	[
 		'.rs-fn-clearfix.line > .rs-fn-grid-space',
 		'rs-line',
-		'rs-fn-grid-space',
-	),
-	array(
+		'rs-fn-grid-space'
+	],
+	[
 		'.rs-fn-clearfix.rs-line-space > .rs-fn-grid',
 		'rs-line-space',
 		'rs-fn-grid'
-	),
-	array(
+	],
+	[
 		'.rs-fn-clearfix.rs-line-space > .rs-fn-grid-space',
 		'rs-line-space',
 		'rs-fn-grid-space'
-	)
-);
+	]
+];
 ?>
 
 <!-- grid combination -->

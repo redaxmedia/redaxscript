@@ -57,14 +57,15 @@ class CommentFormTest extends TestCaseAbstract
 	{
 		Db::forTablePrefix('comments')
 			->create()
-			->set(array(
+			->set(
+			[
 				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 	}
 
@@ -104,7 +105,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $commentId = null, $expectArray = array())
+	public function testRender($registryArray = [], $commentId = null, $expectArray = [])
 	{
 		/* setup */
 

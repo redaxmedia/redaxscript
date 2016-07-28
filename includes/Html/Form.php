@@ -17,27 +17,27 @@ use Redaxscript\Registry;
  * @category Server
  * @author Henry Ruhs
  *
- * @method button(string $text = null, array $attributeArray = array())
- * @method cancel(string $text = null, array $attributeArray = array())
- * @method checkbox(array $attributeArray = array())
- * @method color(array $attributeArray = array())
- * @method date(array $attributeArray = array())
- * @method datetime(array $attributeArray = array())
- * @method email(array $attributeArray = array())
- * @method file(array $attributeArray = array())
- * @method hidden(array $attributeArray = array())
- * @method number(array $attributeArray = array())
- * @method password(array $attributeArray = array())
- * @method radio(array $attributeArray = array())
- * @method range(array $attributeArray = array())
- * @method reset(string $text = null, array $attributeArray = array())
- * @method search(array $attributeArray = array())
- * @method submit(string $text = null, array $attributeArray = array())
- * @method time(array $attributeArray = array())
- * @method tel(array $attributeArray = array())
- * @method text(array $attributeArray = array())
- * @method url(array $attributeArray = array())
- * @method week(array $attributeArray = array())
+ * @method button(string $text = null, array $attributeArray = [])
+ * @method cancel(string $text = null, array $attributeArray = [])
+ * @method checkbox(array $attributeArray = [])
+ * @method color(array $attributeArray = [])
+ * @method date(array $attributeArray = [])
+ * @method datetime(array $attributeArray = [])
+ * @method email(array $attributeArray = [])
+ * @method file(array $attributeArray = [])
+ * @method hidden(array $attributeArray = [])
+ * @method number(array $attributeArray = [])
+ * @method password(array $attributeArray = [])
+ * @method radio(array $attributeArray = [])
+ * @method range(array $attributeArray = [])
+ * @method reset(string $text = null, array $attributeArray = [])
+ * @method search(array $attributeArray = [])
+ * @method submit(string $text = null, array $attributeArray = [])
+ * @method time(array $attributeArray = [])
+ * @method tel(array $attributeArray = [])
+ * @method text(array $attributeArray = [])
+ * @method url(array $attributeArray = [])
+ * @method week(array $attributeArray = [])
  */
 
 class Form extends HtmlAbstract
@@ -72,17 +72,19 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_languageArray = array(
+	protected $_languageArray = [
 		'legend' => 'fields_required',
-		'button' => array(
+		'button' =>
+		[
 			'button' => 'ok',
 			'reset' => 'reset',
 			'submit' => 'submit'
-		),
-		'link' => array(
+		],
+		'link' =>
+		[
 			'cancel' => 'cancel'
-		)
-	);
+		]
+	];
 
 	/**
 	 * attributes of the form
@@ -90,117 +92,146 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_attributeArray = array(
-		'form' => array(
+	protected $_attributeArray = [
+		'form' =>
+		[
 			'class' => 'rs-js-validate-form rs-form-default',
 			'method' => 'post'
-		),
-		'legend' => array(
+		],
+		'legend' =>
+		[
 			'class' => 'rs-legend-default'
-		),
-		'label' => array(
+		],
+		'label' =>
+		[
 			'class' => 'rs-label-default'
-		),
-		'select' => array(
+		],
+		'select' =>
+		[
 			'class' => 'rs-field-select'
-		),
-		'textarea' => array(
+		],
+		'textarea' =>
+		[
 			'class' => 'rs-field-textarea',
 			'cols' => 100,
 			'rows' => 5
-		),
-		'input' => array(
-			'checkbox' => array(
+		],
+		'input' =>
+		[
+			'checkbox' =>
+			[
 				'class' => 'rs-field-checkbox',
 				'type' => 'checkbox'
-			),
-			'color' => array(
+			],
+			'color' =>
+			[
 				'class' => 'rs-field-color',
 				'type' => 'color'
-			),
-			'date' => array(
+			],
+			'date' =>
+			[
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'date'
-			),
-			'datetime' => array(
+			],
+			'datetime' =>
+			[
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'datetime-local'
-			),
-			'email' => array(
+			],
+			'email' =>
+			[
 				'class' => 'rs-field-default rs-field-email',
 				'type' => 'email'
-			),
-			'file' => array(
+			],
+			'file' =>
+			[
 				'class' => 'rs-field-file',
 				'type' => 'file'
-			),
-			'hidden' => array(
+			],
+			'hidden' =>
+			[
 				'class' => 'rs-field-hidden',
 				'type' => 'hidden'
-			),
-			'number' => array(
+			],
+			'number' =>
+			[
 				'class' => 'rs-field-default rs-field-number',
 				'type' => 'number'
-			),
-			'password' => array(
+			],
+			'password' =>
+			[
 				'class' => 'rs-js-unmask-password rs-field-default rs-field-password',
 				'type' => 'password'
-			),
-			'radio' => array(
+			],
+			'radio' =>
+			[
 				'class' => 'rs-field-radio',
 				'type' => 'radio'
-			),
-			'range' => array(
+			],
+			'range' =>
+			[
 				'class' => 'rs-field-range',
 				'type' => 'range'
-			),
-			'search' => array(
+			],
+			'search' =>
+			[
 				'class' => 'rs-js-search rs-field-search',
 				'type' => 'search'
-			),
-			'tel' => array(
+			],
+			'tel' =>
+			[
 				'class' => 'rs-field-default rs-field-tel',
 				'type' => 'tel'
-			),
-			'time' => array(
+			],
+			'time' =>
+			[
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'time'
-			),
-			'text' => array(
+			],
+			'text' =>
+			[
 				'class' => 'rs-field-default rs-field-text',
 				'type' => 'text'
-			),
-			'url' => array(
+			],
+			'url' =>
+			[
 				'class' => 'rs-field-default rs-field-url',
 				'type' => 'url'
-			),
-			'week' => array(
+			],
+			'week' =>
+			[
 				'class' => 'rs-field-default rs-field-date',
 				'type' => 'week'
-			)
-		),
-		'button' => array(
-			'button' => array(
+			]
+		],
+		'button' =>
+		[
+			'button' =>
+			[
 				'class' => 'rs-js-button rs-button-default',
 				'type' => 'button'
-			),
-			'reset' => array(
+			],
+			'reset' =>
+			[
 				'class' => 'rs-js-reset rs-button-default rs-button-reset',
 				'type' => 'reset'
-			),
-			'submit' => array(
+			],
+			'submit' =>
+			[
 				'class' => 'rs-js-button rs-button-default rs-button-submit',
 				'type' => 'submit',
 				'value' => 'submit'
-			)
-		),
-		'link' => array(
-			'cancel' => array(
+			]
+		],
+		'link' =>
+		[
+			'cancel' =>
+			[
 				'class' => 'rs-js-cancel rs-button-default rs-button-cancel',
 				'href' => 'javascript:history.back()'
-			)
-		)
-	);
+			]
+		]
+	];
 
 	/**
 	 * options of the form
@@ -208,9 +239,10 @@ class Form extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_optionArray = array(
+	protected $_optionArray =
+	[
 		'captcha' => false
-	);
+	];
 
 	/**
 	 * constructor of the class
@@ -238,7 +270,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function __call($method = null, $argumentArray = array())
+	public function __call($method = null, $argumentArray = [])
 	{
 		/* input */
 
@@ -286,7 +318,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function init($attributeArray = array(), $optionArray = array())
+	public function init($attributeArray = [], $optionArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -318,7 +350,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function legend($html = null, $attributeArray = array())
+	public function legend($html = null, $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -347,7 +379,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function label($html = null, $attributeArray = array())
+	public function label($html = null, $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -375,7 +407,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function textarea($attributeArray = array())
+	public function textarea($attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -405,7 +437,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function select($optionArray = array(), $attributeArray = array())
+	public function select($optionArray = [], $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -435,7 +467,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	public function selectRange($rangeArray = array(), $attributeArray = array())
+	public function selectRange($rangeArray = [], $attributeArray = [])
 	{
 		$this->select(range($rangeArray['min'], $rangeArray['max']), $attributeArray);
 		return $this;
@@ -457,19 +489,21 @@ class Form extends HtmlAbstract
 
 		if ($this->_optionArray['captcha'] && $type === 'task')
 		{
-			$this->label('* ' . $this->_captcha->getTask(), array(
+			$this->label('* ' . $this->_captcha->getTask(),
+			[
 				'for' => 'task'
-			));
+			]);
 
 			/* number */
 
-			$this->number(array(
+			$this->number(
+			[
 				'id' => 'task',
 				'min' => $this->_captcha->getMin(),
 				'max' => $this->_captcha->getMax() * 2,
 				'name' => 'task',
 				'required' => 'required'
-			));
+			]);
 		}
 
 		/* solution */
@@ -481,10 +515,11 @@ class Form extends HtmlAbstract
 
 			/* hidden */
 
-			$this->hidden(array(
+			$this->hidden(
+			[
 				'name' => 'solution',
 				'value' => $captchaHash->getHash()
-			));
+			]);
 		}
 		return $this;
 	}
@@ -502,10 +537,11 @@ class Form extends HtmlAbstract
 		$token = $this->_registry->get('token');
 		if ($token)
 		{
-			$this->hidden(array(
+			$this->hidden(
+			[
 				'name' => 'token',
 				'value' => $token
-			));
+			]);
 		}
 		return $this;
 	}
@@ -542,7 +578,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	protected function _createInput($type = 'text', $attributeArray = array())
+	protected function _createInput($type = 'text', $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -570,7 +606,7 @@ class Form extends HtmlAbstract
 	 * @return string
 	 */
 
-	protected function _createOption($optionArray = array(), $selected = null)
+	protected function _createOption($optionArray = [], $selected = null)
 	{
 		$output = null;
 		$optionElement = new Element();
@@ -591,10 +627,11 @@ class Form extends HtmlAbstract
 			{
 				$output .= $optionElement
 					->copy()
-					->attr(array(
+					->attr(
+					[
 						'selected' => $value === $selected || in_array($value, $selected) ? 'selected' : null,
 						'value' => $value
-					))
+					])
 					->text(is_string($key) ? $key : $value);
 			}
 		}
@@ -613,7 +650,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	protected function _createButton($type = null, $text = null, $attributeArray = array())
+	protected function _createButton($type = null, $text = null, $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -643,7 +680,7 @@ class Form extends HtmlAbstract
 	 * @return Form
 	 */
 
-	protected function _createLink($type = null, $text = null, $attributeArray = array())
+	protected function _createLink($type = null, $text = null, $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{

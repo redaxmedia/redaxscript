@@ -21,7 +21,7 @@ class Reader
 	 * @var object
 	 */
 
-	protected $_dataObject = array();
+	protected $_dataObject = [];
 
 	/**
 	 * data array
@@ -29,7 +29,7 @@ class Reader
 	 * @var array
 	 */
 
-	protected $_dataArray = array();
+	protected $_dataArray = [];
 
 	/**
 	 * assoc
@@ -155,12 +155,14 @@ class Reader
 
 		if (function_exists('curl_version') && !file_exists($url))
 		{
-			$curl = curl_init();
-			curl_setopt_array($curl, array(
+			$optionArray =
+			[
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_FOLLOWLOCATION => true,
 				CURLOPT_URL => $url
-			));
+			];
+			$curl = curl_init();
+			curl_setopt_array($curl, $optionArray);
 			$output = curl_exec($curl);
 			curl_close($curl);
 		}

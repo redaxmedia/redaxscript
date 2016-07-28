@@ -38,7 +38,7 @@ abstract class ConsoleAbstract
 	 * @var string
 	 */
 
-	protected $_namespaceArray = array(
+	protected $_namespaceArray = [
 		'backup' => 'Redaxscript\Console\Command\Backup',
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
@@ -47,7 +47,7 @@ abstract class ConsoleAbstract
 		'setting' => 'Redaxscript\Console\Command\Setting',
 		'status' => 'Redaxscript\Console\Command\Status',
 		'uninstall' => 'Redaxscript\Console\Command\Uninstall'
-	);
+	];
 
 	/**
 	 * constructor of the class

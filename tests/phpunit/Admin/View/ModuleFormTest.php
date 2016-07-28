@@ -71,7 +71,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $moduleId = null, $expectArray = array())
+	public function testRender($registryArray = [], $moduleId = null, $expectArray = [])
 	{
 		/* setup */
 

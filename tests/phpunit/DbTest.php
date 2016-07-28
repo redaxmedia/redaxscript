@@ -30,7 +30,7 @@ class DbTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -186,13 +186,18 @@ class DbTest extends TestCaseAbstract
 	{
 		/* expect and actual */
 
-		$expect = array(
+		$expect = [
 			'category_alias' => 'home',
 			'article_alias' => 'welcome'
-		);
+		];
 		$actual = Db::forTablePrefix('articles')
 			->tableAlias('a')
-			->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
+			->leftJoinPrefix('categories',
+			[
+				'a.category',
+				'=',
+				'c.id'
+			], 'c')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
 			->where('a.alias', 'welcome')
@@ -214,11 +219,14 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('articles')->whereLikeMany(array(
+		$actual = Db::forTablePrefix('articles')->whereLikeMany(
+		[
 			'alias'
-		), array(
+		],
+		[
 			'%welcome%'
-		))->findOne()->alias;
+		])
+		->findOne()->alias;
 
 		/* compare */
 
@@ -261,9 +269,9 @@ class DbTest extends TestCaseAbstract
 	{
 		/* expect and actual */
 
-		$expect = array(
+		$expect = [
 			1
-		);
+		];
 		$actual = Db::forTablePrefix('articles')->findFlatArray();
 
 		/* compare */

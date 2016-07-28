@@ -41,7 +41,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -104,11 +104,12 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'uninstall',
 			'database'
-		));
+		]);
 		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */
@@ -133,13 +134,14 @@ class UninstallTest extends TestCaseAbstract
 		$installer = new Installer($this->_config);
 		$installer->init();
 		$installer->rawCreate();
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'uninstall',
 			'module',
 			'--alias',
 			'TestDummy'
-		));
+		]);
 		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */
@@ -161,12 +163,13 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'uninstall',
 			'module',
 			'--no-interaction'
-		));
+		]);
 		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
 
 		/* actual */

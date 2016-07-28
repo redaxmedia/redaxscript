@@ -60,7 +60,7 @@ class HashBench extends BenchCaseAbstract
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchInit($parameterArray = array())
+	public function benchInit($parameterArray = [])
 	{
 		$hash = new Hash($this->_config);
 		$hash->init($parameterArray[0]);
@@ -76,7 +76,7 @@ class HashBench extends BenchCaseAbstract
 	 * @ParamProviders({"providerHash"})
 	 */
 
-	public function benchValidate($parameterArray = array())
+	public function benchValidate($parameterArray = [])
 	{
 		/* setup */
 

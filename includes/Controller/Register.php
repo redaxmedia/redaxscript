@@ -38,29 +38,30 @@ class Register extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
-		);
+		];
 
 		/* handle error */
 
 		$messageArray = $this->_validate($postArray);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init(uniqid());
-		$createArray = array(
+		$createArray = [
 			'name' => $postArray['name'],
 			'user' => $postArray['user'],
 			'password' => $passwordHash->getHash(),
@@ -68,25 +69,27 @@ class Register extends ControllerAbstract
 			'language' => $this->_registry->get('language'),
 			'groups' => Db::forTablePrefix('groups')->where('alias', 'members')->findOne()->id,
 			'status' => Db::getSetting('verification') ? 0 : 1
-		);
-		$mailArray = array(
+		];
+		$mailArray = [
 			'name' => $postArray['name'],
 			'user' => $postArray['user'],
 			'password' => $passwordHash->getRaw(),
 			'email' => $postArray['email']
-		);
+		];
 
 		/* create and mail */
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			return $this->_success(array(
+			return $this->_success(
+			[
 				'message' => Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
-			));
+			]);
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'message' => $this->_language->get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -99,7 +102,7 @@ class Register extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = array())
+	protected function _success($successArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -118,7 +121,7 @@ class Register extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -136,7 +139,7 @@ class Register extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array())
+	protected function _validate($postArray = [])
 	{
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
@@ -144,7 +147,7 @@ class Register extends ControllerAbstract
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['name'])
 		{
 			$messageArray[] = $this->_language->get('name_empty');
@@ -186,11 +189,12 @@ class Register extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _create($createArray = array())
+	protected function _create($createArray = [])
 	{
 		return Db::forTablePrefix('users')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => $createArray['name'],
 				'user' => $createArray['user'],
 				'email' => $createArray['email'],
@@ -198,7 +202,7 @@ class Register extends ControllerAbstract
 				'language' => $createArray['language'],
 				'groups' => $createArray['groups'],
 				'status' => $createArray['status']
-			))
+			])
 			->save();
 	}
 
@@ -212,7 +216,7 @@ class Register extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _mail($mailArray = array())
+	protected function _mail($mailArray = [])
 	{
 		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
@@ -220,22 +224,23 @@ class Register extends ControllerAbstract
 
 		$linkElement = new Html\Element();
 		$linkElement
-			->init('a', array(
+			->init('a',
+			[
 				'href' => $urlLogin
-			))
+			])
 			->text($urlLogin);
 
 		/* prepare mail */
 
-		$toArray = array(
+		$toArray = [
 			$mailArray['name'] => $mailArray['email'],
 			Db::getSetting('author') => Db::getSetting('notification') ? Db::getSetting('email') : null
-		);
-		$fromArray = array(
+		];
+		$fromArray = [
 			$mailArray['name'] => $mailArray['email']
-		);
+		];
 		$subject = $this->_language->get('registration');
-		$bodyArray = array(
+		$bodyArray = [
 			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $mailArray['name'],
 			'<br />',
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
@@ -243,7 +248,7 @@ class Register extends ControllerAbstract
 			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
 			'<br />',
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
-		);
+		];
 
 		/* send mail */
 

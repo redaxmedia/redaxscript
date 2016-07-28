@@ -102,7 +102,8 @@ class Installer
 
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'Welcome',
 				'alias' => 'welcome',
 				'author' => $optionArray['adminUser'],
@@ -110,54 +111,64 @@ class Installer
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
 				'rank' => 1
-			))->save();
+			])
+			->save();
 
 		/* categories */
 
 		Db::forTablePrefix('categories')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $optionArray['adminUser'],
 				'robots' => 1,
 				'rank' => 1
-			))->save();
+			])
+			->save();
 
 		/* extras */
 
-		$extrasArray = array(
-			'categories' => array(
+		$extrasArray =
+		[
+			'categories' =>
+			[
 				'category' => 0,
 				'headline' => 1,
 				'status' => 1
-			),
-			'articles' => array(
+			],
+			'articles' =>
+			[
 				'category' => 0,
 				'headline' => 1,
 				'status' => 1
-			),
-			'comments' => array(
+			],
+			'comments' =>
+			[
 				'category' => 0,
 				'headline' => 1,
 				'status' => 1
-			),
-			'languages' => array(
+			],
+			'languages' =>
+			[
 				'category' => 0,
 				'headline' => 1,
 				'status' => 0
-			),
-			'templates' => array(
+			],
+			'templates' =>
+			[
 				'category' => 0,
 				'headline' => 1,
 				'status' => 0
-			),
-			'teaser' => array(
+			],
+			'teaser' =>
+			[
 				'category' => 1,
 				'headline' => 0,
 				'status' => 0
-			)
-		);
+			]
+		];
 		$extrasRank = 0;
 
 		/* process extras array */
@@ -166,7 +177,8 @@ class Installer
 		{
 			Db::forTablePrefix('extras')
 				->create()
-				->set(array(
+				->set(
+				[
 					'title' => ucfirst($key),
 					'alias' => $key,
 					'author' => $optionArray['adminUser'],
@@ -175,14 +187,16 @@ class Installer
 					'headline' => $value['headline'],
 					'status' => $value['status'],
 					'rank' => ++$extrasRank
-				))->save();
+				])
+				->save();
 		}
 
 		/* groups */
 
 		Db::forTablePrefix('groups')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => 'Administrators',
 				'alias' => 'administrators',
 				'description' => 'Unlimited access',
@@ -195,14 +209,17 @@ class Installer
 				'modules' => '1, 2, 3',
 				'settings' => 1,
 				'filter' => 0
-			))->save();
+			])
+			->save();
 		Db::forTablePrefix('groups')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => 'Members',
 				'alias' => 'members',
 				'description' => 'Default members group'
-			))->save();
+			])
+			->save();
 
 		/* modules */
 
@@ -219,7 +236,8 @@ class Installer
 
 		/* settings */
 
-		$settingArray = array(
+		$settingArray =
+		[
 			'language' => 'detect',
 			'template' => 'default',
 			'title' => $language->get('name', '_package'),
@@ -245,7 +263,7 @@ class Installer
 			'moderation' => 0,
 			'captcha' => 0,
 			'version' => $language->get('version', '_package')
-		);
+		];
 
 		/* process settings array */
 
@@ -253,10 +271,12 @@ class Installer
 		{
 			Db::forTablePrefix('settings')
 				->create()
-				->set(array(
+				->set(
+				[
 					'name' => $name,
 					'value' => $value
-				))->save();
+				])
+				->save();
 		}
 
 		/* users */
@@ -265,14 +285,16 @@ class Installer
 		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => $optionArray['adminName'],
 				'user' => $optionArray['adminUser'],
 				'password' => $passwordHash->getHash(),
 				'email' => $optionArray['adminEmail'],
 				'description' => 'God admin',
 				'groups' => '1'
-			))->save();
+			])
+			->save();
 	}
 
 	/**

@@ -101,9 +101,9 @@ class Tag
 
 		if (is_string($file))
 		{
-			$file = array(
+			$file = [
 				$file
-			);
+			];
 		}
 
 		/* include files */
@@ -180,9 +180,10 @@ class Tag
 	public static function content($options = null)
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('router', array(
+		return self::_migrate('router',
+		[
 			$options
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -196,12 +197,13 @@ class Tag
 	 * @return string
 	 */
 
-	public static function extra($optionArray = array())
+	public static function extra($optionArray = [])
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('extras', array(
+		return self::_migrate('extras',
+		[
 			$optionArray['filter']
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -216,19 +218,21 @@ class Tag
 	 * @return string
 	 */
 
-	public static function navigation($type = null, $optionArray = array())
+	public static function navigation($type = null, $optionArray = [])
 	{
 		// @codeCoverageIgnoreStart
 		if ($type === 'languages' || $type === 'templates')
 		{
-			return self::_migrate($type . '_list', array(
+			return self::_migrate($type . '_list',
+			[
 				$optionArray
-			));
+			]);
 		}
-		return self::_migrate('navigation_list', array(
+		return self::_migrate('navigation_list',
+		[
 			$type,
 			$optionArray
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -243,9 +247,10 @@ class Tag
 	public static function base()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('head', array(
+		return self::_migrate('head',
+		[
 			'base'
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -260,9 +265,10 @@ class Tag
 	public static function title()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('head', array(
+		return self::_migrate('head',
+		[
 			'title'
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -277,9 +283,10 @@ class Tag
 	public static function link()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('head', array(
+		return self::_migrate('head',
+		[
 			'link'
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -294,9 +301,10 @@ class Tag
 	public static function meta()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('head', array(
+		return self::_migrate('head',
+		[
 			'meta'
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -328,9 +336,10 @@ class Tag
 	public static function script($mode = null)
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('scripts', array(
+		return self::_migrate('scripts',
+		[
 			$mode
-		));
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -345,7 +354,7 @@ class Tag
 	 * @return string
 	 */
 
-	protected static function _migrate($function = null, $parameterArray = array())
+	protected static function _migrate($function = null, $parameterArray = [])
 	{
 		// @codeCoverageIgnoreStart
 		ob_start();

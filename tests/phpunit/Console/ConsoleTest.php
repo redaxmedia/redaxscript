@@ -68,10 +68,11 @@ class ConsoleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'help'
-		));
+		]);
 		$console = new Console\Console($this->_config, $this->_request);
 
 		/* actual */

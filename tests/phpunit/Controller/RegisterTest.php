@@ -107,7 +107,7 @@ class RegisterTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $hashArray = array(), $expect = null)
+	public function testProcess($postArray = [], $hashArray = [], $expect = null)
 	{
 		/* setup */
 

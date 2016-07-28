@@ -33,9 +33,10 @@ class SystemStatus extends ViewAbstract
 		$messageArray = $this->_validateError();
 		if ($messageArray)
 		{
-			$output .= $this->_error(array(
+			$output .= $this->_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle warning */
@@ -43,9 +44,10 @@ class SystemStatus extends ViewAbstract
 		$messageArray = $this->_validateWarning();
 		if ($messageArray)
 		{
-			$output .= $this->_warning(array(
+			$output .= $this->_warning(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 		return $output;
 	}
@@ -60,7 +62,7 @@ class SystemStatus extends ViewAbstract
 	 * @return array
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray['message']);
@@ -76,7 +78,7 @@ class SystemStatus extends ViewAbstract
 	 * @return array
 	 */
 
-	protected function _warning($warningArray = array())
+	protected function _warning($warningArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->warning($warningArray['message']);
@@ -92,7 +94,7 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateError()
 	{
-		$messageArray = array();
+		$messageArray = [];
 		if (!$this->_registry->get('dbStatus'))
 		{
 			$messageArray[] = $this->_language->get('database_failed');
@@ -122,7 +124,7 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateWarning()
 	{
-		$messageArray = array();
+		$messageArray = [];
 		if ($this->_registry->get('phpOs') !== 'linux')
 		{
 			$messageArray[] = $this->_language->get('php_os_no', '_installation');

@@ -2,14 +2,16 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $linkElement = new Html\Element();
 $linkElement
-	->init('a', array(
+	->init('a',
+	[
 		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
-	))
+	])
 	->text(Language::get('preview', '_preview'));
 ?>
 

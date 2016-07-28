@@ -89,11 +89,12 @@ class SettingTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'setting',
 			'list'
-		));
+		]);
 		$settingCommand = new Command\Setting($this->_config, $this->_request);
 
 		/* actual */
@@ -115,7 +116,8 @@ class SettingTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'setting',
 			'set',
@@ -123,7 +125,7 @@ class SettingTest extends TestCaseAbstract
 			'copyright',
 			'--value',
 			'Redaxscript'
-		));
+		]);
 		$settingCommand = new Command\Setting($this->_config, $this->_request);
 
 		/* actual */
@@ -145,12 +147,13 @@ class SettingTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'setting',
 			'set',
 			'--no-interaction'
-		));
+		]);
 		$settingCommand = new Command\Setting($this->_config, $this->_request);
 
 		/* actual */

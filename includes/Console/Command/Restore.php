@@ -21,24 +21,31 @@ class Restore extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'restore' => array(
+	protected $_commandArray =
+	[
+		'restore' =>
+		[
 			'description' => 'Restore command',
-			'argumentArray' => array(
-				'database' => array(
+			'argumentArray' =>
+			[
+				'database' =>
+				[
 					'description' => 'Restore the database',
-					'optionArray' => array(
-						'directory' => array(
+					'optionArray' =>
+					[
+						'directory' =>
+						[
 							'description' => 'Required directory'
-						),
-						'file' => array(
+						],
+						'file' =>
+						[
 							'description' => 'Required file'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -75,7 +82,7 @@ class Restore extends CommandAbstract
 	 * @return string
 	 */
 
-	protected function _database($optionArray = array())
+	protected function _database($optionArray = [])
 	{
 		$dbType = $this->_config->get('dbType');
 		$dbHost = $this->_config->get('dbHost');

@@ -37,33 +37,40 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($comment->id ? 'admin/process/comments/' . $comment->id : 'admin/process/comments'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('commentsEdit') && $this->_registry->get('commentsDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/comments' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'delete' => array(
+				],
+				'delete' =>
+				[
 					'href' => $comment->id ? $this->_registry->get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* collect item output */
 
@@ -101,117 +108,137 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label('* ' . $this->_language->get('author'), array(
+			->label('* ' . $this->_language->get('author'),
+			[
 				'for' => 'author'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => 'readonly',
 				'required' => 'required',
 				'value' => $comment->author ? $comment->author : $this->_registry->get('myName')
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('email'), array(
+			->label('* ' . $this->_language->get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'readonly' => 'readonly',
 				'required' => 'required',
 				'value' => $comment->email ? $comment->email : $this->_registry->get('myEmail')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('url'), array(
+			->label($this->_language->get('url'),
+			[
 				'for' => 'url'
-			))
-			->url(array(
+			])
+			->url(
+			[
 				'id' => 'url',
 				'name' => 'url',
 				'value' => $comment->url
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('text'), array(
+			->label('* ' . $this->_language->get('text'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
 				'value' => htmlspecialchars($comment->text)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('language'), array(
+			->label($this->_language->get('language'),
+			[
 				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
+			])
+			->select(Helper\Option::getLanguageArray(),
+			[
 				'id' => 'language',
 				'name' => 'language',
 				'value' => $comment->language
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('article'), array(
+			->label($this->_language->get('article'),
+			[
 				'for' => 'article'
-			))
-			->select(Helper\Option::getContentArray('articles'), array(
+			])
+			->select(Helper\Option::getContentArray('articles'),
+			[
 				'id' => 'article',
 				'name' => 'article',
 				'value' => intval($comment->article)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('status'), array(
+			->label($this->_language->get('status'),
+			[
 				'for' => 'status'
-			))
-			->select(Helper\Option::getVisibleArray(), array(
+			])
+			->select(Helper\Option::getVisibleArray(),
+			[
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $comment->id ? intval($comment->status) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('rank'), array(
+			->label($this->_language->get('rank'),
+			[
 				'for' => 'rank'
-			))
-			->number(array(
+			])
+			->number(
+			[
 				'id' => 'rank',
 				'name' => 'rank',
 				'value' => $comment->id ? intval($comment->rank) : Db::forTablePrefix('comments')->max('rank') + 1
-			))
+			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label($this->_language->get('access'), array(
+				->label($this->_language->get('access'),
+				[
 					'for' => 'access'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
+				])
+				->select(Helper\Option::getAccessArray('groups'),
+				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
 					'value' => $comment->access
-				))
+				])
 				->append('</li>');
 		}
 		$formElement
 			->append('<li>')
-			->label($this->_language->get('date'), array(
+			->label($this->_language->get('date'),
+			[
 				'for' => 'date'
-			))
-			->datetime(array(
+			])
+			->datetime(
+			[
 				'id' => 'date',
 				'name' => 'date',
 				'value' => $comment->date ? $comment->date : null
-			))
+			])
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();

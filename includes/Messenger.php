@@ -28,11 +28,12 @@ class Messenger
 	 * @var array
 	 */
 
-	protected $_actionArray = array(
+	protected $_actionArray =
+	[
 		'text' => null,
 		'route' => null,
 		'url' => null
-	);
+	];
 
 	/**
 	 * options of the messenger
@@ -40,21 +41,24 @@ class Messenger
 	 * @var array
 	 */
 
-	protected $_optionArray = array(
-		'className' => array(
+	protected $_optionArray =
+	[
+		'className' =>
+		[
 			'box' => 'rs-box-messenger rs-box-note',
 			'title' => 'rs-title-messenger rs-title-note',
 			'list' => 'rs-list-messenger',
 			'link' => 'rs-button-default rs-button-messenger',
 			'redirect' => 'rs-meta-redirect',
-			'notes' => array(
+			'notes' =>
+			[
 				'success' => 'rs-note-success',
 				'warning' => 'rs-note-warning',
 				'error' => 'rs-note-error',
 				'info' => 'rs-note-info'
-			)
-		)
-	);
+			]
+		]
+	];
 
 	/**
 	 * constructor of the class
@@ -79,7 +83,7 @@ class Messenger
 	 * @return Messenger
 	 */
 
-	public function init($optionArray = array())
+	public function init($optionArray = [])
 	{
 		if (is_array($optionArray))
 		{
@@ -235,24 +239,27 @@ class Messenger
 		{
 			$titleElement = new Html\Element();
 			$titleElement
-				->init('h2', array(
+				->init('h2',
+				[
 					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['notes'][$type]
-				))
+				])
 				->text($title);
 		}
 		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
+		$boxElement->init('div',
+		[
 			'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['notes'][$type]
-		));
+		]);
 
 		/* create a list */
 
 		if (is_array($message))
 		{
 			$listElement = new Html\Element();
-			$listElement->init('ul', array(
+			$listElement->init('ul',
+			[
 				'class' => $this->_optionArray['className']['list']
-			));
+			]);
 
 			/* collect item output */
 
@@ -292,10 +299,11 @@ class Messenger
 		{
 			$linkElement = new Html\Element();
 			$output .= $linkElement
-				->init('a', array(
+				->init('a',
+				[
 					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
 					'class' => $this->_optionArray['className']['link']
-				))
+				])
 				->text($this->_actionArray['text']);
 
 			/* meta redirect */
@@ -303,11 +311,12 @@ class Messenger
 			if (is_numeric($this->_actionArray['redirect']))
 			{
 				$metaElement = new Html\Element();
-				$output .= $metaElement->init('meta', array(
+				$output .= $metaElement->init('meta',
+				[
 					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
 					'content' => $this->_actionArray['redirect'] . ';url=' . $this->_actionArray['url'] ,
 					'http-equiv' => 'refresh'
-				));
+				]);
 			}
 		}
 		return $output;

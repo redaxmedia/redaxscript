@@ -22,19 +22,22 @@ class Messenger extends BaseMessenger
 	 * @var array
 	 */
 
-	protected $_optionArray = array(
-		'className' => array(
+	protected $_optionArray =
+	[
+		'className' =>
+		[
 			'box' => 'rs-admin-box-messenger rs-admin-box-note',
 			'title' => 'rs-admin-title-messenger rs-admin-title-note',
 			'list' => 'rs-admin-list-messenger',
 			'link' => 'rs-admin-button-default rs-admin-button-messenger',
 			'redirect' => 'rs-admin-meta-redirect',
-			'notes' => array(
+			'notes' =>
+			[
 				'success' => 'rs-admin-note-success',
 				'warning' => 'rs-admin-note-warning',
 				'error' => 'rs-admin-note-error',
 				'info' => 'rs-admin-note-info'
-			)
-		)
-	);
+			]
+		]
+	];
 }

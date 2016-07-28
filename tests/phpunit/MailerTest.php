@@ -42,7 +42,7 @@ class MailerTest extends TestCaseAbstract
 	 * @dataProvider providerMailer
 	 */
 
-	public function testMessage($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
+	public function testMessage($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])
 	{
 		/* setup */
 

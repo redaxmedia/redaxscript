@@ -25,13 +25,13 @@ class Sitemap extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Sitemap',
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * render
@@ -48,15 +48,17 @@ class Sitemap extends Config
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h3', array(
+		$titleElement->init('h3',
+		[
 			'class' => self::$_configArray['className']['title']
-		));
+		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => self::$_configArray['className']['list']
-		));
+		]);
 
 		/* query articles */
 
@@ -96,10 +98,12 @@ class Sitemap extends Config
 					/* collect item output */
 
 					$outputItem = '<li>';
-					$outputItem .= $linkElement->attr(array(
+					$outputItem .= $linkElement->attr(
+					[
 						'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
 						'title' => $value->description ? $value->description : $value->title
-					))->text($value->title);
+					])
+					->text($value->title);
 					$outputItem .= '</li>';
 
 					/* collect list output */

@@ -112,7 +112,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $hashArray = array(), $userArray = array(), $expect = null)
+	public function testProcess($postArray = [], $hashArray = [], $userArray = [], $expect = null)
 	{
 		/* setup */
 

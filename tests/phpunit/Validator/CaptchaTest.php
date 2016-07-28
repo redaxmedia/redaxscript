@@ -65,7 +65,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @dataProvider providerCaptcha
 	 */
 
-	public function testCaptcha($task = null, $hashArray = array(), $expect = null)
+	public function testCaptcha($task = null, $hashArray = [], $expect = null)
 	{
 		/* setup */
 

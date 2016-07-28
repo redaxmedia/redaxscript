@@ -19,8 +19,10 @@ class Resolver extends Parameter
 	 * @var array
 	 */
 
-	protected $_resolverArray = array(
-		'view' => array(
+	protected $_resolverArray =
+	[
+		'view' =>
+		[
 			'up',
 			'down',
 			'publish',
@@ -31,11 +33,12 @@ class Resolver extends Parameter
 			'uninstall',
 			'delete',
 			'process'
-		),
-		'edit' => array(
+		],
+		'edit' =>
+		[
 			'update'
-		)
-	);
+		]
+	];
 
 	/**
 	 * get the lite route
@@ -78,9 +81,9 @@ class Resolver extends Parameter
 		$output = null;
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
-		$subArray = array(
+		$subArray = [
 			$this->getSub()
-		);
+		];
 
 		/* admin route */
 

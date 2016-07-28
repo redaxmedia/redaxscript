@@ -2,23 +2,27 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $titleElement = new Html\Element();
-$titleElement->init('h3', array(
+$titleElement->init('h3',
+[
 	'class' => $admin ? 'rs-admin-title-dialog' : 'rs-title-dialog'
-));
+]);
 $boxElement = new Html\Element();
-$boxElement->init('div', array(
+$boxElement->init('div',
+[
 	'class' => $admin ? 'rs-admin-box-dialog' : 'rs-box-dialog'
-));
+]);
 $textElement = new Html\Element();
 $textElement->init('p');
 $buttonElement = new Html\Element();
-$buttonElement->init('a', array(
+$buttonElement->init('a',
+[
 	'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
-));
+]);
 ?>
 
 <!-- dialog -->

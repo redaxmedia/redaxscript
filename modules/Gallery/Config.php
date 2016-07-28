@@ -21,17 +21,20 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'image' => 'rs-image-gallery',
 			'list' => 'rs-js-gallery rs-list-gallery'
-		),
+		],
 		'height' => 200,
 		'quality' => 80,
 		'thumbDirectory' => 'thumbs',
-		'allowedCommands' => array(
+		'allowedCommands' =>
+		[
 			'create',
 			'remove'
-		)
-	);
+		]
+	];
 }

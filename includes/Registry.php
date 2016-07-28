@@ -19,7 +19,7 @@ class Registry extends Singleton
 	 * @var array
 	 */
 
-	protected static $_registryArray = array();
+	protected static $_registryArray = [];
 
 	/**
 	 * init the class
@@ -29,7 +29,7 @@ class Registry extends Singleton
 	 * @param array $registryArray array of the registry
 	 */
 
-	public static function init($registryArray = array())
+	public static function init($registryArray = [])
 	{
 		if (is_array($registryArray))
 		{

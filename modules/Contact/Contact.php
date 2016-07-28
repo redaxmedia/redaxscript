@@ -29,13 +29,13 @@ class Contact extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Contact',
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple contact form',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * routerStart
@@ -63,18 +63,23 @@ class Contact extends Module
 	public static function render()
 	{
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
-		$formElement->init(array(
-			'textarea' => array(
+		$formElement->init(
+		[
+			'textarea' =>
+			[
 				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => Db::getSetting('captcha') > 0
-		));
+		]);
 
 		/* create the form */
 
@@ -82,44 +87,52 @@ class Contact extends Module
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . Language::get('author'), array(
+			->label('* ' . Language::get('author'),
+			[
 				'for' => 'author'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => Registry::get('myName') ? 'readonly' : null,
 				'required' => 'required',
 				'value' => Registry::get('myName')
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . Language::get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
 				'value' => Registry::get('myEmail')
-			))
+			])
 			->append('</li><li>')
-			->label(Language::get('url'), array(
+			->label(Language::get('url'),
+			[
 				'for' => 'url'
-			))
-			->url(array(
+			])
+			->url(
+			[
 				'id' => 'url',
 				'name' => 'url'
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . Language::get('message'), array(
+			->label('* ' . Language::get('message'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'
-			))
+			])
 			->append('</li>');
 		if (Db::getSetting('captcha') > 0)
 		{
@@ -157,33 +170,36 @@ class Contact extends Module
 
 		/* process post */
 
-		$postArray = array(
+		$postArray =
+		[
 			'author' => $specialFilter->sanitize(Request::getPost('author')),
 			'email' => $emailFilter->sanitize(Request::getPost('email')),
 			'url' => $urlFilter->sanitize(Request::getPost('url')),
 			'text' => nl2br($htmlFilter->sanitize(Request::getPost('text'))),
 			'task' => Request::getPost('task'),
 			'solution' => Request::getPost('solution')
-		);
+		];
 
 		/* handle error */
 
 		$messageArray = self::_validate($postArray);
 		if ($messageArray)
 		{
-			return self::_error(array(
+			return self::_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
-		$mailArray = array(
+		$mailArray =
+		[
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
 			'text' => $postArray['text']
-		);
+		];
 
 		/* mail */
 
@@ -191,9 +207,10 @@ class Contact extends Module
 		{
 			return self::_success();
 		}
-		return self::_error(array(
+		return self::_error(
+		[
 			'message' => Language::get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -223,7 +240,7 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	protected static function _error($errorArray = array())
+	protected static function _error($errorArray = [])
 	{
 		$messenger = new Messenger(Registry::getInstance());
 		return $messenger
@@ -241,7 +258,7 @@ class Contact extends Module
 	 * @return array
 	 */
 
-	protected static function _validate($postArray = array())
+	protected static function _validate($postArray = [])
 	{
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();
@@ -249,7 +266,7 @@ class Contact extends Module
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['author'])
 		{
 			$messageArray[] = Language::get('author_empty');
@@ -287,16 +304,16 @@ class Contact extends Module
 	 * @return boolean
 	 */
 
-	protected static function _mail($mailArray = array())
+	protected static function _mail($mailArray = [])
 	{
-		$toArray = array(
+		$toArray = [
 			Db::getSetting('author') => Db::getSetting('email')
-		);
-		$fromArray = array(
+		];
+		$fromArray = [
 			$mailArray['author'] => $mailArray['email']
-		);
+		];
 		$subject = Language::get('contact');
-		$bodyArray = array(
+		$bodyArray = [
 			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
 			'<br />',
 			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
@@ -304,7 +321,7 @@ class Contact extends Module
 			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
 			'<br />',
 			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
-		);
+		];
 
 		/* send mail */
 

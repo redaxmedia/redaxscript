@@ -38,12 +38,12 @@ function admin_router()
 
 	switch (true)
 	{
-		case $adminParameter && !in_array($adminParameter, array('new', 'view', 'edit', 'up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update')):
+		case $adminParameter && !in_array($adminParameter, ['new', 'view', 'edit', 'up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete', 'process', 'update']):
 		case $adminParameter == 'process' && !$_POST['new'] && !$_POST['edit']:
 		case $adminParameter == 'update' && !$_POST['update'];
-		case $adminParameter && !in_array($tableParameter, array('categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings')):
+		case $adminParameter && !in_array($tableParameter, ['categories', 'articles', 'extras', 'comments', 'groups', 'users', 'modules', 'settings']):
 		case !$aliasParameter && ($adminParameter == 'install' || $adminParameter == 'uninstall'):
-		case !$idParameter && in_array($adminParameter, array('edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable')) && $tableParameter != 'settings':
+		case !$idParameter && in_array($adminParameter, ['edit', 'up', 'down', 'publish', 'unpublish', 'enable', 'disable']) && $tableParameter != 'settings':
 		case is_numeric($idParameter) && !Redaxscript\Db::forTablePrefix($tableParameter)->where('id', $idParameter)->findOne()->id:
 
 			/* show error */
@@ -89,11 +89,11 @@ function admin_router()
 	switch (true)
 	{
 		case $adminParameter == 'new' && $new == 0:
-		case $adminParameter == 'view' && in_array($tableParameter, array('categories', 'articles', 'extras', 'comments', 'groups', 'users')) && $new == 0 && $edit == 0 && $delete == 0:
+		case $adminParameter == 'view' && in_array($tableParameter, ['categories', 'articles', 'extras', 'comments', 'groups', 'users']) && $new == 0 && $edit == 0 && $delete == 0:
 		case $adminParameter == 'view' && $tableParameter == 'settings':
 		case $adminParameter == 'view' && $tableParameter == 'modules' && $edit == 0 && $install == 0 && $uninstall == 0:
 		case $adminParameter == 'edit' && $edit == 0 && !$usersException:
-		case in_array($adminParameter, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable')) && $edit == 0:
+		case in_array($adminParameter, ['up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable']) && $edit == 0:
 		case $adminParameter == 'install' && $install == 0:
 		case $adminParameter == 'uninstall' && $uninstall == 0:
 		case $adminParameter == 'delete' && $delete == 0 && !$usersException:
@@ -112,7 +112,7 @@ function admin_router()
 
 	/* check token */
 
-	if (in_array($adminParameter, array('up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete')) && !$tokenParameter)
+	if (in_array($adminParameter, ['up', 'down', 'sort', 'publish', 'unpublish', 'enable', 'disable', 'install', 'uninstall', 'delete']) && !$tokenParameter)
 	{
 		/* show error */
 
@@ -161,11 +161,11 @@ function admin_router()
 			}
 			return;
 		case 'view':
-			if (in_array($tableParameter, array('categories', 'articles', 'extras', 'comments')))
+			if (in_array($tableParameter, ['categories', 'articles', 'extras', 'comments']))
 			{
 				admin_contents_list();
 			}
-			if (in_array($tableParameter, array('groups', 'users', 'modules')))
+			if (in_array($tableParameter, ['groups', 'users', 'modules']))
 			{
 				call_user_func('admin_' . $tableParameter . '_list');
 			}

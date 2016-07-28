@@ -35,20 +35,25 @@ class CommentForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))
+			])
 			->text($this->_language->get('comment_new'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'button' => array(
-				'submit' => array(
+		$formElement->init(
+		[
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => Db::getSetting('captcha') > 0
-		));
+		]);
 
 		/* create the form */
 
@@ -56,45 +61,53 @@ class CommentForm extends ViewAbstract
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . $this->_language->get('author'), array(
+			->label('* ' . $this->_language->get('author'),
+			[
 				'for' => 'author'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => $this->_registry->get('myName') ? 'readonly' : null,
 				'required' => 'required',
 				'value' => $this->_registry->get('myName')
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('email'), array(
+			->label('* ' . $this->_language->get('email'),
+			[
 					'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'readonly' => $this->_registry->get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
 				'value' => $this->_registry->get('myEmail')
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('url'), array(
+			->label($this->_language->get('url'),
+			[
 				'for' => 'url'
-			))
-			->url(array(
+			])
+			->url(
+			[
 				'id' => 'url',
 				'name' => 'url'
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('text'), array(
+			->label('* ' . $this->_language->get('text'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'
-			))
+			])
 			->append('</li>');
 		if (Db::getSetting('captcha') > 0)
 		{
@@ -109,10 +122,11 @@ class CommentForm extends ViewAbstract
 			$formElement->captcha('solution');
 		}
 		$formElement
-			->hidden(array(
+			->hidden(
+			[
 				'name' => 'article',
 				'value' => $articleId
-			))
+			])
 			->token()
 			->submit()
 			->reset();

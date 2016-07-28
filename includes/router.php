@@ -54,13 +54,13 @@ function router()
 
 	/* general routing */
 
-	$post_list = array(
+	$post_list = [
 		'Redaxscript\View\LoginForm' => 'Redaxscript\Controller\Login',
 		'Redaxscript\View\RegisterForm' => 'Redaxscript\Controller\Register',
 		'Redaxscript\View\ResetForm' => 'Redaxscript\Controller\Reset',
 		'Redaxscript\View\RecoverForm' => 'Redaxscript\Controller\Recover',
 		'Redaxscript\View\CommentForm' => 'Redaxscript\Controller\Comment'
-	);
+	];
 	foreach ($post_list as $key => $value)
 	{
 		if (Redaxscript\Request::getPost($key))

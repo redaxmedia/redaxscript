@@ -31,7 +31,7 @@ class InstallerTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -92,12 +92,13 @@ class InstallerTest extends TestCaseAbstract
 
 		$installer = new Installer($this->_config);
 		$installer->init();
-		$installer->insertData(array(
+		$installer->insertData(
+		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		));
+		]);
 
 		/* actual */
 

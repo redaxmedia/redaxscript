@@ -33,23 +33,29 @@ class RegisterForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))
+			])
 			->text($this->_language->get('account_create'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-js-validate-form rs-form-default rs-form-register'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => Db::getSetting('captcha') > 0
-		));
+		]);
 
 		/* create the form */
 
@@ -57,33 +63,39 @@ class RegisterForm extends ViewAbstract
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . $this->_language->get('name'), array(
+			->label('* ' . $this->_language->get('name'),
+			[
 				'for' => 'name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required'
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('user'), array(
+			->label('* ' . $this->_language->get('user'),
+			[
 				'for' => 'user'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'user',
 				'name' => 'user',
 				'required' => 'required'
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('email'), array(
+			->label('* ' . $this->_language->get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'required' => 'required'
-			))
+			])
 			->append('</li>');
 		if (Db::getSetting('captcha') > 0)
 		{

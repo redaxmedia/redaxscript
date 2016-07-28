@@ -23,13 +23,13 @@ class LazyLoad extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Lazy load',
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',
 		'description' => 'Lazy load images',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -69,7 +69,7 @@ class LazyLoad extends Config
 	 * @return string
 	 */
 
-	public static function render($file = null, $optionArray = array())
+	public static function render($file = null, $optionArray = [])
 	{
 		$output = null;
 
@@ -93,11 +93,12 @@ class LazyLoad extends Config
 		if (file_exists($file))
 		{
 			$imageElement = new Html\Element();
-			$imageElement->init('img', array(
+			$imageElement->init('img',
+			[
 				'alt' => $optionArray['alt'],
 				'class' => self::$_configArray['className']['image'],
 				'src' => self::$_configArray['placeholder']
-			));
+			]);
 
 			/* collect image output */
 
@@ -118,10 +119,11 @@ class LazyLoad extends Config
 				/* placeholder */
 
 				$placeholderElement = new Html\Element();
-				$placeholderElement->init('div', array(
+				$placeholderElement->init('div',
+				[
 					'class' => self::$_configArray['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
-				));
+				]);
 
 				/* collect output */
 

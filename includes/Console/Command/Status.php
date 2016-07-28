@@ -23,28 +23,35 @@ class Status extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'status' => array(
+	protected $_commandArray =
+	[
+		'status' =>
+		[
 			'description' => 'Status command',
-			'argumentArray' => array(
-				'database' => array(
+			'argumentArray' =>
+			[
+				'database' =>
+				[
 					'description' => 'Show database status',
-					'wordingArray' => array(
+					'wordingArray' =>
+					[
 						'No connection found',
 						'Database tables missing',
 						'Connection established'
-					)
-				),
-				'system' => array(
+					]
+				],
+				'system' =>
+				[
 					'description' => 'Show system requirements',
-					'wordingArray' => array(
+					'wordingArray' =>
+					[
 						'Failed',
 						'Passed'
-					)
-				)
-			)
-		)
-	);
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -130,30 +137,36 @@ class Status extends CommandAbstract
 	protected function _getStatusArray()
 	{
 		$driverArray = PDO::getAvailableDrivers();
-		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : array();
-		$optionalArray = array(
+		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
+		$optionalArray =
+		[
 			'mod_deflate',
 			'mod_headers',
 			'mod_rewrite'
-		);
-		$statusArray = array(
-			'OS' => array(
+		];
+		$statusArray =
+		[
+			'OS' =>
+			[
 				'value' => strtolower(php_uname('s')),
 				'status' => strtolower(php_uname('s')) === 'linux' ? 1 : 0
-			),
-			'PHP' => array(
+			],
+			'PHP' =>
+			[
 				'value' => phpversion(),
 				'status' => version_compare(phpversion(), '5.4', '>') ? 1 : 0
-			),
-			'PDO' => array(
+			],
+			'PDO' =>
+			[
 				'value' => implode($driverArray, ', '),
 				'status' => count($driverArray) ? 1 : 0
-			),
-			'shell' => array(
+			],
+			'shell' =>
+			[
 				'value' => null,
 				'status' => function_exists('shell') ? 1 : 0
-			)
-		);
+			]
+		];
 
 		/* process optional */
 
@@ -161,10 +174,11 @@ class Status extends CommandAbstract
 		{
 			foreach ($optionalArray as $value)
 			{
-				$statusArray[$value] = array(
+				$statusArray[$value] =
+				[
 					'value' => null,
 					'status' => in_array($value, $moduleArray) ? 1 : 0
-				);
+				];
 			}
 		}
 		return $statusArray;

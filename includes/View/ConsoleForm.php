@@ -31,11 +31,13 @@ class ConsoleForm extends ViewAbstract
 		/* html elements */
 
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-console-js-form rs-console-form-default'
-			)
-		));
+			]
+		]);
 		$myUser = $this->_registry->get('myUser');
 		$outputLabel = $myUser ? $myUser . '@' : null;
 		$outputLabel .= $this->_registry->get('host') . ':~$';
@@ -43,11 +45,13 @@ class ConsoleForm extends ViewAbstract
 		/* create the form */
 
 		$formElement
-			->label($outputLabel, array(
+			->label($outputLabel,
+			[
 				'class' => 'rs-console-js-label rs-console-label-default',
 				'for' => 'prompt'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autocapitalize' => 'off',
 				'autofocus' => 'autofocus',
 				'autocomplete' => 'off',
@@ -55,7 +59,7 @@ class ConsoleForm extends ViewAbstract
 				'id' => 'prompt',
 				'name' => 'argv',
 				'spellcheck' => 'false'
-			));
+			]);
 
 		/* collect output */
 

@@ -19,10 +19,10 @@ class Search implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_range = array(
+	protected $_range = [
 		'min' => 3,
 		'max' => 100
-	);
+	];
 
 	/**
 	 * validate the search

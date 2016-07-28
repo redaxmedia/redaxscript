@@ -89,7 +89,11 @@ function admin_process()
 			$status = $r['status'] = $specialFilter->sanitize($_POST['status']);
 			if ($tableParameter != 'groups' && $tableParameter != 'users' && Redaxscript\Registry::get('groupsEdit'))
 			{
-				$access = array_map(array($specialFilter, 'sanitize'), $_POST['access']);
+				$access = array_map(
+				[
+					$specialFilter,
+					'sanitize'
+				], $_POST['access']);
 				$access_string = implode(', ', $access);
 				if (!$access_string)
 				{
@@ -148,7 +152,7 @@ function admin_process()
 
 	if ($tableParameter == 'groups' && (!$idParameter || $idParameter > 1))
 	{
-		$groups_array = array(
+		$groups_array = [
 			'categories',
 			'articles',
 			'extras',
@@ -156,10 +160,14 @@ function admin_process()
 			'groups',
 			'users',
 			'modules'
-		);
+		];
 		foreach ($groups_array as $value)
 		{
-			$$value = array_map(array($specialFilter, 'sanitize'), $_POST[$value]);
+			$$value = array_map(
+			[
+				$specialFilter,
+				'sanitize'
+			], $_POST[$value]);
 			$groups_string = implode(', ', $$value);
 			if (!$groups_string)
 			{
@@ -213,10 +221,11 @@ function admin_process()
 		}
 		if (!$idParameter || $idParameter > 1)
 		{
-			$groups = array_map(array(
-					$specialFilter,
-					'sanitize'
-			), $_POST['groups']);
+			$groups = array_map(
+			[
+				$specialFilter,
+				'sanitize'
+			], $_POST['groups']);
 			$groups_string = implode(', ', $groups);
 			if (!$groups_string)
 			{
@@ -429,9 +438,10 @@ function admin_process()
 			if ($tableParameter == 'categories')
 			{
 				$categoryChildren = Redaxscript\Db::forTablePrefix($tableParameter)->where('parent', $idParameter);
-				$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
+				$categoryArray = array_merge($categoryChildren->findFlatArray(),
+				[
 					$idParameter
-				));
+				]);
 				$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
 				$articleArray = $articleChildren->findFlatArray();
 				if (count($articleArray) > 0)
@@ -439,25 +449,28 @@ function admin_process()
 					Redaxscript\Db::forTablePrefix('comments')
 						->whereIn('article', $articleArray)
 						->findMany()
-						->set(array(
+						->set(
+						[
 							'status' => $status,
 							'access' => $access
-						))
+						])
 						->save();
 				}
 				$categoryChildren
 					->findMany()
-					->set(array(
+					->set(
+					[
 						'status' => $status,
 						'access' => $access
-					))
+					])
 					->save();
 				$articleChildren
 					->findMany()
-					->set(array(
+					->set(
+					[
 						'status' => $status,
 						'access' => $access
-					))
+					])
 					->save();
 			}
 
@@ -472,10 +485,11 @@ function admin_process()
 				Redaxscript\Db::forTablePrefix('comments')
 					->where('article', $idParameter)
 					->findMany()
-					->set(array(
+					->set(
+					[
 						'status' => $status,
 						'access' => $access
-					))
+					])
 					->save();
 			}
 
@@ -659,9 +673,10 @@ function admin_status($input)
 	if ($tableParameter == 'categories')
 	{
 		$categoryChildren = Redaxscript\Db::forTablePrefix($tableParameter)->where('parent', $idParameter);
-		$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
+		$categoryArray = array_merge($categoryChildren->findFlatArray(),
+		[
 			$idParameter
-		));
+		]);
 		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
 		$articleArray = $articleChildren->findFlatArray();
 		if (count($articleArray) > 0)
@@ -724,7 +739,11 @@ function admin_install()
 
 				if (method_exists($object, $adminParameter))
 				{
-					call_user_func(array($object, $adminParameter));
+					call_user_func(
+					[
+						$object,
+						$adminParameter
+					]);
 				}
 			}
 		}
@@ -764,9 +783,10 @@ function admin_delete()
 	if ($tableParameter == 'categories')
 	{
 		$categoryChildren = Redaxscript\Db::forTablePrefix($tableParameter)->where('parent', $idParameter);
-		$categoryArray = array_merge($categoryChildren->findFlatArray(), array(
+		$categoryArray = array_merge($categoryChildren->findFlatArray(),
+		[
 			$idParameter
-		));
+		]);
 		$articleChildren = Redaxscript\Db::forTablePrefix('articles')->whereIn('category', $categoryArray);
 		$articleArray = $articleChildren->findFlatArray();
 		if (count($articleArray) > 0)

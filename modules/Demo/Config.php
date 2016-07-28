@@ -21,11 +21,13 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'modules' => array(
+	protected static $_configArray =
+	[
+		'modules' =>
+		[
 			'Analytics' => 'Redaxscript\Modules\Analytics\Analytics',
 			'Demo' => 'Redaxscript\Modules\Demo\Demo',
 			'Editor' => 'Redaxscript\Modules\Editor\Editor'
-		)
-	);
+		]
+	];
 }

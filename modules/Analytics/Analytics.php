@@ -22,13 +22,13 @@ class Analytics extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Analytics',
 		'alias' => 'Analytics',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Analytics',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart

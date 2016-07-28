@@ -2,17 +2,20 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $listOrderedElement = new Html\Element();
-$listOrderedElement->init('ol', array(
+$listOrderedElement->init('ol',
+[
 	'class' => 'rs-list-default'
-));
+]);
 $listUnorderedElement = new Html\Element();
-$listUnorderedElement->init('ul', array(
+$listUnorderedElement->init('ul',
+[
 	'class' => 'rs-list-default'
-));
+]);
 $itemElement = new Html\Element();
 $itemElement->init('li');
 $outputItem = null;

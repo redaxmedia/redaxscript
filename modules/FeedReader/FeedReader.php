@@ -23,13 +23,13 @@ class FeedReader extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Feed reader',
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -67,7 +67,7 @@ class FeedReader extends Config
 	 * @return string
 	 */
 
-	public static function render($url = null, $optionArray = array())
+	public static function render($url = null, $optionArray = [])
 	{
 		$counter = 0;
 		$output = null;
@@ -75,17 +75,20 @@ class FeedReader extends Config
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h3', array(
+		$titleElement->init('h3',
+		[
 			'class' => self::$_configArray['className']['title']
-		));
+		]);
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'target' => '_blank'
-		));
+		]);
 		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
+		$boxElement->init('div',
+		[
 			'class' => self::$_configArray['className']['box']
-		));
+		]);
 
 		/* load result */
 

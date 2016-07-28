@@ -70,7 +70,7 @@ class ConsoleFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $expect = null)
+	public function testRender($registryArray = [], $expect = null)
 	{
 		/* setup */
 

@@ -96,7 +96,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $expect = null)
+	public function testRender($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -123,7 +123,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerError
 	 */
 
-	public function testValidateError($registryArray = array(), $expect = null)
+	public function testValidateError($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -150,7 +150,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerWarning
 	 */
 
-	public function testValidateWarning($registryArray = array(), $expect = null)
+	public function testValidateWarning($registryArray = [], $expect = null)
 	{
 		/* setup */
 

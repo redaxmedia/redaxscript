@@ -19,7 +19,7 @@ class Language extends Singleton
 	 * @var array
 	 */
 
-	protected static $_languageArray = array();
+	protected static $_languageArray = [];
 
 	/**
 	 * init the class
@@ -108,9 +108,9 @@ class Language extends Singleton
 
 		if (is_string($path))
 		{
-			$path = array(
+			$path = [
 				$path
-			);
+			];
 		}
 
 		/* load and merge files */

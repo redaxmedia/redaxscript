@@ -34,11 +34,12 @@ class ServerTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_request = Request::getInstance();
-		$this->_request->set('server', array(
+		$this->_request->set('server',
+		[
 			'HTTP_HOST' => 'localhost',
 			'HTTPS' => 'off',
 			'SCRIPT_NAME' => '/tests/includes/Server/ServerTest.php'
-		));
+		]);
 	}
 
 	/**

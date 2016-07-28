@@ -26,7 +26,7 @@ abstract class CommandAbstract extends ConsoleAbstract
 	 * @return string
 	 */
 
-	public function prompt($key = null, $promptArray = array())
+	public function prompt($key = null, $promptArray = [])
 	{
 		return $promptArray[$key] || $promptArray['no-interaction'] || !function_exists('readline') ? $promptArray[$key] : readline($key . ':');
 	}

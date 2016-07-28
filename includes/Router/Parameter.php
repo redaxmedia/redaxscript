@@ -31,7 +31,7 @@ class Parameter
 	 * @var array
 	 */
 
-	protected $_parameterArray = array();
+	protected $_parameterArray = [];
 
 	/**
 	 * constructor of the class
@@ -58,10 +58,11 @@ class Parameter
 		if (is_array($this->_parameterArray))
 		{
 			$aliasFilter = new Filter\Alias;
-			$this->_parameterArray = array_map(array(
+			$this->_parameterArray = array_map(
+			[
 				$aliasFilter,
 				'sanitize'
-			), $this->_parameterArray);
+			], $this->_parameterArray);
 		}
 	}
 

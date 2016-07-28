@@ -2,17 +2,20 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $imageElement = new Html\Element();
-$imageElement->init('img', array(
+$imageElement->init('img',
+[
 	'class' => 'rs-image rs-image-default'
-));
+]);
 $playerElement = new Html\Element();
-$playerElement->init('iframe', array(
+$playerElement->init('iframe',
+[
 	'class' => 'rs-player rs-player-default'
-));
+]);
 ?>
 
 <!-- image -->

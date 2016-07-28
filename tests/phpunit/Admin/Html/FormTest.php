@@ -71,7 +71,7 @@ class FormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testCreate($attributeArray = array(), $optionArray = array(), $expect = null)
+	public function testCreate($attributeArray = [], $optionArray = [], $expect = null)
 	{
 		/* setup */
 

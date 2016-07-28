@@ -28,7 +28,7 @@ class Directory
 	 * @var array
 	 */
 
-	protected $_directoryArray = array();
+	protected $_directoryArray = [];
 
 	/**
 	 * static directory cache
@@ -36,7 +36,7 @@ class Directory
 	 * @var array
 	 */
 
-	protected static $_directoryCache = array();
+	protected static $_directoryCache = [];
 
 	/**
 	 * files to be excluded
@@ -44,10 +44,10 @@ class Directory
 	 * @var array
 	 */
 
-	protected $_excludeArray = array(
+	protected $_excludeArray = [
 		'.',
 		'..'
-	);
+	];
 
 	/**
 	 * init the class
@@ -58,7 +58,7 @@ class Directory
 	 * @param array $excludeArray files to be excluded
 	 */
 
-	public function init($directory = null, $excludeArray = array())
+	public function init($directory = null, $excludeArray = [])
 	{
 		$this->_directory = $directory;
 

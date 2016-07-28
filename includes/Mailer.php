@@ -19,7 +19,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_toArray = array();
+	protected $_toArray = [];
 
 	/**
 	 * array of sender
@@ -27,7 +27,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_fromArray = array();
+	protected $_fromArray = [];
 
 	/**
 	 * subject of the email
@@ -51,7 +51,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_attachmentArray = array();
+	protected $_attachmentArray = [];
 
 	/**
 	 * built recipient contents
@@ -97,7 +97,7 @@ class Mailer
 	 * @param array $attachmentArray array of attachments
 	 */
 
-	public function init($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
+	public function init($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;

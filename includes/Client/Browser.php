@@ -21,7 +21,8 @@ class Browser extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'safari',
 			'chrome',
 			'chromium',
@@ -31,6 +32,6 @@ class Browser extends ClientAbstract
 			'msie',
 			'netscape',
 			'opera'
-		));
+		]);
 	}
 }

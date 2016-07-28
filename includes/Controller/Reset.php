@@ -37,43 +37,45 @@ class Reset extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
-		);
+		];
 
 		/* query user */
 
-		$user = Db::forTablePrefix('users')->where(array(
+		$user = Db::forTablePrefix('users')->where(
+		[
 			'id' => $postArray['id'],
 			'status' => 1
-		))->findOne();
+		])->findOne();
 
 		/* handle error */
 
 		$messageArray = $this->_validate($postArray, $user);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
 		$passwordHash = new Hash(Config::getInstance());
 		$passwordHash->init(uniqid());
-		$resetArray = array(
+		$resetArray = [
 			'id' => $user->id,
 			'password' => $passwordHash->getHash()
-		);
-		$mailArray = array(
+		];
+		$mailArray = [
 			'name' => $user->name,
 			'email' => $user->email,
 			'password' => $passwordHash->getRaw()
-		);
+		];
 
 		/* reset and mail */
 
@@ -81,9 +83,10 @@ class Reset extends ControllerAbstract
 		{
 			return $this->_success();
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'message' => $this->_language->get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -113,7 +116,7 @@ class Reset extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -132,13 +135,13 @@ class Reset extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array(), $user = null)
+	protected function _validate($postArray = [], $user = null)
 	{
 		$captchaValidator = new Validator\Captcha();
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['id'])
 		{
 			$messageArray[] = $this->_language->get('user_empty');
@@ -172,13 +175,14 @@ class Reset extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _reset($resetArray = array())
+	protected function _reset($resetArray = [])
 	{
 		return Db::forTablePrefix('users')
-			->where(array(
+			->where(
+			[
 				'id' => $resetArray['id'],
 				'status' => 1
-			))
+			])
 			->findOne()
 			->set('password', $resetArray['password'])
 			->save();
@@ -194,7 +198,7 @@ class Reset extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _mail($mailArray = array())
+	protected function _mail($mailArray = [])
 	{
 		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
@@ -202,26 +206,27 @@ class Reset extends ControllerAbstract
 
 		$linkElement = new Element();
 		$linkElement
-			->init('a', array(
+			->init('a',
+			[
 				'href' => $urlReset,
 				'class' => 'link-result'
-			))
+			])
 			->text($urlReset);
 
 		/* prepare mail */
 
-		$toArray = array(
+		$toArray = [
 			$mailArray['name'] => $mailArray['email']
-		);
-		$fromArray = array(
+		];
+		$fromArray = [
 			Db::getSetting('author') => Db::getSetting('email')
-		);
+		];
 		$subject = $this->_language->get('password_new');
-		$bodyArray = array(
+		$bodyArray = [
 			'<strong>' . $this->_language->get('password_new') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
 			'<br />',
 			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '</strong> ' . $linkElement
-		);
+		];
 
 		/* send mail */
 

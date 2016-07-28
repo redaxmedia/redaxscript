@@ -66,7 +66,7 @@ class Install extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'dbType' => $this->_request->getPost('db-type'),
 			'dbHost' => $this->_request->getPost('db-host'),
 			'dbName' => $this->_request->getPost('db-name'),
@@ -79,30 +79,32 @@ class Install extends ControllerAbstract
 			'adminPassword' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
 			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email')),
 			'refreshConnection' => $this->_request->getPost('refresh-connection')
-		);
+		];
 
 		/* handle error */
 
 		$messageArray = $this->_validateDatabase($postArray);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
-			));
+			]);
 		}
 		$messageArray = $this->_validateAccount($postArray);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
-		$configArray = array(
+		$configArray = [
 			'dbType' => $postArray['dbType'],
 			'dbHost' => $postArray['dbHost'],
 			'dbName' => $postArray['dbName'],
@@ -110,21 +112,22 @@ class Install extends ControllerAbstract
 			'dbPassword' => $postArray['dbPassword'],
 			'dbPrefix' => $postArray['dbPrefix'],
 			'dbSalt' => $postArray['dbSalt']
-		);
-		$adminArray = array(
+		];
+		$adminArray = [
 			'adminUser' => $postArray['adminUser'],
 			'adminName' => $postArray['adminName'],
 			'adminEmail' => $postArray['adminEmail'],
 			'adminPassword' => $postArray['adminPassword']
-		);
+		];
 
 		/* write config */
 
 		if (!$this->_write($configArray))
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php'
-			));
+			]);
 		}
 
 		/* refresh connection */
@@ -138,14 +141,16 @@ class Install extends ControllerAbstract
 
 		if ($this->_install($adminArray) && $this->_mail($adminArray))
 		{
-			return $this->_success(array(
+			return $this->_success(
+			[
 				'url' => $this->_registry->get('root'),
 				'message' => $this->_language->get('installation_completed', '_installation')
-			));
+			]);
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'message' => $this->_language->get('installation_failed')
-		));
+		]);
 	}
 
 	/**
@@ -158,7 +163,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = array())
+	protected function _success($successArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -177,7 +182,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray['message'], $errorArray['title']);
@@ -193,9 +198,9 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validateDatabase($postArray = array())
+	protected function _validateDatabase($postArray = [])
 	{
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['dbType'])
 		{
 			$messageArray[] = $this->_language->get('type_empty');
@@ -228,14 +233,14 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validateAccount($postArray = array())
+	protected function _validateAccount($postArray = [])
 	{
 		$emailValidator = new Validator\Email();
 		$loginValidator = new Validator\Login();
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['adminName'])
 		{
 			$messageArray[] = $this->_language->get('name_empty');
@@ -277,7 +282,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _write($configArray = array())
+	protected function _write($configArray = [])
 	{
 		$this->_config->set('dbType', $configArray['dbType']);
 		$this->_config->set('dbHost', $configArray['dbHost']);
@@ -313,7 +318,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _install($installArray = array())
+	protected function _install($installArray = [])
 	{
 		$adminName = $installArray['adminName'];
 		$adminUser = $installArray['adminUser'];
@@ -325,12 +330,13 @@ class Install extends ControllerAbstract
 			$installer->init();
 			$installer->rawDrop();
 			$installer->rawCreate();
-			$installer->insertData(array(
+			$installer->insertData(
+			[
 				'adminName' => $installArray['adminName'],
 				'adminUser' => $installArray['adminUser'],
 				'adminPassword' => $installArray['adminPassword'],
 				'adminEmail' => $installArray['adminEmail']
-			));
+			]);
 			return Db::getStatus() === 2;
 		}
 		return false;
@@ -346,33 +352,34 @@ class Install extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _mail($mailArray = array())
+	protected function _mail($mailArray = [])
 	{
 		/* html elements */
 
 		$linkElement = new Html\Element();
 		$linkElement
-			->init('a', array(
+			->init('a',
+			[
 				'href' => $this->_registry->get('root')
-			))
+			])
 			->text($this->_registry->get('root'));
 
 		/* prepare mail */
 
-		$toArray = array(
+		$toArray = [
 			$mailArray['adminName'] => $mailArray['adminEmail']
-		);
-		$fromArray = array(
+		];
+		$fromArray = [
 			Db::getSetting('author') => Db::getSetting('email')
-		);
+		];
 		$subject = $this->_language->get('installation', '_installation');
-		$bodyArray = array(
+		$bodyArray = [
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminUser'],
 			'<br />',
 			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminPassword'],
 			'<br />',
 			'<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $linkElement
-		);
+		];
 
 		/* send mail */
 

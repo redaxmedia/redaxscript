@@ -28,13 +28,13 @@ class Demo extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * renderStart
@@ -111,14 +111,14 @@ class Demo extends Config
 	public static function process()
 	{
 		$auth = new Auth(Request::getInstance());
-		$tableArray = array(
+		$tableArray = [
 			'categories',
 			'articles',
 			'extras',
 			'comments',
 			'groups',
 			'users'
-		);
+		];
 
 		/* set user */
 
@@ -130,15 +130,17 @@ class Demo extends Config
 
 		foreach ($tableArray as $value)
 		{
-			$auth->setPermission($value, array(
+			$auth->setPermission($value,
+			[
 				1,
 				2,
 				3
-			));
+			]);
 		}
-		$auth->setPermission('settings', array(
+		$auth->setPermission('settings',
+		[
 			1
-		));
+		]);
 
 		/* save user and permission */
 
@@ -199,12 +201,13 @@ class Demo extends Config
 		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();
-		$installer->insertData(array(
+		$installer->insertData(
+		[
 			'adminName' => 'Admin',
 			'adminUser' => 'admin',
 			'adminPassword' => 'admin',
 			'adminEmail' => 'admin@localhost'
-		));
+		]);
 
 		/* process modules */
 
@@ -221,10 +224,11 @@ class Demo extends Config
 
 		Db::forTablePrefix('groups')
 			->findMany()
-			->set(array(
+			->set(
+			[
 				'modules' => null,
 				'filter' => 1
-			))
+			])
 			->save();
 	}
 }

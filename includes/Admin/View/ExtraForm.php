@@ -37,33 +37,40 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($extra->title ? $extra->title : $this->_language->get('extra_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('extrasEdit') && $this->_registry->get('extrasDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/extras' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'delete' => array(
+				],
+				'delete' =>
+				[
 					'href' => $extra->id ? $this->_registry->get('parameterRoute') . 'admin/delete/extras/' . $extra->id . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* collect item output */
 
@@ -101,137 +108,161 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label($this->_language->get('title'), array(
+			->label($this->_language->get('title'),
+			[
 				'for' => 'title'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'class' => 'rs-admin-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required',
 				'value' => $extra->title
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('alias'), array(
+			->label($this->_language->get('alias'),
+			[
 				'for' => 'alias'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'class' => 'rs-admin-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required',
 				'value' => $extra->alias
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('text'), array(
+			->label($this->_language->get('text'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-input rs-admin-js-editor-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
 				'value' => htmlspecialchars($extra->text)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('language'), array(
+			->label($this->_language->get('language'),
+			[
 				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
+			])
+			->select(Helper\Option::getLanguageArray(),
+			[
 				'id' => 'language',
 				'name' => 'language',
 				'value' => $extra->language
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('extra_sibling'), array(
+			->label($this->_language->get('extra_sibling'),
+			[
 				'for' => 'sibling'
-			))
-			->select(Helper\Option::getContentArray('extras'), array(
+			])
+			->select(Helper\Option::getContentArray('extras'),
+			[
 				'id' => 'sibling',
 				'name' => 'sibling',
 				'value' => intval($extra->sibling)
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('category'), array(
+			->label($this->_language->get('category'),
+			[
 				'for' => 'category'
-			))
-			->select(Helper\Option::getContentArray('categories'), array(
+			])
+			->select(Helper\Option::getContentArray('categories'),
+			[
 				'id' => 'category',
 				'name' => 'category',
 				'value' => intval($extra->category)
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('article'), array(
+			->label($this->_language->get('article'),
+			[
 				'for' => 'article'
-			))
-			->select(Helper\Option::getContentArray('articles'), array(
+			])
+			->select(Helper\Option::getContentArray('articles'),
+			[
 				'id' => 'article',
 				'name' => 'article',
 				'value' => intval($extra->article)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('headline'), array(
+			->label($this->_language->get('headline'),
+			[
 				'for' => 'headline'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'headline',
 				'name' => 'headline',
 				'value' => $extra->id ? intval($extra->headline) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('status'), array(
+			->label($this->_language->get('status'),
+			[
 				'for' => 'status'
-			))
-			->select(Helper\Option::getVisibleArray(), array(
+			])
+			->select(Helper\Option::getVisibleArray(),
+			[
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $extra->id ? intval($extra->status) : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('rank'), array(
+			->label($this->_language->get('rank'),
+			[
 				'for' => 'rank'
-			))
-			->number(array(
+			])
+			->number(
+			[
 				'id' => 'rank',
 				'name' => 'rank',
 				'value' => $extra->id ? intval($extra->rank) : Db::forTablePrefix('extras')->max('rank') + 1
-			))
+			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label($this->_language->get('access'), array(
+				->label($this->_language->get('access'),
+				[
 					'for' => 'access'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
+				])
+				->select(Helper\Option::getAccessArray('groups'),
+				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
 					'value' => $extra->access
-				))
+				])
 				->append('</li>');
 		}
 		$formElement
 			->append('<li>')
-			->label($this->_language->get('date'), array(
+			->label($this->_language->get('date'),
+			[
 				'for' => 'date'
-			))
-			->datetime(array(
+			])
+			->datetime(
+			[
 				'id' => 'date',
 				'name' => 'date',
 				'value' => $extra->date ? $extra->date : null
-			))
+			])
 			->append('</li></ul></fieldset></div>')
 			->token()
 			->cancel();

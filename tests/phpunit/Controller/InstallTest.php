@@ -63,7 +63,7 @@ class InstallTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -171,7 +171,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = array(), $expect = null)
+	public function testProcess($postArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -205,7 +205,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerValidateDatabase
 	 */
 
-	public function testValidateDatabase($postArray = array(), $expect = null)
+	public function testValidateDatabase($postArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -213,9 +213,10 @@ class InstallTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->callMethod($controllerInstall, '_validateDatabase', array(
+		$actual = $this->callMethod($controllerInstall, '_validateDatabase',
+		[
 			$postArray
-		));
+		]);
 
 		/* compare */
 
@@ -233,7 +234,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerValidateAccount
 	 */
 
-	public function testValidateAccount($postArray = array(), $expect = null)
+	public function testValidateAccount($postArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -241,9 +242,10 @@ class InstallTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->callMethod($controllerInstall, '_validateAccount', array(
+		$actual = $this->callMethod($controllerInstall, '_validateAccount',
+		[
 			$postArray
-		));
+		]);
 
 		/* compare */
 
@@ -261,7 +263,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerInstall
 	 */
 
-	public function testInstall($installArray = array(), $expect = null)
+	public function testInstall($installArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -269,9 +271,10 @@ class InstallTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->callMethod($controllerInstall, '_install', array(
+		$actual = $this->callMethod($controllerInstall, '_install',
+		[
 			$installArray
-		));
+		]);
 
 		/* compare */
 

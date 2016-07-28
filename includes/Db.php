@@ -25,8 +25,8 @@ use PDOException;
  * @method findOne(integer $id = null)
  * @method forTable(string $table, string $connection = null)
  * @method getDb(string $connection = null)
- * @method rawExecute(string $query, array $parameterArray = array(), string $connection = null)
- * @method rawQuery(string $query, array $parameterArray = array())
+ * @method rawExecute(string $query, array $parameterArray = [], string $connection = null)
+ * @method rawQuery(string $query, array $parameterArray = [])
  * @method resetDb()
  * @method orderByAsc(string $column)
  * @method orderByDesc(string $column)
@@ -38,7 +38,7 @@ use PDOException;
  * @method whereLike(string $column, string $value)
  * @method whereLt(string $column, string $value)
  * @method whereNotEqual(string $column, string $value)
- * @method whereRaw(string $clause, array $parameterArray = array())
+ * @method whereRaw(string $clause, array $parameterArray = [])
  */
 
 class Db extends ORM
@@ -94,10 +94,11 @@ class Db extends ORM
 
 			/* username and password */
 
-			self::configure(array(
+			self::configure(
+			[
 				'username' => $dbUser,
 				'password' => $dbPassword
-			));
+			]);
 		}
 
 		/* sqlite */
@@ -109,11 +110,12 @@ class Db extends ORM
 
 		/* general */
 
-		self::configure(array(
+		self::configure(
+		[
 			'caching' => true,
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
-		));
+		]);
 	}
 
 	/**
@@ -196,7 +198,7 @@ class Db extends ORM
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(self::$_config->get('dbPrefix') . $table, array(), $connection);
+		return new self(self::$_config->get('dbPrefix') . $table, [], $connection);
 	}
 
 	/**
@@ -259,7 +261,7 @@ class Db extends ORM
 
 	public function findFlatArray($key = 'id')
 	{
-		$flatArray = array();
+		$flatArray = [];
 		foreach ($this->findArray() as $value)
 		{
 			if (array_key_exists($key, $value))

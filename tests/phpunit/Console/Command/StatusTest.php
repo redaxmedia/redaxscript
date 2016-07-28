@@ -89,11 +89,12 @@ class StatusTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'status',
 			'database'
-		));
+		]);
 		$statusCommand = new Command\Status($this->_config, $this->_request);
 
 		/* actual */
@@ -115,11 +116,12 @@ class StatusTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'status',
 			'system'
-		));
+		]);
 		$statusCommand = new Command\Status($this->_config, $this->_request);
 
 		/* actual */

@@ -70,7 +70,7 @@ class SearchFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($table = null, $expectArray = array())
+	public function testRender($table = null, $expectArray = [])
 	{
 		/* setup */
 

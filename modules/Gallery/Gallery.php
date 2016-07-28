@@ -24,13 +24,13 @@ class Gallery extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Gallery',
 		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Lightbox enhanced image gallery',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -70,7 +70,7 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public static function render($directory = null, $optionArray = array())
+	public static function render($directory = null, $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
@@ -78,9 +78,10 @@ class Gallery extends Config
 		/* html elements */
 
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => self::$_configArray['className']['list']
-		));
+		]);
 
 		/* directory */
 
@@ -130,25 +131,27 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public static function _renderItem($directory = null, $optionArray = array())
+	public static function _renderItem($directory = null, $optionArray = [])
 	{
 		$outputItem = null;
 
 		/* html elements */
 
 		$imageElement = new Html\Element();
-		$imageElement->init('img', array(
+		$imageElement->init('img',
+		[
 			'class' => self::$_configArray['className']['image']
-		));
+		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory, array(
+		$galleryDirectory->init($directory,
+		[
 			self::$_configArray['thumbDirectory']
-		));
+		]);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
 		/* adjust order */
@@ -179,21 +182,23 @@ class Gallery extends Config
 			$outputItem .= '<li>';
 			$outputItem .= $linkElement
 				->copy()
-				->attr(array(
+				->attr(
+				[
 					'href' => $imagePath,
 					'data-counter' => ++$galleryCounter,
 					'data-total' => $galleryTotal,
 					'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
 					'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
 					'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
-				))
+				])
 				->html(
 					$imageElement
 						->copy()
-						->attr(array(
+						->attr(
+						[
 							'src' => $thumbPath,
 							'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : $value
-						))
+						])
 				);
 			$outputItem .= '</li>';
 		}
@@ -212,8 +217,8 @@ class Gallery extends Config
 
 	protected static function _getExifData($file = null)
 	{
-		$dataArray = array();
-		$exifArray = function_exists('exif_read_data') ? exif_read_data($file) : array();
+		$dataArray = [];
+		$exifArray = function_exists('exif_read_data') ? exif_read_data($file) : [];
 
 		/* handle data */
 
@@ -253,14 +258,15 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	protected static function _createThumb($directory = null, $optionArray = array())
+	protected static function _createThumb($directory = null, $optionArray = [])
 	{
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
-		$galleryDirectory->init($directory, array(
+		$galleryDirectory->init($directory,
+		[
 			self::$_configArray['thumbDirectory']
-		));
+		]);
 		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
@@ -342,7 +348,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _calcDist($sourceArray = array(), $optionArray = array())
+	protected static function _calcDist($sourceArray = [], $optionArray = [])
 	{
 		$distArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : self::$_configArray['height'];
 		$distArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : self::$_configArray['quality'];

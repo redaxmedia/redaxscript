@@ -2,13 +2,15 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $iconElement = new Html\Element();
-$iconElement->init('span', array(
+$iconElement->init('span',
+[
 	'class' => 'rs-icon-flag'
-));
+]);
 $languagesDirectory = new Directory();
 $languagesDirectory->init('languages');
 $languagesDirectoryArray = $languagesDirectory->getArray();

@@ -21,21 +21,27 @@ class Backup extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'backup' => array(
+	protected $_commandArray =
+	[
+		'backup' =>
+		[
 			'description' => 'Backup command',
-			'argumentArray' => array(
-				'database' => array(
+			'argumentArray' =>
+			[
+				'database' =>
+				[
 					'description' => 'Backup the database',
-					'optionArray' => array(
-						'directory' => array(
+					'optionArray' =>
+					[
+						'directory' =>
+						[
 							'description' => 'Required directory'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -72,7 +78,7 @@ class Backup extends CommandAbstract
 	 * @return string
 	 */
 
-	protected function _database($optionArray = array())
+	protected function _database($optionArray = [])
 	{
 		$dbType = $this->_config->get('dbType');
 		$dbHost = $this->_config->get('dbHost');

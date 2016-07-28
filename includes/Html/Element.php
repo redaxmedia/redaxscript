@@ -27,7 +27,7 @@ class Element extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_singletonTags = array(
+	protected $_singletonTags = [
 		'area',
 		'base',
 		'br',
@@ -44,7 +44,7 @@ class Element extends HtmlAbstract
 		'source',
 		'track',
 		'wbr',
-	);
+	];
 
 	/**
 	 * attributes of the element
@@ -52,7 +52,7 @@ class Element extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_attributeArray = array();
+	protected $_attributeArray = [];
 
 	/**
 	 * stringify the element
@@ -78,7 +78,7 @@ class Element extends HtmlAbstract
 	 * @return Element
 	 */
 
-	public function init($tag = null, $attributeArray = array())
+	public function init($tag = null, $attributeArray = [])
 	{
 		$this->_tag = strtolower($tag);
 
@@ -199,7 +199,7 @@ class Element extends HtmlAbstract
 		}
 		else
 		{
-			$attributeClassArray = array();
+			$attributeClassArray = [];
 		}
 
 		/* add or remove */

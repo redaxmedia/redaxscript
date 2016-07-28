@@ -26,13 +26,13 @@ class Preview extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Preview',
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -122,14 +122,16 @@ class Preview extends Module
 	public static function render($alias = null, $path = null)
 	{
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-title-preview',
 			'id' => $alias
-		));
+		]);
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('parameterRoute') . 'preview/' . $alias
-		));
+		]);
 
 		/* collect output */
 

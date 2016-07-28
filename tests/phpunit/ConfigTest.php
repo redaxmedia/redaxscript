@@ -32,7 +32,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -153,7 +153,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @dataProvider providerParse
 	 */
 
-	public function testParse($dbUrl = null, $configArray = array())
+	public function testParse($dbUrl = null, $configArray = [])
 	{
 		/* setup */
 

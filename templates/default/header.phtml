@@ -40,17 +40,19 @@
 			<ul class="rs-js-dropdown rs-list-dropdown rs-fn-navigation rs-list-header">
 				<li>
 					<span><?php echo Tag::language('categories'); ?></span>
-					<?php echo Tag::navigation('categories', array(
+					<?php echo Tag::navigation('categories',
+					[
 						'children' => 1,
 						'class' => 'rs-list-header-children',
 						'limit' => 5
-					)); ?>
+					]); ?>
 				</li><li>
 					<span><?php echo Tag::language('articles'); ?></span>
-					<?php echo Tag::navigation('articles', array(
+					<?php echo Tag::navigation('articles',
+					[
 						'class' => 'rs-list-header-children',
 						'limit' => 5
-					)); ?>
+					]); ?>
 				</li>
 			</ul>
 		</div>

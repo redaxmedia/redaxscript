@@ -71,7 +71,7 @@ class GroupFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $groupId = null, $expectArray = array())
+	public function testRender($registryArray = [], $groupId = null, $expectArray = [])
 	{
 		/* setup */
 

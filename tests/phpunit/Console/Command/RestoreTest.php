@@ -117,7 +117,8 @@ class RestoreTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'restore',
 			'database',
@@ -125,7 +126,7 @@ class RestoreTest extends TestCaseAbstract
 			'.restore',
 			'--file',
 			'test.sql'
-		));
+		]);
 		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
 		/* actual */
@@ -147,12 +148,13 @@ class RestoreTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'restore',
 			'database',
 			'--no-interaction'
-		));
+		]);
 		$restoreCommand = new Command\Restore($this->_config, $this->_request);
 
 		/* actual */

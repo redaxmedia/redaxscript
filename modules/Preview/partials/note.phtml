@@ -2,38 +2,44 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $linkElement = new Html\Element();
 $linkElement
-	->init('a', array(
+	->init('a',
+	[
 		'href' => Language::get('homepage', '_package')
-	))
+	])
 	->text('link');
 $boxElement = new Html\Element();
-$boxElement->init('div', array(
+$boxElement->init('div',
+[
 	'class' => $admin ? 'rs-admin-box-note' : 'rs-box-note'
-));
+]);
 $textElement = new Html\Element();
-$textElement->init('input', array(
+$textElement->init('input',
+[
 	'type' => 'text',
 	'class' => $admin ? 'rs-admin-field-default rs-admin-field-text rs-admin-field-note' : 'rs-field-default rs-field-text rs-field-note',
 	'placeholder' => 'Placeholder text'
-));
+]);
 $optionNative = '<option>Placeholder text</option>';
 $selectElement = new Html\Element();
 $selectElement
-	->init('select', array(
+	->init('select',
+	[
 		'class' => $admin ? 'rs-admin-field-select rs-admin-field-note' : 'rs-field-select rs-field-note',
-	))
+	])
 	->html($optionNative . $optionNative . $optionNative);
-$noteArray = array(
+$noteArray =
+[
 	$admin ? 'rs-admin-note-error' : 'rs-note-error',
 	$admin ? 'rs-admin-note-warning' : 'rs-note-warning',
 	$admin ? 'rs-admin-note-success' : 'rs-note-success',
 	$admin ? 'rs-admin-note-info' : 'rs-note-info'
-);
+];
 $registry = Registry::getInstance();
 $messenger = $admin ? new Admin\Messenger($registry) : new Messenger($registry);
 $messenger->setRoute(Language::get('preview', '_preview'), 'preview#note');

@@ -23,10 +23,12 @@ function head($type = 'all')
 		/* query result */
 
 		$result = Redaxscript\Db::forTablePrefix($lastTable)
-			->where(array(
+			->where(
+			[
 				'alias' => $lastParameter,
 				'status' => 1
-			))->findArray();
+			])
+			->findArray();
 
 		/* process result */
 

@@ -46,15 +46,18 @@ class Helper
 	 * @var array
 	 */
 
-	protected static $_subsetArray = array(
-		'cyrillic' => array(
+	protected static $_subsetArray =
+	[
+		'cyrillic' =>
+		[
 			'bg',
 			'ru'
-		),
-		'vietnamese' => array(
+		],
+		'vietnamese' =>
+		[
 			'vi'
-		)
-	);
+		]
+	];
 
 	/**
 	 * array of directions
@@ -62,13 +65,15 @@ class Helper
 	 * @var array
 	 */
 
-	protected static $_directionArray = array(
-		'rtl' => array(
+	protected static $_directionArray =
+	[
+		'rtl' =>
+		[
 			'ar',
 			'fa',
 			'he'
-		)
-	);
+		]
+	];
 
 	/**
 	 * array of devices
@@ -76,11 +81,11 @@ class Helper
 	 * @var array
 	 */
 
-	protected static $_deviceArray = array(
+	protected static $_deviceArray = [
 		'mobile' => 'myMobile',
 		'tablet' => 'myTablet',
 		'desktop' => 'myDesktop'
-	);
+	];
 
 	/**
 	 * get the subset
@@ -156,11 +161,11 @@ class Helper
 
 	protected static function _getBrowserArray()
 	{
-		return array(
+		return [
 			Registry::get('myBrowser'),
 			Registry::get('myBrowserVersion'),
 			Registry::get('myEngine')
-		);
+		];
 	}
 
 	/**
@@ -178,10 +183,10 @@ class Helper
 			$device = Registry::get($value);
 			if ($device)
 			{
-				return array(
+				return [
 					$system,
 					$device
-				);
+				];
 			}
 		}
 	}

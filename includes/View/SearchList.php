@@ -29,7 +29,7 @@ class SearchList extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render($resultArray = array())
+	public function render($resultArray = [])
 	{
 		$output = Hook::trigger('searchListStart');
 		$accessValidator = new Validator\Access();
@@ -37,23 +37,27 @@ class SearchList extends ViewAbstract
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-title-content rs-title-result'
-		));
+		]);
 		$listElement = new Html\Element();
-		$listElement->init('ol', array(
+		$listElement->init('ol',
+		[
 			'class' => 'rs-list-result'
-		));
+		]);
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'class' => 'rs-link-result'
-		));
+		]);
 		$textElement = new Html\Element();
-		$textElement->init('span', array(
+		$textElement->init('span',
+		[
 			'class' => 'rs-text-result-date'
-		));
+		]);
 
 		/* process result */
 

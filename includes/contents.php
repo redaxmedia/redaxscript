@@ -34,10 +34,12 @@ function contents()
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix($lastTable)->whereIn('sibling', array(
+		$sibling_array = Redaxscript\Db::forTablePrefix($lastTable)->whereIn('sibling',
+		[
 			$lastId,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
+		])
+		->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -144,9 +146,10 @@ function contents()
 				/* parser */
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				$parser->init($text, array(
+				$parser->init($text,
+				[
 					'route' => $route
-				));
+				]);
 
 				/* collect headline output */
 
@@ -298,10 +301,12 @@ function extras($filter)
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling', array(
+		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling',
+		[
 			$id,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
+		])
+		->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -349,9 +354,10 @@ function extras($filter)
 					/* parser */
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text, array(
+					$parser->init($text,
+					[
 						'route' => $route
-					));
+					]);
 
 					/* collect headline output */
 

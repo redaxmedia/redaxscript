@@ -21,17 +21,20 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'text' => 'rs-admin-text-panel',
 			'code' => 'rs-admin-code-panel',
 			'warning' => 'rs-admin-is-warning',
 			'error' => 'rs-admin-is-error'
-		),
+		],
 		'url' => 'https://validator.nu/?doc=',
-		'typeArray' => array(
+		'typeArray' =>
+		[
 			'warning',
 			'error'
-		)
-	);
+		]
+	];
 }

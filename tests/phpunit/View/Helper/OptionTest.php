@@ -39,7 +39,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetDatabaseArray($expectArray = array())
+	public function testGetDatabaseArray($expectArray = [])
 	{
 		/* actual */
 

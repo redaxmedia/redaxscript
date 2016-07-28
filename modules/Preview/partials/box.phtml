@@ -2,16 +2,18 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $boxElement = new Html\Element();
 $boxElement->init('div')->text(Language::get('preview', '_preview'));
-$boxArray = array(
+$boxArray =
+[	
 	'rs-box-comment',
 	'rs-box-extra',
 	'rs-box-default'
-);
+];
 ?>
 
 <!-- several boxes -->

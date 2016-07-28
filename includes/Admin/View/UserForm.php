@@ -37,33 +37,40 @@ class UserForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($user->name ? $user->name : $this->_language->get('user_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($user->id ? 'admin/process/users/' . $user->id : 'admin/process/users'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('usersEdit') && $this->_registry->get('usersDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/users' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'delete' => array(
+				],
+				'delete' =>
+				[
 					'href' => $user->id ? $this->_registry->get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* collect item output */
 
@@ -104,82 +111,96 @@ class UserForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
 				'value' => $user->name
-			))
+			])
 			->append('</li>');
 		if (!$user->id)
 		{
 			$formElement
 				->append('<li>')
-				->label($this->_language->get('user'), array(
+				->label($this->_language->get('user'),
+				[
 					'for' => 'user'
-				))
-				->text(array(
+				])
+				->text(
+				[
 					'id' => 'user',
 					'name' => 'user',
 					'required' => 'required',
 					'value' => $user->user
-				))
+				])
 				->append('</li>');
 		}
 		$formElement
 			->append('<li>')
-			->label($this->_language->get('password'), array(
+			->label($this->_language->get('password'),
+			[
 				'for' => 'password'
-			))
-			->password(array(
+			])
+			->password(
+			[
 				'id' => 'password',
 				'name' => 'password'
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('password_confirm'), array(
+			->label($this->_language->get('password_confirm'),
+			[
 				'for' => 'password_confirm'
-			))
-			->password(array(
+			])
+			->password(
+			[
 				'id' => 'password_confirm',
 				'name' => 'password_confirm'
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('email'), array(
+			->label($this->_language->get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'required' => 'required',
 				'value' => $user->email
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('description'), array(
+			->label($this->_language->get('description'),
+			[
 				'for' => 'description'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $user->description
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* second tab */
 
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('language'), array(
+			->label($this->_language->get('language'),
+			[
 				'for' => 'language'
-			))
-			->select(Helper\Option::getLanguageArray(), array(
+			])
+			->select(Helper\Option::getLanguageArray(),
+			[
 				'id' => 'language',
 				'name' => 'language',
 				'value' => $user->language
-			))
+			])
 			->append('</li></ul></fieldset>');
 
 			/* last tab */
@@ -188,29 +209,33 @@ class UserForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement
 				->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-				->label($this->_language->get('status'), array(
+				->label($this->_language->get('status'),
+				[
 					'for' => 'status'
-				))
-				->select(Helper\Option::getToggleArray(), array(
+				])
+				->select(Helper\Option::getToggleArray(),
+				[
 					'id' => 'status',
 					'name' => 'status',
 					'value' => $user->id ? intval($user->status) : 1
-				))
+				])
 				->append('</li>');
 			if ($this->_registry->get('groupsEdit'))
 			{
 				$formElement
 					->append('<li>')
-					->label($this->_language->get('groups'), array(
+					->label($this->_language->get('groups'),
+					[
 						'for' => 'groups'
-					))
-					->select(Helper\Option::getAccessArray('groups'), array(
+					])
+					->select(Helper\Option::getAccessArray('groups'),
+					[
 						'id' => 'groups',
 						'name' => 'groups[]',
 						'multiple' => 'multiple',
 						'size' => count(Helper\Option::getAccessArray('groups')),
 						'value' => $user->groups
-					))
+					])
 					->append('</li>');
 			}
 			$formElement->append('</ul></fieldset>');

@@ -38,9 +38,10 @@ class ModuleTest extends TestCaseAbstract
 		/* setup */
 
 		$module = new Module();
-		$module->init(array(
+		$module->init(
+		[
 			'alias' => 'TestDummy'
-		));
+		]);
 
 		/* actual */
 
@@ -62,10 +63,11 @@ class ModuleTest extends TestCaseAbstract
 		/* setup */
 
 		$module = new Module();
-		$module->init(array(
+		$module->init(
+		[
 			'name' => 'Test dummy',
 			'alias' => 'TestDummy'
-		));
+		]);
 		$module->setNotification('error', 'testValue');
 
 		/* actual */
@@ -88,10 +90,11 @@ class ModuleTest extends TestCaseAbstract
 		/* setup */
 
 		$module = new Module();
-		$module->init(array(
+		$module->init(
+		[
 			'name' => 'Test dummy',
 			'alias' => 'TestDummy'
-		));
+		]);
 		$module->setNotification('success', 'testValue');
 		$module->setNotification('error', 'testValue');
 
@@ -137,9 +140,10 @@ class ModuleTest extends TestCaseAbstract
 		/* setup */
 
 		$module = new Module();
-		$module->init(array(
+		$module->init(
+		[
 			'alias' => 'TestDummy'
-		));
+		]);
 		$module->install();
 
 		/* actual */
@@ -164,9 +168,10 @@ class ModuleTest extends TestCaseAbstract
 		/* setup */
 
 		$module = new Module();
-		$module->init(array(
+		$module->init(
+		[
 			'alias' => 'TestDummy'
-		));
+		]);
 		$module->uninstall();
 
 		/* actual */

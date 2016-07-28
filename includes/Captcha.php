@@ -51,10 +51,10 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_rangeArray = array(
+	protected $_rangeArray = [
 		'min' => 1,
 		'max' => 10
-	);
+	];
 
 	/**
 	 * array of mathematical operators used for the task
@@ -62,10 +62,10 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_operators = array(
+	protected $_operators = [
 		1 => 'plus',
 		-1 => 'minus'
-	);
+	];
 
 	/**
 	 * constructor of the class

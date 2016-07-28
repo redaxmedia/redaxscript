@@ -11,9 +11,10 @@
 	<!-- teaser -->
 
 	<?php if (!Tag::registry('adminParameter')): ?>
-		<?php echo Tag::extra(array(
+		<?php echo Tag::extra(
+		[	
 			'filter' => 'teaser'
-		)); ?>
+		]); ?>
 	<?php endif; ?>
 
 	<!-- page -->
@@ -28,10 +29,11 @@
 			<!-- else content and sidebar -->
 
 		<?php else: ?>
-			<?php echo Tag::partial(array(
+			<?php echo Tag::partial(
+			[	
 				'templates/default/content.phtml',
 				'templates/default/sidebar.phtml'
-			)); ?>
+			]); ?>
 		<?php endif; ?>
 	</div>
 </main>

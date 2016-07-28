@@ -26,11 +26,11 @@ class Search extends ControllerAbstract
 	 * @var array
 	 */
 
-	protected $tableArray = array(
+	protected $tableArray = [
 		'categories',
 		'articles',
 		'comments'
-	);
+	];
 
 	/**
 	 * process the class
@@ -48,39 +48,43 @@ class Search extends ControllerAbstract
 
 		/* process query */
 
-		$queryArray = array();
+		$queryArray = [];
 		if (!$thirdParameter)
 		{
-			$queryArray = array(
+			$queryArray = [
 				'table' => $this->tableArray,
 				'search' => $secondParameter
-			);
+			];
 		}
 		else if (in_array($secondParameter, $this->tableArray))
 		{
-			$queryArray = array(
-				'table' => array(
+			$queryArray =
+			[
+				'table' =>
+				[
 					$secondParameter
-				),
+				],
 				'search' => $thirdParameter
-			);
+			];
 		}
 
 		/* process search */
 
-		$resultArray = $this->_search(array(
+		$resultArray = $this->_search(
+		[
 			'table' => $queryArray['table'],
 			'search' => $queryArray['search']
-		));
+		]);
 
 		/* handle info */
 
 		$messageArray = $this->_validate($queryArray, $resultArray);
 		if ($messageArray)
 		{
-			return $this->_info(array(
+			return $this->_info(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle result */
@@ -90,9 +94,10 @@ class Search extends ControllerAbstract
 		{
 			return $output;
 		}
-		return $this->_info(array(
+		return $this->_info(
+		[
 			'message' => $this->_language->get('search_no')
-		));
+		]);
 	}
 
 	/**
@@ -105,7 +110,7 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _result($resultArray = array())
+	protected function _result($resultArray = [])
 	{
 		$listSearch = new View\SearchList($this->_registry, $this->_language);
 		return $listSearch->render($resultArray);
@@ -121,7 +126,7 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _info($infoArray = array())
+	protected function _info($infoArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -140,13 +145,13 @@ class Search extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($queryArray = array(), $resultArray = array())
+	protected function _validate($queryArray = [], $resultArray = [])
 	{
 		$searchValidator = new Validator\Search();
 
 		/* validate query */
 
-		$messageArray = array();
+		$messageArray = [];
 		if ($searchValidator->validate($queryArray['search'], $this->_language->get('search')) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('input_incorrect');
@@ -171,9 +176,9 @@ class Search extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _search($searchArray = array())
+	protected function _search($searchArray = [])
 	{
-		$resultArray = array();
+		$resultArray = [];
 
 		/* process tables */
 
@@ -201,12 +206,13 @@ class Search extends ControllerAbstract
 
 	protected function _getColumnArray($table = null)
 	{
-		return array_filter(array(
+		return array_filter(
+		[
 			$table === 'categories' || $table === 'articles' ? 'title' : null,
 			$table === 'categories' || $table === 'articles' ? 'description' : null,
 			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
 			$table === 'articles' || $table === 'comments' ? 'text' : null
-		));
+		]);
 	}
 
 	/**
@@ -220,13 +226,14 @@ class Search extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _getLikeArray($table = null, $searchArray = array())
+	protected function _getLikeArray($table = null, $searchArray = [])
 	{
-		return array_filter(array(
+		return array_filter(
+		[
 			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
 			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
 			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
 			$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
-		));
+		]);
 	}
 }

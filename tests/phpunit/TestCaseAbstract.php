@@ -47,7 +47,7 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	 * @return mixed
 	 */
 
-	public function callMethod($object = null, $method = null, $argumentArray = array())
+	public function callMethod($object = null, $method = null, $argumentArray = [])
 	{
 		$reflectionObject = new ReflectionClass($object);
 		$reflectionMethod = $reflectionObject->getMethod($method);

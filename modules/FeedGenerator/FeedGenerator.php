@@ -25,13 +25,13 @@ class FeedGenerator extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Feed generator',
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate Atom feeds from content',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * renderStart
@@ -83,7 +83,7 @@ class FeedGenerator extends Module
 	 * @return string
 	 */
 
-	protected static function _writeXML($resultArray = array())
+	protected static function _writeXML($resultArray = [])
 	{
 		/* prepare href */
 

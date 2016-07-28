@@ -88,11 +88,12 @@ class HelpTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'help',
 			'help'
-		));
+		]);
 		$helpCommand = new Command\Help($this->_config, $this->_request);
 
 		/* expect and actual */

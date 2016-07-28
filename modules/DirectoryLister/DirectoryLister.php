@@ -27,13 +27,13 @@ class DirectoryLister extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Directory lister',
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -71,7 +71,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	public static function render($directory = null, $optionArray = array())
+	public static function render($directory = null, $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
@@ -79,9 +79,10 @@ class DirectoryLister extends Config
 		/* html elements */
 
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => self::$_configArray['className']['list']
-		));
+		]);
 
 		/* handle option */
 
@@ -139,7 +140,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected static function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = array())
+	protected static function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
 	{
 		$outputItem = null;
 		$queryString = $rootDirectory !== $parentDirectory ? '&d=' . $parentDirectory : null;
@@ -147,18 +148,20 @@ class DirectoryLister extends Config
 		/* html elements */
 
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'class' => self::$_configArray['className']['link']
-		));
+		]);
 
 		/* collect item output */
 
 		$outputItem .= '<li>';
 		$outputItem .= $linkElement
-			->attr(array(
+			->attr(
+			[
 				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . $queryString. $optionArray['hash'],
 				'title' => Language::get('directory_parent', '_directory_lister')
-			))
+			])
 			->addClass(self::$_configArray['className']['types']['directoryParent'])
 			->text(Language::get('directory_parent', '_directory_lister'));
 		$outputItem .= '</li>';
@@ -174,24 +177,27 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected static function _renderItem($directory = null, $optionArray = array())
+	protected static function _renderItem($directory = null, $optionArray = [])
 	{
 		$outputItem = null;
 
 		/* html elements */
 
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'class' => self::$_configArray['className']['link']
-		));
+		]);
 		$textSizeElement = new Html\Element();
-		$textSizeElement->init('span', array(
+		$textSizeElement->init('span',
+		[
 			'class' => self::$_configArray['className']['textSize']
-		));
+		]);
 		$textDateElement = new Html\Element();
-		$textDateElement->init('span', array(
+		$textDateElement->init('span',
+		[
 			'class' => self::$_configArray['className']['textDate']
-		));
+		]);
 
 		/* lister directory */
 
@@ -220,10 +226,11 @@ class DirectoryLister extends Config
 			{
 				$outputItem .= $linkElement
 					->copy()
-					->attr(array(
+					->attr(
+					[
 						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $optionArray['hash'],
 						'title' => Language::get('directory', '_directory_lister')
-					))
+					])
 					->addClass(self::$_configArray['className']['types']['directory'])
 					->text($text);
 				$outputItem .= $textSizeElement->copy();
@@ -237,11 +244,12 @@ class DirectoryLister extends Config
 				$textSize = ceil(filesize($path) / self::$_configArray['size']['divider']);
 				$outputItem .= $linkElement
 					->copy()
-					->attr(array(
+					->attr(
+					[
 						'href' => Registry::get('root') . '/' . $path,
 						'target' => '_blank',
 						'title' => Language::get('file', '_directory_lister')
-					))
+					])
 					->addClass(self::$_configArray['className']['types'][$fileType])
 					->text($text);
 				$outputItem .= $textSizeElement

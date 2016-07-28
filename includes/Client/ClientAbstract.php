@@ -67,7 +67,7 @@ abstract class ClientAbstract
 	 * @param string $type type of the client
 	 */
 
-	protected function _detect($setupArray = array(), $type = null)
+	protected function _detect($setupArray = [], $type = null)
 	{
 		$userAgent = strtolower($this->_request->getServer('HTTP_USER_AGENT'));
 

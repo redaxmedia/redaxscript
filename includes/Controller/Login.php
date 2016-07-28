@@ -37,11 +37,11 @@ class Login extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
-		);
+		];
 
 		/* user and email */
 
@@ -63,9 +63,10 @@ class Login extends ControllerAbstract
 		$messageArray = $this->_validate($postArray, $user);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
@@ -74,9 +75,10 @@ class Login extends ControllerAbstract
 		{
 			return $this->_success();
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'message' => $this->_language->get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -106,7 +108,7 @@ class Login extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -125,14 +127,14 @@ class Login extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array(), $user = null)
+	protected function _validate($postArray = [], $user = null)
 	{
 		$passwordValidator = new Validator\Password();
 		$captchaValidator = new Validator\Captcha();
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['user'])
 		{
 			$messageArray[] = $this->_language->get('user_empty');

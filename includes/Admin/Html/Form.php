@@ -12,10 +12,10 @@ use Redaxscript\Html\Form as BaseForm;
  * @category Admin
  * @author Henry Ruhs
  *
- * @method create(string $text = null, array $attributeArray = array())
- * @method delete(string $text = null, array $attributeArray = array())
- * @method save(string $text = null, array $attributeArray = array())
- * @method uninstall(string $text = null, array $attributeArray = array())
+ * @method create(string $text = null, array $attributeArray = [])
+ * @method delete(string $text = null, array $attributeArray = [])
+ * @method save(string $text = null, array $attributeArray = [])
+ * @method uninstall(string $text = null, array $attributeArray = [])
  */
 
 class Form extends BaseForm
@@ -26,21 +26,23 @@ class Form extends BaseForm
 	 * @var array
 	 */
 
-	protected $_languageArray = array(
+	protected $_languageArray = [
 		'legend' => 'fields_required',
-		'button' => array(
+		'button' =>
+		[
 			'button' => 'ok',
 			'create' => 'create',
 			'reset' => 'reset',
 			'save' => 'save',
 			'submit' => 'submit'
-		),
-		'link' => array(
+		],
+		'link' =>
+		[
 			'cancel' => 'cancel',
 			'delete' => 'delete',
 			'uninstall' => 'uninstall'
-		)
-	);
+		]
+	];
 
 	/**
 	 * attributes of the form
@@ -48,133 +50,167 @@ class Form extends BaseForm
 	 * @var array
 	 */
 
-	protected $_attributeArray = array(
-		'form' => array(
+	protected $_attributeArray =
+	[
+		'form' =>
+		[
 			'class' => 'rs-admin-js-validate-form rs-admin-form-default',
 			'method' => 'post'
-		),
-		'legend' => array(
+		],
+		'legend' =>
+		[
 			'class' => 'rs-admin-legend-default'
-		),
-		'label' => array(
+		],
+		'label' =>
+		[
 			'class' => 'rs-admin-label-default'
-		),
-		'select' => array(
+		],
+		'select' =>
+		[
 			'class' => 'rs-admin-field-select'
-		),
-		'textarea' => array(
+		],
+		'textarea' =>
+		[
 			'class' => 'rs-admin-field-textarea',
 			'cols' => 100,
 			'rows' => 5
-		),
-		'input' => array(
-			'checkbox' => array(
+		],
+		'input' =>
+		[
+			'checkbox' =>
+			[
 				'class' => 'rs-admin-field-checkbox',
 				'type' => 'checkbox'
-			),
-			'color' => array(
+			],
+			'color' =>
+			[
 				'class' => 'rs-admin-field-color',
 				'type' => 'color'
-			),
-			'date' => array(
+			],
+			'date' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'date'
-			),
-			'datetime' => array(
+			],
+			'datetime' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'datetime-local'
-			),
-			'email' => array(
+			],
+			'email' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-email',
 				'type' => 'email'
-			),
-			'file' => array(
+			],
+			'file' =>
+			[
 				'class' => 'rs-admin-field-file',
 				'type' => 'file'
-			),
-			'hidden' => array(
+			],
+			'hidden' =>
+			[
 				'class' => 'rs-admin-field-hidden',
 				'type' => 'hidden'
-			),
-			'number' => array(
+			],
+			'number' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-number',
 				'type' => 'number'
-			),
-			'password' => array(
+			],
+			'password' =>
+			[
 				'class' => 'rs-admin-js-unmask-password rs-admin-field-default rs-admin-field-password',
 				'type' => 'password'
-			),
-			'radio' => array(
+			],
+			'radio' =>
+			[
 				'class' => 'rs-admin-field-radio',
 				'type' => 'radio'
-			),
-			'range' => array(
+			],
+			'range' =>
+			[
 				'class' => 'rs-admin-field-range',
 				'type' => 'range'
-			),
-			'search' => array(
+			],
+			'search' =>
+			[
 				'class' => 'rs-admin-js-search rs-admin-field-search',
 				'type' => 'search'
-			),
-			'tel' => array(
+			],
+			'tel' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-tel',
 				'type' => 'tel'
-			),
-			'time' => array(
+			],
+			'time' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'time'
-			),
-			'text' => array(
+			],
+			'text' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-default',
 				'type' => 'text'
-			),
-			'url' => array(
+			],
+			'url' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-url',
 				'type' => 'url'
-			),
-			'week' => array(
+			],
+			'week' =>
+			[
 				'class' => 'rs-admin-field-default rs-admin-field-date',
 				'type' => 'week'
-			)
-		),
-		'button' => array(
-			'button' => array(
+			]
+		],
+		'button' =>
+		[
+			'button' =>
+			[
 				'class' => 'rs-admin-js-button rs-admin-button-default rs-admin-button-large',
 				'type' => 'button'
-			),
-			'reset' => array(
+			],
+			'reset' =>
+			[
 				'class' => 'rs-admin-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
 				'type' => 'reset'
-			),
-			'submit' => array(
+			],
+			'submit' =>
+			[
 				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 				'type' => 'submit',
 				'value' => 'submit'
-			),
-			'save' => array(
+			],
+			'save' =>
+			[
 				'class' => 'rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
 				'name' => 'edit',
 				'type' => 'submit',
 				'value' => 'save'
-			),
-			'create' => array(
+			],
+			'create' =>
+			[
 				'class' => 'rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large',
 				'name' => 'new',
 				'type' => 'submit',
 				'value' => 'create'
-			)
-		),
-		'link' => array(
-			'cancel' => array(
+			]
+		],
+		'link' =>
+		[
+			'cancel' =>
+			[
 				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
 				'href' => 'javascript:history.back()'
-			),
-			'delete' => array(
+			],
+			'delete' =>
+			[
 				'class' => 'rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
-			),
-			'uninstall' => array(
+			],
+			'uninstall' =>
+			[
 				'class' => 'rs-admin-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
-			)
-		)
-	);
+			]
+		]
+	];
 }

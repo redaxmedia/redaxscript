@@ -63,74 +63,89 @@ class Minifier
 		/* replace tabs and newlines */
 
 		$output = preg_replace('/\t+/', '', $output);
-		$output = preg_replace(array(
+		$output = preg_replace(
+		[
 			'/\r+/',
 			'/\n+/'
-		), PHP_EOL, $output);
+		], PHP_EOL, $output);
 
 		/* general */
 
-		$output = str_replace(array(
+		$output = str_replace(
+		[
 			' {',
 			'{ '
-		), '{', $output);
-		$output = str_replace(array(
+		], '{', $output);
+		$output = str_replace(
+		[
 			' }',
 			'} ',
-		), '}', $output);
-		$output = str_replace(array(
+		], '}', $output);
+		$output = str_replace(
+		[
 			' :',
 			': '
-		), ':', $output);
-		$output = str_replace(array(
+		], ':', $output);
+		$output = str_replace(
+		[
 			' ;',
 			'; '
-		), ';', $output);
-		$output = str_replace(array(
+		], ';', $output);
+		$output = str_replace(
+		[
 			' ,',
 			', '
-		), ',', $output);
+		], ',', $output);
 
 		/* scripts */
 
 		if ($type === 'scripts')
 		{
-			$output = str_replace(array(
+			$output = str_replace(
+			[
 				' (',
 				'( '
-			), '(', $output);
-			$output = str_replace(array(
+			], '(', $output);
+			$output = str_replace(
+			[
 				' )',
 				') '
-			), ')', $output);
-			$output = str_replace(array(
+			], ')', $output);
+			$output = str_replace(
+			[
 				' +',
 				'+ '
-			), '+', $output);
-			$output = str_replace(array(
+			], '+', $output);
+			$output = str_replace(
+			[
 				' -',
 				'- '
-			), '-', $output);
-			$output = str_replace(array(
+			], '-', $output);
+			$output = str_replace(
+			[
 				' =',
 				'= '
-			), '=', $output);
-			$output = str_replace(array(
+			], '=', $output);
+			$output = str_replace(
+			[
 				' >',
 				'> '
-			), '>', $output);
-			$output = str_replace(array(
+			], '>', $output);
+			$output = str_replace(
+			[
 				' <',
 				'< '
-			), '<', $output);
-			$output = str_replace(array(
+			], '<', $output);
+			$output = str_replace(
+			[
 				' ||',
 				'|| '
-			), '||', $output);
-			$output = str_replace(array(
+			], '||', $output);
+			$output = str_replace(
+			[
 				' &&',
 				'&& '
-			), '&&', $output);
+			], '&&', $output);
 		}
 
 		/* trim output */

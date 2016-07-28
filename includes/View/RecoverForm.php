@@ -33,23 +33,29 @@ class RecoverForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))
+			])
 			->text($this->_language->get('recovery'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-js-validate-form rs-form-default rs-form-recover'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => Db::getSetting('captcha') > 0
-		));
+		]);
 
 		/* create the form */
 
@@ -57,15 +63,17 @@ class RecoverForm extends ViewAbstract
 			->append('<fieldset>')
 			->legend($this->_language->get('recovery_request') . $this->_language->get('point'))
 			->append('<ul><li>')
-			->label('* ' . $this->_language->get('email'), array(
+			->label('* ' . $this->_language->get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'email',
 				'name' => 'email',
 				'required' => 'required'
-			))
+			])
 			->append('</li>');
 		if (Db::getSetting('captcha') > 0)
 		{

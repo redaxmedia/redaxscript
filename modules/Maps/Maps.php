@@ -22,13 +22,13 @@ class Maps extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Maps',
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -77,12 +77,13 @@ class Maps extends Config
 	public static function render($lat = 0, $lng = 0, $zoom = 1)
 	{
 		$mapElement = new Html\Element();
-		$mapElement->init('div', array(
+		$mapElement->init('div',
+		[
 			'class' => self::$_configArray['className'],
 			'data-lat' => is_numeric($lat) ? $lat : null,
 			'data-lng' => is_numeric($lng) ? $lng : null,
 			'data-zoom' => is_numeric($zoom) ? $zoom : null
-		));
+		]);
 
 		/* collect output */
 

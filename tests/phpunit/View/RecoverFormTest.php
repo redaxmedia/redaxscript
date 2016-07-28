@@ -92,7 +92,7 @@ class RecoverFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expectArray = array())
+	public function testRender($expectArray = [])
 	{
 		/* setup */
 

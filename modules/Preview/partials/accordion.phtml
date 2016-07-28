@@ -2,21 +2,25 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $setElement = new Html\Element();
-$setElement->init('div', array(
+$setElement->init('div',
+[
 	'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
-));
+]);
 $titleElement = new Html\Element();
-$titleElement->init('h3', array(
+$titleElement->init('h3',
+[
 	'class' =>  $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
-));
+]);
 $boxElement = new Html\Element();
-$boxElement->init('div', array(
+$boxElement->init('div',
+[
 	'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
-));
+]);
 ?>
 
 <!-- accordion -->

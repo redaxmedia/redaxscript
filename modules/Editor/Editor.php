@@ -21,13 +21,13 @@ class Editor extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Editor',
 		'alias' => 'Editor',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered WYSIWYG editor',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart

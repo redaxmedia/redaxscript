@@ -22,7 +22,7 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_allowedTags = array(
+	protected $_allowedTags = [
 		'br',
 		'caption',
 		'div',
@@ -55,7 +55,7 @@ class Html implements FilterInterface
 		'u',
 		'ul',
 		'wbr'
-	);
+	];
 
 	/**
 	 * array of allowed attributes
@@ -63,13 +63,13 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_allowedAttributes = array(
+	protected $_allowedAttributes = [
 		'class',
 		'colspan',
 		'id',
 		'rowspan',
 		'title'
-	);
+	];
 
 	/**
 	 * array of forbidden values
@@ -77,7 +77,7 @@ class Html implements FilterInterface
 	 * @var array
 	 */
 
-	protected $_forbiddenValues = array(
+	protected $_forbiddenValues = [
 		'onabort',
 		'onafterprint',
 		'onautocomplete',
@@ -161,7 +161,7 @@ class Html implements FilterInterface
 		'onwaiting',
 		'onwheel',
 		'style'
-	);
+	];
 
 	/**
 	 * sanitize the html

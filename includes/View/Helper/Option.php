@@ -25,7 +25,7 @@ class Option
 
 	public static function getDatabaseArray()
 	{
-		$databaseArray = array();
+		$databaseArray = [];
 
 		/* process drivers */
 

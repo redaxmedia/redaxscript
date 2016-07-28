@@ -32,23 +32,29 @@ class ResetForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))
+			])
 			->text($this->_language->get('password_reset'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-js-validate-form rs-form-default rs-form-reset'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => true
-		));
+		]);
 
 		/* create the form */
 
@@ -58,14 +64,16 @@ class ResetForm extends ViewAbstract
 			->append('<li><ul>')
 			->captcha('task')
 			->append('</li></ul></fieldset>')
-			->hidden(array(
+			->hidden(
+			[
 				'name' => 'password',
 				'value' => $this->_registry->get('thirdParameter')
-			))
-			->hidden(array(
+			])
+			->hidden(
+			[
 				'name' => 'id',
 				'value' => $this->_registry->get('thirdSubParameter')
-			))
+			])
 			->captcha('solution')
 			->token()
 			->submit();

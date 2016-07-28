@@ -21,13 +21,14 @@ class Mobile extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'mobile',
 			'android',
 			'blackberry',
 			'iphone',
 			'ipod',
 			'palm'
-		));
+		]);
 	}
 }

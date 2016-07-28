@@ -32,12 +32,13 @@ $installer = new Installer($config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
-$installer->insertData(array(
+$installer->insertData(
+[
 	'adminName' => 'Test',
 	'adminUser' => 'test',
 	'adminPassword' => 'test',
 	'adminEmail' => 'test@test.com'
-));
+]);
 
 /* hook */
 

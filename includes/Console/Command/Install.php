@@ -23,38 +23,50 @@ class Install extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'install' => array(
+	protected $_commandArray =
+	[
+		'install' =>
+		[
 			'description' => 'Install command',
-			'argumentArray' => array(
-				'database' => array(
+			'argumentArray' =>
+			[
+				'database' =>
+				[
 					'description' => 'Install the database',
-					'optionArray' => array(
-						'admin-name' => array(
+					'optionArray' =>
+					[
+						'admin-name' =>
+						[
 							'description' => 'Required admin name'
-						),
-						'admin-user' => array(
+						],
+						'admin-user' =>
+						[
 							'description' => 'Required admin user'
-						),
-						'admin-password' => array(
+						],
+						'admin-password' =>
+						[
 							'description' => 'Required admin password'
-						),
-						'admin-email' => array(
+						],
+						'admin-email' =>
+						[
 							'description' => 'Required admin email'
-						)
-					)
-				),
-				'module' => array(
+						]
+					]
+				],
+				'module' =>
+				[
 					'description' => 'Install the module',
-					'optionArray' => array(
-						'alias' => array(
+					'optionArray' =>
+					[
+						'alias' =>
+						[
 							'description' => 'Required module alias'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -95,7 +107,7 @@ class Install extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _database($optionArray = array())
+	protected function _database($optionArray = [])
 	{
 		$adminName = $this->prompt('admin-name', $optionArray);
 		$adminUser = $this->prompt('admin-user', $optionArray);
@@ -106,12 +118,13 @@ class Install extends CommandAbstract
 			$installer = new Installer($this->_config);
 			$installer->init();
 			$installer->rawCreate();
-			$installer->insertData(array(
+			$installer->insertData(
+			[
 				'adminName' => $adminName,
 				'adminUser' => $adminUser,
 				'adminPassword' => $adminPassword,
 				'adminEmail' => $adminEmail
-			));
+			]);
 			return Db::getStatus() === 2;
 		}
 		return false;
@@ -127,7 +140,7 @@ class Install extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _module($optionArray = array())
+	protected function _module($optionArray = [])
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;

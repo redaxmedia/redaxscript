@@ -21,45 +21,55 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'link' => 'rs-js-link-share-this rs-link-share-this',
 			'list' => 'rs-list-share-this rs-fn-clearfix'
-		),
-		'network' => array(
-			'facebook' => array(
+		],
+		'network' =>
+		[
+			'facebook' =>
+			[
 				'url' => 'http://facebook.com/sharer.php?u=',
 				'className' => 'rs-link-facebook',
 				'attribute' => 'data-type="facebook"'
-			),
-			'googleplusone' => array(
+			],
+			'googleplusone' =>
+			[
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
 				'className' => 'rs-link-googleplusone'
-			),
-			'twitter' => array(
+			],
+			'twitter' =>
+			[
 				'url' => 'http://twitter.com/share?url=',
 				'className' => 'rs-link-twitter',
 				'height' => 340
-			),
-			'pinterest' => array(
+			],
+			'pinterest' =>
+			[
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
 				'className' => 'rs-link-pinterest'
-			),
-			'linkedin' => array(
+			],
+			'linkedin' =>
+			[
 				'url' => 'http://linkedin.com/shareArticle?url=',
 				'className' => 'rs-link-linkedin',
 				'height' => 490,
 				'width' => 850
-			),
-			'stumbleupon' => array(
+			],
+			'stumbleupon' =>
+			[
 				'url' => 'http://stumbleupon.com/submit?url=',
 				'className' => 'rs-link-stumbleupon'
-			),
-			'delicious' => array(
+			],
+			'delicious' =>
+			[
 				'url' => 'http://del.icio.us/post?url=',
 				'className' => 'rs-link-delicious',
 				'height' => 580
-			)
-		)
-	);
+			]
+		]
+	];
 }

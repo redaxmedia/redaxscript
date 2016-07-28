@@ -39,7 +39,7 @@ class Breadcrumb
 	 * @var array
 	 */
 
-	protected $_breadcrumbArray = array();
+	protected $_breadcrumbArray = [];
 
 	/**
 	 * options of the breadcrumb
@@ -47,13 +47,15 @@ class Breadcrumb
 	 * @var array
 	 */
 
-	protected $_optionArray = array(
-		'className' => array(
+	protected $_optionArray =
+	[
+		'className' =>
+		[
 			'list' => 'rs-list-breadcrumb',
 			'divider' => 'rs-item-divider'
-		),
+		],
 		'divider' => null
-	);
+	];
 
 	/**
 	 * constructor of the class
@@ -91,7 +93,7 @@ class Breadcrumb
 	 * @param array $optionArray options of the breadcrumb
 	 */
 
-	public function init($optionArray = array())
+	public function init($optionArray = [])
 	{
 		if (is_array($optionArray))
 		{
@@ -142,9 +144,10 @@ class Breadcrumb
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => $this->_optionArray['className']['list']
-		));
+		]);
 
 		/* collect item output */
 
@@ -160,10 +163,11 @@ class Breadcrumb
 
 				if ($route)
 				{
-					$outputItem .= $linkElement->attr(array(
+					$outputItem .= $linkElement->attr(
+					[
 						'href' => $this->_registry->get('parameterRoute') . $route,
 						'title' => $title
-					))->text($title);
+					])->text($title);
 				}
 
 				/* else plain text */

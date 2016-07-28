@@ -20,10 +20,10 @@ class Login implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_range = array(
+	protected $_range = [
 		'min' => 1,
 		'max' => 30
-	);
+	];
 
 	/**
 	 * validate the login

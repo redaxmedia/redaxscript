@@ -21,50 +21,66 @@ class Config extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'config' => array(
+	protected $_commandArray =
+	[
+		'config' =>
+		[
 			'description' => 'Config command',
-			'argumentArray' => array(
-				'list' => array(
+			'argumentArray' =>
+			[
+				'list' =>
+				[
 					'description' => 'List the configuration'
-				),
-				'set' => array(
+				],
+				'set' =>
+				[
 					'description' => 'Set the configuration',
-					'optionArray' => array(
-						'db-type' => array(
+					'optionArray' =>
+					[
+						'db-type' =>
+						[
 							'description' => 'Required database type'
-						),
-						'db-host' => array(
+						],
+						'db-host' =>
+						[
 							'description' => 'Required database host or file'
-						),
-						'db-name' => array(
+						],
+						'db-name' =>
+						[
 							'description' => 'Optional database name'
-						),
-						'db-user' => array(
+						],
+						'db-user' =>
+						[
 							'description' => 'Optional database user'
-						),
-						'db-password' => array(
+						],
+						'db-password' =>
+						[
 							'description' => 'Optional database password'
-						),
-						'db-prefix' => array(
+						],
+						'db-prefix' =>
+						[
 							'description' => 'Optional database prefix'
-						)
-					)
-				),
-				'parse' => array(
+						]
+					]
+				],
+				'parse' =>
+				[
 					'description' => 'Parse the configuration',
-					'optionArray' => array(
-						'db-url' => array(
+					'optionArray' =>
+					[
+						'db-url' =>
+						[
 							'description' => 'Required database url'
-						),
-						'db-env' => array(
+						],
+						'db-env' =>
+						[
 							'description' => 'Get variable from ENV'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -138,7 +154,7 @@ class Config extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _set($optionArray = array())
+	protected function _set($optionArray = [])
 	{
 		$dbType = $this->prompt('db-type', $optionArray);
 		$dbHost = $this->prompt('db-host', $optionArray);
@@ -166,7 +182,7 @@ class Config extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _parse($optionArray = array())
+	protected function _parse($optionArray = [])
 	{
 		$dbUrl = $this->prompt('db-url', $optionArray);
 		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;

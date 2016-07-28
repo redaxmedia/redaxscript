@@ -168,25 +168,28 @@ function admin_panel_list()
 	$outputNotification = null;
 	$counterNotification = 0;
 	$moduleLastKey = null;
-	$notificationSystemArray = array();
-	$notificationHasArray = array();
-	$orderArray = array(
+	$notificationSystemArray = [];
+	$notificationHasArray = [];
+	$orderArray = [
 		'success',
 		'info',
 		'warning',
 		'error'
-	);
+	];
 	if (Redaxscript\Registry::get('myId') == 1)
 	{
-		$notificationSystemArray = array(
-			'warning' => array(
-				Redaxscript\Language::get('system') => array(
+		$notificationSystemArray =
+		[
+			'warning' =>
+			[
+				Redaxscript\Language::get('system') =>
+				[
 					file_exists('console.php') ? Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') : null,
 					file_exists('install.php') ? Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') : null,
 					is_writable('config.php') ? Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') : null
-				)
-			)
-		);
+				]
+			]
+		];
 	}
 	$notificationModuleArray = Redaxscript\Hook::collect('adminPanelNotification');
 	if ($notificationModuleArray)

@@ -44,20 +44,26 @@ $installer = new Installer($config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
-$installer->insertData(array(
+$installer->insertData(
+[
 	'adminName' => 'Test',
 	'adminUser' => 'test',
 	'adminPassword' => 'test',
 	'adminEmail' => 'test@test.com'
-));
+]);
 
 /* test user */
 
-Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set(array(
-	'password' => 'test',
-	'description' => 'test',
-	'language' => 'en'
-))->save();
+Db::forTablePrefix('users')
+	->whereIdIs(1)
+	->findOne()
+	->set(
+	[
+		'password' => 'test',
+		'description' => 'test',
+		'language' => 'en'
+	])
+	->save();
 
 /* test module */
 

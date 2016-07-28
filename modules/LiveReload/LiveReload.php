@@ -21,14 +21,14 @@ class LiveReload extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Live Reload',
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
 		'description' => 'Live reload for CSS',
 		'version' => '3.0.0',
 		'access' => '1'
-	);
+	];
 
 	/**
 	 * loaderStart

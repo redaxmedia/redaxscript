@@ -45,57 +45,70 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_tagArray = array(
-		'readmore' => array(
+	protected $_tagArray =
+	[
+		'readmore' =>
+		[
 			'method' => '_parseReadmore',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<readmore>'
-			)
-		),
-		'codequote' => array(
+			]
+		],
+		'codequote' =>
+		[
 			'method' => '_parseCodequote',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<codequote>',
 				'</codequote>'
-			)
-		),
-		'language' => array(
+			]
+		],
+		'language' =>
+		[
 			'method' => '_parseLanguage',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<language>',
 				'</language>'
-			)
-		),
-		'registry' => array(
+			]
+		],
+		'registry' =>
+		[
 			'method' => '_parseRegistry',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<registry>',
 				'</registry>'
-			)
-		),
-		'template' => array(
+			]
+		],
+		'template' =>
+		[
 			'method' => '_parseTemplate',
 			'namespace' => 'Redaxscript\Template\Tag',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<template>',
 				'</template>'
-			)
-		),
-		'module' => array(
+			]
+		],
+		'module' =>
+		[
 			'method' => '_parseModule',
 			'namespace' => 'Redaxscript\Modules\\',
 			'position' => null,
-			'search' => array(
+			'search' =>
+			[
 				'<module>',
 				'</module>'
-			)
-		)
-	);
+			]
+		]
+	];
 
 	/**
 	 * options of the parser
@@ -103,13 +116,15 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_optionArray = array(
-		'className' => array(
+	protected $_optionArray =
+	[
+		'className' =>
+		[
 			'readmore' => 'rs-link-readmore',
 			'codequote' => 'rs-js-code-quote rs-code-quote'
-		),
+		],
 		'delimiter' => '@@@'
-	);
+	];
 
 	/**
 	 * constructor of the class
@@ -189,10 +204,11 @@ class Parser
 		/* html elements */
 
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'class' => $this->_optionArray['className']['readmore'],
 			'title' => $this->_language->get('readmore')
-		));
+		]);
 
 		/* collect output */
 
@@ -228,9 +244,10 @@ class Parser
 		/* html elements */
 
 		$preElement = new Html\Element();
-		$preElement->init('pre', array(
+		$preElement->init('pre',
+		[
 			'class' => $this->_optionArray['className']['codequote']
-		));
+		]);
 
 		/* parse as needed */
 
@@ -336,10 +353,11 @@ class Parser
 
 						if (method_exists($object, $method))
 						{
-							$parts[$key] = call_user_func_array(array(
+							$parts[$key] = call_user_func_array(
+							[
 								$object,
 								$method
-							), $parameterArray);
+							], $parameterArray);
 						}
 					}
 				}
@@ -348,10 +366,11 @@ class Parser
 
 				else if (method_exists($object, $value))
 				{
-					$parts[$key] = call_user_func(array(
+					$parts[$key] = call_user_func(
+					[
 						$object,
 						$value
-					));
+					]);
 				}
 			}
 		}
@@ -397,10 +416,11 @@ class Parser
 
 						if (in_array($module, $modulesLoaded) && method_exists($object, 'render'))
 						{
-							$parts[$key] = call_user_func_array(array(
+							$parts[$key] = call_user_func_array(
+							[
 								$object,
 								'render'
-							), $parameterArray);
+							], $parameterArray);
 						}
 					}
 				}
@@ -409,10 +429,11 @@ class Parser
 
 				else if (in_array($value, $modulesLoaded) && method_exists($object, 'render'))
 				{
-					$parts[$key] = call_user_func(array(
+					$parts[$key] = call_user_func(
+					[
 						$object,
 						'render'
-					));
+					]);
 				}
 			}
 		}

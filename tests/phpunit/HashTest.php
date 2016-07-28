@@ -108,7 +108,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testGetHash($raw = null, $hashArray = array())
+	public function testGetHash($raw = null, $hashArray = [])
 	{
 		/* setup */
 
@@ -143,7 +143,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testValidate($raw = null, $hashArray = array())
+	public function testValidate($raw = null, $hashArray = [])
 	{
 		/* setup */
 

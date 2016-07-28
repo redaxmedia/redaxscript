@@ -112,7 +112,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
-	public function testSuccess($success = null, $actionArray = array(), $expect = null)
+	public function testSuccess($success = null, $actionArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -140,7 +140,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
-	public function testWarning($warning = null, $actionArray = array(), $expect = null)
+	public function testWarning($warning = null, $actionArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -196,7 +196,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
-	public function testInfo($info = null, $actionArray = array(), $expect = null)
+	public function testInfo($info = null, $actionArray = [], $expect = null)
 	{
 		/* setup */
 

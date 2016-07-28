@@ -2,14 +2,16 @@
 namespace Redaxscript;
 
 $titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
+$titlePartialElement->init('h3',
+[
 	'class' => 'rs-title-preview-sub'
-));
+]);
 $linkElement = new Html\Element();
 $linkElement
-	->init('a', array(
+	->init('a',
+	[
 		'href' => Language::get('homepage', '_package')
-	))
+	])
 	->text(Language::get('preview', '_preview'));
 $paragraphElement = new Html\Element();
 $paragraphElement
@@ -19,16 +21,18 @@ $titleElement = new Html\Element();
 $titleElement
 	->init('h3')
 	->text(Language::get('preview', '_preview'));
-$linkArray = array(
+$linkArray =
+[	
 	'rs-link-default',
 	'rs-link-readmore'
-);
-$titleArray = array(
+];
+$titleArray =
+[
 	'rs-title-content',
 	'rs-title-content-sub',
 	'rs-title-comment',
 	'rs-title-extra'
-);
+];
 $paragraphContent = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua';
 ?>
 

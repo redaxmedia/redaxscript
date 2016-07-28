@@ -178,10 +178,11 @@ function navigation_list($table, $options)
 				if ($table == 'categories' && $option_children == 1)
 				{
 					ob_start();
-					navigation_list($table, array(
+					navigation_list($table,
+					[
 						'parent' => $id,
 						'class' => 'rs-list-children'
-					));
+					]);
 					$output .= ob_get_clean();
 				}
 				$output .= '</li>';
@@ -337,11 +338,12 @@ function templates_list($options)
 	/* templates directory */
 
 	$templates_directory = new Redaxscript\Directory();
-	$templates_directory->init('templates', array(
+	$templates_directory->init('templates',
+	[
 		'admin',
 		'console',
 		'install'
-	));
+	]);
 	$templates_directory_array = $templates_directory->getArray();
 
 	/* collect templates output */

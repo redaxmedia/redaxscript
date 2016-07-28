@@ -22,27 +22,35 @@ class Setting extends CommandAbstract
 	 * @var array
 	 */
 
-	protected $_commandArray = array(
-		'setting' => array(
+	protected $_commandArray =
+	[
+		'setting' =>
+		[
 			'description' => 'Setting command',
-			'argumentArray' => array(
-				'list' => array(
+			'argumentArray' =>
+			[
+				'list' =>
+				[
 					'description' => 'List the settings'
-				),
-				'set' => array(
+				],
+				'set' =>
+				[
 					'description' => 'Set the setting',
-					'optionArray' => array(
-						'key' => array(
+					'optionArray' =>
+					[
+						'key' =>
+						[
 							'description' => 'Required setting key'
-						),
-						'value' => array(
+						],
+						'value' =>
+						[
 							'description' => 'Required setting value'
-						)
-					)
-				)
-			)
-		)
-	);
+						]
+					]
+				]
+			]
+		]
+	];
 
 	/**
 	 * run the command
@@ -105,7 +113,7 @@ class Setting extends CommandAbstract
 	 * @return boolean
 	 */
 
-	protected function _set($optionArray = array())
+	protected function _set($optionArray = [])
 	{
 		$key = $this->prompt('key', $optionArray);
 		$value = $this->prompt('value', $optionArray);

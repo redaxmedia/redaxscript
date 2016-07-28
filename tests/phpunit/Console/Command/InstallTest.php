@@ -40,7 +40,7 @@ class InstallTest extends TestCaseAbstract
 	 * @var array
 	 */
 
-	protected $_configArray = array();
+	protected $_configArray = [];
 
 	/**
 	 * setUp
@@ -100,7 +100,8 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'install',
 			'database',
@@ -112,7 +113,7 @@ class InstallTest extends TestCaseAbstract
 			'test',
 			'--admin-email',
 			'test@test.com'
-		));
+		]);
 		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
@@ -134,12 +135,13 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'install',
 			'database',
 			'--no-interaction'
-		));
+		]);
 		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
@@ -161,13 +163,14 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'install',
 			'module',
 			'--alias',
 			'TestDummy'
-		));
+		]);
 		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */
@@ -189,12 +192,13 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'install',
 			'module',
 			'--no-interaction'
-		));
+		]);
 		$installCommand = new Command\Install($this->_config, $this->_request);
 
 		/* actual */

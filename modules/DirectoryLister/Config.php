@@ -21,13 +21,16 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'list' => 'rs-list-directory-lister rs-fn-clearfix',
 			'link' => 'rs-link-directory-lister',
 			'textSize' => 'rs-text-directory-lister rs-text-size',
 			'textDate' => 'rs-text-directory-lister rs-text-date',
-			'types' => array(
+			'types' =>
+			[
 				'directory' => 'rs-directory',
 				'directoryParent' => 'rs-directory-parent',
 				'fileBlank' => 'rs-file-blank',
@@ -36,16 +39,19 @@ class Config extends Module
 				'fileMusic' => 'rs-file-music',
 				'fileVideo' => 'rs-file-video',
 				'fileArchive' => 'rs-file-archive'
-			)
-		),
-		'size' => array(
+			]
+		],
+		'size' =>
+		[
 			'unit' => 'kB',
 			'divider' => 1024
-		),
-		'replaceKey' => array(
+		],
+		'replaceKey' =>
+		[
 			'extension'	=> '{extension}'
-		),
-		'extension' => array(
+		],
+		'extension' =>
+		[
 			'doc' => 'fileText',
 			'txt' => 'fileText',
 			'gif' => 'fileImage',
@@ -60,6 +66,6 @@ class Config extends Module
 			'tar' => 'fileArchive',
 			'rar' => 'fileArchive',
 			'zip' => 'fileArchive'
-		)
-	);
+		]
+	];
 }

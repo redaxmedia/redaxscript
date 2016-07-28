@@ -86,7 +86,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetSubset
 	 */
 
-	public function testGetSubset($registryArray = array(), $expect = null)
+	public function testGetSubset($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -112,7 +112,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetDirection
 	 */
 
-	public function testGetDirection($registryArray = array(), $expect = null)
+	public function testGetDirection($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -138,7 +138,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetClass
 	 */
 
-	public function testGetClass($registryArray = array(), $expect = null)
+	public function testGetClass($registryArray = [], $expect = null)
 	{
 		/* setup */
 

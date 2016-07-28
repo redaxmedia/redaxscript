@@ -39,7 +39,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetToggleArray($expectArray = array())
+	public function testGetToggleArray($expectArray = [])
 	{
 		/* actual */
 
@@ -60,7 +60,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetVisibleArray($expectArray = array())
+	public function testGetVisibleArray($expectArray = [])
 	{
 		/* actual */
 
@@ -81,7 +81,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetRobotArray($expectArray = array())
+	public function testGetRobotArray($expectArray = [])
 	{
 		/* actual */
 
@@ -102,7 +102,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTimeArray($expectArray = array())
+	public function testGetTimeArray($expectArray = [])
 	{
 		/* actual */
 
@@ -123,7 +123,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetDateArray($expectArray = array())
+	public function testGetDateArray($expectArray = [])
 	{
 		/* actual */
 
@@ -144,7 +144,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetOrderArray($expectArray = array())
+	public function testGetOrderArray($expectArray = [])
 	{
 		/* actual */
 
@@ -165,7 +165,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetCaptchaArray($expectArray = array())
+	public function testGetCaptchaArray($expectArray = [])
 	{
 		/* actual */
 
@@ -186,15 +186,15 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetPermissionArray($expectArray = array())
+	public function testGetPermissionArray($expectArray = [])
 	{
 		/* actual */
 
-		$actualArray = array(
+		$actualArray = [
 			'content' => Helper\Option::getPermissionArray(),
 			'module' => Helper\Option::getPermissionArray('modules'),
 			'setting' => Helper\Option::getPermissionArray('settings')
-		);
+		];
 
 		/* compare */
 
@@ -213,7 +213,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetLanguageArray($expectArray = array())
+	public function testGetLanguageArray($expectArray = [])
 	{
 		/* actual */
 
@@ -234,7 +234,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTemplateArray($expectArray = array())
+	public function testGetTemplateArray($expectArray = [])
 	{
 		/* actual */
 
@@ -255,7 +255,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetContentArray($expectArray = array())
+	public function testGetContentArray($expectArray = [])
 	{
 		/* actual */
 
@@ -276,7 +276,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetAccessArray($expectArray = array())
+	public function testGetAccessArray($expectArray = [])
 	{
 		/* actual */
 

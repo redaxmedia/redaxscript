@@ -201,7 +201,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($attributeArray = array(), $optionArray = array(), $expect = null)
+	public function testCreate($attributeArray = [], $optionArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -229,7 +229,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLegend
 	 */
 
-	public function testLegend($text = null, $attributeArray = array(), $expect = null)
+	public function testLegend($text = null, $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -258,7 +258,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLabel
 	 */
 
-	public function testLabel($text = null, $attributeArray = array(), $expect = null)
+	public function testLabel($text = null, $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -287,7 +287,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerInput
 	 */
 
-	public function testInput($method = null, $attributeArray = array(), $expect = null)
+	public function testInput($method = null, $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -315,7 +315,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerTextarea
 	 */
 
-	public function testTextarea($attributeArray = array(), $expect = null)
+	public function testTextarea($attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -344,7 +344,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerSelect
 	 */
 
-	public function testSelect($optionArray = array(), $attributeArray = array(), $expect = null)
+	public function testSelect($optionArray = [], $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -374,7 +374,7 @@ class FormTest extends TestCaseAbstract
 
 	 */
 
-	public function testSelectRange($rangeArray = array(), $attributeArray = array(), $expect = null)
+	public function testSelectRange($rangeArray = [], $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -401,14 +401,15 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerCaptcha
 	 */
 
-	public function testCaptcha($expectArray = array())
+	public function testCaptcha($expectArray = [])
 	{
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
-		$form->init(null, array(
+		$form->init(null,
+		[
 			'captcha' => true
-		));
+		]);
 		$form->captcha($expectArray['type']);
 
 		/* actual */
@@ -432,7 +433,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerToken
 	 */
 
-	public function testToken($registryArray = array(), $expect = null)
+	public function testToken($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -463,7 +464,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerButton
 	 */
 
-	public function testButton($method = null, $text = null, $attributeArray = array(), $expect = null)
+	public function testButton($method = null, $text = null, $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -493,7 +494,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLink
 	 */
 
-	public function testLink($method = null, $text = null, $attributeArray = array(), $expect = null)
+	public function testLink($method = null, $text = null, $attributeArray = [], $expect = null)
 	{
 		/* setup */
 

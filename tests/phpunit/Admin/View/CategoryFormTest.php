@@ -71,7 +71,7 @@ class CategoryFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $categoryId = null, $expectArray = array())
+	public function testRender($registryArray = [], $categoryId = null, $expectArray = [])
 	{
 		/* setup */
 

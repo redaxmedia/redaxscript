@@ -41,10 +41,11 @@ class AutoloaderTest extends TestCaseAbstract
 
 		$autoloader = new Autoloader;
 		$autoloader::init('includes');
-		$autoloader::init(array(
+		$autoloader::init(
+		[
 			'.',
 			'includes'
-		));
+		]);
 
 		/* actual */
 

@@ -34,31 +34,38 @@ class LoginForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))
+			])
 			->text($this->_language->get('login'));
 		if (Db::getSetting('recovery'))
 		{
 			$linkElement = new Html\Element();
-			$linkElement->init('a', array(
+			$linkElement->init('a',
+			[
 				'href' => $this->_registry->get('parameterRoute') . 'login/recover'
-			));
+			]);
 			$outputLegend = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-js-validate-form rs-form-default rs-form-login'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				)
-			)
-		), array(
+				]
+			]
+		],
+		[
 			'captcha' => Db::getSetting('captcha') > 0
-		));
+		]);
 
 		/* create the form */
 
@@ -66,24 +73,28 @@ class LoginForm extends ViewAbstract
 			->append('<fieldset>')
 			->legend($outputLegend)
 			->append('<ul><li>')
-			->label('* ' . $this->_language->get('user'), array(
+			->label('* ' . $this->_language->get('user'),
+			[
 				'for' => 'user'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
 				'required' => 'required'
-			))
+			])
 			->append('</li><li>')
-			->label('* ' . $this->_language->get('password'), array(
+			->label('* ' . $this->_language->get('password'),
+			[
 				'for' => 'password'
-			))
-			->password(array(
+			])
+			->password(
+			[
 				'id' => 'password',
 				'name' => 'password',
 				'required' => 'required'
-			))
+			])
 			->append('</li>');
 		if (Db::getSetting('captcha') > 0)
 		{

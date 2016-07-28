@@ -135,7 +135,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerReadmore
 	 */
 
-	public function testReadmore($registryArray = array(), $content = null, $optionArray = array(), $expect = null)
+	public function testReadmore($registryArray = [], $content = null, $optionArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -220,7 +220,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerRegistry
 	 */
 
-	public function testRegistry($registryArray = array(), $content = null, $expect = null)
+	public function testRegistry($registryArray = [], $content = null, $expect = null)
 	{
 		/* setup */
 

@@ -26,7 +26,7 @@ class InstallForm extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render($optionArray = array())
+	public function render($optionArray = [])
 	{
 		$output = Hook::trigger('installFormStart');
 
@@ -34,21 +34,26 @@ class InstallForm extends ViewAbstract
 
 		$titleElement = new Html\Element();
 		$titleElement
-			->init('h2', array(
+			->init('h2',
+			[
 				'class' => 'rs-title-content'
-			))->text($this->_language->get('installation', '_installation'));
+			])->text($this->_language->get('installation', '_installation'));
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-install-js-form rs-js-accordion rs-js-validate-form rs-form-default rs-install-form-default'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'class' => 'rs-js-submit rs-button-default rs-button-large rs-button-full',
 					'name' => get_class()
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* create the form */
 
@@ -59,19 +64,23 @@ class InstallForm extends ViewAbstract
 			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-active">')
 			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . $this->_language->get('database_setup') . '</legend>')
 			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-active"><li>')
-			->label($this->_language->get('type'), array(
+			->label($this->_language->get('type'),
+			[
 				'for' => 'db-type'
-			))
-			->select(Helper\Option::getDatabaseArray(), array(
+			])
+			->select(Helper\Option::getDatabaseArray(),
+			[
 				'id' => 'db-type',
 				'name' => 'db-type',
 				'value' => $optionArray['dbType']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('host'), array(
+			->label($this->_language->get('host'),
+			[
 				'for' => 'db-host'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'data-sqlite' => uniqid() . '.sqlite',
 				'data-mysql' => 'localhost',
 				'data-pgsql' => 'localhost',
@@ -79,45 +88,53 @@ class InstallForm extends ViewAbstract
 				'name' => 'db-host',
 				'required' => 'required',
 				'value' => $optionArray['dbHost']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'db-name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
 				'value' => $optionArray['dbName']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('user'), array(
+			->label($this->_language->get('user'),
+			[
 				'for' => 'db-user'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
 				'value' => $optionArray['dbUser']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('password'), array(
+			->label($this->_language->get('password'),
+			[
 				'for' => 'db-password'
-			))
-			->password(array(
+			])
+			->password(
+			[
 				'id' => 'db-password',
 				'name' => 'db-password',
 				'value' => $optionArray['dbPassword']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('prefix'), array(
+			->label($this->_language->get('prefix'),
+			[
 				'for' => 'db-prefix'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
 				'value' => $optionArray['dbPrefix']
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* account set */
@@ -125,54 +142,64 @@ class InstallForm extends ViewAbstract
 			->append('<fieldset class="rs-js-set-accordion rs-set-accordion">')
 			->append('<legend class="rs-js-title-accordion rs-title-accordion">' . $this->_language->get('account_create') . '</legend>')
 			->append('<ul class="rs-js-box-accordion rs-box-accordion"><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'admin-name',
 				'name' => 'admin-name',
 				'required' => 'required',
 				'value' => $optionArray['adminName']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'admin-user'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'admin-user',
 				'name' => 'admin-user',
 				'required' => 'required',
 				'value' => $optionArray['adminUser']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('password'), array(
+			->label($this->_language->get('password'),
+			[
 				'for' => 'admin_password'
-			))
-			->password(array(
+			])
+			->password(
+			[
 				'id' => 'admin-password',
 				'name' => 'admin-password',
 				'required' => 'required',
 				'value' => $optionArray['adminPassword']
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('email'), array(
+			->label($this->_language->get('email'),
+			[
 				'for' => 'admin-email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
 				'value' => $optionArray['adminEmail']
-			))
+			])
 			->append('</li></ul></fieldset>')
-			->hidden(array(
+			->hidden(
+			[
 				'name' => 'db-salt',
 				'value' => sha1(uniqid())
-			))
-			->hidden(array(
+			])
+			->hidden(
+			[
 				'name' => 'refresh-connection',
 				'value' => 1
-			))
+			])
 			->token()
 			->submit($this->_language->get('install'));
 

@@ -21,12 +21,13 @@ class Engine extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'gecko',
 			'presto',
 			'trident',
 			'webkit',
 			'edge'
-		));
+		]);
 	}
 }

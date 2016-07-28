@@ -58,32 +58,35 @@ class BreadcrumbTest extends TestCaseAbstract
 		/* first parameter */
 
 		$ultra = Db::forTablePrefix('categories')->create();
-		$ultra->set(array(
+		$ultra->set(
+		[
 			'title' => 'Ultra',
 			'alias' => 'ultra',
 			'parent' => 0
-		));
-		$ultra->save();
+		])
+		->save();
 
 		/* second parameter */
 
 		$lightweight = Db::forTablePrefix('categories')->create();
-		$lightweight->set(array(
+		$lightweight->set(
+		[
 			'title' => 'Lightweight',
 			'alias' => 'lightweight',
 			'parent' => $ultra->id()
-		));
-		$lightweight->save();
+		])
+		->save();
 
 		/* third parameter */
 
 		$cms = Db::forTablePrefix('articles')->create();
-		$cms->set(array(
+		$cms->set(
+		[
 			'title' => 'CMS',
 			'alias' => 'cms',
 			'category' => $lightweight->id()
-		));
-		$cms->save();
+		])
+		->save();
 	}
 
 	/**
@@ -136,7 +139,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($registryArray = array(), $expectArray = array())
+	public function testGetArray($registryArray = [], $expectArray = [])
 	{
 		/* setup */
 
@@ -164,7 +167,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $expect = null)
+	public function testRender($registryArray = [], $expect = null)
 	{
 		/* setup */
 

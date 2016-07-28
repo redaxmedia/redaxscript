@@ -38,7 +38,7 @@ class Comment extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
@@ -46,7 +46,7 @@ class Comment extends ControllerAbstract
 			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
-		);
+		];
 		$route = build_route('articles', $postArray['article']);
 
 		/* handle error */
@@ -54,15 +54,17 @@ class Comment extends ControllerAbstract
 		$messageArray = $this->_validate($postArray);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'route' => $route,
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
-		$createArray = array(
+		$createArray =
+		[
 			'author' => $postArray['author'],
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
@@ -70,30 +72,33 @@ class Comment extends ControllerAbstract
 			'language' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->language,
 			'article' => $postArray['article'],
 			'status' => Db::getSetting('verification') ? 0 : 1
-		);
-		$mailArray = array(
+		];
+		$mailArray =
+		[
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
 			'route' => $route,
 			'author' => $postArray['author'],
 			'text' => $postArray['text'],
 			'article' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->title
-		);
+		];
 
 		/* create and mail */
 
 		if ($this->_create($createArray) && $this->_mail($mailArray))
 		{
-			return $this->_success(array(
+			return $this->_success(
+			[
 				'route' => $route,
 				'timeout' => Db::getSetting('notification') ? 2 : 0,
 				'message' => Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
-			));
+			]);
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'route' => $route,
 			'message' => $this->_language->get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -106,7 +111,7 @@ class Comment extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = array())
+	protected function _success($successArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -125,7 +130,7 @@ class Comment extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -143,7 +148,7 @@ class Comment extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array())
+	protected function _validate($postArray = [])
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
@@ -151,7 +156,7 @@ class Comment extends ControllerAbstract
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['author'])
 		{
 			$messageArray[] = $this->_language->get('author_empty');
@@ -193,18 +198,19 @@ class Comment extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _create($createArray = array())
+	protected function _create($createArray = [])
 	{
 		return Db::forTablePrefix('comments')
 			->create()
-			->set(array(
+			->set(
+			[
 				'author' => $createArray['author'],
 				'email' => $createArray['email'],
 				'url' => $createArray['url'],
 				'text' => $createArray['text'],
 				'language' => $createArray['language'],
 				'article' => $createArray['article']
-			))
+			])
 			->save();
 	}
 
@@ -218,7 +224,7 @@ class Comment extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _mail($mailArray = array())
+	protected function _mail($mailArray = [])
 	{
 		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
 
@@ -228,33 +234,39 @@ class Comment extends ControllerAbstract
 		$linkElement->init('a');
 		$linkEmail = $linkElement->copy();
 		$linkEmail
-			->attr(array(
+			->attr(
+			[
 				'href' => 'mailto:' . $mailArray['email']
-			))
+			])
 			->text($mailArray['email']);
 		$linkUrl = $linkElement->copy();
 		$linkUrl
-			->attr(array(
+			->attr(
+			[
 				'href' => $mailArray['url']
-			))
+			])
 			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
 		$linkArticle = $linkElement->copy();
 		$linkArticle
-			->attr(array(
+			->attr(
+			[
 				'href' => $urlArticle
-			))
+			])
 			->text($urlArticle);
 
 		/* prepare mail */
 
-		$toArray = array(
+		$toArray =
+		[
 			$this->_language->get('author') => Db::getSetting('email')
-		);
-		$fromArray = array(
+		];
+		$fromArray =
+		[
 			$mailArray['author'] => $mailArray['email']
-		);
+		];
 		$subject = $this->_language->get('comment_new');
-		$bodyArray = array(
+		$bodyArray =
+		[
 			'<strong>' . $this->_language->get('author') . $this->_language->get('colon') . '</strong> ' . $mailArray['author'],
 			'<br />',
 			'<strong>' . $this->_language->get('email') . $this->_language->get('colon') . '</strong> ' . $linkEmail,
@@ -264,7 +276,7 @@ class Comment extends ControllerAbstract
 			'<strong>' . $this->_language->get('article') . $this->_language->get('colon') . '</strong> ' . $linkArticle,
 			'<br />',
 			'<strong>' . $this->_language->get('comment') . $this->_language->get('colon') . '</strong> ' . $mailArray['text']
-		);
+		];
 
 		/* send mail */
 

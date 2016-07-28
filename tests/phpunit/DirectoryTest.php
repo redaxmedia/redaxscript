@@ -92,7 +92,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($path = null, $excludeArray = array(), $expectArray = array())
+	public function testGetArray($path = null, $excludeArray = [], $expectArray = [])
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($path = null, $create = null, $expectArray = array())
+	public function testCreate($path = null, $create = null, $expectArray = [])
 	{
 		/* setup */
 
@@ -149,7 +149,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @dataProvider providerPut
 	 */
 
-	public function testPut($path = null, $putArray = array(), $expect = null)
+	public function testPut($path = null, $putArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -178,7 +178,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($path = null, $remove = null, $expectArray = array())
+	public function testRemove($path = null, $remove = null, $expectArray = [])
 	{
 		/* setup */
 

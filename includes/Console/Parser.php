@@ -29,7 +29,7 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_argumentArray = array();
+	protected $_argumentArray = [];
 
 	/**
 	 * array of parsed options
@@ -37,7 +37,7 @@ class Parser
 	 * @var array
 	 */
 
-	protected $_optionArray = array();
+	protected $_optionArray = [];
 
 	/**
 	 * constructor of the class
@@ -156,7 +156,7 @@ class Parser
 	 * @param array $argumentArray raw argument to be parsed
 	 */
 
-	protected function _parseArgument($argumentArray = array())
+	protected function _parseArgument($argumentArray = [])
 	{
 		$skip = false;
 		$argumentKey = 0;
@@ -194,14 +194,14 @@ class Parser
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)
 		{
-			return array(
+			return [
 				'key' => substr($option, $offset, $equalPosition - $offset),
 				'value' => substr($option, $equalPosition + 1)
-			);
+			];
 		}
-		return array(
+		return [
 			'key' => substr($option, $offset),
 			'value' => !$next || substr($next, 0, 1) === '-' ? true : $next
-		);
+		];
 	}
 }

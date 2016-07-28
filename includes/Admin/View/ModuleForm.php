@@ -39,33 +39,40 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($module->name);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('modulesEdit') && $this->_registry->get('modulesUninstall') ? $this->_registry->get('parameterRoute') . 'admin/view/modules' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'uninstall' => array(
+				],
+				'uninstall' =>
+				[
 					'href' => $module->alias ? $this->_registry->get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* docs directory */
 
@@ -120,26 +127,30 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
 				'value' => $module->name
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('description'), array(
+			->label($this->_language->get('description'),
+			[
 				'for' => 'description'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $module->description
-			))
+			])
 			->append('</li></ul></fieldset>');
 
 			/* second tab */
@@ -161,29 +172,33 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 
 		$formElement
 			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('status'), array(
+			->label($this->_language->get('status'),
+			[
 				'for' => 'status'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'status',
 				'name' => 'status',
 				'value' => intval($module->status)
-			))
+			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
 		{
 			$formElement
 				->append('<li>')
-				->label($this->_language->get('access'), array(
+				->label($this->_language->get('access'),
+				[
 					'for' => 'access'
-				))
-				->select(Helper\Option::getAccessArray('groups'), array(
+				])
+				->select(Helper\Option::getAccessArray('groups'),
+				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
 					'size' => count(Helper\Option::getAccessArray('groups')),
 					'value' => $module->access
-				))
+				])
 				->append('</li>');
 		}
 		$formElement

@@ -22,13 +22,13 @@ class Ckeditor extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Ckeditor',
 		'alias' => 'Ckeditor',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered WYSIWYG editor',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart

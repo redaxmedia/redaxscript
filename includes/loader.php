@@ -104,7 +104,7 @@ function loader($type, $mode)
 
 	/* merge loader include as needed */
 
-	$loader_include = array();
+	$loader_include = [];
 	if ($loader_template_init)
 	{
 		$loader_include = array_merge($loader_include, $loader_template_init);
@@ -243,7 +243,7 @@ function styles()
 
 	/* merge loader include as needed */
 
-	$loader_include = array();
+	$loader_include = [];
 	if ($loader_single)
 	{
 		$loader_include = array_merge($loader_include, $loader_single);
@@ -339,7 +339,7 @@ function scripts($mode)
 
 		/* merge loader include as needed */
 
-		$loader_include = array();
+		$loader_include = [];
 		if ($loader_single)
 		{
 			$loader_include = array_merge($loader_include, $loader_single);
@@ -397,7 +397,7 @@ function scripts_transport($minify)
 {
 	/* extend redaxscript */
 
-	$public_registry = array(
+	$public_registry = [
 		'token',
 		'loggedIn',
 		'firstParameter',
@@ -424,7 +424,7 @@ function scripts_transport($minify)
 		'myDesktop',
 		'myMobile',
 		'myTablet'
-	);
+	];
 
 	/* collect output */
 

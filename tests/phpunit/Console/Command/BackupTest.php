@@ -103,13 +103,14 @@ class BackupTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'backup',
 			'database',
 			'--directory',
 			'.backup'
-		));
+		]);
 		$backupCommand = new Command\Backup($this->_config, $this->_request);
 
 		/* actual */
@@ -131,12 +132,13 @@ class BackupTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setServer('argv', array(
+		$this->_request->setServer('argv',
+		[
 			'console.php',
 			'backup',
 			'database',
 			'--no-interaction'
-		));
+		]);
 		$backupCommand = new Command\Backup($this->_config, $this->_request);
 
 		/* actual */

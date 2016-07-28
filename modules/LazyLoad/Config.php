@@ -21,16 +21,19 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'image' => 'rs-js-lazy-load rs-image-default',
 			'placeholder' => 'rs-placeholder-lazy-load'
-		),
+		],
 		'placeholder' => 'modules/LazyLoad/images/placeholder.png',
-		'device' => array(
+		'device' =>
+		[
 			'desktop',
 			'tablet',
 			'mobile'
-		)
-	);
+		]
+	];
 }

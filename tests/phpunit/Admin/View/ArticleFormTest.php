@@ -71,7 +71,7 @@ class ArticleFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = array(), $articleId = null, $expectArray = array())
+	public function testRender($registryArray = [], $articleId = null, $expectArray = [])
 	{
 		/* setup */
 

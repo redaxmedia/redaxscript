@@ -69,36 +69,39 @@ class SearchListTest extends TestCaseAbstract
 	{
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'test',
 				'alias' => 'test-one',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2017-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'test',
 				'alias' => 'test-two',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
-			->set(array(
+			->set(
+			[
 				'id' => 1,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',
 				'article' => 1,
 				'date' => '2016-01-01 00:00:00'
-			))
+			])
 			->save();
 	}
 
@@ -138,15 +141,16 @@ class SearchListTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($searchArray = array(), $expectArray = array())
+	public function testRender($searchArray = [], $expectArray = [])
 	{
 		/* setup */
 
 		$searchList = new View\SearchList($this->_registry, $this->_language);
 		$controllerSearch = new Controller\Search($this->_registry, $this->_language, $this->_request);
-		$resultArray = $this->callMethod($controllerSearch, '_search', array(
+		$resultArray = $this->callMethod($controllerSearch, '_search',
+		[
 			$searchArray
-		));
+		]);
 
 		/* actual */
 

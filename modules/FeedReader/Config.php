@@ -21,10 +21,12 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray = array(
-		'className' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
 			'title' => 'rs-title-feed-reader rs-fn-clearfix',
 			'box' => 'rs-box-feed-reader'
-		)
-	);
+		]
+	];
 }

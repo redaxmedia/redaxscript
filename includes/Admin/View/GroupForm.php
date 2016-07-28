@@ -37,33 +37,40 @@ class GroupForm extends ViewAbstract implements ViewInterface
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2', array(
+		$titleElement->init('h2',
+		[
 			'class' => 'rs-admin-title-content',
-		));
+		]);
 		$titleElement->text($group->name ? $group->name : $this->_language->get('group_new'));
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
+		$listElement->init('ul',
+		[
 			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		));
+		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'action' => $this->_registry->get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
-			),
-			'link' => array(
-				'cancel' => array(
+			],
+			'link' =>
+			[
+				'cancel' =>
+				[
 					'href' => $this->_registry->get('groupsEdit') && $this->_registry->get('groupsDelete') ? $this->_registry->get('parameterRoute') . 'admin/view/groups' : $this->_registry->get('parameterRoute') . 'admin'
-				),
-				'delete' => array(
+				],
+				'delete' =>
+				[
 					'href' => $group->id ? $this->_registry->get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . $this->_registry->get('token') : null
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* collect item output */
 
@@ -104,36 +111,42 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			/* first tab */
 
 			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label($this->_language->get('name'), array(
+			->label($this->_language->get('name'),
+			[
 				'for' => 'name'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
 				'value' => $group->name
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('user'), array(
+			->label($this->_language->get('user'),
+			[
 				'for' => 'user'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'alias',
 				'name' => 'alias',
 				'required' => 'required',
 				'value' => $group->alias
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('description'), array(
+			->label($this->_language->get('description'),
+			[
 				'for' => 'description'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'value' => $group->description
-			))
+			])
 			->append('</li></ul></fieldset>');
 
 			/* second tab */
@@ -142,115 +155,135 @@ class GroupForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement
 			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('categories'), array(
+			->label($this->_language->get('categories'),
+			[
 				'for' => 'categories'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'categories',
 				'name' => 'categories[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->categories
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('articles'), array(
+			->label($this->_language->get('articles'),
+			[
 				'for' => 'articles'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'articles',
 				'name' => 'articles[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->articles
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('extras'), array(
+			->label($this->_language->get('extras'),
+			[
 				'for' => 'extras'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'extras',
 				'name' => 'extras[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->extras
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('comments'), array(
+			->label($this->_language->get('comments'),
+			[
 				'for' => 'comments'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'comments',
 				'name' => 'comments[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->comments
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('groups'), array(
+			->label($this->_language->get('groups'),
+			[
 				'for' => 'groups'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'groups',
 				'name' => 'groups[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->groups
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('users'), array(
+			->label($this->_language->get('users'),
+			[
 				'for' => 'users'
-			))
-			->select(Helper\Option::getPermissionArray(), array(
+			])
+			->select(Helper\Option::getPermissionArray(),
+			[
 				'id' => 'users',
 				'name' => 'users[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray()),
 				'value' => $group->users
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('modules'), array(
+			->label($this->_language->get('modules'),
+			[
 				'for' => 'modules'
-			))
-			->select(Helper\Option::getPermissionArray('modules'), array(
+			])
+			->select(Helper\Option::getPermissionArray('modules'),
+			[
 				'id' => 'modules',
 				'name' => 'modules[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('modules')),
 				'value' => $group->modules
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('settings'), array(
+			->label($this->_language->get('settings'),
+			[
 				'for' => 'settings'
-			))
-			->select(Helper\Option::getPermissionArray('settings'), array(
+			])
+			->select(Helper\Option::getPermissionArray('settings'),
+			[
 				'id' => 'settings',
 				'name' => 'settings[]',
 				'multiple' => 'multiple',
 				'size' => count(Helper\Option::getPermissionArray('settings')),
 				'value' => intval($group->settings)
-			))
+			])
 			->append('</li></ul></fieldset>')
 
 			/* last tab */
 
 			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
-			->label($this->_language->get('filter'), array(
+			->label($this->_language->get('filter'),
+			[
 				'for' => 'filter'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'filter',
 				'name' => 'filter',
 				'value' => $group->id ? $group->filter : 1
-			))
+			])
 			->append('</li><li>')
-			->label($this->_language->get('status'), array(
+			->label($this->_language->get('status'),
+			[
 				'for' => 'status'
-			))
-			->select(Helper\Option::getToggleArray(), array(
+			])
+			->select(Helper\Option::getToggleArray(),
+			[
 				'id' => 'status',
 				'name' => 'status',
 				'value' => $group->id ? intval($group->status) : 1
-			))
+			])
 			->append('</li></ul></fieldset>');
 		}
 		$formElement

@@ -83,7 +83,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testLanguage($registryArray = array(), $expect = null)
+	public function testLanguage($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -110,7 +110,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerTemplate
 	 */
 
-	public function testTemplate($registryArray = array(), $expect = null)
+	public function testTemplate($registryArray = [], $expect = null)
 	{
 		/* setup */
 

@@ -22,13 +22,13 @@ class GetFile extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Get file',
 		'alias' => 'GetFile',
 		'author' => 'Redaxmedia',
 		'description' => 'File information helper',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * render

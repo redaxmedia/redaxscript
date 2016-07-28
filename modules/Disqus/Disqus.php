@@ -22,13 +22,13 @@ class Disqus extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray = [
 		'name' => 'Disqus',
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with disqus',
 		'version' => '3.0.0'
-	);
+	];
 
 	/**
 	 * loaderStart
@@ -68,13 +68,15 @@ class Disqus extends Config
 	public static function commentReplace()
 	{
 		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
+		$boxElement->init('div',
+		[
 			'id' => self::$_configArray['id']
-		));
+		]);
 		$scriptElement = new Html\Element();
-		$scriptElement->init('script', array(
+		$scriptElement->init('script',
+		[
 			'src' => self::$_configArray['url']
-		));
+		]);
 
 		/* collect output */
 

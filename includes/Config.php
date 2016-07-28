@@ -27,7 +27,7 @@ class Config extends Singleton
 	 * @var array
 	 */
 
-	protected static $_configArray = array();
+	protected static $_configArray = [];
 
 	/**
 	 * init the class
@@ -151,6 +151,6 @@ class Config extends Singleton
 
 	public static function reset()
 	{
-		self::$_configArray = array();
+		self::$_configArray = [];
 	}
 }

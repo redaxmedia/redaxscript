@@ -19,7 +19,7 @@ class Request extends Singleton
 	 * @var array
 	 */
 
-	protected static $_requestArray = array();
+	protected static $_requestArray = [];
 
 	/**
 	 * init the class
@@ -29,13 +29,14 @@ class Request extends Singleton
 
 	public static function init()
 	{
-		self::$_requestArray = array(
-			'server' => $_SERVER ? $_SERVER : array(),
-			'get' => $_GET ? $_GET : array(),
-			'post' => $_POST ? $_POST : array(),
-			'session' => $_SESSION ? $_SESSION : array(),
-			'cookie' => $_COOKIE ? $_COOKIE : array()
-		);
+		self::$_requestArray =
+		[
+			'server' => $_SERVER ? $_SERVER : [],
+			'get' => $_GET ? $_GET : [],
+			'post' => $_POST ? $_POST : [],
+			'session' => $_SESSION ? $_SESSION : [],
+			'cookie' => $_COOKIE ? $_COOKIE : []
+		];
 	}
 
 	/**
@@ -242,7 +243,7 @@ class Request extends Singleton
 
 	public static function refreshSession()
 	{
-		self::$_requestArray['session'] = $_SESSION ? $_SESSION : array();
+		self::$_requestArray['session'] = $_SESSION ? $_SESSION : [];
 	}
 
 	/**
@@ -253,6 +254,6 @@ class Request extends Singleton
 
 	public static function refreshCookie()
 	{
-		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : array();
+		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : [];
 	}
 }

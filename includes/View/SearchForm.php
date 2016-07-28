@@ -33,30 +33,36 @@ class SearchForm extends ViewAbstract
 		/* html elements */
 
 		$formElement = new Html\Form($this->_registry, $this->_language);
-		$formElement->init(array(
-			'form' => array(
+		$formElement->init(
+		[
+			'form' =>
+			[
 				'class' => 'rs-js-validate-search rs-form-search'
-			),
-			'button' => array(
-				'submit' => array(
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'class' => 'rs-button-search',
 					'name' => get_class()
-				)
-			)
-		));
+				]
+			]
+		]);
 
 		/* create the form */
 
 		$formElement
-			->search(array(
+			->search(
+			[
 				'name' => 'search',
 				'placeholder' => $this->_language->get('search'),
 				'tabindex' => '1'
-			))
-			->hidden(array(
+			])
+			->hidden(
+			[
 				'name' => 'table',
 				'value' => $table
-			))
+			])
 			->token()
 			->submit($this->_language->get('search'));
 

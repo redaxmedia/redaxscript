@@ -93,7 +93,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($articleId = null, $expectArray = array())
+	public function testRender($articleId = null, $expectArray = [])
 	{
 		/* setup */
 

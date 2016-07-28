@@ -35,41 +35,43 @@ class Recover extends ControllerAbstract
 
 		/* process post */
 
-		$postArray = array(
+		$postArray = [
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
-		);
+		];
 
 		/* handle error */
 
 		$messageArray = $this->_validate($postArray);
 		if ($messageArray)
 		{
-			return $this->_error(array(
+			return $this->_error(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
 
 		/* handle success */
 
-		$messageArray = array();
-		$users = Db::forTablePrefix('users')->where(array(
+		$messageArray = [];
+		$users = Db::forTablePrefix('users')->where(
+		[
 			'email' => $postArray['email'],
 			'status' => 1
-		))->findMany();
+		])->findMany();
 
 		/* process users */
 
 		foreach ($users as $user)
 		{
-			$mailArray = array(
+			$mailArray = [
 				'id' => $user->id,
 				'name' => $user->name,
 				'user' => $user->user,
 				'password' => $user->password,
 				'email' => $user->email
-			);
+			];
 			if ($this->_mail($mailArray))
 			{
 				$messageArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
@@ -77,13 +79,15 @@ class Recover extends ControllerAbstract
 		}
 		if ($messageArray)
 		{
-			return $this->_success(array(
+			return $this->_success(
+			[
 				'message' => $messageArray
-			));
+			]);
 		}
-		return $this->_error(array(
+		return $this->_error(
+		[
 			'message' => $this->_language->get('something_wrong')
-		));
+		]);
 	}
 
 	/**
@@ -96,7 +100,7 @@ class Recover extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = array())
+	protected function _success($successArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -115,7 +119,7 @@ class Recover extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = array())
+	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -133,14 +137,14 @@ class Recover extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = array())
+	protected function _validate($postArray = [])
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
 
 		/* validate post */
 
-		$messageArray = array();
+		$messageArray = [];
 		if (!$postArray['email'])
 		{
 			$messageArray[] = $this->_language->get('email_empty');
@@ -170,7 +174,7 @@ class Recover extends ControllerAbstract
 	 * @return boolean
 	 */
 
-	protected function _mail($mailArray = array())
+	protected function _mail($mailArray = [])
 	{
 		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login/reset/' . sha1($mailArray['password']) . '/' . $mailArray['id'];
 
@@ -178,25 +182,26 @@ class Recover extends ControllerAbstract
 
 		$linkElement = new Html\Element();
 		$linkElement
-			->init('a', array(
+			->init('a',
+			[
 				'href' => $urlReset
-			))
+			])
 			->text($urlReset);
 
 		/* prepare mail */
 
-		$toArray = array(
+		$toArray = [
 			$mailArray['name'] => $mailArray['email']
-		);
-		$fromArray = array(
+		];
+		$fromArray = [
 			Db::getSetting('author') => Db::getSetting('email')
-		);
+		];
 		$subject = $this->_language->get('recovery');
-		$bodyArray = array(
+		$bodyArray = [
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
 			'<br />',
 			'<strong>' . $this->_language->get('password_reset') . $this->_language->get('colon') . '</strong> ' . $linkElement
-		);
+		];
 
 		/* send mail */
 
