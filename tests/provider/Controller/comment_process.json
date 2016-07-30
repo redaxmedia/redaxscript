@@ -1,16 +1,16 @@
 [
 	[
 		{
-			"author": "",
-			"email": "",
-			"url": "",
-			"text": "",
-			"article": "",
+			"author": null,
+			"email": null,
+			"url": null,
+			"text": null,
+			"article": null,
 			"task": 1
 		},
 		[
-			"",
-			""
+			null,
+			null
 		],
 		{
 			"notification": 0,
@@ -23,13 +23,13 @@
 			"author": "test",
 			"email": "invalid",
 			"url": "invalid",
-			"text": "",
+			"text": null,
 			"article": 0,
 			"task": 1
 		},
 		[
-			"",
-			""
+			null,
+			null
 		],
 		{
 			"notification": 1,
@@ -39,9 +39,9 @@
 	],
 	[
 		{
-			"author": "",
+			"author": null,
 			"email": "test@test.com",
-			"url": "",
+			"url": null,
 			"text": "test",
 			"article": 1,
 			"task": 1
@@ -60,7 +60,7 @@
 		{
 			"author": "test",
 			"email": "test@test.com",
-			"url": "",
+			"url": null,
 			"text": "test",
 			"article": 1,
 			"task": 1

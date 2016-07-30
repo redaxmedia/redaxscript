@@ -21,11 +21,11 @@
 	],
 	[
 		"<script>alert('test')</script>",
-		""
+		null
 	],
 	[
 		"<iframe src=\"test\"></iframe>",
-		""
+		null
 	],
 	[
 		"<div><div><script src=\"test\"></script></div></div>",

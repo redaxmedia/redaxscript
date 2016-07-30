@@ -9,10 +9,10 @@
 	],
 	[
 		"<template>invalid<template>",
-		""
+		null
 	],
 	[
 		"<template>{\"invalid\":{\"test\":\"test\"}}<template>",
-		""
+		null
 	]
 ]

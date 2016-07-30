@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"myName": "",
+			"myName": null,
 			"host": "localhost"
 		},
 		"<form class=\"rs-console-js-form rs-console-form-default\" method=\"post\"><label class=\"rs-console-js-label rs-console-label-default\" for=\"prompt\">localhost:~$</label><input class=\"rs-console-js-field rs-console-field-text\" type=\"text\" autocapitalize=\"off\" autofocus=\"autofocus\" autocomplete=\"off\" id=\"prompt\" name=\"argv\" spellcheck=\"false\" /></form>"

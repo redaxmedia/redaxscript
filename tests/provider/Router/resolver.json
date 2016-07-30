@@ -1,15 +1,15 @@
 [
 	[
-		"",
+		null,
 		{
-			"lite": "",
-			"full": ""
+			"lite": null,
+			"full": null
 		}
 	],
 	[
 		"1337",
 		{
-			"lite": "",
+			"lite": null,
 			"full": "1337"
 		}
 	],

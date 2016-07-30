@@ -1,13 +1,13 @@
 [
 	[
 		{
-			"dbType": "",
-			"dbHost": "",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "",
-			"dbPrefix": "",
-			"dbSalt": ""
+			"dbType": null,
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
 		},
 		[
 			"Type is empty",
@@ -19,12 +19,12 @@
 	[
 		{
 			"dbType": "sqlite",
-			"dbHost": "",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "",
-			"dbPrefix": "",
-			"dbSalt": ""
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
 		},
 		[
 			"Host is empty"
@@ -33,12 +33,12 @@
 	[
 		{
 			"dbType": "mysql",
-			"dbHost": "",
-			"dbName": "",
-			"dbUser": "",
-			"dbPassword": "",
-			"dbPrefix": "",
-			"dbSalt": ""
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
 		},
 		[
 			"Host is empty",

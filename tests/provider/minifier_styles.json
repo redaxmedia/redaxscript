@@ -1,7 +1,7 @@
 [
 	[
 		"/* @section 1. test */",
-		""
+		null
 	],
 	[
 		" .foo, .bar { } ; ",

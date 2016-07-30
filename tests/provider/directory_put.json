@@ -3,9 +3,9 @@
 		"root",
 		[
 			"test.php",
-			""
+			null
 		],
-		""
+		null
 	],
 	[
 		"root",
@@ -21,6 +21,6 @@
 			"invalid/test.php",
 			"invalid"
 	 	],
-		""
+		null
 	]
 ]

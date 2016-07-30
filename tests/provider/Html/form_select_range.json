@@ -1,11 +1,11 @@
 [
 	[
-		"",
-		"",
+		null,
+		null,
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"></select></form>"
 	],
 	[
-		"",
+		null,
 		{
 			"class": "rs-test"
 		},
@@ -16,7 +16,7 @@
 			"min": 1,
 			"max": 3
 		},
-		"",
+		null,
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	],
 	[

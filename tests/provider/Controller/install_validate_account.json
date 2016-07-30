@@ -1,10 +1,10 @@
 [
 	[
 		{
-			"adminName": "",
-			"adminUser": "",
-			"adminPassword": "",
-			"adminEmail": ""
+			"adminName": null,
+			"adminUser": null,
+			"adminPassword": null,
+			"adminEmail": null
 		},
 		[
 			"Name is empty",
@@ -15,7 +15,7 @@
 	],
 	[
 		{
-			"adminName": "",
+			"adminName": null,
 			"adminUser": "_",
 			"adminPassword": "_",
 			"adminEmail": "test@test"

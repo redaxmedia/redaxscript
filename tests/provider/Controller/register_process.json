@@ -1,9 +1,9 @@
 [
 	[
 		{
-			"name": "",
-			"user": "",
-			"email": "",
+			"name": null,
+			"user": null,
+			"email": null,
 			"task": 1
 		},
 		[
@@ -33,8 +33,8 @@
 			"task": 1
 		},
 		[
-			"",
-			""
+			null,
+			null
 		],
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">An error occurred</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>User already exists</li><li>Captcha is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-default rs-button-messenger\">Back</a>"
 	],

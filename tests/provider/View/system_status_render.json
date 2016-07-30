@@ -47,6 +47,6 @@
 			"pdoSqlite": true,
 			"sessionStatus": true
 		},
-		""
+		null
 	]
 ]

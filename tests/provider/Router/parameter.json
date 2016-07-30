@@ -1,66 +1,66 @@
 [
 	[
-		"",
+		null,
 		{
-			"first": "",
-			"second": "",
-			"third": "",
-			"fourth": "",
-			"last": "",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"first": null,
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": null,
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
 		"1337",
 		{
-			"first": "",
-			"second": "",
-			"third": "",
-			"fourth": "",
-			"last": "",
+			"first": null,
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": null,
 			"sub": "1337",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
 		"hello",
 		{
 			"first": "hello",
-			"second": "",
-			"third": "",
-			"fourth": "",
+			"second": null,
+			"third": null,
+			"fourth": null,
 			"last": "hello",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
 		"hello/1337",
 		{
 			"first": "hello",
-			"second": "",
-			"third": "",
-			"fourth": "",
+			"second": null,
+			"third": null,
+			"fourth": null,
 			"last": "hello",
 			"sub": "1337",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -68,15 +68,15 @@
 		{
 			"first": "hello",
 			"second": "world",
-			"third": "",
-			"fourth": "",
+			"third": null,
+			"fourth": null,
 			"last": "world",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -84,15 +84,15 @@
 		{
 			"first": "hello",
 			"second": "world",
-			"third": "",
-			"fourth": "",
+			"third": null,
+			"fourth": null,
 			"last": "world",
 			"sub": "1337",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -101,14 +101,14 @@
 			"first": "hello",
 			"second": "world",
 			"third": "to",
-			"fourth": "",
+			"fourth": null,
 			"last": "to",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -117,14 +117,14 @@
 			"first": "hello",
 			"second": "world",
 			"third": "to",
-			"fourth": "",
+			"fourth": null,
 			"last": "to",
 			"sub": "1337",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -135,12 +135,12 @@
 			"third": "to",
 			"fourth": "all",
 			"last": "all",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -152,27 +152,27 @@
 			"fourth": "all",
 			"last": "all",
 			"sub": "1337",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
 		"admin",
 		{
 			"first": "admin",
-			"second": "",
-			"third": "",
-			"fourth": "",
+			"second": null,
+			"third": null,
+			"fourth": null,
 			"last": "admin",
-			"sub": "",
-			"admin": "",
-			"table": "",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -181,14 +181,14 @@
 			"first": "admin",
 			"second": "view",
 			"third": "articles",
-			"fourth": "",
+			"fourth": null,
 			"last": "articles",
-			"sub": "",
+			"sub": null,
 			"admin": "view",
 			"table": "articles",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	],
 	[
@@ -197,14 +197,14 @@
 			"first": "admin",
 			"second": "edit",
 			"third": "articles",
-			"fourth": "",
+			"fourth": null,
 			"last": "articles",
 			"sub": 1,
 			"admin": "edit",
 			"table": "articles",
-			"alias": "",
+			"alias": null,
 			"id": 1,
-			"token": ""
+			"token": null
 		}
 	],
 	[
@@ -213,12 +213,12 @@
 			"first": "admin",
 			"second": "delete",
 			"third": "articles",
-			"fourth": "",
+			"fourth": null,
 			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
 			"sub": 1,
 			"admin": "delete",
 			"table": "articles",
-			"alias": "",
+			"alias": null,
 			"id": 1,
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		}
@@ -229,14 +229,14 @@
 			"first": "admin",
 			"second": "process",
 			"third": "articles",
-			"fourth": "",
+			"fourth": null,
 			"last": "articles",
 			"sub": 1,
 			"admin": "process",
 			"table": "articles",
-			"alias": "",
+			"alias": null,
 			"id": 1,
-			"token": ""
+			"token": null
 		}
 	],
 	[
@@ -247,11 +247,11 @@
 			"third": "modules",
 			"fourth": "helloWorld",
 			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
-			"sub": "",
+			"sub": null,
 			"admin": "install",
 			"table": "modules",
 			"alias": "helloWorld",
-			"id": "",
+			"id": null,
 			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
 		}
 	],
@@ -261,14 +261,14 @@
 			"first": "admin",
 			"second": "update",
 			"third": "settings",
-			"fourth": "",
+			"fourth": null,
 			"last": "settings",
-			"sub": "",
+			"sub": null,
 			"admin": "update",
 			"table": "settings",
-			"alias": "",
-			"id": "",
-			"token": ""
+			"alias": null,
+			"id": null,
+			"token": null
 		}
 	]
 ]

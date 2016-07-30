@@ -3,17 +3,17 @@
 	{
 		"Detector":
 		{
-			"DetectorAbstract.php": "",
-			"Language.php": "",
-			"Template.php": ""
+			"DetectorAbstract.php": "DetectorAbstract",
+			"Language.php": "Language",
+			"Template.php": "Template"
 		},
-		"Autoloader.php": "",
-		"bootstrap.php": ""
+		"Autoloader.php": "Autoloader",
+		"bootstrap.php": "bootstrap"
 	},
 	"languages":
 	{
-		"en.json": "",
-		"de.json": ""
+		"en.json": "en",
+		"de.json": "de"
 	},
-	"index.php": ""
+	"index.php": "index"
 }

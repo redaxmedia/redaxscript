@@ -1,17 +1,17 @@
 [
 	[
 		{
-			"title": "",
+			"title": null,
 			"fullRoute": "home",
 			"firstParameter": "home",
-			"secondParameter": "",
-			"thirdParameter": "",
-			"adminParameter": "",
-			"tableParameter": "",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastParameter": "home",
 			"firstTable": "categories",
-			"secondTable": "",
-			"thirdTable": "",
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": "categories",
 			"lastId": 1
 		},
@@ -19,17 +19,17 @@
 	],
 	[
 		{
-			"title": "",
+			"title": null,
 			"fullRoute": "home/welcome",
 			"firstParameter": "home",
 			"secondParameter": "welcome",
-			"thirdParameter": "",
-			"adminParameter": "",
-			"tableParameter": "",
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastParameter": "welcome",
 			"firstTable": "categories",
 			"secondTable": "articles",
-			"thirdTable": "",
+			"thirdTable": null,
 			"lastTable": "articles",
 			"lastId": 1
 		},

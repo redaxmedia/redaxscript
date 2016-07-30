@@ -14,7 +14,7 @@
 	[
 		{
 			"lastTable": "categories",
-			"fullRoute": "",
+			"fullRoute": null,
 			"firstParameter": "hello"
 		},
 		"hello<readmore> world",

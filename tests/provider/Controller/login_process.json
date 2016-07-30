@@ -1,13 +1,13 @@
 [
 	[
 		{
-			"user": "",
-			"password": "",
+			"user": null,
+			"password": null,
 			"task": 1
 		},
 		[
-			"",
-			""
+			null,
+			null
 		],
 		{
 			"status": 1

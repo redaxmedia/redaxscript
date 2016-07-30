@@ -6,9 +6,9 @@
 			"type": "success"
 		},
 		{
-			"text": "",
-			"url": "",
-			"timeout": ""
+			"text": null,
+			"url": null,
+			"timeout": null
 		},
 		"<h2 class=\"rs-title-messenger rs-title-note rs-note-success\">title</h2><div class=\"rs-box-messenger rs-box-note rs-note-success\">test</div>"
 	],
@@ -19,20 +19,20 @@
 				"test1",
 				"test2"
 			],
-			"title": "",
+			"title": null,
 			"type": "warning"
 		},
 		{
-			"text": "",
-			"url": "",
-			"timeout": ""
+			"text": null,
+			"url": null,
+			"timeout": null
 		},
 		"<div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>test1</li><li>test2</li></ul></div>"
 	],
 	[
 		{
 			"message": "test",
-			"title": "",
+			"title": null,
 			"type": "info"
 		},
 		{
@@ -49,7 +49,7 @@
 				"test1",
 				"test2"
 			],
-			"title": "",
+			"title": null,
 			"type": "info"
 		},
 		{

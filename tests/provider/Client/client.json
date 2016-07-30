@@ -16,8 +16,8 @@
 			"browser": "chromium",
 			"desktop": "ubuntu",
 			"engine": "webkit",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 15
 		}
 	],
@@ -27,8 +27,8 @@
 			"browser": "chrome",
 			"desktop": "windows",
 			"engine": "webkit",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 41
 		}
 	],
@@ -38,8 +38,8 @@
 			"browser": "firefox",
 			"desktop": "ubuntu",
 			"engine": "gecko",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 33
 		}
 	],
@@ -49,8 +49,8 @@
 			"browser": "edge",
 			"desktop": "windows",
 			"engine": "edge",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 12
 		}
 	],
@@ -60,8 +60,8 @@
 			"browser": "msie",
 			"desktop": "windows",
 			"engine": "trident",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 11
 		}
 	],
@@ -71,8 +71,8 @@
 			"browser": "msie",
 			"desktop": "windows",
 			"engine": "trident",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 10
 		}
 	],
@@ -82,8 +82,8 @@
 			"browser": "msie",
 			"desktop": "windows",
 			"engine": "trident",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 9
 		}
 	],
@@ -93,8 +93,8 @@
 			"browser": "konqueror",
 			"desktop": "linux",
 			"engine": "gecko",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 4
 		}
 	],
@@ -104,8 +104,8 @@
 			"browser": "opera",
 			"desktop": "ubuntu",
 			"engine": "presto",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 12
 		}
 	],
@@ -115,8 +115,8 @@
 			"browser": "safari",
 			"desktop": "macintosh",
 			"engine": "webkit",
-			"mobile": "",
-			"tablet": "",
+			"mobile": null,
+			"tablet": null,
 			"version": 7
 		}
 	],
@@ -124,7 +124,7 @@
 		"Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25",
 		{
 			"browser": "safari",
-			"desktop": "",
+			"desktop": null,
 			"engine": "webkit",
 			"mobile": "mobile",
 			"tablet": "ipad",
@@ -135,10 +135,10 @@
 		"Mozilla/5.0 (iPhone; U; ru; CPU iPhone OS 4_2_1 like Mac OS X; ru) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148a Safari/6533.18.5",
 		{
 			"browser": "safari",
-			"desktop": "",
+			"desktop": null,
 			"engine": "webkit",
 			"mobile": "iphone",
-			"tablet": "",
+			"tablet": null,
 			"version": 5
 		}
 	]
