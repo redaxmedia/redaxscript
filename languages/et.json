@@ -105,7 +105,7 @@
 	"freeze": "Külmuta",
 	"restrict": "Piira",
 	"install": "Installi",
-	"deinstall": "Deinstalli",
+	"uninstall": "Deinstalli",
 	"restore": "Taasta",
 	"process": "Protsess",
 	"update": "Uuenda",

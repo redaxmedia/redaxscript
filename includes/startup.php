@@ -71,36 +71,21 @@ function startup()
 		ini_set('default_charset', Redaxscript\Db::getSetting('charset'));
 	}
 
-	/* define server */
+	/* define status */
 
-	$driverArray = PDO::getAvailableDrivers();
-	$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
+	$pdoDriverArray = PDO::getAvailableDrivers();
+	$fallbackModuleArray =
+	[
+		'mod_deflate',
+		'mod_headers',
+		'mod_rewrite'
+	];
+	$apacheModuleArray = function_exists('apache_get_modules') ? apache_get_modules() : $fallbackModuleArray;
 	Redaxscript\Registry::set('phpOs', strtolower(php_uname('s')));
 	Redaxscript\Registry::set('phpVersion', phpversion());
-	if (function_exists('session_status'))
-	{
-		Redaxscript\Registry::set('sessionStatus', session_status() === PHP_SESSION_ACTIVE);
-	}
-	else
-	{
-		Redaxscript\Registry::set('sessionStatus', true);
-	}
-	if ($moduleArray)
-	{
-		Redaxscript\Registry::set('modDeflate', in_array('mod_deflate', $moduleArray));
-		Redaxscript\Registry::set('modHeaders', in_array('mod_headers', $moduleArray));
-		Redaxscript\Registry::set('modRewrite', in_array('mod_rewrite', $moduleArray));
-	}
-	else
-	{
-		Redaxscript\Registry::set('modDeflate', true);
-		Redaxscript\Registry::set('modHeaders', true);
-		Redaxscript\Registry::set('modRewrite', true);
-	}
-	Redaxscript\Registry::set('pdoDriver', count($driverArray) > 0);
-	Redaxscript\Registry::set('pdoMysql', in_array('mysql', $driverArray));
-	Redaxscript\Registry::set('pdoPgsql', in_array('pgsql', $driverArray));
-	Redaxscript\Registry::set('pdoSqlite', in_array('sqlite', $driverArray));
+	Redaxscript\Registry::set('pdoDriverArray', $pdoDriverArray);
+	Redaxscript\Registry::set('apacheModuleArray', $apacheModuleArray);
+	Redaxscript\Registry::set('sessionStatus', session_status());
 
 	/* define parameter */
 
@@ -125,11 +110,11 @@ function startup()
 
 	/* define routes */
 
-	$router = new Redaxscript\Router\Resolver($request);
-	$router->init();
-	Redaxscript\Registry::set('liteRoute', $router->getLite());
-	Redaxscript\Registry::set('fullRoute', $router->getFull());
-	if (function_exists('apache_get_modules') && !in_array('mod_rewrite', apache_get_modules()) || !file_exists('.htaccess') || Redaxscript\Registry::get('file') == 'install.php')
+	$resolver = new Redaxscript\Router\Resolver($request);
+	$resolver->init();
+	Redaxscript\Registry::set('liteRoute', $resolver->getLite());
+	Redaxscript\Registry::set('fullRoute', $resolver->getFull());
+	if (!in_array('mod_rewrite', Redaxscript\Registry::get('apacheModuleArray')) || !file_exists('.htaccess') || Redaxscript\Registry::get('file') == 'install.php')
 	{
 		Redaxscript\Registry::set('parameterRoute', '?p=');
 		Redaxscript\Registry::set('languageRoute', '&amp;l=');

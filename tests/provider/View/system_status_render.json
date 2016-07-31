@@ -2,16 +2,20 @@
 	[
 		{
 			"dbStatus": 0,
-			"configPermission": true,
 			"phpOs": "linux",
 			"phpVersion": "5.5.0",
-			"modDeflate": true,
-			"modHeaders": true,
-			"modRewrite": true,
-			"pdoDriver": true,
-			"pdoMysql": true,
-			"pdoPgsql": true,
-			"pdoSqlite": true,
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
 			"sessionStatus": true
 		},
 		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Connection to database failed</li></ul></div>"
@@ -19,32 +23,41 @@
 	[
 		{
 			"dbStatus": 2,
-			"configPermission": true,
-			"phpVersion": "5.0.0",
-			"phpOs": "linux",
-			"modDeflate": true,
-			"modRewrite": true,
-			"pdoDriver": true,
-			"pdoMysql": true,
-			"pdoPgsql": true,
-			"pdoSqlite": true,
+			"phpOs": "winnt",
+			"phpVersion": "5.5.0",
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
 			"sessionStatus": true
 		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Unsupported PHP version found</li></ul></div>"
+		"<div class=\"rs-box-messenger rs-box-note rs-note-warning\"><ul class=\"rs-list-messenger\"><li>Operating system not supported</li></ul></div>"
 	],
 	[
 		{
 			"dbStatus": 2,
-			"configPermission": true,
 			"phpOs": "linux",
 			"phpVersion": "5.5.0",
-			"modDeflate": true,
-			"modHeaders": true,
-			"modRewrite": true,
-			"pdoDriver": true,
-			"pdoMysql": true,
-			"pdoPgsql": true,
-			"pdoSqlite": true,
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
 			"sessionStatus": true
 		},
 		null

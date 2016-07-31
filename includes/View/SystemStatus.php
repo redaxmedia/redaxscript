@@ -94,6 +94,12 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateError()
 	{
+		$pdoDriverArray =
+		[
+			'sqlite',
+			'mysql',
+			'pgsql'
+		];
 		$messageArray = [];
 		if (!$this->_registry->get('dbStatus'))
 		{
@@ -101,15 +107,15 @@ class SystemStatus extends ViewAbstract
 		}
 		if (version_compare($this->_registry->get('phpVersion'), '5.4', '<'))
 		{
-			$messageArray[] = $this->_language->get('php_version_no', '_installation');
+			$messageArray[] = $this->_language->get('php_version_unsupported');
 		}
-		if (!$this->_registry->get('pdoDriver'))
+		if (!array_intersect($this->_registry->get('pdoDriverArray'), $pdoDriverArray))
 		{
-			$messageArray[] = $this->_language->get('pdo_driver_no', '_installation');
+			$messageArray[] = $this->_language->get('pdo_driver_disabled');
 		}
 		if (!$this->_registry->get('sessionStatus'))
 		{
-			$messageArray[] = $this->_language->get('session_status_no', '_installation');
+			$messageArray[] = $this->_language->get('session_disabled');
 		}
 		return $messageArray;
 	}
@@ -124,34 +130,26 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateWarning()
 	{
+		$apacheModuleArray =
+		[
+			'mod_deflate',
+			'mod_headers',
+			'mod_rewrite'
+		];
 		$messageArray = [];
 		if ($this->_registry->get('phpOs') !== 'linux')
 		{
-			$messageArray[] = $this->_language->get('php_os_no', '_installation');
+			$messageArray[] = $this->_language->get('php_os_unsupported');
 		}
-		if (!$this->_registry->get('modDeflate'))
+
+		/* process server module */
+
+		foreach ($apacheModuleArray as $value)
 		{
-			$messageArray[] = $this->_language->get('mod_deflate_no', '_installation');
-		}
-		if (!$this->_registry->get('modHeaders'))
-		{
-			$messageArray[] = $this->_language->get('mod_headers_no', '_installation');
-		}
-		if (!$this->_registry->get('modRewrite'))
-		{
-			$messageArray[] = $this->_language->get('mod_rewrite_no', '_installation');
-		}
-		if (!$this->_registry->get('pdoMysql'))
-		{
-			$messageArray[] = $this->_language->get('pdo_mysql_no', '_installation');
-		}
-		if (!$this->_registry->get('pdoPgsql'))
-		{
-			$messageArray[] = $this->_language->get('pdo_pgsql_no', '_installation');
-		}
-		if (!$this->_registry->get('pdoSqlite'))
-		{
-			$messageArray[] = $this->_language->get('pdo_sqlite_no', '_installation');
+			if (!in_array($value, $this->_registry->get('apacheModuleArray')))
+			{
+				$messageArray[] = $this->_language->get('apache_module_disabled') . $this->_language->get('colon') . ' ' . $value;
+			}
 		}
 		return $messageArray;
 	}

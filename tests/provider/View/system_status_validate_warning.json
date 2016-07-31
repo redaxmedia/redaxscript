@@ -2,32 +2,24 @@
 	[
 		{
 			"phpOs": "winnt",
-			"modDeflate": false,
-			"modHeaders": false,
-			"modRewrite": false,
-			"pdoMysql": false,
-			"pdoPgsql": false,
-			"pdoSqlite": false
+			"apacheModuleArray": null
 		},
 		[
-			"Unsupported operation system found",
-			"Deflate module is disabled",
-			"Headers module is disabled",
-			"Rewrite module is disabled",
-			"No MySQL driver installed",
-			"No PostgreSQL driver installed",
-			"No SQLite driver installed"
+			"Operating system not supported",
+			"Apache module is disabled: mod_deflate",
+			"Apache module is disabled: mod_headers",
+			"Apache module is disabled: mod_rewrite"
 		]
 	],
 	[
 		{
 			"phpOs": "linux",
-			"modDeflate": true,
-			"modHeaders": true,
-			"modRewrite": true,
-			"pdoMysql": true,
-			"pdoPgsql": true,
-			"pdoSqlite": true
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			]
 		},
 		[
 		]

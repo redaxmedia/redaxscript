@@ -208,6 +208,45 @@ module.exports = function (grunt)
 				standard: 'phpcs.xml'
 			}
 		},
+		diffJSON:
+		{
+			languages:
+			{
+				src:
+				[
+					'languages/de.json'
+				],
+				dest: 'build/language.json'
+			},
+			options:
+			{
+				type: 'key',
+				report:
+				{
+					obsolete: 'error',
+					missing: 'error'
+				}
+			}
+		},
+		formatJSON:
+		{
+			languages:
+			{
+				src:
+				[
+					'languages/en.json'
+				],
+				dest: 'build/language.json',
+				options:
+				{
+					remove:
+					[
+						'_package',
+						'_index'
+					]
+				}
+			}
+		},
 		concat:
 		{
 			base:
@@ -497,6 +536,10 @@ module.exports = function (grunt)
 			{
 				command: 'git remote rm upstream'
 			},
+			removeBuild:
+			{
+				command: 'rm -rf build'
+			},
 			options:
 			{
 				stdout: true,
@@ -582,7 +625,7 @@ module.exports = function (grunt)
 				dot: true
 			}
 		},
-		'ftp-deploy':
+		deployFTP:
 		{
 			develop:
 			{
@@ -715,16 +758,23 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-diff-json');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jscs');
+	grunt.loadNpmTasks('grunt-json-format');	
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-svgmin');
 
+	/* rename tasks */
+
+	grunt.task.renameTask('json-format', 'formatJSON');
+	grunt.task.renameTask('ftp-deploy', 'deployFTP');
+	
 	/* register tasks */
 
 	grunt.registerTask('default',
@@ -737,6 +787,7 @@ module.exports = function (grunt)
 		'htmlhint',
 		'phpcs',
 		'phpcpd',
+		'languagelint',
 		'toclint'
 	]);
 	grunt.registerTask('stylelint',
@@ -747,6 +798,12 @@ module.exports = function (grunt)
 	grunt.registerTask('colorguard',
 	[
 		'postcss:colorguardTemplate'
+	]);
+	grunt.registerTask('languagelint',
+	[
+		'formatJSON:languages',
+		'diffJSON:languages',
+		'shell:removeBuild'
 	]);
 	grunt.registerTask('toclint',
 	[
@@ -813,6 +870,6 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('deploy',
 	[
-		'ftp-deploy'
+		'deployFTP'
 	]);
 };

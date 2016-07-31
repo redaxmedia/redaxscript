@@ -147,7 +147,7 @@ class Install extends ControllerAbstract
 			return $this->_success(
 			[
 				'url' => $this->_registry->get('root'),
-				'message' => $this->_language->get('installation_completed', '_installation')
+				'message' => $this->_language->get('installation_completed')
 			]);
 		}
 		return $this->_error(
@@ -377,7 +377,7 @@ class Install extends ControllerAbstract
 		[
 			Db::getSetting('author') => Db::getSetting('email')
 		];
-		$subject = $this->_language->get('installation', '_installation');
+		$subject = $this->_language->get('installation');
 		$bodyArray =
 		[
 			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminUser'],
