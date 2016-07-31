@@ -975,9 +975,14 @@
  *
  * 1. panel
  * 2. item panel
- *    2.1 icons before
- *    2.2 icons after
+ *    2.1 link panel
+ *    2.2 icons before
+ *    2.3 icons after
  * 3. list panel
+ *    3.1 general
+ *    3.2 panel children
+ *    3.3 panel children link
+ *    3.4 list notification
  * 5. query
  *    5.1 medium min
  *

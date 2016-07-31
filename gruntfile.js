@@ -214,6 +214,9 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'languages/ar.json',
+					'languages/bg.json',
+					'languages/bs.json',
 					'languages/de.json'
 				],
 				dest: 'build/language.json'
