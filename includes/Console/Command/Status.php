@@ -136,6 +136,7 @@ class Status extends CommandAbstract
 
 	protected function _getStatusArray()
 	{
+		/* TODO: Refactor to the way system status is done, unit testing against registry */
 		$driverArray = PDO::getAvailableDrivers();
 		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
 		$optionalArray =

@@ -217,6 +217,8 @@ module.exports = function (grunt)
 					'languages/ar.json',
 					'languages/bg.json',
 					'languages/bs.json',
+					'languages/ca.json',
+					'languages/cs.json',
 					'languages/de.json'
 				],
 				dest: 'build/language.json'
