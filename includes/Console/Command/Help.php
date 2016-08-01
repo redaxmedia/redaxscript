@@ -80,7 +80,7 @@ class Help extends CommandAbstract
 			{
 				if (class_exists($commandClass))
 				{
-					$command = new $commandClass($this->_config, $this->_request);
+					$command = new $commandClass($this->_registry, $this->_request, $this->_config);
 					$output .= $command->getHelp();
 					if ($commandKey !== $lastKey)
 					{
@@ -97,7 +97,7 @@ class Help extends CommandAbstract
 			$commandClass = $this->_namespaceArray[$argumentKey];
 			if (class_exists($commandClass))
 			{
-				$command = new $commandClass($this->_config, $this->_request);
+				$command = new $commandClass($this->_registry, $this->_request, $this->_config);
 				$output .= $command->getHelp();
 			}
 		}

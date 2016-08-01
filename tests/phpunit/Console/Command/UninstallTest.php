@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Console\Command;
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Installer;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -20,12 +21,12 @@ use Redaxscript\Tests\TestCaseAbstract;
 class UninstallTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the config class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
 
-	protected $_config;
+	protected $_registry;
 
 	/**
 	 * instance of the request class
@@ -34,6 +35,14 @@ class UninstallTest extends TestCaseAbstract
 	 */
 
 	protected $_request;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
 
 	/**
 	 * array to restore config
@@ -51,8 +60,9 @@ class UninstallTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
+		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'console_');
 	}
@@ -82,7 +92,7 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
 
 		/* expect and actual */
 
@@ -110,7 +120,7 @@ class UninstallTest extends TestCaseAbstract
 			'uninstall',
 			'database'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 
@@ -142,7 +152,7 @@ class UninstallTest extends TestCaseAbstract
 			'--alias',
 			'TestDummy'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 
@@ -170,7 +180,7 @@ class UninstallTest extends TestCaseAbstract
 			'module',
 			'--no-interaction'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_config, $this->_request);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 

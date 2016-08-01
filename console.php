@@ -9,14 +9,15 @@ include_once('includes/bootstrap.php');
 
 /* get instance */
 
-$config = Config::getInstance();
+$registry = Registry::getInstance();
 $request = Request::getInstance();
+$config = Config::getInstance();
 
 /* command line */
 
 if (php_sapi_name() === 'cli')
 {
-	$console = new Console\Console($config, $request);
+	$console = new Console\Console($registry, $request, $config);
 	$output = $console->init('cli');
 	if (is_string($output))
 	{
@@ -28,7 +29,7 @@ if (php_sapi_name() === 'cli')
 
 else if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 {
-	$console = new Console\Console($config, $request);
+	$console = new Console\Console($registry, $request, $config);
 	$output = $console->init('xhr');
 	if (is_string($output))
 	{

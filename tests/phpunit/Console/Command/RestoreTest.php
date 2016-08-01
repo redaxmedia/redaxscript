@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Console\Command;
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Directory;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -20,12 +21,12 @@ use Redaxscript\Tests\TestCaseAbstract;
 class RestoreTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the config class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
 
-	protected $_config;
+	protected $_registry;
 
 	/**
 	 * instance of the request class
@@ -36,6 +37,14 @@ class RestoreTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -43,8 +52,9 @@ class RestoreTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
+		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_config = Config::getInstance();
 	}
 
 	/**
@@ -95,7 +105,7 @@ class RestoreTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$restoreCommand = new Command\Restore($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_registry, $this->_request, $this->_config);
 
 		/* expect and actual */
 
@@ -127,7 +137,7 @@ class RestoreTest extends TestCaseAbstract
 			'--file',
 			'test.sql'
 		]);
-		$restoreCommand = new Command\Restore($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 
@@ -155,7 +165,7 @@ class RestoreTest extends TestCaseAbstract
 			'database',
 			'--no-interaction'
 		]);
-		$restoreCommand = new Command\Restore($this->_config, $this->_request);
+		$restoreCommand = new Command\Restore($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 

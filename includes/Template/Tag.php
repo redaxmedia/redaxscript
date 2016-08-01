@@ -47,7 +47,7 @@ class Tag
 
 	public static function consoleLine()
 	{
-		$console = new Console\Console(Config::getInstance(), Request::getInstance());
+		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Config::getInstance());
 		$output = $console->init('template');
 		if (is_string($output))
 		{

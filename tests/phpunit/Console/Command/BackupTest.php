@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Console\Command;
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Directory;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -20,12 +21,12 @@ use Redaxscript\Tests\TestCaseAbstract;
 class BackupTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the config class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
 
-	protected $_config;
+	protected $_registry;
 
 	/**
 	 * instance of the request class
@@ -36,6 +37,14 @@ class BackupTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -43,8 +52,9 @@ class BackupTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
+		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_config = Config::getInstance();
 	}
 
 	/**
@@ -81,7 +91,7 @@ class BackupTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$backupCommand = new Command\Backup($this->_config, $this->_request);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
 
 		/* expect and actual */
 
@@ -111,7 +121,7 @@ class BackupTest extends TestCaseAbstract
 			'--directory',
 			'.backup'
 		]);
-		$backupCommand = new Command\Backup($this->_config, $this->_request);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 
@@ -139,7 +149,7 @@ class BackupTest extends TestCaseAbstract
 			'database',
 			'--no-interaction'
 		]);
-		$backupCommand = new Command\Backup($this->_config, $this->_request);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 

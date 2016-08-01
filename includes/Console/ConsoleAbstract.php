@@ -2,6 +2,7 @@
 namespace Redaxscript\Console;
 
 use Redaxscript\Config;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
@@ -17,12 +18,12 @@ use Redaxscript\Request;
 abstract class ConsoleAbstract
 {
 	/**
-	 * instance of the config class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
 
-	protected $_config;
+	protected $_registry;
 
 	/**
 	 * instance of the request class
@@ -31,6 +32,14 @@ abstract class ConsoleAbstract
 	 */
 
 	protected $_request;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
 
 	/**
 	 * array of namespaces
@@ -55,13 +64,15 @@ abstract class ConsoleAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param Config $config instance of the config class
+	 * @param Registry $registry instance of the registry class
 	 * @param Request $request instance of the request class
+	 * @param Config $config instance of the config class
 	 */
 
-	public function __construct(Config $config, Request $request)
+	public function __construct(Registry $registry, Request $request, Config $config)
 	{
-		$this->_config = $config;
+		$this->_registry = $registry;
 		$this->_request = $request;
+		$this->_config = $config;
 	}
 }

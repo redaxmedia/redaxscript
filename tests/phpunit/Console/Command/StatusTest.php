@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -19,12 +20,12 @@ use Redaxscript\Tests\TestCaseAbstract;
 class StatusTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the config class
+	 * instance of the registry class
 	 *
 	 * @var object
 	 */
 
-	protected $_config;
+	protected $_registry;
 
 	/**
 	 * instance of the request class
@@ -35,6 +36,14 @@ class StatusTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -42,8 +51,9 @@ class StatusTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
+		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_config = Config::getInstance();
 	}
 
 	/**
@@ -67,7 +77,7 @@ class StatusTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$statusCommand = new Command\Status($this->_config, $this->_request);
+		$statusCommand = new Command\Status($this->_registry, $this->_request, $this->_config);
 
 		/* expect and actual */
 
@@ -95,7 +105,7 @@ class StatusTest extends TestCaseAbstract
 			'status',
 			'database'
 		]);
-		$statusCommand = new Command\Status($this->_config, $this->_request);
+		$statusCommand = new Command\Status($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 
@@ -116,13 +126,19 @@ class StatusTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$this->_registry->set('apacheModuleArray',
+		[
+			'mod_deflate',
+			'mod_headers',
+			'mod_rewrite'
+		]);
 		$this->_request->setServer('argv',
 		[
 			'console.php',
 			'status',
 			'system'
 		]);
-		$statusCommand = new Command\Status($this->_config, $this->_request);
+		$statusCommand = new Command\Status($this->_registry, $this->_request, $this->_config);
 
 		/* actual */
 

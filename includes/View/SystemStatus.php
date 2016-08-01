@@ -94,7 +94,8 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateError()
 	{
-		$pdoDriverArray =
+		$pdoDriverArray = $this->_registry->get('pdoDriverArray');
+		$testDriverArray =
 		[
 			'sqlite',
 			'mysql',
@@ -109,7 +110,7 @@ class SystemStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('php_version_unsupported');
 		}
-		if (!array_intersect($this->_registry->get('pdoDriverArray'), $pdoDriverArray))
+		if (!array_intersect($pdoDriverArray, $testDriverArray))
 		{
 			$messageArray[] = $this->_language->get('pdo_driver_disabled');
 		}
@@ -130,7 +131,8 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateWarning()
 	{
-		$apacheModuleArray =
+		$apacheModuleArray = $this->_registry->get('apacheModuleArray');
+		$testModuleArray =
 		[
 			'mod_deflate',
 			'mod_headers',
@@ -142,11 +144,11 @@ class SystemStatus extends ViewAbstract
 			$messageArray[] = $this->_language->get('php_os_unsupported');
 		}
 
-		/* process server module */
+		/* process module */
 
-		foreach ($apacheModuleArray as $value)
+		foreach ($testModuleArray as $value)
 		{
-			if (!in_array($value, $this->_registry->get('apacheModuleArray')))
+			if (!in_array($value, $apacheModuleArray))
 			{
 				$messageArray[] = $this->_language->get('apache_module_disabled') . $this->_language->get('colon') . ' ' . $value;
 			}

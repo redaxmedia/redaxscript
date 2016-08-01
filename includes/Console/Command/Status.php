@@ -136,10 +136,15 @@ class Status extends CommandAbstract
 
 	protected function _getStatusArray()
 	{
-		/* TODO: Refactor to the way system status is done, unit testing against registry */
-		$driverArray = PDO::getAvailableDrivers();
-		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
-		$optionalArray =
+		$pdoDriverArray = $this->_registry->get('pdoDriverArray');
+		$apacheModuleArray = $this->_registry->get('apacheModuleArray');
+		$testDriverArray =
+		[
+			'sqlite',
+			'mysql',
+			'pgsql'
+		];
+		$testModuleArray =
 		[
 			'mod_deflate',
 			'mod_headers',
@@ -149,36 +154,36 @@ class Status extends CommandAbstract
 		[
 			'OS' =>
 			[
-				'value' => strtolower(php_uname('s')),
-				'status' => strtolower(php_uname('s')) === 'linux' ? 1 : 0
+				'value' => $this->_registry->get('phpOs'),
+				'status' => $this->_registry->get('phpOs') === 'linux' ? 1 : 0
 			],
 			'PHP' =>
 			[
-				'value' => phpversion(),
-				'status' => version_compare(phpversion(), '5.4', '>') ? 1 : 0
+				'value' => $this->_registry->get('phpVersion'),
+				'status' => version_compare($this->_registry->get('phpVersion'), '5.4', '>') ? 1 : 0
 			],
 			'PDO' =>
 			[
-				'value' => implode($driverArray, ', '),
-				'status' => count($driverArray) ? 1 : 0
+				'value' => implode($pdoDriverArray, ', '),
+				'status' => array_intersect($pdoDriverArray, $testDriverArray) ? 1 : 0
 			],
-			'shell' =>
+			'SESSION' =>
 			[
-				'value' => null,
-				'status' => function_exists('shell') ? 1 : 0
+				'value' => $this->_registry->get('sessionStatus'),
+				'status' => $this->_registry->get('sessionStatus') ? 1 : 0
 			]
 		];
 
 		/* process optional */
 
-		if ($moduleArray)
+		if ($apacheModuleArray)
 		{
-			foreach ($optionalArray as $value)
+			foreach ($testModuleArray as $value)
 			{
 				$statusArray[$value] =
 				[
 					'value' => null,
-					'status' => in_array($value, $moduleArray) ? 1 : 0
+					'status' => in_array($value, $apacheModuleArray) ? 1 : 0
 				];
 			}
 		}
