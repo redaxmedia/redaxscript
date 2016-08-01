@@ -112,7 +112,7 @@ class Reader
 
 	public function loadJSON($url = null, $assoc = true)
 	{
-		$contents = $this->_load($url);
+		$contents = $this->load($url);
 		$this->_assoc = $assoc;
 		$this->_dataArray = json_decode($contents, $this->_assoc);
 		return $this;
@@ -131,7 +131,7 @@ class Reader
 
 	public function loadXML($url = null, $assoc = true)
 	{
-		$contents = $this->_load($url);
+		$contents = $this->load($url);
 		$this->_assoc = $assoc;
 		$this->_dataObject = simplexml_load_string($contents);
 		return $this;
@@ -147,7 +147,7 @@ class Reader
 	 * @return Reader
 	 */
 
-	protected function _load($url = null)
+	public function load($url = null)
 	{
 		$output = null;
 
