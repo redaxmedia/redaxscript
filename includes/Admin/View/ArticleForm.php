@@ -246,15 +246,15 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				'value' => $article->id ? intval($article->headline) : 1
 			])
 			->append('</li><li>')
-			->label($this->_language->get('infoline'),
+			->label($this->_language->get('byline'),
 			[
-				'for' => 'infoline'
+				'for' => 'byline'
 			])
 			->select(Helper\Option::getToggleArray(),
 			[
-				'id' => 'infoline',
-				'name' => 'infoline',
-				'value' => $article->id ? intval($article->infoline) : 1
+				'id' => 'byline',
+				'name' => 'byline',
+				'value' => $article->id ? intval($article->byline) : 1
 			])
 			->append('</li><li>')
 			->label($this->_language->get('comments'),

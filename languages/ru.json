@@ -132,7 +132,7 @@
 	"status": "Статус",
 	"rank": "Последовательность",
 	"headline": "Заголовок",
-	"infoline": "Описание",
+	"byline": "Byline",
 	"input": "Ввод",
 	"inputs": "Вводы",
 	"input_incorrect": "Неправильный ввод",

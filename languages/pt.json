@@ -132,7 +132,7 @@
 	"status": "Status",
 	"rank": "Rank",
 	"headline": "Título",
-	"infoline": "Linha de informação",
+	"byline": "Byline",
 	"input": "Entrada",
 	"inputs": "Entradas",
 	"input_incorrect": "Entrada está incorreta",

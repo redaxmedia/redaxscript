@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */articles (
 	sibling integer DEFAULT 0,
 	category integer DEFAULT 0,
 	headline integer DEFAULT 1,
-	infoline integer DEFAULT 0,
+	byline integer DEFAULT 0,
 	comments integer DEFAULT 0,
 	status integer DEFAULT 1,
 	rank integer DEFAULT NULL,

@@ -132,7 +132,7 @@
 	"status": "ステータス",
 	"rank": "順序",
 	"headline": "ヘッドライン",
-	"infoline": "インフォライン",
+	"byline": "Byline",
 	"input": "入力",
 	"inputs": "入力",
 	"input_incorrect": "入力が正しくありません",

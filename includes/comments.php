@@ -100,7 +100,7 @@ function comments($article, $route)
 
 				/* collect box output */
 
-				$output .= infoline('comments', $id, $author, $date);
+				$output .= byline('comments', $id, $author, $date);
 				$output .= '<div class="rs-box-comment">' . $text . '</div>' . Redaxscript\Hook::trigger('commentFragmentEnd', $r);
 
 				/* admin dock */

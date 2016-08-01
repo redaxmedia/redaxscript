@@ -132,7 +132,7 @@
 	"status": "Estado",
 	"rank": "Rango",
 	"headline": "Encabezado",
-	"infoline": "Línea de información",
+	"byline": "Byline",
 	"input": "Entrada",
 	"inputs": "Entradas",
 	"input_incorrect": "Entrada incorrecta",

@@ -113,7 +113,7 @@ function admin_process()
 
 	if ($tableParameter == 'articles')
 	{
-		$r['infoline'] = $specialFilter->sanitize($_POST['infoline']);
+		$r['byline'] = $specialFilter->sanitize($_POST['byline']);
 		$comments = $r['comments'] = $specialFilter->sanitize($_POST['comments']);
 		if ($category && !$idParameter)
 		{

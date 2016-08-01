@@ -132,7 +132,7 @@
 	"status": "Durum",
 	"rank": "Derece",
 	"headline": "Balsik yazisi",
-	"infoline": "Bilgi yazisi",
+	"byline": "Byline",
 	"input": "Giris",
 	"inputs": "Giris",
 	"input_incorrect": "Giris hatali",

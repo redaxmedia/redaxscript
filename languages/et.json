@@ -132,7 +132,7 @@
 	"status": "Staatus",
 	"rank": "Aste",
 	"headline": "Pealkiri",
-	"infoline": "Info",
+	"byline": "Byline",
 	"input": "Sisestus",
 	"inputs": "Sisestused",
 	"input_incorrect": "Sisestus on ebakorrektne",

@@ -132,7 +132,7 @@
 	"status": "Stare",
 	"rank": "Rang",
 	"headline": "Titlu",
-	"infoline": "Linie informativă",
+	"byline": "Byline",
 	"input": "Câmp",
 	"inputs": "Câmpuri",
 	"input_incorrect": "Câmpul este incorect",

@@ -181,11 +181,11 @@ function contents()
 					$output .= admin_dock('articles', $id);
 				}
 
-				/* infoline */
+				/* byline */
 
-				if ($infoline == 1)
+				if ($byline == 1)
 				{
-					$output .= infoline('articles', $id, $author, $date);
+					$output .= byline('articles', $id, $author, $date);
 				}
 			}
 			else
@@ -389,7 +389,7 @@ function extras($filter)
 }
 
 /**
- * infoline
+ * byline
  *
  * @since 1.2.1
  * @deprecated 2.0.0
@@ -406,9 +406,9 @@ function extras($filter)
  * @return string
  */
 
-function infoline($table, $id, $author, $date)
+function byline($table, $id, $author, $date)
 {
-	$output = Redaxscript\Hook::trigger('infolineStart');
+	$output = Redaxscript\Hook::trigger('bylineStart');
 	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
 	$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 	if ($table == 'articles')
@@ -418,27 +418,27 @@ function infoline($table, $id, $author, $date)
 
 	/* collect output */
 
-	$output .= '<div class="rs-box-infoline rs-box-infoline-' . $table . '">';
+	$output .= '<div class="rs-box-byline">';
 
 	/* collect author output */
 
 	if ($table == 'articles')
 	{
-		$output .= '<span class="rs-infoline-posted-by">' . Redaxscript\Language::get('posted_by') . ' ' . $author . '</span>';
-		$output .= '<span class="rs-infoline-on"> ' . Redaxscript\Language::get('on') . ' </span>';
+		$output .= '<span class="rs-text-by">' . Redaxscript\Language::get('posted_by') . ' ' . $author . '</span>';
+		$output .= '<span class="rs-text-on"> ' . Redaxscript\Language::get('on') . ' </span>';
 	}
 
 	/* collect date and time output */
 
-	$output .= '<span class="rs-infoline-date">' . $date . '</span>';
-	$output .= '<span class="rs-infoline-at"> ' . Redaxscript\Language::get('at') . ' </span>';
-	$output .= '<span class="rs-infoline-time">' . $time . '</span>';
+	$output .= '<span class="rs-text-date">' . $date . '</span>';
+	$output .= '<span class="rs-text-at"> ' . Redaxscript\Language::get('at') . ' </span>';
+	$output .= '<span class="rs-text-time">' . $time . '</span>';
 
 	/* collect comment output */
 
 	if ($comments_total)
 	{
-		$output .= '<span class="rs-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-infoline-total">' . $comments_total . ' ';
+		$output .= '<span class="rs-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= Redaxscript\Language::get('comment');
@@ -450,7 +450,7 @@ function infoline($table, $id, $author, $date)
 		$output .= '</span>';
 	}
 	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger('infolineEnd');
+	$output .= Redaxscript\Hook::trigger('bylineEnd');
 	return $output;
 }
 

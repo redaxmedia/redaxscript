@@ -132,7 +132,7 @@
 	"status": "Status",
 	"rank": "Ranking",
 	"headline": "Baris Kepala",
-	"infoline": "Baris Informasi",
+	"byline": "Byline",
 	"input": "Input",
 	"inputs": "Inputs",
 	"input_incorrect": "Input tidak tepat",

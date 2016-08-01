@@ -132,7 +132,7 @@
 	"status": "Status",
 	"rank": "Positie",
 	"headline": "Koptekst",
-	"infoline": "Info regel",
+	"byline": "Byline",
 	"input": "Invoer",
 	"inputs": "Invoer",
 	"input_incorrect": "Invoer is onjuist",

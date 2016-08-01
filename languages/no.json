@@ -132,7 +132,7 @@
 	"status": "Status",
 	"rank": "Rank",
 	"headline": "Overskrift",
-	"infoline": "Infolinje",
+	"byline": "Byline",
 	"input": "Inndata",
 	"inputs": "Inndata",
 	"input_incorrect": "Inndata er feil",

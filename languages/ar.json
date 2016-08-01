@@ -132,7 +132,7 @@
 	"status": "الحالة",
 	"rank": "الترتيب",
 	"headline": "العنوان الرئيسي",
-	"infoline": "خط المعلومات",
+	"byline": "Byline",
 	"input": "الادخال",
 	"inputs": "المدخلات",
 	"input_incorrect": "الادخال غير صحيح",

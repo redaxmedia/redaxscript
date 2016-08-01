@@ -132,7 +132,7 @@
 	"status": "Status",
 	"rank": "Rang",
 	"headline": "Naslov",
-	"infoline": "Podnaslov",
+	"byline": "Byline",
 	"input": "Unos",
 	"inputs": "Unosi",
 	"input_incorrect": "Unos je pogrešan",

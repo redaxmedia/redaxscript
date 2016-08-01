@@ -132,7 +132,7 @@
 	"status": "Stav",
 	"rank": "Postavení",
 	"headline": "Záhlaví",
-	"infoline": "Informační řádek",
+	"byline": "Byline",
 	"input": "Vstup",
 	"inputs": "Vstupy",
 	"input_incorrect": "Vstup je neplatný",
