@@ -43,19 +43,16 @@
 				{
 					argv: field.val()
 				})
-				.done(function (response)
-				{
-					if (typeof response === 'string')
-					{
-						box.append(response);
-					}
-				})
-				.always(function ()
+				.always(function (response)
 				{
 					var labelText = label.text(),
 						fieldValue = field.val();
 
 					box.append(labelText + ' ' + fieldValue + options.eol);
+					if (typeof response === 'string')
+					{
+						box.append(response);
+					}
 					field.val(null);
 					$(win).trigger('resize');
 				});

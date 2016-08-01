@@ -98,8 +98,8 @@ button, input, select, textarea
 {
 	background: #300a24;
 	color: rgb(255, 255, 255);
-	font: 1rem monospace, arial, sans-serif;
-	margin: 0.5rem;
+	font: 1em 'ubuntu mono', monospace, arial, sans-serif;
+	margin: 0.25em;
 }
 
 .rs-console-box-default::-moz-selection, .rs-console-label-default::-moz-selection

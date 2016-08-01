@@ -17,8 +17,8 @@
 {
 	background: var(--rs-console-color-primary);
 	color: gray(255);
-	font: 1rem var(--rs-console-font-primary);
-	margin: 0.5rem;
+	font: 1em var(--rs-console-font-primary);
+	margin: 0.25em;
 }
 
 .rs-console-box-default::selection,

@@ -20,12 +20,12 @@
 .rs-dialog-overlay
 {
 	animation: rs-fade 0.4s;
-	border-radius: 0.25em;
 }
 
 .rs-dialog
 {
 	background: var(--rs-color-tertiary);
+	border-radius: 0.25em;
 	color: gray(255);
 	padding: 1em;
 }

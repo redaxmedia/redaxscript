@@ -895,12 +895,12 @@ a
 .rs-dialog, .rs-dialog-overlay
 {
 	animation: rs-fade 0.4s;
-	border-radius: 0.25em;
 }
 
 .rs-dialog
 {
 	background: #323e4c;
+	border-radius: 0.25em;
 	color: rgb(255, 255, 255);
 	padding: 1em;
 }
