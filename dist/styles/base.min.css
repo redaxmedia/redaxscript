@@ -876,11 +876,3 @@ button::-moz-focus-inner, input::-moz-focus-inner
 		font-size: 1em;
 	}
 }
-
-/* @section 2. rtl direction */
-
-.rs-rtl
-{
-	direction: rtl;
-	text-align: right;
-}

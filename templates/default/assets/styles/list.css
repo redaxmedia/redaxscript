@@ -70,11 +70,6 @@
 
 /* @section 3. list default */
 
-.rs-list-default li
-{
-	margin-left: 1em;
-}
-
 ol.rs-list-default li
 {
 	list-style: inherit;
@@ -83,12 +78,11 @@ ol.rs-list-default li
 
 ul.rs-list-default li:before
 {
-	border-color: transparent transparent transparent var(--rs-color-primary);
-	border-style: solid;
-	border-width: 0.375em;
+	border: transparent 0.375em solid;
+	border-left-color: var(--rs-color-primary);
 	content: '';
 	display: inline-block;
-	margin-left: -0.875em;
+	margin: 0 0.5em;
 	text-align: center;
 	width: 0.125em;
 }
