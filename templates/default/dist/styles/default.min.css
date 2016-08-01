@@ -276,9 +276,9 @@ a
 	color: rgb(255, 255, 255);
 }
 
-/* @section 4. description website */
+/* @section 4. text website */
 
-.rs-description-website
+.rs-text-website
 {
 	color: rgb(170, 170, 170);
 	display: none;
@@ -340,7 +340,7 @@ a
 
 @media (min-width: 50em)
 {
-	.rs-description-website
+	.rs-text-website
 	{
 		display: block;
 	}
@@ -386,17 +386,17 @@ a
 	min-height: 20em;
 }
 
-.rs-page
-{
-	padding: 1em;
-}
-
 /* @section 2. wrapper */
 
 .rs-wrapper
 {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.rs-wrapper-page
+{
+	padding: 1em;
 }
 
 .rs-wrapper-table
@@ -487,7 +487,7 @@ a
 		min-width: 50rem;
 	}
 
-	.rs-page
+	.rs-wrapper-page
 	{
 		padding: 2em;
 	}
@@ -603,7 +603,7 @@ a
 
 /* @section 2. box metadata */
 
-.rs-box-metadata
+.rs-box-website
 {
 	font-size: 0.75em;
 	max-width: 70%;
@@ -611,13 +611,13 @@ a
 	white-space: nowrap;
 }
 
-.rs-box-metadata a::-moz-selection, .rs-box-metadata span::-moz-selection
+.rs-box-website a::-moz-selection, .rs-box-website span::-moz-selection
 {
 	background: #323e4c;
 	color: rgb(255, 255, 255);
 }
 
-.rs-box-metadata a::selection, .rs-box-metadata span::selection
+.rs-box-website a::selection, .rs-box-website span::selection
 {
 	background: #323e4c;
 	color: rgb(255, 255, 255);
@@ -697,7 +697,7 @@ a
 
 @media (min-width: 50em)
 {
-	.rs-box-metadata
+	.rs-box-website
 	{
 		float: left;
 		font-size: 1em;

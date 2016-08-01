@@ -46,7 +46,7 @@
 
 /* @section 2. box metadata */
 
-.rs-box-metadata
+.rs-box-website
 {
 	font-size: 0.75em;
 	max-width: 70%;
@@ -54,8 +54,8 @@
 	white-space: nowrap;
 }
 
-.rs-box-metadata a::selection,
-.rs-box-metadata span::selection
+.rs-box-website a::selection,
+.rs-box-website span::selection
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);
@@ -136,7 +136,7 @@
 
 @media (--media-medium-min)
 {
-	.rs-box-metadata
+	.rs-box-website
 	{
 		float: left;
 		font-size: 1em;

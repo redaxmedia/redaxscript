@@ -33,17 +33,17 @@
 	min-height: 20em;
 }
 
-.rs-page
-{
-	padding: 1em;
-}
-
 /* @section 2. wrapper */
 
 .rs-wrapper
 {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.rs-wrapper-page
+{
+	padding: 1em;
 }
 
 .rs-wrapper-table
@@ -136,7 +136,7 @@
 		min-width: 50rem;
 	}
 
-	.rs-page
+	.rs-wrapper-page
 	{
 		padding: 2em;
 	}

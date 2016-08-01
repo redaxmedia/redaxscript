@@ -233,9 +233,9 @@ a
 	color: gray(255);
 }
 
-/* @section 4. description website */
+/* @section 4. text website */
 
-.rs-description-website
+.rs-text-website
 {
 	color: gray(170);
 	display: none;
@@ -299,7 +299,7 @@ a
 
 @media (--media-medium-min)
 {
-	.rs-description-website
+	.rs-text-website
 	{
 		display: block;
 	}
