@@ -465,14 +465,15 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'assets/images/icons/pinterest.svg',
-					'assets/images/icons/plusone.svg'
+					'assets/images/icon/pinterest.svg',
+					'assets/images/icon/plusone.svg'
 				],
 				dest: 'templates/default/assets/fonts',
 				options:
 				{
 					font: 'icon',
-					destCss: 'templates/default/assets/styles'
+					destCss: 'templates/default/assets/styles',
+					template: 'templates/default/assets/styles/_icon.css'
 				}
 			},
 			options:
@@ -483,12 +484,7 @@ module.exports = function (grunt)
 					'woff2'
 				],
 				autoHint: false,
-				htmlDemo: false,
-				templateOptions:
-				{
-					baseClass: 'rs-icon',
-					classPrefix: 'rs-'
-				}
+				htmlDemo: false
 			}
 		},
 		shell:
