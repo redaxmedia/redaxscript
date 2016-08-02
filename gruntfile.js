@@ -459,6 +459,38 @@ module.exports = function (grunt)
 				}
 			}
 		},
+		webfont:
+		{
+			templateDefault:
+			{
+				src:
+				[
+					'assets/images/icons/pinterest.svg',
+					'assets/images/icons/plusone.svg'
+				],
+				dest: 'templates/default/assets/fonts',
+				options:
+				{
+					font: 'icon',
+					destCss: 'templates/default/assets/styles'
+				}
+			},
+			options:
+			{
+				types:
+				[
+					'woff',
+					'woff2'
+				],
+				autoHint: false,
+				htmlDemo: false,
+				templateOptions:
+				{
+					baseClass: 'rs-icon',
+					classPrefix: 'rs-'
+				}
+			}
+		},
 		shell:
 		{
 			phpbench:
@@ -770,6 +802,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-svgmin');
+	grunt.loadNpmTasks('grunt-webfont');
 
 	/* rename tasks */
 
@@ -859,9 +892,18 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build',
 	[
+		'build-css',
+		'build-font'
+	]);
+	grunt.registerTask('build-css',
+	[
 		'concat',
 		'postcss:base',
 		'postcss:templates'
+	]);
+	grunt.registerTask('build-font',
+	[
+		'webfont'
 	]);
 	grunt.registerTask('dist',
 	[
