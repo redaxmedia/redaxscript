@@ -471,13 +471,13 @@ module.exports = function (grunt)
 				dest: 'templates/default/assets/fonts',
 				options:
 				{
-					font: 'icon',
 					destCss: 'templates/default/assets/styles',
 					template: 'templates/default/assets/styles/_icon.css'
 				}
 			},
 			options:
 			{
+				font: 'icon',
 				types:
 				[
 					'woff',
