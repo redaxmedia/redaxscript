@@ -422,7 +422,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/*/assets/styles/*.css'
+					'templates/*/assets/styles/*.css',
+					'!templates/*/assets/styles/_icon.css'
 				],
 				options:
 				{
