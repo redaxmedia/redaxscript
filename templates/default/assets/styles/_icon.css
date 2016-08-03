@@ -6,11 +6,15 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-/* @section 2. glyphs */
-
-:root
-{<%
-%><% for (var i in glyphs) { %>
-	--rs-gylph-<%=glyphs[i] %>: '\<%= codepoints[i] %>';<%
-%><% } %>
+/* @section 2. placeholder */
+<% for (var i in glyphs)
+{
+%>
+@define-placeholder rs-icon-<%=glyphs[i] %>
+{
+	content: '\<%= codepoints[i] %>';
+	font-family: var(--rs-font-icon);
 }
+<%
+}
+%>
