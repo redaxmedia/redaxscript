@@ -315,6 +315,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'templates/default/assets/styles/icon.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/layout.css',
@@ -325,8 +326,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/dock.css',
 					'templates/default/assets/styles/field.css',
 					'templates/default/assets/styles/form.css',
-					'templates/default/assets/styles/grid.css',
-					'templates/default/assets/styles/icon.css',
+					'templates/default/assets/styles/grid.css',					
 					'templates/default/assets/styles/list.css',
 					'templates/default/assets/styles/media.css',
 					'templates/default/assets/styles/navigation.css',
