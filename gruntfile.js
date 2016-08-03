@@ -889,18 +889,18 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build',
 	[
-		'build-css',
-		'build-font'
+		'build-font',
+		'build-css'
+	]);
+	grunt.registerTask('build-font',
+	[
+		'webfont'
 	]);
 	grunt.registerTask('build-css',
 	[
 		'concat',
 		'postcss:base',
 		'postcss:templates'
-	]);
-	grunt.registerTask('build-font',
-	[
-		'webfont'
 	]);
 	grunt.registerTask('dist',
 	[
