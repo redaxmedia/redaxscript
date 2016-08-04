@@ -15,48 +15,48 @@
 
 /* @section 1. success */
 
-.rs-note-success
+.rs-is-success
 {
 	color: var(--rs-color-success-dark);
 }
 
-.rs-note-success.rs-box-note,
-.rs-note-success.rs-field-note
+.rs-is-success.rs-box-note,
+.rs-is-success.rs-field-note
 {
 	background: var(--rs-color-success);
 	border-color: var(--rs-color-success-dark);
 }
 
-.rs-note-success.rs-field-note option
+.rs-is-success.rs-field-note option
 {
 	background: var(--rs-color-success);
 }
 
-.rs-note-success.rs-box-note:before
+.rs-is-success.rs-box-note:before
 {
 	content: '\2714';
 }
 
 /* @section 2. warning */
 
-.rs-note-warning
+.rs-is-warning
 {
 	color: var(--rs-color-warning-dark);
 }
 
-.rs-note-warning.rs-box-note,
-.rs-note-warning.rs-field-note
+.rs-is-warning.rs-box-note,
+.rs-is-warning.rs-field-note
 {
 	background: var(--rs-color-warning);
 	border-color: var(--rs-color-warning-dark);
 }
 
-.rs-note-warning.rs-field-note option
+.rs-is-warning.rs-field-note option
 {
 	background: var(--rs-color-warning);
 }
 
-.rs-note-warning.rs-box-note:before
+.rs-is-warning.rs-box-note:before
 {
 	content: '\21';
 	left: 0.875em;
@@ -64,48 +64,48 @@
 
 /* @section 3. error */
 
-.rs-note-error
+.rs-is-error
 {
 	color: var(--rs-color-error-dark);
 }
 
-.rs-note-error.rs-box-note,
-.rs-note-error.rs-field-note
+.rs-is-error.rs-box-note,
+.rs-is-error.rs-field-note
 {
 	background: var(--rs-color-error);
 	border-color: var(--rs-color-error-dark);
 }
 
-.rs-note-error.rs-field-note option
+.rs-is-error.rs-field-note option
 {
 	background: var(--rs-color-error);
 }
 
-.rs-note-error.rs-box-note:before
+.rs-is-error.rs-box-note:before
 {
 	content: '\d7';
 }
 
 /* @section 4. info */
 
-.rs-note-info
+.rs-is-info
 {
 	color: var(--rs-color-info-dark);
 }
 
-.rs-note-info.rs-box-note,
-.rs-note-info.rs-field-note
+.rs-is-info.rs-box-note,
+.rs-is-info.rs-field-note
 {
 	background: var(--rs-color-info);
 	border-color: var(--rs-color-info-dark);
 }
 
-.rs-note-info.rs-field-note option
+.rs-is-info.rs-field-note option
 {
 	background: var(--rs-color-info);
 }
 
-.rs-note-info.rs-box-note:before
+.rs-is-info.rs-box-note:before
 {
 	content: '\69';
 	left: 0.875em;

@@ -47,7 +47,7 @@
 		width: 100%;
 	}
 
-	.rs-admin-description-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
+	.rs-admin-text-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
 	{
 		display: none;
 	}
@@ -79,7 +79,7 @@
 
 @media (--media-medium-min)
 {
-	.rs-admin-sidebar .rs-admin-description-dock
+	.rs-admin-sidebar .rs-admin-text-dock
 	{
 		display: none;
 	}
@@ -87,7 +87,7 @@
 
 /* @section 5. rtl direction */
 
-.rs-admin-rtl .rs-admin-description-dock
+.rs-admin-rtl .rs-admin-text-dock
 {
 	float: left;
 }

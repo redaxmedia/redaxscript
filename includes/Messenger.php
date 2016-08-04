@@ -52,10 +52,10 @@ class Messenger
 			'redirect' => 'rs-meta-redirect',
 			'notes' =>
 			[
-				'success' => 'rs-note-success',
-				'warning' => 'rs-note-warning',
-				'error' => 'rs-note-error',
-				'info' => 'rs-note-info'
+				'success' => 'rs-is-success',
+				'warning' => 'rs-is-warning',
+				'error' => 'rs-is-error',
+				'info' => 'rs-is-info'
 			]
 		]
 	];

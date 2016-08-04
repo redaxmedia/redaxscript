@@ -438,7 +438,7 @@ function byline($table, $id, $author, $date)
 
 	if ($comments_total)
 	{
-		$output .= '<span class="rs-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
+		$output .= '<span class="rs-is-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= Redaxscript\Language::get('comment');

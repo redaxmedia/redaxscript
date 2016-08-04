@@ -23,8 +23,8 @@ rs.plugins.dock =
 		element:
 		{
 			dockLink: 'a.rs-admin-js-link-dock',
-			dockDescription: 'span.rs-admin-js-description-dock',
-			dockDescriptionHTML: '<span class="rs-admin-js-description-dock rs-admin-description-dock"></span>'
+			dockDescription: 'span.rs-admin-js-dock',
+			dockDescriptionHTML: '<span class="rs-admin-js-dock rs-admin-text-dock"></span>'
 		},
 		vibrate: 100
 	}

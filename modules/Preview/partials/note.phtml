@@ -35,10 +35,10 @@ $selectElement
 	->html($optionNative . $optionNative . $optionNative);
 $noteArray =
 [
-	$admin ? 'rs-admin-note-error' : 'rs-note-error',
-	$admin ? 'rs-admin-note-warning' : 'rs-note-warning',
-	$admin ? 'rs-admin-note-success' : 'rs-note-success',
-	$admin ? 'rs-admin-note-info' : 'rs-note-info'
+	$admin ? 'rs-admin-is-error' : 'rs-is-error',
+	$admin ? 'rs-admin-is-warning' : 'rs-is-warning',
+	$admin ? 'rs-admin-is-success' : 'rs-is-success',
+	$admin ? 'rs-admin-is-info' : 'rs-is-info'
 ];
 $registry = Registry::getInstance();
 $messenger = $admin ? new Admin\Messenger($registry) : new Messenger($registry);
@@ -47,16 +47,16 @@ $messenger->setRoute(Language::get('preview', '_preview'), 'preview#note');
 
 <!--messenger -->
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-success + .rs-admin-box-note.rs-admin-note-success' : '.rs-title-note.rs-note-success + .rs-box-note.rs-note-success'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-is-success + .rs-admin-box-note.rs-admin-is-success' : '.rs-title-note.rs-is-success + .rs-box-note.rs-is-success'); ?>
 <?php echo $messenger->success('Plain success message with ' . $linkElement . ' element', 'Success'); ?>
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-warning + .rs-admin-box-note.rs-admin-note-warning' : '.rs-title-note.rs-note-warning + .rs-box-note.rs-note-warning'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-is-warning + .rs-admin-box-note.rs-admin-is-warning' : '.rs-title-note.rs-is-warning + .rs-box-note.rs-is-warning'); ?>
 <?php echo $messenger->warning('Plain warning message with ' . $linkElement . ' element', 'Warning'); ?>
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-error + .rs-admin-box-note.rs-admin-note-error' : '.rs-title-note.rs-note-error + .rs-box-note.rs-note-error'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-is-error + .rs-admin-box-note.rs-admin-is-error' : '.rs-title-note.rs-is-error + .rs-box-note.rs-is-error'); ?>
 <?php echo $messenger->error('Plain error message with ' . $linkElement . ' element', 'Error'); ?>
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-note-info + .rs-admin-box-note.rs-admin-note-info' : '.rs-title-note.rs-note-info + .rs-box-note.rs-note-info'); ?>
+<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-note.rs-admin-is-info + .rs-admin-box-note.rs-admin-is-info' : '.rs-title-note.rs-is-info + .rs-box-note.rs-is-info'); ?>
 <?php echo $messenger->info('Plain info message with ' . $linkElement . ' element', 'Info'); ?>
 
 <!-- text field -->

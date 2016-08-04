@@ -19,147 +19,147 @@
 
 /* @section 1. grid */
 
-.rs-admin-grid,
-.rs-admin-grid-space
+.rs-admin-fn-grid,
+.rs-admin-fn-grid-space
 {
 	float: left;
 }
 
-.rs-admin-grid + .rs-admin-grid:last-child,
-.rs-admin-grid-space + .rs-admin-grid-space:last-child
+.rs-admin-fn-grid + .rs-admin-fn-grid:last-child,
+.rs-admin-fn-grid-space + .rs-admin-fn-grid-space:last-child
 {
 	float: right;
 }
 
 /* @section 1.1 whole */
 
-.rs-admin-s1o1
+.rs-is-size-1of1
 {
 	width: 100%;
 }
 
 /* @section 1.2 halve */
 
-.rs-admin-s1o2,
-.rs-admin-s2o4,
-.rs-admin-s3o6,
-.rs-admin-s4o8
+.rs-is-size-1of2,
+.rs-is-size-2of4,
+.rs-is-size-3of6,
+.rs-is-size-4of8
 {
 	width: 50%;
 }
 
 /* @section 1.3 third */
 
-.rs-admin-s1o3,
-.rs-admin-s2o6
+.rs-is-size-1of3,
+.rs-is-size-2of6
 {
 	width: 33.33%;
 }
 
-.rs-admin-s2o3,
-.rs-admin-s4o6
+.rs-is-size-2of3,
+.rs-is-size-4of6
 {
 	width: 66.66%;
 }
 
 /* @section 1.4 quarter */
 
-.rs-admin-s1o4,
-.rs-admin-s2o8
+.rs-is-size-1of4,
+.rs-is-size-2of8
 {
 	width: 25%;
 }
 
-.rs-admin-s3o4,
-.rs-admin-s6o8
+.rs-is-size-3of4,
+.rs-is-size-6of8
 {
 	width: 75%;
 }
 
 /* @section 1.5 fifth */
 
-.rs-admin-s1o5
+.rs-is-size-1of5
 {
 	width: 20%;
 }
 
-.rs-admin-s2o5
+.rs-is-size-2of5
 {
 	width: 40%;
 }
 
-.rs-admin-s3o5
+.rs-is-size-3of5
 {
 	width: 60%;
 }
 
-.rs-admin-s4o5
+.rs-is-size-4of5
 {
 	width: 80%;
 }
 
 /* @section 1.6 sixth */
 
-.rs-admin-s1o6
+.rs-is-size-1of6
 {
 	width: 16.66%;
 }
 
-.rs-admin-s5o6
+.rs-is-size-5of6
 {
 	width: 83.33%;
 }
 
 /* @section 1.7 seventh */
 
-.rs-admin-s1o7
+.rs-is-size-1of7
 {
 	width: 14.28%;
 }
 
-.rs-admin-s2o7
+.rs-is-size-2of7
 {
 	width: 28.58%;
 }
 
-.rs-admin-s3o7
+.rs-is-size-3of7
 {
 	width: 42.86%;
 }
 
-.rs-admin-s4o7
+.rs-is-size-4of7
 {
 	width: 57.14%;
 }
 
-.rs-admin-s5o7
+.rs-is-size-5of7
 {
 	width: 71.42%;
 }
 
-.rs-admin-s6o7
+.rs-is-size-6of7
 {
 	width: 85.72%;
 }
 
 /* @section 1.8 eighth */
 
-.rs-admin-s1o8
+.rs-is-size-1of8
 {
 	width: 12.5%;
 }
 
-.rs-admin-s3o8
+.rs-is-size-3of8
 {
 	width: 37.5%;
 }
 
-.rs-admin-s5o8
+.rs-is-size-5of8
 {
 	width: 62.5%;
 }
 
-.rs-admin-s7o8
+.rs-is-size-7of8
 {
 	width: 87.5%;
 }

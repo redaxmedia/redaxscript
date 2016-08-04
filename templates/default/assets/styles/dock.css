@@ -15,7 +15,7 @@
 {
 	.rs-sidebar
 	{
-		& .rs-admin-description-dock
+		& .rs-admin-text-dock
 		{
 			display: none;
 		}

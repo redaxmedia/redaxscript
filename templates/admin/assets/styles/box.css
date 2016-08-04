@@ -60,7 +60,7 @@
 
 /* @section 2.1 description dock admin */
 
-.rs-admin-description-dock
+.rs-admin-text-dock
 {
 	float: right;
 	font: bold 1rem/2.625rem var(--rs-admin-font-primary);

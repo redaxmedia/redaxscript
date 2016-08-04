@@ -13,7 +13,7 @@
 			"admin-email": null,
 			"admin-password": null
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">Database</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-is-error\">Database</h2><div class=\"rs-box-messenger rs-box-note rs-is-error\"><ul class=\"rs-list-messenger\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div>"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"admin-email": null,
 			"admin-password": null
 		},
-		"<h2 class=\"rs-title-messenger rs-title-note rs-note-error\">Account</h2><div class=\"rs-box-messenger rs-box-note rs-note-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div>"
+		"<h2 class=\"rs-title-messenger rs-title-note rs-is-error\">Account</h2><div class=\"rs-box-messenger rs-box-note rs-is-error\"><ul class=\"rs-list-messenger\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div>"
 	],
 	[
 		{
@@ -45,6 +45,6 @@
 			"admin-password": "test",
 			"admin-email": "test@test.com"
 		},
-		"<div class=\"rs-box-messenger rs-box-note rs-note-success\">Installation completed successfully</div>"
+		"<div class=\"rs-box-messenger rs-box-note rs-is-success\">Installation completed successfully</div>"
 	]
 ]

@@ -33,10 +33,10 @@ class Messenger extends BaseMessenger
 			'redirect' => 'rs-admin-meta-redirect',
 			'notes' =>
 			[
-				'success' => 'rs-admin-note-success',
-				'warning' => 'rs-admin-note-warning',
-				'error' => 'rs-admin-note-error',
-				'info' => 'rs-admin-note-info'
+				'success' => 'rs-admin-is-success',
+				'warning' => 'rs-admin-is-warning',
+				'error' => 'rs-admin-is-error',
+				'info' => 'rs-admin-is-info'
 			]
 		]
 	];

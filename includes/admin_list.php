@@ -71,14 +71,14 @@ function admin_contents_list()
 
 	/* collect thead */
 
-	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . Redaxscript\Language::get('title') . '</th><th class="';
+	$output .= '<thead><tr><th class="rs-is-size-3of6 rs-admin-column-first">' . Redaxscript\Language::get('title') . '</th><th class="';
 	if ($tableParameter != 'extras')
 	{
-		$output .= 'rs-admin-s1o6';
+		$output .= 'rs-is-size-1of6';
 	}
 	else
 	{
-		$output .= 'rs-admin-s3o6';
+		$output .= 'rs-is-size-3of6';
 	}
 	$output .= ' rs-admin-column-second">';
 	if ($tableParameter == 'comments')
@@ -324,19 +324,19 @@ function admin_contents_list()
 					$rank_desc = Redaxscript\Db::forTablePrefix($tableParameter)->max('rank');
 					if ($rank > 1)
 					{
-						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/up/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-move-up">' . Redaxscript\Language::get('up') . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/up/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-button-moveup">' . Redaxscript\Language::get('up') . '</a>';
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-up">' . Redaxscript\Language::get('up') . '</span>';
+						$output .= '<span class="rs-button-moveup">' . Redaxscript\Language::get('up') . '</span>';
 					}
 					if ($rank < $rank_desc)
 					{
-						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/down/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-move-down">' . Redaxscript\Language::get('down') . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/down/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-button-movedown">' . Redaxscript\Language::get('down') . '</a>';
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-move-down">' . Redaxscript\Language::get('down') . '</span>';
+						$output .= '<span class="rs-button-movedown">' . Redaxscript\Language::get('down') . '</span>';
 					}
 					$output .= '</td>';
 				}
@@ -423,7 +423,7 @@ function admin_groups_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-s1o6">' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-is-size-4of6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-is-size-1of6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-is-size-1of6">' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</td><td class="rs-admin-column-third">' . Redaxscript\Language::get('filter') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
@@ -520,7 +520,7 @@ function admin_users_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s3o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('user') . '</th><th class="rs-admin-s1o6 rs-admin-column-third">' . Redaxscript\Language::get('groups') . '</th><th class="rs-admin-s1o6">' . Redaxscript\Language::get('session') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-is-size-3of6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-is-size-1of6 rs-admin-column-second">' . Redaxscript\Language::get('user') . '</th><th class="rs-is-size-1of6 rs-admin-column-third">' . Redaxscript\Language::get('groups') . '</th><th class="rs-is-size-1of6">' . Redaxscript\Language::get('session') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('user') . '</td><td class="rs-admin-column-third">' . Redaxscript\Language::get('groups') . '</td><td class="rs-admin-column-fourth">' . Redaxscript\Language::get('session') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
@@ -665,7 +665,7 @@ function admin_modules_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-s4o6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-s1o6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-s1o6">' . Redaxscript\Language::get('version') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-is-size-4of6 rs-admin-column-first">' . Redaxscript\Language::get('name') . '</th><th class="rs-is-size-1of6 rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</th><th class="rs-is-size-1of6">' . Redaxscript\Language::get('version') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td class="rs-admin-column-first">' . Redaxscript\Language::get('name') . '</td><td class="rs-admin-column-second">' . Redaxscript\Language::get('alias') . '</td><td class="rs-admin-column-third">' . Redaxscript\Language::get('version') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
