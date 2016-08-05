@@ -466,8 +466,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'assets/images/icon/pinterest.svg',
-					'assets/images/icon/plusone.svg'
+					'node_modules/material-design-icons/hardware/svg/production/*.svg'
 				],
 				dest: 'templates/default/assets/fonts',
 				options:
@@ -484,6 +483,7 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
+				//codepointsFile: 'node_modules/material-design-icons/iconfont/codepoints',
 				autoHint: false,
 				htmlDemo: false
 			}
