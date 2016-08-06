@@ -483,7 +483,10 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
-				//codepointsFile: 'node_modules/material-design-icons/iconfont/codepoints',
+				codepoints:
+				{
+					ic_cast_24px: 0xE001
+				},
 				autoHint: false,
 				htmlDemo: false
 			}
