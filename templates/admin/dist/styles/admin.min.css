@@ -1574,7 +1574,7 @@
 
 /* @section 1.5 move control */
 
-.rs-admin-table-default .rs-button-moveup, .rs-admin-table-default .rs-button-movedown
+.rs-admin-table-default .rs-admin-button-moveup, .rs-admin-table-default .rs-admin-button-movedown
 {
 	color: rgb(71, 71, 71);
 	display: block;
@@ -1583,12 +1583,12 @@
 	transition: color 0.4s;
 }
 
-.rs-admin-table-default .rs-button-moveup:hover, .rs-admin-table-default .rs-button-movedown:hover
+.rs-admin-table-default .rs-admin-button-moveup:hover, .rs-admin-table-default .rs-admin-button-movedown:hover
 {
 	color: #0090db;
 }
 
-.rs-admin-table-default .rs-button-moveup:before, .rs-admin-table-default .rs-button-movedown:before
+.rs-admin-table-default .rs-admin-button-moveup:before, .rs-admin-table-default .rs-admin-button-movedown:before
 {
 	display: block;
 	font: 1.5rem 'icon admin';
@@ -1597,13 +1597,13 @@
 	text-indent: 0;
 }
 
-.rs-admin-table-default .rs-button-moveup:before
+.rs-admin-table-default .rs-admin-button-moveup:before
 {
 	content: 'b';
 	top: 0.25em;
 }
 
-.rs-admin-table-default .rs-button-movedown:before
+.rs-admin-table-default .rs-admin-button-movedown:before
 {
 	bottom: 0.25em;
 	content: 'c';
@@ -1611,7 +1611,7 @@
 
 /* disabled move control */
 
-.rs-admin-table-default span.rs-button-moveup:before, .rs-admin-table-default span.rs-button-movedown:before
+.rs-admin-table-default span.rs-admin-button-moveup:before, .rs-admin-table-default span.rs-admin-button-movedown:before
 {
 	color: rgb(185, 185, 185);
 }

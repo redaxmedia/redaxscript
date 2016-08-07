@@ -243,7 +243,7 @@
 						thatNative = that[0],
 						thatEditable = that.attr('contenteditable'),
 						thatLabel = that.siblings('label'),
-						className = prefix + 'js-note-error ' + prefix + 'field-note ' + prefix + 'note-error',
+						className = prefix + 'js-note-error ' + prefix + 'field-note ' + prefix + 'is-error',
 						validity = 'valid',
 						thatValue = '',
 						thatRequired = '',

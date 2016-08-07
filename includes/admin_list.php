@@ -324,19 +324,19 @@ function admin_contents_list()
 					$rank_desc = Redaxscript\Db::forTablePrefix($tableParameter)->max('rank');
 					if ($rank > 1)
 					{
-						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/up/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-button-moveup">' . Redaxscript\Language::get('up') . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/up/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-moveup">' . Redaxscript\Language::get('up') . '</a>';
 					}
 					else
 					{
-						$output .= '<span class="rs-button-moveup">' . Redaxscript\Language::get('up') . '</span>';
+						$output .= '<span class="rs-admin-button-moveup">' . Redaxscript\Language::get('up') . '</span>';
 					}
 					if ($rank < $rank_desc)
 					{
-						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/down/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-button-movedown">' . Redaxscript\Language::get('down') . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/down/' . Redaxscript\Registry::get('tableParameter') . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-movedown">' . Redaxscript\Language::get('down') . '</a>';
 					}
 					else
 					{
-						$output .= '<span class="rs-button-movedown">' . Redaxscript\Language::get('down') . '</span>';
+						$output .= '<span class="rs-admin-button-movedown">' . Redaxscript\Language::get('down') . '</span>';
 					}
 					$output .= '</td>';
 				}
