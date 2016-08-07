@@ -36,11 +36,11 @@
 
 	.rs-fn-dropdown li
 {
+		position: relative;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-		position: relative;
 	}
 
 	.rs-fn-dropdown li:hover > ul
@@ -1541,7 +1541,10 @@ ul.rs-list-default li:before
 /**
  * @tableofcontents
  *
- * 1. several media
+ * 1. media
+ * 2. video
+ * 3. query
+ *    3.1 max width 30em
  *
  * @since 3.0.0
  *
@@ -1549,7 +1552,7 @@ ul.rs-list-default li:before
  * @author Henry Ruhs
  */
 
-/* @section 1. several media */
+/* @section 1. media */
 
 .rs-image-default, .rs-player-default
 {
@@ -1557,6 +1560,26 @@ ul.rs-list-default li:before
 	display: block;
 	margin: 1em 0;
 	max-width: 100%;
+}
+
+/* @section 2. video */
+
+.rs-video-default
+{
+	height: 22.5em;
+	width: 40em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 max width 30em */
+
+@media (max-width: 29.999em)
+{
+	.rs-video-default
+	{
+		font-size: 0.75em;
+	}
 }
 /**
  * @tableofcontents

@@ -19,6 +19,7 @@
 		{
 			position: relative;
 			user-select: none;
+
 			&:hover > ul
 			{
 				left: 0;

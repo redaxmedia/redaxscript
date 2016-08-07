@@ -1,7 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. several media
+ * 1. media
+ * 2. video
+ * 3. query
+ *    3.1 small max
  *
  * @since 3.0.0
  *
@@ -9,7 +12,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. several media */
+/* @section 1. media */
 
 .rs-image-default,
 .rs-player-default
@@ -18,4 +21,24 @@
 	display: block;
 	margin: 1em 0;
 	max-width: 100%;
+}
+
+/* @section 2. video */
+
+.rs-video-default
+{
+	height: 22.5em;
+	width: 40em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 small max */
+
+@media (--media-small-max)
+{
+	.rs-video-default
+	{
+		font-size: 0.75em;
+	}
 }

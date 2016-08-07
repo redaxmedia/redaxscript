@@ -263,7 +263,6 @@ module.exports = function (grunt)
 					'assets/styles/dialog.css',
 					'assets/styles/form.css',
 					'assets/styles/grid.css',
-					'assets/styles/media.css',
 					'assets/styles/navigation.css',
 					'assets/styles/tab.css',
 					'assets/styles/table.css',

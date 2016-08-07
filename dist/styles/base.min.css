@@ -479,47 +479,6 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 /**
  * @tableofcontents
  *
- * 1. image
- * 2. player
- * 3. query
- *    3.1 max width 30em
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. image */
-
-.rs-image-default
-{
-	max-width: 100%;
-}
-
-/* @section 2. player */
-
-.rs-video-default
-{
-	height: 30em;
-	max-width: 100%;
-	width: 40em;
-}
-
-/* @section 3. query */
-
-/* @section 3.1 max width 30em */
-
-@media (max-width: 29.999em)
-{
-	.rs-video-default
-	{
-		font-size: 0.75em;
-	}
-}
-/**
- * @tableofcontents
- *
  * 1. general
  * 2. query
  *    2.1 max width 50rem
