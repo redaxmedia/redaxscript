@@ -58,3 +58,22 @@ button, input, select, textarea
 {
 	box-sizing: border-box;
 }
+
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner
+{
+	border: 0;
+}
+
+input[type="search"]
+{
+	-webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration
+{
+	-webkit-appearance: none;
+}

@@ -70,6 +70,21 @@ button, input, select, textarea
 {
 	box-sizing: border-box;
 }
+
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner
+{
+	border: 0;
+}
+
+input[type="search"]
+{
+	-webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration
+{
+	-webkit-appearance: none;
+}
 /**
  * @tableofcontents
  *
@@ -125,10 +140,10 @@ button, input, select, textarea
  * 2. rotate
  * 3. scale
  *
- * @since 2.1.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
 /* @section 1. fade */
@@ -348,20 +363,6 @@ button, input, select, textarea
  * @author Henry Ruhs
  */
 
-/* @section 1. remove webkit appearance */
-
-.rs-field-search, .rs-field-search::-webkit-search-cancel-button
-{
-	-webkit-appearance: none;
-}
-
-/* @section 2. remove firefox inner focus */
-
-button::-moz-focus-inner, input::-moz-focus-inner
-{
-	border: 0;
-}
-
 /* @section 3. query */
 
 /* @section 3.1 max width 30em */
@@ -551,14 +552,14 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 /* @section 1. image */
 
-.rs-image
+.rs-image-default
 {
 	max-width: 100%;
 }
 
 /* @section 2. player */
 
-.rs-player
+.rs-video-default
 {
 	height: 30em;
 	max-width: 100%;
@@ -571,7 +572,7 @@ button::-moz-focus-inner, input::-moz-focus-inner
 
 @media (max-width: 29.999em)
 {
-	.rs-player
+	.rs-video-default
 	{
 		font-size: 0.75em;
 	}

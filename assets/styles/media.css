@@ -14,14 +14,14 @@
 
 /* @section 1. image */
 
-.rs-image
+.rs-image-default
 {
 	max-width: 100%;
 }
 
 /* @section 2. player */
 
-.rs-player
+.rs-video-default
 {
 	height: 30em;
 	max-width: 100%;
@@ -34,7 +34,7 @@
 
 @media (--media-small-max)
 {
-	.rs-player
+	.rs-video-default
 	{
 		font-size: 0.75em;
 	}

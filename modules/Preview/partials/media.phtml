@@ -14,18 +14,18 @@ $imageElement->init('img',
 $playerElement = new Html\Element();
 $playerElement->init('iframe',
 [
-	'class' => 'rs-player rs-player-default'
+	'class' => 'rs-video-default'
 ]);
 ?>
 
 <!-- image -->
 
-<?php echo $titlePartialElement->text('.rs-image.rs-image-default'); ?>
+<?php echo $titlePartialElement->text('.rs-image-default'); ?>
 
 <?php echo $imageElement->attr('src', '//i.imgur.com/SKpwO5M.jpg'); ?>
 
 <!-- player -->
 
-<?php echo $titlePartialElement->text('.rs-player.rs-player-default'); ?>
+<?php echo $titlePartialElement->text('.rs-video-default'); ?>
 
 <?php echo $playerElement->attr('src', '//youtube.com/embed//FIA6F-XHCzk?vq=hd720'); ?>
