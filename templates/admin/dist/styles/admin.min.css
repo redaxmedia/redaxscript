@@ -558,7 +558,7 @@
 	color: rgb(106, 106, 106);
 	font: 1rem arial, sans-serif;
 	padding: 0.5em;
-	transition: background 0.4s;
+	transition: background 0.2s, border 0.2s;
 }
 
 /* @section 1.1 hover effect */
@@ -1638,19 +1638,19 @@
 
 /* @section 1.7 column move */
 
-.rs-admin-table-default tr td.rs-admin-column-move, .rs-admin-table-default tr th.rs-admin-column-move
+.rs-admin-table-default tr td.rs-admin-col-move, .rs-admin-table-default tr th.rs-admin-col-move
 {
 	text-align: left;
 	text-indent: -999em;
 }
 
-.rs-admin-table-default thead .rs-admin-column-move, .rs-admin-table-default tfoot .rs-admin-column-move
+.rs-admin-table-default thead .rs-admin-col-move, .rs-admin-table-default tfoot .rs-admin-col-move
 {
 	display: block;
 	position: relative;
 }
 
-.rs-admin-table-default thead .rs-admin-column-move:before, .rs-admin-table-default tfoot .rs-admin-column-move:before
+.rs-admin-table-default thead .rs-admin-col-move:before, .rs-admin-table-default tfoot .rs-admin-col-move:before
 {
 	content: 'a';
 	font: 1.25rem/2.375rem 'icon admin';
@@ -1748,7 +1748,7 @@
 	float: left;
 }
 
-.rs-admin-rtl .rs-admin-table-default .rs-admin-column-move
+.rs-admin-rtl .rs-admin-table-default .rs-admin-col-move
 {
 	text-align: right;
 }
