@@ -28,7 +28,7 @@
 		"indentation": "tab",
 		"length-zero-no-unit": true,
 		"max-empty-lines": 1,
-		"max-nesting-depth": 1,
+		"max-nesting-depth": 3,
 		"no-browser-hacks": true,
 		"selector-combinator-space-after": "always",
 		"selector-combinator-space-before": "always",
