@@ -450,14 +450,14 @@
 
 /* @section 1. dialog overlay admin */
 
-.rs-admin-dialog-overlay
+.rs-admin-overlay-dialog
 {
 	background: rgba(0, 0, 0, 0.3);
 }
 
 /* @section 2. fadein effect */
 
-.rs-admin-component-dialog, .rs-admin-dialog-overlay
+.rs-admin-component-dialog, .rs-admin-overlay-dialog
 {
 	animation: fade 0.4s;
 }

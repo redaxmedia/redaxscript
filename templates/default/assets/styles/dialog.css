@@ -11,18 +11,18 @@
 
 /* @section 1. dialog overlay default */
 
-.rs-dialog-overlay
+.rs-overlay-dialog
 {
 	background: gray(170, 0.9);
 }
 
-.rs-dialog,
-.rs-dialog-overlay
+.rs-component-dialog,
+.rs-overlay-dialog
 {
 	animation: rs-fade 0.4s;
 }
 
-.rs-dialog
+.rs-component-dialog
 {
 	background: var(--rs-color-tertiary);
 	border-radius: 0.25em;

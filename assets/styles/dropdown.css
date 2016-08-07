@@ -2,8 +2,6 @@
  * @tableofcontents
  *
  * 1. list dropdown
- * 2. query
- *    2.1 min width 50rem
  *
  * @since 3.0.0
  *
@@ -13,42 +11,38 @@
 
 /* @section 1. list dropdown */
 
-.rs-list-dropdown a,
-.rs-list-dropdown span
-{
-	display: block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.rs-list-dropdown li
-{
-	position: relative;
-}
-
-.rs-list-dropdown li:hover > ul,
-.rs-list-dropdown .rs-item-touch > ul
-{
-	left: 0;
-	opacity: 1;
-	transform: translateY(0);
-}
-
-.rs-list-dropdown li:last-child:hover > ul,
-.rs-list-dropdown .rs-item-touch:last-child > ul
-{
-	left: auto;
-	right: 0;
-}
-
-/* @section 2. query */
-
-/* @section 2.1 min width 50rem */
-
 @media (--media-medium-min)
 {
-	.rs-list-dropdown ul
+	.rs-fn-dropdown a,
+	.rs-fn-dropdown span
+	{
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.rs-fn-dropdown li
+	{
+		position: relative;
+	}
+
+	.rs-fn-dropdown li:hover > ul,
+	.rs-fn-dropdown .rs-item-touch > ul
+	{
+		left: 0;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.rs-fn-dropdown li:last-child:hover > ul,
+	.rs-fn-dropdown .rs-item-touch:last-child > ul
+	{
+		left: auto;
+		right: 0;
+	}
+
+	.rs-fn-dropdown ul
 	{
 		left: -999em;
 		opacity: 0;
@@ -59,7 +53,7 @@
 		z-index: 1;
 	}
 
-	.rs-list-dropdown ul ul
+	.rs-fn-dropdown ul ul
 	{
 		left: 100%;
 		top: 0;

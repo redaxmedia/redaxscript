@@ -207,6 +207,7 @@ ul.rs-list-default li:before
 	.rs-list-header a,
 	.rs-list-header span
 	{
+		display: block;
 		font-size: 0.875em;
 		padding: 0 1em;
 		transition: background 0.2s;

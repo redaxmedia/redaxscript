@@ -144,7 +144,7 @@
 			dialog.overlay = $('<div>').addClass(options.className.dialogOverlay);
 			dialog.container = $('<div>').addClass(options.className.dialog);
 			dialog.title = $('<h3>' + rs.language[options.type] + '</h3>').addClass(options.className.dialogTitle);
-			dialog.box = $('<div>').addClass(options.className.dialogBox + options.suffix);
+			dialog.box = $('<div>').addClass(options.className.dialogBox);
 			dialog.buttonOk = $('<a>' + rs.language.ok + '</a>').addClass(options.className.buttonOk);
 			dialog.buttonCancel = $('<a>' + rs.language.cancel + '</a>').addClass(options.className.buttonCancel);
 

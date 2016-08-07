@@ -27,7 +27,7 @@
 
 /* @section 2. dialog */
 
-.rs-preview .rs-dialog,
+.rs-preview .rs-component-dialog,
 .rs-preview .rs-admin-component-dialog
 {
 	margin: unset;
