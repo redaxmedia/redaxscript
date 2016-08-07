@@ -90,19 +90,6 @@
 				type: 'alert'
 			}
 		},
-		dropdown:
-		{
-			init: rs.support.touch,
-			selector: 'ul.rs-js-dropdown',
-			options:
-			{
-				element:
-				{
-					item: 'li'
-				},
-				duration: 2000
-			}
-		},
 		enableIndent:
 		{
 			init: true,

@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dropdown
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dropdown */
+
+.rs-fn-dropdown
+{
+	@extend %fn-dropdown;
+}

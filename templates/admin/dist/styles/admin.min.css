@@ -459,7 +459,7 @@
 
 .rs-admin-component-dialog, .rs-admin-overlay-dialog
 {
-	animation: fade 0.4s;
+	animation: rs-fade 0.4s;
 }
 
 /**

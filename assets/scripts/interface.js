@@ -2,11 +2,10 @@
  * @tableofcontents
  *
  * 1. accordion
- * 2. dropdown
  * 3. tab
  * 4. init
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -72,52 +71,6 @@
 		});
 	};
 
-	/* @section 2. dropdown */
-
-	$.fn.dropdown = function (options)
-	{
-		/* extend options */
-
-		if (rs.plugins.accordion.options !== options)
-		{
-			options = $.extend({}, rs.plugins.dropdown.options, options || {});
-		}
-
-		/* return this */
-
-		return this.each(function ()
-		{
-			var dropdown = $(this),
-				dropdownRelated = dropdown.find(options.element.item),
-				timeout = '';
-
-			/* listen for touchstart and touchend */
-
-			dropdownRelated.on('touchstart touchend', function (event)
-			{
-				var dropdownItem = $(this);
-
-				/* if touchstart */
-
-				if (event.type === 'touchstart')
-				{
-					dropdownItem.addClass('item-touch');
-				}
-
-				/* else timeout enhanced touchend */
-
-				else if (event.type === 'touchend')
-				{
-					clearTimeout(timeout);
-					timeout = setTimeout(function ()
-					{
-						dropdownItem.removeClass('item-touch');
-					}, options.duration);
-				}
-			});
-		});
-	};
-
 	/* @section 3. tab */
 
 	$.fn.tab = function (options)
@@ -176,10 +129,6 @@
 		if (rs.plugins.accordion.init)
 		{
 			$(rs.plugins.accordion.selector).accordion(rs.plugins.accordion.options);
-		}
-		if (rs.plugins.dropdown.init)
-		{
-			$(rs.plugins.dropdown.selector).dropdown(rs.plugins.dropdown.options);
 		}
 		if (rs.plugins.tab.init)
 		{

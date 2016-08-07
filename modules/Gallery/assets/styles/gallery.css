@@ -66,14 +66,14 @@
 .rs-gallery-meta,
 .rs-gallery-overlay
 {
-	animation: fade 0.2s;
+	animation: rs-fade 0.2s;
 }
 
 /* @section 5. gallery loader */
 
 .rs-gallery-loader:after
 {
-	animation: scale 0.4s 2s, rotate 3s 2.4s infinite;
+	animation: rs-scale 0.4s 2s, rs-rotate 3s 2.4s infinite;
 	color: rgba(0, 0, 0, 0.4);
 	content: '0';
 	font: 6em/2em 'icon gallery';

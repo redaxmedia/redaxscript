@@ -1,0 +1,53 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dropdown
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dropdown */
+
+%fn-dropdown
+{
+	@media (--media-medium-min)
+	{
+		& li
+		{
+			user-select: none;
+			position: relative;
+			&:hover > ul
+			{
+				left: 0;
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			&:last-child:hover > ul
+			{
+				left: auto;
+				right: 0;
+			}
+		}
+
+		& ul
+		{
+			left: -999em;
+			opacity: 0;
+			position: absolute;
+			top: 100%;
+			transform: translateY(-50%);
+			transition: opacity 0.4s, transform 0.2s;
+			z-index: 1;
+
+			& ul
+			{
+				left: 100%;
+				top: 0;
+			}
+		}
+	}
+}
