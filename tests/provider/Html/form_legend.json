@@ -2,7 +2,7 @@
 	[
 		null,
 		null,
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><legend class=\"rs-legend-default\">Required fields are marked with an asterisk.</legend></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><legend class=\"rs-label-default\">Required fields are marked with an asterisk.</legend></form>"
 	],
 	[
 		"<span>test</span>",
