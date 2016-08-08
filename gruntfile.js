@@ -260,7 +260,6 @@ module.exports = function (grunt)
 					'assets/styles/animate.css',
 					'assets/styles/accordion.css',
 					'assets/styles/box.css',
-					'assets/styles/dialog.css',
 					'assets/styles/form.css',
 					'assets/styles/grid.css',
 					'assets/styles/navigation.css',
@@ -276,6 +275,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'assets/styles/_dialog.css',
 					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/layout.css',
@@ -313,6 +313,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'assets/styles/_dialog.css',
 					'assets/styles/_dropdown.css',
 					'templates/default/assets/styles/icon.css', //rename to _icon.css
 					'templates/default/assets/styles/_variable.css',

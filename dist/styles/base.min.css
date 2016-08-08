@@ -243,57 +243,6 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 /**
  * @tableofcontents
  *
- * 1. dialog
- * 2. dialog overlay
- * 3. query
- *    3.1 max width 30em
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. dialog */
-
-.rs-component-dialog, .rs-admin-component-dialog
-{
-	box-sizing: border-box;
-	left: 50%;
-	margin: -5em 0 0 -40%;
-	position: fixed;
-	top: 50%;
-	width: 80%;
-	z-index: 1100;
-}
-
-/* @section 2. dialog overlay */
-
-.rs-overlay-dialog, .rs-admin-overlay-dialog
-{
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1000;
-}
-
-/* @section 3. query */
-
-/* @section 3.1 max width 30em */
-
-@media (min-width: 50em)
-{
-	.rs-component-dialog, .rs-admin-component-dialog
-	{
-		margin-left: -15em;
-		width: 30em;
-	}
-}
-/**
- * @tableofcontents
- *
  * 3. query
  *    3.1 max width 30em
  *

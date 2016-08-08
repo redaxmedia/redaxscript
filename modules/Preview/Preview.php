@@ -85,7 +85,7 @@ class Preview extends Module
 
 			/* collect partial output */
 
-			$output = '<div class="rs-preview rs-fn-clearfix">';
+			$output = '<div class="rs-is-preview rs-fn-clearfix">';
 
 			/* include single */
 

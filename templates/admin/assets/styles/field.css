@@ -17,11 +17,6 @@
 
 /* @section 1. several fields */
 
-.rs-admin-component-dialog .rs-admin-field-default
-{
-	width: 100%;
-}
-
 .rs-admin-field-default,
 .rs-admin-field-select,
 .rs-admin-field-textarea

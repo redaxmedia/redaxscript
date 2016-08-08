@@ -1,26 +1,61 @@
 /**
  * @tableofcontents
  *
- * 1. dialog overlay admin
- * 2. fadein effect
+ * 1. overlay dialog
+ * 2. component dialog
+ *    2.1 title dialog
+ *    2.2 box dialog
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. dialog overlay admin */
+/* @section 1. overlay dialog */
 
 .rs-admin-overlay-dialog
 {
+	@extend %overlay;
+	animation: rs-fade 0.4s;
 	background: gray(0, 0.3);
 }
 
-/* @section 2. fadein effect */
+/* @section 2. component dialog */
 
-.rs-admin-component-dialog,
-.rs-admin-overlay-dialog
+.rs-admin-component-dialog
 {
+	@extend %dialog;
 	animation: rs-fade 0.4s;
+	border-radius: 0.25rem;
+	overflow: hidden;
+
+	& .rs-admin-button-default
+	{
+		margin-top: 1em;
+	}
+
+	.rs-admin-field-default
+	{
+		width: 100%;
+	}
+}
+
+/* @section 2.1 title dialog */
+
+.rs-admin-title-dialog
+{
+	background: gray(32);
+	color: gray(204);
+	font: bold 1em/2.5em var(--rs-admin-font-primary);
+	padding: 0 1em;
+	text-transform: uppercase;
+}
+
+/* @section 2.2 box dialog */
+
+.rs-admin-box-dialog
+{
+	background: var(--rs-admin-gradient-quaternary);
+	padding: 1em;
 }

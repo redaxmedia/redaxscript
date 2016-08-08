@@ -13,6 +13,43 @@
 /**
  * @tableofcontents
  *
+ * 1. overlay
+ * 2. dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay */
+
+.rs-admin-overlay-dialog
+{
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+/* @section 2. dialog */
+
+.rs-admin-component-dialog
+{
+	box-sizing: border-box;
+	left: 50%;
+	max-width: 30em;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	z-index: 1100;
+}
+/**
+ * @tableofcontents
+ *
  * 1. variable
  *    1.1 base color
  *    1.2 note color
@@ -45,8 +82,7 @@
  *    2.1 javascript enabled
  *    2.2 last element
  * 3. several admin titles
- * 4. title dialog admin
- * 5. title content admin
+ * 4. title content admin
  *
  * @since 3.0.0
  *
@@ -121,28 +157,18 @@
 
 /* @section 3. several admin titles */
 
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active, .rs-admin-title-dialog
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	background: rgb(32, 32, 32);
 	border: 1px solid rgb(34, 34, 34);
 }
 
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active, .rs-is-js .rs-admin-title-accordion.rs-admin-title-active a, .rs-admin-title-dialog, .rs-admin-title-dialog a
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active, .rs-is-js .rs-admin-title-accordion.rs-admin-title-active a
 {
 	color: rgb(204, 204, 204);
 }
 
-/* @section 4. title dialog admin */
-
-.rs-admin-title-dialog
-{
-	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1.25rem/2.5rem 'open sans condensed', arial, sans-serif;
-	padding: 0 1em;
-	text-transform: uppercase;
-}
-
-/* @section 5. title content admin */
+/* @section 4. title content admin */
 
 .rs-admin-title-content
 {
@@ -203,7 +229,7 @@
 
 /* @section 1. several admin boxes */
 
-.rs-admin-box-accordion, .rs-admin-box-dialog
+.rs-admin-box-accordion
 {
 	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
 	border: 1px solid rgb(185, 185, 185);
@@ -409,7 +435,7 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-box-dialog .rs-admin-button-default, .rs-admin-form-default .rs-admin-button-default, .rs-admin-box-messenger + .rs-admin-button-messenger
+.rs-admin-form-default .rs-admin-button-default, .rs-admin-box-messenger + .rs-admin-button-messenger
 {
 	margin-top: 1em;
 }
@@ -439,29 +465,62 @@
 /**
  * @tableofcontents
  *
- * 1. dialog overlay admin
- * 2. fadein effect
+ * 1. overlay dialog
+ * 2. component dialog
+ *    2.1 title dialog
+ *    2.2 box dialog
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. dialog overlay admin */
+/* @section 1. overlay dialog */
 
 .rs-admin-overlay-dialog
 {
+	animation: rs-fade 0.4s;
 	background: rgba(0, 0, 0, 0.3);
 }
 
-/* @section 2. fadein effect */
+/* @section 2. component dialog */
 
-.rs-admin-component-dialog, .rs-admin-overlay-dialog
+.rs-admin-component-dialog
 {
 	animation: rs-fade 0.4s;
+	border-radius: 0.25rem;
+	overflow: hidden;
+
+	.rs-admin-field-default
+	{
+		width: 100%;
+	}
 }
 
+.rs-admin-component-dialog .rs-admin-button-default
+{
+	margin-top: 1em;
+}
+
+/* @section 2.1 title dialog */
+
+.rs-admin-title-dialog
+{
+	background: rgb(32, 32, 32);
+	color: rgb(204, 204, 204);
+	font: bold 1em/2.5em 'open sans condensed', arial, sans-serif;
+	padding: 0 1em;
+	text-transform: uppercase;
+}
+
+/* @section 2.2 box dialog */
+
+.rs-admin-box-dialog
+{
+	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	padding: 1em;
+}
 /**
  * @tableofcontents
  *
@@ -544,11 +603,6 @@
  */
 
 /* @section 1. several fields */
-
-.rs-admin-component-dialog .rs-admin-field-default
-{
-	width: 100%;
-}
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {

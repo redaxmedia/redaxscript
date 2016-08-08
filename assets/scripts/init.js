@@ -71,7 +71,7 @@
 						dialog: 'rs-admin-js-dialog rs-admin-component-dialog',
 						dialogTitle: 'rs-admin-js-title-dialog rs-admin-title-dialog',
 						dialogBox: 'rs-admin-js-box-dialog rs-admin-box-dialog',
-						dialogOverlay: 'rs-admin-js-overlay rs-admin-dialog-overlay',
+						dialogOverlay: 'rs-admin-js-overlay rs-admin-overlay-dialog',
 						buttonOk: 'rs-admin-js-ok rs-admin-button-default',
 						buttonCancel: 'rs-admin-js-cancel rs-admin-button-default',
 						fieldPrompt: 'rs-admin-js-prompt rs-admin-field-text'

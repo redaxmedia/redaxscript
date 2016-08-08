@@ -17,8 +17,7 @@
 
 /* @section 1. several admin boxes */
 
-.rs-admin-box-accordion,
-.rs-admin-box-dialog
+.rs-admin-box-accordion
 {
 	background: var(--rs-admin-gradient-quaternary);
 	border: 1px solid gray(185);

@@ -13,6 +13,43 @@
 /**
  * @tableofcontents
  *
+ * 1. overlay
+ * 2. dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay */
+
+.rs-overlay-dialog
+{
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+/* @section 2. dialog */
+
+.rs-component-dialog
+{
+	box-sizing: border-box;
+	left: 50%;
+	max-width: 30em;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	z-index: 1100;
+}
+/**
+ * @tableofcontents
+ *
  * 1. dropdown
  *
  * @since 3.0.0
@@ -23,17 +60,11 @@
 
 /* @section 1. dropdown */
 
-.rs-fn-dropdown
-{
-}
-
 @media (min-width: 50em)
-	{
-
-	.rs-fn-dropdown
 {
-}
-
+	.rs-fn-dropdown
+	{
+	}
 	.rs-fn-dropdown li
 {
 		position: relative;
@@ -42,20 +73,17 @@
 		-ms-user-select: none;
 		user-select: none;
 	}
-
 	.rs-fn-dropdown li:hover > ul
 {
 		left: 0;
 		opacity: 1;
 		transform: translateY(0);
 	}
-
 	.rs-fn-dropdown li:last-child:hover > ul
 {
 		left: auto;
 		right: 0;
 	}
-
 	.rs-fn-dropdown ul
 {
 		left: -999em;
@@ -66,13 +94,12 @@
 		transition: opacity 0.4s, transform 0.2s;
 		z-index: 1;
 	}
-
 	.rs-fn-dropdown ul ul
 {
 		left: 100%;
 		top: 0;
 	}
-	}
+}
 /**
  * @tableofcontents
  *
@@ -918,7 +945,7 @@ a
 
 /* @section 4. space between elements */
 
-.rs-box-dialog .rs-button-default, .rs-form-default .rs-button-default, .rs-box-messenger + .rs-button-messenger
+.rs-form-default .rs-button-default, .rs-box-messenger + .rs-button-messenger
 {
 	margin-top: 1em;
 }
@@ -972,25 +999,24 @@ a
 /**
  * @tableofcontents
  *
- * 1. dialog overlay default
+ * 1. overlay dialog
+ * 2. component dialog
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
-/* @section 1. dialog overlay default */
+/* @section 1. overlay dialog */
 
 .rs-overlay-dialog
 {
+	animation: rs-fade 0.4s;
 	background: rgba(170, 170, 170, 0.9);
 }
 
-.rs-component-dialog, .rs-overlay-dialog
-{
-	animation: rs-fade 0.4s;
-}
+/* @section 2. component dialog */
 
 .rs-component-dialog
 {
@@ -998,8 +1024,17 @@ a
 	border-radius: 0.25em;
 	color: rgb(255, 255, 255);
 	padding: 1em;
+
+	.rs-field-default
+	{
+		width: 100%;
+	}
 }
 
+.rs-component-dialog .rs-button-default
+{
+	margin-top: 1em;
+}
 /**
  * @tableofcontents
  *
@@ -1057,11 +1092,6 @@ a
 .rs-field-default, .rs-field-select, .rs-field-textarea.rs-field-small
 {
 	width: 40%;
-}
-
-.rs-dialog .rs-field-default
-{
-	width: 100%;
 }
 
 .rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
@@ -1544,7 +1574,7 @@ ul.rs-list-default li:before
  * 1. media
  * 2. video
  * 3. query
- *    3.1 max width 30em
+ *    3.1 small max
  *
  * @since 3.0.0
  *
@@ -1572,7 +1602,7 @@ ul.rs-list-default li:before
 
 /* @section 3. query */
 
-/* @section 3.1 max width 30em */
+/* @section 3.1 small max */
 
 @media (max-width: 29.999em)
 {

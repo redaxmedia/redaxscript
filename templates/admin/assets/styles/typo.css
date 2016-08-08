@@ -6,8 +6,7 @@
  *    2.1 javascript enabled
  *    2.2 last element
  * 3. several admin titles
- * 4. title dialog admin
- * 5. title content admin
+ * 4. title content admin
  *
  * @since 3.0.0
  *
@@ -83,32 +82,19 @@
 
 /* @section 3. several admin titles */
 
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active,
-.rs-admin-title-dialog
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	background: gray(32);
 	border: 1px solid gray(34);
 }
 
 .rs-is-js .rs-admin-title-accordion.rs-admin-title-active,
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active a,
-.rs-admin-title-dialog,
-.rs-admin-title-dialog a
+.rs-is-js .rs-admin-title-accordion.rs-admin-title-active a
 {
 	color: gray(204);
 }
 
-/* @section 4. title dialog admin */
-
-.rs-admin-title-dialog
-{
-	border-radius: 0.25em 0.25em 0 0;
-	font: bold 1.25rem/2.5rem var(--rs-admin-font-primary);
-	padding: 0 1em;
-	text-transform: uppercase;
-}
-
-/* @section 5. title content admin */
+/* @section 4. title content admin */
 
 .rs-admin-title-content
 {

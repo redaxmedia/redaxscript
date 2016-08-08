@@ -1,0 +1,37 @@
+/**
+ * @tableofcontents
+ *
+ * 1. overlay
+ * 2. dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay */
+
+%overlay
+{
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+/* @section 2. dialog */
+
+%dialog
+{
+	box-sizing: border-box;
+	left: 50%;
+	max-width: 30em;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	z-index: 1100;
+}

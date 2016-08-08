@@ -29,13 +29,15 @@ $buttonElement->init('a',
 
 <?php echo $titlePartialElement->text($admin ? '.rs-admin-title-dialog + .rs-admin-box-dialog' : '.rs-title-dialog + .rs-box-dialog'); ?>
 
-<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
+	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-	<?php echo $titleElement->text(Language::get('confirm')); ?>
-	<?php echo $boxElement->html(
-		$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
-		$buttonElement->copy()->text(Language::get('ok')) .
-		$buttonElement->copy()->text(Language::get('cancel'))
-	); ?>
+		<?php echo $titleElement->text(Language::get('confirm')); ?>
+		<?php echo $boxElement->html(
+			$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
+			$buttonElement->copy()->text(Language::get('ok')) .
+			$buttonElement->copy()->text(Language::get('cancel'))
+		); ?>
 
+	</div>
 </div>

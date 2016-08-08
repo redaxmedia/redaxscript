@@ -15,7 +15,7 @@
 
 /* @section 1. box */
 
-.rs-preview .rs-box-preview
+.rs-is-preview .rs-box-preview
 {
 	background: #222;
 	color: #b9b9b9;
@@ -27,17 +27,23 @@
 
 /* @section 2. dialog */
 
-.rs-preview .rs-component-dialog,
-.rs-preview .rs-admin-component-dialog
+.rs-is-preview .rs-overlay-dialog,
+.rs-is-preview .rs-admin-overlay-dialog
 {
-	margin: unset;
-	position: unset;
+	height: 15em;
+	position: relative;
+}
+
+.rs-is-preview .rs-component-dialog,
+.rs-is-preview .rs-admin-component-dialog
+{
+	position: absolute;
 }
 
 /* @section 3. grid */
 
-.rs-preview .rs-fn-grid:hover .rs-box-preview,
-.rs-preview .rs-fn-grid-space:hover .rs-box-preview
+.rs-is-preview .rs-fn-grid:hover .rs-box-preview,
+.rs-is-preview .rs-fn-grid-space:hover .rs-box-preview
 {
 	background: linear-gradient(#3db1f1, #0090db);
 	color: #000;
@@ -46,7 +52,7 @@
 
 /* @section 4. icon */
 
-.rs-preview .rs-icon-flag
+.rs-is-preview .rs-icon-flag
 {
 	margin: 0.25em;
 	float: left;
@@ -54,8 +60,8 @@
 
 /* @section 5. title */
 
-.rs-preview .rs-title-preview,
-.rs-preview .rs-title-preview-sub
+.rs-is-preview .rs-title-preview,
+.rs-is-preview .rs-title-preview-sub
 {
 	background: rgba(0, 0, 0, 0.8);
 	border-left: 0.25em solid #c77a46;
@@ -65,22 +71,22 @@
 	padding: 0.25em;
 }
 
-.rs-preview .rs-title-preview {
+.rs-is-preview .rs-title-preview {
 	text-transform: uppercase;
 }
 
-.rs-preview .rs-title-preview
+.rs-is-preview .rs-title-preview
 {
 	margin-top: 1em;
 }
 
-.rs-preview .rs-title-preview a,
-.rs-preview .rs-title-preview-sub a
+.rs-is-preview .rs-title-preview a,
+.rs-is-preview .rs-title-preview-sub a
 {
 	color: #fff;
 }
 
-.rs-preview .rs-title-preview-sub
+.rs-is-preview .rs-title-preview-sub
 {
 	font: 1em monospace;
 	margin-bottom: 2em;

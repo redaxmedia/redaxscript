@@ -11,9 +11,9 @@
 
 /* @section 1. dropdown */
 
-%fn-dropdown
+@media (--media-medium-min)
 {
-	@media (--media-medium-min)
+	%fn-dropdown
 	{
 		& li
 		{

@@ -1,31 +1,41 @@
 /**
  * @tableofcontents
  *
- * 1. dialog overlay default
+ * 1. overlay dialog
+ * 2. component dialog
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
- * @author Joerg Steinhauer
+ * @author Henry Ruhs
  */
 
-/* @section 1. dialog overlay default */
+/* @section 1. overlay dialog */
 
 .rs-overlay-dialog
 {
+	@extend %overlay;
+	animation: rs-fade 0.4s;
 	background: gray(170, 0.9);
 }
 
-.rs-component-dialog,
-.rs-overlay-dialog
-{
-	animation: rs-fade 0.4s;
-}
+/* @section 2. component dialog */
 
 .rs-component-dialog
 {
+	@extend %dialog;
 	background: var(--rs-color-tertiary);
 	border-radius: 0.25em;
 	color: gray(255);
 	padding: 1em;
+
+	& .rs-button-default
+	{
+		margin-top: 1em;
+	}
+
+	.rs-field-default
+	{
+		width: 100%;
+	}
 }
