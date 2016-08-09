@@ -4,8 +4,6 @@
  * 1. medium max
  * 2. small max
  * 3. small min
- * 4. medium min
- * 5. rtl direction
  *
  * @since 3.0.0
  *
@@ -73,26 +71,4 @@
 	{
 		float: right;
 	}
-}
-
-/* @section 4. medium min */
-
-@media (--media-medium-min)
-{
-	.rs-admin-sidebar .rs-admin-text-dock
-	{
-		display: none;
-	}
-}
-
-/* @section 5. rtl direction */
-
-.rs-admin-rtl .rs-admin-text-dock
-{
-	float: left;
-}
-
-.rs-admin-rtl .rs-admin-table-default .rs-admin-col-move
-{
-	text-align: right;
 }

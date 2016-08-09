@@ -222,22 +222,23 @@
 
 /* @section 1.7 column move */
 
-.rs-admin-table-default tr td.rs-admin-col-move,
-.rs-admin-table-default tr th.rs-admin-col-move
+.rs-admin-table-default tr td.rs-admin-col-rank,
+.rs-admin-table-default tr th.rs-admin-col-rank
 {
+	direction: ltr;
 	text-align: left;
 	text-indent: -999em;
 }
 
-.rs-admin-table-default thead .rs-admin-col-move,
-.rs-admin-table-default tfoot .rs-admin-col-move
+.rs-admin-table-default thead .rs-admin-col-rank,
+.rs-admin-table-default tfoot .rs-admin-col-rank
 {
 	display: block;
 	position: relative;
 }
 
-.rs-admin-table-default thead .rs-admin-col-move:before,
-.rs-admin-table-default tfoot .rs-admin-col-move:before
+.rs-admin-table-default thead .rs-admin-col-rank:before,
+.rs-admin-table-default tfoot .rs-admin-col-rank:before
 {
 	content: 'a';
 	font: 1.25rem/2.375rem var(--rs-admin-font-icon);

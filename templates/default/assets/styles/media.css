@@ -3,8 +3,6 @@
  *
  * 1. media
  * 2. video
- * 3. query
- *    3.1 small max
  *
  * @since 3.0.0
  *
@@ -15,11 +13,9 @@
 /* @section 1. media */
 
 .rs-image-default,
-.rs-player-default
+.rs-video-default
 {
 	border-radius: 0.25em;
-	display: block;
-	margin: 1em 0;
 	max-width: 100%;
 }
 
@@ -29,16 +25,4 @@
 {
 	height: 22.5em;
 	width: 40em;
-}
-
-/* @section 3. query */
-
-/* @section 3.1 small max */
-
-@media (--media-small-max)
-{
-	.rs-video-default
-	{
-		font-size: 0.75em;
-	}
 }

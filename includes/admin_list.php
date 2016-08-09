@@ -67,19 +67,11 @@ function admin_contents_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default rs-admin-button-sort">' . Redaxscript\Language::get('sort') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-' . $wording_single . '">';
 
 	/* collect thead */
 
-	$output .= '<thead><tr><th class="rs-admin-is-size-3of6">' . Redaxscript\Language::get('title') . '</th><th class="';
-	if ($tableParameter != 'extras')
-	{
-		$output .= 'rs-admin-is-size-1of6">';
-	}
-	else
-	{
-		$output .= 'rs-admin-is-size-3of6">';
-	}
+	$output .= '<thead><tr><th class="rs-admin-col-title">' . Redaxscript\Language::get('title') . '</th><th class="rs-admin-col-alias">';
 	if ($tableParameter == 'comments')
 	{
 		$output .= Redaxscript\Language::get('identifier');
@@ -91,9 +83,9 @@ function admin_contents_list()
 	$output .= '</th>';
 	if ($tableParameter != 'extras')
 	{
-		$output .= '<th>' . Redaxscript\Language::get($wording_parent) . '</th>';
+		$output .= '<th class="rs-admin-col-parent">' . Redaxscript\Language::get($wording_parent) . '</th>';
 	}
-	$output .= '<th class="rs-admin-col-move">' . Redaxscript\Language::get('rank') . '</th></tr></thead>';
+	$output .= '<th class="rs-admin-col-rank">' . Redaxscript\Language::get('rank') . '</th></tr></thead>';
 
 	/* collect tfoot */
 
@@ -111,7 +103,7 @@ function admin_contents_list()
 	{
 		$output .= '<td>' . Redaxscript\Language::get($wording_parent) . '</td>';
 	}
-	$output .= '<td class="rs-admin-col-move">' . Redaxscript\Language::get('rank') . '</td></tr></tfoot>';
+	$output .= '<td class="rs-admin-col-rank">' . Redaxscript\Language::get('rank') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
 		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
@@ -314,7 +306,7 @@ function admin_contents_list()
 					}
 					$output .= '</td>';
 				}
-				$output .= '<td class="rs-admin-col-move">';
+				$output .= '<td class="rs-admin-col-rank">';
 
 				/* collect control output */
 
@@ -418,11 +410,11 @@ function admin_groups_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('group_new') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-default-group">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-is-size-4of6">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-admin-col-name">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-col-alias">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-col-filter>' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td>' . Redaxscript\Language::get('name') . '</td><td>' . Redaxscript\Language::get('alias') . '</td><td>' . Redaxscript\Language::get('filter') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
@@ -515,11 +507,11 @@ function admin_users_list()
 	{
 		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('user_new') . '</a>';
 	}
-	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
+	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-user">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-is-size-3of6">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('user') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('groups') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('session') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-admin-col-name">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-col-user">' . Redaxscript\Language::get('user') . '</th><th class="rs-admin-col-group">' . Redaxscript\Language::get('groups') . '</th><th class="rs-admin-col-session">' . Redaxscript\Language::get('session') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td>' . Redaxscript\Language::get('name') . '</td><td>' . Redaxscript\Language::get('user') . '</td><td>' . Redaxscript\Language::get('groups') . '</td><td>' . Redaxscript\Language::get('session') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
@@ -660,11 +652,11 @@ function admin_modules_list()
 	/* collect listing output */
 
 	$output .= '<h2 class="rs-admin-title-content">' . Redaxscript\Language::get('modules') . '</h2>';
-	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table-default">';
+	$output .= '<div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-module">';
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-is-size-4of6">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-is-size-1of6">' . Redaxscript\Language::get('version') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-admin-col-name">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-col-alias">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-col-version">' . Redaxscript\Language::get('version') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td>' . Redaxscript\Language::get('name') . '</td><td>' . Redaxscript\Language::get('alias') . '</td><td>' . Redaxscript\Language::get('version') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
