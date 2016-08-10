@@ -14,12 +14,7 @@
 
 .rs-admin-wrapper-table
 {
-	overflow: hidden;
-}
-
-.rs-admin-wrapper-table > table
-{
-	width: 100%;
+	@extend %wrapper-table;
 }
 
 /* @section 2. space between elements */

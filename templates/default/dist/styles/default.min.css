@@ -103,6 +103,46 @@
 /**
  * @tableofcontents
  *
+ * 1. table
+ * 2. wrapper table
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. table */
+
+.rs-table-default
+{
+}
+
+.rs-table-default caption, .rs-table-default thead th, .rs-table-default tfoot td
+{
+	font-weight: bold;
+	text-align: left;
+}
+
+.rs-table-default th ~ th:last-child, .rs-table-default td ~ td:last-child
+{
+	text-align: right;
+}
+
+/* @section 2. wrapper table */
+
+.rs-wrapper-table
+{
+	overflow: hidden
+}
+
+.rs-wrapper-table > table
+{
+	width: 100%;
+}
+/**
+ * @tableofcontents
+ *
  * 1. icon font
  * 2. icon flag
  *
@@ -519,16 +559,6 @@ a
 .rs-wrapper-page
 {
 	padding: 1em;
-}
-
-.rs-wrapper-table
-{
-	overflow: hidden;
-}
-
-.rs-wrapper-table > table
-{
-	width: 100%;
 }
 
 /* @section 3. header */
@@ -1647,7 +1677,6 @@ ul.rs-list-default li:before
  *
  * 1. table default
  *    1.1 body
- *    1.2 head and foot
  *
  * @since 3.0.0
  *
@@ -1674,13 +1703,6 @@ ul.rs-list-default li:before
 .rs-table-default tr
 {
 	border-bottom: 1px solid #323e4c;
-}
-
-/* @section 1.2 head and foot */
-
-.rs-table-default caption, .rs-table-default thead tr, .rs-table-default tfoot tr
-{
-	font-weight: bold;
 }
 /**
  * @tableofcontents

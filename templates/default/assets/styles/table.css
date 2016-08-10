@@ -3,7 +3,6 @@
  *
  * 1. table default
  *    1.1 body
- *    1.2 head and foot
  *
  * @since 3.0.0
  *
@@ -12,6 +11,11 @@
  */
 
 /* @section 1. table default */
+
+.rs-table-default
+{
+	@extend %table-default;
+}
 
 .rs-table-default caption,
 .rs-table-default td,
@@ -34,13 +38,4 @@
 .rs-table-default tr
 {
 	border-bottom: 1px solid var(--rs-color-tertiary);
-}
-
-/* @section 1.2 head and foot */
-
-.rs-table-default caption,
-.rs-table-default thead tr,
-.rs-table-default tfoot tr
-{
-	font-weight: bold;
 }

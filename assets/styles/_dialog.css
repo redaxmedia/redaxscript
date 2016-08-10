@@ -12,7 +12,7 @@
 
 /* @section 1. overlay */
 
-%overlay
+%overlay-dialog
 {
 	bottom: 0;
 	left: 0;
@@ -24,7 +24,7 @@
 
 /* @section 2. dialog */
 
-%dialog
+%component-dialog
 {
 	box-sizing: border-box;
 	left: 50%;

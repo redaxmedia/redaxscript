@@ -48,12 +48,7 @@
 
 .rs-wrapper-table
 {
-	overflow: hidden;
-}
-
-.rs-wrapper-table > table
-{
-	width: 100%;
+	@extend %wrapper-table;
 }
 
 /* @section 3. header */

@@ -14,7 +14,7 @@
 
 .rs-overlay-dialog
 {
-	@extend %overlay;
+	@extend %overlay-dialog;
 	animation: rs-fade 0.4s;
 	background: gray(170, 0.9);
 }
@@ -23,7 +23,7 @@
 
 .rs-component-dialog
 {
-	@extend %dialog;
+	@extend %component-dialog;
 	background: var(--rs-color-tertiary);
 	border-radius: 0.25em;
 	color: gray(255);

@@ -455,28 +455,6 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 /**
  * @tableofcontents
  *
- * 1. table
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Joerg Steinhauer
- */
-
-/* @section 1. table */
-
-.rs-table-default caption, .rs-table-default td, .rs-table-default th, .rs-admin-table-default caption, .rs-admin-table-default td, .rs-admin-table-default th
-{
-	text-align: left;
-}
-
-.rs-table-default th ~ th:last-child, .rs-table-default td ~ td:last-child, .rs-admin-table-default th ~ th:last-child, .rs-admin-table-default td ~ td:last-child
-{
-	text-align: right;
-}
-/**
- * @tableofcontents
- *
  * 1. tooltip
  * 2. fallback
  * 3. query

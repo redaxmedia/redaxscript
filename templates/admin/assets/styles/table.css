@@ -20,20 +20,9 @@
 
 .rs-admin-table-default
 {
+	@extend %table-default;
 	color: gray(71);
-}
-
-.rs-admin-table-default caption,
-.rs-admin-table-default td,
-.rs-admin-table-default th
-{
-	text-align: left;
-}
-
-.rs-admin-table-default th ~ th:last-child,
-.rs-admin-table-default td ~ td:last-child
-{
-	text-align: right;
+	font: 1.25rem var(--rs-admin-font-primary);
 }
 
 /* @section 1.1 body */
@@ -209,7 +198,6 @@
 {
 	background: gray(32);
 	color: gray(204);
-	font: bold 1.25rem var(--rs-admin-font-primary);
 	text-transform: uppercase;
 }
 

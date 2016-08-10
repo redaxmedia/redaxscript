@@ -50,6 +50,46 @@
 /**
  * @tableofcontents
  *
+ * 1. table
+ * 2. wrapper table
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. table */
+
+.rs-admin-table-default
+{
+}
+
+.rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
+{
+	font-weight: bold;
+	text-align: left;
+}
+
+.rs-admin-table-default th ~ th:last-child, .rs-admin-table-default td ~ td:last-child
+{
+	text-align: right;
+}
+
+/* @section 2. wrapper table */
+
+.rs-admin-wrapper-table
+{
+	overflow: hidden
+}
+
+.rs-admin-wrapper-table > table
+{
+	width: 100%;
+}
+/**
+ * @tableofcontents
+ *
  * 1. variable
  *    1.1 base color
  *    1.2 note color
@@ -193,16 +233,6 @@
  */
 
 /* @section 1. wrapper */
-
-.rs-admin-wrapper-table
-{
-	overflow: hidden;
-}
-
-.rs-admin-wrapper-table > table
-{
-	width: 100%;
-}
 
 /* @section 2. space between elements */
 
@@ -1349,16 +1379,7 @@
 .rs-admin-table-default
 {
 	color: rgb(71, 71, 71);
-}
-
-.rs-admin-table-default caption, .rs-admin-table-default td, .rs-admin-table-default th
-{
-	text-align: left;
-}
-
-.rs-admin-table-default th ~ th:last-child, .rs-admin-table-default td ~ td:last-child
-{
-	text-align: right;
+	font: 1.25rem 'open sans condensed', arial, sans-serif;
 }
 
 /* @section 1.1 body */
@@ -1525,7 +1546,6 @@
 {
 	background: rgb(32, 32, 32);
 	color: rgb(204, 204, 204);
-	font: bold 1.25rem 'open sans condensed', arial, sans-serif;
 	text-transform: uppercase;
 }
 
