@@ -65,7 +65,7 @@
 {
 }
 
-.rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
+.rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default tfoot td
 {
 	font-weight: bold;
 	text-align: left;
@@ -219,6 +219,25 @@
 .rs-admin-title-content a
 {
 	color: rgb(32, 32, 32);
+}
+
+/* @section 5. flag */
+
+.rs-admin-text-flag
+{
+	background: #0090db;
+	border-radius: 0.125em;
+	color: rgb(255, 255, 255);
+	display: inline-block;
+	font-size: 0.75em;
+	line-height: 1.25em;
+	padding: 0.375em 0.5em;
+	text-transform: uppercase;
+}
+
+.rs-admin-table-default .rs-admin-text-flag
+{
+	margin-right: 1em;
 }
 /**
  * @tableofcontents
@@ -757,20 +776,6 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
-/* @section 2. icon flag */
-
-.rs-admin-icon-flag
-{
-	background: #0090db;
-	border-radius: 0.125em;
-	color: rgb(255, 255, 255);
-	display: inline-block;
-	font-size: 0.75em;
-	letter-spacing: 0.125em;
-	line-height: 1.25em;
-	padding: 0.5em;
-	text-transform: uppercase;
-}
 /**
  * @tableofcontents
  *
@@ -1379,39 +1384,35 @@
 .rs-admin-table-default
 {
 	color: rgb(71, 71, 71);
-	font: 1.25rem 'open sans condensed', arial, sans-serif;
-}
+	font: 1.25rem 'open sans condensed', arial, sans-serif
 
-/* @section 1.1 body */
+	/* @section 1.1 body */
+}
 
 .rs-admin-table-default tbody
 {
 	border: solid rgb(185, 185, 185);
-	border-width: 0 1px;
+	border-width: 0 1px;/* odd look *//* even look */
 }
-
-/* odd look */
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
 	background: rgb(226, 226, 226);
 }
 
-/* even look */
-
 .rs-admin-table-default tbody:nth-child(even) tr
 {
 	background: rgb(218, 218, 218);
 }
 
-.rs-admin-table-default tbody + tbody tr, .rs-admin-table-default tbody tr + tr
-{
-	border-top: 1px solid rgb(185, 185, 185);
-}
-
-.rs-admin-table-default caption + tbody tr:last-child
+.rs-admin-table-default tbody tr:not(:last-child)
 {
 	border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+.rs-admin-table-default tbody + tbody tr:first-child
+{
+	border-top: 1px solid rgb(185, 185, 185);
 }
 
 .rs-admin-table-default tbody td
@@ -1467,11 +1468,6 @@
 	color: rgb(71, 71, 71);
 	font-weight: bold;
 	text-decoration: underline;
-}
-
-.rs-admin-table-default tbody .rs-admin-icon-flag
-{
-	margin-right: 1em;
 }
 
 /* @section 1.4 list control admin */

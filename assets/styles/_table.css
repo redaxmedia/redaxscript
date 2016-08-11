@@ -15,7 +15,7 @@
 %table-default
 {
 	& caption,
-	& thead th,
+	& th,
 	& tfoot td
 	{
 		font-weight: bold;

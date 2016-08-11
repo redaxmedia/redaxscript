@@ -555,7 +555,7 @@ function admin_users_list()
 			$output .= '><td>';
 			if ($language)
 			{
-				$output .= '<span class="rs-admin-icon-flag rs-admin-language-' . $language . '" title="' . Redaxscript\Language::get($language) . '">' . $language . '</span>';
+				$output .= '<span class="rs-admin-text-flag rs-admin-language-' . $language . '" title="' . Redaxscript\Language::get($language) . '">' . $language . '</span>';
 			}
 			$output .= $name;
 

@@ -9,7 +9,7 @@ $titlePartialElement->init('h3',
 $iconElement = new Html\Element();
 $iconElement->init('span',
 [
-	'class' => 'rs-icon-flag'
+	'class' => 'rs-text-flag'
 ]);
 $languagesDirectory = new Directory();
 $languagesDirectory->init('languages');
@@ -18,7 +18,7 @@ $languagesDirectoryArray = $languagesDirectory->getArray();
 
 <!-- icon -->
 
-<?php echo $titlePartialElement->text('.rs-icon-flag.rs-language-xx'); ?>
+<?php echo $titlePartialElement->text('.rs-text-flag.rs-language-xx'); ?>
 
 <div class="rs-fn-clearfix">
 

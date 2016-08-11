@@ -15,27 +15,29 @@
 .rs-table-default
 {
 	@extend %table-default;
-}
 
-.rs-table-default caption,
-.rs-table-default td,
-.rs-table-default th
-{
-	background: gray(200);
-	padding: 0.5em 0.75em;
-}
+	& caption,
+	& th,
+	& td
+	{
+		padding: 0.5em 0.75em;
+	}
 
-/* @section 1.1 body */
+	& tbody
+	{
+		background: gray(200);
+	}
 
-.rs-table-default th,
-.rs-table-default tfoot td,
-.rs-table-default caption
-{
-	background: var(--rs-color-tertiary);
-	color: gray(255);
-}
+	& tr
+	{
+		border-bottom: 1px solid var(--rs-color-tertiary);
+	}
 
-.rs-table-default tr
-{
-	border-bottom: 1px solid var(--rs-color-tertiary);
+	& caption,
+	& th,
+	& tfoot td
+	{
+		background: var(--rs-color-tertiary);
+		color: gray(255);
+	}
 }

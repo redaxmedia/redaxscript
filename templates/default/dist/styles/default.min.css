@@ -118,7 +118,7 @@
 {
 }
 
-.rs-table-default caption, .rs-table-default thead th, .rs-table-default tfoot td
+.rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
 {
 	font-weight: bold;
 	text-align: left;
@@ -160,18 +160,6 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-/* @section 2. icon flag */
-
-.rs-icon-flag
-{
-	background: #323e4c;
-	border-radius: 0.125em;
-	color: rgb(255, 255, 255);
-	display: inline-block;
-	margin: 0.125em;
-	padding: 0.125em 0.5em;
-	text-transform: uppercase;
-}
 /**
  * @tableofcontents
  *
@@ -1686,23 +1674,29 @@ ul.rs-list-default li:before
 
 /* @section 1. table default */
 
-.rs-table-default caption, .rs-table-default td, .rs-table-default th
+.rs-table-default
 {
-	background: rgb(200, 200, 200);
+}
+
+.rs-table-default caption, .rs-table-default th, .rs-table-default td
+{
 	padding: 0.5em 0.75em;
 }
 
-/* @section 1.1 body */
-
-.rs-table-default th, .rs-table-default tfoot td, .rs-table-default caption
+.rs-table-default tbody
 {
-	background: #323e4c;
-	color: rgb(255, 255, 255);
+	background: rgb(200, 200, 200);
 }
 
 .rs-table-default tr
 {
 	border-bottom: 1px solid #323e4c;
+}
+
+.rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
+{
+	background: #323e4c;
+	color: rgb(255, 255, 255);
 }
 /**
  * @tableofcontents
