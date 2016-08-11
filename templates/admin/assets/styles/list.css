@@ -13,6 +13,11 @@
 
 /* @section 1. list control admin */
 
+.rs-admin-table-default .rs-admin-list-control
+{
+	margin-top: 0.5em;
+}
+
 .rs-admin-list-control a,
 .rs-admin-list-control span
 {

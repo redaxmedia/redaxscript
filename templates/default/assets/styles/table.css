@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. table default
+ *    1.1 head and foot
+ *    1.2 body
  *
  * @since 3.0.0
  *
@@ -22,15 +24,7 @@
 		padding: 0.5em 0.75em;
 	}
 
-	& tbody
-	{
-		background: gray(200);
-	}
-
-	& tr
-	{
-		border-bottom: 1px solid var(--rs-color-tertiary);
-	}
+	/* @section 1.1 head and foot */
 
 	& caption,
 	& th,
@@ -38,5 +32,17 @@
 	{
 		background: var(--rs-color-tertiary);
 		color: gray(255);
+	}
+
+	/* @section 1.2 body */
+
+	& tbody
+	{
+		background: gray(200);
+
+		& tr:not(:last-child)
+		{
+			border-bottom: 1px solid var(--rs-color-tertiary);
+		}
 	}
 }

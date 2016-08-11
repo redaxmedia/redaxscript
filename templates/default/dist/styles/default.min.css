@@ -1662,6 +1662,8 @@ ul.rs-list-default li:before
  * @tableofcontents
  *
  * 1. table default
+ *    1.1 head and foot
+ *    1.2 body
  *
  * @since 3.0.0
  *
@@ -1673,6 +1675,10 @@ ul.rs-list-default li:before
 
 .rs-table-default
 {
+
+	/* @section 1.1 head and foot */
+
+	/* @section 1.2 body */
 }
 
 .rs-table-default caption, .rs-table-default th, .rs-table-default td
@@ -1680,20 +1686,20 @@ ul.rs-list-default li:before
 	padding: 0.5em 0.75em;
 }
 
+.rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
+{
+	background: #323e4c;
+	color: rgb(255, 255, 255);
+}
+
 .rs-table-default tbody
 {
 	background: rgb(200, 200, 200);
 }
 
-.rs-table-default tr
+.rs-table-default tbody tr:not(:last-child)
 {
 	border-bottom: 1px solid #323e4c;
-}
-
-.rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
-{
-	background: #323e4c;
-	color: rgb(255, 255, 255);
 }
 /**
  * @tableofcontents

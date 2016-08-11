@@ -37,7 +37,7 @@
 	--rs-admin-gradient-secondary: linear-gradient(var(--rs-admin-color-error-light), var(--rs-admin-color-error));
 	--rs-admin-gradient-tertiary: linear-gradient(var(--rs-admin-color-success-light), var(--rs-admin-color-success));
 	--rs-admin-gradient-quaternary: linear-gradient(gray(226), gray(218));
-	--rs-admin-gradient-quinary: linear-gradient(gray(187), gray(185));
+	--rs-admin-gradient-quinary: linear-gradient(gray(195), gray(190));
 	--rs-admin-gradient-senary: linear-gradient(gray(60), gray(48));
 
 	/* @section 1.4 font */

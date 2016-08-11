@@ -139,11 +139,6 @@
 	text-decoration: underline;
 }
 
-.rs-admin-link-default:hover
-{
-	text-decoration: none;
-}
-
 /* @section 2. title accordion admin */
 
 .rs-admin-title-accordion
@@ -810,9 +805,14 @@
 
 /* @section 1. list control admin */
 
+.rs-admin-table-default .rs-admin-list-control
+{
+	margin-top: 0.5em;
+}
+
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: linear-gradient(rgb(187, 187, 187), rgb(185, 185, 185));
+	background: linear-gradient(rgb(195, 195, 195), rgb(190, 190, 190));
 	border-radius: 0.25em;
 	color: rgb(102, 102, 102);
 	display: inline-block;
@@ -1364,13 +1364,10 @@
  * @tableofcontents
  *
  * 1. admin table
- *    1.1 body
- *    1.2 row group
- *    1.3 several elements
- *    1.4 list control admin
- *    1.5 move control
- *    1.6 head and foot
- *    1.7 column move
+ *    1.1 head and foot
+ *    1.2 body
+ *    1.3 moveup and movedown
+ *    1.4 col rank
  *
  * @since 3.0.0
  *
@@ -1385,13 +1382,29 @@
 	color: rgb(71, 71, 71);
 	font: 1.25rem 'open sans condensed', arial, sans-serif
 
-	/* @section 1.1 body */
+	/* @section 1.1 head and foot */
+
+	/* @section 1.2 body */
+
+	/* @section 1.3 moveup and movedown */
+
+	/* @section 1.4 col rank */
+}
+
+.rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default td
+{
+	padding: 0.5em 0.75em;
+}
+
+.rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
+{
+	background: rgb(32, 32, 32);
+	color: rgb(204, 204, 204);
+	text-transform: uppercase;
 }
 
 .rs-admin-table-default tbody
-{
-	border: solid rgb(185, 185, 185);
-	border-width: 0 1px;/* odd look *//* even look */
+{/* odd look *//* even look */
 }
 
 .rs-admin-table-default tbody:nth-child(odd) tr
@@ -1404,6 +1417,13 @@
 	background: rgb(218, 218, 218);
 }
 
+.rs-admin-table-default tbody tr.rs-admin-row-group
+{
+	background: rgb(200, 200, 200);
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
 .rs-admin-table-default tbody tr:not(:last-child)
 {
 	border-bottom: 1px solid rgb(185, 185, 185);
@@ -1414,79 +1434,11 @@
 	border-top: 1px solid rgb(185, 185, 185);
 }
 
-.rs-admin-table-default tbody td
+.rs-admin-table-default tbody tr.rs-admin-is-disabled
 {
-	padding: 0.25em 0.5em;
-}
-
-/* row disabled */
-
-.rs-admin-table-default tbody .rs-admin-row-disabled
-{
-	background: rgb(221, 221, 221);
 	color: rgb(185, 185, 185);
+	text-decoration: line-through;
 }
-
-/* @section 1.2 row group */
-
-.rs-admin-table-default tbody .rs-admin-row-group
-{
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-.rs-admin-table-default tbody .rs-admin-row-group td
-{
-	padding: 1.25em 0.75em;
-}
-
-.rs-admin-table-default tbody .rs-admin-row-group td:before
-{
-	content: 's';
-	font: 1.5rem 'icon admin';
-	margin-right: 0.5em;
-	text-transform: lowercase;
-	vertical-align: text-bottom;
-}
-
-/* @section 1.3 several elements */
-
-.rs-admin-table-default tbody .rs-admin-link-parent
-{
-	color: rgb(102, 102, 102);
-	text-decoration: underline;
-}
-
-.rs-admin-table-default tbody .rs-admin-link-parent:hover
-{
-	color: rgb(71, 71, 71);
-}
-
-.rs-admin-table-default tbody .rs-admin-link-view
-{
-	color: rgb(71, 71, 71);
-	font-weight: bold;
-	text-decoration: underline;
-}
-
-/* @section 1.4 list control admin */
-
-.rs-admin-table-default tbody .rs-admin-list-control
-{
-	margin-top: 0.5em;
-}
-
-.rs-admin-desktop .rs-admin-table-default tbody .rs-admin-list-control
-{
-	visibility: hidden;
-}
-
-.rs-admin-desktop .rs-admin-table-default tbody tr:hover .rs-admin-list-control
-{
-	visibility: visible;
-}
-
-/* @section 1.5 move control */
 
 .rs-admin-table-default .rs-admin-button-moveup, .rs-admin-table-default .rs-admin-button-movedown
 {
@@ -1494,7 +1446,13 @@
 	display: block;
 	min-height: 2.5em;
 	position: relative;
-	transition: color 0.4s;
+	transition: color 0.2s;
+}
+
+.rs-admin-table-default .rs-admin-button-moveup.rs-admin-is-disabled, .rs-admin-table-default .rs-admin-button-movedown.rs-admin-is-disabled
+{
+	opacity: 0.1;
+	pointer-events: none;
 }
 
 .rs-admin-table-default .rs-admin-button-moveup:hover, .rs-admin-table-default .rs-admin-button-movedown:hover
@@ -1523,35 +1481,7 @@
 	content: 'c';
 }
 
-/* disabled move control */
-
-.rs-admin-table-default span.rs-admin-button-moveup:before, .rs-admin-table-default span.rs-admin-button-movedown:before
-{
-	color: rgb(185, 185, 185);
-}
-
-/* @section 1.6 head and foot */
-
-.rs-admin-table-default caption, .rs-admin-table-default thead, .rs-admin-table-default tfoot
-{
-	border: 1px solid rgb(34, 34, 34);
-}
-
-.rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
-{
-	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204);
-	text-transform: uppercase;
-}
-
-.rs-admin-table-default caption, .rs-admin-table-default thead th, .rs-admin-table-default tfoot td
-{
-	padding: 0.25em 0.5em;
-}
-
-/* @section 1.7 column move */
-
-.rs-admin-table-default tr td.rs-admin-col-rank, .rs-admin-table-default tr th.rs-admin-col-rank
+.rs-admin-table-default tr th.rs-admin-col-rank, .rs-admin-table-default tr td.rs-admin-col-rank
 {
 	direction: ltr;
 	text-align: left;
@@ -1564,12 +1494,12 @@
 	position: relative;
 }
 
-.rs-admin-table-default thead .rs-admin-col-rank:before, .rs-admin-table-default tfoot .rs-admin-col-rank:before
+.rs-admin-table-default thead .rs-admin-col-rank :before, .rs-admin-table-default tfoot .rs-admin-col-rank :before
 {
 	content: 'a';
-	font: 1.25rem/2.375rem 'icon admin';
+	font: 1em/2.375em 'icon admin';
 	position: absolute;
-	right: 1.125em;
+	right: 1.375em;
 	text-indent: 0;
 	text-transform: lowercase;
 	top: 0;

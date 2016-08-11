@@ -146,7 +146,7 @@ function admin_contents_list()
 				}
 				else
 				{
-					$class_status = 'rs-admin-row-disabled';
+					$class_status = 'rs-admin-is-disabled';
 				}
 
 				/* build route */
@@ -319,7 +319,7 @@ function admin_contents_list()
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-button-moveup">' . Redaxscript\Language::get('up') . '</span>';
+						$output .= '<a class="rs-admin-button-moveup rs-admin-is-disabled">' . Redaxscript\Language::get('up') . '</a>';
 					}
 					if ($rank < $rank_desc)
 					{
@@ -327,7 +327,7 @@ function admin_contents_list()
 					}
 					else
 					{
-						$output .= '<span class="rs-admin-button-movedown">' . Redaxscript\Language::get('down') . '</span>';
+						$output .= '<a class="rs-admin-button-movedown rs-admin-is-disabled">' . Redaxscript\Language::get('down') . '</a>';
 					}
 					$output .= '</td>';
 				}
@@ -414,7 +414,7 @@ function admin_groups_list()
 
 	/* collect thead and tfoot */
 
-	$output .= '<thead><tr><th class="rs-admin-col-name">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-col-alias">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-col-filter>' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
+	$output .= '<thead><tr><th class="rs-admin-col-name">' . Redaxscript\Language::get('name') . '</th><th class="rs-admin-col-alias">' . Redaxscript\Language::get('alias') . '</th><th class="rs-admin-col-filter">' . Redaxscript\Language::get('filter') . '</th></tr></thead>';
 	$output .= '<tfoot><tr><td>' . Redaxscript\Language::get('name') . '</td><td>' . Redaxscript\Language::get('alias') . '</td><td>' . Redaxscript\Language::get('filter') . '</td></tr></tfoot>';
 	if (!$result || !$num_rows)
 	{
@@ -441,7 +441,7 @@ function admin_groups_list()
 			}
 			else
 			{
-				$class_status = 'rs-admin-row-disabled';
+				$class_status = 'rs-admin-is-disabled';
 			}
 
 			/* collect table row */
@@ -538,7 +538,7 @@ function admin_users_list()
 			}
 			else
 			{
-				$class_status = 'rs-admin-row-disabled';
+				$class_status = 'rs-admin-is-disabled';
 			}
 
 			/* collect table row */
@@ -691,7 +691,7 @@ function admin_modules_list()
 				}
 				else
 				{
-					$class_status = 'rs-admin-row-disabled';
+					$class_status = 'rs-admin-is-disabled';
 				}
 
 				/* collect table row */
