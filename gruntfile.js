@@ -5,6 +5,7 @@ module.exports = function (grunt)
 	/* polyfill */
 
 	require('babel-polyfill');
+	grunt.path = require('path');
 
 	/* config grunt */
 
@@ -314,7 +315,7 @@ module.exports = function (grunt)
 					'assets/styles/_dialog.css',
 					'assets/styles/_dropdown.css',
 					'assets/styles/_table.css',
-					'templates/default/assets/styles/icon.css', //rename to _icon.css
+					'templates/default/assets/styles/_icon.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/layout.css',
@@ -421,8 +422,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/*/assets/styles/*.css',
-					'!templates/*/assets/styles/_icon.css'
+					'templates/*/assets/styles/*.css'
 				],
 				options:
 				{
@@ -471,7 +471,7 @@ module.exports = function (grunt)
 				options:
 				{
 					destCss: 'templates/default/assets/styles',
-					template: 'templates/default/assets/styles/_icon.css'
+					template: 'templates/default/assets/styles/_icon.tpl'
 				}
 			},
 			options:
@@ -485,6 +485,10 @@ module.exports = function (grunt)
 				codepoints:
 				{
 					ic_cast_24px: 0xE001
+				},
+				rename: function (name)
+				{
+					return grunt.path.basename(name).split('_').join('-');
 				},
 				autoHint: false,
 				htmlDemo: false
@@ -599,6 +603,17 @@ module.exports = function (grunt)
 				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
 				dot: true,
 				expand: true
+			}
+		},
+		rename:
+		{
+			webfont:
+			{				
+				src:
+				[
+					'templates/default/assets/styles/icon.tpl'
+				],
+				dest: 'templates/default/assets/styles/_icon.css'
 			}
 		},
 		compress:
@@ -789,6 +804,7 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-rename');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-diff-json');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
@@ -896,7 +912,8 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build-font',
 	[
-		'webfont'
+		'webfont',
+		'rename:webfont'
 	]);
 	grunt.registerTask('build-css',
 	[

@@ -1,8 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. font face
- * 2. placeholder
+ * 1. icon
  *
  * @since 3.0.0
  *
@@ -10,23 +9,10 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. font face */
+/* @section 1. icon */
 
 @font-face
 {
 	font-family: var(--rs-font-icon);
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
-
-/* @section 2. placeholder */
-<% for (var i in glyphs)
-{
-%>
-@define-placeholder rs-icon-<%=glyphs[i] %>
-{
-	content: '\<%= codepoints[i] %>';
-	font-family: var(--rs-font-icon);
-}
-<%
-}
-%>
