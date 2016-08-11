@@ -144,7 +144,6 @@
  * @tableofcontents
  *
  * 1. icon font
- * 2. icon flag
  *
  * @since 3.0.0
  *
@@ -159,7 +158,6 @@
 	font-family: 'icon default';
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
-
 /**
  * @tableofcontents
  *
@@ -1664,7 +1662,6 @@ ul.rs-list-default li:before
  * @tableofcontents
  *
  * 1. table default
- *    1.1 body
  *
  * @since 3.0.0
  *
