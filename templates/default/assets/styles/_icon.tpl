@@ -1,4 +1,4 @@
-/@section 1. icon */
+/* section 1. icon */
 
 @font-face
 {
@@ -8,7 +8,7 @@
 <% for (var i in glyphs)
 {
 %>
-%rs-icon-<%=glyphs[i] %>
+.rs-icon-<%=glyphs[i] %>
 {
 	content: '\<%= codepoints[i] %>';
 	font-family: var(--rs-font-icon);
