@@ -586,13 +586,21 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
 			},
+			initZwamp:
+			{
+				command: 'mkdir -p ../redaxscript-zwamp'
+			},
 			downloadZwamp:
 			{
-				command: 'mkdir -p ../redaxscript-zwamp && wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip'
+				command: 'wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip'
 			},
-			downloadPapercut:
+			downloadPapercutService:
 			{
-				command: 'mkdir -p ../redaxscript-zwamp/zwamp && wget papercut.codeplex.com/downloads/get/clickOnce/Papercut.application -O ../redaxscript-zwamp/zwamp/papercut.application'
+				command: 'wget github.com/Jaben/Papercut/releases/download/4.6.1.12/PapercutService.4.6.1.12.zip -O ../redaxscript-zwamp/papercut-service.zip'
+			},
+			batchZwamp:
+			{
+				command: 'echo "start zwamp.exe & start vdrive/.sys/papercut/Papercut.Service.exe" > ../redaxscript-zwamp/zwamp/start.bat'
 			},
 			zipZwamp:
 			{
@@ -601,6 +609,10 @@ module.exports = function (grunt)
 			unzipZwamp:
 			{
 				command: 'cd ../redaxscript-zwamp && unzip zwamp.zip -d zwamp -x *.txt && cd ../redaxscript'
+			},
+			unzipPapercutService:
+			{
+				command: 'cd ../redaxscript-zwamp && unzip papercut-service.zip -d zwamp/vdrive/.sys/papercut && cd ../redaxscript'
 			},
 			removeZwampWeb:
 			{
@@ -989,11 +1001,14 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('zwamp',
 	[
+		'shell:initZwamp',
 		'shell:downloadZwamp',
-		'shell:downloadPapercut',
+		'shell:downloadPapercutService',
 		'shell:unzipZwamp',
+		'shell:unzipPapercutService',
 		'shell:removeZwampWeb',
-		'copy:distZwamp',		
+		'copy:distZwamp',
+		'shell:batchZwamp',
 		'shell:zipZwamp',
 		'shell:removeZwampBuild'
 	]);
