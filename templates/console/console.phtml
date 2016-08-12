@@ -6,12 +6,7 @@
 	<!-- head -->
 
 	<head>
-		<title>Console</title>
-		<meta name="viewport" content="width=device-width" />
-		<link href="<?echo Tag::registry('root'); ?>/templates/console/dist/styles/console.min.css" rel="stylesheet" />
-		<link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
-		<link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
-		<link href="//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
+		<?php echo Tag::partial('templates/console/head.phtml'); ?>
 	</head>
 
 	<!-- body -->
