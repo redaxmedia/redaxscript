@@ -560,17 +560,25 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
 			},
-			addUpstream:
+			downloadZwamp:
 			{
-				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
+				command: 'mkdir -p ../redaxscript-zwamp && wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip -nc'
 			},
-			pullUpstream:
+			zipZwamp:
 			{
-				command: 'git pull upstream master && git pull upstream develop'
+				command: 'cd ../redaxscript-zwamp && zip redaxscript-zwamp.zip zwamp -r && cd ../redaxscript'
 			},
-			removeUpstream:
+			unzipZwamp:
 			{
-				command: 'git remote rm upstream'
+				command: 'unzip ../redaxscript-zwamp/zwamp.zip -d ../redaxscript-zwamp/zwamp'
+			},
+			removeZwampWeb:
+			{
+				command: 'rm -rf ../redaxscript-zwamp/zwamp/vdrive/web'
+			},
+			removeZwampBuild:
+			{
+				command: 'rm -rf ../redaxscript-zwamp/zwamp/'
 			},
 			removeBuild:
 			{
@@ -601,6 +609,16 @@ module.exports = function (grunt)
 					'<%=compress.distLite.src%>'
 				],
 				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
+				dot: true,
+				expand: true
+			},
+			distZwamp:
+			{
+				src:
+				[
+					'<%=compress.distFull.src%>'
+				],
+				dest: '../redaxscript-zwamp/zwamp/vdrive/web',
 				dot: true,
 				expand: true
 			}
@@ -674,7 +692,7 @@ module.exports = function (grunt)
 		},
 		deployFTP:
 		{
-			develop:
+			files:
 			{
 				src:
 				[
@@ -687,8 +705,26 @@ module.exports = function (grunt)
 					port: 21,
 					authKey: 'develop',
 					authPath: '../credentials/.redaxscript'
-				},
-				forceVerbose: true
+				}
+			},
+			zwamp:
+			{
+				src:
+				[
+					'../redaxscript-zwamp'
+				],
+				dest: 'zwamp',
+				exclusions:
+				[
+					'../redaxscript-zwamp/zwamp.zip'
+				],
+				auth:
+				{
+					host: 'develop.redaxscript.com',
+					port: 21,
+					authKey: 'develop',
+					authPath: '../credentials/.redaxscript'
+				}
 			}
 		},
 		img:
@@ -893,12 +929,6 @@ module.exports = function (grunt)
 		'shell:apiModules',
 		'shell:apiTests'
 	]);
-	grunt.registerTask('sync',
-	[
-		'shell:addUpstream',
-		'shell:pullUpstream',
-		'shell:removeUpstream'
-	]);
 	grunt.registerTask('optimize',
 	[
 		'toc',
@@ -926,6 +956,15 @@ module.exports = function (grunt)
 		'copy:distFull',
 		'copy:distLite',
 		'compress'
+	]);
+	grunt.registerTask('zwamp',
+	[
+		'shell:downloadZwamp',
+		'shell:unzipZwamp',
+		'shell:removeZwampWeb',
+		'copy:distZwamp',		
+		'shell:zipZwamp',
+		'shell:removeZwampBuild'
 	]);
 	grunt.registerTask('deploy',
 	[
