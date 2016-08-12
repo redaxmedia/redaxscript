@@ -562,7 +562,11 @@ module.exports = function (grunt)
 			},
 			downloadZwamp:
 			{
-				command: 'mkdir -p ../redaxscript-zwamp && wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip -nc'
+				command: 'mkdir -p ../redaxscript-zwamp && wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip'
+			},
+			downloadPapercut:
+			{
+				command: 'mkdir -p ../redaxscript-zwamp/zwamp && wget papercut.codeplex.com/downloads/get/clickOnce/Papercut.application -O ../redaxscript-zwamp/zwamp/papercut.application'
 			},
 			zipZwamp:
 			{
@@ -570,7 +574,7 @@ module.exports = function (grunt)
 			},
 			unzipZwamp:
 			{
-				command: 'unzip ../redaxscript-zwamp/zwamp.zip -d ../redaxscript-zwamp/zwamp'
+				command: 'cd ../redaxscript-zwamp && unzip zwamp.zip -d zwamp -x *.txt && cd ../redaxscript'
 			},
 			removeZwampWeb:
 			{
@@ -578,7 +582,7 @@ module.exports = function (grunt)
 			},
 			removeZwampBuild:
 			{
-				command: 'rm -rf ../redaxscript-zwamp/zwamp/'
+				command: 'rm -rf ../redaxscript-zwamp/zwamp'
 			},
 			removeBuild:
 			{
@@ -657,7 +661,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-files/releases/redaxscript_<%= version %>_full.zip'
+					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-full.zip'
 				},
 				dot: true
 			},
@@ -685,7 +689,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-files/releases/redaxscript_<%= version %>_lite.zip'
+					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-lite.zip'
 				},
 				dot: true
 			}
@@ -960,6 +964,7 @@ module.exports = function (grunt)
 	grunt.registerTask('zwamp',
 	[
 		'shell:downloadZwamp',
+		'shell:downloadPapercut',
 		'shell:unzipZwamp',
 		'shell:removeZwampWeb',
 		'copy:distZwamp',		
