@@ -1367,7 +1367,7 @@
  *    1.1 head and foot
  *    1.2 body
  *    1.3 moveup and movedown
- *    1.4 col rank
+ *    1.4 rank
  *
  * @since 3.0.0
  *
@@ -1388,7 +1388,7 @@
 
 	/* @section 1.3 moveup and movedown */
 
-	/* @section 1.4 col rank */
+	/* @section 1.4 rank */
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default td
