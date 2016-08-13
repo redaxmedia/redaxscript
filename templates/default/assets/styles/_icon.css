@@ -6,157 +6,157 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-%rs-icon-ic-delete:before
+%rs-icon-delete:before
 {
 	content: '\e872';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-done:before
+%rs-icon-done:before
 {
 	content: '\e876';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-favorite:before
+%rs-icon-favorite:before
 {
 	content: '\e87d';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-info:before
+%rs-icon-info:before
 {
 	content: '\e88e';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-lock-open:before
+%rs-icon-lock-open:before
 {
 	content: '\e898';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-lock-outline:before
+%rs-icon-lock-outline:before
 {
 	content: '\e899';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-search:before
+%rs-icon-search:before
 {
 	content: '\e8b6';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-settings:before
+%rs-icon-settings:before
 {
 	content: '\e8b8';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-visibility:before
+%rs-icon-visibility:before
 {
 	content: '\e8f4';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-visibility-off:before
+%rs-icon-visibility-off:before
 {
 	content: '\e8f5';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-chat-bubble:before
+%rs-icon-chat-bubble:before
 {
 	content: '\e0ca';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-import-contacts:before
+%rs-icon-import-contacts:before
 {
 	content: '\e0e0';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-live-help:before
+%rs-icon-live-help:before
 {
 	content: '\e0c6';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-vpn-key:before
+%rs-icon-vpn-key:before
 {
 	content: '\e0da';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-add:before
+%rs-icon-add:before
 {
 	content: '\e145';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-clear:before
+%rs-icon-clear:before
 {
 	content: '\e14c';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-create:before
+%rs-icon-create:before
 {
 	content: '\e150';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-remove:before
+%rs-icon-remove:before
 {
 	content: '\e15b';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-insert-drive-file:before
+%rs-icon-insert-drive-file:before
 {
 	content: '\e24d';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-image:before
+%rs-icon-image:before
 {
 	content: '\e3f4';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-chevron-left:before
+%rs-icon-chevron-left:before
 {
 	content: '\e5cb';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-chevron-right:before
+%rs-icon-chevron-right:before
 {
 	content: '\e5cc';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-expand-less:before
+%rs-icon-expand-less:before
 {
 	content: '\e5ce';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-expand-more:before
+%rs-icon-expand-more:before
 {
 	content: '\e5cf';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-menu:before
+%rs-icon-menu:before
 {
 	content: '\e5d2';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-ic-person:before
+%rs-icon-person:before
 {
 	content: '\37fd';
 	font-family: var(--rs-font-icon);
