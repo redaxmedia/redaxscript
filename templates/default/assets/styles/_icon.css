@@ -158,6 +158,6 @@
 
 %rs-icon-person:before
 {
-	content: '\37fd';
+	content: '\e7fd';
 	font-family: var(--rs-font-icon);
 }

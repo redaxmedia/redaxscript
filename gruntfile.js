@@ -508,36 +508,7 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
-				codepoints:
-				{
-					'delete': 0xE872,
-					'done': 0xE876,
-					'favorite': 0xE87d,
-					'info': 0xE88e,
-					'lock-open': 0xE898,
-					'lock-outline': 0xE899,
-					'search': 0xE8b6,
-					'settings': 0xE8b8,
-					'visibility': 0xE8f4,
-					'visibility-off': 0xE8f5,
-					'chat-bubble': 0xE0ca,
-					'import-contacts': 0xE0e0,
-					'live-help': 0xE0c6,
-					'vpn-key': 0xE0da,
-					'add': 0xE145,
-					'clear': 0xE14c,
-					'create': 0xE150,
-					'remove': 0xE15b,
-					'insert-drive-file': 0xE24d,
-					'folder': 0xE2cc,
-					'image': 0xE3F4,
-					'chevron-left': 0xE5cb,
-					'chevron-right': 0xE5cc,
-					'expand-less': 0xE5ce,
-					'expand-more': 0xE5cf,
-					'menu': 0xE5d2,
-					'person': 0x37fd
-				},
+				codepointsFile: 'node_modules/codepoints/codepoints.json',
 				rename: function (name)
 				{
 					return grunt.path.basename(name).split('_').join('-').replace('ic-', '').replace('-24px', '');
