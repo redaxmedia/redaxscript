@@ -510,7 +510,33 @@ module.exports = function (grunt)
 				],
 				codepoints:
 				{
-					'ic-image': 0x2315
+					'ic-delete': 0xE872,
+					'ic-done': 0xE876,
+					'ic-favorite': 0xE87d,
+					'ic-info': 0xE88e,
+					'ic-lock-open': 0xE898,
+					'ic-lock-outline': 0xE899,
+					'ic-search': 0xE8b6,
+					'ic-settings': 0xE8b8,
+					'ic-visibility': 0xE8f4,
+					'ic-visibility-off': 0xE8f5,
+					'ic-chat-bubble': 0xE0ca,
+					'ic-import-contacts': 0xE0e0,
+					'ic-live-help': 0xE0c6,
+					'ic-vpn-key': 0xE0da,
+					'ic-add': 0xE145,
+					'ic-clear': 0xE14c,
+					'ic-create': 0xE150,
+					'ic-remove': 0xE15b,
+					'ic-insert-drive-file': 0xE24d,
+					'ic-folder': 0xE2cc,
+					'ic-image': 0xE3F4,
+					'ic-chevron-left': 0xE5cb,
+					'ic-chevron-right': 0xE5cc,
+					'ic-expand-less': 0xE5ce,
+					'ic-expand-more': 0xE5cf,
+					'ic-menu': 0xE5d2,
+					'ic-person': 0x37fd
 				},
 				rename: function (name)
 				{

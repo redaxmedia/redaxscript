@@ -8,156 +8,156 @@
 
 %rs-icon-ic-delete:before
 {
-	content: '\f101';
+	content: '\e872';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-done:before
 {
-	content: '\f102';
+	content: '\e876';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-favorite:before
 {
-	content: '\f103';
+	content: '\e87d';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-info:before
 {
-	content: '\f104';
+	content: '\e88e';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-lock-open:before
 {
-	content: '\f105';
+	content: '\e898';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-lock-outline:before
 {
-	content: '\f106';
+	content: '\e899';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-search:before
 {
-	content: '\f107';
+	content: '\e8b6';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-settings:before
 {
-	content: '\f108';
+	content: '\e8b8';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-visibility:before
 {
-	content: '\f109';
+	content: '\e8f4';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-visibility-off:before
 {
-	content: '\f10a';
+	content: '\e8f5';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-chat-bubble:before
 {
-	content: '\f10b';
+	content: '\e0ca';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-import-contacts:before
 {
-	content: '\f10c';
+	content: '\e0e0';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-live-help:before
 {
-	content: '\f10d';
+	content: '\e0c6';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-vpn-key:before
 {
-	content: '\f10e';
+	content: '\e0da';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-add:before
 {
-	content: '\f10f';
+	content: '\e145';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-clear:before
 {
-	content: '\f110';
+	content: '\e14c';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-create:before
 {
-	content: '\f111';
+	content: '\e150';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-remove:before
 {
-	content: '\f112';
+	content: '\e15b';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-insert-drive-file:before
 {
-	content: '\f113';
+	content: '\e24d';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-image:before
 {
-	content: '\2315';
+	content: '\e3f4';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-chevron-left:before
 {
-	content: '\f114';
+	content: '\e5cb';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-chevron-right:before
 {
-	content: '\f115';
+	content: '\e5cc';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-expand-less:before
 {
-	content: '\f116';
+	content: '\e5ce';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-expand-more:before
 {
-	content: '\f117';
+	content: '\e5cf';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-menu:before
 {
-	content: '\f118';
+	content: '\e5d2';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-ic-person:before
 {
-	content: '\f119';
+	content: '\37fd';
 	font-family: var(--rs-font-icon);
 }
