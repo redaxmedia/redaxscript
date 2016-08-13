@@ -510,11 +510,11 @@ module.exports = function (grunt)
 				],
 				codepoints:
 				{
-					ic_search_24px: 0x2315
+					'ic-image': 0x2315
 				},
 				rename: function (name)
 				{
-					return grunt.path.basename(name).split('_').join('-');
+					return grunt.path.basename(name).split('_').join('-').replace('-24px', '');
 				},
 				autoHint: false,
 				htmlDemo: false
