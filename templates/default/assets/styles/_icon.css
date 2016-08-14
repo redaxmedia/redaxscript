@@ -6,157 +6,157 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-%rs-icon-delete:before
+%rs-icon-delete
 {
 	content: '\e872';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-done:before
+%rs-icon-done
 {
 	content: '\e876';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-favorite:before
+%rs-icon-favorite
 {
 	content: '\e87d';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-info:before
+%rs-icon-info
 {
 	content: '\e88e';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-lock-open:before
+%rs-icon-lock-open
 {
 	content: '\e898';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-lock-outline:before
+%rs-icon-lock-outline
 {
 	content: '\e899';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-search:before
+%rs-icon-search
 {
 	content: '\e8b6';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-settings:before
+%rs-icon-settings
 {
 	content: '\e8b8';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-visibility:before
+%rs-icon-visibility
 {
 	content: '\e8f4';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-visibility-off:before
+%rs-icon-visibility-off
 {
 	content: '\e8f5';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-chat-bubble:before
+%rs-icon-chat-bubble
 {
 	content: '\e0ca';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-import-contacts:before
+%rs-icon-import-contacts
 {
 	content: '\e0e0';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-live-help:before
+%rs-icon-live-help
 {
 	content: '\e0c6';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-vpn-key:before
+%rs-icon-vpn-key
 {
 	content: '\e0da';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-add:before
+%rs-icon-add
 {
 	content: '\e145';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-clear:before
+%rs-icon-clear
 {
 	content: '\e14c';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-create:before
+%rs-icon-create
 {
 	content: '\e150';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-remove:before
+%rs-icon-remove
 {
 	content: '\e15b';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-insert-drive-file:before
+%rs-icon-insert-drive-file
 {
 	content: '\e24d';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-image:before
+%rs-icon-image
 {
 	content: '\e3f4';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-chevron-left:before
+%rs-icon-chevron-left
 {
 	content: '\e5cb';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-chevron-right:before
+%rs-icon-chevron-right
 {
 	content: '\e5cc';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-expand-less:before
+%rs-icon-expand-less
 {
 	content: '\e5ce';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-expand-more:before
+%rs-icon-expand-more
 {
 	content: '\e5cf';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-menu:before
+%rs-icon-menu
 {
 	content: '\e5d2';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-person:before
+%rs-icon-person
 {
 	content: '\e7fd';
 	font-family: var(--rs-font-icon);

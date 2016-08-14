@@ -8,7 +8,7 @@
 <% for (var i in glyphs)
 {
 %>
-%rs-icon-<%=glyphs[i] %>:before
+%rs-icon-<%=glyphs[i] %>
 {
 	content: '\<%= codepoints[i] %>';
 	font-family: var(--rs-font-icon);

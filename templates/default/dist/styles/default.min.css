@@ -148,6 +148,12 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
+.rs-button-search:after
+{
+	content: '\e8b6';
+	font-family: 'icon default';
+}
+
 /**
  * @tableofcontents
  *
@@ -928,8 +934,6 @@ a
 
 .rs-button-search:after
 {
-	content: '\2315';
-	font: 1em/1em 'icon default';
 	left: 0;
 	position: absolute;
 	right: 0;
