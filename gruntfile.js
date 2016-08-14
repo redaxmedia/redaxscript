@@ -508,7 +508,7 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
-				codepointsFile: 'node_modules/codepoints/codepoints.json',
+				codepointsFile: 'node_modules/material-design-codepoints/codepoints.json',
 				rename: function (name)
 				{
 					return grunt.path.basename(name).split('_').join('-').replace('ic-', '').replace('-24px', '');
