@@ -8,156 +8,156 @@
 
 %rs-icon-delete
 {
-	content: '\e872';
+	content: '\f101';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-done
 {
-	content: '\e876';
+	content: '\f102';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-favorite
 {
-	content: '\e87d';
+	content: '\f103';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-info
 {
-	content: '\e88e';
+	content: '\f104';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-lock-open
 {
-	content: '\e898';
+	content: '\f105';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-lock-outline
 {
-	content: '\e899';
+	content: '\f106';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-search
 {
-	content: '\e8b6';
+	content: '\2315';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-settings
 {
-	content: '\e8b8';
+	content: '\f107';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-visibility
 {
-	content: '\e8f4';
+	content: '\f108';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-visibility-off
 {
-	content: '\e8f5';
+	content: '\f109';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chat-bubble
 {
-	content: '\e0ca';
+	content: '\f10a';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-import-contacts
 {
-	content: '\e0e0';
+	content: '\f10b';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-live-help
 {
-	content: '\e0c6';
+	content: '\f10c';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-vpn-key
 {
-	content: '\e0da';
+	content: '\f10d';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-add
 {
-	content: '\e145';
+	content: '\f10e';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-clear
 {
-	content: '\e14c';
+	content: '\f10f';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-create
 {
-	content: '\e150';
+	content: '\f110';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-remove
 {
-	content: '\e15b';
+	content: '\f111';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-insert-drive-file
 {
-	content: '\e24d';
+	content: '\f112';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-image
 {
-	content: '\e3f4';
+	content: '\f113';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chevron-left
 {
-	content: '\e5cb';
+	content: '\f114';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chevron-right
 {
-	content: '\e5cc';
+	content: '\f115';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-less
 {
-	content: '\e5ce';
+	content: '\f116';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-more
 {
-	content: '\e5cf';
+	content: '\f117';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-menu
 {
-	content: '\e5d2';
+	content: '\f118';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-person
 {
-	content: '\e7fd';
+	content: '\f119';
 	font-family: var(--rs-font-icon);
 }
