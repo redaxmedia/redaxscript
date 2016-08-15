@@ -19,37 +19,37 @@
 
 %rs-icon-delete
 {
-	content: '\f101';
+	content: '\2297';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-done
 {
-	content: '\f102';
+	content: '\2714';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-favorite
 {
-	content: '\f103';
+	content: '\2665';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-info
 {
-	content: '\f104';
+	content: '\21';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-lock-open
 {
-	content: '\f105';
+	content: '\f101';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-lock-outline
 {
-	content: '\f106';
+	content: '\f102';
 	font-family: var(--rs-font-icon);
 }
 
@@ -61,114 +61,114 @@
 
 %rs-icon-settings
 {
-	content: '\f107';
+	content: '\2731';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-visibility
 {
-	content: '\f108';
+	content: '\2295';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-visibility-off
 {
-	content: '\f109';
+	content: '\f103';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chat-bubble
 {
-	content: '\f10a';
+	content: '\f104';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-import-contacts
 {
-	content: '\f10b';
+	content: '\f105';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-live-help
 {
-	content: '\f10c';
+	content: '\f106';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-vpn-key
 {
-	content: '\f10d';
+	content: '\f107';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-add
 {
-	content: '\f10e';
+	content: '\2b';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-clear
 {
-	content: '\f10f';
+	content: '\d7';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-create
 {
-	content: '\f110';
+	content: '\270e';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-remove
 {
-	content: '\f111';
+	content: '\2d';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-insert-drive-file
 {
-	content: '\f112';
+	content: '\f108';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-image
 {
-	content: '\f113';
+	content: '\2600';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chevron-left
 {
-	content: '\f114';
+	content: '\f109';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chevron-right
 {
-	content: '\f115';
+	content: '\f10a';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-less
 {
-	content: '\f116';
+	content: '\f10b';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-more
 {
-	content: '\f117';
+	content: '\f10c';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-menu
 {
-	content: '\f118';
+	content: '\2261';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-person
 {
-	content: '\f119';
+	content: '\26c4';
 	font-family: var(--rs-font-icon);
 }
