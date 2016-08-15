@@ -30,7 +30,7 @@
 
 .rs-title-teaser
 {
-	animation: rs-fade 1s ease 0.5s forwards, rs-slide-in-down 1s ease 0.2s forwards;
+	animation: fade-in 1s ease 0.5s forwards, move-down 1s ease 0.2s forwards;
 	background: color(var(--rs-color-tertiary) a(80%));
 	border-left: 0.25em solid var(--rs-color-quaternary);
 	border-radius: 0 0.125em 0.125em 0;

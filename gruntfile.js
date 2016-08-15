@@ -322,7 +322,6 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/layout.css',
-					'templates/default/assets/styles/animate.css',
 					'templates/default/assets/styles/box.css',
 					'templates/default/assets/styles/button.css',
 					'templates/default/assets/styles/dialog.css',					

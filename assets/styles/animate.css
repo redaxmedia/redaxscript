@@ -2,8 +2,19 @@
  * @tableofcontents
  *
  * 1. fade
+ *    1.1 in
+ *    1.2 out
  * 2. rotate
+ *    2.1 right
+ *    2.2 left
  * 3. scale
+ *    3.1 in
+ *    3.2 out
+ * 4. move
+ *    4.1 up
+ *    4.2 down
+ *    4.3 right
+ *    4.4 left
  *
  * @since 3.0.0
  *
@@ -13,7 +24,9 @@
 
 /* @section 1. fade */
 
-@keyframes rs-fade
+/* @section 1.1 in */
+
+@keyframes fade-in
 {
 	from
 	{
@@ -26,13 +39,30 @@
 	}
 }
 
-/* @section 2. rotate */
+/* @section 1.2 out */
 
-@keyframes rs-rotate
+@keyframes fade-out
 {
 	from
 	{
-		transform: rotate(0deg);
+		opacity: 1;
+	}
+
+	to
+	{
+		opacity: 0;
+	}
+}
+
+/* @section 2. rotate */
+
+/* @section 2.1 right */
+
+@keyframes rotate-right
+{
+	from
+	{
+		transform: rotate(0);
 	}
 
 	to
@@ -41,9 +71,26 @@
 	}
 }
 
+/* @section 2.2 left */
+
+@keyframes rotate-left
+{
+	from
+	{
+		transform: rotate(360deg);
+	}
+
+	to
+	{
+		transform: rotate(0);
+	}
+}
+
 /* @section 3. scale */
 
-@keyframes rs-scale
+/* @section 3.1 in */
+
+@keyframes scale-in
 {
 	from
 	{
@@ -53,5 +100,82 @@
 	to
 	{
 		transform: scale(1);
+	}
+}
+
+/* @section 3.2 out */
+
+@keyframes scale-out
+{
+	from
+	{
+		transform: scale(1);
+	}
+
+	to
+	{
+		transform: scale(0);
+	}
+}
+
+/* @section 4. move */
+
+/* @section 4.1 up */
+
+@keyframes move-up
+{
+	from
+	{
+		transform: translateY(100%);
+	}
+
+	to
+	{
+		transform: translateY(0);
+	}
+}
+
+/* @section 4.2 down */
+
+@keyframes move-down
+{
+	from
+	{
+		transform: translateY(-100%);
+	}
+
+	to
+	{
+		transform: translateY(0);
+	}
+}
+
+/* @section 4.3 right */
+
+@keyframes move-right
+{
+	from
+	{
+		transform: translateX(-100%);
+	}
+
+	to
+	{
+		transform: translateX(0);
+	}
+}
+
+/* @section 4.4 left */
+
+@keyframes move-left
+{
+	from
+	{
+		transform: translateX(100%);
+	}
+
+	to
+	{
+		transform: translateX(0);
 	}
 }
