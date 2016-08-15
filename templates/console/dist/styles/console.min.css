@@ -1,27 +1,6 @@
 /**
  * @tableofcontents
  *
- * 1. variable
- *    1.1 base color
- *    1.2 font
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. variable */
-
-:root
-{
-	/* @section 1.1 base color */
-
-	/* @section 1.2 font */
-}
-/**
- * @tableofcontents
- *
  * 1. reset
  * 2. normalize
  *
@@ -93,6 +72,27 @@ input[type="search"]
 input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration
 {
 	-webkit-appearance: none;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 base color
+ *    1.2 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 base color */
+
+	/* @section 1.2 font */
 }
 /**
  * @tableofcontents

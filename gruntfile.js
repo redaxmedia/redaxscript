@@ -257,15 +257,13 @@ module.exports = function (grunt)
 				[
 					'assets/styles/_query.css',
 					'assets/styles/normalize.css',
-					'assets/styles/helper.css',
 					'assets/styles/animate.css',
 					'assets/styles/accordion.css',
 					'assets/styles/box.css',
 					'assets/styles/form.css',
 					'assets/styles/navigation.css',
 					'assets/styles/tab.css',
-					'assets/styles/tooltip.css',
-					'assets/styles/layout.css'
+					'assets/styles/tooltip.css'
 				],
 				dest: 'dist/styles/base.min.css'
 			},
@@ -274,7 +272,9 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
 					'assets/styles/_dialog.css',
+					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
 					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
@@ -286,6 +286,7 @@ module.exports = function (grunt)
 					'templates/admin/assets/styles/dock.css',
 					'templates/admin/assets/styles/field.css',
 					'templates/admin/assets/styles/form.css',
+					'templates/admin/assets/styles/helper.css',
 					'templates/admin/assets/styles/icon.css',
 					'templates/admin/assets/styles/interface.css',
 					'templates/admin/assets/styles/list.css',
@@ -301,8 +302,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/console/assets/styles/_variable.css',
 					'assets/styles/normalize.css',
+					'templates/console/assets/styles/_variable.css',
 					'templates/console/assets/styles/console.css'
 				],
 				dest: 'templates/console/dist/styles/console.min.css'
@@ -312,8 +313,10 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
 					'assets/styles/_dialog.css',
 					'assets/styles/_dropdown.css',
+					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
 					'templates/default/assets/styles/_icon.css',
 					'templates/default/assets/styles/_variable.css',
@@ -327,6 +330,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/field.css',
 					'templates/default/assets/styles/form.css',
 					'templates/default/assets/styles/header.css',
+					'templates/default/assets/styles/helper.css',
 					'templates/default/assets/styles/list.css',
 					'templates/default/assets/styles/media.css',
 					'templates/default/assets/styles/navigation.css',

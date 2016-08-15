@@ -1,8 +1,9 @@
 /**
  * @tableofcontents
  *
- * 1. overlay
- * 2. dialog
+ * 1. dialog
+ *    1.1 overlay
+ *    1.2 component
  *
  * @since 3.0.0
  *
@@ -10,7 +11,9 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. overlay */
+/* @section 1. dialog */
+
+/* @section 1.1 overlay */
 
 %overlay-dialog
 {
@@ -22,7 +25,7 @@
 	z-index: 1000;
 }
 
-/* @section 2. dialog */
+/* @section 1.2 component */
 
 %component-dialog
 {

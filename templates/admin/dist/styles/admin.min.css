@@ -13,8 +13,7 @@
 /**
  * @tableofcontents
  *
- * 1. overlay
- * 2. dialog
+ * 1. clearfix
  *
  * @since 3.0.0
  *
@@ -22,7 +21,36 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. overlay */
+/* @section 1. clearfix */
+
+.rs-admin-fn-clearfix
+{
+	clear: both
+}
+
+.rs-admin-fn-clearfix:after
+{
+	clear: both;
+	content: '';
+	display: block;
+	height: 0
+}
+/**
+ * @tableofcontents
+ *
+ * 1. dialog
+ *    1.1 overlay
+ *    1.2 component
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dialog */
+
+/* @section 1.1 overlay */
 
 .rs-admin-overlay-dialog
 {
@@ -34,7 +62,7 @@
 	z-index: 1000;
 }
 
-/* @section 2. dialog */
+/* @section 1.2 component */
 
 .rs-admin-component-dialog
 {
@@ -46,6 +74,33 @@
 	transform: translate(-50%, -50%);
 	width: 80%;
 	z-index: 1100;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. redirect
+ *    1.1 overlay
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. redirect */
+
+/* @section 1.1 overlay */
+
+.rs-admin-meta-redirect
+{
+	background: rgb(255, 255, 255);
+	bottom: 0;
+	display: block;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 2000;
 }
 /**
  * @tableofcontents
@@ -68,12 +123,12 @@
 .rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default tfoot td
 {
 	font-weight: bold;
-	text-align: left;
+	text-align: left
 }
 
 .rs-admin-table-default th ~ th:last-child, .rs-admin-table-default td ~ td:last-child
 {
-	text-align: right;
+	text-align: right
 }
 
 /* @section 2. wrapper table */
@@ -85,7 +140,7 @@
 
 .rs-admin-wrapper-table > table
 {
-	width: 100%;
+	width: 100%
 }
 /**
  * @tableofcontents
@@ -545,7 +600,7 @@
 
 .rs-admin-component-dialog .rs-admin-button-default
 {
-	margin-top: 1em;
+	margin-top: 1em
 }
 
 /* @section 2.1 title dialog */
@@ -755,6 +810,22 @@
 /**
  * @tableofcontents
  *
+ * 1. clearfix
+ * 2. redirect
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. clearfix */
+
+/* @section 2. redirect */
+
+/**
+ * @tableofcontents
+ *
  * 1. font face
  *
  * @since 3.0.0
@@ -935,7 +1006,7 @@
 
 .rs-admin-component-panel a, .rs-admin-component-panel a:hover
 {
-	text-decoration: none;
+	text-decoration: none
 }
 
 /* @section 2. item panel */
@@ -951,7 +1022,7 @@
 	padding: 0 0.75em;
 	text-overflow: ellipsis;
 	text-transform: uppercase;
-	white-space: nowrap;
+	white-space: nowrap
 }
 
 /* link logout */
@@ -1047,7 +1118,7 @@
 	color: rgb(185, 185, 185);
 	cursor: pointer;
 	display: block;
-	font: bold 1rem/2.75rem 'open sans condensed', arial, sans-serif;
+	font: bold 1rem/2.75rem 'open sans condensed', arial, sans-serif
 }
 
 @media (min-width: 50em)
@@ -1057,12 +1128,12 @@
 	}
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 {
-		line-height: 3.625em;
+		line-height: 3.625em
 	}
 	.rs-admin-list-panel > li
 {
 		float: left;
-		position: relative;
+		position: relative
 	}
 }
 
@@ -1105,7 +1176,7 @@
 	}
 	.rs-admin-list-panel-children li > .rs-admin-link-panel, .rs-admin-list-panel-children li > .rs-admin-wrapper-panel-link
 {
-		padding-left: 3em;
+		padding-left: 3em
 	}
 }
 
@@ -1120,7 +1191,7 @@
 	.rs-admin-list-panel-children ul
 {
 		left: 100%;
-		top: 0;
+		top: 0
 	}
 }
 
@@ -1227,31 +1298,31 @@
 	position: absolute;
 	text-align: center;
 	top: 0.75em;
-	width: 1.75em;
+	width: 1.75em
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
 	background: #4c8c00;
-	content: '\2714';
+	content: '\2714'
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
 {
 	background: #e08400;
-	content: '\21';
+	content: '\21'
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
 	background: #a20000;
-	content: '\d7';
+	content: '\d7'
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
 	background: #0090db;
-	content: '\69';
+	content: '\69'
 }
 
 @media (min-width: 50em) and (max-width: 79.999em)
@@ -1393,14 +1464,14 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default td
 {
-	padding: 0.5em 0.75em;
+	padding: 0.5em 0.75em
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
 	background: rgb(32, 32, 32);
 	color: rgb(204, 204, 204);
-	text-transform: uppercase;
+	text-transform: uppercase
 }
 
 .rs-admin-table-default tbody
@@ -1409,35 +1480,35 @@
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
-	background: rgb(226, 226, 226);
+	background: rgb(226, 226, 226)
 }
 
 .rs-admin-table-default tbody:nth-child(even) tr
 {
-	background: rgb(218, 218, 218);
+	background: rgb(218, 218, 218)
 }
 
 .rs-admin-table-default tbody tr.rs-admin-row-group
 {
 	background: rgb(200, 200, 200);
 	font-weight: bold;
-	text-transform: uppercase;
+	text-transform: uppercase
 }
 
 .rs-admin-table-default tbody tr:not(:last-child)
 {
-	border-bottom: 1px solid rgb(185, 185, 185);
+	border-bottom: 1px solid rgb(185, 185, 185)
 }
 
 .rs-admin-table-default tbody + tbody tr:first-child
 {
-	border-top: 1px solid rgb(185, 185, 185);
+	border-top: 1px solid rgb(185, 185, 185)
 }
 
 .rs-admin-table-default tbody tr.rs-admin-is-disabled
 {
 	color: rgb(185, 185, 185);
-	text-decoration: line-through;
+	text-decoration: line-through
 }
 
 .rs-admin-table-default .rs-admin-button-moveup, .rs-admin-table-default .rs-admin-button-movedown
@@ -1446,18 +1517,18 @@
 	display: block;
 	min-height: 2.5em;
 	position: relative;
-	transition: color 0.2s;
+	transition: color 0.2s
 }
 
 .rs-admin-table-default .rs-admin-button-moveup.rs-admin-is-disabled, .rs-admin-table-default .rs-admin-button-movedown.rs-admin-is-disabled
 {
 	opacity: 0.1;
-	pointer-events: none;
+	pointer-events: none
 }
 
 .rs-admin-table-default .rs-admin-button-moveup:hover, .rs-admin-table-default .rs-admin-button-movedown:hover
 {
-	color: #0090db;
+	color: #0090db
 }
 
 .rs-admin-table-default .rs-admin-button-moveup:before, .rs-admin-table-default .rs-admin-button-movedown:before
@@ -1466,32 +1537,32 @@
 	font: 1.5rem 'icon admin';
 	position: absolute;
 	right: 0.25em;
-	text-indent: 0;
+	text-indent: 0
 }
 
 .rs-admin-table-default .rs-admin-button-moveup:before
 {
 	content: 'b';
-	top: 0.25em;
+	top: 0.25em
 }
 
 .rs-admin-table-default .rs-admin-button-movedown:before
 {
 	bottom: 0.25em;
-	content: 'c';
+	content: 'c'
 }
 
 .rs-admin-table-default tr th.rs-admin-col-rank, .rs-admin-table-default tr td.rs-admin-col-rank
 {
 	direction: ltr;
 	text-align: left;
-	text-indent: -999em;
+	text-indent: -999em
 }
 
 .rs-admin-table-default thead .rs-admin-col-rank, .rs-admin-table-default tfoot .rs-admin-col-rank
 {
 	display: block;
-	position: relative;
+	position: relative
 }
 
 .rs-admin-table-default thead .rs-admin-col-rank :before, .rs-admin-table-default tfoot .rs-admin-col-rank :before
@@ -1502,7 +1573,7 @@
 	right: 1.375em;
 	text-indent: 0;
 	text-transform: lowercase;
-	top: 0;
+	top: 0
 }
 /**
  * @tableofcontents

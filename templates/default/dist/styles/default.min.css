@@ -13,8 +13,7 @@
 /**
  * @tableofcontents
  *
- * 1. overlay
- * 2. dialog
+ * 1. clearfix
  *
  * @since 3.0.0
  *
@@ -22,7 +21,36 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. overlay */
+/* @section 1. clearfix */
+
+.rs-fn-clearfix
+{
+	clear: both
+}
+
+.rs-fn-clearfix:after
+{
+	clear: both;
+	content: '';
+	display: block;
+	height: 0
+}
+/**
+ * @tableofcontents
+ *
+ * 1. dialog
+ *    1.1 overlay
+ *    1.2 component
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dialog */
+
+/* @section 1.1 overlay */
 
 .rs-overlay-dialog
 {
@@ -34,7 +62,7 @@
 	z-index: 1000;
 }
 
-/* @section 2. dialog */
+/* @section 1.2 component */
 
 .rs-component-dialog
 {
@@ -71,18 +99,18 @@
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
-		user-select: none;
+		user-select: none
 	}
 	.rs-fn-dropdown li:hover > ul
 {
 		left: 0;
 		opacity: 1;
-		transform: translateY(0);
+		transform: translateY(0)
 	}
 	.rs-fn-dropdown li:last-child:hover > ul
 {
 		left: auto;
-		right: 0;
+		right: 0
 	}
 	.rs-fn-dropdown ul
 {
@@ -92,13 +120,40 @@
 		top: 100%;
 		transform: translateY(-50%);
 		transition: opacity 0.4s, transform 0.2s;
-		z-index: 1;
+		z-index: 1
 	}
 	.rs-fn-dropdown ul ul
 {
 		left: 100%;
-		top: 0;
+		top: 0
 	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. redirect
+ *    1.1 overlay
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. redirect */
+
+/* @section 1.1 overlay */
+
+.rs-meta-redirect
+{
+	background: rgb(255, 255, 255);
+	bottom: 0;
+	display: block;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 2000;
 }
 /**
  * @tableofcontents
@@ -121,12 +176,12 @@
 .rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
 {
 	font-weight: bold;
-	text-align: left;
+	text-align: left
 }
 
 .rs-table-default th ~ th:last-child, .rs-table-default td ~ td:last-child
 {
-	text-align: right;
+	text-align: right
 }
 
 /* @section 2. wrapper table */
@@ -138,8 +193,19 @@
 
 .rs-wrapper-table > table
 {
-	width: 100%;
+	width: 100%
 }
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. icon */
 
 @font-face
@@ -1043,7 +1109,7 @@ a
 
 .rs-component-dialog .rs-button-default
 {
-	margin-top: 1em;
+	margin-top: 1em
 }
 /**
  * @tableofcontents
@@ -1065,19 +1131,19 @@ a
 	}
 	.rs-sidebar .rs-admin-text-dock
 {
-		display: none;
+		display: none
 	}
 	.rs-sidebar .rs-admin-box-dock
 {
 		display: -ms-flexbox;
 		display: flex;
 		-ms-flex-pack: justify;
-		justify-content: space-between;
+		justify-content: space-between
 	}
 	.rs-sidebar .rs-admin-link-dock
 {
 		-ms-flex: 1 1 0;
-		flex: 1 1 0;
+		flex: 1 1 0
 	}
 }
 /**
@@ -1251,6 +1317,22 @@ a
  */
 
 /* @section 1. dropdown */
+/**
+ * @tableofcontents
+ *
+ * 1. clearfix
+ * 2. redirect
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. clearfix */
+
+/* @section 2. redirect */
+
 /**
  * @tableofcontents
  *
@@ -1677,23 +1759,23 @@ ul.rs-list-default li:before
 
 .rs-table-default caption, .rs-table-default th, .rs-table-default td
 {
-	padding: 0.5em 0.75em;
+	padding: 0.5em 0.75em
 }
 
 .rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
 {
 	background: #323e4c;
-	color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255)
 }
 
 .rs-table-default tbody
 {
-	background: rgb(200, 200, 200);
+	background: rgb(200, 200, 200)
 }
 
 .rs-table-default tbody tr:not(:last-child)
 {
-	border-bottom: 1px solid #323e4c;
+	border-bottom: 1px solid #323e4c
 }
 /**
  * @tableofcontents
