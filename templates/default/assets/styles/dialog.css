@@ -15,7 +15,7 @@
 .rs-overlay-dialog
 {
 	@extend %overlay-dialog;
-	animation: rs-fade 0.4s;
+	animation: fade-in 0.4s;
 	background: gray(170, 0.9);
 }
 

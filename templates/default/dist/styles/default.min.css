@@ -1063,7 +1063,7 @@ a
 
 .rs-overlay-dialog
 {
-	animation: rs-fade 0.4s;
+	animation: fade-in 0.4s;
 	background: rgba(170, 170, 170, 0.9);
 }
 

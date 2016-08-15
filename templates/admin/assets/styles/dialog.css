@@ -17,7 +17,7 @@
 .rs-admin-overlay-dialog
 {
 	@extend %overlay-dialog;
-	animation: rs-fade 0.4s;
+	animation: fade-in 0.4s;
 	background: gray(0, 0.3);
 }
 
@@ -26,7 +26,7 @@
 .rs-admin-component-dialog
 {
 	@extend %component-dialog;
-	animation: rs-fade 0.4s;
+	animation: fade-in 0.4s;
 	border-radius: 0.25rem;
 	overflow: hidden;
 
