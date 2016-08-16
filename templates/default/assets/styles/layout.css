@@ -89,6 +89,12 @@
 
 @media print
 {
+	.rs-body
+	{
+		background: gray(255);
+		color: gray(0);
+	}
+
 	.rs-footer,
 	.rs-header,
 	.rs-sidebar

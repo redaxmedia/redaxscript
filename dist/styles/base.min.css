@@ -269,23 +269,6 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 /**
  * @tableofcontents
  *
- * 1. title accordion
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. title accordion */
-
-.rs-is-js .rs-title-accordion.rs-title-active, .rs-is-js .rs-admin-title-accordion.rs-admin-title-active
-{
-	pointer-events: none;
-}
-/**
- * @tableofcontents
- *
  * 1. box accordion
  * 2. box code
  * 3. several boxes

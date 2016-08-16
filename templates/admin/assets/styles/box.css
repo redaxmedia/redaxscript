@@ -1,13 +1,11 @@
 /**
  * @tableofcontents
  *
- * 1. several admin boxes
- *    1.1 last element
- * 2. box dock admin
- *    2.1 description dock admin
- *    2.2 footer grid fix
- * 3. box tab admin
- * 4. box note admin
+ * 1. box dock admin
+ *    1.1 description dock admin
+ *    1.2 footer grid fix
+ * 2. box tab admin
+ * 3. box note admin
  *
  * @since 3.0.0
  *
@@ -15,34 +13,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. several admin boxes */
-
-.rs-admin-box-accordion
-{
-	background: var(--rs-admin-gradient-quaternary);
-	border: 1px solid gray(185);
-	border-top: 0;
-	padding: 0.5em 1em;
-}
-
-.rs-admin-box-accordion
-{
-	border-bottom-width: 0;
-}
-
-.rs-admin-title-accordion + .rs-admin-box-accordion
-{
-	border-top: 1px solid gray(185);
-}
-
-/* @section 1.1 last element */
-
-.rs-admin-set-accordion:last-of-type
-{
-	border-bottom: 1px solid gray(185);
-}
-
-/* @section 2. box dock admin */
+/* @section 1. box dock admin */
 
 .rs-admin-box-dock
 {
@@ -57,7 +28,7 @@
 	color: gray(185);
 }
 
-/* @section 2.1 description dock admin */
+/* @section 1.1 description dock admin */
 
 .rs-admin-text-dock
 {
@@ -73,7 +44,7 @@
 	white-space: nowrap;
 }
 
-/* @section 2.2 footer grid fix */
+/* @section 1.2 footer grid fix */
 
 .rs-admin-footer .rs-admin-box-dock
 {
@@ -81,7 +52,7 @@
 	margin-right: 0.75rem;
 }
 
-/* @section 3. box tab admin */
+/* @section 2. box tab admin */
 
 .rs-admin-box-tab
 {
@@ -90,7 +61,7 @@
 	padding: 1em;
 }
 
-/* @section 4. box note admin */
+/* @section 3. box note admin */
 
 .rs-admin-title-note + .rs-admin-box-note
 {

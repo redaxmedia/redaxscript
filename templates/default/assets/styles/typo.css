@@ -7,6 +7,7 @@
  * 3. title
  *    3.1 several titles
  *    3.2 title accordion
+ * 2.1 javascript enabled
  *    3.3 title content
  *    3.4 title sub
  *    3.5 title website
@@ -135,47 +136,6 @@ a
 .rs-title-comment a
 {
 	color: var(--rs-color-tertiary);
-}
-
-/* @section 3.2 title accordion */
-
-.rs-title-accordion
-{
-	background: var(--rs-color-tertiary);
-	box-sizing: border-box;
-	color: gray(255);
-	padding: 0.25em 1em;
-	position: relative;
-	transition: background 0.2s;
-	width: 100%;
-}
-
-.rs-title-accordion:hover
-{
-	background: var(--rs-color-primary);
-}
-
-.rs-title-accordion:after
-{
-	content: '+';
-	font: 1.25rem/2.25rem var(--rs-font-icon);
-	position: absolute;
-	right: 1rem;
-}
-
-.rs-title-accordion:not(.rs-title-active)
-{
-	cursor: pointer;
-}
-
-.rs-title-accordion.rs-title-active
-{
-	background: var(--rs-color-secondary);
-}
-
-.rs-title-accordion.rs-title-active:after
-{
-	content: '-';
 }
 
 .rs-title-extra

@@ -1,13 +1,9 @@
 /**
  * @tableofcontents
  *
- * 1. links
- * 2. title accordion admin
- *    2.1 javascript enabled
- *    2.2 last element
- * 3. several admin titles
- * 4. title content admin
- * 5. flag
+ * 1. link
+ * 2. title
+ * 3. flag
  *
  * @since 3.0.0
  *
@@ -15,7 +11,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. links */
+/* @section 1. link */
 
 .rs-admin-link-default
 {
@@ -23,74 +19,7 @@
 	text-decoration: underline;
 }
 
-/* @section 2. title accordion admin */
-
-.rs-admin-title-accordion
-{
-	background: var(--rs-admin-gradient-quaternary);
-	border: 1px solid gray(185);
-	box-sizing: border-box;
-	font: bold 1.25rem/2.5rem var(--rs-admin-font-primary);
-	padding: 0 1em;
-	text-transform: uppercase;
-	width: 100%;
-}
-
-.rs-admin-title-accordion:hover
-{
-	background: gray(240);
-}
-
-.rs-admin-title-accordion:not(.rs-admin-title-active)
-{
-	cursor: pointer;
-}
-
-.rs-admin-set-accordion:not(:last-child) .rs-admin-title-accordion
-{
-	border-bottom: none;
-}
-
-.rs-admin-title-accordion:not(.rs-admin-title-active)
-{
-	cursor: pointer;
-}
-
-.rs-admin-title-accordion,
-.rs-admin-title-accordion a
-{
-	color: gray(68);
-}
-
-/* @section 2.1 javascript enabled */
-
-.rs-is-js .rs-admin-title-accordion
-{
-	cursor: pointer;
-}
-
-/* @section 2.2 last element */
-
-.rs-is-js .rs-admin-set-accordion:last-child .rs-admin-title-accordion
-{
-	border-bottom-width: 0;
-}
-
-/* @section 3. several admin titles */
-
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active
-{
-	background: gray(32);
-	border: 1px solid gray(34);
-}
-
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active,
-.rs-is-js .rs-admin-title-accordion.rs-admin-title-active a
-{
-	color: gray(204);
-}
-
-/* @section 4. title content admin */
+/* @section 2. title */
 
 .rs-admin-title-content
 {
@@ -103,7 +32,7 @@
 	color: gray(32);
 }
 
-/* @section 5. flag */
+/* @section 3. flag */
 
 .rs-admin-text-flag
 {

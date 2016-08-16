@@ -195,17 +195,6 @@
 {
 	width: 100%
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -260,6 +249,7 @@
  * 3. title
  *    3.1 several titles
  *    3.2 title accordion
+ * 2.1 javascript enabled
  *    3.3 title content
  *    3.4 title sub
  *    3.5 title website
@@ -388,47 +378,6 @@ a
 .rs-title-comment a
 {
 	color: #323e4c;
-}
-
-/* @section 3.2 title accordion */
-
-.rs-title-accordion
-{
-	background: #323e4c;
-	box-sizing: border-box;
-	color: rgb(255, 255, 255);
-	padding: 0.25em 1em;
-	position: relative;
-	transition: background 0.2s;
-	width: 100%;
-}
-
-.rs-title-accordion:hover
-{
-	background: #3873b5;
-}
-
-.rs-title-accordion:after
-{
-	content: '+';
-	font: 1.25rem/2.25rem 'icon default';
-	position: absolute;
-	right: 1rem;
-}
-
-.rs-title-accordion:not(.rs-title-active)
-{
-	cursor: pointer;
-}
-
-.rs-title-accordion.rs-title-active
-{
-	background: #699b3c;
-}
-
-.rs-title-accordion.rs-title-active:after
-{
-	content: '-';
 }
 
 .rs-title-extra
@@ -564,6 +513,91 @@ a
 /**
  * @tableofcontents
  *
+ * 1. accordion
+ *    1.1 title
+ *    1.2 box
+ *    1.3 javascript enabled
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. accordion */
+
+/* @section 1.1 title */
+
+.rs-title-accordion
+{
+	background: #323e4c;
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 2.5em;
+	padding: 0 1em;
+	transition: background 0.2s;
+	width: 100%;
+}
+
+/* @section 1.2 box */
+
+.rs-box-accordion
+{
+	background: rgb(200, 200, 200);
+	padding: 0.5em 1em;
+}
+
+.rs-set-accordion + .rs-set-accordion
+{
+	margin-top: 0.125rem;
+}
+
+/* @section 1.3 javascript enabled */
+
+.rs-is-js
+{
+}
+
+.rs-is-js .rs-title-accordion
+{
+	cursor: pointer
+}
+
+.rs-is-js .rs-title-accordion:hover
+{
+	background: #3873b5
+}
+
+.rs-is-js .rs-title-accordion:after
+{
+	content: '+';
+	font-family: 'icon default';
+	float: right
+}
+
+.rs-is-js .rs-title-accordion.rs-title-active
+{
+	background: #699b3c;
+	pointer-events: none
+}
+
+.rs-is-js .rs-title-accordion.rs-title-active:after
+{
+	content: '-'
+}
+
+
+
+
+
+
+
+
+/**
+ * @tableofcontents
+ *
  * 1. general
  * 2. wrapper
  * 3. header
@@ -647,6 +681,12 @@ a
 
 @media print
 {
+	.rs-body
+	{
+		background: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
+	}
+
 	.rs-footer, .rs-header, .rs-sidebar
 	{
 		display: none;
@@ -736,7 +776,6 @@ a
  * 1. several boxes
  * 2. box metadata
  * 3. box quote
- * 4. box accordion
  * 5. box tab
  * 6. box note
  * 7. box comment
@@ -803,19 +842,6 @@ a
 .rs-box-quote
 {
 	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
-}
-
-/* @section 4. box accordion */
-
-.rs-box-accordion
-{
-	background: rgb(200, 200, 200);
-	padding: 0.25em 1em;
-}
-
-.rs-set-accordion + .rs-set-accordion
-{
-	margin-top: 0.125rem;
 }
 
 /* @section 5. box tab */
