@@ -58,8 +58,8 @@
 		&:after
 		{
 			content: '+';
-			font-family: var(--rs-font-icon);
 			float: right;
+			font-family: var(--rs-font-icon);
 		}
 
 		&.rs-title-active
@@ -70,14 +70,7 @@
 			&:after
 			{
 				content: '-';
-		 	}
+			}
 		}
 	}
 }
-
-
-
-
-
-
-

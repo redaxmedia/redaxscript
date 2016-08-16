@@ -465,7 +465,7 @@ module.exports = function (grunt)
 		{
 			templateDefault:
 			{
-				//TODO: remove everything that is not used via @extend inside default template - do not add icons from other modules and templates
+				//todo: remove everything that is not used via @extend inside default template - do not add icons from other modules and templates
 				src:
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
@@ -511,8 +511,8 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
-				//TODO: remove everything that is not used via @extend inside any modules and templates - otherwise we are losing the overview what is really used
-				//TODO: order alphabetical - always use hyphen instead of underscore
+				//todo: remove everything that is not used via @extend inside any modules and templates - otherwise we are losing the overview what is really used
+				//todo: order alphabetical - always use hyphen instead of underscore
 				codepoints:
 				{
 					'delete': 0x2297,

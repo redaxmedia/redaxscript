@@ -62,15 +62,15 @@
 		&:after
 		{
 			content: '+';
-			font-family: var(--rs-admin-font-icon);
 			float: right;
+			font-family: var(--rs-admin-font-icon);
 		}
 
 		&.rs-admin-title-active
 		{
 			background: gray(32);
-			color: gray(204);
 			border: 1px solid gray(34);
+			color: gray(204);
 			pointer-events: none;
 
 			&:after
