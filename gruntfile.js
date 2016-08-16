@@ -262,8 +262,7 @@ module.exports = function (grunt)
 					'assets/styles/box.css',
 					'assets/styles/form.css',
 					'assets/styles/navigation.css',
-					'assets/styles/tab.css',
-					'assets/styles/tooltip.css'
+					'assets/styles/tab.css'
 				],
 				dest: 'dist/styles/base.min.css'
 			},
@@ -335,7 +334,6 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/navigation.css',
 					'templates/default/assets/styles/table.css',
 					'templates/default/assets/styles/teaser.css',
-					'templates/default/assets/styles/tooltip.css',
 					'templates/default/assets/styles/note.css'
 				],
 				dest: 'templates/default/dist/styles/default.min.css'
