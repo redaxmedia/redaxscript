@@ -60,3 +60,54 @@
 		display: block;
 	}
 }
+
+/* list */
+
+.rs-list-tab > li
+{
+	vertical-align: bottom;
+}
+
+.rs-list-tab > li + li
+{
+	margin-left: 0.125rem;
+}
+
+.rs-list-tab a
+{
+	color: gray(255);
+}
+
+.rs-list-tab .rs-item-active
+{
+	background: gray(200);
+	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
+}
+
+.rs-list-tab .rs-item-active a
+{
+	color: gray(0);
+}
+
+.rs-list-tab > li
+{
+	background: var(--rs-color-tertiary);
+	padding: 0.25em 1em;
+	transition: background 0.2s, border 0.2s;
+}
+
+.rs-list-tab > li:hover
+{
+	background: var(--rs-color-primary);
+	cursor: pointer;
+}
+
+/* box */
+
+.rs-box-tab
+{
+	background: gray(200);
+	color: gray(0);
+	padding: 0.25em 1em;
+}

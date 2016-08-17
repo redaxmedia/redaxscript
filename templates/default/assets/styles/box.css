@@ -67,15 +67,6 @@
 	font: italic 1.25em/1.75em var(--rs-font-primary);
 }
 
-/* @section 5. box tab */
-
-.rs-box-tab
-{
-	background: gray(200);
-	color: gray(0);
-	padding: 0.25em 1em;
-}
-
 /* @section 6. box note */
 
 .rs-box-note

@@ -52,15 +52,6 @@
 	margin-right: 0.75rem;
 }
 
-/* @section 2. box tab admin */
-
-.rs-admin-box-tab
-{
-	background: var(--rs-admin-gradient-quaternary);
-	border: 1px solid gray(185);
-	padding: 1em;
-}
-
 /* @section 3. box note admin */
 
 .rs-admin-title-note + .rs-admin-box-note

@@ -573,8 +573,8 @@ a
 .rs-is-js .rs-title-accordion:after
 {
 	content: '+';
-	font-family: 'icon default';
-	float: right
+	float: right;
+	font-family: 'icon default'
 }
 
 .rs-is-js .rs-title-accordion.rs-title-active
@@ -587,14 +587,6 @@ a
 {
 	content: '-'
 }
-
-
-
-
-
-
-
-
 /**
  * @tableofcontents
  *
@@ -842,15 +834,6 @@ a
 .rs-box-quote
 {
 	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
-}
-
-/* @section 5. box tab */
-
-.rs-box-tab
-{
-	background: rgb(200, 200, 200);
-	color: rgb(0, 0, 0);
-	padding: 0.25em 1em;
 }
 
 /* @section 6. box note */
@@ -1433,48 +1416,6 @@ ul.rs-list-default li:before
 	text-decoration: none;
 }
 
-/* @section 5. list tabs */
-
-.rs-list-tab > li
-{
-	vertical-align: bottom;
-}
-
-.rs-list-tab > li + li
-{
-	margin-left: 0.125rem;
-}
-
-.rs-list-tab a
-{
-	color: rgb(255, 255, 255);
-}
-
-.rs-list-tab .rs-item-active
-{
-	background: rgb(200, 200, 200);
-	border-radius: 0.125em 0.125em 0 0;
-	padding: 0.5em 1em;
-}
-
-.rs-list-tab .rs-item-active a
-{
-	color: rgb(0, 0, 0);
-}
-
-.rs-list-tab > li
-{
-	background: #323e4c;
-	padding: 0.25em 1em;
-	transition: background 0.2s, border 0.2s;
-}
-
-.rs-list-tab > li:hover
-{
-	background: #3873b5;
-	cursor: pointer;
-}
-
 /* @section 6. list result */
 
 .rs-list-result
@@ -1734,6 +1675,119 @@ ul.rs-list-default li:before
 		opacity: 1;
 		visibility: visible;
 	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. box tab
+ * 2. list tab
+ * 3. set tab
+ * 4. query
+ *    4.1 max width 50em
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. box tab */
+
+.rs-box-tab
+{
+	overflow: hidden;
+}
+
+/* @section 2. list tab */
+
+.rs-list-tab li
+{
+	display: inline-block;
+}
+
+.rs-is-js .rs-list-tab .rs-item-active
+{
+	pointer-events: none;
+}
+
+/* @section 3. set tab */
+
+.rs-is-js .rs-set-tab
+{
+	display: none;
+}
+
+.rs-is-js .rs-set-tab.rs-set-active
+{
+	display: block;
+}
+
+/* @section 4. query */
+
+/* @section 4.1 max width 50em */
+
+@media (max-width: 49.999em)
+{
+	.rs-list-tab
+	{
+		display: none;
+	}
+
+	.rs-is-js .rs-set-tab
+	{
+		display: block;
+	}
+}
+
+/* list */
+
+.rs-list-tab > li
+{
+	vertical-align: bottom;
+}
+
+.rs-list-tab > li + li
+{
+	margin-left: 0.125rem;
+}
+
+.rs-list-tab a
+{
+	color: rgb(255, 255, 255);
+}
+
+.rs-list-tab .rs-item-active
+{
+	background: rgb(200, 200, 200);
+	border-radius: 0.125em 0.125em 0 0;
+	padding: 0.5em 1em;
+}
+
+.rs-list-tab .rs-item-active a
+{
+	color: rgb(0, 0, 0);
+}
+
+.rs-list-tab > li
+{
+	background: #323e4c;
+	padding: 0.25em 1em;
+	transition: background 0.2s, border 0.2s;
+}
+
+.rs-list-tab > li:hover
+{
+	background: #3873b5;
+	cursor: pointer;
+}
+
+/* box */
+
+.rs-box-tab
+{
+	background: rgb(200, 200, 200);
+	color: rgb(0, 0, 0);
+	padding: 0.25em 1em;
 }
 /**
  * @tableofcontents

@@ -288,15 +288,15 @@
 .rs-is-js .rs-admin-title-accordion:after
 {
 	content: '+';
-	font-family: 'icon admin';
-	float: right
+	float: right;
+	font-family: 'icon admin'
 }
 
 .rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204);
 	border: 1px solid rgb(34, 34, 34);
+	color: rgb(204, 204, 204);
 	pointer-events: none
 }
 
@@ -375,15 +375,6 @@
 {
 	margin-left: 0.75rem;
 	margin-right: 0.75rem;
-}
-
-/* @section 2. box tab admin */
-
-.rs-admin-box-tab
-{
-	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
-	border: 1px solid rgb(185, 185, 185);
-	padding: 1em;
 }
 
 /* @section 3. box note admin */
@@ -895,69 +886,6 @@
 	background: linear-gradient(rgb(199, 41, 41), #a20000);
 	color: rgb(255, 255, 255);
 }
-
-/* @section 2. list tab admin */
-
-.rs-admin-list-tab li
-{
-	background: rgb(32, 32, 32);
-	border-radius: 0.125em 0.125em 0 0;
-	margin-bottom: -1px;
-	margin-right: 0.125rem;
-	vertical-align: bottom;
-}
-
-.rs-admin-list-tab a
-{
-	color: rgb(204, 204, 204);
-	font: bold 1.25rem/2rem 'open sans condensed', arial, sans-serif;
-	text-transform: uppercase;
-}
-
-.rs-admin-list-tab a:hover
-{
-	text-decoration: none;
-}
-
-.rs-admin-list-tab .rs-admin-item-active
-{
-	padding: 0.25em 0.75em;
-}
-
-.rs-admin-list-tab .rs-admin-item-active a
-{
-	color: rgb(255, 255, 255);
-}
-
-.rs-admin-list-tab > li
-{
-	padding: 0.125em 0.75em;
-}
-
-.rs-admin-list-tab > li:hover
-{
-	cursor: pointer;
-}
-
-.rs-admin-list-tab > li:hover a
-{
-	color: rgb(255, 255, 255);
-}
-
-/* @section 2.1 javascript enabled */
-
-.rs-is-js .rs-admin-list-tab .rs-admin-item-active
-{
-	background: rgb(226, 226, 226);
-	border: 1px solid rgb(185, 185, 185);
-	border-bottom-color: rgb(226, 226, 226);
-	pointer-events: none;
-}
-
-.rs-is-js .rs-admin-list-tab .rs-admin-item-active a
-{
-	color: rgb(71, 71, 71);
-}
 /**
  * @tableofcontents
  *
@@ -1416,6 +1344,79 @@
 		display: block;
 	}
 }
+
+/* list tab admin */
+
+.rs-admin-list-tab li
+{
+	background: rgb(32, 32, 32);
+	border-radius: 0.125em 0.125em 0 0;
+	margin-bottom: -1px;
+	margin-right: 0.125rem;
+	vertical-align: bottom;
+}
+
+.rs-admin-list-tab a
+{
+	color: rgb(204, 204, 204);
+	font: bold 1.25rem/2rem 'open sans condensed', arial, sans-serif;
+	text-transform: uppercase;
+}
+
+.rs-admin-list-tab a:hover
+{
+	text-decoration: none;
+}
+
+.rs-admin-list-tab .rs-admin-item-active
+{
+	padding: 0.25em 0.75em;
+}
+
+.rs-admin-list-tab .rs-admin-item-active a
+{
+	color: rgb(255, 255, 255);
+}
+
+.rs-admin-list-tab > li
+{
+	padding: 0.125em 0.75em;
+}
+
+.rs-admin-list-tab > li:hover
+{
+	cursor: pointer;
+}
+
+.rs-admin-list-tab > li:hover a
+{
+	color: rgb(255, 255, 255);
+}
+
+/* @section 2.1 javascript enabled */
+
+.rs-is-js .rs-admin-list-tab .rs-admin-item-active
+{
+	background: rgb(226, 226, 226);
+	border: 1px solid rgb(185, 185, 185);
+	border-bottom-color: rgb(226, 226, 226);
+	pointer-events: none;
+}
+
+.rs-is-js .rs-admin-list-tab .rs-admin-item-active a
+{
+	color: rgb(71, 71, 71);
+}
+
+/* box */
+
+.rs-admin-box-tab
+{
+	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	border: 1px solid rgb(185, 185, 185);
+	padding: 1em;
+}
+
 /**
  * @tableofcontents
  *
