@@ -1,11 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. box tab
- * 2. list tab
- * 3. set tab
- * 4. query
- *    4.1 medium max
+ * 1. tab
+ *    1.1 list
+ *    1.2 box
+ *    1.3 javascript enabled
  *
  * @since 3.0.0
  *
@@ -13,122 +12,73 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. box tab */
+/* @section 1. tab */
 
-.rs-admin-box-tab
+.rs-admin-component-tab
 {
-	overflow: hidden;
+	font: 1.25rem var(--rs-admin-font-primary);
 }
 
-/* @section 2. list tab */
+/* @section 1.1 list */
 
-.rs-admin-list-tab li
-{
-	display: inline-block;
-}
-
-.rs-is-js .rs-admin-list-tab .rs-admin-item-active
-{
-	pointer-events: none;
-}
-
-/* @section 3. set tab */
-
-.rs-is-js .rs-admin-set-tab
+.rs-admin-list-tab
 {
 	display: none;
-}
 
-.rs-is-js .rs-admin-set-tab.rs-admin-set-active
-{
-	display: block;
-}
-
-/* @section 4. query */
-
-/* @section 4.1 medium max */
-
-@media (--media-medium-max)
-{
-	.rs-admin-list-tab
+	& > li
 	{
-		display: none;
+		background: gray(32);
+		color: gray(204);
+		cursor: pointer;
+		display: inline-block;
+		font-weight: bold;
+		padding: 0.5em 1em;
+		vertical-align: bottom;
 	}
 
-	.rs-is-js .rs-admin-set-tab
+	& > li + li
 	{
-		display: block;
+		margin-left: 0.125rem;
+	}
+
+	& a
+	{
+		color: inherit;
+	}
+
+	& .rs-admin-item-active
+	{
+		background: gray(226);
+		border-radius: 0.125em 0.125em 0 0;
+		color: gray(68);
+		padding: 0.75em 1em;
+		pointer-events: none;
 	}
 }
 
-/* list tab admin */
-
-.rs-admin-list-tab li
-{
-	background: gray(32);
-	border-radius: 0.125em 0.125em 0 0;
-	margin-bottom: -1px;
-	margin-right: 0.125rem;
-	vertical-align: bottom;
-}
-
-.rs-admin-list-tab a
-{
-	color: gray(204);
-	font: bold 1.25rem/2rem var(--rs-admin-font-primary);
-	text-transform: uppercase;
-}
-
-.rs-admin-list-tab a:hover
-{
-	text-decoration: none;
-}
-
-.rs-admin-list-tab .rs-admin-item-active
-{
-	padding: 0.25em 0.75em;
-}
-
-.rs-admin-list-tab .rs-admin-item-active a
-{
-	color: gray(255);
-}
-
-.rs-admin-list-tab > li
-{
-	padding: 0.125em 0.75em;
-}
-
-.rs-admin-list-tab > li:hover
-{
-	cursor: pointer;
-}
-
-.rs-admin-list-tab > li:hover a
-{
-	color: gray(255);
-}
-
-/* @section 2.1 javascript enabled */
-
-.rs-is-js .rs-admin-list-tab .rs-admin-item-active
-{
-	background: gray(226);
-	border: 1px solid gray(185);
-	border-bottom-color: gray(226);
-	pointer-events: none;
-}
-
-.rs-is-js .rs-admin-list-tab .rs-admin-item-active a
-{
-	color: gray(71);
-}
-
-/* box */
+/* @section 1.2 box */
 
 .rs-admin-box-tab
 {
 	background: var(--rs-admin-gradient-quaternary);
-	border: 1px solid gray(185);
-	padding: 1em;
+	color: gray(0);
+	padding: 0.5em 1em;
+}
+
+/* @section 1.3 javascript enabled */
+
+@media (--media-medium-min)
+{
+	.rs-is-js
+	{
+		& .rs-admin-set-tab:not(.rs-admin-set-active)
+		{
+			display: none;
+		}
+
+		& .rs-admin-list-tab
+		{
+			display: block;
+		}
+	}
 }

@@ -4,7 +4,6 @@
  * 1. several boxes
  * 2. box metadata
  * 3. box quote
- * 5. box tab
  * 6. box note
  * 7. box comment
  * 8. space between elements
@@ -73,7 +72,7 @@
 {
 	border-radius: 0.125em 0.125em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 2.75em;
+	padding: 0.5em 0.5em 0.5em 3em;
 	position: relative;
 }
 
