@@ -256,7 +256,7 @@
 	width: 100%;
 }
 
-.rs-admin-set-accordion + .rs-admin-set-accordion .rs-admin-title-accordion
+.rs-admin-set-accordion + .rs-admin-set-accordion .rs-admin-title-accordion:not(.rs-admin-title-active)
 {
 	border-top: 1px solid rgb(185, 185, 185);
 }
@@ -295,7 +295,6 @@
 .rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
 	background: rgb(32, 32, 32);
-	border: 1px solid rgb(34, 34, 34);
 	color: rgb(204, 204, 204);
 	pointer-events: none
 }
@@ -755,7 +754,7 @@
 
 /* @section 1. form admin */
 
-.rs-admin-form-default li
+.rs-admin-form-default fieldset li
 {
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
@@ -1343,7 +1342,7 @@
 {
 	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
 	color: rgb(0, 0, 0);
-	padding: 0.5em 1em;
+	padding: 0.75em 1em;
 }
 
 /* @section 1.3 javascript enabled */

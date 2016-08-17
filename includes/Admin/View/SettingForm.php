@@ -45,7 +45,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			'form' =>
 			[
 				'action' => $this->_registry->get('parameterRoute') . 'admin/update/settings',
-				'class' => 'rs-admin-js-validate-form rs-admin-js-accordion rs-admin-component-accordion rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-accordion rs-admin-js-validate-form rs-admin-component-accordion rs-admin-form-default rs-admin-fn-clearfix'
 			],
 			'button' =>
 			[

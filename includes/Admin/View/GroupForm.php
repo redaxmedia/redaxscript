@@ -57,7 +57,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			'form' =>
 			[
 				'action' => $this->_registry->get('parameterRoute') . ($group->id ? 'admin/process/groups/' . $group->id : 'admin/process/groups'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
 			],
 			'link' =>
 			[

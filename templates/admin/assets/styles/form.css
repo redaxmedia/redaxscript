@@ -13,7 +13,7 @@
 
 /* @section 1. form admin */
 
-.rs-admin-form-default li
+.rs-admin-form-default fieldset li
 {
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;

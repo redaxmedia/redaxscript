@@ -44,7 +44,7 @@ class InstallForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-install-js-form rs-js-accordion rs-js-validate-form rs-component-accordion rs-form-default rs-install-form-default'
+				'class' => 'rs-js-accordion rs-js-validate-form rs-install-js-form rs-component-accordion rs-form-default rs-install-form-default'
 			],
 			'button' =>
 			[

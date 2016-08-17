@@ -59,7 +59,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			'form' =>
 			[
 				'action' => $this->_registry->get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
 			],
 			'link' =>
 			[

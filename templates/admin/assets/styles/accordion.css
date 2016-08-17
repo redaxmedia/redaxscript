@@ -33,7 +33,7 @@
 	width: 100%;
 }
 
-.rs-admin-set-accordion + .rs-admin-set-accordion .rs-admin-title-accordion
+.rs-admin-set-accordion + .rs-admin-set-accordion .rs-admin-title-accordion:not(.rs-admin-title-active)
 {
 	border-top: 1px solid gray(185);
 }
@@ -69,7 +69,6 @@
 		&.rs-admin-title-active
 		{
 			background: gray(32);
-			border: 1px solid gray(34);
 			color: gray(204);
 			pointer-events: none;
 
