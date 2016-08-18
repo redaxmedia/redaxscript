@@ -3,7 +3,7 @@
  *
  * 1. tab
  *    1.1 list
- *    1.2 box
+ *    1.2 set
  *    1.3 javascript enabled
  *
  * @since 3.0.0
@@ -56,13 +56,21 @@
 	}
 }
 
-/* @section 1.2 box */
+/* @section 1.2 set */
 
-.rs-admin-box-tab
+.rs-admin-set-tab
 {
 	background: var(--rs-admin-gradient-quaternary);
 	color: gray(0);
 	padding: 0.75em 1em;
+}
+
+@media (--media-medium-max)
+{
+	.rs-admin-set-tab + .rs-admin-set-tab
+	{
+		border-top: 1px solid gray(185);
+	}
 }
 
 /* @section 1.3 javascript enabled */
