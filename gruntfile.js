@@ -273,6 +273,7 @@ module.exports = function (grunt)
 					'assets/styles/_dialog.css',
 					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
+					'templates/admin/assets/styles/_icon.css',
 					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/accordion.css',
@@ -463,24 +464,18 @@ module.exports = function (grunt)
 		},
 		webfont:
 		{
-			templateDefault:
+			templateAdmin:
 			{
-				//todo: remove everything that is not used via @extend inside default template - do not add icons from other modules and templates
 				src:
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_favorite_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_lock_open_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_lock_outline_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_visibility_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
-					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
 					'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
-					'node_modules/material-design-icons/communication/svg/production/ic_live_help_24px.svg',
 					'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
@@ -488,13 +483,38 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
 					'node_modules/material-design-icons/editor/svg/production/ic_insert_drive_file_24px.svg',
 					'node_modules/material-design-icons/folder/svg/production/ic_folder_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_left_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
+					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+				],
+				dest: 'templates/admin/assets/fonts',
+				options:
+				{
+					destCss: 'templates/admin/assets/styles',
+					template: 'templates/admin/assets/styles/_icon.tpl'
+				}
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_favorite_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_live_help_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
 					'node_modules/material-design-icons/image/svg/production/ic_image_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_left_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
-					'node_modules/material-design-icons/navigation/svg/production/ic_menu_24px.svg',
-					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+					'node_modules/material-design-icons/navigation/svg/production/ic_menu_24px.svg'
 				],
 				dest: 'templates/default/assets/fonts',
 				options:
@@ -511,37 +531,35 @@ module.exports = function (grunt)
 					'woff',
 					'woff2'
 				],
-				//todo: remove everything that is not used via @extend inside any modules and templates - otherwise we are losing the overview what is really used
-				//todo: order alphabetical - always use hyphen instead of underscore
 				codepoints:
 				{
+					'add': 0x2b,
+					'chat-bubble': 0x25b6,
+					'chevron-left': 0x3008,
+					'chevron-right': 0x3009,
+					'clear': 0xd7,
+					'create': 0x270E,
 					'delete': 0x2297,
 					'done': 0x2714,
+					'expand-less': 0x2227,
+					'expand-more': 0x2228,
 					'favorite': 0x2665,
+					'folder': 0x26D8,
+					'import-contacts': 0x25EB,
+					'image': 0x2600,
 					'info': 0x21,
-					'lock_open': 0x2190,
-					'lock_outline': 0x2192,
+					'insert-drive-file': 0x2752,
+					'live-help': 0x2691,
+					'lock-open': 0x2190,
+					'lock-outline': 0x2192,
+					'menu': 0x2261,
+					'person': 0x26C4,
+					'remove': 0x2d,
 					'search': 0x2315,
 					'settings': 0x2731,
 					'visibility': 0x2295,
-					'visibility_off': 0x2298,
-					'chat_bubble': 0x25b6,
-					'import_contacts': 0x25EB,
-					'live_help': 0x2691,
-					'vpn_key': 0x2386,
-					'add': 0x2b,
-					'clear': 0xd7,
-					'create': 0x270E,
-					'remove': 0x2d,
-					'insert_drive_file': 0x2752,
-					'folder': 0x26D8,
-					'image': 0x2600,
-					'chevron_left': 0x3008,
-					'chevron_right': 0x3009,
-					'expand_less': 0x2227,
-					'expand_more': 0x2228,
-					'menu': 0x2261,
-					'person': 0x26C4
+					'visibility-off': 0x2298,
+					'vpn-key': 0x2386
 				},
 				rename: function (name)
 				{
@@ -698,8 +716,16 @@ module.exports = function (grunt)
 		},
 		rename:
 		{
-			webfont:
-			{				
+			templateAdmin:
+			{
+				src:
+				[
+					'templates/admin/assets/styles/icon.tpl'
+				],
+				dest: 'templates/admin/assets/styles/_icon.css'
+			},
+			templateDefault:
+			{
 				src:
 				[
 					'templates/default/assets/styles/icon.tpl'
@@ -1016,7 +1042,8 @@ module.exports = function (grunt)
 	grunt.registerTask('build-font',
 	[
 		'webfont',
-		'rename:webfont'
+		'rename:templateAdmin',
+		'rename:templateDefault'
 	]);
 	grunt.registerTask('build-css',
 	[

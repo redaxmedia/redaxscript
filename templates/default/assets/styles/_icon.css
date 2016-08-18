@@ -17,12 +17,6 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-%rs-icon-delete
-{
-	content: '\2297';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-done
 {
 	content: '\2714';
@@ -41,63 +35,21 @@
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-lock-open
-{
-	content: '\f101';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-lock-outline
-{
-	content: '\f102';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-search
 {
 	content: '\2315';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-settings
-{
-	content: '\2731';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-visibility
-{
-	content: '\2295';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-visibility-off
-{
-	content: '\f103';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-chat-bubble
 {
-	content: '\f104';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-import-contacts
-{
-	content: '\f105';
+	content: '\25b6';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-live-help
 {
-	content: '\f106';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-vpn-key
-{
-	content: '\f107';
+	content: '\2691';
 	font-family: var(--rs-font-icon);
 }
 
@@ -113,21 +65,9 @@
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-create
-{
-	content: '\270e';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-remove
 {
 	content: '\2d';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-insert-drive-file
-{
-	content: '\f108';
 	font-family: var(--rs-font-icon);
 }
 
@@ -139,36 +79,30 @@
 
 %rs-icon-chevron-left
 {
-	content: '\f109';
+	content: '\3008';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-chevron-right
 {
-	content: '\f10a';
+	content: '\3009';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-less
 {
-	content: '\f10b';
+	content: '\2227';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-expand-more
 {
-	content: '\f10c';
+	content: '\2228';
 	font-family: var(--rs-font-icon);
 }
 
 %rs-icon-menu
 {
 	content: '\2261';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-person
-{
-	content: '\26c4';
 	font-family: var(--rs-font-icon);
 }
