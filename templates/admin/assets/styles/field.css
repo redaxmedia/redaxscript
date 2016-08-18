@@ -90,3 +90,22 @@
 		width: 60%;
 	}
 }
+
+/* @section 4.2 small max */
+
+@media (--media-small-max)
+{
+	a.rs-admin-button-default
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-admin-button-default,
+	.rs-admin-field-select,
+	.rs-admin-field-text,
+	.rs-admin-field-textarea.rs-admin-field-small
+	{
+		width: 100%;
+	}
+}

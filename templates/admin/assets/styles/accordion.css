@@ -78,4 +78,9 @@
 			}
 		}
 	}
+
+	& .rs-admin-box-accordion
+	{
+		display: none;
+	}
 }

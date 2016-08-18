@@ -42,6 +42,13 @@
 	margin: 2em 0;
 }
 
+.rs-box-comment,
+.rs-box-content,
+.rs-box-extra
+{
+	word-wrap: break-word;
+}
+
 /* @section 2. box metadata */
 
 .rs-box-website

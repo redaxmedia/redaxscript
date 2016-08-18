@@ -73,4 +73,9 @@
 			}
 		}
 	}
+
+	& .rs-box-accordion
+	{
+		display: none;
+	}
 }

@@ -255,12 +255,9 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'assets/styles/_query.css',
 					'assets/styles/normalize.css',
 					'assets/styles/animate.css',
-					'assets/styles/box.css',
-					'assets/styles/form.css',
-					'assets/styles/navigation.css'
+					'assets/styles/form.css'
 				],
 				dest: 'dist/styles/base.min.css'
 			},
@@ -317,6 +314,7 @@ module.exports = function (grunt)
 					'assets/styles/_dropdown.css',
 					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
+					'assets/styles/navigation.css',
 					'templates/default/assets/styles/_icon.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',

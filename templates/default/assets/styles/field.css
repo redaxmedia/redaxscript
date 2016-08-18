@@ -106,13 +106,20 @@
 
 /* @section 5. query */
 
-/* @section 5.1 medium max */
+/* @section 5.1 small max */
 
-@media (--media-medium-max)
+@media (--media-small-max)
 {
-	.rs-field-default,
+	a.rs-button-default
+	{
+		display: block;
+		text-align: center;
+	}
+
+	button.rs-button-default,
 	.rs-field-select,
-	.rs-field-textarea
+	.rs-field-text,
+	.rs-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
