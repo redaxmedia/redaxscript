@@ -46,7 +46,7 @@ class Preview extends Module
 		if (Registry::get('firstParameter') === 'preview')
 		{
 			global $loader_modules_styles;
-			$loader_modules_styles[] = 'modules/Preview/assets/styles/preview.css';
+			$loader_modules_styles[] = 'modules/Preview/dist/styles/preview.min.css';
 		}
 	}
 
@@ -131,12 +131,13 @@ class Preview extends Module
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'href' => Registry::get('secondParameter') === $alias ? null : Registry::get('parameterRoute') . 'preview/' . $alias
-		]);
+			'href' => Registry::get('secondParameter') === $alias ? Registry::get('parameterRoute') . 'preview' : Registry::get('parameterRoute') . 'preview/' . $alias
+		])
+		->text(Registry::get('secondParameter') === $alias ? Language::get('back') : $alias);
 
 		/* collect output */
 
-		$output = $titleElement->html($linkElement->text($alias));
+		$output = $titleElement->html($linkElement);
 		$output .= Template\Tag::partial($path);
 		return $output;
 	}

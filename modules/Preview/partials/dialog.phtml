@@ -1,11 +1,6 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3',
-[
-	'class' => 'rs-title-preview-sub'
-]);
 $titleElement = new Html\Element();
 $titleElement->init('h3',
 [
@@ -19,15 +14,13 @@ $boxElement->init('div',
 $textElement = new Html\Element();
 $textElement->init('p');
 $buttonElement = new Html\Element();
-$buttonElement->init('a',
+$buttonElement->init('button',
 [
 	'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
 ]);
 ?>
 
 <!-- dialog -->
-
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-dialog + .rs-admin-box-dialog' : '.rs-title-dialog + .rs-box-dialog'); ?>
 
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">

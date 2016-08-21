@@ -343,6 +343,14 @@ module.exports = function (grunt)
 					'templates/install/assets/styles/install.css'
 				],
 				dest: 'templates/install/dist/styles/install.min.css'
+			},
+			modulePreview:
+			{
+				src:
+				[
+					'modules/Preview/assets/styles/preview.css'
+				],
+				dest: 'modules/Preview/dist/styles/preview.min.css'
 			}
 		},
 		postcss:
@@ -376,7 +384,8 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/*/dist/styles/*.min.css'
+					'templates/*/dist/styles/*.min.css',
+					'modules/*/dist/styles/*.min.css'
 				],
 				options:
 				{

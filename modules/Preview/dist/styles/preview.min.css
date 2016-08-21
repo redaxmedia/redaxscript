@@ -1,0 +1,34 @@
+/* @section 1. preview */
+
+.rs-title-preview a
+{
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 0.125em;
+	color: rgb(255, 255, 255);
+	display: block;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding: 0.5em 1em
+}
+
+.rs-title-preview a:hover
+{
+	background: rgba(0, 0, 0, 0.9)
+}
+
+/* @section 1.1 dialog */
+
+.rs-is-preview
+{
+}
+
+.rs-is-preview .rs-overlay-dialog, .rs-is-preview .rs-admin-overlay-dialog
+{
+	height: 15em;
+	position: relative
+}
+
+.rs-is-preview .rs-component-dialog, .rs-is-preview .rs-admin-component-dialog
+{
+	position: absolute
+}

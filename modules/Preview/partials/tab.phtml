@@ -1,11 +1,6 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3',
-[
-	'class' => 'rs-title-preview-sub'
-]);
 $listElement = new Html\Element();
 $listElement->init('ul',
 [
@@ -30,8 +25,6 @@ $outputBox = null;
 ?>
 
 <!-- tab -->
-
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-list-tab + .rs-admin-box-tab' : '.rs-list-tab + .rs-box-tab'); ?>
 
 <div class="<?php echo $admin ? 'rs-admin-js-tab rs-admin-component-tab' : 'rs-js-tab rs-component-tab'; ?>">
 

@@ -1,95 +1,35 @@
-/**
- * @tableofcontents
- *
- * 1. box
- * 2. dialog
- * 3. grid
- * 4. icon
- * 5. title
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. preview */
 
-/* @section 1. box */
-
-.rs-is-preview .rs-box-preview
+.rs-title-preview a
 {
-	background: #222;
-	color: #b9b9b9;
-	font: bold 1em/3em arial;
-	overflow: hidden;
-	padding: 0 1em;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-}
-
-/* @section 2. dialog */
-
-.rs-is-preview .rs-overlay-dialog,
-.rs-is-preview .rs-admin-overlay-dialog
-{
-	height: 15em;
-	position: relative;
-}
-
-.rs-is-preview .rs-component-dialog,
-.rs-is-preview .rs-admin-component-dialog
-{
-	position: absolute;
-}
-
-/* @section 3. grid */
-
-.rs-is-preview .rs-fn-grid:hover .rs-box-preview,
-.rs-is-preview .rs-fn-grid-space:hover .rs-box-preview
-{
-	background: linear-gradient(#3db1f1, #0090db);
-	color: #000;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-}
-
-/* @section 4. icon */
-
-.rs-is-preview .rs-text-flag
-{
-	margin: 0.25em;
-	float: left;
-}
-
-/* @section 5. title */
-
-.rs-is-preview .rs-title-preview,
-.rs-is-preview .rs-title-preview-sub
-{
-	background: rgba(0, 0, 0, 0.8);
-	border-left: 0.25em solid #c77a46;
-	border-radius: 0 0.125em 0.125em 0;
-	color: #fff;
-	font-size: 2em;
-	padding: 0.25em;
-}
-
-.rs-is-preview .rs-title-preview {
-	text-transform: uppercase;
-}
-
-.rs-is-preview .rs-title-preview
-{
+	background: gray(0, 0.8);
+	border-radius: 0.125em;
+	color: gray(255);
+	display: block;
+	margin-bottom: 1em;
 	margin-top: 1em;
+	padding: 0.5em 1em;
+
+	&:hover
+	{
+		background: gray(0, 0.9);
+	}
 }
 
-.rs-is-preview .rs-title-preview a,
-.rs-is-preview .rs-title-preview-sub a
-{
-	color: #fff;
-}
+/* @section 1.1 dialog */
 
-.rs-is-preview .rs-title-preview-sub
+.rs-is-preview
 {
-	font: 1em monospace;
-	margin-bottom: 2em;
-	margin-top: 2em;
-	padding: 0.75em;
+	& .rs-overlay-dialog,
+	& .rs-admin-overlay-dialog
+	{
+		height: 15em;
+		position: relative;
+	}
+
+	& .rs-component-dialog,
+	& .rs-admin-component-dialog
+	{
+		position: absolute;
+	}
 }

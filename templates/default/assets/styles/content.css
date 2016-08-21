@@ -65,13 +65,6 @@
 	margin-top: 1em;
 }
 
-.rs-box-line
-{
-	background: var(--rs-color-tertiary);
-	height: 0.125em;
-	margin: 2em 0;
-}
-
 .rs-title-comment
 {
 	font-size: 1.5em;

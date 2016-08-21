@@ -1,11 +1,6 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3',
-[
-	'class' => 'rs-title-preview-sub'
-]);
 $tableElement = new Html\Element();
 $tableElement->init('table',
 [
@@ -47,8 +42,6 @@ $outputBody = null;
 
 <!-- table -->
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-wrapper-table > .rs-admin-table-default' : '.rs-wrapper-table > .rs-table-default'); ?>
-
 <div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
@@ -65,7 +58,7 @@ $outputBody = null;
 
 <!-- table with caption -->
 
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-wrapper-table > .rs-admin-table-default' : '.rs-wrapper-table > .rs-table-default'); ?>
+<br />
 
 <div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 

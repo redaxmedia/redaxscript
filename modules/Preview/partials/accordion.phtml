@@ -1,11 +1,6 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3',
-[
-	'class' => 'rs-title-preview-sub'
-]);
 $setElement = new Html\Element();
 $setElement->init('div',
 [
@@ -24,8 +19,6 @@ $boxElement->init('div',
 ?>
 
 <!-- accordion -->
-
-<?php echo $titlePartialElement->text($admin ? '.rs-admin-title-accordion + .rs-admin-box-accordion' : '.rs-title-accordion + .rs-box-accordion'); ?>
 
 <div class="<?php echo $admin ? 'rs-admin-js-accordion rs-admin-component-accordion' : 'rs-js-accordion rs-component-accordion'; ?>">
 
