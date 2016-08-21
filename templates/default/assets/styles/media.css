@@ -16,13 +16,5 @@
 .rs-video-default
 {
 	border-radius: 0.25em;
-	max-width: 100%;
-}
-
-/* @section 2. video */
-
-.rs-video-default
-{
-	height: 22.5em;
-	width: 40em;
+	width: 100%;
 }

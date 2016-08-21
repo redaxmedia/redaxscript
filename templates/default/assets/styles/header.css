@@ -66,6 +66,7 @@
 {
 	background: var(--rs-color-tertiary);
 	padding: 1.25rem;
+	position: relative;
 }
 
 
