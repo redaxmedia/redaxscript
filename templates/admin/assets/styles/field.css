@@ -19,6 +19,13 @@
 
 .rs-admin-field-default,
 .rs-admin-field-select,
+.rs-admin-field-textarea.rs-admin-field-small
+{
+	width: 50%;
+}
+
+.rs-admin-field-default,
+.rs-admin-field-select,
 .rs-admin-field-textarea
 {
 	background: gray(240);
@@ -77,33 +84,13 @@
 	color: gray(164);
 }
 
-/* @section 4. query */
-
-/* @section 4.1 small min */
-
-@media (--media-small-min)
-{
-	.rs-admin-field-default,
-	.rs-admin-field-select,
-	.rs-admin-field-textarea.rs-admin-field-small
-	{
-		width: 60%;
-	}
-}
-
 /* @section 4.2 small max */
 
-@media (--media-small-max)
+@media (--media-medium-max)
 {
-	a.rs-admin-button-default
-	{
-		display: block;
-		text-align: center;
-	}
-
-	button.rs-admin-button-default,
+	.rs-admin-button-default,
+	.rs-admin-field-default,
 	.rs-admin-field-select,
-	.rs-admin-field-text,
 	.rs-admin-field-textarea.rs-admin-field-small
 	{
 		width: 100%;

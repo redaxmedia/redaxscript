@@ -13,7 +13,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. admin table */
+/* @section 1. table default */
 
 .rs-admin-table-default
 {
@@ -151,4 +151,11 @@
 			top: 0;
 		}
 	}
+}
+
+/* @section 2. wrapper table */
+
+.rs-admin-wrapper-table
+{
+	@extend %wrapper-table;
 }

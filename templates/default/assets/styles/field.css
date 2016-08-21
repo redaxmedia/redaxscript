@@ -21,7 +21,7 @@
 .rs-field-select,
 .rs-field-textarea.rs-field-small
 {
-	width: 40%;
+	width: 50%;
 }
 
 .rs-field-default,
@@ -108,32 +108,13 @@
 
 /* @section 5.1 small max */
 
-@media (--media-small-max)
+@media (--media-medium-max)
 {
-	a.rs-button-default
-	{
-		display: block;
-		text-align: center;
-	}
-
-	button.rs-button-default,
+	.rs-button-default,
+	.rs-field-default,
 	.rs-field-select,
-	.rs-field-text,
 	.rs-field-textarea.rs-field-small
 	{
 		width: 100%;
-	}
-}
-
-/* @section 5.2 medium min */
-
-@media (--media-medium-min)
-{
-	.rs-field-default,
-	.rs-field-select,
-	.rs-field-textarea
-	{
-		display: inline-block;
-		vertical-align: middle;
 	}
 }

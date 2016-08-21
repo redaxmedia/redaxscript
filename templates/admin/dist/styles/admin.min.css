@@ -177,19 +177,6 @@
 
 	/* @section 1.4 font */
 }
-/**
- * @tableofcontents
- *
- * 1. link
- * 2. title
- * 3. flag
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. link */
 
 .rs-admin-link-default
@@ -202,33 +189,16 @@
 
 .rs-admin-title-content
 {
+	color: rgb(32, 32, 32);
 	font-size: 2em;
 	margin: 1em 0;
+
+	a
+	{
+		color: inherit;
+	}
 }
 
-.rs-admin-title-content a
-{
-	color: rgb(32, 32, 32);
-}
-
-/* @section 3. flag */
-
-.rs-admin-text-flag
-{
-	background: #0090db;
-	border-radius: 0.125em;
-	color: rgb(255, 255, 255);
-	display: inline-block;
-	font-size: 0.75em;
-	line-height: 1.25em;
-	padding: 0.375em 0.5em;
-	text-transform: uppercase;
-}
-
-.rs-admin-table-default .rs-admin-text-flag
-{
-	margin-right: 1em;
-}
 /**
  * @tableofcontents
  *
@@ -315,98 +285,6 @@
 .rs-is-js .rs-admin-box-accordion
 {
 	display: none
-}
-/**
- * @tableofcontents
- *
- * 1. wrapper
- * 2. space between elements
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. wrapper */
-
-/* @section 2. space between elements */
-
-.rs-admin-wrapper-button
-{
-	margin-bottom: 1em;
-}
-/**
- * @tableofcontents
- *
- * 1. box dock admin
- *    1.1 description dock admin
- *    1.2 footer grid fix
- * 3. box note admin
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. box dock admin */
-
-.rs-admin-box-dock
-{
-	background: rgb(32, 32, 32);
-	font-size: 0.875rem;
-	margin-top: 1em;
-}
-
-.rs-admin-box-dock, .rs-admin-box-dock a
-{
-	color: rgb(185, 185, 185);
-}
-
-/* @section 1.1 description dock admin */
-
-.rs-admin-text-dock
-{
-	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', arial, sans-serif;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-	max-width: 10em;
-	overflow: hidden;
-	text-align: right;
-	text-overflow: ellipsis;
-	text-transform: uppercase;
-	white-space: nowrap;
-}
-
-/* @section 1.2 footer grid fix */
-
-.rs-admin-footer .rs-admin-box-dock
-{
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
-}
-
-/* @section 3. box note admin */
-
-.rs-admin-title-note + .rs-admin-box-note
-{
-	margin-top: 0.5em;
-}
-
-.rs-admin-box-note
-{
-	border-radius: 0.125em 0.125em;
-	font-weight: bold;
-	padding: 0.5em 1em;
-	position: relative;
-}
-
-.rs-admin-box-note a
-{
-	color: inherit;
-	text-decoration: underline;
 }
 /**
  * @tableofcontents
@@ -526,10 +404,43 @@
 {
 	margin-top: 1em;
 }
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
+}
+
+@media (max-width: 29.999em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-top: 0.75em;
+	}
+}
+
+/* @section 3. small min */
+
+@media (min-width: 30em)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 0.5em;
+	}
+
+	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
+	{
+		float: right;
+	}
+}
 /**
  * @tableofcontents
  *
- * 1. dashboard
+ * 1. list control admin
  *
  * @since 3.0.0
  *
@@ -537,17 +448,68 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. dashboard */
+/* @section 1. list control admin */
 
-.rs-admin-dashboard
+.rs-admin-item-control
 {
-	background: rgb(255, 255, 255);
-	padding: 1em;
+	display: inline-block;
+	font-size: 1rem;
+	margin-bottom: 0.5em;
+	margin-right: 0.5em;
 }
 
-.rs-admin-dashboard:empty
+.rs-admin-list-control a, .rs-admin-list-control span
 {
-	display: none;
+	background: linear-gradient(rgb(195, 195, 195), rgb(190, 190, 190));
+	border-radius: 0.25em;
+	color: rgb(102, 102, 102);
+	display: inline-block;
+	line-height: 2em;
+	padding: 0 0.75em;
+	text-decoration: none;
+}
+
+.rs-admin-list-control a:hover
+{
+	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	color: rgb(255, 255, 255);
+}
+
+.rs-admin-list-control span
+{
+	color: rgb(153, 153, 153);
+}
+
+/* delete and uninstall */
+
+.rs-admin-item-delete a:hover, .rs-admin-item-uninstall a:hover
+{
+	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	color: rgb(255, 255, 255);
+}
+
+/* space */
+
+.rs-admin-table-default .rs-admin-list-control
+{
+	margin-top: 0.5em;
+}
+
+
+@media (max-width: 29.999em)
+{
+	.rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
+	{
+		display: none;
+	}
+}
+
+@media (max-width: 49.999em)
+{
+	.rs-admin-item-control.rs-admin-item-future-posting
+	{
+		display: none;
+	}
 }
 /**
  * @tableofcontents
@@ -620,6 +582,42 @@
  * @author Henry Ruhs
  */
 
+.rs-admin-box-dock
+{
+	background: rgb(32, 32, 32);
+	font-size: 0.875rem;
+	margin-top: 1em;
+}
+
+.rs-admin-box-dock, .rs-admin-box-dock a
+{
+	color: rgb(185, 185, 185);
+}
+
+/* @section 1.1 description dock admin */
+
+.rs-admin-text-dock
+{
+	float: right;
+	font: bold 1rem/2.625rem 'open sans condensed', arial, sans-serif;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	max-width: 10em;
+	overflow: hidden;
+	text-align: right;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+/* @section 1.2 footer grid fix */
+
+.rs-admin-footer .rs-admin-box-dock
+{
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
+
 /* @section 1. link dock admin */
 
 .rs-admin-link-dock
@@ -691,6 +689,11 @@
 
 /* @section 1. several fields */
 
+.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
+{
+	width: 50%;
+}
+
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
 	background: rgb(240, 240, 240);
@@ -740,29 +743,11 @@
 	color: rgb(164, 164, 164);
 }
 
-/* @section 4. query */
-
-/* @section 4.1 small min */
-
-@media (min-width: 30em)
-{
-	.rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
-	{
-		width: 60%;
-	}
-}
-
 /* @section 4.2 small max */
 
-@media (max-width: 29.999em)
+@media (max-width: 49.999em)
 {
-	a.rs-admin-button-default
-	{
-		display: block;
-		text-align: center;
-	}
-
-	button.rs-admin-button-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-admin-field-small
+	.rs-admin-button-default, .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea.rs-admin-field-small
 	{
 		width: 100%;
 	}
@@ -805,10 +790,7 @@
 
 /* @section 2. space between elements */
 
-.rs-admin-form-default .rs-admin-box-note
-{
-	margin-top: 1em;
-}
+
 /**
  * @tableofcontents
  *
@@ -825,91 +807,6 @@
 
 /* @section 2. redirect */
 
-/**
- * @tableofcontents
- *
- * 1. font face
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. font face */
-
-@font-face
-{
-	font-family: 'icon admin';
-	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
-}
-/**
- * @tableofcontents
- *
- * 1. list control admin
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. list control admin */
-
-.rs-admin-item-control
-{
-	display: inline-block;
-	font-size: 1rem;
-	margin-bottom: 0.5em;
-	margin-right: 0.5em;
-}
-/**
- * @tableofcontents
- *
- * 1. list control admin
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. list control admin */
-
-.rs-admin-table-default .rs-admin-list-control
-{
-	margin-top: 0.5em;
-}
-
-.rs-admin-list-control a, .rs-admin-list-control span
-{
-	background: linear-gradient(rgb(195, 195, 195), rgb(190, 190, 190));
-	border-radius: 0.25em;
-	color: rgb(102, 102, 102);
-	display: inline-block;
-	line-height: 2em;
-	padding: 0 0.75em;
-	text-decoration: none;
-}
-
-.rs-admin-list-control a:hover
-{
-	background: linear-gradient(rgb(44, 179, 252), #0090db);
-	color: rgb(255, 255, 255);
-}
-
-.rs-admin-list-control span
-{
-	color: rgb(153, 153, 153);
-}
-
-/* delete and uninstall */
-
-.rs-admin-item-delete a:hover, .rs-admin-item-uninstall a:hover
-{
-	background: linear-gradient(rgb(199, 41, 41), #a20000);
-	color: rgb(255, 255, 255);
-}
 /**
  * @tableofcontents
  *
@@ -1412,7 +1309,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. admin table */
+/* @section 1. table default */
 
 .rs-admin-table-default
 {
@@ -1540,74 +1437,8 @@
 	text-transform: lowercase;
 	top: 0
 }
-/**
- * @tableofcontents
- *
- * 1. medium max
- * 2. small max
- * 3. small min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
 
-/* @section 1. medium max */
-
-@media (max-width: 49.999em)
-{
-	.rs-admin-item-control.rs-admin-item-future-posting
-	{
-		display: none;
-	}
-}
-
-/* @section 2. small max */
-
-@media (max-width: 29.999em)
-{
-	.rs-admin-button-default + .rs-admin-button-default
-	{
-		margin-top: 0.75em;
-	}
-
-	a.rs-admin-button-default
-	{
-		display: block;
-		text-align: center;
-	}
-
-	button.rs-admin-button-default, .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-text, .rs-admin-field-textarea.rs-field-small
-	{
-		width: 100%;
-	}
-
-	.rs-admin-text-dock, .rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
-	{
-		display: none;
-	}
-}
-
-/* @section 3. small min */
-
-@media (min-width: 30em)
-{
-	.rs-admin-button-default + .rs-admin-button-default
-	{
-		margin-left: 0.5em;
-	}
-
-	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
-	{
-		float: left;
-	}
-
-	.rs-admin-form-default .rs-admin-button-save, .rs-admin-form-default .rs-admin-button-create
-	{
-		float: right;
-	}
-}
+/* @section 2. wrapper table */
 /**
  * @tableofcontents
  *
@@ -1621,6 +1452,30 @@
  * @package Redaxscript
  * @author Henry Ruhs
  */
+
+.rs-admin-form-default .rs-admin-box-note
+{
+	margin-top: 1em;
+}
+
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 1em;
+	position: relative;
+}
+
+.rs-admin-box-note a
+{
+	color: inherit;
+	text-decoration: underline;
+}
 
 /* @section 1. success */
 

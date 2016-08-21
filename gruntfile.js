@@ -256,8 +256,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/normalize.css',
-					'assets/styles/animate.css',
-					'assets/styles/form.css'
+					'assets/styles/animate.css'
 				],
 				dest: 'dist/styles/base.min.css'
 			},
@@ -274,22 +273,16 @@ module.exports = function (grunt)
 					'templates/admin/assets/styles/_variable.css',
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/accordion.css',
-					'templates/admin/assets/styles/layout.css',
-					'templates/admin/assets/styles/box.css',
 					'templates/admin/assets/styles/button.css',
-					'templates/admin/assets/styles/dashboard.css',
+					'templates/admin/assets/styles/control.css',
 					'templates/admin/assets/styles/dialog.css',
 					'templates/admin/assets/styles/dock.css',
 					'templates/admin/assets/styles/field.css',
 					'templates/admin/assets/styles/form.css',
 					'templates/admin/assets/styles/helper.css',
-					'templates/admin/assets/styles/icon.css',
-					'templates/admin/assets/styles/interface.css',
-					'templates/admin/assets/styles/list.css',
 					'templates/admin/assets/styles/panel.css',
 					'templates/admin/assets/styles/tab.css',
 					'templates/admin/assets/styles/table.css',
-					'templates/admin/assets/styles/query.css',
 					'templates/admin/assets/styles/note.css'
 				],
 				dest: 'templates/admin/dist/styles/admin.min.css'
@@ -314,23 +307,26 @@ module.exports = function (grunt)
 					'assets/styles/_dropdown.css',
 					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
-					'assets/styles/navigation.css',
 					'templates/default/assets/styles/_icon.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/typo.css',
 					'templates/default/assets/styles/accordion.css',
-					'templates/default/assets/styles/layout.css',
-					'templates/default/assets/styles/box.css',
+					'templates/default/assets/styles/breadcrumb.css',
 					'templates/default/assets/styles/button.css',
-					'templates/default/assets/styles/dialog.css',					
-					'templates/default/assets/styles/dock.css',
+					'templates/default/assets/styles/content.css',
+					'templates/default/assets/styles/dialog.css',
 					'templates/default/assets/styles/field.css',
+					'templates/default/assets/styles/footer.css',
 					'templates/default/assets/styles/form.css',
 					'templates/default/assets/styles/header.css',
 					'templates/default/assets/styles/helper.css',
+					'templates/default/assets/styles/layout.css',
 					'templates/default/assets/styles/list.css',
 					'templates/default/assets/styles/media.css',
 					'templates/default/assets/styles/navigation.css',
+					'templates/default/assets/styles/pagination.css',
+					'templates/default/assets/styles/result.css',
+					'templates/default/assets/styles/sidebar.css',
 					'templates/default/assets/styles/tab.css',
 					'templates/default/assets/styles/table.css',
 					'templates/default/assets/styles/teaser.css',
@@ -344,7 +340,7 @@ module.exports = function (grunt)
 				[
 					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
-					'templates/install/assets/styles/layout.css'
+					'templates/install/assets/styles/install.css'
 				],
 				dest: 'templates/install/dist/styles/install.min.css'
 			}

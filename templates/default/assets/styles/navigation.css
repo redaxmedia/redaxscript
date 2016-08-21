@@ -1,14 +1,104 @@
-/**
- * @tableofcontents
- *
- * 1. query
- *    1.1 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. general */
+
+.rs-fn-status-navigation
+{
+	display: none;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 max width 50rem */
+
+@media (--media-medium-max)
+{
+	/* @section 2.1.1 navigation toggle */
+
+	.rs-fn-toggle-navigation
+	{
+		cursor: pointer;
+		position: relative;
+		user-select: none;
+		z-index: 100;
+	}
+
+	.rs-fn-toggle-navigation:after,
+	.rs-fn-toggle-navigation:before
+	{
+		bottom: 2.5em;
+		content: '';
+		height: 0.25em;
+		left: 0;
+		outline: none;
+		position: absolute;
+		right: 0;
+		transition: transform 0.2s;
+	}
+
+	/* @section 2.1.2 navigation icon */
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	{
+		transform: rotate(-45deg);
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
+	{
+		transform: rotate(45deg);
+	}
+
+	/* @section 2.1.3 navigation */
+
+	.rs-fn-navigation
+	{
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transform: translateX(-100%);
+		z-index: 20;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	{
+		transform: translateX(0);
+		transition: transform 0.2s;
+	}
+
+	/* @section 2.1.4 navigation layer */
+
+	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	{
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 100%;
+		top: 0;
+		transition: background 0.2s;
+		z-index: 1;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	{
+		right: 0;
+		z-index: 5;
+	}
+}
+
+/* @section 2.2 min width 50rem */
+
+@media (--media-medium-min)
+{
+	.rs-box-navigation
+	{
+		float: right;
+	}
+
+	.rs-fn-toggle-navigation
+	{
+		display: none;
+	}
+}
 
 /* @section 1. query */
 

@@ -1,0 +1,53 @@
+/* TODO: add example to preview */
+
+.rs-list-result
+{
+	counter-reset: result;
+}
+
+.rs-list-result li
+{
+	padding-left: 3em;
+	position: relative;
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em;
+}
+
+.rs-list-result li:before
+{
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	color: gray(255);
+	content: counter(result, decimal);
+	counter-increment: result;
+	height: 2em;
+	left: 0;
+	line-height: 2em;
+	position: absolute;
+	text-align: center;
+	top: 0.625em;
+	width: 2em;
+}
+
+.rs-list-result li:hover:before
+{
+	background: var(--rs-color-primary);
+	transition: background 0.4s;
+}
+
+.rs-link-result
+{
+	color: var(--rs-color-tertiary);
+	font-size: 1.5em;
+}
+
+.rs-text-result-date
+{
+	display: block;
+	font-size: 0.875em;
+	font-style: italic;
+	line-height: 1.5em;
+}

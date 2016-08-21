@@ -1,0 +1,44 @@
+
+/* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
+
+.rs-title-extra
+{
+	font-size: 1.25em;
+	font-weight: bold;
+	margin-top: 1em;
+}
+
+.rs-sidebar a
+{
+	color: gray(255);
+}
+
+.rs-sidebar
+{
+	background: var(--rs-color-tertiary);
+	box-sizing: border-box;
+	color: gray(200);
+	padding: 1em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-sidebar
+	{
+		& .rs-admin-text-dock
+		{
+			display: none;
+		}
+
+		& .rs-admin-box-dock
+		{
+			display: flex;
+			justify-content: space-between;
+		}
+
+		& .rs-admin-link-dock
+		{
+			flex: 1 1 0;
+		}
+	}
+}

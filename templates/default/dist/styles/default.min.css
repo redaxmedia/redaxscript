@@ -198,127 +198,6 @@
 /**
  * @tableofcontents
  *
- * 1. general
- * 2. query
- *    2.1 max width 50rem
- *       2.1.1 navigation toggle
- *       2.1.2 navigation icon
- *       2.1.3 navigation
- *       2.1.4 navigation layer
- *    2.2 min width 50rem
- *       2.2.1 navigation trigger
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. general */
-
-.rs-fn-status-navigation
-{
-	display: none;
-}
-
-/* @section 2. query */
-
-/* @section 2.1 max width 50rem */
-
-@media (max-width: 49.999em)
-{
-
-	/* @section 2.1.1 navigation toggle */
-
-	.rs-fn-toggle-navigation
-	{
-		cursor: pointer;
-		position: relative;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		z-index: 100;
-	}
-
-	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
-	{
-		bottom: 2.5em;
-		content: '';
-		height: 0.25em;
-		left: 0;
-		outline: none;
-		position: absolute;
-		right: 0;
-		transition: transform 0.2s;
-	}
-
-	/* @section 2.1.2 navigation icon */
-
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
-	{
-		transform: rotate(-45deg);
-	}
-
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
-	{
-		transform: rotate(45deg);
-	}
-
-	/* @section 2.1.3 navigation */
-
-	.rs-fn-navigation
-	{
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		top: 0;
-		transform: translateX(-100%);
-		z-index: 20;
-	}
-
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
-	{
-		transform: translateX(0);
-		transition: transform 0.2s;
-	}
-
-	/* @section 2.1.4 navigation layer */
-
-	.rs-fn-status-navigation ~ .rs-has-navigation:after
-	{
-		bottom: 0;
-		content: '';
-		left: 0;
-		position: absolute;
-		right: 100%;
-		top: 0;
-		transition: background 0.2s;
-		z-index: 1;
-	}
-
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
-	{
-		right: 0;
-		z-index: 5;
-	}
-}
-
-/* @section 2.2 min width 50rem */
-
-@media (min-width: 50em)
-{
-
-	/* @section 2.2.1 navigation trigger */
-
-	.rs-fn-toggle-navigation
-	{
-		display: none;
-	}
-}
-/**
- * @tableofcontents
- *
  * 1. icon
  *
  * @since 3.0.0
@@ -402,244 +281,22 @@
 
 a
 {
+	color: inherit;
 	text-decoration: none;
 }
-
-.rs-box-content a
-{
-	color: #323e4c;
-	transition: color 0.2s;
-}
-
-.rs-body
-{
-	color: #323e4c;
-	font: 1.25em/1.75em 'open sans condensed', arial, sans-serif;
-}
-
-.rs-content strong
-{
-	font-weight: bold;
-}
-
-/* @section 2. links */
 
 .rs-link-default
 {
 	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
 	color: #323e4c;
-	transition: border-color 0.3s;
+	transition: border-color 0.3s
 }
 
 .rs-link-default:hover
 {
-	border-color: #699b3c;
+	border-color: #699b3c
 }
 
-.rs-link-result
-{
-	color: #323e4c;
-	font-size: 1.5em;
-}
-
-.rs-link-login
-{
-	float: right;
-}
-
-/* @section 2.1 read more link */
-
-.rs-link-readmore
-{
-	background: linear-gradient(rgb(196, 114, 59), #c77a46);
-	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-	display: block;
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
-	padding: 0.5em;
-	text-decoration: none;
-	transition: transform 0.2s;
-}
-
-.rs-link-readmore:after
-{
-	content: '\3009';
-	font: 0.75em/1em 'icon default';
-	margin-left: 0.375em;
-}
-
-.rs-link-readmore:hover
-{
-	background: linear-gradient(rgb(202, 128, 78), rgb(202, 128, 78));
-}
-
-.rs-link-readmore:active
-{
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
-	transform: translateY(2px);
-}
-
-/* @section 3. title */
-
-/* @section 3.1 several titles */
-
-.rs-title-comment
-{
-	font-size: 1.5em;
-	font-weight: bold;
-	margin-bottom: 1em;
-	margin-top: 1em;
-	padding-left: 2.5em;
-	position: relative;
-}
-
-.rs-title-comment:before
-{
-	content: '\25b6';
-	font: 2em/1em 'icon default';
-	left: 0;
-	position: absolute;
-	top: -0.25em;
-}
-
-.rs-title-comment a
-{
-	color: #323e4c;
-}
-
-.rs-title-extra
-{
-	font-size: 1.25em;
-	font-weight: bold;
-	margin-top: 1em;
-}
-
-/* @section 3.3 title content */
-
-.rs-title-content
-{
-	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
-	font-size: 2em;
-	margin-bottom: 0.75em;
-	margin-top: 1em;
-	padding-left: 0.25em;
-}
-
-.rs-title-content a
-{
-	color: #323e4c;
-}
-
-/* @section 3.4 title sub */
-
-.rs-title-sub
-{
-	font-size: 1.25em;
-	font-weight: bold;
-	margin-bottom: 0.5em;
-	margin-top: 1em;
-}
-
-/* @section 3.5 title website */
-
-.rs-title-website
-{
-	font-size: 3.25em;
-	font-weight: normal;
-	line-height: 1em;
-	position: relative;
-	text-transform: uppercase;
-}
-
-.rs-header .rs-title-website a
-{
-	color: rgb(200, 200, 200);
-	transition: color 0.2s;
-}
-
-.rs-header .rs-title-website:hover a
-{
-	color: rgb(255, 255, 255);
-}
-
-/* @section 4. text website */
-
-.rs-text-website
-{
-	color: rgb(170, 170, 170);
-	display: none;
-	font-weight: bold;
-	margin-left: 0.125em;
-}
-
-/* @section 5. header */
-
-.rs-header, .rs-header a
-{
-	color: rgb(255, 255, 255);
-}
-
-/* @section 6. content */
-
-.rs-box-content p
-{
-	margin: 0.5em 0;
-}
-
-/* @section 7. sidebar */
-
-.rs-sidebar a
-{
-	color: rgb(255, 255, 255);
-}
-
-/* @section 8. footer */
-
-.rs-footer, .rs-footer a
-{
-	color: rgb(200, 200, 200);
-}
-
-.rs-footer a:hover
-{
-	color: rgb(255, 255, 255);
-}
-
-/* @section 9. text */
-
-.rs-text-about
-{
-	float: left;
-}
-
-/* @section 10. query */
-
-/* @section 10.1 medium min */
-
-@media (max-width: 29.999em)
-{
-	.rs-text-powered-by
-	{
-		display: none;
-	}
-}
-
-@media (min-width: 50em)
-{
-	.rs-text-website
-	{
-		display: block;
-	}
-
-	.rs-link-readmore
-	{
-		display: inline-block;
-		vertical-align: middle;
-	}
-}
 /**
  * @tableofcontents
  *
@@ -722,331 +379,52 @@ a
 {
 	display: none
 }
-/**
- * @tableofcontents
- *
- * 1. general
- * 2. wrapper
- * 3. header
- * 4. sidebar
- * 5. footer
- * 6. query
- *    6.1 print
- *    6.2 medium max
- *    6.3 medium min
- *    6.4 large min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. general */
-
-.rs-body
+.rs-list-breadcrumb li
 {
-	background: rgb(255, 255, 255);
-	overflow-x: hidden;
+	display: inline-block;
 }
 
-.rs-main
+/* @section 2. list breadcrumb */
+
+.rs-list-breadcrumb
 {
-	background: rgb(255, 255, 255);
-	margin-bottom: 4em;
-	min-height: 20em;
+	margin-bottom: 1em;
 }
 
-/* @section 2. wrapper */
-
-.rs-wrapper
+.rs-list-breadcrumb li
 {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.rs-wrapper-page
-{
-	padding: 1em;
-}
-
-/* @section 3. header */
-
-.rs-header
-{
-	background: #323e4c;
-	padding: 1.25rem;
-}
-
-/* @section 4. sidebar */
-
-.rs-sidebar
-{
-	background: #323e4c;
-	box-sizing: border-box;
-	color: rgb(200, 200, 200);
-	padding: 1em;
-}
-
-/* @section 5. footer */
-
-.rs-footer
-{
-	background: #323e4c;
-	bottom: 0;
-	left: 0;
-	min-height: 1.75em;
-	padding: 1em;
-	position: fixed;
-	right: 0;
-	z-index: -1;
-}
-
-/* @section 6. query */
-
-/* @section 6.1 print */
-
-@media print
-{
-	.rs-body
-	{
-		background: rgb(255, 255, 255);
-		color: rgb(0, 0, 0);
-	}
-
-	.rs-footer, .rs-header, .rs-sidebar
-	{
-		display: none;
-	}
-}
-
-/* @section 6.2 medium max */
-
-@media (max-width: 49.999em)
-{
-	.rs-wrapper-body
-	{
-		min-width: 0;
-	}
-
-	.rs-header
-	{
-		min-height: 2.5em;
-	}
-
-	.rs-content + .rs-sidebar
-	{
-		margin-top: 3em;
-	}
-}
-
-/* @section 6.3 medium min */
-
-@media (min-width: 50em)
-{
-	.rs-wrapper
-	{
-		width: 90%;
-	}
-
-	.rs-wrapper-body
-	{
-		min-width: 50rem;
-	}
-
-	.rs-wrapper-page
-	{
-		padding: 2em;
-	}
-
-	.rs-content
-	{
-		float: left;
-		width: 70%;
-	}
-
-	.rs-sidebar
-	{
-		float: right;
-		margin-left: 2%;
-		width: 28%;
-	}
-}
-
-/* @section 6.4 large min */
-
-@media (min-width: 80em)
-{
-	.rs-wrapper
-	{
-		width: 78rem;
-	}
-
-	.rs-wrapper-body
-	{
-		min-width: 80rem;
-	}
-
-	.rs-content
-	{
-		width: 70%;
-	}
-
-	.rs-sidebar
-	{
-		width: 28%;
-	}
-}
-/**
- * @tableofcontents
- *
- * 1. several boxes
- * 2. box metadata
- * 3. box quote
- * 6. box note
- * 7. box comment
- * 8. space between elements
- * 9. query
- *    9.2 medium min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. several boxes */
-
-.rs-box-code
-{
-	background: rgb(200, 200, 200);
-	border: 0.25em solid rgb(170, 170, 170);
-	display: block;
-	font: 0.75em/1.25em monospace, arial, sans-serif;
-	padding: 1em;
-	white-space: pre-wrap;
-}
-
-.rs-box-byline
-{
-	font-size: 0.875em;
-	font-style: italic;
-	margin-top: 1em;
-}
-
-.rs-box-line
-{
-	background: #323e4c;
-	height: 0.125em;
-	margin: 2em 0;
-}
-
-.rs-box-comment, .rs-box-content, .rs-box-extra
-{
-	word-wrap: break-word;
-}
-
-/* @section 2. box metadata */
-
-.rs-box-website
-{
-	font-size: 0.75em;
-	max-width: 70%;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.rs-box-website a::-moz-selection, .rs-box-website span::-moz-selection
-{
-	background: #323e4c;
-	color: rgb(255, 255, 255);
-}
-
-.rs-box-website a::selection, .rs-box-website span::selection
-{
-	background: #323e4c;
-	color: rgb(255, 255, 255);
-}
-
-/* @section 3. box quote */
-
-.rs-box-quote
-{
-	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
-}
-
-/* @section 6. box note */
-
-.rs-box-note
-{
-	border-radius: 0.125em 0.125em;
-	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 3em;
+	display: inline-block;
 	position: relative;
+	vertical-align: middle;
 }
 
-.rs-box-note:before
+.rs-list-breadcrumb a
 {
-	font: 1.5em/1.25em 'icon default';
-	left: 0.5em;
+	color: #323e4c;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+}
+
+.rs-list-breadcrumb a:hover
+{
+	opacity: 1;
+}
+
+.rs-list-breadcrumb .rs-item-divider
+{
+	text-indent: -999em;
+	width: 1em;
+}
+
+.rs-list-breadcrumb .rs-item-divider:before
+{
+	content: '\3009';
+	font: 0.5em/4em 'icon default';
+	left: 0;
 	position: absolute;
-	top: 0.25em;
-}
-
-.rs-box-note a
-{
-	color: inherit;
-	text-decoration: underline;
-}
-
-/* @section 7. box comment */
-
-.rs-box-comment
-{
-	margin-bottom: 2em;
-	margin-top: 2em;
-}
-
-/* @section 8. space between elements */
-
-.rs-box-note + .rs-box-note, .rs-box-note + .rs-title-note
-{
-	margin-top: 1em;
-}
-
-/* @section 9. query */
-
-/* @section 9.2 medium min */
-
-@media (min-width: 50em)
-{
-	.rs-box-website
-	{
-		float: left;
-		font-size: 1em;
-		max-width: 60%;
-	}
-
-	.rs-box-navigation
-	{
-		float: right;
-	}
-
-	.rs-box-quote
-	{
-		margin: 1em 1em 1em 3em;
-		position: relative;
-	}
-
-	.rs-box-quote:before
-	{
-		content: '\201d';
-		font: 7em/1em georgia;
-		left: -0.5em;
-		opacity: 0.15;
-		position: absolute;
-		top: -0.125em;
-	}
+	right: 0;
+	text-align: center;
+	text-indent: 0;
 }
 /**
  * @tableofcontents
@@ -1195,6 +573,173 @@ a
 		margin-left: 1em;
 	}
 }
+
+.rs-title-content
+{
+	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
+	font-size: 2em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
+}
+
+.rs-title-content a
+{
+	color: #323e4c;
+}
+
+/* @section 3.4 title sub */
+
+.rs-title-content-sub
+{
+	font-size: 1.25em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+.rs-box-content a
+{
+	color: #323e4c;
+	transition: color 0.2s;
+}
+
+
+.rs-content strong
+{
+	font-weight: bold;
+}
+
+/* @section 6. content */
+
+.rs-box-content p
+{
+	margin: 0.5em 0;
+}
+
+.rs-box-code
+{
+	background: rgb(200, 200, 200);
+	border: 0.25em solid rgb(170, 170, 170);
+	display: block;
+	font: 0.75em/1.25em monospace, arial, sans-serif;
+	padding: 1em;
+	white-space: pre-wrap;
+}
+
+.rs-box-comment, .rs-box-content, .rs-box-extra
+{
+	word-wrap: break-word;
+}
+
+.rs-box-byline
+{
+	font-size: 0.875em;
+	font-style: italic;
+	margin-top: 1em;
+}
+
+.rs-box-line
+{
+	background: #323e4c;
+	height: 0.125em;
+	margin: 2em 0;
+}
+
+.rs-title-comment
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.rs-title-comment:before
+{
+	content: '\25b6';
+	font: 2em/1em 'icon default';
+	left: 0;
+	position: absolute;
+	top: -0.25em;
+}
+
+.rs-title-comment a
+{
+	color: #323e4c;
+}
+
+.rs-box-comment
+{
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+.rs-box-quote
+{
+	font: italic 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+}
+
+@media (min-width: 50em)
+{
+	.rs-box-quote
+	{
+		margin: 1em 1em 1em 3em;
+		position: relative;
+	}
+
+	.rs-box-quote:before
+	{
+		content: '\201d';
+		font: 7em/1em georgia;
+		left: -0.5em;
+		opacity: 0.15;
+		position: absolute;
+		top: -0.125em;
+	}
+}
+
+.rs-link-readmore
+{
+	background: linear-gradient(rgb(196, 114, 59), #c77a46);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: block;
+	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
+	padding: 0.5em;
+	text-decoration: none;
+	transition: transform 0.2s;
+}
+
+.rs-link-readmore:after
+{
+	content: '\3009';
+	font: 0.75em/1em 'icon default';
+	margin-left: 0.375em;
+}
+
+.rs-link-readmore:hover
+{
+	background: linear-gradient(rgb(202, 128, 78), rgb(202, 128, 78));
+}
+
+.rs-link-readmore:active
+{
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	transform: translateY(2px);
+}
+
+@media (min-width: 50em)
+{
+	.rs-link-readmore
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
 /**
  * @tableofcontents
  *
@@ -1237,41 +782,6 @@ a
 /**
  * @tableofcontents
  *
- * 1. dock admin
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. dock admin */
-
-@media (min-width: 50em)
-{
-	.rs-sidebar
-	{
-	}
-	.rs-sidebar .rs-admin-text-dock
-{
-		display: none
-	}
-	.rs-sidebar .rs-admin-box-dock
-{
-		display: -ms-flexbox;
-		display: flex;
-		-ms-flex-pack: justify;
-		justify-content: space-between
-	}
-	.rs-sidebar .rs-admin-link-dock
-{
-		-ms-flex: 1 1 0;
-		flex: 1 1 0
-	}
-}
-/**
- * @tableofcontents
- *
  * 1. several form elements
  * 2. several fields
  * 3. textarea
@@ -1290,7 +800,7 @@ a
 
 .rs-field-default, .rs-field-select, .rs-field-textarea.rs-field-small
 {
-	width: 40%;
+	width: 50%;
 }
 
 .rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
@@ -1361,28 +871,51 @@ a
 
 /* @section 5.1 small max */
 
-@media (max-width: 29.999em)
+@media (max-width: 49.999em)
 {
-	a.rs-button-default
-	{
-		display: block;
-		text-align: center;
-	}
-
-	button.rs-button-default, .rs-field-select, .rs-field-text, .rs-field-textarea.rs-field-small
+	.rs-button-default, .rs-field-default, .rs-field-select, .rs-field-textarea.rs-field-small
 	{
 		width: 100%;
 	}
 }
 
-/* @section 5.2 medium min */
-
-@media (min-width: 50em)
+.rs-footer
 {
-	.rs-field-default, .rs-field-select, .rs-field-textarea
+	background: #323e4c;
+	bottom: 0;
+	left: 0;
+	min-height: 1.75em;
+	padding: 1em;
+	position: fixed;
+	right: 0;
+	z-index: -1;
+}
+
+.rs-footer, .rs-footer a
+{
+	color: rgb(200, 200, 200);
+}
+
+.rs-footer a:hover
+{
+	color: rgb(255, 255, 255);
+}
+
+.rs-text-about
+{
+	float: left;
+}
+
+.rs-link-login
+{
+	float: right;
+}
+
+@media (max-width: 29.999em)
+{
+	.rs-text-powered-by
 	{
-		display: inline-block;
-		vertical-align: middle;
+		display: none;
 	}
 }
 /**
@@ -1445,111 +978,92 @@ a
  * @author Henry Ruhs
  */
 
-/* @section 1. dropdown */
-/**
- * @tableofcontents
- *
- * 1. clearfix
- * 2. redirect
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
 
-/* @section 1. clearfix */
+/* @section 3.5 title website */
 
-/* @section 2. redirect */
-
-/**
- * @tableofcontents
- *
- * 1. several lists
- * 2. list breadcrumb
- * 3. list default
- * 4. list header
- * 6. list result
- * 7. query
- *    7.1 medium max
- *    7.2 medium min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. several lists */
-
-.rs-list-breadcrumb li, .rs-list-pagination li
+.rs-box-website
 {
-	display: inline-block;
+	font-size: 0.75em;
+	max-width: 70%;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
-/* @section 2. list breadcrumb */
-
-.rs-list-breadcrumb
+.rs-box-website a::-moz-selection, .rs-box-website span::-moz-selection
 {
-	margin-bottom: 1em;
+	background: #323e4c;
+	color: rgb(255, 255, 255);
 }
 
-.rs-list-breadcrumb li
+.rs-box-website a::selection, .rs-box-website span::selection
 {
-	display: inline-block;
+	background: #323e4c;
+	color: rgb(255, 255, 255);
+}
+
+.rs-title-website
+{
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
 	position: relative;
-	vertical-align: middle;
+	text-transform: uppercase;
 }
 
-.rs-list-breadcrumb a
+.rs-text-website
 {
-	color: #323e4c;
-	opacity: 0.5;
-	transition: opacity 0.2s;
+	color: rgb(170, 170, 170);
+	display: none;
+	font-weight: bold;
+	margin-left: 0.125em;
 }
 
-.rs-list-breadcrumb a:hover
+@media (min-width: 50em)
 {
-	opacity: 1;
+	.rs-text-website
+	{
+		display: block;
+	}
+
+	.rs-box-website
+	{
+		float: left;
+		font-size: 1em;
+		max-width: 60%;
+	}
 }
 
-.rs-list-breadcrumb .rs-item-divider
+
+/* @section 5. header */
+
+
+.rs-header
 {
-	text-indent: -999em;
-	width: 1em;
+	background: #323e4c;
+	padding: 1.25rem;
 }
 
-.rs-list-breadcrumb .rs-item-divider:before
+
+.rs-header, .rs-header a
 {
-	content: '\3009';
-	font: 0.5em/4em 'icon default';
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-indent: 0;
+	color: rgb(255, 255, 255);
 }
 
-/* @section 3. list default */
-
-ol.rs-list-default li
+.rs-header .rs-title-website a
 {
-	list-style: inherit;
-	list-style-position: outside;
+	color: rgb(200, 200, 200);
+	transition: color 0.2s;
 }
 
-ul.rs-list-default li:before
+.rs-header .rs-title-website:hover a
 {
-	border: transparent 0.375em solid;
-	border-left-color: #3873b5;
-	content: '';
-	display: inline-block;
-	margin: 0 0.5em;
-	text-align: center;
-	width: 0.125em;
+	color: rgb(255, 255, 255);
 }
 
-/* @section 4. list header */
+/* @section 4. text website */
+
+
+/* list */
 
 .rs-list-header li
 {
@@ -1559,58 +1073,6 @@ ul.rs-list-default li:before
 	font: 1em/2.25em arial, sans-serif;
 	text-decoration: none;
 }
-
-/* @section 6. list result */
-
-.rs-list-result
-{
-	counter-reset: result;
-}
-
-.rs-list-result li
-{
-	padding-left: 3em;
-	position: relative;
-}
-
-.rs-list-result li + li
-{
-	margin-top: 1em;
-}
-
-.rs-list-result li:before
-{
-	background: #323e4c;
-	border-radius: 0.125em;
-	color: rgb(255, 255, 255);
-	content: counter(result, decimal);
-	counter-increment: result;
-	height: 2em;
-	left: 0;
-	line-height: 2em;
-	position: absolute;
-	text-align: center;
-	top: 0.625em;
-	width: 2em;
-}
-
-.rs-list-result li:hover:before
-{
-	background: #3873b5;
-	transition: background 0.4s;
-}
-
-.rs-text-result-date
-{
-	display: block;
-	font-size: 0.875em;
-	font-style: italic;
-	line-height: 1.5em;
-}
-
-/* @section 7. query */
-
-/* @section 7.1 medium max */
 
 @media (max-width: 49.999em)
 {
@@ -1725,6 +1187,186 @@ ul.rs-list-default li:before
 /**
  * @tableofcontents
  *
+ * 1. clearfix
+ * 2. dropdown
+ * 3. redirect
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. clearfix */
+
+/* @section 1. dropdown */
+
+/* @section 2. redirect */
+
+
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. wrapper
+ * 3. header
+ * 4. sidebar
+ * 5. footer
+ * 6. query
+ *    6.1 print
+ *    6.2 medium max
+ *    6.3 medium min
+ *    6.4 large min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-body
+{
+	background: rgb(255, 255, 255);
+	color: #323e4c;
+	font: 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+}
+
+.rs-main
+{
+	background: rgb(255, 255, 255);
+	margin-bottom: 4em;
+	min-height: 20em;
+}
+
+/* @section 2. wrapper */
+
+.rs-wrapper
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rs-wrapper-page
+{
+	padding: 1em;
+}
+
+/* @section 6.1 print */
+
+@media print
+{
+	.rs-body
+	{
+		background: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
+	}
+
+	.rs-footer, .rs-header, .rs-sidebar
+	{
+		display: none;
+	}
+}
+
+/* @section 6.2 medium max */
+
+@media (max-width: 49.999em)
+{
+	.rs-wrapper-body
+	{
+		min-width: 0;
+	}
+
+	.rs-header
+	{
+		min-height: 2.5em;
+	}
+
+	.rs-content + .rs-sidebar
+	{
+		margin-top: 3em;
+	}
+}
+
+/* @section 6.3 medium min */
+
+@media (min-width: 50em)
+{
+	.rs-wrapper
+	{
+		width: 90%;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 50rem;
+	}
+
+	.rs-wrapper-page
+	{
+		padding: 2em;
+	}
+
+	.rs-content
+	{
+		float: left;
+		width: 70%;
+	}
+
+	.rs-sidebar
+	{
+		float: right;
+		margin-left: 2%;
+		width: 28%;
+	}
+}
+
+/* @section 6.4 large min */
+
+@media (min-width: 80em)
+{
+	.rs-wrapper
+	{
+		width: 78rem;
+	}
+
+	.rs-wrapper-body
+	{
+		min-width: 80rem;
+	}
+
+	/*.rs-content*/
+	/*{*/
+		/*width: 70%;*/
+	/*}*/
+
+	/*.rs-sidebar*/
+	/*{*/
+		/*width: 28%;*/
+	/*}*/
+}
+/* @section 1. list default */
+
+.rs-list-default
+{
+}
+
+.rs-list-defaultol li
+{
+	list-style: inherit;
+	list-style-position: inside
+}
+
+.rs-list-defaultul li:before
+{
+	color: #3873b5;
+	content: '>';
+	margin-right: 0.5em
+}
+/**
+ * @tableofcontents
+ *
  * 1. media
  * 2. video
  *
@@ -1749,17 +1391,109 @@ ul.rs-list-default li:before
 	height: 22.5em;
 	width: 40em;
 }
-/**
- * @tableofcontents
- *
- * 1. query
- *    1.1 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. general */
+
+.rs-fn-status-navigation
+{
+	display: none;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 max width 50rem */
+
+@media (max-width: 49.999em)
+{
+	/* @section 2.1.1 navigation toggle */
+
+	.rs-fn-toggle-navigation
+	{
+		cursor: pointer;
+		position: relative;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		z-index: 100;
+	}
+
+	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
+	{
+		bottom: 2.5em;
+		content: '';
+		height: 0.25em;
+		left: 0;
+		outline: none;
+		position: absolute;
+		right: 0;
+		transition: transform 0.2s;
+	}
+
+	/* @section 2.1.2 navigation icon */
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	{
+		transform: rotate(-45deg);
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
+	{
+		transform: rotate(45deg);
+	}
+
+	/* @section 2.1.3 navigation */
+
+	.rs-fn-navigation
+	{
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transform: translateX(-100%);
+		z-index: 20;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	{
+		transform: translateX(0);
+		transition: transform 0.2s;
+	}
+
+	/* @section 2.1.4 navigation layer */
+
+	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	{
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 100%;
+		top: 0;
+		transition: background 0.2s;
+		z-index: 1;
+	}
+
+	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	{
+		right: 0;
+		z-index: 5;
+	}
+}
+
+/* @section 2.2 min width 50rem */
+
+@media (min-width: 50em)
+{
+	.rs-box-navigation
+	{
+		float: right;
+	}
+
+	.rs-fn-toggle-navigation
+	{
+		display: none;
+	}
+}
 
 /* @section 1. query */
 
@@ -1818,6 +1552,112 @@ ul.rs-list-default li:before
 	{
 		opacity: 1;
 		visibility: visible;
+	}
+}
+/* TODO: add example to preview */
+
+/* TODO: styling is missing */
+
+.rs-list-pagination li
+{
+	display: inline-block;
+}
+/* TODO: add example to preview */
+
+.rs-list-result
+{
+	counter-reset: result;
+}
+
+.rs-list-result li
+{
+	padding-left: 3em;
+	position: relative;
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em;
+}
+
+.rs-list-result li:before
+{
+	background: #323e4c;
+	border-radius: 0.125em;
+	color: rgb(255, 255, 255);
+	content: counter(result, decimal);
+	counter-increment: result;
+	height: 2em;
+	left: 0;
+	line-height: 2em;
+	position: absolute;
+	text-align: center;
+	top: 0.625em;
+	width: 2em;
+}
+
+.rs-list-result li:hover:before
+{
+	background: #3873b5;
+	transition: background 0.4s;
+}
+
+.rs-link-result
+{
+	color: #323e4c;
+	font-size: 1.5em;
+}
+
+.rs-text-result-date
+{
+	display: block;
+	font-size: 0.875em;
+	font-style: italic;
+	line-height: 1.5em;
+}
+
+/* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
+
+.rs-title-extra
+{
+	font-size: 1.25em;
+	font-weight: bold;
+	margin-top: 1em;
+}
+
+.rs-sidebar a
+{
+	color: rgb(255, 255, 255);
+}
+
+.rs-sidebar
+{
+	background: #323e4c;
+	box-sizing: border-box;
+	color: rgb(200, 200, 200);
+	padding: 1em;
+}
+
+@media (min-width: 50em)
+{
+	.rs-sidebar
+	{
+	}
+	.rs-sidebar .rs-admin-text-dock
+{
+		display: none
+	}
+	.rs-sidebar .rs-admin-box-dock
+{
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: justify;
+		justify-content: space-between
+	}
+	.rs-sidebar .rs-admin-link-dock
+{
+		-ms-flex: 1 1 0;
+		flex: 1 1 0
 	}
 }
 /**
@@ -1959,6 +1799,8 @@ ul.rs-list-default li:before
 {
 	border-bottom: 1px solid #323e4c
 }
+
+/* @section 2. wrapper table */
 /**
  * @tableofcontents
  *
@@ -2087,6 +1929,34 @@ ul.rs-list-default li:before
  * @package Redaxscript
  * @author Henry Ruhs
  */
+
+
+.rs-box-note + .rs-box-note, .rs-box-note + .rs-title-note
+{
+	margin-top: 1em;
+}
+
+.rs-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 3em;
+	position: relative;
+}
+
+.rs-box-note:before
+{
+	font: 1.5em/1.25em 'icon default';
+	left: 0.5em;
+	position: absolute;
+	top: 0.25em;
+}
+
+.rs-box-note a
+{
+	color: inherit;
+	text-decoration: underline;
+}
 
 /* @section 1. success */
 

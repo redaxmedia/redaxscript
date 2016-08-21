@@ -9,9 +9,205 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. dropdown */
 
-.rs-fn-dropdown
+/* @section 3.5 title website */
+
+.rs-box-website
 {
-	@extend %fn-dropdown;
+	font-size: 0.75em;
+	max-width: 70%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.rs-box-website a::selection,
+.rs-box-website span::selection
+{
+	background: var(--rs-color-tertiary);
+	color: gray(255);
+}
+
+.rs-title-website
+{
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.rs-text-website
+{
+	color: gray(170);
+	display: none;
+	font-weight: bold;
+	margin-left: 0.125em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-text-website
+	{
+		display: block;
+	}
+
+	.rs-box-website
+	{
+		float: left;
+		font-size: 1em;
+		max-width: 60%;
+	}
+}
+
+/* @section 5. header */
+
+
+.rs-header
+{
+	background: var(--rs-color-tertiary);
+	padding: 1.25rem;
+}
+
+
+.rs-header,
+.rs-header a
+{
+	color: gray(255);
+}
+
+.rs-header .rs-title-website a
+{
+	color: gray(200);
+	transition: color 0.2s;
+}
+
+.rs-header .rs-title-website:hover a
+{
+	color: gray(255);
+}
+
+/* @section 4. text website */
+
+
+/* list */
+
+.rs-list-header li
+{
+	box-sizing: border-box;
+	color: gray(255);
+	display: block;
+	font: 1em/2.25em arial, sans-serif;
+	text-decoration: none;
+}
+
+@media (--media-medium-max)
+{
+	.rs-list-header
+	{
+		background: var(--rs-color-primary);
+	}
+
+	.rs-list-header > li > span
+	{
+		background: var(--rs-color-primary-dark);
+	}
+
+	.rs-list-header a,
+	.rs-list-header span
+	{
+		display: block;
+		font-size: 0.875em;
+		padding: 0 1em;
+		transition: background 0.2s;
+	}
+
+	.rs-list-header a:hover
+	{
+		background: var(--rs-color-primary-light);
+	}
+}
+
+/* @section 7.2 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-list-header li
+	{
+		font: 1.125em/2em var(--rs-font-primary);
+	}
+
+	.rs-list-header > li
+	{
+		background: var(--rs-gradient-primary);
+		border-radius: 0.125em;
+		box-shadow: inset 0 -0.125em 0 0 gray(0, 0.2);
+		display: inline-block;
+		margin: 1em 0;
+		padding: 0.25em 1em;
+	}
+
+	.rs-list-header > li:hover
+	{
+		background: var(--rs-gradient-primary-light);
+		color: gray(0);
+		cursor: pointer;
+	}
+
+	.rs-list-header > li + li
+	{
+		margin-left: 1em;
+	}
+
+	/* children */
+
+	.rs-list-header-children
+	{
+		font-size: 0.875em;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children
+	{
+		border-top: 0.5em solid transparent;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children a
+	{
+		padding: 0 1em;
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li
+	{
+		background: var(--rs-color-primary);
+	}
+
+	.rs-list-header > li:hover .rs-list-header-children li:hover
+	{
+		background: var(--rs-color-primary-light);
+	}
+
+	.rs-list-header-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-header-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		box-shadow: inset 0 -0.125em 0 0 gray(0, 0.2);
+	}
+
+	.rs-list-header-children:after
+	{
+		border-radius: 0.25em;
+		bottom: 0;
+		box-shadow: 0 0.1em 0.2em gray(0, 0.5);
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: -1;
+	}
 }

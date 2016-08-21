@@ -122,3 +122,38 @@ a.rs-admin-button-default
 {
 	margin-top: 1em;
 }
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
+}
+
+@media (--media-small-max)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-top: 0.75em;
+	}
+}
+
+/* @section 3. small min */
+
+@media (--media-small-min)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 0.5em;
+	}
+
+	.rs-admin-form-default .rs-admin-button-cancel,
+	.rs-admin-form-default .rs-admin-button-delete
+	{
+		float: left;
+	}
+
+	.rs-admin-form-default .rs-admin-button-save,
+	.rs-admin-form-default .rs-admin-button-create
+	{
+		float: right;
+	}
+}

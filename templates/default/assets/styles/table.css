@@ -46,3 +46,10 @@
 		}
 	}
 }
+
+/* @section 2. wrapper table */
+
+.rs-wrapper-table
+{
+	@extend %wrapper-table;
+}

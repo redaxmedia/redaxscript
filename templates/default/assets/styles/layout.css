@@ -23,7 +23,8 @@
 .rs-body
 {
 	background: gray(255);
-	overflow-x: hidden;
+	color: var(--rs-color-tertiary);
+	font: 1.25em/1.75em var(--rs-font-primary);
 }
 
 .rs-main
@@ -45,45 +46,6 @@
 {
 	padding: 1em;
 }
-
-.rs-wrapper-table
-{
-	@extend %wrapper-table;
-}
-
-/* @section 3. header */
-
-.rs-header
-{
-	background: var(--rs-color-tertiary);
-	padding: 1.25rem;
-}
-
-/* @section 4. sidebar */
-
-.rs-sidebar
-{
-	background: var(--rs-color-tertiary);
-	box-sizing: border-box;
-	color: gray(200);
-	padding: 1em;
-}
-
-/* @section 5. footer */
-
-.rs-footer
-{
-	background: var(--rs-color-tertiary);
-	bottom: 0;
-	left: 0;
-	min-height: 1.75em;
-	padding: 1em;
-	position: fixed;
-	right: 0;
-	z-index: -1;
-}
-
-/* @section 6. query */
 
 /* @section 6.1 print */
 
@@ -168,15 +130,5 @@
 	.rs-wrapper-body
 	{
 		min-width: 80rem;
-	}
-
-	.rs-content
-	{
-		width: 70%;
-	}
-
-	.rs-sidebar
-	{
-		width: 28%;
 	}
 }

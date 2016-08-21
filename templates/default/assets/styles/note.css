@@ -13,6 +13,35 @@
  * @author Henry Ruhs
  */
 
+
+.rs-box-note + .rs-box-note,
+.rs-box-note + .rs-title-note
+{
+	margin-top: 1em;
+}
+
+.rs-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 0.5em 0.5em 3em;
+	position: relative;
+}
+
+.rs-box-note:before
+{
+	font: 1.5em/1.25em var(--rs-font-icon);
+	left: 0.5em;
+	position: absolute;
+	top: 0.25em;
+}
+
+.rs-box-note a
+{
+	color: inherit;
+	text-decoration: underline;
+}
+
 /* @section 1. success */
 
 .rs-is-success

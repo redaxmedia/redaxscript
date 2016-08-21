@@ -235,7 +235,7 @@ function admin_contents_list()
 				$output .= '><td>';
 				if ($language)
 				{
-					$output .= '<span class="rs-admin-text-flag rs-admin-is-' . $language . '" title="' . $language . '">' . $language . '</span>';
+					$output .= '<img class="rs-admin-image-flag rs-admin-is-' . $language . '" title="' . Redaxscript\Language::get($language) . '" />';
 				}
 				if ($status == 1)
 				{
@@ -555,7 +555,7 @@ function admin_users_list()
 			$output .= '><td>';
 			if ($language)
 			{
-				$output .= '<span class="rs-admin-text-flag rs-admin-language-' . $language . '" title="' . Redaxscript\Language::get($language) . '">' . $language . '</span>';
+				$output .= '<img class="rs-admin-image-flag rs-admin-is-' . $language . '" title="' . Redaxscript\Language::get($language) . '" />';
 			}
 			$output .= $name;
 

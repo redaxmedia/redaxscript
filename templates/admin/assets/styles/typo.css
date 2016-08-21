@@ -1,16 +1,3 @@
-/**
- * @tableofcontents
- *
- * 1. link
- * 2. title
- * 3. flag
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. link */
 
 .rs-admin-link-default
@@ -23,30 +10,12 @@
 
 .rs-admin-title-content
 {
+	color: gray(32);
 	font-size: 2em;
 	margin: 1em 0;
-}
 
-.rs-admin-title-content a
-{
-	color: gray(32);
-}
-
-/* @section 3. flag */
-
-.rs-admin-text-flag
-{
-	background: var(--rs-admin-color-primary);
-	border-radius: 0.125em;
-	color: gray(255);
-	display: inline-block;
-	font-size: 0.75em;
-	line-height: 1.25em;
-	padding: 0.375em 0.5em;
-	text-transform: uppercase;
-}
-
-.rs-admin-table-default .rs-admin-text-flag
-{
-	margin-right: 1em;
+	a
+	{
+		color: inherit;
+	}
 }

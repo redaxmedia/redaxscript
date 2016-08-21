@@ -1,0 +1,169 @@
+
+.rs-title-content
+{
+	border-left: 0.125em solid gray(0, 0.2);
+	font-size: 2em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
+}
+
+.rs-title-content a
+{
+	color: var(--rs-color-tertiary);
+}
+
+/* @section 3.4 title sub */
+
+.rs-title-content-sub
+{
+	font-size: 1.25em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+.rs-box-content a
+{
+	color: var(--rs-color-tertiary);
+	transition: color 0.2s;
+}
+
+
+.rs-content strong
+{
+	font-weight: bold;
+}
+
+/* @section 6. content */
+
+.rs-box-content p
+{
+	margin: 0.5em 0;
+}
+
+.rs-box-code
+{
+	background: gray(200);
+	border: 0.25em solid gray(170);
+	display: block;
+	font: 0.75em/1.25em var(--rs-font-code);
+	padding: 1em;
+	white-space: pre-wrap;
+}
+
+.rs-box-comment,
+.rs-box-content,
+.rs-box-extra
+{
+	word-wrap: break-word;
+}
+
+.rs-box-byline
+{
+	font-size: 0.875em;
+	font-style: italic;
+	margin-top: 1em;
+}
+
+.rs-box-line
+{
+	background: var(--rs-color-tertiary);
+	height: 0.125em;
+	margin: 2em 0;
+}
+
+.rs-title-comment
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding-left: 2.5em;
+	position: relative;
+}
+
+.rs-title-comment:before
+{
+	content: '\25b6';
+	font: 2em/1em var(--rs-font-icon);
+	left: 0;
+	position: absolute;
+	top: -0.25em;
+}
+
+.rs-title-comment a
+{
+	color: var(--rs-color-tertiary);
+}
+
+.rs-box-comment
+{
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+.rs-box-quote
+{
+	font: italic 1.25em/1.75em var(--rs-font-primary);
+}
+
+@media (--media-medium-min)
+{
+	.rs-box-quote
+	{
+		margin: 1em 1em 1em 3em;
+		position: relative;
+	}
+
+	.rs-box-quote:before
+	{
+		content: '\201d';
+		font: 7em/1em georgia;
+		left: -0.5em;
+		opacity: 0.15;
+		position: absolute;
+		top: -0.125em;
+	}
+}
+
+.rs-link-readmore
+{
+	background: var(--rs-gradient-quaternary);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
+	box-sizing: border-box;
+	color: gray(255);
+	cursor: pointer;
+	display: block;
+	font: 1em/1.25em var(--rs-font-primary);
+	padding: 0.5em;
+	text-decoration: none;
+	transition: transform 0.2s;
+}
+
+.rs-link-readmore:after
+{
+	content: '\3009';
+	font: 0.75em/1em var(--rs-font-icon);
+	margin-left: 0.375em;
+}
+
+.rs-link-readmore:hover
+{
+	background: var(--rs-gradient-quaternary-light);
+}
+
+.rs-link-readmore:active
+{
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
+	transform: translateY(2px);
+}
+
+@media (--media-medium-min)
+{
+	.rs-link-readmore
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

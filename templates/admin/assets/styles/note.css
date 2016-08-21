@@ -12,6 +12,30 @@
  * @author Henry Ruhs
  */
 
+.rs-admin-form-default .rs-admin-box-note
+{
+	margin-top: 1em;
+}
+
+.rs-admin-title-note + .rs-admin-box-note
+{
+	margin-top: 0.5em;
+}
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em 0.125em;
+	font-weight: bold;
+	padding: 0.5em 1em;
+	position: relative;
+}
+
+.rs-admin-box-note a
+{
+	color: inherit;
+	text-decoration: underline;
+}
+
 /* @section 1. success */
 
 .rs-admin-is-success
