@@ -112,7 +112,7 @@ class Preview extends Module
 	/**
 	 * render
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $alias
 	 * @param string $path
@@ -131,7 +131,7 @@ class Preview extends Module
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'href' => Registry::get('secondParameter') === $alias ? Registry::get('parameterRoute') . 'preview' : Registry::get('parameterRoute') . 'preview/' . $alias
+			'href' => Registry::get('secondParameter') === $alias ? Registry::get('parameterRoute') . 'preview#' . $alias : Registry::get('parameterRoute') . 'preview/' . $alias
 		])
 		->text(Registry::get('secondParameter') === $alias ? Language::get('back') : $alias);
 
