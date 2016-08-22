@@ -45,8 +45,8 @@ $outputBody = null;
 <div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
-		$theadElement->html($outputHead) .
-		$tfootElement->html($outputFoot) .
+		$theadElement->html('<tr>' . $outputHead . '</tr>') .
+		$tfootElement->html('<tr>' . $outputFoot . '</tr>') .
 		$tbodyElement->html(
 			'<tr>' . $outputBody . '</tr>' .
 			'<tr>' . $outputBody . '</tr>' .
