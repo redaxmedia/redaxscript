@@ -1,3 +1,14 @@
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. form default */
 
 .rs-admin-form-default
@@ -14,9 +25,9 @@
 	{
 		color: gray(100);
 		display: block;
-	  	font-weight: bold;
+		font-weight: bold;
 
-		:after
+		& :after
 		{
 			content: ':';
 		}

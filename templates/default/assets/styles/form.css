@@ -1,3 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ * 2. form search
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. form default */
 
 .rs-form-default
@@ -15,7 +27,7 @@
 		display: block;
 		font-weight: bold;
 
-		:after
+		& :after
 		{
 			content: ':';
 		}

@@ -255,21 +255,6 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. links
- *    2.1 read more link
- * 3. title
- *    3.1 several titles
- *    3.3 title content
- *    3.4 title sub
- *    3.5 title website
- * 4. text website
- * 5. header
- * 6. content
- * 7. sidebar
- * 8. footer
- * 9. text
- * 10. query
- *    10.1 medium min
  *
  * @since 3.0.0
  *
@@ -296,7 +281,6 @@ a
 {
 	border-color: #699b3c
 }
-
 /**
  * @tableofcontents
  *
@@ -384,6 +368,17 @@ a
 {
 	display: none
 }
+/**
+ * @tableofcontents
+ *
+ * 2. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 .rs-list-breadcrumb li
 {
 	display: inline-block;
@@ -579,6 +574,18 @@ a
 		margin-left: 1em;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ *    3.4 title sub
+ * 6. content
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 .rs-title-content
 {
 	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
@@ -798,8 +805,7 @@ a
  * 3. textarea
  * 4. disabled and readonly
  * 5. query
- *    5.1 medium max
- *    5.2 medium min
+ *    5.1 small max
  *
  * @since 3.0.0
  *
@@ -889,7 +895,6 @@ a
 		width: 100%;
 	}
 }
-
 .rs-footer
 {
 	background: #323e4c;
@@ -933,6 +938,18 @@ a
 		display: none;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ * 2. form search
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. form default */
 
 .rs-form-default
@@ -949,12 +966,12 @@ a
 .rs-form-default .rs-label-default
 {
 	display: block;
-	font-weight: bold;
+	font-weight: bold
+}
 
-	:after
+.rs-form-default .rs-label-default :after
 {
-		content: ':'
-	}
+	content: ':'
 }
 
 .rs-form-default .rs-label-message:after
@@ -973,7 +990,10 @@ a
 /**
  * @tableofcontents
  *
- * 1. dropdown
+ *    3.5 title website
+ * 5. header
+ * 4. text website
+ *    7.2 medium min
  *
  * @since 3.0.0
  *
@@ -1193,8 +1213,8 @@ a
  * @tableofcontents
  *
  * 1. clearfix
- * 2. dropdown
- * 3. redirect
+ * 1. dropdown
+ * 2. redirect
  *
  * @since 3.0.0
  *
@@ -1207,20 +1227,14 @@ a
 /* @section 1. dropdown */
 
 /* @section 2. redirect */
-
 /**
  * @tableofcontents
  *
  * 1. general
  * 2. wrapper
- * 3. header
- * 4. sidebar
- * 5. footer
- * 6. query
- *    6.1 print
  *    6.2 medium max
  *    6.3 medium min
- *    6.4 large min
+ * 6.1 print
  *
  * @since 3.0.0
  *
@@ -1308,6 +1322,17 @@ a
 		display: none;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. list default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. list default */
 
 .rs-list-default
@@ -1330,7 +1355,6 @@ a
  * @tableofcontents
  *
  * 1. media
- * 2. video
  *
  * @since 3.0.0
  *
@@ -1345,6 +1369,26 @@ a
 	border-radius: 0.25em;
 	width: 100%;
 }
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. query
+ *    2.1 max width 50rem
+ *       2.1.1 navigation toggle
+ *       2.1.2 navigation icon
+ *       2.1.3 navigation
+ *       2.1.4 navigation layer
+ *    2.2 min width 50rem
+ * 1. query
+ *    1.1 medium max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. general */
 
 .rs-fn-status-navigation
@@ -1724,6 +1768,7 @@ a
  * 1. table default
  *    1.1 head and foot
  *    1.2 body
+ * 2. wrapper table
  *
  * @since 3.0.0
  *

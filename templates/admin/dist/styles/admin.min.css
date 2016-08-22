@@ -142,6 +142,17 @@
 {
 	width: 100%
 }
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. icon */
 
 @font-face
@@ -177,6 +188,18 @@
 
 	/* @section 1.4 font */
 }
+/**
+ * @tableofcontents
+ *
+ * 1. link
+ * 2. title
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. link */
 
 .rs-admin-link-default
@@ -295,6 +318,7 @@
  *    1.3 icons
  * 2. disabled and readonly
  * 3. space between elements
+ * 3. small min
  *
  * @since 3.0.0
  *
@@ -575,6 +599,8 @@
 /**
  * @tableofcontents
  *
+ *    1.1 description dock admin
+ *    1.2 footer grid fix
  * 1. link dock admin
  *    1.1 icons
  *
@@ -671,7 +697,6 @@
 {
 	content: 'r';
 }
-
 /**
  * @tableofcontents
  *
@@ -680,8 +705,7 @@
  *    1.2 focus effect
  * 2. textarea
  * 3. disabled and readonly
- * 4. query
- *    4.1 small min
+ *    4.2 small max
  *
  * @since 3.0.0
  *
@@ -754,6 +778,17 @@
 		width: 100%;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. form default */
 
 .rs-admin-form-default
@@ -771,12 +806,12 @@
 {
 	color: rgb(100, 100, 100);
 	display: block;
-	font-weight: bold;
+	font-weight: bold
+}
 
-	:after
+.rs-admin-form-default .rs-admin-label-default :after
 {
-		content: ':'
-	}
+	content: ':'
 }
 
 .rs-admin-form-default .rs-admin-label-message:after
@@ -1290,11 +1325,12 @@
 /**
  * @tableofcontents
  *
- * 1. admin table
+ * 1. table default
  *    1.1 head and foot
  *    1.2 body
  *    1.3 moveup and movedown
  *    1.4 rank
+ * 2. wrapper table
  *
  * @since 3.0.0
  *
