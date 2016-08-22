@@ -9,7 +9,6 @@
  * @author Henry Ruhs
  */
 
-
 /* @section 3.5 title website */
 
 .rs-box-website
@@ -61,14 +60,12 @@
 
 /* @section 5. header */
 
-
 .rs-header
 {
 	background: var(--rs-color-tertiary);
 	padding: 1.25rem;
 	position: relative;
 }
-
 
 .rs-header,
 .rs-header a
@@ -88,7 +85,6 @@
 }
 
 /* @section 4. text website */
-
 
 /* list */
 
