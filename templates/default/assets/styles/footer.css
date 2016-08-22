@@ -3,8 +3,7 @@
 	background: var(--rs-color-tertiary);
 	bottom: 0;
 	left: 0;
-	min-height: 1.75em;
-	padding: 1em;
+	padding: 1.5em 0;
 	position: fixed;
 	right: 0;
 	z-index: -1;
@@ -19,6 +18,11 @@
 .rs-footer a:hover
 {
 	color: gray(255);
+}
+
+.rs-text-about, .rs-link-login
+{
+	font-size: 1.25em;
 }
 
 .rs-text-about

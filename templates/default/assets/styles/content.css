@@ -1,7 +1,7 @@
 .rs-title-content
 {
 	border-left: 0.125em solid gray(0, 0.2);
-	font-size: 2em;
+	font-size: 2.5em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
@@ -34,8 +34,14 @@
 
 /* @section 6. content */
 
+.rs-box-content
+{
+	font-size: 1.25em;
+}
+
 .rs-box-content p
 {
+	line-height: 1.75em;
 	margin: 0.5em 0;
 }
 

@@ -28,14 +28,14 @@
 	@extend %component-dialog;
 	animation: fade-in 0.4s;
 	border-radius: 0.25rem;
-	overflow: hidden;
+	font: 1.25rem var(--rs-admin-font-primary);
 
 	& .rs-admin-button-default
 	{
 		margin-top: 1em;
 	}
 
-	.rs-admin-field-default
+	& .rs-admin-field-default
 	{
 		width: 100%;
 	}
@@ -47,9 +47,10 @@
 {
 	background: gray(32);
 	color: gray(204);
-	font: bold 1em/2.5em var(--rs-admin-font-primary);
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 2.5em;
 	padding: 0 1em;
-	text-transform: uppercase;
 }
 
 /* @section 2.2 box dialog */

@@ -16,6 +16,7 @@
 .rs-table-default
 {
 	@extend %table-default;
+	font-size: 1.25em;
 
 	& caption,
 	& th,

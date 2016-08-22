@@ -313,6 +313,11 @@ a
 
 /* @section 1. accordion */
 
+.rs-component-accordion
+{
+	font-size: 1.25em;
+}
+
 /* @section 1.1 title */
 
 .rs-title-accordion
@@ -388,6 +393,7 @@ a
 
 .rs-list-breadcrumb
 {
+	font-size: 1.25em;
 	margin-bottom: 1em;
 }
 
@@ -573,11 +579,10 @@ a
 		margin-left: 1em;
 	}
 }
-
 .rs-title-content
 {
 	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
-	font-size: 2em;
+	font-size: 2.5em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
@@ -603,7 +608,6 @@ a
 	transition: color 0.2s;
 }
 
-
 .rs-content strong
 {
 	font-weight: bold;
@@ -611,8 +615,14 @@ a
 
 /* @section 6. content */
 
+.rs-box-content
+{
+	font-size: 1.25em;
+}
+
 .rs-box-content p
 {
+	line-height: 1.75em;
 	margin: 0.5em 0;
 }
 
@@ -733,6 +743,7 @@ a
 		vertical-align: middle;
 	}
 }
+
 /**
  * @tableofcontents
  *
@@ -760,17 +771,24 @@ a
 	background: #323e4c;
 	border-radius: 0.25em;
 	color: rgb(255, 255, 255);
-	padding: 1em;
+	font-size: 1.25em;
+	padding: 1em
+}
 
-	.rs-field-default
-	{
-		width: 100%;
-	}
+.rs-component-dialog .rs-title-dialog
+{
+	font-size: 1.25em;
+	margin-bottom: 0.5em
 }
 
 .rs-component-dialog .rs-button-default
 {
 	margin-top: 1em
+}
+
+.rs-component-dialog .rs-field-default
+{
+	width: 100%
 }
 /**
  * @tableofcontents
@@ -877,8 +895,7 @@ a
 	background: #323e4c;
 	bottom: 0;
 	left: 0;
-	min-height: 1.75em;
-	padding: 1em;
+	padding: 1.5em 0;
 	position: fixed;
 	right: 0;
 	z-index: -1;
@@ -892,6 +909,11 @@ a
 .rs-footer a:hover
 {
 	color: rgb(255, 255, 255);
+}
+
+.rs-text-about, .rs-link-login
+{
+	font-size: 1.25em;
 }
 
 .rs-text-about
@@ -971,24 +993,24 @@ a
  * @author Henry Ruhs
  */
 
-
 /* @section 3.5 title website */
 
-.rs-box-website
+.rs-component-website
 {
-	font-size: 0.75em;
+	font-size: 1em;
 	max-width: 70%;
+	min-height: 2em;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-.rs-box-website a::-moz-selection, .rs-box-website span::-moz-selection
+.rs-component-website a::-moz-selection, .rs-component-website span::-moz-selection
 {
 	background: #323e4c;
 	color: rgb(255, 255, 255);
 }
 
-.rs-box-website a::selection, .rs-box-website span::selection
+.rs-component-website a::selection, .rs-component-website span::selection
 {
 	background: #323e4c;
 	color: rgb(255, 255, 255);
@@ -1013,29 +1035,27 @@ a
 
 @media (min-width: 50em)
 {
+	.rs-component-website
+	{
+		float: left;
+		font-size: 1.25em;
+		max-width: 60%;
+	}
+
 	.rs-text-website
 	{
 		display: block;
-	}
-
-	.rs-box-website
-	{
-		float: left;
-		font-size: 1em;
-		max-width: 60%;
 	}
 }
 
 /* @section 5. header */
 
-
 .rs-header
 {
 	background: #323e4c;
-	padding: 1.25rem;
+	padding: 1.5em 0;
 	position: relative;
 }
-
 
 .rs-header, .rs-header a
 {
@@ -1055,8 +1075,11 @@ a
 
 /* @section 4. text website */
 
-
 /* list */
+
+.rs-list-header {
+	font-size: 1.25em;
+}
 
 .rs-list-header li
 {
@@ -1196,7 +1219,6 @@ a
 
 /* @section 2. redirect */
 
-
 /**
  * @tableofcontents
  *
@@ -1223,13 +1245,13 @@ a
 {
 	background: rgb(255, 255, 255);
 	color: #323e4c;
-	font: 1.25em/1.75em 'open sans condensed', arial, sans-serif;
+	font: 1em 'open sans condensed', arial, sans-serif;
 }
 
 .rs-main
 {
 	background: rgb(255, 255, 255);
-	margin-bottom: 4em;
+	margin-bottom: 5em;
 	min-height: 20em;
 }
 
@@ -1237,45 +1259,20 @@ a
 
 .rs-wrapper
 {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+	max-width: 100em;
 }
 
 .rs-wrapper-page
 {
-	padding: 1em;
-}
-
-/* @section 6.1 print */
-
-@media print
-{
-	.rs-body
-	{
-		background: rgb(255, 255, 255);
-		color: rgb(0, 0, 0);
-	}
-
-	.rs-footer, .rs-header, .rs-sidebar
-	{
-		display: none;
-	}
+	padding: 1.5em 0;
 }
 
 /* @section 6.2 medium max */
 
 @media (max-width: 49.999em)
 {
-	.rs-wrapper-body
-	{
-		min-width: 0;
-	}
-
-	.rs-header
-	{
-		min-height: 2.5em;
-	}
-
 	.rs-content + .rs-sidebar
 	{
 		margin-top: 3em;
@@ -1288,17 +1285,9 @@ a
 {
 	.rs-wrapper
 	{
-		width: 90%;
-	}
-
-	.rs-wrapper-body
-	{
-		min-width: 50rem;
-	}
-
-	.rs-wrapper-page
-	{
-		padding: 2em;
+		margin-left: auto;
+		margin-right: auto;
+		width: 94%;
 	}
 
 	.rs-content
@@ -1315,18 +1304,19 @@ a
 	}
 }
 
-/* @section 6.4 large min */
+/* @section 6.1 print */
 
-@media (min-width: 80em)
+@media print
 {
-	.rs-wrapper
+	.rs-body
 	{
-		width: 78rem;
+		background: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
 	}
 
-	.rs-wrapper-body
+	.rs-footer, .rs-header, .rs-sidebar
 	{
-		min-width: 80rem;
+		display: none;
 	}
 }
 /* @section 1. list default */
@@ -1590,19 +1580,22 @@ a
 	font-style: italic;
 	line-height: 1.5em;
 }
-
 /* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
 
-.rs-title-extra
-{
+
+.rs-sidebar .rs-box-extra {
 	font-size: 1.25em;
-	font-weight: bold;
+}
+
+.rs-sidebar .rs-title-extra
+{
+	font-size: 1.625em;
 	margin-top: 1em;
 }
 
 .rs-sidebar a
 {
-	color: rgb(255, 255, 255);
+	color: rgb(200, 200, 200);
 }
 
 .rs-sidebar
@@ -1650,6 +1643,11 @@ a
  */
 
 /* @section 1. tab */
+
+.rs-component-tab
+{
+	font-size: 1.25em;
+}
 
 /* @section 1.1 list */
 
@@ -1748,6 +1746,7 @@ a
 
 .rs-table-default
 {
+	font-size: 1.25em
 
 	/* @section 1.1 head and foot */
 
@@ -1798,10 +1797,9 @@ a
 {
 	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') no-repeat center top / cover;
 	box-sizing: border-box;
-	max-height: 35em;
 	overflow: hidden;
-	padding: 5em 2em;
-	padding: 10vw 4vw;
+	padding: 5em 0;
+	padding: 10vw 0;
 }
 
 /* @section 2. title teaser */
@@ -1814,10 +1812,9 @@ a
 	border-radius: 0 0.125em 0.125em 0;
 	color: rgb(255, 255, 255);
 	display: inline-block;
-	font-size: 1.5em;
+	font-size: 2.25em;
 	font-weight: 300;
 	line-height: 1.25em;
-	max-width: 80%;
 	opacity: 0;
 	padding: 0.375em 0.75em;
 }
@@ -1845,7 +1842,8 @@ a
 {
 	.rs-title-teaser
 	{
-		font-size: 2em;
+		font-size: 2.75em;
+		max-width: 80%;
 	}
 
 	.rs-title-teaser .rs-is-break:after
@@ -1869,7 +1867,13 @@ a
 {
 	.rs-title-teaser
 	{
-		font-size: 3em;
+		font-size: 3.75em;
+	}
+
+	.rs-component-teaser
+	{
+		padding: 8em 0;
+		padding: 6vw 0;
 	}
 }
 
@@ -1904,7 +1908,6 @@ a
  * @package Redaxscript
  * @author Henry Ruhs
  */
-
 
 .rs-box-note + .rs-box-note, .rs-box-note + .rs-title-note
 {

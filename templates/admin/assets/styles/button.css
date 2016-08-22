@@ -137,14 +137,16 @@ a.rs-admin-button-default
 }
 
 /* @section 3. small min */
-
-@media (--media-small-min)
+@media (--media-medium-min)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-left: 0.5em;
 	}
+}
 
+@media (--media-small-min)
+{
 	.rs-admin-form-default .rs-admin-button-cancel,
 	.rs-admin-form-default .rs-admin-button-delete
 	{

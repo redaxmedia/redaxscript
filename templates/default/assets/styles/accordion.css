@@ -14,6 +14,11 @@
 
 /* @section 1. accordion */
 
+.rs-component-accordion
+{
+	font-size: 1.25em;
+}
+
 /* @section 1.1 title */
 
 .rs-title-accordion

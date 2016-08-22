@@ -11,16 +11,17 @@
 
 /* @section 3.5 title website */
 
-.rs-box-website
+.rs-component-website
 {
-	font-size: 0.75em;
+	font-size: 1em;
 	max-width: 70%;
+	min-height: 2em;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-.rs-box-website a::selection,
-.rs-box-website span::selection
+.rs-component-website a::selection,
+.rs-component-website span::selection
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);
@@ -45,16 +46,16 @@
 
 @media (--media-medium-min)
 {
+	.rs-component-website
+	{
+		float: left;
+		font-size: 1.25em;
+		max-width: 60%;
+	}
+
 	.rs-text-website
 	{
 		display: block;
-	}
-
-	.rs-box-website
-	{
-		float: left;
-		font-size: 1em;
-		max-width: 60%;
 	}
 }
 
@@ -63,7 +64,7 @@
 .rs-header
 {
 	background: var(--rs-color-tertiary);
-	padding: 1.25rem;
+	padding: 1.5em 0;
 	position: relative;
 }
 
@@ -87,6 +88,11 @@
 /* @section 4. text website */
 
 /* list */
+
+.rs-list-header
+{
+	font-size: 1.25em;
+}
 
 .rs-list-header li
 {

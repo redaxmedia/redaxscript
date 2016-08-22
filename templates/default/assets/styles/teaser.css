@@ -20,10 +20,9 @@
 {
 	background: var(--rs-url-teaser-small) no-repeat center top / cover;
 	box-sizing: border-box;
-	max-height: 35em;
 	overflow: hidden;
-	padding: 5em 2em;
-	padding: 10vw 4vw;
+	padding: 5em 0;
+	padding: 10vw 0;
 }
 
 /* @section 2. title teaser */
@@ -36,10 +35,9 @@
 	border-radius: 0 0.125em 0.125em 0;
 	color: gray(255);
 	display: inline-block;
-	font-size: 1.5em;
+	font-size: 2.25em;
 	font-weight: 300;
 	line-height: 1.25em;
-	max-width: 80%;
 	opacity: 0;
 	padding: 0.375em 0.75em;
 }
@@ -62,7 +60,8 @@
 {
 	.rs-title-teaser
 	{
-		font-size: 2em;
+		font-size: 2.75em;
+		max-width: 80%;
 	}
 
 	.rs-title-teaser .rs-is-break:after
@@ -86,7 +85,13 @@
 {
 	.rs-title-teaser
 	{
-		font-size: 3em;
+		font-size: 3.75em;
+	}
+
+	.rs-component-teaser
+	{
+		padding: 8em 0;
+		padding: 6vw 0;
 	}
 }
 

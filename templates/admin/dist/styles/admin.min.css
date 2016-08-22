@@ -419,14 +419,16 @@
 }
 
 /* @section 3. small min */
-
-@media (min-width: 30em)
+@media (min-width: 50em)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-left: 0.5em;
 	}
+}
 
+@media (min-width: 30em)
+{
 	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
 	{
 		float: left;
@@ -495,7 +497,6 @@
 	margin-top: 0.5em;
 }
 
-
 @media (max-width: 29.999em)
 {
 	.rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
@@ -539,17 +540,17 @@
 {
 	animation: fade-in 0.4s;
 	border-radius: 0.25rem;
-	overflow: hidden;
-
-	.rs-admin-field-default
-	{
-		width: 100%;
-	}
+	font: 1.25rem 'open sans condensed', arial, sans-serif
 }
 
 .rs-admin-component-dialog .rs-admin-button-default
 {
 	margin-top: 1em
+}
+
+.rs-admin-component-dialog .rs-admin-field-default
+{
+	width: 100%
 }
 
 /* @section 2.1 title dialog */
@@ -558,9 +559,10 @@
 {
 	background: rgb(32, 32, 32);
 	color: rgb(204, 204, 204);
-	font: bold 1em/2.5em 'open sans condensed', arial, sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 2.5em;
 	padding: 0 1em;
-	text-transform: uppercase;
 }
 
 /* @section 2.2 box dialog */
@@ -789,7 +791,6 @@
 }
 
 /* @section 2. space between elements */
-
 
 /**
  * @tableofcontents

@@ -13,6 +13,11 @@ $boxElement->init('div',
 ]);
 $textElement = new Html\Element();
 $textElement->init('p');
+$inputElement = new Html\Element();
+$inputElement->init('input',
+[
+	'class' => $admin ? 'rs-admin-field-default' : 'rs-field-default'
+]);
 $buttonElement = new Html\Element();
 $buttonElement->init('button',
 [
@@ -20,7 +25,7 @@ $buttonElement->init('button',
 ]);
 ?>
 
-<!-- dialog -->
+<!-- confirm -->
 
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
@@ -28,6 +33,23 @@ $buttonElement->init('button',
 		<?php echo $titleElement->text(Language::get('confirm')); ?>
 		<?php echo $boxElement->html(
 			$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
+			$buttonElement->copy()->text(Language::get('ok')) .
+			$buttonElement->copy()->text(Language::get('cancel'))
+		); ?>
+
+	</div>
+</div>
+
+<!-- prompt -->
+
+<br />
+
+<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
+	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
+
+		<?php echo $titleElement->text(Language::get('prompt')); ?>
+		<?php echo $boxElement->html(
+			$inputElement .
 			$buttonElement->copy()->text(Language::get('ok')) .
 			$buttonElement->copy()->text(Language::get('cancel'))
 		); ?>

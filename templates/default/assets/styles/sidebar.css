@@ -1,15 +1,19 @@
 /* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
 
-.rs-title-extra
+.rs-sidebar .rs-box-extra
 {
 	font-size: 1.25em;
-	font-weight: bold;
+}
+
+.rs-sidebar .rs-title-extra
+{
+	font-size: 1.625em;
 	margin-top: 1em;
 }
 
 .rs-sidebar a
 {
-	color: gray(255);
+	color: gray(200);
 }
 
 .rs-sidebar
