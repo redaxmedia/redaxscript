@@ -60,7 +60,7 @@ class Form extends BaseForm
 		],
 		'legend' =>
 		[
-			'class' => 'rs-admin-label-default'
+			'class' => 'rs-admin-legend-default'
 		],
 		'label' =>
 		[

@@ -965,8 +965,7 @@ a
 
 .rs-form-default .rs-label-default
 {
-	display: block;
-	font-weight: bold
+	display: block
 }
 
 .rs-form-default .rs-label-default :after

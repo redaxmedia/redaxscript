@@ -25,7 +25,6 @@
 	& .rs-label-default
 	{
 		display: block;
-		font-weight: bold;
 
 		& :after
 		{

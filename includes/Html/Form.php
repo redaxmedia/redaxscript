@@ -102,7 +102,7 @@ class Form extends HtmlAbstract
 		],
 		'legend' =>
 		[
-			'class' => 'rs-label-default'
+			'class' => 'rs-legend-default'
 		],
 		'label' =>
 		[
