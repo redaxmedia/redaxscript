@@ -933,54 +933,42 @@ a
 		display: none;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. forms
- *    1.1 form default
- *    1.2 form search
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. form default */
 
-/* @section 1. forms */
+.rs-form-default
+{
+	font-size: 1.25em
+}
 
-/* @section 1.1 form default */
+.rs-form-default fieldset li
+{
+	margin-bottom: 0.5em;
+	margin-top: 0.5em
+}
 
-.rs-label-default
+.rs-form-default .rs-label-default
 {
 	display: block;
-}
+	font-weight: bold;
 
-.rs-label-default:after
+	:after
 {
-	content: ':';
-}
-
-.rs-form-default li
-{
-	margin: 0.5em 0;
-}
-
-.rs-form-default a
-{
-	color: #323e4c;
+		content: ':'
+	}
 }
 
 .rs-form-default .rs-label-message:after
 {
-	content: ':\00a0' attr(data-message);
+	content: ':\00a0' attr(data-message)
 }
 
-/* @section 1.2 form search */
+/* @section 2. form search */
 
 .rs-form-search
 {
 	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
+	font-size: 1.25em;
 }
 /**
  * @tableofcontents
@@ -1077,7 +1065,8 @@ a
 
 /* list */
 
-.rs-list-header {
+.rs-list-header
+{
 	font-size: 1.25em;
 }
 
@@ -1582,8 +1571,8 @@ a
 }
 /* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
 
-
-.rs-sidebar .rs-box-extra {
+.rs-sidebar .rs-box-extra
+{
 	font-size: 1.25em;
 }
 
@@ -1663,7 +1652,7 @@ a
 	cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
-	padding: 0.25em 1em;
+	padding: 0.5em 1em;
 	vertical-align: bottom
 }
 
@@ -1692,7 +1681,7 @@ a
 	background: rgb(200, 200, 200);
 	border-radius: 0.125em 0.125em 0 0;
 	color: rgb(0, 0, 0);
-	padding: 0.5em 1em;
+	padding: 0.75em 1em;
 	pointer-events: none
 }
 

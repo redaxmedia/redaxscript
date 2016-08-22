@@ -1,37 +1,29 @@
-/**
- * @tableofcontents
- *
- * 1. form admin
- *    1.1 label
- * 2. space between elements
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. form default */
 
-/* @section 1. form admin */
-
-.rs-admin-form-default fieldset li
+.rs-admin-form-default
 {
-	margin-bottom: 0.5em;
-	margin-top: 0.5em;
+	font-size: 1.25rem;
+
+	& fieldset li
+	{
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	& .rs-admin-label-default
+	{
+		color: gray(100);
+		display: block;
+	  	font-weight: bold;
+
+		:after
+		{
+			content: ':';
+		}
+	}
+
+	& .rs-admin-label-message:after
+	{
+		content: ':\00a0' attr(data-message);
+	}
 }
-
-/* @section 1.1 label */
-
-.rs-admin-label-default
-{
-	color: gray(85);
-	display: block;
-	font-size: 0.875rem;
-	font-weight: bold;
-}
-
-.rs-admin-form-default .rs-admin-label-message:after
-{
-	content: ' ' attr(data-message);
-}
-
-/* @section 2. space between elements */

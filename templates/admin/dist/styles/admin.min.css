@@ -754,43 +754,35 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. form admin
- *    1.1 label
- * 2. space between elements
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. form default */
 
-/* @section 1. form admin */
+.rs-admin-form-default
+{
+	font-size: 1.25rem
+}
 
 .rs-admin-form-default fieldset li
 {
 	margin-bottom: 0.5em;
-	margin-top: 0.5em;
+	margin-top: 0.5em
 }
 
-/* @section 1.1 label */
-
-.rs-admin-label-default
+.rs-admin-form-default .rs-admin-label-default
 {
-	color: rgb(85, 85, 85);
+	color: rgb(100, 100, 100);
 	display: block;
-	font-size: 0.875rem;
 	font-weight: bold;
+
+	:after
+{
+		content: ':'
+	}
 }
 
 .rs-admin-form-default .rs-admin-label-message:after
 {
-	content: ' ' attr(data-message);
+	content: ':\00a0' attr(data-message)
 }
-
-/* @section 2. space between elements */
 
 /**
  * @tableofcontents

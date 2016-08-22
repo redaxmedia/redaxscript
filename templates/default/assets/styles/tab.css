@@ -32,7 +32,7 @@
 		cursor: pointer;
 		display: inline-block;
 		font-weight: bold;
-		padding: 0.25em 1em;
+		padding: 0.5em 1em;
 		vertical-align: bottom;
 
 		&:hover
@@ -61,7 +61,7 @@
 		background: gray(200);
 		border-radius: 0.125em 0.125em 0 0;
 		color: gray(0);
-		padding: 0.5em 1em;
+		padding: 0.75em 1em;
 		pointer-events: none;
 	}
 }

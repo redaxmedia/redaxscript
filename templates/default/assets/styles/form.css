@@ -1,49 +1,37 @@
-/**
- * @tableofcontents
- *
- * 1. forms
- *    1.1 form default
- *    1.2 form search
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
+/* @section 1. form default */
 
-/* @section 1. forms */
-
-/* @section 1.1 form default */
-
-.rs-label-default
+.rs-form-default
 {
-	display: block;
+	font-size: 1.25em;
+
+	& fieldset li
+	{
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	& .rs-label-default
+	{
+		display: block;
+		font-weight: bold;
+
+		:after
+		{
+			content: ':';
+		}
+	}
+
+	& .rs-label-message:after
+	{
+		content: ':\00a0' attr(data-message);
+	}
 }
 
-.rs-label-default:after
-{
-	content: ':';
-}
-
-.rs-form-default li
-{
-	margin: 0.5em 0;
-}
-
-.rs-form-default a
-{
-	color: var(--rs-color-tertiary);
-}
-
-.rs-form-default .rs-label-message:after
-{
-	content: ':\00a0' attr(data-message);
-}
-
-/* @section 1.2 form search */
+/* @section 2. form search */
 
 .rs-form-search
 {
 	background: gray(255);
 	border-radius: 0.125em;
+	font-size: 1.25em;
 }

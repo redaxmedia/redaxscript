@@ -1,0 +1,97 @@
+<?php
+namespace Redaxscript;
+
+$id = uniqid($admin ? 'admin-form-' : 'form-');
+$i = 0;
+$formElement = $admin ? new Admin\Html\Form(Registry::getInstance(), Language::getInstance()) : new Html\Form(Registry::getInstance(), Language::getInstance());
+$formElement
+	->init()
+	->append('<fieldset><ul><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->text(
+	[
+		'id' => $id . $i,
+		'placeholder' => 'Placeholder',
+		'required' => 'required'
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->text(
+	[
+		'disabled' => 'disabled',
+		'id' => $id . $i,
+		'placeholder' => 'Placeholder'
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->selectRange(
+	[
+		'min' => 1,
+		'max' => 10
+	],
+	[
+		'id' => $id . $i,
+		'required' => 'required'
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->selectRange(
+	[
+		'min' => 1,
+		'max' => 10
+	],
+	[
+		'disabled' => 'disabled',
+		'id' => $id . $i
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->textarea(
+	[
+		'class' => $admin ? 'rs-admin-field-textarea rs-admin-field-small' : 'rs-field-textarea rs-field-small',
+		'id' => $id . $i
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->textarea(
+	[
+		'class' => $admin ? 'rs-admin-field-textarea rs-admin-field-small' : 'rs-field-textarea rs-field-small',
+		'disabled' => 'disabled',
+		'id' => $id . $i
+	])
+	->append('</li><li>')
+	->label(Language::get(++$i, '_number'),
+	[
+		'for' => $id . $i
+	])
+	->textarea(
+	[
+		'id' => $id . $i,
+		'required' => 'required'
+	])
+	->append('</li></ul></fieldset>')
+	->submit()
+	->reset();
+?>
+
+<!-- form -->
+
+<?php echo $formElement; ?>
