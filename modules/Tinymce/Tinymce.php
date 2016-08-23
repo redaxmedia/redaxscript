@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\Ckeditor;
+namespace Redaxscript\Modules\Tinymce;
 
 use Redaxscript\Module;
 use Redaxscript\Registry;
@@ -14,7 +14,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Ckeditor extends Module
+class Tinymce extends Module
 {
 	/**
 	 * array of the module
@@ -24,8 +24,8 @@ class Ckeditor extends Module
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Ckeditor',
-		'alias' => 'Ckeditor',
+		'name' => 'Tinymce',
+		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered WYSIWYG editor',
 		'version' => '3.0.0'
@@ -39,9 +39,9 @@ class Ckeditor extends Module
 
 	public static function loaderStart()
 	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/Ckeditor/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Ckeditor/assets/scripts/ckeditor.js';
+		global $loader_modules_scripts;
+		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/init.js';
+		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/tinymce.js';
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Ckeditor extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.4/ckeditor.js"></script>';
+			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js"></script>';
 			echo $output;
 		}
 	}

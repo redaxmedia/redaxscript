@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. ckeditor
+ * 1. tinymce
  *
  * @since 3.0.0
  *
@@ -9,11 +9,14 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. ckeditor */
+/* @section 1. tinymce */
 
-rs.modules.ckeditor =
+rs.modules.tinymce =
 {
 	init: rs.registry.lastTable === 'articles' || rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit' && rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments',
-	dependency: typeof CKEDITOR === 'object',
-	selector: 'form textarea.rs-admin-js-editor-textarea'
+	dependency: typeof tinymce === 'object',
+	options:
+	{
+		selector: 'form textarea.rs-admin-js-editor-textarea'
+	}
 };
