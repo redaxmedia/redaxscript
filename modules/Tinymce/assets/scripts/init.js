@@ -17,6 +17,11 @@ rs.modules.tinymce =
 	dependency: typeof tinymce === 'object',
 	options:
 	{
-		selector: 'form textarea.rs-admin-js-editor-textarea'
+		selector: 'form textarea.rs-admin-js-editor-textarea',
+		plugins:
+		[
+			'autolink autosave code fullscreen image imagetools'
+		],
+		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token
 	}
 };

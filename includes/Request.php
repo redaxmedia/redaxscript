@@ -34,6 +34,7 @@ class Request extends Singleton
 			'server' => $_SERVER ? $_SERVER : [],
 			'get' => $_GET ? $_GET : [],
 			'post' => $_POST ? $_POST : [],
+			'files' => $_FILES ? $_FILES : [],
 			'session' => $_SESSION ? $_SESSION : [],
 			'cookie' => $_COOKIE ? $_COOKIE : []
 		];
@@ -122,6 +123,21 @@ class Request extends Singleton
 	}
 
 	/**
+	 * get item from files
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public static function getFiles($key = null)
+	{
+		return self::get($key, 'files');
+	}
+
+	/**
 	 * get item from session
 	 *
 	 * @since 2.2.0
@@ -205,6 +221,20 @@ class Request extends Singleton
 	public static function setPost($key = null, $value = null)
 	{
 		self::$_requestArray['post'][$key] = $value;
+	}
+
+	/**
+	 * set item to files
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public static function setFiles($key = null, $value = null)
+	{
+		self::$_requestArray['files'][$key] = $value;
 	}
 
 	/**
