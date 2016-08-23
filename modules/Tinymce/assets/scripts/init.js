@@ -20,8 +20,15 @@ rs.modules.tinymce =
 		selector: 'form textarea.rs-admin-js-editor-textarea',
 		plugins:
 		[
-			'autolink autosave code fullscreen image imagetools'
+			'autolink code fullscreen image imagetools'
 		],
-		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token
+		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
+		setup: function(editor)
+		{
+			editor.on('change', function ()
+			{
+				tinymce.activeEditor.uploadImages();
+			});
+		}
 	}
 };
