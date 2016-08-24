@@ -25,6 +25,15 @@
 			options = $.extend({}, rs.modules.tinymce.options, options || {});
 		}
 
+		/* upload on change */
+
+		options.setup = options.setup || function (editor)
+		{
+			editor.on('change', function ()
+			{
+				tinymce.activeEditor.uploadImages();
+			});
+		};
 		tinymce.init(options);
 	};
 

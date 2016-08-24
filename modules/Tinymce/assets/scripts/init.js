@@ -18,10 +18,7 @@ rs.modules.tinymce =
 	options:
 	{
 		selector: 'form textarea.rs-admin-js-editor-textarea',
-		plugins:
-		[
-			'autolink code fullscreen image imagetools media'
-		],
+		plugins: 'autolink code fullscreen image imagetools link media table visualblocks',
 		body_class: 'rs-body',
 		content_css: 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
 		skin_url: 'modules/Tinymce/dist/styles',
