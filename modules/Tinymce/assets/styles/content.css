@@ -1,0 +1,23 @@
+/* TODO: improve styling and icon for the pseudo tag */
+
+codequote,
+language,
+module,
+readmore,
+registry,
+template
+{
+	border: 0.25em solid gray(0, 0.2);
+	border-radius: 50%;
+	color: gray(0, 0.4);
+	display: inline-block;
+	height: 3em;
+	margin: 0.5em;
+	user-select: none;
+	width: 3em;
+}
+
+[_moz_editor_bogus_node]
+{
+	display: none;
+}

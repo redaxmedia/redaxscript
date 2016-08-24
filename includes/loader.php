@@ -419,6 +419,8 @@ function scripts_transport($minify)
 		'languageRoute',
 		'templateRoute',
 		'refreshRoute',
+		'language',
+		'template',
 		'myBrowser',
 		'myBrowserVersion',
 		'myEngine',

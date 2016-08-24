@@ -351,6 +351,23 @@ module.exports = function (grunt)
 					'modules/Preview/assets/styles/preview.css'
 				],
 				dest: 'modules/Preview/dist/styles/preview.min.css'
+			},
+			moduleTinymceContent:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_variable.css',
+					'modules/Tinymce/assets/styles/content.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/content.min.css'
+			},
+			moduleTinymceSkin:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/styles/skin.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/skin.min.css'
 			}
 		},
 		postcss:
