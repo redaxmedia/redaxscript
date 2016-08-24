@@ -23,7 +23,6 @@ rs.modules.tinymce =
 		content_css: 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
 		skin_url: 'modules/Tinymce/dist/styles',
 		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
-		extended_valid_elements: 'codequote, language, module, readmore, registry, template',
 		custom_elements: 'codequote, language, module, readmore, registry, template',
 		forced_root_block: false
 	}

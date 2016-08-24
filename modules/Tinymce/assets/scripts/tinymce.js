@@ -25,14 +25,37 @@
 			options = $.extend({}, rs.modules.tinymce.options, options || {});
 		}
 
-		/* upload on change */
+		var tagArray = options.custom_elements.split(', '),
+			i;
+
+		/* extend setup */
 
 		options.setup = options.setup || function (editor)
 		{
+			/* upload on change */
+
 			editor.on('change', function ()
 			{
 				tinymce.activeEditor.uploadImages();
 			});
+
+			/* pseudo tags */
+
+			for (i in tagArray)
+			{
+				(function (tag)
+				{
+					editor.addMenuItem(tag,
+					{
+						text: tag,
+						context: 'insert',
+						onclick: function ()
+						{
+							editor.insertContent('<' + tag + '>');
+						}
+					});
+				})(tagArray[i]);
+			}
 		};
 		tinymce.init(options);
 	};
