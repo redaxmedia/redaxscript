@@ -37,6 +37,7 @@
 			editor.on('change', function ()
 			{
 				tinymce.activeEditor.uploadImages();
+				tinymce.triggerSave();
 			});
 
 			/* pseudo tags */
