@@ -157,6 +157,27 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testFiles
+	 *
+	 * @since 3.9.0
+	 */
+
+	public function testFiles()
+	{
+		/* setup */
+
+		$this->_request->setFiles('testKey', 'testValue');
+
+		/* actual */
+
+		$actual = $this->_request->getFiles('testKey');
+
+		/* compare */
+
+		$this->assertEquals('testValue', $actual);
+	}
+
+	/**
 	 * testSession
 	 *
 	 * @since 2.6.2
