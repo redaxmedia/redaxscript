@@ -46,11 +46,6 @@ codequote, language, module, readmore, registry, template
 	width: 3em;
 }
 
-img[src^="data:image"]
-{
-	opacity: 0.8;
-}
-
 [_moz_editor_bogus_node]
 {
 	display: none;

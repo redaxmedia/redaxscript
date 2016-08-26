@@ -1,59 +1,47 @@
-/**
- * @tableofcontents
- *
- * 2. list breadcrumb
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-.rs-list-breadcrumb li
-{
-	display: inline-block;
-}
-
-/* @section 2. list breadcrumb */
+/* @section 1. list breadcrumb */
 
 .rs-list-breadcrumb
 {
 	font-size: 1.25em;
 	margin-bottom: 1em;
-}
 
-.rs-list-breadcrumb li
-{
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-}
+	& li
+	{
+		display: inline-block;
+		position: relative;
+		vertical-align: middle;
+	}
 
-.rs-list-breadcrumb a
-{
-	color: var(--rs-color-tertiary);
-	opacity: 0.5;
-	transition: opacity 0.2s;
-}
+	& a
+	{
+		color: var(--rs-color-tertiary);
+		opacity: 0.5;
+		transition: opacity 0.2s;
 
-.rs-list-breadcrumb a:hover
-{
-	opacity: 1;
-}
+		&:hover
+		{
+			opacity: 1;
+		}
+	}
 
-.rs-list-breadcrumb .rs-item-divider
-{
-	text-indent: -999em;
-	width: 1em;
+	& .rs-item-divider
+	{
+		text-indent: -999em;
+		width: 1em;
+
+		&:before
+		{
+			left: 0;
+			line-height: 1.375em;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			text-indent: 0;
+		}
+	}
 }
 
 .rs-list-breadcrumb .rs-item-divider:before
 {
-	content: '\3009';
-	font: 0.5em/4em var(--rs-font-icon);
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-indent: 0;
+	@extend %rs-icon-chevron-right;
 }

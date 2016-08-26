@@ -1,14 +1,3 @@
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -17,92 +6,14 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
-%rs-icon-done
-{
-	content: '\2714';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-favorite
-{
-	content: '\2665';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-info
-{
-	content: '\21';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-search
 {
 	content: '\2315';
 	font-family: var(--rs-font-icon);
 }
 
-%rs-icon-chat-bubble
-{
-	content: '\25b6';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-live-help
-{
-	content: '\2691';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-add
-{
-	content: '\2b';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-clear
-{
-	content: '\d7';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-remove
-{
-	content: '\2d';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-image
-{
-	content: '\2600';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-chevron-left
-{
-	content: '\3008';
-	font-family: var(--rs-font-icon);
-}
-
 %rs-icon-chevron-right
 {
 	content: '\3009';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-expand-less
-{
-	content: '\2227';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-expand-more
-{
-	content: '\2228';
-	font-family: var(--rs-font-icon);
-}
-
-%rs-icon-menu
-{
-	content: '\2261';
 	font-family: var(--rs-font-icon);
 }
