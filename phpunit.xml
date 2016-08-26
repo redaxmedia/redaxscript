@@ -84,6 +84,12 @@
 			<directory>tests/phpunit/Filter</directory>
 		</testsuite>
 
+		<!-- head -->
+
+		<testsuite name="head">
+			<directory>tests/phpunit/Head</directory>
+		</testsuite>
+
 		<!-- html -->
 
 		<testsuite name="html">

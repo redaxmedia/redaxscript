@@ -1,0 +1,10 @@
+[
+	[
+		{
+			"metaDescription": "description",
+			"divider": " - ",
+			"metaTitle": "Test"
+		},
+		"<title>Test - description</title>"
+	]
+]

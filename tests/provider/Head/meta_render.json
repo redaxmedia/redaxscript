@@ -1,0 +1,16 @@
+[
+	[
+		{
+			"robots": "all",
+			"viewport": "width=device-width"
+		},
+		"<meta name=\"robots\" content=\"all\" /><meta name=\"viewport\" content=\"width=device-width\" />"
+	],
+	[
+		{
+			"robots": "all",
+			"viewport": "width=device-width"
+		},
+		"<meta name=\"robots\" content=\"all\" /><meta name=\"viewport\" content=\"width=device-width\" />"
+	]
+]
