@@ -142,23 +142,54 @@
 {
 	width: 100%
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
 {
 	font-family: 'icon admin';
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
+}
+
+.rs-admin-link-logout:before
+{
+	content: '\2190';
+	font-family: 'icon admin';
+}
+
+.rs-admin-text-system:before
+{
+	content: '\2731';
+	font-family: 'icon admin';
+}
+
+.rs-admin-text-notification:before
+{
+	content: '\25b6';
+	font-family: 'icon admin';
+}
+
+.rs-admin-text-content:before
+{
+	content: '\25eb';
+	font-family: 'icon admin';
+}
+
+.rs-admin-text-access:before
+{
+	content: '\2386';
+	font-family: 'icon admin';
+}
+
+.rs-admin-list-panel .rs-admin-link-new:after
+{
+	content: '\2b';
+	font-family: 'icon admin';
+}
+
+.rs-admin-link-profile:before
+{
+	content: '\26c4';
+	font-family: 'icon admin';
 }
 
 /**
@@ -904,40 +935,12 @@
 
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
-	font: 1.25em/1.5em 'icon admin';
-	margin-right: 1em;
+	display: inline-block;
+	font: 2em/1em 'icon admin';
+	margin-right: 0.5em;
+	margin-top: -0.125em;
 	text-transform: lowercase;
 	vertical-align: middle;
-}
-
-.rs-admin-text-content:before
-{
-	content: 'i';
-}
-
-.rs-admin-text-access:before
-{
-	content: 'j';
-}
-
-.rs-admin-text-system:before
-{
-	content: 'k';
-}
-
-.rs-admin-link-profile:before
-{
-	content: 'l';
-}
-
-.rs-admin-text-notification:before
-{
-	content: 'U';
-}
-
-.rs-admin-link-logout:before
-{
-	content: 'n';
 }
 
 /* @section 2.3 icons after */
@@ -1082,8 +1085,7 @@
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
-	content: 'f';
-	font: 0.75em/1em 'icon admin';
+	font: 1.5em/1em 'icon admin';
 	left: 0;
 	margin-top: -0.5em;
 	position: absolute;

@@ -71,40 +71,42 @@
 .rs-admin-item-panel > a:before,
 .rs-admin-item-panel > span:before
 {
-	font: 1.25em/1.5em var(--rs-admin-font-icon);
-	margin-right: 1em;
+	display: inline-block;
+	font: 2em/1em var(--rs-admin-font-icon);
+	margin-right: 0.5em;
+	margin-top: -0.125em;
 	text-transform: lowercase;
 	vertical-align: middle;
 }
 
 .rs-admin-text-content:before
 {
-	content: 'i';
+	@extend %rs-admin-icon-import-contacts;
 }
 
 .rs-admin-text-access:before
 {
-	content: 'j';
+	@extend %rs-admin-icon-vpn-key;
 }
 
 .rs-admin-text-system:before
 {
-	content: 'k';
+	@extend %rs-admin-icon-settings;
 }
 
 .rs-admin-link-profile:before
 {
-	content: 'l';
+	@extend %rs-admin-icon-person;
 }
 
 .rs-admin-text-notification:before
 {
-	content: 'U';
+	@extend %rs-admin-icon-chat-bubble;
 }
 
 .rs-admin-link-logout:before
 {
-	content: 'n';
+	@extend %rs-admin-icon-lock-open;
 }
 
 /* @section 2.3 icons after */
@@ -253,8 +255,8 @@
 
 .rs-admin-list-panel .rs-admin-link-new:after
 {
-	content: 'f';
-	font: 0.75em/1em var(--rs-admin-font-icon);
+	@extend %rs-admin-icon-add;
+	font: 1.5em/1em var(--rs-admin-font-icon);
 	left: 0;
 	margin-top: -0.5em;
 	position: absolute;

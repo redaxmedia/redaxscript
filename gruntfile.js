@@ -490,14 +490,15 @@ module.exports = function (grunt)
 				[
 					// 'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
-					// 'node_modules/material-design-icons/action/svg/production/ic_lock_open_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_lock_open_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_lock_outline_24px.svg',
-					// 'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_visibility_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
-					// 'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
-					// 'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
-					// 'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
 					// 'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
 					// 'node_modules/material-design-icons/content/svg/production/ic_create_24px.svg',
 					// 'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
@@ -507,7 +508,7 @@ module.exports = function (grunt)
 					// 'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					// 'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
 					// 'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
-					// 'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
 				],
 				dest: 'templates/admin/assets/fonts',
 				options:
@@ -555,9 +556,9 @@ module.exports = function (grunt)
 				codepoints:
 				{
 					'chevron-right': 0x3009,
-					'search': 0x2315
-					// 'add': 0x2b,
-					// 'chat-bubble': 0x25b6,
+					'search': 0x2315,
+					'add': 0x2b,
+					'chat-bubble': 0x25b6,
 					// 'chevron-left': 0x3008,
 					// 'clear': 0xd7,
 					// 'create': 0x270E,
@@ -567,20 +568,20 @@ module.exports = function (grunt)
 					// 'expand-more': 0x2228,
 					// 'favorite': 0x2665,
 					// 'folder': 0x26D8,
-					// 'import-contacts': 0x25EB,
+					'import-contacts': 0x25EB,
 					// 'image': 0x2600,
 					// 'info': 0x21,
 					// 'insert-drive-file': 0x2752,
 					// 'live-help': 0x2691,
-					// 'lock-open': 0x2190,
+					'lock-open': 0x2190,
 					// 'lock-outline': 0x2192,
 					// 'menu': 0x2261,
-					// 'person': 0x26C4,
+					'person': 0x26C4,
 					// 'remove': 0x2d,
-					// 'settings': 0x2731,
+					'settings': 0x2731,
 					// 'visibility': 0x2295,
 					// 'visibility-off': 0x2298,
-					// 'vpn-key': 0x2386
+					'vpn-key': 0x2386
 				},
 				rename: function (name)
 				{

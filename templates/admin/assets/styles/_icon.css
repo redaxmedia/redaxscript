@@ -17,27 +17,9 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
-%rs-admin-icon-delete
-{
-	content: '\2297';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-done
-{
-	content: '\2714';
-	font-family: var(--rs-admin-font-icon);
-}
-
 %rs-admin-icon-lock-open
 {
 	content: '\2190';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-lock-outline
-{
-	content: '\2192';
 	font-family: var(--rs-admin-font-icon);
 }
 
@@ -47,15 +29,9 @@
 	font-family: var(--rs-admin-font-icon);
 }
 
-%rs-admin-icon-visibility
+%rs-admin-icon-chat-bubble
 {
-	content: '\2295';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-visibility-off
-{
-	content: '\2298';
+	content: '\25b6';
 	font-family: var(--rs-admin-font-icon);
 }
 
@@ -74,54 +50,6 @@
 %rs-admin-icon-add
 {
 	content: '\2b';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-clear
-{
-	content: '\d7';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-create
-{
-	content: '\270e';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-remove
-{
-	content: '\2d';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-insert-drive-file
-{
-	content: '\2752';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-chevron-left
-{
-	content: '\3008';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-chevron-right
-{
-	content: '\3009';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-expand-less
-{
-	content: '\2227';
-	font-family: var(--rs-admin-font-icon);
-}
-
-%rs-admin-icon-expand-more
-{
-	content: '\2228';
 	font-family: var(--rs-admin-font-icon);
 }
 
