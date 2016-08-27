@@ -70,14 +70,14 @@ abstract class HtmlAbstract
 	}
 
 	/**
-	 * clean the html
+	 * clear the html
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
 	 * @return Element
 	 */
 
-	public function clean()
+	public function clear()
 	{
 		$this->html(null);
 		return $this;

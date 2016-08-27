@@ -53,14 +53,14 @@ abstract class Singleton
 	}
 
 	/**
-	 * reset the instance
+	 * clear the instance
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @return object
 	 */
 
-	public static function reset()
+	public static function clearInstance()
 	{
 		self::$_instance = null;
 	}

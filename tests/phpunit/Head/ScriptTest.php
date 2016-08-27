@@ -43,6 +43,8 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
+		// TODO: please create another @dataprovider for this test - that internal one was just for rapid development
+
 		$this->assertEquals('<script src="assets/scripts/init.js"></script><script src="assets/scripts/misc.js" async="async"></script><script src="modules/assets/scripts/init.js"></script>', $actual);
 	}
 }

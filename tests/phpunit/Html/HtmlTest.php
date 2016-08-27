@@ -139,12 +139,12 @@ class HtmlTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testClean
+	 * testClear
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public function testClean()
+	public function testClear()
 	{
 		/* setup */
 
@@ -154,7 +154,7 @@ class HtmlTest extends TestCaseAbstract
 		/* expect and actual */
 
 		$expect = '<a></a>';
-		$actual = $element->text('test')->clean();
+		$actual = $element->text('test')->clear();
 
 		/* compare */
 

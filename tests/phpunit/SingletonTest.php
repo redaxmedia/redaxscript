@@ -24,7 +24,7 @@ class SingletonTest extends TestCaseAbstract
 		/* setup */
 
 		$stub = $this->getMockBuilder('Redaxscript\Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
-		$stub->reset();
+		$stub->clearInstance();
 
 		/* actual */
 

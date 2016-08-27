@@ -40,7 +40,7 @@ class Script extends HeadAbstract
 				->copy()
 				->attr($value);
 		}
-		$this->clean();
+		$this->clear();
 		return $output;
 	}
 }

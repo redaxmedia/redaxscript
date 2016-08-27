@@ -101,7 +101,7 @@ class Config extends Singleton
 	public static function parse($dbUrl = null)
 	{
 		$dbUrl = parse_url($dbUrl);
-		self::reset();
+		self::clear();
 		self::set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
 		self::set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
 		self::set('dbName', trim($dbUrl['path'], '/'));
@@ -150,12 +150,12 @@ class Config extends Singleton
 	}
 
 	/**
-	 * reset the config
+	 * clear the config
 	 *
 	 * @since 3.0.0
 	 */
 
-	public static function reset()
+	public static function clear()
 	{
 		self::$_configArray = [];
 	}

@@ -73,17 +73,17 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend()
 	{
-		// we can do this later once append() is working
+		// TODO: implement this method similar to append()
 		return $this;
 	}
 
 	/**
-	 * clean the collection
+	 * clear the collection
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function clean()
+	public function clear()
 	{
 		self::$_collectionArray = [];
 		return $this;
