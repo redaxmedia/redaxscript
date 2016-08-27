@@ -31,6 +31,7 @@
 
 		&:before
 		{
+			@extend %rs-icon-chevron-right;
 			left: 0;
 			line-height: 1.375em;
 			position: absolute;
@@ -39,9 +40,4 @@
 			text-indent: 0;
 		}
 	}
-}
-
-.rs-list-breadcrumb .rs-item-divider:before
-{
-	@extend %rs-icon-chevron-right;
 }

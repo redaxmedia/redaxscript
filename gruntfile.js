@@ -385,8 +385,8 @@ module.exports = function (grunt)
 						require('postcss-custom-properties'),
 						require('postcss-custom-media'),
 						require('postcss-custom-selectors'),
-						require('postcss-extend'),
 						require('postcss-nesting'),
+						require('postcss-extend'),
 						require('postcss-color-gray'),
 						require('postcss-color-function'),
 						require('autoprefixer')(
@@ -411,8 +411,8 @@ module.exports = function (grunt)
 						require('postcss-custom-properties'),
 						require('postcss-custom-media'),
 						require('postcss-custom-selectors'),
-						require('postcss-extend'),
 						require('postcss-nesting'),
+						require('postcss-extend'),
 						require('postcss-color-gray'),
 						require('postcss-color-function'),
 						require('autoprefixer')(
