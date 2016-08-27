@@ -26,7 +26,7 @@
 		color: gray(100);
 		display: block;
 
-		& :after
+		&:after
 		{
 			content: ':';
 		}

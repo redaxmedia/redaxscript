@@ -21,10 +21,12 @@
 {
 	background: var(--rs-admin-gradient-senary);
 	border-radius: 0.125em;
+	box-sizing: border-box;
 	cursor: pointer;
 	display: inline-block;
 	font: bold 0.875rem/2.5em var(--rs-admin-font-secondary);
 	padding: 0 1em;
+	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
 }
@@ -86,21 +88,24 @@ a.rs-admin-button-default
 .rs-admin-button-default.rs-admin-button-cancel:before,
 .rs-admin-button-default.rs-admin-button-submit:before
 {
-	font: 1rem var(--rs-admin-font-icon);
-	margin-right: 0.5em;
+	font-size: 1.5rem;
+	line-height: 1rem;
+	margin-right: 0.25em;
 	text-transform: lowercase;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 }
 
 .rs-admin-button-default.rs-admin-button-plus:before
 {
-	content: 'f';
+	@extend %rs-admin-icon-add;
 }
 
 .rs-admin-button-default.rs-admin-button-cancel:before
 {
-	content: '\78';
+	@extend %rs-admin-icon-clear;
 }
+
+/* TODO HENRY: gibt es noch diesen button, wird er verwendet? */
 
 .rs-admin-button-default.rs-admin-button-submit:before
 {

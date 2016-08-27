@@ -12,6 +12,7 @@
 {
 	content: '\<%= codepoints[i] %>';
 	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
 }
 <%
 }

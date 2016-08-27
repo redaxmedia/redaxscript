@@ -106,23 +106,21 @@
 		&:before
 		{
 			display: block;
-			font: 1.5rem var(--rs-admin-font-icon);
+			font-size: 2.25rem;
 			position: absolute;
-			right: 0.25em;
+			right: 0;
 			text-indent: 0;
 		}
 	}
 
 	& .rs-admin-button-moveup:before
 	{
-		content: 'b';
-		top: 0.25em;
+		@extend %rs-admin-icon-expand-less;
 	}
 
 	& .rs-admin-button-movedown:before
 	{
-		bottom: 0.25em;
-		content: 'c';
+		@extend %rs-admin-icon-expand-more;
 	}
 
 	/* @section 1.4 rank */
@@ -141,15 +139,26 @@
 		display: block;
 		position: relative;
 
-		& :before
+		&:after,
+		&:before
 		{
-			content: 'a';
 			font: 1em/2.375em var(--rs-admin-font-icon);
 			position: absolute;
 			right: 1.375em;
 			text-indent: 0;
 			text-transform: lowercase;
-			top: 0;
+		}
+
+		&:after
+		{
+			@extend %rs-admin-icon-expand-less;
+			top: -0.25em;
+		}
+
+		&:before
+		{
+			@extend %rs-admin-icon-expand-more;
+			bottom: -0.25em;
 		}
 	}
 }

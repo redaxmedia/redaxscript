@@ -57,7 +57,7 @@
 	height: 3.125em;
 	position: relative;
 	text-indent: -999em;
-	width: 3em;
+	width: 3.5em;
 }
 
 .rs-admin-link-dock:hover
@@ -77,8 +77,9 @@
 
 .rs-admin-link-dock:before
 {
-	font: 1.25rem/2.75rem var(--rs-admin-font-icon);
+	font-size: 1.5rem;
 	left: 0;
+	line-height: 2.75rem;
 	position: absolute;
 	right: 0;
 	text-align: center;
@@ -88,15 +89,15 @@
 
 .rs-admin-link-dock.rs-admin-link-unpublish:before
 {
-	content: 'p';
+	@extend %rs-admin-icon-visibility-off;
 }
 
 .rs-admin-link-dock.rs-admin-link-edit:before
 {
-	content: 'q';
+	@extend %rs-admin-icon-create;
 }
 
 .rs-admin-link-dock.rs-admin-link-delete:before
 {
-	content: 'r';
+	@extend %rs-admin-icon-delete;
 }

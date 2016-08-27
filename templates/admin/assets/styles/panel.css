@@ -72,7 +72,8 @@
 .rs-admin-item-panel > span:before
 {
 	display: inline-block;
-	font: 2em/1em var(--rs-admin-font-icon);
+	font-size: 2em;
+	line-height: 1em;
 	margin-right: 0.5em;
 	margin-top: -0.125em;
 	text-transform: lowercase;
@@ -113,16 +114,17 @@
 
 .rs-admin-item-panel > span:after
 {
-	content: '˃';
-	font: 1.375em/1.25em var(--rs-admin-font-icon);
+	@extend %rs-admin-icon-chevron-right;
+	font-size: 1.75em;
+	line-height: 1.25em;
 	position: absolute;
-	right: 1.375em;
-	top: 0.375em;
+	right: 0.75em;
+	top: 0.125em;
 }
 
 .rs-admin-item-panel.rs-admin-item-active > span:after
 {
-	content: '˅';
+	@extend %rs-admin-icon-expand-more;
 }
 
 @media (--media-medium-min)
@@ -211,7 +213,7 @@
 		& > .rs-admin-link-panel,
 		& > .rs-admin-wrapper-panel-link
 		{
-			padding-left: 3em;
+			padding-left: 3.75em;
 		}
 	}
 }
@@ -256,8 +258,9 @@
 .rs-admin-list-panel .rs-admin-link-new:after
 {
 	@extend %rs-admin-icon-add;
-	font: 1.5em/1em var(--rs-admin-font-icon);
+	font-size: 1.5em;
 	left: 0;
+	line-height: 1em;
 	margin-top: -0.5em;
 	position: absolute;
 	right: 0;
@@ -287,11 +290,11 @@
 	color: gray(32);
 	font-size: 0.75em;
 	height: 1.5em;
-	left: 1.75em;
+	left: 2.25em;
 	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 0.75em;
+	top: 0.5em;
 	width: 1.5em;
 }
 
@@ -326,40 +329,38 @@
 	{
 		border-radius: 50%;
 		color: gray(0);
-
-		/* TODO: add the needed icons to the admin icon font */
-
-		font: 0.875em/1.75em 'icon default';
-		height: 1.75em;
-		left: 0.625em;
+		font-size: 1.25em;
+		height: 1.5em;
+		left: 0.5em;
+		line-height: 1.5em;
 		position: absolute;
 		text-align: center;
-		top: 0.75em;
-		width: 1.75em;
+		top: 0.375em;
+		width: 1.5em;
 	}
 
 	&.rs-admin-is-success:before
 	{
+		@extend %rs-admin-icon-done;
 		background: var(--rs-admin-color-success);
-		content: '\2714';
 	}
 
 	&.rs-admin-is-warning:before
 	{
+		@extend %rs-admin-icon-live-help;
 		background: var(--rs-admin-color-warning);
-		content: '\21';
 	}
 
 	&.rs-admin-is-error:before
 	{
+		@extend %rs-admin-icon-clear;
 		background: var(--rs-admin-color-error);
-		content: '\d7';
 	}
 
 	&.rs-admin-is-info:before
 	{
+		@extend %rs-admin-icon-info;
 		background: var(--rs-admin-color-primary);
-		content: '\69';
 	}
 }
 

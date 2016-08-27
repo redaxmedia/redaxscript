@@ -61,9 +61,9 @@
 
 		&:after
 		{
-			content: '+';
+			@extend %rs-admin-icon-add;
 			float: right;
-			font-family: var(--rs-admin-font-icon);
+			font-size: 1.5rem;
 		}
 
 		&.rs-admin-title-active
@@ -74,7 +74,7 @@
 
 			&:after
 			{
-				content: '-';
+				@extend %rs-admin-icon-remove;
 			}
 		}
 	}

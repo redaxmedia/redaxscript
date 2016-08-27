@@ -947,7 +947,7 @@ a
 	display: block
 }
 
-.rs-form-default .rs-label-default :after
+.rs-form-default .rs-label-default:after
 {
 	content: ':'
 }
