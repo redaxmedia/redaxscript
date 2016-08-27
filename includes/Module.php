@@ -71,7 +71,7 @@ class Module
 	 *
 	 * @param string $type type of the notification
 	 *
-	 * @return array
+	 * @return mixed
 	 */
 
 	public function getNotification($type = null)

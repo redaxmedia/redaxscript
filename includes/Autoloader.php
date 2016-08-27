@@ -20,19 +20,19 @@ class Autoloader
 	 * @var string
 	 */
 
-	protected static $_namespace =
+	protected $_namespace =
 	[
 		'Redaxscript\Modules\\',
 		'Redaxscript\\'
 	];
 
 	/**
-	 * project class delimiter
+	 * project delimiter
 	 *
 	 * @var string
 	 */
 
-	protected static $_delimiter = '\\';
+	protected $_delimiter = '\\';
 
 	/**
 	 * file suffix
@@ -40,7 +40,7 @@ class Autoloader
 	 * @var string
 	 */
 
-	protected static $_fileSuffix = '.php';
+	protected $_fileSuffix = '.php';
 
 	/**
 	 * directory to search for class files
@@ -48,7 +48,7 @@ class Autoloader
 	 * @var array
 	 */
 
-	protected static $_directory =
+	protected $_directory =
 	[
 		'includes',
 		'libraries',
@@ -63,17 +63,17 @@ class Autoloader
 	 * @param mixed $directory optional directory to search
 	 */
 
-	public static function init($directory = null)
+	public function init($directory = null)
 	{
 		/* handle directory */
 
 		if (is_array($directory))
 		{
-			self::$_directory = $directory;
+			$this->_directory = $directory;
 		}
 		else if (is_string($directory))
 		{
-			self::$_directory =
+			$this->_directory =
 			[
 				$directory
 			];
@@ -96,15 +96,15 @@ class Autoloader
 	 * @param string $className name of the class to load
 	 */
 
-	protected static function _load($className = null)
+	protected function _load($className = null)
 	{
-		$file = str_replace(self::$_namespace, '', $className);
-		$file = str_replace(self::$_delimiter, '/', $file);
-		$file .= self::$_fileSuffix;
+		$file = str_replace($this->_namespace, '', $className);
+		$file = str_replace($this->_delimiter, '/', $file);
+		$file .=$this->_fileSuffix;
 
-		/* include files as needed */
+		/* include as needed */
 
-		foreach (self::$_directory as $directory)
+		foreach ($this->_directory as $directory)
 		{
 			if (file_exists($directory . '/' . $file))
 			{

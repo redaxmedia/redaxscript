@@ -29,15 +29,15 @@ class Language extends Singleton
 	 * @since 2.2.0
 	 */
 
-	public static function init($language = 'en')
+	public function init($language = 'en')
 	{
-		self::load('languages/en.json');
+		$this->load('languages/en.json');
 
 		/* merge language */
 
 		if ($language !== 'en')
 		{
-			self::load('languages/' . $language . '.json');
+			$this->load('languages/' . $language . '.json');
 		}
 	}
 
@@ -52,7 +52,7 @@ class Language extends Singleton
 	 * @return mixed
 	 */
 
-	public static function get($key = null, $index = null)
+	public function get($key = null, $index = null)
 	{
 		/* handle index */
 
@@ -87,7 +87,7 @@ class Language extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_languageArray[$key] = $value;
 	}
@@ -100,7 +100,7 @@ class Language extends Singleton
 	 * @param mixed $path single or multiple language path
 	 */
 
-	public static function load($path = null)
+	public function load($path = null)
 	{
 		$reader = new Reader();
 

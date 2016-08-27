@@ -19,10 +19,6 @@ if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 	exit;
 }
 
-/* trigger init */
-
-Hook::trigger('init');
-
 /* assets loader */
 
 if ($registry->get('firstParameter') === 'loader' && ($registry->get('secondParameter') === 'styles' || $registry->get('secondParameter') === 'scripts'))

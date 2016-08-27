@@ -27,7 +27,7 @@ class Request extends Singleton
 	 * @since 2.4.0
 	 */
 
-	public static function init()
+	public function init()
 	{
 		self::$_requestArray =
 		[
@@ -51,7 +51,7 @@ class Request extends Singleton
 	 * @return mixed
 	 */
 
-	public static function get($key = null, $index = null)
+	public function get($key = null, $index = null)
 	{
 		/* handle index */
 
@@ -87,7 +87,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getServer($key = null)
+	public function getServer($key = null)
 	{
 		return self::get($key, 'server');
 	}
@@ -102,7 +102,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getQuery($key = null)
+	public function getQuery($key = null)
 	{
 		return self::get($key, 'get');
 	}
@@ -117,7 +117,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getPost($key = null)
+	public function getPost($key = null)
 	{
 		return self::get($key, 'post');
 	}
@@ -132,7 +132,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getFiles($key = null)
+	public function getFiles($key = null)
 	{
 		return self::get($key, 'files');
 	}
@@ -147,7 +147,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getSession($key = null)
+	public function getSession($key = null)
 	{
 		return self::get($key, 'session');
 	}
@@ -162,7 +162,7 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getCookie($key = null)
+	public function getCookie($key = null)
 	{
 		return self::get($key, 'cookie');
 	}
@@ -176,7 +176,7 @@ class Request extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_requestArray[$key] = $GLOBALS[$key] = $value;
 	}
@@ -190,7 +190,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setServer($key = null, $value = null)
+	public function setServer($key = null, $value = null)
 	{
 		self::$_requestArray['server'][$key] = $value;
 	}
@@ -204,7 +204,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setQuery($key = null, $value = null)
+	public function setQuery($key = null, $value = null)
 	{
 		self::$_requestArray['get'][$key] = $value;
 	}
@@ -218,7 +218,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setPost($key = null, $value = null)
+	public function setPost($key = null, $value = null)
 	{
 		self::$_requestArray['post'][$key] = $value;
 	}
@@ -232,7 +232,7 @@ class Request extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function setFiles($key = null, $value = null)
+	public function setFiles($key = null, $value = null)
 	{
 		self::$_requestArray['files'][$key] = $value;
 	}
@@ -246,7 +246,7 @@ class Request extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function setSession($key = null, $value = null)
+	public function setSession($key = null, $value = null)
 	{
 		self::$_requestArray['session'][$key] = $_SESSION[$key] = $value;
 	}
@@ -260,7 +260,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setCookie($key = null, $value = null)
+	public function setCookie($key = null, $value = null)
 	{
 		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
 	}
@@ -271,7 +271,7 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public static function refreshSession()
+	public function refreshSession()
 	{
 		self::$_requestArray['session'] = $_SESSION ? $_SESSION : [];
 	}
@@ -282,7 +282,7 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public static function refreshCookie()
+	public function refreshCookie()
 	{
 		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : [];
 	}

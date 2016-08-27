@@ -37,7 +37,7 @@ class Config extends Singleton
 	 * @param string $configFile file with config
 	 */
 
-	public static function init($configFile = null)
+	public function init($configFile = null)
 	{
 		if (file_exists($configFile))
 		{
@@ -63,7 +63,7 @@ class Config extends Singleton
 	 * @return mixed
 	 */
 
-	public static function get($key = null)
+	public function get($key = null)
 	{
 		if (array_key_exists($key, self::$_configArray))
 		{
@@ -85,7 +85,7 @@ class Config extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_configArray[$key] = $value;
 	}
@@ -98,15 +98,15 @@ class Config extends Singleton
 	 * @param string $dbUrl database url to be parsed
 	 */
 
-	public static function parse($dbUrl = null)
+	public function parse($dbUrl = null)
 	{
 		$dbUrl = parse_url($dbUrl);
-		self::clear();
-		self::set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
-		self::set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
-		self::set('dbName', trim($dbUrl['path'], '/'));
-		self::set('dbUser', $dbUrl['user']);
-		self::set('dbPassword', $dbUrl['pass']);
+		$this->clear();
+		$this->set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
+		$this->set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
+		$this->set('dbName', trim($dbUrl['path'], '/'));
+		$this->set('dbUser', $dbUrl['user']);
+		$this->set('dbPassword', $dbUrl['pass']);
 	}
 
 	/**
@@ -117,7 +117,7 @@ class Config extends Singleton
 	 * @return boolean
 	 */
 
-	public static function write()
+	public function write()
 	{
 		$configKeys = array_keys(self::$_configArray);
 		$lastKey = end($configKeys);
@@ -155,7 +155,7 @@ class Config extends Singleton
 	 * @since 3.0.0
 	 */
 
-	public static function clear()
+	public function clear()
 	{
 		self::$_configArray = [];
 	}

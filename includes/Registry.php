@@ -29,7 +29,7 @@ class Registry extends Singleton
 	 * @param array $registryArray array of the registry
 	 */
 
-	public static function init($registryArray = [])
+	public function init($registryArray = [])
 	{
 		if (is_array($registryArray))
 		{
@@ -47,7 +47,7 @@ class Registry extends Singleton
 	 * @return mixed
 	 */
 
-	public static function get($key = null)
+	public function get($key = null)
 	{
 		if (array_key_exists($key, self::$_registryArray))
 		{
@@ -69,7 +69,7 @@ class Registry extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_registryArray[$key] = $value;
 	}

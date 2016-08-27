@@ -12,15 +12,15 @@ include_once('includes/query.php');
 
 /* init */
 
-Autoloader::init();
-Request::init();
+$autoloader = new Autoloader();
+$autoloader->init();
 
 /* get instance */
 
 $registry = Registry::getInstance();
 $config = Config::getInstance();
 
-/* set config */
+/* config */
 
 $dbUrl = getenv('DB_URL');
 if ($dbUrl)
@@ -73,12 +73,16 @@ if (is_dir('modules/TestDummy'))
 	$testDummy->install();
 }
 
-/* hook */
-
-Hook::construct($registry);
-Hook::init();
-
 /* language */
 
 $language = Language::getInstance();
-$language::init();
+$language->init();
+
+/* hook */
+
+if ($registry->get('dbStatus') === 2)
+{
+	Hook::construct($registry);
+	Hook::init();
+	Hook::trigger('init');
+}

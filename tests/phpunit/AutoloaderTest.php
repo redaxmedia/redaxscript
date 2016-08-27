@@ -39,13 +39,8 @@ class AutoloaderTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$autoloader = new Autoloader;
-		$autoloader::init('includes');
-		$autoloader::init(
-		[
-			'.',
-			'includes'
-		]);
+		$autoloader = new Autoloader();
+		$autoloader->init('includes');
 
 		/* actual */
 

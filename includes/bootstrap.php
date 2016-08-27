@@ -22,8 +22,8 @@ include_once('includes/startup.php');
 
 /* init */
 
-Autoloader::init();
-Request::init();
+$autoloader = new Autoloader();
+$autoloader->init();
 
 /* get instance */
 
@@ -31,9 +31,13 @@ $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
 
-/* config and database */
+/* request and config */
 
+$request->init();
 $config->init();
+
+/* database */
+
 Db::construct($config);
 Db::init();
 
@@ -48,14 +52,6 @@ if ($registry->get('file') === 'index.php')
 {
 	include_once('includes/head.php');
 	include_once('includes/router.php');
-}
-
-/* hook */
-
-if ($registry->get('dbStatus') === 2)
-{
-	Hook::construct($registry);
-	Hook::init();
 }
 
 /* refresh */
@@ -76,3 +72,12 @@ $registry->set('template', $detectorTemplate->getOutput());
 
 $language = Language::getInstance();
 $language->init($registry->get('language'));
+
+/* hook */
+
+if ($registry->get('dbStatus') === 2)
+{
+	Hook::construct($registry);
+	Hook::init();
+	Hook::trigger('init');
+}
