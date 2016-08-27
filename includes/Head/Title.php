@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
- * children class to process the title request
+ * children class to create the title tag
  *
  * @since 3.0.0
  *
@@ -16,7 +16,7 @@ use Redaxscript\Registry;
  * @author Balázs Szilágyi
  */
 
-class Title
+class Title implements HeadInterface
 {
 	/**
 	 * instance of the registry class

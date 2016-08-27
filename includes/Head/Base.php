@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Registry;
 
 /**
- * children class to process the base request
+ * children class to create the base tag
  *
  * @since 3.0.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\Registry;
  * @author Balázs Szilágyi
  */
 
-class Base
+class Base implements HeadInterface
 {
 	/**
 	 * instance of the registry class
