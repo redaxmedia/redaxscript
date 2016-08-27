@@ -21,7 +21,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @var string
 	 */
 
-	protected static $_collectionArray;
+	protected static $_collectionArray = [];
 
 	/**
 	 * stringify the collection
@@ -44,21 +44,23 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param mixed $attribute name or set of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return Head
+	 * @return HeadAbstract
 	 */
 
 	public function append($attribute = null, $value = null)
 	{
-		// basicly a copy of attr() from html\element - this code is untested but should work using append('src', 'scripts/foo.js') or with and array of attributes;
 		if (is_array($attribute))
 		{
-			self::$_collectionArray = array_merge(self::$_collectionArray, array_map('trim', $attribute));
+			self::$_collectionArray[] = array_map('trim', $attribute);
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			self::$_collectionArray[$attribute] = trim($value);
+			self::$_collectionArray[] =
+			[
+				trim($attribute) => trim($value)
+			];
 		}
-		return self;
+		return $this;
 	}
 
 	/**
@@ -66,26 +68,24 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return Head
+	 * @return HeadAbstract
 	 */
 
 	public function prepend()
 	{
 		// we can do this later once append() is working
-		return self;
+		return $this;
 	}
 
 	/**
 	 * clean the collection
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return Head
 	 */
 
 	public function clean()
 	{
 		self::$_collectionArray = [];
-		return self;
+		return $this;
 	}
 }

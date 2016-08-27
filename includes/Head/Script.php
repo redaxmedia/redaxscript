@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Head;
 
+use Redaxscript\Html;
+
 /**
  * children class to create the script tag
  *
@@ -23,16 +25,22 @@ class Script extends HeadAbstract
 
 	public function render()
 	{
-		// render the script tag from collection array using html\element
-		// empty the collection using clean() after render was triggered
+		$output = null;
 
-		// HeadAbstract is a Singleton because we have to pass a global collection from the Core to the Modules and back
-		// Idea for testing
-		// $scriptOne = new Head\Script();
-		// $scriptOne->append('src', 'test1');
-		// $scriptTwo = new Head\Script();
-		// $scriptOne->append('src', 'test2');
+		/* html elements */
 
-		// output of $scriptTwo->render() should be <script src="test1"><script><script src="test2"><script>
+		$scriptElement = new Html\Element();
+		$scriptElement->init('script');
+
+		/* process collection */
+
+		foreach (self::$_collectionArray as $key => $value)
+		{
+			$output .= $scriptElement
+				->copy()
+				->attr($value);
+		}
+		$this->clean();
+		return $output;
 	}
 }
