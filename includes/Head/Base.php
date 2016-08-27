@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Head;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -40,7 +39,7 @@ class Base
 	}
 
 	/**
-	 * render the class
+	 * render the base
 	 *
 	 * @since 3.0.0
 	 *
@@ -49,14 +48,11 @@ class Base
 
 	public function render()
 	{
-		/* html elements */
-
 		$titleElement = new Html\Element();
-		$titleElement
-			->init('base',
-				[
-					'href' => $this->_registry->get('root') . '/'
-				]);
+		$titleElement->init('base',
+		[
+			'href' => $this->_registry->get('root') . '/'
+		]);
 		return $titleElement->render();
 	}
 }

@@ -2,9 +2,7 @@
 namespace Redaxscript\Tests\Head;
 
 use Redaxscript\Head;
-use Redaxscript\Language;
 use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -22,24 +20,10 @@ class TitleTest extends TestCaseAbstract
 	/**
 	 * instance of the registry class
 	 *
-	 * @var \Redaxscript\Registry
+	 * @var object
 	 */
 
 	protected $_registry;
-	/**
-	 * instance of the language class
-	 *
-	 * @var \Redaxscript\Language
-	 */
-
-	protected $_language;
-	/**
-	 * instance of the request class
-	 *
-	 * @var \Redaxscript\Request
-	 */
-
-	protected $_request;
 
 	/**
 	 * setUp
@@ -50,8 +34,6 @@ class TitleTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
 	}
 
 	/**

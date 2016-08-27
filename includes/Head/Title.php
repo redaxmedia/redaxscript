@@ -40,7 +40,7 @@ class Title
 	}
 
 	/**
-	 * render the class
+	 * render the title
 	 *
 	 * @since 3.0.0
 	 *
@@ -49,19 +49,11 @@ class Title
 
 	public function render()
 	{
-		$titleArray
-			= [
-			'description' => $this->_registry->get('metaDescription') ? $this->_registry->get('metaDescription') : Db::getSetting('description'),
-			'divider' => Db::getSetting('divider'),
-			'title' => $this->_registry->get('metaTitle') ? $this->_registry->get('metaTitle') : Db::getSetting('title')
-		];
-
-		/* html elements */
-
+		$title = $this->_registry->get('metaTitle') ? $this->_registry->get('metaTitle') : Db::getSetting('title');
+		$description = $this->_registry->get('metaDescription') ? $this->_registry->get('metaDescription') : Db::getSetting('description');
 		$titleElement = new Html\Element();
-		$titleElement
+		return $titleElement
 			->init('title')
-			->text($titleArray['title'] . $titleArray['divider'] . $titleArray['description']);
-		return $titleElement;
+			->text($title . Db::getSetting('divider') . $description);
 	}
 }
