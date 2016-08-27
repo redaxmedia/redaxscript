@@ -100,12 +100,12 @@ class ModuleTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $module->getNotification();
+		$actualArray = $module->getNotification();
 
 		/* compare */
 
-		$this->assertArrayHasKey('success', $actual);
-		$this->assertArrayHasKey('error', $actual);
+		$this->assertArrayHasKey('success', $actualArray);
+		$this->assertArrayHasKey('error', $actualArray);
 	}
 
 	/**

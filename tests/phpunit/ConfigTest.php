@@ -135,11 +135,11 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = $this->_config->get();
+		$actualArray = $this->_config->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('dbHost', $actual);
+		$this->assertArrayHasKey('dbHost', $actualArray);
 	}
 
 	/**

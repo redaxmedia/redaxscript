@@ -43,10 +43,10 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Helper\Option::getDatabaseArray();
+		$actualArray = Helper\Option::getDatabaseArray();
 
 		/* compare */
 
-		$this->assertArraySubset($expectArray['database'], $actual);
+		$this->assertArraySubset($expectArray['database'], $actualArray);
 	}
 }

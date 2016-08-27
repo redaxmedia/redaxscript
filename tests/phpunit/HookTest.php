@@ -50,11 +50,11 @@ class HookTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Hook::getModuleArray();
+		$actualArray = Hook::getModuleArray();
 
 		/* compare */
 
-		$this->assertArrayHasKey('TestDummy', $actual);
+		$this->assertArrayHasKey('TestDummy', $actualArray);
 	}
 
 	/**
@@ -73,11 +73,11 @@ class HookTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Hook::getEventArray();
+		$actualArray = Hook::getEventArray();
 
 		/* compare */
 
-		$this->assertArrayHasKey('render', $actual);
+		$this->assertArrayHasKey('render', $actualArray);
 	}
 
 	/**
@@ -95,11 +95,11 @@ class HookTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Hook::collect('adminPanelNotification');
+		$actualArray = Hook::collect('adminPanelNotification');
 
 		/* compare */
 
-		$this->assertArrayHasKey('info', $actual);
+		$this->assertArrayHasKey('info', $actualArray);
 	}
 
 	/**

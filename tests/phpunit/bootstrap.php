@@ -80,9 +80,6 @@ $language->init();
 
 /* hook */
 
-if ($registry->get('dbStatus') === 2)
-{
-	Hook::construct($registry);
-	Hook::init();
-	Hook::trigger('init');
-}
+Hook::construct($registry);
+Hook::init();
+

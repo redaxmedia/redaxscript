@@ -44,11 +44,11 @@ class AutoloaderTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->readAttribute($autoloader, '_directory');
+		$actualArray = $this->readAttribute($autoloader, '_directory');
 
 		/* compare */
 
-		$this->assertArrayHasKey(0, $actual);
+		$this->assertEquals('includes', $actualArray[0]);
 	}
 
 	/**

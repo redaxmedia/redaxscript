@@ -65,11 +65,11 @@ class RequestTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = $this->_request->get();
+		$actualArray = $this->_request->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('server', $actual);
+		$this->assertArrayHasKey('server', $actualArray);
 	}
 
 	/**

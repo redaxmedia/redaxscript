@@ -106,11 +106,11 @@ class LanguageTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = $this->_language->get();
+		$actualArray = $this->_language->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('home', $actual);
+		$this->assertArrayHasKey('home', $actualArray);
 	}
 
 	/**

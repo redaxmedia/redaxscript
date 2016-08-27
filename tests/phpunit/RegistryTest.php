@@ -91,11 +91,11 @@ class RegistryTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->_registry->get();
+		$actualArray = $this->_registry->get();
 
 		/* compare */
 
-		$this->assertArrayHasKey('testAll', $actual);
+		$this->assertArrayHasKey('testAll', $actualArray);
 	}
 
 	/**
