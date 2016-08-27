@@ -105,8 +105,6 @@ a.rs-admin-button-default
 	@extend %rs-admin-icon-clear;
 }
 
-/* TODO HENRY: gibt es noch diesen button, wird er verwendet? */
-
 .rs-admin-button-default.rs-admin-button-submit:before
 {
 	content: '\2713';

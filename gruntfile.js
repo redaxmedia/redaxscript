@@ -488,6 +488,28 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					// TODO: admin notification:
+					// Top-Menu-Icon https://design.google.com/icons/#ic_notifications
+					// folgende icons immer nutzen wenn rundung erwünscht, css3 rundungen entfernen
+					// success: https://design.google.com/icons/#ic_check_circle
+					// info: https://design.google.com/icons/#ic_info
+					// error: https://design.google.com/icons/#ic_error
+					// warning: https://design.google.com/icons/#ic_warning
+
+					// TODO: bei access vielleicht auch https://design.google.com/icons/#ic_lock
+					// würde die entscheidung aber dir überlassen
+
+					// TODO: logout
+					// https://design.google.com/icons/#ic_exit_to_app
+					// oder https://design.google.com/icons/#ic_power_settings_new - deine entscheidung
+
+					// TODO HENRY: gibt es noch diesen button, wird .rs-admin-button-submit verwendet?
+					// Siehe https://snag.gy/vlJkwH.jpg - entspricht dem Save button, es fehlt auch nocht ein Icon für Delete
+					// Siehe https://snag.gy/cY1uHD.jpg - Icon für Sort fehlt und das Plus ist etwas verschoben
+					// Alternativ können wir bei buttons die Icons auch überall weglassen
+
+					// TODO: panel icons ein ticken kleiner, 1.75em statt 2em - https://snag.gy/R4t5ho.jpg
+
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
