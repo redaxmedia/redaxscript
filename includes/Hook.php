@@ -126,7 +126,7 @@ class Hook
 	{
 		$output = [];
 
-		/* trigger event */
+		/* process modules */
 
 		foreach (self::$_moduleArray as $module)
 		{
@@ -163,7 +163,7 @@ class Hook
 	{
 		$output = null;
 
-		/* trigger event */
+		/* process modules */
 
 		foreach (self::$_moduleArray as $module)
 		{
