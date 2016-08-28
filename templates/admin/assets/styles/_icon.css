@@ -6,6 +6,13 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
+%rs-admin-icon-check-circle
+{
+	content: '\2714';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
 %rs-admin-icon-delete
 {
 	content: '\2297';
@@ -13,23 +20,23 @@
 	font-weight: normal;
 }
 
-%rs-admin-icon-done
+%rs-admin-icon-exit-to-app
 {
-	content: '\2714';
+	content: '\2192';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
 %rs-admin-icon-info
 {
-	content: '\21';
+	content: '\69';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-lock-open
+%rs-admin-icon-lock
 {
-	content: '\2190';
+	content: '\1f511';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
@@ -48,9 +55,16 @@
 	font-weight: normal;
 }
 
-%rs-admin-icon-chat-bubble
+%rs-admin-icon-error
 {
-	content: '\25b6';
+	content: '\274c';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-warning
+{
+	content: '\21';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
@@ -58,13 +72,6 @@
 %rs-admin-icon-import-contacts
 {
 	content: '\25eb';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
-%rs-admin-icon-live-help
-{
-	content: '\2691';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
@@ -121,6 +128,13 @@
 %rs-admin-icon-expand-more
 {
 	content: '\2228';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-notifications
+{
+	content: '\203c';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }

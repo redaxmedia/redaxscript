@@ -150,13 +150,6 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
-.rs-admin-link-dock.rs-admin-link-delete:before
-{
-	content: '\2297';
-	font-family: 'icon admin';
-	font-weight: normal;
-}
-
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
 	content: '\2714';
@@ -164,16 +157,30 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
+.rs-admin-link-dock.rs-admin-link-delete:before
 {
-	content: '\21';
+	content: '\2297';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
 
 .rs-admin-link-logout:before
 {
-	content: '\2190';
+	content: '\2192';
+	font-family: 'icon admin';
+	font-weight: normal;
+}
+
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
+{
+	content: '\69';
+	font-family: 'icon admin';
+	font-weight: normal;
+}
+
+.rs-admin-text-access:before
+{
+	content: '\1f511';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
@@ -192,9 +199,16 @@
 	font-weight: normal;
 }
 
-.rs-admin-text-notification:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
-	content: '\25b6';
+	content: '\274c';
+	font-family: 'icon admin';
+	font-weight: normal;
+}
+
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
+{
+	content: '\21';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
@@ -206,20 +220,6 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
-{
-	content: '\2691';
-	font-family: 'icon admin';
-	font-weight: normal;
-}
-
-.rs-admin-text-access:before
-{
-	content: '\2386';
-	font-family: 'icon admin';
-	font-weight: normal;
-}
-
 .rs-is-js .rs-admin-title-accordion:after, .rs-admin-button-default.rs-admin-button-plus:before, .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: '\2b';
@@ -227,7 +227,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-button-default.rs-admin-button-cancel:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
+.rs-admin-button-default.rs-admin-button-cancel:before
 {
 	content: '\d7';
 	font-family: 'icon admin';
@@ -265,6 +265,13 @@
 .rs-admin-item-panel.rs-admin-item-active > span:after, .rs-admin-table-default .rs-admin-button-movedown:before, .rs-admin-table-default thead .rs-admin-col-rank:before, .rs-admin-table-default tfoot .rs-admin-col-rank:before
 {
 	content: '\2228';
+	font-family: 'icon admin';
+	font-weight: normal;
+}
+
+.rs-admin-text-notification:before
+{
+	content: '\203c';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
@@ -509,8 +516,6 @@
 	text-transform: lowercase;
 	vertical-align: middle;
 }
-
-/* TODO HENRY: gibt es noch diesen button, wird er verwendet? */
 
 .rs-admin-button-default.rs-admin-button-submit:before
 {
@@ -995,7 +1000,7 @@
 .rs-admin-item-panel > a:before, .rs-admin-item-panel > span:before
 {
 	display: inline-block;
-	font-size: 2em;
+	font-size: 1.75em;
 	line-height: 1em;
 	margin-right: 0.5em;
 	margin-top: -0.125em;
@@ -1172,11 +1177,11 @@
 	color: rgb(32, 32, 32);
 	font-size: 0.75em;
 	height: 1.5em;
-	left: 2.25em;
+	left: 2.5em;
 	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 0.5em;
+	top: 0.75em;
 	width: 1.5em;
 }
 
@@ -1209,36 +1214,30 @@
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span:before
 {
-	border-radius: 50%;
-	color: rgb(0, 0, 0);
-	font-size: 1.25em;
-	height: 1.5em;
-	left: 0.5em;
-	line-height: 1.5em;
+	font-size: 2em;
+	left: 0.25em;
 	position: absolute;
-	text-align: center;
-	top: 0.375em;
-	width: 1.5em
+	top: 0.25em
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
-	background: #4c8c00
+	color: #4c8c00
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
 {
-	background: #e08400
+	color: #e08400
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
-	background: #a20000
+	color: #a20000
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
-	background: #0090db
+	color: #0090db
 }
 
 @media (min-width: 50em) and (max-width: 79.999em)

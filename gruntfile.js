@@ -488,20 +488,6 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					// todo: admin notification:
-					// top-menu-icon https://design.google.com/icons/#ic_notifications
-					// folgende icons immer nutzen wenn rundung erwünscht, css3 rundungen entfernen
-					// success: https://design.google.com/icons/#ic_check_circle
-					// info: https://design.google.com/icons/#ic_info
-					// error: https://design.google.com/icons/#ic_error
-					// warning: https://design.google.com/icons/#ic_warning
-
-					// todo: bei access vielleicht auch https://design.google.com/icons/#ic_lock
-					// würde die entscheidung aber dir überlassen
-
-					// todo: logout
-					// https://design.google.com/icons/#ic_exit_to_app
-					// oder https://design.google.com/icons/#ic_power_settings_new - deine entscheidung
 
 					// todo henry: gibt es noch diesen button, wird .rs-admin-button-submit verwendet?
 					// siehe https://snag.gy/vljkwh.jpg - entspricht dem save button, es fehlt auch nocht ein icon für delete
@@ -510,17 +496,17 @@ module.exports = function (grunt)
 
 					// todo: panel icons ein ticken kleiner, 1.75em statt 2em - https://snag.gy/r4t5ho.jpg
 
+					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_lock_open_24px.svg',
-					// 'node_modules/material-design-icons/action/svg/production/ic_lock_outline_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_visibility_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
-					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
 					'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
-					'node_modules/material-design-icons/communication/svg/production/ic_live_help_24px.svg',
 					'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
@@ -532,6 +518,7 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
+					'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
 					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
 				],
 				dest: 'templates/admin/assets/fonts',
@@ -581,31 +568,34 @@ module.exports = function (grunt)
 				{
 					'search': 0x2315,
 					'add': 0x2b,
-					'chat-bubble': 0x25b6,
+					// 'chat-bubble': 0x25b6,
+					'check-circle': 0x2714,
 					// 'chevron-left': 0x3008,
 					'chevron-right': 0x3009,
 					'clear': 0xd7,
 					'create': 0x270E,
 					'delete': 0x2297,
-					'done': 0x2714,
+					'error': 0x274C,
+					'exit-to-app': 0x2192,
 					'expand-less': 0x2227,
 					'expand-more': 0x2228,
 					// 'favorite': 0x2665,
 					// 'folder': 0x26D8,
 					'import-contacts': 0x25EB,
 					// 'image': 0x2600,
-					'info': 0x21,
+					'info': 0x0069,
 					// 'insert-drive-file': 0x2752,
-					'live-help': 0x2691,
-					'lock-open': 0x2190,
-					// 'lock-outline': 0x2192,
+					// 'live-help': 0x2691,
+					'lock': 0x1F511,
+					'notifications': 0x203C,
 					// 'menu': 0x2261,
 					'person': 0x26C4,
 					'remove': 0x2d,
 					'settings': 0x2731,
 					// 'visibility': 0x2295,
 					'visibility-off': 0x2298,
-					'vpn-key': 0x2386
+					'vpn-key': 0x2386,
+					'warning': 0x0021
 				},
 				rename: function (name)
 				{
