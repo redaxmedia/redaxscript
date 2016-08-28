@@ -1,0 +1,30 @@
+[
+	[
+		[
+			{
+				"href": "http://localhost/",
+				"rel": "canonical"
+			},
+			{
+				"href": "templates/default/assets/images/favicon.ico",
+				"rel": "shortcut icon"
+			}
+		],
+		"<link href=\"http://localhost/\" rel=\"canonical\" /><link href=\"templates/default/assets/images/favicon.ico\" rel=\"shortcut icon\" />"
+	],
+	[
+		[
+			{
+				"rel": "stylesheet",
+				"type": "text/css",
+				"href": "style.css"
+			},
+			{
+				"rel": "stylesheet",
+				"type": "text/css",
+				"href": "test.css"
+			}
+		],
+		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\" />"
+	]
+]

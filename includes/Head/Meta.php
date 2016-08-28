@@ -4,23 +4,24 @@ namespace Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * children class to create the script tag
+ * children class to create the meta tag
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Head
+ * @category Controller
  * @author Henry Ruhs
+ * @author Balázs Szilágyi
  *
  * @method append
  * @method prepend
  * @method clear
  */
 
-class Script extends HeadAbstract
+class Meta extends HeadAbstract
 {
 	/**
-	 * render the script
+	 * generate html element
 	 *
 	 * @since 3.0.0
 	 *
@@ -33,20 +34,16 @@ class Script extends HeadAbstract
 
 		/* html elements */
 
-		$scriptElement = new Html\Element();
-		$scriptElement->init('script');
+		$metaElement = new Html\Element();
+		$metaElement->init('meta');
 
-		/* process collection */
-		//todo: add  . PHP_EOL after $value if needed
 		foreach (self::$_collectionArray as $key => $value)
 		{
-			$output .= $scriptElement
+			$output .= $metaElement
 				->copy()
 				->attr($value);
 		}
 		$this->clear();
 		return $output;
 	}
-
-	//todo: minify() toInline()
 }

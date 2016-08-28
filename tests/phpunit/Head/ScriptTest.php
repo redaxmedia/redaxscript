@@ -12,30 +12,65 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ * @author Balázs Szilágyi
  */
-
 class ScriptTest extends TestCaseAbstract
 {
+	/**
+	 * providerAppendRender
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerAppendRender()
+	{
+		return $this->getProvider('tests/provider/Head/script_append_render.json');
+	}
+
+	/**
+	 * providerPrependRender
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerPrependRender()
+	{
+		return $this->getProvider('tests/provider/Head/script_prepend_render.json');
+	}
+
 	/**
 	 * testRender
 	 *
 	 * @since 3.0.0
+	 *
+	 * @dataProvider providerAppendRender
+	 *
+	 * @param array $array
+	 * @param string $single
+	 * @param string $expected
 	 */
 
-	public function testRender()
+	public function testAppendRender($array = [], $single = null, $expected = null)
 	{
 		/* setup */
 
 		$scriptCore = Head\Script::getInstance();
-		$scriptCore
-			->append('src', 'assets/scripts/init.js')
-			->append(
-			[
-				'src' => 'assets/scripts/misc.js',
-				'async' => 'async'
-			]);
+
+		foreach ($array as $key => $value)
+		{
+			$scriptCore->append($value);
+		}
+
 		$scriptModule = Head\Script::getInstance();
-		$scriptModule->append('src', 'modules/assets/scripts/init.js');
+
+		foreach ($single as $key => $value)
+		{
+			$scriptModule->append($key, $value);
+		}
 
 		/* actual */
 
@@ -43,8 +78,45 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		// TODO: please create another @dataprovider for this test - that internal one was just for rapid development
+		$this->assertEquals($expected, strval($actual));
+	}
 
-		$this->assertEquals('<script src="assets/scripts/init.js"></script><script src="assets/scripts/misc.js" async="async"></script><script src="modules/assets/scripts/init.js"></script>', $actual);
+	/**
+	 * testPrependRender
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerPrependRender
+	 *
+	 * @param array $array
+	 * @param string $single
+	 * @param string $expected
+	 */
+
+	public function testPrependRender($array = [], $single = null, $expected = null)
+	{
+		/* setup */
+
+		$scriptCore = Head\Script::getInstance();
+
+		foreach ($array as $key => $value)
+		{
+			$scriptCore->prepend($value);
+		}
+
+		$scriptModule = Head\Script::getInstance();
+
+		foreach ($single as $key => $value)
+		{
+			$scriptModule->prepend($key, $value);
+		}
+
+		/* actual */
+
+		$actual = $scriptCore;
+
+		/* compare */
+
+		$this->assertEquals($expected, strval($actual));
 	}
 }

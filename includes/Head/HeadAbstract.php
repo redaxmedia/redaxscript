@@ -33,6 +33,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function __toString()
 	{
+		//todo: we should put the render method here, and by using get_called_class() pass the proper html tag as the parameter to it (script, meta, link,...)
 		return $this->render();
 	}
 
@@ -68,12 +69,22 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param mixed $attribute name or set of attributes
+	 * @param string $value value of the attribute
+	 *
 	 * @return HeadAbstract
 	 */
 
-	public function prepend()
+	public function prepend($attribute = null, $value = null)
 	{
-		// TODO: implement this method similar to append()
+		if (is_array($attribute))
+		{
+			array_unshift(self::$_collectionArray, array_map('trim', $attribute));
+		}
+		else if (strlen($attribute) && strlen($value))
+		{
+			array_unshift(self::$_collectionArray, [ trim($attribute) => trim($value) ] );
+		}
 		return $this;
 	}
 
