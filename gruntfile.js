@@ -496,6 +496,7 @@ module.exports = function (grunt)
 					// alternativ können wir die icons bei ALLEN buttons weglassen!?
 
 					// siehe https://snag.gy/OhPA9l.jpg - note icons und counter verkleinern / besser positionieren
+					// siehe https://snag.gy/BkGunW.jpg - bei hover sind die icons schwarz, da sich blau und die farben optisch nicht vertragen
 					// codepoint für notifications ist noch etwas unpassend, wie wäre es mit http://www.fileformat.info/info/unicode/char/1f514/index.htm
 
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
