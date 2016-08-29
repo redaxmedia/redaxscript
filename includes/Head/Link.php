@@ -20,6 +20,8 @@ use Redaxscript\Html;
 
 class Link extends HeadAbstract
 {
+	/*@todo: 6. add the appendFile($reference = null) and prependFile($reference = null) shortcuts to this class default value is href => $reference
+
 	/**
 	 * render the link
 	 *
