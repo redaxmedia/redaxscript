@@ -533,7 +533,7 @@
 
 /* @section 3. space between elements */
 
-.rs-admin-form-default .rs-admin-button-default, .rs-admin-box-messenger + .rs-admin-button-messenger
+.rs-admin-form-default .rs-admin-button-default
 {
 	margin-top: 1em;
 }

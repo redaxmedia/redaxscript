@@ -502,7 +502,7 @@ a
 
 /* @section 4. space between elements */
 
-.rs-form-default .rs-button-default, .rs-box-messenger + .rs-button-messenger
+.rs-form-default .rs-button-default
 {
 	margin-top: 1em;
 }
@@ -515,15 +515,15 @@ a
 	pointer-events: none;
 }
 
-.rs-button-reset, .rs-button-messenger
+.rs-button-reset
 {
 	background: rgb(200, 200, 200);
-	color: rgb(70, 70, 70);
+	color: rgb(190, 190, 190);
 }
 
-.rs-button-reset:hover, .rs-button-messenger:hover
+.rs-button-reset:hover
 {
-	background: rgb(180, 180, 180);
+	background: rgb(200, 200, 200);
 }
 
 /* @section 6. query */
@@ -1908,32 +1908,24 @@ a
 		background-image: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
- * 5. dimensions
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-.rs-box-note + .rs-box-note, .rs-box-note + .rs-title-note
+.rs-title-note
 {
-	margin-top: 1em;
+	font-size: 2.5em;
 }
 
 .rs-box-note
 {
 	border-radius: 0.125em 0.125em;
+	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.5em 0.5em 0.5em 3em;
 	position: relative;
+}
+
+.rs-box-note a
+{
+	color: inherit;
+	text-decoration: underline;
 }
 
 .rs-box-note:before
@@ -1944,10 +1936,21 @@ a
 	top: 0.25em;
 }
 
-.rs-box-note a
+.rs-button-note
 {
-	color: inherit;
-	text-decoration: underline;
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
+	display: inline-block;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding: 0.375em 2em;
+	transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.rs-button-note:active
+{
+	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
+	transform: translateY(2px);
 }
 
 /* @section 1. success */
@@ -1963,7 +1966,7 @@ a
 	border-color: rgb(40, 119, 40);
 }
 
-.rs-is-success.rs-field-note option
+.rs-is-success.rs-button-note, .rs-is-success.rs-field-note option
 {
 	background: #5bb75b;
 }
@@ -1986,7 +1989,7 @@ a
 	border-color: rgb(117, 68, 0);
 }
 
-.rs-is-warning.rs-field-note option
+.rs-is-warning.rs-button-note, .rs-is-warning.rs-field-note option
 {
 	background: #f3940e;
 }
@@ -2010,7 +2013,7 @@ a
 	border-color: rgb(116, 39, 37);
 }
 
-.rs-is-error.rs-field-note option
+.rs-is-error.rs-button-note, .rs-is-error.rs-field-note option
 {
 	background: #da4f49;
 }
@@ -2033,7 +2036,7 @@ a
 	border-color: rgb(37, 98, 116);
 }
 
-.rs-is-info.rs-field-note option
+.rs-is-info.rs-button-note, .rs-is-info.rs-field-note option
 {
 	background: #49afcd;
 }
@@ -2044,9 +2047,14 @@ a
 	left: 0.875em;
 }
 
-/* @section 5. dimensions */
+/* @section 5. space between */
 
-.rs-title-note + .rs-box-note
+.rs-title-note + .rs-box-note, .rs-box-note + .rs-box-note
+{
+	margin-top: 0.5em;
+}
+
+.rs-box-note + .rs-button-note
 {
 	margin-top: 1em;
 }

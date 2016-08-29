@@ -96,8 +96,7 @@ a.rs-button-default
 
 /* @section 4. space between elements */
 
-.rs-form-default .rs-button-default,
-.rs-box-messenger + .rs-button-messenger
+.rs-form-default .rs-button-default
 {
 	margin-top: 1em;
 }
@@ -110,17 +109,15 @@ a.rs-button-default
 	pointer-events: none;
 }
 
-.rs-button-reset,
-.rs-button-messenger
+.rs-button-reset
 {
 	background: gray(200);
-	color: gray(70);
+	color: gray(190);
 }
 
-.rs-button-reset:hover,
-.rs-button-messenger:hover
+.rs-button-reset:hover
 {
-	background: gray(180);
+	background: gray(200);
 }
 
 /* @section 6. query */

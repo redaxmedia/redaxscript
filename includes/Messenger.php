@@ -45,10 +45,10 @@ class Messenger
 	[
 		'className' =>
 		[
-			'box' => 'rs-box-messenger rs-box-note',
-			'title' => 'rs-title-messenger rs-title-note',
-			'list' => 'rs-list-messenger',
-			'link' => 'rs-button-default rs-button-messenger',
+			'box' => ' rs-box-note',
+			'title' => 'rs-title-note',
+			'list' => 'rs-list-note',
+			'link' => 'rs-button-note',
 			'redirect' => 'rs-meta-redirect',
 			'notes' =>
 			[
@@ -279,7 +279,7 @@ class Messenger
 
 		/* collect output */
 
-		$output .= $titleElement . $boxElement . $this->_renderAction();
+		$output .= $titleElement . $boxElement . $this->_renderAction($type);
 		$output .= Hook::trigger('messengerEnd');
 		return $output;
 	}
@@ -289,10 +289,12 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $type type of the flash
+	 *
 	 * @return string
 	 */
 
-	protected function _renderAction()
+	protected function _renderAction($type = null)
 	{
 		$output = null;
 		if ($this->_actionArray['text'] && ($this->_actionArray['route'] || $this->_actionArray['url']))
@@ -302,7 +304,7 @@ class Messenger
 				->init('a',
 				[
 					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
-					'class' => $this->_optionArray['className']['link']
+					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['notes'][$type]
 				])
 				->text($this->_actionArray['text']);
 

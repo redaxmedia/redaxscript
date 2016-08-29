@@ -26,10 +26,10 @@ class Messenger extends BaseMessenger
 	[
 		'className' =>
 		[
-			'box' => 'rs-admin-box-messenger rs-admin-box-note',
-			'title' => 'rs-admin-title-messenger rs-admin-title-note',
-			'list' => 'rs-admin-list-messenger',
-			'link' => 'rs-admin-button-default rs-admin-button-messenger',
+			'box' => 'rs-admin-box-note',
+			'title' => 'rs-admin-title-note',
+			'list' => 'rs-admin-list-note',
+			'link' => 'rs-admin-button-note',
 			'redirect' => 'rs-admin-meta-redirect',
 			'notes' =>
 			[

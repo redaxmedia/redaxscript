@@ -12,18 +12,22 @@
 
 /* @section 1. preview */
 
+.rs-title-preview
+{
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem
+}
+
 .rs-title-preview a
 {
 	background: rgba(0, 0, 0, 0.8);
 	border-radius: 0.125em;
 	color: rgb(255, 255, 255);
 	display: block;
-	margin-bottom: 1em;
-	margin-top: 1em;
 	padding: 0.5em 1em
 }
 
-.rs-title-preview a:hover
+.rs-title-preview:hover
 {
 	background: rgba(0, 0, 0, 0.9)
 }
@@ -43,4 +47,20 @@
 .rs-is-preview .rs-component-dialog, .rs-is-preview .rs-admin-component-dialog
 {
 	position: absolute
+}
+
+/* @section 1.2 space between */
+
+.rs-is-preview
+{
+}
+
+.rs-is-preview .rs-admin-field-note + .rs-admin-field-note, .rs-is-preview .rs-field-note + .rs-field-note
+{
+	margin-top: 0.75rem
+}
+
+.rs-is-preview .rs-image-default + .rs-video-default, .rs-is-preview .rs-admin-button-note + .rs-admin-title-note, .rs-is-preview .rs-button-note + .rs-title-note, .rs-is-preview .rs-admin-wrapper-table + .rs-admin-wrapper-table, .rs-is-preview .rs-wrapper-table + .rs-wrapper-table
+{
+	margin-top: 1.5rem
 }
