@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class ScriptTest extends TestCaseAbstract
 {
 	/**
@@ -49,25 +50,22 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @dataProvider providerAppend
 	 *
-	 * @param array $array
-	 * @param string $single
-	 * @param string $expected
+	 * @param array $coreArray
+	 * @param array $moduleArray
+	 * @param string $expect
 	 */
 
-	public function testAppendRender($array = [], $single = null, $expected = null)
+	public function testAppendRender($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 
 		$scriptCore = Head\Script::getInstance();
-
-		foreach ($array as $key => $value)
+		$scriptModule = Head\Script::getInstance();
+		foreach ($coreArray as $key => $value)
 		{
 			$scriptCore->append($value);
 		}
-
-		$scriptModule = Head\Script::getInstance();
-
-		foreach ($single as $key => $value)
+		foreach ($moduleArray as $key => $value)
 		{
 			$scriptModule->append($key, $value);
 		}
@@ -78,7 +76,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expected, strval($actual));
+		$this->assertEquals($expect, strval($actual));
 	}
 
 	/**
@@ -88,25 +86,22 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @dataProvider providerPrepend
 	 *
-	 * @param array $array
-	 * @param string $single
+	 * @param array $coreArray
+	 * @param array $moduleArray
 	 * @param string $expect
 	 */
 
-	public function testPrependRender($array = [], $single = null, $expect = null)
+	public function testPrependRender($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 
 		$scriptCore = Head\Script::getInstance();
-
-		foreach ($array as $key => $value)
+		$scriptModule = Head\Script::getInstance();
+		foreach ($coreArray as $key => $value)
 		{
 			$scriptCore->prepend($value);
 		}
-
-		$scriptModule = Head\Script::getInstance();
-
-		foreach ($single as $key => $value)
+		foreach ($moduleArray as $key => $value)
 		{
 			$scriptModule->prepend($key, $value);
 		}

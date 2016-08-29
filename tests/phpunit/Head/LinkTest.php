@@ -36,24 +36,23 @@ class LinkTest extends TestCaseAbstract
 	 *
 	 * @dataProvider providerAppend
 	 *
-	 * @param array $array
+	 * @param array $linkArray
 	 * @param string $expect
 	 */
 
-	public function testAppend($array = [], $expect = null)
+	public function testAppend($linkArray = [], $expect = null)
 	{
 		/* setup */
 
-		$linkCore = Head\Link::getInstance();
-
-		foreach ($array as $key => $value)
+		$linkHead = Head\Link::getInstance();
+		foreach ($linkArray as $key => $value)
 		{
-			$linkCore->append($value);
+			$linkHead->append($value);
 		}
 
 		/* actual */
 
-		$actual = $linkCore->render();
+		$actual = $linkHead->render();
 
 		/* compare */
 

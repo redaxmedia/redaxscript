@@ -24,39 +24,38 @@ class MetaTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerAppend()
 	{
-		return $this->getProvider('tests/provider/Head/meta_render.json');
+		return $this->getProvider('tests/provider/Head/meta_append.json');
 	}
 
 	/**
-	 * testRender
+	 * testAppend
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAppend
 	 *
-	 * @param array $array
-	 * @param string $expected
+	 * @param array $metaArray
+	 * @param string $expect
 	 */
 
-	public function testAppendRender($array = [], $expected = null)
+	public function testAppend($metaArray = [], $expect = null)
 	{
 		/* setup */
 
-		$scriptCore = Head\Meta::getInstance();
-
-		foreach ($array as $key => $value)
+		$metaHead = Head\Meta::getInstance();
+		foreach ($metaArray as $key => $value)
 		{
-			$scriptCore->append($value);
+			$metaArray->append($value);
 		}
 
 		/* actual */
 
-		$actual = $scriptCore;
+		$actual = $metaHead->render();
 
 		/* compare */
 
-		$this->assertEquals($expected, strval($actual));
+		$this->assertEquals($expect, $actual);
 	}
 }
