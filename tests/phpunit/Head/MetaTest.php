@@ -17,7 +17,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class MetaTest extends TestCaseAbstract
 {
 	/**
-	 * providerRender
+	 * providerAppend
 	 *
 	 * @since 3.0.0
 	 *
@@ -47,7 +47,7 @@ class MetaTest extends TestCaseAbstract
 		$metaHead = Head\Meta::getInstance();
 		foreach ($metaArray as $key => $value)
 		{
-			$metaArray->append($value);
+			$metaHead->append($value);
 		}
 
 		/* actual */

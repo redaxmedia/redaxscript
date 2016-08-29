@@ -44,7 +44,7 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerAppend
+	 * testAppend
 	 *
 	 * @since 3.0.0
 	 *
@@ -55,7 +55,7 @@ class ScriptTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
-	public function testAppendRender($coreArray = [], $moduleArray = [], $expect = null)
+	public function testAppend($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -72,11 +72,11 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $scriptCore;
+		$actual = $scriptCore->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, strval($actual));
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -91,7 +91,7 @@ class ScriptTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
-	public function testPrependRender($coreArray = [], $moduleArray = [], $expect = null)
+	public function testPrepend($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 

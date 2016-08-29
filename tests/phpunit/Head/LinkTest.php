@@ -17,7 +17,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class LinkTest extends TestCaseAbstract
 {
 	/**
-	 * providerRender
+	 * providerAppend
 	 *
 	 * @since 3.0.0
 	 *
