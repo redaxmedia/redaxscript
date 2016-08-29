@@ -76,14 +76,16 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
-		//unshit does not work here, you have to use array + self::$_collectionArray instead i guess ( simple concat )
 		if (is_array($attribute))
 		{
 			array_unshift(self::$_collectionArray, array_map('trim', $attribute));
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			array_unshift(self::$_collectionArray, [ trim($attribute) => trim($value) ] );
+			array_unshift(self::$_collectionArray,
+			[
+				trim($attribute) => trim($value)
+			]);
 		}
 		return $this;
 	}
