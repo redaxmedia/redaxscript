@@ -21,7 +21,7 @@ use Redaxscript\Html;
 class Meta extends HeadAbstract
 {
 	/**
-	 * generate html element
+	 * render the meta
 	 *
 	 * @since 3.0.0
 	 *
@@ -30,18 +30,26 @@ class Meta extends HeadAbstract
 
 	public function render()
 	{
-		$output = '';
+		$output = null;
 
 		/* html elements */
 
 		$metaElement = new Html\Element();
 		$metaElement->init('meta');
+		$collectionKeys = array_keys(self::$_collectionArray);
+		$lastKey = end($collectionKeys);
+
+		/* process collection */
 
 		foreach (self::$_collectionArray as $key => $value)
 		{
 			$output .= $metaElement
 				->copy()
 				->attr($value);
+			if ($key !== $lastKey)
+			{
+				$output .= PHP_EOL;
+			}
 		}
 		$this->clear();
 		return $output;

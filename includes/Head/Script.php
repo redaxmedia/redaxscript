@@ -29,24 +29,50 @@ class Script extends HeadAbstract
 
 	public function render()
 	{
-		$output = '';
+		$output = null;
 
 		/* html elements */
 
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script');
+		$collectionKeys = array_keys(self::$_collectionArray);
+		$lastKey = end($collectionKeys);
 
 		/* process collection */
-		//todo: add  . PHP_EOL after $value if needed
+
 		foreach (self::$_collectionArray as $key => $value)
 		{
 			$output .= $scriptElement
 				->copy()
 				->attr($value);
+			if ($key !== $lastKey)
+			{
+				$output .= PHP_EOL;
+			}
 		}
 		$this->clear();
 		return $output;
 	}
 
-	//todo: minify() toInline()
+	/**
+	 * minify the script
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function minify()
+	{
+		//this basicly sets a internal marker to influence the render method
+	}
+
+	/**
+	 * inline the script
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function inline()
+	{
+		//this basicly sets a internal marker to influence the render method
+	}
 }

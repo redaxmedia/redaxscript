@@ -1,0 +1,17 @@
+[
+	[
+		[
+			{
+				"src": "assets/scripts/one.js",
+				"async": "async"
+			},
+			{
+				"src": "assets/scripts/two.js"
+			}
+		],
+		{
+			"src": "assets/scripts/three.js"
+		},
+		"<script src=\"assets/scripts/three.js\"></script>\n<script src=\"assets\/scripts/one.js\"></script>\n<script src=\"assets/scripts/two.js\" async=\"async\"></script>"
+	]
+]

@@ -13,6 +13,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Balázs Szilágyi
  */
+
 class LinkTest extends TestCaseAbstract
 {
 	/**
@@ -23,39 +24,39 @@ class LinkTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerAppend()
 	{
-		return $this->getProvider('tests/provider/Head/link_render.json');
+		return $this->getProvider('tests/provider/Head/link_append.json');
 	}
 
 	/**
-	 * testRender
+	 * testAppend
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAppend
 	 *
 	 * @param array $array
-	 * @param string $expected
+	 * @param string $expect
 	 */
 
-	public function testAppendRender($array = [], $expected = null)
+	public function testAppend($array = [], $expect = null)
 	{
 		/* setup */
 
-		$scriptCore = Head\Link::getInstance();
+		$linkCore = Head\Link::getInstance();
 
 		foreach ($array as $key => $value)
 		{
-			$scriptCore->append($value);
+			$linkCore->append($value);
 		}
 
 		/* actual */
 
-		$actual = $scriptCore;
+		$actual = $linkCore->render();
 
 		/* compare */
 
-		$this->assertEquals($expected, strval($actual));
+		$this->assertEquals($expect, $actual);
 	}
 }

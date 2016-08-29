@@ -21,7 +21,7 @@ use Redaxscript\Html;
 class Link extends HeadAbstract
 {
 	/**
-	 * generate html element
+	 * render the link
 	 *
 	 * @since 3.0.0
 	 *
@@ -30,18 +30,26 @@ class Link extends HeadAbstract
 
 	public function render()
 	{
-		$output = '';
+		$output = null;
 
 		/* html elements */
 
 		$metaElement = new Html\Element();
 		$metaElement->init('link');
+		$collectionKeys = array_keys(self::$_collectionArray);
+		$lastKey = end($collectionKeys);
+
+		/* process collection */
 
 		foreach (self::$_collectionArray as $key => $value)
 		{
 			$output .= $metaElement
 				->copy()
 				->attr($value);
+			if ($key !== $lastKey)
+			{
+				$output .= PHP_EOL;
+			}
 		}
 		$this->clear();
 		return $output;

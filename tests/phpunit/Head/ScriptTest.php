@@ -17,37 +17,37 @@ use Redaxscript\Tests\TestCaseAbstract;
 class ScriptTest extends TestCaseAbstract
 {
 	/**
-	 * providerAppendRender
+	 * providerAppend
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerAppendRender()
+	public function providerAppend()
 	{
-		return $this->getProvider('tests/provider/Head/script_append_render.json');
+		return $this->getProvider('tests/provider/Head/script_append.json');
 	}
 
 	/**
-	 * providerPrependRender
+	 * providerPrepend
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerPrependRender()
+	public function providerPrepend()
 	{
-		return $this->getProvider('tests/provider/Head/script_prepend_render.json');
+		return $this->getProvider('tests/provider/Head/script_prepend.json');
 	}
 
 	/**
-	 * testRender
+	 * providerAppend
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerAppendRender
+	 * @dataProvider providerAppend
 	 *
 	 * @param array $array
 	 * @param string $single
@@ -82,18 +82,18 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testPrependRender
+	 * testPrepend
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerPrependRender
+	 * @dataProvider providerPrepend
 	 *
 	 * @param array $array
 	 * @param string $single
-	 * @param string $expected
+	 * @param string $expect
 	 */
 
-	public function testPrependRender($array = [], $single = null, $expected = null)
+	public function testPrependRender($array = [], $single = null, $expect = null)
 	{
 		/* setup */
 
@@ -113,10 +113,10 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $scriptCore;
+		$actual = $scriptCore->render();
 
 		/* compare */
 
-		$this->assertEquals($expected, strval($actual));
+		$this->assertEquals($expect, $actual);
 	}
 }
