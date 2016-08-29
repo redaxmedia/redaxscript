@@ -33,7 +33,6 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function __toString()
 	{
-		//todo: we should put the render method here, and by using get_called_class() pass the proper html tag as the parameter to it (script, meta, link,...)
 		return $this->render();
 	}
 
@@ -77,6 +76,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
+		//unshit does not work here, you have to use array + self::$_collectionArray instead i guess ( simple concat )
 		if (is_array($attribute))
 		{
 			array_unshift(self::$_collectionArray, array_map('trim', $attribute));
