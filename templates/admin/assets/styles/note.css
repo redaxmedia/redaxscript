@@ -1,145 +1,140 @@
 /**
  * @tableofcontents
  *
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
+ * 1. note
+ *    1.1 success
+ *    1.2 warning
+ *    1.3 error
+ *    1.4 info
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
+ * @todo: hover for button is missing
  */
 
-.rs-admin-form-default .rs-admin-box-note
-{
-	margin-top: 1em;
-}
+/* @section 1. note */
 
-.rs-admin-title-note + .rs-admin-box-note
+.rs-admin-title-note
 {
-	margin-top: 0.5em;
+	font-size: 2.5em;
+
+	& + .rs-admin-box-note
+	{
+		margin-top: 0.5em;
+	}
 }
 
 .rs-admin-box-note
 {
-	border-radius: 0.125em 0.125em;
+	border-radius: 0.125em;
+	font-size: 1.5em;
 	font-weight: bold;
-	padding: 0.5em 1em;
-	position: relative;
+	padding: 0.5em;
+
+	&:before
+	{
+		margin: 0 0.5em;
+	}
+
+	& a
+	{
+		text-decoration: underline;
+	}
+
+	& + .rs-admin-box-note,
+	& + .rs-admin-button-note
+	{
+		margin-top: 1em;
+	}
 }
 
-.rs-admin-box-note a
+.rs-admin-button-note
 {
-	color: inherit;
-	text-decoration: underline;
+	border-radius: 0.125em;
+	display: inline-block;
+	font: bold 1em var(--rs-admin-font-secondary);
+	line-height: 2.5em;
+	padding: 0 2em;
 }
 
-/* @section 1. success */
+/* @section 1.1 success */
 
 .rs-admin-is-success
 {
-	color: var(--rs-admin-color-success);
+	color: var(--rs-admin-color-success-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option
+	{
+		background: var(--rs-admin-color-success);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		content: '\2714';
+	}
 }
 
-.rs-admin-is-success.rs-admin-box-note,
-.rs-admin-is-success.rs-admin-field-note
-{
-	background: var(--rs-admin-color-success-light);
-	border-color: var(--rs-admin-color-success);
-}
-
-.rs-admin-is-success.rs-admin-box-note,
-.rs-admin-is-success.rs-admin-field-note,
-.rs-admin-is-success.rs-admin-field-select
-{
-	color: gray(255);
-}
-
-.rs-admin-is-success.rs-admin-field-note option
-{
-	background: var(--rs-admin-color-success-light);
-	color: gray(255);
-}
-
-/* @section 2. warning */
+/* @section 1.2 warning */
 
 .rs-admin-is-warning
 {
-	color: var(--rs-admin-color-warning);
+	color: var(--rs-admin-color-warning-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option
+	{
+		background: var(--rs-admin-color-warning);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		content: '\21';
+	}
 }
 
-.rs-admin-is-warning.rs-admin-box-note,
-.rs-admin-is-warning.rs-admin-field-note
-{
-	background: var(--rs-admin-color-warning-light);
-	border-color: var(--rs-admin-color-warning);
-}
-
-.rs-admin-is-warning.rs-admin-box-note,
-.rs-admin-is-warning.rs-admin-field-note,
-.rs-admin-is-warning.rs-admin-field-select
-{
-	color: gray(255);
-}
-
-.rs-admin-is-warning.rs-admin-field-note option
-{
-	background: var(--rs-admin-color-warning-light);
-	color: gray(255);
-}
-
-/* @section 3. error */
+/* @section 1.3 error */
 
 .rs-admin-is-error
 {
-	color: var(--rs-admin-color-error);
+	color: var(--rs-admin-color-error-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option
+	{
+		background: var(--rs-admin-color-error);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		content: '\d7';
+	}
 }
 
-.rs-admin-is-error.rs-admin-box-note,
-.rs-admin-is-error.rs-admin-field-note
-{
-	background: var(--rs-admin-color-error-light);
-	border-color: var(--rs-admin-color-error);
-}
-
-.rs-admin-is-error.rs-admin-box-note,
-.rs-admin-is-error.rs-admin-field-note,
-.rs-admin-is-error.rs-admin-field-select
-{
-	color: gray(255);
-}
-
-.rs-admin-is-error.rs-admin-field-note option
-{
-	background: var(--rs-admin-color-error-light);
-	color: gray(255);
-}
-
-/* @section 4. info */
+/* @section 1.4 info */
 
 .rs-admin-is-info
 {
-	color: var(--rs-admin-color-primary);
-}
+	color: var(--rs-admin-color-info-dark);
 
-.rs-admin-is-info.rs-admin-box-note,
-.rs-admin-is-info.rs-admin-field-note
-{
-	background: var(--rs-admin-color-primary-light);
-	border-color: var(--rs-admin-color-primary);
-}
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option
+	{
+		background: var(--rs-admin-color-info);
+	}
 
-.rs-admin-is-info.rs-admin-box-note,
-.rs-admin-is-info.rs-admin-field-note,
-.rs-admin-is-info.rs-admin-field-select
-{
-	color: gray(255);
-}
-
-.rs-admin-is-info.rs-admin-field-note option
-{
-	background: var(--rs-admin-color-primary-light);
-	color: gray(255);
+	&.rs-admin-box-note:before
+	{
+		content: '\69';
+	}
 }

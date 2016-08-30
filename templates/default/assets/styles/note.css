@@ -11,6 +11,7 @@
  *
  * @package Redaxscript
  * @author Henry Ruhs
+ * @todo: hover for button is missing
  */
 
 /* @section 1. note */
@@ -27,17 +28,14 @@
 
 .rs-box-note
 {
-	border-radius: 0.125em 0.125em;
+	border-radius: 0.125em;
 	font-size: 1.5em;
 	font-weight: bold;
-	padding: 0.5em 0.5em 0.5em 3em;
-	position: relative;
+	padding: 0.5em;
 
 	&:before
 	{
-		left: 0.5em;
-		position: absolute;
-		top: 0.25em;
+		margin: 0 0.5em;
 	}
 
 	& a
@@ -59,7 +57,8 @@
 	display: inline-block;
 	font-size: 1.25em;
 	font-weight: bold;
-	padding: 0.375em 2em;
+	line-height: 2.25em;
+	padding: 0 2em;
 	transition: transform 0.1s, box-shadow 0.1s;
 
 	&:active

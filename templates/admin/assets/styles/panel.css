@@ -298,11 +298,6 @@
 	width: 1.5em;
 }
 
-.rs-admin-has-info .rs-admin-text-notification-counter
-{
-	background: var(--rs-admin-color-primary);
-}
-
 .rs-admin-has-success .rs-admin-text-notification-counter
 {
 	background: var(--rs-admin-color-success);
@@ -316,6 +311,11 @@
 .rs-admin-has-error .rs-admin-text-notification-counter
 {
 	background: var(--rs-admin-color-error);
+}
+
+.rs-admin-has-info .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-info);
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a,
@@ -354,7 +354,7 @@
 	&.rs-admin-is-info:before
 	{
 		@extend %rs-admin-icon-info;
-		color: var(--rs-admin-color-primary);
+		color: var(--rs-admin-color-info);
 	}
 }
 

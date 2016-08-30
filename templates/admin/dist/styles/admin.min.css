@@ -465,12 +465,12 @@
 
 .rs-admin-button-create
 {
-	background: linear-gradient(rgb(116, 174, 45), #4c8c00);
+	background: linear-gradient(rgb(119, 176, 30), #77b01e);
 }
 
 .rs-admin-button-delete, :root .rs-admin-button-delete
 {
-	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19);
 	color: rgb(255, 255, 255);
 }
 
@@ -483,19 +483,19 @@
 
 .rs-admin-button-create:hover
 {
-	background: #4c8c00;
+	background: #77b01e;
 }
 
 .rs-admin-button-delete:hover, :root .rs-admin-button-delete:hover
 {
-	background: #a20000;
+	background: #c81e19;
 }
 
 /* @section 1.2 active effect */
 
 .rs-admin-button-default:active
 {
-	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
 	color: rgb(255, 255, 255);
 }
 
@@ -606,7 +606,7 @@
 
 .rs-admin-list-control a:hover
 {
-	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
 	color: rgb(255, 255, 255);
 }
 
@@ -619,7 +619,7 @@
 
 .rs-admin-item-delete a:hover, .rs-admin-item-uninstall a:hover
 {
-	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19);
 	color: rgb(255, 255, 255);
 }
 
@@ -768,7 +768,7 @@
 
 .rs-admin-link-dock:hover
 {
-	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
 	color: rgb(0, 0, 0);
 }
 
@@ -776,7 +776,7 @@
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19);
 }
 
 /* @section 1.1 icons */
@@ -985,7 +985,7 @@
 
 .rs-admin-item-panel.rs-admin-item-logout a:hover
 {
-	background: linear-gradient(rgb(199, 41, 41), #a20000);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19);
 }
 
 /* @section 2.1 link panel */
@@ -1063,7 +1063,7 @@
 
 .rs-admin-list-panel a:hover, .rs-admin-list-panel span:hover, .rs-admin-list-panel span:hover a
 {
-	background: linear-gradient(rgb(44, 179, 252), #0090db);
+	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
 	color: rgb(0, 0, 0);
 }
 
@@ -1185,24 +1185,24 @@
 	width: 1.5em;
 }
 
-.rs-admin-has-info .rs-admin-text-notification-counter
-{
-	background: #0090db;
-}
-
 .rs-admin-has-success .rs-admin-text-notification-counter
 {
-	background: #4c8c00;
+	background: #77b01e;
 }
 
 .rs-admin-has-warning .rs-admin-text-notification-counter
 {
-	background: #e08400;
+	background: #ffa52d;
 }
 
 .rs-admin-has-error .rs-admin-text-notification-counter
 {
-	background: #a20000;
+	background: #c81e19;
+}
+
+.rs-admin-has-info .rs-admin-text-notification-counter
+{
+	background: #2db4fa;
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a, .rs-admin-item-panel .rs-admin-list-panel-children-notification span
@@ -1222,22 +1222,22 @@
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
-	color: #4c8c00
+	color: #77b01e
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
 {
-	color: #e08400
+	color: #ffa52d
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
-	color: #a20000
+	color: #c81e19
 }
 
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
-	color: #0090db
+	color: #2db4fa
 }
 
 @media (min-width: 50em) and (max-width: 79.999em)
@@ -1472,7 +1472,7 @@
 
 .rs-admin-table-default .rs-admin-button-moveup:hover, .rs-admin-table-default .rs-admin-button-movedown:hover
 {
-	color: #0090db
+	color: #2db4fa
 }
 
 .rs-admin-table-default .rs-admin-button-moveup:before, .rs-admin-table-default .rs-admin-button-movedown:before
@@ -1520,133 +1520,127 @@
 /**
  * @tableofcontents
  *
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
+ * 1. note
+ *    1.1 success
+ *    1.2 warning
+ *    1.3 error
+ *    1.4 info
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
+ * @todo: hover for button is missing
  */
 
-.rs-admin-form-default .rs-admin-box-note
+/* @section 1. note */
+
+.rs-admin-title-note
 {
-	margin-top: 1em;
+	font-size: 2.5em
 }
 
 .rs-admin-title-note + .rs-admin-box-note
 {
-	margin-top: 0.5em;
+	margin-top: 0.5em
 }
 
 .rs-admin-box-note
 {
-	border-radius: 0.125em 0.125em;
+	border-radius: 0.125em;
+	font-size: 1.5em;
 	font-weight: bold;
-	padding: 0.5em 1em;
-	position: relative;
+	padding: 0.5em
+}
+
+.rs-admin-box-note:before
+{
+	margin: 0 0.5em
 }
 
 .rs-admin-box-note a
 {
-	color: inherit;
-	text-decoration: underline;
+	text-decoration: underline
 }
 
-/* @section 1. success */
+.rs-admin-box-note + .rs-admin-box-note, .rs-admin-box-note + .rs-admin-button-note
+{
+	margin-top: 1em
+}
+
+.rs-admin-button-note
+{
+	border-radius: 0.125em;
+	display: inline-block;
+	font: bold 1em arial, sans-serif;
+	line-height: 2.5em;
+	padding: 0 2em;
+}
+
+/* @section 1.1 success */
 
 .rs-admin-is-success
 {
-	color: #4c8c00;
+	color: rgb(65, 103, 4)
 }
 
-.rs-admin-is-success.rs-admin-box-note, .rs-admin-is-success.rs-admin-field-note
+.rs-admin-is-success.rs-admin-box-note, .rs-admin-is-success.rs-admin-button-note, .rs-admin-is-success.rs-admin-field-note, .rs-admin-is-success.rs-admin-field-note option
 {
-	background: rgb(116, 174, 45);
-	border-color: #4c8c00;
+	background: #77b01e
 }
 
-.rs-admin-is-success.rs-admin-box-note, .rs-admin-is-success.rs-admin-field-note, .rs-admin-is-success.rs-admin-field-select
+.rs-admin-is-success.rs-admin-box-note:before
 {
-	color: rgb(255, 255, 255);
+	content: '\2714'
 }
 
-.rs-admin-is-success.rs-admin-field-note option
-{
-	background: rgb(116, 174, 45);
-	color: rgb(255, 255, 255);
-}
-
-/* @section 2. warning */
+/* @section 1.2 warning */
 
 .rs-admin-is-warning
 {
-	color: #e08400;
+	color: rgb(139, 83, 9)
 }
 
-.rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-field-note
+.rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-button-note, .rs-admin-is-warning.rs-admin-field-note, .rs-admin-is-warning.rs-admin-field-note option
 {
-	background: rgb(255, 168, 46);
-	border-color: #e08400;
+	background: #ffa52d
 }
 
-.rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-field-note, .rs-admin-is-warning.rs-admin-field-select
+.rs-admin-is-warning.rs-admin-box-note:before
 {
-	color: rgb(255, 255, 255);
+	content: '\21'
 }
 
-.rs-admin-is-warning.rs-admin-field-note option
-{
-	background: rgb(255, 168, 46);
-	color: rgb(255, 255, 255);
-}
-
-/* @section 3. error */
+/* @section 1.3 error */
 
 .rs-admin-is-error
 {
-	color: #a20000;
+	color: rgb(112, 4, 0)
 }
 
-.rs-admin-is-error.rs-admin-box-note, .rs-admin-is-error.rs-admin-field-note
+.rs-admin-is-error.rs-admin-box-note, .rs-admin-is-error.rs-admin-button-note, .rs-admin-is-error.rs-admin-field-note, .rs-admin-is-error.rs-admin-field-note option
 {
-	background: rgb(199, 41, 41);
-	border-color: #a20000;
+	background: #c81e19
 }
 
-.rs-admin-is-error.rs-admin-box-note, .rs-admin-is-error.rs-admin-field-note, .rs-admin-is-error.rs-admin-field-select
+.rs-admin-is-error.rs-admin-box-note:before
 {
-	color: rgb(255, 255, 255);
+	content: '\d7'
 }
 
-.rs-admin-is-error.rs-admin-field-note option
-{
-	background: rgb(199, 41, 41);
-	color: rgb(255, 255, 255);
-}
-
-/* @section 4. info */
+/* @section 1.4 info */
 
 .rs-admin-is-info
 {
-	color: #0090db;
+	color: rgb(9, 96, 139)
 }
 
-.rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-field-note
+.rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-button-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-note option
 {
-	background: rgb(44, 179, 252);
-	border-color: #0090db;
+	background: #2db4fa
 }
 
-.rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-select
+.rs-admin-is-info.rs-admin-box-note:before
 {
-	color: rgb(255, 255, 255);
-}
-
-.rs-admin-is-info.rs-admin-field-note option
-{
-	background: rgb(44, 179, 252);
-	color: rgb(255, 255, 255);
+	content: '\69'
 }
