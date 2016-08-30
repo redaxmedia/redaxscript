@@ -1,11 +1,11 @@
 /**
  * @tableofcontents
  *
- * 1. success
- * 2. warning
- * 3. error
- * 4. info
- * 5. dimensions
+ * 1. note
+ *    1.1 success
+ *    1.2 warning
+ *    1.3 error
+ *    1.4 info
  *
  * @since 3.0.0
  *
@@ -13,11 +13,7 @@
  * @author Henry Ruhs
  */
 
-.rs-box-note + .rs-box-note,
-.rs-box-note + .rs-title-note
-{
-	margin-top: 1em;
-}
+/* @section 1. note */
 
 .rs-box-note
 {
@@ -25,123 +21,98 @@
 	font-weight: bold;
 	padding: 0.5em 0.5em 0.5em 3em;
 	position: relative;
+
+	&:before
+	{
+		left: 0.5em;
+		position: absolute;
+		top: 0.25em;
+	}
+
+	& a
+	{
+		text-decoration: underline;
+	}
+
+	& + .rs-box-note,
+	& + .rs-title-note
+	{
+		margin-top: 1em;
+	}
 }
 
-.rs-box-note:before
-{
-	font: 1.5em/1.25em var(--rs-font-icon);
-	left: 0.5em;
-	position: absolute;
-	top: 0.25em;
-}
-
-.rs-box-note a
-{
-	color: inherit;
-	text-decoration: underline;
-}
-
-/* @section 1. success */
+/* @section 1.1 success */
 
 .rs-is-success
 {
 	color: var(--rs-color-success-dark);
+
+	&.rs-box-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-success);
+	}
+
+	&.rs-box-note:before
+	{
+		content: '\2714';
+	}
 }
 
-.rs-is-success.rs-box-note,
-.rs-is-success.rs-field-note
-{
-	background: var(--rs-color-success);
-	border-color: var(--rs-color-success-dark);
-}
-
-.rs-is-success.rs-field-note option
-{
-	background: var(--rs-color-success);
-}
-
-.rs-is-success.rs-box-note:before
-{
-	content: '\2714';
-}
-
-/* @section 2. warning */
+/* @section 1.2 warning */
 
 .rs-is-warning
 {
 	color: var(--rs-color-warning-dark);
+
+	&.rs-box-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-warning);
+	}
+
+	&.rs-box-note:before
+	{
+		content: '\21';
+	}
 }
 
-.rs-is-warning.rs-box-note,
-.rs-is-warning.rs-field-note
-{
-	background: var(--rs-color-warning);
-	border-color: var(--rs-color-warning-dark);
-}
-
-.rs-is-warning.rs-field-note option
-{
-	background: var(--rs-color-warning);
-}
-
-.rs-is-warning.rs-box-note:before
-{
-	content: '\21';
-	left: 0.875em;
-}
-
-/* @section 3. error */
+/* @section 1.3 error */
 
 .rs-is-error
 {
 	color: var(--rs-color-error-dark);
+
+	&.rs-box-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-error);
+	}
+
+	&.rs-box-note:before
+	{
+		content: '\d7';
+	}
 }
 
-.rs-is-error.rs-box-note,
-.rs-is-error.rs-field-note
-{
-	background: var(--rs-color-error);
-	border-color: var(--rs-color-error-dark);
-}
-
-.rs-is-error.rs-field-note option
-{
-	background: var(--rs-color-error);
-}
-
-.rs-is-error.rs-box-note:before
-{
-	content: '\d7';
-}
-
-/* @section 4. info */
+/* @section 1.4 info */
 
 .rs-is-info
 {
 	color: var(--rs-color-info-dark);
-}
 
-.rs-is-info.rs-box-note,
-.rs-is-info.rs-field-note
-{
-	background: var(--rs-color-info);
-	border-color: var(--rs-color-info-dark);
-}
+	&.rs-box-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-info);
+	}
 
-.rs-is-info.rs-field-note option
-{
-	background: var(--rs-color-info);
-}
-
-.rs-is-info.rs-box-note:before
-{
-	content: '\69';
-	left: 0.875em;
-}
-
-/* @section 5. dimensions */
-
-.rs-title-note + .rs-box-note
-{
-	margin-top: 1em;
+	&.rs-box-note:before
+	{
+		content: '\69';
+	}
 }

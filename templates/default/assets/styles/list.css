@@ -13,13 +13,13 @@
 
 .rs-list-default
 {
-	&ol li
+	&.ol li
 	{
 		list-style: inherit;
 		list-style-position: inside;
 	}
 
-	&ul li:before
+	&.ul li:before
 	{
 		color: var(--rs-color-primary);
 		content: '>';
