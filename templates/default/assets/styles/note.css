@@ -15,9 +15,20 @@
 
 /* @section 1. note */
 
+.rs-title-note
+{
+	font-size: 2.5em;
+
+	& + .rs-box-note
+	{
+		margin-top: 0.5em;
+	}
+}
+
 .rs-box-note
 {
 	border-radius: 0.125em 0.125em;
+	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.5em 0.5em 0.5em 3em;
 	position: relative;
@@ -35,9 +46,26 @@
 	}
 
 	& + .rs-box-note,
-	& + .rs-title-note
+	& + .rs-button-note
 	{
 		margin-top: 1em;
+	}
+}
+
+.rs-button-note
+{
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
+	display: inline-block;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding: 0.375em 2em;
+	transition: transform 0.1s, box-shadow 0.1s;
+
+	&:active
+	{
+		box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
+		transform: translateY(2px);
 	}
 }
 
@@ -48,6 +76,7 @@
 	color: var(--rs-color-success-dark);
 
 	&.rs-box-note,
+	&.rs-button-note,
 	&.rs-field-note,
 	&.rs-field-note option
 	{
@@ -67,6 +96,7 @@
 	color: var(--rs-color-warning-dark);
 
 	&.rs-box-note,
+	&.rs-button-note,
 	&.rs-field-note,
 	&.rs-field-note option
 	{
@@ -86,6 +116,7 @@
 	color: var(--rs-color-error-dark);
 
 	&.rs-box-note,
+	&.rs-button-note,
 	&.rs-field-note,
 	&.rs-field-note option
 	{
@@ -105,6 +136,7 @@
 	color: var(--rs-color-info-dark);
 
 	&.rs-box-note,
+	&.rs-button-note,
 	&.rs-field-note,
 	&.rs-field-note option
 	{

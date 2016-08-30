@@ -1317,13 +1317,13 @@ a
 {
 }
 
-.rs-list-defaultol li
+.rs-list-default.ol li
 {
 	list-style: inherit;
 	list-style-position: inside
 }
 
-.rs-list-defaultul li:before
+.rs-list-default.ul li:before
 {
 	color: #3873b5;
 	content: '>';
@@ -1908,9 +1908,31 @@ a
 		background-image: url('//cdn.redaxscript.com/unsplash/817/5000x2000.jpg');
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. note
+ *    1.1 success
+ *    1.2 warning
+ *    1.3 error
+ *    1.4 info
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note */
+
 .rs-title-note
 {
-	font-size: 2.5em;
+	font-size: 2.5em
+}
+
+.rs-title-note + .rs-box-note
+{
+	margin-top: 0.5em
 }
 
 .rs-box-note
@@ -1919,21 +1941,24 @@ a
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.5em 0.5em 0.5em 3em;
-	position: relative;
-}
-
-.rs-box-note a
-{
-	color: inherit;
-	text-decoration: underline;
+	position: relative
 }
 
 .rs-box-note:before
 {
-	font: 1.5em/1.25em 'icon default';
 	left: 0.5em;
 	position: absolute;
-	top: 0.25em;
+	top: 0.25em
+}
+
+.rs-box-note a
+{
+	text-decoration: underline
+}
+
+.rs-box-note + .rs-box-note, .rs-box-note + .rs-button-note
+{
+	margin-top: 1em
 }
 
 .rs-button-note
@@ -1944,117 +1969,79 @@ a
 	font-size: 1.25em;
 	font-weight: bold;
 	padding: 0.375em 2em;
-	transition: transform 0.1s, box-shadow 0.1s;
+	transition: transform 0.1s, box-shadow 0.1s
 }
 
 .rs-button-note:active
 {
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
-	transform: translateY(2px);
+	transform: translateY(2px)
 }
 
-/* @section 1. success */
+/* @section 1.1 success */
 
 .rs-is-success
 {
-	color: rgb(40, 119, 40);
+	color: rgb(40, 119, 40)
 }
 
-.rs-is-success.rs-box-note, .rs-is-success.rs-field-note
+.rs-is-success.rs-box-note, .rs-is-success.rs-button-note, .rs-is-success.rs-field-note, .rs-is-success.rs-field-note option
 {
-	background: #5bb75b;
-	border-color: rgb(40, 119, 40);
-}
-
-.rs-is-success.rs-button-note, .rs-is-success.rs-field-note option
-{
-	background: #5bb75b;
+	background: #5bb75b
 }
 
 .rs-is-success.rs-box-note:before
 {
-	content: '\2714';
+	content: '\2714'
 }
 
-/* @section 2. warning */
+/* @section 1.2 warning */
 
 .rs-is-warning
 {
-	color: rgb(117, 68, 0);
+	color: rgb(117, 68, 0)
 }
 
-.rs-is-warning.rs-box-note, .rs-is-warning.rs-field-note
+.rs-is-warning.rs-box-note, .rs-is-warning.rs-button-note, .rs-is-warning.rs-field-note, .rs-is-warning.rs-field-note option
 {
-	background: #f3940e;
-	border-color: rgb(117, 68, 0);
-}
-
-.rs-is-warning.rs-button-note, .rs-is-warning.rs-field-note option
-{
-	background: #f3940e;
+	background: #f3940e
 }
 
 .rs-is-warning.rs-box-note:before
 {
-	content: '\21';
-	left: 0.875em;
+	content: '\21'
 }
 
-/* @section 3. error */
+/* @section 1.3 error */
 
 .rs-is-error
 {
-	color: rgb(116, 39, 37);
+	color: rgb(116, 39, 37)
 }
 
-.rs-is-error.rs-box-note, .rs-is-error.rs-field-note
+.rs-is-error.rs-box-note, .rs-is-error.rs-button-note, .rs-is-error.rs-field-note, .rs-is-error.rs-field-note option
 {
-	background: #da4f49;
-	border-color: rgb(116, 39, 37);
-}
-
-.rs-is-error.rs-button-note, .rs-is-error.rs-field-note option
-{
-	background: #da4f49;
+	background: #da4f49
 }
 
 .rs-is-error.rs-box-note:before
 {
-	content: '\d7';
+	content: '\d7'
 }
 
-/* @section 4. info */
+/* @section 1.4 info */
 
 .rs-is-info
 {
-	color: rgb(37, 98, 116);
+	color: rgb(37, 98, 116)
 }
 
-.rs-is-info.rs-box-note, .rs-is-info.rs-field-note
+.rs-is-info.rs-box-note, .rs-is-info.rs-button-note, .rs-is-info.rs-field-note, .rs-is-info.rs-field-note option
 {
-	background: #49afcd;
-	border-color: rgb(37, 98, 116);
-}
-
-.rs-is-info.rs-button-note, .rs-is-info.rs-field-note option
-{
-	background: #49afcd;
+	background: #49afcd
 }
 
 .rs-is-info.rs-box-note:before
 {
-	content: '\69';
-	left: 0.875em;
-}
-
-/* @section 5. space between */
-
-.rs-title-note + .rs-box-note, .rs-box-note + .rs-box-note
-{
-	margin-top: 0.5em;
-}
-
-.rs-box-note + .rs-button-note
-{
-	margin-top: 1em;
+	content: '\69'
 }
