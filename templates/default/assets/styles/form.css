@@ -1,15 +1,3 @@
-/**
- * @tableofcontents
- *
- * 1. form default
- * 2. form search
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. form default */
 
 .rs-form-default
@@ -36,13 +24,4 @@
 	{
 		content: ':\00a0' attr(data-message);
 	}
-}
-
-/* @section 2. form search */
-
-.rs-form-search
-{
-	background: gray(255);
-	border-radius: 0.125em;
-	font-size: 1.25em;
 }

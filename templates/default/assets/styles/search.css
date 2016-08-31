@@ -1,0 +1,54 @@
+/* @section 1. search */
+
+/* @section 1.1 form */
+
+.rs-form-search
+{
+	background: gray(255);
+	border-radius: 0.125em;
+	font-size: 1.25em;
+	overflow: hidden;
+
+	/* @section 1.2 field */
+
+	& .rs-field-search
+	{
+		box-sizing: border-box;
+		display: inline-block;
+		font: 1em/2em var(--rs-font-primary);
+		padding: 0 0.5em;
+		vertical-align: middle;
+		width: 80%;
+	}
+
+	/* @section 1.3 button */
+
+	& .rs-button-search
+	{
+		background: transparent;
+		color: var(--rs-color-tertiary);
+		cursor: pointer;
+		display: inline-block;
+		font-size: 1em;
+		line-height: 2em;
+		position: relative;
+		text-indent: -999em;
+		transition: color 0.2s;
+		vertical-align: middle;
+		width: 20%;
+
+		&:hover
+		{
+			color: gray(0);
+		}
+
+		&:after
+		{
+			@extend %rs-icon-search;
+			left: 0;
+			position: absolute;
+			right: 0;
+			text-indent: 0;
+		}
+	}
+}

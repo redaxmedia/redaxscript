@@ -50,37 +50,6 @@ a.rs-button-default
 	transform: translateY(2px);
 }
 
-/* @section 2. button search */
-
-.rs-button-search
-{
-	background: transparent;
-	color: var(--rs-color-tertiary);
-	cursor: pointer;
-	display: inline-block;
-	font-size: 1em;
-	height: 2em;
-	position: relative;
-	text-indent: -999em;
-	transition: color 0.2s;
-	vertical-align: middle;
-	width: 20%;
-}
-
-.rs-button-search:hover
-{
-	color: gray(0);
-}
-
-.rs-button-search:after
-{
-	@extend %rs-icon-search;
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-indent: 0;
-}
-
 /* @section 3. button large and full */
 
 .rs-button-large

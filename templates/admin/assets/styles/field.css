@@ -1,67 +1,59 @@
-/**
- * @tableofcontents
- *
- * 1. several fields
- *    1.1 hover effect
- *    1.2 focus effect
- * 2. textarea
- * 3. disabled and readonly
- *    4.2 small max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. several fields */
-
-.rs-admin-field-default,
-.rs-admin-field-select,
-.rs-admin-field-textarea.rs-admin-field-small
-{
-	width: 50%;
-}
+/* @section 1. field */
 
 .rs-admin-field-default,
 .rs-admin-field-select,
 .rs-admin-field-textarea
 {
 	background: gray(240);
-	border: 1px solid gray(200);
+	border: 2px solid gray(210);
 	border-radius: 0.125em;
+	box-sizing: border-box;
 	color: gray(106);
-	font: 1rem var(--rs-admin-font-secondary);
-	padding: 0.5em;
+	display: block;
+	font: 0.875em/2em var(--rs-admin-font-secondary);
+	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
+	width: 100%;
+
+	&:hover
+	{
+		border-color: gray(173);
+	}
+
+	&:focus
+	{
+		background: gray(255);
+		border-color: gray(171);
+	}
+
+	&[disabled],
+	&[readonly]
+	{
+		opacity: 0.5;
+		pointer-events: none;
+	}
 }
 
-/* @section 1.1 hover effect */
-
-.rs-admin-field-default:hover,
-.rs-admin-field-select:hover,
-.rs-admin-field-textarea:hover
+.rs-admin-field-select
 {
-	border-color: gray(173);
-}
+	height: 2.25em;
 
-/* @section 1.2 focus effect */
-
-.rs-admin-field-default:focus,
-.rs-admin-field-select:focus,
-.rs-admin-field-textarea:focus
-{
-	background: gray(255);
-	border-color: gray(171);
+	&[multiple]
+	{
+		height: 3.5em;
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+	}
 }
 
 /* @section 2. textarea */
 
 .rs-admin-field-textarea
 {
-	min-height: 20em;
+	min-height: 10em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	resize: vertical;
-	width: 100%;
 }
 
 .rs-admin-field-textarea.rs-admin-field-small
@@ -69,29 +61,16 @@
 	min-height: 5em;
 }
 
-/* @section 3. disabled and readonly */
+/* @section 3. query */
 
-.rs-admin-field-default[disabled],
-.rs-admin-field-default[readonly],
-.rs-admin-field-select[disabled],
-.rs-admin-field-select[readonly],
-.rs-admin-field-textarea[disabled],
-.rs-admin-field-textarea[readonly]
+/* @section 3.1 medium-min */
+
+@media (--media-medium-min)
 {
-	background: gray(212);
-	border-color: gray(200);
-	color: gray(164);
-}
-
-/* @section 4.2 small max */
-
-@media (--media-medium-max)
-{
-	.rs-admin-button-default,
 	.rs-admin-field-default,
 	.rs-admin-field-select,
 	.rs-admin-field-textarea.rs-admin-field-small
 	{
-		width: 100%;
+		width: 50%;
 	}
 }

@@ -1,88 +1,50 @@
-/**
- * @tableofcontents
- *
- * 1. several form elements
- * 2. several fields
- * 3. textarea
- * 4. disabled and readonly
- * 5. query
- *    5.1 small max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. several form elements */
+/* @section 1. field */
 
 .rs-field-default,
-.rs-field-select,
-.rs-field-textarea.rs-field-small
-{
-	width: 50%;
-}
-
-.rs-field-default,
-.rs-field-search,
 .rs-field-select,
 .rs-field-textarea
 {
+	background: gray(255);
+	border: 2px solid gray(200);
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	display: block;
-	font: 1em/1.25em var(--rs-font-primary);
-	padding-bottom: 0.375em;
-	padding-top: 0.375em;
-}
-
-/* @section 2. several fields */
-
-.rs-field-default,
-.rs-field-select,
-.rs-field-search
-{
-	height: 2em;
+	font: 1em/2em var(--rs-font-primary);
 	padding: 0 0.5em;
-}
-
-.rs-field-default,
-.rs-field-select,
-.rs-field-textarea
-{
-	border: 2px solid gray(200);
 	transition: background 0.2s, border 0.2s;
+	width: 100%;
+
+	&:hover
+	{
+		border-color: gray(170);
+	}
+
+	&:focus
+	{
+		border-color: var(--rs-color-primary);
+	}
+
+	&[disabled],
+	&[readonly]
+	{
+		opacity: 0.5;
+		pointer-events: none;
+	}
 }
 
-.rs-field-default:hover,
-.rs-field-select:hover,
-.rs-field-textarea:hover
+.rs-field-select
 {
-	border-color: gray(170);
+	height: 2.25em;
 }
 
-.rs-field-default:not(.rs-field-note):focus,
-.rs-field-select:not(.rs-field-note):focus,
-.rs-field-textarea:not(.rs-field-note):focus
-{
-	border-color: var(--rs-color-primary);
-}
-
-.rs-field-search
-{
-	display: inline-block;
-	vertical-align: middle;
-	width: 80%;
-}
-
-/* @section 3. textarea */
+/* @section 2. textarea */
 
 .rs-field-textarea
 {
 	min-height: 10em;
-	padding: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	resize: vertical;
-	width: 100%;
 }
 
 .rs-field-textarea.rs-field-small
@@ -90,30 +52,16 @@
 	min-height: 5em;
 }
 
-/* @section 4. disabled and readonly */
+/* @section 3. query */
 
-.rs-field-default[disabled],
-.rs-field-default[readonly],
-.rs-field-select[disabled],
-.rs-field-select[readonly],
-.rs-field-textarea[disabled],
-.rs-field-textarea[readonly]
+/* @section 3.1 medium-min */
+
+@media (--media-medium-min)
 {
-	opacity: 0.5;
-	pointer-events: none;
-}
-
-/* @section 5. query */
-
-/* @section 5.1 small max */
-
-@media (--media-medium-max)
-{
-	.rs-button-default,
 	.rs-field-default,
 	.rs-field-select,
 	.rs-field-textarea.rs-field-small
 	{
-		width: 100%;
+		width: 50%;
 	}
 }

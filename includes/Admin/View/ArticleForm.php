@@ -144,6 +144,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
+				'rows' => 1,
 				'value' => $article->description
 			])
 			->append('</li><li>')
@@ -156,6 +157,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
+				'rows' => 1,
 				'value' => $article->keywords
 			])
 			->append('</li><li>')

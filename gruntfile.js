@@ -326,6 +326,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/navigation.css',
 					'templates/default/assets/styles/pagination.css',
 					'templates/default/assets/styles/result.css',
+					'templates/default/assets/styles/search.css',
 					'templates/default/assets/styles/sidebar.css',
 					'templates/default/assets/styles/tab.css',
 					'templates/default/assets/styles/table.css',

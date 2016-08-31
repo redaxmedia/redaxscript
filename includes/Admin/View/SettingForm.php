@@ -142,6 +142,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
+				'rows' => 1,
 				'value' => Db::getSetting('description')
 			])
 			->append('</li><li>')
@@ -154,6 +155,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
+				'rows' => 1,
 				'value' => Db::getSetting('keywords')
 			])
 			->append('</li><li>')
