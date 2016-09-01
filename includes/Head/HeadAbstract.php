@@ -18,7 +18,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	/**
 	 * collection of the head
 	 *
-	 * @var string
+	 * @var array
 	 */
 
 	protected static $_collectionArray = [];

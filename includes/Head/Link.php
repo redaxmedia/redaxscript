@@ -13,14 +13,44 @@ use Redaxscript\Html;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  *
- * @method append
- * @method prepend
+ * @method append($attribute = null, $value = null)
+ * @method prepend($attribute = null, $value = null)
  * @method clear
  */
 
 class Link extends HeadAbstract
 {
-	/*@todo: 6. add the appendFile($reference = null) and prependFile($reference = null) shortcuts to this class default value is href => $reference
+	/**
+	 * append file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $reference
+	 *
+	 * @return Link
+	 */
+
+	public function appendFile($reference = null)
+	{
+		$this->append('href', $reference);
+		return $this;
+	}
+
+	/**
+	 * prepend file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $reference
+	 *
+	 * @return Link
+	 */
+
+	public function prependFile($reference = null)
+	{
+		$this->prepend('href', $reference);
+		return $this;
+	}
 
 	/**
 	 * render the link
@@ -32,7 +62,7 @@ class Link extends HeadAbstract
 
 	public function render()
 	{
-		$output = null;
+		$output = '';
 
 		/* html elements */
 

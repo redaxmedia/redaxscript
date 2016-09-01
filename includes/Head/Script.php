@@ -12,13 +12,19 @@ use Redaxscript\Html;
  * @category Head
  * @author Henry Ruhs
  *
- * @method append
- * @method prepend
+ * @method append($attribute = null, $value = null)
+ * @method prepend($attribute = null, $value = null)
  */
 
 class Script extends HeadAbstract
 {
-	//@todo 1. protected static $_inline = null; or protected $_inline = null; depends if static is needed!?
+	/**
+	 * store inline scripts
+	 *
+	 * @var string
+	 */
+
+	protected $_inline = null;
 
 	/**
 	 * append script file
@@ -32,11 +38,25 @@ class Script extends HeadAbstract
 
 	public function appendFile($source = null)
 	{
-		//@todo: 2. this will do $this->append('src', $source); - finally it is just an optional shortcut
+		$this->append('src', $source);
 		return $this;
 	}
 
-	//@todo 2.1 we need prependFile() too
+	/**
+	 * prepend script file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $source
+	 *
+	 * @return Script
+	 */
+
+	public function prependFile($source = null)
+	{
+		$this->prepend('src', $source);
+		return $this;
+	}
 
 	/**
 	 * append inline script
@@ -50,11 +70,25 @@ class Script extends HeadAbstract
 
 	public function appendInline($inline = null)
 	{
-		//@todo: 3. this will do $this->_inline .= $inline; (maybe self::$_inline)
+		$this->_inline .= $inline;
 		return $this;
 	}
 
-	//@todo 3.1 we need prependFile() too
+	/**
+	 * prepend inline script
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $inline
+	 *
+	 * @return Script
+	 */
+
+	public function prependInline($inline = null)
+	{
+		$this->_inline = $inline . $this->_inline;
+		return $this;
+	}
 
 	/**
 	 * clear the script
@@ -67,7 +101,7 @@ class Script extends HeadAbstract
 	public function clear()
 	{
 		parent::clear();
-		//@todo: 4. we use parent::clear() and also need to clear the $inline property
+		$this->_inline = null;
 		return $this;
 	}
 
@@ -97,12 +131,19 @@ class Script extends HeadAbstract
 			$output .= $scriptElement
 				->copy()
 				->attr($value);
-			if ($key !== $lastKey)
+			if ($key !== $lastKey || $this->_inline)
 			{
 				$output .= PHP_EOL;
 			}
 		}
-		//@todo: 5. if there is something in $this->_inline, we have to render another script tag with that inline code
+
+		if ($this->_inline)
+		{
+			$output .= $scriptElement
+				->copy()
+				->text($this->_inline);
+		}
+
 		$this->clear();
 		return $output;
 	}

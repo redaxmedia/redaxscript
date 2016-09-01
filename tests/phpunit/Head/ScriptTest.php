@@ -44,6 +44,19 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerInline
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerInline()
+	{
+		return $this->getProvider('tests/provider/Head/script_inline.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -104,6 +117,42 @@ class ScriptTest extends TestCaseAbstract
 		foreach ($moduleArray as $key => $value)
 		{
 			$scriptModule->prepend($key, $value);
+		}
+
+		/* actual */
+
+		$actual = $scriptCore->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testInline
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerInline
+	 *
+	 * @param array $coreArray
+	 * @param array $moduleArray
+	 * @param string $expect
+	 */
+
+	public function testInline($coreArray = [], $moduleArray = [], $expect = null)
+	{
+		/* setup */
+
+		$scriptCore = Head\Script::getInstance();
+		$scriptModule = Head\Script::getInstance();
+		foreach ($coreArray as $key)
+		{
+			$scriptCore->appendInline($key);
+		}
+		foreach ($moduleArray as $key)
+		{
+			$scriptModule->prependInline($key);
 		}
 
 		/* actual */
