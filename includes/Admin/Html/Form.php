@@ -178,7 +178,7 @@ class Form extends BaseForm
 			],
 			'submit' =>
 			[
-				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-large',
+				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
 				'type' => 'submit',
 				'value' => 'submit'
 			],
@@ -201,7 +201,7 @@ class Form extends BaseForm
 		[
 			'cancel' =>
 			[
-				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-large',
+				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
 				'href' => 'javascript:history.back()'
 			],
 			'delete' =>

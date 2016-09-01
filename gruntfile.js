@@ -489,18 +489,12 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-
-					// siehe https://snag.gy/fbN98k.jpg - icon für sort fehlt und das plus ist etwas verschoben
-					// icons etwas schönern anordnen: https://snag.gy/oaM2FY.jpg
-					// alternativ können wir die icons bei ALLEN buttons weglassen!?
-
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
-					// 'node_modules/material-design-icons/action/svg/production/ic_visibility_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
 					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
 					'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
@@ -510,9 +504,6 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_create_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
-					// 'node_modules/material-design-icons/editor/svg/production/ic_insert_drive_file_24px.svg',
-					// 'node_modules/material-design-icons/folder/svg/production/ic_folder_24px.svg',
-					// 'node_modules/material-design-icons/navigation/svg/production/ic_chevron_left_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',

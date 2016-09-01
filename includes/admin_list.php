@@ -61,11 +61,11 @@ function admin_contents_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-create">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
 	}
 	if (Redaxscript\Registry::get('tableEdit') == 1 && $num_rows)
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default rs-admin-button-sort">' . Redaxscript\Language::get('sort') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default">' . Redaxscript\Language::get('sort') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-' . $wording_single . '">';
 

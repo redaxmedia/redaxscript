@@ -220,16 +220,9 @@
 	font-weight: normal;
 }
 
-.rs-is-js .rs-admin-title-accordion:after, .rs-admin-button-default.rs-admin-button-plus:before, .rs-admin-list-panel .rs-admin-link-new:after
+.rs-is-js .rs-admin-title-accordion:after, .rs-admin-list-panel .rs-admin-link-new:after
 {
 	content: '\2b';
-	font-family: 'icon admin';
-	font-weight: normal;
-}
-
-.rs-admin-button-default.rs-admin-button-cancel:before
-{
-	content: '\d7';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
@@ -506,22 +499,6 @@
 	font-size: 1rem;
 }
 
-/* @section 1.3 icons */
-
-.rs-admin-button-default.rs-admin-button-plus:before, .rs-admin-button-default.rs-admin-button-cancel:before, .rs-admin-button-default.rs-admin-button-submit:before
-{
-	font-size: 1.5rem;
-	line-height: 1rem;
-	margin-right: 0.25em;
-	text-transform: lowercase;
-	vertical-align: middle;
-}
-
-.rs-admin-button-default.rs-admin-button-submit:before
-{
-	content: '\2713';
-}
-
 /* @section 2. disabled and readonly */
 
 .rs-admin-button-default[disabled]
@@ -545,6 +522,11 @@
 
 @media (max-width: 29.999em)
 {
+	.rs-admin-button-default
+	{
+		width: 100%;
+	}
+
 	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-top: 0.75em;
@@ -552,16 +534,14 @@
 }
 
 /* @section 3. small min */
-@media (min-width: 50em)
+
+@media (min-width: 30em)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
 		margin-left: 0.5em;
 	}
-}
 
-@media (min-width: 30em)
-{
 	.rs-admin-form-default .rs-admin-button-cancel, .rs-admin-form-default .rs-admin-button-delete
 	{
 		float: left;
