@@ -288,13 +288,13 @@
 	border: 0.25em solid gray(32);
 	border-radius: 50%;
 	color: gray(32);
-	font-size: 0.75em;
+	font-size: 0.625em;
 	height: 1.5em;
-	left: 2.5em;
+	left: 2.25em;
 	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 0.75em;
+	top: 1.125em;
 	width: 1.5em;
 }
 
@@ -356,6 +356,11 @@
 		@extend %rs-admin-icon-info;
 		color: var(--rs-admin-color-info);
 	}
+}
+
+.rs-admin-item-panel .rs-admin-list-panel-children-notification li:hover .rs-admin-text-panel
+{
+	color: gray(32);
 }
 
 @media (--media-medium-min) and (--media-large-max)

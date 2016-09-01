@@ -271,7 +271,7 @@
 
 .rs-admin-text-notification:before
 {
-	content: '\203c';
+	content: '\1f514';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
@@ -1165,13 +1165,13 @@
 	border: 0.25em solid rgb(32, 32, 32);
 	border-radius: 50%;
 	color: rgb(32, 32, 32);
-	font-size: 0.75em;
+	font-size: 0.625em;
 	height: 1.5em;
-	left: 2.5em;
+	left: 2.25em;
 	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 0.75em;
+	top: 1.125em;
 	width: 1.5em;
 }
 
@@ -1228,6 +1228,11 @@
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
 	color: #2db4fa
+}
+
+.rs-admin-item-panel .rs-admin-list-panel-children-notification li:hover .rs-admin-text-panel
+{
+	color: rgb(32, 32, 32);
 }
 
 @media (min-width: 50em) and (max-width: 79.999em)

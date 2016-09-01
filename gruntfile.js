@@ -496,10 +496,6 @@ module.exports = function (grunt)
 					// icons etwas schönern anordnen: https://snag.gy/oaM2FY.jpg
 					// alternativ können wir die icons bei ALLEN buttons weglassen!?
 
-					// siehe https://snag.gy/OhPA9l.jpg - note icons und counter verkleinern / besser positionieren
-					// siehe https://snag.gy/BkGunW.jpg - bei hover sind die icons schwarz, da sich blau und die farben optisch nicht vertragen
-					// codepoint für notifications ist noch etwas unpassend, wie wäre es mit http://www.fileformat.info/info/unicode/char/1f514/index.htm
-
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
@@ -591,7 +587,7 @@ module.exports = function (grunt)
 					// 'insert-drive-file': 0x2752,
 					// 'live-help': 0x2691,
 					'lock': 0x1F511,
-					'notifications': 0x203C,
+					'notifications': 0x1F514,
 					// 'menu': 0x2261,
 					'person': 0x26C4,
 					'remove': 0x2d,
