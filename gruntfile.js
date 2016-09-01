@@ -490,8 +490,6 @@ module.exports = function (grunt)
 				src:
 				[
 
-					// todo henry: gibt es noch diesen button, wird .rs-admin-button-submit verwendet?
-					// siehe https://snag.gy/uoM5yQ.jpg - entspricht dem save button, es fehlt auch nocht ein icon für delete
 					// siehe https://snag.gy/fbN98k.jpg - icon für sort fehlt und das plus ist etwas verschoben
 					// icons etwas schönern anordnen: https://snag.gy/oaM2FY.jpg
 					// alternativ können wir die icons bei ALLEN buttons weglassen!?
