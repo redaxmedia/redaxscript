@@ -82,6 +82,7 @@ class LoginForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -93,6 +94,7 @@ class LoginForm extends ViewAbstract
 			[
 				'id' => 'password',
 				'name' => 'password',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required'
 			])
 			->append('</li>');

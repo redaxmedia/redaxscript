@@ -155,7 +155,7 @@ class InstallForm extends ViewAbstract
 				'value' => $optionArray['adminName']
 			])
 			->append('</li><li>')
-			->label($this->_language->get('name'),
+			->label($this->_language->get('user'),
 			[
 				'for' => 'admin-user'
 			])
@@ -163,6 +163,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-user',
 				'name' => 'admin-user',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
 				'value' => $optionArray['adminUser']
 			])
@@ -175,6 +176,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-password',
 				'name' => 'admin-password',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
 				'value' => $optionArray['adminPassword']
 			])

@@ -136,6 +136,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 				[
 					'id' => 'user',
 					'name' => 'user',
+					'pattern' => '[a-zA-Z0-9]{1,30}',
 					'required' => 'required',
 					'value' => $user->user
 				])
@@ -150,6 +151,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 			->password(
 			[
 				'id' => 'password',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'name' => 'password'
 			])
 			->append('</li><li>')
@@ -160,6 +162,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 			->password(
 			[
 				'id' => 'password_confirm',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'name' => 'password_confirm'
 			])
 			->append('</li><li>')

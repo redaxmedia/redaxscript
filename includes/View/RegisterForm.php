@@ -83,6 +83,7 @@ class RegisterForm extends ViewAbstract
 			[
 				'id' => 'user',
 				'name' => 'user',
+				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required'
 			])
 			->append('</li><li>')

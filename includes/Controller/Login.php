@@ -33,6 +33,7 @@ class Login extends ControllerAbstract
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$emailValidator = new Validator\Email();
+		$loginValidator = new Validator\Login();
 		$auth = new Auth($this->_request);
 
 		/* process post */
@@ -52,7 +53,7 @@ class Login extends ControllerAbstract
 			$postArray['user'] = $emailFilter->sanitize($this->_request->getPost('user'));
 			$users->where('email', $postArray['user']);
 		}
-		else
+		else if ($loginValidator->validate($this->_request->getPost('user')) === Validator\ValidatorInterface::PASSED)
 		{
 			$postArray['user'] = $specialFilter->sanitize($this->_request->getPost('user'));
 			$users->where('user', $postArray['user']);
