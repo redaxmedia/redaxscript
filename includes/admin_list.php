@@ -61,7 +61,7 @@ function admin_contents_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-create">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
 	}
 	if (Redaxscript\Registry::get('tableEdit') == 1 && $num_rows)
 	{
@@ -408,7 +408,7 @@ function admin_groups_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (Redaxscript\Registry::get('groupsNew'))
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('group_new') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/groups" class="rs-admin-button-default rs-admin-button-create">' . Redaxscript\Language::get('group_new') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-default-group">';
 
@@ -505,7 +505,7 @@ function admin_users_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if (Redaxscript\Registry::get('usersNew'))
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-plus">' . Redaxscript\Language::get('user_new') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/users" class="rs-admin-button-default rs-admin-button-create">' . Redaxscript\Language::get('user_new') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-user">';
 
