@@ -131,6 +131,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 				'class' => 'rs-admin-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
+                'pattern' => '[a-zA-Z0-9-]+',
 				'required' => 'required',
 				'value' => $extra->alias
 			])

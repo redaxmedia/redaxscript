@@ -25,7 +25,7 @@ class Alias implements FilterInterface
 
 	public function sanitize($alias = null)
 	{
-		$output = preg_replace('/\W+/i', ' ', $alias);
+		$output = preg_replace('/[^a-zA-Z0-9]/i', ' ', $alias);
 		$output = preg_replace('/\s+/i', '-', trim($output));
 		return $output;
 	}
