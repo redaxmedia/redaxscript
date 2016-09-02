@@ -24,7 +24,7 @@
 {
 	background: var(--rs-admin-gradient-quinary);
 	border-radius: 0.25em;
-	color: gray(102);
+	color: gray(100);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -39,7 +39,7 @@
 
 .rs-admin-list-control span
 {
-	color: gray(153);
+	color: gray(150);
 }
 
 /* delete and uninstall */

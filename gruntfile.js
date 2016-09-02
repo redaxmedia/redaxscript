@@ -472,7 +472,7 @@ module.exports = function (grunt)
 					[
 						require('colorguard')(
 						{
-							threshold: 0.5,
+							threshold: 2,
 							allowEquivalentNotation: true
 						}),
 						require('postcss-reporter')(

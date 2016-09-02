@@ -53,7 +53,7 @@ a.rs-admin-button-default
 
 .rs-admin-button-default:hover
 {
-	background: gray(48);
+	background: gray(50);
 }
 
 .rs-admin-button-create:hover
@@ -86,8 +86,8 @@ a.rs-admin-button-default
 
 .rs-admin-button-default[disabled]
 {
-	background: gray(204);
-	color: gray(158);
+	background: gray(200);
+	color: gray(150);
 	pointer-events: none;
 }
 
