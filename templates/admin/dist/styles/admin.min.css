@@ -1210,7 +1210,7 @@
 	color: #2db4fa
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification li:hover .rs-admin-text-panel
+.rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-text-panel:hover:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-link-panel:hover:before
 {
 	color: rgb(32, 32, 32);
 }
