@@ -207,12 +207,28 @@
 {
 	content: '\2315';
 	font-family: 'icon default';
+	font-weight: normal;
 }
 
 .rs-list-breadcrumb .rs-item-divider:before
 {
 	content: '\3009';
 	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-is-js .rs-title-accordion:after
+{
+	content: '\2b';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-is-js .rs-title-accordion.rs-title-active:after
+{
+	content: '\2d';
+	font-family: 'icon default';
+	font-weight: normal;
 }
 
 /**
@@ -343,20 +359,14 @@ a
 
 .rs-is-js .rs-title-accordion:after
 {
-	content: '+';
 	float: right;
-	font-family: 'icon default'
+	font-size: 1.5rem
 }
 
 .rs-is-js .rs-title-accordion.rs-title-active
 {
 	background: #699b3c;
 	pointer-events: none
-}
-
-.rs-is-js .rs-title-accordion.rs-title-active:after
-{
-	content: '-'
 }
 
 .rs-is-js .rs-box-accordion
@@ -399,7 +409,7 @@ a
 .rs-list-breadcrumb .rs-item-divider:before
 {
 	left: 0;
-	line-height: 1.375em;
+	line-height: 1.5em;
 	position: absolute;
 	right: 0;
 	text-align: center;
@@ -1512,6 +1522,8 @@ a
 {
 	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
+	display: -ms-flexbox;
+	display: flex;
 	font-size: 1.25em;
 	overflow: hidden
 
@@ -1524,10 +1536,12 @@ a
 {
 	box-sizing: border-box;
 	display: inline-block;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
 	font: 1em/2em 'open sans condensed', arial, sans-serif;
+	min-width: 0;
 	padding: 0 0.5em;
-	vertical-align: middle;
-	width: 80%
+	vertical-align: middle
 }
 
 .rs-form-search .rs-button-search
@@ -1536,13 +1550,16 @@ a
 	color: #323e4c;
 	cursor: pointer;
 	display: inline-block;
+	-ms-flex-preferred-size: 2em;
+	flex-basis: 2em;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
 	font-size: 1em;
 	line-height: 2em;
 	position: relative;
 	text-indent: -999em;
 	transition: color 0.2s;
-	vertical-align: middle;
-	width: 20%
+	vertical-align: middle
 }
 
 .rs-form-search .rs-button-search:hover
@@ -1552,12 +1569,27 @@ a
 
 .rs-form-search .rs-button-search:after
 {
+	font-size: 1.5em;
 	left: 0;
 	position: absolute;
 	right: 0;
 	text-indent: 0
 }
 
+@media (min-width: 80em)
+{
+	.rs-form-search
+	{
+	}
+	.rs-form-search .rs-field-search
+{
+		width: 90%
+	}
+	.rs-form-search .rs-button-search
+{
+		width: 10%
+	}
+}
 /* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
 
 .rs-sidebar .rs-box-extra

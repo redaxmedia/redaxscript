@@ -522,15 +522,15 @@ module.exports = function (grunt)
 				src:
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
-					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg'
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_favorite_24px.svg',
 					// 'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					// 'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
 					// 'node_modules/material-design-icons/communication/svg/production/ic_live_help_24px.svg',
-					// 'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
 					// 'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
-					// 'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg'
 					// 'node_modules/material-design-icons/image/svg/production/ic_image_24px.svg',
 					// 'node_modules/material-design-icons/navigation/svg/production/ic_chevron_left_24px.svg',
 					// 'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',

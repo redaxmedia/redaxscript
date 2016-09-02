@@ -10,10 +10,26 @@
 {
 	content: '\2315';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-chevron-right
 {
 	content: '\3009';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
+%rs-icon-add
+{
+	content: '\2b';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
+%rs-icon-remove
+{
+	content: '\2d';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
