@@ -35,7 +35,9 @@
 
 	&:before
 	{
-		margin: 0 0.5em;
+		float: left;
+		text-align: center;
+		width: 2em;
 	}
 
 	& a
@@ -47,6 +49,16 @@
 	& + .rs-admin-button-note
 	{
 		margin-top: 1em;
+	}
+}
+
+.rs-admin-list-note
+{
+	float: left;
+
+	& li
+	{
+		list-style: inside decimal;
 	}
 }
 

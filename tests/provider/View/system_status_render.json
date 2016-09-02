@@ -18,7 +18,7 @@
 			],
 			"sessionStatus": true
 		},
-		"<div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>Connection to database failed</li></ul></div>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Connection to database failed</div>"
 	],
 	[
 		{
@@ -39,7 +39,7 @@
 			],
 			"sessionStatus": true
 		},
-		"<div class=\"rs-box-note rs-is-warning\"><ul class=\"rs-list-note\"><li>Operating system not supported</li></ul></div>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">Operating system not supported</div>"
 	],
 	[
 		{

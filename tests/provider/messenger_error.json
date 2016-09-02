@@ -8,7 +8,7 @@
 			"text": null,
 			"route": null
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">title</h2><div class=\"rs-box-note rs-is-error\">test</div>"
+		"<h2 class=\"rs-title-note rs-is-error\">title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">test</div>"
 	],
 	[
 		{
@@ -23,7 +23,7 @@
 			"text": null,
 			"route": null
 		},
-		"<div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
 	],
 	[
 		{
@@ -38,6 +38,6 @@
 			"text": "ok",
 			"route": "hello/world"
 		},
-		"<div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-note rs-is-error\">ok</a>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-note rs-is-error\">ok</a>"
 	]
 ]

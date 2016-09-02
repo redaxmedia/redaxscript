@@ -26,7 +26,7 @@ class Messenger extends BaseMessenger
 	[
 		'className' =>
 		[
-			'box' => 'rs-admin-box-note',
+			'box' => 'rs-admin-box-note rs-admin-fn-clearfix',
 			'title' => 'rs-admin-title-note',
 			'list' => 'rs-admin-list-note',
 			'link' => 'rs-admin-button-note',

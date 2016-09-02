@@ -10,7 +10,7 @@
 	box-sizing: border-box;
 	color: gray(106);
 	display: block;
-	font: 0.875em/2em var(--rs-admin-font-secondary);
+	font: 0.875em/2.25em var(--rs-admin-font-secondary);
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%;

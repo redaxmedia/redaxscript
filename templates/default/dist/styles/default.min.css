@@ -1913,7 +1913,9 @@ a
 
 .rs-box-note:before
 {
-	margin: 0 0.5em
+	float: left;
+	text-align: center;
+	width: 2em
 }
 
 .rs-box-note a
@@ -1924,6 +1926,16 @@ a
 .rs-box-note + .rs-box-note, .rs-box-note + .rs-button-note
 {
 	margin-top: 1em
+}
+
+.rs-list-note
+{
+	float: left
+}
+
+.rs-list-note li
+{
+	list-style: inside decimal
 }
 
 .rs-button-note

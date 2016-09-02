@@ -45,7 +45,7 @@ class Messenger
 	[
 		'className' =>
 		[
-			'box' => ' rs-box-note',
+			'box' => ' rs-box-note rs-fn-clearfix',
 			'title' => 'rs-title-note',
 			'list' => 'rs-list-note',
 			'link' => 'rs-button-note',
@@ -253,7 +253,7 @@ class Messenger
 
 		/* create a list */
 
-		if (is_array($message))
+		if (is_array($message) && count($message) > 1)
 		{
 			$listElement = new Html\Element();
 			$listElement->init('ul',
@@ -274,7 +274,7 @@ class Messenger
 
 		else
 		{
-			$boxElement->html($message);
+			$boxElement->html(array_key_exists(0, $message) ? $message[0] : $message);
 		}
 
 		/* collect output */

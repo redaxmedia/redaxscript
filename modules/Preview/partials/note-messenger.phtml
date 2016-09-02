@@ -18,5 +18,12 @@ $messenger->setRoute($language->get('preview', '_preview'), $admin ? 'preview#no
 
 <?php echo $messenger->success('Success message with ' . $linkElement . ' element', 'Success'); ?>
 <?php echo $messenger->warning('Warning message with ' . $linkElement . ' element', 'Warning'); ?>
-<?php echo $messenger->error('Error message with ' . $linkElement . ' element', 'Error'); ?>
-<?php echo $messenger->info('Info message with ' . $linkElement . ' element', 'Info'); ?>
+<?php echo $messenger->error(
+[
+	'Error message with ' . $linkElement . ' element'
+], 'Error'); ?>
+<?php echo $messenger->info(
+[
+	'Info message with ' . $linkElement . ' element',
+	'Info message with ' . $linkElement . ' element'
+], 'Info'); ?>

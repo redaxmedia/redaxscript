@@ -782,7 +782,7 @@
 	box-sizing: border-box;
 	color: rgb(106, 106, 106);
 	display: block;
-	font: 0.875em/2em arial, sans-serif;
+	font: 0.875em/2.25em arial, sans-serif;
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
@@ -1530,7 +1530,9 @@
 
 .rs-admin-box-note:before
 {
-	margin: 0 0.5em
+	float: left;
+	text-align: center;
+	width: 2em
 }
 
 .rs-admin-box-note a
@@ -1541,6 +1543,16 @@
 .rs-admin-box-note + .rs-admin-box-note, .rs-admin-box-note + .rs-admin-button-note
 {
 	margin-top: 1em
+}
+
+.rs-admin-list-note
+{
+	float: left
+}
+
+.rs-admin-list-note li
+{
+	list-style: inside decimal
 }
 
 .rs-admin-button-note
