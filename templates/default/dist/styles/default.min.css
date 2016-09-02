@@ -1576,20 +1576,6 @@ a
 	text-indent: 0
 }
 
-@media (min-width: 80em)
-{
-	.rs-form-search
-	{
-	}
-	.rs-form-search .rs-field-search
-{
-		width: 90%
-	}
-	.rs-form-search .rs-button-search
-{
-		width: 10%
-	}
-}
 /* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
 
 .rs-sidebar .rs-box-extra

@@ -150,7 +150,7 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before, .rs-admin-is-success.rs-admin-box-note:before
 {
 	content: '\2714';
 	font-family: 'icon admin';
@@ -171,7 +171,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before, .rs-admin-is-info.rs-admin-box-note:before
 {
 	content: '\69';
 	font-family: 'icon admin';
@@ -199,14 +199,14 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before, .rs-admin-is-error.rs-admin-box-note:before
 {
 	content: '\274c';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before, .rs-admin-is-warning.rs-admin-box-note:before
 {
 	content: '\21';
 	font-family: 'icon admin';
@@ -1531,8 +1531,8 @@
 .rs-admin-box-note:before
 {
 	float: left;
-	text-align: center;
-	width: 2em
+	font-size: 1.125em;
+	width: 1.5em
 }
 
 .rs-admin-box-note a
@@ -1576,11 +1576,6 @@
 	background: #77b01e
 }
 
-.rs-admin-is-success.rs-admin-box-note:before
-{
-	content: '\2714'
-}
-
 /* @section 1.2 warning */
 
 .rs-admin-is-warning
@@ -1591,11 +1586,6 @@
 .rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-button-note, .rs-admin-is-warning.rs-admin-field-note, .rs-admin-is-warning.rs-admin-field-note option
 {
 	background: #ffa52d
-}
-
-.rs-admin-is-warning.rs-admin-box-note:before
-{
-	content: '\21'
 }
 
 /* @section 1.3 error */
@@ -1610,11 +1600,6 @@
 	background: #c81e19
 }
 
-.rs-admin-is-error.rs-admin-box-note:before
-{
-	content: '\d7'
-}
-
 /* @section 1.4 info */
 
 .rs-admin-is-info
@@ -1625,9 +1610,4 @@
 .rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-button-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-note option
 {
 	background: #2db4fa
-}
-
-.rs-admin-is-info.rs-admin-box-note:before
-{
-	content: '\69'
 }

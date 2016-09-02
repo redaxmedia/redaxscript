@@ -36,8 +36,8 @@
 	&:before
 	{
 		float: left;
-		text-align: center;
-		width: 2em;
+		font-size: 1.125em;
+		width: 1.5em;
 	}
 
 	& a
@@ -87,7 +87,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		content: '\2714';
+		@extend %rs-admin-icon-check-circle;
 	}
 }
 
@@ -107,7 +107,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		content: '\21';
+		@extend %rs-admin-icon-warning;
 	}
 }
 
@@ -127,7 +127,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		content: '\d7';
+	 @extend %rs-admin-icon-error;
 	}
 }
 
@@ -147,6 +147,6 @@
 
 	&.rs-admin-box-note:before
 	{
-		content: '\69';
+		@extend %rs-admin-icon-info;
 	}
 }
