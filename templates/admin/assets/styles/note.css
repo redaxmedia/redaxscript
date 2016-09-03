@@ -36,7 +36,7 @@
 	&:before
 	{
 		float: left;
-		font-size: 1.125em;
+		font-size: 1.25em;
 		width: 1.5em;
 	}
 
@@ -127,7 +127,7 @@
 
 	&.rs-admin-box-note:before
 	{
-	 @extend %rs-admin-icon-error;
+		@extend %rs-admin-icon-error;
 	}
 }
 

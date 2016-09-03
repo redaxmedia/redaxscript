@@ -36,8 +36,7 @@
 	&:before
 	{
 		float: left;
-		text-align: center;
-		width: 2em;
+		width: 1.5em;
 	}
 
 	& a
