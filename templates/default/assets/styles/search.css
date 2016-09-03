@@ -1,3 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. search
+ *    1.1 form
+ *    1.2 field
+ *    1.3 button
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. search */
 
 /* @section 1.1 form */
@@ -17,7 +31,8 @@
 		box-sizing: border-box;
 		display: inline-block;
 		flex-grow: 1;
-		font: 1em/2em var(--rs-font-primary);
+		font-size: 1em;
+		line-height: 2em;
 		min-width: 0;
 		padding: 0 0.5em;
 		vertical-align: middle;

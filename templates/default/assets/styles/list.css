@@ -11,18 +11,15 @@
 
 /* @section 1. list default */
 
-.rs-list-default
+ol.rs-list-default li
 {
-	&.ol li
-	{
-		list-style: inherit;
-		list-style-position: inside;
-	}
+	list-style: inherit;
+	list-style-position: inside;
+}
 
-	&.ul li:before
-	{
-		color: var(--rs-color-primary);
-		content: '>';
-		margin-right: 0.5em;
-	}
+ul.rs-list-default li:before
+{
+	color: var(--rs-color-primary);
+	content: '>';
+	margin-right: 0.5em;
 }

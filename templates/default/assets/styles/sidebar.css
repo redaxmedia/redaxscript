@@ -1,20 +1,17 @@
-/* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
+/**
+ * @tableofcontents
+ *
+ * 1. sidebar
+ * 2. query
+ *    2.1 medium min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-.rs-sidebar .rs-box-extra
-{
-	font-size: 1.25em;
-}
-
-.rs-sidebar .rs-title-extra
-{
-	font-size: 1.625em;
-	margin-top: 1em;
-}
-
-.rs-sidebar a
-{
-	color: gray(200);
-}
+/* @section 1. sidebar */
 
 .rs-sidebar
 {
@@ -22,17 +19,27 @@
 	box-sizing: border-box;
 	color: gray(200);
 	padding: 1em;
+
+	& .rs-title-extra
+	{
+		font-size: 1.625em;
+		margin-top: 1em;
+	}
+
+	& .rs-box-extra
+	{
+		font-size: 1.25em;
+	}
 }
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
 	.rs-sidebar
 	{
-		& .rs-admin-text-dock
-		{
-			display: none;
-		}
-
 		& .rs-admin-box-dock
 		{
 			display: flex;
@@ -42,6 +49,11 @@
 		& .rs-admin-link-dock
 		{
 			flex: 1 1 0;
+		}
+
+		& .rs-admin-text-dock
+		{
+			display: none;
 		}
 	}
 }

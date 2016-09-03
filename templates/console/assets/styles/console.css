@@ -1,9 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. general
- * 2. box
- * 3. form
+ * 1. console
  *
  * @since 3.0.0
  *
@@ -11,7 +9,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. general */
+/* @section 1. console */
 
 .rs-console-body
 {
@@ -21,30 +19,29 @@
 	margin: 0.25em;
 }
 
-.rs-console-box-default::selection,
-.rs-console-label-default::selection
+.rs-console-box-default,
+.rs-console-label-default
 {
-	background: gray(255);
-	color: var(--rs-console-color-primary);
+	&::selection
+	{
+		background: gray(255);
+		color: var(--rs-console-color-primary);
+	}
 }
-
-/* @section 2. box */
 
 .rs-console-box-default
 {
 	white-space: pre-wrap;
 }
 
-/* @section 3. form */
-
 .rs-console-label-default
 {
 	float: left;
-}
 
-.rs-console-label-default:after
-{
-	content: '\00a0';
+	&:after
+	{
+		content: '\00a0';
+	}
 }
 
 .rs-console-field-text
@@ -52,6 +49,4 @@
 	background: transparent;
 	color: inherit;
 	float: left;
-	font: inherit;
-	max-width: 100%;
 }

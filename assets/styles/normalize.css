@@ -59,6 +59,11 @@ button, input, select, textarea
 	box-sizing: border-box;
 }
 
+input, select, textarea
+{
+	font: inherit;
+}
+
 button::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,

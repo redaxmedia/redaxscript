@@ -373,6 +373,17 @@ a
 {
 	display: none
 }
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. list breadcrumb */
 
 .rs-list-breadcrumb
@@ -420,7 +431,6 @@ a
  * @tableofcontents
  *
  * 1. button default
- * 2. button search
  * 3. button large and full
  * 4. space between elements
  * 5. disabled and reset
@@ -756,6 +766,20 @@ a
 {
 	width: 100%
 }
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. field */
 
 .rs-field-default, .rs-field-select, .rs-field-textarea
@@ -764,8 +788,8 @@ a
 	border: 2px solid rgb(200, 200, 200);
 	border-radius: 0.125em;
 	box-sizing: border-box;
-	display: block;
-	font: 1em/2em 'open sans condensed', arial, sans-serif;
+	font-size: 1em;
+	line-height: 2em;
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
@@ -861,6 +885,17 @@ a
 		display: none;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. form default */
 
 .rs-form-default
@@ -1133,9 +1168,10 @@ a
  *
  * 1. general
  * 2. wrapper
- *    6.2 medium max
- *    6.3 medium min
- * 6.1 print
+ * 3. query
+ *    3.1 medium max
+ *    3.2 medium min
+ *    3.3 print
  *
  * @since 3.0.0
  *
@@ -1173,7 +1209,9 @@ a
 	padding: 1.5em 0;
 }
 
-/* @section 6.2 medium max */
+/* @section 3. query */
+
+/* @section 3.1 medium max */
 
 @media (max-width: 49.999em)
 {
@@ -1183,7 +1221,7 @@ a
 	}
 }
 
-/* @section 6.3 medium min */
+/* @section 3.2 medium min */
 
 @media (min-width: 50em)
 {
@@ -1208,7 +1246,7 @@ a
 	}
 }
 
-/* @section 6.1 print */
+/* @section 3.3 print */
 
 @media print
 {
@@ -1236,22 +1274,19 @@ a
 
 /* @section 1. list default */
 
-.rs-list-default
-{
-}
-
-.rs-list-default.ol li
+ol.rs-list-default li
 {
 	list-style: inherit;
-	list-style-position: inside
+	list-style-position: inside;
 }
 
-.rs-list-default.ul li:before
+ul.rs-list-default li:before
 {
 	color: #3873b5;
 	content: '>';
-	margin-right: 0.5em
+	margin-right: 0.5em;
 }
+
 /**
  * @tableofcontents
  *
@@ -1290,7 +1325,7 @@ a
  * @author Henry Ruhs
  */
 
-/*@todo: Use 3DX without border for the hamburger menu: https://jonsuh.com/hamburgers/*/
+/* @todo: Use 3DX without border for the hamburger menu: https://jonsuh.com/hamburgers */
 
 /* @section 1. general */
 
@@ -1516,6 +1551,20 @@ a
 	font-style: italic;
 	line-height: 1.5em;
 }
+/**
+ * @tableofcontents
+ *
+ * 1. search
+ *    1.1 form
+ *    1.2 field
+ *    1.3 button
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. search */
 
 /* @section 1.1 form */
@@ -1540,7 +1589,8 @@ a
 	display: inline-block;
 	-ms-flex-positive: 1;
 	flex-grow: 1;
-	font: 1em/2em 'open sans condensed', arial, sans-serif;
+	font-size: 1em;
+	line-height: 2em;
 	min-width: 0;
 	padding: 0 0.5em;
 	vertical-align: middle
@@ -1578,40 +1628,48 @@ a
 	text-indent: 0
 }
 
-/* @todo wrap in sidebar class like .rs-sidebar .rs-title-extra */
+/**
+ * @tableofcontents
+ *
+ * 1. sidebar
+ * 2. query
+ *    2.1 medium min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-.rs-sidebar .rs-box-extra
-{
-	font-size: 1.25em;
-}
-
-.rs-sidebar .rs-title-extra
-{
-	font-size: 1.625em;
-	margin-top: 1em;
-}
-
-.rs-sidebar a
-{
-	color: rgb(200, 200, 200);
-}
+/* @section 1. sidebar */
 
 .rs-sidebar
 {
 	background: #323e4c;
 	box-sizing: border-box;
 	color: rgb(200, 200, 200);
-	padding: 1em;
+	padding: 1em
 }
+
+.rs-sidebar .rs-title-extra
+{
+	font-size: 1.625em;
+	margin-top: 1em
+}
+
+.rs-sidebar .rs-box-extra
+{
+	font-size: 1.25em
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
 
 @media (min-width: 50em)
 {
 	.rs-sidebar
 	{
-	}
-	.rs-sidebar .rs-admin-text-dock
-{
-		display: none
 	}
 	.rs-sidebar .rs-admin-box-dock
 {
@@ -1624,6 +1682,10 @@ a
 {
 		-ms-flex: 1 1 0;
 		flex: 1 1 0
+	}
+	.rs-sidebar .rs-admin-text-dock
+{
+		display: none
 	}
 }
 /**

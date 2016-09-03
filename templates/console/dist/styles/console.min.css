@@ -59,6 +59,11 @@ button, input, select, textarea
 	box-sizing: border-box;
 }
 
+input, select, textarea
+{
+	font: inherit;
+}
+
 button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner
 {
 	border: 0;
@@ -97,9 +102,7 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 /**
  * @tableofcontents
  *
- * 1. general
- * 2. box
- * 3. form
+ * 1. console
  *
  * @since 3.0.0
  *
@@ -107,7 +110,7 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
  * @author Henry Ruhs
  */
 
-/* @section 1. general */
+/* @section 1. console */
 
 .rs-console-body
 {
@@ -115,6 +118,10 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 	color: rgb(255, 255, 255);
 	font: 1em 'ubuntu mono', monospace, arial, sans-serif;
 	margin: 0.25em;
+}
+
+.rs-console-box-default, .rs-console-label-default
+{
 }
 
 .rs-console-box-default::-moz-selection, .rs-console-label-default::-moz-selection
@@ -129,18 +136,14 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 	color: #300a24;
 }
 
-/* @section 2. box */
-
 .rs-console-box-default
 {
 	white-space: pre-wrap;
 }
 
-/* @section 3. form */
-
 .rs-console-label-default
 {
-	float: left;
+	float: left
 }
 
 .rs-console-label-default:after
@@ -153,6 +156,4 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 	background: transparent;
 	color: inherit;
 	float: left;
-	font: inherit;
-	max-width: 100%;
 }

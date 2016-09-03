@@ -424,7 +424,6 @@
  * 1. button admin
  *    1.1 hover effect
  *    1.2 active effect
- *    1.3 icons
  * 2. disabled and readonly
  * 3. space between elements
  * 3. small min
@@ -772,6 +771,20 @@
 	text-indent: 0;
 	top: 0;
 }
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. field */
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
@@ -781,7 +794,6 @@
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	color: rgb(106, 106, 106);
-	display: block;
 	font: 0.875em/2.25em arial, sans-serif;
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
@@ -807,7 +819,7 @@
 
 .rs-admin-field-select
 {
-	height: 2.25em
+	height: 2.5em
 }
 
 .rs-admin-field-select[multiple]

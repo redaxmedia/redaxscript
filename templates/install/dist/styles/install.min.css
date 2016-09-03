@@ -44,8 +44,10 @@
 /**
  * @tableofcontents
  *
- * 1. general
+ * 1. install
  * 2. query
+ *    2.1 small min
+ *    2.2 large min
  *
  * @since 3.0.0
  *
@@ -53,7 +55,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. general */
+/* @section 1. install */
 
 .rs-install-body
 {
@@ -70,13 +72,13 @@
 {
 	background: rgb(255, 255, 255);
 	border-radius: 0.125em;
-	padding: 1em;
+	padding: 1.5em;
 }
 
 .rs-install-title
 {
 	color: rgb(255, 255, 255);
-	font-size: 2.5em;
+	font-size: 3.25em;
 	font-weight: normal;
 	line-height: 1em;
 	margin-bottom: 0.75em;
@@ -86,16 +88,16 @@
 
 /* @section 2. query */
 
+/* @section 2.1 small min */
+
 @media (min-width: 30em)
 {
 	.rs-install-title
 	{
-		font-size: 3.25em;
-		text-indent: 0.375em;
+		margin-bottom: 0.5em
 	}
-
 	.rs-install-title:before
-	{
+{
 		content: url('templates/install/assets/images/redaxscript.svg');
 		display: inline-block;
 		margin-right: 0.125em;
@@ -103,17 +105,14 @@
 	}
 }
 
-@media (min-width: 80em)
+/* @section 2.2 large min */
+
+@media (min-width: 50em)
 {
 	.rs-install-wrapper
 	{
 		margin-left: auto;
 		margin-right: auto;
 		max-width: 50em;
-	}
-
-	.rs-install-content
-	{
-		padding: 1.5em;
 	}
 }

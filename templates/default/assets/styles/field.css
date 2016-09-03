@@ -1,3 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. field */
 
 .rs-field-default,
@@ -8,8 +22,8 @@
 	border: 2px solid gray(200);
 	border-radius: 0.125em;
 	box-sizing: border-box;
-	display: block;
-	font: 1em/2em var(--rs-font-primary);
+	font-size: 1em;
+	line-height: 2em;
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%;
