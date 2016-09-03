@@ -1290,6 +1290,8 @@ a
  * @author Henry Ruhs
  */
 
+/*@todo: Use 3DX without border for the hamburger menu: https://jonsuh.com/hamburgers/*/
+
 /* @section 1. general */
 
 .rs-fn-status-navigation
@@ -1569,7 +1571,7 @@ a
 
 .rs-form-search .rs-button-search:after
 {
-	font-size: 1.5em;
+	font-size: 1.25em;
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -1932,8 +1934,7 @@ a
 .rs-box-note:before
 {
 	float: left;
-	text-align: center;
-	width: 2em
+	width: 1.5em
 }
 
 .rs-box-note a
