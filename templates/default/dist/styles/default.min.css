@@ -210,9 +210,16 @@
 	font-weight: normal;
 }
 
-.rs-list-breadcrumb .rs-item-divider:before
+.rs-list-breadcrumb .rs-item-divider:before, .rs-link-readmore:after, ul.rs-list-default li:before
 {
 	content: '\3009';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-title-comment:after
+{
+	content: '\25b6';
 	font-family: 'icon default';
 	font-weight: normal;
 }
@@ -624,23 +631,25 @@ a
 	margin-top: 1em;
 }
 
+.rs-box-line
+{
+	background: #323e4c;
+	height: 0.125em;
+	margin: 3em 0;
+}
+
 .rs-title-comment
 {
 	font-size: 1.5em;
 	font-weight: bold;
-	margin-bottom: 1em;
 	margin-top: 1em;
-	padding-left: 2.5em;
-	position: relative;
 }
 
-.rs-title-comment:before
+.rs-title-comment:after
 {
-	content: '\25b6';
-	font: 2em/1em 'icon default';
-	left: 0;
-	position: absolute;
-	top: -0.25em;
+	display: inline-block;
+	margin-left: 0.25em;
+	vertical-align: top;
 }
 
 .rs-title-comment a
@@ -650,8 +659,8 @@ a
 
 .rs-box-comment
 {
-	margin-bottom: 2em;
-	margin-top: 2em;
+	margin-bottom: 3em;
+	margin-top: 1em;
 }
 
 .rs-box-quote
@@ -670,7 +679,7 @@ a
 	.rs-box-quote:before
 	{
 		content: '\201d';
-		font: 7em/1em georgia;
+		font: 7em/1em georgia, times, serif;
 		left: -0.5em;
 		opacity: 0.15;
 		position: absolute;
@@ -688,16 +697,18 @@ a
 	cursor: pointer;
 	display: block;
 	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
-	padding: 0.5em;
+	margin: 1em 0;
+	padding: 0.5em 0.75em;
+	text-align: center;
 	text-decoration: none;
+	text-transform: uppercase;
 	transition: transform 0.2s;
 }
 
 .rs-link-readmore:after
 {
-	content: '\3009';
-	font: 0.75em/1em 'icon default';
-	margin-left: 0.375em;
+	font-size: 1.125em;
+	margin-left: 0.125em;
 }
 
 .rs-link-readmore:hover
@@ -1283,8 +1294,7 @@ ol.rs-list-default li
 ul.rs-list-default li:before
 {
 	color: #3873b5;
-	content: '>';
-	margin-right: 0.5em;
+	margin-right: 0.125em;
 }
 
 /**

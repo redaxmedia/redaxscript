@@ -19,7 +19,7 @@ ol.rs-list-default li
 
 ul.rs-list-default li:before
 {
+	@extend %rs-icon-chevron-right;
 	color: var(--rs-color-primary);
-	content: '>';
-	margin-right: 0.5em;
+	margin-right: 0.125em;
 }

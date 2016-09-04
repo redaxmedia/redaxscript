@@ -81,23 +81,26 @@
 	margin-top: 1em;
 }
 
+.rs-box-line
+{
+	background: var(--rs-color-tertiary);
+	height: 0.125em;
+	margin: 3em 0;
+}
+
 .rs-title-comment
 {
 	font-size: 1.5em;
 	font-weight: bold;
-	margin-bottom: 1em;
 	margin-top: 1em;
-	padding-left: 2.5em;
-	position: relative;
 }
 
-.rs-title-comment:before
+.rs-title-comment:after
 {
-	content: '\25b6';
-	font: 2em/1em var(--rs-font-icon);
-	left: 0;
-	position: absolute;
-	top: -0.25em;
+	@extend %rs-icon-chat-bubble;
+	display: inline-block;
+	margin-left: 0.25em;
+	vertical-align: top;
 }
 
 .rs-title-comment a
@@ -107,8 +110,8 @@
 
 .rs-box-comment
 {
-	margin-bottom: 2em;
-	margin-top: 2em;
+	margin-bottom: 3em;
+	margin-top: 1em;
 }
 
 .rs-box-quote
@@ -127,7 +130,7 @@
 	.rs-box-quote:before
 	{
 		content: '\201d';
-		font: 7em/1em georgia;
+		font: 7em/1em georgia, times, serif;
 		left: -0.5em;
 		opacity: 0.15;
 		position: absolute;
@@ -145,16 +148,19 @@
 	cursor: pointer;
 	display: block;
 	font: 1em/1.25em var(--rs-font-primary);
-	padding: 0.5em;
+	margin: 1em 0;
+	padding: 0.5em 0.75em;
+	text-align: center;
 	text-decoration: none;
+	text-transform: uppercase;
 	transition: transform 0.2s;
 }
 
 .rs-link-readmore:after
 {
-	content: '\3009';
-	font: 0.75em/1em var(--rs-font-icon);
-	margin-left: 0.375em;
+	@extend %rs-icon-chevron-right;
+	font-size: 1.125em;
+	margin-left: 0.125em;
 }
 
 .rs-link-readmore:hover

@@ -20,6 +20,13 @@
 	font-weight: normal;
 }
 
+%rs-icon-chat-bubble
+{
+	content: '\25b6';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
 %rs-icon-add
 {
 	content: '\2b';
